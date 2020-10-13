@@ -6,6 +6,96 @@ import { MetaWrapper } from "../../components";
 import Page from "./Page";
 import { TypedHomePageQuery } from "./queries";
 
+const fakeProducts = {
+    edges:
+    [
+        {
+            node: {
+                category: {
+                    id: 'Q2F0ZWdvcnk6MjI=',
+                    name: 'Categpry 1',
+                },
+                id: 'UHJvZHVjdDo2Mw==',
+                name: 'Red paint',
+                pricing : {
+                    onSale: false,
+                    priceRange: {
+                        start: {gross: {amount: 16, currency: "USD"}},
+                        stop: {gross: {amount: 16, currency: "USD"}},
+                    },
+                },
+                thumbnail : {
+                    url: 'http://localhost:8000/media/__sized__/products/saleordemoproduct_paints_03-thumbnail-255x255.png',
+                },
+            },
+        },
+
+        {
+            node: {
+                category: {
+                    id: 'Q2F0ZWdvcnk6MjI=',
+                    name: 'Categpry 1',
+                },
+                id: 'UHJvZHVjdDo2Mw==',
+                name: 'Red paint',
+                pricing : {
+                    onSale: false,
+                    priceRange: {
+                        start: {gross: {amount: 16, currency: "USD"}},
+                        stop: {gross: {amount: 16, currency: "USD"}},
+                    },
+                },
+                thumbnail : {
+                    url: 'http://localhost:8000/media/__sized__/products/saleordemoproduct_paints_03-thumbnail-255x255.png',
+                },
+            },
+        },
+
+        {
+            node: {
+                category: {
+                    id: 'Q2F0ZWdvcnk6MjI=',
+                    name: 'Categpry 1',
+                },
+                id: 'UHJvZHVjdDo2Mw==',
+                name: 'Red paint',
+                pricing : {
+                    onSale: false,
+                    priceRange: {
+                        start: {gross: {amount: 16, currency: "USD"}},
+                        stop: {gross: {amount: 16, currency: "USD"}},
+                    },
+                },
+                thumbnail : {
+                    url: 'http://localhost:8000/media/__sized__/products/saleordemoproduct_paints_03-thumbnail-255x255.png',
+                },
+            },
+        },
+
+        {
+            node: {
+                category: {
+                    id: 'Q2F0ZWdvcnk6MjI=',
+                    name: 'Categpry 1',
+                },
+                id: 'UHJvZHVjdDo2Mw==',
+                name: 'Red paint',
+                pricing : {
+                    onSale: false,
+                    priceRange: {
+                        start: {gross: {amount: 16, currency: "USD"}},
+                        stop: {gross: {amount: 16, currency: "USD"}},
+                    },
+                },
+                thumbnail : {
+                    url: 'http://localhost:8000/media/__sized__/products/saleordemoproduct_paints_03-thumbnail-255x255.png',
+                },
+            },
+        },
+
+    ],
+};
+
 const View: React.FC = () => (
   <div className="home-page">
     <TypedHomePageQuery alwaysRender displayLoader={false} errorPolicy="all">
@@ -25,6 +115,7 @@ const View: React.FC = () => (
                 data.shop.homepageCollection.backgroundImage
               }
               categories={data.categories}
+              products={fakeProducts}
               shop={data.shop}
             />
           </MetaWrapper>
