@@ -2,6 +2,7 @@
 
 .product-list-item {
   text-align: center;
+  height: 27rem;
 
   &__title {
     text-transform: $product-item-title-text-transform;
@@ -14,7 +15,7 @@
     text-decoration: line-through;
     color: $gray;
     font-size: $small-font-size;
-    font-weight: regular;
+    font-weight: normal;
   }
 
   &__category {

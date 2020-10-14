@@ -1,6 +1,9 @@
 @import "../../../globalStyles/scss/variables.scss";
 
 .home-page {
+  background-color: $white;
+  padding-top: 6.75rem;
+
   &__hero {
     background-color: $blue-overlay;
     background-blend-mode: multiply;
@@ -51,7 +54,6 @@
         text-transform: uppercase;
         color: $blue;
         font-size: $h1-font-size;
-        font-weight: 900;
 
         @media (max-width: $small-screen) {
           font-size: $h4-font-size;

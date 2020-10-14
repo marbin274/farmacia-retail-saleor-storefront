@@ -9,9 +9,9 @@ const textProps = css`
 
 export const Wrapper = styled.div`
   background: ${props => props.theme.colors.light};
-  padding: 2.5rem;
+  padding: 2.0rem;
   text-align: center;
-  max-height: 30rem;
+  height: 20rem;
   transition: 0.3s;
 
   :hover {
