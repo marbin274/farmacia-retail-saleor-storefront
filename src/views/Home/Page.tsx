@@ -19,9 +19,9 @@ import { structuredData } from "../../core/SEO/Homepage/structuredData";
 
 interface PageProps {
     loading: boolean;
-    categories: ProductsList_categories;
+    // categories: ProductsList_categories;
     products: object; // @todo change to proper type imported from ./gqlTypes
-    backgroundImage: ProductsList_shop_homepageCollection_backgroundImage;
+    // backgroundImage: ProductsList_shop_homepageCollection_backgroundImage;
     shop: ProductsList_shop;
 }
 
@@ -36,7 +36,7 @@ const Page: React.FC<PageProps> = ({
   };
 
   return (
-    <div className="container">
+    <div className="">
       <script className="structured-data-list" type="application/ld+json">
         {structuredData(shop)}
       </script>

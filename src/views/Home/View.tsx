@@ -4,102 +4,35 @@ import * as React from "react";
 
 import { MetaWrapper } from "../../components";
 import Page from "./Page";
-import { TypedHomePageQuery } from "./queries";
 
-const fakeProducts = {
-    edges:
-    [
-        {
-            node: {
-                category: {
-                    id: 'Q2F0ZWdvcnk6MjI=',
-                    name: 'Categpry 1',
-                },
-                id: 'UHJvZHVjdDo2Mw==',
-                name: 'Red paint',
-                pricing : {
-                    onSale: false,
-                    priceRange: {
-                        start: {gross: {amount: 16, currency: "USD"}},
-                        stop: {gross: {amount: 16, currency: "USD"}},
-                    },
-                },
-                thumbnail : {
-                    url: 'http://localhost:8000/media/__sized__/products/saleordemoproduct_paints_03-thumbnail-255x255.png',
-                },
-            },
-        },
+// import { TypedHomePageQuery } from "./queries";
+import {TypedCategoryProductsQuery} from "@temp/views/Category/queries";
 
-        {
-            node: {
-                category: {
-                    id: 'Q2F0ZWdvcnk6MjI=',
-                    name: 'Categpry 1',
-                },
-                id: 'UHJvZHVjdDo2Mw==',
-                name: 'Red paint',
-                pricing : {
-                    onSale: false,
-                    priceRange: {
-                        start: {gross: {amount: 16, currency: "USD"}},
-                        stop: {gross: {amount: 16, currency: "USD"}},
-                    },
-                },
-                thumbnail : {
-                    url: 'http://localhost:8000/media/__sized__/products/saleordemoproduct_paints_03-thumbnail-255x255.png',
-                },
-            },
-        },
+const emptyResult = { edges: []};
 
-        {
-            node: {
-                category: {
-                    id: 'Q2F0ZWdvcnk6MjI=',
-                    name: 'Categpry 1',
-                },
-                id: 'UHJvZHVjdDo2Mw==',
-                name: 'Red paint',
-                pricing : {
-                    onSale: false,
-                    priceRange: {
-                        start: {gross: {amount: 16, currency: "USD"}},
-                        stop: {gross: {amount: 16, currency: "USD"}},
-                    },
-                },
-                thumbnail : {
-                    url: 'http://localhost:8000/media/__sized__/products/saleordemoproduct_paints_03-thumbnail-255x255.png',
-                },
-            },
-        },
+const categoryVariables = {
+    id: "Q2F0ZWdvcnk6MjA=", // paints
+    pageSize: 20,
+    sortBy: {
+        direction: "ASC",
+        field: "PRICE",
+    },
+}
 
-        {
-            node: {
-                category: {
-                    id: 'Q2F0ZWdvcnk6MjI=',
-                    name: 'Categpry 1',
-                },
-                id: 'UHJvZHVjdDo2Mw==',
-                name: 'Red paint',
-                pricing : {
-                    onSale: false,
-                    priceRange: {
-                        start: {gross: {amount: 16, currency: "USD"}},
-                        stop: {gross: {amount: 16, currency: "USD"}},
-                    },
-                },
-                thumbnail : {
-                    url: 'http://localhost:8000/media/__sized__/products/saleordemoproduct_paints_03-thumbnail-255x255.png',
-                },
-            },
-        },
-
-    ],
-};
+const isEdgeNotEmpty = (prop) => prop && prop.edges && prop.edges.length > 0;
 
 const View: React.FC = () => (
-  <div className="home-page">
-    <TypedHomePageQuery alwaysRender displayLoader={false} errorPolicy="all">
+  <div className="home-page container">
+    {/*<TypedHomePageQuery alwaysRender displayLoader={false} errorPolicy="all">*/}
+
+      <TypedCategoryProductsQuery
+          variables={categoryVariables}
+          errorPolicy="all"
+          loaderFull
+      >
       {({ data, loading }) => {
+        console.log('[HOME] data.category, data.products:', data.category, data.products);
+
         return (
           <MetaWrapper
             meta={{
@@ -107,21 +40,25 @@ const View: React.FC = () => (
               title: data.shop ? data.shop.name : "",
             }}
           >
-            <Page
-              loading={loading}
-              backgroundImage={
-                data.shop &&
-                data.shop.homepageCollection &&
-                data.shop.homepageCollection.backgroundImage
-              }
-              categories={data.categories}
-              products={fakeProducts}
-              shop={data.shop}
-            />
+              <div style={{display: 'grid', gridTemplateColumns: '1fr 4fr', columnGap: '3rem', marginTop: '6.75rem'}}>
+                  <div className="left-banner" style={{backgroundColor: '#eee'}}>
+                  </div>
+                  <div className="product-list">
+                      {data && data.category && data.category && data.products && (
+                          <Page
+                              loading={loading}
+                              backgroundImage= {null}
+                              products={data.products}
+                              shop={ emptyResult }
+                          />
+                      )}
+                  </div>
+              </div>
           </MetaWrapper>
         );
       }}
-    </TypedHomePageQuery>
+    </TypedCategoryProductsQuery>
+    {/*</TypedHomePageQuery>*/}
   </div>
 );
 
