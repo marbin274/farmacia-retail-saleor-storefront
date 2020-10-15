@@ -1,27 +1,19 @@
 import "./scss/index.scss";
 
 import * as React from "react";
-// import classNames from "classnames";
-// import { Link } from "react-router-dom";
 
-// import { Button, Loader, ProductsFeatured } from "../../components";
 import { ProductList } from "@components/organisms";
-
-// import { generateCategoryUrl } from "../../core/utils";
+import {Category_products} from "@temp/views/Category/gqlTypes/Category";
 
 import {
-  ProductsList_categories,
   ProductsList_shop,
-  ProductsList_shop_homepageCollection_backgroundImage,
 } from "./gqlTypes/ProductsList";
 
 import { structuredData } from "../../core/SEO/Homepage/structuredData";
 
 interface PageProps {
     loading: boolean;
-    // categories: ProductsList_categories;
-    products: object; // @todo change to proper type imported from ./gqlTypes
-    // backgroundImage: ProductsList_shop_homepageCollection_backgroundImage;
+    products: Category_products;
     shop: ProductsList_shop;
 }
 

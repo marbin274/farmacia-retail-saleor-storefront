@@ -5,33 +5,30 @@ import * as React from "react";
 import { MetaWrapper } from "../../components";
 import Page from "./Page";
 
-// import { TypedHomePageQuery } from "./queries";
-import {TypedCategoryProductsQuery} from "@temp/views/Category/queries";
+import {OrderDirection} from "../../../gqlTypes/globalTypes";
+import { TypedHomePageQuery } from "./queries";
 
-const emptyResult = { edges: []};
-
-const categoryVariables = {
-    id: "Q2F0ZWdvcnk6MjA=", // paints
+const homePageVariables = {
+    categoryId: "Q2F0ZWdvcnk6MjA=", // paints category
     pageSize: 20,
     sortBy: {
-        direction: "ASC",
+        direction: OrderDirection.ASC,
         field: "PRICE",
     },
 }
 
-const isEdgeNotEmpty = (prop) => prop && prop.edges && prop.edges.length > 0;
+// const isEdgeNotEmpty = (prop) => prop && prop.edges && prop.edges.length > 0;
 
 const View: React.FC = () => (
   <div className="home-page container">
-    {/*<TypedHomePageQuery alwaysRender displayLoader={false} errorPolicy="all">*/}
-
-      <TypedCategoryProductsQuery
-          variables={categoryVariables}
+      <TypedHomePageQuery
+          alwaysRender
           errorPolicy="all"
           loaderFull
+          variables={homePageVariables}
       >
       {({ data, loading }) => {
-        console.log('[HOME] data.category, data.products:', data.category, data.products);
+        console.log('[HOME] data', data);
 
         return (
           <MetaWrapper
@@ -47,9 +44,8 @@ const View: React.FC = () => (
                       {data && data.category && data.category && data.products && (
                           <Page
                               loading={loading}
-                              backgroundImage= {null}
                               products={data.products}
-                              shop={ emptyResult }
+                              shop={ data.shop }
                           />
                       )}
                   </div>
@@ -57,8 +53,7 @@ const View: React.FC = () => (
           </MetaWrapper>
         );
       }}
-    </TypedCategoryProductsQuery>
-    {/*</TypedHomePageQuery>*/}
+    </TypedHomePageQuery>
   </div>
 );
 

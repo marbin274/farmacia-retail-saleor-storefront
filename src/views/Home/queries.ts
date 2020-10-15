@@ -1,10 +1,19 @@
 import gql from "graphql-tag";
 
+import {basicProductFragment, productPricingFragment} from "@temp/views/Product/queries";
 import { TypedQuery } from "../../core/queries";
-import { ProductsList } from "./gqlTypes/ProductsList";
+import { HomePage, HomePageVariables } from "./gqlTypes/HomePage";
 
+
+// get shop, category by id, products from that category
 export const homePageQuery = gql`
-  query ProductsList {
+  ${basicProductFragment}
+  ${productPricingFragment}
+  query HomePage(
+    $categoryId: ID!
+    $pageSize: Int
+    $sortBy: ProductOrder
+  ) {
     shop {
       description
       name
@@ -16,18 +25,39 @@ export const homePageQuery = gql`
         name
       }
     }
-    categories(level: 0, first: 4) {
+
+    products(
+      first: $pageSize
+      sortBy: $sortBy
+      filter: {
+        categories: [$categoryId]
+      }
+    ) {
+      totalCount
       edges {
         node {
-          id
-          name
-          backgroundImage {
-            url
+          ...BasicProductFields
+          ...ProductPricingField
+          category {
+            id
+            name
           }
         }
       }
+      pageInfo {
+        endCursor
+        hasNextPage
+        hasPreviousPage
+        startCursor
+      }
+    }
+    
+    category(id: $categoryId) {
+      id
+      name
     }
   }
 `;
 
-export const TypedHomePageQuery = TypedQuery<ProductsList, {}>(homePageQuery);
+
+export const TypedHomePageQuery = TypedQuery<HomePage, HomePageVariables>(homePageQuery);
