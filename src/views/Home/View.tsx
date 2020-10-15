@@ -5,11 +5,12 @@ import * as React from "react";
 import { MetaWrapper } from "../../components";
 import Page from "./Page";
 
+import {HOME_PAGE_CATEGORY_ID} from "@temp/core/config";
 import {OrderDirection} from "../../../gqlTypes/globalTypes";
 import { TypedHomePageQuery } from "./queries";
 
 const homePageVariables = {
-    categoryId: "Q2F0ZWdvcnk6MjA=", // paints category
+    categoryId: HOME_PAGE_CATEGORY_ID,
     pageSize: 20,
     sortBy: {
         direction: OrderDirection.ASC,
@@ -28,7 +29,6 @@ const View: React.FC = () => (
           variables={homePageVariables}
       >
       {({ data, loading }) => {
-        console.log('[HOME] data', data);
 
         return (
           <MetaWrapper
@@ -37,8 +37,8 @@ const View: React.FC = () => (
               title: data.shop ? data.shop.name : "",
             }}
           >
-              <div style={{display: 'grid', gridTemplateColumns: '1fr 4fr', columnGap: '3rem', marginTop: '6.75rem'}}>
-                  <div className="left-banner" style={{backgroundColor: '#eee'}}>
+              <div className="home-view">
+                  <div className="left-banner">
                   </div>
                   <div className="product-list">
                       {data && data.category && data.category && data.products && (

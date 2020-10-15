@@ -3,6 +3,7 @@ import { generatePageUrl } from "./utils";
 export const BASE_URL = "/";
 export const PRODUCTS_PER_PAGE = 6;
 export const SUPPORT_EMAIL = "support@example.com";
+export const HOME_PAGE_CATEGORY_ID = "Q2F0ZWdvcnk6MjA="; // paint category
 export const PROVIDERS = {
   BRAINTREE: {
     label: "Braintree",
