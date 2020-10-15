@@ -37,7 +37,8 @@ const View: React.FC = () => (
             }}
           >
               <div className="home-view">
-                  <div className="left-banner">
+                  <div className="home-banner">
+                      &nbsp;
                   </div>
                   <div className="product-list">
                       {data && data.category && data.category && data.products && (

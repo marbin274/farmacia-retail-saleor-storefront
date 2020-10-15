@@ -8,7 +8,7 @@ const textProps = css`
 `;
 
 export const Wrapper = styled.div`
-  background: ${props => props.theme.colors.light};
+  background: inherit;
   padding: 2.0rem;
   text-align: center;
   height: 20rem;

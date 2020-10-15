@@ -6,13 +6,36 @@
 
   .home-view {
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 1fr;
+    grid-template-rows: 4rem 1fr;
     column-gap: 3rem;
-    margin-top: 6.75rem;
     padding-bottom: 3rem;
+    margin-top: 1rem;
+    row-gap: 1rem;
+
+    @media (min-width: $small-screen) {
+      grid-template-columns: 1fr 4fr;
+      grid-template-rows: 1fr;
+      margin-top: 6.75rem;
+    }
   }
 
-  .left-banner {
+  .home-banner {
     background-color: #f0f0f0;
+    grid-column: 1;
+    grid-row: 1;
+
+    @media (min-width: $small-screen) {
+      grid-column: 1;
+    }
+  }
+
+  .product-list {
+    grid-column: 1;
+    grid-row: 2;
+    @media (min-width: $small-screen) {
+      grid-column: 2;
+      grid-row: 1;
+    }
   }
 }
