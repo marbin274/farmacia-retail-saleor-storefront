@@ -21,5 +21,13 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm ci
-    - run: npm test
+    - name: Install dependencies
+      run: npm install
+    - name: Run typescript checker
+      run: npx tsc --noEmit & npx tsc --noEmit -p src/@sdk & npx tsc --noEmit -p src/@next
+    - name: Run tslint
+      run: npm run tslint
+    - name: Build application
+      run: npm run build
+    - name: Run tests
+      run: npm run test
