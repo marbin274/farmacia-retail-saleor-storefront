@@ -72,27 +72,27 @@ exports[`Storyshots @components/organisms/ProductList default 1`] = `
   background-color: rgba(6,132,123,0.25);
 }
 
-.c3 {
+.c4 {
   text-transform: uppercase;
   font-weight: normal;
   font-size: 1rem;
   margin: 0 0 0.5rem 0;
-  text-align: left;
-}
-
-.c4 {
-  font-size: 1rem;
-  margin: 0 0 0.5rem 0;
-  text-align: left;
+  text-align: center;
 }
 
 .c5 {
+  font-size: 1rem;
+  margin: 0 0 0.5rem 0;
+  text-align: center;
+}
+
+.c3 {
   width: auto;
   height: auto;
   max-width: 100%;
 }
 
-.c5 > img {
+.c3 > img {
   width: auto;
   height: auto;
   max-width: 100%;
@@ -150,20 +150,8 @@ exports[`Storyshots @components/organisms/ProductList default 1`] = `
         className="c2"
         data-cy="product-tile"
       >
-        <h4
-          className="c3"
-        >
-          Apple Juice
-        </h4>
-        <p
-          className="c4"
-        >
-          <span>
-            
-          </span>
-        </p>
         <div
-          className="c5"
+          className="c3"
         >
           <img
             alt=""
@@ -172,6 +160,18 @@ exports[`Storyshots @components/organisms/ProductList default 1`] = `
             srcSet="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png 1x, http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-510x510.png 2x"
           />
         </div>
+        <h4
+          className="c4"
+        >
+          Apple Juice
+        </h4>
+        <p
+          className="c5"
+        >
+          <span>
+            
+          </span>
+        </p>
       </div>
     </a>
     <a
@@ -182,20 +182,8 @@ exports[`Storyshots @components/organisms/ProductList default 1`] = `
         className="c2"
         data-cy="product-tile"
       >
-        <h4
-          className="c3"
-        >
-          Apple Juice
-        </h4>
-        <p
-          className="c4"
-        >
-          <span>
-            
-          </span>
-        </p>
         <div
-          className="c5"
+          className="c3"
         >
           <img
             alt=""
@@ -204,6 +192,18 @@ exports[`Storyshots @components/organisms/ProductList default 1`] = `
             srcSet="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png 1x, http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-510x510.png 2x"
           />
         </div>
+        <h4
+          className="c4"
+        >
+          Apple Juice
+        </h4>
+        <p
+          className="c5"
+        >
+          <span>
+            
+          </span>
+        </p>
       </div>
     </a>
     <a
@@ -214,20 +214,8 @@ exports[`Storyshots @components/organisms/ProductList default 1`] = `
         className="c2"
         data-cy="product-tile"
       >
-        <h4
-          className="c3"
-        >
-          Apple Juice
-        </h4>
-        <p
-          className="c4"
-        >
-          <span>
-            
-          </span>
-        </p>
         <div
-          className="c5"
+          className="c3"
         >
           <img
             alt=""
@@ -236,6 +224,18 @@ exports[`Storyshots @components/organisms/ProductList default 1`] = `
             srcSet="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png 1x, http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-510x510.png 2x"
           />
         </div>
+        <h4
+          className="c4"
+        >
+          Apple Juice
+        </h4>
+        <p
+          className="c5"
+        >
+          <span>
+            
+          </span>
+        </p>
       </div>
     </a>
     <a
@@ -246,20 +246,8 @@ exports[`Storyshots @components/organisms/ProductList default 1`] = `
         className="c2"
         data-cy="product-tile"
       >
-        <h4
-          className="c3"
-        >
-          Apple Juice
-        </h4>
-        <p
-          className="c4"
-        >
-          <span>
-            
-          </span>
-        </p>
         <div
-          className="c5"
+          className="c3"
         >
           <img
             alt=""
@@ -268,6 +256,18 @@ exports[`Storyshots @components/organisms/ProductList default 1`] = `
             srcSet="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png 1x, http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-510x510.png 2x"
           />
         </div>
+        <h4
+          className="c4"
+        >
+          Apple Juice
+        </h4>
+        <p
+          className="c5"
+        >
+          <span>
+            
+          </span>
+        </p>
       </div>
     </a>
     <a
@@ -278,20 +278,8 @@ exports[`Storyshots @components/organisms/ProductList default 1`] = `
         className="c2"
         data-cy="product-tile"
       >
-        <h4
-          className="c3"
-        >
-          Apple Juice
-        </h4>
-        <p
-          className="c4"
-        >
-          <span>
-            
-          </span>
-        </p>
         <div
-          className="c5"
+          className="c3"
         >
           <img
             alt=""
@@ -300,6 +288,18 @@ exports[`Storyshots @components/organisms/ProductList default 1`] = `
             srcSet="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png 1x, http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-510x510.png 2x"
           />
         </div>
+        <h4
+          className="c4"
+        >
+          Apple Juice
+        </h4>
+        <p
+          className="c5"
+        >
+          <span>
+            
+          </span>
+        </p>
       </div>
     </a>
     <a
@@ -310,20 +310,8 @@ exports[`Storyshots @components/organisms/ProductList default 1`] = `
         className="c2"
         data-cy="product-tile"
       >
-        <h4
-          className="c3"
-        >
-          Apple Juice
-        </h4>
-        <p
-          className="c4"
-        >
-          <span>
-            
-          </span>
-        </p>
         <div
-          className="c5"
+          className="c3"
         >
           <img
             alt=""
@@ -332,6 +320,18 @@ exports[`Storyshots @components/organisms/ProductList default 1`] = `
             srcSet="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png 1x, http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-510x510.png 2x"
           />
         </div>
+        <h4
+          className="c4"
+        >
+          Apple Juice
+        </h4>
+        <p
+          className="c5"
+        >
+          <span>
+            
+          </span>
+        </p>
       </div>
     </a>
   </div>

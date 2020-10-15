@@ -4,7 +4,7 @@ import { css } from "styled-components";
 const textProps = css`
   font-size: ${props => props.theme.typography.baseFontSize};
   margin: 0 0 0.5rem 0;
-  text-align: left;
+  text-align: center;
 `;
 
 export const Wrapper = styled.div`
