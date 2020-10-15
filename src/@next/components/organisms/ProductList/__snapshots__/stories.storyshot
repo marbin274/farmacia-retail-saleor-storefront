@@ -60,7 +60,7 @@ exports[`Storyshots @components/organisms/ProductList default 1`] = `
 }
 
 .c2 {
-  background: #f1f5f5;
+  background: inherit;
   padding: 2.0rem;
   text-align: center;
   height: 20rem;
@@ -101,7 +101,7 @@ exports[`Storyshots @components/organisms/ProductList default 1`] = `
 .c1 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 2rem;
+  grid-gap: 1rem;
 }
 
 .c6 {
@@ -131,7 +131,7 @@ exports[`Storyshots @components/organisms/ProductList default 1`] = `
 
 @media (max-width:540px) {
   .c1 {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-gap: 1rem;
   }
 }

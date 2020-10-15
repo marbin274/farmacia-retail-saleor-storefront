@@ -18,7 +18,7 @@ exports[`Storyshots @components/molecules/ProductTile default 1`] = `
 }
 
 .c1 {
-  background: #f1f5f5;
+  background: inherit;
   padding: 2.0rem;
   text-align: center;
   height: 20rem;
