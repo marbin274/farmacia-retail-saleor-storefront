@@ -4,8 +4,8 @@ import * as React from "react";
 import {
   NavLink,
   OverlayContextInterface,
-  OverlayTheme,
-  OverlayType,
+  // OverlayTheme,
+  // OverlayType,
 } from "..";
 import { MainMenu_shop_navigation_main_items } from "./gqlTypes/MainMenu";
 import NavItem from "./NavItem";
@@ -24,17 +24,19 @@ class NavDropdown extends React.PureComponent<
   }
 
   showOverlayHandler = () => {
-    if (this.hasSubNavigation) {
-      this.setState({ active: true });
-      this.props.overlay.show(OverlayType.mainMenuNav, OverlayTheme.modal);
-    }
+    // TODO: CHECK BEHAVIOR WITH DESIGNER
+    // if (this.hasSubNavigation) {
+    //   this.setState({ active: true });
+    //   this.props.overlay.show(OverlayType.mainMenuNav, OverlayTheme.modal);
+    // }
   };
 
   hideOverlayHandler = () => {
-    if (this.state.active) {
-      this.props.overlay.hide();
-      this.setState({ active: false });
-    }
+    // TODO: CHECK BEHAVIOR WITH DESIGNER
+    // if (this.state.active) {
+    //   this.props.overlay.hide();
+    //   this.setState({ active: false });
+    // }
   };
 
   render() {

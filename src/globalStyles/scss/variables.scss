@@ -1,7 +1,7 @@
 // colors
-$base-font-color: #323232;
+$base-font-color: #1D0943;
 $black: #000;
-$blue-dark: #190c4e;
+$blue-dark: #1D0943;
 $blue: #21125e;
 $gray-dark: #7d7d7d;
 $gray-light: #f6f6f6;
@@ -10,14 +10,23 @@ $green: #3ed256;
 $rose: #fe6e76;
 $turquoise-dark: #55c4b3;
 $turquoise-light: #f1f5f5;
-$turquoise: #51e9d2;
+$turquoise: #00B0CA;
 $white: #fff;
 $blue-overlay: rgba($blue, 0.15);
 $autofillColor: rgb(250, 255, 189);
 $autofillColorSelected: rgb(232, 240, 254);
+$darkGreen: #06847b;
+
+$auna-complementary1: #E6F6F9;
+$auna-interactive: #00B0CA;
+$auna-grey-100: #9194A7;
+
+//extended colors for prototype
+$auna-turquoise-light: #00AAC9;
+$auna-violet: #5E0571;
 
 // typography
-$base-font-family: "Inter", sans-serif;
+$base-font-family: "Poppins", sans-serif;
 $base-font-size: 1rem; // 16px
 $small-font-size: 0.875rem; // 14px
 $base-line-height: 1.25rem; // 20px
