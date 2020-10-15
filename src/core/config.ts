@@ -1,4 +1,4 @@
-import { OrderDirection } from "../../gqlTypes/globalTypes";
+import { OrderDirection, ProductOrderField } from "@sdk/gqlTypes/globalTypes";
 import { generatePageUrl } from "./utils";
 
 export const BASE_URL = "/";
@@ -8,7 +8,7 @@ export const HOME_PAGE_CONF = {
   CATEGORY_ID: "Q2F0ZWdvcnk6MjA=", // paint category
   PAGE_SIZE: 20,
   SORT_DIR: OrderDirection.ASC,
-  SORT_FIELD: "PRICE",
+  SORT_FIELD: ProductOrderField.PRICE,
 };
 export const PROVIDERS = {
   BRAINTREE: {

@@ -29,5 +29,7 @@ jobs:
       run: npm run tslint
     - name: Build application
       run: npm run build
+      env:
+        API_URI: http://localhost:8000/graphql/
     - name: Run tests
       run: npm run test

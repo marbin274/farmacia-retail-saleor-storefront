@@ -6,9 +6,10 @@ import { MetaWrapper } from "../../components";
 import Page from "./Page";
 
 import { HOME_PAGE_CONF } from "@temp/core/config";
+import { HomePageVariables } from "@temp/views/Home/gqlTypes/HomePage";
 import { TypedHomePageQuery } from "./queries";
 
-const homePageVariables = {
+const homePageVariables:HomePageVariables = {
     categoryId: HOME_PAGE_CONF.CATEGORY_ID,
     pageSize: HOME_PAGE_CONF.PAGE_SIZE,
     sortBy: {
@@ -16,8 +17,6 @@ const homePageVariables = {
         field: HOME_PAGE_CONF.SORT_FIELD,
     },
 }
-
-// const isEdgeNotEmpty = (prop) => prop && prop.edges && prop.edges.length > 0;
 
 const View: React.FC = () => (
   <div className="home-page container">

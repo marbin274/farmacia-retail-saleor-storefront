@@ -3,18 +3,14 @@ import "./scss/index.scss";
 import * as React from "react";
 
 import { ProductList } from "@components/organisms";
-import {Category_products} from "@temp/views/Category/gqlTypes/Category";
-
-import {
-  ProductsList_shop,
-} from "./gqlTypes/ProductsList";
 
 import { structuredData } from "../../core/SEO/Homepage/structuredData";
+import { HomePage_products, HomePage_shop } from "./gqlTypes/HomePage";
 
 interface PageProps {
     loading: boolean;
-    products: Category_products;
-    shop: ProductsList_shop;
+    products: HomePage_products;
+    shop: HomePage_shop;
 }
 
 const Page: React.FC<PageProps> = ({
