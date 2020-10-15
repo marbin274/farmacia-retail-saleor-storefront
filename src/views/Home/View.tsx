@@ -5,16 +5,15 @@ import * as React from "react";
 import { MetaWrapper } from "../../components";
 import Page from "./Page";
 
-import {HOME_PAGE_CATEGORY_ID} from "@temp/core/config";
-import {OrderDirection} from "../../../gqlTypes/globalTypes";
+import { HOME_PAGE_CONF } from "@temp/core/config";
 import { TypedHomePageQuery } from "./queries";
 
 const homePageVariables = {
-    categoryId: HOME_PAGE_CATEGORY_ID,
-    pageSize: 20,
+    categoryId: HOME_PAGE_CONF.CATEGORY_ID,
+    pageSize: HOME_PAGE_CONF.PAGE_SIZE,
     sortBy: {
-        direction: OrderDirection.ASC,
-        field: "PRICE",
+        direction: HOME_PAGE_CONF.SORT_DIR,
+        field: HOME_PAGE_CONF.SORT_FIELD,
     },
 }
 
