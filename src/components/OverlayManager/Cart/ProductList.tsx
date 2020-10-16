@@ -53,7 +53,7 @@ const ProductList: React.FC<{
                 <ReactSVG
                   path={addImg}
                   className="cart__list__item__quantity__icon"
-                  onClick={() => add(line.variant.id, Number(line.quantity) + 1)}
+                  onClick={() => add(line.variant.id, 1)}
                 />
               </div>
               <TaxedMoney
