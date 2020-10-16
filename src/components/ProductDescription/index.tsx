@@ -3,7 +3,9 @@ import "./scss/index.scss";
 import isEqual from "lodash/isEqual";
 import * as React from "react";
 
+import { RichTextContent } from "@components/atoms";
 import { ProductVariantPicker } from "@components/organisms";
+
 import {
   ProductDetails_product_pricing,
   ProductDetails_product_variants,
@@ -15,9 +17,11 @@ import { ICheckoutModelLine } from "@sdk/repository";
 import { TaxedMoney } from "../../@next/components/containers";
 import AddToCart from "./AddToCart";
 import { QuantityTextField } from "./QuantityTextField";
+// import { description } from "@temp/@next/components/molecules/ProductDescription/fixtures";
 
 const LOW_STOCK_QUANTITY = 5;
 interface ProductDescriptionProps {
+  descriptionJson: string;
   productId: string;
   productVariants: ProductDetails_product_variants[];
   name: string;
@@ -28,6 +32,7 @@ interface ProductDescriptionProps {
 }
 
 interface ProductDescriptionState {
+  descriptionJson: string;
   quantity: number;
   variant: string;
   variantStock: number;
@@ -46,6 +51,7 @@ class ProductDescription extends React.Component<
     super(props);
 
     this.state = {
+      descriptionJson: "",
       quantity: 1,
       variant: "",
       variantPricing: null,
@@ -140,7 +146,7 @@ class ProductDescription extends React.Component<
   );
 
   render() {
-    const { name } = this.props;
+    const { name, descriptionJson } = this.props;
     const { variant, variantStock, quantity } = this.state;
 
     const availableQuantity = this.getAvailableQuantity();
@@ -162,6 +168,7 @@ class ProductDescription extends React.Component<
         )}
         {isLowStock && this.renderErrorMessage("Low stock")}
         {isNoItemsAvailable && this.renderErrorMessage("No items available")}
+        <RichTextContent descriptionJson={descriptionJson} />
         <div className="product-description__variant-picker">
           <ProductVariantPicker
             productVariants={this.props.productVariants}
@@ -169,19 +176,21 @@ class ProductDescription extends React.Component<
             selectSidebar={true}
           />
         </div>
-        <div className="product-description__quantity-input">
-          <QuantityTextField
-            quantity={quantity}
-            maxQuantity={availableQuantity}
-            disabled={isOutOfStock || isNoItemsAvailable}
-            onQuantityChange={this.handleQuantityChange}
-            hideErrors={!variant || isOutOfStock || isNoItemsAvailable}
-          />
-        </div>
-        <AddToCart
-          onSubmit={this.handleSubmit}
-          disabled={!this.canAddToCart()}
-        />
+        <div>
+          <div className="product-description__quantity-input">
+            <QuantityTextField
+              quantity={quantity}
+              maxQuantity={availableQuantity}
+              disabled={isOutOfStock || isNoItemsAvailable}
+              onQuantityChange={this.handleQuantityChange}
+              hideErrors={!variant || isOutOfStock || isNoItemsAvailable}
+            />
+          </div>
+          <AddToCart
+              onSubmit={this.handleSubmit}
+              disabled={!this.canAddToCart()}
+            />
+          </div>
       </div>
     );
   }

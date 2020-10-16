@@ -6,14 +6,18 @@ import Media from "react-media";
 
 import { CachedImage, Thumbnail } from "@components/molecules";
 
-import { Breadcrumbs, ProductDescription } from "../../components";
+// TODO: Add as soon as we need to add the breadcrumb
+// import { Breadcrumbs, ProductDescription } from "../../components";
+import { ProductDescription } from "../../components";
 import { generateCategoryUrl, generateProductUrl } from "../../core/utils";
 import GalleryCarousel from "./GalleryCarousel";
 import { ProductDetails_product } from "./gqlTypes/ProductDetails";
-import OtherProducts from "./Other";
+// TODO: Add as soon as we need to add related products
+// import OtherProducts from "./Other";
 
 import { ICheckoutModelLine } from "@sdk/repository";
-import { ProductDescription as NewProductDescription } from "../../@next/components/molecules";
+// TODO: Add as soon as we need to add more product information below the  
+// import { ProductDescription as NewProductDescription } from "../../@next/components/molecules";
 import { ProductGallery } from "../../@next/components/organisms/";
 
 import { structuredData } from "../../core/SEO/Product/structuredData";
@@ -90,6 +94,7 @@ class Page extends React.PureComponent<
 
     const productDescription = (
       <ProductDescription
+        descriptionJson={product.descriptionJson}
         items={this.props.items}
         productId={product.id}
         name={product.name}
@@ -102,7 +107,7 @@ class Page extends React.PureComponent<
     return (
       <div className="product-page">
         <div className="container">
-          <Breadcrumbs breadcrumbs={this.populateBreadcrumbs(product)} />
+          {/* <Breadcrumbs breadcrumbs={this.populateBreadcrumbs(product)} /> */}
         </div>
         <div className="container">
           <div className="product-page__product">
@@ -118,7 +123,7 @@ class Page extends React.PureComponent<
                   <>
                     <GalleryCarousel images={this.getImages()} />
                     <div className="product-page__product__info">
-                      {productDescription}
+                    {productDescription}
                     </div>
                   </>
                 ) : (
@@ -144,15 +149,15 @@ class Page extends React.PureComponent<
             </Media>
           </div>
         </div>
-        <div className="container">
+        {/* <div className="container">
           <div className="product-page__product__description">
             <NewProductDescription
               descriptionJson={product.descriptionJson}
               attributes={product.attributes}
             />
           </div>
-        </div>
-        <OtherProducts products={product.category.products.edges} />
+        </div> */}
+        {/* <OtherProducts products={product.category.products.edges} /> */}
       </div>
     );
   }
