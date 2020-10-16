@@ -44,7 +44,7 @@ export const QuantityTextField: React.FC<QuantityTextFieldProps> = ({
   return (
     <TextField
       type="number"
-      label="Quantity"
+      label=""
       min="1"
       value={quantity.toString()}
       disabled={disabled}
