@@ -2,7 +2,7 @@
 @import "../../../globalStyles/scss/animations";
 
 .overlay {
-  background-color: rgba(199, 207, 207, 0.8);
+  background-color: rgba($auna-grey-80, 0.8);
   height: 100%;
   min-height: 100vh;
   position: fixed;
@@ -45,51 +45,32 @@
 
   &__header {
     align-items: center;
-    border-bottom: 1px solid $gray-light;
     display: flex;
     flex: 1;
     font-weight: $bold-font-weight;
-    height: 3.6rem;
     justify-content: space-between;
-    text-transform: uppercase;
+    color: $white;
+    background-color: $auna-interactive;
 
     &-text {
-      margin: 0 $spacer;
+      display: flex;
+      flex-direction: column;
+      margin: 20px 26px;
       text-align: center;
-
+      font-weight: 400;
+      font-size: 20px;
+      
       &-items {
+        font-weight: 300;
         color: $gray;
+        margin-left: 12px;
+        font-size: 14px;
       }
     }
 
     &__close-icon {
       cursor: pointer;
-      margin: 0 $spacer;
-
-      &:hover,
-      &:focus {
-        svg {
-          * {
-            fill: $turquoise;
-          }
-        }
-      }
-      div {
-        display: flex;
-      }
-    }
-
-    &__cart-icon {
-      margin: 0 $spacer;
-
-      div {
-        display: flex;
-        // svg {
-        //   * {
-        //     fill: $turquoise;
-        //   }
-        // }
-      }
+      // margin: 0 $spacer;
     }
   }
 }

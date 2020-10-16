@@ -19,7 +19,7 @@
 
     &__item {
       padding: $spacer 0;
-      border-bottom: 1px solid $gray-light;
+      border-bottom: 2px solid #e6f6f9;
       display: flex;
       align-content: stretch;
 
@@ -32,66 +32,77 @@
         width: 100%;
         padding: 0 $spacer;
 
-        p {
-          font-weight: $bold-font-weight;
-          text-transform: uppercase;
-          line-height: 1.5;
+        &--name {
+          color: #424141;
         }
 
-        &__variant {
-          display: flex;
-          justify-content: space-between;
-          margin-top: $spacer / 2;
+        &--variant {
+          color: #727171;
+          font-size: $small-font-size;
+        }
+      }
 
-          span {
-            color: $gray;
-            font-size: $small-font-size;
-          }
+      &__down {
+        display: flex;
+        margin-top: 8px;
+      }
+
+      &__quantity {
+        align-items: center;
+        border: 1px solid #b8bcd5;
+        border-radius: 26px;
+        display: flex;
+        justify-content: center;
+
+        &__text {
+          margin: 6px 18px;
+          color: $auna-grey-100;
         }
 
-        &__delete-icon {
-          background-color: $gray-light;
-          border-radius: $spacer;
-          width: 1.5rem;
-          height: 1.5rem;
-          text-align: center;
-          line-height: 1.5rem;
-          margin-top: $spacer / 2;
+        &__icon {
           cursor: pointer;
 
-          svg * {
-            transition: 0.3s;
+          &:first-child {
+            margin-left: 14px;
           }
 
-          &:hover {
-            svg * {
-              fill: $turquoise;
-            }
+          &:last-child {
+            margin-right: 14px;
           }
+        }
+
+        &__price {
+          flex: 1;
+          font-weight: 500;
+          text-align: end;
         }
       }
     }
   }
 
   &__footer {
-    background-color: $gray-light;
     padding: $spacer;
     position: absolute;
     bottom: 0;
-    width: 25rem;
+    width: 100%;
 
     &__price {
       display: flex;
-      padding-bottom: $spacer;
-      margin-bottom: $spacer;
-      text-transform: uppercase;
-      font-weight: $bold-font-weight;
+      font-weight: 400;
       justify-content: space-between;
-      border-bottom: 1px solid $gray;
+      padding: 0 12px;
+
+      &--sub {
+        border-top: 1px solid #e8e8e8;
+        color: #9b9b9b;
+        font-size: 14px;
+        font-weight: 300;
+        padding: 12px;
+      }
     }
 
     &__button {
-      margin: 1.3rem auto 1.3rem;
+      margin-top: 20px;
       text-align: center;
 
       button {
@@ -101,21 +112,34 @@
   }
 
   &__empty {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     padding: $spacer * 2 $spacer;
 
-    h4 {
-      font-weight: $bold-font-weight;
-      text-transform: uppercase;
+    &__title {
+      font-size: 24px;
+      font-weight: 400;
       margin-bottom: $spacer;
     }
+    
+    &__text {
+      font-weight: 300;
+      max-width: 281px;
+      text-align: center;
+    }
 
-    p {
-      color: $gray;
+    &__img {
+      background-color: #C4C4C4;
+      height: 154px;
+      margin: 128px 0 36px;
+      width: 154px;
     }
 
     &__action {
       text-align: center;
-      margin-top: $spacer;
+      margin-top: 44px;
     }
   }
 }

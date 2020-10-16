@@ -1,5 +1,5 @@
 // colors
-$base-font-color: #1D0943;
+$base-font-color: #424141;
 $black: #000;
 $blue-dark: #1D0943;
 $blue: #21125e;
@@ -22,6 +22,7 @@ $darkGreen: #06847b;
 $auna-complementary1: #E6F6F9;
 $auna-interactive: #00B0CA;
 $auna-grey-100: #9194A7;
+$auna-grey-80: #B8BCD5;
 
 //extended colors for prototype
 $auna-turquoise-light: #00AAC9;
@@ -36,6 +37,7 @@ $h1-font-size: 4rem; // 64px
 $h1-line-height: 1;
 $h3-font-size: 1.5rem; // 24px
 $h4-font-size: 1.125rem; // 18px
+$bold-font-normal: 400;
 $bold-font-weight: 600;
 $extra-bold-font-weight: 900;
 
@@ -56,7 +58,7 @@ $button-transition: 0.3s;
 $button-transform: skew(45deg);
 $button-content-transform: skew(-45deg);
 $button-text-transform: uppercase;
-$button-font-weight: $bold-font-weight;
+$button-font-weight: $bold-font-normal;
 
 // input
 $label-font-size: 0.75rem; // 12px

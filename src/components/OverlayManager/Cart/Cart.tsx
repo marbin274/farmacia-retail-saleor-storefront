@@ -1,7 +1,7 @@
 import "./scss/index.scss";
 
 import * as React from "react";
-import { generatePath, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ReactSVG from "react-svg";
 
 import { TaxedMoney } from "@components/containers";
@@ -15,12 +15,11 @@ import {
   Overlay,
   OverlayContextInterface,
 } from "../..";
-import { cartUrl, checkoutLoginUrl, checkoutUrl } from "../../../app/routes";
+import { checkoutLoginUrl, checkoutUrl } from "../../../app/routes";
 import Empty from "./Empty";
 import ProductList from "./ProductList";
 
-import cartImg from "../../../images/cart.svg";
-import closeImg from "../../../images/x.svg";
+import cartImg from "../../../images/cart-light.svg";
 
 const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
   const { data: user } = useUserDetails();
@@ -32,6 +31,7 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
     shippingPrice,
     discount,
     totalPrice,
+    addItem,
   } = useCart();
 
   const shippingTaxedPrice =
@@ -49,31 +49,30 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
   return (
     <Overlay context={overlay}>
       <Online>
-        <div className="cart">
+        <div className="cart"> 
           <div className="overlay__header">
-            <ReactSVG path={cartImg} className="overlay__header__cart-icon" />
             <div className="overlay__header-text">
-              My bag,{" "}
+              Tu carrito,{" "}
               <span className="overlay__header-text-items">
                 {items?.reduce(
                   (prevVal, currVal) => prevVal + currVal.quantity,
                   0
                 ) || 0}{" "}
-                items
+               {items && items.length === 1 ? 'producto' : 'productos'}
               </span>
             </div>
             <ReactSVG
-              path={closeImg}
+              path={cartImg}
               onClick={overlay.hide}
               className="overlay__header__close-icon"
             />
           </div>
           {items?.length ? (
             <>
-              <ProductList lines={items} remove={removeItem} />
+              <ProductList lines={items} remove={removeItem} add={addItem} />
               <div className="cart__footer">
-                <div className="cart__footer__price">
-                  <span>Subtotal</span>
+                <div className="cart__footer__price cart__footer__price--sub">
+                  <span>Costo delivery</span>
                   <span>
                     <TaxedMoney
                       data-cy="cartPageSubtotalPrice"
@@ -115,19 +114,9 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
                     />
                   </span>
                 </div>
-
-                <div className="cart__footer__button">
-                  <Link
-                    to={generatePath(cartUrl, {
-                      token: null,
-                    })}
-                  >
-                    <Button secondary>Go to my bag</Button>
-                  </Link>
-                </div>
                 <div className="cart__footer__button">
                   <Link to={user ? checkoutUrl : checkoutLoginUrl}>
-                    <Button>Checkout</Button>
+                    <Button>Comprar</Button>
                   </Link>
                 </div>
               </div>
@@ -137,6 +126,7 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
           )}
         </div>
       </Online>
+      {/* // TODO: revisar comportamiento offline */}
       <Offline>
         <div className="cart">
           <OfflinePlaceholder />

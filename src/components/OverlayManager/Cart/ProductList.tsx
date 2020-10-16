@@ -1,18 +1,22 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
-import ReactSVG from "react-svg";
 
+import { ICheckoutModelLine } from "@sdk/repository";
+import { Link } from "react-router-dom";
+import { generateProductUrl } from "../../../core/utils";
 import { TaxedMoney } from "@components/containers";
 import { Thumbnail } from "@components/molecules";
-import { ICheckoutModelLine } from "@sdk/repository";
 
-import { generateProductUrl } from "../../../core/utils";
+import addImg from "../../../images/add.svg";
+import ReactSVG from "react-svg";
 import removeImg from "../../../images/garbage.svg";
 
-const ProductList: React.SFC<{
+
+// TODO: fix functionality to add items
+const ProductList: React.FC<{
   lines: ICheckoutModelLine[];
+  add?(variantId: string, quantity: number): void;
   remove(variantId: string): void;
-}> = ({ lines, remove }) => (
+}> = ({ lines, add, remove }) => (
   <ul className="cart__list">
     {lines.map((line, index) => {
       const productUrl = generateProductUrl(
@@ -27,21 +31,36 @@ const ProductList: React.SFC<{
             <Thumbnail source={line.variant.product} />
           </Link>
           <div className="cart__list__item__details">
-            <p>
-              <TaxedMoney taxedMoney={line.variant.pricing.price} />
-            </p>
             <Link to={productUrl}>
-              <p>{line.variant.product.name}</p>
+              <p className="cart__list__item__details--name">
+                {line.variant.product.name}
+              </p>
             </Link>
-            <span className="cart__list__item__details__variant">
-              <span>{line.variant.name}</span>
-              <span>{`Qty: ${line.quantity}`}</span>
-            </span>
-            <ReactSVG
-              path={removeImg}
-              className="cart__list__item__details__delete-icon"
-              onClick={() => remove(line.variant.id)}
-            />
+            <p className="cart__list__item__details--variant">
+              {line.variant.name}
+            </p>
+
+            <div className="cart__list__item__down">
+              <div className="cart__list__item__quantity">
+                <ReactSVG
+                  path={removeImg}
+                  className="cart__list__item__quantity__icon"
+                  onClick={() => remove(line.variant.id)}
+                />
+                <p className="cart__list__item__quantity__text">
+                  {line.quantity}
+                </p>
+                <ReactSVG
+                  path={addImg}
+                  className="cart__list__item__quantity__icon"
+                  onClick={() => add(line.variant.id, Number(line.quantity) + 1)}
+                />
+              </div>
+              <TaxedMoney
+                className="cart__list__item__quantity__price"
+                taxedMoney={line.variant.pricing.price}
+              />
+            </div>
           </div>
         </li>
       );

@@ -124,16 +124,6 @@
     padding: 0 $spacer;
     cursor: pointer;
 
-    svg * {
-      transition: 0.3s;
-    }
-
-    &:hover {
-      svg * {
-        fill: $turquoise;
-      }
-    }
-
     svg {
       vertical-align: bottom;
     }
@@ -208,17 +198,6 @@
     cursor: pointer;
     line-height: 24px;
     transition: 0.3s;
-
-    svg * {
-      transition: 0.3s;
-    }
-
-    &:hover {
-      color: $turquoise;
-      svg * {
-        fill: $turquoise;
-      }
-    }
 
     span {
       text-transform: uppercase;
@@ -316,5 +295,25 @@
   &__login {
     align-items: center;
     display: flex;
+
+    &:hover {
+      > .main-menu__user--text {
+        color: $auna-interactive;
+      }
+    }
+  }
+
+  &__user,
+  &__search,
+  &__login {
+    svg * {
+      transition: 0.3s;
+    }
+
+    &:hover {
+      svg * {
+        fill: $auna-interactive;
+      }
+    }
   }
 }

@@ -2,13 +2,12 @@
 
 button.button {
   background-color: $turquoise;
-  transform: $button-transform;
   padding: $button-padding;
   border: none;
-  box-shadow: $button-box-shadow;
   transition: $button-transition;
   outline: none;
   font-family: $base-font-family;
+  border-radius: 40px;
   cursor: pointer;
 
   @media (max-width: $small-screen) {
@@ -21,10 +20,8 @@ button.button {
     display: inline-block;
     color: $white;
     font-size: $button-font-size;
-    text-transform: $button-text-transform;
     font-weight: $button-font-weight;
     line-height: $button-line-height;
-    transform: $button-content-transform;
   }
 
   &:hover {
