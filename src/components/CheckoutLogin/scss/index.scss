@@ -16,6 +16,7 @@
   &__guest {
     width: 50%;
     padding: 0 $spacer * 4;
+    margin: 0 auto;
 
     @media (max-width: $medium-screen) {
       width: 60%;
