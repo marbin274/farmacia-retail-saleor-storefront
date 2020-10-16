@@ -69,8 +69,8 @@ export const CHECKOUT_STEPS = [
   {
     index: 0,
     link: "/checkout/address",
-    name: "Address",
-    nextActionName: "Continue to Shipping",
+    name: "Tus datos",
+    nextActionName: "Ir a Delivery",
     nextStepLink: "/checkout/shipping",
     onlyIfShippingRequired: true,
     step: CheckoutStep.Address,
@@ -78,8 +78,8 @@ export const CHECKOUT_STEPS = [
   {
     index: 1,
     link: "/checkout/shipping",
-    name: "Shipping",
-    nextActionName: "Continue to Payment",
+    name: "Delivery",
+    nextActionName: "Ir a pago",
     nextStepLink: "/checkout/payment",
     onlyIfShippingRequired: true,
     step: CheckoutStep.Shipping,
@@ -87,8 +87,8 @@ export const CHECKOUT_STEPS = [
   {
     index: 2,
     link: "/checkout/payment",
-    name: "Payment",
-    nextActionName: "Continue to Review",
+    name: "Pago",
+    nextActionName: "Ir a confirmación",
     nextStepLink: "/checkout/review",
     onlyIfShippingRequired: false,
     step: CheckoutStep.Payment,
@@ -96,7 +96,7 @@ export const CHECKOUT_STEPS = [
   {
     index: 3,
     link: "/checkout/review",
-    name: "Review",
+    name: "Resumen",
     nextActionName: "Place order",
     nextStepLink: "/order-finalized",
     onlyIfShippingRequired: false,
