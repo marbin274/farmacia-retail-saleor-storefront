@@ -1,7 +1,8 @@
 import React from "react";
 
 import { Link } from "react-router-dom";
-import { Button, OverlayTheme, OverlayType } from "..";
+// import { Button, OverlayTheme, OverlayType } from "..";
+import { Button } from "..";
 import { OverlayContextInterface } from "../Overlay";
 
 const CheckoutAsGuest: React.FC<{
@@ -9,16 +10,15 @@ const CheckoutAsGuest: React.FC<{
   checkoutUrl: string;
 }> = ({ overlay, checkoutUrl }) => (
   <div className="checkout-login__guest">
-    <h3 className="checkout__header">Continue as a guest</h3>
+    <h3 className="checkout__header">¿No tienes cuenta?</h3>
     <p>
-      If you don’t wish to register an account, don’t worry. You can checkout as
-      a guest. We care about you just as much as any registered user.
+    Estar registrado te permite vivir una experiencia personalizada y ágil.
     </p>
     <Link to={checkoutUrl}>
-      <Button>Continue as a guest</Button>
+      <Button>Continua como invitado</Button>
     </Link>
 
-    <p>
+    {/* <p>
       or you can{" "}
       <span
         className="u-link"
@@ -26,7 +26,7 @@ const CheckoutAsGuest: React.FC<{
       >
         create an account
       </span>
-    </p>
+    </p> */}
   </div>
 );
 
