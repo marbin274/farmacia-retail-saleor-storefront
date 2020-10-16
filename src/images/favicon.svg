@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>logo</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-85.000000, -129.000000)" fill-rule="nonzero">
+            <g id="logo" transform="translate(85.000000, 129.000000)">
+                <path d="M16.576,25.6 L0,25.6 L0,0 L25.6,0 L25.6,16.576 C25.6,21.568 21.568,25.6 16.576,25.6 Z" id="Path" fill="#C2DF0A"></path>
+                <path d="M25.6,64 L0,64 L0,38.4 L16.576,38.4 C21.568,38.4 25.6,42.432 25.6,47.424 L25.6,64 Z" id="Path" fill="#00B0CA"></path>
+                <path d="M64,25.6 L47.424,25.6 C42.432,25.6 38.4,21.568 38.4,16.576 L38.4,0 L64,0 L64,25.6 Z" id="Path" fill="#00B0CA"></path>
+                <path d="M64,64 L38.4,64 L38.4,47.424 C38.4,42.432 42.432,38.4 47.424,38.4 L64,38.4 L64,64 Z" id="Path" fill="#C2DF0A"></path>
+            </g>
+        </g>
+    </g>
+</svg>
