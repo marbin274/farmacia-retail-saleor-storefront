@@ -13,12 +13,12 @@
     &-link,
     &-back span {
       align-items: center;
-      color: $base-font-color;
+      color: $auna-grey-100;
       display: flex;
       font-weight: 600;
       padding: $spacer;
       text-decoration: none;
-      text-transform: uppercase;
+      text-transform: lowercase;
       transition: 0.3s;
 
       svg * {
@@ -29,10 +29,6 @@
     &-logo {
       align-self: center;
       padding: 0.75rem $spacer;
-
-      svg {
-        width: 5rem;
-      }
     }
 
     &-link,
