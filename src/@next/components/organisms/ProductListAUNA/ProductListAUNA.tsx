@@ -1,20 +1,24 @@
+/* tslint:disable */
+
 import React from "react";
 import { Link } from "react-router-dom";
 
 import { Button, Loader } from "@components/atoms";
-import { ProductTile } from "@components/molecules";
+import { ProductTileAUNA } from "@components/molecules";
 
-import { generateProductUrl } from "../../../../core/utils";
+import { generateProductUrl } from "@temp/core/utils";
 
 import * as S from "./styles";
 import { IProps } from "./types";
 
-export const ProductList: React.FC<IProps> = ({
-  products,
+export const ProductListAUNA: React.FC<IProps> = ({
+  addToCart,
   canLoadMore = false,
   loading = false,
   onLoadMore = () => null,
+  products,
 }: IProps) => {
+
   return (
     <>
       <S.List>
@@ -23,7 +27,7 @@ export const ProductList: React.FC<IProps> = ({
             to={generateProductUrl(product.id, product.name)}
             key={product.id}
           >
-            <ProductTile product={product} />
+            <ProductTileAUNA addToCart={addToCart} product={product} />
           </Link>
         ))}
       </S.List>

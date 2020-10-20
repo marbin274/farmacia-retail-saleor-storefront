@@ -25,6 +25,30 @@ export const white = "#fff";
 export const tabelGray = "#eaeaea";
 export const darkGreen = "#06847B";
 
+// AUNA color scheme
+export const aunaBrand1 = "#C2DF0A";
+export const aunaBrand2 = "#FF6900";
+export const aunaBrand3 = "#0050B5";
+export const aunaBrand4 = "#FFD100";
+
+export const aunaPrimary = "#C2DF0A";
+export const aunaInteractive = "#00B0CA";
+export const aunaError = "#E84545";
+export const aunaDisabled = "#E4E5ED";
+
+export const aunaBlack = "#131336";
+export const aunaGrey100 = "#9194A7";
+export const aunaGrey80 = "#B8BCD5";
+export const aunaGrey60 = "#E4E5ED";
+export const aunaGrey40 = "#F1F2F7";
+export const aunaGrey20 = "#F6F8FA";
+
+export const aunaComplementary1 = "#E6F6F9";
+export const aunaComplementary2 = "#F3F9CE";
+export const aunaComplementary3 = "#FFF0E6";
+export const aunaComplementary4 = "#E6EEF8";
+
+
 // theme colors
 export const theme = {
   activeMenuOption: darkGreen,

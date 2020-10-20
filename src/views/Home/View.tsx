@@ -1,12 +1,15 @@
-import "./scss/index.scss";
-
 import * as React from "react";
+
+import { useCart } from "@sdk/react";
+import { HOME_PAGE_CONF } from "@temp/core/config";
 
 import { MetaWrapper } from "../../components";
 import Page from "./Page";
+import "./scss/index.scss";
 
-import { HOME_PAGE_CONF } from "@temp/core/config";
-import { HomePageVariables } from "@temp/views/Home/gqlTypes/HomePage";
+import { ISimpleProduct } from "@app/types/IProduct";
+import { IAddToCartCallback } from "@components/molecules/ProductTileAUNA/types";
+import {HomePage_products, HomePageVariables} from "./gqlTypes/HomePage";
 import { TypedHomePageQuery } from "./queries";
 
 const homePageVariables:HomePageVariables = {
@@ -18,7 +21,11 @@ const homePageVariables:HomePageVariables = {
     },
 }
 
-const View: React.FC = () => (
+const View: React.FC = () => {
+  const { addItem } = useCart();
+  const extractNodes = (productEdges: HomePage_products) => productEdges.edges.map(edge => edge.node);
+
+  return (
   <div className="home-page container">
       <TypedHomePageQuery
           alwaysRender
@@ -27,6 +34,12 @@ const View: React.FC = () => (
           variables={homePageVariables}
       >
       {({ data, loading }) => {
+        const productList: ISimpleProduct[] = extractNodes(data.products) ;
+
+        const addToCart: IAddToCartCallback = (product, quantity) => {
+          // console.log('addToCart()', product);
+          addItem(product, quantity);
+        };
 
         return (
           <MetaWrapper
@@ -42,8 +55,9 @@ const View: React.FC = () => (
                   <div className="product-list">
                       {data && data.category && data.category && data.products && (
                           <Page
+                              addToCart={addToCart}
                               loading={loading}
-                              products={data.products}
+                              products={productList}
                               shop={ data.shop }
                           />
                       )}
@@ -54,6 +68,7 @@ const View: React.FC = () => (
       }}
     </TypedHomePageQuery>
   </div>
-);
+  );
+};
 
 export default View;

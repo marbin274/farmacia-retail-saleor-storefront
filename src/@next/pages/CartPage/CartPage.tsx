@@ -51,7 +51,7 @@ const prepareCartFooter = (
     }
     shippingPrice={
       shippingTaxedPrice &&
-      shippingTaxedPrice.gross.amount !== 0 && (
+      shippingTaxedPrice.gross!.amount !== 0 && (
         <TaxedMoney
           data-cy="cartPageShippingPrice"
           taxedMoney={shippingTaxedPrice}
@@ -60,7 +60,7 @@ const prepareCartFooter = (
     }
     discountPrice={
       promoTaxedPrice &&
-      promoTaxedPrice.gross.amount !== 0 && (
+      promoTaxedPrice.gross!.amount !== 0 && (
         <TaxedMoney
           data-cy="cartPageShippingPrice"
           taxedMoney={promoTaxedPrice}

@@ -7,8 +7,8 @@ import NoPhoto from "images/no-photo.svg";
 import { IImage } from "@types";
 
 export const CachedImage: React.FC<IImage> = ({
-  url,
-  url2x,
+  url = null,
+  url2x = null,
   alt,
   children,
   defaultImage = NoPhoto,

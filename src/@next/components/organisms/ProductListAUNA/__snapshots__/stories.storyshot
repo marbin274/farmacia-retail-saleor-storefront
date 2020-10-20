@@ -1,0 +1,403 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
+.c0 {
+  position: relative;
+  margin: 20px;
+}
+
+.c10 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 3px solid rgba(0,0,0,0.2);
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.c8 {
+  background-color: #fff;
+  padding: 0.9rem 3.7rem;
+  border: none;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  outline: none;
+  cursor: pointer;
+  color: rgb(33,18,94);
+  width: auto;
+  box-shadow: inset 0px 0px 0px 3px rgb(33,18,94);
+  border-left: 1px solid rgb(33,18,94);
+  border-right: 1px solid rgb(33,18,94);
+}
+
+.c8:hover {
+  background-color: rgb(33,18,94);
+  color: #fff;
+}
+
+.c8:active {
+  background-color: #190c4e;
+  box-shadow: -3px 3px 14px 0px rgba(129,67,67,0.2);
+}
+
+.c8:disabled {
+  background-color: #7d7d7d;
+}
+
+.c8:disabled,
+.c8:disabled:hover {
+  cursor: default;
+}
+
+.c9 {
+  display: inline-block;
+  font-size: 1.125rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  line-height: 1.25rem;
+}
+
+.c2 {
+  color: #131336;
+  background: inherit;
+  border-bottom: 1px solid #00B0CA;
+  height: 24rem;
+  text-align: center;
+  -webkit-transition: 0 .3s;
+  transition: 0 .3s;
+  width: 11rem;
+  position: relative;
+}
+
+.c2:hover {
+  -webkit-translate-Y: -.1rem;
+  translate-Y: -.1rem;
+}
+
+.c4 {
+  font-family: 'Poppins',sans-serif;
+  font-size: 1.2rem;
+  font-weight: normal;
+  line-height: 1.4;
+  margin-top: .5rem;
+  padding: .4rem 0;
+  text-align: center;
+}
+
+.c5 {
+  color: #9194A7;
+  font-family: 'Poppins',sans-serif;
+  font-size: 1rem;
+  font-weight: normal;
+  padding: .1rem 0;
+  text-align: center;
+}
+
+.c6 {
+  font-family: 'Poppins',sans-serif;
+  font-size: 1.5rem;
+  font-weight: normal;
+  margin-top: .5rem;
+  padding: .7rem 0;
+  text-align: center;
+}
+
+.c3 {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  margin-top: 2.5rem;
+}
+
+.c3 > img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+}
+
+.c1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 3rem 3rem;
+}
+
+.c7 {
+  text-align: center;
+  margin: 2.5rem 0;
+}
+
+@media (max-width:540px) {
+  .c8 {
+    padding: 0.9rem 1rem;
+    width: 88%;
+  }
+}
+
+@media (max-width:992px) {
+  .c1 {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1.5rem;
+  }
+}
+
+@media (max-width:540px) {
+  .c1 {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+  }
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1"
+  >
+    <a
+      href="/product/apple-juice/72/"
+      onClick={[Function]}
+    >
+      <div
+        className="c2"
+        data-cy="product-tile"
+      >
+        <div
+          className="c3"
+        >
+          <img
+            alt=""
+            onError={[Function]}
+            src="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png"
+            srcSet="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png 1x, http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-510x510.png 2x"
+          />
+        </div>
+        <h4
+          className="c4"
+        >
+          Apple Juice
+        </h4>
+        <h5
+          className="c5"
+        >
+          250 g
+        </h5>
+        <p
+          className="c6"
+        >
+          <span>
+            
+          </span>
+        </p>
+      </div>
+    </a>
+    <a
+      href="/product/apple-juice/72/"
+      onClick={[Function]}
+    >
+      <div
+        className="c2"
+        data-cy="product-tile"
+      >
+        <div
+          className="c3"
+        >
+          <img
+            alt=""
+            onError={[Function]}
+            src="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png"
+            srcSet="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png 1x, http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-510x510.png 2x"
+          />
+        </div>
+        <h4
+          className="c4"
+        >
+          Apple Juice
+        </h4>
+        <h5
+          className="c5"
+        >
+          250 g
+        </h5>
+        <p
+          className="c6"
+        >
+          <span>
+            
+          </span>
+        </p>
+      </div>
+    </a>
+    <a
+      href="/product/apple-juice/72/"
+      onClick={[Function]}
+    >
+      <div
+        className="c2"
+        data-cy="product-tile"
+      >
+        <div
+          className="c3"
+        >
+          <img
+            alt=""
+            onError={[Function]}
+            src="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png"
+            srcSet="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png 1x, http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-510x510.png 2x"
+          />
+        </div>
+        <h4
+          className="c4"
+        >
+          Apple Juice
+        </h4>
+        <h5
+          className="c5"
+        >
+          250 g
+        </h5>
+        <p
+          className="c6"
+        >
+          <span>
+            
+          </span>
+        </p>
+      </div>
+    </a>
+    <a
+      href="/product/apple-juice/72/"
+      onClick={[Function]}
+    >
+      <div
+        className="c2"
+        data-cy="product-tile"
+      >
+        <div
+          className="c3"
+        >
+          <img
+            alt=""
+            onError={[Function]}
+            src="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png"
+            srcSet="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png 1x, http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-510x510.png 2x"
+          />
+        </div>
+        <h4
+          className="c4"
+        >
+          Apple Juice
+        </h4>
+        <h5
+          className="c5"
+        >
+          250 g
+        </h5>
+        <p
+          className="c6"
+        >
+          <span>
+            
+          </span>
+        </p>
+      </div>
+    </a>
+    <a
+      href="/product/apple-juice/72/"
+      onClick={[Function]}
+    >
+      <div
+        className="c2"
+        data-cy="product-tile"
+      >
+        <div
+          className="c3"
+        >
+          <img
+            alt=""
+            onError={[Function]}
+            src="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png"
+            srcSet="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png 1x, http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-510x510.png 2x"
+          />
+        </div>
+        <h4
+          className="c4"
+        >
+          Apple Juice
+        </h4>
+        <h5
+          className="c5"
+        >
+          250 g
+        </h5>
+        <p
+          className="c6"
+        >
+          <span>
+            
+          </span>
+        </p>
+      </div>
+    </a>
+    <a
+      href="/product/apple-juice/72/"
+      onClick={[Function]}
+    >
+      <div
+        className="c2"
+        data-cy="product-tile"
+      >
+        <div
+          className="c3"
+        >
+          <img
+            alt=""
+            onError={[Function]}
+            src="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png"
+            srcSet="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png 1x, http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-510x510.png 2x"
+          />
+        </div>
+        <h4
+          className="c4"
+        >
+          Apple Juice
+        </h4>
+        <h5
+          className="c5"
+        >
+          250 g
+        </h5>
+        <p
+          className="c6"
+        >
+          <span>
+            
+          </span>
+        </p>
+      </div>
+    </a>
+  </div>
+  <div
+    className="c7"
+  >
+    <button
+      className="c8"
+      color="secondary"
+      data-cy="load-more_button"
+      onClick={[Function]}
+      size="md"
+    >
+      <span
+        className="c9"
+        size="md"
+      >
+        More +
+      </span>
+    </button>
+  </div>
+  <div
+    className="c10"
+  />
+</div>
+`;

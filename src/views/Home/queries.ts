@@ -1,14 +1,45 @@
 import gql from "graphql-tag";
 
-import {basicProductFragment, productPricingFragment} from "@temp/views/Product/queries";
+import {
+  basicProductFragment,
+  priceFragment,
+  productPricingFragment,
+  // productVariantFragment
+} from "@temp/views/Product/queries";
 import { TypedQuery } from "../../core/queries";
 import { HomePage, HomePageVariables } from "./gqlTypes/HomePage";
+
+// using little bit simplified version of productVariantFragment
+export const productVariantFragmentSimple = gql`
+    ${priceFragment}
+    fragment ProductVariantFieldsSimple on ProductVariant {
+        id
+        sku
+        name
+        images {
+            id
+            url
+            alt
+        }
+        pricing {
+            onSale
+            priceUndiscounted {
+                ...Price
+            }
+            price {
+                ...Price
+            }
+        }
+    }
+`;
 
 
 // get shop, category by id, products from that category
 export const homePageQuery = gql`
   ${basicProductFragment}
   ${productPricingFragment}
+  ${productVariantFragmentSimple}
+  
   query HomePage(
     $categoryId: ID!
     $pageSize: Int
@@ -42,6 +73,10 @@ export const homePageQuery = gql`
             id
             name
           }
+          variants {
+            ...ProductVariantFieldsSimple
+          }
+
         }
       }
       pageInfo {

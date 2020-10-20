@@ -2,26 +2,27 @@ import "./scss/index.scss";
 
 import * as React from "react";
 
-import { ProductList } from "@components/organisms";
+import { IAddToCartCallback } from "@components/molecules/ProductTileAUNA/types";
+import { ProductListAUNA } from "@components/organisms";
 
+import { ISimpleProduct } from "@app/types/IProduct";
 import { structuredData } from "../../core/SEO/Homepage/structuredData";
-import { HomePage_products, HomePage_shop } from "./gqlTypes/HomePage";
+import { HomePage_shop } from "./gqlTypes/HomePage";
 
 interface PageProps {
-    loading: boolean;
-    products: HomePage_products;
-    shop: HomePage_shop;
+  addToCart: IAddToCartCallback,
+  loading: boolean;
+  products: ISimpleProduct[];
+  shop: HomePage_shop;
 }
 
-const Page: React.FC<PageProps> = ({
-    loading,
-    products,
-    shop,
+const Page: React.FC<PageProps> =
+({
+  addToCart,
+  loading,
+  products,
+  shop,
 }) => {
-
-  const productsExist = () => {
-    return products && products.edges && products.edges.length > 0;
-  };
 
   return (
     <div className="">
@@ -29,15 +30,15 @@ const Page: React.FC<PageProps> = ({
         {structuredData(shop)}
       </script>
 
-      {productsExist && (
-          <ProductList
-              products={products.edges.map(edge => edge.node)}
-              canLoadMore={false}
-              loading={loading}
-              onLoadMore={null}
+      {products && (
+          <ProductListAUNA
+            addToCart={addToCart}
+            canLoadMore={false}
+            loading={loading}
+            onLoadMore={null}
+            products={products}
           />
       )}
-
     </div>
   );
 };

@@ -26,7 +26,7 @@ const Costs = ({ subtotal, promoCode, shipping, total }: ICosts) => (
   <S.Costs>
     {subtotal && <CostLine name="Subtotal" cost={subtotal} />}
     {shipping && <CostLine name="Shipping" cost={shipping} />}
-    {promoCode && promoCode.gross.amount > 0 && (
+    {promoCode && promoCode.gross!.amount > 0 && (
       <CostLine name="Promo Code" cost={promoCode} negative={true} />
     )}
     {total && <CostLine name="Total" cost={total} last={true} />}
