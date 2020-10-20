@@ -75,7 +75,7 @@ const getCheckoutProgress = (
       );
 
   return loaded ? (
-    <CheckoutProgressBar steps={steps} activeStep={activeStepIndex} />
+    <CheckoutProgressBar steps={steps} activeStepIndex={activeStepIndex} />
   ) : null;
 };
 

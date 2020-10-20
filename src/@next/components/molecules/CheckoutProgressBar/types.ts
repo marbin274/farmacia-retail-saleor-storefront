@@ -5,5 +5,5 @@ export interface IStep {
 }
 export interface IProps {
   steps: IStep[];
-  activeStep: number;
+  activeStepIndex: number;
 }

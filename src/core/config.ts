@@ -1,5 +1,5 @@
-import { OrderDirection, ProductOrderField } from "@sdk/gqlTypes/globalTypes";
 import { generatePageUrl } from "./utils";
+import { OrderDirection, ProductOrderField } from "@sdk/gqlTypes/globalTypes";
 
 export const BASE_URL = "/";
 export const PRODUCTS_PER_PAGE = 6;
@@ -69,7 +69,7 @@ export const CHECKOUT_STEPS = [
   {
     index: 0,
     link: "/checkout/address",
-    name: "Tus datos",
+    name: "Paso 1: Completa los datos",
     nextActionName: "Ir a Delivery",
     nextStepLink: "/checkout/shipping",
     onlyIfShippingRequired: true,
@@ -78,7 +78,7 @@ export const CHECKOUT_STEPS = [
   {
     index: 1,
     link: "/checkout/shipping",
-    name: "Delivery",
+    name: "Paso 2: Elije el horario de entrega",
     nextActionName: "Ir a pago",
     nextStepLink: "/checkout/payment",
     onlyIfShippingRequired: true,
@@ -87,7 +87,7 @@ export const CHECKOUT_STEPS = [
   {
     index: 2,
     link: "/checkout/payment",
-    name: "Pago",
+    name: "Paso 3: Selecciona el método de pago",
     nextActionName: "Ir a confirmación",
     nextStepLink: "/checkout/review",
     onlyIfShippingRequired: false,
@@ -96,7 +96,7 @@ export const CHECKOUT_STEPS = [
   {
     index: 3,
     link: "/checkout/review",
-    name: "Resumen",
+    name: "Paso 4: Revisa tu compra",
     nextActionName: "Place order",
     nextStepLink: "/order-finalized",
     onlyIfShippingRequired: false,
