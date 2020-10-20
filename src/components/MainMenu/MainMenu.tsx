@@ -131,12 +131,13 @@ const MainMenu: React.FC = () => {
                               <li
                                 data-testid="login-btn"
                                 className="main-menu__icon"
-                                onClick={() =>
-                                  overlayContext.show(
-                                    OverlayType.login,
-                                    OverlayTheme.left
-                                  )
-                                }
+                                // TODO: Uncomment as soon as we implement the login feature
+                                // onClick={() =>
+                                //   overlayContext.show(
+                                //     OverlayType.login,
+                                //     OverlayTheme.left
+                                //   )
+                                // }
                               >
                                 <ReactSVG path={userImg} />
                               </li>
@@ -188,16 +189,7 @@ const MainMenu: React.FC = () => {
 
           <div className="main-menu__right">
             <ul>
-              <li
-                className="main-menu__search"
-                onClick={() =>
-                  overlayContext.show(OverlayType.search, OverlayTheme.right)
-                }
-              >
-                <ReactSVG path={searchImg} />
-              </li>
-              <Online>
-                <Media
+            <Media
                   query={{ minWidth: smallScreen }}
                   render={() => (
                     <>
@@ -236,12 +228,13 @@ const MainMenu: React.FC = () => {
                         <li
                           data-testid="login-btn"
                           className="main-menu__icon main-menu__login"
-                          onClick={() =>
-                            overlayContext.show(
-                              OverlayType.login,
-                              OverlayTheme.right
-                            )
-                          }
+                          // TODO: Uncomment as soon as we implement the login feature
+                          // onClick={() =>
+                          //   overlayContext.show(
+                          //     OverlayType.login,
+                          //     OverlayTheme.right
+                          //   )
+                          // }
                         >
                           <ReactSVG path={userImg} />
                           <Media
@@ -257,6 +250,16 @@ const MainMenu: React.FC = () => {
                     </>
                   )}
                 />
+              <li
+                className="main-menu__search"
+                // TODO: Uncomment as soon as we implement the search feature
+                // onClick={() =>
+                //   overlayContext.show(OverlayType.search, OverlayTheme.right)
+                // }
+              >
+                <ReactSVG path={searchImg} />
+              </li>
+              <Online>
                 <li
                   className="main-menu__icon main-menu__cart"
                   onClick={() => {
