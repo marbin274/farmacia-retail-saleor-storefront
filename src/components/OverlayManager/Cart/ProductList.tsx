@@ -6,9 +6,8 @@ import { generateProductUrl } from "../../../core/utils";
 import { TaxedMoney } from "@components/containers";
 import { Thumbnail } from "@components/molecules";
 
-import addImg from "../../../images/add.svg";
-import ReactSVG from "react-svg";
-import removeImg from "../../../images/garbage.svg";
+import ItemQuantity from "./ItemQuantity";
+
 
 
 // TODO: fix functionality to add items
@@ -41,21 +40,11 @@ const ProductList: React.FC<{
             </p>
 
             <div className="cart__list__item__down">
-              <div className="cart__list__item__quantity">
-                <ReactSVG
-                  path={removeImg}
-                  className="cart__list__item__quantity__icon"
-                  onClick={() => remove(line.variant.id)}
-                />
-                <p className="cart__list__item__quantity__text">
-                  {line.quantity}
-                </p>
-                <ReactSVG
-                  path={addImg}
-                  className="cart__list__item__quantity__icon"
-                  onClick={() => add(line.variant.id, 1)}
-                />
-              </div>
+              <ItemQuantity
+              value={line.quantity.toString()}
+              onAdd={() => add(line.variant.id, 1)}
+              onRemove={() => remove(line.variant.id)}
+              />
               <TaxedMoney
                 className="cart__list__item__quantity__price"
                 taxedMoney={line.variant.pricing.price}

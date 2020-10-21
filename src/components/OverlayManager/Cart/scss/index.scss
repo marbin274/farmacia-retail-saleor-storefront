@@ -55,8 +55,9 @@
         justify-content: center;
 
         &__text {
-          margin: 6px 18px;
           color: $auna-grey-100;
+          margin: 6px 18px;
+          user-select: none;
         }
 
         &__icon {

@@ -20,6 +20,7 @@ export const Primary = styled.button<{
     props.theme.button.colors[props.color].background};
   padding: ${props => padding[props.size]};
   border: none;
+  border-radius: 40px;
   transition: 0.3s;
   outline: none;
   cursor: pointer;
@@ -69,7 +70,9 @@ export const Text = styled.span<{ size: Size }>`
       button: { typography },
     },
   }) => fontSize(typography.fontSize, typography.smallFontSize)[size]};
-  text-transform: uppercase;
-  font-weight: ${props => props.theme.typography.boldFontWeight};
+  // TODO: check the right way to delete this
+  // font-weight: ${props => props.theme.typography.boldFontWeight};
+  font-weight: 500;
   line-height: ${props => props.theme.typography.baseLineHeight};
+  user-select: none;
 `;

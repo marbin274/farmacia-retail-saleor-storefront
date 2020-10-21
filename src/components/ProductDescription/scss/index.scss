@@ -2,14 +2,24 @@
 
 .product-description {
   h3 {
-    text-transform: uppercase;
-    font-weight: $bold-font-weight;
-    margin-bottom: $spacer;
+    color: $base-font-color;
+    font-size: 34px;
+    font-weight: $font-weight-normal;
+    margin-bottom: 11px;
   }
 
-  h4 {
-    font-weight: $bold-font-weight;
-    margin-bottom: $spacer;
+  &__price {
+    color: $base-font-color-2;
+    font-size: 16px;
+    font-weight: $font-weight-light;
+    margin-bottom: 28px;
+  }
+
+  > div {
+    > p {
+      @extend .product-description__price;
+      margin-bottom: 0 !important;
+    }
   }
 
   &__about {
@@ -37,34 +47,6 @@
     color: $gray;
     font-size: $small-font-size;
     font-weight: regular;
-  }
-
-  &__action {
-    min-height: 49px;
-
-    &--fade {
-      $animation-speed: 200ms;
-      background-color: $turquoise-dark;
-
-      &-enter {
-        opacity: 0;
-
-        @at-root #{&}#{&}-active {
-          opacity: 1;
-          transition: opacity $animation-speed ease-in;
-        }
-      }
-
-      &-leave {
-        opacity: 1;
-
-        @at-root #{&}#{&}-active {
-          opacity: 0;
-          display: none;
-          transition: opacity $animation-speed ease-out;
-        }
-      }
-    }
   }
 
   &__selected-attributes {
@@ -104,8 +86,51 @@
     color: $message-error-color;
   }
 
-  &__quantity-input {
-    margin-top: 20px;
-    padding-top: 20px;
+  &__quantity {
+    display: flex;
+    margin-top: 36px;
+    height: 48px;
+
+    > div {
+      margin-right: 10px;
+      min-width: 112px;
+    }
+
+    > p {
+      @extend .product-description__price;
+      margin-bottom: 12px !important;
+    }
+  }
+
+  &__action {
+    padding: initial;
+
+    span {
+      font-size: 16px;
+    }
+
+    &--fade {
+      $animation-speed: 200ms;
+      background-color: $turquoise-dark;
+
+      &-enter {
+        opacity: 0;
+
+        @at-root #{&}#{&}-active {
+          opacity: 1;
+          transition: opacity $animation-speed ease-in;
+        }
+      }
+
+      &-leave {
+        opacity: 1;
+
+        @at-root #{&}#{&}-active {
+          opacity: 0;
+          display: none;
+          transition: opacity $animation-speed ease-out;
+        }
+      }
+    }
   }
 }

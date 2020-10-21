@@ -164,7 +164,7 @@ class ProductDescription extends React.Component<
         {isOutOfStock ? (
           this.renderErrorMessage("Out of stock")
         ) : (
-          <h4>{this.getProductPrice()}</h4>
+          <p className="product-description__price">{this.getProductPrice()}</p>
         )}
         {isLowStock && this.renderErrorMessage("Low stock")}
         {isNoItemsAvailable && this.renderErrorMessage("No items available")}
@@ -176,21 +176,23 @@ class ProductDescription extends React.Component<
             selectSidebar={true}
           />
         </div>
-        <div>
-          <div className="product-description__quantity-input">
-            <QuantityTextField
-              quantity={quantity}
-              maxQuantity={availableQuantity}
-              disabled={isOutOfStock || isNoItemsAvailable}
-              onQuantityChange={this.handleQuantityChange}
-              hideErrors={!variant || isOutOfStock || isNoItemsAvailable}
-            />
-          </div>
-          <AddToCart
-              onSubmit={this.handleSubmit}
-              disabled={!this.canAddToCart()}
-            />
-          </div>
+        <div className="product-description__quantity">
+          {!variant || isOutOfStock || isNoItemsAvailable ? (
+            <p>Producto sin stock o no disponible</p>
+          ) : (
+            <React.Fragment>
+              <QuantityTextField
+                quantity={quantity}
+                maxQuantity={availableQuantity}
+                onQuantityChange={this.handleQuantityChange}
+              />
+              <AddToCart
+                onSubmit={this.handleSubmit}
+                disabled={!this.canAddToCart()}
+              />
+            </React.Fragment>
+          )}
+        </div>
       </div>
     );
   }

@@ -14,9 +14,7 @@ export const Thumbnail = styled.div<{ activeThumbnail: boolean }>`
   border-width: 4px;
   border-style: solid;
   border-color: ${props =>
-    props.activeThumbnail === true
-      ? props.theme.colors.thumbnailBorder
-      : "transparent"};
+    props.activeThumbnail === true ? "#C2DF0A" : "transparent"};
   justify-content: center;
   height: 100px;
   overflow: hidden;
@@ -53,9 +51,16 @@ export const BottomButton = styled(Button)`
 
 export const ThumbnailsContainer = styled.div`
   position: relative;
+  background-color: #00b0ca;
+  height: 519px;
+  width: 536px;
+  top: -104px;
+  left: 0;
 `;
 
+// TODO: just for now Thumbnails are hidden, check with Cata
 export const ThumbnailList = styled.div`
+  display: none;
   position: relative;
   height: 100%;
   overflow-y: scroll;
@@ -74,11 +79,13 @@ export const ThumbnailList = styled.div`
 `;
 
 export const Preview = styled.div`
+  z-index: 2;
   grid-area: preview;
   width: auto;
-  max-height: 560px;
+  max-height: 470px;
   overflow: hidden;
   img {
+    max-height: 470px;
     width: 100%;
     object-fit: contain;
   }

@@ -58,7 +58,7 @@ class AddToCartButton extends React.PureComponent<
           transitionLeaveTimeout={this.animationTimeout}
         >
           {animate ? (
-            <span key="text">Added</span>
+            <span key="text">Agregado</span>
           ) : (
             <span key="children">{this.props.children}</span>
           )}
