@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
   margin: 20px;
 }
 
-.c17 {
+.c21 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -17,15 +17,15 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
   box-sizing: border-box;
 }
 
-.c12 {
+.c16 {
   margin-bottom: 1.875rem;
 }
 
-.c15 {
+.c19 {
   top: 100%;
 }
 
-.c16 {
+.c20 {
   position: absolute;
   left: 1rem;
   padding: 0 0rem;
@@ -40,7 +40,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
   pointer-events: none;
 }
 
-.c9 {
+.c13 {
   position: absolute;
   left: 0.5rem;
   padding: 0 0.5rem;
@@ -55,7 +55,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
   pointer-events: none;
 }
 
-.c14 {
+.c18 {
   position: absolute;
   left: 0.5rem;
   padding: 0 0.5rem;
@@ -70,7 +70,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
   pointer-events: none;
 }
 
-.c6 {
+.c10 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -82,7 +82,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
   transition: all 0.3s ease;
 }
 
-.c6:hover {
+.c10:hover {
   color: rgb(33,18,94);
   outline-width: 1px;
   outline-style: solid;
@@ -90,12 +90,12 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
   outline-color: rgb(33,18,94);
 }
 
-.c7 {
+.c11 {
   position: relative;
   width: 100%;
 }
 
-.c8 {
+.c12 {
   padding: 0.8rem 1rem;
   margin: 0;
   border: none;
@@ -105,7 +105,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
   background-color: transparent;
 }
 
-.c13 {
+.c17 {
   position: absolute;
   right: 1rem;
   -webkit-transition-duration: 0.3s;
@@ -115,12 +115,12 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
   transform: rotate(0deg);
 }
 
-.c5 {
+.c9 {
   margin-bottom: 1.875rem;
   position: relative;
 }
 
-.c10 {
+.c14 {
   position: absolute;
   top: 100%;
 }
@@ -139,7 +139,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
   flex-wrap: wrap;
 }
 
-.c4 {
+.c8 {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -154,12 +154,39 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
   justify-content: space-between;
 }
 
-.c4 > div {
+.c8 > div {
   width: calc(50% - 1.875rem / 2);
 }
 
-.c11 {
+.c15 {
   width: 100%;
+}
+
+.c4 {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  width: 100%;
+}
+
+.c5 {
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.c6 {
+  display: inline-block;
+  color: #fff;
+  background-color: #0050B5;
+  border-radius: 5rem;
+  height: 1.9rem;
+  padding: 0.4rem;
+  text-align: center;
+  width: 1.9rem;
+}
+
+.c7 {
+  font-weight: bolder;
+  padding-left: 1rem;
 }
 
 .c1 {
@@ -168,7 +195,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
 }
 
 @media (max-width:540px) {
-  .c4 > div {
+  .c8 > div {
     width: 100%;
   }
 }
@@ -196,457 +223,493 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
           <div
             className="c5"
           >
-            <div
+            <span
               className="c6"
-              disabled={false}
             >
-              <div
-                className="c7"
-              >
-                <input
-                  autoComplete="given-name"
-                  className="c8"
-                  data-cy="addressFormFirstName"
-                  disabled={false}
-                  name="firstName"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  value="John"
-                />
-                <label
-                  className="c9"
-                >
-                  First Name
-                </label>
-              </div>
-            </div>
-            <div
-              className="c10"
-            />
+              1
+            </span>
+            <span
+              className="c7"
+            >
+              Cliente
+            </span>
           </div>
           <div
-            className="c5"
+            className="c8"
           >
             <div
-              className="c6"
-              disabled={false}
+              className="c9"
             >
               <div
-                className="c7"
-              >
-                <input
-                  autoComplete="family-name"
-                  className="c8"
-                  data-cy="addressFormLastName"
-                  disabled={false}
-                  name="lastName"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  value="Doe"
-                />
-                <label
-                  className="c9"
-                >
-                  Last Name
-                </label>
-              </div>
-            </div>
-            <div
-              className="c10"
-            />
-          </div>
-        </div>
-        <div
-          className="c4"
-        >
-          <div
-            className="c5"
-          >
-            <div
-              className="c6"
-              disabled={false}
-            >
-              <div
-                className="c7"
-              >
-                <input
-                  autoComplete="organization"
-                  className="c8"
-                  data-cy="addressFormCompanyName"
-                  disabled={false}
-                  name="companyName"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  value="Mirumee"
-                />
-                <label
-                  className="c9"
-                >
-                  Company Name (Optional)
-                </label>
-              </div>
-            </div>
-            <div
-              className="c10"
-            />
-          </div>
-          <div
-            className="c5"
-          >
-            <div
-              className="c6"
-              disabled={false}
-            >
-              <div
-                className="c7"
-              >
-                <input
-                  autoComplete="tel"
-                  className="c8"
-                  data-cy="addressFormPhone"
-                  disabled={false}
-                  name="phone"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  value="555-5555"
-                />
-                <label
-                  className="c9"
-                >
-                  Phone
-                </label>
-              </div>
-            </div>
-            <div
-              className="c10"
-            />
-          </div>
-        </div>
-        <div
-          className="c11"
-        >
-          <div
-            className="c5"
-          >
-            <div
-              className="c6"
-              disabled={false}
-            >
-              <div
-                className="c7"
-              >
-                <input
-                  autoComplete="address-line1"
-                  className="c8"
-                  data-cy="addressFormStreetAddress1"
-                  disabled={false}
-                  name="streetAddress1"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  value="St Street"
-                />
-                <label
-                  className="c9"
-                >
-                  Address line 1
-                </label>
-              </div>
-            </div>
-            <div
-              className="c10"
-            />
-          </div>
-        </div>
-        <div
-          className="c11"
-        >
-          <div
-            className="c5"
-          >
-            <div
-              className="c6"
-              disabled={false}
-            >
-              <div
-                className="c7"
-              >
-                <input
-                  autoComplete="address-line2"
-                  className="c8"
-                  data-cy="addressFormStreetAddress2"
-                  disabled={false}
-                  name="streetAddress2"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  value="Second"
-                />
-                <label
-                  className="c9"
-                >
-                  Address line 2
-                </label>
-              </div>
-            </div>
-            <div
-              className="c10"
-            />
-          </div>
-        </div>
-        <div
-          className="c4"
-        >
-          <div
-            className="c5"
-          >
-            <div
-              className="c6"
-              disabled={false}
-            >
-              <div
-                className="c7"
-              >
-                <input
-                  autoComplete="address-level1"
-                  className="c8"
-                  data-cy="addressFormCity"
-                  disabled={false}
-                  name="city"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  value="Wroclaw"
-                />
-                <label
-                  className="c9"
-                >
-                  City
-                </label>
-              </div>
-            </div>
-            <div
-              className="c10"
-            />
-          </div>
-          <div
-            className="c5"
-          >
-            <div
-              className="c6"
-              disabled={false}
-            >
-              <div
-                className="c7"
-              >
-                <input
-                  autoComplete="postal-code"
-                  className="c8"
-                  data-cy="addressFormPostalCode"
-                  disabled={false}
-                  name="postalCode"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  value="55-555"
-                />
-                <label
-                  className="c9"
-                >
-                  ZIP/Postal Code
-                </label>
-              </div>
-            </div>
-            <div
-              className="c10"
-            />
-          </div>
-        </div>
-        <div
-          className="c4"
-        >
-          <div
-            className="c12"
-          >
-            <div
-              className="css-1pcexqc-container"
-              onKeyDown={[Function]}
-            >
-              <div
-                className="css-133ddnz-control"
-                onMouseDown={[Function]}
-                onTouchEnd={[Function]}
+                className="c10"
+                disabled={false}
               >
                 <div
-                  className="css-tntsk8"
+                  className="c11"
+                >
+                  <input
+                    autoComplete="given-name"
+                    className="c12"
+                    data-cy="addressFormFirstName"
+                    disabled={false}
+                    name="firstName"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    value="John"
+                  />
+                  <label
+                    className="c13"
+                  >
+                    First Name
+                  </label>
+                </div>
+              </div>
+              <div
+                className="c14"
+              />
+            </div>
+            <div
+              className="c9"
+            >
+              <div
+                className="c10"
+                disabled={false}
+              >
+                <div
+                  className="c11"
+                >
+                  <input
+                    autoComplete="family-name"
+                    className="c12"
+                    data-cy="addressFormLastName"
+                    disabled={false}
+                    name="lastName"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    value="Doe"
+                  />
+                  <label
+                    className="c13"
+                  >
+                    Last Name
+                  </label>
+                </div>
+              </div>
+              <div
+                className="c14"
+              />
+            </div>
+          </div>
+          <div
+            className="c8"
+          >
+            <div
+              className="c9"
+            >
+              <div
+                className="c10"
+                disabled={false}
+              >
+                <div
+                  className="c11"
+                >
+                  <input
+                    autoComplete="organization"
+                    className="c12"
+                    data-cy="addressFormCompanyName"
+                    disabled={false}
+                    name="companyName"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    value="Mirumee"
+                  />
+                  <label
+                    className="c13"
+                  >
+                    Company Name (Optional)
+                  </label>
+                </div>
+              </div>
+              <div
+                className="c14"
+              />
+            </div>
+            <div
+              className="c9"
+            >
+              <div
+                className="c10"
+                disabled={false}
+              >
+                <div
+                  className="c11"
+                >
+                  <input
+                    autoComplete="tel"
+                    className="c12"
+                    data-cy="addressFormPhone"
+                    disabled={false}
+                    name="phone"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    value="555-5555"
+                  />
+                  <label
+                    className="c13"
+                  >
+                    Phone
+                  </label>
+                </div>
+              </div>
+              <div
+                className="c14"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          className="c4"
+        >
+          <div
+            className="c5"
+          >
+            <span
+              className="c6"
+            >
+              2
+            </span>
+            <span
+              className="c7"
+            >
+              Dirección
+            </span>
+          </div>
+          <div
+            className="c15"
+          >
+            <div
+              className="c9"
+            >
+              <div
+                className="c10"
+                disabled={false}
+              >
+                <div
+                  className="c11"
+                >
+                  <input
+                    autoComplete="address-line1"
+                    className="c12"
+                    data-cy="addressFormStreetAddress1"
+                    disabled={false}
+                    name="streetAddress1"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    value="St Street"
+                  />
+                  <label
+                    className="c13"
+                  >
+                    Address line 1
+                  </label>
+                </div>
+              </div>
+              <div
+                className="c14"
+              />
+            </div>
+          </div>
+          <div
+            className="c15"
+          >
+            <div
+              className="c9"
+            >
+              <div
+                className="c10"
+                disabled={false}
+              >
+                <div
+                  className="c11"
+                >
+                  <input
+                    autoComplete="address-line2"
+                    className="c12"
+                    data-cy="addressFormStreetAddress2"
+                    disabled={false}
+                    name="streetAddress2"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    value="Second"
+                  />
+                  <label
+                    className="c13"
+                  >
+                    Address line 2
+                  </label>
+                </div>
+              </div>
+              <div
+                className="c14"
+              />
+            </div>
+          </div>
+          <div
+            className="c8"
+          >
+            <div
+              className="c9"
+            >
+              <div
+                className="c10"
+                disabled={false}
+              >
+                <div
+                  className="c11"
+                >
+                  <input
+                    autoComplete="address-level1"
+                    className="c12"
+                    data-cy="addressFormCity"
+                    disabled={false}
+                    name="city"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    value="Wroclaw"
+                  />
+                  <label
+                    className="c13"
+                  >
+                    City
+                  </label>
+                </div>
+              </div>
+              <div
+                className="c14"
+              />
+            </div>
+            <div
+              className="c9"
+            >
+              <div
+                className="c10"
+                disabled={false}
+              >
+                <div
+                  className="c11"
+                >
+                  <input
+                    autoComplete="postal-code"
+                    className="c12"
+                    data-cy="addressFormPostalCode"
+                    disabled={false}
+                    name="postalCode"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    value="55-555"
+                  />
+                  <label
+                    className="c13"
+                  >
+                    ZIP/Postal Code
+                  </label>
+                </div>
+              </div>
+              <div
+                className="c14"
+              />
+            </div>
+          </div>
+          <div
+            className="c8"
+          >
+            <div
+              className="c16"
+            >
+              <div
+                className="css-1pcexqc-container"
+                onKeyDown={[Function]}
+              >
+                <div
+                  className="css-133ddnz-control"
+                  onMouseDown={[Function]}
+                  onTouchEnd={[Function]}
                 >
                   <div
-                    className="css-dvua67-singleValue"
-                  >
-                    Poland
-                  </div>
-                  <div
-                    className="css-1g6gooi"
+                    className="css-tntsk8"
                   >
                     <div
-                      className=""
-                      style={
-                        Object {
-                          "display": "inline-block",
-                        }
-                      }
+                      className="css-dvua67-singleValue"
                     >
-                      <input
-                        aria-autocomplete="list"
-                        autoCapitalize="none"
-                        autoComplete="off"
-                        autoCorrect="off"
-                        data-cy="addressFormCountry"
-                        disabled={false}
-                        id="react-select-10-input"
-                        onBlur={[Function]}
-                        onChange={[Function]}
-                        onFocus={[Function]}
-                        spellCheck="false"
-                        style={
-                          Object {
-                            "background": 0,
-                            "border": 0,
-                            "boxSizing": "content-box",
-                            "color": "inherit",
-                            "fontSize": "inherit",
-                            "label": "input",
-                            "opacity": 1,
-                            "outline": 0,
-                            "padding": 0,
-                            "width": "1px",
-                          }
-                        }
-                        tabIndex="0"
-                        type="text"
-                        value=""
-                      />
+                      Poland
+                    </div>
+                    <div
+                      className="css-1g6gooi"
+                    >
                       <div
+                        className=""
                         style={
                           Object {
-                            "height": 0,
-                            "left": 0,
-                            "overflow": "scroll",
-                            "position": "absolute",
-                            "top": 0,
-                            "visibility": "hidden",
-                            "whiteSpace": "pre",
+                            "display": "inline-block",
                           }
                         }
                       >
-                        
+                        <input
+                          aria-autocomplete="list"
+                          autoCapitalize="none"
+                          autoComplete="off"
+                          autoCorrect="off"
+                          data-cy="addressFormCountry"
+                          disabled={false}
+                          id="react-select-10-input"
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          onFocus={[Function]}
+                          spellCheck="false"
+                          style={
+                            Object {
+                              "background": 0,
+                              "border": 0,
+                              "boxSizing": "content-box",
+                              "color": "inherit",
+                              "fontSize": "inherit",
+                              "label": "input",
+                              "opacity": 1,
+                              "outline": 0,
+                              "padding": 0,
+                              "width": "1px",
+                            }
+                          }
+                          tabIndex="0"
+                          type="text"
+                          value=""
+                        />
+                        <div
+                          style={
+                            Object {
+                              "height": 0,
+                              "left": 0,
+                              "overflow": "scroll",
+                              "position": "absolute",
+                              "top": 0,
+                              "visibility": "hidden",
+                              "whiteSpace": "pre",
+                            }
+                          }
+                        >
+                          
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div
-                  className="c13"
-                  rotate="false"
-                >
-                  <svg
-                    height={10}
-                    viewBox="0 0 32 32"
-                    width={10}
+                  <div
+                    className="c17"
+                    rotate="false"
                   >
-                    <path
-                      d="M16 29.856l-15.999-27.712h31.999l-15.999 27.712z"
-                      fill="#21125E"
-                    />
-                  </svg>
+                    <svg
+                      height={10}
+                      viewBox="0 0 32 32"
+                      width={10}
+                    >
+                      <path
+                        d="M16 29.856l-15.999-27.712h31.999l-15.999 27.712z"
+                        fill="#21125E"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <label
+                  className="c18"
+                >
+                  Country
+                </label>
+              </div>
+              <div
+                className="c19"
+              />
+            </div>
+            <div
+              className="c9"
+            >
+              <div
+                className="c10"
+                disabled={false}
+              >
+                <div
+                  className="c11"
+                >
+                  <input
+                    autoComplete="address-level2"
+                    className="c12"
+                    data-cy="addressFormCountryArea"
+                    disabled={false}
+                    name="countryArea"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    value="dolnyslask"
+                  />
+                  <label
+                    className="c13"
+                  >
+                    State/province
+                  </label>
                 </div>
               </div>
-              <label
+              <div
                 className="c14"
-              >
-                Country
-              </label>
+              />
             </div>
-            <div
-              className="c15"
-            />
           </div>
           <div
-            className="c5"
+            className="c8"
           >
             <div
-              className="c6"
-              disabled={false}
+              className="c9"
             >
               <div
-                className="c7"
+                className="c10"
+                disabled={false}
               >
-                <input
-                  autoComplete="address-level2"
-                  className="c8"
-                  data-cy="addressFormCountryArea"
-                  disabled={false}
-                  name="countryArea"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  value="dolnyslask"
-                />
-                <label
-                  className="c9"
+                <div
+                  className="c11"
                 >
-                  State/province
-                </label>
+                  <input
+                    autoComplete="email"
+                    className="c12"
+                    data-cy="addressFormEmail"
+                    disabled={false}
+                    name="email"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                  />
+                  <label
+                    className="c20"
+                  >
+                    Email
+                  </label>
+                </div>
               </div>
-            </div>
-            <div
-              className="c10"
-            />
-          </div>
-        </div>
-        <div
-          className="c4"
-        >
-          <div
-            className="c5"
-          >
-            <div
-              className="c6"
-              disabled={false}
-            >
               <div
-                className="c7"
-              >
-                <input
-                  autoComplete="email"
-                  className="c8"
-                  data-cy="addressFormEmail"
-                  disabled={false}
-                  name="email"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                />
-                <label
-                  className="c16"
-                >
-                  Email
-                </label>
-              </div>
+                className="c14"
+              />
             </div>
-            <div
-              className="c10"
-            />
           </div>
         </div>
       </div>
     </form>
   </section>
   <div
-    className="c17"
+    className="c21"
   />
 </div>
 `;

@@ -1,4 +1,5 @@
 import { media, styled } from "@styles";
+import {aunaBrand3, white} from "@styles/constants";
 
 export const AddressForm = styled.form`
   width: 100%;
@@ -24,4 +25,31 @@ export const RowWithTwoCells = styled.div`
 
 export const RowWithOneCell = styled.div`
   width: 100%;
+`;
+
+export const FieldsGroup = styled.div`
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  width: 100%;
+`;
+
+export const GroupLabel = styled.div`
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+`;
+
+export const GroupLabelIndex = styled.span`
+    display: inline-block;
+    color: ${white};
+    background-color: ${aunaBrand3}
+    border-radius: 5rem;
+    height: 1.9rem;
+    padding: 0.4rem;
+    text-align: center;
+    width: 1.9rem;
+`;
+
+export const GroupLabelTitle = styled.span`
+    font-weight: bolder;
+    padding-left: 1rem;
 `;
