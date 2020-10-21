@@ -89,13 +89,24 @@ export const defaultTheme = {
     size: 36,
   },
   input: {
-    border: C.grayDark,
-    labelColor: C.grayDark,
-    /**
-     * 12px in default theme
-     */
-    labelFontSize: "0.75rem",
+    borderColor: C.aunaGrey60,
+    borderColorActive: C.aunaInteractive,
+    borderColorError: C.aunaError,
+    borderRadius: '4px',
+    labelColor: C.aunaGrey100,
+    labelColorActive: C.aunaGrey100,
+    labelColorError: C.aunaGrey100,
+    labelFontSize: "0.9rem",
+    labelLeft: '0px',
+    labelTop: '-1.5rem',
+    placeholderColor: C.aunaGrey100,
     selectMenuShadow: "0px 6px 10px 0px rgba(0, 0, 0, 0.15)",
+    textColor: C.aunaBlack,
+    textColorActive: C.aunaBlack,
+    textColorError: C.aunaError,
+    textColorHover: C.aunaGrey60,
+    textFontSize: '0.9rem',
+    topPadding: '1.4rem',
   },
   link: {
     base: {

@@ -1,15 +1,17 @@
 import { styled } from "@styles";
 
 export const Wrapper = styled.div`
+  padding-top: ${props => props.theme.input.topPadding};
   margin-bottom: ${props => props.theme.spacing.fieldSpacer};
 `;
 
 export const Indicator = styled.div<{ rotate: string }>`
   position: absolute;
+  top:0;
   right: 1rem;
   transition-duration: 0.3s;
   transform: ${props =>
-    props.rotate === "true" ? "rotate(180deg)" : "rotate(0deg)"};
+    props.rotate === "true" ? "rotate(-90deg)" : "rotate(0deg)"};
 `;
 
 export const HelpText = styled.span`

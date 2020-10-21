@@ -1,20 +1,29 @@
 import { styled } from "@styles";
 
+const getLabelColor = ( { active, error, disabled, theme }: WrapperProps) => {
+  if (disabled) {
+    return theme.colors.disabled;
+  } else if (error) {
+    return theme.input.labelColorError;
+  } else if (active) {
+    return theme.input.labelColorActive;
+  } else {
+    return theme.input.labelColor;
+  }
+}
+
+
 export const Label = styled.label<{
   active: boolean;
+  disabled: boolean;
+  error: boolean;
   labelBackground: string | null;
 }>`
+  background-color: transparent;
+  color: ${props => getLabelColor(props)}
+  left: ${props => props.theme.input.labelLeft};
   position: absolute;
-  left: ${props => (props.active ? "0.5rem" : "1rem")};
-  padding: 0 ${props => (props.active ? 0.5 : 0)}rem;
-  background-color: ${props =>
-    props.active ? props.labelBackground : "transparent"};
-  font-size: ${props =>
-    props.active
-      ? props.theme.input.labelFontSize
-      : props.theme.typography.baseFontSize};
-  top: ${props => (props.active ? 0 : "50%")};
-  transform: translateY(-50%);
-  transition: all 0.3s ease, color 0s;
+  font-size: ${props => props.theme.input.labelFontSize};
   pointer-events: none;
+  top: ${props => props.theme.input.labelTop};
 `;

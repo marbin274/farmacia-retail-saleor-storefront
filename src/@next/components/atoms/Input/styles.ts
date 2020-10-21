@@ -7,6 +7,20 @@ type WrapperProps = {
   theme: DefaultTheme;
 };
 
+const getTextColor = ( { active, error, disabled, theme }: WrapperProps, hovered = false) => {
+  if (disabled) {
+    return theme.colors.disabled;
+  } else if (error) {
+    return theme.input.textColorError;
+  } else if (active) {
+    return theme.input.textColorActive;
+  } else if (hovered) {
+    return theme.input.textColorHover;
+  } else {
+    return theme.input.textColor;
+  }
+}
+
 const getEdgeColor = (
   { active, error, disabled, theme }: WrapperProps,
   hovered = false
@@ -16,30 +30,28 @@ const getEdgeColor = (
   }
 
   if (error) {
-    return theme.colors.error;
+    return theme.input.borderColorError;
   }
 
   if (hovered) {
-    return theme.colors.secondary;
+    return theme.input.borderColorActive;
   }
 
-  return active ? theme.colors.secondary : theme.colors.dark;
+  return active ? theme.input.borderColorActive : theme.input.borderColor;
 };
 
 export const Wrapper = styled.div<WrapperProps>`
   display: flex;
   border: 1px solid ${props => getEdgeColor(props)};
+  border-radius: ${props => props.theme.input.borderRadius}
   color: ${props => getEdgeColor(props)};
   outline: ${props =>
     props.active ? `1px solid ${getEdgeColor(props)};` : "none"};
   transition: all 0.3s ease;
 
   &:hover {
-    color: ${props => getEdgeColor(props, true)};
-    outline-width: ${props => (props.disabled ? 0 : 1)}px;
-    outline-style: solid;
+    color: ${props => getTextColor(props, true)};
     border-color: ${props => getEdgeColor(props, true)};
-    outline-color: ${props => getEdgeColor(props, true)};
   }
 `;
 
@@ -51,14 +63,28 @@ export const Content = styled.span`
 export const InputWrapper = styled.div`
   position: relative;
   width: 100%;
+  padding-right: 1.5rem;
 `;
 
-export const Input = styled.input`
-  padding: 0.8rem 1rem;
+export const InputIconWrapper = styled.div`
+  height: 1rem;
+  position: absolute;
+  right: 1rem;
+  top: calc(50% - 0.5rem);
+  width: 1rem;
+`;
+
+export const Input = styled.input<WrapperProps>`
+  padding: 0.75rem 1rem;
   margin: 0;
   border: none;
+  color: ${props => getTextColor(props)};
   width: 100%;
-  font-size: ${props => props.theme.typography.baseFontSize};
+  font-size: ${props => props.theme.input.textFontSize};
   outline: none;
   background-color: transparent;
+  
+  ::placeholder {
+    color: ${props => props.theme.input.placeholderColor};
+  }
 `;

@@ -1,5 +1,7 @@
 export interface IProps {
   children: React.ReactNode;
-  active: boolean;
+  active?: boolean;
+  disabled?: boolean;
+  error?: boolean;
   labelBackground: string | null;
 }

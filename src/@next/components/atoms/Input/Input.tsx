@@ -1,5 +1,7 @@
+import {Icon} from "@components/atoms";
 import React from "react";
 
+import { aunaError } from "@styles/constants";
 import { getBackgroundColor } from "@utils/styles";
 
 import { InputLabel } from "../InputLabel";
@@ -65,15 +67,23 @@ export const Input: React.FC<IProps> = ({
           onFocus={handleFocus}
           onBlur={handleBlur}
           disabled={disabled}
+          placeholder={placeholder}
           onChange={onChange}
         />
         {label && (
           <InputLabel
-            labelBackground={labelBackground}
             active={active || !!value}
+            disabled={disabled}
+            error={error}
+            labelBackground={labelBackground}
           >
             {label}
           </InputLabel>
+        )}
+        {error && (
+          <S.InputIconWrapper>
+            <Icon color={aunaError} name='error'/>
+          </S.InputIconWrapper>
         )}
       </S.InputWrapper>
       {contentRight && <S.Content>{contentRight}</S.Content>}

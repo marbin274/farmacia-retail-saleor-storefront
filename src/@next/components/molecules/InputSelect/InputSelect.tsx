@@ -23,20 +23,18 @@ export const InputSelect: React.FC<IProps> = ({
     control: (provided: any, state: { menuIsOpen: any }) => ({
       ...provided,
       ":hover": {
-        border: `1px solid ${secondaryColor}`,
-        outlineColor: secondaryColor,
-        outlineStyle: "solid",
-        outlineWidth: "1px",
+        border: `1px solid ${customTheme.input.borderColorActive}`,
+        outlineColor: 'none',
       },
       background: "none",
       border: state.menuIsOpen
-        ? `1px solid ${secondaryColor}`
-        : `1px solid ${borderColor}`,
-      borderRadius: 0,
+        ? `1px solid ${customTheme.input.borderColorActive}`
+        : `1px solid ${customTheme.input.borderColor}`,
+      borderRadius: customTheme.input.borderRadius,
       boxShadow: 0,
       boxSizing: "border-box",
       margin: 0,
-      outline: state.menuIsOpen ? `1px solid ${secondaryColor}` : "",
+      // outline: state.menuIsOpen ? `1px solid ${secondaryColor}` : "",
       padding: "0.55rem 1rem",
     }),
     valueContainer: (provided: any) => {
@@ -84,7 +82,7 @@ export const InputSelect: React.FC<IProps> = ({
         // https://github.com/styled-components/styled-components/issues/1198
         return (
           <S.DropdownIndicator rotate={String(selectProps.menuIsOpen)}>
-            <Icon name="select_arrow" size={10} />
+            <Icon name="select_arrow" size={10} color='inherit'/>
           </S.DropdownIndicator>
         );
       }
