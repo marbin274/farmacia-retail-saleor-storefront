@@ -1,4 +1,5 @@
 import { styled } from "@styles";
+import { aunaPrimary } from "@styles/constants";
 
 export const Wrapper = styled.div`
   display: grid;
@@ -14,7 +15,7 @@ export const Thumbnail = styled.div<{ activeThumbnail: boolean }>`
   border-width: 4px;
   border-style: solid;
   border-color: ${props =>
-    props.activeThumbnail === true ? "#C2DF0A" : "transparent"};
+    props.activeThumbnail === true ? aunaPrimary : "transparent"};
   justify-content: center;
   height: 100px;
   overflow: hidden;
