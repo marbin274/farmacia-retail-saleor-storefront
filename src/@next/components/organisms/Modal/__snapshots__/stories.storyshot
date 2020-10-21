@@ -18,9 +18,10 @@ exports[`Storyshots @components/organisms/Modal Modal Form 1`] = `
 }
 
 .c10 {
-  background-color: #13bebb;
+  background-color: #00B0CA;
   padding: 0.1rem 2rem;
   border: none;
+  border-radius: 40px;
   -webkit-transition: 0.3s;
   transition: 0.3s;
   outline: none;
@@ -51,9 +52,12 @@ exports[`Storyshots @components/organisms/Modal Modal Form 1`] = `
 .c11 {
   display: inline-block;
   font-size: 1rem;
-  text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.25rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .c9 {
@@ -329,9 +333,10 @@ exports[`Storyshots @components/organisms/Modal Modal Form disabled 1`] = `
 }
 
 .c9 {
-  background-color: #13bebb;
+  background-color: #00B0CA;
   padding: 0.1rem 2rem;
   border: none;
+  border-radius: 40px;
   -webkit-transition: 0.3s;
   transition: 0.3s;
   outline: none;
@@ -362,9 +367,12 @@ exports[`Storyshots @components/organisms/Modal Modal Form disabled 1`] = `
 .c10 {
   display: inline-block;
   font-size: 1rem;
-  text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.25rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .c6 {
@@ -608,9 +616,10 @@ exports[`Storyshots @components/organisms/Modal Modal Info 1`] = `
 }
 
 .c9 {
-  background-color: #13bebb;
+  background-color: #00B0CA;
   padding: 0.1rem 2rem;
   border: none;
+  border-radius: 40px;
   -webkit-transition: 0.3s;
   transition: 0.3s;
   outline: none;
@@ -641,9 +650,12 @@ exports[`Storyshots @components/organisms/Modal Modal Info 1`] = `
 .c10 {
   display: inline-block;
   font-size: 1rem;
-  text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.25rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .c6 {

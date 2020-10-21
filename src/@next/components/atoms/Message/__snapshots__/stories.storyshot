@@ -248,7 +248,7 @@ exports[`Storyshots @components/atoms/Message error w/ children 1`] = `
 }
 
 .c4:hover path {
-  fill: #13bebb;
+  fill: #00B0CA;
 }
 
 .c5 {
@@ -358,7 +358,7 @@ exports[`Storyshots @components/atoms/Message neutral snackbar 1`] = `
 }
 
 .c4:hover path {
-  fill: #13bebb;
+  fill: #00B0CA;
 }
 
 <div
@@ -459,7 +459,7 @@ exports[`Storyshots @components/atoms/Message success w/ children 1`] = `
 }
 
 .c4:hover path {
-  fill: #13bebb;
+  fill: #00B0CA;
 }
 
 .c5 {

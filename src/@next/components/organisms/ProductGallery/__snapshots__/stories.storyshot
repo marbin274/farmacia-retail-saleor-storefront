@@ -33,7 +33,7 @@ exports[`Storyshots @components/organisms/ProductGallery default 1`] = `
   display: flex;
   border-width: 4px;
   border-style: solid;
-  border-color: #06847B;
+  border-color: #C2DF0A;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -51,9 +51,15 @@ exports[`Storyshots @components/organisms/ProductGallery default 1`] = `
 
 .c2 {
   position: relative;
+  background-color: #00b0ca;
+  height: 519px;
+  width: 536px;
+  top: -104px;
+  left: 0;
 }
 
 .c3 {
+  display: none;
   position: relative;
   height: 100%;
   overflow-y: scroll;
@@ -76,13 +82,15 @@ exports[`Storyshots @components/organisms/ProductGallery default 1`] = `
 }
 
 .c5 {
+  z-index: 2;
   grid-area: preview;
   width: auto;
-  max-height: 560px;
+  max-height: 470px;
   overflow: hidden;
 }
 
 .c5 img {
+  max-height: 470px;
   width: 100%;
   object-fit: contain;
 }
@@ -167,7 +175,7 @@ exports[`Storyshots @components/organisms/ProductGallery eight Images 1`] = `
   display: flex;
   border-width: 4px;
   border-style: solid;
-  border-color: #06847B;
+  border-color: #C2DF0A;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -256,9 +264,15 @@ exports[`Storyshots @components/organisms/ProductGallery eight Images 1`] = `
 
 .c2 {
   position: relative;
+  background-color: #00b0ca;
+  height: 519px;
+  width: 536px;
+  top: -104px;
+  left: 0;
 }
 
 .c5 {
+  display: none;
   position: relative;
   height: 100%;
   overflow-y: scroll;
@@ -281,13 +295,15 @@ exports[`Storyshots @components/organisms/ProductGallery eight Images 1`] = `
 }
 
 .c8 {
+  z-index: 2;
   grid-area: preview;
   width: auto;
-  max-height: 560px;
+  max-height: 470px;
   overflow: hidden;
 }
 
 .c8 img {
+  max-height: 470px;
   width: 100%;
   object-fit: contain;
 }
@@ -500,7 +516,7 @@ exports[`Storyshots @components/organisms/ProductGallery three Images 1`] = `
   display: flex;
   border-width: 4px;
   border-style: solid;
-  border-color: #06847B;
+  border-color: #C2DF0A;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -542,9 +558,15 @@ exports[`Storyshots @components/organisms/ProductGallery three Images 1`] = `
 
 .c2 {
   position: relative;
+  background-color: #00b0ca;
+  height: 519px;
+  width: 536px;
+  top: -104px;
+  left: 0;
 }
 
 .c3 {
+  display: none;
   position: relative;
   height: 100%;
   overflow-y: scroll;
@@ -567,13 +589,15 @@ exports[`Storyshots @components/organisms/ProductGallery three Images 1`] = `
 }
 
 .c6 {
+  z-index: 2;
   grid-area: preview;
   width: auto;
-  max-height: 560px;
+  max-height: 470px;
   overflow: hidden;
 }
 
 .c6 img {
+  max-height: 470px;
   width: 100%;
   object-fit: contain;
 }

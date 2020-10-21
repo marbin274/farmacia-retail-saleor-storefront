@@ -18,9 +18,10 @@ exports[`Storyshots @components/molecules/FormFooter with submit and cancel butt
 }
 
 .c3 {
-  background-color: #13bebb;
+  background-color: #00B0CA;
   padding: 0.1rem 2rem;
   border: none;
+  border-radius: 40px;
   -webkit-transition: 0.3s;
   transition: 0.3s;
   outline: none;
@@ -51,9 +52,12 @@ exports[`Storyshots @components/molecules/FormFooter with submit and cancel butt
 .c4 {
   display: inline-block;
   font-size: 1rem;
-  text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.25rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .c2 {
@@ -152,9 +156,10 @@ exports[`Storyshots @components/molecules/FormFooter with submit button 1`] = `
 }
 
 .c2 {
-  background-color: #13bebb;
+  background-color: #00B0CA;
   padding: 0.1rem 2rem;
   border: none;
+  border-radius: 40px;
   -webkit-transition: 0.3s;
   transition: 0.3s;
   outline: none;
@@ -185,9 +190,12 @@ exports[`Storyshots @components/molecules/FormFooter with submit button 1`] = `
 .c3 {
   display: inline-block;
   font-size: 1rem;
-  text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.25rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .c1 {
@@ -254,9 +262,10 @@ exports[`Storyshots @components/molecules/FormFooter with top divider 1`] = `
 }
 
 .c2 {
-  background-color: #13bebb;
+  background-color: #00B0CA;
   padding: 0.1rem 2rem;
   border: none;
+  border-radius: 40px;
   -webkit-transition: 0.3s;
   transition: 0.3s;
   outline: none;
@@ -287,9 +296,12 @@ exports[`Storyshots @components/molecules/FormFooter with top divider 1`] = `
 .c3 {
   display: inline-block;
   font-size: 1rem;
-  text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.25rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .c1 {
