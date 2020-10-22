@@ -84,8 +84,8 @@ exports[`Storyshots @components/organisms/ProductGallery default 1`] = `
 .c5 {
   z-index: 2;
   grid-area: preview;
-  width: auto;
-  max-height: 470px;
+  height: 470px;
+  width: 470px;
   overflow: hidden;
 }
 
@@ -297,8 +297,8 @@ exports[`Storyshots @components/organisms/ProductGallery eight Images 1`] = `
 .c8 {
   z-index: 2;
   grid-area: preview;
-  width: auto;
-  max-height: 470px;
+  height: 470px;
+  width: 470px;
   overflow: hidden;
 }
 
@@ -591,8 +591,8 @@ exports[`Storyshots @components/organisms/ProductGallery three Images 1`] = `
 .c6 {
   z-index: 2;
   grid-area: preview;
-  width: auto;
-  max-height: 470px;
+  height: 470px;
+  width: 470px;
   overflow: hidden;
 }
 

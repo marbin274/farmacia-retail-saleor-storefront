@@ -14,7 +14,7 @@
     margin-top: 104px;
     padding-bottom: $spacer * 5;
 
-    @media (max-width: $small-screen) {
+    @media (max-width: $medium-screen) {
       display: block;
       margin-bottom: $spacer * 2;
     }
@@ -22,19 +22,13 @@
     &__description {
       width: 100%;
       min-height: $spacer * 10;
-      margin-bottom: $spacer * 9; 
+      margin-bottom: $spacer * 9;
     }
 
     &__info {
-      flex-grow: 1;
-      width: 30%;
       position: relative;
 
       @media (max-width: $medium-screen) {
-        width: 30%;
-      }
-
-      @media (max-width: $small-screen) {
         width: 100%;
       }
 
@@ -56,9 +50,7 @@
     }
 
     &__gallery {
-      flex-grow: 2;
-      width: 60%;
-      padding: 0 $spacer 0 0;
+      margin-right: 58px;
       box-sizing: border-box;
 
       @media (max-width: $medium-screen) {

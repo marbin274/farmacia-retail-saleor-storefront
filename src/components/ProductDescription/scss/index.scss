@@ -103,7 +103,8 @@
   }
 
   &__action {
-    padding: initial;
+    padding: initial !important;
+    max-width: 269px;
 
     span {
       font-size: 16px;
