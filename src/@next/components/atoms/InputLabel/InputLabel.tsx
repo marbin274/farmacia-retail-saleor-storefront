@@ -5,9 +5,9 @@ import { IProps } from "./types";
 
 export const InputLabel: React.FC<IProps> = ({
   children,
-  active,
+  active = false,
   disabled = false,
-  error,
+  error = false,
   labelBackground,
 }: IProps) => {
   return <S.Label {...{ active, disabled, error, labelBackground }}>{children}</S.Label>;
