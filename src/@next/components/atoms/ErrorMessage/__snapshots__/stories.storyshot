@@ -19,7 +19,7 @@ exports[`Storyshots @components/atoms/ErrorMessage default 1`] = `
 
 .c1 {
   color: #c22d74;
-  font-size: 0.75rem;
+  font-size: 0.9rem;
 }
 
 .c2 {
@@ -63,7 +63,7 @@ exports[`Storyshots @components/atoms/ErrorMessage with multiple errors 1`] = `
 
 .c1 {
   color: #c22d74;
-  font-size: 0.75rem;
+  font-size: 0.9rem;
 }
 
 .c2 {

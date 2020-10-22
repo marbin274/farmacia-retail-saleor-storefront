@@ -18,18 +18,13 @@ exports[`Storyshots @components/molecules/TextField default 1`] = `
 }
 
 .c5 {
-  position: absolute;
-  left: 0.5rem;
-  padding: 0 0.5rem;
   background-color: transparent;
-  font-size: 0.75rem;
-  top: 0;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transition: all 0.3s ease,color 0s;
-  transition: all 0.3s ease,color 0s;
+  color: #9194A7;
+  left: 0px;
+  position: absolute;
+  font-size: 0.9rem;
   pointer-events: none;
+  top: -1.5rem;
 }
 
 .c2 {
@@ -37,38 +32,55 @@ exports[`Storyshots @components/molecules/TextField default 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  border: 1px solid #323232;
-  color: #323232;
+  border: 1px solid #E4E5ED;
+  border-radius: 4px;
+  color: #E4E5ED;
   outline: none;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
 .c2:hover {
-  color: rgb(33,18,94);
-  outline-width: 1px;
-  outline-style: solid;
-  border-color: rgb(33,18,94);
-  outline-color: rgb(33,18,94);
+  color: #E4E5ED;
+  border-color: #00B0CA;
 }
 
 .c3 {
   position: relative;
   width: 100%;
+  padding-right: 1.5rem;
 }
 
 .c4 {
-  padding: 0.8rem 1rem;
+  padding: 0.75rem 1rem;
   margin: 0;
   border: none;
+  color: #131336;
   width: 100%;
-  font-size: 1rem;
+  font-size: 0.9rem;
   outline: none;
   background-color: transparent;
 }
 
+.c4::-webkit-input-placeholder {
+  color: #9194A7;
+}
+
+.c4::-moz-placeholder {
+  color: #9194A7;
+}
+
+.c4:-ms-input-placeholder {
+  color: #9194A7;
+}
+
+.c4::placeholder {
+  color: #9194A7;
+}
+
 .c1 {
-  margin-bottom: 1.875rem;
+  padding-top: 1.4rem;
+  margin-bottom: 1rem;
   position: relative;
 }
 
@@ -100,6 +112,7 @@ exports[`Storyshots @components/molecules/TextField default 1`] = `
         />
         <label
           className="c5"
+          disabled={false}
         >
           Label
         </label>
@@ -133,18 +146,13 @@ exports[`Storyshots @components/molecules/TextField with content left 1`] = `
 }
 
 .c6 {
-  position: absolute;
-  left: 0.5rem;
-  padding: 0 0.5rem;
   background-color: transparent;
-  font-size: 0.75rem;
-  top: 0;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transition: all 0.3s ease,color 0s;
-  transition: all 0.3s ease,color 0s;
+  color: #9194A7;
+  left: 0px;
+  position: absolute;
+  font-size: 0.9rem;
   pointer-events: none;
+  top: -1.5rem;
 }
 
 .c2 {
@@ -152,19 +160,17 @@ exports[`Storyshots @components/molecules/TextField with content left 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  border: 1px solid #323232;
-  color: #323232;
+  border: 1px solid #E4E5ED;
+  border-radius: 4px;
+  color: #E4E5ED;
   outline: none;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
 .c2:hover {
-  color: rgb(33,18,94);
-  outline-width: 1px;
-  outline-style: solid;
-  border-color: rgb(33,18,94);
-  outline-color: rgb(33,18,94);
+  color: #E4E5ED;
+  border-color: #00B0CA;
 }
 
 .c3 {
@@ -181,20 +187,39 @@ exports[`Storyshots @components/molecules/TextField with content left 1`] = `
 .c4 {
   position: relative;
   width: 100%;
+  padding-right: 1.5rem;
 }
 
 .c5 {
-  padding: 0.8rem 1rem;
+  padding: 0.75rem 1rem;
   margin: 0;
   border: none;
+  color: #131336;
   width: 100%;
-  font-size: 1rem;
+  font-size: 0.9rem;
   outline: none;
   background-color: transparent;
 }
 
+.c5::-webkit-input-placeholder {
+  color: #9194A7;
+}
+
+.c5::-moz-placeholder {
+  color: #9194A7;
+}
+
+.c5:-ms-input-placeholder {
+  color: #9194A7;
+}
+
+.c5::placeholder {
+  color: #9194A7;
+}
+
 .c1 {
-  margin-bottom: 1.875rem;
+  padding-top: 1.4rem;
+  margin-bottom: 1rem;
   position: relative;
 }
 
@@ -233,6 +258,7 @@ exports[`Storyshots @components/molecules/TextField with content left 1`] = `
         />
         <label
           className="c6"
+          disabled={false}
         >
           Label
         </label>
@@ -266,18 +292,13 @@ exports[`Storyshots @components/molecules/TextField with content right 1`] = `
 }
 
 .c5 {
-  position: absolute;
-  left: 0.5rem;
-  padding: 0 0.5rem;
   background-color: transparent;
-  font-size: 0.75rem;
-  top: 0;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transition: all 0.3s ease,color 0s;
-  transition: all 0.3s ease,color 0s;
+  color: #9194A7;
+  left: 0px;
+  position: absolute;
+  font-size: 0.9rem;
   pointer-events: none;
+  top: -1.5rem;
 }
 
 .c2 {
@@ -285,19 +306,17 @@ exports[`Storyshots @components/molecules/TextField with content right 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  border: 1px solid #323232;
-  color: #323232;
+  border: 1px solid #E4E5ED;
+  border-radius: 4px;
+  color: #E4E5ED;
   outline: none;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
 .c2:hover {
-  color: rgb(33,18,94);
-  outline-width: 1px;
-  outline-style: solid;
-  border-color: rgb(33,18,94);
-  outline-color: rgb(33,18,94);
+  color: #E4E5ED;
+  border-color: #00B0CA;
 }
 
 .c6 {
@@ -314,20 +333,39 @@ exports[`Storyshots @components/molecules/TextField with content right 1`] = `
 .c3 {
   position: relative;
   width: 100%;
+  padding-right: 1.5rem;
 }
 
 .c4 {
-  padding: 0.8rem 1rem;
+  padding: 0.75rem 1rem;
   margin: 0;
   border: none;
+  color: #131336;
   width: 100%;
-  font-size: 1rem;
+  font-size: 0.9rem;
   outline: none;
   background-color: transparent;
 }
 
+.c4::-webkit-input-placeholder {
+  color: #9194A7;
+}
+
+.c4::-moz-placeholder {
+  color: #9194A7;
+}
+
+.c4:-ms-input-placeholder {
+  color: #9194A7;
+}
+
+.c4::placeholder {
+  color: #9194A7;
+}
+
 .c1 {
-  margin-bottom: 1.875rem;
+  padding-top: 1.4rem;
+  margin-bottom: 1rem;
   position: relative;
 }
 
@@ -359,6 +397,7 @@ exports[`Storyshots @components/molecules/TextField with content right 1`] = `
         />
         <label
           className="c5"
+          disabled={false}
         >
           Label
         </label>
@@ -400,7 +439,7 @@ exports[`Storyshots @components/molecules/TextField with errors 1`] = `
 
 .c7 {
   color: #c22d74;
-  font-size: 0.75rem;
+  font-size: 0.9rem;
 }
 
 .c8 {
@@ -408,18 +447,13 @@ exports[`Storyshots @components/molecules/TextField with errors 1`] = `
 }
 
 .c5 {
-  position: absolute;
-  left: 0.5rem;
-  padding: 0 0.5rem;
   background-color: transparent;
-  font-size: 0.75rem;
-  top: 0;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transition: all 0.3s ease,color 0s;
-  transition: all 0.3s ease,color 0s;
+  color: #9194A7;
+  left: 0px;
+  position: absolute;
+  font-size: 0.9rem;
   pointer-events: none;
+  top: -1.5rem;
 }
 
 .c2 {
@@ -427,38 +461,55 @@ exports[`Storyshots @components/molecules/TextField with errors 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  border: 1px solid #c22d74;
-  color: #c22d74;
+  border: 1px solid #E84545;
+  border-radius: 4px;
+  color: #E84545;
   outline: none;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
 .c2:hover {
-  color: #c22d74;
-  outline-width: 1px;
-  outline-style: solid;
-  border-color: #c22d74;
-  outline-color: #c22d74;
+  color: #E84545;
+  border-color: #E84545;
 }
 
 .c3 {
   position: relative;
   width: 100%;
+  padding-right: 1.5rem;
 }
 
 .c4 {
-  padding: 0.8rem 1rem;
+  padding: 0.75rem 1rem;
   margin: 0;
   border: none;
+  color: #E84545;
   width: 100%;
-  font-size: 1rem;
+  font-size: 0.9rem;
   outline: none;
   background-color: transparent;
 }
 
+.c4::-webkit-input-placeholder {
+  color: #9194A7;
+}
+
+.c4::-moz-placeholder {
+  color: #9194A7;
+}
+
+.c4:-ms-input-placeholder {
+  color: #9194A7;
+}
+
+.c4::placeholder {
+  color: #9194A7;
+}
+
 .c1 {
-  margin-bottom: 1.875rem;
+  padding-top: 1.4rem;
+  margin-bottom: 1rem;
   position: relative;
 }
 
@@ -490,6 +541,7 @@ exports[`Storyshots @components/molecules/TextField with errors 1`] = `
         />
         <label
           className="c5"
+          disabled={false}
         >
           Label
         </label>

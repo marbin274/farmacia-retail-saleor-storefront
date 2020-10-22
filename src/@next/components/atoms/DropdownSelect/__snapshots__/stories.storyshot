@@ -24,6 +24,7 @@ exports[`Storyshots @components/atoms/DropdownSelect default 1`] = `
 }
 
 .c2 {
+  padding-top: 1.4rem;
   margin-bottom: 1.875rem;
 }
 

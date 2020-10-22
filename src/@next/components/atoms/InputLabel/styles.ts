@@ -1,4 +1,11 @@
-import { styled } from "@styles";
+import {DefaultTheme, styled} from "@styles";
+
+type WrapperProps = {
+  active: boolean;
+  error: boolean;
+  disabled: boolean;
+  theme: DefaultTheme;
+};
 
 const getLabelColor = ( { active, error, disabled, theme }: WrapperProps) => {
   if (disabled) {

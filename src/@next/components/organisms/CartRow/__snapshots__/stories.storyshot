@@ -60,18 +60,13 @@ exports[`Storyshots @components/organisms/CartRow default 1`] = `
 }
 
 .c14 {
-  position: absolute;
-  left: 0.5rem;
-  padding: 0 0.5rem;
   background-color: transparent;
-  font-size: 0.75rem;
-  top: 0;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transition: all 0.3s ease,color 0s;
-  transition: all 0.3s ease,color 0s;
+  color: #9194A7;
+  left: 0px;
+  position: absolute;
+  font-size: 0.9rem;
   pointer-events: none;
+  top: -1.5rem;
 }
 
 .c11 {
@@ -79,19 +74,17 @@ exports[`Storyshots @components/organisms/CartRow default 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  border: 1px solid #323232;
-  color: #323232;
+  border: 1px solid #E4E5ED;
+  border-radius: 4px;
+  color: #E4E5ED;
   outline: none;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
 .c11:hover {
-  color: rgb(33,18,94);
-  outline-width: 1px;
-  outline-style: solid;
-  border-color: rgb(33,18,94);
-  outline-color: rgb(33,18,94);
+  color: #E4E5ED;
+  border-color: #00B0CA;
 }
 
 .c15 {
@@ -108,20 +101,39 @@ exports[`Storyshots @components/organisms/CartRow default 1`] = `
 .c12 {
   position: relative;
   width: 100%;
+  padding-right: 1.5rem;
 }
 
 .c13 {
-  padding: 0.8rem 1rem;
+  padding: 0.75rem 1rem;
   margin: 0;
   border: none;
+  color: #131336;
   width: 100%;
-  font-size: 1rem;
+  font-size: 0.9rem;
   outline: none;
   background-color: transparent;
 }
 
+.c13::-webkit-input-placeholder {
+  color: #9194A7;
+}
+
+.c13::-moz-placeholder {
+  color: #9194A7;
+}
+
+.c13:-ms-input-placeholder {
+  color: #9194A7;
+}
+
+.c13::placeholder {
+  color: #9194A7;
+}
+
 .c10 {
-  margin-bottom: 1.875rem;
+  padding-top: 1.4rem;
+  margin-bottom: 1rem;
   position: relative;
 }
 
@@ -501,6 +513,7 @@ exports[`Storyshots @components/organisms/CartRow default 1`] = `
             />
             <label
               className="c14"
+              disabled={false}
             >
               Quantity
             </label>

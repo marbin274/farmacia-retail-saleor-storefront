@@ -18,18 +18,13 @@ exports[`Storyshots @components/atoms/InputLabel active false 1`] = `
 }
 
 .c1 {
-  position: absolute;
-  left: 1rem;
-  padding: 0 0rem;
   background-color: transparent;
-  font-size: 1rem;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transition: all 0.3s ease,color 0s;
-  transition: all 0.3s ease,color 0s;
+  color: #9194A7;
+  left: 0px;
+  position: absolute;
+  font-size: 0.9rem;
   pointer-events: none;
+  top: -1.5rem;
 }
 
 <div
@@ -37,6 +32,7 @@ exports[`Storyshots @components/atoms/InputLabel active false 1`] = `
 >
   <label
     className="c1"
+    disabled={false}
   >
     This is input - check knobs
   </label>
@@ -64,18 +60,13 @@ exports[`Storyshots @components/atoms/InputLabel active true 1`] = `
 }
 
 .c1 {
+  background-color: transparent;
+  color: #9194A7;
+  left: 0px;
   position: absolute;
-  left: 0.5rem;
-  padding: 0 0.5rem;
-  background-color: #FFF;
-  font-size: 0.75rem;
-  top: 0;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transition: all 0.3s ease,color 0s;
-  transition: all 0.3s ease,color 0s;
+  font-size: 0.9rem;
   pointer-events: none;
+  top: -1.5rem;
 }
 
 <div
@@ -83,6 +74,7 @@ exports[`Storyshots @components/atoms/InputLabel active true 1`] = `
 >
   <label
     className="c1"
+    disabled={false}
   >
     This is input - check knobs
   </label>

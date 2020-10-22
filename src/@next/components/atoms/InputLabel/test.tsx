@@ -38,14 +38,4 @@ describe("<InputLabel />", () => {
       "transparent"
     );
   });
-
-  it("should use passed background color if active", () => {
-    const wrapper = mount(
-      <InputLabel labelBackground={"#ABC"} active={true}>
-        Text
-      </InputLabel>
-    );
-
-    expect(wrapper.find("label")).toHaveStyleRule("background-color", "#ABC");
-  });
 });

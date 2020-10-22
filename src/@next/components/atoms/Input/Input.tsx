@@ -1,10 +1,10 @@
-import {Icon} from "@components/atoms";
 import React from "react";
 
 import { aunaError } from "@styles/constants";
 import { getBackgroundColor } from "@utils/styles";
 
 import { InputLabel } from "../InputLabel";
+import { Icon } from "@components/atoms";
 
 import * as S from "./styles";
 import { IProps } from "./types";
@@ -63,7 +63,9 @@ export const Input: React.FC<IProps> = ({
       <S.InputWrapper>
         <S.Input
           {...props}
+          active={active}
           value={value}
+          error={error}
           onFocus={handleFocus}
           onBlur={handleBlur}
           disabled={disabled}

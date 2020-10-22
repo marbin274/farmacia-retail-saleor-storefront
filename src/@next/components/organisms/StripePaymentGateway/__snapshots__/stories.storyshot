@@ -18,18 +18,13 @@ exports[`Storyshots @components/organisms/StripePaymentGateway default 1`] = `
 }
 
 .c6 {
-  position: absolute;
-  left: 1rem;
-  padding: 0 0rem;
   background-color: transparent;
-  font-size: 1rem;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transition: all 0.3s ease,color 0s;
-  transition: all 0.3s ease,color 0s;
+  color: #9194A7;
+  left: 0px;
+  position: absolute;
+  font-size: 0.9rem;
   pointer-events: none;
+  top: -1.5rem;
 }
 
 .c4 {
@@ -135,6 +130,7 @@ exports[`Storyshots @components/organisms/StripePaymentGateway default 1`] = `
             <div />
             <label
               className="c6"
+              disabled={false}
             >
               Card number
             </label>
@@ -153,6 +149,7 @@ exports[`Storyshots @components/organisms/StripePaymentGateway default 1`] = `
             <div />
             <label
               className="c6"
+              disabled={false}
             >
               Expiration date
             </label>
@@ -171,6 +168,7 @@ exports[`Storyshots @components/organisms/StripePaymentGateway default 1`] = `
             <div />
             <label
               className="c6"
+              disabled={false}
             >
               CVC
             </label>

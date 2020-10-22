@@ -16,8 +16,6 @@ export const InputSelect: React.FC<IProps> = ({
   ...props
 }: IProps) => {
   const customTheme = React.useContext(ThemeContext);
-  const secondaryColor = customTheme.colors.secondary;
-  const borderColor = customTheme.input.border;
 
   const customStyles = {
     control: (provided: any, state: { menuIsOpen: any }) => ({

@@ -18,6 +18,7 @@ exports[`Storyshots @components/molecules/InputSelect default 1`] = `
 }
 
 .c2 {
+  padding-top: 1.4rem;
   margin-bottom: 1.875rem;
 }
 
@@ -26,21 +27,17 @@ exports[`Storyshots @components/molecules/InputSelect default 1`] = `
 }
 
 .c4 {
-  position: absolute;
-  left: 1rem;
-  padding: 0 0rem;
   background-color: transparent;
-  font-size: 1rem;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transition: all 0.3s ease,color 0s;
-  transition: all 0.3s ease,color 0s;
+  color: #9194A7;
+  left: 0px;
+  position: absolute;
+  font-size: 0.9rem;
   pointer-events: none;
+  top: -1.5rem;
 }
 
 .c3 {
+  fill: #00B0CA;
   position: absolute;
   right: 1rem;
   -webkit-transition-duration: 0.3s;
@@ -48,6 +45,9 @@ exports[`Storyshots @components/molecules/InputSelect default 1`] = `
   -webkit-transform: rotate(0deg);
   -ms-transform: rotate(0deg);
   transform: rotate(0deg);
+  -webkit-transform-origin: center center;
+  -ms-transform-origin: center center;
+  transform-origin: center center;
 }
 
 .c1 {
@@ -68,7 +68,7 @@ exports[`Storyshots @components/molecules/InputSelect default 1`] = `
         onKeyDown={[Function]}
       >
         <div
-          className="css-133ddnz-control"
+          className="css-d1vkk-control"
           onMouseDown={[Function]}
           onTouchEnd={[Function]}
         >
@@ -149,13 +149,14 @@ exports[`Storyshots @components/molecules/InputSelect default 1`] = `
             >
               <path
                 d="M16 29.856l-15.999-27.712h31.999l-15.999 27.712z"
-                fill="#21125E"
+                fill="inherit"
               />
             </svg>
           </div>
         </div>
         <label
           className="c4"
+          disabled={false}
         >
           Country
         </label>

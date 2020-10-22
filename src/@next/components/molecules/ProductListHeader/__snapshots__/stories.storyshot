@@ -24,6 +24,7 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
 }
 
 .c11 {
+  padding-top: 1.4rem;
   margin-bottom: 1.875rem;
 }
 
@@ -294,6 +295,7 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
 }
 
 .c12 {
+  padding-top: 1.4rem;
   margin-bottom: 1.875rem;
 }
 

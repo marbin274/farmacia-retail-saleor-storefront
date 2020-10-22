@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
   margin: 20px;
 }
 
-.c21 {
+.c19 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -18,56 +18,22 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
 }
 
 .c16 {
+  padding-top: 1.4rem;
   margin-bottom: 1.875rem;
 }
 
-.c19 {
+.c18 {
   top: 100%;
 }
 
-.c20 {
-  position: absolute;
-  left: 1rem;
-  padding: 0 0rem;
-  background-color: transparent;
-  font-size: 1rem;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transition: all 0.3s ease,color 0s;
-  transition: all 0.3s ease,color 0s;
-  pointer-events: none;
-}
-
 .c13 {
-  position: absolute;
-  left: 0.5rem;
-  padding: 0 0.5rem;
   background-color: transparent;
-  font-size: 0.75rem;
-  top: 0;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transition: all 0.3s ease,color 0s;
-  transition: all 0.3s ease,color 0s;
-  pointer-events: none;
-}
-
-.c18 {
+  color: #9194A7;
+  left: 0px;
   position: absolute;
-  left: 0.5rem;
-  padding: 0 0.5rem;
-  background-color: #f1f5f5;
-  font-size: 0.75rem;
-  top: 0;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transition: all 0.3s ease,color 0s;
-  transition: all 0.3s ease,color 0s;
+  font-size: 0.9rem;
   pointer-events: none;
+  top: -1.5rem;
 }
 
 .c10 {
@@ -75,37 +41,54 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  border: 1px solid #323232;
-  color: #323232;
+  border: 1px solid #E4E5ED;
+  border-radius: 4px;
+  color: #E4E5ED;
   outline: none;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
 .c10:hover {
-  color: rgb(33,18,94);
-  outline-width: 1px;
-  outline-style: solid;
-  border-color: rgb(33,18,94);
-  outline-color: rgb(33,18,94);
+  color: #E4E5ED;
+  border-color: #00B0CA;
 }
 
 .c11 {
   position: relative;
   width: 100%;
+  padding-right: 1.5rem;
 }
 
 .c12 {
-  padding: 0.8rem 1rem;
+  padding: 0.75rem 1rem;
   margin: 0;
   border: none;
+  color: #131336;
   width: 100%;
-  font-size: 1rem;
+  font-size: 0.9rem;
   outline: none;
   background-color: transparent;
 }
 
+.c12::-webkit-input-placeholder {
+  color: #9194A7;
+}
+
+.c12::-moz-placeholder {
+  color: #9194A7;
+}
+
+.c12:-ms-input-placeholder {
+  color: #9194A7;
+}
+
+.c12::placeholder {
+  color: #9194A7;
+}
+
 .c17 {
+  fill: #00B0CA;
   position: absolute;
   right: 1rem;
   -webkit-transition-duration: 0.3s;
@@ -113,10 +96,14 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
   -webkit-transform: rotate(0deg);
   -ms-transform: rotate(0deg);
   transform: rotate(0deg);
+  -webkit-transform-origin: center center;
+  -ms-transform-origin: center center;
+  transform-origin: center center;
 }
 
 .c9 {
-  margin-bottom: 1.875rem;
+  padding-top: 1.4rem;
+  margin-bottom: 1rem;
   position: relative;
 }
 
@@ -152,6 +139,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  margin-bottom: 1rem;
 }
 
 .c8 > div {
@@ -260,6 +248,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                   />
                   <label
                     className="c13"
+                    disabled={false}
                   >
                     First Name
                   </label>
@@ -292,6 +281,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                   />
                   <label
                     className="c13"
+                    disabled={false}
                   >
                     Last Name
                   </label>
@@ -328,6 +318,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                   />
                   <label
                     className="c13"
+                    disabled={false}
                   >
                     Company Name (Optional)
                   </label>
@@ -360,6 +351,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                   />
                   <label
                     className="c13"
+                    disabled={false}
                   >
                     Phone
                   </label>
@@ -414,6 +406,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                   />
                   <label
                     className="c13"
+                    disabled={false}
                   >
                     Address line 1
                   </label>
@@ -450,6 +443,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                   />
                   <label
                     className="c13"
+                    disabled={false}
                   >
                     Address line 2
                   </label>
@@ -486,6 +480,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                   />
                   <label
                     className="c13"
+                    disabled={false}
                   >
                     City
                   </label>
@@ -518,6 +513,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                   />
                   <label
                     className="c13"
+                    disabled={false}
                   >
                     ZIP/Postal Code
                   </label>
@@ -539,7 +535,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                 onKeyDown={[Function]}
               >
                 <div
-                  className="css-133ddnz-control"
+                  className="css-d1vkk-control"
                   onMouseDown={[Function]}
                   onTouchEnd={[Function]}
                 >
@@ -621,19 +617,20 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                     >
                       <path
                         d="M16 29.856l-15.999-27.712h31.999l-15.999 27.712z"
-                        fill="#21125E"
+                        fill="inherit"
                       />
                     </svg>
                   </div>
                 </div>
                 <label
-                  className="c18"
+                  className="c13"
+                  disabled={false}
                 >
                   Country
                 </label>
               </div>
               <div
-                className="c19"
+                className="c18"
               />
             </div>
             <div
@@ -659,6 +656,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                   />
                   <label
                     className="c13"
+                    disabled={false}
                   >
                     State/province
                   </label>
@@ -693,7 +691,8 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                     onFocus={[Function]}
                   />
                   <label
-                    className="c20"
+                    className="c13"
+                    disabled={false}
                   >
                     Email
                   </label>
@@ -709,7 +708,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
     </form>
   </section>
   <div
-    className="c21"
+    className="c19"
   />
 </div>
 `;

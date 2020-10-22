@@ -18,18 +18,13 @@ exports[`Storyshots @components/organisms/BraintreePaymentGateway default 1`] = 
 }
 
 .c8 {
-  position: absolute;
-  left: 1rem;
-  padding: 0 0rem;
   background-color: transparent;
-  font-size: 1rem;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transition: all 0.3s ease,color 0s;
-  transition: all 0.3s ease,color 0s;
+  color: #9194A7;
+  left: 0px;
+  position: absolute;
+  font-size: 0.9rem;
   pointer-events: none;
+  top: -1.5rem;
 }
 
 .c5 {
@@ -37,38 +32,55 @@ exports[`Storyshots @components/organisms/BraintreePaymentGateway default 1`] = 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  border: 1px solid #323232;
-  color: #323232;
+  border: 1px solid #E4E5ED;
+  border-radius: 4px;
+  color: #E4E5ED;
   outline: none;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
 .c5:hover {
-  color: rgb(33,18,94);
-  outline-width: 1px;
-  outline-style: solid;
-  border-color: rgb(33,18,94);
-  outline-color: rgb(33,18,94);
+  color: #E4E5ED;
+  border-color: #00B0CA;
 }
 
 .c6 {
   position: relative;
   width: 100%;
+  padding-right: 1.5rem;
 }
 
 .c7 {
-  padding: 0.8rem 1rem;
+  padding: 0.75rem 1rem;
   margin: 0;
   border: none;
+  color: #131336;
   width: 100%;
-  font-size: 1rem;
+  font-size: 0.9rem;
   outline: none;
   background-color: transparent;
 }
 
+.c7::-webkit-input-placeholder {
+  color: #9194A7;
+}
+
+.c7::-moz-placeholder {
+  color: #9194A7;
+}
+
+.c7:-ms-input-placeholder {
+  color: #9194A7;
+}
+
+.c7::placeholder {
+  color: #9194A7;
+}
+
 .c4 {
-  margin-bottom: 1.875rem;
+  padding-top: 1.4rem;
+  margin-bottom: 1rem;
   position: relative;
 }
 
@@ -161,6 +173,7 @@ exports[`Storyshots @components/organisms/BraintreePaymentGateway default 1`] = 
               />
               <label
                 className="c8"
+                disabled={false}
               >
                 Number
               </label>
@@ -202,6 +215,7 @@ exports[`Storyshots @components/organisms/BraintreePaymentGateway default 1`] = 
                 />
                 <label
                   className="c8"
+                  disabled={false}
                 >
                   CVC
                 </label>
@@ -240,6 +254,7 @@ exports[`Storyshots @components/organisms/BraintreePaymentGateway default 1`] = 
                 />
                 <label
                   className="c8"
+                  disabled={false}
                 >
                   ExpiryDate
                 </label>

@@ -18,18 +18,13 @@ exports[`Storyshots @components/atoms/Input default 1`] = `
 }
 
 .c4 {
-  position: absolute;
-  left: 1rem;
-  padding: 0 0rem;
   background-color: transparent;
-  font-size: 1rem;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transition: all 0.3s ease,color 0s;
-  transition: all 0.3s ease,color 0s;
+  color: #9194A7;
+  left: 0px;
+  position: absolute;
+  font-size: 0.9rem;
   pointer-events: none;
+  top: -1.5rem;
 }
 
 .c1 {
@@ -37,34 +32,50 @@ exports[`Storyshots @components/atoms/Input default 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  border: 1px solid #323232;
-  color: #323232;
+  border: 1px solid #E4E5ED;
+  border-radius: 4px;
+  color: #E4E5ED;
   outline: none;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
 .c1:hover {
-  color: rgb(33,18,94);
-  outline-width: 1px;
-  outline-style: solid;
-  border-color: rgb(33,18,94);
-  outline-color: rgb(33,18,94);
+  color: #E4E5ED;
+  border-color: #00B0CA;
 }
 
 .c2 {
   position: relative;
   width: 100%;
+  padding-right: 1.5rem;
 }
 
 .c3 {
-  padding: 0.8rem 1rem;
+  padding: 0.75rem 1rem;
   margin: 0;
   border: none;
+  color: #131336;
   width: 100%;
-  font-size: 1rem;
+  font-size: 0.9rem;
   outline: none;
   background-color: transparent;
+}
+
+.c3::-webkit-input-placeholder {
+  color: #9194A7;
+}
+
+.c3::-moz-placeholder {
+  color: #9194A7;
+}
+
+.c3:-ms-input-placeholder {
+  color: #9194A7;
+}
+
+.c3::placeholder {
+  color: #9194A7;
 }
 
 <div
@@ -86,6 +97,7 @@ exports[`Storyshots @components/atoms/Input default 1`] = `
       />
       <label
         className="c4"
+        disabled={false}
       >
         Empty
       </label>
@@ -115,18 +127,13 @@ exports[`Storyshots @components/atoms/Input disabled 1`] = `
 }
 
 .c4 {
-  position: absolute;
-  left: 1rem;
-  padding: 0 0rem;
   background-color: transparent;
-  font-size: 1rem;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transition: all 0.3s ease,color 0s;
-  transition: all 0.3s ease,color 0s;
+  color: #7d7d7d;
+  left: 0px;
+  position: absolute;
+  font-size: 0.9rem;
   pointer-events: none;
+  top: -1.5rem;
 }
 
 .c1 {
@@ -135,6 +142,7 @@ exports[`Storyshots @components/atoms/Input disabled 1`] = `
   display: -ms-flexbox;
   display: flex;
   border: 1px solid #7d7d7d;
+  border-radius: 4px;
   color: #7d7d7d;
   outline: none;
   -webkit-transition: all 0.3s ease;
@@ -143,25 +151,40 @@ exports[`Storyshots @components/atoms/Input disabled 1`] = `
 
 .c1:hover {
   color: #7d7d7d;
-  outline-width: 0px;
-  outline-style: solid;
   border-color: #7d7d7d;
-  outline-color: #7d7d7d;
 }
 
 .c2 {
   position: relative;
   width: 100%;
+  padding-right: 1.5rem;
 }
 
 .c3 {
-  padding: 0.8rem 1rem;
+  padding: 0.75rem 1rem;
   margin: 0;
   border: none;
+  color: #7d7d7d;
   width: 100%;
-  font-size: 1rem;
+  font-size: 0.9rem;
   outline: none;
   background-color: transparent;
+}
+
+.c3::-webkit-input-placeholder {
+  color: #9194A7;
+}
+
+.c3::-moz-placeholder {
+  color: #9194A7;
+}
+
+.c3:-ms-input-placeholder {
+  color: #9194A7;
+}
+
+.c3::placeholder {
+  color: #9194A7;
 }
 
 <div
@@ -183,6 +206,7 @@ exports[`Storyshots @components/atoms/Input disabled 1`] = `
       />
       <label
         className="c4"
+        disabled={true}
       >
         Text goes here
       </label>
@@ -212,18 +236,13 @@ exports[`Storyshots @components/atoms/Input error 1`] = `
 }
 
 .c4 {
-  position: absolute;
-  left: 0.5rem;
-  padding: 0 0.5rem;
   background-color: transparent;
-  font-size: 0.75rem;
-  top: 0;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transition: all 0.3s ease,color 0s;
-  transition: all 0.3s ease,color 0s;
+  color: #9194A7;
+  left: 0px;
+  position: absolute;
+  font-size: 0.9rem;
   pointer-events: none;
+  top: -1.5rem;
 }
 
 .c1 {
@@ -231,34 +250,50 @@ exports[`Storyshots @components/atoms/Input error 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  border: 1px solid #c22d74;
-  color: #c22d74;
+  border: 1px solid #E84545;
+  border-radius: 4px;
+  color: #E84545;
   outline: none;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
 .c1:hover {
-  color: #c22d74;
-  outline-width: 1px;
-  outline-style: solid;
-  border-color: #c22d74;
-  outline-color: #c22d74;
+  color: #E84545;
+  border-color: #E84545;
 }
 
 .c2 {
   position: relative;
   width: 100%;
+  padding-right: 1.5rem;
 }
 
 .c3 {
-  padding: 0.8rem 1rem;
+  padding: 0.75rem 1rem;
   margin: 0;
   border: none;
+  color: #E84545;
   width: 100%;
-  font-size: 1rem;
+  font-size: 0.9rem;
   outline: none;
   background-color: transparent;
+}
+
+.c3::-webkit-input-placeholder {
+  color: #9194A7;
+}
+
+.c3::-moz-placeholder {
+  color: #9194A7;
+}
+
+.c3:-ms-input-placeholder {
+  color: #9194A7;
+}
+
+.c3::placeholder {
+  color: #9194A7;
 }
 
 <div
@@ -280,6 +315,7 @@ exports[`Storyshots @components/atoms/Input error 1`] = `
       />
       <label
         className="c4"
+        disabled={false}
       >
         Text goes here
       </label>
@@ -309,18 +345,13 @@ exports[`Storyshots @components/atoms/Input with value 1`] = `
 }
 
 .c4 {
-  position: absolute;
-  left: 0.5rem;
-  padding: 0 0.5rem;
   background-color: transparent;
-  font-size: 0.75rem;
-  top: 0;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transition: all 0.3s ease,color 0s;
-  transition: all 0.3s ease,color 0s;
+  color: #9194A7;
+  left: 0px;
+  position: absolute;
+  font-size: 0.9rem;
   pointer-events: none;
+  top: -1.5rem;
 }
 
 .c1 {
@@ -328,19 +359,17 @@ exports[`Storyshots @components/atoms/Input with value 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  border: 1px solid #323232;
-  color: #323232;
+  border: 1px solid #E4E5ED;
+  border-radius: 4px;
+  color: #E4E5ED;
   outline: none;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
 .c1:hover {
-  color: rgb(33,18,94);
-  outline-width: 1px;
-  outline-style: solid;
-  border-color: rgb(33,18,94);
-  outline-color: rgb(33,18,94);
+  color: #E4E5ED;
+  border-color: #00B0CA;
 }
 
 .c5 {
@@ -357,16 +386,34 @@ exports[`Storyshots @components/atoms/Input with value 1`] = `
 .c2 {
   position: relative;
   width: 100%;
+  padding-right: 1.5rem;
 }
 
 .c3 {
-  padding: 0.8rem 1rem;
+  padding: 0.75rem 1rem;
   margin: 0;
   border: none;
+  color: #131336;
   width: 100%;
-  font-size: 1rem;
+  font-size: 0.9rem;
   outline: none;
   background-color: transparent;
+}
+
+.c3::-webkit-input-placeholder {
+  color: #9194A7;
+}
+
+.c3::-moz-placeholder {
+  color: #9194A7;
+}
+
+.c3:-ms-input-placeholder {
+  color: #9194A7;
+}
+
+.c3::placeholder {
+  color: #9194A7;
 }
 
 <div
@@ -388,6 +435,7 @@ exports[`Storyshots @components/atoms/Input with value 1`] = `
       />
       <label
         className="c4"
+        disabled={false}
       >
         Text goes here
       </label>
