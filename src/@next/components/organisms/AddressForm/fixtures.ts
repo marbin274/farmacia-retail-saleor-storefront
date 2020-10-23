@@ -19,6 +19,7 @@ export const address = {
     country: "United States of America",
   },
   countryArea: "NY",
+  email: "abc@xyz.com",
   firstName: "John",
   lastName: "Doe",
   phone: "555-55555",

@@ -3,7 +3,11 @@ import { IAddressWithAddressType } from "@types";
 import { GetShop_shop_countries } from "@temp/@sdk/queries/gqlTypes/GetShop";
 import { Address } from "./types";
 
-const formAddress: IAddressWithAddressType = {
+interface ICheckoutAddressData extends IAddressWithAddressType {
+  email?: string;
+};
+
+const formAddress: ICheckoutAddressData = {
   city: "Wroclaw",
   companyName: "Mirumee",
   country: {
@@ -11,6 +15,7 @@ const formAddress: IAddressWithAddressType = {
     country: "Poland",
   },
   countryArea: "dolnyslask",
+  email: "abc@xyz.com",
   firstName: "John",
   id: "12345",
   isDefaultBillingAddress: false,
@@ -72,4 +77,5 @@ export const LOGGED_IN_USER_PROPS = {
 export const ANONYMOUS_USER_PROPS = {
   checkoutAddress: formAddress,
   countries,
+  email: formAddress.email,
 };

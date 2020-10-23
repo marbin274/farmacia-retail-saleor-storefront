@@ -8,13 +8,13 @@ import { IProps } from "./types";
 
 const ADDRESS_FIELDS = [
   "city",
-  "companyName",
-  "countryArea",
+  // "companyName", // currently unused
+  // "countryArea", // currently unused
   "firstName",
   "lastName",
   "country",
   "phone",
-  "postalCode",
+  // "postalCode", // currently unused
   "streetAddress1",
   "streetAddress2",
   "email",

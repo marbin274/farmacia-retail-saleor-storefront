@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   margin: 20px;
 }
 
-.c19 {
+.c18 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -17,12 +17,12 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   box-sizing: border-box;
 }
 
-.c16 {
+.c15 {
   padding-top: 1.4rem;
   margin-bottom: 1.875rem;
 }
 
-.c18 {
+.c17 {
   top: 100%;
 }
 
@@ -87,7 +87,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   color: #9194A7;
 }
 
-.c17 {
+.c16 {
   fill: #00B0CA;
   position: absolute;
   right: 1rem;
@@ -144,10 +144,6 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
 
 .c8 > div {
   width: calc(50% - 1.875rem / 2);
-}
-
-.c15 {
-  width: 100%;
 }
 
 .c4 {
@@ -244,39 +240,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                     className="c13"
                     disabled={false}
                   >
-                    First Name
-                  </label>
-                </div>
-              </div>
-              <div
-                className="c14"
-              />
-            </div>
-            <div
-              className="c9"
-            >
-              <div
-                className="c10"
-                disabled={false}
-              >
-                <div
-                  className="c11"
-                >
-                  <input
-                    autoComplete="family-name"
-                    className="c12"
-                    data-cy="addressFormLastName"
-                    disabled={false}
-                    name="lastName"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                  />
-                  <label
-                    className="c13"
-                    disabled={false}
-                  >
-                    Last Name
+                    Nombre Completo
                   </label>
                 </div>
               </div>
@@ -288,38 +252,6 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
           <div
             className="c8"
           >
-            <div
-              className="c9"
-            >
-              <div
-                className="c10"
-                disabled={false}
-              >
-                <div
-                  className="c11"
-                >
-                  <input
-                    autoComplete="organization"
-                    className="c12"
-                    data-cy="addressFormCompanyName"
-                    disabled={false}
-                    name="companyName"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                  />
-                  <label
-                    className="c13"
-                    disabled={false}
-                  >
-                    Company Name (Optional)
-                  </label>
-                </div>
-              </div>
-              <div
-                className="c14"
-              />
-            </div>
             <div
               className="c9"
             >
@@ -344,7 +276,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                     className="c13"
                     disabled={false}
                   >
-                    Phone
+                    Telefono
                   </label>
                 </div>
               </div>
@@ -372,7 +304,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
             </span>
           </div>
           <div
-            className="c15"
+            className="c8"
           >
             <div
               className="c9"
@@ -398,7 +330,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                     className="c13"
                     disabled={false}
                   >
-                    Address line 1
+                    Dirección
                   </label>
                 </div>
               </div>
@@ -406,10 +338,6 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                 className="c14"
               />
             </div>
-          </div>
-          <div
-            className="c15"
-          >
             <div
               className="c9"
             >
@@ -434,7 +362,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                     className="c13"
                     disabled={false}
                   >
-                    Address line 2
+                    Información adicional (opcional)
                   </label>
                 </div>
               </div>
@@ -447,75 +375,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
             className="c8"
           >
             <div
-              className="c9"
-            >
-              <div
-                className="c10"
-                disabled={false}
-              >
-                <div
-                  className="c11"
-                >
-                  <input
-                    autoComplete="address-level1"
-                    className="c12"
-                    data-cy="addressFormCity"
-                    disabled={false}
-                    name="city"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                  />
-                  <label
-                    className="c13"
-                    disabled={false}
-                  >
-                    City
-                  </label>
-                </div>
-              </div>
-              <div
-                className="c14"
-              />
-            </div>
-            <div
-              className="c9"
-            >
-              <div
-                className="c10"
-                disabled={false}
-              >
-                <div
-                  className="c11"
-                >
-                  <input
-                    autoComplete="postal-code"
-                    className="c12"
-                    data-cy="addressFormPostalCode"
-                    disabled={false}
-                    name="postalCode"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                  />
-                  <label
-                    className="c13"
-                    disabled={false}
-                  >
-                    ZIP/Postal Code
-                  </label>
-                </div>
-              </div>
-              <div
-                className="c14"
-              />
-            </div>
-          </div>
-          <div
-            className="c8"
-          >
-            <div
-              className="c16"
+              className="c15"
             >
               <div
                 className="css-1pcexqc-container"
@@ -594,7 +454,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                     </div>
                   </div>
                   <div
-                    className="c17"
+                    className="c16"
                     rotate="false"
                   >
                     <svg
@@ -617,7 +477,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                 </label>
               </div>
               <div
-                className="c18"
+                className="c17"
               />
             </div>
             <div
@@ -631,11 +491,11 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                   className="c11"
                 >
                   <input
-                    autoComplete="address-level2"
+                    autoComplete="address-level1"
                     className="c12"
-                    data-cy="addressFormCountryArea"
+                    data-cy="addressFormCity"
                     disabled={false}
-                    name="countryArea"
+                    name="city"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
@@ -644,7 +504,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                     className="c13"
                     disabled={false}
                   >
-                    State/province
+                    City
                   </label>
                 </div>
               </div>
@@ -658,7 +518,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
     </form>
   </div>
   <div
-    className="c19"
+    className="c18"
   />
 </div>
 `;
@@ -669,7 +529,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   margin: 20px;
 }
 
-.c23 {
+.c22 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -689,12 +549,12 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   margin: 0;
 }
 
-.c20 {
+.c19 {
   padding-top: 1.4rem;
   margin-bottom: 1.875rem;
 }
 
-.c22 {
+.c21 {
   top: 100%;
 }
 
@@ -804,7 +664,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   color: #9194A7;
 }
 
-.c21 {
+.c20 {
   fill: #00B0CA;
   position: absolute;
   right: 1rem;
@@ -861,10 +721,6 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
 
 .c8 > div {
   width: calc(50% - 1.875rem / 2);
-}
-
-.c19 {
-  width: 100%;
 }
 
 .c4 {
@@ -961,49 +817,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                     className="c13"
                     disabled={false}
                   >
-                    First Name
-                  </label>
-                </div>
-              </div>
-              <div
-                className="c14"
-              >
-                <div
-                  className="c15"
-                >
-                  <p
-                    className="c16"
-                  >
-                    This is error
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div
-              className="c9"
-            >
-              <div
-                className="c10"
-                disabled={false}
-              >
-                <div
-                  className="c11"
-                >
-                  <input
-                    autoComplete="family-name"
-                    className="c12"
-                    data-cy="addressFormLastName"
-                    disabled={false}
-                    name="lastName"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                  />
-                  <label
-                    className="c13"
-                    disabled={false}
-                  >
-                    Last Name
+                    Nombre Completo
                   </label>
                 </div>
               </div>
@@ -1036,38 +850,6 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                   className="c11"
                 >
                   <input
-                    autoComplete="organization"
-                    className="c18"
-                    data-cy="addressFormCompanyName"
-                    disabled={false}
-                    name="companyName"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                  />
-                  <label
-                    className="c13"
-                    disabled={false}
-                  >
-                    Company Name (Optional)
-                  </label>
-                </div>
-              </div>
-              <div
-                className="c14"
-              />
-            </div>
-            <div
-              className="c9"
-            >
-              <div
-                className="c17"
-                disabled={false}
-              >
-                <div
-                  className="c11"
-                >
-                  <input
                     autoComplete="tel"
                     className="c18"
                     data-cy="addressFormPhone"
@@ -1081,7 +863,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                     className="c13"
                     disabled={false}
                   >
-                    Phone
+                    Telefono
                   </label>
                 </div>
               </div>
@@ -1109,7 +891,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
             </span>
           </div>
           <div
-            className="c19"
+            className="c8"
           >
             <div
               className="c9"
@@ -1135,7 +917,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                     className="c13"
                     disabled={false}
                   >
-                    Address line 1
+                    Dirección
                   </label>
                 </div>
               </div>
@@ -1143,10 +925,6 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                 className="c14"
               />
             </div>
-          </div>
-          <div
-            className="c19"
-          >
             <div
               className="c9"
             >
@@ -1171,7 +949,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                     className="c13"
                     disabled={false}
                   >
-                    Address line 2
+                    Información adicional (opcional)
                   </label>
                 </div>
               </div>
@@ -1184,75 +962,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
             className="c8"
           >
             <div
-              className="c9"
-            >
-              <div
-                className="c17"
-                disabled={false}
-              >
-                <div
-                  className="c11"
-                >
-                  <input
-                    autoComplete="address-level1"
-                    className="c18"
-                    data-cy="addressFormCity"
-                    disabled={false}
-                    name="city"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                  />
-                  <label
-                    className="c13"
-                    disabled={false}
-                  >
-                    City
-                  </label>
-                </div>
-              </div>
-              <div
-                className="c14"
-              />
-            </div>
-            <div
-              className="c9"
-            >
-              <div
-                className="c17"
-                disabled={false}
-              >
-                <div
-                  className="c11"
-                >
-                  <input
-                    autoComplete="postal-code"
-                    className="c18"
-                    data-cy="addressFormPostalCode"
-                    disabled={false}
-                    name="postalCode"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                  />
-                  <label
-                    className="c13"
-                    disabled={false}
-                  >
-                    ZIP/Postal Code
-                  </label>
-                </div>
-              </div>
-              <div
-                className="c14"
-              />
-            </div>
-          </div>
-          <div
-            className="c8"
-          >
-            <div
-              className="c20"
+              className="c19"
             >
               <div
                 className="css-1pcexqc-container"
@@ -1331,7 +1041,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                     </div>
                   </div>
                   <div
-                    className="c21"
+                    className="c20"
                     rotate="false"
                   >
                     <svg
@@ -1354,7 +1064,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                 </label>
               </div>
               <div
-                className="c22"
+                className="c21"
               />
             </div>
             <div
@@ -1368,11 +1078,11 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                   className="c11"
                 >
                   <input
-                    autoComplete="address-level2"
+                    autoComplete="address-level1"
                     className="c18"
-                    data-cy="addressFormCountryArea"
+                    data-cy="addressFormCity"
                     disabled={false}
-                    name="countryArea"
+                    name="city"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
@@ -1381,7 +1091,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                     className="c13"
                     disabled={false}
                   >
-                    State/province
+                    City
                   </label>
                 </div>
               </div>
@@ -1395,7 +1105,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
     </form>
   </div>
   <div
-    className="c23"
+    className="c22"
   />
 </div>
 `;
@@ -1406,7 +1116,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   margin: 20px;
 }
 
-.c19 {
+.c18 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1417,12 +1127,12 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   box-sizing: border-box;
 }
 
-.c16 {
+.c15 {
   padding-top: 1.4rem;
   margin-bottom: 1.875rem;
 }
 
-.c18 {
+.c17 {
   top: 100%;
 }
 
@@ -1487,7 +1197,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   color: #9194A7;
 }
 
-.c17 {
+.c16 {
   fill: #00B0CA;
   position: absolute;
   right: 1rem;
@@ -1544,10 +1254,6 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
 
 .c8 > div {
   width: calc(50% - 1.875rem / 2);
-}
-
-.c15 {
-  width: 100%;
 }
 
 .c4 {
@@ -1645,40 +1351,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                     className="c13"
                     disabled={false}
                   >
-                    First Name
-                  </label>
-                </div>
-              </div>
-              <div
-                className="c14"
-              />
-            </div>
-            <div
-              className="c9"
-            >
-              <div
-                className="c10"
-                disabled={false}
-              >
-                <div
-                  className="c11"
-                >
-                  <input
-                    autoComplete="family-name"
-                    className="c12"
-                    data-cy="addressFormLastName"
-                    disabled={false}
-                    name="lastName"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                    value="Doe"
-                  />
-                  <label
-                    className="c13"
-                    disabled={false}
-                  >
-                    Last Name
+                    Nombre Completo
                   </label>
                 </div>
               </div>
@@ -1690,39 +1363,6 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
           <div
             className="c8"
           >
-            <div
-              className="c9"
-            >
-              <div
-                className="c10"
-                disabled={false}
-              >
-                <div
-                  className="c11"
-                >
-                  <input
-                    autoComplete="organization"
-                    className="c12"
-                    data-cy="addressFormCompanyName"
-                    disabled={false}
-                    name="companyName"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                    value="Mirumee"
-                  />
-                  <label
-                    className="c13"
-                    disabled={false}
-                  >
-                    Company Name (Optional)
-                  </label>
-                </div>
-              </div>
-              <div
-                className="c14"
-              />
-            </div>
             <div
               className="c9"
             >
@@ -1748,7 +1388,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                     className="c13"
                     disabled={false}
                   >
-                    Phone
+                    Telefono
                   </label>
                 </div>
               </div>
@@ -1776,7 +1416,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
             </span>
           </div>
           <div
-            className="c15"
+            className="c8"
           >
             <div
               className="c9"
@@ -1803,7 +1443,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                     className="c13"
                     disabled={false}
                   >
-                    Address line 1
+                    Dirección
                   </label>
                 </div>
               </div>
@@ -1811,10 +1451,6 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                 className="c14"
               />
             </div>
-          </div>
-          <div
-            className="c15"
-          >
             <div
               className="c9"
             >
@@ -1840,7 +1476,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                     className="c13"
                     disabled={false}
                   >
-                    Address line 2
+                    Información adicional (opcional)
                   </label>
                 </div>
               </div>
@@ -1853,77 +1489,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
             className="c8"
           >
             <div
-              className="c9"
-            >
-              <div
-                className="c10"
-                disabled={false}
-              >
-                <div
-                  className="c11"
-                >
-                  <input
-                    autoComplete="address-level1"
-                    className="c12"
-                    data-cy="addressFormCity"
-                    disabled={false}
-                    name="city"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                    value="New York"
-                  />
-                  <label
-                    className="c13"
-                    disabled={false}
-                  >
-                    City
-                  </label>
-                </div>
-              </div>
-              <div
-                className="c14"
-              />
-            </div>
-            <div
-              className="c9"
-            >
-              <div
-                className="c10"
-                disabled={false}
-              >
-                <div
-                  className="c11"
-                >
-                  <input
-                    autoComplete="postal-code"
-                    className="c12"
-                    data-cy="addressFormPostalCode"
-                    disabled={false}
-                    name="postalCode"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                    value="90210"
-                  />
-                  <label
-                    className="c13"
-                    disabled={false}
-                  >
-                    ZIP/Postal Code
-                  </label>
-                </div>
-              </div>
-              <div
-                className="c14"
-              />
-            </div>
-          </div>
-          <div
-            className="c8"
-          >
-            <div
-              className="c16"
+              className="c15"
             >
               <div
                 className="css-1pcexqc-container"
@@ -2002,7 +1568,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                     </div>
                   </div>
                   <div
-                    className="c17"
+                    className="c16"
                     rotate="false"
                   >
                     <svg
@@ -2025,7 +1591,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                 </label>
               </div>
               <div
-                className="c18"
+                className="c17"
               />
             </div>
             <div
@@ -2039,21 +1605,21 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                   className="c11"
                 >
                   <input
-                    autoComplete="address-level2"
+                    autoComplete="address-level1"
                     className="c12"
-                    data-cy="addressFormCountryArea"
+                    data-cy="addressFormCity"
                     disabled={false}
-                    name="countryArea"
+                    name="city"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
-                    value="NY"
+                    value="New York"
                   />
                   <label
                     className="c13"
                     disabled={false}
                   >
-                    State/province
+                    City
                   </label>
                 </div>
               </div>
@@ -2067,7 +1633,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
     </form>
   </div>
   <div
-    className="c19"
+    className="c18"
   />
 </div>
 `;

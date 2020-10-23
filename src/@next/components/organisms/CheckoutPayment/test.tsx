@@ -75,19 +75,16 @@ describe("<CheckoutPayment />", () => {
         .at(n)
         .prop("value");
     expect(getValue(0)).toEqual(address.firstName);
-    expect(getValue(1)).toEqual(address.lastName);
-    expect(getValue(2)).toEqual(address.companyName);
-    expect(getValue(3)).toEqual(address.phone);
-    expect(getValue(4)).toEqual(address.streetAddress1);
-    expect(getValue(5)).toEqual(address.streetAddress2);
-    expect(getValue(6)).toEqual(address.city);
-    expect(getValue(7)).toEqual(address.postalCode);
+    // expect(getValue(1)).toEqual(address.email);
+    expect(getValue(1)).toEqual(address.phone);
+    expect(getValue(2)).toEqual(address.streetAddress1);
+    expect(getValue(3)).toEqual(address.streetAddress2);
+    expect(getValue(4)).toEqual(address.city);
     expect(
       wrapper
         .find(Select)
         .at(0)
         .prop("value").code
     ).toEqual(address.country?.code);
-    expect(getValue(8)).toEqual(address.countryArea);
   });
 });

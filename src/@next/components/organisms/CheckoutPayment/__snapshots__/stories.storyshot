@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/CheckoutPayment default 1`] = `
   margin: 20px;
 }
 
-.c26 {
+.c25 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -105,12 +105,12 @@ exports[`Storyshots @components/organisms/CheckoutPayment default 1`] = `
   background-color: rgb(33,18,94);
 }
 
-.c20 {
+.c19 {
   padding-top: 1.4rem;
   margin-bottom: 1.875rem;
 }
 
-.c22 {
+.c21 {
   top: 100%;
 }
 
@@ -175,17 +175,17 @@ exports[`Storyshots @components/organisms/CheckoutPayment default 1`] = `
   color: #9194A7;
 }
 
-.c25 {
+.c24 {
   cursor: pointer;
 }
 
-.c25 input[type="radio"] {
+.c24 input[type="radio"] {
   opacity: 0;
   position: fixed;
   width: 0;
 }
 
-.c25 > div {
+.c24 > div {
   display: inline-block;
   width: 1em;
   height: 1em;
@@ -196,7 +196,7 @@ exports[`Storyshots @components/organisms/CheckoutPayment default 1`] = `
   vertical-align: bottom;
 }
 
-.c21 {
+.c20 {
   fill: #00B0CA;
   position: absolute;
   right: 1rem;
@@ -255,10 +255,6 @@ exports[`Storyshots @components/organisms/CheckoutPayment default 1`] = `
   width: calc(50% - 1.875rem / 2);
 }
 
-.c19 {
-  width: 100%;
-}
-
 .c8 {
   padding-top: 1rem;
   padding-bottom: 2rem;
@@ -286,12 +282,12 @@ exports[`Storyshots @components/organisms/CheckoutPayment default 1`] = `
   padding-left: 1rem;
 }
 
-.c23 {
+.c22 {
   display: grid;
   grid-gap: 20px;
 }
 
-.c24 {
+.c23 {
   display: block;
   background-color: #f1f5f5;
   padding: 20px;
@@ -407,40 +403,7 @@ exports[`Storyshots @components/organisms/CheckoutPayment default 1`] = `
                       className="c17"
                       disabled={false}
                     >
-                      First Name
-                    </label>
-                  </div>
-                </div>
-                <div
-                  className="c18"
-                />
-              </div>
-              <div
-                className="c13"
-              >
-                <div
-                  className="c14"
-                  disabled={false}
-                >
-                  <div
-                    className="c15"
-                  >
-                    <input
-                      autoComplete="family-name"
-                      className="c16"
-                      data-cy="addressFormLastName"
-                      disabled={false}
-                      name="lastName"
-                      onBlur={[Function]}
-                      onChange={[Function]}
-                      onFocus={[Function]}
-                      value="Doe"
-                    />
-                    <label
-                      className="c17"
-                      disabled={false}
-                    >
-                      Last Name
+                      Nombre Completo
                     </label>
                   </div>
                 </div>
@@ -452,39 +415,6 @@ exports[`Storyshots @components/organisms/CheckoutPayment default 1`] = `
             <div
               className="c12"
             >
-              <div
-                className="c13"
-              >
-                <div
-                  className="c14"
-                  disabled={false}
-                >
-                  <div
-                    className="c15"
-                  >
-                    <input
-                      autoComplete="organization"
-                      className="c16"
-                      data-cy="addressFormCompanyName"
-                      disabled={false}
-                      name="companyName"
-                      onBlur={[Function]}
-                      onChange={[Function]}
-                      onFocus={[Function]}
-                      value="Mirumee"
-                    />
-                    <label
-                      className="c17"
-                      disabled={false}
-                    >
-                      Company Name (Optional)
-                    </label>
-                  </div>
-                </div>
-                <div
-                  className="c18"
-                />
-              </div>
               <div
                 className="c13"
               >
@@ -510,7 +440,7 @@ exports[`Storyshots @components/organisms/CheckoutPayment default 1`] = `
                       className="c17"
                       disabled={false}
                     >
-                      Phone
+                      Telefono
                     </label>
                   </div>
                 </div>
@@ -538,7 +468,7 @@ exports[`Storyshots @components/organisms/CheckoutPayment default 1`] = `
               </span>
             </div>
             <div
-              className="c19"
+              className="c12"
             >
               <div
                 className="c13"
@@ -565,7 +495,7 @@ exports[`Storyshots @components/organisms/CheckoutPayment default 1`] = `
                       className="c17"
                       disabled={false}
                     >
-                      Address line 1
+                      Dirección
                     </label>
                   </div>
                 </div>
@@ -573,10 +503,6 @@ exports[`Storyshots @components/organisms/CheckoutPayment default 1`] = `
                   className="c18"
                 />
               </div>
-            </div>
-            <div
-              className="c19"
-            >
               <div
                 className="c13"
               >
@@ -602,7 +528,7 @@ exports[`Storyshots @components/organisms/CheckoutPayment default 1`] = `
                       className="c17"
                       disabled={false}
                     >
-                      Address line 2
+                      Información adicional (opcional)
                     </label>
                   </div>
                 </div>
@@ -615,77 +541,7 @@ exports[`Storyshots @components/organisms/CheckoutPayment default 1`] = `
               className="c12"
             >
               <div
-                className="c13"
-              >
-                <div
-                  className="c14"
-                  disabled={false}
-                >
-                  <div
-                    className="c15"
-                  >
-                    <input
-                      autoComplete="address-level1"
-                      className="c16"
-                      data-cy="addressFormCity"
-                      disabled={false}
-                      name="city"
-                      onBlur={[Function]}
-                      onChange={[Function]}
-                      onFocus={[Function]}
-                      value="Wroclaw"
-                    />
-                    <label
-                      className="c17"
-                      disabled={false}
-                    >
-                      City
-                    </label>
-                  </div>
-                </div>
-                <div
-                  className="c18"
-                />
-              </div>
-              <div
-                className="c13"
-              >
-                <div
-                  className="c14"
-                  disabled={false}
-                >
-                  <div
-                    className="c15"
-                  >
-                    <input
-                      autoComplete="postal-code"
-                      className="c16"
-                      data-cy="addressFormPostalCode"
-                      disabled={false}
-                      name="postalCode"
-                      onBlur={[Function]}
-                      onChange={[Function]}
-                      onFocus={[Function]}
-                      value="55-555"
-                    />
-                    <label
-                      className="c17"
-                      disabled={false}
-                    >
-                      ZIP/Postal Code
-                    </label>
-                  </div>
-                </div>
-                <div
-                  className="c18"
-                />
-              </div>
-            </div>
-            <div
-              className="c12"
-            >
-              <div
-                className="c20"
+                className="c19"
               >
                 <div
                   className="css-1pcexqc-container"
@@ -764,7 +620,7 @@ exports[`Storyshots @components/organisms/CheckoutPayment default 1`] = `
                       </div>
                     </div>
                     <div
-                      className="c21"
+                      className="c20"
                       rotate="false"
                     >
                       <svg
@@ -787,7 +643,7 @@ exports[`Storyshots @components/organisms/CheckoutPayment default 1`] = `
                   </label>
                 </div>
                 <div
-                  className="c22"
+                  className="c21"
                 />
               </div>
               <div
@@ -801,21 +657,21 @@ exports[`Storyshots @components/organisms/CheckoutPayment default 1`] = `
                     className="c15"
                   >
                     <input
-                      autoComplete="address-level2"
+                      autoComplete="address-level1"
                       className="c16"
-                      data-cy="addressFormCountryArea"
+                      data-cy="addressFormCity"
                       disabled={false}
-                      name="countryArea"
+                      name="city"
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
-                      value="dolnyslask"
+                      value="Wroclaw"
                     />
                     <label
                       className="c17"
                       disabled={false}
                     >
-                      State/province
+                      City
                     </label>
                   </div>
                 </div>
@@ -866,16 +722,16 @@ exports[`Storyshots @components/organisms/CheckoutPayment default 1`] = `
         className="c5"
       />
       <div
-        className="c23"
+        className="c22"
       >
         <div>
           <label
             checked={false}
-            className="c24"
+            className="c23"
           >
             <div
               checked={false}
-              className="c25"
+              className="c24"
             >
               <input
                 checked={false}
@@ -900,11 +756,11 @@ exports[`Storyshots @components/organisms/CheckoutPayment default 1`] = `
         <div>
           <label
             checked={false}
-            className="c24"
+            className="c23"
           >
             <div
               checked={false}
-              className="c25"
+              className="c24"
             >
               <input
                 checked={false}
@@ -930,7 +786,7 @@ exports[`Storyshots @components/organisms/CheckoutPayment default 1`] = `
     </section>
   </div>
   <div
-    className="c26"
+    className="c25"
   />
 </div>
 `;

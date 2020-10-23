@@ -1,7 +1,11 @@
 import { GetShop_shop_countries } from "@temp/@sdk/queries/gqlTypes/GetShop";
 import { IAddressWithAddressType, IPaymentGateway } from "@types";
 
-const address: IAddressWithAddressType = {
+interface IAddressFixture extends IAddressWithAddressType {
+  email?: string;
+};
+
+const address: IAddressFixture = {
   city: "Wroclaw",
   companyName: "Mirumee",
   country: {
@@ -9,6 +13,7 @@ const address: IAddressWithAddressType = {
     country: "Poland",
   },
   countryArea: "dolnyslask",
+  email: "abc@xyz.com",
   firstName: "John",
   id: "12345",
   isDefaultBillingAddress: false,
@@ -79,5 +84,6 @@ export const ANONYMOUS_USER_PROPS = {
   billingAsShippingPossible: true,
   checkoutBillingAddress: address,
   countries,
+  email: address.email,
   paymentGateways,
 };

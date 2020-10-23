@@ -49,36 +49,29 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
             <TextField
               data-cy="addressFormFirstName"
               name="firstName"
-              label="First Name"
+              label="Nombre Completo"
               value={values!.firstName}
               autoComplete="given-name"
               errors={fieldErrors!.firstName}
               {...basicInputProps()}
             />
-            <TextField
-              data-cy="addressFormLastName"
-              name="lastName"
-              label="Last Name"
-              value={values!.lastName}
-              autoComplete="family-name"
-              errors={fieldErrors!.lastName}
-              {...basicInputProps()}
-            />
+            {includeEmail && (
+              <TextField
+                data-cy="addressFormEmail"
+                name="email"
+                label="Email"
+                value={values!.email}
+                autoComplete="email"
+                errors={fieldErrors!.email}
+                {...basicInputProps()}
+              />
+            )}
           </S.RowWithTwoCells>
           <S.RowWithTwoCells>
             <TextField
-              data-cy="addressFormCompanyName"
-              name="companyName"
-              label="Company Name (Optional)"
-              value={values!.companyName}
-              autoComplete="organization"
-              errors={fieldErrors!.companyName}
-              {...basicInputProps()}
-            />
-            <TextField
               data-cy="addressFormPhone"
               name="phone"
-              label="Phone"
+              label="Telefono"
               value={values!.phone}
               autoComplete="tel"
               errors={fieldErrors!.phone}
@@ -88,45 +81,23 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
         </S.FieldsGroup>
         <S.FieldsGroup>
           {renderGroupLabel(2, 'Dirección')}
-          <S.RowWithOneCell>
+          <S.RowWithTwoCells>
             <TextField
               data-cy="addressFormStreetAddress1"
               name="streetAddress1"
-              label="Address line 1"
+              label="Dirección"
               value={values!.streetAddress1}
               autoComplete="address-line1"
               errors={fieldErrors!.streetAddress1}
               {...basicInputProps()}
             />
-          </S.RowWithOneCell>
-          <S.RowWithOneCell>
             <TextField
               data-cy="addressFormStreetAddress2"
               name="streetAddress2"
-              label="Address line 2"
+              label="Información adicional (opcional)"
               value={values!.streetAddress2}
               autoComplete="address-line2"
               errors={fieldErrors!.streetAddress2}
-              {...basicInputProps()}
-            />
-          </S.RowWithOneCell>
-          <S.RowWithTwoCells>
-            <TextField
-              data-cy="addressFormCity"
-              name="city"
-              label="City"
-              value={values!.city}
-              autoComplete="address-level1"
-              errors={fieldErrors!.city}
-              {...basicInputProps()}
-            />
-            <TextField
-              data-cy="addressFormPostalCode"
-              name="postalCode"
-              label="ZIP/Postal Code"
-              value={values!.postalCode}
-              autoComplete="postal-code"
-              errors={fieldErrors!.postalCode}
               {...basicInputProps()}
             />
           </S.RowWithTwoCells>
@@ -152,28 +123,15 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
               errors={fieldErrors!.country}
             />
             <TextField
-              data-cy="addressFormCountryArea"
-              name="countryArea"
-              label="State/province"
-              value={values!.countryArea}
-              autoComplete="address-level2"
-              errors={fieldErrors!.countryArea}
+              data-cy="addressFormCity"
+              name="city"
+              label="City"
+              value={values!.city}
+              autoComplete="address-level1"
+              errors={fieldErrors!.city}
               {...basicInputProps()}
             />
           </S.RowWithTwoCells>
-          {includeEmail && (
-            <S.RowWithTwoCells>
-              <TextField
-                data-cy="addressFormEmail"
-                name="email"
-                label="Email"
-                value={values!.email}
-                autoComplete="email"
-                errors={fieldErrors!.email}
-                {...basicInputProps()}
-              />
-            </S.RowWithTwoCells>
-          )}
         </S.FieldsGroup>
       </S.Wrapper>
     </S.AddressForm>
