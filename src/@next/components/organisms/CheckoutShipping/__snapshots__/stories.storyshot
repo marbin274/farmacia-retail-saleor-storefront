@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
   margin: 20px;
 }
 
-.c6 {
+.c7 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -17,70 +17,78 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
   box-sizing: border-box;
 }
 
-.c4 {
+.c3 {
   cursor: pointer;
 }
 
-.c4 input[type="radio"] {
+.c3 input[type="radio"] {
   opacity: 0;
   position: fixed;
   width: 0;
 }
 
-.c4 > div {
+.c3 > div {
   display: inline-block;
   width: 1em;
   height: 1em;
   margin: 0.25em 1em 0.25em 0.25em;
-  border: 0.1em solid #21125e;
+  border: 0.1em solid #9194A7;
   border-radius: 0.5em;
-  background: #ffffff;
+  background: #fff;
   vertical-align: bottom;
 }
 
-.c2 {
+.c1 {
   display: grid;
   grid-gap: 20px;
 }
 
-.c1 {
-  font-weight: 600;
-  padding: 0 0 1.6rem 0;
-}
-
-.c3 {
+.c2 {
+  background-color: #fff;
+  border: 2px solid #E4E5ED;
+  border-radius: 1rem;
   display: block;
-  background-color: #f1f5f5;
-  padding: 20px;
   font-size: 0.875rem;
   cursor: pointer;
+  padding: 20px;
+}
+
+.c4 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex: justify-content;
+  -ms-flex: justify-content;
+  flex: justify-content;
+  width: calc(100% - 3em);
 }
 
 .c5 {
-  color: #21125e;
+  color: #9194A7;
+  width: 100%;
+}
+
+.c6 {
+  color: #9194A7;
+  width: 3rem;
 }
 
 <div
   className="c0"
 >
   <section>
-    <h3
-      className="c1"
-      data-cy="checkoutPageSubtitle"
-    >
-      SHIPPING METHOD
-    </h3>
     <form
-      className="c2"
+      className="c1"
       onSubmit={[Function]}
     >
       <label
         checked={false}
-        className="c3"
+        className="c2"
       >
         <div
           checked={false}
-          className="c4"
+          className="c3"
         >
           <input
             checked={false}
@@ -95,30 +103,35 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
             <span />
           </div>
           <span
-            data-cy="checkoutShippingMethodOption0Name"
+            className="c4"
           >
-            Basic
-          </span>
-          <span
-            className="c5"
-          >
-             
-            | +
             <span
-              data-cy="checkoutShippingMethodOption0Price"
+              checked={false}
+              className="c5"
+              data-cy="checkoutShippingMethodOption0Name"
             >
-              
+              Basic
+            </span>
+            <span
+              checked={false}
+              className="c6"
+            >
+              <span
+                data-cy="checkoutShippingMethodOption0Price"
+              >
+                
+              </span>
             </span>
           </span>
         </div>
       </label>
       <label
         checked={false}
-        className="c3"
+        className="c2"
       >
         <div
           checked={false}
-          className="c4"
+          className="c3"
         >
           <input
             checked={false}
@@ -133,19 +146,24 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
             <span />
           </div>
           <span
-            data-cy="checkoutShippingMethodOption1Name"
+            className="c4"
           >
-            Extra
-          </span>
-          <span
-            className="c5"
-          >
-             
-            | +
             <span
-              data-cy="checkoutShippingMethodOption1Price"
+              checked={false}
+              className="c5"
+              data-cy="checkoutShippingMethodOption1Name"
             >
-              
+              Extra
+            </span>
+            <span
+              checked={false}
+              className="c6"
+            >
+              <span
+                data-cy="checkoutShippingMethodOption1Price"
+              >
+                
+              </span>
             </span>
           </span>
         </div>
@@ -153,7 +171,7 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
     </form>
   </section>
   <div
-    className="c6"
+    className="c7"
   />
 </div>
 `;

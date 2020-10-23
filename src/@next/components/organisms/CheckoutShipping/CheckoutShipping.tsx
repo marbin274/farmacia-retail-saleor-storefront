@@ -20,7 +20,6 @@ const CheckoutShipping: React.FC<IProps> = ({
 }: IProps) => {
   return (
     <section>
-      <S.Title data-cy="checkoutPageSubtitle">SHIPPING METHOD</S.Title>
       <Formik
         initialValues={{
           shippingMethod: selectedShippingMethodId,
@@ -61,21 +60,20 @@ const CheckoutShipping: React.FC<IProps> = ({
                       customLabel={true}
                       onChange={() => setFieldValue("shippingMethod", id)}
                     >
-                      <span
-                        data-cy={`checkoutShippingMethodOption${index}Name`}
-                      >
-                        {name}
-                      </span>
-                      <S.Price>
-                        {" "}
-                        | +
-                        {
+                      <S.RadioContent>
+                        <S.RadioName
+                          data-cy={`checkoutShippingMethodOption${index}Name`}
+                          checked={checked}
+                        >
+                          {name}
+                        </S.RadioName>
+                        <S.Price checked={checked}>
                           <Money
                             data-cy={`checkoutShippingMethodOption${index}Price`}
                             money={price}
                           />
-                        }
-                      </S.Price>
+                        </S.Price>
+                      </S.RadioContent>
                     </Radio>
                   </S.Tile>
                 );

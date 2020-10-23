@@ -1,8 +1,7 @@
+import {DefaultTheme, styled} from "@styles";
 import { css } from "styled-components";
 
-import { styled } from "@styles";
-
-const inputStyle = css<{ checked: boolean }>`
+const inputStyle = css<{ checked: boolean, theme: DefaultTheme }>`
   ${props => props.checked && `color: #21125E;`}
 
   cursor: pointer;
@@ -17,9 +16,9 @@ const inputStyle = css<{ checked: boolean }>`
     width: 1em;
     height: 1em;
     margin: 0.25em 1em 0.25em 0.25em;
-    border: 0.1em solid #21125e;
+    border: 0.1em solid ${props => props.checked ? props => props.theme.input.borderColorActive : props.theme.input.labelColor};
     border-radius: 0.5em;
-    background: #ffffff;
+    background: ${props => props.theme.colors.white};
     vertical-align: bottom;
   }
   ${props =>
@@ -28,9 +27,9 @@ const inputStyle = css<{ checked: boolean }>`
       display: block;
       width: 0.5em;
       height: 0.5em;
-      margin: 0.125em;
+      margin: 0.15em;
       border-radius: 0.25em;
-      background: #21125e;
+      background: ${props.theme.input.borderColorActive};
     }`}
 `;
 
