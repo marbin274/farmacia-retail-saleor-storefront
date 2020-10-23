@@ -72,7 +72,7 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
               <ProductList lines={items} remove={removeItem} add={addItem} />
               <div className="cart__footer">
                 <div className="cart__footer__price cart__footer__price--sub">
-                  <span>Costo delivery</span>
+                  <span>Subtotal</span>
                   <span>
                     <TaxedMoney
                       data-cy="cartPageSubtotalPrice"
