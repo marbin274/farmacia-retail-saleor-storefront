@@ -7,37 +7,34 @@ type WrapperProps = {
   theme: DefaultTheme;
 };
 
-const getTextColor = ( { active, error, disabled, theme }: WrapperProps, hovered = false) => {
-  if (disabled) {
-    return theme.colors.disabled;
-  } else if (error) {
-    return theme.input.textColorError;
-  } else if (active) {
-    return theme.input.textColorActive;
-  } else if (hovered) {
-    return theme.input.textColorHover;
-  } else {
-    return theme.input.textColor;
+const getTextColor = ({ active, error, disabled, theme }: WrapperProps, hovered = false) => {
+  switch (true) {
+    case disabled:
+      return theme.colors.disabled;
+    case error:
+      return theme.input.textColorError;
+    case active:
+      return theme.input.textColorActive;
+    case hovered:
+      return theme.input.textColorHover;
+    default:
+      return theme.input.textColor;
   }
 }
 
-const getEdgeColor = (
-  { active, error, disabled, theme }: WrapperProps,
-  hovered = false
-) => {
-  if (disabled) {
-    return theme.colors.disabled;
+const getEdgeColor = ({ active, error, disabled, theme }: WrapperProps, hovered = false) => {
+  switch (true) {
+    case disabled:
+      return theme.colors.disabled;
+    case error:
+      return theme.input.borderColorError;
+    case active:
+      return theme.input.borderColorActive;
+    case hovered:
+      return theme.input.borderColorActive;
+    default:
+      return theme.input.borderColor;
   }
-
-  if (error) {
-    return theme.input.borderColorError;
-  }
-
-  if (hovered) {
-    return theme.input.borderColorActive;
-  }
-
-  return active ? theme.input.borderColorActive : theme.input.borderColor;
 };
 
 export const Wrapper = styled.div<WrapperProps>`

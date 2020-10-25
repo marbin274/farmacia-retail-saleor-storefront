@@ -8,14 +8,15 @@ type WrapperProps = {
 };
 
 const getLabelColor = ( { active, error, disabled, theme }: WrapperProps) => {
-  if (disabled) {
-    return theme.colors.disabled;
-  } else if (error) {
-    return theme.input.labelColorError;
-  } else if (active) {
-    return theme.input.labelColorActive;
-  } else {
-    return theme.input.labelColor;
+  switch (true) {
+    case disabled:
+      return theme.colors.disabled;
+    case error:
+      return theme.input.labelColorError;
+    case active:
+      return theme.input.labelColorActive;
+    default:
+      return theme.input.labelColor;
   }
 }
 

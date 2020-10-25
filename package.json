@@ -115,6 +115,7 @@
     "file-loader": "^4.0.0",
     "fork-ts-checker-webpack-plugin": "^1.3.5",
     "html-webpack-plugin": "^3.2.0",
+    "husky": "^5.0.0-beta.0",
     "image-webpack-loader": "^4.6.0",
     "jest": "^24.9.0",
     "jest-styled-components": "^6.3.1",
@@ -155,7 +156,8 @@
     "workbox-webpack-plugin": "^4.3.1"
   },
   "engines": {
-    "node": ">=10.0.0 <11"
+    "node": ">=12.18",
+    "npm": ">=6.14"
   },
   "scripts": {
     "test": "jest --runInBand --config .jest/config.json",
@@ -178,6 +180,7 @@
     "test:e2e:run": "start-server-and-test start http://localhost:3000 cy:run",
     "test:e2e:run:record": "start-server-and-test start http://localhost:3000 cy:run:record",
     "test:e2e:dev": "start-server-and-test start http://localhost:3000 cy:open",
-    "test:snapshot:update": "jest --updateSnapshot --config .jest/config.json"
+    "test:snapshot:update": "jest --updateSnapshot --config .jest/config.json",
+    "postinstall": "husky install"
   }
 }
