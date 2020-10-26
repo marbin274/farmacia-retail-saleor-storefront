@@ -25,12 +25,6 @@ describe("<CartSummary />", () => {
     expect(wrapper.exists()).toEqual(true);
   });
 
-  it("should show subtotal price", () => {
-    const wrapper = mount(<CartSummary subtotal={money} />);
-
-    expect(wrapper.text()).toContain("123");
-  });
-
   it("should show promo price", () => {
     const wrapper = mount(<CartSummary promoCode={money} />);
 
@@ -39,7 +33,6 @@ describe("<CartSummary />", () => {
 
   it("should show shipping price", () => {
     const wrapper = mount(<CartSummary shipping={money} />);
-
     expect(wrapper.text()).toContain("123");
   });
 

@@ -1,4 +1,5 @@
 import { styled } from "@styles";
+import { aunaBlack } from "@styles/constants";
 
 export const Wrapper = styled.div`
   display: grid;
@@ -24,7 +25,9 @@ export const Photo = styled.div`
 export const Sku = styled.div`
   grid-area: sku;
   color: ${props => props.theme.colors.baseFontColorSemiTransparent};
-  font-size: ${props => props.theme.typography.smallFontSize};
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
 `;
 
 export const Name = styled.div`
@@ -35,10 +38,12 @@ export const Name = styled.div`
 export const Price = styled.div`
   grid-area: price;
   text-align: right;
-  font-size: ${props => props.theme.typography.smallFontSize};
+  font-size: 16px;
+  font-weight: 500;
 `;
 export const Quantity = styled.div`
   grid-area: quantity;
-  color: ${props => props.theme.colors.baseFontColorSemiTransparent};
-  font-size: ${props => props.theme.typography.smallFontSize};
+  color: ${aunaBlack};
+  font-size: 18px;
+  font-weight: 500;
 `;

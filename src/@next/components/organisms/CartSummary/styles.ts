@@ -1,7 +1,18 @@
 import { DefaultTheme, media, styled } from "@styles";
+import {
+  aunaInteractive,
+  aunaComplementary1,
+  aunaBrand3,
+  aunaGrey20,
+  aunaComplementary4,
+} from "@styles/constants";
+// import { StringValueNode } from "graphql";
 
 export const Wrapper = styled.div<{ mobileCartOpened: boolean }>`
-  background-color: ${props => props.theme.colors.light};
+  background-color: ${aunaGrey20};
+  border: 1px solid ${aunaComplementary4};
+  border-radius: 16px;
+
   ${media.mediumScreen`
     width: 100%;
     height: 100%;
@@ -19,7 +30,7 @@ export const Wrapper = styled.div<{ mobileCartOpened: boolean }>`
   `}
 `;
 export const Content = styled.div`
-  padding: 0 20px 30px 20px;
+  padding: 0 20px 32px 20px;
 `;
 
 export const ProductLine = styled.div`
@@ -27,41 +38,64 @@ export const ProductLine = styled.div`
 `;
 
 export const CartSummaryProductList = styled.div`
-  margin-bottom: 30px;
+  margin-bottom: 17px;
 `;
 
 export const HR = styled.hr`
   display: block;
   height: 1px;
   border: 0;
-  border-top: 1px solid ${props => props.theme.colors.baseFontColorTransparent};
+  border-top: 1px solid ${aunaComplementary1};
   margin: 0;
   padding: 0;
 `;
 
-export const Title = styled.div`
-  padding: 30px 20px;
+export const Header = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+export const Block = styled.div<{
+  position: number;
+  mobileCartOpened?: boolean;
+}>`
+  align-items: center;
   display: flex;
   justify-content: space-between;
+  width: 100%;
+  margin: ${props =>
+    props.position === 2
+      ? "0 0 30px 24px"
+      : props.mobileCartOpened
+      ? "16px 16px 8px auto"
+      : "16px 16px 0 auto"};
+  width: ${props =>
+    props.position === 1 ? "fit-content" : "-webkit-fill-available"};
+`;
+export const Title = styled.div`
+  display: flex;
+  flex-direction: column;
+  color: ${aunaBrand3};
   margin: 0;
-  font-size: ${props => props.theme.typography.h3FontSize};
-  text-transform: uppercase;
-  font-weight: ${props => props.theme.typography.boldFontWeight};
+  font-size: 18px;
+  font-weight: 500;
   ${media.mediumScreen`
     font-size: ${(props: { theme: DefaultTheme }) =>
       props.theme.typography.h4FontSize};
     cursor: pointer;
   `}
 `;
-export const ArrowUp = styled.div<{ mobileCartOpened: boolean }>`
+export const Text = styled.span`
+  font-weight: 300;
+  font-size: 12px;
+  margin: 2px 0 0 13px;
+`;
+
+export const Close = styled.div<{ mobileCartOpened: boolean }>`
   display: none;
   ${media.mediumScreen`
-    display: unset;
-  `}
-  ${props =>
-    props.mobileCartOpened &&
-    media.mediumScreen`
-    transform: rotate(180deg);
+    display: ${(props: any) => (props.mobileCartOpened ? "unset" : "none")};
   `}
 `;
 export const CostLine = styled.div<{ last: boolean }>`
@@ -70,8 +104,9 @@ export const CostLine = styled.div<{ last: boolean }>`
   span {
     display: inline-block;
   }
-  font-weight: ${props =>
-    props.last ? props.theme.typography.boldFontWeight : "normal"};
+  font-weight: ${props => (props.last ? 500 : "normal")};
+  font-size: ${props => (props.last ? "14px" : "12px")};
+  color: ${props => (props.last ? "#121314" : "#9B9B9B")};
 `;
 
 export const Costs = styled.div`
@@ -83,5 +118,29 @@ export const Costs = styled.div`
     &:last-of-type {
       margin-bottom: 0px;
     }
+  }
+`;
+export const CartModifier = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 16px 0 20px 0;
+
+  @media(min-width: 721px) and (max-width: 1105px) {
+    justify-content: center;
+  }
+`;
+export const Link = styled.a<{ type?: string }>`
+  align-items: center;
+  background-color: ${props =>
+    props.type === "button" ? aunaComplementary1 : ""};
+  border-radius: 40px;
+  color: ${aunaInteractive};
+  display: flex;
+  padding: 16px;
+  min-width: fit-content;
+
+  > div {
+    margin-left: 24px;
   }
 `;

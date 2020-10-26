@@ -1,13 +1,13 @@
 import { IImage, ITaxedMoney } from "@types";
+
 export interface ICostLine {
-  name: string;
   cost: ITaxedMoney;
-  last?: boolean;
+  name: string;
   negative?: boolean;
+  last?: boolean;
 }
 
 export interface ICosts {
-  subtotal?: ITaxedMoney | null;
   promoCode?: ITaxedMoney | null;
   shipping?: ITaxedMoney | null;
   total?: ITaxedMoney | null;

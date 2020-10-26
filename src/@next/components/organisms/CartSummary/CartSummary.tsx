@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-
-import { Icon } from "@components/atoms";
+import ReactSVG from "react-svg";
+import cartSummaryImg from "images/cart-summary.svg";
+import closeImg from "images/close.svg";
+import downArrowImg from "images/down-arrow-auna.svg";
 import { TaxedMoney } from "@components/containers";
 import { CartSummaryRow } from "@components/molecules";
-
 import * as S from "./styles";
 import { ICostLine, ICosts, IProps } from "./types";
 
@@ -22,10 +23,9 @@ const CostLine = ({
   </S.CostLine>
 );
 
-const Costs = ({ subtotal, promoCode, shipping, total }: ICosts) => (
+const Costs = ({ promoCode, shipping, total }: ICosts) => (
   <S.Costs>
-    {subtotal && <CostLine name="Subtotal" cost={subtotal} />}
-    {shipping && <CostLine name="Shipping" cost={shipping} />}
+    {shipping && <CostLine name="Costo delivery" cost={shipping} />}
     {promoCode && promoCode.gross!.amount > 0 && (
       <CostLine name="Promo Code" cost={promoCode} negative={true} />
     )}
@@ -37,7 +37,6 @@ const Costs = ({ subtotal, promoCode, shipping, total }: ICosts) => (
  * Cart summary displayed in checkout page
  */
 const CartSummary: React.FC<IProps> = ({
-  subtotal,
   total,
   shipping,
   promoCode,
@@ -47,15 +46,24 @@ const CartSummary: React.FC<IProps> = ({
 
   return (
     <S.Wrapper mobileCartOpened={mobileCartOpened}>
-      <S.Title
-        data-cy="cartSummaryTitle"
-        onClick={() => setMobileCartOpened(!mobileCartOpened)}
-      >
-        Cart Summary
-        <S.ArrowUp mobileCartOpened={mobileCartOpened}>
-          <Icon name="arrow_up" size={24} />
-        </S.ArrowUp>
-      </S.Title>
+      <S.Header onClick={() => setMobileCartOpened(!mobileCartOpened)}>
+        <S.Block position={1} mobileCartOpened={mobileCartOpened}>
+          <S.Close mobileCartOpened={mobileCartOpened}>
+            <ReactSVG path={closeImg} />
+          </S.Close>
+        </S.Block>
+        <S.Block position={2}>
+          <S.Title data-cy="cartSummaryTitle">
+            Tu carrito
+            {products && <S.Text>{products.length} productos</S.Text>}
+          </S.Title>
+          <ReactSVG
+            path={cartSummaryImg}
+            style={{ left: "16px", position: "relative" }}
+          />
+        </S.Block>
+      </S.Header>
+
       <S.Content>
         <S.HR />
         <S.CartSummaryProductList>
@@ -74,13 +82,15 @@ const CartSummary: React.FC<IProps> = ({
               <S.HR />
             </div>
           ))}
+          <S.CartModifier>
+            <S.Link>Modificar carrito</S.Link>
+            <S.Link type="button">
+              ver todos <ReactSVG path={downArrowImg} />
+            </S.Link>
+          </S.CartModifier>
+          <S.HR />
         </S.CartSummaryProductList>
-        <Costs
-          subtotal={subtotal}
-          total={total}
-          shipping={shipping}
-          promoCode={promoCode}
-        />
+        <Costs total={total} shipping={shipping} promoCode={promoCode} />
       </S.Content>
     </S.Wrapper>
   );

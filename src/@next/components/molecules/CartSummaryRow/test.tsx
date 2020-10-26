@@ -41,6 +41,6 @@ describe("<CartSummaryRow />", () => {
   it("should display product quantity", () => {
     const wrapper = shallow(<CartSummaryRow {...DEFAULT_PROPS} />);
 
-    expect(wrapper.text()).toContain(`Quantity: ${DEFAULT_PROPS.quantity}`);
+    expect(wrapper.text()).toContain(`${DEFAULT_PROPS.quantity}`);
   });
 });

@@ -25,14 +25,13 @@ import { IProps } from "./types";
 
 const prepareCartSummary = (
   totalPrice?: ITaxedMoney | null,
-  subtotalPrice?: ITaxedMoney | null,
   shippingTaxedPrice?: ITaxedMoney | null,
   promoTaxedPrice?: ITaxedMoney | null,
   items?: IItems
 ) => {
   const products = items?.map(({ id, variant, totalPrice, quantity }) => ({
     id: id || "",
-    name: variant.name || "",
+    name: variant.product?.name || "",
     price: {
       gross: {
         amount: totalPrice?.gross.amount || 0,
@@ -55,7 +54,6 @@ const prepareCartSummary = (
   return (
     <CartSummary
       shipping={shippingTaxedPrice}
-      subtotal={subtotalPrice}
       promoCode={promoTaxedPrice}
       total={totalPrice}
       products={products}
@@ -97,7 +95,6 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     loaded: cartLoaded,
     shippingPrice,
     discount,
-    subtotalPrice,
     totalPrice,
     items,
   } = useCart();
@@ -236,7 +233,6 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
       )}
       cartSummary={prepareCartSummary(
         totalPrice,
-        subtotalPrice,
         shippingTaxedPrice,
         promoTaxedPrice,
         items

@@ -48,7 +48,6 @@ export const aunaComplementary2 = "#F3F9CE";
 export const aunaComplementary3 = "#FFF0E6";
 export const aunaComplementary4 = "#E6EEF8";
 
-
 // theme colors
 export const theme = {
   activeMenuOption: darkGreen,

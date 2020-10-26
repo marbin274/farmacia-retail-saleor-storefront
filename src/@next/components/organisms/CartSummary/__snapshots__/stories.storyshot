@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
   margin: 20px;
 }
 
-.c17 {
+.c24 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -17,7 +17,7 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
   box-sizing: border-box;
 }
 
-.c8 {
+.c12 {
   display: grid;
   grid-row-gap: 6px;
   grid-column-gap: 20px;
@@ -25,68 +25,95 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
   grid-template-areas: "photo name name" "photo sku ." "photo . ." "photo quantity price";
 }
 
-.c13 {
+.c17 {
   grid-area: photo;
   width: -webkit-min-content;
   width: -moz-min-content;
   width: min-content;
 }
 
-.c13 img {
+.c17 img {
   height: auto;
   max-width: 60px;
 }
 
-.c10 {
+.c14 {
   grid-area: sku;
   color: rgba(50,50,50,0.6);
-  font-size: 0.875rem;
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
 }
 
-.c9 {
+.c13 {
   grid-area: name;
   font-size: 1.125rem;
 }
 
-.c12 {
+.c16 {
   grid-area: price;
   text-align: right;
-  font-size: 0.875rem;
+  font-size: 16px;
+  font-weight: 500;
 }
 
-.c11 {
+.c15 {
   grid-area: quantity;
-  color: rgba(50,50,50,0.6);
-  font-size: 0.875rem;
+  color: #131336;
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .c1 {
-  background-color: #f1f5f5;
+  background-color: #F6F8FA;
+  border: 1px solid #E6EEF8;
+  border-radius: 16px;
 }
 
-.c4 {
-  padding: 0 20px 30px 20px;
+.c8 {
+  padding: 0 20px 32px 20px;
 }
 
-.c7 {
+.c11 {
   padding: 30px 0;
 }
 
-.c6 {
-  margin-bottom: 30px;
+.c10 {
+  margin-bottom: 17px;
 }
 
-.c5 {
+.c9 {
   display: block;
   height: 1px;
   border: 0;
-  border-top: 1px solid rgba(50,50,50,0.1);
+  border-top: 1px solid #E6F6F9;
   margin: 0;
   padding: 0;
 }
 
 .c2 {
-  padding: 30px 20px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c3 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -95,17 +122,56 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  margin: 0;
-  font-size: 1.5rem;
-  text-transform: uppercase;
-  font-weight: 600;
+  width: 100%;
+  margin: 16px 16px 0 auto;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
-.c3 {
+.c5 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 0 30px 24px;
+  width: -webkit-fill-available;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  color: #0050B5;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.c7 {
+  font-weight: 300;
+  font-size: 12px;
+  margin: 2px 0 0 13px;
+}
+
+.c4 {
   display: none;
 }
 
-.c15 {
+.c22 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -115,13 +181,15 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
   -ms-flex-pack: justify;
   justify-content: space-between;
   font-weight: normal;
+  font-size: 12px;
+  color: #9B9B9B;
 }
 
-.c15 span {
+.c22 span {
   display: inline-block;
 }
 
-.c16 {
+.c23 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -130,14 +198,16 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  font-weight: 600;
+  font-weight: 500;
+  font-size: 14px;
+  color: #121314;
 }
 
-.c16 span {
+.c23 span {
   display: inline-block;
 }
 
-.c14 {
+.c21 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -147,12 +217,70 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
   flex-direction: column;
 }
 
-.c14 div {
+.c21 div {
   margin-bottom: 20px;
 }
 
-.c14 div:last-of-type {
+.c21 div:last-of-type {
   margin-bottom: 0px;
+}
+
+.c18 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 16px 0 20px 0;
+}
+
+.c19 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 40px;
+  color: #00B0CA;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 16px;
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+}
+
+.c19 > div {
+  margin-left: 24px;
+}
+
+.c20 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #E6F6F9;
+  border-radius: 40px;
+  color: #00B0CA;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 16px;
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+}
+
+.c20 > div {
+  margin-left: 24px;
 }
 
 @media (max-width:720px) {
@@ -169,15 +297,24 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
 }
 
 @media (max-width:720px) {
-  .c2 {
+  .c6 {
     font-size: 1.125rem;
     cursor: pointer;
   }
 }
 
 @media (max-width:720px) {
-  .c3 {
-    display: unset;
+  .c4 {
+    display: none;
+  }
+}
+
+@media (min-width:721px) and (max-width:1105px) {
+  .c18 {
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
   }
 }
 
@@ -189,51 +326,68 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
   >
     <div
       className="c2"
-      data-cy="cartSummaryTitle"
       onClick={[Function]}
     >
-      Cart Summary
       <div
         className="c3"
       >
-        <svg
-          height={24}
-          viewBox="0 0 32 32"
-          width={24}
+        <div
+          className="c4"
         >
-          <path
-            d="M16.4951 8.31701L13.5055 11.6804L8.2503 7.00908L2.99512 11.6803L0.00547949 8.31701L8.2503 0.988281L16.4951 8.31701Z"
-            fill="#323232"
-          />
-        </svg>
+          <div />
+        </div>
+      </div>
+      <div
+        className="c5"
+      >
+        <div
+          className="c6"
+          data-cy="cartSummaryTitle"
+        >
+          Tu carrito
+          <span
+            className="c7"
+          >
+            3
+             productos
+          </span>
+        </div>
+        <div
+          style={
+            Object {
+              "left": "16px",
+              "position": "relative",
+            }
+          }
+        />
       </div>
     </div>
     <div
-      className="c4"
+      className="c8"
     >
       <hr
-        className="c5"
+        className="c9"
       />
       <div
-        className="c6"
+        className="c10"
       >
         <div>
           <div
-            className="c7"
+            className="c11"
           >
             <div
-              className="c8"
+              className="c12"
             >
               <div
-                className="c9"
+                className="c13"
                 data-cy="cartSummaryItem0Name"
               >
                 The Great Square Table
               </div>
               <div
-                className="c10"
+                className="c14"
               >
-                SKU: 
+                SKU 
                 <span
                   data-cy="cartSummaryItem0SKU"
                 >
@@ -241,10 +395,8 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
                 </span>
               </div>
               <div
-                className="c11"
+                className="c15"
               >
-                Quantity:
-                 
                 <span
                   data-cy="cartSummaryItem0Quantity"
                 >
@@ -252,7 +404,7 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
                 </span>
               </div>
               <div
-                className="c12"
+                className="c16"
                 data-cy="cartSummaryItem0Price"
               >
                 <span>
@@ -260,7 +412,7 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
                 </span>
               </div>
               <div
-                className="c13"
+                className="c17"
               >
                 <img
                   alt="product image"
@@ -273,26 +425,26 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
             </div>
           </div>
           <hr
-            className="c5"
+            className="c9"
           />
         </div>
         <div>
           <div
-            className="c7"
+            className="c11"
           >
             <div
-              className="c8"
+              className="c12"
             >
               <div
-                className="c9"
+                className="c13"
                 data-cy="cartSummaryItem1Name"
               >
                 The Great Square Table
               </div>
               <div
-                className="c10"
+                className="c14"
               >
-                SKU: 
+                SKU 
                 <span
                   data-cy="cartSummaryItem1SKU"
                 >
@@ -300,10 +452,8 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
                 </span>
               </div>
               <div
-                className="c11"
+                className="c15"
               >
-                Quantity:
-                 
                 <span
                   data-cy="cartSummaryItem1Quantity"
                 >
@@ -311,7 +461,7 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
                 </span>
               </div>
               <div
-                className="c12"
+                className="c16"
                 data-cy="cartSummaryItem1Price"
               >
                 <span>
@@ -319,7 +469,7 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
                 </span>
               </div>
               <div
-                className="c13"
+                className="c17"
               >
                 <img
                   alt="product image"
@@ -332,26 +482,26 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
             </div>
           </div>
           <hr
-            className="c5"
+            className="c9"
           />
         </div>
         <div>
           <div
-            className="c7"
+            className="c11"
           >
             <div
-              className="c8"
+              className="c12"
             >
               <div
-                className="c9"
+                className="c13"
                 data-cy="cartSummaryItem2Name"
               >
                 The Great Square Table
               </div>
               <div
-                className="c10"
+                className="c14"
               >
-                SKU: 
+                SKU 
                 <span
                   data-cy="cartSummaryItem2SKU"
                 >
@@ -359,10 +509,8 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
                 </span>
               </div>
               <div
-                className="c11"
+                className="c15"
               >
-                Quantity:
-                 
                 <span
                   data-cy="cartSummaryItem2Quantity"
                 >
@@ -370,7 +518,7 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
                 </span>
               </div>
               <div
-                className="c12"
+                className="c16"
                 data-cy="cartSummaryItem2Price"
               >
                 <span>
@@ -378,7 +526,7 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
                 </span>
               </div>
               <div
-                className="c13"
+                className="c17"
               >
                 <img
                   alt="product image"
@@ -391,21 +539,40 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
             </div>
           </div>
           <hr
-            className="c5"
+            className="c9"
           />
         </div>
+        <div
+          className="c18"
+        >
+          <a
+            className="c19"
+          >
+            Modificar carrito
+          </a>
+          <a
+            className="c20"
+            type="button"
+          >
+            ver todos 
+            <div />
+          </a>
+        </div>
+        <hr
+          className="c9"
+        />
       </div>
       <div
-        className="c14"
+        className="c21"
       >
         <div
-          className="c15"
+          className="c22"
         >
           <span>
-            Subtotal
+            Costo delivery
           </span>
           <span
-            data-cy="cartSummaryCostSubtotal"
+            data-cy="cartSummaryCostCostodelivery"
           >
             <span>
               
@@ -413,21 +580,7 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
           </span>
         </div>
         <div
-          className="c15"
-        >
-          <span>
-            Shipping
-          </span>
-          <span
-            data-cy="cartSummaryCostShipping"
-          >
-            <span>
-              
-            </span>
-          </span>
-        </div>
-        <div
-          className="c15"
+          className="c22"
         >
           <span>
             Promo Code
@@ -442,7 +595,7 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
           </span>
         </div>
         <div
-          className="c16"
+          className="c23"
         >
           <span>
             Total
@@ -459,7 +612,7 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
     </div>
   </div>
   <div
-    className="c17"
+    className="c24"
   />
 </div>
 `;
