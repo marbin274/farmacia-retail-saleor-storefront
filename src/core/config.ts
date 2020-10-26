@@ -14,6 +14,12 @@ export const PROVIDERS = {
   BRAINTREE: {
     label: "Braintree",
   },
+  CASH: {
+    label: "Contra entrega : paga en efectivo a la entrega ",
+  },
+  CREDIT_CARD: {
+    label: "Tarjeta de Crédito",
+  },
   DUMMY: {
     label: "Dummy",
   },
