@@ -33,23 +33,6 @@ describe("<ThankYou />", () => {
     expect(wrapper.text()).toContain(orderNumber);
   });
 
-  it("should call orderDetails function when clicked", () => {
-    const wrapper = mount(
-      <ThankYou
-        orderNumber={orderNumber}
-        orderDetails={orderDetailsMock}
-        continueShopping={continueShoppingMock}
-      />
-    );
-
-    wrapper
-      .find("button")
-      .at(1)
-      .simulate("click");
-
-    expect(orderDetailsMock).toHaveBeenCalled();
-  });
-
   it("should call continueShopping function when clicked", () => {
     const wrapper = mount(
       <ThankYou

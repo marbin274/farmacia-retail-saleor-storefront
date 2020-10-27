@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
   margin: 20px;
 }
 
-.c9 {
+.c11 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -17,9 +17,9 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
   box-sizing: border-box;
 }
 
-.c8 {
+.c9 {
   background-color: #00B0CA;
-  padding: 0.9rem 3.7rem;
+  padding: 0.1rem 2rem;
   border: none;
   border-radius: 40px;
   -webkit-transition: 0.3s;
@@ -27,66 +27,31 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
   outline: none;
   cursor: pointer;
   color: #fff;
-  width: 100%;
+  width: auto;
 }
 
-.c8:hover {
+.c9:hover {
   background-color: #06a09e;
   color: #fff;
 }
 
-.c8:active {
+.c9:active {
   background-color: #06a09e;
   box-shadow: -3px 3px 14px 0px rgba(129,67,67,0.2);
 }
 
-.c8:disabled {
+.c9:disabled {
   background-color: #7d7d7d;
 }
 
-.c8:disabled,
-.c8:disabled:hover {
+.c9:disabled,
+.c9:disabled:hover {
   cursor: default;
 }
 
-.c6 {
-  background-color: #fff;
-  padding: 0.9rem 3.7rem;
-  border: none;
-  border-radius: 40px;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-  outline: none;
-  cursor: pointer;
-  color: rgb(33,18,94);
-  width: 100%;
-  box-shadow: inset 0px 0px 0px 3px rgb(33,18,94);
-  border-left: 1px solid rgb(33,18,94);
-  border-right: 1px solid rgb(33,18,94);
-}
-
-.c6:hover {
-  background-color: rgb(33,18,94);
-  color: #fff;
-}
-
-.c6:active {
-  background-color: #190c4e;
-  box-shadow: -3px 3px 14px 0px rgba(129,67,67,0.2);
-}
-
-.c6:disabled {
-  background-color: #7d7d7d;
-}
-
-.c6:disabled,
-.c6:disabled:hover {
-  cursor: default;
-}
-
-.c7 {
+.c10 {
   display: inline-block;
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 500;
   line-height: 1.25rem;
   -webkit-user-select: none;
@@ -103,83 +68,87 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
 }
 
 .c2 {
-  margin: 80px 0;
+  margin: 80px auto;
+  max-width: 27rem;
+  width: 100%;
 }
 
 .c3 {
-  font-size: 6rem;
+  color: #00B0CA;
+  font-size: 2.5rem;
   margin: 0;
   line-height: 110%;
-  padding-bottom: 40px;
-  border-bottom: 1px solid rgba(50,50,50,0.1);
-  margin-bottom: 40px;
+  margin-bottom: 3.5rem;
+  text-align: center;
 }
 
 .c3 span {
+  font-size: 3.5rem;
   font-weight: 600;
 }
 
 .c4 {
   font-size: 1.125rem;
-  margin: 0;
+  background-color: #F6F8FA;
   line-height: 170%;
+  margin-bottom: 3rem;
+  padding: 1rem;
+  text-align: center;
 }
 
 .c4 span {
+  font-size: 1.25rem;
   font-weight: 600;
 }
 
 .c5 {
-  width: 50%;
-  margin-top: 40px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-column-gap: 30px;
+  color: #9194A7;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 1.125rem;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  line-height: 1.5;
+  margin-bottom: 3rem;
+  padding: 1rem;
+  text-align: left;
 }
 
-.c5 button {
-  padding-left: 0;
-  padding-right: 0;
+.c6 {
+  width: 8.5rem;
+}
+
+.c7 {
+  font-size: 1rem;
+  padding-left: 1.5rem;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
 }
 
 @media (max-width:540px) {
-  .c8 {
+  .c9 {
     padding: 0.9rem 1rem;
-    width: 100%;
-  }
-}
-
-@media (max-width:540px) {
-  .c6 {
-    padding: 0.9rem 1rem;
-    width: 100%;
+    width: 88%;
   }
 }
 
 @media (max-width:992px) {
   .c1 {
     width: 100%;
-  }
-}
-
-@media (max-width:540px) {
-  .c2 {
-    margin: 40px 0;
-  }
-}
-
-@media (max-width:540px) {
-  .c3 {
-    font-size: 4rem;
-  }
-}
-
-@media (max-width:540px) {
-  .c5 {
-    grid-template-columns: 1fr;
-    grid-row-gap: 20px;
-    width: 100%;
-    margin-top: 20px;
   }
 }
 
@@ -195,59 +164,55 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
       <p
         className="c3"
       >
-        Thank you
-        <br />
         <span>
-          for your order!
+          Gracias
         </span>
+        <br />
+        por tu compra
       </p>
-      <p
+      <div
         className="c4"
       >
-        Your order number is 
+        Tu orden es la número: 
         <span>
           #341414
         </span>
-      </p>
-      <p
-        className="c4"
-      >
-        We’ve emailed you an order confirmation, and we’ll notify you the when order has been shipped.
-      </p>
+      </div>
       <div
         className="c5"
       >
-        <button
+        <div
           className="c6"
-          color="secondary"
-          onClick={[Function]}
-          size="md"
         >
-          <span
-            className="c7"
-            size="md"
-          >
-            CONTINUE SHOPPING
-          </span>
-        </button>
+          <div />
+        </div>
+        <div
+          className="c7"
+        >
+          Recibirás en tu correo electrónico la confirmación y detalle de tu compra
+        </div>
+      </div>
+      <div
+        className="c8"
+      >
         <button
-          className="c8"
+          className="c9"
           color="primary"
           onClick={[Function]}
-          size="md"
+          size="sm"
         >
           <span
-            className="c7"
-            size="md"
+            className="c10"
+            size="sm"
           >
-            ORDER DETAILS
+            Continuar comprando
           </span>
         </button>
       </div>
     </div>
   </div>
   <div
-    className="c9"
+    className="c11"
   />
 </div>
 `;

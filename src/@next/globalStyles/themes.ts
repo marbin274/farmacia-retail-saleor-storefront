@@ -193,6 +193,7 @@ export const defaultTheme = {
      * 14px in default theme
      */
     smallFontSize: C.smallFontSize,
+    sparseLineHeight: C.sparseLineHeight,
     /**
      * 96px in default theme
      */

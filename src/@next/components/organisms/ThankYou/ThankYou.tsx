@@ -2,9 +2,11 @@ import React from "react";
 
 import { Button } from "@components/atoms";
 import { Container } from "@components/templates";
+import ReactSVG from "react-svg";
 
 import * as S from "./styles";
 import { IProps } from "./types";
+import mailSentSvg from 'images/auna/mail-sent.svg';
 
 /**
  * Thank you page after completing the checkout.
@@ -18,23 +20,24 @@ const ThankYou: React.FC<IProps> = ({
     <Container>
       <S.Wrapper>
         <S.ThankYouHeader>
-          Thank you
+          <span>Gracias</span>
           <br />
-          <span>for your order!</span>
+          por tu compra
         </S.ThankYouHeader>
-        <S.Paragraph>
-          Your order number is <span>{orderNumber}</span>
-        </S.Paragraph>
-        <S.Paragraph>
-          We’ve emailed you an order confirmation, and we’ll notify you the when
-          order has been shipped.
-        </S.Paragraph>
+        <S.OrderInfo>
+          Tu orden es la número: <span>{orderNumber}</span>
+        </S.OrderInfo>
+        <S.MailInfo>
+          <S.MailInfoIcon>
+            <ReactSVG path={mailSentSvg}/>
+          </S.MailInfoIcon>
+          <S.MailInfoText>
+            Recibirás en tu correo electrónico la confirmación y detalle de tu compra
+          </S.MailInfoText>
+        </S.MailInfo>
         <S.Buttons>
-          <Button onClick={continueShopping} color="secondary" fullWidth={true}>
-            CONTINUE SHOPPING
-          </Button>
-          <Button onClick={orderDetails} fullWidth={true}>
-            ORDER DETAILS
+          <Button onClick={continueShopping} size={S.ButtonSize}>
+            Continuar comprando
           </Button>
         </S.Buttons>
       </S.Wrapper>

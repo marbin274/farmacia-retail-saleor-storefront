@@ -53,6 +53,7 @@ export const theme = {
   activeMenuOption: darkGreen,
   autofill: autofillColor,
   autofillSelected: autofillColorSelected,
+  backgroundLight: aunaGrey20,
   baseFont: baseFontColor,
   baseFontColorSemiTransparent,
   baseFontColorTransparent,
@@ -62,6 +63,7 @@ export const theme = {
   divider: grayLight,
   dividerDark: grayMedium,
   error: rose,
+  greyText: aunaGrey100,
   hoverLightBackground: turquoiseLight,
   interactive: aunaInteractive,
   light: grayLight,
@@ -99,7 +101,8 @@ export const h3FontSize = "1.5rem"; // 24px
 export const h4FontSize = "1.125rem"; // 18px
 export const labelFontSize = "0.75rem"; // 12px
 export const smallFontSize = "0.875rem"; // 14px
-export const ultraBigFont = "6rem"; // 96px
+export const ultraBigFont = "3.5rem"; // 96px
+export const sparseLineHeight = 1.5;
 
 // spacing
 export const spacer = 1; // rem

@@ -1,56 +1,63 @@
-import { DefaultTheme, media, styled } from "@styles";
+import { styled } from "@styles";
 
 export const Wrapper = styled.div`
-  margin: 80px 0;
-
-  ${media.smallScreen`
-    margin: 40px 0;
-  `}
+  margin: 80px auto;
+  max-width: 27rem;
+  width: 100%;;
 `;
 
 export const ThankYouHeader = styled.p`
-  font-size: ${props => props.theme.typography.ultraBigFontSize};
+  color: ${props => props.theme.colors.interactive};
+  font-size: 2.5rem;
   margin: 0;
   line-height: 110%;
+  margin-bottom: 3.5rem;
+  text-align: center;
+
   span {
+    font-size: ${props => props.theme.typography.ultraBigFontSize};
     font-weight: ${props => props.theme.typography.boldFontWeight};
   }
-  padding-bottom: 40px;
-  border-bottom: 1px solid
-    ${props => props.theme.colors.baseFontColorTransparent};
-  margin-bottom: 40px;
-
-  ${media.smallScreen`
-    font-size: ${(props: { theme: DefaultTheme }) =>
-      props.theme.typography.h1FontSize};
-  `}
 `;
 
-export const Paragraph = styled.p`
+export const OrderInfo = styled.div`
   font-size: ${props => props.theme.typography.h4FontSize};
-  margin: 0;
+  background-color: ${props => props.theme.colors.backgroundLight}; 
   line-height: 170%;
+  margin-bottom: 3rem;
+  padding: 1rem;
+  text-align: center;
 
   span {
+    font-size: ${props => props.theme.typography.baseLineHeight};
     font-weight: ${props => props.theme.typography.boldFontWeight};
   }
+`;
+
+export const MailInfo = styled.div`
+  color: ${props => props.theme.colors.greyText};
+  display: flex;
+  font-size: ${props => props.theme.typography.h4FontSize};
+  justify-content: space-between;
+  line-height: ${props => props.theme.typography.sparseLineHeight};
+  margin-bottom: 3rem;
+  padding: 1rem;
+  text-align: left;
+`;
+
+export const MailInfoIcon = styled.div`
+  width: 8.5rem;
+`;
+
+export const MailInfoText = styled.div`
+  font-size: ${props => props.theme.typography.baseFontSize}
+  padding-left: 1.5rem;
 `;
 
 export const Buttons = styled.div`
-  width: 50%;
-  margin-top: 40px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-column-gap: 30px;
-  button {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  ${media.smallScreen`
-    grid-template-columns: 1fr;
-    grid-row-gap: 20px;
-    width: 100%;
-    margin-top: 20px;
-  `}
+  display: flex;
+  justify-content: center;
+  width: 100%;
 `;
+
+export const ButtonSize = 'sm';
