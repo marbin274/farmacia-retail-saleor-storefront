@@ -13,9 +13,7 @@ const AddToCart: React.FC<{
         onSubmit();
       }}
       disabled={disabled}
-    >
-      Agregar al carrito
-    </AddToCartButton>
+    />
   );
 };
 

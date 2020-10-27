@@ -106,8 +106,18 @@
     padding: initial !important;
     max-width: 269px;
 
-    span {
+    > span > span > span {
       font-size: 16px;
+
+      &::after {
+        content: "Agregar al carrito";
+      }
+
+      @media (max-width: $medium-screen) {
+        &::after {
+          content: "Agregar";
+        }
+      }
     }
 
     &--fade {
