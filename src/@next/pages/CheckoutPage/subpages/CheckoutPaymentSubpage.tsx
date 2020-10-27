@@ -12,7 +12,7 @@ import { RouteComponentProps, useHistory } from "react-router";
 import { CheckoutPayment } from "@components/organisms";
 import { useCart, useCheckout, useUserDetails } from "@sdk/react";
 import { ShopContext } from "@temp/components/ShopProvider/context";
-import { CHECKOUT_STEPS } from "@temp/core/config";
+import {billingAddressAlwaysSameAsShipping, CHECKOUT_STEPS} from "@temp/core/config";
 import { IAddress, ICardData, IFormError } from "@types";
 import { filterNotEmptyArrayItems } from "@utils/misc";
 
@@ -66,12 +66,16 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
   const [gatewayErrors, setGatewayErrors] = useState<IFormError[]>([]);
   const [promoCodeErrors, setPromoCodeErrors] = useState<IFormError[]>([]);
 
+  // this variable overrides billingAsShipping if config option billingAddressAlwaysSameAsShipping is set
+  const billingAsShippingOverride = billingAddressAlwaysSameAsShipping ? true : billingAsShipping;
+
   const [billingAsShippingState, setBillingAsShippingState] = useState(
-    billingAsShipping
+    billingAsShippingOverride
   );
+
   useEffect(() => {
-    setBillingAsShippingState(billingAsShipping);
-  }, [billingAsShipping]);
+    setBillingAsShippingState(billingAsShippingOverride);
+  }, [billingAsShippingOverride]);
 
   const checkoutBillingAddress = checkout?.billingAddress
     ? {
@@ -101,7 +105,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
         );
       } else {
         // TODO validate form
-        checkoutBillingFormRef.current?.dispatchEvent(
+        checkoutGatewayFormRef.current?.dispatchEvent(
           new Event("submit", { cancelable: true })
         );
       }

@@ -28,6 +28,7 @@ export const PROVIDERS = {
     label: "Stripe",
   },
 };
+export const billingAddressAlwaysSameAsShipping = true;
 export const STATIC_PAGES = [
   {
     label: "About",
