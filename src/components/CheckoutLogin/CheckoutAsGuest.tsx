@@ -12,7 +12,7 @@ const CheckoutAsGuest: React.FC<{
   <div className="checkout-login__guest">
     <h3 className="checkout__header">¿No tienes cuenta?</h3>
     <p>
-    Estar registrado te permite vivir una experiencia personalizada y ágil.
+      Estar registrado te permite vivir una experiencia personalizada y ágil.
     </p>
     <Link to={checkoutUrl}>
       <Button>Continua como invitado</Button>

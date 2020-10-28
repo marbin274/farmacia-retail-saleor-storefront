@@ -9,14 +9,11 @@
     margin: $spacer * 2 0;
   }
 
-  h3 {
-    margin-bottom: $spacer;
-  }
-
   &__guest {
     width: 50%;
     padding: 0 $spacer * 4;
     margin: 0 auto;
+    text-align: center;
 
     @media (max-width: $medium-screen) {
       width: 60%;
@@ -29,12 +26,21 @@
       padding: 0 0 $spacer * 4;
     }
 
+    h3 {
+      margin-bottom: 42px;
+    }
+
     p {
-      color: $gray-dark;
+      margin-bottom: 36px;
     }
 
     button {
-      margin: $spacer * 2 0 $spacer * 2 $spacer * 2;
+      background-color: white !important;
+      border: 1px solid $auna-interactive;
+      width: 281px;
+      span {
+        color: $auna-interactive;
+      }
     }
   }
 
