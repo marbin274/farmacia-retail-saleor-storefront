@@ -47,7 +47,7 @@ const MainMenu: React.FC = () => {
 
   return (
     <OverlayContext.Consumer>
-      {(overlayContext) => (
+      {overlayContext => (
         <nav className="main-menu" id="header">
           <div className="main-menu__left">
             <TypedMainMenuQuery renderOnError displayLoader={false}>
@@ -162,7 +162,7 @@ const MainMenu: React.FC = () => {
                     <Media
                       query={{ minWidth: mediumScreen }}
                       render={() =>
-                        items.map((item) => (
+                        items.map(item => (
                           <li
                             data-cy="main-menu__item"
                             className="main-menu__item"
@@ -189,73 +189,72 @@ const MainMenu: React.FC = () => {
 
           <div className="main-menu__right">
             <ul>
-            <Media
-                  query={{ minWidth: smallScreen }}
-                  render={() => (
-                    <>
-                      {user ? (
-                        <MenuDropdown
-                          head={
-                            <li className="main-menu__icon main-menu__user--active">
-                              <ReactSVG path={userImg} />
+              <Media
+                query={{ minWidth: smallScreen }}
+                render={() => (
+                  <>
+                    {user ? (
+                      <MenuDropdown
+                        head={
+                          <li className="main-menu__icon main-menu__user--active">
+                            <ReactSVG path={userImg} />
+                          </li>
+                        }
+                        content={
+                          <ul className="main-menu__dropdown">
+                            <li data-testid="my_account__link">
+                              <Link to={appPaths.accountUrl}>My Account</Link>
                             </li>
-                          }
-                          content={
-                            <ul className="main-menu__dropdown">
-                              <li data-testid="my_account__link">
-                                <Link to={appPaths.accountUrl}>My Account</Link>
-                              </li>
-                              <li data-testid="order_history__link">
-                                <Link to={appPaths.orderHistoryUrl}>
-                                  Order history
-                                </Link>
-                              </li>
-                              <li data-testid="address_book__link">
-                                <Link to={appPaths.addressBookUrl}>
-                                  Address book
-                                </Link>
-                              </li>
-                              <li
-                                onClick={handleSignOut}
-                                data-testid="logout-link"
-                              >
-                                Log Out
-                              </li>
-                            </ul>
-                          }
+                            <li data-testid="order_history__link">
+                              <Link to={appPaths.orderHistoryUrl}>
+                                Order history
+                              </Link>
+                            </li>
+                            <li data-testid="address_book__link">
+                              <Link to={appPaths.addressBookUrl}>
+                                Address book
+                              </Link>
+                            </li>
+                            <li
+                              onClick={handleSignOut}
+                              data-testid="logout-link"
+                            >
+                              Log Out
+                            </li>
+                          </ul>
+                        }
+                      />
+                    ) : (
+                      <li
+                        data-testid="login-btn"
+                        className="main-menu__icon main-menu__login"
+                        // TODO: Uncomment as soon as we implement the login feature
+                        // onClick={() =>
+                        //   overlayContext.show(
+                        //     OverlayType.login,
+                        //     OverlayTheme.right
+                        //   )
+                        // }
+                      >
+                        <ReactSVG path={userImg} />
+                        <Media
+                          query={{ minWidth: smallScreen }}
+                          render={() => (
+                            <span className="main-menu__user--text">
+                              Ingresar
+                            </span>
+                          )}
                         />
-                      ) : (
-                        <li
-                          data-testid="login-btn"
-                          className="main-menu__icon main-menu__login"
-                          // TODO: Uncomment as soon as we implement the login feature
-                          // onClick={() =>
-                          //   overlayContext.show(
-                          //     OverlayType.login,
-                          //     OverlayTheme.right
-                          //   )
-                          // }
-                        >
-                          <ReactSVG path={userImg} />
-                          <Media
-                            query={{ minWidth: smallScreen }}
-                            render={() => (
-                              <span className="main-menu__user--text">
-                                Ingresar
-                              </span>
-                            )}
-                          />
-                        </li>
-                      )}
-                    </>
-                  )}
-                />
+                      </li>
+                    )}
+                  </>
+                )}
+              />
               <li
                 className="main-menu__search"
-                // TODO: Uncomment as soon as we implement the search feature
-                // onClick={() =>
-                //   overlayContext.show(OverlayType.search, OverlayTheme.right)
-                // }
+                onClick={() =>
+                  overlayContext.show(OverlayType.search, OverlayTheme.right)
+                }
               >
                 <ReactSVG path={searchImg} />
               </li>

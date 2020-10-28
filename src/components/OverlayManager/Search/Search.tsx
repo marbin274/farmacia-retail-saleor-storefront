@@ -41,7 +41,7 @@ class Search extends React.Component<SearchProps, SearchState> {
   submitBtnRef = React.createRef<HTMLButtonElement>();
 
   get hasSearchPhrase() {
-    return this.state.search.length > 0;
+    return this.state.search.length >= 3;
   }
 
   get redirectTo() {
@@ -91,7 +91,7 @@ class Search extends React.Component<SearchProps, SearchState> {
         >
           <div className="search__input">
             <DebouncedTextField
-              onChange={evt => this.setState({ search: evt.target.value })}
+              onChange={({ target }) => this.setState({ search: target.value })}
               value={this.state.search}
               iconLeft={
                 <ReactSVG path={closeImg} onClick={this.props.overlay.hide} />
