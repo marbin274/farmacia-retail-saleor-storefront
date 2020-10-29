@@ -37,7 +37,6 @@ const View: React.FC = () => {
         const productList: ISimpleProduct[] = extractNodes(data.products) ;
 
         const addToCart: IAddToCartCallback = (product, quantity) => {
-          // console.log('addToCart()', product);
           addItem(product, quantity);
         };
 

@@ -2,6 +2,8 @@
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
+import { ProductDetails_product_pricing } from '@temp/@sdk/queries/gqlTypes/ProductDetails';
+
 // ====================================================
 // GraphQL query operation: SearchResults
 // ====================================================
@@ -55,6 +57,10 @@ export interface SearchResults_products_edges_node {
    */
   url: string;
   category: SearchResults_products_edges_node_category | null;
+    /**
+   * Lists the storefront product's pricing, the current price and discounts, only meant for displaying.
+   */
+  pricing: ProductDetails_product_pricing | null;
 }
 
 export interface SearchResults_products_edges {

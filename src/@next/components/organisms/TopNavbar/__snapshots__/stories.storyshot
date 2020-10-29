@@ -339,7 +339,7 @@ exports[`Storyshots @components/organisms/TopNavbar default 1`] = `
         <span
           className="c12"
         >
-          SEARCH
+          Busca por nombre o síntoma
         </span>
         <svg
           height={24}

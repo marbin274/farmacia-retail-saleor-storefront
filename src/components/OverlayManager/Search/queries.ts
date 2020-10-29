@@ -25,6 +25,16 @@ const searchResultsQuery = gql`
             id
             name
           }
+          pricing {
+            priceRange {
+              start {
+                net {
+                  amount
+                  currency
+                }
+              }
+            }
+          }
         }
       }
       pageInfo {

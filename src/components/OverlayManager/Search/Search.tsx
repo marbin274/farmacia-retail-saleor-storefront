@@ -5,7 +5,6 @@ import { stringify } from "query-string";
 import * as React from "react";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import ReactSVG from "react-svg";
-
 import {
   Button,
   Loader,
@@ -23,9 +22,8 @@ import { SearchResults } from "./gqlTypes/SearchResults";
 import NothingFound from "./NothingFound";
 import ProductItem from "./ProductItem";
 import { TypedSearchResults } from "./queries";
-
-import searchImg from "../../../images/search.svg";
-import closeImg from "../../../images/x.svg";
+// import searchImg from "../../../images/search.svg";
+import arrowImg from "../../../images/down-arrow-auna.svg";
 
 interface SearchProps extends RouteComponentProps {
   overlay: OverlayContextInterface;
@@ -93,20 +91,17 @@ class Search extends React.Component<SearchProps, SearchState> {
             <DebouncedTextField
               onChange={({ target }) => this.setState({ search: target.value })}
               value={this.state.search}
-              iconLeft={
-                <ReactSVG path={closeImg} onClick={this.props.overlay.hide} />
-              }
-              iconRight={<ReactSVG path={searchImg} />}
+              // iconRight={<ReactSVG path={searchImg} />}
               autoFocus={true}
-              placeholder="Search"
+              placeholder="Busca por nombre o síntoma"
               onBlur={this.handleInputBlur}
             />
           </div>
           <div
-            className={classNames({
-              ["search__products"]: true,
-              ["search__products--expanded"]: this.hasSearchPhrase,
-            })}
+            className={classNames(
+              "search__products",
+              "search__products--expanded"
+            )}
           >
             <NetworkStatus>
               {isOnline => {
@@ -137,8 +132,13 @@ class Search extends React.Component<SearchProps, SearchState> {
                                   <Button
                                     btnRef={this.submitBtnRef}
                                     type="submit"
+                                    className="search__products__footer__button"
                                   >
-                                    Show all results
+                                    Ver todos los resultados
+                                    <ReactSVG
+                                      path={arrowImg}
+                                      className="search__products__footer__button__icon"
+                                    />
                                   </Button>
                                 )}
                               </div>

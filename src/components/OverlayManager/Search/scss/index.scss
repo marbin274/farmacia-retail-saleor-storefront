@@ -1,22 +1,39 @@
 @import "../../../../globalStyles/scss/variables.scss";
 
-$drawer-width: 25rem;
+$custom-breakpoint: 624px;
+
+.size {
+  margin: 0 auto;
+  max-width: 552px;
+  width: 100%;
+
+  @media (max-width: $custom-breakpoint) {
+    max-width: 330px;
+  }
+}
 
 .search {
   width: 100vw;
-
-  @media (min-width: $medium-screen) {
-    width: $drawer-width;
-  }
 
   &--has-results {
     min-height: 100vh;
   }
 
   &__input {
+    margin-top: 80px;
+
+    .input {
+      padding-bottom: 0;
+
+      &__content {
+        background-color: $auna-black;
+        padding: 36px 0;
+      }
+    }
+
     .input__icon-right {
       svg * {
-        fill: $turquoise;
+        fill: $auna-interactive;
       }
     }
 
@@ -27,75 +44,122 @@ $drawer-width: 25rem;
     }
 
     .input__field {
-      background-color: $turquoise-light;
-      border: none;
+      @extend .size;
+      background-color: $auna-black;
+      border: 1px solid $white;
+      border-radius: 4px;
       box-shadow: none;
-      padding-bottom: 1.2rem;
-      padding-top: 1.25rem;
-      width: 100%;
+      color: $white;
+      padding: 12px 16px;
+
+      @media (max-width: $custom-breakpoint) {
+        font-size: 14px;
+      }
 
       &:focus {
         box-shadow: none;
       }
 
       &::placeholder {
-        text-transform: uppercase;
-        font-size: $base-font-size;
-        color: $black;
+        color: $white;
       }
     }
   }
 
   &__products {
-    background: $white;
+    background: $auna-grey-20;
     overflow: auto;
-    padding: $spacer / 2 0;
+    padding: 20px 0;
     position: relative;
     right: 0;
     transition: 300ms;
     height: calc(100vh - 3rem);
-
-    @media (min-width: $medium-screen) {
-      right: -$drawer-width;
-    }
 
     &--expanded {
       right: 0;
     }
 
     &--not-found {
+      @extend .size;
       padding: 14px;
     }
 
     &__item {
-      padding: $spacer / 2 $spacer;
+      @extend .size;
+      background-color: $white;
+      border-radius: 6px;
+      padding: 8px 36px;
+      border: 1px solid $white;
+
+      @media (max-width: $custom-breakpoint) {
+        padding: 8px 16px;
+      }
+
+      &:hover {
+        background-color: $auna-complementary1;
+        border: 1px solid $auna-complementary1;
+
+        @media (max-width: $custom-breakpoint) {
+          .search__products__item__side__name > span {
+            color: $auna-complementary1;
+          }
+        }
+      }
+
+      &__content {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &__side {
+        display: flex;
+
+        &__name {
+          color: $base-font-color;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+          > span {
+            color: #727171;
+            font-size: 12px;
+
+            @media (max-width: $custom-breakpoint) {
+              color: $white;
+            }
+          }
+        }
+
+        &__price {
+          align-items: center;
+          display: flex;
+          font-size: 16px;
+
+          @media (max-width: $custom-breakpoint) {
+            font-size: 12px;
+          }
+
+          > span {
+            font-size: 18px;
+            margin-left: 6px;
+
+            @media (max-width: $custom-breakpoint) {
+              font-size: 14px;
+            }
+          }
+        }
+      }
 
       img {
         width: 3.6rem;
         height: 3.6rem;
         display: inline-block;
-        margin-right: $spacer;
+        margin-right: 34px;
         vertical-align: top;
-      }
 
-      span {
-        display: inline-block;
-        width: calc(100% - 4.6rem);
-      }
-
-      h4 {
-        text-transform: uppercase;
-        font-weight: $bold-font-weight;
-        padding: $spacer / 4 0;
-        color: $base-font-color;
-      }
-
-      p {
-        color: $gray;
-      }
-
-      &:hover {
-        background-color: $gray-light;
+        @media (max-width: $custom-breakpoint) {
+          margin-right: 12px;
+        }
       }
 
       ul {
@@ -104,16 +168,29 @@ $drawer-width: 25rem;
     }
 
     &__footer {
-      position: fixed;
-      bottom: 0px;
-      border-top: 1px solid $gray-light;
-      text-align: center;
-      padding: $spacer 0;
-      background-color: $white;
-      width: 100vw;
+      @extend .size;
+      background-color: $auna-grey-20;
+      padding: 8px 0;
+      text-align: end;
 
-      @media (min-width: $medium-screen) {
-        width: 25rem;
+      &__button {
+        background-color: unset !important;
+
+        @media (max-width: $custom-breakpoint) {
+          padding: 0.9rem 0 !important; 
+          width: unset !important;
+          max-width: unset !important;
+        }
+
+        > span {
+          color: $auna-interactive !important;
+          display: flex !important;
+          font-size: 14px !important;
+        }
+
+        &__icon {
+          margin: 0 14px;
+        }
       }
     }
   }
