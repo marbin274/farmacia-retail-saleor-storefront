@@ -11,12 +11,23 @@
 
   &__product {
     display: flex;
-    margin-top: 104px;
     padding-bottom: $spacer * 5;
 
     @media (max-width: $medium-screen) {
       display: block;
       margin-bottom: $spacer * 2;
+    }
+
+    &__background {
+      display: none;
+      @media (max-width: $small-screen) {
+        display: block;
+        background-color: $auna-interactive;
+        height: 20rem;
+        position: absolute;
+        left: -1rem;
+        width: calc(100% + 2rem);
+      }
     }
 
     &__description {
@@ -52,6 +63,7 @@
     &__gallery {
       margin-right: 58px;
       box-sizing: border-box;
+      padding-top: 6.5rem;
 
       @media (max-width: $medium-screen) {
         width: 50%;
@@ -62,6 +74,7 @@
         padding: 0;
         margin-bottom: $spacer * 2;
         padding: 0;
+        padding-top: 6.5rem;
       }
 
       &__nav {

@@ -121,6 +121,7 @@ class Page extends React.PureComponent<
               {matches =>
                 matches ? (
                   <>
+                    <div className="product-page__product__background"></div>
                     <GalleryCarousel images={this.getImages()} />
                     <div className="product-page__product__info">
                     {productDescription}
