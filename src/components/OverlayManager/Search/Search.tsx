@@ -22,7 +22,7 @@ import { SearchResults } from "./gqlTypes/SearchResults";
 import NothingFound from "./NothingFound";
 import ProductItem from "./ProductItem";
 import { TypedSearchResults } from "./queries";
-// import searchImg from "../../../images/search.svg";
+import searchImg from "../../../images/search.svg";
 import arrowImg from "../../../images/down-arrow-auna.svg";
 
 interface SearchProps extends RouteComponentProps {
@@ -91,7 +91,7 @@ class Search extends React.Component<SearchProps, SearchState> {
             <DebouncedTextField
               onChange={({ target }) => this.setState({ search: target.value })}
               value={this.state.search}
-              // iconRight={<ReactSVG path={searchImg} />}
+              innerIcon={<ReactSVG path={searchImg} />}
               autoFocus={true}
               placeholder="Busca por nombre o síntoma"
               onBlur={this.handleInputBlur}

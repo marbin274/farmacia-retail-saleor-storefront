@@ -20,6 +20,7 @@ export interface TextFieldProps
   iconLeft?: React.ReactNode;
   iconRight?: React.ReactNode;
   styleType?: Style;
+  innerIcon?: React.ReactNode;
 }
 
 const generateClassName = ({ errors, iconLeft, styleType }: IClassNameArgs) => {
@@ -37,17 +38,19 @@ const TextField: React.FC<TextFieldProps> = ({
   errors,
   helpText,
   styleType = "white" as Style,
+  innerIcon,
   ...rest
 }) => (
   <div className="input">
-    {iconLeft ? <span className="input__icon-left">{iconLeft}</span> : null}
-    {iconRight ? <span className="input__icon-right">{iconRight}</span> : null}
+    {iconLeft && <span className="input__icon-left">{iconLeft}</span>}
+    {iconRight && <span className="input__icon-right">{iconRight}</span>}
     <div className="input__content">
       <input
         {...rest}
         className={generateClassName({ errors, iconLeft, styleType })}
       />
-      {label ? <span className="input__label">{label}</span> : null}
+      {label && <span className="input__label">{label}</span>}
+      {innerIcon && <span className="input__inner-icon">{innerIcon}</span>}
     </div>
     {errors && (
       <span className="input__error">
