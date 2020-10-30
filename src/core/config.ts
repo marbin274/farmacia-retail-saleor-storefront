@@ -85,7 +85,7 @@ export const CHECKOUT_STEPS = [
   {
     index: 1,
     link: "/checkout/shipping",
-    name: "Paso 2: Elije el horario de entrega",
+    name: "Paso 2: Elige el horario de entrega",
     nextActionName: "Ir a pago",
     nextStepLink: "/checkout/payment",
     onlyIfShippingRequired: true,

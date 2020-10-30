@@ -513,7 +513,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                   className="c13"
                   disabled={false}
                 >
-                  Country
+                  Distrito
                 </label>
               </div>
               <div
@@ -545,7 +545,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                     className="c13"
                     disabled={false}
                   >
-                    City
+                    Ciudad
                   </label>
                 </div>
               </div>

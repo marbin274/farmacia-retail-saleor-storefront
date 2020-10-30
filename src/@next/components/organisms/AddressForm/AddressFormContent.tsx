@@ -107,7 +107,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                 "data-cy": "addressFormCountry",
               }}
               defaultValue={defaultValue}
-              label="Country"
+              label="Distrito"
               name="country"
               options={countriesOptions}
               value={
@@ -125,7 +125,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
             <TextField
               data-cy="addressFormCity"
               name="city"
-              label="City"
+              label="Ciudad"
               value={values!.city}
               autoComplete="address-level1"
               errors={fieldErrors!.city}

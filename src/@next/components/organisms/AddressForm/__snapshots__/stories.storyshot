@@ -473,7 +473,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                   className="c13"
                   disabled={false}
                 >
-                  Country
+                  Distrito
                 </label>
               </div>
               <div
@@ -504,7 +504,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                     className="c13"
                     disabled={false}
                   >
-                    City
+                    Ciudad
                   </label>
                 </div>
               </div>
@@ -1060,7 +1060,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                   className="c13"
                   disabled={false}
                 >
-                  Country
+                  Distrito
                 </label>
               </div>
               <div
@@ -1091,7 +1091,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                     className="c13"
                     disabled={false}
                   >
-                    City
+                    Ciudad
                   </label>
                 </div>
               </div>
@@ -1587,7 +1587,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                   className="c13"
                   disabled={false}
                 >
-                  Country
+                  Distrito
                 </label>
               </div>
               <div
@@ -1619,7 +1619,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                     className="c13"
                     disabled={false}
                   >
-                    City
+                    Ciudad
                   </label>
                 </div>
               </div>
