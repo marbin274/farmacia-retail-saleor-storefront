@@ -174,3 +174,26 @@ export const TypedProductVariantsQuery = TypedQuery<
   VariantList,
   VariantListVariables
 >(productVariantsQuery);
+
+export const productVariantFragmentSimple = gql`
+    ${priceFragment}
+    fragment ProductVariantFieldsSimple on ProductVariant {
+        id
+        sku
+        name
+        images {
+            id
+            url
+            alt
+        }
+        pricing {
+            onSale
+            priceUndiscounted {
+                ...Price
+            }
+            price {
+                ...Price
+            }
+        }
+    }
+`;

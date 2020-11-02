@@ -14,6 +14,8 @@ import {
 } from "../../core/utils";
 import Page from "./Page";
 import { TypedSearchProductsQuery } from "./queries";
+import { useCart } from "@sdk/react";
+import { IAddToCartCallback } from "@temp/@next/components/molecules/ProductTileAUNA/types";
 
 type ViewProps = RouteComponentProps<{
   id: string;
@@ -126,7 +128,10 @@ export const View: React.FC<ViewProps> = ({ match }) => {
       value: "-updated_at",
     },
   ];
-
+  const { addItem } = useCart();
+  const addToCart: IAddToCartCallback = (product, quantity) => {
+    addItem(product, quantity);
+  };
   return (
     <NetworkStatus>
       {isOnline => (
@@ -180,6 +185,7 @@ export const View: React.FC<ViewProps> = ({ match }) => {
                   onOrder={value => {
                     setSort(value.value);
                   }}
+                  addToCart={addToCart}
                 />
               );
             }

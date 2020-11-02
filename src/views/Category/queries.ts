@@ -4,12 +4,14 @@ import { TypedQuery } from "../../core/queries";
 import {
   basicProductFragment,
   productPricingFragment,
+  productVariantFragmentSimple,
 } from "../Product/queries";
 import { Category, CategoryVariables } from "./gqlTypes/Category";
 
 export const categoryProductsQuery = gql`
   ${basicProductFragment}
   ${productPricingFragment}
+  ${productVariantFragmentSimple}
   query Category(
     $id: ID!
     $attributes: [AttributeInput]
@@ -37,6 +39,9 @@ export const categoryProductsQuery = gql`
           category {
             id
             name
+          }
+          variants {
+            ...ProductVariantFieldsSimple
           }
         }
       }

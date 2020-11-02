@@ -10,12 +10,13 @@ import {
 } from "../../components";
 
 import { ProductListHeader } from "../../@next/components/molecules";
-import { ProductList } from "../../@next/components/organisms";
+import { ProductListAUNA } from "../../@next/components/organisms";
 import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
 
 import { maybe } from "../../core/utils";
 
 import { Category_category, Category_products } from "./gqlTypes/Category";
+import { IAddToCartCallback } from "@temp/@next/components/molecules/ProductTileAUNA/types";
 
 interface SortItem {
   label: string;
@@ -25,6 +26,7 @@ interface SortItem {
 interface SortOptions extends Array<SortItem> {}
 
 interface PageProps {
+  addToCart: IAddToCartCallback,
   activeFilters: number;
   attributes: IFilterAttributes[];
   activeSortOption: string;
@@ -41,6 +43,7 @@ interface PageProps {
 }
 
 const Page: React.FC<PageProps> = ({
+  addToCart,
   activeFilters,
   activeSortOption,
   attributes,
@@ -105,11 +108,12 @@ const Page: React.FC<PageProps> = ({
           onCloseFilterAttribute={onAttributeFiltersChange}
         />
         {canDisplayProducts && (
-          <ProductList
+         <ProductListAUNA
             products={products.edges.map(edge => edge.node)}
             canLoadMore={hasNextPage}
             loading={displayLoader}
             onLoadMore={onLoadMore}
+            addToCart={addToCart}
           />
         )}
       </div>
