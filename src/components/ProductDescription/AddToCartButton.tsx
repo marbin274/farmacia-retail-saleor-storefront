@@ -3,7 +3,7 @@ import * as React from "react";
 import classNames from "classnames";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import { ButtonProps } from "..";
-import { Button } from "../../@next/components/atoms";
+import { Button } from "@components/atoms";
 
 interface AddToCartButtonState {
   animate: boolean;
@@ -57,11 +57,7 @@ class AddToCartButton extends React.PureComponent<
           transitionEnterTimeout={this.animationTimeout}
           transitionLeaveTimeout={this.animationTimeout}
         >
-          {animate ? (
-            <span key="text">Agregado</span>
-          ) : (
-            <span key="children">{this.props.children}</span>
-          )}
+          <span key="children">{this.props.children}</span>
         </ReactCSSTransitionGroup>
       </Button>
     );

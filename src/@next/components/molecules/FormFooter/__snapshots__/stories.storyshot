@@ -31,17 +31,18 @@ exports[`Storyshots @components/molecules/FormFooter with submit and cancel butt
 }
 
 .c3:hover {
-  background-color: #06a09e;
+  background-color: #0BC1DC;
   color: #fff;
 }
 
 .c3:active {
-  background-color: #06a09e;
+  background-color: #029FB7;
   box-shadow: -3px 3px 14px 0px rgba(129,67,67,0.2);
 }
 
 .c3:disabled {
-  background-color: #7d7d7d;
+  background-color: #F1F2F7;
+  color: #B8BCD5;
 }
 
 .c3:disabled,
@@ -52,7 +53,7 @@ exports[`Storyshots @components/molecules/FormFooter with submit and cancel butt
 .c4 {
   display: inline-block;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.25rem;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -169,17 +170,18 @@ exports[`Storyshots @components/molecules/FormFooter with submit button 1`] = `
 }
 
 .c2:hover {
-  background-color: #06a09e;
+  background-color: #0BC1DC;
   color: #fff;
 }
 
 .c2:active {
-  background-color: #06a09e;
+  background-color: #029FB7;
   box-shadow: -3px 3px 14px 0px rgba(129,67,67,0.2);
 }
 
 .c2:disabled {
-  background-color: #7d7d7d;
+  background-color: #F1F2F7;
+  color: #B8BCD5;
 }
 
 .c2:disabled,
@@ -190,7 +192,7 @@ exports[`Storyshots @components/molecules/FormFooter with submit button 1`] = `
 .c3 {
   display: inline-block;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.25rem;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -275,17 +277,18 @@ exports[`Storyshots @components/molecules/FormFooter with top divider 1`] = `
 }
 
 .c2:hover {
-  background-color: #06a09e;
+  background-color: #0BC1DC;
   color: #fff;
 }
 
 .c2:active {
-  background-color: #06a09e;
+  background-color: #029FB7;
   box-shadow: -3px 3px 14px 0px rgba(129,67,67,0.2);
 }
 
 .c2:disabled {
-  background-color: #7d7d7d;
+  background-color: #F1F2F7;
+  color: #B8BCD5;
 }
 
 .c2:disabled,
@@ -296,7 +299,7 @@ exports[`Storyshots @components/molecules/FormFooter with top divider 1`] = `
 .c3 {
   display: inline-block;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.25rem;
   -webkit-user-select: none;
   -moz-user-select: none;

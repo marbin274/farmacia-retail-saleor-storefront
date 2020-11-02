@@ -31,17 +31,18 @@ exports[`Storyshots @components/molecules/ResetPasswordForm default 1`] = `
 }
 
 .c9:hover {
-  background-color: #06a09e;
+  background-color: #0BC1DC;
   color: #fff;
 }
 
 .c9:active {
-  background-color: #06a09e;
+  background-color: #029FB7;
   box-shadow: -3px 3px 14px 0px rgba(129,67,67,0.2);
 }
 
 .c9:disabled {
-  background-color: #7d7d7d;
+  background-color: #F1F2F7;
+  color: #B8BCD5;
 }
 
 .c9:disabled,
@@ -52,7 +53,7 @@ exports[`Storyshots @components/molecules/ResetPasswordForm default 1`] = `
 .c10 {
   display: inline-block;
   font-size: 1.125rem;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.25rem;
   -webkit-user-select: none;
   -moz-user-select: none;

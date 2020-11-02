@@ -17,18 +17,22 @@ export const defaultTheme = {
     },
     colors: {
       primary: {
-        activeBackground: C.theme.primaryDark,
-        background: C.theme.primary,
+        activeBackground: C.theme.aunaInteractivePressed,
+        background: C.theme.aunaInteractive,
         color: C.white,
-        hoverBackground: C.theme.primaryDark,
+        disabledBackground: C.theme.aunaDisabledBackground,
+        disabledColor: C.theme.aunaDisabled,
+        hoverBackground: C.theme.aunaInteractiveHover,
         hoverColor: C.white,
       },
       secondary: {
-        activeBackground: C.theme.secondaryDark,
+        activeBackground: C.theme.aunaInteractivePressed,
         background: C.white,
-        color: C.theme.secondary,
-        hoverBackground: C.theme.secondary,
-        hoverColor: C.white,
+        color: C.theme.aunaInteractive,
+        disabledBackground: C.theme.aunaDisabledBackground,
+        disabledColor: C.theme.aunaDisabled,
+        hoverBackground: C.theme.white,
+        hoverColor: C.theme.aunaInteractive,
       },
     },
     padding: {
@@ -189,6 +193,10 @@ export const defaultTheme = {
      * 18px in default theme
      */
     h4FontSize: C.h4FontSize,
+    /**
+     * 400 in default theme
+     */
+    normalFontWeight: C.normalFontWeight,
     /**
      * 14px in default theme
      */

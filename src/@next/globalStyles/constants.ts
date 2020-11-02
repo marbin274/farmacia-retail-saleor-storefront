@@ -33,6 +33,9 @@ export const aunaBrand4 = "#FFD100";
 
 export const aunaPrimary = "#C2DF0A";
 export const aunaInteractive = "#00B0CA";
+export const aunaInteractiveHover = "#0BC1DC";
+export const aunaInteractivePressed = "#029FB7";
+
 export const aunaError = "#E84545";
 export const aunaDisabled = "#E4E5ED";
 
@@ -51,6 +54,12 @@ export const aunaComplementary4 = "#E6EEF8";
 // theme colors
 export const theme = {
   activeMenuOption: darkGreen,
+  aunaDisabled: aunaGrey80,
+  aunaDisabledBackground: aunaGrey40,
+  aunaInteractive,
+  aunaInteractiveHover,
+  aunaInteractivePressed,
+  aunaPrimary,
   autofill: autofillColor,
   autofillSelected: autofillColorSelected,
   backgroundLight: aunaGrey20,
@@ -94,6 +103,7 @@ export const baseFontSize = "1rem"; // 16px
 export const baseLineHeight = "1.25rem"; // 20px
 export const boldFontWeight = 600;
 export const extraBoldFontWeight = 800;
+export const normalFontWeight = 400;
 export const h1FontSize = "4rem"; // 64px
 export const h2FontSize = "3rem"; // 48px
 export const h1LineHeight = 1;

@@ -46,7 +46,7 @@
     text-decoration: line-through;
     color: $gray;
     font-size: $small-font-size;
-    font-weight: regular;
+    font-weight: normal;
   }
 
   &__selected-attributes {
@@ -122,7 +122,6 @@
 
     &--fade {
       $animation-speed: 200ms;
-      background-color: $turquoise-dark;
 
       &-enter {
         opacity: 0;

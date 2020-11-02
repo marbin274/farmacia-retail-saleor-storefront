@@ -11,36 +11,37 @@ const fontSize = (fontSize: string, smallFontSize: string) => ({
   sm: smallFontSize,
 });
 
+// @ts-ignore
+const getButtonColors = props => props.theme.button.colors[props.color];
+
 export const Primary = styled.button<{
   color: "primary" | "secondary";
   fullWidth?: boolean;
   size: Size;
 }>`
-  background-color: ${props =>
-    props.theme.button.colors[props.color].background};
+  background-color: ${props => getButtonColors(props).background};
   padding: ${props => padding[props.size]};
   border: none;
   border-radius: 40px;
   transition: 0.3s;
   outline: none;
   cursor: pointer;
-  color: ${props => props.theme.button.colors[props.color].color};
+  color: ${props => getButtonColors(props).color};
   width: ${props => (props.fullWidth ? "100%" : "auto")}
 
   &:hover {
-    background-color: ${props =>
-      props.theme.button.colors[props.color].hoverBackground};
-    color: ${props => props.theme.button.colors[props.color].hoverColor};
+    background-color: ${props => getButtonColors(props).hoverBackground};
+    color: ${props => getButtonColors(props).hoverColor};
   }
 
   &:active {
-    background-color: ${props =>
-      props.theme.button.colors[props.color].activeBackground};
+    background-color: ${props => getButtonColors(props).activeBackground};
     box-shadow: -3px 3px 14px 0px rgba(129, 67, 67, 0.2);
   }
 
   &:disabled {
-    background-color: ${props => props.theme.colors.disabled};
+    background-color: ${props => getButtonColors(props).disabledBackground};
+    color: ${props => getButtonColors(props).disabledColor};
 
     &,
     &:hover {
@@ -56,10 +57,9 @@ export const Primary = styled.button<{
 `;
 
 export const Secondary = styled(Primary)`
-  box-shadow: inset 0px 0px 0px 3px
-    ${props => props.theme.button.colors.secondary.color};
-  border-left: 1px solid ${props => props.theme.button.colors.secondary.color};
-  border-right: 1px solid ${props => props.theme.button.colors.secondary.color};
+  box-shadow: inset 0px 0px 0px 3px ${props => getButtonColors(props).color};
+  border-left: 1px solid ${props => getButtonColors(props).color};
+  border-right: 1px solid ${props => getButtonColors(props).color};
 `;
 
 export const Text = styled.span<{ size: Size }>`
@@ -70,9 +70,7 @@ export const Text = styled.span<{ size: Size }>`
       button: { typography },
     },
   }) => fontSize(typography.fontSize, typography.smallFontSize)[size]};
-  // TODO: check the right way to delete this
-  // font-weight: ${props => props.theme.typography.boldFontWeight};
-  font-weight: 500;
+  font-weight: ${props => props.theme.typography.normalFontWeight};
   line-height: ${props => props.theme.typography.baseLineHeight};
   user-select: none;
 `;
