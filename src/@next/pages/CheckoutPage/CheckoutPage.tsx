@@ -239,7 +239,7 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
       )}
       checkout={checkoutView}
       button={getButton(
-        activeStep.nextActionName.toUpperCase(),
+        activeStep.nextActionName,
         handleNextStepClick
       )}
     />

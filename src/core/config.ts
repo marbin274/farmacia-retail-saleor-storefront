@@ -104,7 +104,7 @@ export const CHECKOUT_STEPS = [
     index: 3,
     link: "/checkout/review",
     name: "Paso 4: Revisa tu compra",
-    nextActionName: "Place order",
+    nextActionName: "Pagar",
     nextStepLink: "/order-finalized",
     onlyIfShippingRequired: false,
     step: CheckoutStep.Review,

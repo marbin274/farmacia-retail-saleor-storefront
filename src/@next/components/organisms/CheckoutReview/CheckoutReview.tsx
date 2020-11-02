@@ -19,35 +19,20 @@ const CheckoutReview: React.FC<IProps> = ({
 }: IProps) => {
   return (
     <S.Wrapper>
-      <S.Title data-cy="checkoutPageSubtitle">REVIEW ORDER</S.Title>
       <S.Grid>
         <section>
-          <S.SubTitle data-cy="checkoutReviewSectionTitle">
-            Shipping Address
-          </S.SubTitle>
-          <S.Divider />
+          <S.Title data-cy="checkoutReviewSectionTitle">Datos de envío</S.Title>
           <AddressSummary address={shippingAddress} email={email} />
         </section>
         <section>
-          <S.SubTitle data-cy="checkoutReviewSectionTitle">
-            Billing Address
-          </S.SubTitle>
-          <S.Divider />
-          <AddressSummary address={billingAddress} email={email} />
+          <S.Title data-cy="checkoutReviewSectionTitle">
+            Horario de entrega
+          </S.Title>
+          <S.Text>{shippingMethodName}</S.Text>
         </section>
         <section>
-          <S.SubTitle data-cy="checkoutReviewSectionTitle">
-            Shipping Method
-          </S.SubTitle>
-          <S.Divider />
-          <S.TextSummary>{shippingMethodName}</S.TextSummary>
-        </section>
-        <section>
-          <S.SubTitle data-cy="checkoutReviewSectionTitle">
-            Payment Method
-          </S.SubTitle>
-          <S.Divider />
-          <S.TextSummary>{paymentMethodName}</S.TextSummary>
+          <S.Title data-cy="checkoutReviewSectionTitle">Método de pago</S.Title>
+          <S.ImportantText>{paymentMethodName}</S.ImportantText>
         </section>
       </S.Grid>
       <S.ErrorMessages>
