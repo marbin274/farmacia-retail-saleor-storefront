@@ -131,13 +131,12 @@ const MainMenu: React.FC = () => {
                               <li
                                 data-testid="login-btn"
                                 className="main-menu__icon"
-                                // TODO: Uncomment as soon as we implement the login feature
-                                // onClick={() =>
-                                //   overlayContext.show(
-                                //     OverlayType.login,
-                                //     OverlayTheme.left
-                                //   )
-                                // }
+                                onClick={() =>
+                                  overlayContext.show(
+                                    OverlayType.login,
+                                    OverlayTheme.left
+                                  )
+                                }
                               >
                                 <ReactSVG path={userImg} />
                               </li>
@@ -228,13 +227,12 @@ const MainMenu: React.FC = () => {
                       <li
                         data-testid="login-btn"
                         className="main-menu__icon main-menu__login"
-                        // TODO: Uncomment as soon as we implement the login feature
-                        // onClick={() =>
-                        //   overlayContext.show(
-                        //     OverlayType.login,
-                        //     OverlayTheme.right
-                        //   )
-                        // }
+                        onClick={() =>
+                          overlayContext.show(
+                            OverlayType.login,
+                            OverlayTheme.right
+                          )
+                        }
                       >
                         <ReactSVG path={userImg} />
                         <Media

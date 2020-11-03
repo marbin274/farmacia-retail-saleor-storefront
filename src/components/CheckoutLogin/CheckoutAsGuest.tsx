@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 // import { Button, OverlayTheme, OverlayType } from "..";
 import { Button } from "..";
-import { OverlayContextInterface } from "../Overlay";
+import { OverlayContextInterface, OverlayTheme, OverlayType } from "../Overlay";
 
 const CheckoutAsGuest: React.FC<{
   overlay: OverlayContextInterface;
@@ -14,19 +14,18 @@ const CheckoutAsGuest: React.FC<{
     <p>
       Estar registrado te permite vivir una experiencia personalizada y ágil.
     </p>
-    <Link to={checkoutUrl}>
-      <Button>Continua como invitado</Button>
-    </Link>
+    <Button
+      className="checkout-login__button_secondary"
+      onClick={() => overlay.show(OverlayType.register, OverlayTheme.right)}
+    >
+      Registrarme
+    </Button>
 
-    {/* <p>
-      or you can{" "}
-      <span
-        className="u-link"
-        onClick={() => overlay.show(OverlayType.register, OverlayTheme.right)}
-      >
-        create an account
-      </span>
-    </p> */}
+    <Link to={checkoutUrl}>
+      <Button className="checkout-login__button_primary">
+        Continua como invitado
+      </Button>
+    </Link>
   </div>
 );
 

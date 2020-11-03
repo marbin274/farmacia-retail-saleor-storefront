@@ -33,14 +33,25 @@
     p {
       margin-bottom: 36px;
     }
+  }
 
-    button {
-      background-color: white !important;
-      border: 1px solid $auna-interactive;
+  &__button {
+    &_primary,
+    &_secondary {
       width: 281px;
+      background-color: white !important;
+
       span {
-        color: $auna-interactive;
+        color: $auna-interactive !important;
       }
+    }
+
+    &_primary {
+      border: 1px solid $auna-interactive !important;
+    }
+
+    &_secondary {
+      margin-bottom: 16px;
     }
   }
 
