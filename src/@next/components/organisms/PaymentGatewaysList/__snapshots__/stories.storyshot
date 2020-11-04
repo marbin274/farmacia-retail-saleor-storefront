@@ -114,7 +114,7 @@ exports[`Storyshots @components/organisms/PaymentGatewaysList default 1`] = `
               className="c5"
               data-cy="checkoutPaymentGatewayDummyName"
             >
-              Dummy
+              AUNA Payment Gateway
             </span>
             <span
               checked={false}

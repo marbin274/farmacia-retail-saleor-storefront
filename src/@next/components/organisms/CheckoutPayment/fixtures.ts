@@ -51,7 +51,7 @@ export const paymentGateways: IPaymentGateway[] = [
       },
     ],
     id: "mirumee.payments.dummy",
-    name: "Dummy",
+    name: "AUNA Payment Gateway",
   },
   {
     config: [

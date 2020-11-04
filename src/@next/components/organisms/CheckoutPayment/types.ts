@@ -1,4 +1,5 @@
 import { GetShop_shop_countries } from "@sdk/queries/gqlTypes/GetShop";
+import {ICardPaymentInput} from "@temp/core/payments/braintree";
 import {
   IAddress,
   IAddressWithAddressType,
@@ -57,7 +58,7 @@ export interface IProps {
   processPayment: (
     gateway: string,
     token: string,
-    cardData?: ICardData
+    cardData?: ICardData | ICardPaymentInput
   ) => void;
   /**
    * Method called when gateway error occured.

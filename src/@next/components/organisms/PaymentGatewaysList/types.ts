@@ -1,4 +1,5 @@
-import { ICardData, IFormError, IPaymentGateway } from "@types";
+import {ICardPaymentInput} from "@temp/core/payments/braintree";
+import { IFormError, IPaymentGateway } from "@types";
 
 export interface IProps {
   /**
@@ -35,7 +36,7 @@ export interface IProps {
   processPayment: (
     gateway: string,
     token: string,
-    cardData?: ICardData
+    cardData?: ICardPaymentInput
   ) => void;
   /**
    * Method called when gateway error occured.

@@ -1,3 +1,4 @@
+import {ICardPaymentInput} from "@temp/core/payments/braintree";
 import React, {
   forwardRef,
   RefForwardingComponent,
@@ -115,9 +116,18 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
   const handleProcessPayment = async (
     gateway: string,
     token: string,
-    cardData?: ICardData
+    _cardData?: ICardData | ICardPaymentInput
   ) => {
-    const { dataError } = await createPayment(gateway, token, cardData);
+    // TODO: remove dummyCardData and use cardData when plugin is ready
+    const dummyCardData: ICardData = {
+      brand: 'visa',
+      expMonth: 11,
+      expYear: 22,
+      firstDigits: '4242',
+      lastDigits: '4242',
+    };
+
+    const { dataError } = await createPayment(gateway, token, dummyCardData);
     const errors = dataError?.error;
     changeSubmitProgress(false);
     if (errors) {

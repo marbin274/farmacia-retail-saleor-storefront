@@ -11,20 +11,25 @@ export const HOME_PAGE_CONF = {
   SORT_FIELD: ProductOrderField.PRICE,
 };
 export const PROVIDERS = {
+  AUNA : {
+    id: 'mirumee.payments.auna',
+    label: "AUNA Payments Gateway",
+  },
   BRAINTREE: {
+    id: 'mirumee.payments.braintree',
     label: "Braintree",
   },
   CASH: {
+    id: 'mirumee.payments.cash',
     label: "Contra entrega : paga en efectivo a la entrega ",
   },
-  CREDIT_CARD: {
-    label: "Tarjeta de Crédito",
-  },
   DUMMY: {
-    label: "Dummy",
+    id: 'mirumee.payments.dummy',
+    label: "AUNA Payments Gateway",
   },
   STRIPE: {
     href: "https://js.stripe.com/v3/",
+    id: 'mirumee.payments.stripe',
     label: "Stripe",
   },
 };

@@ -1,17 +1,22 @@
 import React from "react";
 
+import {AunaPaymentGateway} from "@components/organisms/AunaPaymentGateway";
 import {ErrorMessage, Radio} from "@components/atoms";
 import creditCardIcon from "@temp/images/auna/icon-credit-card.svg";
+import ReactSVG from "react-svg";
 
 import { PROVIDERS } from "@temp/core/config";
 import {ThemeContext} from "styled-components";
-
-import {
-  DummyPaymentGateway,
-  } from "..";
-import * as S from "./styles";
 import { IProps } from "./types";
-import ReactSVG from "react-svg";
+import * as S from "./styles";
+
+// TODO: temporary use this config instead of data from backend, until we have Aun payments plugin [Denn 04/11/20]
+const dummyConfig = [
+    {
+      field: 'client_token',
+      value: 'QAZWSXEDC',
+    },
+];
 
 /**
  * Payment Gateways list
@@ -19,13 +24,12 @@ import ReactSVG from "react-svg";
 const PaymentGatewaysList: React.FC<IProps> = ({
   paymentGateways,
   selectedPaymentGateway,
-  selectedPaymentGatewayToken,
   selectPaymentGateway,
   formRef,
   formId,
   processPayment,
   errors,
-  // onError,
+  onError,
 }: IProps) => {
   const customTheme = React.useContext(ThemeContext);
 
@@ -34,8 +38,9 @@ const PaymentGatewaysList: React.FC<IProps> = ({
       {paymentGateways.map(({ id, name, config }, index) => {
         const checked = selectedPaymentGateway === id;
 
-        switch (name) {
-          case PROVIDERS.DUMMY.label:
+        switch (id) {
+          // TODO: we tempory use Dummy payment gateway until we have payments plugin [Denn 04/11/20]
+          case PROVIDERS.DUMMY.id:
             return (
               <div key={index}>
                 <S.Tile checked={checked}>
@@ -51,7 +56,7 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                   >
                     <S.PaymentLine>
                       <S.PaymentTitle data-cy="checkoutPaymentGatewayDummyName" checked={checked}>
-                        {name}
+                        AUNA Payment Gateway
                       </S.PaymentTitle>
                       <S.PaymentIcon checked={checked}>
                         <ReactSVG path={creditCardIcon} svgStyle={{stroke: S.getIconColor(checked, customTheme)}}/>
@@ -60,11 +65,12 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                   </Radio>
                 </S.Tile>
                 {checked && (
-                  <DummyPaymentGateway
+                  <AunaPaymentGateway
+                    config={dummyConfig}
                     formRef={formRef}
                     formId={formId}
-                    processPayment={token => processPayment(id, token)}
-                    initialStatus={selectedPaymentGatewayToken}
+                    onError={onError}
+                    processPayment={processPayment}
                   />
                 )}
               </div>

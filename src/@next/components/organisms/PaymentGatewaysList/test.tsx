@@ -21,7 +21,6 @@ describe("<PaymentGatewaysList />", () => {
 
     const wrapperText = wrapper.text();
     expect(wrapperText).toContain(paymentGateways[0].name);
-    // expect(wrapperText).toContain(paymentGateways[1].name);
   });
 
   it("simulates select payment gateway", () => {
