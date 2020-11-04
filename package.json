@@ -107,6 +107,7 @@
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^1.0.0",
     "cypress": "^4.3.0",
+    "cypress-cucumber-preprocessor": "^4.0.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "eslint-config-prettier": "^2.9.0",
@@ -182,5 +183,9 @@
     "test:e2e:dev": "start-server-and-test start http://localhost:3000 cy:open",
     "test:update:snapshot": "jest --updateSnapshot --config .jest/config.json",
     "postinstall": "husky install"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true,
+    "commonPath": "cypress/integration/bdd/common"
   }
 }
