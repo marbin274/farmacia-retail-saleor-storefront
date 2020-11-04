@@ -85,6 +85,10 @@ $custom-breakpoint: 624px;
       right: 0;
     }
 
+    &--background-opacity{
+      background: $auna-grey-05;
+      opacity: 0.92;
+    }
     &--not-found {
       @extend .size;
       padding: 14px;
@@ -95,10 +99,12 @@ $custom-breakpoint: 624px;
       background-color: $white;
       border-radius: 6px;
       padding: 8px 36px;
-      border: 1px solid $white;
+      border: 1px solid $auna-complementary1;
+      margin-bottom: 2.65px;
 
       @media (max-width: $custom-breakpoint) {
         padding: 8px 16px;
+        margin-bottom: 10px;
       }
 
       &:hover {

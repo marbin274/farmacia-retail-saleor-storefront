@@ -100,7 +100,10 @@ class Search extends React.Component<SearchProps, SearchState> {
           <div
             className={classNames(
               "search__products",
-              "search__products--expanded"
+              "search__products--expanded",
+              {
+                "search__products--background-opacity": !this.hasSearchPhrase,
+              }
             )}
           >
             <NetworkStatus>
