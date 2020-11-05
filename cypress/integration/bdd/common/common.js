@@ -1,5 +1,9 @@
-import {Given, When, Then} from "cypress-cucumber-preprocessor/steps"
+import {Before, Given, When, Then} from "cypress-cucumber-preprocessor/steps"
 import PagesContainer from "../../../pages/PagesContainer"
+
+Before(()=> {
+  Cypress.env('VIEWPORT') && cy.viewport(Cypress.env('VIEWPORT'))
+})
 
 Given(/^visits "([^"]*)"$/, function(page) {
   PagesContainer.getPage(page).visit();

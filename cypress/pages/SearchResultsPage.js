@@ -1,8 +1,10 @@
+import BasePage from "./BasePage";
+
 export default class SearchResultsPage {
   static url = '/search'
 
-  visit() {
-    cy.visit(url)
+  constructor() {
+    Object.assign(this, BasePage)
   }
 
   searchProduct(index) {

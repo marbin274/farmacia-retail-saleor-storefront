@@ -1,10 +1,10 @@
 Feature: The Search
 
-  In order to find farmacy products
-  As a Auna User
+  In order to find pharmacy products
+  As a guest User
   I want to make searches
 
-  Scenario: Searching by text
+  Scenario: Searching with preview results
     Given a "guest_user"
     When visits "HomePage"
     And clicks on "buttonSearch"
@@ -12,7 +12,7 @@ Feature: The Search
     Then search products appear
     And search products contain "vacuna"
 
-  Scenario: Searching by text
+  Scenario: Search and go to Results page
     Given a "guest_user"
     When visits "HomePage"
     And clicks on "buttonSearch"

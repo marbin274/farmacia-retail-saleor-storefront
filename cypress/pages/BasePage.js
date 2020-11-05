@@ -1,4 +1,7 @@
-class BasePage {
-  constructor() {
+let BasePage = {
+  visit() {
+    cy.visit(this.constructor.url)
   }
 }
+
+export default BasePage

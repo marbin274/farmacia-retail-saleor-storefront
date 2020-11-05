@@ -1,7 +1,11 @@
+import BasePage from "./BasePage";
+
 class HomePage {
 
-  visit() {
-    cy.visit('/')
+  static url = '/'
+
+  constructor() {
+    Object.assign(this, BasePage)
   }
 
   buttonSearch() {
