@@ -11,7 +11,7 @@ import {
   Overlay,
   OverlayContextInterface,
   OverlayTheme,
-  OverlayType
+  OverlayType,
 } from "../..";
 import RegisterForm from "./RegisterForm";
 
@@ -45,7 +45,7 @@ class Login extends React.Component<
         <div className="login">
           <Online>
             <div className="overlay__header">
-              <p className="overlay__header-text">Saleor account</p>
+              <p className="overlay__header-text">Saleor</p>
               <ReactSVG
                 path={closeImg}
                 onClick={hide}
@@ -69,12 +69,13 @@ class Login extends React.Component<
             <div className="login__content">
               {this.state.active === "login" ? (
                 <>
-                  <LoginForm hide={hide} />
-                  <ForgottenPassword
-                    onClick={() => {
-                      show(OverlayType.password, OverlayTheme.right);
-                    }}
-                  />
+                  <LoginForm hide={hide}>
+                    <ForgottenPassword
+                      onClick={() => {
+                        show(OverlayType.password, OverlayTheme.right);
+                      }}
+                    />
+                  </LoginForm>
                 </>
               ) : (
                 <RegisterForm hide={hide} />

@@ -5,12 +5,19 @@ const ForgottenPassword: React.FC<{
 }> = ({ onClick }) => (
   <>
     <div className="login__content__password-reminder">
-      <p>
-        Have you forgotten your password?&nbsp;
-        <span className="u-link" onClick={onClick}>
-          Click Here
-        </span>
-      </p>
+      <label
+        htmlFor="remember"
+        className="login__content__password-reminder__remember"
+      >
+        <input type="checkbox" id="remember" name="remember" value="true" />
+        Recordar
+      </label>
+      <button
+        className="login__content__password-reminder__forget"
+        onClick={onClick}
+      >
+        Olvidé mi contraseña
+      </button>
     </div>
   </>
 );

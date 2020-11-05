@@ -1,17 +1,21 @@
 import React from "react";
 import { PasswordResetForm } from "..";
 
-const ResetPasswordForm: React.FC<{
+interface IResetPasswordForm {
   onClick: () => void;
-}> = ({ onClick }) => (
+}
+
+const ResetPasswordForm: React.FC<IResetPasswordForm> = ({ onClick }) => (
   <>
-    <h3 className="checkout__header">Registered user</h3>
-    <PasswordResetForm />
-    <p>
-      <span className="u-link" onClick={onClick}>
-        Back to login
-      </span>
-    </p>
+    <h3 className="checkout-login__header">¿Ya te registraste?</h3>
+    <PasswordResetForm>
+      <button
+        className="login__content__password-reminder__forget"
+        onClick={onClick}
+      >
+        Volver al login
+      </button>
+    </PasswordResetForm>
   </>
 );
 

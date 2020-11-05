@@ -9,9 +9,10 @@ import { Button, Form, TextField } from "..";
 
 interface ILoginForm {
   hide?: () => void;
+  children?: React.ReactChild
 }
 
-const LoginForm: React.FC<ILoginForm> = ({ hide }) => {
+const LoginForm: React.FC<ILoginForm> = ({ hide, children }) => {
   const [signIn, { loading, error }] = useSignIn();
 
   const handleOnSubmit = async (evt, { email, password }) => {
@@ -31,20 +32,21 @@ const LoginForm: React.FC<ILoginForm> = ({ hide }) => {
         <TextField
           name="email"
           autoComplete="email"
-          label="Email Address"
+          label="Correo"
           type="email"
           required
         />
         <TextField
           name="password"
           autoComplete="password"
-          label="Password"
+          label="Contraseña"
           type="password"
           required
         />
         <div className="login-form__button">
+          {children}
           <Button type="submit" {...(loading && { disabled: true })}>
-            {loading ? "Loading" : "Sign in"}
+            {loading ? "Cargando" : "Ingresar"}
           </Button>
         </div>
       </Form>

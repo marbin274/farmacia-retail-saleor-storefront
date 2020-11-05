@@ -51,14 +51,14 @@ const RegisterForm: React.FC<{ hide: () => void }> = ({ hide }) => {
             <TextField
               name="email"
               autoComplete="email"
-              label="Email Address"
+              label="Correo"
               type="email"
               required
             />
             <TextField
               name="password"
               autoComplete="password"
-              label="Password"
+              label="Contraseña"
               type="password"
               required
             />

@@ -28,6 +28,7 @@
 
     h3 {
       margin-bottom: 42px;
+      text-align: center;
     }
 
     p {
@@ -68,6 +69,11 @@
     @media (max-width: $small-screen) {
       width: 100%;
       padding: 0;
+    }
+
+    h3 {
+      margin-bottom: 42px;
+      text-align: center;
     }
 
     .input {

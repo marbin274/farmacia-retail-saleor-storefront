@@ -1,12 +1,17 @@
 @import "../../../globalStyles/scss/variables.scss";
 
 .password-reset-form {
+  text-align: center;
+
   .input {
-    margin: $spacer 0 $spacer * 2;
+    margin: $spacer 0;
   }
 
   &__button {
-    text-align: center;
-    margin: $spacer * 2 0 $spacer * 2 $spacer * 2;
+    margin: $spacer * 2 0;
+
+    > button {
+      width: 281px;
+    }
   }
 }

@@ -41,14 +41,25 @@
 
     &__button {
       margin-top: $spacer * 2;
-      padding: 0 $spacer * 1.5;
-      text-align: center;
     }
 
     &__password-reminder {
-      color: $gray;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 42px;
+      color: $auna-black;
       font-size: $small-font-size;
-      margin-top: $spacer * 2;
+
+      &__remember {
+        > input[type="checkbox" i] {
+          margin: auto 8px auto 0;
+        }
+      }
+
+      &__forget {
+        color: $auna-interactive;
+        font-size: 14px;
+      }
     }
   }
 }

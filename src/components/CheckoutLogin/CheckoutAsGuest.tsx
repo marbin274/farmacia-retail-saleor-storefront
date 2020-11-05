@@ -10,7 +10,7 @@ const CheckoutAsGuest: React.FC<{
   checkoutUrl: string;
 }> = ({ overlay, checkoutUrl }) => (
   <div className="checkout-login__guest">
-    <h3 className="checkout__header">¿No tienes cuenta?</h3>
+    <h3 className="checkout-login__header">¿No tienes cuenta?</h3>
     <p>
       Estar registrado te permite vivir una experiencia personalizada y ágil.
     </p>
