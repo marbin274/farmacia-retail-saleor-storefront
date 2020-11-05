@@ -31,7 +31,12 @@ const showSuccessNotification = (
   }
 };
 
-const RegisterForm: React.FC<{ hide: () => void }> = ({ hide }) => {
+interface IRegisterForm {
+  hide?: () => void;
+  onSwitchSection?: () => void;
+}
+
+const RegisterForm: React.FC<IRegisterForm> = ({ hide, onSwitchSection }) => {
   const alert = useAlert();
 
   return (
@@ -48,6 +53,31 @@ const RegisterForm: React.FC<{ hide: () => void }> = ({ hide }) => {
               registerCustomer({ variables: { email, password, redirectUrl } });
             }}
           >
+            <div className="login__content__welcome">
+              <h4>
+                ¡Bienvenido a la <br />
+                farmacia que te cuida!
+              </h4>
+              <p>
+                Crear una cuenta es la mejor forma de administrar tus datos,
+                hacer seguimiento a tus pedidos y recibir información
+                personalizada
+              </p>
+            </div>
+            <TextField
+              name="firstName"
+              autoComplete="given-name"
+              label="Nombre"
+              type="text"
+              required
+            />
+            <TextField
+              name="lastName"
+              autoComplete="family-name"
+              label="Apellidos"
+              type="text"
+              required
+            />
             <TextField
               name="email"
               autoComplete="email"
@@ -64,9 +94,18 @@ const RegisterForm: React.FC<{ hide: () => void }> = ({ hide }) => {
             />
             <div className="login__content__button">
               <Button type="submit" {...(loading && { disabled: true })}>
-                {loading ? "Loading" : "Register"}
+                {loading ? "Cargando" : "Crear cuenta"}
               </Button>
             </div>
+            <div className="login-form__change-section">
+              <p>¿Ya tienes cuenta?</p>
+              <button onClick={onSwitchSection}>Ingresar</button>
+            </div>
+            <p className="login-form__terms-conditions">
+              Al crear la cuenta estas aceptando nuestras{" "}
+              <a href="">Políticas de privacidad</a> y{" "}
+              <a href="">Términos y condiciones</a>
+            </p>
           </Form>
         );
       }}

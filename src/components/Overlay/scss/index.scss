@@ -44,18 +44,18 @@
   }
 
   &__header {
-    align-items: center;
-    display: flex;
     flex: 1;
-    font-weight: $bold-font-weight;
+    display: flex;
+    align-items: center;
     justify-content: space-between;
+    font-weight: 400;
     color: #C2DF0A;
-    // background-color: $auna-interactive;
+    border: 1px solid $auna-grey-60;
+    padding: 16px 24px;
 
-    &-text {
+      &-text {
       display: flex;
       flex-direction: column;
-      margin: 20px 26px;
       text-align: center;
       font-weight: 400;
       font-size: 20px;
@@ -70,7 +70,6 @@
 
     &__close-icon {
       cursor: pointer;
-      // margin: 0 $spacer;
     }
   }
 }

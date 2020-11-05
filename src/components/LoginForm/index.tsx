@@ -9,10 +9,15 @@ import { Button, Form, TextField } from "..";
 
 interface ILoginForm {
   hide?: () => void;
-  children?: React.ReactChild
+  onSwitchSection?: () => void;
+  children?: React.ReactChild;
 }
 
-const LoginForm: React.FC<ILoginForm> = ({ hide, children }) => {
+const LoginForm: React.FC<ILoginForm> = ({
+  hide,
+  onSwitchSection,
+  children,
+}) => {
   const [signIn, { loading, error }] = useSignIn();
 
   const handleOnSubmit = async (evt, { email, password }) => {
@@ -48,6 +53,10 @@ const LoginForm: React.FC<ILoginForm> = ({ hide, children }) => {
           <Button type="submit" {...(loading && { disabled: true })}>
             {loading ? "Cargando" : "Ingresar"}
           </Button>
+        </div>
+        <div className="login-form__change-section">
+          <p>¿No tienes cuenta?</p>
+          <button onClick={onSwitchSection}>Regístrate</button>
         </div>
       </Form>
     </div>

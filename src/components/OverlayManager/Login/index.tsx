@@ -15,25 +15,28 @@ import {
 } from "../..";
 import RegisterForm from "./RegisterForm";
 
-import closeImg from "../../../images/x.svg";
+import closeImg from "../../../images/close-circle.svg";
 import ForgottenPassword from "./ForgottenPassword";
 
 class Login extends React.Component<
   { overlay: OverlayContextInterface; active?: "login" | "register" },
-  { active: "login" | "register" }
+  { active: "login" | "register"; title: string }
 > {
   static defaultProps = {
     active: "login",
+    title: "Ingresar",
   };
   constructor(props) {
     super(props);
     this.state = {
       active: props.active,
+      title: props.title,
     };
   }
 
   changeActiveTab = (active: "login" | "register") => {
-    this.setState({ active });
+    const title = active === "login" ? "Ingresar" : "Registro";
+    this.setState({ active, title });
   };
 
   render() {
@@ -45,31 +48,20 @@ class Login extends React.Component<
         <div className="login">
           <Online>
             <div className="overlay__header">
-              <p className="overlay__header-text">Saleor</p>
+              <p className="overlay__header-text">{this.state.title}</p>
               <ReactSVG
                 path={closeImg}
                 onClick={hide}
                 className="overlay__header__close-icon"
               />
             </div>
-            <div className="login__tabs">
-              <span
-                onClick={() => this.changeActiveTab("login")}
-                className={this.state.active === "login" ? "active-tab" : ""}
-              >
-                Sign in to account
-              </span>
-              <span
-                onClick={() => this.changeActiveTab("register")}
-                className={this.state.active === "register" ? "active-tab" : ""}
-              >
-                Register new account
-              </span>
-            </div>
             <div className="login__content">
               {this.state.active === "login" ? (
                 <>
-                  <LoginForm hide={hide}>
+                  <LoginForm
+                    hide={hide}
+                    onSwitchSection={() => this.changeActiveTab("register")}
+                  >
                     <ForgottenPassword
                       onClick={() => {
                         show(OverlayType.password, OverlayTheme.right);
@@ -78,7 +70,10 @@ class Login extends React.Component<
                   </LoginForm>
                 </>
               ) : (
-                <RegisterForm hide={hide} />
+                <RegisterForm
+                  hide={hide}
+                  onSwitchSection={() => this.changeActiveTab("login")}
+                />
               )}
             </div>
           </Online>

@@ -9,7 +9,43 @@
     text-align: center;
 
     > button {
-      width: 281px !important;
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+
+  &__change-section {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 156px;
+    margin: auto;
+    border-top: 0.75px solid $auna-grey-80;
+    margin-top: 24px;
+    padding-top: 18px;
+
+    > p {
+      margin-bottom: 16px;
+      color: $auna-black;
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    > button {
+      color: $auna-interactive;
+      font-size: 14px;
+    }
+  }
+
+  &__terms-conditions {
+    color: $auna-black;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 36px;
+
+    > a {
+      color: $auna-interactive;
     }
   }
 }
