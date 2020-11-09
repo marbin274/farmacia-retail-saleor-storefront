@@ -24,16 +24,16 @@ class Nav extends React.PureComponent {
   }
 
   render() {
-    const arrows = Array.from(document.getElementsByClassName("footer-nav__arrow-icon")).map(x => x.id);
+    const _arrows = Array.from(document.getElementsByClassName("footer-nav__arrow-icon")).map(x => x.id);
 
     if (this.state.width > 540) {
-      arrows.map(x => {
+      _arrows.map(x => {
          document.getElementById(x).style.transform = "rotate(360deg)";
       });
     }
 
    function onClickArrow(data) {
-
+     const arrows = Array.from(document.getElementsByClassName("footer-nav__arrow-icon")).map(x => x.id);
      let currentArrow = "";
 
      arrows.map(x => {
@@ -64,12 +64,10 @@ class Nav extends React.PureComponent {
         const element = document.getElementById(x.id);
         if (window.getComputedStyle(element).display === "none") {
           element.style.display = "block";
-
           document.getElementById(currentArrow).style.transform = "rotate(180deg)";
-          return
+          return;
         } 
         element.style.display = "none";
-
         document.getElementById(currentArrow).style.transform = "rotate(360deg)";
       });
    }
