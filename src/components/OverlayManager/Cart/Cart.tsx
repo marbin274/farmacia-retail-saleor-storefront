@@ -46,19 +46,21 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
     net: discount,
   };
 
+  const totalProducts = items?.reduce(
+    (prevVal, currVal) => prevVal + currVal.quantity,
+    0
+  );
+
   return (
     <Overlay context={overlay}>
       <Online>
         <div className="cart"> 
           <div className="overlay__header">
             <div className="overlay__header-text">
-              Tu carrito,{" "}
+              Tu carrito{" "}
               <span className="overlay__header-text-items">
-                {items?.reduce(
-                  (prevVal, currVal) => prevVal + currVal.quantity,
-                  0
-                ) || 0}{" "}
-               {items && items.length === 1 ? 'producto' : 'productos'}
+                {totalProducts || 0} {" "}
+                {totalProducts === 1 ? 'producto' : 'productos'}
               </span>
             </div>
             <ReactSVG
