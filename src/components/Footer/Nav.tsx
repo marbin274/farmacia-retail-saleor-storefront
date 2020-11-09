@@ -49,7 +49,7 @@ class Nav extends React.PureComponent {
 
       const children: any [] = data.children;
       
-      const pElements: any[] = Array.from(document.getElementsByTagName("p")).map(x => x.id);
+      const pElements: any[] = Array.from(document.getElementsByTagName("p")).filter(x => x.id.length > 0).map(x => x.id);
 
       children.map(x => {
         const index = pElements.filter(u => u === x.id)[0];
