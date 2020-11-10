@@ -29,7 +29,11 @@ export const ProductTileAUNA: React.FC<IProps> = ({ product, addToCart }: IProps
       }
   };
 
-  const thumbnailsInfo = { thumbnail: { url: product.thumbnail.url!}, thumbnail2x: { url: product.thumbnail2x.url!} };
+  const { thumbnail, thumbnail2x } = product;
+  let thumbnailsInfo = { thumbnail: { url: "null"}, thumbnail2x: { url: "null"} };
+  if(!(!thumbnail && !thumbnail2x)){
+    thumbnailsInfo = { thumbnail: { url: product.thumbnail.url!}, thumbnail2x: { url: product.thumbnail2x.url!} };
+  }
   return (
     <S.Wrapper data-cy="product-tile">
         <S.Image>
