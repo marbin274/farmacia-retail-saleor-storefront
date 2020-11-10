@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/BraintreePaymentGateway default 1`] = 
   margin: 20px;
 }
 
-.c11 {
+.c13 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -90,11 +90,24 @@ exports[`Storyshots @components/organisms/BraintreePaymentGateway default 1`] = 
 }
 
 .c2 {
+  max-width: 27rem;
+  padding-left: 2rem;
   width: 100%;
 }
 
 .c3 {
   width: 100%;
+  padding: 1.5rem 0;
+}
+
+.c11 {
+  max-width: 16rem;
+  padding: 1.5rem 0 0 0;
+}
+
+.c12 {
+  max-width: 10rem;
+  padding: 1.5rem 1rem 0 1.5rem;
 }
 
 .c10 {
@@ -121,10 +134,8 @@ exports[`Storyshots @components/organisms/BraintreePaymentGateway default 1`] = 
 }
 
 @media (max-width:540px) {
-  .c10 {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
+  .c2 {
+    padding-left: 0;
   }
 }
 
@@ -188,46 +199,7 @@ exports[`Storyshots @components/organisms/BraintreePaymentGateway default 1`] = 
         className="c10"
       >
         <div
-          className="c3"
-        >
-          <div
-            className="c4"
-          >
-            <div
-              className="c5"
-              disabled={false}
-            >
-              <div
-                className="c6"
-              >
-                <input
-                  autoComplete="cc-csc"
-                  className="c7"
-                  disabled={false}
-                  name="ccCsc"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onMouseUp={[Function]}
-                  type="text"
-                  value=""
-                />
-                <label
-                  className="c8"
-                  disabled={false}
-                >
-                  CVC
-                </label>
-              </div>
-            </div>
-            <div
-              className="c9"
-            />
-          </div>
-        </div>
-        <div
-          className="c3"
+          className="c11"
         >
           <div
             className="c4"
@@ -265,11 +237,50 @@ exports[`Storyshots @components/organisms/BraintreePaymentGateway default 1`] = 
             />
           </div>
         </div>
+        <div
+          className="c12"
+        >
+          <div
+            className="c4"
+          >
+            <div
+              className="c5"
+              disabled={false}
+            >
+              <div
+                className="c6"
+              >
+                <input
+                  autoComplete="cc-csc"
+                  className="c7"
+                  disabled={false}
+                  name="ccCsc"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onMouseUp={[Function]}
+                  type="text"
+                  value=""
+                />
+                <label
+                  className="c8"
+                  disabled={false}
+                >
+                  CVC
+                </label>
+              </div>
+            </div>
+            <div
+              className="c9"
+            />
+          </div>
+        </div>
       </div>
     </form>
   </div>
   <div
-    className="c11"
+    className="c13"
   />
 </div>
 `;

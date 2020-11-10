@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import { ErrorMessage } from "@components/atoms";
 import { CreditCardForm } from "@components/organisms";
+
 import { IFormError } from "@types";
 
 import {
@@ -15,19 +16,32 @@ import { maybe, removeEmptySpaces } from "@temp/core/utils";
 
 import * as S from "./styles";
 import { IProps } from "./types";
+import ReactSVG from "react-svg";
 
+// TODO: temporary constants
 const gateway = 'mirumee.payments.dummy';
 const dummyToken = 'charged';
+
+const inputLabels = {
+    ccCsc: "CVV",
+    ccExp: "Fecha de vencimiento",
+    ccName: "Nombre",
+    ccNumber: "Número de tarjeta",
+    ccSurname: "Apellido",
+};
 
 const INITIAL_CARD_ERROR_STATE = {
   fieldErrors: {
     cvv: null,
     expirationMonth: null,
     expirationYear: null,
+    name: null,
     number: null,
+    surname: null,
   },
   nonFieldError: "",
 };
+
 
 const AunaPaymentGateway: React.FC<IProps> = ({
    config,
@@ -35,16 +49,10 @@ const AunaPaymentGateway: React.FC<IProps> = ({
    formRef,
    formId,
    errors = [],
-   onError,
  }: IProps) => {
   const [submitErrors, setSubmitErrors] = useState<IFormError[]>([]);
 
-
-  // @ts-ignore
-  const clientToken = config.find(({ field }) => field === "client_token")
-    ?.value;
-
-  const [cardErrors/*, setCardErrors*/] = React.useState<ErrorData>(
+  const [cardErrors] = React.useState<ErrorData>(
     INITIAL_CARD_ERROR_STATE
   );
 
@@ -55,10 +63,12 @@ const AunaPaymentGateway: React.FC<IProps> = ({
       billingAddress: {},
       cvv: removeEmptySpaces(maybe(() => formData.ccCsc, "") || ""),
       expirationDate: removeEmptySpaces(maybe(() => formData.ccExp, "") || ""),
+      name: removeEmptySpaces(maybe(() => formData.ccName, "") || ""),
       number: removeEmptySpaces(maybe(() => formData.ccNumber, "") || ""),
+      surname: removeEmptySpaces(maybe(() => formData.ccSurname, "") || ""),
     };
 
-    // at the moment use this token, until use real payment plugin
+    // TODO: at the moment use this token, until use real payment plugin
     processPayment(gateway, dummyToken, creditCard);
     // processPayment(gateway, clientToken, creditCard);
   };
@@ -68,18 +78,19 @@ const AunaPaymentGateway: React.FC<IProps> = ({
   return (
     <S.Wrapper>
       <CreditCardForm
+        additionalFields = {{name: true, surname: true}}
         formRef={formRef}
         formId={formId}
         cardErrors={cardErrors.fieldErrors}
-        labelsText={{
-          ccCsc: "CVC",
-          ccExp: "ExpiryDate",
-          ccNumber: "Number",
-        }}
+        labelsText={inputLabels}
+        placeholders={inputLabels}
         disabled={false}
         handleSubmit={handleSubmit}
       />
       <ErrorMessage errors={allErrors} />
+      <S.PoweredBy>
+        <span>powered by:</span> <ReactSVG path={S.paymentGatewayLogo}/>
+      </S.PoweredBy>
     </S.Wrapper>
   );
 };

@@ -7,7 +7,9 @@ import {
 interface ILabelsText {
   ccCsc: string;
   ccExp: string;
+  ccName?: string;
   ccNumber: string;
+  ccSurname?: string;
 }
 export interface IFormikProps {
   handleChange: (e: React.ChangeEvent) => void;
@@ -16,10 +18,12 @@ export interface IFormikProps {
 }
 
 export interface IProps {
+  additionalFields?:  { name: boolean, surname: boolean};
   formRef?: React.RefObject<HTMLFormElement>;
   formId?: string;
   cardErrors: ICardErrors;
   labelsText: ILabelsText;
+  placeholders?: ILabelsText;
   handleSubmit: (formData: ICardInputs) => void;
   disabled: boolean;
 }

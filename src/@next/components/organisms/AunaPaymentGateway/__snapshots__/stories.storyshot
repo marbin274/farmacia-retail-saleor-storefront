@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/AunaPaymentGateway default 1`] = `
   margin: 20px;
 }
 
-.c11 {
+.c14 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -17,7 +17,7 @@ exports[`Storyshots @components/organisms/AunaPaymentGateway default 1`] = `
   box-sizing: border-box;
 }
 
-.c8 {
+.c7 {
   background-color: transparent;
   color: #9194A7;
   left: 0px;
@@ -27,7 +27,7 @@ exports[`Storyshots @components/organisms/AunaPaymentGateway default 1`] = `
   top: -1.5rem;
 }
 
-.c5 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -40,18 +40,18 @@ exports[`Storyshots @components/organisms/AunaPaymentGateway default 1`] = `
   transition: all 0.3s ease;
 }
 
-.c5:hover {
+.c4:hover {
   color: #E4E5ED;
   border-color: #00B0CA;
 }
 
-.c6 {
+.c5 {
   position: relative;
   width: 100%;
   padding-right: 1.5rem;
 }
 
-.c7 {
+.c6 {
   padding: 0.75rem 1rem;
   margin: 0;
   border: none;
@@ -62,23 +62,23 @@ exports[`Storyshots @components/organisms/AunaPaymentGateway default 1`] = `
   background-color: transparent;
 }
 
-.c7::-webkit-input-placeholder {
+.c6::-webkit-input-placeholder {
   color: #9194A7;
 }
 
-.c7::-moz-placeholder {
+.c6::-moz-placeholder {
   color: #9194A7;
 }
 
-.c7:-ms-input-placeholder {
+.c6:-ms-input-placeholder {
   color: #9194A7;
 }
 
-.c7::placeholder {
+.c6::placeholder {
   color: #9194A7;
 }
 
-.c4 {
+.c8 {
   padding-top: 1.4rem;
   margin-bottom: 1rem;
   position: relative;
@@ -90,11 +90,24 @@ exports[`Storyshots @components/organisms/AunaPaymentGateway default 1`] = `
 }
 
 .c2 {
+  max-width: 27rem;
+  padding-left: 2rem;
   width: 100%;
 }
 
 .c3 {
   width: 100%;
+  padding: 1.5rem 0;
+}
+
+.c11 {
+  max-width: 16rem;
+  padding: 1.5rem 0 0 0;
+}
+
+.c12 {
+  max-width: 10rem;
+  padding: 1.5rem 1rem 0 1.5rem;
 }
 
 .c10 {
@@ -121,11 +134,27 @@ exports[`Storyshots @components/organisms/AunaPaymentGateway default 1`] = `
   padding: 1rem 0;
 }
 
+.c13 {
+  color: #9194A7;
+  border-bottom: solid #E4E5ED 1px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: .7rem;
+  margin-left: 2rem;
+  margin-top: 2rem;
+  padding: .5rem 0;
+  width: 100%;
+}
+
+.c13 span {
+  padding-right: 1.3rem;
+}
+
 @media (max-width:540px) {
-  .c10 {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
+  .c2 {
+    padding-left: 0;
   }
 }
 
@@ -150,18 +179,78 @@ exports[`Storyshots @components/organisms/AunaPaymentGateway default 1`] = `
       >
         <div
           className="c4"
+          disabled={false}
         >
           <div
             className="c5"
+          >
+            <input
+              autoFocus={true}
+              className="c6"
+              disabled={false}
+              name="ccName"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="Nombre"
+              value=""
+            />
+            <label
+              className="c7"
+              disabled={false}
+            >
+              Nombre
+            </label>
+          </div>
+        </div>
+      </div>
+      <div
+        className="c3"
+      >
+        <div
+          className="c4"
+          disabled={false}
+        >
+          <div
+            className="c5"
+          >
+            <input
+              autoFocus={false}
+              className="c6"
+              disabled={false}
+              name="ccSurname"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="Apellido"
+              value=""
+            />
+            <label
+              className="c7"
+              disabled={false}
+            >
+              Apellido
+            </label>
+          </div>
+        </div>
+      </div>
+      <div
+        className="c3"
+      >
+        <div
+          className="c8"
+        >
+          <div
+            className="c4"
             disabled={false}
           >
             <div
-              className="c6"
+              className="c5"
             >
               <input
                 autoComplete="cc-number"
-                autoFocus={true}
-                className="c7"
+                autoFocus={false}
+                className="c6"
                 disabled={false}
                 name="ccNumber"
                 onBlur={[Function]}
@@ -169,14 +258,15 @@ exports[`Storyshots @components/organisms/AunaPaymentGateway default 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 onMouseUp={[Function]}
+                placeholder="Número de tarjeta"
                 type="text"
                 value=""
               />
               <label
-                className="c8"
+                className="c7"
                 disabled={false}
               >
-                Number
+                Número de tarjeta
               </label>
             </div>
           </div>
@@ -189,36 +279,37 @@ exports[`Storyshots @components/organisms/AunaPaymentGateway default 1`] = `
         className="c10"
       >
         <div
-          className="c3"
+          className="c11"
         >
           <div
-            className="c4"
+            className="c8"
           >
             <div
-              className="c5"
+              className="c4"
               disabled={false}
             >
               <div
-                className="c6"
+                className="c5"
               >
                 <input
-                  autoComplete="cc-csc"
-                  className="c7"
+                  autoComplete="cc-exp"
+                  className="c6"
                   disabled={false}
-                  name="ccCsc"
+                  name="ccExp"
                   onBlur={[Function]}
                   onChange={[Function]}
                   onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseUp={[Function]}
+                  placeholder="Fecha de vencimiento"
                   type="text"
                   value=""
                 />
                 <label
-                  className="c8"
+                  className="c7"
                   disabled={false}
                 >
-                  CVC
+                  Fecha de vencimiento
                 </label>
               </div>
             </div>
@@ -228,36 +319,37 @@ exports[`Storyshots @components/organisms/AunaPaymentGateway default 1`] = `
           </div>
         </div>
         <div
-          className="c3"
+          className="c12"
         >
           <div
-            className="c4"
+            className="c8"
           >
             <div
-              className="c5"
+              className="c4"
               disabled={false}
             >
               <div
-                className="c6"
+                className="c5"
               >
                 <input
-                  autoComplete="cc-exp"
-                  className="c7"
+                  autoComplete="cc-csc"
+                  className="c6"
                   disabled={false}
-                  name="ccExp"
+                  name="ccCsc"
                   onBlur={[Function]}
                   onChange={[Function]}
                   onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseUp={[Function]}
+                  placeholder="CVV"
                   type="text"
                   value=""
                 />
                 <label
-                  className="c8"
+                  className="c7"
                   disabled={false}
                 >
-                  ExpiryDate
+                  CVV
                 </label>
               </div>
             </div>
@@ -268,9 +360,18 @@ exports[`Storyshots @components/organisms/AunaPaymentGateway default 1`] = `
         </div>
       </div>
     </form>
+    <div
+      className="c13"
+    >
+      <span>
+        powered by:
+      </span>
+       
+      <div />
+    </div>
   </div>
   <div
-    className="c11"
+    className="c14"
   />
 </div>
 `;

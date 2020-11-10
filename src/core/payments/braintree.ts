@@ -7,9 +7,11 @@ export interface PaymentData {
 }
 
 export interface ICardInputs {
+  ccName?: string;
   ccCsc: string;
   ccExp: string;
   ccNumber: string;
+  ccSurname?: string;
 }
 
 export type CardError = { field?: string; message: string } | null;
@@ -18,9 +20,11 @@ export interface ICardPaymentInput {
   billingAddress: {
     postalCode?: string;
   };
-  number: string;
   cvv: string;
   expirationDate: string;
+  name?: string;
+  number: string;
+  surname?: string;
 }
 
 export interface ICardErrors {

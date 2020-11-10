@@ -7,7 +7,9 @@ import { IProps } from "./types";
 const INITIAL_CARD_VALUES_STATE = {
   ccCsc: "",
   ccExp: "",
+  ccName: "",
   ccNumber: "",
+  ccSurname: "",
 };
 
 export const CreditCardForm: React.FC<IProps> = ({

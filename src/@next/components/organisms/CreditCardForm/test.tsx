@@ -12,16 +12,21 @@ describe("<CreditCardForm />", () => {
   const CARD_TEXT = {
     ccCsc: "CVC",
     ccExp: "Expiry Date",
+    ccName: "Name",
     ccNumber: "Number",
+    ccSurname: "Surname",
   };
 
   const VALUES = {
     ccCsc: "",
     ccExp: "",
+    ccName: "",
     ccNumber: "444",
+    ccSurname: "",
   };
 
   const DEFAULT_PROPS = {
+    additionalFields: { name: true, surname: true},
     cardErrors: {
       cvv: null,
       expirationMonth: null,
@@ -89,9 +94,9 @@ describe("<CreditCardForm />", () => {
         cardErrors: CARD_ERRORS,
       }).find(NumberFormat);
 
-      expect(inputs.at(1).prop("errors")).toEqual([]);
       expect(inputs.at(0).prop("errors")).toEqual([CARD_ERRORS.number]);
-      expect(inputs.at(2).prop("errors")).toEqual([CARD_ERRORS.expirationYear]);
+      expect(inputs.at(1).prop("errors")).toEqual([CARD_ERRORS.expirationYear]);
+      expect(inputs.at(2).prop("errors")).toEqual([]);
     });
   });
 });

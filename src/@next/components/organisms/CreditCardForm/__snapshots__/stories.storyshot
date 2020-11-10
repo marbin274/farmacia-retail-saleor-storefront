@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/CreditCardForm default 1`] = `
   margin: 20px;
 }
 
-.c10 {
+.c12 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -90,11 +90,24 @@ exports[`Storyshots @components/organisms/CreditCardForm default 1`] = `
 }
 
 .c1 {
+  max-width: 27rem;
+  padding-left: 2rem;
   width: 100%;
 }
 
 .c2 {
   width: 100%;
+  padding: 1.5rem 0;
+}
+
+.c10 {
+  max-width: 16rem;
+  padding: 1.5rem 0 0 0;
+}
+
+.c11 {
+  max-width: 10rem;
+  padding: 1.5rem 1rem 0 1.5rem;
 }
 
 .c9 {
@@ -117,10 +130,8 @@ exports[`Storyshots @components/organisms/CreditCardForm default 1`] = `
 }
 
 @media (max-width:540px) {
-  .c9 {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
+  .c1 {
+    padding-left: 0;
   }
 }
 
@@ -181,46 +192,7 @@ exports[`Storyshots @components/organisms/CreditCardForm default 1`] = `
       className="c9"
     >
       <div
-        className="c2"
-      >
-        <div
-          className="c3"
-        >
-          <div
-            className="c4"
-            disabled={false}
-          >
-            <div
-              className="c5"
-            >
-              <input
-                autoComplete="cc-csc"
-                className="c6"
-                disabled={false}
-                name="ccCsc"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onMouseUp={[Function]}
-                type="text"
-                value=""
-              />
-              <label
-                className="c7"
-                disabled={false}
-              >
-                CVC
-              </label>
-            </div>
-          </div>
-          <div
-            className="c8"
-          />
-        </div>
-      </div>
-      <div
-        className="c2"
+        className="c10"
       >
         <div
           className="c3"
@@ -258,10 +230,49 @@ exports[`Storyshots @components/organisms/CreditCardForm default 1`] = `
           />
         </div>
       </div>
+      <div
+        className="c11"
+      >
+        <div
+          className="c3"
+        >
+          <div
+            className="c4"
+            disabled={false}
+          >
+            <div
+              className="c5"
+            >
+              <input
+                autoComplete="cc-csc"
+                className="c6"
+                disabled={false}
+                name="ccCsc"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onMouseUp={[Function]}
+                type="text"
+                value=""
+              />
+              <label
+                className="c7"
+                disabled={false}
+              >
+                CVC
+              </label>
+            </div>
+          </div>
+          <div
+            className="c8"
+          />
+        </div>
+      </div>
     </div>
   </form>
   <div
-    className="c10"
+    className="c12"
   />
 </div>
 `;
@@ -272,7 +283,7 @@ exports[`Storyshots @components/organisms/CreditCardForm disabled 1`] = `
   margin: 20px;
 }
 
-.c10 {
+.c12 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -356,11 +367,24 @@ exports[`Storyshots @components/organisms/CreditCardForm disabled 1`] = `
 }
 
 .c1 {
+  max-width: 27rem;
+  padding-left: 2rem;
   width: 100%;
 }
 
 .c2 {
   width: 100%;
+  padding: 1.5rem 0;
+}
+
+.c10 {
+  max-width: 16rem;
+  padding: 1.5rem 0 0 0;
+}
+
+.c11 {
+  max-width: 10rem;
+  padding: 1.5rem 1rem 0 1.5rem;
 }
 
 .c9 {
@@ -383,10 +407,8 @@ exports[`Storyshots @components/organisms/CreditCardForm disabled 1`] = `
 }
 
 @media (max-width:540px) {
-  .c9 {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
+  .c1 {
+    padding-left: 0;
   }
 }
 
@@ -447,46 +469,7 @@ exports[`Storyshots @components/organisms/CreditCardForm disabled 1`] = `
       className="c9"
     >
       <div
-        className="c2"
-      >
-        <div
-          className="c3"
-        >
-          <div
-            className="c4"
-            disabled={true}
-          >
-            <div
-              className="c5"
-            >
-              <input
-                autoComplete="cc-csc"
-                className="c6"
-                disabled={true}
-                name="ccCsc"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onMouseUp={[Function]}
-                type="text"
-                value=""
-              />
-              <label
-                className="c7"
-                disabled={true}
-              >
-                CVC
-              </label>
-            </div>
-          </div>
-          <div
-            className="c8"
-          />
-        </div>
-      </div>
-      <div
-        className="c2"
+        className="c10"
       >
         <div
           className="c3"
@@ -524,10 +507,49 @@ exports[`Storyshots @components/organisms/CreditCardForm disabled 1`] = `
           />
         </div>
       </div>
+      <div
+        className="c11"
+      >
+        <div
+          className="c3"
+        >
+          <div
+            className="c4"
+            disabled={true}
+          >
+            <div
+              className="c5"
+            >
+              <input
+                autoComplete="cc-csc"
+                className="c6"
+                disabled={true}
+                name="ccCsc"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onMouseUp={[Function]}
+                type="text"
+                value=""
+              />
+              <label
+                className="c7"
+                disabled={true}
+              >
+                CVC
+              </label>
+            </div>
+          </div>
+          <div
+            className="c8"
+          />
+        </div>
+      </div>
     </div>
   </form>
   <div
-    className="c10"
+    className="c12"
   />
 </div>
 `;
@@ -538,7 +560,7 @@ exports[`Storyshots @components/organisms/CreditCardForm error 1`] = `
   margin: 20px;
 }
 
-.c14 {
+.c16 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -568,7 +590,7 @@ exports[`Storyshots @components/organisms/CreditCardForm error 1`] = `
   top: -1.5rem;
 }
 
-.c12 {
+.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -581,7 +603,7 @@ exports[`Storyshots @components/organisms/CreditCardForm error 1`] = `
   transition: all 0.3s ease;
 }
 
-.c12:hover {
+.c13:hover {
   color: #E4E5ED;
   border-color: #00B0CA;
 }
@@ -610,7 +632,7 @@ exports[`Storyshots @components/organisms/CreditCardForm error 1`] = `
   padding-right: 1.5rem;
 }
 
-.c13 {
+.c14 {
   padding: 0.75rem 1rem;
   margin: 0;
   border: none;
@@ -621,19 +643,19 @@ exports[`Storyshots @components/organisms/CreditCardForm error 1`] = `
   background-color: transparent;
 }
 
-.c13::-webkit-input-placeholder {
+.c14::-webkit-input-placeholder {
   color: #9194A7;
 }
 
-.c13::-moz-placeholder {
+.c14::-moz-placeholder {
   color: #9194A7;
 }
 
-.c13:-ms-input-placeholder {
+.c14:-ms-input-placeholder {
   color: #9194A7;
 }
 
-.c13::placeholder {
+.c14::placeholder {
   color: #9194A7;
 }
 
@@ -676,11 +698,24 @@ exports[`Storyshots @components/organisms/CreditCardForm error 1`] = `
 }
 
 .c1 {
+  max-width: 27rem;
+  padding-left: 2rem;
   width: 100%;
 }
 
 .c2 {
   width: 100%;
+  padding: 1.5rem 0;
+}
+
+.c12 {
+  max-width: 16rem;
+  padding: 1.5rem 0 0 0;
+}
+
+.c15 {
+  max-width: 10rem;
+  padding: 1.5rem 1rem 0 1.5rem;
 }
 
 .c11 {
@@ -703,10 +738,8 @@ exports[`Storyshots @components/organisms/CreditCardForm error 1`] = `
 }
 
 @media (max-width:540px) {
-  .c11 {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
+  .c1 {
+    padding-left: 0;
   }
 }
 
@@ -777,52 +810,13 @@ exports[`Storyshots @components/organisms/CreditCardForm error 1`] = `
       className="c11"
     >
       <div
-        className="c2"
+        className="c12"
       >
         <div
           className="c3"
         >
           <div
-            className="c12"
-            disabled={false}
-          >
-            <div
-              className="c5"
-            >
-              <input
-                autoComplete="cc-csc"
-                className="c13"
-                disabled={false}
-                name="ccCsc"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onMouseUp={[Function]}
-                type="text"
-                value=""
-              />
-              <label
-                className="c7"
-                disabled={false}
-              >
-                CVC
-              </label>
-            </div>
-          </div>
-          <div
-            className="c8"
-          />
-        </div>
-      </div>
-      <div
-        className="c2"
-      >
-        <div
-          className="c3"
-        >
-          <div
-            className="c12"
+            className="c13"
             disabled={false}
           >
             <div
@@ -830,7 +824,7 @@ exports[`Storyshots @components/organisms/CreditCardForm error 1`] = `
             >
               <input
                 autoComplete="cc-exp"
-                className="c13"
+                className="c14"
                 disabled={false}
                 name="ccExp"
                 onBlur={[Function]}
@@ -854,10 +848,49 @@ exports[`Storyshots @components/organisms/CreditCardForm error 1`] = `
           />
         </div>
       </div>
+      <div
+        className="c15"
+      >
+        <div
+          className="c3"
+        >
+          <div
+            className="c13"
+            disabled={false}
+          >
+            <div
+              className="c5"
+            >
+              <input
+                autoComplete="cc-csc"
+                className="c14"
+                disabled={false}
+                name="ccCsc"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onMouseUp={[Function]}
+                type="text"
+                value=""
+              />
+              <label
+                className="c7"
+                disabled={false}
+              >
+                CVC
+              </label>
+            </div>
+          </div>
+          <div
+            className="c8"
+          />
+        </div>
+      </div>
     </div>
   </form>
   <div
-    className="c14"
+    className="c16"
   />
 </div>
 `;
