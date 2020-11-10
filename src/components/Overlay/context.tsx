@@ -38,6 +38,7 @@ export interface OverlayContextInterface {
   context: InnerOverlayContextInterface;
   show: ShowOverlayType;
   hide(): void;
+  showCatalog(): void;
 }
 
 /* tslint:disable:no-empty */
@@ -45,6 +46,7 @@ export const OverlayContext = React.createContext<OverlayContextInterface>({
   context: null,
   hide: () => {},
   show: type => {},
+  showCatalog: () => {},
   theme: null,
   type: null,
 });

@@ -124,7 +124,7 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
               </div>
             </>
           ) : (
-            <Empty overlayHide={overlay.hide} />
+            <Empty overlayHide={overlay.showCatalog} />
           )}
         </div>
       </Online>

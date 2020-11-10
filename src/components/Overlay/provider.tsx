@@ -8,6 +8,8 @@ import {
   OverlayType
 } from "./context";
 
+import * as paths from "../../app/routes/paths";
+
 class Provider extends React.Component<
   RouteComponentProps<{}>,
   OverlayContextInterface
@@ -19,6 +21,7 @@ class Provider extends React.Component<
       context: null,
       hide: this.hide,
       show: this.show,
+      showCatalog: this.showCatalog,
       theme: null,
       type: null,
     };
@@ -49,6 +52,15 @@ class Provider extends React.Component<
     this.setState({ type: null });
     document.body.style.overflow = "";
   };
+
+  showCatalog = () => {
+    if (document.location.pathname !== paths.baseUrl){
+      this.props.history.push(paths.baseUrl);
+    } else {
+      this.hide();
+    }
+      
+  }
 
   render() {
     return (
