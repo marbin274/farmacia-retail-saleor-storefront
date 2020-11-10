@@ -44,7 +44,7 @@ export const OrderTabel: React.FC<IProps> = ({ orders, history }: IProps) => {
                     <S.Row
                       data-testid="order__row"
                       key={order.node.number}
-                      onClick={evt => {
+                      onClick={(evt: { stopPropagation: () => void }) => {
                         evt.stopPropagation();
                         history.push(`/order-history/${order.node.token}`);
                       }}

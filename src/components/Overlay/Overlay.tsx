@@ -18,7 +18,7 @@ const Overlay: React.FC<OverlayProps> = ({
   <div
     className={classNames("overlay", {
       [`overlay--${type}`]: !!type,
-      [className]: !!className,
+      [`${className}`]: !!className, 
     })}
     onClick={hide}
   >

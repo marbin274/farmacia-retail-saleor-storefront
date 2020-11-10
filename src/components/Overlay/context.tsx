@@ -19,12 +19,19 @@ export enum OverlayTheme {
   modal = "modal",
 }
 
-export interface InnerOverlayContextInterface {
-  title?: string;
-  content?: string | React.ReactNode;
-  status?: "success" | "error";
-  data?: any;
-}
+// export interface InnerOverlayContextInterface {
+//   title?: string;
+//   content?: string | React.ReactNode;
+//   status?: "success" | "error";
+//   data?: any;
+// }
+
+export type InnerOverlayContextInterface = {
+  title?: string
+  content?: string | React.ReactNode
+  status?: "success" | "error"
+  data?: any
+} | null
 
 export type ShowOverlayType = (
   type: OverlayType,
@@ -33,9 +40,9 @@ export type ShowOverlayType = (
 ) => void;
 
 export interface OverlayContextInterface {
-  type: OverlayType | null;
-  theme: OverlayTheme | null;
-  context: InnerOverlayContextInterface;
+  type: OverlayType | undefined;
+  theme: OverlayTheme | undefined;
+  context: InnerOverlayContextInterface | undefined;
   show: ShowOverlayType;
   hide(): void;
   showCatalog(): void;
@@ -47,8 +54,8 @@ export const OverlayContext = React.createContext<OverlayContextInterface>({
   hide: () => {},
   show: type => {},
   showCatalog: () => {},
-  theme: null,
-  type: null,
+  theme: undefined,
+  type: undefined,
 });
 /* tslint:enable:no-empty */
 

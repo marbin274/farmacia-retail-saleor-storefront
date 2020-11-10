@@ -6,6 +6,7 @@
     "@temp/([^\\.]*)$": "<rootDir>/src/$1",
     "@styles/([^\\.]*)$": "<rootDir>/src/@next/globalStyles/$1",
     "@styles": "<rootDir>/src/@next/globalStyles/index.ts",
+    "\\.(scss|less)$": "identity-obj-proxy",
     "@app/([^\\.]*)$": "<rootDir>/src/@next/$1",
     "@sdk/([^\\.]*)$": "<rootDir>/src/@sdk/$1",
     "@utils/([^\\.]*)$": "<rootDir>/src/@next/utils/$1",

@@ -20,7 +20,7 @@ export const Primary = styled.button<{
   size: Size;
 }>`
   background-color: ${props => getButtonColors(props).background};
-  padding: ${props => padding[props.size]};
+  padding: ${(props: { size: Size }) => padding[props.size]}; 
   border: none;
   border-radius: 40px;
   transition: 0.3s;

@@ -1,9 +1,11 @@
 import { styled } from "@styles";
+import { aunaInteractive, white } from "@styles/constants";
+import { Button } from "@components/atoms";
 
 export const Wrapper = styled.div`
   margin: 80px auto;
   max-width: 27rem;
-  width: 100%;;
+  width: 100%;
 `;
 
 export const ThankYouHeader = styled.p`
@@ -22,7 +24,7 @@ export const ThankYouHeader = styled.p`
 
 export const OrderInfo = styled.div`
   font-size: ${props => props.theme.typography.h4FontSize};
-  background-color: ${props => props.theme.colors.backgroundLight}; 
+  background-color: ${props => props.theme.colors.backgroundLight};
   line-height: 170%;
   margin-bottom: 3rem;
   padding: 1rem;
@@ -40,7 +42,7 @@ export const MailInfo = styled.div`
   font-size: ${props => props.theme.typography.h4FontSize};
   justify-content: space-between;
   line-height: ${props => props.theme.typography.sparseLineHeight};
-  margin-bottom: 3rem;
+  margin-bottom: 28px;
   padding: 1rem;
   text-align: left;
 `;
@@ -57,7 +59,25 @@ export const MailInfoText = styled.div`
 export const Buttons = styled.div`
   display: flex;
   justify-content: center;
+  margin-top: 48px;
   width: 100%;
 `;
 
-export const ButtonSize = 'sm';
+export const Link = styled.a`
+  color: ${aunaInteractive};
+  cursor: pointer;
+  font-size: 14px;
+`;
+
+export const SecondaryButton = styled(Button)`
+  background-color: ${white};
+  border: 1px solid ${aunaInteractive} !important;
+  color: ${aunaInteractive} !important;
+  height: 48px;
+  padding: 0;
+  width: 226px;
+
+  > span {
+    font-size: 16px;
+  }
+`;

@@ -1,12 +1,9 @@
 import React from "react";
-
-import { Button } from "@components/atoms";
 import { Container } from "@components/templates";
 import ReactSVG from "react-svg";
-
 import * as S from "./styles";
-import { IProps } from "./types";
-import mailSentSvg from 'images/auna/mail-sent.svg';
+import { IProps, OverlayType, OverlayTheme } from "./types";
+import mailSentSvg from "images/auna/mail-sent.svg";
 
 /**
  * Thank you page after completing the checkout.
@@ -15,6 +12,7 @@ const ThankYou: React.FC<IProps> = ({
   orderNumber,
   continueShopping,
   orderDetails,
+  overlay,
 }: IProps) => {
   return (
     <Container>
@@ -29,16 +27,22 @@ const ThankYou: React.FC<IProps> = ({
         </S.OrderInfo>
         <S.MailInfo>
           <S.MailInfoIcon>
-            <ReactSVG path={mailSentSvg}/>
+            <ReactSVG path={mailSentSvg} />
           </S.MailInfoIcon>
           <S.MailInfoText>
-            Recibirás en tu correo electrónico la confirmación y detalle de tu compra
+            Recibirás en tu correo electrónico la confirmación y detalle de tu
+            compra
           </S.MailInfoText>
         </S.MailInfo>
+        <S.Link
+          onClick={() => overlay && overlay.show(OverlayType.register, OverlayTheme.right)}
+        >
+          Crear una cuenta
+        </S.Link>
         <S.Buttons>
-          <Button onClick={continueShopping} size={S.ButtonSize}>
+          <S.SecondaryButton onClick={continueShopping}>
             Continuar comprando
-          </Button>
+          </S.SecondaryButton>
         </S.Buttons>
       </S.Wrapper>
     </Container>

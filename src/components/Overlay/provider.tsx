@@ -10,24 +10,26 @@ import {
 
 import * as paths from "../../app/routes/paths";
 
+interface IProps extends Readonly<RouteComponentProps>, Readonly<{ children?: React.ReactNode }> {};
+
 class Provider extends React.Component<
   RouteComponentProps<{}>,
   OverlayContextInterface
 > {
   notificationCloseDelay = 2500;
-  constructor(props) {
+  constructor(props: IProps) {
     super(props);
     this.state = {
-      context: null,
+      context: undefined,
       hide: this.hide,
       show: this.show,
       showCatalog: this.showCatalog,
-      theme: null,
-      type: null,
+      theme: undefined,
+      type: undefined,
     };
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: IProps) {
     if (
       this.props.location.pathname !== prevProps.location.pathname &&
       this.state.type !== OverlayType.message
@@ -38,8 +40,8 @@ class Provider extends React.Component<
 
   show = (
     type: OverlayType,
-    theme?: OverlayTheme,
-    context?: InnerOverlayContextInterface
+    theme?: OverlayTheme | undefined,
+    context?: InnerOverlayContextInterface | undefined
   ) => {
     this.setState({ type, theme, context });
     document.body.style.overflow = type !== OverlayType.message ? "hidden" : "";
@@ -49,7 +51,7 @@ class Provider extends React.Component<
   };
 
   hide = () => {
-    this.setState({ type: null });
+    this.setState({ type: undefined });
     document.body.style.overflow = "";
   };
 

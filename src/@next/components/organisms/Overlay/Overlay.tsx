@@ -34,7 +34,9 @@ export const Overlay: React.FC<IProps> = ({
             <S.Lightbox
               {...animationProps}
               state={state}
-              onClick={e => e.stopPropagation()}
+              onClick={(e: { stopPropagation: () => any }) =>
+                e.stopPropagation()
+              }
             >
               {children}
             </S.Lightbox>
