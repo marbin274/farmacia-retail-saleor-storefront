@@ -2,6 +2,7 @@
 
 .cart {
   width: 25rem;
+  // width: 25rem;
   max-width: 100vw;
 
   .overlay__header {
@@ -139,8 +140,20 @@
     }
 
     &__action {
-      text-align: center;
       margin-top: 44px;
+      padding: initial !important;
+      text-align: center;
+      font-size: 16px;
+
+      > button {
+        width: 250px;
+      }
+  
+      > button > span {
+        text-align: center;
+      }
+
     }
+
   }
 }
