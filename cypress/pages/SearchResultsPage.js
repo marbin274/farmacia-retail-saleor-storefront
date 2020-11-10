@@ -1,4 +1,5 @@
 import BasePage from "./BasePage";
+import ProductItem from "./ProductItem";
 
 export default class SearchResultsPage {
   static url = '/search'
@@ -8,6 +9,11 @@ export default class SearchResultsPage {
   }
 
   searchProduct(index) {
-    return cy.get(`.sc-fihHvN.ivCQaN a:nth-child(${index})`)
+    let productItem = cy.get(`.sc-ekulBa a:nth-child(${index})`)
+    return new ProductItem(productItem)
+  }
+
+  addToCartProduct(index) {
+    return this.searchProduct(index).addToCart()
   }
 }

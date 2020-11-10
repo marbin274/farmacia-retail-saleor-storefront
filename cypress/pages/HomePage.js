@@ -21,7 +21,7 @@ class HomePage {
   }
 
   searchProduct(index) {
-    return cy.get(`.search__products > ul > :nth-child(${index})`)
+    return {item: () => {return cy.get(`.search__products > ul > :nth-child(${index})`)} }
   }
 }
 

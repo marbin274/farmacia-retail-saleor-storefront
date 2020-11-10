@@ -20,3 +20,21 @@ Feature: The Search
     And submits search form
     Then The current page is "SearchResultsPage"
     And search products contain "Vacuna"
+
+  Scenario: Search and go to Product Detail page
+    Given a "guestUser"
+    When visits "SearchResultsPage"
+    | q      |
+    | vacuna |
+    And clicks on "Vacuna EUVAX"
+    Then The current page is "ProductDetailPage"
+    And contains "Vacuna EUVAX"
+
+  Scenario: Search and add product to Shopping Cart
+    Given a "guestUser"
+    When visits "SearchResultsPage"
+      | q      |
+      | vacuna |
+    Then the Cart has "0" items
+    When clicks on "addToCartProduct#1"
+    Then the Cart has "1" items

@@ -1,6 +1,6 @@
 let BasePage = {
-  visit() {
-    cy.visit(this.constructor.url)
+  visit(options) {
+    cy.visit(this.constructor.url, options)
   }
 }
 
