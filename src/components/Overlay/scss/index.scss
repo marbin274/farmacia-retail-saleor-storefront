@@ -21,6 +21,12 @@
       background-color: transparent;
       height: auto;
     }
+
+    .overlay__center {
+      background-color: transparent;
+      height: 0;
+    }
+
   }
 
   &--no-background {
@@ -40,6 +46,15 @@
     right: 0;
     top: 0;
     height: 100%;
+    animation: sidenavRightOpen 0.3s;
+  }
+
+  &__center {
+    position: fixed;
+    background-color: $white;
+    right: 0;
+    top: 0;
+    height: 0;
     animation: sidenavRightOpen 0.3s;
   }
 

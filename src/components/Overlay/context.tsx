@@ -17,14 +17,8 @@ export enum OverlayTheme {
   left = "left",
   right = "right",
   modal = "modal",
+  center = "center",
 }
-
-// export interface InnerOverlayContextInterface {
-//   title?: string;
-//   content?: string | React.ReactNode;
-//   status?: "success" | "error";
-//   data?: any;
-// }
 
 export type InnerOverlayContextInterface = {
   title?: string

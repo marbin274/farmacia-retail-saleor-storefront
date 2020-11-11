@@ -14,6 +14,7 @@ $custom-breakpoint: 624px;
 
 .search {
   width: 100vw;
+  min-height: 100vh;
 
   &--has-results {
     min-height: 100vh;
@@ -89,6 +90,7 @@ $custom-breakpoint: 624px;
       background: $auna-grey-05;
       opacity: 0.92;
     }
+
     &--not-found {
       @extend .size;
       padding: 14px;
@@ -103,7 +105,7 @@ $custom-breakpoint: 624px;
       margin-bottom: 2.65px;
 
       @media (max-width: $custom-breakpoint) {
-        padding: 8px 16px;
+        padding: 10px 15px;
         margin-bottom: 10px;
       }
 

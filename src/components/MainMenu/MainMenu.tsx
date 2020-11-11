@@ -251,7 +251,7 @@ const MainMenu: React.FC = () => {
               <li
                 className="main-menu__search"
                 onClick={() =>
-                  overlayContext.show(OverlayType.search, OverlayTheme.right)
+                  overlayContext.show(OverlayType.search, OverlayTheme.center)
                 }
               >
                 <ReactSVG path={searchImg} />
