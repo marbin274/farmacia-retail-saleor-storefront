@@ -306,6 +306,7 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
 @media (max-width:720px) {
   .c4 {
     display: none;
+    margin-bottom: 8px;
   }
 }
 

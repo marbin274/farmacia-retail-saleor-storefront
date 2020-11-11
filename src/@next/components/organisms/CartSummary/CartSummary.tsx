@@ -47,7 +47,7 @@ const CartSummary: React.FC<IProps> = ({
   return (
     <S.Wrapper mobileCartOpened={mobileCartOpened}>
       <S.Header onClick={() => setMobileCartOpened(!mobileCartOpened)}>
-        <S.Block position={1} mobileCartOpened={mobileCartOpened}>
+        <S.Block position={1}>
           <S.Close mobileCartOpened={mobileCartOpened}>
             <ReactSVG path={closeImg} />
           </S.Close>

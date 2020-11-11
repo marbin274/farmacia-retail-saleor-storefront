@@ -58,18 +58,13 @@ export const Header = styled.div`
 `;
 export const Block = styled.div<{
   position: number;
-  mobileCartOpened?: boolean;
 }>`
   align-items: center;
   display: flex;
   justify-content: space-between;
   width: 100%;
   margin: ${props =>
-    props.position === 2
-      ? "0 0 30px 24px"
-      : props.mobileCartOpened
-      ? "16px 16px 8px auto"
-      : "16px 16px 0 auto"};
+    props.position === 2 ? "0 0 30px 24px" : "16px 16px 0 auto"};
   width: ${props =>
     props.position === 1 ? "fit-content" : "-webkit-fill-available"};
 `;
@@ -96,6 +91,7 @@ export const Close = styled.div<{ mobileCartOpened: boolean }>`
   display: none;
   ${media.mediumScreen`
     display: ${(props: any) => (props.mobileCartOpened ? "unset" : "none")};
+    margin-bottom: 8px;
   `}
 `;
 export const CostLine = styled.div<{ last: boolean }>`
@@ -126,7 +122,7 @@ export const CartModifier = styled.div`
   justify-content: space-between;
   margin: 16px 0 20px 0;
 
-  @media(min-width: 721px) and (max-width: 1105px) {
+  @media (min-width: 721px) and (max-width: 1105px) {
     justify-content: center;
   }
 `;
