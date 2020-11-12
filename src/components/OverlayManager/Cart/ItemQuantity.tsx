@@ -1,7 +1,6 @@
 import * as React from "react";
 import addImg from "../../../images/add.svg";
 import ReactSVG from "react-svg";
-import removeImg from "../../../images/garbage.svg";
 import minusImg from "../../../images/minus.svg";
 import classNames from "classnames";
 
@@ -10,7 +9,6 @@ type IProps = {
   onRemove: () => void;
   value: string;
   className?: string;
-  removeIcon?: "garbage" | "minus";
 };
 
 const ItemQuantity: React.FC<IProps> = ({
@@ -18,11 +16,10 @@ const ItemQuantity: React.FC<IProps> = ({
   onRemove,
   value,
   className = null,
-  removeIcon = "garbage",
 }) => (
   <div className={classNames("cart__list__item__quantity", className)}>
     <ReactSVG
-      path={removeIcon === "garbage" ? removeImg : minusImg}
+      path={minusImg}
       className="cart__list__item__quantity__icon"
       onClick={onRemove}
     />

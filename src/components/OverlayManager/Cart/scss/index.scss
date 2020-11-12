@@ -35,6 +35,13 @@
 
         &--name {
           color: #424141;
+          font-size: 14px;
+          font-weight: 600;
+        }
+
+        &--button {
+          color: $auna-interactive;
+          font-size: 12px;
         }
 
         &--variant {
@@ -43,8 +50,14 @@
         }
       }
 
+      &__up {
+        display: flex;
+        justify-content: space-between;
+      }
+
       &__down {
         display: flex;
+        justify-content: space-between;
         margin-top: 8px;
       }
 
@@ -54,6 +67,8 @@
         border-radius: 26px;
         display: flex;
         justify-content: center;
+        margin-top: 24px;
+        // margin-top: 34px;
 
         &__text {
           color: $auna-grey-100;
@@ -74,9 +89,8 @@
         }
 
         &__price {
-          flex: 1;
           font-weight: 500;
-          text-align: end;
+          font-size: 18px;
         }
       }
     }
@@ -125,7 +139,7 @@
       font-weight: 400;
       margin-bottom: $spacer;
     }
-    
+
     &__text {
       font-weight: 300;
       max-width: 281px;
@@ -133,7 +147,7 @@
     }
 
     &__img {
-      background-color: #C4C4C4;
+      background-color: #c4c4c4;
       height: 154px;
       margin: 128px 0 36px;
       width: 154px;
@@ -148,12 +162,10 @@
       > button {
         width: 250px;
       }
-  
+
       > button > span {
         text-align: center;
       }
-
     }
-
   }
 }

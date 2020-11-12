@@ -8,14 +8,12 @@ import { Thumbnail } from "@components/molecules";
 
 import ItemQuantity from "./ItemQuantity";
 
-
-
 // TODO: fix functionality to add items
 const ProductList: React.FC<{
   lines: ICheckoutModelLine[];
-  add?(variantId: string, quantity: number): void;
-  remove(variantId: string): void;
-}> = ({ lines, add, remove }) => (
+  onQuantity?(variantId: string, quantity: number): void;
+  onRemove(variantId: string): void;
+}> = ({ lines, onQuantity, onRemove }) => (
   <ul className="cart__list">
     {lines.map((line, index) => {
       const productUrl = generateProductUrl(
@@ -30,24 +28,28 @@ const ProductList: React.FC<{
             <Thumbnail source={line.variant.product} />
           </Link>
           <div className="cart__list__item__details">
-            <Link to={productUrl}>
-              <p className="cart__list__item__details--name">
-                {line.variant.product.name}
-              </p>
-            </Link>
-            <p className="cart__list__item__details--variant">
-              {line.variant.name}
-            </p>
-
+            <div className="cart__list__item__up">
+              <Link to={productUrl}>
+                <p className="cart__list__item__details--name">
+                  {line.variant.product.name}
+                </p>
+              </Link>
+              <button
+                className="cart__list__item__details--button"
+                onClick={() => onRemove(line.variant.id)}
+              >
+                Eliminar
+              </button>
+            </div>
             <div className="cart__list__item__down">
-              <ItemQuantity
-              value={line.quantity.toString()}
-              onAdd={() => add(line.variant.id, 1)}
-              onRemove={() => remove(line.variant.id)}
-              />
               <TaxedMoney
                 className="cart__list__item__quantity__price"
                 taxedMoney={line.variant.pricing.price}
+              />
+              <ItemQuantity
+                value={line.quantity.toString()}
+                onAdd={() => onQuantity(line.variant.id, 1)}
+                onRemove={() => onQuantity(line.variant.id, -1)}
               />
             </div>
           </div>

@@ -54,13 +54,13 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
   return (
     <Overlay context={overlay}>
       <Online>
-        <div className="cart"> 
+        <div className="cart">
           <div className="overlay__header">
             <div className="overlay__header-text">
               Tu carrito{" "}
               <span className="overlay__header-text-items">
-                {totalProducts || 0} {" "}
-                {totalProducts === 1 ? 'producto' : 'productos'}
+                {totalProducts || 0}{" "}
+                {totalProducts === 1 ? "producto" : "productos"}
               </span>
             </div>
             <ReactSVG
@@ -71,7 +71,11 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
           </div>
           {items?.length ? (
             <>
-              <ProductList lines={items} remove={removeItem} add={addItem} />
+              <ProductList
+                lines={items}
+                onRemove={removeItem}
+                onQuantity={addItem}
+              />
               <div className="cart__footer">
                 <div className="cart__footer__price cart__footer__price--sub">
                   <span>Subtotal</span>

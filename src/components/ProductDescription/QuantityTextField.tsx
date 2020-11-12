@@ -33,7 +33,6 @@ export const QuantityTextField: React.FC<QuantityTextFieldProps> = ({
       value={quantity.toString()}
       onAdd={() => handleQuantityChange(1)}
       onRemove={() => handleQuantityChange(-1)}
-      removeIcon='minus'
     />
   );
 };
