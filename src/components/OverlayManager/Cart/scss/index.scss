@@ -154,6 +154,11 @@
     justify-content: center;
     padding: $spacer * 2 $spacer;
 
+    &__img {
+      height: 154px;
+      margin: 128px 0 36px;
+    }
+
     &__title {
       font-size: 24px;
       font-weight: 400;
@@ -164,13 +169,6 @@
       font-weight: 300;
       max-width: 281px;
       text-align: center;
-    }
-
-    &__img {
-      background-color: #c4c4c4;
-      height: 154px;
-      margin: 128px 0 36px;
-      width: 154px;
     }
 
     &__action {
