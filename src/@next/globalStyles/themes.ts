@@ -18,6 +18,7 @@ export const defaultTheme = {
     colors: {
       primary: {
         activeBackground: C.theme.aunaInteractivePressed,
+        aunaGray60: C.aunaGrey60,
         background: C.theme.aunaInteractive,
         color: C.white,
         disabledBackground: C.theme.aunaDisabledBackground,
@@ -33,6 +34,7 @@ export const defaultTheme = {
         disabledColor: C.theme.aunaDisabled,
         hoverBackground: C.theme.white,
         hoverColor: C.theme.aunaInteractive,
+        orangeAuna: C.theme.aunaOrange,
       },
     },
     padding: {
@@ -97,6 +99,7 @@ export const defaultTheme = {
     borderColorActive: C.aunaInteractive,
     borderColorError: C.aunaError,
     borderRadius: '4px',
+    errorFontSize: "12px",
     labelColor: C.aunaGrey100,
     labelColorActive: C.aunaGrey100,
     labelColorError: C.aunaGrey100,
@@ -174,6 +177,7 @@ export const defaultTheme = {
      * 20px in default theme
      */
     baseLineHeight: C.baseLineHeight,
+    bigFontSize: C.bigFontSize,
     boldFontWeight: C.boldFontWeight,
     extraBoldFontWeight: C.extraBoldFontWeight,
     /**
@@ -201,6 +205,7 @@ export const defaultTheme = {
      * 14px in default theme
      */
     smallFontSize: C.smallFontSize,
+    smallFontWeight: C.smallFontWeight,
     sparseLineHeight: C.sparseLineHeight,
     /**
      * 96px in default theme

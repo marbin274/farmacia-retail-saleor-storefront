@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/DiscountForm default 1`] = `
   margin: 20px;
 }
 
-.c11 {
+.c10 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -17,7 +17,7 @@ exports[`Storyshots @components/organisms/DiscountForm default 1`] = `
   box-sizing: border-box;
 }
 
-.c9 {
+.c8 {
   background-color: #00B0CA;
   padding: 0.9rem 3.7rem;
   border: none;
@@ -30,27 +30,27 @@ exports[`Storyshots @components/organisms/DiscountForm default 1`] = `
   width: auto;
 }
 
-.c9:hover {
+.c8:hover {
   background-color: #0BC1DC;
   color: #fff;
 }
 
-.c9:active {
+.c8:active {
   background-color: #029FB7;
   box-shadow: -3px 3px 14px 0px rgba(129,67,67,0.2);
 }
 
-.c9:disabled {
+.c8:disabled {
   background-color: #F1F2F7;
   color: #B8BCD5;
 }
 
-.c9:disabled,
-.c9:disabled:hover {
+.c8:disabled,
+.c8:disabled:hover {
   cursor: default;
 }
 
-.c10 {
+.c9 {
   display: inline-block;
   font-size: 1.125rem;
   font-weight: 400;
@@ -61,17 +61,7 @@ exports[`Storyshots @components/organisms/DiscountForm default 1`] = `
   user-select: none;
 }
 
-.c7 {
-  background-color: transparent;
-  color: #9194A7;
-  left: 0px;
-  position: absolute;
-  font-size: 0.9rem;
-  pointer-events: none;
-  top: -1.5rem;
-}
-
-.c4 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -84,18 +74,18 @@ exports[`Storyshots @components/organisms/DiscountForm default 1`] = `
   transition: all 0.3s ease;
 }
 
-.c4:hover {
+.c5:hover {
   color: #E4E5ED;
   border-color: #00B0CA;
 }
 
-.c5 {
+.c6 {
   position: relative;
   width: 100%;
   padding-right: 1.5rem;
 }
 
-.c6 {
+.c7 {
   padding: 0.75rem 1rem;
   margin: 0;
   border: none;
@@ -106,50 +96,92 @@ exports[`Storyshots @components/organisms/DiscountForm default 1`] = `
   background-color: transparent;
 }
 
-.c6::-webkit-input-placeholder {
+.c7::-webkit-input-placeholder {
   color: #9194A7;
 }
 
-.c6::-moz-placeholder {
+.c7::-moz-placeholder {
   color: #9194A7;
 }
 
-.c6:-ms-input-placeholder {
+.c7:-ms-input-placeholder {
   color: #9194A7;
 }
 
-.c6::placeholder {
+.c7::placeholder {
   color: #9194A7;
 }
 
-.c1 {
-  margin-bottom: 1rem;
+.c1 .promoCode {
+  margin-top: 1rem;
 }
 
-.c2 {
+.c1 .promoCode div:nth-child(1) {
+  padding: 0;
+}
+
+.c1 .promoCode div:nth-child(1) span:nth-child(1) {
+  margin-right: 5rem;
+}
+
+.c1 .promoCode button {
+  margin-top: -1.4rem;
+  cursor: pointer;
+  background: #454545;
+  border-radius: %;
+  padding: 0px 5px 0px 5px;
+}
+
+.c1 .promoCode button svg {
+  width: 12px;
+  padding-top: 5px;
+}
+
+.c1 .promoCode button svg path {
+  fill: #fff;
+}
+
+.c1 .voucherTitle {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
+.c1 .voucherTitle span {
+  margin-left: 1rem;
+  color: #ED7C59;
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-right: 1rem;
+  padding-top: 2.5px;
+}
+
+.c1 .voucherDescription {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #ED7C59;
+}
+
+.c2 {
+  margin-bottom: 1rem;
+}
+
 .c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c4 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
 }
 
-.c8 {
-  width: auto;
-  min-width: 110px;
-}
-
-.c8 button {
-  padding: 0.8rem 1rem;
-}
-
 @media (max-width:540px) {
-  .c9 {
+  .c8 {
     padding: 0.9rem 1rem;
     width: 88%;
   }
@@ -159,68 +191,81 @@ exports[`Storyshots @components/organisms/DiscountForm default 1`] = `
   className="c0"
 >
   <form
-    className=""
+    className="c1"
     onSubmit={[Function]}
   >
     <div
-      className="c1"
+      className="c2"
     >
       <div
-        className="c2"
+        className="c3"
       >
         <div
-          className="c3"
+          className="c4"
         >
           <div
-            className="c4"
-            disabled={false}
+            className="flex"
+            id="flex"
           >
             <div
-              className="c5"
+              className="input"
             >
-              <input
-                className="c6"
-                data-cy="checkoutPaymentPromoCodeInput"
-                disabled={false}
-                name="inputCode"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                value=""
-              />
-              <label
-                className="c7"
+              <div
+                className="c5"
                 disabled={false}
               >
-                Promo Code
-              </label>
+                <div
+                  className="c6"
+                >
+                  <input
+                    className="c7"
+                    data-cy="checkoutPaymentPromoCodeInput"
+                    disabled={false}
+                    name="inputCode"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    onKeyUp={[Function]}
+                    placeholder="Inserta tu código"
+                    value=""
+                  />
+                  
+                </div>
+              </div>
+            </div>
+            <div
+              className="button"
+            >
+              <button
+                className="c8"
+                color="primary"
+                data-cy="checkoutPaymentPromoCodeBtn"
+                onClick={[Function]}
+                size="md"
+                type="submit"
+              >
+                <span
+                  className="c9"
+                  size="md"
+                >
+                  Aplicar
+                </span>
+              </button>
             </div>
           </div>
         </div>
-        <div
-          className="c8"
-        >
-          <button
-            className="c9"
-            color="primary"
-            data-cy="checkoutPaymentPromoCodeBtn"
-            onClick={[Function]}
-            size="md"
-            type="button"
-          >
-            <span
-              className="c10"
-              size="md"
-            >
-              Apply
-            </span>
-          </button>
-        </div>
       </div>
     </div>
+    <div
+      style={
+        Object {
+          "marginLeft": "1rem",
+        }
+      }
+    />
   </form>
   <div
-    className="c11"
+    className="c10"
   />
 </div>
 `;

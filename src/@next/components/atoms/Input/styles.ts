@@ -12,7 +12,7 @@ const getTextColor = ({ active, error, disabled, theme }: WrapperProps, hovered 
     case disabled:
       return theme.colors.disabled;
     case error:
-      return theme.input.textColorError;
+      // TODO: change this line code when font color needs to change.
     case active:
       return theme.input.textColorActive;
     case hovered:
@@ -45,7 +45,6 @@ export const Wrapper = styled.div<WrapperProps>`
   outline: ${props =>
     props.active ? `1px solid ${getEdgeColor(props)};` : "none"};
   transition: all 0.3s ease;
-
   &:hover {
     color: ${props => getTextColor(props, true)};
     border-color: ${props => getEdgeColor(props, true)};

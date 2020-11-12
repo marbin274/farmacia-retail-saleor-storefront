@@ -8,12 +8,12 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { RouteComponentProps, useHistory } from "react-router";
+import { RouteComponentProps } from "react-router";
 
 import { CheckoutPayment } from "@components/organisms";
 import { useCart, useCheckout, useUserDetails } from "@sdk/react";
 import { ShopContext } from "@temp/components/ShopProvider/context";
-import {billingAddressAlwaysSameAsShipping, CHECKOUT_STEPS} from "@temp/core/config";
+import {billingAddressAlwaysSameAsShipping} from "@temp/core/config";
 import { IAddress, ICardData, IFormError } from "@types";
 import { filterNotEmptyArrayItems } from "@utils/misc";
 
@@ -40,7 +40,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
   }: IProps,
   ref
 ) => {
-  const history = useHistory();
+  // const history = useHistory();
   const { data: user } = useUserDetails();
   const {
     checkout,
@@ -54,6 +54,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
     removePromoCode,
     createPayment,
   } = useCheckout();
+
   const { items } = useCart();
   const { countries } = useContext(ShopContext);
 
@@ -134,7 +135,8 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
       setGatewayErrors(errors);
     } else {
       setGatewayErrors([]);
-      history.push(CHECKOUT_STEPS[2].nextStepLink);
+      // Use this section when you need to change to the next step.
+      // history.push(CHECKOUT_STEPS[2].nextStepLink);
     }
   };
   const handlePaymentGatewayError = () => {
@@ -215,9 +217,11 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
       }
     }
   };
+  
   const handleRemovePromoCode = async (promoCode: string) => {
     const { dataError } = await removePromoCode(promoCode);
     const errors = dataError?.error;
+
     if (errors) {
       changeSubmitProgress(false);
       setPromoCodeErrors(errors);
@@ -234,6 +238,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
     }
   };
   const handleSubmitUnchangedDiscount = () => {
+    setPromoCodeErrors([]);
     if (checkoutGatewayFormRef.current) {
       checkoutGatewayFormRef.current.dispatchEvent(
         new Event("submit", { cancelable: true })

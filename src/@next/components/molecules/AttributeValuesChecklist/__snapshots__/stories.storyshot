@@ -6,7 +6,7 @@ exports[`Storyshots @components/molecules/AttributeValuesChecklist default 1`] =
   margin: 20px;
 }
 
-.c10 {
+.c9 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -17,7 +17,7 @@ exports[`Storyshots @components/molecules/AttributeValuesChecklist default 1`] =
   box-sizing: border-box;
 }
 
-.c8 {
+.c7 {
   font-size: 0.875rem;
   font-weight: 600;
   color: rgb(33,18,94);
@@ -36,11 +36,11 @@ exports[`Storyshots @components/molecules/AttributeValuesChecklist default 1`] =
   transition: color 0.3s ease;
 }
 
-.c8:hover {
+.c7:hover {
   color: #513CA3;
 }
 
-.c5 {
+.c4 {
   width: 100%;
   margin-bottom: 1.25rem;
   display: -webkit-box;
@@ -60,7 +60,7 @@ exports[`Storyshots @components/molecules/AttributeValuesChecklist default 1`] =
   margin-left: -4px;
 }
 
-.c6 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -74,16 +74,16 @@ exports[`Storyshots @components/molecules/AttributeValuesChecklist default 1`] =
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding-right: 1.25rem;
+  padding-right: 1rem;
 }
 
-.c6 input[type="checkbox"] {
+.c5 input[type="checkbox"] {
   display: none;
   position: relative;
   right: -999em;
 }
 
-.c6 div {
+.c5 div {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -100,32 +100,42 @@ exports[`Storyshots @components/molecules/AttributeValuesChecklist default 1`] =
   width: 26px;
 }
 
-.c6 div span {
-  border: 1px solid rgb(33,18,94);
-  width: 14px;
-  height: 14px;
+.c5 div span {
+  width: 20px;
+  height: 20px;
   display: inline-block;
+  border-radius: 2px;
+  border: solid 3px #E4E5ED;
 }
 
-.c4:hover .c6 div {
-  border-radius: 50%;
-  border: 1px solid;
-  border-color: rgba(33,18,94,0.1);
-  background-color: rgba(33,18,94,0.1);
+.c5 div span div {
+  display: none;
 }
 
-.c6 div:focus {
-  border-radius: 50%;
-  border: 1px solid;
+.c5 div span div svg {
+  fill: #fff;
+}
+
+.c5 div:focus {
   outline: none;
-  border-color: rgba(33,18,94,0.2);
-  background-color: rgba(33,18,94,0.2);
 }
 
-.c6 input:checked + div span {
+.c5 .checkout_icon {
+  color: red;
+}
+
+.c5 input:checked + div span {
   background-clip: content-box;
-  padding: 2px;
-  background-color: rgb(33,18,94);
+  background-color: #00B0CA;
+  border: solid 2px #00B0CA;
+}
+
+.c5 input:checked + div span div {
+  display: block;
+  position: absolute;
+  left: 3px;
+  bottom: 2px;
+  top: 2.5px;
 }
 
 .c2 {
@@ -139,12 +149,12 @@ exports[`Storyshots @components/molecules/AttributeValuesChecklist default 1`] =
   padding-bottom: 1.5rem;
 }
 
-.c9 {
+.c8 {
   border-bottom: 1px solid #f1f5f5;
   width: 95%;
 }
 
-.c7 {
+.c6 {
   padding-bottom: 1.25rem;
 }
 
@@ -167,11 +177,11 @@ exports[`Storyshots @components/molecules/AttributeValuesChecklist default 1`] =
         Size
       </div>
       <div
-        className="c4 c5"
+        className="c4"
         onClick={[Function]}
       >
         <label
-          className="c6"
+          className="c5"
         >
           <input
             checked={true}
@@ -184,17 +194,21 @@ exports[`Storyshots @components/molecules/AttributeValuesChecklist default 1`] =
             onKeyDown={[Function]}
             tabIndex={0}
           >
-            <span />
+            <span>
+              <div
+                className="checkout_icon"
+              />
+            </span>
           </div>
         </label>
         41
       </div>
       <div
-        className="c4 c5"
+        className="c4"
         onClick={[Function]}
       >
         <label
-          className="c6"
+          className="c5"
         >
           <input
             checked={false}
@@ -207,17 +221,21 @@ exports[`Storyshots @components/molecules/AttributeValuesChecklist default 1`] =
             onKeyDown={[Function]}
             tabIndex={0}
           >
-            <span />
+            <span>
+              <div
+                className="checkout_icon"
+              />
+            </span>
           </div>
         </label>
         42
       </div>
       <div
-        className="c4 c5"
+        className="c4"
         onClick={[Function]}
       >
         <label
-          className="c6"
+          className="c5"
         >
           <input
             checked={false}
@@ -230,17 +248,21 @@ exports[`Storyshots @components/molecules/AttributeValuesChecklist default 1`] =
             onKeyDown={[Function]}
             tabIndex={0}
           >
-            <span />
+            <span>
+              <div
+                className="checkout_icon"
+              />
+            </span>
           </div>
         </label>
         43
       </div>
       <div
-        className="c4 c5"
+        className="c4"
         onClick={[Function]}
       >
         <label
-          className="c6"
+          className="c5"
         >
           <input
             checked={false}
@@ -253,17 +275,21 @@ exports[`Storyshots @components/molecules/AttributeValuesChecklist default 1`] =
             onKeyDown={[Function]}
             tabIndex={0}
           >
-            <span />
+            <span>
+              <div
+                className="checkout_icon"
+              />
+            </span>
           </div>
         </label>
         44
       </div>
       <div
-        className="c4 c5"
+        className="c4"
         onClick={[Function]}
       >
         <label
-          className="c6"
+          className="c5"
         >
           <input
             checked={false}
@@ -276,16 +302,20 @@ exports[`Storyshots @components/molecules/AttributeValuesChecklist default 1`] =
             onKeyDown={[Function]}
             tabIndex={0}
           >
-            <span />
+            <span>
+              <div
+                className="checkout_icon"
+              />
+            </span>
           </div>
         </label>
         45
       </div>
       <div
-        className="c7"
+        className="c6"
       >
         <button
-          className="c8"
+          className="c7"
           color="secondary"
           onClick={[Function]}
           size="sm"
@@ -294,12 +324,12 @@ exports[`Storyshots @components/molecules/AttributeValuesChecklist default 1`] =
         </button>
       </div>
       <div
-        className="c9"
+        className="c8"
       />
     </div>
   </div>
   <div
-    className="c10"
+    className="c9"
   />
 </div>
 `;

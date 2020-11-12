@@ -3,6 +3,9 @@ import React from "react";
 import * as S from "./styles";
 import { IProps } from "./types";
 
+import checkout_done from "../../../../images/auna/checkout-done-small.svg";
+import ReactSVG from "react-svg";
+
 const ENTER_KEY: number = 13;
 const SPACE_KEY: number = 32;
 
@@ -18,7 +21,7 @@ export const Checkbox: React.FC<IProps> = ({
   return (
     <S.Checkbox
       ref={ref}
-      onClick={(evt: React.SyntheticEvent<Element, Event>) => {
+      onClick={(evt) => {
         evt.preventDefault();
         onChange(evt);
         if (ref.current) {
@@ -38,14 +41,17 @@ export const Checkbox: React.FC<IProps> = ({
         <div
           ref={ref}
           tabIndex={0}
-          onKeyDown={(evt: React.KeyboardEvent<HTMLDivElement>) => {
+          onKeyDown={(evt) => {
             if (evt.which === SPACE_KEY || evt.which === ENTER_KEY) {
               evt.preventDefault();
               onChange(evt);
             }
           }}
         >
-          <span></span>
+          <span><ReactSVG
+                  path={checkout_done}
+                  className={"checkout_icon"}
+                /></span>
         </div>
       </S.Label>
       {children}

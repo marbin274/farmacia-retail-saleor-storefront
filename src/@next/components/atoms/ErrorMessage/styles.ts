@@ -1,8 +1,9 @@
 import { styled } from "@styles";
 
 export const ErrorMessage = styled.div`
-  color: ${props => props.theme.colors.error};
-  font-size: ${props => props.theme.input.labelFontSize};
+  color: ${props => props.theme.colors.aunaError};
+  font-size: ${props => props.theme.input.errorFontSize};
+  font-weight: ${props => props.theme.typography.smallFontWeight};
 `;
 
 export const ErrorParagraph = styled.p`

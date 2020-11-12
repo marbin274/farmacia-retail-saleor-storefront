@@ -15,9 +15,69 @@ export const Title = styled.h3`
 `;
 
 export const DiscountField = styled.div`
-  background-color: ${props => props.theme.colors.light};
-  padding: 30px;
-
+   margin-bottom: 30px;
+   form {
+      .flex{
+        border: solid ${props => props.theme.colors.aunaLightGray} 1px;
+        display: flex;
+        box-sizing: border-box;
+        border-radius: 4px;
+      }
+      .error{
+        border: solid ${props => props.theme.colors.aunaError} 1px;
+        display: flex;
+        box-sizing: border-box;
+        border-radius: 4px;
+        .button {
+          
+          button {
+            color: ${props => props.theme.colors.aunaDisabled};
+          }
+        }
+      }
+      div{
+        border: none;
+        outline: none;
+        margin-bottom: 0;
+      }
+      .input {
+          width: 87%;
+          float: left;
+          padding: 0rem;
+          input {
+              font-weight: $font-weight-normal;
+              font-size: $small-font-size;
+              color: $auna-black;
+              text-transform: uppercase;
+              &::placeholder {
+                  text-transform: none;
+              }
+          }
+      }
+      .button {
+          button {
+              color: ${props => props.theme.colors.primary};
+              background: transparent;
+              padding: 0.8rem 1.4rem 0.7rem 1.3rem;
+              margin-right: 0;
+              float: right;
+              cursor: pointer;
+              border-radius: 0;
+              outline: none;
+              span{
+                  font-weight: ${props => props.theme.typography.normalFontWeight};
+                  font-size: ${props => props.theme.typography.smallFontSize};
+                  cursor: pointer;
+              }
+  
+              &:focus {
+                  -webkit-box-shadow: none;
+                  -moz-box-shadow: none;
+                  box-shadow: none;
+              }
+          }  
+      }
+    }
   ${media.smallScreen`
     padding: 30px 20px;
   `}

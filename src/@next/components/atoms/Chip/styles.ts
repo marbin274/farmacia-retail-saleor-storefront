@@ -22,7 +22,6 @@ export const Primary = styled.div<{
   fullWidth?: boolean;
   size: Size;
 }>`
-  background-color: ${props => props.theme.chip.colors[props.color].background};
   padding: ${props => padding[props.size]};
   border: none;
   transition: 0.3s;

@@ -18,7 +18,6 @@ exports[`Storyshots @components/atoms/Chip default 1`] = `
 }
 
 .c1 {
-  background-color: rgba(6,132,123,0.25);
   padding: 0.4rem 0.4rem 0.4rem 0.8rem;
   border: none;
   -webkit-transition: 0.3s;

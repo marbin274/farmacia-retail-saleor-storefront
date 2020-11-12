@@ -6,7 +6,7 @@ exports[`Storyshots @components/atoms/Checkbox default 1`] = `
   margin: 20px;
 }
 
-.c4 {
+.c3 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -17,7 +17,7 @@ exports[`Storyshots @components/atoms/Checkbox default 1`] = `
   box-sizing: border-box;
 }
 
-.c2 {
+.c1 {
   width: 100%;
   margin-bottom: 1.25rem;
   display: -webkit-box;
@@ -37,7 +37,7 @@ exports[`Storyshots @components/atoms/Checkbox default 1`] = `
   margin-left: -4px;
 }
 
-.c3 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -51,16 +51,16 @@ exports[`Storyshots @components/atoms/Checkbox default 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding-right: 1.25rem;
+  padding-right: 1rem;
 }
 
-.c3 input[type="checkbox"] {
+.c2 input[type="checkbox"] {
   display: none;
   position: relative;
   right: -999em;
 }
 
-.c3 div {
+.c2 div {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -77,43 +77,53 @@ exports[`Storyshots @components/atoms/Checkbox default 1`] = `
   width: 26px;
 }
 
-.c3 div span {
-  border: 1px solid rgb(33,18,94);
-  width: 14px;
-  height: 14px;
+.c2 div span {
+  width: 20px;
+  height: 20px;
   display: inline-block;
+  border-radius: 2px;
+  border: solid 3px #E4E5ED;
 }
 
-.c1:hover .c3 div {
-  border-radius: 50%;
-  border: 1px solid;
-  border-color: rgba(33,18,94,0.1);
-  background-color: rgba(33,18,94,0.1);
+.c2 div span div {
+  display: none;
 }
 
-.c3 div:focus {
-  border-radius: 50%;
-  border: 1px solid;
+.c2 div span div svg {
+  fill: #fff;
+}
+
+.c2 div:focus {
   outline: none;
-  border-color: rgba(33,18,94,0.2);
-  background-color: rgba(33,18,94,0.2);
 }
 
-.c3 input:checked + div span {
+.c2 .checkout_icon {
+  color: red;
+}
+
+.c2 input:checked + div span {
   background-clip: content-box;
-  padding: 2px;
-  background-color: rgb(33,18,94);
+  background-color: #00B0CA;
+  border: solid 2px #00B0CA;
+}
+
+.c2 input:checked + div span div {
+  display: block;
+  position: absolute;
+  left: 3px;
+  bottom: 2px;
+  top: 2.5px;
 }
 
 <div
   className="c0"
 >
   <div
-    className="c1 c2"
+    className="c1"
     onClick={[Function]}
   >
     <label
-      className="c3"
+      className="c2"
     >
       <input
         name="default-checkbox"
@@ -125,13 +135,17 @@ exports[`Storyshots @components/atoms/Checkbox default 1`] = `
         onKeyDown={[Function]}
         tabIndex={0}
       >
-        <span />
+        <span>
+          <div
+            className="checkout_icon"
+          />
+        </span>
       </div>
     </label>
     Checkbox with label
   </div>
   <div
-    className="c4"
+    className="c3"
   />
 </div>
 `;

@@ -16,7 +16,7 @@ export const Label = styled.label`
   cursor: pointer;
   justify-content: flex-start;
   align-items: center;
-  padding-right: 1.25rem;
+  padding-right: 1rem;
   input[type="checkbox"] {
     display: none;
     position: relative;
@@ -28,35 +28,40 @@ export const Label = styled.label`
     align-items: center;
     height: 26px;
     width: 26px;
-
     span {
-      border: 1px solid ${props => props.theme.colors.secondary};
-      width: 14px;
-      height: 14px;
+      width: 20px;
+      height: 20px;
       display: inline-block;
+      border-radius: 2px;
+      border: solid 3px ${props => props.theme.colors.aunaLightGray};
+      div {
+        display: none;
+        svg {
+         fill: ${props => props.theme.colors.white};
+        }
+      }
     }
-
     ${Checkbox}:hover & {
-      border-radius: 50%;
-      border: 1px solid;
-      border-color: ${props => props.theme.colors.secondaryOverlay};
-      background-color: ${props => props.theme.colors.secondaryOverlay};
     }
-
     :focus {
-      border-radius: 50%;
-      border: 1px solid;
       outline: none;
-      border-color: ${props => props.theme.colors.secondaryOverlayDark};
-      background-color: ${props => props.theme.colors.secondaryOverlayDark};
     }
   }
-
+  .checkout_icon {
+    color: red;
+  }
   input:checked + div {
     span {
       background-clip: content-box;
-      padding: 2px;
-      background-color: ${props => props.theme.colors.secondary};
+      background-color: ${props => props.theme.colors.primary};
+      border: solid 2px ${props => props.theme.colors.primary};
+      div {
+        display: block;
+        position: absolute;
+        left: 3px;
+        bottom: 2px;
+        top: 2.5px;
+      }
     }
   }
 `;
