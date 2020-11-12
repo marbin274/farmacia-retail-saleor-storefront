@@ -85,6 +85,7 @@ const CheckoutPayment: React.FC<IProps> = ({
               formId={promoCodeDiscountFormId}
               formRef={promoCodeDiscountFormRef}
               handleSubmit={handleSubmitPromoCode}
+              addPromoCode={handleSubmitPromoCode}
               removeVoucher={removeVoucherCode}
               errors={promoCodeErrors}
             />

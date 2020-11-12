@@ -8,12 +8,12 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { RouteComponentProps } from "react-router";
+import { RouteComponentProps, useHistory } from "react-router";
 
 import { CheckoutPayment } from "@components/organisms";
 import { useCart, useCheckout, useUserDetails } from "@sdk/react";
 import { ShopContext } from "@temp/components/ShopProvider/context";
-import {billingAddressAlwaysSameAsShipping} from "@temp/core/config";
+import {billingAddressAlwaysSameAsShipping, CHECKOUT_STEPS} from "@temp/core/config";
 import { IAddress, ICardData, IFormError } from "@types";
 import { filterNotEmptyArrayItems } from "@utils/misc";
 
@@ -40,7 +40,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
   }: IProps,
   ref
 ) => {
-  // const history = useHistory();
+  const history = useHistory();
   const { data: user } = useUserDetails();
   const {
     checkout,
@@ -135,8 +135,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
       setGatewayErrors(errors);
     } else {
       setGatewayErrors([]);
-      // Use this section when you need to change to the next step.
-      // history.push(CHECKOUT_STEPS[2].nextStepLink);
+      history.push(CHECKOUT_STEPS[2].nextStepLink);
     }
   };
   const handlePaymentGatewayError = () => {
@@ -208,9 +207,10 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
     } else {
       setPromoCodeErrors([]);
       if (checkoutGatewayFormRef.current) {
-        checkoutGatewayFormRef.current.dispatchEvent(
-          new Event("submit", { cancelable: true })
-        );
+        // Avoid to go ahead to next step
+        // checkoutGatewayFormRef.current.dispatchEvent(
+        //   new Event("submit", { cancelable: true })
+        // );
       } else {
         changeSubmitProgress(false);
         setGatewayErrors([{ message: "Please choose payment method." }]);
@@ -228,9 +228,10 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
     } else {
       setPromoCodeErrors([]);
       if (checkoutGatewayFormRef.current) {
-        checkoutGatewayFormRef.current.dispatchEvent(
-          new Event("submit", { cancelable: true })
-        );
+        // Avoid to go ahead to next step
+        // checkoutGatewayFormRef.current.dispatchEvent(
+        //   new Event("submit", { cancelable: true })
+        // );
       } else {
         changeSubmitProgress(false);
         setGatewayErrors([{ message: "Please choose payment method." }]);

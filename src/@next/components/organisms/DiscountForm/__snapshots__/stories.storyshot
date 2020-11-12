@@ -132,6 +132,13 @@ exports[`Storyshots @components/organisms/DiscountForm default 1`] = `
   padding: 0px 5px 0px 5px;
 }
 
+.c1 .promoCode button:active {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  background: transparent;
+}
+
 .c1 .promoCode button svg {
   width: 12px;
   padding-top: 5px;
@@ -187,6 +194,13 @@ exports[`Storyshots @components/organisms/DiscountForm default 1`] = `
   }
 }
 
+@media (max-width:540px) {
+  .c1 .promoCode button {
+    float: right;
+    margin-top: -3rem;
+  }
+}
+
 <div
   className="c0"
 >
@@ -225,7 +239,6 @@ exports[`Storyshots @components/organisms/DiscountForm default 1`] = `
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
-                    onKeyUp={[Function]}
                     placeholder="Inserta tu código"
                     value=""
                   />
@@ -242,7 +255,7 @@ exports[`Storyshots @components/organisms/DiscountForm default 1`] = `
                 data-cy="checkoutPaymentPromoCodeBtn"
                 onClick={[Function]}
                 size="md"
-                type="submit"
+                type="button"
               >
                 <span
                   className="c9"

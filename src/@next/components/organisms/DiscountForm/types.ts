@@ -10,6 +10,7 @@ export interface IProps {
   formRef?: React.RefObject<HTMLFormElement>;
   errors?: any;
   removeVoucher?:(text: string) => void;
+  addPromoCode?:(formData: IDiscountFormData | undefined) => void;
   handleSubmit?: (formData: IDiscountFormData | undefined) => void;
   handleChange?: (e: React.ChangeEvent) => void;
   handleBlur?: (e: React.FocusEvent) => void;

@@ -1,4 +1,4 @@
-import { styled } from "@styles";
+import { media, styled } from "@styles";
 
 export const DiscountForm = styled.form`
   .promoCode {
@@ -15,6 +15,12 @@ export const DiscountForm = styled.form`
       background: ${props => props.theme.colors.aunaBlackGray}; 
       border-radius: %;
       padding: 0px 5px 0px 5px;
+        &:active {
+          -webkit-box-shadow: none;
+          -moz-box-shadow: none;
+          box-shadow: none;
+          background: transparent;
+        }
       svg {
         width: 12px;
         padding-top: 5px;
@@ -40,6 +46,15 @@ export const DiscountForm = styled.form`
     font-weight: ${props => props.theme.typography.normalFontWeight};
     color: ${props => props.theme.colors.aunaOrange};
   }
+
+  ${media.smallScreen`
+    .promoCode {
+      button {
+        float: right;
+        margin-top: -3rem;
+      }
+    }
+  `}
 `;
 
 export const Input = styled.div`

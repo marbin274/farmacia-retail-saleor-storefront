@@ -11,6 +11,7 @@ export const DiscountForm: React.FC<IProps> = ({
   handleSubmit,
   discount,
   errors,
+  addPromoCode,
   removeVoucher,
   formId,
   formRef,
@@ -21,14 +22,20 @@ export const DiscountForm: React.FC<IProps> = ({
   const [tempPromoCode, setTempPromoCode] = React.useState(promoCode);
 
   const handleApplyBtnClick = (newInputCode: string) => {
-    setTempPromoCode(newInputCode);
+    if (addPromoCode) {
+      addPromoCode({
+        giftCards: undefined,
+        promoCode: newInputCode,
+      });
+    }
+    
     setInputCode("");
   };
 
 
   const handleRemoveBtnClick = (newInputCode: string) => {
     setTempPromoCode(undefined);
-    setInputCode(newInputCode);
+    setInputCode("");
     if(removeVoucher) {
       removeVoucher(newInputCode);
     }
@@ -41,7 +48,7 @@ export const DiscountForm: React.FC<IProps> = ({
         inputCode,
         tempPromoCode,
       }}
-      enableReinitialize={true}
+      enableReinitialize
       onSubmit={(values, { setSubmitting }) => {
         if (handleSubmit) {
           handleSubmit({
@@ -79,14 +86,14 @@ export const DiscountForm: React.FC<IProps> = ({
                             label=""
                             placeholder="Inserta tu código"
                             onChange={handleChange}
-                            onKeyUp={() => {errors = null}}
+                            onFocus={() => {errors = null}}
                           />
                         </div>
                         <div className="button">
                           <Button
-                            type="submit"
+                            type="button"
                             data-cy="checkoutPaymentPromoCodeBtn"
-                            onClick={() => handleApplyBtnClick(values.tempPromoCode)}
+                            onClick={() => handleApplyBtnClick(values.inputCode)}
                           >
                             Aplicar
                           </Button>

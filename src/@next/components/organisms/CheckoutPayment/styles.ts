@@ -29,7 +29,6 @@ export const DiscountField = styled.div`
         box-sizing: border-box;
         border-radius: 4px;
         .button {
-          
           button {
             color: ${props => props.theme.colors.aunaDisabled};
           }
@@ -64,6 +63,22 @@ export const DiscountField = styled.div`
               cursor: pointer;
               border-radius: 0;
               outline: none;
+
+              &:hover {
+                background: transparent;
+              }
+            
+              &:active {
+                background: transparent !important;
+                -webkit-box-shadow: none;
+                  -moz-box-shadow: none;
+                  box-shadow: none;
+              }
+            
+              &:disabled {
+                background: transparent;
+              }
+
               span{
                   font-weight: ${props => props.theme.typography.normalFontWeight};
                   font-size: ${props => props.theme.typography.smallFontSize};
@@ -79,7 +94,7 @@ export const DiscountField = styled.div`
       }
     }
   ${media.smallScreen`
-    padding: 30px 20px;
+      margin-bottom: 30px;
   `}
 `;
 
