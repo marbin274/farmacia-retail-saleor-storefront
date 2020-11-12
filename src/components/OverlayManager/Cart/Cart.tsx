@@ -19,6 +19,8 @@ import { checkoutLoginUrl, checkoutUrl } from "../../../app/routes";
 import Empty from "./Empty";
 import ProductList from "./ProductList";
 
+import aunaImg from "../../../images/logo.svg";
+import closeImg from "../../../images/close-circle.svg";
 import cartImg from "../../../images/cart-light.svg";
 
 const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
@@ -56,18 +58,29 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
       <Online>
         <div className="cart">
           <div className="overlay__header">
-            <div className="overlay__header-text">
-              Tu carrito{" "}
-              <span className="overlay__header-text-items">
-                {totalProducts || 0}{" "}
-                {totalProducts === 1 ? "producto" : "productos"}
-              </span>
+            <div className="overlay__header__top">
+              <div />
+              <ReactSVG
+                path={aunaImg}
+                onClick={overlay.hide}
+                className="overlay__header__close-icon"
+              />
+              <ReactSVG
+                path={closeImg}
+                onClick={overlay.hide}
+                className="overlay__header__close-icon"
+              />
             </div>
-            <ReactSVG
-              path={cartImg}
-              onClick={overlay.hide}
-              className="overlay__header__close-icon"
-            />
+            <div className="overlay__header__bottom">
+              <div className="overlay__header-text">
+                Tu carrito{" "}
+                <span className="overlay__header-text-items">
+                  {totalProducts || 0}{" "}
+                  {totalProducts === 1 ? "producto" : "productos"}
+                </span>
+              </div>
+              <ReactSVG path={cartImg} className="overlay__header__cart-icon" />
+            </div>
           </div>
           {items?.length ? (
             <>

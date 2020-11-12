@@ -2,13 +2,33 @@
 
 .cart {
   width: 25rem;
-  // width: 25rem;
   max-width: 100vw;
 
   .overlay__header {
     justify-content: initial;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
 
-    &__close-icon {
+    &__top,
+    &__bottom {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    &__top {
+      align-items: center;
+      padding: 12px 24px;
+    }
+
+    &__bottom {
+      color: $white;
+      background: $auna-interactive;
+      padding: 18px 0 18px 24px;
+    }
+
+    &__cart-icon {
       margin-left: auto;
     }
   }
