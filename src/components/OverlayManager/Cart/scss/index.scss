@@ -186,4 +186,41 @@
       }
     }
   }
+
+  &__delete-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 16px;
+
+    &__close {
+      align-items: flex-end;
+      margin: 0 0 162px auto;
+    }
+
+    &__wording {
+      margin-bottom: 64px;
+      text-align: center;
+      width: 254px;
+    }
+
+    &__button {
+      width: 254px;
+
+      &--primary {
+        @extend .cart__delete-modal__button;
+        margin-bottom: 16px !important;
+      }
+
+      &--secondary {
+        @extend .cart__delete-modal__button;
+        background-color: $white !important;
+        border: 1px solid $auna-interactive !important;
+
+        > span {
+          color: $auna-interactive !important;
+        }
+      }
+    }
+  }
 }
