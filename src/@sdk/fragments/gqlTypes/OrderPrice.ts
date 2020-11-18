@@ -16,6 +16,10 @@ export interface OrderPrice_gross {
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface OrderPrice_net {
@@ -28,6 +32,10 @@ export interface OrderPrice_net {
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface OrderPrice {

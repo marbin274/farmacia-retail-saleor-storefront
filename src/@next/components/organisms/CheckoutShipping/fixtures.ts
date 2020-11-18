@@ -6,6 +6,7 @@ const shippingMethods: IShippingMethod[] = [
     name: "Basic",
     price: {
       amount: 32,
+      culture: "es-PE",
       currency: "USD",
     },
   },
@@ -14,6 +15,7 @@ const shippingMethods: IShippingMethod[] = [
     name: "Extra",
     price: {
       amount: 64,
+      culture: "es-PE",
       currency: "USD",
     },
   },

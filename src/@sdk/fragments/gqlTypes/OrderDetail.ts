@@ -59,6 +59,10 @@ export interface OrderDetail_lines_variant_pricing_priceUndiscounted_gross {
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface OrderDetail_lines_variant_pricing_priceUndiscounted_net {
@@ -71,6 +75,10 @@ export interface OrderDetail_lines_variant_pricing_priceUndiscounted_net {
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface OrderDetail_lines_variant_pricing_priceUndiscounted {
@@ -95,6 +103,10 @@ export interface OrderDetail_lines_variant_pricing_price_gross {
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface OrderDetail_lines_variant_pricing_price_net {
@@ -107,6 +119,10 @@ export interface OrderDetail_lines_variant_pricing_price_net {
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface OrderDetail_lines_variant_pricing_price {
@@ -257,6 +273,10 @@ export interface OrderDetail_lines_unitPrice_gross {
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface OrderDetail_lines_unitPrice_net {
@@ -269,6 +289,10 @@ export interface OrderDetail_lines_unitPrice_net {
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface OrderDetail_lines_unitPrice {
@@ -311,6 +335,10 @@ export interface OrderDetail_subtotal_gross {
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface OrderDetail_subtotal_net {
@@ -323,6 +351,10 @@ export interface OrderDetail_subtotal_net {
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface OrderDetail_subtotal {
@@ -347,6 +379,10 @@ export interface OrderDetail_total_gross {
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface OrderDetail_total_net {
@@ -359,6 +395,10 @@ export interface OrderDetail_total_net {
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface OrderDetail_total {
@@ -383,6 +423,10 @@ export interface OrderDetail_shippingPrice_gross {
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface OrderDetail_shippingPrice_net {
@@ -395,6 +439,10 @@ export interface OrderDetail_shippingPrice_net {
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface OrderDetail_shippingPrice {

@@ -13,12 +13,14 @@ export const productVariants: ProductDetails_product_variants[] = [
       priceUndiscounted: {
         gross: {
           amount: 3,
-          currency: "USD",
+          currency: "PEN",
+          culture: "es-PE",
           __typename: "Money",
         },
         net: {
           amount: 3,
-          currency: "USD",
+          currency: "PEN",
+          culture: "es-PE",
           __typename: "Money",
         },
         __typename: "TaxedMoney",
@@ -26,12 +28,14 @@ export const productVariants: ProductDetails_product_variants[] = [
       price: {
         gross: {
           amount: 3,
-          currency: "USD",
+          currency: "PEN",
+          culture: "es-PE",
           __typename: "Money",
         },
         net: {
           amount: 3,
-          currency: "USD",
+          currency: "PEN",
+culture: "es-PE",
           __typename: "Money",
         },
         __typename: "TaxedMoney",
@@ -101,12 +105,14 @@ export const productVariants: ProductDetails_product_variants[] = [
       priceUndiscounted: {
         gross: {
           amount: 7,
-          currency: "USD",
+          currency: "PEN",
+          culture: "es-PE",
           __typename: "Money",
         },
         net: {
           amount: 7,
-          currency: "USD",
+          currency: "PEN",
+          culture: "es-PE",
           __typename: "Money",
         },
         __typename: "TaxedMoney",
@@ -114,12 +120,14 @@ export const productVariants: ProductDetails_product_variants[] = [
       price: {
         gross: {
           amount: 7,
-          currency: "USD",
+          currency: "PEN",
+          culture: "es-PE",
           __typename: "Money",
         },
         net: {
           amount: 7,
-          currency: "USD",
+          currency: "PEN",
+          culture: "es-PE",
           __typename: "Money",
         },
         __typename: "TaxedMoney",
@@ -189,12 +197,14 @@ export const productVariants: ProductDetails_product_variants[] = [
       priceUndiscounted: {
         gross: {
           amount: 12,
-          currency: "USD",
+          currency: "PEN",
+          culture: "es-PE",
           __typename: "Money",
         },
         net: {
           amount: 12,
-          currency: "USD",
+          currency: "PEN",
+          culture: "es-PE",
           __typename: "Money",
         },
         __typename: "TaxedMoney",
@@ -202,12 +212,14 @@ export const productVariants: ProductDetails_product_variants[] = [
       price: {
         gross: {
           amount: 12,
-          currency: "USD",
+          currency: "PEN",
+          culture: "es-PE",
           __typename: "Money",
         },
         net: {
           amount: 12,
-          currency: "USD",
+          currency: "PEN",
+          culture: "es-PE",
           __typename: "Money",
         },
         __typename: "TaxedMoney",

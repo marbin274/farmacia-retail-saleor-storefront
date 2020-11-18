@@ -35,10 +35,12 @@ const prepareCartSummary = (
     price: {
       gross: {
         amount: totalPrice?.gross.amount || 0,
+        culture: totalPrice?.gross.culture || "",
         currency: totalPrice?.gross.currency || "",
       },
       net: {
         amount: totalPrice?.net.amount || 0,
+        culture: totalPrice?.net.culture || "",
         currency: totalPrice?.net.currency || "",
       },
     },

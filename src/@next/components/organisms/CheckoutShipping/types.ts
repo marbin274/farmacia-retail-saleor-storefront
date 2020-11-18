@@ -2,13 +2,17 @@ import { IFormError } from "@types";
 
 export interface IShippingMethodPrice {
   /**
+   * Amount of money.
+   */
+  amount: number;
+  /**
    * Currency code.
    */
   currency: string;
   /**
-   * Amount of money.
+   * Culture code.
    */
-  amount: number;
+  culture: string;
 }
 
 export interface IShippingMethod {

@@ -37,6 +37,7 @@ export interface ICheckoutModelLine {
 export interface ICheckoutModelPriceValue {
   amount: number;
   currency: string;
+  culture: string;
 }
 
 export interface ICheckoutModelPrice {

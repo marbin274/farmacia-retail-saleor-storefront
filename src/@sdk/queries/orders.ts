@@ -20,10 +20,12 @@ export const ordersByUser = gql`
               gross {
                 amount
                 currency
+                culture
               }
               net {
                 amount
                 currency
+                culture
               }
             }
             lines {

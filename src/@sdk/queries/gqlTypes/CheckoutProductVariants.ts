@@ -16,6 +16,10 @@ export interface CheckoutProductVariants_productVariants_edges_node_pricing_pric
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface CheckoutProductVariants_productVariants_edges_node_pricing_priceUndiscounted_net {
@@ -28,6 +32,10 @@ export interface CheckoutProductVariants_productVariants_edges_node_pricing_pric
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface CheckoutProductVariants_productVariants_edges_node_pricing_priceUndiscounted {
@@ -52,6 +60,10 @@ export interface CheckoutProductVariants_productVariants_edges_node_pricing_pric
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface CheckoutProductVariants_productVariants_edges_node_pricing_price_net {
@@ -64,6 +76,10 @@ export interface CheckoutProductVariants_productVariants_edges_node_pricing_pric
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface CheckoutProductVariants_productVariants_edges_node_pricing_price {

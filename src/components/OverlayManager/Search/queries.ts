@@ -31,6 +31,7 @@ const searchResultsQuery = gql`
                 net {
                   amount
                   currency
+                  culture
                 }
               }
             }

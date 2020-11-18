@@ -32,8 +32,8 @@ const ORDERS = [
       statusDisplay: "Unfulfilled",
       token: "687f3e43-b198-4c7f-b6e5-75c2c93b3f45",
       total: {
-        gross: { amount: 42.91, currency: "USD" },
-        net: { amount: 42.91, currency: "USD" },
+        gross: { amount: 42.91, currency: "PEN", culture:"es-PE" },
+        net: { amount: 42.91, currency: "PEN", culture:"es-PE" },
       },
     },
   },

@@ -5,10 +5,12 @@ export const checkoutPriceFragment = gql`
     gross {
       amount
       currency
+      culture
     }
     net {
       amount
       currency
+      culture
     }
   }
 `;
@@ -86,6 +88,7 @@ export const checkoutShippingMethodFragment = gql`
     price {
       currency
       amount
+      culture
     }
   }
 `;
@@ -142,6 +145,7 @@ export const checkoutFragment = gql`
     discount {
       currency
       amount
+      culture
     }
     discountName
     translatedDiscountName

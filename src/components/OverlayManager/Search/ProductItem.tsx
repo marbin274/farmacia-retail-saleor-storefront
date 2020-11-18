@@ -5,6 +5,7 @@ import { Thumbnail } from "@components/molecules";
 
 import { generateProductUrl } from "../../../core/utils";
 import { SearchResults_products_edges } from "./gqlTypes/SearchResults";
+import { Money } from 'src/@next/components/containers/Money/Money';
 
 const ProductItem: React.FC<SearchResults_products_edges> = ({
   node: product,
@@ -21,8 +22,7 @@ const ProductItem: React.FC<SearchResults_products_edges> = ({
         </div>
         <div className="search__products__item__side">
           <p className="search__products__item__side__price">
-            {product.pricing.priceRange.start.net.currency}
-            <span>{product.pricing.priceRange.start.net.amount}</span>
+            <Money money={product.pricing.priceRange.start.net} />
           </p>
         </div>
       </div>

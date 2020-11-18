@@ -19,10 +19,12 @@ export interface Product extends BasicProductFields {
         gross: {
           amount: number;
           currency: string;
+          culture: string;
         };
         net: {
           amount: number;
           currency: string;
+          culture: string;
         };
       };
     };
@@ -31,10 +33,12 @@ export interface Product extends BasicProductFields {
         gross: {
           amount: number;
           currency: string;
+          culture: string;
         };
         net: {
           amount: number;
           currency: string;
+          culture: string;
         };
       };
     };

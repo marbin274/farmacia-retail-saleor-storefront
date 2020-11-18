@@ -28,6 +28,10 @@ export interface OrdersByUser_me_orders_edges_node_total_gross {
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface OrdersByUser_me_orders_edges_node_total_net {
@@ -40,6 +44,10 @@ export interface OrdersByUser_me_orders_edges_node_total_net {
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface OrdersByUser_me_orders_edges_node_total {

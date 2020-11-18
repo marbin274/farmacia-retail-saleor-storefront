@@ -36,6 +36,10 @@ export interface FeaturedProducts_shop_homepageCollection_products_edges_node_pr
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface FeaturedProducts_shop_homepageCollection_products_edges_node_pricing_priceRangeUndiscounted_start_net {
@@ -48,6 +52,10 @@ export interface FeaturedProducts_shop_homepageCollection_products_edges_node_pr
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface FeaturedProducts_shop_homepageCollection_products_edges_node_pricing_priceRangeUndiscounted_start {
@@ -72,6 +80,10 @@ export interface FeaturedProducts_shop_homepageCollection_products_edges_node_pr
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface FeaturedProducts_shop_homepageCollection_products_edges_node_pricing_priceRangeUndiscounted_stop_net {
@@ -84,6 +96,10 @@ export interface FeaturedProducts_shop_homepageCollection_products_edges_node_pr
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface FeaturedProducts_shop_homepageCollection_products_edges_node_pricing_priceRangeUndiscounted_stop {
@@ -120,6 +136,10 @@ export interface FeaturedProducts_shop_homepageCollection_products_edges_node_pr
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface FeaturedProducts_shop_homepageCollection_products_edges_node_pricing_priceRange_start_net {
@@ -132,6 +152,10 @@ export interface FeaturedProducts_shop_homepageCollection_products_edges_node_pr
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface FeaturedProducts_shop_homepageCollection_products_edges_node_pricing_priceRange_start {
@@ -156,6 +180,10 @@ export interface FeaturedProducts_shop_homepageCollection_products_edges_node_pr
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface FeaturedProducts_shop_homepageCollection_products_edges_node_pricing_priceRange_stop_net {
@@ -168,6 +196,10 @@ export interface FeaturedProducts_shop_homepageCollection_products_edges_node_pr
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface FeaturedProducts_shop_homepageCollection_products_edges_node_pricing_priceRange_stop {

@@ -16,6 +16,10 @@ export interface ShippingMethod_price {
    * Amount of money.
    */
   amount: number;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface ShippingMethod {

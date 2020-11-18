@@ -29,6 +29,10 @@ export interface ProductVariantFields_pricing_priceUndiscounted_gross {
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface ProductVariantFields_pricing_priceUndiscounted_net {
@@ -41,6 +45,10 @@ export interface ProductVariantFields_pricing_priceUndiscounted_net {
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface ProductVariantFields_pricing_priceUndiscounted {
@@ -65,6 +73,10 @@ export interface ProductVariantFields_pricing_price_gross {
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface ProductVariantFields_pricing_price_net {

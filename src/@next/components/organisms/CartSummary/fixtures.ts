@@ -3,11 +3,13 @@ import productImage from "./productImage.png";
 const money = {
   gross: {
     amount: 123,
-    currency: "PLN",
+    culture: "es-PE",
+    currency: "PEN",
   },
   net: {
     amount: 100,
-    currency: "PLN",
+    culture: "es-PE",
+    currency: "PEN",
   },
 };
 

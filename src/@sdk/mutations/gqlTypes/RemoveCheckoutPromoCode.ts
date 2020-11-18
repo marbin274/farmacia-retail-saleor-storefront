@@ -18,6 +18,10 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_totalP
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_totalPrice_net {
@@ -30,6 +34,10 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_totalP
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_totalPrice {
@@ -54,6 +62,10 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_subtot
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_subtotalPrice_net {
@@ -66,6 +78,10 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_subtot
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_subtotalPrice {
@@ -172,6 +188,10 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_availa
    * Amount of money.
    */
   amount: number;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_availableShippingMethods {
@@ -194,6 +214,10 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_shippi
    * Amount of money.
    */
   amount: number;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_shippingMethod {
@@ -216,6 +240,10 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_shippi
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_shippingPrice_net {
@@ -228,6 +256,10 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_shippi
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_shippingPrice {
@@ -252,6 +284,10 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_lines_
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_lines_totalPrice_net {
@@ -264,6 +300,10 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_lines_
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_lines_totalPrice {
@@ -288,6 +328,10 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_lines_
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_lines_variant_pricing_priceUndiscounted_net {
@@ -300,6 +344,10 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_lines_
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_lines_variant_pricing_priceUndiscounted {
@@ -324,6 +372,10 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_lines_
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_lines_variant_pricing_price_net {
@@ -336,6 +388,10 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_lines_
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_lines_variant_pricing_price {
@@ -500,6 +556,10 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_discou
    * Amount of money.
    */
   amount: number;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout {

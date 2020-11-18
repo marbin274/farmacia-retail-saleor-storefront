@@ -19,12 +19,14 @@ export const PRODUCT: ProductList_products_edges_node = {
         gross: {
           __typename: "Money",
           amount: 1.8,
-          currency: "USD",
+          culture: "es-PE",
+          currency: "PEN",
         },
         net: {
           __typename: "Money",
           amount: 1.8,
-          currency: "USD",
+          culture: "es-PE",
+          currency: "PEN",
         },
       },
       stop: {
@@ -32,12 +34,14 @@ export const PRODUCT: ProductList_products_edges_node = {
         gross: {
           __typename: "Money",
           amount: 4.2,
-          currency: "USD",
+          culture: "es-PE",
+          currency: "PEN",
         },
         net: {
           __typename: "Money",
           amount: 4.2,
-          currency: "USD",
+          culture: "es-PE",
+          currency: "PEN",
         },
       },
     },
@@ -48,12 +52,14 @@ export const PRODUCT: ProductList_products_edges_node = {
         gross: {
           __typename: "Money",
           amount: 3,
-          currency: "USD",
+          culture: "es-PE",
+          currency: "PEN",
         },
         net: {
           __typename: "Money",
           amount: 3,
-          currency: "USD",
+          culture: "es-PE",
+          currency: "PEN",
         },
       },
       stop: {
@@ -61,12 +67,14 @@ export const PRODUCT: ProductList_products_edges_node = {
         gross: {
           __typename: "Money",
           amount: 7,
-          currency: "USD",
+          culture: "es-PE",
+          currency: "PEN",
         },
         net: {
           __typename: "Money",
           amount: 7,
-          currency: "USD",
+          culture: "es-PE",
+          currency: "PEN",
         },
       },
     },

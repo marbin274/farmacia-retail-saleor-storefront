@@ -191,6 +191,7 @@ export class SaleorState extends NamedObservable<StateItems>
         const shippingPrice = {
           ...shippingMethod?.price,
           amount: shippingMethod?.price?.amount || 0,
+          culture: promoCodeDiscount?.culture || firstItemTotalPrice.gross.culture,
           currency:
             shippingMethod?.price?.currency ||
             firstItemTotalPrice.gross.currency,
@@ -223,6 +224,7 @@ export class SaleorState extends NamedObservable<StateItems>
         const discount = {
           ...promoCodeDiscount,
           amount: promoCodeDiscount?.amount || 0,
+          culture: promoCodeDiscount?.culture || firstItemTotalPrice.gross.culture,
           currency:
             promoCodeDiscount?.currency || firstItemTotalPrice.gross.currency,
         };

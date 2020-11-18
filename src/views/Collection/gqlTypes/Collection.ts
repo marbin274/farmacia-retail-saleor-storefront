@@ -59,6 +59,10 @@ export interface Collection_products_edges_node_pricing_priceRangeUndiscounted_s
    * Currency code.
    */
   currency: string;
+  /**
+   * culture code.
+   */
+  culture: string;
 }
 
 export interface Collection_products_edges_node_pricing_priceRangeUndiscounted_start_net {
@@ -71,6 +75,10 @@ export interface Collection_products_edges_node_pricing_priceRangeUndiscounted_s
    * Currency code.
    */
   currency: string;
+  /**
+   * culture code.
+   */
+  culture: string;
 }
 
 export interface Collection_products_edges_node_pricing_priceRangeUndiscounted_start {
@@ -95,6 +103,10 @@ export interface Collection_products_edges_node_pricing_priceRangeUndiscounted_s
    * Currency code.
    */
   currency: string;
+  /**
+   * culture code.
+   */
+  culture: string;
 }
 
 export interface Collection_products_edges_node_pricing_priceRangeUndiscounted_stop_net {
@@ -107,6 +119,10 @@ export interface Collection_products_edges_node_pricing_priceRangeUndiscounted_s
    * Currency code.
    */
   currency: string;
+  /**
+   * culture code.
+   */
+  culture: string;
 }
 
 export interface Collection_products_edges_node_pricing_priceRangeUndiscounted_stop {
@@ -143,6 +159,10 @@ export interface Collection_products_edges_node_pricing_priceRange_start_gross {
    * Currency code.
    */
   currency: string;
+  /**
+   * culture code.
+   */
+  culture: string;
 }
 
 export interface Collection_products_edges_node_pricing_priceRange_start_net {
@@ -155,6 +175,10 @@ export interface Collection_products_edges_node_pricing_priceRange_start_net {
    * Currency code.
    */
   currency: string;
+  /**
+   * culture code.
+   */
+  culture: string;
 }
 
 export interface Collection_products_edges_node_pricing_priceRange_start {
@@ -179,6 +203,10 @@ export interface Collection_products_edges_node_pricing_priceRange_stop_gross {
    * Currency code.
    */
   currency: string;
+  /**
+   * culture code.
+   */
+  culture: string;
 }
 
 export interface Collection_products_edges_node_pricing_priceRange_stop_net {
@@ -191,6 +219,10 @@ export interface Collection_products_edges_node_pricing_priceRange_stop_net {
    * Currency code.
    */
   currency: string;
+  /**
+   * culture code.
+   */
+  culture: string;
 }
 
 export interface Collection_products_edges_node_pricing_priceRange_stop {

@@ -11,10 +11,12 @@ export const priceFragment = gql`
     gross {
       amount
       currency
+      culture
     }
     net {
       amount
       currency
+      culture
     }
   }
 `;

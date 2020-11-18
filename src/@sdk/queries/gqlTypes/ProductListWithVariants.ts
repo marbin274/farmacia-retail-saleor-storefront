@@ -38,6 +38,10 @@ export interface ProductListWithVariants_products_edges_node_pricing_priceRangeU
    * Currency code.
    */
   currency: string;
+  /**
+   * culture code.
+   */
+  culture: string;
 }
 
 export interface ProductListWithVariants_products_edges_node_pricing_priceRangeUndiscounted_start_net {
@@ -50,6 +54,10 @@ export interface ProductListWithVariants_products_edges_node_pricing_priceRangeU
    * Currency code.
    */
   currency: string;
+  /**
+   * culture code.
+   */
+  culture: string;
 }
 
 export interface ProductListWithVariants_products_edges_node_pricing_priceRangeUndiscounted_start {
@@ -74,6 +82,10 @@ export interface ProductListWithVariants_products_edges_node_pricing_priceRangeU
    * Currency code.
    */
   currency: string;
+  /**
+   * culture code.
+   */
+  culture: string;
 }
 
 export interface ProductListWithVariants_products_edges_node_pricing_priceRangeUndiscounted_stop_net {
@@ -86,6 +98,10 @@ export interface ProductListWithVariants_products_edges_node_pricing_priceRangeU
    * Currency code.
    */
   currency: string;
+  /**
+   * culture code.
+   */
+  culture: string;
 }
 
 export interface ProductListWithVariants_products_edges_node_pricing_priceRangeUndiscounted_stop {
@@ -122,6 +138,10 @@ export interface ProductListWithVariants_products_edges_node_pricing_priceRange_
    * Currency code.
    */
   currency: string;
+  /**
+   * culture code.
+   */
+  culture: string;
 }
 
 export interface ProductListWithVariants_products_edges_node_pricing_priceRange_start_net {
@@ -134,6 +154,10 @@ export interface ProductListWithVariants_products_edges_node_pricing_priceRange_
    * Currency code.
    */
   currency: string;
+  /**
+   * culture code.
+   */
+  culture: string;
 }
 
 export interface ProductListWithVariants_products_edges_node_pricing_priceRange_start {
@@ -158,6 +182,10 @@ export interface ProductListWithVariants_products_edges_node_pricing_priceRange_
    * Currency code.
    */
   currency: string;
+  /**
+   * culture code.
+   */
+  culture: string;
 }
 
 export interface ProductListWithVariants_products_edges_node_pricing_priceRange_stop_net {
@@ -170,6 +198,10 @@ export interface ProductListWithVariants_products_edges_node_pricing_priceRange_
    * Currency code.
    */
   currency: string;
+  /**
+   * culture code.
+   */
+  culture: string;
 }
 
 export interface ProductListWithVariants_products_edges_node_pricing_priceRange_stop {
@@ -231,6 +263,10 @@ export interface ProductListWithVariants_products_edges_node_variants_pricing_pr
    * Currency code.
    */
   currency: string;
+  /**
+   * culture code.
+   */
+  culture: string;
 }
 
 export interface ProductListWithVariants_products_edges_node_variants_pricing_priceUndiscounted_net {
@@ -243,6 +279,10 @@ export interface ProductListWithVariants_products_edges_node_variants_pricing_pr
    * Currency code.
    */
   currency: string;
+  /**
+   * culture code.
+   */
+  culture: string;
 }
 
 export interface ProductListWithVariants_products_edges_node_variants_pricing_priceUndiscounted {
@@ -267,6 +307,10 @@ export interface ProductListWithVariants_products_edges_node_variants_pricing_pr
    * Currency code.
    */
   currency: string;
+  /**
+   * culture code.
+   */
+  culture: string;
 }
 
 export interface ProductListWithVariants_products_edges_node_variants_pricing_price_net {
@@ -279,6 +323,10 @@ export interface ProductListWithVariants_products_edges_node_variants_pricing_pr
    * Currency code.
    */
   currency: string;
+  /**
+   * culture code.
+   */
+  culture: string;
 }
 
 export interface ProductListWithVariants_products_edges_node_variants_pricing_price {

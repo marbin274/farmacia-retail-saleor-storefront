@@ -31,6 +31,10 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_totalPrice_net {
@@ -43,6 +47,10 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_totalPrice {
@@ -67,6 +75,10 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_subtotalPrice_net {
@@ -79,6 +91,10 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_subtotalPrice {
@@ -185,6 +201,10 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    * Amount of money.
    */
   amount: number;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_availableShippingMethods {
@@ -207,6 +227,10 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    * Amount of money.
    */
   amount: number;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_shippingMethod {
@@ -229,6 +253,10 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_shippingPrice_net {
@@ -241,6 +269,10 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_shippingPrice {
@@ -265,6 +297,10 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_lines_totalPrice_net {
@@ -277,6 +313,10 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_lines_totalPrice {
@@ -301,6 +341,10 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_lines_variant_pricing_priceUndiscounted_net {
@@ -313,6 +357,10 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_lines_variant_pricing_priceUndiscounted {
@@ -337,6 +385,10 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_lines_variant_pricing_price_net {
@@ -349,6 +401,10 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_lines_variant_pricing_price {
@@ -513,6 +569,10 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    * Amount of money.
    */
   amount: number;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout {
@@ -581,6 +641,10 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_totalPrice_net {
@@ -593,6 +657,10 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_totalPrice {
@@ -617,6 +685,10 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_subtotalPrice_net {
@@ -629,6 +701,10 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_subtotalPrice {
@@ -735,6 +811,10 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    * Amount of money.
    */
   amount: number;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_availableShippingMethods {
@@ -757,6 +837,10 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    * Amount of money.
    */
   amount: number;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_shippingMethod {
@@ -779,6 +863,10 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_shippingPrice_net {
@@ -791,6 +879,10 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_shippingPrice {
@@ -815,6 +907,10 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_lines_totalPrice_net {
@@ -827,6 +923,10 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_lines_totalPrice {
@@ -851,6 +951,10 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_lines_variant_pricing_priceUndiscounted_net {
@@ -863,6 +967,10 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_lines_variant_pricing_priceUndiscounted {
@@ -887,6 +995,10 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_lines_variant_pricing_price_net {
@@ -899,6 +1011,10 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_lines_variant_pricing_price {
@@ -1063,6 +1179,10 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    * Amount of money.
    */
   amount: number;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout {

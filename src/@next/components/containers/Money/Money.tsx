@@ -12,7 +12,7 @@ export const Money: React.FC<IProps> = ({
   return (
     <span {...props}>
       {money.currency && money.currency !== ""
-        ? money.amount.toLocaleString(undefined, {
+        ? money.amount.toLocaleString(money.culture, {
             currency: money.currency,
             style: "currency",
           })

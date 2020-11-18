@@ -10,11 +10,13 @@ import { DEFAULT_PROPS } from "./fixtures";
 const money = {
   gross: {
     amount: 123,
-    currency: "PLN",
+    culture: "es-PE",
+    currency: "PEN",
   },
   net: {
     amount: 100,
-    currency: "PLN",
+    culture: "es-PE",
+    currency: "PEN",
   },
 };
 

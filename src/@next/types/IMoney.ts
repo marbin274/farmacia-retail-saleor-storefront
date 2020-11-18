@@ -1,6 +1,7 @@
 export interface IMoney {
   amount: number;
   currency: string;
+  culture: string;
 }
 
 export interface IMoneyRange {

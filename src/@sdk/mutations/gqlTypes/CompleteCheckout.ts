@@ -72,6 +72,10 @@ export interface CompleteCheckout_checkoutComplete_order_lines_variant_pricing_p
    * Currency code.
    */
   currency: string;
+  /**
+   * culture code.
+   */
+  culture: string;
 }
 
 export interface CompleteCheckout_checkoutComplete_order_lines_variant_pricing_priceUndiscounted_net {
@@ -84,6 +88,10 @@ export interface CompleteCheckout_checkoutComplete_order_lines_variant_pricing_p
    * Currency code.
    */
   currency: string;
+  /**
+   * culture code.
+   */
+  culture: string;
 }
 
 export interface CompleteCheckout_checkoutComplete_order_lines_variant_pricing_priceUndiscounted {
@@ -108,6 +116,10 @@ export interface CompleteCheckout_checkoutComplete_order_lines_variant_pricing_p
    * Currency code.
    */
   currency: string;
+  /**
+   * culture code.
+   */
+  culture: string;
 }
 
 export interface CompleteCheckout_checkoutComplete_order_lines_variant_pricing_price_net {
@@ -120,6 +132,10 @@ export interface CompleteCheckout_checkoutComplete_order_lines_variant_pricing_p
    * Currency code.
    */
   currency: string;
+  /**
+   * culture code.
+   */
+  culture: string;
 }
 
 export interface CompleteCheckout_checkoutComplete_order_lines_variant_pricing_price {
@@ -270,6 +286,10 @@ export interface CompleteCheckout_checkoutComplete_order_lines_unitPrice_gross {
    * Currency code.
    */
   currency: string;
+  /**
+   * culture code.
+   */
+  culture: string;
 }
 
 export interface CompleteCheckout_checkoutComplete_order_lines_unitPrice_net {
@@ -282,6 +302,10 @@ export interface CompleteCheckout_checkoutComplete_order_lines_unitPrice_net {
    * Currency code.
    */
   currency: string;
+  /**
+   * culture code.
+   */
+  culture: string;
 }
 
 export interface CompleteCheckout_checkoutComplete_order_lines_unitPrice {
@@ -324,6 +348,10 @@ export interface CompleteCheckout_checkoutComplete_order_subtotal_gross {
    * Currency code.
    */
   currency: string;
+  /**
+   * culture code.
+   */
+  culture: string;
 }
 
 export interface CompleteCheckout_checkoutComplete_order_subtotal_net {
@@ -336,6 +364,10 @@ export interface CompleteCheckout_checkoutComplete_order_subtotal_net {
    * Currency code.
    */
   currency: string;
+  /**
+   * culture code.
+   */
+  culture: string;
 }
 
 export interface CompleteCheckout_checkoutComplete_order_subtotal {
@@ -360,6 +392,10 @@ export interface CompleteCheckout_checkoutComplete_order_total_gross {
    * Currency code.
    */
   currency: string;
+  /**
+   * culture code.
+   */
+  culture: string;
 }
 
 export interface CompleteCheckout_checkoutComplete_order_total_net {
@@ -372,6 +408,10 @@ export interface CompleteCheckout_checkoutComplete_order_total_net {
    * Currency code.
    */
   currency: string;
+  /**
+   * culture code.
+   */
+  culture: string;
 }
 
 export interface CompleteCheckout_checkoutComplete_order_total {
@@ -396,6 +436,10 @@ export interface CompleteCheckout_checkoutComplete_order_shippingPrice_gross {
    * Currency code.
    */
   currency: string;
+  /**
+   * culture code.
+   */
+  culture: string;
 }
 
 export interface CompleteCheckout_checkoutComplete_order_shippingPrice_net {
@@ -408,6 +452,10 @@ export interface CompleteCheckout_checkoutComplete_order_shippingPrice_net {
    * Currency code.
    */
   currency: string;
+  /**
+   * culture code.
+   */
+  culture: string;
 }
 
 export interface CompleteCheckout_checkoutComplete_order_shippingPrice {

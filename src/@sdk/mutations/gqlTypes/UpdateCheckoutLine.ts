@@ -18,6 +18,10 @@ export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_totalPrice_gros
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_totalPrice_net {
@@ -30,6 +34,10 @@ export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_totalPrice_net 
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_totalPrice {
@@ -54,6 +62,10 @@ export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_subtotalPrice_g
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_subtotalPrice_net {
@@ -66,6 +78,10 @@ export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_subtotalPrice_n
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_subtotalPrice {
@@ -172,6 +188,10 @@ export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_availableShippi
    * Amount of money.
    */
   amount: number;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_availableShippingMethods {
@@ -194,6 +214,10 @@ export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_shippingMethod_
    * Amount of money.
    */
   amount: number;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_shippingMethod {
@@ -216,6 +240,10 @@ export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_shippingPrice_g
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_shippingPrice_net {
@@ -228,6 +256,10 @@ export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_shippingPrice_n
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_shippingPrice {
@@ -252,6 +284,10 @@ export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_lines_totalPric
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_lines_totalPrice_net {
@@ -264,6 +300,10 @@ export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_lines_totalPric
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_lines_totalPrice {
@@ -288,6 +328,10 @@ export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_lines_variant_p
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_lines_variant_pricing_priceUndiscounted_net {
@@ -300,6 +344,10 @@ export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_lines_variant_p
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_lines_variant_pricing_priceUndiscounted {
@@ -324,6 +372,10 @@ export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_lines_variant_p
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_lines_variant_pricing_price_net {
@@ -336,6 +388,10 @@ export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_lines_variant_p
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_lines_variant_pricing_price {
@@ -500,6 +556,10 @@ export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_discount {
    * Amount of money.
    */
   amount: number;
+  /**
+   * Culture code.
+   */
+  culture: string;
 }
 
 export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout {
