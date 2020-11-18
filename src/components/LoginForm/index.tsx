@@ -11,12 +11,14 @@ interface ILoginForm {
   hide?: () => void;
   onSwitchSection?: () => void;
   children?: React.ReactChild;
+  hideRegister?: boolean;
 }
 
 const LoginForm: React.FC<ILoginForm> = ({
   hide,
   onSwitchSection,
   children,
+  hideRegister = false,
 }) => {
   const [signIn, { loading, error }] = useSignIn();
 
@@ -54,10 +56,12 @@ const LoginForm: React.FC<ILoginForm> = ({
             {loading ? "Cargando" : "Ingresar"}
           </Button>
         </div>
-        <div className="login-form__change-section">
-          <p>¿No tienes cuenta?</p>
-          <button onClick={onSwitchSection}>Regístrate</button>
-        </div>
+        {!hideRegister && (
+          <div className="login-form__change-section">
+            <p>¿No tienes cuenta?</p>
+            <button onClick={onSwitchSection}>Regístrate</button>
+          </div>
+        )}
       </Form>
     </div>
   );

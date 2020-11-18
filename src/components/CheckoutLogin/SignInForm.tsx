@@ -7,7 +7,7 @@ const SignInForm: React.FC<{
 }> = ({ onClick }) => (
   <>
     <h3 className="checkout-login__header">¿Ya te registraste?</h3>
-    <LoginForm>
+    <LoginForm hideRegister>
       <ForgottenPassword onClick={onClick} />
     </LoginForm>
   </>
