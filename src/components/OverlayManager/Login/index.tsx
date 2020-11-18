@@ -1,8 +1,6 @@
 import "./scss/index.scss";
-
 import * as React from "react";
 import ReactSVG from "react-svg";
-
 import {
   LoginForm,
   Offline,
@@ -14,9 +12,7 @@ import {
   OverlayType,
 } from "../..";
 import RegisterForm from "./RegisterForm";
-
 import closeImg from "../../../images/close-circle.svg";
-import ForgottenPassword from "./ForgottenPassword";
 
 class Login extends React.Component<
   { overlay: OverlayContextInterface; active?: "login" | "register" },
@@ -57,18 +53,13 @@ class Login extends React.Component<
             </div>
             <div className="login__content">
               {this.state.active === "login" ? (
-                <>
-                  <LoginForm
-                    hide={hide}
-                    onSwitchSection={() => this.changeActiveTab("register")}
-                  >
-                    <ForgottenPassword
-                      onClick={() => {
-                        show(OverlayType.password, OverlayTheme.right);
-                      }}
-                    />
-                  </LoginForm>
-                </>
+                <LoginForm
+                  hide={hide}
+                  onSwitchSection={() => this.changeActiveTab("register")}
+                  onForgottenPassword={() =>
+                    show(OverlayType.password, OverlayTheme.right)
+                  }
+                />
               ) : (
                 <RegisterForm
                   hide={hide}

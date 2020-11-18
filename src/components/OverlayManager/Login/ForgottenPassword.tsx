@@ -13,6 +13,7 @@ const ForgottenPassword: React.FC<{
         Recordar
       </label>
       <button
+        type="button"
         className="login__content__password-reminder__forget"
         onClick={onClick}
       >

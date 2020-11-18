@@ -6,18 +6,19 @@ import { useSignIn } from "@sdk/react";
 import { maybe } from "@utils/misc";
 
 import { Button, Form, TextField } from "..";
+import ForgottenPassword from "../OverlayManager/Login/ForgottenPassword";
 
 interface ILoginForm {
   hide?: () => void;
   onSwitchSection?: () => void;
-  children?: React.ReactChild;
+  onForgottenPassword?: () => void;
   hideRegister?: boolean;
 }
 
 const LoginForm: React.FC<ILoginForm> = ({
   hide,
   onSwitchSection,
-  children,
+  onForgottenPassword,
   hideRegister = false,
 }) => {
   const [signIn, { loading, error }] = useSignIn();
@@ -51,7 +52,7 @@ const LoginForm: React.FC<ILoginForm> = ({
           required
         />
         <div className="login-form__button">
-          {children}
+          <ForgottenPassword onClick={onForgottenPassword} />
           <Button type="submit" {...(loading && { disabled: true })}>
             {loading ? "Cargando" : "Ingresar"}
           </Button>
