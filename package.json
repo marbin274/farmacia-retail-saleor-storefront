@@ -164,6 +164,7 @@
   "scripts": {
     "test": "jest --runInBand --config .jest/config.json",
     "start": "cross-env NODE_ENV=develop webpack-dev-server --history-api-fallback --watch --port 3000 --mode development --hotOnly",
+    "start:localnetwork": "cross-env NODE_ENV=develop webpack-dev-server --host 0.0.0.0 --history-api-fallback --watch --port 3000 --mode development --hotOnly",
     "start:worker": "npm run start -- --service-worker",
     "build": "webpack -p",
     "watch": "webpack -d --watch",
