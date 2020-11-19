@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
   margin: 20px;
 }
 
-.c24 {
+.c21 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -171,7 +171,7 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
   display: none;
 }
 
-.c22 {
+.c19 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -185,11 +185,11 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
   color: #9B9B9B;
 }
 
-.c22 span {
+.c19 span {
   display: inline-block;
 }
 
-.c23 {
+.c20 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -203,11 +203,11 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
   color: #121314;
 }
 
-.c23 span {
+.c20 span {
   display: inline-block;
 }
 
-.c21 {
+.c18 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -217,70 +217,12 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
   flex-direction: column;
 }
 
-.c21 div {
+.c18 div {
   margin-bottom: 20px;
 }
 
-.c21 div:last-of-type {
+.c18 div:last-of-type {
   margin-bottom: 0px;
-}
-
-.c18 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  margin: 16px 0 20px 0;
-}
-
-.c19 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border-radius: 40px;
-  color: #00B0CA;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 16px;
-  min-width: -webkit-fit-content;
-  min-width: -moz-fit-content;
-  min-width: fit-content;
-}
-
-.c19 > div {
-  margin-left: 24px;
-}
-
-.c20 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  background-color: #E6F6F9;
-  border-radius: 40px;
-  color: #00B0CA;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 16px;
-  min-width: -webkit-fit-content;
-  min-width: -moz-fit-content;
-  min-width: fit-content;
-}
-
-.c20 > div {
-  margin-left: 24px;
 }
 
 @media (max-width:720px) {
@@ -307,15 +249,6 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
   .c4 {
     display: none;
     margin-bottom: 8px;
-  }
-}
-
-@media (min-width:721px) and (max-width:1105px) {
-  .c18 {
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
-    justify-content: center;
   }
 }
 
@@ -346,11 +279,13 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
           data-cy="cartSummaryTitle"
         >
           Tu carrito
+           
           <span
             className="c7"
           >
-            3
-             productos
+            6
+             
+            productos
           </span>
         </div>
         <div
@@ -543,31 +478,15 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
             className="c9"
           />
         </div>
-        <div
-          className="c18"
-        >
-          <a
-            className="c19"
-          >
-            Modificar carrito
-          </a>
-          <a
-            className="c20"
-            type="button"
-          >
-            ver todos 
-            <div />
-          </a>
-        </div>
         <hr
           className="c9"
         />
       </div>
       <div
-        className="c21"
+        className="c18"
       >
         <div
-          className="c22"
+          className="c19"
         >
           <span>
             Costo delivery
@@ -581,7 +500,7 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
           </span>
         </div>
         <div
-          className="c22"
+          className="c19"
         >
           <span>
             Promo Code
@@ -596,7 +515,7 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
           </span>
         </div>
         <div
-          className="c23"
+          className="c20"
         >
           <span>
             Total
@@ -613,7 +532,7 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
     </div>
   </div>
   <div
-    className="c24"
+    className="c21"
   />
 </div>
 `;

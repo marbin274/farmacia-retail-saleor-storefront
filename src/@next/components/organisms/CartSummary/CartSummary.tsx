@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ReactSVG from "react-svg";
 import cartSummaryImg from "images/cart-summary.svg";
 import closeImg from "images/close.svg";
-import downArrowImg from "images/down-arrow-auna.svg";
+// import downArrowImg from "images/down-arrow-auna.svg"; //TODO: Use it as soon as we need to show more info
 import { TaxedMoney } from "@components/containers";
 import { CartSummaryRow } from "@components/molecules";
 import * as S from "./styles";
@@ -44,6 +44,11 @@ const CartSummary: React.FC<IProps> = ({
 }: IProps) => {
   const [mobileCartOpened, setMobileCartOpened] = useState(false);
 
+  const totalProducts = products?.reduce(
+    (prevVal, currVal) => prevVal + currVal.quantity,
+    0
+  );
+
   return (
     <S.Wrapper mobileCartOpened={mobileCartOpened}>
       <S.Header onClick={() => setMobileCartOpened(!mobileCartOpened)}>
@@ -54,8 +59,11 @@ const CartSummary: React.FC<IProps> = ({
         </S.Block>
         <S.Block position={2}>
           <S.Title data-cy="cartSummaryTitle">
-            Tu carrito
-            {products && <S.Text>{products.length} productos</S.Text>}
+          Tu carrito{" "}
+          {totalProducts && <S.Text>
+            {totalProducts || 0}{" "}
+            {totalProducts === 1 ? "producto" : "productos"}
+            </S.Text>}
           </S.Title>
           <ReactSVG
             path={cartSummaryImg}
@@ -82,12 +90,12 @@ const CartSummary: React.FC<IProps> = ({
               <S.HR />
             </div>
           ))}
-          <S.CartModifier>
+          {/* <S.CartModifier>
             <S.Link>Modificar carrito</S.Link>
             <S.Link type="button">
               ver todos <ReactSVG path={downArrowImg} />
             </S.Link>
-          </S.CartModifier>
+          </S.CartModifier> */}
           <S.HR />
         </S.CartSummaryProductList>
         <Costs total={total} shipping={shipping} promoCode={promoCode} />
