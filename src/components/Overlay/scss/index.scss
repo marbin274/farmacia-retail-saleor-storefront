@@ -26,7 +26,6 @@
       background-color: transparent;
       height: 0;
     }
-
   }
 
   &--no-background {
@@ -36,7 +35,7 @@
   &__left {
     position: fixed;
     min-height: 100%;
-    background-color: $white;
+    background-color: #f1f2f7;
     animation: sidenavLeftOpen 0.3s;
   }
 
@@ -64,17 +63,17 @@
     align-items: center;
     justify-content: space-between;
     font-weight: 400;
-    color: #C2DF0A;
+    color: #c2df0a;
     border: 1px solid $auna-grey-60;
     padding: 16px 24px;
 
-      &-text {
+    &-text {
       display: flex;
       flex-direction: column;
       text-align: center;
       font-weight: 400;
       font-size: 20px;
-      
+
       &-items {
         font-weight: 300;
         color: $gray;

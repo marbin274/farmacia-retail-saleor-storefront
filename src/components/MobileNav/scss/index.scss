@@ -6,44 +6,39 @@
   width: 30rem;
 
   &__menu-item {
-    border-bottom: 1px solid $gray-light;
-    display: grid;
-    height: $item-height;
+    display: flex;
+    flex-direction: column;
 
-    &-link,
-    &-back span {
-      align-items: center;
-      color: $auna-grey-100;
+    &--static {
+      font-size: 14px;
+      padding: 12px 24px;
+    }
+
+    &-header,
+    &-content {
       display: flex;
-      font-weight: 600;
-      padding: $spacer;
-      text-decoration: none;
-      text-transform: lowercase;
-      transition: 0.3s;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+    }
 
-      svg * {
-        fill: currentColor;
+    &--is-open {
+      .side-nav {
+        &__menu-item {
+          &-arrow {
+            animation: rotate 360ms ease-in-out 0s 1 alternate forwards;
+          }
+          &-link {
+            color: $auna-interactive;
+          }
+        }
       }
     }
 
-    &-logo {
-      align-self: center;
-      padding: 0.75rem $spacer;
-    }
-
-    &-link,
-    &-more,
-    &-back,
-    &-close {
-      transition: 0.3s;
-
-      &:hover {
-        color: $turquoise;
-      }
-
-      svg * {
-        fill: currentColor;
-      }
+    &-link {
+      font-weight: 500;
+      font-size: 18px;
+      color: $auna-grey-100;
     }
 
     &-close,
@@ -54,46 +49,42 @@
       }
     }
 
-    &-more {
-      align-self: center;
-      padding: 1.25rem 1.75rem;
+    &-header {
+      padding: 24px;
     }
+  }
 
-    &-back {
-      svg {
-        margin-right: 1rem;
-      }
-    }
+  &__nav-children {
+    padding: 16px 12px;
+    background-color: $white;
+    animation: show 360ms ease-in-out 0s 1 alternate forwards;
 
-    &-close {
-      align-items: center;
-      display: flex;
-      height: $item-height;
-      justify-content: center;
+    &__child {
+      padding: 16px;
+      border-radius: 8px;
 
-      span {
-        background-color: currentColor;
-        border-radius: 1px;
-        height: 3px;
-        width: 24px;
-      }
-
+      &:active,
       &:hover {
-        color: $turquoise;
+        background-color: $auna-complementary1;
       }
     }
+  }
+}
 
-    &--has-subnavigation,
-    &--parent {
-      grid-template-columns: 1fr $item-height;
-    }
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
+  }
+}
 
-    &--parent {
-      color: $gray;
-
-      a {
-        color: inherit;
-      }
-    }
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
