@@ -40,6 +40,9 @@ export interface IShippingMethod {
 export interface IPromoCodeDiscount {
   voucherCode?: string | null;
   discountName?: string | null;
+  voucherDiscountValue: number | undefined,
+  voucherDiscountType: string | null | undefined;
+  voucherType: string | null | undefined;
 }
 
 export type ICreditCard = IPaymentCreditCard;

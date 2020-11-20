@@ -287,6 +287,9 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
       promoCodeDiscountFormRef={promoCodeDiscountFormRef}
       promoCodeDiscount={{
         voucherCode: promoCodeDiscount?.voucherCode,
+        voucherDiscountType: promoCodeDiscount?.voucherDiscountType,
+        voucherDiscountValue: promoCodeDiscount?.voucherDiscountValue,
+        voucherType: promoCodeDiscount?.voucherType,
       }}
       addPromoCode={handleAddPromoCode}
       removeVoucherCode={handleRemovePromoCode}

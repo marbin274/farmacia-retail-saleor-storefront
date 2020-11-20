@@ -150,5 +150,8 @@ export const checkoutFragment = gql`
     discountName
     translatedDiscountName
     voucherCode
+    voucherType
+    voucherDiscountType
+    voucherDiscountValue
   }
 `;

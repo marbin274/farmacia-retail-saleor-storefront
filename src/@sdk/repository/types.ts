@@ -72,6 +72,9 @@ export interface ICheckoutModelPromoCodeDiscount {
   voucherCode?: string | null;
   discount?: ICheckoutModelPriceValue | null;
   discountName?: string | null;
+  voucherType?: string | null;
+  voucherDiscountType?: string | null;
+  voucherDiscountValue?: number | undefined;
 }
 
 export interface IPaymentCreditCard {

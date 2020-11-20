@@ -10,6 +10,9 @@ import {
 
 export interface IPromoCodeDiscount {
   voucherCode?: string | null;
+  voucherType?: string | null;
+  voucherDiscountType?: string | null;
+  voucherDiscountValue: number | undefined;
 }
 
 export interface IProps {

@@ -1,6 +1,9 @@
 export interface IDiscountFormData {
   giftCards?: any[];
   promoCode?: any;
+  voucherType?: string | null,
+  voucherDiscountType?: string | null,
+  voucherDiscountValue?: number | undefined,
 }
 
 export interface IProps {

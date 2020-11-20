@@ -81,6 +81,9 @@ export class SaleorCheckoutAPI extends ErrorListener
         this.promoCodeDiscount = {
           discountName: promoCodeDiscount?.discountName,
           voucherCode: promoCodeDiscount?.voucherCode,
+          voucherDiscountType: promoCodeDiscount?.voucherDiscountType,
+          voucherDiscountValue: promoCodeDiscount?.voucherDiscountValue,
+          voucherType: promoCodeDiscount?.voucherType,
         };
         this.checkoutLoaded = true;
         this.loaded =

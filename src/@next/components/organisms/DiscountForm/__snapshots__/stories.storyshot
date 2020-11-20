@@ -153,6 +153,7 @@ exports[`Storyshots @components/organisms/DiscountForm default 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  margin-left: -3px;
 }
 
 .c1 .voucherTitle span {

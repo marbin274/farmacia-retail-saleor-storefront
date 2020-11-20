@@ -81,7 +81,11 @@ const CheckoutPayment: React.FC<IProps> = ({
         {showPromoCodeForm && (
           <S.DiscountField>
             <DiscountForm
-              discount={{ promoCode: promoCodeDiscount?.voucherCode }}
+              discount={{ 
+                promoCode: promoCodeDiscount?.voucherCode, 
+                voucherDiscountType: promoCodeDiscount?.voucherDiscountType,
+                voucherDiscountValue: promoCodeDiscount?.voucherDiscountValue,
+                voucherType: promoCodeDiscount?.voucherType }}
               formId={promoCodeDiscountFormId}
               formRef={promoCodeDiscountFormRef}
               handleSubmit={handleSubmitPromoCode}

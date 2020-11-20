@@ -32,6 +32,7 @@ export const DiscountForm = styled.form`
   }
   .voucherTitle{
     display: flex;
+    margin-left: -3px;
     span{
       margin-left: 1rem;
       color: ${props => props.theme.colors.aunaOrange};

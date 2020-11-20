@@ -68,6 +68,18 @@ export const DiscountForm: React.FC<IProps> = ({
       }) => {
         const hasErrors = !!(values.errors && values.errors.length);
 
+        let discountDescription = "";
+
+        if (discount?.voucherType === "shipping") {
+          discountDescription = "Delivery gratis en esta compra";
+        } else {
+          if (discount?.voucherDiscountType === "fixed") {
+            discountDescription = discount?.voucherDiscountValue + "S/ de descuento en toda tu compra";
+          } else {
+            discountDescription = discount?.voucherDiscountValue + "% de descuento en toda tu compra";
+          }
+        }
+
         return (
           <S.DiscountForm id={formId} ref={formRef} onSubmit={handleSubmit}>
             <S.Input >
@@ -118,7 +130,7 @@ export const DiscountForm: React.FC<IProps> = ({
                       </span>
                     </div>
                     <div className="voucherDescription">
-                      5% de descuento en toda tu compra 
+                      {discountDescription}
                     </div>
 
                   </Chip>

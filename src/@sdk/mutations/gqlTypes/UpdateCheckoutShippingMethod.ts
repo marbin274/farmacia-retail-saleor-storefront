@@ -617,6 +617,9 @@ export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_check
   discountName: string | null;
   translatedDiscountName: string | null;
   voucherCode: string | null;
+  voucherDiscountType: string | null | undefined,
+  voucherDiscountValue: number,
+  voucherType: string | null | undefined,
 }
 
 export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_checkoutErrors {
