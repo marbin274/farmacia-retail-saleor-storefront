@@ -1,10 +1,16 @@
 import { media, styled } from "@styles";
-import {aunaBlack, aunaGrey100, aunaInteractive, white} from "@styles/constants";
+import {aunaBlack, aunaGrey100, aunaInteractive, white, aunaDisabled} from "@styles/constants";
 
-export const Wrapper = styled.div`
+export const ProductCard = styled.div<{
+    quantityAvailable?: number | undefined;
+  }>`
   color: ${aunaBlack}
   background: inherit;
-  border-bottom: 1px solid ${aunaInteractive};
+  ${
+    ({quantityAvailable}) => quantityAvailable && quantityAvailable > 0 
+    ? `border-bottom: 1px solid ${aunaInteractive}`
+    : `border-bottom: 1px solid ${aunaDisabled}`
+  }
   height: 24rem;
   text-align: center;
   transition: 0 .3s;
@@ -48,13 +54,15 @@ export const Price = styled.p`
 
 export const Image = styled.div`
   width: auto;
-  height: auto;
+  height: 176px;
   max-width: 100%;
   margin-top: 2.5rem;
+  vertical-align:middle;
   > img {
     width: auto;
     height: auto;
     max-width: 100%;
+    vertical-align:middle;
   }
 `;
 
@@ -71,4 +79,16 @@ export const AddToCartButton = styled.div`
   :hover {
     border-color: ${aunaInteractive};
   }
+`;
+
+export const DisabledAddToCartButton = styled.div`
+  bottom: .2rem;
+  border: 1px solid ${white};
+  border-radius: 6px;
+  color: ${aunaDisabled};
+  font-size: 1.6rem;
+  left: calc((11rem - 3.6rem) / 2);
+  padding: 1.2rem;
+  position: absolute;
+  text-align: center;
 `;

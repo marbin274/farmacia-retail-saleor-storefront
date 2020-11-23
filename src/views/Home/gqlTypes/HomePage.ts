@@ -278,15 +278,6 @@ export interface HomePage_products_edges_node_pricing {
   priceRange: HomePage_products_edges_node_pricing_priceRange | null;
 }
 
-export interface HomePage_products_edges_node_category {
-  __typename: "Category";
-  /**
-   * The ID of the object.
-   */
-  id: string;
-  name: string;
-}
-
 export interface HomePage_products_edges_node {
   __typename: "Product";
   /**
@@ -306,7 +297,6 @@ export interface HomePage_products_edges_node {
    * Lists the storefront product's pricing, the current price and discounts, only meant for displaying.
    */
   pricing: HomePage_products_edges_node_pricing | null;
-  category: HomePage_products_edges_node_category | null;
 }
 
 export interface HomePage_products_edges {
@@ -350,15 +340,6 @@ export interface HomePage_products {
   pageInfo: HomePage_products_pageInfo;
 }
 
-export interface HomePage_category {
-  __typename: "Category";
-  /**
-   * The ID of the object.
-   */
-  id: string;
-  name: string;
-}
-
 export interface HomePage {
   /**
    * Return information about the shop.
@@ -368,14 +349,9 @@ export interface HomePage {
    * List of the shop's products.
    */
   products: HomePage_products | null;
-  /**
-   * Look up a category by ID or slug.
-   */
-  category: HomePage_category | null;
 }
 
 export interface HomePageVariables {
-  categoryId: string;
   pageSize?: number | null;
   sortBy?: ProductOrder | null;
 }

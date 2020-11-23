@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   margin: 20px;
 }
 
-.c10 {
+.c11 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -17,7 +17,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   box-sizing: border-box;
 }
 
-.c8 {
+.c9 {
   background-color: #fff;
   padding: 0.9rem 3.7rem;
   border: none;
@@ -33,27 +33,27 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   border-right: 1px solid #00B0CA;
 }
 
-.c8:hover {
+.c9:hover {
   background-color: #fff;
   color: #00B0CA;
 }
 
-.c8:active {
+.c9:active {
   background-color: #029FB7;
   box-shadow: -3px 3px 14px 0px rgba(129,67,67,0.2);
 }
 
-.c8:disabled {
+.c9:disabled {
   background-color: #F1F2F7;
   color: #B8BCD5;
 }
 
-.c8:disabled,
-.c8:disabled:hover {
+.c9:disabled,
+.c9:disabled:hover {
   cursor: default;
 }
 
-.c9 {
+.c10 {
   display: inline-block;
   font-size: 1.125rem;
   font-weight: 400;
@@ -67,7 +67,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
 .c2 {
   color: #131336;
   background: inherit;
-  border-bottom: 1px solid #00B0CA;
+  border-bottom: 1px solid #E4E5ED;
   height: 24rem;
   text-align: center;
   -webkit-transition: 0 .3s;
@@ -111,15 +111,29 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
 
 .c3 {
   width: auto;
-  height: auto;
+  height: 176px;
   max-width: 100%;
   margin-top: 2.5rem;
+  vertical-align: middle;
 }
 
 .c3 > img {
   width: auto;
   height: auto;
   max-width: 100%;
+  vertical-align: middle;
+}
+
+.c7 {
+  bottom: .2rem;
+  border: 1px solid #fff;
+  border-radius: 6px;
+  color: #E4E5ED;
+  font-size: 1.6rem;
+  left: calc((11rem - 3.6rem) / 2);
+  padding: 1.2rem;
+  position: absolute;
+  text-align: center;
 }
 
 .c1 {
@@ -128,13 +142,13 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   grid-gap: 3rem 3rem;
 }
 
-.c7 {
+.c8 {
   text-align: center;
   margin: 2.5rem 0;
 }
 
 @media (max-width:540px) {
-  .c8 {
+  .c9 {
     padding: 0.9rem 1rem;
     width: 88%;
   }
@@ -188,6 +202,12 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         >
           250 g
         </h5>
+        <h5
+          className="c5"
+        >
+          No disponible
+           
+        </h5>
         <p
           className="c6"
         >
@@ -195,6 +215,11 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
             
           </span>
         </p>
+        <div
+          className="c7"
+        >
+          +
+        </div>
       </div>
     </a>
     <a
@@ -225,6 +250,12 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         >
           250 g
         </h5>
+        <h5
+          className="c5"
+        >
+          No disponible
+           
+        </h5>
         <p
           className="c6"
         >
@@ -232,6 +263,11 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
             
           </span>
         </p>
+        <div
+          className="c7"
+        >
+          +
+        </div>
       </div>
     </a>
     <a
@@ -262,6 +298,12 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         >
           250 g
         </h5>
+        <h5
+          className="c5"
+        >
+          No disponible
+           
+        </h5>
         <p
           className="c6"
         >
@@ -269,6 +311,11 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
             
           </span>
         </p>
+        <div
+          className="c7"
+        >
+          +
+        </div>
       </div>
     </a>
     <a
@@ -299,6 +346,12 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         >
           250 g
         </h5>
+        <h5
+          className="c5"
+        >
+          No disponible
+           
+        </h5>
         <p
           className="c6"
         >
@@ -306,6 +359,11 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
             
           </span>
         </p>
+        <div
+          className="c7"
+        >
+          +
+        </div>
       </div>
     </a>
     <a
@@ -336,6 +394,12 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         >
           250 g
         </h5>
+        <h5
+          className="c5"
+        >
+          No disponible
+           
+        </h5>
         <p
           className="c6"
         >
@@ -343,6 +407,11 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
             
           </span>
         </p>
+        <div
+          className="c7"
+        >
+          +
+        </div>
       </div>
     </a>
     <a
@@ -373,6 +442,12 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         >
           250 g
         </h5>
+        <h5
+          className="c5"
+        >
+          No disponible
+           
+        </h5>
         <p
           className="c6"
         >
@@ -380,21 +455,26 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
             
           </span>
         </p>
+        <div
+          className="c7"
+        >
+          +
+        </div>
       </div>
     </a>
   </div>
   <div
-    className="c7"
+    className="c8"
   >
     <button
-      className="c8"
+      className="c9"
       color="secondary"
       data-cy="load-more_button"
       onClick={[Function]}
       size="md"
     >
       <span
-        className="c9"
+        className="c10"
         size="md"
       >
         More +
@@ -402,7 +482,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
     </button>
   </div>
   <div
-    className="c10"
+    className="c11"
   />
 </div>
 `;

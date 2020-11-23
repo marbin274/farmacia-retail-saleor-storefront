@@ -4,18 +4,17 @@ import {
   basicProductFragment,
   priceFragment,
   productPricingFragment,
-  // productVariantFragment
 } from "@temp/views/Product/queries";
 import { TypedQuery } from "../../core/queries";
 import { HomePage, HomePageVariables } from "./gqlTypes/HomePage";
 
-// using little bit simplified version of productVariantFragment
 export const productVariantFragmentSimple = gql`
     ${priceFragment}
     fragment ProductVariantFieldsSimple on ProductVariant {
         id
         sku
         name
+        quantityAvailable
         images {
             id
             url
@@ -34,14 +33,13 @@ export const productVariantFragmentSimple = gql`
 `;
 
 
-// get shop, category by id, products from that category
+// get all available products according the specified filter
 export const homePageQuery = gql`
   ${basicProductFragment}
   ${productPricingFragment}
   ${productVariantFragmentSimple}
   
   query HomePage(
-    $categoryId: ID!
     $pageSize: Int
     $sortBy: ProductOrder
   ) {
@@ -60,9 +58,6 @@ export const homePageQuery = gql`
     products(
       first: $pageSize
       sortBy: $sortBy
-      filter: {
-        categories: [$categoryId]
-      }
     ) {
       totalCount
       edges {
@@ -85,11 +80,6 @@ export const homePageQuery = gql`
         hasPreviousPage
         startCursor
       }
-    }
-    
-    category(id: $categoryId) {
-      id
-      name
     }
   }
 `;

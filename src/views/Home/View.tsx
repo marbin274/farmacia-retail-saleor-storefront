@@ -13,7 +13,6 @@ import {HomePage_products, HomePageVariables} from "./gqlTypes/HomePage";
 import { TypedHomePageQuery } from "./queries";
 
 const homePageVariables:HomePageVariables = {
-    categoryId: HOME_PAGE_CONF.CATEGORY_ID,
     pageSize: HOME_PAGE_CONF.PAGE_SIZE,
     sortBy: {
         direction: HOME_PAGE_CONF.SORT_DIR,
@@ -52,7 +51,7 @@ const View: React.FC = () => {
                       &nbsp;
                   </div>
                   <div className="product-list">
-                      {data && data.category && data.category && data.products && (
+                      {data && data.products && (
                           <Page
                               addToCart={addToCart}
                               loading={loading}
