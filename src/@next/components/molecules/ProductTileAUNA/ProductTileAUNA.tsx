@@ -51,7 +51,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({ product, addToCart }: IProps
             <Thumbnail source={thumbnailsInfo} />
         </S.Image>
         <S.Title>{product.name}</S.Title>
-        <S.ProductAttribute>250 g</S.ProductAttribute>
+        {/* <S.ProductAttribute>250 g</S.ProductAttribute> */}
         <S.ProductAttribute>{messageAvailableProducts}&nbsp;</S.ProductAttribute> 
         <S.Price>
           <TaxedMoney taxedMoney={price} />
