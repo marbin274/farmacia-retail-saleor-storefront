@@ -15,11 +15,11 @@ import {
   CheckoutAddressSubpage,
   CheckoutPaymentSubpage,
   CheckoutReviewSubpage,
-  CheckoutShippingSubpage,
+  // CheckoutShippingSubpage,
   ICheckoutAddressSubpageHandles,
   ICheckoutPaymentSubpageHandles,
   ICheckoutReviewSubpageHandles,
-  ICheckoutShippingSubpageHandles,
+  // ICheckoutShippingSubpageHandles,
 } from "./subpages";
 import { IProps } from "./types";
 
@@ -132,9 +132,9 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
   const checkoutAddressSubpageRef = useRef<ICheckoutAddressSubpageHandles>(
     null
   );
-  const checkoutShippingSubpageRef = useRef<ICheckoutShippingSubpageHandles>(
-    null
-  );
+  // const checkoutShippingSubpageRef = useRef<ICheckoutShippingSubpageHandles>(
+  //   null
+  // );
   const checkoutPaymentSubpageRef = useRef<ICheckoutPaymentSubpageHandles>(
     null
   );
@@ -147,17 +147,17 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
           checkoutAddressSubpageRef.current?.submitAddress();
         }
         break;
+      // case 1:
+      //   if (checkoutShippingSubpageRef.current?.submitShipping) {
+      //     checkoutShippingSubpageRef.current?.submitShipping();
+      //   }
+      //   break;
       case 1:
-        if (checkoutShippingSubpageRef.current?.submitShipping) {
-          checkoutShippingSubpageRef.current?.submitShipping();
-        }
-        break;
-      case 2:
         if (checkoutPaymentSubpageRef.current?.submitPayment) {
           checkoutPaymentSubpageRef.current?.submitPayment();
         }
         break;
-      case 3:
+      case 2:
         if (checkoutReviewSubpageRef.current?.complete) {
           checkoutReviewSubpageRef.current?.complete();
         }
@@ -189,13 +189,13 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
             {...props}
           />
         )}
-        renderShipping={props => (
-          <CheckoutShippingSubpage
-            ref={checkoutShippingSubpageRef}
-            changeSubmitProgress={setSubmitInProgress}
-            {...props}
-          />
-        )}
+        // renderShipping={props => (
+        //   <CheckoutShippingSubpage
+        //     ref={checkoutShippingSubpageRef}
+        //     changeSubmitProgress={setSubmitInProgress}
+        //     {...props}
+        //   />
+        // )}
         renderPayment={props => (
           <CheckoutPaymentSubpage
             ref={checkoutPaymentSubpageRef}

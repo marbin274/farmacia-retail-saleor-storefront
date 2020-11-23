@@ -17,7 +17,7 @@ interface IRouterProps {
   checkout?: ICheckout;
   payment?: IPayment;
   renderAddress: (props: RouteComponentProps<any>) => React.ReactNode;
-  renderShipping: (props: RouteComponentProps<any>) => React.ReactNode;
+  // renderShipping: (props: RouteComponentProps<any>) => React.ReactNode;
   renderPayment: (props: RouteComponentProps<any>) => React.ReactNode;
   renderReview: (props: RouteComponentProps<any>) => React.ReactNode;
 }
@@ -27,7 +27,7 @@ const CheckoutRouter: React.FC<IRouterProps> = ({
   checkout,
   payment,
   renderAddress,
-  renderShipping,
+  // renderShipping,
   renderPayment,
   renderReview,
 }: IRouterProps) => {
@@ -46,9 +46,9 @@ const CheckoutRouter: React.FC<IRouterProps> = ({
   return (
     <Switch>
       <Route path={CHECKOUT_STEPS[0].link} render={renderAddress} />
-      <Route path={CHECKOUT_STEPS[1].link} render={renderShipping} />
-      <Route path={CHECKOUT_STEPS[2].link} render={renderPayment} />
-      <Route path={CHECKOUT_STEPS[3].link} render={renderReview} />
+      {/* <Route path={CHECKOUT_STEPS[1].link} render={renderShipping} /> */}
+      <Route path={CHECKOUT_STEPS[1].link} render={renderPayment} />
+      <Route path={CHECKOUT_STEPS[2].link} render={renderReview} />
       <Route render={props => <Redirect {...props} to={getStepLink()} />} />
     </Switch>
   );

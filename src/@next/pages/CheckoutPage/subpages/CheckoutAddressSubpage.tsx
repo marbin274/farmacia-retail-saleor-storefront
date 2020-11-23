@@ -8,7 +8,7 @@ import React, {
 } from "react";
 import { RouteComponentProps, useHistory } from "react-router";
 
-import { CheckoutAddress } from "@components/organisms";
+import { CheckoutAddress, CheckoutShipping } from "@components/organisms";
 import { useCheckout, useUserDetails } from "@sdk/react";
 import { ShopContext } from "@temp/components/ShopProvider/context";
 import { CHECKOUT_STEPS } from "@temp/core/config";
@@ -51,8 +51,30 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
   const {
     checkout,
     setShippingAddress,
+    setShippingMethod,
     selectedShippingAddressId,
+    availableShippingMethods,
   } = useCheckout();
+
+  const checkoutShippingFormId = "shipping-form";
+  const checkoutShippingFormRef = useRef<HTMLFormElement>(null);
+
+  const handleSetShippingMethod = async (shippingMethodId: string) => {
+    changeSubmitProgress(true);
+    const { dataError } = await setShippingMethod(shippingMethodId);
+    const errors = dataError?.error;
+    changeSubmitProgress(false);
+    if (errors) {
+      setErrors(errors);
+    } else {
+      setErrors([]);
+    }
+  };
+
+  const shippingMethods = availableShippingMethods
+    ? availableShippingMethods
+    : [];
+
   const { countries } = useContext(ShopContext);
 
   const [errors, setErrors] = useState<IFormError[]>([]);
@@ -69,6 +91,10 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     email?: string,
     userAddressId?: string
   ) => {
+    if (checkout?.shippingMethod?.id) {
+      handleSetShippingMethod(checkout.shippingMethod.id);
+    }
+
     if (!address) {
       setErrors([{ message: "Please provide shipping address." }]);
       return;
@@ -111,22 +137,34 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
       id: address?.id || "",
       onSelect: () => null,
     }));
-
+    
   return (
-    <CheckoutAddress
-      {...props}
-      errors={errors}
-      formId={checkoutAddressFormId}
-      formRef={checkoutAddressFormRef}
-      checkoutAddress={checkoutShippingAddress}
-      email={checkout?.email}
-      userAddresses={userAdresses}
-      selectedUserAddressId={selectedShippingAddressId}
-      countries={countries}
-      userId={user?.id}
-      newAddressFormId={checkoutNewAddressFormId}
-      setShippingAddress={handleSetShippingAddress}
-    />
+    <div>
+      <CheckoutAddress
+        {...props}
+        errors={errors}
+        formId={checkoutAddressFormId}
+        formRef={checkoutAddressFormRef}
+        checkoutAddress={checkoutShippingAddress}
+        email={checkout?.email}
+        userAddresses={userAdresses}
+        selectedUserAddressId={selectedShippingAddressId}
+        countries={countries}
+        userId={user?.id}
+        newAddressFormId={checkoutNewAddressFormId}
+        setShippingAddress={handleSetShippingAddress}
+      />
+      <CheckoutShipping
+        {...props}
+        shippingMethods={shippingMethods}
+        selectedShippingMethodId={checkout?.shippingMethod?.id}
+        errors={errors}
+        selectShippingMethod={handleSetShippingMethod}
+        formId={checkoutShippingFormId}
+        formRef={checkoutShippingFormRef}
+      />
+    </div>
+   
   );
 };
 

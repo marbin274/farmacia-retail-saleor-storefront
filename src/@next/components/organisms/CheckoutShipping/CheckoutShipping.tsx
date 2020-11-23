@@ -18,6 +18,20 @@ const CheckoutShipping: React.FC<IProps> = ({
   formId,
   formRef,
 }: IProps) => {
+
+  const renderGroupLabel = (id: number, title: string) => (
+    <S.GroupLabel>
+      <S.GroupLabelIndex>{id}</S.GroupLabelIndex>
+      <S.GroupLabelTitle>{title}</S.GroupLabelTitle>
+    </S.GroupLabel>
+  );
+
+  const setShippingMethod = (value: string | undefined) => {
+    if (selectShippingMethod && value) {
+      selectShippingMethod(value);
+    }
+  }
+
   return (
     <section>
       <Formik
@@ -41,12 +55,14 @@ const CheckoutShipping: React.FC<IProps> = ({
           setFieldTouched,
         }) => {
           return (
-            <S.ShippingMethodForm
+            <S.FieldsGroup>
+              {renderGroupLabel(3, 'Metodo de envio (3 primeros)')}
+              <S.ShippingMethodForm
               id={formId}
               ref={formRef}
               onSubmit={handleSubmit}
             >
-              {shippingMethods.map(({ id, name, price }, index) => {
+              {shippingMethods.slice(0 , 3).map(({ id, name, price }, index) => {
                 const checked =
                   !!values.shippingMethod && values.shippingMethod === id;
 
@@ -58,7 +74,8 @@ const CheckoutShipping: React.FC<IProps> = ({
                       value={id}
                       checked={checked}
                       customLabel={true}
-                      onChange={() => setFieldValue("shippingMethod", id)}
+                      // onChange={() => setFieldValue("shippingMethod", id)}
+                      onChange={() => setShippingMethod(id)}
                     >
                       <S.RadioContent>
                         <S.RadioName
@@ -80,6 +97,7 @@ const CheckoutShipping: React.FC<IProps> = ({
               })}
               <ErrorMessage errors={errors} />
             </S.ShippingMethodForm>
+            </S.FieldsGroup>
           );
         }}
       </Formik>
