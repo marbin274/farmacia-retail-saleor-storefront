@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
   margin: 20px;
 }
 
-.c11 {
+.c7 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -17,17 +17,17 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
   box-sizing: border-box;
 }
 
-.c7 {
+.c3 {
   cursor: pointer;
 }
 
-.c7 input[type="radio"] {
+.c3 input[type="radio"] {
   opacity: 0;
   position: fixed;
   width: 0;
 }
 
-.c7 > div {
+.c3 > div {
   display: inline-block;
   width: 1em;
   height: 1em;
@@ -38,12 +38,12 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
   vertical-align: bottom;
 }
 
-.c5 {
+.c1 {
   display: grid;
   grid-gap: 20px;
 }
 
-.c6 {
+.c2 {
   background-color: #fff;
   border: 2px solid #E4E5ED;
   border-radius: 1rem;
@@ -53,7 +53,7 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
   padding: 20px;
 }
 
-.c8 {
+.c4 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -64,159 +64,114 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
   width: calc(100% - 3em);
 }
 
-.c9 {
+.c5 {
   color: #9194A7;
   width: 100%;
 }
 
-.c10 {
+.c6 {
   color: #9194A7;
   width: 3rem;
-}
-
-.c1 {
-  padding-top: 1rem;
-  padding-bottom: 2rem;
-  width: 100%;
-}
-
-.c2 {
-  padding-bottom: 0.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.c3 {
-  display: inline-block;
-  color: #fff;
-  background-color: #0050B5;
-  border-radius: 5rem;
-  height: 1.9rem;
-  padding: 0.4rem;
-  text-align: center;
-  width: 1.9rem;
-}
-
-.c4 {
-  font-weight: bolder;
-  padding-left: 1rem;
 }
 
 <div
   className="c0"
 >
   <section>
-    <div
+    <form
       className="c1"
+      onSubmit={[Function]}
     >
-      <div
+      <label
+        checked={false}
         className="c2"
       >
-        <span
+        <div
+          checked={false}
           className="c3"
         >
-          3
-        </span>
-        <span
-          className="c4"
-        >
-          Metodo de envio (3 primeros)
-        </span>
-      </div>
-      <form
-        className="c5"
-        onSubmit={[Function]}
+          <input
+            checked={false}
+            data-cy="checkoutShippingMethodOption0Input"
+            name="shippingMethod"
+            onChange={[Function]}
+            type="radio"
+            value="1"
+          />
+           
+          <div>
+            <span />
+          </div>
+          <span
+            className="c4"
+          >
+            <span
+              checked={false}
+              className="c5"
+              data-cy="checkoutShippingMethodOption0Name"
+            >
+              Basic
+            </span>
+            <span
+              checked={false}
+              className="c6"
+            >
+              <span
+                data-cy="checkoutShippingMethodOption0Price"
+              >
+                
+              </span>
+            </span>
+          </span>
+        </div>
+      </label>
+      <label
+        checked={false}
+        className="c2"
       >
-        <label
+        <div
           checked={false}
-          className="c6"
+          className="c3"
         >
-          <div
+          <input
             checked={false}
-            className="c7"
+            data-cy="checkoutShippingMethodOption1Input"
+            name="shippingMethod"
+            onChange={[Function]}
+            type="radio"
+            value="2"
+          />
+           
+          <div>
+            <span />
+          </div>
+          <span
+            className="c4"
           >
-            <input
-              checked={false}
-              data-cy="checkoutShippingMethodOption0Input"
-              name="shippingMethod"
-              onChange={[Function]}
-              type="radio"
-              value="1"
-            />
-             
-            <div>
-              <span />
-            </div>
             <span
-              className="c8"
+              checked={false}
+              className="c5"
+              data-cy="checkoutShippingMethodOption1Name"
+            >
+              Extra
+            </span>
+            <span
+              checked={false}
+              className="c6"
             >
               <span
-                checked={false}
-                className="c9"
-                data-cy="checkoutShippingMethodOption0Name"
+                data-cy="checkoutShippingMethodOption1Price"
               >
-                Basic
-              </span>
-              <span
-                checked={false}
-                className="c10"
-              >
-                <span
-                  data-cy="checkoutShippingMethodOption0Price"
-                >
-                  
-                </span>
+                
               </span>
             </span>
-          </div>
-        </label>
-        <label
-          checked={false}
-          className="c6"
-        >
-          <div
-            checked={false}
-            className="c7"
-          >
-            <input
-              checked={false}
-              data-cy="checkoutShippingMethodOption1Input"
-              name="shippingMethod"
-              onChange={[Function]}
-              type="radio"
-              value="2"
-            />
-             
-            <div>
-              <span />
-            </div>
-            <span
-              className="c8"
-            >
-              <span
-                checked={false}
-                className="c9"
-                data-cy="checkoutShippingMethodOption1Name"
-              >
-                Extra
-              </span>
-              <span
-                checked={false}
-                className="c10"
-              >
-                <span
-                  data-cy="checkoutShippingMethodOption1Price"
-                >
-                  
-                </span>
-              </span>
-            </span>
-          </div>
-        </label>
-      </form>
-    </div>
+          </span>
+        </div>
+      </label>
+    </form>
   </section>
   <div
-    className="c11"
+    className="c7"
   />
 </div>
 `;
