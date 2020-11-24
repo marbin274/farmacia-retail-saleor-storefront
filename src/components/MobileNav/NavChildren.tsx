@@ -1,20 +1,21 @@
 import * as React from "react";
 import { INavItem } from ".";
+import { NavLink } from "../NavLink";
 
 interface NavChildrenProps {
   subItems: INavItem[];
 }
 
-const NavChildren: React.FC<NavChildrenProps> = ({ subItems }) => {
-  return (
-    <ul className="side-nav__nav-children">
-      {subItems.map(({ name }) => (
-        <li key={name} className="side-nav__nav-children__child">
-          {name}
-        </li>
-      ))}
-    </ul>
-  );
-};
+const NavChildren: React.FC<NavChildrenProps> = ({ subItems }) => (
+  <ul className="side-nav__nav-children">
+    {subItems.map(subItem => (
+      <NavLink
+        key={subItem.id}
+        item={subItem}
+        className="side-nav__nav-children__child"
+      />
+    ))}
+  </ul>
+);
 
 export default NavChildren;

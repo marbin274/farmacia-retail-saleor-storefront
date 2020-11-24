@@ -60,6 +60,8 @@
     animation: show 360ms ease-in-out 0s 1 alternate forwards;
 
     &__child {
+      display: flex;
+      flex-direction: column;
       padding: 16px;
       border-radius: 8px;
 

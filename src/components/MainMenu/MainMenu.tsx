@@ -25,7 +25,6 @@ import NavDropdown from "./NavDropdown";
 import { TypedMainMenuQuery } from "./queries";
 
 import cartImg from "../../images/cart.svg";
-import hamburgerHoverImg from "../../images/hamburger-hover.svg";
 import hamburgerImg from "../../images/hamburger.svg";
 import logoImg from "../../images/logo.svg";
 import searchImg from "../../images/search.svg";
@@ -72,10 +71,6 @@ const MainMenu: React.FC = () => {
                           <ReactSVG
                             path={hamburgerImg}
                             className={"main-menu__hamburger--icon"}
-                          />
-                          <ReactSVG
-                            path={hamburgerHoverImg}
-                            className={"main-menu__hamburger--hover"}
                           />
                         </li>
                       )}

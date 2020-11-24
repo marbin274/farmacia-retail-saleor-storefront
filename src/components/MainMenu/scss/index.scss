@@ -92,25 +92,7 @@
 
   &__hamburger {
     cursor: pointer;
-    padding: $spacer;
-
-    &--hover {
-      display: none;
-    }
-
-    &:hover {
-      .main-menu__hamburger--icon {
-        display: none;
-      }
-
-      .main-menu__hamburger--hover {
-        display: block;
-      }
-    }
-
-    svg {
-      vertical-align: bottom;
-    }
+    padding: calc(#{$spacer} + 3px) $spacer calc(#{$spacer} - 3px) $spacer;
   }
 
   &__item,
@@ -122,7 +104,7 @@
   }
 
   &__icon {
-    padding: 0 $spacer;
+    padding: $spacer;
     cursor: pointer;
 
     svg {
