@@ -12,8 +12,8 @@ export const Bar = styled.div`
   align-items: center;
   padding: 0 2rem;
   font-size: ${props => props.theme.typography.smallFontSize};
-  margin-top: 1rem;
-  margin-bottom: 1.4rem;
+  margin-top: 22px;
+  margin-bottom: 60px;
 `;
 
 export const LeftSide = styled.div`

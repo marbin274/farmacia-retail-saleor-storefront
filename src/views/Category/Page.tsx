@@ -26,7 +26,7 @@ interface SortItem {
 interface SortOptions extends Array<SortItem> {}
 
 interface PageProps {
-  addToCart: IAddToCartCallback,
+  addToCart: IAddToCartCallback;
   activeFilters: number;
   attributes: IFilterAttributes[];
   activeSortOption: string;
@@ -87,38 +87,48 @@ const Page: React.FC<PageProps> = ({
 
   return (
     <div className="category">
-      <div className="container">
-        <Breadcrumbs breadcrumbs={extractBreadcrumbs(category)} />
-        <FilterSidebar
-          show={showFilters}
-          hide={() => setShowFilters(false)}
-          onAttributeFiltersChange={onAttributeFiltersChange}
-          attributes={attributes}
-          filters={filters}
-        />
-        <ProductListHeader
-          activeSortOption={activeSortOption}
-          openFiltersMenu={() => setShowFilters(true)}
-          numberOfProducts={products ? products.totalCount : 0}
-          activeFilters={activeFilters}
-          activeFiltersAttributes={activeFiltersAttributes}
-          clearFilters={clearFilters}
-          sortOptions={sortOptions}
-          onChange={onOrder}
-          onCloseFilterAttribute={onAttributeFiltersChange}
-        />
-        {canDisplayProducts && (
-         <ProductListAUNA
-            products={products.edges.map(edge => edge.node)}
-            canLoadMore={hasNextPage}
-            loading={displayLoader}
-            onLoadMore={onLoadMore}
-            addToCart={addToCart}
+      <ProductListHeader
+        activeSortOption={activeSortOption}
+        openFiltersMenu={() => setShowFilters(true)}
+        numberOfProducts={products ? products.totalCount : 0}
+        activeFilters={activeFilters}
+        activeFiltersAttributes={activeFiltersAttributes}
+        clearFilters={clearFilters}
+        sortOptions={sortOptions}
+        onChange={onOrder}
+        onCloseFilterAttribute={onAttributeFiltersChange}
+      />
+      <div className="container category__body">
+        <nav className="category__nav">
+          <p className="category__nav__title">Categorías</p>
+          <ul className="category__nav__list">
+            {["Resfriado y gripe", "Dolor de cabeza"].map(subCategory => (
+              <li className="category__nav__link">{subCategory}</li>
+            ))}
+          </ul>
+        </nav>
+        <section className="category__products">
+          <Breadcrumbs breadcrumbs={extractBreadcrumbs(category)} />
+          <FilterSidebar
+            show={showFilters}
+            hide={() => setShowFilters(false)}
+            onAttributeFiltersChange={onAttributeFiltersChange}
+            attributes={attributes}
+            filters={filters}
           />
-        )}
-      </div>
+          {canDisplayProducts && (
+            <ProductListAUNA
+              products={products.edges.map(edge => edge.node)}
+              canLoadMore={hasNextPage}
+              loading={displayLoader}
+              onLoadMore={onLoadMore}
+              addToCart={addToCart}
+            />
+          )}
+        </section>
 
-      {!hasProducts && <ProductsFeatured title="You might like" />}
+        {!hasProducts && <ProductsFeatured title="You might like" />}
+      </div>
     </div>
   );
 };
