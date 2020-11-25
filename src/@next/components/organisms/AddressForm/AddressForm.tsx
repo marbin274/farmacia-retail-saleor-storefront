@@ -26,12 +26,14 @@ export const AddressForm: React.FC<IProps> = ({
   formId,
   defaultValue,
   countriesOptions,
+  citiesOptions,
   ...props
 }: IProps) => {
   let addressWithPickedFields: Partial<IAddress> = {};
   if (address) {
     addressWithPickedFields = pick(address, ADDRESS_FIELDS);
   }
+  
   if (defaultValue) {
     addressWithPickedFields.country = defaultValue;
   }
@@ -57,6 +59,7 @@ export const AddressForm: React.FC<IProps> = ({
         return (
           <AddressFormContent
             {...{
+              citiesOptions,
               countriesOptions,
               defaultValue,
               formId,

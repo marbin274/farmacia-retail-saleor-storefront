@@ -48,7 +48,7 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
     },
   }));
 
-  const handleSetShippingMethod = async (shippingMethodId: string) => {
+  const handleSetShippingMethod = async (shippingMethodId: string, clicked = false) => {
     changeSubmitProgress(true);
     const { dataError } = await setShippingMethod(shippingMethodId);
     const errors = dataError?.error;
@@ -57,7 +57,9 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
       setErrors(errors);
     } else {
       setErrors([]);
-      history.push(CHECKOUT_STEPS[1].nextStepLink);
+      if (!clicked) {
+        history.push(CHECKOUT_STEPS[1].nextStepLink);
+      }
     }
   };
 

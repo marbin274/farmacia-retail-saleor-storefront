@@ -6,12 +6,12 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { RouteComponentProps, useHistory } from "react-router";
+import { RouteComponentProps } from "react-router";
 
 import { CheckoutAddress } from "@components/organisms";
 import { useCheckout, useUserDetails } from "@sdk/react";
 import { ShopContext } from "@temp/components/ShopProvider/context";
-import { CHECKOUT_STEPS } from "@temp/core/config";
+// import { CHECKOUT_STEPS } from "@temp/core/config";
 import { IAddress, IFormError } from "@types";
 import { filterNotEmptyArrayItems } from "@utils/misc";
 
@@ -46,7 +46,7 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     },
   }));
 
-  const history = useHistory();
+  // const history = useHistory();
   const { data: user } = useUserDetails();
   const {
     checkout,
@@ -69,6 +69,7 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     email?: string,
     userAddressId?: string
   ) => {
+
     if (!address) {
       setErrors([{ message: "Please provide shipping address." }]);
       return;
@@ -95,7 +96,9 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
       setErrors(errors);
     } else {
       setErrors([]);
-      history.push(CHECKOUT_STEPS[0].nextStepLink);
+      if (checkout?.shippingMethod?.id) {
+        // history.push(CHECKOUT_STEPS[0].nextStepLink);
+      }
     }
   };
 

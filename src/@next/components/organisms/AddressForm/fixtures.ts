@@ -12,7 +12,7 @@ export const countries = [
 ];
 
 export const address = {
-  city: "New York",
+  city: "Lima",
   companyName: "Mirumee",
   country: {
     code: "US",

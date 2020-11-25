@@ -14,6 +14,7 @@ const AddressTileOption: React.FC<IProps> = ({
   address,
   onChange,
   checked,
+  onClick,
   ...props
 }: IProps) => {
   return (
@@ -26,6 +27,7 @@ const AddressTileOption: React.FC<IProps> = ({
         value={id}
         checked={checked}
         onChange={onChange}
+        onClick={onClick}
       />
     </S.Label>
   );

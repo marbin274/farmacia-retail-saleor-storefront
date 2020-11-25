@@ -473,7 +473,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                   className="c13"
                   disabled={false}
                 >
-                  Distrito
+                  Pais
                 </label>
               </div>
               <div
@@ -481,35 +481,109 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
               />
             </div>
             <div
-              className="c9"
+              className="c15"
             >
               <div
-                className="c10"
-                disabled={false}
+                className="css-1pcexqc-container"
+                onKeyDown={[Function]}
               >
                 <div
-                  className="c11"
+                  className="css-d1vkk-control"
+                  onMouseDown={[Function]}
+                  onTouchEnd={[Function]}
                 >
-                  <input
-                    autoComplete="address-level1"
-                    className="c12"
-                    data-cy="addressFormCity"
-                    disabled={false}
-                    name="city"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                  />
-                  <label
-                    className="c13"
-                    disabled={false}
+                  <div
+                    className="css-tntsk8"
                   >
-                    Ciudad
-                  </label>
+                    <div
+                      className="css-151xaom-placeholder"
+                    >
+                      
+                    </div>
+                    <div
+                      className="css-1g6gooi"
+                    >
+                      <div
+                        className=""
+                        style={
+                          Object {
+                            "display": "inline-block",
+                          }
+                        }
+                      >
+                        <input
+                          aria-autocomplete="list"
+                          autoCapitalize="none"
+                          autoComplete="off"
+                          autoCorrect="off"
+                          data-cy="addressFormCity"
+                          disabled={false}
+                          id="react-select-8-input"
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          onFocus={[Function]}
+                          spellCheck="false"
+                          style={
+                            Object {
+                              "background": 0,
+                              "border": 0,
+                              "boxSizing": "content-box",
+                              "color": "inherit",
+                              "fontSize": "inherit",
+                              "label": "input",
+                              "opacity": 1,
+                              "outline": 0,
+                              "padding": 0,
+                              "width": "1px",
+                            }
+                          }
+                          tabIndex="0"
+                          type="text"
+                          value=""
+                        />
+                        <div
+                          style={
+                            Object {
+                              "height": 0,
+                              "left": 0,
+                              "overflow": "scroll",
+                              "position": "absolute",
+                              "top": 0,
+                              "visibility": "hidden",
+                              "whiteSpace": "pre",
+                            }
+                          }
+                        >
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="c16"
+                    rotate="false"
+                  >
+                    <svg
+                      height={10}
+                      viewBox="0 0 32 32"
+                      width={10}
+                    >
+                      <path
+                        d="M16 29.856l-15.999-27.712h31.999l-15.999 27.712z"
+                        fill="inherit"
+                      />
+                    </svg>
+                  </div>
                 </div>
+                <label
+                  className="c13"
+                  disabled={false}
+                >
+                  Distrito
+                </label>
               </div>
               <div
-                className="c14"
+                className="c17"
               />
             </div>
           </div>
@@ -973,7 +1047,113 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                           autoCorrect="off"
                           data-cy="addressFormCountry"
                           disabled={false}
-                          id="react-select-8-input"
+                          id="react-select-9-input"
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          onFocus={[Function]}
+                          spellCheck="false"
+                          style={
+                            Object {
+                              "background": 0,
+                              "border": 0,
+                              "boxSizing": "content-box",
+                              "color": "inherit",
+                              "fontSize": "inherit",
+                              "label": "input",
+                              "opacity": 1,
+                              "outline": 0,
+                              "padding": 0,
+                              "width": "1px",
+                            }
+                          }
+                          tabIndex="0"
+                          type="text"
+                          value=""
+                        />
+                        <div
+                          style={
+                            Object {
+                              "height": 0,
+                              "left": 0,
+                              "overflow": "scroll",
+                              "position": "absolute",
+                              "top": 0,
+                              "visibility": "hidden",
+                              "whiteSpace": "pre",
+                            }
+                          }
+                        >
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="c19"
+                    rotate="false"
+                  >
+                    <svg
+                      height={10}
+                      viewBox="0 0 32 32"
+                      width={10}
+                    >
+                      <path
+                        d="M16 29.856l-15.999-27.712h31.999l-15.999 27.712z"
+                        fill="inherit"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <label
+                  className="c13"
+                  disabled={false}
+                >
+                  Pais
+                </label>
+              </div>
+              <div
+                className="c20"
+              />
+            </div>
+            <div
+              className="c18"
+            >
+              <div
+                className="css-1pcexqc-container"
+                onKeyDown={[Function]}
+              >
+                <div
+                  className="css-d1vkk-control"
+                  onMouseDown={[Function]}
+                  onTouchEnd={[Function]}
+                >
+                  <div
+                    className="css-tntsk8"
+                  >
+                    <div
+                      className="css-151xaom-placeholder"
+                    >
+                      
+                    </div>
+                    <div
+                      className="css-1g6gooi"
+                    >
+                      <div
+                        className=""
+                        style={
+                          Object {
+                            "display": "inline-block",
+                          }
+                        }
+                      >
+                        <input
+                          aria-autocomplete="list"
+                          autoCapitalize="none"
+                          autoComplete="off"
+                          autoCorrect="off"
+                          data-cy="addressFormCity"
+                          disabled={false}
+                          id="react-select-10-input"
                           onBlur={[Function]}
                           onChange={[Function]}
                           onFocus={[Function]}
@@ -1039,38 +1219,6 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
               </div>
               <div
                 className="c20"
-              />
-            </div>
-            <div
-              className="c9"
-            >
-              <div
-                className="c17"
-                disabled={false}
-              >
-                <div
-                  className="c11"
-                >
-                  <input
-                    autoComplete="address-level1"
-                    className="c12"
-                    data-cy="addressFormCity"
-                    disabled={false}
-                    name="city"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                  />
-                  <label
-                    className="c13"
-                    disabled={false}
-                  >
-                    Ciudad
-                  </label>
-                </div>
-              </div>
-              <div
-                className="c14"
               />
             </div>
           </div>
@@ -1500,7 +1648,113 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                           autoCorrect="off"
                           data-cy="addressFormCountry"
                           disabled={false}
-                          id="react-select-9-input"
+                          id="react-select-11-input"
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          onFocus={[Function]}
+                          spellCheck="false"
+                          style={
+                            Object {
+                              "background": 0,
+                              "border": 0,
+                              "boxSizing": "content-box",
+                              "color": "inherit",
+                              "fontSize": "inherit",
+                              "label": "input",
+                              "opacity": 1,
+                              "outline": 0,
+                              "padding": 0,
+                              "width": "1px",
+                            }
+                          }
+                          tabIndex="0"
+                          type="text"
+                          value=""
+                        />
+                        <div
+                          style={
+                            Object {
+                              "height": 0,
+                              "left": 0,
+                              "overflow": "scroll",
+                              "position": "absolute",
+                              "top": 0,
+                              "visibility": "hidden",
+                              "whiteSpace": "pre",
+                            }
+                          }
+                        >
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="c16"
+                    rotate="false"
+                  >
+                    <svg
+                      height={10}
+                      viewBox="0 0 32 32"
+                      width={10}
+                    >
+                      <path
+                        d="M16 29.856l-15.999-27.712h31.999l-15.999 27.712z"
+                        fill="inherit"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <label
+                  className="c13"
+                  disabled={false}
+                >
+                  Pais
+                </label>
+              </div>
+              <div
+                className="c17"
+              />
+            </div>
+            <div
+              className="c15"
+            >
+              <div
+                className="css-1pcexqc-container"
+                onKeyDown={[Function]}
+              >
+                <div
+                  className="css-d1vkk-control"
+                  onMouseDown={[Function]}
+                  onTouchEnd={[Function]}
+                >
+                  <div
+                    className="css-tntsk8"
+                  >
+                    <div
+                      className="css-151xaom-placeholder"
+                    >
+                      
+                    </div>
+                    <div
+                      className="css-1g6gooi"
+                    >
+                      <div
+                        className=""
+                        style={
+                          Object {
+                            "display": "inline-block",
+                          }
+                        }
+                      >
+                        <input
+                          aria-autocomplete="list"
+                          autoCapitalize="none"
+                          autoComplete="off"
+                          autoCorrect="off"
+                          data-cy="addressFormCity"
+                          disabled={false}
+                          id="react-select-12-input"
                           onBlur={[Function]}
                           onChange={[Function]}
                           onFocus={[Function]}
@@ -1566,39 +1820,6 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
               </div>
               <div
                 className="c17"
-              />
-            </div>
-            <div
-              className="c9"
-            >
-              <div
-                className="c10"
-                disabled={false}
-              >
-                <div
-                  className="c11"
-                >
-                  <input
-                    autoComplete="address-level1"
-                    className="c12"
-                    data-cy="addressFormCity"
-                    disabled={false}
-                    name="city"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                    value="New York"
-                  />
-                  <label
-                    className="c13"
-                    disabled={false}
-                  >
-                    Ciudad
-                  </label>
-                </div>
-              </div>
-              <div
-                className="c14"
               />
             </div>
           </div>

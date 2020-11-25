@@ -4,6 +4,7 @@ import { InputSelect, TextField } from "@components/molecules";
 
 import * as S from "./styles";
 import { PropsWithFormik } from "./types";
+// import { IAddressWithEmail } from "@temp/@next/types/IAddressWithEmail";
 
 export const AddressFormContent: React.FC<PropsWithFormik> = ({
   formRef,
@@ -13,15 +14,38 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
   errors,
   handleSubmit,
   values,
+  citiesOptions,
   countriesOptions,
   defaultValue,
   setFieldValue,
   includeEmail = false,
+  onSelect,
 }) => {
   const basicInputProps = useCallback(
     () => ({ onBlur: handleBlur, onChange: handleChange }),
     [handleChange, handleBlur]
   );
+
+  const _cities: any[] = [];
+  citiesOptions?.flatMap(
+    (x) => {
+      const item: any = {
+        code: x,
+        description: x,
+      };
+      _cities.push(item);
+    }
+  )
+
+  const selectCity = (value: any) => {
+    const _values: any = values;
+    _values.city = value;
+    if (values && values?.email) {
+      if(onSelect) {
+        onSelect(_values, _values?.email)
+      }
+    }
+  }
 
   const fieldErrors: any = {};
 
@@ -107,14 +131,14 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                 "data-cy": "addressFormCountry",
               }}
               defaultValue={defaultValue}
-              label="Distrito"
+              label="Pais"
               name="country"
               options={countriesOptions}
               value={
                 values!.country &&
                 countriesOptions &&
                 countriesOptions!.find(
-                  option => option.code === values!.country!.code
+                  option => option.code === values!.country?.code
                 )
               }
               onChange={(value: any, name: any) => setFieldValue(name, value)}
@@ -122,15 +146,40 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
               optionValueKey="code"
               errors={fieldErrors!.country}
             />
-            <TextField
+            <InputSelect
+              inputProps={{
+                "data-cy": "addressFormCity",
+              }}
+              label="Distrito"
+              name="city"
+              options={_cities}
+              value={values!.city &&
+                _cities &&
+                _cities!.find(
+                  option => option.code === values!.city
+                )}
+              onChange={(value: any, name: any) => {
+                setFieldValue(name, value.code);
+                selectCity(value.code);
+              }}
+              optionLabelKey="description"
+              optionValueKey="code"
+              errors={fieldErrors!.city}
+            />
+
+            {/* <TextField
               data-cy="addressFormCity"
               name="city"
-              label="Ciudad"
+              label="Distrito"
               value={values!.city}
               autoComplete="address-level1"
               errors={fieldErrors!.city}
+              onChange={(value: any, name: any) => {
+                setFieldValue(name, value);
+                selectCity(name, value);
+              }}
               {...basicInputProps()}
-            />
+            /> */}
           </S.RowWithTwoCells>
         </S.FieldsGroup>
       </S.Wrapper>

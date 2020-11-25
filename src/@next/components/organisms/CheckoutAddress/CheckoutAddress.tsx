@@ -24,6 +24,14 @@ const CheckoutAddress: React.FC<IProps> = ({
   errors,
   newAddressFormId,
 }: IProps) => {
+
+  const citiesOptions = [
+    "Lima",
+    "Callao",
+    "Arequipa",
+    "Puno",
+  ];
+
   return (
     <section>
       <S.Title data-cy="checkoutPageSubtitle"></S.Title>
@@ -43,11 +51,13 @@ const CheckoutAddress: React.FC<IProps> = ({
         <AddressForm
           formId={formId}
           formRef={formRef}
+          citiesOptions={citiesOptions}
           countriesOptions={countries?.filter(filterNotEmptyArrayItems)}
           address={{
             ...checkoutAddress,
             email,
           }}
+          onSelect={(address, email) => setShippingAddress(address, email)}
           handleSubmit={address => setShippingAddress(address, address?.email)}
           includeEmail={true}
           errors={errors}

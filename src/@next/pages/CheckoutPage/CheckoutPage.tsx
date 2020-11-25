@@ -16,10 +16,12 @@ import {
   CheckoutPaymentSubpage,
   CheckoutReviewSubpage,
   CheckoutShippingSubpage,
+  // CheckoutShippingSubpage,
   ICheckoutAddressSubpageHandles,
   ICheckoutPaymentSubpageHandles,
   ICheckoutReviewSubpageHandles,
   ICheckoutShippingSubpageHandles,
+  // ICheckoutShippingSubpageHandles,
 } from "./subpages";
 import { IProps } from "./types";
 
@@ -126,7 +128,7 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
   const matchingStepIndex = CHECKOUT_STEPS.findIndex(
     ({ link }) => link === pathname
   );
-  const activeStepIndex = matchingStepIndex !== -1 ? matchingStepIndex : 3;
+  const activeStepIndex = matchingStepIndex !== -1 ? matchingStepIndex : 2;
   const activeStep = CHECKOUT_STEPS[activeStepIndex];
 
   const checkoutAddressSubpageRef = useRef<ICheckoutAddressSubpageHandles>(
@@ -143,21 +145,24 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
   const handleNextStepClick = () => {
     switch (activeStepIndex) {
       case 0:
-        if (checkoutAddressSubpageRef.current?.submitAddress) {
-          checkoutAddressSubpageRef.current?.submitAddress();
-        }
-        break;
-      case 1:
+        // if (checkoutAddressSubpageRef.current?.submitAddress) {
+        //   checkoutAddressSubpageRef.current?.submitAddress();
+        // }
         if (checkoutShippingSubpageRef.current?.submitShipping) {
           checkoutShippingSubpageRef.current?.submitShipping();
         }
         break;
-      case 2:
+      // case 1:
+      //   if (checkoutShippingSubpageRef.current?.submitShipping) {
+      //     checkoutShippingSubpageRef.current?.submitShipping();
+      //   }
+      //   break;
+      case 1:
         if (checkoutPaymentSubpageRef.current?.submitPayment) {
           checkoutPaymentSubpageRef.current?.submitPayment();
         }
         break;
-      case 3:
+      case 2:
         if (checkoutReviewSubpageRef.current?.complete) {
           checkoutReviewSubpageRef.current?.complete();
         }
@@ -183,19 +188,27 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
         checkout={checkout}
         payment={payment}
         renderAddress={props => (
-          <CheckoutAddressSubpage
-            ref={checkoutAddressSubpageRef}
-            changeSubmitProgress={setSubmitInProgress}
-            {...props}
-          />
+          <div>
+            <CheckoutAddressSubpage
+              ref={checkoutAddressSubpageRef}
+              changeSubmitProgress={setSubmitInProgress}
+              {...props}
+            />
+            <CheckoutShippingSubpage
+                ref={checkoutShippingSubpageRef}
+                changeSubmitProgress={setSubmitInProgress}
+                {...props}
+              />
+          </div>
+
         )}
-        renderShipping={props => (
-          <CheckoutShippingSubpage
-            ref={checkoutShippingSubpageRef}
-            changeSubmitProgress={setSubmitInProgress}
-            {...props}
-          />
-        )}
+        // renderShipping={props => (
+        //   <CheckoutShippingSubpage
+        //     ref={checkoutShippingSubpageRef}
+        //     changeSubmitProgress={setSubmitInProgress}
+        //     {...props}
+        //   />
+        // )}
         renderPayment={props => (
           <CheckoutPaymentSubpage
             ref={checkoutPaymentSubpageRef}

@@ -34,6 +34,15 @@ const AddressGridSelector: React.FC<IProps> = ({
     />
   );
 
+  const changeSelectedAddressId = (id: string) => {
+    const address = addresses.find(
+      addr => addr.id === id
+    );
+
+    onSelect(address?.address, id);
+    selectedAddressId = id;
+  }
+
   return (
     <>
       <Formik
@@ -72,6 +81,7 @@ const AddressGridSelector: React.FC<IProps> = ({
                         id={id}
                         inputName="addressTileOption"
                         address={address}
+                        onClick={() => changeSelectedAddressId(id)}
                         onChange={() => setFieldValue("addressTileOption", id)}
                         checked={
                           !!values.addressTileOption &&

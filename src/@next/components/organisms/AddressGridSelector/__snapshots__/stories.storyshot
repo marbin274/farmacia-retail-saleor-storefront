@@ -223,6 +223,7 @@ exports[`Storyshots @components/organisms/AddressGridSelector default 1`] = `
             data-cy="addressTileOption0"
             name="addressTileOption"
             onChange={[Function]}
+            onClick={[Function]}
             type="radio"
             value="12345"
           />

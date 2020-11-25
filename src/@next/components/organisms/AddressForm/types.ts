@@ -11,6 +11,7 @@ export interface IFormikProps {
     country: string;
   }>;
   includeEmail?: boolean;
+  citiesOptions?: string[];
 }
 
 export type AddressError = { field?: string; message: string };
@@ -21,6 +22,7 @@ export interface IProps {
     code: string;
     country: string;
   }>;
+  citiesOptions?: string[];
   defaultValue?: any;
   formId?: string;
   formRef?: React.RefObject<HTMLFormElement>;
@@ -29,6 +31,7 @@ export interface IProps {
   handleChange?: (e: React.ChangeEvent) => void;
   handleBlur?: (e: React.FocusEvent) => void;
   includeEmail?: boolean;
+  onSelect?: (address?: IAddressWithEmail, email?: string) => void;
 }
 
 export type PropsWithFormik = Omit<IProps, "handleSubmit"> & IFormikProps;
