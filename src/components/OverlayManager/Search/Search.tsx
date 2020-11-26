@@ -6,7 +6,6 @@ import * as React from "react";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import ReactSVG from "react-svg";
 import {
-  Button,
   Loader,
   OfflinePlaceholder,
   Overlay,
@@ -23,7 +22,6 @@ import NothingFound from "./NothingFound";
 import ProductItem from "./ProductItem";
 import { TypedSearchResults } from "./queries";
 import searchImg from "../../../images/search.svg";
-import arrowImg from "../../../images/down-arrow-auna.svg";
 
 interface SearchProps extends RouteComponentProps {
   overlay: OverlayContextInterface;
@@ -61,7 +59,7 @@ class Search extends React.Component<SearchProps, SearchState> {
 
     evt.preventDefault();
   };
-
+  
   handleInputBlur = () => {
     if (!this.hasSearchPhrase) {
       this.props.overlay.hide();
@@ -120,31 +118,23 @@ class Search extends React.Component<SearchProps, SearchState> {
                         if (this.hasResults(data)) {
                           return (
                             <>
+                                <div className="search__products__results">
+                                {loading ? (
+                                  <Loader />
+                                ) : (
+                                  <p>
+                                    {data.products.edges.length} resultados para <span>"{this.state.search}"</span>
+                                  </p>
+                                )}
+                              </div>
                               <ul>
                                 {data.products.edges.map(product => (
                                   <ProductItem
                                     {...product}
                                     key={product.node.id}
                                   />
-                                ))}
+                                ))}                                
                               </ul>
-                              <div className="search__products__footer">
-                                {loading ? (
-                                  <Loader />
-                                ) : (
-                                  <Button
-                                    btnRef={this.submitBtnRef}
-                                    type="submit"
-                                    className="search__products__footer__button"
-                                  >
-                                    Ver todos los resultados
-                                    <ReactSVG
-                                      path={arrowImg}
-                                      className="search__products__footer__button__icon"
-                                    />
-                                  </Button>
-                                )}
-                              </div>
                             </>
                           );
                         }

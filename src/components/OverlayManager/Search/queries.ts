@@ -8,7 +8,7 @@ import {
 
 const searchResultsQuery = gql`
   query SearchResults($query: String!) {
-    products(filter: { search: $query }, first: 5) {
+    products(filter: { search: $query }, first: 100) {
       edges {
         node {
           id

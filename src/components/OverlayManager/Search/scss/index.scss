@@ -81,6 +81,9 @@ $custom-breakpoint: 624px;
     right: 0;
     transition: 300ms;
     height: calc(100vh - 3rem);
+    ul {
+      margin-bottom: 9rem;
+    }
 
     &--expanded {
       right: 0;
@@ -94,8 +97,17 @@ $custom-breakpoint: 624px;
     &--not-found {
       @extend .size;
       padding: 14px;
+    }    
+    &__results {          
+      span {
+        font-weight: 500;
+      }
+      @extend .size;
+      margin-bottom: 24px;
+      color: $auna-black;      
+      font-weight: 300;      
+      text-align: center;
     }
-
     &__item {
       @extend .size;
       background-color: $white;
