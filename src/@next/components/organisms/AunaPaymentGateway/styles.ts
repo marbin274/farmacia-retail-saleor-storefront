@@ -3,6 +3,7 @@ import { aunaGrey60, aunaGrey100 } from "@styles/constants";
 import niubizLogo from "images/auna/niubiz-logo.svg";
 
 export const Wrapper = styled.div`
+  align: center;
   margin-top: 1rem;
   padding: 1rem 0;
 `;

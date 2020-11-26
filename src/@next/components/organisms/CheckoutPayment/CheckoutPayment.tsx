@@ -46,6 +46,9 @@ const CheckoutPayment: React.FC<IProps> = ({
   );
 
   useEffect(() => {
+    
+    // console.log(checkoutBillingAddress)
+    
     const isVoucherCode = !!promoCodeDiscount?.voucherCode;
     if (isVoucherCode) {
       setShowPromoCodeForm(isVoucherCode);
@@ -104,6 +107,7 @@ const CheckoutPayment: React.FC<IProps> = ({
         selectedPaymentGateway={selectedPaymentGateway}
         selectedPaymentGatewayToken={selectedPaymentGatewayToken}
         selectPaymentGateway={selectPaymentGateway}
+        checkoutBillingAddress={checkoutBillingAddress}
         onError={onGatewayError}
       />
     </S.Wrapper>

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import {AunaPaymentGateway} from "@components/organisms/AunaPaymentGateway";
+import {DummyPaymentGateway} from "@components/organisms/DummyPaymentGateway";
 import {ErrorMessage, Radio} from "@components/atoms";
 import creditCardIcon from "@temp/images/auna/icon-credit-card.svg";
 import ReactSVG from "react-svg";
@@ -9,18 +10,8 @@ import { PROVIDERS } from "@temp/core/config";
 import {ThemeContext} from "styled-components";
 import { IProps } from "./types";
 import * as S from "./styles";
+// import { useHistory } from "react-router";
 
-// TODO: temporary use this config instead of data from backend, until we have Aun payments plugin [Denn 04/11/20]
-const dummyConfig = [
-    {
-      field: 'client_token',
-      value: 'QAZWSXEDC',
-    },
-];
-
-/**
- * Payment Gateways list
- */
 const PaymentGatewaysList: React.FC<IProps> = ({
   paymentGateways,
   selectedPaymentGateway,
@@ -29,18 +20,77 @@ const PaymentGatewaysList: React.FC<IProps> = ({
   formId,
   processPayment,
   errors,
+  checkoutBillingAddress,
   onError,
 }: IProps) => {
   const customTheme = React.useContext(ThemeContext);
 
+  const [ token, setToken ] = useState("");
+
+  // @ts-ignore
+  const [ orderNumber, setOrderNumber ] = useState("");
+
+  // const history = useHistory();
+
+
+  useEffect(() => {
+    const pathname = window.location.pathname;
+    // alert(pathname);
+    const pathElements = pathname.split('/');
+
+    if (pathElements.length > 0){
+      setToken(pathElements[4]);
+      setOrderNumber(pathElements[5]); 
+    } 
+
+    }, []);
+
+
   return (
     <S.Wrapper>
       {paymentGateways.map(({ id, name, config }, index) => {
-        const checked = selectedPaymentGateway === id;
+        let checked = selectedPaymentGateway === id;
 
         switch (id) {
-          // TODO: we tempory use Dummy payment gateway until we have payments plugin [Denn 04/11/20]
           case PROVIDERS.DUMMY.id:
+            return (
+              <div key={index}>
+                <S.Tile checked={checked}>
+                  <Radio
+                    data-cy="checkoutPaymentGatewayDummyInput"
+                    name="payment-method"
+                    value="dummy"
+                    checked={checked}
+                    onChange={() =>
+                      selectPaymentGateway && selectPaymentGateway(id)
+                    }
+                    customLabel={true}
+                  >
+                    <S.PaymentLine>
+                      <S.PaymentTitle data-cy="checkoutPaymentGatewayDummyName" checked={checked}>
+                        {name}
+                      </S.PaymentTitle>
+                      <S.PaymentIcon checked={checked}>
+                        <ReactSVG path={creditCardIcon} svgStyle={{stroke: S.getIconColor(checked, customTheme)}}/>
+                      </S.PaymentIcon>
+                    </S.PaymentLine>
+                  </Radio>
+                </S.Tile>
+                {checked && (
+                  <DummyPaymentGateway
+                    formRef={formRef}
+                    formId={formId}
+                    processPayment={token => processPayment(id, token)}
+                  />
+                )}
+              </div>
+            );
+          case PROVIDERS.AUNA.id:{
+
+            if (token && token.length > 0){
+              checked = true;
+            }
+
             return (
               <div key={index}>
                 <S.Tile checked={checked}>
@@ -66,15 +116,17 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                 </S.Tile>
                 {checked && (
                   <AunaPaymentGateway
-                    config={dummyConfig}
+                    config={config}
                     formRef={formRef}
                     formId={formId}
                     onError={onError}
                     processPayment={processPayment}
+                    checkoutBillingAddress={checkoutBillingAddress}
                   />
                 )}
               </div>
             );
+          }
         }
       })}
       {!selectedPaymentGateway && errors && <ErrorMessage errors={errors} />}

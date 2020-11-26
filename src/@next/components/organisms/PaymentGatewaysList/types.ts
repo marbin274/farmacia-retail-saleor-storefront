@@ -1,5 +1,5 @@
 import {ICardPaymentInput} from "@temp/core/payments/braintree";
-import { IFormError, IPaymentGateway } from "@types";
+import { IAddress, IFormError, IPaymentGateway } from "@types";
 
 export interface IProps {
   /**
@@ -42,4 +42,6 @@ export interface IProps {
    * Method called when gateway error occured.
    */
   onError: (errors: IFormError[]) => void;
+
+  checkoutBillingAddress?: IAddress | null | undefined;
 }

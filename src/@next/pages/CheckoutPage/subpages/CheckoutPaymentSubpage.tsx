@@ -55,6 +55,8 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
     createPayment,
   } = useCheckout();
 
+  // console.log(availablePaymentGateways);
+
   const { items } = useCart();
   const { countries } = useContext(ShopContext);
 
