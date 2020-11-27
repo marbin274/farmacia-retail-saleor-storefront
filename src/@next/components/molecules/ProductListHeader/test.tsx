@@ -42,18 +42,18 @@ describe("<ProductListHeader />", () => {
     expect(wrapper.text()).toContain(String(DEFAULT_PROPS.numberOfProducts));
   });
 
-  it("should not display Clear Filters button if no active filters present", () => {
+  it("should not display Limpiar filtros button if no active filters present", () => {
     const wrapper = shallow(<ProductListHeader {...DEFAULT_PROPS} />);
 
-    expect(wrapper.text()).not.toContain("Clear Filters");
+    expect(wrapper.text()).not.toContain("Limpiar filtros");
   });
 
-  it("should display Clear Filters button if active filters present are present", () => {
+  it("should display Limpiar filtros button if active filters present are present", () => {
     const wrapper = shallow(
       <ProductListHeader {...DEFAULT_PROPS} activeFilters={3} />
     );
 
-    expect(wrapper.text()).toContain("CLEAR FILTERS");
+    expect(wrapper.text()).toContain("Limpiar filtros");
   });
 
   it("should display number of active filters if any are present", () => {
@@ -61,10 +61,10 @@ describe("<ProductListHeader />", () => {
       <ProductListHeader {...DEFAULT_PROPS} activeFilters={3} />
     );
 
-    expect(wrapper.text()).toContain("FILTERS (3)");
+    expect(wrapper.text()).toContain("Filtros (3)");
   });
 
-  it("should call method for clearing filters when clicking on Clear Filters button", () => {
+  it("should call method for clearing filters when clicking on Limpiar filtros button", () => {
     const wrapper = mount(
       <ProductListHeader {...DEFAULT_PROPS} activeFilters={3} />
     );
@@ -72,14 +72,14 @@ describe("<ProductListHeader />", () => {
     wrapper
       .find("button")
       .filterWhere(item => {
-        return item.prop("children") === "CLEAR FILTERS";
+        return item.prop("children") === "Limpiar filtros";
       })
       .simulate("click");
 
     expect(clearFilterMock).toHaveBeenCalledTimes(1);
   });
 
-  it("should call method for clearing filters when clicking on Clear Filters button", () => {
+  it("should call method for clearing filters when clicking on Limpiar filtros button", () => {
     const wrapper = mount(
       <ProductListHeader {...DEFAULT_PROPS} activeFilters={3} />
     );

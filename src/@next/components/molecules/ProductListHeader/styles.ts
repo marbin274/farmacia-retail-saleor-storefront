@@ -1,19 +1,17 @@
 import { styled } from "@styles";
 
 export const Wrapper = styled.div`
-  margin-bottom: 1.4rem;
+  background-color: ${props => props.theme.tile.backgroundColor};
+  margin-top: 22px;
+  margin-bottom: 60px;
 `;
 
 export const Bar = styled.div`
   height: 5rem;
-  background-color: ${props => props.theme.tile.backgroundColor};
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2rem;
   font-size: ${props => props.theme.typography.smallFontSize};
-  margin-top: 22px;
-  margin-bottom: 60px;
 `;
 
 export const LeftSide = styled.div`

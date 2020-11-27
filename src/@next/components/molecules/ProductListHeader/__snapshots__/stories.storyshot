@@ -80,12 +80,13 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
 }
 
 .c1 {
-  margin-bottom: 1.4rem;
+  background-color: #f1f5f5;
+  margin-top: 22px;
+  margin-bottom: 60px;
 }
 
 .c2 {
   height: 5rem;
-  background-color: #f1f5f5;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -98,10 +99,7 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 0 2rem;
   font-size: 0.875rem;
-  margin-top: 22px;
-  margin-bottom: 60px;
 }
 
 .c3 {
@@ -161,109 +159,103 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
     className="c1"
   >
     <div
-      className="c2"
+      className="container c1"
     >
       <div
-        className="c3"
+        className="c2"
       >
-        <button
-          className="c4"
-          data-cy="filters__button"
-          onClick={[Function]}
+        <div
+          className="c3"
         >
-          <svg
-            height={24}
-            viewBox="0 0 32 32"
-            width={24}
+          <button
+            className="c4"
+            data-cy="filters__button"
+            onClick={[Function]}
           >
-            <path
-              d="M 14.25 18.679688 L 4.054688 2.261719 L 27.945312 2.261719 L 17.75 18.679688 L 17.75 24.902344 L 14.25 27.507812 Z M 12 19.324219 L 12 31.996094 L 20 26.039062 L 20 19.324219 L 31.996094 0.00390625 L 0.00390625 0.00390625 Z M 12 19.324219 "
-              fill="#323232"
-            />
-          </svg>
-          <span
-            className="c5"
-          >
-            FILTERS
-             
-          </span>
-        </button>
-      </div>
-      <div
-        className="c6"
-      >
-        <span
-          className="c7"
-          data-cy="no-of-products-found_label"
+            <span
+              className="c5"
+            >
+              Filtros
+               
+            </span>
+          </button>
+        </div>
+        <div
+          className="c6"
         >
           <span
-            className="c8"
+            className="c7"
+            data-cy="no-of-products-found_label"
           >
-            Products found: 
+            <span
+              className="c8"
+            >
+              Productos encontrados: 
+            </span>
+            255
           </span>
-          255
-        </span>
-        <span
-          className="c7"
-        >
-          <div
-            className="c9"
+          <span
+            className="c7"
           >
             <div
-              className="c10"
-              data-cy="dropdown-select"
+              className="c9"
             >
               <div
-                className="c11"
+                className="c10"
+                data-cy="dropdown-select"
               >
                 <div
-                  className="css-1pcexqc-container"
-                  onKeyDown={[Function]}
+                  className="c11"
                 >
                   <div
-                    className="c12"
-                    data-cy="dropdown-select-input"
-                    onClick={[Function]}
+                    className="css-1pcexqc-container"
+                    onKeyDown={[Function]}
                   >
-                    <span
-                      className="c13"
-                    >
-                      Sort by:
-                    </span>
                     <div
-                      className="c14"
+                      className="c12"
+                      data-cy="dropdown-select-input"
+                      onClick={[Function]}
                     >
-                       
-                    </div>
-                    <div
-                      className="c15"
-                      rotate="false"
-                    >
-                      <svg
-                        height={10}
-                        viewBox="0 0 32 32"
-                        width={10}
+                      <span
+                        className="c13"
                       >
-                        <path
-                          d="M16 29.856l-15.999-27.712h31.999l-15.999 27.712z"
-                          fill="#21125E"
-                        />
-                      </svg>
+                        Sort by:
+                      </span>
+                      <div
+                        className="c14"
+                      >
+                         
+                      </div>
+                      <div
+                        className="c15"
+                        rotate="false"
+                      >
+                        <svg
+                          height={10}
+                          viewBox="0 0 32 32"
+                          width={10}
+                        >
+                          <path
+                            d="M16 29.856l-15.999-27.712h31.999l-15.999 27.712z"
+                            fill="#21125E"
+                          />
+                        </svg>
+                      </div>
                     </div>
                   </div>
+                  <div
+                    className="c16"
+                  />
                 </div>
-                <div
-                  className="c16"
-                />
               </div>
             </div>
-          </div>
-        </span>
+          </span>
+        </div>
       </div>
+      <div
+        className="c17"
+      />
     </div>
-    <div
-      className="c17"
-    />
   </div>
   <div
     className="c18"
@@ -351,12 +343,13 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
 }
 
 .c1 {
-  margin-bottom: 1.4rem;
+  background-color: #f1f5f5;
+  margin-top: 22px;
+  margin-bottom: 60px;
 }
 
 .c2 {
   height: 5rem;
-  background-color: #f1f5f5;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -369,10 +362,7 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 0 2rem;
   font-size: 0.875rem;
-  margin-top: 22px;
-  margin-bottom: 60px;
 }
 
 .c3 {
@@ -439,120 +429,114 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
     className="c1"
   >
     <div
-      className="c2"
+      className="container c1"
     >
       <div
-        className="c3"
+        className="c2"
       >
-        <button
-          className="c4"
-          data-cy="filters__button"
-          onClick={[Function]}
+        <div
+          className="c3"
         >
-          <svg
-            height={24}
-            viewBox="0 0 32 32"
-            width={24}
+          <button
+            className="c4"
+            data-cy="filters__button"
+            onClick={[Function]}
           >
-            <path
-              d="M 14.25 18.679688 L 4.054688 2.261719 L 27.945312 2.261719 L 17.75 18.679688 L 17.75 24.902344 L 14.25 27.507812 Z M 12 19.324219 L 12 31.996094 L 20 26.039062 L 20 19.324219 L 31.996094 0.00390625 L 0.00390625 0.00390625 Z M 12 19.324219 "
-              fill="#323232"
-            />
-          </svg>
-          <span
-            className="c5"
-          >
-            FILTERS
-             
-            <span>
-              (
-              3
-              )
+            <span
+              className="c5"
+            >
+              Filtros
+               
+              <span>
+                (
+                3
+                )
+              </span>
             </span>
-          </span>
-        </button>
-        <button
-          className="c6"
-          onClick={[Function]}
-        >
-          CLEAR FILTERS
-        </button>
-      </div>
-      <div
-        className="c7"
-      >
-        <span
-          className="c8"
-          data-cy="no-of-products-found_label"
+          </button>
+          <button
+            className="c6"
+            onClick={[Function]}
+          >
+            Limpiar filtros
+          </button>
+        </div>
+        <div
+          className="c7"
         >
           <span
-            className="c9"
+            className="c8"
+            data-cy="no-of-products-found_label"
           >
-            Products found: 
+            <span
+              className="c9"
+            >
+              Productos encontrados: 
+            </span>
+            255
           </span>
-          255
-        </span>
-        <span
-          className="c8"
-        >
-          <div
-            className="c10"
+          <span
+            className="c8"
           >
             <div
-              className="c11"
-              data-cy="dropdown-select"
+              className="c10"
             >
               <div
-                className="c12"
+                className="c11"
+                data-cy="dropdown-select"
               >
                 <div
-                  className="css-1pcexqc-container"
-                  onKeyDown={[Function]}
+                  className="c12"
                 >
                   <div
-                    className="c13"
-                    data-cy="dropdown-select-input"
-                    onClick={[Function]}
+                    className="css-1pcexqc-container"
+                    onKeyDown={[Function]}
                   >
-                    <span
-                      className="c14"
-                    >
-                      Sort by:
-                    </span>
                     <div
-                      className="c15"
+                      className="c13"
+                      data-cy="dropdown-select-input"
+                      onClick={[Function]}
                     >
-                       
-                    </div>
-                    <div
-                      className="c16"
-                      rotate="false"
-                    >
-                      <svg
-                        height={10}
-                        viewBox="0 0 32 32"
-                        width={10}
+                      <span
+                        className="c14"
                       >
-                        <path
-                          d="M16 29.856l-15.999-27.712h31.999l-15.999 27.712z"
-                          fill="#21125E"
-                        />
-                      </svg>
+                        Sort by:
+                      </span>
+                      <div
+                        className="c15"
+                      >
+                         
+                      </div>
+                      <div
+                        className="c16"
+                        rotate="false"
+                      >
+                        <svg
+                          height={10}
+                          viewBox="0 0 32 32"
+                          width={10}
+                        >
+                          <path
+                            d="M16 29.856l-15.999-27.712h31.999l-15.999 27.712z"
+                            fill="#21125E"
+                          />
+                        </svg>
+                      </div>
                     </div>
                   </div>
+                  <div
+                    className="c17"
+                  />
                 </div>
-                <div
-                  className="c17"
-                />
               </div>
             </div>
-          </div>
-        </span>
+          </span>
+        </div>
       </div>
+      <div
+        className="c18"
+      />
     </div>
-    <div
-      className="c18"
-    />
   </div>
   <div
     className="c19"

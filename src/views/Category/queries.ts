@@ -1,5 +1,4 @@
 import gql from "graphql-tag";
-
 import { TypedQuery } from "../../core/queries";
 import {
   basicProductFragment,
@@ -12,6 +11,16 @@ export const categoryProductsQuery = gql`
   ${basicProductFragment}
   ${productPricingFragment}
   ${productVariantFragmentSimple}
+  
+  fragment CategoryData on Category {
+    edges {
+          node {
+            id
+            name
+          }
+        }
+  }
+
   query Category(
     $id: ID!
     $attributes: [AttributeInput]
@@ -61,12 +70,10 @@ export const categoryProductsQuery = gql`
         url
       }
       ancestors(last: 5) {
-        edges {
-          node {
-            id
-            name
-          }
-        }
+        ...CategoryData
+      }
+      children(first: 100) {
+        ...CategoryData
       }
     }
     attributes(filter: { inCategory: $id }, first: 100) {

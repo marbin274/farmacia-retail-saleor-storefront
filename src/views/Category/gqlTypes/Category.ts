@@ -2,7 +2,10 @@
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
-import { AttributeInput, ProductOrder } from "./../../../../gqlTypes/globalTypes";
+import {
+  AttributeInput,
+  ProductOrder,
+} from "./../../../../gqlTypes/globalTypes";
 
 // ====================================================
 // GraphQL query operation: Category
@@ -360,6 +363,7 @@ export interface Category_category {
    * List of ancestors of the category.
    */
   ancestors: Category_category_ancestors | null;
+  children: Category_category_ancestors | null;
 }
 
 export interface Category_attributes_edges_node_values {

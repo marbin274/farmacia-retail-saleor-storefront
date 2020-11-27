@@ -1,22 +1,18 @@
 import "./scss/index.scss";
-
 import * as React from "react";
-
 import { IFilterAttributes, IFilters } from "@types";
 import {
   Breadcrumbs,
   extractBreadcrumbs,
   ProductsFeatured,
 } from "../../components";
-
 import { ProductListHeader } from "../../@next/components/molecules";
 import { ProductListAUNA } from "../../@next/components/organisms";
 import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
-
 import { maybe } from "../../core/utils";
-
 import { Category_category, Category_products } from "./gqlTypes/Category";
 import { IAddToCartCallback } from "@temp/@next/components/molecules/ProductTileAUNA/types";
+import { CategoryNavigation } from "@temp/@next/components/organisms/CategoryNavigation/CategoryNavigation";
 
 interface SortItem {
   label: string;
@@ -99,14 +95,7 @@ const Page: React.FC<PageProps> = ({
         onCloseFilterAttribute={onAttributeFiltersChange}
       />
       <div className="container category__body">
-        <nav className="category__nav">
-          <p className="category__nav__title">Categorías</p>
-          <ul className="category__nav__list">
-            {["Resfriado y gripe", "Dolor de cabeza"].map(subCategory => (
-              <li className="category__nav__link">{subCategory}</li>
-            ))}
-          </ul>
-        </nav>
+        <CategoryNavigation categories={category.children.edges} />
         <section className="category__products">
           <Breadcrumbs breadcrumbs={extractBreadcrumbs(category)} />
           <FilterSidebar
