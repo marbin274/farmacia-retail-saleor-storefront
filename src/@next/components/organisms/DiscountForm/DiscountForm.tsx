@@ -25,7 +25,7 @@ export const DiscountForm: React.FC<IProps> = ({
     if (addPromoCode) {
       addPromoCode({
         giftCards: undefined,
-        promoCode: newInputCode,
+        promoCode: newInputCode.toUpperCase(),
       });
     }
     
@@ -67,7 +67,6 @@ export const DiscountForm: React.FC<IProps> = ({
         setFieldTouched,
       }) => {
         const hasErrors = !!(values.errors && values.errors.length);
-
         let discountDescription = "";
 
         if (discount?.voucherType === "shipping") {
@@ -94,7 +93,7 @@ export const DiscountForm: React.FC<IProps> = ({
                             data-cy="checkoutPaymentPromoCodeInput"
                             error={hasErrors}
                             name="inputCode"
-                            value={values.inputCode}
+                            value={promoCode ? values.inputCode : undefined}
                             label=""
                             placeholder="Inserta tu código"
                             onChange={handleChange}
@@ -104,6 +103,7 @@ export const DiscountForm: React.FC<IProps> = ({
                         <div className="button">
                           <Button
                             type="button"
+                            disabled={errors}
                             data-cy="checkoutPaymentPromoCodeBtn"
                             onClick={() => handleApplyBtnClick(values.inputCode)}
                           >

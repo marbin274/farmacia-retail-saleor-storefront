@@ -100,7 +100,7 @@ exports[`Storyshots @components/molecules/CartSummaryRow default 1`] = `
       data-cy="cartSummaryItemundefinedPrice"
     >
       <span>
-        PEN 123.00
+        $123.00
       </span>
     </div>
     <div

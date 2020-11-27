@@ -36,6 +36,7 @@ export interface IProps {
   addPromoCode: (promoCode: string) => void;
   removeVoucherCode: (voucherCode: string) => void;
   submitUnchangedDiscount: () => void;
+  clearPromoCodeErrors: () => void;
   /**
    * Selected payment gateway.
    */

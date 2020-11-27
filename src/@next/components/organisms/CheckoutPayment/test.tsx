@@ -15,6 +15,7 @@ describe("<CheckoutPayment />", () => {
     const selectPaymentGateway = jest.fn();
     const processPayment = jest.fn();
     const onGatewayError = jest.fn();
+    const clearPromoCodeErrors = jest.fn();
     const wrapper = mount(
       <CheckoutPayment
         {...LOGGED_IN_USER_PROPS}
@@ -26,6 +27,7 @@ describe("<CheckoutPayment />", () => {
         selectPaymentGateway={selectPaymentGateway}
         processPayment={processPayment}
         onGatewayError={onGatewayError}
+        clearPromoCodeErrors={clearPromoCodeErrors}
       />
     );
 

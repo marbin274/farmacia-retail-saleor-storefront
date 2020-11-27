@@ -16,6 +16,7 @@ const CheckoutPayment: React.FC<IProps> = ({
   gatewayErrors,
   billingErrors,
   promoCodeErrors,
+  clearPromoCodeErrors,
   selectedUserAddressId,
   userAddresses,
   billingAsShippingAddress = false,
@@ -57,6 +58,8 @@ const CheckoutPayment: React.FC<IProps> = ({
 
   const handleChangeShowPromoCodeForm = () => {
     setShowPromoCodeForm(!showPromoCodeForm);
+    promoCodeErrors = [];
+    clearPromoCodeErrors();
   };
 
   const handleSubmitPromoCode = (discountForm?: IDiscountFormData) => {

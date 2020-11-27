@@ -69,7 +69,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
   const [billingErrors, setBillingErrors] = useState<IFormError[]>([]);
   const [gatewayErrors, setGatewayErrors] = useState<IFormError[]>([]);
   const [promoCodeErrors, setPromoCodeErrors] = useState<IFormError[]>([]);
-
+  
   // this variable overrides billingAsShipping if config option billingAddressAlwaysSameAsShipping is set
   const billingAsShippingOverride = billingAddressAlwaysSameAsShipping ? true : billingAsShipping;
 
@@ -115,6 +115,10 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
       }
     },
   }));
+
+  const clearPromoCodeErrors = () => {
+    setPromoCodeErrors([]);
+  }
 
   const handleProcessPayment = async (
     gateway: string,
@@ -297,6 +301,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
       removeVoucherCode={handleRemovePromoCode}
       submitUnchangedDiscount={handleSubmitUnchangedDiscount}
       promoCodeErrors={promoCodeErrors}
+      clearPromoCodeErrors={clearPromoCodeErrors}
       gatewayFormId={checkoutGatewayFormId}
       gatewayFormRef={checkoutGatewayFormRef}
       userId={user?.id}
