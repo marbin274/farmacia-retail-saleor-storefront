@@ -2,7 +2,7 @@ import { mount, shallow } from "enzyme";
 import "jest-styled-components";
 import React from "react";
 
-import { Input, Select } from "@components/atoms";
+import { Input } from "@components/atoms";
 
 import { AddressForm } from ".";
 import { address, countries } from "./fixtures";
@@ -49,18 +49,10 @@ describe("<AddressForm />", () => {
         .at(n)
         .prop("value");
 
-    const getSelectValue = (n: number) =>
-      wrapper
-        .find(Select)
-        .at(n)
-        .prop("value");
-
     expect(getValue(0)).toEqual(INITIAL_DATA.address.firstName);
     expect(getValue(1)).toEqual(INITIAL_DATA.address.email);
     expect(getValue(2)).toEqual(INITIAL_DATA.address.phone);
     expect(getValue(3)).toEqual(INITIAL_DATA.address.streetAddress1);
     expect(getValue(4)).toEqual(INITIAL_DATA.address.streetAddress2);
-    expect(getSelectValue(0)).toEqual(INITIAL_DATA.address.country);
-    // expect(getSelectValue(1)).toEqual(INITIAL_DATA.address.city); TODO
   });
 });

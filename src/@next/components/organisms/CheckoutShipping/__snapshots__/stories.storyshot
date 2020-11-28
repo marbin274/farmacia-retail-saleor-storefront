@@ -119,7 +119,7 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
         <span
           className="c4"
         >
-          Metodo de envio (3 primeros)
+          Escoje el horario de entrega (3 primeros)
         </span>
       </div>
       <form

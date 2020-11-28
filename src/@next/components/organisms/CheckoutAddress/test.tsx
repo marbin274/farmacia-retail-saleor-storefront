@@ -5,7 +5,11 @@ import React from "react";
 import { Input, Select } from "@components/atoms";
 
 import { CheckoutAddress } from ".";
-import { ANONYMOUS_USER_PROPS, LOGGED_IN_USER_PROPS, mockCity } from "./fixtures";
+import {
+  ANONYMOUS_USER_PROPS,
+  LOGGED_IN_USER_PROPS,
+  mockCity,
+} from "./fixtures";
 
 describe("<CheckoutAddress />", () => {
   it("renders user addresses", () => {
@@ -46,18 +50,11 @@ describe("<CheckoutAddress />", () => {
     expect(getValue(2)).toEqual(address.phone);
     expect(getValue(3)).toEqual(address.streetAddress1);
     expect(getValue(4)).toEqual(address.streetAddress2);
-    // expect(getValue(5)).toEqual(address.city);
+
     expect(
       wrapper
         .find(Select)
         .at(0)
-        .prop("value").code
-    ).toEqual(address.country?.code);
-    
-    expect(
-      wrapper
-        .find(Select)
-        .at(1)
         .prop("value")
     ).toEqual(mockCity);
   });

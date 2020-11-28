@@ -12,25 +12,25 @@ export const HOME_PAGE_CONF = {
   SORT_FIELD: ProductOrderField.PRICE,
 };
 export const PROVIDERS = {
-  AUNA : {
-    id: 'farmacia-retail.payments.niubiz',
+  AUNA: {
+    id: "farmacia-retail.payments.niubiz",
     label: "AUNA Payments Gateway",
   },
   BRAINTREE: {
-    id: 'mirumee.payments.braintree',
+    id: "mirumee.payments.braintree",
     label: "Braintree",
   },
   CASH: {
-    id: 'mirumee.payments.cash',
+    id: "mirumee.payments.cash",
     label: "Contra entrega : paga en efectivo a la entrega ",
   },
   DUMMY: {
-    id: 'mirumee.payments.dummy',
+    id: "mirumee.payments.dummy",
     label: "AUNA Payments Gateway",
   },
   STRIPE: {
     href: "https://js.stripe.com/v3/",
-    id: 'mirumee.payments.stripe',
+    id: "mirumee.payments.stripe",
     label: "Stripe",
   },
 };
@@ -65,8 +65,7 @@ export const SOCIAL_MEDIA = [
 ];
 export const META_DEFAULTS = {
   custom: [],
-  description:
-    "Written with React and TypeScript.",
+  description: "Written with React and TypeScript.",
   image: `${window.location.origin}${require("../images/logo.svg")}`,
   title: "Farmacia Digital",
   type: "website",
@@ -83,7 +82,7 @@ export const CHECKOUT_STEPS = [
     index: 0,
     link: "/checkout/address",
     name: "Paso 1: Completa los datos",
-    nextActionName: "Ir a Delivery",
+    nextActionName: "Ir a Pago",
     nextStepLink: "/checkout/payment",
     onlyIfShippingRequired: true,
     step: CheckoutStep.Address,

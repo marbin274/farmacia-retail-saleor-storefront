@@ -18,7 +18,6 @@ const CheckoutShipping: React.FC<IProps> = ({
   formId,
   formRef,
 }: IProps) => {
-
   const renderGroupLabel = (id: number, title: string) => (
     <S.GroupLabel>
       <S.GroupLabelIndex>{id}</S.GroupLabelIndex>
@@ -30,7 +29,7 @@ const CheckoutShipping: React.FC<IProps> = ({
     if (selectShippingMethod && value) {
       selectShippingMethod(value, true);
     }
-  }
+  };
 
   return (
     <section>
@@ -56,50 +55,51 @@ const CheckoutShipping: React.FC<IProps> = ({
         }) => {
           return (
             <S.FieldsGroup>
-              {renderGroupLabel(3, 'Metodo de envio (3 primeros)')}
+              {renderGroupLabel(3, "Escoje el horario de entrega (3 primeros)")}
               <S.ShippingMethodForm
-              id={formId}
-              ref={formRef}
-              onSubmit={handleSubmit}
-            >
-              {shippingMethods.slice(0 , 3).map(({ id, name, price }, index) => {
-                const checked =
-                  !!values.shippingMethod && values.shippingMethod === id;
+                id={formId}
+                ref={formRef}
+                onSubmit={handleSubmit}
+              >
+                {shippingMethods
+                  .slice(0, 3)
+                  .map(({ id, name, price }, index) => {
+                    const checked =
+                      !!values.shippingMethod && values.shippingMethod === id;
 
-                return (
-                  <S.Tile checked={checked} key={id}>
-                    <Radio
-                      data-cy={`checkoutShippingMethodOption${index}Input`}
-                      name="shippingMethod"
-                      value={id}
-                      checked={checked}
-                      customLabel={true}
-                      // onChange={() => setFieldValue("shippingMethod", id)}
-                       onChange={() => {
-                        setFieldValue("shippingMethod", id);
-                        setShippingMethod(id);
-                       }}
-                    >
-                      <S.RadioContent>
-                        <S.RadioName
-                          data-cy={`checkoutShippingMethodOption${index}Name`}
+                    return (
+                      <S.Tile checked={checked} key={id}>
+                        <Radio
+                          data-cy={`checkoutShippingMethodOption${index}Input`}
+                          name="shippingMethod"
+                          value={id}
                           checked={checked}
+                          customLabel={true}
+                          onChange={() => {
+                            setFieldValue("shippingMethod", id);
+                            setShippingMethod(id);
+                          }}
                         >
-                          {name}
-                        </S.RadioName>
-                        <S.Price checked={checked}>
-                          <Money
-                            data-cy={`checkoutShippingMethodOption${index}Price`}
-                            money={price}
-                          />
-                        </S.Price>
-                      </S.RadioContent>
-                    </Radio>
-                  </S.Tile>
-                );
-              })}
-              <ErrorMessage errors={errors} />
-            </S.ShippingMethodForm>
+                          <S.RadioContent>
+                            <S.RadioName
+                              data-cy={`checkoutShippingMethodOption${index}Name`}
+                              checked={checked}
+                            >
+                              {name}
+                            </S.RadioName>
+                            <S.Price checked={checked}>
+                              <Money
+                                data-cy={`checkoutShippingMethodOption${index}Price`}
+                                money={price}
+                              />
+                            </S.Price>
+                          </S.RadioContent>
+                        </Radio>
+                      </S.Tile>
+                    );
+                  })}
+                <ErrorMessage errors={errors} />
+              </S.ShippingMethodForm>
             </S.FieldsGroup>
           );
         }}

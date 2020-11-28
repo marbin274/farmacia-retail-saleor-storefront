@@ -235,6 +235,8 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
+                    placeholder="Nombre Completo"
+                    value=""
                   />
                   <label
                     className="c13"
@@ -271,6 +273,8 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
+                    placeholder="Telefono"
+                    value=""
                   />
                   <label
                     className="c13"
@@ -325,6 +329,8 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
+                    placeholder="Dirección"
+                    value=""
                   />
                   <label
                     className="c13"
@@ -357,6 +363,8 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
+                    placeholder="Información adicional (opcional)"
+                    value=""
                   />
                   <label
                     className="c13"
@@ -410,115 +418,9 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                           autoCapitalize="none"
                           autoComplete="off"
                           autoCorrect="off"
-                          data-cy="addressFormCountry"
-                          disabled={false}
-                          id="react-select-7-input"
-                          onBlur={[Function]}
-                          onChange={[Function]}
-                          onFocus={[Function]}
-                          spellCheck="false"
-                          style={
-                            Object {
-                              "background": 0,
-                              "border": 0,
-                              "boxSizing": "content-box",
-                              "color": "inherit",
-                              "fontSize": "inherit",
-                              "label": "input",
-                              "opacity": 1,
-                              "outline": 0,
-                              "padding": 0,
-                              "width": "1px",
-                            }
-                          }
-                          tabIndex="0"
-                          type="text"
-                          value=""
-                        />
-                        <div
-                          style={
-                            Object {
-                              "height": 0,
-                              "left": 0,
-                              "overflow": "scroll",
-                              "position": "absolute",
-                              "top": 0,
-                              "visibility": "hidden",
-                              "whiteSpace": "pre",
-                            }
-                          }
-                        >
-                          
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    className="c16"
-                    rotate="false"
-                  >
-                    <svg
-                      height={10}
-                      viewBox="0 0 32 32"
-                      width={10}
-                    >
-                      <path
-                        d="M16 29.856l-15.999-27.712h31.999l-15.999 27.712z"
-                        fill="inherit"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <label
-                  className="c13"
-                  disabled={false}
-                >
-                  Pais
-                </label>
-              </div>
-              <div
-                className="c17"
-              />
-            </div>
-            <div
-              className="c15"
-            >
-              <div
-                className="css-1pcexqc-container"
-                onKeyDown={[Function]}
-              >
-                <div
-                  className="css-d1vkk-control"
-                  onMouseDown={[Function]}
-                  onTouchEnd={[Function]}
-                >
-                  <div
-                    className="css-tntsk8"
-                  >
-                    <div
-                      className="css-151xaom-placeholder"
-                    >
-                      
-                    </div>
-                    <div
-                      className="css-1g6gooi"
-                    >
-                      <div
-                        className=""
-                        style={
-                          Object {
-                            "display": "inline-block",
-                          }
-                        }
-                      >
-                        <input
-                          aria-autocomplete="list"
-                          autoCapitalize="none"
-                          autoComplete="off"
-                          autoCorrect="off"
                           data-cy="addressFormCity"
                           disabled={false}
-                          id="react-select-8-input"
+                          id="react-select-7-input"
                           onBlur={[Function]}
                           onChange={[Function]}
                           onFocus={[Function]}
@@ -860,6 +762,8 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
+                    placeholder="Nombre Completo"
+                    value=""
                   />
                   <label
                     className="c13"
@@ -906,6 +810,8 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
+                    placeholder="Telefono"
+                    value=""
                   />
                   <label
                     className="c13"
@@ -960,6 +866,8 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
+                    placeholder="Dirección"
+                    value=""
                   />
                   <label
                     className="c13"
@@ -992,6 +900,8 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
+                    placeholder="Información adicional (opcional)"
+                    value=""
                   />
                   <label
                     className="c13"
@@ -1045,115 +955,9 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                           autoCapitalize="none"
                           autoComplete="off"
                           autoCorrect="off"
-                          data-cy="addressFormCountry"
-                          disabled={false}
-                          id="react-select-9-input"
-                          onBlur={[Function]}
-                          onChange={[Function]}
-                          onFocus={[Function]}
-                          spellCheck="false"
-                          style={
-                            Object {
-                              "background": 0,
-                              "border": 0,
-                              "boxSizing": "content-box",
-                              "color": "inherit",
-                              "fontSize": "inherit",
-                              "label": "input",
-                              "opacity": 1,
-                              "outline": 0,
-                              "padding": 0,
-                              "width": "1px",
-                            }
-                          }
-                          tabIndex="0"
-                          type="text"
-                          value=""
-                        />
-                        <div
-                          style={
-                            Object {
-                              "height": 0,
-                              "left": 0,
-                              "overflow": "scroll",
-                              "position": "absolute",
-                              "top": 0,
-                              "visibility": "hidden",
-                              "whiteSpace": "pre",
-                            }
-                          }
-                        >
-                          
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    className="c19"
-                    rotate="false"
-                  >
-                    <svg
-                      height={10}
-                      viewBox="0 0 32 32"
-                      width={10}
-                    >
-                      <path
-                        d="M16 29.856l-15.999-27.712h31.999l-15.999 27.712z"
-                        fill="inherit"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <label
-                  className="c13"
-                  disabled={false}
-                >
-                  Pais
-                </label>
-              </div>
-              <div
-                className="c20"
-              />
-            </div>
-            <div
-              className="c18"
-            >
-              <div
-                className="css-1pcexqc-container"
-                onKeyDown={[Function]}
-              >
-                <div
-                  className="css-d1vkk-control"
-                  onMouseDown={[Function]}
-                  onTouchEnd={[Function]}
-                >
-                  <div
-                    className="css-tntsk8"
-                  >
-                    <div
-                      className="css-151xaom-placeholder"
-                    >
-                      
-                    </div>
-                    <div
-                      className="css-1g6gooi"
-                    >
-                      <div
-                        className=""
-                        style={
-                          Object {
-                            "display": "inline-block",
-                          }
-                        }
-                      >
-                        <input
-                          aria-autocomplete="list"
-                          autoCapitalize="none"
-                          autoComplete="off"
-                          autoCorrect="off"
                           data-cy="addressFormCity"
                           disabled={false}
-                          id="react-select-10-input"
+                          id="react-select-8-input"
                           onBlur={[Function]}
                           onChange={[Function]}
                           onFocus={[Function]}
@@ -1467,6 +1271,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
+                    placeholder="Nombre Completo"
                     value="John"
                   />
                   <label
@@ -1504,6 +1309,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
+                    placeholder="Telefono"
                     value="555-55555"
                   />
                   <label
@@ -1559,6 +1365,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
+                    placeholder="Dirección"
                     value="Street line 1"
                   />
                   <label
@@ -1592,6 +1399,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
+                    placeholder="Información adicional (opcional)"
                     value="Street line 2"
                   />
                   <label
@@ -1610,112 +1418,6 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
           <div
             className="c8"
           >
-            <div
-              className="c15"
-            >
-              <div
-                className="css-1pcexqc-container"
-                onKeyDown={[Function]}
-              >
-                <div
-                  className="css-d1vkk-control"
-                  onMouseDown={[Function]}
-                  onTouchEnd={[Function]}
-                >
-                  <div
-                    className="css-tntsk8"
-                  >
-                    <div
-                      className="css-dvua67-singleValue"
-                    >
-                      United States of America
-                    </div>
-                    <div
-                      className="css-1g6gooi"
-                    >
-                      <div
-                        className=""
-                        style={
-                          Object {
-                            "display": "inline-block",
-                          }
-                        }
-                      >
-                        <input
-                          aria-autocomplete="list"
-                          autoCapitalize="none"
-                          autoComplete="off"
-                          autoCorrect="off"
-                          data-cy="addressFormCountry"
-                          disabled={false}
-                          id="react-select-11-input"
-                          onBlur={[Function]}
-                          onChange={[Function]}
-                          onFocus={[Function]}
-                          spellCheck="false"
-                          style={
-                            Object {
-                              "background": 0,
-                              "border": 0,
-                              "boxSizing": "content-box",
-                              "color": "inherit",
-                              "fontSize": "inherit",
-                              "label": "input",
-                              "opacity": 1,
-                              "outline": 0,
-                              "padding": 0,
-                              "width": "1px",
-                            }
-                          }
-                          tabIndex="0"
-                          type="text"
-                          value=""
-                        />
-                        <div
-                          style={
-                            Object {
-                              "height": 0,
-                              "left": 0,
-                              "overflow": "scroll",
-                              "position": "absolute",
-                              "top": 0,
-                              "visibility": "hidden",
-                              "whiteSpace": "pre",
-                            }
-                          }
-                        >
-                          
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    className="c16"
-                    rotate="false"
-                  >
-                    <svg
-                      height={10}
-                      viewBox="0 0 32 32"
-                      width={10}
-                    >
-                      <path
-                        d="M16 29.856l-15.999-27.712h31.999l-15.999 27.712z"
-                        fill="inherit"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <label
-                  className="c13"
-                  disabled={false}
-                >
-                  Pais
-                </label>
-              </div>
-              <div
-                className="c17"
-              />
-            </div>
             <div
               className="c15"
             >
@@ -1754,7 +1456,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                           autoCorrect="off"
                           data-cy="addressFormCity"
                           disabled={false}
-                          id="react-select-12-input"
+                          id="react-select-9-input"
                           onBlur={[Function]}
                           onChange={[Function]}
                           onFocus={[Function]}

@@ -238,6 +238,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
+                    placeholder="Nombre Completo"
                     value="John"
                   />
                   <label
@@ -271,6 +272,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
+                    placeholder="Email"
                     value="abc@xyz.com"
                   />
                   <label
@@ -308,6 +310,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
+                    placeholder="Telefono"
                     value="555-5555"
                   />
                   <label
@@ -363,6 +366,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
+                    placeholder="Dirección"
                     value="St Street"
                   />
                   <label
@@ -396,6 +400,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
+                    placeholder="Información adicional (opcional)"
                     value="Second"
                   />
                   <label
@@ -414,112 +419,6 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
           <div
             className="c8"
           >
-            <div
-              className="c15"
-            >
-              <div
-                className="css-1pcexqc-container"
-                onKeyDown={[Function]}
-              >
-                <div
-                  className="css-d1vkk-control"
-                  onMouseDown={[Function]}
-                  onTouchEnd={[Function]}
-                >
-                  <div
-                    className="css-tntsk8"
-                  >
-                    <div
-                      className="css-dvua67-singleValue"
-                    >
-                      Poland
-                    </div>
-                    <div
-                      className="css-1g6gooi"
-                    >
-                      <div
-                        className=""
-                        style={
-                          Object {
-                            "display": "inline-block",
-                          }
-                        }
-                      >
-                        <input
-                          aria-autocomplete="list"
-                          autoCapitalize="none"
-                          autoComplete="off"
-                          autoCorrect="off"
-                          data-cy="addressFormCountry"
-                          disabled={false}
-                          id="react-select-13-input"
-                          onBlur={[Function]}
-                          onChange={[Function]}
-                          onFocus={[Function]}
-                          spellCheck="false"
-                          style={
-                            Object {
-                              "background": 0,
-                              "border": 0,
-                              "boxSizing": "content-box",
-                              "color": "inherit",
-                              "fontSize": "inherit",
-                              "label": "input",
-                              "opacity": 1,
-                              "outline": 0,
-                              "padding": 0,
-                              "width": "1px",
-                            }
-                          }
-                          tabIndex="0"
-                          type="text"
-                          value=""
-                        />
-                        <div
-                          style={
-                            Object {
-                              "height": 0,
-                              "left": 0,
-                              "overflow": "scroll",
-                              "position": "absolute",
-                              "top": 0,
-                              "visibility": "hidden",
-                              "whiteSpace": "pre",
-                            }
-                          }
-                        >
-                          
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    className="c16"
-                    rotate="false"
-                  >
-                    <svg
-                      height={10}
-                      viewBox="0 0 32 32"
-                      width={10}
-                    >
-                      <path
-                        d="M16 29.856l-15.999-27.712h31.999l-15.999 27.712z"
-                        fill="inherit"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <label
-                  className="c13"
-                  disabled={false}
-                >
-                  Pais
-                </label>
-              </div>
-              <div
-                className="c17"
-              />
-            </div>
             <div
               className="c15"
             >
@@ -558,7 +457,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                           autoCorrect="off"
                           data-cy="addressFormCity"
                           disabled={false}
-                          id="react-select-14-input"
+                          id="react-select-10-input"
                           onBlur={[Function]}
                           onChange={[Function]}
                           onFocus={[Function]}
