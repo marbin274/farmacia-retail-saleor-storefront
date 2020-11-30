@@ -1,15 +1,11 @@
 /* tslint:disable */
 
 import React from "react";
-import { Link } from "react-router-dom";
-
 import { Button, Loader } from "@components/atoms";
 import { ProductTileAUNA } from "@components/molecules";
-
-import { generateProductUrl } from "@temp/core/utils";
-
 import * as S from "./styles";
 import { IProps } from "./types";
+import { generateProductUrl } from "@temp/core/utils";
 
 export const ProductListAUNA: React.FC<IProps> = ({
   addToCart,
@@ -17,18 +13,18 @@ export const ProductListAUNA: React.FC<IProps> = ({
   loading = false,
   onLoadMore = () => null,
   products,
+  items,
 }: IProps) => {
-
   return (
     <>
       <S.List>
         {products.map(product => (
-          <Link
-            to={generateProductUrl(product.id, product.name)}
-            key={product.id}
-          >
-            <ProductTileAUNA addToCart={addToCart} product={product} />
-          </Link>
+          <ProductTileAUNA
+            addToCart={addToCart}
+            product={product}
+            linkProduct={generateProductUrl(product.id, product.name)}
+            items={items}
+          />
         ))}
       </S.List>
       <S.Loader>

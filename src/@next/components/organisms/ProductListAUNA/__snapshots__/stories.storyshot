@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   margin: 20px;
 }
 
-.c11 {
+.c8 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -17,7 +17,40 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   box-sizing: border-box;
 }
 
-.c9 {
+.c4 {
+  background-color: #00B0CA;
+  padding: 0.9rem 3.7rem;
+  border: none;
+  border-radius: 40px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  outline: none;
+  cursor: pointer;
+  color: #fff;
+  width: auto;
+}
+
+.c4:hover {
+  background-color: #0BC1DC;
+  color: #fff;
+}
+
+.c4:active {
+  background-color: #029FB7;
+  box-shadow: -3px 3px 14px 0px rgba(129,67,67,0.2);
+}
+
+.c4:disabled {
+  background-color: #F1F2F7;
+  color: #B8BCD5;
+}
+
+.c4:disabled,
+.c4:disabled:hover {
+  cursor: default;
+}
+
+.c7 {
   background-color: #fff;
   padding: 0.9rem 3.7rem;
   border: none;
@@ -33,27 +66,27 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   border-right: 1px solid #00B0CA;
 }
 
-.c9:hover {
+.c7:hover {
   background-color: #fff;
   color: #00B0CA;
 }
 
-.c9:active {
+.c7:active {
   background-color: #029FB7;
   box-shadow: -3px 3px 14px 0px rgba(129,67,67,0.2);
 }
 
-.c9:disabled {
+.c7:disabled {
   background-color: #F1F2F7;
   color: #B8BCD5;
 }
 
-.c9:disabled,
-.c9:disabled:hover {
+.c7:disabled,
+.c7:disabled:hover {
   cursor: default;
 }
 
-.c10 {
+.c5 {
   display: inline-block;
   font-size: 1.125rem;
   font-weight: 400;
@@ -67,13 +100,13 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
 .c2 {
   color: #131336;
   background: inherit;
-  border-bottom: 1px solid #E4E5ED;
   height: 24rem;
   text-align: center;
   -webkit-transition: 0 .3s;
   transition: 0 .3s;
   width: 11rem;
   position: relative;
+  margin-bottom: 1.5rem;
 }
 
 .c2:hover {
@@ -81,58 +114,85 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   translate-Y: -.1rem;
 }
 
-.c4 {
-  font-family: 'Poppins',sans-serif;
-  font-size: 1.2rem;
-  font-weight: normal;
-  line-height: 1.4;
-  margin-top: .5rem;
-  padding: .4rem 0;
-  text-align: center;
-}
-
-.c5 {
-  color: #9194A7;
-  font-family: 'Poppins',sans-serif;
-  font-size: 1rem;
-  font-weight: normal;
-  padding: .1rem 0;
-  text-align: center;
-}
-
-.c6 {
-  font-family: 'Poppins',sans-serif;
-  font-size: 1.5rem;
-  font-weight: normal;
-  margin-top: .5rem;
-  padding: .7rem 0;
-  text-align: center;
-}
-
-.c3 {
+.c2 .img {
   width: auto;
   height: 176px;
   max-width: 100%;
-  margin-top: 2.5rem;
   vertical-align: middle;
 }
 
-.c3 > img {
+.c2 .img img {
   width: auto;
   height: auto;
   max-width: 100%;
   vertical-align: middle;
 }
 
-.c7 {
-  bottom: .2rem;
-  border: 1px solid #fff;
+.c2 .description {
+  font-family: "Poppins",sans-serif;
+  font-size: 1.2rem;
+  height: 35%;
+  font-weight: normal;
+  line-height: 1.4;
+  padding: 0.4rem 0;
+  text-align: center;
+  overflow: hidden;
+}
+
+.c2 .price {
+  font-family: "Poppins",sans-serif;
+  font-size: 1.5rem;
+  font-weight: normal;
+  padding: 0.7rem 0;
+  text-align: center;
+}
+
+.c2 .button {
+  border-bottom: 1px solid #B8BCD5;
+  padding-bottom: 0.5rem;
+}
+
+.c2 .button button {
+  background: transparent;
+  color: #00B0CA;
+  border: solid 1px transparent;
+  cursor: pointer;
+  width: 20%;
+  padding: 0.5rem 0.5rem 0rem 0.35rem;
   border-radius: 6px;
-  color: #E4E5ED;
-  font-size: 1.6rem;
-  left: calc((11rem - 3.6rem) / 2);
-  padding: 1.2rem;
-  position: absolute;
+}
+
+.c2 .button button span {
+  font-size: 2rem;
+}
+
+.c2 .button button:hover {
+  border-color: transparent;
+}
+
+.c2 .button button:active {
+  background: transparent !important;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.c2 .button button:focus {
+  border-color: transparent;
+}
+
+.c2 .button button:disabled {
+  color: #B8BCD5;
+  border-color: transparent;
+  cursor: not-allowed;
+}
+
+.c3 {
+  color: #9194A7;
+  font-family: "Poppins",sans-serif;
+  font-size: 1rem;
+  font-weight: normal;
+  padding: 0.1rem 0;
   text-align: center;
 }
 
@@ -142,13 +202,20 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   grid-gap: 3rem 3rem;
 }
 
-.c8 {
+.c6 {
   text-align: center;
   margin: 2.5rem 0;
 }
 
 @media (max-width:540px) {
-  .c9 {
+  .c4 {
+    padding: 0.9rem 1rem;
+    width: 88%;
+  }
+}
+
+@media (max-width:540px) {
+  .c7 {
     padding: 0.9rem 1rem;
     width: 88%;
   }
@@ -174,277 +241,427 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   <div
     className="c1"
   >
-    <a
-      href="/product/apple-juice/72/"
-      onClick={[Function]}
+    <div
+      className="c2"
+      data-cy="product-tile"
     >
-      <div
-        className="c2"
-        data-cy="product-tile"
+      <a
+        href="/product/apple-juice/72/"
+        onClick={[Function]}
       >
         <div
-          className="c3"
+          className="img"
         >
-          <img
-            alt=""
-            onError={[Function]}
-            src="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png"
-            srcSet="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png 1x, http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-510x510.png 2x"
-          />
+          <div
+            className=""
+          >
+            <img
+              alt=""
+              onError={[Function]}
+              src="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png"
+              srcSet="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png 1x, http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-510x510.png 2x"
+            />
+          </div>
         </div>
-        <h4
-          className="c4"
-        >
-          Apple Juice
-        </h4>
-        <h5
-          className="c5"
-        >
-          No disponible
-           
-        </h5>
-        <p
-          className="c6"
-        >
-          <span>
-            
-          </span>
-        </p>
         <div
-          className="c7"
+          className="description"
         >
-          +
+          <h4
+            className=""
+          >
+            Apple Juice
+          </h4>
+          <h5
+            className="c3"
+          >
+            No disponible
+             
+          </h5>
         </div>
-      </div>
-    </a>
-    <a
-      href="/product/apple-juice/72/"
-      onClick={[Function]}
-    >
+        <div
+          className="price"
+        >
+          <p
+            className=""
+          >
+            <span>
+              
+            </span>
+          </p>
+        </div>
+      </a>
       <div
-        className="c2"
-        data-cy="product-tile"
+        className="button"
+      >
+        <button
+          className="c4"
+          color="primary"
+          disabled={true}
+          onClick={[Function]}
+          size="md"
+        >
+          <span
+            className="c5"
+            size="md"
+          >
+            +
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      className="c2"
+      data-cy="product-tile"
+    >
+      <a
+        href="/product/apple-juice/72/"
+        onClick={[Function]}
       >
         <div
-          className="c3"
+          className="img"
         >
-          <img
-            alt=""
-            onError={[Function]}
-            src="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png"
-            srcSet="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png 1x, http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-510x510.png 2x"
-          />
+          <div
+            className=""
+          >
+            <img
+              alt=""
+              onError={[Function]}
+              src="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png"
+              srcSet="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png 1x, http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-510x510.png 2x"
+            />
+          </div>
         </div>
-        <h4
-          className="c4"
-        >
-          Apple Juice
-        </h4>
-        <h5
-          className="c5"
-        >
-          No disponible
-           
-        </h5>
-        <p
-          className="c6"
-        >
-          <span>
-            
-          </span>
-        </p>
         <div
-          className="c7"
+          className="description"
         >
-          +
+          <h4
+            className=""
+          >
+            Apple Juice
+          </h4>
+          <h5
+            className="c3"
+          >
+            No disponible
+             
+          </h5>
         </div>
-      </div>
-    </a>
-    <a
-      href="/product/apple-juice/72/"
-      onClick={[Function]}
-    >
+        <div
+          className="price"
+        >
+          <p
+            className=""
+          >
+            <span>
+              
+            </span>
+          </p>
+        </div>
+      </a>
       <div
-        className="c2"
-        data-cy="product-tile"
+        className="button"
+      >
+        <button
+          className="c4"
+          color="primary"
+          disabled={true}
+          onClick={[Function]}
+          size="md"
+        >
+          <span
+            className="c5"
+            size="md"
+          >
+            +
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      className="c2"
+      data-cy="product-tile"
+    >
+      <a
+        href="/product/apple-juice/72/"
+        onClick={[Function]}
       >
         <div
-          className="c3"
+          className="img"
         >
-          <img
-            alt=""
-            onError={[Function]}
-            src="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png"
-            srcSet="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png 1x, http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-510x510.png 2x"
-          />
+          <div
+            className=""
+          >
+            <img
+              alt=""
+              onError={[Function]}
+              src="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png"
+              srcSet="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png 1x, http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-510x510.png 2x"
+            />
+          </div>
         </div>
-        <h4
-          className="c4"
-        >
-          Apple Juice
-        </h4>
-        <h5
-          className="c5"
-        >
-          No disponible
-           
-        </h5>
-        <p
-          className="c6"
-        >
-          <span>
-            
-          </span>
-        </p>
         <div
-          className="c7"
+          className="description"
         >
-          +
+          <h4
+            className=""
+          >
+            Apple Juice
+          </h4>
+          <h5
+            className="c3"
+          >
+            No disponible
+             
+          </h5>
         </div>
-      </div>
-    </a>
-    <a
-      href="/product/apple-juice/72/"
-      onClick={[Function]}
-    >
+        <div
+          className="price"
+        >
+          <p
+            className=""
+          >
+            <span>
+              
+            </span>
+          </p>
+        </div>
+      </a>
       <div
-        className="c2"
-        data-cy="product-tile"
+        className="button"
+      >
+        <button
+          className="c4"
+          color="primary"
+          disabled={true}
+          onClick={[Function]}
+          size="md"
+        >
+          <span
+            className="c5"
+            size="md"
+          >
+            +
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      className="c2"
+      data-cy="product-tile"
+    >
+      <a
+        href="/product/apple-juice/72/"
+        onClick={[Function]}
       >
         <div
-          className="c3"
+          className="img"
         >
-          <img
-            alt=""
-            onError={[Function]}
-            src="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png"
-            srcSet="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png 1x, http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-510x510.png 2x"
-          />
+          <div
+            className=""
+          >
+            <img
+              alt=""
+              onError={[Function]}
+              src="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png"
+              srcSet="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png 1x, http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-510x510.png 2x"
+            />
+          </div>
         </div>
-        <h4
-          className="c4"
-        >
-          Apple Juice
-        </h4>
-        <h5
-          className="c5"
-        >
-          No disponible
-           
-        </h5>
-        <p
-          className="c6"
-        >
-          <span>
-            
-          </span>
-        </p>
         <div
-          className="c7"
+          className="description"
         >
-          +
+          <h4
+            className=""
+          >
+            Apple Juice
+          </h4>
+          <h5
+            className="c3"
+          >
+            No disponible
+             
+          </h5>
         </div>
-      </div>
-    </a>
-    <a
-      href="/product/apple-juice/72/"
-      onClick={[Function]}
-    >
+        <div
+          className="price"
+        >
+          <p
+            className=""
+          >
+            <span>
+              
+            </span>
+          </p>
+        </div>
+      </a>
       <div
-        className="c2"
-        data-cy="product-tile"
+        className="button"
+      >
+        <button
+          className="c4"
+          color="primary"
+          disabled={true}
+          onClick={[Function]}
+          size="md"
+        >
+          <span
+            className="c5"
+            size="md"
+          >
+            +
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      className="c2"
+      data-cy="product-tile"
+    >
+      <a
+        href="/product/apple-juice/72/"
+        onClick={[Function]}
       >
         <div
-          className="c3"
+          className="img"
         >
-          <img
-            alt=""
-            onError={[Function]}
-            src="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png"
-            srcSet="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png 1x, http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-510x510.png 2x"
-          />
+          <div
+            className=""
+          >
+            <img
+              alt=""
+              onError={[Function]}
+              src="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png"
+              srcSet="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png 1x, http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-510x510.png 2x"
+            />
+          </div>
         </div>
-        <h4
-          className="c4"
-        >
-          Apple Juice
-        </h4>
-        <h5
-          className="c5"
-        >
-          No disponible
-           
-        </h5>
-        <p
-          className="c6"
-        >
-          <span>
-            
-          </span>
-        </p>
         <div
-          className="c7"
+          className="description"
         >
-          +
+          <h4
+            className=""
+          >
+            Apple Juice
+          </h4>
+          <h5
+            className="c3"
+          >
+            No disponible
+             
+          </h5>
         </div>
-      </div>
-    </a>
-    <a
-      href="/product/apple-juice/72/"
-      onClick={[Function]}
-    >
+        <div
+          className="price"
+        >
+          <p
+            className=""
+          >
+            <span>
+              
+            </span>
+          </p>
+        </div>
+      </a>
       <div
-        className="c2"
-        data-cy="product-tile"
+        className="button"
+      >
+        <button
+          className="c4"
+          color="primary"
+          disabled={true}
+          onClick={[Function]}
+          size="md"
+        >
+          <span
+            className="c5"
+            size="md"
+          >
+            +
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      className="c2"
+      data-cy="product-tile"
+    >
+      <a
+        href="/product/apple-juice/72/"
+        onClick={[Function]}
       >
         <div
-          className="c3"
+          className="img"
         >
-          <img
-            alt=""
-            onError={[Function]}
-            src="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png"
-            srcSet="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png 1x, http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-510x510.png 2x"
-          />
+          <div
+            className=""
+          >
+            <img
+              alt=""
+              onError={[Function]}
+              src="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png"
+              srcSet="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png 1x, http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-510x510.png 2x"
+            />
+          </div>
         </div>
-        <h4
-          className="c4"
-        >
-          Apple Juice
-        </h4>
-        <h5
-          className="c5"
-        >
-          No disponible
-           
-        </h5>
-        <p
-          className="c6"
-        >
-          <span>
-            
-          </span>
-        </p>
         <div
-          className="c7"
+          className="description"
         >
-          +
+          <h4
+            className=""
+          >
+            Apple Juice
+          </h4>
+          <h5
+            className="c3"
+          >
+            No disponible
+             
+          </h5>
         </div>
+        <div
+          className="price"
+        >
+          <p
+            className=""
+          >
+            <span>
+              
+            </span>
+          </p>
+        </div>
+      </a>
+      <div
+        className="button"
+      >
+        <button
+          className="c4"
+          color="primary"
+          disabled={true}
+          onClick={[Function]}
+          size="md"
+        >
+          <span
+            className="c5"
+            size="md"
+          >
+            +
+          </span>
+        </button>
       </div>
-    </a>
+    </div>
   </div>
   <div
-    className="c8"
+    className="c6"
   >
     <button
-      className="c9"
+      className="c7"
       color="secondary"
       data-cy="load-more_button"
       onClick={[Function]}
       size="md"
     >
       <span
-        className="c10"
+        className="c5"
         size="md"
       >
         More +
@@ -452,7 +669,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
     </button>
   </div>
   <div
-    className="c11"
+    className="c8"
   />
 </div>
 `;

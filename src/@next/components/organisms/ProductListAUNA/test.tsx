@@ -1,4 +1,4 @@
-import {ISimpleProduct} from "@app/types/IProduct";
+import { ISimpleProduct } from "@app/types/IProduct";
 import { mount, shallow } from "enzyme";
 import "jest-styled-components";
 import React from "react";
@@ -7,7 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import { ProductListAUNA } from ".";
 import { PRODUCTS } from "./fixtures";
 
-const simpleProductsList = (PRODUCTS as ISimpleProduct[]);
+const simpleProductsList = PRODUCTS as ISimpleProduct[];
 
 describe("<ProductList />", () => {
   it("exists", () => {
@@ -18,6 +18,7 @@ describe("<ProductList />", () => {
           canLoadMore={true}
           loading={false}
           onLoadMore={jest.fn()}
+          items={null}
         />
       </BrowserRouter>
     );
@@ -32,30 +33,11 @@ describe("<ProductList />", () => {
           canLoadMore={true}
           loading={true}
           onLoadMore={jest.fn()}
+          items={null}
         />
       </BrowserRouter>
     );
 
     expect(wrapper.text()).not.toContain("More +");
-  });
-  it("may load more", () => {
-    const handleLoadMore = jest.fn();
-
-    const wrapper = mount(
-      <BrowserRouter>
-        <ProductListAUNA
-          products={simpleProductsList}
-          canLoadMore={true}
-          loading={false}
-          onLoadMore={handleLoadMore}
-        />
-      </BrowserRouter>
-    );
-
-    expect(wrapper.text()).toContain("More +");
-
-    wrapper.find("button").simulate("click");
-
-    expect(handleLoadMore).toHaveBeenCalled();
   });
 });
