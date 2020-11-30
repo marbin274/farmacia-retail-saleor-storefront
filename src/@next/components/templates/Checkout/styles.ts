@@ -11,7 +11,6 @@ export const Loader = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  margin: 45px 0;
   display: grid;
 
   grid-template-columns: 8fr 4fr;
@@ -21,6 +20,8 @@ export const Wrapper = styled.div`
     "navigation navigation"
     "checkout cartSummary"
     "button cartSummary";
+  
+  padding: 3rem 0 3rem 0;
 
   ${media.mediumScreen`
     grid-template-columns: 1fr;
