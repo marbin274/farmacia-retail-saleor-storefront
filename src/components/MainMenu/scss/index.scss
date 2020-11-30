@@ -11,6 +11,7 @@
   padding: 12px 40px 12px 32px;
   position: relative;
   width: 1140px;
+  z-index: 1;
   // vertical-align: middle;
 
   @media (max-width: $medium-screen) {
