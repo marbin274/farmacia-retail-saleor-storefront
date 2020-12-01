@@ -13,6 +13,7 @@ import { maybe } from "../../core/utils";
 import { Category_category, Category_products } from "./gqlTypes/Category";
 import { IAddToCartCallback } from "@temp/@next/components/molecules/ProductTileAUNA/types";
 import { CategoryNavigation } from "@temp/@next/components/organisms/CategoryNavigation/CategoryNavigation";
+import { MainMenu_shop } from "@temp/components/MainMenu/gqlTypes/MainMenu";
 
 interface SortItem {
   label: string;
@@ -31,6 +32,7 @@ interface PageProps {
   filters: IFilters;
   hasNextPage: boolean;
   products: Category_products;
+  shop: MainMenu_shop;
   sortOptions: SortOptions;
   clearFilters: () => void;
   onLoadMore: () => void;
@@ -49,6 +51,7 @@ const Page: React.FC<PageProps> = ({
   clearFilters,
   onLoadMore,
   products,
+  shop,
   filters,
   onOrder,
   sortOptions,
@@ -81,6 +84,10 @@ const Page: React.FC<PageProps> = ({
       []
     );
 
+  const navigationItems = shop.navigation.main.items.filter(
+    item => item.category.id === category.id
+  )[0];
+
   return (
     <div className="category">
       <ProductListHeader
@@ -95,7 +102,9 @@ const Page: React.FC<PageProps> = ({
         onCloseFilterAttribute={onAttributeFiltersChange}
       />
       <div className="container category__body">
-        <CategoryNavigation categories={category.children.edges} />
+        <CategoryNavigation
+          subItems={navigationItems ? navigationItems.children : []}
+        />
         <section className="category__products">
           <Breadcrumbs breadcrumbs={extractBreadcrumbs(category)} />
           <FilterSidebar

@@ -13,7 +13,8 @@ import {
 import { MainMenu_shop_navigation_main_items } from "../MainMenu/gqlTypes/MainMenu";
 import { MainMenuSubItem } from "../MainMenu/gqlTypes/MainMenuSubItem";
 
-interface NavLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+export interface NavLinkProps
+  extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   item:
     | MainMenu_shop_navigation_main_items
     | MainMenuSubItem

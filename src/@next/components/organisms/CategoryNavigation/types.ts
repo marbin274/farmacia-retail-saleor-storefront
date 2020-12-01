@@ -1,20 +1,5 @@
-interface CategoryCategoryAncestorsEdgesNode {
-  __typename: "Category";
-  /**
-   * The ID of the object.
-   */
-  id: string;
-  name: string;
-}
-
-interface CategoryCategoryAncestorsEdges {
-  __typename: "CategoryCountableEdge";
-  /**
-   * The item at the end of the edge.
-   */
-  node: CategoryCategoryAncestorsEdgesNode;
-}
+import { MainMenuSubItem } from "@temp/components/MainMenu/gqlTypes/MainMenuSubItem";
 
 export interface IProps {
-  categories: CategoryCategoryAncestorsEdges[];
+  subItems: MainMenuSubItem[];
 }

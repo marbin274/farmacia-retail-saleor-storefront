@@ -42,7 +42,7 @@ export interface Category_products_edges_node_pricing_priceRangeUndiscounted_sta
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -58,7 +58,7 @@ export interface Category_products_edges_node_pricing_priceRangeUndiscounted_sta
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -86,7 +86,7 @@ export interface Category_products_edges_node_pricing_priceRangeUndiscounted_sto
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -102,7 +102,7 @@ export interface Category_products_edges_node_pricing_priceRangeUndiscounted_sto
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -142,7 +142,7 @@ export interface Category_products_edges_node_pricing_priceRange_start_gross {
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -158,7 +158,7 @@ export interface Category_products_edges_node_pricing_priceRange_start_net {
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -186,7 +186,7 @@ export interface Category_products_edges_node_pricing_priceRange_stop_gross {
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -202,7 +202,7 @@ export interface Category_products_edges_node_pricing_priceRange_stop_net {
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -363,7 +363,6 @@ export interface Category_category {
    * List of ancestors of the category.
    */
   ancestors: Category_category_ancestors | null;
-  children: Category_category_ancestors | null;
 }
 
 export interface Category_attributes_edges_node_values {
@@ -415,19 +414,196 @@ export interface Category_attributes {
   edges: Category_attributes_edges[];
 }
 
+export interface Category_shop_navigation_main_items_category {
+  __typename: "Category";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+}
+
+export interface Category_shop_navigation_main_items_collection {
+  __typename: "Collection";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+}
+
+export interface Category_shop_navigation_main_items_page {
+  __typename: "Page";
+  slug: string;
+}
+
+export interface Category_shop_navigation_main_items_parent {
+  __typename: "MenuItem";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+}
+
+export interface Category_shop_navigation_main_items_children_category {
+  __typename: "Category";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+}
+
+export interface Category_shop_navigation_main_items_children_collection {
+  __typename: "Collection";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+}
+
+export interface Category_shop_navigation_main_items_children_page {
+  __typename: "Page";
+  slug: string;
+}
+
+export interface Category_shop_navigation_main_items_children_parent {
+  __typename: "MenuItem";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+}
+
+export interface Category_shop_navigation_main_items_children_children_category {
+  __typename: "Category";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+}
+
+export interface Category_shop_navigation_main_items_children_children_collection {
+  __typename: "Collection";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+}
+
+export interface Category_shop_navigation_main_items_children_children_page {
+  __typename: "Page";
+  slug: string;
+}
+
+export interface Category_shop_navigation_main_items_children_children_parent {
+  __typename: "MenuItem";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+}
+
+export interface Category_shop_navigation_main_items_children_children {
+  __typename: "MenuItem";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+  category: Category_shop_navigation_main_items_children_children_category | null;
+  /**
+   * URL to the menu item.
+   */
+  url: string | null;
+  collection: Category_shop_navigation_main_items_children_children_collection | null;
+  page: Category_shop_navigation_main_items_children_children_page | null;
+  parent: Category_shop_navigation_main_items_children_children_parent | null;
+}
+
+export interface Category_shop_navigation_main_items_children {
+  __typename: "MenuItem";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+  category: Category_shop_navigation_main_items_children_category | null;
+  /**
+   * URL to the menu item.
+   */
+  url: string | null;
+  collection: Category_shop_navigation_main_items_children_collection | null;
+  page: Category_shop_navigation_main_items_children_page | null;
+  parent: Category_shop_navigation_main_items_children_parent | null;
+  children:
+    | (Category_shop_navigation_main_items_children_children | null)[]
+    | null;
+}
+
+export interface Category_shop_navigation_main_items {
+  __typename: "MenuItem";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+  category: Category_shop_navigation_main_items_category | null;
+  /**
+   * URL to the menu item.
+   */
+  url: string | null;
+  collection: Category_shop_navigation_main_items_collection | null;
+  page: Category_shop_navigation_main_items_page | null;
+  parent: Category_shop_navigation_main_items_parent | null;
+  children: (Category_shop_navigation_main_items_children | null)[] | null;
+}
+
+export interface Category_shop_navigation_main {
+  __typename: "Menu";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  items: (Category_shop_navigation_main_items | null)[] | null;
+}
+
+export interface Category_shop_navigation {
+  __typename: "Navigation";
+  /**
+   * Main navigation bar.
+   */
+  main: Category_shop_navigation_main | null;
+}
+
+export interface Category_shop {
+  __typename: "Shop";
+  /**
+   * Shop's navigation.
+   */
+  navigation: Category_shop_navigation | null;
+}
+
 export interface Category {
   /**
    * List of the shop's products.
    */
   products: Category_products | null;
   /**
-   * Look up a category by ID.
+   * Look up a category by ID or slug.
    */
   category: Category_category | null;
   /**
    * List of the shop's attributes.
    */
   attributes: Category_attributes | null;
+  /**
+   * Return information about the shop.
+   */
+  shop: Category_shop;
 }
 
 export interface CategoryVariables {

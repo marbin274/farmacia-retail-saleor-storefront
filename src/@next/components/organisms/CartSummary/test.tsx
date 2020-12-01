@@ -1,9 +1,8 @@
 import { mount, shallow } from "enzyme";
 import "jest-styled-components";
 import React from "react";
-
+import { MemoryRouter } from "react-router-dom";
 import { CartSummaryRow } from "@components/molecules";
-
 import { CartSummary } from ".";
 import { DEFAULT_PROPS } from "./fixtures";
 
@@ -22,7 +21,11 @@ const money = {
 
 describe("<CartSummary />", () => {
   it("exists", () => {
-    const wrapper = shallow(<CartSummary />);
+    const wrapper = shallow(
+      <MemoryRouter>
+        <CartSummary />
+      </MemoryRouter>
+    );
 
     expect(wrapper.exists()).toEqual(true);
   });
@@ -45,10 +48,17 @@ describe("<CartSummary />", () => {
   });
 
   it("should show correct number of product rows", () => {
-    const wrapper = shallow(<CartSummary {...DEFAULT_PROPS} />);
-
-    expect(wrapper.find(CartSummaryRow).length).toEqual(
-      DEFAULT_PROPS.products.length
+    const wrapper = shallow(
+      <MemoryRouter>
+        <CartSummary {...DEFAULT_PROPS} />
+      </MemoryRouter>
     );
+
+    expect(
+      wrapper
+        .find(CartSummary)
+        .dive()
+        .find(CartSummaryRow).length
+    ).toEqual(DEFAULT_PROPS.products.length);
   });
 });

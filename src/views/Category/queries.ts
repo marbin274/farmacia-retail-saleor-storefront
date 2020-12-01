@@ -11,14 +11,25 @@ export const categoryProductsQuery = gql`
   ${basicProductFragment}
   ${productPricingFragment}
   ${productVariantFragmentSimple}
-  
-  fragment CategoryData on Category {
-    edges {
-          node {
-            id
-            name
-          }
-        }
+
+  fragment MainMenuSubItem on MenuItem {
+    id
+    name
+    category {
+      id
+      name
+    }
+    url
+    collection {
+      id
+      name
+    }
+    page {
+      slug
+    }
+    parent {
+      id
+    }
   }
 
   query Category(
@@ -70,10 +81,12 @@ export const categoryProductsQuery = gql`
         url
       }
       ancestors(last: 5) {
-        ...CategoryData
-      }
-      children(first: 100) {
-        ...CategoryData
+        edges {
+          node {
+            id
+            name
+          }
+        }
       }
     }
     attributes(filter: { inCategory: $id }, first: 100) {
@@ -86,6 +99,22 @@ export const categoryProductsQuery = gql`
             id
             name
             slug
+          }
+        }
+      }
+    }
+    shop {
+      navigation {
+        main {
+          id
+          items {
+            ...MainMenuSubItem
+            children {
+              ...MainMenuSubItem
+              children {
+                ...MainMenuSubItem
+              }
+            }
           }
         }
       }
