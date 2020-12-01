@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots @components/organisms/CartSummary default 1`] = `
+.c0 {
+  position: relative;
+  margin: 20px;
+}
+
+.c2 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 3px solid rgba(0,0,0,0.2);
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.c1 {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="product-description"
+  >
+    <h3>
+      "Producto 1"
+    </h3>
+    <p
+      className="product-description__price"
+    >
+      <span>
+        
+      </span>
+    </p>
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "",
+        }
+      }
+    />
+    <div
+      className="product-description__variant-picker"
+    >
+      <div
+        className="c1"
+      />
+    </div>
+    <div
+      className="product-description__quantity"
+    >
+      <p>
+        Producto sin stock o no disponible
+      </p>
+    </div>
+  </div>
+  <div
+    className="c2"
+  />
+</div>
+`;

@@ -30,9 +30,10 @@ export const QuantityTextField: React.FC<QuantityTextFieldProps> = ({
 
   return (
     <ItemQuantity
-      value={quantity.toString()}
+      enableRemoveLastItem = {false}
       onAdd={() => handleQuantityChange(1)}
       onRemove={() => handleQuantityChange(-1)}
+      value={quantity.toString()}
     />
   );
 };

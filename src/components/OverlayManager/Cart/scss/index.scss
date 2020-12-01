@@ -97,6 +97,7 @@
         }
 
         &__icon {
+          color: $auna-interactive;
           cursor: pointer;
 
           &:first-child {
@@ -105,6 +106,10 @@
 
           &:last-child {
             margin-right: 14px;
+          }
+
+          &.disabled {
+            color: $auna-disabled;
           }
         }
 

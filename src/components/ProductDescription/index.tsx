@@ -14,13 +14,13 @@ import {
 import { IProductVariantsAttributesSelectedValues, ITaxedMoney } from "@types";
 
 import { ICheckoutModelLine } from "@sdk/repository";
-import { TaxedMoney } from "../../@next/components/containers";
+import { TaxedMoney } from "@components/containers";
 import AddToCart from "./AddToCart";
 import { QuantityTextField } from "./QuantityTextField";
 // import { description } from "@temp/@next/components/molecules/ProductDescription/fixtures";
 
 const LOW_STOCK_QUANTITY = 5;
-interface ProductDescriptionProps {
+export interface ProductDescriptionProps {
   descriptionJson: string;
   productId: string;
   productVariants: ProductDetails_product_variants[];
