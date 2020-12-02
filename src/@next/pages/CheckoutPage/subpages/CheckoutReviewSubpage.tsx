@@ -11,6 +11,7 @@ import { statuses as dummyStatuses } from "@components/organisms/DummyPaymentGat
 import { useCheckout } from "@sdk/react";
 import { CHECKOUT_STEPS } from "@temp/core/config";
 import { IFormError } from "@types";
+// import { StringValueNode } from "graphql";
 
 export interface ICheckoutReviewSubpageHandles {
   complete: () => void;
@@ -18,13 +19,14 @@ export interface ICheckoutReviewSubpageHandles {
 interface IProps extends RouteComponentProps<any> {
   selectedPaymentGatewayToken?: string;
   changeSubmitProgress: (submitInProgress: boolean) => void;
+  requestPayload?: string | undefined | null;
 }
 
 const CheckoutReviewSubpageWithRef: RefForwardingComponent<
   ICheckoutReviewSubpageHandles,
   IProps
 > = (
-  { selectedPaymentGatewayToken, changeSubmitProgress, ...props }: IProps,
+  { selectedPaymentGatewayToken, changeSubmitProgress, requestPayload, ...props }: IProps,
   ref
 ) => {
   const history = useHistory();
@@ -62,7 +64,7 @@ const CheckoutReviewSubpageWithRef: RefForwardingComponent<
   useImperativeHandle(ref, () => ({
     complete: async () => {
       changeSubmitProgress(true);
-      const { data, dataError } = await completeCheckout();
+      const { data, dataError } = await completeCheckout(requestPayload);
       changeSubmitProgress(false);
       const errors = dataError?.error;
       if (errors) {
@@ -70,7 +72,7 @@ const CheckoutReviewSubpageWithRef: RefForwardingComponent<
       } else {
         setErrors([]);
         history.push({
-          pathname: CHECKOUT_STEPS[3].nextStepLink,
+          pathname: CHECKOUT_STEPS[2].nextStepLink,
           state: {
             id: data?.id,
             orderNumber: data?.number,

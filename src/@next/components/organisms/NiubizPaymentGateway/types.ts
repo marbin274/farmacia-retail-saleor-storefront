@@ -1,5 +1,5 @@
-// import { ICardPaymentInput } from "@temp/core/payments/braintree";
-import { IAddress, IFormError, IPaymentGatewayConfig, ICardData } from "@types";
+import { ITotalPrice } from "@temp/@sdk/api/Cart/types";
+import { ICardData, IFormError, IPaymentGatewayConfig } from "@types";
 
 export interface IProps {
   /**
@@ -19,13 +19,17 @@ export interface IProps {
    */
   errors?: IFormError[];
   /**
+   * Postal code used by Braintree.
+   */
+  postalCode?: string;
+  /**
    * Method called after the form is submitted. Passed token attribute will be used to create payment.
    */
-  processPayment: (gateway:string, token: string, cardData?: ICardData) => void;
+  processPayment: (token: string, cardData?: ICardData) => void;
   /**
    * Method called when gateway error occured.
    */
-  onError?: (errors: IFormError[]) => void;
-
-  checkoutBillingAddress?: IAddress | null | undefined;
+  onError: (errors: IFormError[]) => void;
+  requestPayload?: string | undefined | null;
+  totalPrice?: ITotalPrice;
 }

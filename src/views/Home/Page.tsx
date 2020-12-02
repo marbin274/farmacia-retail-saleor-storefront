@@ -26,7 +26,8 @@ const Page: React.FC<PageProps> = ({ addToCart, loading, products, shop }) => {
         <div className="home-page__top-banner__text">
           <h2>Bienvenido a la experiencia digital más ágil en farmacia</h2>
           <p>
-            Compra todo lo que necesites y recibelo en menos de <b>60 minutos</b>.
+            Compra todo lo que necesites y recíbelo en menos de{" "}
+            <b>60 minutos</b>.
           </p>
         </div>
       </div>
@@ -53,15 +54,12 @@ const Page: React.FC<PageProps> = ({ addToCart, loading, products, shop }) => {
         </div>
       </div>
 
-      <div  className="home-page__bottom-section">
+      <div className="home-page__bottom-section">
         <div className="home-page__bottom-banner">
           <p>Llegamos a 12 distritos de lima ¡en menos de 60 minutos!</p>
         </div>
-        <div className="home-page__districts-list">
-        </div>
+        <div className="home-page__districts-list"></div>
       </div>
-
-
     </div>
   );
 };

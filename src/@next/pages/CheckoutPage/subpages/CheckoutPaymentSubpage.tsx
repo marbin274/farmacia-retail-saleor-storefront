@@ -1,4 +1,4 @@
-import {ICardPaymentInput} from "@temp/core/payments/braintree";
+import { ICardPaymentInput } from "@temp/core/payments/braintree";
 import React, {
   forwardRef,
   RefForwardingComponent,
@@ -13,7 +13,10 @@ import { RouteComponentProps, useHistory } from "react-router";
 import { CheckoutPayment } from "@components/organisms";
 import { useCart, useCheckout, useUserDetails } from "@sdk/react";
 import { ShopContext } from "@temp/components/ShopProvider/context";
-import {billingAddressAlwaysSameAsShipping, CHECKOUT_STEPS} from "@temp/core/config";
+import {
+  billingAddressAlwaysSameAsShipping,
+  CHECKOUT_STEPS,
+} from "@temp/core/config";
 import { IAddress, ICardData, IFormError } from "@types";
 import { filterNotEmptyArrayItems } from "@utils/misc";
 
@@ -25,6 +28,7 @@ interface IProps extends RouteComponentProps<any> {
   selectedPaymentGatewayToken?: string;
   selectPaymentGateway: (paymentGateway: string) => void;
   changeSubmitProgress: (submitInProgress: boolean) => void;
+  requestPayload?: string | null | undefined;
 }
 
 const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
@@ -36,6 +40,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
     selectedPaymentGatewayToken,
     changeSubmitProgress,
     selectPaymentGateway,
+    requestPayload,
     ...props
   }: IProps,
   ref
@@ -57,7 +62,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
 
   // console.log(availablePaymentGateways);
 
-  const { items } = useCart();
+  const { items, totalPrice } = useCart();
   const { countries } = useContext(ShopContext);
 
   const isShippingRequiredForProducts =
@@ -69,9 +74,11 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
   const [billingErrors, setBillingErrors] = useState<IFormError[]>([]);
   const [gatewayErrors, setGatewayErrors] = useState<IFormError[]>([]);
   const [promoCodeErrors, setPromoCodeErrors] = useState<IFormError[]>([]);
-  
+
   // this variable overrides billingAsShipping if config option billingAddressAlwaysSameAsShipping is set
-  const billingAsShippingOverride = billingAddressAlwaysSameAsShipping ? true : billingAsShipping;
+  const billingAsShippingOverride = billingAddressAlwaysSameAsShipping
+    ? true
+    : billingAsShipping;
 
   const [billingAsShippingState, setBillingAsShippingState] = useState(
     billingAsShippingOverride
@@ -118,7 +125,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
 
   const clearPromoCodeErrors = () => {
     setPromoCodeErrors([]);
-  }
+  };
 
   const handleProcessPayment = async (
     gateway: string,
@@ -127,13 +134,15 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
   ) => {
     // TODO: remove dummyCardData and use cardData when plugin is ready
     const dummyCardData: ICardData = {
-      brand: 'visa',
+      brand: "visa",
       expMonth: 11,
       expYear: 22,
-      firstDigits: '4242',
-      lastDigits: '4242',
+      firstDigits: "4242",
+      lastDigits: "4242",
     };
 
+    // console.log(gateway);
+    // console.log(token);
     const { dataError } = await createPayment(gateway, token, dummyCardData);
     const errors = dataError?.error;
     changeSubmitProgress(false);
@@ -141,7 +150,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
       setGatewayErrors(errors);
     } else {
       setGatewayErrors([]);
-      history.push(CHECKOUT_STEPS[2].nextStepLink);
+      history.push(CHECKOUT_STEPS[1].nextStepLink);
     }
   };
   const handlePaymentGatewayError = () => {
@@ -223,7 +232,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
       }
     }
   };
-  
+
   const handleRemovePromoCode = async (promoCode: string) => {
     const { dataError } = await removePromoCode(promoCode);
     const errors = dataError?.error;
@@ -308,6 +317,8 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
       newAddressFormId={checkoutNewAddressFormId}
       processPayment={handleProcessPayment}
       onGatewayError={handlePaymentGatewayError}
+      requestPayload={requestPayload}
+      totalPrice={totalPrice}
     />
   );
 };

@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 
-import {AunaPaymentGateway} from "@components/organisms/AunaPaymentGateway";
-import {DummyPaymentGateway} from "@components/organisms/DummyPaymentGateway";
-import {ErrorMessage, Radio} from "@components/atoms";
+// import {AunaPaymentGateway} from "@components/organisms/AunaPaymentGateway";
+import { DummyPaymentGateway } from "@components/organisms/DummyPaymentGateway";
+import { NiubizPaymentGateway } from "@components/organisms/NiubizPaymentGateway";
+import { ErrorMessage, Radio } from "@components/atoms";
 import creditCardIcon from "@temp/images/auna/icon-credit-card.svg";
 import ReactSVG from "react-svg";
 
 import { PROVIDERS } from "@temp/core/config";
-import {ThemeContext} from "styled-components";
+import { ThemeContext } from "styled-components";
 import { IProps } from "./types";
 import * as S from "./styles";
 // import { useHistory } from "react-router";
@@ -22,34 +23,34 @@ const PaymentGatewaysList: React.FC<IProps> = ({
   errors,
   checkoutBillingAddress,
   onError,
+  requestPayload,
+  totalPrice,
 }: IProps) => {
   const customTheme = React.useContext(ThemeContext);
 
-  const [ token, setToken ] = useState("");
+  // @ts-ignore
+  const [token, setToken] = useState("");
 
   // @ts-ignore
-  const [ orderNumber, setOrderNumber ] = useState("");
+  const [orderNumber, setOrderNumber] = useState("");
 
   // const history = useHistory();
-
 
   useEffect(() => {
     const pathname = window.location.pathname;
     // alert(pathname);
-    const pathElements = pathname.split('/');
+    const pathElements = pathname.split("/");
 
-    if (pathElements.length > 0){
+    if (pathElements.length > 0) {
       setToken(pathElements[4]);
-      setOrderNumber(pathElements[5]); 
-    } 
-
-    }, []);
-
+      setOrderNumber(pathElements[5]);
+    }
+  }, []);
 
   return (
     <S.Wrapper>
       {paymentGateways.map(({ id, name, config }, index) => {
-        let checked = selectedPaymentGateway === id;
+        const checked = selectedPaymentGateway === id;
 
         switch (id) {
           case PROVIDERS.DUMMY.id:
@@ -67,11 +68,19 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                     customLabel={true}
                   >
                     <S.PaymentLine>
-                      <S.PaymentTitle data-cy="checkoutPaymentGatewayDummyName" checked={checked}>
+                      <S.PaymentTitle
+                        data-cy="checkoutPaymentGatewayDummyName"
+                        checked={checked}
+                      >
                         {name}
                       </S.PaymentTitle>
                       <S.PaymentIcon checked={checked}>
-                        <ReactSVG path={creditCardIcon} svgStyle={{stroke: S.getIconColor(checked, customTheme)}}/>
+                        <ReactSVG
+                          path={creditCardIcon}
+                          svgStyle={{
+                            stroke: S.getIconColor(checked, customTheme),
+                          }}
+                        />
                       </S.PaymentIcon>
                     </S.PaymentLine>
                   </Radio>
@@ -85,12 +94,7 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                 )}
               </div>
             );
-          case PROVIDERS.AUNA.id:{
-
-            if (token && token.length > 0){
-              checked = true;
-            }
-
+          case PROVIDERS.AUNA.id: {
             return (
               <div key={index}>
                 <S.Tile checked={checked}>
@@ -105,26 +109,69 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                     customLabel={true}
                   >
                     <S.PaymentLine>
-                      <S.PaymentTitle data-cy="checkoutPaymentGatewayDummyName" checked={checked}>
-                        AUNA Payment Gateway
+                      <S.PaymentTitle
+                        data-cy="checkoutPaymentGatewayDummyName"
+                        checked={checked}
+                      >
+                        {name}
                       </S.PaymentTitle>
                       <S.PaymentIcon checked={checked}>
-                        <ReactSVG path={creditCardIcon} svgStyle={{stroke: S.getIconColor(checked, customTheme)}}/>
+                        <ReactSVG
+                          path={creditCardIcon}
+                          svgStyle={{
+                            stroke: S.getIconColor(checked, customTheme),
+                          }}
+                        />
                       </S.PaymentIcon>
                     </S.PaymentLine>
                   </Radio>
                 </S.Tile>
                 {checked && (
-                  <AunaPaymentGateway
+                  <NiubizPaymentGateway
                     config={config}
                     formRef={formRef}
                     formId={formId}
+                    processPayment={token => processPayment(id, token)}
+                    errors={errors}
                     onError={onError}
-                    processPayment={processPayment}
-                    checkoutBillingAddress={checkoutBillingAddress}
+                    requestPayload={requestPayload}
+                    totalPrice={totalPrice}
                   />
                 )}
               </div>
+              // <div key={index}>
+              //   <S.Tile checked={checked}>
+              //     <Radio
+              //       data-cy="checkoutPaymentGatewayDummyInput"
+              //       name="payment-method"
+              //       value="dummy"
+              //       checked={checked}
+              //       onChange={() =>
+              //         selectPaymentGateway && selectPaymentGateway(id)
+              //       }
+              //       customLabel={true}
+              //     >
+              //       <S.PaymentLine>
+              //         <S.PaymentTitle data-cy="checkoutPaymentGatewayDummyName" checked={checked}>
+              //           AUNA Payment Gateway
+              //         </S.PaymentTitle>
+              //         <S.PaymentIcon checked={checked}>
+              //           <ReactSVG path={creditCardIcon} svgStyle={{stroke: S.getIconColor(checked, customTheme)}}/>
+              //         </S.PaymentIcon>
+              //       </S.PaymentLine>
+              //     </Radio>
+              //   </S.Tile>
+              //   {checked && (
+              //     <AunaPaymentGateway
+              //       config={config}
+              //       formRef={formRef}
+              //       formId={formId}
+              //       onError={onError}
+              //       processPayment={processPayment}
+              //       checkoutBillingAddress={checkoutBillingAddress}
+              //     />
+              //   )}
+              // </div>
             );
           }
         }

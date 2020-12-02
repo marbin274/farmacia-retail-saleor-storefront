@@ -747,14 +747,14 @@ export class NetworkManager implements INetworkManager {
     }
   };
 
-  completeCheckout = async (checkoutId: string) => {
+  completeCheckout = async (checkoutId: string, paymentData?: string) => {
     try {
       const { data, errors } = await this.client.mutate<
         CompleteCheckout,
         CompleteCheckoutVariables
       >({
         mutation: CheckoutMutations.completeCheckoutMutation,
-        variables: { checkoutId },
+        variables: { checkoutId, paymentData },
       });
 
       if (errors?.length) {

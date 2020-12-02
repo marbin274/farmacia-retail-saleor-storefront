@@ -542,4 +542,5 @@ export interface CompleteCheckout {
 
 export interface CompleteCheckoutVariables {
   checkoutId: string;
+  paymentData?: string;
 }

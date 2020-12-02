@@ -1,5 +1,6 @@
 import { GetShop_shop_countries } from "@sdk/queries/gqlTypes/GetShop";
-import {ICardPaymentInput} from "@temp/core/payments/braintree";
+import { ITotalPrice } from "@temp/@sdk/api/Cart/types";
+import { ICardPaymentInput } from "@temp/core/payments/braintree";
 import {
   IAddress,
   IAddressWithAddressType,
@@ -68,4 +69,6 @@ export interface IProps {
    * Method called when gateway error occured.
    */
   onGatewayError: (errors: IFormError[]) => void;
+  requestPayload?: string | undefined | null;
+  totalPrice?: ITotalPrice;
 }

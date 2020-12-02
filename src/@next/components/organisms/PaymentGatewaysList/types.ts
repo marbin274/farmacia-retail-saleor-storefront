@@ -1,5 +1,6 @@
-import {ICardPaymentInput} from "@temp/core/payments/braintree";
-import { IAddress, IFormError, IPaymentGateway } from "@types";
+// import {ICardPaymentInput} from "@temp/core/payments/braintree";
+import { ITotalPrice } from "@temp/@sdk/api/Cart/types";
+import { IAddress, ICardData, IFormError, IPaymentGateway } from "@types";
 
 export interface IProps {
   /**
@@ -36,7 +37,8 @@ export interface IProps {
   processPayment: (
     gateway: string,
     token: string,
-    cardData?: ICardPaymentInput
+    cardData?: ICardData,
+    requestPayload?: string
   ) => void;
   /**
    * Method called when gateway error occured.
@@ -44,4 +46,6 @@ export interface IProps {
   onError: (errors: IFormError[]) => void;
 
   checkoutBillingAddress?: IAddress | null | undefined;
+  requestPayload?: string | undefined | null;
+  totalPrice?: ITotalPrice;
 }

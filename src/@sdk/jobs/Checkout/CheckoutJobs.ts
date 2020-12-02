@@ -309,12 +309,14 @@ export class CheckoutJobs {
   };
 
   completeCheckout = async ({
-    checkoutId,
+    checkoutId, 
+    paymentData,
   }: {
     checkoutId: string;
+    paymentData?: string;
   }): PromiseCheckoutJobRunResponse => {
     const { data, error } = await this.networkManager.completeCheckout(
-      checkoutId
+      checkoutId, paymentData
     );
 
     if (error) {

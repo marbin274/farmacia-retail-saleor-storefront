@@ -30,7 +30,13 @@ export const CreditCardFormContent: React.FC<PropsWithFormik> = ({
     expirationYear: expirationYearError,
   },
   disabled,
-  labelsText: { ccCsc: ccCscText, ccExp: ccExpText, ccName: ccNameText , ccNumber: ccNumberText,  ccSurname: ccSurnameText},
+  labelsText: {
+    ccCsc: ccCscText,
+    ccExp: ccExpText,
+    ccName: ccNameText,
+    ccNumber: ccNumberText,
+    ccSurname: ccSurnameText,
+  },
   placeholders,
   handleSubmit,
   handleChange,
@@ -45,13 +51,13 @@ export const CreditCardFormContent: React.FC<PropsWithFormik> = ({
 
   const setFocus = () => {
     let result = false;
-    if (inputNumber === 1){
+    if (inputNumber === 1) {
       result = true;
       inputNumber++;
     }
-    
+
     return result;
-  }
+  };
   return (
     <S.PaymentForm ref={formRef} id={formId} onSubmit={handleSubmit}>
       {additionalFields?.name && (
@@ -60,7 +66,11 @@ export const CreditCardFormContent: React.FC<PropsWithFormik> = ({
             autoFocus={setFocus()}
             name="ccName"
             placeholder={placeholders && placeholders.ccName}
-            {...basicInputProps(ccNameText ? ccNameText : '', [cardNumberError], values.ccName as string)}
+            {...basicInputProps(
+              ccNameText ? ccNameText : "",
+              [cardNumberError],
+              values.ccName as string
+            )}
           />
         </S.PaymentInput>
       )}
@@ -71,7 +81,11 @@ export const CreditCardFormContent: React.FC<PropsWithFormik> = ({
             autoFocus={setFocus()}
             name="ccSurname"
             placeholder={placeholders && placeholders.ccSurname}
-            {...basicInputProps(ccSurnameText ? ccSurnameText : '', [cardNumberError], values.ccSurname as string)}
+            {...basicInputProps(
+              ccSurnameText ? ccSurnameText : "",
+              [cardNumberError],
+              values.ccSurname as string
+            )}
           />
         </S.PaymentInput>
       )}

@@ -41,15 +41,16 @@ const CheckoutPayment: React.FC<IProps> = ({
   gatewayFormId,
   processPayment,
   onGatewayError,
+  requestPayload,
+  totalPrice,
 }: IProps) => {
   const [showPromoCodeForm, setShowPromoCodeForm] = useState(
     !!promoCodeDiscount?.voucherCode
   );
 
   useEffect(() => {
-    
     // console.log(checkoutBillingAddress)
-    
+
     const isVoucherCode = !!promoCodeDiscount?.voucherCode;
     if (isVoucherCode) {
       setShowPromoCodeForm(isVoucherCode);
@@ -77,30 +78,32 @@ const CheckoutPayment: React.FC<IProps> = ({
 
   return (
     <S.Wrapper>
-        <Checkbox
-          data-cy="checkoutPaymentPromoCodeCheckbox"
-          name="payment-promo-code"
-          checked={showPromoCodeForm}
-          onChange={handleChangeShowPromoCodeForm}
-        >Tengo un código promocional
-        </Checkbox>
-        {showPromoCodeForm && (
-          <S.DiscountField>
-            <DiscountForm
-              discount={{ 
-                promoCode: promoCodeDiscount?.voucherCode, 
-                voucherDiscountType: promoCodeDiscount?.voucherDiscountType,
-                voucherDiscountValue: promoCodeDiscount?.voucherDiscountValue,
-                voucherType: promoCodeDiscount?.voucherType }}
-              formId={promoCodeDiscountFormId}
-              formRef={promoCodeDiscountFormRef}
-              handleSubmit={handleSubmitPromoCode}
-              addPromoCode={handleSubmitPromoCode}
-              removeVoucher={removeVoucherCode}
-              errors={promoCodeErrors}
-            />
-          </S.DiscountField>
-        )}
+      <Checkbox
+        data-cy="checkoutPaymentPromoCodeCheckbox"
+        name="payment-promo-code"
+        checked={showPromoCodeForm}
+        onChange={handleChangeShowPromoCodeForm}
+      >
+        Tengo un código promocional
+      </Checkbox>
+      {showPromoCodeForm && (
+        <S.DiscountField>
+          <DiscountForm
+            discount={{
+              promoCode: promoCodeDiscount?.voucherCode,
+              voucherDiscountType: promoCodeDiscount?.voucherDiscountType,
+              voucherDiscountValue: promoCodeDiscount?.voucherDiscountValue,
+              voucherType: promoCodeDiscount?.voucherType,
+            }}
+            formId={promoCodeDiscountFormId}
+            formRef={promoCodeDiscountFormRef}
+            handleSubmit={handleSubmitPromoCode}
+            addPromoCode={handleSubmitPromoCode}
+            removeVoucher={removeVoucherCode}
+            errors={promoCodeErrors}
+          />
+        </S.DiscountField>
+      )}
       <PaymentGatewaysList
         errors={gatewayErrors}
         paymentGateways={paymentGateways}
@@ -112,6 +115,8 @@ const CheckoutPayment: React.FC<IProps> = ({
         selectPaymentGateway={selectPaymentGateway}
         checkoutBillingAddress={checkoutBillingAddress}
         onError={onGatewayError}
+        requestPayload={requestPayload}
+        totalPrice={totalPrice}
       />
     </S.Wrapper>
   );

@@ -445,7 +445,9 @@ export class SaleorCheckoutAPI extends ErrorListener
     const billingAddress = this.saleorState.checkout?.billingAddress;
     const amount = this.saleorState.summaryPrices?.totalPrice?.gross.amount;
 
-    console.table(amount);
+    // console.table(amount);
+    // console.log(gateway);
+    // console.log(token);
 
     if (
       checkoutId &&
@@ -483,18 +485,20 @@ export class SaleorCheckoutAPI extends ErrorListener
     }
   };
 
-  completeCheckout = async (): PromiseRunResponse<
+  completeCheckout = async (requestPayload?: string | null | undefined ): PromiseRunResponse<
     DataErrorCheckoutTypes,
     FunctionErrorCheckoutTypes
   > => {
     await this.saleorState.provideCheckout(this.fireError);
     const checkoutId = this.saleorState.checkout?.id;
 
+    const paymentData = JSON.stringify(requestPayload);
+
     if (checkoutId) {
       const { data, dataError } = await this.jobsManager.run(
         "checkout",
         "completeCheckout",
-        { checkoutId }
+        { checkoutId, paymentData }
       );
       return {
         data,

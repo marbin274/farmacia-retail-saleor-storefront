@@ -113,6 +113,7 @@ export interface ICheckoutModel {
   lines?: ICheckoutModelLine[] | null;
   availableShippingMethods?: Checkout_availableShippingMethods[];
   shippingMethod?: ICheckoutModelShippingMethod | null;
+  requestPayload?: string;
 }
 
 export interface IPaymentModel {

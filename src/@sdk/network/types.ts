@@ -76,6 +76,7 @@ export interface INetworkManager {
     billingAddress: ICheckoutAddress
   ) => Promise<INetworkManagerResponse<IPaymentModel>>;
   completeCheckout: (
-    checkoutId: string
+    checkoutId: string, 
+    paymentData?: string
   ) => Promise<INetworkManagerResponse<IOrderModel>>;
 }

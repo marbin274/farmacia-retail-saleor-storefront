@@ -121,11 +121,22 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
   useEffect(() => {
     setSelectedPaymentGateway(payment?.gateway);
   }, [payment?.gateway]);
+
   useEffect(() => {
     // console.log('here');
     // console.log(payment);
     setSelectedPaymentGatewayToken(payment?.token);
   }, [payment?.token]);
+
+  const [requestPayload, setRequestPayload] = useState(null);
+
+  useEffect(() => {
+    const payload: any = {
+      purchase_number: new Date().getUTCMilliseconds(),
+    };
+
+    setRequestPayload(payload);
+  },[]);
 
   const matchingStepIndex = CHECKOUT_STEPS.findIndex(
     ({ link }) => link === pathname
@@ -218,6 +229,7 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
             selectedPaymentGatewayToken={selectedPaymentGatewayToken}
             changeSubmitProgress={setSubmitInProgress}
             selectPaymentGateway={setSelectedPaymentGateway}
+            requestPayload={requestPayload}
             {...props}
           />
         )}
@@ -226,6 +238,7 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
             ref={checkoutReviewSubpageRef}
             selectedPaymentGatewayToken={selectedPaymentGatewayToken}
             changeSubmitProgress={setSubmitInProgress}
+            requestPayload={requestPayload}
             {...props}
           />
         )}
