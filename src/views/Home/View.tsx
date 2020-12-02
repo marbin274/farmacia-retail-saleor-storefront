@@ -25,7 +25,7 @@ const View: React.FC = () => {
   const extractNodes = (productEdges: HomePage_products) => productEdges.edges.map(edge => edge.node);
 
   return (
-  <div className="home-page container">
+  <div className="home-page">
       <TypedHomePageQuery
           alwaysRender
           errorPolicy="all"
@@ -47,10 +47,6 @@ const View: React.FC = () => {
             }}
           >
               <div className="home-view">
-                  <div className="home-banner">
-                      &nbsp;
-                  </div>
-                  <div className="product-list">
                       {data && data.products && (
                           <Page
                               addToCart={addToCart}
@@ -59,7 +55,6 @@ const View: React.FC = () => {
                               shop={ data.shop }
                           />
                       )}
-                  </div>
               </div>
           </MetaWrapper>
         );

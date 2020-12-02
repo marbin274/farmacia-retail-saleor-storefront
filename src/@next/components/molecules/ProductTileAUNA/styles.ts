@@ -10,7 +10,7 @@ export const ProductCard = styled.div<{
   height: 24rem;
   text-align: center;
   transition: 0 .3s;
-  width: 11rem;
+  max-width: 11rem;
   position: relative;
   margin-bottom: 1.5rem;
   :hover {

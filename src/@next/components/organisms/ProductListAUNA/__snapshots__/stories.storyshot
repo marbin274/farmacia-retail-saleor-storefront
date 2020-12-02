@@ -104,7 +104,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   text-align: center;
   -webkit-transition: 0 .3s;
   transition: 0 .3s;
-  width: 11rem;
+  max-width: 11rem;
   position: relative;
   margin-bottom: 1.5rem;
 }
@@ -199,7 +199,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
 .c1 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 3rem 3rem;
+  grid-gap: 5rem 3rem;
 }
 
 .c6 {
@@ -224,14 +224,14 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
 @media (max-width:992px) {
   .c1 {
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 1.5rem;
+    grid-gap: 5rem 1.5rem;
   }
 }
 
 @media (max-width:540px) {
   .c1 {
     grid-template-columns: 1fr 1fr;
-    grid-gap: 1rem;
+    grid-gap: 6rem 1rem;
   }
 }
 

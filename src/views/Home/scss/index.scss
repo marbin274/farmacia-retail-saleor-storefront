@@ -5,30 +5,144 @@
   padding-top: 6.75rem;
 
   .home-view {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 4rem 1fr;
-    column-gap: 3rem;
-    padding-bottom: 3rem;
-    margin-top: 1rem;
-    row-gap: 1rem;
-
     @media (min-width: $small-screen) {
-      grid-template-columns: 1fr 4fr;
-      grid-template-rows: 1fr;
       margin-top: 6.75rem;
     }
+
+    .container {
+      @media (max-width: $small-screen) {
+        padding: 0;
+        margin-top: 0;
+      }
+    }
+
+    .inner-container {
+      @media (max-width: $small-screen) {
+        padding: 0 1rem;
+      }
+    }
+
   }
 
-  .home-banner {
-    background-color: #f0f0f0;
-    grid-column: 1;
-    grid-row: 1;
+  &__top-banner {
+    background: no-repeat url("../../../images/auna/home-banner-top.png") #00B0CA;
+    background-position: 2rem 1rem;
+    background-size: 25rem;
+    border-radius: 1rem;
+    color: white;
+    height: 21rem;
+    margin: 0 0 3rem 0;
+    position: relative;
+    width: 100%;
 
-    @media (min-width: $small-screen) {
-      grid-column: 1;
+    @media (max-width: $small-screen) {
+      height: 38rem;
+      background: no-repeat url("../../../images/auna/home-banner-mob.png") #00B0CA;
+      background-size: 20rem;
+      background-position: left center;
+      margin-bottom: 2rem;
+    }
+
+    &__text {
+      position: absolute;
+      right: 2rem;
+      top: 4rem;
+      max-width: 38rem;
+
+      @media (max-width: $small-screen) {
+        background-color: rgba(0, 80, 181, 0.5);
+        border-radius: 1rem 1rem 0 0;
+        top: unset;
+        right: 0;
+        bottom: 0;
+        left:0;
+        padding: 2rem 2rem;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+      }
+
+
+      h2 {
+        font-size: 2.25rem;
+        font-weight: bolder;
+        line-height: 1.6;
+        padding-bottom: .5rem;
+
+        @media (max-width: $small-screen) {
+          font-size: 1.3rem;
+          padding-bottom: 1rem;
+        }
+      }
+      p {
+        font-size: 1.625rem;
+        line-height: 1.5;
+        b {
+          font-weight: bolder;
+        }
+
+        @media (max-width: $small-screen) {
+          font-size: .9rem;
+        }
+      }
     }
   }
+
+  &__products {
+    margin: 2rem 0 4rem 0;
+
+    >p {
+      color: $auna-black;
+      font-size: 1.3rem;
+      padding: 1rem 0;
+      line-height: 1.8;
+
+      @media (max-width: $small-screen) {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  &__bottom-section {
+    background-color: #F6F8FA;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    margin: 4rem 0 4rem 0;
+  }
+
+  &__bottom-banner {
+    align-items: center;
+    background-color: #404497;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 3rem;
+    display: flex;
+    height: 6rem;
+    padding: 0 3rem;
+    width: 100%;
+
+    p {
+      color: white;
+      font-size: 1rem;
+    }
+
+    @media (max-width: $small-screen) {
+      border-top-left-radius: 0;
+    }
+  }
+
+  &__districts-list {
+    background: no-repeat url("../../../images/auna/home-banner-districts.png") #F6F8FA;
+    height: 10rem;
+
+    @media (max-width: $small-screen) {
+      background: no-repeat url("../../../images/auna/home-banner-districts-mob.png") #F6F8FA;
+      background-size: contain;
+      height: 20rem;
+    }
+
+  }
+
 
   .product-list {
     grid-column: 1;

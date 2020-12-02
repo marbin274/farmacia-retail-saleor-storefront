@@ -7,7 +7,7 @@ export const SUPPORT_EMAIL = "support@example.com";
 export const URL_WEB = "https://master.d31lwuq0j77p69.amplifyapp.com/"; // TODO: we need to modify/replace this line
 
 export const HOME_PAGE_CONF = {
-  PAGE_SIZE: 20,
+  PAGE_SIZE: 8,
   SORT_DIR: OrderDirection.ASC,
   SORT_FIELD: ProductOrderField.PRICE,
 };
