@@ -20,6 +20,7 @@ export const ProductListAUNA: React.FC<IProps> = ({
       <S.List>
         {products.map(product => (
           <ProductTileAUNA
+            key={product.id}
             addToCart={addToCart}
             product={product}
             linkProduct={generateProductUrl(product.id, product.name)}
