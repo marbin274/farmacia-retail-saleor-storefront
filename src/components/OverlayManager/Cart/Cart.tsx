@@ -137,6 +137,7 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
                     <div className="cart__footer__price">
                       <span>Promo code</span>
                       <span>
+                        -&nbsp;
                         <TaxedMoney
                           data-cy="cartPagePromoCodePrice"
                           taxedMoney={promoTaxedPrice}
