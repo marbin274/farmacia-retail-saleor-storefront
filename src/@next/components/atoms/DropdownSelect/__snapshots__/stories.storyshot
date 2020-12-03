@@ -101,7 +101,7 @@ exports[`Storyshots @components/atoms/DropdownSelect default 1`] = `
           <span
             className="c4"
           >
-            Sort by:
+            Ordenar por:
           </span>
           <div
             className="c5"

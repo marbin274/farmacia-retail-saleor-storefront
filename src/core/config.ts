@@ -2,9 +2,8 @@ import { generatePageUrl } from "./utils";
 import { OrderDirection, ProductOrderField } from "@sdk/gqlTypes/globalTypes";
 
 export const BASE_URL = "/";
-export const PRODUCTS_PER_PAGE = 6;
+export const PRODUCTS_PER_PAGE = 8;
 export const SUPPORT_EMAIL = "support@example.com";
-export const URL_WEB = "https://master.d31lwuq0j77p69.amplifyapp.com/"; // TODO: we need to modify/replace this line
 
 export const HOME_PAGE_CONF = {
   PAGE_SIZE: 8,

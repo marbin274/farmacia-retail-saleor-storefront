@@ -55,7 +55,7 @@ const CheckoutShipping: React.FC<IProps> = ({
         }) => {
           return (
             <S.FieldsGroup>
-              {renderGroupLabel(3, "Escoje el horario de entrega (3 primeros)")}
+              {renderGroupLabel(3, "Escoge el horario de entrega")}
               <S.ShippingMethodForm
                 id={formId}
                 ref={formRef}

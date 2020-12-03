@@ -175,7 +175,6 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
             <span
               className="c5"
             >
-              Filtros
                
             </span>
           </button>
@@ -219,7 +218,7 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
                       <span
                         className="c13"
                       >
-                        Sort by:
+                        Ordenar por:
                       </span>
                       <div
                         className="c14"
@@ -445,7 +444,6 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
             <span
               className="c5"
             >
-              Filtros
                
               <span>
                 (
@@ -500,7 +498,7 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
                       <span
                         className="c14"
                       >
-                        Sort by:
+                        Ordenar por:
                       </span>
                       <div
                         className="c15"

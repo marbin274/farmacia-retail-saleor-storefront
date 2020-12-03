@@ -61,7 +61,7 @@ describe("<ProductListHeader />", () => {
       <ProductListHeader {...DEFAULT_PROPS} activeFilters={3} />
     );
 
-    expect(wrapper.text()).toContain("Filtros (3)");
+    expect(wrapper.text()).toContain("(3)");
   });
 
   it("should call method for clearing filters when clicking on Limpiar filtros button", () => {

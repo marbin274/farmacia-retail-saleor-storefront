@@ -113,7 +113,7 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                         data-cy="checkoutPaymentGatewayDummyName"
                         checked={checked}
                       >
-                        {name}
+                        Tarjeta de Crédito
                       </S.PaymentTitle>
                       <S.PaymentIcon checked={checked}>
                         <ReactSVG

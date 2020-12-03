@@ -183,6 +183,7 @@ export const productVariantFragmentSimple = gql`
         id
         sku
         name
+        quantityAvailable
         images {
             id
             url

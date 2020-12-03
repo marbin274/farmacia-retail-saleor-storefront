@@ -26,7 +26,9 @@ export const ProductListHeader: React.FC<IProps> = ({
               data-cy="filters__button"
             >
               <S.Filters>
-                Filtros{" "}
+                {/* TODO: uncomment as soon as we need to extend the cagetory filters */}
+                {/* Filtros */}
+                {" "}
                 {activeFilters > 0 && (
                   <>
                     <span>({activeFilters})</span>
