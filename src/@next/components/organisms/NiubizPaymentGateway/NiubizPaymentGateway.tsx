@@ -138,6 +138,8 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
   const [showForm, setShowForm] = useState<boolean>(false);
   const [formErrors, setFormErrors] = useState<any[]>([]);
 
+  const errorsDictionary = ["invalid_number", "invalid_expiry", "invalid_cvc"];
+
   // const clientToken = config.find(({ field }) => field === "client_token")
   //   ?.value;
 
@@ -157,7 +159,6 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
 
     const tokenRequirements = getTokenRequirements(config);
     const amount = totalPrice?.gross.amount.toString();
-
     // @ts-ignore
     createToken(tokenRequirements)
       .then((token: any) => {
@@ -222,9 +223,9 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
         };
 
         // Número de tarjeta
-
         const _window: any = window;
         const _payform = _window?.payform;
+
         _window.cardNumber = _window?.payform.createElement(
           "card-number",
           {
@@ -289,13 +290,6 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
             // console.log("CHANGE F.V: ", data);
           });
         });
-
-        // @ts-ignore
-        // document.getElementById("txtFechaVencimiento")?.onkeyup(e => {
-        //   console.log(e);
-        // });
-        // setShowForm(true);
-        // console.log("showForm", showForm);
       });
   }, []);
 
@@ -384,7 +378,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
         const key = "transactionToken";
         const transactionToken = result[key] || undefined;
         if (transactionToken) {
-          console.table(transactionToken);
+          // console.table(transactionToken);
           processPayment(transactionToken);
         } else {
           const niubizPayloadErrors = [
@@ -431,6 +425,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
       display: "block",
     },
   };
+
   return (
     <div>
       {showForm ? <label htmlFor=""></label> : <Loader fullScreen={true} />}
@@ -488,6 +483,19 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                         id="txtNumeroTarjeta"
                         className="form-control form-control-sm ncp-card"
                       ></div>
+                      {formErrors.length &&
+                      formErrors.filter(x => x.code === errorsDictionary[0])
+                        .length ? (
+                        <div className="error">
+                          {
+                            formErrors.filter(
+                              x => x.code === errorsDictionary[0]
+                            )[0].message
+                          }
+                        </div>
+                      ) : (
+                        ""
+                      )}
                     </div>
                     <br />
 
@@ -498,22 +506,39 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                           id="txtFechaVencimiento"
                           className="form-control form-control-sm"
                         ></div>
-                        <div className="errorCvv">
-                          {formErrors.length &&
-                          formErrors.filter(x => x.code === "invalid_expiry")
-                            .length
-                            ? formErrors.filter(
-                                x => x.code === "invalid_expiry"
-                              )[0].es.message
-                            : ""}
-                        </div>
+                        {formErrors.length &&
+                        formErrors.filter(x => x.code === errorsDictionary[1])
+                          .length ? (
+                          <div className="error">
+                            {
+                              formErrors.filter(
+                                x => x.code === errorsDictionary[1]
+                              )[0].message
+                            }
+                          </div>
+                        ) : (
+                          ""
+                        )}
                       </div>
                       <div className="cvv">
-                        <label htmlFor="">CVV</label>
+                        <label htmlFor="">CVC</label>
                         <div
                           id="txtCvv"
                           className="form-control form-control-sm"
                         ></div>
+                        {formErrors.length &&
+                        formErrors.filter(x => x.code === errorsDictionary[2])
+                          .length ? (
+                          <div className="error">
+                            {
+                              formErrors.filter(
+                                x => x.code === errorsDictionary[2]
+                              )[0].message
+                            }
+                          </div>
+                        ) : (
+                          ""
+                        )}
                       </div>
                     </div>
                   </div>

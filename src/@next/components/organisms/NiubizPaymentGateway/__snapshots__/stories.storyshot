@@ -114,6 +114,14 @@ exports[`Storyshots @components/organisms/NiubizPaymentGateway default 1`] = `
   margin-left: 5%;
 }
 
+.c4 .error {
+  margin-top: 1.8rem;
+  margin-left: 1rem;
+  font-size: 12px;
+  color: #e84545;
+  margin-bottom: -2rem;
+}
+
 .c4 .creditcard {
   margin-top: 1rem;
   margin-bottom: 1.5rem;
@@ -140,13 +148,6 @@ exports[`Storyshots @components/organisms/NiubizPaymentGateway default 1`] = `
 
 .c4 .expirydate_and_cvv .expirydate {
   width: 45%;
-}
-
-.c4 .expirydate_and_cvv .expirydate .errorCvv {
-  margin-top: 1.8rem;
-  margin-left: 1rem;
-  font-size: 12px;
-  color: #e84545;
 }
 
 .c4 .expirydate_and_cvv .cvv {
@@ -315,6 +316,7 @@ exports[`Storyshots @components/organisms/NiubizPaymentGateway default 1`] = `
                   className="form-control form-control-sm ncp-card"
                   id="txtNumeroTarjeta"
                 />
+                
               </div>
               <br />
               <div
@@ -332,11 +334,7 @@ exports[`Storyshots @components/organisms/NiubizPaymentGateway default 1`] = `
                     className="form-control form-control-sm"
                     id="txtFechaVencimiento"
                   />
-                  <div
-                    className="errorCvv"
-                  >
-                    
-                  </div>
+                  
                 </div>
                 <div
                   className="cvv"
@@ -344,12 +342,13 @@ exports[`Storyshots @components/organisms/NiubizPaymentGateway default 1`] = `
                   <label
                     htmlFor=""
                   >
-                    CVV
+                    CVC
                   </label>
                   <div
                     className="form-control form-control-sm"
                     id="txtCvv"
                   />
+                  
                 </div>
               </div>
             </div>

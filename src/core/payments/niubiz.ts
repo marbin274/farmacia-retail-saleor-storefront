@@ -55,65 +55,69 @@ export type GatewayOptions = {
   sessionKey?: string | undefined;
   payform?: any | undefined;
   merchantId?: string | undefined;
-}
+};
 
 export const createToken = (requirements: GatewayOptions) => {
   const endpoint: string | undefined = requirements?.endpoint;
   const user: string | undefined = requirements?.user || "";
   const password: string | undefined = requirements?.password || "";
 
-  const seed: string = btoa(`${user}:${password}`); 
+  const seed: string = btoa(`${user}:${password}`);
   const requestOptions: AxiosRequestConfig = {
-    headers: { 
-      "Authorization": `Basic ${seed}`,
+    headers: {
+      Authorization: `Basic ${seed}`,
       "Content-Type": "application/json",
-     },
+    },
   };
 
-  if (endpoint){
-    return axios.get(endpoint, requestOptions)
-    .then((res: any) => res.data);
+  if (endpoint) {
+    return axios.get(endpoint, requestOptions).then((res: any) => res.data);
   }
 };
 
 export const createSession = (requirements: GatewayOptions) => {
-  const data = { "amount": requirements.amount, "antifraud": null, "channel": requirements.channel};
+  const data = {
+    amount: requirements.amount,
+    antifraud: null,
+    channel: requirements.channel,
+  };
 
   const requestOptions: AxiosRequestConfig = {
-    headers: { 
-      "Authorization": requirements.securityToken,
+    headers: {
+      Authorization: requirements.securityToken,
       "Content-Type": "application/json",
-     },
+    },
   };
-  if (requirements.endpoint){
-    return axios.post(requirements.endpoint, data, requestOptions)
+  if (requirements.endpoint) {
+    return axios
+      .post(requirements.endpoint, data, requestOptions)
       .then((res: any) => res.data)
       .then((data: any) => data.sessionKey);
   }
 };
 
 // export const setConfiguration = async (payform: any, sessionKey?: string, merchantId?: string, amount?: any) => {
-//   const configuration = { 
+//   const configuration = {
 //     amount,
 //     callbackurl: "",
 //     channel: "web",
 //     font:"https://fonts.googleapis.com/css?family=Montserrat:400&display=swap",
-//     language: "es", 
+//     language: "es",
 //     merchantConfiguration: {
 //       tokenizationEnabled: true,
 //     },
-//     merchantid: merchantId,  
+//     merchantid: merchantId,
 //     purchasenumber: "100000000001",
 //     recurrentmaxamount: "1000.00",
-//     sessionkey: sessionKey, 
+//     sessionkey: sessionKey,
 //   };
 
 //   payform.setConfiguration(configuration);
 
 //   const data= {
-//     alias: 'mialias', 
-//     email: "accept@sastest.com", 
-//     lastName: "Apellidos", 
+//     alias: 'mialias',
+//     email: "accept@sastest.com",
+//     lastName: "Apellidos",
 //     name: "Nombres",
 //     userBlockId: 'miUserBlockId',
 //   };
@@ -128,7 +132,6 @@ export const createSession = (requirements: GatewayOptions) => {
 // export const tokenizeCreditCard = async (requirements: GatewayOptions) => {
 //   return setConfiguration(requirements.payform, requirements.sessionKey, requirements.merchantId, requirements.amount);
 // };
-
 
 // export const niubizPayment = (paymentClientToken: string, creditCard: any) =>
 //   new Promise<PaymentData | ErrorData[]>((resolve, reject) => {

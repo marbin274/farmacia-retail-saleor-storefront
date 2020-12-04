@@ -44,6 +44,14 @@ export const Payment = styled.div`
   .email {
   }
 
+  .error {
+    margin-top: 1.8rem;
+    margin-left: 1rem;
+    font-size: 12px;
+    color: #e84545;
+    margin-bottom: -2rem;
+  }
+
   .creditcard {
     margin-top: 1rem;
     margin-bottom: 1.5rem;
@@ -64,13 +72,6 @@ export const Payment = styled.div`
 
     .expirydate {
       width: 45%;
-
-      .errorCvv {
-        margin-top: 1.8rem;
-        margin-left: 1rem;
-        font-size: 12px;
-        color: #e84545;
-      }
     }
 
     .cvv {
