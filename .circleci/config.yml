@@ -1,10 +1,4 @@
-version: 2.1
-
-orbs:
-  aws-cli: circleci/aws-cli@0.1.20
-  aws-s3: circleci/aws-s3@2.0.0
-  slack: circleci/slack@3.4.2
-
+version: 2
 jobs:
   build:
     working_directory: ~/app
@@ -79,53 +73,46 @@ jobs:
   deploy:
     working_directory: ~/app
     docker:
-      - image: 'cimg/python:3.6'
+      - image: circleci/python:2.7-jessie
     steps:
       - attach_workspace:
           at: .
-      - aws-s3/sync:
-          arguments: |
-            --delete
-          #   --acl public-read \
-          #   --cache-control "max-age=86400"
-          aws-access-key-id: AWS_ACCESS_KEY_ID
-          aws-region: AWS_REGION
-          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
-          from: 'dist/'
-          to: "s3://${STORE_WEB_BUCKET_S3}-${ENV}/"
-          #overwrite: true
-      - run: aws cloudfront create-invalidation --distribution-id ${CF_STORE_ID} --paths "/*"
+      - run:
+          name: Install awscli
+          command: sudo pip install awscli
+      - run:
+          name: Deploy to S3
+          command: aws s3 sync dist s3://${STORE_WEB_BUCKET_S3}-${ENV}/ --delete --region ${AWS_REGION}
+      - run: 
+          name: Invalidating Cloudfront Cache
+          command: aws cloudfront create-invalidation --distribution-id ${CF_STORE_ID} --paths "/*"
 
 workflows:
   version: 2
   build-deploy:
     jobs:
       - build
+          # filters:
+          #   tags:
+          #     only: /^v.*/
       - deploy:
           context: frontend-qa
+          requires:
+            - build
           filters:
+            # tags:
+            #   only: /^v.*/
             branches:
               only: cicd
-          requires:
-            - build
+              # ignore: /.*/
       - deploy:
           context: frontend-stg
-          filters:
-            branches:
-              only: cicd-stg
           requires:
             - build
-
-      # - build:
-      #     filters:
-      #       tags:
-      #         only: /^v.*/
-      # - deploy:
-      #     requires:
-      #       - build
-      #     filters:
-      #       tags:
-      #         only: /^v.*/
-      #       branches:
-      #         ignore: /.*/
+          filters:
+            # tags:
+            #   only: /^v.*/
+            branches:
+              only: cicd-stg
+              # ignore: /.*/
       - cypress/run
