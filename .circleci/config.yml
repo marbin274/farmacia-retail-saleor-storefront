@@ -54,16 +54,7 @@ jobs:
 workflows:
   build-deploy:
     jobs:
-      - project-build:
-          context: frontend-qa
-          filters:
-            branches:
-              only: cicd
-      - project-build:
-          context: frontend-stg
-          filters:
-            branches:
-              only: cicd-stg
+      - project-build
       - project-deploy:
           context: frontend-qa
           filters:
