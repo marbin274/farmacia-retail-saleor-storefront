@@ -120,10 +120,10 @@ exports[`Storyshots @components/atoms/Checkbox default 1`] = `
 >
   <div
     className="c1"
-    onClick={[Function]}
   >
     <label
       className="c2"
+      onClick={[Function]}
     >
       <input
         name="default-checkbox"

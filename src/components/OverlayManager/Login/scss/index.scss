@@ -85,3 +85,25 @@
     }
   }
 }
+
+.login__privacy__policies {
+  padding-left: 0.1rem;
+  margin-top: 2rem;
+  svg {
+    margin-top: 17px;
+  }
+  a {
+    color: $auna-interactive;
+  }
+}
+
+.login__additionals {
+  margin-top: 2rem;
+  padding-left: 0.1rem;
+  svg {
+    margin-top: 7px;
+  }
+  a {
+    color: $auna-interactive;
+  }
+}

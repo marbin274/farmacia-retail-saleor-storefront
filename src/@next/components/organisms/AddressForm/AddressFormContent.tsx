@@ -27,7 +27,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
 
   const _cities: any[] = [];
 
-  citiesOptions?.flatMap(x => {
+  citiesOptions?.map(x => {
     const item: any = {
       code: x,
       description: x,

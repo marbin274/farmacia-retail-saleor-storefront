@@ -41,7 +41,9 @@ const returnTab: any = (path: string, userDetails, history) => {
 const Account: React.FC<RouteComponentProps> = ({ history, match }) => {
   const { data: user, loading } = useUserDetails();
 
-  const links = [accountUrl, orderHistoryUrl, addressBookUrl];
+  // Don't remove comment because in the future will be used three links again
+  // const links = [accountUrl, orderHistoryUrl, addressBookUrl];
+  const links = [accountUrl, addressBookUrl];
 
   if (loading) {
     return <Loader />;

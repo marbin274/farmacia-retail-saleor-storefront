@@ -12,6 +12,7 @@ export const Wrapper = styled.div`
 export const Title = styled.p`
   color: ${aunaBlack};
   display: inline-block;
+  margin-bottom: 1rem;
 `;
 
 export const Text = styled.p`

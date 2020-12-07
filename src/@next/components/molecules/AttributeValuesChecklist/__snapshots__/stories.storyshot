@@ -178,10 +178,10 @@ exports[`Storyshots @components/molecules/AttributeValuesChecklist default 1`] =
       </div>
       <div
         className="c4"
-        onClick={[Function]}
       >
         <label
           className="c5"
+          onClick={[Function]}
         >
           <input
             checked={true}
@@ -205,10 +205,10 @@ exports[`Storyshots @components/molecules/AttributeValuesChecklist default 1`] =
       </div>
       <div
         className="c4"
-        onClick={[Function]}
       >
         <label
           className="c5"
+          onClick={[Function]}
         >
           <input
             checked={false}
@@ -232,10 +232,10 @@ exports[`Storyshots @components/molecules/AttributeValuesChecklist default 1`] =
       </div>
       <div
         className="c4"
-        onClick={[Function]}
       >
         <label
           className="c5"
+          onClick={[Function]}
         >
           <input
             checked={false}
@@ -259,10 +259,10 @@ exports[`Storyshots @components/molecules/AttributeValuesChecklist default 1`] =
       </div>
       <div
         className="c4"
-        onClick={[Function]}
       >
         <label
           className="c5"
+          onClick={[Function]}
         >
           <input
             checked={false}
@@ -286,10 +286,10 @@ exports[`Storyshots @components/molecules/AttributeValuesChecklist default 1`] =
       </div>
       <div
         className="c4"
-        onClick={[Function]}
       >
         <label
           className="c5"
+          onClick={[Function]}
         >
           <input
             checked={false}

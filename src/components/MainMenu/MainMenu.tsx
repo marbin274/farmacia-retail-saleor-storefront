@@ -103,11 +103,11 @@ const MainMenu: React.FC = () => {
                                         My Account
                                       </Link>
                                     </li>
-                                    <li data-testid="order_history__link">
+                                    {/* <li data-testid="order_history__link">
                                       <Link to={appPaths.orderHistoryUrl}>
                                         Order history
                                       </Link>
-                                    </li>
+                                    </li> */}
                                     <li data-testid="address_book__link">
                                       <Link to={appPaths.addressBookUrl}>
                                         Address book
@@ -199,11 +199,11 @@ const MainMenu: React.FC = () => {
                             <li data-testid="my_account__link">
                               <Link to={appPaths.accountUrl}>My Account</Link>
                             </li>
-                            <li data-testid="order_history__link">
+                            {/* <li data-testid="order_history__link">
                               <Link to={appPaths.orderHistoryUrl}>
                                 Order history
                               </Link>
-                            </li>
+                            </li> */}
                             <li data-testid="address_book__link">
                               <Link to={appPaths.addressBookUrl}>
                                 Address book

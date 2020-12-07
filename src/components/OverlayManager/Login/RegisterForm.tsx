@@ -1,6 +1,6 @@
 import "./scss/index.scss";
 
-import * as React from "react";
+import React, { useState } from "react";
 
 import { accountConfirmUrl } from "../../../app/routes";
 
@@ -10,6 +10,7 @@ import { RegisterAccount } from "./gqlTypes/RegisterAccount";
 import { TypedAccountRegisterMutation } from "./queries";
 
 import { AlertManager, useAlert } from "react-alert";
+import { Checkbox } from "@temp/@next/components/atoms";
 
 const showSuccessNotification = (
   data: RegisterAccount,
@@ -38,6 +39,18 @@ interface IRegisterForm {
 
 const RegisterForm: React.FC<IRegisterForm> = ({ hide, onSwitchSection }) => {
   const alert = useAlert();
+
+  const [privacyAndPolicies, setPrivacyAndPolicies] = useState(false);
+
+  const handlePrivacyAndPolicies = () => {
+    setPrivacyAndPolicies(!privacyAndPolicies);
+  };
+
+  const [additionals, setAdditionals] = useState(false);
+
+  const handleAdditionals = () => {
+    setAdditionals(!additionals);
+  };
 
   return (
     <TypedAccountRegisterMutation
@@ -92,6 +105,40 @@ const RegisterForm: React.FC<IRegisterForm> = ({ hide, onSwitchSection }) => {
               type="password"
               required
             />
+            <div className="login__privacy__policies">
+              <Checkbox
+                data-cy="checkoutPaymentPromoCodeCheckbox"
+                name="payment-promo-code"
+                checked={privacyAndPolicies}
+                onChange={handlePrivacyAndPolicies}
+              >
+                <label htmlFor="">
+                  Estoy de acuerdo con las
+                  <a href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-politicas-privacidad.pdf">
+                    {" "}
+                    Políticas de privacidad
+                  </a>{" "}
+                  y
+                  <a href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-terminos-condiciones.pdf">
+                    {" "}
+                    Terminos y condiciones
+                  </a>
+                </label>
+              </Checkbox>
+            </div>
+            <div className="login__additionals">
+              <Checkbox
+                data-cy="checkoutPaymentPromoCodeCheckbox"
+                name="payment-promo-code"
+                checked={additionals}
+                onChange={handleAdditionals}
+              >
+                <label htmlFor="">
+                  Acepto el tratamiento para <a href="#"> Fines adicionales</a>{" "}
+                  (opcional )
+                </label>
+              </Checkbox>
+            </div>
             <div className="login__content__button">
               <Button type="submit" {...(loading && { disabled: true })}>
                 {loading ? "Cargando" : "Crear cuenta"}

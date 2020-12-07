@@ -37,7 +37,7 @@ export const Label = styled.label`
       div {
         display: none;
         svg {
-         fill: ${props => props.theme.colors.white};
+          fill: ${props => props.theme.colors.white};
         }
       }
     }

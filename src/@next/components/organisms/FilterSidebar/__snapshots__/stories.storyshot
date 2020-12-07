@@ -339,10 +339,10 @@ exports[`Storyshots @components/organisms/FilterSidebar default 1`] = `
           </div>
           <div
             className="c8"
-            onClick={[Function]}
           >
             <label
               className="c9"
+              onClick={[Function]}
             >
               <input
                 checked={true}
@@ -366,10 +366,10 @@ exports[`Storyshots @components/organisms/FilterSidebar default 1`] = `
           </div>
           <div
             className="c8"
-            onClick={[Function]}
           >
             <label
               className="c9"
+              onClick={[Function]}
             >
               <input
                 checked={false}
@@ -393,10 +393,10 @@ exports[`Storyshots @components/organisms/FilterSidebar default 1`] = `
           </div>
           <div
             className="c8"
-            onClick={[Function]}
           >
             <label
               className="c9"
+              onClick={[Function]}
             >
               <input
                 checked={false}
@@ -420,10 +420,10 @@ exports[`Storyshots @components/organisms/FilterSidebar default 1`] = `
           </div>
           <div
             className="c8"
-            onClick={[Function]}
           >
             <label
               className="c9"
+              onClick={[Function]}
             >
               <input
                 checked={false}
@@ -447,10 +447,10 @@ exports[`Storyshots @components/organisms/FilterSidebar default 1`] = `
           </div>
           <div
             className="c8"
-            onClick={[Function]}
           >
             <label
               className="c9"
+              onClick={[Function]}
             >
               <input
                 checked={false}

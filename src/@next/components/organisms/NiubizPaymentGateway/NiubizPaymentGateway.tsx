@@ -40,29 +40,21 @@ const INITIAL_CARD_ERROR_STATE = {
 };
 
 const getConfigElement = (config: IPaymentGatewayConfig[], element: string) => {
-  // const connectionParameters = config.find(({ field }) => field === "connection_params")?.value
-  // console.log(connectionParameters);
-  // const connectionParameters = config["connection_params"];
-
-  // @ts-ignore
-  // const parsed = JSON.parse(connectionParameters);
-  // return config.find(({ field }) => field === element)?.value;
-  // console.log(connectionParameters);
-  return null;
+  return config.find(x => x.field === element)?.value;
 };
 
 const getTokenRequirements = (config: IPaymentGatewayConfig[]) => {
   console.table(config);
   const securityAPI =
-    getConfigElement(config, "security_api") ||
+    getConfigElement(config, "nb_security_api") ||
     "https://apitestenv.vnforapps.com/api.security/v1/security";
 
   const gatewayUser =
-    getConfigElement(config, "gateway_user") ||
+    getConfigElement(config, "merchant_username") ||
     "integraciones.visanet@necomplus.com";
 
   const gatewayPassword =
-    getConfigElement(config, "gateway_password") || "d5e7nk$M";
+    getConfigElement(config, "merchant_password") || "d5e7nk$M";
 
   const tokenRequirements: GatewayOptions = {
     endpoint: securityAPI,
@@ -81,10 +73,10 @@ const getSessionRequirements = (
   const merchantId = getConfigElement(config, "merchant_id") || "342062522";
 
   const sessionAPI =
-    getConfigElement(config, "session_api") ||
+    getConfigElement(config, "nb_session_url") ||
     "https://apitestenv.vnforapps.com/api.ecommerce/v2/ecommerce/token/session";
 
-  const url = sessionAPI + "/" + merchantId;
+  const url = sessionAPI + merchantId;
   const total = amount;
 
   const sessionRequirements: GatewayOptions = {
@@ -140,12 +132,14 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
 
   const errorsDictionary = ["invalid_number", "invalid_expiry", "invalid_cvc"];
 
+  const payformUrl =
+    getConfigElement(config, "payform_url") ||
+    "https://pocpaymentserve.s3.amazonaws.com/payform.min.js";
+
   // const clientToken = config.find(({ field }) => field === "client_token")
   //   ?.value;
 
   useEffect(() => {
-    const payformUrl =
-      "https://pocpaymentserve.s3.amazonaws.com/payform.min.js";
     const script = document.createElement("script");
     script.src = payformUrl;
     script.async = true;
@@ -374,7 +368,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
         data
       )
       .then((result: any) => {
-        // console.table(result);
+        console.table(result);
         const key = "transactionToken";
         const transactionToken = result[key] || undefined;
         if (transactionToken) {

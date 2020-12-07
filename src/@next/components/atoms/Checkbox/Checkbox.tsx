@@ -19,17 +19,16 @@ export const Checkbox: React.FC<IProps> = ({
   const ref = React.useRef<HTMLDivElement>(null);
 
   return (
-    <S.Checkbox
-      ref={ref}
-      onClick={(evt) => {
-        evt.preventDefault();
-        onChange(evt);
-        if (ref.current) {
-          ref.current.blur();
-        }
-      }}
-    >
-      <S.Label>
+    <S.Checkbox ref={ref}>
+      <S.Label
+        onClick={evt => {
+          evt.preventDefault();
+          onChange(evt);
+          if (ref.current) {
+            ref.current.blur();
+          }
+        }}
+      >
         <input
           {...props}
           tabIndex={-1}
@@ -41,17 +40,16 @@ export const Checkbox: React.FC<IProps> = ({
         <div
           ref={ref}
           tabIndex={0}
-          onKeyDown={(evt) => {
+          onKeyDown={evt => {
             if (evt.which === SPACE_KEY || evt.which === ENTER_KEY) {
               evt.preventDefault();
               onChange(evt);
             }
           }}
         >
-          <span><ReactSVG
-                  path={checkout_done}
-                  className={"checkout_icon"}
-                /></span>
+          <span>
+            <ReactSVG path={checkout_done} className={"checkout_icon"} />
+          </span>
         </div>
       </S.Label>
       {children}

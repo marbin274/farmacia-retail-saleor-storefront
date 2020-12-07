@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/CheckoutReview default 1`] = `
   margin: 20px;
 }
 
-.c6 {
+.c8 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -17,20 +17,134 @@ exports[`Storyshots @components/organisms/CheckoutReview default 1`] = `
   box-sizing: border-box;
 }
 
-.c1 {
-  display: grid;
-  grid-gap: 30px;
-  grid-template-columns: repeat(2,1fr);
+.c5 {
+  width: 100%;
+  margin-bottom: 1.25rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  margin-left: -4px;
 }
 
-.c5 {
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  cursor: pointer;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-right: 1rem;
+}
+
+.c6 input[type="checkbox"] {
+  display: none;
+  position: relative;
+  right: -999em;
+}
+
+.c6 div {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 26px;
+  width: 26px;
+}
+
+.c6 div span {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  border-radius: 2px;
+  border: solid 3px #E4E5ED;
+}
+
+.c6 div span div {
+  display: none;
+}
+
+.c6 div span div svg {
+  fill: #fff;
+}
+
+.c6 div:focus {
+  outline: none;
+}
+
+.c6 .checkout_icon {
+  color: red;
+}
+
+.c6 input:checked + div span {
+  background-clip: content-box;
+  background-color: #00B0CA;
+  border: solid 2px #00B0CA;
+}
+
+.c6 input:checked + div span div {
+  display: block;
+  position: absolute;
+  left: 3px;
+  bottom: 2px;
+  top: 2.5px;
+}
+
+.c1 div:nth-child(2) {
+  margin-bottom: 1rem;
+}
+
+.c1 .privacyAndPolicies {
+  margin-top: 2rem;
+  width: 50%;
+}
+
+.c1 .privacyAndPolicies a {
+  color: #00B0CA;
+}
+
+.c1 .additionals {
+  margin-top: 2rem;
+  width: 50%;
+}
+
+.c1 .additionals a {
+  color: #00B0CA;
+}
+
+.c7 {
   margin-top: 30px;
 }
 
 .c2 {
   color: #00B0CA;
-  font-size: 14px;
-  font-weight: 300;
+  font-size: 20px;
+  font-weight: 500;
   margin-bottom: 16px;
 }
 
@@ -50,8 +164,14 @@ exports[`Storyshots @components/organisms/CheckoutReview default 1`] = `
 }
 
 @media (max-width:540px) {
-  .c1 {
-    grid-template-columns: repeat(1,1fr);
+  .c1 .privacyAndPolicies {
+    width: 100%;
+  }
+}
+
+@media (max-width:540px) {
+  .c1 .additionals {
+    width: 100%;
   }
 }
 
@@ -59,48 +179,139 @@ exports[`Storyshots @components/organisms/CheckoutReview default 1`] = `
   className="c0"
 >
   <div
-    className=""
+    className="c1"
   >
-    <div
-      className="c1"
-    >
-      <section>
-        <h4
-          className="c2"
-          data-cy="checkoutReviewSectionTitle"
-        >
-          Datos de envío
-        </h4>
-      </section>
-      <section>
-        <h4
-          className="c2"
-          data-cy="checkoutReviewSectionTitle"
-        >
-          Horario de entrega
-        </h4>
-        <p
-          className="c3"
-        />
-      </section>
-      <section>
-        <h4
-          className="c2"
-          data-cy="checkoutReviewSectionTitle"
-        >
-          Método de pago
-        </h4>
-        <p
-          className="c4"
-        />
-      </section>
+    <div>
+      <h4
+        className="c2"
+        data-cy="checkoutReviewSectionTitle"
+      >
+        Datos de envío
+      </h4>
+    </div>
+    <div>
+      <h4
+        className="c2"
+        data-cy="checkoutReviewSectionTitle"
+      >
+        Método de entrega
+      </h4>
+      <p
+        className="c3"
+      />
+    </div>
+    <div>
+      <h4
+        className="c2"
+        data-cy="checkoutReviewSectionTitle"
+      >
+        Método de pago
+      </h4>
+      <p
+        className="c4"
+      >
+        **** **** **** 
+      </p>
     </div>
     <div
-      className="c5"
+      className="privacyAndPolicies"
+    >
+      <div
+        className="c5"
+      >
+        <label
+          className="c6"
+          onClick={[Function]}
+        >
+          <input
+            checked={false}
+            data-cy="checkoutPaymentPromoCodeCheckbox"
+            name="payment-promo-code"
+            readOnly={true}
+            tabIndex={-1}
+            type="checkbox"
+          />
+          <div
+            onKeyDown={[Function]}
+            tabIndex={0}
+          >
+            <span>
+              <div
+                className="checkout_icon"
+              />
+            </span>
+          </div>
+        </label>
+        <label
+          htmlFor=""
+        >
+          Estoy de acuerdo con las
+          <a
+            href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-politicas-privacidad.pdf"
+          >
+             
+            Políticas de privacidad
+          </a>
+           
+          y
+          <a
+            href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-terminos-condiciones.pdf"
+          >
+             
+            Terminos y condiciones
+          </a>
+        </label>
+      </div>
+    </div>
+    <div
+      className="additionals"
+    >
+      <div
+        className="c5"
+      >
+        <label
+          className="c6"
+          onClick={[Function]}
+        >
+          <input
+            checked={false}
+            data-cy="checkoutPaymentPromoCodeCheckbox"
+            name="payment-promo-code"
+            readOnly={true}
+            tabIndex={-1}
+            type="checkbox"
+          />
+          <div
+            onKeyDown={[Function]}
+            tabIndex={0}
+          >
+            <span>
+              <div
+                className="checkout_icon"
+              />
+            </span>
+          </div>
+        </label>
+        <label
+          htmlFor=""
+        >
+          Acepto el tratamiento para 
+          <a
+            href="#"
+          >
+             Fines adicionales
+          </a>
+           
+          (opcional )
+        </label>
+      </div>
+    </div>
+    <div
+      className="c7"
     />
   </div>
   <div
-    className="c6"
+    className="c8"
   />
 </div>
 `;

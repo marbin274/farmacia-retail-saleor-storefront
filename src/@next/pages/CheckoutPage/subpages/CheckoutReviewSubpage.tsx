@@ -26,7 +26,12 @@ const CheckoutReviewSubpageWithRef: RefForwardingComponent<
   ICheckoutReviewSubpageHandles,
   IProps
 > = (
-  { selectedPaymentGatewayToken, changeSubmitProgress, requestPayload, ...props }: IProps,
+  {
+    selectedPaymentGatewayToken,
+    changeSubmitProgress,
+    requestPayload,
+    ...props
+  }: IProps,
   ref
 ) => {
   const history = useHistory();

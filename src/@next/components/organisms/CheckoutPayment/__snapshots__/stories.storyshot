@@ -185,10 +185,10 @@ exports[`Storyshots @components/organisms/CheckoutPayment default 1`] = `
   >
     <div
       className="c1"
-      onClick={[Function]}
     >
       <label
         className="c2"
+        onClick={[Function]}
       >
         <input
           checked={false}
@@ -448,10 +448,10 @@ exports[`Storyshots @components/organisms/CheckoutPayment with addresses 1`] = `
   >
     <div
       className="c1"
-      onClick={[Function]}
     >
       <label
         className="c2"
+        onClick={[Function]}
       >
         <input
           checked={false}
