@@ -1,118 +1,61 @@
-version: 2
-jobs:
-  build:
-    working_directory: ~/app
-    docker:
-      - image: circleci/node:10.7.0-browsers
-    steps:
-      - checkout
-      - run:
-          name: Install system dependencies
-          command: sudo apt-get install -y libpng-dev
-      - run:
-          name: Install dependencies
-          command: npm install
-      - run:
-          name: Run typescript checker
-          command: npx tsc --noEmit & npx tsc --noEmit -p src/@sdk & npx tsc --noEmit -p src/@next
-      - run:
-          name: Run tslint
-          command: npm run tslint
-      - run:
-          name: Build application
-          command: npm run build
-      # - run:
-      #     name: Run tests
-      #     command: npm run test
-      - run:
-          name: Package lock security test
-          command: npx lockfile-lint --path package-lock.json --allowed-hosts npm yarn
-      - run:
-          name: lhci autorun
-          command: npx lhci autorun --upload.target=temporary-public-storage || echo "LHCI failed!"
-      - persist_to_workspace:
-          root: ~/app
-          paths:
-            - dist/*
-  cypress/run:
-    docker:
-      - image: cypress/base:10
-        environment:
-          TERM: xterm
-    parallelism: 1
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - cache-{{ .Branch }}-{{ checksum "package.json" }}
-      - run:
-          name: Npm CI
-          command: npm ci
-      - run:
-          command: npx cypress verify
-      - save_cache:
-          key: cache-{{ .Branch }}-{{ checksum "package.json" }}
-          paths:
-            - ~/.npm
-            - ~/.cache
-      - persist_to_workspace:
-          root: ~/
-          paths:
-            - project
-            - .cache/Cypress
-      - attach_workspace:
-          at: ~/
-      - run:
-          name: Running E2E tests
-          command: npm run test:e2e:run
-      - store_artifacts:
-          path: cypress/videos
-      - store_artifacts:
-          path: cypress/screenshots
+version: 2.1
 
-  deploy:
-    working_directory: ~/app
+orbs:
+  aws-cli: circleci/aws-cli@0.1.20
+  aws-s3: circleci/aws-s3@2.0.0
+  slack: circleci/slack@3.4.2
+
+jobs:
+  project-build:
     docker:
-      - image: circleci/python:2.7-jessie
+      - image: circleci/node:10.16.3-buster-browsers-legacy
+    steps:
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - checkout
+      - run: npm i
+      - run: npm run build
+      - persist_to_workspace:
+          root: DISTRIBUTION_FOLDER
+          paths:
+            - .
+  project-deploy:
+    docker:
+      - image: 'cimg/python:3.6'
     steps:
       - attach_workspace:
           at: .
-      - run:
-          name: Install awscli
-          command: sudo pip install awscli
-      - run:
-          name: Deploy to S3
-          command: aws s3 sync dist s3://${STORE_WEB_BUCKET_S3}-${ENV}/ --delete --region ${AWS_REGION}
-      - run: 
-          name: Invalidating Cloudfront Cache
-          command: aws cloudfront create-invalidation --distribution-id ${CF_STORE_ID} --paths "/*"
-
+      - aws-s3/sync:
+          arguments: |
+            --delete
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-region: AWS_REGION
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          from: '.'
+          to: "s3://${WEB_BUCKET_S3}-${ENV}/"
+      - run: aws cloudfront create-invalidation --distribution-id ${CF_DISTRIBUTION_ID} --paths "/*"
 workflows:
-  version: 2
   build-deploy:
     jobs:
-      - build
-          # filters:
-          #   tags:
-          #     only: /^v.*/
-      - deploy:
+      - project-build
+      - project-deploy:
           context: frontend-qa
-          requires:
-            - build
           filters:
-            # tags:
-            #   only: /^v.*/
             branches:
               only: cicd
-              # ignore: /.*/
-      - deploy:
-          context: frontend-stg
           requires:
-            - build
+            - project-build
+      - project-deploy:
+          context: frontend-stg
           filters:
-            # tags:
-            #   only: /^v.*/
             branches:
               only: cicd-stg
-              # ignore: /.*/
-      - cypress/run
+          requires:
+            - project-build
+      # - deploy-notification-stg:
+      #     context: env-stage
+      #     filters:
+      #       branches:
+      #         only: cicd-stg
+      #     requires:
+      #       - project-deploy-stg
