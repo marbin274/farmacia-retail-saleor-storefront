@@ -46,6 +46,7 @@ exports[`Storyshots @components/organisms/ProductList default 1`] = `
 .c7:disabled {
   background-color: #F1F2F7;
   color: #B8BCD5;
+  cursor: default;
 }
 
 .c7:disabled,

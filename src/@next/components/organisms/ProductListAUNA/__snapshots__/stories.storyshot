@@ -43,6 +43,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
 .c4:disabled {
   background-color: #F1F2F7;
   color: #B8BCD5;
+  cursor: default;
 }
 
 .c4:disabled,
@@ -79,6 +80,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
 .c7:disabled {
   background-color: #F1F2F7;
   color: #B8BCD5;
+  cursor: default;
 }
 
 .c7:disabled,

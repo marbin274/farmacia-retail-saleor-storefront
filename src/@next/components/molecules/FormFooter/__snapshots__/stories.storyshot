@@ -43,6 +43,7 @@ exports[`Storyshots @components/molecules/FormFooter with submit and cancel butt
 .c3:disabled {
   background-color: #F1F2F7;
   color: #B8BCD5;
+  cursor: default;
 }
 
 .c3:disabled,
@@ -182,6 +183,7 @@ exports[`Storyshots @components/molecules/FormFooter with submit button 1`] = `
 .c2:disabled {
   background-color: #F1F2F7;
   color: #B8BCD5;
+  cursor: default;
 }
 
 .c2:disabled,
@@ -289,6 +291,7 @@ exports[`Storyshots @components/molecules/FormFooter with top divider 1`] = `
 .c2:disabled {
   background-color: #F1F2F7;
   color: #B8BCD5;
+  cursor: default;
 }
 
 .c2:disabled,

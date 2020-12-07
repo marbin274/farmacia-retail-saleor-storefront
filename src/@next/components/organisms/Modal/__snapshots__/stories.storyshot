@@ -43,6 +43,7 @@ exports[`Storyshots @components/organisms/Modal Modal Form 1`] = `
 .c10:disabled {
   background-color: #F1F2F7;
   color: #B8BCD5;
+  cursor: default;
 }
 
 .c10:disabled,
@@ -359,6 +360,7 @@ exports[`Storyshots @components/organisms/Modal Modal Form disabled 1`] = `
 .c9:disabled {
   background-color: #F1F2F7;
   color: #B8BCD5;
+  cursor: default;
 }
 
 .c9:disabled,
@@ -643,6 +645,7 @@ exports[`Storyshots @components/organisms/Modal Modal Info 1`] = `
 .c9:disabled {
   background-color: #F1F2F7;
   color: #B8BCD5;
+  cursor: default;
 }
 
 .c9:disabled,

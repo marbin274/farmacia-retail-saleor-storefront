@@ -43,6 +43,7 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
 .c11:disabled {
   background-color: #F1F2F7;
   color: #B8BCD5;
+  cursor: default;
 }
 
 .c11:disabled,

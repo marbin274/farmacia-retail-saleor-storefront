@@ -11,7 +11,6 @@ export const DiscountForm = styled.form`
     }
     button {
       margin-top: -1.4rem;
-      cursor: pointer;
       background: ${props => props.theme.colors.aunaBlackGray}; 
       border-radius: %;
       padding: 0px 5px 0px 5px;
@@ -20,6 +19,9 @@ export const DiscountForm = styled.form`
           -moz-box-shadow: none;
           box-shadow: none;
           background: transparent;
+        }
+        &:disabled {
+          cursor: not-allowed;
         }
       svg {
         width: 12px;

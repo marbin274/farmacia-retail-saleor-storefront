@@ -60,7 +60,6 @@ export const DiscountField = styled.div`
               padding: 0.8rem 1.4rem 0.7rem 1.3rem;
               margin-right: 0;
               float: right;
-              cursor: pointer;
               border-radius: 0;
               outline: none;
 
@@ -82,7 +81,6 @@ export const DiscountField = styled.div`
               span{
                   font-weight: ${props => props.theme.typography.normalFontWeight};
                   font-size: ${props => props.theme.typography.smallFontSize};
-                  cursor: pointer;
               }
   
               &:focus {

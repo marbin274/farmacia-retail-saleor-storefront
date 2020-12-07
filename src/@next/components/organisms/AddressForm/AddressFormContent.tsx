@@ -14,8 +14,6 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
   handleSubmit,
   values,
   citiesOptions,
-  countriesOptions,
-  defaultValue,
   setFieldValue,
   includeEmail = false,
   onSelect,

@@ -43,6 +43,7 @@ exports[`Storyshots @components/organisms/DiscountForm default 1`] = `
 .c8:disabled {
   background-color: #F1F2F7;
   color: #B8BCD5;
+  cursor: default;
 }
 
 .c8:disabled,
@@ -126,7 +127,6 @@ exports[`Storyshots @components/organisms/DiscountForm default 1`] = `
 
 .c1 .promoCode button {
   margin-top: -1.4rem;
-  cursor: pointer;
   background: #454545;
   border-radius: %;
   padding: 0px 5px 0px 5px;
@@ -137,6 +137,10 @@ exports[`Storyshots @components/organisms/DiscountForm default 1`] = `
   -moz-box-shadow: none;
   box-shadow: none;
   background: transparent;
+}
+
+.c1 .promoCode button:disabled {
+  cursor: not-allowed;
 }
 
 .c1 .promoCode button svg {

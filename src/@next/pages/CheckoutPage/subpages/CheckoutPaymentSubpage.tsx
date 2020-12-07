@@ -123,9 +123,11 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
     },
   }));
 
+
   const clearPromoCodeErrors = () => {
     setPromoCodeErrors([]);
   };
+
 
   const handleProcessPayment = async (
     gateway: string,
@@ -153,9 +155,13 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
       history.push(CHECKOUT_STEPS[1].nextStepLink);
     }
   };
+
+
   const handlePaymentGatewayError = () => {
     changeSubmitProgress(false);
   };
+
+
   const handleSetBillingAddress = async (
     address?: IAddress,
     email?: string,
@@ -213,56 +219,34 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
       }
     }
   };
+
+
   const handleAddPromoCode = async (promoCode: string) => {
     const { dataError } = await addPromoCode(promoCode);
-    const errors = dataError?.error;
-    if (errors) {
-      changeSubmitProgress(false);
-      setPromoCodeErrors(errors);
+    changeSubmitProgress(false);
+
+    if (dataError?.error) {
+      setPromoCodeErrors(dataError?.error);
     } else {
-      setPromoCodeErrors([]);
-      if (checkoutGatewayFormRef.current) {
-        // Avoid to go ahead to next step
-        // checkoutGatewayFormRef.current.dispatchEvent(
-        //   new Event("submit", { cancelable: true })
-        // );
-      } else {
-        changeSubmitProgress(false);
-        setGatewayErrors([{ message: "Please choose payment method." }]);
-      }
+      clearPromoCodeErrors();
     }
   };
+
 
   const handleRemovePromoCode = async (promoCode: string) => {
     const { dataError } = await removePromoCode(promoCode);
-    const errors = dataError?.error;
+    changeSubmitProgress(false);
 
-    if (errors) {
-      changeSubmitProgress(false);
-      setPromoCodeErrors(errors);
+    if (dataError?.error) {
+      setPromoCodeErrors(dataError?.error);
     } else {
-      setPromoCodeErrors([]);
-      if (checkoutGatewayFormRef.current) {
-        // Avoid to go ahead to next step
-        // checkoutGatewayFormRef.current.dispatchEvent(
-        //   new Event("submit", { cancelable: true })
-        // );
-      } else {
-        changeSubmitProgress(false);
-        setGatewayErrors([{ message: "Please choose payment method." }]);
-      }
+      clearPromoCodeErrors();
     }
   };
+
+
   const handleSubmitUnchangedDiscount = () => {
-    setPromoCodeErrors([]);
-    if (checkoutGatewayFormRef.current) {
-      checkoutGatewayFormRef.current.dispatchEvent(
-        new Event("submit", { cancelable: true })
-      );
-    } else {
-      changeSubmitProgress(false);
-      setGatewayErrors([{ message: "Please choose payment method." }]);
-    }
+    clearPromoCodeErrors();
   };
 
   return (

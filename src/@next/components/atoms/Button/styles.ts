@@ -42,6 +42,7 @@ export const Primary = styled.button<{
   &:disabled {
     background-color: ${props => getButtonColors(props).disabledBackground};
     color: ${props => getButtonColors(props).disabledColor};
+    cursor: default;
 
     &,
     &:hover {
