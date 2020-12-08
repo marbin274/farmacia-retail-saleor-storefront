@@ -15,6 +15,7 @@ const AddressGridSelector: React.FC<IProps> = ({
   addresses,
   selectedAddressId,
   countriesOptions,
+  citiesOptions,
   userId,
   errors,
   onSelect,
@@ -35,13 +36,11 @@ const AddressGridSelector: React.FC<IProps> = ({
   );
 
   const changeSelectedAddressId = (id: string) => {
-    const address = addresses.find(
-      addr => addr.id === id
-    );
+    const address = addresses.find(addr => addr.id === id);
 
     onSelect(address?.address, id);
     selectedAddressId = id;
-  }
+  };
 
   return (
     <>
@@ -107,6 +106,7 @@ const AddressGridSelector: React.FC<IProps> = ({
           submitBtnText={"Add"}
           title={"Add new address"}
           countriesOptions={countriesOptions}
+          citiesOptions={citiesOptions}
           formId={newAddressFormId}
           userId={userId}
           target={addNewModalTarget}

@@ -15,6 +15,7 @@ export const AddressFormModal: React.FC<IProps> = ({
   title,
   userId,
   address,
+  citiesOptions,
   formId,
   ...props
 }: IProps) => {
@@ -65,6 +66,7 @@ export const AddressFormModal: React.FC<IProps> = ({
         {...props}
         {...{ errors }}
         formId={formId}
+        citiesOptions={citiesOptions}
         address={address ? address.address : undefined}
         handleSubmit={data => {
           if (!!userId) {

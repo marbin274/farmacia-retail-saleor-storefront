@@ -69,11 +69,6 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     email?: string,
     userAddressId?: string
   ) => {
-
-    
-    // console.log('123');
-    // console.log(checkout?.requestPayload);
-
     if (!address) {
       setErrors([{ message: "Please provide shipping address." }]);
       return;

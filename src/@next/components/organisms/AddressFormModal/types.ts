@@ -15,4 +15,5 @@ export interface IProps {
     code: string;
     country: string;
   }>;
+  citiesOptions?: string[];
 }

@@ -12,6 +12,7 @@ export interface IProps {
     code: string;
     country: string;
   }>;
+  citiesOptions?: string[];
   userId?: string;
   formId?: string;
   formRef?: React.RefObject<HTMLFormElement>;
