@@ -1,81 +1,62 @@
-import React, { MouseEvent } from "react";
-
+import React, { MouseEvent, useEffect, useState } from "react";
 import { Thumbnail } from "@components/molecules";
 import { TaxedMoney } from "@components/containers";
-
 import * as S from "./styles";
 import { IProps } from "./types";
 import { Link } from "react-router-dom";
 import { Button } from "../../atoms";
+import { MAX_ORDER_PER_PRODUCT } from "@temp/core/config";
 
 export const ProductTileAUNA: React.FC<IProps> = ({
-  product,
   addToCart,
   linkProduct,
-  items,
+  product,
 }: IProps) => {
-  const price =
-    product.pricing &&
-    product.pricing.priceRange &&
-    product.pricing.priceRange.start
-      ? product.pricing.priceRange.start
-      : undefined;
+  const [thumbnails, setThumbnails] = useState({
+    thumbnail: { url: "" },
+    thumbnail2x: { url: "" },
+  });
 
-  const onAddToCartBtn = (event: MouseEvent) => {
-    if (addToCart) {
-      if (product.variants && product.variants.length > 0) {
-        const firstProductVariant = product.variants[0];
-        if (firstProductVariant.id) {
-          addToCart(firstProductVariant.id, 1);
-        }
-      } else {
-        console.error("ProductTile.onAddToCartBtn(): no product.variants!");
+  useEffect(() => {
+    if (product.thumbnail.url && product.thumbnail2x.url) {
+      setThumbnails({
+        thumbnail: { url: product.thumbnail.url },
+        thumbnail2x: { url: product.thumbnail2x.url },
+      });
+    }
+  }, [product.thumbnail, product.thumbnail2x]);
+
+  const price = product?.pricing?.priceRange?.start;
+
+  const canAddToCart =
+    typeof product.quantity === "number" &&
+    product.quantity < MAX_ORDER_PER_PRODUCT &&
+    Array.isArray(product.variants) &&
+    product.variants[0].quantityAvailable &&
+    product.quantity < product.variants[0].quantityAvailable;
+
+  const onAddToCart = (event: MouseEvent) => {
+    if (addToCart && canAddToCart) {
+      const firstProductVariant = product.variants && product.variants[0];
+      if (firstProductVariant) {
+        addToCart(firstProductVariant.id, 1);
       }
     }
   };
 
-  const { thumbnail, thumbnail2x } = product;
-  const quantityAvailable: number | undefined =
-    product.variants && product.variants[0].quantityAvailable;
-  let messageAvailableProducts: string = "No disponible";
-
-  const _product = items?.filter(x => x.variant?.product?.id === product.id)[0];
-
-  let thumbnailsInfo = {
-    thumbnail: { url: "null" },
-    thumbnail2x: { url: "null" },
-  };
-
-  if (!(!thumbnail && !thumbnail2x)) {
-    thumbnailsInfo = {
-      thumbnail: { url: product.thumbnail.url! },
-      thumbnail2x: { url: product.thumbnail2x.url! },
-    };
-  }
-
-  if (quantityAvailable && quantityAvailable > 0) {
-    messageAvailableProducts = "";
-  }
-
-  // TODO: we need to remove the hardcode 250 g attribute and implement it in a proper way as soon as we need it (ASAWNI)
   return (
-    <S.ProductCard
-      data-cy="product-tile"
-      quantityAvailable={quantityAvailable}
-      quantityOrdered={_product?.quantity}
-    >
+    <S.ProductCard data-cy="product-tile" canAddToCart={canAddToCart}>
       <Link to={linkProduct} key={product.id}>
         <div className="img">
           <S.Image>
-            <Thumbnail source={thumbnailsInfo} />
+            <Thumbnail source={thumbnails} />
           </S.Image>
         </div>
         <div className="description">
           <S.Title>{product.name}</S.Title>
-          {/* <S.ProductAttribute>250 g</S.ProductAttribute> */}
-          <S.ProductAttribute>
-            {messageAvailableProducts}&nbsp;
-          </S.ProductAttribute>
+          {!canAddToCart && (
+            <S.ProductAttribute>No disponible</S.ProductAttribute>
+          )}
         </div>
         <div className="price">
           <S.Price>
@@ -84,17 +65,9 @@ export const ProductTileAUNA: React.FC<IProps> = ({
         </div>
       </Link>
       <div className="button">
-        {(addToCart &&
-          quantityAvailable &&
-          quantityAvailable > 0 &&
-          _product === undefined) ||
-        (_product && _product?.quantity < 50) ? (
-          <Button onClick={onAddToCartBtn}>+</Button>
-        ) : (
-          <Button onClick={onAddToCartBtn} disabled>
-            +
-          </Button>
-        )}
+        <Button onClick={onAddToCart} disabled={!canAddToCart}>
+          +
+        </Button>
       </div>
     </S.ProductCard>
   );

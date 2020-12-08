@@ -26,13 +26,14 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
   const { data: user } = useUserDetails();
   const { checkout } = useCheckout();
   const {
+    addItem,
+    discount,
     items,
     removeItem,
-    subtotalPrice,
     shippingPrice,
-    discount,
+    subtotalPrice,
+    subtractItem,
     totalPrice,
-    addItem,
   } = useCart();
 
   const shippingTaxedPrice =
@@ -106,9 +107,10 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
             {items?.length ? (
               <>
                 <ProductList
-                  lines={items}
+                  products={items}
+                  onAdd={addItem}
                   onRemove={showModal}
-                  onQuantity={addItem}
+                  onSubtract={subtractItem}
                 />
                 <div className="cart__footer">
                   <div className="cart__footer__price cart__footer__price--sub">

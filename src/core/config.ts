@@ -114,3 +114,5 @@ export const CHECKOUT_STEPS = [
     step: CheckoutStep.Review,
   },
 ];
+
+export const MAX_ORDER_PER_PRODUCT = 50;

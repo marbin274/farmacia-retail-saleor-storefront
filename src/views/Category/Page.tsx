@@ -14,6 +14,7 @@ import { Category_category, Category_products } from "./gqlTypes/Category";
 import { IAddToCartCallback } from "@temp/@next/components/molecules/ProductTileAUNA/types";
 import { CategoryNavigation } from "@temp/@next/components/organisms/CategoryNavigation/CategoryNavigation";
 import { MainMenu_shop } from "@temp/components/MainMenu/gqlTypes/MainMenu";
+import { IItems } from "@temp/@sdk/api/Cart/types";
 
 interface SortItem {
   label: string;
@@ -38,6 +39,7 @@ interface PageProps {
   onLoadMore: () => void;
   onAttributeFiltersChange: (attributeSlug: string, value: string) => void;
   onOrder: (order: { value?: string; label: string }) => void;
+  items: IItems;
 }
 
 const Page: React.FC<PageProps> = ({
@@ -56,6 +58,7 @@ const Page: React.FC<PageProps> = ({
   onOrder,
   sortOptions,
   onAttributeFiltersChange,
+  items,
 }) => {
   const canDisplayProducts = maybe(
     () => !!products.edges && products.totalCount !== undefined
@@ -117,6 +120,7 @@ const Page: React.FC<PageProps> = ({
           {canDisplayProducts && (
             <ProductListAUNA
               products={products.edges.map(edge => edge.node)}
+              productsOnCart={items}
               canLoadMore={hasNextPage}
               loading={displayLoader}
               onLoadMore={onLoadMore}

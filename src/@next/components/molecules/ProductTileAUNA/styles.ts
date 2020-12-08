@@ -2,8 +2,7 @@ import { media, styled } from "@styles";
 import { aunaBlack, aunaGrey100, aunaInteractive } from "@styles/constants";
 
 export const ProductCard = styled.div<{
-  quantityAvailable?: number | undefined;
-  quantityOrdered?: number | undefined;
+  canAddToCart?: boolean | 0 | undefined;
 }>`
   color: ${aunaBlack}
   background: inherit;
@@ -51,11 +50,8 @@ export const ProductCard = styled.div<{
   }
 
   .button {
-    ${({ quantityAvailable, quantityOrdered }) =>
-      (quantityAvailable &&
-        quantityAvailable > 0 &&
-        quantityOrdered === undefined) ||
-      (quantityOrdered && quantityOrdered < 50)
+    ${({ canAddToCart }) =>
+      canAddToCart
         ? `border-bottom: 1px solid ${aunaInteractive}`
         : `border-bottom: 1px solid #B8BCD5`}
     padding-bottom: 0.5rem;

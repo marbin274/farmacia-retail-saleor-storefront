@@ -1,24 +1,20 @@
-import { ISimpleProduct } from "@app/types/IProduct";
-import { mount, shallow } from "enzyme";
 import "jest-styled-components";
+import { mount, shallow } from "enzyme";
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
-
 import { ProductListAUNA } from ".";
-import { PRODUCTS } from "./fixtures";
-
-const simpleProductsList = PRODUCTS as ISimpleProduct[];
+import { products, productsOnCart } from "./fixtures";
 
 describe("<ProductList />", () => {
   it("exists", () => {
     const wrapper = shallow(
       <BrowserRouter>
         <ProductListAUNA
-          products={simpleProductsList}
+          products={products}
+          productsOnCart={productsOnCart}
           canLoadMore={true}
           loading={false}
           onLoadMore={jest.fn()}
-          items={null}
         />
       </BrowserRouter>
     );
@@ -29,11 +25,11 @@ describe("<ProductList />", () => {
     const wrapper = mount(
       <BrowserRouter>
         <ProductListAUNA
-          products={simpleProductsList}
+          products={products}
+          productsOnCart={productsOnCart}
           canLoadMore={true}
           loading={true}
           onLoadMore={jest.fn()}
-          items={null}
         />
       </BrowserRouter>
     );

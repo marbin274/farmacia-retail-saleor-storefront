@@ -1,48 +1,67 @@
-import * as React from "react";
+import React, { useEffect, useState, FC } from "react";
 import addImg from "../../../images/add.svg";
 import ReactSVG from "react-svg";
 import minusImg from "../../../images/minus.svg";
 import classNames from "classnames";
+import { MAX_ORDER_PER_PRODUCT } from "@temp/core/config";
 
 type IProps = {
-  enableRemoveLastItem?: boolean,
+  className?: string;
   onAdd: () => void;
   onRemove: () => void;
-  value: string;
-  className?: string;
+  value: number;
+  maxValue?: number;
 };
 
-const ItemQuantity: React.FC<IProps> = ({
+const ItemQuantity: FC<IProps> = ({
   className = null,
-  enableRemoveLastItem= true,
+  maxValue = MAX_ORDER_PER_PRODUCT,
   onAdd,
   onRemove,
   value,
 }) => {
-    const isLastItem = (): boolean => parseInt(value, 10) <= 1;
-    const isRemoveDisabled = () => !enableRemoveLastItem && isLastItem();
+  const [isValueGreaterThanOne, setIsValueGreaterThanOne] = useState(false);
+  const [
+    isValueLessThanMaxOrderPerProduct,
+    setIsValueLessThanMaxOrderPerProduct,
+  ] = useState(false);
+  const [isValueLessThanMax, setIsValueLessThanMax] = useState(false);
 
-    const handleRemoveClick = () => {
-      if (!isRemoveDisabled()) {
-        onRemove();
-      }
+  useEffect(() => {
+    setIsValueGreaterThanOne(value > 1);
+    setIsValueLessThanMaxOrderPerProduct(value < MAX_ORDER_PER_PRODUCT);
+    setIsValueLessThanMax(value < maxValue);
+  }, [value]);
+
+  const handleAddClick = () => {
+    if (isValueLessThanMaxOrderPerProduct && isValueLessThanMax) {
+      onAdd();
     }
+  };
 
-    return (
+  const handleRemoveClick = () => {
+    if (isValueGreaterThanOne) {
+      onRemove();
+    }
+  };
+
+  return (
     <div className={classNames("cart__list__item__quantity", className)}>
       <ReactSVG
         path={minusImg}
-        className={classNames("cart__list__item__quantity__icon", {"disabled": isRemoveDisabled()})}
-        onClick={ handleRemoveClick }
+        className={classNames("cart__list__item__quantity__icon", {
+          disabled: !isValueGreaterThanOne,
+        })}
+        onClick={handleRemoveClick}
       />
       <p className="cart__list__item__quantity__text">{value}</p>
       <ReactSVG
         path={addImg}
         className="cart__list__item__quantity__icon"
-        onClick={onAdd}
+        onClick={handleAddClick}
       />
     </div>
   );
-}
+};
 
 export default ItemQuantity;

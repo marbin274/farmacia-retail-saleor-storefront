@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   margin: 20px;
 }
 
-.c8 {
+.c7 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -17,7 +17,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   box-sizing: border-box;
 }
 
-.c4 {
+.c3 {
   background-color: #00B0CA;
   padding: 0.9rem 3.7rem;
   border: none;
@@ -30,28 +30,28 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   width: auto;
 }
 
-.c4:hover {
+.c3:hover {
   background-color: #0BC1DC;
   color: #fff;
 }
 
-.c4:active {
+.c3:active {
   background-color: #029FB7;
   box-shadow: -3px 3px 14px 0px rgba(129,67,67,0.2);
 }
 
-.c4:disabled {
+.c3:disabled {
   background-color: #F1F2F7;
   color: #B8BCD5;
   cursor: default;
 }
 
-.c4:disabled,
-.c4:disabled:hover {
+.c3:disabled,
+.c3:disabled:hover {
   cursor: default;
 }
 
-.c7 {
+.c6 {
   background-color: #fff;
   padding: 0.9rem 3.7rem;
   border: none;
@@ -67,28 +67,28 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   border-right: 1px solid #00B0CA;
 }
 
-.c7:hover {
+.c6:hover {
   background-color: #fff;
   color: #00B0CA;
 }
 
-.c7:active {
+.c6:active {
   background-color: #029FB7;
   box-shadow: -3px 3px 14px 0px rgba(129,67,67,0.2);
 }
 
-.c7:disabled {
+.c6:disabled {
   background-color: #F1F2F7;
   color: #B8BCD5;
   cursor: default;
 }
 
-.c7:disabled,
-.c7:disabled:hover {
+.c6:disabled,
+.c6:disabled:hover {
   cursor: default;
 }
 
-.c5 {
+.c4 {
   display: inline-block;
   font-size: 1.125rem;
   font-weight: 400;
@@ -150,7 +150,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
 }
 
 .c2 .button {
-  border-bottom: 1px solid #B8BCD5;
+  border-bottom: 1px solid #00B0CA;
   padding-bottom: 0.5rem;
 }
 
@@ -189,35 +189,26 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   cursor: not-allowed;
 }
 
-.c3 {
-  color: #9194A7;
-  font-family: "Poppins",sans-serif;
-  font-size: 1rem;
-  font-weight: normal;
-  padding: 0.1rem 0;
-  text-align: center;
-}
-
 .c1 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 5rem 3rem;
 }
 
-.c6 {
+.c5 {
   text-align: center;
   margin: 2.5rem 0;
 }
 
 @media (max-width:540px) {
-  .c4 {
+  .c3 {
     padding: 0.9rem 1rem;
     width: 88%;
   }
 }
 
 @media (max-width:540px) {
-  .c7 {
+  .c6 {
     padding: 0.9rem 1rem;
     width: 88%;
   }
@@ -248,7 +239,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
       data-cy="product-tile"
     >
       <a
-        href="/product/apple-juice/72/"
+        href="/product/betacort-depot-solucin-inyectable/227/"
         onClick={[Function]}
       >
         <div
@@ -259,9 +250,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           >
             <img
               alt=""
-              onError={[Function]}
-              src="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png"
-              srcSet="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png 1x, http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-510x510.png 2x"
+              src={[Function]}
             />
           </div>
         </div>
@@ -271,14 +260,8 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           <h4
             className=""
           >
-            Apple Juice
+            Betacort Depot Solución Inyectable
           </h4>
-          <h5
-            className="c3"
-          >
-            No disponible
-             
-          </h5>
         </div>
         <div
           className="price"
@@ -296,14 +279,14 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         className="button"
       >
         <button
-          className="c4"
+          className="c3"
           color="primary"
-          disabled={true}
+          disabled={false}
           onClick={[Function]}
           size="md"
         >
           <span
-            className="c5"
+            className="c4"
             size="md"
           >
             +
@@ -316,7 +299,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
       data-cy="product-tile"
     >
       <a
-        href="/product/apple-juice/72/"
+        href="/product/abrilar-35mg5ml-jarabe-frasco-100-ml/208/"
         onClick={[Function]}
       >
         <div
@@ -327,9 +310,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           >
             <img
               alt=""
-              onError={[Function]}
-              src="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png"
-              srcSet="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png 1x, http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-510x510.png 2x"
+              src={[Function]}
             />
           </div>
         </div>
@@ -339,14 +320,8 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           <h4
             className=""
           >
-            Apple Juice
+            Abrilar 35Mg/5ML Jarabe - Frasco 100 ML
           </h4>
-          <h5
-            className="c3"
-          >
-            No disponible
-             
-          </h5>
         </div>
         <div
           className="price"
@@ -364,14 +339,14 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         className="button"
       >
         <button
-          className="c4"
+          className="c3"
           color="primary"
-          disabled={true}
+          disabled={false}
           onClick={[Function]}
           size="md"
         >
           <span
-            className="c5"
+            className="c4"
             size="md"
           >
             +
@@ -384,7 +359,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
       data-cy="product-tile"
     >
       <a
-        href="/product/apple-juice/72/"
+        href="/product/amlodipino-gef-10mg-tabletas-caja-10-und/223/"
         onClick={[Function]}
       >
         <div
@@ -395,9 +370,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           >
             <img
               alt=""
-              onError={[Function]}
-              src="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png"
-              srcSet="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png 1x, http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-510x510.png 2x"
+              src={[Function]}
             />
           </div>
         </div>
@@ -407,14 +380,8 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           <h4
             className=""
           >
-            Apple Juice
+            Amlodipino-Gef 10Mg Tabletas - Caja 10 Und
           </h4>
-          <h5
-            className="c3"
-          >
-            No disponible
-             
-          </h5>
         </div>
         <div
           className="price"
@@ -432,14 +399,14 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         className="button"
       >
         <button
-          className="c4"
+          className="c3"
           color="primary"
-          disabled={true}
+          disabled={false}
           onClick={[Function]}
           size="md"
         >
           <span
-            className="c5"
+            className="c4"
             size="md"
           >
             +
@@ -452,7 +419,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
       data-cy="product-tile"
     >
       <a
-        href="/product/apple-juice/72/"
+        href="/product/ab-broncol-nf-1200mg5ml-solucin-inyectable-intramuscular/218/"
         onClick={[Function]}
       >
         <div
@@ -463,9 +430,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           >
             <img
               alt=""
-              onError={[Function]}
-              src="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png"
-              srcSet="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png 1x, http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-510x510.png 2x"
+              src={[Function]}
             />
           </div>
         </div>
@@ -475,14 +440,8 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           <h4
             className=""
           >
-            Apple Juice
+            Ab Broncol NF 1200Mg/5ML Solución Inyectable Intramuscular
           </h4>
-          <h5
-            className="c3"
-          >
-            No disponible
-             
-          </h5>
         </div>
         <div
           className="price"
@@ -500,14 +459,14 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         className="button"
       >
         <button
-          className="c4"
+          className="c3"
           color="primary"
-          disabled={true}
+          disabled={false}
           onClick={[Function]}
           size="md"
         >
           <span
-            className="c5"
+            className="c4"
             size="md"
           >
             +
@@ -520,7 +479,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
       data-cy="product-tile"
     >
       <a
-        href="/product/apple-juice/72/"
+        href="/product/antalgina-500mg-tabletas/206/"
         onClick={[Function]}
       >
         <div
@@ -531,9 +490,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           >
             <img
               alt=""
-              onError={[Function]}
-              src="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png"
-              srcSet="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png 1x, http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-510x510.png 2x"
+              src={[Function]}
             />
           </div>
         </div>
@@ -543,14 +500,8 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           <h4
             className=""
           >
-            Apple Juice
+            Antalgina 500Mg Tabletas 
           </h4>
-          <h5
-            className="c3"
-          >
-            No disponible
-             
-          </h5>
         </div>
         <div
           className="price"
@@ -568,14 +519,14 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         className="button"
       >
         <button
-          className="c4"
+          className="c3"
           color="primary"
-          disabled={true}
+          disabled={false}
           onClick={[Function]}
           size="md"
         >
           <span
-            className="c5"
+            className="c4"
             size="md"
           >
             +
@@ -588,7 +539,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
       data-cy="product-tile"
     >
       <a
-        href="/product/apple-juice/72/"
+        href="/product/arcoxia-90mg-tabletas-recubiertas-caja-14-und/214/"
         onClick={[Function]}
       >
         <div
@@ -599,9 +550,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           >
             <img
               alt=""
-              onError={[Function]}
-              src="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png"
-              srcSet="http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-255x255.png 1x, http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-510x510.png 2x"
+              src={[Function]}
             />
           </div>
         </div>
@@ -611,14 +560,8 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           <h4
             className=""
           >
-            Apple Juice
+            Arcoxia 90Mg Tabletas Recubiertas - Caja 14 Und
           </h4>
-          <h5
-            className="c3"
-          >
-            No disponible
-             
-          </h5>
         </div>
         <div
           className="price"
@@ -636,14 +579,134 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         className="button"
       >
         <button
-          className="c4"
+          className="c3"
           color="primary"
-          disabled={true}
+          disabled={false}
           onClick={[Function]}
           size="md"
         >
           <span
-            className="c5"
+            className="c4"
+            size="md"
+          >
+            +
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      className="c2"
+      data-cy="product-tile"
+    >
+      <a
+        href="/product/bepanthen-ungento-tubo-30-gr/238/"
+        onClick={[Function]}
+      >
+        <div
+          className="img"
+        >
+          <div
+            className=""
+          >
+            <img
+              alt=""
+              src={[Function]}
+            />
+          </div>
+        </div>
+        <div
+          className="description"
+        >
+          <h4
+            className=""
+          >
+            Bepanthen Ungüento - Tubo 30 Gr
+          </h4>
+        </div>
+        <div
+          className="price"
+        >
+          <p
+            className=""
+          >
+            <span>
+              
+            </span>
+          </p>
+        </div>
+      </a>
+      <div
+        className="button"
+      >
+        <button
+          className="c3"
+          color="primary"
+          disabled={false}
+          onClick={[Function]}
+          size="md"
+        >
+          <span
+            className="c4"
+            size="md"
+          >
+            +
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      className="c2"
+      data-cy="product-tile"
+    >
+      <a
+        href="/product/buscapina-compositum-n-500mg-10mg-grageas/211/"
+        onClick={[Function]}
+      >
+        <div
+          className="img"
+        >
+          <div
+            className=""
+          >
+            <img
+              alt=""
+              src={[Function]}
+            />
+          </div>
+        </div>
+        <div
+          className="description"
+        >
+          <h4
+            className=""
+          >
+            Buscapina Compositum N 500Mg-10Mg Grageas 
+          </h4>
+        </div>
+        <div
+          className="price"
+        >
+          <p
+            className=""
+          >
+            <span>
+              
+            </span>
+          </p>
+        </div>
+      </a>
+      <div
+        className="button"
+      >
+        <button
+          className="c3"
+          color="primary"
+          disabled={false}
+          onClick={[Function]}
+          size="md"
+        >
+          <span
+            className="c4"
             size="md"
           >
             +
@@ -653,17 +716,17 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
     </div>
   </div>
   <div
-    className="c6"
+    className="c5"
   >
     <button
-      className="c7"
+      className="c6"
       color="secondary"
       data-cy="load-more_button"
       onClick={[Function]}
       size="md"
     >
       <span
-        className="c5"
+        className="c4"
         size="md"
       >
         More +
@@ -671,7 +734,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
     </button>
   </div>
   <div
-    className="c8"
+    className="c7"
   />
 </div>
 `;

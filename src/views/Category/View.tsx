@@ -127,10 +127,11 @@ export const View: React.FC<ViewProps> = ({ match }) => {
     //   value: "-updated_at",
     // },
   ];
-  const { addItem } = useCart();
+  const { addItem, items } = useCart();
   const addToCart: IAddToCartCallback = (product, quantity) => {
     addItem(product, quantity);
   };
+
   return (
     <NetworkStatus>
       {isOnline => (
@@ -192,6 +193,7 @@ export const View: React.FC<ViewProps> = ({ match }) => {
                       setSort(value.value);
                     }}
                     addToCart={addToCart}
+                    items={items}
                   />
                 </MetaWrapper>
               );

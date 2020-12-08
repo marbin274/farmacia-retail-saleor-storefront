@@ -48,7 +48,7 @@ const Page: React.FC<PageProps> = ({ addToCart, loading, products, shop }) => {
               loading={loading}
               onLoadMore={null}
               products={products}
-              items={items}
+              productsOnCart={items}
             />
           )}
         </div>

@@ -1,6 +1,5 @@
 import { IProps } from "./types";
 
-// TODO: Fix this, when pass it to DEFAULT_PROPS broke tests
 const subItem: any = {
   __typename: "MenuItem",
   category: {

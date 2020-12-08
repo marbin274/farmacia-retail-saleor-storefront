@@ -1,13 +1,13 @@
 import { ICategory } from "@app/types/ICategory";
 import { IImage } from "@app/types/IImage";
-import {IMoney, IMoneyRange} from "@app/types/IMoney";
+import { IMoney, IMoneyRange } from "@app/types/IMoney";
 import { INode } from "@app/types/INode";
 import { IObjectWithMetadata } from "@app/types/IObjectWithMetadata";
-import {IProductPricing} from "@app/types/IProductPricing";
-import {IProductType} from "@app/types/IProductType";
+import { IProductPricing } from "@app/types/IProductPricing";
+import { IProductType } from "@app/types/IProductType";
 import { IProductVariant } from "@app/types/IProductVariant";
 
-export interface ISimpleProduct extends INode{
+export interface ISimpleProduct extends INode {
   name: string;
   seoTitle?: string;
   seoDescription?: string;
@@ -20,6 +20,8 @@ export interface ISimpleProduct extends INode{
   basePrice?: IMoney;
   pricing?: IProductPricing;
   variants?: IProductVariant[];
+  quantity?: number;
+  quantityAvailable?: number | undefined;
 }
 
 export interface IProduct extends ISimpleProduct, IObjectWithMetadata {

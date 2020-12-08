@@ -8,5 +8,5 @@ export interface IProps {
   canLoadMore?: boolean;
   loading?: boolean;
   onLoadMore?: () => void;
-  items?: IItems;
+  productsOnCart?: IItems;
 }

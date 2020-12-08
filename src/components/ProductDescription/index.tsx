@@ -1,18 +1,14 @@
 import "./scss/index.scss";
-
 import isEqual from "lodash/isEqual";
 import * as React from "react";
-
 import { RichTextContent } from "@components/atoms";
 import { ProductVariantPicker } from "@components/organisms";
-
 import {
   ProductDetails_product_pricing,
   ProductDetails_product_variants,
   ProductDetails_product_variants_pricing,
 } from "@sdk/queries/gqlTypes/ProductDetails";
 import { IProductVariantsAttributesSelectedValues, ITaxedMoney } from "@types";
-
 import { ICheckoutModelLine } from "@sdk/repository";
 import { TaxedMoney } from "@components/containers";
 import AddToCart from "./AddToCart";
@@ -135,10 +131,8 @@ class ProductDescription extends React.Component<
     return variantStock - quantityInCart;
   };
 
-  handleQuantityChange = (quantity: number) => {
-    this.setState({
-      quantity,
-    });
+  handleQuantityChange = (operation: 1 | -1) => {
+    this.setState(prevState => ({ quantity: prevState.quantity + operation }));
   };
 
   renderErrorMessage = (message: string) => (
