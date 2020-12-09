@@ -29,3 +29,4 @@ export * from "./CartHeader";
 export * from "./CartFooter";
 export * from "./Radio";
 export * from "./StripeInputElement";
+export * from "./EmailLink";

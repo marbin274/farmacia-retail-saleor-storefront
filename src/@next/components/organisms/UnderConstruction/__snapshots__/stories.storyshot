@@ -1,0 +1,201 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots @components/organisms/UnderConstruction UnderConstruction 1`] = `
+.c0 {
+  position: relative;
+  margin: 20px;
+}
+
+.c10 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 3px solid rgba(0,0,0,0.2);
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.c5 {
+  color: #00B0CA;
+  font-size: 1em;
+}
+
+.c5 a {
+  color: #00B0CA;
+}
+
+.c6 {
+  display: inline-block;
+  padding-right: 0.5em;
+  position: relative;
+  top: 0.2em;
+}
+
+.c1 {
+  position: absolute;
+  bottom: 4rem;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  height: 20rem;
+  max-width: 70rem;
+  width: calc(100vw - 2rem);
+}
+
+.c2 {
+  background: white;
+  border-radius: 1rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 2rem 3rem 2rem 2rem;
+  border: solid 1px lightgray;
+}
+
+.c3 {
+  font-size: 1rem;
+  padding-right: 1rem;
+}
+
+.c3 p {
+  padding: .7rem 0;
+}
+
+.c3 a {
+  color: #00B0CA;
+}
+
+.c4 {
+  font-weight: bolder;
+  font-size: 1.2rem;
+  position: relative;
+  top: -0.5rem;
+}
+
+.c7 {
+  background-color: #E6F6F9;
+  border-radius: 1rem;
+  min-height: 10rem;
+  min-width: 16rem;
+  padding: 2rem 0;
+}
+
+.c8 {
+  width: 10rem;
+  margin: 0 auto;
+}
+
+.c8 >div {
+  width: 100%;
+}
+
+.c8 svg {
+  width: 100%;
+}
+
+.c9 {
+  color: #131336;
+  cursor: pointer;
+  height: 1rem;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  width: 1rem;
+}
+
+.c9:hover {
+  color: #00B0CA;
+}
+
+@media (max-width:540px) {
+  .c1 {
+    top: 8rem;
+  }
+}
+
+@media (max-width:540px) {
+  .c2 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="overlay overlay--under-construction overlay--no-background"
+    onClick={[Function]}
+  >
+    <div
+      className="overlay__modal"
+      onClick={[Function]}
+    >
+      <div
+        className="c1"
+      >
+        <div
+          className="c2"
+        >
+          <div
+            className="c3"
+          >
+            <h3
+              className="c4"
+            >
+              Página en costrucción
+            </h3>
+            <p>
+              Esta página se encuentra en una versión beta y es posible que te encuentres con algunos errores.  Pedimos disculpas por los inconvenientes, muy pronto tendremos una versión mejorada para ti.
+            </p>
+            <p>
+              Para cualquier problema escribenos:
+            </p>
+            <p>
+              <span
+                className="c5"
+              >
+                <a
+                  href="ayuda@auna.pe"
+                >
+                  <span
+                    className="c6"
+                  >
+                    <div />
+                  </span>
+                  <span>
+                    ayuda@auna.pe
+                  </span>
+                </a>
+              </span>
+            </p>
+          </div>
+          <div
+            className="c7"
+          >
+            <div
+              className="c8"
+            >
+              <div />
+            </div>
+          </div>
+          <div
+            className="c9"
+            onClick={[Function]}
+          >
+            <div />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c10"
+  />
+</div>
+`;

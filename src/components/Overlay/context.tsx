@@ -4,20 +4,21 @@ export enum OverlayType {
   cart = "cart",
   checkout = "checkout",
   login = "login",
-  message = "message",
-  sideNav = "side-nav",
-  password = "password",
-  search = "search",
   mainMenuNav = "main-menu-nav",
+  message = "message",
   modal = "modal",
+  password = "password",
   register = "register",
+  search = "search",
+  sideNav = "side-nav",
+  underConstruction = "under-construction",
 }
 
 export enum OverlayTheme {
+  center = "center",
+  modal = "modal",
   left = "left",
   right = "right",
-  modal = "modal",
-  center = "center",
 }
 
 export type InnerOverlayContextInterface = {

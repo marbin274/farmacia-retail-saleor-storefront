@@ -1,3 +1,4 @@
+import {UnderConstruction} from "@components/organisms/UnderConstruction";
 import * as React from "react";
 
 import { Overlay, OverlayContext, OverlayType } from "..";
@@ -39,6 +40,9 @@ const OverlayManager: React.FC = () => (
 
         case OverlayType.mainMenuNav:
           return <Overlay context={overlay} />;
+
+        case OverlayType.underConstruction:
+          return <UnderConstruction overlay={overlay} />;
 
         default:
           return null;

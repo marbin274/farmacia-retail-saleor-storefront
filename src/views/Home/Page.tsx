@@ -1,25 +1,21 @@
-import "./scss/index.scss";
-
 import * as React from "react";
 
-import { IAddToCartCallback } from "@components/molecules/ProductTileAUNA/types";
 import { ProductListAUNA } from "@components/organisms";
-
-import { ISimpleProduct } from "@app/types/IProduct";
 import { structuredData } from "../../core/SEO/Homepage/structuredData";
-import { HomePage_shop } from "./gqlTypes/HomePage";
-import { useCart } from "@temp/@sdk/react";
 
-interface PageProps {
+import { IAddToCartCallback } from "@components/molecules/ProductTileAUNA/types";
+import { ISimpleProduct } from "@app/types/IProduct";
+import { HomePage_shop } from "./gqlTypes/HomePage";
+import "./scss/index.scss";
+
+interface IPageProps {
   addToCart: IAddToCartCallback;
   loading: boolean;
   products: ISimpleProduct[];
   shop: HomePage_shop;
 }
 
-const Page: React.FC<PageProps> = ({ addToCart, loading, products, shop }) => {
-  const { items } = useCart();
-
+const Page: React.FC<IPageProps> = ({ addToCart, loading, products, shop }) => {
   return (
     <div className="container">
       <div className="home-page__top-banner">
@@ -38,9 +34,7 @@ const Page: React.FC<PageProps> = ({ addToCart, loading, products, shop }) => {
 
       <div className="inner-container">
         <div className="home-page__products">
-          <p>
-            <h2>Recomendados para tu botiquín</h2>
-          </p>
+          <h2 className="home-page__products-title">Recomendados para tu botiquín</h2>
           {products && (
             <ProductListAUNA
               addToCart={addToCart}
@@ -48,7 +42,6 @@ const Page: React.FC<PageProps> = ({ addToCart, loading, products, shop }) => {
               loading={loading}
               onLoadMore={null}
               products={products}
-              productsOnCart={items}
             />
           )}
         </div>
@@ -56,10 +49,11 @@ const Page: React.FC<PageProps> = ({ addToCart, loading, products, shop }) => {
 
       <div className="home-page__bottom-section">
         <div className="home-page__bottom-banner">
-          <p>Llegamos a 12 distritos de lima ¡en menos de 60 minutos!</p>
+          <p>Llegamos a 12 distritos de Lima ¡en menos de 60 minutos!</p>
         </div>
-        <div className="home-page__districts-list"></div>
+        <div className="home-page__districts-list"/>
       </div>
+
     </div>
   );
 };
