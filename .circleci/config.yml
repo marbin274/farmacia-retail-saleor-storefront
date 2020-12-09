@@ -59,13 +59,13 @@ workflows:
           context: frontend-qa
           filters:
             branches:
-              only: cicd
+              only: master
           requires:
             - project-build
       - project-deploy:
           context: frontend-stg
           filters:
             branches:
-              only: cicd-stg
+              only: staging
           requires:
             - project-build
