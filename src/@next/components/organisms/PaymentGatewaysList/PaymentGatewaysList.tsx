@@ -5,6 +5,8 @@ import { DummyPaymentGateway } from "@components/organisms/DummyPaymentGateway";
 import { NiubizPaymentGateway } from "@components/organisms/NiubizPaymentGateway";
 import { ErrorMessage, Radio } from "@components/atoms";
 import creditCardIcon from "@temp/images/auna/icon-credit-card.svg";
+import visaIcon from "@temp/images/auna/visa-payment.svg";
+import masterCardIcon from "@temp/images/auna/mastercard-payment.svg";
 import ReactSVG from "react-svg";
 
 import { PROVIDERS } from "@temp/core/config";
@@ -98,33 +100,29 @@ const PaymentGatewaysList: React.FC<IProps> = ({
             return (
               <div key={index}>
                 <S.Tile checked={checked}>
-                  <Radio
-                    data-cy="checkoutPaymentGatewayDummyInput"
-                    name="payment-method"
-                    value="dummy"
-                    checked={checked}
-                    onChange={() =>
-                      selectPaymentGateway && selectPaymentGateway(id)
-                    }
-                    customLabel={true}
-                  >
-                    <S.PaymentLine>
-                      <S.PaymentTitle
-                        data-cy="checkoutPaymentGatewayDummyName"
-                        checked={checked}
-                      >
-                        Tarjeta de Crédito
-                      </S.PaymentTitle>
-                      <S.PaymentIcon checked={checked}>
-                        <ReactSVG
-                          path={creditCardIcon}
-                          svgStyle={{
-                            stroke: S.getIconColor(checked, customTheme),
-                          }}
-                        />
-                      </S.PaymentIcon>
-                    </S.PaymentLine>
-                  </Radio>
+                  <S.RadioContainerPayment>
+                    <Radio
+                      data-cy="checkoutPaymentGatewayDummyInput"
+                      name="payment-method"
+                      value="dummy"
+                      checked={checked}
+                      onChange={() =>
+                        selectPaymentGateway && selectPaymentGateway(id)
+                      }
+                      customLabel={true}
+                    >
+                      <S.PaymentLine>
+                        <S.PaymentTitle
+                          data-cy="checkoutPaymentGatewayDummyName"
+                          checked={checked}
+                        >
+                          <span>{name}</span>
+                        </S.PaymentTitle>
+                        <S.PaymentIcon checked={checked}><ReactSVG path={visaIcon} /></S.PaymentIcon>
+                        <S.PaymentIcon checked={checked}><ReactSVG path={masterCardIcon} /></S.PaymentIcon>
+                      </S.PaymentLine>
+                    </Radio>
+                  </S.RadioContainerPayment>
                 </S.Tile>
                 {checked && (
                   <NiubizPaymentGateway

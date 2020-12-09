@@ -26,6 +26,8 @@ import {
 
 import * as S from "./styles";
 import { IProps } from "./types";
+import ReactSVG from "react-svg";
+import niubizIcon from "@temp/images/auna/niubiz-logo.svg";
 // import { Observable } from "apollo-link";
 // import { tokenAuthMutation } from "@temp/@sdk/mutations/auth";
 
@@ -478,18 +480,18 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                         className="form-control form-control-sm ncp-card"
                       ></div>
                       {formErrors.length &&
-                      formErrors.filter(x => x.code === errorsDictionary[0])
-                        .length ? (
-                        <div className="error">
-                          {
-                            formErrors.filter(
-                              x => x.code === errorsDictionary[0]
-                            )[0].message
-                          }
-                        </div>
-                      ) : (
-                        ""
-                      )}
+                        formErrors.filter(x => x.code === errorsDictionary[0])
+                          .length ? (
+                          <div className="error">
+                            {
+                              formErrors.filter(
+                                x => x.code === errorsDictionary[0]
+                              )[0].message
+                            }
+                          </div>
+                        ) : (
+                          ""
+                        )}
                     </div>
                     <br />
 
@@ -501,18 +503,18 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                           className="form-control form-control-sm"
                         ></div>
                         {formErrors.length &&
-                        formErrors.filter(x => x.code === errorsDictionary[1])
-                          .length ? (
-                          <div className="error">
-                            {
-                              formErrors.filter(
-                                x => x.code === errorsDictionary[1]
-                              )[0].message
-                            }
-                          </div>
-                        ) : (
-                          ""
-                        )}
+                          formErrors.filter(x => x.code === errorsDictionary[1])
+                            .length ? (
+                            <div className="error">
+                              {
+                                formErrors.filter(
+                                  x => x.code === errorsDictionary[1]
+                                )[0].message
+                              }
+                            </div>
+                          ) : (
+                            ""
+                          )}
                       </div>
                       <div className="cvv">
                         <label htmlFor="">CVC</label>
@@ -521,19 +523,23 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                           className="form-control form-control-sm"
                         ></div>
                         {formErrors.length &&
-                        formErrors.filter(x => x.code === errorsDictionary[2])
-                          .length ? (
-                          <div className="error">
-                            {
-                              formErrors.filter(
-                                x => x.code === errorsDictionary[2]
-                              )[0].message
-                            }
-                          </div>
-                        ) : (
-                          ""
-                        )}
+                          formErrors.filter(x => x.code === errorsDictionary[2])
+                            .length ? (
+                            <div className="error">
+                              {
+                                formErrors.filter(
+                                  x => x.code === errorsDictionary[2]
+                                )[0].message
+                              }
+                            </div>
+                          ) : (
+                            ""
+                          )}
                       </div>
+                    </div>
+                    <div>
+                      <label>Pagos seguros con:</label>
+                      <div className="niubiz-logo-container"><ReactSVG path={niubizIcon} /></div>
                     </div>
                   </div>
                 </S.Payment>

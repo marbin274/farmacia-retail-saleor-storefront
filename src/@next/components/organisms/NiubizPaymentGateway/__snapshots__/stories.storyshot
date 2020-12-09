@@ -144,6 +144,7 @@ exports[`Storyshots @components/organisms/NiubizPaymentGateway default 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  margin-bottom: 2.7em;
 }
 
 .c4 .expirydate_and_cvv .expirydate {
@@ -210,6 +211,10 @@ exports[`Storyshots @components/organisms/NiubizPaymentGateway default 1`] = `
 
 .c4 input::placeholder {
   color: #9194a7;
+}
+
+.c4 .niubiz-logo-container {
+  margin-top: 5px;
 }
 
 <div
@@ -349,6 +354,16 @@ exports[`Storyshots @components/organisms/NiubizPaymentGateway default 1`] = `
                     id="txtCvv"
                   />
                   
+                </div>
+              </div>
+              <div>
+                <label>
+                  Pagos seguros con:
+                </label>
+                <div
+                  className="niubiz-logo-container"
+                >
+                  <div />
                 </div>
               </div>
             </div>

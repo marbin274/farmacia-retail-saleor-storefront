@@ -69,7 +69,7 @@ export const Payment = styled.div`
 
   .expirydate_and_cvv {
     display: flex;
-
+    margin-bottom: 2.7em;
     .expirydate {
       width: 45%;
     }
@@ -118,5 +118,8 @@ export const Payment = styled.div`
     ::placeholder {
       color: #9194a7;
     }
+  }
+  .niubiz-logo-container{
+    margin-top: 5px;
   }
 `;

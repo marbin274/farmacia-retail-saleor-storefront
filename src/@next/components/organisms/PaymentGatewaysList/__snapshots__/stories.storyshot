@@ -50,7 +50,7 @@ exports[`Storyshots @components/organisms/PaymentGatewaysList default 1`] = `
   cursor: pointer;
   border-radius: 1rem;
   max-width: 34rem;
-  padding: 20px;
+  padding: 10px 20px;
   width: 100%;
 }
 
@@ -69,14 +69,13 @@ exports[`Storyshots @components/organisms/PaymentGatewaysList default 1`] = `
 .c5 {
   color: #9194A7;
   width: 100%;
+  height: inherit;
+  line-height: 2.4em;
 }
 
 .c6 {
   color: #9194A7;
-  position: absolute;
-  right: -1rem;
-  top: -1rem;
-  width: 3rem;
+  margin-left: 5px;
 }
 
 <div
@@ -109,19 +108,19 @@ exports[`Storyshots @components/organisms/PaymentGatewaysList default 1`] = `
           <span
             className="c4"
           >
-            <span
+            <div
               checked={false}
               className="c5"
               data-cy="checkoutPaymentGatewayDummyName"
             >
               AUNA Payment Gateway
-            </span>
-            <span
+            </div>
+            <div
               checked={false}
               className="c6"
             >
               <div />
-            </span>
+            </div>
           </span>
         </div>
       </label>

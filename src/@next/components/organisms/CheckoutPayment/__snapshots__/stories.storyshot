@@ -148,7 +148,7 @@ exports[`Storyshots @components/organisms/CheckoutPayment default 1`] = `
   cursor: pointer;
   border-radius: 1rem;
   max-width: 34rem;
-  padding: 20px;
+  padding: 10px 20px;
   width: 100%;
 }
 
@@ -167,14 +167,13 @@ exports[`Storyshots @components/organisms/CheckoutPayment default 1`] = `
 .c7 {
   color: #9194A7;
   width: 100%;
+  height: inherit;
+  line-height: 2.4em;
 }
 
 .c8 {
   color: #9194A7;
-  position: absolute;
-  right: -1rem;
-  top: -1rem;
-  width: 3rem;
+  margin-left: 5px;
 }
 
 <div
@@ -238,19 +237,19 @@ exports[`Storyshots @components/organisms/CheckoutPayment default 1`] = `
             <span
               className="c6"
             >
-              <span
+              <div
                 checked={false}
                 className="c7"
                 data-cy="checkoutPaymentGatewayDummyName"
               >
                 AUNA Payment Gateway
-              </span>
-              <span
+              </div>
+              <div
                 checked={false}
                 className="c8"
               >
                 <div />
-              </span>
+              </div>
             </span>
           </div>
         </label>
@@ -411,7 +410,7 @@ exports[`Storyshots @components/organisms/CheckoutPayment with addresses 1`] = `
   cursor: pointer;
   border-radius: 1rem;
   max-width: 34rem;
-  padding: 20px;
+  padding: 10px 20px;
   width: 100%;
 }
 
@@ -430,14 +429,13 @@ exports[`Storyshots @components/organisms/CheckoutPayment with addresses 1`] = `
 .c7 {
   color: #9194A7;
   width: 100%;
+  height: inherit;
+  line-height: 2.4em;
 }
 
 .c8 {
   color: #9194A7;
-  position: absolute;
-  right: -1rem;
-  top: -1rem;
-  width: 3rem;
+  margin-left: 5px;
 }
 
 <div
@@ -501,19 +499,19 @@ exports[`Storyshots @components/organisms/CheckoutPayment with addresses 1`] = `
             <span
               className="c6"
             >
-              <span
+              <div
                 checked={false}
                 className="c7"
                 data-cy="checkoutPaymentGatewayDummyName"
               >
                 AUNA Payment Gateway
-              </span>
-              <span
+              </div>
+              <div
                 checked={false}
                 className="c8"
               >
                 <div />
-              </span>
+              </div>
             </span>
           </div>
         </label>
