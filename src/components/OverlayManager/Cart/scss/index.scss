@@ -108,6 +108,10 @@
 
           &.disabled {
             color: $auna-disabled;
+
+            > div > svg > path {
+              stroke: $auna-disabled;
+            }
           }
         }
 

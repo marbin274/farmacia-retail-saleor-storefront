@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
   margin: 20px;
 }
 
-.c2 {
+.c4 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -17,9 +17,61 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
   box-sizing: border-box;
 }
 
+.c2 {
+  background-color: #00B0CA;
+  padding: 0.9rem 3.7rem;
+  border: none;
+  border-radius: 40px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  outline: none;
+  cursor: pointer;
+  color: #fff;
+  width: 100%;
+}
+
+.c2:hover {
+  background-color: #0BC1DC;
+  color: #fff;
+}
+
+.c2:active {
+  background-color: #029FB7;
+  box-shadow: -3px 3px 14px 0px rgba(129,67,67,0.2);
+}
+
+.c2:disabled {
+  background-color: #F1F2F7;
+  color: #B8BCD5;
+  cursor: default;
+}
+
+.c2:disabled,
+.c2:disabled:hover {
+  cursor: default;
+}
+
+.c3 {
+  display: inline-block;
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 .c1 {
   display: grid;
   grid-template-columns: 1fr;
+}
+
+@media (max-width:540px) {
+  .c2 {
+    padding: 0.9rem 1rem;
+    width: 100%;
+  }
 }
 
 <div
@@ -55,13 +107,43 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
     <div
       className="product-description__quantity"
     >
-      <p>
-        Producto sin stock o no disponible
-      </p>
+      <div
+        className="cart__list__item__quantity"
+      >
+        <div
+          className="cart__list__item__quantity__icon disabled"
+          onClick={[Function]}
+        />
+        <p
+          className="cart__list__item__quantity__text"
+        >
+          1
+        </p>
+        <div
+          className="cart__list__item__quantity__icon disabled"
+          onClick={[Function]}
+        />
+      </div>
+      <button
+        className="product-description__action c2"
+        color="primary"
+        disabled={true}
+        onClick={[Function]}
+        size="md"
+      >
+        <span
+          className="c3"
+          size="md"
+        >
+          <span>
+            <span />
+          </span>
+        </span>
+      </button>
     </div>
   </div>
   <div
-    className="c2"
+    className="c4"
   />
 </div>
 `;

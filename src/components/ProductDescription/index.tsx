@@ -15,7 +15,6 @@ import AddToCart from "./AddToCart";
 import { QuantityTextField } from "./QuantityTextField";
 // import { description } from "@temp/@next/components/molecules/ProductDescription/fixtures";
 
-const LOW_STOCK_QUANTITY = 5;
 export interface ProductDescriptionProps {
   descriptionJson: string;
   productId: string;
@@ -110,7 +109,7 @@ class ProductDescription extends React.Component<
     const { items } = this.props;
     const { variant, quantity, variantStock } = this.state;
 
-    const cartItem = items?.find(item => item.variant.id === variant);
+    const cartItem = items?.find((item) => item.variant.id === variant);
     const syncedQuantityWithCart = cartItem
       ? quantity + (cartItem?.quantity || 0)
       : quantity;
@@ -119,25 +118,23 @@ class ProductDescription extends React.Component<
 
   handleSubmit = () => {
     this.props.addToCart(this.state.variant, this.state.quantity);
-    this.setState({ quantity: 0 });
+    this.setState({ quantity: 1 });
   };
 
   getAvailableQuantity = () => {
     const { items } = this.props;
     const { variant, variantStock } = this.state;
 
-    const cartItem = items?.find(item => item.variant.id === variant);
+    const cartItem = items?.find((item) => item.variant.id === variant);
     const quantityInCart = cartItem?.quantity || 0;
     return variantStock - quantityInCart;
   };
 
   handleQuantityChange = (operation: 1 | -1) => {
-    this.setState(prevState => ({ quantity: prevState.quantity + operation }));
+    this.setState((prevState) => ({
+      quantity: prevState.quantity + operation,
+    }));
   };
-
-  renderErrorMessage = (message: string) => (
-    <p className="product-description__error-message">{message}</p>
-  );
 
   render() {
     const { name, descriptionJson } = this.props;
@@ -146,22 +143,17 @@ class ProductDescription extends React.Component<
     const availableQuantity = this.getAvailableQuantity();
     const isOutOfStock = !!variant && variantStock === 0;
     const isNoItemsAvailable = !!variant && !isOutOfStock && !availableQuantity;
-    const isLowStock =
-      !!variant &&
-      !isOutOfStock &&
-      !isNoItemsAvailable &&
-      availableQuantity < LOW_STOCK_QUANTITY;
 
     return (
       <div className="product-description">
         <h3>{name}</h3>
-        {isOutOfStock ? (
-          this.renderErrorMessage("Out of stock")
+        {isOutOfStock || isNoItemsAvailable ? (
+          <p className="product-description__error-message">
+            PRODUCTO NO DISPONIBLE
+          </p>
         ) : (
           <p className="product-description__price">{this.getProductPrice()}</p>
         )}
-        {isLowStock && this.renderErrorMessage("Low stock")}
-        {isNoItemsAvailable && this.renderErrorMessage("No items available")}
         <RichTextContent descriptionJson={descriptionJson} />
         <div className="product-description__variant-picker">
           <ProductVariantPicker
@@ -171,21 +163,20 @@ class ProductDescription extends React.Component<
           />
         </div>
         <div className="product-description__quantity">
-          {!variant || isOutOfStock || isNoItemsAvailable ? (
-            <p>Producto sin stock o no disponible</p>
-          ) : (
-            <React.Fragment>
-              <QuantityTextField
-                quantity={quantity}
-                maxQuantity={availableQuantity}
-                onQuantityChange={this.handleQuantityChange}
-              />
-              <AddToCart
-                onSubmit={this.handleSubmit}
-                disabled={!this.canAddToCart()}
-              />
-            </React.Fragment>
-          )}
+          <QuantityTextField
+            quantity={quantity}
+            maxQuantity={availableQuantity}
+            onQuantityChange={this.handleQuantityChange}
+            disableButtons={
+              isOutOfStock || isNoItemsAvailable || !this.canAddToCart()
+            }
+          />
+          <AddToCart
+            onSubmit={this.handleSubmit}
+            disabled={
+              isOutOfStock || isNoItemsAvailable || !this.canAddToCart()
+            }
+          />
         </div>
       </div>
     );

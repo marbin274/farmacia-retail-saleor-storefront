@@ -7,6 +7,8 @@ import { MAX_ORDER_PER_PRODUCT } from "@temp/core/config";
 
 type IProps = {
   className?: string;
+  disableOnAdd?: boolean;
+  disableOnRemove?: boolean;
   onAdd: () => void;
   onRemove: () => void;
   value: number;
@@ -15,6 +17,8 @@ type IProps = {
 
 const ItemQuantity: FC<IProps> = ({
   className = null,
+  disableOnAdd = false,
+  disableOnRemove = false,
   maxValue = MAX_ORDER_PER_PRODUCT,
   onAdd,
   onRemove,
@@ -31,7 +35,7 @@ const ItemQuantity: FC<IProps> = ({
     setIsValueGreaterThanOne(value > 1);
     setIsValueLessThanMaxOrderPerProduct(value < MAX_ORDER_PER_PRODUCT);
     setIsValueLessThanMax(value < maxValue);
-  }, [value]);
+  }, [value, maxValue, MAX_ORDER_PER_PRODUCT]);
 
   const handleAddClick = () => {
     if (isValueLessThanMaxOrderPerProduct && isValueLessThanMax) {
@@ -50,14 +54,16 @@ const ItemQuantity: FC<IProps> = ({
       <ReactSVG
         path={minusImg}
         className={classNames("cart__list__item__quantity__icon", {
-          disabled: !isValueGreaterThanOne,
+          disabled: !isValueGreaterThanOne || disableOnRemove,
         })}
         onClick={handleRemoveClick}
       />
       <p className="cart__list__item__quantity__text">{value}</p>
       <ReactSVG
         path={addImg}
-        className="cart__list__item__quantity__icon"
+        className={classNames("cart__list__item__quantity__icon", {
+          disabled: disableOnAdd,
+        })}
         onClick={handleAddClick}
       />
     </div>

@@ -15,7 +15,7 @@ export const ProductListAUNA: React.FC<IProps> = ({
   products,
   productsOnCart,
 }: IProps) => {
-  const productsWithQuantity = products.map(product => {
+  const productsWithQuantity = products.map((product) => {
     const productOnCart = productsOnCart?.find(({ variant }) =>
       product.variants ? variant.id === product.variants[0].id : false
     );
@@ -34,13 +34,10 @@ export const ProductListAUNA: React.FC<IProps> = ({
     };
   });
 
-  console.log("products", products);
-  console.log("productsOnCart", productsOnCart);
-
   return (
     <>
       <S.List>
-        {productsWithQuantity.map(product => {
+        {productsWithQuantity.map((product) => {
           return (
             <ProductTileAUNA
               key={product.id}
