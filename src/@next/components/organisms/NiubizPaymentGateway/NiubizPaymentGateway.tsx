@@ -1,12 +1,6 @@
-// TODO: We'll remove the commented code after complete the unhappy path
-
 import React, { useEffect, useState } from "react";
-// import { useCart } from "@sdk/react";
 import { Formik } from "formik";
 import { ErrorMessage, Loader } from "@components/atoms";
-// import { Loader } from "@components/atoms";
-// import { CreditCardForm } from "@components/organisms";
-// import { IFormError, IPaymentGateway, IPaymentGatewayConfig } from "@types";
 import { IFormError, IPaymentGatewayConfig } from "@types";
 
 import {
@@ -14,22 +8,12 @@ import {
   createToken,
   ErrorData,
   GatewayOptions,
-  // niubizPayment,
-  // ICardInputs,
-  // ICardPaymentInput,
-  // IPaymentCardError,
-  // PaymentData,
-  // setConfiguration,
-  // tokenizeCreditCard,
 } from "../../../../core/payments/niubiz";
-// import { maybe, removeEmptySpaces } from "../../../../core/utils";
 
 import * as S from "./styles";
 import { IProps } from "./types";
 import ReactSVG from "react-svg";
 import niubizIcon from "@temp/images/auna/niubiz-logo.svg";
-// import { Observable } from "apollo-link";
-// import { tokenAuthMutation } from "@temp/@sdk/mutations/auth";
 
 const INITIAL_CARD_ERROR_STATE = {
   fieldErrors: {
@@ -138,20 +122,11 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
     getConfigElement(config, "nb_payform_url") ||
     "https://pocpaymentserve.s3.amazonaws.com/payform.min.js";
 
-  // const clientToken = config.find(({ field }) => field === "client_token")
-  //   ?.value;
-
   useEffect(() => {
     const script = document.createElement("script");
     script.src = payformUrl;
     script.async = true;
     document.body.appendChild(script);
-
-    // const cssRemoteFile = "https://pocpaymentserve.s3.amazonaws.com/payform.min.css";
-    // const style = document.createElement("link");
-    // style.rel = "stylesheet";
-    // style.href = cssRemoteFile;
-    // document.body.appendChild(style);
 
     const tokenRequirements = getTokenRequirements(config);
     const amount = totalPrice?.gross.amount.toString();
@@ -289,57 +264,12 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
       });
   }, []);
 
-  // const setCardErrorsHelper = (errors: IPaymentCardError[]) =>
-  //   errors.map(({ field, message }: IPaymentCardError) =>
-  //     setCardErrors(({ fieldErrors }) => ({
-  //       fieldErrors: {
-  //         ...fieldErrors,
-  //         [field]: { field, message },
-  //       },
-  //     }))
-  //   );
-
-  // const tokenizeCcCard = async (creditCard: ICardPaymentInput) => {
-  //   const amount = totalPrice?.gross.amount.toString();
-  //   const tokenizerRequirements = getTokenizerRequirements(
-  //     config,
-  //     sessionKey,
-  //     amount
-  //   );
-
-  //   tokenizeCreditCard(tokenizerRequirements)
-  //     .then(res => {
-  //       console.log("response here");
-  //       console.log(res);
-  //     })
-  //     .catch(console.log);
-
-  //   setCardErrors(INITIAL_CARD_ERROR_STATE);
-  //   try {
-  //     if (clientToken) {
-  //       const cardData = (await niubizPayment(
-  //         clientToken,
-  //         creditCard
-  //       )) as PaymentData;
-  //       return cardData;
-  //     } else {
-  //       const niubizTokenErrors = [
-  //         {
-  //           message: "Niubiz gateway misconfigured. Client token not provided.",
-  //         },
-  //       ];
-  //       setSubmitErrors(niubizTokenErrors);
-  //       onError(niubizTokenErrors);
-  //     }
-  //   } catch (errors) {
-  //     setCardErrorsHelper(errors);
-  //     onError(errors);
-  //     return null;
-  //   }
-  // };
+  const configureErrorMessages = (errors: any) => {
+    setSubmitErrors(errors);
+    onError(errors);
+  }
 
   const handleSubmit = async (formData: any) => {
-    // console.log("formData", formData);
     setSubmitErrors([]);
 
     const data = {
@@ -353,28 +283,18 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
       recurrence: false,
     };
 
-    // console.log(data);
-
-    // // @ts-ignore
-    // console.log(window.cardNumber);
-    // // @ts-ignore
-    // console.log(window.cardExpiry);
-    // // @ts-ignore
-    // console.log(window.cardCvv);
-
-    // @ts-ignore
-    window.payform
+    try {
+      // @ts-ignore
+      window.payform
       .createToken(
         // @ts-ignore
         [window.cardNumber, window.cardExpiry, window.cardCvv],
         data
       )
       .then((result: any) => {
-        // console.table(result);
         const key = "transactionToken";
         const transactionToken = result[key] || undefined;
         if (transactionToken) {
-          // console.table(transactionToken);
           processPayment(transactionToken);
         } else {
           const niubizPayloadErrors = [
@@ -383,33 +303,26 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                 "Payment submission error. Niubiz gateway returned no token in payload.",
             },
           ];
-          setSubmitErrors(niubizPayloadErrors);
-          onError(niubizPayloadErrors);
+          configureErrorMessages(niubizPayloadErrors);
         }
-      });
+      }).catch((error: any) => {
+        const niubizPayloadErrors = [
+          {
+            message: error,
+          },
+        ];
 
-    // const creditCard: ICardPaymentInput = {
-    //   billingAddress: { postalCode },
-    //   cvv: removeEmptySpaces(maybe(() => formData.ccCsc, "") || ""),
-    //   expirationDate: removeEmptySpaces(maybe(() => formData.ccExp, "") || ""),
-    //   number: removeEmptySpaces(maybe(() => formData.ccNumber, "") || ""),
-    // };
-    // const payment = await tokenizeCcCard(creditCard);
-    // if (payment?.token) {
-    //   processPayment(payment?.token, {
-    //     brand: payment?.ccType,
-    //     lastDigits: payment?.lastDigits,
-    //   });
-    // } else {
-    //   const niubizPayloadErrors = [
-    //     {
-    //       message:
-    //         "Payment submission error. Niubiz gateway returned no token in payload.",
-    //     },
-    //   ];
-    //   setSubmitErrors(niubizPayloadErrors);
-    //   onError(niubizPayloadErrors);
-    // }
+        // niubizPayloadErrors = [];
+        configureErrorMessages(niubizPayloadErrors);
+      });
+    } catch (error) {
+      const niubizPayloadErrors = [
+        {
+          message: error.message,
+        },
+      ];
+      configureErrorMessages(niubizPayloadErrors);
+    }
   };
 
   const allErrors = [...errors, ...submitErrors];
