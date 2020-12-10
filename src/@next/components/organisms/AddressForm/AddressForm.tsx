@@ -2,7 +2,7 @@ import { Formik } from "formik";
 import { pick } from "lodash";
 import React from "react";
 
-import { IAddress } from "@types";
+import { IAddressWithEmail } from "@types";
 import { AddressFormContent } from "./AddressFormContent";
 import { IProps } from "./types";
 
@@ -18,6 +18,9 @@ const ADDRESS_FIELDS = [
   "streetAddress1",
   "streetAddress2",
   "email",
+  "dataTreatmentPolicy",
+  "termsAndConditions",
+  "documentNumber",
 ];
 
 export const AddressForm: React.FC<IProps> = ({
@@ -27,16 +30,41 @@ export const AddressForm: React.FC<IProps> = ({
   defaultValue,
   countriesOptions,
   citiesOptions,
+  user,
+  documentNumber,
+  termsAndConditions,
+  dataTreatmentPolicy,
   ...props
 }: IProps) => {
-  let addressWithPickedFields: Partial<IAddress> = {};
+  let addressWithPickedFields: Partial<IAddressWithEmail> = {};
   if (address) {
     addressWithPickedFields = pick(address, ADDRESS_FIELDS);
   }
-  
+
+  addressWithPickedFields.documentNumber = documentNumber;
+  addressWithPickedFields.termsAndConditions = termsAndConditions;
+  addressWithPickedFields.dataTreatmentPolicy = dataTreatmentPolicy;
+
   if (defaultValue) {
     addressWithPickedFields.country = defaultValue;
   }
+
+  if (user) {
+    addressWithPickedFields.city = user.addresses[0].city;
+    addressWithPickedFields.firstName =
+      user.firstName.replace(/^\w/, (c: any) => c.toUpperCase()) +
+      " " +
+      user.lastName.replace(/^\w/, (c: any) => c.toUpperCase());
+    addressWithPickedFields.streetAddress1 = user.addresses[0].streetAddress1;
+    addressWithPickedFields.streetAddress2 = user.addresses[0].streetAddress2;
+    addressWithPickedFields.email = user.email;
+    addressWithPickedFields.phone = user.phone;
+    addressWithPickedFields.id = user.addresses[0].id;
+    addressWithPickedFields.documentNumber = user.documentNumber;
+    addressWithPickedFields.termsAndConditions = user.termsAndConditions;
+    addressWithPickedFields.dataTreatmentPolicy = user.dataTreatmentPolicy;
+  }
+
   return (
     <Formik
       initialValues={addressWithPickedFields}
@@ -68,6 +96,7 @@ export const AddressForm: React.FC<IProps> = ({
               handleSubmit,
               setFieldTouched,
               setFieldValue,
+              user,
               values,
             }}
             {...props}

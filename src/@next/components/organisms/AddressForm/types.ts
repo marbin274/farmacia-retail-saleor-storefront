@@ -1,3 +1,4 @@
+import { IPrivacyPolicy } from "@temp/@sdk/api/Checkout/types";
 import { IAddressWithEmail } from "@types";
 
 export interface IFormikProps {
@@ -12,16 +13,21 @@ export interface IFormikProps {
   }>;
   includeEmail?: boolean;
   citiesOptions?: string[];
+  user: any;
 }
 
 export type AddressError = { field?: string; message: string };
 
 export interface IProps {
+  user?: any;
   address?: IAddressWithEmail;
   countriesOptions?: Array<{
     code: string;
     country: string;
   }>;
+  documentNumber?: string;
+  termsAndConditions?: boolean;
+  dataTreatmentPolicy?: boolean;
   citiesOptions?: string[];
   defaultValue?: any;
   formId?: string;
@@ -31,7 +37,13 @@ export interface IProps {
   handleChange?: (e: React.ChangeEvent) => void;
   handleBlur?: (e: React.FocusEvent) => void;
   includeEmail?: boolean;
-  onSelect?: (address?: IAddressWithEmail, email?: string) => void;
+  onSelect?: (
+    address?: IAddressWithEmail,
+    email?: string,
+    id?: string,
+    privacyPolicy?: IPrivacyPolicy,
+    documentNumber?: string
+  ) => void;
 }
 
 export type PropsWithFormik = Omit<IProps, "handleSubmit"> & IFormikProps;

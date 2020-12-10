@@ -2,7 +2,7 @@ import { shallow } from "enzyme";
 import "jest-styled-components";
 import React from "react";
 
-import { AddNewTile, TileGrid } from "@components/atoms";
+import { TileGrid } from "@components/atoms";
 
 import { AddressGrid } from ".";
 
@@ -47,15 +47,15 @@ describe("<AddressGrid />", () => {
     expect(wrapper.exists()).toEqual(true);
   });
 
-  it("should contain only AddNewTile if no addresses provided", () => {
-    const wrapper = shallow(
-      <AddressGrid addNewAddress={jest.fn()} addresses={[]} />
-    );
-    const firstTile = wrapper.find(TileGrid).props().elements[0];
+  // it("should contain only AddNewTile if no addresses provided", () => {
+  //   const wrapper = shallow(
+  //     <AddressGrid addNewAddress={jest.fn()} addresses={[]} />
+  //   );
+  //   const firstTile = wrapper.find(TileGrid).props().elements[0];
 
-    expect(wrapper.find(TileGrid).props().elements.length).toBe(1);
-    expect((firstTile as any).type).toBe(AddNewTile);
-  });
+  //   expect(wrapper.find(TileGrid).props().elements.length).toBe(1);
+  //   expect((firstTile as any).type).toBe(AddNewTile);
+  // });
 
   it("should contain AddNewTile and 3 address tiles for provided array of addresses", () => {
     const addressArray = [address, address, address];
@@ -66,6 +66,6 @@ describe("<AddressGrid />", () => {
       <AddressGrid addNewAddress={jest.fn()} addresses={addressArray} />
     );
 
-    expect(wrapper.find(TileGrid).props().elements.length).toBe(4);
+    expect(wrapper.find(TileGrid).props().elements.length).toBe(3);
   });
 });

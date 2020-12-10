@@ -114,7 +114,7 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
         <span
           className="c3"
         >
-          3
+          4
         </span>
         <span
           className="c4"

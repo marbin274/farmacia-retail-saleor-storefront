@@ -14,6 +14,7 @@ import { ShopContext } from "@temp/components/ShopProvider/context";
 // import { CHECKOUT_STEPS } from "@temp/core/config";
 import { IAddress, IFormError } from "@types";
 import { filterNotEmptyArrayItems } from "@utils/misc";
+import { IPrivacyPolicy } from "@temp/@sdk/api/Checkout/types";
 
 export interface ICheckoutAddressSubpageHandles {
   submitAddress: () => void;
@@ -56,7 +57,6 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
   const { countries } = useContext(ShopContext);
 
   const [errors, setErrors] = useState<IFormError[]>([]);
-
   const checkoutShippingAddress = checkout?.shippingAddress
     ? {
         ...checkout?.shippingAddress,
@@ -67,7 +67,9 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
   const handleSetShippingAddress = async (
     address?: IAddress,
     email?: string,
-    userAddressId?: string
+    userAddressId?: string,
+    privacyPolicy?: IPrivacyPolicy,
+    documentNumber?: string
   ) => {
     if (!address) {
       setErrors([{ message: "Please provide shipping address." }]);
@@ -83,12 +85,14 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
 
     changeSubmitProgress(true);
     const { dataError } = await setShippingAddress(
-      {
-        ...address,
-        id: userAddressId,
-      },
-      shippingEmail
+      address,
+      shippingEmail,
+      privacyPolicy
+        ? privacyPolicy
+        : { dataTreatmentPolicy: false, termsAndConditions: false },
+      documentNumber ? documentNumber : ""
     );
+
     const errors = dataError?.error;
     changeSubmitProgress(false);
     if (errors) {
@@ -122,10 +126,13 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
       formRef={checkoutAddressFormRef}
       checkoutAddress={checkoutShippingAddress}
       email={checkout?.email}
+      documentNumber={checkout?.documentNumber}
+      termsAndConditions={checkout?.termsAndConditions}
+      dataTreatmentPolicy={checkout?.dataTreatmentPolicy}
       userAddresses={userAdresses}
       selectedUserAddressId={selectedShippingAddressId}
       countries={countries}
-      userId={user?.id}
+      user={user}
       newAddressFormId={checkoutNewAddressFormId}
       setShippingAddress={handleSetShippingAddress}
     />

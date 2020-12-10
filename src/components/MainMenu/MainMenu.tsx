@@ -100,7 +100,7 @@ const MainMenu: React.FC = () => {
                                   <ul className="main-menu__dropdown">
                                     <li data-testid="my_account__link">
                                       <Link to={appPaths.accountUrl}>
-                                        My Account
+                                        Mi cuenta
                                       </Link>
                                     </li>
                                     {/* <li data-testid="order_history__link">
@@ -110,14 +110,14 @@ const MainMenu: React.FC = () => {
                                     </li> */}
                                     <li data-testid="address_book__link">
                                       <Link to={appPaths.addressBookUrl}>
-                                        Address book
+                                        Mis direcciones
                                       </Link>
                                     </li>
                                     <li
                                       onClick={handleSignOut}
                                       data-testid="logout-link"
                                     >
-                                      Log Out
+                                      Cerrar sesión
                                     </li>
                                   </ul>
                                 }
@@ -197,7 +197,7 @@ const MainMenu: React.FC = () => {
                         content={
                           <ul className="main-menu__dropdown">
                             <li data-testid="my_account__link">
-                              <Link to={appPaths.accountUrl}>My Account</Link>
+                              <Link to={appPaths.accountUrl}>Mi cuenta</Link>
                             </li>
                             {/* <li data-testid="order_history__link">
                               <Link to={appPaths.orderHistoryUrl}>
@@ -206,14 +206,14 @@ const MainMenu: React.FC = () => {
                             </li> */}
                             <li data-testid="address_book__link">
                               <Link to={appPaths.addressBookUrl}>
-                                Address book
+                                Mis direcciones
                               </Link>
                             </li>
                             <li
                               onClick={handleSignOut}
                               data-testid="logout-link"
                             >
-                              Log Out
+                              Cerrar sesión
                             </li>
                           </ul>
                         }

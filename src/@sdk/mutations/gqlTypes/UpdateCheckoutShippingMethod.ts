@@ -608,7 +608,9 @@ export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_check
   /**
    * A list of checkout lines, each containing information about an item in the checkout.
    */
-  lines: (UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_checkout_lines | null)[] | null;
+  lines:
+    | (UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_checkout_lines | null)[]
+    | null;
   /**
    * Returns True, if checkout requires shipping.
    */
@@ -617,9 +619,12 @@ export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_check
   discountName: string | null;
   translatedDiscountName: string | null;
   voucherCode: string | null;
-  voucherDiscountType: string | null | undefined,
-  voucherDiscountValue: number,
-  voucherType: string | null | undefined,
+  voucherDiscountType: string | null | undefined;
+  voucherDiscountValue: number;
+  voucherType: string | null | undefined;
+  documentNumber: string;
+  dataTreatmentPolicy: boolean;
+  termsAndConditions: boolean;
 }
 
 export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_checkoutErrors {

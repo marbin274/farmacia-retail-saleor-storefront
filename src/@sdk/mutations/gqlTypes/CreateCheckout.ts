@@ -575,6 +575,11 @@ export interface CreateCheckout_checkoutCreate_checkout_discount {
   culture: string;
 }
 
+export interface CreateCheckout_checkoutCreate_privacy_policy {
+  dataTreatmentPolicy: boolean;
+  termsAndConditions: boolean;
+}
+
 export interface CreateCheckout_checkoutCreate_checkout {
   __typename: "Checkout";
   token: any;
@@ -617,9 +622,12 @@ export interface CreateCheckout_checkoutCreate_checkout {
   discountName: string | null;
   translatedDiscountName: string | null;
   voucherCode: string | null;
-  voucherDiscountType: string | null | undefined,
-  voucherDiscountValue: number,
-  voucherType: string | null | undefined,
+  voucherDiscountType: string | null | undefined;
+  voucherDiscountValue: number;
+  voucherType: string | null | undefined;
+  dataTreatmentPolicy: boolean;
+  termsAndConditions: boolean;
+  documentNumber: string;
 }
 
 export interface CreateCheckout_checkoutCreate {

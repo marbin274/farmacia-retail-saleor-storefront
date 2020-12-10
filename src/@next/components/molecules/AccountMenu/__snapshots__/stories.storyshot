@@ -58,51 +58,43 @@ exports[`Storyshots @components/molecules/AccountMenu default 1`] = `
       <div
         className="c3"
       >
-        MY ACCOUNT
+        Mi Cuenta
       </div>
       <a
         data-testid="account_menu__link"
-        href="/personal-information/"
+        href=""
         onClick={[Function]}
       >
         <div
           className="c4"
-        >
-          Personal Information
-        </div>
+        />
       </a>
       <a
         data-testid="account_menu__link"
-        href="/address-book/"
+        href=""
         onClick={[Function]}
       >
         <div
           className="c5"
-        >
-          Address Book
-        </div>
+        />
       </a>
       <a
         data-testid="account_menu__link"
-        href="/order-history/"
+        href=""
         onClick={[Function]}
       >
         <div
           className="c4"
-        >
-          Order History
-        </div>
+        />
       </a>
       <a
         data-testid="account_menu__link"
-        href="/payment-options/"
+        href=""
         onClick={[Function]}
       >
         <div
           className="c4"
-        >
-          Payment Options
-        </div>
+        />
       </a>
     </div>
   </div>

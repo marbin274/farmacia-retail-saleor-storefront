@@ -114,6 +114,9 @@ export interface ICheckoutModel {
   availableShippingMethods?: Checkout_availableShippingMethods[];
   shippingMethod?: ICheckoutModelShippingMethod | null;
   requestPayload?: string;
+  dataTreatmentPolicy?: boolean;
+  termsAndConditions?: boolean;
+  documentNumber?: string;
 }
 
 export interface IPaymentModel {

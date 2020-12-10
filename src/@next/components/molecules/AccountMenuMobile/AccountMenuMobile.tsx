@@ -33,25 +33,19 @@ export const AccountMenuMobile: React.FC<IProps> = ({
       <Icon name="select_arrow" size={8} />
       {showMenu && (
         <S.Overlay>
-          <S.MenuHeader>Go to</S.MenuHeader>
+          <S.MenuHeader>Mi Cuenta</S.MenuHeader>
           {links.map(link => {
-            const menuItem = link
-              .replace(/\//g, "")
-              .replace("-", " ")
-              .split(" ")
-              .map(s => s.charAt(0).toUpperCase() + s.substring(1))
-              .join(" ");
             return (
               <div
                 onClick={evt => {
                   evt.stopPropagation();
                   setShowMenu(false);
                 }}
-                key={link}
+                key={link.url}
               >
-                <Link to={link}>
-                  <S.MenuItem active={active === link}>
-                    {menuItem}
+                <Link to={link.url}>
+                  <S.MenuItem active={active === link.url}>
+                    {link.label}
                     <Icon name="select_arrow" size={8} />
                   </S.MenuItem>
                 </Link>

@@ -2,6 +2,8 @@
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
+import { IPrivacyPolicy } from "../api/Checkout/types";
+
 //==============================================================
 // START Enums and Input Objects
 //==============================================================
@@ -407,6 +409,8 @@ export interface CheckoutCreateInput {
   email?: string | null;
   shippingAddress?: AddressInput | null;
   billingAddress?: AddressInput | null;
+  privacyPolicy?: IPrivacyPolicy;
+  documentNumber?: string;
 }
 
 export interface CheckoutLineInput {

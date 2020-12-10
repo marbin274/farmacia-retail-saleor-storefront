@@ -1,8 +1,35 @@
 import { media, styled } from "@styles";
-import {aunaBrand3, white} from "@styles/constants";
+import { aunaBrand3, white, aunaInteractive } from "@styles/constants";
 
 export const AddressForm = styled.form`
   width: 100%;
+  svg {
+    margin-top: 0.4rem;
+  }
+
+  .privacyAndPolicies {
+    margin-top: 2rem;
+    width: 50%;
+    ${media.smallScreen`
+      width: 100%;
+    `}
+
+    a {
+      color: ${aunaInteractive};
+    }
+  }
+
+  .additionals {
+    margin-top: 2rem;
+    width: 50%;
+    ${media.smallScreen`
+      width: 100%;
+    `}
+
+    a {
+      color: ${aunaInteractive};
+    }
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -16,7 +43,7 @@ export const RowWithTwoCells = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: 1rem;
-  
+
   & > div {
     width: calc(50% - ${props => props.theme.spacing.fieldSpacer} / 2);
     ${media.smallScreen`
@@ -52,6 +79,6 @@ export const GroupLabelIndex = styled.span`
 `;
 
 export const GroupLabelTitle = styled.span`
-    font-weight: bolder;
-    padding-left: 1rem;
+  font-weight: bolder;
+  padding-left: 1rem;
 `;

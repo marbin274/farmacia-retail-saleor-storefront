@@ -14,6 +14,7 @@ import {
   ICheckout,
   ICreditCard,
   IPayment,
+  IPrivacyPolicy,
   IPromoCodeDiscount,
   ISaleorCheckoutAPI,
 } from "./types";
@@ -65,13 +66,19 @@ export class SaleorCheckoutAPI extends ErrorListener
         availableShippingMethods,
         shippingMethod,
         promoCodeDiscount,
+        dataTreatmentPolicy,
+        termsAndConditions,
+        documentNumber,
       }: ICheckoutModel) => {
         this.checkout = {
           billingAddress,
+          dataTreatmentPolicy,
+          documentNumber,
           email,
           id,
           shippingAddress,
           shippingMethod,
+          termsAndConditions,
           token,
         };
         this.selectedShippingAddressId = selectedShippingAddressId;
@@ -136,7 +143,9 @@ export class SaleorCheckoutAPI extends ErrorListener
 
   setShippingAddress = async (
     shippingAddress: IAddress,
-    email: string
+    email: string,
+    privacyPolicy: IPrivacyPolicy,
+    documentNumber: string
   ): PromiseRunResponse<DataErrorCheckoutTypes, FunctionErrorCheckoutTypes> => {
     await this.saleorState.provideCheckout(this.fireError);
     const checkoutId = this.saleorState.checkout?.id;
@@ -167,8 +176,10 @@ export class SaleorCheckoutAPI extends ErrorListener
         "checkout",
         "createCheckout",
         {
+          documentNumber,
           email,
           lines: alteredLines,
+          privacyPolicy,
           selectedShippingAddressId: shippingAddress.id,
           shippingAddress,
         }
@@ -194,7 +205,9 @@ export class SaleorCheckoutAPI extends ErrorListener
 
   setBillingAddress = async (
     billingAddress: IAddress,
-    email?: string
+    email?: string,
+    privacyPolicy?: IPrivacyPolicy,
+    documentNumber?: string
   ): PromiseRunResponse<DataErrorCheckoutTypes, FunctionErrorCheckoutTypes> => {
     await this.saleorState.provideCheckout(this.fireError);
     const checkoutId = this.saleorState.checkout?.id;
@@ -265,8 +278,10 @@ export class SaleorCheckoutAPI extends ErrorListener
         "createCheckout",
         {
           billingAddress,
+          documentNumber: documentNumber ? documentNumber : "",
           email,
           lines: alteredLines,
+          privacyPolicy,
           selectedBillingAddressId: billingAddress.id,
         }
       );
@@ -485,10 +500,9 @@ export class SaleorCheckoutAPI extends ErrorListener
     }
   };
 
-  completeCheckout = async (requestPayload?: string | null | undefined ): PromiseRunResponse<
-    DataErrorCheckoutTypes,
-    FunctionErrorCheckoutTypes
-  > => {
+  completeCheckout = async (
+    requestPayload?: string | null | undefined
+  ): PromiseRunResponse<DataErrorCheckoutTypes, FunctionErrorCheckoutTypes> => {
     await this.saleorState.provideCheckout(this.fireError);
     const checkoutId = this.saleorState.checkout?.id;
 

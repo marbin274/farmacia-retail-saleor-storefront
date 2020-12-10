@@ -68,6 +68,7 @@ import {
 import { filterNotEmptyArrayItems } from "@sdk/utils";
 
 import { INetworkManager } from "./types";
+import { IPrivacyPolicy } from "../api/Checkout/types";
 
 export class NetworkManager implements INetworkManager {
   private client: ApolloClient<any>;
@@ -291,7 +292,9 @@ export class NetworkManager implements INetworkManager {
     email: string,
     lines: Array<{ variantId: string; quantity: number }>,
     shippingAddress?: ICheckoutAddress,
-    billingAddress?: ICheckoutAddress
+    billingAddress?: ICheckoutAddress,
+    privacyPolicy?: IPrivacyPolicy,
+    documentNumber?: string
   ) => {
     try {
       const variables = {
@@ -311,8 +314,10 @@ export class NetworkManager implements INetworkManager {
             streetAddress1: billingAddress.streetAddress1,
             streetAddress2: billingAddress.streetAddress2,
           },
+          documentNumber,
           email,
           lines,
+          privacyPolicy,
           shippingAddress: shippingAddress && {
             city: shippingAddress.city,
             companyName: shippingAddress.companyName,
@@ -799,11 +804,16 @@ export class NetworkManager implements INetworkManager {
     lines,
     availableShippingMethods,
     shippingMethod,
+    documentNumber,
+    termsAndConditions,
+    dataTreatmentPolicy,
   }: Checkout): ICheckoutModel => ({
     availableShippingMethods: availableShippingMethods
       ? availableShippingMethods.filter(filterNotEmptyArrayItems)
       : [],
     billingAddress,
+    dataTreatmentPolicy,
+    documentNumber,
     email,
     id,
     lines: lines
@@ -837,6 +847,7 @@ export class NetworkManager implements INetworkManager {
     },
     shippingAddress,
     shippingMethod,
+    termsAndConditions,
     token,
   });
 

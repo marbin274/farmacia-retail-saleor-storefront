@@ -27,3 +27,12 @@ export const address = {
   streetAddress1: "Street line 1",
   streetAddress2: "Street line 2",
 };
+
+export const documentNumber = "12345678";
+
+export const errors = [
+  {
+    field: "firstName",
+    message: "This is an error",
+  },
+];

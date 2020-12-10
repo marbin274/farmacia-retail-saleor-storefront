@@ -602,9 +602,12 @@ export interface UserCheckoutDetails_me_checkout {
   discountName: string | null;
   translatedDiscountName: string | null;
   voucherCode: string | null;
-  voucherDiscountType: string | null | undefined,
-  voucherDiscountValue: number,
-  voucherType: string | null | undefined,
+  voucherDiscountType: string | null | undefined;
+  voucherDiscountValue: number;
+  voucherType: string | null | undefined;
+  documentNumber: string;
+  dataTreatmentPolicy: boolean;
+  termsAndConditions: boolean;
 }
 
 export interface UserCheckoutDetails_me {

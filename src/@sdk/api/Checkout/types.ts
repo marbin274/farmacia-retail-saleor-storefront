@@ -28,6 +28,11 @@ export interface IAddress {
   };
 }
 
+export interface IPrivacyPolicy {
+  dataTreatmentPolicy?: boolean;
+  termsAndConditions?: boolean;
+}
+
 export type IAvailableShippingMethods = Checkout_availableShippingMethods[];
 export type IAvailablePaymentGateways = GetShopPaymentGateways_shop_availablePaymentGateways[];
 
@@ -40,7 +45,7 @@ export interface IShippingMethod {
 export interface IPromoCodeDiscount {
   voucherCode?: string | null;
   discountName?: string | null;
-  voucherDiscountValue: number | undefined,
+  voucherDiscountValue: number | undefined;
   voucherDiscountType: string | null | undefined;
   voucherType: string | null | undefined;
 }
@@ -62,6 +67,9 @@ export interface ICheckout {
   shippingMethod?: IShippingMethod | null;
   billingAddress?: IAddress | null;
   requestPayload?: string;
+  dataTreatmentPolicy?: boolean;
+  termsAndConditions?: boolean;
+  documentNumber?: string;
 }
 
 export enum FunctionErrorCheckoutTypes {
@@ -98,7 +106,9 @@ export interface ISaleorCheckoutAPI {
   ) => PromiseRunResponse<DataErrorCheckoutTypes, FunctionErrorCheckoutTypes>;
   setShippingAddress: (
     shippingAddress: IAddress,
-    email: string
+    email: string,
+    privacyPolicy: IPrivacyPolicy,
+    documentNumber: string
   ) => PromiseRunResponse<DataErrorCheckoutTypes, FunctionErrorCheckoutTypes>;
   setShippingMethod: (
     shippingMethodId: string

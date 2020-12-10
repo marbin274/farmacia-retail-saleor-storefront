@@ -1,6 +1,6 @@
 import React from "react";
 
-import { AddNewTile, TileGrid } from "@components/atoms";
+import { TileGrid } from "@components/atoms";
 import { AddressTile } from "@components/molecules";
 
 import { IProps } from "./types";
@@ -12,19 +12,7 @@ export const AddressGrid: React.FC<IProps> = ({
   addresses,
   addNewAddress,
 }: IProps) => {
-  const addNewTile = (
-    <AddNewTile key="newTile" type="address" onClick={addNewAddress} />
-  );
-
-  const addressTiles = addresses.reduce(
-    (elements, address) => {
-      elements.push(
-        <AddressTile key={`addressTile-${address.id}`} {...address} />
-      );
-      return elements;
-    },
-    [addNewTile]
-  );
+  const addressTiles = addresses.map(x => [<AddressTile key={x.id} {...x} />]);
 
   return <TileGrid columns={2} elements={addressTiles} />;
 };

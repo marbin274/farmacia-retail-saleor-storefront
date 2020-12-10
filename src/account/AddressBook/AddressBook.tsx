@@ -5,6 +5,7 @@ import { AddressFormModal, AddressGrid } from "@components/organisms";
 import { AddressTypeEnum } from "@sdk/gqlTypes/globalTypes";
 import { useDefaultUserAddress, useDeleteUserAddresss } from "@sdk/react";
 import { ShopContext } from "../../components/ShopProvider/context";
+import { citiesOptions } from "@temp/@next/components/organisms/CheckoutAddress/cities";
 
 const AddressBook: React.FC<{
   user: any;
@@ -15,6 +16,16 @@ const AddressBook: React.FC<{
   const [addressData, setAddressData] = React.useState(null);
   const [setDefaultUserAddress] = useDefaultUserAddress();
   const [setDeleteUserAddress] = useDeleteUserAddresss();
+
+  if (user.addresses && user.addresses.length) {
+    let i = 0;
+    do {
+      if (!user.addresses[i].isDefaultShippingAddress) {
+        user.addresses.splice(i, 1);
+      }
+      i++;
+    } while (user.addresses.length > 1);
+  }
 
   const userAddresses = user.addresses.map(address => {
     const addressToDisplay: any = { address: { ...address } };
@@ -71,10 +82,11 @@ const AddressBook: React.FC<{
             setDisplayEditModal(false);
           }}
           address={addressData}
-          submitBtnText={"Save"}
+          submitBtnText={"Guardar"}
           title={"Edit address"}
           {...{ countriesOptions: countries }}
           formId="address-form"
+          citiesOptions={citiesOptions}
         />
       )}
     </div>

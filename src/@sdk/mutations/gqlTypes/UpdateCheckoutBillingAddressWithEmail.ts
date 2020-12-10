@@ -608,7 +608,9 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
   /**
    * A list of checkout lines, each containing information about an item in the checkout.
    */
-  lines: (UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_lines | null)[] | null;
+  lines:
+    | (UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_lines | null)[]
+    | null;
   /**
    * Returns True, if checkout requires shipping.
    */
@@ -617,9 +619,12 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
   discountName: string | null;
   translatedDiscountName: string | null;
   voucherCode: string | null;
-  voucherDiscountType: string | null | undefined,
-  voucherDiscountValue: number,
-  voucherType: string | null | undefined,
+  voucherDiscountType: string | null | undefined;
+  voucherDiscountValue: number;
+  voucherType: string | null | undefined;
+  documentNumber: string;
+  dataTreatmentPolicy: boolean;
+  termsAndConditions: boolean;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate {
@@ -1221,7 +1226,9 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
   /**
    * A list of checkout lines, each containing information about an item in the checkout.
    */
-  lines: (UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_lines | null)[] | null;
+  lines:
+    | (UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_lines | null)[]
+    | null;
   /**
    * Returns True, if checkout requires shipping.
    */

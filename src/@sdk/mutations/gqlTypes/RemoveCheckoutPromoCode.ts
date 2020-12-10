@@ -595,7 +595,9 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout {
   /**
    * A list of checkout lines, each containing information about an item in the checkout.
    */
-  lines: (RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_lines | null)[] | null;
+  lines:
+    | (RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_lines | null)[]
+    | null;
   /**
    * Returns True, if checkout requires shipping.
    */
@@ -604,9 +606,12 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout {
   discountName: string | null;
   translatedDiscountName: string | null;
   voucherCode: string | null;
-  voucherDiscountType: string | null | undefined,
-  voucherDiscountValue: number,
-  voucherType: string | null | undefined,
+  voucherDiscountType: string | null | undefined;
+  voucherDiscountValue: number;
+  voucherType: string | null | undefined;
+  documentNumber: string;
+  dataTreatmentPolicy: boolean;
+  termsAndConditions: boolean;
 }
 
 export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_errors {

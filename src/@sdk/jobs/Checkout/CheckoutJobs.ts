@@ -1,4 +1,8 @@
-import { DataErrorCheckoutTypes, ICreditCard } from "@sdk/api/Checkout/types";
+import {
+  DataErrorCheckoutTypes,
+  ICreditCard,
+  IPrivacyPolicy,
+} from "@sdk/api/Checkout/types";
 import { NetworkManager } from "@sdk/network";
 import { ICheckoutAddress, LocalRepository } from "@sdk/repository";
 
@@ -20,6 +24,8 @@ export class CheckoutJobs {
     selectedShippingAddressId,
     billingAddress,
     selectedBillingAddressId,
+    privacyPolicy,
+    documentNumber,
   }: {
     email: string;
     lines: Array<{ variantId: string; quantity: number }>;
@@ -27,12 +33,16 @@ export class CheckoutJobs {
     selectedShippingAddressId?: string;
     billingAddress?: ICheckoutAddress;
     selectedBillingAddressId?: string;
+    privacyPolicy?: IPrivacyPolicy;
+    documentNumber: string;
   }): PromiseCheckoutJobRunResponse => {
     const { data, error } = await this.networkManager.createCheckout(
       email,
       lines,
       shippingAddress,
-      billingAddress
+      billingAddress,
+      privacyPolicy,
+      documentNumber
     );
 
     if (error) {
@@ -309,14 +319,15 @@ export class CheckoutJobs {
   };
 
   completeCheckout = async ({
-    checkoutId, 
+    checkoutId,
     paymentData,
   }: {
     checkoutId: string;
     paymentData?: string;
   }): PromiseCheckoutJobRunResponse => {
     const { data, error } = await this.networkManager.completeCheckout(
-      checkoutId, paymentData
+      checkoutId,
+      paymentData
     );
 
     if (error) {

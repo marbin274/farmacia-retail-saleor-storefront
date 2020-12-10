@@ -41,9 +41,11 @@ const returnTab: any = (path: string, userDetails, history) => {
 const Account: React.FC<RouteComponentProps> = ({ history, match }) => {
   const { data: user, loading } = useUserDetails();
 
-  // Don't remove comment because in the future will be used three links again
-  // const links = [accountUrl, orderHistoryUrl, addressBookUrl];
-  const links = [accountUrl, addressBookUrl];
+  const links = [
+    { url: accountUrl, label: "Mi perfil" },
+    { url: addressBookUrl, label: "Mis direcciones" },
+    // { url: orderHistoryUrl, label: "Mis pedidos" },
+  ];
 
   if (loading) {
     return <Loader />;
@@ -55,7 +57,7 @@ const Account: React.FC<RouteComponentProps> = ({ history, match }) => {
 
   return (
     <div className="container">
-      <Breadcrumbs breadcrumbs={[{ link: match.path, value: "My Account" }]} />
+      <Breadcrumbs breadcrumbs={[{ link: match.path, value: "Mi Cuenta" }]} />
       <div className="account">
         <Media minWidth={smallScreen}>
           <div className="account__menu">
