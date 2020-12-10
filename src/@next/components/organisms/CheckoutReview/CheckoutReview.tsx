@@ -43,7 +43,8 @@ const CheckoutReview: React.FC<IProps> = ({
       </div>
       <div>
         <S.Title data-cy="checkoutReviewSectionTitle">Método de pago</S.Title>
-        <S.ImportantText>**** **** **** {paymentMethodName}</S.ImportantText>
+        <S.ImportantText>Tarjeta de Crédito / Débito</S.ImportantText>
+        {/* <S.ImportantText>**** **** **** {paymentMethodName}</S.ImportantText> */}
       </div>
       <div className="privacyAndPolicies">
         <Checkbox

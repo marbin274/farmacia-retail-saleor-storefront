@@ -42,13 +42,13 @@ const INITIAL_CARD_ERROR_STATE = {
 };
 
 const getConfigElement = (config: IPaymentGatewayConfig[], element: string) => {
-  return config.find(x => x.field === element)?.value;
+  const result = config.find(x => x.field === element)?.value;
+  return result;
 };
 
 const getTokenRequirements = (config: IPaymentGatewayConfig[]) => {
-  console.table(config);
   const securityAPI =
-    getConfigElement(config, "nb_security_api") ||
+    getConfigElement(config, "nb_security_url") ||
     "https://apitestenv.vnforapps.com/api.security/v1/security";
 
   const gatewayUser =
@@ -135,7 +135,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
   const errorsDictionary = ["invalid_number", "invalid_expiry", "invalid_cvc"];
 
   const payformUrl =
-    getConfigElement(config, "payform_url") ||
+    getConfigElement(config, "nb_payform_url") ||
     "https://pocpaymentserve.s3.amazonaws.com/payform.min.js";
 
   // const clientToken = config.find(({ field }) => field === "client_token")
@@ -370,7 +370,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
         data
       )
       .then((result: any) => {
-        console.table(result);
+        // console.table(result);
         const key = "transactionToken";
         const transactionToken = result[key] || undefined;
         if (transactionToken) {

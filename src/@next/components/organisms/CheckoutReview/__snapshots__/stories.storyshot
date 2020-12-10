@@ -210,7 +210,7 @@ exports[`Storyshots @components/organisms/CheckoutReview default 1`] = `
       <p
         className="c4"
       >
-        **** **** **** 
+        Tarjeta de Crédito / Débito
       </p>
     </div>
     <div
