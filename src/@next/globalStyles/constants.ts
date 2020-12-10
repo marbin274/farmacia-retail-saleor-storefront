@@ -30,6 +30,7 @@ export const aunaBrand1 = "#C2DF0A";
 export const aunaBrand2 = "#FF6900";
 export const aunaBrand3 = "#0050B5";
 export const aunaBrand4 = "#FFD100";
+export const aunaBrand5 = "#404497";
 
 export const aunaPrimary = "#C2DF0A";
 export const aunaInteractive = "#00B0CA";

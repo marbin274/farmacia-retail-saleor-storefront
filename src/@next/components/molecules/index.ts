@@ -22,3 +22,4 @@ export * from "./CartSummaryRow";
 export * from "./CheckoutProgressBar";
 export * from "./AddressTileOption";
 export * from "./AddressSummary";
+export * from "./ProductImage";

@@ -1,26 +1,19 @@
 import { smallScreen } from "../../globalStyles/scss/variables.scss";
-
-import classNames from "classnames";
 import * as React from "react";
 import Media from "react-media";
-
-import { CachedImage, Thumbnail } from "@components/molecules";
-
-// TODO: Add as soon as we need to add the breadcrumb
-// import { Breadcrumbs, ProductDescription } from "../../components";
+import { ProductImage } from "@components/molecules";
 import { ProductDescription } from "../../components";
 import { generateCategoryUrl, generateProductUrl } from "../../core/utils";
-import GalleryCarousel from "./GalleryCarousel";
 import { ProductDetails_product } from "./gqlTypes/ProductDetails";
+import { ICheckoutModelLine } from "@sdk/repository";
+import { structuredData } from "../../core/SEO/Product/structuredData";
+import { MAX_ORDER_PER_PRODUCT } from "@temp/core/config";
 // TODO: Add as soon as we need to add related products
 // import OtherProducts from "./Other";
-
-import { ICheckoutModelLine } from "@sdk/repository";
-// TODO: Add as soon as we need to add more product information below the  
+// TODO: Add as soon as we need to add more product information below the
 // import { ProductDescription as NewProductDescription } from "../../@next/components/molecules";
-import { ProductGallery } from "../../@next/components/organisms/";
-
-import { structuredData } from "../../core/SEO/Product/structuredData";
+// TODO: Add as soon as we need to add the breadcrumb
+// import { Breadcrumbs, ProductDescription } from "../../components";
 
 class Page extends React.PureComponent<
   {
@@ -28,16 +21,39 @@ class Page extends React.PureComponent<
     add: (variantId: string, quantity: number) => any;
     items: ICheckoutModelLine[];
   },
-  { variantId: string }
+  {
+    variantId: string;
+    productOnCart: { quantity: number; quantityAvailable: number };
+    canAddToCart: boolean;
+  }
 > {
   fixedElement: React.RefObject<HTMLDivElement> = React.createRef();
-  productGallery: React.RefObject<HTMLDivElement> = React.createRef();
 
   constructor(props) {
     super(props);
     this.state = {
+      canAddToCart: true,
+      productOnCart: { quantity: 0, quantityAvailable: MAX_ORDER_PER_PRODUCT },
       variantId: "",
     };
+  }
+
+  componentDidMount() {
+    this.getProductOnCart();
+    this.getCanAddToCart();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      this.props.items !== prevProps.items ||
+      this.props.product !== prevProps.product
+    ) {
+      this.getProductOnCart();
+    }
+
+    if (this.state.productOnCart !== prevState.productOnCart) {
+      this.getCanAddToCart();
+    }
   }
 
   setVariantId = (id: string) => {
@@ -75,35 +91,32 @@ class Page extends React.PureComponent<
     }
   };
 
-  renderImages = product => {
-    const images = this.getImages();
-    if (images && images.length) {
-      return images.map(image => (
-        <a href={image.url} target="_blank">
-          <CachedImage url={image.url} key={image.id}>
-            <Thumbnail source={product} />
-          </CachedImage>
-        </a>
-      ));
+  getProductOnCart = () => {
+    const productOnCart = this.props.items.find(
+      ({ variant }) => variant.product.id === this.props.product.id
+    );
+    if (productOnCart) {
+      this.setState({
+        productOnCart: {
+          quantity: productOnCart.quantity,
+          quantityAvailable: productOnCart.variant.quantityAvailable,
+        },
+      });
     }
-    return <CachedImage />;
+  };
+
+  getCanAddToCart = () => {
+    const canAddToCart =
+      this.state.productOnCart.quantityAvailable >
+        this.state.productOnCart.quantity ||
+      this.state.productOnCart.quantity < MAX_ORDER_PER_PRODUCT;
+    this.setState({ canAddToCart });
   };
 
   render() {
-    const { product } = this.props;
+    const { add, items, product } = this.props;
+    const { canAddToCart } = this.state;
 
-    const productDescription = (
-      <ProductDescription
-        descriptionJson={product.descriptionJson}
-        items={this.props.items}
-        productId={product.id}
-        name={product.name}
-        productVariants={product.variants}
-        pricing={product.pricing}
-        addToCart={this.props.add}
-        setVariantId={this.setVariantId}
-      />
-    );
     return (
       <div className="product-page">
         <div className="container">
@@ -111,37 +124,42 @@ class Page extends React.PureComponent<
         </div>
         <div className="container">
           <div className="product-page__product">
-            {/* Add script here */}
             <script className="structured-data-list" type="application/ld+json">
               {structuredData(product)}
             </script>
-
-            {/*  */}
             <Media query={{ maxWidth: smallScreen }}>
               {matches =>
                 matches ? (
                   <>
-                    <div className="product-page__product__background"></div>
-                    <GalleryCarousel images={this.getImages()} />
+                    <ProductImage product={product} outStock={!canAddToCart} />
                     <div className="product-page__product__info">
-                    {productDescription}
+                      <ProductDescription
+                        descriptionJson={product.descriptionJson}
+                        items={items}
+                        productId={product.id}
+                        name={product.name}
+                        productVariants={product.variants}
+                        pricing={product.pricing}
+                        addToCart={add}
+                        setVariantId={this.setVariantId}
+                      />
                     </div>
                   </>
                 ) : (
                   <>
-                    <div
-                      className="product-page__product__gallery"
-                      ref={this.productGallery}
-                    >
-                      <ProductGallery images={this.getImages()} />
-                    </div>
+                    <ProductImage product={product} outStock={!canAddToCart} />
                     <div className="product-page__product__info">
-                      <div
-                        className={classNames(
-                          "product-page__product__info--fixed"
-                        )}
-                      >
-                        {productDescription}
+                      <div className={"product-page__product__info--fixed"}>
+                        <ProductDescription
+                          descriptionJson={product.descriptionJson}
+                          items={items}
+                          productId={product.id}
+                          name={product.name}
+                          productVariants={product.variants}
+                          pricing={product.pricing}
+                          addToCart={add}
+                          setVariantId={this.setVariantId}
+                        />
                       </div>
                     </div>
                   </>

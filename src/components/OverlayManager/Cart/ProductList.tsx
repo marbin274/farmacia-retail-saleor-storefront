@@ -25,7 +25,6 @@ const ProductList: React.FC<IProductList> = ({
         variant.product.id,
         variant.product.name
       );
-      console.table(products);
 
       return (
         <li key={variant.product.id} className="cart__list__item">
