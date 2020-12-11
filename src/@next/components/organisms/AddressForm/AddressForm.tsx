@@ -50,16 +50,17 @@ export const AddressForm: React.FC<IProps> = ({
   }
 
   if (user) {
-    addressWithPickedFields.city = user.addresses[0].city;
+    const defaultAddress = user.addresses[0]
+    addressWithPickedFields.city = defaultAddress?.city;
     addressWithPickedFields.firstName =
       user.firstName.replace(/^\w/, (c: any) => c.toUpperCase()) +
       " " +
       user.lastName.replace(/^\w/, (c: any) => c.toUpperCase());
-    addressWithPickedFields.streetAddress1 = user.addresses[0].streetAddress1;
-    addressWithPickedFields.streetAddress2 = user.addresses[0].streetAddress2;
+    addressWithPickedFields.streetAddress1 = defaultAddress?.streetAddress1;
+    addressWithPickedFields.streetAddress2 = defaultAddress?.streetAddress2;
     addressWithPickedFields.email = user.email;
     addressWithPickedFields.phone = user.phone;
-    addressWithPickedFields.id = user.addresses[0].id;
+    addressWithPickedFields.id = defaultAddress?.id;
     addressWithPickedFields.documentNumber = user.documentNumber;
     addressWithPickedFields.termsAndConditions = user.termsAndConditions;
     addressWithPickedFields.dataTreatmentPolicy = user.dataTreatmentPolicy;
