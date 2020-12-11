@@ -394,7 +394,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                     className="c11"
                   >
                     <input
-                      autoComplete="dni"
+                      autoComplete="documento"
                       className="c12"
                       data-cy="addressFormDNI"
                       disabled={false}
@@ -402,14 +402,14 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
-                      placeholder="DNI"
+                      placeholder="Documento"
                       value=""
                     />
                     <label
                       className="c13"
                       disabled={false}
                     >
-                      Dni
+                      Documento
                     </label>
                   </div>
                 </div>
@@ -447,7 +447,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                       className="c13"
                       disabled={false}
                     >
-                      Email
+                      *Email
                     </label>
                   </div>
                 </div>
@@ -474,14 +474,14 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
-                      placeholder="Telefono"
+                      placeholder="Teléfono"
                       value=""
                     />
                     <label
                       className="c13"
                       disabled={false}
                     >
-                      Telefono
+                      Teléfono
                     </label>
                   </div>
                 </div>
@@ -489,24 +489,6 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                   className="c14"
                 />
               </div>
-            </div>
-          </div>
-          <div
-            className="c4"
-          >
-            <div
-              className="c5"
-            >
-              <span
-                className="c6"
-              >
-                2
-              </span>
-              <span
-                className="c7"
-              >
-                Politicas
-              </span>
             </div>
             <div
               className="c8"
@@ -543,7 +525,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                   <label
                     htmlFor=""
                   >
-                    Estoy de acuerdo con las
+                    *Estoy de acuerdo con las
                     <a
                       href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-politicas-privacidad.pdf"
                     >
@@ -556,7 +538,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                       href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-terminos-condiciones.pdf"
                     >
                        
-                      Terminos y condiciones
+                      Términos y condiciones
                     </a>
                   </label>
                 </div>
@@ -600,7 +582,6 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                     >
                        Fines adicionales
                     </a>
-                     (opcional )
                   </label>
                 </div>
               </div>
@@ -615,7 +596,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
               <span
                 className="c6"
               >
-                3
+                2
               </span>
               <span
                 className="c7"
@@ -652,7 +633,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                       className="c13"
                       disabled={false}
                     >
-                      Dirección
+                      *Dirección
                     </label>
                   </div>
                 </div>
@@ -679,14 +660,14 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
-                      placeholder="Información adicional (opcional)"
+                      placeholder="Información adicional"
                       value=""
                     />
                     <label
                       className="c13"
                       disabled={false}
                     >
-                      Información adicional (opcional)
+                      Información adicional
                     </label>
                   </div>
                 </div>
@@ -797,7 +778,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                     className="c13"
                     disabled={false}
                   >
-                    Distrito
+                    *Distrito
                   </label>
                 </div>
                 <div
@@ -1248,7 +1229,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                     className="c11"
                   >
                     <input
-                      autoComplete="dni"
+                      autoComplete="documento"
                       className="c12"
                       data-cy="addressFormDNI"
                       disabled={false}
@@ -1256,14 +1237,14 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
-                      placeholder="DNI"
+                      placeholder="Documento"
                       value=""
                     />
                     <label
                       className="c13"
                       disabled={false}
                     >
-                      Dni
+                      Documento
                     </label>
                   </div>
                 </div>
@@ -1301,7 +1282,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                       className="c13"
                       disabled={false}
                     >
-                      Email
+                      *Email
                     </label>
                   </div>
                 </div>
@@ -1328,14 +1309,14 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
-                      placeholder="Telefono"
+                      placeholder="Teléfono"
                       value=""
                     />
                     <label
                       className="c13"
                       disabled={false}
                     >
-                      Telefono
+                      Teléfono
                     </label>
                   </div>
                 </div>
@@ -1343,24 +1324,6 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                   className="c14"
                 />
               </div>
-            </div>
-          </div>
-          <div
-            className="c4"
-          >
-            <div
-              className="c5"
-            >
-              <span
-                className="c6"
-              >
-                2
-              </span>
-              <span
-                className="c7"
-              >
-                Politicas
-              </span>
             </div>
             <div
               className="c8"
@@ -1397,7 +1360,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                   <label
                     htmlFor=""
                   >
-                    Estoy de acuerdo con las
+                    *Estoy de acuerdo con las
                     <a
                       href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-politicas-privacidad.pdf"
                     >
@@ -1410,7 +1373,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                       href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-terminos-condiciones.pdf"
                     >
                        
-                      Terminos y condiciones
+                      Términos y condiciones
                     </a>
                   </label>
                 </div>
@@ -1454,7 +1417,6 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                     >
                        Fines adicionales
                     </a>
-                     (opcional )
                   </label>
                 </div>
               </div>
@@ -1469,7 +1431,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
               <span
                 className="c6"
               >
-                3
+                2
               </span>
               <span
                 className="c7"
@@ -1506,7 +1468,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                       className="c13"
                       disabled={false}
                     >
-                      Dirección
+                      *Dirección
                     </label>
                   </div>
                 </div>
@@ -1533,14 +1495,14 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
-                      placeholder="Información adicional (opcional)"
+                      placeholder="Información adicional"
                       value=""
                     />
                     <label
                       className="c13"
                       disabled={false}
                     >
-                      Información adicional (opcional)
+                      Información adicional
                     </label>
                   </div>
                 </div>
@@ -1651,7 +1613,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                     className="c13"
                     disabled={false}
                   >
-                    Distrito
+                    *Distrito
                   </label>
                 </div>
                 <div
@@ -2064,7 +2026,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                     className="c11"
                   >
                     <input
-                      autoComplete="dni"
+                      autoComplete="documento"
                       className="c12"
                       data-cy="addressFormDNI"
                       disabled={false}
@@ -2072,14 +2034,14 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
-                      placeholder="DNI"
+                      placeholder="Documento"
                       value=""
                     />
                     <label
                       className="c13"
                       disabled={false}
                     >
-                      Dni
+                      Documento
                     </label>
                   </div>
                 </div>
@@ -2117,7 +2079,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                       className="c13"
                       disabled={false}
                     >
-                      Email
+                      *Email
                     </label>
                   </div>
                 </div>
@@ -2144,14 +2106,14 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
-                      placeholder="Telefono"
+                      placeholder="Teléfono"
                       value="555-55555"
                     />
                     <label
                       className="c13"
                       disabled={false}
                     >
-                      Telefono
+                      Teléfono
                     </label>
                   </div>
                 </div>
@@ -2159,24 +2121,6 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                   className="c14"
                 />
               </div>
-            </div>
-          </div>
-          <div
-            className="c4"
-          >
-            <div
-              className="c5"
-            >
-              <span
-                className="c6"
-              >
-                2
-              </span>
-              <span
-                className="c7"
-              >
-                Politicas
-              </span>
             </div>
             <div
               className="c8"
@@ -2213,7 +2157,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                   <label
                     htmlFor=""
                   >
-                    Estoy de acuerdo con las
+                    *Estoy de acuerdo con las
                     <a
                       href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-politicas-privacidad.pdf"
                     >
@@ -2226,7 +2170,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                       href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-terminos-condiciones.pdf"
                     >
                        
-                      Terminos y condiciones
+                      Términos y condiciones
                     </a>
                   </label>
                 </div>
@@ -2270,7 +2214,6 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                     >
                        Fines adicionales
                     </a>
-                     (opcional )
                   </label>
                 </div>
               </div>
@@ -2285,7 +2228,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
               <span
                 className="c6"
               >
-                3
+                2
               </span>
               <span
                 className="c7"
@@ -2322,7 +2265,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                       className="c13"
                       disabled={false}
                     >
-                      Dirección
+                      *Dirección
                     </label>
                   </div>
                 </div>
@@ -2349,14 +2292,14 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
-                      placeholder="Información adicional (opcional)"
+                      placeholder="Información adicional"
                       value="Street line 2"
                     />
                     <label
                       className="c13"
                       disabled={false}
                     >
-                      Información adicional (opcional)
+                      Información adicional
                     </label>
                   </div>
                 </div>
@@ -2467,7 +2410,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                     className="c13"
                     disabled={false}
                   >
-                    Distrito
+                    *Distrito
                   </label>
                 </div>
                 <div

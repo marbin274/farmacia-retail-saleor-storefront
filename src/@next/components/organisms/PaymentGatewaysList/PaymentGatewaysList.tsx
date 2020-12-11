@@ -23,10 +23,10 @@ const PaymentGatewaysList: React.FC<IProps> = ({
   formId,
   processPayment,
   errors,
-  checkoutBillingAddress,
   onError,
   requestPayload,
   totalPrice,
+  userDataForNiubiz,
 }: IProps) => {
   const customTheme = React.useContext(ThemeContext);
 
@@ -118,8 +118,12 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                         >
                           <span>{name}</span>
                         </S.PaymentTitle>
-                        <S.PaymentIcon checked={checked}><ReactSVG path={visaIcon} /></S.PaymentIcon>
-                        <S.PaymentIcon checked={checked}><ReactSVG path={masterCardIcon} /></S.PaymentIcon>
+                        <S.PaymentIcon checked={checked}>
+                          <ReactSVG path={visaIcon} />
+                        </S.PaymentIcon>
+                        <S.PaymentIcon checked={checked}>
+                          <ReactSVG path={masterCardIcon} />
+                        </S.PaymentIcon>
                       </S.PaymentLine>
                     </Radio>
                   </S.RadioContainerPayment>
@@ -129,11 +133,12 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                     config={config}
                     formRef={formRef}
                     formId={formId}
-                    processPayment={token => processPayment(id, token)}
+                    processPayment={(token, card) => processPayment(id, token, card)}
                     errors={errors}
                     onError={onError}
                     requestPayload={requestPayload}
                     totalPrice={totalPrice}
+                    userDataForNiubiz={userDataForNiubiz}
                   />
                 )}
               </div>

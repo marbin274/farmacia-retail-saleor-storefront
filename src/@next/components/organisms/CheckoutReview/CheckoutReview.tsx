@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
-import { Checkbox, ErrorMessage } from "@components/atoms";
+import { CreditCardIcon, ErrorMessage } from "@components/atoms";
 import { AddressSummary } from "@components/molecules";
 
 import * as S from "./styles";
@@ -15,19 +15,9 @@ const CheckoutReview: React.FC<IProps> = ({
   shippingMethodName,
   paymentMethodName,
   email,
+  creditCardProvider,
   errors,
 }: IProps) => {
-  const [privacyAndPolicies, setPrivacyAndPolicies] = useState(false);
-
-  const handlePrivacyAndPolicies = () => {
-    setPrivacyAndPolicies(!privacyAndPolicies);
-  };
-
-  const [additionals, setAdditionals] = useState(false);
-
-  const handleAdditionals = () => {
-    setAdditionals(!additionals);
-  };
 
   return (
     <S.Wrapper>
@@ -43,42 +33,7 @@ const CheckoutReview: React.FC<IProps> = ({
       </div>
       <div>
         <S.Title data-cy="checkoutReviewSectionTitle">Método de pago</S.Title>
-        <S.ImportantText>Tarjeta de Crédito / Débito</S.ImportantText>
-        {/* <S.ImportantText>**** **** **** {paymentMethodName}</S.ImportantText> */}
-      </div>
-      <div className="privacyAndPolicies">
-        <Checkbox
-          data-cy="checkoutPaymentPromoCodeCheckbox"
-          name="payment-promo-code"
-          checked={privacyAndPolicies}
-          onChange={handlePrivacyAndPolicies}
-        >
-          <label htmlFor="">
-            Estoy de acuerdo con las
-            <a href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-politicas-privacidad.pdf">
-              {" "}
-              Políticas de privacidad
-            </a>{" "}
-            y
-            <a href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-terminos-condiciones.pdf">
-              {" "}
-              Terminos y condiciones
-            </a>
-          </label>
-        </Checkbox>
-      </div>
-      <div className="additionals">
-        <Checkbox
-          data-cy="checkoutPaymentPromoCodeCheckbox"
-          name="payment-promo-code"
-          checked={additionals}
-          onChange={handleAdditionals}
-        >
-          <label htmlFor="">
-            Acepto el tratamiento para <a href="#"> Fines adicionales</a>{" "}
-            (opcional )
-          </label>
-        </Checkbox>
+        <CreditCardIcon creditCardProvider={creditCardProvider} /><S.ImportantText>Tarjeta de Crédito / Débito</S.ImportantText>
       </div>
 
       <S.ErrorMessages>

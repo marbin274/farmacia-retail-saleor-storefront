@@ -1,6 +1,5 @@
 import { GetShop_shop_countries } from "@sdk/queries/gqlTypes/GetShop";
 import { ITotalPrice } from "@temp/@sdk/api/Cart/types";
-import { ICardPaymentInput } from "@temp/core/payments/braintree";
 import {
   IAddress,
   IAddressWithAddressType,
@@ -14,6 +13,14 @@ export interface IPromoCodeDiscount {
   voucherType?: string | null;
   voucherDiscountType?: string | null;
   voucherDiscountValue: number | undefined;
+}
+
+export interface IUserDataForNiubiz {
+  documentNumber?: string;
+  email?: string;
+  dataTreatmentPolicy?: boolean;
+  termsAndConditions?: boolean;
+  // TODO: add registerDate, clientType and frecuentClient
 }
 
 export interface IProps {
@@ -63,7 +70,7 @@ export interface IProps {
   processPayment: (
     gateway: string,
     token: string,
-    cardData?: ICardData | ICardPaymentInput
+    cardData?: ICardData
   ) => void;
   /**
    * Method called when gateway error occured.
@@ -71,4 +78,5 @@ export interface IProps {
   onGatewayError: (errors: IFormError[]) => void;
   requestPayload?: string | undefined | null;
   totalPrice?: ITotalPrice;
+  userDataForNiubiz?: IUserDataForNiubiz;
 }

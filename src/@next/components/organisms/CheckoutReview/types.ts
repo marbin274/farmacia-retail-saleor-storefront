@@ -1,4 +1,5 @@
 import { IAddress, IFormError } from "@types";
+import { CCProviders } from "@components/atoms";
 
 export interface IProps {
   shippingAddress?: IAddress | null;
@@ -7,4 +8,5 @@ export interface IProps {
   paymentMethodName?: string;
   email?: string;
   errors?: IFormError[];
+  creditCardProvider: CCProviders;
 }

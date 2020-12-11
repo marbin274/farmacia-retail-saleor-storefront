@@ -1,4 +1,5 @@
 import { IPaymentGateway } from "@types";
+import { IUserDataForNiubiz } from "../CheckoutPayment/types";
 
 export const paymentGateways: IPaymentGateway[] = [
   {
@@ -26,3 +27,10 @@ export const paymentGateways: IPaymentGateway[] = [
     name: "Stripe",
   },
 ];
+
+export const userDataFroNiubiz: IUserDataForNiubiz = {
+  dataTreatmentPolicy: false,
+  documentNumber: "",
+  email: "",
+  termsAndConditions: false,
+};

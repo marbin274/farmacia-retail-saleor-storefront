@@ -114,12 +114,12 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
         <span
           className="c3"
         >
-          4
+          3
         </span>
         <span
           className="c4"
         >
-          Escoge el horario de entrega
+          Escoge el tiempo de entrega
         </span>
       </div>
       <form

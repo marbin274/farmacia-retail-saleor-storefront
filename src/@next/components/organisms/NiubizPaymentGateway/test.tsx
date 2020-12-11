@@ -3,6 +3,7 @@ import "jest-styled-components";
 import React from "react";
 
 import { NiubizPaymentGateway } from ".";
+import { userDataFroNiubiz } from "../PaymentGatewaysList/fixtures";
 
 const config = [{ field: "client_token", value: "token_test_1234567890" }];
 
@@ -15,6 +16,7 @@ describe("<NiubizPaymentGateway />", () => {
         config={config}
         processPayment={processPayment}
         onError={onError}
+        userDataForNiubiz={userDataFroNiubiz}
       />
     );
 

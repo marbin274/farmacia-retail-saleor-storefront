@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Formik } from "formik";
 import { ErrorMessage, Loader } from "@components/atoms";
-import { IFormError, IPaymentGatewayConfig } from "@types";
+import { ICardData, IFormError, IPaymentGatewayConfig } from "@types";
+const ip = require("ip");
 
 import {
   createSession,
@@ -100,10 +101,10 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
   formRef,
   formId,
   errors = [],
-  postalCode,
   onError,
   requestPayload,
   totalPrice,
+  userDataForNiubiz,
 }: IProps) => {
   // @ts-ignore
   const [sessionKey, setSessionKey] = useState("");
@@ -154,6 +155,16 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
         }
         const configuration = {
           amount,
+          antifraud: {
+            clientIp: ip.address(),
+            merchantDefineData: {
+              4: userDataForNiubiz?.email,
+              21: 0,
+              32: userDataForNiubiz?.documentNumber,
+              75: "Invitado",
+              77: 0,
+            },
+          },
           callbackurl: "",
           channel: "web",
           font:
@@ -167,6 +178,8 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
           recurrentmaxamount: "1000.00",
           sessionkey: key,
         };
+
+        console.table(configuration);
 
         // @ts-ignore
         window?.payform.setConfiguration(configuration);
@@ -267,7 +280,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
   const configureErrorMessages = (errors: any) => {
     setSubmitErrors(errors);
     onError(errors);
-  }
+  };
 
   const handleSubmit = async (formData: any) => {
     setSubmitErrors([]);
@@ -286,35 +299,41 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
     try {
       // @ts-ignore
       window.payform
-      .createToken(
-        // @ts-ignore
-        [window.cardNumber, window.cardExpiry, window.cardCvv],
-        data
-      )
-      .then((result: any) => {
-        const key = "transactionToken";
-        const transactionToken = result[key] || undefined;
-        if (transactionToken) {
-          processPayment(transactionToken);
-        } else {
+        .createToken(
+          // @ts-ignore
+          [window.cardNumber, window.cardExpiry, window.cardCvv],
+          data
+        )
+        .then((result: any) => {
+          console.table(result);
+          const key = "transactionToken";
+          const transactionToken = result[key] || undefined;
+          if (transactionToken) {
+            const bin = "bin";
+            const cardData: ICardData = {
+              firstDigits: result[bin],
+            }
+            processPayment(transactionToken, cardData);
+          } else {
+            const niubizPayloadErrors = [
+              {
+                message:
+                  "Payment submission error. Niubiz gateway returned no token in payload.",
+              },
+            ];
+            configureErrorMessages(niubizPayloadErrors);
+          }
+        })
+        .catch((error: any) => {
           const niubizPayloadErrors = [
             {
-              message:
-                "Payment submission error. Niubiz gateway returned no token in payload.",
+              message: error,
             },
           ];
-          configureErrorMessages(niubizPayloadErrors);
-        }
-      }).catch((error: any) => {
-        const niubizPayloadErrors = [
-          {
-            message: error,
-          },
-        ];
 
-        // niubizPayloadErrors = [];
-        configureErrorMessages(niubizPayloadErrors);
-      });
+          // niubizPayloadErrors = [];
+          configureErrorMessages(niubizPayloadErrors);
+        });
     } catch (error) {
       const niubizPayloadErrors = [
         {
@@ -393,18 +412,18 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                         className="form-control form-control-sm ncp-card"
                       ></div>
                       {formErrors.length &&
-                        formErrors.filter(x => x.code === errorsDictionary[0])
-                          .length ? (
-                          <div className="error">
-                            {
-                              formErrors.filter(
-                                x => x.code === errorsDictionary[0]
-                              )[0].message
-                            }
-                          </div>
-                        ) : (
-                          ""
-                        )}
+                      formErrors.filter(x => x.code === errorsDictionary[0])
+                        .length ? (
+                        <div className="error">
+                          {
+                            formErrors.filter(
+                              x => x.code === errorsDictionary[0]
+                            )[0].message
+                          }
+                        </div>
+                      ) : (
+                        ""
+                      )}
                     </div>
                     <br />
 
@@ -416,18 +435,18 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                           className="form-control form-control-sm"
                         ></div>
                         {formErrors.length &&
-                          formErrors.filter(x => x.code === errorsDictionary[1])
-                            .length ? (
-                            <div className="error">
-                              {
-                                formErrors.filter(
-                                  x => x.code === errorsDictionary[1]
-                                )[0].message
-                              }
-                            </div>
-                          ) : (
-                            ""
-                          )}
+                        formErrors.filter(x => x.code === errorsDictionary[1])
+                          .length ? (
+                          <div className="error">
+                            {
+                              formErrors.filter(
+                                x => x.code === errorsDictionary[1]
+                              )[0].message
+                            }
+                          </div>
+                        ) : (
+                          ""
+                        )}
                       </div>
                       <div className="cvv">
                         <label htmlFor="">CVC</label>
@@ -436,23 +455,25 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                           className="form-control form-control-sm"
                         ></div>
                         {formErrors.length &&
-                          formErrors.filter(x => x.code === errorsDictionary[2])
-                            .length ? (
-                            <div className="error">
-                              {
-                                formErrors.filter(
-                                  x => x.code === errorsDictionary[2]
-                                )[0].message
-                              }
-                            </div>
-                          ) : (
-                            ""
-                          )}
+                        formErrors.filter(x => x.code === errorsDictionary[2])
+                          .length ? (
+                          <div className="error">
+                            {
+                              formErrors.filter(
+                                x => x.code === errorsDictionary[2]
+                              )[0].message
+                            }
+                          </div>
+                        ) : (
+                          ""
+                        )}
                       </div>
                     </div>
                     <div>
                       <label>Pagos seguros con:</label>
-                      <div className="niubiz-logo-container"><ReactSVG path={niubizIcon} /></div>
+                      <div className="niubiz-logo-container">
+                        <ReactSVG path={niubizIcon} />
+                      </div>
                     </div>
                   </div>
                 </S.Payment>

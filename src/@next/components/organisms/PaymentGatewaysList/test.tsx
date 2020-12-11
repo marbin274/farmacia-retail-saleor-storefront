@@ -3,7 +3,7 @@ import "jest-styled-components";
 import React from "react";
 
 import { PaymentGatewaysList } from ".";
-import { paymentGateways } from "./fixtures";
+import { paymentGateways, userDataFroNiubiz } from "./fixtures";
 
 describe("<PaymentGatewaysList />", () => {
   it("renders payment gateways", () => {
@@ -16,6 +16,7 @@ describe("<PaymentGatewaysList />", () => {
         processPayment={processPayment}
         selectPaymentGateway={selectPaymentGateway}
         onError={onError}
+        userDataForNiubiz={userDataFroNiubiz}
       />
     );
 
@@ -33,6 +34,7 @@ describe("<PaymentGatewaysList />", () => {
         processPayment={processPayment}
         selectPaymentGateway={selectPaymentGateway}
         onError={onError}
+        userDataForNiubiz={userDataFroNiubiz}
       />
     );
 
@@ -42,6 +44,5 @@ describe("<PaymentGatewaysList />", () => {
     });
 
     expect(selectPaymentGateway).toHaveBeenCalledWith(paymentGateways[0].id);
-
   });
 });

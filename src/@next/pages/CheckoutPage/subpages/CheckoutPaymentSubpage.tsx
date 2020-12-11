@@ -1,4 +1,3 @@
-import { ICardPaymentInput } from "@temp/core/payments/braintree";
 import React, {
   forwardRef,
   RefForwardingComponent,
@@ -19,6 +18,7 @@ import {
 } from "@temp/core/config";
 import { IAddress, ICardData, IFormError } from "@types";
 import { filterNotEmptyArrayItems } from "@utils/misc";
+import { IUserDataForNiubiz } from "@temp/@next/components/organisms/CheckoutPayment/types";
 
 export interface ICheckoutPaymentSubpageHandles {
   submitPayment: () => void;
@@ -123,29 +123,17 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
     },
   }));
 
-
   const clearPromoCodeErrors = () => {
     setPromoCodeErrors([]);
   };
 
-
   const handleProcessPayment = async (
     gateway: string,
     token: string,
-    _cardData?: ICardData | ICardPaymentInput
+    cardData?: ICardData
   ) => {
-    // TODO: remove dummyCardData and use cardData when plugin is ready
-    const dummyCardData: ICardData = {
-      brand: "visa",
-      expMonth: 11,
-      expYear: 22,
-      firstDigits: "4242",
-      lastDigits: "4242",
-    };
-
-    // console.log(gateway);
-    // console.log(token);
-    const { dataError } = await createPayment(gateway, token, dummyCardData);
+    
+    const { dataError } = await createPayment(gateway, token, cardData);
     const errors = dataError?.error;
     changeSubmitProgress(false);
     if (errors) {
@@ -156,11 +144,9 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
     }
   };
 
-
   const handlePaymentGatewayError = () => {
     changeSubmitProgress(false);
   };
-
 
   const handleSetBillingAddress = async (
     address?: IAddress,
@@ -220,7 +206,6 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
     }
   };
 
-
   const handleAddPromoCode = async (promoCode: string) => {
     const { dataError } = await addPromoCode(promoCode);
     changeSubmitProgress(false);
@@ -231,7 +216,6 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
       clearPromoCodeErrors();
     }
   };
-
 
   const handleRemovePromoCode = async (promoCode: string) => {
     const { dataError } = await removePromoCode(promoCode);
@@ -244,9 +228,15 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
     }
   };
 
-
   const handleSubmitUnchangedDiscount = () => {
     clearPromoCodeErrors();
+  };
+
+  const userDataForNiubiz: IUserDataForNiubiz = {
+    dataTreatmentPolicy: checkout?.dataTreatmentPolicy,
+    documentNumber: checkout?.documentNumber,
+    email: checkout?.email,
+    termsAndConditions: checkout?.termsAndConditions,
   };
 
   return (
@@ -303,6 +293,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
       onGatewayError={handlePaymentGatewayError}
       requestPayload={requestPayload}
       totalPrice={totalPrice}
+      userDataForNiubiz={userDataForNiubiz}
     />
   );
 };

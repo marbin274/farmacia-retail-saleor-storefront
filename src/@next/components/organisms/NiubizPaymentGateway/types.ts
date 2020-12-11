@@ -1,5 +1,6 @@
 import { ITotalPrice } from "@temp/@sdk/api/Cart/types";
 import { ICardData, IFormError, IPaymentGatewayConfig } from "@types";
+import { IUserDataForNiubiz } from "../CheckoutPayment/types";
 
 export interface IProps {
   /**
@@ -32,4 +33,5 @@ export interface IProps {
   onError: (errors: IFormError[]) => void;
   requestPayload?: string | undefined | null;
   totalPrice?: ITotalPrice;
+  userDataForNiubiz?: IUserDataForNiubiz;
 }

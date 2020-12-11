@@ -161,8 +161,10 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
         // if (checkoutAddressSubpageRef.current?.submitAddress) {
         //   checkoutAddressSubpageRef.current?.submitAddress();
         // }
-        if (checkoutShippingSubpageRef.current?.submitShipping) {
-          checkoutShippingSubpageRef.current?.submitShipping();
+        if (checkoutAddressSubpageRef.current?.handleRequiredFields && checkoutShippingSubpageRef.current?.submitShipping) {
+          if (checkoutAddressSubpageRef.current?.handleRequiredFields()){
+            checkoutShippingSubpageRef.current?.submitShipping();
+          }
         }
         break;
       // case 1:

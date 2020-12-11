@@ -14,20 +14,10 @@ import { IDiscountFormData } from "../DiscountForm/types";
  */
 const CheckoutPayment: React.FC<IProps> = ({
   gatewayErrors,
-  billingErrors,
   promoCodeErrors,
   clearPromoCodeErrors,
-  selectedUserAddressId,
-  userAddresses,
-  billingAsShippingAddress = false,
   checkoutBillingAddress,
-  countries,
-  billingFormRef,
-  billingFormId,
   paymentGateways,
-  setBillingAddress,
-  billingAsShippingPossible,
-  setBillingAsShippingAddress,
   promoCodeDiscountFormId,
   promoCodeDiscountFormRef,
   promoCodeDiscount,
@@ -43,14 +33,13 @@ const CheckoutPayment: React.FC<IProps> = ({
   onGatewayError,
   requestPayload,
   totalPrice,
+  userDataForNiubiz,
 }: IProps) => {
   const [showPromoCodeForm, setShowPromoCodeForm] = useState(
     !!promoCodeDiscount?.voucherCode
   );
 
   useEffect(() => {
-    // console.log(checkoutBillingAddress)
-
     const isVoucherCode = !!promoCodeDiscount?.voucherCode;
     if (isVoucherCode) {
       setShowPromoCodeForm(isVoucherCode);
@@ -117,6 +106,7 @@ const CheckoutPayment: React.FC<IProps> = ({
         onError={onGatewayError}
         requestPayload={requestPayload}
         totalPrice={totalPrice}
+        userDataForNiubiz={userDataForNiubiz}
       />
     </S.Wrapper>
   );

@@ -5,6 +5,7 @@ import * as S from "./styles";
 import { PropsWithFormik } from "./types";
 import { Checkbox } from "../../atoms/Checkbox";
 import { IPrivacyPolicy } from "@temp/@sdk/api/Checkout/types";
+import { IAddressWithEmail } from "@temp/@next/types";
 
 export const AddressFormContent: React.FC<PropsWithFormik> = ({
   formRef,
@@ -52,24 +53,39 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
   });
 
   const selectCity = (value: any) => {
-    const _values: any = values;
-    _values.city = value;
-    _values.country = {
-      code: "PE",
-      country: "Peru",
-    };
-    if (values && values?.email && onSelect) {
-      const policyPrivacy: IPrivacyPolicy = {
-        dataTreatmentPolicy: additionals,
-        termsAndConditions: privacyAndPolicies,
+    const _values: IAddressWithEmail | undefined = values;
+    if(_values){
+      _values.city = value;
+      _values.country = {
+        code: "PE",
+        country: "Peru",
       };
-      onSelect(
-        _values,
-        user ? _values?.email : undefined,
-        user ? _values.id : undefined,
-        policyPrivacy,
-        _values.documentNumber
-      );
+      
+      // TODO: Uncomment as soon as we implement the documentNumber as required element
+      // let documentNumber: string = "";
+      // if (_values.documentNumber) {
+      //   documentNumber = _values.documentNumber.trim();
+      // }
+
+      let streetAddress: string = "";
+      if (_values.streetAddress1) {
+        streetAddress = _values.streetAddress1.trim();
+      }
+
+      if (onSelect && _values.email && privacyAndPolicies && streetAddress.length > 0) {
+        // if (onSelect && documentNumber.length > 0 && _values.email && privacyAndPolicies && streetAddress.length > 0) {
+        const policyPrivacy: IPrivacyPolicy = {
+          dataTreatmentPolicy: additionals,
+          termsAndConditions: privacyAndPolicies,
+        };
+        onSelect(
+          _values,
+          _values?.email,
+          _values.id,
+          policyPrivacy,
+          _values.documentNumber
+        );
+      }
     }
   };
 
@@ -109,10 +125,11 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
               <TextField
                 data-cy="addressFormDNI"
                 name="documentNumber"
-                placeholder="DNI"
-                label="Dni"
+                placeholder="Documento"
+                // label="*Documento"
+                label="Documento"
                 value={!values?.documentNumber ? "" : values?.documentNumber}
-                autoComplete="dni"
+                autoComplete="documento"
                 errors={fieldErrors!.documentNumber}
                 {...basicInputProps()}
               />
@@ -122,7 +139,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                 data-cy="addressFormEmail"
                 name="email"
                 placeholder="Email"
-                label="Email"
+                label="*Email"
                 value={!values?.email ? "" : values?.email}
                 autoComplete="email"
                 errors={fieldErrors!.email}
@@ -131,17 +148,17 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
               <TextField
                 data-cy="addressFormPhone"
                 name="phone"
-                placeholder="Telefono"
-                label="Telefono"
+                placeholder="Teléfono"
+                label="Teléfono"
                 value={!values?.phone ? "" : values?.phone}
                 autoComplete="tel"
                 errors={fieldErrors!.phone}
                 {...basicInputProps()}
               />
             </S.RowWithTwoCells>
-          </S.FieldsGroup>
+          {/* </S.FieldsGroup>
           <S.FieldsGroup>
-            {renderGroupLabel(2, "Politicas")}
+            {renderGroupLabel(2, "Politicas")} */}
             <S.RowWithTwoCells>
               <div className="privacyAndPolicies">
                 <Checkbox
@@ -151,7 +168,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                   onChange={handlePrivacyAndPolicies}
                 >
                   <label htmlFor="">
-                    Estoy de acuerdo con las
+                    *Estoy de acuerdo con las
                     <a href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-politicas-privacidad.pdf">
                       {" "}
                       Políticas de privacidad
@@ -159,7 +176,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                     y
                     <a href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-terminos-condiciones.pdf">
                       {" "}
-                      Terminos y condiciones
+                      Términos y condiciones
                     </a>
                   </label>
                 </Checkbox>
@@ -173,19 +190,19 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                 >
                   <label htmlFor="">
                     Acepto el tratamiento para{" "}
-                    <a href="#"> Fines adicionales</a> (opcional )
+                    <a href="#"> Fines adicionales</a>
                   </label>
                 </Checkbox>
               </div>
             </S.RowWithTwoCells>
           </S.FieldsGroup>
           <S.FieldsGroup>
-            {renderGroupLabel(3, "Dirección")}
+            {renderGroupLabel(2, "Dirección")}
             <S.RowWithTwoCells>
               <TextField
                 data-cy="addressFormStreetAddress1"
                 name="streetAddress1"
-                label="Dirección"
+                label="*Dirección"
                 placeholder="Dirección"
                 value={!values?.streetAddress1 ? "" : values?.streetAddress1}
                 autoComplete="address-line1"
@@ -195,8 +212,8 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
               <TextField
                 data-cy="addressFormStreetAddress2"
                 name="streetAddress2"
-                placeholder="Información adicional (opcional)"
-                label="Información adicional (opcional)"
+                placeholder="Información adicional"
+                label="Información adicional"
                 value={!values?.streetAddress2 ? "" : values?.streetAddress2}
                 autoComplete="address-line2"
                 errors={fieldErrors!.streetAddress2}
@@ -208,7 +225,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                 inputProps={{
                   "data-cy": "addressFormCity",
                 }}
-                label="Distrito"
+                label="*Distrito"
                 name="city"
                 options={_cities}
                 value={

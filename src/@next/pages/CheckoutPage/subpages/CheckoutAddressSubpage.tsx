@@ -18,6 +18,7 @@ import { IPrivacyPolicy } from "@temp/@sdk/api/Checkout/types";
 
 export interface ICheckoutAddressSubpageHandles {
   submitAddress: () => void;
+  handleRequiredFields: () => boolean;
 }
 
 interface IProps extends RouteComponentProps<any> {
@@ -33,7 +34,16 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
   const checkoutNewAddressFormId = "new-address-form";
 
   useImperativeHandle(ref, () => ({
-    submitAddress: () => {
+    handleRequiredFields: () => {
+
+      // if (email.length == 0) {
+      //   setErrors([{ field: "email", message: "Por favor indique email." }]);
+      //   return false;
+      // }
+
+      return true;
+    },
+    submitAddress: () => {      
       if (user && selectedShippingAddressId) {
         checkoutAddressFormRef.current?.dispatchEvent(
           new Event("submit", { cancelable: true })
@@ -46,7 +56,6 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
       }
     },
   }));
-
   // const history = useHistory();
   const { data: user } = useUserDetails();
   const {
@@ -57,6 +66,7 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
   const { countries } = useContext(ShopContext);
 
   const [errors, setErrors] = useState<IFormError[]>([]);
+  
   const checkoutShippingAddress = checkout?.shippingAddress
     ? {
         ...checkout?.shippingAddress,
@@ -75,7 +85,6 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
       setErrors([{ message: "Please provide shipping address." }]);
       return;
     }
-
     const shippingEmail = user?.email || email || "";
 
     if (!shippingEmail) {

@@ -3,7 +3,7 @@ import { storiesOf } from "@storybook/react";
 import React from "react";
 
 import { PaymentGatewaysList } from ".";
-import { paymentGateways } from "./fixtures";
+import { paymentGateways, userDataFroNiubiz } from "./fixtures";
 
 const processPayment = action("processPayment");
 const selectPaymentGateway = action("selectPaymentGateway");
@@ -17,5 +17,6 @@ storiesOf("@components/organisms/PaymentGatewaysList", module)
       processPayment={processPayment}
       selectPaymentGateway={selectPaymentGateway}
       onError={onError}
+      userDataForNiubiz={userDataFroNiubiz}
     />
   ));

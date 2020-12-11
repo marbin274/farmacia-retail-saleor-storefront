@@ -13,6 +13,8 @@ import { CHECKOUT_STEPS } from "@temp/core/config";
 import { IFormError } from "@types";
 // import { StringValueNode } from "graphql";
 
+const creditCardType = require("credit-card-type");
+
 export interface ICheckoutReviewSubpageHandles {
   complete: () => void;
 }
@@ -60,11 +62,17 @@ const CheckoutReviewSubpageWithRef: RefForwardingComponent<
           status => status.token === selectedPaymentGatewayToken
         )?.label
       }`;
-    } else if (payment?.creditCard) {
-      return `Ending in ${payment?.creditCard.lastDigits}`;
     }
     return ``;
   };
+
+  const getCreditCardProvider = () => {
+    if (payment?.creditCard) {
+      const visaCards = creditCardType(payment?.creditCard.firstDigits);
+      return visaCards[0].type;
+    }
+    return `visa`;
+  }
 
   useImperativeHandle(ref, () => ({
     complete: async () => {
@@ -96,6 +104,7 @@ const CheckoutReviewSubpageWithRef: RefForwardingComponent<
       shippingMethodName={checkout?.shippingMethod?.name}
       paymentMethodName={getPaymentMethodDescription()}
       email={checkout?.email}
+      creditCardProvider={getCreditCardProvider()}
       errors={errors}
     />
   );
