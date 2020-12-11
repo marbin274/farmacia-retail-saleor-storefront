@@ -92,8 +92,8 @@ class Page extends React.PureComponent<
   };
 
   getProductOnCart = () => {
-    const productOnCart = this.props.items.find(
-      ({ variant }) => variant.product.id === this.props.product.id
+    const productOnCart = this.props.items && this.props.items.find(
+      ({ variant }) => variant.product && (variant.product.id === this.props.product.id)
     );
     if (productOnCart) {
       this.setState({
