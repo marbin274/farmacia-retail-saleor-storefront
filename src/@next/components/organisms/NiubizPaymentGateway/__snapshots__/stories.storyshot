@@ -253,11 +253,8 @@ exports[`Storyshots @components/organisms/NiubizPaymentGateway default 1`] = `
             <h4
               className="card-title"
             >
-              Tarjeta de crédito
-            </h4>
-            <h5>
               Paga con tarjetas visa y mastercard
-            </h5>
+            </h4>
             <h5>
               INGRESA LOS DATOS DE LA TARJETA
             </h5>

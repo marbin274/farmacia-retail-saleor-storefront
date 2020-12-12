@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   margin: 20px;
 }
 
-.c20 {
+.c21 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -17,7 +17,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   box-sizing: border-box;
 }
 
-.c15 {
+.c16 {
   width: 100%;
   margin-bottom: 1.25rem;
   display: -webkit-box;
@@ -37,7 +37,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   margin-left: -4px;
 }
 
-.c16 {
+.c17 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -54,13 +54,13 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   padding-right: 1rem;
 }
 
-.c16 input[type="checkbox"] {
+.c17 input[type="checkbox"] {
   display: none;
   position: relative;
   right: -999em;
 }
 
-.c16 div {
+.c17 div {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -77,7 +77,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   width: 26px;
 }
 
-.c16 div span {
+.c17 div span {
   width: 20px;
   height: 20px;
   display: inline-block;
@@ -85,29 +85,29 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   border: solid 3px #E4E5ED;
 }
 
-.c16 div span div {
+.c17 div span div {
   display: none;
 }
 
-.c16 div span div svg {
+.c17 div span div svg {
   fill: #fff;
 }
 
-.c16 div:focus {
+.c17 div:focus {
   outline: none;
 }
 
-.c16 .checkout_icon {
+.c17 .checkout_icon {
   color: red;
 }
 
-.c16 input:checked + div span {
+.c17 input:checked + div span {
   background-clip: content-box;
   background-color: #00B0CA;
   border: solid 2px #00B0CA;
 }
 
-.c16 input:checked + div span div {
+.c17 input:checked + div span div {
   display: block;
   position: absolute;
   left: 3px;
@@ -115,12 +115,12 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   top: 2.5px;
 }
 
-.c17 {
+.c18 {
   padding-top: 1.4rem;
   margin-bottom: 1.875rem;
 }
 
-.c19 {
+.c20 {
   top: 100%;
 }
 
@@ -185,7 +185,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   color: #9194A7;
 }
 
-.c18 {
+.c19 {
   fill: #00B0CA;
   position: absolute;
   right: 1rem;
@@ -220,7 +220,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
 
 .c2 .privacyAndPolicies {
   margin-top: 2rem;
-  width: 50%;
+  width: 100%;
 }
 
 .c2 .privacyAndPolicies a {
@@ -229,7 +229,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
 
 .c2 .additionals {
   margin-top: 2rem;
-  width: 50%;
+  width: 100%;
 }
 
 .c2 .additionals a {
@@ -264,6 +264,10 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
 
 .c8 > div {
   width: calc(50% - 1.875rem / 2);
+}
+
+.c15 {
+  width: 100%;
 }
 
 .c4 {
@@ -491,16 +495,16 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
               </div>
             </div>
             <div
-              className="c8"
+              className="c15"
             >
               <div
                 className="privacyAndPolicies"
               >
                 <div
-                  className="c15"
+                  className="c16"
                 >
                   <label
-                    className="c16"
+                    className="c17"
                     onClick={[Function]}
                   >
                     <input
@@ -543,14 +547,18 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                   </label>
                 </div>
               </div>
+            </div>
+            <div
+              className="c15"
+            >
               <div
                 className="additionals"
               >
                 <div
-                  className="c15"
+                  className="c16"
                 >
                   <label
-                    className="c16"
+                    className="c17"
                     onClick={[Function]}
                   >
                     <input
@@ -680,7 +688,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
               className="c8"
             >
               <div
-                className="c17"
+                className="c18"
               >
                 <div
                   className="css-1pcexqc-container"
@@ -759,7 +767,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                       </div>
                     </div>
                     <div
-                      className="c18"
+                      className="c19"
                       rotate="false"
                     >
                       <svg
@@ -782,7 +790,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                   </label>
                 </div>
                 <div
-                  className="c19"
+                  className="c20"
                 />
               </div>
             </div>
@@ -792,7 +800,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
     </div>
   </div>
   <div
-    className="c20"
+    className="c21"
   />
 </div>
 `;
@@ -803,7 +811,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   margin: 20px;
 }
 
-.c23 {
+.c24 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -814,7 +822,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   box-sizing: border-box;
 }
 
-.c18 {
+.c19 {
   width: 100%;
   margin-bottom: 1.25rem;
   display: -webkit-box;
@@ -834,7 +842,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   margin-left: -4px;
 }
 
-.c19 {
+.c20 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -851,13 +859,13 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   padding-right: 1rem;
 }
 
-.c19 input[type="checkbox"] {
+.c20 input[type="checkbox"] {
   display: none;
   position: relative;
   right: -999em;
 }
 
-.c19 div {
+.c20 div {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -874,7 +882,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   width: 26px;
 }
 
-.c19 div span {
+.c20 div span {
   width: 20px;
   height: 20px;
   display: inline-block;
@@ -882,29 +890,29 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   border: solid 3px #E4E5ED;
 }
 
-.c19 div span div {
+.c20 div span div {
   display: none;
 }
 
-.c19 div span div svg {
+.c20 div span div svg {
   fill: #fff;
 }
 
-.c19 div:focus {
+.c20 div:focus {
   outline: none;
 }
 
-.c19 .checkout_icon {
+.c20 .checkout_icon {
   color: red;
 }
 
-.c19 input:checked + div span {
+.c20 input:checked + div span {
   background-clip: content-box;
   background-color: #00B0CA;
   border: solid 2px #00B0CA;
 }
 
-.c19 input:checked + div span div {
+.c20 input:checked + div span div {
   display: block;
   position: absolute;
   left: 3px;
@@ -922,12 +930,12 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   margin: 0;
 }
 
-.c20 {
+.c21 {
   padding-top: 1.4rem;
   margin-bottom: 1.875rem;
 }
 
-.c22 {
+.c23 {
   top: 100%;
 }
 
@@ -1010,7 +1018,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   color: #9194A7;
 }
 
-.c21 {
+.c22 {
   fill: #00B0CA;
   position: absolute;
   right: 1rem;
@@ -1045,7 +1053,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
 
 .c2 .privacyAndPolicies {
   margin-top: 2rem;
-  width: 50%;
+  width: 100%;
 }
 
 .c2 .privacyAndPolicies a {
@@ -1054,7 +1062,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
 
 .c2 .additionals {
   margin-top: 2rem;
-  width: 50%;
+  width: 100%;
 }
 
 .c2 .additionals a {
@@ -1089,6 +1097,10 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
 
 .c8 > div {
   width: calc(50% - 1.875rem / 2);
+}
+
+.c18 {
+  width: 100%;
 }
 
 .c4 {
@@ -1326,16 +1338,16 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
               </div>
             </div>
             <div
-              className="c8"
+              className="c18"
             >
               <div
                 className="privacyAndPolicies"
               >
                 <div
-                  className="c18"
+                  className="c19"
                 >
                   <label
-                    className="c19"
+                    className="c20"
                     onClick={[Function]}
                   >
                     <input
@@ -1378,14 +1390,18 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                   </label>
                 </div>
               </div>
+            </div>
+            <div
+              className="c18"
+            >
               <div
                 className="additionals"
               >
                 <div
-                  className="c18"
+                  className="c19"
                 >
                   <label
-                    className="c19"
+                    className="c20"
                     onClick={[Function]}
                   >
                     <input
@@ -1515,7 +1531,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
               className="c8"
             >
               <div
-                className="c20"
+                className="c21"
               >
                 <div
                   className="css-1pcexqc-container"
@@ -1594,7 +1610,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                       </div>
                     </div>
                     <div
-                      className="c21"
+                      className="c22"
                       rotate="false"
                     >
                       <svg
@@ -1617,7 +1633,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                   </label>
                 </div>
                 <div
-                  className="c22"
+                  className="c23"
                 />
               </div>
             </div>
@@ -1627,7 +1643,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
     </div>
   </div>
   <div
-    className="c23"
+    className="c24"
   />
 </div>
 `;
@@ -1638,7 +1654,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   margin: 20px;
 }
 
-.c20 {
+.c21 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1649,7 +1665,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   box-sizing: border-box;
 }
 
-.c15 {
+.c16 {
   width: 100%;
   margin-bottom: 1.25rem;
   display: -webkit-box;
@@ -1669,7 +1685,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   margin-left: -4px;
 }
 
-.c16 {
+.c17 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1686,13 +1702,13 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   padding-right: 1rem;
 }
 
-.c16 input[type="checkbox"] {
+.c17 input[type="checkbox"] {
   display: none;
   position: relative;
   right: -999em;
 }
 
-.c16 div {
+.c17 div {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1709,7 +1725,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   width: 26px;
 }
 
-.c16 div span {
+.c17 div span {
   width: 20px;
   height: 20px;
   display: inline-block;
@@ -1717,29 +1733,29 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   border: solid 3px #E4E5ED;
 }
 
-.c16 div span div {
+.c17 div span div {
   display: none;
 }
 
-.c16 div span div svg {
+.c17 div span div svg {
   fill: #fff;
 }
 
-.c16 div:focus {
+.c17 div:focus {
   outline: none;
 }
 
-.c16 .checkout_icon {
+.c17 .checkout_icon {
   color: red;
 }
 
-.c16 input:checked + div span {
+.c17 input:checked + div span {
   background-clip: content-box;
   background-color: #00B0CA;
   border: solid 2px #00B0CA;
 }
 
-.c16 input:checked + div span div {
+.c17 input:checked + div span div {
   display: block;
   position: absolute;
   left: 3px;
@@ -1747,12 +1763,12 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   top: 2.5px;
 }
 
-.c17 {
+.c18 {
   padding-top: 1.4rem;
   margin-bottom: 1.875rem;
 }
 
-.c19 {
+.c20 {
   top: 100%;
 }
 
@@ -1817,7 +1833,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   color: #9194A7;
 }
 
-.c18 {
+.c19 {
   fill: #00B0CA;
   position: absolute;
   right: 1rem;
@@ -1852,7 +1868,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
 
 .c2 .privacyAndPolicies {
   margin-top: 2rem;
-  width: 50%;
+  width: 100%;
 }
 
 .c2 .privacyAndPolicies a {
@@ -1861,7 +1877,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
 
 .c2 .additionals {
   margin-top: 2rem;
-  width: 50%;
+  width: 100%;
 }
 
 .c2 .additionals a {
@@ -1896,6 +1912,10 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
 
 .c8 > div {
   width: calc(50% - 1.875rem / 2);
+}
+
+.c15 {
+  width: 100%;
 }
 
 .c4 {
@@ -2123,16 +2143,16 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
               </div>
             </div>
             <div
-              className="c8"
+              className="c15"
             >
               <div
                 className="privacyAndPolicies"
               >
                 <div
-                  className="c15"
+                  className="c16"
                 >
                   <label
-                    className="c16"
+                    className="c17"
                     onClick={[Function]}
                   >
                     <input
@@ -2175,14 +2195,18 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                   </label>
                 </div>
               </div>
+            </div>
+            <div
+              className="c15"
+            >
               <div
                 className="additionals"
               >
                 <div
-                  className="c15"
+                  className="c16"
                 >
                   <label
-                    className="c16"
+                    className="c17"
                     onClick={[Function]}
                   >
                     <input
@@ -2312,7 +2336,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
               className="c8"
             >
               <div
-                className="c17"
+                className="c18"
               >
                 <div
                   className="css-1pcexqc-container"
@@ -2391,7 +2415,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                       </div>
                     </div>
                     <div
-                      className="c18"
+                      className="c19"
                       rotate="false"
                     >
                       <svg
@@ -2414,7 +2438,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                   </label>
                 </div>
                 <div
-                  className="c19"
+                  className="c20"
                 />
               </div>
             </div>
@@ -2424,7 +2448,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
     </div>
   </div>
   <div
-    className="c20"
+    className="c21"
   />
 </div>
 `;

@@ -3,7 +3,7 @@ import { aunaBlack, aunaDisabled, aunaPrimary, white} from "@styles/constants";
 
 import { DOT_STATUS } from "./";
 import addressIcon from "images/auna/checkout-address.svg";
-import deliveryIcon from "images/auna/checkout-delivery.svg";
+// import deliveryIcon from "images/auna/checkout-delivery.svg";
 import doneIcon from "images/auna/checkout-done.svg";
 import paymentIcon from "images/auna/checkout-payment.svg";
 
@@ -21,7 +21,7 @@ export const ICON_BG_COLORS = [
 
 export const ICONS = [
   addressIcon,
-  deliveryIcon,
+  // deliveryIcon,
   paymentIcon,
   doneIcon,
 ];

@@ -372,8 +372,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                 style={showForm ? styles.show : styles.hidde}
               >
                 <S.Payment className="card-body">
-                  <h4 className="card-title">Tarjeta de crédito</h4>
-                  <h5>Paga con tarjetas visa y mastercard</h5>
+                  <h4 className="card-title">Paga con tarjetas visa y mastercard</h4>
                   <h5>INGRESA LOS DATOS DE LA TARJETA</h5>
                   <div className="row">
                     <div className="identity">

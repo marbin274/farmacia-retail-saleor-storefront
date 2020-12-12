@@ -159,7 +159,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
           {/* </S.FieldsGroup>
           <S.FieldsGroup>
             {renderGroupLabel(2, "Politicas")} */}
-            <S.RowWithTwoCells>
+            <S.RowWithOneCell>
               <div className="privacyAndPolicies">
                 <Checkbox
                   data-cy="addressFormTermsAndConditions"
@@ -181,6 +181,8 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                   </label>
                 </Checkbox>
               </div>
+            </S.RowWithOneCell>
+            <S.RowWithOneCell>
               <div className="additionals">
                 <Checkbox
                   data-cy="checkoutPaymentPromoCodeCheckbox"
@@ -194,7 +196,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                   </label>
                 </Checkbox>
               </div>
-            </S.RowWithTwoCells>
+            </S.RowWithOneCell>
           </S.FieldsGroup>
           <S.FieldsGroup>
             {renderGroupLabel(2, "Dirección")}

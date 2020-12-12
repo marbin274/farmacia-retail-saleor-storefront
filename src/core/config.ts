@@ -66,7 +66,7 @@ export const META_DEFAULTS = {
   custom: [],
   description: "Written with React and TypeScript.",
   image: `${window.location.origin}${require("../images/logo.svg")}`,
-  title: "Farmacia Digital",
+  title: "Farmauna",
   type: "website",
   url: window.location.origin,
 };
@@ -99,7 +99,7 @@ export const CHECKOUT_STEPS = [
     index: 1,
     link: "/checkout/payment",
     name: "Paso 2: Selecciona el método de pago",
-    nextActionName: "Ir a confirmación",
+    nextActionName: "Guardar datos de pago",
     nextStepLink: "/checkout/review",
     onlyIfShippingRequired: false,
     step: CheckoutStep.Payment,

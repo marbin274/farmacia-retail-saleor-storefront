@@ -9,7 +9,7 @@ export const AddressForm = styled.form`
 
   .privacyAndPolicies {
     margin-top: 2rem;
-    width: 50%;
+    width: 100%;
     ${media.smallScreen`
       width: 100%;
     `}
@@ -21,7 +21,7 @@ export const AddressForm = styled.form`
 
   .additionals {
     margin-top: 2rem;
-    width: 50%;
+    width: 100%;
     ${media.smallScreen`
       width: 100%;
     `}

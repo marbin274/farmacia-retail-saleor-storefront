@@ -27,13 +27,13 @@ const CheckoutReview: React.FC<IProps> = ({
       </div>
       <div>
         <S.Title data-cy="checkoutReviewSectionTitle">
-          Método de entrega
+          Tiempo de entrega
         </S.Title>
         <S.Text>{shippingMethodName}</S.Text>
       </div>
       <div>
         <S.Title data-cy="checkoutReviewSectionTitle">Método de pago</S.Title>
-        <CreditCardIcon creditCardProvider={creditCardProvider} /><S.ImportantText>Tarjeta de Crédito / Débito</S.ImportantText>
+        <CreditCardIcon creditCardProvider={creditCardProvider} /><S.Text>Tarjeta de Crédito / Débito</S.Text>
       </div>
 
       <S.ErrorMessages>
