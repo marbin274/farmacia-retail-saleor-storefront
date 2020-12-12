@@ -5,7 +5,7 @@ import { RouteComponentProps } from "react-router";
 
 import { useCart } from "@sdk/react";
 
-import { MetaWrapper, NotFound, OfflinePlaceholder } from "../../components";
+import { ErrorPage, MetaWrapper, NotFound, OfflinePlaceholder } from "../../components";
 import NetworkStatus from "../../components/NetworkStatus";
 import { getGraphqlIdFromDBId, maybe } from "../../core/utils";
 import { ProductDetails_product } from "./gqlTypes/ProductDetails";
@@ -63,6 +63,14 @@ const View: React.FC<RouteComponentProps<{ id: string }>> = ({ match }) => {
           {isOnline => {
             const { product } = data;
 
+            if (product === null) {
+              return <NotFound />;
+            }
+
+            if (!product.pricing) {
+              return <ErrorPage />;
+            }
+
             if (canDisplay(product)) {
               return (
                 <MetaWrapper meta={extractMeta(product)}>
@@ -70,11 +78,6 @@ const View: React.FC<RouteComponentProps<{ id: string }>> = ({ match }) => {
                 </MetaWrapper>
               );
             }
-
-            if (product === null) {
-              return <NotFound />;
-            }
-
             if (!isOnline) {
               return <OfflinePlaceholder />;
             }

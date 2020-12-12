@@ -1,0 +1,27 @@
+@import "../../../globalStyles/scss/variables.scss";
+
+.error-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: ($spacer * 10) $spacer ($spacer * 4) $spacer;
+  @media (max-width: $small-screen) {
+    padding: ($spacer * 10) ($spacer * 2) ($spacer * 4) ($spacer * 2);
+  }
+  &__title {
+    color: $auna-interactive;
+    font-weight: 600;
+    letter-spacing: 0.015em;
+  }
+  &__error-logo {
+    padding-left: $spacer * 3;
+  }
+  &__message {
+    color: $black;
+    max-width: 40em;
+    line-height: 20px;
+    letter-spacing: 0.01em;
+  }
+}

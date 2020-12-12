@@ -15,7 +15,7 @@ export const ProductListAUNA: React.FC<IProps> = ({
   products,
   productsOnCart,
 }: IProps) => {
-  const productsWithQuantity = products.map((product) => {
+  const productsWithQuantity = !products ? [] : products.filter(product => product.pricing).map((product) => {
     const productOnCart = productsOnCart?.find(({ variant }) =>
       product.variants ? variant.id === product.variants[0].id : false
     );
@@ -52,16 +52,16 @@ export const ProductListAUNA: React.FC<IProps> = ({
         {loading ? (
           <Loader />
         ) : (
-          canLoadMore && (
-            <Button
-              data-cy="load-more_button"
-              color="secondary"
-              onClick={onLoadMore}
-            >
-              More +
-            </Button>
-          )
-        )}
+            canLoadMore && (
+              <Button
+                data-cy="load-more_button"
+                color="secondary"
+                onClick={onLoadMore}
+              >
+                More +
+              </Button>
+            )
+          )}
       </S.Loader>
     </>
   );
