@@ -73,8 +73,8 @@ const getCheckoutProgress = (
   const steps = isShippingRequired
     ? CHECKOUT_STEPS
     : CHECKOUT_STEPS.filter(
-        ({ onlyIfShippingRequired }) => !onlyIfShippingRequired
-      );
+      ({ onlyIfShippingRequired }) => !onlyIfShippingRequired
+    );
 
   return loaded ? (
     <CheckoutProgressBar steps={steps} activeStepIndex={activeStepIndex} />
@@ -93,7 +93,7 @@ const getButton = (text: string, onClick: () => void) => {
   }
 };
 
-const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
+const CheckoutPage: React.FC<IProps> = ({ }: IProps) => {
   const { pathname } = useLocation();
   const {
     loaded: cartLoaded,
@@ -136,7 +136,7 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     };
 
     setRequestPayload(payload);
-  },[]);
+  }, []);
 
   const matchingStepIndex = CHECKOUT_STEPS.findIndex(
     ({ link }) => link === pathname
@@ -162,7 +162,7 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
         //   checkoutAddressSubpageRef.current?.submitAddress();
         // }
         if (checkoutAddressSubpageRef.current?.handleRequiredFields && checkoutShippingSubpageRef.current?.submitShipping) {
-          if (checkoutAddressSubpageRef.current?.handleRequiredFields()){
+          if (checkoutAddressSubpageRef.current?.handleRequiredFields()) {
             checkoutShippingSubpageRef.current?.submitShipping();
           }
         }
@@ -187,9 +187,9 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
   const shippingTaxedPrice =
     checkout?.shippingMethod?.id && shippingPrice
       ? {
-          gross: shippingPrice,
-          net: shippingPrice,
-        }
+        gross: shippingPrice,
+        net: shippingPrice,
+      }
       : null;
   const promoTaxedPrice = discount && {
     gross: discount,
@@ -210,10 +210,10 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
               {...props}
             />
             <CheckoutShippingSubpage
-                ref={checkoutShippingSubpageRef}
-                changeSubmitProgress={setSubmitInProgress}
-                {...props}
-              />
+              ref={checkoutShippingSubpageRef}
+              changeSubmitProgress={setSubmitInProgress}
+              {...props}
+            />
           </div>
 
         )}
@@ -246,8 +246,8 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
         )}
       />
     ) : (
-      <Loader />
-    );
+        <Loader />
+      );
 
   const isShippingRequiredForProducts =
     items &&
@@ -257,6 +257,7 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
 
   return (
     <Checkout
+      selectedPaymentGateway={selectedPaymentGateway}
       loading={submitInProgress}
       navigation={getCheckoutProgress(
         cartLoaded && checkoutLoaded,

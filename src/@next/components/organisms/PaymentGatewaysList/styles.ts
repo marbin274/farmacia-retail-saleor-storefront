@@ -11,7 +11,6 @@ export const Tile = styled.label<{ checked: boolean }>`
   border: 2px solid  ${props => props.checked ? props.theme.input.borderColorActive : props.theme.input.borderColor};
   cursor: pointer;
   border-radius: 1rem;
-  max-width: 34rem;
   padding: 10px 20px;
   width:100%;
 `;

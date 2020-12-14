@@ -4,4 +4,5 @@ export interface IProps {
   checkout?: React.ReactNode;
   cartSummary?: React.ReactNode;
   button?: React.ReactNode;
+  selectedPaymentGateway?: string;
 }

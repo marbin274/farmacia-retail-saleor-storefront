@@ -41,6 +41,7 @@ export const Navigation = styled.div`
 export const Checkout = styled.div`
   grid-area: checkout;
   padding: 3rem 0;
+  max-width: 34rem
 `;
 export const CartSummary = styled.div`
   grid-area: cartSummary;
@@ -53,4 +54,6 @@ export const CartSummary = styled.div`
 `;
 export const Button = styled.div`
   grid-area: button;
+  text-align: center;
+  max-width: 34rem
 `;

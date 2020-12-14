@@ -49,7 +49,6 @@ exports[`Storyshots @components/organisms/PaymentGatewaysList default 1`] = `
   border: 2px solid #E4E5ED;
   cursor: pointer;
   border-radius: 1rem;
-  max-width: 34rem;
   padding: 10px 20px;
   width: 100%;
 }

@@ -147,7 +147,6 @@ exports[`Storyshots @components/organisms/CheckoutPayment default 1`] = `
   border: 2px solid #E4E5ED;
   cursor: pointer;
   border-radius: 1rem;
-  max-width: 34rem;
   padding: 10px 20px;
   width: 100%;
 }
@@ -409,7 +408,6 @@ exports[`Storyshots @components/organisms/CheckoutPayment with addresses 1`] = `
   border: 2px solid #E4E5ED;
   cursor: pointer;
   border-radius: 1rem;
-  max-width: 34rem;
   padding: 10px 20px;
   width: 100%;
 }

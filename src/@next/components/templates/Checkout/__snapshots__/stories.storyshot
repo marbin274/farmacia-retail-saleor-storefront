@@ -42,6 +42,7 @@ exports[`Storyshots @components/templates/Checkout default 1`] = `
 .c4 {
   grid-area: checkout;
   padding: 3rem 0;
+  max-width: 34rem;
 }
 
 .c5 {
@@ -51,6 +52,8 @@ exports[`Storyshots @components/templates/Checkout default 1`] = `
 
 .c6 {
   grid-area: button;
+  text-align: center;
+  max-width: 34rem;
 }
 
 @media (max-width:992px) {
