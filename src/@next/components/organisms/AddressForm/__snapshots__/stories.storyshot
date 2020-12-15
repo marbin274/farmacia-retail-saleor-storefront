@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   margin: 20px;
 }
 
-.c21 {
+.c20 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -17,7 +17,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   box-sizing: border-box;
 }
 
-.c16 {
+.c15 {
   width: 100%;
   margin-bottom: 1.25rem;
   display: -webkit-box;
@@ -37,7 +37,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   margin-left: -4px;
 }
 
-.c17 {
+.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -54,13 +54,13 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   padding-right: 1rem;
 }
 
-.c17 input[type="checkbox"] {
+.c16 input[type="checkbox"] {
   display: none;
   position: relative;
   right: -999em;
 }
 
-.c17 div {
+.c16 div {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -77,7 +77,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   width: 26px;
 }
 
-.c17 div span {
+.c16 div span {
   width: 20px;
   height: 20px;
   display: inline-block;
@@ -85,29 +85,29 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   border: solid 3px #E4E5ED;
 }
 
-.c17 div span div {
+.c16 div span div {
   display: none;
 }
 
-.c17 div span div svg {
+.c16 div span div svg {
   fill: #fff;
 }
 
-.c17 div:focus {
+.c16 div:focus {
   outline: none;
 }
 
-.c17 .checkout_icon {
+.c16 .checkout_icon {
   color: red;
 }
 
-.c17 input:checked + div span {
+.c16 input:checked + div span {
   background-clip: content-box;
   background-color: #00B0CA;
   border: solid 2px #00B0CA;
 }
 
-.c17 input:checked + div span div {
+.c16 input:checked + div span div {
   display: block;
   position: absolute;
   left: 3px;
@@ -115,12 +115,12 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   top: 2.5px;
 }
 
-.c18 {
+.c17 {
   padding-top: 1.4rem;
   margin-bottom: 1.875rem;
 }
 
-.c20 {
+.c19 {
   top: 100%;
 }
 
@@ -185,7 +185,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   color: #9194A7;
 }
 
-.c19 {
+.c18 {
   fill: #00B0CA;
   position: absolute;
   right: 1rem;
@@ -266,10 +266,6 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   width: calc(50% - 1.875rem / 2);
 }
 
-.c15 {
-  width: 100%;
-}
-
 .c4 {
   padding-top: 1rem;
   padding-bottom: 2rem;
@@ -333,465 +329,463 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
         <div
           className="c3"
         >
-          <div
-            className="c4"
-          >
+          <div>
             <div
-              className="c5"
-            >
-              <span
-                className="c6"
-              >
-                1
-              </span>
-              <span
-                className="c7"
-              >
-                Cliente
-              </span>
-            </div>
-            <div
-              className="c8"
+              className="c4"
             >
               <div
-                className="c9"
+                className="c5"
+              >
+                <span
+                  className="c6"
+                >
+                  1
+                </span>
+                <span
+                  className="c7"
+                >
+                  Cliente
+                </span>
+              </div>
+              <div
+                className="c8"
               >
                 <div
-                  className="c10"
-                  disabled={false}
+                  className="c9"
                 >
                   <div
-                    className="c11"
-                  >
-                    <input
-                      autoComplete="given-name"
-                      className="c12"
-                      data-cy="addressFormFirstName"
-                      disabled={false}
-                      name="firstName"
-                      onBlur={[Function]}
-                      onChange={[Function]}
-                      onFocus={[Function]}
-                      placeholder="Nombre Completo"
-                      value=""
-                    />
-                    <label
-                      className="c13"
-                      disabled={false}
-                    >
-                      Nombre Completo
-                    </label>
-                  </div>
-                </div>
-                <div
-                  className="c14"
-                />
-              </div>
-              <div
-                className="c9"
-              >
-                <div
-                  className="c10"
-                  disabled={false}
-                >
-                  <div
-                    className="c11"
-                  >
-                    <input
-                      autoComplete="documento"
-                      className="c12"
-                      data-cy="addressFormDNI"
-                      disabled={false}
-                      name="documentNumber"
-                      onBlur={[Function]}
-                      onChange={[Function]}
-                      onFocus={[Function]}
-                      placeholder="Documento"
-                      value=""
-                    />
-                    <label
-                      className="c13"
-                      disabled={false}
-                    >
-                      Documento
-                    </label>
-                  </div>
-                </div>
-                <div
-                  className="c14"
-                />
-              </div>
-            </div>
-            <div
-              className="c8"
-            >
-              <div
-                className="c9"
-              >
-                <div
-                  className="c10"
-                  disabled={false}
-                >
-                  <div
-                    className="c11"
-                  >
-                    <input
-                      autoComplete="email"
-                      className="c12"
-                      data-cy="addressFormEmail"
-                      disabled={false}
-                      name="email"
-                      onBlur={[Function]}
-                      onChange={[Function]}
-                      onFocus={[Function]}
-                      placeholder="Email"
-                      value=""
-                    />
-                    <label
-                      className="c13"
-                      disabled={false}
-                    >
-                      *Email
-                    </label>
-                  </div>
-                </div>
-                <div
-                  className="c14"
-                />
-              </div>
-              <div
-                className="c9"
-              >
-                <div
-                  className="c10"
-                  disabled={false}
-                >
-                  <div
-                    className="c11"
-                  >
-                    <input
-                      autoComplete="tel"
-                      className="c12"
-                      data-cy="addressFormPhone"
-                      disabled={false}
-                      name="phone"
-                      onBlur={[Function]}
-                      onChange={[Function]}
-                      onFocus={[Function]}
-                      placeholder="Teléfono"
-                      value=""
-                    />
-                    <label
-                      className="c13"
-                      disabled={false}
-                    >
-                      Teléfono
-                    </label>
-                  </div>
-                </div>
-                <div
-                  className="c14"
-                />
-              </div>
-            </div>
-            <div
-              className="c15"
-            >
-              <div
-                className="privacyAndPolicies"
-              >
-                <div
-                  className="c16"
-                >
-                  <label
-                    className="c17"
-                    onClick={[Function]}
-                  >
-                    <input
-                      checked={false}
-                      data-cy="addressFormTermsAndConditions"
-                      name="termsAndConditions"
-                      readOnly={true}
-                      tabIndex={-1}
-                      type="checkbox"
-                    />
-                    <div
-                      onKeyDown={[Function]}
-                      tabIndex={0}
-                    >
-                      <span>
-                        <div
-                          className="checkout_icon"
-                        />
-                      </span>
-                    </div>
-                  </label>
-                  <label
-                    htmlFor=""
-                  >
-                    *Estoy de acuerdo con las
-                    <a
-                      href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-politicas-privacidad.pdf"
-                    >
-                       
-                      Políticas de privacidad
-                    </a>
-                     
-                    y
-                    <a
-                      href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-terminos-condiciones.pdf"
-                    >
-                       
-                      Términos y condiciones
-                    </a>
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div
-              className="c15"
-            >
-              <div
-                className="additionals"
-              >
-                <div
-                  className="c16"
-                >
-                  <label
-                    className="c17"
-                    onClick={[Function]}
-                  >
-                    <input
-                      checked={false}
-                      data-cy="checkoutPaymentPromoCodeCheckbox"
-                      name="dataTreatmentPolicy"
-                      readOnly={true}
-                      tabIndex={-1}
-                      type="checkbox"
-                    />
-                    <div
-                      onKeyDown={[Function]}
-                      tabIndex={0}
-                    >
-                      <span>
-                        <div
-                          className="checkout_icon"
-                        />
-                      </span>
-                    </div>
-                  </label>
-                  <label
-                    htmlFor=""
-                  >
-                    Acepto el tratamiento para
-                     
-                    <a
-                      href="#"
-                    >
-                       Fines adicionales
-                    </a>
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            className="c4"
-          >
-            <div
-              className="c5"
-            >
-              <span
-                className="c6"
-              >
-                2
-              </span>
-              <span
-                className="c7"
-              >
-                Dirección
-              </span>
-            </div>
-            <div
-              className="c8"
-            >
-              <div
-                className="c9"
-              >
-                <div
-                  className="c10"
-                  disabled={false}
-                >
-                  <div
-                    className="c11"
-                  >
-                    <input
-                      autoComplete="address-line1"
-                      className="c12"
-                      data-cy="addressFormStreetAddress1"
-                      disabled={false}
-                      name="streetAddress1"
-                      onBlur={[Function]}
-                      onChange={[Function]}
-                      onFocus={[Function]}
-                      placeholder="Dirección"
-                      value=""
-                    />
-                    <label
-                      className="c13"
-                      disabled={false}
-                    >
-                      *Dirección
-                    </label>
-                  </div>
-                </div>
-                <div
-                  className="c14"
-                />
-              </div>
-              <div
-                className="c9"
-              >
-                <div
-                  className="c10"
-                  disabled={false}
-                >
-                  <div
-                    className="c11"
-                  >
-                    <input
-                      autoComplete="address-line2"
-                      className="c12"
-                      data-cy="addressFormStreetAddress2"
-                      disabled={false}
-                      name="streetAddress2"
-                      onBlur={[Function]}
-                      onChange={[Function]}
-                      onFocus={[Function]}
-                      placeholder="Información adicional"
-                      value=""
-                    />
-                    <label
-                      className="c13"
-                      disabled={false}
-                    >
-                      Información adicional
-                    </label>
-                  </div>
-                </div>
-                <div
-                  className="c14"
-                />
-              </div>
-            </div>
-            <div
-              className="c8"
-            >
-              <div
-                className="c18"
-              >
-                <div
-                  className="css-1pcexqc-container"
-                  onKeyDown={[Function]}
-                >
-                  <div
-                    className="css-d1vkk-control"
-                    onMouseDown={[Function]}
-                    onTouchEnd={[Function]}
+                    className="c10"
+                    disabled={false}
                   >
                     <div
-                      className="css-tntsk8"
+                      className="c11"
                     >
-                      <div
-                        className="css-151xaom-placeholder"
+                      <input
+                        autoComplete="given-name"
+                        className="c12"
+                        data-cy="addressFormFirstName"
+                        disabled={false}
+                        name="firstName"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        placeholder="Nombre Completo"
+                        value=""
+                      />
+                      <label
+                        className="c13"
+                        disabled={false}
                       >
-                        
-                      </div>
-                      <div
-                        className="css-1g6gooi"
+                        Nombre Completo
+                      </label>
+                    </div>
+                  </div>
+                  <div
+                    className="c14"
+                  />
+                </div>
+                <div
+                  className="c9"
+                >
+                  <div
+                    className="c10"
+                    disabled={false}
+                  >
+                    <div
+                      className="c11"
+                    >
+                      <input
+                        autoComplete="documento"
+                        className="c12"
+                        data-cy="addressFormDNI"
+                        disabled={false}
+                        name="documentNumber"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        placeholder="Documento"
+                        value=""
+                      />
+                      <label
+                        className="c13"
+                        disabled={false}
                       >
-                        <div
-                          className=""
-                          style={
-                            Object {
-                              "display": "inline-block",
-                            }
-                          }
-                        >
-                          <input
-                            aria-autocomplete="list"
-                            autoCapitalize="none"
-                            autoComplete="off"
-                            autoCorrect="off"
-                            data-cy="addressFormCity"
-                            disabled={false}
-                            id="react-select-7-input"
-                            onBlur={[Function]}
-                            onChange={[Function]}
-                            onFocus={[Function]}
-                            spellCheck="false"
-                            style={
-                              Object {
-                                "background": 0,
-                                "border": 0,
-                                "boxSizing": "content-box",
-                                "color": "inherit",
-                                "fontSize": "inherit",
-                                "label": "input",
-                                "opacity": 1,
-                                "outline": 0,
-                                "padding": 0,
-                                "width": "1px",
-                              }
-                            }
-                            tabIndex="0"
-                            type="text"
-                            value=""
-                          />
+                        *Documento
+                      </label>
+                    </div>
+                  </div>
+                  <div
+                    className="c14"
+                  />
+                </div>
+              </div>
+              <div
+                className="c8"
+              >
+                <div
+                  className="c9"
+                >
+                  <div
+                    className="c10"
+                    disabled={false}
+                  >
+                    <div
+                      className="c11"
+                    >
+                      <input
+                        autoComplete="email"
+                        className="c12"
+                        data-cy="addressFormEmail"
+                        disabled={false}
+                        name="email"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        placeholder="Email"
+                        value=""
+                      />
+                      <label
+                        className="c13"
+                        disabled={false}
+                      >
+                        *Email
+                      </label>
+                    </div>
+                  </div>
+                  <div
+                    className="c14"
+                  />
+                </div>
+                <div
+                  className="c9"
+                >
+                  <div
+                    className="c10"
+                    disabled={false}
+                  >
+                    <div
+                      className="c11"
+                    >
+                      <input
+                        autoComplete="tel"
+                        className="c12"
+                        data-cy="addressFormPhone"
+                        disabled={false}
+                        name="phone"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        placeholder="Teléfono"
+                        value=""
+                      />
+                      <label
+                        className="c13"
+                        disabled={false}
+                      >
+                        Teléfono
+                      </label>
+                    </div>
+                  </div>
+                  <div
+                    className="c14"
+                  />
+                </div>
+              </div>
+              <div
+                className="c8"
+              >
+                <div
+                  className="privacyAndPolicies"
+                >
+                  <div
+                    className="c15"
+                  >
+                    <label
+                      className="c16"
+                      onClick={[Function]}
+                    >
+                      <input
+                        checked={false}
+                        data-cy="addressFormTermsAndConditions"
+                        name="termsAndConditions"
+                        readOnly={true}
+                        tabIndex={-1}
+                        type="checkbox"
+                      />
+                      <div
+                        onKeyDown={[Function]}
+                        tabIndex={0}
+                      >
+                        <span>
                           <div
+                            className="checkout_icon"
+                          />
+                        </span>
+                      </div>
+                    </label>
+                    <label
+                      htmlFor=""
+                    >
+                      *Estoy de acuerdo con las
+                      <a
+                        href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-politicas-privacidad.pdf"
+                      >
+                         
+                        Políticas de privacidad
+                      </a>
+                       
+                      y
+                      <a
+                        href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-terminos-condiciones.pdf"
+                      >
+                         
+                        Términos y condiciones
+                      </a>
+                    </label>
+                  </div>
+                </div>
+                <div
+                  className="additionals"
+                >
+                  <div
+                    className="c15"
+                  >
+                    <label
+                      className="c16"
+                      onClick={[Function]}
+                    >
+                      <input
+                        checked={false}
+                        data-cy="checkoutPaymentPromoCodeCheckbox"
+                        name="dataTreatmentPolicy"
+                        readOnly={true}
+                        tabIndex={-1}
+                        type="checkbox"
+                      />
+                      <div
+                        onKeyDown={[Function]}
+                        tabIndex={0}
+                      >
+                        <span>
+                          <div
+                            className="checkout_icon"
+                          />
+                        </span>
+                      </div>
+                    </label>
+                    <label
+                      htmlFor=""
+                    >
+                      Acepto el tratamiento para
+                       
+                      <a
+                        href="#"
+                      >
+                         Fines adicionales
+                      </a>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className="c4"
+            >
+              <div
+                className="c5"
+              >
+                <span
+                  className="c6"
+                >
+                  2
+                </span>
+                <span
+                  className="c7"
+                >
+                  Dirección
+                </span>
+              </div>
+              <div
+                className="c8"
+              >
+                <div
+                  className="c9"
+                >
+                  <div
+                    className="c10"
+                    disabled={false}
+                  >
+                    <div
+                      className="c11"
+                    >
+                      <input
+                        autoComplete="address-line1"
+                        className="c12"
+                        data-cy="addressFormStreetAddress1"
+                        disabled={false}
+                        name="streetAddress1"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        placeholder="Dirección"
+                        value=""
+                      />
+                      <label
+                        className="c13"
+                        disabled={false}
+                      >
+                        *Dirección
+                      </label>
+                    </div>
+                  </div>
+                  <div
+                    className="c14"
+                  />
+                </div>
+                <div
+                  className="c9"
+                >
+                  <div
+                    className="c10"
+                    disabled={false}
+                  >
+                    <div
+                      className="c11"
+                    >
+                      <input
+                        autoComplete="address-line2"
+                        className="c12"
+                        data-cy="addressFormStreetAddress2"
+                        disabled={false}
+                        name="streetAddress2"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        placeholder="Información adicional"
+                        value=""
+                      />
+                      <label
+                        className="c13"
+                        disabled={false}
+                      >
+                        Información adicional
+                      </label>
+                    </div>
+                  </div>
+                  <div
+                    className="c14"
+                  />
+                </div>
+              </div>
+              <div
+                className="c8"
+              >
+                <div
+                  className="c17"
+                >
+                  <div
+                    className="css-1pcexqc-container"
+                    onKeyDown={[Function]}
+                  >
+                    <div
+                      className="css-d1vkk-control"
+                      onMouseDown={[Function]}
+                      onTouchEnd={[Function]}
+                    >
+                      <div
+                        className="css-tntsk8"
+                      >
+                        <div
+                          className="css-151xaom-placeholder"
+                        >
+                          
+                        </div>
+                        <div
+                          className="css-1g6gooi"
+                        >
+                          <div
+                            className=""
                             style={
                               Object {
-                                "height": 0,
-                                "left": 0,
-                                "overflow": "scroll",
-                                "position": "absolute",
-                                "top": 0,
-                                "visibility": "hidden",
-                                "whiteSpace": "pre",
+                                "display": "inline-block",
                               }
                             }
                           >
-                            
+                            <input
+                              aria-autocomplete="list"
+                              autoCapitalize="none"
+                              autoComplete="off"
+                              autoCorrect="off"
+                              data-cy="addressFormCity"
+                              disabled={false}
+                              id="react-select-7-input"
+                              onBlur={[Function]}
+                              onChange={[Function]}
+                              onFocus={[Function]}
+                              spellCheck="false"
+                              style={
+                                Object {
+                                  "background": 0,
+                                  "border": 0,
+                                  "boxSizing": "content-box",
+                                  "color": "inherit",
+                                  "fontSize": "inherit",
+                                  "label": "input",
+                                  "opacity": 1,
+                                  "outline": 0,
+                                  "padding": 0,
+                                  "width": "1px",
+                                }
+                              }
+                              tabIndex="0"
+                              type="text"
+                              value=""
+                            />
+                            <div
+                              style={
+                                Object {
+                                  "height": 0,
+                                  "left": 0,
+                                  "overflow": "scroll",
+                                  "position": "absolute",
+                                  "top": 0,
+                                  "visibility": "hidden",
+                                  "whiteSpace": "pre",
+                                }
+                              }
+                            >
+                              
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div
-                      className="c19"
-                      rotate="false"
-                    >
-                      <svg
-                        height={10}
-                        viewBox="0 0 32 32"
-                        width={10}
+                      <div
+                        className="c18"
+                        rotate="false"
                       >
-                        <path
-                          d="M16 29.856l-15.999-27.712h31.999l-15.999 27.712z"
-                          fill="inherit"
-                        />
-                      </svg>
+                        <svg
+                          height={10}
+                          viewBox="0 0 32 32"
+                          width={10}
+                        >
+                          <path
+                            d="M16 29.856l-15.999-27.712h31.999l-15.999 27.712z"
+                            fill="inherit"
+                          />
+                        </svg>
+                      </div>
                     </div>
+                    <label
+                      className="c13"
+                      disabled={false}
+                    >
+                      *Distrito
+                    </label>
                   </div>
-                  <label
-                    className="c13"
-                    disabled={false}
-                  >
-                    *Distrito
-                  </label>
+                  <div
+                    className="c19"
+                  />
                 </div>
-                <div
-                  className="c20"
-                />
               </div>
             </div>
           </div>
@@ -800,7 +794,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
     </div>
   </div>
   <div
-    className="c21"
+    className="c20"
   />
 </div>
 `;
@@ -811,7 +805,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   margin: 20px;
 }
 
-.c24 {
+.c23 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -822,7 +816,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   box-sizing: border-box;
 }
 
-.c19 {
+.c18 {
   width: 100%;
   margin-bottom: 1.25rem;
   display: -webkit-box;
@@ -842,7 +836,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   margin-left: -4px;
 }
 
-.c20 {
+.c19 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -859,13 +853,13 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   padding-right: 1rem;
 }
 
-.c20 input[type="checkbox"] {
+.c19 input[type="checkbox"] {
   display: none;
   position: relative;
   right: -999em;
 }
 
-.c20 div {
+.c19 div {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -882,7 +876,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   width: 26px;
 }
 
-.c20 div span {
+.c19 div span {
   width: 20px;
   height: 20px;
   display: inline-block;
@@ -890,29 +884,29 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   border: solid 3px #E4E5ED;
 }
 
-.c20 div span div {
+.c19 div span div {
   display: none;
 }
 
-.c20 div span div svg {
+.c19 div span div svg {
   fill: #fff;
 }
 
-.c20 div:focus {
+.c19 div:focus {
   outline: none;
 }
 
-.c20 .checkout_icon {
+.c19 .checkout_icon {
   color: red;
 }
 
-.c20 input:checked + div span {
+.c19 input:checked + div span {
   background-clip: content-box;
   background-color: #00B0CA;
   border: solid 2px #00B0CA;
 }
 
-.c20 input:checked + div span div {
+.c19 input:checked + div span div {
   display: block;
   position: absolute;
   left: 3px;
@@ -930,12 +924,12 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   margin: 0;
 }
 
-.c21 {
+.c20 {
   padding-top: 1.4rem;
   margin-bottom: 1.875rem;
 }
 
-.c23 {
+.c22 {
   top: 100%;
 }
 
@@ -1018,7 +1012,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   color: #9194A7;
 }
 
-.c22 {
+.c21 {
   fill: #00B0CA;
   position: absolute;
   right: 1rem;
@@ -1099,10 +1093,6 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   width: calc(50% - 1.875rem / 2);
 }
 
-.c18 {
-  width: 100%;
-}
-
 .c4 {
   padding-top: 1rem;
   padding-bottom: 2rem;
@@ -1166,475 +1156,473 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
         <div
           className="c3"
         >
-          <div
-            className="c4"
-          >
+          <div>
             <div
-              className="c5"
-            >
-              <span
-                className="c6"
-              >
-                1
-              </span>
-              <span
-                className="c7"
-              >
-                Cliente
-              </span>
-            </div>
-            <div
-              className="c8"
+              className="c4"
             >
               <div
-                className="c9"
+                className="c5"
               >
-                <div
-                  className="c10"
-                  disabled={false}
+                <span
+                  className="c6"
                 >
-                  <div
-                    className="c11"
-                  >
-                    <input
-                      autoComplete="given-name"
-                      className="c12"
-                      data-cy="addressFormFirstName"
-                      disabled={false}
-                      name="firstName"
-                      onBlur={[Function]}
-                      onChange={[Function]}
-                      onFocus={[Function]}
-                      placeholder="Nombre Completo"
-                      value=""
-                    />
-                    <label
-                      className="c13"
-                      disabled={false}
-                    >
-                      Nombre Completo
-                    </label>
-                  </div>
-                </div>
-                <div
-                  className="c14"
+                  1
+                </span>
+                <span
+                  className="c7"
                 >
-                  <div
-                    className="c15"
-                  >
-                    <p
-                      className="c16"
-                    >
-                      This is error
-                    </p>
-                  </div>
-                </div>
+                  Cliente
+                </span>
               </div>
               <div
-                className="c9"
+                className="c8"
               >
                 <div
-                  className="c17"
-                  disabled={false}
+                  className="c9"
                 >
                   <div
-                    className="c11"
-                  >
-                    <input
-                      autoComplete="documento"
-                      className="c12"
-                      data-cy="addressFormDNI"
-                      disabled={false}
-                      name="documentNumber"
-                      onBlur={[Function]}
-                      onChange={[Function]}
-                      onFocus={[Function]}
-                      placeholder="Documento"
-                      value=""
-                    />
-                    <label
-                      className="c13"
-                      disabled={false}
-                    >
-                      Documento
-                    </label>
-                  </div>
-                </div>
-                <div
-                  className="c14"
-                />
-              </div>
-            </div>
-            <div
-              className="c8"
-            >
-              <div
-                className="c9"
-              >
-                <div
-                  className="c17"
-                  disabled={false}
-                >
-                  <div
-                    className="c11"
-                  >
-                    <input
-                      autoComplete="email"
-                      className="c12"
-                      data-cy="addressFormEmail"
-                      disabled={false}
-                      name="email"
-                      onBlur={[Function]}
-                      onChange={[Function]}
-                      onFocus={[Function]}
-                      placeholder="Email"
-                      value=""
-                    />
-                    <label
-                      className="c13"
-                      disabled={false}
-                    >
-                      *Email
-                    </label>
-                  </div>
-                </div>
-                <div
-                  className="c14"
-                />
-              </div>
-              <div
-                className="c9"
-              >
-                <div
-                  className="c17"
-                  disabled={false}
-                >
-                  <div
-                    className="c11"
-                  >
-                    <input
-                      autoComplete="tel"
-                      className="c12"
-                      data-cy="addressFormPhone"
-                      disabled={false}
-                      name="phone"
-                      onBlur={[Function]}
-                      onChange={[Function]}
-                      onFocus={[Function]}
-                      placeholder="Teléfono"
-                      value=""
-                    />
-                    <label
-                      className="c13"
-                      disabled={false}
-                    >
-                      Teléfono
-                    </label>
-                  </div>
-                </div>
-                <div
-                  className="c14"
-                />
-              </div>
-            </div>
-            <div
-              className="c18"
-            >
-              <div
-                className="privacyAndPolicies"
-              >
-                <div
-                  className="c19"
-                >
-                  <label
-                    className="c20"
-                    onClick={[Function]}
-                  >
-                    <input
-                      checked={false}
-                      data-cy="addressFormTermsAndConditions"
-                      name="termsAndConditions"
-                      readOnly={true}
-                      tabIndex={-1}
-                      type="checkbox"
-                    />
-                    <div
-                      onKeyDown={[Function]}
-                      tabIndex={0}
-                    >
-                      <span>
-                        <div
-                          className="checkout_icon"
-                        />
-                      </span>
-                    </div>
-                  </label>
-                  <label
-                    htmlFor=""
-                  >
-                    *Estoy de acuerdo con las
-                    <a
-                      href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-politicas-privacidad.pdf"
-                    >
-                       
-                      Políticas de privacidad
-                    </a>
-                     
-                    y
-                    <a
-                      href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-terminos-condiciones.pdf"
-                    >
-                       
-                      Términos y condiciones
-                    </a>
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div
-              className="c18"
-            >
-              <div
-                className="additionals"
-              >
-                <div
-                  className="c19"
-                >
-                  <label
-                    className="c20"
-                    onClick={[Function]}
-                  >
-                    <input
-                      checked={false}
-                      data-cy="checkoutPaymentPromoCodeCheckbox"
-                      name="dataTreatmentPolicy"
-                      readOnly={true}
-                      tabIndex={-1}
-                      type="checkbox"
-                    />
-                    <div
-                      onKeyDown={[Function]}
-                      tabIndex={0}
-                    >
-                      <span>
-                        <div
-                          className="checkout_icon"
-                        />
-                      </span>
-                    </div>
-                  </label>
-                  <label
-                    htmlFor=""
-                  >
-                    Acepto el tratamiento para
-                     
-                    <a
-                      href="#"
-                    >
-                       Fines adicionales
-                    </a>
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            className="c4"
-          >
-            <div
-              className="c5"
-            >
-              <span
-                className="c6"
-              >
-                2
-              </span>
-              <span
-                className="c7"
-              >
-                Dirección
-              </span>
-            </div>
-            <div
-              className="c8"
-            >
-              <div
-                className="c9"
-              >
-                <div
-                  className="c17"
-                  disabled={false}
-                >
-                  <div
-                    className="c11"
-                  >
-                    <input
-                      autoComplete="address-line1"
-                      className="c12"
-                      data-cy="addressFormStreetAddress1"
-                      disabled={false}
-                      name="streetAddress1"
-                      onBlur={[Function]}
-                      onChange={[Function]}
-                      onFocus={[Function]}
-                      placeholder="Dirección"
-                      value=""
-                    />
-                    <label
-                      className="c13"
-                      disabled={false}
-                    >
-                      *Dirección
-                    </label>
-                  </div>
-                </div>
-                <div
-                  className="c14"
-                />
-              </div>
-              <div
-                className="c9"
-              >
-                <div
-                  className="c17"
-                  disabled={false}
-                >
-                  <div
-                    className="c11"
-                  >
-                    <input
-                      autoComplete="address-line2"
-                      className="c12"
-                      data-cy="addressFormStreetAddress2"
-                      disabled={false}
-                      name="streetAddress2"
-                      onBlur={[Function]}
-                      onChange={[Function]}
-                      onFocus={[Function]}
-                      placeholder="Información adicional"
-                      value=""
-                    />
-                    <label
-                      className="c13"
-                      disabled={false}
-                    >
-                      Información adicional
-                    </label>
-                  </div>
-                </div>
-                <div
-                  className="c14"
-                />
-              </div>
-            </div>
-            <div
-              className="c8"
-            >
-              <div
-                className="c21"
-              >
-                <div
-                  className="css-1pcexqc-container"
-                  onKeyDown={[Function]}
-                >
-                  <div
-                    className="css-d1vkk-control"
-                    onMouseDown={[Function]}
-                    onTouchEnd={[Function]}
+                    className="c10"
+                    disabled={false}
                   >
                     <div
-                      className="css-tntsk8"
+                      className="c11"
                     >
-                      <div
-                        className="css-151xaom-placeholder"
+                      <input
+                        autoComplete="given-name"
+                        className="c12"
+                        data-cy="addressFormFirstName"
+                        disabled={false}
+                        name="firstName"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        placeholder="Nombre Completo"
+                        value=""
+                      />
+                      <label
+                        className="c13"
+                        disabled={false}
                       >
-                        
-                      </div>
-                      <div
-                        className="css-1g6gooi"
+                        Nombre Completo
+                      </label>
+                    </div>
+                  </div>
+                  <div
+                    className="c14"
+                  >
+                    <div
+                      className="c15"
+                    >
+                      <p
+                        className="c16"
                       >
-                        <div
-                          className=""
-                          style={
-                            Object {
-                              "display": "inline-block",
-                            }
-                          }
-                        >
-                          <input
-                            aria-autocomplete="list"
-                            autoCapitalize="none"
-                            autoComplete="off"
-                            autoCorrect="off"
-                            data-cy="addressFormCity"
-                            disabled={false}
-                            id="react-select-8-input"
-                            onBlur={[Function]}
-                            onChange={[Function]}
-                            onFocus={[Function]}
-                            spellCheck="false"
-                            style={
-                              Object {
-                                "background": 0,
-                                "border": 0,
-                                "boxSizing": "content-box",
-                                "color": "inherit",
-                                "fontSize": "inherit",
-                                "label": "input",
-                                "opacity": 1,
-                                "outline": 0,
-                                "padding": 0,
-                                "width": "1px",
-                              }
-                            }
-                            tabIndex="0"
-                            type="text"
-                            value=""
-                          />
+                        This is error
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="c9"
+                >
+                  <div
+                    className="c17"
+                    disabled={false}
+                  >
+                    <div
+                      className="c11"
+                    >
+                      <input
+                        autoComplete="documento"
+                        className="c12"
+                        data-cy="addressFormDNI"
+                        disabled={false}
+                        name="documentNumber"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        placeholder="Documento"
+                        value=""
+                      />
+                      <label
+                        className="c13"
+                        disabled={false}
+                      >
+                        *Documento
+                      </label>
+                    </div>
+                  </div>
+                  <div
+                    className="c14"
+                  />
+                </div>
+              </div>
+              <div
+                className="c8"
+              >
+                <div
+                  className="c9"
+                >
+                  <div
+                    className="c17"
+                    disabled={false}
+                  >
+                    <div
+                      className="c11"
+                    >
+                      <input
+                        autoComplete="email"
+                        className="c12"
+                        data-cy="addressFormEmail"
+                        disabled={false}
+                        name="email"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        placeholder="Email"
+                        value=""
+                      />
+                      <label
+                        className="c13"
+                        disabled={false}
+                      >
+                        *Email
+                      </label>
+                    </div>
+                  </div>
+                  <div
+                    className="c14"
+                  />
+                </div>
+                <div
+                  className="c9"
+                >
+                  <div
+                    className="c17"
+                    disabled={false}
+                  >
+                    <div
+                      className="c11"
+                    >
+                      <input
+                        autoComplete="tel"
+                        className="c12"
+                        data-cy="addressFormPhone"
+                        disabled={false}
+                        name="phone"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        placeholder="Teléfono"
+                        value=""
+                      />
+                      <label
+                        className="c13"
+                        disabled={false}
+                      >
+                        Teléfono
+                      </label>
+                    </div>
+                  </div>
+                  <div
+                    className="c14"
+                  />
+                </div>
+              </div>
+              <div
+                className="c8"
+              >
+                <div
+                  className="privacyAndPolicies"
+                >
+                  <div
+                    className="c18"
+                  >
+                    <label
+                      className="c19"
+                      onClick={[Function]}
+                    >
+                      <input
+                        checked={false}
+                        data-cy="addressFormTermsAndConditions"
+                        name="termsAndConditions"
+                        readOnly={true}
+                        tabIndex={-1}
+                        type="checkbox"
+                      />
+                      <div
+                        onKeyDown={[Function]}
+                        tabIndex={0}
+                      >
+                        <span>
                           <div
+                            className="checkout_icon"
+                          />
+                        </span>
+                      </div>
+                    </label>
+                    <label
+                      htmlFor=""
+                    >
+                      *Estoy de acuerdo con las
+                      <a
+                        href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-politicas-privacidad.pdf"
+                      >
+                         
+                        Políticas de privacidad
+                      </a>
+                       
+                      y
+                      <a
+                        href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-terminos-condiciones.pdf"
+                      >
+                         
+                        Términos y condiciones
+                      </a>
+                    </label>
+                  </div>
+                </div>
+                <div
+                  className="additionals"
+                >
+                  <div
+                    className="c18"
+                  >
+                    <label
+                      className="c19"
+                      onClick={[Function]}
+                    >
+                      <input
+                        checked={false}
+                        data-cy="checkoutPaymentPromoCodeCheckbox"
+                        name="dataTreatmentPolicy"
+                        readOnly={true}
+                        tabIndex={-1}
+                        type="checkbox"
+                      />
+                      <div
+                        onKeyDown={[Function]}
+                        tabIndex={0}
+                      >
+                        <span>
+                          <div
+                            className="checkout_icon"
+                          />
+                        </span>
+                      </div>
+                    </label>
+                    <label
+                      htmlFor=""
+                    >
+                      Acepto el tratamiento para
+                       
+                      <a
+                        href="#"
+                      >
+                         Fines adicionales
+                      </a>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className="c4"
+            >
+              <div
+                className="c5"
+              >
+                <span
+                  className="c6"
+                >
+                  2
+                </span>
+                <span
+                  className="c7"
+                >
+                  Dirección
+                </span>
+              </div>
+              <div
+                className="c8"
+              >
+                <div
+                  className="c9"
+                >
+                  <div
+                    className="c17"
+                    disabled={false}
+                  >
+                    <div
+                      className="c11"
+                    >
+                      <input
+                        autoComplete="address-line1"
+                        className="c12"
+                        data-cy="addressFormStreetAddress1"
+                        disabled={false}
+                        name="streetAddress1"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        placeholder="Dirección"
+                        value=""
+                      />
+                      <label
+                        className="c13"
+                        disabled={false}
+                      >
+                        *Dirección
+                      </label>
+                    </div>
+                  </div>
+                  <div
+                    className="c14"
+                  />
+                </div>
+                <div
+                  className="c9"
+                >
+                  <div
+                    className="c17"
+                    disabled={false}
+                  >
+                    <div
+                      className="c11"
+                    >
+                      <input
+                        autoComplete="address-line2"
+                        className="c12"
+                        data-cy="addressFormStreetAddress2"
+                        disabled={false}
+                        name="streetAddress2"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        placeholder="Información adicional"
+                        value=""
+                      />
+                      <label
+                        className="c13"
+                        disabled={false}
+                      >
+                        Información adicional
+                      </label>
+                    </div>
+                  </div>
+                  <div
+                    className="c14"
+                  />
+                </div>
+              </div>
+              <div
+                className="c8"
+              >
+                <div
+                  className="c20"
+                >
+                  <div
+                    className="css-1pcexqc-container"
+                    onKeyDown={[Function]}
+                  >
+                    <div
+                      className="css-d1vkk-control"
+                      onMouseDown={[Function]}
+                      onTouchEnd={[Function]}
+                    >
+                      <div
+                        className="css-tntsk8"
+                      >
+                        <div
+                          className="css-151xaom-placeholder"
+                        >
+                          
+                        </div>
+                        <div
+                          className="css-1g6gooi"
+                        >
+                          <div
+                            className=""
                             style={
                               Object {
-                                "height": 0,
-                                "left": 0,
-                                "overflow": "scroll",
-                                "position": "absolute",
-                                "top": 0,
-                                "visibility": "hidden",
-                                "whiteSpace": "pre",
+                                "display": "inline-block",
                               }
                             }
                           >
-                            
+                            <input
+                              aria-autocomplete="list"
+                              autoCapitalize="none"
+                              autoComplete="off"
+                              autoCorrect="off"
+                              data-cy="addressFormCity"
+                              disabled={false}
+                              id="react-select-8-input"
+                              onBlur={[Function]}
+                              onChange={[Function]}
+                              onFocus={[Function]}
+                              spellCheck="false"
+                              style={
+                                Object {
+                                  "background": 0,
+                                  "border": 0,
+                                  "boxSizing": "content-box",
+                                  "color": "inherit",
+                                  "fontSize": "inherit",
+                                  "label": "input",
+                                  "opacity": 1,
+                                  "outline": 0,
+                                  "padding": 0,
+                                  "width": "1px",
+                                }
+                              }
+                              tabIndex="0"
+                              type="text"
+                              value=""
+                            />
+                            <div
+                              style={
+                                Object {
+                                  "height": 0,
+                                  "left": 0,
+                                  "overflow": "scroll",
+                                  "position": "absolute",
+                                  "top": 0,
+                                  "visibility": "hidden",
+                                  "whiteSpace": "pre",
+                                }
+                              }
+                            >
+                              
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div
-                      className="c22"
-                      rotate="false"
-                    >
-                      <svg
-                        height={10}
-                        viewBox="0 0 32 32"
-                        width={10}
+                      <div
+                        className="c21"
+                        rotate="false"
                       >
-                        <path
-                          d="M16 29.856l-15.999-27.712h31.999l-15.999 27.712z"
-                          fill="inherit"
-                        />
-                      </svg>
+                        <svg
+                          height={10}
+                          viewBox="0 0 32 32"
+                          width={10}
+                        >
+                          <path
+                            d="M16 29.856l-15.999-27.712h31.999l-15.999 27.712z"
+                            fill="inherit"
+                          />
+                        </svg>
+                      </div>
                     </div>
+                    <label
+                      className="c13"
+                      disabled={false}
+                    >
+                      *Distrito
+                    </label>
                   </div>
-                  <label
-                    className="c13"
-                    disabled={false}
-                  >
-                    *Distrito
-                  </label>
+                  <div
+                    className="c22"
+                  />
                 </div>
-                <div
-                  className="c23"
-                />
               </div>
             </div>
           </div>
@@ -1643,7 +1631,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
     </div>
   </div>
   <div
-    className="c24"
+    className="c23"
   />
 </div>
 `;
@@ -1654,7 +1642,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   margin: 20px;
 }
 
-.c21 {
+.c20 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1665,7 +1653,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   box-sizing: border-box;
 }
 
-.c16 {
+.c15 {
   width: 100%;
   margin-bottom: 1.25rem;
   display: -webkit-box;
@@ -1685,7 +1673,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   margin-left: -4px;
 }
 
-.c17 {
+.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1702,13 +1690,13 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   padding-right: 1rem;
 }
 
-.c17 input[type="checkbox"] {
+.c16 input[type="checkbox"] {
   display: none;
   position: relative;
   right: -999em;
 }
 
-.c17 div {
+.c16 div {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1725,7 +1713,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   width: 26px;
 }
 
-.c17 div span {
+.c16 div span {
   width: 20px;
   height: 20px;
   display: inline-block;
@@ -1733,29 +1721,29 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   border: solid 3px #E4E5ED;
 }
 
-.c17 div span div {
+.c16 div span div {
   display: none;
 }
 
-.c17 div span div svg {
+.c16 div span div svg {
   fill: #fff;
 }
 
-.c17 div:focus {
+.c16 div:focus {
   outline: none;
 }
 
-.c17 .checkout_icon {
+.c16 .checkout_icon {
   color: red;
 }
 
-.c17 input:checked + div span {
+.c16 input:checked + div span {
   background-clip: content-box;
   background-color: #00B0CA;
   border: solid 2px #00B0CA;
 }
 
-.c17 input:checked + div span div {
+.c16 input:checked + div span div {
   display: block;
   position: absolute;
   left: 3px;
@@ -1763,12 +1751,12 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   top: 2.5px;
 }
 
-.c18 {
+.c17 {
   padding-top: 1.4rem;
   margin-bottom: 1.875rem;
 }
 
-.c20 {
+.c19 {
   top: 100%;
 }
 
@@ -1833,7 +1821,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   color: #9194A7;
 }
 
-.c19 {
+.c18 {
   fill: #00B0CA;
   position: absolute;
   right: 1rem;
@@ -1914,10 +1902,6 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   width: calc(50% - 1.875rem / 2);
 }
 
-.c15 {
-  width: 100%;
-}
-
 .c4 {
   padding-top: 1rem;
   padding-bottom: 2rem;
@@ -1981,465 +1965,463 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
         <div
           className="c3"
         >
-          <div
-            className="c4"
-          >
+          <div>
             <div
-              className="c5"
-            >
-              <span
-                className="c6"
-              >
-                1
-              </span>
-              <span
-                className="c7"
-              >
-                Cliente
-              </span>
-            </div>
-            <div
-              className="c8"
+              className="c4"
             >
               <div
-                className="c9"
+                className="c5"
+              >
+                <span
+                  className="c6"
+                >
+                  1
+                </span>
+                <span
+                  className="c7"
+                >
+                  Cliente
+                </span>
+              </div>
+              <div
+                className="c8"
               >
                 <div
-                  className="c10"
-                  disabled={false}
+                  className="c9"
                 >
                   <div
-                    className="c11"
-                  >
-                    <input
-                      autoComplete="given-name"
-                      className="c12"
-                      data-cy="addressFormFirstName"
-                      disabled={false}
-                      name="firstName"
-                      onBlur={[Function]}
-                      onChange={[Function]}
-                      onFocus={[Function]}
-                      placeholder="Nombre Completo"
-                      value="John"
-                    />
-                    <label
-                      className="c13"
-                      disabled={false}
-                    >
-                      Nombre Completo
-                    </label>
-                  </div>
-                </div>
-                <div
-                  className="c14"
-                />
-              </div>
-              <div
-                className="c9"
-              >
-                <div
-                  className="c10"
-                  disabled={false}
-                >
-                  <div
-                    className="c11"
-                  >
-                    <input
-                      autoComplete="documento"
-                      className="c12"
-                      data-cy="addressFormDNI"
-                      disabled={false}
-                      name="documentNumber"
-                      onBlur={[Function]}
-                      onChange={[Function]}
-                      onFocus={[Function]}
-                      placeholder="Documento"
-                      value=""
-                    />
-                    <label
-                      className="c13"
-                      disabled={false}
-                    >
-                      Documento
-                    </label>
-                  </div>
-                </div>
-                <div
-                  className="c14"
-                />
-              </div>
-            </div>
-            <div
-              className="c8"
-            >
-              <div
-                className="c9"
-              >
-                <div
-                  className="c10"
-                  disabled={false}
-                >
-                  <div
-                    className="c11"
-                  >
-                    <input
-                      autoComplete="email"
-                      className="c12"
-                      data-cy="addressFormEmail"
-                      disabled={false}
-                      name="email"
-                      onBlur={[Function]}
-                      onChange={[Function]}
-                      onFocus={[Function]}
-                      placeholder="Email"
-                      value="abc@xyz.com"
-                    />
-                    <label
-                      className="c13"
-                      disabled={false}
-                    >
-                      *Email
-                    </label>
-                  </div>
-                </div>
-                <div
-                  className="c14"
-                />
-              </div>
-              <div
-                className="c9"
-              >
-                <div
-                  className="c10"
-                  disabled={false}
-                >
-                  <div
-                    className="c11"
-                  >
-                    <input
-                      autoComplete="tel"
-                      className="c12"
-                      data-cy="addressFormPhone"
-                      disabled={false}
-                      name="phone"
-                      onBlur={[Function]}
-                      onChange={[Function]}
-                      onFocus={[Function]}
-                      placeholder="Teléfono"
-                      value="555-55555"
-                    />
-                    <label
-                      className="c13"
-                      disabled={false}
-                    >
-                      Teléfono
-                    </label>
-                  </div>
-                </div>
-                <div
-                  className="c14"
-                />
-              </div>
-            </div>
-            <div
-              className="c15"
-            >
-              <div
-                className="privacyAndPolicies"
-              >
-                <div
-                  className="c16"
-                >
-                  <label
-                    className="c17"
-                    onClick={[Function]}
-                  >
-                    <input
-                      checked={false}
-                      data-cy="addressFormTermsAndConditions"
-                      name="termsAndConditions"
-                      readOnly={true}
-                      tabIndex={-1}
-                      type="checkbox"
-                    />
-                    <div
-                      onKeyDown={[Function]}
-                      tabIndex={0}
-                    >
-                      <span>
-                        <div
-                          className="checkout_icon"
-                        />
-                      </span>
-                    </div>
-                  </label>
-                  <label
-                    htmlFor=""
-                  >
-                    *Estoy de acuerdo con las
-                    <a
-                      href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-politicas-privacidad.pdf"
-                    >
-                       
-                      Políticas de privacidad
-                    </a>
-                     
-                    y
-                    <a
-                      href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-terminos-condiciones.pdf"
-                    >
-                       
-                      Términos y condiciones
-                    </a>
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div
-              className="c15"
-            >
-              <div
-                className="additionals"
-              >
-                <div
-                  className="c16"
-                >
-                  <label
-                    className="c17"
-                    onClick={[Function]}
-                  >
-                    <input
-                      checked={false}
-                      data-cy="checkoutPaymentPromoCodeCheckbox"
-                      name="dataTreatmentPolicy"
-                      readOnly={true}
-                      tabIndex={-1}
-                      type="checkbox"
-                    />
-                    <div
-                      onKeyDown={[Function]}
-                      tabIndex={0}
-                    >
-                      <span>
-                        <div
-                          className="checkout_icon"
-                        />
-                      </span>
-                    </div>
-                  </label>
-                  <label
-                    htmlFor=""
-                  >
-                    Acepto el tratamiento para
-                     
-                    <a
-                      href="#"
-                    >
-                       Fines adicionales
-                    </a>
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            className="c4"
-          >
-            <div
-              className="c5"
-            >
-              <span
-                className="c6"
-              >
-                2
-              </span>
-              <span
-                className="c7"
-              >
-                Dirección
-              </span>
-            </div>
-            <div
-              className="c8"
-            >
-              <div
-                className="c9"
-              >
-                <div
-                  className="c10"
-                  disabled={false}
-                >
-                  <div
-                    className="c11"
-                  >
-                    <input
-                      autoComplete="address-line1"
-                      className="c12"
-                      data-cy="addressFormStreetAddress1"
-                      disabled={false}
-                      name="streetAddress1"
-                      onBlur={[Function]}
-                      onChange={[Function]}
-                      onFocus={[Function]}
-                      placeholder="Dirección"
-                      value="Street line 1"
-                    />
-                    <label
-                      className="c13"
-                      disabled={false}
-                    >
-                      *Dirección
-                    </label>
-                  </div>
-                </div>
-                <div
-                  className="c14"
-                />
-              </div>
-              <div
-                className="c9"
-              >
-                <div
-                  className="c10"
-                  disabled={false}
-                >
-                  <div
-                    className="c11"
-                  >
-                    <input
-                      autoComplete="address-line2"
-                      className="c12"
-                      data-cy="addressFormStreetAddress2"
-                      disabled={false}
-                      name="streetAddress2"
-                      onBlur={[Function]}
-                      onChange={[Function]}
-                      onFocus={[Function]}
-                      placeholder="Información adicional"
-                      value="Street line 2"
-                    />
-                    <label
-                      className="c13"
-                      disabled={false}
-                    >
-                      Información adicional
-                    </label>
-                  </div>
-                </div>
-                <div
-                  className="c14"
-                />
-              </div>
-            </div>
-            <div
-              className="c8"
-            >
-              <div
-                className="c18"
-              >
-                <div
-                  className="css-1pcexqc-container"
-                  onKeyDown={[Function]}
-                >
-                  <div
-                    className="css-d1vkk-control"
-                    onMouseDown={[Function]}
-                    onTouchEnd={[Function]}
+                    className="c10"
+                    disabled={false}
                   >
                     <div
-                      className="css-tntsk8"
+                      className="c11"
                     >
-                      <div
-                        className="css-151xaom-placeholder"
+                      <input
+                        autoComplete="given-name"
+                        className="c12"
+                        data-cy="addressFormFirstName"
+                        disabled={false}
+                        name="firstName"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        placeholder="Nombre Completo"
+                        value="John"
+                      />
+                      <label
+                        className="c13"
+                        disabled={false}
                       >
-                        
-                      </div>
-                      <div
-                        className="css-1g6gooi"
+                        Nombre Completo
+                      </label>
+                    </div>
+                  </div>
+                  <div
+                    className="c14"
+                  />
+                </div>
+                <div
+                  className="c9"
+                >
+                  <div
+                    className="c10"
+                    disabled={false}
+                  >
+                    <div
+                      className="c11"
+                    >
+                      <input
+                        autoComplete="documento"
+                        className="c12"
+                        data-cy="addressFormDNI"
+                        disabled={false}
+                        name="documentNumber"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        placeholder="Documento"
+                        value=""
+                      />
+                      <label
+                        className="c13"
+                        disabled={false}
                       >
-                        <div
-                          className=""
-                          style={
-                            Object {
-                              "display": "inline-block",
-                            }
-                          }
-                        >
-                          <input
-                            aria-autocomplete="list"
-                            autoCapitalize="none"
-                            autoComplete="off"
-                            autoCorrect="off"
-                            data-cy="addressFormCity"
-                            disabled={false}
-                            id="react-select-9-input"
-                            onBlur={[Function]}
-                            onChange={[Function]}
-                            onFocus={[Function]}
-                            spellCheck="false"
-                            style={
-                              Object {
-                                "background": 0,
-                                "border": 0,
-                                "boxSizing": "content-box",
-                                "color": "inherit",
-                                "fontSize": "inherit",
-                                "label": "input",
-                                "opacity": 1,
-                                "outline": 0,
-                                "padding": 0,
-                                "width": "1px",
-                              }
-                            }
-                            tabIndex="0"
-                            type="text"
-                            value=""
-                          />
+                        *Documento
+                      </label>
+                    </div>
+                  </div>
+                  <div
+                    className="c14"
+                  />
+                </div>
+              </div>
+              <div
+                className="c8"
+              >
+                <div
+                  className="c9"
+                >
+                  <div
+                    className="c10"
+                    disabled={false}
+                  >
+                    <div
+                      className="c11"
+                    >
+                      <input
+                        autoComplete="email"
+                        className="c12"
+                        data-cy="addressFormEmail"
+                        disabled={false}
+                        name="email"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        placeholder="Email"
+                        value="abc@xyz.com"
+                      />
+                      <label
+                        className="c13"
+                        disabled={false}
+                      >
+                        *Email
+                      </label>
+                    </div>
+                  </div>
+                  <div
+                    className="c14"
+                  />
+                </div>
+                <div
+                  className="c9"
+                >
+                  <div
+                    className="c10"
+                    disabled={false}
+                  >
+                    <div
+                      className="c11"
+                    >
+                      <input
+                        autoComplete="tel"
+                        className="c12"
+                        data-cy="addressFormPhone"
+                        disabled={false}
+                        name="phone"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        placeholder="Teléfono"
+                        value="555-55555"
+                      />
+                      <label
+                        className="c13"
+                        disabled={false}
+                      >
+                        Teléfono
+                      </label>
+                    </div>
+                  </div>
+                  <div
+                    className="c14"
+                  />
+                </div>
+              </div>
+              <div
+                className="c8"
+              >
+                <div
+                  className="privacyAndPolicies"
+                >
+                  <div
+                    className="c15"
+                  >
+                    <label
+                      className="c16"
+                      onClick={[Function]}
+                    >
+                      <input
+                        checked={false}
+                        data-cy="addressFormTermsAndConditions"
+                        name="termsAndConditions"
+                        readOnly={true}
+                        tabIndex={-1}
+                        type="checkbox"
+                      />
+                      <div
+                        onKeyDown={[Function]}
+                        tabIndex={0}
+                      >
+                        <span>
                           <div
+                            className="checkout_icon"
+                          />
+                        </span>
+                      </div>
+                    </label>
+                    <label
+                      htmlFor=""
+                    >
+                      *Estoy de acuerdo con las
+                      <a
+                        href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-politicas-privacidad.pdf"
+                      >
+                         
+                        Políticas de privacidad
+                      </a>
+                       
+                      y
+                      <a
+                        href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-terminos-condiciones.pdf"
+                      >
+                         
+                        Términos y condiciones
+                      </a>
+                    </label>
+                  </div>
+                </div>
+                <div
+                  className="additionals"
+                >
+                  <div
+                    className="c15"
+                  >
+                    <label
+                      className="c16"
+                      onClick={[Function]}
+                    >
+                      <input
+                        checked={false}
+                        data-cy="checkoutPaymentPromoCodeCheckbox"
+                        name="dataTreatmentPolicy"
+                        readOnly={true}
+                        tabIndex={-1}
+                        type="checkbox"
+                      />
+                      <div
+                        onKeyDown={[Function]}
+                        tabIndex={0}
+                      >
+                        <span>
+                          <div
+                            className="checkout_icon"
+                          />
+                        </span>
+                      </div>
+                    </label>
+                    <label
+                      htmlFor=""
+                    >
+                      Acepto el tratamiento para
+                       
+                      <a
+                        href="#"
+                      >
+                         Fines adicionales
+                      </a>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className="c4"
+            >
+              <div
+                className="c5"
+              >
+                <span
+                  className="c6"
+                >
+                  2
+                </span>
+                <span
+                  className="c7"
+                >
+                  Dirección
+                </span>
+              </div>
+              <div
+                className="c8"
+              >
+                <div
+                  className="c9"
+                >
+                  <div
+                    className="c10"
+                    disabled={false}
+                  >
+                    <div
+                      className="c11"
+                    >
+                      <input
+                        autoComplete="address-line1"
+                        className="c12"
+                        data-cy="addressFormStreetAddress1"
+                        disabled={false}
+                        name="streetAddress1"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        placeholder="Dirección"
+                        value="Street line 1"
+                      />
+                      <label
+                        className="c13"
+                        disabled={false}
+                      >
+                        *Dirección
+                      </label>
+                    </div>
+                  </div>
+                  <div
+                    className="c14"
+                  />
+                </div>
+                <div
+                  className="c9"
+                >
+                  <div
+                    className="c10"
+                    disabled={false}
+                  >
+                    <div
+                      className="c11"
+                    >
+                      <input
+                        autoComplete="address-line2"
+                        className="c12"
+                        data-cy="addressFormStreetAddress2"
+                        disabled={false}
+                        name="streetAddress2"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        placeholder="Información adicional"
+                        value="Street line 2"
+                      />
+                      <label
+                        className="c13"
+                        disabled={false}
+                      >
+                        Información adicional
+                      </label>
+                    </div>
+                  </div>
+                  <div
+                    className="c14"
+                  />
+                </div>
+              </div>
+              <div
+                className="c8"
+              >
+                <div
+                  className="c17"
+                >
+                  <div
+                    className="css-1pcexqc-container"
+                    onKeyDown={[Function]}
+                  >
+                    <div
+                      className="css-d1vkk-control"
+                      onMouseDown={[Function]}
+                      onTouchEnd={[Function]}
+                    >
+                      <div
+                        className="css-tntsk8"
+                      >
+                        <div
+                          className="css-151xaom-placeholder"
+                        >
+                          
+                        </div>
+                        <div
+                          className="css-1g6gooi"
+                        >
+                          <div
+                            className=""
                             style={
                               Object {
-                                "height": 0,
-                                "left": 0,
-                                "overflow": "scroll",
-                                "position": "absolute",
-                                "top": 0,
-                                "visibility": "hidden",
-                                "whiteSpace": "pre",
+                                "display": "inline-block",
                               }
                             }
                           >
-                            
+                            <input
+                              aria-autocomplete="list"
+                              autoCapitalize="none"
+                              autoComplete="off"
+                              autoCorrect="off"
+                              data-cy="addressFormCity"
+                              disabled={false}
+                              id="react-select-9-input"
+                              onBlur={[Function]}
+                              onChange={[Function]}
+                              onFocus={[Function]}
+                              spellCheck="false"
+                              style={
+                                Object {
+                                  "background": 0,
+                                  "border": 0,
+                                  "boxSizing": "content-box",
+                                  "color": "inherit",
+                                  "fontSize": "inherit",
+                                  "label": "input",
+                                  "opacity": 1,
+                                  "outline": 0,
+                                  "padding": 0,
+                                  "width": "1px",
+                                }
+                              }
+                              tabIndex="0"
+                              type="text"
+                              value=""
+                            />
+                            <div
+                              style={
+                                Object {
+                                  "height": 0,
+                                  "left": 0,
+                                  "overflow": "scroll",
+                                  "position": "absolute",
+                                  "top": 0,
+                                  "visibility": "hidden",
+                                  "whiteSpace": "pre",
+                                }
+                              }
+                            >
+                              
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div
-                      className="c19"
-                      rotate="false"
-                    >
-                      <svg
-                        height={10}
-                        viewBox="0 0 32 32"
-                        width={10}
+                      <div
+                        className="c18"
+                        rotate="false"
                       >
-                        <path
-                          d="M16 29.856l-15.999-27.712h31.999l-15.999 27.712z"
-                          fill="inherit"
-                        />
-                      </svg>
+                        <svg
+                          height={10}
+                          viewBox="0 0 32 32"
+                          width={10}
+                        >
+                          <path
+                            d="M16 29.856l-15.999-27.712h31.999l-15.999 27.712z"
+                            fill="inherit"
+                          />
+                        </svg>
+                      </div>
                     </div>
+                    <label
+                      className="c13"
+                      disabled={false}
+                    >
+                      *Distrito
+                    </label>
                   </div>
-                  <label
-                    className="c13"
-                    disabled={false}
-                  >
-                    *Distrito
-                  </label>
+                  <div
+                    className="c19"
+                  />
                 </div>
-                <div
-                  className="c20"
-                />
               </div>
             </div>
           </div>
@@ -2448,7 +2430,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
     </div>
   </div>
   <div
-    className="c21"
+    className="c20"
   />
 </div>
 `;

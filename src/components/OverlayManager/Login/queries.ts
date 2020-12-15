@@ -11,9 +11,23 @@ const accountRegisterMutation = gql`
     $email: String!
     $password: String!
     $redirectUrl: String!
+    $firstName: String
+    $lastName: String
+    $termsAndConditions: Boolean
+    $dataTreatmentPolicy: Boolean
+    $documentNumber: String
   ) {
     accountRegister(
-      input: { email: $email, password: $password, redirectUrl: $redirectUrl }
+      input: {
+        password: $password
+        email: $email
+        redirectUrl: $redirectUrl
+        firstName: $firstName
+        lastName: $lastName
+        termsAndConditions: $termsAndConditions
+        dataTreatmentPolicy: $dataTreatmentPolicy
+        documentNumber: $documentNumber
+      }
     ) {
       errors {
         field

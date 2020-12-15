@@ -40,16 +40,16 @@ interface IRegisterForm {
 const RegisterForm: React.FC<IRegisterForm> = ({ hide, onSwitchSection }) => {
   const alert = useAlert();
 
-  const [privacyAndPolicies, setPrivacyAndPolicies] = useState(false);
+  const [termsAndConditions, setTermsAndConditions] = useState(false);
 
-  const handlePrivacyAndPolicies = () => {
-    setPrivacyAndPolicies(!privacyAndPolicies);
+  const handleTermsAndConditions = () => {
+    setTermsAndConditions(!termsAndConditions);
   };
 
-  const [additionals, setAdditionals] = useState(false);
+  const [dataTreatmentPolicy, setDataTreatmentPolicy] = useState(false);
 
-  const handleAdditionals = () => {
-    setAdditionals(!additionals);
+  const handleDataTreatmentPolicy = () => {
+    setDataTreatmentPolicy(!dataTreatmentPolicy);
   };
 
   return (
@@ -60,10 +60,27 @@ const RegisterForm: React.FC<IRegisterForm> = ({ hide, onSwitchSection }) => {
         return (
           <Form
             errors={maybe(() => data.accountRegister.errors, [])}
-            onSubmit={(event, { email, password }) => {
+            onSubmit={(
+              event,
+              { email, password, documentNumber, firstName, lastName }
+            ) => {
               event.preventDefault();
+              if (!termsAndConditions) {
+                return false;
+              }
               const redirectUrl = `${window.location.origin}${accountConfirmUrl}`;
-              registerCustomer({ variables: { email, password, redirectUrl } });
+              registerCustomer({
+                variables: {
+                  dataTreatmentPolicy,
+                  documentNumber,
+                  email,
+                  firstName,
+                  lastName,
+                  password,
+                  redirectUrl,
+                  termsAndConditions,
+                },
+              });
             }}
           >
             <div className="login__content__welcome">
@@ -80,40 +97,48 @@ const RegisterForm: React.FC<IRegisterForm> = ({ hide, onSwitchSection }) => {
             <TextField
               name="firstName"
               autoComplete="given-name"
-              label="Nombre"
+              label="*Nombre"
               type="text"
               required
             />
             <TextField
               name="lastName"
               autoComplete="family-name"
-              label="Apellidos"
+              label="*Apellido"
               type="text"
+              required
+            />
+            <TextField
+              name="documentNumber"
+              autoComplete="dni"
+              label="*Documento"
+              type="text"
+              maxLength={20}
               required
             />
             <TextField
               name="email"
               autoComplete="email"
-              label="Correo"
+              label="*Correo"
               type="email"
               required
             />
             <TextField
               name="password"
               autoComplete="password"
-              label="Contraseña"
+              label="*Contraseña"
               type="password"
               required
             />
             <div className="login__privacy__policies">
               <Checkbox
                 data-cy="checkoutPaymentPromoCodeCheckbox"
-                name="payment-promo-code"
-                checked={privacyAndPolicies}
-                onChange={handlePrivacyAndPolicies}
+                name="termsAndConditions"
+                checked={termsAndConditions}
+                onChange={handleTermsAndConditions}
               >
                 <label htmlFor="">
-                  Estoy de acuerdo con las
+                  * Estoy de acuerdo con las
                   <a href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-politicas-privacidad.pdf">
                     {" "}
                     Políticas de privacidad
@@ -129,9 +154,9 @@ const RegisterForm: React.FC<IRegisterForm> = ({ hide, onSwitchSection }) => {
             <div className="login__additionals">
               <Checkbox
                 data-cy="checkoutPaymentPromoCodeCheckbox"
-                name="payment-promo-code"
-                checked={additionals}
-                onChange={handleAdditionals}
+                name="dataTreatmentPolicy"
+                checked={dataTreatmentPolicy}
+                onChange={handleDataTreatmentPolicy}
               >
                 <label htmlFor="">
                   Acepto el tratamiento para <a href="#"> Fines adicionales</a>{" "}
@@ -148,11 +173,6 @@ const RegisterForm: React.FC<IRegisterForm> = ({ hide, onSwitchSection }) => {
               <p>¿Ya tienes cuenta?</p>
               <button onClick={onSwitchSection}>Ingresar</button>
             </div>
-            <p className="login-form__terms-conditions">
-              Al crear la cuenta estas aceptando nuestras{" "}
-              <a href="">Políticas de privacidad</a> y{" "}
-              <a href="">Términos y condiciones</a>
-            </p>
           </Form>
         );
       }}

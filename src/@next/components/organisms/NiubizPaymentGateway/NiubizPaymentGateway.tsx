@@ -174,7 +174,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
           sessionkey: key,
         };
 
-        console.table(configuration);
+        // console.table(configuration);
 
         // @ts-ignore
         window?.payform.setConfiguration(configuration);
@@ -316,7 +316,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
             const bin = "bin";
             const cardData: ICardData = {
               firstDigits: result[bin],
-            }
+            };
             processPayment(transactionToken, cardData);
           } else {
             const niubizPayloadErrors = [

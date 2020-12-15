@@ -141,6 +141,9 @@ export interface UserDetails_me {
   isStaff: boolean;
   defaultShippingAddress: UserDetails_me_defaultShippingAddress | null;
   defaultBillingAddress: UserDetails_me_defaultBillingAddress | null;
+  documentNumber: string;
+  termsAndConditions: boolean;
+  dataTreatmentPolicy: boolean;
   /**
    * List of all user's addresses.
    */

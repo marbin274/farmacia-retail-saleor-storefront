@@ -10,6 +10,9 @@ export const userFragment = gql`
     firstName
     lastName
     isStaff
+    termsAndConditions
+    dataTreatmentPolicy
+    documentNumber
     defaultShippingAddress {
       ...Address
     }

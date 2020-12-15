@@ -15,11 +15,10 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
   errors,
   handleSubmit,
   values,
-  user,
   citiesOptions,
   setFieldValue,
-  includeEmail = false,
   onSelect,
+  comeFromModal,
 }) => {
   const [privacyAndPolicies, setPrivacyAndPolicies] = useState(
     values && values?.termsAndConditions ? values?.termsAndConditions : false
@@ -54,13 +53,13 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
 
   const selectCity = (value: any) => {
     const _values: IAddressWithEmail | undefined = values;
-    if(_values){
+    if (_values) {
       _values.city = value;
       _values.country = {
         code: "PE",
         country: "Peru",
       };
-      
+
       // TODO: Uncomment as soon as we implement the documentNumber as required element
       // let documentNumber: string = "";
       // if (_values.documentNumber) {
@@ -71,8 +70,13 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
       if (_values.streetAddress1) {
         streetAddress = _values.streetAddress1.trim();
       }
-
-      if (onSelect && _values.email && privacyAndPolicies && streetAddress.length > 0) {
+      if (
+        onSelect &&
+        _values.email &&
+        privacyAndPolicies &&
+        _values.documentNumber &&
+        streetAddress.length > 0
+      ) {
         // if (onSelect && documentNumber.length > 0 && _values.email && privacyAndPolicies && streetAddress.length > 0) {
         const policyPrivacy: IPrivacyPolicy = {
           dataTreatmentPolicy: additionals,
@@ -90,7 +94,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
   };
 
   const fieldErrors: any = {};
-  if (errors) {
+  if (errors && errors.length) {
     errors.map(({ field, message }: { field: string; message: string }) => {
       fieldErrors[field] = fieldErrors[field]
         ? [...fieldErrors[field], { message }]
@@ -109,145 +113,234 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
     <div>
       <S.AddressForm id={formId} ref={formRef} onSubmit={handleSubmit}>
         <S.Wrapper>
-          <S.FieldsGroup>
-            {renderGroupLabel(1, "Cliente")}
-            <S.RowWithTwoCells>
-              <TextField
-                data-cy="addressFormFirstName"
-                name="firstName"
-                label="Nombre Completo"
-                placeholder="Nombre Completo"
-                value={!values?.firstName ? "" : values?.firstName}
-                autoComplete="given-name"
-                errors={fieldErrors!.firstName}
-                {...basicInputProps()}
-              />
-              <TextField
-                data-cy="addressFormDNI"
-                name="documentNumber"
-                placeholder="Documento"
-                // label="*Documento"
-                label="Documento"
-                value={!values?.documentNumber ? "" : values?.documentNumber}
-                autoComplete="documento"
-                errors={fieldErrors!.documentNumber}
-                {...basicInputProps()}
-              />
-            </S.RowWithTwoCells>
-            <S.RowWithTwoCells>
-              <TextField
-                data-cy="addressFormEmail"
-                name="email"
-                placeholder="Email"
-                label="*Email"
-                value={!values?.email ? "" : values?.email}
-                autoComplete="email"
-                errors={fieldErrors!.email}
-                {...basicInputProps()}
-              />
-              <TextField
-                data-cy="addressFormPhone"
-                name="phone"
-                placeholder="Teléfono"
-                label="Teléfono"
-                value={!values?.phone ? "" : values?.phone}
-                autoComplete="tel"
-                errors={fieldErrors!.phone}
-                {...basicInputProps()}
-              />
-            </S.RowWithTwoCells>
-          {/* </S.FieldsGroup>
-          <S.FieldsGroup>
-            {renderGroupLabel(2, "Politicas")} */}
-            <S.RowWithOneCell>
-              <div className="privacyAndPolicies">
-                <Checkbox
-                  data-cy="addressFormTermsAndConditions"
-                  name="termsAndConditions"
-                  checked={privacyAndPolicies}
-                  onChange={handlePrivacyAndPolicies}
-                >
-                  <label htmlFor="">
-                    *Estoy de acuerdo con las
-                    <a href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-politicas-privacidad.pdf">
-                      {" "}
-                      Políticas de privacidad
-                    </a>{" "}
-                    y
-                    <a href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-terminos-condiciones.pdf">
-                      {" "}
-                      Términos y condiciones
-                    </a>
-                  </label>
-                </Checkbox>
-              </div>
-            </S.RowWithOneCell>
-            <S.RowWithOneCell>
-              <div className="additionals">
-                <Checkbox
-                  data-cy="checkoutPaymentPromoCodeCheckbox"
-                  name="dataTreatmentPolicy"
-                  checked={additionals}
-                  onChange={handleAdditionals}
-                >
-                  <label htmlFor="">
-                    Acepto el tratamiento para{" "}
-                    <a href="#"> Fines adicionales</a>
-                  </label>
-                </Checkbox>
-              </div>
-            </S.RowWithOneCell>
-          </S.FieldsGroup>
-          <S.FieldsGroup>
-            {renderGroupLabel(2, "Dirección")}
-            <S.RowWithTwoCells>
-              <TextField
-                data-cy="addressFormStreetAddress1"
-                name="streetAddress1"
-                label="*Dirección"
-                placeholder="Dirección"
-                value={!values?.streetAddress1 ? "" : values?.streetAddress1}
-                autoComplete="address-line1"
-                errors={fieldErrors!.streetAddress1}
-                {...basicInputProps()}
-              />
-              <TextField
-                data-cy="addressFormStreetAddress2"
-                name="streetAddress2"
-                placeholder="Información adicional"
-                label="Información adicional"
-                value={!values?.streetAddress2 ? "" : values?.streetAddress2}
-                autoComplete="address-line2"
-                errors={fieldErrors!.streetAddress2}
-                {...basicInputProps()}
-              />
-            </S.RowWithTwoCells>
-            <S.RowWithTwoCells>
-              <InputSelect
-                inputProps={{
-                  "data-cy": "addressFormCity",
-                }}
-                label="*Distrito"
-                name="city"
-                options={_cities}
-                value={
-                  values!.city &&
-                  _cities &&
-                  _cities!.find(
-                    option =>
-                      option.code.toLowerCase() === values!.city?.toLowerCase()
-                  )
-                }
-                onChange={(value: any, name: any) => {
-                  setFieldValue(name, value.code);
-                  selectCity(value.code);
-                }}
-                optionLabelKey="description"
-                optionValueKey="code"
-                errors={fieldErrors!.city}
-              />
-            </S.RowWithTwoCells>
-          </S.FieldsGroup>
+          {comeFromModal ? (
+            <div style={{ width: "100%" }}>
+              <S.FieldsGroup>
+                {renderGroupLabel(1, "Cliente")}
+                <TextField
+                  data-cy="addressFormFirstName"
+                  name="firstName"
+                  label="Nombre Completo"
+                  placeholder="Nombre Completo"
+                  value={!values?.firstName ? "" : values?.firstName}
+                  autoComplete="given-name"
+                  errors={fieldErrors!.firstName}
+                  {...basicInputProps()}
+                />
+                <TextField
+                  data-cy="addressFormPhone"
+                  name="phone"
+                  placeholder="Teléfono"
+                  label="Teléfono"
+                  value={!values?.phone ? "" : values?.phone}
+                  autoComplete="tel"
+                  errors={fieldErrors!.phone}
+                  {...basicInputProps()}
+                />
+              </S.FieldsGroup>
+              <S.FieldsGroup>
+                {renderGroupLabel(2, "Dirección")}
+                <S.RowWithOneCell>
+                  <TextField
+                    data-cy="addressFormStreetAddress1"
+                    name="streetAddress1"
+                    label="*Dirección"
+                    placeholder="Dirección"
+                    value={
+                      !values?.streetAddress1 ? "" : values?.streetAddress1
+                    }
+                    autoComplete="address-line1"
+                    errors={fieldErrors!.streetAddress1}
+                    {...basicInputProps()}
+                  />
+                  <TextField
+                    data-cy="addressFormStreetAddress2"
+                    name="streetAddress2"
+                    placeholder="Información adicional"
+                    label="Información adicional"
+                    value={
+                      !values?.streetAddress2 ? "" : values?.streetAddress2
+                    }
+                    autoComplete="address-line2"
+                    errors={fieldErrors!.streetAddress2}
+                    {...basicInputProps()}
+                  />
+                </S.RowWithOneCell>
+                <S.RowWithOneCell>
+                  <InputSelect
+                    inputProps={{
+                      "data-cy": "addressFormCity",
+                    }}
+                    label="*Distrito"
+                    name="city"
+                    options={_cities}
+                    value={
+                      values!.city &&
+                      _cities &&
+                      _cities!.find(
+                        option =>
+                          option.code.toLowerCase() ===
+                          values!.city?.toLowerCase()
+                      )
+                    }
+                    onChange={(value: any, name: any) => {
+                      setFieldValue(name, value.code);
+                      selectCity(value.code);
+                    }}
+                    optionLabelKey="description"
+                    optionValueKey="code"
+                    errors={fieldErrors!.city}
+                  />
+                </S.RowWithOneCell>
+              </S.FieldsGroup>
+            </div>
+          ) : (
+            <div>
+              <S.FieldsGroup>
+                {renderGroupLabel(1, "Cliente")}
+                <S.RowWithTwoCells>
+                  <TextField
+                    data-cy="addressFormFirstName"
+                    name="firstName"
+                    label="Nombre Completo"
+                    placeholder="Nombre Completo"
+                    value={!values?.firstName ? "" : values?.firstName}
+                    autoComplete="given-name"
+                    errors={fieldErrors!.firstName}
+                    {...basicInputProps()}
+                  />
+                  <TextField
+                    data-cy="addressFormDNI"
+                    name="documentNumber"
+                    placeholder="Documento"
+                    label="*Documento"
+                    value={
+                      !values?.documentNumber ? "" : values?.documentNumber
+                    }
+                    autoComplete="documento"
+                    errors={fieldErrors!.documentNumber}
+                    {...basicInputProps()}
+                  />
+                </S.RowWithTwoCells>
+                <S.RowWithTwoCells>
+                  <TextField
+                    data-cy="addressFormEmail"
+                    name="email"
+                    placeholder="Email"
+                    label="*Email"
+                    value={!values?.email ? "" : values?.email}
+                    autoComplete="email"
+                    errors={fieldErrors!.email}
+                    {...basicInputProps()}
+                  />
+                  <TextField
+                    data-cy="addressFormPhone"
+                    name="phone"
+                    placeholder="Teléfono"
+                    label="Teléfono"
+                    value={!values?.phone ? "" : values?.phone}
+                    autoComplete="tel"
+                    errors={fieldErrors!.phone}
+                    {...basicInputProps()}
+                  />
+                </S.RowWithTwoCells>
+                {/* </S.FieldsGroup>
+              <S.FieldsGroup>
+                {renderGroupLabel(2, "Politicas")} */}
+                <S.RowWithTwoCells>
+                  <div className="privacyAndPolicies">
+                    <Checkbox
+                      data-cy="addressFormTermsAndConditions"
+                      name="termsAndConditions"
+                      checked={privacyAndPolicies}
+                      onChange={handlePrivacyAndPolicies}
+                    >
+                      <label htmlFor="">
+                        *Estoy de acuerdo con las
+                        <a href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-politicas-privacidad.pdf">
+                          {" "}
+                          Políticas de privacidad
+                        </a>{" "}
+                        y
+                        <a href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-terminos-condiciones.pdf">
+                          {" "}
+                          Términos y condiciones
+                        </a>
+                      </label>
+                    </Checkbox>
+                  </div>
+                  <div className="additionals">
+                    <Checkbox
+                      data-cy="checkoutPaymentPromoCodeCheckbox"
+                      name="dataTreatmentPolicy"
+                      checked={additionals}
+                      onChange={handleAdditionals}
+                    >
+                      <label htmlFor="">
+                        Acepto el tratamiento para{" "}
+                        <a href="#"> Fines adicionales</a>
+                      </label>
+                    </Checkbox>
+                  </div>
+                </S.RowWithTwoCells>
+              </S.FieldsGroup>
+              <S.FieldsGroup>
+                {renderGroupLabel(2, "Dirección")}
+                <S.RowWithTwoCells>
+                  <TextField
+                    data-cy="addressFormStreetAddress1"
+                    name="streetAddress1"
+                    label="*Dirección"
+                    placeholder="Dirección"
+                    value={
+                      !values?.streetAddress1 ? "" : values?.streetAddress1
+                    }
+                    autoComplete="address-line1"
+                    errors={fieldErrors!.streetAddress1}
+                    {...basicInputProps()}
+                  />
+                  <TextField
+                    data-cy="addressFormStreetAddress2"
+                    name="streetAddress2"
+                    placeholder="Información adicional"
+                    label="Información adicional"
+                    value={
+                      !values?.streetAddress2 ? "" : values?.streetAddress2
+                    }
+                    autoComplete="address-line2"
+                    errors={fieldErrors!.streetAddress2}
+                    {...basicInputProps()}
+                  />
+                </S.RowWithTwoCells>
+                <S.RowWithTwoCells>
+                  <InputSelect
+                    inputProps={{
+                      "data-cy": "addressFormCity",
+                    }}
+                    label="*Distrito"
+                    name="city"
+                    options={_cities}
+                    value={
+                      values!.city &&
+                      _cities &&
+                      _cities!.find(
+                        option =>
+                          option.code.toLowerCase() ===
+                          values!.city?.toLowerCase()
+                      )
+                    }
+                    onChange={(value: any, name: any) => {
+                      setFieldValue(name, value.code);
+                      selectCity(value.code);
+                    }}
+                    optionLabelKey="description"
+                    optionValueKey="code"
+                    errors={fieldErrors!.city}
+                  />
+                </S.RowWithTwoCells>
+              </S.FieldsGroup>
+            </div>
+          )}
         </S.Wrapper>
       </S.AddressForm>
     </div>

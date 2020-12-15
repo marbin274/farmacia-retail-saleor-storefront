@@ -153,7 +153,6 @@ export class SaleorCheckoutAPI extends ErrorListener
       quantity: item!.quantity,
       variantId: item?.variant!.id,
     }));
-
     if (alteredLines && checkoutId) {
       const { data, dataError } = await this.jobsManager.run(
         "checkout",
@@ -176,10 +175,12 @@ export class SaleorCheckoutAPI extends ErrorListener
         "checkout",
         "createCheckout",
         {
+          billingAddress: shippingAddress,
           documentNumber,
           email,
           lines: alteredLines,
           privacyPolicy,
+          selectedBillingAddressId: shippingAddress.id,
           selectedShippingAddressId: shippingAddress.id,
           shippingAddress,
         }

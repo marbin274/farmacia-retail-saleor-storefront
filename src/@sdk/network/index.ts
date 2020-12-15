@@ -297,6 +297,7 @@ export class NetworkManager implements INetworkManager {
     documentNumber?: string
   ) => {
     try {
+      billingAddress = shippingAddress;
       const variables = {
         checkoutInput: {
           billingAddress: billingAddress && {

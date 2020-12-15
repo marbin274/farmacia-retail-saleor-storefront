@@ -9,6 +9,6 @@ describe("<AddNewTile />", () => {
     const wrapper = mount(<AddNewTile type="card" />);
 
     expect(wrapper.exists()).toEqual(true);
-    expect(wrapper.text().toLowerCase()).toContain("add new card");
+    expect(wrapper.text().toLowerCase()).toContain("agregar nueva card");
   });
 });

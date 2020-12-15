@@ -1,4 +1,4 @@
-import { IPrivacyPolicy } from "@temp/@sdk/api/Checkout/types";
+import { ICheckout, IPrivacyPolicy } from "@temp/@sdk/api/Checkout/types";
 import { IAddressWithEmail } from "@types";
 
 export interface IFormikProps {
@@ -25,18 +25,17 @@ export interface IProps {
     code: string;
     country: string;
   }>;
-  documentNumber?: string;
-  termsAndConditions?: boolean;
-  dataTreatmentPolicy?: boolean;
   citiesOptions?: string[];
   defaultValue?: any;
   formId?: string;
   formRef?: React.RefObject<HTMLFormElement>;
   errors?: any;
+  checkoutData?: ICheckout;
   handleSubmit?: (formData: IAddressWithEmail | undefined) => void;
   handleChange?: (e: React.ChangeEvent) => void;
   handleBlur?: (e: React.FocusEvent) => void;
   includeEmail?: boolean;
+  comeFromModal?: boolean;
   onSelect?: (
     address?: IAddressWithEmail,
     email?: string,

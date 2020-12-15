@@ -57,6 +57,7 @@ export class CheckoutJobs {
         },
       };
     } else {
+      // TODO: check later
       this.repository.setCheckout({
         ...data,
         selectedBillingAddressId,

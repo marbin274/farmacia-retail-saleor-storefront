@@ -6,7 +6,7 @@ exports[`Storyshots @components/molecules/AddressTile default 1`] = `
   margin: 20px;
 }
 
-.c12 {
+.c9 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -39,28 +39,19 @@ exports[`Storyshots @components/molecules/AddressTile default 1`] = `
 }
 
 .c4 {
-  border-bottom: 2px solid #c4c4c4;
-}
-
-.c5 {
   padding: 1rem 1.25rem;
 }
 
-.c10 {
+.c6 {
   margin-top: auto;
   padding: 0 1rem;
   margin-bottom: 1rem;
 }
 
-.c9 {
+.c5 {
   display: block;
   margin-bottom: 0.625rem;
   font-weight: 600;
-}
-
-.c7 {
-  position: relative;
-  display: inline-block;
 }
 
 .c8 {
@@ -110,26 +101,7 @@ exports[`Storyshots @components/molecules/AddressTile default 1`] = `
   font-size: 0.875rem;
 }
 
-.c6 {
-  color: #7d7d7d;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row-reverse;
-  -ms-flex-direction: row-reverse;
-  flex-direction: row-reverse;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c11 > div {
+.c7 > div {
   display: inline-block;
   padding: 0;
   margin: 0;
@@ -155,44 +127,9 @@ exports[`Storyshots @components/molecules/AddressTile default 1`] = `
         <div
           className="c4"
         >
-          <div
-            className="c5"
-          >
-            <div
-              className="c6"
-            >
-              <div
-                className="c7"
-                onClick={[Function]}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-              >
-                <div
-                  className="c8"
-                  data-cy="icon_button"
-                >
-                  <svg
-                    height={24}
-                    viewBox="0 0 32 32"
-                    width={24}
-                  >
-                    <path
-                      d="M15.667 11.333c1.283 0 2.333-1.050 2.333-2.333s-1.050-2.333-2.333-2.333c-1.283 0-2.333 1.050-2.333 2.333s1.050 2.333 2.333 2.333zM15.667 13.667c-1.283 0-2.333 1.050-2.333 2.333s1.050 2.333 2.333 2.333c1.283 0 2.333-1.050 2.333-2.333s-1.050-2.333-2.333-2.333zM15.667 20.667c-1.283 0-2.333 1.050-2.333 2.333s1.050 2.333 2.333 2.333c1.283 0 2.333-1.050 2.333-2.333s-1.050-2.333-2.333-2.333z"
-                      fill="#323232"
-                    />
-                  </svg>
-                </div>
-              </div>
-              Default Shipping Address
-            </div>
-          </div>
-        </div>
-        <div
-          className="c5"
-        >
           <div>
             <span
-              className="c9"
+              className="c5"
             >
               John Doe
             </span>
@@ -219,10 +156,10 @@ exports[`Storyshots @components/molecules/AddressTile default 1`] = `
           </div>
         </div>
         <div
-          className="c10"
+          className="c6"
         >
           <div
-            className="c11"
+            className="c7"
           >
             <div>
               <div
@@ -266,7 +203,7 @@ exports[`Storyshots @components/molecules/AddressTile default 1`] = `
     </div>
   </div>
   <div
-    className="c12"
+    className="c9"
   />
 </div>
 `;
@@ -277,7 +214,7 @@ exports[`Storyshots @components/molecules/AddressTile with default shipping and 
   margin: 20px;
 }
 
-.c12 {
+.c9 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -310,28 +247,19 @@ exports[`Storyshots @components/molecules/AddressTile with default shipping and 
 }
 
 .c4 {
-  border-bottom: 2px solid #c4c4c4;
-}
-
-.c5 {
   padding: 1rem 1.25rem;
 }
 
-.c10 {
+.c6 {
   margin-top: auto;
   padding: 0 1rem;
   margin-bottom: 1rem;
 }
 
-.c9 {
+.c5 {
   display: block;
   margin-bottom: 0.625rem;
   font-weight: 600;
-}
-
-.c7 {
-  position: relative;
-  display: inline-block;
 }
 
 .c8 {
@@ -381,26 +309,7 @@ exports[`Storyshots @components/molecules/AddressTile with default shipping and 
   font-size: 0.875rem;
 }
 
-.c6 {
-  color: #7d7d7d;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row-reverse;
-  -ms-flex-direction: row-reverse;
-  flex-direction: row-reverse;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c11 > div {
+.c7 > div {
   display: inline-block;
   padding: 0;
   margin: 0;
@@ -426,43 +335,9 @@ exports[`Storyshots @components/molecules/AddressTile with default shipping and 
         <div
           className="c4"
         >
-          <div
-            className="c5"
-          >
-            <div
-              className="c6"
-            >
-              <div
-                className="c7"
-                onClick={[Function]}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-              >
-                <div
-                  className="c8"
-                  data-cy="icon_button"
-                >
-                  <svg
-                    height={24}
-                    viewBox="0 0 32 32"
-                    width={24}
-                  >
-                    <path
-                      d="M15.667 11.333c1.283 0 2.333-1.050 2.333-2.333s-1.050-2.333-2.333-2.333c-1.283 0-2.333 1.050-2.333 2.333s1.050 2.333 2.333 2.333zM15.667 13.667c-1.283 0-2.333 1.050-2.333 2.333s1.050 2.333 2.333 2.333c1.283 0 2.333-1.050 2.333-2.333s-1.050-2.333-2.333-2.333zM15.667 20.667c-1.283 0-2.333 1.050-2.333 2.333s1.050 2.333 2.333 2.333c1.283 0 2.333-1.050 2.333-2.333s-1.050-2.333-2.333-2.333z"
-                      fill="#323232"
-                    />
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="c5"
-        >
           <div>
             <span
-              className="c9"
+              className="c5"
             >
               John Doe
             </span>
@@ -489,10 +364,10 @@ exports[`Storyshots @components/molecules/AddressTile with default shipping and 
           </div>
         </div>
         <div
-          className="c10"
+          className="c6"
         >
           <div
-            className="c11"
+            className="c7"
           >
             <div>
               <div
@@ -536,7 +411,7 @@ exports[`Storyshots @components/molecules/AddressTile with default shipping and 
     </div>
   </div>
   <div
-    className="c12"
+    className="c9"
   />
 </div>
 `;

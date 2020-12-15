@@ -7,6 +7,7 @@ import { Modal } from "../Modal";
 
 import { CountryCode } from "@sdk/gqlTypes/globalTypes";
 import { IProps } from "./types";
+import { IAddressWithEmail } from "@temp/@next/types";
 
 export const AddressFormModal: React.FC<IProps> = ({
   hideModal,
@@ -37,7 +38,7 @@ export const AddressFormModal: React.FC<IProps> = ({
   }
 
   if (addressUpdateErrors) {
-    errors = addressUpdateErrors.extraInfo.userInputErrors;
+    errors = addressUpdateErrors?.extraInfo?.userInputErrors;
   }
 
   React.useEffect(() => {
@@ -67,13 +68,20 @@ export const AddressFormModal: React.FC<IProps> = ({
         {...{ errors }}
         formId={formId}
         citiesOptions={citiesOptions}
+        comeFromModal={true}
         address={address ? address.address : undefined}
         handleSubmit={data => {
           if (!!userId) {
+            const _data: IAddressWithEmail = {
+              city: data?.city,
+              firstName: data?.firstName,
+              streetAddress1: data?.streetAddress1,
+              streetAddress2: data?.streetAddress2,
+            };
             setCreatUserAddress({
               input: {
-                ...data,
-                country: data?.country?.code as CountryCode,
+                ..._data,
+                country: CountryCode.PE,
               },
             });
           } else {
@@ -81,7 +89,7 @@ export const AddressFormModal: React.FC<IProps> = ({
               id: address!.id,
               input: {
                 ...data,
-                country: data?.country?.code as CountryCode,
+                country: CountryCode.PE,
               },
             });
           }

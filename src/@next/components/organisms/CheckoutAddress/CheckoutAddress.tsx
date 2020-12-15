@@ -15,18 +15,13 @@ import { citiesOptions } from "./cities";
 const CheckoutAddress: React.FC<IProps> = ({
   checkoutAddress,
   email,
-  selectedUserAddressId,
-  userAddresses,
   countries,
   user,
   formRef,
   formId,
   setShippingAddress,
   errors,
-  newAddressFormId,
-  documentNumber,
-  dataTreatmentPolicy,
-  termsAndConditions,
+  checkoutData,
 }: IProps) => {
   return (
     <section>
@@ -36,9 +31,7 @@ const CheckoutAddress: React.FC<IProps> = ({
         formRef={formRef}
         citiesOptions={citiesOptions}
         countriesOptions={countries?.filter(filterNotEmptyArrayItems)}
-        documentNumber={documentNumber}
-        dataTreatmentPolicy={dataTreatmentPolicy}
-        termsAndConditions={termsAndConditions}
+        checkoutData={checkoutData}
         address={{
           ...checkoutAddress,
           email,

@@ -17,16 +17,6 @@ const AddressBook: React.FC<{
   const [setDefaultUserAddress] = useDefaultUserAddress();
   const [setDeleteUserAddress] = useDeleteUserAddresss();
 
-  if (user.addresses && user.addresses.length) {
-    let i = 0;
-    do {
-      if (!user.addresses[i].isDefaultShippingAddress) {
-        user.addresses.splice(i, 1);
-      }
-      i++;
-    } while (user.addresses.length > 1);
-  }
-
   const userAddresses = user.addresses.map(address => {
     const addressToDisplay: any = { address: { ...address } };
 
@@ -70,10 +60,11 @@ const AddressBook: React.FC<{
           }}
           userId={user.id}
           {...{ defaultValue: defaultCountry ? defaultCountry : {} }}
-          submitBtnText={"Add"}
-          title={"Add new address"}
+          submitBtnText={"Agregar"}
+          title={"Agregar nueva direccion"}
           {...{ countriesOptions: countries }}
           formId="address-form"
+          citiesOptions={citiesOptions}
         />
       )}
       {displayEditModal && (

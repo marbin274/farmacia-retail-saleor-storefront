@@ -35,7 +35,6 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
 
   useImperativeHandle(ref, () => ({
     handleRequiredFields: () => {
-
       // if (email.length == 0) {
       //   setErrors([{ field: "email", message: "Por favor indique email." }]);
       //   return false;
@@ -43,7 +42,7 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
 
       return true;
     },
-    submitAddress: () => {      
+    submitAddress: () => {
       if (user && selectedShippingAddressId) {
         checkoutAddressFormRef.current?.dispatchEvent(
           new Event("submit", { cancelable: true })
@@ -66,7 +65,7 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
   const { countries } = useContext(ShopContext);
 
   const [errors, setErrors] = useState<IFormError[]>([]);
-  
+
   const checkoutShippingAddress = checkout?.shippingAddress
     ? {
         ...checkout?.shippingAddress,
@@ -94,7 +93,10 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
 
     changeSubmitProgress(true);
     const { dataError } = await setShippingAddress(
-      address,
+      {
+        ...address,
+        id: userAddressId,
+      },
       shippingEmail,
       privacyPolicy
         ? privacyPolicy
@@ -135,9 +137,7 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
       formRef={checkoutAddressFormRef}
       checkoutAddress={checkoutShippingAddress}
       email={checkout?.email}
-      documentNumber={checkout?.documentNumber}
-      termsAndConditions={checkout?.termsAndConditions}
-      dataTreatmentPolicy={checkout?.dataTreatmentPolicy}
+      checkoutData={checkout}
       userAddresses={userAdresses}
       selectedUserAddressId={selectedShippingAddressId}
       countries={countries}

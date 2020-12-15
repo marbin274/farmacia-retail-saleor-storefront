@@ -31,9 +31,8 @@ export const AddressForm: React.FC<IProps> = ({
   countriesOptions,
   citiesOptions,
   user,
-  documentNumber,
-  termsAndConditions,
-  dataTreatmentPolicy,
+  comeFromModal,
+  checkoutData,
   ...props
 }: IProps) => {
   let addressWithPickedFields: Partial<IAddressWithEmail> = {};
@@ -41,26 +40,32 @@ export const AddressForm: React.FC<IProps> = ({
     addressWithPickedFields = pick(address, ADDRESS_FIELDS);
   }
 
-  addressWithPickedFields.documentNumber = documentNumber;
-  addressWithPickedFields.termsAndConditions = termsAndConditions;
-  addressWithPickedFields.dataTreatmentPolicy = dataTreatmentPolicy;
+  addressWithPickedFields.documentNumber = checkoutData?.documentNumber;
+  addressWithPickedFields.termsAndConditions = checkoutData?.termsAndConditions;
+  addressWithPickedFields.dataTreatmentPolicy =
+    checkoutData?.dataTreatmentPolicy;
 
   if (defaultValue) {
     addressWithPickedFields.country = defaultValue;
   }
 
   if (user) {
-    const defaultAddress = user.addresses[0]
-    addressWithPickedFields.city = defaultAddress?.city;
+    addressWithPickedFields.city = user.addresses[0]?.city
+      ? user.addresses[0]?.city
+      : checkoutData?.shippingAddress?.city;
     addressWithPickedFields.firstName =
       user.firstName.replace(/^\w/, (c: any) => c.toUpperCase()) +
       " " +
       user.lastName.replace(/^\w/, (c: any) => c.toUpperCase());
-    addressWithPickedFields.streetAddress1 = defaultAddress?.streetAddress1;
-    addressWithPickedFields.streetAddress2 = defaultAddress?.streetAddress2;
+    addressWithPickedFields.streetAddress1 = user.addresses[0]?.streetAddress1
+      ? user.addresses[0]?.streetAddress1
+      : checkoutData?.shippingAddress?.streetAddress1;
+    addressWithPickedFields.streetAddress2 = user.addresses[0]?.streetAddress2
+      ? user.addresses[0]?.streetAddress2
+      : checkoutData?.shippingAddress?.streetAddress2;
     addressWithPickedFields.email = user.email;
     addressWithPickedFields.phone = user.phone;
-    addressWithPickedFields.id = defaultAddress?.id;
+    addressWithPickedFields.id = user.addresses[0]?.id;
     addressWithPickedFields.documentNumber = user.documentNumber;
     addressWithPickedFields.termsAndConditions = user.termsAndConditions;
     addressWithPickedFields.dataTreatmentPolicy = user.dataTreatmentPolicy;
@@ -89,6 +94,7 @@ export const AddressForm: React.FC<IProps> = ({
           <AddressFormContent
             {...{
               citiesOptions,
+              comeFromModal,
               countriesOptions,
               defaultValue,
               formId,

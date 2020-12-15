@@ -7,12 +7,15 @@ type WrapperProps = {
   theme: DefaultTheme;
 };
 
-const getTextColor = ({ active, error, disabled, theme }: WrapperProps, hovered = false) => {
+const getTextColor = (
+  { active, error, disabled, theme }: WrapperProps,
+  hovered = false
+) => {
   switch (true) {
     case disabled:
       return theme.colors.disabled;
     case error:
-      // TODO: change this line code when font color needs to change.
+    // TODO: change this line code when font color needs to change.
     case active:
       return theme.input.textColorActive;
     case hovered:
@@ -20,9 +23,12 @@ const getTextColor = ({ active, error, disabled, theme }: WrapperProps, hovered 
     default:
       return theme.input.textColor;
   }
-}
+};
 
-const getEdgeColor = ({ active, error, disabled, theme }: WrapperProps, hovered = false) => {
+const getEdgeColor = (
+  { active, error, disabled, theme }: WrapperProps,
+  hovered = false
+) => {
   switch (true) {
     case disabled:
       return theme.colors.disabled;
@@ -79,7 +85,7 @@ export const Input = styled.input<WrapperProps>`
   font-size: ${props => props.theme.input.textFontSize};
   outline: none;
   background-color: transparent;
-  
+
   ::placeholder {
     color: ${props => props.theme.input.placeholderColor};
   }

@@ -35,7 +35,6 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
     subtractItem,
     totalPrice,
   } = useCart();
-
   const shippingTaxedPrice =
     checkout?.shippingMethod?.id && shippingPrice
       ? {
