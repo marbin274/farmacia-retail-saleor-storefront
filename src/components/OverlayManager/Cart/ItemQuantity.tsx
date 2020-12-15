@@ -37,8 +37,10 @@ const ItemQuantity: FC<IProps> = ({
     setIsValueLessThanMax(value < maxValue);
   }, [value, maxValue, MAX_ORDER_PER_PRODUCT]);
 
+  const isEnabledToAddProduct = !disableOnAdd && isValueLessThanMaxOrderPerProduct && isValueLessThanMax;
+
   const handleAddClick = () => {
-    if (isValueLessThanMaxOrderPerProduct && isValueLessThanMax) {
+    if (isEnabledToAddProduct) {
       onAdd();
     }
   };
@@ -62,7 +64,7 @@ const ItemQuantity: FC<IProps> = ({
       <ReactSVG
         path={addImg}
         className={classNames("cart__list__item__quantity__icon", {
-          disabled: disableOnAdd,
+          disabled: !isEnabledToAddProduct,
         })}
         onClick={handleAddClick}
       />
