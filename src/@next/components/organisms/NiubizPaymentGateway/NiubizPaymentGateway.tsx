@@ -123,12 +123,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
     getConfigElement(config, "nb_payform_url") ||
     "https://pocpaymentserve.s3.amazonaws.com/payform.min.js";
 
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = payformUrl;
-    script.async = true;
-    document.body.appendChild(script);
-
+  const createTokenScript = () => {
     const tokenRequirements = getTokenRequirements(config);
     const amount = totalPrice?.gross.amount.toString();
     // @ts-ignore
@@ -275,6 +270,15 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
           });
         });
       });
+  }
+
+  const removeNiubizElements = React.useCallback((script: HTMLScriptElement, idIframes: string): void => {
+    script.remove();
+    let iframes = document.getElementById(idIframes);
+    do {
+      iframes?.remove();
+      iframes = document.getElementById(idIframes);
+    } while (iframes);
   }, []);
 
   const configureErrorMessages = (errors: any) => {
@@ -344,6 +348,18 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
     }
   };
 
+  useEffect(() => {
+    const script: HTMLScriptElement = document.createElement("script");
+    const idIframes: string = 'tmx_tags_iframe';// IFrame Ids loaded by Niubiz - share same Id
+    script.src = payformUrl;
+    script.async = true;
+    document.body.appendChild(script);
+    createTokenScript();
+    return () => {
+      removeNiubizElements(script, idIframes);
+    }
+  }, []);
+
   const allErrors = [...errors, ...submitErrors];
   const styles = {
     hidde: {
@@ -411,18 +427,18 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                         className="form-control form-control-sm ncp-card"
                       ></div>
                       {formErrors.length &&
-                      formErrors.filter(x => x.code === errorsDictionary[0])
-                        .length ? (
-                        <div className="error">
-                          {
-                            formErrors.filter(
-                              x => x.code === errorsDictionary[0]
-                            )[0].message
-                          }
-                        </div>
-                      ) : (
-                        ""
-                      )}
+                        formErrors.filter(x => x.code === errorsDictionary[0])
+                          .length ? (
+                          <div className="error">
+                            {
+                              formErrors.filter(
+                                x => x.code === errorsDictionary[0]
+                              )[0].message
+                            }
+                          </div>
+                        ) : (
+                          ""
+                        )}
                     </div>
                     <br />
 
@@ -434,18 +450,18 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                           className="form-control form-control-sm"
                         ></div>
                         {formErrors.length &&
-                        formErrors.filter(x => x.code === errorsDictionary[1])
-                          .length ? (
-                          <div className="error">
-                            {
-                              formErrors.filter(
-                                x => x.code === errorsDictionary[1]
-                              )[0].message
-                            }
-                          </div>
-                        ) : (
-                          ""
-                        )}
+                          formErrors.filter(x => x.code === errorsDictionary[1])
+                            .length ? (
+                            <div className="error">
+                              {
+                                formErrors.filter(
+                                  x => x.code === errorsDictionary[1]
+                                )[0].message
+                              }
+                            </div>
+                          ) : (
+                            ""
+                          )}
                       </div>
                       <div className="cvv">
                         <label htmlFor="">CVC</label>
@@ -454,18 +470,18 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                           className="form-control form-control-sm"
                         ></div>
                         {formErrors.length &&
-                        formErrors.filter(x => x.code === errorsDictionary[2])
-                          .length ? (
-                          <div className="error">
-                            {
-                              formErrors.filter(
-                                x => x.code === errorsDictionary[2]
-                              )[0].message
-                            }
-                          </div>
-                        ) : (
-                          ""
-                        )}
+                          formErrors.filter(x => x.code === errorsDictionary[2])
+                            .length ? (
+                            <div className="error">
+                              {
+                                formErrors.filter(
+                                  x => x.code === errorsDictionary[2]
+                                )[0].message
+                              }
+                            </div>
+                          ) : (
+                            ""
+                          )}
                       </div>
                     </div>
                     <div>
