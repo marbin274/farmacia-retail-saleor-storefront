@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ICheckoutModelLine } from "@sdk/repository";
 import { Link } from "react-router-dom";
-import { generateProductUrl } from "../../../core/utils";
+import { generateProductUrl } from "@temp/core/utils";
 import { TaxedMoney } from "@components/containers";
 import { Thumbnail } from "@components/molecules";
 import ItemQuantity from "./ItemQuantity";
