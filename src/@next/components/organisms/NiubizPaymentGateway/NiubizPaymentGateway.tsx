@@ -15,6 +15,7 @@ import * as S from "./styles";
 import { IProps } from "./types";
 import ReactSVG from "react-svg";
 import niubizIcon from "@temp/images/auna/niubiz-logo.svg";
+import { IUserDataForNiubiz } from "../CheckoutPayment/types";
 
 const INITIAL_CARD_ERROR_STATE = {
   fieldErrors: {
@@ -55,7 +56,8 @@ const getTokenRequirements = (config: IPaymentGatewayConfig[]) => {
 const getSessionRequirements = (
   config: IPaymentGatewayConfig[],
   token: string,
-  amount: any
+  amount: any, 
+  user?: IUserDataForNiubiz | undefined
 ) => {
   const merchantId = getConfigElement(config, "merchant_id") || "342062522";
 
@@ -68,6 +70,16 @@ const getSessionRequirements = (
 
   const sessionRequirements: GatewayOptions = {
     amount: total,
+    antifraud: {
+      clientIp: ip.address(),
+      merchantDefineData: {
+        4: user?.email,
+        21: 0,
+        32: user?.documentNumber,
+        75: "Invitado",
+        77: 0,
+      },
+    },
     channel: "web",
     endpoint: url,
     securityToken: token,
@@ -132,7 +144,8 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
         const sessionRequirements = getSessionRequirements(
           config,
           token,
-          amount
+          amount,
+          userDataForNiubiz
         );
         return createSession(sessionRequirements);
       })
@@ -150,16 +163,6 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
         }
         const configuration = {
           amount,
-          antifraud: {
-            clientIp: ip.address(),
-            merchantDefineData: {
-              4: userDataForNiubiz?.email,
-              21: 0,
-              32: userDataForNiubiz?.documentNumber,
-              75: "Invitado",
-              77: 0,
-            },
-          },
           callbackurl: "",
           channel: "web",
           font:

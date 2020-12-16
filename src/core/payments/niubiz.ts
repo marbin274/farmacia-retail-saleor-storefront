@@ -55,6 +55,7 @@ export type GatewayOptions = {
   sessionKey?: string | undefined;
   payform?: any | undefined;
   merchantId?: string | undefined;
+  antifraud?: any | undefined;
 };
 
 export const createToken = (requirements: GatewayOptions) => {
@@ -78,10 +79,10 @@ export const createToken = (requirements: GatewayOptions) => {
 export const createSession = (requirements: GatewayOptions) => {
   const data = {
     amount: requirements.amount,
-    antifraud: null,
+    antifraud: requirements.antifraud,
     channel: requirements.channel,
   };
-
+  
   const requestOptions: AxiosRequestConfig = {
     headers: {
       Authorization: requirements.securityToken,
