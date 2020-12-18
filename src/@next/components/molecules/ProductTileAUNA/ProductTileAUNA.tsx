@@ -16,6 +16,8 @@ export const ProductTileAUNA: React.FC<IProps> = ({
     thumbnail: { url: "" },
     thumbnail2x: { url: "" },
   });
+  
+  const [canAddToCart, setCanAddToCart] = useState(false);
 
   useEffect(() => {
     if (product.thumbnail && product.thumbnail.url && product.thumbnail2x && product.thumbnail2x.url) {
@@ -24,16 +26,19 @@ export const ProductTileAUNA: React.FC<IProps> = ({
         thumbnail2x: { url: product.thumbnail2x.url },
       });
     }
+
+
   }, [product.thumbnail, product.thumbnail2x]);
 
-  const price = product?.pricing?.priceRange?.start;
-
-  const productQuantity = product.quantity || 0;
-  const productQuantityLessThenMax = productQuantity < MAX_ORDER_PER_PRODUCT;
-  const areMoreProductsAvailable = Array.isArray(product.variants) &&
-    product.variants[0].quantityAvailable &&
-    productQuantity < product.variants[0].quantityAvailable;
-  const canAddToCart = productQuantityLessThenMax && areMoreProductsAvailable;
+  useEffect(() => {
+    const quantityAddedToCart = product?.quantity || 0;
+    const productQuantityLessThenMax = quantityAddedToCart < MAX_ORDER_PER_PRODUCT;
+    const stockAvailable = product.variants?.[0].quantityAvailable || 0;
+    const canAddToCart = stockAvailable > quantityAddedToCart
+    
+    setCanAddToCart(productQuantityLessThenMax && canAddToCart);
+  
+  },[MAX_ORDER_PER_PRODUCT, product])
 
   const onAddToCart = () => {
     if (canAddToCart) {
@@ -60,7 +65,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
         </div>
         <div className="price">
           <S.Price>
-            <TaxedMoney taxedMoney={price} />
+            <TaxedMoney taxedMoney={product?.pricing?.priceRange?.start} />
           </S.Price>
         </div>
       </Link>

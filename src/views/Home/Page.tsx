@@ -41,7 +41,7 @@ const Page: React.FC<IPageProps> = ({
 
       <div className="inner-container">
         <div className="home-page__products">
-          <h2 className="home-page__products-title">Recomendados para tu botiquín</h2>
+          <h2 className="home-page__products-title">Nuestros recomendados</h2>
           {products && (
             <ProductListAUNA
               addToCart={addToCart}

@@ -5,7 +5,6 @@ import { ProductTileAUNA } from "@components/molecules";
 import * as S from "./styles";
 import { IProps } from "./types";
 import { generateProductUrl } from "@temp/core/utils";
-import { MAX_ORDER_PER_PRODUCT } from "@temp/core/config";
 
 export const ProductListAUNA: React.FC<IProps> = ({
   addToCart,
@@ -24,10 +23,6 @@ export const ProductListAUNA: React.FC<IProps> = ({
     if (!product.variants) {
       product.variants = [];
     }
-
-    product.variants[0].quantityAvailable = productOnCart
-      ? productOnCart.variant.quantityAvailable
-      : MAX_ORDER_PER_PRODUCT;
 
     return {
       ...product,

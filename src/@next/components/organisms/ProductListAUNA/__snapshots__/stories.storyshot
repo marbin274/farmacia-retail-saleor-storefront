@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   margin: 20px;
 }
 
-.c7 {
+.c8 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -17,7 +17,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   box-sizing: border-box;
 }
 
-.c3 {
+.c4 {
   background-color: #00B0CA;
   padding: 0.9rem 3.7rem;
   border: none;
@@ -30,28 +30,28 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   width: auto;
 }
 
-.c3:hover {
+.c4:hover {
   background-color: #0BC1DC;
   color: #fff;
 }
 
-.c3:active {
+.c4:active {
   background-color: #029FB7;
   box-shadow: -3px 3px 14px 0px rgba(129,67,67,0.2);
 }
 
-.c3:disabled {
+.c4:disabled {
   background-color: #F1F2F7;
   color: #B8BCD5;
   cursor: default;
 }
 
-.c3:disabled,
-.c3:disabled:hover {
+.c4:disabled,
+.c4:disabled:hover {
   cursor: default;
 }
 
-.c6 {
+.c7 {
   background-color: #fff;
   padding: 0.9rem 3.7rem;
   border: none;
@@ -67,28 +67,28 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   border-right: 1px solid #00B0CA;
 }
 
-.c6:hover {
+.c7:hover {
   background-color: #fff;
   color: #00B0CA;
 }
 
-.c6:active {
+.c7:active {
   background-color: #029FB7;
   box-shadow: -3px 3px 14px 0px rgba(129,67,67,0.2);
 }
 
-.c6:disabled {
+.c7:disabled {
   background-color: #F1F2F7;
   color: #B8BCD5;
   cursor: default;
 }
 
-.c6:disabled,
-.c6:disabled:hover {
+.c7:disabled,
+.c7:disabled:hover {
   cursor: default;
 }
 
-.c4 {
+.c5 {
   display: inline-block;
   font-size: 1.125rem;
   font-weight: 400;
@@ -150,7 +150,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
 }
 
 .c2 .button {
-  border-bottom: 1px solid #00B0CA;
+  border-bottom: 1px solid #B8BCD5;
   padding-bottom: 0.5rem;
 }
 
@@ -189,26 +189,35 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   cursor: not-allowed;
 }
 
+.c3 {
+  color: #9194A7;
+  font-family: "Poppins",sans-serif;
+  font-size: 1rem;
+  font-weight: normal;
+  padding: 0.1rem 0;
+  text-align: center;
+}
+
 .c1 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 5rem 3rem;
 }
 
-.c5 {
+.c6 {
   text-align: center;
   margin: 2.5rem 0;
 }
 
 @media (max-width:540px) {
-  .c3 {
+  .c4 {
     padding: 0.9rem 1rem;
     width: 88%;
   }
 }
 
 @media (max-width:540px) {
-  .c6 {
+  .c7 {
     padding: 0.9rem 1rem;
     width: 88%;
   }
@@ -262,6 +271,11 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           >
             Betacort Depot Solución Inyectable
           </h4>
+          <h5
+            className="c3"
+          >
+            No disponible
+          </h5>
         </div>
         <div
           className="price"
@@ -279,14 +293,14 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         className="button"
       >
         <button
-          className="c3"
+          className="c4"
           color="primary"
-          disabled={false}
+          disabled={true}
           onClick={[Function]}
           size="md"
         >
           <span
-            className="c4"
+            className="c5"
             size="md"
           >
             +
@@ -322,6 +336,11 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           >
             Abrilar 35Mg/5ML Jarabe - Frasco 100 ML
           </h4>
+          <h5
+            className="c3"
+          >
+            No disponible
+          </h5>
         </div>
         <div
           className="price"
@@ -339,14 +358,14 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         className="button"
       >
         <button
-          className="c3"
+          className="c4"
           color="primary"
-          disabled={false}
+          disabled={true}
           onClick={[Function]}
           size="md"
         >
           <span
-            className="c4"
+            className="c5"
             size="md"
           >
             +
@@ -382,6 +401,11 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           >
             Amlodipino-Gef 10Mg Tabletas - Caja 10 Und
           </h4>
+          <h5
+            className="c3"
+          >
+            No disponible
+          </h5>
         </div>
         <div
           className="price"
@@ -399,14 +423,14 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         className="button"
       >
         <button
-          className="c3"
+          className="c4"
           color="primary"
-          disabled={false}
+          disabled={true}
           onClick={[Function]}
           size="md"
         >
           <span
-            className="c4"
+            className="c5"
             size="md"
           >
             +
@@ -442,6 +466,11 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           >
             Ab Broncol NF 1200Mg/5ML Solución Inyectable Intramuscular
           </h4>
+          <h5
+            className="c3"
+          >
+            No disponible
+          </h5>
         </div>
         <div
           className="price"
@@ -459,14 +488,14 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         className="button"
       >
         <button
-          className="c3"
+          className="c4"
           color="primary"
-          disabled={false}
+          disabled={true}
           onClick={[Function]}
           size="md"
         >
           <span
-            className="c4"
+            className="c5"
             size="md"
           >
             +
@@ -502,6 +531,11 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           >
             Antalgina 500Mg Tabletas 
           </h4>
+          <h5
+            className="c3"
+          >
+            No disponible
+          </h5>
         </div>
         <div
           className="price"
@@ -519,14 +553,14 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         className="button"
       >
         <button
-          className="c3"
+          className="c4"
           color="primary"
-          disabled={false}
+          disabled={true}
           onClick={[Function]}
           size="md"
         >
           <span
-            className="c4"
+            className="c5"
             size="md"
           >
             +
@@ -562,6 +596,11 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           >
             Arcoxia 90Mg Tabletas Recubiertas - Caja 14 Und
           </h4>
+          <h5
+            className="c3"
+          >
+            No disponible
+          </h5>
         </div>
         <div
           className="price"
@@ -579,14 +618,14 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         className="button"
       >
         <button
-          className="c3"
+          className="c4"
           color="primary"
-          disabled={false}
+          disabled={true}
           onClick={[Function]}
           size="md"
         >
           <span
-            className="c4"
+            className="c5"
             size="md"
           >
             +
@@ -622,6 +661,11 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           >
             Bepanthen Ungüento - Tubo 30 Gr
           </h4>
+          <h5
+            className="c3"
+          >
+            No disponible
+          </h5>
         </div>
         <div
           className="price"
@@ -639,14 +683,14 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         className="button"
       >
         <button
-          className="c3"
+          className="c4"
           color="primary"
-          disabled={false}
+          disabled={true}
           onClick={[Function]}
           size="md"
         >
           <span
-            className="c4"
+            className="c5"
             size="md"
           >
             +
@@ -682,6 +726,11 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           >
             Buscapina Compositum N 500Mg-10Mg Grageas 
           </h4>
+          <h5
+            className="c3"
+          >
+            No disponible
+          </h5>
         </div>
         <div
           className="price"
@@ -699,14 +748,14 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         className="button"
       >
         <button
-          className="c3"
+          className="c4"
           color="primary"
-          disabled={false}
+          disabled={true}
           onClick={[Function]}
           size="md"
         >
           <span
-            className="c4"
+            className="c5"
             size="md"
           >
             +
@@ -716,17 +765,17 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
     </div>
   </div>
   <div
-    className="c5"
+    className="c6"
   >
     <button
-      className="c6"
+      className="c7"
       color="secondary"
       data-cy="load-more_button"
       onClick={[Function]}
       size="md"
     >
       <span
-        className="c4"
+        className="c5"
         size="md"
       >
         More +
@@ -734,7 +783,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
     </button>
   </div>
   <div
-    className="c7"
+    className="c8"
   />
 </div>
 `;
