@@ -1,4 +1,4 @@
-import React, { MouseEvent, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Thumbnail } from "@components/molecules";
 import { TaxedMoney } from "@components/containers";
 import * as S from "./styles";
@@ -28,18 +28,18 @@ export const ProductTileAUNA: React.FC<IProps> = ({
 
   const price = product?.pricing?.priceRange?.start;
 
-  const canAddToCart =
-    typeof product.quantity === "number" &&
-    product.quantity < MAX_ORDER_PER_PRODUCT &&
-    Array.isArray(product.variants) &&
+  const productQuantity = product.quantity || 0;
+  const productQuantityLessThenMax = productQuantity < MAX_ORDER_PER_PRODUCT;
+  const areMoreProductsAvailable = Array.isArray(product.variants) &&
     product.variants[0].quantityAvailable &&
-    product.quantity < product.variants[0].quantityAvailable;
+    productQuantity < product.variants[0].quantityAvailable;
+  const canAddToCart = productQuantityLessThenMax && areMoreProductsAvailable;
 
-  const onAddToCart = (event: MouseEvent) => {
-    if (addToCart && canAddToCart) {
-      const firstProductVariant = product.variants && product.variants[0];
+  const onAddToCart = () => {
+    if (canAddToCart) {
+      const firstProductVariant = product?.variants?.[0];
       if (firstProductVariant) {
-        addToCart(firstProductVariant.id, 1);
+        addToCart?.(firstProductVariant.id, 1);
       }
     }
   };

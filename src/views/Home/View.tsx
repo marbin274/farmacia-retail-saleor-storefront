@@ -21,7 +21,7 @@ const homePageVariables:HomePageVariables = {
 }
 
 const View: React.FC = () => {
-  const { addItem } = useCart();
+  const { items, addItem } = useCart();
   const extractNodes = (productEdges: HomePage_products) => productEdges.edges.map(edge => edge.node);
 
   return (
@@ -51,6 +51,7 @@ const View: React.FC = () => {
                           <Page
                               addToCart={addToCart}
                               loading={loading}
+                              items={items}
                               products={productList}
                               shop={ data.shop }
                           />
