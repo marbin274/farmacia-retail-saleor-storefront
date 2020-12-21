@@ -85,13 +85,6 @@ export const AddressForm: React.FC<IProps> = ({
         }
         setSubmitting(false);
       }}
-      validate={data => {
-        if (setFormValue) {
-          setFormValue(data);
-        }
-      }}
-      validateOnBlur={true}
-      validateOnChange={false}
       validationSchema={!comeFromModal ? addressFormSchema : {}}
     >
       {({

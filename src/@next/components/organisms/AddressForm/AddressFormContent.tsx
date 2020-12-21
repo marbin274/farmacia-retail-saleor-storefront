@@ -260,7 +260,11 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                     autoComplete="documento"
                     readOnly={user}
                     errors={fieldErrors!.documentNumber}
-                    {...basicInputProps()}
+                    onBlur={handleBlur}
+                    onChange={(e)=>{
+                      const value = e.currentTarget?.value?.toUpperCase();                      
+                      setFieldValue("documentNumber", value);
+                    }}
                   />
                 </S.RowWithTwoCells>
                 <S.RowWithTwoCells>
