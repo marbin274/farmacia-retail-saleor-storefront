@@ -23,28 +23,24 @@ const StripeCreditCardForm: React.FC<IProps> = ({
   const [stripeErrors, setStripeErrors] = useState<IFormError[]>([]);
 
   const allErrors = [...errors, ...stripeErrors];
-
+  const intialValues = {
+    cardNumber: "",
+  };
   return (
     <Formik
-      initialValues={null}
+      initialValues={intialValues}
       onSubmit={async (values, { setSubmitting }) => {
         await onSubmit(stripe, elements);
         setSubmitting(false);
       }}
     >
-      {({
-        handleChange,
-        handleSubmit,
-        handleBlur,
-        values,
-        isSubmitting,
-        isValid,
-      }) => (
+      {({ handleChange, handleSubmit }) => (
         <S.Form id={formId} ref={formRef} onSubmit={handleSubmit}>
           <S.Card>
             <S.CardNumberField>
               <StripeInputElement
                 type="CardNumber"
+                name="cardNumber"
                 label="Card number"
                 onChange={event => {
                   handleChange(event);

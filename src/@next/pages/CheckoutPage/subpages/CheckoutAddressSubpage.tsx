@@ -12,9 +12,10 @@ import { CheckoutAddress } from "@components/organisms";
 import { useCheckout, useUserDetails } from "@sdk/react";
 import { ShopContext } from "@temp/components/ShopProvider/context";
 // import { CHECKOUT_STEPS } from "@temp/core/config";
-import { IAddress, IFormError } from "@types";
+import { IAddress, IAddressWithEmail, IFormError } from "@types";
 import { filterNotEmptyArrayItems } from "@utils/misc";
 import { IPrivacyPolicy } from "@temp/@sdk/api/Checkout/types";
+import { addressFormSchema } from "@temp/@next/components/organisms/AddressForm/adddressForm.schema";
 
 export interface ICheckoutAddressSubpageHandles {
   submitAddress: () => void;
@@ -33,13 +34,49 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
   const checkoutAddressFormRef = useRef<HTMLFormElement>(null);
   const checkoutNewAddressFormId = "new-address-form";
 
+  const _addressFormSchema = addressFormSchema;
+
+  const handleFormValues = (data: IAddressWithEmail | undefined) => {
+    _addressFormSchema
+      .isValid({
+        city: data?.city,
+        dataTreatmentPolicy: data?.dataTreatmentPolicy,
+        documentNumber: data?.documentNumber,
+        email: data?.email,
+        firstName: data?.firstName,
+        phone: data?.phone,
+        streetAddress1: data?.streetAddress1,
+        streetAddress2: data?.streetAddress2,
+        termsAndConditions: data?.termsAndConditions,
+      })
+      .then((valid: boolean) => {
+        if (valid) {
+          setShippingAddress(
+            {
+              city: data?.city,
+              country: {
+                code: "PE",
+                country: "Peru",
+              },
+              firstName: data?.firstName,
+              id: data?.id,
+              phone: data?.phone,
+              streetAddress1: data?.streetAddress1,
+              streetAddress2: data?.streetAddress2,
+            },
+            data?.email ? data?.email : "",
+            {
+              dataTreatmentPolicy: data?.dataTreatmentPolicy,
+              termsAndConditions: data?.termsAndConditions,
+            },
+            data?.documentNumber ? data.documentNumber : ""
+          );
+        }
+      });
+  };
+
   useImperativeHandle(ref, () => ({
     handleRequiredFields: () => {
-      // if (email.length == 0) {
-      //   setErrors([{ field: "email", message: "Por favor indique email." }]);
-      //   return false;
-      // }
-
       return true;
     },
     submitAddress: () => {
@@ -65,7 +102,6 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
   const { countries } = useContext(ShopContext);
 
   const [errors, setErrors] = useState<IFormError[]>([]);
-
   const checkoutShippingAddress = checkout?.shippingAddress
     ? {
         ...checkout?.shippingAddress,
@@ -99,7 +135,10 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
       },
       shippingEmail,
       privacyPolicy
-        ? privacyPolicy
+        ? {
+            dataTreatmentPolicy: privacyPolicy?.dataTreatmentPolicy,
+            termsAndConditions: privacyPolicy.termsAndConditions,
+          }
         : { dataTreatmentPolicy: false, termsAndConditions: false },
       documentNumber ? documentNumber : ""
     );
@@ -144,6 +183,7 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
       user={user}
       newAddressFormId={checkoutNewAddressFormId}
       setShippingAddress={handleSetShippingAddress}
+      setFormValue={handleFormValues}
     />
   );
 };

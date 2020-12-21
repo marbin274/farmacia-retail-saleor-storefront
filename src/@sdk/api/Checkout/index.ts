@@ -159,7 +159,9 @@ export class SaleorCheckoutAPI extends ErrorListener
         "setShippingAddress",
         {
           checkoutId,
+          documentNumber,
           email,
+          privacyPolicy,
           selectedShippingAddressId: shippingAddress.id,
           shippingAddress,
         }

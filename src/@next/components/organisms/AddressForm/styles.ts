@@ -1,15 +1,22 @@
 import { media, styled } from "@styles";
-import { aunaBrand3, white, aunaInteractive } from "@styles/constants";
+import {
+  aunaBrand3,
+  white,
+  aunaInteractive,
+  aunaError,
+  smallFontSize,
+  smallFontWeight,
+} from "@styles/constants";
 
 export const AddressForm = styled.form`
   width: 100%;
-  svg {
-    margin-top: 0.4rem;
-  }
 
   .privacyAndPolicies {
     margin-top: 2rem;
     width: 100%;
+    svg {
+      margin-top: 0.4rem;
+    }
     ${media.smallScreen`
       width: 100%;
     `}
@@ -29,6 +36,12 @@ export const AddressForm = styled.form`
     a {
       color: ${aunaInteractive};
     }
+  }
+
+  .labelValidation {
+    color: ${aunaError};
+    font-size: ${smallFontSize};
+    font-weight: ${smallFontWeight};
   }
 `;
 

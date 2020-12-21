@@ -92,6 +92,8 @@ export const updateCheckoutShippingAddressMutation = gql`
     $checkoutId: ID!
     $shippingAddress: AddressInput!
     $email: String!
+    $documentNumber: String!
+    $privacyPolicy: PrivacyPolicyInput!
   ) {
     checkoutShippingAddressUpdate(
       checkoutId: $checkoutId
@@ -105,7 +107,12 @@ export const updateCheckoutShippingAddressMutation = gql`
         ...Checkout
       }
     }
-    checkoutEmailUpdate(checkoutId: $checkoutId, email: $email) {
+    checkoutEmailUpdate(
+      checkoutId: $checkoutId
+      email: $email
+      documentNumber: $documentNumber
+      privacyPolicy: $privacyPolicy
+    ) {
       checkout {
         ...Checkout
       }

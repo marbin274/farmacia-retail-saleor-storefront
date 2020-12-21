@@ -273,16 +273,19 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
           });
         });
       });
-  }
+  };
 
-  const removeNiubizElements = React.useCallback((script: HTMLScriptElement, idIframes: string): void => {
-    script.remove();
-    let iframes = document.getElementById(idIframes);
-    do {
-      iframes?.remove();
-      iframes = document.getElementById(idIframes);
-    } while (iframes);
-  }, []);
+  const removeNiubizElements = React.useCallback(
+    (script: HTMLScriptElement, idIframes: string): void => {
+      script.remove();
+      let iframes = document.getElementById(idIframes);
+      do {
+        iframes?.remove();
+        iframes = document.getElementById(idIframes);
+      } while (iframes);
+    },
+    []
+  );
 
   const configureErrorMessages = (errors: any) => {
     setSubmitErrors(errors);
@@ -353,14 +356,14 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
 
   useEffect(() => {
     const script: HTMLScriptElement = document.createElement("script");
-    const idIframes: string = 'tmx_tags_iframe';// IFrame Ids loaded by Niubiz - share same Id
+    const idIframes: string = "tmx_tags_iframe"; // IFrame Ids loaded by Niubiz - share same Id
     script.src = payformUrl;
     script.async = true;
     document.body.appendChild(script);
     createTokenScript();
     return () => {
       removeNiubizElements(script, idIframes);
-    }
+    };
   }, []);
 
   const allErrors = [...errors, ...submitErrors];
@@ -373,11 +376,15 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
     },
   };
 
+  const initialValues = {
+    initial: "",
+  };
+
   return (
     <div>
       {showForm ? <label htmlFor=""></label> : <Loader fullScreen={true} />}
       <Formik
-        initialValues={null}
+        initialValues={initialValues}
         onSubmit={(values, { setSubmitting }) => {
           handleSubmit(values);
           setSubmitting(false);
@@ -391,7 +398,9 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                 style={showForm ? styles.show : styles.hidde}
               >
                 <S.Payment className="card-body">
-                  <h4 className="card-title">Paga con tarjetas visa y mastercard</h4>
+                  <h4 className="card-title">
+                    Paga con tarjetas visa y mastercard
+                  </h4>
                   <h5>INGRESA LOS DATOS DE LA TARJETA</h5>
                   <div className="row">
                     <div className="identity">
@@ -430,18 +439,18 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                         className="form-control form-control-sm ncp-card"
                       ></div>
                       {formErrors.length &&
-                        formErrors.filter(x => x.code === errorsDictionary[0])
-                          .length ? (
-                          <div className="error">
-                            {
-                              formErrors.filter(
-                                x => x.code === errorsDictionary[0]
-                              )[0].message
-                            }
-                          </div>
-                        ) : (
-                          ""
-                        )}
+                      formErrors.filter(x => x.code === errorsDictionary[0])
+                        .length ? (
+                        <div className="error">
+                          {
+                            formErrors.filter(
+                              x => x.code === errorsDictionary[0]
+                            )[0].message
+                          }
+                        </div>
+                      ) : (
+                        ""
+                      )}
                     </div>
                     <br />
 
@@ -453,18 +462,18 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                           className="form-control form-control-sm"
                         ></div>
                         {formErrors.length &&
-                          formErrors.filter(x => x.code === errorsDictionary[1])
-                            .length ? (
-                            <div className="error">
-                              {
-                                formErrors.filter(
-                                  x => x.code === errorsDictionary[1]
-                                )[0].message
-                              }
-                            </div>
-                          ) : (
-                            ""
-                          )}
+                        formErrors.filter(x => x.code === errorsDictionary[1])
+                          .length ? (
+                          <div className="error">
+                            {
+                              formErrors.filter(
+                                x => x.code === errorsDictionary[1]
+                              )[0].message
+                            }
+                          </div>
+                        ) : (
+                          ""
+                        )}
                       </div>
                       <div className="cvv">
                         <label htmlFor="">CVC</label>
@@ -473,18 +482,18 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                           className="form-control form-control-sm"
                         ></div>
                         {formErrors.length &&
-                          formErrors.filter(x => x.code === errorsDictionary[2])
-                            .length ? (
-                            <div className="error">
-                              {
-                                formErrors.filter(
-                                  x => x.code === errorsDictionary[2]
-                                )[0].message
-                              }
-                            </div>
-                          ) : (
-                            ""
-                          )}
+                        formErrors.filter(x => x.code === errorsDictionary[2])
+                          .length ? (
+                          <div className="error">
+                            {
+                              formErrors.filter(
+                                x => x.code === errorsDictionary[2]
+                              )[0].message
+                            }
+                          </div>
+                        ) : (
+                          ""
+                        )}
                       </div>
                     </div>
                     <div>

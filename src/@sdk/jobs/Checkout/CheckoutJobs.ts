@@ -74,18 +74,24 @@ export class CheckoutJobs {
     shippingAddress,
     email,
     selectedShippingAddressId,
+    documentNumber,
+    privacyPolicy,
   }: {
     checkoutId: string;
     shippingAddress: ICheckoutAddress;
     email: string;
     selectedShippingAddressId?: string;
+    documentNumber: string;
+    privacyPolicy: IPrivacyPolicy;
   }): PromiseCheckoutJobRunResponse => {
     const checkout = this.repository.getCheckout();
 
     const { data, error } = await this.networkManager.setShippingAddress(
       shippingAddress,
       email,
-      checkoutId
+      checkoutId,
+      documentNumber,
+      privacyPolicy
     );
 
     if (error) {
@@ -99,9 +105,12 @@ export class CheckoutJobs {
       this.repository.setCheckout({
         ...checkout,
         billingAsShipping: false,
+        dataTreatmentPolicy: data?.dataTreatmentPolicy,
+        documentNumber: data?.documentNumber,
         email: data?.email,
         selectedShippingAddressId,
         shippingAddress: data?.shippingAddress,
+        termsAndConditions: data?.termsAndConditions,
       });
       return { data };
     }

@@ -20,7 +20,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
   const [canAddToCart, setCanAddToCart] = useState(false);
 
   useEffect(() => {
-    if (product.thumbnail && product.thumbnail.url && product.thumbnail2x && product.thumbnail2x.url) {
+    if (product.thumbnail?.url && product.thumbnail2x?.url) {
       setThumbnails({
         thumbnail: { url: product.thumbnail.url },
         thumbnail2x: { url: product.thumbnail2x.url },

@@ -1,6 +1,11 @@
 import { ICheckout, IPrivacyPolicy } from "@temp/@sdk/api/Checkout/types";
 import { GetShop_shop_countries } from "@temp/@sdk/queries/gqlTypes/GetShop";
-import { IAddress, IAddressWithAddressType, IFormError } from "@types";
+import {
+  IAddress,
+  IAddressWithAddressType,
+  IAddressWithEmail,
+  IFormError,
+} from "@types";
 
 export declare type Address = {
   id: string;
@@ -26,4 +31,5 @@ export interface IProps {
     privacyPolicy?: IPrivacyPolicy,
     documentNumber?: string
   ) => void;
+  setFormValue?: (address?: IAddressWithEmail) => void;
 }

@@ -5,26 +5,58 @@ import * as S from "./styles";
 import { PropsWithFormik } from "./types";
 import { Checkbox } from "../../atoms/Checkbox";
 import { IPrivacyPolicy } from "@temp/@sdk/api/Checkout/types";
-import { IAddressWithEmail } from "@temp/@next/types";
+import { IAddressWithEmail, IFormError } from "@temp/@next/types";
+import { ErrorMessage } from "../../atoms/ErrorMessage/ErrorMessage";
 
 export const AddressFormContent: React.FC<PropsWithFormik> = ({
   formRef,
   handleChange,
   handleBlur,
   formId,
+  formikErrors,
   errors,
   handleSubmit,
   values,
   citiesOptions,
   setFieldValue,
+  setFieldTouched,
   onSelect,
   comeFromModal,
+  touched,
+  user,
 }) => {
   const [privacyAndPolicies, setPrivacyAndPolicies] = useState(
     values && values?.termsAndConditions ? values?.termsAndConditions : false
   );
 
+  const [citySelected, setCitySelected] = useState(false);
+  errors = [];
+
+  for (const property of Object.keys(formikErrors)) {
+    const _err: IFormError = {
+      field: property,
+      message: formikErrors[property],
+    };
+    if (touched.hasOwnProperty(property) || citySelected) {
+      errors.push(_err);
+    }
+  }
+
+  if (
+    !privacyAndPolicies &&
+    citySelected &&
+    errors.filter(x => x.field === "termsAndConditions").length < 1
+  ) {
+    const _err: IFormError = {
+      field: "termsAndConditions",
+      message: "Por favor acepte los términos y condiciones",
+    };
+    errors.push(_err);
+  }
+
   const handlePrivacyAndPolicies = () => {
+    setFieldTouched("termsAndConditions", true);
+    setFieldValue("termsAndConditions", !privacyAndPolicies);
     setPrivacyAndPolicies(!privacyAndPolicies);
   };
 
@@ -42,7 +74,6 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
   );
 
   const _cities: any[] = [];
-
   citiesOptions?.map(x => {
     const item: any = {
       code: x,
@@ -51,7 +82,11 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
     _cities.push(item);
   });
 
-  const selectCity = (value: any) => {
+  const selectCity = (value: any, name: string) => {
+    if (errors && errors.length > 0) {
+      return;
+    }
+
     const _values: IAddressWithEmail | undefined = values;
     if (_values) {
       _values.city = value;
@@ -70,6 +105,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
       if (_values.streetAddress1) {
         streetAddress = _values.streetAddress1.trim();
       }
+
       if (
         onSelect &&
         _values.email &&
@@ -77,11 +113,11 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
         _values.documentNumber &&
         streetAddress.length > 0
       ) {
-        // if (onSelect && documentNumber.length > 0 && _values.email && privacyAndPolicies && streetAddress.length > 0) {
         const policyPrivacy: IPrivacyPolicy = {
           dataTreatmentPolicy: additionals,
           termsAndConditions: privacyAndPolicies,
         };
+        errors = [];
         onSelect(
           _values,
           _values?.email,
@@ -89,6 +125,8 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
           policyPrivacy,
           _values.documentNumber
         );
+      } else {
+        setFieldValue(name, "");
       }
     }
   };
@@ -131,6 +169,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                   data-cy="addressFormPhone"
                   name="phone"
                   placeholder="Teléfono"
+                  maxLength={9}
                   label="Teléfono"
                   value={!values?.phone ? "" : values?.phone}
                   autoComplete="tel"
@@ -185,7 +224,6 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                     }
                     onChange={(value: any, name: any) => {
                       setFieldValue(name, value.code);
-                      selectCity(value.code);
                     }}
                     optionLabelKey="description"
                     optionValueKey="code"
@@ -202,10 +240,11 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                   <TextField
                     data-cy="addressFormFirstName"
                     name="firstName"
-                    label="Nombre Completo"
+                    label="*Nombre Completo"
                     placeholder="Nombre Completo"
                     value={!values?.firstName ? "" : values?.firstName}
                     autoComplete="given-name"
+                    readOnly={user}
                     errors={fieldErrors!.firstName}
                     {...basicInputProps()}
                   />
@@ -214,10 +253,12 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                     name="documentNumber"
                     placeholder="Documento"
                     label="*Documento"
+                    maxLength={20}
                     value={
                       !values?.documentNumber ? "" : values?.documentNumber
                     }
                     autoComplete="documento"
+                    readOnly={user}
                     errors={fieldErrors!.documentNumber}
                     {...basicInputProps()}
                   />
@@ -238,16 +279,17 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                     name="phone"
                     placeholder="Teléfono"
                     label="Teléfono"
+                    maxLength={9}
                     value={!values?.phone ? "" : values?.phone}
                     autoComplete="tel"
                     errors={fieldErrors!.phone}
                     {...basicInputProps()}
                   />
                 </S.RowWithTwoCells>
-                {/* </S.FieldsGroup>
+              </S.FieldsGroup>
               <S.FieldsGroup>
-                {renderGroupLabel(2, "Politicas")} */}
-                <S.RowWithTwoCells>
+                {renderGroupLabel(2, "Politicas")}
+                <S.RowWithOneCell>
                   <div className="privacyAndPolicies">
                     <Checkbox
                       data-cy="addressFormTermsAndConditions"
@@ -268,6 +310,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                         </a>
                       </label>
                     </Checkbox>
+                    <ErrorMessage errors={fieldErrors!.termsAndConditions} />
                   </div>
                   <div className="additionals">
                     <Checkbox
@@ -282,10 +325,10 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                       </label>
                     </Checkbox>
                   </div>
-                </S.RowWithTwoCells>
+                </S.RowWithOneCell>
               </S.FieldsGroup>
               <S.FieldsGroup>
-                {renderGroupLabel(2, "Dirección")}
+                {renderGroupLabel(3, "Dirección")}
                 <S.RowWithTwoCells>
                   <TextField
                     data-cy="addressFormStreetAddress1"
@@ -331,7 +374,8 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                     }
                     onChange={(value: any, name: any) => {
                       setFieldValue(name, value.code);
-                      selectCity(value.code);
+                      selectCity(value.code, name);
+                      setCitySelected(true);
                     }}
                     optionLabelKey="description"
                     optionValueKey="code"

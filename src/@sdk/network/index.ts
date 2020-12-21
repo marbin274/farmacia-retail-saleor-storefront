@@ -414,12 +414,16 @@ export class NetworkManager implements INetworkManager {
   setShippingAddress = async (
     shippingAddress: ICheckoutAddress,
     email: string,
-    checkoutId: string
+    checkoutId: string,
+    documentNumber?: string,
+    privacyPolicy?: IPrivacyPolicy
   ) => {
     try {
       const variables = {
         checkoutId,
+        documentNumber,
         email,
+        privacyPolicy,
         shippingAddress: {
           city: shippingAddress.city,
           companyName: shippingAddress.companyName,
@@ -457,6 +461,22 @@ export class NetworkManager implements INetworkManager {
           error: data?.checkoutShippingAddressUpdate?.errors,
         };
       } else if (data?.checkoutShippingAddressUpdate?.checkout) {
+        if (data.checkoutEmailUpdate?.checkout) {
+          data.checkoutShippingAddressUpdate.checkout.email =
+            data.checkoutEmailUpdate?.checkout.email;
+          data.checkoutShippingAddressUpdate.checkout.documentNumber = data
+            .checkoutEmailUpdate?.checkout.documentNumber
+            ? data.checkoutEmailUpdate?.checkout.documentNumber
+            : data.checkoutShippingAddressUpdate.checkout.documentNumber;
+          data.checkoutShippingAddressUpdate.checkout.termsAndConditions = data
+            .checkoutEmailUpdate?.checkout?.termsAndConditions
+            ? data.checkoutEmailUpdate?.checkout?.termsAndConditions
+            : data.checkoutShippingAddressUpdate.checkout.termsAndConditions;
+          data.checkoutShippingAddressUpdate.checkout.dataTreatmentPolicy = data
+            .checkoutEmailUpdate?.checkout?.dataTreatmentPolicy
+            ? data.checkoutEmailUpdate?.checkout?.dataTreatmentPolicy
+            : data.checkoutShippingAddressUpdate.checkout.dataTreatmentPolicy;
+        }
         return {
           data: this.constructCheckoutModel(
             data.checkoutShippingAddressUpdate.checkout

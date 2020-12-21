@@ -11,7 +11,6 @@ export const TextField: React.FC<IProps> = ({
   ...rest
 }: IProps) => {
   const hasErrors = !!(errors && errors.length);
-
   return (
     <>
       <S.TextField>

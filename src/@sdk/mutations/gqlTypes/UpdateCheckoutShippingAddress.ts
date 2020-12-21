@@ -1237,6 +1237,9 @@ export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout {
   discountName: string | null;
   translatedDiscountName: string | null;
   voucherCode: string | null;
+  documentNumber?: string;
+  dataTreatmentPolicy?: boolean;
+  termsAndConditions?: boolean;
 }
 
 export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_errors {
@@ -1279,4 +1282,11 @@ export interface UpdateCheckoutShippingAddressVariables {
   checkoutId: string;
   shippingAddress: AddressInput;
   email: string;
+  documentNumber?: string;
+  privacyPolicy?: PrivacyPolicyInput;
+}
+
+export interface PrivacyPolicyInput {
+  dataTreatmentPolicy?: boolean;
+  termsAndConditions?: boolean;
 }

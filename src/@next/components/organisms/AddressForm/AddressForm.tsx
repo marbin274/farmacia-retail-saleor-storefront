@@ -5,6 +5,7 @@ import React from "react";
 import { IAddressWithEmail } from "@types";
 import { AddressFormContent } from "./AddressFormContent";
 import { IProps } from "./types";
+import { addressFormSchema } from "./adddressForm.schema";
 
 const ADDRESS_FIELDS = [
   "city",
@@ -33,6 +34,7 @@ export const AddressForm: React.FC<IProps> = ({
   user,
   comeFromModal,
   checkoutData,
+  setFormValue,
   ...props
 }: IProps) => {
   let addressWithPickedFields: Partial<IAddressWithEmail> = {};
@@ -67,7 +69,9 @@ export const AddressForm: React.FC<IProps> = ({
     addressWithPickedFields.phone = user.phone;
     addressWithPickedFields.id = user.addresses[0]?.id;
     addressWithPickedFields.documentNumber = user.documentNumber;
-    addressWithPickedFields.termsAndConditions = user.termsAndConditions;
+    addressWithPickedFields.termsAndConditions = user.termsAndConditions
+      ? user.termsAndConditions
+      : false;
     addressWithPickedFields.dataTreatmentPolicy = user.dataTreatmentPolicy;
   }
 
@@ -81,6 +85,14 @@ export const AddressForm: React.FC<IProps> = ({
         }
         setSubmitting(false);
       }}
+      validate={data => {
+        if (setFormValue) {
+          setFormValue(data);
+        }
+      }}
+      validateOnBlur={true}
+      validateOnChange={false}
+      validationSchema={!comeFromModal ? addressFormSchema : {}}
     >
       {({
         handleChange,
@@ -89,6 +101,10 @@ export const AddressForm: React.FC<IProps> = ({
         values,
         setFieldValue,
         setFieldTouched,
+        errors: formikErrors,
+        touched,
+        isValid,
+        validateForm,
       }) => {
         return (
           <AddressFormContent
@@ -98,12 +114,16 @@ export const AddressForm: React.FC<IProps> = ({
               countriesOptions,
               defaultValue,
               formId,
+              formikErrors,
               handleBlur,
               handleChange,
               handleSubmit,
+              isValid,
               setFieldTouched,
               setFieldValue,
+              touched,
               user,
+              validateForm,
               values,
             }}
             {...props}
