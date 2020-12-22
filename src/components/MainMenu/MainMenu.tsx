@@ -230,14 +230,6 @@ const MainMenu: React.FC = () => {
                         }
                       >
                         <ReactSVG path={userImg} />
-                        <Media
-                          query={{ minWidth: smallScreen }}
-                          render={() => (
-                            <span className="main-menu__user--text">
-                              Ingresar
-                            </span>
-                          )}
-                        />
                       </li>
                     )}
                   </>
