@@ -68,7 +68,7 @@ export const AddressForm: React.FC<IProps> = ({
     addressWithPickedFields.email = user.email;
     addressWithPickedFields.phone = user.phone;
     addressWithPickedFields.id = user.addresses[0]?.id;
-    addressWithPickedFields.documentNumber = user.documentNumber;
+    addressWithPickedFields.documentNumber = user.documentNumber? user.documentNumber : '';
     addressWithPickedFields.termsAndConditions = user.termsAndConditions
       ? user.termsAndConditions
       : false;
