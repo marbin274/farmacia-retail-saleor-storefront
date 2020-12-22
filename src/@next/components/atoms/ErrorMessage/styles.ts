@@ -8,6 +8,7 @@ export const ErrorMessage = styled.div`
 
 export const ErrorParagraph = styled.p`
   margin: 0;
+  line-height: 1rem;
 `;
 
 ErrorMessage.displayName = "S.ErrorMessage";

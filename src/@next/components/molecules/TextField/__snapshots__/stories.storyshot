@@ -445,6 +445,7 @@ exports[`Storyshots @components/molecules/TextField with errors 1`] = `
 
 .c8 {
   margin: 0;
+  line-height: 1rem;
 }
 
 .c5 {

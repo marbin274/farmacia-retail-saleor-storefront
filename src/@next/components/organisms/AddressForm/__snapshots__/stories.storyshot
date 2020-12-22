@@ -379,14 +379,14 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                         onBlur={[Function]}
                         onChange={[Function]}
                         onFocus={[Function]}
-                        placeholder="Nombre Completo"
+                        placeholder="Nombre completo"
                         value=""
                       />
                       <label
                         className="c13"
                         disabled={false}
                       >
-                        *Nombre Completo
+                        *Nombre completo
                       </label>
                     </div>
                   </div>
@@ -414,14 +414,14 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                         onBlur={[Function]}
                         onChange={[Function]}
                         onFocus={[Function]}
-                        placeholder="Documento"
+                        placeholder="Número de documento"
                         value=""
                       />
                       <label
                         className="c13"
                         disabled={false}
                       >
-                        *Documento
+                        *Número de documento
                       </label>
                     </div>
                   </div>
@@ -487,14 +487,14 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                         onBlur={[Function]}
                         onChange={[Function]}
                         onFocus={[Function]}
-                        placeholder="Teléfono"
+                        placeholder="Número de celular"
                         value=""
                       />
                       <label
                         className="c13"
                         disabled={false}
                       >
-                        Teléfono
+                        Número de celular
                       </label>
                     </div>
                   </div>
@@ -502,24 +502,6 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                     className="c14"
                   />
                 </div>
-              </div>
-            </div>
-            <div
-              className="c4"
-            >
-              <div
-                className="c5"
-              >
-                <span
-                  className="c6"
-                >
-                  2
-                </span>
-                <span
-                  className="c7"
-                >
-                  Politicas
-                </span>
               </div>
               <div
                 className="c15"
@@ -627,7 +609,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                 <span
                   className="c6"
                 >
-                  3
+                  2
                 </span>
                 <span
                   className="c7"
@@ -1208,14 +1190,14 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                         onBlur={[Function]}
                         onChange={[Function]}
                         onFocus={[Function]}
-                        placeholder="Nombre Completo"
+                        placeholder="Nombre completo"
                         value=""
                       />
                       <label
                         className="c13"
                         disabled={false}
                       >
-                        *Nombre Completo
+                        *Nombre completo
                       </label>
                     </div>
                   </div>
@@ -1243,14 +1225,14 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                         onBlur={[Function]}
                         onChange={[Function]}
                         onFocus={[Function]}
-                        placeholder="Documento"
+                        placeholder="Número de documento"
                         value=""
                       />
                       <label
                         className="c13"
                         disabled={false}
                       >
-                        *Documento
+                        *Número de documento
                       </label>
                     </div>
                   </div>
@@ -1316,14 +1298,14 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                         onBlur={[Function]}
                         onChange={[Function]}
                         onFocus={[Function]}
-                        placeholder="Teléfono"
+                        placeholder="Número de celular"
                         value=""
                       />
                       <label
                         className="c13"
                         disabled={false}
                       >
-                        Teléfono
+                        Número de celular
                       </label>
                     </div>
                   </div>
@@ -1331,24 +1313,6 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                     className="c14"
                   />
                 </div>
-              </div>
-            </div>
-            <div
-              className="c4"
-            >
-              <div
-                className="c5"
-              >
-                <span
-                  className="c6"
-                >
-                  2
-                </span>
-                <span
-                  className="c7"
-                >
-                  Politicas
-                </span>
               </div>
               <div
                 className="c15"
@@ -1456,7 +1420,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                 <span
                   className="c6"
                 >
-                  3
+                  2
                 </span>
                 <span
                   className="c7"
@@ -2037,14 +2001,14 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                         onBlur={[Function]}
                         onChange={[Function]}
                         onFocus={[Function]}
-                        placeholder="Nombre Completo"
+                        placeholder="Nombre completo"
                         value="John"
                       />
                       <label
                         className="c13"
                         disabled={false}
                       >
-                        *Nombre Completo
+                        *Nombre completo
                       </label>
                     </div>
                   </div>
@@ -2072,14 +2036,14 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                         onBlur={[Function]}
                         onChange={[Function]}
                         onFocus={[Function]}
-                        placeholder="Documento"
+                        placeholder="Número de documento"
                         value=""
                       />
                       <label
                         className="c13"
                         disabled={false}
                       >
-                        *Documento
+                        *Número de documento
                       </label>
                     </div>
                   </div>
@@ -2145,14 +2109,14 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                         onBlur={[Function]}
                         onChange={[Function]}
                         onFocus={[Function]}
-                        placeholder="Teléfono"
+                        placeholder="Número de celular"
                         value="555-55555"
                       />
                       <label
                         className="c13"
                         disabled={false}
                       >
-                        Teléfono
+                        Número de celular
                       </label>
                     </div>
                   </div>
@@ -2160,24 +2124,6 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                     className="c14"
                   />
                 </div>
-              </div>
-            </div>
-            <div
-              className="c4"
-            >
-              <div
-                className="c5"
-              >
-                <span
-                  className="c6"
-                >
-                  2
-                </span>
-                <span
-                  className="c7"
-                >
-                  Politicas
-                </span>
               </div>
               <div
                 className="c15"
@@ -2285,7 +2231,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                 <span
                   className="c6"
                 >
-                  3
+                  2
                 </span>
                 <span
                   className="c7"

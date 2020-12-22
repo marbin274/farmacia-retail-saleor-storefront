@@ -25,6 +25,7 @@ exports[`Storyshots @components/atoms/ErrorMessage default 1`] = `
 
 .c2 {
   margin: 0;
+  line-height: 1rem;
 }
 
 <div
@@ -70,6 +71,7 @@ exports[`Storyshots @components/atoms/ErrorMessage with multiple errors 1`] = `
 
 .c2 {
   margin: 0;
+  line-height: 1rem;
 }
 
 <div

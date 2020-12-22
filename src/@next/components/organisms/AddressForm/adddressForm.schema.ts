@@ -1,27 +1,27 @@
 import * as Yup from "yup";
 
 export const addressFormSchema = Yup.object().shape({
-  city: Yup.string().required("Indique el distrito"),
+  city: Yup.string().required("Selecciona el distrito de entrega"),
   dataTreatmentPolicy: Yup.boolean(),
   documentNumber: Yup.string()
     .uppercase()
     .trim()
-    .min(8, "El tamaño mínimo es 8")
-    .max(20, "El tamaño máximo es 20")
-    .required("Ingrese su número de documento")
-    .matches(/^[0-9A-Z]+$/, "Ingrese letras (A-Z) y números (0-9)"),
+    .min(8, "Debe contener de 8 a 20 caracteres, no incluir espacios")
+    .max(20, "Debe contener de 8 a 20 caracteres, no incluir espacios")
+    .required("Ingresa tu número de documento")
+    .matches(/^[0-9A-Z]+$/, "Debe contener de 8 a 20 caracteres, no incluir espacios"),
   email: Yup.string()
     .required("Indique email")
-    .matches(/^[0-9a-zA-Z@.]+$/, "Ingrese letras (a-z), números (0-9) y puntos (.)")
-    .email("Indique email válido"),
-  firstName: Yup.string().required("Ingrese su nombre"),
+    .matches(/^[0-9a-zA-Z@.]+$/, "Debe contener un correo válido, ingresa letras (A-Z), números (0-9), (@) y (.), no incluir espacios")
+    .email("Debe contener un correo válido, ingresa letras (A-Z), números (0-9), (@) y (.), no incluir espacios"),
+  firstName: Yup.string().required("Ingresa tu nombre y apellido"),
   phone: Yup.string()
     .trim()
-    .min(9, "El teléfono debe contener 9 digitos")
-    .matches(/[9][0-9]*$/, "El teléfono no es válido. ejem: 984578545"),
-  streetAddress1: Yup.string().required("Indique dirección"),
-  streetAddress2: Yup.string(),
+    .min(9, "Debe contener números (0-9) con 9 digitos, no incluir espacios, ni letras (A-Z)")
+    .matches(/[9][0-9]*$/, "Debe contener números (0-9) con 9 digitos, no incluir espacios, ni letras (A-Z)"),
+  streetAddress1: Yup.string().trim().required("Ingresa tu dirección exacta"),
+  streetAddress2: Yup.string().trim(),
   termsAndConditions: Yup.boolean()
-    .oneOf([true], "Acepte los términos y condiciones")
-    .required("Acepte los términos y condiciones."),
+    .oneOf([true], "Debes aceptar para continuar")
+    .required("Debes aceptar para continuar"),
 });
