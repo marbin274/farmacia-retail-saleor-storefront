@@ -11,19 +11,14 @@
   position: relative;
   width: 1140px;
   z-index: 1;
-  // vertical-align: middle;
 
   @media (max-width: $medium-screen) {
     padding: 12px 19px 12px 3px;
   }
 
   &__left {
+    display: flex;
     flex: 1;
-
-    @media (min-width: $medium-screen) {
-      display: flex;
-      flex: 1;
-    }
 
     ul {
       display: flex;
@@ -33,10 +28,6 @@
 
   &__right {
     flex: 1;
-
-    @media (min-width: $medium-screen) {
-      flex: 1;
-    }
 
     ul {
       display: flex;
@@ -49,12 +40,7 @@
     align-self: center;
     display: flex;
     flex: 1;
-
-    svg {
-      @media (min-width: $small-screen) {
-        // width: 6rem;
-      }
-    }
+    justify-content: center;
 
     ul {
       align-items: center;
@@ -205,7 +191,7 @@
 
     @media (max-width: 1100px) {
       font-size: 0.875rem;
-      padding: 0 .7rem;
+      padding: 0 0.7rem;
     }
 
     &--active {
@@ -247,7 +233,6 @@
         position: relative;
         width: 188px;
 
-        // 2nd level name
         > a {
           font-size: $base-font-size;
           position: relative;
@@ -270,7 +255,6 @@
         }
 
         ul {
-          // 3rd+ level names
           a {
             font-size: $small-font-size;
             font-weight: normal;

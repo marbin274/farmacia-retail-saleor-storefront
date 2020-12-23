@@ -35,6 +35,8 @@ const MainMenu: React.FC = () => {
   const [signOut] = useSignOut();
   const { items } = useCart();
 
+  const mediumScreenPlusOne = "993px";
+
   const handleSignOut = () => {
     signOut();
   };
@@ -76,7 +78,7 @@ const MainMenu: React.FC = () => {
                       )}
                     />
                     <Media
-                      query={{ minWidth: mediumScreen }}
+                      query={{ minWidth: mediumScreenPlusOne }}
                       render={() => (
                         <Link to={appPaths.baseUrl}>
                           <ReactSVG path={logoImg} />
@@ -103,11 +105,6 @@ const MainMenu: React.FC = () => {
                                         Mi cuenta
                                       </Link>
                                     </li>
-                                    {/* <li data-testid="order_history__link">
-                                      <Link to={appPaths.orderHistoryUrl}>
-                                        Order history
-                                      </Link>
-                                    </li> */}
                                     <li data-testid="address_book__link">
                                       <Link to={appPaths.addressBookUrl}>
                                         Mis direcciones
@@ -154,7 +151,7 @@ const MainMenu: React.FC = () => {
                 return (
                   <ul>
                     <Media
-                      query={{ minWidth: mediumScreen }}
+                      query={{ minWidth: mediumScreenPlusOne }}
                       render={() =>
                         items.map(item => (
                           <li
