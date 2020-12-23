@@ -17,8 +17,8 @@ export const addressFormSchema = Yup.object().shape({
   firstName: Yup.string().required("Ingresa tu nombre y apellido"),
   phone: Yup.string()
     .trim()
-    .min(9, "Debe contener números (0-9) con 9 digitos, no incluir espacios, ni letras (A-Z)")
-    .matches(/[9][0-9]*$/, "Debe contener números (0-9) con 9 digitos, no incluir espacios, ni letras (A-Z)"),
+    .min(9, "Debe contener 9 dígitos comenzando con 9, no incluir espacios, ni letras (A-Z)")
+    .matches(/^[9][0-9]*$/, "Debe contener 9 dígitos comenzando con 9, no incluir espacios, ni letras (A-Z)"),
   streetAddress1: Yup.string().trim().required("Ingresa tu dirección exacta"),
   streetAddress2: Yup.string().trim(),
   termsAndConditions: Yup.boolean()
