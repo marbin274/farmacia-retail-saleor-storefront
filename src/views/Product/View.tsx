@@ -20,8 +20,8 @@ const canDisplay = (product: ProductDetails_product) =>
       !!product.pricing &&
       !!product.variants
   );
-const extractMeta = (product: ProductDetails_product) => ({
-  custom: [
+const extractMeta = (product: ProductDetails_product) => {
+  const productMetas: Array<{ content: string, property: string }> = [
     {
       content: product.pricing.priceRange.start.gross.amount.toString(),
       property: "product:price:amount",
@@ -34,17 +34,22 @@ const extractMeta = (product: ProductDetails_product) => ({
       content: product.isAvailable ? "in stock" : "out off stock",
       property: "product:isAvailable",
     },
-    {
+  ];
+  if (product.category) {
+    productMetas.push({
       content: product.category.name,
       property: "product:category",
-    },
-  ],
-  description: product.seoDescription || product.descriptionJson,
-  image: maybe(() => product.thumbnail.url, null),
-  title: product.seoTitle || product.name,
-  type: "product.item",
-  url: window.location.href,
-});
+    });
+  }
+  return {
+    custom: productMetas,
+    description: product.seoDescription || product.descriptionJson,
+    image: maybe(() => product.thumbnail.url, null),
+    title: product.seoTitle || product.name,
+    type: "product.item",
+    url: window.location.href,
+  };
+};
 
 const View: React.FC<RouteComponentProps<{ id: string }>> = ({ match }) => {
   const { addItem, items } = useCart();

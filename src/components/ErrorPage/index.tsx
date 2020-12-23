@@ -20,7 +20,7 @@ const ErrorPage: React.FC = () => (
             <br />
             <p>Para cualquier consulta o sugerencia, por favor escríbenos a:</p>
             <br />
-            <p><EmailLink link="consultas@farmauna.com" /></p>
+            <EmailLink link="ayuda@auna.pe" />
         </div>
     </div>
 );

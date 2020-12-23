@@ -156,24 +156,23 @@ exports[`Storyshots @components/organisms/UnderConstruction UnderConstruction 1`
             <p>
               Sé parte de este proyecto y cuéntanos si encuentras algún problema a:
             </p>
-            <p>
-              <span
-                className="c5"
+            <br />
+            <span
+              className="c5"
+            >
+              <a
+                href="ayuda@auna.pe"
               >
-                <a
-                  href="consultas@farmauna.com"
+                <span
+                  className="c6"
                 >
-                  <span
-                    className="c6"
-                  >
-                    <div />
-                  </span>
-                  <span>
-                    consultas@farmauna.com
-                  </span>
-                </a>
-              </span>
-            </p>
+                  <div />
+                </span>
+                <span>
+                  ayuda@auna.pe
+                </span>
+              </a>
+            </span>
           </div>
           <div
             className="c7"
