@@ -109,14 +109,14 @@ const startApp = async () => {
         if (authenticated) {
           alert.show(
             {
-              title: "You are now logged in",
+              title: "¡Hola de nuevo!",
             },
             { type: "success" }
           );
         } else {
           alert.show(
             {
-              title: "You are now logged out",
+              title: "Cerraste sesión",
             },
             { type: "success" }
           );

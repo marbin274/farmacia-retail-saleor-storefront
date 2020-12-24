@@ -201,7 +201,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
         );
       } else {
         changeSubmitProgress(false);
-        setGatewayErrors([{ message: "Please choose payment method." }]);
+        setGatewayErrors([{ message: "Selecciona un método de pago para continuar" }]);
       }
     }
   };

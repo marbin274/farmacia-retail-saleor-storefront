@@ -60,7 +60,7 @@ const AddressBook: React.FC<{
           }}
           userId={user.id}
           {...{ defaultValue: defaultCountry ? defaultCountry : {} }}
-          submitBtnText={"Agregar"}
+          submitBtnText={"Añadir dirección"}
           title={"Agregar nueva direccion"}
           {...{ countriesOptions: countries }}
           formId="address-form"

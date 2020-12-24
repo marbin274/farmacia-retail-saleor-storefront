@@ -24,7 +24,7 @@ const showSuccessNotification = (
     alert.show(
       {
         title: data.accountRegister.requiresConfirmation
-          ? "Please check your e-mail for further instructions"
+          ? "Hemos enviado siguientes instrucciones. Revisa tu correo electrónico."
           : "New user has been created",
       },
       { type: "success", timeout: 5000 }
