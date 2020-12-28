@@ -52,23 +52,23 @@ export const AddressForm: React.FC<IProps> = ({
   }
 
   if (user) {
-    addressWithPickedFields.city = user.addresses[0]?.city
+    addressWithPickedFields.city = user.addresses?.[0]?.city
       ? user.addresses[0]?.city
       : checkoutData?.shippingAddress?.city;
     addressWithPickedFields.firstName =
       user.firstName.replace(/^\w/, (c: any) => c.toUpperCase()) +
       " " +
       user.lastName.replace(/^\w/, (c: any) => c.toUpperCase());
-    addressWithPickedFields.streetAddress1 = user.addresses[0]?.streetAddress1
+    addressWithPickedFields.streetAddress1 = user.addresses?.[0]?.streetAddress1
       ? user.addresses[0]?.streetAddress1
       : checkoutData?.shippingAddress?.streetAddress1;
-    addressWithPickedFields.streetAddress2 = user.addresses[0]?.streetAddress2
+    addressWithPickedFields.streetAddress2 = user.addresses?.[0]?.streetAddress2
       ? user.addresses[0]?.streetAddress2
       : checkoutData?.shippingAddress?.streetAddress2;
     addressWithPickedFields.email = user.email;
     addressWithPickedFields.phone = user.phone;
-    addressWithPickedFields.id = user.addresses[0]?.id;
-    addressWithPickedFields.documentNumber = user.documentNumber? user.documentNumber : '';
+    addressWithPickedFields.id = user.addresses?.[0]?.id;
+    addressWithPickedFields.documentNumber = user.documentNumber ? user.documentNumber : '';
     addressWithPickedFields.termsAndConditions = user.termsAndConditions
       ? user.termsAndConditions
       : false;

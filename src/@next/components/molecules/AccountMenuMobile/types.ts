@@ -1,4 +1,7 @@
 export interface IProps {
-  links: any[];
+  links: Array<{
+    url: string;
+    label: string;
+  }>;
   active: string;
 }

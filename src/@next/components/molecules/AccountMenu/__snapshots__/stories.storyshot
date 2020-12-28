@@ -34,12 +34,12 @@ exports[`Storyshots @components/molecules/AccountMenu default 1`] = `
 .c4 {
   cursor: pointer;
   padding-bottom: 1.5rem;
+  color: #06847B;
 }
 
 .c5 {
   cursor: pointer;
   padding-bottom: 1.5rem;
-  color: #06847B;
 }
 
 .c1 {
@@ -62,39 +62,25 @@ exports[`Storyshots @components/molecules/AccountMenu default 1`] = `
       </div>
       <a
         data-testid="account_menu__link"
-        href=""
+        href="/account/"
         onClick={[Function]}
       >
         <div
           className="c4"
-        />
+        >
+          Mi perfil
+        </div>
       </a>
       <a
         data-testid="account_menu__link"
-        href=""
+        href="/address-book/"
         onClick={[Function]}
       >
         <div
           className="c5"
-        />
-      </a>
-      <a
-        data-testid="account_menu__link"
-        href=""
-        onClick={[Function]}
-      >
-        <div
-          className="c4"
-        />
-      </a>
-      <a
-        data-testid="account_menu__link"
-        href=""
-        onClick={[Function]}
-      >
-        <div
-          className="c4"
-        />
+        >
+          Mis direcciones
+        </div>
       </a>
     </div>
   </div>

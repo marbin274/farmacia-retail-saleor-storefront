@@ -12,7 +12,10 @@ export const ProductTileAUNA: React.FC<IProps> = ({
   linkProduct,
   product,
 }: IProps) => {
-  const [thumbnails, setThumbnails] = useState({
+  const [thumbnails, setThumbnails] = useState<{
+    thumbnail: { url: string | undefined };
+    thumbnail2x: { url: string | undefined };
+  }>({
     thumbnail: { url: "" },
     thumbnail2x: { url: "" },
   });
@@ -20,14 +23,10 @@ export const ProductTileAUNA: React.FC<IProps> = ({
   const [canAddToCart, setCanAddToCart] = useState(false);
 
   useEffect(() => {
-    if (product.thumbnail?.url && product.thumbnail2x?.url) {
-      setThumbnails({
-        thumbnail: { url: product.thumbnail.url },
-        thumbnail2x: { url: product.thumbnail2x.url },
-      });
-    }
-
-
+    setThumbnails({
+      thumbnail: { url: product?.thumbnail?.url || "" },
+      thumbnail2x: { url: product?.thumbnail2x?.url || "" },
+    });
   }, [product.thumbnail, product.thumbnail2x]);
 
   useEffect(() => {

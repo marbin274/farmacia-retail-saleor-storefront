@@ -5,19 +5,23 @@ import React from "react";
 import { MemoryRouter } from "react-router";
 import { AccountMenu } from ".";
 
-const links = [
-  "/personal-information/",
-  "/address-book/",
-  "/order-history/",
-  "/payment-options/",
-];
-const active = "/address-book/";
-
-const DEFAULT_PROPS = { ...{ links, active } };
+const PROPS = {
+  active: "/account/",
+  links: [
+    {
+      label: "Mi perfil",
+      url: "/account/",
+    },
+    {
+      label: "Mis direcciones",
+      url: "/address-book/",
+    },
+  ],
+};
 
 describe("<AccountMenu />", () => {
   it("exists", () => {
-    const wrapper = shallow(<AccountMenu {...DEFAULT_PROPS} />);
+    const wrapper = shallow(<AccountMenu {...PROPS} />);
 
     expect(wrapper.exists()).toEqual(true);
   });
@@ -25,13 +29,12 @@ describe("<AccountMenu />", () => {
   it("should contain proper link names converted from urls", () => {
     const wrapper = mount(
       <MemoryRouter initialEntries={["/"]}>
-        <AccountMenu {...DEFAULT_PROPS} />
+        <AccountMenu {...PROPS} />
       </MemoryRouter>
     );
 
     expect(wrapper.text()).toContain("Mi Cuenta");
-    // expect(wrapper.text()).toContain("Address Book");
-    // expect(wrapper.text()).toContain("Order History");
-    // expect(wrapper.text()).toContain("Payment Options");
+    expect(wrapper.text()).toContain("Mi perfil");
+    expect(wrapper.text()).toContain("Mis direcciones");
   });
 });

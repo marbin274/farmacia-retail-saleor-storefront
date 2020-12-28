@@ -8,13 +8,11 @@ export const AccountMenu: React.FC<IProps> = ({ links, active }: IProps) => {
   return (
     <S.Wrapper>
       <S.MenuHeader>Mi Cuenta</S.MenuHeader>
-      {links.map(link => {
-        return (
-          <Link to={link.url} key={link.url} data-testid="account_menu__link">
-            <S.MenuItem active={active === link}>{link.label}</S.MenuItem>
-          </Link>
-        );
-      })}
+      {links.map(({ label, url }) => (
+        <Link to={url} key={url} data-testid="account_menu__link">
+          <S.MenuItem active={active === url}>{label}</S.MenuItem>
+        </Link>
+      ))}
     </S.Wrapper>
   );
 };

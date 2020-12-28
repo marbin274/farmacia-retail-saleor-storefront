@@ -1,5 +1,6 @@
 import { ICheckout, IPrivacyPolicy } from "@temp/@sdk/api/Checkout/types";
 import { GetShop_shop_countries } from "@temp/@sdk/queries/gqlTypes/GetShop";
+import { UserDetails_me } from "@temp/@sdk/queries/gqlTypes/UserDetails";
 import {
   IAddress,
   IAddressWithAddressType,
@@ -19,7 +20,7 @@ export interface IProps {
   email?: string;
   checkoutData?: ICheckout;
   countries?: Array<GetShop_shop_countries | null>;
-  user?: any;
+  user?: UserDetails_me | null;
   formRef?: React.RefObject<HTMLFormElement>;
   formId?: string;
   newAddressFormId?: string;

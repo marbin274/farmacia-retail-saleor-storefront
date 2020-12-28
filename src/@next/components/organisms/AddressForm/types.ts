@@ -1,4 +1,5 @@
 import { ICheckout, IPrivacyPolicy } from "@temp/@sdk/api/Checkout/types";
+import { UserDetails_me } from "@temp/@sdk/queries/gqlTypes/UserDetails";
 import { IAddressWithEmail } from "@types";
 
 export interface IFormikProps {
@@ -25,7 +26,7 @@ export interface IFormikProps {
 export type AddressError = { field?: string; message: string };
 
 export interface IProps {
-  user?: any;
+  user?: UserDetails_me | null;
   address?: IAddressWithEmail;
   countriesOptions?: Array<{
     code: string;

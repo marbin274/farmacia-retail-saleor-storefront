@@ -10,15 +10,19 @@ const Wrapper = styled.div`
   width: 360px;
 `;
 
-const links = [
-  "/personal-information/",
-  "/address-book/",
-  "/order-history/",
-  "/payment-options/",
-];
-const active = "/address-book/";
-
-const DEFAULT_PROPS = { ...{ links, active } };
+const PROPS = {
+  active: "/account/",
+  links: [
+    {
+      label: "Mi perfil",
+      url: "/account/",
+    },
+    {
+      label: "Mis direcciones",
+      url: "/address-book/",
+    },
+  ],
+};
 
 storiesOf("@components/molecules/AccountMenuMobile", module)
   .addParameters({ component: AccountMenuMobile })
@@ -27,6 +31,6 @@ storiesOf("@components/molecules/AccountMenuMobile", module)
   ))
   .add("default", () => (
     <Wrapper>
-      <AccountMenuMobile {...DEFAULT_PROPS} />
+      <AccountMenuMobile {...PROPS} />
     </Wrapper>
   ));

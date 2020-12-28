@@ -141,13 +141,14 @@ export interface UserDetails_me {
   isStaff: boolean;
   defaultShippingAddress: UserDetails_me_defaultShippingAddress | null;
   defaultBillingAddress: UserDetails_me_defaultBillingAddress | null;
-  documentNumber: string;
-  termsAndConditions: boolean;
-  dataTreatmentPolicy: boolean;
   /**
    * List of all user's addresses.
    */
   addresses: (UserDetails_me_addresses | null)[] | null;
+  dataTreatmentPolicy: boolean | undefined;
+  termsAndConditions: boolean | undefined;
+  documentNumber: string | undefined;
+  phone: string | undefined;
 }
 
 export interface UserDetails {

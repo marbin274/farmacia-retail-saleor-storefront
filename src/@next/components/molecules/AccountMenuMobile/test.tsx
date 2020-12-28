@@ -5,19 +5,23 @@ import { MemoryRouter } from "react-router";
 
 import { AccountMenuMobile } from ".";
 
-const links = [
-  "/account/",
-  "/address-book/",
-  // "/order-history/",
-  // "/payment-options/",
-];
-const active = "/address-book/";
-
-const DEFAULT_PROPS = { ...{ links, active } };
+const PROPS = {
+  active: "/account/",
+  links: [
+    {
+      label: "Mi perfil",
+      url: "/account/",
+    },
+    {
+      label: "Mis direcciones",
+      url: "/address-book/",
+    },
+  ],
+};
 
 describe("<AccountMenuMobile />", () => {
   it("exists", () => {
-    const wrapper = shallow(<AccountMenuMobile {...DEFAULT_PROPS} />);
+    const wrapper = shallow(<AccountMenuMobile {...PROPS} />);
 
     expect(wrapper.exists()).toEqual(true);
   });
@@ -25,27 +29,25 @@ describe("<AccountMenuMobile />", () => {
   it("should show only active tab if menu has not been clicked", () => {
     const wrapper = mount(
       <MemoryRouter initialEntries={["/"]}>
-        <AccountMenuMobile {...DEFAULT_PROPS} />
+        <AccountMenuMobile {...PROPS} />
       </MemoryRouter>
     );
 
-    expect(wrapper.text()).not.toContain("Mi Cuenta");
-    expect(wrapper.text()).toContain("Address Book");
-    expect(wrapper.text()).not.toContain("Order History");
-    expect(wrapper.text()).not.toContain("Payment Options");
+    expect(wrapper.text()).toContain("Account");
+    expect(wrapper.text()).not.toContain("Address Book");
   });
 
   it("should expand on click - all tabs name should be visible", () => {
     const wrapper = mount(
       <MemoryRouter initialEntries={["/"]}>
-        <AccountMenuMobile {...DEFAULT_PROPS} />
+        <AccountMenuMobile {...PROPS} />
       </MemoryRouter>
     );
 
     wrapper.find(AccountMenuMobile).simulate("click");
 
     expect(wrapper.text()).toContain("Mi Cuenta");
-    // TODO: check later
-    // expect(wrapper.text()).toContain("Mis direcciones");
+    expect(wrapper.text()).toContain("Mi perfil");
+    expect(wrapper.text()).toContain("Mis direcciones");
   });
 });
