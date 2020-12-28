@@ -99,7 +99,7 @@ export const CHECKOUT_STEPS = [
     index: 1,
     link: "/checkout/payment",
     name: "Paso 2: Selecciona el método de pago",
-    nextActionName: "Guardar datos de pago",
+    nextActionName: "Continuar a confirmación",
     nextStepLink: "/checkout/review",
     onlyIfShippingRequired: false,
     step: CheckoutStep.Payment,
