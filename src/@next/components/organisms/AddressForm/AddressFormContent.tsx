@@ -78,12 +78,13 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
 
   const handlePrivacyAndPolicies = () => {
     setFieldTouched("termsAndConditions", true);
-    setFieldValue("termsAndConditions", !privacyAndPolicies);
-    setPrivacyAndPolicies(!privacyAndPolicies);
+    setFieldValue("termsAndConditions", !privacyAndPolicies);    
   };
 
   const handleAdditionals = () => {
     setAdditionals(!additionals);
+    setFieldTouched("dataTreatmentPolicy", true);
+    setFieldValue("dataTreatmentPolicy", !additionals);    
   };
 
   const basicInputProps = useCallback(
@@ -142,6 +143,14 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
       <S.GroupLabelTitle>{title}</S.GroupLabelTitle>
     </S.GroupLabel>
   );
+
+  React.useEffect(()=>{
+    setPrivacyAndPolicies(values?.termsAndConditions === true);
+  }, [values?.termsAndConditions]);
+
+  React.useEffect(()=>{
+    setAdditionals(values?.dataTreatmentPolicy === true);
+  }, [values?.dataTreatmentPolicy]);
 
   return (
     <div>
