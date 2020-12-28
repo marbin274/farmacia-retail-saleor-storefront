@@ -20,6 +20,7 @@ export const Value = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  margin-left: 0.625rem;
 `;
 
 export const Indicator = styled.div<{ rotate: string }>`

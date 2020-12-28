@@ -68,6 +68,7 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  margin-left: 0.625rem;
 }
 
 .c15 {
@@ -150,6 +151,44 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
 
 .c17 > div {
   margin: 0.4rem;
+}
+
+@media (max-width:540px) {
+  .c6 {
+    height: auto;
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-self: flex-start;
+    -ms-flex-item-align: start;
+    align-self: flex-start;
+    padding: 0.625rem;
+  }
+}
+
+@media (max-width:540px) {
+  .c4 {
+    display: none;
+  }
+}
+
+@media (max-width:540px) {
+  .c7 {
+    padding-left: 0rem;
+  }
 }
 
 <div
@@ -330,6 +369,7 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  margin-left: 0.625rem;
 }
 
 .c16 {
@@ -419,6 +459,44 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
 
 .c18 > div {
   margin: 0.4rem;
+}
+
+@media (max-width:540px) {
+  .c7 {
+    height: auto;
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-self: flex-start;
+    -ms-flex-item-align: start;
+    align-self: flex-start;
+    padding: 0.625rem;
+  }
+}
+
+@media (max-width:540px) {
+  .c4 {
+    display: none;
+  }
+}
+
+@media (max-width:540px) {
+  .c8 {
+    padding-left: 0rem;
+  }
 }
 
 <div

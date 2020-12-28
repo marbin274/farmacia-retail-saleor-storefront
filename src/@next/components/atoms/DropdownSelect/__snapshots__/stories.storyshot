@@ -68,6 +68,7 @@ exports[`Storyshots @components/atoms/DropdownSelect default 1`] = `
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  margin-left: 0.625rem;
 }
 
 .c6 {

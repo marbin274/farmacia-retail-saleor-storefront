@@ -1,4 +1,4 @@
-import { styled } from "@styles";
+import { media, styled } from "@styles";
 
 export const Wrapper = styled.div`
   background-color: ${props => props.theme.tile.backgroundColor};
@@ -21,6 +21,16 @@ export const LeftSide = styled.div`
 
 export const RightSide = styled.div`
   height: 1.2rem;
+  ${media.smallScreen`
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    padding: 0.625rem;
+  `}
 `;
 
 export const FiltersButton = styled.button`
@@ -28,6 +38,9 @@ export const FiltersButton = styled.button`
   display: flex;
   align-items: center;
   cursor: pointer;
+  ${media.smallScreen`
+    display: none;
+  `}
 `;
 
 export const Clear = styled.button`
@@ -38,6 +51,9 @@ export const Clear = styled.button`
 `;
 export const Element = styled.span`
   padding-left: 2rem;
+  ${media.smallScreen`
+    padding-left: 0rem;
+  `}
 `;
 
 export const Filters = styled.span`
