@@ -11,6 +11,7 @@ export const Chip: React.FC<IProps> = ({
   fullWidth = false,
   size = "md",
   onClose = () => null,
+  type = "button",
   ...props
 }: IProps) => {
   const ChipWithTheme = color === "primary" ? S.Primary : S.Secondary;
@@ -23,6 +24,7 @@ export const Chip: React.FC<IProps> = ({
         color={color}
         ref={closeBtnRef}
         onClick={onClose}
+        type={type}
       >
         <Icon name="x_light" size={16} />
       </S.CloseButton>

@@ -56,9 +56,7 @@ const CheckoutPayment: React.FC<IProps> = ({
     const newPromoCode = discountForm?.promoCode;
     const savedPromoCode = promoCodeDiscount?.voucherCode;
 
-    if ((!newPromoCode || !showPromoCodeForm) && savedPromoCode) {
-      removeVoucherCode(savedPromoCode);
-    } else if (newPromoCode && newPromoCode !== savedPromoCode) {
+    if (newPromoCode && newPromoCode !== savedPromoCode) {
       addPromoCode(newPromoCode);
     } else {
       submitUnchangedDiscount();

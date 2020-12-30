@@ -90,6 +90,7 @@ exports[`Storyshots @components/atoms/Chip default 1`] = `
       color="primary"
       onClick={[Function]}
       size="md"
+      type="button"
     >
       <svg
         height={16}

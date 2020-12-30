@@ -120,7 +120,7 @@ export const DiscountForm: React.FC<IProps> = ({
             {(discount?.promoCode) && (
               <div>
                 <S.ChipsWrapper className="promoCode">
-                  <Chip onClose={() => handleRemoveBtnClick(discount?.promoCode)}>
+                  <Chip type="button" onClose={() => handleRemoveBtnClick(discount?.promoCode)}>
                     <div className="voucherTitle">
                       <ReactSVG
                           path={voucherSVG}

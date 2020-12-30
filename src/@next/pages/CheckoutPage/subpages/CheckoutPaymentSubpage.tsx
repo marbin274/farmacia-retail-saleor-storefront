@@ -148,6 +148,12 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
     changeSubmitProgress(false);
   };
 
+  const submitCheckoutGatewayForm = () =>{
+    checkoutGatewayFormRef?.current?.dispatchEvent(
+      new Event("submit", { cancelable: true })
+    );
+  }
+
   const handleSetBillingAddress = async (
     address?: IAddress,
     email?: string,
@@ -196,9 +202,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
           new Event("submit", { cancelable: true })
         );
       } else if (checkoutGatewayFormRef.current) {
-        checkoutGatewayFormRef.current.dispatchEvent(
-          new Event("submit", { cancelable: true })
-        );
+        submitCheckoutGatewayForm();
       } else {
         changeSubmitProgress(false);
         setGatewayErrors([{ message: "Selecciona un método de pago para continuar" }]);
@@ -230,6 +234,9 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
 
   const handleSubmitUnchangedDiscount = () => {
     clearPromoCodeErrors();
+    if (checkoutGatewayFormRef.current) {
+      submitCheckoutGatewayForm();
+    }
   };
 
   const userDataForNiubiz: IUserDataForNiubiz = {
