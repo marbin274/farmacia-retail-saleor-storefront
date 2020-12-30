@@ -38,6 +38,7 @@
 
     &__info {
       position: relative;
+      margin-left: 40px;
 
       @media (max-width: $medium-screen) {
         width: 100%;

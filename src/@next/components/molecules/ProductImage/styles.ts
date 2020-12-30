@@ -1,36 +1,22 @@
 import { media, styled } from "@styles";
-import { aunaInteractive, aunaBrand5, white } from "@styles/constants";
+import { aunaBrand5, white, aunaGrey40 } from "@styles/constants";
 
 export const Wrapper = styled.div`
-  width: 732px;
+  width: 612px;
   min-width: 552px;
-  height: 518px;
-  margin-left: -5rem;
+  height: 718px;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
   position: relative;
-
-  ${media.largeScreen`
-    width: 100vw;
-    height: 312px;
-    margin-left: -16px;
-    margin-bottom: 48px;
-    justify-content: flex-start;
-  `}
-`;
-
-export const DecorativeSquare = styled.div`
-  width: 536px;
-  height: 519px;
-  background: ${aunaInteractive};
-  position: absolute;
-  top: 0;
-  left: 0;
+  background: ${aunaGrey40};
 
   ${media.largeScreen`
     width: 100vw;
     height: 198px;
+    margin-left: -16px;
+    margin-bottom: 148px;
+    justify-content: flex-start;
   `}
 `;
 
@@ -46,7 +32,8 @@ export const ImageFrame = styled.div<{
   height: 518px;
   position: absolute;
   overflow: hidden;
-  top: 62px;
+  top: 60px;
+  margin-right: 40px;
 
   > img {
     max-width: 356px;

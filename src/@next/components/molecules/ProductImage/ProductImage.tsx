@@ -8,7 +8,6 @@ export const ProductImage: React.FC<IProps> = ({
   outStock = false,
 }: IProps) => (
   <S.Wrapper>
-    <S.DecorativeSquare />
     <S.ImageFrame outStock={outStock}>
       {outStock && <S.OutStockLabel>Agotado</S.OutStockLabel>}
       <Thumbnail source={product} />
