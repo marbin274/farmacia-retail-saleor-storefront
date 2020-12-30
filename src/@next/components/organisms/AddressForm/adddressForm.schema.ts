@@ -12,7 +12,7 @@ export const addressFormSchema = Yup.object().shape({
     .matches(/^[0-9A-Z]+$/, "Debe contener de 8 a 20 caracteres, no incluir espacios"),
   email: Yup.string()
     .required("Indique email")
-    .matches(/^[0-9a-zA-Z@._]+$/, "Debe contener un correo válido, ingresa letras (A-Z), números (0-9), (@) y (.), no incluir espacios")
+    .matches(/^[0-9a-zA-Z@._-]+$/, "Debe contener un correo válido, ingresa letras (A-Z), números (0-9), (@) y (.), no incluir espacios")
     .email("Debe contener un correo válido, ingresa letras (A-Z), números (0-9), (@) y (.), no incluir espacios"),
   firstName: Yup.string().required("Ingresa tu nombre y apellido"),
   phone: Yup.string()
