@@ -130,7 +130,7 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
 
   useEffect(() => {
     const payload: any = {
-      purchase_number: new Date().getUTCMilliseconds(),
+      purchase_number: Math.floor(Math.random()*(999999999999-1))+1,
     };
 
     setRequestPayload(payload);
