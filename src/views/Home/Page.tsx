@@ -27,10 +27,11 @@ const Page: React.FC<IPageProps> = ({
     <div className="container">
       <div className="home-page__top-banner">
         <div className="home-page__top-banner__text">
-          <h2>Bienvenido a la experiencia digital más ágil en farmacia</h2>
+          <h2>Bloqueadores Isdin 50 ml</h2>
+          <h3>Fusion Water y Fusion Fluid </h3>
           <p>
-            Compra todo lo que necesites y recíbelo en menos de{" "}
-            <b>60 minutos</b>.
+            *Promoción válida hasta el 04/01/2021 o hasta agotar stock. Max. 3 unidades por producto.<br/>
+            Aplica max. 2 promociones por usuario. No acumulable con otras promociones. Aplican más T&C.
           </p>
         </div>
       </div>

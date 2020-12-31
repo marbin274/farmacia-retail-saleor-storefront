@@ -36,27 +36,27 @@
     width: 100%;
 
     @media (max-width: $small-screen) {
-      height: 38rem;
+      height: 26.5rem;
+      border-radius: 0;
       background: no-repeat url("../../../images/auna/home-banner-mob.png") #00B0CA;
       background-size: 20rem;
-      background-position: left center;
+      background-position: left top;
       margin-bottom: 2rem;
     }
 
     &__text {
       position: absolute;
       right: 2rem;
-      top: 4rem;
+      top: 8rem;
       max-width: 38rem;
 
       @media (max-width: $small-screen) {
-        background-color: rgba(0, 80, 181, 0.5);
         border-radius: 1rem 1rem 0 0;
-        top: unset;
+        margin-top: 9.375rem;
         right: 0;
         bottom: 0;
         left:0;
-        padding: 2rem 2rem;
+        padding: 0 10px;
         position: absolute;
         text-align: center;
         width: 100%;
@@ -67,22 +67,44 @@
       }
 
       h2 {
-        font-size: 2.25rem;
+        font-size: 2.8rem;
         font-weight: bolder;
         line-height: 1.6;
         padding-bottom: .5rem;
+        line-height: 1.375rem;
+        align-items: center;
+        letter-spacing: 0.015em;
+        margin-bottom: 1.25rem;
 
         @media (max-width: $small-screen) {
-          font-size: 1.3rem;
-          padding-bottom: 1rem;
+          font-size: 1.4625rem;
+          font-weight: bold;
+          margin-bottom: 0;
+        }
+        @media (max-width: $xs-small-screen) {
+          font-size:  1.3625rem;
         }
       }
+      h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1.25rem;
+        @media (max-width: $small-screen) {
+          font-size: 1.125rem;
+          margin-bottom: 0;
+        }
+      }
+
       p {
-        font-size: 1.625rem;
         line-height: 1.5;
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 0.75rem;
+        line-height: 1.25rem;
+        letter-spacing: 0.015em;
 
         @media (max-width: $small-screen) {
-          font-size: .9rem;
+          font-size: 0.625rem;
         }
       }
     }
