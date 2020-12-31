@@ -43,7 +43,7 @@ jobs:
           to: "s3://${WEB_BUCKET_S3}-${ENV}/"
       - run: 
           name: Clean Cloudfront Cache
-          command: aws cloudfront create-invalidation --distribution-id ${CF_DISTRIBUTION_ID} --paths "/*"
+          command: aws cloudfront create-invalidation --distribution-id ${CF_STORE_ID} --paths "/*"
       - slack/notify:
           event: fail
           mentions: '@canal'
@@ -67,5 +67,12 @@ workflows:
           filters:
             branches:
               only: staging
+          requires:
+            - project-build
+      - project-deploy:
+          context: frontend-prod
+          filters:
+            branches:
+              only: release
           requires:
             - project-build
