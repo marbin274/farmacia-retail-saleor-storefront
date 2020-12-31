@@ -25,16 +25,23 @@ const Page: React.FC<IPageProps> = ({
   shop }) => {
   return (
     <div className="container">
+        <a href="./product/protector-solar-facial-isdin-fusion-water-color-50ml/4481/">
       <div className="home-page__top-banner">
         <div className="home-page__top-banner__text">
           <h2>Bloqueadores Isdin 50 ml</h2>
-          <h3>Fusion Water y Fusion Fluid </h3>
+          <h3>
+            <a href="./product/protector-solar-facial-isdin-fusion-water-color-50ml/4481/">
+            Fusion Water
+            </a>&nbsp;y&nbsp; 
+            <a href="./product/fotoprotect-facial-isdin-fusion-fluid-ultraligero-50ml/4076/">Fusion Fluid</a>
+          </h3>
           <p>
             *Promoción válida hasta el 04/01/2021 o hasta agotar stock. Max. 3 unidades por producto.<br/>
             Aplica max. 2 promociones por usuario. No acumulable con otras promociones. Aplican más T&C.
           </p>
         </div>
       </div>
+      </a>
 
       <script className="structured-data-list" type="application/ld+json">
         {structuredData(shop)}
