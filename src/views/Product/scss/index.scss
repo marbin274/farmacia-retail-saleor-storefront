@@ -38,10 +38,11 @@
 
     &__info {
       position: relative;
-      margin-left: 40px;
+      
 
-      @media (max-width: $medium-screen) {
+      @media (min-width: $medium-screen) {
         width: 100%;
+        margin-left: 40px;
       }
 
       > div {
