@@ -6,7 +6,49 @@ orbs:
   slack: circleci/slack@4.1.3
 
 jobs:
-  project-build:
+  project-build-qa:
+    docker:
+      - image: circleci/node:10.16.3-buster-browsers-legacy
+    steps:
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - checkout
+      - run: 
+          name: Install dependencies
+          command: npm i
+      - run: 
+          name: Build
+          command: npm run build
+      - persist_to_workspace:
+          root: "./dist"
+          paths:
+            - .
+      - slack/notify:
+          event: fail
+          mentions: '@devops'
+          template: basic_fail_1
+  project-build-stg:
+    docker:
+      - image: circleci/node:10.16.3-buster-browsers-legacy
+    steps:
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - checkout
+      - run: 
+          name: Install dependencies
+          command: npm i
+      - run: 
+          name: Build
+          command: npm run build
+      - persist_to_workspace:
+          root: "./dist"
+          paths:
+            - .
+      - slack/notify:
+          event: fail
+          mentions: '@devops'
+          template: basic_fail_1
+  project-build-prod:
     docker:
       - image: circleci/node:10.16.3-buster-browsers-legacy
     steps:
@@ -43,7 +85,7 @@ jobs:
           to: "s3://${WEB_BUCKET_S3}-${ENV}/"
       - run: 
           name: Clean Cloudfront Cache
-          command: aws cloudfront create-invalidation --distribution-id ${CF_DISTRIBUTION_ID} --paths "/*"
+          command: aws cloudfront create-invalidation --distribution-id ${CF_STORE_ID} --paths "/*"
       - slack/notify:
           event: fail
           mentions: '@canal'
@@ -54,18 +96,39 @@ jobs:
 workflows:
   build-deploy:
     jobs:
-      - project-build
+      - project-build-qa:
+          context: frontend-qa
+          filters:
+            branches:
+              only: master
+      - project-build-stg:
+          context: frontend-stg
+          filters:
+            branches:
+              only: staging
+      - project-build-prod:
+          context: frontend-prod
+          filters:
+            branches:
+              only: release
       - project-deploy:
           context: frontend-qa
           filters:
             branches:
               only: master
           requires:
-            - project-build
+            - project-build-qa
       - project-deploy:
           context: frontend-stg
           filters:
             branches:
               only: staging
           requires:
-            - project-build
+            - project-build-stg
+      - project-deploy:
+          context: frontend-prod
+          filters:
+            branches:
+              only: release
+          requires:
+            - project-build-prod
