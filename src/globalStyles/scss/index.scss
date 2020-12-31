@@ -52,8 +52,10 @@ body {
   header {
     background-color: $white;
     position: fixed;
-    width: 100%;
     z-index: 1;
+    @media (min-width: $medium-screen) {
+      width: 100%;
+    }
   }
 
   .container {
