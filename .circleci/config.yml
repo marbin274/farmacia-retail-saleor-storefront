@@ -54,25 +54,39 @@ jobs:
 workflows:
   build-deploy:
     jobs:
-      - project-build
+      - project-build-qa:
+          context: frontend-qa
+          filters:
+            branches:
+              only: master
+      - project-build-stg:
+          context: frontend-stg
+          filters:
+            branches:
+              only: staging
+      - project-build-prod:
+          context: frontend-prod
+          filters:
+            branches:
+              only: release
       - project-deploy:
           context: frontend-qa
           filters:
             branches:
               only: master
           requires:
-            - project-build
+            - project-build-qa
       - project-deploy:
           context: frontend-stg
           filters:
             branches:
               only: staging
           requires:
-            - project-build
+            - project-build-stg
       - project-deploy:
           context: frontend-prod
           filters:
             branches:
               only: release
           requires:
-            - project-build
+            - project-build-prod
