@@ -6,7 +6,49 @@ orbs:
   slack: circleci/slack@4.1.3
 
 jobs:
-  project-build:
+  project-build-qa:
+    docker:
+      - image: circleci/node:10.16.3-buster-browsers-legacy
+    steps:
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - checkout
+      - run: 
+          name: Install dependencies
+          command: npm i
+      - run: 
+          name: Build
+          command: npm run build
+      - persist_to_workspace:
+          root: "./dist"
+          paths:
+            - .
+      - slack/notify:
+          event: fail
+          mentions: '@devops'
+          template: basic_fail_1
+  project-build-stg:
+    docker:
+      - image: circleci/node:10.16.3-buster-browsers-legacy
+    steps:
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - checkout
+      - run: 
+          name: Install dependencies
+          command: npm i
+      - run: 
+          name: Build
+          command: npm run build
+      - persist_to_workspace:
+          root: "./dist"
+          paths:
+            - .
+      - slack/notify:
+          event: fail
+          mentions: '@devops'
+          template: basic_fail_1
+  project-build-prod:
     docker:
       - image: circleci/node:10.16.3-buster-browsers-legacy
     steps:
