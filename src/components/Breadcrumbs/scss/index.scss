@@ -4,7 +4,10 @@
   display: inline-flex;
   flex-wrap: wrap;
   margin: $spacer 0;
-
+  a {
+    color: $gray-light;
+    font-weight: 600;
+  }
   li {
     &:not(:last-of-type) {
       &:after {

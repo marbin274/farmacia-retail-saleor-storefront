@@ -1,8 +1,11 @@
 import { media, styled } from "@styles";
-import { aunaGrey60 } from "@styles/constants";
+import { aunaGrey60, white } from "@styles/constants";
 
 export const Wrapper = styled.nav`
-  width: 300px;
+  width: 18.75rem;
+  background-color: ${white}
+  padding: 1.25rem;
+  padding-top: 1.875rem;
   border-right: 1px solid ${aunaGrey60};
 
   ${media.largeScreen`
@@ -17,11 +20,11 @@ export const Title = styled.p`
 `;
 
 export const List = styled.ul`
-  margin: 0 12px;
+  margin: 0 0.3125rem;
 `;
 
 export const Link = styled.li`
-  margin-bottom: 32px;
+  margin-bottom: 0.25rem;
   font-weight: normal;
   font-size: 16px;
 

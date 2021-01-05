@@ -1,12 +1,26 @@
 @import "../../../globalStyles/scss/variables.scss";
 
 .category {
+  background-color: $auna-grey-06;
+  display: flex;
+  height: 4.125rem;
+  flex-direction: column;
   &__body {
     display: flex;
+    @media (max-width: $small-screen) {
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
   }
 
   &__products {
-    margin-left: 18px;
+    width: 100%;
+    margin-bottom: 1.875rem;
+    @media (min-width: $small-screen) {
+      margin-left: 1.125rem;
+      padding-top: 1.25rem;
+    }
   }
 
   &__header {

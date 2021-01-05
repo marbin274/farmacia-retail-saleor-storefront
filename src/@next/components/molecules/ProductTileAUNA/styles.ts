@@ -1,12 +1,14 @@
 import { media, styled } from "@styles";
 import { aunaBlack, aunaGrey100, aunaInteractive } from "@styles/constants";
 
+const productHeight = "24rem";
+
 export const ProductCard = styled.div<{
   canAddToCart?: boolean | 0 | undefined;
 }>`
   color: ${aunaBlack}
   background: inherit;
-  height: 24rem;
+  height: ${productHeight};
   text-align: center;
   transition: 0 .3s;
   max-width: 11rem;
@@ -51,9 +53,9 @@ export const ProductCard = styled.div<{
 
   .button {
     ${({ canAddToCart }) =>
-      canAddToCart
-        ? `border-bottom: 1px solid ${aunaInteractive}`
-        : `border-bottom: 1px solid #B8BCD5`}
+    canAddToCart
+      ? `border-bottom: 1px solid ${aunaInteractive}`
+      : `border-bottom: 1px solid #B8BCD5`}
     padding-bottom: 0.5rem;
     button {
       background: transparent;
@@ -112,3 +114,10 @@ export const Image = styled.div``;
 export const AddToCartButton = styled.div``;
 
 export const DisabledAddToCartButton = styled.div``;
+
+export const WrapperStockout = styled.div`
+  height: ${productHeight};
+  overflow: hidden;
+  position: relative;
+  border-radius: 16px;
+`;

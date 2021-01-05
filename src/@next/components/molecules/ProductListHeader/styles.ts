@@ -2,8 +2,8 @@ import { media, styled } from "@styles";
 
 export const Wrapper = styled.div`
   background-color: ${props => props.theme.tile.backgroundColor};
-  margin-top: 22px;
-  margin-bottom: 60px;
+  margin-top: 3.75rem;
+  height: 4.125rem;
 `;
 
 export const Bar = styled.div`
@@ -20,7 +20,7 @@ export const LeftSide = styled.div`
 `;
 
 export const RightSide = styled.div`
-  height: 1.2rem;
+  height: 3.9rem;
   ${media.smallScreen`
     height: auto;
     width: 100%;
@@ -29,7 +29,6 @@ export const RightSide = styled.div`
     align-items: center;
     justify-content: center;
     align-self: flex-start;
-    padding: 0.625rem;
   `}
 `;
 

@@ -59,7 +59,7 @@ class Search extends React.Component<SearchProps, SearchState> {
 
     evt.preventDefault();
   };
-  
+
   handleInputBlur = () => {
     if (!this.hasSearchPhrase) {
       this.props.overlay.hide();
@@ -118,12 +118,13 @@ class Search extends React.Component<SearchProps, SearchState> {
                         if (this.hasResults(data)) {
                           return (
                             <>
-                                <div className="search__products__results">
+                              <div className="search__products__results">
                                 {loading ? (
                                   <Loader />
                                 ) : (
                                   <p>
-                                    {data.products.edges.length} resultados para <span>"{this.state.search}"</span>
+                                    {data.products.edges.length} resultados para{" "}
+                                    <span>"{this.state.search}"</span>
                                   </p>
                                 )}
                               </div>
@@ -133,7 +134,7 @@ class Search extends React.Component<SearchProps, SearchState> {
                                     {...product}
                                     key={product.node.id}
                                   />
-                                ))}                                
+                                ))}
                               </ul>
                             </>
                           );

@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
+import { OutStockLabel } from '@components/atoms'
 import { Thumbnail } from "@components/molecules";
 import { TaxedMoney } from "@components/containers";
 import * as S from "./styles";
 import { IProps } from "./types";
 import { Link } from "react-router-dom";
 import { Button } from "../../atoms";
-import { MAX_ORDER_PER_PRODUCT } from "@temp/core/config";
+import { checkCanAddToCart } from "@temp/@next/utils/products";
 
 export const ProductTileAUNA: React.FC<IProps> = ({
   addToCart,
-  linkProduct,
+  productUrl: productLink,
   product,
+  productsOnCart,
 }: IProps) => {
   const [thumbnails, setThumbnails] = useState<{
     thumbnail: { url: string | undefined };
@@ -19,25 +21,8 @@ export const ProductTileAUNA: React.FC<IProps> = ({
     thumbnail: { url: "" },
     thumbnail2x: { url: "" },
   });
-  
-  const [canAddToCart, setCanAddToCart] = useState(false);
 
-  useEffect(() => {
-    setThumbnails({
-      thumbnail: { url: product?.thumbnail?.url || "" },
-      thumbnail2x: { url: product?.thumbnail2x?.url || "" },
-    });
-  }, [product.thumbnail, product.thumbnail2x]);
-
-  useEffect(() => {
-    const quantityAddedToCart = product?.quantity || 0;
-    const productQuantityLessThenMax = quantityAddedToCart < MAX_ORDER_PER_PRODUCT;
-    const stockAvailable = product.variants?.[0].quantityAvailable || 0;
-    const canAddToCart = stockAvailable > quantityAddedToCart
-    
-    setCanAddToCart(productQuantityLessThenMax && canAddToCart);
-  
-  },[MAX_ORDER_PER_PRODUCT, product])
+  const canAddToCart = checkCanAddToCart(product, productsOnCart);
 
   const onAddToCart = () => {
     if (canAddToCart) {
@@ -48,25 +33,36 @@ export const ProductTileAUNA: React.FC<IProps> = ({
     }
   };
 
+  useEffect(() => {
+    setThumbnails({
+      thumbnail: { url: product?.thumbnail?.url || "" },
+      thumbnail2x: { url: product?.thumbnail2x?.url || "" },
+    });
+  }, [product.thumbnail, product.thumbnail2x]);
+
+
   return (
     <S.ProductCard data-cy="product-tile" canAddToCart={canAddToCart}>
-      <Link to={linkProduct} key={product.id}>
-        <div className="img">
-          <S.Image>
-            <Thumbnail source={thumbnails} />
-          </S.Image>
-        </div>
-        <div className="description">
-          <S.Title>{product.name}</S.Title>
-          {!canAddToCart && (
-            <S.ProductAttribute>No disponible</S.ProductAttribute>
-          )}
-        </div>
-        <div className="price">
-          <S.Price>
-            <TaxedMoney taxedMoney={product?.pricing?.priceRange?.start} />
-          </S.Price>
-        </div>
+      <Link to={productLink} key={product.id}>
+        <S.WrapperStockout>
+          {!canAddToCart && <OutStockLabel />}
+          <div className="img">
+            <S.Image>
+              <Thumbnail source={thumbnails} />
+            </S.Image>
+          </div>
+          <div className="description">
+            <S.Title>{product.name}</S.Title>
+            {!canAddToCart && (
+              <S.ProductAttribute>No disponible</S.ProductAttribute>
+            )}
+          </div>
+          <div className="price">
+            <S.Price>
+              <TaxedMoney taxedMoney={product?.pricing?.priceRange?.start} />
+            </S.Price>
+          </div>
+        </S.WrapperStockout>
       </Link>
       <div className="button">
         <Button onClick={onAddToCart} disabled={!canAddToCart}>

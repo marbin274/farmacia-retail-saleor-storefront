@@ -38,7 +38,8 @@ export const ProductListAUNA: React.FC<IProps> = ({
               key={product.id}
               addToCart={addToCart}
               product={product}
-              linkProduct={generateProductUrl(product.id, product.name)}
+              productsOnCart={productsOnCart}
+              productUrl={generateProductUrl(product.id, product.name)}
             />
           );
         })}

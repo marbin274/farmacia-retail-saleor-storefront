@@ -4,7 +4,7 @@ import { IFilterAttributes, IFilters } from "@types";
 import {
   Breadcrumbs,
   extractBreadcrumbs,
-  ProductsFeatured,
+  EmptyProduct,
 } from "../../components";
 import { ProductListHeader } from "../../@next/components/molecules";
 import { ProductListAUNA } from "../../@next/components/organisms";
@@ -127,9 +127,10 @@ const Page: React.FC<PageProps> = ({
               addToCart={addToCart}
             />
           )}
+           {!hasProducts && <EmptyProduct title="No hay productos" />}
         </section>
-
-        {!hasProducts && <ProductsFeatured title="You might like" />}
+            
+       
       </div>
     </div>
   );

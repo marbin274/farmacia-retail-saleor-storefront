@@ -150,7 +150,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
 }
 
 .c2 .button {
-  border-bottom: 1px solid #B8BCD5;
+  border-bottom: 1px solid #00B0CA;
   padding-bottom: 0.5rem;
 }
 
@@ -190,12 +190,10 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
 }
 
 .c3 {
-  color: #9194A7;
-  font-family: "Poppins",sans-serif;
-  font-size: 1rem;
-  font-weight: normal;
-  padding: 0.1rem 0;
-  text-align: center;
+  height: 24rem;
+  overflow: hidden;
+  position: relative;
+  border-radius: 16px;
 }
 
 .c1 {
@@ -252,41 +250,40 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         onClick={[Function]}
       >
         <div
-          className="img"
+          className="c3"
         >
           <div
-            className=""
+            className="img"
           >
-            <img
-              alt=""
-              src={[Function]}
-            />
+            <div
+              className=""
+            >
+              <img
+                alt=""
+                src={[Function]}
+              />
+            </div>
           </div>
-        </div>
-        <div
-          className="description"
-        >
-          <h4
-            className=""
+          <div
+            className="description"
           >
-            Betacort Depot Solución Inyectable
-          </h4>
-          <h5
-            className="c3"
+            <h4
+              className=""
+            >
+              Betacort Depot Solución Inyectable
+            </h4>
+          </div>
+          <div
+            className="price"
           >
-            No disponible
-          </h5>
-        </div>
-        <div
-          className="price"
-        >
-          <p
-            className=""
-          >
-            <span>
-              
-            </span>
-          </p>
+            <p
+              className=""
+            >
+              <span>
+                
+              </span>
+            </p>
+          </div>
         </div>
       </a>
       <div
@@ -295,7 +292,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         <button
           className="c4"
           color="primary"
-          disabled={true}
+          disabled={false}
           onClick={[Function]}
           size="md"
         >
@@ -317,41 +314,40 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         onClick={[Function]}
       >
         <div
-          className="img"
+          className="c3"
         >
           <div
-            className=""
+            className="img"
           >
-            <img
-              alt=""
-              src={[Function]}
-            />
+            <div
+              className=""
+            >
+              <img
+                alt=""
+                src={[Function]}
+              />
+            </div>
           </div>
-        </div>
-        <div
-          className="description"
-        >
-          <h4
-            className=""
+          <div
+            className="description"
           >
-            Abrilar 35Mg/5ML Jarabe - Frasco 100 ML
-          </h4>
-          <h5
-            className="c3"
+            <h4
+              className=""
+            >
+              Abrilar 35Mg/5ML Jarabe - Frasco 100 ML
+            </h4>
+          </div>
+          <div
+            className="price"
           >
-            No disponible
-          </h5>
-        </div>
-        <div
-          className="price"
-        >
-          <p
-            className=""
-          >
-            <span>
-              
-            </span>
-          </p>
+            <p
+              className=""
+            >
+              <span>
+                
+              </span>
+            </p>
+          </div>
         </div>
       </a>
       <div
@@ -360,7 +356,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         <button
           className="c4"
           color="primary"
-          disabled={true}
+          disabled={false}
           onClick={[Function]}
           size="md"
         >
@@ -382,41 +378,40 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         onClick={[Function]}
       >
         <div
-          className="img"
+          className="c3"
         >
           <div
-            className=""
+            className="img"
           >
-            <img
-              alt=""
-              src={[Function]}
-            />
+            <div
+              className=""
+            >
+              <img
+                alt=""
+                src={[Function]}
+              />
+            </div>
           </div>
-        </div>
-        <div
-          className="description"
-        >
-          <h4
-            className=""
+          <div
+            className="description"
           >
-            Amlodipino-Gef 10Mg Tabletas - Caja 10 Und
-          </h4>
-          <h5
-            className="c3"
+            <h4
+              className=""
+            >
+              Amlodipino-Gef 10Mg Tabletas - Caja 10 Und
+            </h4>
+          </div>
+          <div
+            className="price"
           >
-            No disponible
-          </h5>
-        </div>
-        <div
-          className="price"
-        >
-          <p
-            className=""
-          >
-            <span>
-              
-            </span>
-          </p>
+            <p
+              className=""
+            >
+              <span>
+                
+              </span>
+            </p>
+          </div>
         </div>
       </a>
       <div
@@ -425,7 +420,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         <button
           className="c4"
           color="primary"
-          disabled={true}
+          disabled={false}
           onClick={[Function]}
           size="md"
         >
@@ -447,41 +442,40 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         onClick={[Function]}
       >
         <div
-          className="img"
+          className="c3"
         >
           <div
-            className=""
+            className="img"
           >
-            <img
-              alt=""
-              src={[Function]}
-            />
+            <div
+              className=""
+            >
+              <img
+                alt=""
+                src={[Function]}
+              />
+            </div>
           </div>
-        </div>
-        <div
-          className="description"
-        >
-          <h4
-            className=""
+          <div
+            className="description"
           >
-            Ab Broncol NF 1200Mg/5ML Solución Inyectable Intramuscular
-          </h4>
-          <h5
-            className="c3"
+            <h4
+              className=""
+            >
+              Ab Broncol NF 1200Mg/5ML Solución Inyectable Intramuscular
+            </h4>
+          </div>
+          <div
+            className="price"
           >
-            No disponible
-          </h5>
-        </div>
-        <div
-          className="price"
-        >
-          <p
-            className=""
-          >
-            <span>
-              
-            </span>
-          </p>
+            <p
+              className=""
+            >
+              <span>
+                
+              </span>
+            </p>
+          </div>
         </div>
       </a>
       <div
@@ -490,7 +484,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         <button
           className="c4"
           color="primary"
-          disabled={true}
+          disabled={false}
           onClick={[Function]}
           size="md"
         >
@@ -512,41 +506,40 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         onClick={[Function]}
       >
         <div
-          className="img"
+          className="c3"
         >
           <div
-            className=""
+            className="img"
           >
-            <img
-              alt=""
-              src={[Function]}
-            />
+            <div
+              className=""
+            >
+              <img
+                alt=""
+                src={[Function]}
+              />
+            </div>
           </div>
-        </div>
-        <div
-          className="description"
-        >
-          <h4
-            className=""
+          <div
+            className="description"
           >
-            Antalgina 500Mg Tabletas 
-          </h4>
-          <h5
-            className="c3"
+            <h4
+              className=""
+            >
+              Antalgina 500Mg Tabletas 
+            </h4>
+          </div>
+          <div
+            className="price"
           >
-            No disponible
-          </h5>
-        </div>
-        <div
-          className="price"
-        >
-          <p
-            className=""
-          >
-            <span>
-              
-            </span>
-          </p>
+            <p
+              className=""
+            >
+              <span>
+                
+              </span>
+            </p>
+          </div>
         </div>
       </a>
       <div
@@ -555,7 +548,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         <button
           className="c4"
           color="primary"
-          disabled={true}
+          disabled={false}
           onClick={[Function]}
           size="md"
         >
@@ -577,41 +570,40 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         onClick={[Function]}
       >
         <div
-          className="img"
+          className="c3"
         >
           <div
-            className=""
+            className="img"
           >
-            <img
-              alt=""
-              src={[Function]}
-            />
+            <div
+              className=""
+            >
+              <img
+                alt=""
+                src={[Function]}
+              />
+            </div>
           </div>
-        </div>
-        <div
-          className="description"
-        >
-          <h4
-            className=""
+          <div
+            className="description"
           >
-            Arcoxia 90Mg Tabletas Recubiertas - Caja 14 Und
-          </h4>
-          <h5
-            className="c3"
+            <h4
+              className=""
+            >
+              Arcoxia 90Mg Tabletas Recubiertas - Caja 14 Und
+            </h4>
+          </div>
+          <div
+            className="price"
           >
-            No disponible
-          </h5>
-        </div>
-        <div
-          className="price"
-        >
-          <p
-            className=""
-          >
-            <span>
-              
-            </span>
-          </p>
+            <p
+              className=""
+            >
+              <span>
+                
+              </span>
+            </p>
+          </div>
         </div>
       </a>
       <div
@@ -620,7 +612,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         <button
           className="c4"
           color="primary"
-          disabled={true}
+          disabled={false}
           onClick={[Function]}
           size="md"
         >
@@ -642,41 +634,40 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         onClick={[Function]}
       >
         <div
-          className="img"
+          className="c3"
         >
           <div
-            className=""
+            className="img"
           >
-            <img
-              alt=""
-              src={[Function]}
-            />
+            <div
+              className=""
+            >
+              <img
+                alt=""
+                src={[Function]}
+              />
+            </div>
           </div>
-        </div>
-        <div
-          className="description"
-        >
-          <h4
-            className=""
+          <div
+            className="description"
           >
-            Bepanthen Ungüento - Tubo 30 Gr
-          </h4>
-          <h5
-            className="c3"
+            <h4
+              className=""
+            >
+              Bepanthen Ungüento - Tubo 30 Gr
+            </h4>
+          </div>
+          <div
+            className="price"
           >
-            No disponible
-          </h5>
-        </div>
-        <div
-          className="price"
-        >
-          <p
-            className=""
-          >
-            <span>
-              
-            </span>
-          </p>
+            <p
+              className=""
+            >
+              <span>
+                
+              </span>
+            </p>
+          </div>
         </div>
       </a>
       <div
@@ -685,7 +676,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         <button
           className="c4"
           color="primary"
-          disabled={true}
+          disabled={false}
           onClick={[Function]}
           size="md"
         >
@@ -707,41 +698,40 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         onClick={[Function]}
       >
         <div
-          className="img"
+          className="c3"
         >
           <div
-            className=""
+            className="img"
           >
-            <img
-              alt=""
-              src={[Function]}
-            />
+            <div
+              className=""
+            >
+              <img
+                alt=""
+                src={[Function]}
+              />
+            </div>
           </div>
-        </div>
-        <div
-          className="description"
-        >
-          <h4
-            className=""
+          <div
+            className="description"
           >
-            Buscapina Compositum N 500Mg-10Mg Grageas 
-          </h4>
-          <h5
-            className="c3"
+            <h4
+              className=""
+            >
+              Buscapina Compositum N 500Mg-10Mg Grageas 
+            </h4>
+          </div>
+          <div
+            className="price"
           >
-            No disponible
-          </h5>
-        </div>
-        <div
-          className="price"
-        >
-          <p
-            className=""
-          >
-            <span>
-              
-            </span>
-          </p>
+            <p
+              className=""
+            >
+              <span>
+                
+              </span>
+            </p>
+          </div>
         </div>
       </a>
       <div
@@ -750,7 +740,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         <button
           className="c4"
           color="primary"
-          disabled={true}
+          disabled={false}
           onClick={[Function]}
           size="md"
         >

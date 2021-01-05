@@ -1,0 +1,11 @@
+@import "../../../globalStyles/scss/variables.scss";
+
+a.category__link {
+  border-radius: 0.3125rem;
+  padding: 0.625rem;
+  display: block;
+  margin-right: 0.625rem;
+  &:hover {
+    background-color: $auna-complementary1;
+  }
+}

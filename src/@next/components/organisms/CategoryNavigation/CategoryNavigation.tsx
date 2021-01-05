@@ -10,7 +10,7 @@ export const CategoryNavigation: React.FC<IProps> = ({ subItems }) => {
       <S.List>
         {subItems.map(subItem => (
           <S.Link key={subItem.id}>
-            <NavLink item={subItem} />
+            <NavLink item={subItem} className="category__link" />
           </S.Link>
         ))}
       </S.List>

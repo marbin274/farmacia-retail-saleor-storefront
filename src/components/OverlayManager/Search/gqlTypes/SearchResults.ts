@@ -44,6 +44,7 @@ export interface SearchResults_products_edges_node {
    */
   id: string;
   name: string;
+  isAvailable: boolean;
   /**
    * The main thumbnail for a product.
    */

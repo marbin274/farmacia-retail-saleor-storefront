@@ -1,4 +1,5 @@
 import React from "react";
+import { OutStockLabel } from '@components/atoms'
 import { Thumbnail } from "@components/molecules";
 import * as S from "./styles";
 import { IProps } from "./types";
@@ -9,7 +10,7 @@ export const ProductImage: React.FC<IProps> = ({
 }: IProps) => (
   <S.Wrapper>
     <S.ImageFrame outStock={outStock}>
-      {outStock && <S.OutStockLabel>Agotado</S.OutStockLabel>}
+      {outStock && <OutStockLabel />}
       <Thumbnail source={product} />
     </S.ImageFrame>
   </S.Wrapper>

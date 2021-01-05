@@ -13,9 +13,9 @@ import { ICheckoutModelLine } from "@sdk/repository";
 import { TaxedMoney } from "@components/containers";
 import AddToCart from "./AddToCart";
 import { QuantityTextField } from "./QuantityTextField";
-// import { description } from "@temp/@next/components/molecules/ProductDescription/fixtures";
 
 export interface ProductDescriptionProps {
+  canAddToCart: boolean;
   descriptionJson: string;
   productId: string;
   productVariants: ProductDetails_product_variants[];
@@ -41,7 +41,7 @@ interface ProductDescriptionState {
 class ProductDescription extends React.Component<
   ProductDescriptionProps,
   ProductDescriptionState
-> {
+  > {
   constructor(props: ProductDescriptionProps) {
     super(props);
 
@@ -105,16 +105,6 @@ class ProductDescription extends React.Component<
     }
   };
 
-  canAddToCart = () => {
-    const { items } = this.props;
-    const { variant, quantity, variantStock } = this.state;
-
-    const cartItem = items?.find((item) => item.variant.id === variant);
-    const syncedQuantityWithCart = cartItem
-      ? quantity + (cartItem?.quantity || 0)
-      : quantity;
-    return quantity !== 0 && variant && variantStock >= syncedQuantityWithCart;
-  };
 
   handleSubmit = () => {
     this.props.addToCart(this.state.variant, this.state.quantity);
@@ -138,22 +128,18 @@ class ProductDescription extends React.Component<
 
   render() {
     const { name, descriptionJson } = this.props;
-    const { variant, variantStock, quantity } = this.state;
+    const { quantity } = this.state;
 
     const availableQuantity = this.getAvailableQuantity();
-    const isOutOfStock = !!variant && variantStock === 0;
-    const isNoItemsAvailable = !!variant && !isOutOfStock && !availableQuantity;
-
+    const canAddToCart = this.props.canAddToCart;
     return (
       <div className="product-description">
         <h3>{name}</h3>
-        {isOutOfStock || isNoItemsAvailable ? (
-          <p className="product-description__error-message">
-            PRODUCTO NO DISPONIBLE
-          </p>
+        {!canAddToCart ? (
+          <p className="product-description__error-message">AGOTADO</p>
         ) : (
-          <p className="product-description__price">{this.getProductPrice()}</p>
-        )}
+            <p className="product-description__price">{this.getProductPrice()}</p>
+          )}
         <RichTextContent descriptionJson={descriptionJson} />
         <div className="product-description__variant-picker">
           <ProductVariantPicker
@@ -167,15 +153,11 @@ class ProductDescription extends React.Component<
             quantity={quantity}
             maxQuantity={availableQuantity}
             onQuantityChange={this.handleQuantityChange}
-            disableButtons={
-              isOutOfStock || isNoItemsAvailable || !this.canAddToCart()
-            }
+            disableButtons={!canAddToCart}
           />
           <AddToCart
             onSubmit={this.handleSubmit}
-            disabled={
-              isOutOfStock || isNoItemsAvailable || !this.canAddToCart()
-            }
+            disabled={!canAddToCart}
           />
         </div>
       </div>

@@ -27,6 +27,11 @@ $custom-breakpoint: 624px;
       padding: 36px;
       background-color: $auna-black;
 
+      input,
+      input::placeholder {
+        font-size: 16px;
+      }
+
       &__content {
         @extend .size;
         background-color: $auna-black;
@@ -56,7 +61,6 @@ $custom-breakpoint: 624px;
         flex: 1;
         padding: 12px 16px;
         margin: 0;
-
 
         @media (max-width: $custom-breakpoint) {
           font-size: 14px;
@@ -89,7 +93,7 @@ $custom-breakpoint: 624px;
       right: 0;
     }
 
-    &--background-opacity{
+    &--background-opacity {
       background: $auna-grey-05;
       opacity: 0.92;
     }
@@ -97,15 +101,15 @@ $custom-breakpoint: 624px;
     &--not-found {
       @extend .size;
       padding: 14px;
-    }    
-    &__results {          
+    }
+    &__results {
       span {
         font-weight: 500;
       }
       @extend .size;
       margin-bottom: 24px;
-      color: $auna-black;      
-      font-weight: 300;      
+      color: $auna-black;
+      font-weight: 300;
       text-align: center;
     }
     &__item {
@@ -172,6 +176,20 @@ $custom-breakpoint: 624px;
             @media (max-width: $custom-breakpoint) {
               font-size: 14px;
             }
+          }
+        }
+        &__outstock {
+          align-items: center;
+          display: flex;
+          > span {
+            background: $aunaBrand5;
+            padding: 5px 16px;
+            color: $white;
+            border-radius: 8px;
+            font-size: $label-font-size;
+            line-height: $base-line-height;
+            font-weight: $font-weight-bold;
+            letter-spacing: 0.06em;
           }
         }
       }

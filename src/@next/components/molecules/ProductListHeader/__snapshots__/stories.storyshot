@@ -82,8 +82,8 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
 
 .c1 {
   background-color: #f1f5f5;
-  margin-top: 22px;
-  margin-bottom: 60px;
+  margin-top: 3.75rem;
+  height: 4.125rem;
 }
 
 .c2 {
@@ -115,7 +115,7 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
 }
 
 .c6 {
-  height: 1.2rem;
+  height: 3.9rem;
 }
 
 .c4 {
@@ -175,7 +175,6 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
     -webkit-align-self: flex-start;
     -ms-flex-item-align: start;
     align-self: flex-start;
-    padding: 0.625rem;
   }
 }
 
@@ -383,8 +382,8 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
 
 .c1 {
   background-color: #f1f5f5;
-  margin-top: 22px;
-  margin-bottom: 60px;
+  margin-top: 3.75rem;
+  height: 4.125rem;
 }
 
 .c2 {
@@ -416,7 +415,7 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
 }
 
 .c7 {
-  height: 1.2rem;
+  height: 3.9rem;
 }
 
 .c4 {
@@ -483,7 +482,6 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
     -webkit-align-self: flex-start;
     -ms-flex-item-align: start;
     align-self: flex-start;
-    padding: 0.625rem;
   }
 }
 

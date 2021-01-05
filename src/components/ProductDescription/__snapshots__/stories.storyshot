@@ -84,11 +84,9 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
       "Producto 1"
     </h3>
     <p
-      className="product-description__price"
+      className="product-description__error-message"
     >
-      <span>
-        
-      </span>
+      AGOTADO
     </p>
     <div
       dangerouslySetInnerHTML={

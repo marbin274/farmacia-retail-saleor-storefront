@@ -7,7 +7,7 @@ import { generateCategoryUrl, generateProductUrl } from "../../core/utils";
 import { ProductDetails_product } from "./gqlTypes/ProductDetails";
 import { ICheckoutModelLine } from "@sdk/repository";
 import { structuredData } from "../../core/SEO/Product/structuredData";
-import { MAX_ORDER_PER_PRODUCT } from "@temp/core/config";
+import { checkCanAddToCart } from "@temp/@next/utils/products";
 // TODO: Add as soon as we need to add related products
 // import OtherProducts from "./Other";
 // TODO: Add as soon as we need to add more product information below the
@@ -23,37 +23,15 @@ class Page extends React.PureComponent<
   },
   {
     variantId: string;
-    productOnCart: { quantity: number; quantityAvailable: number };
-    canAddToCart: boolean;
   }
-> {
+  > {
   fixedElement: React.RefObject<HTMLDivElement> = React.createRef();
 
   constructor(props) {
     super(props);
     this.state = {
-      canAddToCart: true,
-      productOnCart: { quantity: 0, quantityAvailable: MAX_ORDER_PER_PRODUCT },
       variantId: "",
     };
-  }
-
-  componentDidMount() {
-    this.getProductOnCart();
-    this.getCanAddToCart();
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (
-      this.props.items !== prevProps.items ||
-      this.props.product !== prevProps.product
-    ) {
-      this.getProductOnCart();
-    }
-
-    if (this.state.productOnCart !== prevState.productOnCart) {
-      this.getCanAddToCart();
-    }
   }
 
   setVariantId = (id: string) => {
@@ -91,32 +69,9 @@ class Page extends React.PureComponent<
     }
   };
 
-  getProductOnCart = () => {
-    const productOnCart = this.props.items && this.props.items.find(
-      ({ variant }) => variant.product && (variant.product.id === this.props.product.id)
-    );
-    if (productOnCart) {
-      this.setState({
-        productOnCart: {
-          quantity: productOnCart.quantity,
-          quantityAvailable: productOnCart.variant.quantityAvailable,
-        },
-      });
-    }
-  };
-
-  getCanAddToCart = () => {
-    const canAddToCart =
-      this.state.productOnCart.quantityAvailable >
-        this.state.productOnCart.quantity ||
-      this.state.productOnCart.quantity < MAX_ORDER_PER_PRODUCT;
-    this.setState({ canAddToCart });
-  };
-
   render() {
     const { add, items, product } = this.props;
-    const { canAddToCart } = this.state;
-
+    const canAddToCart = checkCanAddToCart(this.props.product, this.props.items);
     return (
       <div className="product-page">
         <div className="container">
@@ -134,6 +89,7 @@ class Page extends React.PureComponent<
                     <ProductImage product={product} outStock={!canAddToCart} />
                     <div className="product-page__product__info">
                       <ProductDescription
+                        canAddToCart={canAddToCart}
                         descriptionJson={product.descriptionJson}
                         items={items}
                         productId={product.id}
@@ -146,24 +102,25 @@ class Page extends React.PureComponent<
                     </div>
                   </>
                 ) : (
-                  <>
-                    <ProductImage product={product} outStock={!canAddToCart} />
-                    <div className="product-page__product__info">
-                      <div className={"product-page__product__info--fixed"}>
-                        <ProductDescription
-                          descriptionJson={product.descriptionJson}
-                          items={items}
-                          productId={product.id}
-                          name={product.name}
-                          productVariants={product.variants}
-                          pricing={product.pricing}
-                          addToCart={add}
-                          setVariantId={this.setVariantId}
-                        />
+                    <>
+                      <ProductImage product={product} outStock={!canAddToCart} />
+                      <div className="product-page__product__info">
+                        <div className={"product-page__product__info--fixed"}>
+                          <ProductDescription
+                            canAddToCart={canAddToCart}
+                            descriptionJson={product.descriptionJson}
+                            items={items}
+                            productId={product.id}
+                            name={product.name}
+                            productVariants={product.variants}
+                            pricing={product.pricing}
+                            addToCart={add}
+                            setVariantId={this.setVariantId}
+                          />
+                        </div>
                       </div>
-                    </div>
-                  </>
-                )
+                    </>
+                  )
               }
             </Media>
           </div>

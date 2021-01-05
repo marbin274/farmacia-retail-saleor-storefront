@@ -21,9 +21,10 @@ const ProductItem: React.FC<SearchResults_products_edges> = ({
           </p>
         </div>
         <div className="search__products__item__side">
-          <p className="search__products__item__side__price">
-            <Money money={product.pricing.priceRange.start.net} />
-          </p>
+          {product.isAvailable ?
+            <p className="search__products__item__side__price"><Money money={product.pricing.priceRange.start.net} /></p>
+            : <p className="search__products__item__side__outstock"><span>Agotado</span></p>
+          }
         </div>
       </div>
     </Link>

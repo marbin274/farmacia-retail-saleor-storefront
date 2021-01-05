@@ -66,7 +66,7 @@ const Breadcrumbs: React.FC<{
         </ul>
       ) : (
         <div className="breadcrumbs">
-          <Link to={getBackLink(breadcrumbs)}>Back</Link>
+          <Link to={getBackLink(breadcrumbs)}>Atrás</Link>
         </div>
       )
     }
