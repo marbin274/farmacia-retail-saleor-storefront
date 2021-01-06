@@ -37,6 +37,12 @@ export interface SearchResults_products_edges_node_category {
   name: string;
 }
 
+export interface SearchResults_products_edges_node_variants {
+  __typename: "Variants";
+  id: string;
+  quantityAvailable: number;
+}
+
 export interface SearchResults_products_edges_node {
   __typename: "Product";
   /**
@@ -57,8 +63,9 @@ export interface SearchResults_products_edges_node {
    * The storefront URL for the product.
    */
   url: string;
+  variants: SearchResults_products_edges_node_variants | null;
   category: SearchResults_products_edges_node_category | null;
-    /**
+  /**
    * Lists the storefront product's pricing, the current price and discounts, only meant for displaying.
    */
   pricing: ProductDetails_product_pricing | null;

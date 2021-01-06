@@ -22,6 +22,10 @@ const searchResultsQuery = gql`
             url
           }
           url
+          variants {
+            id
+            quantityAvailable
+          }
           category {
             id
             name
