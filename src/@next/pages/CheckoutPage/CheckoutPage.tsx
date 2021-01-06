@@ -128,13 +128,6 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
 
   const [requestPayload, setRequestPayload] = useState(null);
 
-  useEffect(() => {
-    const payload: any = {
-      purchase_number: Math.floor(Math.random()*(999999999999-1))+1,
-    };
-
-    setRequestPayload(payload);
-  }, []);
 
   const matchingStepIndex = CHECKOUT_STEPS.findIndex(
     ({ link }) => link === pathname
@@ -231,6 +224,7 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
             selectedPaymentGatewayToken={selectedPaymentGatewayToken}
             changeSubmitProgress={setSubmitInProgress}
             selectPaymentGateway={setSelectedPaymentGateway}
+            changeRequestPayload={setRequestPayload}
             requestPayload={requestPayload}
             {...props}
           />

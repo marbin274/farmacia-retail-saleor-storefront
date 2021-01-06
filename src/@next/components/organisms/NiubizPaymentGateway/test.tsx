@@ -11,12 +11,14 @@ describe("<NiubizPaymentGateway />", () => {
   it("exists", () => {
     const processPayment = jest.fn();
     const onError = jest.fn();
+    const changeRequestPayload = jest.fn();
     const wrapper = shallow(
       <NiubizPaymentGateway
         config={config}
         processPayment={processPayment}
         onError={onError}
         userDataForNiubiz={userDataFroNiubiz}
+        changeRequestPayload={changeRequestPayload}
       />
     );
 

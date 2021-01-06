@@ -16,6 +16,7 @@ describe("<CheckoutPayment />", () => {
     const processPayment = jest.fn();
     const onGatewayError = jest.fn();
     const clearPromoCodeErrors = jest.fn();
+    const changeRequestPayload = jest.fn();
     const wrapper = mount(
       <CheckoutPayment
         {...LOGGED_IN_USER_PROPS}
@@ -28,6 +29,7 @@ describe("<CheckoutPayment />", () => {
         processPayment={processPayment}
         onGatewayError={onGatewayError}
         clearPromoCodeErrors={clearPromoCodeErrors}
+        changeRequestPayload={changeRequestPayload}
       />
     );
 

@@ -7,6 +7,7 @@ import { NiubizPaymentGateway } from ".";
 const config = [{ field: "client_token", value: "token_test_1234567890" }];
 const processPayment = action("processPayment");
 const onError = action("onError");
+const changeRequestPayload = action("changeRequestPayload");
 
 storiesOf("@components/organisms/NiubizPaymentGateway", module)
   .addParameters({ component: NiubizPaymentGateway })
@@ -15,5 +16,6 @@ storiesOf("@components/organisms/NiubizPaymentGateway", module)
       config={config}
       processPayment={processPayment}
       onError={onError}
+      changeRequestPayload={changeRequestPayload}
     />
   ));

@@ -31,6 +31,7 @@ const CheckoutPayment: React.FC<IProps> = ({
   gatewayFormId,
   processPayment,
   onGatewayError,
+  changeRequestPayload,
   requestPayload,
   totalPrice,
   userDataForNiubiz,
@@ -102,6 +103,7 @@ const CheckoutPayment: React.FC<IProps> = ({
         selectPaymentGateway={selectPaymentGateway}
         checkoutBillingAddress={checkoutBillingAddress}
         onError={onGatewayError}
+        changeRequestPayload={changeRequestPayload}
         requestPayload={requestPayload}
         totalPrice={totalPrice}
         userDataForNiubiz={userDataForNiubiz}
