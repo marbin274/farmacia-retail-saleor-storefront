@@ -26,6 +26,12 @@ export interface HomePage_shop_homepageCollection {
   name: string;
 }
 
+export interface AnaliticTracking {
+  trackingId: string | null;
+
+  tagManagerId: string | null;
+}
+
 export interface HomePage_shop {
   __typename: "Shop";
   /**
@@ -40,6 +46,8 @@ export interface HomePage_shop {
    * Collection displayed on homepage.
    */
   homepageCollection: HomePage_shop_homepageCollection | null;
+
+  analyticsConfig: AnaliticTracking;
 }
 
 export interface HomePage_products_edges_node_thumbnail {

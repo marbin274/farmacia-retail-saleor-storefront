@@ -9,40 +9,36 @@ import { TypedQuery } from "../../core/queries";
 import { HomePage, HomePageVariables } from "./gqlTypes/HomePage";
 
 export const productVariantFragmentSimple = gql`
-    ${priceFragment}
-    fragment ProductVariantFieldsSimple on ProductVariant {
-        id
-        sku
-        name
-        quantityAvailable
-        images {
-            id
-            url
-            alt
-        }
-        pricing {
-            onSale
-            priceUndiscounted {
-                ...Price
-            }
-            price {
-                ...Price
-            }
-        }
+  ${priceFragment}
+  fragment ProductVariantFieldsSimple on ProductVariant {
+    id
+    sku
+    name
+    quantityAvailable
+    images {
+      id
+      url
+      alt
     }
+    pricing {
+      onSale
+      priceUndiscounted {
+        ...Price
+      }
+      price {
+        ...Price
+      }
+    }
+  }
 `;
-
 
 // get all available products according the specified filter
 export const homePageQuery = gql`
   ${basicProductFragment}
   ${productPricingFragment}
   ${productVariantFragmentSimple}
-  
-  query HomePage(
-    $pageSize: Int
-    $sortBy: ProductOrder
-  ) {
+
+  query HomePage($pageSize: Int, $sortBy: ProductOrder) {
     shop {
       description
       name
@@ -53,12 +49,12 @@ export const homePageQuery = gql`
         }
         name
       }
+      analyticsConfig {
+        trackingId
+        tagManagerId
+      }
     }
-
-    products(
-      first: $pageSize
-      sortBy: $sortBy
-    ) {
+    products(first: $pageSize, sortBy: $sortBy) {
       totalCount
       edges {
         node {
@@ -71,7 +67,6 @@ export const homePageQuery = gql`
           variants {
             ...ProductVariantFieldsSimple
           }
-
         }
       }
       pageInfo {
@@ -83,6 +78,5 @@ export const homePageQuery = gql`
     }
   }
 `;
-
 
 export const TypedHomePageQuery = TypedQuery<HomePage, HomePageVariables>(homePageQuery);
