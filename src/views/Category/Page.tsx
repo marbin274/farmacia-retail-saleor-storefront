@@ -104,7 +104,7 @@ const Page: React.FC<PageProps> = ({
         onChange={onOrder}
         onCloseFilterAttribute={onAttributeFiltersChange}
       />
-      <div className="container category__body">
+      <div className="category__container category__body">
         <CategoryNavigation
           subItems={navigationItems ? navigationItems.children : []}
         />

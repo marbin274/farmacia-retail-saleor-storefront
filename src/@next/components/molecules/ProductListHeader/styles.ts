@@ -7,10 +7,16 @@ export const Wrapper = styled.div`
 `;
 
 export const Bar = styled.div`
-  height: 5rem;
+  
   display: flex;
   justify-content: space-between;
   align-items: center;
+  ${media.xxxLargeScreen`
+    padding-top: 0.625rem;
+  `}
+  ${media.largeScreen`
+    padding-top: 0;
+  `}
   font-size: ${props => props.theme.typography.smallFontSize};
 `;
 

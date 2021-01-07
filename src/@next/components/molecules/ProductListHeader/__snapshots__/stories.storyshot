@@ -87,7 +87,6 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
 }
 
 .c2 {
-  height: 5rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -153,6 +152,18 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
   margin: 0.4rem;
 }
 
+@media (max-width:1920px) {
+  .c2 {
+    padding-top: 0.625rem;
+  }
+}
+
+@media (max-width:992px) {
+  .c2 {
+    padding-top: 0;
+  }
+}
+
 @media (max-width:540px) {
   .c6 {
     height: auto;
@@ -197,7 +208,7 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
     className="c1"
   >
     <div
-      className="container c1"
+      className="category__container c1"
     >
       <div
         className="c2"
@@ -387,7 +398,6 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
 }
 
 .c2 {
-  height: 5rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -460,6 +470,18 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
   margin: 0.4rem;
 }
 
+@media (max-width:1920px) {
+  .c2 {
+    padding-top: 0.625rem;
+  }
+}
+
+@media (max-width:992px) {
+  .c2 {
+    padding-top: 0;
+  }
+}
+
 @media (max-width:540px) {
   .c7 {
     height: auto;
@@ -504,7 +526,7 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
     className="c1"
   >
     <div
-      className="container c1"
+      className="category__container c1"
     >
       <div
         className="c2"

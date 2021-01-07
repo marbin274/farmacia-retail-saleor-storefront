@@ -18,7 +18,7 @@ export const ProductListHeader: React.FC<IProps> = ({
 }: IProps) => {
   return (
     <S.Wrapper>
-      <S.Wrapper className="container">
+      <S.Wrapper className="category__container">
         <S.Bar>
           <S.LeftSide>
             <S.FiltersButton
