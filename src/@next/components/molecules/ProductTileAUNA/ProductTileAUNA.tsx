@@ -54,7 +54,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
           <div className="description">
             <S.Title>{product.name}</S.Title>
             {!canAddToCart && (
-              <S.ProductAttribute>No disponible</S.ProductAttribute>
+              <S.ProductAttribute>Agotado</S.ProductAttribute>
             )}
           </div>
           <div className="price">
