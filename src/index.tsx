@@ -47,6 +47,7 @@ const cache = new InMemoryCache({
   },
 });
 
+
 const startApp = async () => {
   await persistCache({
     cache,
