@@ -12,7 +12,7 @@ export interface IProductVariant extends INode, IObjectWithMetadata{
   trackInventory?: boolean;
   costPrice?: IMoney;
   margin?: number;
-  quantityOrdered: number
+  quantityOrdered?: number
   priceOverride?: IMoney;
   pricing?: IProductVariantPricing;
   revenue?: ITaxedMoney;

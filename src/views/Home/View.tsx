@@ -1,17 +1,14 @@
 import * as React from "react";
-
-import { useCart } from "@sdk/react";
 import { HOME_PAGE_CONF } from "@temp/core/config";
 
-import { MetaWrapper } from "../../components";
+import { MetaWrapper } from "@temp/components";
 import Page from "./Page";
 import "./scss/index.scss";
-
-import { ISimpleProduct } from "@app/types/IProduct";
-import { IAddToCartCallback } from "@components/molecules/ProductTileAUNA/types";
-import { HomePage_products, HomePageVariables } from "./gqlTypes/HomePage";
 import { TypedHomePageQuery } from "./queries";
 import TagManager from "react-gtm-module";
+import { HomePageVariables } from "./gqlTypes/HomePage";
+import { useCart } from "@temp/@sdk/react";
+import { IAddToCartCallback } from "@temp/@next/components/molecules/ProductTileAUNA/types";
 
 const homePageVariables: HomePageVariables = {
   pageSize: HOME_PAGE_CONF.PAGE_SIZE,
@@ -22,9 +19,7 @@ const homePageVariables: HomePageVariables = {
 };
 
 const View: React.FC = () => {
-  const { items, addItem } = useCart();
-  const extractNodes = (productEdges: HomePage_products) => productEdges.edges.map(edge => edge.node);
-
+  const { items: productsOnCart, addItem } = useCart();
   return (
     <div className="home-page">
       <TypedHomePageQuery
@@ -37,7 +32,6 @@ const View: React.FC = () => {
           TagManager.initialize({
             gtmId: data.shop.analyticsConfig.tagManagerId,
           });
-          const productList: ISimpleProduct[] = extractNodes(data.products);
           const addToCart: IAddToCartCallback = (product, quantity) => {
             addItem(product, quantity);
           };
@@ -49,15 +43,12 @@ const View: React.FC = () => {
               }}
             >
               <div className="home-view">
-                {data && data.products && (
-                  <Page
-                    addToCart={addToCart}
-                    loading={loading}
-                    items={items}
-                    products={productList}
-                    shop={data.shop}
-                  />
-                )}
+                <Page
+                  loading={loading}
+                  productsOnCart={productsOnCart}
+                  shop={data.shop}
+                  addToCart={addToCart}
+                />
               </div>
             </MetaWrapper>
           );

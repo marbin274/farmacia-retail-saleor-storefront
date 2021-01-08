@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   margin: 20px;
 }
 
-.c8 {
+.c7 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -17,41 +17,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   box-sizing: border-box;
 }
 
-.c4 {
-  background-color: #00B0CA;
-  padding: 0.9rem 3.7rem;
-  border: none;
-  border-radius: 40px;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-  outline: none;
-  cursor: pointer;
-  color: #fff;
-  width: auto;
-}
-
-.c4:hover {
-  background-color: #0BC1DC;
-  color: #fff;
-}
-
-.c4:active {
-  background-color: #029FB7;
-  box-shadow: -3px 3px 14px 0px rgba(129,67,67,0.2);
-}
-
-.c4:disabled {
-  background-color: #F1F2F7;
-  color: #B8BCD5;
-  cursor: default;
-}
-
-.c4:disabled,
-.c4:disabled:hover {
-  cursor: default;
-}
-
-.c7 {
+.c5 {
   background-color: #fff;
   padding: 0.9rem 3.7rem;
   border: none;
@@ -67,28 +33,28 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   border-right: 1px solid #00B0CA;
 }
 
-.c7:hover {
+.c5:hover {
   background-color: #fff;
   color: #00B0CA;
 }
 
-.c7:active {
+.c5:active {
   background-color: #029FB7;
   box-shadow: -3px 3px 14px 0px rgba(129,67,67,0.2);
 }
 
-.c7:disabled {
+.c5:disabled {
   background-color: #F1F2F7;
   color: #B8BCD5;
   cursor: default;
 }
 
-.c7:disabled,
-.c7:disabled:hover {
+.c5:disabled,
+.c5:disabled:hover {
   cursor: default;
 }
 
-.c5 {
+.c6 {
   display: inline-block;
   font-size: 1.125rem;
   font-weight: 400;
@@ -202,20 +168,13 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   grid-gap: 5rem 3rem;
 }
 
-.c6 {
+.c4 {
   text-align: center;
   margin: 2.5rem 0;
 }
 
 @media (max-width:540px) {
-  .c4 {
-    padding: 0.9rem 1rem;
-    width: 88%;
-  }
-}
-
-@media (max-width:540px) {
-  .c7 {
+  .c5 {
     padding: 0.9rem 1rem;
     width: 88%;
   }
@@ -286,24 +245,6 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           </div>
         </div>
       </a>
-      <div
-        className="button"
-      >
-        <button
-          className="c4"
-          color="primary"
-          disabled={false}
-          onClick={[Function]}
-          size="md"
-        >
-          <span
-            className="c5"
-            size="md"
-          >
-            +
-          </span>
-        </button>
-      </div>
     </div>
     <div
       className="c2"
@@ -350,24 +291,6 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           </div>
         </div>
       </a>
-      <div
-        className="button"
-      >
-        <button
-          className="c4"
-          color="primary"
-          disabled={false}
-          onClick={[Function]}
-          size="md"
-        >
-          <span
-            className="c5"
-            size="md"
-          >
-            +
-          </span>
-        </button>
-      </div>
     </div>
     <div
       className="c2"
@@ -414,24 +337,6 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           </div>
         </div>
       </a>
-      <div
-        className="button"
-      >
-        <button
-          className="c4"
-          color="primary"
-          disabled={false}
-          onClick={[Function]}
-          size="md"
-        >
-          <span
-            className="c5"
-            size="md"
-          >
-            +
-          </span>
-        </button>
-      </div>
     </div>
     <div
       className="c2"
@@ -478,24 +383,6 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           </div>
         </div>
       </a>
-      <div
-        className="button"
-      >
-        <button
-          className="c4"
-          color="primary"
-          disabled={false}
-          onClick={[Function]}
-          size="md"
-        >
-          <span
-            className="c5"
-            size="md"
-          >
-            +
-          </span>
-        </button>
-      </div>
     </div>
     <div
       className="c2"
@@ -542,24 +429,6 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           </div>
         </div>
       </a>
-      <div
-        className="button"
-      >
-        <button
-          className="c4"
-          color="primary"
-          disabled={false}
-          onClick={[Function]}
-          size="md"
-        >
-          <span
-            className="c5"
-            size="md"
-          >
-            +
-          </span>
-        </button>
-      </div>
     </div>
     <div
       className="c2"
@@ -606,24 +475,6 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           </div>
         </div>
       </a>
-      <div
-        className="button"
-      >
-        <button
-          className="c4"
-          color="primary"
-          disabled={false}
-          onClick={[Function]}
-          size="md"
-        >
-          <span
-            className="c5"
-            size="md"
-          >
-            +
-          </span>
-        </button>
-      </div>
     </div>
     <div
       className="c2"
@@ -670,24 +521,6 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           </div>
         </div>
       </a>
-      <div
-        className="button"
-      >
-        <button
-          className="c4"
-          color="primary"
-          disabled={false}
-          onClick={[Function]}
-          size="md"
-        >
-          <span
-            className="c5"
-            size="md"
-          >
-            +
-          </span>
-        </button>
-      </div>
     </div>
     <div
       className="c2"
@@ -734,38 +567,20 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           </div>
         </div>
       </a>
-      <div
-        className="button"
-      >
-        <button
-          className="c4"
-          color="primary"
-          disabled={false}
-          onClick={[Function]}
-          size="md"
-        >
-          <span
-            className="c5"
-            size="md"
-          >
-            +
-          </span>
-        </button>
-      </div>
     </div>
   </div>
   <div
-    className="c6"
+    className="c4"
   >
     <button
-      className="c7"
+      className="c5"
       color="secondary"
       data-cy="load-more_button"
       onClick={[Function]}
       size="md"
     >
       <span
-        className="c5"
+        className="c6"
         size="md"
       >
         More +
@@ -773,7 +588,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
     </button>
   </div>
   <div
-    className="c8"
+    className="c7"
   />
 </div>
 `;
