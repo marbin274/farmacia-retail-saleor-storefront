@@ -30,7 +30,7 @@ const Page: React.FC<IPageProps> = ({
               2en1 Suave y Manejable o Limpieza Renovadora
         </h3>
             <p>
-              *Promoción válida hasta el 07/01/2021 o hasta agotar el stock. Máx. 3 unidades por producto.<br />
+              *Promoción válida hasta el 11/01/2021 o hasta agotar el stock. Máx. 3 unidades por producto.<br />
           Aplica máx. 2 promociones por usuario. No acumulable con otras promociones. Aplican más T&C.
         </p>
           </div>
