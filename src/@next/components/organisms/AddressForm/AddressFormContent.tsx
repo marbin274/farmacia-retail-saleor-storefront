@@ -1,12 +1,11 @@
 import React, { useCallback, useState } from "react";
-
+import { Checkbox } from "@components/atoms/Checkbox";
+import { ErrorMessage } from "@components/atoms/ErrorMessage/ErrorMessage";
 import { InputSelect, TextField } from "@components/molecules";
 import * as S from "./styles";
 import { PropsWithFormik } from "./types";
-import { Checkbox } from "../../atoms/Checkbox";
 import { IPrivacyPolicy } from "@temp/@sdk/api/Checkout/types";
 import { IAddressWithEmail, IFormError } from "@temp/@next/types";
-import { ErrorMessage } from "../../atoms/ErrorMessage/ErrorMessage";
 
 export const AddressFormContent: React.FC<PropsWithFormik> = ({
   formRef,

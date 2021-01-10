@@ -85,7 +85,6 @@ exports[`Storyshots @components/organisms/CreditCardForm default 1`] = `
 }
 
 .c8 {
-  position: absolute;
   top: 100%;
 }
 
@@ -362,7 +361,6 @@ exports[`Storyshots @components/organisms/CreditCardForm disabled 1`] = `
 }
 
 .c8 {
-  position: absolute;
   top: 100%;
 }
 
@@ -668,7 +666,6 @@ exports[`Storyshots @components/organisms/CreditCardForm error 1`] = `
 }
 
 .c8 {
-  position: absolute;
   top: 100%;
 }
 

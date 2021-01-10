@@ -85,7 +85,6 @@ exports[`Storyshots @components/organisms/BraintreePaymentGateway default 1`] = 
 }
 
 .c9 {
-  position: absolute;
   top: 100%;
 }
 

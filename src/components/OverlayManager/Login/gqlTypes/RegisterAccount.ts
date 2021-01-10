@@ -42,9 +42,9 @@ export interface RegisterAccountVariables {
   email: string;
   password: string;
   redirectUrl: string;
-  firstName: String;
-  lastName: String;
-  termsAndConditions: Boolean;
-  dataTreatmentPolicy: Boolean;
-  documentNumber: String;
+  firstName: string;
+  lastName: string;
+  termsAndConditions: boolean;
+  dataTreatmentPolicy: boolean;
+  documentNumber: string;
 }

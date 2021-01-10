@@ -12,7 +12,6 @@ export const HelpText = styled.span`
   font-size: ${props => props.theme.input.labelFontSize};
 `;
 
-export const ErrorMessages = styled.div`
-  position: absolute;
+export const ErrorMessages = styled.div`  
   top: 100%;
 `;

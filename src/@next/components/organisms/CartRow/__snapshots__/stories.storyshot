@@ -138,7 +138,6 @@ exports[`Storyshots @components/organisms/CartRow default 1`] = `
 }
 
 .c17 {
-  position: absolute;
   top: 100%;
 }
 

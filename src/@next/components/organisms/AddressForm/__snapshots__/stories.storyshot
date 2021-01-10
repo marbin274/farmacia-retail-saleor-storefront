@@ -206,7 +206,6 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
 }
 
 .c14 {
-  position: absolute;
   top: 100%;
 }
 
@@ -215,7 +214,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
 }
 
 .c2 .privacyAndPolicies {
-  margin-top: 2rem;
+  margin-top: 1rem;
   width: 100%;
 }
 
@@ -265,7 +264,6 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  margin-bottom: 1rem;
 }
 
 .c8 > div {
@@ -1017,7 +1015,6 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
 }
 
 .c14 {
-  position: absolute;
   top: 100%;
 }
 
@@ -1026,7 +1023,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
 }
 
 .c2 .privacyAndPolicies {
-  margin-top: 2rem;
+  margin-top: 1rem;
   width: 100%;
 }
 
@@ -1076,7 +1073,6 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  margin-bottom: 1rem;
 }
 
 .c8 > div {
@@ -1828,7 +1824,6 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
 }
 
 .c14 {
-  position: absolute;
   top: 100%;
 }
 
@@ -1837,7 +1832,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
 }
 
 .c2 .privacyAndPolicies {
-  margin-top: 2rem;
+  margin-top: 1rem;
   width: 100%;
 }
 
@@ -1887,7 +1882,6 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  margin-bottom: 1rem;
 }
 
 .c8 > div {
