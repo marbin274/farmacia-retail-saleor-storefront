@@ -52,4 +52,5 @@ export interface MainMenuSubItem {
   collection: MainMenuSubItem_collection | null;
   page: MainMenuSubItem_page | null;
   parent: MainMenuSubItem_parent | null;
+  isOpen?: boolean | false;
 }
