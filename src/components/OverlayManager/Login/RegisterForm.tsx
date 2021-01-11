@@ -1,11 +1,10 @@
-import "./scss/index.scss";
-
+import { maybe } from "@temp/core/utils";
 import React from "react";
 import { AlertManager, useAlert } from "react-alert";
-import { maybe } from "@temp/core/utils";
 import { RegisterAccount } from "./gqlTypes/RegisterAccount";
 import { TypedAccountRegisterMutation } from "./queries";
 import { RegisterFormContent } from "./RegisterFormContent";
+import "./scss/index.scss";
 
 const showSuccessNotification = (
   data: RegisterAccount,
@@ -55,7 +54,7 @@ const RegisterForm: React.FC<IRegisterForm> = ({ hide, onSwitchSection }) => {
               </p>
             </div>
             <RegisterFormContent
-              data={data}
+              errors={data?.accountRegister?.errors}
               loading={loading}
               registerCustomer={registerCustomer}
             />

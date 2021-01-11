@@ -1,12 +1,9 @@
-import "./scss/index.scss";
-
-import * as React from "react";
-
 import { useSignIn } from "@sdk/react";
 import { maybe } from "@utils/misc";
-
+import * as React from "react";
 import { Button, Form, TextField } from "..";
 import ForgottenPassword from "../OverlayManager/Login/ForgottenPassword";
+import "./scss/index.scss";
 
 interface ILoginForm {
   hide?: () => void;

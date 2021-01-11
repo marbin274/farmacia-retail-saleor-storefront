@@ -1,11 +1,11 @@
-import React, { useCallback, useState } from "react";
-import { Checkbox } from "@components/atoms/Checkbox";
-import { ErrorMessage } from "@components/atoms/ErrorMessage/ErrorMessage";
+import { IAddressWithEmail, IFormError } from "@app/types";
+import { convertIFormErrorsToObjectErrors } from "@app/utils/errorsManagement";
+import { Checkbox, DataTreatmentPolicyLink, ErrorMessage, TermsAndConditionsLink } from "@components/atoms";
 import { InputSelect, TextField } from "@components/molecules";
+import { IPrivacyPolicy } from "@sdk/api/Checkout/types";
+import React, { useCallback, useState } from "react";
 import * as S from "./styles";
 import { PropsWithFormik } from "./types";
-import { IPrivacyPolicy } from "@temp/@sdk/api/Checkout/types";
-import { IAddressWithEmail, IFormError } from "@temp/@next/types";
 
 export const AddressFormContent: React.FC<PropsWithFormik> = ({
   formRef,
@@ -57,14 +57,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
     errors.push(_err);
   }
 
-  const fieldErrors: any = {};
-  if (errors && errors.length) {
-    errors.map(({ field, message }: { field: string; message: string }) => {
-      fieldErrors[field] = fieldErrors[field]
-        ? [...fieldErrors[field], { message }]
-        : [{ message }];
-    });
-  }
+  const fieldErrors: any = convertIFormErrorsToObjectErrors(errors);
 
   const _cities: any[] = [];
   citiesOptions?.map(x => {
@@ -77,13 +70,13 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
 
   const handlePrivacyAndPolicies = () => {
     setFieldTouched("termsAndConditions", true);
-    setFieldValue("termsAndConditions", !privacyAndPolicies);    
+    setFieldValue("termsAndConditions", !privacyAndPolicies);
   };
 
   const handleAdditionals = () => {
     setAdditionals(!additionals);
     setFieldTouched("dataTreatmentPolicy", true);
-    setFieldValue("dataTreatmentPolicy", !additionals);    
+    setFieldValue("dataTreatmentPolicy", !additionals);
   };
 
   const basicInputProps = useCallback(
@@ -143,11 +136,11 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
     </S.GroupLabel>
   );
 
-  React.useEffect(()=>{
+  React.useEffect(() => {
     setPrivacyAndPolicies(values?.termsAndConditions === true);
   }, [values?.termsAndConditions]);
 
-  React.useEffect(()=>{
+  React.useEffect(() => {
     setAdditionals(values?.dataTreatmentPolicy === true);
   }, [values?.dataTreatmentPolicy]);
 
@@ -302,18 +295,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                         checked={privacyAndPolicies}
                         onChange={handlePrivacyAndPolicies}
                       >
-                        <label htmlFor="">
-                          *Estoy de acuerdo con las
-                        <a href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-politicas-privacidad.pdf">
-                            {" "}
-                          Políticas de privacidad
-                        </a>{" "}
-                        y
-                        <a href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-terminos-condiciones.pdf">
-                            {" "}
-                          Términos y condiciones
-                        </a>
-                        </label>
+                        <TermsAndConditionsLink />
                       </Checkbox>
                       <ErrorMessage errors={fieldErrors!.termsAndConditions} />
                     </div>
@@ -324,10 +306,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                         checked={additionals}
                         onChange={handleAdditionals}
                       >
-                        <label htmlFor="">
-                          Acepto el tratamiento para{" "}
-                          <a href="#"> Fines adicionales</a>
-                        </label>
+                        <DataTreatmentPolicyLink />
                       </Checkbox>
                     </div>
                   </S.RowWithOneCell>

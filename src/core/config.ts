@@ -116,3 +116,9 @@ export const CHECKOUT_STEPS = [
 ];
 
 export const MAX_ORDER_PER_PRODUCT = 50;
+
+export const DOCUMENTS_URLS_S3 = {
+  finesAdicionalesUrls: "https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-fines-adicionales.pdf",
+  politicasDePrivacidadUrl: "https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-politicas-privacidad.pdf",
+  terminosYCondicionesUrl: "https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-terminos-condiciones.pdf",
+};

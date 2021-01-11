@@ -1,28 +1,33 @@
 import * as Yup from "yup";
+import * as SchemasConfig from "./schemas.config";
+import * as SchemaMessage from "./schemas.messages";
 
 export const dataTreatmentPolicyValidation = Yup.boolean();
 
-export const documentNumberValidation = Yup.string().defined("Ingresa tu número de documento")
+export const documentNumberValidation = Yup.string()
     .uppercase()
-    .trim()    
-    .min(8, "Debe contener de ${min} a 20 caracteres, no incluir espacios")// tslint:disable-line    
-    .max(20, "Debe contener de ${min} a 20 caracteres, no incluir espacios")// tslint:disable-line
-    .required("Ingresa tu número de documento")    
-    .matches(/^[0-9A-Z]+$/, "Debe contener de ${min} a ${max} caracteres, no incluir espacios");// tslint:disable-line
+    .trim()
+    .min(SchemasConfig.DOCUMENT_NUMBER_MIN_LENGTH, SchemaMessage.DOCUMENT_NUMBER_VALIDATION)
+    .max(SchemasConfig.DOCUMENT_NUMBER_MAX_LENGTH, SchemaMessage.DOCUMENT_NUMBER_VALIDATION)
+    .required(SchemaMessage.DOCUMENT_NUMBER_REQUIRED)
+    .matches(SchemasConfig.DOCUMENT_REGEX_VALIDATION, SchemaMessage.DOCUMENT_NUMBER_VALIDATION);
 
-export const emailValidation = Yup.string().defined("Indique email")
-    .required("Indique email")
-    .matches(/^[0-9a-zA-Z@._-]+$/, "Debe contener un correo válido, ingresa letras (A-Z), números (0-9), (@) y (.), no incluir espacios")
-    .email("Debe contener un correo válido, ingresa letras (A-Z), números (0-9), (@) y (.), no incluir espacios");
+export const emailValidation = Yup.string()
+    .required(SchemaMessage.EMAIL_REQUIRED)
+    .matches(SchemasConfig.EMAIL_REGEX_VALIDARION, SchemaMessage.EMAIL_VALIDATION)
+    .email(SchemaMessage.EMAIL_VALIDATION);
 
-export const fullNameValidation = Yup.string().required("Ingresa tu nombre y apellido");
+export const fullNameValidation = Yup.string().required(SchemaMessage.FULLNAME_REQUIRED);
+
+export const passwordValidation = Yup.string()
+    .required(SchemaMessage.PASSWORD_REQUIRED)
+    .min(SchemasConfig.PASSWORD_MIN_LEGTH, SchemaMessage.PASSWORD_VALIDATION);
 
 export const phoneValidation = Yup.string()
     .trim()
-    .min(9, "Debe contener ${min} dígitos comenzando con ${min}, no incluir espacios, ni letras (A-Z)")// tslint:disable-line    
-    .matches(/^[9][0-9]*$/, "Debe contener ${min} dígitos comenzando con ${min}, no incluir espacios, ni letras (A-Z)");// tslint:disable-line
+    .min(SchemasConfig.PHONE_MIN_LENGTH, SchemaMessage.PHONE_VALIDATION)    
+    .matches(SchemasConfig.PHONE_REGEX_VALIDATION, SchemaMessage.PHONE_VALIDATION);
 
 export const termsAndConditionsValidation = Yup.boolean()
-    .oneOf([true], "Debes aceptar para continuar")
-    .required("Debes aceptar para continuar");
-    
+    .oneOf([true], SchemaMessage.TERMS_AND_CONTIDIONS_REQUIRED)
+    .required(SchemaMessage.TERMS_AND_CONTIDIONS_REQUIRED);

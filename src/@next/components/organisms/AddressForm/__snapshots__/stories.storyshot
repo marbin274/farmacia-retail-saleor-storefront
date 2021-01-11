@@ -540,16 +540,13 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                       <a
                         href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-politicas-privacidad.pdf"
                       >
-                         
-                        Políticas de privacidad
+                         Políticas de privacidad 
                       </a>
-                       
-                      y
+                        y
                       <a
                         href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-terminos-condiciones.pdf"
                       >
-                         
-                        Términos y condiciones
+                         Términos y condiciones 
                       </a>
                     </label>
                   </div>
@@ -586,13 +583,13 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                     <label
                       htmlFor=""
                     >
-                      Acepto el tratamiento para
-                       
+                       Acepto el tratamiento para
                       <a
-                        href="#"
+                        href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-fines-adicionales.pdf"
                       >
-                         Fines adicionales
+                         Fines adicionales 
                       </a>
+                      (opcional )
                     </label>
                   </div>
                 </div>
@@ -1349,16 +1346,13 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                       <a
                         href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-politicas-privacidad.pdf"
                       >
-                         
-                        Políticas de privacidad
+                         Políticas de privacidad 
                       </a>
-                       
-                      y
+                        y
                       <a
                         href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-terminos-condiciones.pdf"
                       >
-                         
-                        Términos y condiciones
+                         Términos y condiciones 
                       </a>
                     </label>
                   </div>
@@ -1395,13 +1389,13 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                     <label
                       htmlFor=""
                     >
-                      Acepto el tratamiento para
-                       
+                       Acepto el tratamiento para
                       <a
-                        href="#"
+                        href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-fines-adicionales.pdf"
                       >
-                         Fines adicionales
+                         Fines adicionales 
                       </a>
+                      (opcional )
                     </label>
                   </div>
                 </div>
@@ -2158,16 +2152,13 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                       <a
                         href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-politicas-privacidad.pdf"
                       >
-                         
-                        Políticas de privacidad
+                         Políticas de privacidad 
                       </a>
-                       
-                      y
+                        y
                       <a
                         href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-terminos-condiciones.pdf"
                       >
-                         
-                        Términos y condiciones
+                         Términos y condiciones 
                       </a>
                     </label>
                   </div>
@@ -2204,13 +2195,13 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                     <label
                       htmlFor=""
                     >
-                      Acepto el tratamiento para
-                       
+                       Acepto el tratamiento para
                       <a
-                        href="#"
+                        href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-fines-adicionales.pdf"
                       >
-                         Fines adicionales
+                         Fines adicionales 
                       </a>
+                      (opcional )
                     </label>
                   </div>
                 </div>

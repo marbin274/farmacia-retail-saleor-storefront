@@ -1,16 +1,17 @@
-import React, { useState } from "react";
-import { Button, Checkbox } from "@app/components/atoms";
-import { ErrorMessage } from "@app/components/atoms/ErrorMessage";
+import { Button, Checkbox, DataTreatmentPolicyLink, ErrorMessage, TermsAndConditionsLink } from "@app/components/atoms";
+import { IFormError } from "@app/types";
+import { joinFormikErrorsToIFormErrorsAndConvertToObjectErrors } from "@app/utils/errorsManagement";
 import { TextField } from "@components/molecules";
+import { accountConfirmUrl } from "@temp/app/routes";
+import { useFormik } from "formik";
+import React, { useState } from "react";
 import { MutationFn } from "react-apollo";
 import { RegisterAccount, RegisterAccountVariables } from "./gqlTypes/RegisterAccount";
 import { registerFormSchema } from './registerForm.schema';
-import { accountConfirmUrl } from "@temp/app/routes";
-import { useFormik } from "formik";
 
 interface RegisterFormContentProps {
-    data: RegisterAccount
     loading: boolean;
+    errors?: IFormError[];
     registerCustomer: MutationFn<RegisterAccount, RegisterAccountVariables>;
 }
 const initialValues: RegisterAccountVariables = {
@@ -23,13 +24,12 @@ const initialValues: RegisterAccountVariables = {
     redirectUrl: `${window.location.origin}${accountConfirmUrl}`,
     termsAndConditions: false,
 };
-export const RegisterFormContent: React.FC<RegisterFormContentProps> = ({ data, loading, registerCustomer }) => {
+export const RegisterFormContent: React.FC<RegisterFormContentProps> = ({ loading, errors: requestErrors, registerCustomer }) => {
 
     const [termsAndConditions, setTermsAndConditions] = useState(initialValues.termsAndConditions);
     const [dataTreatmentPolicy, setDataTreatmentPolicy] = useState(initialValues.dataTreatmentPolicy);
 
-
-    const { handleSubmit, handleChange, handleBlur, setFieldValue, touched, errors, values } = useFormik<RegisterAccountVariables>({
+    const { handleSubmit, handleChange, handleBlur, setFieldValue, touched, errors: formikErrors, values } = useFormik<RegisterAccountVariables>({
         initialValues,
         onSubmit: values => {
             registerCustomer({ variables: values });
@@ -47,7 +47,7 @@ export const RegisterFormContent: React.FC<RegisterFormContentProps> = ({ data, 
         setFieldValue("dataTreatmentPolicy", !dataTreatmentPolicy);
     };
 
-
+    const errors = joinFormikErrorsToIFormErrorsAndConvertToObjectErrors(formikErrors, requestErrors, touched, true);
 
     return <form onSubmit={handleSubmit}>
         <TextField
@@ -57,7 +57,7 @@ export const RegisterFormContent: React.FC<RegisterFormContentProps> = ({ data, 
             label="*Nombre"
             type="text"
             value={!values?.firstName ? "" : values?.firstName}
-            errors={(touched.firstName && errors.firstName) && [{ field: 'firstName', message: errors.firstName }]}
+            errors={errors!.firstName}
             onChange={handleChange}
             onBlur={handleBlur}
         />
@@ -67,7 +67,7 @@ export const RegisterFormContent: React.FC<RegisterFormContentProps> = ({ data, 
             label="*Apellido"
             type="text"
             value={!values?.lastName ? "" : values?.lastName}
-            errors={(touched.lastName && errors.lastName) && [{ field: 'lastName', message: errors.lastName }]}
+            errors={errors!.lastName}
             onChange={handleChange}
             onBlur={handleBlur}
         />
@@ -77,7 +77,7 @@ export const RegisterFormContent: React.FC<RegisterFormContentProps> = ({ data, 
             label="*Documento"
             type="text"
             value={!values?.documentNumber ? "" : values?.documentNumber}
-            errors={(touched.documentNumber && errors.documentNumber) && [{ field: 'documentNumber', message: errors.documentNumber }]}
+            errors={errors!.documentNumber}
             maxLength={20}
             onChange={handleChange}
             onBlur={handleBlur}
@@ -88,7 +88,7 @@ export const RegisterFormContent: React.FC<RegisterFormContentProps> = ({ data, 
             label="*Correo"
             type="text"
             value={!values?.email ? "" : values?.email}
-            errors={(touched.email && errors.email) && [{ field: 'email', message: errors.email }]}
+            errors={errors.email}
             onChange={handleChange}
             onBlur={handleBlur}
         />
@@ -98,7 +98,7 @@ export const RegisterFormContent: React.FC<RegisterFormContentProps> = ({ data, 
             label="*Contraseña"
             type="password"
             value={!values?.password ? "" : values?.password}
-            errors={(touched.password && errors.password) && [{ field: 'password', message: errors.password }]}
+            errors={errors!.password}
             onChange={handleChange}
             onBlur={handleBlur}
         />
@@ -109,20 +109,9 @@ export const RegisterFormContent: React.FC<RegisterFormContentProps> = ({ data, 
                 checked={termsAndConditions}
                 onChange={handleTermsAndConditions}
             >
-                <label htmlFor="">
-                    * Estoy de acuerdo con las
-                  <a href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-politicas-privacidad.pdf">
-                        {" "}
-                    Políticas de privacidad
-                  </a>{" "}
-                  y
-                  <a href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-terminos-condiciones.pdf">
-                        {" "}
-                    Términos y condiciones
-                  </a>
-                </label>
+                <TermsAndConditionsLink />
             </Checkbox>
-            <ErrorMessage errors={(touched.termsAndConditions && errors.termsAndConditions) && [{ field: 'termsAndConditions', message: errors.termsAndConditions }]} />
+            <ErrorMessage errors={errors} />
         </div>
         <div className="login__additionals">
             <Checkbox
@@ -131,10 +120,7 @@ export const RegisterFormContent: React.FC<RegisterFormContentProps> = ({ data, 
                 checked={dataTreatmentPolicy}
                 onChange={handleDataTreatmentPolicy}
             >
-                <label htmlFor="">
-                    Acepto el tratamiento para <a href="#"> Fines adicionales</a>{" "}
-                  (opcional )
-                </label>
+                <DataTreatmentPolicyLink />
             </Checkbox>
         </div>
         <div className="login__content__button">

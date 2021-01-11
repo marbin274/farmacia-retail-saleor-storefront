@@ -1,11 +1,10 @@
+import { IFilterAttributes } from "@app/types";
 import { History, LocationState } from "history";
 import { Base64 } from "js-base64";
 import { each } from "lodash";
 import { parse as parseQs, stringify as stringifyQs } from "query-string";
 import { FetchResult } from "react-apollo";
-
 import { OrderDirection, ProductOrderField } from "../../gqlTypes/globalTypes";
-import { IFilterAttributes } from "../@next/types";
 import { FormError } from "./types";
 
 export const slugify = (text: string | number): string =>
