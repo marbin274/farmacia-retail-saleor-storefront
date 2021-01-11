@@ -2,7 +2,7 @@ import * as SchemasConfig from "./schemas.config";
 
 export const DOCUMENT_NUMBER_REQUIRED = "Ingresa tu número de documento";
 export const DOCUMENT_NUMBER_VALIDATION = `Debe contener de ${SchemasConfig.DOCUMENT_NUMBER_MIN_LENGTH} a ${SchemasConfig.DOCUMENT_NUMBER_MAX_LENGTH} caracteres, no incluir espacios`;
-export const EMAIL_REQUIRED = "Indique email";
+export const EMAIL_REQUIRED = "Ingresa tu email";
 export const EMAIL_VALIDATION = "Debe contener un correo válido, ingresa letras (A-Z), números (0-9), (@) y (.), no incluir espacios";
 export const FULLNAME_REQUIRED = "Ingresa tu nombre y apellido";
 export const PASSWORD_REQUIRED = "Ingresa una contraseña";

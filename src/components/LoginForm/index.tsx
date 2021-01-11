@@ -1,8 +1,11 @@
 import { useSignIn } from "@sdk/react";
-import { maybe } from "@utils/misc";
+import { joinFormikErrorsToIFormErrorsAndConvertToObjectErrors } from "@temp/@next/utils/errorsManagement";
+import { TokenAuthVariables } from "@temp/@sdk/mutations/gqlTypes/TokenAuth";
+import { useFormik } from "formik";
 import * as React from "react";
-import { Button, Form, TextField } from "..";
+import { Button, TextField } from "..";
 import ForgottenPassword from "../OverlayManager/Login/ForgottenPassword";
+import { loginFormSchema } from "./loginForm.schema";
 import "./scss/index.scss";
 
 interface ILoginForm {
@@ -12,44 +15,60 @@ interface ILoginForm {
   hideRegister?: boolean;
 }
 
+const initialValues: TokenAuthVariables = {
+  email: '',
+  password: '',
+};
+
 const LoginForm: React.FC<ILoginForm> = ({
   hide,
   onSwitchSection,
   onForgottenPassword,
   hideRegister = false,
 }) => {
-  const [signIn, { loading, error }] = useSignIn();
+  const [signIn, { loading, error: requestErrors }] = useSignIn();
 
-  const handleOnSubmit = async (evt, { email, password }) => {
-    evt.preventDefault();
-    const authenticated = await signIn({ email, password });
-    if (authenticated && hide) {
-      hide();
-    }
-  };
+  const { handleSubmit, handleChange, handleBlur, touched, errors: formikErrors, values } = useFormik<TokenAuthVariables>({
+    initialValues,
+    onSubmit: async values => {
+      const authenticated = await signIn(values);
+      if (authenticated && hide) {
+        hide();
+      }
+    },
+    validationSchema: loginFormSchema,
+  });
+
+  const errors = joinFormikErrorsToIFormErrorsAndConvertToObjectErrors(formikErrors, requestErrors?.extraInfo?.userInputErrors, touched, true);
 
   return (
     <div className="login-form">
-      <Form
-        errors={maybe(() => error.extraInfo.userInputErrors, [])}
-        onSubmit={handleOnSubmit}
-      >
+      <form onSubmit={handleSubmit}>
         <TextField
-          name="email"
           autoComplete="email"
+          errors={errors!.email}
+          name="email"
           label="Correo"
-          type="email"
-          required
+          type="text"
+          value={!values?.email ? "" : values?.email}
+          onBlur={handleBlur}
+          onChange={handleChange}
         />
         <TextField
-          name="password"
           autoComplete="password"
+          errors={errors!.password}
+          name="password"
           label="Contraseña"
           type="password"
-          required
+          value={!values?.password ? "" : values?.password}
+          onBlur={handleBlur}
+          onChange={handleChange}
         />
+        <ForgottenPassword onClick={onForgottenPassword} />
+        {requestErrors?.extraInfo?.userInputErrors?.[0]?.message &&
+          <div className="login-form__errors"><span className="login-form__errors__error form-error">{requestErrors.extraInfo.userInputErrors[0].message}</span></div>
+        }
         <div className="login-form__button">
-          <ForgottenPassword onClick={onForgottenPassword} />
           <Button type="submit" {...(loading && { disabled: true })}>
             {loading ? "Cargando" : "Ingresar"}
           </Button>
@@ -60,7 +79,7 @@ const LoginForm: React.FC<ILoginForm> = ({
             <button onClick={onSwitchSection}>Regístrate</button>
           </div>
         )}
-      </Form>
+      </form>
     </div>
   );
 };
