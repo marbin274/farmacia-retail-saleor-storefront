@@ -82,8 +82,7 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
 
 .c1 {
   background-color: #f1f5f5;
-  margin-top: 3.75rem;
-  height: 4.125rem;
+  margin-top: 1.75rem !important;
 }
 
 .c2 {
@@ -154,19 +153,20 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
 
 @media (max-width:1920px) {
   .c2 {
-    padding-top: 0.625rem;
+    padding-top: 1.225rem;
   }
 }
 
-@media (max-width:992px) {
+@media (max-width:540px) {
   .c2 {
-    padding-top: 0;
+    padding-top: 2.5rem;
+    padding-bottom: 0.5rem;
   }
 }
 
 @media (max-width:540px) {
   .c6 {
-    height: auto;
+    height: 1.625rem;
     width: 100%;
     display: -webkit-box;
     display: -webkit-flex;
@@ -393,8 +393,7 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
 
 .c1 {
   background-color: #f1f5f5;
-  margin-top: 3.75rem;
-  height: 4.125rem;
+  margin-top: 1.75rem !important;
 }
 
 .c2 {
@@ -472,19 +471,20 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
 
 @media (max-width:1920px) {
   .c2 {
-    padding-top: 0.625rem;
+    padding-top: 1.225rem;
   }
 }
 
-@media (max-width:992px) {
+@media (max-width:540px) {
   .c2 {
-    padding-top: 0;
+    padding-top: 2.5rem;
+    padding-bottom: 0.5rem;
   }
 }
 
 @media (max-width:540px) {
   .c7 {
-    height: auto;
+    height: 1.625rem;
     width: 100%;
     display: -webkit-box;
     display: -webkit-flex;
