@@ -25,14 +25,11 @@ const Page: React.FC<IPageProps> = ({
       <a href="./product/shampoo-head-and-shoulders-2en1-suave-y-manejable-700-ml/4286/">
         <div className="home-page__top-banner">
           <div className="home-page__top-banner__text">
-            <h2>Shampoo H&S 700 ml</h2>
+            <h2>Bienvenido a la nueva farmacia 100% digital</h2>
             <h3>
-              2en1 Suave y Manejable o Limpieza Renovadora
-        </h3>
-            <p>
-              *Promoción válida hasta el 11/01/2021 o hasta agotar el stock. Máx. 3 unidades por producto.<br />
-          Aplica máx. 2 promociones por usuario. No acumulable con otras promociones. Aplican más T&C.
-        </p>
+              Eres uno de nuestros primeros usuarios y por eso queremos crear contigo esta nueva experiencia. Escríbenos cualquier idea o sugerencia a consultas@farmauna.com
+            </h3>
+            {/* <p>Eres uno de nuestros primeros usuarios y por eso queremos crear contigo esta nueva experiencia. Escribenos cualquier idea o sugerencia a consultas@farmauna.com</p> */}
           </div>
         </div>
       </a>

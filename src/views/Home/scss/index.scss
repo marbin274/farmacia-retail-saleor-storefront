@@ -66,29 +66,33 @@
       }
 
       h2 {
-        font-size: 2.8rem;
+        font-size: 3.25rem;
         font-weight: bolder;
-        line-height: 1.6;
+        line-height: 1;
+        margin-top: -2rem;
         padding-bottom: .5rem;
-        line-height: 1.375rem;
+        line-height: 3.5rem;
         align-items: center;
         letter-spacing: 0.015em;
         margin-bottom: 1.25rem;
 
         @media (max-width: $small-screen) {
-          font-size: 1.4625rem;
+          font-size: 1.5rem;
+          line-height: 1.5rem;
           font-weight: bold;
           margin-bottom: 0;
         }
         @media (max-width: $xs-small-screen) {
           font-size:  1.3625rem;
+          line-height: 1.5rem;
         }
       }
       h3 {
-        font-size: 1.5rem;
+        font-size: 1.08rem;
         margin-bottom: 1.25rem;
         @media (max-width: $small-screen) {
-          font-size: 1.125rem;
+          font-size: 1rem;
+          line-height: 1.25rem;
           margin-bottom: 0;
         }
       }
