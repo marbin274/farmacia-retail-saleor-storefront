@@ -1,21 +1,20 @@
+import { CheckoutAddress } from "@components/organisms";
+import { useCheckout, useUserDetails } from "@sdk/react";
+import { addressFormSchema } from "@temp/@next/components/organisms/AddressForm/adddressForm.schema";
+import { IPrivacyPolicy } from "@temp/@sdk/api/Checkout/types";
+import { ShopContext } from "@temp/components/ShopProvider/context";
+// import { CHECKOUT_STEPS } from "@temp/core/config";
+import { IAddress, IAddressWithEmail, IFormError } from "@types";
+import { filterNotEmptyArrayItems } from "@utils/misc";
 import React, {
   forwardRef,
   RefForwardingComponent,
   useContext,
   useImperativeHandle,
-  useRef,
-  useState,
+  useRef
 } from "react";
 import { RouteComponentProps } from "react-router";
 
-import { CheckoutAddress } from "@components/organisms";
-import { useCheckout, useUserDetails } from "@sdk/react";
-import { ShopContext } from "@temp/components/ShopProvider/context";
-// import { CHECKOUT_STEPS } from "@temp/core/config";
-import { IAddress, IAddressWithEmail, IFormError } from "@types";
-import { filterNotEmptyArrayItems } from "@utils/misc";
-import { IPrivacyPolicy } from "@temp/@sdk/api/Checkout/types";
-import { addressFormSchema } from "@temp/@next/components/organisms/AddressForm/adddressForm.schema";
 
 export interface ICheckoutAddressSubpageHandles {
   submitAddress: () => void;
@@ -23,13 +22,15 @@ export interface ICheckoutAddressSubpageHandles {
 }
 
 interface IProps extends RouteComponentProps<any> {
+  addressSubPageErrors: IFormError[];
   changeSubmitProgress: (submitInProgress: boolean) => void;
+  setAddressSubPageErrors: (errors: IFormError[]) => void;
 }
 
 const CheckoutAddressSubpageWithRef: RefForwardingComponent<
   ICheckoutAddressSubpageHandles,
   IProps
-> = ({ changeSubmitProgress, ...props }: IProps, ref) => {
+> = ({ addressSubPageErrors, changeSubmitProgress, setAddressSubPageErrors, ...props }: IProps, ref) => {
   const checkoutAddressFormId = "address-form";
   const checkoutAddressFormRef = useRef<HTMLFormElement>(null);
   const checkoutNewAddressFormId = "new-address-form";
@@ -101,7 +102,6 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
   } = useCheckout();
   const { countries } = useContext(ShopContext);
 
-  const [errors, setErrors] = useState<IFormError[]>([]);
   const checkoutShippingAddress = checkout?.shippingAddress
     ? {
         ...checkout?.shippingAddress,
@@ -117,13 +117,13 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     documentNumber?: string
   ) => {
     if (!address) {
-      setErrors([{ message: "Please provide shipping address." }]);
+      setAddressSubPageErrors([{ message: "Please provide shipping address." }]);
       return;
     }
     const shippingEmail = user?.email || email || "";
 
     if (!shippingEmail) {
-      setErrors([{ field: "email", message: "Please provide email address." }]);
+      setAddressSubPageErrors([{ field: "email", message: "Please provide email address." }]);
       return;
     }
 
@@ -146,9 +146,9 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     const errors = dataError?.error;
     changeSubmitProgress(false);
     if (errors) {
-      setErrors(errors);
+      setAddressSubPageErrors(errors);
     } else {
-      setErrors([]);
+      setAddressSubPageErrors([]);
       if (checkout?.shippingMethod?.id) {
         // history.push(CHECKOUT_STEPS[0].nextStepLink);
       }
@@ -171,7 +171,7 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
   return (
     <CheckoutAddress
       {...props}
-      errors={errors}
+      errors={addressSubPageErrors}
       formId={checkoutAddressFormId}
       formRef={checkoutAddressFormRef}
       checkoutAddress={checkoutShippingAddress}
@@ -191,3 +191,4 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
 const CheckoutAddressSubpage = forwardRef(CheckoutAddressSubpageWithRef);
 
 export { CheckoutAddressSubpage };
+

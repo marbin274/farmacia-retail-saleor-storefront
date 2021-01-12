@@ -1,6 +1,6 @@
 import { ICheckout, IPrivacyPolicy } from "@temp/@sdk/api/Checkout/types";
 import { UserDetails_me } from "@temp/@sdk/queries/gqlTypes/UserDetails";
-import { IAddressWithEmail } from "@types";
+import { IAddressWithEmail, IFormError } from "@types";
 
 export interface IFormikProps {
   handleChange?: (e: React.ChangeEvent) => void;
@@ -36,7 +36,7 @@ export interface IProps {
   defaultValue?: any;
   formId?: string;
   formRef?: React.RefObject<HTMLFormElement>;
-  errors?: any[];
+  errors?: IFormError[];
   checkoutData?: ICheckout;
   handleSubmit?: (formData: IAddressWithEmail | undefined) => void;
   handleChange?: (e: React.ChangeEvent) => void;

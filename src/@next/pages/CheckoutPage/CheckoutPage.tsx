@@ -1,6 +1,3 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Redirect, useLocation } from "react-router-dom";
-
 import { Button, Loader } from "@components/atoms";
 import { CheckoutProgressBar } from "@components/molecules";
 import { CartSummary } from "@components/organisms";
@@ -8,22 +5,23 @@ import { Checkout } from "@components/templates";
 import { IItems } from "@sdk/api/Cart/types";
 import { useCart, useCheckout } from "@sdk/react";
 import { CHECKOUT_STEPS } from "@temp/core/config";
-import { ITaxedMoney } from "@types";
-
+import { IFormError, ITaxedMoney } from "@types";
+import React, { useEffect, useRef, useState } from "react";
+import { Redirect, useLocation } from "react-router-dom";
 import { CheckoutRouter } from "./CheckoutRouter";
 import {
   CheckoutAddressSubpage,
   CheckoutPaymentSubpage,
   CheckoutReviewSubpage,
   CheckoutShippingSubpage,
-  // CheckoutShippingSubpage,
   ICheckoutAddressSubpageHandles,
   ICheckoutPaymentSubpageHandles,
   ICheckoutReviewSubpageHandles,
-  ICheckoutShippingSubpageHandles,
-  // ICheckoutShippingSubpageHandles,
+  ICheckoutShippingSubpageHandles
 } from "./subpages";
 import { IProps } from "./types";
+
+
 
 const prepareCartSummary = (
   totalPrice?: ITaxedMoney | null,
@@ -109,6 +107,7 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
   }
 
   const [submitInProgress, setSubmitInProgress] = useState(false);
+  const [addressSubPageErrors, setAddressSubPageErrors] = useState<IFormError[]>([]);
 
   const [selectedPaymentGateway, setSelectedPaymentGateway] = useState<
     string | undefined
@@ -201,11 +200,15 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
             <CheckoutAddressSubpage
               ref={checkoutAddressSubpageRef}
               changeSubmitProgress={setSubmitInProgress}
+              setAddressSubPageErrors={setAddressSubPageErrors}
+              addressSubPageErrors={addressSubPageErrors}
               {...props}
             />
             <CheckoutShippingSubpage
               ref={checkoutShippingSubpageRef}
               changeSubmitProgress={setSubmitInProgress}
+              setAddressSubPageErrors={setAddressSubPageErrors}
+              addressSubPageErrors={addressSubPageErrors}
               {...props}
             />
           </div>
@@ -271,3 +274,4 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
 };
 
 export { CheckoutPage };
+
