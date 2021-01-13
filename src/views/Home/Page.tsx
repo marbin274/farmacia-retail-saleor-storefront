@@ -1,11 +1,11 @@
 
-import * as React from "react";
+import { IAddToCartCallback } from "@app/components/molecules/ProductTileAUNA/types";
+import { IItems } from "@sdk/api/Cart/types";
 import { structuredData } from "@temp/core/SEO/Homepage/structuredData";
+import * as React from "react";
+import { ProductsFeatured } from "./";
 import { HomePage_shop } from "./gqlTypes/HomePage";
 import "./scss/index.scss";
-import { ProductsFeatured } from "./";
-import { IItems } from "@sdk/api/Cart/types";
-import { IAddToCartCallback } from "@app/components/molecules/ProductTileAUNA/types";
 
 interface IPageProps {
   loading: boolean;
@@ -39,8 +39,7 @@ const Page: React.FC<IPageProps> = ({
       </script>
 
       <div className="inner-container">
-        <div className="home-page__products">
-          <h2 className="home-page__products-title">Nuestros recomendados</h2>
+        <div className="home-page__products">          
           <ProductsFeatured
             productsOnCart={productsOnCart}
             loading={loading}

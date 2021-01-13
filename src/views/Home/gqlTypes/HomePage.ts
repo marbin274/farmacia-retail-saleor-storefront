@@ -2,8 +2,6 @@
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
-import { ProductOrder } from "./../../../../gqlTypes/globalTypes";
-
 // ====================================================
 // GraphQL query operation: HomePage
 // ====================================================
@@ -359,7 +357,3 @@ export interface HomePage {
   products: HomePage_products | null;
 }
 
-export interface HomePageVariables {
-  pageSize?: number | null;
-  sortBy?: ProductOrder | null;
-}

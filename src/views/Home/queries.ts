@@ -1,12 +1,10 @@
-import gql from "graphql-tag";
-
 import {
-  basicProductFragment,
-  priceFragment,
-  productPricingFragment,
+  priceFragment
 } from "@temp/views/Product/queries";
+import gql from "graphql-tag";
 import { TypedQuery } from "../../core/queries";
-import { HomePage, HomePageVariables } from "./gqlTypes/HomePage";
+import { HomePage } from "./gqlTypes/HomePage";
+
 
 export const productVariantFragmentSimple = gql`
   ${priceFragment}
@@ -33,12 +31,8 @@ export const productVariantFragmentSimple = gql`
 `;
 
 // get all available products according the specified filter
-export const homePageQuery = gql`
-  ${basicProductFragment}
-  ${productPricingFragment}
-  ${productVariantFragmentSimple}
-
-  query HomePage($pageSize: Int, $sortBy: ProductOrder) {
+export const homePageQuery = gql` 
+  query HomePage {
     shop {
       description
       name
@@ -54,29 +48,7 @@ export const homePageQuery = gql`
         tagManagerId
       }
     }
-    products(first: $pageSize, sortBy: $sortBy) {
-      totalCount
-      edges {
-        node {
-          ...BasicProductFields
-          ...ProductPricingField
-          category {
-            id
-            name
-          }
-          variants {
-            ...ProductVariantFieldsSimple
-          }
-        }
-      }
-      pageInfo {
-        endCursor
-        hasNextPage
-        hasPreviousPage
-        startCursor
-      }
-    }
   }
 `;
 
-export const TypedHomePageQuery = TypedQuery<HomePage, HomePageVariables>(homePageQuery);
+export const TypedHomePageQuery = TypedQuery<HomePage, {}>(homePageQuery);

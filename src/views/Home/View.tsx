@@ -1,22 +1,11 @@
-import * as React from "react";
-import { HOME_PAGE_CONF } from "@temp/core/config";
-
-import { MetaWrapper } from "@temp/components";
-import Page from "./Page";
-import "./scss/index.scss";
-import { TypedHomePageQuery } from "./queries";
-import TagManager from "react-gtm-module";
-import { HomePageVariables } from "./gqlTypes/HomePage";
-import { useCart } from "@temp/@sdk/react";
 import { IAddToCartCallback } from "@temp/@next/components/molecules/ProductTileAUNA/types";
-
-const homePageVariables: HomePageVariables = {
-  pageSize: HOME_PAGE_CONF.PAGE_SIZE,
-  sortBy: {
-    direction: HOME_PAGE_CONF.SORT_DIR,
-    field: HOME_PAGE_CONF.SORT_FIELD,
-  },
-};
+import { useCart } from "@temp/@sdk/react";
+import { MetaWrapper } from "@temp/components";
+import * as React from "react";
+import TagManager from "react-gtm-module";
+import Page from "./Page";
+import { TypedHomePageQuery } from "./queries";
+import "./scss/index.scss";
 
 const View: React.FC = () => {
   const { items: productsOnCart, addItem } = useCart();
@@ -26,7 +15,6 @@ const View: React.FC = () => {
         alwaysRender
         errorPolicy="all"
         loaderFull
-        variables={homePageVariables}
       >
         {({ data, loading }) => {
           TagManager.initialize({

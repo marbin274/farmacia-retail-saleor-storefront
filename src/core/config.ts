@@ -1,15 +1,9 @@
 import { generatePageUrl } from "./utils";
-import { OrderDirection, ProductOrderField } from "@sdk/gqlTypes/globalTypes";
 
 export const BASE_URL = "/";
 export const PRODUCTS_PER_PAGE = 8;
 export const SUPPORT_EMAIL = "support@example.com";
 
-export const HOME_PAGE_CONF = {
-  PAGE_SIZE: 8,
-  SORT_DIR: OrderDirection.ASC,
-  SORT_FIELD: ProductOrderField.PRICE,
-};
 export const PROVIDERS = {
   AUNA: {
     id: "farmacia-retail.payments.niubiz",
