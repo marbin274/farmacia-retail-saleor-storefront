@@ -27,7 +27,7 @@ const Page: React.FC<IPageProps> = ({
           <div className="home-page__top-banner__text">
             <h2>Bienvenido a la nueva farmacia 100% digital</h2>
             <h3>
-              Eres uno de nuestros primeros usuarios y por eso queremos crear contigo esta nueva experiencia. Escríbenos cualquier idea o sugerencia a consultas@farmauna.com
+              Eres uno de nuestros primeros usuarios y por eso queremos crear contigo esta nueva experiencia. Escríbenos cualquier idea o sugerencia a <b>consultas@farmauna.com</b>
             </h3>
             {/* <p>Eres uno de nuestros primeros usuarios y por eso queremos crear contigo esta nueva experiencia. Escribenos cualquier idea o sugerencia a consultas@farmauna.com</p> */}
           </div>

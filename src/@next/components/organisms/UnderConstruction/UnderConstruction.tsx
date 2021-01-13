@@ -19,7 +19,7 @@ export const UnderConstruction: React.FC<{ overlay: OverlayContextInterface }> =
               ¡Bienvenidos a Farmauna (versión Beta)!
             </S.CardHeader>
             <p>
-            En estos momentos nos encontramos trabajando en mejorar nuestra plataforma para mejorar tu experiencia. Pueden presentarse inconvenientes en el proceso de compra, te pedimos intentarlo más tarde.
+            En estos momentos estamos trabajando en mejorar tu experiencia y no podremos atenderte.
             </p>
             <p>
             Agradecemos tu comprensión. Puedes contactarnos a:
