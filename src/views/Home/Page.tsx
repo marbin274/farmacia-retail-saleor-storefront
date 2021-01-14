@@ -22,17 +22,14 @@ const Page: React.FC<IPageProps> = ({
 }) => {
   return (
     <div className="container">
-      <a href="./product/shampoo-head-and-shoulders-2en1-suave-y-manejable-700-ml/4286/">
-        <div className="home-page__top-banner">
-          <div className="home-page__top-banner__text">
-            <h2>Bienvenido a la nueva farmacia 100% digital</h2>
-            <h3>
-              Eres uno de nuestros primeros usuarios y por eso queremos crear contigo esta nueva experiencia. Escríbenos cualquier idea o sugerencia a <b>consultas@farmauna.com</b>
-            </h3>
-            {/* <p>Eres uno de nuestros primeros usuarios y por eso queremos crear contigo esta nueva experiencia. Escribenos cualquier idea o sugerencia a consultas@farmauna.com</p> */}
-          </div>
+      <div className="home-page__top-banner">
+        <div className="home-page__top-banner__text">
+          <h2>Bienvenido a la nueva farmacia 100% digital</h2>
+          <h3>
+            Eres uno de nuestros primeros usuarios y por eso queremos crear contigo esta nueva experiencia. Escríbenos cualquier idea o sugerencia a <b>consultas@farmauna.com</b>
+          </h3>
         </div>
-      </a>
+      </div>
 
       <script className="structured-data-list" type="application/ld+json">
         {structuredData(shop)}
