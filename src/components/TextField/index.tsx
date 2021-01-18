@@ -1,8 +1,8 @@
 import * as React from "react";
-
 import { FormError } from "../Form";
-
 import "./scss/index.scss";
+
+
 
 type Style = "white" | "grey";
 
@@ -21,6 +21,7 @@ export interface TextFieldProps
   iconRight?: React.ReactNode;
   styleType?: Style;
   innerIcon?: React.ReactNode;
+  inputRef?: any
 }
 
 const generateClassName = ({ errors, iconLeft, styleType }: IClassNameArgs) => {
@@ -39,6 +40,7 @@ const TextField: React.FC<TextFieldProps> = ({
   helpText,
   styleType = "white" as Style,
   innerIcon,
+  inputRef,
   ...rest
 }) => (
   <div className="input">
@@ -47,6 +49,7 @@ const TextField: React.FC<TextFieldProps> = ({
     <div className="input__content">
       <input
         {...rest}
+        ref={inputRef}
         className={generateClassName({ errors, iconLeft, styleType })}
       />
       {label && <span className="input__label">{label}</span>}

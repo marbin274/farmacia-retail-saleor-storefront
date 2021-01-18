@@ -1,6 +1,8 @@
 import { IAddToCartCallback } from "@temp/@next/components/molecules/ProductTileAUNA/types";
 import { useCart } from "@temp/@sdk/react";
 import { MetaWrapper } from "@temp/components";
+import { SearchForm } from "@temp/components/OverlayManager/Search/SearchForm";
+import { SearchNetworkResult } from "@temp/components/OverlayManager/Search/SearchNetworkResult";
 import * as React from "react";
 import TagManager from "react-gtm-module";
 import Page from "./Page";
@@ -30,6 +32,24 @@ const View: React.FC = () => {
                 title: data.shop ? data.shop.name : "",
               }}
             >
+
+              <SearchForm>
+                {(search, hasSearchPhrase, hasResults) => {
+                  if (hasSearchPhrase) {
+                    document.body.style.overflow = "hidden";
+                    return <SearchNetworkResult
+                      search={search}
+                      hasResults={hasResults}
+                      hasSearchPhrase={hasSearchPhrase}
+                    />
+                  }
+                  else {
+                    document.body.style.overflow = "";
+                    return <></>
+                  }
+                }
+                }
+              </SearchForm>
               <div className="home-view">
                 <Page
                   loading={loading}

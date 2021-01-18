@@ -199,6 +199,9 @@
     svg {
       vertical-align: bottom;
     }
+    &--no-display {
+      padding: ($spacer / 2);
+    }
   }
 
   &__nav-dropdown {

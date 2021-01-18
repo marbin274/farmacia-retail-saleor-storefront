@@ -129,7 +129,7 @@ exports[`Storyshots @components/organisms/UnderConstruction UnderConstruction 1`
   className="c0"
 >
   <div
-    className="overlay overlay--under-construction overlay--no-background"
+    className="overlay overlay--under-construction"
     onClick={[Function]}
   >
     <div

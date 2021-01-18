@@ -44,7 +44,7 @@ class Provider extends React.Component<
     context?: InnerOverlayContextInterface | undefined
   ) => {
     this.setState({ type, theme, context });
-    document.body.style.overflow = type !== OverlayType.message ? "hidden" : "";
+    document.body.style.overflow = type !== OverlayType.message && type !== OverlayType.underConstruction ? "hidden" : "";
     if (type === OverlayType.message) {
       setTimeout(this.hide, this.notificationCloseDelay);
     }

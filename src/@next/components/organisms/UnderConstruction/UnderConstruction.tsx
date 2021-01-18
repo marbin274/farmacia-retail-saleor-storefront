@@ -11,7 +11,7 @@ export const UnderConstruction: React.FC<{ overlay: OverlayContextInterface }> =
   const hide = () => overlay.hide();
 
   return (
-    <Overlay context={overlay} className="overlay--no-background">
+    <Overlay context={overlay}>
       <S.Wrapper>
         <S.Card>
           <S.CardText>

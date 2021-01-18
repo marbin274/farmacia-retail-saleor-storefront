@@ -22,6 +22,9 @@ $custom-breakpoint: 624px;
 
   &__input {
     margin-top: 80px;
+    &--clear {
+      cursor: pointer;
+    }
 
     .input {
       padding: 36px;
