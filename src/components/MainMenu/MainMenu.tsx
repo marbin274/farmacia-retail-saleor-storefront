@@ -172,7 +172,7 @@ const MainMenu: React.FC = () => {
               query={{ maxWidth: mediumScreen }}
               render={() => (
                 <Link to={appPaths.baseUrl} className="main-menu__center--icon">
-                  <ReactSVG path={logoImg} />
+                  <ReactSVG path={logoImg} className="logo" />
                 </Link>
               )}
             />
