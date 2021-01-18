@@ -22,15 +22,23 @@ const Page: React.FC<IPageProps> = ({
 }) => {
   return (
     <div className="container">
-      <div className="home-page__top-banner">
-        <div className="home-page__top-banner__text">
-          <h2>Bienvenido a la nueva farmacia 100% digital</h2>
-          <h3>
-            Eres uno de nuestros primeros usuarios y por eso queremos crear contigo esta nueva experiencia. Escríbenos cualquier idea o sugerencia a <b>consultas@farmauna.com</b>
-          </h3>
+      <a href="./product/fotoprotector-facial-anthelios-shaka-color-spf50-50ml/4524/">
+        <div className="home-page__top-banner">
+          <div className="home-page__top-banner__text">
+            <h2>Protectores Solares<br />La Roche Posay</h2>
+            <h3>
+              <a href="./product/fotoprotector-facial-anthelios-shaka-color-spf50-50ml/4524/">
+                Shaka Color
+            </a>&nbsp;/&nbsp;
+            <a href="./product/protect-solar-anthelios-xl-color-spf50-50-ml/4272/">XL Color 50 ml</a>
+            </h3>
+            <p>
+              *Promoción válida hasta el 21/01/2021 o hasta agotar stock. Max. 3 unidades por producto.<br />
+            Aplica max. 2 promociones por usuario. No acumulable con otras promociones. Aplican más T&C.
+          </p>
+          </div>
         </div>
-      </div>
-
+      </a>
       <script className="structured-data-list" type="application/ld+json">
         {structuredData(shop)}
       </script>

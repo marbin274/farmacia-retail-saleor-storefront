@@ -201,6 +201,9 @@
     }
     &--no-display {
       padding: ($spacer / 2);
+      @media (max-width: $medium-screen) {
+        padding: ($spacer * 2) ($spacer / 2);
+      }
     }
   }
 
