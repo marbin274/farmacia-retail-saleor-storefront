@@ -60,7 +60,28 @@ jobs:
           AWS_REGION: ${{ secrets.AWS_REGION_PROD }} 
           SOURCE_DIR: 'dist'
 
-      - name: 6- Notify slack success
+      - name: 6- Clean Cloudfront Cache QA
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+        uses: chetan/invalidate-cloudfront-action@master
+        env:
+          DISTRIBUTION: ${{ secrets.CF_STORE_DISTRIBUTION_ID_QA }}
+          PATHS: '/*'
+          AWS_REGION: ${{ secrets.AWS_REGION_QA }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_QA }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_QA }}
+
+      - name: 6- Clean Cloudfront Cache PROD
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/release' }}
+        uses: chetan/invalidate-cloudfront-action@master
+        env:
+          DISTRIBUTION: ${{ secrets.CF_STORE_DISTRIBUTION_ID_PROD }}
+          PATHS: '/*'
+          AWS_REGION: ${{ secrets.AWS_REGION_PROD }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_PROD }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_PROD }}
+
+
+      - name: 7- Notify slack success
         if: success()
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
@@ -69,7 +90,7 @@ jobs:
           channel: builds
           status: SUCCESS
           color: good
-      - name: 6- Notify slack fail
+      - name: 7- Notify slack fail
         if: failure()
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
