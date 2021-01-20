@@ -52,9 +52,7 @@ export const AddressForm: React.FC<IProps> = ({
   }
 
   if (user) {
-    addressWithPickedFields.city = user.addresses?.[0]?.city
-      ? user.addresses[0]?.city
-      : checkoutData?.shippingAddress?.city;
+    addressWithPickedFields.city = checkoutData?.shippingAddress?.city;
     addressWithPickedFields.firstName =
       user.firstName.replace(/^\w/, (c: any) => c.toUpperCase()) +
       " " +

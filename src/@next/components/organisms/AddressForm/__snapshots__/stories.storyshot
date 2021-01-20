@@ -729,6 +729,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                               onBlur={[Function]}
                               onChange={[Function]}
                               onFocus={[Function]}
+                              placeholder="Selecciona tu distrito"
                               spellCheck="false"
                               style={
                                 Object {
@@ -762,6 +763,21 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                               }
                             >
                               
+                            </div>
+                            <div
+                              style={
+                                Object {
+                                  "height": 0,
+                                  "left": 0,
+                                  "overflow": "scroll",
+                                  "position": "absolute",
+                                  "top": 0,
+                                  "visibility": "hidden",
+                                  "whiteSpace": "pre",
+                                }
+                              }
+                            >
+                              Selecciona tu distrito
                             </div>
                           </div>
                         </div>
@@ -1535,6 +1551,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                               onBlur={[Function]}
                               onChange={[Function]}
                               onFocus={[Function]}
+                              placeholder="Selecciona tu distrito"
                               spellCheck="false"
                               style={
                                 Object {
@@ -1568,6 +1585,21 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                               }
                             >
                               
+                            </div>
+                            <div
+                              style={
+                                Object {
+                                  "height": 0,
+                                  "left": 0,
+                                  "overflow": "scroll",
+                                  "position": "absolute",
+                                  "top": 0,
+                                  "visibility": "hidden",
+                                  "whiteSpace": "pre",
+                                }
+                              }
+                            >
+                              Selecciona tu distrito
                             </div>
                           </div>
                         </div>
@@ -2341,6 +2373,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                               onBlur={[Function]}
                               onChange={[Function]}
                               onFocus={[Function]}
+                              placeholder="Selecciona tu distrito"
                               spellCheck="false"
                               style={
                                 Object {
@@ -2374,6 +2407,21 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                               }
                             >
                               
+                            </div>
+                            <div
+                              style={
+                                Object {
+                                  "height": 0,
+                                  "left": 0,
+                                  "overflow": "scroll",
+                                  "position": "absolute",
+                                  "top": 0,
+                                  "visibility": "hidden",
+                                  "whiteSpace": "pre",
+                                }
+                              }
+                            >
+                              Selecciona tu distrito
                             </div>
                           </div>
                         </div>
