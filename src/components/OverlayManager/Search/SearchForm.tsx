@@ -67,7 +67,7 @@ export const SearchForm: React.FC<SearchFormProps> = ({ handleInputBlur: inputBl
         value={search}
         innerIcon={getFieldIcono()}
         autoFocus={true}
-        placeholder="Busca por nombre o síntoma"
+        placeholder="Busca por nombre"
         onBlur={handleInputBlur}
       />
     </div>
