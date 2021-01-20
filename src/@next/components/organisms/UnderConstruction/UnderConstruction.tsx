@@ -16,16 +16,16 @@ export const UnderConstruction: React.FC<{ overlay: OverlayContextInterface }> =
         <S.Card>
           <S.CardText>
             <S.CardHeader>
-              ¡Bienvenidos a Farmauna (versión Beta)!
+              ¡Bienvenid@ a Farmauna!
             </S.CardHeader>
             <p>
-              Gracias por participar en la creación y prueba de esta primera versión. Nuestro objetivo es brindarte una experiencia distinta y valiosa.
+              Nos emociona de que seas uno de nuestros primeros usuarios. Seguimos trabajando para que tengas la mejor experiencia digital en farmacia.
             </p>
             <p>
-              Sé parte de este proyecto y cuéntanos si tienes alguna sugerencia a:
+              Si tienes algún obstáculo durante tu visita, cuéntanos a:
             </p>
             <br />
-            <EmailLink link="consultas@farmauna.com" />
+            <EmailLink link="consultas@farmauna.com" /> o <span>01 3913655</span>
           </S.CardText>
 
           <S.CardImageContainer>

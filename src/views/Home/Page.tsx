@@ -55,7 +55,7 @@ const Page: React.FC<IPageProps> = ({
 
       <div className="home-page__bottom-section">
         <div className="home-page__bottom-banner">
-          <p>Llegamos a 12 distritos de Lima ¡en menos de 60 minutos!</p>
+          <p>Llegamos a 12 distritos de Lima ¡en menos de 75 minutos!</p>
         </div>
         <div className="home-page__districts-list" />
       </div>
