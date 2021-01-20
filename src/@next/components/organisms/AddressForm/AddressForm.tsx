@@ -5,7 +5,7 @@ import React from "react";
 import { IAddressWithEmail } from "@types";
 import { AddressFormContent } from "./AddressFormContent";
 import { IProps } from "./types";
-import { addressFormSchema } from "./adddressForm.schema";
+import { addressFormModalSchema, addressFormSchema } from "./adddressForm.schema";
 
 const ADDRESS_FIELDS = [
   "city",
@@ -72,6 +72,7 @@ export const AddressForm: React.FC<IProps> = ({
       : false;
     addressWithPickedFields.dataTreatmentPolicy = user.dataTreatmentPolicy;
   }
+  const formSchemaValidation = comeFromModal ? addressFormModalSchema : addressFormSchema;
 
   return (
     <Formik
@@ -83,7 +84,7 @@ export const AddressForm: React.FC<IProps> = ({
         }
         setSubmitting(false);
       }}
-      validationSchema={!comeFromModal ? addressFormSchema : {}}
+      validationSchema={formSchemaValidation}
     >
       {({
         handleChange,

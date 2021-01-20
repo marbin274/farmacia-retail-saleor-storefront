@@ -15,3 +15,15 @@ export const addressFormSchema = Yup.object().shape({
   streetAddress2: Yup.string().trim(),
   termsAndConditions: SchemaValidation.termsAndConditionsValidation,
 });
+
+export const addressFormModalSchema = Yup.object().shape({
+  city: Yup.string().required(DISTRITO_REQUIRED),
+  dataTreatmentPolicy: Yup.boolean(),
+  documentNumber: Yup.string(),
+  email: Yup.string(),
+  firstName: Yup.string(),
+  phone: SchemaValidation.phoneValidation,
+  streetAddress1: Yup.string().trim().required(STREET_ADDRESS_1_REQUIRED),
+  streetAddress2: Yup.string().trim(),
+  termsAndConditions: Yup.boolean(),
+});
