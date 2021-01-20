@@ -8,7 +8,7 @@ import {
 } from "@components/containers";
 import { SaleorProvider, useAuth } from "@sdk/react";
 import { defaultTheme, GlobalStyle } from "@styles";
-
+import TagManager from "react-gtm-module";
 import {
   defaultDataIdFromObject,
   InMemoryCache,
@@ -42,6 +42,14 @@ const cache = new InMemoryCache({
   dataIdFromObject: obj => {
     if (obj.__typename === "Shop") {
       return "shop";
+    }
+    // @ts-ignore
+    const id = obj?.tagManagerId;
+    if (!!id) {
+      const tagManagerArgs = {
+        gtmId: id,
+      };
+      TagManager.initialize(tagManagerArgs);
     }
     return defaultDataIdFromObject(obj);
   },

@@ -4,7 +4,7 @@ import { MetaWrapper } from "@temp/components";
 import { SearchForm } from "@temp/components/OverlayManager/Search/SearchForm";
 import { SearchNetworkResult } from "@temp/components/OverlayManager/Search/SearchNetworkResult";
 import * as React from "react";
-import TagManager from "react-gtm-module";
+
 import Page from "./Page";
 import { TypedHomePageQuery } from "./queries";
 import "./scss/index.scss";
@@ -19,9 +19,6 @@ const View: React.FC = () => {
         loaderFull
       >
         {({ data, loading }) => {
-          TagManager.initialize({
-            gtmId: data.shop.analyticsConfig.tagManagerId,
-          });
           const addToCart: IAddToCartCallback = (product, quantity) => {
             addItem(product, quantity);
           };
