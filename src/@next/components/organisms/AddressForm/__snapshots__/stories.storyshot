@@ -276,7 +276,6 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
 
 .c4 {
   padding-top: 1rem;
-  padding-bottom: 2rem;
   width: 100%;
 }
 
@@ -1098,7 +1097,6 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
 
 .c4 {
   padding-top: 1rem;
-  padding-bottom: 2rem;
   width: 100%;
 }
 
@@ -1920,7 +1918,6 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
 
 .c4 {
   padding-top: 1rem;
-  padding-bottom: 2rem;
   width: 100%;
 }
 

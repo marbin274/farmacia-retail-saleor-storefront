@@ -88,7 +88,7 @@ exports[`Storyshots @components/molecules/FormFooter with submit and cancel butt
 .c1 {
   position: relative;
   text-align: right;
-  padding: 1.1rem 1.875rem;
+  padding: 1.1rem 1.875rem 5rem;
 }
 
 .c1 button:last-child {
@@ -205,7 +205,7 @@ exports[`Storyshots @components/molecules/FormFooter with submit button 1`] = `
 .c1 {
   position: relative;
   text-align: right;
-  padding: 1.1rem 1.875rem;
+  padding: 1.1rem 1.875rem 5rem;
 }
 
 .c1 button:last-child {
@@ -313,7 +313,7 @@ exports[`Storyshots @components/molecules/FormFooter with top divider 1`] = `
 .c1 {
   position: relative;
   text-align: right;
-  padding: 1.1rem 1.875rem;
+  padding: 1.1rem 1.875rem 5rem;
   border-top: 1px solid #f1f5f5;
 }
 

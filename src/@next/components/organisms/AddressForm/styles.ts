@@ -70,7 +70,6 @@ export const RowWithOneCell = styled.div`
 
 export const FieldsGroup = styled.div`
   padding-top: 1rem;
-  padding-bottom: 2rem;
   width: 100%;
 `;
 

@@ -2,7 +2,7 @@ import React from "react";
 import { Container } from "@components/templates";
 import ReactSVG from "react-svg";
 import * as S from "./styles";
-import { IProps, OverlayType, OverlayTheme } from "./types";
+import { IProps } from "./types";
 import mailSentSvg from "images/auna/mail-sent.svg";
 
 /**
@@ -34,11 +34,6 @@ const ThankYou: React.FC<IProps> = ({
             compra
           </S.MailInfoText>
         </S.MailInfo>
-        <S.Link
-          onClick={() => overlay && overlay.show(OverlayType.register, OverlayTheme.right)}
-        >
-          Crear una cuenta
-        </S.Link>
         <S.Buttons>
           <S.SecondaryButton onClick={continueShopping}>
             Continuar comprando

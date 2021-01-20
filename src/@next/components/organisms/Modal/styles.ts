@@ -9,5 +9,5 @@ export const Modal = styled.div`
 
 export const Content = styled.div`
   padding: ${({ theme: { spacing } }) =>
-    `4rem ${spacing.gutter} 1.8rem ${spacing.gutter}`};
+    `4rem ${spacing.gutter} 0rem ${spacing.gutter}`};
 `;

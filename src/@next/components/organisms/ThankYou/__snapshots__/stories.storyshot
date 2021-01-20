@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
   margin: 20px;
 }
 
-.c13 {
+.c12 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -17,7 +17,7 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
   box-sizing: border-box;
 }
 
-.c11 {
+.c10 {
   background-color: #00B0CA;
   padding: 0.9rem 3.7rem;
   border: none;
@@ -30,28 +30,28 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
   width: auto;
 }
 
-.c11:hover {
+.c10:hover {
   background-color: #0BC1DC;
   color: #fff;
 }
 
-.c11:active {
+.c10:active {
   background-color: #029FB7;
   box-shadow: -3px 3px 14px 0px rgba(129,67,67,0.2);
 }
 
-.c11:disabled {
+.c10:disabled {
   background-color: #F1F2F7;
   color: #B8BCD5;
   cursor: default;
 }
 
-.c11:disabled,
-.c11:disabled:hover {
+.c10:disabled,
+.c10:disabled:hover {
   cursor: default;
 }
 
-.c12 {
+.c11 {
   display: inline-block;
   font-size: 1.125rem;
   font-weight: 400;
@@ -129,7 +129,7 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
   padding-left: 1.5rem;
 }
 
-.c9 {
+.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -142,13 +142,7 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
   width: 100%;
 }
 
-.c8 {
-  color: #00B0CA;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.c10 {
+.c9 {
   background-color: #fff;
   border: 1px solid #00B0CA !important;
   color: #00B0CA !important;
@@ -157,12 +151,12 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
   width: 226px;
 }
 
-.c10 > span {
+.c9 > span {
   font-size: 16px;
 }
 
 @media (max-width:540px) {
-  .c11 {
+  .c10 {
     padding: 0.9rem 1rem;
     width: 88%;
   }
@@ -214,23 +208,17 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
           Recibirás en tu correo electrónico la confirmación y detalle de tu compra
         </div>
       </div>
-      <a
-        className="c8"
-        onClick={[Function]}
-      >
-        Crear una cuenta
-      </a>
       <div
-        className="c9"
+        className="c8"
       >
         <button
-          className="c10 c11"
+          className="c9 c10"
           color="primary"
           onClick={[Function]}
           size="md"
         >
           <span
-            className="c12"
+            className="c11"
             size="md"
           >
             Continuar comprando
@@ -240,7 +228,7 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
     </div>
   </div>
   <div
-    className="c13"
+    className="c12"
   />
 </div>
 `;

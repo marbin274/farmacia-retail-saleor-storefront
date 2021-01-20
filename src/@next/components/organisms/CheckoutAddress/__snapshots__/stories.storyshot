@@ -276,7 +276,6 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
 
 .c4 {
   padding-top: 1rem;
-  padding-bottom: 2rem;
   width: 100%;
 }
 
@@ -1086,7 +1085,6 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
 
 .c4 {
   padding-top: 1rem;
-  padding-bottom: 2rem;
   width: 100%;
 }
 
