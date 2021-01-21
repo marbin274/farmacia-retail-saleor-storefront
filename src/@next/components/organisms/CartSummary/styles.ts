@@ -25,7 +25,7 @@ export const Wrapper = styled.div<{ mobileCartOpened: boolean }>`
   ${props =>
     props.mobileCartOpened &&
     media.mediumScreen`
-    top: 0%;
+    top: 56px;
     overflow-y: scroll;
   `}
 `;
