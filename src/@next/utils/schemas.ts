@@ -26,7 +26,8 @@ export const passwordValidation = Yup.string()
 export const phoneValidation = Yup.string()
     .trim()
     .min(SchemasConfig.PHONE_MIN_LENGTH, SchemaMessage.PHONE_VALIDATION)    
-    .matches(SchemasConfig.PHONE_REGEX_VALIDATION, SchemaMessage.PHONE_VALIDATION);
+    .matches(SchemasConfig.PHONE_REGEX_VALIDATION, SchemaMessage.PHONE_VALIDATION)
+    .required(SchemaMessage.PHONE_REQUIRED);
 
 export const termsAndConditionsValidation = Yup.boolean()
     .oneOf([true], SchemaMessage.TERMS_AND_CONTIDIONS_REQUIRED)

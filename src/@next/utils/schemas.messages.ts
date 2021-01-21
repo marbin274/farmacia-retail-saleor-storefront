@@ -8,4 +8,5 @@ export const FULLNAME_REQUIRED = "Ingresa tu nombre y apellido";
 export const PASSWORD_REQUIRED = "Ingresa una contraseña";
 export const PASSWORD_VALIDATION = `Debe contener ${SchemasConfig.PASSWORD_MIN_LEGTH} caracteres como mínimo`;
 export const PHONE_VALIDATION = `Debe contener ${SchemasConfig.PHONE_MIN_LENGTH} dígitos comenzando con 9, no incluir espacios, ni letras (A-Z)`;
+export const PHONE_REQUIRED =`Ingresa tu número de telefono`;
 export const TERMS_AND_CONTIDIONS_REQUIRED = "Debes aceptar para continuar";
