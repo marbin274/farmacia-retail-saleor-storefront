@@ -9,6 +9,7 @@ const DEFAULT_PROPS = {
   handleBlur: () => action("handleBlur"),
   handleChange: () => action("handleChange"),
   handleSubmit: () => action("handleSubmit"),
+  loading: false,
   passwordError: "",
   tokenError: false,
   values: {

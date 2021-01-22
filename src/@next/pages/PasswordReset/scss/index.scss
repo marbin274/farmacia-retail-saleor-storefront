@@ -1,0 +1,16 @@
+@import "@temp/globalStyles/scss/variables.scss";
+
+.password-changed-confirm {
+    max-width: 15rem;
+    text-align: center;
+    p {
+        color: $black;
+        font-size: $small-font-size;
+        strong {
+            font-weight: bold;
+        }
+    }
+    &__button {
+        padding: 2rem 0rem;
+    }
+}
