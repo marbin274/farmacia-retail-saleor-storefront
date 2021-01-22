@@ -3,7 +3,18 @@
 .home-page {
   background-color: $white;
   padding-top: 6.75rem;
-
+  z-index: 0;
+  .search {
+    min-height: initial;
+    &__input {
+      margin-top: 0px;
+    }
+    &__products {
+      position: absolute;
+      left: 0;
+      z-index: 3;
+    }
+  }
   .home-view {
     @media (min-width: $small-screen) {
       margin-top: 6.75rem;
@@ -21,11 +32,10 @@
         padding: 0 1rem;
       }
     }
-
   }
 
   &__top-banner {
-    background: no-repeat url("../../../images/auna/home-banner-top.png") #00B0CA;
+    background: no-repeat url("../../../images/auna/home-banner-top.png") #00b0ca;
     background-position: 2rem 1rem;
     background-size: 25rem;
     border-radius: 1rem;
@@ -38,7 +48,7 @@
     @media (max-width: $small-screen) {
       height: 26.5rem;
       border-radius: 0;
-      background: no-repeat url("../../../images/auna/home-banner-mob.png") #00B0CA;
+      background: no-repeat url("../../../images/auna/home-banner-mob.png") #00b0ca;
       background-position: center top;
       margin-bottom: 2rem;
     }
@@ -46,15 +56,15 @@
     &__text {
       position: absolute;
       right: 2rem;
-      top: 8rem;
+      top: 6rem;
       max-width: 38rem;
 
       @media (max-width: $small-screen) {
         border-radius: 1rem 1rem 0 0;
-        margin-top: 9.375rem;
+        margin-top: 12.375rem;
         right: 0;
         bottom: 0;
-        left:0;
+        left: 0;
         padding: 0 10px;
         position: absolute;
         text-align: center;
@@ -66,29 +76,34 @@
       }
 
       h2 {
-        font-size: 2.8rem;
+        font-size: 3.25rem;
         font-weight: bolder;
-        line-height: 1.6;
-        padding-bottom: .5rem;
-        line-height: 1.375rem;
+        line-height: 1;
+        margin-top: -2rem;
+        padding-bottom: 0.5rem;
+        line-height: 3.5rem;
         align-items: center;
         letter-spacing: 0.015em;
         margin-bottom: 1.25rem;
 
         @media (max-width: $small-screen) {
-          font-size: 1.4625rem;
+          font-size: 1.5rem;
+          line-height: 1.5rem;
           font-weight: bold;
           margin-bottom: 0;
         }
         @media (max-width: $xs-small-screen) {
-          font-size:  1.3625rem;
+          font-size: 1.3625rem;
+          line-height: 1.5rem;
         }
       }
       h3 {
-        font-size: 1.5rem;
+        font-size: 2.08rem;
         margin-bottom: 1.25rem;
+        line-height: 2.7rem;
         @media (max-width: $small-screen) {
-          font-size: 1.125rem;
+          font-size: 1rem;
+          line-height: 1.25rem;
           margin-bottom: 0;
         }
       }
@@ -118,7 +133,7 @@
       padding: 1rem 0 3rem 0;
     }
 
-    >p {
+    > p {
       color: $auna-black;
       font-size: 1.3rem;
       padding: 1rem 0;
@@ -131,7 +146,7 @@
   }
 
   &__bottom-section {
-    background-color: #F6F8FA;
+    background-color: #f6f8fa;
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
     margin: 4rem 0 4rem 0;
@@ -159,17 +174,15 @@
   }
 
   &__districts-list {
-    background: no-repeat url("../../../images/auna/home-banner-districts.png") #F6F8FA;
+    background: no-repeat url("../../../images/auna/home-banner-districts.png") #f6f8fa;
     height: 10rem;
 
     @media (max-width: $small-screen) {
-      background: no-repeat url("../../../images/auna/home-banner-districts-mob.png") #F6F8FA;
+      background: no-repeat url("../../../images/auna/home-banner-districts-mob.png") #f6f8fa;
       background-size: contain;
       height: 20rem;
     }
-
   }
-
 
   .product-list {
     grid-column: 1;

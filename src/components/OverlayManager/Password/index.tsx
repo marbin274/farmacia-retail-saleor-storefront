@@ -21,7 +21,7 @@ const Password: React.FC<{ overlay: OverlayContextInterface }> = ({
     <div className="password-reset">
       <Online>
         <div className="overlay__header">
-          <p className="overlay__header-text">Reset your password</p>
+          <p className="overlay__header-text">Olvidé mi contraseña</p>
           <ReactSVG
             path={closeImg}
             onClick={overlay.hide}

@@ -2,18 +2,22 @@ import { media, styled } from "@styles";
 
 export const Wrapper = styled.div`
   background-color: ${props => props.theme.tile.backgroundColor};
-  margin-top: 3.75rem;
-  height: 4.125rem;
+  margin-top: 1.75rem !important;
 `;
 
 export const Bar = styled.div`
-  height: 5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  ${media.xxxLargeScreen`
+    padding-top: 1.225rem;
+  `}
+  ${media.smallScreen`
+    padding-top: 2.5rem;
+    padding-bottom: 0.5rem;
+  `}
   font-size: ${props => props.theme.typography.smallFontSize};
 `;
-
 export const LeftSide = styled.div`
   display: flex;
   align-items: center;
@@ -22,7 +26,7 @@ export const LeftSide = styled.div`
 export const RightSide = styled.div`
   height: 3.9rem;
   ${media.smallScreen`
-    height: auto;
+    height: 1.625rem;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -31,7 +35,6 @@ export const RightSide = styled.div`
     align-self: flex-start;
   `}
 `;
-
 export const FiltersButton = styled.button`
   font-size: ${props => props.theme.typography.smallFontSize};
   display: flex;

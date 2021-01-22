@@ -1,33 +1,32 @@
-import React, {
-  forwardRef,
-  RefForwardingComponent,
-  useImperativeHandle,
-  useRef,
-  useState,
-} from "react";
-import { RouteComponentProps, useHistory } from "react-router";
-
 import { CheckoutShipping } from "@components/organisms";
 import { useCheckout } from "@sdk/react";
 import { CHECKOUT_STEPS } from "@temp/core/config";
 import { IFormError } from "@types";
+import React, {
+  forwardRef,
+  RefForwardingComponent,
+  useImperativeHandle,
+  useRef
+} from "react";
+import { RouteComponentProps, useHistory } from "react-router";
+
 
 export interface ICheckoutShippingSubpageHandles {
   submitShipping: () => void;
 }
 
 interface IProps extends RouteComponentProps<any> {
+  addressSubPageErrors: IFormError[];
   changeSubmitProgress: (submitInProgress: boolean) => void;
+  setAddressSubPageErrors: (errors: IFormError[]) => void;
 }
 
 const CheckoutShippingSubpageWithRef: RefForwardingComponent<
   ICheckoutShippingSubpageHandles,
   IProps
-> = ({ changeSubmitProgress, ...props }: IProps, ref) => {
+> = ({ addressSubPageErrors, changeSubmitProgress, setAddressSubPageErrors, ...props }: IProps, ref) => {
   const checkoutShippingFormId = "shipping-form";
   const checkoutShippingFormRef = useRef<HTMLFormElement>(null);
-
-  const [errors, setErrors] = useState<IFormError[]>([]);
 
   const history = useHistory();
   const {
@@ -54,9 +53,9 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
     const errors = dataError?.error;
     changeSubmitProgress(false);
     if (errors) {
-      setErrors(errors);
+      setAddressSubPageErrors(errors);
     } else {
-      setErrors([]);
+      setAddressSubPageErrors([]);
       if (!clicked) {
         history.push(CHECKOUT_STEPS[1].nextStepLink);
       }
@@ -68,7 +67,7 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
       {...props}
       shippingMethods={shippingMethods}
       selectedShippingMethodId={checkout?.shippingMethod?.id}
-      errors={errors}
+      errors={addressSubPageErrors}
       selectShippingMethod={handleSetShippingMethod}
       formId={checkoutShippingFormId}
       formRef={checkoutShippingFormRef}
@@ -79,3 +78,4 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
 const CheckoutShippingSubpage = forwardRef(CheckoutShippingSubpageWithRef);
 
 export { CheckoutShippingSubpage };
+

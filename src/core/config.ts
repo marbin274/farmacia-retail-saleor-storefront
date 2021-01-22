@@ -1,15 +1,9 @@
 import { generatePageUrl } from "./utils";
-import { OrderDirection, ProductOrderField } from "@sdk/gqlTypes/globalTypes";
 
 export const BASE_URL = "/";
 export const PRODUCTS_PER_PAGE = 8;
 export const SUPPORT_EMAIL = "support@example.com";
 
-export const HOME_PAGE_CONF = {
-  PAGE_SIZE: 8,
-  SORT_DIR: OrderDirection.ASC,
-  SORT_FIELD: ProductOrderField.PRICE,
-};
 export const PROVIDERS = {
   AUNA: {
     id: "farmacia-retail.payments.niubiz",
@@ -116,3 +110,9 @@ export const CHECKOUT_STEPS = [
 ];
 
 export const MAX_ORDER_PER_PRODUCT = 50;
+
+export const DOCUMENTS_URLS_S3 = {
+  finesAdicionalesUrls: "https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-fines-adicionales.pdf",
+  politicasDePrivacidadUrl: "https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-politicas-privacidad.pdf",
+  terminosYCondicionesUrl: "https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-terminos-condiciones.pdf",
+};

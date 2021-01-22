@@ -47,6 +47,7 @@ export interface IProps {
   onError: (errors: IFormError[]) => void;
 
   checkoutBillingAddress?: IAddress | null | undefined;
+  changeRequestPayload: (requestPayload: any) => void;
   requestPayload?: string | undefined | null;
   totalPrice?: ITotalPrice;
   userDataForNiubiz?: IUserDataForNiubiz;

@@ -4,8 +4,12 @@
   .input {
     margin-bottom: 8px;
   }
-
+  &__errors {
+    margin: 15px 0px;
+    text-align: center;
+  }
   &__button {
+    margin-top: 35px;
     text-align: center;
 
     > button {

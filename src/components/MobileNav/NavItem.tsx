@@ -13,7 +13,7 @@ export interface INavItem extends MainMenuSubItem {
 interface NavItemProps extends INavItem {
   isOpen: boolean;
   hideOverlay(): void;
-  showSubItems(itemName: string): void;
+  showSubItems(itemName: string, isOpen: boolean): void;
 }
 
 const NavItem: React.FC<NavItemProps> = ({
@@ -22,31 +22,37 @@ const NavItem: React.FC<NavItemProps> = ({
   isOpen,
   ...item
 }) => {
+  const [isOpenMenu, setOpenMenu] =  React.useState(isOpen)
   const hasSubNavigation = item.children && !!item.children.length;
+
+  function openHideMenu(name: string, isOpen: boolean){
+    setOpenMenu(!isOpen)
+    showSubItems(item.name, isOpenMenu)
+  }
 
   return (
     <li
       className={classNames({
         "side-nav__menu-item": true,
         "side-nav__menu-item--has-subnavigation": hasSubNavigation,
-        "side-nav__menu-item--is-open": isOpen,
+        "side-nav__menu-item--is-open": isOpenMenu,
       })}
     >
       <div className={"side-nav__menu-item-content"}>
         <NavLink
           item={item}
           className={"side-nav__menu-item-link"}
-          onClick={() => hasSubNavigation && showSubItems(item.name)}
+          onClick={() => hasSubNavigation && openHideMenu(name, isOpenMenu)}
         />
         {hasSubNavigation && (
           <ReactSVG
             className={"side-nav__menu-item-arrow"}
             path={arrowImg}
-            onClick={() => showSubItems(item.name)}
+            onClick={() => openHideMenu(item.name, isOpenMenu)}
           />
         )}
       </div>
-      {isOpen && hasSubNavigation && <NavChildren subItems={item.children} />}
+      {isOpenMenu && hasSubNavigation && <NavChildren subItems={item.children} />}
     </li>
   );
 };

@@ -66,6 +66,11 @@
       margin: 0 auto;
       width: 128px;
     }
+    .logo {
+      @media (max-width: $xs-small-screen) {
+        transform: scale(0.8);
+      }
+    }
 
     @media (min-width: $medium-screen) {
       flex: 2;
@@ -193,6 +198,12 @@
 
     svg {
       vertical-align: bottom;
+    }
+    &--no-display {
+      padding: ($spacer / 2);
+      @media (max-width: $medium-screen) {
+        padding: ($spacer * 2) ($spacer / 2);
+      }
     }
   }
 

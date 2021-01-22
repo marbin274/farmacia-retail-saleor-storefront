@@ -1,12 +1,13 @@
+import { IAddressWithEmail, IFormError } from "@app/types";
+import { convertIFormErrorsToObjectErrors } from "@app/utils/errorsManagement";
+import { Checkbox, DataTreatmentPolicyLink, ErrorMessage, TermsAndConditionsLink } from "@components/atoms";
+import { TextField } from "@components/molecules";
+import { IPrivacyPolicy } from "@sdk/api/Checkout/types";
 import React, { useCallback, useState } from "react";
-
-import { InputSelect, TextField } from "@components/molecules";
+import { FirstNameTextField, PhoneTextField, StreetAddress1, StreetAddress2, CitySelect } from "./AddressFormContent/AddressFormFields";
+import { IFieldsProps, ISelectFieldsProps } from "./AddressFormContent/types";
 import * as S from "./styles";
 import { PropsWithFormik } from "./types";
-import { Checkbox } from "../../atoms/Checkbox";
-import { IPrivacyPolicy } from "@temp/@sdk/api/Checkout/types";
-import { IAddressWithEmail, IFormError } from "@temp/@next/types";
-import { ErrorMessage } from "../../atoms/ErrorMessage/ErrorMessage";
 
 export const AddressFormContent: React.FC<PropsWithFormik> = ({
   formRef,
@@ -58,14 +59,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
     errors.push(_err);
   }
 
-  const fieldErrors: any = {};
-  if (errors && errors.length) {
-    errors.map(({ field, message }: { field: string; message: string }) => {
-      fieldErrors[field] = fieldErrors[field]
-        ? [...fieldErrors[field], { message }]
-        : [{ message }];
-    });
-  }
+  const fieldErrors: any = convertIFormErrorsToObjectErrors(errors);
 
   const _cities: any[] = [];
   citiesOptions?.map(x => {
@@ -78,13 +72,13 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
 
   const handlePrivacyAndPolicies = () => {
     setFieldTouched("termsAndConditions", true);
-    setFieldValue("termsAndConditions", !privacyAndPolicies);    
+    setFieldValue("termsAndConditions", !privacyAndPolicies);
   };
 
   const handleAdditionals = () => {
     setAdditionals(!additionals);
     setFieldTouched("dataTreatmentPolicy", true);
-    setFieldValue("dataTreatmentPolicy", !additionals);    
+    setFieldValue("dataTreatmentPolicy", !additionals);
   };
 
   const basicInputProps = useCallback(
@@ -144,13 +138,16 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
     </S.GroupLabel>
   );
 
-  React.useEffect(()=>{
+  React.useEffect(() => {
     setPrivacyAndPolicies(values?.termsAndConditions === true);
   }, [values?.termsAndConditions]);
 
-  React.useEffect(()=>{
+  React.useEffect(() => {
     setAdditionals(values?.dataTreatmentPolicy === true);
   }, [values?.dataTreatmentPolicy]);
+
+  const fieldsProps: IFieldsProps = { fieldErrors, values, basicInputProps }
+  const cityProps: ISelectFieldsProps = { cities: _cities, fieldErrors, values }
 
   return (
     <div>
@@ -160,80 +157,22 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
             <div style={{ width: "100%" }}>
               <S.FieldsGroup>
                 {renderGroupLabel(1, "Cliente")}
-                <TextField
-                  data-cy="addressFormFirstName"
-                  name="firstName"
-                  label="Nombre completo"
-                  placeholder="Nombre completo"
-                  value={!values?.firstName ? "" : values?.firstName}
-                  autoComplete="given-name"
-                  errors={fieldErrors!.firstName}
-                  {...basicInputProps()}
-                />
-                <TextField
-                  data-cy="addressFormPhone"
-                  name="phone"
-                  placeholder="Número de celular"
-                  maxLength={9}
-                  label="Número de celular"
-                  value={!values?.phone ? "" : values?.phone}
-                  autoComplete="tel"
-                  errors={fieldErrors!.phone}
-                  {...basicInputProps()}
-                />
+                <FirstNameTextField fieldsProps={fieldsProps} />
+                <PhoneTextField fieldsProps={fieldsProps} />
               </S.FieldsGroup>
               <S.FieldsGroup>
                 {renderGroupLabel(2, "Dirección")}
                 <S.RowWithOneCell>
-                  <TextField
-                    data-cy="addressFormStreetAddress1"
-                    name="streetAddress1"
-                    label="*Dirección"
-                    placeholder="Dirección"
-                    value={
-                      !values?.streetAddress1 ? "" : values?.streetAddress1
-                    }
-                    autoComplete="address-line1"
-                    errors={fieldErrors!.streetAddress1}
-                    {...basicInputProps()}
-                  />
-                  <TextField
-                    data-cy="addressFormStreetAddress2"
-                    name="streetAddress2"
-                    placeholder="Información adicional"
-                    label="Información adicional"
-                    value={
-                      !values?.streetAddress2 ? "" : values?.streetAddress2
-                    }
-                    autoComplete="address-line2"
-                    errors={fieldErrors!.streetAddress2}
-                    {...basicInputProps()}
-                  />
+                  <StreetAddress1 fieldsProps={fieldsProps} />
+                  <StreetAddress2 fieldsProps={fieldsProps} />
                 </S.RowWithOneCell>
                 <S.RowWithOneCell>
-                  <InputSelect
-                    inputProps={{
-                      "data-cy": "addressFormCity",
-                    }}
-                    label="*Distrito"
-                    name="city"
-                    options={_cities}
-                    value={
-                      values!.city &&
-                      _cities &&
-                      _cities!.find(
-                        option =>
-                          option.code.toLowerCase() ===
-                          values!.city?.toLowerCase()
-                      )
-                    }
-                    onChange={(value: any, name: any) => {
+                  <CitySelect fieldsProps={{
+                    ...cityProps,
+                    handleCityChange: (value: any, name: any) => {
                       setFieldValue(name, value.code);
-                    }}
-                    optionLabelKey="description"
-                    optionValueKey="code"
-                    errors={fieldErrors!.city}
-                  />
+                    },
+                  }} />
                 </S.RowWithOneCell>
               </S.FieldsGroup>
             </div>
@@ -242,17 +181,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                 <S.FieldsGroup>
                   {renderGroupLabel(1, "Cliente")}
                   <S.RowWithTwoCells>
-                    <TextField
-                      data-cy="addressFormFirstName"
-                      name="firstName"
-                      label="*Nombre completo"
-                      placeholder="Nombre completo"
-                      value={!values?.firstName ? "" : values?.firstName}
-                      autoComplete="given-name"
-                      readOnly={user}
-                      errors={fieldErrors!.firstName}
-                      {...basicInputProps()}
-                    />
+                    <FirstNameTextField fieldsProps={{ ...fieldsProps, required: true }} />
                     <TextField
                       data-cy="addressFormDNI"
                       name="documentNumber"
@@ -283,17 +212,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                       errors={fieldErrors!.email}
                       {...basicInputProps()}
                     />
-                    <TextField
-                      data-cy="addressFormPhone"
-                      name="phone"
-                      placeholder="Número de celular"
-                      label="Número de celular"
-                      maxLength={9}
-                      value={!values?.phone ? "" : values?.phone}
-                      autoComplete="tel"
-                      errors={fieldErrors!.phone}
-                      {...basicInputProps()}
-                    />
+                    <PhoneTextField fieldsProps={fieldsProps} />
                   </S.RowWithTwoCells>
                   <S.RowWithOneCell>
                     <div className="privacyAndPolicies">
@@ -303,18 +222,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                         checked={privacyAndPolicies}
                         onChange={handlePrivacyAndPolicies}
                       >
-                        <label htmlFor="">
-                          *Estoy de acuerdo con las
-                        <a href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-politicas-privacidad.pdf">
-                            {" "}
-                          Políticas de privacidad
-                        </a>{" "}
-                        y
-                        <a href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-terminos-condiciones.pdf">
-                            {" "}
-                          Términos y condiciones
-                        </a>
-                        </label>
+                        <TermsAndConditionsLink />
                       </Checkbox>
                       <ErrorMessage errors={fieldErrors!.termsAndConditions} />
                     </div>
@@ -325,10 +233,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                         checked={additionals}
                         onChange={handleAdditionals}
                       >
-                        <label htmlFor="">
-                          Acepto el tratamiento para{" "}
-                          <a href="#"> Fines adicionales</a>
-                        </label>
+                        <DataTreatmentPolicyLink />
                       </Checkbox>
                     </div>
                   </S.RowWithOneCell>
@@ -336,53 +241,14 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                 <S.FieldsGroup>
                   {renderGroupLabel(2, "Dirección")}
                   <S.RowWithTwoCells>
-                    <TextField
-                      data-cy="addressFormStreetAddress1"
-                      name="streetAddress1"
-                      label="*Dirección"
-                      placeholder="Dirección"
-                      value={
-                        !values?.streetAddress1 ? "" : values?.streetAddress1
-                      }
-                      autoComplete="address-line1"
-                      errors={fieldErrors!.streetAddress1}
-                      {...basicInputProps()}
-                    />
-                    <TextField
-                      data-cy="addressFormStreetAddress2"
-                      name="streetAddress2"
-                      placeholder="Información adicional"
-                      label="Información adicional"
-                      value={
-                        !values?.streetAddress2 ? "" : values?.streetAddress2
-                      }
-                      autoComplete="address-line2"
-                      errors={fieldErrors!.streetAddress2}
-                      {...basicInputProps()}
-                    />
+                    <StreetAddress1 fieldsProps={fieldsProps} />
+                    <StreetAddress2 fieldsProps={fieldsProps} />
                   </S.RowWithTwoCells>
                   <S.RowWithTwoCells>
-                    <InputSelect
-                      inputProps={{
-                        "data-cy": "addressFormCity",
-                      }}
-                      label="*Distrito"
-                      name="city"
-                      options={_cities}
-                      value={
-                        values!.city &&
-                        _cities &&
-                        _cities!.find(
-                          option =>
-                            option.code.toLowerCase() ===
-                            values!.city?.toLowerCase()
-                        )
-                      }
-                      onChange={handleCityChange}
-                      optionLabelKey="description"
-                      optionValueKey="code"
-                      errors={fieldErrors!.city}
-                    />
+                    <CitySelect fieldsProps={{
+                      ...cityProps,
+                      handleCityChange,
+                    }} />
                   </S.RowWithTwoCells>
                 </S.FieldsGroup>
               </div>

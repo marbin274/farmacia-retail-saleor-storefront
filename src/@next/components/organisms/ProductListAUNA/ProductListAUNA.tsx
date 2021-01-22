@@ -1,4 +1,3 @@
-/* tslint:disable */
 import React from "react";
 import { Button, Loader } from "@components/atoms";
 import { ProductTileAUNA } from "@components/molecules";
@@ -7,16 +6,17 @@ import { IProps } from "./types";
 import { generateProductUrl } from "@temp/core/utils";
 
 export const ProductListAUNA: React.FC<IProps> = ({
-  addToCart,
   canLoadMore = false,
   loading = false,
   onLoadMore = () => null,
   products,
   productsOnCart,
+  addToCart,
 }: IProps) => {
+
   const productsWithQuantity = !products ? [] : products.filter(product => product.pricing).map((product) => {
     const productOnCart = productsOnCart?.find(({ variant }) =>
-      product.variants ? variant.id === product.variants[0].id : false
+      (product.variants && product.variants[0]) ? variant.id === product.variants[0].id : false
     );
     product.quantity = productOnCart ? productOnCart.quantity : 0;
 
@@ -28,7 +28,7 @@ export const ProductListAUNA: React.FC<IProps> = ({
       ...product,
     };
   });
-
+  
   return (
     <>
       <S.List>

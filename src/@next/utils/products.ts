@@ -1,4 +1,4 @@
-import { IItems } from "@temp/@sdk/api/Cart/types";
+import { IItems } from "@sdk/api/Cart/types";
 import { MAX_ORDER_PER_PRODUCT } from "@temp/core/config";
 
 export type ProductOnCart = {
@@ -7,7 +7,7 @@ export type ProductOnCart = {
 }
 
 export const getStockAvailable = (product: any): number => {
-    const stockAvailable = product.variants?.[0].quantityAvailable || 0;
+    const stockAvailable = product.variants?.[0]?.quantityAvailable || 0;
     return stockAvailable;
 }
 

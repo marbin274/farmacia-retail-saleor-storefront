@@ -10,6 +10,7 @@ describe("<PaymentGatewaysList />", () => {
     const processPayment = jest.fn();
     const selectPaymentGateway = jest.fn();
     const onError = jest.fn();
+    const changeRequestPayload = jest.fn();
     const wrapper = mount(
       <PaymentGatewaysList
         paymentGateways={paymentGateways}
@@ -17,6 +18,7 @@ describe("<PaymentGatewaysList />", () => {
         selectPaymentGateway={selectPaymentGateway}
         onError={onError}
         userDataForNiubiz={userDataFroNiubiz}
+        changeRequestPayload={changeRequestPayload}
       />
     );
 
@@ -28,6 +30,7 @@ describe("<PaymentGatewaysList />", () => {
     const processPayment = jest.fn();
     const selectPaymentGateway = jest.fn();
     const onError = jest.fn();
+    const changeRequestPayload = jest.fn();
     const wrapper = mount(
       <PaymentGatewaysList
         paymentGateways={paymentGateways}
@@ -35,6 +38,7 @@ describe("<PaymentGatewaysList />", () => {
         selectPaymentGateway={selectPaymentGateway}
         onError={onError}
         userDataForNiubiz={userDataFroNiubiz}
+        changeRequestPayload={changeRequestPayload}
       />
     );
 

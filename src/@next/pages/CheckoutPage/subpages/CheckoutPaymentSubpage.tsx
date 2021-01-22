@@ -28,6 +28,7 @@ interface IProps extends RouteComponentProps<any> {
   selectedPaymentGatewayToken?: string;
   selectPaymentGateway: (paymentGateway: string) => void;
   changeSubmitProgress: (submitInProgress: boolean) => void;
+  changeRequestPayload: (requestPayload: any) => void;
   requestPayload?: string | null | undefined;
 }
 
@@ -40,6 +41,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
     selectedPaymentGatewayToken,
     changeSubmitProgress,
     selectPaymentGateway,
+    changeRequestPayload,
     requestPayload,
     ...props
   }: IProps,
@@ -298,6 +300,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
       newAddressFormId={checkoutNewAddressFormId}
       processPayment={handleProcessPayment}
       onGatewayError={handlePaymentGatewayError}
+      changeRequestPayload={changeRequestPayload}      
       requestPayload={requestPayload}
       totalPrice={totalPrice}
       userDataForNiubiz={userDataForNiubiz}

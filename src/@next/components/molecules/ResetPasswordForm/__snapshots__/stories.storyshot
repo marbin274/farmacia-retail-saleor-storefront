@@ -130,7 +130,6 @@ exports[`Storyshots @components/molecules/ResetPasswordForm default 1`] = `
 }
 
 .c8 {
-  position: absolute;
   top: 100%;
 }
 

@@ -12,7 +12,7 @@ export const AddressForm = styled.form`
   width: 100%;
 
   .privacyAndPolicies {
-    margin-top: 2rem;
+    margin-top: 1rem;
     width: 100%;
     svg {
       margin-top: 0.4rem;
@@ -55,7 +55,6 @@ export const RowWithTwoCells = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-bottom: 1rem;
 
   & > div {
     width: calc(50% - ${props => props.theme.spacing.fieldSpacer} / 2);
@@ -71,7 +70,6 @@ export const RowWithOneCell = styled.div`
 
 export const FieldsGroup = styled.div`
   padding-top: 1rem;
-  padding-bottom: 2rem;
   width: 100%;
 `;
 

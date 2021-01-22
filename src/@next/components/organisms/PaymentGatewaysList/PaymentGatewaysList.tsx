@@ -24,6 +24,7 @@ const PaymentGatewaysList: React.FC<IProps> = ({
   processPayment,
   errors,
   onError,
+  changeRequestPayload,
   requestPayload,
   totalPrice,
   userDataForNiubiz,
@@ -136,6 +137,7 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                     processPayment={(token, card) => processPayment(id, token, card)}
                     errors={errors}
                     onError={onError}
+                    changeRequestPayload={changeRequestPayload}
                     requestPayload={requestPayload}
                     totalPrice={totalPrice}
                     userDataForNiubiz={userDataForNiubiz}

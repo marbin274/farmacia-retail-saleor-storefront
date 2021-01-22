@@ -114,6 +114,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
   formId,
   errors = [],
   onError,
+  changeRequestPayload,
   requestPayload,
   totalPrice,
   userDataForNiubiz,
@@ -134,6 +135,15 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
   const payformUrl =
     getConfigElement(config, "nb_payform_url") ||
     "https://pocpaymentserve.s3.amazonaws.com/payform.min.js";
+
+  let purchaseNumber = "";
+  useEffect(() => {
+    const payload: any = {
+      purchase_number: Math.floor(Math.random() * (999999999999 - 1)) + 1,
+    };
+    purchaseNumber = payload.purchase_number;
+    changeRequestPayload(payload);
+  }, []);
 
   const createTokenScript = () => {
     const tokenRequirements = getTokenRequirements(config);
@@ -156,11 +166,6 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
           key,
           amount
         );
-        let purchaseNumber = "";
-        if (requestPayload) {
-          // @ts-ignore
-          purchaseNumber = requestPayload.purchase_number;
-        }
         const configuration = {
           amount,
           callbackurl: "",
@@ -177,7 +182,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
           sessionkey: key,
         };
 
-        // console.table(configuration);
+
 
         // @ts-ignore
         window?.payform.setConfiguration(configuration);

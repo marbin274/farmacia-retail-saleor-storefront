@@ -1,0 +1,101 @@
+on:
+  push:
+    branches: [ master,release ]
+
+jobs:
+  deploy:
+
+    name: 'STOREFRONT CD '
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
+      - run: echo ${{ github.ref }}
+      - name: 1- Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: 2- Install dependencies
+        run: npm install
+
+      - name: 3- Build application master ${{ github.event.pull_request.base.ref }}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+        run: npm run build
+        env:
+          API_URI: ${{ secrets.GRAPHQL_URL_QA }}
+
+      - name: 4- Build application release ${{ github.event.pull_request.base.ref }}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/release' }}
+        run: npm run build
+        env:
+          API_URI: ${{ secrets.GRAPHQL_URL_PROD }}
+
+      - name: 5- aws s3 copy qa - by ${{ github.actor }}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --follow-symlinks --delete
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}-qa
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_QA }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_QA }}
+          AWS_REGION: ${{ secrets.AWS_REGION_QA }}
+          SOURCE_DIR: 'dist'
+
+      - name: 5- aws s3 copy prod - by ${{ github.actor }}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/release' }}
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --follow-symlinks --delete
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}-prod
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_PROD }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_PROD }}
+          AWS_REGION: ${{ secrets.AWS_REGION_PROD }} 
+          SOURCE_DIR: 'dist'
+
+      - name: 6- Clean Cloudfront Cache QA
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+        uses: chetan/invalidate-cloudfront-action@master
+        env:
+          DISTRIBUTION: ${{ secrets.CF_STORE_DISTRIBUTION_ID_QA }}
+          PATHS: '/*'
+          AWS_REGION: ${{ secrets.AWS_REGION_QA }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_QA }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_QA }}
+
+      - name: 6- Clean Cloudfront Cache PROD
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/release' }}
+        uses: chetan/invalidate-cloudfront-action@master
+        env:
+          DISTRIBUTION: ${{ secrets.CF_STORE_DISTRIBUTION_ID_PROD }}
+          PATHS: '/*'
+          AWS_REGION: ${{ secrets.AWS_REGION_PROD }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_PROD }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_PROD }}
+
+
+      - name: 7- Notify slack success
+        if: success()
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        uses: voxmedia/github-action-slack-notify-build@v1
+        with:
+          channel: builds
+          status: SUCCESS
+          color: good
+      - name: 7- Notify slack fail
+        if: failure()
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        uses: voxmedia/github-action-slack-notify-build@v1
+        with:
+          channel: builds
+          status: FAILED
+          color: danger

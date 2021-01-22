@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { OutStockLabel } from '@components/atoms'
+import { OutStockLabel, Button } from '@components/atoms'
 import { Thumbnail } from "@components/molecules";
 import { TaxedMoney } from "@components/containers";
 import * as S from "./styles";
 import { IProps } from "./types";
 import { Link } from "react-router-dom";
-import { Button } from "../../atoms";
 import { checkCanAddToCart } from "@temp/@next/utils/products";
 
 export const ProductTileAUNA: React.FC<IProps> = ({
@@ -53,9 +52,6 @@ export const ProductTileAUNA: React.FC<IProps> = ({
           </div>
           <div className="description">
             <S.Title>{product.name}</S.Title>
-            {!canAddToCart && (
-              <S.ProductAttribute>No disponible</S.ProductAttribute>
-            )}
           </div>
           <div className="price">
             <S.Price>
@@ -64,11 +60,14 @@ export const ProductTileAUNA: React.FC<IProps> = ({
           </div>
         </S.WrapperStockout>
       </Link>
-      <div className="button">
-        <Button onClick={onAddToCart} disabled={!canAddToCart}>
-          +
+      {
+        addToCart &&
+        <div className="button">
+          <Button onClick={onAddToCart} disabled={!canAddToCart}>
+            +
         </Button>
-      </div>
+        </div>
+      }
     </S.ProductCard>
   );
 };

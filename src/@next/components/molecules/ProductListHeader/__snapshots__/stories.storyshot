@@ -82,12 +82,10 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
 
 .c1 {
   background-color: #f1f5f5;
-  margin-top: 3.75rem;
-  height: 4.125rem;
+  margin-top: 1.75rem !important;
 }
 
 .c2 {
-  height: 5rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -153,9 +151,22 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
   margin: 0.4rem;
 }
 
+@media (max-width:1920px) {
+  .c2 {
+    padding-top: 1.225rem;
+  }
+}
+
+@media (max-width:540px) {
+  .c2 {
+    padding-top: 2.5rem;
+    padding-bottom: 0.5rem;
+  }
+}
+
 @media (max-width:540px) {
   .c6 {
-    height: auto;
+    height: 1.625rem;
     width: 100%;
     display: -webkit-box;
     display: -webkit-flex;
@@ -197,7 +208,7 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
     className="c1"
   >
     <div
-      className="container c1"
+      className="category__container c1"
     >
       <div
         className="c2"
@@ -382,12 +393,10 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
 
 .c1 {
   background-color: #f1f5f5;
-  margin-top: 3.75rem;
-  height: 4.125rem;
+  margin-top: 1.75rem !important;
 }
 
 .c2 {
-  height: 5rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -460,9 +469,22 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
   margin: 0.4rem;
 }
 
+@media (max-width:1920px) {
+  .c2 {
+    padding-top: 1.225rem;
+  }
+}
+
+@media (max-width:540px) {
+  .c2 {
+    padding-top: 2.5rem;
+    padding-bottom: 0.5rem;
+  }
+}
+
 @media (max-width:540px) {
   .c7 {
-    height: auto;
+    height: 1.625rem;
     width: 100%;
     display: -webkit-box;
     display: -webkit-flex;
@@ -504,7 +526,7 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
     className="c1"
   >
     <div
-      className="container c1"
+      className="category__container c1"
     >
       <div
         className="c2"

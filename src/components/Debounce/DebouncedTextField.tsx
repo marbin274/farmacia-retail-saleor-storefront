@@ -1,15 +1,17 @@
 import * as React from "react";
-
 import TextField, { TextFieldProps } from "../TextField";
 import DebounceChange from "./DebounceChange";
+
 
 interface DebouncedTextFieldProps extends TextFieldProps {
   time?: number;
   resetValue?: boolean;
+  inputRef: any;
 }
 
 const DebouncedTextField: React.FC<DebouncedTextFieldProps> = props => {
   const {
+    inputRef,
     time,
     resetValue,
     value: originalValue,
@@ -24,7 +26,7 @@ const DebouncedTextField: React.FC<DebouncedTextFieldProps> = props => {
       value={originalValue}
     >
       {({ change, value }) => (
-        <TextField {...textFieldProps} value={value} onChange={change} />
+        <TextField {...textFieldProps} inputRef={inputRef} value={value} onChange={change} />
       )}
     </DebounceChange>
   );

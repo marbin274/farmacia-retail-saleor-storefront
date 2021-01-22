@@ -206,7 +206,6 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
 }
 
 .c14 {
-  position: absolute;
   top: 100%;
 }
 
@@ -215,7 +214,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
 }
 
 .c2 .privacyAndPolicies {
-  margin-top: 2rem;
+  margin-top: 1rem;
   width: 100%;
 }
 
@@ -265,7 +264,6 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  margin-bottom: 1rem;
 }
 
 .c8 > div {
@@ -278,7 +276,6 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
 
 .c4 {
   padding-top: 1rem;
-  padding-bottom: 2rem;
   width: 100%;
 }
 
@@ -545,16 +542,13 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                       <a
                         href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-politicas-privacidad.pdf"
                       >
-                         
-                        Políticas de privacidad
+                         Políticas de privacidad 
                       </a>
-                       
-                      y
+                        y
                       <a
                         href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-terminos-condiciones.pdf"
                       >
-                         
-                        Términos y condiciones
+                         Términos y condiciones 
                       </a>
                     </label>
                   </div>
@@ -591,13 +585,13 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                     <label
                       htmlFor=""
                     >
-                      Acepto el tratamiento para
-                       
+                       Acepto el tratamiento para
                       <a
-                        href="#"
+                        href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-fines-adicionales.pdf"
                       >
-                         Fines adicionales
+                         Fines adicionales 
                       </a>
+                      (opcional )
                     </label>
                   </div>
                 </div>
@@ -737,6 +731,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                               onBlur={[Function]}
                               onChange={[Function]}
                               onFocus={[Function]}
+                              placeholder=""
                               spellCheck="false"
                               style={
                                 Object {
@@ -1020,7 +1015,6 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
 }
 
 .c14 {
-  position: absolute;
   top: 100%;
 }
 
@@ -1029,7 +1023,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
 }
 
 .c2 .privacyAndPolicies {
-  margin-top: 2rem;
+  margin-top: 1rem;
   width: 100%;
 }
 
@@ -1079,7 +1073,6 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  margin-bottom: 1rem;
 }
 
 .c8 > div {
@@ -1092,7 +1085,6 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
 
 .c4 {
   padding-top: 1rem;
-  padding-bottom: 2rem;
   width: 100%;
 }
 
@@ -1359,16 +1351,13 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
                       <a
                         href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-politicas-privacidad.pdf"
                       >
-                         
-                        Políticas de privacidad
+                         Políticas de privacidad 
                       </a>
-                       
-                      y
+                        y
                       <a
                         href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-terminos-condiciones.pdf"
                       >
-                         
-                        Términos y condiciones
+                         Términos y condiciones 
                       </a>
                     </label>
                   </div>
@@ -1405,13 +1394,13 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
                     <label
                       htmlFor=""
                     >
-                      Acepto el tratamiento para
-                       
+                       Acepto el tratamiento para
                       <a
-                        href="#"
+                        href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-fines-adicionales.pdf"
                       >
-                         Fines adicionales
+                         Fines adicionales 
                       </a>
+                      (opcional )
                     </label>
                   </div>
                 </div>
@@ -1551,6 +1540,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
                               onBlur={[Function]}
                               onChange={[Function]}
                               onFocus={[Function]}
+                              placeholder="Selecciona tu distrito"
                               spellCheck="false"
                               style={
                                 Object {
@@ -1584,6 +1574,21 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
                               }
                             >
                               
+                            </div>
+                            <div
+                              style={
+                                Object {
+                                  "height": 0,
+                                  "left": 0,
+                                  "overflow": "scroll",
+                                  "position": "absolute",
+                                  "top": 0,
+                                  "visibility": "hidden",
+                                  "whiteSpace": "pre",
+                                }
+                              }
+                            >
+                              Selecciona tu distrito
                             </div>
                           </div>
                         </div>

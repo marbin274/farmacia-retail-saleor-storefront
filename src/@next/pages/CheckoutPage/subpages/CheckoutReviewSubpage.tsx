@@ -5,7 +5,6 @@ import React, {
   useState,
 } from "react";
 import { RouteComponentProps, useHistory } from "react-router";
-
 import { CheckoutReview } from "@components/organisms";
 import { statuses as dummyStatuses } from "@components/organisms/DummyPaymentGateway";
 import { useCheckout } from "@sdk/react";
@@ -72,7 +71,7 @@ const CheckoutReviewSubpageWithRef: RefForwardingComponent<
       return visaCards[0].type;
     }
     return `visa`;
-  }
+  };
 
   useImperativeHandle(ref, () => ({
     complete: async () => {

@@ -1,8 +1,6 @@
-import "../globalStyles/scss/index.scss";
-
 import React from "react";
-
-import {Footer, MainMenu, MetaConsumer, OverlayContext, OverlayManager, OverlayTheme, OverlayType} from "../components";
+import { Footer, MainMenu, MetaConsumer, OverlayContext, OverlayManager, OverlayTheme, OverlayType } from "../components";
+import "../globalStyles/scss/index.scss";
 import { Routes } from "./routes";
 
 const App: React.FC = () => {

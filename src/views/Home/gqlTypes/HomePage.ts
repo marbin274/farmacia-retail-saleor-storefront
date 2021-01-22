@@ -2,8 +2,6 @@
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
-import { ProductOrder } from "./../../../../gqlTypes/globalTypes";
-
 // ====================================================
 // GraphQL query operation: HomePage
 // ====================================================
@@ -26,6 +24,12 @@ export interface HomePage_shop_homepageCollection {
   name: string;
 }
 
+export interface AnaliticTracking {
+  trackingId: string | null;
+
+  tagManagerId: string | null;
+}
+
 export interface HomePage_shop {
   __typename: "Shop";
   /**
@@ -40,6 +44,8 @@ export interface HomePage_shop {
    * Collection displayed on homepage.
    */
   homepageCollection: HomePage_shop_homepageCollection | null;
+
+  analyticsConfig: AnaliticTracking;
 }
 
 export interface HomePage_products_edges_node_thumbnail {
@@ -351,7 +357,3 @@ export interface HomePage {
   products: HomePage_products | null;
 }
 
-export interface HomePageVariables {
-  pageSize?: number | null;
-  sortBy?: ProductOrder | null;
-}

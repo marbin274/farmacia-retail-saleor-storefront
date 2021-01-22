@@ -1,4 +1,3 @@
-import "./scss/index.scss";
 import * as React from "react";
 import ReactSVG from "react-svg";
 import {
@@ -9,10 +8,11 @@ import {
   Overlay,
   OverlayContextInterface,
   OverlayTheme,
-  OverlayType,
+  OverlayType
 } from "../..";
-import RegisterForm from "./RegisterForm";
 import closeImg from "../../../images/close-circle.svg";
+import RegisterForm from "./RegisterForm";
+import "./scss/index.scss";
 
 class Login extends React.Component<
   { overlay: OverlayContextInterface; active?: "login" | "register" },

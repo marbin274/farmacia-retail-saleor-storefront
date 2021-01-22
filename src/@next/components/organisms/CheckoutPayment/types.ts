@@ -76,6 +76,7 @@ export interface IProps {
    * Method called when gateway error occured.
    */
   onGatewayError: (errors: IFormError[]) => void;
+  changeRequestPayload: (requestPayload: any) => void;
   requestPayload?: string | undefined | null;
   totalPrice?: ITotalPrice;
   userDataForNiubiz?: IUserDataForNiubiz;

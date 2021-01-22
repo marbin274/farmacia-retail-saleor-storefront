@@ -8,6 +8,7 @@ import { paymentGateways, userDataFroNiubiz } from "./fixtures";
 const processPayment = action("processPayment");
 const selectPaymentGateway = action("selectPaymentGateway");
 const onError = action("onError");
+const changeRequestPayload = action("changeRequestPayload");
 
 storiesOf("@components/organisms/PaymentGatewaysList", module)
   .addParameters({ component: PaymentGatewaysList })
@@ -18,5 +19,6 @@ storiesOf("@components/organisms/PaymentGatewaysList", module)
       selectPaymentGateway={selectPaymentGateway}
       onError={onError}
       userDataForNiubiz={userDataFroNiubiz}
+      changeRequestPayload={changeRequestPayload}
     />
   ));

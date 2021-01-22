@@ -76,7 +76,23 @@ export class NetworkManager implements INetworkManager {
   constructor(client: ApolloClient<any>) {
     this.client = client;
   }
-
+  transformArray(arrayOfObjects: any[]) {
+    const newArray: any[] = [];
+    arrayOfObjects.map(product =>
+      newArray.push({
+        brand: ``,
+        category: ``,
+        id: `${product.variant.sku}`,
+        list: ``,
+        name: `${product.productName}`,
+        position: ``,
+        price: `${product.unitPrice.gross.amount}`,
+        quantity: product.quantity,
+        variant: ``,
+      })
+    );
+    return newArray;
+  }
   getCheckout = async (checkoutToken: string | null) => {
     let checkout: Checkout | null;
     try {
@@ -792,6 +808,28 @@ export class NetworkManager implements INetworkManager {
           error: data?.checkoutComplete?.errors,
         };
       } else if (data?.checkoutComplete?.order) {
+        const total: any = data?.checkoutComplete?.order.subtotal?.gross.amount;
+        const productsArray: any = data?.checkoutComplete?.order.lines;
+        const orderId: any = data?.checkoutComplete?.order.number;
+        const tax: any = (total * (0.18 / 1.18)).toFixed(2);
+        // @ts-ignore
+        const DataLayer = window.dataLayer;
+        // @ts-ignore
+        DataLayer.push({
+          ecommerce: {
+            purchase: {
+              actionField: {
+                affiliation: "Online Store",
+                id: `${orderId}`,
+                revenue: `${total}`,
+                shipping: "",
+                tax: `${!!total ? tax : 0}`,
+              },
+              products: this.transformArray(productsArray),
+            },
+          },
+          event: "purchase",
+        });
         return {
           data: this.constructOrderModel(data.checkoutComplete.order),
         };

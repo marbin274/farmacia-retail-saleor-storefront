@@ -1,37 +1,35 @@
-import React from "react";
-import {
-  mediumScreen,
-  smallScreen,
-} from "../../globalStyles/scss/variables.scss";
-import "./scss/index.scss";
-
 import { useCart, useSignOut, useUserDetails } from "@sdk/react";
-
+import * as appPaths from "@temp/app/routes";
+import { baseUrl } from '@temp/app/routes/paths';
+import { maybe } from "@temp/core/utils";
+import cartImg from "images/cart.svg";
+import hamburgerImg from "images/hamburger.svg";
+import logoImg from "images/logo.svg";
+import searchImg from "images/search.svg";
+import userImg from "images/user.svg";
+import React from "react";
 import Media from "react-media";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import ReactSVG from "react-svg";
-
 import {
   MenuDropdown,
   Offline,
   Online,
   OverlayContext,
   OverlayTheme,
-  OverlayType,
+  OverlayType
 } from "..";
-import * as appPaths from "../../app/routes";
-import { maybe } from "../../core/utils";
+import {
+  mediumScreen,
+  smallScreen
+} from "../../globalStyles/scss/variables.scss";
 import NavDropdown from "./NavDropdown";
 import { TypedMainMenuQuery } from "./queries";
-
-import cartImg from "../../images/cart.svg";
-import hamburgerImg from "../../images/hamburger.svg";
-import logoImg from "../../images/logo.svg";
-import searchImg from "../../images/search.svg";
-import userImg from "../../images/user.svg";
+import "./scss/index.scss";
 
 const MainMenu: React.FC = () => {
   const { data: user } = useUserDetails();
+  const location = useLocation();
   const [signOut] = useSignOut();
   const { items } = useCart();
 
@@ -120,19 +118,19 @@ const MainMenu: React.FC = () => {
                                 }
                               />
                             ) : (
-                              <li
-                                data-testid="login-btn"
-                                className="main-menu__icon"
-                                onClick={() =>
-                                  overlayContext.show(
-                                    OverlayType.login,
-                                    OverlayTheme.left
-                                  )
-                                }
-                              >
-                                <ReactSVG path={userImg} />
-                              </li>
-                            )}
+                                <li
+                                  data-testid="login-btn"
+                                  className="main-menu__icon"
+                                  onClick={() =>
+                                    overlayContext.show(
+                                      OverlayType.login,
+                                      OverlayTheme.left
+                                    )
+                                  }
+                                >
+                                  <ReactSVG path={userImg} />
+                                </li>
+                              )}
                           </>
                         )}
                       />
@@ -172,7 +170,7 @@ const MainMenu: React.FC = () => {
               query={{ maxWidth: mediumScreen }}
               render={() => (
                 <Link to={appPaths.baseUrl} className="main-menu__center--icon">
-                  <ReactSVG path={logoImg} />
+                  <ReactSVG path={logoImg} className="logo" />
                 </Link>
               )}
             />
@@ -216,30 +214,33 @@ const MainMenu: React.FC = () => {
                         }
                       />
                     ) : (
-                      <li
-                        data-testid="login-btn"
-                        className="main-menu__icon main-menu__login"
-                        onClick={() =>
-                          overlayContext.show(
-                            OverlayType.login,
-                            OverlayTheme.right
-                          )
-                        }
-                      >
-                        <ReactSVG path={userImg} />
-                      </li>
-                    )}
+                        <li
+                          data-testid="login-btn"
+                          className="main-menu__icon main-menu__login"
+                          onClick={() =>
+                            overlayContext.show(
+                              OverlayType.login,
+                              OverlayTheme.right
+                            )
+                          }
+                        >
+                          <ReactSVG path={userImg} />
+                        </li>
+                      )}
                   </>
                 )}
               />
-              <li
-                className="main-menu__search"
-                onClick={() =>
-                  overlayContext.show(OverlayType.search, OverlayTheme.center)
-                }
-              >
-                <ReactSVG path={searchImg} />
-              </li>
+              {
+                (location.pathname !== baseUrl) ? <li
+                  className="main-menu__search"
+                  onClick={() =>
+                    overlayContext.show(OverlayType.search, OverlayTheme.center)
+                  }
+                >
+                  <ReactSVG path={searchImg} />
+                </li> :
+                  <li className="main-menu__search--no-display"></li>
+              }
               <Online>
                 <li
                   className="main-menu__icon main-menu__cart"
