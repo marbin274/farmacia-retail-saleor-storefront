@@ -22,20 +22,14 @@ const Page: React.FC<IPageProps> = ({
 }) => {
   return (
     <div className="container">
-      <a href="./product/fotoprotector-facial-anthelios-shaka-color-spf50-50ml/4524/">
+      <a href="./product/oxmetro-de-pulso/3889/">
         <div className="home-page__top-banner">
           <div className="home-page__top-banner__text">
-            <h2>Protectores Solares<br />La Roche Posay</h2>
-            <h3>
-              <a href="./product/fotoprotector-facial-anthelios-shaka-color-spf50-50ml/4524/">
-                Shaka Color
-            </a>&nbsp;/&nbsp;
-            <a href="./product/protect-solar-anthelios-xl-color-spf50-50-ml/4272/">XL Color 50 ml</a>
-            </h3>
+            <h2>¡Último día!</h2>
+            <h3><strong>Oxímetro de Pulso o Termómetro Digital Infrarrojo</strong></h3>
             <p>
-              *Promoción válida hasta el 21/01/2021 o hasta agotar stock. Max. 3 unidades por producto.<br />
-            Aplica max. 2 promociones por usuario. No acumulable con otras promociones. Aplican más T&C.
-          </p>
+              *Válido hasta el 21/01/21 o hasta agotar stock. Máx. 3 unids por producto. Aplica máx. 2 promociones por usuario. Delivery a S/0.01 hasta el 31/01/21. T&C: <a href="http://bit.ly/TyC_Farmauna" target="_blank">http://bit.ly/TyC_Farmauna</a>
+            </p>
           </div>
         </div>
       </a>
