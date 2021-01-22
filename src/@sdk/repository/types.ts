@@ -9,6 +9,7 @@ export enum LocalStorageItems {
   JOB_QUEUE_CHECKOUT = "job_queueCheckout",
   CHECKOUT = "data_checkout",
   PAYMENT = "data_payment",
+  RESET_PASSWORD_EMAIL = "reset_password_email",
 }
 
 export interface ICheckoutModelLineTotalPrice {
@@ -153,6 +154,8 @@ export interface IOrderModel {
 export interface ILocalRepository {
   getCheckout(): ICheckoutModel | null;
   setCheckout(checkout: ICheckoutModel | null): void;
+  getResetPasswordEmail(): string | null;
+  setResetPasswordEmail(email: string): void;
   getPayment(): IPaymentModel | null;
   setPayment(payment: IPaymentModel | null): void;
 }

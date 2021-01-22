@@ -19,3 +19,35 @@
     width: 100%;
   }
 }
+
+.reset-password-mail-sent {
+  max-width: 18rem;
+  margin: 0 auto;
+  text-align: center;
+  &__image {
+    padding: 2rem 0rem 3rem 0rem;
+  }
+  h3 {
+    color: $black;
+    font-weight: 700;
+    font-size: $base-font-size;
+    line-height: $h3-font-size;
+    margin-bottom: 1.5rem;
+  }
+  p {
+    color: $black;
+    font-size: $small-font-size;
+    font-weight: $font-weight-normal;
+    strong {
+      font-weight: 700;
+    }
+  }
+  &__button {
+    margin: 0 auto;
+    padding: 3rem 0rem;
+    width: 90%;
+    button {
+      width: 100%;
+    }
+  }
+}

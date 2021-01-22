@@ -1,8 +1,7 @@
-import "./scss/index.scss";
-
+import resetPasswordImg from "images/auna/reset-password.svg";
+import closeImg from "images/x.svg";
 import * as React from "react";
 import ReactSVG from "react-svg";
-
 import {
   Offline,
   OfflinePlaceholder,
@@ -11,8 +10,7 @@ import {
   OverlayContextInterface,
   PasswordResetForm
 } from "../..";
-
-import closeImg from "../../../images/x.svg";
+import "./scss/index.scss";
 
 const Password: React.FC<{ overlay: OverlayContextInterface }> = ({
   overlay,
@@ -21,7 +19,7 @@ const Password: React.FC<{ overlay: OverlayContextInterface }> = ({
     <div className="password-reset">
       <Online>
         <div className="overlay__header">
-          <p className="overlay__header-text">Olvidé mi contraseña</p>
+          <div className="overlay__header-text" ><p>Olvidé mi contraseña</p></div>
           <ReactSVG
             path={closeImg}
             onClick={overlay.hide}
@@ -29,6 +27,10 @@ const Password: React.FC<{ overlay: OverlayContextInterface }> = ({
           />
         </div>
         <div className="password-reset__content">
+          <ReactSVG
+            path={resetPasswordImg}
+            className="password-reset__content__image"
+          />
           <PasswordResetForm />
         </div>
       </Online>
