@@ -1,4 +1,3 @@
-
 import { IAddToCartCallback } from "@app/components/molecules/ProductTileAUNA/types";
 import { IItems } from "@sdk/api/Cart/types";
 import { structuredData } from "@temp/core/SEO/Homepage/structuredData";
@@ -22,13 +21,13 @@ const Page: React.FC<IPageProps> = ({
 }) => {
   return (
     <div className="container">
-      <a href="./product/oxmetro-de-pulso/3889/">
+      <a href="./product/mascarilla-3-pliegues-caja-50-und/2458/">
         <div className="home-page__top-banner">
           <div className="home-page__top-banner__text">
-            <h2>¡Último día!</h2>
-            <h3><strong>Oxímetro de Pulso o Termómetro Digital Infrarrojo</strong></h3>
+            <h3>¡SOLO POR POCOS DÍAS!</h3>
+            <h2><strong>Mascarillas 3 pliegues 50 unds.</strong></h2>
             <p>
-              *Válido hasta el 21/01/21 o hasta agotar stock. Máx. 3 unids por producto. Aplica máx. 2 promociones por usuario. Delivery a S/0.01 hasta el 31/01/21. T&C: <a href="http://bit.ly/TyC_Farmauna" target="_blank">http://bit.ly/TyC_Farmauna</a>
+              *Válido hasta el 24/01/21 o hasta agotar stock. Máx. 3 unids por producto.<br /> Aplica máx. 2 promociones por usuario. Delivery a S/0.01 hasta el 31/01/21. T&C.: <a href="http://bit.ly/TyC_Farmauna" target="_blank">http://bit.ly/TyC_Farmauna</a>
             </p>
           </div>
         </div>
