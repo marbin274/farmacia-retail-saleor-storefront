@@ -78,12 +78,9 @@
       h2 {
         font-size: 3.25rem;
         font-weight: bolder;
-        margin-top: -2rem;
-        padding-bottom: 0.5rem;
         line-height: 3.5rem;
         align-items: center;
         letter-spacing: 0.015em;
-        margin-bottom: 1.25rem;
 
         @media (max-width: $small-screen) {
           font-size: 1.5rem;
