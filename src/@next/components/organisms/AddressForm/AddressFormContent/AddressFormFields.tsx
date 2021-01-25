@@ -23,7 +23,7 @@ export const PhoneTextField = ({ fieldsProps }: IProps) => {
         name="phone"
         placeholder="Número de celular"
         maxLength={9}
-        label="Número de celular"
+        label="*Número de celular"
         value={!values?.phone ? "" : values?.phone}
         autoComplete="tel"
         errors={fieldErrors!.phone}

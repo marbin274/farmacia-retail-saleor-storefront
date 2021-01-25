@@ -494,7 +494,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                         className="c13"
                         disabled={false}
                       >
-                        Número de celular
+                        *Número de celular
                       </label>
                     </div>
                   </div>
@@ -1303,7 +1303,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
                         className="c13"
                         disabled={false}
                       >
-                        Número de celular
+                        *Número de celular
                       </label>
                     </div>
                   </div>

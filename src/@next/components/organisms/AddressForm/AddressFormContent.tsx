@@ -91,6 +91,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
     if (!values ||
       !values.firstName ||
       !values.documentNumber ||
+      !values.phone ||
       !values.email ||
       !values.termsAndConditions ||
       !values.streetAddress1 ||

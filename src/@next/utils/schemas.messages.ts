@@ -10,5 +10,5 @@ export const PASSWORD_VALIDATION = `Debe contener ${SchemasConfig.PASSWORD_MIN_L
 export const RESET_PASSWORD_REQUIRED = "Escriba nuevamente la contraseña";
 export const RESET_PASSWORD_NOT_MATCH = "La contraseña no coincide";
 export const PHONE_VALIDATION = `Debe contener ${SchemasConfig.PHONE_MIN_LENGTH} dígitos comenzando con 9, no incluir espacios, ni letras (A-Z)`;
-export const PHONE_REQUIRED =`Ingresa tu número de telefono`;
+export const PHONE_REQUIRED ="Ingresa tu número de telefono";
 export const TERMS_AND_CONTIDIONS_REQUIRED = "Debes aceptar para continuar";
