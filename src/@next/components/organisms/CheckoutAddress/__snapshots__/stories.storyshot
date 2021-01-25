@@ -591,7 +591,6 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                       >
                          Fines adicionales 
                       </a>
-                      (opcional )
                     </label>
                   </div>
                 </div>
@@ -1400,7 +1399,6 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
                       >
                          Fines adicionales 
                       </a>
-                      (opcional )
                     </label>
                   </div>
                 </div>
