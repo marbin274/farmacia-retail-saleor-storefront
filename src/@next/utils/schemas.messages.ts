@@ -7,6 +7,7 @@ export const EMAIL_VALIDATION = "Debe contener un correo válido, ingresa letras
 export const FULLNAME_REQUIRED = "Ingresa tu nombre y apellido";
 export const PASSWORD_REQUIRED = "Ingresa una contraseña";
 export const PASSWORD_VALIDATION = `Debe contener ${SchemasConfig.PASSWORD_MIN_LEGTH} caracteres como mínimo`;
+export const RESET_NEW_PASSWORD_REQUIRED = "Ingresa la nueva contraseña";
 export const RESET_PASSWORD_REQUIRED = "Ingresa nuevamente la contraseña";
 export const RESET_PASSWORD_NOT_MATCH = "La contraseña no coincide";
 export const PHONE_VALIDATION = `Debe contener ${SchemasConfig.PHONE_MIN_LENGTH} dígitos comenzando con 9, no incluir espacios, ni letras (A-Z)`;

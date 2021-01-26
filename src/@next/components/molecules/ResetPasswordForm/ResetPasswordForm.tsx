@@ -32,7 +32,7 @@ export const ResetPasswordForm: React.FC<IProps> = ({
                 onBlur={handleBlur}
                 onChange={handleChange}
                 type="password"
-                placeholder="Ingresa tu contraseña"
+                placeholder="Ingresa la nueva contraseña"
                 value={values.password}
                 errors={
                   errors.password || passwordError
@@ -51,7 +51,7 @@ export const ResetPasswordForm: React.FC<IProps> = ({
                 name="retypedPassword"
                 onChange={handleChange}
                 type="password"
-                placeholder="Ingresa tu contraseña"
+                placeholder="Ingresa nuevamente la contraseña"
                 value={values.retypedPassword}
                 errors={
                   errors.retypedPassword
