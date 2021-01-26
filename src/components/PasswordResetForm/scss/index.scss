@@ -1,8 +1,7 @@
 @import "../../../globalStyles/scss/variables.scss";
 
 .password-reset-form {
-  text-align: center;
-  p {
+  > p {
     font-size: $small-font-size;
     font-style: normal;
     font-weight: 400;
@@ -16,7 +15,7 @@
 
   &__button {
     margin: $spacer * 2 0;
-
+    text-align: center;
     > button {
       width: 281px;
       span {
