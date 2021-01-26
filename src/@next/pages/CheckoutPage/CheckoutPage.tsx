@@ -17,11 +17,9 @@ import {
   ICheckoutAddressSubpageHandles,
   ICheckoutPaymentSubpageHandles,
   ICheckoutReviewSubpageHandles,
-  ICheckoutShippingSubpageHandles
+  ICheckoutShippingSubpageHandles,
 } from "./subpages";
 import { IProps } from "./types";
-
-
 
 const prepareCartSummary = (
   totalPrice?: ITaxedMoney | null,
@@ -66,7 +64,9 @@ const prepareCartSummary = (
 const getCheckoutProgress = (
   loaded: boolean,
   activeStepIndex: number,
-  isShippingRequired: boolean
+  isShippingRequired: boolean,
+  requestPayload: string | null,
+  currentRoutePath: string
 ) => {
   const steps = isShippingRequired
     ? CHECKOUT_STEPS
@@ -75,7 +75,12 @@ const getCheckoutProgress = (
       );
 
   return loaded ? (
-    <CheckoutProgressBar steps={steps} activeStepIndex={activeStepIndex} />
+    <CheckoutProgressBar
+      requestPayload={requestPayload}
+      steps={steps}
+      activeStepIndex={activeStepIndex}
+      currentRoutePath={currentRoutePath}
+    />
   ) : null;
 };
 
@@ -93,6 +98,7 @@ const getButton = (text: string, onClick: () => void) => {
 
 const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
   const { pathname } = useLocation();
+
   const {
     loaded: cartLoaded,
     shippingPrice,
@@ -107,7 +113,9 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
   }
 
   const [submitInProgress, setSubmitInProgress] = useState(false);
-  const [addressSubPageErrors, setAddressSubPageErrors] = useState<IFormError[]>([]);
+  const [addressSubPageErrors, setAddressSubPageErrors] = useState<
+    IFormError[]
+  >([]);
 
   const [selectedPaymentGateway, setSelectedPaymentGateway] = useState<
     string | undefined
@@ -126,7 +134,6 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
   }, [payment?.token]);
 
   const [requestPayload, setRequestPayload] = useState(null);
-
 
   const matchingStepIndex = CHECKOUT_STEPS.findIndex(
     ({ link }) => link === pathname
@@ -259,7 +266,9 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
       navigation={getCheckoutProgress(
         cartLoaded && checkoutLoaded,
         activeStepIndex,
-        !!isShippingRequiredForProducts
+        !!isShippingRequiredForProducts,
+        requestPayload,
+        pathname
       )}
       cartSummary={prepareCartSummary(
         totalPrice,
@@ -274,4 +283,3 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
 };
 
 export { CheckoutPage };
-

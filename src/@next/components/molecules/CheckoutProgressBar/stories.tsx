@@ -44,7 +44,12 @@ storiesOf("@components/molecules/CheckoutProgressBar", module)
     const value = number(label, defaultValue, options);
     return (
       <MemoryRouter>
-        <CheckoutProgressBar steps={steps} activeStepIndex={value} />
+        <CheckoutProgressBar
+          steps={steps}
+          activeStepIndex={value}
+          requestPayload={null}
+          currentRoutePath=""
+        />
       </MemoryRouter>
     );
   });

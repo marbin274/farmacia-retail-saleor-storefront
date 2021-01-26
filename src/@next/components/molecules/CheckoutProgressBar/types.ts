@@ -6,4 +6,6 @@ export interface IStep {
 export interface IProps {
   steps: IStep[];
   activeStepIndex: number;
+  requestPayload: string | null;
+  currentRoutePath: string;
 }
