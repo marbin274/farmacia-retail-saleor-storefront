@@ -25,9 +25,9 @@ export interface HomePage_shop_homepageCollection {
 }
 
 export interface AnaliticTracking {
-  trackingId: string | null;
-
   tagManagerId: string | null;
+  tagManagerAuth: string | null;
+  tagManagerEnvironmentId: string | null;
 }
 
 export interface HomePage_shop {

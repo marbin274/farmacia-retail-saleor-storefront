@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { hot } from "react-hot-loader";
 import { ThemeProvider } from "styled-components";
 
@@ -38,20 +39,35 @@ import {
   invalidTokenLinkWithTokenHandler,
 } from "./@sdk/auth";
 
+interface GtmEnvVars {
+  auth: string | null;
+  id: string | null;
+  preview: string | null;
+}
+
 const cache = new InMemoryCache({
-  dataIdFromObject: obj => {
-    if (obj.__typename === "Shop") {
+  dataIdFromObject: apolloCacheObject => {
+    if (apolloCacheObject.__typename === "Shop") {
       return "shop";
     }
-    // @ts-ignore
-    const id = obj?.tagManagerId;
-    if (!!id) {
-      const tagManagerArgs = {
-        gtmId: id,
-      };
-      TagManager.initialize(tagManagerArgs);
+    const tagManagerEnvVars: GtmEnvVars = {
+      auth: apolloCacheObject?.tagManagerAuth,
+      id: apolloCacheObject?.tagManagerId,
+      preview: apolloCacheObject?.tagManagerEnvironmentId,
     }
-    return defaultDataIdFromObject(obj);
+    if (!!tagManagerEnvVars.id) {
+      if (!!tagManagerEnvVars.preview) {
+        const tagManagerArgs = {
+          auth: tagManagerEnvVars.auth,
+          gtmId: tagManagerEnvVars.id,
+          preview: tagManagerEnvVars.preview,
+        };
+        TagManager.initialize(tagManagerArgs);
+      } else {
+        TagManager.initialize({ gtmId: tagManagerEnvVars.id });
+      }
+    }
+    return defaultDataIdFromObject(apolloCacheObject);
   },
 });
 
