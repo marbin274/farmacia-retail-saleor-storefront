@@ -2,7 +2,7 @@ import {
   Checkout_availableShippingMethods,
   Checkout_lines_variant_attributes,
   Checkout_lines_variant_pricing,
-  Checkout_lines_variant_product,
+  Checkout_lines_variant_product
 } from "../fragments/gqlTypes/Checkout";
 
 export enum LocalStorageItems {
@@ -18,21 +18,23 @@ export interface ICheckoutModelLineTotalPrice {
 }
 
 export interface ICheckoutModelLineVariant {
-  quantityAvailable?: number;
+  attributes?: Checkout_lines_variant_attributes[];
   id: string;
+  isAvailable?: boolean | null;
   name?: string;
   sku?: string;
   pricing?: Checkout_lines_variant_pricing | null;
   product?: Checkout_lines_variant_product;
-  isAvailable?: boolean | null;
-  attributes?: Checkout_lines_variant_attributes[];
+  quantityAvailable?: number;
 }
 
 export interface ICheckoutModelLine {
+  id: string;
+  name: string;
   quantity: number;
-  id?: string;
+  totalPrice?: ICheckoutModelLineTotalPrice | null; 
   variant: ICheckoutModelLineVariant;
-  totalPrice?: ICheckoutModelLineTotalPrice | null;
+  variants?: ICheckoutModelLineVariant[]
 }
 
 export interface ICheckoutModelPriceValue {

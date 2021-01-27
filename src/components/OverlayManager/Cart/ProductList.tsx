@@ -1,9 +1,10 @@
-import * as React from "react";
-import { ICheckoutModelLine } from "@sdk/repository";
-import { Link } from "react-router-dom";
-import { generateProductUrl } from "@temp/core/utils";
 import { TaxedMoney } from "@components/containers";
 import { Thumbnail } from "@components/molecules";
+import { ICheckoutModelLine } from "@sdk/repository";
+import { checkProductCanAddToCart, checkProductIsOnSale, getProductPricingClass } from "@temp/@next/utils/products";
+import { generateProductUrl } from "@temp/core/utils";
+import * as React from "react";
+import { Link } from "react-router-dom";
 import ItemQuantity from "./ItemQuantity";
 
 interface IProductList {
@@ -20,7 +21,11 @@ const ProductList: React.FC<IProductList> = ({
   onSubtract,
 }) => (
   <ul className="cart__list">
-    {products.map(({ variant, quantity }) => {
+    {products.map(product => {
+      const { variant, quantity } = product;      
+      const canAddToCart = checkProductCanAddToCart(product, products);
+      const isOnSale = checkProductIsOnSale(product);
+
       const productUrl = generateProductUrl(
         variant.product.id,
         variant.product.name
@@ -47,7 +52,7 @@ const ProductList: React.FC<IProductList> = ({
             </div>
             <div className="cart__list__item__down">
               <TaxedMoney
-                className="cart__list__item__quantity__price"
+                className={`cart__list__item__quantity__price price ${getProductPricingClass(canAddToCart, isOnSale)}`}
                 taxedMoney={variant.pricing.price}
               />
               <ItemQuantity

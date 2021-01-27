@@ -26,6 +26,15 @@ export const featuredProducts = gql`
               }
               variants {
                 id
+                pricing{
+                  onSale
+                  price{
+                   ...Price
+                  }
+                  priceUndiscounted{
+                    ...Price
+                  }
+                }
                 quantityAvailable
               }
             }

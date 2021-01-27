@@ -47,7 +47,7 @@ export const ProductCard = styled.div<{
     font-family: "Poppins", sans-serif;
     font-size: 1.5rem;
     font-weight: normal;
-    padding: 0.7rem 0;
+    padding: 0.7rem 0rem 0rem 0rem;
     text-align: center;
   }
 

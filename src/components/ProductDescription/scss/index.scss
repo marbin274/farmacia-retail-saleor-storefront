@@ -1,6 +1,8 @@
 @import "../../../globalStyles/scss/variables.scss";
-
 .product-description {
+  .price {
+    font-size: $price-font-size;
+  }
   h3 {
     color: $base-font-color;
     font-size: 34px;
@@ -11,7 +13,7 @@
 
   &__price {
     color: $base-font-color-2;
-    font-size: 16px;
+    font-size: $base-font-size;
     font-weight: $font-weight-light;
     margin-bottom: 28px;
   }
@@ -41,13 +43,6 @@
     img {
       max-width: 100%;
     }
-  }
-
-  &__undiscounted_price {
-    text-decoration: line-through;
-    color: $gray;
-    font-size: $small-font-size;
-    font-weight: normal;
   }
 
   &__selected-attributes {

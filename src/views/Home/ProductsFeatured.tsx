@@ -17,26 +17,14 @@ interface ProductsFeaturedProps {
 
 const ProductsFeatured: React.FC<ProductsFeaturedProps> = ({ loading, productsOnCart, addToCart }) => {
   return (
-    <TypedFeaturedProductsQuery 
-    displayError={false}
-     variables={{first: PRODUCTS_PER_PAGE}}>
+    <TypedFeaturedProductsQuery
+      displayError={false}
+      variables={{ first: PRODUCTS_PER_PAGE }}>
       {({ data }) => {
-        const products = maybe(
-          () => data.shop.homepageCollection.products.edges,
+        const products: ISimpleProduct[] = maybe(
+          () => data.shop.homepageCollection.products.edges.map(product => ({...product.node})),
           []
         );
-        const productList: ISimpleProduct[] = products
-          .map(product => ({
-            id: product.node.id,
-            name: product.node.name,
-            pricing: product.node.pricing,
-            thumbnail: product.node.thumbnail,
-            thumbnail2x: product.node.thumbnail2x,
-            variants: product.node.variants.map(variant => ({
-              id: variant.id,
-              quantityAvailable: variant.quantityAvailable,
-            })),
-          }));
 
         if (products.length) {
           return <>
@@ -45,7 +33,7 @@ const ProductsFeatured: React.FC<ProductsFeaturedProps> = ({ loading, productsOn
               canLoadMore={false}
               loading={loading}
               onLoadMore={null}
-              products={productList}
+              products={products}
               productsOnCart={productsOnCart}
               addToCart={addToCart}
             />

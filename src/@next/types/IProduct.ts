@@ -4,7 +4,6 @@ import { IMoney, IMoneyRange } from "@app/types/IMoney";
 import { INode } from "@app/types/INode";
 import { IObjectWithMetadata } from "@app/types/IObjectWithMetadata";
 import { IProductPricing } from "@app/types/IProductPricing";
-import { IProductType } from "@app/types/IProductType";
 import { IProductVariant } from "@app/types/IProductVariant";
 
 export interface ISimpleProduct extends INode {
@@ -15,8 +14,8 @@ export interface ISimpleProduct extends INode {
   slug?: string;
   category?: ICategory;
   isAvailable?: boolean;
-  thumbnail: IImage;
-  thumbnail2x: IImage;
+  thumbnail?: IImage;
+  thumbnail2x?: IImage;
   basePrice?: IMoney;
   pricing?: IProductPricing;
   variants?: IProductVariant[];
@@ -24,8 +23,7 @@ export interface ISimpleProduct extends INode {
   quantityAvailable?: number | undefined;
 }
 
-export interface IProduct extends ISimpleProduct, IObjectWithMetadata {
-  productType?: IProductType;
+export interface IProduct extends ISimpleProduct, IObjectWithMetadata {    
   purchaseCost?: IMoneyRange;
   minimalVariantPrice?: IMoney;
   updatedAt?: Date;

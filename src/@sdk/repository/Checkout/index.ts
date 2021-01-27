@@ -28,6 +28,8 @@ export class CheckoutRepositoryManager implements ICheckoutRepositoryManager {
       alteredLines.push(variant);
     } else {
       variant = {
+        id: '',
+        name: '',
         quantity,
         variant: {
           id: variantId,

@@ -1,3 +1,4 @@
+import { aunaBrand5, aunaOrangeOnSale } from "@styles/constants";
 import { generatePageUrl } from "./utils";
 
 export const BASE_URL = "/";
@@ -116,3 +117,14 @@ export const DOCUMENTS_URLS_S3 = {
   politicasDePrivacidadUrl: "https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-politicas-privacidad.pdf",
   terminosYCondicionesUrl: "https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-terminos-condiciones.pdf",
 };
+
+export const PRODUCT_STICKERS = {
+  Agotado: {
+    backgroundColor: aunaBrand5,
+    label: "Agotado",
+  },
+  Oferta: {
+    backgroundColor: aunaOrangeOnSale,
+    label: "Oferta",
+  },
+}

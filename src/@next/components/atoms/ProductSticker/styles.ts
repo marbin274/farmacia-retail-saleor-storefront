@@ -1,12 +1,15 @@
 import { media, styled } from "@styles";
-import { aunaBrand5, white } from "@styles/constants";
+import { white } from "@styles/constants";
 
-export const OutStockLabel = styled.p`
+export const ProductSticker = styled.p<{
+  backgroundColor: string
+}
+  >`
 position: absolute;
 top: -19px;
 left: -53px;
 transform: rotate(-43.6deg);
-background: ${aunaBrand5};
+${({ backgroundColor }) => `background: ${backgroundColor}`}
 color: ${white};
 width: 166px;
 height: 86px;

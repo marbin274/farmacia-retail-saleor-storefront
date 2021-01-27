@@ -108,7 +108,7 @@ export class NetworkManager implements INetworkManager {
               if (errors?.length) {
                 reject(errors);
               } else {
-                resolve(data.me?.checkout);
+                resolve(data.me?.checkout ? data.me.checkout : null);
               }
             },
             error => {
@@ -196,65 +196,70 @@ export class NetworkManager implements INetworkManager {
       }
     }
 
-    const linesWithMissingVariantUpdated = variants
+    const linesWithMissingVariantUpdated: ICheckoutModelLine[] = variants
       ? variants.edges.map(edge => {
-          const existingLine = checkoutlines?.find(
-            line => line.variant.id === edge.node.id
-          );
-          const variantPricing = edge.node.pricing?.price;
-          const totalPrice = variantPricing
-            ? {
-                gross: {
-                  ...variantPricing.gross,
-                  amount:
-                    variantPricing.gross.amount * (existingLine?.quantity || 0),
-                },
-                net: {
-                  ...variantPricing.net,
-                  amount:
-                    variantPricing.net.amount * (existingLine?.quantity || 0),
-                },
-              }
-            : null;
-
-          return {
-            id: existingLine?.id,
-            quantity: existingLine?.quantity || 0,
-            totalPrice,
-            variant: {
-              attributes: edge.node.attributes,
-              id: edge.node.id,
-              isAvailable: edge.node.isAvailable,
-              name: edge.node.name,
-              pricing: edge.node.pricing,
-              product: edge.node.product,
-              quantityAvailable: edge.node.quantityAvailable,
-              sku: edge.node.sku,
-            },
-          };
-        })
-      : [];
-
-    const linesWithProperVariantUpdated = linesWithProperVariant.map(line => {
-      const variantPricing = line.variant.pricing?.price;
-      const totalPrice = variantPricing
-        ? {
+        const existingLine = checkoutlines?.find(
+          line => line.variant.id === edge.node.id
+        );
+        const variantPricing = edge.node.pricing?.price;
+        const totalPrice = variantPricing
+          ? {
             gross: {
               ...variantPricing.gross,
-              amount: variantPricing.gross.amount * line.quantity,
+              amount:
+                variantPricing.gross.amount * (existingLine?.quantity || 0),
             },
             net: {
               ...variantPricing.net,
-              amount: variantPricing.net.amount * line.quantity,
+              amount:
+                variantPricing.net.amount * (existingLine?.quantity || 0),
             },
           }
+          : null;
+
+        const variant = {
+          attributes: edge.node.attributes,
+          id: edge.node.id,
+          isAvailable: edge.node.isAvailable,
+          name: edge.node.name,
+          pricing: edge.node.pricing,
+          product: edge.node.product,
+          quantityAvailable: edge.node.quantityAvailable,
+          sku: edge.node.sku,
+        };
+        return {
+          id: existingLine?.id ? existingLine?.id : '',
+          name: edge.node.product.name,
+          quantity: existingLine?.quantity || 0,
+          totalPrice,
+          variant,
+          variants: [{ ...variant }],
+        };
+      })
+      : [];
+
+    const linesWithProperVariantUpdated: ICheckoutModelLine[] = linesWithProperVariant.map(line => {
+      const variantPricing = line.variant.pricing?.price;
+      const totalPrice = variantPricing
+        ? {
+          gross: {
+            ...variantPricing.gross,
+            amount: variantPricing.gross.amount * line.quantity,
+          },
+          net: {
+            ...variantPricing.net,
+            amount: variantPricing.net.amount * line.quantity,
+          },
+        }
         : null;
 
       return {
         id: line.id,
+        name: '',
         quantity: line.quantity,
         totalPrice,
         variant: line.variant,
+        variants: [{ ...line.variant }],
       };
     });
 
@@ -321,7 +326,7 @@ export class NetworkManager implements INetworkManager {
             companyName: billingAddress.companyName,
             country:
               CountryCode[
-                billingAddress?.country?.code as keyof typeof CountryCode
+              billingAddress?.country?.code as keyof typeof CountryCode
               ],
             countryArea: billingAddress.countryArea,
             firstName: billingAddress.firstName,
@@ -340,7 +345,7 @@ export class NetworkManager implements INetworkManager {
             companyName: shippingAddress.companyName,
             country:
               CountryCode[
-                shippingAddress?.country?.code as keyof typeof CountryCode
+              shippingAddress?.country?.code as keyof typeof CountryCode
               ],
             countryArea: shippingAddress.countryArea,
             firstName: shippingAddress.firstName,
@@ -445,7 +450,7 @@ export class NetworkManager implements INetworkManager {
           companyName: shippingAddress.companyName,
           country:
             CountryCode[
-              shippingAddress?.country?.code as keyof typeof CountryCode
+            shippingAddress?.country?.code as keyof typeof CountryCode
             ],
           countryArea: shippingAddress.countryArea,
           firstName: shippingAddress.firstName,
@@ -519,7 +524,7 @@ export class NetworkManager implements INetworkManager {
           companyName: billingAddress.companyName,
           country:
             CountryCode[
-              billingAddress?.country?.code as keyof typeof CountryCode
+            billingAddress?.country?.code as keyof typeof CountryCode
             ],
           countryArea: billingAddress.countryArea,
           firstName: billingAddress.firstName,
@@ -575,7 +580,7 @@ export class NetworkManager implements INetworkManager {
           companyName: billingAddress.companyName,
           country:
             CountryCode[
-              billingAddress?.country?.code as keyof typeof CountryCode
+            billingAddress?.country?.code as keyof typeof CountryCode
             ],
           countryArea: billingAddress.countryArea,
           firstName: billingAddress.firstName,
@@ -745,7 +750,7 @@ export class NetworkManager implements INetworkManager {
             companyName: billingAddress.companyName,
             country:
               CountryCode[
-                billingAddress?.country?.code as keyof typeof CountryCode
+              billingAddress?.country?.code as keyof typeof CountryCode
               ],
             countryArea: billingAddress.countryArea,
             firstName: billingAddress.firstName,
@@ -882,6 +887,7 @@ export class NetworkManager implements INetworkManager {
 
         return {
           id: item!.id,
+          name: itemVariant?.product.name ? itemVariant?.product.name : '',
           quantity: item!.quantity,
           totalPrice: item?.totalPrice,
           variant: {

@@ -21,7 +21,7 @@ export const Wrapper = styled.div`
 `;
 
 export const ImageFrame = styled.div<{
-  outStock?: boolean;
+  canAddToCart?: boolean;
 }>`
   display: flex;
   justify-content: center;
@@ -39,7 +39,7 @@ export const ImageFrame = styled.div<{
     max-width: 356px;
     max-height: 426px;
     width: 100%;
-    ${({ outStock }) => (outStock ? "opacity: 0.5;" : "opacity: 1;")}
+    ${({ canAddToCart }) => (canAddToCart ? "opacity: 1;" : "opacity: 0.5;")}
   }
 
   ${media.largeScreen`

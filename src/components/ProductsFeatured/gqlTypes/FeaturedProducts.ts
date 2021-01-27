@@ -255,6 +255,7 @@ export interface FeaturedProducts_shop_homepageCollection_products_edges_node_va
   __typename: "Variants";
   id: string;
   quantityAvailable: number;
+  pricing: FeaturedProducts_shop_homepageCollection_products_edges_node_pricing | null
 }
 
 export interface FeaturedProducts_shop_homepageCollection_products_edges_node {

@@ -1,13 +1,13 @@
-import { smallScreen } from "../../globalStyles/scss/variables.scss";
+import { ProductImage } from "@components/molecules";
+import { ICheckoutModelLine } from "@sdk/repository";
+import { checkProductCanAddToCart, checkProductIsOnSale } from "@temp/@next/utils/products";
 import * as React from "react";
 import Media from "react-media";
-import { ProductImage } from "@components/molecules";
 import { ProductDescription } from "../../components";
-import { generateCategoryUrl, generateProductUrl } from "../../core/utils";
-import { ProductDetails_product } from "./gqlTypes/ProductDetails";
-import { ICheckoutModelLine } from "@sdk/repository";
 import { structuredData } from "../../core/SEO/Product/structuredData";
-import { checkCanAddToCart } from "@temp/@next/utils/products";
+import { generateCategoryUrl, generateProductUrl } from "../../core/utils";
+import { smallScreen } from "../../globalStyles/scss/variables.scss";
+import { ProductDetails_product } from "./gqlTypes/ProductDetails";
 // TODO: Add as soon as we need to add related products
 // import OtherProducts from "./Other";
 // TODO: Add as soon as we need to add more product information below the
@@ -71,7 +71,8 @@ class Page extends React.PureComponent<
 
   render() {
     const { add, items, product } = this.props;
-    const canAddToCart = checkCanAddToCart(this.props.product, this.props.items);
+    const canAddToCart = checkProductCanAddToCart(this.props.product, this.props.items);
+    const isOnSale = checkProductIsOnSale(this.props.product);
     return (
       <div className="product-page">
         <div className="container">
@@ -86,11 +87,16 @@ class Page extends React.PureComponent<
               {matches =>
                 matches ? (
                   <>
-                    <ProductImage product={product} outStock={!canAddToCart} />
+                    <ProductImage
+                      canAddToCart={canAddToCart}
+                      isOnSale={isOnSale}
+                      product={product}
+                    />
                     <div className="product-page__product__info">
                       <ProductDescription
                         canAddToCart={canAddToCart}
                         descriptionJson={product.descriptionJson}
+                        isOnSale={isOnSale}
                         items={items}
                         productId={product.id}
                         name={product.name}
@@ -103,12 +109,17 @@ class Page extends React.PureComponent<
                   </>
                 ) : (
                     <>
-                      <ProductImage product={product} outStock={!canAddToCart} />
+                      <ProductImage
+                        canAddToCart={canAddToCart}
+                        isOnSale={isOnSale}
+                        product={product}
+                      />
                       <div className="product-page__product__info">
                         <div className={"product-page__product__info--fixed"}>
                           <ProductDescription
                             canAddToCart={canAddToCart}
                             descriptionJson={product.descriptionJson}
+                            isOnSale={isOnSale}
                             items={items}
                             productId={product.id}
                             name={product.name}
