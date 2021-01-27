@@ -43,6 +43,7 @@ export const checkProductIsOnSale = (product: ISimpleProduct): boolean => {
     return checkPricingVariantIsOnSale(product.variants[0].pricing);
 }
 
+// TODO: create component instead of function
 export const getProductPricingClass = (canAddToCart: boolean, isOnSale: boolean): string => {
     const className: string = 'price';
     if (canAddToCart && !isOnSale) {

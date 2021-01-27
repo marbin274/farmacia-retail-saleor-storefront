@@ -23,7 +23,7 @@ describe("<CartSummaryRow />", () => {
   it("should display product price", () => {
     const wrapper = mount(<CartSummaryRow {...DEFAULT_PROPS} />);
   
-    expect(wrapper.text()).toContain(DEFAULT_PROPS.price.gross ? DEFAULT_PROPS.price.gross.amount : undefined);
+    expect(wrapper.text()).toContain(DEFAULT_PROPS.price?.gross ? DEFAULT_PROPS.price.gross.amount : undefined);
   });
 
   it("should display product sku", () => {

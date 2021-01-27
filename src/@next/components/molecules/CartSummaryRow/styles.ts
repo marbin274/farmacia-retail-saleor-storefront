@@ -1,5 +1,5 @@
 import { styled } from "@styles";
-import { aunaBlack } from "@styles/constants";
+import { aunaBlack, baseFontSize } from "@styles/constants";
 
 export const Wrapper = styled.div`
   display: grid;
@@ -38,8 +38,10 @@ export const Name = styled.div`
 export const Price = styled.div`
   grid-area: price;
   text-align: right;
-  font-size: 16px;
   font-weight: 500;
+  .price {    
+    font-size: ${baseFontSize};
+  }
 `;
 export const Quantity = styled.div`
   grid-area: quantity;

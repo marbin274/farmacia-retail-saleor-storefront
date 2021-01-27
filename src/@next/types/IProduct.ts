@@ -14,8 +14,8 @@ export interface ISimpleProduct extends INode {
   slug?: string;
   category?: ICategory;
   isAvailable?: boolean;
-  thumbnail?: IImage;
-  thumbnail2x?: IImage;
+  thumbnail?: IImage  | null;
+  thumbnail2x?: IImage | null;
   basePrice?: IMoney;
   pricing?: IProductPricing;
   variants?: IProductVariant[];

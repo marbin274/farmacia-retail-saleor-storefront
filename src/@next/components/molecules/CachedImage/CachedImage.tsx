@@ -42,7 +42,7 @@ export const CachedImage: React.FC<IImage> = ({
   }
 
   if (!url || isUnavailable) {
-    return children || <PlaceholderImage alt={alt} />;
+    return children || <PlaceholderImage alt={alt || ''} />;
   }
 
   return (
@@ -50,7 +50,7 @@ export const CachedImage: React.FC<IImage> = ({
       {...props}
       src={url}
       srcSet={url2x ? `${url} 1x, ${url2x} 2x` : `${url} 1x`}
-      alt={alt}
+      alt={alt || ''}
       // navigator.onLine is not always accurate
       onError={() => setUnavailable(true)}
     />

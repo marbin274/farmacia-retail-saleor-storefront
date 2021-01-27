@@ -18,7 +18,7 @@ import {
   ICheckoutAddressSubpageHandles,
   ICheckoutPaymentSubpageHandles,
   ICheckoutReviewSubpageHandles,
-  ICheckoutShippingSubpageHandles,
+  ICheckoutShippingSubpageHandles
 } from "./subpages";
 import { IProps } from "./types";
 
@@ -28,36 +28,13 @@ const prepareCartSummary = (
   promoTaxedPrice?: ITaxedMoney | null,
   items?: IItems
 ) => {
-  const products = items?.map(({ id, variant, totalPrice, quantity }) => ({
-    id: id || "",
-    name: variant.product?.name || "",
-    price: {
-      gross: {
-        amount: totalPrice?.gross.amount || 0,
-        culture: totalPrice?.gross.culture || "",
-        currency: totalPrice?.gross.currency || "",
-      },
-      net: {
-        amount: totalPrice?.net.amount || 0,
-        culture: totalPrice?.net.culture || "",
-        currency: totalPrice?.net.currency || "",
-      },
-    },
-    quantity,
-    sku: variant.sku || "",
-    thumbnail: {
-      alt: variant.product?.thumbnail?.alt || undefined,
-      url: variant.product?.thumbnail?.url,
-      url2x: variant.product?.thumbnail2x?.url,
-    },
-  }));
 
   return (
     <CartSummary
       shipping={shippingTaxedPrice}
       promoCode={promoTaxedPrice}
       total={totalPrice}
-      products={products}
+      products={items}
     />
   );
 };
@@ -72,8 +49,8 @@ const getCheckoutProgress = (
   const steps = isShippingRequired
     ? CHECKOUT_STEPS
     : CHECKOUT_STEPS.filter(
-        ({ onlyIfShippingRequired }) => !onlyIfShippingRequired
-      );
+      ({ onlyIfShippingRequired }) => !onlyIfShippingRequired
+    );
 
   return loaded ? (
     <CheckoutProgressBar
@@ -97,7 +74,7 @@ const getButton = (text: string, onClick: () => void) => {
   }
 };
 
-const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
+const CheckoutPage: React.FC<IProps> = ({ }: IProps) => {
   const { pathname } = useLocation();
   const {
     loaded: cartLoaded,
@@ -192,9 +169,9 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
   const shippingTaxedPrice =
     checkout?.shippingMethod?.id && shippingPrice
       ? {
-          gross: shippingPrice,
-          net: shippingPrice,
-        }
+        gross: shippingPrice,
+        net: shippingPrice,
+      }
       : null;
   const promoTaxedPrice = discount && {
     gross: discount,
@@ -255,8 +232,8 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
         )}
       />
     ) : (
-      <Loader />
-    );
+        <Loader />
+      );
 
   const isShippingRequiredForProducts =
     items &&
@@ -288,3 +265,4 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
 };
 
 export { CheckoutPage };
+
