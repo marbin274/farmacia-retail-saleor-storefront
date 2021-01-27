@@ -4,7 +4,8 @@ import { CartSummary } from "@components/organisms";
 import { Checkout } from "@components/templates";
 import { IItems } from "@sdk/api/Cart/types";
 import { useCart, useCheckout } from "@sdk/react";
-import { CHECKOUT_STEPS } from "@temp/core/config";
+import { clearStorage } from "@temp/@sdk/auth";
+import { BASE_URL, CHECKOUT_STEPS } from "@temp/core/config";
 import { IFormError, ITaxedMoney } from "@types";
 import React, { useEffect, useRef, useState } from "react";
 import { Redirect, useLocation } from "react-router-dom";
@@ -98,7 +99,6 @@ const getButton = (text: string, onClick: () => void) => {
 
 const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
   const { pathname } = useLocation();
-
   const {
     loaded: cartLoaded,
     shippingPrice,
@@ -107,6 +107,11 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     items,
   } = useCart();
   const { loaded: checkoutLoaded, checkout, payment } = useCheckout();
+
+  if ((!items || !items?.length) && pathname === CHECKOUT_STEPS[2].link) {
+    clearStorage();
+    return <Redirect to={BASE_URL} />;
+  }
 
   if (cartLoaded && (!items || !items?.length)) {
     return <Redirect to="/cart/" />;
