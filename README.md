@@ -79,6 +79,22 @@ npm start
 
 Go to `http://localhost:3000` to access the storefront.
 
+## Given a version number MAJOR.MINOR.PATCH, increment the:
+    MAJOR version when you make new versions of platform,
+    MINOR version when you add functionality like to a new spring
+    PATCH version when you make bug fixes.
+
+## How to tagging release versions
+- This feature will use semantic version of git triggered when push in branch release, and deploy a tag release.
+- Add to pull request name #major, #minor, #patch
+- version structure should be: vX.Y.Z --> v{major}.{minor}.{patch}
+  - `[COMMIT] new version #major`    for change X
+  - `[COMMIT] adding feature #minor` for change Y
+  - `[COMMIT] fix bug #patch`        for change Z
+- Then github actions will be deployed a new tag release with the version set above.
+- This feature has been added in saleor-dashboard, saleor-storefront and saleor-platform.
+
+
 ## License
 
 This project is licensed under the BSD-3-Clause License - see the [LICENSE](https://github.com/mirumee/saleor-storefront/blob/master/LICENSE) file for details
