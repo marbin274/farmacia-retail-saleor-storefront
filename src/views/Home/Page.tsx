@@ -21,14 +21,14 @@ const Page: React.FC<IPageProps> = ({
 }) => {
   return (
     <div className="container">
-      <a href="./product/crema-corporal-isdin-avena-400ml/2373/">
+      <a href="./product/protector-solar-corporal-eucerin-sensitive-protect-150-ml/4400/">
         <div className="home-page__top-banner">
           <div className="home-page__top-banner__text">
-            <h2>Crema Corporal ISDIN</h2>
-            <h3><strong>Avena 400ml</strong></h3>
+            <h2>Eucerin Sensitive</h2>
+            <h3><strong>Protector solar 150ml</strong></h3>
             <p>
-              *Válido hasta el 31/01/21 o hasta agotar stock. Máx. 3 unids por producto.<br />
-              Aplica máx. 2 promociones por usuario. Delivery a S/0.01 hasta el 31/01/21. T&C.: <a href="http://bit.ly/TyC_Farmauna" target="_blank">http://bit.ly/TyC_Farmauna</a>
+              * Válido hasta el 31/01/21 o hasta agotar stock. Máx. 3 unids por producto.<br />
+            Aplica máx. 2 promociones por usuario. Delivery a S/0.01 hasta el 31/01/21. T&C: <a href="http://bit.ly/TyC_Farmauna" target="_blank">http://bit.ly/TyC_Farmauna</a>
             </p>
           </div>
         </div>
