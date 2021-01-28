@@ -26,7 +26,6 @@ exports[`Storyshots @components/organisms/Overlay Position center 1`] = `
   width: 555px;
   min-height: 455px;
   height: auto;
-  background-color: #fff;
 }
 
 .c1 {
@@ -114,7 +113,6 @@ exports[`Storyshots @components/organisms/Overlay Position left 1`] = `
   width: auto;
   min-height: 455px;
   height: 100%;
-  background-color: #fff;
   left: 0;
   -webkit-transform: translateX(-100%);
   -ms-transform: translateX(-100%);
@@ -210,7 +208,6 @@ exports[`Storyshots @components/organisms/Overlay Position right 1`] = `
   width: auto;
   min-height: 455px;
   height: 100%;
-  background-color: #fff;
   right: 0;
   -webkit-transform: translateX(100%);
   -ms-transform: translateX(100%);

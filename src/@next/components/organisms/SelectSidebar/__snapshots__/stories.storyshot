@@ -161,7 +161,6 @@ exports[`Storyshots @components/organisms/SelectSidebar default 1`] = `
   width: auto;
   min-height: 455px;
   height: 100%;
-  background-color: #fff;
   right: 0;
   -webkit-transform: translateX(100%);
   -ms-transform: translateX(100%);
@@ -603,7 +602,6 @@ exports[`Storyshots @components/organisms/SelectSidebar with footer 1`] = `
   width: auto;
   min-height: 455px;
   height: 100%;
-  background-color: #fff;
   right: 0;
   -webkit-transform: translateX(100%);
   -ms-transform: translateX(100%);

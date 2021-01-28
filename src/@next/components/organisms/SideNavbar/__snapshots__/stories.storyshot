@@ -43,7 +43,6 @@ exports[`Storyshots @components/organisms/SideNavbar default 1`] = `
   width: auto;
   min-height: 455px;
   height: 100%;
-  background-color: #fff;
   left: 0;
   -webkit-transform: translateX(-100%);
   -ms-transform: translateX(-100%);

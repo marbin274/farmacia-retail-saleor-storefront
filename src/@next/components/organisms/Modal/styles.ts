@@ -1,13 +1,14 @@
 import { styled } from "@styles";
 
-export const Modal = styled.div`
+export const Modal = styled.div`  
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
+  background-color: ${props => props.theme.colors.white};
 `;
 
 export const Content = styled.div`
   padding: ${({ theme: { spacing } }) =>
-    `4rem ${spacing.gutter} 0rem ${spacing.gutter}`};
+    `0rem ${spacing.gutter} 0rem ${spacing.gutter}`};
 `;
