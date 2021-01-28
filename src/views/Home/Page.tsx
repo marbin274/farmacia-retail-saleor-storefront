@@ -24,7 +24,7 @@ const Page: React.FC<IPageProps> = ({
       <a href="./product/mega-pack-proteccin-covid/4699/">
         <div className="home-page__top-banner">
           <div className="home-page__top-banner__text">
-            <h2>¡SOLO POR POCAS HORAS!</h2>
+            <h2>¡SOLO POR HORAS!</h2>
             <h3>
               <strong>PIDE EL MEGA PACK PROTECCIÓN COVID HASTA LAS 11PM</strong>
             </h3>
@@ -33,7 +33,8 @@ const Page: React.FC<IPageProps> = ({
               producto.
               <br />
               Aplica máx. 2 promociones por usuario. Delivery a S/0.01 hasta el
-              31/01/21. T&C:{" "}
+              31/01/21.
+               T&C: {" "}
               <a href="http://bit.ly/TyC_Farmauna" target="_blank">
                 http://bit.ly/TyC_Farmauna
               </a>
