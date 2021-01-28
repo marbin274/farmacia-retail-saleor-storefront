@@ -80,18 +80,22 @@ npm start
 Go to `http://localhost:3000` to access the storefront.
 
 ## Given a version number MAJOR.MINOR.PATCH, increment the:
-    MAJOR version when you make new versions of platform,
-    MINOR version when you add functionality like to a new spring
-    PATCH version when you make bug fixes.
+    MAJOR version when you make new versions of platform. BREAKING CHANGE
+    MINOR version when you add functionality like to a new sprint. feat
+    PATCH version when you make bug fixes. fix
 
 ## How to tagging release versions
-- This feature will use semantic version of git triggered when push in branch release, and deploy a tag release.
+- This feature will use semantic version of git triggered when push in branch release (therefore also it will in approve pull request), and deploy a tag release.
+
+![button-merge](https://user-images.githubusercontent.com/75376686/106189625-8b895300-6176-11eb-9962-58faf17ebfe4.png)
 - Add to pull request name #major, #minor, #patch
+
+![confirm-merge](https://user-images.githubusercontent.com/75376686/106189975-f9357f00-6176-11eb-9d06-682a922990f0.png)
 - version structure should be: vX.Y.Z --> v{major}.{minor}.{patch}
-  - `[COMMIT] new version #major`    for change X
-  - `[COMMIT] adding feature #minor` for change Y
-  - `[COMMIT] fix bug #patch`        for change Z
-- Then github actions will be deployed a new tag release with the version set above.
+  - `[BREAKING CHANGE] new version #major`    for change X
+  - `[feat] adding feature #minor` for change Y
+  - `[fix] fix bug #patch`        for change Z
+- Then github actions will be deployed a new tag release with the version set above (automatic and autoincrement).
 - This feature has been added in saleor-dashboard, saleor-storefront and saleor-platform.
 
 
