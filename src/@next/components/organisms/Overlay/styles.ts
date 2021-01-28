@@ -55,7 +55,6 @@ export const Lightbox = styled.div<IStyleProps>`
   position: relative;
   width: ${({ position, theme: { modal } }) =>
     lightboxHeight(modal.modalWidth)[position]};
-  min-height: ${props => props.theme.modal.modalMinHeight}px;
   height: ${({ position }) => lightboxWidth[position]};
   
   ${({ open, position }) => {

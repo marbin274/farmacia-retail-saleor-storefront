@@ -207,7 +207,6 @@ exports[`Storyshots @components/organisms/FilterSidebar default 1`] = `
   display: flex;
   position: relative;
   width: auto;
-  min-height: 455px;
   height: 100%;
   left: 0;
   -webkit-transform: translateX(-100%);
