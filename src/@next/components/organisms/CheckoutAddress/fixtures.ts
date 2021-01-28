@@ -8,7 +8,7 @@ interface ICheckoutAddressData extends IAddressWithAddressType {
 };
 
 const formAddress: ICheckoutAddressData = {
-  city: "Lima",
+  city: "San Isidro",
   companyName: "Mirumee",
   country: {
     code: "PL",
@@ -29,7 +29,7 @@ const formAddress: ICheckoutAddressData = {
 
 const userAddress: Address = {
   address: {
-    city: "Lima",
+    city: "San Isidro",
     companyName: "Mirumee",
     country: {
       code: "PL",
@@ -48,7 +48,7 @@ const userAddress: Address = {
   id: "12345",
 };
 
-export const mockCity = {"code": "Lima", "description": "Lima"};
+export const mockCity = {"code": "San Isidro", "description": "San Isidro"};
 
 const countries: GetShop_shop_countries[] = [
   { __typename: "CountryDisplay", code: "PL", country: "Poland" },
