@@ -26,6 +26,23 @@
       color: $white;
       background: $auna-interactive;
       padding: 18px 0 18px 24px;
+
+      .overlay__header-text {
+        text-align: left;
+
+        span {
+          color: $white;
+          &:nth-child(1) {
+            font-weight: $font-weight-normal;
+            font-size: $base-line-height;
+          }
+          &:nth-child(2) {
+            margin: 0;
+            font-weight: $font-weight-light;
+            font-size: $small-font-size;
+          }
+        }
+      }
     }
 
     &__cart-icon {
