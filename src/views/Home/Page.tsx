@@ -21,7 +21,7 @@ const Page: React.FC<IPageProps> = ({
 }) => {
   return (
     <div className="container">
-      <a href="./product/protector-solar-corporal-eucerin-sensitive-protect-150-ml/4400/">
+      <a href="./product/pack-juntos-contra-el-covid/4700/">
         <div className="home-page__top-banner">
           <div className="home-page__top-banner__text">
             <h2>¡SOLO POR HORAS!</h2>
