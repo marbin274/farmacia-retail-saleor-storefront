@@ -22,6 +22,8 @@ import {
 } from "./subpages";
 import { IProps } from "./types";
 
+
+
 const prepareCartSummary = (
   totalPrice?: ITaxedMoney | null,
   shippingTaxedPrice?: ITaxedMoney | null,

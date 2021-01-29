@@ -53,7 +53,6 @@ const Page: React.FC<IPageProps> = ({
         </div>
         <div className="home-page__districts-list" />
       </div>
-
     </div>
   );
 };
