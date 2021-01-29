@@ -15,13 +15,15 @@ const money = {
 
 const product = {
   id: "abc123",
-  name: "The Great Square Table",
-  price: money,
+  name: "The Great Square Table",  
   quantity: 2,
   sku: "TGS-122A",
   thumbnail: {
     alt: "product image",
     url: productImage,
+  },
+  variant: {
+    id: '333',
   },
 };
 
@@ -30,5 +32,5 @@ export const DEFAULT_PROPS = {
   promoCode: money,
   shipping: money,
   subtotal: money,
-  total: money,
+  total: money,  
 };

@@ -1,8 +1,7 @@
-import React from "react";
-
 import { TaxedMoney } from "@components/containers";
+import { getProductPricingClass } from "@temp/@next/utils/products";
+import React from "react";
 import { CachedImage } from "../CachedImage";
-
 import * as S from "./styles";
 import { IProps } from "./types";
 
@@ -10,7 +9,9 @@ import { IProps } from "./types";
  * Row with product to display in cart summary.
  */
 const CartSummaryRow: React.FC<IProps> = ({
+  canAddToCart,
   index,
+  isOnSale,
   sku,
   name,
   price,
@@ -27,7 +28,9 @@ const CartSummaryRow: React.FC<IProps> = ({
         <span data-cy={`cartSummaryItem${index}Quantity`}>{quantity}</span>
       </S.Quantity>
       <S.Price data-cy={`cartSummaryItem${index}Price`}>
-        <TaxedMoney taxedMoney={price} />
+        <div className={getProductPricingClass(canAddToCart, isOnSale)}>
+          <TaxedMoney taxedMoney={price} />
+        </div>
       </S.Price>
       <S.Photo>
         <CachedImage data-cy={`cartSummaryItem${index}Image`} {...thumbnail} />
@@ -37,3 +40,4 @@ const CartSummaryRow: React.FC<IProps> = ({
 };
 
 export { CartSummaryRow };
+

@@ -22,7 +22,7 @@ export * from "./Loader";
 export * from "./Message";
 export * from "./NavLink";
 export * from "./NotificationTemplate";
-export * from "./OutStockLabel";
+export * from "./ProductSticker";
 export * from "./PlaceholderImage";
 export * from "./Radio";
 export * from "./RichTextContent";

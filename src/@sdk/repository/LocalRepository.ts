@@ -13,6 +13,12 @@ export class LocalRepository extends Repository implements ILocalRepository {
   setCheckout(checkout: ICheckoutModel | null): void {
     this.saveObject(LocalStorageItems.CHECKOUT, checkout);
   }
+  getResetPasswordEmail(): string | null {
+    return this.retrieveItem(LocalStorageItems.RESET_PASSWORD_EMAIL)
+  }
+  setResetPasswordEmail(email: string): void {
+    this.saveItem(LocalStorageItems.RESET_PASSWORD_EMAIL, email);
+  }
   getPayment(): IPaymentModel | null {
     return this.retrieveObject(LocalStorageItems.PAYMENT);
   }

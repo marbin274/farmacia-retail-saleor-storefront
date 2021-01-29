@@ -157,10 +157,6 @@ exports[`Storyshots @components/molecules/ResetPasswordForm default 1`] = `
   text-transform: uppercase;
 }
 
-.c1 p {
-  color: #7d7d7d;
-}
-
 .c2 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -188,99 +184,118 @@ exports[`Storyshots @components/molecules/ResetPasswordForm default 1`] = `
   className="c0"
 >
   <div
-    className="c1"
+    className="container"
   >
-    <h3>
-      Reset your password
-    </h3>
-    <p>
-      Please provide new password
-    </p>
-    <form
-      onSubmit={[Function]}
+    <div
+      className="c1"
     >
       <div
-        className="c2"
+        className="new-password-form"
       >
         <div
-          className="c3"
-        >
-          <div
-            className="c4"
-            disabled={false}
-          >
-            <div
-              className="c5"
-            >
-              <input
-                className="c6"
-                disabled={false}
-                name="password"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="password"
-                value=""
-              />
-              <label
-                className="c7"
-                disabled={false}
-              >
-                Password
-              </label>
-            </div>
-          </div>
-          <div
-            className="c8"
-          />
-        </div>
+          className="new-password-form__image"
+        />
         <div
-          className="c3"
+          className="new-password-form__text"
+        >
+          <p>
+            Crea una nueva contraseña que contenga mínimo 8 caracteres
+          </p>
+        </div>
+        <form
+          onSubmit={[Function]}
         >
           <div
-            className="c4"
-            disabled={false}
+            className="c2"
           >
             <div
-              className="c5"
+              className="c3"
             >
-              <input
-                className="c6"
-                disabled={false}
-                name="retypedPassword"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="password"
-                value=""
-              />
-              <label
-                className="c7"
+              <div
+                className="c4"
                 disabled={false}
               >
-                Retype password
-              </label>
+                <div
+                  className="c5"
+                >
+                  <input
+                    className="c6"
+                    disabled={false}
+                    name="password"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    placeholder="Ingresa la nueva contraseña"
+                    type="password"
+                    value=""
+                  />
+                  <label
+                    className="c7"
+                    disabled={false}
+                  >
+                    Nueva contraseña
+                  </label>
+                </div>
+              </div>
+              <div
+                className="c8"
+              />
+            </div>
+            <div
+              className="c3"
+            >
+              <div
+                className="c4"
+                disabled={false}
+              >
+                <div
+                  className="c5"
+                >
+                  <input
+                    className="c6"
+                    disabled={false}
+                    name="retypedPassword"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    placeholder="Ingresa nuevamente la contraseña"
+                    type="password"
+                    value=""
+                  />
+                  <label
+                    className="c7"
+                    disabled={false}
+                  >
+                    Confirma contraseña
+                  </label>
+                </div>
+              </div>
+              <div
+                className="c8"
+              />
             </div>
           </div>
           <div
-            className="c8"
-          />
-        </div>
+            className="new-password-form__button"
+          >
+            <button
+              className="c9"
+              color="primary"
+              disabled={false}
+              size="md"
+              type="submit"
+            >
+              <span
+                className="c10"
+                size="md"
+              >
+                Guardar nueva contraseña
+              </span>
+            </button>
+          </div>
+        </form>
       </div>
-      <button
-        className="c9"
-        color="primary"
-        size="md"
-        type="submit"
-      >
-        <span
-          className="c10"
-          size="md"
-        >
-          SET NEW PASSWORD
-        </span>
-      </button>
-    </form>
+    </div>
   </div>
   <div
     className="c11"

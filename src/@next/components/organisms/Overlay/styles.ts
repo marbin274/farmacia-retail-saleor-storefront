@@ -55,9 +55,8 @@ export const Lightbox = styled.div<IStyleProps>`
   position: relative;
   width: ${({ position, theme: { modal } }) =>
     lightboxHeight(modal.modalWidth)[position]};
-  min-height: ${props => props.theme.modal.modalMinHeight}px;
   height: ${({ position }) => lightboxWidth[position]};
-  background-color: ${props => props.theme.colors.white};
+  
   ${({ open, position }) => {
     if (position === "left" || position === "right") {
       return css`

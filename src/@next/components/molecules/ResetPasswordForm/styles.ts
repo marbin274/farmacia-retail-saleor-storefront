@@ -11,10 +11,6 @@ export const Wrapper = styled.div`
     font-weight: ${props => props.theme.typography.boldFontWeight};
     text-transform: uppercase;
   }
-
-  p {
-    color: ${props => props.theme.colors.lightFont};
-  }
 `;
 
 export const GeneralError = styled.p`

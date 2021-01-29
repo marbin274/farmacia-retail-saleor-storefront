@@ -4,7 +4,8 @@ import { CartSummary } from "@components/organisms";
 import { Checkout } from "@components/templates";
 import { IItems } from "@sdk/api/Cart/types";
 import { useCart, useCheckout } from "@sdk/react";
-import { CHECKOUT_STEPS } from "@temp/core/config";
+import { clearStorage } from "@temp/@sdk/auth";
+import { BASE_URL, CHECKOUT_STEPS } from "@temp/core/config";
 import { IFormError, ITaxedMoney } from "@types";
 import React, { useEffect, useRef, useState } from "react";
 import { Redirect, useLocation } from "react-router-dom";
@@ -29,36 +30,13 @@ const prepareCartSummary = (
   promoTaxedPrice?: ITaxedMoney | null,
   items?: IItems
 ) => {
-  const products = items?.map(({ id, variant, totalPrice, quantity }) => ({
-    id: id || "",
-    name: variant.product?.name || "",
-    price: {
-      gross: {
-        amount: totalPrice?.gross.amount || 0,
-        culture: totalPrice?.gross.culture || "",
-        currency: totalPrice?.gross.currency || "",
-      },
-      net: {
-        amount: totalPrice?.net.amount || 0,
-        culture: totalPrice?.net.culture || "",
-        currency: totalPrice?.net.currency || "",
-      },
-    },
-    quantity,
-    sku: variant.sku || "",
-    thumbnail: {
-      alt: variant.product?.thumbnail?.alt || undefined,
-      url: variant.product?.thumbnail?.url,
-      url2x: variant.product?.thumbnail2x?.url,
-    },
-  }));
 
   return (
     <CartSummary
       shipping={shippingTaxedPrice}
       promoCode={promoTaxedPrice}
       total={totalPrice}
-      products={products}
+      products={items}
     />
   );
 };
@@ -66,16 +44,23 @@ const prepareCartSummary = (
 const getCheckoutProgress = (
   loaded: boolean,
   activeStepIndex: number,
-  isShippingRequired: boolean
+  isShippingRequired: boolean,
+  requestPayload: string | null,
+  currentRoutePath: string
 ) => {
   const steps = isShippingRequired
     ? CHECKOUT_STEPS
     : CHECKOUT_STEPS.filter(
-        ({ onlyIfShippingRequired }) => !onlyIfShippingRequired
-      );
+      ({ onlyIfShippingRequired }) => !onlyIfShippingRequired
+    );
 
   return loaded ? (
-    <CheckoutProgressBar steps={steps} activeStepIndex={activeStepIndex} />
+    <CheckoutProgressBar
+      requestPayload={requestPayload}
+      steps={steps}
+      activeStepIndex={activeStepIndex}
+      currentRoutePath={currentRoutePath}
+    />
   ) : null;
 };
 
@@ -91,7 +76,7 @@ const getButton = (text: string, onClick: () => void) => {
   }
 };
 
-const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
+const CheckoutPage: React.FC<IProps> = ({ }: IProps) => {
   const { pathname } = useLocation();
   const {
     loaded: cartLoaded,
@@ -102,12 +87,19 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
   } = useCart();
   const { loaded: checkoutLoaded, checkout, payment } = useCheckout();
 
+  if ((!items || !items?.length) && pathname === CHECKOUT_STEPS[2].link) {
+    clearStorage();
+    return <Redirect to={BASE_URL} />;
+  }
+
   if (cartLoaded && (!items || !items?.length)) {
     return <Redirect to="/cart/" />;
   }
 
   const [submitInProgress, setSubmitInProgress] = useState(false);
-  const [addressSubPageErrors, setAddressSubPageErrors] = useState<IFormError[]>([]);
+  const [addressSubPageErrors, setAddressSubPageErrors] = useState<
+    IFormError[]
+  >([]);
 
   const [selectedPaymentGateway, setSelectedPaymentGateway] = useState<
     string | undefined
@@ -126,7 +118,6 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
   }, [payment?.token]);
 
   const [requestPayload, setRequestPayload] = useState(null);
-
 
   const matchingStepIndex = CHECKOUT_STEPS.findIndex(
     ({ link }) => link === pathname
@@ -180,9 +171,9 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
   const shippingTaxedPrice =
     checkout?.shippingMethod?.id && shippingPrice
       ? {
-          gross: shippingPrice,
-          net: shippingPrice,
-        }
+        gross: shippingPrice,
+        net: shippingPrice,
+      }
       : null;
   const promoTaxedPrice = discount && {
     gross: discount,
@@ -243,8 +234,8 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
         )}
       />
     ) : (
-      <Loader />
-    );
+        <Loader />
+      );
 
   const isShippingRequiredForProducts =
     items &&
@@ -259,7 +250,9 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
       navigation={getCheckoutProgress(
         cartLoaded && checkoutLoaded,
         activeStepIndex,
-        !!isShippingRequiredForProducts
+        !!isShippingRequiredForProducts,
+        requestPayload,
+        pathname
       )}
       cartSummary={prepareCartSummary(
         totalPrice,

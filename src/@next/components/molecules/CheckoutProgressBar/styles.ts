@@ -1,5 +1,5 @@
 import { styled } from "@styles";
-import { aunaBlack, aunaDisabled, aunaPrimary, white} from "@styles/constants";
+import { aunaBlack, aunaDisabled, aunaPrimary, white } from "@styles/constants";
 
 import { DOT_STATUS } from "./";
 import addressIcon from "images/auna/checkout-address.svg";
@@ -9,14 +9,14 @@ import paymentIcon from "images/auna/checkout-payment.svg";
 
 export const ICON_COLORS = [
   aunaDisabled, // INACTIVE
-  aunaPrimary,  // ACTIVE
-  white,        // DONE
+  aunaPrimary, // ACTIVE
+  white, // DONE
 ];
 
 export const ICON_BG_COLORS = [
-  white,        // INACTIVE
-  white,        // ACTIVE
-  aunaPrimary,  // DONE
+  white, // INACTIVE
+  white, // ACTIVE
+  aunaPrimary, // DONE
 ];
 
 export const ICONS = [
@@ -27,11 +27,11 @@ export const ICONS = [
 ];
 
 export const flexCentered = {
-  alignItems: 'center',
-  display: 'flex',
-  height: '100%',
-  justifyContent: 'center',
-  width: '100%',
+  alignItems: "center",
+  display: "flex",
+  height: "100%",
+  justifyContent: "center",
+  width: "100%",
 };
 
 export const Dot = styled.div<{ status: DOT_STATUS }>`
@@ -66,6 +66,10 @@ export const Step = styled.div`
   position: relative;
   &:not(:last-child) {
     width: 100%;
+  }
+
+  span {
+    cursor: not-allowed;
   }
 `;
 

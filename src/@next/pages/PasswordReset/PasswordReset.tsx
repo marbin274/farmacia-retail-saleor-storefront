@@ -1,26 +1,18 @@
-import { Formik } from "formik";
-import React from "react";
-import * as Yup from "yup";
-
-import { StringParam, useQueryParams } from "use-query-params";
-
-import { setAuthToken } from "@sdk/auth";
-import { useSetPassword } from "@sdk/react";
-import { BASE_URL } from "@temp/core/config";
-
 import { ResetPasswordForm } from "@components/molecules";
+import { setAuthToken } from "@sdk/auth";
+import { useSetPassword, useUserDetails } from "@sdk/react";
+import { Button } from "@temp/@next/components/atoms";
+import { BASE_URL } from "@temp/core/config";
+import { Formik } from "formik";
+import resetPasswordChangedIcon from 'images/auna/reset-password-changed.svg';
+import React from "react";
+import ReactSVG from "react-svg";
+import { StringParam, useQueryParams } from "use-query-params";
+import { passwordResetSchema } from "./PasswordReset.schema";
+import './scss/index.scss';
 import * as S from "./styles";
 import { FormikProps, IProps } from "./types";
 
-const PasswordResetSchema = Yup.object().shape({
-  password: Yup.string()
-    .min(2, "Password is to short!")
-    .required("This field is required"),
-  retypedPassword: Yup.string()
-    .min(2, "Please retype password")
-    .required("This field is required")
-    .oneOf([Yup.ref("password")], "Retyped password does not match"),
-});
 
 const initialData: FormikProps = {
   password: "",
@@ -32,30 +24,12 @@ export const PasswordReset: React.FC<IProps> = ({ history }: IProps) => {
     email: StringParam,
     token: StringParam,
   });
-
+  const { data: user } = useUserDetails();
   const [tokenError, setTokenError] = React.useState(false);
   const [passwordError, setPasswordError] = React.useState("");
+  const [showPasswordMessageChanged, setShowPasswordMessageChanged] = React.useState<boolean>(false);
 
-  const [setPassword, { data, error: graphqlErrors }] = useSetPassword();
-
-  React.useEffect(() => {
-    if (data && data.setPassword && data.setPassword.token) {
-      setAuthToken(data.setPassword.token);
-      history.push(BASE_URL);
-    }
-    if (
-      graphqlErrors &&
-      graphqlErrors.extraInfo &&
-      graphqlErrors.extraInfo.userInputErrors
-    ) {
-      graphqlErrors.extraInfo.userInputErrors.filter(error => {
-        error.field === "token" ? setTokenError(true) : setTokenError(false);
-        error.field === "password"
-          ? setPasswordError(error.message)
-          : setPasswordError("");
-      });
-    }
-  }, [data, graphqlErrors]);
+  const [setPassword, { data, error: graphqlErrors, loading }] = useSetPassword();
 
   const { email, token } = query;
 
@@ -73,31 +47,65 @@ export const PasswordReset: React.FC<IProps> = ({ history }: IProps) => {
     }
   };
 
+  const handleClickGoHome = () => {
+    history.push(BASE_URL);
+  }
+
+
+  React.useEffect(() => {
+    if (data && data.setPassword && data.setPassword.token) {
+      setAuthToken(data.setPassword.token);
+      setShowPasswordMessageChanged(true);
+    }
+    if (
+      graphqlErrors &&
+      graphqlErrors.extraInfo &&
+      graphqlErrors.extraInfo.userInputErrors
+    ) {
+      graphqlErrors.extraInfo.userInputErrors.filter(error => {
+        error.field === "token" ? setTokenError(true) : setTokenError(false);
+        error.field === "password"
+          ? setPasswordError(error.message)
+          : setPasswordError("");
+      });
+    }
+  }, [data, graphqlErrors]);
+
   return (
     <S.Wrapper>
-      <Formik
-        initialValues={initialData}
-        validationSchema={PasswordResetSchema}
-        onSubmit={onSubmit}
-        validateOnChange={false}
-        validateOnBlur={false}
-      >
-        {({ handleChange, handleBlur, values, errors, handleSubmit }) => {
-          return (
-            <ResetPasswordForm
-              {...{
-                errors,
-                handleBlur,
-                handleChange,
-                handleSubmit,
-                passwordError,
-                tokenError,
-                values,
-              }}
-            />
-          );
-        }}
-      </Formik>
+      { showPasswordMessageChanged ?
+        <div className="password-changed-confirm">
+          <ReactSVG path={resetPasswordChangedIcon} />
+          <br />
+          <br />
+          <p><strong>{user ? user.firstName : "Hola"},</strong> se cambió con éxito tu nueva contraseña</p>
+          <div className="password-changed-confirm__button">
+            <Button onClick={handleClickGoHome}>Entendido</Button>
+          </div>
+        </div> :
+        <Formik
+          initialValues={initialData}
+          validationSchema={passwordResetSchema}
+          onSubmit={onSubmit}
+        >
+          {({ handleChange, handleBlur, values, errors, handleSubmit }) => {
+            return (
+              <ResetPasswordForm
+                {...{
+                  errors,
+                  handleBlur,
+                  handleChange,
+                  handleSubmit,
+                  loading,
+                  passwordError,
+                  tokenError,
+                  values,
+                }}
+              />
+            );
+          }}
+        </Formik>
+      }
     </S.Wrapper>
   );
 };

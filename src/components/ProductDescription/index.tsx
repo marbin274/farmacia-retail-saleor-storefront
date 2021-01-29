@@ -1,29 +1,31 @@
-import "./scss/index.scss";
-import isEqual from "lodash/isEqual";
-import * as React from "react";
 import { RichTextContent } from "@components/atoms";
+import { TaxedMoney } from "@components/containers";
 import { ProductVariantPicker } from "@components/organisms";
 import {
   ProductDetails_product_pricing,
   ProductDetails_product_variants,
-  ProductDetails_product_variants_pricing,
+  ProductDetails_product_variants_pricing
 } from "@sdk/queries/gqlTypes/ProductDetails";
-import { IProductVariantsAttributesSelectedValues, ITaxedMoney } from "@types";
 import { ICheckoutModelLine } from "@sdk/repository";
-import { TaxedMoney } from "@components/containers";
+import { getProductPricingClass } from "@temp/@next/utils/products";
+import { IProductVariantsAttributesSelectedValues, ITaxedMoney } from "@types";
+import isEqual from "lodash/isEqual";
+import * as React from "react";
 import AddToCart from "./AddToCart";
 import { QuantityTextField } from "./QuantityTextField";
+import "./scss/index.scss";
 
 export interface ProductDescriptionProps {
   canAddToCart: boolean;
   descriptionJson: string;
+  isOnSale: boolean;
+  items: ICheckoutModelLine[];
   productId: string;
   productVariants: ProductDetails_product_variants[];
   name: string;
   pricing: ProductDetails_product_pricing;
-  items: ICheckoutModelLine[];
   addToCart(varinatId: string, quantity?: number): void;
-  setVariantId(variantId: string);
+  setVariantId(variantId: string): void;
 }
 
 interface ProductDescriptionState {
@@ -59,24 +61,26 @@ class ProductDescription extends React.Component<
   }
 
   getProductPrice = () => {
-    const { variantPricingRange, variantPricing } = this.state;
-
-    const { min, max } = variantPricingRange;
+    const { variantPricing } = this.state;
     if (variantPricing) {
-      if (isEqual(variantPricing.priceUndiscounted, variantPricing.price)) {
-        return <TaxedMoney taxedMoney={variantPricing.price} />;
+      const { canAddToCart, isOnSale } = this.props;
+      if (!isOnSale) {
+        return <div className="price"><TaxedMoney taxedMoney={variantPricing.price} /></div>;
       } else {
         return (
           <>
-            <span className="product-description__undiscounted_price">
+            <div className={getProductPricingClass(canAddToCart, isOnSale)}>
+              <TaxedMoney taxedMoney={variantPricing.price} />
+            </div>
+            <div className="price undiscounted_price">
               <TaxedMoney taxedMoney={variantPricing.priceUndiscounted} />
-            </span>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <TaxedMoney taxedMoney={variantPricing.price} />
+            </div>
           </>
         );
       }
     }
+    const { variantPricingRange } = this.state;
+    const { min, max } = variantPricingRange;
     if (isEqual(min, max)) {
       return <TaxedMoney taxedMoney={min} />;
     } else {
@@ -127,19 +131,17 @@ class ProductDescription extends React.Component<
   };
 
   render() {
-    const { name, descriptionJson } = this.props;
+    const { name, canAddToCart, descriptionJson } = this.props;
     const { quantity } = this.state;
 
     const availableQuantity = this.getAvailableQuantity();
-    const canAddToCart = this.props.canAddToCart;
+
     return (
       <div className="product-description">
         <h3>{name}</h3>
         {!canAddToCart ? (
           <p className="product-description__error-message">AGOTADO</p>
-        ) : (
-            <p className="product-description__price">{this.getProductPrice()}</p>
-          )}
+        ) : this.getProductPrice()}
         <RichTextContent descriptionJson={descriptionJson} />
         <div className="product-description__variant-picker">
           <ProductVariantPicker

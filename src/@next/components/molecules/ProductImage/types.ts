@@ -8,5 +8,6 @@ export interface IProps {
       url?: string | undefined;
     } | null;
   };
-  outStock?: boolean;
+  canAddToCart?: boolean;
+  isOnSale?:boolean;
 }

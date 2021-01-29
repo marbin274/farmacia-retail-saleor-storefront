@@ -146,7 +146,9 @@ $custom-breakpoint: 624px;
 
       &__side {
         display: flex;
-
+        > div {
+          display: flex;
+        }
         &__name {
           color: $base-font-color;
           display: flex;

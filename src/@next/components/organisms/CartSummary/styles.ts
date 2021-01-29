@@ -12,6 +12,7 @@ export const Wrapper = styled.div<{ mobileCartOpened: boolean }>`
   background-color: ${aunaGrey20};
   border: 1px solid ${aunaComplementary4};
   border-radius: 16px;
+  overflow-y: auto;
 
   ${media.mediumScreen`
     width: 100%;
@@ -26,7 +27,13 @@ export const Wrapper = styled.div<{ mobileCartOpened: boolean }>`
     props.mobileCartOpened &&
     media.mediumScreen`
     top: 56px;
-    overflow-y: scroll;
+    padding-bottom: 70px;
+  `}
+  ${props =>
+    !props.mobileCartOpened &&
+    media.mediumScreen`
+    height: 100px;
+    overflow: hidden;
   `}
 `;
 export const Content = styled.div`

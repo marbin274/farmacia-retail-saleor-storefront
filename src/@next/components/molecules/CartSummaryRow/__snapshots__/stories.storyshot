@@ -53,8 +53,11 @@ exports[`Storyshots @components/molecules/CartSummaryRow default 1`] = `
 .c5 {
   grid-area: price;
   text-align: right;
-  font-size: 16px;
   font-weight: 500;
+}
+
+.c5 .price {
+  font-size: 1rem;
 }
 
 .c4 {
@@ -99,9 +102,13 @@ exports[`Storyshots @components/molecules/CartSummaryRow default 1`] = `
       className="c5"
       data-cy="cartSummaryItemundefinedPrice"
     >
-      <span>
-        $123.00
-      </span>
+      <div
+        className="price"
+      >
+        <span>
+          $123.00
+        </span>
+      </div>
     </div>
     <div
       className="c6"

@@ -1,4 +1,5 @@
-import { IImage, ITaxedMoney } from "@types";
+import { IItems } from "@temp/@sdk/api/Cart/types";
+import { IImage, IProductVariant, ITaxedMoney } from "@types";
 
 export interface ICostLine {
   cost: ITaxedMoney;
@@ -20,8 +21,9 @@ export interface IProduct {
   sku: string;
   price: ITaxedMoney;
   thumbnail: IImage;
+  variant: IProductVariant;
 }
 
 export interface IProps extends ICosts {
-  products?: IProduct[];
+  products?: IItems;
 }

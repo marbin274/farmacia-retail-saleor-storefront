@@ -879,6 +879,8 @@ export const products: ISimpleProduct[] = [
 
 export const productsOnCart: IItems = [
   {
+    id: '',
+    name: '',
     quantity: 1,
     totalPrice: {
       gross: {
@@ -956,6 +958,8 @@ export const productsOnCart: IItems = [
     },
   },
   {
+    id: '',
+    name: '',
     quantity: 6,
     totalPrice: {
       gross: {

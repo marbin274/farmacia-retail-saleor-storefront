@@ -1,0 +1,21 @@
+name: TAGGING-RELEASE
+on:
+  push:
+    branches: [release]
+    # Sequence of patterns matched against refs/tags
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+
+jobs:
+  Bump-Version:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Bump version and push tag
+      uses: anothrNick/github-tag-action@master
+      env:
+        DEFAULT_BUMP: none
+        GITHUB_TOKEN: ${{ secrets.GHA_GITHUB_TOKEN }}
+        REPO_OWNER: farmacia-retail
+        WITH_V: true
+        RELEASE_BRANCHES: release.*

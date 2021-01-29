@@ -172,9 +172,7 @@ exports[`Storyshots @components/organisms/Modal Modal Form 1`] = `
   display: flex;
   position: relative;
   width: 555px;
-  min-height: 455px;
   height: auto;
-  background-color: #fff;
 }
 
 .c1 {
@@ -218,10 +216,11 @@ exports[`Storyshots @components/organisms/Modal Modal Form 1`] = `
   -ms-flex-pack: justify;
   justify-content: space-between;
   width: 100%;
+  background-color: #fff;
 }
 
 .c7 {
-  padding: 4rem 1.875rem 0rem 1.875rem;
+  padding: 0rem 1.875rem 0rem 1.875rem;
 }
 
 @media (max-width:540px) {
@@ -245,68 +244,72 @@ exports[`Storyshots @components/organisms/Modal Modal Form 1`] = `
       open={true}
     >
       <div
-        className="c3"
+        className="modal__container"
       >
         <div
-          className="c4"
+          className="c3"
         >
-          <h4
-            className="c5"
-            size="md"
-          >
-            Modal title
-          </h4>
           <div
-            className="c6"
-            data-cy="icon_button"
-            onClick={[Function]}
+            className="c4"
           >
-            <svg
-              height={19}
-              viewBox="0 0 32 32"
-              width={19}
+            <h4
+              className="c5"
+              size="md"
             >
-              <path
-                d="M16 12.8l-12.8-12.8-3.2 3.2 12.8 12.8-12.8 12.8 3.2 3.2 12.8-12.8 12.8 12.8 3.2-3.2-12.8-12.8 12.8-12.8-3.2-3.2-12.8 12.8z"
-                fill="#c4c4c4"
-              />
-            </svg>
+              Modal title
+            </h4>
+            <div
+              className="c6"
+              data-cy="icon_button"
+              onClick={[Function]}
+            >
+              <svg
+                height={19}
+                viewBox="0 0 32 32"
+                width={19}
+              >
+                <path
+                  d="M16 12.8l-12.8-12.8-3.2 3.2 12.8 12.8-12.8 12.8 3.2 3.2 12.8-12.8 12.8 12.8 3.2-3.2-12.8-12.8 12.8-12.8-3.2-3.2-12.8 12.8z"
+                  fill="#c4c4c4"
+                />
+              </svg>
+            </div>
           </div>
-        </div>
-        <div
-          className="c7"
-        >
-          <div>
-            Content
+          <div
+            className="c7"
+          >
+            <div>
+              Content
+            </div>
           </div>
-        </div>
-        <div
-          className="c8"
-        >
-          <button
-            className="c9"
-            color="secondary"
-            onClick={[Function]}
-            size="md"
-            type="button"
+          <div
+            className="c8"
           >
-            Cancel
-          </button>
-          <button
-            className="c10"
-            color="primary"
-            disabled={false}
-            form="form-id"
-            size="sm"
-            type="submit"
-          >
-            <span
-              className="c11"
+            <button
+              className="c9"
+              color="secondary"
+              onClick={[Function]}
+              size="md"
+              type="button"
+            >
+              Cancel
+            </button>
+            <button
+              className="c10"
+              color="primary"
+              disabled={false}
+              form="form-id"
               size="sm"
+              type="submit"
             >
-              Save
-            </span>
-          </button>
+              <span
+                className="c11"
+                size="sm"
+              >
+                Save
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -466,9 +469,7 @@ exports[`Storyshots @components/organisms/Modal Modal Form disabled 1`] = `
   display: flex;
   position: relative;
   width: 555px;
-  min-height: 455px;
   height: auto;
-  background-color: #fff;
 }
 
 .c1 {
@@ -512,10 +513,11 @@ exports[`Storyshots @components/organisms/Modal Modal Form disabled 1`] = `
   -ms-flex-pack: justify;
   justify-content: space-between;
   width: 100%;
+  background-color: #fff;
 }
 
 .c7 {
-  padding: 4rem 1.875rem 0rem 1.875rem;
+  padding: 0rem 1.875rem 0rem 1.875rem;
 }
 
 @media (max-width:540px) {
@@ -539,59 +541,63 @@ exports[`Storyshots @components/organisms/Modal Modal Form disabled 1`] = `
       open={true}
     >
       <div
-        className="c3"
+        className="modal__container"
       >
         <div
-          className="c4"
+          className="c3"
         >
-          <h4
-            className="c5"
-            size="md"
-          >
-            Modal title
-          </h4>
           <div
-            className="c6"
-            data-cy="icon_button"
-            onClick={[Function]}
+            className="c4"
           >
-            <svg
-              height={19}
-              viewBox="0 0 32 32"
-              width={19}
+            <h4
+              className="c5"
+              size="md"
             >
-              <path
-                d="M16 12.8l-12.8-12.8-3.2 3.2 12.8 12.8-12.8 12.8 3.2 3.2 12.8-12.8 12.8 12.8 3.2-3.2-12.8-12.8 12.8-12.8-3.2-3.2-12.8 12.8z"
-                fill="#c4c4c4"
-              />
-            </svg>
+              Modal title
+            </h4>
+            <div
+              className="c6"
+              data-cy="icon_button"
+              onClick={[Function]}
+            >
+              <svg
+                height={19}
+                viewBox="0 0 32 32"
+                width={19}
+              >
+                <path
+                  d="M16 12.8l-12.8-12.8-3.2 3.2 12.8 12.8-12.8 12.8 3.2 3.2 12.8-12.8 12.8 12.8 3.2-3.2-12.8-12.8 12.8-12.8-3.2-3.2-12.8 12.8z"
+                  fill="#c4c4c4"
+                />
+              </svg>
+            </div>
           </div>
-        </div>
-        <div
-          className="c7"
-        >
-          <div>
-            Content
-          </div>
-        </div>
-        <div
-          className="c8"
-        >
-          <button
-            className="c9"
-            color="primary"
-            disabled={true}
-            form="modal-submit"
-            size="sm"
-            type="submit"
+          <div
+            className="c7"
           >
-            <span
-              className="c10"
+            <div>
+              Content
+            </div>
+          </div>
+          <div
+            className="c8"
+          >
+            <button
+              className="c9"
+              color="primary"
+              disabled={true}
+              form="modal-submit"
               size="sm"
+              type="submit"
             >
-              Loading
-            </span>
-          </button>
+              <span
+                className="c10"
+                size="sm"
+              >
+                Loading
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -751,9 +757,7 @@ exports[`Storyshots @components/organisms/Modal Modal Info 1`] = `
   display: flex;
   position: relative;
   width: 555px;
-  min-height: 455px;
   height: auto;
-  background-color: #fff;
 }
 
 .c1 {
@@ -797,10 +801,11 @@ exports[`Storyshots @components/organisms/Modal Modal Info 1`] = `
   -ms-flex-pack: justify;
   justify-content: space-between;
   width: 100%;
+  background-color: #fff;
 }
 
 .c7 {
-  padding: 4rem 1.875rem 0rem 1.875rem;
+  padding: 0rem 1.875rem 0rem 1.875rem;
 }
 
 @media (max-width:540px) {
@@ -824,60 +829,64 @@ exports[`Storyshots @components/organisms/Modal Modal Info 1`] = `
       open={true}
     >
       <div
-        className="c3"
+        className="modal__container"
       >
         <div
-          className="c4"
+          className="c3"
         >
-          <h4
-            className="c5"
-            size="md"
-          >
-            Modal title
-          </h4>
           <div
-            className="c6"
-            data-cy="icon_button"
-            onClick={[Function]}
+            className="c4"
           >
-            <svg
-              height={19}
-              viewBox="0 0 32 32"
-              width={19}
+            <h4
+              className="c5"
+              size="md"
             >
-              <path
-                d="M16 12.8l-12.8-12.8-3.2 3.2 12.8 12.8-12.8 12.8 3.2 3.2 12.8-12.8 12.8 12.8 3.2-3.2-12.8-12.8 12.8-12.8-3.2-3.2-12.8 12.8z"
-                fill="#c4c4c4"
-              />
-            </svg>
+              Modal title
+            </h4>
+            <div
+              className="c6"
+              data-cy="icon_button"
+              onClick={[Function]}
+            >
+              <svg
+                height={19}
+                viewBox="0 0 32 32"
+                width={19}
+              >
+                <path
+                  d="M16 12.8l-12.8-12.8-3.2 3.2 12.8 12.8-12.8 12.8 3.2 3.2 12.8-12.8 12.8 12.8 3.2-3.2-12.8-12.8 12.8-12.8-3.2-3.2-12.8 12.8z"
+                  fill="#c4c4c4"
+                />
+              </svg>
+            </div>
           </div>
-        </div>
-        <div
-          className="c7"
-        >
-          <div>
-            Content
-          </div>
-        </div>
-        <div
-          className="c8"
-        >
-          <button
-            className="c9"
-            color="primary"
-            disabled={false}
-            form="modal-submit"
-            onClick={[Function]}
-            size="sm"
-            type="submit"
+          <div
+            className="c7"
           >
-            <span
-              className="c10"
+            <div>
+              Content
+            </div>
+          </div>
+          <div
+            className="c8"
+          >
+            <button
+              className="c9"
+              color="primary"
+              disabled={false}
+              form="modal-submit"
+              onClick={[Function]}
               size="sm"
+              type="submit"
             >
-              OK
-            </span>
-          </button>
+              <span
+                className="c10"
+                size="sm"
+              >
+                OK
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </div>

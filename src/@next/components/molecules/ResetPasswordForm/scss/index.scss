@@ -1,0 +1,21 @@
+@import "@temp/globalStyles/scss/variables.scss";
+
+.new-password-form {
+    max-width: 24rem;
+    &__image {
+        padding-bottom: 3rem;
+        text-align: center;
+    }
+    &__text {
+        color: $black;
+        font-size: $small-font-size;
+        font-weight: bold;
+        margin: 0 auto;
+        max-width: 16rem;
+        text-align: center;
+    }
+    &__button {
+        margin: 2.5rem 0rem;
+        text-align: center;
+    }
+}

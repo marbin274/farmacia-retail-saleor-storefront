@@ -10,6 +10,7 @@ describe("<ResetPasswordForm />", () => {
     handleBlur: () => jest.fn(),
     handleChange: () => jest.fn(),
     handleSubmit: () => jest.fn(),
+    loading: false,
     passwordError: "",
     tokenError: false,
     values: {

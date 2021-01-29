@@ -1,3 +1,4 @@
+import { priceFragment } from "@temp/views/Product/queries";
 import gql from "graphql-tag";
 
 import { TypedQuery } from "../../../core/queries";
@@ -7,6 +8,7 @@ import {
 } from "./gqlTypes/SearchResults";
 
 const searchResultsQuery = gql`
+${priceFragment}
   query SearchResults($query: String!) {
     products(filter: { search: $query }, first: 100) {
       edges {
@@ -24,6 +26,15 @@ const searchResultsQuery = gql`
           url
           variants {
             id
+            pricing{
+              onSale
+              price{
+               ...Price
+              }
+              priceUndiscounted{
+                ...Price
+              }
+            }
             quantityAvailable
           }
           category {

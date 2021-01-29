@@ -18,6 +18,7 @@ $autofillColor: rgb(250, 255, 189);
 $autofillColorSelected: rgb(232, 240, 254);
 $darkGreen: #06847b;
 $aunaBrand5: #404497;
+$aunaBrand6: #ea5b2e;
 
 $auna-complementary1: #e6f6f9;
 
@@ -31,18 +32,23 @@ $auna-grey-80: #b8bcd5;
 $auna-grey-60: #e4e5ed;
 $auna-grey-20: #f6f8fa;
 $auna-grey-05: #626364;
-$auna-grey-06: #F9F9F9;
+$auna-grey-06: #f9f9f9;
+$auna-grey-out-stock: #9f9fa1;
 $auna-black: #131336;
 
 //extended colors for prototype
 $auna-turquoise-light: #00aac9;
 $auna-violet: #5e0571;
 
+//
+$auna-orange-on-sale: #ff6900;
+
 // typography
 $base-font-family: "Poppins", sans-serif;
 $base-font-size: 1rem; // 16px
 $small-font-size: 0.875rem; // 14px
 $base-line-height: 1.25rem; // 20px
+$price-font-size: 1.625rem; // 26px;
 $h1-font-size: 4rem; // 64px
 $h1-line-height: 1;
 $h3-font-size: 1.5rem; // 24px

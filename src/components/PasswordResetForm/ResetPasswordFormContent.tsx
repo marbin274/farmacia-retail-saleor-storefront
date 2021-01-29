@@ -2,10 +2,12 @@ import { Button } from "@app/components/atoms";
 import { IFormError } from "@app/types";
 import { joinFormikErrorsToIFormErrorsAndConvertToObjectErrors } from "@app/utils/errorsManagement";
 import { TextField } from "@components/molecules";
-import { passwordResetUrl } from "@temp/app/routes";
+import { LocalRepository } from "@temp/@sdk/repository";
+import { passwordResetUrl, resetPasswordMailSentUrl } from "@temp/app/routes";
 import { useFormik } from "formik";
 import React from "react";
 import { MutationFn } from "react-apollo";
+import { useHistory } from "react-router-dom";
 import { ResetPassword, ResetPasswordVariables } from "./gqlTypes/ResetPassword";
 import { passwordResetFormSchema } from "./passwordResetForm.schema";
 
@@ -23,6 +25,10 @@ const ResetPasswordFormContent: React.FC<ResetPasswordFormContentProps> = ({ cal
 
     const [showMessageSuccess, setShowMessageSuccess] = React.useState<boolean>(false);
     const [showMessageErrors, setShowMessageErrors] = React.useState<boolean>(false);
+
+    const history = useHistory();
+    const localRepository = new LocalRepository();
+
     const { handleSubmit, handleChange, handleBlur, touched, errors: formikErrors, values } = useFormik<ResetPasswordVariables>({
         initialValues,
         onSubmit: values => {
@@ -45,6 +51,12 @@ const ResetPasswordFormContent: React.FC<ResetPasswordFormContentProps> = ({ cal
             changeShowMessages(false);
         }
     }, [loading]);
+    React.useEffect(() => {
+        if (showMessageSuccess) {
+            localRepository.setResetPasswordEmail(values.email);
+            history.push(resetPasswordMailSentUrl);
+        }
+    }, [showMessageSuccess]);
 
     const errors = joinFormikErrorsToIFormErrorsAndConvertToObjectErrors(formikErrors, requestErrors, touched, showMessageErrors);
 
@@ -61,7 +73,6 @@ const ResetPasswordFormContent: React.FC<ResetPasswordFormContentProps> = ({ cal
             onChange={(e) => { changeShowMessages(false); handleChange(e); }}
         />
         {children}
-        {showMessageSuccess ? <p><strong>Revise su correo electrónico</strong></p> : <></>}
         <div className="password-reset-form__button">
             <Button type="submit" {...(loading && { disabled: true })}>
                 {loading ? "Cargando" : "Enviar instrucciones"}

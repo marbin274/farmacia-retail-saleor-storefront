@@ -26,6 +26,23 @@
       color: $white;
       background: $auna-interactive;
       padding: 18px 0 18px 24px;
+
+      .overlay__header-text {
+        text-align: left;
+
+        span {
+          color: $white;
+          &:nth-child(1) {
+            font-weight: $font-weight-normal;
+            font-size: $base-line-height;
+          }
+          &:nth-child(2) {
+            margin: 0;
+            font-weight: $font-weight-light;
+            font-size: $small-font-size;
+          }
+        }
+      }
     }
 
     &__cart-icon {
@@ -54,7 +71,7 @@
         padding: 0 $spacer;
 
         &--name {
-          color: #424141;
+          color: $auna-black;
           font-size: 14px;
           font-weight: 600;
         }
@@ -116,8 +133,9 @@
         }
 
         &__price {
-          font-weight: 500;
-          font-size: 18px;
+          &.price {
+            font-size: $base-font-size;
+          }
         }
       }
     }
@@ -139,7 +157,7 @@
       &--sub {
         border-top: 1px solid #e8e8e8;
         color: #9b9b9b;
-        font-size: 14px;
+        font-size: $small-font-size;
         font-weight: 300;
         padding: 12px;
       }

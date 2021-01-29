@@ -31,6 +31,7 @@ export const aunaBrand2 = "#FF6900";
 export const aunaBrand3 = "#0050B5";
 export const aunaBrand4 = "#FFD100";
 export const aunaBrand5 = "#404497";
+export const aunaBrand6 = "#EA5B2E";
 
 export const aunaPrimary = "#C2DF0A";
 export const aunaInteractive = "#00B0CA";
@@ -53,6 +54,7 @@ export const aunaComplementary3 = "#FFF0E6";
 export const aunaComplementary4 = "#E6EEF8";
 
 export const aunaOrange = "#ED7C59";
+export const aunaOrangeOnSale = "#FF6900";
 export const aunaBlackGray = "#454545";
 
 // theme colors

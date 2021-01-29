@@ -1,7 +1,9 @@
 import productImage from "./productImage.png";
 import { IProps } from "./types";
 
-export const DEFAULT_PROPS : IProps = {
+export const DEFAULT_PROPS: IProps = {
+  canAddToCart: true,
+  isOnSale: false,
   name: "The Great Square Table",
   price: {
     gross: {

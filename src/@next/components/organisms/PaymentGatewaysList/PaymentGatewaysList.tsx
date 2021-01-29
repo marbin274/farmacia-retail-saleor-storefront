@@ -7,6 +7,8 @@ import { ErrorMessage, Radio } from "@components/atoms";
 import creditCardIcon from "@temp/images/auna/icon-credit-card.svg";
 import visaIcon from "@temp/images/auna/visa-payment.svg";
 import masterCardIcon from "@temp/images/auna/mastercard-payment.svg";
+import americanExpress from "@temp/images/auna/american-express-payment.svg";
+import dinersClub from "@temp/images/auna/diners-club-payment.svg";
 import ReactSVG from "react-svg";
 
 import { PROVIDERS } from "@temp/core/config";
@@ -124,6 +126,12 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                         </S.PaymentIcon>
                         <S.PaymentIcon checked={checked}>
                           <ReactSVG path={masterCardIcon} />
+                        </S.PaymentIcon>
+                        <S.PaymentIcon checked={checked}>
+                          <ReactSVG path={americanExpress} />
+                        </S.PaymentIcon>
+                        <S.PaymentIcon checked={checked}>
+                          <ReactSVG path={dinersClub} />
                         </S.PaymentIcon>
                       </S.PaymentLine>
                     </Radio>

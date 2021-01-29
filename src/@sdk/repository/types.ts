@@ -2,13 +2,14 @@ import {
   Checkout_availableShippingMethods,
   Checkout_lines_variant_attributes,
   Checkout_lines_variant_pricing,
-  Checkout_lines_variant_product,
+  Checkout_lines_variant_product
 } from "../fragments/gqlTypes/Checkout";
 
 export enum LocalStorageItems {
   JOB_QUEUE_CHECKOUT = "job_queueCheckout",
   CHECKOUT = "data_checkout",
   PAYMENT = "data_payment",
+  RESET_PASSWORD_EMAIL = "reset_password_email",
 }
 
 export interface ICheckoutModelLineTotalPrice {
@@ -17,21 +18,23 @@ export interface ICheckoutModelLineTotalPrice {
 }
 
 export interface ICheckoutModelLineVariant {
-  quantityAvailable?: number;
+  attributes?: Checkout_lines_variant_attributes[];
   id: string;
+  isAvailable?: boolean | null;
   name?: string;
   sku?: string;
   pricing?: Checkout_lines_variant_pricing | null;
   product?: Checkout_lines_variant_product;
-  isAvailable?: boolean | null;
-  attributes?: Checkout_lines_variant_attributes[];
+  quantityAvailable?: number;
 }
 
 export interface ICheckoutModelLine {
+  id: string;
+  name: string;
   quantity: number;
-  id?: string;
+  totalPrice?: ICheckoutModelLineTotalPrice | null; 
   variant: ICheckoutModelLineVariant;
-  totalPrice?: ICheckoutModelLineTotalPrice | null;
+  variants?: ICheckoutModelLineVariant[]
 }
 
 export interface ICheckoutModelPriceValue {
@@ -153,6 +156,8 @@ export interface IOrderModel {
 export interface ILocalRepository {
   getCheckout(): ICheckoutModel | null;
   setCheckout(checkout: ICheckoutModel | null): void;
+  getResetPasswordEmail(): string | null;
+  setResetPasswordEmail(email: string): void;
   getPayment(): IPaymentModel | null;
   setPayment(payment: IPaymentModel | null): void;
 }

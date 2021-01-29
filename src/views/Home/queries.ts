@@ -44,8 +44,9 @@ export const homePageQuery = gql`
         name
       }
       analyticsConfig {
-        trackingId
         tagManagerId
+        tagManagerAuth
+        tagManagerEnvironmentId
       }
     }
   }

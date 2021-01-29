@@ -145,3 +145,23 @@ body {
 .form-error {
   color: $rose;
 }
+
+.price {
+  font-size: $h3-font-size;
+  font-style: normal;
+  font-weight: $bold-font-normal;
+  line-height: 30px;
+  letter-spacing: 0em;
+  &.outStock_price {
+    color: $auna-grey-out-stock;
+  }
+  &.discounted_price {
+    color: $auna-orange-on-sale;
+  }
+  &.undiscounted_price {
+    text-decoration: line-through;
+    color: $auna-grey-100;
+    font-size: $base-font-size;
+    font-weight: normal;
+  }
+}

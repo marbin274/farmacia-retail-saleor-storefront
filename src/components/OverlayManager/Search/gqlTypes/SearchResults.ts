@@ -3,6 +3,7 @@
 // This file was automatically generated and should not be edited.
 
 import { ProductDetails_product_pricing } from '@temp/@sdk/queries/gqlTypes/ProductDetails';
+import { FeaturedProducts_shop_homepageCollection_products_edges_node_pricing } from '@temp/components/ProductsFeatured/gqlTypes/FeaturedProducts';
 
 // ====================================================
 // GraphQL query operation: SearchResults
@@ -40,6 +41,7 @@ export interface SearchResults_products_edges_node_category {
 export interface SearchResults_products_edges_node_variants {
   __typename: "Variants";
   id: string;
+  pricing: FeaturedProducts_shop_homepageCollection_products_edges_node_pricing | null;
   quantityAvailable: number;
 }
 
@@ -63,7 +65,7 @@ export interface SearchResults_products_edges_node {
    * The storefront URL for the product.
    */
   url: string;
-  variants: SearchResults_products_edges_node_variants | null;
+  variants: SearchResults_products_edges_node_variants[] | null;
   category: SearchResults_products_edges_node_category | null;
   /**
    * Lists the storefront product's pricing, the current price and discounts, only meant for displaying.

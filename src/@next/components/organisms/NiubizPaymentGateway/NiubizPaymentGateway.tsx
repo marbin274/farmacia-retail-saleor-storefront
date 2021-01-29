@@ -404,7 +404,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
               >
                 <S.Payment className="card-body">
                   <h4 className="card-title">
-                    Paga con tarjetas visa y mastercard
+                      Paga con tarjetas de crédito/débito
                   </h4>
                   <h5>INGRESA LOS DATOS DE LA TARJETA</h5>
                   <div className="row">

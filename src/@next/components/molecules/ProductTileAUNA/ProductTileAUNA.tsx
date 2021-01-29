@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { OutStockLabel, Button } from '@components/atoms'
-import { Thumbnail } from "@components/molecules";
+import { Button, ProductSticker } from '@components/atoms';
 import { TaxedMoney } from "@components/containers";
+import { Thumbnail } from "@components/molecules";
+import { checkProductCanAddToCart, checkProductIsOnSale, getProductPricingClass } from "@temp/@next/utils/products";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import * as S from "./styles";
 import { IProps } from "./types";
-import { Link } from "react-router-dom";
-import { checkCanAddToCart } from "@temp/@next/utils/products";
 
 export const ProductTileAUNA: React.FC<IProps> = ({
   addToCart,
@@ -21,7 +21,8 @@ export const ProductTileAUNA: React.FC<IProps> = ({
     thumbnail2x: { url: "" },
   });
 
-  const canAddToCart = checkCanAddToCart(product, productsOnCart);
+  const canAddToCart = checkProductCanAddToCart(product, productsOnCart);
+  const isOnSale = checkProductIsOnSale(product);
 
   const onAddToCart = () => {
     if (canAddToCart) {
@@ -44,7 +45,10 @@ export const ProductTileAUNA: React.FC<IProps> = ({
     <S.ProductCard data-cy="product-tile" canAddToCart={canAddToCart}>
       <Link to={productLink} key={product.id}>
         <S.WrapperStockout>
-          {!canAddToCart && <OutStockLabel />}
+          <ProductSticker
+            canAddToCart={canAddToCart}
+            isOnSale={isOnSale}
+          />
           <div className="img">
             <S.Image>
               <Thumbnail source={thumbnails} />
@@ -53,11 +57,14 @@ export const ProductTileAUNA: React.FC<IProps> = ({
           <div className="description">
             <S.Title>{product.name}</S.Title>
           </div>
-          <div className="price">
+          <div className={getProductPricingClass(canAddToCart, isOnSale)} >
             <S.Price>
               <TaxedMoney taxedMoney={product?.pricing?.priceRange?.start} />
             </S.Price>
           </div>
+          {isOnSale && <div className="price undiscounted_price">
+            <TaxedMoney taxedMoney={product?.pricing?.priceRangeUndiscounted?.start} />
+          </div>}
         </S.WrapperStockout>
       </Link>
       {
