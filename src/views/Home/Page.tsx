@@ -24,11 +24,11 @@ const Page: React.FC<IPageProps> = ({
       <a href="./product/protector-solar-corporal-eucerin-sensitive-protect-150-ml/4400/">
         <div className="home-page__top-banner">
           <div className="home-page__top-banner__text">
-            <h2>Eucerin Sensitive</h2>
-            <h3><strong>Protector solar 150ml</strong></h3>
+            <h2>¡SOLO POR HORAS!</h2>
+            <h3><strong>HASTA LAS 11PM PIDE BIPACK JUNTOS CONTRA EL COVID</strong></h3>
             <p>
-              * Válido hasta el 31/01/21 o hasta agotar stock. Máx. 3 unids por producto.<br />
-            Aplica máx. 2 promociones por usuario. Delivery a S/0.01 hasta el 31/01/21. T&C: <a href="http://bit.ly/TyC_Farmauna" target="_blank">http://bit.ly/TyC_Farmauna</a>
+            * Válido el 29/01/21 o hasta agotar stock. Stock limitado 30 unids. <br />
+            Aplica max. 2 promociones por usuario. Delivery S/0.01 hasta el 31/01/21. T&C: <a href="http://bit.ly/TyC_Farmauna" target="_blank">http://bit.ly/TyC_Farmauna</a>
             </p>
           </div>
         </div>
