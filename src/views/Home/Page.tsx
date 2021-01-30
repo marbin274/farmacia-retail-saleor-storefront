@@ -21,13 +21,13 @@ const Page: React.FC<IPageProps> = ({
 }) => {
   return (
     <div className="container">
-      <a href="./product/pack-juntos-contra-el-covid/4700/">
+      <a href="./product/mascarilla-3-pliegues-caja-50-und/2458/">
         <div className="home-page__top-banner">
           <div className="home-page__top-banner__text">
-            <h2>¡SOLO POR HORAS!</h2>
-            <h3><strong>HASTA LAS 11PM PIDE BIPACK JUNTOS CONTRA EL COVID</strong></h3>
+            <h2>EN PRODUCTOS PARA TU CUIDADO</h2>
+            <h3><strong>Protégete del COVID</strong></h3>
             <p>
-            * Válido el 29/01/21 o hasta agotar stock. Stock limitado 30 unids. <br />
+            * Válido hasta el 31/01/21 o hasta agotar stock. Máx. 3 unids por producto. 
             Aplica max. 2 promociones por usuario. Delivery S/0.01 hasta el 31/01/21. T&C: <a href="http://bit.ly/TyC_Farmauna" target="_blank">http://bit.ly/TyC_Farmauna</a>
             </p>
           </div>
