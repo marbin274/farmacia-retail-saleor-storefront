@@ -21,7 +21,7 @@ const Page: React.FC<IPageProps> = ({
 }) => {
   return (
     <div className="container">
-      <a href="./product/mascarilla-3-pliegues-caja-50-und/2458/">
+      <a href="./product/mascarilla-kn95-caja-10-und/2459/">
         <div className="home-page__top-banner">
           <div className="home-page__top-banner__text">
             <h2>EN PRODUCTOS PARA TU CUIDADO</h2>
