@@ -233,7 +233,6 @@ export class NetworkManager implements INetworkManager {
           quantity: existingLine?.quantity || 0,
           totalPrice,
           variant,
-          variants: [{ ...variant }],
         };
       })
       : [];
@@ -259,7 +258,6 @@ export class NetworkManager implements INetworkManager {
         quantity: line.quantity,
         totalPrice,
         variant: line.variant,
-        variants: [{ ...line.variant }],
       };
     });
 

@@ -10,8 +10,13 @@ export type ProductOnCart = {
 }
 
 export const getStockAvailable = (product: ISimpleProduct): number => {
-    const stockAvailable = product.variants?.[0]?.quantityAvailable || 0;
-    return stockAvailable;
+    if (product.variants?.[0].quantityAvailable) {
+        return product.variants[0].quantityAvailable;
+    }
+    else if (product.variant?.quantityAvailable) {
+        return product.variant.quantityAvailable;
+    }
+    return 0;
 }
 
 export const getProductOnCart = (product: ISimpleProduct, items: IItems): ProductOnCart => {
@@ -39,8 +44,12 @@ export const checkPricingVariantIsOnSale = (variantPricing: IProductVariantPrici
     return !isEqual(variantPricing.priceUndiscounted, variantPricing.price);
 }
 export const checkProductIsOnSale = (product: ISimpleProduct): boolean => {
-    if (!product?.variants?.[0]?.pricing) { return false; }
-    return checkPricingVariantIsOnSale(product.variants[0].pricing);
+    if (product?.variants?.[0]?.pricing) {
+        return checkPricingVariantIsOnSale(product.variants[0].pricing);
+    } else if (product?.variant?.pricing) {
+        return checkPricingVariantIsOnSale(product.variant.pricing);
+    }
+    return false;
 }
 
 // TODO: create component instead of function
