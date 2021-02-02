@@ -56,7 +56,7 @@ const getTokenRequirements = (config: IPaymentGatewayConfig[]) => {
 const getSessionRequirements = (
   config: IPaymentGatewayConfig[],
   token: string,
-  amount: any, 
+  amount: any,
   user?: IUserDataForNiubiz | undefined
 ) => {
   const merchantId = getConfigElement(config, "merchant_id") || "342062522";
@@ -143,6 +143,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
     };
     purchaseNumber = payload.purchase_number;
     changeRequestPayload(payload);
+    localStorage.setItem("purchase_number", purchaseNumber);
   }, []);
 
   const createTokenScript = () => {
@@ -181,8 +182,6 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
           recurrentmaxamount: "1000.00",
           sessionkey: key,
         };
-
-
 
         // @ts-ignore
         window?.payform.setConfiguration(configuration);
@@ -404,7 +403,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
               >
                 <S.Payment className="card-body">
                   <h4 className="card-title">
-                      Paga con tarjetas de crédito/débito
+                    Paga con tarjetas de crédito/débito
                   </h4>
                   <h5>INGRESA LOS DATOS DE LA TARJETA</h5>
                   <div className="row">

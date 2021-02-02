@@ -2,7 +2,6 @@ import { CHECKOUT_STEPS } from "@temp/core/config";
 import React from "react";
 import { Link } from "react-router-dom";
 import ReactSVG from "react-svg";
-
 import * as S from "./styles";
 import { IProps, IStep } from "./types";
 
@@ -46,10 +45,11 @@ const generateProgressBar = (
   index: number,
   currentActive: number,
   numberOfSteps: number,
-  isLastStep = false
+  currentPath: string
 ) => {
   if (index !== numberOfSteps - 1) {
-    return isLastStep ? (
+    return localStorage.getItem("purchase_number") &&
+      currentPath === "/checkout/review" ? (
       <S.ProgressBar done={false} />
     ) : (
       <S.ProgressBar done={currentActive > index} />
@@ -60,12 +60,13 @@ const generateProgressBar = (
 const generateSteps = (
   steps: IStep[],
   currentActive: number,
-  existRequestPayload: boolean
+  currentPath: string
 ) => {
   return steps?.map(step => {
     return (
       <S.Step key={step.index}>
-        {existRequestPayload ? (
+        {localStorage.getItem("purchase_number") &&
+        currentPath === "/checkout/review" ? (
           <span>{generateDot(step, currentActive, true)}</span>
         ) : (
           <Link to={step.link}>{generateDot(step, currentActive)}</Link>
@@ -74,7 +75,7 @@ const generateSteps = (
           step.index,
           currentActive,
           steps.length,
-          existRequestPayload
+          currentPath
         )}
       </S.Step>
     );
@@ -87,19 +88,13 @@ const generateSteps = (
 const CheckoutProgressBar: React.FC<IProps> = ({
   steps,
   activeStepIndex,
-  requestPayload,
-  currentRoutePath,
+  pathName,
 }: IProps) => {
   const activeStep = steps.find(st => st.index === activeStepIndex);
 
-  const disableSteps =
-    currentRoutePath === CHECKOUT_STEPS[2].link && requestPayload !== null;
-
   return (
     <div>
-      <S.Wrapper>
-        {generateSteps(steps, activeStepIndex, disableSteps)}
-      </S.Wrapper>
+      <S.Wrapper>{generateSteps(steps, activeStepIndex, pathName)}</S.Wrapper>
       {activeStep && <S.Label>{activeStep.name}</S.Label>}
     </div>
   );

@@ -91,7 +91,7 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
               </div>
               <div className="overlay__header__bottom">
                 <div className="overlay__header-text">
-                  <span>Tu carrito </span>
+                  <span>Tu carrito</span>
                   <span className="overlay__header-text-items">
                     {totalProducts || 0}{" "}
                     {totalProducts === 1 ? "producto" : "productos"}

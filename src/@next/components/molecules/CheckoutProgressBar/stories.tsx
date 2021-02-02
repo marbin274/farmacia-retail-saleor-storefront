@@ -47,8 +47,7 @@ storiesOf("@components/molecules/CheckoutProgressBar", module)
         <CheckoutProgressBar
           steps={steps}
           activeStepIndex={value}
-          requestPayload={null}
-          currentRoutePath=""
+          pathName=""
         />
       </MemoryRouter>
     );

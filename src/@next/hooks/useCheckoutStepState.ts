@@ -18,7 +18,10 @@ export const useCheckoutStepState = (
   const getStep = () => {
     if (!checkout?.id && items && isShippingRequiredForProducts) {
       return CheckoutStep.Address;
-    } else if (!checkout?.id && items) {
+    } else if (
+      (!checkout?.id && items) ||
+      !localStorage.getItem("purchase_number")
+    ) {
       return CheckoutStep.Payment;
     }
 
