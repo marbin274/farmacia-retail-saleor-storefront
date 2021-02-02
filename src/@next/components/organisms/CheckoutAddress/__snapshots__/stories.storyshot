@@ -488,7 +488,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                         onChange={[Function]}
                         onFocus={[Function]}
                         placeholder="Número de celular"
-                        value="555-5555"
+                        value=""
                       />
                       <label
                         className="c13"

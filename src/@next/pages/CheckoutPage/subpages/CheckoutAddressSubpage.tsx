@@ -11,10 +11,9 @@ import React, {
   RefForwardingComponent,
   useContext,
   useImperativeHandle,
-  useRef
+  useRef,
 } from "react";
 import { RouteComponentProps } from "react-router";
-
 
 export interface ICheckoutAddressSubpageHandles {
   submitAddress: () => void;
@@ -30,7 +29,15 @@ interface IProps extends RouteComponentProps<any> {
 const CheckoutAddressSubpageWithRef: RefForwardingComponent<
   ICheckoutAddressSubpageHandles,
   IProps
-> = ({ addressSubPageErrors, changeSubmitProgress, setAddressSubPageErrors, ...props }: IProps, ref) => {
+> = (
+  {
+    addressSubPageErrors,
+    changeSubmitProgress,
+    setAddressSubPageErrors,
+    ...props
+  }: IProps,
+  ref
+) => {
   const checkoutAddressFormId = "address-form";
   const checkoutAddressFormRef = useRef<HTMLFormElement>(null);
   const checkoutNewAddressFormId = "new-address-form";
@@ -95,6 +102,7 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
   }));
   // const history = useHistory();
   const { data: user } = useUserDetails();
+
   const {
     checkout,
     setShippingAddress,
@@ -117,13 +125,17 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     documentNumber?: string
   ) => {
     if (!address) {
-      setAddressSubPageErrors([{ message: "Please provide shipping address." }]);
+      setAddressSubPageErrors([
+        { message: "Please provide shipping address." },
+      ]);
       return;
     }
     const shippingEmail = user?.email || email || "";
 
     if (!shippingEmail) {
-      setAddressSubPageErrors([{ field: "email", message: "Please provide email address." }]);
+      setAddressSubPageErrors([
+        { field: "email", message: "Please provide email address." },
+      ]);
       return;
     }
 
@@ -191,4 +203,3 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
 const CheckoutAddressSubpage = forwardRef(CheckoutAddressSubpageWithRef);
 
 export { CheckoutAddressSubpage };
-

@@ -2125,7 +2125,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                         onChange={[Function]}
                         onFocus={[Function]}
                         placeholder="Número de celular"
-                        value="555-55555"
+                        value=""
                       />
                       <label
                         className="c13"
