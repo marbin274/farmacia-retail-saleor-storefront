@@ -1,15 +1,9 @@
 import React from "react";
-import { Footer, MainMenu, MetaConsumer, OverlayContext, OverlayManager, OverlayTheme, OverlayType } from "../components";
+import { Footer, MainMenu, MetaConsumer ,OverlayManager} from "../components";
 import "../globalStyles/scss/index.scss";
 import { Routes } from "./routes";
 
 const App: React.FC = () => {
-  // show once 'website under construction' popup
-  const overlayContext = React.useContext(OverlayContext);
-  React.useEffect(() => {
-    overlayContext.show(OverlayType.underConstruction, OverlayTheme.modal);
-  }, []);
-
   return (
     <>
       <MetaConsumer />
