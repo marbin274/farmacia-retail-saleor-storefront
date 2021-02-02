@@ -21,14 +21,14 @@ const Page: React.FC<IPageProps> = ({
 }) => {
   return (
     <div className="container">
-      <a href="./product/mascarilla-kn95-caja-10-und/2459/">
+      <a href="./product/pack-vitaminas-y-minerales/4706/">
         <div className="home-page__top-banner">
           <div className="home-page__top-banner__text">
-            <h2>¡EXTENDEMOS LA PROMO!</h2>
-            <h3><strong>EN PRODUCTOS DE PROTECCIÓN COVID-19</strong></h3>
+            <h2>PACK VITAMINAS Y MINERALES</h2>
+            <h3><strong>Fortalécete con estas promos</strong></h3>
             <p>
-            * Válido hasta el 01/02/21 o hasta agotar stock. Máx. 3 unids por producto. 
-            Aplica máx. 2 promociones por usuario. **Rango de tiempo referencial. T&C: <a href="http://bit.ly/TyC_Farmauna" target="_blank">http://bit.ly/TyC_Farmauna</a>
+            *Válido hasta el 07/01/21 o agotar stock. Máx. 3 unids por producto.
+            Aplica máx. 2 promociones por usuario. *Rango de tiempo referencial, sujeto a demanda. T&C: <a href="http://bit.ly/TyC_Farmauna" target="_blank">http://bit.ly/TyC_Farmauna</a>
             </p>
           </div>
         </div>
