@@ -216,6 +216,8 @@ exports[`Storyshots @components/organisms/Modal Modal Form 1`] = `
   -ms-flex-pack: justify;
   justify-content: space-between;
   width: 100%;
+  z-index: 1000;
+  padding-bottom: 2rem;
   overflow-y: auto;
   background-color: #fff;
 }
@@ -514,6 +516,8 @@ exports[`Storyshots @components/organisms/Modal Modal Form disabled 1`] = `
   -ms-flex-pack: justify;
   justify-content: space-between;
   width: 100%;
+  z-index: 1000;
+  padding-bottom: 2rem;
   overflow-y: auto;
   background-color: #fff;
 }
@@ -803,6 +807,8 @@ exports[`Storyshots @components/organisms/Modal Modal Info 1`] = `
   -ms-flex-pack: justify;
   justify-content: space-between;
   width: 100%;
+  z-index: 1000;
+  padding-bottom: 2rem;
   overflow-y: auto;
   background-color: #fff;
 }
