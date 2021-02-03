@@ -45,7 +45,7 @@ export interface IProps {
   comeFromModal?: boolean;
   touched?: any;
   isValid?: boolean;
-  validateForm?: any;
+  validateForm?: (values?: any) => Promise<any>;
   onSelect?: (
     address?: IAddressWithEmail,
     email?: string,
