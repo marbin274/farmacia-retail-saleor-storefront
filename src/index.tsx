@@ -38,6 +38,8 @@ import {
   fireSignOut,
   invalidTokenLinkWithTokenHandler,
 } from "./@sdk/auth";
+import * as Sentry from "@sentry/react";
+import { Integrations } from "@sentry/tracing";
 
 interface GtmEnvVars {
   auth: string | null;
@@ -171,6 +173,13 @@ const startApp = async () => {
         </QueryParamProvider>
       </Router>
     );
+  });
+
+  Sentry.init({
+    dsn: process.env.sentry_dsn,
+    integrations: [new Integrations.BrowserTracing()],
+    release: "farmauna-storefront@" + process.env.npm_package_version,
+    tracesSampleRate: 1.0,
   });
 
   render(
