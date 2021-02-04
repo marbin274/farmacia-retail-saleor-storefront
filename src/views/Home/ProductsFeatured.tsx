@@ -21,23 +21,26 @@ const ProductsFeatured: React.FC<ProductsFeaturedProps> = ({ loading, productsOn
       displayError={false}
       variables={{ first: PRODUCTS_PER_PAGE }}>
       {({ data }) => {
-        const products: ISimpleProduct[] = maybe(
-          () => data.shop.homepageCollection.products.edges.map(product => ({...product.node})),
-          []
-        );
 
-        if (products.length) {
-          return <>
-            <h2 className="home-page__products-title">{data.shop.homepageCollection.name}</h2>
-            <ProductListAUNA
-              canLoadMore={false}
-              loading={loading}
-              onLoadMore={null}
-              products={products}
-              productsOnCart={productsOnCart}
-              addToCart={addToCart}
-            />
-          </>;
+        if (data?.shop?.homepageCollections?.length) {
+          return data.shop.homepageCollections.map(collection => {
+            const products: ISimpleProduct[] = maybe(
+              () => collection.products.edges.map(product => ({ ...product.node })),
+              []
+            );
+            return <>
+              <h2 className="home-page__products-title">{collection.name}</h2>
+              <ProductListAUNA
+                canLoadMore={false}
+                loading={loading}
+                onLoadMore={null}
+                products={products}
+                productsOnCart={productsOnCart}
+                addToCart={addToCart}
+              />
+              <br />
+            </>
+          });
         } else {
           return null;
         }
