@@ -9,6 +9,23 @@ export type ProductOnCart = {
     quantityAvailable: number
 }
 
+export const getProductsWithQuantity = (products: ISimpleProduct[], productsOnCart?: IItems): ISimpleProduct[] => {
+    return !products ? [] : products.filter(product => product.pricing).map((product) => {
+        const productOnCart = productsOnCart?.find(({ variant }) =>
+            (product.variants && product.variants[0]) ? variant.id === product.variants[0].id : false
+        );
+        product.quantity = productOnCart ? productOnCart.quantity : 0;
+
+        if (!product.variants) {
+            product.variants = [];
+        }
+
+        return {
+            ...product,
+        };
+    });
+}
+
 export const getStockAvailable = (product: ISimpleProduct): number => {
     if (product.variants?.[0].quantityAvailable) {
         return product.variants[0].quantityAvailable;
