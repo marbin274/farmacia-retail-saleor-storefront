@@ -36,6 +36,7 @@ export { default as NotificationTemplate } from "./NotificationTemplate";
 export { default as Offline } from "./Offline";
 export { default as OfflinePlaceholder } from "./OfflinePlaceholder";
 export { default as Online } from "./Online";
+export { default as OutOfTime } from './OutOfTime';
 export {
   InnerOverlayContextInterface,
   Overlay,

@@ -1,0 +1,73 @@
+@import "@temp/globalStyles/scss/variables.scss";
+.overlay {
+    &__modal {
+        &__wrapper {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 20rem;
+            max-width: 50rem;
+            width: calc(100vw - 2rem);
+            @media (max-width: $xs-small-screen) {
+                top: 1rem;
+            }
+            &__card {
+                background: white;
+                border-radius: 1rem;
+                padding: 2rem;
+                border: solid 1px lightgray;
+                color: $black;
+                h4 {
+                    font-weight: 600;
+                }
+                &__body {
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: r;
+                    &__text {
+                        flex: 2;
+                        p {
+                            margin: 20px 0px;
+                        }
+                        &__button {
+                            max-width: 15rem;
+                            @media (max-width: $small-screen) {
+                                display: none;
+                            }
+                        }
+                    }
+                    &__image {
+                        background-color: $auna-complementary1;
+                        border-radius: 1rem;
+                        flex: 1;
+                        text-align: center;
+                        padding: 2rem 1rem 1rem;
+                        width: 100%;
+                        > div {
+                            max-width: 6rem;
+                            margin: 0px auto;
+                        }
+                        @media (max-width: $small-screen) {
+                            margin: 2rem 0rem;
+                            flex: initial;
+
+                        }
+                    }
+                    &__footer {
+                        width: 100%;
+                        > div {
+                            max-width: 14rem;
+                            @media (max-width: $small-screen) {
+                                max-width: 100%;
+                            }
+                        }
+                        @media (min-width: $small-screen) {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
