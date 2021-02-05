@@ -13,7 +13,7 @@ export const ProductCard = styled.div<{
   transition: 0 .3s;
   max-width: 11rem;
   position: relative;
-  margin-bottom: 1.5rem;
+  margin: 0 auto 1.5rem;
   :hover {
     translate-Y: -.1rem;
   }

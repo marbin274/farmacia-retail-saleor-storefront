@@ -1,3 +1,5 @@
+export * from "./Carousel";
 export * from "./Money";
-export * from "./TaxedMoney";
 export * from "./ServiceWorkerProvider";
+export * from "./TaxedMoney";
+

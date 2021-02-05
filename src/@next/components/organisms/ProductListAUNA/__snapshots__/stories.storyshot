@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   margin: 20px;
 }
 
-.c7 {
+.c6 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -17,7 +17,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   box-sizing: border-box;
 }
 
-.c5 {
+.c4 {
   background-color: #fff;
   padding: 0.9rem 3.7rem;
   border: none;
@@ -33,28 +33,28 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   border-right: 1px solid #00B0CA;
 }
 
-.c5:hover {
+.c4:hover {
   background-color: #fff;
   color: #00B0CA;
 }
 
-.c5:active {
+.c4:active {
   background-color: #029FB7;
   box-shadow: -3px 3px 14px 0px rgba(129,67,67,0.2);
 }
 
-.c5:disabled {
+.c4:disabled {
   background-color: #F1F2F7;
   color: #B8BCD5;
   cursor: default;
 }
 
-.c5:disabled,
-.c5:disabled:hover {
+.c4:disabled,
+.c4:disabled:hover {
   cursor: default;
 }
 
-.c6 {
+.c5 {
   display: inline-block;
   font-size: 1.125rem;
   font-weight: 400;
@@ -65,7 +65,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   user-select: none;
 }
 
-.c2 {
+.c1 {
   color: #131336;
   background: inherit;
   height: 24rem;
@@ -74,29 +74,29 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   transition: 0 .3s;
   max-width: 11rem;
   position: relative;
-  margin-bottom: 1.5rem;
+  margin: 0 auto 1.5rem;
 }
 
-.c2:hover {
+.c1:hover {
   -webkit-translate-Y: -.1rem;
   translate-Y: -.1rem;
 }
 
-.c2 .img {
+.c1 .img {
   width: auto;
   height: 176px;
   max-width: 100%;
   vertical-align: middle;
 }
 
-.c2 .img img {
+.c1 .img img {
   width: auto;
   height: auto;
   max-width: 100%;
   vertical-align: middle;
 }
 
-.c2 .description {
+.c1 .description {
   font-family: "Poppins",sans-serif;
   font-size: 1.2rem;
   height: 35%;
@@ -107,7 +107,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   overflow: hidden;
 }
 
-.c2 .price {
+.c1 .price {
   font-family: "Poppins",sans-serif;
   font-size: 1.5rem;
   font-weight: normal;
@@ -115,12 +115,12 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   text-align: center;
 }
 
-.c2 .button {
+.c1 .button {
   border-bottom: 1px solid #00B0CA;
   padding-bottom: 0.5rem;
 }
 
-.c2 .button button {
+.c1 .button button {
   background: transparent;
   color: #00B0CA;
   border: solid 1px transparent;
@@ -130,67 +130,47 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   border-radius: 6px;
 }
 
-.c2 .button button span {
+.c1 .button button span {
   font-size: 2rem;
 }
 
-.c2 .button button:hover {
+.c1 .button button:hover {
   border-color: transparent;
 }
 
-.c2 .button button:active {
+.c1 .button button:active {
   background: transparent !important;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
 }
 
-.c2 .button button:focus {
+.c1 .button button:focus {
   border-color: transparent;
 }
 
-.c2 .button button:disabled {
+.c1 .button button:disabled {
   color: #B8BCD5;
   border-color: transparent;
   cursor: not-allowed;
 }
 
-.c3 {
+.c2 {
   height: 24rem;
   overflow: hidden;
   position: relative;
   border-radius: 16px;
 }
 
-.c1 {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 5rem 3rem;
-}
-
-.c4 {
+.c3 {
   text-align: center;
   margin: 2.5rem 0;
 }
 
 @media (max-width:540px) {
-  .c5 {
+  .c4 {
     padding: 0.9rem 1rem;
     width: 88%;
-  }
-}
-
-@media (max-width:992px) {
-  .c1 {
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 5rem 1.5rem;
-  }
-}
-
-@media (max-width:540px) {
-  .c1 {
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 6rem 1rem;
   }
 }
 
@@ -199,388 +179,384 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
 >
   <div
     className="c1"
+    data-cy="product-tile"
   >
-    <div
-      className="c2"
-      data-cy="product-tile"
+    <a
+      href="/product/betacort-depot-solucin-inyectable/227/"
+      onClick={[Function]}
     >
-      <a
-        href="/product/betacort-depot-solucin-inyectable/227/"
-        onClick={[Function]}
+      <div
+        className="c2"
       >
         <div
-          className="c3"
+          className="img"
         >
           <div
-            className="img"
+            className=""
           >
-            <div
-              className=""
-            >
-              <img
-                alt=""
-                src={[Function]}
-              />
-            </div>
-          </div>
-          <div
-            className="description"
-          >
-            <h4
-              className=""
-            >
-              Betacort Depot Solución Inyectable
-            </h4>
-          </div>
-          <div
-            className="price"
-          >
-            <p
-              className=""
-            >
-              <span>
-                
-              </span>
-            </p>
+            <img
+              alt=""
+              src={[Function]}
+            />
           </div>
         </div>
-      </a>
-    </div>
-    <div
-      className="c2"
-      data-cy="product-tile"
-    >
-      <a
-        href="/product/abrilar-35mg5ml-jarabe-frasco-100-ml/208/"
-        onClick={[Function]}
-      >
         <div
-          className="c3"
+          className="description"
         >
-          <div
-            className="img"
+          <h4
+            className=""
           >
-            <div
-              className=""
-            >
-              <img
-                alt=""
-                src={[Function]}
-              />
-            </div>
-          </div>
-          <div
-            className="description"
-          >
-            <h4
-              className=""
-            >
-              Abrilar 35Mg/5ML Jarabe - Frasco 100 ML
-            </h4>
-          </div>
-          <div
-            className="price"
-          >
-            <p
-              className=""
-            >
-              <span>
-                
-              </span>
-            </p>
-          </div>
+            Betacort Depot Solución Inyectable
+          </h4>
         </div>
-      </a>
-    </div>
-    <div
-      className="c2"
-      data-cy="product-tile"
-    >
-      <a
-        href="/product/amlodipino-gef-10mg-tabletas-caja-10-und/223/"
-        onClick={[Function]}
-      >
         <div
-          className="c3"
+          className="price"
         >
-          <div
-            className="img"
+          <p
+            className=""
           >
-            <div
-              className=""
-            >
-              <img
-                alt=""
-                src={[Function]}
-              />
-            </div>
-          </div>
-          <div
-            className="description"
-          >
-            <h4
-              className=""
-            >
-              Amlodipino-Gef 10Mg Tabletas - Caja 10 Und
-            </h4>
-          </div>
-          <div
-            className="price"
-          >
-            <p
-              className=""
-            >
-              <span>
-                
-              </span>
-            </p>
-          </div>
+            <span>
+              
+            </span>
+          </p>
         </div>
-      </a>
-    </div>
-    <div
-      className="c2"
-      data-cy="product-tile"
-    >
-      <a
-        href="/product/ab-broncol-nf-1200mg5ml-solucin-inyectable-intramuscular/218/"
-        onClick={[Function]}
-      >
-        <div
-          className="c3"
-        >
-          <div
-            className="img"
-          >
-            <div
-              className=""
-            >
-              <img
-                alt=""
-                src={[Function]}
-              />
-            </div>
-          </div>
-          <div
-            className="description"
-          >
-            <h4
-              className=""
-            >
-              Ab Broncol NF 1200Mg/5ML Solución Inyectable Intramuscular
-            </h4>
-          </div>
-          <div
-            className="price"
-          >
-            <p
-              className=""
-            >
-              <span>
-                
-              </span>
-            </p>
-          </div>
-        </div>
-      </a>
-    </div>
-    <div
-      className="c2"
-      data-cy="product-tile"
-    >
-      <a
-        href="/product/antalgina-500mg-tabletas/206/"
-        onClick={[Function]}
-      >
-        <div
-          className="c3"
-        >
-          <div
-            className="img"
-          >
-            <div
-              className=""
-            >
-              <img
-                alt=""
-                src={[Function]}
-              />
-            </div>
-          </div>
-          <div
-            className="description"
-          >
-            <h4
-              className=""
-            >
-              Antalgina 500Mg Tabletas 
-            </h4>
-          </div>
-          <div
-            className="price"
-          >
-            <p
-              className=""
-            >
-              <span>
-                
-              </span>
-            </p>
-          </div>
-        </div>
-      </a>
-    </div>
-    <div
-      className="c2"
-      data-cy="product-tile"
-    >
-      <a
-        href="/product/arcoxia-90mg-tabletas-recubiertas-caja-14-und/214/"
-        onClick={[Function]}
-      >
-        <div
-          className="c3"
-        >
-          <div
-            className="img"
-          >
-            <div
-              className=""
-            >
-              <img
-                alt=""
-                src={[Function]}
-              />
-            </div>
-          </div>
-          <div
-            className="description"
-          >
-            <h4
-              className=""
-            >
-              Arcoxia 90Mg Tabletas Recubiertas - Caja 14 Und
-            </h4>
-          </div>
-          <div
-            className="price"
-          >
-            <p
-              className=""
-            >
-              <span>
-                
-              </span>
-            </p>
-          </div>
-        </div>
-      </a>
-    </div>
-    <div
-      className="c2"
-      data-cy="product-tile"
-    >
-      <a
-        href="/product/bepanthen-ungento-tubo-30-gr/238/"
-        onClick={[Function]}
-      >
-        <div
-          className="c3"
-        >
-          <div
-            className="img"
-          >
-            <div
-              className=""
-            >
-              <img
-                alt=""
-                src={[Function]}
-              />
-            </div>
-          </div>
-          <div
-            className="description"
-          >
-            <h4
-              className=""
-            >
-              Bepanthen Ungüento - Tubo 30 Gr
-            </h4>
-          </div>
-          <div
-            className="price"
-          >
-            <p
-              className=""
-            >
-              <span>
-                
-              </span>
-            </p>
-          </div>
-        </div>
-      </a>
-    </div>
-    <div
-      className="c2"
-      data-cy="product-tile"
-    >
-      <a
-        href="/product/buscapina-compositum-n-500mg-10mg-grageas/211/"
-        onClick={[Function]}
-      >
-        <div
-          className="c3"
-        >
-          <div
-            className="img"
-          >
-            <div
-              className=""
-            >
-              <img
-                alt=""
-                src={[Function]}
-              />
-            </div>
-          </div>
-          <div
-            className="description"
-          >
-            <h4
-              className=""
-            >
-              Buscapina Compositum N 500Mg-10Mg Grageas 
-            </h4>
-          </div>
-          <div
-            className="price"
-          >
-            <p
-              className=""
-            >
-              <span>
-                
-              </span>
-            </p>
-          </div>
-        </div>
-      </a>
-    </div>
+      </div>
+    </a>
   </div>
   <div
-    className="c4"
+    className="c1"
+    data-cy="product-tile"
+  >
+    <a
+      href="/product/abrilar-35mg5ml-jarabe-frasco-100-ml/208/"
+      onClick={[Function]}
+    >
+      <div
+        className="c2"
+      >
+        <div
+          className="img"
+        >
+          <div
+            className=""
+          >
+            <img
+              alt=""
+              src={[Function]}
+            />
+          </div>
+        </div>
+        <div
+          className="description"
+        >
+          <h4
+            className=""
+          >
+            Abrilar 35Mg/5ML Jarabe - Frasco 100 ML
+          </h4>
+        </div>
+        <div
+          className="price"
+        >
+          <p
+            className=""
+          >
+            <span>
+              
+            </span>
+          </p>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div
+    className="c1"
+    data-cy="product-tile"
+  >
+    <a
+      href="/product/amlodipino-gef-10mg-tabletas-caja-10-und/223/"
+      onClick={[Function]}
+    >
+      <div
+        className="c2"
+      >
+        <div
+          className="img"
+        >
+          <div
+            className=""
+          >
+            <img
+              alt=""
+              src={[Function]}
+            />
+          </div>
+        </div>
+        <div
+          className="description"
+        >
+          <h4
+            className=""
+          >
+            Amlodipino-Gef 10Mg Tabletas - Caja 10 Und
+          </h4>
+        </div>
+        <div
+          className="price"
+        >
+          <p
+            className=""
+          >
+            <span>
+              
+            </span>
+          </p>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div
+    className="c1"
+    data-cy="product-tile"
+  >
+    <a
+      href="/product/ab-broncol-nf-1200mg5ml-solucin-inyectable-intramuscular/218/"
+      onClick={[Function]}
+    >
+      <div
+        className="c2"
+      >
+        <div
+          className="img"
+        >
+          <div
+            className=""
+          >
+            <img
+              alt=""
+              src={[Function]}
+            />
+          </div>
+        </div>
+        <div
+          className="description"
+        >
+          <h4
+            className=""
+          >
+            Ab Broncol NF 1200Mg/5ML Solución Inyectable Intramuscular
+          </h4>
+        </div>
+        <div
+          className="price"
+        >
+          <p
+            className=""
+          >
+            <span>
+              
+            </span>
+          </p>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div
+    className="c1"
+    data-cy="product-tile"
+  >
+    <a
+      href="/product/antalgina-500mg-tabletas/206/"
+      onClick={[Function]}
+    >
+      <div
+        className="c2"
+      >
+        <div
+          className="img"
+        >
+          <div
+            className=""
+          >
+            <img
+              alt=""
+              src={[Function]}
+            />
+          </div>
+        </div>
+        <div
+          className="description"
+        >
+          <h4
+            className=""
+          >
+            Antalgina 500Mg Tabletas 
+          </h4>
+        </div>
+        <div
+          className="price"
+        >
+          <p
+            className=""
+          >
+            <span>
+              
+            </span>
+          </p>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div
+    className="c1"
+    data-cy="product-tile"
+  >
+    <a
+      href="/product/arcoxia-90mg-tabletas-recubiertas-caja-14-und/214/"
+      onClick={[Function]}
+    >
+      <div
+        className="c2"
+      >
+        <div
+          className="img"
+        >
+          <div
+            className=""
+          >
+            <img
+              alt=""
+              src={[Function]}
+            />
+          </div>
+        </div>
+        <div
+          className="description"
+        >
+          <h4
+            className=""
+          >
+            Arcoxia 90Mg Tabletas Recubiertas - Caja 14 Und
+          </h4>
+        </div>
+        <div
+          className="price"
+        >
+          <p
+            className=""
+          >
+            <span>
+              
+            </span>
+          </p>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div
+    className="c1"
+    data-cy="product-tile"
+  >
+    <a
+      href="/product/bepanthen-ungento-tubo-30-gr/238/"
+      onClick={[Function]}
+    >
+      <div
+        className="c2"
+      >
+        <div
+          className="img"
+        >
+          <div
+            className=""
+          >
+            <img
+              alt=""
+              src={[Function]}
+            />
+          </div>
+        </div>
+        <div
+          className="description"
+        >
+          <h4
+            className=""
+          >
+            Bepanthen Ungüento - Tubo 30 Gr
+          </h4>
+        </div>
+        <div
+          className="price"
+        >
+          <p
+            className=""
+          >
+            <span>
+              
+            </span>
+          </p>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div
+    className="c1"
+    data-cy="product-tile"
+  >
+    <a
+      href="/product/buscapina-compositum-n-500mg-10mg-grageas/211/"
+      onClick={[Function]}
+    >
+      <div
+        className="c2"
+      >
+        <div
+          className="img"
+        >
+          <div
+            className=""
+          >
+            <img
+              alt=""
+              src={[Function]}
+            />
+          </div>
+        </div>
+        <div
+          className="description"
+        >
+          <h4
+            className=""
+          >
+            Buscapina Compositum N 500Mg-10Mg Grageas 
+          </h4>
+        </div>
+        <div
+          className="price"
+        >
+          <p
+            className=""
+          >
+            <span>
+              
+            </span>
+          </p>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div
+    className="c3"
   >
     <button
-      className="c5"
+      className="c4"
       color="secondary"
       data-cy="load-more_button"
       onClick={[Function]}
       size="md"
     >
       <span
-        className="c6"
+        className="c5"
         size="md"
       >
         More +
@@ -588,7 +564,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
     </button>
   </div>
   <div
-    className="c7"
+    className="c6"
   />
 </div>
 `;
