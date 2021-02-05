@@ -6,15 +6,16 @@ import ReactSVG from "react-svg";
 import { alertService } from "./AlertService";
 import { useHistory } from "react-router";
 
+const dataInitial = {
+  buttonText: "",
+  icon: "",
+  message: "",
+  redirectionLink: "",
+  title: "",
+};
 export const Alert: React.FC<any> = () => {
   const history = useHistory();
-  const [alert, setAlert] = useState({
-    buttonText: "",
-    icon: "",
-    message: "",
-    redirectionLink: "",
-    title: "",
-  });
+  const [alert, setAlert] = useState(dataInitial);
   const [show, setShow] = useState(false);
   useEffect(() => {
     const subscription = alertService.onAlert().subscribe((data: any) => {
@@ -22,13 +23,7 @@ export const Alert: React.FC<any> = () => {
         setShow(true);
         setAlert(data);
       } else {
-        setAlert({
-          buttonText: "",
-          icon: "",
-          message: "",
-          redirectionLink: "",
-          title: "",
-        });
+        setAlert(dataInitial);
         setShow(false);
       }
       return subscription.unsubscribe;
