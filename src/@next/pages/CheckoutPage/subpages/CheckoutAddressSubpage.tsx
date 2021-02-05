@@ -1,5 +1,6 @@
 import { CheckoutAddress } from "@components/organisms";
 import { useCheckout, useUserDetails } from "@sdk/react";
+import { alertService } from "@temp/@next/components/atoms/Alert/AlertService";
 import { addressFormSchema } from "@temp/@next/components/organisms/AddressForm/adddressForm.schema";
 import { IPrivacyPolicy } from "@temp/@sdk/api/Checkout/types";
 import { ShopContext } from "@temp/components/ShopProvider/context";
@@ -14,6 +15,7 @@ import React, {
   useRef,
 } from "react";
 import { RouteComponentProps } from "react-router";
+import NoStockIcon from "images/auna/no-stock.svg";
 
 export interface ICheckoutAddressSubpageHandles {
   submitAddress: () => void;
@@ -159,6 +161,24 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     changeSubmitProgress(false);
     if (errors) {
       setAddressSubPageErrors(errors);
+      switch (errors[0].field) {
+        case "quantity":
+          alertService.sendAlert(
+            "Entendido",
+            NoStockIcon,
+            errors[0].message,
+            "Producto sin stock"
+          );
+          break;
+        default:
+          alertService.sendAlert(
+            "Entendido",
+            NoStockIcon,
+            errors[0].message,
+            "Ha ocurrido un error"
+          );
+          break;
+      }
     } else {
       setAddressSubPageErrors([]);
       if (checkout?.shippingMethod?.id) {

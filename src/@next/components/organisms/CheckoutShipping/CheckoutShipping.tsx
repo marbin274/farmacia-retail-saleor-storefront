@@ -1,7 +1,7 @@
 import { Formik } from "formik";
 import React from "react";
 
-import { ErrorMessage, Radio } from "@components/atoms";
+import { Radio } from "@components/atoms";
 import { Money } from "@components/containers";
 
 import * as S from "./styles";
@@ -14,7 +14,6 @@ const CheckoutShipping: React.FC<IProps> = ({
   shippingMethods,
   selectedShippingMethodId,
   selectShippingMethod,
-  errors,
   formId,
   formRef,
 }: IProps) => {
@@ -98,7 +97,7 @@ const CheckoutShipping: React.FC<IProps> = ({
                       </S.Tile>
                     );
                   })}
-                <ErrorMessage errors={errors} />
+                {/* <ErrorMessage errors={errors} /> */}
               </S.ShippingMethodForm>
             </S.FieldsGroup>
           );
