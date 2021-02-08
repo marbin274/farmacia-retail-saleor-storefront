@@ -173,7 +173,6 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
         default:
           alertService.sendAlert(
             "Entendido",
-            NoStockIcon,
             errors[0].message,
             "Ha ocurrido un error"
           );

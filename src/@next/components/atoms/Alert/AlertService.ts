@@ -7,9 +7,9 @@ export const alertService = {
   onAlert: () => subject.asObservable(),
   sendAlert: (
     buttonText: string,
-    icon: any,
     message: string,
     title: string,
+    icon?: any,
     redirectionLink?: string
   ) => subject.next({ message, title, icon, buttonText, redirectionLink }),
 };

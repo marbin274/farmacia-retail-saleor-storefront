@@ -5,6 +5,7 @@ import * as S from "./styles";
 import ReactSVG from "react-svg";
 import { alertService } from "./AlertService";
 import { useHistory } from "react-router";
+import WrongIcon from "images/auna/wrong.svg";
 
 const dataInitial = {
   buttonText: "",
@@ -52,7 +53,7 @@ export const Alert: React.FC<any> = () => {
       <div className="modal__container">
         <S.Modal>
           <S.Icon>
-            <ReactSVG path={alert.icon} />
+            <ReactSVG path={alert.icon || WrongIcon} />
           </S.Icon>
           <S.Title>{alert.title}</S.Title>
           <S.Message>{alert.message}</S.Message>
