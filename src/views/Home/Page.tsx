@@ -22,14 +22,20 @@ const Page: React.FC<IPageProps> = ({
   return (
     <>
       <div className="container">
-        <a href="./product/pack-vitaminas-y-minerales/4706/">
+        <a href="./product/protector-solar-corporal-eucerin-sensitive-protect-150-ml/4400/">
           <div className="home-page__top-banner">
             <div className="home-page__top-banner__text">
-              <h2>PACK VITAMINAS Y MINERALES</h2>
-              <h3><strong>Fortalécete con estas promos</strong></h3>
+              <h2>EN TODO EUCERIN </h2>
+              <h3>
+                <strong>Cuida tu piel como se merece</strong>
+              </h3>
               <p>
-                Válido hasta el 07/01/21 o agotar stock. Máx. 3 unids por producto.
-            *Aplica máx. 2 promociones por usuario. *Rango de tiempo referencial, sujeto a demanda. T&C: <a href="http://bit.ly/TyC_Farmauna" target="_blank">http://bit.ly/TyC_Farmauna</a>
+                Válido hasta el 28/02/21 o agotar stock. Máx. 3 unids por
+                producto. Aplica máx. 2 promociones por usuario. *Rango de tiempo
+                referencial, sujeto a demanda. T&C:
+                <a href="http://bit.ly/TyC_Farmauna" target="_blank">
+                  http://bit.ly/TyC_Farmauna
+                </a>
               </p>
             </div>
           </div>
