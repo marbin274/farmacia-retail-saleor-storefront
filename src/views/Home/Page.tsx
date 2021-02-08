@@ -21,12 +21,12 @@ const Page: React.FC<IPageProps> = ({
 }) => {
   return (
     <div className="container">
-      <a href="./product/bipack-juntos-contra-el-covid/4701/">
+      <a href="./product/protector-solar-corporal-eucerin-sensitive-protect-150-ml/4400/">
         <div className="home-page__top-banner">
           <div className="home-page__top-banner__text">
-            <h2>BIPACK JUNTOS CONTRA EL COVID-19 </h2>
+            <h2>EN TODO EUCERIN </h2>
             <h3>
-              <strong>Mascarillas KN95 + Alcohol en gel Nex</strong>
+              <strong>Cuida tu piel como se merece</strong>
             </h3>
             <p>
               Válido hasta el 28/02/21 o agotar stock. Máx. 3 unids por
