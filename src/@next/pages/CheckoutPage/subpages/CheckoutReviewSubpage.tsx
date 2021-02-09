@@ -43,6 +43,10 @@ const CheckoutReviewSubpageWithRef: RefForwardingComponent<
   const { data } = useShopDetails();
   const [errors, setErrors] = useState<IFormError[]>([]);
 
+  if (!localStorage.getItem("data_payment")) {
+    history.push(CHECKOUT_STEPS[1].link);
+  }
+
   const checkoutShippingAddress = checkout?.shippingAddress
     ? {
         ...checkout?.shippingAddress,
