@@ -1,7 +1,7 @@
 import { Subject } from "rxjs";
 
 const subject = new Subject();
-
+// TODO: sendAlert pasar un objeto y no como parámetros
 export const alertService = {
   clearAlert: () => subject.next(),
   onAlert: () => subject.asObservable(),

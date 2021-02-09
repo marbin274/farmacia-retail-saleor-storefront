@@ -165,9 +165,9 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
         case "quantity":
           alertService.sendAlert(
             "Entendido",
-            NoStockIcon,
             errors[0].message,
-            "Producto sin stock"
+            "Producto sin stock",
+            NoStockIcon
           );
           break;
         default:
@@ -222,3 +222,4 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
 const CheckoutAddressSubpage = forwardRef(CheckoutAddressSubpageWithRef);
 
 export { CheckoutAddressSubpage };
+

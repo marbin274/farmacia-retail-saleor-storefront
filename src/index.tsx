@@ -47,6 +47,12 @@ interface GtmEnvVars {
   preview: string | null;
 }
 
+interface GtmEnvVars {
+  auth: string | null;
+  id: string | null;
+  preview: string | null;
+}
+
 const cache = new InMemoryCache({
   dataIdFromObject: apolloCacheObject => {
     if (apolloCacheObject.__typename === "Shop") {

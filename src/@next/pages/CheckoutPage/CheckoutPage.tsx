@@ -22,6 +22,8 @@ import {
 } from "./subpages";
 import { IProps } from "./types";
 
+
+
 const prepareCartSummary = (
   totalPrice?: ITaxedMoney | null,
   shippingTaxedPrice?: ITaxedMoney | null,
@@ -47,8 +49,8 @@ const getCheckoutProgress = (
   const steps = isShippingRequired
     ? CHECKOUT_STEPS
     : CHECKOUT_STEPS.filter(
-        ({ onlyIfShippingRequired }) => !onlyIfShippingRequired
-      );
+      ({ onlyIfShippingRequired }) => !onlyIfShippingRequired
+    );
 
   return loaded ? (
     <CheckoutProgressBar
@@ -71,7 +73,7 @@ const getButton = (text: string, onClick: () => void) => {
   }
 };
 
-const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
+const CheckoutPage: React.FC<IProps> = ({ }: IProps) => {
   const { pathname } = useLocation();
   const {
     loaded: cartLoaded,
@@ -166,9 +168,9 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
   const shippingTaxedPrice =
     checkout?.shippingMethod?.id && shippingPrice
       ? {
-          gross: shippingPrice,
-          net: shippingPrice,
-        }
+        gross: shippingPrice,
+        net: shippingPrice,
+      }
       : null;
   const promoTaxedPrice = discount && {
     gross: discount,
@@ -229,8 +231,8 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
         )}
       />
     ) : (
-      <Loader />
-    );
+        <Loader />
+      );
 
   const isShippingRequiredForProducts =
     items &&
@@ -261,3 +263,4 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
 };
 
 export { CheckoutPage };
+
