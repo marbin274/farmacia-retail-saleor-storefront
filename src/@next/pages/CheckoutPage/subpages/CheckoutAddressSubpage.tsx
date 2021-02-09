@@ -167,6 +167,7 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
               icon: NoStockIcon,
               message: errors[0].message,
               title: "Producto sin stock",
+              type:"Error",
             });
             break;
           default:
@@ -174,6 +175,7 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
               buttonText: "Entendido",
               message: errors[0].message,
               title: "Ha ocurrido un error",
+              type:"Error",
             });
             break;
         }

@@ -1,18 +1,20 @@
 import { Overlay } from "@components/organisms";
-import WrongIcon from "images/auna/wrong.svg";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import ReactSVG from "react-svg";
 import { Button } from "../Button";
 import { alertService } from "./AlertService";
 import * as S from "./styles";
-import { IAlertServiceProps } from "./types";
+import { alertTypes, IAlertServiceProps } from "./types";
 
 const dataInitial: IAlertServiceProps = {
   buttonText: "",
   icon: "",
-  title: "",
+  type: "Info",
 };
+
+
+
 export const Alert: React.FC<any> = () => {
   const history = useHistory();
   const [alert, setAlert] = useState<IAlertServiceProps>(dataInitial);
@@ -38,10 +40,9 @@ export const Alert: React.FC<any> = () => {
   const redirectTo = () => {
     setShow(false);
     alertService.clearAlert();
-    if (alert.redirectionLink) {
-      history.push(alert.redirectionLink);
-    }
+    if (alert.redirectionLink) { history.push(alert.redirectionLink); }
   };
+
 
   return (
     <Overlay
@@ -54,9 +55,9 @@ export const Alert: React.FC<any> = () => {
       <div className="modal__container">
         <S.Modal>
           <S.Icon>
-            <ReactSVG path={alert.icon || WrongIcon} />
+            <ReactSVG path={alert.icon || alertTypes[alert.type].icon} />
           </S.Icon>
-          <S.Title>{alert.title}</S.Title>
+          <S.Title>{alert.title || alertTypes[alert.type].title}</S.Title>
           <S.Message>{alert.message}</S.Message>
           <S.Footer>
             {alert.redirectionLink ? (

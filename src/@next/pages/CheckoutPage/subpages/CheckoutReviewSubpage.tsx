@@ -97,6 +97,7 @@ const CheckoutReviewSubpageWithRef: RefForwardingComponent<
             message: "Por favor valida que todos tus datos de pago sean correctos e inténtalo de nuevo",
             redirectionLink: CHECKOUT_STEPS[1].link,
             title: "No pudimos procesar el pago",
+            type: "Error",
           });
 
           setErrors(errors);
