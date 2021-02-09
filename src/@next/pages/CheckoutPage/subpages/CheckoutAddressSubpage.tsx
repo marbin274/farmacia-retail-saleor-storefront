@@ -164,9 +164,9 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
           case "quantity":
             alertService.sendAlert({
               buttonText: "Entendido",
+              icon: NoStockIcon,
               message: errors[0].message,
               title: "Producto sin stock",
-              icon: NoStockIcon,
             });
             break;
           default:

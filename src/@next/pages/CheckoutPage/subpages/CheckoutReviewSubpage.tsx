@@ -93,10 +93,10 @@ const CheckoutReviewSubpageWithRef: RefForwardingComponent<
           removePaymentItems();
           alertService.sendAlert({
             buttonText: "Entendido",
-            message: "Por favor valida que todos tus datos de pago sean correctos e inténtalo de nuevo",
-            title: "No pudimos procesar el pago",
             icon: ErrorPaymentIcon,
-            redirectionLink: CHECKOUT_STEPS[1].link
+            message: "Por favor valida que todos tus datos de pago sean correctos e inténtalo de nuevo",
+            redirectionLink: CHECKOUT_STEPS[1].link,
+            title: "No pudimos procesar el pago",
           });
 
           setErrors(errors);
