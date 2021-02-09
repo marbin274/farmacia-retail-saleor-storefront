@@ -12,7 +12,7 @@ export const featuredProducts = gql`
   ${productPricingFragment}
   query FeaturedProducts ($first: Int)  {
     shop {
-      homepageCollection {
+      homepageCollections {
         id
         name
         products(first: $first) {

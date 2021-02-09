@@ -27,7 +27,7 @@ describe("<CheckoutAddress />", () => {
     expect(getValue(0)).toEqual(address.firstName);
     expect(getValue(1)).toEqual("");
     expect(getValue(2)).toEqual(address.email);
-    expect(getValue(3)).toEqual(address.phone);
+    expect(getValue(3)).toEqual("");
     expect(getValue(4)).toEqual(address.streetAddress1);
     expect(getValue(5)).toEqual(address.streetAddress2);
 

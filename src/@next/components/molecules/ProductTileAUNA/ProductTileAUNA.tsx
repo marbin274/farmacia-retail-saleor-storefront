@@ -1,7 +1,12 @@
-import { Button, ProductSticker } from '@components/atoms';
+import { Button, ProductSticker } from "@components/atoms";
 import { TaxedMoney } from "@components/containers";
 import { Thumbnail } from "@components/molecules";
-import { checkProductCanAddToCart, checkProductIsOnSale, getProductPricingClass } from "@temp/@next/utils/products";
+import {
+  checkProductCanAddToCart,
+  checkProductIsOnSale,
+  getProductPricingClass,
+} from "@temp/@next/utils/products";
+import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import * as S from "./styles";
@@ -28,6 +33,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
     if (canAddToCart) {
       const firstProductVariant = product?.variants?.[0];
       if (firstProductVariant) {
+        removePaymentItems();
         addToCart?.(firstProductVariant.id, 1);
       }
     }
@@ -40,15 +46,11 @@ export const ProductTileAUNA: React.FC<IProps> = ({
     });
   }, [product.thumbnail, product.thumbnail2x]);
 
-
   return (
     <S.ProductCard data-cy="product-tile" canAddToCart={canAddToCart}>
       <Link to={productLink} key={product.id}>
         <S.WrapperStockout>
-          <ProductSticker
-            canAddToCart={canAddToCart}
-            isOnSale={isOnSale}
-          />
+          <ProductSticker canAddToCart={canAddToCart} isOnSale={isOnSale} />
           <div className="img">
             <S.Image>
               <Thumbnail source={thumbnails} />
@@ -57,24 +59,27 @@ export const ProductTileAUNA: React.FC<IProps> = ({
           <div className="description">
             <S.Title>{product.name}</S.Title>
           </div>
-          <div className={getProductPricingClass(canAddToCart, isOnSale)} >
+          <div className={getProductPricingClass(canAddToCart, isOnSale)}>
             <S.Price>
               <TaxedMoney taxedMoney={product?.pricing?.priceRange?.start} />
             </S.Price>
           </div>
-          {isOnSale && <div className="price undiscounted_price">
-            <TaxedMoney taxedMoney={product?.pricing?.priceRangeUndiscounted?.start} />
-          </div>}
+          {isOnSale && (
+            <div className="price undiscounted_price">
+              <TaxedMoney
+                taxedMoney={product?.pricing?.priceRangeUndiscounted?.start}
+              />
+            </div>
+          )}
         </S.WrapperStockout>
       </Link>
-      {
-        addToCart &&
+      {addToCart && (
         <div className="button">
           <Button onClick={onAddToCart} disabled={!canAddToCart}>
             +
-        </Button>
+          </Button>
         </div>
-      }
+      )}
     </S.ProductCard>
   );
 };

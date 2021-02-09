@@ -1,6 +1,6 @@
-import {UnderConstruction} from "@components/organisms/UnderConstruction";
+import { UnderConstruction } from "@components/organisms/UnderConstruction";
+import { OutOfTime } from "@temp/components";
 import * as React from "react";
-
 import { Overlay, OverlayContext, OverlayType } from "..";
 import Cart from "./Cart";
 import Login from "./Login";
@@ -9,6 +9,7 @@ import Modal from "./Modal";
 import Notification from "./Notification";
 import Password from "./Password";
 import Search from "./Search";
+
 
 const OverlayManager: React.FC = () => (
   <OverlayContext.Consumer>
@@ -40,6 +41,9 @@ const OverlayManager: React.FC = () => (
 
         case OverlayType.mainMenuNav:
           return <Overlay context={overlay} />;
+
+        case OverlayType.outOfTime:
+          return <OutOfTime overlay={overlay} />;
 
         case OverlayType.underConstruction:
           return <UnderConstruction overlay={overlay} />;

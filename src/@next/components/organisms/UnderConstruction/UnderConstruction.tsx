@@ -1,14 +1,12 @@
 import { EmailLink } from "@components/atoms/EmailLink";
-import React from "react";
-
 import { Overlay, OverlayContextInterface } from "@temp/components/Overlay";
-
+import { CONSULTATION_EMAIL } from "@temp/core/config";
+import React from "react";
 import ReactSVG from "react-svg";
 import * as S from "./styles";
 
-
 export const UnderConstruction: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
-  const hide = () => overlay.hide();
+  const { hide } = overlay;
 
   return (
     <Overlay context={overlay}>
@@ -25,7 +23,7 @@ export const UnderConstruction: React.FC<{ overlay: OverlayContextInterface }> =
               Si tienes algún obstáculo durante tu visita, cuéntanos a:
             </p>
             <br />
-            <EmailLink link="consultas@farmauna.com" /> o <span>01 3913655</span>
+            <EmailLink link={CONSULTATION_EMAIL} /> o <span>01 3913655</span>
           </S.CardText>
 
           <S.CardImageContainer>

@@ -10,7 +10,6 @@ import {
 
 export const AddressForm = styled.form`
   width: 100%;
-
   .privacyAndPolicies {
     margin-top: 1rem;
     width: 100%;

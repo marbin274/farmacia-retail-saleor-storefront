@@ -6,7 +6,7 @@ import { CheckoutReview } from ".";
 
 describe("<CheckoutReview />", () => {
   it("exists", () => {
-    const wrapper = shallow(<CheckoutReview creditCardProvider="visa" />);
+    const wrapper = shallow(<CheckoutReview creditCardProvider="visa" isShippingAvailable={true} />);
 
     expect(wrapper.exists()).toEqual(true);
   });

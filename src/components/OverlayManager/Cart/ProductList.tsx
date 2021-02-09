@@ -1,7 +1,12 @@
 import { TaxedMoney } from "@components/containers";
 import { Thumbnail } from "@components/molecules";
 import { ICheckoutModelLine } from "@sdk/repository";
-import { checkProductCanAddToCart, checkProductIsOnSale, getProductPricingClass } from "@temp/@next/utils/products";
+import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
+import {
+  checkProductCanAddToCart,
+  checkProductIsOnSale,
+  getProductPricingClass,
+} from "@temp/@next/utils/products";
 import { generateProductUrl } from "@temp/core/utils";
 import * as React from "react";
 import { Link } from "react-router-dom";
@@ -22,7 +27,7 @@ const ProductList: React.FC<IProductList> = ({
 }) => (
   <ul className="cart__list">
     {products.map(product => {
-      const { variant, quantity } = product;      
+      const { variant, quantity } = product;
       const canAddToCart = checkProductCanAddToCart(product, products);
       const isOnSale = checkProductIsOnSale(product);
 
@@ -45,19 +50,31 @@ const ProductList: React.FC<IProductList> = ({
               </Link>
               <button
                 className="cart__list__item__details--button"
-                onClick={() => onRemove(variant.id)}
+                onClick={() => {
+                  removePaymentItems();
+                  onRemove(variant.id);
+                }}
               >
                 Eliminar
               </button>
             </div>
             <div className="cart__list__item__down">
               <TaxedMoney
-                className={`cart__list__item__quantity__price price ${getProductPricingClass(canAddToCart, isOnSale)}`}
+                className={`cart__list__item__quantity__price price ${getProductPricingClass(
+                  canAddToCart,
+                  isOnSale
+                )}`}
                 taxedMoney={variant.pricing.price}
               />
               <ItemQuantity
-                onAdd={() => onAdd(variant.id, 1)}
-                onRemove={() => onSubtract(variant.id)}
+                onAdd={() => {
+                  removePaymentItems();
+                  onAdd(variant.id, 1);
+                }}
+                onRemove={() => {
+                  removePaymentItems();
+                  onSubtract(variant.id);
+                }}
                 value={quantity}
                 maxValue={variant.quantityAvailable}
               />

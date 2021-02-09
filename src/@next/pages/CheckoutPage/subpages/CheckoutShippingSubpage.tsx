@@ -6,10 +6,9 @@ import React, {
   forwardRef,
   RefForwardingComponent,
   useImperativeHandle,
-  useRef
+  useRef,
 } from "react";
 import { RouteComponentProps, useHistory } from "react-router";
-
 
 export interface ICheckoutShippingSubpageHandles {
   submitShipping: () => void;
@@ -24,7 +23,15 @@ interface IProps extends RouteComponentProps<any> {
 const CheckoutShippingSubpageWithRef: RefForwardingComponent<
   ICheckoutShippingSubpageHandles,
   IProps
-> = ({ addressSubPageErrors, changeSubmitProgress, setAddressSubPageErrors, ...props }: IProps, ref) => {
+> = (
+  {
+    addressSubPageErrors,
+    changeSubmitProgress,
+    setAddressSubPageErrors,
+    ...props
+  }: IProps,
+  ref
+) => {
   const checkoutShippingFormId = "shipping-form";
   const checkoutShippingFormRef = useRef<HTMLFormElement>(null);
 
@@ -47,7 +54,10 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
     },
   }));
 
-  const handleSetShippingMethod = async (shippingMethodId: string, clicked = false) => {
+  const handleSetShippingMethod = async (
+    shippingMethodId: string,
+    clicked = false
+  ) => {
     changeSubmitProgress(true);
     const { dataError } = await setShippingMethod(shippingMethodId);
     const errors = dataError?.error;

@@ -33,7 +33,7 @@ describe("<AddressForm />", () => {
 
     expect(getField(0)).toEqual(PROPS.address.firstName);
     expect(getField(2)).toEqual(PROPS.address.email);
-    expect(getField(3)).toEqual(PROPS.address.phone);
+    expect(getField(3)).toEqual("");
     expect(getField(4)).toEqual(PROPS.address.streetAddress1);
     expect(getField(5)).toEqual(PROPS.address.streetAddress2);
   });

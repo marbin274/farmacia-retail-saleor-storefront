@@ -68,6 +68,8 @@ export interface GetShop_shop {
    * Customer's geolocalization data.
    */
   geolocalization: GetShop_shop_geolocalization | null;
+
+  isShippingAvailable: boolean;
 }
 
 export interface GetShop {

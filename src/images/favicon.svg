@@ -1,14 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>logo</title>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Artboard" transform="translate(-85.000000, -129.000000)" fill-rule="nonzero">
-            <g id="logo" transform="translate(85.000000, 129.000000)">
-                <path d="M16.576,25.6 L0,25.6 L0,0 L25.6,0 L25.6,16.576 C25.6,21.568 21.568,25.6 16.576,25.6 Z" id="Path" fill="#C2DF0A"></path>
-                <path d="M25.6,64 L0,64 L0,38.4 L16.576,38.4 C21.568,38.4 25.6,42.432 25.6,47.424 L25.6,64 Z" id="Path" fill="#00B0CA"></path>
-                <path d="M64,25.6 L47.424,25.6 C42.432,25.6 38.4,21.568 38.4,16.576 L38.4,0 L64,0 L64,25.6 Z" id="Path" fill="#00B0CA"></path>
-                <path d="M64,64 L38.4,64 L38.4,47.424 C38.4,42.432 42.432,38.4 47.424,38.4 L64,38.4 L64,64 Z" id="Path" fill="#C2DF0A"></path>
-            </g>
-        </g>
-    </g>
+<svg width="264" height="352" viewBox="0 0 264 352" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0)">
+<path d="M89.4253 126.441L30.2626 237.832C22.4267 253.43 20.5643 271.303 24.4352 286.832C28.6563 302.547 38.6328 315.031 54.0367 323.213C69.7906 331.58 87.4711 333.785 103.205 328.669C118.589 323.367 129.368 310.678 137.554 295.266L196.902 183.525L89.4253 126.441Z" fill="#A8DE3B"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M204.344 169.513L96.8671 112.429L126.448 56.7337C134.985 41.507 147.514 29.7485 162.898 24.4463C178.281 19.144 194.912 20.7911 210.315 28.9725C226.069 37.3399 237.096 50.3821 241.317 66.097C245.538 81.8119 242.111 98.4049 233.925 113.818L204.344 169.513Z" fill="#00BF8E"/>
+</g>
+<defs>
+<clipPath id="clip0">
+<rect width="121.696" height="333.167" fill="white" transform="translate(156.402 0.337646) rotate(27.9739)"/>
+</clipPath>
+</defs>
 </svg>

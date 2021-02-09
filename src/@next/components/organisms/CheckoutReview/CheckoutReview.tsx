@@ -1,15 +1,13 @@
+import { CreditCardIcon } from "@components/atoms";
+import { AddressSummary, OutOfTimeMessage } from "@components/molecules";
 import React from "react";
-
-import { CreditCardIcon, ErrorMessage } from "@components/atoms";
-import { AddressSummary } from "@components/molecules";
-
 import * as S from "./styles";
 import { IProps } from "./types";
-
 /**
  * Review order view showed in checkout.
  */
 const CheckoutReview: React.FC<IProps> = ({
+  isShippingAvailable,
   shippingAddress,
   billingAddress,
   shippingMethodName,
@@ -35,10 +33,9 @@ const CheckoutReview: React.FC<IProps> = ({
         <CreditCardIcon creditCardProvider={creditCardProvider} />
         <S.Text>Tarjeta de Crédito / Débito</S.Text>
       </div>
-
-      <S.ErrorMessages>
-        <ErrorMessage errors={errors} />
-      </S.ErrorMessages>
+      <OutOfTimeMessage
+        isShippingAvailable={isShippingAvailable ? isShippingAvailable : false}
+      />
     </S.Wrapper>
   );
 };

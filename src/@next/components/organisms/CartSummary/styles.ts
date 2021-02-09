@@ -13,6 +13,7 @@ export const Wrapper = styled.div<{ mobileCartOpened: boolean }>`
   border: 1px solid ${aunaComplementary4};
   border-radius: 16px;
   overflow-y: auto;
+  overflow-x: hidden;
 
   ${media.mediumScreen`
     width: 100%;

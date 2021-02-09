@@ -18,6 +18,9 @@ export interface ISimpleProduct extends INode {
   thumbnail2x?: IImage | null;
   basePrice?: IMoney;
   pricing?: IProductPricing;
+  // items in cart, checkout lines
+  variant?: IProductVariant;
+  // product list, product auna tile, product search result
   variants?: IProductVariant[];
   quantity?: number;
   quantityAvailable?: number | undefined;

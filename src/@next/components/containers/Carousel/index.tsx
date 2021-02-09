@@ -1,25 +1,20 @@
-import {
-  mediumScreen,
-  smallScreen,
-} from "../../globalStyles/scss/variables.scss";
-import "./scss/index.scss";
-
+import { largeScreen, smallScreen } from "@temp/@next/globalStyles/constants";
+import arrowImg from "@temp/images/carousel-arrow.svg";
 import NukaCarousel, { CarouselProps } from "nuka-carousel";
 import * as React from "react";
 import Media from "react-media";
 import ReactSVG from "react-svg";
-
-import arrowImg from "../../images/carousel-arrow.svg";
+import "./scss/index.scss";
 
 interface CarouselType extends CarouselProps {
   children: React.ReactNode;
 }
 
-const Carousel: React.FC<CarouselType> = ({ children, ...rest }) => {
+export const Carousel: React.FC<CarouselType> = ({ children, ...rest }) => {
   const settings = {
     className: "carousel",
     renderBottomCenterControls: () => null,
-    renderCenterLeftControls: ({ previousSlide, currentSlide }) =>
+    renderCenterLeftControls: ({ previousSlide, currentSlide }: any) =>
       currentSlide !== 0 ? (
         <div
           onClick={previousSlide}
@@ -33,7 +28,7 @@ const Carousel: React.FC<CarouselType> = ({ children, ...rest }) => {
       currentSlide,
       slideCount,
       slidesToShow,
-    }) =>
+    }: any) =>
       slideCount - slidesToShow !== currentSlide ? (
         <div
           onClick={nextSlide}
@@ -52,17 +47,15 @@ const Carousel: React.FC<CarouselType> = ({ children, ...rest }) => {
 
   return (
     <Media query={{ maxWidth: smallScreen }}>
-      {matches =>
+      {(matches: any) =>
         matches ? (
           carousel(1)
         ) : (
-          <Media query={{ maxWidth: mediumScreen }}>
-            {matches => carousel(matches ? 2 : 4)}
-          </Media>
-        )
+            <Media query={{ maxWidth: largeScreen }}>
+              {(matches: any) => carousel(matches ? 2 : 4)}
+            </Media>
+          )
       }
     </Media>
   );
 };
-
-export default Carousel;
