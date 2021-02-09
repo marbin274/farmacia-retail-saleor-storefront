@@ -159,6 +159,8 @@ export interface TokenAuth_tokenCreate_user {
    */
   addresses: (TokenAuth_tokenCreate_user_addresses | null)[] | null;
   documentNumber?: string;
+  termsAndConditions?: boolean;
+  dataTreatmentPolicy?: boolean;
 }
 
 export interface TokenAuth_tokenCreate {
