@@ -9,7 +9,7 @@
             height: 20rem;
             max-width: 50rem;
             width: calc(100vw - 2rem);
-            @media (max-width: $xs-small-screen) {
+            @media (max-width: $small-screen) {
                 top: 1rem;
             }
             &__card {

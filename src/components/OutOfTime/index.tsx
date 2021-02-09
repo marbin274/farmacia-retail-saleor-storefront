@@ -23,7 +23,7 @@ const OutOfTime = ({ overlay }: IProps) => {
                     <div className="overlay__modal__wrapper__card__body">
                         <div className="overlay__modal__wrapper__card__body__text">
                             <div>
-                                <p>Si tienes dudas comunicate con nosotros.</p>
+                                <p>Si tienes dudas comunícate con nosotros.</p>
                                 <EmailLink link={CONSULTATION_EMAIL} />
                             </div>
                             <div className="overlay__modal__wrapper__card__body__text__button">
