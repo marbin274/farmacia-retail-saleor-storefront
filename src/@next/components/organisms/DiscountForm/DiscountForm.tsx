@@ -1,11 +1,11 @@
 import { Formik } from "formik";
 import React from "react";
 
-import { Button, Chip, ErrorMessage, Input } from "@components/atoms";
+import { Button, Chip, Input } from "@components/atoms";
 import * as S from "./styles";
 import { IProps } from "./types";
 import ReactSVG from "react-svg";
-import voucherSVG from '../../../../images/auna/voucher.svg';
+import voucherSVG from "../../../../images/auna/voucher.svg";
 
 export const DiscountForm: React.FC<IProps> = ({
   handleSubmit,
@@ -28,15 +28,14 @@ export const DiscountForm: React.FC<IProps> = ({
         promoCode: newInputCode.toUpperCase(),
       });
     }
-    
+
     setInputCode("");
   };
-
 
   const handleRemoveBtnClick = (newInputCode: string) => {
     setTempPromoCode(undefined);
     setInputCode("");
-    if(removeVoucher) {
+    if (removeVoucher) {
       removeVoucher(newInputCode);
     }
   };
@@ -75,56 +74,60 @@ export const DiscountForm: React.FC<IProps> = ({
           if (discount?.voucherDiscountType === "fixed") {
             discountDescription = `S/ ${discount?.voucherDiscountValue} de descuento en toda tu compra`;
           } else {
-            discountDescription = discount?.voucherDiscountValue + "% de descuento en toda tu compra";
+            discountDescription =
+              discount?.voucherDiscountValue +
+              "% de descuento en toda tu compra";
           }
         }
 
         return (
           <S.DiscountForm id={formId} ref={formRef} onSubmit={handleSubmit}>
-            <S.Input >
+            <S.Input>
               <S.InputWithButton>
-              {(!discount?.promoCode) && (
+                {!discount?.promoCode && (
                   <S.InputWrapper>
-                    <div id="flex" className={
-                          (errors && errors.length) ? 'error' : 'flex'
-                        }>
+                    <div
+                      id="flex"
+                      className={errors && errors.length ? "error" : "flex"}
+                    >
                       <div className="input">
-                          <Input 
-                            data-cy="checkoutPaymentPromoCodeInput"
-                            error={hasErrors}
-                            name="inputCode"
-                            value={promoCode ? values.inputCode : undefined}
-                            label=""
-                            placeholder="Inserta tu código"
-                            onChange={handleChange}
-                            onFocus={() => {errors = null}}
-                          />
-                        </div>
-                        <div className="button">
-                          <Button
-                            type="button"
-                            disabled={errors}
-                            data-cy="checkoutPaymentPromoCodeBtn"
-                            onClick={() => handleApplyBtnClick(values.inputCode)}
-                          >
-                            Aplicar
-                          </Button>
-                        </div>
+                        <Input
+                          data-cy="checkoutPaymentPromoCodeInput"
+                          error={hasErrors}
+                          name="inputCode"
+                          value={promoCode ? values.inputCode : undefined}
+                          label=""
+                          placeholder="Inserta tu código"
+                          onChange={handleChange}
+                          onFocus={() => {
+                            errors = null;
+                          }}
+                        />
+                      </div>
+                      <div className="button">
+                        <Button
+                          type="button"
+                          disabled={errors}
+                          data-cy="checkoutPaymentPromoCodeBtn"
+                          onClick={() => handleApplyBtnClick(values.inputCode)}
+                        >
+                          Aplicar
+                        </Button>
+                      </div>
                     </div>
                   </S.InputWrapper>
-
-              )}
-
+                )}
               </S.InputWithButton>
             </S.Input>
-            {(discount?.promoCode) && (
+            {discount?.promoCode && (
               <div>
                 <S.ChipsWrapper className="promoCode">
-                  <Chip type="button" onClose={() => handleRemoveBtnClick(discount?.promoCode)}>
+                  <Chip
+                    type="button"
+                    onClose={() => handleRemoveBtnClick(discount?.promoCode)}
+                  >
                     <div className="voucherTitle">
-                      <ReactSVG
-                          path={voucherSVG}
-                        /> 
+                      <ReactSVG path={voucherSVG} />
                       <span data-cy="checkoutPaymentPromoCodeChip">
                         {discount?.promoCode}
                       </span>
@@ -132,18 +135,11 @@ export const DiscountForm: React.FC<IProps> = ({
                     <div className="voucherDescription">
                       {discountDescription}
                     </div>
-
                   </Chip>
                 </S.ChipsWrapper>
               </div>
             )}
-
-            <div style={{marginLeft: "1rem"}}>
-              <ErrorMessage errors={errors} />
-            </div>
-            
           </S.DiscountForm>
-          
         );
       }}
     </Formik>

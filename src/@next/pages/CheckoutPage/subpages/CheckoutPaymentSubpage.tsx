@@ -19,6 +19,7 @@ import {
 import { IAddress, ICardData, IFormError } from "@types";
 import { filterNotEmptyArrayItems } from "@utils/misc";
 import { IUserDataForNiubiz } from "@temp/@next/components/organisms/CheckoutPayment/types";
+import { alertService } from "@temp/@next/components/atoms/Alert";
 
 export interface ICheckoutPaymentSubpageHandles {
   submitPayment: () => void;
@@ -134,11 +135,15 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
     token: string,
     cardData?: ICardData
   ) => {
-    
     const { dataError } = await createPayment(gateway, token, cardData);
     const errors = dataError?.error;
     changeSubmitProgress(false);
     if (errors) {
+      alertService.sendAlert({
+        buttonText: "Entendido",
+        message: errors[0].message,
+        type: "Error",
+      });
       setGatewayErrors(errors);
     } else {
       setGatewayErrors([]);
@@ -150,11 +155,11 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
     changeSubmitProgress(false);
   };
 
-  const submitCheckoutGatewayForm = () =>{
+  const submitCheckoutGatewayForm = () => {
     checkoutGatewayFormRef?.current?.dispatchEvent(
       new Event("submit", { cancelable: true })
     );
-  }
+  };
 
   const handleSetBillingAddress = async (
     address?: IAddress,
@@ -195,6 +200,11 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
       errors = dataError?.error;
     }
     if (errors) {
+      alertService.sendAlert({
+        buttonText: "Entendido",
+        message: errors[0].message,
+        type: "Error",
+      });
       changeSubmitProgress(false);
       setBillingErrors(errors);
     } else {
@@ -207,7 +217,14 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
         submitCheckoutGatewayForm();
       } else {
         changeSubmitProgress(false);
-        setGatewayErrors([{ message: "Selecciona un método de pago para continuar" }]);
+        alertService.sendAlert({
+          buttonText: "Entendido",
+          message: "Selecciona un método de pago para continuar",
+          type: "Info",
+        });
+        setGatewayErrors([
+          { message: "Selecciona un método de pago para continuar" },
+        ]);
       }
     }
   };
@@ -217,6 +234,11 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
     changeSubmitProgress(false);
 
     if (dataError?.error) {
+      alertService.sendAlert({
+        buttonText: "Entendido",
+        message: dataError?.error[0].message,
+        type: "Error",
+      });
       setPromoCodeErrors(dataError?.error);
     } else {
       clearPromoCodeErrors();
@@ -228,6 +250,11 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
     changeSubmitProgress(false);
 
     if (dataError?.error) {
+      alertService.sendAlert({
+        buttonText: "Entendido",
+        message: dataError?.error[0].message,
+        type: "Error",
+      });
       setPromoCodeErrors(dataError?.error);
     } else {
       clearPromoCodeErrors();
@@ -300,7 +327,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
       newAddressFormId={checkoutNewAddressFormId}
       processPayment={handleProcessPayment}
       onGatewayError={handlePaymentGatewayError}
-      changeRequestPayload={changeRequestPayload}      
+      changeRequestPayload={changeRequestPayload}
       requestPayload={requestPayload}
       totalPrice={totalPrice}
       userDataForNiubiz={userDataForNiubiz}

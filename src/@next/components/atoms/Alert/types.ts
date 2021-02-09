@@ -16,16 +16,16 @@ export interface IProps extends IAlertServiceProps {
 
 export interface IAlertTypes {
   icon: string;
-  title: string
+  title: string;
 }
 
-export const alertTypes: { Error: IAlertTypes, Info: IAlertTypes } = {
+export const alertTypes: { Error: IAlertTypes; Info: IAlertTypes } = {
   Error: {
     icon: ErrorIcon,
-    title: "Ha ocurrido un error",
+    title: "Huy, algo salió mal",
   },
   Info: {
     icon: ErrorIcon,
-    title: "Ha ocurrido un error",
+    title: "Huy, algo salió mal",
   },
 };

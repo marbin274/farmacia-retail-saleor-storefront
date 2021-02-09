@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 // import {AunaPaymentGateway} from "@components/organisms/AunaPaymentGateway";
 import { DummyPaymentGateway } from "@components/organisms/DummyPaymentGateway";
 import { NiubizPaymentGateway } from "@components/organisms/NiubizPaymentGateway";
-import { ErrorMessage, Radio } from "@components/atoms";
+import { Radio } from "@components/atoms";
 import creditCardIcon from "@temp/images/auna/icon-credit-card.svg";
 import visaIcon from "@temp/images/auna/visa-payment.svg";
 import masterCardIcon from "@temp/images/auna/mastercard-payment.svg";
@@ -142,7 +142,9 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                     config={config}
                     formRef={formRef}
                     formId={formId}
-                    processPayment={(token, card) => processPayment(id, token, card)}
+                    processPayment={(token, card) =>
+                      processPayment(id, token, card)
+                    }
                     errors={errors}
                     onError={onError}
                     changeRequestPayload={changeRequestPayload}
@@ -189,7 +191,7 @@ const PaymentGatewaysList: React.FC<IProps> = ({
           }
         }
       })}
-      {!selectedPaymentGateway && errors && <ErrorMessage errors={errors} />}
+      {/* {!selectedPaymentGateway && errors && <ErrorMessage errors={errors} />} */}
     </S.Wrapper>
   );
 };

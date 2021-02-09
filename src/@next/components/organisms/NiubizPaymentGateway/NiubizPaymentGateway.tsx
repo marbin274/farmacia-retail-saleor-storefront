@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Formik } from "formik";
-import { ErrorMessage, Loader } from "@components/atoms";
-import { ICardData, IFormError, IPaymentGatewayConfig } from "@types";
+import { Loader } from "@components/atoms";
+import { ICardData, IPaymentGatewayConfig } from "@types";
 const ip = require("ip");
 
 import {
@@ -16,6 +16,7 @@ import { IProps } from "./types";
 import ReactSVG from "react-svg";
 import niubizIcon from "@temp/images/auna/niubiz-logo.svg";
 import { IUserDataForNiubiz } from "../CheckoutPayment/types";
+import { alertService } from "../../atoms/Alert";
 
 const INITIAL_CARD_ERROR_STATE = {
   fieldErrors: {
@@ -121,7 +122,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
 }: IProps) => {
   // @ts-ignore
   const [sessionKey, setSessionKey] = useState("");
-  const [submitErrors, setSubmitErrors] = useState<IFormError[]>([]);
+  // const [submitErrors, setSubmitErrors] = useState<IFormError[]>([]);
 
   // @ts-ignore
   const [cardErrors, setCardErrors] = React.useState<ErrorData>(
@@ -292,12 +293,17 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
   );
 
   const configureErrorMessages = (errors: any) => {
-    setSubmitErrors(errors);
+    alertService.sendAlert({
+      buttonText: "Entendido",
+      message: errors[0].message,
+      type: "Error",
+    });
+    // setSubmitErrors(errors);
     onError(errors);
   };
 
   const handleSubmit = async (formData: any) => {
-    setSubmitErrors([]);
+    // setSubmitErrors([]);
 
     const data = {
       alias: "KS",
@@ -370,7 +376,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
     };
   }, []);
 
-  const allErrors = [...errors, ...submitErrors];
+  // const allErrors = [...errors, ...submitErrors];
   const styles = {
     hidde: {
       display: "none",
@@ -510,7 +516,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                 </S.Payment>
               </div>
             </form>
-            <ErrorMessage errors={allErrors} />
+            {/* <ErrorMessage errors={allErrors} /> */}
           </S.Wrapper>
         )}
       </Formik>
