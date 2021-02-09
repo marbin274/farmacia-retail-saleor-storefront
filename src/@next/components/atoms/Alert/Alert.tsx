@@ -1,25 +1,24 @@
 import { Overlay } from "@components/organisms";
-import React, { useEffect, useState } from "react";
-import { Button } from "../Button";
-import * as S from "./styles";
-import ReactSVG from "react-svg";
-import { alertService } from "./AlertService";
-import { useHistory } from "react-router";
 import WrongIcon from "images/auna/wrong.svg";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router";
+import ReactSVG from "react-svg";
+import { Button } from "../Button";
+import { alertService } from "./AlertService";
+import * as S from "./styles";
+import { IAlertServiceProps } from "./types";
 
-const dataInitial = {
+const dataInitial: IAlertServiceProps = {
   buttonText: "",
   icon: "",
-  message: "",
-  redirectionLink: "",
   title: "",
 };
 export const Alert: React.FC<any> = () => {
   const history = useHistory();
-  const [alert, setAlert] = useState(dataInitial);
+  const [alert, setAlert] = useState<IAlertServiceProps>(dataInitial);
   const [show, setShow] = useState(false);
   useEffect(() => {
-    const subscription = alertService.onAlert().subscribe((data: any) => {
+    const subscription = alertService.onAlert().subscribe((data: IAlertServiceProps) => {
       if (data) {
         setShow(true);
         setAlert(data);
@@ -39,7 +38,9 @@ export const Alert: React.FC<any> = () => {
   const redirectTo = () => {
     setShow(false);
     alertService.clearAlert();
-    history.push(alert.redirectionLink);
+    if (alert.redirectionLink) {
+      history.push(alert.redirectionLink);
+    }
   };
 
   return (
@@ -61,8 +62,8 @@ export const Alert: React.FC<any> = () => {
             {alert.redirectionLink ? (
               <Button onClick={redirectTo}>{alert.buttonText}</Button>
             ) : (
-              <Button onClick={hide}>{alert.buttonText}</Button>
-            )}
+                <Button onClick={hide}>{alert.buttonText}</Button>
+              )}
           </S.Footer>
         </S.Modal>
       </div>

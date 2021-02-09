@@ -1,9 +1,13 @@
-export interface IProps {
-  title: string;
+export interface IAlertServiceProps{
+  buttonText: string;
+  icon?: string;
   message?: string;
+  title: string;
+  redirectionLink?: string;
+}
+
+export interface IProps extends IAlertServiceProps {
   hide: () => void;
   show: boolean;
-  redirectionLink?: string;
   svgIconUrl: string;
-  buttonText: string;
 }

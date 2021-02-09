@@ -4,18 +4,17 @@ import { alertService } from "@temp/@next/components/atoms/Alert/AlertService";
 import { addressFormSchema } from "@temp/@next/components/organisms/AddressForm/adddressForm.schema";
 import { IPrivacyPolicy } from "@temp/@sdk/api/Checkout/types";
 import { ShopContext } from "@temp/components/ShopProvider/context";
-// import { CHECKOUT_STEPS } from "@temp/core/config";
 import { IAddress, IAddressWithEmail, IFormError } from "@types";
 import { filterNotEmptyArrayItems } from "@utils/misc";
+import NoStockIcon from "images/auna/no-stock.svg";
 import React, {
   forwardRef,
   RefForwardingComponent,
   useContext,
   useImperativeHandle,
-  useRef,
+  useRef
 } from "react";
 import { RouteComponentProps } from "react-router";
-import NoStockIcon from "images/auna/no-stock.svg";
 
 export interface ICheckoutAddressSubpageHandles {
   submitAddress: () => void;
@@ -40,184 +39,184 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
   }: IProps,
   ref
 ) => {
-  const checkoutAddressFormId = "address-form";
-  const checkoutAddressFormRef = useRef<HTMLFormElement>(null);
-  const checkoutNewAddressFormId = "new-address-form";
+    const checkoutAddressFormId = "address-form";
+    const checkoutAddressFormRef = useRef<HTMLFormElement>(null);
+    const checkoutNewAddressFormId = "new-address-form";
 
-  const _addressFormSchema = addressFormSchema;
+    const _addressFormSchema = addressFormSchema;
 
-  const handleFormValues = (data: IAddressWithEmail | undefined) => {
-    _addressFormSchema
-      .isValid({
-        city: data?.city,
-        dataTreatmentPolicy: data?.dataTreatmentPolicy,
-        documentNumber: data?.documentNumber,
-        email: data?.email,
-        firstName: data?.firstName,
-        phone: data?.phone,
-        streetAddress1: data?.streetAddress1,
-        streetAddress2: data?.streetAddress2,
-        termsAndConditions: data?.termsAndConditions,
-      })
-      .then((valid: boolean) => {
-        if (valid) {
-          setShippingAddress(
-            {
-              city: data?.city,
-              country: {
-                code: "PE",
-                country: "Peru",
+    const handleFormValues = (data: IAddressWithEmail | undefined) => {
+      _addressFormSchema
+        .isValid({
+          city: data?.city,
+          dataTreatmentPolicy: data?.dataTreatmentPolicy,
+          documentNumber: data?.documentNumber,
+          email: data?.email,
+          firstName: data?.firstName,
+          phone: data?.phone,
+          streetAddress1: data?.streetAddress1,
+          streetAddress2: data?.streetAddress2,
+          termsAndConditions: data?.termsAndConditions,
+        })
+        .then((valid: boolean) => {
+          if (valid) {
+            setShippingAddress(
+              {
+                city: data?.city,
+                country: {
+                  code: "PE",
+                  country: "Peru",
+                },
+                firstName: data?.firstName,
+                id: data?.id,
+                phone: data?.phone,
+                streetAddress1: data?.streetAddress1,
+                streetAddress2: data?.streetAddress2,
               },
-              firstName: data?.firstName,
-              id: data?.id,
-              phone: data?.phone,
-              streetAddress1: data?.streetAddress1,
-              streetAddress2: data?.streetAddress2,
-            },
-            data?.email ? data?.email : "",
-            {
-              dataTreatmentPolicy: data?.dataTreatmentPolicy,
-              termsAndConditions: data?.termsAndConditions,
-            },
-            data?.documentNumber ? data.documentNumber : ""
+              data?.email ? data?.email : "",
+              {
+                dataTreatmentPolicy: data?.dataTreatmentPolicy,
+                termsAndConditions: data?.termsAndConditions,
+              },
+              data?.documentNumber ? data.documentNumber : ""
+            );
+          }
+        });
+    };
+
+    useImperativeHandle(ref, () => ({
+      handleRequiredFields: () => {
+        return true;
+      },
+      submitAddress: () => {
+        if (user && selectedShippingAddressId) {
+          checkoutAddressFormRef.current?.dispatchEvent(
+            new Event("submit", { cancelable: true })
+          );
+        } else {
+          // TODO validate form
+          checkoutAddressFormRef.current?.dispatchEvent(
+            new Event("submit", { cancelable: true })
           );
         }
-      });
-  };
+      },
+    }));
+    // const history = useHistory();
+    const { data: user } = useUserDetails();
 
-  useImperativeHandle(ref, () => ({
-    handleRequiredFields: () => {
-      return true;
-    },
-    submitAddress: () => {
-      if (user && selectedShippingAddressId) {
-        checkoutAddressFormRef.current?.dispatchEvent(
-          new Event("submit", { cancelable: true })
-        );
-      } else {
-        // TODO validate form
-        checkoutAddressFormRef.current?.dispatchEvent(
-          new Event("submit", { cancelable: true })
-        );
-      }
-    },
-  }));
-  // const history = useHistory();
-  const { data: user } = useUserDetails();
+    const {
+      checkout,
+      setShippingAddress,
+      selectedShippingAddressId,
+    } = useCheckout();
+    const { countries } = useContext(ShopContext);
 
-  const {
-    checkout,
-    setShippingAddress,
-    selectedShippingAddressId,
-  } = useCheckout();
-  const { countries } = useContext(ShopContext);
-
-  const checkoutShippingAddress = checkout?.shippingAddress
-    ? {
+    const checkoutShippingAddress = checkout?.shippingAddress
+      ? {
         ...checkout?.shippingAddress,
         phone: checkout?.shippingAddress?.phone || undefined,
       }
-    : undefined;
+      : undefined;
 
-  const handleSetShippingAddress = async (
-    address?: IAddress,
-    email?: string,
-    userAddressId?: string,
-    privacyPolicy?: IPrivacyPolicy,
-    documentNumber?: string
-  ) => {
-    if (!address) {
-      setAddressSubPageErrors([
-        { message: "Please provide shipping address." },
-      ]);
-      return;
-    }
-    const shippingEmail = user?.email || email || "";
+    const handleSetShippingAddress = async (
+      address?: IAddress,
+      email?: string,
+      userAddressId?: string,
+      privacyPolicy?: IPrivacyPolicy,
+      documentNumber?: string
+    ) => {
+      if (!address) {
+        setAddressSubPageErrors([
+          { message: "Please provide shipping address." },
+        ]);
+        return;
+      }
+      const shippingEmail = user?.email || email || "";
 
-    if (!shippingEmail) {
-      setAddressSubPageErrors([
-        { field: "email", message: "Please provide email address." },
-      ]);
-      return;
-    }
+      if (!shippingEmail) {
+        setAddressSubPageErrors([
+          { field: "email", message: "Please provide email address." },
+        ]);
+        return;
+      }
 
-    changeSubmitProgress(true);
-    const { dataError } = await setShippingAddress(
-      {
-        ...address,
-        id: userAddressId,
-      },
-      shippingEmail,
-      privacyPolicy
-        ? {
+      changeSubmitProgress(true);
+      const { dataError } = await setShippingAddress(
+        {
+          ...address,
+          id: userAddressId,
+        },
+        shippingEmail,
+        privacyPolicy
+          ? {
             dataTreatmentPolicy: privacyPolicy?.dataTreatmentPolicy,
             termsAndConditions: privacyPolicy.termsAndConditions,
           }
-        : { dataTreatmentPolicy: false, termsAndConditions: false },
-      documentNumber ? documentNumber : ""
+          : { dataTreatmentPolicy: false, termsAndConditions: false },
+        documentNumber ? documentNumber : ""
+      );
+
+      const errors = dataError?.error;
+      changeSubmitProgress(false);
+      if (errors) {
+        setAddressSubPageErrors(errors);
+        switch (errors[0].field) {
+          case "quantity":
+            alertService.sendAlert({
+              buttonText: "Entendido",
+              message: errors[0].message,
+              title: "Producto sin stock",
+              icon: NoStockIcon,
+            });
+            break;
+          default:
+            alertService.sendAlert({
+              buttonText: "Entendido",
+              message: errors[0].message,
+              title: "Ha ocurrido un error",
+            });
+            break;
+        }
+      } else {
+        setAddressSubPageErrors([]);
+        if (checkout?.shippingMethod?.id) {
+          // history.push(CHECKOUT_STEPS[0].nextStepLink);
+        }
+      }
+    };
+
+    const userAdresses = user?.addresses
+      ?.filter(filterNotEmptyArrayItems)
+      .map(address => ({
+        address: {
+          ...address,
+          isDefaultBillingAddress: address.isDefaultBillingAddress || false,
+          isDefaultShippingAddress: address.isDefaultShippingAddress || false,
+          phone: address.phone || undefined,
+        },
+        id: address?.id || "",
+        onSelect: () => null,
+      }));
+
+    return (
+      <CheckoutAddress
+        {...props}
+        errors={addressSubPageErrors}
+        formId={checkoutAddressFormId}
+        formRef={checkoutAddressFormRef}
+        checkoutAddress={checkoutShippingAddress}
+        email={checkout?.email}
+        checkoutData={checkout}
+        userAddresses={userAdresses}
+        selectedUserAddressId={selectedShippingAddressId}
+        countries={countries}
+        user={user}
+        newAddressFormId={checkoutNewAddressFormId}
+        setShippingAddress={handleSetShippingAddress}
+        setFormValue={handleFormValues}
+      />
     );
-
-    const errors = dataError?.error;
-    changeSubmitProgress(false);
-    if (errors) {
-      setAddressSubPageErrors(errors);
-      switch (errors[0].field) {
-        case "quantity":
-          alertService.sendAlert(
-            "Entendido",
-            errors[0].message,
-            "Producto sin stock",
-            NoStockIcon
-          );
-          break;
-        default:
-          alertService.sendAlert(
-            "Entendido",
-            errors[0].message,
-            "Ha ocurrido un error"
-          );
-          break;
-      }
-    } else {
-      setAddressSubPageErrors([]);
-      if (checkout?.shippingMethod?.id) {
-        // history.push(CHECKOUT_STEPS[0].nextStepLink);
-      }
-    }
   };
-
-  const userAdresses = user?.addresses
-    ?.filter(filterNotEmptyArrayItems)
-    .map(address => ({
-      address: {
-        ...address,
-        isDefaultBillingAddress: address.isDefaultBillingAddress || false,
-        isDefaultShippingAddress: address.isDefaultShippingAddress || false,
-        phone: address.phone || undefined,
-      },
-      id: address?.id || "",
-      onSelect: () => null,
-    }));
-
-  return (
-    <CheckoutAddress
-      {...props}
-      errors={addressSubPageErrors}
-      formId={checkoutAddressFormId}
-      formRef={checkoutAddressFormRef}
-      checkoutAddress={checkoutShippingAddress}
-      email={checkout?.email}
-      checkoutData={checkout}
-      userAddresses={userAdresses}
-      selectedUserAddressId={selectedShippingAddressId}
-      countries={countries}
-      user={user}
-      newAddressFormId={checkoutNewAddressFormId}
-      setShippingAddress={handleSetShippingAddress}
-      setFormValue={handleFormValues}
-    />
-  );
-};
 
 const CheckoutAddressSubpage = forwardRef(CheckoutAddressSubpageWithRef);
 
