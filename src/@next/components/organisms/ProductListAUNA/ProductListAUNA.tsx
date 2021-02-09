@@ -19,15 +19,16 @@ export const ProductListAUNA: React.FC<IProps> = ({
 
   return (
     <>
-      {productsWithQuantity.map((product) =>
-        <ProductTileAUNA
-          key={product.id}
-          addToCart={addToCart}
-          product={product}
-          productsOnCart={productsOnCart}
-          productUrl={generateProductUrl(product.id, product.name)}
-        />)}
-
+      <S.List>
+        {productsWithQuantity.map((product) =>
+          <ProductTileAUNA
+            key={product.id}
+            addToCart={addToCart}
+            product={product}
+            productsOnCart={productsOnCart}
+            productUrl={generateProductUrl(product.id, product.name)}
+          />)}
+      </S.List>
       <S.Loader>
         {loading ? (
           <Loader />
