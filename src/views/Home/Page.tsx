@@ -44,19 +44,20 @@ const Page: React.FC<IPageProps> = ({
           {structuredData(shop)}
         </script>
 
-      </div>
-      <ProductsFeatured
-        productsOnCart={productsOnCart}
-        loading={loading}
-        addToCart={addToCart}
-      />
+        <ProductsFeatured
+          productsOnCart={productsOnCart}
+          loading={loading}
+          addToCart={addToCart}
+        />
 
-      <div className="home-page__bottom-section">
-        <div className="home-page__bottom-banner">
-          <p>Llegamos a 12 distritos de Lima ¡en menos de 75 minutos!</p>
+        <div className="home-page__bottom-section">
+          <div className="home-page__bottom-banner">
+            <p>Llegamos a 12 distritos de Lima ¡en menos de 75 minutos!</p>
+          </div>
+          <div className="home-page__districts-list" />
         </div>
-        <div className="home-page__districts-list" />
       </div>
+      
     </>
   );
 };
