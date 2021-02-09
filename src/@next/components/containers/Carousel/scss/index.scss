@@ -1,10 +1,9 @@
-@import "../../../globalStyles/scss/variables.scss";
+@import "@temp/globalStyles/scss/variables.scss";
 
 .carousel {
   &__control {
     padding: $carousel-control-padding;
     background-color: $white;
-    box-shadow: $carousel-control-shadow;
 
     &:hover {
       cursor: pointer;

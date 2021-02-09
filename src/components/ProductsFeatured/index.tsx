@@ -1,10 +1,9 @@
+import { Carousel } from "@components/containers";
+import { ProductListItem } from "@temp/components";
+import { generateProductUrl, maybe } from "@temp/core/utils";
 import * as React from "react";
 import { Link } from "react-router-dom";
-
-import { Carousel, ProductListItem } from "@temp/components";
-import { generateProductUrl, maybe } from "@temp/core/utils";
 import { TypedFeaturedProductsQuery } from "./queries";
-
 import "./scss/index.scss";
 
 interface ProductsFeaturedProps {

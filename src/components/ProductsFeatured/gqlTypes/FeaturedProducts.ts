@@ -313,6 +313,7 @@ export interface FeaturedProducts_shop {
    * Collection displayed on homepage.
    */
   homepageCollection: FeaturedProducts_shop_homepageCollection | null;
+  homepageCollections: FeaturedProducts_shop_homepageCollection[] | null;
 }
 
 export interface FeaturedProducts {

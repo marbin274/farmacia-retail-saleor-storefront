@@ -5,6 +5,9 @@ export const Modal = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
+  z-index: 1000;
+  padding-bottom: 2rem;
+  overflow-y: auto;
   background-color: ${props => props.theme.colors.white};
 `;
 

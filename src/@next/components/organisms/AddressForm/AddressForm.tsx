@@ -5,7 +5,10 @@ import React from "react";
 import { IAddressWithEmail } from "@types";
 import { AddressFormContent } from "./AddressFormContent";
 import { IProps } from "./types";
-import { addressFormModalSchema, addressFormSchema } from "./adddressForm.schema";
+import {
+  addressFormModalSchema,
+  addressFormSchema,
+} from "./adddressForm.schema";
 
 const ADDRESS_FIELDS = [
   "city",
@@ -41,7 +44,11 @@ export const AddressForm: React.FC<IProps> = ({
   if (address) {
     addressWithPickedFields = pick(address, ADDRESS_FIELDS);
   }
-
+  addressWithPickedFields.phone = checkoutData?.shippingAddress?.phone
+    ? checkoutData?.shippingAddress?.phone.substring(
+        checkoutData?.shippingAddress?.phone.length - 9
+      )
+    : "";
   addressWithPickedFields.documentNumber = checkoutData?.documentNumber;
   addressWithPickedFields.termsAndConditions = checkoutData?.termsAndConditions;
   addressWithPickedFields.dataTreatmentPolicy =
@@ -64,15 +71,23 @@ export const AddressForm: React.FC<IProps> = ({
       ? user.addresses[0]?.streetAddress2
       : checkoutData?.shippingAddress?.streetAddress2;
     addressWithPickedFields.email = user.email;
-    addressWithPickedFields.phone = user.phone;
+    addressWithPickedFields.phone = checkoutData?.shippingAddress?.phone
+      ? checkoutData?.shippingAddress?.phone.substring(
+          checkoutData?.shippingAddress?.phone.length - 9
+        )
+      : "";
     addressWithPickedFields.id = user.addresses?.[0]?.id;
-    addressWithPickedFields.documentNumber = user.documentNumber ? user.documentNumber : '';
+    addressWithPickedFields.documentNumber = user.documentNumber
+      ? user.documentNumber
+      : "";
     addressWithPickedFields.termsAndConditions = user.termsAndConditions
       ? user.termsAndConditions
       : false;
     addressWithPickedFields.dataTreatmentPolicy = user.dataTreatmentPolicy;
   }
-  const formSchemaValidation = comeFromModal ? addressFormModalSchema : addressFormSchema;
+  const formSchemaValidation = comeFromModal
+    ? addressFormModalSchema
+    : addressFormSchema;
 
   return (
     <Formik

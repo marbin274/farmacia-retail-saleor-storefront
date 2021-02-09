@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/CheckoutReview default 1`] = `
   margin: 20px;
 }
 
-.c6 {
+.c5 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -42,10 +42,6 @@ exports[`Storyshots @components/organisms/CheckoutReview default 1`] = `
 
 .c1 .additionals a {
   color: #00B0CA;
-}
-
-.c5 {
-  margin-top: 30px;
 }
 
 .c2 {
@@ -117,12 +113,9 @@ exports[`Storyshots @components/organisms/CheckoutReview default 1`] = `
         Tarjeta de Crédito / Débito
       </p>
     </div>
-    <div
-      className="c5"
-    />
   </div>
   <div
-    className="c6"
+    className="c5"
   />
 </div>
 `;

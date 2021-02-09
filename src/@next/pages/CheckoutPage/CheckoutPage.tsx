@@ -4,7 +4,7 @@ import { CartSummary } from "@components/organisms";
 import { Checkout } from "@components/templates";
 import { IItems } from "@sdk/api/Cart/types";
 import { useCart, useCheckout } from "@sdk/react";
-import { clearStorage } from "@temp/@sdk/auth";
+import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
 import { BASE_URL, CHECKOUT_STEPS } from "@temp/core/config";
 import { IFormError, ITaxedMoney } from "@types";
 import React, { useEffect, useRef, useState } from "react";
@@ -18,7 +18,7 @@ import {
   ICheckoutAddressSubpageHandles,
   ICheckoutPaymentSubpageHandles,
   ICheckoutReviewSubpageHandles,
-  ICheckoutShippingSubpageHandles
+  ICheckoutShippingSubpageHandles,
 } from "./subpages";
 import { IProps } from "./types";
 
@@ -30,7 +30,6 @@ const prepareCartSummary = (
   promoTaxedPrice?: ITaxedMoney | null,
   items?: IItems
 ) => {
-
   return (
     <CartSummary
       shipping={shippingTaxedPrice}
@@ -45,8 +44,7 @@ const getCheckoutProgress = (
   loaded: boolean,
   activeStepIndex: number,
   isShippingRequired: boolean,
-  requestPayload: string | null,
-  currentRoutePath: string
+  pathName: string
 ) => {
   const steps = isShippingRequired
     ? CHECKOUT_STEPS
@@ -56,10 +54,9 @@ const getCheckoutProgress = (
 
   return loaded ? (
     <CheckoutProgressBar
-      requestPayload={requestPayload}
       steps={steps}
       activeStepIndex={activeStepIndex}
-      currentRoutePath={currentRoutePath}
+      pathName={pathName}
     />
   ) : null;
 };
@@ -87,8 +84,8 @@ const CheckoutPage: React.FC<IProps> = ({ }: IProps) => {
   } = useCart();
   const { loaded: checkoutLoaded, checkout, payment } = useCheckout();
 
-  if ((!items || !items?.length) && pathname === CHECKOUT_STEPS[2].link) {
-    clearStorage();
+  if (!items || !items?.length) {
+    removePaymentItems();
     return <Redirect to={BASE_URL} />;
   }
 
@@ -251,7 +248,6 @@ const CheckoutPage: React.FC<IProps> = ({ }: IProps) => {
         cartLoaded && checkoutLoaded,
         activeStepIndex,
         !!isShippingRequiredForProducts,
-        requestPayload,
         pathname
       )}
       cartSummary={prepareCartSummary(

@@ -6,4 +6,4 @@ import { CheckoutReview } from ".";
 storiesOf("@components/organisms/CheckoutReview", module)
 .addParameters({ component: CheckoutReview })
 .add("default", () =>
-<CheckoutReview creditCardProvider="visa"/>);
+<CheckoutReview creditCardProvider="visa" isShippingAvailable={true}/>);

@@ -7,6 +7,7 @@ export enum OverlayType {
   mainMenuNav = "main-menu-nav",
   message = "message",
   modal = "modal",
+  outOfTime = "outOfTime",
   password = "password",
   register = "register",
   search = "search",
@@ -46,9 +47,9 @@ export interface OverlayContextInterface {
 /* tslint:disable:no-empty */
 export const OverlayContext = React.createContext<OverlayContextInterface>({
   context: null,
-  hide: () => {},
-  show: type => {},
-  showCatalog: () => {},
+  hide: () => { },
+  show: type => { },
+  showCatalog: () => { },
   theme: undefined,
   type: undefined,
 });

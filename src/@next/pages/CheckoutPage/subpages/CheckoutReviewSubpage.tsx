@@ -7,10 +7,13 @@ import React, {
 import { RouteComponentProps, useHistory } from "react-router";
 import { CheckoutReview } from "@components/organisms";
 import { statuses as dummyStatuses } from "@components/organisms/DummyPaymentGateway";
-import { useCheckout } from "@sdk/react";
+import { useCheckout, useShopDetails } from "@sdk/react";
 import { CHECKOUT_STEPS } from "@temp/core/config";
 import { IFormError } from "@types";
+import { alertService } from "@temp/@next/components/atoms/Alert";
 // import { StringValueNode } from "graphql";
+import ErrorPaymentIcon from "images/auna/credit-card-cancel.svg";
+import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
 
 const creditCardType = require("credit-card-type");
 
@@ -37,8 +40,12 @@ const CheckoutReviewSubpageWithRef: RefForwardingComponent<
 ) => {
   const history = useHistory();
   const { checkout, payment, completeCheckout } = useCheckout();
-
+  const { data } = useShopDetails();
   const [errors, setErrors] = useState<IFormError[]>([]);
+
+  if (!localStorage.getItem("data_payment")) {
+    history.push(CHECKOUT_STEPS[1].link);
+  }
 
   const checkoutShippingAddress = checkout?.shippingAddress
     ? {
@@ -80,6 +87,20 @@ const CheckoutReviewSubpageWithRef: RefForwardingComponent<
       changeSubmitProgress(false);
       const errors = dataError?.error;
       if (errors) {
+        // TODO: cuando se habilite el manejo de errores estos datos se van a usar.
+        // const errorSplit = errors[0].message.split("||");
+        // const code = parseInt(errorSplit[0], 0);
+        // const message = errorSplit[1];
+
+        removePaymentItems();
+        alertService.sendAlert(
+          "Entendido",
+          "Por favor valida que todos tus datos de pago sean correctos e inténtalo de nuevo",
+          "No pudimos procesar el pago",
+          ErrorPaymentIcon,
+          CHECKOUT_STEPS[1].link
+        );
+
         setErrors(errors);
       } else {
         setErrors([]);
@@ -98,6 +119,7 @@ const CheckoutReviewSubpageWithRef: RefForwardingComponent<
   return (
     <CheckoutReview
       {...props}
+      isShippingAvailable={data?.shop?.isShippingAvailable}
       shippingAddress={checkoutShippingAddress}
       billingAddress={checkoutBillingAddress}
       shippingMethodName={checkout?.shippingMethod?.name}

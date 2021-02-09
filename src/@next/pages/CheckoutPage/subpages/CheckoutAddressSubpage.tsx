@@ -1,5 +1,6 @@
 import { CheckoutAddress } from "@components/organisms";
 import { useCheckout, useUserDetails } from "@sdk/react";
+import { alertService } from "@temp/@next/components/atoms/Alert/AlertService";
 import { addressFormSchema } from "@temp/@next/components/organisms/AddressForm/adddressForm.schema";
 import { IPrivacyPolicy } from "@temp/@sdk/api/Checkout/types";
 import { ShopContext } from "@temp/components/ShopProvider/context";
@@ -11,10 +12,10 @@ import React, {
   RefForwardingComponent,
   useContext,
   useImperativeHandle,
-  useRef
+  useRef,
 } from "react";
 import { RouteComponentProps } from "react-router";
-
+import NoStockIcon from "images/auna/no-stock.svg";
 
 export interface ICheckoutAddressSubpageHandles {
   submitAddress: () => void;
@@ -30,7 +31,15 @@ interface IProps extends RouteComponentProps<any> {
 const CheckoutAddressSubpageWithRef: RefForwardingComponent<
   ICheckoutAddressSubpageHandles,
   IProps
-> = ({ addressSubPageErrors, changeSubmitProgress, setAddressSubPageErrors, ...props }: IProps, ref) => {
+> = (
+  {
+    addressSubPageErrors,
+    changeSubmitProgress,
+    setAddressSubPageErrors,
+    ...props
+  }: IProps,
+  ref
+) => {
   const checkoutAddressFormId = "address-form";
   const checkoutAddressFormRef = useRef<HTMLFormElement>(null);
   const checkoutNewAddressFormId = "new-address-form";
@@ -95,6 +104,7 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
   }));
   // const history = useHistory();
   const { data: user } = useUserDetails();
+
   const {
     checkout,
     setShippingAddress,
@@ -117,13 +127,17 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     documentNumber?: string
   ) => {
     if (!address) {
-      setAddressSubPageErrors([{ message: "Please provide shipping address." }]);
+      setAddressSubPageErrors([
+        { message: "Please provide shipping address." },
+      ]);
       return;
     }
     const shippingEmail = user?.email || email || "";
 
     if (!shippingEmail) {
-      setAddressSubPageErrors([{ field: "email", message: "Please provide email address." }]);
+      setAddressSubPageErrors([
+        { field: "email", message: "Please provide email address." },
+      ]);
       return;
     }
 
@@ -147,6 +161,23 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     changeSubmitProgress(false);
     if (errors) {
       setAddressSubPageErrors(errors);
+      switch (errors[0].field) {
+        case "quantity":
+          alertService.sendAlert(
+            "Entendido",
+            errors[0].message,
+            "Producto sin stock",
+            NoStockIcon
+          );
+          break;
+        default:
+          alertService.sendAlert(
+            "Entendido",
+            errors[0].message,
+            "Ha ocurrido un error"
+          );
+          break;
+      }
     } else {
       setAddressSubPageErrors([]);
       if (checkout?.shippingMethod?.id) {

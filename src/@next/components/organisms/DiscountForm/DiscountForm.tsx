@@ -73,7 +73,7 @@ export const DiscountForm: React.FC<IProps> = ({
           discountDescription = "Delivery gratis en esta compra";
         } else {
           if (discount?.voucherDiscountType === "fixed") {
-            discountDescription = discount?.voucherDiscountValue + "S/ de descuento en toda tu compra";
+            discountDescription = `S/ ${discount?.voucherDiscountValue} de descuento en toda tu compra`;
           } else {
             discountDescription = discount?.voucherDiscountValue + "% de descuento en toda tu compra";
           }

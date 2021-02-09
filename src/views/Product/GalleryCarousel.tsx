@@ -1,11 +1,8 @@
-import * as React from "react";
-
+import { Carousel } from "@components/containers";
 import { CachedImage } from "@components/molecules";
-
-import { Carousel } from "../../components/";
-import { ProductDetails_product_images } from "./gqlTypes/ProductDetails";
-
+import * as React from "react";
 import noPhotoImg from "../../images/no-photo.svg";
+import { ProductDetails_product_images } from "./gqlTypes/ProductDetails";
 
 const GalleryCarousel: React.FC<{
   images: ProductDetails_product_images[];

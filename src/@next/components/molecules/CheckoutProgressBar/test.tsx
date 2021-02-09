@@ -26,12 +26,7 @@ const steps = [
 describe("<CheckoutProgressBar />", () => {
   it("exists", () => {
     const wrapper = shallow(
-      <CheckoutProgressBar
-        steps={steps}
-        activeStepIndex={0}
-        requestPayload={null}
-        currentRoutePath=""
-      />
+      <CheckoutProgressBar steps={steps} activeStepIndex={0} pathName="" />
     );
 
     expect(wrapper.exists()).toEqual(true);
@@ -40,12 +35,7 @@ describe("<CheckoutProgressBar />", () => {
   it("exists", () => {
     const wrapper = mount(
       <MemoryRouter>
-        <CheckoutProgressBar
-          steps={steps}
-          activeStepIndex={0}
-          requestPayload={null}
-          currentRoutePath=""
-        />
+        <CheckoutProgressBar steps={steps} activeStepIndex={0} pathName="" />
       </MemoryRouter>
     );
 

@@ -62,7 +62,7 @@ exports[`Storyshots @components/organisms/UnderConstruction UnderConstruction 1`
 }
 
 .c3 p {
-  padding: .7rem 0;
+  padding: 0.7rem 0;
 }
 
 .c3 a {
@@ -89,7 +89,7 @@ exports[`Storyshots @components/organisms/UnderConstruction UnderConstruction 1`
   margin: 0 auto;
 }
 
-.c8 >div {
+.c8 > div {
   width: 100%;
 }
 

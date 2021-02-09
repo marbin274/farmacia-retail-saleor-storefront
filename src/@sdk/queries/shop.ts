@@ -18,6 +18,7 @@ export const getShop = gql`
           country
         }
       }
+      isShippingAvailable
     }
   }
 `;
