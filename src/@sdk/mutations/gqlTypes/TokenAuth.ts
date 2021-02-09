@@ -158,6 +158,7 @@ export interface TokenAuth_tokenCreate_user {
    * List of all user's addresses.
    */
   addresses: (TokenAuth_tokenCreate_user_addresses | null)[] | null;
+  documentNumber?: string;
 }
 
 export interface TokenAuth_tokenCreate {
@@ -173,7 +174,7 @@ export interface TokenAuth_tokenCreate {
 export interface TokenAuth {
   /**
    * Mutation that authenticates a user and returns token and user data.
-   * 
+   *
    * It overrides the default graphql_jwt.ObtainJSONWebToken to wrap potential
    * authentication errors in our Error type, which is consistent to how the rest of
    * the mutation works.
