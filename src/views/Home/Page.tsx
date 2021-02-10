@@ -50,12 +50,13 @@ const Page: React.FC<IPageProps> = ({
         loading={loading}
         addToCart={addToCart}
       />
-
-      <div className="home-page__bottom-section">
-        <div className="home-page__bottom-banner">
-          <p>Llegamos a 12 distritos de Lima ¡en menos de 75 minutos!</p>
+      <div className="container">
+        <div className="home-page__bottom-section">
+          <div className="home-page__bottom-banner">
+            <p>Llegamos a 12 distritos de Lima ¡en menos de 75 minutos!</p>
+          </div>
+          <div className="home-page__districts-list" />
         </div>
-        <div className="home-page__districts-list" />
       </div>
     </>
   );
