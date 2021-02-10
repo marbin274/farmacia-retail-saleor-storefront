@@ -209,13 +209,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
       setBillingErrors(errors);
     } else {
       setBillingErrors([]);
-      if (promoCodeDiscountFormRef.current) {
-        promoCodeDiscountFormRef.current?.dispatchEvent(
-          new Event("submit", { cancelable: true })
-        );
-      } else if (checkoutGatewayFormRef.current) {
-        submitCheckoutGatewayForm();
-      } else {
+      if(!selectedPaymentGateway){
         changeSubmitProgress(false);
         alertService.sendAlert({
           buttonText: "Entendido",
@@ -225,6 +219,13 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
         setGatewayErrors([
           { message: "Selecciona un método de pago para continuar" },
         ]);
+      }
+      else if (promoCodeDiscountFormRef.current) {
+        promoCodeDiscountFormRef.current?.dispatchEvent(
+          new Event("submit", { cancelable: true })
+        );
+      } else if (checkoutGatewayFormRef.current) {
+        submitCheckoutGatewayForm();
       }
     }
   };
