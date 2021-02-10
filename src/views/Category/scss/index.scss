@@ -23,6 +23,7 @@
   &__products {
     width: 100%;
     margin-bottom: 1.875rem;
+    z-index: 0;
     @media (min-width: $small-screen) {
       margin-left: 1.125rem;
       padding-top: 1.25rem;

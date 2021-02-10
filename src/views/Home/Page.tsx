@@ -44,12 +44,13 @@ const Page: React.FC<IPageProps> = ({
           {structuredData(shop)}
         </script>
 
-        <ProductsFeatured
-          productsOnCart={productsOnCart}
-          loading={loading}
-          addToCart={addToCart}
-        />
-
+      </div>
+      <ProductsFeatured
+        productsOnCart={productsOnCart}
+        loading={loading}
+        addToCart={addToCart}
+      />
+      <div className="container">
         <div className="home-page__bottom-section">
           <div className="home-page__bottom-banner">
             <p>Llegamos a 12 distritos de Lima ¡en menos de 75 minutos!</p>

@@ -33,11 +33,10 @@ const CheckoutReview: React.FC<IProps> = ({
         <CreditCardIcon creditCardProvider={creditCardProvider} />
         <S.Text>Tarjeta de Crédito / Débito</S.Text>
       </div>
-      <OutOfTimeMessage
-        isShippingAvailable={true}
-      />
+      <OutOfTimeMessage isShippingAvailable={true} />
     </S.Wrapper>
   );
 };
 
 export { CheckoutReview };
+
