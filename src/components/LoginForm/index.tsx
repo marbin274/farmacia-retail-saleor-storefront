@@ -48,7 +48,7 @@ const LoginForm: React.FC<ILoginForm> = ({
     onSubmit: async values => {
       const authenticated = await signIn(values);
 
-      if (authenticated && hide) {
+      if (authenticated) {
         setShippingMethod(authenticated.data.user.defaultShippingAddress.id);
         setBillingAddress(
           authenticated.data.user.defaultBillingAddress,
@@ -68,10 +68,12 @@ const LoginForm: React.FC<ILoginForm> = ({
           },
           authenticated.data.user.documentNumber
         );
-
         removePaymentItems();
-        hide();
         history.push(CHECKOUT_STEPS[0].link);
+      }
+
+      if (authenticated && hide) {
+        hide();
       }
     },
     validationSchema: loginFormSchema,
