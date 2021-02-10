@@ -209,7 +209,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
       setBillingErrors(errors);
     } else {
       setBillingErrors([]);
-      if(!selectedPaymentGateway){
+      if (!selectedPaymentGateway) {
         changeSubmitProgress(false);
         alertService.sendAlert({
           buttonText: "Entendido",
@@ -219,8 +219,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
         setGatewayErrors([
           { message: "Selecciona un método de pago para continuar" },
         ]);
-      }
-      else if (promoCodeDiscountFormRef.current) {
+      } else if (promoCodeDiscountFormRef.current) {
         promoCodeDiscountFormRef.current?.dispatchEvent(
           new Event("submit", { cancelable: true })
         );

@@ -1,4 +1,5 @@
 import { useCart, useSignOut, useUserDetails } from "@sdk/react";
+import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
 import * as appPaths from "@temp/app/routes";
 import { baseUrl } from "@temp/app/routes/paths";
 import { maybe } from "@temp/core/utils";
@@ -81,7 +82,10 @@ const MainMenu: React.FC = () => {
                     <Media
                       query={{ minWidth: mediumScreenPlusOne }}
                       render={() => (
-                        <Link to={appPaths.baseUrl}>
+                        <Link
+                          onClick={removePaymentItems}
+                          to={appPaths.baseUrl}
+                        >
                           <ReactSVG path={logoImg} />
                         </Link>
                       )}
@@ -188,6 +192,7 @@ const MainMenu: React.FC = () => {
                 query={{ maxWidth: mediumScreen }}
                 render={() => (
                   <Link
+                    onClick={removePaymentItems}
                     to={appPaths.baseUrl}
                     className="main-menu__center--icon"
                   >
@@ -200,7 +205,7 @@ const MainMenu: React.FC = () => {
                 <Media
                   query={{ maxWidth: mediumScreen }}
                   render={() => (
-                    <Link to={appPaths.baseUrl}>
+                    <Link onClick={removePaymentItems} to={appPaths.baseUrl}>
                       <ReactSVG path={logoImg} className="logo" />
                     </Link>
                   )}

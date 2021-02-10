@@ -1,4 +1,5 @@
 import { useCheckout, useSignIn } from "@sdk/react";
+import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
 import { joinFormikErrorsToIFormErrorsAndConvertToObjectErrors } from "@temp/@next/utils/errorsManagement";
 import { TokenAuthVariables } from "@temp/@sdk/mutations/gqlTypes/TokenAuth";
 import { useFormik } from "formik";
@@ -42,6 +43,7 @@ const LoginForm: React.FC<ILoginForm> = ({
       if (authenticated && hide) {
         if (checkout.id) {
           sessionStorage.setItem("exist_checkout", "OK");
+          removePaymentItems();
         }
         hide();
       }
