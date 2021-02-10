@@ -1,11 +1,8 @@
 import { useCheckout, useSignIn } from "@sdk/react";
-import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
 import { joinFormikErrorsToIFormErrorsAndConvertToObjectErrors } from "@temp/@next/utils/errorsManagement";
 import { TokenAuthVariables } from "@temp/@sdk/mutations/gqlTypes/TokenAuth";
-import { CHECKOUT_STEPS } from "@temp/core/config";
 import { useFormik } from "formik";
 import * as React from "react";
-import { useHistory } from "react-router";
 import { Button, TextField } from "..";
 import ForgottenPassword from "../OverlayManager/Login/ForgottenPassword";
 import { loginFormSchema } from "./loginForm.schema";
@@ -30,12 +27,7 @@ const LoginForm: React.FC<ILoginForm> = ({
   hideRegister = false,
 }) => {
   const [signIn, { loading, error: requestErrors }] = useSignIn();
-  const {
-    setShippingMethod,
-    setBillingAddress,
-    setShippingAddress,
-  } = useCheckout();
-  const history = useHistory();
+  const { checkout } = useCheckout();
   const {
     handleSubmit,
     handleChange,
@@ -47,32 +39,10 @@ const LoginForm: React.FC<ILoginForm> = ({
     initialValues,
     onSubmit: async values => {
       const authenticated = await signIn(values);
-
-      if (authenticated) {
-        setShippingMethod(authenticated.data.user.defaultShippingAddress.id);
-        setBillingAddress(
-          authenticated.data.user.defaultBillingAddress,
-          authenticated.data.user.email,
-          {
-            dataTreatmentPolicy: authenticated.data.user.dataTreatmentPolicy,
-            termsAndConditions: authenticated.data.user.termsAndConditions,
-          },
-          authenticated.data.user.documentNumber
-        );
-        setShippingAddress(
-          authenticated.data.user.defaultShippingAddress,
-          authenticated.data.user.email,
-          {
-            dataTreatmentPolicy: authenticated.data.user.dataTreatmentPolicy,
-            termsAndConditions: authenticated.data.user.termsAndConditions,
-          },
-          authenticated.data.user.documentNumber
-        );
-        removePaymentItems();
-        history.push(CHECKOUT_STEPS[0].link);
-      }
-
       if (authenticated && hide) {
+        if (checkout.id) {
+          sessionStorage.setItem("exist_checkout", "OK");
+        }
         hide();
       }
     },
