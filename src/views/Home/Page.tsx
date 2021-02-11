@@ -22,17 +22,18 @@ const Page: React.FC<IPageProps> = ({
   return (
     <>
       <div className="container">
-        <a href="./product/protector-solar-corporal-eucerin-sensitive-protect-150-ml/4400/">
+        <a href="./product/paales-huggies-active-sec-talla-xg-bolsa-44-und/3920/">
           <div className="home-page__top-banner">
             <div className="home-page__top-banner__text">
-              <h2>EN TODO EUCERIN </h2>
+              <h2>EN PAÑALES HUGGIES </h2>
               <h3>
-                <strong>Cuida tu piel como se merece</strong>
+                <strong>Tallas M, G, XG, XXG</strong>
               </h3>
               <p>
-                Válido hasta el 28/02/21 o agotar stock. Máx. 3 unids por
-                producto. Aplica máx. 2 promociones por usuario. *Rango de tiempo
-                referencial, sujeto a demanda. T&C:
+                Promoción válida el 11/02/2021. Stock 50 unidades o hasta agotar
+                el stock. Aplica máximo 02 promociones por usuario. Exclusivo
+                para compras a través de nuestro portal web www.farmauna.com.
+                T&C:
                 <a href="http://bit.ly/TyC_Farmauna" target="_blank">
                   http://bit.ly/TyC_Farmauna
                 </a>
@@ -43,7 +44,6 @@ const Page: React.FC<IPageProps> = ({
         <script className="structured-data-list" type="application/ld+json">
           {structuredData(shop)}
         </script>
-
       </div>
       <ProductsFeatured
         productsOnCart={productsOnCart}
@@ -57,7 +57,7 @@ const Page: React.FC<IPageProps> = ({
           </div>
           <div className="home-page__districts-list" />
         </div>
-      </div>      
+      </div>
     </>
   );
 };
