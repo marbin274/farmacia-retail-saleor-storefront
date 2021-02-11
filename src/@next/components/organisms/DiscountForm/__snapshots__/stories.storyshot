@@ -273,13 +273,6 @@ exports[`Storyshots @components/organisms/DiscountForm default 1`] = `
         </div>
       </div>
     </div>
-    <div
-      style={
-        Object {
-          "marginLeft": "1rem",
-        }
-      }
-    />
   </form>
   <div
     className="c10"

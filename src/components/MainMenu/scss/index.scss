@@ -16,6 +16,17 @@
     width: 1140px;
   }
 
+  @media (max-width: $medium-screen) {
+    .icon_container {
+      width: 100%;
+      position: absolute;
+      left: 0;
+      text-align: center;
+      padding: 1rem;
+      background-color: $white;
+    }
+  }
+
   &__left {
     display: flex;
     flex: 1;
@@ -53,7 +64,7 @@
     display: flex;
     flex: 1;
     justify-content: center;
-
+    width: 100%;
     ul {
       align-items: center;
       display: flex;

@@ -92,7 +92,7 @@ export const Title = styled.div`
 export const Text = styled.span`
   font-weight: 300;
   font-size: 12px;
-  margin: 2px 0 0 13px;
+  margin: 2px 0 0 3px;
 `;
 
 export const Close = styled.div<{ mobileCartOpened: boolean }>`

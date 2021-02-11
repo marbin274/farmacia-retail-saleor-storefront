@@ -62,6 +62,16 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
     setIsModelOpen(false);
   };
 
+  const goToRoute = (): string => {
+    if (user) {
+      return checkoutUrl;
+    } else if (checkout.id) {
+      return checkoutUrl;
+    } else {
+      return checkoutLoginUrl;
+    }
+  };
+
   return (
     <Overlay context={overlay}>
       <Online>
@@ -157,7 +167,7 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
                     </span>
                   </div>
                   <div className="cart__footer__button">
-                    <Link to={user ? checkoutUrl : checkoutLoginUrl}>
+                    <Link to={goToRoute}>
                       <Button>Comprar</Button>
                     </Link>
                   </div>

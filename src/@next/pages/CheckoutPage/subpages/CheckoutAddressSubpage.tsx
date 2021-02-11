@@ -4,9 +4,9 @@ import { alertService } from "@temp/@next/components/atoms/Alert/AlertService";
 import { addressFormSchema } from "@temp/@next/components/organisms/AddressForm/adddressForm.schema";
 import { IPrivacyPolicy } from "@temp/@sdk/api/Checkout/types";
 import { ShopContext } from "@temp/components/ShopProvider/context";
-// import { CHECKOUT_STEPS } from "@temp/core/config";
 import { IAddress, IAddressWithEmail, IFormError } from "@types";
 import { filterNotEmptyArrayItems } from "@utils/misc";
+import NoStockIcon from "images/auna/no-stock.svg";
 import React, {
   forwardRef,
   RefForwardingComponent,
@@ -15,7 +15,6 @@ import React, {
   useRef,
 } from "react";
 import { RouteComponentProps } from "react-router";
-import NoStockIcon from "images/auna/no-stock.svg";
 
 export interface ICheckoutAddressSubpageHandles {
   submitAddress: () => void;
@@ -87,6 +86,15 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
 
   useImperativeHandle(ref, () => ({
     handleRequiredFields: () => {
+      if (sessionStorage.getItem("exist_checkout")) {
+        alertService.sendAlert({
+          buttonText: "Entendido",
+          message:
+            "Por favor valide que todos los datos del formulario estan completos.",
+          type: "Info",
+        });
+        return false;
+      }
       return true;
     },
     submitAddress: () => {
@@ -163,19 +171,21 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
       setAddressSubPageErrors(errors);
       switch (errors[0].field) {
         case "quantity":
-          alertService.sendAlert(
-            "Entendido",
-            errors[0].message,
-            "Producto sin stock",
-            NoStockIcon
-          );
+          alertService.sendAlert({
+            buttonText: "Entendido",
+            icon: NoStockIcon,
+            message: errors[0].message,
+            title: "Producto sin stock",
+            type: "Error",
+          });
           break;
         default:
-          alertService.sendAlert(
-            "Entendido",
-            errors[0].message,
-            "Ha ocurrido un error"
-          );
+          alertService.sendAlert({
+            buttonText: "Entendido",
+            message: errors[0].message,
+            title: "Ha ocurrido un error",
+            type: "Error",
+          });
           break;
       }
     } else {
@@ -222,4 +232,3 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
 const CheckoutAddressSubpage = forwardRef(CheckoutAddressSubpageWithRef);
 
 export { CheckoutAddressSubpage };
-

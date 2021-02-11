@@ -1,4 +1,5 @@
-import { useSignIn } from "@sdk/react";
+import { useCheckout, useSignIn } from "@sdk/react";
+import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
 import { joinFormikErrorsToIFormErrorsAndConvertToObjectErrors } from "@temp/@next/utils/errorsManagement";
 import { TokenAuthVariables } from "@temp/@sdk/mutations/gqlTypes/TokenAuth";
 import { useFormik } from "formik";
@@ -16,8 +17,8 @@ interface ILoginForm {
 }
 
 const initialValues: TokenAuthVariables = {
-  email: '',
-  password: '',
+  email: "",
+  password: "",
 };
 
 const LoginForm: React.FC<ILoginForm> = ({
@@ -27,19 +28,35 @@ const LoginForm: React.FC<ILoginForm> = ({
   hideRegister = false,
 }) => {
   const [signIn, { loading, error: requestErrors }] = useSignIn();
-
-  const { handleSubmit, handleChange, handleBlur, touched, errors: formikErrors, values } = useFormik<TokenAuthVariables>({
+  const { checkout } = useCheckout();
+  const {
+    handleSubmit,
+    handleChange,
+    handleBlur,
+    touched,
+    errors: formikErrors,
+    values,
+  } = useFormik<TokenAuthVariables>({
     initialValues,
     onSubmit: async values => {
       const authenticated = await signIn(values);
       if (authenticated && hide) {
+        if (checkout.id) {
+          sessionStorage.setItem("exist_checkout", "OK");
+          removePaymentItems();
+        }
         hide();
       }
     },
     validationSchema: loginFormSchema,
   });
 
-  const errors = joinFormikErrorsToIFormErrorsAndConvertToObjectErrors(formikErrors, requestErrors?.extraInfo?.userInputErrors, touched, true);
+  const errors = joinFormikErrorsToIFormErrorsAndConvertToObjectErrors(
+    formikErrors,
+    requestErrors?.extraInfo?.userInputErrors,
+    touched,
+    true
+  );
 
   return (
     <div className="login-form">
@@ -65,9 +82,13 @@ const LoginForm: React.FC<ILoginForm> = ({
           onChange={handleChange}
         />
         <ForgottenPassword onClick={onForgottenPassword} />
-        {requestErrors?.extraInfo?.userInputErrors?.[0]?.message &&
-          <div className="login-form__errors"><span className="login-form__errors__error form-error">{requestErrors.extraInfo.userInputErrors[0].message}</span></div>
-        }
+        {requestErrors?.extraInfo?.userInputErrors?.[0]?.message && (
+          <div className="login-form__errors">
+            <span className="login-form__errors__error form-error">
+              {requestErrors.extraInfo.userInputErrors[0].message}
+            </span>
+          </div>
+        )}
         <div className="login-form__button">
           <Button type="submit" {...(loading && { disabled: true })}>
             {loading ? "Cargando" : "Ingresar"}
