@@ -1,15 +1,9 @@
 import { Subject } from "rxjs";
+import { IAlertServiceProps } from "./types";
 
-const subject = new Subject();
-// TODO: sendAlert pasar un objeto y no como parámetros
-export const alertService = {
+const subject = new Subject<IAlertServiceProps>();
+export const alertService= {
   clearAlert: () => subject.next(),
   onAlert: () => subject.asObservable(),
-  sendAlert: (
-    buttonText: string,
-    message: string,
-    title: string,
-    icon?: any,
-    redirectionLink?: string
-  ) => subject.next({ message, title, icon, buttonText, redirectionLink }),
+  sendAlert: (payload: IAlertServiceProps) => subject.next(payload),
 };

@@ -1,5 +1,6 @@
 import { CheckoutShipping } from "@components/organisms";
 import { useCheckout } from "@sdk/react";
+import { alertService } from "@temp/@next/components/atoms/Alert";
 import { CHECKOUT_STEPS } from "@temp/core/config";
 import { IFormError } from "@types";
 import React, {
@@ -63,6 +64,11 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
     const errors = dataError?.error;
     changeSubmitProgress(false);
     if (errors) {
+      alertService.sendAlert({
+        buttonText: "Entendido",
+        message: errors[0].message,
+        type: "Error",
+      });
       setAddressSubPageErrors(errors);
     } else {
       setAddressSubPageErrors([]);
@@ -88,4 +94,3 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
 const CheckoutShippingSubpage = forwardRef(CheckoutShippingSubpageWithRef);
 
 export { CheckoutShippingSubpage };
-

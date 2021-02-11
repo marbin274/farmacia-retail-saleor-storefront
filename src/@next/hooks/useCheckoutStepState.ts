@@ -16,7 +16,11 @@ export const useCheckoutStepState = (
     );
 
   const getStep = () => {
-    if (!checkout?.id && items && isShippingRequiredForProducts) {
+    if (
+      sessionStorage.getItem("exist_checkout") ||
+      !checkout?.shippingMethod?.id ||
+      (!checkout?.id && items && isShippingRequiredForProducts)
+    ) {
       return CheckoutStep.Address;
     } else if (
       (!checkout?.id && items) ||

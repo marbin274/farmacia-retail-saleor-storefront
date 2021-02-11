@@ -1,5 +1,5 @@
 import { CreditCardIcon } from "@components/atoms";
-import { AddressSummary } from "@components/molecules";
+import { AddressSummary, OutOfTimeMessage } from "@components/molecules";
 import React from "react";
 import * as S from "./styles";
 import { IProps } from "./types";
@@ -33,6 +33,7 @@ const CheckoutReview: React.FC<IProps> = ({
         <CreditCardIcon creditCardProvider={creditCardProvider} />
         <S.Text>Tarjeta de Crédito / Débito</S.Text>
       </div>
+      <OutOfTimeMessage isShippingAvailable={true} />
     </S.Wrapper>
   );
 };

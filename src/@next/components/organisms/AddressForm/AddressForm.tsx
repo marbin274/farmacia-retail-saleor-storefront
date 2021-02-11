@@ -59,7 +59,9 @@ export const AddressForm: React.FC<IProps> = ({
   }
 
   if (user) {
-    addressWithPickedFields.city = checkoutData?.shippingAddress?.city;
+    addressWithPickedFields.city = sessionStorage.getItem("exist_checkout")
+      ? ""
+      : checkoutData?.shippingAddress?.city;
     addressWithPickedFields.firstName =
       user.firstName.replace(/^\w/, (c: any) => c.toUpperCase()) +
       " " +
