@@ -22,17 +22,15 @@ const Page: React.FC<IPageProps> = ({
   return (
     <>
       <div className="container">
-        <a href="./product/paales-huggies-active-sec-talla-xg-bolsa-44-und/3920/">
+        <a href="./">
           <div className="home-page__top-banner">
             <div className="home-page__top-banner__text">
-              <h2>EN PAÑALES HUGGIES </h2>
+              <h2>ATENDEMOS 24/7 </h2>
               <h3>
-                <strong>Tallas M, G, XG, XXG</strong>
+                <strong>Cuidamos de ti las 24 horas del día los 7 días de la semana</strong>
               </h3>
               <p>
-                Promoción válida el 11/02/2021. Stock 50 unidades o hasta agotar
-                el stock. Aplica máximo 02 promociones por usuario. Exclusivo
-                para compras a través de nuestro portal web www.farmauna.com.
+              *Rango de tiempo referencial, sujeto a demanda.
                 T&C:
                 <a href="http://bit.ly/TyC_Farmauna" target="_blank">
                   http://bit.ly/TyC_Farmauna
