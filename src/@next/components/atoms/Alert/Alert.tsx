@@ -22,7 +22,7 @@ export const Alert: React.FC<any> = () => {
     const subscription = alertService
       .onAlert()
       .subscribe((data: IAlertServiceProps) => {
-        Sentry.captureException(data.message, {
+        Sentry.captureException(data?.message || "Ha ocurrido un error", {
           level:
             data.type === "Error"
               ? Sentry.Severity.Fatal
