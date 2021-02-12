@@ -13,23 +13,23 @@ const dataInitial: IAlertServiceProps = {
   type: "Info",
 };
 
-
-
 export const Alert: React.FC<any> = () => {
   const history = useHistory();
   const [alert, setAlert] = useState<IAlertServiceProps>(dataInitial);
   const [show, setShow] = useState(false);
   useEffect(() => {
-    const subscription = alertService.onAlert().subscribe((data: IAlertServiceProps) => {
-      if (data) {
-        setShow(true);
-        setAlert(data);
-      } else {
-        setAlert(dataInitial);
-        setShow(false);
-      }
-      return subscription.unsubscribe;
-    });
+    const subscription = alertService
+      .onAlert()
+      .subscribe((data: IAlertServiceProps) => {
+        if (data) {
+          setShow(true);
+          setAlert(data);
+        } else {
+          setAlert(dataInitial);
+          setShow(false);
+        }
+        return subscription.unsubscribe;
+      });
   }, [alert]);
 
   const hide = () => {
@@ -40,9 +40,10 @@ export const Alert: React.FC<any> = () => {
   const redirectTo = () => {
     setShow(false);
     alertService.clearAlert();
-    if (alert.redirectionLink) { history.push(alert.redirectionLink); }
+    if (alert.redirectionLink) {
+      history.push(alert.redirectionLink);
+    }
   };
-
 
   return (
     <Overlay
@@ -51,6 +52,7 @@ export const Alert: React.FC<any> = () => {
       show={show}
       hide={hide}
       duration={0}
+      transparent={false}
     >
       <div className="modal__container">
         <S.Modal>
@@ -63,8 +65,8 @@ export const Alert: React.FC<any> = () => {
             {alert.redirectionLink ? (
               <Button onClick={redirectTo}>{alert.buttonText}</Button>
             ) : (
-                <Button onClick={hide}>{alert.buttonText}</Button>
-              )}
+              <Button onClick={hide}>{alert.buttonText}</Button>
+            )}
           </S.Footer>
         </S.Modal>
       </div>

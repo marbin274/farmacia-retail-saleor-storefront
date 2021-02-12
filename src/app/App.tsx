@@ -1,16 +1,23 @@
-import { Alert } from "@temp/@next/components/atoms/Alert";
+import { Alert, alertService } from "@temp/@next/components/atoms/Alert";
 import { useShopDetails } from "@temp/@sdk/react";
 import React from "react";
-import { Footer, MainMenu, MetaConsumer, OverlayContext, OverlayManager, OverlayTheme, OverlayType } from "../components";
+import { Footer, MainMenu, MetaConsumer, OverlayManager } from "../components";
 import "../globalStyles/scss/index.scss";
 import { Routes } from "./routes";
+import WaitTimeIcon from "images/auna/wait-time.svg";
 
 const App: React.FC = () => {
   const { data } = useShopDetails();
-  const overlayContext = React.useContext(OverlayContext);
   React.useEffect(() => {
-    if (false) {
-      overlayContext.show(OverlayType.outOfTime, OverlayTheme.modal);
+    if (localStorage.getItem("new_version")) {
+      alertService.sendAlert({
+        buttonText: "Entendido",
+        icon: WaitTimeIcon,
+        message: "Una nueva actualización de Farmauna ya está disponible.",
+        title: "Mejoramos para ti",
+        type: "Info",
+      });
+      localStorage.removeItem("new_version");
     }
   }, [data]);
   return (

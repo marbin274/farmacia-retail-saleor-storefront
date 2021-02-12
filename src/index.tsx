@@ -40,6 +40,7 @@ import {
 } from "./@sdk/auth";
 import * as Sentry from "@sentry/react";
 import { Integrations } from "@sentry/tracing";
+import { alertService } from "./@next/components/atoms/Alert";
 
 interface GtmEnvVars {
   auth: string | null;
@@ -56,7 +57,7 @@ const cache = new InMemoryCache({
       auth: apolloCacheObject?.tagManagerAuth,
       id: apolloCacheObject?.tagManagerId,
       preview: apolloCacheObject?.tagManagerEnvironmentId,
-    }
+    };
     if (!!tagManagerEnvVars.id) {
       if (!!tagManagerEnvVars.preview) {
         const tagManagerArgs = {
@@ -112,22 +113,27 @@ const startApp = async () => {
       const { updateAvailable } = React.useContext(ServiceWorkerContext);
 
       React.useEffect(() => {
+        // TODO: Esta logica se va a utilizar luego de varios sprints pero con el componente Alert.
+        // if (updateAvailable) {
+        //   alert.show(
+        //     {
+        //       actionText: "Refresh",
+        //       content:
+        //         "To update the application to the latest version, please refresh the page!",
+        //       title: "New version is available!",
+        //     },
+        //     {
+        //       onClose: () => {
+        //         location.reload();
+        //       },
+        //       timeout: 0,
+        //       type: "success",
+        //     }
+        //   );
+        // }
         if (updateAvailable) {
-          alert.show(
-            {
-              actionText: "Refresh",
-              content:
-                "To update the application to the latest version, please refresh the page!",
-              title: "New version is available!",
-            },
-            {
-              onClose: () => {
-                location.reload();
-              },
-              timeout: 0,
-              type: "success",
-            }
-          );
+          localStorage.setItem("new_version", "OK");
+          location.reload();
         }
       }, [updateAvailable]);
 
