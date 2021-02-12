@@ -6,6 +6,7 @@ import { Button } from "../Button";
 import { alertService } from "./AlertService";
 import * as S from "./styles";
 import { alertTypes, IAlertServiceProps } from "./types";
+import * as Sentry from "@sentry/react";
 
 const dataInitial: IAlertServiceProps = {
   buttonText: "",
@@ -21,6 +22,18 @@ export const Alert: React.FC<any> = () => {
     const subscription = alertService
       .onAlert()
       .subscribe((data: IAlertServiceProps) => {
+        Sentry.captureException(data.message, {
+          level:
+            data.type === "Error"
+              ? Sentry.Severity.Fatal
+              : Sentry.Severity.Warning,
+        });
+        // TODO: Ver luego la implementacion.
+        // Sentry.setTag("checkout", "shipping");
+        // Sentry.setUser({
+        //   email: "mail@mail.com",
+        // });
+
         if (data) {
           setShow(true);
           setAlert(data);
