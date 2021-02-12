@@ -22,28 +22,21 @@ const Page: React.FC<IPageProps> = ({
   return (
     <>
       <div className="container">
-        <a href="./product/protector-solar-corporal-eucerin-sensitive-protect-150-ml/4400/">
-          <div className="home-page__top-banner">
-            <div className="home-page__top-banner__text">
-              <h2>EN TODO EUCERIN </h2>
-              <h3>
-                <strong>Cuida tu piel como se merece</strong>
-              </h3>
-              <p>
-                Válido hasta el 28/02/21 o agotar stock. Máx. 3 unids por
-                producto. Aplica máx. 2 promociones por usuario. *Rango de tiempo
-                referencial, sujeto a demanda. T&C:
-                <a href="http://bit.ly/TyC_Farmauna" target="_blank">
-                  http://bit.ly/TyC_Farmauna
-                </a>
-              </p>
-            </div>
+        <div className="home-page__top-banner">
+          <div className="home-page__top-banner__text">
+            <h2>ATENDEMOS 24/7 </h2>
+            <h3>
+              <strong>
+                Cuidamos de ti las 24 horas del día los 7 días de la semana
+              </strong>
+            </h3>
+            <p>*Rango de tiempo referencial, sujeto a demanda.</p>
           </div>
-        </a>
+        </div>
+
         <script className="structured-data-list" type="application/ld+json">
           {structuredData(shop)}
         </script>
-
       </div>
       <ProductsFeatured
         productsOnCart={productsOnCart}
@@ -57,7 +50,7 @@ const Page: React.FC<IPageProps> = ({
           </div>
           <div className="home-page__districts-list" />
         </div>
-      </div>      
+      </div>
     </>
   );
 };
