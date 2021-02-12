@@ -1,3 +1,16 @@
+import { CheckoutPayment } from "@components/organisms";
+import { useCart, useCheckout, useUserDetails } from "@sdk/react";
+import { alertService } from "@temp/@next/components/atoms/Alert";
+import { IUserDataForNiubiz } from "@temp/@next/components/organisms/CheckoutPayment/types";
+import { ShopContext } from "@temp/components/ShopProvider/context";
+import {
+  billingAddressAlwaysSameAsShipping,
+  CHECKOUT_STEPS
+} from "@temp/core/config";
+import { IAddress, ICardData, IFormError } from "@types";
+import { filterNotEmptyArrayItems } from "@utils/misc";
+import ErrorPaymentIcon from "images/auna/credit-card-cancel.svg";
+import ErrorPromoCodeIcon from "images/auna/promo-code-error.svg";
 import React, {
   forwardRef,
   RefForwardingComponent,
@@ -5,21 +18,9 @@ import React, {
   useEffect,
   useImperativeHandle,
   useRef,
-  useState,
+  useState
 } from "react";
 import { RouteComponentProps, useHistory } from "react-router";
-
-import { CheckoutPayment } from "@components/organisms";
-import { useCart, useCheckout, useUserDetails } from "@sdk/react";
-import { ShopContext } from "@temp/components/ShopProvider/context";
-import {
-  billingAddressAlwaysSameAsShipping,
-  CHECKOUT_STEPS,
-} from "@temp/core/config";
-import { IAddress, ICardData, IFormError } from "@types";
-import { filterNotEmptyArrayItems } from "@utils/misc";
-import { IUserDataForNiubiz } from "@temp/@next/components/organisms/CheckoutPayment/types";
-import { alertService } from "@temp/@next/components/atoms/Alert";
 
 export interface ICheckoutPaymentSubpageHandles {
   submitPayment: () => void;
@@ -216,11 +217,13 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
         changeSubmitProgress(false);
         alertService.sendAlert({
           buttonText: "Entendido",
-          message: "Selecciona un método de pago para continuar",
+          icon: ErrorPaymentIcon,
+          message: "Es necesario seleccionar el método de pago para poder procesar el pago.",
+          title:"Seleccione el método de pago",
           type: "Info",
         });
         setGatewayErrors([
-          { message: "Selecciona un método de pago para continuar" },
+          { message: "Seleccione el método de pago" },
         ]);
       } else if (promoCodeDiscountFormRef.current) {
         promoCodeDiscountFormRef.current?.dispatchEvent(
@@ -239,7 +242,9 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
     if (dataError?.error) {
       alertService.sendAlert({
         buttonText: "Entendido",
+        icon:ErrorPromoCodeIcon,
         message: dataError?.error[0].message,
+        title:"Código promocional incorrecto",
         type: "Error",
       });
       setPromoCodeErrors(dataError?.error);
@@ -254,7 +259,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
 
     if (dataError?.error) {
       alertService.sendAlert({
-        buttonText: "Entendido",
+        buttonText: "Entendido",        
         message: dataError?.error[0].message,
         type: "Error",
       });
@@ -341,3 +346,4 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
 const CheckoutPaymentSubpage = forwardRef(CheckoutPaymentSubpageWithRef);
 
 export { CheckoutPaymentSubpage };
+
