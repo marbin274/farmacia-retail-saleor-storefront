@@ -209,6 +209,11 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
   top: 100%;
 }
 
+.c1 {
+  font-weight: 600;
+  padding: 0 0 1.6rem 0;
+}
+
 .c2 {
   width: 100%;
 }
@@ -298,11 +303,6 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
 .c7 {
   font-weight: bolder;
   padding-left: 1rem;
-}
-
-.c1 {
-  font-weight: 600;
-  padding: 0 0 1.6rem 0;
 }
 
 @media (max-width:540px) {
@@ -1017,6 +1017,11 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
   top: 100%;
 }
 
+.c1 {
+  font-weight: 600;
+  padding: 0 0 1.6rem 0;
+}
+
 .c2 {
   width: 100%;
 }
@@ -1106,11 +1111,6 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
 .c7 {
   font-weight: bolder;
   padding-left: 1rem;
-}
-
-.c1 {
-  font-weight: 600;
-  padding: 0 0 1.6rem 0;
 }
 
 @media (max-width:540px) {
