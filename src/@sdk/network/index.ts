@@ -819,7 +819,7 @@ export class NetworkManager implements INetworkManager {
         // @ts-ignore
         const DataLayer = window.dataLayer;
         // @ts-ignore
-        DataLayer.push({
+        DataLayer?.push({
           ecommerce: {
             purchase: {
               actionField: {
