@@ -35,7 +35,7 @@
   }
 
   &__top-banner {
-    background: no-repeat url("../../../images/auna/home-banner-top.png") #00b0ca;
+    background: no-repeat url("../../../images/auna/home-banner-top.png") #00BF8E;
     background-position: 2rem 1rem;
     background-size: 25rem;
     border-radius: 1rem;
@@ -48,7 +48,7 @@
     @media (max-width: $small-screen) {
       height: 26.5rem;
       border-radius: 0;
-      background: no-repeat url("../../../images/auna/home-banner-mob.png") #00b0ca;
+      background: no-repeat url("../../../images/auna/home-banner-mob.png") #00BF8E;
       background-position: center top;
       margin-bottom: 2rem;
     }
