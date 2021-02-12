@@ -22,10 +22,10 @@ export interface IAlertTypes {
 export const alertTypes: { Error: IAlertTypes; Info: IAlertTypes } = {
   Error: {
     icon: ErrorIcon,
-    title: "Huy, algo salió mal",
+    title: "Uy, algo salió mal",
   },
   Info: {
     icon: ErrorIcon,
-    title: "Huy, algo salió mal",
+    title: "Uy, algo salió mal",
   },
 };
