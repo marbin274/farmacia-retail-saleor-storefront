@@ -28,9 +28,8 @@ jobs:
         run: npm run build
         env:
           API_URI: ${{ secrets.GRAPHQL_URL_QA }}
-      - run: echo ${{ secrets.API_URI }}
-      - run: echo ${{ secrets.sentry_dsn }}
-      - run: echo ${{ secrets.environment_name }}
+      - run: echo ${{ secrets.GRAPHQL_URL_QA }}
+      - run: echo ${{ secrets.SENTRY_DSN_QA }}
       - name: 5- Build application release ${{ github.event.pull_request.base.ref }} - by ${{ github.actor }}
         if: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'release' }}
         run: npm run build

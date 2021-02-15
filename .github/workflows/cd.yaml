@@ -31,7 +31,7 @@ jobs:
           sentry_dsn: ${{ secrets.SENTRY_DSN_QA }}
           environment_name: "qa"
       - run: echo ${{ secrets.API_URI }}
-      - run: echo ${{ secrets.sentry_dsn }}
+      - run: echo ${{ secrets.SENTRY_DSN_QA }}
       - run: echo ${{ secrets.environment_name }}
 
       - name: 4- Build application release ${{ github.event.pull_request.base.ref }}
