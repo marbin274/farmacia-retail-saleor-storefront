@@ -182,9 +182,7 @@ const startApp = async () => {
   });
 
   Sentry.init({
-    // dsn: process.env.sentry_dsn,
-    dsn:
-      "https://55c70f5ed8c54af4824d4b61b33fd7e8@o504659.ingest.sentry.io/5623468",
+    dsn: process.env.sentry_dsn,
     environment: process.env.environment_name,
     integrations: [new Integrations.BrowserTracing()],
     release: "farmauna-storefront@" + process.env.npm_package_version,
