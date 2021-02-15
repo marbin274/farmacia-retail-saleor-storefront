@@ -28,7 +28,7 @@ jobs:
         run: npm run build
         env:
           API_URI: ${{ secrets.GRAPHQL_URL_QA }}
-          sentry_dsn: ${{ secrets.SENTRY_DSN_QA }}
+          sentry_dsn: "https://55c70f5ed8c54af4824d4b61b33fd7e8@o504659.ingest.sentry.io/5623468"
           environment_name: "qa"
 
       - name: 4- Build application release ${{ github.event.pull_request.base.ref }}
