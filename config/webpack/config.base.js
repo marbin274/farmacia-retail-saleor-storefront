@@ -128,7 +128,7 @@ module.exports = ({ sourceDir, distDir }) => ({
     new webpack.EnvironmentPlugin({
       API_URI: "http://localhost:8000/graphql/",
       SENTRY_DSN: "__test__",
-      ENVIRONMENT_NAME: "qa",
+      ENVIRONMENT_NAME: "dev",
     }),
   ],
   node: {
