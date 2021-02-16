@@ -25,7 +25,7 @@ import { Route, Router } from "react-router-dom";
 import { QueryParamProvider } from "use-query-params";
 
 import { App } from "./app";
-import { apiUrl, serviceWorkerTimeout } from "./constants";
+import { apiUrl, sentryDsn, serviceWorkerTimeout } from "./constants";
 import { history } from "./history";
 
 import { OverlayProvider } from "./components";
@@ -182,7 +182,7 @@ const startApp = async () => {
   });
 
   Sentry.init({
-    dsn: process.env.SENTRY_DSN,
+    dsn: sentryDsn,
     environment: process.env.ENVIRONMENT_NAME,
     integrations: [new Integrations.BrowserTracing()],
     release: "farmauna-storefront@" + process.env.npm_package_version,
