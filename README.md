@@ -74,7 +74,7 @@ npm i
 Run the development server:
 
 ```
-npm start
+npm start 
 ```
 
 Go to `http://localhost:3000` to access the storefront.
