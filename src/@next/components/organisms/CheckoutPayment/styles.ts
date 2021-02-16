@@ -47,7 +47,6 @@ export const DiscountField = styled.div`
               font-weight: $font-weight-normal;
               font-size: $small-font-size;
               color: $auna-black;
-              text-transform: uppercase;
               &::placeholder {
                   text-transform: none;
               }

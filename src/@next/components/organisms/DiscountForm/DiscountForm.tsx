@@ -25,7 +25,7 @@ export const DiscountForm: React.FC<IProps> = ({
     if (addPromoCode) {
       addPromoCode({
         giftCards: undefined,
-        promoCode: newInputCode.toUpperCase(),
+        promoCode: newInputCode,
       });
     }
 
