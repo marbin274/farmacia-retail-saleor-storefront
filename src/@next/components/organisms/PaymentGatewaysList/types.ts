@@ -51,4 +51,5 @@ export interface IProps {
   requestPayload?: string | undefined | null;
   totalPrice?: ITotalPrice;
   userDataForNiubiz?: IUserDataForNiubiz;
+  voucherCode: string | null | undefined;
 }

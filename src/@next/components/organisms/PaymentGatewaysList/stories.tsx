@@ -20,5 +20,6 @@ storiesOf("@components/organisms/PaymentGatewaysList", module)
       onError={onError}
       userDataForNiubiz={userDataFroNiubiz}
       changeRequestPayload={changeRequestPayload}
+      voucherCode={undefined}
     />
   ));

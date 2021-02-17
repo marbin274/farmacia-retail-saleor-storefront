@@ -2,14 +2,14 @@ import { Loader } from "@components/atoms";
 import niubizIcon from "@temp/images/auna/niubiz-logo.svg";
 import { ICardData, IPaymentGatewayConfig } from "@types";
 import { Formik } from "formik";
-import ErrorFormPopulateIcon from 'images/auna/form-populate-error.svg';
+import ErrorFormPopulateIcon from "images/auna/form-populate-error.svg";
 import React, { useEffect, useState } from "react";
 import ReactSVG from "react-svg";
 import {
   createSession,
   createToken,
   ErrorData,
-  GatewayOptions
+  GatewayOptions,
 } from "../../../../core/payments/niubiz";
 import { alertService } from "../../atoms/Alert";
 import { IAlertServiceProps } from "../../atoms/Alert/types";
@@ -17,8 +17,6 @@ import { IUserDataForNiubiz } from "../CheckoutPayment/types";
 import * as S from "./styles";
 import { IProps } from "./types";
 const ip = require("ip");
-
-
 
 const INITIAL_CARD_ERROR_STATE = {
   fieldErrors: {
@@ -33,7 +31,7 @@ const INITIAL_CARD_ERROR_STATE = {
 const INITIAL_ALERT_ERROR: IAlertServiceProps = {
   buttonText: "Entendido",
   type: "Error",
-}
+};
 
 const getConfigElement = (config: IPaymentGatewayConfig[], element: string) => {
   const result = config.find(x => x.field === element)?.value;
@@ -300,7 +298,6 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
   );
 
   const configureErrorMessages = (alert: IAlertServiceProps) => {
-
     alertService.sendAlert(alert);
     // setSubmitErrors(errors);
     onError(errors);
@@ -321,16 +318,25 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
     };
 
     if (!data.email) {
-      configureErrorMessages({ ...INITIAL_ALERT_ERROR, message: "Para poder continuar es necesario ingresar tu correo.", icon: ErrorFormPopulateIcon, title: "Faltan datos" });
+      configureErrorMessages({
+        ...INITIAL_ALERT_ERROR,
+        icon: ErrorFormPopulateIcon,
+        message: "Para poder continuar es necesario ingresar tu correo.",
+        title: "Faltan datos",
+      });
       return;
     }
 
-
     niubizTransaction(data);
-
   };
 
-  const niubizTransaction = (data: { alias: string, email: string, lastName: string, name: string, recurrence: boolean }) => {
+  const niubizTransaction = (data: {
+    alias: string;
+    email: string;
+    lastName: string;
+    name: string;
+    recurrence: boolean;
+  }) => {
     try {
       // @ts-ignore
       window.payform
@@ -350,12 +356,22 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
             };
             processPayment(transactionToken, cardData);
           } else {
-            configureErrorMessages({ ...INITIAL_ALERT_ERROR, message: "Payment submission error. Niubiz gateway returned no token in payload." });
+            configureErrorMessages({
+              ...INITIAL_ALERT_ERROR,
+              message:
+                "Ha ocurrido un error al procesar tu pago por favor inténtalo de nuevo.",
+            });
           }
         })
         .catch((error: any) => {
           if (error === "Ningun campo puede estar vacio") {
-            configureErrorMessages({ ...INITIAL_ALERT_ERROR, message: "Es necesario completar todos los campos de la tarjeta de crédito/débito.", icon: ErrorFormPopulateIcon, title: "Faltan datos" });
+            configureErrorMessages({
+              ...INITIAL_ALERT_ERROR,
+              icon: ErrorFormPopulateIcon,
+              message:
+                "Es necesario completar todos los campos de la tarjeta de crédito/débito.",
+              title: "Faltan datos",
+            });
           } else {
             configureErrorMessages({ ...INITIAL_ALERT_ERROR, message: error });
           }
@@ -363,8 +379,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
     } catch (error) {
       configureErrorMessages({ ...INITIAL_ALERT_ERROR, message: error });
     }
-
-  }
+  };
 
   useEffect(() => {
     const script: HTMLScriptElement = document.createElement("script");
@@ -451,18 +466,18 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                         className="form-control form-control-sm ncp-card"
                       ></div>
                       {formErrors.length &&
-                        formErrors.filter(x => x.code === errorsDictionary[0])
-                          .length ? (
-                          <div className="error">
-                            {
-                              formErrors.filter(
-                                x => x.code === errorsDictionary[0]
-                              )[0].message
-                            }
-                          </div>
-                        ) : (
-                          ""
-                        )}
+                      formErrors.filter(x => x.code === errorsDictionary[0])
+                        .length ? (
+                        <div className="error">
+                          {
+                            formErrors.filter(
+                              x => x.code === errorsDictionary[0]
+                            )[0].message
+                          }
+                        </div>
+                      ) : (
+                        ""
+                      )}
                     </div>
                     <br />
 
@@ -474,18 +489,18 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                           className="form-control form-control-sm"
                         ></div>
                         {formErrors.length &&
-                          formErrors.filter(x => x.code === errorsDictionary[1])
-                            .length ? (
-                            <div className="error">
-                              {
-                                formErrors.filter(
-                                  x => x.code === errorsDictionary[1]
-                                )[0].message
-                              }
-                            </div>
-                          ) : (
-                            ""
-                          )}
+                        formErrors.filter(x => x.code === errorsDictionary[1])
+                          .length ? (
+                          <div className="error">
+                            {
+                              formErrors.filter(
+                                x => x.code === errorsDictionary[1]
+                              )[0].message
+                            }
+                          </div>
+                        ) : (
+                          ""
+                        )}
                       </div>
                       <div className="cvv">
                         <label htmlFor="">CVC</label>
@@ -494,18 +509,18 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                           className="form-control form-control-sm"
                         ></div>
                         {formErrors.length &&
-                          formErrors.filter(x => x.code === errorsDictionary[2])
-                            .length ? (
-                            <div className="error">
-                              {
-                                formErrors.filter(
-                                  x => x.code === errorsDictionary[2]
-                                )[0].message
-                              }
-                            </div>
-                          ) : (
-                            ""
-                          )}
+                        formErrors.filter(x => x.code === errorsDictionary[2])
+                          .length ? (
+                          <div className="error">
+                            {
+                              formErrors.filter(
+                                x => x.code === errorsDictionary[2]
+                              )[0].message
+                            }
+                          </div>
+                        ) : (
+                          ""
+                        )}
                       </div>
                     </div>
                     <div>
@@ -527,4 +542,3 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
 };
 
 export { NiubizPaymentGateway };
-
