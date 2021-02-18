@@ -137,7 +137,6 @@ const startApp = async () => {
         //   );
         // }
         if (updateAvailable) {
-          localStorage.setItem("new_version", "OK");
           location.reload();
         }
       }, [updateAvailable]);
