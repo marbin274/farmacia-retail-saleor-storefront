@@ -1,4 +1,8 @@
-import { IAddToCartCallback } from "@app/components/molecules/ProductTileAUNA/types";
+import {
+  IAddToCartCallback,
+  IRemoveItemToCartCallback,
+  ISubstractItemToCartCallback,
+} from "@app/components/molecules/ProductTileAUNA/types";
 import { IItems } from "@sdk/api/Cart/types";
 import { structuredData } from "@temp/core/SEO/Homepage/structuredData";
 import * as React from "react";
@@ -17,6 +21,8 @@ interface IPageProps {
   productsOnCart: IItems;
   shop: HomePage_shop;
   addToCart: IAddToCartCallback;
+  removeItemToCart: IRemoveItemToCartCallback;
+  substractItemToCart: ISubstractItemToCartCallback;
 }
 interface IBanner {
   urlDesktop: string | null;
@@ -35,6 +41,8 @@ const Page: React.FC<IPageProps> = ({
   productsOnCart,
   shop,
   addToCart,
+  removeItemToCart,
+  substractItemToCart,
 }) => {
   const history = useHistory();
 
@@ -43,28 +51,29 @@ const Page: React.FC<IPageProps> = ({
       <div className="banner-container">
         <TypedHomePageQuery alwaysRender errorPolicy="all" loaderFull>
           {({ data }) => {
-            return <>
-              {
-                !!data.mainBanner ? ( <BannerCarousel>
-                  {data.mainBanner?.frames?.map((banner, index) =>
-                    <StyledBanner
-                      key={index}
-                      className="home-page__top-banner"
-                      urlDesktop={banner.images[0].url}
-                      urlMobile={banner.images[1].url}
-                      onClick={() => history.push(banner.link)}
-                    />
-                  )
-                  }
-                </BannerCarousel>) : (<StyledBanner
+            return (
+              <>
+                {!!data.mainBanner ? (
+                  <BannerCarousel>
+                    {data.mainBanner?.frames?.map((banner, index) => (
+                      <StyledBanner
+                        key={index}
+                        className="home-page__top-banner"
+                        urlDesktop={banner.images[0].url}
+                        urlMobile={banner.images[1].url}
+                        onClick={() => history.push(banner.link)}
+                      />
+                    ))}
+                  </BannerCarousel>
+                ) : (
+                  <StyledBanner
                     className="home-page__top-banner"
                     urlDesktop={BannerDesktop}
                     urlMobile={BannerMobile}
                   />
-                )
-
-              }
-            </>
+                )}
+              </>
+            );
           }}
         </TypedHomePageQuery>
       </div>
@@ -72,22 +81,18 @@ const Page: React.FC<IPageProps> = ({
         <script className="structured-data-list" type="application/ld+json">
           {structuredData(shop)}
         </script>
-
-        <div className="inner-container">
-          <div className="home-page__products">
-            <ProductsFeatured
-              productsOnCart={productsOnCart}
-              loading={loading}
-              addToCart={addToCart}
-            />
-          </div>
-        </div>
-        <div className="container">
-          <div className="home-page__bottom-section">
-            <div className="home-page__bottom-banner">
-              <p>Llegamos a 12 distritos de Lima ¡en menos de 75 minutos!</p>
-            </div>
-            <div className="home-page__districts-list" />
+      </div>
+      <ProductsFeatured
+        productsOnCart={productsOnCart}
+        loading={loading}
+        addToCart={addToCart}
+        removeItemToCart={removeItemToCart}
+        substractItemToCart={substractItemToCart}
+      />
+      <div className="container">
+        <div className="home-page__bottom-section">
+          <div className="home-page__bottom-banner">
+            <p>Llegamos a 12 distritos de Lima ¡en menos de 75 minutos!</p>
           </div>
         </div>
       </div>

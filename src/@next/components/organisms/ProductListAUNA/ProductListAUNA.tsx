@@ -13,36 +13,43 @@ export const ProductListAUNA: React.FC<IProps> = ({
   products,
   productsOnCart,
   addToCart,
+  removeItemToCart,
+  substractItemToCart,
 }: IProps) => {
-
-  const productsWithQuantity = getProductsWithQuantity(products, productsOnCart);
+  const productsWithQuantity = getProductsWithQuantity(
+    products,
+    productsOnCart
+  );
 
   return (
     <>
       <S.List>
-        {productsWithQuantity.map((product) =>
+        {productsWithQuantity.map(product => (
           <ProductTileAUNA
             key={product.id}
             addToCart={addToCart}
+            removeItemToCart={removeItemToCart}
+            substractItemToCart={substractItemToCart}
             product={product}
             productsOnCart={productsOnCart}
             productUrl={generateProductUrl(product.id, product.name)}
-          />)}
+          />
+        ))}
       </S.List>
       <S.Loader>
         {loading ? (
           <Loader />
         ) : (
-            canLoadMore && (
-              <Button
-                data-cy="load-more_button"
-                color="secondary"
-                onClick={onLoadMore}
-              >
-                More +
-              </Button>
-            )
-          )}
+          canLoadMore && (
+            <Button
+              data-cy="load-more_button"
+              color="secondary"
+              onClick={onLoadMore}
+            >
+              More +
+            </Button>
+          )
+        )}
       </S.Loader>
     </>
   );

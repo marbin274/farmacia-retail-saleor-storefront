@@ -115,23 +115,11 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   text-align: center;
 }
 
-.c2 .button {
-  border-bottom: 1px solid #00B0CA;
-  padding-bottom: 0.5rem;
-}
-
 .c2 .button button {
-  background: transparent;
-  color: #00B0CA;
-  border: solid 1px transparent;
   cursor: pointer;
-  width: 20%;
-  padding: 0.5rem 0.5rem 0rem 0.35rem;
-  border-radius: 6px;
-}
-
-.c2 .button button span {
-  font-size: 2rem;
+  padding: 0.5rem;
+  border-radius: 23px;
+  width: 100%;
 }
 
 .c2 .button button:hover {

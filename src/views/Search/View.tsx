@@ -15,7 +15,10 @@ import {
 import Page from "./Page";
 import { TypedSearchProductsQuery } from "./queries";
 import { useCart } from "@sdk/react";
-import { IAddToCartCallback } from "@temp/@next/components/molecules/ProductTileAUNA/types";
+import {
+  IAddToCartCallback,
+  IRemoveItemToCartCallback,
+} from "@temp/@next/components/molecules/ProductTileAUNA/types";
 
 type ViewProps = RouteComponentProps<{
   id: string;
@@ -128,10 +131,15 @@ export const View: React.FC<ViewProps> = ({ match }) => {
       value: "-updated_at",
     },
   ];
-  const { addItem } = useCart();
+  const { addItem, removeItem } = useCart();
   const addToCart: IAddToCartCallback = (product, quantity) => {
     addItem(product, quantity);
   };
+
+  const removeItemToCart: IRemoveItemToCartCallback = product => {
+    removeItem(product);
+  };
+
   return (
     <NetworkStatus>
       {isOnline => (
@@ -186,6 +194,7 @@ export const View: React.FC<ViewProps> = ({ match }) => {
                     setSort(value.value);
                   }}
                   addToCart={addToCart}
+                  removeItemToCart={removeItemToCart}
                 />
               );
             }

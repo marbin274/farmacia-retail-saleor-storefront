@@ -11,9 +11,13 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import * as S from "./styles";
 import { IProps } from "./types";
+import ItemsHandler from "../../organisms/ItemsHandler/ItemsHandler";
+import { itemNotificationsService } from "../../atoms/ItemsNotification";
 
 export const ProductTileAUNA: React.FC<IProps> = ({
   addToCart,
+  removeItemToCart,
+  substractItemToCart,
   productUrl: productLink,
   product,
   productsOnCart,
@@ -32,9 +36,33 @@ export const ProductTileAUNA: React.FC<IProps> = ({
   const onAddToCart = () => {
     if (canAddToCart) {
       const firstProductVariant = product?.variants?.[0];
+
       if (firstProductVariant) {
         removePaymentItems();
         addToCart?.(firstProductVariant.id, 1);
+        if (product.quantity) {
+          itemNotificationsService.sendNotifications(
+            product,
+            product.quantity + 1
+          );
+        } else {
+          itemNotificationsService.sendNotifications(product, 1);
+        }
+      }
+
+      // clearTimeout(timer);
+    }
+  };
+
+  const onSubstractToCart = () => {
+    const firstProductVariant = product?.variants?.[0];
+    if (firstProductVariant) {
+      removePaymentItems();
+      itemNotificationsService.clearNotifications();
+      if (product.quantity && product.quantity < 2) {
+        removeItemToCart?.(firstProductVariant.id);
+      } else {
+        substractItemToCart?.(firstProductVariant.id);
       }
     }
   };
@@ -73,13 +101,21 @@ export const ProductTileAUNA: React.FC<IProps> = ({
           )}
         </S.WrapperStockout>
       </Link>
-      {addToCart && (
-        <div className="button">
-          <Button onClick={onAddToCart} disabled={!canAddToCart}>
-            +
-          </Button>
-        </div>
-      )}
+      {addToCart &&
+        (product.quantity ? (
+          <ItemsHandler
+            onAdd={onAddToCart}
+            onRemove={onSubstractToCart}
+            value={product.quantity}
+            availables={product?.variants?.[0].quantityAvailable}
+          />
+        ) : (
+          <div className="button">
+            <Button onClick={onAddToCart} disabled={!canAddToCart}>
+              Agregar
+            </Button>
+          </div>
+        ))}
     </S.ProductCard>
   );
 };

@@ -12,7 +12,10 @@ import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
 import { maybe } from "../../core/utils";
 
 import { SearchProducts_products } from "./gqlTypes/SearchProducts";
-import { IAddToCartCallback } from "@temp/@next/components/molecules/ProductTileAUNA/types";
+import {
+  IAddToCartCallback,
+  IRemoveItemToCartCallback,
+} from "@temp/@next/components/molecules/ProductTileAUNA/types";
 
 interface SortItem {
   label: string;
@@ -39,7 +42,8 @@ interface PageProps {
   onLoadMore: () => void;
   onAttributeFiltersChange: (attributeSlug: string, value: string) => void;
   onOrder: (order: { value?: string; label: string }) => void;
-  addToCart: IAddToCartCallback,
+  addToCart: IAddToCartCallback;
+  removeItemToCart: IRemoveItemToCartCallback;
 }
 
 const Page: React.FC<PageProps> = ({
@@ -58,6 +62,7 @@ const Page: React.FC<PageProps> = ({
   sortOptions,
   onAttributeFiltersChange,
   addToCart,
+  removeItemToCart,
 }) => {
   const canDisplayProducts = maybe(
     () => !!products.edges && products.totalCount !== undefined
@@ -138,6 +143,7 @@ const Page: React.FC<PageProps> = ({
             loading={displayLoader}
             onLoadMore={onLoadMore}
             addToCart={addToCart}
+            removeItemToCart={removeItemToCart}
           />
         )}
       </div>
