@@ -35,22 +35,25 @@
   }
 
   &__top-banner {
-    background: no-repeat url("../../../images/auna/home-banner-top.png") #00BF8E;
-    background-position: 2rem 1rem;
-    background-size: 25rem;
+    background-size: contain;
     border-radius: 1rem;
     color: white;
-    height: 21rem;
-    margin: 0 0 3rem 0;
+    height: 500px;
+    margin: 0 auto;
     position: relative;
-    width: 100%;
+    max-width: 1920px;
+    cursor: pointer;
 
     @media (max-width: $small-screen) {
-      height: 26.5rem;
+      height: 460px;
       border-radius: 0;
-      background: no-repeat url("../../../images/auna/home-banner-mob.png") #00BF8E;
       background-position: center top;
+      margin-top: 2rem;
       margin-bottom: 2rem;
+      width: 360px;
+    }
+    @media (max-width: $xs-small-screen) {
+      width: $xs-small-screen;
     }
 
     &__text {
@@ -188,4 +191,7 @@
       grid-row: 1;
     }
   }
+}
+.banner-container{
+  width: 100vw;
 }
