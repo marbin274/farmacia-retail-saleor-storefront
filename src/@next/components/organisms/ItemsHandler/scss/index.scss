@@ -42,6 +42,11 @@
       background-color: transparent;
     }
 
+    &:hover {
+      background-color: transparent;
+      color: $auna-interactive;
+    }
+
     &:focus {
       box-shadow: none;
       background-color: transparent;

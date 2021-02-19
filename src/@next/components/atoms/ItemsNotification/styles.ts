@@ -73,7 +73,7 @@ export const Header = styled.div`
 
     &:active {
       box-shadow: none;
-      background-color: transparent;
+      background-color: transparent !important;
     }
 
     ${media.smallScreen`

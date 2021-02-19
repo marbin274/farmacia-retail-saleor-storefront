@@ -6,44 +6,53 @@ import { Button } from "..";
 import ReactSVG from "react-svg";
 import CloseIcon from "images/close.svg";
 import CheckIcon from "images/check.svg";
-import { debounceTime, tap } from "rxjs/operators";
 
 export const ItemsNotification: React.FC<any> = () => {
   const [notifications, setNotifications] = useState<
     IItemsNotificationServiceProps[]
   >([]);
-  const [show, setShow] = useState(false);
+
   useEffect(() => {
+    let interval: number;
+    let seconds = 0;
     const subscription = itemNotificationsService
       .onNotifications()
-      .pipe(
-        tap(x => {
-          setShow(false);
-        }),
-        debounceTime(3000)
-      )
-      .subscribe((data: IItemsNotificationServiceProps[]) => {
+      .subscribe((data: IItemsNotificationServiceProps) => {
+        seconds = 0;
+        if (interval) {
+          clearInterval(interval);
+        }
+
         if (data) {
-          setShow(true);
-          setNotifications(data);
-          setTimeout(() => {
-            setShow(false);
-            // itemNotificationsService.clearNotifications();
-          }, 3000);
+          setNotifications(not => {
+            if (not.filter(x => x.product.id === data.product.id).length) {
+              const index = not.findIndex(
+                x => x.product.id === data.product.id
+              );
+              not.splice(index, 1);
+            }
+            return [...not, data];
+          });
+
+          interval = setInterval(() => {
+            seconds++;
+            if (seconds > 3) {
+              clearInterval(interval);
+              setNotifications([]);
+            }
+          }, 1000);
         } else {
           setNotifications([]);
-          setShow(false);
         }
         return subscription.unsubscribe;
       });
   }, []);
 
   const hide = () => {
-    setShow(false);
-    itemNotificationsService.clearNotifications();
+    setNotifications([]);
   };
 
-  return show ? (
+  return notifications.length > 0 ? (
     <S.NotificationContainer>
       <div className="container">
         <S.ItemNotification>
@@ -58,9 +67,9 @@ export const ItemsNotification: React.FC<any> = () => {
             </Button>
           </S.Header>
           <S.Body>
-            {notifications.map(message => {
+            {notifications.map((message, index) => {
               return (
-                <S.Item key={message.product.id}>
+                <S.Item key={index}>
                   <div className="check">
                     <ReactSVG path={CheckIcon} />
                   </div>

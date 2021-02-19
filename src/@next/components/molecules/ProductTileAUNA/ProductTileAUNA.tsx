@@ -56,7 +56,6 @@ export const ProductTileAUNA: React.FC<IProps> = ({
     const firstProductVariant = product?.variants?.[0];
     if (firstProductVariant) {
       removePaymentItems();
-      itemNotificationsService.clearNotifications();
       if (product.quantity && product.quantity < 2) {
         removeItemToCart?.(firstProductVariant.id);
       } else {
