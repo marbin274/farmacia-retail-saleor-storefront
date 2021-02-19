@@ -53,7 +53,7 @@ const Page: React.FC<IPageProps> = ({
           {({ data }) => {
             return <>
               {
-                false ? (<BannerCarousel>
+                !!data.mainBanner  ? (<BannerCarousel>
                   {data.mainBanner?.frames?.map((banner, index) =>
                     <div key={index} onClick={() => { redirectTo(banner.link) }}>
                       <img src={banner.images[0].url} className="banner-image desktop" />
