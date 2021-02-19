@@ -49,8 +49,6 @@ export const ProductTileAUNA: React.FC<IProps> = ({
           itemNotificationsService.sendNotifications(product, 1);
         }
       }
-
-      // clearTimeout(timer);
     }
   };
 

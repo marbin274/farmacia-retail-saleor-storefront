@@ -39,9 +39,31 @@
 
     &:active {
       box-shadow: none;
+      background-color: transparent;
     }
+
+    &:focus {
+      box-shadow: none;
+      background-color: transparent;
+    }
+
     color: $auna-interactive;
     cursor: pointer;
     padding: 0.5rem;
+  }
+}
+
+@media (max-width: $small-screen) {
+  .add_remove_button {
+    &:nth-child(1) {
+      justify-content: flex-start;
+      margin: 0 !important;
+      width: 20%;
+    }
+    &:nth-child(3) {
+      justify-content: flex-end;
+      margin: 0 !important;
+      width: 20%;
+    }
   }
 }

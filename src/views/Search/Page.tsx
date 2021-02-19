@@ -15,6 +15,7 @@ import { SearchProducts_products } from "./gqlTypes/SearchProducts";
 import {
   IAddToCartCallback,
   IRemoveItemToCartCallback,
+  ISubstractItemToCartCallback,
 } from "@temp/@next/components/molecules/ProductTileAUNA/types";
 
 interface SortItem {
@@ -44,6 +45,7 @@ interface PageProps {
   onOrder: (order: { value?: string; label: string }) => void;
   addToCart: IAddToCartCallback;
   removeItemToCart: IRemoveItemToCartCallback;
+  substractItemToCart: ISubstractItemToCartCallback;
 }
 
 const Page: React.FC<PageProps> = ({
@@ -63,6 +65,7 @@ const Page: React.FC<PageProps> = ({
   onAttributeFiltersChange,
   addToCart,
   removeItemToCart,
+  substractItemToCart,
 }) => {
   const canDisplayProducts = maybe(
     () => !!products.edges && products.totalCount !== undefined
@@ -144,6 +147,7 @@ const Page: React.FC<PageProps> = ({
             onLoadMore={onLoadMore}
             addToCart={addToCart}
             removeItemToCart={removeItemToCart}
+            substractItemToCart={substractItemToCart}
           />
         )}
       </div>

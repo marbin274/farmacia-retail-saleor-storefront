@@ -14,6 +14,7 @@ import { Category_category, Category_products } from "./gqlTypes/Category";
 import {
   IAddToCartCallback,
   IRemoveItemToCartCallback,
+  ISubstractItemToCartCallback,
 } from "@temp/@next/components/molecules/ProductTileAUNA/types";
 import { CategoryNavigation } from "@temp/@next/components/organisms/CategoryNavigation/CategoryNavigation";
 import { MainMenu_shop } from "@temp/components/MainMenu/gqlTypes/MainMenu";
@@ -29,6 +30,7 @@ interface SortOptions extends Array<SortItem> {}
 interface PageProps {
   addToCart: IAddToCartCallback;
   removeItemToCart: IRemoveItemToCartCallback;
+  substractItemToCart: ISubstractItemToCartCallback;
   activeFilters: number;
   attributes: IFilterAttributes[];
   activeSortOption: string;
@@ -64,6 +66,7 @@ const Page: React.FC<PageProps> = ({
   onAttributeFiltersChange,
   items,
   removeItemToCart,
+  substractItemToCart,
 }) => {
   const canDisplayProducts = maybe(
     () => !!products.edges && products.totalCount !== undefined
@@ -131,6 +134,7 @@ const Page: React.FC<PageProps> = ({
               onLoadMore={onLoadMore}
               addToCart={addToCart}
               removeItemToCart={removeItemToCart}
+              substractItemToCart={substractItemToCart}
             />
           )}
           {!hasProducts && <EmptyProduct title="No hay productos" />}

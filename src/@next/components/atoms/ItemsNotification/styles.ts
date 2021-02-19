@@ -18,6 +18,11 @@ export const NotificationContainer = styled.div`
     margin-top: 0;
     justify-content: flex-end;
     display: flex;
+
+    ${media.smallScreen`
+      width: 90%;
+      padding: 0;
+  `}
   }
 `;
 
@@ -34,12 +39,9 @@ export const ItemNotification = styled.div`
   border: solid 1px ${aunaGrey60};
 
   ${media.smallScreen`
-    // width: 90%;
-    // max-width: 90%;
-    // min-width: 0;
-    left: 0;
-    margin: 0 auto;
-    top: 5rem;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0px;
   `}
 `;
 
@@ -68,8 +70,10 @@ export const Header = styled.div`
     &:hover {
       background: transparent;
     }
+
     &:active {
       box-shadow: none;
+      background-color: transparent;
     }
 
     ${media.smallScreen`

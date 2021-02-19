@@ -18,6 +18,7 @@ import { useCart } from "@sdk/react";
 import {
   IAddToCartCallback,
   IRemoveItemToCartCallback,
+  ISubstractItemToCartCallback,
 } from "@temp/@next/components/molecules/ProductTileAUNA/types";
 
 type ViewProps = RouteComponentProps<{
@@ -131,13 +132,17 @@ export const View: React.FC<ViewProps> = ({ match }) => {
       value: "-updated_at",
     },
   ];
-  const { addItem, removeItem } = useCart();
+  const { addItem, removeItem, subtractItem } = useCart();
   const addToCart: IAddToCartCallback = (product, quantity) => {
     addItem(product, quantity);
   };
 
   const removeItemToCart: IRemoveItemToCartCallback = product => {
     removeItem(product);
+  };
+
+  const substractItemToCart: ISubstractItemToCartCallback = product => {
+    subtractItem(product);
   };
 
   return (
@@ -195,6 +200,7 @@ export const View: React.FC<ViewProps> = ({ match }) => {
                   }}
                   addToCart={addToCart}
                   removeItemToCart={removeItemToCart}
+                  substractItemToCart={substractItemToCart}
                 />
               );
             }

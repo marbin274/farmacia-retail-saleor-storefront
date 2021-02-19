@@ -4,9 +4,10 @@ import { ProductVariantPicker } from "@components/organisms";
 import {
   ProductDetails_product_pricing,
   ProductDetails_product_variants,
-  ProductDetails_product_variants_pricing
+  ProductDetails_product_variants_pricing,
 } from "@sdk/queries/gqlTypes/ProductDetails";
 import { ICheckoutModelLine } from "@sdk/repository";
+import { itemNotificationsService } from "@temp/@next/components/atoms/ItemsNotification";
 import { getProductPricingClass } from "@temp/@next/utils/products";
 import { IProductVariantsAttributesSelectedValues, ITaxedMoney } from "@types";
 import isEqual from "lodash/isEqual";
@@ -43,7 +44,7 @@ interface ProductDescriptionState {
 class ProductDescription extends React.Component<
   ProductDescriptionProps,
   ProductDescriptionState
-  > {
+> {
   constructor(props: ProductDescriptionProps) {
     super(props);
 
@@ -65,7 +66,11 @@ class ProductDescription extends React.Component<
     if (variantPricing) {
       const { canAddToCart, isOnSale } = this.props;
       if (!isOnSale) {
-        return <div className="price"><TaxedMoney taxedMoney={variantPricing.price} /></div>;
+        return (
+          <div className="price">
+            <TaxedMoney taxedMoney={variantPricing.price} />
+          </div>
+        );
       } else {
         return (
           <>
@@ -109,9 +114,13 @@ class ProductDescription extends React.Component<
     }
   };
 
-
   handleSubmit = () => {
     this.props.addToCart(this.state.variant, this.state.quantity);
+
+    itemNotificationsService.sendNotifications(
+      { id: this.state.variant, name: this.props.name },
+      this.state.quantity
+    );
     this.setState({ quantity: 1 });
   };
 
@@ -119,13 +128,13 @@ class ProductDescription extends React.Component<
     const { items } = this.props;
     const { variant, variantStock } = this.state;
 
-    const cartItem = items?.find((item) => item.variant.id === variant);
+    const cartItem = items?.find(item => item.variant.id === variant);
     const quantityInCart = cartItem?.quantity || 0;
     return variantStock - quantityInCart;
   };
 
   handleQuantityChange = (operation: 1 | -1) => {
-    this.setState((prevState) => ({
+    this.setState(prevState => ({
       quantity: prevState.quantity + operation,
     }));
   };
@@ -141,7 +150,9 @@ class ProductDescription extends React.Component<
         <h3>{name}</h3>
         {!canAddToCart ? (
           <p className="product-description__error-message">AGOTADO</p>
-        ) : this.getProductPrice()}
+        ) : (
+          this.getProductPrice()
+        )}
         <RichTextContent descriptionJson={descriptionJson} />
         <div className="product-description__variant-picker">
           <ProductVariantPicker
@@ -157,10 +168,7 @@ class ProductDescription extends React.Component<
             onQuantityChange={this.handleQuantityChange}
             disableButtons={!canAddToCart}
           />
-          <AddToCart
-            onSubmit={this.handleSubmit}
-            disabled={!canAddToCart}
-          />
+          <AddToCart onSubmit={this.handleSubmit} disabled={!canAddToCart} />
         </div>
       </div>
     );

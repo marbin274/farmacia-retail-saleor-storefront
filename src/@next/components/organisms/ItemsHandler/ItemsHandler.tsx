@@ -51,6 +51,7 @@ const ItemsHandler: FC<IProps> = ({
       <Button
         className={classNames("add_remove_button")}
         onClick={handleRemoveClick}
+        type="button"
       >
         -
       </Button>
@@ -59,6 +60,7 @@ const ItemsHandler: FC<IProps> = ({
         disabled={value >= MAX_ORDER_PER_PRODUCT || value === availables}
         className={classNames("add_remove_button")}
         onClick={handleAddClick}
+        type="button"
       >
         +
       </Button>

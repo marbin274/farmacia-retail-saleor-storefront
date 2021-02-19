@@ -36,7 +36,7 @@ export const ItemsNotification: React.FC<any> = () => {
         }
         return subscription.unsubscribe;
       });
-  }, [notifications]);
+  }, []);
 
   const hide = () => {
     setShow(false);
