@@ -3,8 +3,8 @@ import ReactSVG from "react-svg";
 import "./scss/index.scss";
 
 interface Medium {
-  ariaLabel: string;
-  path: string;
+  ariaLabel: string | "";
+  path?: string;
   href: string;
 }
 

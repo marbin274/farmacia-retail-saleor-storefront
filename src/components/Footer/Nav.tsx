@@ -6,6 +6,7 @@ import { NavLink } from "..";
 import arrowDowm from "../../images/arrow_down.svg";
 import { TypedSecondaryMenuQuery } from "./queries";
 import "./scss/index.scss";
+import SocialMedia from "../SocialMedia";
 
 
 class Nav extends React.PureComponent {
@@ -103,6 +104,8 @@ class Nav extends React.PureComponent {
               ));
             }}
           </TypedSecondaryMenuQuery>
+          
+          <SocialMedia/>
         </div>
         <div className="container_terms_and_privacy container">
           <div className="copyright">
