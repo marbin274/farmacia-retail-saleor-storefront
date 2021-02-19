@@ -17,7 +17,7 @@ export const ItemsNotification: React.FC<any> = () => {
     const subscription = itemNotificationsService
       .onNotifications()
       .pipe(
-        tap(() => {
+        tap(x => {
           setShow(false);
         }),
         debounceTime(3000)
@@ -28,7 +28,7 @@ export const ItemsNotification: React.FC<any> = () => {
           setNotifications(data);
           setTimeout(() => {
             setShow(false);
-            itemNotificationsService.clearNotifications();
+            // itemNotificationsService.clearNotifications();
           }, 3000);
         } else {
           setNotifications([]);

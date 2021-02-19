@@ -8,4 +8,9 @@ describe("<ItemsNotification />", () => {
     const wrapper = shallow(<ItemsNotification />);
     expect(wrapper.exists()).toEqual(true);
   });
+
+  it("there is notifications", () => {
+    // const wrapper = shallow(<ItemsNotification />);
+    // wrapper.setState()
+  });
 });

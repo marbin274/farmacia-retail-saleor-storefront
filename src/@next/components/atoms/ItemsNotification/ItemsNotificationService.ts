@@ -16,6 +16,7 @@ export const itemNotificationsService = {
       messages.splice(index, 1);
     }
     messages.push({ product, quantity });
+
     subject.next(messages);
   },
 };
