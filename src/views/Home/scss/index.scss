@@ -16,14 +16,12 @@
     }
   }
   .home-view {
-    @media (min-width: $small-screen) {
-      margin-top: 6.75rem;
-    }
 
     .container {
+      margin-top: 0 ;
       @media (max-width: $small-screen) {
         padding: 0;
-        margin-top: 0;
+        margin-top: 0 ;
       }
     }
 
@@ -35,22 +33,13 @@
   }
 
   &__top-banner {
-    background-size: contain;
-    border-radius: 1rem;
-    color: white;
     height: 500px;
-    margin: 0 auto;
     position: relative;
-    max-width: 1920px;
     cursor: pointer;
-
     @media (max-width: $small-screen) {
       height: 460px;
       border-radius: 0;
       background-position: center top;
-      margin-top: 2rem;
-      margin-bottom: 2rem;
-      width: 360px;
     }
     @media (max-width: $xs-small-screen) {
       width: $xs-small-screen;

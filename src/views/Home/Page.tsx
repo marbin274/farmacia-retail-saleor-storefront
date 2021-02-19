@@ -12,9 +12,9 @@ import { useHistory } from "react-router-dom";
 import "./scss/index.scss";
 import { TypedHomePageQuery } from "./queries";
 import styled from "styled-components";
-import { BannerCarousel } from "@components/containers";
 import BannerDesktop from "../../images/auna/home-banner-top.png";
 import BannerMobile from "../../images/auna/home-banner-mob.png";
+import { BannerCarousel } from "@temp/@next/components/containers/BannerCarousel";
 
 interface IPageProps {
   loading: boolean;
@@ -28,11 +28,22 @@ interface IBanner {
   urlDesktop: string | null;
   urlMobile: string | null;
 }
+interface IBanner {
+  urlDesktop: string | null;
+  urlMobile: string | null;
+}
 
 const StyledBanner = styled.div<IBanner>`
-  background: no-repeat url(${props => props.urlDesktop});
+  background-image: url(${props => props.urlDesktop});
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   @media (max-width: 540px) {
-    background: no-repeat url(${props => props.urlMobile});
+    background-image: url(${props => props.urlMobile});
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  @media (max-width: 320px) {
+    background-size: 100% 100%;
   }
 `;
 
@@ -46,34 +57,44 @@ const Page: React.FC<IPageProps> = ({
 }) => {
   const history = useHistory();
 
+  const redirectTo = ( url: string) => {
+    const baseUrlPattern = (/(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})*\/?/)
+    let result = "";
+    const match = baseUrlPattern.exec(url);
+    if (match != null) {
+      result = match[0];
+    }
+    if (result.length > 0) {
+      url = url.replace(result, "");
+    }
+    history.push(url)
+  }
   return (
     <>
       <div className="banner-container">
         <TypedHomePageQuery alwaysRender errorPolicy="all" loaderFull>
           {({ data }) => {
-            return (
-              <>
-                {!!data.mainBanner ? (
-                  <BannerCarousel>
-                    {data.mainBanner?.frames?.map((banner, index) => (
-                      <StyledBanner
-                        key={index}
-                        className="home-page__top-banner"
-                        urlDesktop={banner.images[0].url}
-                        urlMobile={banner.images[1].url}
-                        onClick={() => history.push(banner.link)}
-                      />
-                    ))}
-                  </BannerCarousel>
-                ) : (
-                  <StyledBanner
+            return <>
+              {
+                !!data.mainBanner ? ( <BannerCarousel>
+                  {data.mainBanner?.frames?.map((banner, index) =>
+                    <StyledBanner
+                      key={index}
+                      className="home-page__top-banner"
+                      urlDesktop={banner.images[0].url}
+                      urlMobile={banner.images[1].url}
+                      onClick={() => redirectTo(banner.link)}
+                    />
+                  )
+                  }
+                </BannerCarousel>) : (<StyledBanner
                     className="home-page__top-banner"
                     urlDesktop={BannerDesktop}
                     urlMobile={BannerMobile}
                   />
-                )}
-              </>
-            );
+                )
+              }
+            </>
           }}
         </TypedHomePageQuery>
       </div>
@@ -81,18 +102,24 @@ const Page: React.FC<IPageProps> = ({
         <script className="structured-data-list" type="application/ld+json">
           {structuredData(shop)}
         </script>
-      </div>
-      <ProductsFeatured
-        productsOnCart={productsOnCart}
-        loading={loading}
-        addToCart={addToCart}
-        removeItemToCart={removeItemToCart}
-        substractItemToCart={substractItemToCart}
-      />
-      <div className="container">
-        <div className="home-page__bottom-section">
-          <div className="home-page__bottom-banner">
-            <p>Llegamos a 12 distritos de Lima ¡en menos de 75 minutos!</p>
+
+        <div className="inner-container">
+          <div className="home-page__products">
+            <ProductsFeatured
+              productsOnCart={productsOnCart}
+              loading={loading}
+              addToCart={addToCart}
+              removeItemToCart={removeItemToCart}
+              substractItemToCart={substractItemToCart}
+            />
+          </div>
+        </div>
+        <div className="container">
+          <div className="home-page__bottom-section">
+            <div className="home-page__bottom-banner">
+              <p>Llegamos a 12 distritos de Lima ¡en menos de 75 minutos!</p>
+            </div>
+            <div className="home-page__districts-list" />
           </div>
         </div>
       </div>
