@@ -1,4 +1,4 @@
-@import "../../../globalStyles/scss/variables.scss";
+@import "@temp/globalStyles/scss/variables.scss";
 
 .home-page {
   background-color: $white;
@@ -16,9 +16,8 @@
     }
   }
   .home-view {
-
     .container {
-      margin-top: 0 ;
+      margin-top: 0;
       @media (max-width: $small-screen) {
         padding: 0;
         margin-top: 0 ;
@@ -33,13 +32,14 @@
   }
 
   &__top-banner {
-    height: 500px;
     position: relative;
     cursor: pointer;
+    background-position: center top;
     @media (max-width: $small-screen) {
       height: 460px;
       border-radius: 0;
       background-position: center top;
+      margin-top: 1rem;
     }
     @media (max-width: $xs-small-screen) {
       width: $xs-small-screen;
@@ -181,6 +181,26 @@
     }
   }
 }
-.banner-container{
+.banner-container {
   width: 100vw;
+  text-align: center;
+  .banner-image {
+    width: 100%;    
+    margin: 0 auto;
+    &.desktop {
+      max-width: $banner-desktop-max-width;
+      max-height: $banner-desktop-max-height;
+      @media (max-width: $small-screen) {
+        display: none;
+      }
+    }
+    &.mobile {
+      max-width: $banner-mobile-max-width;
+      max-height: $banner-mobile-max-height;
+      display: none;
+      @media (max-width: $small-screen) {
+        display: block;
+      }
+    }
+  }
 }

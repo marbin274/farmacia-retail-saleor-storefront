@@ -1,20 +1,19 @@
 import {
   IAddToCartCallback,
   IRemoveItemToCartCallback,
-  ISubstractItemToCartCallback,
+  ISubstractItemToCartCallback
 } from "@app/components/molecules/ProductTileAUNA/types";
 import { IItems } from "@sdk/api/Cart/types";
+import { BannerCarousel } from "@temp/@next/components/containers/BannerCarousel";
 import { structuredData } from "@temp/core/SEO/Homepage/structuredData";
 import * as React from "react";
+import { useHistory } from "react-router-dom";
+import BannerMobile from "images/auna/home-banner-mob.png";
+import BannerDesktop from "images/auna/home-banner-top.png";
 import { ProductsFeatured } from "./";
 import { HomePage_shop } from "./gqlTypes/HomePage";
-import { useHistory } from "react-router-dom";
-import "./scss/index.scss";
 import { TypedHomePageQuery } from "./queries";
-import styled from "styled-components";
-import BannerDesktop from "../../images/auna/home-banner-top.png";
-import BannerMobile from "../../images/auna/home-banner-mob.png";
-import { BannerCarousel } from "@temp/@next/components/containers/BannerCarousel";
+import "./scss/index.scss";
 
 interface IPageProps {
   loading: boolean;
@@ -24,28 +23,6 @@ interface IPageProps {
   removeItemToCart: IRemoveItemToCartCallback;
   substractItemToCart: ISubstractItemToCartCallback;
 }
-interface IBanner {
-  urlDesktop: string | null;
-  urlMobile: string | null;
-}
-interface IBanner {
-  urlDesktop: string | null;
-  urlMobile: string | null;
-}
-
-const StyledBanner = styled.div<IBanner>`
-  background-image: url(${props => props.urlDesktop});
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  @media (max-width: 540px) {
-    background-image: url(${props => props.urlMobile});
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-  }
-  @media (max-width: 320px) {
-    background-size: 100% 100%;
-  }
-`;
 
 const Page: React.FC<IPageProps> = ({
   loading,
@@ -57,7 +34,7 @@ const Page: React.FC<IPageProps> = ({
 }) => {
   const history = useHistory();
 
-  const redirectTo = ( url: string) => {
+  const redirectTo = (url: string) => {
     const baseUrlPattern = (/(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})*\/?/)
     let result = "";
     const match = baseUrlPattern.exec(url);
@@ -76,23 +53,19 @@ const Page: React.FC<IPageProps> = ({
           {({ data }) => {
             return <>
               {
-                !!data.mainBanner ? ( <BannerCarousel>
+                false ? (<BannerCarousel>
                   {data.mainBanner?.frames?.map((banner, index) =>
-                    <StyledBanner
-                      key={index}
-                      className="home-page__top-banner"
-                      urlDesktop={banner.images[0].url}
-                      urlMobile={banner.images[1].url}
-                      onClick={() => redirectTo(banner.link)}
-                    />
+                    <div key={index} onClick={() => { redirectTo(banner.link) }}>
+                      <img src={banner.images[0].url} className="banner-image desktop" />
+                      <img src={banner.images[1].url} className="banner-image mobile" />
+                    </div>
                   )
                   }
-                </BannerCarousel>) : (<StyledBanner
-                    className="home-page__top-banner"
-                    urlDesktop={BannerDesktop}
-                    urlMobile={BannerMobile}
-                  />
-                )
+                </BannerCarousel>) : (<div>
+                  <img src={BannerDesktop} className="banner-image desktop" />
+                  <img src={BannerMobile} className="banner-image mobile" />
+                </div>
+                  )
               }
             </>
           }}
