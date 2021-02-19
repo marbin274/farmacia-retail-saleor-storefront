@@ -30,6 +30,7 @@ const PaymentGatewaysList: React.FC<IProps> = ({
   requestPayload,
   totalPrice,
   userDataForNiubiz,
+  voucherCode,
 }: IProps) => {
   const customTheme = React.useContext(ThemeContext);
 
@@ -40,23 +41,24 @@ const PaymentGatewaysList: React.FC<IProps> = ({
   const [orderNumber, setOrderNumber] = useState("");
 
   // const history = useHistory();
-
   useEffect(() => {
     const pathname = window.location.pathname;
     // alert(pathname);
     const pathElements = pathname.split("/");
+    if (selectPaymentGateway) {
+      selectPaymentGateway("");
+    }
 
     if (pathElements.length > 0) {
       setToken(pathElements[4]);
       setOrderNumber(pathElements[5]);
     }
-  }, []);
-
+    selectedPaymentGateway = undefined;
+  }, [voucherCode]);
   return (
     <S.Wrapper>
       {paymentGateways.map(({ id, name, config }, index) => {
         const checked = selectedPaymentGateway === id;
-
         switch (id) {
           case PROVIDERS.DUMMY.id:
             return (

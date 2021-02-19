@@ -5,7 +5,7 @@ import { IUserDataForNiubiz } from "@temp/@next/components/organisms/CheckoutPay
 import { ShopContext } from "@temp/components/ShopProvider/context";
 import {
   billingAddressAlwaysSameAsShipping,
-  CHECKOUT_STEPS
+  CHECKOUT_STEPS,
 } from "@temp/core/config";
 import { IAddress, ICardData, IFormError } from "@types";
 import { filterNotEmptyArrayItems } from "@utils/misc";
@@ -18,7 +18,7 @@ import React, {
   useEffect,
   useImperativeHandle,
   useRef,
-  useState
+  useState,
 } from "react";
 import { RouteComponentProps, useHistory } from "react-router";
 
@@ -218,13 +218,12 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
         alertService.sendAlert({
           buttonText: "Entendido",
           icon: ErrorPaymentIcon,
-          message: "Es necesario seleccionar el método de pago para poder procesar el pago.",
-          title:"Seleccione el método de pago",
+          message:
+            "Es necesario seleccionar el método de pago para poder procesar el pago.",
+          title: "Seleccione el método de pago",
           type: "Info",
         });
-        setGatewayErrors([
-          { message: "Seleccione el método de pago" },
-        ]);
+        setGatewayErrors([{ message: "Seleccione el método de pago" }]);
       } else if (promoCodeDiscountFormRef.current) {
         promoCodeDiscountFormRef.current?.dispatchEvent(
           new Event("submit", { cancelable: true })
@@ -242,13 +241,14 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
     if (dataError?.error) {
       alertService.sendAlert({
         buttonText: "Entendido",
-        icon:ErrorPromoCodeIcon,
+        icon: ErrorPromoCodeIcon,
         message: dataError?.error[0].message,
-        title:"Código promocional incorrecto",
+        title: "Código promocional incorrecto",
         type: "Error",
       });
       setPromoCodeErrors(dataError?.error);
     } else {
+      /// Code here
       clearPromoCodeErrors();
     }
   };
@@ -259,7 +259,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
 
     if (dataError?.error) {
       alertService.sendAlert({
-        buttonText: "Entendido",        
+        buttonText: "Entendido",
         message: dataError?.error[0].message,
         type: "Error",
       });
@@ -346,4 +346,3 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
 const CheckoutPaymentSubpage = forwardRef(CheckoutPaymentSubpageWithRef);
 
 export { CheckoutPaymentSubpage };
-

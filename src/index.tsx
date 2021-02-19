@@ -25,7 +25,12 @@ import { Route, Router } from "react-router-dom";
 import { QueryParamProvider } from "use-query-params";
 
 import { App } from "./app";
-import { apiUrl, serviceWorkerTimeout } from "./constants";
+import {
+  apiUrl,
+  sentryDsn,
+  environmentName,
+  serviceWorkerTimeout,
+} from "./constants";
 import { history } from "./history";
 
 import { OverlayProvider } from "./components";
@@ -132,7 +137,6 @@ const startApp = async () => {
         //   );
         // }
         if (updateAvailable) {
-          localStorage.setItem("new_version", "OK");
           location.reload();
         }
       }, [updateAvailable]);
@@ -181,13 +185,15 @@ const startApp = async () => {
     );
   });
 
-  Sentry.init({
-    dsn: process.env.sentry_dsn,
-    environment: process.env.environment_name,
-    integrations: [new Integrations.BrowserTracing()],
-    release: "farmauna-storefront@" + process.env.npm_package_version,
-    tracesSampleRate: 1.0,
-  });
+  if (environmentName === "prod") {
+    Sentry.init({
+      dsn: sentryDsn,
+      environment: environmentName,
+      integrations: [new Integrations.BrowserTracing()],
+      release: "farmauna-storefront@" + process.env.npm_package_version,
+      tracesSampleRate: 1.0,
+    });
+  }
 
   render(
     <ThemeProvider theme={defaultTheme}>

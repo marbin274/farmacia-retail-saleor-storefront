@@ -19,6 +19,7 @@ describe("<PaymentGatewaysList />", () => {
         onError={onError}
         userDataForNiubiz={userDataFroNiubiz}
         changeRequestPayload={changeRequestPayload}
+        voucherCode={undefined}
       />
     );
 
@@ -39,6 +40,7 @@ describe("<PaymentGatewaysList />", () => {
         onError={onError}
         userDataForNiubiz={userDataFroNiubiz}
         changeRequestPayload={changeRequestPayload}
+        voucherCode={null}
       />
     );
 

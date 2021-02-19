@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { Formik } from "formik";
 import { Loader } from "@components/atoms";
+import niubizIcon from "@temp/images/auna/niubiz-logo.svg";
 import { ICardData, IPaymentGatewayConfig } from "@types";
-const ip = require("ip");
-
+import { Formik } from "formik";
+import ErrorFormPopulateIcon from "images/auna/form-populate-error.svg";
+import React, { useEffect, useState } from "react";
+import ReactSVG from "react-svg";
 import {
   createSession,
   createToken,
   ErrorData,
   GatewayOptions,
 } from "../../../../core/payments/niubiz";
-
+import { alertService } from "../../atoms/Alert";
+import { IAlertServiceProps } from "../../atoms/Alert/types";
+import { IUserDataForNiubiz } from "../CheckoutPayment/types";
 import * as S from "./styles";
 import { IProps } from "./types";
-import ReactSVG from "react-svg";
-import niubizIcon from "@temp/images/auna/niubiz-logo.svg";
-import { IUserDataForNiubiz } from "../CheckoutPayment/types";
-import { alertService } from "../../atoms/Alert";
+const ip = require("ip");
 
 const INITIAL_CARD_ERROR_STATE = {
   fieldErrors: {
@@ -26,6 +26,11 @@ const INITIAL_CARD_ERROR_STATE = {
     number: null,
   },
   nonFieldError: "",
+};
+
+const INITIAL_ALERT_ERROR: IAlertServiceProps = {
+  buttonText: "Entendido",
+  type: "Error",
 };
 
 const getConfigElement = (config: IPaymentGatewayConfig[], element: string) => {
@@ -292,12 +297,8 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
     []
   );
 
-  const configureErrorMessages = (errors: any) => {
-    alertService.sendAlert({
-      buttonText: "Entendido",
-      message: errors[0].message,
-      type: "Error",
-    });
+  const configureErrorMessages = (alert: IAlertServiceProps) => {
+    alertService.sendAlert(alert);
     // setSubmitErrors(errors);
     onError(errors);
   };
@@ -316,6 +317,26 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
       recurrence: false,
     };
 
+    if (!data.email) {
+      configureErrorMessages({
+        ...INITIAL_ALERT_ERROR,
+        icon: ErrorFormPopulateIcon,
+        message: "Para poder continuar es necesario ingresar tu correo.",
+        title: "Faltan datos",
+      });
+      return;
+    }
+
+    niubizTransaction(data);
+  };
+
+  const niubizTransaction = (data: {
+    alias: string;
+    email: string;
+    lastName: string;
+    name: string;
+    recurrence: boolean;
+  }) => {
     try {
       // @ts-ignore
       window.payform
@@ -335,32 +356,28 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
             };
             processPayment(transactionToken, cardData);
           } else {
-            const niubizPayloadErrors = [
-              {
-                message:
-                  "Payment submission error. Niubiz gateway returned no token in payload.",
-              },
-            ];
-            configureErrorMessages(niubizPayloadErrors);
+            configureErrorMessages({
+              ...INITIAL_ALERT_ERROR,
+              message:
+                "Ha ocurrido un error al procesar tu pago por favor inténtalo de nuevo.",
+            });
           }
         })
         .catch((error: any) => {
-          const niubizPayloadErrors = [
-            {
-              message: error,
-            },
-          ];
-
-          // niubizPayloadErrors = [];
-          configureErrorMessages(niubizPayloadErrors);
+          if (error === "Ningun campo puede estar vacio") {
+            configureErrorMessages({
+              ...INITIAL_ALERT_ERROR,
+              icon: ErrorFormPopulateIcon,
+              message:
+                "Es necesario completar todos los campos de la tarjeta de crédito/débito.",
+              title: "Faltan datos",
+            });
+          } else {
+            configureErrorMessages({ ...INITIAL_ALERT_ERROR, message: error });
+          }
         });
     } catch (error) {
-      const niubizPayloadErrors = [
-        {
-          message: error.message,
-        },
-      ];
-      configureErrorMessages(niubizPayloadErrors);
+      configureErrorMessages({ ...INITIAL_ALERT_ERROR, message: error });
     }
   };
 

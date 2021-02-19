@@ -107,6 +107,7 @@ const CheckoutPayment: React.FC<IProps> = ({
         requestPayload={requestPayload}
         totalPrice={totalPrice}
         userDataForNiubiz={userDataForNiubiz}
+        voucherCode={promoCodeDiscount?.voucherCode}
       />
     </S.Wrapper>
   );
