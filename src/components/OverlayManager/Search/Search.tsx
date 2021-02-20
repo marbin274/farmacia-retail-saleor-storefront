@@ -25,6 +25,7 @@ const Search = (props: SearchProps) => {
   return (
     <Overlay context={props.overlay} className="overlay--no-background">
       <SearchForm
+        autofocus={true}
         handleInputBlur={handleInputBlur}
         handleSubmit={handleSubmit}
       >
