@@ -43,7 +43,8 @@ const View: React.FC = () => {
                 title: data.shop ? data.shop.name : "",
               }}
             >
-              <SearchForm>
+              <SearchForm
+                autofocus={false}>
                 {(search, hasSearchPhrase, hasResults) => {
                   if (hasSearchPhrase) {
                     document.body.style.overflow = "hidden";

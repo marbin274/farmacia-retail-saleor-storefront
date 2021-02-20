@@ -11,12 +11,13 @@ import "./scss/index.scss";
 
 
 interface SearchFormProps {
+  autofocus?:boolean;
   handleSubmit?: (searchQs?: string) => void;
   handleInputBlur?: () => void;
   children: (search: string, hasSearchPhrase: boolean, hasResults: (data: SearchResults) => boolean) => React.ReactNode;
 }
 
-export const SearchForm: React.FC<SearchFormProps> = ({ handleInputBlur: inputBlur, handleSubmit: submit, children }) => {
+export const SearchForm: React.FC<SearchFormProps> = ({ autofocus, handleInputBlur: inputBlur, handleSubmit: submit, children }) => {
 
   const [search, setSearch] = React.useState<string>("");
   const textFieldRef = React.useRef<HTMLInputElement>(null);
@@ -66,7 +67,7 @@ export const SearchForm: React.FC<SearchFormProps> = ({ handleInputBlur: inputBl
         onChange={({ target }) => setSearch(target.value)}
         value={search}
         innerIcon={getFieldIcono()}
-        autoFocus={true}
+        autoFocus={autofocus}
         placeholder="Busca por nombre"
         onBlur={handleInputBlur}
       />
