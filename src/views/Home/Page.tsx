@@ -34,7 +34,8 @@ const Page: React.FC<IPageProps> = ({
 }) => {
   const history = useHistory();
 
-  const redirectTo = (url: string) => {
+  const redirectTo = (url?: string) => {
+    if (!url) { return; };
     const baseUrlPattern = (/(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})*\/?/)
     let result = "";
     const match = baseUrlPattern.exec(url);
@@ -53,7 +54,7 @@ const Page: React.FC<IPageProps> = ({
           {({ data }) => {
             return <>
               {
-                !!data.mainBanner  ? (<BannerCarousel>
+                !!data.mainBanner ? (<BannerCarousel>
                   {data.mainBanner?.frames?.map((banner, index) =>
                     <div key={index} onClick={() => { redirectTo(banner.link) }}>
                       <img src={banner.images[0].url} className="banner-image desktop" />
