@@ -7,7 +7,7 @@ import { SOCIAL_MEDIA } from '@temp/core/config';
 const SocialMedia: React.FC = () => {
   return (
     <div className="social_media_container">
-      <h5 className="social_media_container__title">Siguenos</h5>
+      <h5 className="social_media_container__title">Síguenos</h5>
       <div className="social_media_container__icons">
         {SOCIAL_MEDIA.map((media, index) =>
           <SocialMediaIcon
