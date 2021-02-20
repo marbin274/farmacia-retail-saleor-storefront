@@ -49,6 +49,17 @@ export const homePageQuery = gql`
         tagManagerEnvironmentId
       }
     }
+    mainBanner {
+        id,
+        frames{
+            id,
+            link,
+            images {
+                screenType,
+                url
+            }
+        }
+    }
   }
 `;
 

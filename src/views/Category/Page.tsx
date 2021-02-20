@@ -11,7 +11,11 @@ import { ProductListAUNA } from "../../@next/components/organisms";
 import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
 import { maybe } from "../../core/utils";
 import { Category_category, Category_products } from "./gqlTypes/Category";
-import { IAddToCartCallback } from "@temp/@next/components/molecules/ProductTileAUNA/types";
+import {
+  IAddToCartCallback,
+  IRemoveItemToCartCallback,
+  ISubstractItemToCartCallback,
+} from "@temp/@next/components/molecules/ProductTileAUNA/types";
 import { CategoryNavigation } from "@temp/@next/components/organisms/CategoryNavigation/CategoryNavigation";
 import { MainMenu_shop } from "@temp/components/MainMenu/gqlTypes/MainMenu";
 import { IItems } from "@temp/@sdk/api/Cart/types";
@@ -25,6 +29,8 @@ interface SortOptions extends Array<SortItem> {}
 
 interface PageProps {
   addToCart: IAddToCartCallback;
+  removeItemToCart: IRemoveItemToCartCallback;
+  substractItemToCart: ISubstractItemToCartCallback;
   activeFilters: number;
   attributes: IFilterAttributes[];
   activeSortOption: string;
@@ -59,6 +65,8 @@ const Page: React.FC<PageProps> = ({
   sortOptions,
   onAttributeFiltersChange,
   items,
+  removeItemToCart,
+  substractItemToCart,
 }) => {
   const canDisplayProducts = maybe(
     () => !!products.edges && products.totalCount !== undefined
@@ -125,12 +133,12 @@ const Page: React.FC<PageProps> = ({
               loading={displayLoader}
               onLoadMore={onLoadMore}
               addToCart={addToCart}
+              removeItemToCart={removeItemToCart}
+              substractItemToCart={substractItemToCart}
             />
           )}
-           {!hasProducts && <EmptyProduct title="No hay productos" />}
+          {!hasProducts && <EmptyProduct title="No hay productos" />}
         </section>
-            
-       
       </div>
     </div>
   );

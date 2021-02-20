@@ -15,7 +15,11 @@ import {
 import Page from "./Page";
 import { TypedCategoryProductsQuery } from "./queries";
 import { useCart } from "@sdk/react";
-import { IAddToCartCallback } from "@temp/@next/components/molecules/ProductTileAUNA/types";
+import {
+  IAddToCartCallback,
+  IRemoveItemToCartCallback,
+  ISubstractItemToCartCallback,
+} from "@temp/@next/components/molecules/ProductTileAUNA/types";
 
 type ViewProps = RouteComponentProps<{
   id: string;
@@ -127,9 +131,17 @@ export const View: React.FC<ViewProps> = ({ match }) => {
     //   value: "-updated_at",
     // },
   ];
-  const { addItem, items } = useCart();
+  const { addItem, items, subtractItem } = useCart();
   const addToCart: IAddToCartCallback = (product, quantity) => {
     addItem(product, quantity);
+  };
+
+  const removeItemToCart: IRemoveItemToCartCallback = product => {
+    subtractItem(product);
+  };
+
+  const substractItemToCart: ISubstractItemToCartCallback = product => {
+    subtractItem(product);
   };
 
   return (
@@ -194,6 +206,8 @@ export const View: React.FC<ViewProps> = ({ match }) => {
                     }}
                     addToCart={addToCart}
                     items={items}
+                    removeItemToCart={removeItemToCart}
+                    substractItemToCart={substractItemToCart}
                   />
                 </MetaWrapper>
               );

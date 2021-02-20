@@ -11,5 +11,16 @@
     svg * {
       fill: $turquoise;
     }
+    path {
+      fill: $white;
+    } 
+  }
+  &:active {
+    svg * {
+      fill: $darkGreen2;
+    }
+    path {
+      fill: $white;
+    } 
   }
 }

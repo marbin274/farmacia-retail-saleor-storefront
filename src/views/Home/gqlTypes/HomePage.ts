@@ -30,6 +30,20 @@ export interface AnaliticTracking {
   tagManagerEnvironmentId: string | null;
 }
 
+export interface Image {
+  screenType: string | null;
+  url: string | null;
+}
+export interface Frames {
+  id: string | null;
+  link: string | null;
+  images: Image;
+}
+export interface mainBanner {
+  id: string | null;
+  frames: Frames[];
+}
+
 export interface HomePage_shop {
   __typename: "Shop";
   /**
@@ -355,5 +369,6 @@ export interface HomePage {
    * List of the shop's products.
    */
   products: HomePage_products | null;
-}
 
+  mainBanner: mainBanner | null;
+}

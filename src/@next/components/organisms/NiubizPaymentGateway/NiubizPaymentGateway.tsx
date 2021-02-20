@@ -317,11 +317,11 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
       recurrence: false,
     };
 
-    if (!data.email) {
+    if (!data.name || !data.lastName || !data.email) {
       configureErrorMessages({
         ...INITIAL_ALERT_ERROR,
         icon: ErrorFormPopulateIcon,
-        message: "Para poder continuar es necesario ingresar tu correo.",
+        message: "Para poder continuar es necesario ingresar tu nombre, apellido y correo.",
         title: "Faltan datos",
       });
       return;

@@ -1,5 +1,5 @@
 import { media, styled } from "@styles";
-import { aunaBlack, aunaGrey100, aunaInteractive } from "@styles/constants";
+import { aunaBlack, aunaGrey100 } from "@styles/constants";
 
 const productHeight = "24rem";
 
@@ -52,22 +52,14 @@ export const ProductCard = styled.div<{
   }
 
   .button {
-    ${({ canAddToCart }) =>
-    canAddToCart
-      ? `border-bottom: 1px solid ${aunaInteractive}`
-      : `border-bottom: 1px solid #B8BCD5`}
-    padding-bottom: 0.5rem;
     button {
-      background: transparent;
-      color: ${aunaInteractive}
-      border: solid 1px transparent;
       cursor: pointer;
-      width: 20%;
-      padding: 0.5rem 0.5rem 0rem 0.35rem;
-      border-radius: 6px;
+      padding: 0.5rem;
+      border-radius: 23px;
+      width: 100%;
 
       span {
-        font-size: 2rem;
+        // font-size: 2rem;
       }
       :hover {
         border-color: transparent;
