@@ -1,5 +1,5 @@
 export const DOCUMENT_NUMBER_MIN_LENGTH = 8;
-export const DOCUMENT_NUMBER_MAX_LENGTH = 8;
+export const DOCUMENT_NUMBER_MAX_LENGTH = 9;
 export const DOCUMENT_REGEX_VALIDATION: RegExp = /^[0-9]+$/;
 export const EMAIL_REGEX_VALIDARION: RegExp = /^[0-9a-zA-Z@._-]+$/;
 export const PASSWORD_MIN_LEGTH = 8;

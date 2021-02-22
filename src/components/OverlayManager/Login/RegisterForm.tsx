@@ -1,43 +1,35 @@
 import { maybe } from "@temp/core/utils";
+import { History } from "history";
 import React from "react";
-import { AlertManager, useAlert } from "react-alert";
-import { RegisterAccount } from "./gqlTypes/RegisterAccount";
+import { useHistory } from "react-router";
 import { TypedAccountRegisterMutation } from "./queries";
 import { RegisterFormContent } from "./RegisterFormContent";
 import "./scss/index.scss";
 
-const showSuccessNotification = (
-  data: RegisterAccount,
-  hide: () => void,
-  alert: AlertManager
-) => {
-  const successful = maybe(() => !data.accountRegister.errors.length);
-
-  if (successful) {
-    hide();
-    alert.show(
-      {
-        title: data.accountRegister.requiresConfirmation
-          ? "Hemos enviado siguientes instrucciones. Revisa tu correo electrónico."
-          : "New user has been created",
-      },
-      { type: "success", timeout: 5000 }
-    );
-  }
-};
-
 interface IRegisterForm {
   hide?: () => void;
   onSwitchSection?: () => void;
+  registerSuccessful?: (flag: boolean, history: History<any>) => void;
+  setEmail?: (email: string) => void;
 }
 
-const RegisterForm: React.FC<IRegisterForm> = ({ hide, onSwitchSection }) => {
-  const alert = useAlert();
-
+const RegisterForm: React.FC<IRegisterForm> = ({
+  hide,
+  onSwitchSection,
+  registerSuccessful,
+  setEmail,
+}) => {
+  const history = useHistory();
 
   return (
     <TypedAccountRegisterMutation
-      onCompleted={data => showSuccessNotification(data, hide, alert)}
+      onCompleted={data => {
+        const successful = maybe(() => !data.accountRegister.errors.length);
+
+        if (successful) {
+          registerSuccessful(true, history);
+        }
+      }}
     >
       {(registerCustomer, { loading, data }) => {
         return (
@@ -57,6 +49,7 @@ const RegisterForm: React.FC<IRegisterForm> = ({ hide, onSwitchSection }) => {
               errors={data?.accountRegister?.errors}
               loading={loading}
               registerCustomer={registerCustomer}
+              setEmail={setEmail}
             />
             <div className="login-form__change-section">
               <p>¿Ya tienes cuenta?</p>

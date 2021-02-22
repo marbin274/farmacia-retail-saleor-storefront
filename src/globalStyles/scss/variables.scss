@@ -17,7 +17,7 @@ $blue-overlay: rgba($blue, 0.15);
 $autofillColor: rgb(250, 255, 189);
 $autofillColorSelected: rgb(232, 240, 254);
 $darkGreen: #06847b;
-$darkGreen2: #06A079;
+$darkGreen2: #06a079;
 $aunaBrand5: #404497;
 $aunaBrand6: #ea5b2e;
 
@@ -57,6 +57,7 @@ $h3-font-size: 1.5rem; // 24px
 $h4-font-size: 1.125rem; // 18px
 $bold-font-normal: 400;
 $bold-font-weight: 600;
+$big-bold-font-weight: 700;
 $extra-bold-font-weight: 900;
 
 $font-weight-light: 300;
@@ -133,8 +134,8 @@ $modal-min-height: 455px;
   smallScreen: $small-screen;
   xs-small-screen: $xs-small-screen;
 }
-// banner 
-$banner-desktop-max-width : 1920px;
-$banner-desktop-max-height : 500px;
-$banner-mobile-max-width : 360px;
-$banner-mobile-max-height : 460px;
+// banner
+$banner-desktop-max-width: 1920px;
+$banner-desktop-max-height: 500px;
+$banner-mobile-max-width: 360px;
+$banner-mobile-max-height: 460px;
