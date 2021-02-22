@@ -132,7 +132,7 @@ export const View: React.FC<ViewProps> = ({ match }) => {
       value: "-updated_at",
     },
   ];
-  const { addItem, removeItem, subtractItem } = useCart();
+  const { items: productsOnCart, addItem, removeItem, subtractItem } = useCart();
   const addToCart: IAddToCartCallback = (product, quantity) => {
     addItem(product, quantity);
   };
@@ -188,6 +188,7 @@ export const View: React.FC<ViewProps> = ({ match }) => {
                   activeSortOption={filters.sortBy}
                   filters={filters}
                   products={data.products}
+                  productsOnCart={productsOnCart}
                   onAttributeFiltersChange={onFiltersChange}
                   onLoadMore={handleLoadMore}
                   activeFilters={

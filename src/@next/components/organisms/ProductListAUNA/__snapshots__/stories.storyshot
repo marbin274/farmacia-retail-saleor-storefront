@@ -571,7 +571,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         className="c6"
         size="md"
       >
-        More +
+        Cargar +
       </span>
     </button>
   </div>
