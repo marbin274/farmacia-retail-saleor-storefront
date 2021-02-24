@@ -50,6 +50,9 @@ const CheckoutPayment: React.FC<IProps> = ({
   const handleChangeShowPromoCodeForm = () => {
     setShowPromoCodeForm(!showPromoCodeForm);
     promoCodeErrors = [];
+    if (promoCodeDiscount && promoCodeDiscount.voucherCode) {
+      removeVoucherCode(promoCodeDiscount.voucherCode);
+    }
     clearPromoCodeErrors();
   };
 
