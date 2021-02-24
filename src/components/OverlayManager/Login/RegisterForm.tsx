@@ -13,13 +13,12 @@ interface IRegisterForm {
   setEmail?: (email: string) => void;
 }
 
-const RegisterForm: React.FC<IRegisterForm> = ({
-  hide,
-  onSwitchSection,
-  registerSuccessful,
-  setEmail,
-}) => {
+const RegisterForm: React.FC<IRegisterForm> = ({ hide, onSwitchSection }) => {
   const history = useHistory();
+
+  const setEmail = (email: string) => {
+    sessionStorage.setItem("user-registered-email", email);
+  };
 
   return (
     <TypedAccountRegisterMutation
@@ -27,7 +26,10 @@ const RegisterForm: React.FC<IRegisterForm> = ({
         const successful = maybe(() => !data.accountRegister.errors.length);
 
         if (successful) {
-          registerSuccessful(true, history);
+          history.push("/user-registered");
+          hide();
+        } else {
+          sessionStorage.removeItem("user-registered-email");
         }
       }}
     >
