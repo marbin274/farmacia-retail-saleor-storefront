@@ -176,7 +176,7 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
             icon: NoStockIcon,
             message: errors[0].message,
             title: "Producto sin stock",
-            type: "Error",
+            type: "Info",
           });
           break;
         default:

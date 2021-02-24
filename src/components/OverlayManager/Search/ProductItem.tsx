@@ -5,9 +5,13 @@ import { Thumbnail } from "@components/molecules";
 
 import { generateProductUrl } from "../../../core/utils";
 import { SearchResults_products_edges } from "./gqlTypes/SearchResults";
-import { Money } from 'src/@next/components/containers/Money/Money';
+import { Money } from "src/@next/components/containers/Money/Money";
 import { useCart } from "@temp/@sdk/react";
-import { checkProductCanAddToCart, checkProductIsOnSale, getProductPricingClass } from "@temp/@next/utils/products";
+import {
+  checkProductCanAddToCart,
+  checkProductIsOnSale,
+  getProductPricingClass,
+} from "@temp/@next/utils/products";
 
 const ProductItem: React.FC<SearchResults_products_edges> = ({
   node: product,
@@ -27,14 +31,21 @@ const ProductItem: React.FC<SearchResults_products_edges> = ({
             </p>
           </div>
           <div className="search__products__item__side">
-            {canAddToCart ?
-              <div className={getProductPricingClass(canAddToCart, isOnSale)}><p className="search__products__item__side__price"><Money money={product.pricing.priceRange.start.net} /></p></div>
-              : <p className="search__products__item__side__outstock"><span>Agotado</span></p>
-            }
+            {canAddToCart ? (
+              <div className={getProductPricingClass(canAddToCart, isOnSale)}>
+                <p className="search__products__item__side__price">
+                  <Money money={product.pricing.priceRange.start.net} />
+                </p>
+              </div>
+            ) : (
+              <p className="search__products__item__side__outstock">
+                <span>Agotado</span>
+              </p>
+            )}
           </div>
         </div>
       </Link>
     </li>
   );
-}
+};
 export default ProductItem;
