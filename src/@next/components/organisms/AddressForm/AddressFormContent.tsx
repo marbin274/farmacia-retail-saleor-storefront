@@ -8,6 +8,7 @@ import {
 } from "@components/atoms";
 import { TextField } from "@components/molecules";
 import { IPrivacyPolicy } from "@sdk/api/Checkout/types";
+import { DOCUMENT_NUMBER_MAX_LENGTH } from "../../../utils/schemas.config";
 import ErrorFormPopulateIcon from 'images/auna/form-populate-error.svg';
 import React, { useCallback, useState } from "react";
 import { alertService } from "../../atoms/Alert";
@@ -229,12 +230,11 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                       name="documentNumber"
                       placeholder="Número de documento"
                       label="*Número de documento"
-                      maxLength={8}
+                      maxLength={DOCUMENT_NUMBER_MAX_LENGTH}
                       value={
                         !values?.documentNumber ? "" : values?.documentNumber
                       }
                       autoComplete="documento"
-                      readOnly={user}
                       errors={fieldErrors!.documentNumber}
                       onBlur={handleBlur}
                       onChange={e => {

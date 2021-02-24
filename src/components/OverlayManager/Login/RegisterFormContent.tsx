@@ -8,7 +8,7 @@ import {
 import { IFormError } from "@app/types";
 import { joinFormikErrorsToIFormErrorsAndConvertToObjectErrors } from "@app/utils/errorsManagement";
 import { TextField } from "@components/molecules";
-import { DOCUMENT_NUMBER_MAX_LENGTH } from "@temp/@next/utils/schemas.config";
+import { DOCUMENT_NUMBER_MAX_LENGTH } from "@app/utils/schemas.config";
 import { accountConfirmUrl } from "@temp/app/routes";
 import { useFormik } from "formik";
 import React, { useState } from "react";
