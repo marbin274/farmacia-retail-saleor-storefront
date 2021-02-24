@@ -6,7 +6,7 @@ import { Button } from "../Button";
 import { alertService } from "./AlertService";
 import * as S from "./styles";
 import { alertTypes, IAlertServiceProps } from "./types";
-import * as Sentry from "@sentry/react";
+// import * as Sentry from "@sentry/react";
 
 const dataInitial: IAlertServiceProps = {
   buttonText: "",
@@ -29,12 +29,12 @@ export const Alert: React.FC<any> = () => {
         // });
 
         if (data) {
-          Sentry.captureException(data?.message || "Ha ocurrido un error", {
-            level:
-              data.type === "Error"
-                ? Sentry.Severity.Fatal
-                : Sentry.Severity.Warning,
-          });
+          // Sentry.captureException(data?.message || "Ha ocurrido un error", {
+          //   level:
+          //     data.type === "Error"
+          //       ? Sentry.Severity.Fatal
+          //       : Sentry.Severity.Warning,
+          // });
           setShow(true);
           setAlert(data);
         } else {
