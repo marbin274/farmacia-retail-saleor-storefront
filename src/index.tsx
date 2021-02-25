@@ -185,13 +185,13 @@ const startApp = async () => {
     );
   });
 
-  Sentry.init({
-    dsn: sentryDsn,
-    environment: environmentName,
-    integrations: [new Integrations.BrowserTracing()],
-    release: "farmauna-storefront@" + process.env.npm_package_version,
-    tracesSampleRate: 1.0,
-  });
+  // Sentry.init({
+  //   dsn: sentryDsn,
+  //   environment: environmentName,
+  //   integrations: [new Integrations.BrowserTracing()],
+  //   release: "farmauna-storefront@" + process.env.npm_package_version,
+  //   tracesSampleRate: 1.0,
+  // });
 
   render(
     <ThemeProvider theme={defaultTheme}>
