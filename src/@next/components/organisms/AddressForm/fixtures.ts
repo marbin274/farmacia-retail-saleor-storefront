@@ -29,6 +29,7 @@ export const address = {
 };
 
 export const documentNumber = "12345678";
+export const wrongDocumentNumber = " 12345678";
 
 export const errors = [
   {
