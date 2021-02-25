@@ -1,22 +1,30 @@
-import { CartPage, CheckoutPage, PasswordReset, ThankYouPage } from "@pages";
+import {
+  CartPage,
+  CheckoutPage,
+  PasswordReset,
+  ThankYouPage,
+  UserRegistered,
+} from "@pages";
 import * as React from "react";
 import { Route, Switch } from "react-router-dom";
 import { CheckoutLogin, NotFound } from "../../components";
 import UserAccount, * as accountPaths from "../../userAccount/routes";
 import { OrderDetails } from "../../userAccount/views";
-import { Account, AccountConfirm, ResetPasswordMailSent } from "../../views/Account";
+import {
+  Account,
+  AccountConfirm,
+  ResetPasswordMailSent,
+} from "../../views/Account";
 import { ArticlePage } from "../../views/Article";
 import { CategoryPage } from "../../views/Category";
 import { CollectionPage } from "../../views/Collection";
 import { HomePage } from "../../views/Home";
 import { ProductPage } from "../../views/Product";
-import { SearchPage } from "../../views/Search";
 import * as paths from "./paths";
 
 export const Routes: React.FC = () => (
   <Switch>
     <Route exact path={paths.baseUrl} component={HomePage} />
-    <Route path={paths.searchUrl} component={SearchPage} />
     <Route path={paths.categoryUrl} component={CategoryPage} />
     <Route path={paths.collectionUrl} component={CollectionPage} />
     <Route path={paths.productUrl} component={ProductPage} />
@@ -33,7 +41,11 @@ export const Routes: React.FC = () => (
     <Route path={paths.passwordResetUrl} component={PasswordReset} />
     <Route path={paths.checkoutUrl} component={CheckoutPage} />
     <Route path={paths.orderFinalizedUrl} component={ThankYouPage} />
-    <Route path={paths.resetPasswordMailSentUrl} component={ResetPasswordMailSent} />
+    <Route
+      path={paths.resetPasswordMailSentUrl}
+      component={ResetPasswordMailSent}
+    />
+    <Route path={paths.userRegistered} component={UserRegistered} />
     <Route component={NotFound} />
   </Switch>
 );

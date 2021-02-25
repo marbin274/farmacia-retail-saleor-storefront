@@ -22,28 +22,29 @@ export const Alert: React.FC<any> = () => {
     const subscription = alertService
       .onAlert()
       .subscribe((data: IAlertServiceProps) => {
-        // TODO: Ver luego la implementacion.
-        // Sentry.setTag("checkout", "shipping");
-        // Sentry.setUser({
-        //   email: "mail@mail.com",
-        // });
-
         if (data) {
-          // Sentry.captureException(data?.message || "Ha ocurrido un error", {
-          //   level:
-          //     data.type === "Error"
-          //       ? Sentry.Severity.Fatal
-          //       : Sentry.Severity.Warning,
-          // });
-          setShow(true);
-          setAlert(data);
+          switch (data.type) {
+            case "Error":
+              // TODO: habilitar luego de las pruebas de QA.
+              // Sentry.captureException(data?.message || "Ha ocurrido un error", {
+              //   level: Sentry.Severity.Error,
+              // });
+              setShow(true);
+              setAlert(data);
+              break;
+
+            default:
+              setShow(true);
+              setAlert(data);
+              break;
+          }
         } else {
           setAlert(dataInitial);
           setShow(false);
         }
         return subscription.unsubscribe;
       });
-  }, [alert]);
+  }, []);
 
   const hide = () => {
     setShow(false);

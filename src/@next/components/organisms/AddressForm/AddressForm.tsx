@@ -46,8 +46,8 @@ export const AddressForm: React.FC<IProps> = ({
   }
   addressWithPickedFields.phone = checkoutData?.shippingAddress?.phone
     ? checkoutData?.shippingAddress?.phone.substring(
-        checkoutData?.shippingAddress?.phone.length - 9
-      )
+      checkoutData?.shippingAddress?.phone.length - 9
+    )
     : "";
   addressWithPickedFields.documentNumber = checkoutData?.documentNumber;
   addressWithPickedFields.termsAndConditions = checkoutData?.termsAndConditions;
@@ -73,15 +73,10 @@ export const AddressForm: React.FC<IProps> = ({
       ? user.addresses[0]?.streetAddress2
       : checkoutData?.shippingAddress?.streetAddress2;
     addressWithPickedFields.email = user.email;
-    addressWithPickedFields.phone = checkoutData?.shippingAddress?.phone
-      ? checkoutData?.shippingAddress?.phone.substring(
-          checkoutData?.shippingAddress?.phone.length - 9
-        )
-      : "";
     addressWithPickedFields.id = user.addresses?.[0]?.id;
-    addressWithPickedFields.documentNumber = user.documentNumber
-      ? user.documentNumber
-      : "";
+    addressWithPickedFields.documentNumber = addressWithPickedFields.documentNumber
+      ? addressWithPickedFields.documentNumber
+      : (user.documentNumber ? user.documentNumber : "");
     addressWithPickedFields.termsAndConditions = user.termsAndConditions
       ? user.termsAndConditions
       : false;

@@ -4,18 +4,20 @@ import {
   Checkbox,
   DataTreatmentPolicyLink,
   ErrorMessage,
-  TermsAndConditionsLink
+  TermsAndConditionsLink,
 } from "@components/atoms";
 import { TextField } from "@components/molecules";
 import { IPrivacyPolicy } from "@sdk/api/Checkout/types";
-import ErrorFormPopulateIcon from 'images/auna/form-populate-error.svg';
+import { DOCUMENT_NUMBER_MAX_LENGTH } from "../../../utils/schemas.config";
+import ErrorFormPopulateIcon from "images/auna/form-populate-error.svg";
 import React, { useCallback, useState } from "react";
 import { alertService } from "../../atoms/Alert";
 import {
-  CitySelect, FirstNameTextField,
+  CitySelect,
+  FirstNameTextField,
   PhoneTextField,
   StreetAddress1,
-  StreetAddress2
+  StreetAddress2,
 } from "./AddressFormContent/AddressFormFields";
 import { IFieldsProps, ISelectFieldsProps } from "./AddressFormContent/types";
 import * as S from "./styles";
@@ -116,9 +118,10 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
       alertService.sendAlert({
         buttonText: "Entendido",
         icon: ErrorFormPopulateIcon,
-        message: "Por favor completa los datos que se encuentran en color rojo.",
+        message:
+          "Por favor completa los datos que se encuentran en color rojo.",
         title: "Faltan datos",
-        type: "Error",
+        type: "Info",
       });
       return;
     }
@@ -217,86 +220,85 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
               </S.FieldsGroup>
             </div>
           ) : (
-              <div>
-                <S.FieldsGroup>
-                  {renderGroupLabel(1, "Cliente")}
-                  <S.RowWithTwoCells>
-                    <FirstNameTextField
-                      fieldsProps={{ ...fieldsProps, required: true }}
-                    />
-                    <TextField
-                      data-cy="addressFormDNI"
-                      name="documentNumber"
-                      placeholder="Número de documento"
-                      label="*Número de documento"
-                      maxLength={8}
-                      value={
-                        !values?.documentNumber ? "" : values?.documentNumber
-                      }
-                      autoComplete="documento"
-                      readOnly={user}
-                      errors={fieldErrors!.documentNumber}
-                      onBlur={handleBlur}
-                      onChange={e => {
-                        const value = e.currentTarget?.value?.toUpperCase();
-                        setFieldValue("documentNumber", value);
-                      }}
-                    />
-                  </S.RowWithTwoCells>
-                  <S.RowWithTwoCells>
-                    <TextField
-                      data-cy="addressFormEmail"
-                      name="email"
-                      placeholder="Email"
-                      label="*Email"
-                      value={!values?.email ? "" : values?.email}
-                      autoComplete="email"
-                      errors={fieldErrors!.email}
-                      {...basicInputProps()}
-                    />
-                    <PhoneTextField fieldsProps={fieldsProps} />
-                  </S.RowWithTwoCells>
-                  <S.RowWithOneCell>
-                    <div className="privacyAndPolicies">
-                      <Checkbox
-                        data-cy="addressFormTermsAndConditions"
-                        name="termsAndConditions"
-                        checked={privacyAndPolicies}
-                        onChange={handlePrivacyAndPolicies}
-                      >
-                        <TermsAndConditionsLink />
-                      </Checkbox>
-                      <ErrorMessage errors={fieldErrors!.termsAndConditions} />
-                    </div>
-                    <div className="additionals">
-                      <Checkbox
-                        data-cy="checkoutPaymentPromoCodeCheckbox"
-                        name="dataTreatmentPolicy"
-                        checked={additionals}
-                        onChange={handleAdditionals}
-                      >
-                        <DataTreatmentPolicyLink />
-                      </Checkbox>
-                    </div>
-                  </S.RowWithOneCell>
-                </S.FieldsGroup>
-                <S.FieldsGroup>
-                  {renderGroupLabel(2, "Dirección")}
-                  <S.RowWithTwoCells>
-                    <StreetAddress1 fieldsProps={fieldsProps} />
-                    <StreetAddress2 fieldsProps={fieldsProps} />
-                  </S.RowWithTwoCells>
-                  <S.RowWithTwoCells>
-                    <CitySelect
-                      fieldsProps={{
-                        ...cityProps,
-                        handleCityChange,
-                      }}
-                    />
-                  </S.RowWithTwoCells>
-                </S.FieldsGroup>
-              </div>
-            )}
+            <div>
+              <S.FieldsGroup>
+                {renderGroupLabel(1, "Cliente")}
+                <S.RowWithTwoCells>
+                  <FirstNameTextField
+                    fieldsProps={{ ...fieldsProps, required: true }}
+                  />
+                  <TextField
+                    data-cy="addressFormDNI"
+                    name="documentNumber"
+                    placeholder="Número de documento"
+                    label="*Número de documento"
+                    maxLength={DOCUMENT_NUMBER_MAX_LENGTH}
+                    value={
+                      !values?.documentNumber ? "" : values?.documentNumber
+                    }
+                    autoComplete="documento"
+                    errors={fieldErrors!.documentNumber}
+                    onBlur={handleBlur}
+                    onChange={e => {
+                      const value = e.currentTarget?.value?.toUpperCase();
+                      setFieldValue("documentNumber", value);
+                    }}
+                  />
+                </S.RowWithTwoCells>
+                <S.RowWithTwoCells>
+                  <TextField
+                    data-cy="addressFormEmail"
+                    name="email"
+                    placeholder="Email"
+                    label="*Email"
+                    value={!values?.email ? "" : values?.email}
+                    autoComplete="email"
+                    errors={fieldErrors!.email}
+                    {...basicInputProps()}
+                  />
+                  <PhoneTextField fieldsProps={fieldsProps} />
+                </S.RowWithTwoCells>
+                <S.RowWithOneCell>
+                  <div className="privacyAndPolicies">
+                    <Checkbox
+                      data-cy="addressFormTermsAndConditions"
+                      name="termsAndConditions"
+                      checked={privacyAndPolicies}
+                      onChange={handlePrivacyAndPolicies}
+                    >
+                      <TermsAndConditionsLink />
+                    </Checkbox>
+                    <ErrorMessage errors={fieldErrors!.termsAndConditions} />
+                  </div>
+                  <div className="additionals">
+                    <Checkbox
+                      data-cy="checkoutPaymentPromoCodeCheckbox"
+                      name="dataTreatmentPolicy"
+                      checked={additionals}
+                      onChange={handleAdditionals}
+                    >
+                      <DataTreatmentPolicyLink />
+                    </Checkbox>
+                  </div>
+                </S.RowWithOneCell>
+              </S.FieldsGroup>
+              <S.FieldsGroup>
+                {renderGroupLabel(2, "Dirección")}
+                <S.RowWithTwoCells>
+                  <StreetAddress1 fieldsProps={fieldsProps} />
+                  <StreetAddress2 fieldsProps={fieldsProps} />
+                </S.RowWithTwoCells>
+                <S.RowWithTwoCells>
+                  <CitySelect
+                    fieldsProps={{
+                      ...cityProps,
+                      handleCityChange,
+                    }}
+                  />
+                </S.RowWithTwoCells>
+              </S.FieldsGroup>
+            </div>
+          )}
         </S.Wrapper>
       </S.AddressForm>
     </div>

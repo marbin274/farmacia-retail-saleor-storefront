@@ -28,11 +28,6 @@ const INITIAL_CARD_ERROR_STATE = {
   nonFieldError: "",
 };
 
-const INITIAL_ALERT_ERROR: IAlertServiceProps = {
-  buttonText: "Entendido",
-  type: "Error",
-};
-
 const getConfigElement = (config: IPaymentGatewayConfig[], element: string) => {
   const result = config.find(x => x.field === element)?.value;
   return result;
@@ -319,10 +314,12 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
 
     if (!data.name || !data.lastName || !data.email) {
       configureErrorMessages({
-        ...INITIAL_ALERT_ERROR,
+        buttonText: "Entendido",
         icon: ErrorFormPopulateIcon,
-        message: "Para poder continuar es necesario ingresar tu nombre, apellido y correo.",
+        message:
+          "Para poder continuar es necesario ingresar tu nombre, apellido y correo.",
         title: "Faltan datos",
+        type: "Info",
       });
       return;
     }
@@ -357,27 +354,37 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
             processPayment(transactionToken, cardData);
           } else {
             configureErrorMessages({
-              ...INITIAL_ALERT_ERROR,
+              buttonText: "Entendido",
               message:
                 "Ha ocurrido un error al procesar tu pago por favor inténtalo de nuevo.",
+              type: "Info",
             });
           }
         })
         .catch((error: any) => {
           if (error === "Ningun campo puede estar vacio") {
             configureErrorMessages({
-              ...INITIAL_ALERT_ERROR,
+              buttonText: "Entendido",
               icon: ErrorFormPopulateIcon,
               message:
                 "Es necesario completar todos los campos de la tarjeta de crédito/débito.",
               title: "Faltan datos",
+              type: "Info",
             });
           } else {
-            configureErrorMessages({ ...INITIAL_ALERT_ERROR, message: error });
+            configureErrorMessages({
+              buttonText: "Entendido",
+              message: error,
+              type: "Error",
+            });
           }
         });
     } catch (error) {
-      configureErrorMessages({ ...INITIAL_ALERT_ERROR, message: error });
+      configureErrorMessages({
+        buttonText: "Entendido",
+        message: error,
+        type: "Error",
+      });
     }
   };
 

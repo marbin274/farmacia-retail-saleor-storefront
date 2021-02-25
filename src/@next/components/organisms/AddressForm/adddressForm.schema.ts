@@ -2,7 +2,7 @@ import * as SchemaValidation from "@temp/@next/utils/schemas";
 import * as Yup from "yup";
 
 export const DISTRITO_REQUIRED = "Selecciona el distrito de entrega";
-const STREET_ADDRESS_1_REQUIRED = "Ingresa tu dirección exacta";
+export const STREET_ADDRESS_1_REQUIRED = "Ingresa tu dirección exacta";
 
 export const addressFormSchema = Yup.object().shape({
   city: Yup.string().required(DISTRITO_REQUIRED),

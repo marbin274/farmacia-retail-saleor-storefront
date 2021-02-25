@@ -47,7 +47,6 @@ class ProductDescription extends React.Component<
 > {
   constructor(props: ProductDescriptionProps) {
     super(props);
-
     this.state = {
       descriptionJson: "",
       quantity: 1,

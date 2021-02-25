@@ -244,7 +244,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
         icon: ErrorPromoCodeIcon,
         message: dataError?.error[0].message,
         title: "Código promocional incorrecto",
-        type: "Error",
+        type: "Info",
       });
       setPromoCodeErrors(dataError?.error);
     } else {

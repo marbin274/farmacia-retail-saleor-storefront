@@ -1,10 +1,13 @@
 @import "../../../globalStyles/scss/variables.scss";
 
 .search-page {
+  z-index: 0;
+  &.container {
+    z-index: 0;
+  }
   &__header {
     background-color: $blue-dark;
     padding: $spacer * 4 0;
-
     &__input {
       .input {
         &__label {

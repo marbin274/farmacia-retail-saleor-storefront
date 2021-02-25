@@ -6,7 +6,6 @@ export const dataTreatmentPolicyValidation = Yup.boolean();
 
 export const documentNumberValidation = Yup.string()
   .uppercase()
-  .trim()
   .min(
     SchemasConfig.DOCUMENT_NUMBER_MIN_LENGTH,
     SchemaMessage.DOCUMENT_NUMBER_LENGTH_VALIDATION
@@ -35,7 +34,6 @@ export const passwordValidation = Yup.string()
   .min(SchemasConfig.PASSWORD_MIN_LEGTH, SchemaMessage.PASSWORD_VALIDATION);
 
 export const phoneValidation = Yup.string()
-  .trim()
   .min(SchemasConfig.PHONE_MIN_LENGTH, SchemaMessage.PHONE_VALIDATION)
   .matches(SchemasConfig.PHONE_REGEX_VALIDATION, SchemaMessage.PHONE_VALIDATION)
   .required(SchemaMessage.PHONE_REQUIRED);
