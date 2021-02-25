@@ -1,22 +1,19 @@
-import "./scss/index.scss";
-
-import * as React from "react";
-
-import { IFilterAttributes, IFilters } from "@types";
-import { DebounceChange, ProductsFeatured, TextField } from "../../components";
-
-import { ProductListHeader } from "../../@next/components/molecules";
-import { ProductListAUNA } from "../../@next/components/organisms";
-import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
-
-import { maybe } from "../../core/utils";
-
-import { SearchProducts_products } from "./gqlTypes/SearchProducts";
 import {
   IAddToCartCallback,
   IRemoveItemToCartCallback,
-  ISubstractItemToCartCallback,
+  ISubstractItemToCartCallback
 } from "@temp/@next/components/molecules/ProductTileAUNA/types";
+import { IItems } from "@temp/@sdk/api/Cart/types";
+import { IFilterAttributes, IFilters } from "@types";
+import * as React from "react";
+import { ProductListHeader } from "../../@next/components/molecules";
+import { ProductListAUNA } from "../../@next/components/organisms";
+import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
+import { DebounceChange, TextField } from "../../components";
+import { maybe } from "../../core/utils";
+import { SearchProducts_products } from "./gqlTypes/SearchProducts";
+import "./scss/index.scss";
+
 
 interface SortItem {
   label: string;
@@ -38,6 +35,7 @@ interface PageProps {
     updateType?: "replace" | "replaceIn" | "push" | "pushIn"
   ) => void;
   products: SearchProducts_products;
+  productsOnCart: IItems;
   sortOptions: SortOptions;
   clearFilters: () => void;
   onLoadMore: () => void;
@@ -59,6 +57,7 @@ const Page: React.FC<PageProps> = ({
   clearFilters,
   onLoadMore,
   products,
+  productsOnCart,
   filters,
   onOrder,
   sortOptions,
@@ -70,7 +69,6 @@ const Page: React.FC<PageProps> = ({
   const canDisplayProducts = maybe(
     () => !!products.edges && products.totalCount !== undefined
   );
-  const hasProducts = canDisplayProducts && !!products.totalCount;
   const [showFilters, setShowFilters] = React.useState(false);
 
   const getAttribute = (attributeSlug: string, valueSlug: string) => {
@@ -110,7 +108,7 @@ const Page: React.FC<PageProps> = ({
                 return (
                   <TextField
                     autoFocus
-                    label="Search term:"
+                    label="Estás buscando:"
                     onChange={change}
                     value={value}
                   />
@@ -120,7 +118,7 @@ const Page: React.FC<PageProps> = ({
           </div>
         </div>
       </div>
-      <div className="container">
+      <div className="search-page container">
         <FilterSidebar
           show={showFilters}
           hide={() => setShowFilters(false)}
@@ -142,6 +140,7 @@ const Page: React.FC<PageProps> = ({
         {canDisplayProducts && (
           <ProductListAUNA
             products={products.edges.map(edge => edge.node)}
+            productsOnCart={productsOnCart}
             canLoadMore={hasNextPage}
             loading={displayLoader}
             onLoadMore={onLoadMore}
@@ -151,8 +150,6 @@ const Page: React.FC<PageProps> = ({
           />
         )}
       </div>
-
-      {!hasProducts && <ProductsFeatured title="You might like" />}
     </div>
   );
 };

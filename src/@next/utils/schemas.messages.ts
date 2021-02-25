@@ -1,8 +1,8 @@
 import * as SchemasConfig from "./schemas.config";
 
 export const DOCUMENT_NUMBER_REQUIRED = "Ingresa tu número de documento";
-export const DOCUMENT_NUMBER_LENGTH_VALIDATION = `Debe contener ${SchemasConfig.DOCUMENT_NUMBER_MIN_LENGTH} números, no incluir espacios, ni letras (A-Z) `;
-export const DOCUMENT_NUMBER_CHARACTERS_VALIDATION_MESSAGE = `El campo solo debe contener numeros`;
+export const DOCUMENT_NUMBER_LENGTH_VALIDATION = `Debe contener como mínimo ${SchemasConfig.DOCUMENT_NUMBER_MIN_LENGTH} números, no incluir espacios, ni letras (A-Z) `;
+export const DOCUMENT_NUMBER_CHARACTERS_VALIDATION_MESSAGE = `El campo solo debe contener números`;
 export const EMAIL_REQUIRED = "Ingresa tu email";
 export const EMAIL_VALIDATION =
   "Debe contener un correo válido, ingresa letras (A-Z), números (0-9), (@) y (.), no incluir espacios";

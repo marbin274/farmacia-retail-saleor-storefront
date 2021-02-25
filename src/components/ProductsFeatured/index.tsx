@@ -1,5 +1,6 @@
 import { Carousel } from "@components/containers";
 import { ProductListItem } from "@temp/components";
+import { PRODUCTS_PER_PAGE } from "@temp/core/config";
 import { generateProductUrl, maybe } from "@temp/core/utils";
 import * as React from "react";
 import { Link } from "react-router-dom";
@@ -12,7 +13,10 @@ interface ProductsFeaturedProps {
 
 const ProductsFeatured: React.FC<ProductsFeaturedProps> = ({ title }) => {
   return (
-    <TypedFeaturedProductsQuery displayError={false}>
+    <TypedFeaturedProductsQuery
+      displayError={false}
+      variables={{ first: PRODUCTS_PER_PAGE }}
+    >
       {({ data }) => {
         const products = maybe(
           () => data.shop.homepageCollection.products.edges,

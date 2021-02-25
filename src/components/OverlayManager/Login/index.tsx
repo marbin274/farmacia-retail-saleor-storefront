@@ -8,7 +8,7 @@ import {
   Overlay,
   OverlayContextInterface,
   OverlayTheme,
-  OverlayType
+  OverlayType,
 } from "../..";
 import closeImg from "../../../images/close-circle.svg";
 import RegisterForm from "./RegisterForm";
@@ -16,7 +16,10 @@ import "./scss/index.scss";
 
 class Login extends React.Component<
   { overlay: OverlayContextInterface; active?: "login" | "register" },
-  { active: "login" | "register"; title: string }
+  {
+    active: "login" | "register";
+    title: string;
+  }
 > {
   static defaultProps = {
     active: "login",
@@ -43,29 +46,31 @@ class Login extends React.Component<
       <Overlay context={overlay}>
         <div className="login">
           <Online>
-            <div className="overlay__header">
-              <p className="overlay__header-text">{this.state.title}</p>
-              <ReactSVG
-                path={closeImg}
-                onClick={hide}
-                className="overlay__header__close-icon"
-              />
-            </div>
-            <div className="login__content">
-              {this.state.active === "login" ? (
-                <LoginForm
-                  hide={hide}
-                  onSwitchSection={() => this.changeActiveTab("register")}
-                  onForgottenPassword={() =>
-                    show(OverlayType.password, OverlayTheme.right)
-                  }
+            <div>
+              <div className="overlay__header">
+                <p className="overlay__header-text">{this.state.title}</p>
+                <ReactSVG
+                  path={closeImg}
+                  onClick={hide}
+                  className="overlay__header__close-icon"
                 />
-              ) : (
-                <RegisterForm
-                  hide={hide}
-                  onSwitchSection={() => this.changeActiveTab("login")}
-                />
-              )}
+              </div>
+              <div className="login__content">
+                {this.state.active === "login" ? (
+                  <LoginForm
+                    hide={hide}
+                    onSwitchSection={() => this.changeActiveTab("register")}
+                    onForgottenPassword={() =>
+                      show(OverlayType.password, OverlayTheme.right)
+                    }
+                  />
+                ) : (
+                  <RegisterForm
+                    hide={hide}
+                    onSwitchSection={() => this.changeActiveTab("login")}
+                  />
+                )}
+              </div>
             </div>
           </Online>
           <Offline>

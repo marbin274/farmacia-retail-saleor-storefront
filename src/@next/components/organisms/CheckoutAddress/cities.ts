@@ -2,7 +2,7 @@ interface ICity {
   label: string;
   enabled?: boolean;
 }
-export const cities: ICity[] = [
+const cities: ICity[] = [
   { label: "Ancón" },
   { label: "Ate Vitarte" },
   { label: "Barranco", enabled: true },
