@@ -58,7 +58,7 @@
   &__list {
     padding: 1rem;
     overflow: auto;
-    max-height: calc(100% - 10.2rem);
+    height: calc(100% - 10.2rem);
     &__item {
       padding: $spacer 0;
       border-bottom: 2px solid #e6f6f9;
