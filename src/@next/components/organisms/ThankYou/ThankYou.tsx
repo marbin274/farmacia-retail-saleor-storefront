@@ -13,6 +13,7 @@ const ThankYou: React.FC<IProps> = ({
   continueShopping,
   orderDetails,
   overlay,
+  sequentialCode,
 }: IProps) => {
   return (
     <Container>
@@ -23,7 +24,7 @@ const ThankYou: React.FC<IProps> = ({
           por tu compra
         </S.ThankYouHeader>
         <S.OrderInfo>
-          Tu orden es la número: <span>{orderNumber}</span>
+          El código de tu orden es: <span>{sequentialCode}</span>
         </S.OrderInfo>
         <S.MailInfo>
           <S.MailInfoIcon>

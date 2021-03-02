@@ -11,7 +11,7 @@ import { OverlayContext } from "@temp/components/Overlay"
 const ThankYouPage: React.FC<IProps> = ({}: IProps) => {
   const location = useLocation();
   const history = useHistory();
-  const { token, orderNumber } = location.state;
+  const { token, orderNumber, sequentialCode } = location.state;
   const overlay = useContext(OverlayContext);
   return (
     <ThankYou
@@ -19,6 +19,7 @@ const ThankYouPage: React.FC<IProps> = ({}: IProps) => {
       orderNumber={orderNumber}
       orderDetails={() => history.push(generateGuestOrderDetailsUrl(token))}
       overlay={overlay}
+      sequentialCode={sequentialCode}
     />
   );
 };

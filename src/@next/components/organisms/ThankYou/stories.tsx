@@ -15,6 +15,7 @@ storiesOf("@components/organisms/ThankYou", module)
         orderNumber={"#341414"}
         continueShopping={continueShopping}
         orderDetails={orderDetails}
+        sequentialCode={"F53E053E"}
       />
     );
   });

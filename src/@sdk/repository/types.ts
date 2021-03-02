@@ -132,6 +132,7 @@ export interface IOrderModel {
   id?: string;
   token?: string;
   number?: string | null;
+  sequentialCode?: string | null;
 }
 
 // export interface IJobsModel {

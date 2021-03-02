@@ -515,6 +515,10 @@ export interface CompleteCheckout_checkoutComplete_order {
    * Total price of shipping.
    */
   shippingPrice: CompleteCheckout_checkoutComplete_order_shippingPrice | null;
+  /**
+   * An extract of the checkout token to identify the order
+   */
+  sequentialCode: string | null;
 }
 
 export interface CompleteCheckout_checkoutComplete {
