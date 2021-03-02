@@ -61,7 +61,6 @@ const CheckoutShipping: React.FC<IProps> = ({
                 onSubmit={handleSubmit}
               >
                 {shippingMethods
-                  .slice(0, 3)
                   .map(({ id, name, price }, index) => {
                     const checked =
                       !!values.shippingMethod && values.shippingMethod === id;
