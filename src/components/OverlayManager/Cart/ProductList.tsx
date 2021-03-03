@@ -12,6 +12,66 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 import ItemQuantity from "./ItemQuantity";
 
+declare global {
+  interface Window {
+    dataLayer: any;
+  }
+}
+
+export const removeToCartEvent = (
+  id: string,
+  name: string,
+  price: any,
+  quantity: number
+) => {
+  return {
+    ecommerce: {
+      remove: {
+        products: [
+          {
+            brand: "",
+            category: "",
+            id,
+            name,
+            price,
+            quantity,
+            variant: "",
+          },
+        ],
+      },
+    },
+    event: "removeFromCart",
+  };
+};
+
+export const addToCartEvent = (
+  id: string,
+  name: string,
+  price: any,
+  quantity: number,
+  currencyCode: string
+) => {
+  return {
+    ecommerce: {
+      add: {
+        products: [
+          {
+            brand: "",
+            category: "",
+            id,
+            name,
+            price,
+            quantity,
+            variant: "",
+          },
+        ],
+      },
+      currencyCode,
+    },
+    event: "addToCart",
+  };
+};
+
 interface IProductList {
   products: ICheckoutModelLine[];
   onAdd(variantId: string, quantity: number): void;
@@ -53,7 +113,16 @@ const ProductList: React.FC<IProductList> = ({
                 onClick={() => {
                   removePaymentItems();
                   onRemove(variant.id);
-                }}
+                  window?.dataLayer?.push(
+                    removeToCartEvent(
+                      variant?.sku,
+                      variant?.product?.name,
+                      variant?.pricing?.price?.gross,
+                      quantity
+                    )
+                  );
+                }
+              }
               >
                 Eliminar
               </button>
@@ -70,10 +139,27 @@ const ProductList: React.FC<IProductList> = ({
                 onAdd={() => {
                   removePaymentItems();
                   onAdd(variant.id, 1);
+                  window?.dataLayer?.push(
+                    addToCartEvent(
+                      variant?.sku,
+                      variant?.product?.name,
+                      variant?.pricing?.price?.gross,
+                      quantity,
+                      "PEN"
+                    )
+                  );
                 }}
                 onRemove={() => {
                   removePaymentItems();
                   onSubtract(variant.id);
+                  window?.dataLayer?.push(
+                    removeToCartEvent(
+                      variant?.sku,
+                      variant?.product?.name,
+                      variant?.pricing?.price?.gross,
+                      quantity
+                    )
+                  );
                 }}
                 value={quantity}
                 maxValue={variant.quantityAvailable}

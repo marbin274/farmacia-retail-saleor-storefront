@@ -14,6 +14,66 @@ import { IProps } from "./types";
 import ItemsHandler from "../../organisms/ItemsHandler/ItemsHandler";
 import { itemNotificationsService } from "../../atoms/ItemsNotification";
 
+declare global {
+  interface Window {
+    dataLayer: any;
+  }
+}
+
+export const removeToCartEvent = (
+  id: string,
+  name: string,
+  price: any,
+  quantity: number
+) => {
+  return {
+    ecommerce: {
+      remove: {
+        products: [
+          {
+            brand: "",
+            category: "",
+            id,
+            name,
+            price,
+            quantity,
+            variant: "",
+          },
+        ],
+      },
+    },
+    event: "removeFromCart",
+  };
+};
+
+export const addToCartEvent = (
+  id: string,
+  name: string,
+  price: any,
+  quantity: number,
+  currencyCode:string
+) => {
+  return {
+    ecommerce: {
+      add: {
+        products: [
+          {
+            brand: "",
+            category: "",
+            id,
+            name,
+            price,
+            quantity,
+            variant: "",
+          },
+        ],
+      },
+      currencyCode,
+    },
+    event: "addToCart",
+  };
+};
+
 export const ProductTileAUNA: React.FC<IProps> = ({
   addToCart,
   removeItemToCart,
@@ -36,6 +96,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
   const onAddToCart = () => {
     if (canAddToCart) {
       const firstProductVariant = product?.variants?.[0];
+      const total: number = product?.quantity as number;
 
       if (firstProductVariant) {
         removePaymentItems();
@@ -49,11 +110,21 @@ export const ProductTileAUNA: React.FC<IProps> = ({
           itemNotificationsService.sendNotifications(product, 1);
         }
       }
+      window?.dataLayer?.push(
+        addToCartEvent(
+          firstProductVariant?.sku as string,
+          product?.name,
+          firstProductVariant?.pricing?.price?.gross?.amount,  
+          total + 1 ,
+          "PEN"
+        )
+      );
     }
   };
 
   const onSubstractToCart = () => {
     const firstProductVariant = product?.variants?.[0];
+    const total: number = product?.quantity as number;
     if (firstProductVariant) {
       removePaymentItems();
       if (product.quantity && product.quantity < 2) {
@@ -62,6 +133,14 @@ export const ProductTileAUNA: React.FC<IProps> = ({
         substractItemToCart?.(firstProductVariant.id);
       }
     }
+    window?.dataLayer?.push(
+      removeToCartEvent(
+        firstProductVariant?.sku as string,
+        product?.name,
+        firstProductVariant?.pricing?.price?.gross?.amount,
+        total - 1 
+      )
+    );
   };
 
   useEffect(() => {

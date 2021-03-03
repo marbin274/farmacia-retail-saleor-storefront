@@ -50,6 +50,7 @@ import * as Sentry from "@sentry/react";
 import { Integrations } from "@sentry/tracing";
 import { alertService } from "./@next/components/atoms/Alert";
 
+
 const cache = new InMemoryCache({
   dataIdFromObject: apolloCacheObject => {
     if (apolloCacheObject.__typename === "Shop") {

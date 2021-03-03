@@ -68,8 +68,11 @@ import ApolloClient from "apollo-client";
 import { IPrivacyPolicy } from "../api/Checkout/types";
 import { INetworkManager } from "./types";
 
-
-
+declare global {
+  interface Window {
+    dataLayer: any;
+  }
+}
 export class NetworkManager implements INetworkManager {
   private client: ApolloClient<any>;
 
@@ -819,10 +822,7 @@ export class NetworkManager implements INetworkManager {
         const productsArray: any = data?.checkoutComplete?.order.lines;
         const orderId: any = data?.checkoutComplete?.order.number;
         const tax: any = (total * (0.18 / 1.18)).toFixed(2);
-        // @ts-ignore
-        const DataLayer = window.dataLayer;
-        // @ts-ignore
-        DataLayer?.push({
+        window?.dataLayer?.push({
           ecommerce: {
             purchase: {
               actionField: {

@@ -16,6 +16,66 @@ import AddToCart from "./AddToCart";
 import { QuantityTextField } from "./QuantityTextField";
 import "./scss/index.scss";
 
+declare global {
+  interface Window {
+    dataLayer: any;
+  }
+}
+
+export const removeToCartEvent = (
+  id: string,
+  name: string,
+  price: any,
+  quantity: number
+) => {
+  return {
+    ecommerce: {
+      remove: {
+        products: [
+          {
+            brand: "",
+            category: "",
+            id,
+            name,
+            price,
+            quantity,
+            variant: "",
+          },
+        ],
+      },
+    },
+    event: "removeFromCart",
+  };
+};
+
+export const addToCartEvent = (
+  id: string,
+  name: string,
+  price: any,
+  quantity: number,
+  currencyCode: string
+) => {
+  return {
+    ecommerce: {
+      add: {
+        products: [
+          {
+            brand: "",
+            category: "",
+            id,
+            name,
+            price,
+            quantity,
+            variant: "",
+          },
+        ],
+      },
+      currencyCode,
+    },
+    event: "addToCart",
+  };
+};
+
 export interface ProductDescriptionProps {
   canAddToCart: boolean;
   descriptionJson: string;
@@ -114,6 +174,9 @@ class ProductDescription extends React.Component<
   };
 
   handleSubmit = () => {
+    const { items } = this.props;
+    const { variant } = this.state;
+    const cartItem = items?.find(item => item.variant.id === variant);
     this.props.addToCart(this.state.variant, this.state.quantity);
 
     itemNotificationsService.sendNotifications(
@@ -121,29 +184,58 @@ class ProductDescription extends React.Component<
       this.state.quantity
     );
     this.setState({ quantity: 1 });
+    window?.dataLayer?.push(
+      addToCartEvent(
+        cartItem?.variant?.sku,
+        cartItem?.name,
+        cartItem?.totalPrice?.gross,
+        cartItem?.quantity,
+        "PEN"
+      )
+    );
   };
 
   getAvailableQuantity = () => {
     const { items } = this.props;
     const { variant, variantStock } = this.state;
-
     const cartItem = items?.find(item => item.variant.id === variant);
     const quantityInCart = cartItem?.quantity || 0;
     return variantStock - quantityInCart;
   };
 
   handleQuantityChange = (operation: 1 | -1) => {
+    const { items } = this.props;
+    const { variant } = this.state;
+    const cartItem = items?.find(item => item.variant.id === variant);
     this.setState(prevState => ({
       quantity: prevState.quantity + operation,
     }));
+    if (operation === 1) {
+      window?.dataLayer?.push(
+        addToCartEvent(
+          cartItem?.variant?.sku,
+          cartItem?.name,
+          cartItem?.totalPrice?.gross,
+          cartItem?.quantity,
+          "PEN"
+        )
+      );
+    } else if (operation === -1) {
+      window?.dataLayer?.push(
+        removeToCartEvent(
+          cartItem?.variant?.sku,
+          cartItem?.name,
+          cartItem?.totalPrice?.gross,
+          cartItem?.quantity
+        )
+      );
+    }
   };
 
   render() {
     const { name, canAddToCart, descriptionJson } = this.props;
     const { quantity } = this.state;
-
     const availableQuantity = this.getAvailableQuantity();
-
     return (
       <div className="product-description">
         <h3>{name}</h3>
