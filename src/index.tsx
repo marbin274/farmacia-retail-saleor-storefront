@@ -194,7 +194,7 @@ const startApp = async () => {
         };
         TagManager.initialize(tagManagerArgs);
       }
-      initSentry();
+      // initSentry();
       break;
 
     default:
