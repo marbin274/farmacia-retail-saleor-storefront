@@ -5,6 +5,10 @@ const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const RobotstxtPlugin = require("robotstxt-webpack-plugin");
 const webpack = require("webpack");
+const CompressionPlugin = require("compression-webpack-plugin");
+const BrotliPlugin = require("brotli-webpack-plugin");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin;
 
 if (!process.env.API_URI) {
   throw new Error("Environment variable API_URI not set");
@@ -132,6 +136,22 @@ module.exports = ({ sourceDir, distDir }) => ({
       GTM_ID: "__",
       GTM_AUTH: "__",
       GTM_PREVIEW: "__",
+    }),
+    new CompressionPlugin({
+      filename: "[path].gz[query]",
+      algorithm: "gzip",
+      test: /\.(js|css|html|svg)$/,
+      threshold: 8192,
+      minRatio: 0.8,
+    }),
+    new BrotliPlugin({
+      asset: "[path].br[query]",
+      test: /\.(js|css|html|svg)$/,
+      threshold: 10240,
+      minRatio: 0.8,
+    }),
+    new BundleAnalyzerPlugin({
+      analyzerMode: false,
     }),
   ],
   node: {
