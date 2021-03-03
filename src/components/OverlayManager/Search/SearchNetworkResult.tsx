@@ -41,7 +41,7 @@ export const SearchNetworkResult = ({ search, hasResults, hasSearchPhrase }) => 
                                                         </p>
                                                     )}
                                             </div>
-                                            <ul>
+                                            <ul className="search__products__list" >
                                                 {data.products.edges.map(product => (
                                                     <ProductItem
                                                         {...product}

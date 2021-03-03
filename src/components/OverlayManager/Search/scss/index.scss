@@ -243,4 +243,12 @@ $custom-breakpoint: 624px;
       }
     }
   }
+
+  .search__products__list {
+    padding-bottom: 36px;
+
+    @media (max-width: $medium-screen) {
+      padding-bottom: 136px;
+    }
+  }
 }
