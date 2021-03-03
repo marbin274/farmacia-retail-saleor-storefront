@@ -169,11 +169,15 @@ const startApp = async () => {
     Sentry.init({
       dsn: sentryDsn,
       environment: environmentName,
+      ignoreErrors: [
+        "NotSupportedError: The user agent does not support public key credentials.",
+      ],
       integrations: [new Integrations.BrowserTracing()],
       release: "farmauna-storefront@" + process.env.npm_package_version,
       tracesSampleRate: 1.0,
     });
   };
+  initSentry();
 
   switch (environmentName) {
     case "qa":
@@ -194,7 +198,7 @@ const startApp = async () => {
         };
         TagManager.initialize(tagManagerArgs);
       }
-      // initSentry();
+      initSentry();
       break;
 
     default:
