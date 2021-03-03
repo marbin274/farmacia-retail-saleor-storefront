@@ -608,4 +608,5 @@ export interface Checkout {
   documentNumber: string;
   dataTreatmentPolicy: boolean;
   termsAndConditions: boolean;
+  message?: string | null;
 }

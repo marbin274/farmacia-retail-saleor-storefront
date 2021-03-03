@@ -686,7 +686,10 @@ export class NetworkManager implements INetworkManager {
         };
       } else if (data?.checkoutAddPromoCode?.checkout) {
         return {
-          data: this.constructCheckoutModel(data.checkoutAddPromoCode.checkout),
+          data: this.constructCheckoutModel({
+            ...data.checkoutAddPromoCode.checkout,
+            message: data.checkoutAddPromoCode.message,
+          }),
         };
       } else {
         return {};
@@ -870,6 +873,7 @@ export class NetworkManager implements INetworkManager {
     documentNumber,
     termsAndConditions,
     dataTreatmentPolicy,
+    message,
   }: Checkout): ICheckoutModel => ({
     availableShippingMethods: availableShippingMethods
       ? availableShippingMethods.filter(filterNotEmptyArrayItems)
@@ -904,6 +908,7 @@ export class NetworkManager implements INetworkManager {
     promoCodeDiscount: {
       discount,
       discountName,
+      message,
       voucherCode,
       voucherDiscountType,
       voucherDiscountValue,
