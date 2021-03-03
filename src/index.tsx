@@ -30,6 +30,9 @@ import {
   sentryDsn,
   environmentName,
   serviceWorkerTimeout,
+  gtmId,
+  gtmAuth,
+  gtmPreview,
 } from "./constants";
 import { history } from "./history";
 
@@ -47,33 +50,10 @@ import * as Sentry from "@sentry/react";
 import { Integrations } from "@sentry/tracing";
 import { alertService } from "./@next/components/atoms/Alert";
 
-interface GtmEnvVars {
-  auth: string | null;
-  id: string | null;
-  preview: string | null;
-}
-
 const cache = new InMemoryCache({
   dataIdFromObject: apolloCacheObject => {
     if (apolloCacheObject.__typename === "Shop") {
       return "shop";
-    }
-    const tagManagerEnvVars: GtmEnvVars = {
-      auth: apolloCacheObject?.tagManagerAuth,
-      id: apolloCacheObject?.tagManagerId,
-      preview: apolloCacheObject?.tagManagerEnvironmentId,
-    };
-    if (!!tagManagerEnvVars.id) {
-      if (!!tagManagerEnvVars.preview) {
-        const tagManagerArgs = {
-          auth: tagManagerEnvVars.auth,
-          gtmId: tagManagerEnvVars.id,
-          preview: tagManagerEnvVars.preview,
-        };
-        TagManager.initialize(tagManagerArgs);
-      } else {
-        TagManager.initialize({ gtmId: tagManagerEnvVars.id });
-      }
     }
     return defaultDataIdFromObject(apolloCacheObject);
   },
@@ -185,13 +165,41 @@ const startApp = async () => {
     );
   });
 
-  // Sentry.init({
-  //   dsn: sentryDsn,
-  //   environment: environmentName,
-  //   integrations: [new Integrations.BrowserTracing()],
-  //   release: "farmauna-storefront@" + process.env.npm_package_version,
-  //   tracesSampleRate: 1.0,
-  // });
+  const initSentry = () => {
+    Sentry.init({
+      dsn: sentryDsn,
+      environment: environmentName,
+      integrations: [new Integrations.BrowserTracing()],
+      release: "farmauna-storefront@" + process.env.npm_package_version,
+      tracesSampleRate: 1.0,
+    });
+  };
+
+  switch (environmentName) {
+    case "qa":
+      if (gtmId && gtmAuth && gtmPreview) {
+        const tagManagerArgs = {
+          auth: gtmAuth,
+          gtmId,
+          preview: gtmPreview,
+        };
+        TagManager.initialize(tagManagerArgs);
+      }
+      initSentry();
+      break;
+    case "prod":
+      if (gtmId) {
+        const tagManagerArgs = {
+          gtmId,
+        };
+        TagManager.initialize(tagManagerArgs);
+      }
+      initSentry();
+      break;
+
+    default:
+      break;
+  }
 
   render(
     <ThemeProvider theme={defaultTheme}>

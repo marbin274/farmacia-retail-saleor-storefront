@@ -6,6 +6,7 @@ import { ThankYou } from ".";
 
 describe("<ThankYou />", () => {
   const orderNumber = "123";
+  const sequentialCode = "F53E053E"
   const orderDetailsMock = jest.fn();
   const continueShoppingMock = jest.fn();
 
@@ -15,22 +16,24 @@ describe("<ThankYou />", () => {
         orderNumber={orderNumber}
         orderDetails={orderDetailsMock}
         continueShopping={continueShoppingMock}
+        sequentialCode={sequentialCode}
       />
     );
 
     expect(wrapper.exists()).toEqual(true);
   });
 
-  it("should contain order number", () => {
+  it("should contain sequential code", () => {
     const wrapper = shallow(
       <ThankYou
         orderNumber={orderNumber}
         orderDetails={orderDetailsMock}
         continueShopping={continueShoppingMock}
+        sequentialCode={sequentialCode}
       />
     );
 
-    expect(wrapper.text()).toContain(orderNumber);
+    expect(wrapper.text()).toContain(sequentialCode);
   });
 
   it("should call continueShopping function when clicked", () => {
@@ -39,6 +42,7 @@ describe("<ThankYou />", () => {
         orderNumber={orderNumber}
         orderDetails={orderDetailsMock}
         continueShopping={continueShoppingMock}
+        sequentialCode={sequentialCode}
       />
     );
 

@@ -110,6 +110,7 @@ const CheckoutReviewSubpageWithRef: RefForwardingComponent<
           state: {
             id: data?.id,
             orderNumber: data?.number,
+            sequentialCode: data?.sequentialCode,
             token: data?.token,
           },
         });

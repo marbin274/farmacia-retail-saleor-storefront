@@ -1,15 +1,16 @@
-@import "../../../../globalStyles/scss/variables.scss";
+@import "@temp/globalStyles/scss/variables.scss";
 
 .cart {
   width: 25rem;
   max-width: 100vw;
-
+  height: 100%;
   .overlay__header {
     justify-content: initial;
     display: flex;
     flex-direction: column;
     padding: 0;
-
+    position: relative;
+    z-index: 1;
     &__top,
     &__bottom {
       display: flex;
@@ -19,6 +20,7 @@
 
     &__top {
       align-items: center;
+      background: $white;
       padding: 12px 24px;
     }
 
@@ -50,11 +52,13 @@
     }
   }
 
+  &__body {
+    height: calc(100% - 10.5rem);
+  }
   &__list {
-    padding: 0 $spacer 2.5rem $spacer;
-    height: calc(100vh - 17.5rem);
+    padding: 1rem;
     overflow: auto;
-
+    height: calc(100% - 10.2rem);
     &__item {
       padding: $spacer 0;
       border-bottom: 2px solid #e6f6f9;
@@ -143,10 +147,9 @@
 
   &__footer {
     padding: $spacer;
-    position: absolute;
-    bottom: 0;
     width: 100%;
     background-color: $white;
+    height: 10.2rem;
 
     &__price {
       display: flex;

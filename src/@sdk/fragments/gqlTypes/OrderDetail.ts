@@ -502,4 +502,8 @@ export interface OrderDetail {
    * Total price of shipping.
    */
   shippingPrice: OrderDetail_shippingPrice | null;
+  /**
+   * An extract of the checkout token to identify the order
+   */
+  sequentialCode: string | null;
 }

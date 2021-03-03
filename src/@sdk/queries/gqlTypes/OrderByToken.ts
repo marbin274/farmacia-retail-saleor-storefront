@@ -502,6 +502,10 @@ export interface OrderByToken_orderByToken {
    * Total price of shipping.
    */
   shippingPrice: OrderByToken_orderByToken_shippingPrice | null;
+  /**
+   * An extract of the checkout token to identify the order
+   */
+  sequentialCode: string | null;
 }
 
 export interface OrderByToken {

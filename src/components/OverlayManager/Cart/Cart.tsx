@@ -114,7 +114,7 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
               </div>
             </div>
             {items?.length ? (
-              <>
+              <div className="cart__body">
                 <ProductList
                   products={items}
                   onAdd={addItem}
@@ -172,7 +172,7 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
                     </Link>
                   </div>
                 </div>
-              </>
+              </div>
             ) : (
               <Empty overlayHide={overlay.showCatalog} />
             )}

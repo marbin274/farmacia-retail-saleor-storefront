@@ -29,6 +29,9 @@ jobs:
         env:
           API_URI: ${{ secrets.GRAPHQL_URL_QA }}
           SENTRY_DSN: ${{ secrets.SENTRY_DSN_QA }}
+          GTM_ID: ${{ secrets.GTM_ID }}
+          GTM_AUTH: ${{ secrets.GTM_AUTH }}
+          GTM_PREVIEW: ${{ secrets.GTM_PREVIEW }}
           ENVIRONMENT_NAME: "qa"
 
       - name: 4- Build application release ${{ github.event.pull_request.base.ref }}
@@ -37,6 +40,7 @@ jobs:
         env:
           API_URI: ${{ secrets.GRAPHQL_URL_PROD }}
           SENTRY_DSN: ${{ secrets.SENTRY_DSN_PROD }}
+          GTM_ID: ${{ secrets.GTM_ID }}
           ENVIRONMENT_NAME: "prod"
 
       - name: 5- aws s3 copy qa - by ${{ github.actor }}

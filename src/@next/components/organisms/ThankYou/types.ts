@@ -6,4 +6,5 @@ export interface IProps {
   continueShopping: () => void;
   orderDetails: () => void;
   overlay?: OverlayContextInterface | undefined;
+  sequentialCode: string;
 }

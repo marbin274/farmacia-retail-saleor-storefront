@@ -129,6 +129,9 @@ module.exports = ({ sourceDir, distDir }) => ({
       API_URI: "http://localhost:8000/graphql/",
       SENTRY_DSN: "__test__",
       ENVIRONMENT_NAME: "dev",
+      GTM_ID: "__",
+      GTM_AUTH: "__",
+      GTM_PREVIEW: "__",
     }),
   ],
   node: {

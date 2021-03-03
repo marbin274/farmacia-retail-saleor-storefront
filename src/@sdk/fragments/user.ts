@@ -54,5 +54,6 @@ export const orderDetailFragment = gql`
     shippingPrice {
       ...OrderPrice
     }
+    sequentialCode
   }
 `;

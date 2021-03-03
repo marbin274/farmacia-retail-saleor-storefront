@@ -189,9 +189,9 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
       <div
         className="c4"
       >
-        Tu orden es la número: 
+        El código de tu orden es: 
         <span>
-          #341414
+          F53E053E
         </span>
       </div>
       <div

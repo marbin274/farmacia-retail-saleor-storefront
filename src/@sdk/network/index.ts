@@ -931,9 +931,11 @@ export class NetworkManager implements INetworkManager {
     id,
     token,
     number: orderNumber,
+    sequentialCode,
   }: OrderDetail): IOrderModel => ({
     id,
     number: orderNumber,
+    sequentialCode,
     token,
   });
 }
