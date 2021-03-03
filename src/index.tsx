@@ -177,7 +177,6 @@ const startApp = async () => {
       tracesSampleRate: 1.0,
     });
   };
-  initSentry();
 
   switch (environmentName) {
     case "qa":
