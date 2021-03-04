@@ -50,7 +50,6 @@ import * as Sentry from "@sentry/react";
 import { Integrations } from "@sentry/tracing";
 import { alertService } from "./@next/components/atoms/Alert";
 
-
 const cache = new InMemoryCache({
   dataIdFromObject: apolloCacheObject => {
     if (apolloCacheObject.__typename === "Shop") {
@@ -172,10 +171,22 @@ const startApp = async () => {
       environment: environmentName,
       ignoreErrors: [
         "NotSupportedError: The user agent does not support public key credentials.",
+        "InvalidStateError: newestWorker is null",
       ],
       integrations: [new Integrations.BrowserTracing()],
       release: "farmauna-storefront@" + process.env.npm_package_version,
       tracesSampleRate: 1.0,
+      beforeSend(event) {
+        if (
+          event.message.includes(
+            "InvalidStateError: Failed to update a ServiceWorker for scope"
+          )
+        ) {
+          return null;
+        }
+
+        return event;
+      },
     });
   };
 
