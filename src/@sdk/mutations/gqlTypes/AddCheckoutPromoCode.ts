@@ -654,6 +654,7 @@ export interface AddCheckoutPromoCode_checkoutAddPromoCode {
    * List of errors that occurred executing the mutation.
    */
   errors: AddCheckoutPromoCode_checkoutAddPromoCode_errors[];
+  message?: string | null;
   checkoutErrors: AddCheckoutPromoCode_checkoutAddPromoCode_checkoutErrors[];
 }
 

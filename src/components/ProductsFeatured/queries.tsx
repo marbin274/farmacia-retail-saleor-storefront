@@ -26,6 +26,7 @@ export const featuredProducts = gql`
               }
               variants {
                 id
+                sku
                 pricing{
                   onSale
                   price{

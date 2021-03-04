@@ -11,6 +11,7 @@ import { IAddress, ICardData, IFormError } from "@types";
 import { filterNotEmptyArrayItems } from "@utils/misc";
 import ErrorPaymentIcon from "images/auna/credit-card-cancel.svg";
 import ErrorPromoCodeIcon from "images/auna/promo-code-error.svg";
+import PromoCodeCorrect from "images/auna/promo-code-correct.svg";
 import React, {
   forwardRef,
   RefForwardingComponent,
@@ -235,8 +236,9 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
   };
 
   const handleAddPromoCode = async (promoCode: string) => {
-    const { dataError } = await addPromoCode(promoCode);
+    const { dataError, data } = await addPromoCode(promoCode);
     changeSubmitProgress(false);
+    
 
     if (dataError?.error) {
       alertService.sendAlert({
@@ -248,10 +250,24 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
       });
       setPromoCodeErrors(dataError?.error);
     } else {
-      /// Code here
+      const messageDiscount =  data?.promoCodeDiscount?.message
+      if (messageDiscount){
+        showMessageDiscount(messageDiscount);
+      }
       clearPromoCodeErrors();
     }
   };
+
+
+  const showMessageDiscount = (messageDiscount: string) => {
+    alertService.sendAlert({
+      buttonText: "Entendido",
+      icon: PromoCodeCorrect,
+      message: messageDiscount,
+      title: "Código promocional correcto",
+      type: "Info",
+    });
+  }
 
   const handleRemovePromoCode = async (promoCode: string) => {
     const { dataError } = await removePromoCode(promoCode);

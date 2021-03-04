@@ -7,7 +7,7 @@ import {IProductVariantPricing} from "@app/types/IProductVariantPricing";
 
 export interface IProductVariant extends INode, IObjectWithMetadata{
   name?: string;
-  sku?: string
+  sku?: string | null;
   product?: IProduct;
   trackInventory?: boolean;
   costPrice?: IMoney;
