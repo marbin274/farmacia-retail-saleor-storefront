@@ -68,8 +68,11 @@ import ApolloClient from "apollo-client";
 import { IPrivacyPolicy } from "../api/Checkout/types";
 import { INetworkManager } from "./types";
 
-
-
+declare global {
+  interface Window {
+    dataLayer: any;
+  }
+}
 export class NetworkManager implements INetworkManager {
   private client: ApolloClient<any>;
 
@@ -686,7 +689,10 @@ export class NetworkManager implements INetworkManager {
         };
       } else if (data?.checkoutAddPromoCode?.checkout) {
         return {
-          data: this.constructCheckoutModel(data.checkoutAddPromoCode.checkout),
+          data: this.constructCheckoutModel({
+            ...data.checkoutAddPromoCode.checkout,
+            message: data.checkoutAddPromoCode.message,
+          }),
         };
       } else {
         return {};
@@ -816,10 +822,7 @@ export class NetworkManager implements INetworkManager {
         const productsArray: any = data?.checkoutComplete?.order.lines;
         const orderId: any = data?.checkoutComplete?.order.number;
         const tax: any = (total * (0.18 / 1.18)).toFixed(2);
-        // @ts-ignore
-        const DataLayer = window.dataLayer;
-        // @ts-ignore
-        DataLayer?.push({
+        window?.dataLayer?.push({
           ecommerce: {
             purchase: {
               actionField: {
@@ -870,6 +873,7 @@ export class NetworkManager implements INetworkManager {
     documentNumber,
     termsAndConditions,
     dataTreatmentPolicy,
+    message,
   }: Checkout): ICheckoutModel => ({
     availableShippingMethods: availableShippingMethods
       ? availableShippingMethods.filter(filterNotEmptyArrayItems)
@@ -904,6 +908,7 @@ export class NetworkManager implements INetworkManager {
     promoCodeDiscount: {
       discount,
       discountName,
+      message,
       voucherCode,
       voucherDiscountType,
       voucherDiscountValue,

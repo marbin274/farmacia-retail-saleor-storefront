@@ -67,7 +67,6 @@ const View: React.FC<RouteComponentProps<{ id: string }>> = ({ match }) => {
         <NetworkStatus>
           {isOnline => {
             const { product } = data;
-
             if (product === null) {
               return <NotFound />;
             }

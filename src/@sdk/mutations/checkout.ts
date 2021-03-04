@@ -157,6 +157,7 @@ export const addCheckoutPromoCode = gql`
       checkout {
         ...Checkout
       }
+      message 
       errors {
         field
         message
