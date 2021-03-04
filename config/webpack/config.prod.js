@@ -1,20 +1,4 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const optimization = {
-  splitChunks: {
-    cacheGroups: {
-      commons: {
-        test: /[\\/]node_modules[\\/]/,
-        name: "common",
-        chunks: "all",
-      },
-      react: {
-        test: /[\\/]node_modules[\\/]((react).*)[\\/]/,
-        name: "app",
-        chunks: "all",
-      },
-    },
-  },
-};
 
 module.exports = ({ sourceDir, distDir }) => ({
   output: {
@@ -35,7 +19,6 @@ module.exports = ({ sourceDir, distDir }) => ({
       },
     ],
   },
-  optimization,
   plugins: [
     new MiniCssExtractPlugin({
       filename: "[name].[hash].css",
