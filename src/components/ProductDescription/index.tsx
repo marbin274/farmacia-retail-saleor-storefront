@@ -15,66 +15,13 @@ import * as React from "react";
 import AddToCart from "./AddToCart";
 import { QuantityTextField } from "./QuantityTextField";
 import "./scss/index.scss";
+import { addToCartEvent, removeToCartEvent } from "@sdk/utils";
 
 declare global {
   interface Window {
     dataLayer: any;
   }
 }
-
-export const removeToCartEvent = (
-  id: string,
-  name: string,
-  price: any,
-  quantity: number
-) => {
-  return {
-    ecommerce: {
-      remove: {
-        products: [
-          {
-            brand: "",
-            category: "",
-            id,
-            name,
-            price,
-            quantity,
-            variant: "",
-          },
-        ],
-      },
-    },
-    event: "removeFromCart",
-  };
-};
-
-export const addToCartEvent = (
-  id: string,
-  name: string,
-  price: any,
-  quantity: number,
-  currencyCode: string
-) => {
-  return {
-    ecommerce: {
-      add: {
-        products: [
-          {
-            brand: "",
-            category: "",
-            id,
-            name,
-            price,
-            quantity,
-            variant: "",
-          },
-        ],
-      },
-      currencyCode,
-    },
-    event: "addToCart",
-  };
-};
 
 export interface ProductDescriptionProps {
   canAddToCart: boolean;
@@ -174,7 +121,7 @@ class ProductDescription extends React.Component<
   };
 
   handleSubmit = () => {
-    const { items } = this.props;
+   const { items } = this.props;
     const { variant } = this.state;
     const cartItem = items?.find(item => item.variant.id === variant);
     this.props.addToCart(this.state.variant, this.state.quantity);
@@ -210,7 +157,7 @@ class ProductDescription extends React.Component<
     this.setState(prevState => ({
       quantity: prevState.quantity + operation,
     }));
-    if (operation === 1) {
+   if (operation === 1) {
       window?.dataLayer?.push(
         addToCartEvent(
           cartItem?.variant?.sku,

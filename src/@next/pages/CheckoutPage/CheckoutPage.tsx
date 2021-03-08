@@ -5,7 +5,7 @@ import { Checkout } from "@components/templates";
 import { IItems } from "@sdk/api/Cart/types";
 import { useCart, useCheckout } from "@sdk/react";
 import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
-import { BASE_URL, CHECKOUT_STEPS } from "@temp/core/config";
+import { BASE_URL, CheckoutStep, CHECKOUT_STEPS } from "@temp/core/config";
 import { IFormError, ITaxedMoney } from "@types";
 import React, { useEffect, useRef, useState } from "react";
 import { Redirect, useLocation } from "react-router-dom";
@@ -21,6 +21,7 @@ import {
   ICheckoutShippingSubpageHandles,
 } from "./subpages";
 import { IProps } from "./types";
+import { checkoutEvent, ecommerceProductMapper, onCheckoutOption, steps } from "@sdk/utils";
 
 const prepareCartSummary = (
   totalPrice?: ITaxedMoney | null,
@@ -146,6 +147,13 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
             checkoutShippingSubpageRef.current?.submitShipping();
           }
         }
+        window?.dataLayer?.push(
+          checkoutEvent(
+            steps.address,
+            ecommerceProductMapper(items),
+            () => onCheckoutOption(CheckoutStep.Address, "Completa los datos")
+          )
+        );
         break;
       // case 1:
       //   if (checkoutShippingSubpageRef.current?.submitShipping) {
@@ -156,11 +164,29 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
         if (checkoutPaymentSubpageRef.current?.submitPayment) {
           checkoutPaymentSubpageRef.current?.submitPayment();
         }
+        window?.dataLayer?.push(
+          checkoutEvent(
+            steps.payment,
+            ecommerceProductMapper(items),
+            () =>
+              onCheckoutOption(
+                CheckoutStep.Payment,
+                "Selecciona tu método de pago"
+              )
+          )
+        );
         break;
       case 2:
         if (checkoutReviewSubpageRef.current?.complete) {
           checkoutReviewSubpageRef.current?.complete();
         }
+        window?.dataLayer?.push(
+          checkoutEvent(
+            steps.review,
+            ecommerceProductMapper(items),
+            () => onCheckoutOption(CheckoutStep.Review, "Revisa tu compra")
+          )
+        );
         break;
     }
   };

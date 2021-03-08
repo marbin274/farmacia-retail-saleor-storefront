@@ -13,66 +13,13 @@ import * as S from "./styles";
 import { IProps } from "./types";
 import ItemsHandler from "../../organisms/ItemsHandler/ItemsHandler";
 import { itemNotificationsService } from "../../atoms/ItemsNotification";
+import { addToCartEvent, removeToCartEvent } from "@sdk/utils";
 
 declare global {
   interface Window {
     dataLayer: any;
   }
 }
-
-export const removeToCartEvent = (
-  id: string,
-  name: string,
-  price: any,
-  quantity: number
-) => {
-  return {
-    ecommerce: {
-      remove: {
-        products: [
-          {
-            brand: "",
-            category: "",
-            id,
-            name,
-            price,
-            quantity,
-            variant: "",
-          },
-        ],
-      },
-    },
-    event: "removeFromCart",
-  };
-};
-
-export const addToCartEvent = (
-  id: string,
-  name: string,
-  price: any,
-  quantity: number,
-  currencyCode:string
-) => {
-  return {
-    ecommerce: {
-      add: {
-        products: [
-          {
-            brand: "",
-            category: "",
-            id,
-            name,
-            price,
-            quantity,
-            variant: "",
-          },
-        ],
-      },
-      currencyCode,
-    },
-    event: "addToCart",
-  };
-};
 
 export const ProductTileAUNA: React.FC<IProps> = ({
   addToCart,
@@ -133,7 +80,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
         substractItemToCart?.(firstProductVariant.id);
       }
     }
-    window?.dataLayer?.push(
+   window?.dataLayer?.push(
       removeToCartEvent(
         firstProductVariant?.sku as string,
         product?.name,
