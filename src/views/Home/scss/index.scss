@@ -137,7 +137,7 @@
     background-color: #f6f8fa;
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
-    margin: 4rem 0 4rem 0;
+    margin: -5rem 0 4rem 0;
   }
 
   &__bottom-banner {
@@ -163,12 +163,12 @@
 
   &__districts-list {
     background: no-repeat url("../../../images/auna/home-banner-districts.jpg") #f6f8fa;
-    height: 10rem;
+    height: 23.75rem;
 
     @media (max-width: $small-screen) {
-      background: no-repeat url("../../../images/auna/home-banner-districts-mob.png") #f6f8fa;
-      background-size: contain;
-      height: 20rem;
+      background: no-repeat url("../../../images/auna/home-banner-districts-mob.jpg") #f6f8fa;
+      background-size: 100% 100%;
+      height: 39.563rem;
     }
   }
 
