@@ -170,22 +170,17 @@ const startApp = async () => {
       dsn: sentryDsn,
       environment: environmentName,
       ignoreErrors: [
-        "NotSupportedError: The user agent does not support public key credentials.",
-        "InvalidStateError: newestWorker is null",
+        /public key credentials/i,
+        /newestWorker/i,
+        /ServiceWorker/i,
       ],
       integrations: [new Integrations.BrowserTracing()],
       release: "farmauna-storefront@" + process.env.npm_package_version,
-      tracesSampleRate: 1.0,
-      beforeSend(event) {
-        if (
-          event.message.includes(
-            "InvalidStateError: Failed to update a ServiceWorker for scope"
-          )
-        ) {
-          return null;
+      tracesSampler() {
+        if (environmentName === "prod") {
+          return 0.8;
         }
-
-        return event;
+        return 1;
       },
     });
   };
