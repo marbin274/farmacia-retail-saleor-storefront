@@ -4,7 +4,11 @@ import { MAX_ORDER_PER_PRODUCT } from "@temp/core/config";
 import { Button } from "../../atoms";
 import "./scss/index.scss";
 import { ISimpleProduct } from "@temp/@next/types/IProduct";
-import { IAddToCartCallback, IRemoveItemToCartCallback, ISubstractItemToCartCallback } from "../../molecules/ProductTileAUNA/types";
+import {
+  IAddToCartCallback,
+  IRemoveItemToCartCallback,
+  ISubstractItemToCartCallback,
+} from "../../molecules/ProductTileAUNA/types";
 import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
 import { itemNotificationsService } from "../../atoms/ItemsNotification";
 import { addToCartEvent, removeToCartEvent } from "@sdk/utils";
@@ -14,12 +18,10 @@ type IProps = {
   disableOnRemove?: boolean;
   product: ISimpleProduct;
   maxValue?: number;
-  addToCart: IAddToCartCallback | undefined,
+  addToCart: IAddToCartCallback | undefined;
   removeItemToCart?: IRemoveItemToCartCallback;
   substractItemToCart?: ISubstractItemToCartCallback;
 };
-
-
 
 const ItemsHandler: FC<IProps> = ({
   canAddToCart,
@@ -55,14 +57,7 @@ const ItemsHandler: FC<IProps> = ({
         if (firstProductVariant) {
           removePaymentItems();
           addToCart?.(firstProductVariant.id, 1);
-          if (product.quantity) {
-            itemNotificationsService.sendNotifications(
-              product,
-              product.quantity + 1
-            );
-          } else {
-            itemNotificationsService.sendNotifications(product, 1);
-          }
+          itemNotificationsService.sendNotifications(product, 1);
         }
         window?.dataLayer?.push(
           addToCartEvent(
@@ -100,7 +95,7 @@ const ItemsHandler: FC<IProps> = ({
 
   return (
     <>
-      { addToCart && product.quantity ?
+      {addToCart && product.quantity ? (
         <div className="itemHandler">
           <Button
             className={classNames("item-action", "add_remove_button")}
@@ -108,28 +103,27 @@ const ItemsHandler: FC<IProps> = ({
             type="button"
           >
             -
-         </Button>
+          </Button>
           <p>{quantity}</p>
           <Button
-            disabled={quantity >= MAX_ORDER_PER_PRODUCT || quantity === availables}
+            disabled={
+              quantity >= MAX_ORDER_PER_PRODUCT || quantity === availables
+            }
             className={classNames("item-action", "add_remove_button")}
             onClick={handleAddClick}
             type="button"
           >
             +
-         </Button>
-        </div>
-        : (
-          <div className="button">
-            <Button onClick={handleAddClick} disabled={!canAddToCart}>
-              Agregar
           </Button>
-          </div>
-        )
-      }
+        </div>
+      ) : (
+        <div className="button">
+          <Button onClick={handleAddClick} disabled={!canAddToCart}>
+            Agregar
+          </Button>
+        </div>
+      )}
     </>
-
-
   );
 };
 
