@@ -166,7 +166,7 @@ body {
   &.undiscounted_price {
     text-decoration: line-through;
     color: $auna-grey-100;
-    font-size: $base-font-size;
+    font-size: $base-font-size !important;
     font-weight: normal;
   }
 }

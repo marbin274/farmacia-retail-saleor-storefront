@@ -31,27 +31,27 @@
     span {
       font-size: 2rem;
     }
+    &:hover {
+      background-color: $auna-complementary1;
+      color: $auna-complementary-hover !important;
+    }
 
     &:disabled {
-      cursor: not-allowed;
-      color: $auna-grey-100;
+      cursor: not-allowed !important;
+      color: $auna-grey-100 !important;
+      background-color: $auna-complementary1;
     }
 
     &:active {
       box-shadow: none;
-      background-color: transparent;
-    }
-
-    &:hover {
-      background-color: transparent;
     }
 
     &:focus {
       box-shadow: none;
-      background-color: transparent;
+      background-color: $auna-complementary1;
     }
 
-    color: $auna-interactive;
+    color: $auna-interactive !important;
     cursor: pointer;
     padding: 0.5rem;
   }
