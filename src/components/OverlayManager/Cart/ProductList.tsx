@@ -35,7 +35,7 @@ const ProductList: React.FC<IProductList> = ({
   <ul className="cart__list">
     {products.map(product => {
       const { variant, quantity } = product;
-      const canAddToCart = checkProductCanAddToCart(product, products);
+      const {canAddToCart} = checkProductCanAddToCart(product, products);
       const isOnSale = checkProductIsOnSale(product);
 
       const productUrl = generateProductUrl(

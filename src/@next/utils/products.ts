@@ -10,20 +10,23 @@ export type ProductOnCart = {
 }
 
 export const getProductsWithQuantity = (products: ISimpleProduct[], productsOnCart?: IItems): ISimpleProduct[] => {
-    return !products ? [] : products.filter(product => product.pricing).map((product) => {
-        const productOnCart = productsOnCart?.find(({ variant }) =>
-            (product.variants && product.variants[0]) ? variant.id === product.variants[0].id : false
-        );
-        product.quantity = productOnCart ? productOnCart.quantity : 0;
+    return !products ? [] : products.filter(product => product.pricing).map((product) => getOneProductWithQuantity(product, productsOnCart));
+}
 
-        if (!product.variants) {
-            product.variants = [];
-        }
+export const getOneProductWithQuantity = (product: ISimpleProduct, productsOnCart?: IItems): ISimpleProduct => {
+    const productOnCart = productsOnCart?.find(({ variant }) =>
+        (product.variants && product.variants[0]) ? variant.id === product.variants[0].id : false
+    );
+    product.quantity = productOnCart ? productOnCart.quantity : 0;
 
-        return {
-            ...product,
-        };
-    });
+    if (!product.variants) {
+        product.variants = [];
+    }
+
+    return {
+        ...product,
+    };
+
 }
 
 export const getStockAvailable = (product: ISimpleProduct): number => {
@@ -49,12 +52,15 @@ export const getProductOnCart = (product: ISimpleProduct, items: IItems): Produc
     };
 }
 
-export const checkProductCanAddToCart = (product: ISimpleProduct, items: IItems): boolean => {
+export const checkProductCanAddToCart = (product: ISimpleProduct, items: IItems): { canAddToCart: boolean; isStockAvailable: boolean; productOnCart: ProductOnCart; stockAvailable: number; } => {
     const stockAvailable = getStockAvailable(product);
     const productOnCart = getProductOnCart(product, items);
-    return ((productOnCart.quantityAvailable > productOnCart.quantity)) &&
-        (stockAvailable > 0);
+    const isStockAvailable = stockAvailable > 0;
+    const canAddToCart = ((productOnCart.quantityAvailable > productOnCart.quantity)) &&
+        isStockAvailable;
+    return { canAddToCart, isStockAvailable, productOnCart, stockAvailable };
 }
+
 
 export const checkPricingVariantIsOnSale = (variantPricing: IProductVariantPricing): boolean => {
     // también se puede usar la propiedad OnSale

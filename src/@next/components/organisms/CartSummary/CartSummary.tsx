@@ -82,7 +82,7 @@ const CartSummary: React.FC<IProps> = ({
         <S.HR />
         <S.CartSummaryProductList>
           {products?.map((product, index) => {
-            const canAddToCart = checkProductCanAddToCart(product, products);
+            const {canAddToCart} = checkProductCanAddToCart(product, products);
             const isOnSale = checkProductIsOnSale(product);
             return (
               <div key={product.variant.sku}>
