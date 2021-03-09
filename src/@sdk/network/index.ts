@@ -155,12 +155,14 @@ export class NetworkManager implements INetworkManager {
       try {
         const observable = this.client.watchQuery<CheckoutProductVariants, any>(
           {
+            fetchPolicy: 'network-only',
             query: CheckoutQueries.checkoutProductVariants,
             variables: {
               ids: idsOfMissingVariants,
             },
           }
         );
+        
         variants = await new Promise((resolve, reject) => {
           observable.subscribe(
             result => {

@@ -125,6 +125,24 @@ export class SaleorState extends NamedObservable<StateItems>
     // 2. Try to take checkout from local storage
     const checkoutModel: ICheckoutModel | null = this.repository.getCheckout();
     if (checkoutModel) {
+      const activeLines =
+        checkoutModel?.lines?.filter(x => x.quantity > 0) || [];
+
+      if (activeLines.length > 0) {
+        for (const line of activeLines) {
+          line.totalPrice = null;
+        }
+
+        const {
+          data,
+          error,
+        } = await this.networkManager.getRefreshedCheckoutLines(activeLines);
+
+        if (!error) {
+          checkoutModel.lines = data;
+        }
+      }
+
       this.onCheckoutUpdate(checkoutModel);
       return;
     }
