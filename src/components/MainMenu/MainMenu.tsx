@@ -269,7 +269,7 @@ const MainMenu: React.FC = () => {
                     </>
                   )}
                 />
-                {location.pathname !== baseUrl ? (
+                {location.pathname !== baseUrl && (
                   <li
                     className="main-menu__search"
                     onClick={() =>
@@ -281,9 +281,8 @@ const MainMenu: React.FC = () => {
                   >
                     <ReactSVG path={searchImg} />
                   </li>
-                ) : (
-                  <li className="main-menu__search--no-display"></li>
-                )}
+                )
+                }
                 <Online>
                   <li
                     className="main-menu__icon main-menu__cart"
