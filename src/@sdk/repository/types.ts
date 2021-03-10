@@ -5,6 +5,9 @@ import {
   Checkout_lines_variant_product
 } from "../fragments/gqlTypes/Checkout";
 
+import { ProductDetails_product_variants_pricing } from '../queries/gqlTypes/ProductDetails';
+import { IProductVariantPricing } from '@app/types/IProductVariantPricing';
+
 export enum LocalStorageItems {
   JOB_QUEUE_CHECKOUT = "job_queueCheckout",
   CHECKOUT = "data_checkout",
@@ -23,16 +26,26 @@ export interface ICheckoutModelLineVariant {
   isAvailable?: boolean | null;
   name?: string;
   sku?: string;
-  pricing?: Checkout_lines_variant_pricing | null;
+  pricing?: Checkout_lines_variant_pricing | IProductVariantPricing | null;
   product?: Checkout_lines_variant_product;
   quantityAvailable?: number;
+}
+
+export interface ICheckoutModelLineVariantLocalStorage {
+  id: string;
+  product: {
+    id: string | undefined,
+    name: string | undefined,
+    price?: ProductDetails_product_variants_pricing | IProductVariantPricing | undefined | null,
+    quantityAvailable?: number
+  };
 }
 
 export interface ICheckoutModelLine {
   id: string;
   name: string;
   quantity: number;
-  totalPrice?: ICheckoutModelLineTotalPrice | null; 
+  totalPrice?: ICheckoutModelLineTotalPrice | null;
   variant: ICheckoutModelLineVariant;
 }
 
