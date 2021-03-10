@@ -133,8 +133,8 @@ export const addToCartEvent = (
 
 export const checkoutEvent = (
   step: number,
-  products: any[],
-  eventCallback: () => void
+  products?: any[],
+  eventCallback?: () => void
 ) => {
   return {
     ecommerce: {
@@ -164,3 +164,7 @@ export enum steps {
   payment,
   review,
 }
+
+export const launchCheckoutGaEvent= () => {
+  return window?.dataLayer?.push(checkoutEvent(steps.address));
+};
