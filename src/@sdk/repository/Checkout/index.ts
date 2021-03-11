@@ -1,7 +1,6 @@
 import { SaleorState } from "@sdk/state";
 
 import { LocalRepository } from "../LocalRepository";
-import { ICheckoutModelLineVariantLocalStorage } from "../types";
 import { ICheckoutRepositoryManager } from "./types";
 
 export class CheckoutRepositoryManager implements ICheckoutRepositoryManager {
@@ -17,38 +16,35 @@ export class CheckoutRepositoryManager implements ICheckoutRepositoryManager {
     return this.repository;
   };
 
-  addItemToCart = (variantLS: ICheckoutModelLineVariantLocalStorage, quantity: number) => {
+  addItemToCart = (variantId: string, quantity: number) => {
     const lines = this.saleorState.checkout?.lines || [];
-    let variant = lines.find(variant => variant.variant.id === variantLS.id);
+    let variant = lines.find(variant => variant.variant.id === variantId);
     const alteredLines = lines.filter(
-      variant => variant.variant.id !== variantLS.id
+      variant => variant.variant.id !== variantId
     );
     const newVariantQuantity = variant ? variant.quantity + quantity : quantity;
     if (variant) {
       variant.quantity = newVariantQuantity;
       alteredLines.push(variant);
     } else {
-      const product = variantLS?.product
       variant = {
-        id: product?.id ? product?.id : "",
-        name: product?.name ? product?.name : "",
+        id: '',
+        name: '',
         quantity,
         variant: {
-          id: variantLS.id,
-          pricing: product.price,
-          quantityAvailable: product.quantityAvailable,
+          id: variantId,
         },
       };
       alteredLines.push(variant);
     }
     const alteredCheckout = this.saleorState.checkout
       ? {
-        ...this.saleorState.checkout,
-        lines: alteredLines,
-      }
+          ...this.saleorState.checkout,
+          lines: alteredLines,
+        }
       : {
-        lines: alteredLines,
-      };
+          lines: alteredLines,
+        };
     this.repository.setCheckout(alteredCheckout);
 
     return alteredCheckout;
@@ -66,12 +62,12 @@ export class CheckoutRepositoryManager implements ICheckoutRepositoryManager {
     }
     const alteredCheckout = this.saleorState.checkout
       ? {
-        ...this.saleorState.checkout,
-        lines: alteredLines,
-      }
+          ...this.saleorState.checkout,
+          lines: alteredLines,
+        }
       : {
-        lines: alteredLines,
-      };
+          lines: alteredLines,
+        };
     this.repository.setCheckout(alteredCheckout);
 
     return alteredCheckout;
@@ -90,12 +86,12 @@ export class CheckoutRepositoryManager implements ICheckoutRepositoryManager {
     }
     const alteredCheckout = this.saleorState.checkout
       ? {
-        ...this.saleorState.checkout,
-        lines: alteredLines,
-      }
+          ...this.saleorState.checkout,
+          lines: alteredLines,
+        }
       : {
-        lines: alteredLines,
-      };
+          lines: alteredLines,
+        };
     this.repository.setCheckout(alteredCheckout);
 
     return alteredCheckout;
@@ -113,12 +109,12 @@ export class CheckoutRepositoryManager implements ICheckoutRepositoryManager {
     }
     const alteredCheckout = this.saleorState.checkout
       ? {
-        ...this.saleorState.checkout,
-        lines: alteredLines,
-      }
+          ...this.saleorState.checkout,
+          lines: alteredLines,
+        }
       : {
-        lines: alteredLines,
-      };
+          lines: alteredLines,
+        };
     this.repository.setCheckout(alteredCheckout);
 
     return alteredCheckout;

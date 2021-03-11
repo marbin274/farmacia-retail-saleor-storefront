@@ -75,7 +75,7 @@ const generateCart = (
   removeItem: (variantId: string) => any,
   updateItem: (variantId: string, quantity: number) => any
 ) => {
-  return items?.map(({ id, variant, quantity, totalPrice  }, index) => (
+  return items?.map(({ id, variant, quantity, totalPrice }, index) => (
     <CartRow
       key={id ? `id-${id}` : `idx-${index}`}
       index={index}
@@ -91,7 +91,7 @@ const generateCart = (
       totalPrice={
         <TaxedMoney
           data-cy={`cartPageItem${index}TotalPrice`}
-          taxedMoney={totalPrice as ITaxedMoney}
+          taxedMoney={totalPrice}
         />
       }
       unitPrice={

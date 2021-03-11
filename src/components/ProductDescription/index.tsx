@@ -4,9 +4,9 @@ import { ProductVariantPicker } from "@components/organisms";
 import {
   ProductDetails_product_pricing,
   ProductDetails_product_variants,
-  ProductDetails_product_variants_pricing
+  ProductDetails_product_variants_pricing,
 } from "@sdk/queries/gqlTypes/ProductDetails";
-import { ICheckoutModelLine, ICheckoutModelLineVariantLocalStorage } from "@sdk/repository";
+import { ICheckoutModelLine } from "@sdk/repository";
 import { itemNotificationsService } from "@temp/@next/components/atoms/ItemsNotification";
 import { getProductPricingClass } from "@temp/@next/utils/products";
 import { IProductVariantsAttributesSelectedValues, ITaxedMoney } from "@types";
@@ -32,7 +32,7 @@ export interface ProductDescriptionProps {
   productVariants: ProductDetails_product_variants[];
   name: string;
   pricing: ProductDetails_product_pricing;
-  addToCart(variant: ICheckoutModelLineVariantLocalStorage, quantity?: number): void;
+  addToCart(varinatId: string, quantity?: number): void;
   setVariantId(variantId: string): void;
 }
 
@@ -51,7 +51,7 @@ interface ProductDescriptionState {
 class ProductDescription extends React.Component<
   ProductDescriptionProps,
   ProductDescriptionState
-  > {
+> {
   constructor(props: ProductDescriptionProps) {
     super(props);
     this.state = {
@@ -121,22 +121,10 @@ class ProductDescription extends React.Component<
   };
 
   handleSubmit = () => {
-  
    const { items } = this.props;
     const { variant } = this.state;
     const cartItem = items?.find(item => item.variant.id === variant);
-    this.props.addToCart(
-      { 
-        id: this.state.variant, 
-        product: { 
-          id: this.props.productId, 
-          name: this.props.name,
-          price: this.props.productVariants[0].pricing,
-          quantityAvailable: this.props.productVariants[0].quantityAvailable,
-        }, 
-      }, 
-      this.state.quantity
-    );
+    this.props.addToCart(this.state.variant, this.state.quantity);
 
     itemNotificationsService.sendNotifications(
       { id: this.state.variant, name: this.props.name },
@@ -201,8 +189,8 @@ class ProductDescription extends React.Component<
         {!canAddToCart ? (
           <p className="product-description__error-message">AGOTADO</p>
         ) : (
-            this.getProductPrice()
-          )}
+          this.getProductPrice()
+        )}
         <RichTextContent descriptionJson={descriptionJson} />
         <div className="product-description__variant-picker">
           <ProductVariantPicker

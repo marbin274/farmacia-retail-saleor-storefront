@@ -674,7 +674,7 @@ export interface ProductDetails_product_variants_pricing_price {
 }
 
 export interface ProductDetails_product_variants_pricing {
-  __typename: "VariantPricingInfo"; 
+  __typename: "VariantPricingInfo";
   /**
    * Whether it is in sale or not.
    */

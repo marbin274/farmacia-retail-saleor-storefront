@@ -14,7 +14,7 @@ export interface IProductVariant extends INode, IObjectWithMetadata{
   margin?: number;
   quantityOrdered?: number
   priceOverride?: IMoney;
-  pricing?: IProductVariantPricing | null | undefined;
+  pricing?: IProductVariantPricing | null;
   revenue?: ITaxedMoney;
   quantityAvailable?: number;
 
