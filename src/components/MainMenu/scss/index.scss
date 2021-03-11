@@ -54,8 +54,11 @@
 
     ul {
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-evenly;
       align-items: center;
+      @media (max-width: $small-screen) {
+        justify-content: flex-end;
+      }
     }
   }
 
@@ -78,6 +81,9 @@
       width: 128px;
     }
     .logo {
+      @media (max-width: $small-screen) {
+        transform: scale(0.85);
+      }
       @media (max-width: $xs-small-screen) {
         transform: scale(0.8);
       }
@@ -132,6 +138,10 @@
     border-radius: 50%;
     padding: 11px;
     position: relative;
+    margin-left: 10px;
+    @media (max-width: $small-screen) {
+      margin-left: 0;
+    }
 
     &__quantity {
       position: absolute;
@@ -196,7 +206,15 @@
     cursor: pointer;
     line-height: 24px;
     transition: 0.3s;
-
+    @media (max-width: $small-screen) {
+      margin-right: 10px;
+    }
+    @media (max-width: 375px) {
+      margin-right: 5px;
+    }
+    @media (max-width: $xs-small-screen) {
+      margin-right: 0px;
+    }
     span {
       text-transform: uppercase;
       font-weight: $bold-font-weight;

@@ -6,53 +6,53 @@ import { CountryCode } from "@sdk/gqlTypes/globalTypes";
 import * as CheckoutMutations from "@sdk/mutations/checkout";
 import {
   AddCheckoutPromoCode,
-  AddCheckoutPromoCodeVariables
+  AddCheckoutPromoCodeVariables,
 } from "@sdk/mutations/gqlTypes/AddCheckoutPromoCode";
 import {
   CompleteCheckout,
-  CompleteCheckoutVariables
+  CompleteCheckoutVariables,
 } from "@sdk/mutations/gqlTypes/CompleteCheckout";
 import {
   CreateCheckout,
-  CreateCheckoutVariables
+  CreateCheckoutVariables,
 } from "@sdk/mutations/gqlTypes/CreateCheckout";
 import {
   CreateCheckoutPayment,
-  CreateCheckoutPaymentVariables
+  CreateCheckoutPaymentVariables,
 } from "@sdk/mutations/gqlTypes/CreateCheckoutPayment";
 import {
   RemoveCheckoutPromoCode,
-  RemoveCheckoutPromoCodeVariables
+  RemoveCheckoutPromoCodeVariables,
 } from "@sdk/mutations/gqlTypes/RemoveCheckoutPromoCode";
 import {
   UpdateCheckoutBillingAddress,
-  UpdateCheckoutBillingAddressVariables
+  UpdateCheckoutBillingAddressVariables,
 } from "@sdk/mutations/gqlTypes/UpdateCheckoutBillingAddress";
 import {
   UpdateCheckoutBillingAddressWithEmail,
-  UpdateCheckoutBillingAddressWithEmailVariables
+  UpdateCheckoutBillingAddressWithEmailVariables,
 } from "@sdk/mutations/gqlTypes/UpdateCheckoutBillingAddressWithEmail";
 import {
   UpdateCheckoutLine,
-  UpdateCheckoutLineVariables
+  UpdateCheckoutLineVariables,
 } from "@sdk/mutations/gqlTypes/UpdateCheckoutLine";
 import {
   UpdateCheckoutShippingAddress,
-  UpdateCheckoutShippingAddressVariables
+  UpdateCheckoutShippingAddressVariables,
 } from "@sdk/mutations/gqlTypes/UpdateCheckoutShippingAddress";
 import {
   UpdateCheckoutShippingMethod,
-  UpdateCheckoutShippingMethodVariables
+  UpdateCheckoutShippingMethodVariables,
 } from "@sdk/mutations/gqlTypes/UpdateCheckoutShippingMethod";
 import * as CheckoutQueries from "@sdk/queries/checkout";
 import { CheckoutDetails } from "@sdk/queries/gqlTypes/CheckoutDetails";
 import {
   CheckoutProductVariants,
-  CheckoutProductVariants_productVariants
+  CheckoutProductVariants_productVariants,
 } from "@sdk/queries/gqlTypes/CheckoutProductVariants";
 import {
   GetShopPaymentGateways,
-  GetShopPaymentGateways_shop_availablePaymentGateways
+  GetShopPaymentGateways_shop_availablePaymentGateways,
 } from "@sdk/queries/gqlTypes/GetShopPaymentGateways";
 import { UserCheckoutDetails } from "@sdk/queries/gqlTypes/UserCheckoutDetails";
 import * as ShopQueries from "@sdk/queries/shop";
@@ -61,9 +61,9 @@ import {
   ICheckoutModel,
   ICheckoutModelLine,
   IOrderModel,
-  IPaymentModel
+  IPaymentModel,
 } from "@sdk/repository";
-import { filterNotEmptyArrayItems } from "@sdk/utils";
+import { ecommerceProductsMapper, filterNotEmptyArrayItems } from "@sdk/utils";
 import ApolloClient from "apollo-client";
 import { IPrivacyPolicy } from "../api/Checkout/types";
 import { INetworkManager } from "./types";
@@ -79,23 +79,7 @@ export class NetworkManager implements INetworkManager {
   constructor(client: ApolloClient<any>) {
     this.client = client;
   }
-  transformArray(arrayOfObjects: any[]) {
-    const newArray: any[] = [];
-    arrayOfObjects.map(product =>
-      newArray.push({
-        brand: ``,
-        category: ``,
-        id: `${product.variant.sku}`,
-        list: ``,
-        name: `${product.productName}`,
-        position: ``,
-        price: `${product.unitPrice.gross.amount}`,
-        quantity: product.quantity,
-        variant: ``,
-      })
-    );
-    return newArray;
-  }
+
   getCheckout = async (checkoutToken: string | null) => {
     let checkout: Checkout | null;
     try {
@@ -171,12 +155,14 @@ export class NetworkManager implements INetworkManager {
       try {
         const observable = this.client.watchQuery<CheckoutProductVariants, any>(
           {
+            fetchPolicy: 'network-only',
             query: CheckoutQueries.checkoutProductVariants,
             variables: {
               ids: idsOfMissingVariants,
             },
           }
         );
+        
         variants = await new Promise((resolve, reject) => {
           observable.subscribe(
             result => {
@@ -201,69 +187,71 @@ export class NetworkManager implements INetworkManager {
 
     const linesWithMissingVariantUpdated: ICheckoutModelLine[] = variants
       ? variants.edges.map(edge => {
-        const existingLine = checkoutlines?.find(
-          line => line.variant.id === edge.node.id
-        );
-        const variantPricing = edge.node.pricing?.price;
-        const totalPrice = variantPricing
-          ? {
-            gross: {
-              ...variantPricing.gross,
-              amount:
-                variantPricing.gross.amount * (existingLine?.quantity || 0),
-            },
-            net: {
-              ...variantPricing.net,
-              amount:
-                variantPricing.net.amount * (existingLine?.quantity || 0),
-            },
-          }
-          : null;
+          const existingLine = checkoutlines?.find(
+            line => line.variant.id === edge.node.id
+          );
+          const variantPricing = edge.node.pricing?.price;
+          const totalPrice = variantPricing
+            ? {
+                gross: {
+                  ...variantPricing.gross,
+                  amount:
+                    variantPricing.gross.amount * (existingLine?.quantity || 0),
+                },
+                net: {
+                  ...variantPricing.net,
+                  amount:
+                    variantPricing.net.amount * (existingLine?.quantity || 0),
+                },
+              }
+            : null;
 
-        const variant = {
-          attributes: edge.node.attributes,
-          id: edge.node.id,
-          isAvailable: edge.node.isAvailable,
-          name: edge.node.name,
-          pricing: edge.node.pricing,
-          product: edge.node.product,
-          quantityAvailable: edge.node.quantityAvailable,
-          sku: edge.node.sku,
-        };
-        return {
-          id: existingLine?.id ? existingLine?.id : '',
-          name: edge.node.product.name,
-          quantity: existingLine?.quantity || 0,
-          totalPrice,
-          variant,
-        };
-      })
+          const variant = {
+            attributes: edge.node.attributes,
+            id: edge.node.id,
+            isAvailable: edge.node.isAvailable,
+            name: edge.node.name,
+            pricing: edge.node.pricing,
+            product: edge.node.product,
+            quantityAvailable: edge.node.quantityAvailable,
+            sku: edge.node.sku,
+          };
+          return {
+            id: existingLine?.id ? existingLine?.id : "",
+            name: edge.node.product.name,
+            quantity: existingLine?.quantity || 0,
+            totalPrice,
+            variant,
+          };
+        })
       : [];
 
-    const linesWithProperVariantUpdated: ICheckoutModelLine[] = linesWithProperVariant.map(line => {
-      const variantPricing = line.variant.pricing?.price;
-      const totalPrice = variantPricing
-        ? {
-          gross: {
-            ...variantPricing.gross,
-            amount: variantPricing.gross.amount * line.quantity,
-          },
-          net: {
-            ...variantPricing.net,
-            amount: variantPricing.net.amount * line.quantity,
-          },
-        }
-        : null;
+    const linesWithProperVariantUpdated: ICheckoutModelLine[] = linesWithProperVariant.map(
+      line => {
+        const variantPricing = line.variant.pricing?.price;
+        const totalPrice = variantPricing
+          ? {
+              gross: {
+                ...variantPricing.gross,
+                amount: variantPricing.gross.amount * line.quantity,
+              },
+              net: {
+                ...variantPricing.net,
+                amount: variantPricing.net.amount * line.quantity,
+              },
+            }
+          : null;
 
-      return {
-        id: line.id,
-        name: line.name,
-        quantity: line.quantity,
-        totalPrice,
-        variant: line.variant,
-        variants: [{ ...line.variant }],
-      };
-    });
+        return {
+          id: line.id,
+          name: line.name,
+          quantity: line.quantity,
+          totalPrice,
+          variant: line.variant,
+          variants: [{ ...line.variant }],
+        };
+      }
+    );
 
     return {
       data: [
@@ -328,7 +316,7 @@ export class NetworkManager implements INetworkManager {
             companyName: billingAddress.companyName,
             country:
               CountryCode[
-              billingAddress?.country?.code as keyof typeof CountryCode
+                billingAddress?.country?.code as keyof typeof CountryCode
               ],
             countryArea: billingAddress.countryArea,
             firstName: billingAddress.firstName,
@@ -347,7 +335,7 @@ export class NetworkManager implements INetworkManager {
             companyName: shippingAddress.companyName,
             country:
               CountryCode[
-              shippingAddress?.country?.code as keyof typeof CountryCode
+                shippingAddress?.country?.code as keyof typeof CountryCode
               ],
             countryArea: shippingAddress.countryArea,
             firstName: shippingAddress.firstName,
@@ -452,7 +440,7 @@ export class NetworkManager implements INetworkManager {
           companyName: shippingAddress.companyName,
           country:
             CountryCode[
-            shippingAddress?.country?.code as keyof typeof CountryCode
+              shippingAddress?.country?.code as keyof typeof CountryCode
             ],
           countryArea: shippingAddress.countryArea,
           firstName: shippingAddress.firstName,
@@ -526,7 +514,7 @@ export class NetworkManager implements INetworkManager {
           companyName: billingAddress.companyName,
           country:
             CountryCode[
-            billingAddress?.country?.code as keyof typeof CountryCode
+              billingAddress?.country?.code as keyof typeof CountryCode
             ],
           countryArea: billingAddress.countryArea,
           firstName: billingAddress.firstName,
@@ -582,7 +570,7 @@ export class NetworkManager implements INetworkManager {
           companyName: billingAddress.companyName,
           country:
             CountryCode[
-            billingAddress?.country?.code as keyof typeof CountryCode
+              billingAddress?.country?.code as keyof typeof CountryCode
             ],
           countryArea: billingAddress.countryArea,
           firstName: billingAddress.firstName,
@@ -755,7 +743,7 @@ export class NetworkManager implements INetworkManager {
             companyName: billingAddress.companyName,
             country:
               CountryCode[
-              billingAddress?.country?.code as keyof typeof CountryCode
+                billingAddress?.country?.code as keyof typeof CountryCode
               ],
             countryArea: billingAddress.countryArea,
             firstName: billingAddress.firstName,
@@ -827,12 +815,12 @@ export class NetworkManager implements INetworkManager {
             purchase: {
               actionField: {
                 affiliation: "Online Store",
-                id: `${orderId}`,
-                revenue: `${total}`,
+                id: orderId,
+                revenue: total,
                 shipping: "",
-                tax: `${!!total ? tax : 0}`,
+                tax: !!total ? tax : 0,
               },
-              products: this.transformArray(productsArray),
+              products: ecommerceProductsMapper(productsArray),
             },
           },
           event: "purchase",
@@ -890,7 +878,7 @@ export class NetworkManager implements INetworkManager {
 
         return {
           id: item!.id,
-          name: itemVariant?.product.name ? itemVariant?.product.name : '',
+          name: itemVariant?.product.name ? itemVariant?.product.name : "",
           quantity: item!.quantity,
           totalPrice: item?.totalPrice,
           variant: {

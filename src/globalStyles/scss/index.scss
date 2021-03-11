@@ -158,11 +158,15 @@ body {
   }
   &.discounted_price {
     color: $auna-orange-on-sale;
+    span,
+    p {
+      color: $auna-orange-on-sale;
+    }
   }
   &.undiscounted_price {
     text-decoration: line-through;
     color: $auna-grey-100;
-    font-size: $base-font-size;
+    font-size: $base-font-size !important;
     font-weight: normal;
   }
 }

@@ -29,9 +29,12 @@ export const ItemsNotification: React.FC<any> = () => {
               const index = not.findIndex(
                 x => x.product.id === data.product.id
               );
-              not.splice(index, 1);
+              not[index].quantity += data.quantity;
+            } else {
+              return [...not, data];
             }
-            return [...not, data];
+
+            return [...not];
           });
 
           interval = setInterval(() => {

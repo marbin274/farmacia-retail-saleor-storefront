@@ -11,66 +11,13 @@ import { generateProductUrl } from "@temp/core/utils";
 import * as React from "react";
 import { Link } from "react-router-dom";
 import ItemQuantity from "./ItemQuantity";
+import { addToCartEvent, removeToCartEvent } from "@sdk/utils";
 
 declare global {
   interface Window {
     dataLayer: any;
   }
 }
-
-export const removeToCartEvent = (
-  id: string,
-  name: string,
-  price: any,
-  quantity: number
-) => {
-  return {
-    ecommerce: {
-      remove: {
-        products: [
-          {
-            brand: "",
-            category: "",
-            id,
-            name,
-            price,
-            quantity,
-            variant: "",
-          },
-        ],
-      },
-    },
-    event: "removeFromCart",
-  };
-};
-
-export const addToCartEvent = (
-  id: string,
-  name: string,
-  price: any,
-  quantity: number,
-  currencyCode: string
-) => {
-  return {
-    ecommerce: {
-      add: {
-        products: [
-          {
-            brand: "",
-            category: "",
-            id,
-            name,
-            price,
-            quantity,
-            variant: "",
-          },
-        ],
-      },
-      currencyCode,
-    },
-    event: "addToCart",
-  };
-};
 
 interface IProductList {
   products: ICheckoutModelLine[];
@@ -88,7 +35,7 @@ const ProductList: React.FC<IProductList> = ({
   <ul className="cart__list">
     {products.map(product => {
       const { variant, quantity } = product;
-      const canAddToCart = checkProductCanAddToCart(product, products);
+      const {canAddToCart} = checkProductCanAddToCart(product, products);
       const isOnSale = checkProductIsOnSale(product);
 
       const productUrl = generateProductUrl(

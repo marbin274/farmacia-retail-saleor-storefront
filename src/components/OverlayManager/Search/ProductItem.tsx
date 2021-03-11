@@ -10,41 +10,52 @@ import { useCart } from "@temp/@sdk/react";
 import {
   checkProductCanAddToCart,
   checkProductIsOnSale,
+  getOneProductWithQuantity,
   getProductPricingClass,
 } from "@temp/@next/utils/products";
+import ItemsHandler from "@temp/@next/components/organisms/ItemsHandler/ItemsHandler";
 
 const ProductItem: React.FC<SearchResults_products_edges> = ({
-  node: product,
+  node,
 }) => {
-  const { items } = useCart();
-  const canAddToCart = checkProductCanAddToCart(product, items);
+  const { items, addItem, subtractItem } = useCart();
+  const product = getOneProductWithQuantity(node, items);
+  const {canAddToCart, isStockAvailable} = checkProductCanAddToCart(product, items);
   const isOnSale = checkProductIsOnSale(product);
   return (
     <li className="search__products__item">
-      <Link to={generateProductUrl(product.id, product.name)}>
-        <div className="search__products__item__content">
+      <div className="search__products__item__content">
+        <Link to={generateProductUrl(product.id, product.name)}>
           <div className="search__products__item__side">
-            <Thumbnail source={product} />
+            <Thumbnail source={node} />
             <p className="search__products__item__side__name">
               {product.name}
               <span>{product.category?.name}</span>
             </p>
           </div>
-          <div className="search__products__item__side">
-            {canAddToCart ? (
-              <div className={getProductPricingClass(canAddToCart, isOnSale)}>
-                <p className="search__products__item__side__price">
-                  <Money money={product.pricing.priceRange.start.net} />
-                </p>
-              </div>
-            ) : (
-              <p className="search__products__item__side__outstock">
-                <span>Agotado</span>
+        </Link>
+        {!isStockAvailable ? (
+          <p className="search__products__item__side__outstock">
+            <span>Agotado</span>
+          </p>
+        ) : (
+          <div className="search__products__item__side actions">
+            <div className={getProductPricingClass(canAddToCart, isOnSale)}>
+              <p className="search__products__item__side__price">
+                <Money money={product.pricing.priceRange.start.net} />
               </p>
-            )}
+            </div>
+            <ItemsHandler
+              canAddToCart={canAddToCart}
+              product={product}
+              addToCart={addItem}
+              removeItemToCart={subtractItem}
+              substractItemToCart={subtractItem}
+            />
           </div>
-        </div>
-      </Link>
+        )}
+
+      </div>
     </li>
   );
 };

@@ -129,8 +129,7 @@ $custom-breakpoint: 624px;
       }
 
       &:hover {
-        background-color: $auna-complementary1;
-        border: 1px solid $auna-complementary1;
+        border: 1px solid $auna-interactive;
 
         @media (max-width: $custom-breakpoint) {
           .search__products__item__side__name > span {
@@ -142,10 +141,40 @@ $custom-breakpoint: 624px;
       &__content {
         display: flex;
         justify-content: space-between;
+        @media (max-width: $small-screen) {
+          flex-direction: column;
+        }
       }
 
       &__side {
         display: flex;
+        &.actions {
+          align-items: center;
+          flex-direction: column;
+          justify-content: center;
+          @media (max-width: $small-screen) {
+            flex-direction: row;
+            justify-content: space-between;
+            margin-left: 4rem;
+          }
+          .button {
+            > button {
+              padding: 0.6rem 2.16rem;
+              border-radius: 44px;
+              width: 100%;
+              span {
+                font-size: $small-font-size;
+              }
+            }
+          }
+          .item-action {
+            width: 100%;
+            padding: 0.69rem 1.32rem;
+            span {
+              font-size: $price-font-size;
+            }
+          }
+        }
         > div {
           display: flex;
         }
@@ -168,18 +197,20 @@ $custom-breakpoint: 624px;
         &__price {
           align-items: center;
           display: flex;
-          font-size: 16px;
-
+          color: $auna-black;
+          margin-bottom: 10px;
           @media (max-width: $custom-breakpoint) {
             font-size: 12px;
+            margin-bottom: 0px;
           }
 
           > span {
-            font-size: 18px;
+            font-size: $base-font-size;
+            font-weight: $bold-font-weight;
             margin-left: 6px;
 
             @media (max-width: $custom-breakpoint) {
-              font-size: 14px;
+              font-size: $small-font-size;
             }
           }
         }
@@ -195,6 +226,9 @@ $custom-breakpoint: 624px;
             line-height: $base-line-height;
             font-weight: $font-weight-bold;
             letter-spacing: 0.06em;
+          }
+          @media (max-width: $small-screen) {
+            margin-left: 4rem;
           }
         }
       }

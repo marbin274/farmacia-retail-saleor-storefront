@@ -106,23 +106,8 @@ export class SaleorCartAPI extends ErrorListener implements ISaleorCartAPI {
     this.checkoutRepositoryManager.addItemToCart(variantId, quantity);
 
     // 2. save online if possible (if checkout id available)
-    if (this.saleorState.checkout?.lines) {
-      const {
-        data,
-        error,
-      } = await this.networkManager.getRefreshedCheckoutLines(
-        this.saleorState.checkout.lines
-      );
+    await this.refreshCheckout(this.saleorState.checkout);
 
-      if (error) {
-        this.fireError(error, ErrorCartTypes.SET_CART_ITEM);
-      } else {
-        this.checkoutRepositoryManager.getRepository().setCheckout({
-          ...this.saleorState.checkout,
-          lines: data,
-        });
-      }
-    }
     if (this.saleorState.checkout?.id) {
       this.jobsManager.addToQueue("cart", "setCartItem");
       return {
@@ -140,23 +125,8 @@ export class SaleorCartAPI extends ErrorListener implements ISaleorCartAPI {
     // 1. save in local storage
     this.checkoutRepositoryManager.removeItemFromCart(variantId);
     // 2. save online if possible (if checkout id available)
-    if (this.saleorState.checkout?.lines) {
-      const {
-        data,
-        error,
-      } = await this.networkManager.getRefreshedCheckoutLines(
-        this.saleorState.checkout.lines
-      );
+    await this.refreshCheckout(this.saleorState.checkout);
 
-      if (error) {
-        this.fireError(error, ErrorCartTypes.SET_CART_ITEM);
-      } else {
-        this.checkoutRepositoryManager.getRepository().setCheckout({
-          ...this.saleorState.checkout,
-          lines: data,
-        });
-      }
-    }
     if (this.saleorState.checkout?.id) {
       this.jobsManager.addToQueue("cart", "setCartItem");
       return {
@@ -175,23 +145,8 @@ export class SaleorCartAPI extends ErrorListener implements ISaleorCartAPI {
     this.checkoutRepositoryManager.subtractItemFromCart(variantId);
 
     // 2. save online if possible (if checkout id available)
-    if (this.saleorState.checkout?.lines) {
-      const {
-        data,
-        error,
-      } = await this.networkManager.getRefreshedCheckoutLines(
-        this.saleorState.checkout.lines
-      );
+    await this.refreshCheckout(this.saleorState.checkout);
 
-      if (error) {
-        this.fireError(error, ErrorCartTypes.SET_CART_ITEM);
-      } else {
-        this.checkoutRepositoryManager.getRepository().setCheckout({
-          ...this.saleorState.checkout,
-          lines: data,
-        });
-      }
-    }
     if (this.saleorState.checkout?.id) {
       this.jobsManager.addToQueue("cart", "setCartItem");
       return {
@@ -210,23 +165,8 @@ export class SaleorCartAPI extends ErrorListener implements ISaleorCartAPI {
     this.checkoutRepositoryManager.updateItemInCart(variantId, quantity);
 
     // 2. save online if possible (if checkout id available)
-    if (this.saleorState.checkout?.lines) {
-      const {
-        data,
-        error,
-      } = await this.networkManager.getRefreshedCheckoutLines(
-        this.saleorState.checkout.lines
-      );
+    await this.refreshCheckout(this.saleorState.checkout);
 
-      if (error) {
-        this.fireError(error, ErrorCartTypes.SET_CART_ITEM);
-      } else {
-        this.checkoutRepositoryManager.getRepository().setCheckout({
-          ...this.saleorState.checkout,
-          lines: data,
-        });
-      }
-    }
     if (this.saleorState.checkout?.id) {
       this.jobsManager.addToQueue("cart", "setCartItem");
       return {
@@ -236,5 +176,30 @@ export class SaleorCartAPI extends ErrorListener implements ISaleorCartAPI {
     return {
       pending: false,
     };
+  };
+
+  refreshCheckout = async (checkout: ICheckoutModel | undefined) => {
+    if (!checkout?.lines) {
+      return;
+    }
+
+    for (const line of checkout.lines) {
+      if (line.quantity > 0) {
+        line.totalPrice = null;
+      }
+    }
+
+    const { data, error } = await this.networkManager.getRefreshedCheckoutLines(
+      checkout.lines
+    );
+
+    if (error) {
+      this.fireError(error, ErrorCartTypes.SET_CART_ITEM);
+    } else {
+      this.checkoutRepositoryManager.getRepository().setCheckout({
+        ...checkout,
+        lines: data,
+      });
+    }
   };
 }

@@ -6,7 +6,7 @@ import { Button } from "../Button";
 import { alertService } from "./AlertService";
 import * as S from "./styles";
 import { alertTypes, IAlertServiceProps } from "./types";
-// import * as Sentry from "@sentry/react";
+import * as Sentry from "@sentry/react";
 
 const dataInitial: IAlertServiceProps = {
   buttonText: "",
@@ -25,10 +25,9 @@ export const Alert: React.FC<any> = () => {
         if (data) {
           switch (data.type) {
             case "Error":
-              // TODO: habilitar luego de las pruebas de QA.
-              // Sentry.captureException(data?.message || "Ha ocurrido un error", {
-              //   level: Sentry.Severity.Error,
-              // });
+              Sentry.captureException(data?.message || "Ha ocurrido un error", {
+                level: Sentry.Severity.Error,
+              });
               setShow(true);
               setAlert(data);
               break;

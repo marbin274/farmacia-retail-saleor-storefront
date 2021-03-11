@@ -21,6 +21,11 @@ import {
   ICheckoutShippingSubpageHandles,
 } from "./subpages";
 import { IProps } from "./types";
+import {
+  checkoutEvent,
+  ecommerceProductMapper,
+  steps,
+} from "@sdk/utils";
 
 const prepareCartSummary = (
   totalPrice?: ITaxedMoney | null,
@@ -146,6 +151,9 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
             checkoutShippingSubpageRef.current?.submitShipping();
           }
         }
+        window?.dataLayer?.push(
+          checkoutEvent(steps.payment, ecommerceProductMapper(items))
+        );
         break;
       // case 1:
       //   if (checkoutShippingSubpageRef.current?.submitShipping) {
@@ -156,6 +164,9 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
         if (checkoutPaymentSubpageRef.current?.submitPayment) {
           checkoutPaymentSubpageRef.current?.submitPayment();
         }
+        window?.dataLayer?.push(
+          checkoutEvent(steps.review, ecommerceProductMapper(items))
+        );
         break;
       case 2:
         if (checkoutReviewSubpageRef.current?.complete) {

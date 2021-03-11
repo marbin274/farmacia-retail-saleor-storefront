@@ -71,7 +71,7 @@ class Page extends React.PureComponent<
 
   render() {
     const { add, items, product } = this.props;
-    const canAddToCart = checkProductCanAddToCart(this.props.product, this.props.items);
+    const {canAddToCart} = checkProductCanAddToCart(this.props.product, this.props.items);
     const isOnSale = checkProductIsOnSale(this.props.product);
     return (
       <div className="product-page">

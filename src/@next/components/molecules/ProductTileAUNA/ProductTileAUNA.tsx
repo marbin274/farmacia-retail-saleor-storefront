@@ -1,78 +1,22 @@
-import { Button, ProductSticker } from "@components/atoms";
+import { ProductSticker } from "@components/atoms";
 import { TaxedMoney } from "@components/containers";
 import { Thumbnail } from "@components/molecules";
 import {
   checkProductCanAddToCart,
   checkProductIsOnSale,
-  getProductPricingClass,
+  getProductPricingClass
 } from "@temp/@next/utils/products";
-import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import ItemsHandler from "../../organisms/ItemsHandler/ItemsHandler";
 import * as S from "./styles";
 import { IProps } from "./types";
-import ItemsHandler from "../../organisms/ItemsHandler/ItemsHandler";
-import { itemNotificationsService } from "../../atoms/ItemsNotification";
 
 declare global {
   interface Window {
     dataLayer: any;
   }
 }
-
-export const removeToCartEvent = (
-  id: string,
-  name: string,
-  price: any,
-  quantity: number
-) => {
-  return {
-    ecommerce: {
-      remove: {
-        products: [
-          {
-            brand: "",
-            category: "",
-            id,
-            name,
-            price,
-            quantity,
-            variant: "",
-          },
-        ],
-      },
-    },
-    event: "removeFromCart",
-  };
-};
-
-export const addToCartEvent = (
-  id: string,
-  name: string,
-  price: any,
-  quantity: number,
-  currencyCode:string
-) => {
-  return {
-    ecommerce: {
-      add: {
-        products: [
-          {
-            brand: "",
-            category: "",
-            id,
-            name,
-            price,
-            quantity,
-            variant: "",
-          },
-        ],
-      },
-      currencyCode,
-    },
-    event: "addToCart",
-  };
-};
 
 export const ProductTileAUNA: React.FC<IProps> = ({
   addToCart,
@@ -90,58 +34,8 @@ export const ProductTileAUNA: React.FC<IProps> = ({
     thumbnail2x: { url: "" },
   });
 
-  const canAddToCart = checkProductCanAddToCart(product, productsOnCart);
+  const {canAddToCart} = checkProductCanAddToCart(product, productsOnCart);
   const isOnSale = checkProductIsOnSale(product);
-
-  const onAddToCart = () => {
-    if (canAddToCart) {
-      const firstProductVariant = product?.variants?.[0];
-      const total: number = product?.quantity as number;
-
-      if (firstProductVariant) {
-        removePaymentItems();
-        addToCart?.(firstProductVariant.id, 1);
-        if (product.quantity) {
-          itemNotificationsService.sendNotifications(
-            product,
-            product.quantity + 1
-          );
-        } else {
-          itemNotificationsService.sendNotifications(product, 1);
-        }
-      }
-      window?.dataLayer?.push(
-        addToCartEvent(
-          firstProductVariant?.sku as string,
-          product?.name,
-          firstProductVariant?.pricing?.price?.gross?.amount,  
-          total + 1 ,
-          "PEN"
-        )
-      );
-    }
-  };
-
-  const onSubstractToCart = () => {
-    const firstProductVariant = product?.variants?.[0];
-    const total: number = product?.quantity as number;
-    if (firstProductVariant) {
-      removePaymentItems();
-      if (product.quantity && product.quantity < 2) {
-        removeItemToCart?.(firstProductVariant.id);
-      } else {
-        substractItemToCart?.(firstProductVariant.id);
-      }
-    }
-    window?.dataLayer?.push(
-      removeToCartEvent(
-        firstProductVariant?.sku as string,
-        product?.name,
-        firstProductVariant?.pricing?.price?.gross?.amount,
-        total - 1 
-      )
-    );
-  };
 
   useEffect(() => {
     setThumbnails({
@@ -177,21 +71,14 @@ export const ProductTileAUNA: React.FC<IProps> = ({
           )}
         </S.WrapperStockout>
       </Link>
-      {addToCart &&
-        (product.quantity ? (
-          <ItemsHandler
-            onAdd={onAddToCart}
-            onRemove={onSubstractToCart}
-            value={product.quantity}
-            availables={product?.variants?.[0].quantityAvailable}
-          />
-        ) : (
-          <div className="button">
-            <Button onClick={onAddToCart} disabled={!canAddToCart}>
-              Agregar
-            </Button>
-          </div>
-        ))}
+      <ItemsHandler
+        canAddToCart={canAddToCart}
+        product={product}
+        addToCart={addToCart}
+        removeItemToCart={removeItemToCart}
+        substractItemToCart={substractItemToCart}
+      />
+
     </S.ProductCard>
   );
 };
