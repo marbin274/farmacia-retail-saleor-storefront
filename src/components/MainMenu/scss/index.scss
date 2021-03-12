@@ -130,7 +130,7 @@
   }
 
   &__icon {
-    padding: $spacer 0;
+    padding: $spacer;
     cursor: pointer;
     @media (max-width: $small-screen) {
       padding: $spacer;
