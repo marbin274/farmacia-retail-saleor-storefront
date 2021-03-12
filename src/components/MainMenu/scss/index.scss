@@ -17,6 +17,8 @@
   }
 
   @media (max-width: $medium-screen) {
+    padding: 0.3rem 0;
+
     .icon_container {
       width: 100%;
       position: absolute;
@@ -145,8 +147,8 @@
 
     &__quantity {
       position: absolute;
-      top: -0.3rem;
-      right: 0.6rem;
+      top: 0;
+      right: 0;
       background-color: $blue;
       border-radius: 1rem;
       padding: 0 0.3rem;
