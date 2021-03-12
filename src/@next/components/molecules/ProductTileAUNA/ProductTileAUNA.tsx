@@ -4,8 +4,9 @@ import { Thumbnail } from "@components/molecules";
 import {
   checkProductCanAddToCart,
   checkProductIsOnSale,
-  getProductPricingClass
+  getProductPricingClass,
 } from "@temp/@next/utils/products";
+import { launchDetailProductEvent } from "@temp/@sdk/utils";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ItemsHandler from "../../organisms/ItemsHandler/ItemsHandler";
@@ -34,7 +35,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
     thumbnail2x: { url: "" },
   });
 
-  const {canAddToCart} = checkProductCanAddToCart(product, productsOnCart);
+  const { canAddToCart } = checkProductCanAddToCart(product, productsOnCart);
   const isOnSale = checkProductIsOnSale(product);
 
   useEffect(() => {
@@ -49,12 +50,30 @@ export const ProductTileAUNA: React.FC<IProps> = ({
       <Link to={productLink} key={product.id}>
         <S.WrapperStockout>
           <ProductSticker canAddToCart={canAddToCart} isOnSale={isOnSale} />
-          <div className="img">
+          <div
+            className="img"
+            onClick={() =>
+              launchDetailProductEvent(
+                product?.name,
+                product?.variants?.[0]?.sku as string,
+                product?.variants?.[0]?.pricing?.price?.gross?.amount as number
+              )
+            }
+          >
             <S.Image>
               <Thumbnail source={thumbnails} />
             </S.Image>
           </div>
-          <div className="description">
+          <div
+            className="description"
+            onClick={() =>
+              launchDetailProductEvent(
+                product?.name,
+                product?.variants?.[0]?.sku as string,
+                product?.variants?.[0]?.pricing?.price?.gross?.amount as number
+              )
+            }
+          >
             <S.Title>{product.name}</S.Title>
           </div>
           <div className={getProductPricingClass(canAddToCart, isOnSale)}>
@@ -78,7 +97,6 @@ export const ProductTileAUNA: React.FC<IProps> = ({
         removeItemToCart={removeItemToCart}
         substractItemToCart={substractItemToCart}
       />
-
     </S.ProductCard>
   );
 };

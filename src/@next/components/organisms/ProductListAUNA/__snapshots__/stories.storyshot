@@ -242,6 +242,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         >
           <div
             className="img"
+            onClick={[Function]}
           >
             <div
               className=""
@@ -254,6 +255,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           </div>
           <div
             className="description"
+            onClick={[Function]}
           >
             <h4
               className=""
@@ -306,6 +308,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         >
           <div
             className="img"
+            onClick={[Function]}
           >
             <div
               className=""
@@ -318,6 +321,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           </div>
           <div
             className="description"
+            onClick={[Function]}
           >
             <h4
               className=""
@@ -370,6 +374,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         >
           <div
             className="img"
+            onClick={[Function]}
           >
             <div
               className=""
@@ -382,6 +387,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           </div>
           <div
             className="description"
+            onClick={[Function]}
           >
             <h4
               className=""
@@ -434,6 +440,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         >
           <div
             className="img"
+            onClick={[Function]}
           >
             <div
               className=""
@@ -446,6 +453,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           </div>
           <div
             className="description"
+            onClick={[Function]}
           >
             <h4
               className=""
@@ -498,6 +506,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         >
           <div
             className="img"
+            onClick={[Function]}
           >
             <div
               className=""
@@ -510,6 +519,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           </div>
           <div
             className="description"
+            onClick={[Function]}
           >
             <h4
               className=""
@@ -562,6 +572,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         >
           <div
             className="img"
+            onClick={[Function]}
           >
             <div
               className=""
@@ -574,6 +585,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           </div>
           <div
             className="description"
+            onClick={[Function]}
           >
             <h4
               className=""
@@ -626,6 +638,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         >
           <div
             className="img"
+            onClick={[Function]}
           >
             <div
               className=""
@@ -638,6 +651,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           </div>
           <div
             className="description"
+            onClick={[Function]}
           >
             <h4
               className=""
@@ -690,6 +704,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         >
           <div
             className="img"
+            onClick={[Function]}
           >
             <div
               className=""
@@ -702,6 +717,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           </div>
           <div
             className="description"
+            onClick={[Function]}
           >
             <h4
               className=""

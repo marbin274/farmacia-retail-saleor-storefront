@@ -55,7 +55,7 @@ export const ecommerceProductMapper = (products: any[]) => {
     category: ``,
     id: product.variant.sku,
     list: ``,
-    name: product.name ,
+    name: product.name,
     position: ``,
     price: product.totalPrice.gross.amount,
     quantity: product.quantity,
@@ -160,11 +160,36 @@ export const onCheckoutOption = (step: number, checkoutOption: string) => {
 };
 
 export enum steps {
-  address=1,
+  address = 1,
   payment,
   review,
 }
 
-export const launchCheckoutGaEvent= () => {
+export const launchCheckoutGaEvent = () => {
   return window?.dataLayer?.push(checkoutEvent(steps.address));
+};
+
+export const detailProductEvent = (name: string, id: string, price: number) => {
+  return window?.dataLayer?.push({
+    ecommerce: {
+      detail: {
+        actionField: { list: "" },
+        products: [
+          {
+            id,
+            name,
+            price,
+          },
+        ],
+      },
+    },
+  });
+};
+
+export const launchDetailProductEvent = (
+  name: string,
+  id: string,
+  price: number
+) => {
+  return detailProductEvent(name, id, price);
 };
