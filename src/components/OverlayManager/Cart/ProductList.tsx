@@ -1,6 +1,6 @@
 import { TaxedMoney } from "@components/containers";
 import { Thumbnail } from "@components/molecules";
-import { ICheckoutModelLine } from "@sdk/repository";
+import { ICheckoutModelLine, ICheckoutModelLineVariantLocalStorage } from "@sdk/repository";
 import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
 import {
   checkProductCanAddToCart,
@@ -21,7 +21,7 @@ declare global {
 
 interface IProductList {
   products: ICheckoutModelLine[];
-  onAdd(variantId: string, quantity: number): void;
+  onAdd(variant: ICheckoutModelLineVariantLocalStorage, quantity: number): void;
   onRemove(variantId: string): void;
   onSubtract(variantId: string): void;
 }
@@ -37,22 +37,24 @@ const ProductList: React.FC<IProductList> = ({
       const { variant, quantity } = product;
       const {canAddToCart} = checkProductCanAddToCart(product, products);
       const isOnSale = checkProductIsOnSale(product);
+      const id: string | undefined = variant.product?.id;
+      const name: string | undefined = product.name ? product.name : variant.product?.name;
+      const productUrl: string | undefined = (id && name) ? generateProductUrl(id, name) : undefined;
 
-      const productUrl = generateProductUrl(
-        variant.product.id,
-        variant.product.name
-      );
+      if (!productUrl) {
+        return null;
+      }
 
       return (
-        <li key={variant.product.id} className="cart__list__item">
+        <li key={id} className="cart__list__item">
           <Link to={productUrl}>
-            <Thumbnail source={variant.product} />
+            {variant.product && <Thumbnail source={variant.product} />}
           </Link>
           <div className="cart__list__item__details">
             <div className="cart__list__item__up">
               <Link to={productUrl}>
                 <p className="cart__list__item__details--name">
-                  {variant.product.name}
+                  {name}
                 </p>
               </Link>
               <button
@@ -85,7 +87,7 @@ const ProductList: React.FC<IProductList> = ({
               <ItemQuantity
                 onAdd={() => {
                   removePaymentItems();
-                  onAdd(variant.id, 1);
+                  onAdd({ id: variant.id, product: { id, name } }, 1);
                   window?.dataLayer?.push(
                     addToCartEvent(
                       variant?.sku,

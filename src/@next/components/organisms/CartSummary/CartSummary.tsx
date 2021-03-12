@@ -85,7 +85,7 @@ const CartSummary: React.FC<IProps> = ({
             const {canAddToCart} = checkProductCanAddToCart(product, products);
             const isOnSale = checkProductIsOnSale(product);
             return (
-              <div key={product.variant.sku}>
+              <div key={`${product.variant.sku}-${index}`}>
                 <S.ProductLine>
                   <CartSummaryRow
                     canAddToCart={canAddToCart}
