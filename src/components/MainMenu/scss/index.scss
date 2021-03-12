@@ -58,6 +58,9 @@
       display: flex;
       justify-content: space-evenly;
       align-items: center;
+      @media (max-width: $medium-screen) {
+        margin-top: 5px;
+      }
       @media (max-width: $small-screen) {
         justify-content: flex-end;
       }
@@ -127,9 +130,11 @@
   }
 
   &__icon {
-    padding: $spacer;
+    padding: $spacer 0;
     cursor: pointer;
-
+    @media (max-width: $small-screen) {
+      padding: $spacer;
+    }
     svg {
       vertical-align: bottom;
     }
@@ -159,6 +164,9 @@
       text-align: center;
       line-height: 1rem;
       transition: 0.3s;
+      @media (max-width: $medium-screen) {
+        top: -0.2rem;
+      }
     }
   }
 
@@ -204,18 +212,21 @@
   }
 
   &__search {
-    padding: $spacer;
+    padding: $spacer 0;
     cursor: pointer;
     line-height: 24px;
     transition: 0.3s;
     @media (max-width: $small-screen) {
       margin-right: 10px;
+      padding: 1rem;
     }
     @media (max-width: 375px) {
       margin-right: 5px;
+      padding: 1rem;
     }
     @media (max-width: $xs-small-screen) {
       margin-right: 0px;
+      padding: 1rem;
     }
     span {
       text-transform: uppercase;
