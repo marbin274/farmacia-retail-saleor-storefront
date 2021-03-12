@@ -53,18 +53,10 @@ const ItemsHandler: FC<IProps> = ({
       if (canAddToCart) {
         const firstProductVariant = product?.variants?.[0];
         const total: number = product?.quantity as number;
-        
-        if (firstProductVariant) {  
+
+        if (firstProductVariant) {
           removePaymentItems();
-          addToCart?.({
-            id: firstProductVariant.id,
-            product: { 
-              id: product?.id, 
-              name: product?.name,
-              pricing: firstProductVariant?.pricing,
-              quantityAvailable: firstProductVariant?.quantityAvailable,
-            },
-          }, 1);
+          addToCart?.(firstProductVariant.id, 1);
           itemNotificationsService.sendNotifications(product, 1);
         }
         window?.dataLayer?.push(

@@ -1,6 +1,5 @@
 import {
   ICheckoutModelLine,
-  ICheckoutModelLineVariantLocalStorage,
   ICheckoutModelPrice,
   ICheckoutModelPriceValue,
 } from "@sdk/repository";
@@ -20,7 +19,7 @@ export interface ISaleorCartAPI {
   subtotalPrice?: ISubtotalPrice;
   shippingPrice?: IShippingPrice;
   discount?: IDiscount;
-  addItem: (variant:ICheckoutModelLineVariantLocalStorage, quantity: number) => PromiseQueuedResponse;
+  addItem: (variantId: string, quantity: number) => PromiseQueuedResponse;
   load: () => PromiseQueuedResponse;
   removeItem: (variantId: string) => PromiseQueuedResponse;
   subtractItem: (variantId: string) => PromiseQueuedResponse;
