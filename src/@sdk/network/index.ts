@@ -63,16 +63,14 @@ import {
   IOrderModel,
   IPaymentModel,
 } from "@sdk/repository";
-import { ecommerceProductsMapper, filterNotEmptyArrayItems } from "@sdk/utils";
+import {
+  filterNotEmptyArrayItems,
+} from "@sdk/utils";
 import ApolloClient from "apollo-client";
 import { IPrivacyPolicy } from "../api/Checkout/types";
+import { launchEcommerceEvent, ecommerceProductsMapper } from "@sdk/gaConfig";
 import { INetworkManager } from "./types";
 
-declare global {
-  interface Window {
-    dataLayer: any;
-  }
-}
 export class NetworkManager implements INetworkManager {
   private client: ApolloClient<any>;
 
@@ -155,14 +153,14 @@ export class NetworkManager implements INetworkManager {
       try {
         const observable = this.client.watchQuery<CheckoutProductVariants, any>(
           {
-            fetchPolicy: 'network-only',
+            fetchPolicy: "network-only",
             query: CheckoutQueries.checkoutProductVariants,
             variables: {
               ids: idsOfMissingVariants,
             },
           }
         );
-        
+
         variants = await new Promise((resolve, reject) => {
           observable.subscribe(
             result => {
@@ -233,11 +231,27 @@ export class NetworkManager implements INetworkManager {
           ? {
               gross: {
                 ...variantPricing.gross,
-                amount: variantPricing.gross.amount * line.quantity,
+                amount: variantPricing.gross?.amount
+                  ? variantPricing.gross?.amount
+                  : 0 * line.quantity,
+                culture: variantPricing.gross?.culture
+                  ? variantPricing.gross?.culture
+                  : "",
+                currency: variantPricing.gross?.currency
+                  ? variantPricing.gross?.currency
+                  : "",
               },
               net: {
                 ...variantPricing.net,
-                amount: variantPricing.net.amount * line.quantity,
+                amount: variantPricing.net?.amount
+                  ? variantPricing.net?.amount
+                  : 0 * line.quantity,
+                culture: variantPricing.gross?.culture
+                  ? variantPricing.gross?.culture
+                  : "",
+                currency: variantPricing.gross?.currency
+                  ? variantPricing.gross?.currency
+                  : "",
               },
             }
           : null;
@@ -810,21 +824,12 @@ export class NetworkManager implements INetworkManager {
         const productsArray: any = data?.checkoutComplete?.order.lines;
         const orderId: any = data?.checkoutComplete?.order.number;
         const tax: any = (total * (0.18 / 1.18)).toFixed(2);
-        window?.dataLayer?.push({
-          ecommerce: {
-            purchase: {
-              actionField: {
-                affiliation: "Online Store",
-                id: orderId,
-                revenue: total,
-                shipping: "",
-                tax: !!total ? tax : 0,
-              },
-              products: ecommerceProductsMapper(productsArray),
-            },
-          },
-          event: "purchase",
-        });
+        launchEcommerceEvent(
+          orderId,
+          total,
+          tax,
+          ecommerceProductsMapper(productsArray)
+        );
         return {
           data: this.constructOrderModel(data.checkoutComplete.order),
         };

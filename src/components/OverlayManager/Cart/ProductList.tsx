@@ -11,13 +11,7 @@ import { generateProductUrl } from "@temp/core/utils";
 import * as React from "react";
 import { Link } from "react-router-dom";
 import ItemQuantity from "./ItemQuantity";
-import { addToCartEvent, removeToCartEvent } from "@sdk/utils";
-
-declare global {
-  interface Window {
-    dataLayer: any;
-  }
-}
+import { launchAddToCartEvent, launchRemoveToCartEvent } from "@sdk/gaConfig";
 
 interface IProductList {
   products: ICheckoutModelLine[];
@@ -35,7 +29,7 @@ const ProductList: React.FC<IProductList> = ({
   <ul className="cart__list">
     {products.map(product => {
       const { variant, quantity } = product;
-      const {canAddToCart} = checkProductCanAddToCart(product, products);
+      const { canAddToCart } = checkProductCanAddToCart(product, products);
       const isOnSale = checkProductIsOnSale(product);
 
       const productUrl = generateProductUrl(
@@ -60,16 +54,13 @@ const ProductList: React.FC<IProductList> = ({
                 onClick={() => {
                   removePaymentItems();
                   onRemove(variant.id);
-                  window?.dataLayer?.push(
-                    removeToCartEvent(
-                      variant?.sku,
-                      variant?.product?.name,
-                      variant?.pricing?.price?.gross,
-                      quantity
-                    )
+                  launchRemoveToCartEvent(
+                    variant?.sku,
+                    variant?.product?.name,
+                    variant?.pricing?.price?.gross,
+                    quantity
                   );
-                }
-              }
+                }}
               >
                 Eliminar
               </button>
@@ -86,26 +77,22 @@ const ProductList: React.FC<IProductList> = ({
                 onAdd={() => {
                   removePaymentItems();
                   onAdd(variant.id, 1);
-                  window?.dataLayer?.push(
-                    addToCartEvent(
-                      variant?.sku,
-                      variant?.product?.name,
-                      variant?.pricing?.price?.gross,
-                      quantity,
-                      "PEN"
-                    )
-                  );
+                  launchAddToCartEvent(
+                    variant?.sku,
+                    variant?.product?.name,
+                    variant?.pricing?.price?.gross,
+                    quantity,
+                    "PEN"
+                  )
                 }}
                 onRemove={() => {
                   removePaymentItems();
                   onSubtract(variant.id);
-                  window?.dataLayer?.push(
-                    removeToCartEvent(
-                      variant?.sku,
-                      variant?.product?.name,
-                      variant?.pricing?.price?.gross,
-                      quantity
-                    )
+                  launchRemoveToCartEvent(
+                    variant?.sku,
+                    variant?.product?.name,
+                    variant?.pricing?.price?.gross,
+                    quantity
                   );
                 }}
                 value={quantity}

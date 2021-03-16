@@ -19,7 +19,11 @@ import ProductList from "./ProductList";
 import aunaImg from "../../../images/logo.svg";
 import closeImg from "../../../images/close-circle.svg";
 import cartImg from "../../../images/cart-light.svg";
-import { checkoutEvent, steps, ecommerceProductMapper } from "@temp/@sdk/utils";
+import {
+  steps,
+  launchCheckoutEvent,
+  ecommerceProductsMapper,
+} from "@temp/@sdk/gaConfig";
 
 const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
   const [isModelOpen, setIsModelOpen] = React.useState(false);
@@ -172,11 +176,9 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
                       <Button
                         onClick={() =>
                           checkout.id &&
-                          window?.dataLayer?.push(
-                            checkoutEvent(
-                              steps.payment,
-                              ecommerceProductMapper(items)
-                            )
+                          launchCheckoutEvent(
+                            steps.payment,
+                            ecommerceProductsMapper(items)
                           )
                         }
                       >

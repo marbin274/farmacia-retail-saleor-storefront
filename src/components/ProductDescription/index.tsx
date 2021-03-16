@@ -15,13 +15,7 @@ import * as React from "react";
 import AddToCart from "./AddToCart";
 import { QuantityTextField } from "./QuantityTextField";
 import "./scss/index.scss";
-import { addToCartEvent, removeToCartEvent } from "@sdk/utils";
-
-declare global {
-  interface Window {
-    dataLayer: any;
-  }
-}
+import { launchAddToCartEvent, launchRemoveToCartEvent } from "@sdk/gaConfig";
 
 export interface ProductDescriptionProps {
   canAddToCart: boolean;
@@ -131,14 +125,12 @@ class ProductDescription extends React.Component<
       this.state.quantity
     );
     this.setState({ quantity: 1 });
-    window?.dataLayer?.push(
-      addToCartEvent(
-        cartItem?.variant?.sku,
-        cartItem?.name,
-        cartItem?.totalPrice?.gross,
-        cartItem?.quantity,
-        "PEN"
-      )
+    launchAddToCartEvent(
+      cartItem?.variant?.sku,
+      cartItem?.name,
+      cartItem?.totalPrice?.gross,
+      cartItem?.quantity,
+      "PEN"
     );
   };
 
@@ -157,24 +149,20 @@ class ProductDescription extends React.Component<
     this.setState(prevState => ({
       quantity: prevState.quantity + operation,
     }));
-   if (operation === 1) {
-      window?.dataLayer?.push(
-        addToCartEvent(
-          cartItem?.variant?.sku,
-          cartItem?.name,
-          cartItem?.totalPrice?.gross,
-          cartItem?.quantity,
-          "PEN"
-        )
+    if (operation === 1) {
+      launchAddToCartEvent(
+        cartItem?.variant?.sku,
+        cartItem?.name,
+        cartItem?.totalPrice?.gross,
+        cartItem?.quantity,
+        "PEN"
       );
     } else if (operation === -1) {
-      window?.dataLayer?.push(
-        removeToCartEvent(
-          cartItem?.variant?.sku,
-          cartItem?.name,
-          cartItem?.totalPrice?.gross,
-          cartItem?.quantity
-        )
+      launchRemoveToCartEvent(
+        cartItem?.variant?.sku,
+        cartItem?.name,
+        cartItem?.totalPrice?.gross,
+        cartItem?.quantity
       );
     }
   };

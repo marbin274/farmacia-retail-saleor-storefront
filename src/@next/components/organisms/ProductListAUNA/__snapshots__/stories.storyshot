@@ -242,6 +242,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         >
           <div
             className="img"
+            onClick={[Function]}
           >
             <div
               className=""
@@ -306,6 +307,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         >
           <div
             className="img"
+            onClick={[Function]}
           >
             <div
               className=""
@@ -370,6 +372,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         >
           <div
             className="img"
+            onClick={[Function]}
           >
             <div
               className=""
@@ -434,6 +437,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         >
           <div
             className="img"
+            onClick={[Function]}
           >
             <div
               className=""
@@ -498,6 +502,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         >
           <div
             className="img"
+            onClick={[Function]}
           >
             <div
               className=""
@@ -562,6 +567,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         >
           <div
             className="img"
+            onClick={[Function]}
           >
             <div
               className=""
@@ -626,6 +632,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         >
           <div
             className="img"
+            onClick={[Function]}
           >
             <div
               className=""
@@ -690,6 +697,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         >
           <div
             className="img"
+            onClick={[Function]}
           >
             <div
               className=""

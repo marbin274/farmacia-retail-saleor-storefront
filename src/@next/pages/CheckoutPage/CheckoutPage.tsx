@@ -22,10 +22,10 @@ import {
 } from "./subpages";
 import { IProps } from "./types";
 import {
-  checkoutEvent,
-  ecommerceProductMapper,
+  ecommerceProductsMapper,
+  launchCheckoutEvent,
   steps,
-} from "@sdk/utils";
+} from "@sdk/gaConfig";
 
 const prepareCartSummary = (
   totalPrice?: ITaxedMoney | null,
@@ -151,9 +151,7 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
             checkoutShippingSubpageRef.current?.submitShipping();
           }
         }
-        window?.dataLayer?.push(
-          checkoutEvent(steps.payment, ecommerceProductMapper(items))
-        );
+        launchCheckoutEvent(steps.payment, ecommerceProductsMapper(items));
         break;
       // case 1:
       //   if (checkoutShippingSubpageRef.current?.submitShipping) {
@@ -164,9 +162,7 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
         if (checkoutPaymentSubpageRef.current?.submitPayment) {
           checkoutPaymentSubpageRef.current?.submitPayment();
         }
-        window?.dataLayer?.push(
-          checkoutEvent(steps.review, ecommerceProductMapper(items))
-        );
+        launchCheckoutEvent(steps.review, ecommerceProductsMapper(items));
         break;
       case 2:
         if (checkoutReviewSubpageRef.current?.complete) {

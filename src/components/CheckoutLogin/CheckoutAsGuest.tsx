@@ -1,8 +1,8 @@
 import React from "react";
+import { launchCheckoutEvent, steps } from "@temp/@sdk/gaConfig";
 import { Link } from "react-router-dom";
 // import { Button, OverlayTheme, OverlayType } from "..";
 import { Button } from "..";
-import { launchCheckoutGaEvent } from "@temp/@sdk/utils";
 import { OverlayContextInterface, OverlayTheme, OverlayType } from "../Overlay";
 
 const CheckoutAsGuest: React.FC<{
@@ -24,7 +24,7 @@ const CheckoutAsGuest: React.FC<{
     <Link to={checkoutUrl}>
       <Button
         className="checkout-login__button_primary"
-        onClick={() => launchCheckoutGaEvent()}
+        onClick={() => launchCheckoutEvent(steps.address)}
       >
         Continua como invitado
       </Button>
