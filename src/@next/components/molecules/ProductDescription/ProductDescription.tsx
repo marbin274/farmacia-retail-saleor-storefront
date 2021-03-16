@@ -16,7 +16,6 @@ export const ProductDescription: React.FC<IProps> = ({
   attributes,
 }: IProps) => {
   const [activeTab, setActiveTab] = React.useState<TABS>(TABS.DESCRIPTION);
-
   return (
     <S.Wrapper>
       <S.Tabs>

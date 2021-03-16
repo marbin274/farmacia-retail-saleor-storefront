@@ -2,13 +2,25 @@
 .product-description {
   .price {
     font-size: $price-font-size;
+    margin: 1rem auto;
   }
   h3 {
-    color: $base-font-color;
-    font-size: 34px;
+    color: $auna-black;
+    font-size: $h3-title-font-size;
     font-weight: $font-weight-normal;
     line-height: 2.5rem;
-    margin-bottom: 11px;
+    margin-bottom: 0.688rem;
+  }
+
+  @media (max-width: $small-screen) {
+    h3 {
+      font-size: $h3-font-size;
+      line-height: $base-line-height + 0.5rem;
+    }
+
+    .price {
+      font-size: $h3-font-size;
+    }
   }
 
   &__price {

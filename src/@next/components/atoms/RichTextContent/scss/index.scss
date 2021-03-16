@@ -1,0 +1,61 @@
+@import "@temp/globalStyles/scss/variables.scss";
+
+.html_from_json {
+  width: 100% !important;
+  color: $base-font-color-2;
+  text-align: justify;
+
+  strong {
+    font-weight: $font-weight-bold + 100;
+    color: $auna-black;
+  }
+
+  p:empty {
+    margin-top: 0rem;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  p {
+    margin-top: 1rem;
+  }
+
+  ul {
+    padding-left: 2.5rem;
+    margin-top: 0.7rem;
+    font-weight: $font-weight-light;
+    li {
+      list-style-type: initial;
+      font-weight: $font-weight-light;
+    }
+  }
+
+  ol {
+    padding-left: 2.5rem;
+    margin-top: 0.7rem;
+    font-weight: $font-weight-light;
+    li {
+      list-style-type: decimal;
+    }
+  }
+
+  h1 {
+    font-size: 2rem !important;
+  }
+
+  h2 {
+    font-size: 1.5rem !important;
+  }
+
+  h3 {
+    font-size: 1.17rem !important;
+  }
+
+  blockquote {
+    margin: 0;
+    padding: 8px 16px;
+    border-left: 2px solid $gray;
+  }
+}

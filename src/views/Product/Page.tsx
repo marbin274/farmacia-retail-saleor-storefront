@@ -1,6 +1,9 @@
 import { ProductImage } from "@components/molecules";
 import { ICheckoutModelLine } from "@sdk/repository";
-import { checkProductCanAddToCart, checkProductIsOnSale } from "@temp/@next/utils/products";
+import {
+  checkProductCanAddToCart,
+  checkProductIsOnSale,
+} from "@temp/@next/utils/products";
 import * as React from "react";
 import Media from "react-media";
 import { ProductDescription } from "../../components";
@@ -24,7 +27,7 @@ class Page extends React.PureComponent<
   {
     variantId: string;
   }
-  > {
+> {
   fixedElement: React.RefObject<HTMLDivElement> = React.createRef();
 
   constructor(props) {
@@ -71,7 +74,10 @@ class Page extends React.PureComponent<
 
   render() {
     const { add, items, product } = this.props;
-    const {canAddToCart} = checkProductCanAddToCart(this.props.product, this.props.items);
+    const { canAddToCart } = checkProductCanAddToCart(
+      this.props.product,
+      this.props.items
+    );
     const isOnSale = checkProductIsOnSale(this.props.product);
     return (
       <div className="product-page">
@@ -108,30 +114,30 @@ class Page extends React.PureComponent<
                     </div>
                   </>
                 ) : (
-                    <>
-                      <ProductImage
-                        canAddToCart={canAddToCart}
-                        isOnSale={isOnSale}
-                        product={product}
-                      />
-                      <div className="product-page__product__info">
-                        <div className={"product-page__product__info--fixed"}>
-                          <ProductDescription
-                            canAddToCart={canAddToCart}
-                            descriptionJson={product.descriptionJson}
-                            isOnSale={isOnSale}
-                            items={items}
-                            productId={product.id}
-                            name={product.name}
-                            productVariants={product.variants}
-                            pricing={product.pricing}
-                            addToCart={add}
-                            setVariantId={this.setVariantId}
-                          />
-                        </div>
+                  <>
+                    <ProductImage
+                      canAddToCart={canAddToCart}
+                      isOnSale={isOnSale}
+                      product={product}
+                    />
+                    <div className="product-page__product__info">
+                      <div className={"product-page__product__info--fixed"}>
+                        <ProductDescription
+                          canAddToCart={canAddToCart}
+                          descriptionJson={product.descriptionJson}
+                          isOnSale={isOnSale}
+                          items={items}
+                          productId={product.id}
+                          name={product.name}
+                          productVariants={product.variants}
+                          pricing={product.pricing}
+                          addToCart={add}
+                          setVariantId={this.setVariantId}
+                        />
                       </div>
-                    </>
-                  )
+                    </div>
+                  </>
+                )
               }
             </Media>
           </div>

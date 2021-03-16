@@ -24,6 +24,7 @@ export const ImageFrame = styled.div<{
   canAddToCart?: boolean;
 }>`
   display: flex;
+  border: 2px solid ${aunaGrey40};
   justify-content: center;
   align-items: center;
   background: ${white};

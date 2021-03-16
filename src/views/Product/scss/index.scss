@@ -38,24 +38,26 @@
 
     &__info {
       position: relative;
-      
+      display: flex;
+      flex-direction: column;
 
       @media (min-width: $medium-screen) {
         width: 100%;
         margin-left: 40px;
       }
 
+      @media (max-width: $small-screen) {
+        padding: 1rem;
+      }
+
       > div {
         @media (min-width: $small-screen) {
-          padding-right: 1rem;
+          // padding-right: 1rem;
         }
       }
 
       &--fixed {
-        top: 0;
-        position: sticky;
-        width: auto;
-
+        width: 100% !important;
         @media (min-width: $container-width) {
           width: calc(#{$container-width} * 30 / 100);
         }
