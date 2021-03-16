@@ -89,6 +89,11 @@ export enum DataErrorCheckoutTypes {
   "GET_PAYMENT_GATEWAYS",
 }
 
+export interface IAlteredLines {
+  variantId: string;
+  quantity: number;
+}
+
 export interface ISaleorCheckoutAPI {
   loaded: boolean;
   checkout?: ICheckout | null;

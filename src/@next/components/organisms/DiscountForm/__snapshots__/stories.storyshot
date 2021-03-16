@@ -257,6 +257,7 @@ exports[`Storyshots @components/organisms/DiscountForm default 1`] = `
                 className="c8"
                 color="primary"
                 data-cy="checkoutPaymentPromoCodeBtn"
+                disabled={false}
                 onClick={[Function]}
                 size="md"
                 type="button"

@@ -2,8 +2,14 @@
 
 .home-page {
   background-color: $white;
-  padding-top: 6.75rem;
+  padding-top: 4.7rem;
   z-index: 0;
+  @media (max-width: $medium-screen) {
+    padding-top: 2.7rem;
+  }
+  @media (max-width: $small-screen) {
+    padding-top: 3.3rem;
+  }
   .search {
     min-height: initial;
     &__input {

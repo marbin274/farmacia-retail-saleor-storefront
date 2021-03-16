@@ -107,7 +107,7 @@ export const DiscountForm: React.FC<IProps> = ({
                       <div className="button">
                         <Button
                           type="button"
-                          disabled={errors}
+                          disabled={false}
                           data-cy="checkoutPaymentPromoCodeBtn"
                           onClick={() => handleApplyBtnClick(values.inputCode)}
                         >

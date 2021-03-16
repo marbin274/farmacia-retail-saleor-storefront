@@ -9,6 +9,7 @@ import {
   DataErrorCheckoutTypes,
   FunctionErrorCheckoutTypes,
   IAddress,
+  IAlteredLines,
   IAvailablePaymentGateways,
   IAvailableShippingMethods,
   ICheckout,
@@ -149,10 +150,15 @@ export class SaleorCheckoutAPI extends ErrorListener
   ): PromiseRunResponse<DataErrorCheckoutTypes, FunctionErrorCheckoutTypes> => {
     await this.saleorState.provideCheckout(this.fireError);
     const checkoutId = this.saleorState.checkout?.id;
-    const alteredLines = this.saleorState.checkout?.lines?.map(item => ({
-      quantity: item!.quantity,
-      variantId: item?.variant!.id,
-    }));
+    const alteredLinesFromLocalStorage = this.saleorState.checkout?.lines?.map(
+      item => ({
+        quantity: item!.quantity,
+        variantId: item?.variant!.id,
+      })
+    );
+    let alteredLines: IAlteredLines[] | undefined = [];
+    alteredLines = alteredLinesFromLocalStorage?.filter(x => x.quantity > 0);
+
     if (alteredLines && checkoutId) {
       const { data, dataError } = await this.jobsManager.run(
         "checkout",
