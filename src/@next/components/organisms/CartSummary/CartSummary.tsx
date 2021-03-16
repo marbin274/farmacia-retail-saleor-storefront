@@ -5,8 +5,8 @@ import {
   checkProductCanAddToCart,
   checkProductIsOnSale,
 } from "@temp/@next/utils/products";
-import cartSummaryImg from "images/cart-summary.svg";
-import closeImg from "images/close.svg";
+import cartSummaryImg from "images/cart-summary-new.svg";
+import closeImg from "images/close-circle-small.svg";
 import React, { useState } from "react";
 import ReactSVG from "react-svg";
 import * as S from "./styles";
@@ -19,7 +19,7 @@ const CostLine = ({
   negative = false,
 }: ICostLine) => (
   <S.CostLine last={last}>
-    <span>{name}</span>
+    <S.CostLineLabel>{name}</S.CostLineLabel>
     <span data-cy={`cartSummaryCost${name.replace(/\s/g, "")}`}>
       {negative && "- "}
       <TaxedMoney taxedMoney={cost} />
@@ -53,33 +53,52 @@ const CartSummary: React.FC<IProps> = ({
     0
   );
 
+  const CartSummaryTitle = (mobileCartOpened: boolean) => {  
+    return <S.Title 
+      data-cy="cartSummaryTitle"
+      mobileCartOpened={mobileCartOpened}>
+      Tu carrito{" "}
+      {totalProducts && (
+        <S.Text mobileCartOpened={mobileCartOpened}>
+          {totalProducts || 0}{" "}
+          {totalProducts === 1 ? "producto" : "productos"}
+        </S.Text>
+      )}
+    </S.Title>
+  }
+
   return (
     <S.Wrapper mobileCartOpened={mobileCartOpened}>
-      <S.Header onClick={() => setMobileCartOpened(!mobileCartOpened)}>
+      <S.Header 
+        onClick={() => setMobileCartOpened(!mobileCartOpened)}
+        mobileCartOpened={mobileCartOpened}>
         <S.Block position={1}>
-          <S.Close mobileCartOpened={mobileCartOpened}>
-            <ReactSVG path={closeImg} />
-          </S.Close>
+         
         </S.Block>
-        <S.Block position={2}>
-          <S.Title data-cy="cartSummaryTitle">
-            Tu carrito{" "}
-            {totalProducts && (
-              <S.Text>
-                {totalProducts || 0}{" "}
-                {totalProducts === 1 ? "producto" : "productos"}
-              </S.Text>
-            )}
-          </S.Title>
-          <ReactSVG
-            path={cartSummaryImg}
-            style={{ left: "16px", position: "relative" }}
-          />
-        </S.Block>
+        { !mobileCartOpened? (
+          <S.Block position={2}>
+            <S.BadgeCartWrapper>
+              <ReactSVG
+                path={cartSummaryImg}
+                style={{ position: "relative" }}
+              />
+              {CartSummaryTitle(mobileCartOpened)}
+            </S.BadgeCartWrapper>
+          <S.ShowCart>
+            Ver carrito
+          </S.ShowCart>
+        </S.Block>)
+        : (
+          <S.HeadClose mobileCartOpened={mobileCartOpened}>
+             {CartSummaryTitle(mobileCartOpened)}
+            <S.Close mobileCartOpened={mobileCartOpened}>
+              <ReactSVG path={closeImg} />
+            </S.Close>
+          </S.HeadClose>
+        )}
       </S.Header>
 
       <S.Content>
-        <S.HR />
         <S.CartSummaryProductList>
           {products?.map((product, index) => {
             const {canAddToCart} = checkProductCanAddToCart(product, products);
@@ -98,7 +117,7 @@ const CartSummary: React.FC<IProps> = ({
                     thumbnail={product.variant.product?.thumbnail}
                   />
                 </S.ProductLine>
-                <S.HR />
+                
               </div>
             );
           })}

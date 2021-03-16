@@ -47,7 +47,7 @@ exports[`Storyshots @components/molecules/CartSummaryRow default 1`] = `
 
 .c2 {
   grid-area: name;
-  font-size: 1.125rem;
+  font-size: 0.875rem;
 }
 
 .c5 {

@@ -176,6 +176,7 @@ export const defaultTheme = {
     /**
      * 20px in default theme
      */
+    baseFontSizeSmall: C.baseFontSizeSmall,
     baseLineHeight: C.baseLineHeight,
     bigFontSize: C.bigFontSize,
     boldFontWeight: C.boldFontWeight,

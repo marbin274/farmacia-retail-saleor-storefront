@@ -46,7 +46,8 @@ export const aunaGrey100 = "#9194A7";
 export const aunaGrey80 = "#B8BCD5";
 export const aunaGrey60 = "#E4E5ED";
 export const aunaGrey40 = "#F1F2F7";
-export const aunaGrey20 = "#F6F8FA";
+export const aunaGrey20 = "#F6F8FA"; 
+export const aunaGreyDark = "#E8E8E8";
 
 export const aunaComplementary1 = "#E6F6F9";
 export const aunaComplementary2 = "#F3F9CE";
@@ -109,6 +110,7 @@ export const theme = {
 
 // typography
 export const baseFontFamily = "'Inter', sans-serif";
+export const baseFontSizeSmall = "0.875rem"; 
 export const baseFontSize = "1rem"; // 16px
 export const baseLineHeight = "1.25rem"; // 20px
 export const boldFontWeight = 600;

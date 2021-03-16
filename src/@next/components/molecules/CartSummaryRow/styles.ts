@@ -32,7 +32,7 @@ export const Sku = styled.div`
 
 export const Name = styled.div`
   grid-area: name;
-  font-size: ${props => props.theme.typography.h4FontSize};
+  font-size: ${props => props.theme.typography.baseFontSizeSmall};
 `;
 
 export const Price = styled.div`
