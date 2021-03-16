@@ -9,7 +9,7 @@ import { InputSelect, TextField } from "../../molecules";
 import { citiesOptions } from "../CheckoutAddress/cities";
 import { DISTRITO_REQUIRED, STREET_ADDRESS_1_REQUIRED } from "./adddressForm.schema";
 import { CitySelect } from "./AddressFormContent/AddressFormFields";
-import { address, countries, wrongDocumentNumber } from "./fixtures";
+import { address, countries, wrongDocumentNumber, userAddress, checkoutData } from "./fixtures";
 import { IProps } from "./types";
 
 
@@ -39,10 +39,86 @@ describe("<AddressForm />", () => {
 
     expect(getField(0)).toEqual(PROPS.address?.firstName);
     expect(getField(2)).toEqual(PROPS.address?.email);
-    expect(getField(3)).toEqual("");
+    expect(getField(3)).toEqual(PROPS.address?.phone);
     expect(getField(4)).toEqual(PROPS.address?.streetAddress1);
     expect(getField(5)).toEqual(PROPS.address?.streetAddress2);
   });
+});
+
+describe("form contain data", () => {
+  it("should contain user data only", () => {
+    const PROPSCUSTOM: IProps = {
+      ...PROPS,
+      address: undefined,
+      user: userAddress,
+    };
+    const wrapper = mount(<AddressForm {...PROPSCUSTOM} />);
+
+    const getField = (n: number) =>
+      wrapper
+        .find(Input)
+        .at(n)
+        .prop("value");
+
+    expect(getField(0)).toEqual(`${userAddress?.firstName} ${userAddress?.lastName}`);
+    expect(getField(1)).toEqual(userAddress?.documentNumber);
+    expect(getField(2)).toEqual(userAddress?.email);
+    expect(getField(3)).toEqual(userAddress?.addresses?.[0]?.phone);
+    expect(getField(4)).toEqual(userAddress?.addresses?.[0]?.streetAddress1);
+    expect(getField(5)).toEqual(userAddress?.addresses?.[0]?.streetAddress2);
+  });
+
+  it("should contain user data and checkoutdata", () => {
+    const PROPSCUSTOM: IProps = {
+      ...PROPS,
+      address: undefined,
+      checkoutData,
+      user: userAddress,
+    };
+    const wrapper = mount(<AddressForm {...PROPSCUSTOM} />);
+
+    const getField = (n: number) =>
+      wrapper
+        .find(Input)
+        .at(n)
+        .prop("value");
+
+    expect(getField(0)).toEqual(checkoutData?.shippingAddress.firstName);
+    expect(getField(1)).toEqual(checkoutData?.documentNumber);
+    expect(getField(2)).toEqual(checkoutData?.email);
+    expect(getField(3)).toEqual(checkoutData?.shippingAddress?.phone);
+    expect(getField(4)).toEqual(checkoutData?.shippingAddress?.streetAddress1);
+    expect(getField(5)).toEqual(checkoutData?.shippingAddress?.streetAddress2);
+  });
+
+  it("should contain user data and the checkoutdata contain undefined data", () => {
+    const PROPSCUSTOM: IProps = {
+      ...PROPS,
+      address: undefined,
+      checkoutData: {
+        token: undefined,
+      },
+      user: userAddress,
+    };
+    const wrapper = mount(<AddressForm {...PROPSCUSTOM} />);
+
+    const getField = (n: number) =>
+      wrapper
+        .find(Input)
+        .at(n)
+        .prop("value");
+
+    expect(getField(0)).toEqual(`${userAddress?.firstName} ${userAddress?.lastName}`);
+    expect(getField(1)).toEqual(userAddress?.documentNumber);
+    expect(getField(2)).toEqual(userAddress?.email);
+    expect(getField(3)).toEqual(userAddress?.addresses?.[0]?.phone);
+    expect(getField(4)).toEqual(userAddress?.addresses?.[0]?.streetAddress1);
+    expect(getField(5)).toEqual(userAddress?.addresses?.[0]?.streetAddress2);
+  });
+
+});
+
+describe("form messages error when not contain data", () => {
 
   it("should not contain data", async () => {
     const PROPSERRORS: IProps = {

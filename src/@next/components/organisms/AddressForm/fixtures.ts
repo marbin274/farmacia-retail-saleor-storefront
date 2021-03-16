@@ -1,3 +1,5 @@
+import { UserDetails_me, UserDetails_me_addresses } from "@temp/@sdk/queries/gqlTypes/UserDetails";
+
 export const countries = [
   { code: "PL", country: "Poland" },
   { code: "PT", country: "Portugal" },
@@ -22,11 +24,53 @@ export const address = {
   email: "abc@xyz.com",
   firstName: "John",
   lastName: "Doe",
-  phone: "555-55555",
+  phone: "952452125",
   postalCode: "90210",
   streetAddress1: "Street line 1",
   streetAddress2: "Street line 2",
 };
+
+export const checkoutData={
+  documentNumber: "4527856",
+  email: address.email,
+  shippingAddress: {
+    ...address,
+  },
+  token: "",
+}
+
+export const userAddressItem: UserDetails_me_addresses = {
+  __typename: "Address",
+  city: "",
+  companyName: "",
+  country: { __typename: "CountryDisplay", code: "", country: "" },
+  countryArea: "",
+  firstName: "Rocio",
+  id: "",
+  isDefaultBillingAddress: null,
+  isDefaultShippingAddress: null,
+  lastName: "Perez",
+  phone: "9854124511",
+  postalCode: "",
+  streetAddress1: "Calle las palmeras",
+  streetAddress2: "Paradero óvalo",
+}
+
+export const userAddress: UserDetails_me = {
+  __typename:"User",
+  addresses: [userAddressItem],
+  dataTreatmentPolicy: false,
+  defaultBillingAddress:null,
+  defaultShippingAddress: null,
+  documentNumber: "85475126",
+  email: "abcd@www.com",
+  firstName: "Paola",
+  id:"",
+  isStaff:false,
+  lastName: "Rodriguez",
+  phone: "985475361",
+  termsAndConditions: true,
+}
 
 export const documentNumber = "12345678";
 export const wrongDocumentNumber = " 12345678";
