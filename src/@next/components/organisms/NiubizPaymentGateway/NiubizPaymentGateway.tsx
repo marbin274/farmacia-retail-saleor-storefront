@@ -185,6 +185,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
         };
 
         // @ts-ignore
+        // TODO: validar luego contra sentry cuando ocurra un error con window?.payform
         window?.payform.setConfiguration(configuration);
 
         // TODO: Create required controls
@@ -224,11 +225,10 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
 
         _window?.cardNumber.then((element: any) => {
           element.on("bin", (data: any) => {
-            // console.log("BIN: ", data);
+            // TODO ...
           });
 
           element.on("change", (data: any[]) => {
-            // console.log("CHANGE: ", data);
             setFormErrors(data.filter(x => x.type === "validation_error"));
             if (data.length !== 0) {
               let error = "";
@@ -238,8 +238,6 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
 
               if (error !== "") {
                 // TODO: Replace this line with a proper error management tool
-                // console.log(error);
-                // alert(error);
               }
             }
           });
@@ -256,7 +254,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
 
         _window.cardCvv.then((element: any) => {
           element.on("change", (data: any) => {
-            // console.log("CHANGE CVV2: ", data);
+            // TODO
           });
         });
 
@@ -274,7 +272,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
           setShowForm(true);
 
           element.on("change", (data: any[]) => {
-            // console.log("CHANGE F.V: ", data);
+            // TODO
           });
         });
       });
@@ -294,7 +292,6 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
 
   const configureErrorMessages = (alert: IAlertServiceProps) => {
     alertService.sendAlert(alert);
-    // setSubmitErrors(errors);
     onError(errors);
   };
 
@@ -343,7 +340,6 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
           data
         )
         .then((result: any) => {
-          console.table(result);
           const key = "transactionToken";
           const transactionToken = result[key] || undefined;
           if (transactionToken) {

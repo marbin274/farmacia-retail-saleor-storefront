@@ -37,7 +37,7 @@ const PaymentGatewaysList: React.FC<IProps> = ({
 
   // @ts-ignore
   const [token, setToken] = useState("");
-
+  const [selectNiubizPayment, setSelectNiubizPayment] = useState(false);
   // @ts-ignore
   const [orderNumber, setOrderNumber] = useState("");
 
@@ -49,7 +49,7 @@ const PaymentGatewaysList: React.FC<IProps> = ({
     if (selectPaymentGateway) {
       selectPaymentGateway("");
     }
-
+    setSelectNiubizPayment(false);
     if (pathElements.length > 0) {
       setToken(pathElements[4]);
       setOrderNumber(pathElements[5]);
@@ -68,6 +68,7 @@ const PaymentGatewaysList: React.FC<IProps> = ({
     <S.Wrapper>
       {paymentGateways.map(({ id, name, config }, index) => {
         const checked = selectedPaymentGateway === id;
+
         switch (id) {
           case PROVIDERS.DUMMY.id:
             return (
@@ -120,9 +121,12 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                       name="payment-method"
                       value="dummy"
                       checked={checked}
-                      onChange={() =>
-                        selectPaymentGateway && selectPaymentGateway(id)
-                      }
+                      onChange={() => {
+                        setSelectNiubizPayment(true);
+                        if (selectPaymentGateway) {
+                          selectPaymentGateway(id);
+                        }
+                      }}
                       customLabel={true}
                     >
                       <S.PaymentLine>
@@ -148,7 +152,7 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                     </Radio>
                   </S.RadioContainerPayment>
                 </S.Tile>
-                {checked && (
+                {selectNiubizPayment && (
                   <NiubizPaymentGateway
                     config={config}
                     formRef={formRef}
