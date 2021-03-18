@@ -35,6 +35,7 @@ export const Input: React.FC<IProps> = ({
   label,
   value,
   onChange,
+  inputWrapperClassname = '',
   ...props
 }: IProps) => {
   const elementRef = React.useRef(null);
@@ -76,7 +77,7 @@ export const Input: React.FC<IProps> = ({
       ref={elementRef}
     >
       {contentLeft && <S.Content>{contentLeft}</S.Content>}
-      <S.InputWrapper>
+      <S.InputWrapper className={inputWrapperClassname} >
         <S.Input
           {...props}
           active={active}

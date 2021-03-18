@@ -28,7 +28,8 @@
 
     &:focus,
     &:not([value=""]) {
-      box-shadow: 0 0 0 1px $blue;
+      border: 1px solid $turquoise;
+      
       & + .input__label {
         background-color: $white;
         @include focusedLabel();
@@ -36,7 +37,6 @@
     }
 
     &:-webkit-autofill {
-      box-shadow: 0 0 0 1px $blue;
       & + .input__label {
         @include focusedLabel();
       }
@@ -67,7 +67,7 @@
       }
     }
     &:hover {
-      box-shadow: 0 0 0 1px $blue;
+      border-color: $turquoise;
       color: $blue;
       transition: all 0.3s ease;
       & + .input__label {
@@ -81,8 +81,21 @@
         color: $rose;
       }
 
-      &:focus {
-        box-shadow: 0 0 0 1px $rose;
+      &:focus,
+      &:not([value=""]) {
+        border-color: $rose;
+
+        & + .input__label {
+          color: $rose;
+        }
+      }
+
+      &:hover {
+        border-color: $rose;
+
+        & + .input__label {
+          color: $rose;
+        }
       }
     }
 
@@ -99,7 +112,6 @@
     left: 0.8rem;
     transform: translate(0, -50%);
     padding: 0 6px;
-    z-index: 1;
     pointer-events: none;
     transition: all 0.4s ease;
     font-size: 14px;

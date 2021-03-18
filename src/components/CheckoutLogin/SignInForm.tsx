@@ -5,8 +5,11 @@ import { LoginForm } from "../";
 const SignInForm: React.FC<{
   onClick: () => void;
 }> = ({ onClick }) => (
-  <div onClick={() => launchCheckoutEvent(steps.address)}>
-    <h3 className="checkout-login__header">¿Ya te registraste?</h3>
+  <div
+    className="checkout-login__user__form"
+    onClick={() => launchCheckoutEvent(steps.address)}
+  >
+    <div className="checkout-login__user__form__header">Inicia sesión</div>
     <LoginForm onForgottenPassword={() => onClick()} hideRegister={true} />
   </div>
 );

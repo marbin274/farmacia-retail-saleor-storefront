@@ -71,6 +71,7 @@ const ResetPasswordFormContent: React.FC<ResetPasswordFormContentProps> = ({ cal
             value={!values?.email ? "" : values?.email}
             onBlur={(e) => { changeShowMessages(false); handleBlur(e); }}
             onChange={(e) => { changeShowMessages(false); handleChange(e); }}
+            inputWrapperClassname="password-reset-form__input-wrapper"
         />
         {children}
         <div className="password-reset-form__button">

@@ -6,8 +6,10 @@ interface IResetPasswordForm {
 }
 
 const ResetPasswordForm: React.FC<IResetPasswordForm> = ({ onClick }) => (
-  <>
-    <h3 className="checkout-login__header">¿Ya te registraste?</h3>
+  <div className="checkout-login__user__form">
+    <div className="checkout-login__user__form__header">
+      ¿Ya te registraste?
+    </div>
     <PasswordResetForm>
       <button
         className="login__content__password-reminder__forget"
@@ -16,7 +18,7 @@ const ResetPasswordForm: React.FC<IResetPasswordForm> = ({ onClick }) => (
         Volver al login
       </button>
     </PasswordResetForm>
-  </>
+  </div>
 );
 
 export default ResetPasswordForm;
