@@ -21,7 +21,7 @@ const formAddress: ICheckoutAddressData = {
   isDefaultBillingAddress: false,
   isDefaultShippingAddress: true,
   lastName: "Doe",
-  phone: "958451245",
+  phone: "555-5555",
   postalCode: "55-555",
   streetAddress1: "St Street",
   streetAddress2: "Second",

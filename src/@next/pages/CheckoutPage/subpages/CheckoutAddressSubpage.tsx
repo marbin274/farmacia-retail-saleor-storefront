@@ -86,6 +86,15 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
 
   useImperativeHandle(ref, () => ({
     handleRequiredFields: () => {
+      if (sessionStorage.getItem("exist_checkout")) {
+        alertService.sendAlert({
+          buttonText: "Entendido",
+          message:
+            "Por favor valide que todos los datos del formulario estan completos.",
+          type: "Info",
+        });
+        return false;
+      }
       return true;
     },
     submitAddress: () => {

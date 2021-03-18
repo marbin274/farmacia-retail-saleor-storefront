@@ -44,43 +44,44 @@ export const AddressForm: React.FC<IProps> = ({
   if (address) {
     addressWithPickedFields = pick(address, ADDRESS_FIELDS);
   }
+  addressWithPickedFields.phone = checkoutData?.shippingAddress?.phone
+    ? checkoutData?.shippingAddress?.phone.substring(
+      checkoutData?.shippingAddress?.phone.length - 9
+    )
+    : "";
+  addressWithPickedFields.documentNumber = checkoutData?.documentNumber;
+  addressWithPickedFields.termsAndConditions = checkoutData?.termsAndConditions;
+  addressWithPickedFields.dataTreatmentPolicy =
+    checkoutData?.dataTreatmentPolicy;
 
-  if (user) {
-    // addressWithPickedFields.city = checkoutData?.shippingAddress?.city;
-    addressWithPickedFields.firstName =
-      user.firstName.replace(/^\w/, (c: any) => c.toUpperCase()) +
-      " " +
-      user.lastName.replace(/^\w/, (c: any) => c.toUpperCase());
-    addressWithPickedFields.streetAddress1 = user.addresses?.[0]?.streetAddress1 || undefined;
-    addressWithPickedFields.streetAddress2 = user.addresses?.[0]?.streetAddress2 || undefined;
-    addressWithPickedFields.email = user.email;
-    addressWithPickedFields.id = user.addresses?.[0]?.id;
-    addressWithPickedFields.documentNumber = user.documentNumber || '';
-    addressWithPickedFields.phone =user.addresses?.[0]?.phone || '';
-    addressWithPickedFields.termsAndConditions = user.termsAndConditions || false;
-    addressWithPickedFields.dataTreatmentPolicy = user.dataTreatmentPolicy;
-  }
-
-  if(checkoutData){
-    addressWithPickedFields.firstName = checkoutData.shippingAddress?.firstName || addressWithPickedFields.firstName;
-    addressWithPickedFields.email = checkoutData.email || addressWithPickedFields.email;
-    addressWithPickedFields.documentNumber = checkoutData.documentNumber || addressWithPickedFields.documentNumber;
-    addressWithPickedFields.phone = checkoutData.shippingAddress?.phone
-      ? checkoutData?.shippingAddress?.phone.substring(
-        checkoutData?.shippingAddress?.phone.length - 9
-      )
-      : addressWithPickedFields.phone;
-    addressWithPickedFields.termsAndConditions = checkoutData.termsAndConditions;
-    addressWithPickedFields.dataTreatmentPolicy = checkoutData.dataTreatmentPolicy;
-    addressWithPickedFields.streetAddress1 = checkoutData.shippingAddress?.streetAddress1 || addressWithPickedFields.streetAddress1;
-    addressWithPickedFields.streetAddress2 = checkoutData.shippingAddress?.streetAddress2 || addressWithPickedFields.streetAddress2;
-  }
-  
   if (defaultValue) {
     addressWithPickedFields.country = defaultValue;
   }
 
-
+  if (user) {
+    addressWithPickedFields.city = sessionStorage.getItem("exist_checkout")
+      ? ""
+      : checkoutData?.shippingAddress?.city;
+    addressWithPickedFields.firstName =
+      user.firstName.replace(/^\w/, (c: any) => c.toUpperCase()) +
+      " " +
+      user.lastName.replace(/^\w/, (c: any) => c.toUpperCase());
+    addressWithPickedFields.streetAddress1 = user.addresses?.[0]?.streetAddress1
+      ? user.addresses[0]?.streetAddress1
+      : checkoutData?.shippingAddress?.streetAddress1;
+    addressWithPickedFields.streetAddress2 = user.addresses?.[0]?.streetAddress2
+      ? user.addresses[0]?.streetAddress2
+      : checkoutData?.shippingAddress?.streetAddress2;
+    addressWithPickedFields.email = user.email;
+    addressWithPickedFields.id = user.addresses?.[0]?.id;
+    addressWithPickedFields.documentNumber = addressWithPickedFields.documentNumber
+      ? addressWithPickedFields.documentNumber
+      : (user.documentNumber ? user.documentNumber : "");
+    addressWithPickedFields.termsAndConditions = user.termsAndConditions
+      ? user.termsAndConditions
+      : false;
+    addressWithPickedFields.dataTreatmentPolicy = user.dataTreatmentPolicy;
+  }
   const formSchemaValidation = comeFromModal
     ? addressFormModalSchema
     : addressFormSchema;
