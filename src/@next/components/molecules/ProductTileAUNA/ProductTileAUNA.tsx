@@ -3,8 +3,8 @@ import { TaxedMoney } from "@components/containers";
 import { Thumbnail } from "@components/molecules";
 import {
   checkProductCanAddToCart,
-  checkProductIsOnSale,
   getProductPricingClass,
+  productStickerRules
 } from "@temp/@next/utils/products";
 import { launchDetailProductEvent } from "@temp/@sdk/gaConfig";
 import React, { useEffect, useState } from "react";
@@ -30,7 +30,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
   });
 
   const { canAddToCart } = checkProductCanAddToCart(product, productsOnCart);
-  const isOnSale = checkProductIsOnSale(product);
+  const { isOnSale, isOutStock } = productStickerRules(product);
 
   useEffect(() => {
     setThumbnails({
@@ -43,7 +43,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
     <S.ProductCard data-cy="product-tile" canAddToCart={canAddToCart}>
       <Link to={productLink} key={product.id}>
         <S.WrapperStockout>
-          <ProductSticker canAddToCart={canAddToCart} isOnSale={isOnSale} />
+        <ProductSticker isOnSale={isOnSale} isOutStock={isOutStock} />
           <div
             className="img"
             onClick={() =>

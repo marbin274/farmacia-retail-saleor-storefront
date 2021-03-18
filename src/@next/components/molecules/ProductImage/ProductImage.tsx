@@ -7,13 +7,14 @@ import { IProps } from "./types";
 export const ProductImage: React.FC<IProps> = ({
   product,
   canAddToCart = true,
-  isOnSale = false,
+  isOnSale,
+  isOutStock,
 }: IProps) => (
   <S.Wrapper>
     <S.ImageFrame canAddToCart={canAddToCart}>
       <ProductSticker
-        canAddToCart={canAddToCart}
         isOnSale={isOnSale}
+        isOutStock={isOutStock}
       />
       <Thumbnail source={product} />
     </S.ImageFrame>

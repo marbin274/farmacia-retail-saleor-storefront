@@ -2,6 +2,8 @@
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
+import { ProductDetails_product_attributes } from "@temp/@sdk/queries/gqlTypes/ProductDetails";
+
 // ====================================================
 // GraphQL query operation: FeaturedProducts
 // ====================================================
@@ -260,6 +262,7 @@ export interface FeaturedProducts_shop_homepageCollection_products_edges_node_va
 
 export interface FeaturedProducts_shop_homepageCollection_products_edges_node {
   __typename: "Product";
+  attributes: ProductDetails_product_attributes[];
   /**
    * The ID of the object.
    */

@@ -215,7 +215,8 @@ export class NetworkManager implements INetworkManager {
             sku: edge.node.sku,
           };
           return {
-            id: existingLine?.id ? existingLine?.id : "",
+            attributes:edge.node.product.attributes,
+            id: edge.node.product.id || "",
             name: edge.node.product.name,
             quantity: existingLine?.quantity || 0,
             totalPrice,

@@ -1,5 +1,5 @@
 import { IItems } from "@sdk/api/Cart/types";
-import { MAX_ORDER_PER_PRODUCT } from "@temp/core/config";
+import { ATTRIBUTE_PROMOTION_LIMIT_MAX_NAME, MAX_ORDER_PER_PRODUCT } from "@temp/core/config";
 import isEqual from "lodash/isEqual";
 import { IProductVariantPricing } from "../types";
 import { ISimpleProduct } from "../types/IProduct";
@@ -28,9 +28,27 @@ export const getOneProductWithQuantity = (product: ISimpleProduct, productsOnCar
     };
 
 }
+const getStockLimitMax = (product: ISimpleProduct): { existLimitMax: boolean, stockLimitMax?: number } => {
+    const isOnSale = checkProductIsOnSale(product);
+    if (!isOnSale) { return { existLimitMax: false } };
+
+    const limitMax = product.attributes?.find(it => it.attribute.name === ATTRIBUTE_PROMOTION_LIMIT_MAX_NAME);
+    if (!limitMax) {
+        return { existLimitMax: false };
+    }
+    else if (limitMax && limitMax.values?.[0]?.name) {
+        const stockLimitMax: number = Number(limitMax.values[0].name);
+        return { existLimitMax: true, stockLimitMax }
+    }
+    return { existLimitMax: false };
+}
 
 export const getStockAvailable = (product: ISimpleProduct): number => {
-    if (product.variants?.[0].quantityAvailable) {
+    const { existLimitMax, stockLimitMax } = getStockLimitMax(product);
+    if (existLimitMax && stockLimitMax) {
+        return stockLimitMax;
+    }
+    else if (product.variants?.[0].quantityAvailable) {
         return product.variants[0].quantityAvailable;
     }
     else if (product.variant?.quantityAvailable) {
@@ -43,22 +61,38 @@ export const getProductOnCart = (product: ISimpleProduct, items: IItems): Produc
     const productOnCart = items && items.find(
         ({ variant }) => variant.product && (variant.product.id === product.id)
     );
+    const { existLimitMax, stockLimitMax } = getStockLimitMax(product);
     if (!productOnCart) {
-        return { quantity: 0, quantityAvailable: MAX_ORDER_PER_PRODUCT }
+        return { quantity: 0, quantityAvailable: existLimitMax && stockLimitMax ? stockLimitMax : MAX_ORDER_PER_PRODUCT }
     }
     return {
         quantity: productOnCart.quantity,
-        quantityAvailable: productOnCart.variant.quantityAvailable ? productOnCart.variant.quantityAvailable : 0,
+        quantityAvailable: existLimitMax && stockLimitMax ? stockLimitMax : productOnCart.variant.quantityAvailable ? productOnCart.variant.quantityAvailable : 0,
     };
 }
 
 export const checkProductCanAddToCart = (product: ISimpleProduct, items: IItems): { canAddToCart: boolean; isStockAvailable: boolean; productOnCart: ProductOnCart; stockAvailable: number; } => {
+
     const stockAvailable = getStockAvailable(product);
     const productOnCart = getProductOnCart(product, items);
     const isStockAvailable = stockAvailable > 0;
     const canAddToCart = ((productOnCart.quantityAvailable > productOnCart.quantity)) &&
         isStockAvailable;
     return { canAddToCart, isStockAvailable, productOnCart, stockAvailable };
+}
+
+export const productStickerRules = (product: ISimpleProduct) => {
+    const isOnSale = checkProductIsOnSale(product);
+    const quantity = product.quantity || 0;
+    let quantityAvailable = 0;
+    if (product.variants?.[0].quantityAvailable) {
+        quantityAvailable = product.variants[0].quantityAvailable;
+    }
+    else if (product.variant?.quantityAvailable) {
+        quantityAvailable = product.variant.quantityAvailable;
+    }
+    const isOutStock = quantity >= quantityAvailable;
+    return {isOnSale, isOutStock};
 }
 
 
@@ -83,3 +117,5 @@ export const getProductPricingClass = (canAddToCart: boolean, isOnSale: boolean)
     }
     return `${className} ${!canAddToCart ? "outStock_price" : isOnSale ? "discounted_price" : ""}`
 }
+
+

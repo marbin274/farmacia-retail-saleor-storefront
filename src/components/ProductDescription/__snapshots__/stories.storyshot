@@ -27,7 +27,7 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
   outline: none;
   cursor: pointer;
   color: #fff;
-  width: 100%;
+  width: auto;
 }
 
 .c2:hover {
@@ -70,7 +70,7 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
 @media (max-width:540px) {
   .c2 {
     padding: 0.9rem 1rem;
-    width: 100%;
+    width: 88%;
   }
 }
 
@@ -107,38 +107,23 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
       className="product-description__quantity"
     >
       <div
-        className="cart__list__item__quantity"
+        className="button"
       >
-        <div
-          className="cart__list__item__quantity__icon disabled"
+        <button
+          className="c2"
+          color="primary"
+          disabled={true}
           onClick={[Function]}
-        />
-        <p
-          className="cart__list__item__quantity__text"
-        >
-          1
-        </p>
-        <div
-          className="cart__list__item__quantity__icon disabled"
-          onClick={[Function]}
-        />
-      </div>
-      <button
-        className="product-description__action c2"
-        color="primary"
-        disabled={true}
-        onClick={[Function]}
-        size="md"
-      >
-        <span
-          className="c3"
           size="md"
         >
-          <span>
-            <span />
+          <span
+            className="c3"
+            size="md"
+          >
+            Agregar
           </span>
-        </span>
-      </button>
+        </button>
+      </div>
     </div>
   </div>
   <div

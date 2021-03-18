@@ -5,8 +5,10 @@ import { INode } from "@app/types/INode";
 import { IObjectWithMetadata } from "@app/types/IObjectWithMetadata";
 import { IProductPricing } from "@app/types/IProductPricing";
 import { IProductVariant } from "@app/types/IProductVariant";
+import { ProductDetails_product_attributes } from "@temp/@sdk/queries/gqlTypes/ProductDetails";
 
 export interface ISimpleProduct extends INode {
+  attributes?: ProductDetails_product_attributes[];
   name: string;
   seoTitle?: string;
   seoDescription?: string;

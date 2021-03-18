@@ -74,6 +74,7 @@ const ProductList: React.FC<IProductList> = ({
                 taxedMoney={variant.pricing.price}
               />
               <ItemQuantity
+                disableOnAdd={!canAddToCart}
                 onAdd={() => {
                   removePaymentItems();
                   onAdd(variant.id, 1);

@@ -2,6 +2,8 @@
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
+import { ProductDetails_product_attributes } from "./ProductDetails";
+
 // ====================================================
 // GraphQL query operation: CheckoutProductVariants
 // ====================================================
@@ -177,6 +179,7 @@ export interface CheckoutProductVariants_productVariants_edges_node_product_prod
 
 export interface CheckoutProductVariants_productVariants_edges_node_product {
   __typename: "Product";
+  attributes: ProductDetails_product_attributes[];
   /**
    * The ID of the object.
    */

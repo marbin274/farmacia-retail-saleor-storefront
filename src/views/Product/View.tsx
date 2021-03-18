@@ -5,7 +5,12 @@ import { RouteComponentProps } from "react-router";
 
 import { useCart } from "@sdk/react";
 
-import { ErrorPage, MetaWrapper, NotFound, OfflinePlaceholder } from "../../components";
+import {
+  ErrorPage,
+  MetaWrapper,
+  NotFound,
+  OfflinePlaceholder,
+} from "../../components";
 import NetworkStatus from "../../components/NetworkStatus";
 import { getGraphqlIdFromDBId, maybe } from "../../core/utils";
 import { ProductDetails_product } from "./gqlTypes/ProductDetails";
@@ -21,7 +26,7 @@ const canDisplay = (product: ProductDetails_product) =>
       !!product.variants
   );
 const extractMeta = (product: ProductDetails_product) => {
-  const productMetas: Array<{ content: string, property: string }> = [
+  const productMetas: Array<{ content: string; property: string }> = [
     {
       content: product.pricing.priceRange.start.gross.amount.toString(),
       property: "product:price:amount",
@@ -52,7 +57,7 @@ const extractMeta = (product: ProductDetails_product) => {
 };
 
 const View: React.FC<RouteComponentProps<{ id: string }>> = ({ match }) => {
-  const { addItem, items } = useCart();
+  const { addItem, subtractItem, items } = useCart();
 
   return (
     <TypedProductDetailsQuery
@@ -78,7 +83,12 @@ const View: React.FC<RouteComponentProps<{ id: string }>> = ({ match }) => {
             if (canDisplay(product)) {
               return (
                 <MetaWrapper meta={extractMeta(product)}>
-                  <Page product={product} add={addItem} items={items} />
+                  <Page
+                    product={product}
+                    add={addItem}
+                    remove={subtractItem}
+                    items={items}
+                  />
                 </MetaWrapper>
               );
             }

@@ -37,7 +37,6 @@ const ItemsHandler: FC<IProps> = ({
     setIsValueLessThanMaxOrderPerProduct,
   ] = useState(false);
   const quantity: number = product?.quantity || 0;
-  const availables: number = product?.variants?.[0].quantityAvailable || 0;
   const [isValueLessThanMax, setIsValueLessThanMax] = useState(false);
 
   useEffect(() => {
@@ -104,9 +103,7 @@ const ItemsHandler: FC<IProps> = ({
           </Button>
           <p>{quantity}</p>
           <Button
-            disabled={
-              quantity >= MAX_ORDER_PER_PRODUCT || quantity === availables
-            }
+            disabled={!canAddToCart}
             className={classNames("item-action", "add_remove_button")}
             onClick={handleAddClick}
             type="button"

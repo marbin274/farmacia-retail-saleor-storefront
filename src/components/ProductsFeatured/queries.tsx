@@ -5,12 +5,15 @@ import {
   basicProductFragment,
   productPricingFragment,
 } from "../../views/Product/queries";
-import { FeaturedProducts, FeaturedVariables } from "./gqlTypes/FeaturedProducts";
+import {
+  FeaturedProducts,
+  FeaturedVariables,
+} from "./gqlTypes/FeaturedProducts";
 
 export const featuredProducts = gql`
   ${basicProductFragment}
   ${productPricingFragment}
-  query FeaturedProducts ($first: Int)  {
+  query FeaturedProducts($first: Int) {
     shop {
       homepageCollections {
         id
@@ -20,6 +23,16 @@ export const featuredProducts = gql`
             node {
               ...BasicProductFields
               ...ProductPricingField
+              attributes {
+                attribute {
+                  id
+                  name
+                }
+                values {
+                  id
+                  name
+                }
+              }
               category {
                 id
                 name
@@ -27,12 +40,12 @@ export const featuredProducts = gql`
               variants {
                 id
                 sku
-                pricing{
+                pricing {
                   onSale
-                  price{
-                   ...Price
+                  price {
+                    ...Price
                   }
-                  priceUndiscounted{
+                  priceUndiscounted {
                     ...Price
                   }
                 }
@@ -46,4 +59,7 @@ export const featuredProducts = gql`
   }
 `;
 
-export const TypedFeaturedProductsQuery = TypedQuery<FeaturedProducts, FeaturedVariables>(featuredProducts);
+export const TypedFeaturedProductsQuery = TypedQuery<
+  FeaturedProducts,
+  FeaturedVariables
+>(featuredProducts);

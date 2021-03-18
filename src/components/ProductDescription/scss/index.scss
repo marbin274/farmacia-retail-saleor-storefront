@@ -97,8 +97,23 @@
 
   &__quantity {
     display: flex;
+    flex-direction: row;
     height: 42px;
     margin-top: 42px;
+
+    .itemHandler {
+      width: 100% !important;
+      max-width: 150px;
+    }
+    .button {
+      width: 100% !important;
+      max-width: 150px;
+      button {
+        padding: 0.5rem;
+        font-size: $base-font-size;
+        width: 100% !important;
+      }
+    }
 
     > div {
       margin-right: 10px;

@@ -47,8 +47,7 @@ export const productDescriptionProps = {
         "sku": "30002865",
       } as unknown) as ProductDetails_product_variants,
     },
-  ],
-  name: '"Producto 1"',
+  ],  
   pricing: {
     "onSale": false,
     "priceRange": {
@@ -76,7 +75,9 @@ export const productDescriptionProps = {
       },
     },
   },
-  productId: 'product-id-001',
+  product:{
+    name: '"Producto 1"',    
+  },
   productVariants: [{
     __typename: "ProductVariant",
     "attributes": [],

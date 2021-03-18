@@ -9,16 +9,23 @@ import { DebouncedTextField } from "../../Debounce";
 import { SearchResults } from "./gqlTypes/SearchResults";
 import "./scss/index.scss";
 
-
 interface SearchFormProps {
-  autofocus?:boolean;
+  autofocus?: boolean;
   handleSubmit?: (searchQs?: string) => void;
   handleInputBlur?: () => void;
-  children: (search: string, hasSearchPhrase: boolean, hasResults: (data: SearchResults) => boolean) => React.ReactNode;
+  children: (
+    search: string,
+    hasSearchPhrase: boolean,
+    hasResults: (data: SearchResults) => boolean
+  ) => React.ReactNode;
 }
 
-export const SearchForm: React.FC<SearchFormProps> = ({ autofocus, handleInputBlur: inputBlur, handleSubmit: submit, children }) => {
-
+export const SearchForm: React.FC<SearchFormProps> = ({
+  autofocus,
+  handleInputBlur: inputBlur,
+  handleSubmit: submit,
+  children,
+}) => {
   const [search, setSearch] = React.useState<string>("");
   const textFieldRef = React.useRef<HTMLInputElement>(null);
   const hasSearchPhrase = search.length >= 3;
@@ -32,46 +39,54 @@ export const SearchForm: React.FC<SearchFormProps> = ({ autofocus, handleInputBl
       const searchQs = stringify({ q: search });
       submit(searchQs);
     }
-  }
+  };
   const handleInputBlur = () => {
     if (!hasSearchPhrase && inputBlur) {
       inputBlur();
     }
-  }
+  };
 
   const getFieldIcono = () => {
     if (hasSearchPhrase) {
-      return <ReactSVG path={closeImg} onClick={() => {
-        setSearch('');
-      }} className={"search__input--clear"} />
+      return (
+        <ReactSVG
+          path={closeImg}
+          onClick={() => {
+            setSearch("");
+          }}
+          className={"search__input--clear"}
+        />
+      );
     } else {
-      return <ReactSVG path={searchImg} />
+      return <ReactSVG path={searchImg} />;
     }
-  }
+  };
   React.useEffect(() => {
     if (!search) {
       textFieldRef.current.value = "";
     }
   }, [search]);
 
-  return <form
-    className={classNames("search", {
-      "search--has-results": hasSearchPhrase,
-    })}
-    onClick={e => e.stopPropagation()}
-    onSubmit={handleSubmit}
-  >
-    <div className="search__input">
-      <DebouncedTextField
-        inputRef={textFieldRef}
-        onChange={({ target }) => setSearch(target.value)}
-        value={search}
-        innerIcon={getFieldIcono()}
-        autoFocus={autofocus}
-        placeholder="Busca por nombre"
-        onBlur={handleInputBlur}
-      />
-    </div>
-    {children(search, hasSearchPhrase, hasResults)}
-  </form>
-}
+  return (
+    <form
+      className={classNames("search", {
+        "search--has-results": hasSearchPhrase,
+      })}
+      onClick={e => e.stopPropagation()}
+      onSubmit={handleSubmit}
+    >
+      <div className="search__input">
+        <DebouncedTextField
+          inputRef={textFieldRef}
+          onChange={({ target }) => setSearch(target.value)}
+          value={search}
+          innerIcon={getFieldIcono()}
+          autoFocus={autofocus}
+          placeholder="Busca por nombre"
+          onBlur={handleInputBlur}
+        />
+      </div>
+      {children(search, hasSearchPhrase, hasResults)}
+    </form>
+  );
+};
