@@ -125,7 +125,6 @@ export const Block = styled.div<{
 export const Title = styled.div<{mobileCartOpened: boolean}>`
   display: flex;
   flex-direction: column;
-  
   margin: 0;
   font-weight: 500;
   padding-left: 1.2rem;
@@ -137,7 +136,7 @@ export const Title = styled.div<{mobileCartOpened: boolean}>`
     cursor: pointer;
   `}
   ${media.smallScreen`
-    padding-left: 0;
+    padding-left: 0.625rem;
     font-size: ${(props: any) => props.mobileCartOpened ? "1.375rem" : "1.125rem"};
     color: ${(props:any) => props.mobileCartOpened ? aunaBrand3 : aunaBlack};
   `}
