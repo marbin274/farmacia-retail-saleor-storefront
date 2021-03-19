@@ -155,7 +155,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
 .c11 {
   position: relative;
   width: 100%;
-  padding-right: 1.5rem;
+  padding-right: 0;
   border-radius: 4px;
 }
 
@@ -168,6 +168,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
   font-size: 0.9rem;
   outline: none;
   background-color: transparent;
+  border-radius: 4px;
 }
 
 .c12::-webkit-input-placeholder {
@@ -964,7 +965,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
 .c11 {
   position: relative;
   width: 100%;
-  padding-right: 1.5rem;
+  padding-right: 0;
   border-radius: 4px;
 }
 
@@ -977,6 +978,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
   font-size: 0.9rem;
   outline: none;
   background-color: transparent;
+  border-radius: 4px;
 }
 
 .c12::-webkit-input-placeholder {

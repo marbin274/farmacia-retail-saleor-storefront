@@ -41,6 +41,7 @@ export interface RegisterAccount {
 export interface RegisterAccountVariables {
   email: string;
   password: string;
+  confirmPassword: string;
   redirectUrl: string;
   firstName: string;
   lastName: string;
