@@ -136,6 +136,7 @@ export const RegisterFormContent: React.FC<RegisterFormContentProps> = ({
         errors={errors!.password}
         onChange={handleChange}
         onBlur={handleBlur}
+        autoComplete="off"
       />
       <TextField
         name="confirmPassword"
@@ -146,6 +147,7 @@ export const RegisterFormContent: React.FC<RegisterFormContentProps> = ({
         errors={errors!.confirmPassword}
         onChange={handleChange}
         onBlur={handleBlur}
+        autoComplete="off"
       />
       <div className="login__privacy__policies">
         <Checkbox
