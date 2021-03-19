@@ -1,28 +1,14 @@
-import React from "react";
-
+import React, { useState } from "react";
+import eyeSVG from "src/images/auna/eye.svg";
+import closedEyeSVG from "src/images/auna/closed-eye.svg";
 import { getBackgroundColor } from "@utils/styles";
-
 import { InputLabel } from "../InputLabel";
-
-const renderErrorIcon = () => {
-  return null;
-};
-
-// todo investigate further strange errors in storybook tests, appearing when we use <Icon/>. At the moment just comment out code to enable test pass.
-// import { aunaError } from "@styles/constants";
-// import { Icon } from "@components/atoms";
-// const renderErrorIcon = () => {
-//   if (false && error) {
-//     return (
-//       <S.InputIconWrapper>
-//         <Icon color={'red'} name={'heart'}/>
-//       </S.InputIconWrapper>
-//     );
-//   }
-// };
 
 import * as S from "./styles";
 import { IProps } from "./types";
+
+const TYPE_TEXT = "text";
+const TYPE_PASSWORD = "password";
 
 export const Input: React.FC<IProps> = ({
   onBlur,
@@ -35,12 +21,14 @@ export const Input: React.FC<IProps> = ({
   label,
   value,
   onChange,
-  inputWrapperClassname = '',
+  type,
+  inputWrapperClassname = "",
   ...props
 }: IProps) => {
   const elementRef = React.useRef(null);
   const [active, setActive] = React.useState(false);
   const [labelBackground, setColor] = React.useState<string>("transparent");
+  const [inputType, setInputType] = useState<string>();
 
   React.useEffect(() => {
     if (elementRef) {
@@ -68,6 +56,16 @@ export const Input: React.FC<IProps> = ({
     [setActive, onBlur]
   );
 
+  const tooglePaswordIcon = () => {
+    if (!inputType || inputType === TYPE_PASSWORD) {
+      setInputType(TYPE_TEXT);
+      return;
+    }
+
+    setInputType(TYPE_PASSWORD);
+  };
+
+  const hasRightIcon = type === TYPE_PASSWORD;
 
   return (
     <S.Wrapper
@@ -77,17 +75,22 @@ export const Input: React.FC<IProps> = ({
       ref={elementRef}
     >
       {contentLeft && <S.Content>{contentLeft}</S.Content>}
-      <S.InputWrapper className={inputWrapperClassname} >
+      <S.InputWrapper
+        className={inputWrapperClassname}
+        hasRightIcon={hasRightIcon}
+      >
         <S.Input
           {...props}
           active={active}
           value={value}
+          type={inputType || type}
           error={error}
           onFocus={handleFocus}
           onBlur={handleBlur}
           disabled={disabled}
           placeholder={placeholder}
           onChange={onChange}
+          hasRightIcon={hasRightIcon}
         />
         {label && (
           <InputLabel
@@ -99,7 +102,16 @@ export const Input: React.FC<IProps> = ({
             {label}
           </InputLabel>
         )}
-        {renderErrorIcon()}
+        {type === TYPE_PASSWORD && (
+          <S.IconRight
+            path={
+              !inputType || inputType === TYPE_PASSWORD ? eyeSVG : closedEyeSVG
+            }
+            error={+error}
+            disabled={disabled}
+            onMouseDown={tooglePaswordIcon}
+          />
+        )}
       </S.InputWrapper>
       {contentRight && <S.Content>{contentRight}</S.Content>}
     </S.Wrapper>

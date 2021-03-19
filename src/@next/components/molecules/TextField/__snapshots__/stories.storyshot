@@ -48,7 +48,7 @@ exports[`Storyshots @components/molecules/TextField default 1`] = `
 .c3 {
   position: relative;
   width: 100%;
-  padding-right: 1.5rem;
+  padding-right: 0;
   border-radius: 4px;
 }
 
@@ -61,6 +61,7 @@ exports[`Storyshots @components/molecules/TextField default 1`] = `
   font-size: 0.9rem;
   outline: none;
   background-color: transparent;
+  border-radius: 4px;
 }
 
 .c4::-webkit-input-placeholder {
@@ -187,7 +188,7 @@ exports[`Storyshots @components/molecules/TextField with content left 1`] = `
 .c4 {
   position: relative;
   width: 100%;
-  padding-right: 1.5rem;
+  padding-right: 0;
   border-radius: 4px;
 }
 
@@ -200,6 +201,7 @@ exports[`Storyshots @components/molecules/TextField with content left 1`] = `
   font-size: 0.9rem;
   outline: none;
   background-color: transparent;
+  border-radius: 4px;
 }
 
 .c5::-webkit-input-placeholder {
@@ -333,7 +335,7 @@ exports[`Storyshots @components/molecules/TextField with content right 1`] = `
 .c3 {
   position: relative;
   width: 100%;
-  padding-right: 1.5rem;
+  padding-right: 0;
   border-radius: 4px;
 }
 
@@ -346,6 +348,7 @@ exports[`Storyshots @components/molecules/TextField with content right 1`] = `
   font-size: 0.9rem;
   outline: none;
   background-color: transparent;
+  border-radius: 4px;
 }
 
 .c4::-webkit-input-placeholder {
@@ -479,7 +482,7 @@ exports[`Storyshots @components/molecules/TextField with errors 1`] = `
 .c3 {
   position: relative;
   width: 100%;
-  padding-right: 1.5rem;
+  padding-right: 0;
   border-radius: 4px;
 }
 
@@ -492,6 +495,7 @@ exports[`Storyshots @components/molecules/TextField with errors 1`] = `
   font-size: 0.9rem;
   outline: none;
   background-color: transparent;
+  border-radius: 4px;
 }
 
 .c4::-webkit-input-placeholder {

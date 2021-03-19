@@ -26,6 +26,7 @@ interface RegisterFormContentProps {
   setEmail?: (email: string) => void;
 }
 const initialValues: RegisterAccountVariables = {
+  confirmPassword: "",
   dataTreatmentPolicy: false,
   documentNumber: "",
   email: "",
@@ -133,6 +134,16 @@ export const RegisterFormContent: React.FC<RegisterFormContentProps> = ({
         type="password"
         value={!values?.password ? "" : values?.password}
         errors={errors!.password}
+        onChange={handleChange}
+        onBlur={handleBlur}
+      />
+      <TextField
+        name="confirmPassword"
+        placeholder="Ingresa nuevamente la contraseña"
+        label="*Confirmar contraseña"
+        type="password"
+        value={!values?.confirmPassword ? "" : values?.confirmPassword}
+        errors={errors!.confirmPassword}
         onChange={handleChange}
         onBlur={handleBlur}
       />

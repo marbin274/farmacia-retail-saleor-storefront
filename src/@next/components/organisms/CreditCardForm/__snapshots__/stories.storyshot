@@ -48,7 +48,7 @@ exports[`Storyshots @components/organisms/CreditCardForm default 1`] = `
 .c5 {
   position: relative;
   width: 100%;
-  padding-right: 1.5rem;
+  padding-right: 0;
   border-radius: 4px;
 }
 
@@ -61,6 +61,7 @@ exports[`Storyshots @components/organisms/CreditCardForm default 1`] = `
   font-size: 0.9rem;
   outline: none;
   background-color: transparent;
+  border-radius: 4px;
 }
 
 .c6::-webkit-input-placeholder {
@@ -325,7 +326,7 @@ exports[`Storyshots @components/organisms/CreditCardForm disabled 1`] = `
 .c5 {
   position: relative;
   width: 100%;
-  padding-right: 1.5rem;
+  padding-right: 0;
   border-radius: 4px;
 }
 
@@ -338,6 +339,7 @@ exports[`Storyshots @components/organisms/CreditCardForm disabled 1`] = `
   font-size: 0.9rem;
   outline: none;
   background-color: transparent;
+  border-radius: 4px;
 }
 
 .c6::-webkit-input-placeholder {
@@ -631,7 +633,7 @@ exports[`Storyshots @components/organisms/CreditCardForm error 1`] = `
 .c5 {
   position: relative;
   width: 100%;
-  padding-right: 1.5rem;
+  padding-right: 0;
   border-radius: 4px;
 }
 
@@ -644,6 +646,7 @@ exports[`Storyshots @components/organisms/CreditCardForm error 1`] = `
   font-size: 0.9rem;
   outline: none;
   background-color: transparent;
+  border-radius: 4px;
 }
 
 .c6::-webkit-input-placeholder {

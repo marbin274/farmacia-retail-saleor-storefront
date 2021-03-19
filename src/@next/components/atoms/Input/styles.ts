@@ -1,4 +1,5 @@
 import { DefaultTheme, styled } from "@styles";
+import ReactSVG from "react-svg";
 
 type WrapperProps = {
   active: boolean;
@@ -6,6 +7,18 @@ type WrapperProps = {
   disabled: boolean;
   theme: DefaultTheme;
 };
+
+type IconProps = {
+  error: number;
+  disabled: boolean;
+  theme: DefaultTheme;
+};
+
+type IconOptionsProps = {
+  hasRightIcon: boolean;
+};
+
+type InputProps = WrapperProps & IconOptionsProps;
 
 const getTextColor = (
   { active, error, disabled, theme }: WrapperProps,
@@ -43,6 +56,17 @@ const getEdgeColor = (
   }
 };
 
+const getIconColor = ({ error, disabled, theme }: IconProps) => {
+  switch (true) {
+    case disabled:
+      return theme.colors.disabled;
+    case Boolean(error):
+      return theme.input.borderColorError;
+    default:
+      return theme.input.borderColorActive;
+  }
+};
+
 export const Wrapper = styled.div<WrapperProps>`
   display: flex;
   border: 1px solid ${props => getEdgeColor(props)};
@@ -61,23 +85,16 @@ export const Content = styled.span`
   align-items: center;
 `;
 
-export const InputWrapper = styled.div`
+export const InputWrapper = styled.div<IconOptionsProps>`
   position: relative;
   width: 100%;
-  padding-right: 1.5rem;
+  padding-right: ${props => (props.hasRightIcon ? "2rem" : "0")};
   border-radius: ${props => props.theme.input.borderRadius};
 `;
 
-export const InputIconWrapper = styled.div`
-  height: 1rem;
-  position: absolute;
-  right: 1rem;
-  top: calc(50% - 0.5rem);
-  width: 1rem;
-`;
-
-export const Input = styled.input<WrapperProps>`
-  padding: 0.75rem 1rem;
+export const Input = styled.input<InputProps>`
+  padding: ${props =>
+    props.hasRightIcon ? "0.75rem 0.5rem 0.75rem 1rem" : "0.75rem 1rem"};
   margin: 0;
   border: none;
   color: ${props => getTextColor(props)};
@@ -85,8 +102,19 @@ export const Input = styled.input<WrapperProps>`
   font-size: ${props => props.theme.input.textFontSize};
   outline: none;
   background-color: transparent;
+  border-radius: ${props => props.theme.input.borderRadius};
 
   ::placeholder {
     color: ${props => props.theme.input.placeholderColor};
   }
+`;
+
+export const IconRight = styled(ReactSVG)<IconProps>`
+  height: 1.5rem;
+  position: absolute;
+  right: 0.5rem;
+  top: calc(50% - 0.65rem);
+  width: 1.5rem;
+  color: ${props => getIconColor(props)};
+  cursor: ${props => (props.disabled ? "default" : "pointer")};
 `;
