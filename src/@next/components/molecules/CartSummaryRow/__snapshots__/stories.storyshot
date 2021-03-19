@@ -47,7 +47,7 @@ exports[`Storyshots @components/molecules/CartSummaryRow default 1`] = `
 
 .c2 {
   grid-area: name;
-  font-size: 0.875rem;
+  font-size: 1.125rem;
 }
 
 .c5 {
@@ -65,6 +65,12 @@ exports[`Storyshots @components/molecules/CartSummaryRow default 1`] = `
   color: #131336;
   font-size: 18px;
   font-weight: 500;
+}
+
+@media (max-width:540px) {
+  .c2 {
+    font-size: 0.875rem;
+  }
 }
 
 <div

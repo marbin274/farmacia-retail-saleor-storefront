@@ -1,3 +1,4 @@
+import './matchMedia.mock';
 import { mount, shallow } from "enzyme";
 import "jest-styled-components";
 import React from "react";

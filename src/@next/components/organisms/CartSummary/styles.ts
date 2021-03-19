@@ -12,7 +12,10 @@ import {
 // import { StringValueNode } from "graphql";
 
 export const Wrapper = styled.div<{ mobileCartOpened: boolean }>`
-  background-color: ${ props => props.mobileCartOpened ? aunaGrey20 : aunaComplementary1};
+  background-color: ${aunaGrey20};
+  ${media.smallScreen`
+    background-color: ${ (props: any )=> props.mobileCartOpened ? aunaGrey20 : aunaComplementary1};
+  `}
   border: 1px solid ${aunaComplementary4};
   border-radius: 16px;
   overflow-y: auto;
@@ -69,8 +72,10 @@ export const ShowCart = styled.div`
 `;
 
 export const BadgeCartWrapper = styled.div`
+${media.smallScreen`
     display:flex;
     flex-direction: row;
+  `}  
 `;
 
 
@@ -78,15 +83,25 @@ export const HR = styled.hr`
   display: block;
   height: 1px;
   border: 0;
-  border-top: 1px solid ${aunaGreyDark};
+  border-top: 1px solid ${aunaComplementary1};
   margin: 0;
   padding: 0;
+  ${media.smallScreen`
+    border-top: 1px solid ${aunaGreyDark};
+    display:none;
+  `}
 `;
 
 export const Header = styled.div<{mobileCartOpened: boolean}>`
-  align-items: ${props=> props.mobileCartOpened ? "flex-start" : "center"};
+  align-items: center;
+  padding-top: 1.25rem;
+  ${media.smallScreen`
+    padding-top: 0;
+    align-items: ${(props: any)=> props.mobileCartOpened ? "flex-start" : "center"};
+    flex-direction: column;
+    padding-right: 0.9375rem;
+  `}
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
 `;
 export const Block = styled.div<{
@@ -96,31 +111,44 @@ export const Block = styled.div<{
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin: ${props =>
+  ${media.smallScreen`
+  margin: ${(props: any) =>
     props.position === 2 ? "0 1.5rem 1.875rem 1.5rem" : "16px 16px 0 auto"};
-  width: ${props =>
+  `}
+  ${media.mediumScreen`  
+  margin: ${(props: any) =>
+    props.position === 2 ?  "0 0 30px 24px" : "16px 16px 0 auto"};
+  `}   
+  width: ${ (props: any) =>
     props.position === 1 ? "fit-content" : "-webkit-fill-available"};
 `;
 export const Title = styled.div<{mobileCartOpened: boolean}>`
   display: flex;
   flex-direction: column;
-  color: ${props => props.mobileCartOpened ? aunaBrand3 : aunaBlack};
+  
   margin: 0;
   font-weight: 500;
-  padding-left: 0.625rem;
+  padding-left: 1.2rem;
+  font-size: 1.125rem;
+  color: ${aunaBrand3};
   ${media.mediumScreen`
     font-size: ${(props: { theme: DefaultTheme }) =>
       props.theme.typography.h4FontSize};
     cursor: pointer;
   `}
   ${media.smallScreen`
-  font-size: ${(props: any) => props.mobileCartOpened ? "1.375rem" : "1.125rem"};
-`}
+    padding-left: 0;
+    font-size: ${(props: any) => props.mobileCartOpened ? "1.375rem" : "1.125rem"};
+    color: ${(props:any) => props.mobileCartOpened ? aunaBrand3 : aunaBlack};
+  `}
 `;
 
 export const Text = styled.span<{ mobileCartOpened: boolean }>`
   font-weight: 300;
-  font-size: ${props => props.mobileCartOpened ? "0.875rem" : "0.75rem"};
+  font-size: 0.75rem;
+  ${media.smallScreen`
+    font-size: ${ (props: any) => props.mobileCartOpened ? "0.875rem" : "0.75rem"};
+  `}
   margin: 2px 0 0 3px;
 `;
 export const Close = styled.div<{ mobileCartOpened: boolean }>`
@@ -146,13 +174,20 @@ export const CostLine = styled.div<{ last: boolean }>`
   span {
     display: inline-block;
   }
-  font-weight: ${props => (props.last ? 500 : "normal")};
-  font-size: ${props => (props.last ? "1.25rem" : "0.75rem")};
+  font-weight: ${(props:any) => (props.last ? 500 : "normal")};
+  font-size: ${(props: any) => (props.last ? "0.875rem" : "0.75rem")};
+  ${media.smallScreen`
+  font-size: ${(props: any) => (props.last ? "1.25rem" : "0.75rem")};
+  `}
+
   color: ${props => (props.last ? "#121314" : "#9B9B9B")};
 `;
 
 export const CostLineLabel = styled.span`
-  font-size: 1rem;
+  font-size: 0.875rem;
+  ${media.smallScreen`
+    font-size: 1rem;
+  `}
 `;
 
 export const Costs = styled.div`

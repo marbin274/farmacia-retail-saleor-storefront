@@ -1,4 +1,4 @@
-import { styled } from "@styles";
+import { styled , media} from "@styles";
 import { aunaBlack, baseFontSize } from "@styles/constants";
 
 export const Wrapper = styled.div`
@@ -32,7 +32,10 @@ export const Sku = styled.div`
 
 export const Name = styled.div`
   grid-area: name;
-  font-size: ${props => props.theme.typography.baseFontSizeSmall};
+  font-size: ${props => props.theme.typography.h4FontSize};
+  ${media.smallScreen`
+    font-size: ${(props: any ) => props.theme.typography.baseFontSizeSmall};
+  `}
 `;
 
 export const Price = styled.div`
