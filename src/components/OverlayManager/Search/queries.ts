@@ -8,7 +8,7 @@ import {
 } from "./gqlTypes/SearchResults";
 
 const searchResultsQuery = gql`
-${priceFragment}
+  ${priceFragment}
   query SearchResults($query: String!) {
     products(filter: { search: $query }, first: 100) {
       edges {
@@ -26,16 +26,26 @@ ${priceFragment}
           url
           variants {
             id
-            pricing{
+            pricing {
               onSale
-              price{
-               ...Price
+              price {
+                ...Price
               }
-              priceUndiscounted{
+              priceUndiscounted {
                 ...Price
               }
             }
             quantityAvailable
+          }
+          attributes {
+            attribute {
+              id
+              name
+            }
+            values {
+              id
+              name
+            }
           }
           category {
             id

@@ -67,6 +67,12 @@ exports[`Storyshots @components/molecules/CartSummaryRow default 1`] = `
   font-weight: 500;
 }
 
+@media (max-width:540px) {
+  .c2 {
+    font-size: 0.875rem;
+  }
+}
+
 <div
   className="c0"
 >

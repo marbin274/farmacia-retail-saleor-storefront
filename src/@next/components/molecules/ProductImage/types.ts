@@ -10,4 +10,5 @@ export interface IProps {
   };
   canAddToCart?: boolean;
   isOnSale?:boolean;
+  isOutStock?:boolean;
 }

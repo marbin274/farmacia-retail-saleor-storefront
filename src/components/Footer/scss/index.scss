@@ -1,4 +1,4 @@
-@import "../../../globalStyles/scss/variables.scss";
+@import "@temp/globalStyles/scss/variables.scss";
 
 .footer {
   &__favicons {
@@ -46,6 +46,11 @@
   &-nav {
     background-color: $gray-light;
     padding: $spacer * 2 0 $spacer * 2;
+
+    @media (max-width: $medium-screen) {
+      padding-bottom: 3rem;
+    }
+
     .container {
       display: flex;
       flex-wrap: wrap;

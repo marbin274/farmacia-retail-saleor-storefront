@@ -21,6 +21,7 @@ exports[`Storyshots @components/atoms/RichTextContent custom 1`] = `
   className="c0"
 >
   <div
+    className="html_from_json"
     dangerouslySetInnerHTML={
       Object {
         "__html": "<p><strong>bold</strong></p>
@@ -68,6 +69,7 @@ exports[`Storyshots @components/atoms/RichTextContent default 1`] = `
   className="c0"
 >
   <div
+    className="html_from_json"
     dangerouslySetInnerHTML={
       Object {
         "__html": "<p>They say polo is the sport of kings.Or was that stamp collecting ? Either way, this shirt is fit for a king of Saturday night.</p>

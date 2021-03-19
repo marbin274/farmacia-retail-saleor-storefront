@@ -2,8 +2,9 @@
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
-import { ProductDetails_product_pricing } from '@temp/@sdk/queries/gqlTypes/ProductDetails';
-import { FeaturedProducts_shop_homepageCollection_products_edges_node_pricing } from '@temp/components/ProductsFeatured/gqlTypes/FeaturedProducts';
+import { ProductDetails_product_pricing } from "@temp/@sdk/queries/gqlTypes/ProductDetails";
+import { FeaturedProducts_shop_homepageCollection_products_edges_node_pricing } from "@temp/components/ProductsFeatured/gqlTypes/FeaturedProducts";
+import { ProductDetails_product_attributes } from "@temp/@sdk/queries/gqlTypes/ProductDetails";
 
 // ====================================================
 // GraphQL query operation: SearchResults
@@ -71,8 +72,8 @@ export interface SearchResults_products_edges_node {
    * Lists the storefront product's pricing, the current price and discounts, only meant for displaying.
    */
   pricing: ProductDetails_product_pricing | null;
+  attributes: ProductDetails_product_attributes[];
 }
-
 export interface SearchResults_products_edges {
   __typename: "ProductCountableEdge";
   /**

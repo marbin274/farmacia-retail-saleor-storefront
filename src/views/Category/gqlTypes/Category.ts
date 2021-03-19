@@ -2,6 +2,7 @@
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
+import { ProductDetails_product_variants_attributes } from "@temp/@sdk/queries/gqlTypes/ProductDetails";
 import {
   AttributeInput,
   ProductOrder,
@@ -258,6 +259,7 @@ export interface Category_products_edges_node_category {
 
 export interface Category_products_edges_node {
   __typename: "Product";
+  attributes: ProductDetails_product_variants_attributes[];
   /**
    * The ID of the object.
    */

@@ -49,6 +49,7 @@ exports[`Storyshots @components/molecules/TextField default 1`] = `
   position: relative;
   width: 100%;
   padding-right: 1.5rem;
+  border-radius: 4px;
 }
 
 .c4 {
@@ -187,6 +188,7 @@ exports[`Storyshots @components/molecules/TextField with content left 1`] = `
   position: relative;
   width: 100%;
   padding-right: 1.5rem;
+  border-radius: 4px;
 }
 
 .c5 {
@@ -332,6 +334,7 @@ exports[`Storyshots @components/molecules/TextField with content right 1`] = `
   position: relative;
   width: 100%;
   padding-right: 1.5rem;
+  border-radius: 4px;
 }
 
 .c4 {
@@ -477,6 +480,7 @@ exports[`Storyshots @components/molecules/TextField with errors 1`] = `
   position: relative;
   width: 100%;
   padding-right: 1.5rem;
+  border-radius: 4px;
 }
 
 .c4 {

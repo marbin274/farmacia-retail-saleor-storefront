@@ -8,31 +8,27 @@ import {
 } from "@sdk/queries/gqlTypes/ProductDetails";
 import { ICheckoutModelLine } from "@sdk/repository";
 import { itemNotificationsService } from "@temp/@next/components/atoms/ItemsNotification";
-import { getProductPricingClass } from "@temp/@next/utils/products";
+import {
+  getOneProductWithQuantity,
+  getProductPricingClass,
+} from "@temp/@next/utils/products";
 import { IProductVariantsAttributesSelectedValues, ITaxedMoney } from "@types";
 import isEqual from "lodash/isEqual";
 import * as React from "react";
-import AddToCart from "./AddToCart";
-import { QuantityTextField } from "./QuantityTextField";
 import "./scss/index.scss";
-import { addToCartEvent, removeToCartEvent } from "@sdk/utils";
-
-declare global {
-  interface Window {
-    dataLayer: any;
-  }
-}
-
+import { launchAddToCartEvent, launchRemoveToCartEvent } from "@sdk/gaConfig";
+import { ISimpleProduct } from "@temp/@next/types/IProduct";
+import ItemsHandler from "@temp/@next/components/organisms/ItemsHandler/ItemsHandler";
 export interface ProductDescriptionProps {
   canAddToCart: boolean;
   descriptionJson: string;
   isOnSale: boolean;
   items: ICheckoutModelLine[];
-  productId: string;
-  productVariants: ProductDetails_product_variants[];
-  name: string;
+  product: ISimpleProduct;
   pricing: ProductDetails_product_pricing;
+  productVariants: ProductDetails_product_variants[];
   addToCart(varinatId: string, quantity?: number): void;
+  removeToCart(varinatId: string): void;
   setVariantId(variantId: string): void;
 }
 
@@ -121,24 +117,22 @@ class ProductDescription extends React.Component<
   };
 
   handleSubmit = () => {
-   const { items } = this.props;
+    const { items } = this.props;
     const { variant } = this.state;
     const cartItem = items?.find(item => item.variant.id === variant);
     this.props.addToCart(this.state.variant, this.state.quantity);
 
     itemNotificationsService.sendNotifications(
-      { id: this.state.variant, name: this.props.name },
+      { id: this.state.variant, name: this.props.product.name },
       this.state.quantity
     );
     this.setState({ quantity: 1 });
-    window?.dataLayer?.push(
-      addToCartEvent(
-        cartItem?.variant?.sku,
-        cartItem?.name,
-        cartItem?.totalPrice?.gross,
-        cartItem?.quantity,
-        "PEN"
-      )
+    launchAddToCartEvent(
+      cartItem?.variant?.sku,
+      cartItem?.name,
+      cartItem?.totalPrice?.gross,
+      cartItem?.quantity,
+      "PEN"
     );
   };
 
@@ -157,32 +151,31 @@ class ProductDescription extends React.Component<
     this.setState(prevState => ({
       quantity: prevState.quantity + operation,
     }));
-   if (operation === 1) {
-      window?.dataLayer?.push(
-        addToCartEvent(
-          cartItem?.variant?.sku,
-          cartItem?.name,
-          cartItem?.totalPrice?.gross,
-          cartItem?.quantity,
-          "PEN"
-        )
+    if (operation === 1) {
+      launchAddToCartEvent(
+        cartItem?.variant?.sku,
+        cartItem?.name,
+        cartItem?.totalPrice?.gross,
+        cartItem?.quantity,
+        "PEN"
       );
     } else if (operation === -1) {
-      window?.dataLayer?.push(
-        removeToCartEvent(
-          cartItem?.variant?.sku,
-          cartItem?.name,
-          cartItem?.totalPrice?.gross,
-          cartItem?.quantity
-        )
+      launchRemoveToCartEvent(
+        cartItem?.variant?.sku,
+        cartItem?.name,
+        cartItem?.totalPrice?.gross,
+        cartItem?.quantity
       );
     }
   };
 
   render() {
-    const { name, canAddToCart, descriptionJson } = this.props;
-    const { quantity } = this.state;
-    const availableQuantity = this.getAvailableQuantity();
+    const { canAddToCart, descriptionJson } = this.props;
+    const { name } = this.props.product;
+    const product = getOneProductWithQuantity(
+      this.props.product,
+      this.props.items
+    );
     return (
       <div className="product-description">
         <h3>{name}</h3>
@@ -200,13 +193,13 @@ class ProductDescription extends React.Component<
           />
         </div>
         <div className="product-description__quantity">
-          <QuantityTextField
-            quantity={quantity}
-            maxQuantity={availableQuantity}
-            onQuantityChange={this.handleQuantityChange}
-            disableButtons={!canAddToCart}
+          <ItemsHandler
+            canAddToCart={canAddToCart}
+            product={product}
+            addToCart={this.props.addToCart}
+            removeItemToCart={this.props.removeToCart}
+            substractItemToCart={this.props.removeToCart}
           />
-          <AddToCart onSubmit={this.handleSubmit} disabled={!canAddToCart} />
         </div>
       </div>
     );

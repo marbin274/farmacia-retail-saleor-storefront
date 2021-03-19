@@ -102,6 +102,7 @@ exports[`Storyshots @components/organisms/CartRow default 1`] = `
   position: relative;
   width: 100%;
   padding-right: 1.5rem;
+  border-radius: 4px;
 }
 
 .c13 {

@@ -49,6 +49,7 @@ exports[`Storyshots @components/atoms/Input default 1`] = `
   position: relative;
   width: 100%;
   padding-right: 1.5rem;
+  border-radius: 4px;
 }
 
 .c3 {
@@ -158,6 +159,7 @@ exports[`Storyshots @components/atoms/Input disabled 1`] = `
   position: relative;
   width: 100%;
   padding-right: 1.5rem;
+  border-radius: 4px;
 }
 
 .c3 {
@@ -267,6 +269,7 @@ exports[`Storyshots @components/atoms/Input error 1`] = `
   position: relative;
   width: 100%;
   padding-right: 1.5rem;
+  border-radius: 4px;
 }
 
 .c3 {
@@ -387,6 +390,7 @@ exports[`Storyshots @components/atoms/Input with value 1`] = `
   position: relative;
   width: 100%;
   padding-right: 1.5rem;
+  border-radius: 4px;
 }
 
 .c3 {

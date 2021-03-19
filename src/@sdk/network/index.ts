@@ -63,16 +63,14 @@ import {
   IOrderModel,
   IPaymentModel,
 } from "@sdk/repository";
-import { ecommerceProductsMapper, filterNotEmptyArrayItems } from "@sdk/utils";
+import {
+  filterNotEmptyArrayItems,
+} from "@sdk/utils";
 import ApolloClient from "apollo-client";
 import { IPrivacyPolicy } from "../api/Checkout/types";
+import { launchEcommerceEvent, ecommerceProductsMapper } from "@sdk/gaConfig";
 import { INetworkManager } from "./types";
 
-declare global {
-  interface Window {
-    dataLayer: any;
-  }
-}
 export class NetworkManager implements INetworkManager {
   private client: ApolloClient<any>;
 
@@ -155,14 +153,14 @@ export class NetworkManager implements INetworkManager {
       try {
         const observable = this.client.watchQuery<CheckoutProductVariants, any>(
           {
-            fetchPolicy: 'network-only',
+            fetchPolicy: "network-only",
             query: CheckoutQueries.checkoutProductVariants,
             variables: {
               ids: idsOfMissingVariants,
             },
           }
         );
-        
+
         variants = await new Promise((resolve, reject) => {
           observable.subscribe(
             result => {
@@ -217,7 +215,8 @@ export class NetworkManager implements INetworkManager {
             sku: edge.node.sku,
           };
           return {
-            id: existingLine?.id ? existingLine?.id : "",
+            attributes:edge.node.product.attributes,
+            id: edge.node.product.id || "",
             name: edge.node.product.name,
             quantity: existingLine?.quantity || 0,
             totalPrice,
@@ -229,7 +228,7 @@ export class NetworkManager implements INetworkManager {
     const linesWithProperVariantUpdated: ICheckoutModelLine[] = linesWithProperVariant.map(
       line => {
         const variantPricing = line.variant.pricing?.price;
-        const totalPrice = variantPricing
+         const totalPrice = variantPricing
           ? {
               gross: {
                 ...variantPricing.gross,
@@ -810,21 +809,12 @@ export class NetworkManager implements INetworkManager {
         const productsArray: any = data?.checkoutComplete?.order.lines;
         const orderId: any = data?.checkoutComplete?.order.number;
         const tax: any = (total * (0.18 / 1.18)).toFixed(2);
-        window?.dataLayer?.push({
-          ecommerce: {
-            purchase: {
-              actionField: {
-                affiliation: "Online Store",
-                id: orderId,
-                revenue: total,
-                shipping: "",
-                tax: !!total ? tax : 0,
-              },
-              products: ecommerceProductsMapper(productsArray),
-            },
-          },
-          event: "purchase",
-        });
+        launchEcommerceEvent(
+          orderId,
+          total,
+          tax,
+          ecommerceProductsMapper(productsArray)
+        );
         return {
           data: this.constructOrderModel(data.checkoutComplete.order),
         };

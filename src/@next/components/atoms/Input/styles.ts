@@ -46,10 +46,9 @@ const getEdgeColor = (
 export const Wrapper = styled.div<WrapperProps>`
   display: flex;
   border: 1px solid ${props => getEdgeColor(props)};
-  border-radius: ${props => props.theme.input.borderRadius}
+  border-radius: ${props => props.theme.input.borderRadius};
   color: ${props => getEdgeColor(props)};
-  outline: ${props =>
-    props.active ? `1px solid ${getEdgeColor(props)};` : "none"};
+  outline: none;
   transition: all 0.3s ease;
   &:hover {
     color: ${props => getTextColor(props, true)};
@@ -66,6 +65,7 @@ export const InputWrapper = styled.div`
   position: relative;
   width: 100%;
   padding-right: 1.5rem;
+  border-radius: ${props => props.theme.input.borderRadius};
 `;
 
 export const InputIconWrapper = styled.div`

@@ -11,4 +11,5 @@ export interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
   contentRight?: React.ReactNode;
   value?: string | number;
   touched?: boolean;
+  inputWrapperClassname?: string;
 }

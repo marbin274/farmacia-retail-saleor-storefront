@@ -4,10 +4,11 @@ import { joinFormikErrorsToIFormErrorsAndConvertToObjectErrors } from "@temp/@ne
 import { TokenAuthVariables } from "@temp/@sdk/mutations/gqlTypes/TokenAuth";
 import { useFormik } from "formik";
 import * as React from "react";
-import { Button, TextField } from "..";
+import { Button } from "..";
 import ForgottenPassword from "../OverlayManager/Login/ForgottenPassword";
 import { loginFormSchema } from "./loginForm.schema";
 import "./scss/index.scss";
+import { TextField } from "@components/molecules";
 
 interface ILoginForm {
   hide?: () => void;
@@ -65,21 +66,23 @@ const LoginForm: React.FC<ILoginForm> = ({
           autoComplete="email"
           errors={errors!.email}
           name="email"
-          label="Correo"
+          placeholder="Correo registrado en Farmauna"
           type="text"
           value={!values?.email ? "" : values?.email}
           onBlur={handleBlur}
           onChange={handleChange}
+          inputWrapperClassname="login-form__input-wrapper"
         />
         <TextField
           autoComplete="password"
           errors={errors!.password}
           name="password"
-          label="Contraseña"
+          placeholder="Contraseña"
           type="password"
           value={!values?.password ? "" : values?.password}
           onBlur={handleBlur}
           onChange={handleChange}
+          inputWrapperClassname="login-form__input-wrapper"
         />
         <ForgottenPassword onClick={onForgottenPassword} />
         {requestErrors?.extraInfo?.userInputErrors?.[0]?.message && (

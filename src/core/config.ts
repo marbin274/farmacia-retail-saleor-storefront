@@ -119,3 +119,5 @@ export const PRODUCT_STICKERS = {
     label: "Oferta",
   },
 }
+
+export const ATTRIBUTE_PROMOTION_LIMIT_MAX_NAME = "limit-max";

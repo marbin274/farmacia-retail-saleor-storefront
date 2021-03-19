@@ -11,7 +11,7 @@ import {
 } from "../../molecules/ProductTileAUNA/types";
 import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
 import { itemNotificationsService } from "../../atoms/ItemsNotification";
-import { addToCartEvent, removeToCartEvent } from "@sdk/utils";
+import { launchAddToCartEvent, launchRemoveToCartEvent } from "@sdk/gaConfig";
 type IProps = {
   canAddToCart?: boolean;
   disableOnAdd?: boolean;
@@ -37,7 +37,6 @@ const ItemsHandler: FC<IProps> = ({
     setIsValueLessThanMaxOrderPerProduct,
   ] = useState(false);
   const quantity: number = product?.quantity || 0;
-  const availables: number = product?.variants?.[0].quantityAvailable || 0;
   const [isValueLessThanMax, setIsValueLessThanMax] = useState(false);
 
   useEffect(() => {
@@ -59,14 +58,13 @@ const ItemsHandler: FC<IProps> = ({
           addToCart?.(firstProductVariant.id, 1);
           itemNotificationsService.sendNotifications(product, 1);
         }
-        window?.dataLayer?.push(
-          addToCartEvent(
-            firstProductVariant?.sku as string,
-            product?.name,
-            firstProductVariant?.pricing?.price?.gross?.amount,
-            total + 1,
-            "PEN"
-          )
+
+        launchAddToCartEvent(
+          firstProductVariant?.sku as string,
+          product?.name,
+          firstProductVariant?.pricing?.price?.gross?.amount,
+          total + 1,
+          "PEN"
         );
       }
     }
@@ -83,13 +81,12 @@ const ItemsHandler: FC<IProps> = ({
         substractItemToCart?.(firstProductVariant.id);
       }
     }
-    window?.dataLayer?.push(
-      removeToCartEvent(
-        firstProductVariant?.sku as string,
-        product?.name,
-        firstProductVariant?.pricing?.price?.gross?.amount,
-        total - 1
-      )
+
+    launchRemoveToCartEvent(
+      firstProductVariant?.sku as string,
+      product?.name,
+      firstProductVariant?.pricing?.price?.gross?.amount,
+      total - 1
     );
   };
 
@@ -106,9 +103,7 @@ const ItemsHandler: FC<IProps> = ({
           </Button>
           <p>{quantity}</p>
           <Button
-            disabled={
-              quantity >= MAX_ORDER_PER_PRODUCT || quantity === availables
-            }
+            disabled={!canAddToCart}
             className={classNames("item-action", "add_remove_button")}
             onClick={handleAddClick}
             type="button"
