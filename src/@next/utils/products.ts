@@ -43,18 +43,21 @@ const getStockLimitMax = (product: ISimpleProduct): { existLimitMax: boolean, st
     return { existLimitMax: false };
 }
 
-export const getStockAvailable = (product: ISimpleProduct): number => {
+export const getStockAvailable = (product: ISimpleProduct): {stockAvailable:number, quantity:number} => {
     const { existLimitMax, stockLimitMax } = getStockLimitMax(product);
-    if (existLimitMax && stockLimitMax) {
-        return stockLimitMax;
-    }
-    else if (product.variants?.[0].quantityAvailable) {
-        return product.variants[0].quantityAvailable;
+    let stockAvailable = 0;
+    const  quantity = product.quantity ||0;
+    if (product.variants?.[0].quantityAvailable) {
+        stockAvailable = product.variants[0].quantityAvailable;
     }
     else if (product.variant?.quantityAvailable) {
-        return product.variant.quantityAvailable;
+        stockAvailable = product.variant.quantityAvailable;
     }
-    return 0;
+    if (existLimitMax && stockLimitMax) {
+        stockAvailable = stockLimitMax;
+    }
+
+    return { stockAvailable, quantity };
 }
 
 export const getProductOnCart = (product: ISimpleProduct, items: IItems): ProductOnCart => {
@@ -73,10 +76,10 @@ export const getProductOnCart = (product: ISimpleProduct, items: IItems): Produc
 
 export const checkProductCanAddToCart = (product: ISimpleProduct, items: IItems): { canAddToCart: boolean; isStockAvailable: boolean; productOnCart: ProductOnCart; stockAvailable: number; } => {
 
-    const stockAvailable = getStockAvailable(product);
+    const {stockAvailable, quantity} = getStockAvailable(product);
     const productOnCart = getProductOnCart(product, items);
     const isStockAvailable = stockAvailable > 0;
-    const canAddToCart = ((productOnCart.quantityAvailable > productOnCart.quantity)) &&
+    const canAddToCart = ((productOnCart.quantityAvailable > quantity)) &&
         isStockAvailable;
     return { canAddToCart, isStockAvailable, productOnCart, stockAvailable };
 }
