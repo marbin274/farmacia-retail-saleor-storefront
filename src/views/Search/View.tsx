@@ -104,35 +104,41 @@ export const View: React.FC<ViewProps> = ({ match }) => {
 
   const sortOptions = [
     {
-      label: "Clear...",
+      label: "Limpiar...",
       value: null,
     },
     {
-      label: "Price Low-High",
+      label: "Precio (↑)",
       value: "price",
     },
     {
-      label: "Price High-Low",
+      label: "Precio (↓)",
       value: "-price",
     },
     {
-      label: "Name Increasing",
+      label: "Nombre (A-Z)",
       value: "name",
     },
     {
-      label: "Name Decreasing",
+      label: "Nombre (Z-A)",
       value: "-name",
     },
-    {
-      label: "Last updated Ascending",
-      value: "updated_at",
-    },
-    {
-      label: "Last updated Descending",
-      value: "-updated_at",
-    },
+    // TODO: uncomment as soon as we need to extend the cagetory filters
+    // {
+    //   label: "Last updated Ascending",
+    //   value: "updated_at",
+    // },
+    // {
+    //   label: "Last updated Descending",
+    //   value: "-updated_at",
+    // },
   ];
-  const { items: productsOnCart, addItem, removeItem, subtractItem } = useCart();
+  const {
+    items: productsOnCart,
+    addItem,
+    removeItem,
+    subtractItem,
+  } = useCart();
   const addToCart: IAddToCartCallback = (product, quantity) => {
     addItem(product, quantity);
   };

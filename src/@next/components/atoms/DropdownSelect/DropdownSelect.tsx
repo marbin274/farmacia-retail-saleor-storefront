@@ -1,8 +1,6 @@
 import React from "react";
 import { components } from "react-select";
 import { ThemeContext } from "styled-components";
-
-import { Label } from "../Label";
 import { Select } from "../Select";
 
 import { useHandlerWhenClickedOutside } from "../../../hooks";
@@ -27,7 +25,6 @@ export const DropdownSelect: React.FC<IProps> = ({
         data-cy="dropdown-select-input"
         onClick={() => setMenuIsOpen(!menuIsOpen)}
       >
-        <Label>Ordenar por:</Label>
         <S.Value>{` ${value ? value.label : ""}`}</S.Value>
         <S.Indicator rotate={String(menuIsOpen)}>
           <Icon name="select_arrow" size={10} />
@@ -43,7 +40,11 @@ export const DropdownSelect: React.FC<IProps> = ({
   };
 
   return (
-    <S.Wrapper data-cy="dropdown-select" ref={setElementRef()}>
+    <S.Wrapper
+      className="dropdown"
+      data-cy="dropdown-select"
+      ref={setElementRef()}
+    >
       <Select
         options={options}
         value={value}

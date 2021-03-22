@@ -17,9 +17,9 @@ export const ProductListHeader: React.FC<IProps> = ({
   onCloseFilterAttribute,
 }: IProps) => {
   return (
-    <S.Wrapper>
+    <S.Wrapper className="product_list_wrapper">
       <S.Wrapper className="category__container">
-        <S.Bar>
+        <S.Bar className="bar">
           <S.LeftSide>
             <S.FiltersButton
               onClick={openFiltersMenu}
@@ -27,8 +27,7 @@ export const ProductListHeader: React.FC<IProps> = ({
             >
               <S.Filters>
                 {/* TODO: uncomment as soon as we need to extend the cagetory filters */}
-                {/* Filtros */}
-                {" "}
+                {/* Filtros */}{" "}
                 {activeFilters > 0 && (
                   <>
                     <span>({activeFilters})</span>
@@ -41,13 +40,17 @@ export const ProductListHeader: React.FC<IProps> = ({
             )}
           </S.LeftSide>
 
-          <S.RightSide>
-            <S.Element data-cy="no-of-products-found_label">
+          <S.RightSide className="right_side">
+            <S.Element
+              className="products_found"
+              data-cy="no-of-products-found_label"
+            >
               <S.Label>Productos encontrados: </S.Label>
               {numberOfProducts}
             </S.Element>
+            <S.Element>Ordenar por:</S.Element>
             <S.Element>
-              <S.Sort>
+              <S.Sort className="sort">
                 <DropdownSelect
                   onChange={onChange}
                   options={sortOptions}

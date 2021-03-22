@@ -15,12 +15,13 @@ import {
 } from "@temp/@next/utils/products";
 import ItemsHandler from "@temp/@next/components/organisms/ItemsHandler/ItemsHandler";
 
-const ProductItem: React.FC<SearchResults_products_edges> = ({
-  node,
-}) => {
+const ProductItem: React.FC<SearchResults_products_edges> = ({ node }) => {
   const { items, addItem, subtractItem } = useCart();
   const product = getOneProductWithQuantity(node, items);
-  const {canAddToCart, isStockAvailable} = checkProductCanAddToCart(product, items);
+  const { canAddToCart, isStockAvailable } = checkProductCanAddToCart(
+    product,
+    items
+  );
   const isOnSale = checkProductIsOnSale(product);
   return (
     <li className="search__products__item">
@@ -54,7 +55,6 @@ const ProductItem: React.FC<SearchResults_products_edges> = ({
             />
           </div>
         )}
-
       </div>
     </li>
   );

@@ -6,7 +6,7 @@ exports[`Storyshots @components/atoms/DropdownSelect default 1`] = `
   margin: 20px;
 }
 
-.c8 {
+.c7 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -17,18 +17,12 @@ exports[`Storyshots @components/atoms/DropdownSelect default 1`] = `
   box-sizing: border-box;
 }
 
-.c4 {
-  color: #7d7d7d;
-  display: inline-block;
-  white-space: pre;
-}
-
 .c2 {
   padding-top: 1.4rem;
   margin-bottom: 1.875rem;
 }
 
-.c7 {
+.c6 {
   top: 100%;
 }
 
@@ -42,6 +36,7 @@ exports[`Storyshots @components/atoms/DropdownSelect default 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   font-size: 0.875rem;
+  z-index: 1000;
 }
 
 .c3 {
@@ -64,14 +59,14 @@ exports[`Storyshots @components/atoms/DropdownSelect default 1`] = `
   padding-bottom: 0.5rem;
 }
 
-.c5 {
+.c4 {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   margin-left: 0.625rem;
 }
 
-.c6 {
+.c5 {
   right: 1rem;
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
@@ -84,7 +79,7 @@ exports[`Storyshots @components/atoms/DropdownSelect default 1`] = `
   className="c0"
 >
   <div
-    className="c1"
+    className="dropdown c1"
     data-cy="dropdown-select"
   >
     <div
@@ -99,18 +94,13 @@ exports[`Storyshots @components/atoms/DropdownSelect default 1`] = `
           data-cy="dropdown-select-input"
           onClick={[Function]}
         >
-          <span
-            className="c4"
-          >
-            Ordenar por:
-          </span>
           <div
-            className="c5"
+            className="c4"
           >
              
           </div>
           <div
-            className="c6"
+            className="c5"
             rotate="false"
           >
             <svg
@@ -127,12 +117,12 @@ exports[`Storyshots @components/atoms/DropdownSelect default 1`] = `
         </div>
       </div>
       <div
-        className="c7"
+        className="c6"
       />
     </div>
   </div>
   <div
-    className="c8"
+    className="c7"
   />
 </div>
 `;

@@ -2,7 +2,7 @@ import { media, styled } from "@styles";
 
 export const Wrapper = styled.div`
   background-color: ${props => props.theme.tile.backgroundColor};
-  margin-top: 1.75rem !important;
+  margin-top: 1.75rem;
 `;
 
 export const Bar = styled.div`
@@ -14,7 +14,7 @@ export const Bar = styled.div`
   `}
   ${media.smallScreen`
     padding-top: 2.5rem;
-    padding-bottom: 0.5rem;
+    // padding-bottom: 0.5rem;
   `}
   font-size: ${props => props.theme.typography.smallFontSize};
 `;

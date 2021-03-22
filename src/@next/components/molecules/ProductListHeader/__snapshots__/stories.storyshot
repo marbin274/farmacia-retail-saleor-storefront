@@ -6,7 +6,7 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
   margin: 20px;
 }
 
-.c18 {
+.c17 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -17,18 +17,12 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
   box-sizing: border-box;
 }
 
-.c13 {
-  color: #7d7d7d;
-  display: inline-block;
-  white-space: pre;
-}
-
 .c11 {
   padding-top: 1.4rem;
   margin-bottom: 1.875rem;
 }
 
-.c16 {
+.c15 {
   top: 100%;
 }
 
@@ -42,6 +36,7 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   font-size: 0.875rem;
+  z-index: 1000;
 }
 
 .c12 {
@@ -64,14 +59,14 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
   padding-bottom: 0.5rem;
 }
 
-.c14 {
+.c13 {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   margin-left: 0.625rem;
 }
 
-.c15 {
+.c14 {
   right: 1rem;
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
@@ -82,7 +77,7 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
 
 .c1 {
   background-color: #f1f5f5;
-  margin-top: 1.75rem !important;
+  margin-top: 1.75rem;
 }
 
 .c2 {
@@ -147,7 +142,7 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
   display: inline-block;
 }
 
-.c17 > div {
+.c16 > div {
   margin: 0.4rem;
 }
 
@@ -160,7 +155,6 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
 @media (max-width:540px) {
   .c2 {
     padding-top: 2.5rem;
-    padding-bottom: 0.5rem;
   }
 }
 
@@ -205,13 +199,13 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
   className="c0"
 >
   <div
-    className="c1"
+    className="product_list_wrapper c1"
   >
     <div
       className="category__container c1"
     >
       <div
-        className="c2"
+        className="bar c2"
       >
         <div
           className="c3"
@@ -229,10 +223,10 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
           </button>
         </div>
         <div
-          className="c6"
+          className="right_side c6"
         >
           <span
-            className="c7"
+            className="products_found c7"
             data-cy="no-of-products-found_label"
           >
             <span
@@ -245,11 +239,16 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
           <span
             className="c7"
           >
+            Ordenar por:
+          </span>
+          <span
+            className="c7"
+          >
             <div
-              className="c9"
+              className="sort c9"
             >
               <div
-                className="c10"
+                className="dropdown c10"
                 data-cy="dropdown-select"
               >
                 <div
@@ -264,18 +263,13 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
                       data-cy="dropdown-select-input"
                       onClick={[Function]}
                     >
-                      <span
-                        className="c13"
-                      >
-                        Ordenar por:
-                      </span>
                       <div
-                        className="c14"
+                        className="c13"
                       >
                          
                       </div>
                       <div
-                        className="c15"
+                        className="c14"
                         rotate="false"
                       >
                         <svg
@@ -292,7 +286,7 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
                     </div>
                   </div>
                   <div
-                    className="c16"
+                    className="c15"
                   />
                 </div>
               </div>
@@ -301,12 +295,12 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
         </div>
       </div>
       <div
-        className="c17"
+        className="c16"
       />
     </div>
   </div>
   <div
-    className="c18"
+    className="c17"
   />
 </div>
 `;
@@ -317,7 +311,7 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
   margin: 20px;
 }
 
-.c19 {
+.c18 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -328,18 +322,12 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
   box-sizing: border-box;
 }
 
-.c14 {
-  color: #7d7d7d;
-  display: inline-block;
-  white-space: pre;
-}
-
 .c12 {
   padding-top: 1.4rem;
   margin-bottom: 1.875rem;
 }
 
-.c17 {
+.c16 {
   top: 100%;
 }
 
@@ -353,6 +341,7 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
   -ms-flex-direction: column;
   flex-direction: column;
   font-size: 0.875rem;
+  z-index: 1000;
 }
 
 .c13 {
@@ -375,14 +364,14 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
   padding-bottom: 0.5rem;
 }
 
-.c15 {
+.c14 {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   margin-left: 0.625rem;
 }
 
-.c16 {
+.c15 {
   right: 1rem;
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
@@ -393,7 +382,7 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
 
 .c1 {
   background-color: #f1f5f5;
-  margin-top: 1.75rem !important;
+  margin-top: 1.75rem;
 }
 
 .c2 {
@@ -465,7 +454,7 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
   display: inline-block;
 }
 
-.c18 > div {
+.c17 > div {
   margin: 0.4rem;
 }
 
@@ -478,7 +467,6 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
 @media (max-width:540px) {
   .c2 {
     padding-top: 2.5rem;
-    padding-bottom: 0.5rem;
   }
 }
 
@@ -523,13 +511,13 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
   className="c0"
 >
   <div
-    className="c1"
+    className="product_list_wrapper c1"
   >
     <div
       className="category__container c1"
     >
       <div
-        className="c2"
+        className="bar c2"
       >
         <div
           className="c3"
@@ -558,10 +546,10 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
           </button>
         </div>
         <div
-          className="c7"
+          className="right_side c7"
         >
           <span
-            className="c8"
+            className="products_found c8"
             data-cy="no-of-products-found_label"
           >
             <span
@@ -574,11 +562,16 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
           <span
             className="c8"
           >
+            Ordenar por:
+          </span>
+          <span
+            className="c8"
+          >
             <div
-              className="c10"
+              className="sort c10"
             >
               <div
-                className="c11"
+                className="dropdown c11"
                 data-cy="dropdown-select"
               >
                 <div
@@ -593,18 +586,13 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
                       data-cy="dropdown-select-input"
                       onClick={[Function]}
                     >
-                      <span
-                        className="c14"
-                      >
-                        Ordenar por:
-                      </span>
                       <div
-                        className="c15"
+                        className="c14"
                       >
                          
                       </div>
                       <div
-                        className="c16"
+                        className="c15"
                         rotate="false"
                       >
                         <svg
@@ -621,7 +609,7 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
                     </div>
                   </div>
                   <div
-                    className="c17"
+                    className="c16"
                   />
                 </div>
               </div>
@@ -630,12 +618,12 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
         </div>
       </div>
       <div
-        className="c18"
+        className="c17"
       />
     </div>
   </div>
   <div
-    className="c19"
+    className="c18"
   />
 </div>
 `;

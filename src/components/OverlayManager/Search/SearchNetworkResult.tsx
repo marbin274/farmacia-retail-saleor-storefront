@@ -1,16 +1,19 @@
-import { Loader } from "@app/components/atoms";
+import { Button, Loader } from "@app/components/atoms";
+import { Link } from "react-router-dom";
 import { NetworkStatus, OfflinePlaceholder } from "@temp/components";
 import { Error } from "@temp/components/Error";
 import classNames from "classnames";
 import React from "react";
 import { NothingFound, ProductItem } from "./";
 import { TypedSearchResults } from "./queries";
+import * as appPaths from "@temp/app/routes";
 
 export const SearchNetworkResult = ({
   search,
   hasResults,
   hasSearchPhrase,
 }) => {
+  const linkToSearch = appPaths.searchUrl + "?q=" + search + "";
   return (
     <div
       className={classNames("search__products", "search__products--expanded", {
@@ -46,6 +49,13 @@ export const SearchNetworkResult = ({
                             <ProductItem {...product} key={product.node.id} />
                           ))}
                         </ul>
+                        <div className="show_more_products">
+                          <Button>
+                            <Link to={linkToSearch}>
+                              Ver todos los resultados
+                            </Link>
+                          </Button>
+                        </div>
                       </>
                     );
                   }
