@@ -29,7 +29,7 @@ const LoginForm: React.FC<ILoginForm> = ({
   hideRegister = false,
 }) => {
   const [signIn, { loading, error: requestErrors }] = useSignIn();
-  const { checkout } = useCheckout();
+  const { checkout, setShippingAddress } = useCheckout();
   const {
     handleSubmit,
     handleChange,
@@ -43,7 +43,15 @@ const LoginForm: React.FC<ILoginForm> = ({
       const authenticated = await signIn(values);
       if (authenticated && hide) {
         if (checkout.id) {
-          sessionStorage.setItem("exist_checkout", "OK");
+          setShippingAddress(
+            authenticated.data.user.defaultShippingAddress,
+            authenticated.data.user.email,
+            {
+              dataTreatmentPolicy: authenticated.data.user.dataTreatmentPolicy,
+              termsAndConditions: authenticated.data.user.termsAndConditions,
+            },
+            authenticated.data.user.documentNumber
+          );
           removePaymentItems();
         }
         hide();
