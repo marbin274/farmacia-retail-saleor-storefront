@@ -29,6 +29,17 @@ export const searchProductsQuery = gql`
           ...ProductPricingField
           id
           name
+          attributes {
+            attribute {
+              id
+              name
+            }
+            values {
+              id
+              name
+              value: name
+            }
+          }
           thumbnail {
             url
             alt
