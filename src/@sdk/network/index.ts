@@ -224,19 +224,18 @@ export class NetworkManager implements INetworkManager {
           };
         })
       : [];
-
     const linesWithProperVariantUpdated: ICheckoutModelLine[] = linesWithProperVariant.map(
       line => {
         const variantPricing = line.variant.pricing?.price;
-         const totalPrice = variantPricing
+         const totalPrice  = variantPricing
           ? {
               gross: {
                 ...variantPricing.gross,
-                amount: variantPricing.gross.amount * line.quantity,
+                amount: variantPricing.gross.amount  * line.quantity,
               },
               net: {
                 ...variantPricing.net,
-                amount: variantPricing.net.amount * line.quantity,
+                amount: variantPricing.net.amount  * line.quantity,
               },
             }
           : null;

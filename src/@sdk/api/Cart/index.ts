@@ -2,7 +2,7 @@ import { ErrorListener } from "@sdk/helpers";
 import { JobsManager } from "@sdk/jobs";
 import { ErrorCartTypes } from "@sdk/jobs/Cart";
 import { NetworkManager } from "@sdk/network";
-import { CheckoutRepositoryManager, ICheckoutModel } from "@sdk/repository";
+import { CheckoutRepositoryManager, ICheckoutModel, ICheckoutModelLineVariantLocalStorage } from "@sdk/repository";
 import { SaleorState } from "@sdk/state";
 import { ISaleorStateSummeryPrices, StateItems } from "@sdk/state/types";
 
@@ -99,11 +99,11 @@ export class SaleorCartAPI extends ErrorListener implements ISaleorCartAPI {
     };
   };
 
-  addItem = async (variantId: string, quantity: number) => {
+  addItem = async (variant: ICheckoutModelLineVariantLocalStorage, quantity: number) => {
     await this.saleorState.provideCheckout(this.fireError);
 
     // 1. save in local storage
-    this.checkoutRepositoryManager.addItemToCart(variantId, quantity);
+    this.checkoutRepositoryManager.addItemToCart(variant, quantity);
 
     // 2. save online if possible (if checkout id available)
     await this.refreshCheckout(this.saleorState.checkout);
@@ -182,10 +182,11 @@ export class SaleorCartAPI extends ErrorListener implements ISaleorCartAPI {
     if (!checkout?.lines) {
       return;
     }
+    
 
     for (const line of checkout.lines) {
       if (line.quantity > 0) {
-        line.totalPrice = null;
+         line.totalPrice = null;
       }
     }
 

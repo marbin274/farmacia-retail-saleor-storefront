@@ -1,10 +1,6 @@
 import { ProductImage } from "@components/molecules";
-import { ICheckoutModelLine } from "@sdk/repository";
-import {
-  checkProductCanAddToCart,
-
-  productStickerRules
-} from "@temp/@next/utils/products";
+import { ICheckoutModelLine, ICheckoutModelLineVariantLocalStorage } from "@sdk/repository";
+import { checkProductCanAddToCart, productStickerRules } from "@temp/@next/utils/products";
 import * as React from "react";
 import Media from "react-media";
 import { ProductDescription } from "../../components";
@@ -22,7 +18,7 @@ import { ProductDetails_product } from "./gqlTypes/ProductDetails";
 class Page extends React.PureComponent<
   {
     product: ProductDetails_product;
-    add: (variantId: string, quantity: number) => any;
+    add: (variant: ICheckoutModelLineVariantLocalStorage, quantity: number) => any;
     remove: (variantId: string) => any;
     items: ICheckoutModelLine[];
   },
