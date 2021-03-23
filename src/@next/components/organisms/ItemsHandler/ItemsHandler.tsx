@@ -121,7 +121,11 @@ const ItemsHandler: FC<IProps> = ({
         </div>
       ) : (
         <div className="button">
-          <Button onClick={handleAddClick} disabled={!canAddToCart}>
+          <Button 
+          onClick={handleAddClick} 
+          disabled={!canAddToCart}
+          type="button"
+          >
             Agregar
           </Button>
         </div>

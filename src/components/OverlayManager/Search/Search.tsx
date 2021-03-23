@@ -4,6 +4,7 @@ import {
   Overlay,
   OverlayContextInterface
 } from "../..";
+import { searchUrl } from "../../../app/routes";
 import { SearchForm } from "./SearchForm";
 import { SearchNetworkResult } from "./SearchNetworkResult";
 
@@ -13,6 +14,11 @@ interface SearchProps extends RouteComponentProps {
 
 const Search = (props: SearchProps) => {
 
+  const handleSubmit = (searchQs: string) => {
+    props.overlay.hide();
+    props.history.push(`${searchUrl}?${searchQs}`);
+  };
+
   const handleInputBlur = () => {
     props.overlay.hide();
   };
@@ -21,6 +27,7 @@ const Search = (props: SearchProps) => {
       <SearchForm
         autofocus={true}
         handleInputBlur={handleInputBlur}
+        handleSubmit={handleSubmit}
       >
         {(search, hasSearchPhrase, hasResults) => {
           return <SearchNetworkResult

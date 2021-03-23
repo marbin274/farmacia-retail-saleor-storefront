@@ -284,6 +284,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           disabled={false}
           onClick={[Function]}
           size="md"
+          type="button"
         >
           <span
             className="c5"
@@ -349,6 +350,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           disabled={false}
           onClick={[Function]}
           size="md"
+          type="button"
         >
           <span
             className="c5"
@@ -414,6 +416,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           disabled={false}
           onClick={[Function]}
           size="md"
+          type="button"
         >
           <span
             className="c5"
@@ -479,6 +482,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           disabled={false}
           onClick={[Function]}
           size="md"
+          type="button"
         >
           <span
             className="c5"
@@ -544,6 +548,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           disabled={false}
           onClick={[Function]}
           size="md"
+          type="button"
         >
           <span
             className="c5"
@@ -609,6 +614,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           disabled={false}
           onClick={[Function]}
           size="md"
+          type="button"
         >
           <span
             className="c5"
@@ -674,6 +680,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           disabled={false}
           onClick={[Function]}
           size="md"
+          type="button"
         >
           <span
             className="c5"
@@ -739,6 +746,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
           disabled={false}
           onClick={[Function]}
           size="md"
+          type="button"
         >
           <span
             className="c5"
