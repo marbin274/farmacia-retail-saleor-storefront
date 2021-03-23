@@ -48,9 +48,8 @@ export const ProductListHeader: React.FC<IProps> = ({
               <S.Label>Productos encontrados: </S.Label>
               {numberOfProducts}
             </S.Element>
-            <S.Element>Ordenar por:</S.Element>
             <S.Element>
-              <S.Sort className="sort">
+              <S.Sort>
                 <DropdownSelect
                   onChange={onChange}
                   options={sortOptions}

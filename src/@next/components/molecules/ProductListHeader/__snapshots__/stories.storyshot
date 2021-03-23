@@ -6,7 +6,7 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
   margin: 20px;
 }
 
-.c17 {
+.c18 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -17,12 +17,18 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
   box-sizing: border-box;
 }
 
+.c13 {
+  color: #7d7d7d;
+  display: inline-block;
+  white-space: pre;
+}
+
 .c11 {
   padding-top: 1.4rem;
   margin-bottom: 1.875rem;
 }
 
-.c15 {
+.c16 {
   top: 100%;
 }
 
@@ -59,14 +65,14 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
   padding-bottom: 0.5rem;
 }
 
-.c13 {
+.c14 {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   margin-left: 0.625rem;
 }
 
-.c14 {
+.c15 {
   right: 1rem;
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
@@ -77,7 +83,6 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
 
 .c1 {
   background-color: #f1f5f5;
-  margin-top: 1.75rem;
 }
 
 .c2 {
@@ -142,7 +147,7 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
   display: inline-block;
 }
 
-.c16 > div {
+.c17 > div {
   margin: 0.4rem;
 }
 
@@ -239,16 +244,11 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
           <span
             className="c7"
           >
-            Ordenar por:
-          </span>
-          <span
-            className="c7"
-          >
             <div
-              className="sort c9"
+              className="c9"
             >
               <div
-                className="dropdown c10"
+                className="c10"
                 data-cy="dropdown-select"
               >
                 <div
@@ -263,13 +263,18 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
                       data-cy="dropdown-select-input"
                       onClick={[Function]}
                     >
-                      <div
+                      <span
                         className="c13"
+                      >
+                        Ordenar por:
+                      </span>
+                      <div
+                        className="c14"
                       >
                          
                       </div>
                       <div
-                        className="c14"
+                        className="c15"
                         rotate="false"
                       >
                         <svg
@@ -286,7 +291,7 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
                     </div>
                   </div>
                   <div
-                    className="c15"
+                    className="c16"
                   />
                 </div>
               </div>
@@ -295,12 +300,12 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
         </div>
       </div>
       <div
-        className="c16"
+        className="c17"
       />
     </div>
   </div>
   <div
-    className="c17"
+    className="c18"
   />
 </div>
 `;
@@ -311,7 +316,7 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
   margin: 20px;
 }
 
-.c18 {
+.c19 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -322,12 +327,18 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
   box-sizing: border-box;
 }
 
+.c14 {
+  color: #7d7d7d;
+  display: inline-block;
+  white-space: pre;
+}
+
 .c12 {
   padding-top: 1.4rem;
   margin-bottom: 1.875rem;
 }
 
-.c16 {
+.c17 {
   top: 100%;
 }
 
@@ -364,14 +375,14 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
   padding-bottom: 0.5rem;
 }
 
-.c14 {
+.c15 {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   margin-left: 0.625rem;
 }
 
-.c15 {
+.c16 {
   right: 1rem;
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
@@ -382,7 +393,6 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
 
 .c1 {
   background-color: #f1f5f5;
-  margin-top: 1.75rem;
 }
 
 .c2 {
@@ -454,7 +464,7 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
   display: inline-block;
 }
 
-.c17 > div {
+.c18 > div {
   margin: 0.4rem;
 }
 
@@ -562,16 +572,11 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
           <span
             className="c8"
           >
-            Ordenar por:
-          </span>
-          <span
-            className="c8"
-          >
             <div
-              className="sort c10"
+              className="c10"
             >
               <div
-                className="dropdown c11"
+                className="c11"
                 data-cy="dropdown-select"
               >
                 <div
@@ -586,13 +591,18 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
                       data-cy="dropdown-select-input"
                       onClick={[Function]}
                     >
-                      <div
+                      <span
                         className="c14"
+                      >
+                        Ordenar por:
+                      </span>
+                      <div
+                        className="c15"
                       >
                          
                       </div>
                       <div
-                        className="c15"
+                        className="c16"
                         rotate="false"
                       >
                         <svg
@@ -609,7 +619,7 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
                     </div>
                   </div>
                   <div
-                    className="c16"
+                    className="c17"
                   />
                 </div>
               </div>
@@ -618,12 +628,12 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
         </div>
       </div>
       <div
-        className="c17"
+        className="c18"
       />
     </div>
   </div>
   <div
-    className="c18"
+    className="c19"
   />
 </div>
 `;
