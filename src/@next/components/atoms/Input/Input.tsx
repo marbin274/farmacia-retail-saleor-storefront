@@ -105,7 +105,7 @@ export const Input: React.FC<IProps> = ({
         {type === TYPE_PASSWORD && (
           <S.IconRight
             path={
-              !inputType || inputType === TYPE_PASSWORD ? eyeSVG : closedEyeSVG
+              !inputType || inputType === TYPE_PASSWORD ? closedEyeSVG : eyeSVG
             }
             error={+error}
             disabled={disabled}
