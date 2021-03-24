@@ -121,3 +121,4 @@ export const PRODUCT_STICKERS = {
 }
 
 export const ATTRIBUTE_PROMOTION_LIMIT_MAX_NAME = "limit-max";
+export const SEARCH_PRODUCTS_QUERY_MIN_LENGTH = 3;

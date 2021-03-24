@@ -18,6 +18,7 @@ import homeIcon from "images/home.svg";
 import rightArrowIcon from "images/right-arrow.svg";
 import { Link } from "react-router-dom";
 import * as appPaths from "@temp/app/routes";
+import { SEARCH_PRODUCTS_QUERY_MIN_LENGTH } from "@temp/core/config";
 
 interface SortItem {
   label: string;
@@ -102,12 +103,12 @@ const Page: React.FC<PageProps> = ({
         <div className="search-page__header">
           <div className="search-page__header__input container">
             <DebounceChange
-              debounce={evt => {
-                if (!evt.target.value) {
+              debounce={(evt: React.ChangeEvent<any>) => {
+                const query = (evt.target?.value as string);                
+                if (!query || query.length < SEARCH_PRODUCTS_QUERY_MIN_LENGTH) {
                   return false;
                 }
-
-                setSearch((evt.target.value as string).toLowerCase());
+                setSearch(query.toLowerCase());
               }}
               value={search}
               time={500}
