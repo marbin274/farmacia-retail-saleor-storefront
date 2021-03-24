@@ -31,6 +31,7 @@ jobs:
           SENTRY_DSN: ${{ secrets.SENTRY_DSN_QA }}
           GTM_ID: ${{ secrets.GTM_ID }}
           GTM_AUTH: ${{ secrets.GTM_AUTH }}
+          CDN_URL: ${{ secrets.CDN_URL_QA }}
           GTM_PREVIEW: ${{ secrets.GTM_PREVIEW }}
           ENVIRONMENT_NAME: "qa"
 
@@ -41,6 +42,7 @@ jobs:
           API_URI: ${{ secrets.GRAPHQL_URL_PROD }}
           SENTRY_DSN: ${{ secrets.SENTRY_DSN_PROD }}
           GTM_ID: ${{ secrets.GTM_ID }}
+          CDN_URL: ${{ secrets.CDN_URL_PROD }}
           ENVIRONMENT_NAME: "prod"
 
       - name: 5- aws s3 copy qa - by ${{ github.actor }}
