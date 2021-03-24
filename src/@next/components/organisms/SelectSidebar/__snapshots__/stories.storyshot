@@ -243,6 +243,7 @@ exports[`Storyshots @components/organisms/SelectSidebar default 1`] = `
   >
     <div
       className="c2"
+      id="lightbox-modal"
       onClick={[Function]}
       open={true}
     >
@@ -688,6 +689,7 @@ exports[`Storyshots @components/organisms/SelectSidebar with footer 1`] = `
   >
     <div
       className="c2"
+      id="lightbox-modal"
       onClick={[Function]}
       open={true}
     >

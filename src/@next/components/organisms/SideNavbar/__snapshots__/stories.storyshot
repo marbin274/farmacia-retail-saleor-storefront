@@ -272,6 +272,7 @@ exports[`Storyshots @components/organisms/SideNavbar default 1`] = `
   >
     <div
       className="c2"
+      id="lightbox-modal"
       onClick={[Function]}
       open={true}
     >

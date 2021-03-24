@@ -1,0 +1,25 @@
+@import "@temp/globalStyles/scss/variables.scss";
+
+.modal{
+    &__container{
+        height: 100vh;
+        padding-top: 8rem;
+        width: 100%;
+        @media (max-width: $small-screen) {
+            padding-top: 0rem;
+        }
+    }
+}
+
+#lightbox-modal{
+    width: 48.75rem;
+    @media (max-width: $small-screen) {
+        margin-top: 1.875rem;
+         width: 19.5rem;
+    }
+    @media (max-width: $xs-small-screen) {
+        margin-top: 1.875rem;
+        width: 17.375rem;
+    }
+    
+}

@@ -133,6 +133,7 @@ module.exports = ({ sourceDir, distDir }) => ({
       GTM_ID: "__",
       GTM_AUTH: "__",
       GTM_PREVIEW: "__",
+      CDN_URL: "__",
     }),
   ],
   node: {

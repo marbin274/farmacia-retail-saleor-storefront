@@ -34,6 +34,7 @@ const Page: React.FC<IPageProps> = ({
 }) => {
   const history = useHistory();
 
+
   const redirectTo = (url?: string) => {
     if (!url) { return; };
     const baseUrlPattern = (/(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})*\/?/)
@@ -90,8 +91,6 @@ const Page: React.FC<IPageProps> = ({
         </div>
         <div className="container">
           <div className="home-page__bottom-section">
-            
-            <div className="home-page__districts-list" />
           </div>
         </div>
       </div>
