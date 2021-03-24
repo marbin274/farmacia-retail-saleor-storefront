@@ -42,7 +42,7 @@ const LoginForm: React.FC<ILoginForm> = ({
     onSubmit: async values => {
       const authenticated = await signIn(values);
       if (authenticated && hide) {
-        if (checkout.id) {
+        if (checkout?.id) {
           setShippingAddress(
             authenticated.data.user.defaultShippingAddress,
             authenticated.data.user.email,
