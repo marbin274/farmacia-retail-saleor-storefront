@@ -10,6 +10,35 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
       rel="stylesheet"
     />
+    <!-- Anti-flicker snippet (recommended)  -->
+    <style>
+      .async-hide {
+        opacity: 0 !important;
+      }
+    </style>
+    <!-- Anti-flicker snippet (recommended)  -->
+    <style>
+      .async-hide {
+        opacity: 0 !important;
+      }
+    </style>
+    <script>
+      (function(a, s, y, n, c, h, i, d, e) {
+        s.className += " " + y;
+        h.start = 1 * new Date();
+        h.end = i = function() {
+          s.className = s.className.replace(RegExp(" ?" + y), "");
+        };
+        (a[n] = a[n] || []).hide = h;
+        setTimeout(function() {
+          i();
+          h.end = null;
+        }, c);
+        h.timeout = c;
+      })(window, document.documentElement, "async-hide", "dataLayer", 4000, {
+        "<%= htmlWebpackPlugin.options.GTM_ID %>": true,
+      });
+    </script>
     <script>
       if (window.Cypress) {
         window.__REACT_DEVTOOLS_GLOBAL_HOOK__ =
@@ -21,19 +50,20 @@
   <body>
     <div id="root"></div>
     <div id="modal-root"></div>
-     <!--Start of Tawk.to Script-->
-     <script type="text/javascript">
-      var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-      (function(){
-      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-      s1.async=true;
-      s1.src='https://embed.tawk.to/602c31f1918aa261273f8717/1euma66es';
-      s1.charset='UTF-8';
-      s1.setAttribute('crossorigin','*');
-      s0.parentNode.insertBefore(s1,s0);      
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+      var Tawk_API = Tawk_API || {},
+        Tawk_LoadStart = new Date();
+      (function() {
+        var s1 = document.createElement("script"),
+          s0 = document.getElementsByTagName("script")[0];
+        s1.async = true;
+        s1.src = "https://embed.tawk.to/602c31f1918aa261273f8717/1euma66es";
+        s1.charset = "UTF-8";
+        s1.setAttribute("crossorigin", "*");
+        s0.parentNode.insertBefore(s1, s0);
       })();
-     
-      </script>
-      <!--End of Tawk.to Script-->
+    </script>
+    <!--End of Tawk.to Script-->
   </body>
 </html>
