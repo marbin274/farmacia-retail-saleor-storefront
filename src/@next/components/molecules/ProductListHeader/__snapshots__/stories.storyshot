@@ -160,6 +160,7 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
 @media (max-width:540px) {
   .c2 {
     padding-top: 2.5rem;
+    padding-bottom: 0.5rem;
   }
 }
 
@@ -204,13 +205,13 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
   className="c0"
 >
   <div
-    className="product_list_wrapper c1"
+    className="c1"
   >
     <div
       className="category__container c1"
     >
       <div
-        className="bar c2"
+        className="c2"
       >
         <div
           className="c3"
@@ -228,7 +229,7 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
           </button>
         </div>
         <div
-          className="right_side c6"
+          className="c6"
         >
           <span
             className="products_found c7"
@@ -477,6 +478,7 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
 @media (max-width:540px) {
   .c2 {
     padding-top: 2.5rem;
+    padding-bottom: 0.5rem;
   }
 }
 
@@ -521,13 +523,13 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
   className="c0"
 >
   <div
-    className="product_list_wrapper c1"
+    className="c1"
   >
     <div
       className="category__container c1"
     >
       <div
-        className="bar c2"
+        className="c2"
       >
         <div
           className="c3"
@@ -556,7 +558,7 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
           </button>
         </div>
         <div
-          className="right_side c7"
+          className="c7"
         >
           <span
             className="products_found c8"

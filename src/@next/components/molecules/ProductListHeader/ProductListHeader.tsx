@@ -17,9 +17,9 @@ export const ProductListHeader: React.FC<IProps> = ({
   onCloseFilterAttribute,
 }: IProps) => {
   return (
-    <S.Wrapper className="product_list_wrapper">
+    <S.Wrapper>
       <S.Wrapper className="category__container">
-        <S.Bar className="bar">
+        <S.Bar>
           <S.LeftSide>
             <S.FiltersButton
               onClick={openFiltersMenu}
@@ -40,7 +40,7 @@ export const ProductListHeader: React.FC<IProps> = ({
             )}
           </S.LeftSide>
 
-          <S.RightSide className="right_side">
+          <S.RightSide>
             <S.Element
               className="products_found"
               data-cy="no-of-products-found_label"

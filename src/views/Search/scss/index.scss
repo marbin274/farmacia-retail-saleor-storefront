@@ -1,4 +1,4 @@
-@import "../../../globalStyles/scss/variables.scss";
+@import "@temp/globalStyles/scss/variables.scss";
 
 .container {
   margin-top: 1rem !important;
@@ -60,17 +60,15 @@
 }
 .product_list_container {
   margin-bottom: 2rem;
-
+  > div{
+    background-color: $auna-grey-06;
+  }
   .category__container {
     border-radius: 8px;
-    background-color: $auna-grey-40 !important;
     width: 100%;
-
+    background-color: $auna-grey-06;
     span {
       &:nth-child(2) {
-        @media (max-width: $small-screen) {
-          display: none;
-        }
         color: $gray-dark;
       }
       &:nth-child(3) {

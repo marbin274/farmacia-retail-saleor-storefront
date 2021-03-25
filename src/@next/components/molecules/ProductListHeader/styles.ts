@@ -13,6 +13,7 @@ export const Bar = styled.div`
   `}
   ${media.smallScreen`
     padding-top: 2.5rem;
+    padding-bottom: 0.5rem;
   `}
   font-size: ${props => props.theme.typography.smallFontSize};
 `;
