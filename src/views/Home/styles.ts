@@ -20,7 +20,7 @@ export const TopImageDistrictBannerOpen = styled.div<{
   imageMobile: string,
   imageDesktop: string
 }>`
-  width: 69.25rem;
+  width: 45rem;
   height: 4rem; 
   cursor: pointer;
   background: no-repeat url("${(props: any) => props.imageDesktop}") transparent;
