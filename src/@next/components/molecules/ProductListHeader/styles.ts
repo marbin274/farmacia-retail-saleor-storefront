@@ -2,7 +2,6 @@ import { media, styled } from "@styles";
 
 export const Wrapper = styled.div`
   background-color: ${props => props.theme.tile.backgroundColor};
-  margin-top: 1.75rem !important;
 `;
 
 export const Bar = styled.div`

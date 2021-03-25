@@ -88,9 +88,9 @@ $custom-breakpoint: 624px;
     right: 0;
     transition: 300ms;
     height: calc(100vh - 3rem);
-    ul {
-      margin-bottom: 9rem;
-    }
+    // ul {
+    //   margin-bottom: 9rem;
+    // }
 
     &--expanded {
       right: 0;
@@ -104,6 +104,14 @@ $custom-breakpoint: 624px;
     &--not-found {
       @extend .size;
       padding: 14px;
+
+      div {
+        text-align: center;
+        padding: 1rem;
+        p {
+          font-weight: $bold-font-weight;
+        }
+      }
     }
     &__results {
       span {
@@ -279,10 +287,25 @@ $custom-breakpoint: 624px;
   }
 
   .search__products__list {
-    padding-bottom: 36px;
+    @media (max-width: $small-screen) {
+      padding-bottom: 200px;
+      padding-top: 1rem;
+    }
+    padding-bottom: 250px;
+  }
 
-    @media (max-width: $medium-screen) {
-      padding-bottom: 136px;
+  .show_more_products {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+    z-index: 1000;
+    background-color: $auna-grey-20;
+
+    span {
+      font-size: $base-font-size;
+      font-weight: $font-weight-light;
     }
   }
 }

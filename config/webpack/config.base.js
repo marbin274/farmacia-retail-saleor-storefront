@@ -106,6 +106,7 @@ module.exports = ({ sourceDir, distDir }) => ({
       filename: `${distDir}/index.html`,
       template: `${sourceDir}/index.html`,
       API_URI: process.env.API_URI,
+      GTM_ID: process.env.GTM_ID
     }),
     new ForkTsCheckerWebpackPlugin({
       tslint: true,
@@ -132,6 +133,7 @@ module.exports = ({ sourceDir, distDir }) => ({
       GTM_ID: "__",
       GTM_AUTH: "__",
       GTM_PREVIEW: "__",
+      CDN_URL: "__",
     }),
   ],
   node: {

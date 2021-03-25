@@ -243,6 +243,7 @@ exports[`Storyshots @components/organisms/Modal Modal Form 1`] = `
   >
     <div
       className="c2"
+      id="lightbox-modal"
       onClick={[Function]}
       open={true}
     >
@@ -543,6 +544,7 @@ exports[`Storyshots @components/organisms/Modal Modal Form disabled 1`] = `
   >
     <div
       className="c2"
+      id="lightbox-modal"
       onClick={[Function]}
       open={true}
     >
@@ -834,6 +836,7 @@ exports[`Storyshots @components/organisms/Modal Modal Info 1`] = `
   >
     <div
       className="c2"
+      id="lightbox-modal"
       onClick={[Function]}
       open={true}
     >

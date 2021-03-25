@@ -65,6 +65,7 @@ exports[`Storyshots @components/organisms/Overlay Position center 1`] = `
   >
     <div
       className="c2"
+      id="lightbox-modal"
       onClick={[Function]}
       open={true}
     >
@@ -159,6 +160,7 @@ exports[`Storyshots @components/organisms/Overlay Position left 1`] = `
   >
     <div
       className="c2"
+      id="lightbox-modal"
       onClick={[Function]}
       open={true}
     >
@@ -253,6 +255,7 @@ exports[`Storyshots @components/organisms/Overlay Position right 1`] = `
   >
     <div
       className="c2"
+      id="lightbox-modal"
       onClick={[Function]}
       open={true}
     >

@@ -27,8 +27,7 @@ export const ProductListHeader: React.FC<IProps> = ({
             >
               <S.Filters>
                 {/* TODO: uncomment as soon as we need to extend the cagetory filters */}
-                {/* Filtros */}
-                {" "}
+                {/* Filtros */}{" "}
                 {activeFilters > 0 && (
                   <>
                     <span>({activeFilters})</span>
@@ -42,7 +41,10 @@ export const ProductListHeader: React.FC<IProps> = ({
           </S.LeftSide>
 
           <S.RightSide>
-            <S.Element data-cy="no-of-products-found_label">
+            <S.Element
+              className="products_found"
+              data-cy="no-of-products-found_label"
+            >
               <S.Label>Productos encontrados: </S.Label>
               {numberOfProducts}
             </S.Element>

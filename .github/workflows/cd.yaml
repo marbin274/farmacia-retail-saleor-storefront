@@ -31,6 +31,7 @@ jobs:
           SENTRY_DSN: ${{ secrets.SENTRY_DSN_QA }}
           GTM_ID: ${{ secrets.GTM_ID }}
           GTM_AUTH: ${{ secrets.GTM_AUTH }}
+          CDN_URL: ${{ secrets.CDN_URL_QA }}
           GTM_PREVIEW: ${{ secrets.GTM_PREVIEW }}
           ENVIRONMENT_NAME: "qa"
 
@@ -41,6 +42,7 @@ jobs:
           API_URI: ${{ secrets.GRAPHQL_URL_PROD }}
           SENTRY_DSN: ${{ secrets.SENTRY_DSN_PROD }}
           GTM_ID: ${{ secrets.GTM_ID }}
+          CDN_URL: ${{ secrets.CDN_URL_PROD }}
           ENVIRONMENT_NAME: "prod"
 
       - name: 5- aws s3 copy qa - by ${{ github.actor }}
@@ -49,7 +51,7 @@ jobs:
         with:
           args: --follow-symlinks --delete
         env:
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}-qa
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET_QA }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_QA }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_QA }}
           AWS_REGION: ${{ secrets.AWS_REGION_QA }}
@@ -61,31 +63,27 @@ jobs:
         with:
           args: --follow-symlinks --delete
         env:
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}-prod
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET_PROD }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_PROD }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_PROD }}
           AWS_REGION: ${{ secrets.AWS_REGION_PROD }}
           SOURCE_DIR: "dist"
 
-      - name: 6- Clean Cloudfront Cache QA
+      - name: 6- Purge cache Cloudflare QA
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
-        uses: chetan/invalidate-cloudfront-action@master
+        uses: jakejarvis/cloudflare-purge-action@master
         env:
-          DISTRIBUTION: ${{ secrets.CF_STORE_DISTRIBUTION_ID_QA }}
-          PATHS: "/*"
-          AWS_REGION: ${{ secrets.AWS_REGION_QA }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_QA }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_QA }}
+          CLOUDFLARE_ZONE: ${{ secrets.CF_ZONE_ID_QA }}
+          CLOUDFLARE_TOKEN: ${{ secrets.CF_PURGE_CACHE }}
+          PURGE_URLS: ${{ secrets.PURGE_URLS_QA }}
 
-      - name: 6- Clean Cloudfront Cache PROD
+      - name: 6- Purge cache Cloudflare PROD
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/release' }}
-        uses: chetan/invalidate-cloudfront-action@master
+        uses: jakejarvis/cloudflare-purge-action@master
         env:
-          DISTRIBUTION: ${{ secrets.CF_STORE_DISTRIBUTION_ID_PROD }}
-          PATHS: "/*"
-          AWS_REGION: ${{ secrets.AWS_REGION_PROD }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_PROD }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_PROD }}
+          CLOUDFLARE_ZONE: ${{ secrets.CF_ZONE_ID_PROD }}
+          CLOUDFLARE_TOKEN: ${{ secrets.CF_PURGE_CACHE }}
+          PURGE_URLS: ${{ secrets.PURGE_URLS_PROD }}
 
       - name: 7- Notify slack success
         if: success()

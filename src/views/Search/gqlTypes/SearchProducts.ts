@@ -2,6 +2,7 @@
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
+import { ProductDetails_product_attributes } from "@temp/@sdk/queries/gqlTypes/ProductDetails";
 import { AttributeInput, ProductOrder } from "./../../../../gqlTypes/globalTypes";
 
 // ====================================================
@@ -255,6 +256,7 @@ export interface SearchProducts_products_edges_node_category {
 
 export interface SearchProducts_products_edges_node {
   __typename: "Product";
+  attributes: ProductDetails_product_attributes[];
   /**
    * Lists the storefront product's pricing, the current price and discounts, only meant for displaying.
    */

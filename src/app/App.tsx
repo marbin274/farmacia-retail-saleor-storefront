@@ -6,6 +6,8 @@ import { Routes } from "./routes";
 import { ItemsNotification } from "@temp/@next/components/atoms/ItemsNotification";
 
 const App: React.FC = () => {
+  
+
   return (
     <>
       <ItemsNotification />

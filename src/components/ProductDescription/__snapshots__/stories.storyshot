@@ -115,6 +115,7 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
           disabled={true}
           onClick={[Function]}
           size="md"
+          type="button"
         >
           <span
             className="c3"

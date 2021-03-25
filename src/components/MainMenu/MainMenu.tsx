@@ -269,7 +269,7 @@ const MainMenu: React.FC = () => {
                     </>
                   )}
                 />
-                {location.pathname !== baseUrl && (
+                {(location.pathname !== baseUrl && !location.pathname.includes("search")) && (
                   <li
                     className="main-menu__search"
                     onClick={() =>

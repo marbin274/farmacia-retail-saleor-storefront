@@ -127,7 +127,6 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
     }
     setFieldValue(name, value.code);
     selectCity(value.code, name);
-    sessionStorage.removeItem("exist_checkout");
   };
 
   const selectCity = (value: any, name: string) => {

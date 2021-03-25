@@ -47,6 +47,7 @@ export const aunaGrey80 = "#B8BCD5";
 export const aunaGrey60 = "#E4E5ED";
 export const aunaGrey40 = "#F1F2F7";
 export const aunaGrey20 = "#F6F8FA"; 
+export const aunaGrey06 = "#f9f9f9";
 export const aunaGreyDark = "#E8E8E8";
 
 export const aunaComplementary1 = "#E6F6F9";
@@ -65,6 +66,7 @@ export const theme = {
   aunaDisabled: aunaGrey80,
   aunaDisabledBackground: aunaGrey40,
   aunaError,
+  aunaGrey06,
   aunaInteractive,
   aunaInteractiveHover,
   aunaInteractivePressed,

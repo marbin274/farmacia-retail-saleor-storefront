@@ -32,6 +32,7 @@ export const Overlay: React.FC<IProps> = ({
             transparent={transparent}
           >
             <S.Lightbox
+              id="lightbox-modal"
               {...animationProps}
               state={state}
               onClick={(e: { stopPropagation: () => any }) =>

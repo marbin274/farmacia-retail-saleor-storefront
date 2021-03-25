@@ -4,10 +4,12 @@ import {
   ISubstractItemToCartCallback,
 } from "@temp/@next/components/molecules/ProductTileAUNA/types";
 import { useCart } from "@temp/@sdk/react";
+import { searchUrl } from "@temp/app/routes";
 import { MetaWrapper } from "@temp/components";
 import { SearchForm } from "@temp/components/OverlayManager/Search/SearchForm";
 import { SearchNetworkResult } from "@temp/components/OverlayManager/Search/SearchNetworkResult";
 import * as React from "react";
+import { useHistory } from "react-router";
 
 import Page from "./Page";
 import { TypedHomePageQuery } from "./queries";
@@ -20,6 +22,12 @@ const View: React.FC = () => {
     removeItem,
     subtractItem,
   } = useCart();
+  const history = useHistory();
+
+  const handleSubmit = (searchQs: string) => {
+    history.push(`${searchUrl}?${searchQs}`);
+  };
+
   return (
     <div className="home-page">
       <TypedHomePageQuery alwaysRender errorPolicy="all" loaderFull>
@@ -44,7 +52,9 @@ const View: React.FC = () => {
               }}
             >
               <SearchForm
-                autofocus={false}>
+                autofocus={false}
+                handleSubmit={handleSubmit}
+                >
                 {(search, hasSearchPhrase, hasResults) => {
                   if (hasSearchPhrase) {
                     document.body.style.overflow = "hidden";

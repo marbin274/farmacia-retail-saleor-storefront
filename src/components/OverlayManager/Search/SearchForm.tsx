@@ -1,3 +1,4 @@
+import { SEARCH_PRODUCTS_QUERY_MIN_LENGTH } from "@temp/core/config";
 import classNames from "classnames";
 import closeImg from "images/close.svg";
 import searchImg from "images/search.svg";
@@ -28,7 +29,7 @@ export const SearchForm: React.FC<SearchFormProps> = ({
 }) => {
   const [search, setSearch] = React.useState<string>("");
   const textFieldRef = React.useRef<HTMLInputElement>(null);
-  const hasSearchPhrase = search.length >= 3;
+  const hasSearchPhrase = search.length >= SEARCH_PRODUCTS_QUERY_MIN_LENGTH;
 
   const hasResults = (data: SearchResults) =>
     maybe(() => !!data.products.edges.length);

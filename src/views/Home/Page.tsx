@@ -13,6 +13,9 @@ import BannerDesktop from "images/auna/home-banner-top.png";
 import { ProductsFeatured } from "./";
 import { HomePage_shop } from "./gqlTypes/HomePage";
 import { TypedHomePageQuery } from "./queries";
+import { cndUrl } from '@temp/constants';
+import { ModalBackground } from '@temp/@next/components/organisms/ModalBackground/ModalBackground';
+import * as S from "./styles";
 import "./scss/index.scss";
 
 interface IPageProps {
@@ -33,6 +36,13 @@ const Page: React.FC<IPageProps> = ({
   substractItemToCart,
 }) => {
   const history = useHistory();
+  const [showModal, setShowModal] = React.useState<boolean>(false);
+  const imageCoverageDistrictDesktop = `${cndUrl}/media/banner_coverage/home-banner-coverage-delivery.png`
+  const imageCoverageDistrictMobile = `${cndUrl}/media/banner_coverage/home-banner-coverage-delivery-mobile.png`
+  const imageOpenBannerDesktop = `${cndUrl}/media/banner_coverage/top-banner-district.png`;
+  const imageOpenBannerMobile = `${cndUrl}/media/banner_coverage/top-banner-district-mobile.png`;
+
+
 
   const redirectTo = (url?: string) => {
     if (!url) { return; };
@@ -49,6 +59,18 @@ const Page: React.FC<IPageProps> = ({
   }
   return (
     <>
+      <S.WraperOpenBanner onClick={()=>{ setShowModal(true) }}>
+        <S.TopImageDistrictBannerOpen
+          imageDesktop={imageOpenBannerDesktop}
+          imageMobile= {imageOpenBannerMobile} >
+        </S.TopImageDistrictBannerOpen>    
+      </S.WraperOpenBanner>
+      <ModalBackground
+        imageDesktop={imageCoverageDistrictDesktop}
+        imageMobile={imageCoverageDistrictMobile} 
+        hide={() => { setShowModal(false) }} 
+        show={showModal} 
+      />
       <div className="banner-container">
         <TypedHomePageQuery alwaysRender errorPolicy="all" loaderFull>
           {({ data }) => {
@@ -90,8 +112,6 @@ const Page: React.FC<IPageProps> = ({
         </div>
         <div className="container">
           <div className="home-page__bottom-section">
-            
-            <div className="home-page__districts-list" />
           </div>
         </div>
       </div>

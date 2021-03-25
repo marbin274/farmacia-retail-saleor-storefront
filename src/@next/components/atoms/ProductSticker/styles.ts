@@ -2,9 +2,8 @@ import { media, styled } from "@styles";
 import { white } from "@styles/constants";
 
 export const ProductSticker = styled.p<{
-  backgroundColor: string
-}
-  >`
+  backgroundColor: string;
+}>`
 position: absolute;
 top: -19px;
 left: -53px;
@@ -18,7 +17,6 @@ justify-content: center;
 align-items: flex-end;
 padding: 12px;
 font-size: 16px;
-z-index: 2;
 
 ${media.largeScreen`
   top: -25px;
