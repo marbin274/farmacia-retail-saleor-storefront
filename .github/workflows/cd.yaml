@@ -29,7 +29,7 @@ jobs:
         env:
           API_URI: ${{ secrets.GRAPHQL_URL_QA }}
           SENTRY_DSN: ${{ secrets.SENTRY_DSN_QA }}
-          GTM_ID: ${{ secrets.GTM_ID }}
+          GTM_ID: ${{ secrets.GTM_ID_QA }}
           GTM_AUTH: ${{ secrets.GTM_AUTH }}
           CDN_URL: ${{ secrets.CDN_URL_QA }}
           GTM_PREVIEW: ${{ secrets.GTM_PREVIEW }}
@@ -41,7 +41,7 @@ jobs:
         env:
           API_URI: ${{ secrets.GRAPHQL_URL_PROD }}
           SENTRY_DSN: ${{ secrets.SENTRY_DSN_PROD }}
-          GTM_ID: ${{ secrets.GTM_ID }}
+          GTM_ID: ${{ secrets.GTM_ID_PROD }}
           CDN_URL: ${{ secrets.CDN_URL_PROD }}
           ENVIRONMENT_NAME: "prod"
 
