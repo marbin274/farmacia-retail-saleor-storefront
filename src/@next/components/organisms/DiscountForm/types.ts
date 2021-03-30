@@ -17,4 +17,6 @@ export interface IProps {
   handleSubmit?: (formData: IDiscountFormData | undefined) => void;
   handleChange?: (e: React.ChangeEvent) => void;
   handleBlur?: (e: React.FocusEvent) => void;
+  setShowLabelCupon: (show: boolean) => void;
+
 }

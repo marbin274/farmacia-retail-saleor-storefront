@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-
+import React from "react";
 import { PaymentGatewaysList } from "../PaymentGatewaysList";
 
 import * as S from "./styles";
 import { IProps } from "./types";
+import checkoutCupon from "@temp/images/auna/checkout-cupon-small.svg";
 
-import { Checkbox } from "@components/atoms";
 import { DiscountForm } from "../DiscountForm";
 import { IDiscountFormData } from "../DiscountForm/types";
+import ReactSVG from "react-svg";
 
 /**
  * Payment options used in checkout.
@@ -36,25 +36,8 @@ const CheckoutPayment: React.FC<IProps> = ({
   totalPrice,
   userDataForNiubiz,
 }: IProps) => {
-  const [showPromoCodeForm, setShowPromoCodeForm] = useState(
-    !!promoCodeDiscount?.voucherCode
-  );
 
-  useEffect(() => {
-    const isVoucherCode = !!promoCodeDiscount?.voucherCode;
-    if (isVoucherCode) {
-      setShowPromoCodeForm(isVoucherCode);
-    }
-  }, [promoCodeDiscount?.voucherCode]);
-
-  const handleChangeShowPromoCodeForm = () => {
-    setShowPromoCodeForm(!showPromoCodeForm);
-    promoCodeErrors = [];
-    if (promoCodeDiscount && promoCodeDiscount.voucherCode) {
-      removeVoucherCode(promoCodeDiscount.voucherCode);
-    }
-    clearPromoCodeErrors();
-  };
+  const [showLabelCupon, setShowLabelCupon] = React.useState<boolean>(true);
 
   const handleSubmitPromoCode = (discountForm?: IDiscountFormData) => {
     const newPromoCode = discountForm?.promoCode;
@@ -69,32 +52,30 @@ const CheckoutPayment: React.FC<IProps> = ({
 
   return (
     <S.Wrapper>
-      <Checkbox
-        data-cy="checkoutPaymentPromoCodeCheckbox"
-        name="payment-promo-code"
-        checked={showPromoCodeForm}
-        onChange={handleChangeShowPromoCodeForm}
-      >
-        Tengo un código promocional
-      </Checkbox>
-      {showPromoCodeForm && (
-        <S.DiscountField>
-          <DiscountForm
-            discount={{
-              promoCode: promoCodeDiscount?.voucherCode,
-              voucherDiscountType: promoCodeDiscount?.voucherDiscountType,
-              voucherDiscountValue: promoCodeDiscount?.voucherDiscountValue,
-              voucherType: promoCodeDiscount?.voucherType,
-            }}
-            formId={promoCodeDiscountFormId}
-            formRef={promoCodeDiscountFormRef}
-            handleSubmit={handleSubmitPromoCode}
-            addPromoCode={handleSubmitPromoCode}
-            removeVoucher={removeVoucherCode}
-            errors={promoCodeErrors}
-          />
-        </S.DiscountField>
-      )}
+      { showLabelCupon && (<S.CuponWraper>
+        <ReactSVG path={checkoutCupon} className={"checkout_icon"} />
+        <S.CuponLabel>
+          Tengo un código promocional
+        </S.CuponLabel>
+      </S.CuponWraper>
+      )}  
+      <S.DiscountField>
+        <DiscountForm
+          setShowLabelCupon= {(show)=>{setShowLabelCupon(show)}}
+          discount={{
+            promoCode: promoCodeDiscount?.voucherCode,
+            voucherDiscountType: promoCodeDiscount?.voucherDiscountType,
+            voucherDiscountValue: promoCodeDiscount?.voucherDiscountValue,
+            voucherType: promoCodeDiscount?.voucherType,
+          }}
+          formId={promoCodeDiscountFormId}
+          formRef={promoCodeDiscountFormRef}
+          handleSubmit={handleSubmitPromoCode}
+          addPromoCode={handleSubmitPromoCode}
+          removeVoucher={removeVoucherCode}
+          errors={promoCodeErrors}
+        />
+      </S.DiscountField>
       <PaymentGatewaysList
         errors={gatewayErrors}
         paymentGateways={paymentGateways}

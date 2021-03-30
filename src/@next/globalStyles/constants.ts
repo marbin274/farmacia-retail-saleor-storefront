@@ -62,6 +62,7 @@ export const aunaBlackGray = "#454545";
 // theme colors
 export const theme = {
   activeMenuOption: darkGreen,
+  aunaBlack,
   aunaBlackGray,
   aunaDisabled: aunaGrey80,
   aunaDisabledBackground: aunaGrey40,

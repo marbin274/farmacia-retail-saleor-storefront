@@ -1,7 +1,11 @@
 import { media, styled } from "@styles";
+import { turquoise } from '@styles/constants';
+
+
 
 export const DiscountForm = styled.form`
   .promoCode {
+    padding: 1.25rem;
     margin-top: 1rem;
     div:nth-child(1){
       padding: 0;
@@ -37,17 +41,19 @@ export const DiscountForm = styled.form`
     margin-left: -3px;
     span{
       margin-left: 1rem;
-      color: ${props => props.theme.colors.aunaOrange};
-      font-size: ${props => props.theme.typography.bigFontSize};
+      color: ${props => props.theme.colors.aunaBlack};
+      font-size: ${props => props.theme.typography.smallFontSize};
       font-weight: ${props => props.theme.typography.normalFontWeight};
       margin-right: 1rem;
-      padding-top: 2.5px;
+      
+      font-weight: 600;
     }
   }
   .voucherDescription {
-    font-size: ${props => props.theme.typography.smallFontSize};
+    margin-left: 35px;
+    font-size: ${props => props.theme.typography.labelFontSize};
     font-weight: ${props => props.theme.typography.normalFontWeight};
-    color: ${props => props.theme.colors.aunaOrange};
+    color: ${props => props.theme.colors.aunaBlack};
   }
 
   ${media.smallScreen`
@@ -81,5 +87,19 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const ChipsWrapper = styled.div`
-  margin: 0.4rem 0 0 0;
+  padding: 1.25rem;
+  width: 328px;
+  height: 7rem;
+  background: #F6F8FA;
+  border-radius: 1rem;
+  ${media.smallScreen`
+    width: 100%;
+    padding-left: 1.875rem;
+  `}
+  `;
+export const LinkWrapper = styled.span`
+  margin-top: 0.9375rem;
+  color: ${turquoise};
+  cursor: pointer;
+  font-size: ${props => props.theme.typography.smallFontSize};
 `;

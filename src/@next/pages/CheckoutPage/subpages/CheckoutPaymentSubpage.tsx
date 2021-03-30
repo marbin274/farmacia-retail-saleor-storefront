@@ -9,7 +9,6 @@ import {
 } from "@temp/core/config";
 import { IAddress, ICardData, IFormError } from "@types";
 import { filterNotEmptyArrayItems } from "@utils/misc";
-import ErrorPaymentIcon from "images/auna/credit-card-cancel.svg";
 import ErrorPromoCodeIcon from "images/auna/promo-code-error.svg";
 import PromoCodeCorrect from "images/auna/promo-code-correct.svg";
 import React, {
@@ -214,18 +213,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
       setBillingErrors(errors);
     } else {
       setBillingErrors([]);
-      if (!selectedPaymentGateway) {
-        changeSubmitProgress(false);
-        alertService.sendAlert({
-          buttonText: "Entendido",
-          icon: ErrorPaymentIcon,
-          message:
-            "Es necesario seleccionar el método de pago para poder procesar el pago.",
-          title: "Seleccione el método de pago",
-          type: "Info",
-        });
-        setGatewayErrors([{ message: "Seleccione el método de pago" }]);
-      } else if (promoCodeDiscountFormRef.current) {
+      if (promoCodeDiscountFormRef.current) {
         promoCodeDiscountFormRef.current?.dispatchEvent(
           new Event("submit", { cancelable: true })
         );

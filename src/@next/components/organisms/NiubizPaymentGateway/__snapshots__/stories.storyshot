@@ -122,9 +122,18 @@ exports[`Storyshots @components/organisms/NiubizPaymentGateway default 1`] = `
   margin-bottom: -2rem;
 }
 
+.c4 .number-creditcard-error {
+  margin-top: 0;
+}
+
 .c4 .creditcard {
   margin-top: 1rem;
   margin-bottom: 1.5rem;
+}
+
+.c4 .creditcard #txtNumeroTarjeta {
+  background-color: #fff;
+  height: 3rem;
 }
 
 .c4 .creditcard #txtNumeroTarjeta iframe {
@@ -137,6 +146,11 @@ exports[`Storyshots @components/organisms/NiubizPaymentGateway default 1`] = `
   display: flex;
   width: 100%;
   border-radius: 4px;
+  border-color: #e4e5ed;
+}
+
+.c4 .creditcard #txtNumeroTarjeta input {
+  background-color: #fff;
 }
 
 .c4 .expirydate_and_cvv {
@@ -170,6 +184,12 @@ exports[`Storyshots @components/organisms/NiubizPaymentGateway default 1`] = `
   display: flex;
   width: 100%;
   border-radius: 4px;
+  background-color: #fff;
+  border-color: #e4e5ed;
+}
+
+.c4 .expirydate_and_cvv #txtCvv {
+  margin-bottom: 20px;
 }
 
 .c4 .expirydate_and_cvv #txtCvv iframe {
@@ -182,6 +202,13 @@ exports[`Storyshots @components/organisms/NiubizPaymentGateway default 1`] = `
   display: flex;
   width: 100%;
   border-radius: 4px;
+  background-color: #fff;
+  border-color: #e4e5ed;
+}
+
+.c4 .card-title {
+  fontsize: 26px;
+  line-height: 2.1875rem;
 }
 
 .c4 input {
@@ -190,9 +217,10 @@ exports[`Storyshots @components/organisms/NiubizPaymentGateway default 1`] = `
   border: none;
   color: #131336;
   width: 100%;
+  height: 3rem;
   font-size: 0.9rem;
   outline: none;
-  background-color: transparent;
+  background-color: #fff;
   border-radius: 4px;
   border: 1px solid #e4e5ed;
 }
@@ -215,6 +243,50 @@ exports[`Storyshots @components/organisms/NiubizPaymentGateway default 1`] = `
 
 .c4 .niubiz-logo-container {
   margin-top: 5px;
+}
+
+@media (max-width:540px) {
+  .c3 {
+    width: 20.5rem;
+    background-color: #F6F8FA;
+    border-radius: 1rem;
+    padding: 0.9375rem;
+  }
+}
+
+@media (max-width:540px) {
+  .c4 .identity {
+    display: block;
+  }
+
+  .c4 .identity div:nth-child(1) {
+    width: auto;
+  }
+
+  .c4 .identity div:nth-child(2) {
+    width: auto;
+    margin-left: 0;
+  }
+}
+
+@media (max-width:540px) {
+  .c4 .expirydate_and_cvv {
+    display: block;
+  }
+}
+
+@media (max-width:540px) {
+  .c4 .expirydate_and_cvv .expirydate {
+    width: auto;
+  }
+}
+
+@media (max-width:540px) {
+  .c4 .expirydate_and_cvv .cvv {
+    width: auto;
+    margin-left: 0;
+    margin-top: 2.5rem;
+  }
 }
 
 <div
@@ -253,10 +325,10 @@ exports[`Storyshots @components/organisms/NiubizPaymentGateway default 1`] = `
             <h4
               className="card-title"
             >
-              Paga con tarjetas de crédito/débito
+              Paga con tu tarjeta  de crédito o débito
             </h4>
             <h5>
-              INGRESA LOS DATOS DE LA TARJETA
+              Ingresa los datos como aparece en la tarjeta
             </h5>
             <div
               className="row"
@@ -320,7 +392,6 @@ exports[`Storyshots @components/organisms/NiubizPaymentGateway default 1`] = `
                 />
                 
               </div>
-              <br />
               <div
                 className="expirydate_and_cvv"
               >
@@ -351,16 +422,6 @@ exports[`Storyshots @components/organisms/NiubizPaymentGateway default 1`] = `
                     id="txtCvv"
                   />
                   
-                </div>
-              </div>
-              <div>
-                <label>
-                  Pagos seguros con:
-                </label>
-                <div
-                  className="niubiz-logo-container"
-                >
-                  <div />
                 </div>
               </div>
             </div>

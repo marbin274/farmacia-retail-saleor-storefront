@@ -103,3 +103,13 @@ export const Tile = styled.label<{ checked: boolean }>`
   font-size: ${props => props.theme.typography.smallFontSize};
   cursor: pointer;
 `;
+
+export const CuponWraper = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+    margin-bottom: 20px;
+`;
+export const CuponLabel = styled.span`
+    margin-left: 0.625rem;
+`;
