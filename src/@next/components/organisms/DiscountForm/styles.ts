@@ -6,7 +6,6 @@ import { turquoise } from '@styles/constants';
 export const DiscountForm = styled.form`
   .promoCode {
     padding: 1.25rem;
-    margin-top: 1rem;
     div:nth-child(1){
       padding: 0;
       span:nth-child(1) {
@@ -54,6 +53,7 @@ export const DiscountForm = styled.form`
     font-size: ${props => props.theme.typography.labelFontSize};
     font-weight: ${props => props.theme.typography.normalFontWeight};
     color: ${props => props.theme.colors.aunaBlack};
+    padding-bottom: 0.375rem;
   }
 
   ${media.smallScreen`
@@ -75,7 +75,15 @@ export const InputWithButton = styled.div`
 `;
 
 export const InputWrapper = styled.div`
-  flex: 1;
+  width: 21.875rem; 
+  ${media.largeScreen`
+    flex: auto;
+  `}
+  ${media.smallScreen`
+    flex: 1;
+    width: 100%;
+    max-width: 100%;
+  `}
 `;
 
 export const ButtonWrapper = styled.div`
@@ -102,4 +110,6 @@ export const LinkWrapper = styled.span`
   color: ${turquoise};
   cursor: pointer;
   font-size: ${props => props.theme.typography.smallFontSize};
+  margin-left: 2.125rem;
 `;
+

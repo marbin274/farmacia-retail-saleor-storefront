@@ -1,4 +1,4 @@
-import { DefaultTheme, styled, media } from "@styles";
+import { DefaultTheme, styled } from "@styles";
 
 export const Wrapper = styled.div`
   display: grid;
@@ -58,12 +58,5 @@ export const PaymentSubtitle = styled.span`
   margin-bottom: 0.625rem;
 `;
 
-export const WrappedFormVisa = styled.div`
-  ${media.smallScreen`
-   width: 20.5rem;
-   background-color: #F6F8FA;
-   border-radius: 1rem;
-   padding: 0.9375rem;
-  `}
-`;
+
 

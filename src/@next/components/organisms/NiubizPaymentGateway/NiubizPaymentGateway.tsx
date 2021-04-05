@@ -458,7 +458,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                       </div>
                     </div>
                     <div className="email">
-                      <label htmlFor="">Email</label>
+                      <label htmlFor="">Correo</label>
                       <input
                         type="text"
                         id="email"

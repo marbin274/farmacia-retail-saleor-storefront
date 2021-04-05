@@ -142,3 +142,4 @@ export const xLargeScreen = 1280;
 export const largeScreen = 992;
 export const mediumScreen = 720;
 export const smallScreen = 540;
+export const xSmallScreen = 340;

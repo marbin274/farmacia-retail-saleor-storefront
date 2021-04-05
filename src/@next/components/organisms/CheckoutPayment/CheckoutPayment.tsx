@@ -55,7 +55,7 @@ const CheckoutPayment: React.FC<IProps> = ({
       { showLabelCupon && (<S.CuponWraper>
         <ReactSVG path={checkoutCupon} className={"checkout_icon"} />
         <S.CuponLabel>
-          Tengo un código promocional
+          Tengo un cupón de descuento
         </S.CuponLabel>
       </S.CuponWraper>
       )}  

@@ -41,19 +41,26 @@ exports[`Storyshots @components/templates/Checkout default 1`] = `
 
 .c4 {
   grid-area: checkout;
-  padding: 3rem 0;
-  max-width: 34rem;
+  padding: 1rem 0;
+  max-width: 43rem;
 }
 
 .c5 {
   grid-area: cartSummary;
-  padding-top: 6rem;
+  padding-top: 1rem;
 }
 
 .c6 {
   grid-area: button;
-  text-align: center;
-  max-width: 34rem;
+  max-width: 16.25rem;
+}
+
+.c6 >:first-child {
+  padding: 0.9rem 1.5rem;
+}
+
+.c6 >:first-child >:first-child {
+  font-size: 1rem;
 }
 
 @media (max-width:992px) {
@@ -73,6 +80,32 @@ exports[`Storyshots @components/templates/Checkout default 1`] = `
   .c5 {
     position: fixed;
     bottom: 0;
+  }
+}
+
+@media (max-width:540px) {
+  .c6 {
+    max-width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width:540px) {
+  .c6 >:first-child >:first-child {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width:340px) {
+  .c6 >:first-child >:first-child {
+    font-size: 0.875rem;
   }
 }
 

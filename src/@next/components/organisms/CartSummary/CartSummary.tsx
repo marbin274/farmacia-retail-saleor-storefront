@@ -37,7 +37,10 @@ const Costs = ({ promoCode, shipping, total }: ICosts) => (
     {promoCode && promoCode.gross!.amount > 0 && (
       <CostLine name="Promo Code" cost={promoCode} negative={true} />
     )}
-    {total && <CostLine name="Total" cost={total} last={true} />}
+    {total && (
+      <S.CostTotalWrapper>
+        <CostLine name="Total" cost={total} last={true} />
+      </S.CostTotalWrapper>)}
   </S.Costs>
 );
 

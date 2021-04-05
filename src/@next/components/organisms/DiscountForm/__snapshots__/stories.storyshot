@@ -118,7 +118,6 @@ exports[`Storyshots @components/organisms/DiscountForm default 1`] = `
 
 .c1 .promoCode {
   padding: 1.25rem;
-  margin-top: 1rem;
 }
 
 .c1 .promoCode div:nth-child(1) {
@@ -178,6 +177,7 @@ exports[`Storyshots @components/organisms/DiscountForm default 1`] = `
   font-size: 0.75rem;
   font-weight: 400;
   color: #131336;
+  padding-bottom: 0.375rem;
 }
 
 .c2 {
@@ -192,9 +192,7 @@ exports[`Storyshots @components/organisms/DiscountForm default 1`] = `
 }
 
 .c4 {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
+  width: 21.875rem;
 }
 
 @media (max-width:540px) {
@@ -208,6 +206,24 @@ exports[`Storyshots @components/organisms/DiscountForm default 1`] = `
   .c1 .promoCode button {
     float: right;
     margin-top: -3rem;
+  }
+}
+
+@media (max-width:992px) {
+  .c4 {
+    -webkit-flex: auto;
+    -ms-flex: auto;
+    flex: auto;
+  }
+}
+
+@media (max-width:540px) {
+  .c4 {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    width: 100%;
+    max-width: 100%;
   }
 }
 
@@ -249,7 +265,7 @@ exports[`Storyshots @components/organisms/DiscountForm default 1`] = `
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
-                    placeholder="Inserta tu código"
+                    placeholder="Ingresa tu cupón"
                   />
                   
                 </div>

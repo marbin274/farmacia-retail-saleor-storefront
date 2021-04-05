@@ -247,7 +247,6 @@ exports[`Storyshots @components/organisms/NiubizPaymentGateway default 1`] = `
 
 @media (max-width:540px) {
   .c3 {
-    width: 20.5rem;
     background-color: #F6F8FA;
     border-radius: 1rem;
     padding: 0.9375rem;
@@ -369,7 +368,7 @@ exports[`Storyshots @components/organisms/NiubizPaymentGateway default 1`] = `
                 <label
                   htmlFor=""
                 >
-                  Email
+                  Correo
                 </label>
                 <input
                   className="form-control form-control-sm"

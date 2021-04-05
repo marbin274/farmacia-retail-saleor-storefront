@@ -3,7 +3,6 @@ import { styled, media } from "@styles";
 export const Wrapper = styled.div`
   margin-top: 20px;
   ${media.smallScreen`
-   width: 20.5rem;
    background-color: #F6F8FA;
    border-radius: 1rem;
    padding: 0.9375rem;

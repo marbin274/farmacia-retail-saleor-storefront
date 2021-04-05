@@ -104,7 +104,7 @@ export const DiscountForm: React.FC<IProps> = ({
                           name="inputCode"
                           value={promoCode ? values.inputCode : undefined}
                           label=""
-                          placeholder="Inserta tu código"
+                          placeholder="Ingresa tu cupón"
                           onChange={handleChange}
                           onFocus={() => {
                             errors = null;
