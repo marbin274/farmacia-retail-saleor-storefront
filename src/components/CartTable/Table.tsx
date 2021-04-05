@@ -30,11 +30,10 @@ const Table: React.FC<TableProps> = ({
       <table className="cart-table">
         <thead>
           <tr>
-            <th>Products</th>
-            {mediumScreen && <th>Price</th>}
-            <th>Variant</th>
-            <th className="cart-table__quantity-header">Quantity</th>
-            <th colSpan={2}>{mediumScreen ? "Total Price" : "Price"}</th>
+            <th>Productos</th>
+            <th>Precio</th>
+            <th className="cart-table__quantity-header">Cantidad</th>
+            <th colSpan={2} className="cart-table__total-header">Subtotal</th>
           </tr>
         </thead>
         <tbody>
@@ -56,22 +55,23 @@ const Table: React.FC<TableProps> = ({
           {discount && (
             <CostRow
               mediumScreen={mediumScreen}
-              heading={`Discount: ${discountName}`}
+              heading={`Descuento: ${discountName}`}
               cost={discount}
             />
           )}
           {deliveryCost && (
             <CostRow
               mediumScreen={mediumScreen}
-              heading="Delivery Cost"
+              heading="Costo del delivery"
               cost={deliveryCost}
             />
           )}
           {totalCost && (
             <CostRow
               mediumScreen={mediumScreen}
-              heading="Total Cost"
+              heading="Total"
               cost={totalCost}
+              bold
             />
           )}
         </tfoot>

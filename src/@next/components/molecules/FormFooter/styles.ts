@@ -1,15 +1,27 @@
-import { styled } from "@styles";
+import { defaultTheme, styled } from "@styles";
 
 export const Footer = styled.div<{ divider: boolean }>`
   position: relative;
-  text-align: right;
-  padding: ${props => `1.1rem ${props.theme.spacing.gutter}`} 5rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  @media (max-width: ${defaultTheme.breakpoints.smallScreen}) {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  padding: ${props => `1.1rem ${props.theme.spacing.gutter}`};
   ${({ divider, theme }) =>
     divider && `border-top: 1px solid ${theme.colors.light};`}
+
   button {
     &:last-child {
       margin-left: 2rem;
-      margin-right: 0.7rem;
+
+      @media (max-width: ${defaultTheme.breakpoints.smallScreen}) {
+        margin-left: 0;
+      }
     }
   }
 `;

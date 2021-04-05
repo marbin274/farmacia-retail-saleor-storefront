@@ -4,6 +4,7 @@ import { IconButton } from "@components/atoms";
 
 import * as S from "./styles";
 import { IProps } from "./types";
+import { turquoise } from "@temp/@next/globalStyles/constants";
 
 export const CardHeader: React.FC<IProps> = ({
   children,
@@ -22,7 +23,7 @@ export const CardHeader: React.FC<IProps> = ({
       ) : (
         <S.Paragraph>{children}</S.Paragraph>
       )}
-      {withCloseIcon && <IconButton name="x" size={19} onClick={onHide} />}
+      {withCloseIcon && <IconButton name="x" color={turquoise} size={19} onClick={onHide} />}
       {customIcon}
     </S.Header>
   );

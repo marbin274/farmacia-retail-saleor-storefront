@@ -51,4 +51,18 @@ describe("<Button />", () => {
       defaultTheme.button.typography.smallFontSize
     );
   });
+
+  it("uses correct styles for outline button", () => {
+    const ButtonComponent = mount(<Button outline />);
+
+    expect(ButtonComponent).toHaveStyleRule(
+      "border",
+      `1px solid ${defaultTheme.colors.aunaInteractive}`
+    );
+
+    expect(ButtonComponent).toHaveStyleRule(
+      "background-color",
+      'transparent'
+    );
+  });
 });

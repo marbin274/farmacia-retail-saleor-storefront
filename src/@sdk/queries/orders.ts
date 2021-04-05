@@ -14,6 +14,7 @@ export const ordersByUser = gql`
             id
             token
             number
+            status
             statusDisplay
             created
             total {

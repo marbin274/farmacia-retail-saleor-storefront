@@ -45,7 +45,7 @@ describe("<AccountTile />", () => {
   it("should show basic view on load", () => {
     const wrapper = mount(<AccountTile />);
 
-    expect(wrapper.find(Attribute)).toHaveLength(2);
+    expect(wrapper.find(Attribute)).toHaveLength(4);
   });
 
   it("should change view to password change view when clicked on edit icon", () => {

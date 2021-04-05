@@ -6,11 +6,12 @@ export const Wrapper = styled.div`
   /* height: auto; */
   padding-left: 3rem;
   padding-top: 2.5rem;
+  border-radius: 0.5rem;
 `;
 
 export const MenuHeader = styled.div`
-  font-size: ${props => props.theme.typography.h3FontSize};
-  font-weight: ${props => props.theme.typography.boldFontWeight};
+  font-size: 1.5rem;
+  font-weight: ${props => props.theme.typography.normalFontWeight};
   text-transform: "uppercase";
   padding-bottom: 2rem;
 `;

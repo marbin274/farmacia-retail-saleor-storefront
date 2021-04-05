@@ -22,7 +22,7 @@ export const OrdersHistory: React.FC<IProps> = ({ history }: IProps) => {
   return loading && !data ? (
     <Loader />
   ) : (
-    <>
+    <S.Tile>
       <OrderTabel orders={data!.edges} history={history} />
       {data!.pageInfo.hasNextPage && (
         <S.Wrapper>
@@ -34,11 +34,12 @@ export const OrdersHistory: React.FC<IProps> = ({ history }: IProps) => {
                 perPage: ORDERS_PER_APICALL,
               });
             }}
+            outline
           >
-            Load more
+            Cargar más
           </Button>
         </S.Wrapper>
       )}
-    </>
+    </S.Tile>
   );
 };

@@ -19,7 +19,7 @@ exports[`Storyshots @components/molecules/FormFooter with submit and cancel butt
 
 .c3 {
   background-color: #00B0CA;
-  padding: 0.1rem 2rem;
+  padding: 0.9rem 3.7rem;
   border: none;
   border-radius: 40px;
   -webkit-transition: 0.3s;
@@ -53,7 +53,7 @@ exports[`Storyshots @components/molecules/FormFooter with submit and cancel butt
 
 .c4 {
   display: inline-block;
-  font-size: 1rem;
+  font-size: 1.125rem;
   font-weight: 400;
   line-height: 1.25rem;
   -webkit-user-select: none;
@@ -87,19 +87,47 @@ exports[`Storyshots @components/molecules/FormFooter with submit and cancel butt
 
 .c1 {
   position: relative;
-  text-align: right;
-  padding: 1.1rem 1.875rem 5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 1.1rem 1.875rem;
 }
 
 .c1 button:last-child {
   margin-left: 2rem;
-  margin-right: 0.7rem;
 }
 
 @media (max-width:540px) {
   .c3 {
     padding: 0.9rem 1rem;
     width: 88%;
+  }
+}
+
+@media (max-width:540px) {
+  .c1 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width:540px) {
+  .c1 button:last-child {
+    margin-left: 0;
   }
 }
 
@@ -123,12 +151,12 @@ exports[`Storyshots @components/molecules/FormFooter with submit and cancel butt
       color="primary"
       disabled={false}
       onClick={[Function]}
-      size="sm"
+      size="md"
       type="button"
     >
       <span
         className="c4"
-        size="sm"
+        size="md"
       >
         Save
       </span>
@@ -159,7 +187,7 @@ exports[`Storyshots @components/molecules/FormFooter with submit button 1`] = `
 
 .c2 {
   background-color: #00B0CA;
-  padding: 0.1rem 2rem;
+  padding: 0.9rem 3.7rem;
   border: none;
   border-radius: 40px;
   -webkit-transition: 0.3s;
@@ -193,7 +221,7 @@ exports[`Storyshots @components/molecules/FormFooter with submit button 1`] = `
 
 .c3 {
   display: inline-block;
-  font-size: 1rem;
+  font-size: 1.125rem;
   font-weight: 400;
   line-height: 1.25rem;
   -webkit-user-select: none;
@@ -204,19 +232,47 @@ exports[`Storyshots @components/molecules/FormFooter with submit button 1`] = `
 
 .c1 {
   position: relative;
-  text-align: right;
-  padding: 1.1rem 1.875rem 5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 1.1rem 1.875rem;
 }
 
 .c1 button:last-child {
   margin-left: 2rem;
-  margin-right: 0.7rem;
 }
 
 @media (max-width:540px) {
   .c2 {
     padding: 0.9rem 1rem;
     width: 88%;
+  }
+}
+
+@media (max-width:540px) {
+  .c1 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width:540px) {
+  .c1 button:last-child {
+    margin-left: 0;
   }
 }
 
@@ -231,12 +287,12 @@ exports[`Storyshots @components/molecules/FormFooter with submit button 1`] = `
       color="primary"
       disabled={false}
       onClick={[Function]}
-      size="sm"
+      size="md"
       type="button"
     >
       <span
         className="c3"
-        size="sm"
+        size="md"
       >
         Save
       </span>
@@ -267,7 +323,7 @@ exports[`Storyshots @components/molecules/FormFooter with top divider 1`] = `
 
 .c2 {
   background-color: #00B0CA;
-  padding: 0.1rem 2rem;
+  padding: 0.9rem 3.7rem;
   border: none;
   border-radius: 40px;
   -webkit-transition: 0.3s;
@@ -301,7 +357,7 @@ exports[`Storyshots @components/molecules/FormFooter with top divider 1`] = `
 
 .c3 {
   display: inline-block;
-  font-size: 1rem;
+  font-size: 1.125rem;
   font-weight: 400;
   line-height: 1.25rem;
   -webkit-user-select: none;
@@ -312,20 +368,48 @@ exports[`Storyshots @components/molecules/FormFooter with top divider 1`] = `
 
 .c1 {
   position: relative;
-  text-align: right;
-  padding: 1.1rem 1.875rem 5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 1.1rem 1.875rem;
   border-top: 1px solid #f1f5f5;
 }
 
 .c1 button:last-child {
   margin-left: 2rem;
-  margin-right: 0.7rem;
 }
 
 @media (max-width:540px) {
   .c2 {
     padding: 0.9rem 1rem;
     width: 88%;
+  }
+}
+
+@media (max-width:540px) {
+  .c1 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width:540px) {
+  .c1 button:last-child {
+    margin-left: 0;
   }
 }
 
@@ -340,12 +424,12 @@ exports[`Storyshots @components/molecules/FormFooter with top divider 1`] = `
       color="primary"
       disabled={false}
       onClick={[Function]}
-      size="sm"
+      size="md"
       type="button"
     >
       <span
         className="c3"
-        size="sm"
+        size="md"
       >
         Save
       </span>

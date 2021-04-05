@@ -13,7 +13,7 @@ export const AddressGrid: React.FC<IProps> = ({
   addNewAddress,
 }: IProps) => {
   const addNewTile = (
-    <AddNewTile key="newTile" type="direccion" onClick={addNewAddress} />
+    <AddNewTile key="newTile" type="dirección" onClick={addNewAddress} />
   );
   const addressTiles: any[] = [];
   if (addresses.length < 1) {
