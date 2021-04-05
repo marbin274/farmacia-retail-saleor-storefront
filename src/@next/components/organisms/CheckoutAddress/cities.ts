@@ -10,7 +10,7 @@ const cities: ICity[] = [
   { label: "Barranco", enabled: true },
   { label: "Breña", enabled: true },
   { label: "Callao - Bellavista", enabled: true},
-  { label: "Callao - Carmen de la Legua", enabled: false},
+  { label: "Callao - Carmen de la Legua", enabled: true},
   { label: "Callao - La Perla", enabled: true},
   { label: "Cañete-Asia", enabled: false },
   { label: "Carabayllo" },
