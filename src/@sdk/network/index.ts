@@ -62,6 +62,7 @@ import {
   ICheckoutModelLine,
   IOrderModel,
   IPaymentModel,
+  IShippingMethodUpdate,
 } from "@sdk/repository";
 import {
   filterNotEmptyArrayItems,
@@ -618,16 +619,21 @@ export class NetworkManager implements INetworkManager {
     }
   };
 
-  setShippingMethod = async (shippingMethodId: string, checkoutId: string) => {
+  setShippingMethod = async (shippingMethodUpdate: IShippingMethodUpdate, checkoutId: string) => {
     try {
+      const mutation = shippingMethodUpdate.scheduleDate ?
+        CheckoutMutations.updateCheckoutShippingMethodMutationWithScheduleDate :
+        CheckoutMutations.updateCheckoutShippingMethodMutation;
       const { data, errors } = await this.client.mutate<
         UpdateCheckoutShippingMethod,
         UpdateCheckoutShippingMethodVariables
       >({
-        mutation: CheckoutMutations.updateCheckoutShippingMethodMutation,
+        mutation,
         variables: {
           checkoutId,
-          shippingMethodId,
+          date: shippingMethodUpdate.scheduleDate?.date,
+          scheduleTimeId: shippingMethodUpdate.scheduleDate?.scheduleTimeId,
+          shippingMethodId: shippingMethodUpdate.shippingMethodId,
         },
       });
 
@@ -850,6 +856,7 @@ export class NetworkManager implements INetworkManager {
     documentNumber,
     termsAndConditions,
     dataTreatmentPolicy,
+    scheduleDate,
     message,
   }: Checkout): ICheckoutModel => ({
     availableShippingMethods: availableShippingMethods
@@ -891,6 +898,7 @@ export class NetworkManager implements INetworkManager {
       voucherDiscountValue,
       voucherType,
     },
+    scheduleDate,
     shippingAddress,
     shippingMethod,
     termsAndConditions,

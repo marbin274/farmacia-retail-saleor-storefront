@@ -4,7 +4,7 @@ import {
   IPrivacyPolicy,
 } from "@sdk/api/Checkout/types";
 import { NetworkManager } from "@sdk/network";
-import { ICheckoutAddress, LocalRepository } from "@sdk/repository";
+import { ICheckoutAddress, IShippingMethodUpdate, LocalRepository } from "@sdk/repository";
 
 import { PromiseCheckoutJobRunResponse } from "../types";
 
@@ -195,15 +195,15 @@ export class CheckoutJobs {
 
   setShippingMethod = async ({
     checkoutId,
-    shippingMethodId,
+    shippingMethodUpdate,
   }: {
     checkoutId: string;
-    shippingMethodId: string;
+    shippingMethodUpdate: IShippingMethodUpdate;
   }): PromiseCheckoutJobRunResponse => {
     const checkout = this.repository.getCheckout();
 
     const { data, error } = await this.networkManager.setShippingMethod(
-      shippingMethodId,
+      shippingMethodUpdate,
       checkoutId
     );
 
@@ -215,11 +215,16 @@ export class CheckoutJobs {
         },
       };
     } else {
-      this.repository.setCheckout({
+      const newCheckout = {
         ...checkout,
         promoCodeDiscount: data?.promoCodeDiscount,
+        scheduleDate: data?.scheduleDate,
         shippingMethod: data?.shippingMethod,
-      });
+      };
+      if(!newCheckout.shippingMethod){
+        newCheckout.availableShippingMethods = data?.availableShippingMethods;
+      }
+      this.repository.setCheckout(newCheckout);
       return { data };
     }
   };

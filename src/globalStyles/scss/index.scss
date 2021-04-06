@@ -170,3 +170,36 @@ body {
     font-weight: normal;
   }
 }
+.react-datepicker{
+  &__header{
+    border-bottom: none;
+    background-color: $auna-complementary1;
+    color: $auna-black;
+    font-size: $small-font-size;
+    line-height: $base-font-size;
+  }
+  &__current-month{
+    padding: .3rem 0rem .8rem;
+    font-weight: $font-weight-normal;
+    text-transform: capitalize;
+  }
+  &__day{
+    &:hover{
+      border-radius: .8rem;
+    }    
+    &-names{
+      background: #FFFFFF;
+    }
+    &--selected{
+      border-radius: .8rem;
+      background-color: $turquoise-dark;
+      &:hover{
+        border-radius: .8rem;
+      background-color: $turquoise-dark;
+      }
+    }
+  }
+  &__navigation{
+    top: 15px;
+  }
+}

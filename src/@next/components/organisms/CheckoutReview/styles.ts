@@ -59,6 +59,13 @@ export const Text = styled.p`
   line-height: 24px;
 `;
 
+export const SubTitle = styled.p`
+  color: ${aunaBlack};
+  margin-bottom: 1rem;
+  font-size: ${({theme}) => theme.typography.smallFontSize};
+  font-weight: ${({theme}) => theme.typography.normalFontWeight};
+`;
+
 export const ImportantText = styled(Text)`
   color: ${aunaBlack};
 `;

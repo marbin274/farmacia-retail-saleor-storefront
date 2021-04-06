@@ -114,7 +114,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
   useImperativeHandle(ref, () => ({
     submitPayment: () => {
       const shippingMethodId = checkout?.shippingMethod?.id || "";
-      setShippingMethod(shippingMethodId);
+      setShippingMethod({shippingMethodId});
       if (billingAsShippingState) {
         handleSetBillingAddress();
       } else if (user && selectedBillingAddressId) {

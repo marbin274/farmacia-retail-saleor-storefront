@@ -21,6 +21,26 @@ export interface CreateCheckout_checkoutCreate_errors {
   message: string | null;
 }
 
+export interface CreateCheckout_checkoutCreate_checkout_scheduleDate_scheduleTime {
+  __typename: "ScheduleTime";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  startTime: any;
+  endTime: any;
+}
+
+export interface CreateCheckout_checkoutCreate_checkout_scheduleDate {
+  __typename: "ScheduleDate";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  date: any;
+  scheduleTime: CreateCheckout_checkoutCreate_checkout_scheduleDate_scheduleTime;
+}
+
 export interface CreateCheckout_checkoutCreate_checkout_totalPrice_gross {
   __typename: "Money";
   /**
@@ -32,7 +52,7 @@ export interface CreateCheckout_checkoutCreate_checkout_totalPrice_gross {
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -48,7 +68,7 @@ export interface CreateCheckout_checkoutCreate_checkout_totalPrice_net {
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -76,7 +96,7 @@ export interface CreateCheckout_checkoutCreate_checkout_subtotalPrice_gross {
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -92,7 +112,7 @@ export interface CreateCheckout_checkoutCreate_checkout_subtotalPrice_net {
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -202,9 +222,31 @@ export interface CreateCheckout_checkoutCreate_checkout_availableShippingMethods
    */
   amount: number;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
+}
+
+export interface CreateCheckout_checkoutCreate_checkout_availableShippingMethods_scheduleDates_scheduleTimes {
+  __typename: "ScheduleTime";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  startTime: any;
+  endTime: any;
+}
+
+export interface CreateCheckout_checkoutCreate_checkout_availableShippingMethods_scheduleDates {
+  __typename: "ScheduleByDate";
+  /**
+   * Date.
+   */
+  date: any | null;
+  /**
+   * Available schedules for a date.
+   */
+  scheduleTimes: (CreateCheckout_checkoutCreate_checkout_availableShippingMethods_scheduleDates_scheduleTimes | null)[] | null;
 }
 
 export interface CreateCheckout_checkoutCreate_checkout_availableShippingMethods {
@@ -214,7 +256,16 @@ export interface CreateCheckout_checkoutCreate_checkout_availableShippingMethods
    */
   id: string;
   name: string;
+  /**
+   * Flag to recognize if this shipping method has schedules to select.
+   */
+  isScheduled: boolean | null;
   price: CreateCheckout_checkoutCreate_checkout_availableShippingMethods_price | null;
+  /**
+   * List of filtered schedules a customer can pick.
+   */
+  scheduleDates: (CreateCheckout_checkoutCreate_checkout_availableShippingMethods_scheduleDates | null)[] | null;
+  subtitle: string | null;
 }
 
 export interface CreateCheckout_checkoutCreate_checkout_shippingMethod_price {
@@ -228,9 +279,31 @@ export interface CreateCheckout_checkoutCreate_checkout_shippingMethod_price {
    */
   amount: number;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
+}
+
+export interface CreateCheckout_checkoutCreate_checkout_shippingMethod_scheduleDates_scheduleTimes {
+  __typename: "ScheduleTime";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  startTime: any;
+  endTime: any;
+}
+
+export interface CreateCheckout_checkoutCreate_checkout_shippingMethod_scheduleDates {
+  __typename: "ScheduleByDate";
+  /**
+   * Date.
+   */
+  date: any | null;
+  /**
+   * Available schedules for a date.
+   */
+  scheduleTimes: (CreateCheckout_checkoutCreate_checkout_shippingMethod_scheduleDates_scheduleTimes | null)[] | null;
 }
 
 export interface CreateCheckout_checkoutCreate_checkout_shippingMethod {
@@ -240,7 +313,16 @@ export interface CreateCheckout_checkoutCreate_checkout_shippingMethod {
    */
   id: string;
   name: string;
+  /**
+   * Flag to recognize if this shipping method has schedules to select.
+   */
+  isScheduled: boolean | null;
   price: CreateCheckout_checkoutCreate_checkout_shippingMethod_price | null;
+  /**
+   * List of filtered schedules a customer can pick.
+   */
+  scheduleDates: (CreateCheckout_checkoutCreate_checkout_shippingMethod_scheduleDates | null)[] | null;
+  subtitle: string | null;
 }
 
 export interface CreateCheckout_checkoutCreate_checkout_shippingPrice_gross {
@@ -254,7 +336,7 @@ export interface CreateCheckout_checkoutCreate_checkout_shippingPrice_gross {
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -270,7 +352,7 @@ export interface CreateCheckout_checkoutCreate_checkout_shippingPrice_net {
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -298,7 +380,7 @@ export interface CreateCheckout_checkoutCreate_checkout_lines_totalPrice_gross {
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -314,7 +396,7 @@ export interface CreateCheckout_checkoutCreate_checkout_lines_totalPrice_net {
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -342,7 +424,7 @@ export interface CreateCheckout_checkoutCreate_checkout_lines_variant_pricing_pr
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -358,7 +440,7 @@ export interface CreateCheckout_checkoutCreate_checkout_lines_variant_pricing_pr
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -386,7 +468,7 @@ export interface CreateCheckout_checkoutCreate_checkout_lines_variant_pricing_pr
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -402,7 +484,7 @@ export interface CreateCheckout_checkoutCreate_checkout_lines_variant_pricing_pr
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -475,6 +557,46 @@ export interface CreateCheckout_checkoutCreate_checkout_lines_variant_attributes
   values: (CreateCheckout_checkoutCreate_checkout_lines_variant_attributes_values | null)[];
 }
 
+export interface CreateCheckout_checkoutCreate_checkout_lines_variant_product_attributes_attribute {
+  __typename: "Attribute";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  /**
+   * Name of an attribute displayed in the interface.
+   */
+  name: string | null;
+}
+
+export interface CreateCheckout_checkoutCreate_checkout_lines_variant_product_attributes_values {
+  __typename: "AttributeValue";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  /**
+   * Name of a value displayed in the interface.
+   */
+  name: string | null;
+  /**
+   * Name of a value displayed in the interface.
+   */
+  value: string | null;
+}
+
+export interface CreateCheckout_checkoutCreate_checkout_lines_variant_product_attributes {
+  __typename: "SelectedAttribute";
+  /**
+   * Name of an attribute displayed in the interface.
+   */
+  attribute: CreateCheckout_checkoutCreate_checkout_lines_variant_product_attributes_attribute;
+  /**
+   * Values of an attribute.
+   */
+  values: (CreateCheckout_checkoutCreate_checkout_lines_variant_product_attributes_values | null)[];
+}
+
 export interface CreateCheckout_checkoutCreate_checkout_lines_variant_product_thumbnail {
   __typename: "Image";
   /**
@@ -507,6 +629,10 @@ export interface CreateCheckout_checkoutCreate_checkout_lines_variant_product {
    */
   id: string;
   name: string;
+  /**
+   * List of attributes assigned to this product.
+   */
+  attributes: CreateCheckout_checkoutCreate_checkout_lines_variant_product_attributes[];
   /**
    * The main thumbnail for a product.
    */
@@ -570,14 +696,9 @@ export interface CreateCheckout_checkoutCreate_checkout_discount {
    */
   amount: number;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
-}
-
-export interface CreateCheckout_checkoutCreate_privacy_policy {
-  dataTreatmentPolicy: boolean;
-  termsAndConditions: boolean;
 }
 
 export interface CreateCheckout_checkoutCreate_checkout {
@@ -587,6 +708,7 @@ export interface CreateCheckout_checkoutCreate_checkout {
    * The ID of the object.
    */
   id: string;
+  scheduleDate: CreateCheckout_checkoutCreate_checkout_scheduleDate | null;
   /**
    * The sum of the the checkout line prices, with all the taxes,shipping costs, and discounts included.
    */

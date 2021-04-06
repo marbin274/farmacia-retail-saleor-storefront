@@ -59,6 +59,8 @@ export const aunaOrange = "#ED7C59";
 export const aunaOrangeOnSale = "#FF6900";
 export const aunaBlackGray = "#454545";
 
+export const shippingMethodBlack = "#000000";
+
 // theme colors
 export const theme = {
   activeMenuOption: aunaInteractive,
@@ -103,6 +105,7 @@ export const theme = {
   secondaryLight: blueLight,
   secondaryOverlay: blueOverlay,
   secondaryOverlayDark: blueOverlayDark,
+  shippingMethodBlack,
   success: green,
   tabTitle: darkGreen,
   tableDivider: tabelGray,

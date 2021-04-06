@@ -1,6 +1,7 @@
 import { styled } from "@styles";
 import {aunaBrand3, white} from "@styles/constants";
 
+
 export const ShippingMethodForm = styled.form`
   display: grid;
   grid-gap: 20px;
@@ -63,3 +64,15 @@ export const GroupLabelTitle = styled.span`
     font-weight: bolder;
     padding-left: 1rem;
 `;
+
+export const ShippingMethodContainer = styled.div<{ selected: boolean }>`
+    background-color: ${({ selected, theme }) => !!selected ? "#FFFFFF" : theme.colors.backgroundLight};
+    border: ${({selected, theme}) => !!selected ? `1px solid ${theme.colors.aunaInteractive}`: "initial"};
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 2rem 1rem;
+    margin: 1rem 0rem;
+`
+

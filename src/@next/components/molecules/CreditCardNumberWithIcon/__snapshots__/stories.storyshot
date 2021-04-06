@@ -20,6 +20,7 @@ exports[`Storyshots @components/molecules/CreditCardWithIcon default 1`] = `
 .c1 {
   display: inline-block;
   vertical-align: middle;
+  margin-bottom: 0px !important;
 }
 
 .c2 {

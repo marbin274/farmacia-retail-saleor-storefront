@@ -121,6 +121,7 @@ exports[`Storyshots @components/organisms/CreditCardGrid default 1`] = `
 .c8 {
   display: inline-block;
   vertical-align: middle;
+  margin-bottom: 0px !important;
 }
 
 .c14 {

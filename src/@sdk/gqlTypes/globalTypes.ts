@@ -2,8 +2,6 @@
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
-import { IPrivacyPolicy } from "../api/Checkout/types";
-
 //==============================================================
 // START Enums and Input Objects
 //==============================================================
@@ -53,15 +51,20 @@ export enum AddressTypeEnum {
 export enum CheckoutErrorCode {
   BILLING_ADDRESS_NOT_SET = "BILLING_ADDRESS_NOT_SET",
   CHECKOUT_NOT_FULLY_PAID = "CHECKOUT_NOT_FULLY_PAID",
+  DELIVERY_DATE_EXPIRED = "DELIVERY_DATE_EXPIRED",
+  EXCEEDS_SCHEDULE_DURATION = "EXCEEDS_SCHEDULE_DURATION",
   GRAPHQL_ERROR = "GRAPHQL_ERROR",
   INSUFFICIENT_STOCK = "INSUFFICIENT_STOCK",
   INVALID = "INVALID",
   INVALID_SHIPPING_METHOD = "INVALID_SHIPPING_METHOD",
   NOT_FOUND = "NOT_FOUND",
   PAYMENT_ERROR = "PAYMENT_ERROR",
+  PRODUCT_NOT_PUBLISHED = "PRODUCT_NOT_PUBLISHED",
   QUANTITY_GREATER_THAN_LIMIT = "QUANTITY_GREATER_THAN_LIMIT",
   REQUIRED = "REQUIRED",
+  SCHEDULE_NOT_AVAILABLE = "SCHEDULE_NOT_AVAILABLE",
   SHIPPING_ADDRESS_NOT_SET = "SHIPPING_ADDRESS_NOT_SET",
+  SHIPPING_METHOD_INCOMPLETE = "SHIPPING_METHOD_INCOMPLETE",
   SHIPPING_METHOD_NOT_APPLICABLE = "SHIPPING_METHOD_NOT_APPLICABLE",
   SHIPPING_METHOD_NOT_SET = "SHIPPING_METHOD_NOT_SET",
   SHIPPING_NOT_REQUIRED = "SHIPPING_NOT_REQUIRED",
@@ -361,10 +364,13 @@ export enum PaymentErrorCode {
   BILLING_ADDRESS_NOT_SET = "BILLING_ADDRESS_NOT_SET",
   GRAPHQL_ERROR = "GRAPHQL_ERROR",
   INVALID = "INVALID",
+  INVALID_SHIPPING_METHOD = "INVALID_SHIPPING_METHOD",
   NOT_FOUND = "NOT_FOUND",
   PARTIAL_PAYMENT_NOT_ALLOWED = "PARTIAL_PAYMENT_NOT_ALLOWED",
   PAYMENT_ERROR = "PAYMENT_ERROR",
   REQUIRED = "REQUIRED",
+  SHIPPING_ADDRESS_NOT_SET = "SHIPPING_ADDRESS_NOT_SET",
+  SHIPPING_METHOD_NOT_SET = "SHIPPING_METHOD_NOT_SET",
   UNIQUE = "UNIQUE",
 }
 
@@ -409,8 +415,8 @@ export interface CheckoutCreateInput {
   email?: string | null;
   shippingAddress?: AddressInput | null;
   billingAddress?: AddressInput | null;
-  privacyPolicy?: IPrivacyPolicy;
-  documentNumber?: string;
+  documentNumber?: string | null;
+  privacyPolicy?: PrivacyPolicyInput | null;
 }
 
 export interface CheckoutLineInput {
@@ -423,6 +429,11 @@ export interface PaymentInput {
   token: string;
   amount?: any | null;
   billingAddress?: AddressInput | null;
+}
+
+export interface PrivacyPolicyInput {
+  dataTreatmentPolicy?: boolean | null;
+  termsAndConditions?: boolean | null;
 }
 
 export interface ProductOrder {
