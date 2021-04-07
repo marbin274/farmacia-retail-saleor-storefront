@@ -53,7 +53,7 @@ export const getStockAvailable = (product: ISimpleProduct): {stockAvailable:numb
     else if (product.variant?.quantityAvailable) {
         stockAvailable = product.variant.quantityAvailable;
     }
-    if (existLimitMax && stockLimitMax) {
+    if ((existLimitMax && stockLimitMax) && (stockLimitMax > 0 && stockLimitMax < stockAvailable)) {
         stockAvailable = stockLimitMax;
     }
 
