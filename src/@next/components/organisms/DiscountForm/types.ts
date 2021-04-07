@@ -18,5 +18,6 @@ export interface IProps {
   handleChange?: (e: React.ChangeEvent) => void;
   handleBlur?: (e: React.FocusEvent) => void;
   setShowLabelCupon: (show: boolean) => void;
+  setReRenderNiubiz: (flag: boolean) => void;
 
 }

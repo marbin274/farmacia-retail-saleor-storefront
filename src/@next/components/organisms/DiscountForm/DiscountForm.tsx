@@ -16,6 +16,7 @@ export const DiscountForm: React.FC<IProps> = ({
   formId,
   formRef,
   setShowLabelCupon,
+  setReRenderNiubiz,
 }: IProps) => {
   const promoCode = discount && discount.promoCode;
 
@@ -38,11 +39,13 @@ export const DiscountForm: React.FC<IProps> = ({
     setInputCode("");
   };
 
-  const handleRemoveBtnClick = (newInputCode: string) => {
+  const handleRemoveBtnClick = async (newInputCode: string) => {
     setTempPromoCode(undefined);
     setInputCode("");
     if (removeVoucher) {
-      removeVoucher(newInputCode);
+      setReRenderNiubiz(false)
+      await removeVoucher(newInputCode);
+      setReRenderNiubiz(true)
       setShowLabelCupon(true);
     }
   };

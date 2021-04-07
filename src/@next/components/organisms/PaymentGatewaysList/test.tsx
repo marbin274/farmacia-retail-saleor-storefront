@@ -20,6 +20,7 @@ describe("<PaymentGatewaysList />", () => {
         userDataForNiubiz={userDataFroNiubiz}
         changeRequestPayload={changeRequestPayload}
         voucherCode={undefined}
+        reRender={true}
       />
     );
 

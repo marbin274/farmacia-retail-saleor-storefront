@@ -38,13 +38,15 @@ const CheckoutPayment: React.FC<IProps> = ({
 }: IProps) => {
 
   const [showLabelCupon, setShowLabelCupon] = React.useState<boolean>(true);
-
-  const handleSubmitPromoCode = (discountForm?: IDiscountFormData) => {
+  const [reRenderNiubiz, setReRenderNiubiz] = React.useState<boolean>(true);
+  const handleSubmitPromoCode = async (discountForm?: IDiscountFormData) => {
     const newPromoCode = discountForm?.promoCode;
     const savedPromoCode = promoCodeDiscount?.voucherCode;
 
     if (newPromoCode && newPromoCode !== savedPromoCode) {
-      addPromoCode(newPromoCode);
+      setReRenderNiubiz(false)
+      await addPromoCode(newPromoCode);
+      setReRenderNiubiz(true)
     } else {
       submitUnchangedDiscount();
     }
@@ -62,6 +64,7 @@ const CheckoutPayment: React.FC<IProps> = ({
       <S.DiscountField>
         <DiscountForm
           setShowLabelCupon= {(show)=>{setShowLabelCupon(show)}}
+          setReRenderNiubiz={(flag)=>{setReRenderNiubiz(flag)}}
           discount={{
             promoCode: promoCodeDiscount?.voucherCode,
             voucherDiscountType: promoCodeDiscount?.voucherDiscountType,
@@ -76,7 +79,9 @@ const CheckoutPayment: React.FC<IProps> = ({
           errors={promoCodeErrors}
         />
       </S.DiscountField>
+   
       <PaymentGatewaysList
+        reRender={reRenderNiubiz}
         errors={gatewayErrors}
         paymentGateways={paymentGateways}
         formRef={gatewayFormRef}
@@ -93,6 +98,8 @@ const CheckoutPayment: React.FC<IProps> = ({
         userDataForNiubiz={userDataForNiubiz}
         voucherCode={promoCodeDiscount?.voucherCode}
       />
+
+     
     </S.Wrapper>
   );
 };

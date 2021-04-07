@@ -7,6 +7,7 @@ import { DiscountForm } from ".";
 import { IDiscountFormData } from "./types";
 
 const DEFAULT_PROPS = {
+  setReRenderNiubiz: ()=>{jest.fn()},
   setShowLabelCupon: ()=>{jest.fn()},
 }
 

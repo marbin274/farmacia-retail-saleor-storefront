@@ -52,4 +52,5 @@ export interface IProps {
   totalPrice?: ITotalPrice;
   userDataForNiubiz?: IUserDataForNiubiz;
   voucherCode: string | null | undefined;
+  reRender: boolean;
 }

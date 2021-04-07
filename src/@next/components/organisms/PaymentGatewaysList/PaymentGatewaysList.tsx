@@ -8,7 +8,7 @@ import niubizTextIcon from "@temp/images/auna/niubiz-text.svg"
 import americanExpress from "@temp/images/auna/american-express-payment.svg";
 import dinersClub from "@temp/images/auna/diners-club-payment.svg";
 import ReactSVG from "react-svg";
-
+import { Loader } from "@components/atoms";
 import { PROVIDERS } from "@temp/core/config";
 import { IProps } from "./types";
 import * as S from "./styles";
@@ -29,6 +29,7 @@ const PaymentGatewaysList: React.FC<IProps> = ({
   totalPrice,
   userDataForNiubiz,
   voucherCode,
+  reRender,
 }: IProps) => {
 
   // @ts-ignore
@@ -95,62 +96,28 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                       </S.PaymentIcon>
                     </S.PaymentLine>
                 </S.RadioContainerPayment>
-              
-                <NiubizPaymentGateway
-                  config={config}
-                  formRef={formRef}
-                  formId={formId}
-                  processPayment={(token, card) =>
-                    processPayment(id, token, card)
-                  }
-                  errors={errors}
-                  onError={onError}
-                  changeRequestPayload={changeRequestPayload}
-                  requestPayload={requestPayload}
-                  totalPrice={totalPrice}
-                  userDataForNiubiz={userDataForNiubiz}
-                />
-               
-                
+                {reRender ? (
+                  <NiubizPaymentGateway
+                    config={config}
+                    formRef={formRef}
+                    formId={formId}
+                    processPayment={(token, card) =>
+                      processPayment(id, token, card)
+                    }
+                    errors={errors}
+                    onError={onError}
+                    changeRequestPayload={changeRequestPayload}
+                    requestPayload={requestPayload}
+                    totalPrice={totalPrice}
+                    userDataForNiubiz={userDataForNiubiz}
+                  />
+
+                ) : <Loader />}
               </div>
-              // <div key={index}>
-              //   <S.Tile checked={checked}>
-              //     <Radio
-              //       data-cy="checkoutPaymentGatewayDummyInput"
-              //       name="payment-method"
-              //       value="dummy"
-              //       checked={checked}
-              //       onChange={() =>
-              //         selectPaymentGateway && selectPaymentGateway(id)
-              //       }
-              //       customLabel={true}
-              //     >
-              //       <S.PaymentLine>
-              //         <S.PaymentTitle data-cy="checkoutPaymentGatewayDummyName" checked={checked}>
-              //           AUNA Payment Gateway
-              //         </S.PaymentTitle>
-              //         <S.PaymentIcon checked={checked}>
-              //           <ReactSVG path={creditCardIcon} svgStyle={{stroke: S.getIconColor(checked, customTheme)}}/>
-              //         </S.PaymentIcon>
-              //       </S.PaymentLine>
-              //     </Radio>
-              //   </S.Tile>
-              //   {checked && (
-              //     <AunaPaymentGateway
-              //       config={config}
-              //       formRef={formRef}
-              //       formId={formId}
-              //       onError={onError}
-              //       processPayment={processPayment}
-              //       checkoutBillingAddress={checkoutBillingAddress}
-              //     />
-              //   )}
-              // </div>
             );
           }
         }
       })}
-      {/* {!selectedPaymentGateway && errors && <ErrorMessage errors={errors} />} */}
     </S.Wrapper>
   );
 };
