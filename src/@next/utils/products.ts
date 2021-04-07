@@ -28,7 +28,7 @@ export const getOneProductWithQuantity = (product: ISimpleProduct, productsOnCar
     };
 
 }
-const getStockLimitMax = (product: ISimpleProduct): { existLimitMax: boolean, stockLimitMax?: number } => {
+export const getStockLimitMax = (product: ISimpleProduct): { existLimitMax: boolean, stockLimitMax?: number } => {
     const isOnSale = checkProductIsOnSale(product);
     if (!isOnSale) { return { existLimitMax: false } };
 

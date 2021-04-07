@@ -12,6 +12,7 @@ import {
 import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
 import { itemNotificationsService } from "../../atoms/ItemsNotification";
 import { launchAddToCartEvent, launchRemoveToCartEvent } from "@sdk/gaConfig";
+import { getStockLimitMax } from "@temp/@next/utils/products";
 type IProps = {
   canAddToCart?: boolean;
   disableOnAdd?: boolean;
@@ -38,6 +39,11 @@ const ItemsHandler: FC<IProps> = ({
   ] = useState(false);
   const quantity: number = product?.quantity || 0;
   const [isValueLessThanMax, setIsValueLessThanMax] = useState(false);
+  const { existLimitMax, stockLimitMax } = React.useMemo(() => (
+    product ?
+      getStockLimitMax(product) :
+      { existLimitMax: undefined, stockLimitMax: undefined }
+  ), [product]);
 
   useEffect(() => {
     setIsValueLessThanMaxOrderPerProduct(quantity < MAX_ORDER_PER_PRODUCT);
@@ -50,7 +56,7 @@ const ItemsHandler: FC<IProps> = ({
   const handleAddClick = () => {
     if (isEnabledToAddProduct) {
       if (canAddToCart) {
-        const firstProductVariant = product?.variants?.[0];
+        const firstProductVariant = product?.variants?.[0] || product?.variant;
         const total: number = product?.quantity as number;
         
         if (firstProductVariant) {  
@@ -79,7 +85,7 @@ const ItemsHandler: FC<IProps> = ({
   };
 
   const handleRemoveClick = () => {
-    const firstProductVariant = product?.variants?.[0];
+    const firstProductVariant = product?.variants?.[0] || product?.variant;
     const total: number = product?.quantity as number;
     if (firstProductVariant) {
       removePaymentItems();
@@ -120,7 +126,7 @@ const ItemsHandler: FC<IProps> = ({
               +
           </Button>
           </div>
-          {!canAddToCart && <div><span className="itemHandler__limit-max">Max. 2 por promoción</span></div>}
+          {(!canAddToCart && existLimitMax) && <div><span className="itemHandler__limit-max">Max. {stockLimitMax} por promoción</span></div>}
         </div>
       ) : (
         <div className="button">
