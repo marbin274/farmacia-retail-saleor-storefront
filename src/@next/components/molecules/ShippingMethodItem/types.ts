@@ -1,6 +1,7 @@
 import { Checkout_availableShippingMethods_price, Checkout_availableShippingMethods_scheduleDates } from "@temp/@sdk/fragments/gqlTypes/Checkout";
 import { FormikTouched } from "formik";
 import { ICheckoutShipping } from "@components/organisms/CheckoutShipping/types";
+import { IShippingMethodUpdate } from "@temp/@sdk/repository";
 
 export interface IProps {
     dateSelected?: Date;
@@ -18,6 +19,7 @@ export interface IProps {
     handleChange: any;
     setErrors:(errors?:any)=>void;
     setFieldValue: (field: string, value: any) => void;
+    setShippingMethod: (value: IShippingMethodUpdate) => void
 }
 
 export interface IKeyValue{

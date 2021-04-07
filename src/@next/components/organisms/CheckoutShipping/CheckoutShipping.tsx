@@ -1,7 +1,8 @@
 import { ShippingMethodItem } from "@components/molecules";
+import { convertShippingMethodDateToDate } from "@temp/@next/utils/dateUtils";
 import { Checkout_availableShippingMethods_scheduleDates } from "@temp/@sdk/fragments/gqlTypes/Checkout";
 import { IShippingMethodUpdate, IShippingMethodUpdateScheduleDate } from "@temp/@sdk/repository";
-import { HOURS_TO_FORMAT_DATE, SHIPPING_FORMAT_DATE } from "@temp/core/config";
+import { SHIPPING_FORMAT_DATE } from "@temp/core/config";
 import { format } from "date-fns";
 import { useFormik } from "formik";
 import React from "react";
@@ -33,7 +34,7 @@ const CheckoutShipping: React.FC<IProps> = ({
     setFieldValue,
   } = useFormik<ICheckoutShipping>({
     initialValues:{
-      dateSelected: !scheduleDate?.date ? undefined : new Date(`${scheduleDate.date}${HOURS_TO_FORMAT_DATE}`),
+      dateSelected: !scheduleDate?.date ? undefined :convertShippingMethodDateToDate(scheduleDate.date),
       isScheduled: shippingMethods?.find(it => it.id === selectedShippingMethodId)?.isScheduled || false,
       scheduleSelected: scheduleDate?.scheduleTime?.id,
       shippingMethod: selectedShippingMethodId,
@@ -80,17 +81,20 @@ const CheckoutShipping: React.FC<IProps> = ({
     if(!selected){
       setFieldValue("shippingMethod", id);
       setFieldValue("isScheduled", isScheduled);
-      setShippingMethod({ shippingMethodId: (isScheduled ? "" : id) });
+      const shippingMethod :IShippingMethodUpdate = {shippingMethodId: id};
       if(isScheduled){
         const scheduleDate = scheduleDates?.[0];
-        const date = new Date(`${scheduleDate?.date}${HOURS_TO_FORMAT_DATE}`);
+        const date = convertShippingMethodDateToDate(scheduleDate?.date);
+        shippingMethod.scheduleDate = {date: scheduleDate?.date, scheduleTimeId: scheduleDate?.scheduleTimes?.[0]?.id || ''};
         setFieldValue("dateSelected", date);
         setFieldValue("scheduleSelected", scheduleDate?.scheduleTimes?.[0]?.id);
       }
+      setShippingMethod(shippingMethod);
     }
     setErrors({});
   }
-  
+
+   
   return (
     <section>
         <S.FieldsGroup>
@@ -126,6 +130,7 @@ const CheckoutShipping: React.FC<IProps> = ({
                     handleChange={handleChange}
                     setErrors={setErrors}
                     setFieldValue={setFieldValue}
+                    setShippingMethod={setShippingMethod}
                   />
                 </S.ShippingMethodContainer>
               );

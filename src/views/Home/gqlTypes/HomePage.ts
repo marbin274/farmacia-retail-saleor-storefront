@@ -31,13 +31,13 @@ export interface AnaliticTracking {
 }
 
 export interface Image {
-  screenType: string | null;
+  screenType: "desktop" | "mobile" | null;
   url: string | null;
 }
 export interface Frames {
   id: string | null;
   link: string | null;
-  images: Image;
+  images: Image[];
 }
 export interface mainBanner {
   id: string | null;

@@ -102,22 +102,25 @@ const ItemsHandler: FC<IProps> = ({
     <>
       {addToCart && product.quantity ? (
         <div className="itemHandler">
-          <Button
-            className={classNames("item-action", "add_remove_button")}
-            onClick={handleRemoveClick}
-            type="button"
-          >
-            -
+          <div className="itemHandler--actions">
+            <Button
+              className={classNames("item-action", "add_remove_button")}
+              onClick={handleRemoveClick}
+              type="button"
+            >
+              -
           </Button>
-          <p>{quantity}</p>
-          <Button
-            disabled={!canAddToCart}
-            className={classNames("item-action", "add_remove_button")}
-            onClick={handleAddClick}
-            type="button"
-          >
-            +
+            <p>{quantity}</p>
+            <Button
+              disabled={!canAddToCart}
+              className={classNames("item-action", "add_remove_button")}
+              onClick={handleAddClick}
+              type="button"
+            >
+              +
           </Button>
+          </div>
+          {!canAddToCart && <div><span className="itemHandler__limit-max">Max. 2 por promoción</span></div>}
         </div>
       ) : (
         <div className="button">

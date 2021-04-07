@@ -1,8 +1,8 @@
 import { DatePicker } from "@components/atoms";
 import { Money } from "@components/containers";
 import { InputSelect } from "@components/molecules";
-import { getScheduleTimesFormat } from "@temp/@next/utils/dateUtils";
-import { HOURS_TO_FORMAT_DATE, SHIPPING_FORMAT_DATE } from "@temp/core/config";
+import { convertShippingMethodDateToDate, getScheduleTimesFormat } from "@temp/@next/utils/dateUtils";
+import { SHIPPING_FORMAT_DATE } from "@temp/core/config";
 import { format } from 'date-fns';
 import shippingMethodClockIcon from "images/auna/shipping-method-clock.svg";
 import React from "react";
@@ -25,6 +25,7 @@ export const ShippingMethodItem: React.FC<IProps> = ({
     handleChange,
     setErrors,
     setFieldValue,
+    setShippingMethod,
 }) => {
     
     const scheduleTimes:IKeyValue[] = React.useMemo(()=>{
@@ -39,12 +40,12 @@ export const ShippingMethodItem: React.FC<IProps> = ({
 
     const minDate: Date | undefined = React.useMemo(()=>{
         if(!scheduleDates){ return undefined};
-        const date = new Date(`${scheduleDates?.[0]?.date}${HOURS_TO_FORMAT_DATE}`);
+        const date = convertShippingMethodDateToDate(scheduleDates?.[0]?.date);
         return date;
     },[scheduleDates]);
     const maxDate: Date | undefined = React.useMemo(()=>{
         if(!scheduleDates){ return undefined};
-        const date = new Date(`${scheduleDates?.[scheduleDates.length - 1]?.date}${HOURS_TO_FORMAT_DATE}`);
+        const date = convertShippingMethodDateToDate(scheduleDates?.[scheduleDates.length - 1]?.date);
         return date;
     },[scheduleDates]);
 
@@ -52,6 +53,16 @@ export const ShippingMethodItem: React.FC<IProps> = ({
         scheduleTimes
         ?.find(it => it.id === scheduleSelectedId)
     ), [scheduleSelectedId]);
+
+    const handleOnChangeScheduleSelected = (value: IKeyValue) => {
+        setFieldValue("scheduleSelected", value.id);
+        if (id && dateSelected && value.id) {
+            setShippingMethod({
+                scheduleDate: { date: format(dateSelected, SHIPPING_FORMAT_DATE), scheduleTimeId: value.id },
+                shippingMethodId: id,
+            });
+        }
+    }
 
     return <>
         <S.ShippingMethodItem>
@@ -109,9 +120,7 @@ export const ShippingMethodItem: React.FC<IProps> = ({
                             name="scheduleSelected"
                             options={scheduleTimes}
                             value={scheduleSelected || ''}
-                            onChange={(value:IKeyValue)=>{
-                                setFieldValue("scheduleSelected", value.id);
-                            }}
+                            onChange={handleOnChangeScheduleSelected}
                             optionLabelKey="description"
                             optionValueKey="id"
                             errors={errors?.scheduleSelected ? [{field:"scheduleSelected", message: errors.scheduleSelected}] : undefined}

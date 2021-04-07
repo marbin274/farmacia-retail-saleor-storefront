@@ -1,5 +1,7 @@
 import { IAvailableShippingMethods, ICheckout } from "@temp/@sdk/api/Checkout/types";
 import { Checkout_availableShippingMethods, Checkout_availableShippingMethods_scheduleDates_scheduleTimes } from "@temp/@sdk/fragments/gqlTypes/Checkout";
+import { SHIPPING_FORMAT_DATE } from "@temp/core/config";
+import { format } from "date-fns";
 import { diffHours, getStringToTime } from "./dateUtils";
 
 interface ICheckAttentionSchedule { 
@@ -27,15 +29,19 @@ export const checkAttentionSchedule = (
   ) {
 
     const shippingMethodInAvailables = availableShippingMethods?.find(it => it.id === checkout.shippingMethod?.id);
-    const scheduleTimeSelected = shippingMethodInAvailables?.scheduleDates
-      ?.find(it => it?.date === checkout.scheduleDate?.date)
+    const scheduleDateSelected = shippingMethodInAvailables?.scheduleDates
+    ?.find(it => it?.date === checkout.scheduleDate?.date);
+    const scheduleTimeSelected = scheduleDateSelected
       ?.scheduleTimes
       ?.find(it => it?.id === checkout.scheduleDate?.scheduleTime?.id);
     
     let isAttentionSchedule = !!scheduleTimeSelected;
-    if (scheduleTimeSelected && scheduleTimeSelected.startTime) {
+    const now:Date = new Date();
+    const nowString = format(now, SHIPPING_FORMAT_DATE);
+    const dateSelected: string = scheduleDateSelected?.date ? scheduleDateSelected.date : now;
+    
+    if ((dateSelected === nowString) &&scheduleTimeSelected && scheduleTimeSelected.startTime) {
       const startTime = getStringToTime(scheduleTimeSelected.startTime);
-      const now = new Date();
       isAttentionSchedule = diffHours(now, startTime) < -2;
     }
 

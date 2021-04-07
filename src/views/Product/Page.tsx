@@ -103,6 +103,7 @@ class Page extends React.PureComponent<
                         canAddToCart={canAddToCart}
                         descriptionJson={product.descriptionJson}
                         isOnSale={isOnSale}
+                        isOutStock={isOutStock}
                         items={items}
                         product={product}
                         pricing={product.pricing}
@@ -127,6 +128,7 @@ class Page extends React.PureComponent<
                           canAddToCart={canAddToCart}
                           descriptionJson={product.descriptionJson}
                           isOnSale={isOnSale}
+                          isOutStock={isOutStock}
                           items={items}
                           product={product}
                           pricing={product.pricing}

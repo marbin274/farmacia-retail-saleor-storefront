@@ -58,6 +58,7 @@ export const aunaComplementary4 = "#E6EEF8";
 export const aunaOrange = "#ED7C59";
 export const aunaOrangeOnSale = "#FF6900";
 export const aunaBlackGray = "#454545";
+export const aunaInputGray = "#E3E5ED";
 
 export const shippingMethodBlack = "#000000";
 
@@ -70,6 +71,7 @@ export const theme = {
   aunaDisabledBackground: aunaGrey40,
   aunaError,
   aunaGrey06,
+  aunaInputGray,
   aunaInteractive,
   aunaInteractiveHover,
   aunaInteractivePressed,

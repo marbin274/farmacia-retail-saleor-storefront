@@ -1,8 +1,6 @@
 import { CreditCardIcon } from "@components/atoms";
 import { AddressSummary, OutOfTimeMessage } from "@components/molecules";
-import { getScheduleTimesFormat } from "@temp/@next/utils/dateUtils";
-import { SHIPPING_DISPLAY_FORMAT_DATE } from "@temp/core/config";
-import { format } from 'date-fns';
+import { formatShippingMethodDateToString, getScheduleTimesFormat } from "@temp/@next/utils/dateUtils";
 import React from "react";
 import * as S from "./styles";
 import { IProps } from "./types";
@@ -30,7 +28,7 @@ const CheckoutReview: React.FC<IProps> = ({
           <S.Text>{shippingMethodName}</S.Text>
           :<>
            <S.SubTitle>Pedido programado</S.SubTitle>
-           <S.Text>Fecha: {format(new Date(scheduleDate?.date), SHIPPING_DISPLAY_FORMAT_DATE)}</S.Text>
+           <S.Text>Fecha: {formatShippingMethodDateToString(scheduleDate?.date)}</S.Text>
            <S.Text>Hora: {getScheduleTimesFormat(scheduleDate?.scheduleTime?.startTime,scheduleDate?.scheduleTime?.endTime)}</S.Text>
           </>
         }

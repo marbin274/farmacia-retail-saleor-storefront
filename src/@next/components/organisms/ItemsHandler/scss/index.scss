@@ -2,60 +2,72 @@
 
 .itemHandler {
   display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: stretch;
-  align-content: center;
-  border-radius: 40px;
-  background: $auna-complementary1;
-  p {
+  flex-direction: column;
+  align-items: center;
+  &--actions{
+    align-items: stretch;
+    align-content: center;
+    background: $auna-complementary1;
+    border-radius: 40px;
     display: flex;
-    align-items: center;
-    padding: 0;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    p {
+      display: flex;
+      align-items: center;
+      padding: 0;
+    }
+  
+    .add_remove_button {
+      display: flex;
+      align-items: center;
+      background: transparent;
+      border-radius: 23px;
+      &:nth-child(1) {
+        justify-content: flex-start;
+        margin-left: 1rem;
+      }
+      &:nth-child(3) {
+        justify-content: flex-end;
+        margin-right: 1rem;
+      }
+      span {
+        font-size: 2rem;
+      }
+      &:hover {
+        background-color: $auna-complementary1;
+        color: $auna-complementary-hover !important;
+      }
+  
+      &:disabled {
+        cursor: not-allowed !important;
+        color: $auna-grey-100 !important;
+        background-color: $auna-complementary1;
+      }
+  
+      &:active {
+        box-shadow: none;
+      }
+  
+      &:focus {
+        box-shadow: none;
+        background-color: $auna-complementary1;
+      }
+  
+      color: $auna-interactive !important;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
   }
-
-  .add_remove_button {
-    display: flex;
-    align-items: center;
-    background: transparent;
-    border-radius: 23px;
-    &:nth-child(1) {
-      justify-content: flex-start;
-      margin-left: 1rem;
-    }
-    &:nth-child(3) {
-      justify-content: flex-end;
-      margin-right: 1rem;
-    }
-    span {
-      font-size: 2rem;
-    }
-    &:hover {
-      background-color: $auna-complementary1;
-      color: $auna-complementary-hover !important;
-    }
-
-    &:disabled {
-      cursor: not-allowed !important;
-      color: $auna-grey-100 !important;
-      background-color: $auna-complementary1;
-    }
-
-    &:active {
-      box-shadow: none;
-    }
-
-    &:focus {
-      box-shadow: none;
-      background-color: $auna-complementary1;
-    }
-
-    color: $auna-interactive !important;
-    cursor: pointer;
-    padding: 0.5rem;
+  &__limit-max{
+    color: $auna-orange-on-sale;
+    font-size: $label-font-size;
   }
 }
+
+
 
 @media (max-width: $small-screen) {
   .add_remove_button {
