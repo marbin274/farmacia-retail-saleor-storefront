@@ -112,6 +112,10 @@ export const convertSortByFromString = (sortBy: string) => {
       field = ProductOrderField.DATE;
       break;
 
+    case "stock":
+      field = ProductOrderField.STOCK;
+      break;
+
     default:
       return null;
   }
