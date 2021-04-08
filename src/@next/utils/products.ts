@@ -78,6 +78,7 @@ export const getStockAvailable = (product: ISimpleProduct): IStockAvailable => {
     else if (product.variant?.quantityAvailable) {
         stockAvailable = product.variant.quantityAvailable;
     }
+    
     return { stockAvailable, quantity };
 }
 
