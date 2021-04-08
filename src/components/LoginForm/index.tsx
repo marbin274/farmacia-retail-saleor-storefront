@@ -9,12 +9,6 @@ import ForgottenPassword from "../OverlayManager/Login/ForgottenPassword";
 import { loginFormSchema } from "./loginForm.schema";
 import "./scss/index.scss";
 import { TextField } from "@components/molecules";
-import {
-  ecommerceProductsMapper,
-  getLocalStorageForCart,
-  launchCheckoutEvent,
-  steps,
-} from "@temp/@sdk/gaConfig";
 
 interface ILoginForm {
   hide?: () => void;
@@ -107,16 +101,7 @@ const LoginForm: React.FC<ILoginForm> = ({
           </div>
         )}
         <div className="login-form__button">
-          <Button
-            type="submit"
-            {...(loading && { disabled: true })}
-            onClick={() =>
-              launchCheckoutEvent(
-                steps.address,
-                ecommerceProductsMapper(getLocalStorageForCart())
-              )
-            }
-          >
+          <Button type="submit" {...(loading && { disabled: true })}>
             {loading ? "Cargando" : "Ingresar"}
           </Button>
         </div>
