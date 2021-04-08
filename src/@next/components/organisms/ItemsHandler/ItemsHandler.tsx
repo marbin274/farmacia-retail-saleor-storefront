@@ -1,18 +1,18 @@
-import React, { useEffect, useState, FC } from "react";
-import classNames from "classnames";
-import { MAX_ORDER_PER_PRODUCT } from "@temp/core/config";
-import { Button } from "../../atoms";
-import "./scss/index.scss";
+import { launchAddToCartEvent, launchRemoveToCartEvent } from "@sdk/gaConfig";
 import { ISimpleProduct } from "@temp/@next/types/IProduct";
+import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
+import { checkStockLimitOrStockAvailable, ICheckStockLimitOrStockAvailable } from "@temp/@next/utils/products";
+import { MAX_ORDER_PER_PRODUCT } from "@temp/core/config";
+import classNames from "classnames";
+import React, { FC, useEffect, useState } from "react";
+import { Button } from "../../atoms";
+import { itemNotificationsService } from "../../atoms/ItemsNotification";
 import {
   IAddToCartCallback,
   IRemoveItemToCartCallback,
-  ISubstractItemToCartCallback,
+  ISubstractItemToCartCallback
 } from "../../molecules/ProductTileAUNA/types";
-import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
-import { itemNotificationsService } from "../../atoms/ItemsNotification";
-import { launchAddToCartEvent, launchRemoveToCartEvent } from "@sdk/gaConfig";
-import { getStockLimitMax } from "@temp/@next/utils/products";
+import "./scss/index.scss";
 type IProps = {
   canAddToCart?: boolean;
   disableOnAdd?: boolean;
@@ -39,10 +39,10 @@ const ItemsHandler: FC<IProps> = ({
   ] = useState(false);
   const quantity: number = product?.quantity || 0;
   const [isValueLessThanMax, setIsValueLessThanMax] = useState(false);
-  const { existLimitMax, stockLimitMax } = React.useMemo(() => (
+  const { isLimitMax, stockLimitMax } = React.useMemo((): ICheckStockLimitOrStockAvailable | { isLimitMax: boolean, stockLimitMax: number } => (
     product ?
-      getStockLimitMax(product) :
-      { existLimitMax: undefined, stockLimitMax: undefined }
+      checkStockLimitOrStockAvailable(product) :
+      { isLimitMax: false, stockLimitMax: 0 }
   ), [product]);
 
   useEffect(() => {
@@ -126,7 +126,7 @@ const ItemsHandler: FC<IProps> = ({
               +
           </Button>
           </div>
-          {(!canAddToCart && existLimitMax) && <div><span className="itemHandler__limit-max">Max. {stockLimitMax} por promoción</span></div>}
+          {(!canAddToCart && isLimitMax) && <div><span className="itemHandler__limit-max">Max. {stockLimitMax} por promoción</span></div>}
         </div>
       ) : (
         <div className="button">

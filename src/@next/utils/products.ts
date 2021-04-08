@@ -62,7 +62,7 @@ export const getStockLimitMax = (product: ISimpleProduct): { existLimitMax: bool
     return { existLimitMax: false };
 }
 
-const checkStockLimitOrStockAvailable = (product: ISimpleProduct): ICheckStockLimitOrStockAvailable => {
+export const checkStockLimitOrStockAvailable = (product: ISimpleProduct): ICheckStockLimitOrStockAvailable => {
     const { existLimitMax, stockLimitMax } = getStockLimitMax(product);
     const { quantity, stockAvailable } = getStockAvailable(product);
     const isLimitMax = (existLimitMax && !!stockLimitMax) && (stockLimitMax > 0 && stockLimitMax < stockAvailable);
@@ -72,7 +72,7 @@ const checkStockLimitOrStockAvailable = (product: ISimpleProduct): ICheckStockLi
 export const getStockAvailable = (product: ISimpleProduct): IStockAvailable => {
     let stockAvailable = 0;
     const  quantity = product.quantity ||0;
-    if (product.variants?.[0].quantityAvailable) {
+    if (product.variants?.[0]?.quantityAvailable) {
         stockAvailable = product.variants[0].quantityAvailable;
     }
     else if (product.variant?.quantityAvailable) {
