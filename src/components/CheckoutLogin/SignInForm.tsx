@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  ecommerceProductsMapper,
-  getLocalStorageForCart,
-  launchCheckoutEvent,
-  steps,
-} from "@temp/@sdk/gaConfig";
+import { launchCheckoutEvent, steps } from "@temp/@sdk/gaConfig";
 import { LoginForm } from "../";
 
 const SignInForm: React.FC<{
@@ -12,12 +7,7 @@ const SignInForm: React.FC<{
 }> = ({ onClick }) => (
   <div
     className="checkout-login__user__form"
-    onClick={() =>
-      launchCheckoutEvent(
-        steps.address,
-        ecommerceProductsMapper(getLocalStorageForCart())
-      )
-    }
+    onClick={() => launchCheckoutEvent(steps.address)}
   >
     <div className="checkout-login__user__form__header">Inicia sesión</div>
     <LoginForm onForgottenPassword={() => onClick()} hideRegister={true} />

@@ -1,11 +1,6 @@
 import React from "react";
 import ReactSVG from "react-svg";
-import {
-  ecommerceProductsMapper,
-  getLocalStorageForCart,
-  launchCheckoutEvent,
-  steps,
-} from "@temp/@sdk/gaConfig";
+import { launchCheckoutEvent, steps } from "@temp/@sdk/gaConfig";
 import { Link } from "react-router-dom";
 import medicinesImg from "images/auna/medicines.svg";
 import arrowImg from "images/breadcrumbs-arrow.svg";
@@ -29,12 +24,7 @@ const CheckoutAsGuest: React.FC<{
         <Link to={checkoutUrl} className="checkout-login__link_guest">
           <Button
             className="checkout-login__button_guest"
-            onClick={() =>
-              launchCheckoutEvent(
-                steps.address,
-                ecommerceProductsMapper(getLocalStorageForCart())
-              )
-            }
+            onClick={() => launchCheckoutEvent(steps.address)}
           >
             Invitado
           </Button>

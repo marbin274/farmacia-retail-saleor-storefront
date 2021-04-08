@@ -10,8 +10,8 @@ export enum steps {
   review,
 }
 
-export const ecommerceProductsMapper = (products: any[]): any[] => {
-  return products?.map(product => ({
+export const ecommerceProductsMapper = (products: any[]) => {
+  return products.map(product => ({
     brand: ``,
     category: ``,
     id: product?.variant?.sku,
@@ -145,8 +145,4 @@ export const launchSetLocation = () => {
   return window?.dataLayer?.push({
     originalLocation: `${document.location.protocol}//${document.location.hostname}${document.location.pathname}${document.location.search}`,
   });
-};
-
-export let getLocalStorageForCart = () => {
-  return JSON.parse(localStorage.getItem("data_checkout") as string)?.lines;
 };
