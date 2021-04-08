@@ -1,6 +1,24 @@
-@import "../../../globalStyles/scss/variables.scss";
+@import "@temp/globalStyles/scss/variables.scss";
 
 .cart-table {
+  thead tr {
+    border-bottom: 1px solid $auna-grey-60;
+
+    th {
+      @media (max-width: $medium-screen) {
+        padding: 1rem 0;
+      }
+    }
+  }
+
+  tbody tr {
+    border-bottom: 1px solid $auna-grey-60;
+  }
+
+  tfoot tr {
+    border-bottom: 0;
+  }
+
   @media (max-width: $medium-screen) {
     td:last-child,
     th:last-child {
@@ -22,10 +40,17 @@
     }
   }
 
+  &__cost-wrapper--bold {
+    font-weight: bold;
+  }
+
   &__cost {
     color: $base-font-color;
-    font-weight: $bold-font-weight;
-    text-transform: uppercase;
+    text-align: right;
+  }
+
+  &__cost-value {
+    text-align: right;
   }
 
   &__quantity {
@@ -58,6 +83,14 @@
         padding: $spacer / 2;
       }
     }
+  }
+
+  &__total-header {
+    text-align: right;
+  }
+
+  &__total-cell {
+    text-align: right;
   }
 
   svg:hover {

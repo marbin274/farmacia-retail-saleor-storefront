@@ -1,8 +1,15 @@
 import { styled } from "@styles";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{errors: boolean}>`
   padding-top: ${props => props.theme.input.topPadding};
   margin-bottom: ${props => props.theme.spacing.fieldSpacer};
+  ${({errors, theme}) => errors && `
+  > div {
+    > div {
+      border-color: ${theme.colors.aunaError};
+    }
+  }
+  `}
 `;
 
 export const Indicator = styled.div<{ rotate: string }>`

@@ -12,9 +12,18 @@ export const Button: React.FC<IProps> = ({
   children,
   fullWidth = false,
   size = "md",
+  outline = false,
   ...props
 }: IProps) => {
-  const ButtonWithTheme = color === "primary" ? S.Primary : S.Secondary;
+  const getButtonTheme = () => {
+    if (outline) {
+      return S.Outline;
+    }
+    
+    return color === "primary" ? S.Primary : S.Secondary;
+  };
+
+  const ButtonWithTheme = getButtonTheme();
 
   return (
     <ButtonWithTheme

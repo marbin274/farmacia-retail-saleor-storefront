@@ -27,7 +27,6 @@ const renderSubmitBtn = (
       type={formId ? "submit" : "button"}
       form={formId}
       disabled={disabled}
-      size="sm"
     >
       {disabled ? <LoadingText /> : submitBtn.text}
     </Button>

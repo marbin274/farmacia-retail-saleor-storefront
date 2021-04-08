@@ -90,6 +90,7 @@ export const InputWrapper = styled.div<IconOptionsProps>`
   width: 100%;
   padding-right: ${props => (props.hasRightIcon ? "2rem" : "0")};
   border-radius: ${props => props.theme.input.borderRadius};
+  background-color: white;
 `;
 
 export const Input = styled.input<InputProps>`

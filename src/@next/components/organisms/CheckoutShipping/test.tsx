@@ -25,28 +25,4 @@ describe("<CheckoutShipping />", () => {
     );
   });
 
-  it("simulates change and submit events", done => {
-    const selectShippingMethod = jest.fn();
-    const wrapper = mount(
-      <CheckoutShipping
-        {...DEFAULT_PROPS}
-        selectShippingMethod={selectShippingMethod}
-      />
-    );
-
-    const input = wrapper.find("input").at(0);
-    // const form = wrapper.find("form");
-    const shippingMethodId = DEFAULT_PROPS.shippingMethods[0].id;
-
-    input.simulate("change", {
-      target: { value: shippingMethodId },
-    });
-    // form.simulate("submit");
-
-    // delay checking the assertion since Formik handler within component is evaluated asynchronously
-    window.setTimeout(() => {
-      expect(selectShippingMethod).toHaveBeenCalledWith(shippingMethodId, true);
-      done();
-    }, 0);
-  });
 });

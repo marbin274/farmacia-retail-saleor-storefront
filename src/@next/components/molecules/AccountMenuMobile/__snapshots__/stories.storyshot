@@ -18,9 +18,8 @@ exports[`Storyshots @components/molecules/AccountMenuMobile default 1`] = `
 }
 
 .c2 {
-  background-color: #f1f5f5;
+  background-color: #fff;
   padding: 1.25rem;
-  font-weight: 600;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -35,6 +34,8 @@ exports[`Storyshots @components/molecules/AccountMenuMobile default 1`] = `
   align-items: center;
   position: relative;
   margin-bottom: 2rem;
+  border: 1px solid #E4E5ED;
+  border-radius: 0.25rem;
 }
 
 .c1 {
@@ -52,7 +53,7 @@ exports[`Storyshots @components/molecules/AccountMenuMobile default 1`] = `
       className="c2"
       onClick={[Function]}
     >
-      Account
+      Mi perfil
       <svg
         height={8}
         viewBox="0 0 32 32"
@@ -60,7 +61,7 @@ exports[`Storyshots @components/molecules/AccountMenuMobile default 1`] = `
       >
         <path
           d="M16 29.856l-15.999-27.712h31.999l-15.999 27.712z"
-          fill="#21125E"
+          fill="#00B0CA"
         />
       </svg>
     </div>

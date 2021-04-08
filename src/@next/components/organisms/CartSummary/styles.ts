@@ -48,7 +48,7 @@ export const Content = styled.div`
 `;
 
 export const ProductLine = styled.div`
-  padding: 30px 0;
+  padding: 10px 0;
 `;
 
 export const CartSummaryProductList = styled.div`
@@ -187,6 +187,16 @@ export const CostLineLabel = styled.span`
   ${media.smallScreen`
     font-size: 1rem;
   `}
+`;
+
+export const CostTotalWrapper = styled.span`
+  div span {
+    font-size: 1rem;
+    span {
+      font-size: 1.125rem;
+      font-weigth: 500;
+    }
+  }
 `;
 
 export const Costs = styled.div`

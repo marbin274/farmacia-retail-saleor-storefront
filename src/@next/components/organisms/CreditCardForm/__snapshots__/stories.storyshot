@@ -50,6 +50,7 @@ exports[`Storyshots @components/organisms/CreditCardForm default 1`] = `
   width: 100%;
   padding-right: 0;
   border-radius: 4px;
+  background-color: white;
 }
 
 .c6 {
@@ -328,6 +329,7 @@ exports[`Storyshots @components/organisms/CreditCardForm disabled 1`] = `
   width: 100%;
   padding-right: 0;
   border-radius: 4px;
+  background-color: white;
 }
 
 .c6 {
@@ -635,6 +637,7 @@ exports[`Storyshots @components/organisms/CreditCardForm error 1`] = `
   width: 100%;
   padding-right: 0;
   border-radius: 4px;
+  background-color: white;
 }
 
 .c6 {

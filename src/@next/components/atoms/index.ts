@@ -9,6 +9,7 @@ export * from "./Checkbox";
 export * from "./Chip";
 export * from "./CreditCardIcon";
 export * from "./DataTreatmentPolicyLink";
+export * from "./DatePicker";
 export * from "./DropdownMenu";
 export * from "./DropdownSelect";
 export * from "./EmailLink";

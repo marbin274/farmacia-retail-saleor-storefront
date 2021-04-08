@@ -124,6 +124,7 @@ const CheckoutReviewSubpageWithRef: RefForwardingComponent<
       isShippingAvailable={data?.shop?.isShippingAvailable}
       shippingAddress={checkoutShippingAddress}
       billingAddress={checkoutBillingAddress}
+      scheduleDate={checkout?.scheduleDate}
       shippingMethodName={checkout?.shippingMethod?.name}
       paymentMethodName={getPaymentMethodDescription()}
       email={checkout?.email}

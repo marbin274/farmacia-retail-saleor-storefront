@@ -18,4 +18,8 @@ export interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
    * Size
    */
   size?: Size;
+  /**
+   * Outline style
+   */
+  outline?: boolean;
 }

@@ -20,7 +20,7 @@ export const PasswordTile: React.FC = () => {
       <Tile>
         <S.Wrapper>
           <S.Header>
-            MY PASSWORD
+            Mi contraseña
             {!isEditing && (
               <IconButton
                 name="edit"
@@ -31,20 +31,18 @@ export const PasswordTile: React.FC = () => {
           </S.Header>
           <S.Content>
             {isEditing ? (
-              <S.ContentEdit>
-                <PasswordChangeForm
-                  handleSubmit={data => {
-                    setPasswordChange(data);
-                  }}
-                  hide={() => {
-                    setIsEditing(false);
-                  }}
-                  error={error ? error!.extraInfo!.userInputErrors : []}
-                />
-              </S.ContentEdit>
+              <PasswordChangeForm
+                handleSubmit={data => {
+                  setPasswordChange(data);
+                }}
+                hide={() => {
+                  setIsEditing(false);
+                }}
+                error={error ? error!.extraInfo!.userInputErrors : []}
+              />
             ) : (
               <Attribute
-                description="Password"
+                description="Contraseña"
                 attributeValue="**************"
               />
             )}

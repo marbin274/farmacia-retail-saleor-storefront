@@ -289,7 +289,7 @@ exports[`Storyshots @components/molecules/CardHeader with close icon 1`] = `
       >
         <path
           d="M16 12.8l-12.8-12.8-3.2 3.2 12.8 12.8-12.8 12.8 3.2 3.2 12.8-12.8 12.8 12.8 3.2-3.2-12.8-12.8 12.8-12.8-3.2-3.2-12.8 12.8z"
-          fill="#c4c4c4"
+          fill="#00B0CA"
         />
       </svg>
     </div>

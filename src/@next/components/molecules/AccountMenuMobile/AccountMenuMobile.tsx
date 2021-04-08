@@ -2,6 +2,7 @@ import React from "react";
 
 import { Icon } from "@components/atoms";
 import { useHandlerWhenClickedOutside } from "@hooks";
+import { turquoise, aunaBlack } from "@temp/@next/globalStyles/constants";
 
 import { Link } from "react-router-dom";
 import * as S from "./styles";
@@ -17,6 +18,11 @@ export const AccountMenuMobile: React.FC<IProps> = ({
     setShowMenu(false);
   });
 
+  const getActiveSectionName = () => {
+    const link = links.find(x => x.url === active);
+    return link?.label || '';
+  }
+
   return (
     <S.Wrapper
       onClick={() => {
@@ -24,13 +30,8 @@ export const AccountMenuMobile: React.FC<IProps> = ({
       }}
       ref={setElementRef()}
     >
-      {active
-        .replace(/\//g, "")
-        .replace("-", " ")
-        .split(" ")
-        .map(s => s.charAt(0).toUpperCase() + s.substring(1))
-        .join(" ")}
-      <Icon name="select_arrow" size={8} />
+      {getActiveSectionName()}
+      <Icon name="select_arrow" size={8} color={turquoise} />
       {showMenu && (
         <S.Overlay>
           <S.MenuHeader>Mi Cuenta</S.MenuHeader>
@@ -46,7 +47,11 @@ export const AccountMenuMobile: React.FC<IProps> = ({
                 <Link to={link.url}>
                   <S.MenuItem active={active === link.url}>
                     {link.label}
-                    <Icon name="select_arrow" size={8} />
+                    <Icon
+                      name="select_arrow"
+                      size={8}
+                      color={active === link.url ? turquoise : aunaBlack}
+                    />
                   </S.MenuItem>
                 </Link>
               </div>

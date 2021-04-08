@@ -117,6 +117,11 @@ const MainMenu: React.FC = () => {
                                             Mis direcciones
                                           </Link>
                                         </li>
+                                        <li data-testid="order_history__link">
+                                          <Link to={appPaths.orderHistoryUrl}>
+                                            Historial de pedidos
+                                          </Link>
+                                        </li>
                                         <li
                                           onClick={handleSignOut}
                                           data-testid="logout-link"
@@ -233,14 +238,14 @@ const MainMenu: React.FC = () => {
                               <li data-testid="my_account__link">
                                 <Link to={appPaths.accountUrl}>Mi cuenta</Link>
                               </li>
-                              {/* <li data-testid="order_history__link">
-                                <Link to={appPaths.orderHistoryUrl}>
-                                  Order history
-                                </Link>
-                              </li> */}
                               <li data-testid="address_book__link">
                                 <Link to={appPaths.addressBookUrl}>
                                   Mis direcciones
+                                </Link>
+                              </li>
+                              <li data-testid="order_history__link">
+                                <Link to={appPaths.orderHistoryUrl}>
+                                  Historial de pedidos
                                 </Link>
                               </li>
                               <li

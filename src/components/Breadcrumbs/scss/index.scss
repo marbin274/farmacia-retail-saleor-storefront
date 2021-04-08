@@ -1,32 +1,33 @@
-@import "../../../globalStyles/scss/variables.scss";
+@import "@temp/globalStyles/scss/variables.scss";
 
 .breadcrumbs {
   display: inline-flex;
   flex-wrap: wrap;
   margin: $spacer 0;
-  a {
-    color: $gray-light;
-    font-weight: 600;
+
+  @media (max-width: $small-screen) {
+    margin-bottom: 2rem;
   }
+
   li {
     &:not(:last-of-type) {
       &:after {
-        content: url("../../../images/breadcrumbs-arrow.svg");
+        content: ">";
         display: inline-block;
         margin: 0 $spacer / 2;
       }
     }
 
     a {
-      color: $gray-dark;
       text-decoration: none;
       vertical-align: middle;
       transition: 0.3s;
+    }
+  }
 
-      &:hover,
-      &:focus {
-        color: $blue;
-      }
+  a {
+    @media (max-width: $small-screen) {
+      color: $auna-interactive;
     }
   }
 

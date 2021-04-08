@@ -2,9 +2,10 @@ import { Formik } from "formik";
 import React from "react";
 import { TextField } from "../TextField";
 
-import { Button, ButtonLink } from "@components/atoms";
+import { Button } from "@components/atoms";
 import { IFormError } from "@types";
 import * as S from "./styles";
+import { registerFormSchema } from "./passwordChange.schema";
 
 export const PasswordChangeForm: React.FC<{
   handleSubmit: (data: any) => void;
@@ -38,27 +39,7 @@ export const PasswordChangeForm: React.FC<{
           setSubmitting(false);
         }}
         validateOnChange={false}
-        validate={values => {
-          const errors: {
-            oldPassword?: string;
-            confirmPassword?: string;
-            newPassword?: string;
-          } = {};
-          if (!values.confirmPassword) {
-            errors.confirmPassword = "Required field";
-          }
-          if (!values.newPassword) {
-            errors.newPassword = "Required field";
-          }
-          if (!values.oldPassword) {
-            errors.oldPassword = "Required field";
-          }
-          if (values.confirmPassword !== values.newPassword) {
-            errors.confirmPassword = "Passwords do not match";
-            errors.newPassword = "Passwords do not match";
-          }
-          return errors;
-        }}
+        validationSchema={registerFormSchema}
       >
         {({
           handleChange,
@@ -72,55 +53,63 @@ export const PasswordChangeForm: React.FC<{
         }) => {
           return (
             <S.Form onSubmit={handleSubmit}>
-              <TextField
-                name="oldPassword"
-                label="Old Password"
-                type="password"
-                value={values.oldPassword}
-                onBlur={handleBlur}
-                onChange={handleChange}
-                errors={
-                  touched.oldPassword && errors.oldPassword
-                    ? [{ message: errors.oldPassword }]
-                    : undefined || fieldErrors!.oldPassword
-                }
-              />
-              <TextField
-                name="newPassword"
-                label="New Password"
-                type="password"
-                value={values.newPassword}
-                onBlur={handleBlur}
-                onChange={handleChange}
-                errors={
-                  touched.newPassword && errors.newPassword
-                    ? [{ message: errors.newPassword }]
-                    : undefined || fieldErrors!.newPassword
-                }
-              />
-              <TextField
-                name="confirmPassword"
-                label="Confirm Password"
-                type="password"
-                value={values.confirmPassword}
-                onBlur={handleBlur}
-                onChange={handleChange}
-                errors={
-                  touched.confirmPassword && errors.confirmPassword
-                    ? [{ message: errors.confirmPassword }]
-                    : undefined || fieldErrors!.confirmPassword
-                }
-              />
+              <S.ContentEditOneLine>
+                <S.ContentExtendInput>
+                  <TextField
+                    name="oldPassword"
+                    label="Contraseña anterior"
+                    type="password"
+                    value={values.oldPassword}
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    errors={
+                      touched.oldPassword && errors.oldPassword
+                        ? [{ message: errors.oldPassword }]
+                        : undefined || fieldErrors!.oldPassword
+                    }
+                  />
+                </S.ContentExtendInput>
+                <S.ContentExtendInput>
+                  <TextField
+                    name="newPassword"
+                    label="Nueva contraseña"
+                    type="password"
+                    value={values.newPassword}
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    errors={
+                      touched.newPassword && errors.newPassword
+                        ? [{ message: errors.newPassword }]
+                        : undefined || fieldErrors!.newPassword
+                    }
+                  />
+                </S.ContentExtendInput>
+                <S.ContentExtendInput>
+                  <TextField
+                    name="confirmPassword"
+                    label="Repite la nueva contraseña"
+                    type="password"
+                    value={values.confirmPassword}
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    errors={
+                      touched.confirmPassword && errors.confirmPassword
+                        ? [{ message: errors.confirmPassword }]
+                        : undefined || fieldErrors!.confirmPassword
+                    }
+                  />
+                </S.ContentExtendInput>
+              </S.ContentEditOneLine>
               <S.FormButtons>
-                <ButtonLink type="button" color="secondary" onClick={hide}>
-                  Cancel
-                </ButtonLink>
+                <Button type="button" size="sm" outline onClick={hide}>
+                  Cancelar
+                </Button>
                 <Button
                   type="submit"
                   disabled={isSubmitting || !isValid}
                   size="sm"
                 >
-                  Save
+                  Guardar
                 </Button>
               </S.FormButtons>
             </S.Form>

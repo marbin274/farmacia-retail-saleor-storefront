@@ -49,6 +49,7 @@ import {
 import * as Sentry from "@sentry/react";
 import { Integrations } from "@sentry/tracing";
 import { alertService } from "./@next/components/atoms/Alert";
+import { launchSetLocation } from "./@sdk/gaConfig";
 
 const cache = new InMemoryCache({
   dataIdFromObject: apolloCacheObject => {
@@ -193,6 +194,7 @@ const startApp = async () => {
           gtmId,
           preview: gtmPreview,
         };
+        launchSetLocation();
         TagManager.initialize(tagManagerArgs);
       }
       initSentry();
@@ -202,6 +204,7 @@ const startApp = async () => {
         const tagManagerArgs = {
           gtmId,
         };
+        launchSetLocation();
         TagManager.initialize(tagManagerArgs);
       }
       initSentry();

@@ -2,17 +2,26 @@ import { Formik } from "formik";
 import React from "react";
 import { TextField } from "../TextField";
 
-import { Button, ButtonLink } from "@components/atoms";
+import { Button, Attribute } from "@components/atoms";
 import * as S from "./styles";
+import { UserDetails_me } from "@temp/@sdk/queries/gqlTypes/UserDetails";
 
-export const AccountUpdateForm: React.FC<{
+type IProps = {
   handleSubmit: (data: any) => void;
   hide: () => void;
   initialValues: {
     firstName: string;
     lastName: string;
   };
-}> = ({ handleSubmit, hide, initialValues }) => {
+  user: UserDetails_me | null;
+};
+
+export const AccountUpdateForm: React.FC<IProps> = ({
+  handleSubmit,
+  hide,
+  initialValues,
+  user,
+}) => {
   return (
     <>
       <Formik
@@ -39,7 +48,7 @@ export const AccountUpdateForm: React.FC<{
                 <S.ContentExtendInput>
                   <TextField
                     name="firstName"
-                    label="First Name"
+                    label="Nombres"
                     type="text"
                     value={values.firstName}
                     onBlur={handleBlur}
@@ -49,24 +58,36 @@ export const AccountUpdateForm: React.FC<{
                 <S.ContentExtendInput>
                   <TextField
                     name="lastName"
-                    label="Last Name"
+                    label="Apellidos"
                     type="text"
                     value={values.lastName}
                     onBlur={handleBlur}
                     onChange={handleChange}
                   />
                 </S.ContentExtendInput>
+                <S.AttributeWrapper>
+                  <Attribute
+                    description="Correo"
+                    attributeValue={(user && user.email) || "-"}
+                  />
+                </S.AttributeWrapper>
+                <S.AttributeWrapper>
+                  <Attribute
+                    description="Número de documento"
+                    attributeValue={(user && user.documentNumber) || "-"}
+                  />
+                </S.AttributeWrapper>
               </S.ContentEditOneLine>
               <S.FormButtons>
-                <ButtonLink type="button" color="secondary" onClick={hide}>
-                  Cancel
-                </ButtonLink>
+                <Button type="button" size="sm" outline onClick={hide}>
+                  Cancelar
+                </Button>
                 <Button
                   type="submit"
                   disabled={isSubmitting || !isValid}
                   size="sm"
                 >
-                  Save
+                  Guardar
                 </Button>
               </S.FormButtons>
             </S.Form>

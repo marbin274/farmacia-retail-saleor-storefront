@@ -9,10 +9,12 @@ import { Icon, InputLabel, Select } from "@components/atoms";
 
 import * as S from "./styles";
 import { IProps } from "./types";
+import ReactSVG from "react-svg";
 
 export const InputSelect: React.FC<IProps> = ({
   label,
   inputProps,
+  indicatorIcon,
   ...props
 }: IProps) => {
   const customTheme = React.useContext(ThemeContext);
@@ -79,8 +81,8 @@ export const InputSelect: React.FC<IProps> = ({
         // Boolean to string conversion done due to
         // https://github.com/styled-components/styled-components/issues/1198
         return (
-          <S.DropdownIndicator rotate={String(selectProps.menuIsOpen)}>
-            <Icon name="select_arrow" size={10} color='inherit'/>
+          <S.DropdownIndicator rotate={indicatorIcon ? "" :String(selectProps.menuIsOpen)}>
+            { indicatorIcon ? <ReactSVG path={indicatorIcon}/> :<Icon name="select_arrow" size={10} color='inherit'/>}
           </S.DropdownIndicator>
         );
       }

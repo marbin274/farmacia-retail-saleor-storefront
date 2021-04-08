@@ -1,8 +1,11 @@
 import { media, styled } from "@styles";
+import { turquoise } from '@styles/constants';
+
+
 
 export const DiscountForm = styled.form`
   .promoCode {
-    margin-top: 1rem;
+    padding: 1.25rem;
     div:nth-child(1){
       padding: 0;
       span:nth-child(1) {
@@ -37,17 +40,20 @@ export const DiscountForm = styled.form`
     margin-left: -3px;
     span{
       margin-left: 1rem;
-      color: ${props => props.theme.colors.aunaOrange};
-      font-size: ${props => props.theme.typography.bigFontSize};
+      color: ${props => props.theme.colors.aunaBlack};
+      font-size: ${props => props.theme.typography.smallFontSize};
       font-weight: ${props => props.theme.typography.normalFontWeight};
       margin-right: 1rem;
-      padding-top: 2.5px;
+      
+      font-weight: 600;
     }
   }
   .voucherDescription {
-    font-size: ${props => props.theme.typography.smallFontSize};
+    margin-left: 35px;
+    font-size: ${props => props.theme.typography.labelFontSize};
     font-weight: ${props => props.theme.typography.normalFontWeight};
-    color: ${props => props.theme.colors.aunaOrange};
+    color: ${props => props.theme.colors.aunaBlack};
+    padding-bottom: 0.375rem;
   }
 
   ${media.smallScreen`
@@ -69,7 +75,15 @@ export const InputWithButton = styled.div`
 `;
 
 export const InputWrapper = styled.div`
-  flex: 1;
+  width: 21.875rem; 
+  ${media.largeScreen`
+    flex: auto;
+  `}
+  ${media.smallScreen`
+    flex: 1;
+    width: 100%;
+    max-width: 100%;
+  `}
 `;
 
 export const ButtonWrapper = styled.div`
@@ -81,5 +95,21 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const ChipsWrapper = styled.div`
-  margin: 0.4rem 0 0 0;
+  padding: 1.25rem;
+  width: 328px;
+  height: 7rem;
+  background: #F6F8FA;
+  border-radius: 1rem;
+  ${media.smallScreen`
+    width: 100%;
+    padding-left: 1.875rem;
+  `}
+  `;
+export const LinkWrapper = styled.span`
+  margin-top: 0.9375rem;
+  color: ${turquoise};
+  cursor: pointer;
+  font-size: ${props => props.theme.typography.smallFontSize};
+  margin-left: 2.125rem;
 `;
+

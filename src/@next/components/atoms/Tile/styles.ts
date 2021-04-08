@@ -12,6 +12,7 @@ export const Wrapper = styled.div<WrapperProps>`
   height: 100%;
   padding: 0;
   transition: all 0.3s, color 0s, fill 0s;
+  border-radius: 0.5rem;
 
   display: flex;
   flex-direction: column;

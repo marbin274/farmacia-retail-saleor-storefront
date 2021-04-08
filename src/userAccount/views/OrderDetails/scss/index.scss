@@ -1,41 +1,74 @@
-@import "../../../../globalStyles/scss/variables.scss";
+@import "@temp/globalStyles/scss/variables.scss";
 
 .order-details {
+  &__container {
+    margin: 3rem auto 0 auto;
+  }
+
   h3 {
     font-weight: $bold-font-weight;
     margin: ($spacer * 2.5) 0 ($spacer * 0.5);
   }
 
   &__link {
-    text-decoration: underline;
     font-size: $small-font-size;
-    color: $gray-dark;
+    color: $auna-interactive;
     margin-top: 2rem;
     display: inline-block;
+    margin-bottom: 2rem;
 
     @media (min-width: $small-screen) {
       margin-top: 2.5rem;
     }
   }
 
-  &__status {
-    color: $gray-dark;
+  &__title {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
   }
 
-  &__summary {
-    margin-top: $spacer * 1.5;
+  &__info {
+    display: flex;
+    flex-wrap: wrap;
+  }
 
-    h4 {
-      border-bottom: 1px solid $gray-light;
-      font-weight: $bold-font-weight;
-      margin-bottom: $spacer;
-      padding-bottom: $spacer;
-      text-transform: uppercase;
+  &__tile-wrapper {
+    width: 33.3333%;
+
+    @media (max-width: $small-screen) {
+      width: 100%;
     }
 
-    @media (min-width: $small-screen) {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+    @media (min-width: $small-screen + 1) and (max-width: $medium-screen) {
+      width: 48.5%;
     }
+  }
+
+  &__tile-wrapper-address {
+    width: 33.3333%;
+    margin-left: 1rem;
+
+    @media (max-width: $small-screen) {
+      width: 100%;
+      margin-top: 1rem;
+      margin-left: 0;
+    }
+
+    @media (min-width: $small-screen + 1) and (max-width: $medium-screen) {
+      width: 48.5%;
+    }
+  }
+
+  &__tile-title {
+    font-weight: $bold-font-weight;
+    margin-bottom: 0.75rem;
+  }
+
+  &__tile-description {
+    margin-bottom: 0.75rem;
+  }
+
+  &__tile-address {
+    line-height: 2;
   }
 }

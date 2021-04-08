@@ -16,6 +16,10 @@ const PROPS = {
       label: "Mis direcciones",
       url: "/address-book/",
     },
+    {
+      label: "Historial de pedidos",
+      url: "/order-history/",
+    },
   ],
 };
 
@@ -33,8 +37,9 @@ describe("<AccountMenuMobile />", () => {
       </MemoryRouter>
     );
 
-    expect(wrapper.text()).toContain("Account");
-    expect(wrapper.text()).not.toContain("Address Book");
+    expect(wrapper.text()).toContain("Mi perfil");
+    expect(wrapper.text()).not.toContain("Mis direcciones");
+    expect(wrapper.text()).not.toContain("Historial de pedidos");
   });
 
   it("should expand on click - all tabs name should be visible", () => {
@@ -49,5 +54,6 @@ describe("<AccountMenuMobile />", () => {
     expect(wrapper.text()).toContain("Mi Cuenta");
     expect(wrapper.text()).toContain("Mi perfil");
     expect(wrapper.text()).toContain("Mis direcciones");
+    expect(wrapper.text()).toContain("Historial de pedidos");
   });
 });

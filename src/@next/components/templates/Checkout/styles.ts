@@ -40,12 +40,12 @@ export const Navigation = styled.div`
 
 export const Checkout = styled.div`
   grid-area: checkout;
-  padding: 3rem 0;
-  max-width: 34rem
+  padding: 1rem 0;
+  max-width: 43rem;
 `;
 export const CartSummary = styled.div`
   grid-area: cartSummary;
-  padding-top: 6rem;
+  padding-top: 1rem;
   
   ${media.mediumScreen`
     position: fixed;
@@ -54,6 +54,27 @@ export const CartSummary = styled.div`
 `;
 export const Button = styled.div`
   grid-area: button;
-  text-align: center;
-  max-width: 34rem
+  max-width: 16.25rem;
+  ${media.smallScreen`
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+  `}
+  >  {
+    &:first-child {
+      padding: 0.9rem 1.5rem;
+      > {
+        &:first-child{
+          font-size: 1rem;
+          ${media.smallScreen`
+          font-size: 1rem;
+          `}
+          ${media.xSmallScreen`
+            font-size: 0.875rem;
+          `}
+
+        }
+      }
+    }
+  }
 `;

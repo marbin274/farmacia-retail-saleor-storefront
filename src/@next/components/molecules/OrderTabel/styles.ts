@@ -2,7 +2,7 @@ import { media, styled } from "@styles";
 
 export const Wrapper = styled.div``;
 
-export const Row = styled.div`
+const BaseRow = styled.div`
   display: flex;
   width: 100%;
   flex-direction: row;
@@ -11,21 +11,77 @@ export const Row = styled.div`
   align-items: center;
   height: 5rem;
   cursor: pointer;
-
-  border-bottom: 1px solid ${props => props.theme.colors.tableDivider};
 `;
 
-export const HeaderRow = styled(Row)`
+export const Action = styled.div`
+  width: 15%;
+  opacity: 0;
+
+  ${media.largeScreen`
+     width: 15%;
+     opacity: 1;
+
+      img {
+        width: 0.75rem;
+      }
+  `}
+
+  button {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    span {
+      font-size: 0.75rem;
+    }
+  }
+`;
+
+export const Row = styled(BaseRow)`
+  font-size: 0.875rem;
+  border-top: 1px solid ${props => props.theme.colors.tableDivider};
+
+  &:hover {
+    background-color: white;
+    border-radius: 0.5rem;
+    border-top-color: transparent;
+
+    + ${BaseRow} {
+      border-top-color: transparent;
+    }
+
+    ${Action} {
+      opacity: 1;
+    }
+  }
+
+  :last-child {
+    border-bottom: 1px solid ${props => props.theme.colors.tableDivider};
+
+    &:hover {
+      border-bottom-color: transparent;
+    }
+  }
+
+  :first-child {
+    border-top: 0;
+  }
+`;
+
+export const HeaderRow = styled(BaseRow)`
   color: ${props => props.theme.colors.lightFont};
   cursor: default;
+  font-size: 0.75rem;
 `;
 
 export const IndexNumber = styled.div`
   width: 15%;
-  ${media.smallScreen`
+  ${media.largeScreen`
      width: 50%;
   `}
 `;
+
 export const ProductsOrdered = styled.div`
   width: 25%;
   display: flex;
@@ -37,15 +93,18 @@ export const ProductsOrdered = styled.div`
     height: auto;
   }
 `;
+
 export const DateOfOrder = styled.div`
   width: 25%;
 `;
+
 export const Value = styled.div`
   width: 10%;
 `;
+
 export const Status = styled.div`
-  width: 25%;
-  ${media.smallScreen`
+  width: 15%;
+  ${media.largeScreen`
      width: 50%;
   `}
 `;

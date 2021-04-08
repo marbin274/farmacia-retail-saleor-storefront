@@ -25,6 +25,8 @@ type ViewProps = RouteComponentProps<{
   id: string;
 }>;
 
+const DEFAULT_SORT = '-stock'
+
 export const FilterQuerySet = {
   encode(valueObj) {
     const str = [];
@@ -89,7 +91,7 @@ export const View: React.FC<ViewProps> = ({ match }) => {
     pageSize: PRODUCTS_PER_PAGE,
     priceGte: null,
     priceLte: null,
-    sortBy: sort || null,
+    sortBy: sort || DEFAULT_SORT,
   };
   const variables = {
     ...filters,

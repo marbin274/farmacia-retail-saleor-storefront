@@ -21,6 +21,26 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
   message: string | null;
 }
 
+export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_scheduleDate_scheduleTime {
+  __typename: "ScheduleTime";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  startTime: any;
+  endTime: any;
+}
+
+export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_scheduleDate {
+  __typename: "ScheduleDate";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  date: any;
+  scheduleTime: UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_scheduleDate_scheduleTime;
+}
+
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_totalPrice_gross {
   __typename: "Money";
   /**
@@ -32,7 +52,7 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -48,7 +68,7 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -76,7 +96,7 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -92,7 +112,7 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -202,9 +222,31 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    */
   amount: number;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
+}
+
+export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_availableShippingMethods_scheduleDates_scheduleTimes {
+  __typename: "ScheduleTime";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  startTime: any;
+  endTime: any;
+}
+
+export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_availableShippingMethods_scheduleDates {
+  __typename: "ScheduleByDate";
+  /**
+   * Date.
+   */
+  date: any | null;
+  /**
+   * Available schedules for a date.
+   */
+  scheduleTimes: (UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_availableShippingMethods_scheduleDates_scheduleTimes | null)[] | null;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_availableShippingMethods {
@@ -214,7 +256,16 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    */
   id: string;
   name: string;
+  /**
+   * Flag to recognize if this shipping method has schedules to select.
+   */
+  isScheduled: boolean | null;
   price: UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_availableShippingMethods_price | null;
+  /**
+   * List of filtered schedules a customer can pick.
+   */
+  scheduleDates: (UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_availableShippingMethods_scheduleDates | null)[] | null;
+  subtitle: string | null;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_shippingMethod_price {
@@ -228,9 +279,31 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    */
   amount: number;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
+}
+
+export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_shippingMethod_scheduleDates_scheduleTimes {
+  __typename: "ScheduleTime";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  startTime: any;
+  endTime: any;
+}
+
+export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_shippingMethod_scheduleDates {
+  __typename: "ScheduleByDate";
+  /**
+   * Date.
+   */
+  date: any | null;
+  /**
+   * Available schedules for a date.
+   */
+  scheduleTimes: (UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_shippingMethod_scheduleDates_scheduleTimes | null)[] | null;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_shippingMethod {
@@ -240,7 +313,16 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    */
   id: string;
   name: string;
+  /**
+   * Flag to recognize if this shipping method has schedules to select.
+   */
+  isScheduled: boolean | null;
   price: UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_shippingMethod_price | null;
+  /**
+   * List of filtered schedules a customer can pick.
+   */
+  scheduleDates: (UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_shippingMethod_scheduleDates | null)[] | null;
+  subtitle: string | null;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_shippingPrice_gross {
@@ -254,7 +336,7 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -270,7 +352,7 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -298,7 +380,7 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -314,7 +396,7 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -342,7 +424,7 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -358,7 +440,7 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -386,7 +468,7 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -402,7 +484,7 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -475,6 +557,46 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
   values: (UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_lines_variant_attributes_values | null)[];
 }
 
+export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_lines_variant_product_attributes_attribute {
+  __typename: "Attribute";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  /**
+   * Name of an attribute displayed in the interface.
+   */
+  name: string | null;
+}
+
+export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_lines_variant_product_attributes_values {
+  __typename: "AttributeValue";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  /**
+   * Name of a value displayed in the interface.
+   */
+  name: string | null;
+  /**
+   * Name of a value displayed in the interface.
+   */
+  value: string | null;
+}
+
+export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_lines_variant_product_attributes {
+  __typename: "SelectedAttribute";
+  /**
+   * Name of an attribute displayed in the interface.
+   */
+  attribute: UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_lines_variant_product_attributes_attribute;
+  /**
+   * Values of an attribute.
+   */
+  values: (UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_lines_variant_product_attributes_values | null)[];
+}
+
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_lines_variant_product_thumbnail {
   __typename: "Image";
   /**
@@ -507,6 +629,10 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    */
   id: string;
   name: string;
+  /**
+   * List of attributes assigned to this product.
+   */
+  attributes: UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_lines_variant_product_attributes[];
   /**
    * The main thumbnail for a product.
    */
@@ -570,7 +696,7 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    */
   amount: number;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -582,6 +708,7 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    * The ID of the object.
    */
   id: string;
+  scheduleDate: UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_scheduleDate | null;
   /**
    * The sum of the the checkout line prices, with all the taxes,shipping costs, and discounts included.
    */
@@ -608,9 +735,7 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
   /**
    * A list of checkout lines, each containing information about an item in the checkout.
    */
-  lines:
-    | (UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_lines | null)[]
-    | null;
+  lines: (UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_lines | null)[] | null;
   /**
    * Returns True, if checkout requires shipping.
    */
@@ -639,6 +764,26 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
   checkout: UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout | null;
 }
 
+export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_scheduleDate_scheduleTime {
+  __typename: "ScheduleTime";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  startTime: any;
+  endTime: any;
+}
+
+export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_scheduleDate {
+  __typename: "ScheduleDate";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  date: any;
+  scheduleTime: UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_scheduleDate_scheduleTime;
+}
+
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_totalPrice_gross {
   __typename: "Money";
   /**
@@ -650,7 +795,7 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -666,7 +811,7 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -694,7 +839,7 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -710,7 +855,7 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -820,9 +965,31 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    */
   amount: number;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
+}
+
+export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_availableShippingMethods_scheduleDates_scheduleTimes {
+  __typename: "ScheduleTime";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  startTime: any;
+  endTime: any;
+}
+
+export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_availableShippingMethods_scheduleDates {
+  __typename: "ScheduleByDate";
+  /**
+   * Date.
+   */
+  date: any | null;
+  /**
+   * Available schedules for a date.
+   */
+  scheduleTimes: (UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_availableShippingMethods_scheduleDates_scheduleTimes | null)[] | null;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_availableShippingMethods {
@@ -832,7 +999,16 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    */
   id: string;
   name: string;
+  /**
+   * Flag to recognize if this shipping method has schedules to select.
+   */
+  isScheduled: boolean | null;
   price: UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_availableShippingMethods_price | null;
+  /**
+   * List of filtered schedules a customer can pick.
+   */
+  scheduleDates: (UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_availableShippingMethods_scheduleDates | null)[] | null;
+  subtitle: string | null;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_shippingMethod_price {
@@ -846,9 +1022,31 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    */
   amount: number;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
+}
+
+export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_shippingMethod_scheduleDates_scheduleTimes {
+  __typename: "ScheduleTime";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  startTime: any;
+  endTime: any;
+}
+
+export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_shippingMethod_scheduleDates {
+  __typename: "ScheduleByDate";
+  /**
+   * Date.
+   */
+  date: any | null;
+  /**
+   * Available schedules for a date.
+   */
+  scheduleTimes: (UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_shippingMethod_scheduleDates_scheduleTimes | null)[] | null;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_shippingMethod {
@@ -858,7 +1056,16 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    */
   id: string;
   name: string;
+  /**
+   * Flag to recognize if this shipping method has schedules to select.
+   */
+  isScheduled: boolean | null;
   price: UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_shippingMethod_price | null;
+  /**
+   * List of filtered schedules a customer can pick.
+   */
+  scheduleDates: (UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_shippingMethod_scheduleDates | null)[] | null;
+  subtitle: string | null;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_shippingPrice_gross {
@@ -872,7 +1079,7 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -888,7 +1095,7 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -916,7 +1123,7 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -932,7 +1139,7 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -960,7 +1167,7 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -976,7 +1183,7 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -1004,7 +1211,7 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -1020,7 +1227,7 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -1093,6 +1300,46 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
   values: (UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_lines_variant_attributes_values | null)[];
 }
 
+export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_lines_variant_product_attributes_attribute {
+  __typename: "Attribute";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  /**
+   * Name of an attribute displayed in the interface.
+   */
+  name: string | null;
+}
+
+export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_lines_variant_product_attributes_values {
+  __typename: "AttributeValue";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  /**
+   * Name of a value displayed in the interface.
+   */
+  name: string | null;
+  /**
+   * Name of a value displayed in the interface.
+   */
+  value: string | null;
+}
+
+export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_lines_variant_product_attributes {
+  __typename: "SelectedAttribute";
+  /**
+   * Name of an attribute displayed in the interface.
+   */
+  attribute: UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_lines_variant_product_attributes_attribute;
+  /**
+   * Values of an attribute.
+   */
+  values: (UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_lines_variant_product_attributes_values | null)[];
+}
+
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_lines_variant_product_thumbnail {
   __typename: "Image";
   /**
@@ -1125,6 +1372,10 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    */
   id: string;
   name: string;
+  /**
+   * List of attributes assigned to this product.
+   */
+  attributes: UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_lines_variant_product_attributes[];
   /**
    * The main thumbnail for a product.
    */
@@ -1188,7 +1439,7 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    */
   amount: number;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -1200,6 +1451,7 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    * The ID of the object.
    */
   id: string;
+  scheduleDate: UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_scheduleDate | null;
   /**
    * The sum of the the checkout line prices, with all the taxes,shipping costs, and discounts included.
    */
@@ -1226,9 +1478,7 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
   /**
    * A list of checkout lines, each containing information about an item in the checkout.
    */
-  lines:
-    | (UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_lines | null)[]
-    | null;
+  lines: (UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_lines | null)[] | null;
   /**
    * Returns True, if checkout requires shipping.
    */
@@ -1237,6 +1487,12 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
   discountName: string | null;
   translatedDiscountName: string | null;
   voucherCode: string | null;
+  voucherType: string | null;
+  voucherDiscountType: string | null;
+  voucherDiscountValue: number;
+  documentNumber: string | null;
+  termsAndConditions: boolean;
+  dataTreatmentPolicy: boolean;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_errors {

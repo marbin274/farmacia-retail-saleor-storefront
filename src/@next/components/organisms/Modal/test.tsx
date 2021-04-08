@@ -43,7 +43,7 @@ describe("<Modal />", () => {
     expect(overlay.exists()).toEqual(true);
     expect(overlayProps.position).toEqual("center");
     expect(overlayProps.show).toEqual(DEFAULT_PROPS.show);
-    expect(overlayProps.hide).toEqual(DEFAULT_PROPS.hide);
+    expect(overlayProps.hide).not.toBeDefined();
     expect(overlayProps.target).toBeDefined();
   });
 

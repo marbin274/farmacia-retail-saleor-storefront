@@ -1,26 +1,28 @@
 import React from "react";
 import Media from "react-media";
 import { ThemeContext } from "styled-components";
-
+import { Button } from "@components/atoms";
 import { TaxedMoney } from "@components/containers";
+import arrowImg from "images/breadcrumbs-arrow.svg";
 
 import { Thumbnail } from "..";
-import { generateProductUrl } from "../../../../core/utils";
+import { generateProductUrl, translateOrderStatus } from "@temp/core/utils";
 
 import * as S from "./styles";
 import { IProps } from "./types";
 
 const header = (matches: boolean) => (
   <S.HeaderRow>
-    <S.IndexNumber>Index Number</S.IndexNumber>
+    <S.IndexNumber># Orden</S.IndexNumber>
     {matches && (
       <>
-        <S.ProductsOrdered>Products Ordered</S.ProductsOrdered>
-        <S.DateOfOrder>Date of Order</S.DateOfOrder>
-        <S.Value>Value</S.Value>
+        <S.ProductsOrdered>Productos</S.ProductsOrdered>
+        <S.DateOfOrder>Fecha de la compra</S.DateOfOrder>
+        <S.Value>Total</S.Value>
       </>
     )}
-    <S.Status>Status</S.Status>
+    <S.Status>Estado</S.Status>
+    <S.Action />
   </S.HeaderRow>
 );
 
@@ -36,7 +38,7 @@ export const OrderTabel: React.FC<IProps> = ({ orders, history }: IProps) => {
         {(matches: boolean) => {
           return (
             <>
-              <S.Row>{header(matches)}</S.Row>
+              {header(matches)}
               {orders &&
                 orders.map(order => {
                   const date = new Date(order.node.created);
@@ -83,7 +85,19 @@ export const OrderTabel: React.FC<IProps> = ({ orders, history }: IProps) => {
                       ) : (
                         ""
                       )}
-                      <S.Status>{order.node.statusDisplay}</S.Status>
+                      <S.Status>
+                        {translateOrderStatus(
+                          order.node.status,
+                          order.node.statusDisplay
+                        )}
+                      </S.Status>
+                      <S.Action>
+                        {matches ? (
+                          <Button size="sm">Ver detalle</Button>
+                        ) : (
+                          <img src={arrowImg} />
+                        )}
+                      </S.Action>
                     </S.Row>
                   );
                 })}

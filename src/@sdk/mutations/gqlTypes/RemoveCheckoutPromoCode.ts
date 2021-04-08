@@ -8,6 +8,26 @@ import { CheckoutErrorCode } from "./../../gqlTypes/globalTypes";
 // GraphQL mutation operation: RemoveCheckoutPromoCode
 // ====================================================
 
+export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_scheduleDate_scheduleTime {
+  __typename: "ScheduleTime";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  startTime: any;
+  endTime: any;
+}
+
+export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_scheduleDate {
+  __typename: "ScheduleDate";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  date: any;
+  scheduleTime: RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_scheduleDate_scheduleTime;
+}
+
 export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_totalPrice_gross {
   __typename: "Money";
   /**
@@ -19,7 +39,7 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_totalP
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -35,7 +55,7 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_totalP
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -63,7 +83,7 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_subtot
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -79,7 +99,7 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_subtot
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -189,9 +209,31 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_availa
    */
   amount: number;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
+}
+
+export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_availableShippingMethods_scheduleDates_scheduleTimes {
+  __typename: "ScheduleTime";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  startTime: any;
+  endTime: any;
+}
+
+export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_availableShippingMethods_scheduleDates {
+  __typename: "ScheduleByDate";
+  /**
+   * Date.
+   */
+  date: any | null;
+  /**
+   * Available schedules for a date.
+   */
+  scheduleTimes: (RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_availableShippingMethods_scheduleDates_scheduleTimes | null)[] | null;
 }
 
 export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_availableShippingMethods {
@@ -201,7 +243,16 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_availa
    */
   id: string;
   name: string;
+  /**
+   * Flag to recognize if this shipping method has schedules to select.
+   */
+  isScheduled: boolean | null;
   price: RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_availableShippingMethods_price | null;
+  /**
+   * List of filtered schedules a customer can pick.
+   */
+  scheduleDates: (RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_availableShippingMethods_scheduleDates | null)[] | null;
+  subtitle: string | null;
 }
 
 export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_shippingMethod_price {
@@ -215,9 +266,31 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_shippi
    */
   amount: number;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
+}
+
+export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_shippingMethod_scheduleDates_scheduleTimes {
+  __typename: "ScheduleTime";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  startTime: any;
+  endTime: any;
+}
+
+export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_shippingMethod_scheduleDates {
+  __typename: "ScheduleByDate";
+  /**
+   * Date.
+   */
+  date: any | null;
+  /**
+   * Available schedules for a date.
+   */
+  scheduleTimes: (RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_shippingMethod_scheduleDates_scheduleTimes | null)[] | null;
 }
 
 export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_shippingMethod {
@@ -227,7 +300,16 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_shippi
    */
   id: string;
   name: string;
+  /**
+   * Flag to recognize if this shipping method has schedules to select.
+   */
+  isScheduled: boolean | null;
   price: RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_shippingMethod_price | null;
+  /**
+   * List of filtered schedules a customer can pick.
+   */
+  scheduleDates: (RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_shippingMethod_scheduleDates | null)[] | null;
+  subtitle: string | null;
 }
 
 export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_shippingPrice_gross {
@@ -241,7 +323,7 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_shippi
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -257,7 +339,7 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_shippi
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -285,7 +367,7 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_lines_
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -301,7 +383,7 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_lines_
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -329,7 +411,7 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_lines_
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -345,7 +427,7 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_lines_
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -373,7 +455,7 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_lines_
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -389,7 +471,7 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_lines_
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -462,6 +544,46 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_lines_
   values: (RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_lines_variant_attributes_values | null)[];
 }
 
+export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_lines_variant_product_attributes_attribute {
+  __typename: "Attribute";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  /**
+   * Name of an attribute displayed in the interface.
+   */
+  name: string | null;
+}
+
+export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_lines_variant_product_attributes_values {
+  __typename: "AttributeValue";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  /**
+   * Name of a value displayed in the interface.
+   */
+  name: string | null;
+  /**
+   * Name of a value displayed in the interface.
+   */
+  value: string | null;
+}
+
+export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_lines_variant_product_attributes {
+  __typename: "SelectedAttribute";
+  /**
+   * Name of an attribute displayed in the interface.
+   */
+  attribute: RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_lines_variant_product_attributes_attribute;
+  /**
+   * Values of an attribute.
+   */
+  values: (RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_lines_variant_product_attributes_values | null)[];
+}
+
 export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_lines_variant_product_thumbnail {
   __typename: "Image";
   /**
@@ -494,6 +616,10 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_lines_
    */
   id: string;
   name: string;
+  /**
+   * List of attributes assigned to this product.
+   */
+  attributes: RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_lines_variant_product_attributes[];
   /**
    * The main thumbnail for a product.
    */
@@ -557,7 +683,7 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_discou
    */
   amount: number;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -569,6 +695,7 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout {
    * The ID of the object.
    */
   id: string;
+  scheduleDate: RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_scheduleDate | null;
   /**
    * The sum of the the checkout line prices, with all the taxes,shipping costs, and discounts included.
    */
@@ -595,9 +722,7 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout {
   /**
    * A list of checkout lines, each containing information about an item in the checkout.
    */
-  lines:
-    | (RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_lines | null)[]
-    | null;
+  lines: (RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_lines | null)[] | null;
   /**
    * Returns True, if checkout requires shipping.
    */

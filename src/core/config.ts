@@ -84,7 +84,7 @@ export const CHECKOUT_STEPS = [
   {
     index: 1,
     link: "/checkout/payment",
-    name: "Paso 2: Selecciona el método de pago",
+    name: "Paso 2: Ingresa tu tarjeta",
     nextActionName: "Continuar a confirmación",
     nextStepLink: "/checkout/review",
     onlyIfShippingRequired: false,
@@ -122,3 +122,6 @@ export const PRODUCT_STICKERS = {
 
 export const ATTRIBUTE_PROMOTION_LIMIT_MAX_NAME = "limit-max";
 export const SEARCH_PRODUCTS_QUERY_MIN_LENGTH = 3;
+export const SHIPPING_FORMAT_DATE = "yyyy-MM-dd";
+export const HOURS_TO_FORMAT_DATE = "T00:00:00";
+export const SHIPPING_DISPLAY_FORMAT_DATE = "dd/MM/yyyy";

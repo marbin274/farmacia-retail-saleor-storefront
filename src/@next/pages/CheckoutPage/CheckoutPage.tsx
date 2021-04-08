@@ -3,8 +3,14 @@ import { CheckoutProgressBar } from "@components/molecules";
 import { CartSummary } from "@components/organisms";
 import { Checkout } from "@components/templates";
 import { IItems } from "@sdk/api/Cart/types";
+import {
+  ecommerceProductsMapper,
+  launchCheckoutEvent,
+  steps
+} from "@sdk/gaConfig";
 import { useCart, useCheckout } from "@sdk/react";
-import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
+import { alertService } from "@temp/@next/components/atoms/Alert";
+import { checkAttentionSchedule, removePaymentItems } from "@temp/@next/utils/checkoutValidations";
 import { BASE_URL, CHECKOUT_STEPS } from "@temp/core/config";
 import { IFormError, ITaxedMoney } from "@types";
 import React, { useEffect, useRef, useState } from "react";
@@ -18,14 +24,10 @@ import {
   ICheckoutAddressSubpageHandles,
   ICheckoutPaymentSubpageHandles,
   ICheckoutReviewSubpageHandles,
-  ICheckoutShippingSubpageHandles,
+  ICheckoutShippingSubpageHandles
 } from "./subpages";
 import { IProps } from "./types";
-import {
-  ecommerceProductsMapper,
-  launchCheckoutEvent,
-  steps,
-} from "@sdk/gaConfig";
+import shippingMethodCalendarInfoIco from "images/auna/shipping-method-calendar-info.svg";
 
 const prepareCartSummary = (
   totalPrice?: ITaxedMoney | null,
@@ -85,11 +87,25 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     totalPrice,
     items,
   } = useCart();
-  const { loaded: checkoutLoaded, checkout, payment } = useCheckout();
+  const { availableShippingMethods, loaded: checkoutLoaded, checkout, payment, setShippingMethod } = useCheckout();
+  const { isAttentionSchedule } = checkAttentionSchedule(checkoutLoaded, checkout, availableShippingMethods);
 
-  if (!items || !items?.length) {
+  if ((!items || !items?.length)) {
     removePaymentItems();
     return <Redirect to={BASE_URL} />;
+  }
+  
+  if (isAttentionSchedule === false) {
+    alertService.sendAlert({
+      acceptDialog: () => {
+        setShippingMethod({ shippingMethodId: '' });
+      },
+      buttonText: "Entendido",
+      icon: shippingMethodCalendarInfoIco,
+      message: "Hemos actualizado los horarios disponibles para entregar tu pedido, por favor escoge nuevamente",
+      title: "Horario de entrega",
+      type: "Info",
+    });
   }
 
   if (cartLoaded && (!items || !items?.length)) {
@@ -116,6 +132,7 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
   useEffect(() => {
     setSelectedPaymentGatewayToken(payment?.token);
   }, [payment?.token]);
+
 
   const [requestPayload, setRequestPayload] = useState(null);
 
@@ -269,3 +286,4 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
 };
 
 export { CheckoutPage };
+

@@ -62,7 +62,7 @@ export const Select: React.FC<IProps> = ({
   };
 
   return (
-    <S.Wrapper>
+    <S.Wrapper errors={!!errors}>
       <ReactSelect
         defaultValue={defaultValue}
         onChange={handleChange}

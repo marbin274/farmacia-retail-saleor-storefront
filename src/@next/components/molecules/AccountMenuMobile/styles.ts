@@ -1,14 +1,16 @@
 import { styled } from "@styles";
+import { aunaGrey60 } from "@temp/@next/globalStyles/constants";
 
 export const Wrapper = styled.div`
-  background-color: ${props => props.theme.colors.light};
+  background-color: ${props => props.theme.colors.white};
   padding: 1.25rem;
-  font-weight: ${props => props.theme.typography.boldFontWeight};
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
   margin-bottom: 2rem;
+  border: 1px solid ${aunaGrey60};
+  border-radius: 0.25rem;
 `;
 
 export const Overlay = styled.div`

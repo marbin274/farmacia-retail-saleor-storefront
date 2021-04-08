@@ -1,4 +1,4 @@
-@import "../../../globalStyles/scss/variables.scss";
+@import "@temp/globalStyles/scss/variables.scss";
 
 .main-menu {
   align-items: stretch;
@@ -183,7 +183,6 @@
   }
 
   &__dropdown {
-    text-transform: uppercase;
     font-weight: $bold-font-weight;
 
     li {
@@ -195,7 +194,7 @@
       }
 
       &:not(:last-of-type) {
-        border-bottom: 1px solid $gray-light;
+        border-bottom: 1px solid $auna-grey-80;
       }
     }
   }
