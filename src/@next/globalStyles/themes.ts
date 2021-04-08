@@ -198,6 +198,7 @@ export const defaultTheme = {
      * 18px in default theme
      */
     h4FontSize: C.h4FontSize,
+    labelFontSize: C.labelFontSize,
     /**
      * 400 in default theme
      */

@@ -7,6 +7,7 @@ export interface IAlertServiceProps {
   title?: string;
   type: AlertType;
   redirectionLink?: string;
+  acceptDialog?: ()=> void;
 }
 export interface IProps extends IAlertServiceProps {
   hide: () => void;

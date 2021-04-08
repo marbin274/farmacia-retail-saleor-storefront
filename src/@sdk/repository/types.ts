@@ -93,6 +93,17 @@ export interface ICheckoutModelPromoCodeDiscount {
   message?: string | null;
 }
 
+export interface IScheduleTime {
+  id: string;
+  startTime: string;
+  endTime: string;
+}
+export interface IScheduleDate {
+  id: string;
+  date: Date;
+  scheduleTime:IScheduleTime;
+}
+
 export interface IPaymentCreditCard {
   /**
    * Card brand.
@@ -133,6 +144,7 @@ export interface ICheckoutModel {
   dataTreatmentPolicy?: boolean;
   termsAndConditions?: boolean;
   documentNumber?: string;
+  scheduleDate?: IScheduleDate | null;
 }
 
 export interface IPaymentModel {
@@ -147,6 +159,16 @@ export interface IOrderModel {
   token?: string;
   number?: string | null;
   sequentialCode?: string | null;
+}
+
+export interface IShippingMethodUpdateScheduleDate {
+    scheduleTimeId: string;
+    date: string;
+}
+
+export interface IShippingMethodUpdate {
+  shippingMethodId: string;
+  scheduleDate?: IShippingMethodUpdateScheduleDate
 }
 
 // export interface IJobsModel {

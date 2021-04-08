@@ -140,3 +140,9 @@ export const launchEcommerceEvent = (
     event: "purchase",
   });
 };
+
+export const launchSetLocation = () => {
+  return window?.dataLayer?.push({
+    originalLocation: `${document.location.protocol}//${document.location.hostname}${document.location.pathname}${document.location.search}`,
+  });
+};

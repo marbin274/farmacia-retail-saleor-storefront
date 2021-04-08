@@ -25,6 +25,7 @@ exports[`Storyshots @components/atoms/Tile addNew tile style 1`] = `
   padding: 0;
   -webkit-transition: all 0.3s,color 0s,fill 0s;
   transition: all 0.3s,color 0s,fill 0s;
+  border-radius: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -106,6 +107,7 @@ exports[`Storyshots @components/atoms/Tile default 1`] = `
   padding: 0;
   -webkit-transition: all 0.3s,color 0s,fill 0s;
   transition: all 0.3s,color 0s,fill 0s;
+  border-radius: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -183,6 +185,7 @@ exports[`Storyshots @components/atoms/Tile with hover 1`] = `
   padding: 0;
   -webkit-transition: all 0.3s,color 0s,fill 0s;
   transition: all 0.3s,color 0s,fill 0s;
+  border-radius: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

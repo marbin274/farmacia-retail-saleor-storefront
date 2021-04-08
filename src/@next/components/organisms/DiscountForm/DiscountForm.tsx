@@ -1,11 +1,11 @@
 import { Formik } from "formik";
 import React from "react";
 
-import { Button, Chip, Input } from "@components/atoms";
+import { Button ,Input } from "@components/atoms";
 import * as S from "./styles";
 import { IProps } from "./types";
 import ReactSVG from "react-svg";
-import voucherSVG from "../../../../images/auna/voucher.svg";
+import voucherSVG from "@temp/images/auna/checkout-cupon-small.svg";
 
 export const DiscountForm: React.FC<IProps> = ({
   handleSubmit,
@@ -15,11 +15,17 @@ export const DiscountForm: React.FC<IProps> = ({
   removeVoucher,
   formId,
   formRef,
+  setShowLabelCupon,
+  setReRenderNiubiz,
 }: IProps) => {
   const promoCode = discount && discount.promoCode;
 
   const [inputCode, setInputCode] = React.useState("");
   const [tempPromoCode, setTempPromoCode] = React.useState(promoCode);
+
+  React.useEffect(()=>{
+    setShowLabelCupon(!discount?.promoCode);
+  }, [])
 
   const handleApplyBtnClick = (newInputCode: string) => {
     if (addPromoCode) {
@@ -27,16 +33,20 @@ export const DiscountForm: React.FC<IProps> = ({
         giftCards: undefined,
         promoCode: newInputCode,
       });
+      setShowLabelCupon(false);
     }
 
     setInputCode("");
   };
 
-  const handleRemoveBtnClick = (newInputCode: string) => {
+  const handleRemoveBtnClick = async (newInputCode: string) => {
     setTempPromoCode(undefined);
     setInputCode("");
     if (removeVoucher) {
-      removeVoucher(newInputCode);
+      setReRenderNiubiz(false)
+      await removeVoucher(newInputCode);
+      setReRenderNiubiz(true)
+      setShowLabelCupon(true);
     }
   };
 
@@ -97,7 +107,7 @@ export const DiscountForm: React.FC<IProps> = ({
                           name="inputCode"
                           value={promoCode ? values.inputCode : undefined}
                           label=""
-                          placeholder="Inserta tu código"
+                          placeholder="Ingresa tu cupón"
                           onChange={handleChange}
                           onFocus={() => {
                             errors = null;
@@ -121,11 +131,7 @@ export const DiscountForm: React.FC<IProps> = ({
             </S.Input>
             {discount?.promoCode && (
               <div>
-                <S.ChipsWrapper className="promoCode">
-                  <Chip
-                    type="button"
-                    onClose={() => handleRemoveBtnClick(discount?.promoCode)}
-                  >
+                <S.ChipsWrapper className="promoCode" >
                     <div className="voucherTitle">
                       <ReactSVG path={voucherSVG} />
                       <span data-cy="checkoutPaymentPromoCodeChip">
@@ -135,7 +141,9 @@ export const DiscountForm: React.FC<IProps> = ({
                     <div className="voucherDescription">
                       {discountDescription}
                     </div>
-                  </Chip>
+                    <S.LinkWrapper onClick={() => handleRemoveBtnClick(discount?.promoCode)}>
+                        Eliminar
+                    </S.LinkWrapper>
                 </S.ChipsWrapper>
               </div>
             )}

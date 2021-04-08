@@ -22,6 +22,7 @@ export * from "./ProductListHeader";
 export * from "./ProductTile";
 export * from "./ProductTileAUNA";
 export * from "./ResetPasswordForm";
+export * from "./ShippingMethodItem";
 export * from "./TextField";
 export * from "./Thumbnail";
 

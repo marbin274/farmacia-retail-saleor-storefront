@@ -7,10 +7,12 @@ import {
   OrderDetail_lines,
 } from "@sdk/fragments/gqlTypes/OrderDetail";
 
-import { AddressSummary, CartTable, NotFound } from "../../../components";
-import { ILine } from "../../../components/CartTable/ProductRow";
+import { CartTable, NotFound } from "@temp/components";
+import { Tile } from "@components/atoms";
+import { ILine } from "@temp/components/CartTable/ProductRow";
 
 import { orderHistoryUrl } from "../../../app/routes";
+import { translateOrderStatus } from "@temp/core/utils";
 
 const extractOrderLines = (lines: OrderDetail_lines[]): ILine[] => {
   return lines
@@ -37,37 +39,81 @@ const extractOrderLines = (lines: OrderDetail_lines[]): ILine[] => {
 const Page: React.FC<{
   guest: boolean;
   order: OrderDetail;
-}> = ({ guest, order }) =>
-  order ? (
-    <>
+}> = ({ guest, order }) => {
+  const address = order?.shippingAddress;
+
+  const getAdressDetails = () => {
+    if(address) {
+      return (
+        <>
+          {address.companyName && (
+            <>
+              {address.companyName} <br />
+            </>
+          )}
+          {address.streetAddress1}
+          <br />
+          {address.streetAddress2 && (
+            <>
+              {address.streetAddress2} <br />
+            </>
+          )}
+          {address.city}
+          {`${address.postalCode ? `, ${address.postalCode}` : ""}`}
+          <br />
+          {address.countryArea && (
+            <>
+              {address.countryArea} <br />
+            </>
+          )}
+          {address.country.country}
+          <br />
+          {address.phone && (
+            <>
+              Celular: {address.phone} <br />
+            </>
+          )}
+        </>
+      ); 
+    }
+  }
+
+  if (!order) {
+    return <NotFound />;
+  }
+
+  return (
+    <div className="order-details__container">
       {!guest && (
         <Link className="order-details__link" to={orderHistoryUrl}>
-          Go back to Order History
+          Volver al historial de pedidos
         </Link>
       )}
-      <h3>Your order nr: {order.number}</h3>
-      <p className="order-details__status">
-        {order.paymentStatusDisplay} / {order.statusDisplay}
-      </p>
+      <p className="order-details__title">Detalle del pedido</p>
+      <div className="order-details__info">
+        <div className="order-details__tile-wrapper">
+          <Tile>
+            <p className="order-details__tile-title">Número de pedido</p>
+            <p className="order-details__tile-description">{order.number}</p>
+            <p className="order-details__tile-title">Estado</p>
+            <p>{translateOrderStatus(order.status, order.statusDisplay)}</p>
+          </Tile>
+        </div>
+        <div className="order-details__tile-wrapper-address">
+          <Tile>
+            <p className="order-details__tile-title">{`${address.firstName} ${address.lastName}`}</p>
+            <p className="order-details__tile-address">{getAdressDetails()}</p>
+          </Tile>
+        </div>
+      </div>
       <CartTable
         lines={extractOrderLines(order.lines)}
         totalCost={<TaxedMoney taxedMoney={order.total} />}
         deliveryCost={<TaxedMoney taxedMoney={order.shippingPrice} />}
         subtotal={<TaxedMoney taxedMoney={order.subtotal} />}
       />
-      <div className="order-details__summary">
-        <div>
-          <h4>Shipping Address</h4>
-          <AddressSummary
-            address={order.shippingAddress}
-            email={order.userEmail}
-            paragraphRef={this.shippingAddressRef}
-          />
-        </div>
-      </div>
-    </>
-  ) : (
-    <NotFound />
+    </div>
   );
+};
 
 export default Page;

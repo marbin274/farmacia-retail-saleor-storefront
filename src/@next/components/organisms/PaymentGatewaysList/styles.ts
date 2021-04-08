@@ -34,6 +34,12 @@ export const PaymentIcon = styled.div<{ checked: boolean }>`
   margin-left:5px;
 `;
 
+export const PaymentIconNiubiz = styled.div` 
+  margin-left:5px;
+  padding-top: 0.9375rem;
+  padding-right: 0.625rem;
+`;
+
 export const getIconColor = (checked: boolean, theme: DefaultTheme): string => (
   checked ? theme.input.borderColorActive : theme.input.labelColor
 );
@@ -43,5 +49,14 @@ export const RadioContainerPayment = styled.div`
   > div{
     margin-bottom: 0.7em;
   }
-}
+}`;
+
+export const PaymentSubtitle = styled.span`
+  font-size: ${props =>  props.theme.typography.baseFontFamily};
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.625rem;
 `;
+
+
+

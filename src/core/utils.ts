@@ -1,4 +1,5 @@
 import { IFilterAttributes } from "@app/types";
+import { OrderStatus } from "@temp/@sdk/gqlTypes/globalTypes";
 import { History, LocationState } from "history";
 import { Base64 } from "js-base64";
 import { each } from "lodash";
@@ -111,6 +112,10 @@ export const convertSortByFromString = (sortBy: string) => {
       field = ProductOrderField.DATE;
       break;
 
+    case "stock":
+      field = ProductOrderField.STOCK;
+      break;
+
     default:
       return null;
   }
@@ -170,3 +175,21 @@ export const findFormErrors = (result: void | FetchResult): FormError[] => {
 };
 
 export const removeEmptySpaces = (text: string) => text.replace(/\s+/g, "");
+
+export const translateOrderStatus = (
+  status: string,
+  statusDisplay = ""
+): string => {
+  switch (status) {
+    case OrderStatus.UNFULFILLED:
+      return "Recibido";
+    case OrderStatus.PARTIALLY_FULFILLED:
+      return "Pagado";
+    case OrderStatus.FULFILLED:
+      return "Atendido";
+    case OrderStatus.CANCELED:
+      return "Cancelado";
+    default:
+      return statusDisplay;
+  }
+};

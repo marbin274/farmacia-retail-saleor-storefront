@@ -1,6 +1,6 @@
 import { ErrorListener } from "@sdk/helpers";
 import { JobsManager } from "@sdk/jobs";
-import { ICheckoutModel, IPaymentModel } from "@sdk/repository";
+import { ICheckoutModel, IPaymentModel, IShippingMethodUpdate } from "@sdk/repository";
 import { SaleorState } from "@sdk/state";
 import { StateItems } from "@sdk/state/types";
 
@@ -70,6 +70,7 @@ export class SaleorCheckoutAPI extends ErrorListener
         dataTreatmentPolicy,
         termsAndConditions,
         documentNumber,
+        scheduleDate,
       }: ICheckoutModel) => {
         this.checkout = {
           billingAddress,
@@ -77,6 +78,7 @@ export class SaleorCheckoutAPI extends ErrorListener
           documentNumber,
           email,
           id,
+          scheduleDate,
           shippingAddress,
           shippingMethod,
           termsAndConditions,
@@ -361,7 +363,7 @@ export class SaleorCheckoutAPI extends ErrorListener
   };
 
   setShippingMethod = async (
-    shippingMethodId: string
+    shippingMethodUpdate: IShippingMethodUpdate
   ): PromiseRunResponse<DataErrorCheckoutTypes, FunctionErrorCheckoutTypes> => {
     await this.saleorState.provideCheckout(this.fireError);
     const checkoutId = this.saleorState.checkout?.id;
@@ -372,7 +374,7 @@ export class SaleorCheckoutAPI extends ErrorListener
         "setShippingMethod",
         {
           checkoutId,
-          shippingMethodId,
+          shippingMethodUpdate,
         }
       );
       return {

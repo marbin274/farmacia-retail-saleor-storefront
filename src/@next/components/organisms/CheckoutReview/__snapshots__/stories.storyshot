@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/CheckoutReview default 1`] = `
   margin: 20px;
 }
 
-.c5 {
+.c6 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -20,6 +20,7 @@ exports[`Storyshots @components/organisms/CheckoutReview default 1`] = `
 .c4 {
   display: inline-block;
   vertical-align: middle;
+  margin-bottom: 0px !important;
 }
 
 .c1 div:nth-child(2) {
@@ -56,6 +57,13 @@ exports[`Storyshots @components/organisms/CheckoutReview default 1`] = `
   font-size: 16px;
   font-weight: 300;
   line-height: 24px;
+}
+
+.c5 {
+  color: #131336;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  font-weight: 400;
 }
 
 @media (max-width:540px) {
@@ -108,14 +116,14 @@ exports[`Storyshots @components/organisms/CheckoutReview default 1`] = `
         <div />
       </div>
       <p
-        className="c3"
+        className="c5"
       >
         Tarjeta de Crédito / Débito
       </p>
     </div>
   </div>
   <div
-    className="c5"
+    className="c6"
   />
 </div>
 `;

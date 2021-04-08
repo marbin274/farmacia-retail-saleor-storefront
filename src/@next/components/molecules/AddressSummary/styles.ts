@@ -12,6 +12,8 @@ export const Wrapper = styled.div`
 export const Title = styled.p`
   color: ${aunaBlack};
   display: inline-block;
+  font-size: ${({theme}) => theme.typography.smallFontSize};
+  font-weight: ${({theme}) => theme.typography.normalFontWeight};
   margin-bottom: 1rem;
 `;
 

@@ -6,6 +6,26 @@
 // GraphQL fragment: Checkout
 // ====================================================
 
+export interface Checkout_scheduleDate_scheduleTime {
+  __typename: "ScheduleTime";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  startTime: any;
+  endTime: any;
+}
+
+export interface Checkout_scheduleDate {
+  __typename: "ScheduleDate";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  date: any;
+  scheduleTime: Checkout_scheduleDate_scheduleTime;
+}
+
 export interface Checkout_totalPrice_gross {
   __typename: "Money";
   /**
@@ -17,7 +37,7 @@ export interface Checkout_totalPrice_gross {
    */
   currency: string;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -33,7 +53,7 @@ export interface Checkout_totalPrice_net {
    */
   currency: string;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -61,7 +81,7 @@ export interface Checkout_subtotalPrice_gross {
    */
   currency: string;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -77,7 +97,7 @@ export interface Checkout_subtotalPrice_net {
    */
   currency: string;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -179,17 +199,39 @@ export interface Checkout_shippingAddress {
 export interface Checkout_availableShippingMethods_price {
   __typename: "Money";
   /**
-   * Amount of money.
-   */
-  amount: number;
-  /**
    * Currency code.
    */
   currency: string;
   /**
-   * culture code.
+   * Amount of money.
+   */
+  amount: number;
+  /**
+   * Culture Code.
    */
   culture: string;
+}
+
+export interface Checkout_availableShippingMethods_scheduleDates_scheduleTimes {
+  __typename: "ScheduleTime";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  startTime: any;
+  endTime: any;
+}
+
+export interface Checkout_availableShippingMethods_scheduleDates {
+  __typename: "ScheduleByDate";
+  /**
+   * Date.
+   */
+  date: any | null;
+  /**
+   * Available schedules for a date.
+   */
+  scheduleTimes: (Checkout_availableShippingMethods_scheduleDates_scheduleTimes | null)[] | null;
 }
 
 export interface Checkout_availableShippingMethods {
@@ -199,7 +241,16 @@ export interface Checkout_availableShippingMethods {
    */
   id: string;
   name: string;
+  /**
+   * Flag to recognize if this shipping method has schedules to select.
+   */
+  isScheduled: boolean | null;
   price: Checkout_availableShippingMethods_price | null;
+  /**
+   * List of filtered schedules a customer can pick.
+   */
+  scheduleDates: (Checkout_availableShippingMethods_scheduleDates | null)[] | null;
+  subtitle: string | null;
 }
 
 export interface Checkout_shippingMethod_price {
@@ -213,9 +264,31 @@ export interface Checkout_shippingMethod_price {
    */
   amount: number;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
+}
+
+export interface Checkout_shippingMethod_scheduleDates_scheduleTimes {
+  __typename: "ScheduleTime";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  startTime: any;
+  endTime: any;
+}
+
+export interface Checkout_shippingMethod_scheduleDates {
+  __typename: "ScheduleByDate";
+  /**
+   * Date.
+   */
+  date: any | null;
+  /**
+   * Available schedules for a date.
+   */
+  scheduleTimes: (Checkout_shippingMethod_scheduleDates_scheduleTimes | null)[] | null;
 }
 
 export interface Checkout_shippingMethod {
@@ -225,7 +298,16 @@ export interface Checkout_shippingMethod {
    */
   id: string;
   name: string;
+  /**
+   * Flag to recognize if this shipping method has schedules to select.
+   */
+  isScheduled: boolean | null;
   price: Checkout_shippingMethod_price | null;
+  /**
+   * List of filtered schedules a customer can pick.
+   */
+  scheduleDates: (Checkout_shippingMethod_scheduleDates | null)[] | null;
+  subtitle: string | null;
 }
 
 export interface Checkout_shippingPrice_gross {
@@ -239,7 +321,7 @@ export interface Checkout_shippingPrice_gross {
    */
   currency: string;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -255,7 +337,7 @@ export interface Checkout_shippingPrice_net {
    */
   currency: string;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -283,7 +365,7 @@ export interface Checkout_lines_totalPrice_gross {
    */
   currency: string;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -299,7 +381,7 @@ export interface Checkout_lines_totalPrice_net {
    */
   currency: string;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -327,7 +409,7 @@ export interface Checkout_lines_variant_pricing_priceUndiscounted_gross {
    */
   currency: string;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -343,7 +425,7 @@ export interface Checkout_lines_variant_pricing_priceUndiscounted_net {
    */
   currency: string;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -371,7 +453,7 @@ export interface Checkout_lines_variant_pricing_price_gross {
    */
   currency: string;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -387,7 +469,7 @@ export interface Checkout_lines_variant_pricing_price_net {
    */
   currency: string;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -460,6 +542,46 @@ export interface Checkout_lines_variant_attributes {
   values: (Checkout_lines_variant_attributes_values | null)[];
 }
 
+export interface Checkout_lines_variant_product_attributes_attribute {
+  __typename: "Attribute";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  /**
+   * Name of an attribute displayed in the interface.
+   */
+  name: string | null;
+}
+
+export interface Checkout_lines_variant_product_attributes_values {
+  __typename: "AttributeValue";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  /**
+   * Name of a value displayed in the interface.
+   */
+  name: string | null;
+  /**
+   * Name of a value displayed in the interface.
+   */
+  value: string | null;
+}
+
+export interface Checkout_lines_variant_product_attributes {
+  __typename: "SelectedAttribute";
+  /**
+   * Name of an attribute displayed in the interface.
+   */
+  attribute: Checkout_lines_variant_product_attributes_attribute;
+  /**
+   * Values of an attribute.
+   */
+  values: (Checkout_lines_variant_product_attributes_values | null)[];
+}
+
 export interface Checkout_lines_variant_product_thumbnail {
   __typename: "Image";
   /**
@@ -512,7 +634,7 @@ export interface Checkout_lines_variant {
   name: string;
   sku: string;
   /**
-   * Quantity of a product available for sale.
+   * Quantity of a product available for sale in one checkout.
    */
   quantityAvailable: number;
   /**
@@ -555,7 +677,7 @@ export interface Checkout_discount {
    */
   amount: number;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -567,6 +689,7 @@ export interface Checkout {
    * The ID of the object.
    */
   id: string;
+  scheduleDate: Checkout_scheduleDate | null;
   /**
    * The sum of the the checkout line prices, with all the taxes,shipping costs, and discounts included.
    */

@@ -157,6 +157,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   width: 100%;
   padding-right: 0;
   border-radius: 4px;
+  background-color: white;
 }
 
 .c12 {
@@ -979,6 +980,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   width: 100%;
   padding-right: 0;
   border-radius: 4px;
+  background-color: white;
 }
 
 .c12 {
@@ -1801,6 +1803,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   width: 100%;
   padding-right: 0;
   border-radius: 4px;
+  background-color: white;
 }
 
 .c12 {

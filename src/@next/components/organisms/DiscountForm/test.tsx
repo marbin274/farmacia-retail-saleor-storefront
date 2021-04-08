@@ -6,6 +6,11 @@ import React from "react";
 import { DiscountForm } from ".";
 import { IDiscountFormData } from "./types";
 
+const DEFAULT_PROPS = {
+  setReRenderNiubiz: ()=>{jest.fn()},
+  setShowLabelCupon: ()=>{jest.fn()},
+}
+
 const mockDiscountData: IDiscountFormData = {
   promoCode: "ABCD",
   voucherType: "shipping",
@@ -13,14 +18,14 @@ const mockDiscountData: IDiscountFormData = {
 
 describe("<DiscountForm />", () => {
   it("exists", () => {
-    const wrapper = shallow(<DiscountForm />);
+    const wrapper = shallow(<DiscountForm {...DEFAULT_PROPS } />);
 
     expect(wrapper.exists()).toEqual(true);
   });
 });
 
 describe("Discount form with discount data", () => {
-  const wrapper = mount(<DiscountForm discount={mockDiscountData} />);
+  const wrapper = mount(<DiscountForm {...DEFAULT_PROPS }  discount={mockDiscountData} />);
 
   it("exist promo code", () => {
     const div = wrapper.find(".promoCode").exists();
@@ -34,7 +39,7 @@ describe("Discount form with discount data", () => {
 });
 
 describe("Discount form without discount data", () => {
-  const wrapper = mount(<DiscountForm />);
+  const wrapper = mount(<DiscountForm {...DEFAULT_PROPS }  />);
 
   it("not exist promo code div", () => {
     const div = wrapper.find(".promoCode").exists();

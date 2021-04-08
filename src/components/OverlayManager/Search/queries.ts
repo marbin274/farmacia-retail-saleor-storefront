@@ -10,7 +10,7 @@ import {
 const searchResultsQuery = gql`
   ${priceFragment}
   query SearchResults($query: String!) {
-    products(filter: { search: $query }, first: 100) {
+    products(filter: { search: $query }, first: 100,  sortBy: {field: STOCK_AVAILABLE, direction: DESC}) {
       edges {
         node {
           id

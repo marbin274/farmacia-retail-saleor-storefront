@@ -23,11 +23,28 @@ export const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 4rem;
+
+  ${media.smallScreen`
+    text-transform: uppercase;
+  `}
 `;
 
 export const HeaderSmall = styled(Header)`
   width: 100%;
   border-bottom: none;
+
+  ${media.smallScreen`
+    text-transform: none;
+  `}
+`;
+
+export const AttributeWrapper = styled.div`
+  width: 48%;
+  margin-bottom: 1rem;
+
+  ${media.largeScreen`
+    width: 100%;
+  `}
 `;
 
 export const Content = styled.div`
@@ -40,15 +57,10 @@ export const ContentOneLine = styled.div`
   flex-direction: row;
   justify-content: space-between;
   width: 70%;
+  flex-wrap: wrap;
   ${media.smallScreen`
     flex-direction: column;
     width: 100%;
-  `}
-`;
-export const ContentEdit = styled.div`
-  width: 50%;
-  ${media.smallScreen`
-     width: 100%;
   `}
 `;
 
@@ -57,15 +69,16 @@ export const ContentEditOneLine = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  flex-wrap: wrap;
 
   > div {
     width: 48%;
-    ${media.smallScreen`
+    ${media.largeScreen`
       width: 100%;
     `}
   }
 
-  ${media.smallScreen`
+  ${media.largeScreen`
      flex-direction: column;
   `}
 `;
@@ -84,7 +97,12 @@ export const FormButtons = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  button {
-    margin-left: 2rem;
+  
+  button:last-child {
+    margin-left: 1.5rem;
   }
+
+  ${media.largeScreen`
+    justify-content: center;
+  `}
 `;

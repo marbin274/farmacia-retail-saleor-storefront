@@ -111,7 +111,7 @@ describe("<OrderTabel />", () => {
 
     wrapper
       .find(S.Row)
-      .at(1)
+      .at(0)
       .simulate("click");
 
     expect(historySpy).toHaveBeenCalledWith(

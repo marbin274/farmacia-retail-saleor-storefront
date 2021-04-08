@@ -46,6 +46,9 @@ export const Alert: React.FC<any> = () => {
   }, []);
 
   const hide = () => {
+    if(alert.acceptDialog){
+      alert.acceptDialog();
+    }
     setShow(false);
     alertService.clearAlert();
   };

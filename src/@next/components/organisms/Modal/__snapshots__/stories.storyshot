@@ -6,6 +6,373 @@ exports[`Storyshots @components/organisms/Modal Modal Form 1`] = `
   margin: 20px;
 }
 
+.c13 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 3px solid rgba(0,0,0,0.2);
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.c11 {
+  background-color: #00B0CA;
+  padding: 0.9rem 3.7rem;
+  border: none;
+  border-radius: 40px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  outline: none;
+  cursor: pointer;
+  color: #fff;
+  width: auto;
+}
+
+.c11:hover {
+  background-color: #0BC1DC;
+  color: #fff;
+}
+
+.c11:active {
+  background-color: #029FB7;
+  box-shadow: -3px 3px 14px 0px rgba(129,67,67,0.2);
+}
+
+.c11:disabled {
+  background-color: #F1F2F7;
+  color: #B8BCD5;
+  cursor: default;
+}
+
+.c11:disabled,
+.c11:disabled:hover {
+  cursor: default;
+}
+
+.c12 {
+  display: inline-block;
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c10 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgb(33,18,94);
+  background: transparent;
+  outline: none;
+  border: none;
+  box-shadow: none;
+  -webkit-transform: none;
+  -ms-transform: none;
+  transform: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 0;
+  -webkit-transition: color 0.3s ease;
+  transition: color 0.3s ease;
+}
+
+.c10:hover {
+  color: #513CA3;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  background-color: #fff;
+  border-radius: 50%;
+  border-width: 0;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.c7 svg {
+  display: block;
+}
+
+.c7 svg path {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.c7:hover {
+  background-color: rgb(33,18,94);
+}
+
+.c7:hover svg path {
+  fill: #fff;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 1.1rem 1.875rem;
+  border-bottom: 1px solid #f1f5f5;
+}
+
+.c6 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #323232;
+  text-transform: uppercase;
+  padding-right: 0.6rem;
+  margin: 0;
+}
+
+.c9 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 1.1rem 1.875rem;
+  border-top: 1px solid #f1f5f5;
+}
+
+.c9 button:last-child {
+  margin-left: 2rem;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 555px;
+  height: auto;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: fixed;
+  overflow-y: auto;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  top: 0;
+  z-index: 2;
+  -webkit-transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease;
+  -webkit-transition-delay: 0;
+  transition-delay: 0;
+  background-color: rgba(199,207,207,0.8);
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  opacity: 1;
+}
+
+.c3 {
+  height: 100vh;
+  padding-top: 3rem;
+  width: 100%;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 512px;
+  max-width: 100%;
+  max-height: 98%;
+  z-index: 1000;
+  padding-bottom: 2rem;
+  overflow-y: auto;
+  background-color: #fff;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.c8 {
+  padding: 0rem 1.875rem 0rem 1.875rem;
+}
+
+@media (max-width:540px) {
+  .c11 {
+    padding: 0.9rem 1rem;
+    width: 88%;
+  }
+}
+
+@media (max-width:540px) {
+  .c9 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width:540px) {
+  .c9 button:last-child {
+    margin-left: 0;
+  }
+}
+
+@media (max-width:540px) {
+  .c3 {
+    padding-top: 0rem;
+  }
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1"
+    open={true}
+  >
+    <div
+      className="c2"
+      id="lightbox-modal"
+      onClick={[Function]}
+      open={true}
+    >
+      <div
+        className="c3"
+      >
+        <div
+          className="c4"
+        >
+          <div
+            className="c5"
+          >
+            <h4
+              className="c6"
+              size="md"
+            >
+              Modal title
+            </h4>
+            <div
+              className="c7"
+              data-cy="icon_button"
+              onClick={[Function]}
+            >
+              <svg
+                height={19}
+                viewBox="0 0 32 32"
+                width={19}
+              >
+                <path
+                  d="M16 12.8l-12.8-12.8-3.2 3.2 12.8 12.8-12.8 12.8 3.2 3.2 12.8-12.8 12.8 12.8 3.2-3.2-12.8-12.8 12.8-12.8-3.2-3.2-12.8 12.8z"
+                  fill="#00B0CA"
+                />
+              </svg>
+            </div>
+          </div>
+          <div
+            className="c8"
+          >
+            <div>
+              Content
+            </div>
+          </div>
+          <div
+            className="c9"
+          >
+            <button
+              className="c10"
+              color="secondary"
+              onClick={[Function]}
+              size="md"
+              type="button"
+            >
+              Cancel
+            </button>
+            <button
+              className="c11"
+              color="primary"
+              disabled={false}
+              form="form-id"
+              size="md"
+              type="submit"
+            >
+              <span
+                className="c12"
+                size="md"
+              >
+                Save
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c13"
+  />
+</div>
+`;
+
+exports[`Storyshots @components/organisms/Modal Modal Form disabled 1`] = `
+.c0 {
+  position: relative;
+  margin: 20px;
+}
+
 .c12 {
   position: absolute;
   width: 100%;
@@ -19,7 +386,7 @@ exports[`Storyshots @components/organisms/Modal Modal Form 1`] = `
 
 .c10 {
   background-color: #00B0CA;
-  padding: 0.1rem 2rem;
+  padding: 0.9rem 3.7rem;
   border: none;
   border-radius: 40px;
   -webkit-transition: 0.3s;
@@ -53,7 +420,7 @@ exports[`Storyshots @components/organisms/Modal Modal Form 1`] = `
 
 .c11 {
   display: inline-block;
-  font-size: 1rem;
+  font-size: 1.125rem;
   font-weight: 400;
   line-height: 1.25rem;
   -webkit-user-select: none;
@@ -62,30 +429,7 @@ exports[`Storyshots @components/organisms/Modal Modal Form 1`] = `
   user-select: none;
 }
 
-.c9 {
-  font-size: 1rem;
-  font-weight: 600;
-  color: rgb(33,18,94);
-  background: transparent;
-  outline: none;
-  border: none;
-  box-shadow: none;
-  -webkit-transform: none;
-  -ms-transform: none;
-  transform: none;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  text-transform: uppercase;
-  padding: 0;
-  -webkit-transition: color 0.3s ease;
-  transition: color 0.3s ease;
-}
-
-.c9:hover {
-  color: #513CA3;
-}
-
-.c6 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -110,24 +454,24 @@ exports[`Storyshots @components/organisms/Modal Modal Form 1`] = `
   transition: 0.3s;
 }
 
-.c6 svg {
+.c7 svg {
   display: block;
 }
 
-.c6 svg path {
+.c7 svg path {
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }
 
-.c6:hover {
+.c7:hover {
   background-color: rgb(33,18,94);
 }
 
-.c6:hover svg path {
+.c7:hover svg path {
   fill: #fff;
 }
 
-.c4 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -144,7 +488,7 @@ exports[`Storyshots @components/organisms/Modal Modal Form 1`] = `
   border-bottom: 1px solid #f1f5f5;
 }
 
-.c5 {
+.c6 {
   font-size: 1rem;
   font-weight: 600;
   color: #323232;
@@ -153,16 +497,26 @@ exports[`Storyshots @components/organisms/Modal Modal Form 1`] = `
   margin: 0;
 }
 
-.c8 {
+.c9 {
   position: relative;
-  text-align: right;
-  padding: 1.1rem 1.875rem 5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 1.1rem 1.875rem;
   border-top: 1px solid #f1f5f5;
 }
 
-.c8 button:last-child {
+.c9 button:last-child {
   margin-left: 2rem;
-  margin-right: 0.7rem;
 }
 
 .c2 {
@@ -204,6 +558,12 @@ exports[`Storyshots @components/organisms/Modal Modal Form 1`] = `
 }
 
 .c3 {
+  height: 100vh;
+  padding-top: 3rem;
+  width: 100%;
+}
+
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -215,14 +575,18 @@ exports[`Storyshots @components/organisms/Modal Modal Form 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  width: 100%;
+  width: 512px;
+  max-width: 100%;
+  max-height: 98%;
   z-index: 1000;
   padding-bottom: 2rem;
   overflow-y: auto;
   background-color: #fff;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.c7 {
+.c8 {
   padding: 0rem 1.875rem 0rem 1.875rem;
 }
 
@@ -233,12 +597,35 @@ exports[`Storyshots @components/organisms/Modal Modal Form 1`] = `
   }
 }
 
+@media (max-width:540px) {
+  .c9 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width:540px) {
+  .c9 button:last-child {
+    margin-left: 0;
+  }
+}
+
+@media (max-width:540px) {
+  .c3 {
+    padding-top: 0rem;
+  }
+}
+
 <div
   className="c0"
 >
   <div
     className="c1"
-    onClick={[Function]}
     open={true}
   >
     <div
@@ -248,22 +635,22 @@ exports[`Storyshots @components/organisms/Modal Modal Form 1`] = `
       open={true}
     >
       <div
-        className="modal__container"
+        className="c3"
       >
         <div
-          className="c3"
+          className="c4"
         >
           <div
-            className="c4"
+            className="c5"
           >
             <h4
-              className="c5"
+              className="c6"
               size="md"
             >
               Modal title
             </h4>
             <div
-              className="c6"
+              className="c7"
               data-cy="icon_button"
               onClick={[Function]}
             >
@@ -274,43 +661,34 @@ exports[`Storyshots @components/organisms/Modal Modal Form 1`] = `
               >
                 <path
                   d="M16 12.8l-12.8-12.8-3.2 3.2 12.8 12.8-12.8 12.8 3.2 3.2 12.8-12.8 12.8 12.8 3.2-3.2-12.8-12.8 12.8-12.8-3.2-3.2-12.8 12.8z"
-                  fill="#c4c4c4"
+                  fill="#00B0CA"
                 />
               </svg>
             </div>
           </div>
           <div
-            className="c7"
+            className="c8"
           >
             <div>
               Content
             </div>
           </div>
           <div
-            className="c8"
+            className="c9"
           >
-            <button
-              className="c9"
-              color="secondary"
-              onClick={[Function]}
-              size="md"
-              type="button"
-            >
-              Cancel
-            </button>
             <button
               className="c10"
               color="primary"
-              disabled={false}
-              form="form-id"
-              size="sm"
+              disabled={true}
+              form="modal-submit"
+              size="md"
               type="submit"
             >
               <span
                 className="c11"
-                size="sm"
+                size="md"
               >
-                Save
+                Loading
               </span>
             </button>
           </div>
@@ -324,305 +702,13 @@ exports[`Storyshots @components/organisms/Modal Modal Form 1`] = `
 </div>
 `;
 
-exports[`Storyshots @components/organisms/Modal Modal Form disabled 1`] = `
-.c0 {
-  position: relative;
-  margin: 20px;
-}
-
-.c11 {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border: 3px solid rgba(0,0,0,0.2);
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  box-sizing: border-box;
-}
-
-.c9 {
-  background-color: #00B0CA;
-  padding: 0.1rem 2rem;
-  border: none;
-  border-radius: 40px;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-  outline: none;
-  cursor: pointer;
-  color: #fff;
-  width: auto;
-}
-
-.c9:hover {
-  background-color: #0BC1DC;
-  color: #fff;
-}
-
-.c9:active {
-  background-color: #029FB7;
-  box-shadow: -3px 3px 14px 0px rgba(129,67,67,0.2);
-}
-
-.c9:disabled {
-  background-color: #F1F2F7;
-  color: #B8BCD5;
-  cursor: default;
-}
-
-.c9:disabled,
-.c9:disabled:hover {
-  cursor: default;
-}
-
-.c10 {
-  display: inline-block;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.25rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  padding: 0;
-  margin: 0;
-  cursor: pointer;
-  width: 36px;
-  height: 36px;
-  background-color: #fff;
-  border-radius: 50%;
-  border-width: 0;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
-
-.c6 svg {
-  display: block;
-}
-
-.c6 svg path {
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
-
-.c6:hover {
-  background-color: rgb(33,18,94);
-}
-
-.c6:hover svg path {
-  fill: #fff;
-}
-
-.c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  padding: 1.1rem 1.875rem;
-  border-bottom: 1px solid #f1f5f5;
-}
-
-.c5 {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #323232;
-  text-transform: uppercase;
-  padding-right: 0.6rem;
-  margin: 0;
-}
-
-.c8 {
-  position: relative;
-  text-align: right;
-  padding: 1.1rem 1.875rem 5rem;
-  border-top: 1px solid #f1f5f5;
-}
-
-.c8 button:last-child {
-  margin-left: 2rem;
-  margin-right: 0.7rem;
-}
-
-.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-  width: 555px;
-  height: auto;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  position: fixed;
-  overflow-y: auto;
-  width: 100%;
-  height: 100%;
-  min-height: 100vh;
-  top: 0;
-  z-index: 2;
-  -webkit-transition: opacity 0.2s ease;
-  transition: opacity 0.2s ease;
-  -webkit-transition-delay: 0;
-  transition-delay: 0;
-  background-color: rgba(199,207,207,0.8);
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  opacity: 1;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  width: 100%;
-  z-index: 1000;
-  padding-bottom: 2rem;
-  overflow-y: auto;
-  background-color: #fff;
-}
-
-.c7 {
-  padding: 0rem 1.875rem 0rem 1.875rem;
-}
-
-@media (max-width:540px) {
-  .c9 {
-    padding: 0.9rem 1rem;
-    width: 88%;
-  }
-}
-
-<div
-  className="c0"
->
-  <div
-    className="c1"
-    onClick={[Function]}
-    open={true}
-  >
-    <div
-      className="c2"
-      id="lightbox-modal"
-      onClick={[Function]}
-      open={true}
-    >
-      <div
-        className="modal__container"
-      >
-        <div
-          className="c3"
-        >
-          <div
-            className="c4"
-          >
-            <h4
-              className="c5"
-              size="md"
-            >
-              Modal title
-            </h4>
-            <div
-              className="c6"
-              data-cy="icon_button"
-              onClick={[Function]}
-            >
-              <svg
-                height={19}
-                viewBox="0 0 32 32"
-                width={19}
-              >
-                <path
-                  d="M16 12.8l-12.8-12.8-3.2 3.2 12.8 12.8-12.8 12.8 3.2 3.2 12.8-12.8 12.8 12.8 3.2-3.2-12.8-12.8 12.8-12.8-3.2-3.2-12.8 12.8z"
-                  fill="#c4c4c4"
-                />
-              </svg>
-            </div>
-          </div>
-          <div
-            className="c7"
-          >
-            <div>
-              Content
-            </div>
-          </div>
-          <div
-            className="c8"
-          >
-            <button
-              className="c9"
-              color="primary"
-              disabled={true}
-              form="modal-submit"
-              size="sm"
-              type="submit"
-            >
-              <span
-                className="c10"
-                size="sm"
-              >
-                Loading
-              </span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    className="c11"
-  />
-</div>
-`;
-
 exports[`Storyshots @components/organisms/Modal Modal Info 1`] = `
 .c0 {
   position: relative;
   margin: 20px;
 }
 
-.c11 {
+.c12 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -633,9 +719,9 @@ exports[`Storyshots @components/organisms/Modal Modal Info 1`] = `
   box-sizing: border-box;
 }
 
-.c9 {
+.c10 {
   background-color: #00B0CA;
-  padding: 0.1rem 2rem;
+  padding: 0.9rem 3.7rem;
   border: none;
   border-radius: 40px;
   -webkit-transition: 0.3s;
@@ -646,30 +732,30 @@ exports[`Storyshots @components/organisms/Modal Modal Info 1`] = `
   width: auto;
 }
 
-.c9:hover {
+.c10:hover {
   background-color: #0BC1DC;
   color: #fff;
 }
 
-.c9:active {
+.c10:active {
   background-color: #029FB7;
   box-shadow: -3px 3px 14px 0px rgba(129,67,67,0.2);
 }
 
-.c9:disabled {
+.c10:disabled {
   background-color: #F1F2F7;
   color: #B8BCD5;
   cursor: default;
 }
 
-.c9:disabled,
-.c9:disabled:hover {
+.c10:disabled,
+.c10:disabled:hover {
   cursor: default;
 }
 
-.c10 {
+.c11 {
   display: inline-block;
-  font-size: 1rem;
+  font-size: 1.125rem;
   font-weight: 400;
   line-height: 1.25rem;
   -webkit-user-select: none;
@@ -678,7 +764,7 @@ exports[`Storyshots @components/organisms/Modal Modal Info 1`] = `
   user-select: none;
 }
 
-.c6 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -703,24 +789,24 @@ exports[`Storyshots @components/organisms/Modal Modal Info 1`] = `
   transition: 0.3s;
 }
 
-.c6 svg {
+.c7 svg {
   display: block;
 }
 
-.c6 svg path {
+.c7 svg path {
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }
 
-.c6:hover {
+.c7:hover {
   background-color: rgb(33,18,94);
 }
 
-.c6:hover svg path {
+.c7:hover svg path {
   fill: #fff;
 }
 
-.c4 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -737,7 +823,7 @@ exports[`Storyshots @components/organisms/Modal Modal Info 1`] = `
   border-bottom: 1px solid #f1f5f5;
 }
 
-.c5 {
+.c6 {
   font-size: 1rem;
   font-weight: 600;
   color: #323232;
@@ -746,16 +832,26 @@ exports[`Storyshots @components/organisms/Modal Modal Info 1`] = `
   margin: 0;
 }
 
-.c8 {
+.c9 {
   position: relative;
-  text-align: right;
-  padding: 1.1rem 1.875rem 5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 1.1rem 1.875rem;
   border-top: 1px solid #f1f5f5;
 }
 
-.c8 button:last-child {
+.c9 button:last-child {
   margin-left: 2rem;
-  margin-right: 0.7rem;
 }
 
 .c2 {
@@ -797,6 +893,12 @@ exports[`Storyshots @components/organisms/Modal Modal Info 1`] = `
 }
 
 .c3 {
+  height: 100vh;
+  padding-top: 3rem;
+  width: 100%;
+}
+
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -808,21 +910,49 @@ exports[`Storyshots @components/organisms/Modal Modal Info 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  width: 100%;
+  width: 512px;
+  max-width: 100%;
+  max-height: 98%;
   z-index: 1000;
   padding-bottom: 2rem;
   overflow-y: auto;
   background-color: #fff;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.c7 {
+.c8 {
   padding: 0rem 1.875rem 0rem 1.875rem;
 }
 
 @media (max-width:540px) {
-  .c9 {
+  .c10 {
     padding: 0.9rem 1rem;
     width: 88%;
+  }
+}
+
+@media (max-width:540px) {
+  .c9 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width:540px) {
+  .c9 button:last-child {
+    margin-left: 0;
+  }
+}
+
+@media (max-width:540px) {
+  .c3 {
+    padding-top: 0rem;
   }
 }
 
@@ -831,7 +961,6 @@ exports[`Storyshots @components/organisms/Modal Modal Info 1`] = `
 >
   <div
     className="c1"
-    onClick={[Function]}
     open={true}
   >
     <div
@@ -841,22 +970,22 @@ exports[`Storyshots @components/organisms/Modal Modal Info 1`] = `
       open={true}
     >
       <div
-        className="modal__container"
+        className="c3"
       >
         <div
-          className="c3"
+          className="c4"
         >
           <div
-            className="c4"
+            className="c5"
           >
             <h4
-              className="c5"
+              className="c6"
               size="md"
             >
               Modal title
             </h4>
             <div
-              className="c6"
+              className="c7"
               data-cy="icon_button"
               onClick={[Function]}
             >
@@ -867,33 +996,33 @@ exports[`Storyshots @components/organisms/Modal Modal Info 1`] = `
               >
                 <path
                   d="M16 12.8l-12.8-12.8-3.2 3.2 12.8 12.8-12.8 12.8 3.2 3.2 12.8-12.8 12.8 12.8 3.2-3.2-12.8-12.8 12.8-12.8-3.2-3.2-12.8 12.8z"
-                  fill="#c4c4c4"
+                  fill="#00B0CA"
                 />
               </svg>
             </div>
           </div>
           <div
-            className="c7"
+            className="c8"
           >
             <div>
               Content
             </div>
           </div>
           <div
-            className="c8"
+            className="c9"
           >
             <button
-              className="c9"
+              className="c10"
               color="primary"
               disabled={false}
               form="modal-submit"
               onClick={[Function]}
-              size="sm"
+              size="md"
               type="submit"
             >
               <span
-                className="c10"
-                size="sm"
+                className="c11"
+                size="md"
               >
                 OK
               </span>
@@ -904,7 +1033,7 @@ exports[`Storyshots @components/organisms/Modal Modal Info 1`] = `
     </div>
   </div>
   <div
-    className="c11"
+    className="c12"
   />
 </div>
 `;

@@ -51,25 +51,15 @@ const ProductRow: React.FC<ReadProductRowProps & EditableProductRowProps> = ({
         </div>
       </td>
 
-      {mediumScreen && (
-        <td>
-          <TaxedMoney taxedMoney={line.pricing.price} />
-        </td>
-      )}
-
       <td>
-        {line.attributes.map(({ attribute, values }, attributeIndex) => (
-          <p>
-            {attribute.name}: {values.map(value => value.name).join(", ")}
-          </p>
-        ))}
+        <TaxedMoney taxedMoney={line.pricing.price} />
       </td>
 
       <td className="cart-table__quantity-cell">
         <p>{line.quantity}</p>
       </td>
 
-      <td colSpan={2}>
+      <td colSpan={2} className="cart-table__total-cell" >
         <TaxedMoney taxedMoney={line.totalPrice} />
       </td>
     </tr>

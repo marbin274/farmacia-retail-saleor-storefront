@@ -58,15 +58,20 @@ export const aunaComplementary4 = "#E6EEF8";
 export const aunaOrange = "#ED7C59";
 export const aunaOrangeOnSale = "#FF6900";
 export const aunaBlackGray = "#454545";
+export const aunaInputGray = "#E3E5ED";
+
+export const shippingMethodBlack = "#000000";
 
 // theme colors
 export const theme = {
-  activeMenuOption: darkGreen,
+  activeMenuOption: aunaInteractive,
+  aunaBlack,
   aunaBlackGray,
   aunaDisabled: aunaGrey80,
   aunaDisabledBackground: aunaGrey40,
   aunaError,
   aunaGrey06,
+  aunaInputGray,
   aunaInteractive,
   aunaInteractiveHover,
   aunaInteractivePressed,
@@ -102,6 +107,7 @@ export const theme = {
   secondaryLight: blueLight,
   secondaryOverlay: blueOverlay,
   secondaryOverlayDark: blueOverlayDark,
+  shippingMethodBlack,
   success: green,
   tabTitle: darkGreen,
   tableDivider: tabelGray,
@@ -141,3 +147,4 @@ export const xLargeScreen = 1280;
 export const largeScreen = 992;
 export const mediumScreen = 720;
 export const smallScreen = 540;
+export const xSmallScreen = 340;

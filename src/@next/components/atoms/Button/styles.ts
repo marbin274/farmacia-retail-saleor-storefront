@@ -28,7 +28,7 @@ export const Primary = styled.button<{
   outline: none;
   cursor: pointer;
   color: ${props => getButtonColors(props).color};
-  width: ${props => (props.fullWidth ? "100%" : "auto")}
+  width: ${props => (props.fullWidth ? "100%" : "auto")};
 
   &:hover {
     background-color: ${props => getButtonColors(props).hoverBackground};
@@ -62,6 +62,17 @@ export const Secondary = styled(Primary)`
   box-shadow: inset 0px 0px 0px 3px ${props => getButtonColors(props).color};
   border-left: 1px solid ${props => getButtonColors(props).color};
   border-right: 1px solid ${props => getButtonColors(props).color};
+`;
+
+export const Outline = styled(Primary)`
+  border: ${({theme}) => `1px solid ${theme.colors.aunaInteractive}`};
+  background-color: transparent;
+  color: ${({theme}) => theme.colors.aunaInteractive};
+
+  &:hover {
+    background-color: transparent;
+    color: ${({theme}) => theme.colors.aunaInteractive};
+  }
 `;
 
 export const Text = styled.span<{ size: Size }>`

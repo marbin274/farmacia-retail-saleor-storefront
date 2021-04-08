@@ -4,6 +4,8 @@ import {
   ICheckoutModelPrice,
   ICheckoutModelPriceValue,
   IPaymentCreditCard,
+  IScheduleDate,
+  IShippingMethodUpdate,
 } from "@sdk/repository";
 
 import { PromiseQueuedResponse, PromiseRunResponse } from "../types";
@@ -67,6 +69,7 @@ export interface ICheckout {
   shippingMethod?: IShippingMethod | null;
   billingAddress?: IAddress | null;
   requestPayload?: string;
+  scheduleDate?: IScheduleDate | null;
   dataTreatmentPolicy?: boolean;
   termsAndConditions?: boolean;
   documentNumber?: string;
@@ -116,7 +119,7 @@ export interface ISaleorCheckoutAPI {
     documentNumber: string
   ) => PromiseRunResponse<DataErrorCheckoutTypes, FunctionErrorCheckoutTypes>;
   setShippingMethod: (
-    shippingMethodId: string
+    shippingMethodUpdate: IShippingMethodUpdate
   ) => PromiseRunResponse<DataErrorCheckoutTypes, FunctionErrorCheckoutTypes>;
   setBillingAsShippingAddress: () => PromiseRunResponse<
     DataErrorCheckoutTypes,

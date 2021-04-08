@@ -20,6 +20,7 @@ exports[`Storyshots @components/atoms/CreditCardIcon AMEX 1`] = `
 .c1 {
   display: inline-block;
   vertical-align: middle;
+  margin-bottom: 0px !important;
 }
 
 <div
@@ -54,6 +55,7 @@ exports[`Storyshots @components/atoms/CreditCardIcon DISCOVER 1`] = `
 .c1 {
   display: inline-block;
   vertical-align: middle;
+  margin-bottom: 0px !important;
 }
 
 <div
@@ -90,6 +92,7 @@ exports[`Storyshots @components/atoms/CreditCardIcon JCB 1`] = `
 .c1 {
   display: inline-block;
   vertical-align: middle;
+  margin-bottom: 0px !important;
 }
 
 <div
@@ -126,6 +129,7 @@ exports[`Storyshots @components/atoms/CreditCardIcon MAESTRO 1`] = `
 .c1 {
   display: inline-block;
   vertical-align: middle;
+  margin-bottom: 0px !important;
 }
 
 <div
@@ -162,6 +166,7 @@ exports[`Storyshots @components/atoms/CreditCardIcon MASTERCARD 1`] = `
 .c1 {
   display: inline-block;
   vertical-align: middle;
+  margin-bottom: 0px !important;
 }
 
 <div
@@ -198,6 +203,7 @@ exports[`Storyshots @components/atoms/CreditCardIcon VISA 1`] = `
 .c1 {
   display: inline-block;
   vertical-align: middle;
+  margin-bottom: 0px !important;
 }
 
 <div

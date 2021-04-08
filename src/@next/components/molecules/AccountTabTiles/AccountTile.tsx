@@ -21,10 +21,10 @@ export const AccountTile: React.FC = () => {
     <S.TileWrapper>
       <Tile>
         <S.Wrapper>
-          <S.Header>MY DATA</S.Header>
+          <S.Header>Mis datos</S.Header>
           <S.Content>
             <S.HeaderSmall>
-              Personal details
+              Datos personales
               {!isEditing && (
                 <IconButton
                   name="edit"
@@ -45,17 +45,34 @@ export const AccountTile: React.FC = () => {
                 hide={() => {
                   setIsEditing(false);
                 }}
+                user={user}
               />
             ) : (
               <S.ContentOneLine>
-                <Attribute
-                  description="First Name"
-                  attributeValue={(user && user.firstName) || "-"}
-                />
-                <Attribute
-                  description="Last Name"
-                  attributeValue={(user && user.lastName) || "-"}
-                />
+                <S.AttributeWrapper>
+                  <Attribute
+                    description="Nombres"
+                    attributeValue={(user && user.firstName) || "-"}
+                  />
+                </S.AttributeWrapper>
+                <S.AttributeWrapper>
+                  <Attribute
+                    description="Apellidos"
+                    attributeValue={(user && user.lastName) || "-"}
+                  />
+                </S.AttributeWrapper>
+                <S.AttributeWrapper>
+                  <Attribute
+                    description="Correo"
+                    attributeValue={(user && user.email) || "-"}
+                  />
+                </S.AttributeWrapper>
+                <S.AttributeWrapper>
+                  <Attribute
+                    description="Número de documento"
+                    attributeValue={(user && user.documentNumber) || "-"}
+                  />
+                </S.AttributeWrapper>
               </S.ContentOneLine>
             )}
           </S.Content>

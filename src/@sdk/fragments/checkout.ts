@@ -96,11 +96,21 @@ export const checkoutShippingMethodFragment = gql`
   fragment ShippingMethod on ShippingMethod {
     id
     name
+    isScheduled
     price {
       currency
       amount
       culture
     }
+    scheduleDates {
+      date
+      scheduleTimes {
+          id
+          startTime
+          endTime
+      }
+    }
+    subtitle
   }
 `;
 
@@ -127,6 +137,15 @@ export const checkoutFragment = gql`
   fragment Checkout on Checkout {
     token
     id
+    scheduleDate {
+      id
+      date
+      scheduleTime {
+        id
+        startTime
+        endTime
+      }
+    }
     totalPrice {
       ...Price
     }

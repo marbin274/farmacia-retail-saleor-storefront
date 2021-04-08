@@ -23,6 +23,7 @@ export interface ProductDescriptionProps {
   canAddToCart: boolean;
   descriptionJson: string;
   isOnSale: boolean;
+  isOutStock: boolean;
   items: ICheckoutModelLine[];
   product: ISimpleProduct;
   pricing: ProductDetails_product_pricing;
@@ -181,7 +182,7 @@ class ProductDescription extends React.Component<
   };
 
   render() {
-    const { canAddToCart, descriptionJson } = this.props;
+    const { canAddToCart, descriptionJson, isOutStock } = this.props;
     const { name } = this.props.product;
     const product = getOneProductWithQuantity(
       this.props.product,
@@ -190,7 +191,7 @@ class ProductDescription extends React.Component<
     return (
       <div className="product-description">
         <h3>{name}</h3>
-        {!canAddToCart ? (
+        {isOutStock ? (
           <p className="product-description__error-message">AGOTADO</p>
         ) : (
             this.getProductPrice()

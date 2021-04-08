@@ -1,10 +1,8 @@
 import { Loader } from "@components/atoms";
-import niubizIcon from "@temp/images/auna/niubiz-logo.svg";
 import { ICardData, IPaymentGatewayConfig } from "@types";
 import { Formik } from "formik";
 import ErrorFormPopulateIcon from "images/auna/form-populate-error.svg";
 import React, { useEffect, useState } from "react";
-import ReactSVG from "react-svg";
 import {
   createSession,
   createToken,
@@ -240,6 +238,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                 // TODO: Replace this line with a proper error management tool
               }
             }
+           
           });
         });
 
@@ -427,11 +426,16 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                 className="card"
                 style={showForm ? styles.show : styles.hidde}
               >
-                <S.Payment className="card-body">
+                <S.Payment  
+                  formErrors={formErrors} 
+                  invalidNumberCode={errorsDictionary[0]}
+                  invalidExpiryCode={errorsDictionary[1]}
+                  invalidCvc={errorsDictionary[2]}
+                  className="card-body">
                   <h4 className="card-title">
-                    Paga con tarjetas de crédito/débito
+                    Paga con tu tarjeta  de crédito o débito 
                   </h4>
-                  <h5>INGRESA LOS DATOS DE LA TARJETA</h5>
+                  <h5>Ingresa los datos como aparece en la tarjeta</h5>
                   <div className="row">
                     <div className="identity">
                       <div>
@@ -454,7 +458,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                       </div>
                     </div>
                     <div className="email">
-                      <label htmlFor="">Email</label>
+                      <label htmlFor="">Correo</label>
                       <input
                         type="text"
                         id="email"
@@ -471,7 +475,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                       {formErrors.length &&
                       formErrors.filter(x => x.code === errorsDictionary[0])
                         .length ? (
-                        <div className="error">
+                        <div className="error number-creditcard-error">
                           {
                             formErrors.filter(
                               x => x.code === errorsDictionary[0]
@@ -482,8 +486,6 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                         ""
                       )}
                     </div>
-                    <br />
-
                     <div className="expirydate_and_cvv">
                       <div className="expirydate">
                         <label htmlFor="">Fecha de vencimiento</label>
@@ -524,12 +526,6 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                         ) : (
                           ""
                         )}
-                      </div>
-                    </div>
-                    <div>
-                      <label>Pagos seguros con:</label>
-                      <div className="niubiz-logo-container">
-                        <ReactSVG path={niubizIcon} />
                       </div>
                     </div>
                   </div>

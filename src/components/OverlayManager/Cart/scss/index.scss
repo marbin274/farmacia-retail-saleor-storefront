@@ -99,7 +99,10 @@
       &__down {
         display: flex;
         justify-content: space-between;
-        margin-top: 8px;
+        margin-top: 0.5rem;
+        .itemHandler{
+          min-width: 8.125rem;
+        }
       }
 
       &__quantity {

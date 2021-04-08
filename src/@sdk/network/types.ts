@@ -6,6 +6,7 @@ import {
   ICheckoutModelLine,
   IOrderModel,
   IPaymentModel,
+  IShippingMethodUpdate,
 } from "@sdk/repository";
 
 export enum PendingSaveItems {
@@ -57,7 +58,7 @@ export interface INetworkManager {
     checkoutId: string
   ) => Promise<INetworkManagerResponse<ICheckoutModel>>;
   setShippingMethod: (
-    shippingMethodId: string,
+    shippingMethodUpdate: IShippingMethodUpdate,
     checkoutId: string
   ) => Promise<INetworkManagerResponse<ICheckoutModel>>;
   addPromoCode: (

@@ -1,17 +1,17 @@
 import { TaxedMoney } from "@components/containers";
 import { Thumbnail } from "@components/molecules";
+import { launchRemoveToCartEvent } from "@sdk/gaConfig";
 import { ICheckoutModelLine, ICheckoutModelLineVariantLocalStorage } from "@sdk/repository";
+import ItemsHandler from "@temp/@next/components/organisms/ItemsHandler/ItemsHandler";
 import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
 import {
   checkProductCanAddToCart,
   checkProductIsOnSale,
-  getProductPricingClass,
+  getProductPricingClass
 } from "@temp/@next/utils/products";
 import { generateProductUrl } from "@temp/core/utils";
 import * as React from "react";
 import { Link } from "react-router-dom";
-import ItemQuantity from "./ItemQuantity";
-import { launchAddToCartEvent, launchRemoveToCartEvent } from "@sdk/gaConfig";
 
 interface IProductList {
   products: ICheckoutModelLine[];
@@ -75,31 +75,12 @@ const ProductList: React.FC<IProductList> = ({
                 )}`}
                 taxedMoney={variant.pricing.price}
               />
-              <ItemQuantity
-                disableOnAdd={!canAddToCart}
-                onAdd={() => {
-                  removePaymentItems();
-                  onAdd({ id: variant.id, product: { id, name } }, 1);
-                  launchAddToCartEvent(
-                    variant?.sku,
-                    variant?.product?.name,
-                    variant?.pricing?.price?.gross,
-                    quantity,
-                    "PEN"
-                  )
-                }}
-                onRemove={() => {
-                  removePaymentItems();
-                  onSubtract(variant.id);
-                  launchRemoveToCartEvent(
-                    variant?.sku,
-                    variant?.product?.name,
-                    variant?.pricing?.price?.gross,
-                    quantity
-                  );
-                }}
-                value={quantity}
-                maxValue={variant.quantityAvailable}
+              <ItemsHandler
+                canAddToCart={canAddToCart}
+                product={product}
+                addToCart={onAdd}
+                removeItemToCart={onRemove}
+                substractItemToCart={onSubtract}
               />
             </div>
           </div>
