@@ -139,16 +139,21 @@ export interface UserDetails_me {
   firstName: string;
   lastName: string;
   isStaff: boolean;
+  /**
+   * Terms and Conditions
+   */
+  termsAndConditions: boolean | null;
+  /**
+   * Data Treatment Policy
+   */
+  dataTreatmentPolicy: boolean | null;
+  documentNumber: string | null;
   defaultShippingAddress: UserDetails_me_defaultShippingAddress | null;
   defaultBillingAddress: UserDetails_me_defaultBillingAddress | null;
   /**
    * List of all user's addresses.
    */
   addresses: (UserDetails_me_addresses | null)[] | null;
-  dataTreatmentPolicy: boolean | undefined;
-  termsAndConditions: boolean | undefined;
-  documentNumber: string | undefined;
-  phone: string | undefined;
 }
 
 export interface UserDetails {

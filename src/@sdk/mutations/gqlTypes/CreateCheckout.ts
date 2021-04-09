@@ -744,12 +744,12 @@ export interface CreateCheckout_checkoutCreate_checkout {
   discountName: string | null;
   translatedDiscountName: string | null;
   voucherCode: string | null;
-  voucherDiscountType: string | null | undefined;
+  voucherType: string | null;
+  voucherDiscountType: string | null;
   voucherDiscountValue: number;
-  voucherType: string | null | undefined;
-  dataTreatmentPolicy: boolean;
+  documentNumber: string | null;
   termsAndConditions: boolean;
-  documentNumber: string;
+  dataTreatmentPolicy: boolean;
 }
 
 export interface CreateCheckout_checkoutCreate {

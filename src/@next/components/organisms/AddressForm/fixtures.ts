@@ -68,7 +68,6 @@ export const userAddress: UserDetails_me = {
   id:"",
   isStaff:false,
   lastName: "Rodriguez",
-  phone: "+51985475361",
   termsAndConditions: true,
 }
 

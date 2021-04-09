@@ -73,7 +73,7 @@ export interface CompleteCheckout_checkoutComplete_order_lines_variant_pricing_p
    */
   currency: string;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -89,7 +89,7 @@ export interface CompleteCheckout_checkoutComplete_order_lines_variant_pricing_p
    */
   currency: string;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -117,7 +117,7 @@ export interface CompleteCheckout_checkoutComplete_order_lines_variant_pricing_p
    */
   currency: string;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -133,7 +133,7 @@ export interface CompleteCheckout_checkoutComplete_order_lines_variant_pricing_p
    */
   currency: string;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -206,6 +206,46 @@ export interface CompleteCheckout_checkoutComplete_order_lines_variant_attribute
   values: (CompleteCheckout_checkoutComplete_order_lines_variant_attributes_values | null)[];
 }
 
+export interface CompleteCheckout_checkoutComplete_order_lines_variant_product_attributes_attribute {
+  __typename: "Attribute";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  /**
+   * Name of an attribute displayed in the interface.
+   */
+  name: string | null;
+}
+
+export interface CompleteCheckout_checkoutComplete_order_lines_variant_product_attributes_values {
+  __typename: "AttributeValue";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  /**
+   * Name of a value displayed in the interface.
+   */
+  name: string | null;
+  /**
+   * Name of a value displayed in the interface.
+   */
+  value: string | null;
+}
+
+export interface CompleteCheckout_checkoutComplete_order_lines_variant_product_attributes {
+  __typename: "SelectedAttribute";
+  /**
+   * Name of an attribute displayed in the interface.
+   */
+  attribute: CompleteCheckout_checkoutComplete_order_lines_variant_product_attributes_attribute;
+  /**
+   * Values of an attribute.
+   */
+  values: (CompleteCheckout_checkoutComplete_order_lines_variant_product_attributes_values | null)[];
+}
+
 export interface CompleteCheckout_checkoutComplete_order_lines_variant_product_thumbnail {
   __typename: "Image";
   /**
@@ -238,6 +278,10 @@ export interface CompleteCheckout_checkoutComplete_order_lines_variant_product {
    */
   id: string;
   name: string;
+  /**
+   * List of attributes assigned to this product.
+   */
+  attributes: CompleteCheckout_checkoutComplete_order_lines_variant_product_attributes[];
   /**
    * The main thumbnail for a product.
    */
@@ -287,7 +331,7 @@ export interface CompleteCheckout_checkoutComplete_order_lines_unitPrice_gross {
    */
   currency: string;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -303,7 +347,7 @@ export interface CompleteCheckout_checkoutComplete_order_lines_unitPrice_net {
    */
   currency: string;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -349,7 +393,7 @@ export interface CompleteCheckout_checkoutComplete_order_subtotal_gross {
    */
   currency: string;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -365,7 +409,7 @@ export interface CompleteCheckout_checkoutComplete_order_subtotal_net {
    */
   currency: string;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -393,7 +437,7 @@ export interface CompleteCheckout_checkoutComplete_order_total_gross {
    */
   currency: string;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -409,7 +453,7 @@ export interface CompleteCheckout_checkoutComplete_order_total_net {
    */
   currency: string;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -437,7 +481,7 @@ export interface CompleteCheckout_checkoutComplete_order_shippingPrice_gross {
    */
   currency: string;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -453,7 +497,7 @@ export interface CompleteCheckout_checkoutComplete_order_shippingPrice_net {
    */
   currency: string;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -546,5 +590,5 @@ export interface CompleteCheckout {
 
 export interface CompleteCheckoutVariables {
   checkoutId: string;
-  paymentData?: string;
+  paymentData?: any | null;
 }

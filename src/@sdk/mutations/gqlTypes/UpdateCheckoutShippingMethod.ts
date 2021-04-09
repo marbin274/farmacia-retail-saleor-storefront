@@ -744,12 +744,12 @@ export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_check
   discountName: string | null;
   translatedDiscountName: string | null;
   voucherCode: string | null;
-  voucherDiscountType: string | null | undefined;
+  voucherType: string | null;
+  voucherDiscountType: string | null;
   voucherDiscountValue: number;
-  voucherType: string | null | undefined;
-  documentNumber: string;
-  dataTreatmentPolicy: boolean;
+  documentNumber: string | null;
   termsAndConditions: boolean;
+  dataTreatmentPolicy: boolean;
 }
 
 export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_checkoutErrors {
@@ -792,6 +792,6 @@ export interface UpdateCheckoutShippingMethod {
 export interface UpdateCheckoutShippingMethodVariables {
   checkoutId: string;
   shippingMethodId: string;
-  scheduleTimeId?: string | null;
-  date?: string | null;
+  scheduleTimeId: string;
+  date: any;
 }

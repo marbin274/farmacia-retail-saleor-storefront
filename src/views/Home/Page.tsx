@@ -10,7 +10,7 @@ import * as React from "react";
 import { useHistory } from "react-router-dom";
 import BannerMobile from "images/auna/home-banner-mob.png";
 import BannerDesktop from "images/auna/home-banner-top.png";
-import { ProductsFeatured } from "./";
+import { ProductsFeatured } from "@temp/components";
 import { HomePage_shop } from "./gqlTypes/HomePage";
 import { TypedHomePageQuery } from "./queries";
 import { cndUrl } from '@temp/constants';

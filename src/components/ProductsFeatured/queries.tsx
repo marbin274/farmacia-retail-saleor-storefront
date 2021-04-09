@@ -7,7 +7,7 @@ import {
 } from "../../views/Product/queries";
 import {
   FeaturedProducts,
-  FeaturedVariables,
+  FeaturedProductsVariables,
 } from "./gqlTypes/FeaturedProducts";
 
 export const featuredProducts = gql`
@@ -61,5 +61,5 @@ export const featuredProducts = gql`
 
 export const TypedFeaturedProductsQuery = TypedQuery<
   FeaturedProducts,
-  FeaturedVariables
+  FeaturedProductsVariables
 >(featuredProducts);

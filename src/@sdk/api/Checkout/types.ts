@@ -31,7 +31,7 @@ export interface IAddress {
 }
 
 export interface IPrivacyPolicy {
-  dataTreatmentPolicy?: boolean;
+  dataTreatmentPolicy?: boolean | null;
   termsAndConditions?: boolean;
 }
 
@@ -72,7 +72,7 @@ export interface ICheckout {
   scheduleDate?: IScheduleDate | null;
   dataTreatmentPolicy?: boolean;
   termsAndConditions?: boolean;
-  documentNumber?: string;
+  documentNumber?: string | null;
 }
 
 export enum FunctionErrorCheckoutTypes {

@@ -729,10 +729,10 @@ export interface UserCheckoutDetails_me_checkout {
   discountName: string | null;
   translatedDiscountName: string | null;
   voucherCode: string | null;
-  voucherType: string | null | undefined;
-  voucherDiscountType: string | null | undefined;
+  voucherType: string | null;
+  voucherDiscountType: string | null;
   voucherDiscountValue: number;
-  documentNumber: string;
+  documentNumber: string | null;
   termsAndConditions: boolean;
   dataTreatmentPolicy: boolean;
 }

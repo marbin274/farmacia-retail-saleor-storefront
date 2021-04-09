@@ -38,6 +38,7 @@ export class CheckoutRepositoryManager implements ICheckoutRepositoryManager {
           pricing: (product.pricing as Checkout_lines_variant_pricing),
           product: {
             __typename: "Product",
+            attributes:[],
             id: product?.id || "",
             name: product?.name || "",
             productType: {

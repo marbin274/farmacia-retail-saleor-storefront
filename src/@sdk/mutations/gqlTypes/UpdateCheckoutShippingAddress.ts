@@ -744,12 +744,12 @@ export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_che
   discountName: string | null;
   translatedDiscountName: string | null;
   voucherCode: string | null;
-  voucherDiscountType: string | null | undefined;
+  voucherType: string | null;
+  voucherDiscountType: string | null;
   voucherDiscountValue: number;
-  voucherType: string | null | undefined;
-  documentNumber: string;
-  dataTreatmentPolicy: boolean;
+  documentNumber: string | null;
   termsAndConditions: boolean;
+  dataTreatmentPolicy: boolean;
 }
 
 export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate {
@@ -1487,9 +1487,12 @@ export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout {
   discountName: string | null;
   translatedDiscountName: string | null;
   voucherCode: string | null;
-  documentNumber?: string;
-  dataTreatmentPolicy?: boolean;
-  termsAndConditions?: boolean;
+  voucherType: string | null;
+  voucherDiscountType: string | null;
+  voucherDiscountValue: number;
+  documentNumber: string | null;
+  termsAndConditions: boolean;
+  dataTreatmentPolicy: boolean;
 }
 
 export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_errors {
@@ -1532,6 +1535,6 @@ export interface UpdateCheckoutShippingAddressVariables {
   checkoutId: string;
   shippingAddress: AddressInput;
   email: string;
-  documentNumber?: string;
-  privacyPolicy?: PrivacyPolicyInput;
+  documentNumber: string;
+  privacyPolicy: PrivacyPolicyInput;
 }

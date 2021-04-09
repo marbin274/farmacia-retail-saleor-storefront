@@ -934,6 +934,7 @@ export const productsOnCart: IItems = [
         __typename: "VariantPricingInfo",
       },
       product: {
+        attributes: [],
         id: "UHJvZHVjdDoyMDg=",
         name: "Abrilar 35Mg/5ML Jarabe - Frasco 100 ML",
         thumbnail: {
@@ -1013,6 +1014,7 @@ export const productsOnCart: IItems = [
         __typename: "VariantPricingInfo",
       },
       product: {
+        attributes: [],
         id: "UHJvZHVjdDoyMjc=",
         name: "Betacort Depot Solución Inyectable",
         thumbnail: {

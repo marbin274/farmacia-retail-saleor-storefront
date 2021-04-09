@@ -16,7 +16,7 @@ export interface IPromoCodeDiscount {
 }
 
 export interface IUserDataForNiubiz {
-  documentNumber?: string;
+  documentNumber?: string | null;
   email?: string;
   dataTreatmentPolicy?: boolean;
   termsAndConditions?: boolean;

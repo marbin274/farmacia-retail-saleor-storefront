@@ -154,6 +154,15 @@ export interface SetPassword_setPassword_user {
   firstName: string;
   lastName: string;
   isStaff: boolean;
+  /**
+   * Terms and Conditions
+   */
+  termsAndConditions: boolean | null;
+  /**
+   * Data Treatment Policy
+   */
+  dataTreatmentPolicy: boolean | null;
+  documentNumber: string | null;
   defaultShippingAddress: SetPassword_setPassword_user_defaultShippingAddress | null;
   defaultBillingAddress: SetPassword_setPassword_user_defaultBillingAddress | null;
   /**

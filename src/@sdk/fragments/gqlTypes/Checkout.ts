@@ -615,6 +615,10 @@ export interface Checkout_lines_variant_product {
   id: string;
   name: string;
   /**
+   * List of attributes assigned to this product.
+   */
+  attributes: Checkout_lines_variant_product_attributes[];
+  /**
    * The main thumbnail for a product.
    */
   thumbnail: Checkout_lines_variant_product_thumbnail | null;
@@ -725,11 +729,10 @@ export interface Checkout {
   discountName: string | null;
   translatedDiscountName: string | null;
   voucherCode: string | null;
-  voucherDiscountType: string | null | undefined;
+  voucherType: string | null;
+  voucherDiscountType: string | null;
   voucherDiscountValue: number;
-  voucherType: string | null | undefined;
-  documentNumber: string;
-  dataTreatmentPolicy: boolean;
+  documentNumber: string | null;
   termsAndConditions: boolean;
-  message?: string | null;
+  dataTreatmentPolicy: boolean;
 }

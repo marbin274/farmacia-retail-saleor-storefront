@@ -41,11 +41,10 @@ export interface RegisterAccount {
 export interface RegisterAccountVariables {
   email: string;
   password: string;
-  confirmPassword: string;
   redirectUrl: string;
-  firstName: string;
-  lastName: string;
-  termsAndConditions: boolean;
-  dataTreatmentPolicy: boolean;
-  documentNumber: string;
+  firstName?: string | null;
+  lastName?: string | null;
+  termsAndConditions?: boolean | null;
+  dataTreatmentPolicy?: boolean | null;
+  documentNumber?: string | null;
 }

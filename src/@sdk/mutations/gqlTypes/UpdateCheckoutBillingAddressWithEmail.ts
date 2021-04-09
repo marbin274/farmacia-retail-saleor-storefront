@@ -744,12 +744,12 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
   discountName: string | null;
   translatedDiscountName: string | null;
   voucherCode: string | null;
-  voucherDiscountType: string | null | undefined;
+  voucherType: string | null;
+  voucherDiscountType: string | null;
   voucherDiscountValue: number;
-  voucherType: string | null | undefined;
-  documentNumber: string;
-  dataTreatmentPolicy: boolean;
+  documentNumber: string | null;
   termsAndConditions: boolean;
+  dataTreatmentPolicy: boolean;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate {

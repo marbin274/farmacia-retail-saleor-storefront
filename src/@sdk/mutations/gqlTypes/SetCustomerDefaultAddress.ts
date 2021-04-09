@@ -154,6 +154,15 @@ export interface SetCustomerDefaultAddress_accountSetDefaultAddress_user {
   firstName: string;
   lastName: string;
   isStaff: boolean;
+  /**
+   * Terms and Conditions
+   */
+  termsAndConditions: boolean | null;
+  /**
+   * Data Treatment Policy
+   */
+  dataTreatmentPolicy: boolean | null;
+  documentNumber: string | null;
   defaultShippingAddress: SetCustomerDefaultAddress_accountSetDefaultAddress_user_defaultShippingAddress | null;
   defaultBillingAddress: SetCustomerDefaultAddress_accountSetDefaultAddress_user_defaultBillingAddress | null;
   /**

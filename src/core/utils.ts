@@ -113,7 +113,7 @@ export const convertSortByFromString = (sortBy: string) => {
       break;
 
     case "stock":
-      field = ProductOrderField.STOCK;
+      field = ProductOrderField.STOCK_AVAILABLE;
       break;
 
     default:

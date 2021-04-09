@@ -380,6 +380,7 @@ export enum ProductOrderField {
   NAME = "NAME",
   PRICE = "PRICE",
   PUBLISHED = "PUBLISHED",
+  STOCK_AVAILABLE = "STOCK_AVAILABLE",
   TYPE = "TYPE",
 }
 

@@ -17,9 +17,31 @@ export interface ShippingMethod_price {
    */
   amount: number;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
+}
+
+export interface ShippingMethod_scheduleDates_scheduleTimes {
+  __typename: "ScheduleTime";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  startTime: any;
+  endTime: any;
+}
+
+export interface ShippingMethod_scheduleDates {
+  __typename: "ScheduleByDate";
+  /**
+   * Date.
+   */
+  date: any | null;
+  /**
+   * Available schedules for a date.
+   */
+  scheduleTimes: (ShippingMethod_scheduleDates_scheduleTimes | null)[] | null;
 }
 
 export interface ShippingMethod {
@@ -29,5 +51,14 @@ export interface ShippingMethod {
    */
   id: string;
   name: string;
+  /**
+   * Flag to recognize if this shipping method has schedules to select.
+   */
+  isScheduled: boolean | null;
   price: ShippingMethod_price | null;
+  /**
+   * List of filtered schedules a customer can pick.
+   */
+  scheduleDates: (ShippingMethod_scheduleDates | null)[] | null;
+  subtitle: string | null;
 }

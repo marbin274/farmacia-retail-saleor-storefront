@@ -139,6 +139,15 @@ export interface User {
   firstName: string;
   lastName: string;
   isStaff: boolean;
+  /**
+   * Terms and Conditions
+   */
+  termsAndConditions: boolean | null;
+  /**
+   * Data Treatment Policy
+   */
+  dataTreatmentPolicy: boolean | null;
+  documentNumber: string | null;
   defaultShippingAddress: User_defaultShippingAddress | null;
   defaultBillingAddress: User_defaultBillingAddress | null;
   /**

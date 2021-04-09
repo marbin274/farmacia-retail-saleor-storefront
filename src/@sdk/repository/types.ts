@@ -143,7 +143,7 @@ export interface ICheckoutModel {
   requestPayload?: string;
   dataTreatmentPolicy?: boolean;
   termsAndConditions?: boolean;
-  documentNumber?: string;
+  documentNumber?: string | null;
   scheduleDate?: IScheduleDate | null;
 }
 

@@ -5,6 +5,7 @@ width: ${props => `${props.theme.container.width}px`};
   height: 526px;
   margin: 0 auto;
   padding: 0 ${props => props.theme.spacing.spacer};
+
   ${media.largeScreen`
     width: 100%;      
   `}
@@ -28,4 +29,5 @@ export const TopImageDistrictBannerOpen = styled.div<{
     background: no-repeat url("${(props: any )=> props.imageMobile}") transparent;
     background-size: 100% 100%;
   `};
+
  `;

@@ -2,10 +2,6 @@
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
-import { ProductDetails_product_pricing } from "@temp/@sdk/queries/gqlTypes/ProductDetails";
-import { FeaturedProducts_shop_homepageCollection_products_edges_node_pricing } from "@temp/components/ProductsFeatured/gqlTypes/FeaturedProducts";
-import { ProductDetails_product_attributes } from "@temp/@sdk/queries/gqlTypes/ProductDetails";
-
 // ====================================================
 // GraphQL query operation: SearchResults
 // ====================================================
@@ -30,6 +26,162 @@ export interface SearchResults_products_edges_node_thumbnail2x {
   url: string;
 }
 
+export interface SearchResults_products_edges_node_variants_pricing_price_gross {
+  __typename: "Money";
+  /**
+   * Amount of money.
+   */
+  amount: number;
+  /**
+   * Currency code.
+   */
+  currency: string;
+  /**
+   * Culture Code.
+   */
+  culture: string;
+}
+
+export interface SearchResults_products_edges_node_variants_pricing_price_net {
+  __typename: "Money";
+  /**
+   * Amount of money.
+   */
+  amount: number;
+  /**
+   * Currency code.
+   */
+  currency: string;
+  /**
+   * Culture Code.
+   */
+  culture: string;
+}
+
+export interface SearchResults_products_edges_node_variants_pricing_price {
+  __typename: "TaxedMoney";
+  /**
+   * Amount of money including taxes.
+   */
+  gross: SearchResults_products_edges_node_variants_pricing_price_gross;
+  /**
+   * Amount of money without taxes.
+   */
+  net: SearchResults_products_edges_node_variants_pricing_price_net;
+}
+
+export interface SearchResults_products_edges_node_variants_pricing_priceUndiscounted_gross {
+  __typename: "Money";
+  /**
+   * Amount of money.
+   */
+  amount: number;
+  /**
+   * Currency code.
+   */
+  currency: string;
+  /**
+   * Culture Code.
+   */
+  culture: string;
+}
+
+export interface SearchResults_products_edges_node_variants_pricing_priceUndiscounted_net {
+  __typename: "Money";
+  /**
+   * Amount of money.
+   */
+  amount: number;
+  /**
+   * Currency code.
+   */
+  currency: string;
+  /**
+   * Culture Code.
+   */
+  culture: string;
+}
+
+export interface SearchResults_products_edges_node_variants_pricing_priceUndiscounted {
+  __typename: "TaxedMoney";
+  /**
+   * Amount of money including taxes.
+   */
+  gross: SearchResults_products_edges_node_variants_pricing_priceUndiscounted_gross;
+  /**
+   * Amount of money without taxes.
+   */
+  net: SearchResults_products_edges_node_variants_pricing_priceUndiscounted_net;
+}
+
+export interface SearchResults_products_edges_node_variants_pricing {
+  __typename: "VariantPricingInfo";
+  /**
+   * Whether it is in sale or not.
+   */
+  onSale: boolean | null;
+  /**
+   * The price, with any discount subtracted.
+   */
+  price: SearchResults_products_edges_node_variants_pricing_price | null;
+  /**
+   * The price without any discount.
+   */
+  priceUndiscounted: SearchResults_products_edges_node_variants_pricing_priceUndiscounted | null;
+}
+
+export interface SearchResults_products_edges_node_variants {
+  __typename: "ProductVariant";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  /**
+   * Lists the storefront variant's pricing, the current price and discounts, only meant for displaying.
+   */
+  pricing: SearchResults_products_edges_node_variants_pricing | null;
+  /**
+   * Quantity of a product available for sale in one checkout.
+   */
+  quantityAvailable: number;
+}
+
+export interface SearchResults_products_edges_node_attributes_attribute {
+  __typename: "Attribute";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  /**
+   * Name of an attribute displayed in the interface.
+   */
+  name: string | null;
+}
+
+export interface SearchResults_products_edges_node_attributes_values {
+  __typename: "AttributeValue";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  /**
+   * Name of a value displayed in the interface.
+   */
+  name: string | null;
+}
+
+export interface SearchResults_products_edges_node_attributes {
+  __typename: "SelectedAttribute";
+  /**
+   * Name of an attribute displayed in the interface.
+   */
+  attribute: SearchResults_products_edges_node_attributes_attribute;
+  /**
+   * Values of an attribute.
+   */
+  values: (SearchResults_products_edges_node_attributes_values | null)[];
+}
+
 export interface SearchResults_products_edges_node_category {
   __typename: "Category";
   /**
@@ -39,11 +191,72 @@ export interface SearchResults_products_edges_node_category {
   name: string;
 }
 
-export interface SearchResults_products_edges_node_variants {
-  __typename: "Variants";
-  id: string;
-  pricing: FeaturedProducts_shop_homepageCollection_products_edges_node_pricing | null;
-  quantityAvailable: number;
+export interface SearchResults_products_edges_node_pricing_priceRange_start_net {
+  __typename: "Money";
+  /**
+   * Amount of money.
+   */
+  amount: number;
+  /**
+   * Currency code.
+   */
+  currency: string;
+  /**
+   * Culture Code.
+   */
+  culture: string;
+}
+
+export interface SearchResults_products_edges_node_pricing_priceRange_start {
+  __typename: "TaxedMoney";
+  /**
+   * Amount of money without taxes.
+   */
+  net: SearchResults_products_edges_node_pricing_priceRange_start_net;
+}
+
+export interface SearchResults_products_edges_node_pricing_priceRange_stop_net {
+  __typename: "Money";
+  /**
+   * Amount of money.
+   */
+  amount: number;
+  /**
+   * Currency code.
+   */
+  currency: string;
+  /**
+   * Culture Code.
+   */
+  culture: string;
+}
+
+export interface SearchResults_products_edges_node_pricing_priceRange_stop {
+  __typename: "TaxedMoney";
+  /**
+   * Amount of money without taxes.
+   */
+  net: SearchResults_products_edges_node_pricing_priceRange_stop_net;
+}
+
+export interface SearchResults_products_edges_node_pricing_priceRange {
+  __typename: "TaxedMoneyRange";
+  /**
+   * Lower bound of a price range.
+   */
+  start: SearchResults_products_edges_node_pricing_priceRange_start | null;
+  /**
+   * Upper bound of a price range.
+   */
+  stop: SearchResults_products_edges_node_pricing_priceRange_stop | null;
+}
+
+export interface SearchResults_products_edges_node_pricing {
+  __typename: "ProductPricingInfo";
+  /**
+   * The discounted price range of the product variants.
+   */
+  priceRange: SearchResults_products_edges_node_pricing_priceRange | null;
 }
 
 export interface SearchResults_products_edges_node {
@@ -53,7 +266,10 @@ export interface SearchResults_products_edges_node {
    */
   id: string;
   name: string;
-  isAvailable: boolean;
+  /**
+   * Whether the product is in stock and visible or not.
+   */
+  isAvailable: boolean | null;
   /**
    * The main thumbnail for a product.
    */
@@ -66,14 +282,21 @@ export interface SearchResults_products_edges_node {
    * The storefront URL for the product.
    */
   url: string;
-  variants: SearchResults_products_edges_node_variants[] | null;
+  /**
+   * List of variants for the product.
+   */
+  variants: (SearchResults_products_edges_node_variants | null)[] | null;
+  /**
+   * List of attributes assigned to this product.
+   */
+  attributes: SearchResults_products_edges_node_attributes[];
   category: SearchResults_products_edges_node_category | null;
   /**
    * Lists the storefront product's pricing, the current price and discounts, only meant for displaying.
    */
-  pricing: ProductDetails_product_pricing | null;
-  attributes: ProductDetails_product_attributes[];
+  pricing: SearchResults_products_edges_node_pricing | null;
 }
+
 export interface SearchResults_products_edges {
   __typename: "ProductCountableEdge";
   /**

@@ -154,6 +154,15 @@ export interface UpdateUserAddress_accountAddressUpdate_user {
   firstName: string;
   lastName: string;
   isStaff: boolean;
+  /**
+   * Terms and Conditions
+   */
+  termsAndConditions: boolean | null;
+  /**
+   * Data Treatment Policy
+   */
+  dataTreatmentPolicy: boolean | null;
+  documentNumber: string | null;
   defaultShippingAddress: UpdateUserAddress_accountAddressUpdate_user_defaultShippingAddress | null;
   defaultBillingAddress: UpdateUserAddress_accountAddressUpdate_user_defaultBillingAddress | null;
   /**

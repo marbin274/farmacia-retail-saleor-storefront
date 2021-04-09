@@ -60,7 +60,7 @@ export interface OrderDetail_lines_variant_pricing_priceUndiscounted_gross {
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -76,7 +76,7 @@ export interface OrderDetail_lines_variant_pricing_priceUndiscounted_net {
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -104,7 +104,7 @@ export interface OrderDetail_lines_variant_pricing_price_gross {
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -120,7 +120,7 @@ export interface OrderDetail_lines_variant_pricing_price_net {
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -193,6 +193,46 @@ export interface OrderDetail_lines_variant_attributes {
   values: (OrderDetail_lines_variant_attributes_values | null)[];
 }
 
+export interface OrderDetail_lines_variant_product_attributes_attribute {
+  __typename: "Attribute";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  /**
+   * Name of an attribute displayed in the interface.
+   */
+  name: string | null;
+}
+
+export interface OrderDetail_lines_variant_product_attributes_values {
+  __typename: "AttributeValue";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  /**
+   * Name of a value displayed in the interface.
+   */
+  name: string | null;
+  /**
+   * Name of a value displayed in the interface.
+   */
+  value: string | null;
+}
+
+export interface OrderDetail_lines_variant_product_attributes {
+  __typename: "SelectedAttribute";
+  /**
+   * Name of an attribute displayed in the interface.
+   */
+  attribute: OrderDetail_lines_variant_product_attributes_attribute;
+  /**
+   * Values of an attribute.
+   */
+  values: (OrderDetail_lines_variant_product_attributes_values | null)[];
+}
+
 export interface OrderDetail_lines_variant_product_thumbnail {
   __typename: "Image";
   /**
@@ -225,6 +265,10 @@ export interface OrderDetail_lines_variant_product {
    */
   id: string;
   name: string;
+  /**
+   * List of attributes assigned to this product.
+   */
+  attributes: OrderDetail_lines_variant_product_attributes[];
   /**
    * The main thumbnail for a product.
    */
@@ -274,7 +318,7 @@ export interface OrderDetail_lines_unitPrice_gross {
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -290,7 +334,7 @@ export interface OrderDetail_lines_unitPrice_net {
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -336,7 +380,7 @@ export interface OrderDetail_subtotal_gross {
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -352,7 +396,7 @@ export interface OrderDetail_subtotal_net {
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -380,7 +424,7 @@ export interface OrderDetail_total_gross {
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -396,7 +440,7 @@ export interface OrderDetail_total_net {
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -424,7 +468,7 @@ export interface OrderDetail_shippingPrice_gross {
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -440,7 +484,7 @@ export interface OrderDetail_shippingPrice_net {
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }

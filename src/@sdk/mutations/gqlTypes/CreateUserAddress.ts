@@ -154,6 +154,15 @@ export interface CreateUserAddress_accountAddressCreate_user {
   firstName: string;
   lastName: string;
   isStaff: boolean;
+  /**
+   * Terms and Conditions
+   */
+  termsAndConditions: boolean | null;
+  /**
+   * Data Treatment Policy
+   */
+  dataTreatmentPolicy: boolean | null;
+  documentNumber: string | null;
   defaultShippingAddress: CreateUserAddress_accountAddressCreate_user_defaultShippingAddress | null;
   defaultBillingAddress: CreateUserAddress_accountAddressCreate_user_defaultBillingAddress | null;
   /**

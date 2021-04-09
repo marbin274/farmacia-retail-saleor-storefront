@@ -139,6 +139,15 @@ export interface VerifyToken_tokenVerify_user {
   firstName: string;
   lastName: string;
   isStaff: boolean;
+  /**
+   * Terms and Conditions
+   */
+  termsAndConditions: boolean | null;
+  /**
+   * Data Treatment Policy
+   */
+  dataTreatmentPolicy: boolean | null;
+  documentNumber: string | null;
   defaultShippingAddress: VerifyToken_tokenVerify_user_defaultShippingAddress | null;
   defaultBillingAddress: VerifyToken_tokenVerify_user_defaultBillingAddress | null;
   /**

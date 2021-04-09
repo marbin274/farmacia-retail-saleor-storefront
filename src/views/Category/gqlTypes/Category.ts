@@ -2,11 +2,7 @@
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
-import { ProductDetails_product_variants_attributes } from "@temp/@sdk/queries/gqlTypes/ProductDetails";
-import {
-  AttributeInput,
-  ProductOrder,
-} from "./../../../../gqlTypes/globalTypes";
+import { AttributeInput, ProductOrder } from "./../../../../gqlTypes/globalTypes";
 
 // ====================================================
 // GraphQL query operation: Category
@@ -248,6 +244,42 @@ export interface Category_products_edges_node_pricing {
   priceRange: Category_products_edges_node_pricing_priceRange | null;
 }
 
+export interface Category_products_edges_node_attributes_attribute {
+  __typename: "Attribute";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  /**
+   * Name of an attribute displayed in the interface.
+   */
+  name: string | null;
+}
+
+export interface Category_products_edges_node_attributes_values {
+  __typename: "AttributeValue";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  /**
+   * Name of a value displayed in the interface.
+   */
+  name: string | null;
+}
+
+export interface Category_products_edges_node_attributes {
+  __typename: "SelectedAttribute";
+  /**
+   * Name of an attribute displayed in the interface.
+   */
+  attribute: Category_products_edges_node_attributes_attribute;
+  /**
+   * Values of an attribute.
+   */
+  values: (Category_products_edges_node_attributes_values | null)[];
+}
+
 export interface Category_products_edges_node_category {
   __typename: "Category";
   /**
@@ -257,9 +289,147 @@ export interface Category_products_edges_node_category {
   name: string;
 }
 
+export interface Category_products_edges_node_variants_images {
+  __typename: "ProductImage";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  /**
+   * The URL of the image.
+   */
+  url: string;
+  alt: string;
+}
+
+export interface Category_products_edges_node_variants_pricing_priceUndiscounted_gross {
+  __typename: "Money";
+  /**
+   * Amount of money.
+   */
+  amount: number;
+  /**
+   * Currency code.
+   */
+  currency: string;
+  /**
+   * Culture Code.
+   */
+  culture: string;
+}
+
+export interface Category_products_edges_node_variants_pricing_priceUndiscounted_net {
+  __typename: "Money";
+  /**
+   * Amount of money.
+   */
+  amount: number;
+  /**
+   * Currency code.
+   */
+  currency: string;
+  /**
+   * Culture Code.
+   */
+  culture: string;
+}
+
+export interface Category_products_edges_node_variants_pricing_priceUndiscounted {
+  __typename: "TaxedMoney";
+  /**
+   * Amount of money including taxes.
+   */
+  gross: Category_products_edges_node_variants_pricing_priceUndiscounted_gross;
+  /**
+   * Amount of money without taxes.
+   */
+  net: Category_products_edges_node_variants_pricing_priceUndiscounted_net;
+}
+
+export interface Category_products_edges_node_variants_pricing_price_gross {
+  __typename: "Money";
+  /**
+   * Amount of money.
+   */
+  amount: number;
+  /**
+   * Currency code.
+   */
+  currency: string;
+  /**
+   * Culture Code.
+   */
+  culture: string;
+}
+
+export interface Category_products_edges_node_variants_pricing_price_net {
+  __typename: "Money";
+  /**
+   * Amount of money.
+   */
+  amount: number;
+  /**
+   * Currency code.
+   */
+  currency: string;
+  /**
+   * Culture Code.
+   */
+  culture: string;
+}
+
+export interface Category_products_edges_node_variants_pricing_price {
+  __typename: "TaxedMoney";
+  /**
+   * Amount of money including taxes.
+   */
+  gross: Category_products_edges_node_variants_pricing_price_gross;
+  /**
+   * Amount of money without taxes.
+   */
+  net: Category_products_edges_node_variants_pricing_price_net;
+}
+
+export interface Category_products_edges_node_variants_pricing {
+  __typename: "VariantPricingInfo";
+  /**
+   * Whether it is in sale or not.
+   */
+  onSale: boolean | null;
+  /**
+   * The price without any discount.
+   */
+  priceUndiscounted: Category_products_edges_node_variants_pricing_priceUndiscounted | null;
+  /**
+   * The price, with any discount subtracted.
+   */
+  price: Category_products_edges_node_variants_pricing_price | null;
+}
+
+export interface Category_products_edges_node_variants {
+  __typename: "ProductVariant";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  sku: string;
+  name: string;
+  /**
+   * Quantity of a product available for sale in one checkout.
+   */
+  quantityAvailable: number;
+  /**
+   * List of images for the product variant.
+   */
+  images: (Category_products_edges_node_variants_images | null)[] | null;
+  /**
+   * Lists the storefront variant's pricing, the current price and discounts, only meant for displaying.
+   */
+  pricing: Category_products_edges_node_variants_pricing | null;
+}
+
 export interface Category_products_edges_node {
   __typename: "Product";
-  attributes: ProductDetails_product_variants_attributes[];
   /**
    * The ID of the object.
    */
@@ -277,7 +447,15 @@ export interface Category_products_edges_node {
    * Lists the storefront product's pricing, the current price and discounts, only meant for displaying.
    */
   pricing: Category_products_edges_node_pricing | null;
+  /**
+   * List of attributes assigned to this product.
+   */
+  attributes: Category_products_edges_node_attributes[];
   category: Category_products_edges_node_category | null;
+  /**
+   * List of variants for the product.
+   */
+  variants: (Category_products_edges_node_variants | null)[] | null;
 }
 
 export interface Category_products_edges {
@@ -541,9 +719,7 @@ export interface Category_shop_navigation_main_items_children {
   collection: Category_shop_navigation_main_items_children_collection | null;
   page: Category_shop_navigation_main_items_children_page | null;
   parent: Category_shop_navigation_main_items_children_parent | null;
-  children:
-    | (Category_shop_navigation_main_items_children_children | null)[]
-    | null;
+  children: (Category_shop_navigation_main_items_children_children | null)[] | null;
 }
 
 export interface Category_shop_navigation_main_items {

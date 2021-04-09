@@ -431,9 +431,9 @@ export class NetworkManager implements INetworkManager {
     try {
       const variables = {
         checkoutId,
-        documentNumber,
+        documentNumber: documentNumber || '',
         email,
-        privacyPolicy,
+        privacyPolicy: privacyPolicy || {},
         shippingAddress: {
           city: shippingAddress.city,
           companyName: shippingAddress.companyName,
@@ -632,7 +632,7 @@ export class NetworkManager implements INetworkManager {
         variables: {
           checkoutId,
           date: shippingMethodUpdate.scheduleDate?.date,
-          scheduleTimeId: shippingMethodUpdate.scheduleDate?.scheduleTimeId,
+          scheduleTimeId: shippingMethodUpdate.scheduleDate?.scheduleTimeId || '',
           shippingMethodId: shippingMethodUpdate.shippingMethodId,
         },
       });
@@ -683,8 +683,10 @@ export class NetworkManager implements INetworkManager {
         return {
           data: this.constructCheckoutModel({
             ...data.checkoutAddPromoCode.checkout,
-            message: data.checkoutAddPromoCode.message,
-          }),
+            availableShippingMethods: [],            
+          },
+          data.checkoutAddPromoCode.message
+          ),
         };
       } else {
         return {};
@@ -857,8 +859,7 @@ export class NetworkManager implements INetworkManager {
     termsAndConditions,
     dataTreatmentPolicy,
     scheduleDate,
-    message,
-  }: Checkout): ICheckoutModel => ({
+  }: Checkout, message?: string | null): ICheckoutModel => ({
     availableShippingMethods: availableShippingMethods
       ? availableShippingMethods.filter(filterNotEmptyArrayItems)
       : [],
