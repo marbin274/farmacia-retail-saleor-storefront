@@ -23,11 +23,7 @@ export const PROVIDERS = {
     id: "mirumee.payments.dummy",
     label: "AUNA Payments Gateway",
   },
-  STRIPE: {
-    href: "https://js.stripe.com/v3/",
-    id: "mirumee.payments.stripe",
-    label: "Stripe",
-  },
+ 
 };
 export const billingAddressAlwaysSameAsShipping = true;
 export const STATIC_PAGES = [
