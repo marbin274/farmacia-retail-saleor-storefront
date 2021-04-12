@@ -33,6 +33,7 @@ jobs:
           GTM_AUTH: ${{ secrets.GTM_AUTH }}
           CDN_URL: ${{ secrets.CDN_URL_QA }}
           GTM_PREVIEW: ${{ secrets.GTM_PREVIEW }}
+          MAPS_API_KEY: ${{ secrets.MAPS_API_KEY_QA }}
           ENVIRONMENT_NAME: "qa"
 
       - name: 4- Build application release ${{ github.event.pull_request.base.ref }}
@@ -43,6 +44,8 @@ jobs:
           SENTRY_DSN: ${{ secrets.SENTRY_DSN_PROD }}
           GTM_ID: ${{ secrets.GTM_ID_PROD }}
           CDN_URL: ${{ secrets.CDN_URL_PROD }}
+          MAPS_API_KEY: ${{ secrets.MAPS_API_KEY_PROD }}
+
           ENVIRONMENT_NAME: "prod"
 
       - name: 5- aws s3 copy qa - by ${{ github.actor }}
