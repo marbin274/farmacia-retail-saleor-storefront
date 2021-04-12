@@ -10,8 +10,14 @@ export const addressFormSchema = Yup.object().shape({
   documentNumber: SchemaValidation.documentNumberValidation,
   email: SchemaValidation.emailValidation,
   firstName: SchemaValidation.fullNameValidation,
+  latitude: Yup.number().when("streetAddress1", {
+    is: (address: string) => address?.length > 0,
+    then: Yup.number().required(STREET_ADDRESS_1_REQUIRED),
+  }),
   phone: SchemaValidation.phoneValidation,
-  streetAddress1: Yup.string().trim().required(STREET_ADDRESS_1_REQUIRED),
+  streetAddress1: Yup.string()
+    .trim()
+    .required(STREET_ADDRESS_1_REQUIRED),
   streetAddress2: Yup.string().trim(),
   termsAndConditions: SchemaValidation.termsAndConditionsValidation,
 });
@@ -23,7 +29,9 @@ export const addressFormModalSchema = Yup.object().shape({
   email: Yup.string(),
   firstName: Yup.string(),
   phone: SchemaValidation.phoneValidation,
-  streetAddress1: Yup.string().trim().required(STREET_ADDRESS_1_REQUIRED),
+  streetAddress1: Yup.string()
+    .trim()
+    .required(STREET_ADDRESS_1_REQUIRED),
   streetAddress2: Yup.string().trim(),
   termsAndConditions: Yup.boolean(),
 });

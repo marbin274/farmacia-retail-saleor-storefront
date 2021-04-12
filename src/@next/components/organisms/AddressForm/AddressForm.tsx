@@ -26,6 +26,8 @@ const ADDRESS_FIELDS = [
   "dataTreatmentPolicy",
   "termsAndConditions",
   "documentNumber",
+  "latitude",
+  "longitude",
 ];
 
 export const AddressForm: React.FC<IProps> = ({
@@ -57,6 +59,8 @@ export const AddressForm: React.FC<IProps> = ({
     addressWithPickedFields.phone = user.addresses?.[0]?.phone ? removeCountryCodeInPhoneNumber(user.addresses?.[0]?.phone): '';
     addressWithPickedFields.termsAndConditions = user.termsAndConditions || false;
     addressWithPickedFields.dataTreatmentPolicy = user.dataTreatmentPolicy;
+    addressWithPickedFields.latitude = user.addresses?.[0]?.latitude || "";
+    addressWithPickedFields.longitude = user.addresses?.[0]?.longitude || "";
   }
 
   if(checkoutData){
@@ -70,6 +74,12 @@ export const AddressForm: React.FC<IProps> = ({
     addressWithPickedFields.dataTreatmentPolicy = checkoutData.dataTreatmentPolicy;
     addressWithPickedFields.streetAddress1 = checkoutData.shippingAddress?.streetAddress1 || addressWithPickedFields.streetAddress1;
     addressWithPickedFields.streetAddress2 = checkoutData.shippingAddress?.streetAddress2 || addressWithPickedFields.streetAddress2;
+    addressWithPickedFields.latitude =
+      checkoutData.shippingAddress?.latitude ||
+      addressWithPickedFields.latitude;
+    addressWithPickedFields.longitude =
+      checkoutData.shippingAddress?.longitude ||
+      addressWithPickedFields.longitude;
   }
   
   if (defaultValue) {

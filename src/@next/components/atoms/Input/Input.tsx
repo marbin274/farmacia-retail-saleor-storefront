@@ -10,7 +10,7 @@ import { IProps } from "./types";
 const TYPE_TEXT = "text";
 const TYPE_PASSWORD = "password";
 
-export const Input: React.FC<IProps> = ({
+export const Input = React.forwardRef<HTMLInputElement, IProps>(({
   onBlur,
   onFocus,
   contentLeft = null,
@@ -24,7 +24,7 @@ export const Input: React.FC<IProps> = ({
   type,
   inputWrapperClassname = "",
   ...props
-}: IProps) => {
+}: IProps, ref) => {
   const elementRef = React.useRef(null);
   const [active, setActive] = React.useState(false);
   const [labelBackground, setColor] = React.useState<string>("transparent");
@@ -91,6 +91,7 @@ export const Input: React.FC<IProps> = ({
           placeholder={placeholder}
           onChange={onChange}
           hasRightIcon={hasRightIcon}
+          ref={ref}
         />
         {label && (
           <InputLabel
@@ -116,4 +117,4 @@ export const Input: React.FC<IProps> = ({
       {contentRight && <S.Content>{contentRight}</S.Content>}
     </S.Wrapper>
   );
-};
+});

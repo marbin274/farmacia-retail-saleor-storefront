@@ -198,6 +198,8 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
         {
           ...address,
           id: userAddressId,
+          latitude: address!.latitude as number,
+          longitude: address!.longitude as number,
         },
         billingEmail
       );
@@ -306,6 +308,8 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
             ...address,
             isDefaultBillingAddress: !!isDefaultBillingAddress,
             isDefaultShippingAddress: !!isDefaultShippingAddress,
+            latitude: address.latitude || undefined,
+            longitude: address.longitude || undefined,
             phone: phone ? phone : undefined,
           })
         )}

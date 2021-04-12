@@ -82,6 +82,8 @@ export const AddressFormModal: React.FC<IProps> = ({
               input: {
                 ..._data,
                 country: CountryCode.PE,
+                latitude: data!.latitude ? Number(data!.latitude) : undefined,
+                longitude: data!.longitude ? Number(data!.longitude) : undefined,
               },
             });
           } else {
@@ -90,6 +92,8 @@ export const AddressFormModal: React.FC<IProps> = ({
               input: {
                 ...data,
                 country: CountryCode.PE,
+                latitude: data!.latitude ? Number(data!.latitude) : undefined,
+                longitude: data!.longitude ? Number(data!.longitude) : undefined,
               },
             });
           }

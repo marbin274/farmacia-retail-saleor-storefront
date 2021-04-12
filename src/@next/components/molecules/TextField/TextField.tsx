@@ -5,16 +5,16 @@ import { IProps } from "./types";
 
 import { ErrorMessage, Input } from "@components/atoms";
 
-export const TextField: React.FC<IProps> = ({
+export const TextField = React.forwardRef<HTMLInputElement, IProps>(({
   errors,
   helpText,
   ...rest
-}: IProps) => {
+}: IProps, ref) => {
   const hasErrors = !!(errors && errors.length);
   return (
     <>
       <S.TextField>
-        <Input {...rest} error={hasErrors} />
+        <Input {...rest} error={hasErrors} ref={ref}/>
         <S.ErrorMessages>
           <ErrorMessage errors={errors} />
           {helpText && <S.HelpText>{helpText}</S.HelpText>}
@@ -22,4 +22,4 @@ export const TextField: React.FC<IProps> = ({
       </S.TextField>
     </>
   );
-};
+});

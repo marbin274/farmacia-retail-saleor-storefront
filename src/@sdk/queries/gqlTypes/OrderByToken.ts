@@ -47,6 +47,8 @@ export interface OrderByToken_orderByToken_shippingAddress {
    * Address is user's default shipping address.
    */
   isDefaultShippingAddress: boolean | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface OrderByToken_orderByToken_lines_variant_pricing_priceUndiscounted_gross {

@@ -168,6 +168,8 @@ export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout_billingAdd
    * Address is user's default shipping address.
    */
   isDefaultShippingAddress: boolean | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout_shippingAddress_country {
@@ -209,6 +211,8 @@ export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout_shippingAd
    * Address is user's default shipping address.
    */
   isDefaultShippingAddress: boolean | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout_availableShippingMethods_price {

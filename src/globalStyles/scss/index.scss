@@ -170,36 +170,65 @@ body {
     font-weight: normal;
   }
 }
-.react-datepicker{
-  &__header{
+
+.react-datepicker {
+  &__header {
     border-bottom: none;
     background-color: $auna-complementary1;
     color: $auna-black;
     font-size: $small-font-size;
     line-height: $base-font-size;
   }
-  &__current-month{
-    padding: .3rem 0rem .8rem;
+  &__current-month {
+    padding: 0.3rem 0rem 0.8rem;
     font-weight: $font-weight-normal;
     text-transform: capitalize;
   }
-  &__day{
-    &:hover{
-      border-radius: .8rem;
-    }    
-    &-names{
-      background: #FFFFFF;
+  &__day {
+    &:hover {
+      border-radius: 0.8rem;
     }
-    &--selected{
-      border-radius: .8rem;
+    &-names {
+      background: #ffffff;
+    }
+    &--selected {
+      border-radius: 0.8rem;
       background-color: $turquoise-dark;
-      &:hover{
-        border-radius: .8rem;
-      background-color: $turquoise-dark;
+      &:hover {
+        border-radius: 0.8rem;
+        background-color: $turquoise-dark;
       }
     }
   }
-  &__navigation{
+  &__navigation {
     top: 15px;
+  }
+}
+
+.pac-container {
+  background: white;
+  box-shadow: 0 0.5rem 0.625rem rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+
+  &:after {
+    background-image: none !important;
+    height: 0;
+  }
+
+  .pac-item {
+    padding: 0.5rem 1rem;
+    color: $auna-black;
+    border-color: $auna-grey-60;
+
+    &:hover {
+      background-color: $auna-grey-20;
+    }
+  }
+
+  .pac-icon {
+    background-image: url("../../images/auna/map-pin.svg");
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 0.75rem;
   }
 }

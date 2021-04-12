@@ -155,6 +155,8 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_billin
    * Address is user's default shipping address.
    */
   isDefaultShippingAddress: boolean | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_shippingAddress_country {
@@ -196,6 +198,8 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_shippi
    * Address is user's default shipping address.
    */
   isDefaultShippingAddress: boolean | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_availableShippingMethods_price {

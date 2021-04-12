@@ -5,6 +5,7 @@ export interface IFieldsProps {
     required?: boolean;
     values: IAddressWithEmail | undefined;
     basicInputProps: any;
+    setFieldValue: (field: string, value: string | boolean) => void;
 }
 export interface IProps {
     fieldsProps: IFieldsProps

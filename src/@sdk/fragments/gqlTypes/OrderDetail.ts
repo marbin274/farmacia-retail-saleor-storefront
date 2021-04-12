@@ -47,6 +47,8 @@ export interface OrderDetail_shippingAddress {
    * Address is user's default shipping address.
    */
   isDefaultShippingAddress: boolean | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface OrderDetail_lines_variant_pricing_priceUndiscounted_gross {

@@ -471,10 +471,6 @@ export class SaleorCheckoutAPI extends ErrorListener
     const billingAddress = this.saleorState.checkout?.billingAddress;
     const amount = this.saleorState.summaryPrices?.totalPrice?.gross.amount;
 
-    // console.table(amount);
-    // console.log(gateway);
-    // console.log(token);
-
     if (
       checkoutId &&
       billingAddress &&

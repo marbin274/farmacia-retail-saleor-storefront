@@ -168,6 +168,8 @@ export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_check
    * Address is user's default shipping address.
    */
   isDefaultShippingAddress: boolean | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_checkout_shippingAddress_country {
@@ -209,6 +211,8 @@ export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_check
    * Address is user's default shipping address.
    */
   isDefaultShippingAddress: boolean | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_checkout_availableShippingMethods_price {

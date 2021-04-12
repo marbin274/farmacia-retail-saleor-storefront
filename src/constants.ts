@@ -6,4 +6,5 @@ export const gtmPreview = process.env.GTM_PREVIEW;
 export const cndUrl = process.env.CDN_URL;
 export const environmentName = process.env.ENVIRONMENT_NAME;
 export const serviceWorkerTimeout =
-  parseInt(process.env.SERVICE_WORKER_TIMEOUT, 10) || 60 * 1000;
+  parseInt(process.env.SERVICE_WORKER_TIMEOUT!, 10) || 60 * 1000;
+export const mapsApiKey = process.env.MAPS_API_KEY;

@@ -50,6 +50,8 @@ export const userAddressItem: UserDetails_me_addresses = {
   isDefaultBillingAddress: null,
   isDefaultShippingAddress: null,
   lastName: "Perez",
+  latitude: -12.046373,
+  longitude: -77.042755,
   phone: "+519854124511",
   postalCode: "",
   streetAddress1: "Calle las palmeras",

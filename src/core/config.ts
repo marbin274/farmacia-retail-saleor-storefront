@@ -121,3 +121,11 @@ export const SEARCH_PRODUCTS_QUERY_MIN_LENGTH = 3;
 export const SHIPPING_FORMAT_DATE = "yyyy-MM-dd";
 export const HOURS_TO_FORMAT_DATE = "T00:00:00";
 export const SHIPPING_DISPLAY_FORMAT_DATE = "dd/MM/yyyy";
+
+// TODO: revisar  cuando se tenga que pintar el poligono de cobertura con la data de backend
+export const LIMA_BOUNDS: google.maps.LatLngBoundsLiteral = {
+  east: -76.61,
+  north: -11.56,
+  south: -12.55,
+  west: -77.23,
+};

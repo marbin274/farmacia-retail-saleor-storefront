@@ -60,6 +60,8 @@ export interface UpdateUserAddress_accountAddressUpdate_user_defaultShippingAddr
    * Address is user's default shipping address.
    */
   isDefaultShippingAddress: boolean | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface UpdateUserAddress_accountAddressUpdate_user_defaultBillingAddress_country {
@@ -101,6 +103,8 @@ export interface UpdateUserAddress_accountAddressUpdate_user_defaultBillingAddre
    * Address is user's default shipping address.
    */
   isDefaultShippingAddress: boolean | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface UpdateUserAddress_accountAddressUpdate_user_addresses_country {
@@ -142,6 +146,8 @@ export interface UpdateUserAddress_accountAddressUpdate_user_addresses {
    * Address is user's default shipping address.
    */
   isDefaultShippingAddress: boolean | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface UpdateUserAddress_accountAddressUpdate_user {

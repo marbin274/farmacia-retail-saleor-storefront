@@ -22,6 +22,7 @@ import {
 import { IFieldsProps, ISelectFieldsProps } from "./AddressFormContent/types";
 import * as S from "./styles";
 import { PropsWithFormik } from "./types";
+import Map from "./AddressFormContent/Map";
 
 export const AddressFormContent: React.FC<PropsWithFormik> = ({
   formRef,
@@ -148,6 +149,8 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
               code: "PE",
               country: "Peru",
             };
+            _values.latitude = Number(values?.latitude);
+            _values.longitude = Number(values?.longitude);
             if (onSelect && isValid) {
               const policyPrivacy: IPrivacyPolicy = {
                 dataTreatmentPolicy: additionals,
@@ -182,11 +185,24 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
     setAdditionals(values?.dataTreatmentPolicy === true);
   }, [values?.dataTreatmentPolicy]);
 
-  const fieldsProps: IFieldsProps = { fieldErrors, values, basicInputProps };
+  const fieldsProps: IFieldsProps = {
+    basicInputProps,
+    fieldErrors,
+    setFieldValue,
+    values,
+  };
+
   const cityProps: ISelectFieldsProps = {
     cities: _cities,
     fieldErrors,
     values,
+  };
+
+  const getCoordinates = () => {
+    if (!values?.latitude || !values.longitude) {
+      return;
+    }
+    return { lat: Number(values.latitude), lng: Number(values.longitude) };
   };
 
   return (
@@ -283,10 +299,16 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
               </S.FieldsGroup>
               <S.FieldsGroup>
                 {renderGroupLabel(2, "Dirección")}
-                <S.RowWithTwoCells>
+                <div>
                   <StreetAddress1 fieldsProps={fieldsProps} />
-                  <StreetAddress2 fieldsProps={fieldsProps} />
-                </S.RowWithTwoCells>
+                </div>
+                <Map
+                  location={getCoordinates()}
+                  onChangeLocation={location => {
+                    setFieldValue("latitude", String(location.lat));
+                    setFieldValue("longitude", String(location.lng));
+                  }}
+                />
                 <S.RowWithTwoCells>
                   <CitySelect
                     fieldsProps={{
@@ -294,6 +316,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                       handleCityChange,
                     }}
                   />
+                  <StreetAddress2 fieldsProps={fieldsProps} />
                 </S.RowWithTwoCells>
               </S.FieldsGroup>
             </div>

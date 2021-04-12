@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
   margin: 20px;
 }
 
-.c21 {
+.c24 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -115,12 +115,12 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
   top: 2.5px;
 }
 
-.c18 {
+.c21 {
   padding-top: 1.4rem;
   margin-bottom: 1.875rem;
 }
 
-.c20 {
+.c23 {
   top: 100%;
 }
 
@@ -188,7 +188,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
   color: #9194A7;
 }
 
-.c19 {
+.c22 {
   fill: #00B0CA;
   position: absolute;
   right: 1rem;
@@ -306,6 +306,26 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
 .c7 {
   font-weight: bolder;
   padding-left: 1rem;
+}
+
+.c18 {
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.c19 {
+  width: 100%;
+  height: 21.25rem;
+}
+
+.c20 {
+  height: 3rem;
+  font-size: 0.75rem;
+  background-color: #E6F6F9;
+  padding: 1rem;
 }
 
 @media (max-width:540px) {
@@ -616,9 +636,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                   Dirección
                 </span>
               </div>
-              <div
-                className="c8"
-              >
+              <div>
                 <div
                   className="c9"
                 >
@@ -630,15 +648,14 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                       className="c11"
                     >
                       <input
-                        autoComplete="address-line1"
                         className="c12"
-                        data-cy="addressFormStreetAddress1"
+                        data-cy="addressAutocomplete"
                         disabled={false}
                         name="streetAddress1"
                         onBlur={[Function]}
                         onChange={[Function]}
                         onFocus={[Function]}
-                        placeholder="Dirección"
+                        placeholder="Ejemplo: Av.arenales 213"
                         value="St Street"
                       />
                       <label
@@ -653,46 +670,24 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                     className="c14"
                   />
                 </div>
+              </div>
+              <div
+                className="c18"
+              >
                 <div
-                  className="c9"
+                  className="c19"
+                />
+                <div
+                  className="c20"
                 >
-                  <div
-                    className="c10"
-                    disabled={false}
-                  >
-                    <div
-                      className="c11"
-                    >
-                      <input
-                        autoComplete="address-line2"
-                        className="c12"
-                        data-cy="addressFormStreetAddress2"
-                        disabled={false}
-                        name="streetAddress2"
-                        onBlur={[Function]}
-                        onChange={[Function]}
-                        onFocus={[Function]}
-                        placeholder="Información adicional"
-                        value="Second"
-                      />
-                      <label
-                        className="c13"
-                        disabled={false}
-                      >
-                        Información adicional
-                      </label>
-                    </div>
-                  </div>
-                  <div
-                    className="c14"
-                  />
+                  Puedes mover tu ubicación en el mapa
                 </div>
               </div>
               <div
                 className="c8"
               >
                 <div
-                  className="c18"
+                  className="c21"
                 >
                   <div
                     className="css-1pcexqc-container"
@@ -772,7 +767,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                         </div>
                       </div>
                       <div
-                        className="c19"
+                        className="c22"
                         rotate="false"
                       >
                         <svg
@@ -795,7 +790,41 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                     </label>
                   </div>
                   <div
-                    className="c20"
+                    className="c23"
+                  />
+                </div>
+                <div
+                  className="c9"
+                >
+                  <div
+                    className="c10"
+                    disabled={false}
+                  >
+                    <div
+                      className="c11"
+                    >
+                      <input
+                        autoComplete="address-line2"
+                        className="c12"
+                        data-cy="addressFormStreetAddress2"
+                        disabled={false}
+                        name="streetAddress2"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        placeholder="Información adicional"
+                        value="Second"
+                      />
+                      <label
+                        className="c13"
+                        disabled={false}
+                      >
+                        Información adicional
+                      </label>
+                    </div>
+                  </div>
+                  <div
+                    className="c14"
                   />
                 </div>
               </div>
@@ -806,7 +835,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
     </div>
   </section>
   <div
-    className="c21"
+    className="c24"
   />
 </div>
 `;
@@ -817,7 +846,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
   margin: 20px;
 }
 
-.c21 {
+.c24 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -926,12 +955,12 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
   top: 2.5px;
 }
 
-.c18 {
+.c21 {
   padding-top: 1.4rem;
   margin-bottom: 1.875rem;
 }
 
-.c20 {
+.c23 {
   top: 100%;
 }
 
@@ -999,7 +1028,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
   color: #9194A7;
 }
 
-.c19 {
+.c22 {
   fill: #00B0CA;
   position: absolute;
   right: 1rem;
@@ -1117,6 +1146,26 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
 .c7 {
   font-weight: bolder;
   padding-left: 1rem;
+}
+
+.c18 {
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.c19 {
+  width: 100%;
+  height: 21.25rem;
+}
+
+.c20 {
+  height: 3rem;
+  font-size: 0.75rem;
+  background-color: #E6F6F9;
+  padding: 1rem;
 }
 
 @media (max-width:540px) {
@@ -1427,9 +1476,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
                   Dirección
                 </span>
               </div>
-              <div
-                className="c8"
-              >
+              <div>
                 <div
                   className="c9"
                 >
@@ -1441,15 +1488,14 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
                       className="c11"
                     >
                       <input
-                        autoComplete="address-line1"
                         className="c12"
-                        data-cy="addressFormStreetAddress1"
+                        data-cy="addressAutocomplete"
                         disabled={false}
                         name="streetAddress1"
                         onBlur={[Function]}
                         onChange={[Function]}
                         onFocus={[Function]}
-                        placeholder="Dirección"
+                        placeholder="Ejemplo: Av.arenales 213"
                         value=""
                       />
                       <label
@@ -1464,46 +1510,24 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
                     className="c14"
                   />
                 </div>
+              </div>
+              <div
+                className="c18"
+              >
                 <div
-                  className="c9"
+                  className="c19"
+                />
+                <div
+                  className="c20"
                 >
-                  <div
-                    className="c10"
-                    disabled={false}
-                  >
-                    <div
-                      className="c11"
-                    >
-                      <input
-                        autoComplete="address-line2"
-                        className="c12"
-                        data-cy="addressFormStreetAddress2"
-                        disabled={false}
-                        name="streetAddress2"
-                        onBlur={[Function]}
-                        onChange={[Function]}
-                        onFocus={[Function]}
-                        placeholder="Información adicional"
-                        value=""
-                      />
-                      <label
-                        className="c13"
-                        disabled={false}
-                      >
-                        Información adicional
-                      </label>
-                    </div>
-                  </div>
-                  <div
-                    className="c14"
-                  />
+                  Puedes mover tu ubicación en el mapa
                 </div>
               </div>
               <div
                 className="c8"
               >
                 <div
-                  className="c18"
+                  className="c21"
                 >
                   <div
                     className="css-1pcexqc-container"
@@ -1598,7 +1622,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
                         </div>
                       </div>
                       <div
-                        className="c19"
+                        className="c22"
                         rotate="false"
                       >
                         <svg
@@ -1621,7 +1645,41 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
                     </label>
                   </div>
                   <div
-                    className="c20"
+                    className="c23"
+                  />
+                </div>
+                <div
+                  className="c9"
+                >
+                  <div
+                    className="c10"
+                    disabled={false}
+                  >
+                    <div
+                      className="c11"
+                    >
+                      <input
+                        autoComplete="address-line2"
+                        className="c12"
+                        data-cy="addressFormStreetAddress2"
+                        disabled={false}
+                        name="streetAddress2"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        placeholder="Información adicional"
+                        value=""
+                      />
+                      <label
+                        className="c13"
+                        disabled={false}
+                      >
+                        Información adicional
+                      </label>
+                    </div>
+                  </div>
+                  <div
+                    className="c14"
                   />
                 </div>
               </div>
@@ -1632,7 +1690,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
     </div>
   </section>
   <div
-    className="c21"
+    className="c24"
   />
 </div>
 `;

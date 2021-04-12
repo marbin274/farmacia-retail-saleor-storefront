@@ -28,6 +28,8 @@ export interface IAddress {
     code?: string;
     country?: string;
   };
+  latitude?: number | null;
+  longitude?: number | null;
 }
 
 export interface IPrivacyPolicy {

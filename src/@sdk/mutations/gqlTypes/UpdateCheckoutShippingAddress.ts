@@ -168,6 +168,8 @@ export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_che
    * Address is user's default shipping address.
    */
   isDefaultShippingAddress: boolean | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_shippingAddress_country {
@@ -209,6 +211,8 @@ export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_che
    * Address is user's default shipping address.
    */
   isDefaultShippingAddress: boolean | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_availableShippingMethods_price {
@@ -911,6 +915,8 @@ export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_bill
    * Address is user's default shipping address.
    */
   isDefaultShippingAddress: boolean | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_shippingAddress_country {
@@ -952,6 +958,8 @@ export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_ship
    * Address is user's default shipping address.
    */
   isDefaultShippingAddress: boolean | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_availableShippingMethods_price {

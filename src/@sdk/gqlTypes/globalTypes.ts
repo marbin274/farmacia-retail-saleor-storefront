@@ -403,6 +403,8 @@ export interface AddressInput {
   country?: CountryCode | null;
   countryArea?: string | null;
   phone?: string | null;
+  latitude?: number | null;
+  longitude?: number | null;
 }
 
 export interface AttributeInput {

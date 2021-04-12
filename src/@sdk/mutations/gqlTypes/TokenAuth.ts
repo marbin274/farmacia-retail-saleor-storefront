@@ -58,6 +58,8 @@ export interface TokenAuth_tokenCreate_user_defaultShippingAddress {
    * Address is user's default shipping address.
    */
   isDefaultShippingAddress: boolean | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface TokenAuth_tokenCreate_user_defaultBillingAddress_country {
@@ -99,6 +101,8 @@ export interface TokenAuth_tokenCreate_user_defaultBillingAddress {
    * Address is user's default shipping address.
    */
   isDefaultShippingAddress: boolean | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface TokenAuth_tokenCreate_user_addresses_country {
@@ -140,6 +144,8 @@ export interface TokenAuth_tokenCreate_user_addresses {
    * Address is user's default shipping address.
    */
   isDefaultShippingAddress: boolean | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface TokenAuth_tokenCreate_user {
