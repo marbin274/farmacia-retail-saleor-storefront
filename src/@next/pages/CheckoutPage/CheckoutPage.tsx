@@ -6,11 +6,14 @@ import { IItems } from "@sdk/api/Cart/types";
 import {
   ecommerceProductsMapper,
   launchCheckoutEvent,
-  steps
+  steps,
 } from "@sdk/gaConfig";
 import { useCart, useCheckout } from "@sdk/react";
 import { alertService } from "@temp/@next/components/atoms/Alert";
-import { checkAttentionSchedule, removePaymentItems } from "@temp/@next/utils/checkoutValidations";
+import {
+  checkAttentionSchedule,
+  removePaymentItems,
+} from "@temp/@next/utils/checkoutValidations";
 import { BASE_URL, CHECKOUT_STEPS } from "@temp/core/config";
 import { IFormError, ITaxedMoney } from "@types";
 import React, { useEffect, useRef, useState } from "react";
@@ -24,7 +27,7 @@ import {
   ICheckoutAddressSubpageHandles,
   ICheckoutPaymentSubpageHandles,
   ICheckoutReviewSubpageHandles,
-  ICheckoutShippingSubpageHandles
+  ICheckoutShippingSubpageHandles,
 } from "./subpages";
 import { IProps } from "./types";
 import shippingMethodCalendarInfoIco from "images/auna/shipping-method-calendar-info.svg";
@@ -90,22 +93,33 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     totalPrice,
     items,
   } = useCart();
-  const { availableShippingMethods, loaded: checkoutLoaded, checkout, payment, setShippingMethod } = useCheckout();
-  const { isAttentionSchedule } = checkAttentionSchedule(checkoutLoaded, checkout, availableShippingMethods);
+  const {
+    availableShippingMethods,
+    loaded: checkoutLoaded,
+    checkout,
+    payment,
+    setShippingMethod,
+  } = useCheckout();
+  const { isAttentionSchedule } = checkAttentionSchedule(
+    checkoutLoaded,
+    checkout,
+    availableShippingMethods
+  );
 
   if ((!items || !items?.length)) {
     removePaymentItems();
     return <Redirect to={BASE_URL} />;
   }
-  
+
   if (isAttentionSchedule === false) {
     alertService.sendAlert({
       acceptDialog: () => {
-        setShippingMethod({ shippingMethodId: '' });
+        setShippingMethod({ shippingMethodId: "" });
       },
       buttonText: "Entendido",
       icon: shippingMethodCalendarInfoIco,
-      message: "Hemos actualizado los horarios disponibles para entregar tu pedido, por favor escoge nuevamente",
+      message:
+        "Hemos actualizado los horarios disponibles para entregar tu pedido, por favor escoge nuevamente",
       title: "Horario de entrega",
       type: "Info",
     });
@@ -136,7 +150,6 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     setSelectedPaymentGatewayToken(payment?.token);
   }, [payment?.token]);
 
-
   const [requestPayload, setRequestPayload] = useState(null);
 
   const matchingStepIndex = CHECKOUT_STEPS.findIndex(
@@ -159,10 +172,6 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
   const handleNextStepClick = () => {
     switch (activeStepIndex) {
       case 0:
-        // if (checkoutAddressSubpageRef.current?.submitAddress) {
-        //   checkoutAddressSubpageRef.current?.submitAddress();
-        // }
-
         if (
           checkoutAddressSubpageRef.current?.handleRequiredFields &&
           checkoutShippingSubpageRef.current?.submitShipping
@@ -173,11 +182,6 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
         }
         launchCheckoutEvent(steps.payment, ecommerceProductsMapper(items));
         break;
-      // case 1:
-      //   if (checkoutShippingSubpageRef.current?.submitShipping) {
-      //     checkoutShippingSubpageRef.current?.submitShipping();
-      //   }
-      //   break;
       case 1:
         if (checkoutPaymentSubpageRef.current?.submitPayment) {
           checkoutPaymentSubpageRef.current?.submitPayment();
@@ -203,6 +207,15 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     net: discount,
   };
 
+  const [launchEventAddress, setLaunchEventAddress] = useState(true);
+
+  const eventCheckoutAddress = () => {
+    if(launchEventAddress){
+      launchCheckoutEvent(steps.address, ecommerceProductsMapper(items));
+    }
+    return setLaunchEventAddress(false);
+  };
+
   const checkoutView =
     cartLoaded && checkoutLoaded ? (
       <CheckoutRouter
@@ -210,7 +223,8 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
         checkout={checkout}
         payment={payment}
         renderAddress={props => (
-          <div>
+          <>
+            {eventCheckoutAddress()}
             <CheckoutAddressSubpage
               ref={checkoutAddressSubpageRef}
               changeSubmitProgress={setSubmitInProgress}
@@ -225,15 +239,8 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
               addressSubPageErrors={addressSubPageErrors}
               {...props}
             />
-          </div>
+          </>
         )}
-        // renderShipping={props => (
-        //   <CheckoutShippingSubpage
-        //     ref={checkoutShippingSubpageRef}
-        //     changeSubmitProgress={setSubmitInProgress}
-        //     {...props}
-        //   />
-        // )}
         renderPayment={props => (
           <CheckoutPaymentSubpage
             ref={checkoutPaymentSubpageRef}
@@ -290,4 +297,3 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
 };
 
 export { CheckoutPage };
-
