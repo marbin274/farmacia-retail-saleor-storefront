@@ -15,6 +15,11 @@ export interface Breadcrumb {
   link: string;
 }
 
+type IBreadcrumbProps = {
+  breadcrumbs: Breadcrumb[];
+  breadcrumbsAlwaysVisible?: boolean;
+};
+
 export const extractBreadcrumbs = (category: Category_category) => {
   const constructLink = item => ({
     link: [
@@ -39,16 +44,17 @@ export const extractBreadcrumbs = (category: Category_category) => {
 const getBackLink = (breadcrumbs: Breadcrumb[]) =>
   breadcrumbs.length > 1 ? breadcrumbs[breadcrumbs.length - 2].link : "/";
 
-const Breadcrumbs: React.FC<{
-  breadcrumbs: Breadcrumb[];
-}> = ({ breadcrumbs }) => (
+const Breadcrumbs: React.FC<IBreadcrumbProps> = ({
+  breadcrumbs,
+  breadcrumbsAlwaysVisible,
+}) => (
   <Media
     query={{
       minWidth: smallScreen,
     }}
   >
     {matches =>
-      matches ? (
+      breadcrumbsAlwaysVisible || matches ? (
         <ul className="breadcrumbs">
           <li>
             <Link to={baseUrl}>Home</Link>
