@@ -53,8 +53,8 @@ export interface IProps {
     privacyPolicy?: IPrivacyPolicy,
     documentNumber?: string
   ) => void;
-
   setFormValue?: (address?: IAddressWithEmail) => void;
+  initialValues?: Partial<IAddressWithEmail>;
 }
 
 export type PropsWithFormik = Omit<IProps, "handleSubmit"> & IFormikProps;

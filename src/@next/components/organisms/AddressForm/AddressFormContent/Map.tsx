@@ -7,7 +7,10 @@ import { LIMA_BOUNDS } from "@temp/core/config";
 
 type IProps = {
   location?: google.maps.LatLngLiteral;
-  onChangeLocation?: (location: google.maps.LatLngLiteral) => void;
+  onChangeLocation?: (
+    location: google.maps.LatLngLiteral,
+    address: string
+  ) => void;
 };
 
 export const Map: FC<IProps> = ({ location, onChangeLocation }) => {
@@ -74,7 +77,10 @@ export const Map: FC<IProps> = ({ location, onChangeLocation }) => {
     map.addListener("click", (e: any) => {
       const lat = e.latLng.lat();
       const lng = e.latLng.lng();
-      onChangeLocation?.({ lat, lng });
+
+      new google.maps.Geocoder().geocode({ location: { lat, lng } }, res => {
+        onChangeLocation?.({ lat, lng }, res?.[0]?.formatted_address || "");
+      });
     });
   }, [map]);
 

@@ -32,6 +32,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
   formikErrors,
   errors,
   handleSubmit,
+  initialValues,
   isValid,
   values,
   citiesOptions,
@@ -113,6 +114,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
       !values.email ||
       !values.termsAndConditions ||
       !values.streetAddress1 ||
+      !values.latitude ||
       !value
     ) {
       setFieldValue(name, "");
@@ -302,13 +304,16 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                 <div>
                   <StreetAddress1 fieldsProps={fieldsProps} />
                 </div>
-                <Map
-                  location={getCoordinates()}
-                  onChangeLocation={location => {
-                    setFieldValue("latitude", String(location.lat));
-                    setFieldValue("longitude", String(location.lng));
-                  }}
-                />
+                {(values?.longitude || initialValues?.streetAddress1) && (
+                  <Map
+                    location={getCoordinates()}
+                    onChangeLocation={(location, address) => {
+                      setFieldValue("streetAddress1", address);
+                      setFieldValue("latitude", String(location.lat));
+                      setFieldValue("longitude", String(location.lng));
+                    }}
+                  />
+                )}
                 <S.RowWithTwoCells>
                   <CitySelect
                     fieldsProps={{

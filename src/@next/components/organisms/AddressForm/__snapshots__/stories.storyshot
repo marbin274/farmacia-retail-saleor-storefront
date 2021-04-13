@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   margin: 20px;
 }
 
-.c24 {
+.c21 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -115,12 +115,12 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   top: 2.5px;
 }
 
-.c21 {
+.c18 {
   padding-top: 1.4rem;
   margin-bottom: 1.875rem;
 }
 
-.c23 {
+.c20 {
   top: 100%;
 }
 
@@ -188,7 +188,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   color: #9194A7;
 }
 
-.c22 {
+.c19 {
   fill: #00B0CA;
   position: absolute;
   right: 1rem;
@@ -301,26 +301,6 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
 .c7 {
   font-weight: bolder;
   padding-left: 1rem;
-}
-
-.c18 {
-  width: 100%;
-  height: auto;
-  border-radius: 1rem;
-  overflow: hidden;
-  margin-bottom: 1.5rem;
-}
-
-.c19 {
-  width: 100%;
-  height: 21.25rem;
-}
-
-.c20 {
-  height: 3rem;
-  font-size: 0.75rem;
-  background-color: #E6F6F9;
-  padding: 1rem;
 }
 
 .c1 {
@@ -669,22 +649,10 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                 </div>
               </div>
               <div
-                className="c18"
-              >
-                <div
-                  className="c19"
-                />
-                <div
-                  className="c20"
-                >
-                  Puedes mover tu ubicación en el mapa
-                </div>
-              </div>
-              <div
                 className="c8"
               >
                 <div
-                  className="c21"
+                  className="c18"
                 >
                   <div
                     className="css-1pcexqc-container"
@@ -779,7 +747,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                         </div>
                       </div>
                       <div
-                        className="c22"
+                        className="c19"
                         rotate="false"
                       >
                         <svg
@@ -802,7 +770,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                     </label>
                   </div>
                   <div
-                    className="c23"
+                    className="c20"
                   />
                 </div>
                 <div
@@ -847,7 +815,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
     </div>
   </div>
   <div
-    className="c24"
+    className="c21"
   />
 </div>
 `;
@@ -858,7 +826,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   margin: 20px;
 }
 
-.c24 {
+.c21 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -967,12 +935,12 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   top: 2.5px;
 }
 
-.c21 {
+.c18 {
   padding-top: 1.4rem;
   margin-bottom: 1.875rem;
 }
 
-.c23 {
+.c20 {
   top: 100%;
 }
 
@@ -1040,7 +1008,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   color: #9194A7;
 }
 
-.c22 {
+.c19 {
   fill: #00B0CA;
   position: absolute;
   right: 1rem;
@@ -1153,26 +1121,6 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
 .c7 {
   font-weight: bolder;
   padding-left: 1rem;
-}
-
-.c18 {
-  width: 100%;
-  height: auto;
-  border-radius: 1rem;
-  overflow: hidden;
-  margin-bottom: 1.5rem;
-}
-
-.c19 {
-  width: 100%;
-  height: 21.25rem;
-}
-
-.c20 {
-  height: 3rem;
-  font-size: 0.75rem;
-  background-color: #E6F6F9;
-  padding: 1rem;
 }
 
 .c1 {
@@ -1521,22 +1469,10 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                 </div>
               </div>
               <div
-                className="c18"
-              >
-                <div
-                  className="c19"
-                />
-                <div
-                  className="c20"
-                >
-                  Puedes mover tu ubicación en el mapa
-                </div>
-              </div>
-              <div
                 className="c8"
               >
                 <div
-                  className="c21"
+                  className="c18"
                 >
                   <div
                     className="css-1pcexqc-container"
@@ -1631,7 +1567,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                         </div>
                       </div>
                       <div
-                        className="c22"
+                        className="c19"
                         rotate="false"
                       >
                         <svg
@@ -1654,7 +1590,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                     </label>
                   </div>
                   <div
-                    className="c23"
+                    className="c20"
                   />
                 </div>
                 <div
@@ -1699,7 +1635,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
     </div>
   </div>
   <div
-    className="c24"
+    className="c21"
   />
 </div>
 `;
