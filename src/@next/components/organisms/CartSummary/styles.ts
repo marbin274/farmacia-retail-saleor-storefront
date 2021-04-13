@@ -60,7 +60,7 @@ export const Content = styled.div`
 `;
 
 export const ProductLine = styled.div`
-  padding: 10px 0;
+  padding: 0.625rem 0.7rem 0.625rem 0rem;
 `;
 
 export const CartSummaryProductList = styled.div`

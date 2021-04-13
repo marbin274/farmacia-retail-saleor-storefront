@@ -17,3 +17,4 @@ export const checkoutUrl = `${baseUrl}checkout/`;
 export const orderFinalizedUrl = `${baseUrl}order-finalized/`;
 export const resetPasswordMailSentUrl = `${baseUrl}reset-password-mail-sent`;
 export const userRegistered = `${baseUrl}user-registered/`;
+export const somosAunaPage = `${baseUrl}page/somos-auna`;
