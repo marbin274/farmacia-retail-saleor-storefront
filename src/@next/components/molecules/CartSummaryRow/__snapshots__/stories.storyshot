@@ -73,6 +73,13 @@ exports[`Storyshots @components/molecules/CartSummaryRow default 1`] = `
   }
 }
 
+@media (min-width:720px) {
+  .c2 {
+    color: #131336;
+    font-size: 0.875rem;
+  }
+}
+
 <div
   className="c0"
 >

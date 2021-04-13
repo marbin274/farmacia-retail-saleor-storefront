@@ -30,6 +30,7 @@ import { IProps } from "./types";
 import shippingMethodCalendarInfoIco from "images/auna/shipping-method-calendar-info.svg";
 
 const prepareCartSummary = (
+  subtotalPrice?: ITaxedMoney | null,
   totalPrice?: ITaxedMoney | null,
   shippingTaxedPrice?: ITaxedMoney | null,
   promoTaxedPrice?: ITaxedMoney | null,
@@ -37,6 +38,7 @@ const prepareCartSummary = (
 ) => {
   return (
     <CartSummary
+      subtotal={subtotalPrice}
       shipping={shippingTaxedPrice}
       promoCode={promoTaxedPrice}
       total={totalPrice}
@@ -82,8 +84,9 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
   const { pathname } = useLocation();
   const {
     loaded: cartLoaded,
-    shippingPrice,
     discount,
+    shippingPrice,
+    subtotalPrice,
     totalPrice,
     items,
   } = useCart();
@@ -274,6 +277,7 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
         pathname
       )}
       cartSummary={prepareCartSummary(
+        subtotalPrice,
         totalPrice,
         shippingTaxedPrice,
         promoTaxedPrice,

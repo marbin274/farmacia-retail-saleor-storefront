@@ -1,4 +1,4 @@
-import { styled , media} from "@styles";
+import { styled , media, mediaUp, DefaultTheme} from "@styles";
 import { aunaBlack, baseFontSize } from "@styles/constants";
 
 export const Wrapper = styled.div`
@@ -35,6 +35,10 @@ export const Name = styled.div`
   font-size: ${props => props.theme.typography.h4FontSize};
   ${media.smallScreen`
     font-size: ${(props: any ) => props.theme.typography.baseFontSizeSmall};
+  `}
+  ${mediaUp.mediumScreen`
+    color: ${({theme}: { theme: DefaultTheme }) => theme.colors.aunaBlack}
+    font-size: ${({theme}: { theme: DefaultTheme }) => theme.typography.smallFontSize}
   `}
 `;
 

@@ -43,3 +43,20 @@ export const media = Object.keys(breakpoints).reduce(
   // tslint:disable-next-line:no-object-literal-type-assertion
   {} as Media
 );
+
+export const mediaUp = Object.keys(breakpoints).reduce(
+  (acc, label) => {
+    acc[label as Breakpoints] = (
+      literals: TemplateStringsArray,
+      ...placeholders: any[]
+    ) =>
+      css`
+        @media (min-width: ${breakpoints[label as Breakpoints]}px) {
+          ${css(literals, ...placeholders)}
+        }
+      ` as any;
+    return acc;
+  },
+  // tslint:disable-next-line:no-object-literal-type-assertion
+  {} as Media
+);

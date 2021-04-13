@@ -1,4 +1,4 @@
-import { DefaultTheme, media, styled } from "@styles";
+import { DefaultTheme, media, mediaUp, styled } from "@styles";
 import {
   aunaInteractive,
   aunaComplementary1,
@@ -6,21 +6,28 @@ import {
   aunaBrand3,
   aunaGreyDark,
   aunaGrey20,
-  aunaComplementary4,
   turquoise
 } from "@styles/constants";
-// import { StringValueNode } from "graphql";
 
+export const CartSummaryContainer = styled.div` 
+  ${mediaUp.mediumScreen`
+    flex: 1;
+    margin-left: 2rem;
+  `}
+`
 export const Wrapper = styled.div<{ mobileCartOpened: boolean }>`
   background-color: ${aunaGrey20};
   ${media.smallScreen`
     background-color: ${ (props: any )=> props.mobileCartOpened ? aunaGrey20 : aunaComplementary1};
   `}
-  border: 1px solid ${aunaComplementary4};
-  border-radius: 16px;
   overflow-y: auto;
-  overflow-x: hidden;
-
+  overflow-x: hidden;  
+  z-index: 1;
+  ${mediaUp.mediumScreen`
+    flex: 1;
+    margin-top: 1rem;
+    background-color: initial;
+  `}
   ${media.mediumScreen`
     width: 100%;
     height: 100%;
@@ -28,7 +35,8 @@ export const Wrapper = styled.div<{ mobileCartOpened: boolean }>`
     top: calc(100% - 86px);
     left: 0%;
     transition: all 0.5s ease;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
+    position: fixed;
+    bottom: 0;
   `}
   ${props =>
     props.mobileCartOpened &&
@@ -45,6 +53,10 @@ export const Wrapper = styled.div<{ mobileCartOpened: boolean }>`
 `;
 export const Content = styled.div`
   padding: 0 20px 32px 20px;
+  ${mediaUp.mediumScreen`
+    overflow: overlay;
+    max-height: 40rem;
+  `}
 `;
 
 export const ProductLine = styled.div`
@@ -90,6 +102,9 @@ export const HR = styled.hr`
     border-top: 1px solid ${aunaGreyDark};
     display:none;
   `}
+  ${mediaUp.mediumScreen`
+    border: none;
+  `}
 `;
 
 export const Header = styled.div<{mobileCartOpened: boolean}>`
@@ -100,6 +115,9 @@ export const Header = styled.div<{mobileCartOpened: boolean}>`
     align-items: ${(props: any)=> props.mobileCartOpened ? "flex-start" : "center"};
     flex-direction: column;
     padding-right: 0.9375rem;
+  `}
+  ${mediaUp.mediumScreen`
+    margin-bottom: 2rem;
   `}
   display: flex;
   justify-content: space-between;
@@ -128,8 +146,13 @@ export const Title = styled.div<{mobileCartOpened: boolean}>`
   margin: 0;
   font-weight: 500;
   padding-left: 1.2rem;
-  font-size: 1.125rem;
+  font-size: ${({theme}: { theme: DefaultTheme }) => theme.typography.h4FontSize}
   color: ${aunaBrand3};
+  ${mediaUp.mediumScreen`
+    color: ${({theme}: { theme: DefaultTheme }) => theme.colors.shippingMethodBlack}
+    font-size: ${({theme}: { theme: DefaultTheme }) => theme.typography.baseFontSize}
+    font-weight: ${({theme}: { theme: DefaultTheme }) => theme.typography.boldFontWeight}
+  `}
   ${media.mediumScreen`
     font-size: ${(props: { theme: DefaultTheme }) =>
       props.theme.typography.h4FontSize};
