@@ -78,7 +78,7 @@ jobs:
         env:
           CLOUDFLARE_ZONE: ${{ secrets.CF_ZONE_ID_QA }}
           CLOUDFLARE_TOKEN: ${{ secrets.CF_PURGE_CACHE }}
-          PURGE_URLS: ${{ secrets.PURGE_URLS_QA }}
+          #          PURGE_URLS: ${{ secrets.PURGE_URLS_QA }}
 
       - name: 6- Purge cache Cloudflare PROD
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/release' }}
@@ -86,7 +86,7 @@ jobs:
         env:
           CLOUDFLARE_ZONE: ${{ secrets.CF_ZONE_ID_PROD }}
           CLOUDFLARE_TOKEN: ${{ secrets.CF_PURGE_CACHE }}
-          PURGE_URLS: ${{ secrets.PURGE_URLS_PROD }}
+          #          PURGE_URLS: ${{ secrets.PURGE_URLS_PROD }}
 
       - name: 7- Notify slack success
         if: success()
