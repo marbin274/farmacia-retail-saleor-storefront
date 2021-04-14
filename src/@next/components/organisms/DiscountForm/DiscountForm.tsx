@@ -25,7 +25,7 @@ export const DiscountForm: React.FC<IProps> = ({
 
   React.useEffect(()=>{
     setShowLabelCupon(!discount?.promoCode);
-  }, [])
+  }, [errors])
 
   const handleApplyBtnClick = (newInputCode: string) => {
     if (addPromoCode) {
