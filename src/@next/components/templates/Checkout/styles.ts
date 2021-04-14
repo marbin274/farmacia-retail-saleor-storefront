@@ -32,21 +32,27 @@ export const Navigation = styled.div`
 `;
 
 export const FormSummyContainer = styled.div`
+  margin-top: 2.5rem;
   ${mediaUp.mediumScreen`
     display: flex;
+    justify-content: space-between;
   `}
 `
 
 export const Checkout = styled.div`
   grid-area: checkout;
-  padding: 1rem 0;
   max-width: 43rem;
+  flex: 1;
   ${mediaUp.mediumScreen`
     min-width: 26rem;
   `}
 `;
-export const CartSummary = styled.div`
- 
+export const CartSummary = styled.div`  
+    margin-top: 2rem;
+  ${mediaUp.mediumScreen`
+    max-width: 22.5rem;
+    margin-top: 0;
+  `}
 `;
 export const Button = styled.div`
   max-width: 16.25rem;

@@ -12,7 +12,6 @@ import {
 export const CartSummaryContainer = styled.div` 
   ${mediaUp.mediumScreen`
     flex: 1;
-    margin-left: 2rem;
   `}
 `
 export const Wrapper = styled.div<{ mobileCartOpened: boolean }>`
