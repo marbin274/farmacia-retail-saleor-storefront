@@ -38,7 +38,7 @@ export const TopImageItem = styled.div<{ imageMobile: string, imageDesktop: stri
     width: 21.5rem;
   }
   @media(min-width: ${largeScreen}px){
-    width: 32rem;
+    width: 34.625rem;
   }
   @media(min-width: ${largeScreen}px) and (max-width: ${xLargeScreen}px){
     height: 3.7rem;
