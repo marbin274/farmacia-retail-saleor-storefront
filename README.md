@@ -38,7 +38,7 @@ These instructions will get you a copy of the project up and running on your loc
 Clone the repository:
 
 ```
-git clone https://github.com/mirumee/saleor-storefront.git
+git clone https://github.com/farmacia-retail/saleor-storefront.git
 ```
 
 Enter the project directory:
@@ -55,7 +55,7 @@ To use the official stable release, checkout to a release tag:
 $ git checkout 2.10.4
 ```
 
-See the list of all releases here: https://github.com/mirumee/saleor-storefront/releases/
+See the list of all releases here: https://github.com/farmacia-retail/saleor-storefront/releases/
 
 #### Using development version
 
