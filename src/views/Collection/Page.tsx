@@ -5,7 +5,7 @@ import * as React from "react";
 import { IFilterAttributes, IFilters } from "@types";
 import { ProductListHeader } from "../../@next/components/molecules";
 import { ProductList } from "../../@next/components/organisms";
-import { Breadcrumbs, ProductsFeatured } from "../../components";
+import { Breadcrumbs } from "../../components";
 import { getDBIdFromGraphqlId, maybe } from "../../core/utils";
 
 import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
@@ -55,7 +55,6 @@ const Page: React.FC<PageProps> = ({
   const canDisplayProducts = maybe(
     () => !!products.edges && products.totalCount !== undefined
   );
-  const hasProducts = canDisplayProducts && !!products.totalCount;
   const [showFilters, setShowFilters] = React.useState(false);
 
   const breadcrumbs = [
@@ -122,7 +121,6 @@ const Page: React.FC<PageProps> = ({
         )}
       </div>
 
-      {!hasProducts && <ProductsFeatured title="You might like" />}
     </div>
   );
 };

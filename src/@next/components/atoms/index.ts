@@ -30,7 +30,6 @@ export * from "./RichTextContent";
 export * from "./Select";
 export * from "./ShadowBox";
 export * from "./SocialMediaIcon";
-export * from "./StripeInputElement";
 export * from "./TermsAndConditionsLink";
 export * from "./Tile";
 export * from "./TileGrid";

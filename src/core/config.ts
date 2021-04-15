@@ -1,5 +1,4 @@
 import { aunaBrand5, aunaOrangeOnSale } from "@styles/constants";
-import { generatePageUrl } from "./utils";
 
 export const BASE_URL = "/";
 export const PRODUCTS_PER_PAGE = 8;
@@ -23,19 +22,9 @@ export const PROVIDERS = {
     id: "mirumee.payments.dummy",
     label: "AUNA Payments Gateway",
   },
-  STRIPE: {
-    href: "https://js.stripe.com/v3/",
-    id: "mirumee.payments.stripe",
-    label: "Stripe",
-  },
 };
 export const billingAddressAlwaysSameAsShipping = true;
-export const STATIC_PAGES = [
-  {
-    label: "About",
-    url: generatePageUrl("about"),
-  },
-];
+
 export const SOCIAL_MEDIA = [
   {
     ariaLabel: "facebook",
@@ -104,9 +93,12 @@ export const CHECKOUT_STEPS = [
 export const MAX_ORDER_PER_PRODUCT = 50;
 
 export const DOCUMENTS_URLS_S3 = {
-  finesAdicionalesUrls: "https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-fines-adicionales.pdf",
-  politicasDePrivacidadUrl: "https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-politicas-privacidad.pdf",
-  terminosYCondicionesUrl: "https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-terminos-condiciones.pdf",
+  finesAdicionalesUrls:
+    "https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-fines-adicionales.pdf",
+  politicasDePrivacidadUrl:
+    "https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-politicas-privacidad.pdf",
+  terminosYCondicionesUrl:
+    "https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-terminos-condiciones.pdf",
 };
 
 export const PRODUCT_STICKERS = {
@@ -118,10 +110,18 @@ export const PRODUCT_STICKERS = {
     backgroundColor: aunaOrangeOnSale,
     label: "Oferta",
   },
-}
+};
 
 export const ATTRIBUTE_PROMOTION_LIMIT_MAX_NAME = "limit-max";
 export const SEARCH_PRODUCTS_QUERY_MIN_LENGTH = 3;
 export const SHIPPING_FORMAT_DATE = "yyyy-MM-dd";
 export const HOURS_TO_FORMAT_DATE = "T00:00:00";
 export const SHIPPING_DISPLAY_FORMAT_DATE = "dd/MM/yyyy";
+
+// TODO: revisar  cuando se tenga que pintar el poligono de cobertura con la data de backend
+export const LIMA_BOUNDS: google.maps.LatLngBoundsLiteral = {
+  east: -76.61,
+  north: -11.56,
+  south: -12.55,
+  west: -77.23,
+};

@@ -60,6 +60,13 @@ const searchResultsQuery = gql`
                   culture
                 }
               }
+              stop {
+                net {
+                  amount
+                  currency
+                  culture
+                }
+              }
             }
           }
         }

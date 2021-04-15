@@ -45,6 +45,8 @@ export interface User_defaultShippingAddress {
    * Address is user's default shipping address.
    */
   isDefaultShippingAddress: boolean | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface User_defaultBillingAddress_country {
@@ -86,6 +88,8 @@ export interface User_defaultBillingAddress {
    * Address is user's default shipping address.
    */
   isDefaultShippingAddress: boolean | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface User_addresses_country {
@@ -127,6 +131,8 @@ export interface User_addresses {
    * Address is user's default shipping address.
    */
   isDefaultShippingAddress: boolean | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface User {
@@ -139,6 +145,15 @@ export interface User {
   firstName: string;
   lastName: string;
   isStaff: boolean;
+  /**
+   * Terms and Conditions
+   */
+  termsAndConditions: boolean | null;
+  /**
+   * Data Treatment Policy
+   */
+  dataTreatmentPolicy: boolean | null;
+  documentNumber: string | null;
   defaultShippingAddress: User_defaultShippingAddress | null;
   defaultBillingAddress: User_defaultBillingAddress | null;
   /**

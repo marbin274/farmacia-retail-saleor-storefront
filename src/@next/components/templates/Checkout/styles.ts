@@ -1,4 +1,4 @@
-import { media, styled } from "@styles";
+import { media, mediaUp, styled } from "@styles";
 
 export const Loader = styled.div`
   position: fixed;
@@ -11,15 +11,8 @@ export const Loader = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  display: grid;
-
-  grid-template-columns: 8fr 4fr;
-  grid-template-rows: 85px auto auto;
-  grid-column-gap: 30px;
-  grid-template-areas:
-    "navigation navigation"
-    "checkout cartSummary"
-    "button cartSummary";
+  display: flex;
+  flex-direction: column;
   
   padding: 3rem 0 3rem 0;
 
@@ -38,22 +31,30 @@ export const Navigation = styled.div`
   height: 85px;
 `;
 
+export const FormSummyContainer = styled.div`
+  margin-top: 2.5rem;
+  ${mediaUp.mediumScreen`
+    display: flex;
+    justify-content: space-between;
+  `}
+`
+
 export const Checkout = styled.div`
   grid-area: checkout;
-  padding: 1rem 0;
   max-width: 43rem;
+  flex: 1;
+  ${mediaUp.mediumScreen`
+    min-width: 26rem;
+  `}
 `;
-export const CartSummary = styled.div`
-  grid-area: cartSummary;
-  padding-top: 1rem;
-  
-  ${media.mediumScreen`
-    position: fixed;
-    bottom: 0;
+export const CartSummary = styled.div`  
+    margin-top: 2rem;
+  ${mediaUp.mediumScreen`
+    max-width: 22.5rem;
+    margin-top: 0;
   `}
 `;
 export const Button = styled.div`
-  grid-area: button;
   max-width: 16.25rem;
   ${media.smallScreen`
     max-width: 100%;

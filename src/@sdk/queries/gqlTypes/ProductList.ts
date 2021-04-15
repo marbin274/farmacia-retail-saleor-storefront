@@ -39,7 +39,7 @@ export interface ProductList_products_edges_node_pricing_priceRangeUndiscounted_
    */
   currency: string;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -55,7 +55,7 @@ export interface ProductList_products_edges_node_pricing_priceRangeUndiscounted_
    */
   currency: string;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -83,7 +83,7 @@ export interface ProductList_products_edges_node_pricing_priceRangeUndiscounted_
    */
   currency: string;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -99,7 +99,7 @@ export interface ProductList_products_edges_node_pricing_priceRangeUndiscounted_
    */
   currency: string;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -139,7 +139,7 @@ export interface ProductList_products_edges_node_pricing_priceRange_start_gross 
    */
   currency: string;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -155,7 +155,7 @@ export interface ProductList_products_edges_node_pricing_priceRange_start_net {
    */
   currency: string;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -183,7 +183,7 @@ export interface ProductList_products_edges_node_pricing_priceRange_stop_gross {
    */
   currency: string;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -199,7 +199,7 @@ export interface ProductList_products_edges_node_pricing_priceRange_stop_net {
    */
   currency: string;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }

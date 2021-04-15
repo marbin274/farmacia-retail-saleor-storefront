@@ -17,7 +17,7 @@ export interface ProductVariant_pricing_priceUndiscounted_gross {
    */
   currency: string;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -33,7 +33,7 @@ export interface ProductVariant_pricing_priceUndiscounted_net {
    */
   currency: string;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -61,7 +61,7 @@ export interface ProductVariant_pricing_price_gross {
    */
   currency: string;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -77,7 +77,7 @@ export interface ProductVariant_pricing_price_net {
    */
   currency: string;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -150,6 +150,46 @@ export interface ProductVariant_attributes {
   values: (ProductVariant_attributes_values | null)[];
 }
 
+export interface ProductVariant_product_attributes_attribute {
+  __typename: "Attribute";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  /**
+   * Name of an attribute displayed in the interface.
+   */
+  name: string | null;
+}
+
+export interface ProductVariant_product_attributes_values {
+  __typename: "AttributeValue";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  /**
+   * Name of a value displayed in the interface.
+   */
+  name: string | null;
+  /**
+   * Name of a value displayed in the interface.
+   */
+  value: string | null;
+}
+
+export interface ProductVariant_product_attributes {
+  __typename: "SelectedAttribute";
+  /**
+   * Name of an attribute displayed in the interface.
+   */
+  attribute: ProductVariant_product_attributes_attribute;
+  /**
+   * Values of an attribute.
+   */
+  values: (ProductVariant_product_attributes_values | null)[];
+}
+
 export interface ProductVariant_product_thumbnail {
   __typename: "Image";
   /**
@@ -182,6 +222,10 @@ export interface ProductVariant_product {
    */
   id: string;
   name: string;
+  /**
+   * List of attributes assigned to this product.
+   */
+  attributes: ProductVariant_product_attributes[];
   /**
    * The main thumbnail for a product.
    */

@@ -60,6 +60,8 @@ export interface SetCustomerDefaultAddress_accountSetDefaultAddress_user_default
    * Address is user's default shipping address.
    */
   isDefaultShippingAddress: boolean | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface SetCustomerDefaultAddress_accountSetDefaultAddress_user_defaultBillingAddress_country {
@@ -101,6 +103,8 @@ export interface SetCustomerDefaultAddress_accountSetDefaultAddress_user_default
    * Address is user's default shipping address.
    */
   isDefaultShippingAddress: boolean | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface SetCustomerDefaultAddress_accountSetDefaultAddress_user_addresses_country {
@@ -142,6 +146,8 @@ export interface SetCustomerDefaultAddress_accountSetDefaultAddress_user_address
    * Address is user's default shipping address.
    */
   isDefaultShippingAddress: boolean | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface SetCustomerDefaultAddress_accountSetDefaultAddress_user {
@@ -154,6 +160,15 @@ export interface SetCustomerDefaultAddress_accountSetDefaultAddress_user {
   firstName: string;
   lastName: string;
   isStaff: boolean;
+  /**
+   * Terms and Conditions
+   */
+  termsAndConditions: boolean | null;
+  /**
+   * Data Treatment Policy
+   */
+  dataTreatmentPolicy: boolean | null;
+  documentNumber: string | null;
   defaultShippingAddress: SetCustomerDefaultAddress_accountSetDefaultAddress_user_defaultShippingAddress | null;
   defaultBillingAddress: SetCustomerDefaultAddress_accountSetDefaultAddress_user_defaultBillingAddress | null;
   /**

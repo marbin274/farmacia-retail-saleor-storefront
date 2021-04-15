@@ -169,6 +169,11 @@
         margin-bottom: 2.75rem;
         text-align: center;
         font-weight: 600;
+        @media (max-width: $small-screen )  {
+          margin-top: 3.75rem;
+          margin-bottom: 0;
+        }
+        
       }
     }
   }

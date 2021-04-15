@@ -124,21 +124,16 @@ export const updateCheckoutShippingAddressMutation = gql`
   }
 `;
 
-export const updateCheckoutShippingMethodMutationWithScheduleDate = gql`
+
+export const updateCheckoutShippingMethodMutation = gql`
   ${checkoutFragment}
   mutation UpdateCheckoutShippingMethod(
     $checkoutId: ID!
     $shippingMethodId: ID!
-    $scheduleTimeId: ID!
-    $date: Date!
   ) {
     checkoutShippingMethodUpdate(
       checkoutId: $checkoutId
       shippingMethodId: $shippingMethodId
-      scheduleDate: {
-        scheduleTimeId: $scheduleTimeId
-        date: $date
-      }
     ) {
       errors {
         field
@@ -156,15 +151,21 @@ export const updateCheckoutShippingMethodMutationWithScheduleDate = gql`
   }
 `;
 
-export const updateCheckoutShippingMethodMutation = gql`
+export const updateCheckoutShippingMethodMutationWithScheduleDate = gql`
   ${checkoutFragment}
   mutation UpdateCheckoutShippingMethod(
     $checkoutId: ID!
     $shippingMethodId: ID!
+    $scheduleTimeId: ID!
+    $date: Date!
   ) {
     checkoutShippingMethodUpdate(
       checkoutId: $checkoutId
       shippingMethodId: $shippingMethodId
+      scheduleDate: {
+        scheduleTimeId: $scheduleTimeId
+        date: $date
+      }
     ) {
       errors {
         field

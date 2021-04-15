@@ -1,6 +1,7 @@
-import { InputSelect, TextField } from "@components/molecules";
+import { InputSelect, TextField, AddressAutocomplete } from "@components/molecules";
 import React from "react";
 import { IProps, ISelectProps } from "./types";
+import {useField} from 'formik';
 
 export const FirstNameTextField = ({ fieldsProps }: IProps) => {
     const { fieldErrors, required, values, basicInputProps } = fieldsProps;
@@ -32,20 +33,30 @@ export const PhoneTextField = ({ fieldsProps }: IProps) => {
 }
 
 export const StreetAddress1 = ({ fieldsProps }: IProps) => {
-    const { fieldErrors, values, basicInputProps } = fieldsProps;
-    return <TextField
-        data-cy="addressFormStreetAddress1"
-        name="streetAddress1"
+    const { fieldErrors, values, setFieldValue } = fieldsProps;
+    const [field, , helpers] = useField("streetAddress1");
+
+    return (
+      <AddressAutocomplete
+        {...field}
+        data-cy="addressAutocomplete"
+        name={field.name}
         label="*Dirección"
-        placeholder="Dirección"
-        value={
-            !values?.streetAddress1 ? "" : values?.streetAddress1
-        }
-        autoComplete="address-line1"
-        errors={fieldErrors!.streetAddress1}
-        {...basicInputProps()}
-    />
-}
+        placeholder="Ejemplo: Av.arenales 213"
+        value={{
+          lat: values?.latitude ? Number(values?.latitude) : undefined,
+          lng: values?.longitude ? Number(values?.longitude) : undefined,
+          text: field.value?.toString() || "",
+        }}
+        onChangeValue={value => {
+          helpers.setValue(value.text);
+          setFieldValue("latitude", value.lat ? String(value.lat) : "");
+          setFieldValue("longitude", value.lng ? String(value.lng) : "");
+        }}
+        errors={fieldErrors!.streetAddress1 || fieldErrors!.latitude}
+      />
+    );
+};
 
 export const StreetAddress2 = ({ fieldsProps }: IProps) => {
     const { fieldErrors, values, basicInputProps } = fieldsProps;

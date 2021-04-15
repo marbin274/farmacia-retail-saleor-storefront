@@ -12,10 +12,14 @@
   li {
     &:not(:last-of-type) {
       &:after {
-        content: ">";
+        content: url("../../../images/breadcrumbs-arrow.svg");
         display: inline-block;
         margin: 0 $spacer / 2;
       }
+    }
+
+    @media (max-width: $small-screen) {
+      line-height: 1.5rem;
     }
 
     a {

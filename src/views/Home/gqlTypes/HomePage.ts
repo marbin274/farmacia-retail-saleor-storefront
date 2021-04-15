@@ -24,24 +24,20 @@ export interface HomePage_shop_homepageCollection {
   name: string;
 }
 
-export interface AnaliticTracking {
+export interface HomePage_shop_analyticsConfig {
+  __typename: "AnalyticsConfiguration";
+  /**
+   * google tag manager id
+   */
   tagManagerId: string | null;
+  /**
+   * google tag manager preview auth
+   */
   tagManagerAuth: string | null;
+  /**
+   * google tag manager preview environment
+   */
   tagManagerEnvironmentId: string | null;
-}
-
-export interface Image {
-  screenType: "desktop" | "mobile" | null;
-  url: string | null;
-}
-export interface Frames {
-  id: string | null;
-  link: string | null;
-  images: Image[];
-}
-export interface mainBanner {
-  id: string | null;
-  frames: Frames[];
 }
 
 export interface HomePage_shop {
@@ -58,306 +54,50 @@ export interface HomePage_shop {
    * Collection displayed on homepage.
    */
   homepageCollection: HomePage_shop_homepageCollection | null;
-
-  analyticsConfig: AnaliticTracking;
+  /**
+   * Web Analytics configuration
+   */
+  analyticsConfig: HomePage_shop_analyticsConfig | null;
 }
 
-export interface HomePage_products_edges_node_thumbnail {
-  __typename: "Image";
+export interface HomePage_mainBanner_frames_images {
+  __typename: "BannerImage";
   /**
-   * The URL of the image.
+   * The screen type of the image
    */
-  url: string;
+  screenType: string;
   /**
-   * Alt text for an image.
-   */
-  alt: string | null;
-}
-
-export interface HomePage_products_edges_node_thumbnail2x {
-  __typename: "Image";
-  /**
-   * The URL of the image.
+   * The image's URL
    */
   url: string;
 }
 
-export interface HomePage_products_edges_node_pricing_priceRangeUndiscounted_start_gross {
-  __typename: "Money";
-  /**
-   * Amount of money.
-   */
-  amount: number;
-  /**
-   * Currency code.
-   */
-  currency: string;
-  /**
-   * culture code.
-   */
-  culture: string;
-}
-
-export interface HomePage_products_edges_node_pricing_priceRangeUndiscounted_start_net {
-  __typename: "Money";
-  /**
-   * Amount of money.
-   */
-  amount: number;
-  /**
-   * Currency code.
-   */
-  currency: string;
-  /**
-   * culture code.
-   */
-  culture: string;
-}
-
-export interface HomePage_products_edges_node_pricing_priceRangeUndiscounted_start {
-  __typename: "TaxedMoney";
-  /**
-   * Amount of money including taxes.
-   */
-  gross: HomePage_products_edges_node_pricing_priceRangeUndiscounted_start_gross;
-  /**
-   * Amount of money without taxes.
-   */
-  net: HomePage_products_edges_node_pricing_priceRangeUndiscounted_start_net;
-}
-
-export interface HomePage_products_edges_node_pricing_priceRangeUndiscounted_stop_gross {
-  __typename: "Money";
-  /**
-   * Amount of money.
-   */
-  amount: number;
-  /**
-   * Currency code.
-   */
-  currency: string;
-  /**
-   * culture code.
-   */
-  culture: string;
-}
-
-export interface HomePage_products_edges_node_pricing_priceRangeUndiscounted_stop_net {
-  __typename: "Money";
-  /**
-   * Amount of money.
-   */
-  amount: number;
-  /**
-   * Currency code.
-   */
-  currency: string;
-  /**
-   * culture code.
-   */
-  culture: string;
-}
-
-export interface HomePage_products_edges_node_pricing_priceRangeUndiscounted_stop {
-  __typename: "TaxedMoney";
-  /**
-   * Amount of money including taxes.
-   */
-  gross: HomePage_products_edges_node_pricing_priceRangeUndiscounted_stop_gross;
-  /**
-   * Amount of money without taxes.
-   */
-  net: HomePage_products_edges_node_pricing_priceRangeUndiscounted_stop_net;
-}
-
-export interface HomePage_products_edges_node_pricing_priceRangeUndiscounted {
-  __typename: "TaxedMoneyRange";
-  /**
-   * Lower bound of a price range.
-   */
-  start: HomePage_products_edges_node_pricing_priceRangeUndiscounted_start | null;
-  /**
-   * Upper bound of a price range.
-   */
-  stop: HomePage_products_edges_node_pricing_priceRangeUndiscounted_stop | null;
-}
-
-export interface HomePage_products_edges_node_pricing_priceRange_start_gross {
-  __typename: "Money";
-  /**
-   * Amount of money.
-   */
-  amount: number;
-  /**
-   * Currency code.
-   */
-  currency: string;
-  /**
-   * culture code.
-   */
-  culture: string;
-}
-
-export interface HomePage_products_edges_node_pricing_priceRange_start_net {
-  __typename: "Money";
-  /**
-   * Amount of money.
-   */
-  amount: number;
-  /**
-   * Currency code.
-   */
-  currency: string;
-  /**
-   * culture code.
-   */
-  culture: string;
-}
-
-export interface HomePage_products_edges_node_pricing_priceRange_start {
-  __typename: "TaxedMoney";
-  /**
-   * Amount of money including taxes.
-   */
-  gross: HomePage_products_edges_node_pricing_priceRange_start_gross;
-  /**
-   * Amount of money without taxes.
-   */
-  net: HomePage_products_edges_node_pricing_priceRange_start_net;
-}
-
-export interface HomePage_products_edges_node_pricing_priceRange_stop_gross {
-  __typename: "Money";
-  /**
-   * Amount of money.
-   */
-  amount: number;
-  /**
-   * Currency code.
-   */
-  currency: string;
-  /**
-   * culture code.
-   */
-  culture: string;
-}
-
-export interface HomePage_products_edges_node_pricing_priceRange_stop_net {
-  __typename: "Money";
-  /**
-   * Amount of money.
-   */
-  amount: number;
-  /**
-   * Currency code.
-   */
-  currency: string;
-  /**
-   * culture code.
-   */
-  culture: string;
-}
-
-export interface HomePage_products_edges_node_pricing_priceRange_stop {
-  __typename: "TaxedMoney";
-  /**
-   * Amount of money including taxes.
-   */
-  gross: HomePage_products_edges_node_pricing_priceRange_stop_gross;
-  /**
-   * Amount of money without taxes.
-   */
-  net: HomePage_products_edges_node_pricing_priceRange_stop_net;
-}
-
-export interface HomePage_products_edges_node_pricing_priceRange {
-  __typename: "TaxedMoneyRange";
-  /**
-   * Lower bound of a price range.
-   */
-  start: HomePage_products_edges_node_pricing_priceRange_start | null;
-  /**
-   * Upper bound of a price range.
-   */
-  stop: HomePage_products_edges_node_pricing_priceRange_stop | null;
-}
-
-export interface HomePage_products_edges_node_pricing {
-  __typename: "ProductPricingInfo";
-  /**
-   * Whether it is in sale or not.
-   */
-  onSale: boolean | null;
-  /**
-   * The undiscounted price range of the product variants.
-   */
-  priceRangeUndiscounted: HomePage_products_edges_node_pricing_priceRangeUndiscounted | null;
-  /**
-   * The discounted price range of the product variants.
-   */
-  priceRange: HomePage_products_edges_node_pricing_priceRange | null;
-}
-
-export interface HomePage_products_edges_node {
-  __typename: "Product";
+export interface HomePage_mainBanner_frames {
+  __typename: "BannerFrame";
   /**
    * The ID of the object.
    */
   id: string;
-  name: string;
   /**
-   * The main thumbnail for a product.
+   * Frame action link
    */
-  thumbnail: HomePage_products_edges_node_thumbnail | null;
+  link: string | null;
   /**
-   * The main thumbnail for a product.
+   * Lis of banner images
    */
-  thumbnail2x: HomePage_products_edges_node_thumbnail2x | null;
-  /**
-   * Lists the storefront product's pricing, the current price and discounts, only meant for displaying.
-   */
-  pricing: HomePage_products_edges_node_pricing | null;
+  images: (HomePage_mainBanner_frames_images | null)[] | null;
 }
 
-export interface HomePage_products_edges {
-  __typename: "ProductCountableEdge";
+export interface HomePage_mainBanner {
+  __typename: "Banner";
   /**
-   * The item at the end of the edge.
+   * The ID of the object.
    */
-  node: HomePage_products_edges_node;
-}
-
-export interface HomePage_products_pageInfo {
-  __typename: "PageInfo";
+  id: string;
   /**
-   * When paginating forwards, the cursor to continue.
+   * The frames containing images for each screen
    */
-  endCursor: string | null;
-  /**
-   * When paginating forwards, are there more items?
-   */
-  hasNextPage: boolean;
-  /**
-   * When paginating backwards, are there more items?
-   */
-  hasPreviousPage: boolean;
-  /**
-   * When paginating backwards, the cursor to continue.
-   */
-  startCursor: string | null;
-}
-
-export interface HomePage_products {
-  __typename: "ProductCountableConnection";
-  /**
-   * A total count of items in the collection.
-   */
-  totalCount: number | null;
-  edges: HomePage_products_edges[];
-  /**
-   * Pagination data for this connection.
-   */
-  pageInfo: HomePage_products_pageInfo;
+  frames: (HomePage_mainBanner_frames | null)[] | null;
 }
 
 export interface HomePage {
@@ -366,9 +106,7 @@ export interface HomePage {
    */
   shop: HomePage_shop;
   /**
-   * List of the shop's products.
+   * Look up the Banner that must appear in the home page
    */
-  products: HomePage_products | null;
-
-  mainBanner: mainBanner | null;
+  mainBanner: HomePage_mainBanner | null;
 }

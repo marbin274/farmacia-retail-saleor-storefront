@@ -320,6 +320,8 @@ export class NetworkManager implements INetworkManager {
             countryArea: billingAddress.countryArea,
             firstName: billingAddress.firstName,
             lastName: billingAddress.lastName,
+            latitude: billingAddress.latitude,
+            longitude: billingAddress.longitude,
             phone: billingAddress.phone,
             postalCode: billingAddress.postalCode,
             streetAddress1: billingAddress.streetAddress1,
@@ -339,6 +341,8 @@ export class NetworkManager implements INetworkManager {
             countryArea: shippingAddress.countryArea,
             firstName: shippingAddress.firstName,
             lastName: shippingAddress.lastName,
+            latitude: shippingAddress.latitude,
+            longitude: shippingAddress.longitude,
             phone: shippingAddress.phone,
             postalCode: shippingAddress.postalCode,
             streetAddress1: shippingAddress.streetAddress1,
@@ -431,9 +435,9 @@ export class NetworkManager implements INetworkManager {
     try {
       const variables = {
         checkoutId,
-        documentNumber,
+        documentNumber: documentNumber || '',
         email,
-        privacyPolicy,
+        privacyPolicy: privacyPolicy || {},
         shippingAddress: {
           city: shippingAddress.city,
           companyName: shippingAddress.companyName,
@@ -444,6 +448,8 @@ export class NetworkManager implements INetworkManager {
           countryArea: shippingAddress.countryArea,
           firstName: shippingAddress.firstName,
           lastName: shippingAddress.lastName,
+          latitude: shippingAddress.latitude,
+          longitude: shippingAddress.longitude,
           phone: shippingAddress.phone,
           postalCode: shippingAddress.postalCode,
           streetAddress1: shippingAddress.streetAddress1,
@@ -518,6 +524,8 @@ export class NetworkManager implements INetworkManager {
           countryArea: billingAddress.countryArea,
           firstName: billingAddress.firstName,
           lastName: billingAddress.lastName,
+          latitude: billingAddress.latitude,
+          longitude: billingAddress.longitude,
           phone: billingAddress.phone,
           postalCode: billingAddress.postalCode,
           streetAddress1: billingAddress.streetAddress1,
@@ -574,6 +582,8 @@ export class NetworkManager implements INetworkManager {
           countryArea: billingAddress.countryArea,
           firstName: billingAddress.firstName,
           lastName: billingAddress.lastName,
+          latitude: billingAddress.latitude,
+          longitude: billingAddress.longitude,
           phone: billingAddress.phone,
           postalCode: billingAddress.postalCode,
           streetAddress1: billingAddress.streetAddress1,
@@ -632,7 +642,7 @@ export class NetworkManager implements INetworkManager {
         variables: {
           checkoutId,
           date: shippingMethodUpdate.scheduleDate?.date,
-          scheduleTimeId: shippingMethodUpdate.scheduleDate?.scheduleTimeId,
+          scheduleTimeId: shippingMethodUpdate.scheduleDate?.scheduleTimeId || '',
           shippingMethodId: shippingMethodUpdate.shippingMethodId,
         },
       });
@@ -683,8 +693,10 @@ export class NetworkManager implements INetworkManager {
         return {
           data: this.constructCheckoutModel({
             ...data.checkoutAddPromoCode.checkout,
-            message: data.checkoutAddPromoCode.message,
-          }),
+            availableShippingMethods: [],            
+          },
+          data.checkoutAddPromoCode.message
+          ),
         };
       } else {
         return {};
@@ -752,6 +764,8 @@ export class NetworkManager implements INetworkManager {
             countryArea: billingAddress.countryArea,
             firstName: billingAddress.firstName,
             lastName: billingAddress.lastName,
+            latitude: billingAddress.latitude,
+            longitude: billingAddress.longitude,
             phone: billingAddress.phone,
             postalCode: billingAddress.postalCode,
             streetAddress1: billingAddress.streetAddress1,
@@ -857,8 +871,7 @@ export class NetworkManager implements INetworkManager {
     termsAndConditions,
     dataTreatmentPolicy,
     scheduleDate,
-    message,
-  }: Checkout): ICheckoutModel => ({
+  }: Checkout, message?: string | null): ICheckoutModel => ({
     availableShippingMethods: availableShippingMethods
       ? availableShippingMethods.filter(filterNotEmptyArrayItems)
       : [],

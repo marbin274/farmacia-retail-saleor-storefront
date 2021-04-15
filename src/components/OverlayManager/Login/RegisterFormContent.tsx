@@ -3,29 +3,20 @@ import {
   Checkbox,
   DataTreatmentPolicyLink,
   ErrorMessage,
-  TermsAndConditionsLink,
+  TermsAndConditionsLink
 } from "@app/components/atoms";
-import { IFormError } from "@app/types";
 import { joinFormikErrorsToIFormErrorsAndConvertToObjectErrors } from "@app/utils/errorsManagement";
-import { TextField } from "@components/molecules";
 import { DOCUMENT_NUMBER_MAX_LENGTH } from "@app/utils/schemas.config";
+import { TextField } from "@components/molecules";
 import { accountConfirmUrl } from "@temp/app/routes";
 import { useFormik } from "formik";
 import React, { useState } from "react";
-import { MutationFn } from "react-apollo";
-import {
-  RegisterAccount,
-  RegisterAccountVariables,
-} from "./gqlTypes/RegisterAccount";
+import { RegisterAccountVariables } from "./gqlTypes/RegisterAccount";
 import { registerFormSchema } from "./registerForm.schema";
+import { ILoginForm, IProps } from "./types";
 
-interface RegisterFormContentProps {
-  loading: boolean;
-  errors?: IFormError[];
-  registerCustomer: MutationFn<RegisterAccount, RegisterAccountVariables>;
-  setEmail?: (email: string) => void;
-}
-const initialValues: RegisterAccountVariables = {
+
+const initialValues: ILoginForm = {
   confirmPassword: "",
   dataTreatmentPolicy: false,
   documentNumber: "",
@@ -36,7 +27,7 @@ const initialValues: RegisterAccountVariables = {
   redirectUrl: `${window.location.origin}${accountConfirmUrl}`,
   termsAndConditions: false,
 };
-export const RegisterFormContent: React.FC<RegisterFormContentProps> = ({
+export const RegisterFormContent: React.FC<IProps> = ({
   loading,
   errors: requestErrors,
   registerCustomer,
@@ -57,11 +48,21 @@ export const RegisterFormContent: React.FC<RegisterFormContentProps> = ({
     touched,
     errors: formikErrors,
     values,
-  } = useFormik<RegisterAccountVariables>({
+  } = useFormik<ILoginForm>({
     initialValues,
     onSubmit: values => {
       setEmail(values.email);
-      registerCustomer({ variables: values });
+      const variables: RegisterAccountVariables = {
+        dataTreatmentPolicy: values.dataTreatmentPolicy,
+        documentNumber: values.documentNumber,
+        email: values.email,
+        firstName: values.firstName,
+        lastName: values.lastName,
+        password: values.password,
+        redirectUrl: values.redirectUrl,
+        termsAndConditions: values.termsAndConditions,
+      };
+      registerCustomer({variables});
     },
     validationSchema: registerFormSchema,
   });

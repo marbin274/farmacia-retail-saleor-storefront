@@ -10,6 +10,7 @@ export interface ICostLine {
 
 export interface ICosts {
   promoCode?: ITaxedMoney | null;
+  subtotal?: ITaxedMoney | null;
   shipping?: ITaxedMoney | null;
   total?: ITaxedMoney | null;
 }

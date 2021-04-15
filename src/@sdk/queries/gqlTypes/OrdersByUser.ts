@@ -2,6 +2,8 @@
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
+import { OrderStatus } from "./../../gqlTypes/globalTypes";
+
 // ====================================================
 // GraphQL query operation: OrdersByUser
 // ====================================================
@@ -29,7 +31,7 @@ export interface OrdersByUser_me_orders_edges_node_total_gross {
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -45,7 +47,7 @@ export interface OrdersByUser_me_orders_edges_node_total_net {
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -131,6 +133,7 @@ export interface OrdersByUser_me_orders_edges_node {
    * User-friendly number of an order.
    */
   number: string | null;
+  status: OrderStatus;
   /**
    * User-friendly order status.
    */

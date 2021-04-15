@@ -6,7 +6,7 @@ exports[`Storyshots @components/templates/Checkout default 1`] = `
   margin: 20px;
 }
 
-.c7 {
+.c8 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -25,11 +25,13 @@ exports[`Storyshots @components/templates/Checkout default 1`] = `
 }
 
 .c2 {
-  display: grid;
-  grid-template-columns: 8fr 4fr;
-  grid-template-rows: 85px auto auto;
-  grid-column-gap: 30px;
-  grid-template-areas: "navigation navigation" "checkout cartSummary" "button cartSummary";
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   padding: 3rem 0 3rem 0;
 }
 
@@ -40,18 +42,22 @@ exports[`Storyshots @components/templates/Checkout default 1`] = `
 }
 
 .c4 {
-  grid-area: checkout;
-  padding: 1rem 0;
-  max-width: 43rem;
+  margin-top: 2.5rem;
 }
 
 .c5 {
-  grid-area: cartSummary;
-  padding-top: 1rem;
+  grid-area: checkout;
+  max-width: 43rem;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c7 {
+  margin-top: 2rem;
 }
 
 .c6 {
-  grid-area: button;
   max-width: 16.25rem;
 }
 
@@ -76,10 +82,29 @@ exports[`Storyshots @components/templates/Checkout default 1`] = `
   }
 }
 
-@media (max-width:720px) {
+@media (min-width:720px) {
+  .c4 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width:720px) {
   .c5 {
-    position: fixed;
-    bottom: 0;
+    min-width: 26rem;
+  }
+}
+
+@media (min-width:720px) {
+  .c7 {
+    max-width: 22.5rem;
+    margin-top: 0;
   }
 }
 
@@ -123,17 +148,22 @@ exports[`Storyshots @components/templates/Checkout default 1`] = `
       />
       <div
         className="c4"
-      />
-      <div
-        className="c5"
-      />
-      <div
-        className="c6"
-      />
+      >
+        <div
+          className="c5"
+        >
+          <div
+            className="c6"
+          />
+        </div>
+        <div
+          className="c7"
+        />
+      </div>
     </div>
   </div>
   <div
-    className="c7"
+    className="c8"
   />
 </div>
 `;

@@ -4,7 +4,6 @@ import * as React from "react";
 import { RouteComponentProps } from "react-router-dom";
 
 import { MetaWrapper, NotFound } from "../../components";
-import { STATIC_PAGES } from "../../core/config";
 import { generatePageUrl, maybe } from "../../core/utils";
 import { Article_shop } from "./gqlTypes/Article";
 import Page from "./Page";
@@ -24,10 +23,6 @@ export const View: React.FC<ViewProps> = ({
 }) => (
   <TypedArticleQuery loaderFull variables={{ slug }} errorPolicy="all">
     {({ data }) => {
-      const navigation = STATIC_PAGES.map(page => ({
-        ...page,
-        active: page.url === window.location.pathname,
-      }));
       const { page, shop } = data;
 
       if (canDisplay(page)) {
@@ -47,7 +42,6 @@ export const View: React.FC<ViewProps> = ({
             <Page
               breadcrumbs={breadcrumbs}
               headerImage={getHeaderImage(shop)}
-              navigation={navigation}
               page={data.page}
             />
           </MetaWrapper>

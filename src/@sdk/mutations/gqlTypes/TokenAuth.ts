@@ -58,6 +58,8 @@ export interface TokenAuth_tokenCreate_user_defaultShippingAddress {
    * Address is user's default shipping address.
    */
   isDefaultShippingAddress: boolean | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface TokenAuth_tokenCreate_user_defaultBillingAddress_country {
@@ -99,6 +101,8 @@ export interface TokenAuth_tokenCreate_user_defaultBillingAddress {
    * Address is user's default shipping address.
    */
   isDefaultShippingAddress: boolean | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface TokenAuth_tokenCreate_user_addresses_country {
@@ -140,6 +144,8 @@ export interface TokenAuth_tokenCreate_user_addresses {
    * Address is user's default shipping address.
    */
   isDefaultShippingAddress: boolean | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface TokenAuth_tokenCreate_user {
@@ -152,15 +158,21 @@ export interface TokenAuth_tokenCreate_user {
   firstName: string;
   lastName: string;
   isStaff: boolean;
+  /**
+   * Terms and Conditions
+   */
+  termsAndConditions: boolean | null;
+  /**
+   * Data Treatment Policy
+   */
+  dataTreatmentPolicy: boolean | null;
+  documentNumber: string | null;
   defaultShippingAddress: TokenAuth_tokenCreate_user_defaultShippingAddress | null;
   defaultBillingAddress: TokenAuth_tokenCreate_user_defaultBillingAddress | null;
   /**
    * List of all user's addresses.
    */
   addresses: (TokenAuth_tokenCreate_user_addresses | null)[] | null;
-  documentNumber?: string;
-  termsAndConditions?: boolean;
-  dataTreatmentPolicy?: boolean;
 }
 
 export interface TokenAuth_tokenCreate {
@@ -176,7 +188,7 @@ export interface TokenAuth_tokenCreate {
 export interface TokenAuth {
   /**
    * Mutation that authenticates a user and returns token and user data.
-   *
+   * 
    * It overrides the default graphql_jwt.ObtainJSONWebToken to wrap potential
    * authentication errors in our Error type, which is consistent to how the rest of
    * the mutation works.

@@ -75,6 +75,8 @@ export interface ICheckoutAddress {
     code?: string;
     country?: string;
   };
+  latitude?: number | null;
+  longitude?: number | null;
 }
 
 export interface ICheckoutModelShippingMethod {
@@ -143,7 +145,7 @@ export interface ICheckoutModel {
   requestPayload?: string;
   dataTreatmentPolicy?: boolean;
   termsAndConditions?: boolean;
-  documentNumber?: string;
+  documentNumber?: string | null;
   scheduleDate?: IScheduleDate | null;
 }
 

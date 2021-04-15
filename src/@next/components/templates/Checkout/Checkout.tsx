@@ -27,9 +27,13 @@ const Checkout: React.FC<IProps> = ({
       )}
       <S.Wrapper>
         <S.Navigation>{navigation}</S.Navigation>
-        <S.Checkout>{checkout}</S.Checkout>
-        <S.CartSummary>{cartSummary}</S.CartSummary>
-        <S.Button>{button}</S.Button>
+        <S.FormSummyContainer>
+          <S.Checkout>
+            {checkout}
+            <S.Button>{button}</S.Button>
+          </S.Checkout>
+          <S.CartSummary>{cartSummary}</S.CartSummary>
+        </S.FormSummyContainer>
       </S.Wrapper>
     </Container>
   );

@@ -19,11 +19,6 @@ import ProductList from "./ProductList";
 import aunaImg from "../../../images/logo.svg";
 import closeImg from "../../../images/close-circle.svg";
 import cartImg from "../../../images/cart-light.svg";
-import {
-  steps,
-  launchCheckoutEvent,
-  ecommerceProductsMapper,
-} from "@temp/@sdk/gaConfig";
 
 const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
   const [isModelOpen, setIsModelOpen] = React.useState(false);
@@ -173,17 +168,7 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
                   </div>
                   <div className="cart__footer__button">
                     <Link to={goToRoute}>
-                      <Button
-                        onClick={() =>
-                          checkout.id &&
-                          launchCheckoutEvent(
-                            steps.payment,
-                            ecommerceProductsMapper(items)
-                          )
-                        }
-                      >
-                        Comprar
-                      </Button>
+                      <Button>Comprar</Button>
                     </Link>
                   </div>
                 </div>
@@ -194,7 +179,6 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
           </div>
         )}
       </Online>
-      {/* // TODO: revisar comportamiento offline */}
       <Offline>
         <div className="cart">
           <OfflinePlaceholder />

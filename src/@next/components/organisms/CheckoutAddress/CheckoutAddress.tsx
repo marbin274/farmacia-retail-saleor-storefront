@@ -1,13 +1,10 @@
-import React from "react";
-
 import { filterNotEmptyArrayItems } from "@utils/misc";
-
+import React from "react";
 import { AddressForm } from "../AddressForm";
-// import { AddressGridSelector } from "../AddressGridSelector";
-
-import * as S from "./styles";
-import { IProps } from "./types";
 import { citiesOptions } from "./cities";
+import { IProps } from "./types";
+
+
 
 /**
  * Address form used in checkout.
@@ -26,7 +23,6 @@ const CheckoutAddress: React.FC<IProps> = ({
 }: IProps) => {
   return (
     <section>
-      <S.Title data-cy="checkoutPageSubtitle"></S.Title>
       <AddressForm
         formId={formId}
         formRef={formRef}
@@ -51,3 +47,4 @@ const CheckoutAddress: React.FC<IProps> = ({
 };
 
 export { CheckoutAddress };
+

@@ -3,9 +3,9 @@ import { mount, shallow } from "enzyme";
 import "jest-styled-components";
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
-import { CartSummaryRow } from "@components/molecules";
+import { CartSummaryRow, CartResume } from "@components/molecules";
 import { CartSummary } from ".";
-import { DEFAULT_PROPS } from "./fixtures";
+import { DEFAULT_PROPS, product } from "./fixtures";
 
 const money = {
   gross: {
@@ -31,20 +31,19 @@ describe("<CartSummary />", () => {
     expect(wrapper.exists()).toEqual(true);
   });
 
-  it("should show promo price", () => {
-    const wrapper = mount(<CartSummary promoCode={money} />);
-
-    expect(wrapper.text()).toContain("123");
+  it("should show count one product", () => {
+    const wrapper = mount(<CartSummary products={[{...product, quantity: 1}]} />);
+    expect(wrapper.text()).toContain("Tu carrito (1)");
   });
 
-  it("should show shipping price", () => {
-    const wrapper = mount(<CartSummary shipping={money} />);
-    expect(wrapper.text()).toContain("123");
+  it("should show total count products", () => {
+    const wrapper = mount(<CartSummary {...DEFAULT_PROPS} />);
+    expect(wrapper.text()).toContain("Tu carrito (6)");
   });
 
-  it("should show total price", () => {
-    const wrapper = mount(<CartSummary total={money} />);
-
+  it("should show subtotal price", () => {
+    const wrapper = mount(<CartSummary subtotal={money} />);
+    expect(wrapper.text()).toContain("Subtotal");
     expect(wrapper.text()).toContain("123");
   });
 
@@ -61,5 +60,18 @@ describe("<CartSummary />", () => {
         .dive()
         .find(CartSummaryRow).length
     ).toEqual(DEFAULT_PROPS.products.length);
+  });
+
+  it("should show cart resume", ()=>{
+    const wrapper = mount(
+      <MemoryRouter>
+        <CartSummary {...DEFAULT_PROPS} />
+      </MemoryRouter>
+    );
+    
+    expect(
+      wrapper
+      .find(CartResume).length
+    ).toEqual(1);
   });
 });

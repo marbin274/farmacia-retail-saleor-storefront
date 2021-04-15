@@ -153,6 +153,8 @@ export interface UserCheckoutDetails_me_checkout_billingAddress {
    * Address is user's default shipping address.
    */
   isDefaultShippingAddress: boolean | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface UserCheckoutDetails_me_checkout_shippingAddress_country {
@@ -194,6 +196,8 @@ export interface UserCheckoutDetails_me_checkout_shippingAddress {
    * Address is user's default shipping address.
    */
   isDefaultShippingAddress: boolean | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface UserCheckoutDetails_me_checkout_availableShippingMethods_price {
@@ -729,10 +733,10 @@ export interface UserCheckoutDetails_me_checkout {
   discountName: string | null;
   translatedDiscountName: string | null;
   voucherCode: string | null;
-  voucherType: string | null | undefined;
-  voucherDiscountType: string | null | undefined;
+  voucherType: string | null;
+  voucherDiscountType: string | null;
   voucherDiscountValue: number;
-  documentNumber: string;
+  documentNumber: string | null;
   termsAndConditions: boolean;
   dataTreatmentPolicy: boolean;
 }

@@ -8,6 +8,7 @@ import {
   IPaymentModel,
   IShippingMethodUpdate,
 } from "@sdk/repository";
+import { IPrivacyPolicy } from "../api/Checkout/types";
 
 export enum PendingSaveItems {
   UPDATE_CART = "updateCart",
@@ -55,7 +56,9 @@ export interface INetworkManager {
   setShippingAddress: (
     shippingAddress: ICheckoutAddress,
     email: string,
-    checkoutId: string
+    checkoutId: string,
+    documentNumber?: string,
+    privacyPolicy?: IPrivacyPolicy
   ) => Promise<INetworkManagerResponse<ICheckoutModel>>;
   setShippingMethod: (
     shippingMethodUpdate: IShippingMethodUpdate,

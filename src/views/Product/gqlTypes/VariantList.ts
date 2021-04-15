@@ -31,6 +31,10 @@ export interface VariantList_productVariants_edges_node_pricing_priceUndiscounte
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture Code.
+   */
+  culture: string;
 }
 
 export interface VariantList_productVariants_edges_node_pricing_priceUndiscounted_net {
@@ -43,6 +47,10 @@ export interface VariantList_productVariants_edges_node_pricing_priceUndiscounte
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture Code.
+   */
+  culture: string;
 }
 
 export interface VariantList_productVariants_edges_node_pricing_priceUndiscounted {
@@ -67,6 +75,10 @@ export interface VariantList_productVariants_edges_node_pricing_price_gross {
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture Code.
+   */
+  culture: string;
 }
 
 export interface VariantList_productVariants_edges_node_pricing_price_net {
@@ -79,6 +91,10 @@ export interface VariantList_productVariants_edges_node_pricing_price_net {
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture Code.
+   */
+  culture: string;
 }
 
 export interface VariantList_productVariants_edges_node_pricing_price {

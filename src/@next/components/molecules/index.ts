@@ -7,6 +7,7 @@ export * from "./AddressTileOption";
 export * from "./AttributeValuesChecklist";
 export * from "./CachedImage";
 export * from "./CardHeader";
+export * from "./CartResume";
 export * from "./CartSummaryRow";
 export * from "./CheckoutProgressBar";
 export * from "./CreditCardNumberWithIcon";
@@ -25,4 +26,5 @@ export * from "./ResetPasswordForm";
 export * from "./ShippingMethodItem";
 export * from "./TextField";
 export * from "./Thumbnail";
+export * from "./AddressAutocomplete";
 

@@ -17,7 +17,7 @@ export interface CheckoutLine_totalPrice_gross {
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -33,7 +33,7 @@ export interface CheckoutLine_totalPrice_net {
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -61,7 +61,7 @@ export interface CheckoutLine_variant_pricing_priceUndiscounted_gross {
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -77,7 +77,7 @@ export interface CheckoutLine_variant_pricing_priceUndiscounted_net {
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -105,7 +105,7 @@ export interface CheckoutLine_variant_pricing_price_gross {
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -121,7 +121,7 @@ export interface CheckoutLine_variant_pricing_price_net {
    */
   currency: string;
   /**
-   * Culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -194,6 +194,46 @@ export interface CheckoutLine_variant_attributes {
   values: (CheckoutLine_variant_attributes_values | null)[];
 }
 
+export interface CheckoutLine_variant_product_attributes_attribute {
+  __typename: "Attribute";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  /**
+   * Name of an attribute displayed in the interface.
+   */
+  name: string | null;
+}
+
+export interface CheckoutLine_variant_product_attributes_values {
+  __typename: "AttributeValue";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  /**
+   * Name of a value displayed in the interface.
+   */
+  name: string | null;
+  /**
+   * Name of a value displayed in the interface.
+   */
+  value: string | null;
+}
+
+export interface CheckoutLine_variant_product_attributes {
+  __typename: "SelectedAttribute";
+  /**
+   * Name of an attribute displayed in the interface.
+   */
+  attribute: CheckoutLine_variant_product_attributes_attribute;
+  /**
+   * Values of an attribute.
+   */
+  values: (CheckoutLine_variant_product_attributes_values | null)[];
+}
+
 export interface CheckoutLine_variant_product_thumbnail {
   __typename: "Image";
   /**
@@ -226,6 +266,10 @@ export interface CheckoutLine_variant_product {
    */
   id: string;
   name: string;
+  /**
+   * List of attributes assigned to this product.
+   */
+  attributes: CheckoutLine_variant_product_attributes[];
   /**
    * The main thumbnail for a product.
    */

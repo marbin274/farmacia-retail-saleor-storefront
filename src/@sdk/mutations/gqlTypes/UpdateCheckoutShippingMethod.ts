@@ -168,6 +168,8 @@ export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_check
    * Address is user's default shipping address.
    */
   isDefaultShippingAddress: boolean | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_checkout_shippingAddress_country {
@@ -209,6 +211,8 @@ export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_check
    * Address is user's default shipping address.
    */
   isDefaultShippingAddress: boolean | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_checkout_availableShippingMethods_price {
@@ -744,12 +748,12 @@ export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_check
   discountName: string | null;
   translatedDiscountName: string | null;
   voucherCode: string | null;
-  voucherDiscountType: string | null | undefined;
+  voucherType: string | null;
+  voucherDiscountType: string | null;
   voucherDiscountValue: number;
-  voucherType: string | null | undefined;
-  documentNumber: string;
-  dataTreatmentPolicy: boolean;
+  documentNumber: string | null;
   termsAndConditions: boolean;
+  dataTreatmentPolicy: boolean;
 }
 
 export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_checkoutErrors {
@@ -792,6 +796,6 @@ export interface UpdateCheckoutShippingMethod {
 export interface UpdateCheckoutShippingMethodVariables {
   checkoutId: string;
   shippingMethodId: string;
-  scheduleTimeId?: string | null;
-  date?: string | null;
+  scheduleTimeId: string;
+  date: any;
 }

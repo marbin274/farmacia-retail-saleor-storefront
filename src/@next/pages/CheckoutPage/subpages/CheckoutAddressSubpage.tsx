@@ -145,6 +145,8 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
       {
         ...address,
         id: userAddressId,
+        latitude: address.latitude as number,
+        longitude: address.longitude as number,
       },
       shippingEmail,
       privacyPolicy
@@ -194,6 +196,8 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
         ...address,
         isDefaultBillingAddress: address.isDefaultBillingAddress || false,
         isDefaultShippingAddress: address.isDefaultShippingAddress || false,
+        latitude: address.latitude || undefined,
+        longitude: address.longitude || undefined,
         phone: address.phone || undefined,
       },
       id: address?.id || "",

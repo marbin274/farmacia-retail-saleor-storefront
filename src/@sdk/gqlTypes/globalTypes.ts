@@ -380,6 +380,7 @@ export enum ProductOrderField {
   NAME = "NAME",
   PRICE = "PRICE",
   PUBLISHED = "PUBLISHED",
+  STOCK_AVAILABLE = "STOCK_AVAILABLE",
   TYPE = "TYPE",
 }
 
@@ -402,6 +403,8 @@ export interface AddressInput {
   country?: CountryCode | null;
   countryArea?: string | null;
   phone?: string | null;
+  latitude?: number | null;
+  longitude?: number | null;
 }
 
 export interface AttributeInput {

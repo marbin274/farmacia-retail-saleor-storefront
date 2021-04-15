@@ -13,7 +13,7 @@ const money = {
   },
 };
 
-const product = {
+export const product = {
   id: "abc123",
   name: "The Great Square Table",  
   quantity: 2,
@@ -33,4 +33,5 @@ export const DEFAULT_PROPS = {
   shipping: money,
   subtotal: money,
   total: money,  
+  totalProducts: 3,
 };

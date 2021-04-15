@@ -155,6 +155,8 @@ export interface AddCheckoutPromoCode_checkoutAddPromoCode_checkout_billingAddre
    * Address is user's default shipping address.
    */
   isDefaultShippingAddress: boolean | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface AddCheckoutPromoCode_checkoutAddPromoCode_checkout_shippingAddress_country {
@@ -196,6 +198,8 @@ export interface AddCheckoutPromoCode_checkoutAddPromoCode_checkout_shippingAddr
    * Address is user's default shipping address.
    */
   isDefaultShippingAddress: boolean | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface AddCheckoutPromoCode_checkoutAddPromoCode_checkout_availableShippingMethods_price {
@@ -731,12 +735,12 @@ export interface AddCheckoutPromoCode_checkoutAddPromoCode_checkout {
   discountName: string | null;
   translatedDiscountName: string | null;
   voucherCode: string | null;
-  voucherDiscountType: string | null | undefined;
+  voucherType: string | null;
+  voucherDiscountType: string | null;
   voucherDiscountValue: number;
-  voucherType: string | null | undefined;
-  documentNumber: string;
-  dataTreatmentPolicy: boolean;
+  documentNumber: string | null;
   termsAndConditions: boolean;
+  dataTreatmentPolicy: boolean;
 }
 
 export interface AddCheckoutPromoCode_checkoutAddPromoCode_errors {

@@ -17,7 +17,7 @@ export interface Price_gross {
    */
   currency: string;
   /**
-   * culture code.
+   * Culture Code.
    */
   culture: string;
 }
@@ -32,6 +32,10 @@ export interface Price_net {
    * Currency code.
    */
   currency: string;
+  /**
+   * Culture Code.
+   */
+  culture: string;
 }
 
 export interface Price {

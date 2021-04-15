@@ -18,6 +18,8 @@ describe("<CheckoutAddress />", () => {
           email: ANONYMOUS_USER_PROPS.checkoutAddress.email,
           shippingAddress: {
             ...ANONYMOUS_USER_PROPS.checkoutAddress,
+            latitude: ANONYMOUS_USER_PROPS.checkoutAddress.latitude as number,
+            longitude: ANONYMOUS_USER_PROPS.checkoutAddress.longitude as number,
           },
           token: "",
         }}

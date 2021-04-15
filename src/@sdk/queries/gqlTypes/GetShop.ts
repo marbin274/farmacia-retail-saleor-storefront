@@ -68,8 +68,10 @@ export interface GetShop_shop {
    * Customer's geolocalization data.
    */
   geolocalization: GetShop_shop_geolocalization | null;
-
-  isShippingAvailable: boolean;
+  /**
+   * Indicate if the store is in the shipping hours
+   */
+  isShippingAvailable: boolean | null;
 }
 
 export interface GetShop {

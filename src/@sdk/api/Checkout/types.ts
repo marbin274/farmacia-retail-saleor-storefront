@@ -28,10 +28,12 @@ export interface IAddress {
     code?: string;
     country?: string;
   };
+  latitude?: number | null;
+  longitude?: number | null;
 }
 
 export interface IPrivacyPolicy {
-  dataTreatmentPolicy?: boolean;
+  dataTreatmentPolicy?: boolean | null;
   termsAndConditions?: boolean;
 }
 
@@ -72,7 +74,7 @@ export interface ICheckout {
   scheduleDate?: IScheduleDate | null;
   dataTreatmentPolicy?: boolean;
   termsAndConditions?: boolean;
-  documentNumber?: string;
+  documentNumber?: string | null;
 }
 
 export enum FunctionErrorCheckoutTypes {

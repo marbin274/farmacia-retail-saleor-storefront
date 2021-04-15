@@ -45,6 +45,8 @@ export interface VerifyToken_tokenVerify_user_defaultShippingAddress {
    * Address is user's default shipping address.
    */
   isDefaultShippingAddress: boolean | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface VerifyToken_tokenVerify_user_defaultBillingAddress_country {
@@ -86,6 +88,8 @@ export interface VerifyToken_tokenVerify_user_defaultBillingAddress {
    * Address is user's default shipping address.
    */
   isDefaultShippingAddress: boolean | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface VerifyToken_tokenVerify_user_addresses_country {
@@ -127,6 +131,8 @@ export interface VerifyToken_tokenVerify_user_addresses {
    * Address is user's default shipping address.
    */
   isDefaultShippingAddress: boolean | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface VerifyToken_tokenVerify_user {
@@ -139,6 +145,15 @@ export interface VerifyToken_tokenVerify_user {
   firstName: string;
   lastName: string;
   isStaff: boolean;
+  /**
+   * Terms and Conditions
+   */
+  termsAndConditions: boolean | null;
+  /**
+   * Data Treatment Policy
+   */
+  dataTreatmentPolicy: boolean | null;
+  documentNumber: string | null;
   defaultShippingAddress: VerifyToken_tokenVerify_user_defaultShippingAddress | null;
   defaultBillingAddress: VerifyToken_tokenVerify_user_defaultBillingAddress | null;
   /**
