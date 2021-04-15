@@ -1,6 +1,7 @@
 import { CheckoutShipping } from "@components/organisms";
 import { useCheckout } from "@sdk/react";
 import { alertService } from "@temp/@next/components/atoms/Alert";
+import { IAvailableShippingMethods } from "@temp/@sdk/api/Checkout/types";
 import { IShippingMethodUpdate } from "@temp/@sdk/repository";
 import { CHECKOUT_STEPS } from "@temp/core/config";
 import { IFormError } from "@types";
@@ -44,9 +45,17 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
     setShippingMethod,
   } = useCheckout();
 
-  const shippingMethods = availableShippingMethods
-    ? availableShippingMethods
-    : [];
+  const shippingMethods: IAvailableShippingMethods = [];
+  availableShippingMethods?.forEach(it => {
+    const shippingMethod = { ...it };
+    if (it.isScheduled && !shippingMethod.scheduleDates) {
+      return;
+    }
+    else if (it.isScheduled && shippingMethod.scheduleDates) {
+      shippingMethod.scheduleDates = shippingMethod.scheduleDates.filter(it => it?.scheduleTimes?.length);
+    }
+    shippingMethods.push(shippingMethod);
+  });
 
   useImperativeHandle(ref, () => ({
     submitShipping: () => {
