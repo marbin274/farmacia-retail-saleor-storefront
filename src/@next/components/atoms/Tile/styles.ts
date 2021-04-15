@@ -47,11 +47,10 @@ export const Wrapper = styled.div<WrapperProps>`
 Wrapper.displayName = "Tile";
 
 export const Header = styled.div`
-  border-bottom: 2px solid ${props => props.theme.tile.divisionLine};
 `;
 
 export const Content = styled.div`
-  padding: 1rem 1.25rem;
+  padding: 1rem 1.25rem 0rem;
 `;
 
 export const Footer = styled.div`

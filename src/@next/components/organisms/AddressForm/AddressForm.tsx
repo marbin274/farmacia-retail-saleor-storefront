@@ -51,16 +51,16 @@ export const AddressForm: React.FC<IProps> = ({
   if (user) {
     // addressWithPickedFields.city = checkoutData?.shippingAddress?.city;
     addressWithPickedFields.firstName = getName(user.firstName, user.lastName);
-    addressWithPickedFields.streetAddress1 = user.addresses?.[0]?.streetAddress1 || undefined;
-    addressWithPickedFields.streetAddress2 = user.addresses?.[0]?.streetAddress2 || undefined;
+    addressWithPickedFields.streetAddress1 = user.defaultShippingAddress?.streetAddress1 || undefined;
+    addressWithPickedFields.streetAddress2 = user.defaultShippingAddress?.streetAddress2 || undefined;
     addressWithPickedFields.email = user.email;
-    addressWithPickedFields.id = user.addresses?.[0]?.id;
+    addressWithPickedFields.id = user.defaultShippingAddress?.id;
     addressWithPickedFields.documentNumber = user.documentNumber || '';
-    addressWithPickedFields.phone = user.addresses?.[0]?.phone ? removeCountryCodeInPhoneNumber(user.addresses?.[0]?.phone): '';
+    addressWithPickedFields.phone = user.defaultShippingAddress?.phone ? removeCountryCodeInPhoneNumber(user.defaultShippingAddress?.phone): '';
     addressWithPickedFields.termsAndConditions = user.termsAndConditions || false;
     addressWithPickedFields.dataTreatmentPolicy = user.dataTreatmentPolicy;
-    addressWithPickedFields.latitude = user.addresses?.[0]?.latitude || "";
-    addressWithPickedFields.longitude = user.addresses?.[0]?.longitude || "";
+    addressWithPickedFields.latitude = user.defaultShippingAddress?.latitude || "";
+    addressWithPickedFields.longitude = user.defaultShippingAddress?.longitude || "";
   }
 
   if(checkoutData){

@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/AddressGridSelector default 1`] = `
   margin: 20px;
 }
 
-.c9 {
+.c11 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -18,7 +18,7 @@ exports[`Storyshots @components/organisms/AddressGridSelector default 1`] = `
 }
 
 .c3 {
-  background-color: #f1f5f5;
+  background-color: #F6F8FA;
   border: 1px transparent solid;
   overflow: auto;
   height: 100%;
@@ -59,11 +59,10 @@ exports[`Storyshots @components/organisms/AddressGridSelector default 1`] = `
 }
 
 .c4 {
-  padding: 1rem 1.25rem;
+  padding: 1rem 1.25rem 0rem;
 }
 
 .c5 {
-  text-transform: uppercase;
   font-size: 1.125rem;
   text-align: center;
   vertical-align: center;
@@ -86,10 +85,24 @@ exports[`Storyshots @components/organisms/AddressGridSelector default 1`] = `
   font-weight: 600;
 }
 
-.c7 {
+.c6 {
+  color: #131336;
+  font-size: 1rem;
+}
+
+.c8 {
+  color: #131336;
+}
+
+.c8 p {
+  line-height: 2rem;
+}
+
+.c9 {
   display: block;
-  margin-bottom: 0.625rem;
+  font-size: 1rem;
   font-weight: 600;
+  margin-bottom: 1.25rem;
 }
 
 .c1 {
@@ -114,7 +127,7 @@ exports[`Storyshots @components/organisms/AddressGridSelector default 1`] = `
   width: calc(100% / 2);
 }
 
-.c6 {
+.c7 {
   height: 100%;
   min-height: 190px;
   display: block;
@@ -125,7 +138,7 @@ exports[`Storyshots @components/organisms/AddressGridSelector default 1`] = `
   cursor: pointer;
 }
 
-.c8 {
+.c10 {
   display: none;
 }
 
@@ -136,7 +149,7 @@ exports[`Storyshots @components/organisms/AddressGridSelector default 1`] = `
 }
 
 @media (max-width:540px) {
-  .c6 {
+  .c7 {
     padding: 30px 20px;
   }
 }
@@ -165,21 +178,14 @@ exports[`Storyshots @components/organisms/AddressGridSelector default 1`] = `
               className="c5"
             >
               <p>
-                <svg
-                  height={24}
-                  viewBox="0 0 32 32"
-                  width={24}
-                >
-                  <path
-                    d="M18 14v-12c0-1.104-0.896-2-2-2s-2 0.896-2 2v12h-12c-1.104 0-2 0.896-2 2s0.896 2 2 2h12v12c0 1.104 0.896 2 2 2s2-0.896 2-2v-12h12c1.104 0 2-0.896 2-2s-0.896-2-2-2h-12z"
-                    fill="#21125E"
-                  />
-                </svg>
+                <div />
               </p>
-              <p>
+              <div
+                className="c6"
+              >
                 Agregar nueva 
                 address
-              </p>
+              </div>
             </div>
           </div>
         </div>
@@ -189,38 +195,45 @@ exports[`Storyshots @components/organisms/AddressGridSelector default 1`] = `
       >
         <label
           checked={false}
-          className="c6"
+          className="c7"
         >
-          <div>
+          <div
+            className="c8"
+          >
             <span
-              className="c7"
+              className="c9"
             >
               John Doe
             </span>
-            Mirumee
-             
-            <br />
-            St Street
-            <br />
-            Second
-             
-            <br />
-            55-555,
-             
-            Wroclaw
-            <br />
-            dolnyslask
-            , 
-            Poland
-            <br />
-            Celular: 
-            555-5555
-             
-            <br />
+            <p>
+              Mirumee
+            </p>
+            <p>
+              St Street
+            </p>
+            <p>
+              Second
+            </p>
+            <p>
+              55-555,
+               
+              Wroclaw
+            </p>
+            <p>
+              dolnyslask
+              , 
+            </p>
+            <p>
+              Poland
+            </p>
+            <p>
+              Celular: 
+              555-5555
+            </p>
           </div>
           <input
             checked={false}
-            className="c8"
+            className="c10"
             data-cy="addressTileOption0"
             name="addressTileOption"
             onChange={[Function]}
@@ -233,7 +246,7 @@ exports[`Storyshots @components/organisms/AddressGridSelector default 1`] = `
     </div>
   </form>
   <div
-    className="c9"
+    className="c11"
   />
 </div>
 `;

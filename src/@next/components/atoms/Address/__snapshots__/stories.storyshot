@@ -6,7 +6,7 @@ exports[`Storyshots @components/atoms/Address default 1`] = `
   margin: 20px;
 }
 
-.c2 {
+.c3 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -18,43 +18,59 @@ exports[`Storyshots @components/atoms/Address default 1`] = `
 }
 
 .c1 {
+  color: #131336;
+}
+
+.c1 p {
+  line-height: 2rem;
+}
+
+.c2 {
   display: block;
-  margin-bottom: 0.625rem;
+  font-size: 1rem;
   font-weight: 600;
+  margin-bottom: 1.25rem;
 }
 
 <div
   className="c0"
 >
-  <div>
+  <div
+    className="c1"
+  >
     <span
-      className="c1"
+      className="c2"
     >
       John Doe
     </span>
-    Mirumee
-     
-    <br />
-    St Street
-    <br />
-    Second
-     
-    <br />
-    55-555,
-     
-    Wroclaw
-    <br />
-    dolnyslask
-    , 
-    Poland
-    <br />
-    Celular: 
-    555-5555
-     
-    <br />
+    <p>
+      Mirumee
+    </p>
+    <p>
+      St Street
+    </p>
+    <p>
+      Second
+    </p>
+    <p>
+      55-555,
+       
+      Wroclaw
+    </p>
+    <p>
+      dolnyslask
+      , 
+    </p>
+    <p>
+      Poland
+    </p>
+    <p>
+      Celular: 
+      555-5555
+    </p>
   </div>
   <div
-    className="c2"
+    className="c3"
   />
 </div>
 `;

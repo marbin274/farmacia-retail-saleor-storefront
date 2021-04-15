@@ -6,7 +6,7 @@ exports[`Storyshots @components/molecules/CreditCardTile default 1`] = `
   margin: 20px;
 }
 
-.c11 {
+.c10 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -18,7 +18,7 @@ exports[`Storyshots @components/molecules/CreditCardTile default 1`] = `
 }
 
 .c1 {
-  background-color: #f1f5f5;
+  background-color: #F6F8FA;
   border: 1px transparent solid;
   overflow: auto;
   height: 100%;
@@ -40,26 +40,22 @@ exports[`Storyshots @components/molecules/CreditCardTile default 1`] = `
 }
 
 .c2 {
-  border-bottom: 2px solid #c4c4c4;
+  padding: 1rem 1.25rem 0rem;
 }
 
-.c3 {
-  padding: 1rem 1.25rem;
-}
-
-.c8 {
+.c7 {
   margin-top: auto;
   padding: 0 1rem;
   margin-bottom: 1rem;
 }
 
-.c4 {
+.c3 {
   display: inline-block;
   vertical-align: middle;
   margin-bottom: 0px !important;
 }
 
-.c10 {
+.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -84,37 +80,37 @@ exports[`Storyshots @components/molecules/CreditCardTile default 1`] = `
   transition: 0.3s;
 }
 
-.c10 svg {
+.c9 svg {
   display: block;
 }
 
-.c10 svg path {
+.c9 svg path {
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }
 
-.c10:hover {
+.c9:hover {
   background-color: rgb(33,18,94);
 }
 
-.c10:hover svg path {
+.c9:hover svg path {
   fill: #fff;
 }
 
-.c5 {
+.c4 {
   padding: 0 1rem;
 }
 
-.c6 {
+.c5 {
   font-weight: 600;
 }
 
-.c7 {
+.c6 {
   margin-top: 0.5rem;
   margin-bottom: 1rem;
 }
 
-.c9 > div {
+.c8 > div {
   display: inline-block;
   padding: 0;
   margin: 0;
@@ -128,19 +124,19 @@ exports[`Storyshots @components/molecules/CreditCardTile default 1`] = `
     className="c1"
   >
     <div
-      className="c2"
+      className=""
     >
       <div
-        className="c3"
+        className="c2"
       >
         <div>
           <div
-            className="c4"
+            className="c3"
           >
             <div />
           </div>
           <span
-            className="c5"
+            className="c4"
           >
             XXXX XXXX XXXX 
             9876
@@ -149,38 +145,38 @@ exports[`Storyshots @components/molecules/CreditCardTile default 1`] = `
       </div>
     </div>
     <div
-      className="c3"
+      className="c2"
     >
       <div
-        className="c6"
+        className="c5"
       >
         Expires on
       </div>
       <div
-        className="c7"
+        className="c6"
       >
         05/2019
       </div>
       <div
-        className="c6"
+        className="c5"
       >
         Name on card
       </div>
       <div
-        className="c7"
+        className="c6"
       >
         John Doe
       </div>
     </div>
     <div
-      className="c8"
+      className="c7"
     >
       <div
-        className="c9"
+        className="c8"
       >
         <div>
           <div
-            className="c10"
+            className="c9"
             data-cy="icon_button"
             onClick={[Function]}
           >
@@ -190,8 +186,8 @@ exports[`Storyshots @components/molecules/CreditCardTile default 1`] = `
               width={22}
             >
               <path
-                d="M28.496 5.327h-6.236v-1.017c0-1.818-1.479-3.297-3.297-3.297h-5.928c-1.818 0-3.297 1.479-3.297 3.297v1.017h-6.236c-0.462 0-0.832 0.37-0.832 0.832s0.37 0.832 0.832 0.832h1.504v19.546c0 2.452 1.996 4.449 4.449 4.449h13.088c2.452 0 4.449-1.997 4.449-4.449v-19.546h1.504c0.462 0 0.832-0.37 0.832-0.832s-0.37-0.832-0.832-0.832zM11.403 4.311c0-0.9 0.733-1.633 1.633-1.633h5.928c0.9 0 1.633 0.733 1.633 1.633v1.017h-9.194v-1.017zM25.329 26.537c0 1.534-1.251 2.785-2.785 2.785h-13.088c-1.534 0-2.785-1.251-2.785-2.785v-19.546h18.665v19.546h-0.006z M16 26.341c0.462 0 0.832-0.37 0.832-0.832v-14.702c0-0.462-0.37-0.832-0.832-0.832s-0.832 0.37-0.832 0.832v14.696c0 0.462 0.37 0.838 0.832 0.838z M10.571 25.423c0.462 0 0.832-0.37 0.832-0.832v-12.872c0-0.462-0.37-0.832-0.832-0.832s-0.832 0.37-0.832 0.832v12.872c0 0.462 0.376 0.832 0.832 0.832z M21.428 25.423c0.462 0 0.832-0.37 0.832-0.832v-12.872c0-0.462-0.37-0.832-0.832-0.832s-0.832 0.37-0.832 0.832v12.872c0 0.462 0.37 0.832 0.832 0.832z"
-                fill="#323232"
+                d="M12.35,3.23h7.3a1.62,1.62,0,0,0,1.61-1.61A1.62,1.62,0,0,0,19.65,0h-7.3c-.88-.15-1.46.58-1.46,1.6A1.42,1.42,0,0,0,12.35,3.23ZM27.24,4.69H4.9A1.63,1.63,0,0,0,3.44,6.44,1.57,1.57,0,0,0,4.9,7.9H24V27a1.62,1.62,0,0,1-1.6,1.61H9.57A1.62,1.62,0,0,1,8,27V12.72a1.61,1.61,0,0,0-3.21,0V27.18A4.76,4.76,0,0,0,9.57,32H22.28a4.77,4.77,0,0,0,4.82-4.82V8.05A1.63,1.63,0,0,0,28.56,6.3C28.56,5.42,28.12,5,27.24,4.69Z"
+                fill="#00B0CA"
               />
             </svg>
           </div>
@@ -200,7 +196,7 @@ exports[`Storyshots @components/molecules/CreditCardTile default 1`] = `
     </div>
   </div>
   <div
-    className="c11"
+    className="c10"
   />
 </div>
 `;

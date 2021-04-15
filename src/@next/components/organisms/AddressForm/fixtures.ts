@@ -63,7 +63,7 @@ export const userAddress: UserDetails_me = {
   addresses: [userAddressItem],
   dataTreatmentPolicy: false,
   defaultBillingAddress:null,
-  defaultShippingAddress: null,
+  defaultShippingAddress: userAddressItem,
   documentNumber: "85475126",
   email: "abcd@www.com",
   firstName: "Paola",

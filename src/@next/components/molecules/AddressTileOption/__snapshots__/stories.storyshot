@@ -6,7 +6,7 @@ exports[`Storyshots @components/molecules/AddressTileOption default 1`] = `
   margin: 20px;
 }
 
-.c4 {
+.c5 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -18,9 +18,18 @@ exports[`Storyshots @components/molecules/AddressTileOption default 1`] = `
 }
 
 .c2 {
+  color: #131336;
+}
+
+.c2 p {
+  line-height: 2rem;
+}
+
+.c3 {
   display: block;
-  margin-bottom: 0.625rem;
+  font-size: 1rem;
   font-weight: 600;
+  margin-bottom: 1.25rem;
 }
 
 .c1 {
@@ -34,7 +43,7 @@ exports[`Storyshots @components/molecules/AddressTileOption default 1`] = `
   cursor: pointer;
 }
 
-.c3 {
+.c4 {
   display: none;
 }
 
@@ -51,43 +60,50 @@ exports[`Storyshots @components/molecules/AddressTileOption default 1`] = `
     checked={false}
     className="c1"
   >
-    <div>
+    <div
+      className="c2"
+    >
       <span
-        className="c2"
+        className="c3"
       >
         John Doe
       </span>
-      Mirumee
-       
-      <br />
-      St Street
-      <br />
-      Second
-       
-      <br />
-      55-555,
-       
-      Wroclaw
-      <br />
-      dolnyslask
-      , 
-      Poland
-      <br />
-      Celular: 
-      555-5555
-       
-      <br />
+      <p>
+        Mirumee
+      </p>
+      <p>
+        St Street
+      </p>
+      <p>
+        Second
+      </p>
+      <p>
+        55-555,
+         
+        Wroclaw
+      </p>
+      <p>
+        dolnyslask
+        , 
+      </p>
+      <p>
+        Poland
+      </p>
+      <p>
+        Celular: 
+        555-5555
+      </p>
     </div>
     <input
       checked={false}
-      className="c3"
+      className="c4"
       name="address"
       type="radio"
       value="12345"
     />
   </label>
   <div
-    className="c4"
+    className="c5"
   />
 </div>
 `;

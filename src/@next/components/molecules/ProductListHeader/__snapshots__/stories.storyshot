@@ -82,7 +82,7 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
 }
 
 .c1 {
-  background-color: #f1f5f5;
+  background-color: #F6F8FA;
 }
 
 .c2 {
@@ -393,7 +393,7 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
 }
 
 .c1 {
-  background-color: #f1f5f5;
+  background-color: #F6F8FA;
 }
 
 .c2 {
