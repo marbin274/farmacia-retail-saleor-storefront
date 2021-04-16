@@ -39,9 +39,9 @@ export const SOCIAL_MEDIA = [
 ];
 export const META_DEFAULTS = {
   custom: [],
-  description: "Written with React and TypeScript.",
+  description: "Somos la experiencia digital más ágil de compra en farmacia, encuentra una gran variedad de productos ¡Pide y recibe en máximo 75 minutos!",
   image: `${window.location.origin}${require("../images/logo.svg")}`,
-  title: "Farmauna",
+  title: "Farmauna, la manera saludable de comprar",
   type: "website",
   url: window.location.origin,
 };

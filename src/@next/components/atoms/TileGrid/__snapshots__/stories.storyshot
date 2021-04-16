@@ -6,7 +6,7 @@ exports[`Storyshots @components/atoms/TileGrid custom grid size 1`] = `
   margin: 20px;
 }
 
-.c7 {
+.c6 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -18,7 +18,7 @@ exports[`Storyshots @components/atoms/TileGrid custom grid size 1`] = `
 }
 
 .c3 {
-  background-color: #f1f5f5;
+  background-color: #F6F8FA;
   border: 1px transparent solid;
   overflow: auto;
   height: 100%;
@@ -40,14 +40,10 @@ exports[`Storyshots @components/atoms/TileGrid custom grid size 1`] = `
 }
 
 .c4 {
-  border-bottom: 2px solid #c4c4c4;
+  padding: 1rem 1.25rem 0rem;
 }
 
 .c5 {
-  padding: 1rem 1.25rem;
-}
-
-.c6 {
   margin-top: auto;
   padding: 0 1rem;
   margin-bottom: 1rem;
@@ -94,23 +90,23 @@ exports[`Storyshots @components/atoms/TileGrid custom grid size 1`] = `
         className="c3"
       >
         <div
-          className="c4"
+          className=""
         >
           <div
-            className="c5"
+            className="c4"
           >
             This is header
           </div>
         </div>
         <div
-          className="c5"
+          className="c4"
         >
           <p>
             Tile content
           </p>
         </div>
         <div
-          className="c6"
+          className="c5"
         >
           This is footer
         </div>
@@ -123,23 +119,23 @@ exports[`Storyshots @components/atoms/TileGrid custom grid size 1`] = `
         className="c3"
       >
         <div
-          className="c4"
+          className=""
         >
           <div
-            className="c5"
+            className="c4"
           >
             This is header
           </div>
         </div>
         <div
-          className="c5"
+          className="c4"
         >
           <p>
             Tile content
           </p>
         </div>
         <div
-          className="c6"
+          className="c5"
         >
           This is footer
         </div>
@@ -152,23 +148,23 @@ exports[`Storyshots @components/atoms/TileGrid custom grid size 1`] = `
         className="c3"
       >
         <div
-          className="c4"
+          className=""
         >
           <div
-            className="c5"
+            className="c4"
           >
             This is header
           </div>
         </div>
         <div
-          className="c5"
+          className="c4"
         >
           <p>
             Tile content
           </p>
         </div>
         <div
-          className="c6"
+          className="c5"
         >
           This is footer
         </div>
@@ -181,23 +177,23 @@ exports[`Storyshots @components/atoms/TileGrid custom grid size 1`] = `
         className="c3"
       >
         <div
-          className="c4"
+          className=""
         >
           <div
-            className="c5"
+            className="c4"
           >
             This is header
           </div>
         </div>
         <div
-          className="c5"
+          className="c4"
         >
           <p>
             Tile content
           </p>
         </div>
         <div
-          className="c6"
+          className="c5"
         >
           This is footer
         </div>
@@ -210,23 +206,23 @@ exports[`Storyshots @components/atoms/TileGrid custom grid size 1`] = `
         className="c3"
       >
         <div
-          className="c4"
+          className=""
         >
           <div
-            className="c5"
+            className="c4"
           >
             This is header
           </div>
         </div>
         <div
-          className="c5"
+          className="c4"
         >
           <p>
             Tile content
           </p>
         </div>
         <div
-          className="c6"
+          className="c5"
         >
           This is footer
         </div>
@@ -239,23 +235,23 @@ exports[`Storyshots @components/atoms/TileGrid custom grid size 1`] = `
         className="c3"
       >
         <div
-          className="c4"
+          className=""
         >
           <div
-            className="c5"
+            className="c4"
           >
             This is header
           </div>
         </div>
         <div
-          className="c5"
+          className="c4"
         >
           <p>
             Tile content
           </p>
         </div>
         <div
-          className="c6"
+          className="c5"
         >
           This is footer
         </div>
@@ -263,7 +259,7 @@ exports[`Storyshots @components/atoms/TileGrid custom grid size 1`] = `
     </div>
   </div>
   <div
-    className="c7"
+    className="c6"
   />
 </div>
 `;
@@ -274,7 +270,7 @@ exports[`Storyshots @components/atoms/TileGrid default 1`] = `
   margin: 20px;
 }
 
-.c7 {
+.c6 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -286,7 +282,7 @@ exports[`Storyshots @components/atoms/TileGrid default 1`] = `
 }
 
 .c3 {
-  background-color: #f1f5f5;
+  background-color: #F6F8FA;
   border: 1px transparent solid;
   overflow: auto;
   height: 100%;
@@ -308,14 +304,10 @@ exports[`Storyshots @components/atoms/TileGrid default 1`] = `
 }
 
 .c4 {
-  border-bottom: 2px solid #c4c4c4;
+  padding: 1rem 1.25rem 0rem;
 }
 
 .c5 {
-  padding: 1rem 1.25rem;
-}
-
-.c6 {
   margin-top: auto;
   padding: 0 1rem;
   margin-bottom: 1rem;
@@ -362,23 +354,23 @@ exports[`Storyshots @components/atoms/TileGrid default 1`] = `
         className="c3"
       >
         <div
-          className="c4"
+          className=""
         >
           <div
-            className="c5"
+            className="c4"
           >
             This is header
           </div>
         </div>
         <div
-          className="c5"
+          className="c4"
         >
           <p>
             Tile content
           </p>
         </div>
         <div
-          className="c6"
+          className="c5"
         >
           This is footer
         </div>
@@ -391,23 +383,23 @@ exports[`Storyshots @components/atoms/TileGrid default 1`] = `
         className="c3"
       >
         <div
-          className="c4"
+          className=""
         >
           <div
-            className="c5"
+            className="c4"
           >
             This is header
           </div>
         </div>
         <div
-          className="c5"
+          className="c4"
         >
           <p>
             Tile content
           </p>
         </div>
         <div
-          className="c6"
+          className="c5"
         >
           This is footer
         </div>
@@ -420,23 +412,23 @@ exports[`Storyshots @components/atoms/TileGrid default 1`] = `
         className="c3"
       >
         <div
-          className="c4"
+          className=""
         >
           <div
-            className="c5"
+            className="c4"
           >
             This is header
           </div>
         </div>
         <div
-          className="c5"
+          className="c4"
         >
           <p>
             Tile content
           </p>
         </div>
         <div
-          className="c6"
+          className="c5"
         >
           This is footer
         </div>
@@ -449,23 +441,23 @@ exports[`Storyshots @components/atoms/TileGrid default 1`] = `
         className="c3"
       >
         <div
-          className="c4"
+          className=""
         >
           <div
-            className="c5"
+            className="c4"
           >
             This is header
           </div>
         </div>
         <div
-          className="c5"
+          className="c4"
         >
           <p>
             Tile content
           </p>
         </div>
         <div
-          className="c6"
+          className="c5"
         >
           This is footer
         </div>
@@ -478,23 +470,23 @@ exports[`Storyshots @components/atoms/TileGrid default 1`] = `
         className="c3"
       >
         <div
-          className="c4"
+          className=""
         >
           <div
-            className="c5"
+            className="c4"
           >
             This is header
           </div>
         </div>
         <div
-          className="c5"
+          className="c4"
         >
           <p>
             Tile content
           </p>
         </div>
         <div
-          className="c6"
+          className="c5"
         >
           This is footer
         </div>
@@ -507,23 +499,23 @@ exports[`Storyshots @components/atoms/TileGrid default 1`] = `
         className="c3"
       >
         <div
-          className="c4"
+          className=""
         >
           <div
-            className="c5"
+            className="c4"
           >
             This is header
           </div>
         </div>
         <div
-          className="c5"
+          className="c4"
         >
           <p>
             Tile content
           </p>
         </div>
         <div
-          className="c6"
+          className="c5"
         >
           This is footer
         </div>
@@ -531,7 +523,7 @@ exports[`Storyshots @components/atoms/TileGrid default 1`] = `
     </div>
   </div>
   <div
-    className="c7"
+    className="c6"
   />
 </div>
 `;

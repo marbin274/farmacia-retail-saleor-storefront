@@ -18,7 +18,7 @@ exports[`Storyshots @components/atoms/Tile addNew tile style 1`] = `
 }
 
 .c1 {
-  background-color: #f1f5f5;
+  background-color: #F6F8FA;
   border: 1px transparent solid;
   overflow: auto;
   height: 100%;
@@ -59,7 +59,7 @@ exports[`Storyshots @components/atoms/Tile addNew tile style 1`] = `
 }
 
 .c2 {
-  padding: 1rem 1.25rem;
+  padding: 1rem 1.25rem 0rem;
 }
 
 <div
@@ -88,7 +88,7 @@ exports[`Storyshots @components/atoms/Tile default 1`] = `
   margin: 20px;
 }
 
-.c4 {
+.c3 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -100,7 +100,7 @@ exports[`Storyshots @components/atoms/Tile default 1`] = `
 }
 
 .c1 {
-  background-color: #f1f5f5;
+  background-color: #F6F8FA;
   border: 1px transparent solid;
   overflow: auto;
   height: 100%;
@@ -122,11 +122,7 @@ exports[`Storyshots @components/atoms/Tile default 1`] = `
 }
 
 .c2 {
-  border-bottom: 2px solid #c4c4c4;
-}
-
-.c3 {
-  padding: 1rem 1.25rem;
+  padding: 1rem 1.25rem 0rem;
 }
 
 <div
@@ -136,10 +132,10 @@ exports[`Storyshots @components/atoms/Tile default 1`] = `
     className="c1"
   >
     <div
-      className="c2"
+      className=""
     >
       <div
-        className="c3"
+        className="c2"
       >
         <h3>
           This is header
@@ -147,7 +143,7 @@ exports[`Storyshots @components/atoms/Tile default 1`] = `
       </div>
     </div>
     <div
-      className="c3"
+      className="c2"
     >
       <div>
         This is body
@@ -155,7 +151,7 @@ exports[`Storyshots @components/atoms/Tile default 1`] = `
     </div>
   </div>
   <div
-    className="c4"
+    className="c3"
   />
 </div>
 `;
@@ -166,7 +162,7 @@ exports[`Storyshots @components/atoms/Tile with hover 1`] = `
   margin: 20px;
 }
 
-.c5 {
+.c4 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -178,7 +174,7 @@ exports[`Storyshots @components/atoms/Tile with hover 1`] = `
 }
 
 .c1 {
-  background-color: #f1f5f5;
+  background-color: #F6F8FA;
   border: 1px transparent solid;
   overflow: auto;
   height: 100%;
@@ -205,14 +201,10 @@ exports[`Storyshots @components/atoms/Tile with hover 1`] = `
 }
 
 .c2 {
-  border-bottom: 2px solid #c4c4c4;
+  padding: 1rem 1.25rem 0rem;
 }
 
 .c3 {
-  padding: 1rem 1.25rem;
-}
-
-.c4 {
   margin-top: auto;
   padding: 0 1rem;
   margin-bottom: 1rem;
@@ -225,10 +217,10 @@ exports[`Storyshots @components/atoms/Tile with hover 1`] = `
     className="c1"
   >
     <div
-      className="c2"
+      className=""
     >
       <div
-        className="c3"
+        className="c2"
       >
         <h3>
           This is header
@@ -236,14 +228,14 @@ exports[`Storyshots @components/atoms/Tile with hover 1`] = `
       </div>
     </div>
     <div
-      className="c3"
+      className="c2"
     >
       <div>
         This is body
       </div>
     </div>
     <div
-      className="c4"
+      className="c3"
     >
       <p>
         And this is footer
@@ -251,7 +243,7 @@ exports[`Storyshots @components/atoms/Tile with hover 1`] = `
     </div>
   </div>
   <div
-    className="c5"
+    className="c4"
   />
 </div>
 `;

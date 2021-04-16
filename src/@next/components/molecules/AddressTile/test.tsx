@@ -1,4 +1,5 @@
-import { shallow } from "enzyme";
+import { IconButton } from "@components/atoms";
+import { mount, shallow } from "enzyme";
 import "jest-styled-components";
 import React from "react";
 import { AddressTile } from ".";
@@ -37,102 +38,70 @@ describe("<AddressTile />", () => {
     expect(wrapper.exists()).toEqual(true);
   });
 
-  // TODO: comment this code to review later because the flow was changed, at this moment these test are not necessary but if the flow change again
-  // the test will be necessary
+  it("should run onRemove function for clicking on trash button", () => {
+    const wrapper = mount(<AddressTile {...DEFAULT_PROPS} />);
 
-  // it("should run onRemove function for clicking on trash button", () => {
-  //   const wrapper = mount(<AddressTile {...DEFAULT_PROPS} />);
+    wrapper
+      .find(IconButton)
+      .last()
+      .simulate("click");
 
-  //   wrapper
-  //     .find(IconButton)
-  //     .last()
-  //     .simulate("click");
+    expect(onRemove).toHaveBeenCalled();
+  });
 
-  //   expect(onRemove).toHaveBeenCalled();
-  // });
 
-  // TODO: comment this code to review later because the flow was changed, at this moment these test are not necessary but if the flow change again
-  // the test will be necessary
+  it("should run onEdit function for clicking on edit button", () => {
+    const wrapper = mount(<AddressTile {...DEFAULT_PROPS} />);
 
-  // it("should run onEdit function for clicking on edit button", () => {
-  //   const wrapper = mount(<AddressTile {...DEFAULT_PROPS} />);
+    wrapper
+      .find(IconButton)
+      .first()
+      .simulate("click");
 
-  //   wrapper
-  //     .find(IconButton)
-  //     .at(1)
-  //     .simulate("click");
+    expect(onEdit).toHaveBeenCalled();
+  });
 
-  //   expect(onEdit).toHaveBeenCalled();
-  // });
+  it("should NOT run setDefault method for clicking on Set default when address is default already", () => {
+    const wrapper = mount(<AddressTile {...DEFAULT_PROPS} />);
 
-  // TODO: comment this code to review later because the flow was changed, at this moment these test are not necessary but if the flow change again
-  // the test will be necessary
+    wrapper
+      .find('[role="default-address"]')
+      .first()
+      .simulate("click");
 
-  // it("should run setDefault method for clicking on Set default billing address", () => {
-  //   const wrapper = mount(<AddressTile {...DEFAULT_PROPS} />);
+    expect(setDefault).not.toBeCalled();
+  });
 
-  //   wrapper
-  //     .find(IconButton)
-  //     .first()
-  //     .simulate("click");
-  //   wrapper
-  //     .find("li")
-  //     .first()
-  //     .simulate("click");
+  it("should run setDefault method for clicking on Set default", () => {
+    const DEFAULT_PROPS_NOT_DEFAULT = {
+      ...DEFAULT_PROPS,
+      address: {
+        ...DEFAULT_PROPS.address,
+        isDefaultBillingAddress: false,
+        isDefaultShippingAddress: false,
+      },
+    };
 
-  //   expect(setDefault).toHaveBeenCalledWith("BILLING");
-  // });
+    const wrapper = mount(<AddressTile {...DEFAULT_PROPS_NOT_DEFAULT} />);
 
-  // TODO: comment this code to review later because the flow was changed, at this moment these test are not necessary but if the flow change again
-  // the test will be necessary
+    wrapper
+      .find('[role="default-address"]')
+      .first()
+      .simulate("click");
 
-  // it("should run setDefault method for clicking on Set default shipping address", () => {
-  //   const wrapper = mount(<AddressTile {...DEFAULT_PROPS} />);
+    expect(setDefault).toHaveBeenCalledWith("BILLING");
+    expect(setDefault).toHaveBeenCalledWith("SHIPPING");
+  });
 
-  //   wrapper
-  //     .find(IconButton)
-  //     .first()
-  //     .simulate("click");
-  //   wrapper
-  //     .find("li")
-  //     .last()
-  //     .simulate("click");
+  it("should present Default address if address is default shipping", () => {
+    const wrapper = mount(<AddressTile {...DEFAULT_PROPS} />);
+    const setDefaultAddressText = wrapper
+      .find('[role="default-address"]')
+      .first()
+      .find("span")
+      .first();
 
-  //   expect(setDefault).toHaveBeenCalledWith("SHIPPING");
-  // });
+    expect(getComputedStyle(setDefaultAddressText.getDOMNode()).getPropertyValue("color")).toBe("rgb(0, 176, 202)"); // aunaInteractive
+  });
 
-  // TODO: comment this code to review later because the flow was changed, at this moment these test are not necessary but if the flow change again
-  // the test will be necessary
-
-  // it("should present Default address if address is default shipping and billing", () => {
-  //   const wrapper = mount(<AddressTile {...DEFAULT_PROPS} />);
-
-  //   expect(wrapper.text()).toContain("Default Address");
-  // });
-
-  // TODO: comment this code to review later because the flow was changed, at this moment these test are not necessary but if the flow change again
-  // the test will be necessary
-
-  // it("should present Default Shipping Address if address is set as default shipping and is different from default billing address", () => {
-  //   const CUSTOM_PROPS = { ...DEFAULT_PROPS };
-  //   CUSTOM_PROPS.address.isDefaultBillingAddress = false;
-  //   CUSTOM_PROPS.address.isDefaultShippingAddress = true;
-
-  //   const wrapper = mount(<AddressTile {...CUSTOM_PROPS} />);
-
-  //   expect(wrapper.text()).toContain("Default Shipping Address");
-  // });
-
-  // TODO: comment this code to review later because the flow was changed, at this moment these test are not necessary but if the flow change again
-  // the test will be necessary
-
-  // it("should present Default Billing Address if address is set as default billing and is different from default shipping address", () => {
-  //   const CUSTOM_PROPS = { ...DEFAULT_PROPS };
-  //   CUSTOM_PROPS.address.isDefaultBillingAddress = true;
-  //   CUSTOM_PROPS.address.isDefaultShippingAddress = false;
-
-  //   const wrapper = mount(<AddressTile {...CUSTOM_PROPS} />);
-
-  //   expect(wrapper.text()).toContain("Default Billing Address");
-  // });
 });

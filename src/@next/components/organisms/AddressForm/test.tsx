@@ -64,9 +64,9 @@ describe("form contain data", () => {
     expect(getField(0)).toEqual(`${userAddress?.firstName} ${userAddress?.lastName}`);
     expect(getField(1)).toEqual(userAddress?.documentNumber);
     expect(getField(2)).toEqual(userAddress?.email);
-    expect(getField(3)).toEqual(removeCountryCodeInPhoneNumber(userAddress?.addresses?.[0]?.phone || ''));
-    expect(getField(4)).toEqual(userAddress?.addresses?.[0]?.streetAddress1);
-    expect(getField(5)).toEqual(userAddress?.addresses?.[0]?.streetAddress2);
+    expect(getField(3)).toEqual(removeCountryCodeInPhoneNumber(userAddress?.defaultShippingAddress?.phone || ''));
+    expect(getField(4)).toEqual(userAddress?.defaultShippingAddress?.streetAddress1);
+    expect(getField(5)).toEqual(userAddress?.defaultShippingAddress?.streetAddress2);
   });
 
   it("should contain user data and checkoutdata", () => {
@@ -112,9 +112,9 @@ describe("form contain data", () => {
     expect(getField(0)).toEqual(`${userAddress?.firstName} ${userAddress?.lastName}`);
     expect(getField(1)).toEqual(userAddress?.documentNumber);
     expect(getField(2)).toEqual(userAddress?.email);
-    expect(getField(3)).toEqual(removeCountryCodeInPhoneNumber(userAddress?.addresses?.[0]?.phone || ''));
-    expect(getField(4)).toEqual(userAddress?.addresses?.[0]?.streetAddress1);
-    expect(getField(5)).toEqual(userAddress?.addresses?.[0]?.streetAddress2);
+    expect(getField(3)).toEqual(removeCountryCodeInPhoneNumber(userAddress?.defaultShippingAddress?.phone || ''));
+    expect(getField(4)).toEqual(userAddress?.defaultShippingAddress?.streetAddress1);
+    expect(getField(5)).toEqual(userAddress?.defaultShippingAddress?.streetAddress2);
   });
 
 });

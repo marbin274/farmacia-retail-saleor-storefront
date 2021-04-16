@@ -58,7 +58,6 @@ const CheckoutShipping: React.FC<IProps> = ({
         }
         
       }
-      // setSubmitting(false);
     },
     validationSchema: shippingMethodFormSchema,
   });

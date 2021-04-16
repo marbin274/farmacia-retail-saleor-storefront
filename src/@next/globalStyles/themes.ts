@@ -163,7 +163,7 @@ export const defaultTheme = {
     spacer: `${C.spacer}rem`,
   },
   tile: {
-    backgroundColor: C.grayLight,
+    backgroundColor: C.aunaGrey20,
     divisionLine: C.grayMedium,
     hoverBorder: C.blueDark,
   },
