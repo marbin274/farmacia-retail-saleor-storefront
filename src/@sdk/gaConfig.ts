@@ -4,6 +4,8 @@ declare global {
   }
 }
 
+const GA_USER_ID_KEY = "@user_id";
+
 export enum steps {
   address = 1,
   payment,
@@ -31,7 +33,7 @@ export const launchRemoveToCartEvent = (
   price: any,
   quantity: number
 ) => {
-  return window?.dataLayer?.push({
+  return pushToDatalayer({
     ecommerce: {
       remove: {
         products: [
@@ -58,7 +60,7 @@ export const launchAddToCartEvent = (
   quantity: number,
   currencyCode: string
 ) => {
-  return window?.dataLayer?.push({
+  return pushToDatalayer({
     ecommerce: {
       add: {
         products: [
@@ -84,7 +86,7 @@ export const launchCheckoutEvent = (
   products?: any[],
   eventCallback?: () => void
 ) => {
-  return window?.dataLayer?.push({
+  return pushToDatalayer({
     ecommerce: {
       checkout: {
         actionField: { step, option: "" },
@@ -101,7 +103,7 @@ export const launchDetailProductEvent = (
   id: string,
   price: number
 ) => {
-  return window?.dataLayer?.push({
+  return pushToDatalayer({
     ecommerce: {
       detail: {
         actionField: { list: "" },
@@ -124,7 +126,7 @@ export const launchEcommerceEvent = (
   tax: number,
   products: any[]
 ) => {
-  return window?.dataLayer?.push({
+  return pushToDatalayer({
     ecommerce: {
       purchase: {
         actionField: {
@@ -142,7 +144,23 @@ export const launchEcommerceEvent = (
 };
 
 export const launchSetLocation = () => {
-  return window?.dataLayer?.push({
+  return pushToDatalayer({
     originalLocation: `${document.location.protocol}//${document.location.hostname}${document.location.pathname}${document.location.search}`,
   });
+};
+
+const pushToDatalayer = (data: any) => {
+  return window?.dataLayer?.push({ ...data, userId: getGaUserId() });
+};
+
+export const setGaUserId = (id?: string) => {
+  localStorage.setItem(GA_USER_ID_KEY, id || "");
+};
+
+export const removeGaUserId = () => {
+  localStorage.removeItem(GA_USER_ID_KEY);
+};
+
+export const getGaUserId = () => {
+  return localStorage.getItem(GA_USER_ID_KEY) || "";
 };
