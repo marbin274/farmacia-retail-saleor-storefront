@@ -12,7 +12,7 @@ import {
   Overlay,
   OverlayContextInterface,
 } from "../..";
-import { checkoutLoginUrl, checkoutUrl } from "../../../app/routes";
+import { checkoutUrl, checkoutLoginUrl } from "@temp/app/routes";
 import DeleteModal from "./DeleteModal";
 import Empty from "./Empty";
 import ProductList from "./ProductList";
@@ -63,11 +63,9 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
   };
 
   const goToRoute = (): string => {
-    if (user) {
+    if ( user || checkout.id) {
       return checkoutUrl;
-    } else if (checkout.id) {
-      return checkoutUrl;
-    } else {
+    }  else {
       return checkoutLoginUrl;
     }
   };

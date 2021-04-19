@@ -61,7 +61,6 @@ const getCheckoutProgress = (
     : CHECKOUT_STEPS.filter(
         ({ onlyIfShippingRequired }) => !onlyIfShippingRequired
       );
-
   return loaded ? (
     <CheckoutProgressBar
       steps={steps}
@@ -106,7 +105,7 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     availableShippingMethods
   );
 
-  if ((!items || !items?.length)) {
+  if (!items || !items?.length) {
     removePaymentItems();
     return <Redirect to={BASE_URL} />;
   }
@@ -180,7 +179,6 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
             checkoutShippingSubpageRef.current?.submitShipping();
           }
         }
-        launchCheckoutEvent(steps.payment, ecommerceProductsMapper(items));
         break;
       case 1:
         if (checkoutPaymentSubpageRef.current?.submitPayment) {
@@ -207,14 +205,32 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     net: discount,
   };
 
-  const [launchEventAddress, setLaunchEventAddress] = useState(true);
+  const [firstEventSend, setFirstEventSend] = useState(false);
 
-  const eventCheckoutAddress = () => {
-    if(launchEventAddress){
-      launchCheckoutEvent(steps.address, ecommerceProductsMapper(items));
-    }
-    return setLaunchEventAddress(false);
+  const sendEventForCheckoutAddress = () => {
+    setFirstEventSend(true);
+    launchCheckoutEvent(steps.address, ecommerceProductsMapper(items));
   };
+  const sendEventForCheckoutPayment = () => {
+    launchCheckoutEvent(steps.payment, ecommerceProductsMapper(items));
+  };
+
+  const sendEventsForCheckoutAddressAndPayment = () => {
+    launchCheckoutEvent(steps.address, ecommerceProductsMapper(items));
+    launchCheckoutEvent(steps.payment, ecommerceProductsMapper(items));
+  };
+  React.useEffect(() => {
+    if (pathname === "/checkout/address") {
+      sendEventForCheckoutAddress();
+    }
+    if (pathname === "/checkout/payment" && !firstEventSend) {
+      sendEventsForCheckoutAddressAndPayment();
+    }
+
+    if (pathname === "/checkout/payment" && firstEventSend) {
+      sendEventForCheckoutPayment();
+    }
+  }, [pathname]);
 
   const checkoutView =
     cartLoaded && checkoutLoaded ? (
@@ -224,7 +240,6 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
         payment={payment}
         renderAddress={props => (
           <>
-            {eventCheckoutAddress()}
             <CheckoutAddressSubpage
               ref={checkoutAddressSubpageRef}
               changeSubmitProgress={setSubmitInProgress}
