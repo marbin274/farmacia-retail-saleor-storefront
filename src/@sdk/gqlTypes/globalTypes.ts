@@ -405,6 +405,7 @@ export interface AddressInput {
   phone?: string | null;
   latitude?: number | null;
   longitude?: number | null;
+  isDefault?: boolean | null;
 }
 
 export interface AttributeInput {

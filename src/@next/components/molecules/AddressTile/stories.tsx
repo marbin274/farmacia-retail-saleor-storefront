@@ -11,6 +11,7 @@ const Container = styled.div`
 
 const onEdit = action("onEdit");
 const onRemove = action("onRemove");
+const removeDefault = action("removeDefault");
 const setDefault = action("setDefault");
 
 const DEFAULT_PROPS = {
@@ -33,6 +34,7 @@ const DEFAULT_PROPS = {
   },
   onEdit,
   onRemove,
+  removeDefault,
   setDefault,
 };
 
