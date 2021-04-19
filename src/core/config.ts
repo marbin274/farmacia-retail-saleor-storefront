@@ -1,5 +1,6 @@
 import { aunaBrand5, aunaOrangeOnSale } from "@styles/constants";
 import { IPaymentGateway } from "@temp/@next/types";
+import { environmentName } from "@temp/constants";
 
 export const BASE_URL = "/";
 export const PRODUCTS_PER_PAGE = 8;
@@ -127,7 +128,7 @@ export const LIMA_BOUNDS: google.maps.LatLngBoundsLiteral = {
   west: -77.23,
 };
 
-export  const AVAIBLE_PAYMENTS: IPaymentGateway[] = 
+const AVAILABLE_PAYMENTS_QA: IPaymentGateway[] = 
 [
                 {                   
                    config:[
@@ -188,3 +189,67 @@ export  const AVAIBLE_PAYMENTS: IPaymentGateway[] =
                    name:"Niubiz",
                 },
              ]
+
+const AVAILABLE_PAYMENTS_PRD: IPaymentGateway[] = 
+[
+               {
+                  "config":[
+                     {
+                        "field":"store_customer_card",
+                        "value":"false",
+                     },
+                     {
+                        "field":"gateway_name",
+                        "value":"Niubiz",
+                     },
+                     {
+                        "field":"auto_capture",
+                        "value":"false",
+                     },
+                     {
+                        "field":"merchant_id",
+                        "value":"650182511",
+                     },
+                     {
+                        "field":"nb_security_url",
+                        "value":"https://apiprod.vnforapps.com/api.security/v1/security",
+                     },
+                     {
+                        "field":"nb_session_url",
+                        "value":"https://apiprod.vnforapps.com/api.ecommerce/v2/ecommerce/token/session/",
+                     },
+                     {
+                        "field":"nb_js_url",
+                        "value":"https://static-content.vnforapps.com/v2/js/checkout.js",
+                     },
+                     {
+                        "field":"nb_authorization_url",
+                        "value":"https://apiprod.vnforapps.com/api.authorization/v3/authorization/ecommerce/",
+                     },
+                     {
+                        "field":"nb_payform_url",
+                        "value":"https://static-content.vnforapps.com/elements/v1/payform.min.js",
+                     },
+                     {
+                        "field":"nb_check_url",
+                        "value":"https://apiprod.vnforapps.com/api.authorization/v3/retrieve/purchase/",
+                     },
+                     {
+                        "field":"nb_cancel_url",
+                        "value":"https://apiprod.vnforapps.com/api.authorization/v3/void/ecommerce/",
+                     },
+                     {
+                        "field":"store_customer",
+                        "value":"false",
+                     },
+                     {
+                        "field":"require_3d_secure",
+                        "value":"false",
+                     },
+                  ],
+                  "id":"farmacia-retail.payments.niubiz",
+                  "name":"Niubiz",
+               },
+            ]
+
+export const AVAILABLE_PAYMENTS = environmentName === 'prod' ? AVAILABLE_PAYMENTS_PRD : AVAILABLE_PAYMENTS_QA

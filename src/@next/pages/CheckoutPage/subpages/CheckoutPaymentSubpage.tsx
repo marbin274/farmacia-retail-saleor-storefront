@@ -4,7 +4,7 @@ import { alertService } from "@temp/@next/components/atoms/Alert";
 import { IUserDataForNiubiz } from "@temp/@next/components/organisms/CheckoutPayment/types";
 import { ShopContext } from "@temp/components/ShopProvider/context";
 import {
-  AVAIBLE_PAYMENTS,
+  AVAILABLE_PAYMENTS,
   billingAddressAlwaysSameAsShipping,
   CHECKOUT_STEPS,
 } from "@temp/core/config";
@@ -102,7 +102,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
     : undefined;
   const paymentGateways = availablePaymentGateways?.length
     ? availablePaymentGateways
-    : AVAIBLE_PAYMENTS;
+    : AVAILABLE_PAYMENTS;
   // TODO 
   // reload data from backend and  put in cache
 
