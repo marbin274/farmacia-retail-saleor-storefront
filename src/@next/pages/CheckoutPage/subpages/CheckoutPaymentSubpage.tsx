@@ -4,6 +4,7 @@ import { alertService } from "@temp/@next/components/atoms/Alert";
 import { IUserDataForNiubiz } from "@temp/@next/components/organisms/CheckoutPayment/types";
 import { ShopContext } from "@temp/components/ShopProvider/context";
 import {
+  AVAILABLE_PAYMENTS,
   billingAddressAlwaysSameAsShipping,
   CHECKOUT_STEPS,
 } from "@temp/core/config";
@@ -99,9 +100,11 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
         phone: checkout?.billingAddress?.phone || undefined,
       }
     : undefined;
-  const paymentGateways = availablePaymentGateways
+  const paymentGateways = availablePaymentGateways?.length
     ? availablePaymentGateways
-    : [];
+    : AVAILABLE_PAYMENTS;
+  // TODO 
+  // reload data from backend and  put in cache
 
   const checkoutBillingFormId = "billing-form";
   const checkoutBillingFormRef = useRef<HTMLFormElement>(null);

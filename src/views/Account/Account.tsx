@@ -18,8 +18,9 @@ import {
 import { AccountMenu, AccountMenuMobile } from "@components/molecules";
 import { AccountTab, OrdersHistory } from "@pages";
 import { Breadcrumbs, Loader } from "../../components";
+import { UserDetails_me } from "@temp/@sdk/queries/gqlTypes/UserDetails";
 
-const returnTab: any = (path: string, userDetails, history) => {
+const returnTab: any = (path: string, userDetails:UserDetails_me, history) => {
   let tabContent = <></>;
   switch (path) {
     case accountUrl: {

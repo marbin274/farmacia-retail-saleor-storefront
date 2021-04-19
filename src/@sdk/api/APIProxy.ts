@@ -7,6 +7,7 @@ import {
 import { GraphQLError } from "graphql";
 
 import { fireSignOut, getAuthToken, setAuthToken } from "../auth";
+import { removeGaUserId, setGaUserId } from "../gaConfig";
 import { MUTATIONS } from "../mutations";
 import { PasswordChange } from "../mutations/gqlTypes/PasswordChange";
 import { SetPassword } from "../mutations/gqlTypes/SetPassword";
@@ -104,12 +105,16 @@ export class APIProxy {
     }
   ) => {
     if (this.isLoggedIn()) {
-      return this.watchQuery(QUERIES.UserDetails, (data) => data.me)(
+      return this.watchQuery(QUERIES.UserDetails, (data) => {
+        setGaUserId(data.me?.id);
+        return data.me
+      })(
         variables,
         options
       );
     }
     if (options.onUpdate) {
+      removeGaUserId();
       options.onUpdate(null);
     }
     return {

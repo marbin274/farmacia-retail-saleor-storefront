@@ -6,6 +6,7 @@ import { AddressTile } from ".";
 
 const onEdit = jest.fn();
 const onRemove = jest.fn();
+const removeDefault = jest.fn();
 const setDefault = jest.fn();
 
 const DEFAULT_PROPS = {
@@ -28,6 +29,7 @@ const DEFAULT_PROPS = {
   },
   onEdit,
   onRemove,
+  removeDefault,
   setDefault,
 };
 
@@ -61,7 +63,7 @@ describe("<AddressTile />", () => {
     expect(onEdit).toHaveBeenCalled();
   });
 
-  it("should NOT run setDefault method for clicking on Set default when address is default already", () => {
+  it("should run remove setDefault method for clicking on Set default when address is default already", () => {
     const wrapper = mount(<AddressTile {...DEFAULT_PROPS} />);
 
     wrapper
@@ -69,7 +71,7 @@ describe("<AddressTile />", () => {
       .first()
       .simulate("click");
 
-    expect(setDefault).not.toBeCalled();
+    expect(removeDefault).toBeCalled();
   });
 
   it("should run setDefault method for clicking on Set default", () => {

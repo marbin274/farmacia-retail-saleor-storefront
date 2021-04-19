@@ -93,6 +93,12 @@ const CheckoutShipping: React.FC<IProps> = ({
     setErrors({});
   }
 
+  React.useEffect(()=>{
+    if(values.shippingMethod && !selectedShippingMethodId){
+      setFieldValue("shippingMethod", undefined);
+    }
+  },[selectedShippingMethodId]);
+
    
   return (
     <section>

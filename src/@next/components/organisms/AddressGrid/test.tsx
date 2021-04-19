@@ -27,6 +27,7 @@ const address = {
   id: "12345",
   onEdit: jest.fn(),
   onRemove: jest.fn(),
+  removeDefault: jest.fn(),
   setDefault: jest.fn(),
 };
 

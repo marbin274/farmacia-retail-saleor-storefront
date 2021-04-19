@@ -6,6 +6,7 @@ import { AddressGrid } from ".";
 
 const onEdit = action("onEdit");
 const onRemove = action("onRemove");
+const removeDefault = action("removeDefault");
 const setDefault = action("setDefault");
 
 const DEFAULT_PROPS = {
@@ -26,6 +27,7 @@ const DEFAULT_PROPS = {
   id: "1",
   onEdit,
   onRemove,
+  removeDefault,
   setDefault,
 };
 
@@ -50,6 +52,7 @@ const addressSimple = {
   id: "1",
   onEdit,
   onRemove,
+  removeDefault,
   setDefault,
 };
 

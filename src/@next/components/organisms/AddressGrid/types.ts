@@ -5,6 +5,7 @@ declare type Address = {
   onEdit: () => void;
   onRemove: () => void;
   setDefault: () => void;
+  removeDefault: () => void;
   address: IAddressWithAddressType;
 };
 export interface IProps {

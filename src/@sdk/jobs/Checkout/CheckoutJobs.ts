@@ -104,12 +104,14 @@ export class CheckoutJobs {
     } else {
       this.repository.setCheckout({
         ...checkout,
+        availableShippingMethods: data?.availableShippingMethods,
         billingAsShipping: false,
         dataTreatmentPolicy: data?.dataTreatmentPolicy,
         documentNumber: data?.documentNumber,
         email: data?.email,
         selectedShippingAddressId,
         shippingAddress: data?.shippingAddress,
+        shippingMethod: data?.shippingMethod,
         termsAndConditions: data?.termsAndConditions,
       });
       return { data };
@@ -217,13 +219,11 @@ export class CheckoutJobs {
     } else {
       const newCheckout = {
         ...checkout,
+        availableShippingMethods: data?.availableShippingMethods,
         promoCodeDiscount: data?.promoCodeDiscount,
         scheduleDate: data?.scheduleDate,
         shippingMethod: data?.shippingMethod,
       };
-      if(!newCheckout.shippingMethod){
-        newCheckout.availableShippingMethods = data?.availableShippingMethods;
-      }
       this.repository.setCheckout(newCheckout);
       return { data };
     }
