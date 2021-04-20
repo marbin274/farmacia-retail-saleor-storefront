@@ -14,7 +14,7 @@ export const ProductListAUNA: React.FC<IProps> = ({
   productsOnCart,
   addToCart,
   removeItemToCart,
-  substractItemToCart,
+  subtractItemToCart,
 }: IProps) => {
 
   return (
@@ -28,7 +28,7 @@ export const ProductListAUNA: React.FC<IProps> = ({
             key={product.id}
             addToCart={addToCart}
             removeItemToCart={removeItemToCart}
-            substractItemToCart={substractItemToCart}
+            subtractItemToCart={subtractItemToCart}
             product={product}
             productsOnCart={productsOnCart}
             productUrl={generateProductUrl(product.id, product.name)}

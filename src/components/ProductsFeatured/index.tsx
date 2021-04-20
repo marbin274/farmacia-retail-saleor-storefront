@@ -1,10 +1,4 @@
-import {
-  IAddToCartCallback,
-  IRemoveItemToCartCallback,
-  ISubstractItemToCartCallback,
-} from "@app/components/molecules/ProductTileAUNA/types";
 import { ISimpleProduct } from "@app/types/IProduct";
-import { IItems } from "@sdk/api/Cart/types";
 import { Carousel } from "@temp/@next/components/containers";
 import { ProductTileAUNA } from "@temp/@next/components/molecules";
 import { getProductsWithQuantity } from "@temp/@next/utils/products";
@@ -14,22 +8,14 @@ import { generateProductUrl, maybe } from "@temp/core/utils";
 import * as React from "react";
 import "./scss/index.scss";
 import * as S from "./styles";
+import { IProps } from "./types";
 
-interface ProductsFeaturedProps {
-  loading: boolean;
-  productsOnCart: IItems;
-  title?: string;
-  addToCart: IAddToCartCallback;
-  removeItemToCart: IRemoveItemToCartCallback;
-  substractItemToCart: ISubstractItemToCartCallback;
-}
 
-const ProductsFeatured: React.FC<ProductsFeaturedProps> = ({
-  loading,
+const ProductsFeatured: React.FC<IProps> = ({
   productsOnCart,
   removeItemToCart,
   addToCart,
-  substractItemToCart,
+  subtractItemToCart,
 }) => {
   return (
     <TypedFeaturedProductsQuery
@@ -57,7 +43,7 @@ const ProductsFeatured: React.FC<ProductsFeaturedProps> = ({
                           key={product.id}
                           addToCart={addToCart}
                           removeItemToCart={removeItemToCart}
-                          substractItemToCart={substractItemToCart}
+                          subtractItemToCart={subtractItemToCart}
                           product={product}
                           productsOnCart={productsOnCart}
                           productUrl={generateProductUrl(

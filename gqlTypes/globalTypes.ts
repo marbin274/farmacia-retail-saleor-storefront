@@ -277,6 +277,11 @@ export enum ProductOrderField {
   TYPE = "TYPE",
 }
 
+export enum ReportingPeriod {
+  THIS_MONTH = "THIS_MONTH",
+  TODAY = "TODAY",
+}
+
 export interface AttributeInput {
   slug: string;
   value?: string | null;

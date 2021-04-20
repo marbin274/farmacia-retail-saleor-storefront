@@ -210,7 +210,7 @@ class ProductDescription extends React.Component<
             product={product}
             addToCart={this.props.addToCart}
             removeItemToCart={this.props.removeToCart}
-            substractItemToCart={this.props.removeToCart}
+            subtractItemToCart={this.props.removeToCart}
           />
         </div>
       </div>

@@ -1,6 +1,7 @@
 import { ProductImage } from "@components/molecules";
 import { ICheckoutModelLine, ICheckoutModelLineVariantLocalStorage } from "@sdk/repository";
 import { checkProductCanAddToCart, productStickerRules } from "@temp/@next/utils/products";
+import { ProductsSelled } from "@temp/components/productsSelled";
 import * as React from "react";
 import Media from "react-media";
 import { ProductDescription } from "../../components";
@@ -18,8 +19,9 @@ import { ProductDetails_product } from "./gqlTypes/ProductDetails";
 class Page extends React.PureComponent<
   {
     product: ProductDetails_product;
-    add: (variant: ICheckoutModelLineVariantLocalStorage, quantity: number) => any;
-    remove: (variantId: string) => any;
+    add: (variant: ICheckoutModelLineVariantLocalStorage, quantity: number) => void;
+    remove: (variantId: string) => void;
+    subtract: (variantId: string) => void;
     items: ICheckoutModelLine[];
   },
   {
@@ -71,11 +73,11 @@ class Page extends React.PureComponent<
   };
 
   render() {
-    const { add, remove, items, product } = this.props;
+    const { add, remove, subtract, items, product } = this.props;
     const { canAddToCart } = checkProductCanAddToCart(
       this.props.product,
       this.props.items
-    );    
+    );
     const { isOnSale, isOutStock } = productStickerRules(product);
 
     return (
@@ -109,7 +111,7 @@ class Page extends React.PureComponent<
                         pricing={product.pricing}
                         productVariants={product.variants}
                         addToCart={add}
-                        removeToCart={remove}
+                        removeToCart={subtract}
                         setVariantId={this.setVariantId}
                       />
                     </div>
@@ -134,7 +136,7 @@ class Page extends React.PureComponent<
                           pricing={product.pricing}
                           productVariants={product.variants}
                           addToCart={add}
-                          removeToCart={remove}
+                          removeToCart={subtract}
                           setVariantId={this.setVariantId}
                         />
                       </div>
@@ -154,6 +156,13 @@ class Page extends React.PureComponent<
           </div>
         </div> */}
         {/* <OtherProducts products={product.category.products.edges} /> */}
+        <ProductsSelled
+          productDetail={product}
+          productsOnCart={items}
+          addToCart={add}
+          removeItemToCart={remove}
+          subtractItemToCart={subtract}
+        />
       </div>
     );
   }

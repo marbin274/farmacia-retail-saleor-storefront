@@ -10,7 +10,7 @@ import { itemNotificationsService } from "../../atoms/ItemsNotification";
 import {
   IAddToCartCallback,
   IRemoveItemToCartCallback,
-  ISubstractItemToCartCallback
+  ISubtractItemToCartCallback
 } from "../../molecules/ProductTileAUNA/types";
 import "./scss/index.scss";
 type IProps = {
@@ -21,7 +21,7 @@ type IProps = {
   maxValue?: number;
   addToCart: IAddToCartCallback | undefined;
   removeItemToCart?: IRemoveItemToCartCallback;
-  substractItemToCart?: ISubstractItemToCartCallback;
+  subtractItemToCart?: ISubtractItemToCartCallback;
 };
 
 const ItemsHandler: FC<IProps> = ({
@@ -31,7 +31,7 @@ const ItemsHandler: FC<IProps> = ({
   product,
   addToCart,
   removeItemToCart,
-  substractItemToCart,
+  subtractItemToCart,
 }) => {
   const [
     isValueLessThanMaxOrderPerProduct,
@@ -92,7 +92,7 @@ const ItemsHandler: FC<IProps> = ({
       if (product.quantity && product.quantity < 2) {
         removeItemToCart?.(firstProductVariant.id);
       } else {
-        substractItemToCart?.(firstProductVariant.id);
+        subtractItemToCart?.(firstProductVariant.id);
       }
     }
 

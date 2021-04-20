@@ -57,7 +57,7 @@ const extractMeta = (product: ProductDetails_product) => {
 };
 
 const View: React.FC<RouteComponentProps<{ id: string }>> = ({ match }) => {
-  const { addItem, subtractItem, items } = useCart();
+  const { addItem, removeItem, subtractItem, items } = useCart();
 
   return (
     <TypedProductDetailsQuery
@@ -86,7 +86,8 @@ const View: React.FC<RouteComponentProps<{ id: string }>> = ({ match }) => {
                   <Page
                     product={product}
                     add={addItem}
-                    remove={subtractItem}
+                    remove={removeItem}
+                    subtract={subtractItem}
                     items={items}
                   />
                 </MetaWrapper>

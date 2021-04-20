@@ -51,7 +51,7 @@ const ProductItem: React.FC<SearchResults_products_edges> = ({ node }) => {
               product={product}
               addToCart={addItem}
               removeItemToCart={subtractItem}
-              substractItemToCart={subtractItem}
+              subtractItemToCart={subtractItem}
             />
           </div>
         )}
