@@ -134,7 +134,10 @@ module.exports = ({ sourceDir, distDir }) => ({
       GTM_AUTH: "__",
       GTM_PREVIEW: "__",
       CDN_URL: "__",
-      MAPS_API_KEY: "__"
+      MAPS_API_KEY: "__",
+      MERCHANT_PASSWORD: "__",
+      MERCHANT_USERNAME: "__",
+      MERCHANT_ID: "__"
     }),
   ],
   node: {
