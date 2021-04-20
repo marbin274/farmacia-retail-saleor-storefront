@@ -6,7 +6,7 @@ export interface IPaymentGatewayConfig {
   /**
    * Gateway config value for key.
    */
-  value: string | null;
+  value: string | any;
 }
 
 export interface IPaymentGateway {

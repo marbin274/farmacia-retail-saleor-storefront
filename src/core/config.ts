@@ -1,6 +1,6 @@
 import { aunaBrand5, aunaOrangeOnSale } from "@styles/constants";
 import { IPaymentGateway } from "@temp/@next/types";
-import { environmentName } from "@temp/constants";
+import { environmentName, merchantPassword, merchantUsername, merchantId } from "@temp/constants";
 
 export const BASE_URL = "/";
 export const PRODUCTS_PER_PAGE = 8;
@@ -208,7 +208,15 @@ const AVAILABLE_PAYMENTS_PRD: IPaymentGateway[] =
                      },
                      {
                         "field":"merchant_id",
-                        "value":"650182511",
+                        "value":merchantId,
+                     },
+                     {
+                        "field":"merchant_username",
+                        "value":merchantUsername,                         
+                     },
+                     {
+                        "field":"merchant_password",
+                        "value":merchantPassword,                         
                      },
                      {
                         "field":"nb_security_url",
