@@ -1,7 +1,6 @@
 import { InputSelect, TextField, AddressAutocomplete } from "@components/molecules";
 import React from "react";
 import { IProps, ISelectProps } from "./types";
-import {useField} from 'formik';
 
 export const FirstNameTextField = ({ fieldsProps }: IProps) => {
     const { fieldErrors, required, values, basicInputProps } = fieldsProps;
@@ -34,27 +33,25 @@ export const PhoneTextField = ({ fieldsProps }: IProps) => {
 
 export const StreetAddress1 = ({ fieldsProps }: IProps) => {
     const { fieldErrors, values, setFieldValue } = fieldsProps;
-    const [field, , helpers] = useField("streetAddress1");
 
     return (
-      <AddressAutocomplete
-        {...field}
-        data-cy="addressAutocomplete"
-        name={field.name}
-        label="*Dirección"
-        placeholder="Ejemplo: Av.arenales 213"
-        value={{
-          lat: values?.latitude ? Number(values?.latitude) : undefined,
-          lng: values?.longitude ? Number(values?.longitude) : undefined,
-          text: field.value?.toString() || "",
-        }}
-        onChangeValue={value => {
-          helpers.setValue(value.text);
-          setFieldValue("latitude", value.lat ? String(value.lat) : "");
-          setFieldValue("longitude", value.lng ? String(value.lng) : "");
-        }}
-        errors={fieldErrors!.streetAddress1 || fieldErrors!.latitude}
-      />
+        <AddressAutocomplete
+            data-cy="addressAutocomplete"
+            name="streetAddress1"
+            label="*Dirección"
+            placeholder="Ejemplo: Av.arenales 213"
+            value={{
+                lat: values?.latitude ? Number(values?.latitude) : undefined,
+                lng: values?.longitude ? Number(values?.longitude) : undefined,
+                text: values?.streetAddress1 || "",
+            }}
+            onChangeValue={value => {
+                setFieldValue("streetAddress1", value.text || "");
+                setFieldValue("latitude", value.lat ? String(value.lat) : "");
+                setFieldValue("longitude", value.lng ? String(value.lng) : "");
+            }}
+            errors={fieldErrors!.streetAddress1}
+        />
     );
 };
 

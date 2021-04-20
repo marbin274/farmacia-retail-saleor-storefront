@@ -11,10 +11,7 @@ export const addressFormSchema = Yup.object().shape({
   documentNumber: SchemaValidation.documentNumberValidation,
   email: SchemaValidation.emailValidation,
   firstName: SchemaValidation.fullNameValidation,
-  latitude: Yup.number().when("streetAddress1", {
-    is: (address: string) => address?.length > 0,
-    then: Yup.number().required(COORDINATES_REQUIRED),
-  }),
+  latitude: Yup.number(),
   phone: SchemaValidation.phoneValidation,
   streetAddress1: Yup.string()
     .trim()
