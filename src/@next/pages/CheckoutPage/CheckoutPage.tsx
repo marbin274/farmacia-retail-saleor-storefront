@@ -6,16 +6,18 @@ import { IItems } from "@sdk/api/Cart/types";
 import {
   ecommerceProductsMapper,
   launchCheckoutEvent,
-  steps,
+  steps
 } from "@sdk/gaConfig";
 import { useCart, useCheckout } from "@sdk/react";
 import { alertService } from "@temp/@next/components/atoms/Alert";
 import {
   checkAttentionSchedule,
-  removePaymentItems,
+  removePaymentItems
 } from "@temp/@next/utils/checkoutValidations";
+import { LocalRepository } from "@temp/@sdk/repository";
 import { BASE_URL, CHECKOUT_STEPS } from "@temp/core/config";
 import { IFormError, ITaxedMoney } from "@types";
+import shippingMethodCalendarInfoIco from "images/auna/shipping-method-calendar-info.svg";
 import React, { useEffect, useRef, useState } from "react";
 import { Redirect, useLocation } from "react-router-dom";
 import { CheckoutRouter } from "./CheckoutRouter";
@@ -27,12 +29,13 @@ import {
   ICheckoutAddressSubpageHandles,
   ICheckoutPaymentSubpageHandles,
   ICheckoutReviewSubpageHandles,
-  ICheckoutShippingSubpageHandles,
+  ICheckoutShippingSubpageHandles
 } from "./subpages";
 import { IProps } from "./types";
-import shippingMethodCalendarInfoIco from "images/auna/shipping-method-calendar-info.svg";
-
+import { CartDeliveryDataModal } from '../../components/organisms/CartDeliveryDataModal/CartDeliveryDataModal';
 const prepareCartSummary = (
+  activeStepIndex: number,
+  onClickHandle: () => void,
   subtotalPrice?: ITaxedMoney | null,
   totalPrice?: ITaxedMoney | null,
   shippingTaxedPrice?: ITaxedMoney | null,
@@ -46,6 +49,8 @@ const prepareCartSummary = (
       promoCode={promoTaxedPrice}
       total={totalPrice}
       products={items}
+      activeStepIndex={activeStepIndex}
+      onClickHandle={onClickHandle}
     />
   );
 };
@@ -84,6 +89,7 @@ const getButton = (text: string, onClick: () => void) => {
 
 const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
   const { pathname } = useLocation();
+
   const {
     loaded: cartLoaded,
     discount,
@@ -92,6 +98,19 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     totalPrice,
     items,
   } = useCart();
+  
+  const localRepository = new LocalRepository()
+  if (items!==undefined){
+    localRepository.setFinallUseCart({
+      discount,
+      items,
+      shippingPrice,
+      subtotalPrice,
+      totalPrice,
+    })
+  }
+  
+
   const {
     availableShippingMethods,
     loaded: checkoutLoaded,
@@ -99,6 +118,8 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     payment,
     setShippingMethod,
   } = useCheckout();
+  
+
   const { isAttentionSchedule } = checkAttentionSchedule(
     checkoutLoaded,
     checkout,
@@ -132,6 +153,9 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
   const [addressSubPageErrors, setAddressSubPageErrors] = useState<
     IFormError[]
   >([]);
+
+  const [displayModalShowDetail, setDisplayModalShowDetail] = useState(false);  
+
 
   const [selectedPaymentGateway, setSelectedPaymentGateway] = useState<
     string | undefined
@@ -288,26 +312,40 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
       ({ variant }) => variant.product?.productType.isShippingRequired
     );
 
+  const onClickHandle = () => {
+    setDisplayModalShowDetail(true);
+  };
   return (
-    <Checkout
-      selectedPaymentGateway={selectedPaymentGateway}
-      loading={submitInProgress}
-      navigation={getCheckoutProgress(
-        cartLoaded && checkoutLoaded,
-        activeStepIndex,
-        !!isShippingRequiredForProducts,
-        pathname
+    <>
+      {displayModalShowDetail  && (
+         <CartDeliveryDataModal
+          checkout={checkout}
+          hideModal={()=>{setDisplayModalShowDetail(false);}}
+          title="Datos de entrega"
+       />
       )}
-      cartSummary={prepareCartSummary(
-        subtotalPrice,
-        totalPrice,
-        shippingTaxedPrice,
-        promoTaxedPrice,
-        items
-      )}
-      checkout={checkoutView}
-      button={getButton(activeStep.nextActionName, handleNextStepClick)}
-    />
+      <Checkout
+        selectedPaymentGateway={selectedPaymentGateway}
+        loading={submitInProgress}
+        navigation={getCheckoutProgress(
+          cartLoaded && checkoutLoaded,
+          activeStepIndex,
+          !!isShippingRequiredForProducts,
+          pathname
+        )}
+        cartSummary={prepareCartSummary(
+          activeStepIndex,
+          onClickHandle,
+          subtotalPrice,
+          totalPrice,
+          shippingTaxedPrice,
+          promoTaxedPrice,
+          items
+        )}
+        checkout={checkoutView}
+        button={getButton(activeStep.nextActionName, handleNextStepClick)}
+      />
+    </>
   );
 };
 

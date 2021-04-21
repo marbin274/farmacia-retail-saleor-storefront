@@ -2,6 +2,7 @@ import { CheckoutPayment } from "@components/organisms";
 import { useCart, useCheckout, useUserDetails } from "@sdk/react";
 import { alertService } from "@temp/@next/components/atoms/Alert";
 import { IUserDataForNiubiz } from "@temp/@next/components/organisms/CheckoutPayment/types";
+import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
 import { ShopContext } from "@temp/components/ShopProvider/context";
 import {
   AVAILABLE_PAYMENTS,
@@ -10,8 +11,10 @@ import {
 } from "@temp/core/config";
 import { IAddress, ICardData, IFormError } from "@types";
 import { filterNotEmptyArrayItems } from "@utils/misc";
+import ErrorPaymentIcon from "images/auna/credit-card-cancel.svg";
 import ErrorPromoCodeIcon from "images/auna/promo-code-error.svg";
 import PromoCodeCorrect from "images/auna/promo-code-correct.svg";
+
 import React, {
   forwardRef,
   RefForwardingComponent,
@@ -26,6 +29,7 @@ import { RouteComponentProps, useHistory } from "react-router";
 export interface ICheckoutPaymentSubpageHandles {
   submitPayment: () => void;
 }
+
 interface IProps extends RouteComponentProps<any> {
   selectedPaymentGateway?: string;
   selectedPaymentGatewayToken?: string;
@@ -64,9 +68,9 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
     addPromoCode,
     removePromoCode,
     createPayment,
+    completeCheckout,
   } = useCheckout();
 
-  // console.log(availablePaymentGateways);
 
   const { items, totalPrice } = useCart();
   const { countries } = useContext(ShopContext);
@@ -144,8 +148,9 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
   ) => {
     const { dataError } = await createPayment(gateway, token, cardData);
     const errors = dataError?.error;
-    changeSubmitProgress(false);
+    
     if (errors) {
+      changeSubmitProgress(false);
       alertService.sendAlert({
         buttonText: "Entendido",
         message: errors[0].message,
@@ -154,7 +159,39 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
       setGatewayErrors(errors);
     } else {
       setGatewayErrors([]);
-      history.push(CHECKOUT_STEPS[1].nextStepLink);
+
+      const { data, dataError } = await completeCheckout(requestPayload);
+      const confirmErrors = dataError?.error;
+      changeSubmitProgress(false);
+
+      if (confirmErrors) {
+        removePaymentItems();
+        alertService.sendAlert({
+          buttonText: "Entendido",
+          icon: ErrorPaymentIcon,
+          message:
+            "Por favor valida que todos tus datos de pago sean correctos e inténtalo de nuevo",
+          redirectionLink: CHECKOUT_STEPS[1].link,
+          title: "No pudimos procesar el pago",
+          type: "Info",
+        });
+
+        setGatewayErrors(confirmErrors);
+      } else {
+        setGatewayErrors([]);
+        history.push({
+          pathname: CHECKOUT_STEPS[2].nextStepLink,
+          state: {
+            id: data?.id,
+            orderNumber: data?.number,
+            sequentialCode: data?.sequentialCode,
+            token: data?.token,
+          },
+        });
+      }
+
+
+
     }
   };
 

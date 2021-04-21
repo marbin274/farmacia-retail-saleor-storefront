@@ -353,7 +353,7 @@ export class CheckoutJobs {
         },
       };
     } else {
-      // this.repository.setOrder(data);
+      this.repository.setFinallCheckout(this.repository.getCheckout())
       this.repository.setCheckout({});
       this.repository.setPayment({});
       return { data };

@@ -13,7 +13,7 @@ export const Modal = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 512px;
+  width: ${props => props.theme.modal.modalWidthMedium};
   max-width: 100%;
   max-height: 98%;
   z-index: 1000;
@@ -22,6 +22,7 @@ export const Modal = styled.div`
   background-color: ${props => props.theme.colors.white};
   margin-left: auto;
   margin-right: auto;
+  border-radius: 16px;
 `;
 
 export const Content = styled.div`

@@ -238,7 +238,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
           ) : (
             <div>
               <S.FieldsGroup>
-                {renderGroupLabel(1, "Cliente")}
+                {renderGroupLabel(1, "Datos Personales")}
                 <S.RowWithTwoCells>
                   <FirstNameTextField
                     fieldsProps={{ ...fieldsProps, required: true }}
@@ -299,7 +299,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                 </S.RowWithOneCell>
               </S.FieldsGroup>
               <S.FieldsGroup>
-                {renderGroupLabel(2, "Dirección")}
+                {renderGroupLabel(2, "Dirección de entrega")}
                 <div>
                   <StreetAddress1 fieldsProps={fieldsProps} />
                 </div>

@@ -55,7 +55,6 @@ export const CartSummary = styled.div`
   `}
 `;
 export const Button = styled.div`
-  max-width: 16.25rem;
   ${media.smallScreen`
     max-width: 100%;
     display: flex;
@@ -64,6 +63,14 @@ export const Button = styled.div`
   >  {
     &:first-child {
       padding: 0.9rem 1.5rem;
+      ${mediaUp.mediumScreen`
+        min-width: 13.25rem;
+        width: 15.25rem;
+
+      `}
+      ${media.smallScreen`
+        width: 90%;
+      `}
       > {
         &:first-child{
           font-size: 1rem;

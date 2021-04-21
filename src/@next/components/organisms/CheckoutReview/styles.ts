@@ -1,5 +1,5 @@
 import { media, styled } from "@styles";
-import { aunaInteractive, aunaBlack, aunaGrey100 } from "@styles/constants";
+import { aunaBrand3, aunaBlack, aunaGrey100 } from "@styles/constants";
 
 export const Wrapper = styled.div`
   div:nth-child(2) {
@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
     `}
 
     a {
-      color: ${aunaInteractive};
+      color: ${aunaBrand3};
     }
   }
 
@@ -26,7 +26,7 @@ export const Wrapper = styled.div`
     `}
 
     a {
-      color: ${aunaInteractive};
+      color: ${aunaBrand3};
     }
   }
 `;
@@ -46,17 +46,31 @@ export const ErrorMessages = styled.div`
 `;
 
 export const Title = styled.h4`
-  color: ${aunaInteractive};
-  font-size: 20px;
+  color: ${aunaBrand3};
   font-weight: 500;
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
+  margin-top: 0.625rem;
+`;
+
+export const MainTitle = styled.h3`
+  color: ${aunaBlack};
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  margin-top: 0.625rem;
 `;
 
 export const Text = styled.p`
   color: ${aunaGrey100};
-  font-size: 16px;
+  font-size: ${({theme}) => theme.typography.smallFontSize};
   font-weight: 300;
-  line-height: 24px;
+  line-height: 1.875rem;
+`;
+
+export const TextBold = styled.span`
+  font-weight: 600;
+  color: ${aunaBlack};
+  font-size: ${({theme}) => theme.typography.smallFontSize};
 `;
 
 export const SubTitle = styled.p`

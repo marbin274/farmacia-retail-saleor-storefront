@@ -1,4 +1,5 @@
-import { styled } from "@styles";
+import { styled, media } from "@styles";
+import { turquoise } from '@styles/constants';
 
 export const Wrapper = styled.div`
     border-radius: 1rem;
@@ -20,7 +21,7 @@ export const Body = styled.div`
     border-bottom: 1px solid ${({theme}) => theme.colors.aunaGreyDark};
     font-size: ${({theme}) => theme.typography.smallFontSize}
     font-weight: ${({theme}) => theme.typography.normalFontWeight}
-    padding: 0rem 2rem;
+    padding: 0rem 1.5rem;
 `;
 export const LineInfo = styled.div`   
     display: flex;    
@@ -29,7 +30,28 @@ export const LineInfo = styled.div`
 export const LineInfoDescription = styled.div`
     flex: 1;
 `;
+export const LineInfoDescriptionDetail = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    ${media.xSmallScreen`
+        min-width: 15rem;
+    `}
+`;
 export const LineInfoPrice = styled.div``;
+
+export const ShowDetailResumeWrapper = styled.div`
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1.5rem;
+    border: 0.0625rem solid ${turquoise};
+    width: 6.1875rem;
+    height: 2rem;
+    color: ${turquoise};
+    cursor: pointer;
+`;
 
 export const Footer = styled.div`
     color: ${({theme}) => theme.colors.shippingMethodBlack}

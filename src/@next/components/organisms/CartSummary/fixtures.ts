@@ -27,7 +27,14 @@ export const product = {
   },
 };
 
+const activeStepIndexCheckout = {
+  step1: 0,
+  step2: 1,
+};
+
 export const DEFAULT_PROPS = {
+  activeStepIndex: activeStepIndexCheckout.step1,
+  onClickHandle: ()=> undefined,
   products: [product, product, product],
   promoCode: money,
   shipping: money,

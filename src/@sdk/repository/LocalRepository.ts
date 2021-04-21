@@ -4,6 +4,7 @@ import {
   ILocalRepository,
   IPaymentModel,
   LocalStorageItems,
+  IUseCart,
 } from "./types";
 
 export class LocalRepository extends Repository implements ILocalRepository {
@@ -12,6 +13,18 @@ export class LocalRepository extends Repository implements ILocalRepository {
   }
   setCheckout(checkout: ICheckoutModel | null): void {
     this.saveObject(LocalStorageItems.CHECKOUT, checkout);
+  }
+  getFinallCheckout():  ICheckoutModel | null {
+    return this.retrieveObject(LocalStorageItems.FINAL_CHECKOUT);
+  }
+  setFinallCheckout(checkout: ICheckoutModel | null): void {
+    this.saveObject(LocalStorageItems.FINAL_CHECKOUT, checkout);
+  }
+  getFinallUseCart(): IUseCart | null {
+    return this.retrieveObject(LocalStorageItems.FINAL_USECART);
+  }
+  setFinallUseCart(checkout: IUseCart | null): void {
+    this.saveObject(LocalStorageItems.FINAL_USECART, checkout);
   }
   getResetPasswordEmail(): string | null {
     return this.retrieveItem(LocalStorageItems.RESET_PASSWORD_EMAIL)

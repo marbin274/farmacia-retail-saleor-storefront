@@ -7,12 +7,16 @@ import {
 
 import { ProductDetails_product_variants_pricing } from '../queries/gqlTypes/ProductDetails';
 import { IProductVariantPricing } from '@app/types/IProductVariantPricing';
+import { IDiscount, IShippingPrice, ISubtotalPrice, IItems } from "../api/Cart/types";
+import { ITotalPrice } from '@temp/@sdk/api/Cart/types';
 
 export enum LocalStorageItems {
   JOB_QUEUE_CHECKOUT = "job_queueCheckout",
   CHECKOUT = "data_checkout",
   PAYMENT = "data_payment",
   RESET_PASSWORD_EMAIL = "reset_password_email",
+  FINAL_CHECKOUT = "final_checkout",
+  FINAL_USECART = "final_use_cart",
 }
 
 export interface ICheckoutModelLineTotalPrice {
@@ -198,4 +202,14 @@ export interface ILocalRepository {
   setResetPasswordEmail(email: string): void;
   getPayment(): IPaymentModel | null;
   setPayment(payment: IPaymentModel | null): void;
+}
+
+export interface IUseCart {
+  loaded?: boolean;
+  discount: IDiscount;
+  shippingPrice: IShippingPrice;
+  subtotalPrice: ISubtotalPrice;
+  totalPrice: ITotalPrice;
+  items: IItems | undefined;
+  sizeItems?: number;
 }

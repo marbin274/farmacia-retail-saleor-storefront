@@ -27,4 +27,6 @@ export interface IProduct {
 
 export interface IProps extends ICosts {
   products?: IItems;
+  activeStepIndex: number;
+  onClickHandle: () => void;
 }

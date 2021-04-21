@@ -60,8 +60,8 @@ export const StreetAddress2 = ({ fieldsProps }: IProps) => {
     return <TextField
         data-cy="addressFormStreetAddress2"
         name="streetAddress2"
-        placeholder="Información adicional"
-        label="Información adicional"
+        placeholder="Edificio, apartamento"
+        label="Referencia"
         value={
             !values?.streetAddress2 ? "" : values?.streetAddress2
         }
