@@ -164,10 +164,3 @@ export const removeGaUserId = () => {
 export const getGaUserId = () => {
   return localStorage.getItem(GA_USER_ID_KEY) || "";
 };
-
-export const launchSearchEvent = (searchTerm?: string) => {
-  return pushToDatalayer({
-    event: "search",
-    searchTerm,
-  });
-};
