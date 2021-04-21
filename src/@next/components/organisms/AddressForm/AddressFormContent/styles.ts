@@ -1,5 +1,4 @@
 import { styled } from "@styles";
-import { aunaComplementary1 } from "@styles/constants";
 
 export const MapWrapper = styled.div`
   width: 100%;
@@ -15,8 +14,9 @@ export const Map = styled.div`
 `;
 
 export const MapHint = styled.div`
+  background-color: ${({theme})=>theme.colors.complementary1};
+  font-size: ${({theme})=>theme.typography.smallFontSize};
+  font-weight: ${({theme})=>theme.typography.boldFontWeight};
   height: 3rem;
-  font-size: 0.75rem;
-  background-color: ${aunaComplementary1};
   padding: 1rem;
 `;

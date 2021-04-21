@@ -114,7 +114,6 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
       !values.email ||
       !values.termsAndConditions ||
       !values.streetAddress1 ||
-      !values.latitude ||
       !value
     ) {
       setFieldValue(name, "");
@@ -304,8 +303,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                 <div>
                   <StreetAddress1 fieldsProps={fieldsProps} />
                 </div>
-                {(values?.longitude || initialValues?.streetAddress1) && (
-                  <Map
+                <Map
                     location={getCoordinates()}
                     onChangeLocation={(location, address) => {
                       setFieldValue("streetAddress1", address);
@@ -313,7 +311,6 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                       setFieldValue("longitude", String(location.lng));
                     }}
                   />
-                )}
                 <S.RowWithTwoCells>
                   <CitySelect
                     fieldsProps={{

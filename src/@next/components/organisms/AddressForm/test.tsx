@@ -44,6 +44,12 @@ describe("<AddressForm />", () => {
     expect(getField(4)).toEqual(PROPS.address?.streetAddress1);
     expect(getField(5)).toEqual(PROPS.address?.streetAddress2);
   });
+
+  it("should display map component always", ()=>{
+    const wrapper = mount(<AddressForm {...PROPS} />);
+    
+    expect(wrapper.render().text()).toContain("Puedes mover tu ubicación en el mapa");
+  });
 });
 
 describe("form contain data", () => {

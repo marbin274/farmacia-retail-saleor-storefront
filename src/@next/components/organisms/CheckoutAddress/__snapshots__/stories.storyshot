@@ -311,15 +311,16 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
   margin-bottom: 1.5rem;
 }
 
-.c18 {
+.c19 {
   width: 100%;
   height: 21.25rem;
 }
 
-.c19 {
-  height: 3rem;
-  font-size: 0.75rem;
+.c18 {
   background-color: #E6F6F9;
+  font-size: 0.875rem;
+  font-weight: 600;
+  height: 3rem;
   padding: 1rem;
 }
 
@@ -667,12 +668,12 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
               >
                 <div
                   className="c18"
-                />
-                <div
-                  className="c19"
                 >
                   Puedes mover tu ubicación en el mapa
                 </div>
+                <div
+                  className="c19"
+                />
               </div>
               <div
                 className="c7"
@@ -837,7 +838,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
   margin: 20px;
 }
 
-.c20 {
+.c23 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -946,12 +947,12 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
   top: 2.5px;
 }
 
-.c17 {
+.c20 {
   padding-top: 1.4rem;
   margin-bottom: 1.875rem;
 }
 
-.c19 {
+.c22 {
   top: 100%;
 }
 
@@ -1019,7 +1020,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
   color: #9194A7;
 }
 
-.c18 {
+.c21 {
   fill: #00B0CA;
   position: absolute;
   right: 1rem;
@@ -1132,6 +1133,27 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
 .c6 {
   font-weight: bolder;
   padding-left: 1rem;
+}
+
+.c17 {
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.c19 {
+  width: 100%;
+  height: 21.25rem;
+}
+
+.c18 {
+  background-color: #E6F6F9;
+  font-size: 0.875rem;
+  font-weight: 600;
+  height: 3rem;
+  padding: 1rem;
 }
 
 @media (max-width:540px) {
@@ -1474,10 +1496,22 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
                 </div>
               </div>
               <div
+                className="c17"
+              >
+                <div
+                  className="c18"
+                >
+                  Puedes mover tu ubicación en el mapa
+                </div>
+                <div
+                  className="c19"
+                />
+              </div>
+              <div
                 className="c7"
               >
                 <div
-                  className="c17"
+                  className="c20"
                 >
                   <div
                     className="css-1pcexqc-container"
@@ -1572,7 +1606,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
                         </div>
                       </div>
                       <div
-                        className="c18"
+                        className="c21"
                         rotate="false"
                       >
                         <svg
@@ -1595,7 +1629,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
                     </label>
                   </div>
                   <div
-                    className="c19"
+                    className="c22"
                   />
                 </div>
                 <div
@@ -1640,7 +1674,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
     </div>
   </section>
   <div
-    className="c20"
+    className="c23"
   />
 </div>
 `;
