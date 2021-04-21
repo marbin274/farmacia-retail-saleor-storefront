@@ -295,7 +295,7 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
   line-height: 170%;
   margin-bottom: 1.25rem;
   padding: 1.5rem;
-  width: 26.75rem;
+  width: 100%;
   text-align: center;
   border-radius: 16px;
 }
@@ -390,6 +390,12 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
 @media (min-width:720px) {
   .c12 > :nth-child(2) {
     width: 22.6875rem;
+  }
+}
+
+@media (min-width:720px) {
+  .c8 {
+    width: 26.75rem;
   }
 }
 

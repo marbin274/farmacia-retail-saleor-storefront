@@ -50,7 +50,10 @@ export const OrderInfo = styled.div`
   line-height: 170%;
   margin-bottom: 1.25rem;
   padding: 1.5rem;
-  width: 26.75rem;
+  width: 100%;
+  ${mediaUp.mediumScreen`
+    width: 26.75rem;
+  `}
   text-align: center;
   border-radius: 16px;
   span {
