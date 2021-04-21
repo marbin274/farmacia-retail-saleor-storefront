@@ -1,9 +1,3 @@
-import { IAddressWithAddressType } from "@types";
+import { IAddressBookDisplay } from "@types";
 
-export interface IProps {
-  onEdit: () => void;
-  onRemove: () => void;
-  setDefault: (arg0: string) => void;
-  removeDefault: () => void;
-  address: IAddressWithAddressType;
-}
+export type IProps = IAddressBookDisplay;

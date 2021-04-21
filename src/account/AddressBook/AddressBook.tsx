@@ -7,6 +7,8 @@ import { useDefaultUserAddress, useDeleteUserAddresss, useUpdateUserAddress } fr
 import { ShopContext } from "../../components/ShopProvider/context";
 import { citiesOptions } from "@temp/@next/components/organisms/CheckoutAddress/cities";
 import { UserDetails_me } from "@temp/@sdk/queries/gqlTypes/UserDetails";
+import { IAddressBookDisplay } from "@temp/@next/types";
+import { removeCountryCodeInPhoneNumber } from "@temp/@next/utils/addresForm";
 
 const AddressBook: React.FC<{
   user: UserDetails_me;
@@ -19,52 +21,50 @@ const AddressBook: React.FC<{
   const [setDeleteUserAddress] = useDeleteUserAddresss();
   const [setUpdateUserAddress] = useUpdateUserAddress();
 
-  const userAddresses = user.addresses.map(address => {
-    const addressToDisplay: any = { address: { ...address } };
-
-    addressToDisplay.onEdit = () => {
-      setDisplayEditModal(true);
-      setAddressData({
-        address,
-        id: address.id,
-      });
-    };
-
-    addressToDisplay.onRemove = () =>
-      setDeleteUserAddress({
+  const userAddresses = user.addresses.map(it => {
+    const address = { ...it, phone: removeCountryCodeInPhoneNumber(it.phone) };
+    const addressToDisplay: IAddressBookDisplay = {
+      address,
+      onEdit: () => {
+        setDisplayEditModal(true);
+        setAddressData({
+          address,
+          id: address.id,
+        });
+      },
+      onRemove: () => setDeleteUserAddress({
         addressId: address.id,
-      });
-
-    addressToDisplay.setDefault = (type: string) => {
-      setDefaultUserAddress({
-        id: address.id,
-        type:
-          type === "BILLING"
-            ? AddressTypeEnum.BILLING
-            : AddressTypeEnum.SHIPPING,
-      });      
+      }),
+      removeDefault: () => {
+        setUpdateUserAddress({
+          id: address.id,
+          input: {
+            city: address.city,
+            companyName: address.companyName,
+            country: CountryCode.PE,
+            countryArea: address.countryArea,
+            firstName: address.firstName,
+            isDefault: false,
+            lastName: address.lastName,
+            latitude: address.latitude,
+            longitude: address.longitude,
+            phone: address.phone,
+            postalCode: address.postalCode,
+            streetAddress1: address.streetAddress1,
+            streetAddress2: address.streetAddress2,
+          },
+        });
+      },
+      setDefault: (type: string) => {
+        setDefaultUserAddress({
+          id: address.id,
+          type:
+            type === "BILLING"
+              ? AddressTypeEnum.BILLING
+              : AddressTypeEnum.SHIPPING,
+        });
+      },
     };
-
-    addressToDisplay.removeDefault = () => {
-      setUpdateUserAddress({
-        id: address.id,
-        input: {
-          city: address.city,
-          companyName: address.companyName,
-          country: CountryCode.PE,
-          countryArea: address.countryArea,
-          firstName: address.firstName,
-          isDefault: false,
-          lastName: address.lastName,
-          latitude: address.latitude,
-          longitude: address.longitude,
-          phone: address.phone,
-          postalCode: address.postalCode,
-          streetAddress1: address.streetAddress1,
-          streetAddress2: address.streetAddress2,
-        },
-      });
-    }
     return addressToDisplay;
   });
 
