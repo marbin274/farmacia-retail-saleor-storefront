@@ -1,4 +1,5 @@
-@import "../../../globalStyles/scss/variables.scss";
+@import "@temp/globalStyles/scss/variables.scss";
+
 .product-description {
   .price {
     font-size: $price-font-size;
@@ -92,14 +93,19 @@
 
   &__error-message {
     color: $message-error-color;
-    margin-top: 22px;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
   }
 
   &__quantity {
     display: flex;
     flex-direction: row;
     height: 42px;
-    margin-top: 42px;
+    margin-bottom: 1.5rem;
+
+    @media (max-width: $small-screen) {
+      display: none;
+    }
 
     .itemHandler {
       width: 100% !important;

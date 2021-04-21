@@ -17,7 +17,7 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
   box-sizing: border-box;
 }
 
-.c2 {
+.c1 {
   background-color: #00B0CA;
   padding: 0.9rem 3.7rem;
   border: none;
@@ -30,28 +30,28 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
   width: auto;
 }
 
-.c2:hover {
+.c1:hover {
   background-color: #0BC1DC;
   color: #fff;
 }
 
-.c2:active {
+.c1:active {
   background-color: #029FB7;
   box-shadow: -3px 3px 14px 0px rgba(129,67,67,0.2);
 }
 
-.c2:disabled {
+.c1:disabled {
   background-color: #F1F2F7;
   color: #B8BCD5;
   cursor: default;
 }
 
-.c2:disabled,
-.c2:disabled:hover {
+.c1:disabled,
+.c1:disabled:hover {
   cursor: default;
 }
 
-.c3 {
+.c2 {
   display: inline-block;
   font-size: 1.125rem;
   font-weight: 400;
@@ -62,13 +62,13 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
   user-select: none;
 }
 
-.c1 {
+.c3 {
   display: grid;
   grid-template-columns: 1fr;
 }
 
 @media (max-width:540px) {
-  .c2 {
+  .c1 {
     padding: 0.9rem 1rem;
     width: 88%;
   }
@@ -83,9 +83,34 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
     <h3>
       "Producto 1"
     </h3>
-    <span>
-      
-    </span>
+    <div>
+      <span>
+        
+      </span>
+    </div>
+    <div
+      className="product-description__quantity"
+    >
+      <div
+        className="button"
+      >
+        <button
+          className="c1"
+          color="primary"
+          disabled={true}
+          onClick={[Function]}
+          size="md"
+          type="button"
+        >
+          <span
+            className="c2"
+            size="md"
+          >
+            Agregar
+          </span>
+        </button>
+      </div>
+    </div>
     <div
       className="html_from_json"
       dangerouslySetInnerHTML={
@@ -98,31 +123,8 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
       className="product-description__variant-picker"
     >
       <div
-        className="c1"
+        className="c3"
       />
-    </div>
-    <div
-      className="product-description__quantity"
-    >
-      <div
-        className="button"
-      >
-        <button
-          className="c2"
-          color="primary"
-          disabled={true}
-          onClick={[Function]}
-          size="md"
-          type="button"
-        >
-          <span
-            className="c3"
-            size="md"
-          >
-            Agregar
-          </span>
-        </button>
-      </div>
     </div>
   </div>
   <div

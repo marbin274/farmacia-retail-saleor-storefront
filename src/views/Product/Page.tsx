@@ -1,6 +1,12 @@
 import { ProductImage } from "@components/molecules";
-import { ICheckoutModelLine, ICheckoutModelLineVariantLocalStorage } from "@sdk/repository";
-import { checkProductCanAddToCart, productStickerRules } from "@temp/@next/utils/products";
+import {
+  ICheckoutModelLine,
+  ICheckoutModelLineVariantLocalStorage,
+} from "@sdk/repository";
+import {
+  checkProductCanAddToCart,
+  productStickerRules,
+} from "@temp/@next/utils/products";
 import { ProductsSelled } from "@temp/components/productsSelled";
 import * as React from "react";
 import Media from "react-media";
@@ -19,7 +25,10 @@ import { ProductDetails_product } from "./gqlTypes/ProductDetails";
 class Page extends React.PureComponent<
   {
     product: ProductDetails_product;
-    add: (variant: ICheckoutModelLineVariantLocalStorage, quantity: number) => void;
+    add: (
+      variant: ICheckoutModelLineVariantLocalStorage,
+      quantity: number
+    ) => void;
     remove: (variantId: string) => void;
     subtract: (variantId: string) => void;
     items: ICheckoutModelLine[];
@@ -113,6 +122,7 @@ class Page extends React.PureComponent<
                         addToCart={add}
                         removeToCart={subtract}
                         setVariantId={this.setVariantId}
+                        isSmallScreen={matches}
                       />
                     </div>
                   </>
@@ -138,6 +148,7 @@ class Page extends React.PureComponent<
                           addToCart={add}
                           removeToCart={subtract}
                           setVariantId={this.setVariantId}
+                          isSmallScreen={matches}
                         />
                       </div>
                     </div>
