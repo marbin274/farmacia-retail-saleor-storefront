@@ -265,7 +265,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                   <TextField
                     data-cy="addressFormEmail"
                     name="email"
-                    placeholder="Email"
+                    placeholder="Correo electrónico"
                     label="*Correo electrónico"
                     value={!values?.email ? "" : values?.email}
                     autoComplete="email"

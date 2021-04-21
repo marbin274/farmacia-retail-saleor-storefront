@@ -473,7 +473,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                         onBlur={[Function]}
                         onChange={[Function]}
                         onFocus={[Function]}
-                        placeholder="Email"
+                        placeholder="Correo electrónico"
                         value=""
                       />
                       <label
@@ -1326,7 +1326,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                         onBlur={[Function]}
                         onChange={[Function]}
                         onFocus={[Function]}
-                        placeholder="Email"
+                        placeholder="Correo electrónico"
                         value=""
                       />
                       <label
@@ -2179,7 +2179,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                         onBlur={[Function]}
                         onChange={[Function]}
                         onFocus={[Function]}
-                        placeholder="Email"
+                        placeholder="Correo electrónico"
                         value="abc@xyz.com"
                       />
                       <label
