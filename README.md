@@ -77,7 +77,7 @@ Run the development server:
 npm start 
 ```
 
-Go to `http://localhost:3000` to access the storefront.
+Go to `http://localhost:3000` to access the storefront .
 
 ## Given a version number MAJOR.MINOR.PATCH, increment the:
     MAJOR version when you make new versions of platform. BREAKING CHANGE
