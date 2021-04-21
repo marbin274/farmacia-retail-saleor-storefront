@@ -122,7 +122,7 @@ exports[`Storyshots @components/organisms/CheckoutReview default 1`] = `
       <p
         className="c4"
       >
-        DNI: 
+        Número de documento: 
         <span
           className="c5"
         />
@@ -157,8 +157,8 @@ exports[`Storyshots @components/organisms/CheckoutReview default 1`] = `
       >
         Tiempo de entrega
       </h4>
-      <p
-        className="c4"
+      <span
+        className="c5"
       />
     </div>
     <div>

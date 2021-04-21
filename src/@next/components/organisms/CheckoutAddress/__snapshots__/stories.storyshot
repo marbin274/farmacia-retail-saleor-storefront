@@ -474,7 +474,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                         className="c12"
                         disabled={false}
                       >
-                        *Email
+                        *Correo electrónico
                       </label>
                     </div>
                   </div>
@@ -1306,7 +1306,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
                         className="c12"
                         disabled={false}
                       >
-                        *Email
+                        *Correo electrónico
                       </label>
                     </div>
                   </div>

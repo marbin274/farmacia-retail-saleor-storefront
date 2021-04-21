@@ -21,7 +21,7 @@ const CheckoutReview: React.FC<IProps> = ({
         <S.MainTitle> Datos de entrega</S.MainTitle>
         <S.Title data-cy="checkoutReviewSectionTitle">Datos personales</S.Title>
         <S.Text><S.TextBold>{checkout?.billingAddress?.firstName} {checkout?.billingAddress?.lastName}</S.TextBold></S.Text>
-        <S.Text>DNI: <S.TextBold>{checkout?.documentNumber}</S.TextBold></S.Text>
+        <S.Text>Número de documento: <S.TextBold>{checkout?.documentNumber}</S.TextBold></S.Text>
         <S.Text>Correo electrónico: <S.TextBold>{email}</S.TextBold></S.Text>
         <S.Text>Telefono: <S.TextBold>{checkout?.billingAddress?.phone}</S.TextBold></S.Text>
         <S.Title data-cy="checkoutReviewSectionTitle">Dirección de entrega</S.Title>
@@ -32,10 +32,10 @@ const CheckoutReview: React.FC<IProps> = ({
           Tiempo de entrega
         </S.Title>
         {!scheduleDate ? (
-          <S.Text>{shippingMethodName}</S.Text>
+          <S.TextBold>{shippingMethodName}</S.TextBold>
         ) : (
           <>
-            <S.SubTitle>Pedido programado</S.SubTitle>
+            <S.TextBold> {shippingMethodName}</S.TextBold>
             <S.Text>
               Fecha:{" "}
               <S.TextBold>

@@ -74,7 +74,7 @@ const ThankYou: React.FC<IProps> = ({
         />
       <S.Wrapper>
         <S.ThankYouHeader>
-          <span>Gracias</span>
+          <span>¡Gracias!</span>
           <br />
           Recibimos tu orden!
         </S.ThankYouHeader>

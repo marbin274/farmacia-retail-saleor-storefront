@@ -442,7 +442,7 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
         className="c7"
       >
         <span>
-          Gracias
+          ¡Gracias!
         </span>
         <br />
         Recibimos tu orden!
@@ -500,7 +500,7 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
           <p
             className="c16"
           >
-            DNI: 
+            Número de documento: 
             <span
               className="c17"
             />
@@ -535,8 +535,8 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
           >
             Tiempo de entrega
           </h4>
-          <p
-            className="c16"
+          <span
+            className="c17"
           />
         </div>
         <div>

@@ -480,7 +480,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                         className="c13"
                         disabled={false}
                       >
-                        *Email
+                        *Correo electrónico
                       </label>
                     </div>
                   </div>
@@ -1333,7 +1333,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                         className="c13"
                         disabled={false}
                       >
-                        *Email
+                        *Correo electrónico
                       </label>
                     </div>
                   </div>
@@ -2186,7 +2186,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                         className="c13"
                         disabled={false}
                       >
-                        *Email
+                        *Correo electrónico
                       </label>
                     </div>
                   </div>

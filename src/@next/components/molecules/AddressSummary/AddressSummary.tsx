@@ -24,16 +24,6 @@ const AddressSummary: React.FC<IProps> = ({ address, checkout, email }: IProps) 
             {reference} 
           </S.TextBold>
         </S.Text>
-        {address.phone && (
-          <S.Text>
-            Telefono: <S.TextBold>{address.phone}</S.TextBold>
-          </S.Text>
-        )}
-        {email && (
-          <S.Text>
-            Email: <S.TextBold>{email}</S.TextBold>
-          </S.Text>
-        )}
       </S.Wrapper>
     );
   } else if (email) {

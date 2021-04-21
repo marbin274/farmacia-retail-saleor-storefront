@@ -80,7 +80,7 @@ exports[`Storyshots @components/organisms/SelectSidebar default 1`] = `
   font-size: 1rem;
   font-weight: 600;
   color: #323232;
-  text-transform: uppercase;
+  text-transform: camelcase;
   padding-right: 0.6rem;
   margin: 0;
 }
@@ -521,7 +521,7 @@ exports[`Storyshots @components/organisms/SelectSidebar with footer 1`] = `
   font-size: 1rem;
   font-weight: 600;
   color: #323232;
-  text-transform: uppercase;
+  text-transform: camelcase;
   padding-right: 0.6rem;
   margin: 0;
 }

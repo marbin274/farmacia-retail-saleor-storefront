@@ -15,7 +15,7 @@ export const Title = styled.h4<{ size: TitleSize }>`
     size === "lg" ? typography.h4FontSize : typography.baseFontSize};
   font-weight: ${props => props.theme.typography.boldFontWeight};
   color: ${props => props.theme.colors.baseFont};
-  text-transform: uppercase;
+  text-transform: camelcase;
   padding-right: 0.6rem;
   margin: 0;
 `;

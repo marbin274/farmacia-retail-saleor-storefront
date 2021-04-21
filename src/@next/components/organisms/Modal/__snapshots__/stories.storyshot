@@ -148,7 +148,7 @@ exports[`Storyshots @components/organisms/Modal Modal Form 1`] = `
   font-size: 1rem;
   font-weight: 600;
   color: #323232;
-  text-transform: uppercase;
+  text-transform: camelcase;
   padding-right: 0.6rem;
   margin: 0;
 }
@@ -493,7 +493,7 @@ exports[`Storyshots @components/organisms/Modal Modal Form disabled 1`] = `
   font-size: 1rem;
   font-weight: 600;
   color: #323232;
-  text-transform: uppercase;
+  text-transform: camelcase;
   padding-right: 0.6rem;
   margin: 0;
 }
@@ -829,7 +829,7 @@ exports[`Storyshots @components/organisms/Modal Modal Info 1`] = `
   font-size: 1rem;
   font-weight: 600;
   color: #323232;
-  text-transform: uppercase;
+  text-transform: camelcase;
   padding-right: 0.6rem;
   margin: 0;
 }
