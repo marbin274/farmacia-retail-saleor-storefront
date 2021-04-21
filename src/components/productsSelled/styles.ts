@@ -20,7 +20,8 @@ export const WraperOpenBanner = styled.div`
 export const Title = styled.h3`
   color: ${({theme})=> theme.colors.aunaBlack};
   font-size: ${({theme})=> theme.typography.h3FontSize};
-  font-weigth: ${({theme})=> theme.typography.boldFontWeight};
+  font-weight: ${({theme})=> theme.typography.boldFontWeight};
+  margin-bottom: 2rem;
 `
 
 export const TopImageDistrictBannerOpen = styled.div<{
