@@ -1,4 +1,5 @@
 import { SEARCH_PRODUCTS_QUERY_MIN_LENGTH } from "@temp/core/config";
+import { launchSearchEvent } from "@temp/@sdk/gaConfig";
 import classNames from "classnames";
 import closeImg from "images/close.svg";
 import searchImg from "images/search.svg";
@@ -38,6 +39,7 @@ export const SearchForm: React.FC<SearchFormProps> = ({
     evt.preventDefault();
     if (hasSearchPhrase && submit) {
       const searchQs = stringify({ q: search });
+      launchSearchEvent(search);
       submit(searchQs);
     }
   };
