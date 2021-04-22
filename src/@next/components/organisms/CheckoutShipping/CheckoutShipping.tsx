@@ -5,10 +5,8 @@ import { IShippingMethodUpdate, IShippingMethodUpdateScheduleDate } from "@temp/
 import { SHIPPING_FORMAT_DATE } from "@temp/core/config";
 import { format } from "date-fns";
 import { useFormik } from "formik";
-import ErrorFormPopulateIcon from "images/auna/form-populate-error.svg";
 import React from "react";
 import { ErrorMessage } from "../../atoms";
-import { alertService } from "../../atoms/Alert";
 import { shippingMethodFormSchema } from "./schema";
 import * as S from "./styles";
 import { ICheckoutShipping, IProps } from "./types";
@@ -96,18 +94,6 @@ const CheckoutShipping: React.FC<IProps> = ({
   }
 
 
-  React.useEffect(() => {
-    if (formikErrors?.shippingMethod) {
-      alertService.sendAlert({
-        buttonText: "Entendido",
-        icon: ErrorFormPopulateIcon,
-        message: "Por favor selecciona el tiempo de entrega",
-        title: "¿Cúando deseas recibir tu pedido?",
-        type: "Info",
-      });
-    }
-  }, [formikErrors.shippingMethod]);
-
   React.useEffect(()=>{
     if(values.shippingMethod && !selectedShippingMethodId){
       setFieldValue("shippingMethod", undefined);
@@ -130,7 +116,7 @@ const CheckoutShipping: React.FC<IProps> = ({
                 <S.ShippingMethodContainer
                   key={id}
                   data-cy={`checkoutShippingMethodOption${index}Input`}
-                  hasError={!!formikErrors?.shippingMethod}
+                  hasError={(!!formikErrors?.shippingMethod && !values.shippingMethod)}
                   selected={selected}    
                   onClick={() => handleOnclick(id, !!isScheduled, scheduleDates, selected)}
                 >
@@ -155,7 +141,7 @@ const CheckoutShipping: React.FC<IProps> = ({
                 </S.ShippingMethodContainer>  
               );
             })}
-            {formikErrors?.shippingMethod && <ErrorMessage errors={[{ message: formikErrors.shippingMethod }]} />}       
+            {(formikErrors?.shippingMethod && !values.shippingMethod) && <ErrorMessage errors={[{ message: formikErrors.shippingMethod }]} />}       
           </form>
         </S.FieldsGroup>
     </section>
