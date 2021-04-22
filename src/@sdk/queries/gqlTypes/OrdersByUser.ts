@@ -138,6 +138,10 @@ export interface OrdersByUser_me_orders_edges_node {
    * User-friendly order status.
    */
   statusDisplay: string | null;
+  /**
+   * Customer-friendly payment status.
+   */
+  customerStatusDisplay: string | null;
   created: any;
   /**
    * Total amount of the order.

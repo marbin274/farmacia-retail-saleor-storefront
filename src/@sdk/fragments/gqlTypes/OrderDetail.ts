@@ -2,7 +2,7 @@
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
-import { PaymentChargeStatusEnum, OrderStatus } from "./../../gqlTypes/globalTypes";
+import { PaymentChargeStatusEnum, ShippingStatusEnum, OrderStatus } from "./../../gqlTypes/globalTypes";
 
 // ====================================================
 // GraphQL fragment: OrderDetail
@@ -517,6 +517,14 @@ export interface OrderDetail {
    * User-friendly payment status.
    */
   paymentStatusDisplay: string | null;
+  /**
+   * Internal shipping status.
+   */
+  shippingStatus: ShippingStatusEnum | null;
+  /**
+   * Customer-friendly payment status.
+   */
+  customerStatusDisplay: string | null;
   status: OrderStatus;
   /**
    * User-friendly order status.

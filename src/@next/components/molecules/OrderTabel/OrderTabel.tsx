@@ -1,13 +1,11 @@
+import { Button } from "@components/atoms";
+import { TaxedMoney } from "@components/containers";
+import { generateProductUrl } from "@temp/core/utils";
+import arrowImg from "images/breadcrumbs-arrow.svg";
 import React from "react";
 import Media from "react-media";
 import { ThemeContext } from "styled-components";
-import { Button } from "@components/atoms";
-import { TaxedMoney } from "@components/containers";
-import arrowImg from "images/breadcrumbs-arrow.svg";
-
 import { Thumbnail } from "..";
-import { generateProductUrl, translateOrderStatus } from "@temp/core/utils";
-
 import * as S from "./styles";
 import { IProps } from "./types";
 
@@ -85,12 +83,7 @@ export const OrderTabel: React.FC<IProps> = ({ orders, history }: IProps) => {
                       ) : (
                         ""
                       )}
-                      <S.Status>
-                        {translateOrderStatus(
-                          order.node.status,
-                          order.node.statusDisplay
-                        )}
-                      </S.Status>
+                      <S.Status>{order.node.customerStatusDisplay}</S.Status>
                       <S.Action>
                         {matches ? (
                           <Button size="sm">Ver detalle</Button>
