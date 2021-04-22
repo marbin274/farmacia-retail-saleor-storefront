@@ -38,7 +38,7 @@ export const ProductsSelled: React.FC<IProps> = ({
                     return (
                         <div className="products-selled">
                             <S.Container>
-                                <S.Title>Productos relacionados</S.Title>
+                                <S.Title>TOP MÁS VENDIDOS</S.Title>
                                 <Carousel>
                                     {getProductsWithQuantity(products, productsOnCart).map(
                                         product => (
