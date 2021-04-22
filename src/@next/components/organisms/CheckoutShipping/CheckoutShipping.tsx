@@ -140,8 +140,8 @@ const CheckoutShipping: React.FC<IProps> = ({
                   />                
                 </S.ShippingMethodContainer>  
               );
-            })}
-            {(formikErrors?.shippingMethod && !values.shippingMethod) && <ErrorMessage errors={[{ message: formikErrors.shippingMethod }]} />}       
+            })}            
+            {(!!shippingMethods?.length && formikErrors?.shippingMethod && !values.shippingMethod) && <ErrorMessage errors={[{ message: formikErrors.shippingMethod }]} />}       
           </form>
         </S.FieldsGroup>
     </section>
