@@ -6,7 +6,7 @@ import { SHIPPING_FORMAT_DATE } from "@temp/core/config";
 import { format } from "date-fns";
 import { useFormik } from "formik";
 import React from "react";
-import { ErrorMessage } from "../../atoms";
+import { ErrorMessage } from "@components/atoms";
 import { shippingMethodFormSchema } from "./schema";
 import * as S from "./styles";
 import { ICheckoutShipping, IProps } from "./types";
