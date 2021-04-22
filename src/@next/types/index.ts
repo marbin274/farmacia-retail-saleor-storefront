@@ -2,6 +2,7 @@ export * from "./INode";
 export * from "./IObjectWithMetadata";
 
 export * from "./IAddress";
+export * from "./IAddressBookDisplay";
 export * from "./IAddressWithEmail";
 export * from "./IAddressWithAddressType";
 

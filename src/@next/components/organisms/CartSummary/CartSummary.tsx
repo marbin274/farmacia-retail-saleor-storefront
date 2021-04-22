@@ -39,6 +39,8 @@ const CartSummary: React.FC<IProps> = ({
   subtotal,
   shipping,
   total,
+  activeStepIndex,
+  onClickHandle,
 }: IProps) => {
   const [mobileCartOpened, setMobileCartOpened] = useState(false);
 
@@ -47,7 +49,6 @@ const CartSummary: React.FC<IProps> = ({
     (prevVal, currVal) => prevVal + currVal.quantity,
     0
   ) || 0, [products]);
-
   const CartSummaryTitle = (mobileCartOpened: boolean) => {  
     return <S.Title 
       data-cy="cartSummaryTitle"
@@ -96,7 +97,9 @@ const CartSummary: React.FC<IProps> = ({
 
   return (
     <S.CartSummaryContainer>
-      <CartResume 
+      <CartResume
+        activeStepIndex={activeStepIndex}
+        onClickHandle={onClickHandle} 
         promoPrice={promoCode}
         subTotalPrice={subtotal}
         shippingPrice={shipping}

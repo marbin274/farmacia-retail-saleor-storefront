@@ -3,6 +3,7 @@ import { storiesOf } from "@storybook/react";
 import React from "react";
 
 import { ThankYou } from ".";
+import { steps } from './fixtures';
 
 storiesOf("@components/organisms/ThankYou", module)
   .addParameters({ component: ThankYou })
@@ -12,6 +13,8 @@ storiesOf("@components/organisms/ThankYou", module)
 
     return (
       <ThankYou
+        steps={steps}
+        totalProducts={3}
         orderNumber={"#341414"}
         continueShopping={continueShopping}
         orderDetails={orderDetails}

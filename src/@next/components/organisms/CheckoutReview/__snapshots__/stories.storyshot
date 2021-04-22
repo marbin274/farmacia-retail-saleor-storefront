@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/CheckoutReview default 1`] = `
   margin: 20px;
 }
 
-.c6 {
+.c8 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -17,7 +17,7 @@ exports[`Storyshots @components/organisms/CheckoutReview default 1`] = `
   box-sizing: border-box;
 }
 
-.c4 {
+.c6 {
   display: inline-block;
   vertical-align: middle;
   margin-bottom: 0px !important;
@@ -33,7 +33,7 @@ exports[`Storyshots @components/organisms/CheckoutReview default 1`] = `
 }
 
 .c1 .privacyAndPolicies a {
-  color: #00B0CA;
+  color: #0050B5;
 }
 
 .c1 .additionals {
@@ -42,24 +42,38 @@ exports[`Storyshots @components/organisms/CheckoutReview default 1`] = `
 }
 
 .c1 .additionals a {
-  color: #00B0CA;
-}
-
-.c2 {
-  color: #00B0CA;
-  font-size: 20px;
-  font-weight: 500;
-  margin-bottom: 16px;
+  color: #0050B5;
 }
 
 .c3 {
+  color: #0050B5;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  margin-top: 0.625rem;
+}
+
+.c2 {
+  color: #131336;
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  margin-top: 0.625rem;
+}
+
+.c4 {
   color: #9194A7;
-  font-size: 16px;
+  font-size: 0.875rem;
   font-weight: 300;
-  line-height: 24px;
+  line-height: 1.875rem;
 }
 
 .c5 {
+  font-weight: 600;
+  color: #131336;
+  font-size: 0.875rem;
+}
+
+.c7 {
   color: #131336;
   margin-bottom: 1rem;
   font-size: 0.875rem;
@@ -85,45 +99,89 @@ exports[`Storyshots @components/organisms/CheckoutReview default 1`] = `
     className="c1"
   >
     <div>
-      <h4
+      <h3
         className="c2"
+      >
+         Datos de entrega
+      </h3>
+      <h4
+        className="c3"
         data-cy="checkoutReviewSectionTitle"
       >
-        Datos de envío
+        Datos personales
+      </h4>
+      <p
+        className="c4"
+      >
+        <span
+          className="c5"
+        >
+           
+        </span>
+      </p>
+      <p
+        className="c4"
+      >
+        Número de documento: 
+        <span
+          className="c5"
+        />
+      </p>
+      <p
+        className="c4"
+      >
+        Correo electrónico: 
+        <span
+          className="c5"
+        />
+      </p>
+      <p
+        className="c4"
+      >
+        Telefono: 
+        <span
+          className="c5"
+        />
+      </p>
+      <h4
+        className="c3"
+        data-cy="checkoutReviewSectionTitle"
+      >
+        Dirección de entrega
       </h4>
     </div>
     <div>
       <h4
-        className="c2"
+        className="c3"
         data-cy="checkoutReviewSectionTitle"
       >
         Tiempo de entrega
       </h4>
-      <p
-        className="c3"
+      <span
+        className="c5"
       />
     </div>
     <div>
       <h4
-        className="c2"
+        className="c3"
         data-cy="checkoutReviewSectionTitle"
       >
         Método de pago
       </h4>
       <div
-        className="c4"
+        className="c6"
       >
         <div />
       </div>
       <p
-        className="c5"
+        className="c7"
       >
         Tarjeta de Crédito / Débito
       </p>
     </div>
   </div>
   <div
-    className="c6"
+    className="c8"
   />
 </div>
 `;

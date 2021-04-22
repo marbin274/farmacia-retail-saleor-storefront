@@ -4,12 +4,12 @@ import { ICheckoutModelLineVariantLocalStorage } from '@sdk/repository';
 
 export type IAddToCartCallback = (productId: ICheckoutModelLineVariantLocalStorage, quantity: number) => void;
 export type IRemoveItemToCartCallback = (productId: string) => void;
-export type ISubstractItemToCartCallback = (productId: string) => void;
+export type ISubtractItemToCartCallback = (productId: string) => void;
 
 export interface IProps {
   addToCart?: IAddToCartCallback;
   removeItemToCart?: IRemoveItemToCartCallback;
-  substractItemToCart?: ISubstractItemToCartCallback;
+  subtractItemToCart?: ISubtractItemToCartCallback;
   productUrl: string;
   product: ISimpleProduct;
   productsOnCart: IItems;

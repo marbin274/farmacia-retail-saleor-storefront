@@ -33,7 +33,7 @@ export const DiscountForm: React.FC<IProps> = ({
         giftCards: undefined,
         promoCode: newInputCode,
       });
-      if(errors.length === 0){
+      if(errors?.length === 0){
         setShowLabelCupon(false);
       }
     }

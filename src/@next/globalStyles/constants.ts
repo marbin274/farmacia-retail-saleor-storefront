@@ -135,7 +135,7 @@ export const h4FontSize = "1.125rem"; // 18px
 export const labelFontSize = "0.75rem"; // 12px
 export const smallFontSize = "0.875rem"; // 14px
 export const bigFontSize = "1.25rem"; // 20px
-export const ultraBigFont = "3.5rem"; // 96px
+export const ultraBigFont = "2.625rem"; // 42px
 export const sparseLineHeight = 1.5;
 
 // spacing

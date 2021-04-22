@@ -1,19 +1,41 @@
-import { styled } from "@styles";
+import { styled, mediaUp } from "@styles";
 import { aunaInteractive, white } from "@styles/constants";
 import { Button } from "@components/atoms";
 
 export const Wrapper = styled.div`
-  margin: 80px auto;
-  max-width: 27rem;
-  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction:column;
+  background-color: ${props => props.theme.colors.backgroundLight};
+  border-radius: 0.5rem;
+  padding: 1.25rem;
 `;
 
+export const WrapperDescription = styled.div`
+  display: flex;
+  flex-direction: column;
+  
+  ${mediaUp.mediumScreen`
+    flex-direction: row;
+  `};
+  justify-content: space-between;
+  margin-bottom: 2.50rem;
+  margin-top: 2.50rem;
+  > :nth-child(2){
+    width: 100%;
+    ${mediaUp.mediumScreen`
+      width: 22.6875rem;
+  `};
+    height: 17rem;
+  }
+`;
 export const ThankYouHeader = styled.p`
-  color: ${props => props.theme.colors.interactive};
-  font-size: 2.5rem;
+  color: ${props => props.theme.colors.aunaBrand3};
+  font-size: 1.5rem;
   margin: 0;
-  line-height: 110%;
-  margin-bottom: 3.5rem;
+  line-height: 150%;
+  margin-bottom: 1.5rem;
   text-align: center;
 
   span {
@@ -24,12 +46,16 @@ export const ThankYouHeader = styled.p`
 
 export const OrderInfo = styled.div`
   font-size: ${props => props.theme.typography.h4FontSize};
-  background-color: ${props => props.theme.colors.backgroundLight};
+  background-color: ${props => props.theme.colors.white};
   line-height: 170%;
-  margin-bottom: 3rem;
-  padding: 1rem;
+  margin-bottom: 1.25rem;
+  padding: 1.5rem;
+  width: 100%;
+  ${mediaUp.mediumScreen`
+    width: 26.75rem;
+  `}
   text-align: center;
-
+  border-radius: 16px;
   span {
     font-size: ${props => props.theme.typography.baseLineHeight};
     font-weight: ${props => props.theme.typography.boldFontWeight};
@@ -37,14 +63,17 @@ export const OrderInfo = styled.div`
 `;
 
 export const MailInfo = styled.div`
-  color: ${props => props.theme.colors.greyText};
+  color: ${props => props.theme.colors.aunaBlack};
   display: flex;
   font-size: ${props => props.theme.typography.h4FontSize};
   justify-content: space-between;
   line-height: ${props => props.theme.typography.sparseLineHeight};
-  margin-bottom: 28px;
   padding: 1rem;
   text-align: left;
+  ${mediaUp.mediumScreen`
+    width: 26.75rem;
+  `};
+  
 `;
 
 export const MailInfoIcon = styled.div`
@@ -59,8 +88,6 @@ export const MailInfoText = styled.div`
 export const Buttons = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 48px;
-  width: 100%;
 `;
 
 export const Link = styled.a`

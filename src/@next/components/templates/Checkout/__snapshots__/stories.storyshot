@@ -57,10 +57,6 @@ exports[`Storyshots @components/templates/Checkout default 1`] = `
   margin-top: 2rem;
 }
 
-.c6 {
-  max-width: 16.25rem;
-}
-
 .c6 >:first-child {
   padding: 0.9rem 1.5rem;
 }
@@ -119,6 +115,19 @@ exports[`Storyshots @components/templates/Checkout default 1`] = `
     -webkit-justify-content: center;
     -ms-flex-pack: center;
     justify-content: center;
+  }
+}
+
+@media (min-width:720px) {
+  .c6 >:first-child {
+    min-width: 13.25rem;
+    width: 15.25rem;
+  }
+}
+
+@media (max-width:540px) {
+  .c6 >:first-child {
+    width: 90%;
   }
 }
 

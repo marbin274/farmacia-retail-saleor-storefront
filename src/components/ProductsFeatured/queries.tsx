@@ -4,7 +4,7 @@ import { TypedQuery } from "../../core/queries";
 import {
   basicProductFragment,
   productPricingFragment,
-} from "../../views/Product/queries";
+} from "@temp/views/Product/queries";
 import {
   FeaturedProducts,
   FeaturedProductsVariables,

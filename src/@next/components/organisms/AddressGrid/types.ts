@@ -1,14 +1,5 @@
-import { IAddressWithAddressType } from "@types";
-
-declare type Address = {
-  id: string;
-  onEdit: () => void;
-  onRemove: () => void;
-  setDefault: () => void;
-  removeDefault: () => void;
-  address: IAddressWithAddressType;
-};
+import { IAddressBookDisplay } from "@types";
 export interface IProps {
-  addresses: Address[];
+  addresses: IAddressBookDisplay[];
   addNewAddress: () => void;
 }

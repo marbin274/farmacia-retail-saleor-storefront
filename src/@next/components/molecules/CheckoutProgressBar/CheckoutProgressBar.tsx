@@ -90,7 +90,7 @@ const CheckoutProgressBar: React.FC<IProps> = ({
   activeStepIndex,
   pathName,
 }: IProps) => {
-  const activeStep = steps.find(st => st.index === activeStepIndex);
+  const activeStep = steps?.find(st => st.index === activeStepIndex);
 
   return (
     <div>

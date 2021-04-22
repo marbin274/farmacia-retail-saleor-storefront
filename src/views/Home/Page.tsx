@@ -1,7 +1,7 @@
 import {
   IAddToCartCallback,
   IRemoveItemToCartCallback,
-  ISubstractItemToCartCallback
+  ISubtractItemToCartCallback
 } from "@app/components/molecules/ProductTileAUNA/types";
 import { IItems } from "@sdk/api/Cart/types";
 import { BannerCarousel } from "@temp/@next/components/containers/BannerCarousel";
@@ -25,7 +25,7 @@ interface IPageProps {
   shop: HomePage_shop;
   addToCart: IAddToCartCallback;
   removeItemToCart: IRemoveItemToCartCallback;
-  substractItemToCart: ISubstractItemToCartCallback;
+  subtractItemToCart: ISubtractItemToCartCallback;
 }
 
 const imageAboutAunaMobile = `${cndUrl}/media/banner_coverage/about-auna-mobile.png`;
@@ -44,7 +44,7 @@ const Page: React.FC<IPageProps> = ({
   shop,
   addToCart,
   removeItemToCart,
-  substractItemToCart,
+  subtractItemToCart,
 }) => {
   const history = useHistory();
   const [showModal, setShowModal] = React.useState<boolean>(false);
@@ -125,7 +125,7 @@ const Page: React.FC<IPageProps> = ({
               loading={loading}
               addToCart={addToCart}
               removeItemToCart={removeItemToCart}
-              substractItemToCart={substractItemToCart}
+              subtractItemToCart={subtractItemToCart}
             />
           </div>
         </div>

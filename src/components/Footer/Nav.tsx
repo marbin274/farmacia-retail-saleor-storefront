@@ -1,17 +1,25 @@
 import { DOCUMENTS_URLS_S3 } from "@temp/core/config";
 import { indexOf } from "lodash";
 import * as React from "react";
+import {withRouter, RouteComponentProps} from 'react-router-dom'
 import ReactSVG from "react-svg";
 import { NavLink } from "..";
 import arrowDowm from "../../images/arrow_down.svg";
 import { TypedSecondaryMenuQuery } from "./queries";
 import "./scss/index.scss";
 import SocialMedia from "../SocialMedia";
+import classNames from 'classnames'
 
+type IProps = RouteComponentProps;
 
-class Nav extends React.PureComponent {
+type IState = {
+  width: number;
+  higher: boolean;
+}
 
-  state = { width: 0 };
+class Nav extends React.PureComponent<IProps, IState> {
+
+  state: IState = { width: 0, higher: false };
 
   updateDimensions = () => {
     this.setState({ width: window.innerWidth });
@@ -19,12 +27,25 @@ class Nav extends React.PureComponent {
 
   componentDidMount() {
     this.state.width = window.screen.width;
+    this.setHigher();
     window.addEventListener('resize', this.updateDimensions);
   }
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateDimensions);
   }
 
+  componentDidUpdate(prevProps: IProps) {
+    if (this.props.location.pathname !== prevProps.location.pathname) {
+      this.setHigher();
+    }
+  }
+
+  setHigher() {
+    this.setState({
+      higher: this.props.location.pathname.includes("/product/"),
+    });
+  }
+ 
   render() {
     const _arrows = Array.from(document.getElementsByClassName("footer-nav__arrow-icon")).map(x => x.id);
 
@@ -76,7 +97,11 @@ class Nav extends React.PureComponent {
 
 
     return (
-      <footer className="footer-nav">
+      <footer
+        className={classNames("footer-nav", {
+          "nav-higher": !!this.state.higher,
+        })}
+      >
         <div className="container">
           <TypedSecondaryMenuQuery>
             {({ data }) => {
@@ -93,9 +118,15 @@ class Nav extends React.PureComponent {
                   </h5>
                   <div className="footer-nav__section-content">
                     {item.children.map(subItem => (
-                      <p style={this.state.width > 540 ? { display: "block" } : { display: "none" }}
+                      <p
+                        style={
+                          this.state.width > 540
+                            ? { display: "block" }
+                            : { display: "none" }
+                        }
                         id={subItem.id}
-                        key={subItem.id}>
+                        key={subItem.id}
+                      >
                         <NavLink item={subItem} />
                       </p>
                     ))}
@@ -104,18 +135,24 @@ class Nav extends React.PureComponent {
               ));
             }}
           </TypedSecondaryMenuQuery>
-          
-          <SocialMedia/>
+
+          <SocialMedia />
         </div>
         <div className="container_terms_and_privacy container">
           <div className="copyright">
-            <label htmlFor="">Copyright Auna 2020 <br /> Todos los derechos reservados</label>
+            <label htmlFor="">
+              Copyright Auna 2020 <br /> Todos los derechos reservados
+            </label>
           </div>
           <div className="terms">
-            <a href={DOCUMENTS_URLS_S3.terminosYCondicionesUrl}>Términos y condiciones</a>
+            <a href={DOCUMENTS_URLS_S3.terminosYCondicionesUrl}>
+              Términos y condiciones
+            </a>
           </div>
           <div className="privacy">
-            <a href={DOCUMENTS_URLS_S3.politicasDePrivacidadUrl}>Políticas de privacidad</a>
+            <a href={DOCUMENTS_URLS_S3.politicasDePrivacidadUrl}>
+              Políticas de privacidad
+            </a>
           </div>
         </div>
       </footer>
@@ -123,4 +160,4 @@ class Nav extends React.PureComponent {
   }
 }
 
-export default Nav;
+export default withRouter(Nav);

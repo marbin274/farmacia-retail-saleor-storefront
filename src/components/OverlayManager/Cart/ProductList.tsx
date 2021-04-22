@@ -80,7 +80,7 @@ const ProductList: React.FC<IProductList> = ({
                 product={product}
                 addToCart={onAdd}
                 removeItemToCart={onRemove}
-                substractItemToCart={onSubtract}
+                subtractItemToCart={onSubtract}
               />
             </div>
           </div>

@@ -12,7 +12,6 @@
 
   &__product {
     display: flex;
-    padding-bottom: $spacer * 5;
 
     @media (max-width: $medium-screen) {
       display: block;

@@ -44,6 +44,8 @@ const MainMenu: React.FC = () => {
     (items &&
       items.reduce((prevVal, currVal) => prevVal + currVal.quantity, 0)) ||
     0;
+  const hideMenuCondition = !(location.pathname.includes("checkout") || location.pathname.includes("order-finalized"));
+  
   return (
     <OverlayContext.Consumer>
       {overlayContext => (
@@ -52,10 +54,9 @@ const MainMenu: React.FC = () => {
             <TypedMainMenuQuery renderOnError displayLoader={false}>
               {({ data }) => {
                 const items = maybe(() => data.shop.navigation.main.items, []);
-
                 return (
                   <ul>
-                    {!location.pathname.includes("checkout") ? (
+                    {hideMenuCondition ? (
                       <Media
                         query={{ maxWidth: mediumScreen }}
                         render={() => (
@@ -95,7 +96,7 @@ const MainMenu: React.FC = () => {
                         query={{ maxWidth: smallScreen }}
                         render={() => (
                           <>
-                            {!location.pathname.includes("checkout") ? (
+                            {hideMenuCondition ? (
                               <>
                                 {user ? (
                                   <MenuDropdown
@@ -160,7 +161,7 @@ const MainMenu: React.FC = () => {
           </div>
 
           <div className="main-menu__center">
-            {!location.pathname.includes("checkout") ? (
+            {hideMenuCondition ? (
               <TypedMainMenuQuery renderOnError displayLoader={false}>
                 {({ data }) => {
                   const items = maybe(
@@ -192,7 +193,7 @@ const MainMenu: React.FC = () => {
               <> </>
             )}
 
-            {!location.pathname.includes("checkout") ? (
+            {hideMenuCondition ? (
               <Media
                 query={{ maxWidth: mediumScreen }}
                 render={() => (
@@ -219,7 +220,7 @@ const MainMenu: React.FC = () => {
             )}
           </div>
 
-          {!location.pathname.includes("checkout") ? (
+          {hideMenuCondition ? (
             <div className="main-menu__right">
               <ul>
                 <Media

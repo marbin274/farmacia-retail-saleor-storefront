@@ -26,3 +26,5 @@ export * from "./CheckoutReview";
 export * from "./ThankYou";
 export * from "./ProductListAUNA";
 export * from "./ItemsHandler";
+export * from "./ProductBottomDetail";
+export * from "./CartDeliveryData";

@@ -18,7 +18,7 @@ import { useCart } from "@sdk/react";
 import {
   IAddToCartCallback,
   IRemoveItemToCartCallback,
-  ISubstractItemToCartCallback,
+  ISubtractItemToCartCallback,
 } from "@temp/@next/components/molecules/ProductTileAUNA/types";
 
 type ViewProps = RouteComponentProps<{
@@ -150,7 +150,7 @@ export const View: React.FC<ViewProps> = ({ match }) => {
     removeItem(product);
   };
 
-  const substractItemToCart: ISubstractItemToCartCallback = product => {
+  const subtractItemToCart: ISubtractItemToCartCallback = product => {
     subtractItem(product);
   };
 
@@ -210,7 +210,7 @@ export const View: React.FC<ViewProps> = ({ match }) => {
                   }}
                   addToCart={addToCart}
                   removeItemToCart={removeItemToCart}
-                  substractItemToCart={substractItemToCart}
+                  subtractItemToCart={subtractItemToCart}
                 />
               );
             }

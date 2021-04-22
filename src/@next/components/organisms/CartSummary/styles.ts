@@ -219,6 +219,9 @@ export const CostTotalWrapper = styled.span`
       font-weigth: 500;
     }
   }
+  ${mediaUp.mediumScreen`
+    display: none;
+  `}
 `;
 
 export const Costs = styled.div`

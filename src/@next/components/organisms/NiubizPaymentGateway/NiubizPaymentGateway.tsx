@@ -435,7 +435,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                   <h4 className="card-title">
                     Paga con tu tarjeta  de crédito o débito 
                   </h4>
-                  <h5>Ingresa los datos como aparece en la tarjeta</h5>
+                  <h5>Ingresa los datos del titular de la tarjeta</h5>
                   <div className="row">
                     <div className="identity">
                       <div>

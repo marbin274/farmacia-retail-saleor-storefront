@@ -369,7 +369,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                 <span
                   className="c6"
                 >
-                  Cliente
+                  Datos Personales
                 </span>
               </div>
               <div
@@ -467,14 +467,14 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                         onBlur={[Function]}
                         onChange={[Function]}
                         onFocus={[Function]}
-                        placeholder="Email"
+                        placeholder="Correo electrónico"
                         value="abc@xyz.com"
                       />
                       <label
                         className="c12"
                         disabled={false}
                       >
-                        *Email
+                        *Correo electrónico
                       </label>
                     </div>
                   </div>
@@ -625,7 +625,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                 <span
                   className="c6"
                 >
-                  Dirección
+                  Dirección de entrega
                 </span>
               </div>
               <div>
@@ -804,14 +804,14 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                         onBlur={[Function]}
                         onChange={[Function]}
                         onFocus={[Function]}
-                        placeholder="Información adicional"
+                        placeholder="Edificio, apartamento"
                         value="Second"
                       />
                       <label
                         className="c12"
                         disabled={false}
                       >
-                        Información adicional
+                        Referencia
                       </label>
                     </div>
                   </div>
@@ -1201,7 +1201,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
                 <span
                   className="c6"
                 >
-                  Cliente
+                  Datos Personales
                 </span>
               </div>
               <div
@@ -1299,14 +1299,14 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
                         onBlur={[Function]}
                         onChange={[Function]}
                         onFocus={[Function]}
-                        placeholder="Email"
+                        placeholder="Correo electrónico"
                         value=""
                       />
                       <label
                         className="c12"
                         disabled={false}
                       >
-                        *Email
+                        *Correo electrónico
                       </label>
                     </div>
                   </div>
@@ -1457,7 +1457,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
                 <span
                   className="c6"
                 >
-                  Dirección
+                  Dirección de entrega
                 </span>
               </div>
               <div>
@@ -1651,14 +1651,14 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
                         onBlur={[Function]}
                         onChange={[Function]}
                         onFocus={[Function]}
-                        placeholder="Información adicional"
+                        placeholder="Edificio, apartamento"
                         value=""
                       />
                       <label
                         className="c12"
                         disabled={false}
                       >
-                        Información adicional
+                        Referencia
                       </label>
                     </div>
                   </div>

@@ -73,12 +73,12 @@
   .add_remove_button {
     &:nth-child(1) {
       justify-content: flex-start;
-      margin: 0 !important;
+      margin: 0 0 0 1rem;
       width: 20%;
     }
     &:nth-child(3) {
       justify-content: flex-end;
-      margin: 0 !important;
+      margin: 0 1rem 0 0;
       width: 20%;
     }
   }

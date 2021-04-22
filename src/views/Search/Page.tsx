@@ -1,7 +1,7 @@
 import {
   IAddToCartCallback,
   IRemoveItemToCartCallback,
-  ISubstractItemToCartCallback,
+  ISubtractItemToCartCallback,
 } from "@temp/@next/components/molecules/ProductTileAUNA/types";
 import { IItems } from "@temp/@sdk/api/Cart/types";
 import { IFilterAttributes, IFilters } from "@types";
@@ -48,7 +48,7 @@ interface PageProps {
   onOrder: (order: { value?: string; label: string }) => void;
   addToCart: IAddToCartCallback;
   removeItemToCart: IRemoveItemToCartCallback;
-  substractItemToCart: ISubstractItemToCartCallback;
+  subtractItemToCart: ISubtractItemToCartCallback;
 }
 
 const Page: React.FC<PageProps> = ({
@@ -69,7 +69,7 @@ const Page: React.FC<PageProps> = ({
   onAttributeFiltersChange,
   addToCart,
   removeItemToCart,
-  substractItemToCart,
+  subtractItemToCart,
 }) => {
   const canDisplayProducts = maybe(
     () => !!products.edges && products.totalCount !== undefined
@@ -174,7 +174,7 @@ const Page: React.FC<PageProps> = ({
             onLoadMore={onLoadMore}
             addToCart={addToCart}
             removeItemToCart={removeItemToCart}
-            substractItemToCart={substractItemToCart}
+            subtractItemToCart={subtractItemToCart}
           />
         )}
       </div>

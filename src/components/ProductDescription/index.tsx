@@ -1,12 +1,18 @@
 import { RichTextContent } from "@components/atoms";
 import { TaxedMoney } from "@components/containers";
-import { ProductVariantPicker } from "@components/organisms";
+import {
+  ProductVariantPicker,
+  ProductBottomDetail,
+} from "@components/organisms";
 import {
   ProductDetails_product_pricing,
   ProductDetails_product_variants,
-  ProductDetails_product_variants_pricing
+  ProductDetails_product_variants_pricing,
 } from "@sdk/queries/gqlTypes/ProductDetails";
-import { ICheckoutModelLine, ICheckoutModelLineVariantLocalStorage } from "@sdk/repository";
+import {
+  ICheckoutModelLine,
+  ICheckoutModelLineVariantLocalStorage,
+} from "@sdk/repository";
 import { itemNotificationsService } from "@temp/@next/components/atoms/ItemsNotification";
 import {
   getOneProductWithQuantity,
@@ -24,11 +30,15 @@ export interface ProductDescriptionProps {
   descriptionJson: string;
   isOnSale: boolean;
   isOutStock: boolean;
+  isSmallScreen: boolean;
   items: ICheckoutModelLine[];
   product: ISimpleProduct;
   pricing: ProductDetails_product_pricing;
   productVariants: ProductDetails_product_variants[];
-  addToCart(variant: ICheckoutModelLineVariantLocalStorage, quantity?: number): void;
+  addToCart(
+    variant: ICheckoutModelLineVariantLocalStorage,
+    quantity?: number
+  ): void;
   removeToCart(varinatId: string): void;
   setVariantId(variantId: string): void;
 }
@@ -36,6 +46,8 @@ export interface ProductDescriptionProps {
 interface ProductDescriptionState {
   descriptionJson: string;
   quantity: number;
+  showBottomDetail: boolean;
+  showBottomDetailProductInfo: boolean;
   variant: string;
   variantStock: number;
   variantPricing: ProductDetails_product_variants_pricing;
@@ -45,15 +57,22 @@ interface ProductDescriptionState {
   };
 }
 
+const HEADER_HEIGHT = 70;
+
 class ProductDescription extends React.Component<
   ProductDescriptionProps,
   ProductDescriptionState
-  > {
+> {
+  addToCartRef: React.RefObject<HTMLDivElement>;
+  priceRef: React.RefObject<HTMLDivElement>;
+
   constructor(props: ProductDescriptionProps) {
     super(props);
     this.state = {
       descriptionJson: "",
       quantity: 1,
+      showBottomDetail: false,
+      showBottomDetailProductInfo: false,
       variant: "",
       variantPricing: null,
       variantPricingRange: {
@@ -62,6 +81,9 @@ class ProductDescription extends React.Component<
       },
       variantStock: null,
     };
+
+    this.addToCartRef = React.createRef<HTMLDivElement>();
+    this.priceRef = React.createRef<HTMLDivElement>();
   }
 
   getProductPrice = () => {
@@ -122,15 +144,15 @@ class ProductDescription extends React.Component<
     const { variant } = this.state;
     const cartItem = items?.find(item => item.variant.id === variant);
     this.props.addToCart(
-      { 
-        id: this.state.variant, 
-        product: { 
-          id: this.props.product.id, 
+      {
+        id: this.state.variant,
+        product: {
+          id: this.props.product.id,
           name: this.props.product.name,
           pricing: this.props.productVariants[0].pricing,
           quantityAvailable: this.props.productVariants[0].quantityAvailable,
-        }, 
-      }, 
+        },
+      },
       this.state.quantity
     );
 
@@ -181,21 +203,68 @@ class ProductDescription extends React.Component<
     }
   };
 
+  renderPrice = () => {
+    const { isOutStock } = this.props;
+
+    if (isOutStock) {
+      return <div className="product-description__error-message">AGOTADO</div>;
+    }
+
+    return this.getProductPrice();
+  };
+
+  handleScroll = () => {
+    const {
+      y: addToCartY,
+      height: addToCartYHeight,
+    } = this.addToCartRef.current.getBoundingClientRect();
+
+    const {
+      y: priceY,
+      height: priceHeight,
+    } = this.priceRef.current.getBoundingClientRect();
+
+    const underAddToCart = addToCartY + addToCartYHeight - HEADER_HEIGHT < 0;
+    const underPrice = priceY + priceHeight - HEADER_HEIGHT < 0;
+
+    if (this.state.showBottomDetail !== underAddToCart) {
+      this.setState({ showBottomDetail: underAddToCart });
+    }
+
+    if (this.state.showBottomDetailProductInfo !== underPrice) {
+      this.setState({ showBottomDetailProductInfo: underPrice });
+    }
+  };
+
+  componentDidMount() {
+    window.addEventListener("scroll", this.handleScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handleScroll);
+  }
+
   render() {
-    const { canAddToCart, descriptionJson, isOutStock } = this.props;
+    const { canAddToCart, descriptionJson } = this.props;
     const { name } = this.props.product;
     const product = getOneProductWithQuantity(
       this.props.product,
       this.props.items
     );
+
     return (
       <div className="product-description">
         <h3>{name}</h3>
-        {isOutStock ? (
-          <p className="product-description__error-message">AGOTADO</p>
-        ) : (
-            this.getProductPrice()
-          )}
+        <div ref={this.priceRef}>{this.renderPrice()}</div>
+        <div className="product-description__quantity" ref={this.addToCartRef}>
+          <ItemsHandler
+            canAddToCart={canAddToCart}
+            product={product}
+            addToCart={this.props.addToCart}
+            removeItemToCart={this.props.removeToCart}
+            subtractItemToCart={this.props.removeToCart}
+          />
+        </div>
         <RichTextContent descriptionJson={descriptionJson} />
         <div className="product-description__variant-picker">
           <ProductVariantPicker
@@ -204,15 +273,20 @@ class ProductDescription extends React.Component<
             selectSidebar={true}
           />
         </div>
-        <div className="product-description__quantity">
-          <ItemsHandler
-            canAddToCart={canAddToCart}
+        {(this.props.isSmallScreen || this.state.showBottomDetail) && (
+          <ProductBottomDetail
             product={product}
+            renderPrice={this.renderPrice}
+            canAddToCart={canAddToCart}
             addToCart={this.props.addToCart}
             removeItemToCart={this.props.removeToCart}
-            substractItemToCart={this.props.removeToCart}
+            subtractItemToCart={this.props.removeToCart}
+            hideProductDetails={
+              this.props.isSmallScreen &&
+              !this.state.showBottomDetailProductInfo
+            }
           />
-        </div>
+        )}
       </div>
     );
   }

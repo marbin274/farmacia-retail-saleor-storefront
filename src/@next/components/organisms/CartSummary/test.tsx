@@ -24,7 +24,7 @@ describe("<CartSummary />", () => {
   it("exists", () => {
     const wrapper = shallow(
       <MemoryRouter>
-        <CartSummary />
+        <CartSummary {...DEFAULT_PROPS} />
       </MemoryRouter>
     );
 
@@ -32,7 +32,13 @@ describe("<CartSummary />", () => {
   });
 
   it("should show count one product", () => {
-    const wrapper = mount(<CartSummary products={[{...product, quantity: 1}]} />);
+    const wrapper = mount(
+      <CartSummary
+        onClickHandle={jest.fn()}
+        activeStepIndex={DEFAULT_PROPS.activeStepIndex}
+        products={[{ ...product, quantity: 1 }]}
+      />
+    );
     expect(wrapper.text()).toContain("Tu carrito (1)");
   });
 
@@ -42,7 +48,13 @@ describe("<CartSummary />", () => {
   });
 
   it("should show subtotal price", () => {
-    const wrapper = mount(<CartSummary subtotal={money} />);
+    const wrapper = mount(
+      <CartSummary
+        onClickHandle={jest.fn()}
+        activeStepIndex={DEFAULT_PROPS.activeStepIndex}
+        subtotal={money}
+      />
+    );
     expect(wrapper.text()).toContain("Subtotal");
     expect(wrapper.text()).toContain("123");
   });

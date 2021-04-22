@@ -6,18 +6,24 @@ import { IProps } from "./types";
 /**
  * Address summary
  */
-const AddressSummary: React.FC<IProps> = ({ address, email }: IProps) => {
+const AddressSummary: React.FC<IProps> = ({ address, checkout, email }: IProps) => {
   if (address) {
+    const direction = ` ${address.streetAddress1} ${address.city}  ${address.countryArea} ${address.country?.country} `;
+    const reference = ` ${address.streetAddress2}`;
     return (
       <S.Wrapper>
-        <S.Title>{`${address.firstName} ${address.lastName}`}</S.Title>
-        <S.Text>{address.streetAddress1}</S.Text>
-        {address.streetAddress2 && <S.Text>{address.streetAddress2}</S.Text>}
-        <S.Text>{address.city}</S.Text>
-        {address.countryArea && <S.Text>{address.countryArea}</S.Text>}
-        <S.Text>{address.country?.country}</S.Text>
-        {address.phone && <S.Text>Telefono: {address.phone}</S.Text>}
-        {email && <S.Text>Email: {email}</S.Text>}
+        <S.Text>
+          Direccion: 
+          <S.TextBold>
+            {direction} 
+          </S.TextBold>
+        </S.Text>
+        <S.Text>
+          Referencia:
+          <S.TextBold>
+            {reference} 
+          </S.TextBold>
+        </S.Text>
       </S.Wrapper>
     );
   } else if (email) {

@@ -3,6 +3,8 @@ import "jest-styled-components";
 import React from "react";
 
 import { ThankYou } from ".";
+import { steps } from './fixtures';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 describe("<ThankYou />", () => {
   const orderNumber = "123";
@@ -13,6 +15,8 @@ describe("<ThankYou />", () => {
   it("exists", () => {
     const wrapper = shallow(
       <ThankYou
+        steps={steps}
+        totalProducts={3}
         orderNumber={orderNumber}
         orderDetails={orderDetailsMock}
         continueShopping={continueShoppingMock}
@@ -26,6 +30,8 @@ describe("<ThankYou />", () => {
   it("should contain sequential code", () => {
     const wrapper = shallow(
       <ThankYou
+        steps={steps}
+        totalProducts={3}
         orderNumber={orderNumber}
         orderDetails={orderDetailsMock}
         continueShopping={continueShoppingMock}
@@ -38,12 +44,17 @@ describe("<ThankYou />", () => {
 
   it("should call continueShopping function when clicked", () => {
     const wrapper = mount(
-      <ThankYou
-        orderNumber={orderNumber}
-        orderDetails={orderDetailsMock}
-        continueShopping={continueShoppingMock}
-        sequentialCode={sequentialCode}
-      />
+      <Router>
+         <ThankYou
+          steps={steps}
+          totalProducts={3}
+          orderNumber={orderNumber}
+          orderDetails={orderDetailsMock}
+          continueShopping={continueShoppingMock}
+          sequentialCode={sequentialCode}
+        />
+      </Router>
+     
     );
 
     wrapper

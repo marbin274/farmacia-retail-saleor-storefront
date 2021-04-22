@@ -16,7 +16,7 @@ import { IProps } from "./types";
 export const ProductTileAUNA: React.FC<IProps> = ({
   addToCart,
   removeItemToCart,
-  substractItemToCart,
+  subtractItemToCart,
   productUrl: productLink,
   product,
   productsOnCart,
@@ -80,7 +80,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
         product={product}
         addToCart={addToCart}
         removeItemToCart={removeItemToCart}
-        substractItemToCart={substractItemToCart}
+        subtractItemToCart={subtractItemToCart}
       />
     </S.ProductCard>
   );

@@ -179,7 +179,7 @@
         border-top: solid 1px rgba(184, 188, 213, 0.2);
         width: 100%;
         padding-top: 2rem;
-        opacity: 0.8;
+        color: rgba(255, 255, 255, 0.7);
       }
 
       .hr {
@@ -205,5 +205,13 @@
         }
       }
     }
+  }
+}
+
+.nav-higher {
+  padding-bottom: 10rem;
+  
+  @media (max-width: $small-screen) {
+    padding-bottom: 13rem;
   }
 }
