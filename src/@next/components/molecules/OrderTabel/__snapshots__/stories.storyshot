@@ -296,7 +296,7 @@ exports[`Storyshots @components/molecules/OrderTabel default 1`] = `
       <div
         className="c7"
       >
-        Unfulfilled
+        Solicitud recibida
       </div>
       <div
         className="c8 c9"
@@ -354,7 +354,7 @@ exports[`Storyshots @components/molecules/OrderTabel default 1`] = `
       <div
         className="c7"
       >
-        Fulfilled
+        Solicitud recibida
       </div>
       <div
         className="c8 c9"
