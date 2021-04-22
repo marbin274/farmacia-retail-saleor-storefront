@@ -127,8 +127,8 @@ const CheckoutShipping: React.FC<IProps> = ({
               const selected: boolean = !!values.shippingMethod && values.shippingMethod === id;
 
               return (
-                <div key={id}>
                 <S.ShippingMethodContainer
+                  key={id}
                   data-cy={`checkoutShippingMethodOption${index}Input`}
                   hasError={!!formikErrors?.shippingMethod}
                   selected={selected}    
@@ -152,11 +152,10 @@ const CheckoutShipping: React.FC<IProps> = ({
                     setFieldValue={setFieldValue}
                     setShippingMethod={setShippingMethod}
                   />                
-                </S.ShippingMethodContainer>
-                  {formikErrors?.shippingMethod && <ErrorMessage errors={[{ message: formikErrors.shippingMethod }]} />}                
-                </div>
+                </S.ShippingMethodContainer>  
               );
             })}
+            {formikErrors?.shippingMethod && <ErrorMessage errors={[{ message: formikErrors.shippingMethod }]} />}       
           </form>
         </S.FieldsGroup>
     </section>
