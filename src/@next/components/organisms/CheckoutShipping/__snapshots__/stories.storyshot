@@ -132,83 +132,79 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
       <form
         onSubmit={[Function]}
       >
-        <div>
+        <div
+          className="c5"
+          data-cy="checkoutShippingMethodOption0Input"
+          onClick={[Function]}
+          selected={false}
+        >
           <div
-            className="c5"
-            data-cy="checkoutShippingMethodOption0Input"
-            onClick={[Function]}
-            selected={false}
+            className="c6"
           >
             <div
-              className="c6"
+              className="c7"
             >
-              <div
-                className="c7"
-              >
-                <p
-                  className="c8"
-                  data-cy="checkoutShippingMethodOption0Name"
-                  selected={false}
-                >
-                  Basic
-                </p>
-                <p
-                  className="c9"
-                  selected={false}
-                >
-                  subTitle
-                </p>
-              </div>
-              <div
-                className="c10"
+              <p
+                className="c8"
+                data-cy="checkoutShippingMethodOption0Name"
                 selected={false}
               >
-                <span
-                  data-cy="checkoutShippingMethodOption0Price"
-                >
-                  
-                </span>
-              </div>
+                Basic
+              </p>
+              <p
+                className="c9"
+                selected={false}
+              >
+                subTitle
+              </p>
+            </div>
+            <div
+              className="c10"
+              selected={false}
+            >
+              <span
+                data-cy="checkoutShippingMethodOption0Price"
+              >
+                
+              </span>
             </div>
           </div>
         </div>
-        <div>
+        <div
+          className="c5"
+          data-cy="checkoutShippingMethodOption1Input"
+          onClick={[Function]}
+          selected={false}
+        >
           <div
-            className="c5"
-            data-cy="checkoutShippingMethodOption1Input"
-            onClick={[Function]}
-            selected={false}
+            className="c6"
           >
             <div
-              className="c6"
+              className="c7"
             >
-              <div
-                className="c7"
-              >
-                <p
-                  className="c8"
-                  data-cy="checkoutShippingMethodOption1Name"
-                  selected={false}
-                >
-                  Extra
-                </p>
-                <p
-                  className="c9"
-                  selected={false}
-                >
-                  subTitle
-                </p>
-              </div>
-              <div
-                className="c10"
+              <p
+                className="c8"
+                data-cy="checkoutShippingMethodOption1Name"
                 selected={false}
               >
-                <span
-                  data-cy="checkoutShippingMethodOption1Price"
-                >
-                  
-                </span>
-              </div>
+                Extra
+              </p>
+              <p
+                className="c9"
+                selected={false}
+              >
+                subTitle
+              </p>
+            </div>
+            <div
+              className="c10"
+              selected={false}
+            >
+              <span
+                data-cy="checkoutShippingMethodOption1Price"
+              >
+                
+              </span>
             </div>
           </div>
         </div>
