@@ -65,9 +65,9 @@ export const GroupLabelTitle = styled.span`
     padding-left: 1rem;
 `;
 
-export const ShippingMethodContainer = styled.div<{ selected: boolean }>`
-    background-color: ${({ selected, theme }) => !!selected ? "#FFFFFF" : theme.colors.backgroundLight};
-    border: ${({selected, theme}) => !!selected ? `1px solid ${theme.colors.aunaInteractive}`: "initial"};
+export const ShippingMethodContainer = styled.div<{ selected: boolean, hasError: boolean }>`
+    background-color: ${({ selected, theme }) => !!selected ? theme.colors.white : theme.colors.backgroundLight};
+    border: ${({ hasError, selected, theme }) => hasError ? `1px solid ${theme.colors.aunaError}` : (!!selected ? `1px solid ${(theme.colors.aunaInteractive)}` : "initial")};
     border-radius: 16px;
     display: flex;
     flex-direction: column;
