@@ -6,10 +6,10 @@ import { SHIPPING_FORMAT_DATE } from "@temp/core/config";
 import { format } from "date-fns";
 import { useFormik } from "formik";
 import React from "react";
+import { ErrorMessage } from "@components/atoms";
 import { shippingMethodFormSchema } from "./schema";
 import * as S from "./styles";
 import { ICheckoutShipping, IProps } from "./types";
-
 
 /**
  * Shipping method selector used in checkout.
@@ -93,12 +93,12 @@ const CheckoutShipping: React.FC<IProps> = ({
     setErrors({});
   }
 
+
   React.useEffect(()=>{
     if(values.shippingMethod && !selectedShippingMethodId){
       setFieldValue("shippingMethod", undefined);
     }
   },[selectedShippingMethodId]);
-
    
   return (
     <section>
@@ -116,6 +116,7 @@ const CheckoutShipping: React.FC<IProps> = ({
                 <S.ShippingMethodContainer
                   key={id}
                   data-cy={`checkoutShippingMethodOption${index}Input`}
+                  hasError={(!!formikErrors?.shippingMethod && !values.shippingMethod)}
                   selected={selected}    
                   onClick={() => handleOnclick(id, !!isScheduled, scheduleDates, selected)}
                 >
@@ -136,10 +137,11 @@ const CheckoutShipping: React.FC<IProps> = ({
                     setErrors={setErrors}
                     setFieldValue={setFieldValue}
                     setShippingMethod={setShippingMethod}
-                  />
-                </S.ShippingMethodContainer>
+                  />                
+                </S.ShippingMethodContainer>  
               );
-            })}
+            })}            
+            {(!!shippingMethods?.length && formikErrors?.shippingMethod && !values.shippingMethod) && <ErrorMessage errors={[{ message: formikErrors.shippingMethod }]} />}       
           </form>
         </S.FieldsGroup>
     </section>
