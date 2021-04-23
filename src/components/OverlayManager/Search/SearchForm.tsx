@@ -1,9 +1,10 @@
+import * as React from "react";
+import { launchSearchEvent } from "@temp/@sdk/gaConfig";
 import { SEARCH_PRODUCTS_QUERY_MIN_LENGTH } from "@temp/core/config";
 import classNames from "classnames";
 import closeImg from "images/close.svg";
 import searchImg from "images/search.svg";
 import { stringify } from "query-string";
-import * as React from "react";
 import ReactSVG from "react-svg";
 import { maybe } from "../../../core/utils";
 import { DebouncedTextField } from "../../Debounce";
@@ -66,6 +67,13 @@ export const SearchForm: React.FC<SearchFormProps> = ({
     if (!search) {
       textFieldRef.current.value = "";
     }
+    const delayDebounceFn = setTimeout(() => {
+      if (search.length > 0) {
+        launchSearchEvent(search);
+      }
+    }, 3000);
+
+    return () => clearTimeout(delayDebounceFn);
   }, [search]);
 
   return (

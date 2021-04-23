@@ -99,24 +99,6 @@ const startApp = async () => {
       const { updateAvailable } = React.useContext(ServiceWorkerContext);
 
       React.useEffect(() => {
-        // TODO: Esta logica se va a utilizar luego de varios sprints pero con el componente Alert.
-        // if (updateAvailable) {
-        //   alert.show(
-        //     {
-        //       actionText: "Refresh",
-        //       content:
-        //         "To update the application to the latest version, please refresh the page!",
-        //       title: "New version is available!",
-        //     },
-        //     {
-        //       onClose: () => {
-        //         location.reload();
-        //       },
-        //       timeout: 0,
-        //       type: "success",
-        //     }
-        //   );
-        // }
         if (updateAvailable) {
           location.reload();
         }
