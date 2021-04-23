@@ -13,6 +13,7 @@ const ORDERS = [
   {
     node: {
       created: "2019-09-04T10:50:03.994164+00:00",
+      customerStatusDisplay: "Solicitud recibida",
       id: "T3JkZXI6Nzc=",
       lines: [
         {
@@ -45,6 +46,7 @@ const ORDERS = [
   {
     node: {
       created: "2019-06-10T12:29:54.886836+00:00",
+      customerStatusDisplay: "Solicitud recibida",
       id: "T3JkZXI6NzY=",
 
       lines: [
@@ -96,12 +98,12 @@ describe("<OrderTabel />", () => {
 
     expect(wrapper.text()).toContain("77");
     expect(wrapper.text()).toContain("9/4/2019");
-    expect(wrapper.text()).toContain("Unfulfilled");
+    expect(wrapper.text()).toContain("Solicitud recibida");
     expect(wrapper.text()).toContain("42.91");
 
     expect(wrapper.text()).toContain("76");
     expect(wrapper.text()).toContain("6/10/2019");
-    expect(wrapper.text()).toContain("Fulfilled");
+    expect(wrapper.text()).toContain("Solicitud recibida");
     expect(wrapper.text()).toContain("29.24");
   });
 

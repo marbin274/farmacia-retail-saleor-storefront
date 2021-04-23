@@ -8,6 +8,7 @@ const ORDERS = [
   {
     node: {
       created: "2019-09-04T10:50:03.994164+00:00",
+      customerStatusDisplay: "Solicitud recibida",
       id: "T3JkZXI6Nzc=",
       lines: [
         {
@@ -32,16 +33,16 @@ const ORDERS = [
       statusDisplay: "Unfulfilled",
       token: "687f3e43-b198-4c7f-b6e5-75c2c93b3f45",
       total: {
-        gross: { amount: 42.91, currency: "PEN", culture:"es-PE" },
-        net: { amount: 42.91, currency: "PEN", culture:"es-PE" },
+        gross: { amount: 42.91, currency: "PEN", culture: "es-PE" },
+        net: { amount: 42.91, currency: "PEN", culture: "es-PE" },
       },
     },
   },
   {
     node: {
       created: "2019-06-10T12:29:54.886836+00:00",
+      customerStatusDisplay: "Solicitud recibida",
       id: "T3JkZXI6NzY=",
-
       lines: [
         {
           id: "T3JkZXJMaW5lOjE3NQ==",

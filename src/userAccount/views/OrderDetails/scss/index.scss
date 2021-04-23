@@ -71,4 +71,14 @@
   &__tile-address {
     line-height: 2;
   }
+  &__tile-alert-fuilfill {
+    margin-top: 0.25rem;
+    font-size: 00.75rem;
+  }
+  &__tile-alert-fulfill-icon {
+    display: inline-block;
+    vertical-align: middle;
+    height: 1.25rem;
+    margin-right: 0.625rem;
+  }
 }
