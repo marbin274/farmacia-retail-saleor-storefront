@@ -83,13 +83,15 @@ jobs:
           CLOUDFLARE_TOKEN: ${{ secrets.CF_PURGE_CACHE }}
           #          PURGE_URLS: ${{ secrets.PURGE_URLS_QA }}
 
-      - name: 6- Purge cache Cloudflare PROD
+      - name: 6- Clean Cloudfront Cache PROD
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/release' }}
-        uses: jakejarvis/cloudflare-purge-action@master
+        uses: chetan/invalidate-cloudfront-action@master
         env:
-          CLOUDFLARE_ZONE: ${{ secrets.CF_ZONE_ID_PROD }}
-          CLOUDFLARE_TOKEN: ${{ secrets.CF_PURGE_CACHE }}
-          #          PURGE_URLS: ${{ secrets.PURGE_URLS_PROD }}
+          DISTRIBUTION: ${{ secrets.CF_STORE_DISTRIBUTION_ID_PROD }}
+          PATHS: "/*"
+          AWS_REGION: ${{ secrets.AWS_REGION_PROD }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_PROD }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_PROD }}
 
       - name: 7- Notify slack success
         if: success()
