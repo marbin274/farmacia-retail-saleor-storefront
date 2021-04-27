@@ -104,6 +104,7 @@ export const Value = styled.div`
 
 export const Status = styled.div`
   width: 15%;
+  text-align: left;
   ${media.largeScreen`
      width: 50%;
   `}

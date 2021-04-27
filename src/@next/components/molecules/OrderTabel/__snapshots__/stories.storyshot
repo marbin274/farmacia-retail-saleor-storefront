@@ -187,6 +187,7 @@ exports[`Storyshots @components/molecules/OrderTabel default 1`] = `
 
 .c7 {
   width: 15%;
+  text-align: left;
 }
 
 @media (max-width:540px) {
