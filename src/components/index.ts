@@ -59,4 +59,5 @@ export { default as SelectField } from "./SelectField";
 export { default as SocialMediaIcon } from "./SocialMediaIcon";
 export { default as SocialMedia } from "./SocialMedia";
 export { default as TextField } from "./TextField";
+export { default as ProductsCollection } from "./ProductsCollection";
 

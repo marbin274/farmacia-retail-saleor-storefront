@@ -21,6 +21,7 @@ import { CollectionPage } from "../../views/Collection";
 import { HomePage } from "../../views/Home";
 import { ProductPage } from "../../views/Product";
 import { SearchPage } from "../../views/Search";
+import { LandingPage } from "../../views/Landing";
 import * as paths from "./paths";
 
 export const Routes: React.FC = () => (
@@ -48,6 +49,7 @@ export const Routes: React.FC = () => (
       component={ResetPasswordMailSent}
     />
     <Route path={paths.userRegistered} component={UserRegistered} />
+    <Route path={paths.landingUrl} component={LandingPage} />
     <Route component={NotFound} />
   </Switch>
 );
