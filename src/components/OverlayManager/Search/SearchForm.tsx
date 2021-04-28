@@ -91,7 +91,7 @@ export const SearchForm: React.FC<SearchFormProps> = ({
           value={search}
           innerIcon={getFieldIcono()}
           autoFocus={autofocus}
-          placeholder="Busca por nombre"
+          placeholder="Busca por nombre o marca"
           onBlur={handleInputBlur}
         />
       </div>
