@@ -1,6 +1,6 @@
 import { Button } from "@components/atoms";
 import { TaxedMoney } from "@components/containers";
-import { generateProductUrl, ordeEncripted } from "@temp/core/utils";
+import { generateProductUrl } from "@temp/core/utils";
 import arrowImg from "images/breadcrumbs-arrow.svg";
 import React from "react";
 import Media from "react-media";
@@ -51,7 +51,7 @@ export const OrderTabel: React.FC<IProps> = ({ orders, history }: IProps) => {
                         history.push(`/order-history/${order.node.token}`);
                       }}
                     >
-                      <S.IndexNumber>{ordeEncripted(order.node.token)}</S.IndexNumber>
+                      <S.IndexNumber>{order.node.sequentialCode}</S.IndexNumber>
                       {matches ? (
                         <>
                           <S.ProductsOrdered>

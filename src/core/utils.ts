@@ -194,6 +194,3 @@ export const translateOrderStatus = (
   }
 };
 
-export const ordeEncripted = (token: string): string => {
-  return token.substring(0,8).toUpperCase();
-}

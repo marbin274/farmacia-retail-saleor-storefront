@@ -10,7 +10,6 @@ import {
 } from "@temp/@sdk/gqlTypes/globalTypes";
 import { CartTable, NotFound } from "@temp/components";
 import { ILine } from "@temp/components/CartTable/ProductRow";
-import { ordeEncripted } from '@temp/core/utils';
 import AunaError from "@temp/images/auna/auna-error.svg";
 import * as React from "react";
 import { Link } from "react-router-dom";
@@ -97,7 +96,7 @@ const Page: React.FC<{
         <div className="order-details__tile-wrapper">
           <Tile>
             <p className="order-details__tile-title">Número de pedido</p>
-            <p className="order-details__tile-description">{ordeEncripted(order.token)}</p>
+            <p className="order-details__tile-description">{order.sequentialCode}</p>
             <p className="order-details__tile-title">Estado</p>
             <p>{order.customerStatusDisplay}</p>
             {order.shippingStatus === ShippingStatusEnum.DELIVERED &&
