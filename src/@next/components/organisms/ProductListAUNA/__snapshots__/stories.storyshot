@@ -125,7 +125,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
 
 .c2 .img img {
   width: auto;
-  height: auto;
+  height: 11rem;
   max-width: 100%;
   vertical-align: middle;
 }
