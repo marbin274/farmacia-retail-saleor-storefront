@@ -1,3 +1,4 @@
+import { ErrorMessage } from "@components/atoms";
 import { ShippingMethodItem } from "@components/molecules";
 import { convertShippingMethodDateToDate } from "@temp/@next/utils/dateUtils";
 import { Checkout_availableShippingMethods_scheduleDates } from "@temp/@sdk/fragments/gqlTypes/Checkout";
@@ -6,7 +7,6 @@ import { SHIPPING_FORMAT_DATE } from "@temp/core/config";
 import { format } from "date-fns";
 import { useFormik } from "formik";
 import React from "react";
-import { ErrorMessage } from "@components/atoms";
 import { shippingMethodFormSchema } from "./schema";
 import * as S from "./styles";
 import { ICheckoutShipping, IProps } from "./types";
@@ -120,24 +120,26 @@ const CheckoutShipping: React.FC<IProps> = ({
                   selected={selected}    
                   onClick={() => handleOnclick(id, !!isScheduled, scheduleDates, selected)}
                 >
-                  <ShippingMethodItem
-                    dateSelected={values.dateSelected}
-                    errors={formikErrors}
-                    id={id}
-                    index={index}
-                    isScheduled={isScheduled}
-                    name={name}
-                    selected={selected}
-                    scheduleSelected={values.scheduleSelected}
-                    scheduleDates={scheduleDates}
-                    subtitle={subtitle}
-                    touched={touched}
-                    price={price}
-                    handleChange={handleChange}
-                    setErrors={setErrors}
-                    setFieldValue={setFieldValue}
-                    setShippingMethod={setShippingMethod}
-                  />                
+                  <S.ShippingMethodItem>
+                    <ShippingMethodItem
+                      dateSelected={values.dateSelected}
+                      errors={formikErrors}
+                      id={id}
+                      index={index}
+                      isScheduled={isScheduled}
+                      name={name}
+                      selected={selected}
+                      scheduleSelected={values.scheduleSelected}
+                      scheduleDates={scheduleDates}
+                      subtitle={subtitle}
+                      touched={touched}
+                      price={price}
+                      handleChange={handleChange}
+                      setErrors={setErrors}
+                      setFieldValue={setFieldValue}
+                      setShippingMethod={setShippingMethod}
+                    />  
+                  </S.ShippingMethodItem>                
                 </S.ShippingMethodContainer>  
               );
             })}            

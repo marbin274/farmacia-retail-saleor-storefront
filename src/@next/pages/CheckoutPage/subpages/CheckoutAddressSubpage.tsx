@@ -1,7 +1,7 @@
 import { CheckoutAddress } from "@components/organisms";
 import { useCheckout, useUserDetails } from "@sdk/react";
 import { alertService } from "@temp/@next/components/atoms/Alert/AlertService";
-import { addressFormSchema } from "@temp/@next/components/organisms/AddressForm/adddressForm.schema";
+import { addressFormSchema } from "@temp/@next/components/organisms/AddressForm/adddressFormSchema";
 import { IPrivacyPolicy } from "@temp/@sdk/api/Checkout/types";
 import { ShopContext } from "@temp/components/ShopProvider/context";
 import { IAddress, IAddressWithEmail, IFormError } from "@types";
@@ -18,7 +18,6 @@ import { RouteComponentProps } from "react-router";
 
 export interface ICheckoutAddressSubpageHandles {
   submitAddress: () => void;
-  handleRequiredFields: () => boolean;
 }
 
 interface IProps extends RouteComponentProps<any> {
@@ -85,9 +84,6 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
   };
 
   useImperativeHandle(ref, () => ({
-    handleRequiredFields: () => {
-      return true;
-    },
     submitAddress: () => {
       if (user && selectedShippingAddressId) {
         checkoutAddressFormRef.current?.dispatchEvent(

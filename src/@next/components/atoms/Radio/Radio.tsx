@@ -18,7 +18,7 @@ const Radio: React.FC<IProps> = ({
     <StyledInput checked={checked || false}>
       <input type="radio" checked={checked} {...props} />{" "}
       <div>
-        <span></span>
+        <S.Span checked={checked || false}/>
       </div>
       {children}
     </StyledInput>

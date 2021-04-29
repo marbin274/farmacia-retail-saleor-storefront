@@ -285,7 +285,7 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
                 className="c11"
               >
                 <div
-                  className="css-1pcexqc-container"
+                  className="css-1pcexqc-container control"
                   onKeyDown={[Function]}
                 >
                   <div
@@ -635,7 +635,7 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
                 className="c12"
               >
                 <div
-                  className="css-1pcexqc-container"
+                  className="css-1pcexqc-container control"
                   onKeyDown={[Function]}
                 >
                   <div

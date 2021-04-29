@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
   margin: 20px;
 }
 
-.c11 {
+.c14 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -17,32 +17,72 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
   box-sizing: border-box;
 }
 
-.c6 {
+.c9 {
+  display: none;
+  width: 0.5em;
+  height: 0.5em;
+  margin: 0 auto;
+  border-radius: 0.25em;
+  background: #00B0CA;
+}
+
+.c8 {
+  cursor: pointer;
+}
+
+.c8 input[type="radio"] {
+  opacity: 0;
+  position: fixed;
+  width: 0;
+}
+
+.c8 > div {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  width: 1em;
+  height: 1em;
+  margin: 0.25em 1em 0.25em 0.25em;
+  border: 0.1em solid #9194A7;
+  border-radius: 0.5em;
+  background: #fff;
 }
 
 .c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c10 {
   width: 80%;
 }
 
-.c8 {
+.c11 {
   color: #000000;
   font-size: 1rem;
   font-weight: 600;
   opacity: 0.7;
 }
 
-.c9 {
+.c12 {
   color: #000000;
   font-size: 0.875rem;
   font-weight: normal;
   opacity: 0.7;
 }
 
-.c10 {
+.c13 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -58,7 +98,7 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
   width: 20%;
 }
 
-.c10 span {
+.c13 span {
   color: #000000;
   font-size: 0.875rem;
   font-weight: 600;
@@ -94,8 +134,25 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
 
 .c5 {
   background-color: #F6F8FA;
-  border: initial;
+  border: 1px solid #F6F8FA;
   border-radius: 16px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  cursor: pointer;
+  padding: 2rem 1rem;
+  margin: 1rem 0rem;
+}
+
+.c5:hover {
+  border-color: #00B0CA;
+}
+
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -103,9 +160,7 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  cursor: pointer;
-  padding: 2rem 1rem;
-  margin: 1rem 0rem;
+  width: 100%;
 }
 
 <div
@@ -144,29 +199,52 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
             <div
               className="c7"
             >
-              <p
+              <label
+                checked={false}
                 className="c8"
-                data-cy="checkoutShippingMethodOption0Name"
+              >
+                <input
+                  checked={false}
+                  data-cy="checkoutShippingMethodOption0Input"
+                  name="shippingMethod"
+                  type="radio"
+                  value="1"
+                />
+                 
+                <div>
+                  <span
+                    checked={false}
+                    className="c9"
+                  />
+                </div>
+              </label>
+              <div
+                className="c10"
+              >
+                <p
+                  className="c11"
+                  data-cy="checkoutShippingMethodOption0Name"
+                  selected={false}
+                >
+                  Basic
+                </p>
+                <p
+                  className="c12"
+                  selected={false}
+                >
+                  subTitle
+                </p>
+              </div>
+              <div
+                className="c13"
                 selected={false}
               >
-                Basic
-              </p>
-              <p
-                className="c9"
-                selected={false}
-              >
-                subTitle
-              </p>
-            </div>
-            <div
-              className="c10"
-              selected={false}
-            >
-              <span
-                data-cy="checkoutShippingMethodOption0Price"
-              >
-                
-              </span>
+                <span
+                  data-cy="checkoutShippingMethodOption0Price"
+                >
+                  
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -182,29 +260,52 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
             <div
               className="c7"
             >
-              <p
+              <label
+                checked={false}
                 className="c8"
-                data-cy="checkoutShippingMethodOption1Name"
+              >
+                <input
+                  checked={false}
+                  data-cy="checkoutShippingMethodOption1Input"
+                  name="shippingMethod"
+                  type="radio"
+                  value="2"
+                />
+                 
+                <div>
+                  <span
+                    checked={false}
+                    className="c9"
+                  />
+                </div>
+              </label>
+              <div
+                className="c10"
+              >
+                <p
+                  className="c11"
+                  data-cy="checkoutShippingMethodOption1Name"
+                  selected={false}
+                >
+                  Extra
+                </p>
+                <p
+                  className="c12"
+                  selected={false}
+                >
+                  subTitle
+                </p>
+              </div>
+              <div
+                className="c13"
                 selected={false}
               >
-                Extra
-              </p>
-              <p
-                className="c9"
-                selected={false}
-              >
-                subTitle
-              </p>
-            </div>
-            <div
-              className="c10"
-              selected={false}
-            >
-              <span
-                data-cy="checkoutShippingMethodOption1Price"
-              >
-                
-              </span>
+                <span
+                  data-cy="checkoutShippingMethodOption1Price"
+                >
+                  
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -212,7 +313,7 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
     </div>
   </section>
   <div
-    className="c11"
+    className="c14"
   />
 </div>
 `;

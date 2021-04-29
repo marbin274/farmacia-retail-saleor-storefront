@@ -1,4 +1,5 @@
 import { IFormError } from "@types";
+import { FocusEventHandler } from "react";
 
 export interface IProps {
   value: any;
@@ -12,6 +13,7 @@ export interface IProps {
   customStyles?: any;
   optionValueKey?: string;
   onChange: (value: any, name?: any) => void;
+  onBlur?: FocusEventHandler;
   clearable?: boolean;
   clearValue?: () => void;
   customComponents?: {

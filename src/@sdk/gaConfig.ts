@@ -12,8 +12,8 @@ export enum steps {
   review,
 }
 
-export const ecommerceProductsMapper = (products: any[]) => {
-  return products.map(product => ({
+export const ecommerceProductsMapper = (products?: any[] | null) => {
+  return products?.map(product => ({
     brand: ``,
     category: ``,
     id: product?.variant?.sku,
@@ -24,7 +24,7 @@ export const ecommerceProductsMapper = (products: any[]) => {
       product?.unitPrice?.gross?.amount || product?.totalPrice?.gross?.amount,
     quantity: product?.quantity,
     variant: ``,
-  }));
+  })) || [];
 };
 
 export const launchRemoveToCartEvent = (

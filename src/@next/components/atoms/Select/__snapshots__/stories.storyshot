@@ -33,7 +33,7 @@ exports[`Storyshots @components/atoms/Select sample select 1`] = `
     className="c1"
   >
     <div
-      className="css-1pcexqc-container"
+      className="css-1pcexqc-container control"
       onKeyDown={[Function]}
     >
       <div

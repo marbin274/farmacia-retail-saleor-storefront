@@ -36,7 +36,10 @@ const CheckoutAddress: React.FC<IProps> = ({
         onSelect={(address, email, id, privacyPolicy, documentNumber) =>
           setShippingAddress(address, email, id, privacyPolicy, documentNumber)
         }
-        // handleSubmit={address => setShippingAddress(address, address?.email)}
+        handleSubmit={(address, email, id, privacyPolicy, documentNumber) => {
+          setShippingAddress(address, address?.email, id, privacyPolicy, documentNumber)
+
+        }}
         includeEmail={true}
         errors={errors}
         user={user}

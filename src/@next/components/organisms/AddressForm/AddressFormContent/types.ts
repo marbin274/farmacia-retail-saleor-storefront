@@ -15,7 +15,8 @@ export interface ISelectFieldsProps {
     cities: any[];
     fieldErrors: any;
     values: IAddressWithEmail | undefined;
-    handleCityChange?: any;
+    handleChange?: any;
+    handleBlur: any;
 }
 export interface ISelectProps {
     fieldsProps: ISelectFieldsProps

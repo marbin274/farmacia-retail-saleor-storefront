@@ -1,15 +1,18 @@
-import { Formik } from "formik";
-import { pick } from "lodash";
+import { getName, removeCountryCodeInPhoneNumber } from "@temp/@next/utils/addresForm";
+import { IPrivacyPolicy } from "@temp/@sdk/api/Checkout/types";
+import { ADDRESS_FORM_SHOW_GENERAL_ERRORS, ADDRESS_FORM_SORT, ADDRESS_FORM_TOTAL_COUNT } from "@temp/core/config";
+import { IAddressWithEmail, IFormErrorSort } from "@types";
+import { Form, Formik, FormikHelpers } from "formik";
+import ErrorFormPopulateIcon from "images/auna/form-populate-error.svg";
+import { pick, sortBy } from "lodash";
 import React from "react";
-
-import { IAddressWithEmail } from "@types";
-import { AddressFormContent } from "./AddressFormContent";
-import { IProps } from "./types";
+import { alertService } from "../../atoms/Alert";
 import {
   addressFormModalSchema,
-  addressFormSchema,
-} from "./adddressForm.schema";
-import { getName, removeCountryCodeInPhoneNumber } from "@temp/@next/utils/addresForm";
+  addressFormSchema
+} from "./adddressFormSchema";
+import { AddressFormContent } from "./AddressFormContent";
+import { IProps } from "./types";
 
 const ADDRESS_FIELDS = [
   "city",
@@ -32,7 +35,8 @@ const ADDRESS_FIELDS = [
 
 export const AddressForm: React.FC<IProps> = ({
   address,
-  handleSubmit,
+  formRef,
+  handleSubmit: submitAddressForm,
   formId,
   defaultValue,
   countriesOptions,
@@ -41,6 +45,7 @@ export const AddressForm: React.FC<IProps> = ({
   comeFromModal,
   checkoutData,
   setFormValue,
+  errors: requestErrors,
   ...props
 }: IProps) => {
   let addressWithPickedFields: Partial<IAddressWithEmail> = {};
@@ -60,14 +65,15 @@ export const AddressForm: React.FC<IProps> = ({
     addressWithPickedFields.email = user.email;
     addressWithPickedFields.id = address?.id;
     addressWithPickedFields.documentNumber = user.documentNumber || '';
-    addressWithPickedFields.phone = address?.phone ? removeCountryCodeInPhoneNumber(address?.phone): '';
+    addressWithPickedFields.phone = address?.phone ? removeCountryCodeInPhoneNumber(address?.phone) : '';
     addressWithPickedFields.termsAndConditions = user.termsAndConditions || false;
     addressWithPickedFields.dataTreatmentPolicy = user.dataTreatmentPolicy;
     addressWithPickedFields.latitude = latitude || "";
     addressWithPickedFields.longitude = address?.longitude || "";
+    addressWithPickedFields.city = address?.city || "";
   }
 
-  if(checkoutData){
+  if (checkoutData) {
     addressWithPickedFields.firstName = checkoutData.shippingAddress?.firstName || addressWithPickedFields.firstName;
     addressWithPickedFields.email = checkoutData.email || addressWithPickedFields.email;
     addressWithPickedFields.documentNumber = checkoutData.documentNumber || addressWithPickedFields.documentNumber;
@@ -84,12 +90,38 @@ export const AddressForm: React.FC<IProps> = ({
     addressWithPickedFields.longitude =
       checkoutData.shippingAddress?.longitude ||
       addressWithPickedFields.longitude;
+    addressWithPickedFields.city = checkoutData.shippingAddress?.city || addressWithPickedFields.city;
   }
-  
+
   if (defaultValue) {
     addressWithPickedFields.country = defaultValue;
   }
 
+  const handleOnSubmitAddressForm = (values: IAddressWithEmail, { setSubmitting }: FormikHelpers<IAddressWithEmail>) => {
+    if (submitAddressForm) {
+      const _values: IAddressWithEmail = {
+        ...values,
+        country: {
+          code: "PE",
+          country: "Peru",
+        },
+        latitude: Number(values.latitude),
+        longitude: Number(values.longitude),
+      };
+      const policyPrivacy: IPrivacyPolicy = {
+        dataTreatmentPolicy: values.dataTreatmentPolicy || false,
+        termsAndConditions: values.termsAndConditions,
+      };
+      submitAddressForm(
+        _values,
+        _values.email,
+        addressWithPickedFields.id,
+        policyPrivacy,
+        _values.documentNumber
+      );
+    }
+    setSubmitting(false);
+  }
 
   const formSchemaValidation = comeFromModal
     ? addressFormModalSchema
@@ -99,50 +131,101 @@ export const AddressForm: React.FC<IProps> = ({
     <Formik
       initialValues={addressWithPickedFields}
       enableReinitialize={true}
-      onSubmit={(values, { setSubmitting }) => {
-        if (handleSubmit) {
-          handleSubmit(values);
-        }
-        setSubmitting(false);
-      }}
+      onSubmit={handleOnSubmitAddressForm}
       validationSchema={formSchemaValidation}
     >
       {({
         handleChange,
         handleSubmit,
         handleBlur,
-        initialValues,
         values,
         setFieldValue,
         setFieldTouched,
         errors: formikErrors,
         touched,
         isValid,
-        validateForm,
+        submitCount,
       }) => {
+
+        const submitCountRef = React.useRef<number>(submitCount);
+        const [errors, setErrors] = React.useState<IFormErrorSort[]>([]);        
+        
+        
+        React.useEffect(() => {
+
+          const scrollToErrors = (errors: IFormErrorSort[]) => {
+            if (errors[0]?.field) {
+              document.getElementsByName(errors[0].field)[0].focus();
+            }
+          }
+
+          const customErrors: IFormErrorSort[] = requestErrors ? [...requestErrors] : [];
+          for (const property of Object.keys(formikErrors)) {
+            const _err: IFormErrorSort = {
+              field: property,
+              message: (formikErrors as any)[property],
+              sort: (ADDRESS_FORM_SORT as any)[property],
+            };
+            if (touched.hasOwnProperty(property)) {
+              customErrors.push(_err);
+            }
+          }
+          const errorsSort = sortBy(customErrors, ["sort"]);
+          setErrors(errorsSort);
+
+          if (errorsSort.length > 0 && submitCount > submitCountRef.current) {
+            submitCountRef.current = submitCount;
+
+            if (errorsSort.length === ADDRESS_FORM_TOTAL_COUNT) {
+              scrollToErrors(errorsSort);
+            }
+            else {
+              alertService.sendAlert({
+                acceptDialog: () => {
+                  scrollToErrors(errorsSort);
+                },
+                buttonText: "Entendido",
+                icon: ErrorFormPopulateIcon,
+                message:
+                  errorsSort.length > ADDRESS_FORM_SHOW_GENERAL_ERRORS ?
+                    "Por favor completa los campos  obligatorios que se encuentran de color rojo." :
+                    <>Por favor completa los siguientes campos: <ul>{errorsSort.map((it, key) => <li key={key}>- {it.message}</li>)}</ul></>,
+                title: "Faltan datos",
+                type: "Info",
+              });
+            }
+          }
+
+        }, [formikErrors, requestErrors, submitCount]);
+
         return (
-          <AddressFormContent
-            {...{
-              citiesOptions,
-              comeFromModal,
-              countriesOptions,
-              defaultValue,
-              formId,
-              formikErrors,
-              handleBlur,
-              handleChange,
-              handleSubmit,
-              initialValues,
-              isValid,
-              setFieldTouched,
-              setFieldValue,
-              touched,
-              user,
-              validateForm,
-              values,
-            }}
-            {...props}
-          />
+          <Form
+            ref={formRef}
+            className="whatever"
+          >
+            <AddressFormContent
+              {...{
+                citiesOptions,
+                comeFromModal,
+                countriesOptions,
+                defaultValue,
+                errors,
+                formId,
+                formRef,
+                formikErrors,
+                handleBlur,
+                handleChange,
+                handleSubmit,
+                isValid,
+                setFieldTouched,
+                setFieldValue,
+                touched,
+                user,
+                values,
+              }}
+              {...props}
+            />
+          </Form>
         );
       }}
     </Formik>

@@ -1,4 +1,4 @@
-import { media, styled } from "@styles";
+import { media, mediaUp, styled } from "@styles";
 import {
   aunaBrand3,
   white,
@@ -10,20 +10,6 @@ import {
 
 export const AddressForm = styled.form`
   width: 100%;
-  .privacyAndPolicies {
-    margin-top: 1rem;
-    width: 100%;
-    svg {
-      margin-top: 0.4rem;
-    }
-    ${media.smallScreen`
-      width: 100%;
-    `}
-
-    a {
-      color: ${aunaInteractive};
-    }
-  }
 
   .additionals {
     margin-top: 2rem;
@@ -41,6 +27,22 @@ export const AddressForm = styled.form`
     color: ${aunaError};
     font-size: ${smallFontSize};
     font-weight: ${smallFontWeight};
+  }
+`;
+
+export const PrivacyAndPolicies = styled.div`
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  > div {
+    margin-bottom: 0rem;
+  }
+  ${media.smallScreen`
+    width: 100%;
+  `}
+
+  a {
+    color: ${aunaInteractive};
   }
 `;
 
@@ -91,4 +93,11 @@ export const GroupLabelIndex = styled.span`
 export const GroupLabelTitle = styled.span`
   font-weight: bolder;
   padding-left: 1rem;
+`;
+
+export const Referencia = styled.div<{mobile?:boolean}>`
+  display: ${({ mobile }) => !!mobile ? "block" : "none"};
+  ${mediaUp.mediumScreen`
+    display: ${({ mobile }: any) => !!mobile ? "none" : "block"};
+  `}
 `;

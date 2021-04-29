@@ -41,6 +41,6 @@ describe("<Message />", () => {
       "border-color",
       defaultTheme.colors.success
     );
-    expect(error).toHaveStyleRule("border-color", defaultTheme.colors.error);
+    expect(error).toHaveStyleRule("border-color", defaultTheme.colors.aunaError);
   });
 });

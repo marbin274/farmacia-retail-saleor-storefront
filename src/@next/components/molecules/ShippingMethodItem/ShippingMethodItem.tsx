@@ -1,4 +1,4 @@
-import { DatePicker } from "@components/atoms";
+import { DatePicker, Radio } from "@components/atoms";
 import { Money } from "@components/containers";
 import { InputSelect } from "@components/molecules";
 import { convertShippingMethodDateToDate, getScheduleTimesFormat } from "@temp/@next/utils/dateUtils";
@@ -65,7 +65,13 @@ export const ShippingMethodItem: React.FC<IProps> = ({
     }
 
     return <>
-        <S.ShippingMethodItem>
+        <S.ShippingMethodItem>            
+            <Radio
+                data-cy={`checkoutShippingMethodOption${index}Input`}
+                name="shippingMethod"
+                value={id}
+                checked={selected}
+            ></Radio>
             <S.ShippingMethodText>
                 <S.ShippingMethodTitle
                     data-cy={`checkoutShippingMethodOption${index}Name`}

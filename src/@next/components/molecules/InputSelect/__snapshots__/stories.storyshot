@@ -64,7 +64,7 @@ exports[`Storyshots @components/molecules/InputSelect default 1`] = `
       className="c2"
     >
       <div
-        className="css-1pcexqc-container"
+        className="css-1pcexqc-container control"
         onKeyDown={[Function]}
       >
         <div
