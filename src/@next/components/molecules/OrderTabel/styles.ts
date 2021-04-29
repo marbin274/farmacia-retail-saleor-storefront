@@ -76,9 +76,9 @@ export const HeaderRow = styled(BaseRow)`
 `;
 
 export const IndexNumber = styled.div`
-  width: 10%;
+  width: 15%;
   ${media.largeScreen`
-     width: 50%;
+     width: 60%;
   `}
 `;
 

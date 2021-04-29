@@ -154,7 +154,7 @@ exports[`Storyshots @components/molecules/OrderTabel default 1`] = `
 }
 
 .c3 {
-  width: 10%;
+  width: 15%;
 }
 
 .c4 {
@@ -210,7 +210,7 @@ exports[`Storyshots @components/molecules/OrderTabel default 1`] = `
 
 @media (max-width:992px) {
   .c3 {
-    width: 50%;
+    width: 60%;
   }
 }
 
@@ -232,7 +232,7 @@ exports[`Storyshots @components/molecules/OrderTabel default 1`] = `
       <div
         className="c3"
       >
-        # Orden
+        Codigo de orden
       </div>
       <div
         className="c4"
@@ -266,7 +266,7 @@ exports[`Storyshots @components/molecules/OrderTabel default 1`] = `
       <div
         className="c3"
       >
-        77
+        687F3E43
       </div>
       <div
         className="c4"
@@ -324,7 +324,7 @@ exports[`Storyshots @components/molecules/OrderTabel default 1`] = `
       <div
         className="c3"
       >
-        76
+        C2DEEA58
       </div>
       <div
         className="c4"

@@ -96,12 +96,12 @@ describe("<OrderTabel />", () => {
   it("should render passed orders array", () => {
     const wrapper = mount(<OrderTabel history={history} orders={ORDERS} />);
 
-    expect(wrapper.text()).toContain("77");
+    expect(wrapper.text()).toContain("687F3E43");
     expect(wrapper.text()).toContain("9/4/2019");
     expect(wrapper.text()).toContain("Solicitud recibida");
     expect(wrapper.text()).toContain("42.91");
 
-    expect(wrapper.text()).toContain("76");
+    expect(wrapper.text()).toContain("C2DEEA58");
     expect(wrapper.text()).toContain("6/10/2019");
     expect(wrapper.text()).toContain("Solicitud recibida");
     expect(wrapper.text()).toContain("29.24");
