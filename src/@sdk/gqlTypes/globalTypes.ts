@@ -355,6 +355,7 @@ export enum PaymentChargeStatusEnum {
   NOT_CHARGED = "NOT_CHARGED",
   PARTIALLY_CHARGED = "PARTIALLY_CHARGED",
   PARTIALLY_REFUNDED = "PARTIALLY_REFUNDED",
+  VOIDED = "VOIDED",
 }
 
 /**
@@ -382,6 +383,15 @@ export enum ProductOrderField {
   PUBLISHED = "PUBLISHED",
   STOCK_AVAILABLE = "STOCK_AVAILABLE",
   TYPE = "TYPE",
+}
+
+/**
+ * An enumeration.
+ */
+export enum ShippingStatusEnum {
+  DELIVERED = "DELIVERED",
+  IN_TRANSIT = "IN_TRANSIT",
+  NOT_SEND = "NOT_SEND",
 }
 
 export interface AccountInput {

@@ -57,7 +57,7 @@ const Breadcrumbs: React.FC<IBreadcrumbProps> = ({
       breadcrumbsAlwaysVisible || matches ? (
         <ul className="breadcrumbs">
           <li>
-            <Link to={baseUrl}>Home</Link>
+            <Link to={baseUrl}>Inicio</Link>
           </li>
           {breadcrumbs.map((breadcrumb, index) => (
             <li

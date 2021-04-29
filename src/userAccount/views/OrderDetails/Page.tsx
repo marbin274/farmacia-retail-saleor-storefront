@@ -1,18 +1,20 @@
-import * as React from "react";
-import { Link } from "react-router-dom";
-
+import { Tile } from "@components/atoms";
 import { TaxedMoney } from "@components/containers";
 import {
   OrderDetail,
   OrderDetail_lines,
 } from "@sdk/fragments/gqlTypes/OrderDetail";
-
+import {
+  OrderStatus,
+  ShippingStatusEnum,
+} from "@temp/@sdk/gqlTypes/globalTypes";
 import { CartTable, NotFound } from "@temp/components";
-import { Tile } from "@components/atoms";
 import { ILine } from "@temp/components/CartTable/ProductRow";
-
+import AunaError from "@temp/images/auna/auna-error.svg";
+import * as React from "react";
+import { Link } from "react-router-dom";
+import ReactSVG from "react-svg";
 import { orderHistoryUrl } from "../../../app/routes";
-import { translateOrderStatus } from "@temp/core/utils";
 
 const extractOrderLines = (lines: OrderDetail_lines[]): ILine[] => {
   return lines
@@ -43,7 +45,7 @@ const Page: React.FC<{
   const address = order?.shippingAddress;
 
   const getAdressDetails = () => {
-    if(address) {
+    if (address) {
       return (
         <>
           {address.companyName && (
@@ -74,9 +76,9 @@ const Page: React.FC<{
             </>
           )}
         </>
-      ); 
+      );
     }
-  }
+  };
 
   if (!order) {
     return <NotFound />;
@@ -96,7 +98,17 @@ const Page: React.FC<{
             <p className="order-details__tile-title">Número de pedido</p>
             <p className="order-details__tile-description">{order.number}</p>
             <p className="order-details__tile-title">Estado</p>
-            <p>{translateOrderStatus(order.status, order.statusDisplay)}</p>
+            <p>{order.customerStatusDisplay}</p>
+            {order.shippingStatus === ShippingStatusEnum.DELIVERED &&
+              order.status === OrderStatus.PARTIALLY_FULFILLED && (
+                <p className="order-details__tile-alert-fuilfill">
+                  <ReactSVG
+                    path={AunaError}
+                    className="order-details__tile-alert-fulfill-icon"
+                  />
+                  <span>Este pedido fue entregado parcialmente</span>
+                </p>
+              )}
           </Tile>
         </div>
         <div className="order-details__tile-wrapper-address">

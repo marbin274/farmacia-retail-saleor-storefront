@@ -154,7 +154,7 @@ exports[`Storyshots @components/molecules/OrderTabel default 1`] = `
 }
 
 .c3 {
-  width: 15%;
+  width: 10%;
 }
 
 .c4 {
@@ -178,15 +178,16 @@ exports[`Storyshots @components/molecules/OrderTabel default 1`] = `
 }
 
 .c5 {
-  width: 25%;
+  width: 16%;
 }
 
 .c6 {
-  width: 10%;
+  width: 18%;
 }
 
 .c7 {
-  width: 15%;
+  width: 16%;
+  text-align: left;
 }
 
 @media (max-width:540px) {
@@ -296,7 +297,7 @@ exports[`Storyshots @components/molecules/OrderTabel default 1`] = `
       <div
         className="c7"
       >
-        Unfulfilled
+        Solicitud recibida
       </div>
       <div
         className="c8 c9"
@@ -354,7 +355,7 @@ exports[`Storyshots @components/molecules/OrderTabel default 1`] = `
       <div
         className="c7"
       >
-        Fulfilled
+        Solicitud recibida
       </div>
       <div
         className="c8 c9"
