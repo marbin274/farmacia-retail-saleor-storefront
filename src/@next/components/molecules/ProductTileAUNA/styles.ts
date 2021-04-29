@@ -25,7 +25,7 @@ export const ProductCard = styled.div<{
     vertical-align: middle;
      img {
       width: auto;
-      height: auto;
+      height: 11rem;
       max-width: 100%;
       vertical-align: middle;
     }
