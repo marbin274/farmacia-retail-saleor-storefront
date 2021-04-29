@@ -1,8 +1,7 @@
-import * as React from "react";
+import React, { FC } from "react";
 import { RouteComponentProps } from "react-router";
-
 import { IFilters } from "@types";
-import { StringParam, useQueryParam } from "use-query-params";
+import { StringParam, useQueryParams, NumberParam } from "use-query-params";
 import { MetaWrapper, NotFound, OfflinePlaceholder } from "../../components";
 import NetworkStatus from "../../components/NetworkStatus";
 import { PRODUCTS_PER_PAGE } from "../../core/config";
@@ -20,12 +19,16 @@ import {
   IRemoveItemToCartCallback,
   ISubtractItemToCartCallback,
 } from "@temp/@next/components/molecules/ProductTileAUNA/types";
+import { CategoryVariables } from "./gqlTypes/Category";
+import Media from "react-media";
+import { smallScreen } from "@temp/@next/globalStyles/constants";
 
 type ViewProps = RouteComponentProps<{
   id: string;
+  slug: string;
 }>;
 
-const DEFAULT_SORT = '-stock'
+const DEFAULT_SORT = "-stock";
 
 export const FilterQuerySet = {
   encode(valueObj) {
@@ -47,15 +50,22 @@ export const FilterQuerySet = {
   },
 };
 
-export const View: React.FC<ViewProps> = ({ match }) => {
-  const [sort, setSort] = useQueryParam("sortBy", StringParam);
-  const [attributeFilters, setAttributeFilters] = useQueryParam(
-    "filters",
-    FilterQuerySet
-  );
+export const View: FC<ViewProps> = ({ match }) => {
+  const [
+    { filters: attributeFilters, page, sortBy: sort },
+    setQuery,
+  ] = useQueryParams({
+    filters: FilterQuerySet,
+    page: NumberParam,
+    sortBy: StringParam,
+  });
 
   const clearFilters = () => {
-    setAttributeFilters({});
+    setQuery({ filters: {} });
+  };
+
+  const handlePageChange = (page: number) => {
+    setQuery({ page });
   };
 
   const onFiltersChange = (name, value) => {
@@ -64,25 +74,34 @@ export const View: React.FC<ViewProps> = ({ match }) => {
         if (filters.attributes[`${name}`].length === 1) {
           const att = { ...attributeFilters };
           delete att[`${name}`];
-          setAttributeFilters({
-            ...att,
+          setQuery({
+            filters: { ...att },
           });
         } else {
-          setAttributeFilters({
-            ...attributeFilters,
-            [`${name}`]: attributeFilters[`${name}`].filter(
-              item => item !== value
-            ),
+          setQuery({
+            filters: {
+              ...attributeFilters,
+              [`${name}`]: attributeFilters[`${name}`].filter(
+                item => item !== value
+              ),
+            },
           });
         }
       } else {
-        setAttributeFilters({
-          ...attributeFilters,
-          [`${name}`]: [...attributeFilters[`${name}`], value],
+        setQuery({
+          filters: {
+            ...attributeFilters,
+            [`${name}`]: [...attributeFilters[`${name}`], value],
+          },
         });
       }
     } else {
-      setAttributeFilters({ ...attributeFilters, [`${name}`]: [value] });
+      setQuery({
+        filters: {
+          ...attributeFilters,
+          [`${name}`]: [value],
+        },
+      });
     }
   };
 
@@ -93,12 +112,14 @@ export const View: React.FC<ViewProps> = ({ match }) => {
     priceLte: null,
     sortBy: sort || DEFAULT_SORT,
   };
-  const variables = {
+
+  const variables: CategoryVariables = {
     ...filters,
     attributes: filters.attributes
       ? convertToAttributeScalar(filters.attributes)
       : {},
     id: getGraphqlIdFromDBId(match.params.id, "Category"),
+    page: page || 1,
     sortBy: convertSortByFromString(filters.sortBy),
   };
 
@@ -146,84 +167,84 @@ export const View: React.FC<ViewProps> = ({ match }) => {
     subtractItem(product);
   };
 
+  const getPageSize = (isMobile: boolean): number => {
+    return isMobile ? 8 : 12;
+  };
+
   return (
     <NetworkStatus>
       {isOnline => (
-        <TypedCategoryProductsQuery
-          variables={variables}
-          errorPolicy="all"
-          loaderFull
-        >
-          {({ loading, data, loadMore }) => {
-            const canDisplayFilters = maybe(
-              () => !!data.attributes.edges && !!data.category.name,
-              false
-            );
-
-            if (canDisplayFilters) {
-              const handleLoadMore = () =>
-                loadMore(
-                  (prev, next) => ({
-                    ...prev,
-                    products: {
-                      ...prev.products,
-                      edges: [...prev.products.edges, ...next.products.edges],
-                      pageInfo: next.products.pageInfo,
-                    },
-                  }),
-                  { after: data.products.pageInfo.endCursor }
+        <Media query={{ maxWidth: smallScreen }}>
+          {matches => (
+            <TypedCategoryProductsQuery
+              variables={{ ...variables, pageSize: getPageSize(matches) }}
+              errorPolicy="all"
+              loaderFull
+            >
+              {({ loading, data }) => {
+                const canDisplayFilters = maybe(
+                  () => !!data.attributes.edges && !!data.category.name,
+                  false
                 );
 
-              return (
-                <MetaWrapper
-                  meta={{
-                    description: data.category.seoDescription,
-                    title: data.category.seoTitle,
-                    type: "product.category",
-                  }}
-                >
-                  <Page
-                    clearFilters={clearFilters}
-                    attributes={data.attributes.edges.map(edge => edge.node)}
-                    category={data.category}
-                    displayLoader={loading}
-                    hasNextPage={maybe(
-                      () => data.products.pageInfo.hasNextPage,
-                      false
-                    )}
-                    sortOptions={sortOptions}
-                    activeSortOption={filters.sortBy}
-                    filters={filters}
-                    products={data.products}
-                    shop={data.shop}
-                    onAttributeFiltersChange={onFiltersChange}
-                    onLoadMore={handleLoadMore}
-                    activeFilters={
-                      filters!.attributes
-                        ? Object.keys(filters!.attributes).length
-                        : 0
-                    }
-                    onOrder={value => {
-                      setSort(value.value);
-                    }}
-                    addToCart={addToCart}
-                    items={items}
-                    removeItemToCart={removeItemToCart}
-                    subtractItemToCart={subtractItemToCart}
-                  />
-                </MetaWrapper>
-              );
-            }
+                if (canDisplayFilters) {
+                  return (
+                    <MetaWrapper
+                      meta={{
+                        description: data.category.seoDescription,
+                        title: data.category.seoTitle,
+                        type: "product.category",
+                      }}
+                    >
+                      <Page
+                        clearFilters={clearFilters}
+                        attributes={data.attributes.edges.map(
+                          edge => edge.node
+                        )}
+                        category={data.category}
+                        displayLoader={loading}
+                        sortOptions={sortOptions}
+                        activeSortOption={filters.sortBy}
+                        filters={filters}
+                        products={data.paginatedProducts}
+                        shop={data.shop}
+                        onAttributeFiltersChange={onFiltersChange}
+                        activeFilters={
+                          filters!.attributes
+                            ? Object.keys(filters!.attributes).length
+                            : 0
+                        }
+                        onOrder={value => {
+                          setQuery({
+                            page: 1,
+                            sortBy: value.value,
+                          });
+                        }}
+                        addToCart={addToCart}
+                        items={items}
+                        removeItemToCart={removeItemToCart}
+                        subtractItemToCart={subtractItemToCart}
+                        page={page || 1}
+                        pageSize={getPageSize(matches)}
+                        onPageChange={handlePageChange}
+                        totalProducts={data.paginatedProducts.totalCount}
+                        isSmallScreen={matches}
+                      />
+                    </MetaWrapper>
+                  );
+                }
 
-            if (data && data.category === null) {
-              return <NotFound />;
-            }
+                if (data && data.category === null) {
+                  return <NotFound />;
+                }
 
-            if (!isOnline) {
-              return <OfflinePlaceholder />;
-            }
-          }}
-        </TypedCategoryProductsQuery>
+                if (!isOnline) {
+                  return <OfflinePlaceholder />;
+                }
+              }}
+            </TypedCategoryProductsQuery>
+          )}
+        </Media>
       )}
     </NetworkStatus>
   );

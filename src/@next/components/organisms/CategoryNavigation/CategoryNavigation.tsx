@@ -1,5 +1,4 @@
 import React from "react";
-import { NavLink } from "@temp/components/NavLink";
 import * as S from "./styles";
 import { IProps } from "./types";
 
@@ -7,13 +6,13 @@ export const CategoryNavigation: React.FC<IProps> = ({ subItems }) => {
   return (
     <S.Wrapper>
       <S.Title>Categorías</S.Title>
-      <S.List>
+      <ul>
         {subItems.map(subItem => (
           <S.Link key={subItem.id}>
-            <NavLink item={subItem} className="category__link" />
+            <S.NavLink item={subItem} />
           </S.Link>
         ))}
-      </S.List>
+      </ul>
     </S.Wrapper>
   );
 };

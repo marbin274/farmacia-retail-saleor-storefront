@@ -18,7 +18,7 @@ exports[`Storyshots @components/atoms/DropdownSelect default 1`] = `
 }
 
 .c4 {
-  color: #7d7d7d;
+  color: #9194A7;
   display: inline-block;
   white-space: pre;
 }
@@ -79,6 +79,7 @@ exports[`Storyshots @components/atoms/DropdownSelect default 1`] = `
   -webkit-transform: rotate(0deg);
   -ms-transform: rotate(0deg);
   transform: rotate(0deg);
+  margin-top: -0.25rem;
 }
 
 <div
@@ -108,22 +109,15 @@ exports[`Storyshots @components/atoms/DropdownSelect default 1`] = `
           <div
             className="c5"
           >
-             
+             Limpiar
           </div>
           <div
             className="c6"
             rotate="false"
           >
-            <svg
-              height={10}
-              viewBox="0 0 32 32"
-              width={10}
-            >
-              <path
-                d="M16 29.856l-15.999-27.712h31.999l-15.999 27.712z"
-                fill="#21125E"
-              />
-            </svg>
+            <img
+              src={[Function]}
+            />
           </div>
         </div>
       </div>

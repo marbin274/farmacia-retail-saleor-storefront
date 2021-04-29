@@ -1,8 +1,8 @@
 export { default as AddressSummary } from "./AddressSummary";
 export {
-  Breadcrumb, default as Breadcrumbs,
-
-  extractBreadcrumbs
+  Breadcrumb,
+  default as Breadcrumbs,
+  extractBreadcrumbs,
 } from "./Breadcrumbs";
 export { ButtonProps, default as Button } from "./Button";
 export { CartTable } from "./CartTable";
@@ -22,10 +22,9 @@ export { default as MenuDropdown } from "./MenuDropdown";
 export { default as Message } from "./Message";
 export {
   MetaConsumer,
-
-  MetaContextInterface, MetaProvider,
-
-  MetaWrapper
+  MetaContextInterface,
+  MetaProvider,
+  MetaWrapper,
 } from "./Meta";
 export { INavItem, MobileNavList } from "./MobileNav";
 export { default as Modal } from "./Modal";
@@ -36,7 +35,7 @@ export { default as NotificationTemplate } from "./NotificationTemplate";
 export { default as Offline } from "./Offline";
 export { default as OfflinePlaceholder } from "./OfflinePlaceholder";
 export { default as Online } from "./Online";
-export { default as OutOfTime } from './OutOfTime';
+export { default as OutOfTime } from "./OutOfTime";
 export {
   InnerOverlayContextInterface,
   Overlay,
@@ -45,7 +44,7 @@ export {
   OverlayProvider,
   OverlayTheme,
   OverlayType,
-  ShowOverlayType
+  ShowOverlayType,
 } from "./Overlay";
 export { OverlayManager } from "./OverlayManager";
 export { default as PasswordResetForm } from "./PasswordResetForm";
@@ -60,4 +59,3 @@ export { default as SocialMediaIcon } from "./SocialMediaIcon";
 export { default as SocialMedia } from "./SocialMedia";
 export { default as TextField } from "./TextField";
 export { default as ProductsCollection } from "./ProductsCollection";
-

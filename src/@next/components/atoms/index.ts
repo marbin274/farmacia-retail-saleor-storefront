@@ -33,3 +33,4 @@ export * from "./SocialMediaIcon";
 export * from "./TermsAndConditionsLink";
 export * from "./Tile";
 export * from "./TileGrid";
+export * from "./PageItem";

@@ -10,7 +10,10 @@ import { ProductListHeader } from "../../@next/components/molecules";
 import { ProductListAUNA } from "../../@next/components/organisms";
 import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
 import { maybe } from "../../core/utils";
-import { Category_category, Category_products } from "./gqlTypes/Category";
+import {
+  Category_category,
+  Category_paginatedProducts,
+} from "./gqlTypes/Category";
 import {
   IAddToCartCallback,
   IRemoveItemToCartCallback,
@@ -19,6 +22,7 @@ import {
 import { CategoryNavigation } from "@temp/@next/components/organisms/CategoryNavigation/CategoryNavigation";
 import { MainMenu_shop } from "@temp/components/MainMenu/gqlTypes/MainMenu";
 import { IItems } from "@temp/@sdk/api/Cart/types";
+import { Pagination } from "@components/molecules";
 
 interface SortItem {
   label: string;
@@ -37,15 +41,18 @@ interface PageProps {
   category: Category_category;
   displayLoader: boolean;
   filters: IFilters;
-  hasNextPage: boolean;
-  products: Category_products;
+  isSmallScreen: boolean;
+  products: Category_paginatedProducts;
   shop: MainMenu_shop;
   sortOptions: SortOptions;
   clearFilters: () => void;
-  onLoadMore: () => void;
   onAttributeFiltersChange: (attributeSlug: string, value: string) => void;
   onOrder: (order: { value?: string; label: string }) => void;
   items: IItems;
+  page: number;
+  pageSize: number;
+  onPageChange: (page: number) => void;
+  totalProducts: number;
 }
 
 const Page: React.FC<PageProps> = ({
@@ -55,9 +62,8 @@ const Page: React.FC<PageProps> = ({
   attributes,
   category,
   displayLoader,
-  hasNextPage,
   clearFilters,
-  onLoadMore,
+  isSmallScreen,
   products,
   shop,
   filters,
@@ -65,7 +71,11 @@ const Page: React.FC<PageProps> = ({
   sortOptions,
   onAttributeFiltersChange,
   items,
+  onPageChange,
+  page,
+  pageSize,
   removeItemToCart,
+  totalProducts,
   subtractItemToCart,
 }) => {
   const canDisplayProducts = maybe(
@@ -101,23 +111,42 @@ const Page: React.FC<PageProps> = ({
 
   return (
     <div className="category">
-      <ProductListHeader
-        activeSortOption={activeSortOption}
-        openFiltersMenu={() => setShowFilters(true)}
-        numberOfProducts={products ? products.totalCount : 0}
-        activeFilters={activeFilters}
-        activeFiltersAttributes={activeFiltersAttributes}
-        clearFilters={clearFilters}
-        sortOptions={sortOptions}
-        onChange={onOrder}
-        onCloseFilterAttribute={onAttributeFiltersChange}
-      />
+      {isSmallScreen && (
+        <ProductListHeader
+          activeSortOption={activeSortOption}
+          openFiltersMenu={() => setShowFilters(true)}
+          numberOfProducts={products ? products.totalCount : 0}
+          activeFilters={activeFilters}
+          activeFiltersAttributes={activeFiltersAttributes}
+          clearFilters={clearFilters}
+          sortOptions={sortOptions}
+          onChange={onOrder}
+          onCloseFilterAttribute={onAttributeFiltersChange}
+        />
+      )}
       <div className="category__container category__body">
         <CategoryNavigation
           subItems={navigationItems ? navigationItems.children : []}
         />
         <section className="category__products">
-          <Breadcrumbs breadcrumbs={extractBreadcrumbs(category)} />
+          {!isSmallScreen && (
+            <ProductListHeader
+              activeSortOption={activeSortOption}
+              openFiltersMenu={() => setShowFilters(true)}
+              numberOfProducts={products ? products.totalCount : 0}
+              activeFilters={activeFilters}
+              activeFiltersAttributes={activeFiltersAttributes}
+              clearFilters={clearFilters}
+              sortOptions={sortOptions}
+              onChange={onOrder}
+              onCloseFilterAttribute={onAttributeFiltersChange}
+            />
+          )}
+          <Breadcrumbs
+            breadcrumbs={extractBreadcrumbs(category)}
+            showHomeIcon
+            className="category__breadcrumbs"
+          />
           <FilterSidebar
             show={showFilters}
             hide={() => setShowFilters(false)}
@@ -126,16 +155,23 @@ const Page: React.FC<PageProps> = ({
             filters={filters}
           />
           {canDisplayProducts && (
-            <ProductListAUNA
-              products={products.edges.map(edge => edge.node)}
-              productsOnCart={items}
-              canLoadMore={hasNextPage}
-              loading={displayLoader}
-              onLoadMore={onLoadMore}
-              addToCart={addToCart}
-              removeItemToCart={removeItemToCart}
-              subtractItemToCart={subtractItemToCart}
-            />
+            <>
+              <ProductListAUNA
+                products={products.edges.map(edge => edge.node)}
+                productsOnCart={items}
+                loading={displayLoader}
+                addToCart={addToCart}
+                removeItemToCart={removeItemToCart}
+                subtractItemToCart={subtractItemToCart}
+              />
+              <Pagination
+                page={page}
+                pageSize={pageSize}
+                total={totalProducts}
+                onPageChange={onPageChange}
+                className="category__pagination"
+              />
+            </>
           )}
           {!hasProducts && <EmptyProduct title="No hay productos" />}
         </section>

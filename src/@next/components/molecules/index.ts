@@ -27,4 +27,5 @@ export * from "./ShippingMethodItem";
 export * from "./TextField";
 export * from "./Thumbnail";
 export * from "./AddressAutocomplete";
+export * from "./Pagination";
 
