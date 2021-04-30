@@ -35,6 +35,7 @@ export const orderDetailFragment = gql`
     id
     token
     number
+    sequentialCode
     shippingAddress {
       ...Address
     }

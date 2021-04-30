@@ -1,4 +1,4 @@
-import { SHIPPING_METHOD_DATE_INVALID, SHIPPING_METHOD_REQUIRED, SHIPPING_METHOD_SCHEDULE_INVALID } from "../../../../@next/utils/schemas.messages"; // TODO: Corregir import por alias
+import { SHIPPING_METHOD_DATE_INVALID, SHIPPING_METHOD_REQUIRED, SHIPPING_METHOD_SCHEDULE_INVALID } from "../../../../@next/utils/schemasMessages"; // TODO: Corregir import por alias
 import * as yup from "yup";
 
 export const shippingMethodFormSchema = yup.object().shape({

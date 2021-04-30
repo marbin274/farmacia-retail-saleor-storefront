@@ -261,4 +261,19 @@ const AVAILABLE_PAYMENTS_PRD: IPaymentGateway[] =
                },
             ]
 
-export const AVAILABLE_PAYMENTS = environmentName === 'prod' ? AVAILABLE_PAYMENTS_PRD : AVAILABLE_PAYMENTS_QA
+export const AVAILABLE_PAYMENTS = environmentName === 'prod' ? AVAILABLE_PAYMENTS_PRD : AVAILABLE_PAYMENTS_QA;
+
+export const ADDRESS_FORM_SORT = {
+   "city": 7,
+   "dataTreatmentPolicy": 5,
+   "documentNumber": 1,
+   "email": 2,
+   "firstName": 0,
+   "phone": 3,
+   "streetAddress1": 6,
+   "streetAddress2": 8,
+   "termsAndConditions": 4,
+};
+
+export const ADDRESS_FORM_SHOW_GENERAL_ERRORS = 3;
+export const ADDRESS_FORM_TOTAL_COUNT = 7;

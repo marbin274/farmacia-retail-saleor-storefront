@@ -8,7 +8,7 @@ export const FirstNameTextField = ({ fieldsProps }: IProps) => {
         data-cy="addressFormFirstName"
         name="firstName"
         label={`${(required ? "*" : "")}Nombre completo`}
-        placeholder="Nombre completo"
+        placeholder="Ejemplo: Juan Perez"
         value={!values?.firstName ? "" : values?.firstName}
         autoComplete="given-name"
         errors={fieldErrors!.firstName}
@@ -21,12 +21,14 @@ export const PhoneTextField = ({ fieldsProps }: IProps) => {
     return <TextField
         data-cy="addressFormPhone"
         name="phone"
-        placeholder="Número de celular"
+        placeholder="Ejemplo: 912345678"
         maxLength={9}
         label="*Número de celular"
         value={!values?.phone ? "" : values?.phone}
         autoComplete="tel"
+        type="tel"
         errors={fieldErrors!.phone}
+        pattern="\d*"
         {...basicInputProps()}
     />
 }
@@ -60,7 +62,7 @@ export const StreetAddress2 = ({ fieldsProps }: IProps) => {
     return <TextField
         data-cy="addressFormStreetAddress2"
         name="streetAddress2"
-        placeholder="Edificio, apartamento"
+        placeholder="Ejemplo: Edificio, apartamento"
         label="Referencia"
         value={
             !values?.streetAddress2 ? "" : values?.streetAddress2
@@ -72,7 +74,7 @@ export const StreetAddress2 = ({ fieldsProps }: IProps) => {
 }
 
 export const CitySelect = ({ fieldsProps }: ISelectProps) => {
-    const { cities, fieldErrors, values, handleCityChange } = fieldsProps;
+    const { cities, fieldErrors, handleChange, handleBlur, values } = fieldsProps;
     const value = values!.city &&
         cities &&
         cities!.find(
@@ -83,17 +85,20 @@ export const CitySelect = ({ fieldsProps }: ISelectProps) => {
     const showPlaceHolder = !value || (value && value.length === 0);
 
     return <InputSelect
-        inputProps={{
+        inputProps={{            
             "data-cy": "addressFormCity",
-            placeholder: showPlaceHolder ? "Selecciona tu distrito" : "",
+            name:"city",
+            placeholder: showPlaceHolder ? "Selecciona tu distrito" : "",            
         }}
-        label="*Distrito"
         name="city"
+        label="*Distrito"
         options={cities}
         value={value}
-        onChange={handleCityChange}
         optionLabelKey="description"
         optionValueKey="code"
         errors={fieldErrors!.city}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        
     />
 }

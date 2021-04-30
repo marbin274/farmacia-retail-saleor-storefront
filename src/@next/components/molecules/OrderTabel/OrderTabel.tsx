@@ -11,7 +11,7 @@ import { IProps } from "./types";
 
 const header = (matches: boolean) => (
   <S.HeaderRow>
-    <S.IndexNumber># Orden</S.IndexNumber>
+    <S.IndexNumber>Codigo de orden</S.IndexNumber>
     {matches && (
       <>
         <S.ProductsOrdered>Productos</S.ProductsOrdered>
@@ -23,6 +23,8 @@ const header = (matches: boolean) => (
     <S.Action />
   </S.HeaderRow>
 );
+
+
 
 export const OrderTabel: React.FC<IProps> = ({ orders, history }: IProps) => {
   const theme = React.useContext(ThemeContext);
@@ -49,7 +51,7 @@ export const OrderTabel: React.FC<IProps> = ({ orders, history }: IProps) => {
                         history.push(`/order-history/${order.node.token}`);
                       }}
                     >
-                      <S.IndexNumber>{order.node.number}</S.IndexNumber>
+                      <S.IndexNumber>{order.node.sequentialCode}</S.IndexNumber>
                       {matches ? (
                         <>
                           <S.ProductsOrdered>

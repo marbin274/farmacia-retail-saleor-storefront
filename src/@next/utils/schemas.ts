@@ -1,6 +1,6 @@
 import * as Yup from "yup";
-import * as SchemasConfig from "./schemas.config";
-import * as SchemaMessage from "./schemas.messages";
+import * as SchemasConfig from "./schemasConfig";
+import * as SchemaMessage from "./schemasMessages";
 
 export const dataTreatmentPolicyValidation = Yup.boolean();
 

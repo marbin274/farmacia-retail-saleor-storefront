@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
 `;
 
 export const GeneralError = styled.p`
-  color: ${props => props.theme.colors.error} !important;
+  color: ${props => props.theme.colors.aunaError} !important;
 `;
 
 export const InputFields = styled.div`

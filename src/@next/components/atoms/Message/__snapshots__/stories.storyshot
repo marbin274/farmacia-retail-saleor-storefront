@@ -127,7 +127,7 @@ exports[`Storyshots @components/atoms/Message action snackbar 1`] = `
   bottom: 1rem;
   right: 1rem;
   border-left: 0.4rem solid;
-  border-color: #c22d74;
+  border-color: #E84545;
 }
 
 .c2 {
@@ -214,7 +214,7 @@ exports[`Storyshots @components/atoms/Message error w/ children 1`] = `
   bottom: 1rem;
   right: 1rem;
   border-left: 0.4rem solid;
-  border-color: #c22d74;
+  border-color: #E84545;
 }
 
 .c2 {

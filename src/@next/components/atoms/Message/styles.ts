@@ -3,8 +3,8 @@ import { DefaultTheme, styled } from "@styles";
 import { IProps } from "./types";
 
 const borderColors = (theme: DefaultTheme) => ({
-  action: theme.colors.error,
-  error: theme.colors.error,
+  action: theme.colors.aunaError,
+  error: theme.colors.aunaError,
   neutral: theme.colors.primaryDark,
   success: theme.colors.success,
 });

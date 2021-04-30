@@ -91,7 +91,6 @@ export const theme = {
   disabled: gray,
   divider: grayLight,
   dividerDark: grayMedium,
-  error: rose,
   greyText: aunaGrey100,
   hoverLightBackground: turquoiseLight,
   interactive: aunaInteractive,

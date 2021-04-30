@@ -11,7 +11,7 @@ export const DatePicker: React.FC<IProps> = ({ errors, minDate, maxDate, value, 
 
   const ExampleCustomInput = React.forwardRef<HTMLButtonElement>(
     ({value, onClick} : any, ref) => (
-      <S.ButtonSelectDate>
+      <S.ButtonSelectDate className="control">
         <button type="button" className="example-custom-input" onClick={onClick} ref={ref}>
           {value || ""}
           <ReactSVG path={shippingMethodCalendarIcon}/>

@@ -1,4 +1,4 @@
-import * as SchemasConfig from "./schemas.config";
+import * as SchemasConfig from "./schemasConfig";
 
 export const DOCUMENT_NUMBER_REQUIRED = "Ingresa tu número de documento";
 export const DOCUMENT_NUMBER_LENGTH_VALIDATION = `Debe contener como mínimo ${SchemasConfig.DOCUMENT_NUMBER_MIN_LENGTH} números, no incluir espacios, ni letras (A-Z) `;
@@ -13,7 +13,7 @@ export const RESET_NEW_PASSWORD_REQUIRED = "Ingresa la nueva contraseña";
 export const RESET_PASSWORD_REQUIRED = "Ingresa nuevamente la contraseña";
 export const RESET_PASSWORD_NOT_MATCH = "La contraseña no coincide";
 export const PHONE_VALIDATION = `Debe contener ${SchemasConfig.PHONE_MIN_LENGTH} dígitos comenzando con 9, no incluir espacios, ni letras (A-Z)`;
-export const PHONE_REQUIRED = "Ingresa tu número de telefono";
+export const PHONE_REQUIRED = "Ingresa tu número de celular";
 export const TERMS_AND_CONTIDIONS_REQUIRED = "Debes aceptar para continuar";
 export const SHIPPING_METHOD_REQUIRED = "Debes seleccionar el método de envío";
 export const SHIPPING_METHOD_DATE_INVALID = "Debe ingresar una fecha de envío";

@@ -66,13 +66,22 @@ export const GroupLabelTitle = styled.span`
 `;
 
 export const ShippingMethodContainer = styled.div<{ selected: boolean, hasError: boolean }>`
-    background-color: ${({ selected, theme }) => !!selected ? theme.colors.white : theme.colors.backgroundLight};
-    border: ${({ hasError, selected, theme }) => hasError ? `1px solid ${theme.colors.aunaError}` : (!!selected ? `1px solid ${(theme.colors.aunaInteractive)}` : "initial")};
+    background-color: ${({ selected, theme }) => !!selected ? theme.colors.complementary1 : theme.colors.backgroundLight};
+    border: 1px solid ${({ hasError, selected, theme }) => hasError ? `${theme.colors.aunaError}` : (!!selected ? `${(theme.colors.aunaInteractive)}` : theme.colors.backgroundLight)};
     border-radius: 16px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     cursor: pointer;
     padding: 2rem 1rem;
     margin: 1rem 0rem;
+    &:hover {
+      border-color: ${({ theme }) => theme.colors.aunaInteractive};
+    }
+`
+
+export const ShippingMethodItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 `
 

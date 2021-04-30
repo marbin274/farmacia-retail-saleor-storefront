@@ -10,10 +10,11 @@ const ENTER_KEY: number = 13;
 const SPACE_KEY: number = 32;
 
 export const Checkbox: React.FC<IProps> = ({
-  name,
   checked,
-  onChange = () => null,
   children,
+  error,
+  name,
+  onChange = () => null,
   ...props
 }: IProps) => {
   const ref = React.useRef<HTMLDivElement>(null);
@@ -47,9 +48,9 @@ export const Checkbox: React.FC<IProps> = ({
             }
           }}
         >
-          <span>
+          <S.Span error={!!error}>
             <ReactSVG path={checkout_done} className={"checkout_icon"} />
-          </span>
+          </S.Span>
         </div>
       </S.Label>
       {children}

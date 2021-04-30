@@ -20,7 +20,6 @@ export interface IFormikProps {
   includeEmail?: boolean;
   citiesOptions?: string[];
   user: any;
-  formikErrors?: any;
 }
 
 export type AddressError = { field?: string; message: string };
@@ -38,14 +37,18 @@ export interface IProps {
   formRef?: React.RefObject<HTMLFormElement>;
   errors?: IFormError[];
   checkoutData?: ICheckout;
-  handleSubmit?: (formData: IAddressWithEmail | undefined) => void;
+  handleSubmit?: (
+    address?: IAddressWithEmail,
+    email?: string,
+    id?: string,
+    privacyPolicy?: IPrivacyPolicy,
+    documentNumber?: string
+  ) => void;
   handleChange?: (e: React.ChangeEvent) => void;
   handleBlur?: (e: React.FocusEvent) => void;
   includeEmail?: boolean;
   comeFromModal?: boolean;
-  touched?: any;
   isValid?: boolean;
-  validateForm?: (values?: any) => Promise<any>;
   onSelect?: (
     address?: IAddressWithEmail,
     email?: string,
@@ -54,7 +57,6 @@ export interface IProps {
     documentNumber?: string
   ) => void;
   setFormValue?: (address?: IAddressWithEmail) => void;
-  initialValues?: Partial<IAddressWithEmail>;
 }
 
 export type PropsWithFormik = Omit<IProps, "handleSubmit"> & IFormikProps;

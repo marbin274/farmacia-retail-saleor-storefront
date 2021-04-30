@@ -6,7 +6,7 @@ import {
   TermsAndConditionsLink
 } from "@app/components/atoms";
 import { joinFormikErrorsToIFormErrorsAndConvertToObjectErrors } from "@app/utils/errorsManagement";
-import { DOCUMENT_NUMBER_MAX_LENGTH } from "@app/utils/schemas.config";
+import { DOCUMENT_NUMBER_MAX_LENGTH } from "@app/utils/schemasConfig";
 import { TextField } from "@components/molecules";
 import { accountConfirmUrl } from "@temp/app/routes";
 import { useFormik } from "formik";

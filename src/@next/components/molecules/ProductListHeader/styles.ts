@@ -1,31 +1,33 @@
 import { media, styled } from "@styles";
 
 export const Wrapper = styled.div`
-  background-color: ${props => props.theme.tile.backgroundColor};
+  background-color: ${props => props.theme.colors.aunaDisabledBackground};
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+
+  ${media.smallScreen`
+    border-radius: 0;
+  `}
 `;
 
 export const Bar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  ${media.xxxLargeScreen`
-    padding-top: 1.225rem;
-  `}
-  ${media.smallScreen`
-    padding-top: 2.5rem;
-    padding-bottom: 0.5rem;
-  `}
   font-size: ${props => props.theme.typography.smallFontSize};
 `;
+
 export const LeftSide = styled.div`
   display: flex;
   align-items: center;
 `;
 
 export const RightSide = styled.div`
-  height: 3.9rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   ${media.smallScreen`
-    height: 1.625rem;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -50,6 +52,7 @@ export const Clear = styled.button`
   font-size: ${props => props.theme.typography.smallFontSize};
   color: ${props => props.theme.colors.lightFont};
 `;
+
 export const Element = styled.span`
   padding-left: 2rem;
   ${media.smallScreen`
@@ -63,12 +66,36 @@ export const Filters = styled.span`
 `;
 
 export const Label = styled.span`
-  color: ${props => props.theme.colors.lightFont};
+  color: ${props => props.theme.colors.greyText};
 `;
 
 export const Sort = styled.div`
   width: 12rem;
   display: inline-block;
+
+  ${media.smallScreen`
+    margin-top: 1rem;
+  `}
+
+  > div {
+    margin: 0;
+    padding: 0;
+
+    > div {
+      margin: 0;
+      padding: 0;
+
+      > div {
+        margin: 0;
+        padding: 0;
+
+        > div {
+          margin: 0;
+          padding: 0;
+        }
+      }
+    }
+  }
 `;
 
 export const FiltersChipsWrapper = styled.div`

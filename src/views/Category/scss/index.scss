@@ -1,9 +1,14 @@
-@import "../../../globalStyles/scss/variables.scss";
+@import "@temp/globalStyles/scss/variables.scss";
 
 .category {
   background-color: $auna-grey-06;
   display: flex;
-  margin-top: 4.5rem;
+  padding-top: 6rem;
+
+  @media (max-width: $small-screen) {
+    padding-top: 4.4rem;
+  }
+
   &__container {
     margin: 0 auto 0 auto;
     width: $container-width;
@@ -26,8 +31,7 @@
     margin-bottom: 1.875rem;
     z-index: 0;
     @media (min-width: $small-screen) {
-      margin-left: 1.125rem;
-      padding-top: 1.25rem;
+      margin-left: 1.5rem;
     }
   }
 
@@ -59,5 +63,13 @@
         }
       }
     }
+  }
+
+  &__pagination {
+    margin-top: 4rem;
+  }
+
+  &__breadcrumbs {
+    margin-bottom: 2rem;
   }
 }

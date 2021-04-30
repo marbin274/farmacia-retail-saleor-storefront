@@ -40,6 +40,7 @@ const optionStyle = (customTheme: any) => ({
 export const Select: React.FC<IProps> = ({
   value,
   onChange,
+  onBlur,
   clearable,
   clearValue,
   name,
@@ -64,6 +65,7 @@ export const Select: React.FC<IProps> = ({
   return (
     <S.Wrapper errors={!!errors}>
       <ReactSelect
+        className="control"
         defaultValue={defaultValue}
         onChange={handleChange}
         value={value}

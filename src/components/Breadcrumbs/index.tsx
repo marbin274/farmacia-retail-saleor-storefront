@@ -5,6 +5,7 @@ import classNames from "classnames";
 import * as React from "react";
 import Media from "react-media";
 import { Link } from "react-router-dom";
+import homeIcon from "images/home.svg";
 
 import { baseUrl } from "../../app/routes";
 import { getDBIdFromGraphqlId, slugify } from "../../core/utils";
@@ -18,6 +19,8 @@ export interface Breadcrumb {
 type IBreadcrumbProps = {
   breadcrumbs: Breadcrumb[];
   breadcrumbsAlwaysVisible?: boolean;
+  className?: string;
+  showHomeIcon?: boolean;
 };
 
 export const extractBreadcrumbs = (category: Category_category) => {
@@ -47,6 +50,8 @@ const getBackLink = (breadcrumbs: Breadcrumb[]) =>
 const Breadcrumbs: React.FC<IBreadcrumbProps> = ({
   breadcrumbs,
   breadcrumbsAlwaysVisible,
+  className,
+  showHomeIcon,
 }) => (
   <Media
     query={{
@@ -55,9 +60,15 @@ const Breadcrumbs: React.FC<IBreadcrumbProps> = ({
   >
     {matches =>
       breadcrumbsAlwaysVisible || matches ? (
-        <ul className="breadcrumbs">
+        <ul className={classNames("breadcrumbs", className)}>
           <li>
-            <Link to={baseUrl}>Inicio</Link>
+            <Link to={baseUrl}>
+              {showHomeIcon ? (
+                <img src={homeIcon} alt="" className="breadcrumbs__home-icon" />
+              ) : (
+                "Inicio"
+              )}
+            </Link>
           </li>
           {breadcrumbs.map((breadcrumb, index) => (
             <li

@@ -1,5 +1,5 @@
-import * as SchemaMessage from "@temp/@next/utils/schemas.messages";
-import * as SchemasConfig from "@temp/@next/utils/schemas.config";
+import * as SchemaMessage from "@temp/@next/utils/schemasMessages";
+import * as SchemasConfig from "@temp/@next/utils/schemasConfig";
 import * as Yup from "yup";
 
 const PASSWORD_REQUIRED = "Ingresa tu contraseña";

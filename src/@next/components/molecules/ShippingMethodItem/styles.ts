@@ -1,9 +1,11 @@
 import { media, styled } from "@styles";
+import { white } from "@temp/@next/globalStyles/constants";
 
 const shippingTextOpacity = "0.7"
 
 export const ShippingMethodItem = styled.div`
   display: flex;
+  align-items: center;
 `;
 export const ShippingMethodItemControl = styled.div`
   display: flex;
@@ -52,9 +54,12 @@ export const ShippingMethodLabel = styled.span`
 `
 export const ShippingMethodControl = styled.div`
   color: ${({ theme }) => theme.colors.aunaBlack};
-  font-size: ${({ theme }) => theme.typography.smallFontSize};
+  font-size: ${({ theme }) => theme.typography.smallFontSize};  
   > div {
     padding-top: 0px;
     margin: 0px;
+  }
+  .control{
+    background-color: ${white};
   }
 `

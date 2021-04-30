@@ -13,6 +13,7 @@ export const ordersByUser = gql`
           node {
             id
             token
+            sequentialCode
             number
             status
             statusDisplay

@@ -3,7 +3,7 @@ export type AlertType = "Error" | "Info";
 export interface IAlertServiceProps {
   buttonText: string;
   icon?: string;
-  message?: string;
+  message?: string | JSX.Element;
   title?: string;
   type: AlertType;
   redirectionLink?: string;

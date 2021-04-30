@@ -520,13 +520,13 @@ export interface Landing_landing_collections {
 export interface Landing_landing {
   __typename: "Landing";
   title: string;
-  banner: Landing_landing_banner;
+  banner: Landing_landing_banner | null;
   collections: Landing_landing_collections;
 }
 
 export interface Landing {
   /**
-   * Look up a page by ID or slug.
+   * Look up a landing by ID or slug.
    */
   landing: Landing_landing | null;
 }

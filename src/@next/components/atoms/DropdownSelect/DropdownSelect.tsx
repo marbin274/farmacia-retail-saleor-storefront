@@ -6,9 +6,9 @@ import { Label } from "../Label";
 import { Select } from "../Select";
 
 import { useHandlerWhenClickedOutside } from "../../../hooks";
-import { Icon } from "../Icon";
 import * as S from "./styles";
 import { IProps } from "./types";
+import caretDown from "images/caret-down.svg";
 
 export const DropdownSelect: React.FC<IProps> = ({
   options,
@@ -28,9 +28,9 @@ export const DropdownSelect: React.FC<IProps> = ({
         onClick={() => setMenuIsOpen(!menuIsOpen)}
       >
         <Label>Ordenar por:</Label>
-        <S.Value>{` ${value ? value.label : ""}`}</S.Value>
+        <S.Value>{` ${value ? value.label : "Limpiar"}`}</S.Value>
         <S.Indicator rotate={String(menuIsOpen)}>
-          <Icon name="select_arrow" size={10} />
+          <img src={caretDown} />
         </S.Indicator>
       </S.SortLine>
     ),

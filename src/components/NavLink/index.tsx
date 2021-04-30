@@ -1,7 +1,5 @@
-import "./scss/index.scss";
-
 import * as React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter, RouteComponentProps } from "react-router-dom";
 
 import {
   generateCategoryUrl,
@@ -14,6 +12,7 @@ import {
 } from "../Footer/gqlTypes/SecondaryMenu";
 import { MainMenu_shop_navigation_main_items } from "../MainMenu/gqlTypes/MainMenu";
 import { MainMenuSubItem } from "../MainMenu/gqlTypes/MainMenuSubItem";
+import * as S from "./styles";
 
 export interface NavLinkProps
   extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
@@ -23,13 +22,14 @@ export interface NavLinkProps
     | SecondaryMenu_shop_navigation_secondary_items
     | SecondaryMenu_shop_navigation_secondary_items_children;
 }
-export const NavLink: React.FC<NavLinkProps> = ({ item, ...props }) => {
+ const NavLinkComponent: React.FC<NavLinkProps & RouteComponentProps> = ({ item, match, ...props }) => {
   const { name, url, category, collection, page } = item;
-  const link = (url: string) => (
-    <Link to={url} {...props}>
-      {name}
+  const link = (url: string) => {
+    const isActive = window.location.pathname === url;
+    return <Link to={url} {...props}>
+      <S.NavActive isActive={isActive}>{name} </S.NavActive>
     </Link>
-  );
+  };
 
   if (url) {
     return (
@@ -47,3 +47,5 @@ export const NavLink: React.FC<NavLinkProps> = ({ item, ...props }) => {
 
   return <span {...props}>{name}</span>;
 };
+
+export const  NavLink = withRouter(NavLinkComponent);

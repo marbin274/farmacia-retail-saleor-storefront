@@ -1,5 +1,5 @@
 import { passwordValidation } from "@temp/@next/utils/schemas";
-import { RESET_NEW_PASSWORD_REQUIRED, RESET_PASSWORD_NOT_MATCH, RESET_PASSWORD_REQUIRED } from "@temp/@next/utils/schemas.messages";
+import { RESET_NEW_PASSWORD_REQUIRED, RESET_PASSWORD_NOT_MATCH, RESET_PASSWORD_REQUIRED } from "@temp/@next/utils/schemasMessages";
 import * as Yup from "yup";
 
 export const passwordResetSchema = Yup.object().shape({

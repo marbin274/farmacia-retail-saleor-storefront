@@ -2,11 +2,11 @@ import { Tile } from "@components/atoms";
 import { TaxedMoney } from "@components/containers";
 import {
   OrderDetail,
-  OrderDetail_lines,
+  OrderDetail_lines
 } from "@sdk/fragments/gqlTypes/OrderDetail";
 import {
   OrderStatus,
-  ShippingStatusEnum,
+  ShippingStatusEnum
 } from "@temp/@sdk/gqlTypes/globalTypes";
 import { CartTable, NotFound } from "@temp/components";
 import { ILine } from "@temp/components/CartTable/ProductRow";
@@ -96,7 +96,7 @@ const Page: React.FC<{
         <div className="order-details__tile-wrapper">
           <Tile>
             <p className="order-details__tile-title">Número de pedido</p>
-            <p className="order-details__tile-description">{order.number}</p>
+            <p className="order-details__tile-description">{order.sequentialCode}</p>
             <p className="order-details__tile-title">Estado</p>
             <p>{order.customerStatusDisplay}</p>
             {order.shippingStatus === ShippingStatusEnum.DELIVERED &&

@@ -195,13 +195,11 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
   const handleNextStepClick = () => {
     switch (activeStepIndex) {
       case 0:
-        if (
-          checkoutAddressSubpageRef.current?.handleRequiredFields &&
-          checkoutShippingSubpageRef.current?.submitShipping
-        ) {
-          if (checkoutAddressSubpageRef.current?.handleRequiredFields()) {
-            checkoutShippingSubpageRef.current?.submitShipping();
-          }
+        if (!checkout?.id && checkoutAddressSubpageRef.current?.submitAddress) {
+          checkoutAddressSubpageRef.current?.submitAddress();
+        }
+        if (checkout?.id && checkoutShippingSubpageRef.current?.submitShipping) {
+          checkoutShippingSubpageRef.current?.submitShipping();
         }
         break;
       case 1:

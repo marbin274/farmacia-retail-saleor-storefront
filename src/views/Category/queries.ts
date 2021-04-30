@@ -35,15 +35,15 @@ export const categoryProductsQuery = gql`
   query Category(
     $id: ID!
     $attributes: [AttributeInput]
-    $after: String
     $pageSize: Int
+    $page: Int
     $sortBy: ProductOrder
     $priceLte: Float
     $priceGte: Float
   ) {
-    products(
-      after: $after
-      first: $pageSize
+    paginatedProducts(
+      page: $page
+      pageSize: $pageSize
       sortBy: $sortBy
       filter: {
         attributes: $attributes
@@ -74,12 +74,6 @@ export const categoryProductsQuery = gql`
             ...ProductVariantFieldsSimple
           }
         }
-      }
-      pageInfo {
-        endCursor
-        hasNextPage
-        hasPreviousPage
-        startCursor
       }
     }
     category(id: $id) {

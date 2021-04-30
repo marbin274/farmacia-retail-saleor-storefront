@@ -6,7 +6,7 @@ exports[`Storyshots @components/atoms/Checkbox default 1`] = `
   margin: 20px;
 }
 
-.c3 {
+.c4 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -34,7 +34,7 @@ exports[`Storyshots @components/atoms/Checkbox default 1`] = `
   align-items: center;
   cursor: pointer;
   position: relative;
-  margin-left: -4px;
+  margin-left: -0.25rem;
 }
 
 .c2 {
@@ -60,43 +60,6 @@ exports[`Storyshots @components/atoms/Checkbox default 1`] = `
   right: -999em;
 }
 
-.c2 div {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  height: 26px;
-  width: 26px;
-}
-
-.c2 div span {
-  width: 20px;
-  height: 20px;
-  display: inline-block;
-  border-radius: 2px;
-  border: solid 3px #E4E5ED;
-}
-
-.c2 div span div {
-  display: none;
-}
-
-.c2 div span div svg {
-  fill: #fff;
-}
-
-.c2 div:focus {
-  outline: none;
-}
-
 .c2 .checkout_icon {
   color: red;
 }
@@ -104,15 +67,27 @@ exports[`Storyshots @components/atoms/Checkbox default 1`] = `
 .c2 input:checked + div span {
   background-clip: content-box;
   background-color: #00B0CA;
-  border: solid 2px #00B0CA;
+  border: solid 0.125rem #00B0CA;
 }
 
 .c2 input:checked + div span div {
   display: block;
-  position: absolute;
-  left: 3px;
-  bottom: 2px;
-  top: 2.5px;
+}
+
+.c3 {
+  border-radius: 0.125rem;
+  border: solid 0.188rem #E4E5ED;
+  display: inline-block;
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+.c3 div {
+  display: none;
+}
+
+.c3 div svg {
+  fill: #fff;
 }
 
 <div
@@ -135,7 +110,9 @@ exports[`Storyshots @components/atoms/Checkbox default 1`] = `
         onKeyDown={[Function]}
         tabIndex={0}
       >
-        <span>
+        <span
+          className="c3"
+        >
           <div
             className="checkout_icon"
           />
@@ -145,7 +122,7 @@ exports[`Storyshots @components/atoms/Checkbox default 1`] = `
     Checkbox with label
   </div>
   <div
-    className="c3"
+    className="c4"
   />
 </div>
 `;
