@@ -1,6 +1,6 @@
 import { getName, removeCountryCodeInPhoneNumber } from "@temp/@next/utils/addresForm";
 import { IPrivacyPolicy } from "@temp/@sdk/api/Checkout/types";
-import { ADDRESS_FORM_SHOW_GENERAL_ERRORS, ADDRESS_FORM_SORT, ADDRESS_FORM_TOTAL_COUNT } from "@temp/core/config";
+import { ADDRESS_FORM_SHOW_GENERAL_ERRORS, ADDRESS_FORM_SORT } from "@temp/core/config";
 import { IAddressWithEmail, IFormErrorSort } from "@types";
 import { Form, Formik, FormikHelpers } from "formik";
 import ErrorFormPopulateIcon from "images/auna/form-populate-error.svg";
@@ -175,25 +175,19 @@ export const AddressForm: React.FC<IProps> = ({
 
           if (errorsSort.length > 0 && submitCount > submitCountRef.current) {
             submitCountRef.current = submitCount;
-
-            if (errorsSort.length === ADDRESS_FORM_TOTAL_COUNT) {
-              scrollToErrors(errorsSort);
-            }
-            else {
-              alertService.sendAlert({
-                acceptDialog: () => {
-                  scrollToErrors(errorsSort);
-                },
-                buttonText: "Entendido",
-                icon: ErrorFormPopulateIcon,
-                message:
-                  errorsSort.length > ADDRESS_FORM_SHOW_GENERAL_ERRORS ?
-                    "Por favor completa los campos  obligatorios que se encuentran de color rojo." :
-                    <>Por favor completa los siguientes campos: <ul>{errorsSort.map((it, key) => <li key={key}>- {it.message}</li>)}</ul></>,
-                title: "Faltan datos",
-                type: "Info",
-              });
-            }
+            alertService.sendAlert({
+              acceptDialog: () => {
+                scrollToErrors(errorsSort);
+              },
+              buttonText: "Entendido",
+              icon: ErrorFormPopulateIcon,
+              message:
+                errorsSort.length > ADDRESS_FORM_SHOW_GENERAL_ERRORS ?
+                  "Por favor completa los campos  obligatorios que se encuentran de color rojo." :
+                  <>Por favor completa los siguientes campos: <ul>{errorsSort.map((it, key) => <li key={key}>- {it.message}</li>)}</ul></>,
+              title: "Faltan datos",
+              type: "Info",
+            });
           }
 
         }, [formikErrors, requestErrors, submitCount]);

@@ -10,6 +10,7 @@ import { IProps } from "./types";
  * Template for checkout page.
  */
 const Checkout: React.FC<IProps> = ({
+  checkoutId,
   loading,
   navigation,
   checkout,
@@ -30,7 +31,7 @@ const Checkout: React.FC<IProps> = ({
         <S.FormSummyContainer>
           <S.Checkout>
             {checkout}
-            <S.Button>{button}</S.Button>
+            <S.Button disabled={!checkoutId}>{button}</S.Button>
           </S.Checkout>
           <S.CartSummary>{cartSummary}</S.CartSummary>
         </S.FormSummyContainer>

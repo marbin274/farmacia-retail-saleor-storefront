@@ -207,6 +207,7 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
                   checked={false}
                   data-cy="checkoutShippingMethodOption0Input"
                   name="shippingMethod"
+                  readOnly={true}
                   type="radio"
                   value="1"
                 />
@@ -268,6 +269,7 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
                   checked={false}
                   data-cy="checkoutShippingMethodOption1Input"
                   name="shippingMethod"
+                  readOnly={true}
                   type="radio"
                   value="2"
                 />

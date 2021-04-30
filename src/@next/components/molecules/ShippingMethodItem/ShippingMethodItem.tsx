@@ -67,6 +67,7 @@ export const ShippingMethodItem: React.FC<IProps> = ({
     return <>
         <S.ShippingMethodItem>            
             <Radio
+                readOnly
                 data-cy={`checkoutShippingMethodOption${index}Input`}
                 name="shippingMethod"
                 value={id}

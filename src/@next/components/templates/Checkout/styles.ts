@@ -54,7 +54,7 @@ export const CartSummary = styled.div`
     margin-top: 0;
   `}
 `;
-export const Button = styled.div`
+export const Button = styled.div<{disabled: boolean}>`  
   ${media.smallScreen`
     max-width: 100%;
     display: flex;
@@ -63,6 +63,7 @@ export const Button = styled.div`
   >  {
     &:first-child {
       padding: 0.9rem 1.5rem;
+      ${({ disabled, theme }) => disabled && `background-color: ${theme.colors.aunaDisabled};`}
       ${mediaUp.mediumScreen`
         min-width: 13.25rem;
         width: 15.25rem;
