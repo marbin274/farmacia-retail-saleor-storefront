@@ -70,7 +70,6 @@ export const AddressForm: React.FC<IProps> = ({
     addressWithPickedFields.dataTreatmentPolicy = user.dataTreatmentPolicy;
     addressWithPickedFields.latitude = latitude || "";
     addressWithPickedFields.longitude = address?.longitude || "";
-    addressWithPickedFields.city = address?.city || "";
   }
 
   if (checkoutData) {
@@ -90,7 +89,6 @@ export const AddressForm: React.FC<IProps> = ({
     addressWithPickedFields.longitude =
       checkoutData.shippingAddress?.longitude ||
       addressWithPickedFields.longitude;
-    addressWithPickedFields.city = checkoutData.shippingAddress?.city || addressWithPickedFields.city;
   }
 
   if (defaultValue) {
