@@ -49,7 +49,9 @@
   &__right {
     margin-right: 10px;
     flex: 1;
-    
+    @media (max-width: $xs-small-screen) {
+      margin-left: -1.25rem;
+    }
 
     ul {
       display: flex;
