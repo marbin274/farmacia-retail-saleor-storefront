@@ -18,7 +18,6 @@
 
   @media (max-width: $medium-screen) {
     padding: 0.3rem 0;
-
     .icon_container {
       width: 100%;
       position: absolute;
@@ -48,11 +47,9 @@
   }
 
   &__right {
-    
     margin-right: 10px;
-    @media (min-width: $medium-screen) {
-      margin-right: 0px;
-    }
+    flex: 1;
+    
 
     ul {
       display: flex;
@@ -66,12 +63,14 @@
       }
     }
   }
+  
 
   &__center {
     align-self: center;
     display: flex;
-    flex: 1;
+    flex: 4;
     justify-content: center;
+   
     width: 100%;
     ul {
       align-items: center;
@@ -83,7 +82,6 @@
 
     &--icon {
       margin: 0 auto;
-      width: 128px;
     }
     .logo {
       @media (max-width: $small-screen) {
@@ -95,7 +93,7 @@
     }
 
     @media (min-width: $medium-screen) {
-      flex: 2;
+      flex: 10;
     }
   }
 
