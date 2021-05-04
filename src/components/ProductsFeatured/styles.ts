@@ -5,7 +5,7 @@ width: ${props => `${props.theme.container.width}px`};
   height: 526px;
   margin: 0 auto;
   padding: 0 ${props => props.theme.spacing.spacer};
-
+  margin-bottom: 0.625rem;
   ${media.largeScreen`
     width: 100%;      
   `}

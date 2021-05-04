@@ -323,6 +323,7 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
        />
       )}
       <Checkout
+        checkoutId={checkout?.id}
         selectedPaymentGateway={selectedPaymentGateway}
         loading={submitInProgress}
         navigation={getCheckoutProgress(

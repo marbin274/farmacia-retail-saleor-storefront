@@ -158,7 +158,6 @@ const startApp = async () => {
         /ServiceWorker/i,
       ],
       integrations: [new Integrations.BrowserTracing()],
-      release: "farmauna-storefront@" + process.env.npm_package_version,
       tracesSampler() {
         if (environmentName === "prod") {
           return 0.8;

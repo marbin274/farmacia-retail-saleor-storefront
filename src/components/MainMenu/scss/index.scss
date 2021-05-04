@@ -18,7 +18,6 @@
 
   @media (max-width: $medium-screen) {
     padding: 0.3rem 0;
-
     .icon_container {
       width: 100%;
       position: absolute;
@@ -48,10 +47,10 @@
   }
 
   &__right {
-    flex: 1;
     margin-right: 10px;
-    @media (min-width: $medium-screen) {
-      margin-right: 0px;
+    flex: 1;
+    @media (max-width: $xs-small-screen) {
+      margin-left: -1.25rem;
     }
 
     ul {
@@ -66,12 +65,14 @@
       }
     }
   }
+  
 
   &__center {
     align-self: center;
     display: flex;
-    flex: 1;
+    flex: 4;
     justify-content: center;
+   
     width: 100%;
     ul {
       align-items: center;
@@ -83,7 +84,6 @@
 
     &--icon {
       margin: 0 auto;
-      width: 128px;
     }
     .logo {
       @media (max-width: $small-screen) {
@@ -95,7 +95,7 @@
     }
 
     @media (min-width: $medium-screen) {
-      flex: 2;
+      flex: 10;
     }
   }
 
@@ -145,7 +145,7 @@
     border-radius: 50%;
     padding: 11px;
     position: relative;
-    margin-left: 10px;
+    
     @media (max-width: $small-screen) {
       margin-left: 0;
     }
@@ -212,8 +212,9 @@
 
   &__search {
     padding: $spacer 0;
+    margin-right: 0.625rem;
     cursor: pointer;
-    line-height: 24px;
+    line-height: 1.5rem;
     transition: 0.3s;
     @media (max-width: $small-screen) {
       margin-right: 10px;
@@ -337,7 +338,7 @@
   &__login {
     align-items: center;
     display: flex;
-    left: 0.8rem;
+    left: 0.1rem;
     position: relative;
 
     &:hover {
