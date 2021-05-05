@@ -75,7 +75,6 @@ exports[`Storyshots @components/organisms/Modal Modal Form 1`] = `
   transform: none;
   -webkit-text-decoration: none;
   text-decoration: none;
-  text-transform: uppercase;
   padding: 0;
   -webkit-transition: color 0.3s ease;
   transition: color 0.3s ease;

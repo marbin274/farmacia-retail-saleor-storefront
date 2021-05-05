@@ -3,7 +3,7 @@ import { styled } from "@styles";
 import { Size } from "./types";
 
 const padding = {
-  md: "0.4rem 0.4rem 0.4rem 0.8rem",
+  md: "0.2rem 0.4rem 0.2rem 0.8rem",
   sm: "0.1rem",
 };
 
@@ -22,6 +22,7 @@ export const Primary = styled.div<{
   fullWidth?: boolean;
   size: Size;
 }>`
+  background-color: ${props => props.theme.chip.colors[props.color].activeBackground};
   padding: ${props => padding[props.size]};
   border: none;
   transition: 0.3s;
@@ -48,7 +49,7 @@ export const Text = styled.span<{ size: Size }>`
       chip: { typography },
     },
   }) => fontSize(typography.fontSize, typography.smallFontSize)[size]};
-  font-weight: ${props => props.theme.typography.boldFontWeight};
+  font-weight: 500;
   line-height: ${props => props.theme.typography.baseLineHeight};
   margin-right: ${props => paddingCloseButton[props.size]};
   vertical-align: middle;

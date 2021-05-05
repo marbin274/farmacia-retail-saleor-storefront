@@ -99,7 +99,8 @@ export const categoryProductsQuery = gql`
           id
           name
           slug
-          values {
+          filterableInStorefront
+          values(category:$id) {
             id
             name
             slug

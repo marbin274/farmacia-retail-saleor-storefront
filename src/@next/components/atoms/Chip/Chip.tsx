@@ -26,7 +26,7 @@ export const Chip: React.FC<IProps> = ({
         onClick={onClose}
         type={type}
       >
-        <Icon name="x_light" size={16} />
+        <Icon name="x_light" size={12} />
       </S.CloseButton>
     </ChipWithTheme>
   );

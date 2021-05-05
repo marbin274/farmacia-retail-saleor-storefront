@@ -18,4 +18,10 @@ export const BottomBorder = styled.div`
 
 export const ViewMoreButton = styled.div`
   padding-bottom: 1.25rem;
+  span {
+    color: ${props => props.theme.colors.aunaInteractive};
+    font-size:${props => props.theme.typography.smallFontSize};
+    font-weight:${props => props.theme.typography.normalFontWeight};
+    margin-left: 1rem;
+  }
 `;

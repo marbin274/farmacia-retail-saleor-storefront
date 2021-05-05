@@ -281,7 +281,7 @@ exports[`Storyshots @components/atoms/Message error w/ children 1`] = `
         >
           <path
             d="M16 12.8l-12.8-12.8-3.2 3.2 12.8 12.8-12.8 12.8 3.2 3.2 12.8-12.8 12.8 12.8 3.2-3.2-12.8-12.8 12.8-12.8-3.2-3.2-12.8 12.8z"
-            fill="#c4c4c4"
+            fill="#697191"
           />
         </svg>
       </button>
@@ -387,7 +387,7 @@ exports[`Storyshots @components/atoms/Message neutral snackbar 1`] = `
         >
           <path
             d="M16 12.8l-12.8-12.8-3.2 3.2 12.8 12.8-12.8 12.8 3.2 3.2 12.8-12.8 12.8 12.8 3.2-3.2-12.8-12.8 12.8-12.8-3.2-3.2-12.8 12.8z"
-            fill="#c4c4c4"
+            fill="#697191"
           />
         </svg>
       </button>
@@ -492,7 +492,7 @@ exports[`Storyshots @components/atoms/Message success w/ children 1`] = `
         >
           <path
             d="M16 12.8l-12.8-12.8-3.2 3.2 12.8 12.8-12.8 12.8 3.2 3.2 12.8-12.8 12.8 12.8 3.2-3.2-12.8-12.8 12.8-12.8-3.2-3.2-12.8 12.8z"
-            fill="#c4c4c4"
+            fill="#697191"
           />
         </svg>
       </button>

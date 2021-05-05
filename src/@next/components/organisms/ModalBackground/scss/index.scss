@@ -10,16 +10,18 @@
         }
     }
 }
-
-#lightbox-modal{
-    width: 48.75rem;
-    @media (max-width: $small-screen) {
-        margin-top: 1.875rem;
-         width: 19.5rem;
+.modal--background{
+    #lightbox-modal{
+        width: 48.75rem;
+        @media (max-width: $small-screen) {
+            margin-top: 1.875rem;
+             width: 19.5rem;
+        }
+        @media (max-width: $xs-small-screen) {
+            margin-top: 1.875rem;
+            width: 17.375rem;
+        }
+        
     }
-    @media (max-width: $xs-small-screen) {
-        margin-top: 1.875rem;
-        width: 17.375rem;
-    }
-    
 }
+

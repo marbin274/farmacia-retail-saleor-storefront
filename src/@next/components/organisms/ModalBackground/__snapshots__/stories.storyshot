@@ -100,7 +100,7 @@ exports[`Storyshots @components/organisms/ModalBackground Modal 1`] = `
   className="c0"
 >
   <div
-    className="c1"
+    className="modal--background c1"
     onClick={[Function]}
     open={true}
   >
@@ -232,7 +232,7 @@ exports[`Storyshots @components/organisms/ModalBackground Modal Info 1`] = `
   className="c0"
 >
   <div
-    className="c1"
+    className="modal--background c1"
     onClick={[Function]}
     open={true}
   >

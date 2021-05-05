@@ -60,6 +60,7 @@ export const collectionProductsQuery = gql`
     attributes(filter: { inCollection: $id }, first: 100) {
       edges {
         node {
+          filterableInStorefront
           id
           name
           slug

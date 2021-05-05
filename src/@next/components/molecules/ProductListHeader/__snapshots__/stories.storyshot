@@ -66,6 +66,7 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
 }
 
 .c14 {
+  color: #131336;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -83,8 +84,7 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
 }
 
 .c1 {
-  background-color: #F1F2F7;
-  padding: 1.5rem;
+  background-color: #f9f9f9;
   border-radius: 0.5rem;
 }
 
@@ -102,17 +102,34 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
   -ms-flex-align: center;
   align-items: center;
   font-size: 0.875rem;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  background-color: #F1F2F7;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 1rem .8rem;
+  width: 100%;
+}
+
+.c3 span,
+.c3 button {
+  color: #00B0CA;
+  font-size: 0.875rem;
+  font-weight: 400;
 }
 
 .c6 {
@@ -120,14 +137,23 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 1rem .8rem;
+  width: 100%;
+}
+
+.c6 .select-input {
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c6 .select-input .clear-label {
+  margin-right: 2rem;
 }
 
 .c4 {
@@ -143,22 +169,30 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
   cursor: pointer;
 }
 
-.c7 {
-  padding-left: 2rem;
-}
-
 .c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   font-weight: 600;
   padding: 0 0.6rem;
 }
 
-.c8 {
+.c5 > span {
+  margin-left: .5rem;
+}
+
+.c7 {
   color: #9194A7;
 }
 
 .c9 {
-  width: 12rem;
+  width: 7rem;
   display: inline-block;
+}
+
+.c9 .label {
+  display: none;
 }
 
 .c9 > div {
@@ -181,8 +215,17 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
   padding: 0;
 }
 
+.c17 {
+  margin-top: .5rem;
+  padding: 0rem .5rem;
+}
+
 .c17 > div {
   margin: 0.4rem;
+}
+
+.c8 {
+  font-weight: 600;
 }
 
 @media (max-width:540px) {
@@ -191,45 +234,44 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
   }
 }
 
-@media (max-width:540px) {
+@media (min-width:720px) {
+  .c2 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    background-color: #F1F2F7;
+  }
+}
+
+@media (min-width:720px) {
+  .c3 {
+    -webkit-box-pack: space-around;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: space-around;
+    justify-content: space-around;
+    width: 27rem;
+  }
+}
+
+@media (min-width:720px) {
   .c6 {
-    width: 100%;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-align-items: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-align-self: flex-start;
-    -ms-flex-item-align: start;
-    align-self: flex-start;
+    background-color: #F1F2F7;
+    -webkit-box-pack: space-evenly;
+    -webkit-justify-content: space-evenly;
+    -ms-flex-pack: space-evenly;
+    justify-content: space-evenly;
   }
 }
 
-@media (max-width:540px) {
-  .c4 {
-    display: none;
-  }
-}
-
-@media (max-width:540px) {
-  .c7 {
-    padding-left: 0rem;
-  }
-}
-
-@media (max-width:540px) {
+@media (min-width:720px) {
   .c9 {
-    margin-top: 1rem;
+    width: 12rem;
+  }
+}
+
+@media (min-width:720px) {
+  .c9 .label {
+    display: block;
   }
 }
 
@@ -253,7 +295,19 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
           <span
             className="c5"
           >
-             
+            <svg
+              height={18}
+              viewBox="0 0 24 24"
+              width={18}
+            >
+              <path
+                d="M20.4367 5.85732C19.9967 7.49732 18.5067 8.71733 16.7267 8.71733C14.5967 8.71733 12.8667 6.98732 12.8667 4.86732C12.8667 2.73732 14.5967 1.00732 16.7267 1.00732C18.5067 1.00732 19.9867 2.22732 20.4367 3.85732H21.9967C22.5467 3.85732 22.9967 4.30732 22.9967 4.85732C22.9967 5.40732 22.5467 5.85732 21.9967 5.85732H20.4367ZM18.5867 4.86732C18.5867 3.83732 17.7467 3.00732 16.7267 3.00732C15.6967 3.00732 14.8667 3.83732 14.8667 4.86732C14.8667 5.89733 15.7067 6.72732 16.7267 6.72732C17.7567 6.72732 18.5867 5.88732 18.5867 4.86732Z M2.00732 3.86606H10.7373C11.2873 3.86606 11.7373 4.31606 11.7373 4.86605C11.7373 5.41605 11.2873 5.86605 10.7373 5.86605H2.00732C1.45732 5.86605 1.00732 5.41605 1.00732 4.86605C1.00732 4.31606 1.45732 3.86606 2.00732 3.86606Z M10.7373 18.1632H2.00732C1.45732 18.1632 1.00732 18.6132 1.00732 19.1632C1.00732 19.7132 1.45732 20.1632 2.00732 20.1632H10.7373C11.2873 20.1632 11.7373 19.7132 11.7373 19.1632C11.7373 18.6132 11.2873 18.1632 10.7373 18.1632Z M20.4367 18.141H21.9967C22.5467 18.141 22.9967 18.591 22.9967 19.141C22.9967 19.691 22.5467 20.141 21.9967 20.141H20.4367C19.9967 21.781 18.5067 23.001 16.7267 23.001C14.5967 23.001 12.8667 21.271 12.8667 19.141C12.8667 17.011 14.5967 15.2809 16.7267 15.2809C18.5067 15.2809 19.9967 16.5009 20.4367 18.141ZM14.8667 19.141C14.8667 20.171 15.7067 21.001 16.7267 21.001C17.7467 21.001 18.5867 20.171 18.5867 19.141C18.5867 18.111 17.7467 17.281 16.7267 17.281C15.6967 17.281 14.8667 18.111 14.8667 19.141Z M22.0116 11.0146H13.4216C12.8716 11.0146 12.4216 11.4646 12.4216 12.0146C12.4216 12.5646 12.8716 13.0146 13.4216 13.0146H22.0116C22.5616 13.0146 23.0116 12.5646 23.0116 12.0146C23.0116 11.4646 22.5616 11.0146 22.0116 11.0146Z M3.56732 13.0159H2.00732C1.45732 13.0159 1.00732 12.5659 1.00732 12.0159C1.00732 11.4659 1.45732 11.0159 2.00732 11.0159H3.56732C4.00732 9.37591 5.49732 8.15591 7.27733 8.15591C9.40733 8.15591 11.1373 9.88591 11.1373 12.0159C11.1373 14.1459 9.40733 15.8759 7.27733 15.8759C5.49732 15.8759 4.00732 14.6559 3.56732 13.0159ZM9.13733 12.0159C9.13733 10.9859 8.29733 10.1559 7.27733 10.1559C6.25732 10.1559 5.41732 10.9859 5.41732 12.0159C5.41732 13.0459 6.25732 13.8759 7.27733 13.8759C8.30732 13.8759 9.13733 13.0459 9.13733 12.0159Z "
+                fill="#00B0CA"
+              />
+            </svg>
+            <span>
+              Filtros
+            </span>
           </span>
         </button>
       </div>
@@ -261,18 +315,22 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
         className="c6"
       >
         <span
-          className="products_found c7"
+          className="products_found "
           data-cy="no-of-products-found_label"
         >
           <span
-            className="c8"
+            className="c7"
           >
             Productos encontrados: 
           </span>
-          255
+          <span
+            className="c8"
+          >
+            255
+          </span>
         </span>
         <span
-          className="c7"
+          className=""
         >
           <div
             className="c9"
@@ -289,17 +347,17 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
                   onKeyDown={[Function]}
                 >
                   <div
-                    className="c12"
+                    className="select-input c12"
                     data-cy="dropdown-select-input"
                     onClick={[Function]}
                   >
                     <span
-                      className="c13"
+                      className="label c13"
                     >
                       Ordenar por:
                     </span>
                     <div
-                      className="c14"
+                      className="clear-label c14"
                     >
                        Limpiar
                     </div>
@@ -398,6 +456,7 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
 }
 
 .c15 {
+  color: #131336;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -415,8 +474,7 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
 }
 
 .c1 {
-  background-color: #F1F2F7;
-  padding: 1.5rem;
+  background-color: #f9f9f9;
   border-radius: 0.5rem;
 }
 
@@ -434,17 +492,34 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
   -ms-flex-align: center;
   align-items: center;
   font-size: 0.875rem;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  background-color: #F1F2F7;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 1rem .8rem;
+  width: 100%;
+}
+
+.c3 span,
+.c3 button {
+  color: #00B0CA;
+  font-size: 0.875rem;
+  font-weight: 400;
 }
 
 .c7 {
@@ -452,14 +527,23 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 1rem .8rem;
+  width: 100%;
+}
+
+.c7 .select-input {
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c7 .select-input .clear-label {
+  margin-right: 2rem;
 }
 
 .c4 {
@@ -476,28 +560,44 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
 }
 
 .c6 {
-  padding-left: 2rem;
-  cursor: pointer;
-  font-size: 0.875rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   color: #7d7d7d;
+  cursor: pointer;
+  padding-left: 2rem;
+  font-size: 0.875rem;
 }
 
-.c8 {
-  padding-left: 2rem;
+.c6 > span {
+  margin-left: .5rem;
 }
 
 .c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   font-weight: 600;
   padding: 0 0.6rem;
 }
 
-.c9 {
+.c5 > span {
+  margin-left: .5rem;
+}
+
+.c8 {
   color: #9194A7;
 }
 
 .c10 {
-  width: 12rem;
+  width: 7rem;
   display: inline-block;
+}
+
+.c10 .label {
+  display: none;
 }
 
 .c10 > div {
@@ -520,8 +620,17 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
   padding: 0;
 }
 
+.c18 {
+  margin-top: .5rem;
+  padding: 0rem .5rem;
+}
+
 .c18 > div {
   margin: 0.4rem;
+}
+
+.c9 {
+  font-weight: 600;
 }
 
 @media (max-width:540px) {
@@ -530,45 +639,51 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
   }
 }
 
-@media (max-width:540px) {
+@media (min-width:720px) {
+  .c2 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    background-color: #F1F2F7;
+  }
+}
+
+@media (min-width:720px) {
+  .c3 {
+    -webkit-box-pack: space-around;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: space-around;
+    justify-content: space-around;
+    width: 27rem;
+  }
+}
+
+@media (min-width:720px) {
   .c7 {
-    width: 100%;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-align-items: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-align-self: flex-start;
-    -ms-flex-item-align: start;
-    align-self: flex-start;
+    background-color: #F1F2F7;
+    -webkit-box-pack: space-evenly;
+    -webkit-justify-content: space-evenly;
+    -ms-flex-pack: space-evenly;
+    justify-content: space-evenly;
   }
 }
 
-@media (max-width:540px) {
-  .c4 {
-    display: none;
+@media (min-width:720px) {
+  .c6 {
+    padding-left: 0px;
+    width: 7rem;
   }
 }
 
-@media (max-width:540px) {
-  .c8 {
-    padding-left: 0rem;
-  }
-}
-
-@media (max-width:540px) {
+@media (min-width:720px) {
   .c10 {
-    margin-top: 1rem;
+    width: 12rem;
+  }
+}
+
+@media (min-width:720px) {
+  .c10 .label {
+    display: block;
   }
 }
 
@@ -592,11 +707,23 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
           <span
             className="c5"
           >
-             
+            <svg
+              height={18}
+              viewBox="0 0 24 24"
+              width={18}
+            >
+              <path
+                d="M20.4367 5.85732C19.9967 7.49732 18.5067 8.71733 16.7267 8.71733C14.5967 8.71733 12.8667 6.98732 12.8667 4.86732C12.8667 2.73732 14.5967 1.00732 16.7267 1.00732C18.5067 1.00732 19.9867 2.22732 20.4367 3.85732H21.9967C22.5467 3.85732 22.9967 4.30732 22.9967 4.85732C22.9967 5.40732 22.5467 5.85732 21.9967 5.85732H20.4367ZM18.5867 4.86732C18.5867 3.83732 17.7467 3.00732 16.7267 3.00732C15.6967 3.00732 14.8667 3.83732 14.8667 4.86732C14.8667 5.89733 15.7067 6.72732 16.7267 6.72732C17.7567 6.72732 18.5867 5.88732 18.5867 4.86732Z M2.00732 3.86606H10.7373C11.2873 3.86606 11.7373 4.31606 11.7373 4.86605C11.7373 5.41605 11.2873 5.86605 10.7373 5.86605H2.00732C1.45732 5.86605 1.00732 5.41605 1.00732 4.86605C1.00732 4.31606 1.45732 3.86606 2.00732 3.86606Z M10.7373 18.1632H2.00732C1.45732 18.1632 1.00732 18.6132 1.00732 19.1632C1.00732 19.7132 1.45732 20.1632 2.00732 20.1632H10.7373C11.2873 20.1632 11.7373 19.7132 11.7373 19.1632C11.7373 18.6132 11.2873 18.1632 10.7373 18.1632Z M20.4367 18.141H21.9967C22.5467 18.141 22.9967 18.591 22.9967 19.141C22.9967 19.691 22.5467 20.141 21.9967 20.141H20.4367C19.9967 21.781 18.5067 23.001 16.7267 23.001C14.5967 23.001 12.8667 21.271 12.8667 19.141C12.8667 17.011 14.5967 15.2809 16.7267 15.2809C18.5067 15.2809 19.9967 16.5009 20.4367 18.141ZM14.8667 19.141C14.8667 20.171 15.7067 21.001 16.7267 21.001C17.7467 21.001 18.5867 20.171 18.5867 19.141C18.5867 18.111 17.7467 17.281 16.7267 17.281C15.6967 17.281 14.8667 18.111 14.8667 19.141Z M22.0116 11.0146H13.4216C12.8716 11.0146 12.4216 11.4646 12.4216 12.0146C12.4216 12.5646 12.8716 13.0146 13.4216 13.0146H22.0116C22.5616 13.0146 23.0116 12.5646 23.0116 12.0146C23.0116 11.4646 22.5616 11.0146 22.0116 11.0146Z M3.56732 13.0159H2.00732C1.45732 13.0159 1.00732 12.5659 1.00732 12.0159C1.00732 11.4659 1.45732 11.0159 2.00732 11.0159H3.56732C4.00732 9.37591 5.49732 8.15591 7.27733 8.15591C9.40733 8.15591 11.1373 9.88591 11.1373 12.0159C11.1373 14.1459 9.40733 15.8759 7.27733 15.8759C5.49732 15.8759 4.00732 14.6559 3.56732 13.0159ZM9.13733 12.0159C9.13733 10.9859 8.29733 10.1559 7.27733 10.1559C6.25732 10.1559 5.41732 10.9859 5.41732 12.0159C5.41732 13.0459 6.25732 13.8759 7.27733 13.8759C8.30732 13.8759 9.13733 13.0459 9.13733 12.0159Z "
+                fill="#00B0CA"
+              />
+            </svg>
             <span>
-              (
-              3
-              )
+              Filtros
+              <span>
+                (
+                3
+                )
+              </span>
             </span>
           </span>
         </button>
@@ -604,25 +731,41 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
           className="c6"
           onClick={[Function]}
         >
-          Limpiar filtros
+          <svg
+            height={18}
+            viewBox="0 0 32 32"
+            width={18}
+          >
+            <path
+              d="M12.35,3.23h7.3a1.62,1.62,0,0,0,1.61-1.61A1.62,1.62,0,0,0,19.65,0h-7.3c-.88-.15-1.46.58-1.46,1.6A1.42,1.42,0,0,0,12.35,3.23ZM27.24,4.69H4.9A1.63,1.63,0,0,0,3.44,6.44,1.57,1.57,0,0,0,4.9,7.9H24V27a1.62,1.62,0,0,1-1.6,1.61H9.57A1.62,1.62,0,0,1,8,27V12.72a1.61,1.61,0,0,0-3.21,0V27.18A4.76,4.76,0,0,0,9.57,32H22.28a4.77,4.77,0,0,0,4.82-4.82V8.05A1.63,1.63,0,0,0,28.56,6.3C28.56,5.42,28.12,5,27.24,4.69Z"
+              fill="#00B0CA"
+            />
+          </svg>
+          <span>
+            Borrar filtros
+          </span>
         </button>
       </div>
       <div
         className="c7"
       >
         <span
-          className="products_found c8"
+          className="products_found "
           data-cy="no-of-products-found_label"
         >
           <span
-            className="c9"
+            className="c8"
           >
             Productos encontrados: 
           </span>
-          255
+          <span
+            className="c9"
+          >
+            255
+          </span>
         </span>
         <span
-          className="c8"
+          className=""
         >
           <div
             className="c10"
@@ -639,17 +782,17 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
                   onKeyDown={[Function]}
                 >
                   <div
-                    className="c13"
+                    className="select-input c13"
                     data-cy="dropdown-select-input"
                     onClick={[Function]}
                   >
                     <span
-                      className="c14"
+                      className="label c14"
                     >
                       Ordenar por:
                     </span>
                     <div
-                      className="c15"
+                      className="clear-label c15"
                     >
                        Limpiar
                     </div>

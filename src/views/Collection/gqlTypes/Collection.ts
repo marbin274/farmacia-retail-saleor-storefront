@@ -356,6 +356,10 @@ export interface Collection_attributes_edges_node_values {
 export interface Collection_attributes_edges_node {
   __typename: "Attribute";
   /**
+   * Whether the attribute can be filtered in storefront.
+   */
+  filterableInStorefront: boolean;
+  /**
    * The ID of the object.
    */
   id: string;

@@ -62,11 +62,11 @@ export const defaultTheme = {
   chip: {
     colors: {
       primary: {
-        activeBackground: C.theme.primaryTransparent,
+        activeBackground: C.theme.complementary1,
         background: C.theme.primaryLight,
-        color: C.theme.primaryDark,
+        color: C.theme.aunaInteractive,
         hoverBackground: "none",
-        hoverColor: C.theme.primaryDark,
+        hoverColor: C.theme.aunaInteractive,
       },
       secondary: {
         activeBackground: C.theme.primaryTransparent,
@@ -224,4 +224,4 @@ export const defaultTheme = {
 };
 
 export type DefaultTheme = typeof defaultTheme;
-export const styled = baseStyled as ThemedStyledInterface<DefaultTheme>;
+export const styled: ThemedStyledInterface<DefaultTheme> = (baseStyled as unknown) as ThemedStyledInterface<DefaultTheme>;

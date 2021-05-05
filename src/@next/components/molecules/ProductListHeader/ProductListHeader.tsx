@@ -1,11 +1,12 @@
+import { Chip, DropdownSelect, Icon } from "@components/atoms";
 import React from "react";
-
-import { Chip, DropdownSelect } from "@components/atoms";
-
 import * as S from "./styles";
 import { IProps } from "./types";
 
+
+
 export const ProductListHeader: React.FC<IProps> = ({
+  hideFilters = false,
   numberOfProducts = 0,
   openFiltersMenu,
   clearFilters,
@@ -19,22 +20,29 @@ export const ProductListHeader: React.FC<IProps> = ({
   return (
     <S.Wrapper>
       <S.Bar>
-        <S.LeftSide>
-          <S.FiltersButton onClick={openFiltersMenu} data-cy="filters__button">
-            <S.Filters>
-              {/* TODO: uncomment as soon as we need to extend the cagetory filters */}
-              {/* Filtros */}{" "}
+        {!hideFilters &&
+          <S.LeftSide>
+            <S.FiltersButton onClick={openFiltersMenu} data-cy="filters__button">
+              <S.Filters>
+                <Icon name="filter" size={18} viewPort={24} />
+                <span>
+                  Filtros
               {activeFilters > 0 && (
-                <>
-                  <span>({activeFilters})</span>
-                </>
-              )}
-            </S.Filters>
-          </S.FiltersButton>
-          {activeFilters > 0 && (
-            <S.Clear onClick={clearFilters}>Limpiar filtros</S.Clear>
-          )}
-        </S.LeftSide>
+                    <>
+                      <span>({activeFilters})</span>
+                    </>
+                  )}
+                </span>
+              </S.Filters>
+            </S.FiltersButton>
+            {activeFilters > 0 && (
+              <S.Clear onClick={clearFilters}>
+                <Icon name="trash" size={18} />
+                <span>Borrar filtros</span>
+              </S.Clear>
+            )}
+          </S.LeftSide>
+        }
 
         <S.RightSide>
           <S.Element
@@ -42,7 +50,7 @@ export const ProductListHeader: React.FC<IProps> = ({
             data-cy="no-of-products-found_label"
           >
             <S.Label>Productos encontrados: </S.Label>
-            {numberOfProducts}
+            <S.NumberProducts>{numberOfProducts}</S.NumberProducts>
           </S.Element>
           <S.Element>
             <S.Sort>
@@ -59,8 +67,9 @@ export const ProductListHeader: React.FC<IProps> = ({
       </S.Bar>
       <S.FiltersChipsWrapper>
         {activeFiltersAttributes.map(
-          ({ attributeSlug, valueName, valueSlug }) => (
+          ({ attributeSlug, valueName, valueSlug }, index) => (
             <Chip
+              key={index}
               onClose={() => onCloseFilterAttribute(attributeSlug, valueSlug)}
             >
               {valueName}

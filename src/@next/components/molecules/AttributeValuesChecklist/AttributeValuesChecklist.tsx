@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ButtonLink, Checkbox } from "@components/atoms";
+import { ButtonLink, Checkbox, Icon } from "@components/atoms";
 
 import * as S from "./styles";
 import { IProps } from "./types";
@@ -21,10 +21,11 @@ export const AttributeValuesChecklist: React.FC<IProps> = ({
       {values &&
         values.map((value, index) => {
           if (!viewAllOptions && index > valuesShowLimitNumber - 1) {
-            return <></>;
+            return null;
           } else {
             return (
               <Checkbox
+                key={index}
                 name={name}
                 checked={!!value.selected}
                 onChange={() => onValueClick(value)}
@@ -41,7 +42,8 @@ export const AttributeValuesChecklist: React.FC<IProps> = ({
             color="secondary"
             onClick={() => setViewAllOptions(true)}
           >
-            VIEW ALL OPTIONS
+            <Icon name="plus" size={12} />
+            <span>Ver todo</span>
           </ButtonLink>
         </S.ViewMoreButton>
       )}

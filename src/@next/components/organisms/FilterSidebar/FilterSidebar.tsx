@@ -1,6 +1,6 @@
 import React from "react";
 
-import { IconButton } from "@components/atoms";
+import { Button, IconButton } from "@components/atoms";
 import { AttributeValuesChecklist } from "@components/molecules";
 import { useHandlerWhenClickedOutside } from "@hooks";
 
@@ -47,10 +47,12 @@ export const FilterSidebar: React.FC<IProps> = ({
     >
       <S.Wrapper ref={setElementRef()} data-cy="filter-sidebar">
         <S.Header>
-          <span>FILTERS</span>
-          <IconButton onClick={hide} name="x" size={18} color="000" />
+          <span>Filtros</span>
+          <IconButton onClick={hide} name="x" size={18} />
         </S.Header>
-        {attributes.map(({ id, name, slug, values }) => {
+        {attributes
+          .filter(it => it.filterableInStorefront)
+          .map(({ id, name, slug, values }) => {
           return (
             <AttributeValuesChecklist
               key={id}
@@ -65,6 +67,9 @@ export const FilterSidebar: React.FC<IProps> = ({
             />
           );
         })}
+        <S.ButtonContainer>
+          <Button onClick={hide}>Aplicar</Button>
+        </S.ButtonContainer>
       </S.Wrapper>
     </Overlay>
   );
