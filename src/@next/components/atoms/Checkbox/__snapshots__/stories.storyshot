@@ -71,13 +71,16 @@ exports[`Storyshots @components/atoms/Checkbox default 1`] = `
 }
 
 .c2 input:checked + div span div {
-  display: block;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c3 {
   border-radius: 0.125rem;
   border: solid 0.188rem #E4E5ED;
-  display: inline-block;
+  display: block;
   height: 1.25rem;
   width: 1.25rem;
 }

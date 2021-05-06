@@ -31,7 +31,7 @@ export const Label = styled.label`
       background-color: ${props => props.theme.colors.primary};
       border: solid 0.125rem ${props => props.theme.colors.primary};
       div {
-        display: block;
+        display: flex;
       }
     }
   }
@@ -40,7 +40,7 @@ export const Label = styled.label`
 export const Span = styled.span<{error: boolean}>`
   border-radius: 0.125rem;
   border: solid 0.188rem ${({ error, theme }) => error ? theme.input.borderColorError : theme.colors.aunaLightGray};
-  display: inline-block;
+  display: block;
   height: 1.25rem;
   width: 1.25rem;
     div {

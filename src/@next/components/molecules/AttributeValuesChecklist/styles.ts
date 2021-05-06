@@ -3,6 +3,9 @@ import { styled } from "@styles";
 export const Wrapper = styled.div`
   width: 80%;
   padding-bottom: 2rem;
+  > div {
+    margin-left: initial;
+  }
 `;
 
 export const Header = styled.div`

@@ -29,8 +29,8 @@ export const LeftSide = styled.div`
   padding: 1rem .8rem;
   width: 100%;
   ${mediaUp.mediumScreen`
-    justify-content: space-around;
-    width: 27rem;
+    justify-content: space-between;
+    width: 24rem;
   `}
   span, button {
     color: ${props => props.theme.colors.aunaInteractive};
@@ -46,12 +46,12 @@ export const RightSide = styled.div`
   width: 100%;
   ${mediaUp.mediumScreen`
     background-color: ${(props: any) => props.theme.colors.aunaDisabledBackground};
-    justify-content: space-evenly;
+    justify-content: flex-end;
   `}
   .select-input{
     justify-content: flex-end;
     .clear-label {
-      margin-right: 2rem;
+      margin-right: 1rem;
     }
   }
 `;
@@ -78,7 +78,9 @@ export const Clear = styled.button`
 `;
 
 export const Element = styled.span`
-  
+${mediaUp.mediumScreen`
+  margin-left: 1rem;
+`}
 `;
 
 export const Filters = styled.span`
@@ -95,12 +97,8 @@ export const Label = styled.span`
 `;
 
 export const Sort = styled.div`
-  width: 7rem;
+  width: inherit;
   display: inline-block;
-
-  ${mediaUp.mediumScreen`
-    width: 12rem;
-  `}
 
   .label {
     display: none;

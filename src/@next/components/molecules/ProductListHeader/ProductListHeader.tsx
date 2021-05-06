@@ -29,7 +29,7 @@ export const ProductListHeader: React.FC<IProps> = ({
                   Filtros
               {activeFilters > 0 && (
                     <>
-                      <span>({activeFilters})</span>
+                      <span> ({activeFilters})</span>
                     </>
                   )}
                 </span>
