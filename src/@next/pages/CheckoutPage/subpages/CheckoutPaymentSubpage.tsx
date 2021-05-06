@@ -163,7 +163,6 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
       const { data, dataError } = await completeCheckout(requestPayload);
       const confirmErrors = dataError?.error;
       changeSubmitProgress(false);
-
       if (confirmErrors) {
         removePaymentItems();
         alertService.sendAlert({
@@ -175,8 +174,10 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
           title: "No pudimos procesar el pago",
           type: "Info",
         });
-
         setGatewayErrors(confirmErrors);
+        if (confirmErrors.message.includes("GraphQL error: ")){
+          setGatewayErrors([{field: undefined, message: "Error al procesar pago"}]);
+        }
       } else {
         setGatewayErrors([]);
         history.push({
