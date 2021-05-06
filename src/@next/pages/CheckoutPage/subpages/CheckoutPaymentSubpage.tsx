@@ -175,7 +175,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
           type: "Info",
         });
         setGatewayErrors(confirmErrors);
-        if (confirmErrors.message.includes("GraphQL error: ")){
+        if (confirmErrors?.message?.includes("GraphQL error: ")){
           setGatewayErrors([{field: undefined, message: "Error al procesar pago"}]);
         }
       } else {

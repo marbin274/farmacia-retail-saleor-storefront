@@ -57,7 +57,7 @@ const CheckoutPayment: React.FC<IProps> = ({
       setReRenderNiubiz(!reRenderNiubiz)
       setTimeout(()=>{
         setReRenderNiubiz(true)
-      },3000)
+      },300)
       
     }  
   }, [gatewayErrors])
