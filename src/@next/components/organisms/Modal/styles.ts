@@ -1,4 +1,4 @@
-import { defaultTheme, styled } from "@styles";
+import { defaultTheme, styled, media } from "@styles";
 
 export const Container = styled.div`
   height: 100vh;
@@ -14,6 +14,10 @@ export const Modal = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: ${props => props.theme.modal.modalWidthMedium};
+  ${media.smallScreen`
+    width: 88%;
+    margin-top: 0.3125rem;
+  `}
   max-width: 100%;
   max-height: 98%;
   z-index: 1000;
