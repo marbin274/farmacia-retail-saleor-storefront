@@ -552,6 +552,10 @@ export interface CompleteCheckout_checkoutComplete_order {
    * User-friendly number of an order.
    */
   number: string | null;
+  /**
+   * An extract of the checkout token to identify the order
+   */
+  sequentialCode: string | null;
   shippingAddress: CompleteCheckout_checkoutComplete_order_shippingAddress | null;
   /**
    * List of order lines.
@@ -569,10 +573,6 @@ export interface CompleteCheckout_checkoutComplete_order {
    * Total price of shipping.
    */
   shippingPrice: CompleteCheckout_checkoutComplete_order_shippingPrice | null;
-  /**
-   * An extract of the checkout token to identify the order
-   */
-  sequentialCode: string | null;
 }
 
 export interface CompleteCheckout_checkoutComplete {

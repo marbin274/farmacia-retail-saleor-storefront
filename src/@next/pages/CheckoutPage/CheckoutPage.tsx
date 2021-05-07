@@ -33,6 +33,7 @@ import {
 } from "./subpages";
 import { IProps } from "./types";
 import { CartDeliveryDataModal } from '../../components/organisms/CartDeliveryDataModal/CartDeliveryDataModal';
+import { SHIPPING_METHOD_NOT_FOUND, SHIPPING_METHOD_NOT_FOUND_TITLE } from "@temp/@next/utils/schemasMessages";
 const prepareCartSummary = (
   activeStepIndex: number,
   onClickHandle: () => void,
@@ -138,9 +139,8 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
       },
       buttonText: "Entendido",
       icon: shippingMethodCalendarInfoIco,
-      message:
-        "Hemos actualizado los horarios disponibles para entregar tu pedido, por favor escoge nuevamente",
-      title: "Horario de entrega",
+      message: SHIPPING_METHOD_NOT_FOUND,
+      title: SHIPPING_METHOD_NOT_FOUND_TITLE,
       type: "Info",
     });
   }
