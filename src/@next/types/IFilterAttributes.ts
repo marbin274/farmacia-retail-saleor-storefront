@@ -6,6 +6,7 @@ export interface ISingleFilterAttribute {
 }
 
 export interface IFilterAttributes {
+  filterableInStorefront: boolean;
   id: string;
   name: string;
   slug: string;

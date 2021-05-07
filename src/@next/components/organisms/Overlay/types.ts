@@ -1,6 +1,7 @@
 export type Position = "center" | "left" | "right";
 
 export interface IProps {
+  className?: string;
   children: React.ReactNode;
   duration?: number;
   hide?: () => void;

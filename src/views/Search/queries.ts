@@ -64,6 +64,7 @@ export const searchProductsQuery = gql`
     attributes(first: 100) {
       edges {
         node {
+          filterableInStorefront
           id
           name
           slug

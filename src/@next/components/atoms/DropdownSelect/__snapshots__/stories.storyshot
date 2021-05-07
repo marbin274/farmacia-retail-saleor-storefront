@@ -66,6 +66,7 @@ exports[`Storyshots @components/atoms/DropdownSelect default 1`] = `
 }
 
 .c5 {
+  color: #131336;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -97,17 +98,17 @@ exports[`Storyshots @components/atoms/DropdownSelect default 1`] = `
         onKeyDown={[Function]}
       >
         <div
-          className="c3"
+          className="select-input c3"
           data-cy="dropdown-select-input"
           onClick={[Function]}
         >
           <span
-            className="c4"
+            className="label c4"
           >
             Ordenar por:
           </span>
           <div
-            className="c5"
+            className="clear-label c5"
           >
              Limpiar
           </div>

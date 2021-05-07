@@ -11,10 +11,15 @@ const getPathColor = (color: string | string[], index: number) => {
   return color[index] ? color[index] : "inherit";
 };
 
-export const Icon: React.FC<IProps> = ({ size = 32, color, name }: IProps) => {
+export const Icon: React.FC<IProps> = ({ 
+  size = 32, 
+  color, 
+  name,
+  viewPort = 32, 
+}: IProps) => {
   const icon = icons[name];
   return (
-    <svg height={size} viewBox="0 0 32 32" width={size}>
+    <svg height={size} viewBox={`0 0 ${viewPort} ${viewPort}`} width={size}>
       {icon &&
         icon.map((path, index) => (
           <path

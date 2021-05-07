@@ -4,6 +4,7 @@ type IconName = keyof typeof icons;
 
 export interface IProps {
   name: IconName;
+  viewPort?: number;
   color?: string | string[];
   size?: number;
 }

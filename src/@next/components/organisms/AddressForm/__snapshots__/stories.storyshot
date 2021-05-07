@@ -71,13 +71,16 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
 }
 
 .c16 input:checked + div span div {
-  display: block;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c17 {
   border-radius: 0.125rem;
   border: solid 0.188rem #E4E5ED;
-  display: inline-block;
+  display: block;
   height: 1.25rem;
   width: 1.25rem;
 }
@@ -952,13 +955,16 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
 }
 
 .c16 input:checked + div span div {
-  display: block;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c17 {
   border-radius: 0.125rem;
   border: solid 0.188rem #E4E5ED;
-  display: inline-block;
+  display: block;
   height: 1.25rem;
   width: 1.25rem;
 }
@@ -1833,13 +1839,16 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
 }
 
 .c16 input:checked + div span div {
-  display: block;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c17 {
   border-radius: 0.125rem;
   border: solid 0.188rem #E4E5ED;
-  display: inline-block;
+  display: block;
   height: 1.25rem;
   width: 1.25rem;
 }

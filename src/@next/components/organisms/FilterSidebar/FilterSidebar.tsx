@@ -1,6 +1,6 @@
 import React from "react";
 
-import { IconButton } from "@components/atoms";
+import { Button, IconButton } from "@components/atoms";
 import { AttributeValuesChecklist } from "@components/molecules";
 import { useHandlerWhenClickedOutside } from "@hooks";
 
@@ -46,26 +46,38 @@ export const FilterSidebar: React.FC<IProps> = ({
       target={target}
     >
       <S.Wrapper ref={setElementRef()} data-cy="filter-sidebar">
-        <S.Header>
-          <span>FILTERS</span>
-          <IconButton onClick={hide} name="x" size={18} color="000" />
-        </S.Header>
-        {attributes.map(({ id, name, slug, values }) => {
-          return (
-            <AttributeValuesChecklist
-              key={id}
-              title={name}
-              name={slug}
-              values={values.map(value => ({
-                ...value,
-                selected: checkIfAttributeIsChecked(filters, value, slug),
-              }))}
-              valuesShowLimit
-              onValueClick={value => onAttributeFiltersChange(slug, value.slug)}
-            />
-          );
-        })}
+        <div>
+          <S.Header>
+            <span>Filtros</span>
+            <IconButton onClick={hide} name="x" size={18} />
+          </S.Header>
+        </div>
+        <S.SubWrapper>
+        <S.Body>
+          {attributes
+            .filter(it => it.filterableInStorefront)
+            .map(({ id, name, slug, values }) => {
+              return (
+                <AttributeValuesChecklist
+                  key={id}
+                  title={name}
+                  name={slug}
+                  values={values.map(value => ({
+                    ...value,
+                    selected: checkIfAttributeIsChecked(filters, value, slug),
+                  }))}
+                  valuesShowLimit
+                  onValueClick={value => onAttributeFiltersChange(slug, value.slug)}
+                />
+              );
+            })}
+        </S.Body>
+        <S.Footer>
+          <Button onClick={hide}>Aplicar</Button>
+        </S.Footer>
+        </S.SubWrapper>
       </S.Wrapper>
+
     </Overlay>
   );
 };

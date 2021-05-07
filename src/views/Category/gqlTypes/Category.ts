@@ -552,6 +552,10 @@ export interface Category_attributes_edges_node {
    */
   slug: string | null;
   /**
+   * Whether the attribute can be filtered in storefront.
+   */
+  filterableInStorefront: boolean;
+  /**
    * List of attribute's values.
    */
   values: (Category_attributes_edges_node_values | null)[] | null;

@@ -13,6 +13,7 @@ export interface IProps {
   activeSortOption?: string;
   activeFilters: number;
   activeFiltersAttributes: ActiveFiltersAttribute[];
+  hideFilters?: boolean;
   numberOfProducts: number;
   sortOptions: SortOptions[];
   onChange: (order: { value?: string; label: string }) => void;

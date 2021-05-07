@@ -18,6 +18,7 @@ export const SortLine = styled.div`
 `;
 
 export const Value = styled.div`
+  color: ${props => props.theme.colors.aunaBlack};
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

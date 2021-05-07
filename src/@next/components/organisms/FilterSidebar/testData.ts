@@ -1,6 +1,7 @@
 export const DEFAULT_PROPS = {
   attributes: [
     {
+      filterableInStorefront: false,
       id: "1",
       name: "Size",
       slug: "size",

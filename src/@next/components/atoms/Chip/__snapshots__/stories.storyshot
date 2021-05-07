@@ -18,13 +18,14 @@ exports[`Storyshots @components/atoms/Chip default 1`] = `
 }
 
 .c1 {
-  padding: 0.4rem 0.4rem 0.4rem 0.8rem;
+  background-color: #E6F6F9;
+  padding: 0.2rem 0.4rem 0.2rem 0.8rem;
   border: none;
   -webkit-transition: 0.3s;
   transition: 0.3s;
   outline: none;
   border-radius: 2rem;
-  color: #06a09e;
+  color: #00B0CA;
   width: auto;
   display: inline-block;
   cursor: default;
@@ -33,7 +34,7 @@ exports[`Storyshots @components/atoms/Chip default 1`] = `
 .c2 {
   display: inline-block;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.25rem;
   margin-right: 0.4rem 0.4rem 0.3rem 0.4rem;
   vertical-align: middle;
@@ -47,7 +48,7 @@ exports[`Storyshots @components/atoms/Chip default 1`] = `
 }
 
 .c3 > svg > path {
-  fill: #06a09e;
+  fill: #00B0CA;
 }
 
 .c3:hover {
@@ -55,11 +56,11 @@ exports[`Storyshots @components/atoms/Chip default 1`] = `
 }
 
 .c3:hover > svg > path {
-  fill: #06a09e;
+  fill: #00B0CA;
 }
 
 .c3:active {
-  background-color: rgba(6,132,123,0.1);
+  background-color: #E6F6F9;
 }
 
 .c3:disabled {
@@ -93,9 +94,9 @@ exports[`Storyshots @components/atoms/Chip default 1`] = `
       type="button"
     >
       <svg
-        height={16}
+        height={12}
         viewBox="0 0 32 32"
-        width={16}
+        width={12}
       >
         <path
           d="M16 12.8l-12.8-12.8-3.2 3.2 12.8 12.8-12.8 12.8 3.2 3.2 12.8-12.8 12.8 12.8 3.2-3.2-12.8-12.8 12.8-12.8-3.2-3.2-12.8 12.8z"

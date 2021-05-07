@@ -53,7 +53,7 @@ describe("<ProductListHeader />", () => {
       <ProductListHeader {...DEFAULT_PROPS} activeFilters={3} />
     );
 
-    expect(wrapper.text()).toContain("Limpiar filtros");
+    expect(wrapper.text()).toContain("Borrar filtros");
   });
 
   it("should display number of active filters if any are present", () => {
@@ -70,9 +70,9 @@ describe("<ProductListHeader />", () => {
     );
 
     wrapper
-      .find("button")
+      .find("span")
       .filterWhere(item => {
-        return item.prop("children") === "Limpiar filtros";
+        return item.prop("children") === "Borrar filtros";
       })
       .simulate("click");
 

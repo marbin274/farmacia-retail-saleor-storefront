@@ -21,7 +21,12 @@ export const ModalBackground: React.FC<IProps> = ({
 }: IProps) => {
 
   return (
-    <Overlay position="center" show={show} hide={hide} target={target}>
+    <Overlay
+      className="modal--background"
+      position="center"
+      show={show}
+      hide={hide}
+      target={target}>
       <div className="modal__container">
         <S.Modal
           imageDesktop={imageDesktop}

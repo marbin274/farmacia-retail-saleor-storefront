@@ -9,6 +9,7 @@ const modalRoot = document.getElementById("modal-root");
 
 export const Overlay: React.FC<IProps> = ({
   children,
+  className,
   duration = 600,
   hide,
   position = "center",
@@ -26,6 +27,7 @@ export const Overlay: React.FC<IProps> = ({
       <Transition in={show} timeout={duration} unmountOnExit>
         {state => (
           <S.Overlay
+            className={className}
             {...animationProps}
             state={state}
             onClick={hide}

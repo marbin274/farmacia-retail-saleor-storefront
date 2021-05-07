@@ -36,9 +36,9 @@ const CheckoutPayment: React.FC<IProps> = ({
   totalPrice,
   userDataForNiubiz,
 }: IProps) => {
-
+  const errorValidation = gatewayErrors? (gatewayErrors?.length > 0) : false
   const [showLabelCupon, setShowLabelCupon] = React.useState<boolean>(true);
-  const [reRenderNiubiz, setReRenderNiubiz] = React.useState<boolean>(true);
+  const [reRenderNiubiz, setReRenderNiubiz] = React.useState<boolean>(!errorValidation);
   const handleSubmitPromoCode = async (discountForm?: IDiscountFormData) => {
     const newPromoCode = discountForm?.promoCode;
     const savedPromoCode = promoCodeDiscount?.voucherCode;
@@ -51,6 +51,16 @@ const CheckoutPayment: React.FC<IProps> = ({
       submitUnchangedDiscount();
     }
   };
+
+  React.useEffect(()=>{
+    if ((errorValidation) ){
+      setReRenderNiubiz(!reRenderNiubiz)
+      setTimeout(()=>{
+        setReRenderNiubiz(true)
+      },300)
+      
+    }  
+  }, [gatewayErrors])
 
   return (
     <S.Wrapper>

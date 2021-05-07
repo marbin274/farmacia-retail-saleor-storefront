@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/FilterSidebar default 1`] = `
   margin: 20px;
 }
 
-.c14 {
+.c11 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -17,100 +17,49 @@ exports[`Storyshots @components/organisms/FilterSidebar default 1`] = `
   box-sizing: border-box;
 }
 
-.c12 {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: rgb(33,18,94);
-  background: transparent;
-  outline: none;
-  border: none;
-  box-shadow: none;
-  -webkit-transform: none;
-  -ms-transform: none;
-  transform: none;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  text-transform: uppercase;
-  padding: 0;
-  -webkit-transition: color 0.3s ease;
-  transition: color 0.3s ease;
-}
-
-.c12:hover {
-  color: #513CA3;
-}
-
-.c8 {
-  width: 100%;
-  margin-bottom: 1.25rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  cursor: pointer;
-  position: relative;
-  margin-left: -0.25rem;
-}
-
 .c9 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  cursor: pointer;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  padding-right: 1rem;
-}
-
-.c9 input[type="checkbox"] {
-  display: none;
-  position: relative;
-  right: -999em;
-}
-
-.c9 .checkout_icon {
-  color: red;
-}
-
-.c9 input:checked + div span {
-  background-clip: content-box;
   background-color: #00B0CA;
-  border: solid 0.125rem #00B0CA;
+  padding: 0.9rem 3.7rem;
+  border: none;
+  border-radius: 40px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  outline: none;
+  cursor: pointer;
+  color: #fff;
+  width: auto;
 }
 
-.c9 input:checked + div span div {
-  display: block;
+.c9:hover {
+  background-color: #0BC1DC;
+  color: #fff;
+}
+
+.c9:active {
+  background-color: #029FB7;
+  box-shadow: -3px 3px 14px 0px rgba(129,67,67,0.2);
+}
+
+.c9:disabled {
+  background-color: #F1F2F7;
+  color: #B8BCD5;
+  cursor: default;
+}
+
+.c9:disabled,
+.c9:disabled:hover {
+  cursor: default;
 }
 
 .c10 {
-  border-radius: 0.125rem;
-  border: solid 0.188rem #E4E5ED;
   display: inline-block;
-  height: 1.25rem;
-  width: 1.25rem;
-}
-
-.c10 div {
-  display: none;
-}
-
-.c10 div svg {
-  fill: #fff;
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .c5 {
@@ -155,26 +104,6 @@ exports[`Storyshots @components/organisms/FilterSidebar default 1`] = `
   fill: #fff;
 }
 
-.c6 {
-  width: 80%;
-  padding-bottom: 2rem;
-}
-
-.c7 {
-  font-size: 1.125rem;
-  font-weight: 600;
-  padding-bottom: 1.5rem;
-}
-
-.c13 {
-  border-bottom: 1px solid #f1f5f5;
-  width: 95%;
-}
-
-.c11 {
-  padding-bottom: 1.25rem;
-}
-
 .c2 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -199,10 +128,9 @@ exports[`Storyshots @components/organisms/FilterSidebar default 1`] = `
   display: -ms-flexbox;
   display: flex;
   position: fixed;
-  overflow-y: auto;
   width: 100%;
   height: 100%;
-  min-height: 100vh;
+  min-height: 100%;
   top: 0;
   z-index: 2;
   -webkit-transition: opacity 0.2s ease;
@@ -221,45 +149,72 @@ exports[`Storyshots @components/organisms/FilterSidebar default 1`] = `
 }
 
 .c3 {
-  overflow: scroll;
-  width: 410px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  background-color: #fff;
+  box-shadow: 6px 0px 30px rgba(0,0,0,0.15);
+  height: 100%;
+  width: 100vw;
+}
+
+.c4 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  box-shadow: 6px 0px 30px rgba(0,0,0,0.15);
-}
-
-.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 80%;
+  font-weight: 400;
+  font-size: 1.125rem;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-top: 1.5rem;
-  margin-bottom: 4rem;
-  padding: 0;
-  font-weight: 600;
-  font-size: 1.5rem;
+  padding: 1rem 1rem 0rem 0.5rem;
+  width: 100%;
+}
+
+.c4 > div {
+  background-color: #E6F6F9;
+}
+
+.c6 {
+  height: calc(100% - 3.25rem);
+  width: 100%;
+}
+
+.c7 {
+  height: calc(100% - 5.174rem);
+  padding: 1rem 1rem 0rem 1rem;
+  overflow: auto;
+}
+
+.c8 {
+  background: #fff;
+  height: 5.174rem;
+  padding: 1rem;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+@media (max-width:540px) {
+  .c9 {
+    padding: 0.9rem 1rem;
+    width: 88%;
+  }
+}
+
+@media (min-width:540px) {
+  .c3 {
+    width: 25.625rem;
+  }
+}
+
+@media (min-width:720px) {
+  .c8 {
+    display: none;
+  }
 }
 
 <div
@@ -280,27 +235,29 @@ exports[`Storyshots @components/organisms/FilterSidebar default 1`] = `
         className="c3"
         data-cy="filter-sidebar"
       >
-        <div
-          className="c4"
-        >
-          <span>
-            FILTERS
-          </span>
+        <div>
           <div
-            className="c5"
-            data-cy="icon_button"
-            onClick={[Function]}
+            className="c4"
           >
-            <svg
-              height={18}
-              viewBox="0 0 32 32"
-              width={18}
+            <span>
+              Filtros
+            </span>
+            <div
+              className="c5"
+              data-cy="icon_button"
+              onClick={[Function]}
             >
-              <path
-                d="M16 12.8l-12.8-12.8-3.2 3.2 12.8 12.8-12.8 12.8 3.2 3.2 12.8-12.8 12.8 12.8 3.2-3.2-12.8-12.8 12.8-12.8-3.2-3.2-12.8 12.8z"
-                fill="000"
-              />
-            </svg>
+              <svg
+                height={18}
+                viewBox="0 0 32 32"
+                width={18}
+              >
+                <path
+                  d="M16 12.8l-12.8-12.8-3.2 3.2 12.8 12.8-12.8 12.8 3.2 3.2 12.8-12.8 12.8 12.8 3.2-3.2-12.8-12.8 12.8-12.8-3.2-3.2-12.8 12.8z"
+                  fill="#697191"
+                />
+              </svg>
+            </div>
           </div>
         </div>
         <div
@@ -308,175 +265,30 @@ exports[`Storyshots @components/organisms/FilterSidebar default 1`] = `
         >
           <div
             className="c7"
-          >
-            Size
-          </div>
+          />
           <div
             className="c8"
-          >
-            <label
-              className="c9"
-              onClick={[Function]}
-            >
-              <input
-                checked={true}
-                name="size"
-                readOnly={true}
-                tabIndex={-1}
-                type="checkbox"
-              />
-              <div
-                onKeyDown={[Function]}
-                tabIndex={0}
-              >
-                <span
-                  className="c10"
-                >
-                  <div
-                    className="checkout_icon"
-                  />
-                </span>
-              </div>
-            </label>
-            41
-          </div>
-          <div
-            className="c8"
-          >
-            <label
-              className="c9"
-              onClick={[Function]}
-            >
-              <input
-                checked={false}
-                name="size"
-                readOnly={true}
-                tabIndex={-1}
-                type="checkbox"
-              />
-              <div
-                onKeyDown={[Function]}
-                tabIndex={0}
-              >
-                <span
-                  className="c10"
-                >
-                  <div
-                    className="checkout_icon"
-                  />
-                </span>
-              </div>
-            </label>
-            42
-          </div>
-          <div
-            className="c8"
-          >
-            <label
-              className="c9"
-              onClick={[Function]}
-            >
-              <input
-                checked={false}
-                name="size"
-                readOnly={true}
-                tabIndex={-1}
-                type="checkbox"
-              />
-              <div
-                onKeyDown={[Function]}
-                tabIndex={0}
-              >
-                <span
-                  className="c10"
-                >
-                  <div
-                    className="checkout_icon"
-                  />
-                </span>
-              </div>
-            </label>
-            43
-          </div>
-          <div
-            className="c8"
-          >
-            <label
-              className="c9"
-              onClick={[Function]}
-            >
-              <input
-                checked={false}
-                name="size"
-                readOnly={true}
-                tabIndex={-1}
-                type="checkbox"
-              />
-              <div
-                onKeyDown={[Function]}
-                tabIndex={0}
-              >
-                <span
-                  className="c10"
-                >
-                  <div
-                    className="checkout_icon"
-                  />
-                </span>
-              </div>
-            </label>
-            44
-          </div>
-          <div
-            className="c8"
-          >
-            <label
-              className="c9"
-              onClick={[Function]}
-            >
-              <input
-                checked={false}
-                name="size"
-                readOnly={true}
-                tabIndex={-1}
-                type="checkbox"
-              />
-              <div
-                onKeyDown={[Function]}
-                tabIndex={0}
-              >
-                <span
-                  className="c10"
-                >
-                  <div
-                    className="checkout_icon"
-                  />
-                </span>
-              </div>
-            </label>
-            45
-          </div>
-          <div
-            className="c11"
           >
             <button
-              className="c12"
-              color="secondary"
+              className="c9"
+              color="primary"
               onClick={[Function]}
-              size="sm"
+              size="md"
             >
-              VIEW ALL OPTIONS
+              <span
+                className="c10"
+                size="md"
+              >
+                Aplicar
+              </span>
             </button>
           </div>
-          <div
-            className="c13"
-          />
         </div>
       </div>
     </div>
   </div>
   <div
-    className="c14"
+    className="c11"
   />
 </div>
 `;

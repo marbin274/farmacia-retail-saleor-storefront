@@ -27,7 +27,7 @@ exports[`Storyshots @components/atoms/Label default 1`] = `
   className="c0"
 >
   <span
-    className="c1"
+    className="label c1"
   >
     This is sample text inside label
   </span>

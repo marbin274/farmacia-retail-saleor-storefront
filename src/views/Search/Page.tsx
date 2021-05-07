@@ -140,11 +140,12 @@ const Page: React.FC<PageProps> = ({
             <div className="product_list_container">
               <ProductListHeader
                 activeSortOption={activeSortOption}
-                openFiltersMenu={() => setShowFilters(true)}
-                numberOfProducts={products ? products.totalCount : 0}
                 activeFilters={activeFilters}
                 activeFiltersAttributes={activeFiltersAttributes}
                 clearFilters={clearFilters}
+                hideFilters
+                openFiltersMenu={() => setShowFilters(true)}
+                numberOfProducts={products ? products.totalCount : 0}
                 sortOptions={sortOptions}
                 onChange={onOrder}
                 onCloseFilterAttribute={onAttributeFiltersChange}

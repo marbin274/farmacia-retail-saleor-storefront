@@ -3,6 +3,9 @@ import { styled } from "@styles";
 export const Wrapper = styled.div`
   width: 80%;
   padding-bottom: 2rem;
+  > div {
+    margin-left: initial;
+  }
 `;
 
 export const Header = styled.div`
@@ -18,4 +21,10 @@ export const BottomBorder = styled.div`
 
 export const ViewMoreButton = styled.div`
   padding-bottom: 1.25rem;
+  span {
+    color: ${props => props.theme.colors.aunaInteractive};
+    font-size:${props => props.theme.typography.smallFontSize};
+    font-weight:${props => props.theme.typography.normalFontWeight};
+    margin-left: 1rem;
+  }
 `;

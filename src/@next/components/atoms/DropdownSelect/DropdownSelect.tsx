@@ -24,11 +24,12 @@ export const DropdownSelect: React.FC<IProps> = ({
   const customComponents = {
     Control: () => (
       <S.SortLine
+        className="select-input"
         data-cy="dropdown-select-input"
         onClick={() => setMenuIsOpen(!menuIsOpen)}
       >
         <Label>Ordenar por:</Label>
-        <S.Value>{` ${value ? value.label : "Limpiar"}`}</S.Value>
+        <S.Value className="clear-label">{` ${value ? value.label : "Limpiar"}`}</S.Value>
         <S.Indicator rotate={String(menuIsOpen)}>
           <img src={caretDown} />
         </S.Indicator>
