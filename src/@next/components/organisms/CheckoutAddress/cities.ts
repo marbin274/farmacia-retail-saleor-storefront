@@ -14,9 +14,10 @@ const cities: ICity[] = [
   { label: "Callao - La Perla", enabled: true},
   { label: "Cañete-Asia", enabled: false },
   { label: "Carabayllo" },
+  { label: "Cercado de Lima", enabled: true },
   { label: "Chaclacayo" },
   { label: "Chilca", enabled: false },
-  { label: "Chorrillos" },
+  { label: "Chorrillos", enabled: true },
   { label: "Cieneguilla" },
   { label: "Comas" },
   { label: "El Agustino" },
@@ -53,7 +54,7 @@ const cities: ICity[] = [
   { label: "Santa Rosa" },
   { label: "Santiago de Surco", enabled: true },
   { label: "Surquillo", enabled: true },
-  { label: "Villa El Salvador" },
+  { label: "Villa El Salvador", enabled: true },
   { label: "Villa María del Triunfo" },
 ];
 
