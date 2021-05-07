@@ -206,7 +206,7 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
         if (checkoutPaymentSubpageRef.current?.submitPayment) {
           checkoutPaymentSubpageRef.current?.submitPayment();
         }
-        launchCheckoutEvent(steps.review, ecommerceProductsMapper(items));
+        launchCheckoutEvent(steps.reviewCheckoutRoute, ecommerceProductsMapper(items));
         break;
       case 2:
         if (checkoutReviewSubpageRef.current?.complete) {
@@ -227,29 +227,35 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     net: discount,
   };
 
-  const [firstEventSend, setFirstEventSend] = useState(false);
+  const [addressGaEventSended, setAddressGaEventSended] = useState(false); 
 
   const sendEventForCheckoutAddress = () => {
-    setFirstEventSend(true);
-    launchCheckoutEvent(steps.address, ecommerceProductsMapper(items));
-  };
-  const sendEventForCheckoutPayment = () => {
-    launchCheckoutEvent(steps.payment, ecommerceProductsMapper(items));
+    setAddressGaEventSended(true);
+    launchCheckoutEvent(steps.addressCheckoutRoute, ecommerceProductsMapper(items));
   };
 
-  const sendEventsForCheckoutAddressAndPayment = () => {
-    launchCheckoutEvent(steps.address, ecommerceProductsMapper(items));
-    launchCheckoutEvent(steps.payment, ecommerceProductsMapper(items));
+  const sendEventForCheckoutPayment = () => {
+    launchCheckoutEvent(steps.paymentCheckoutRoute, ecommerceProductsMapper(items));
   };
+
+  const sendEventsWhenSkippingFirstStep = () => {
+    launchCheckoutEvent(steps.addressCheckoutRoute, ecommerceProductsMapper(items));
+    launchCheckoutEvent(steps.filledContactUserData, ecommerceProductsMapper(items));
+    launchCheckoutEvent(steps.privacyPolicyAcepted, ecommerceProductsMapper(items));
+    launchCheckoutEvent(steps.filledInputForAddress, ecommerceProductsMapper(items));
+    launchCheckoutEvent(steps.shippingMethodSelected, ecommerceProductsMapper(items));
+    launchCheckoutEvent(steps.paymentCheckoutRoute, ecommerceProductsMapper(items));
+  };
+  
   React.useEffect(() => {
     if (pathname === "/checkout/address") {
       sendEventForCheckoutAddress();
     }
-    if (pathname === "/checkout/payment" && !firstEventSend) {
-      sendEventsForCheckoutAddressAndPayment();
+    if (pathname === "/checkout/payment" && !addressGaEventSended) {
+      sendEventsWhenSkippingFirstStep();
     }
 
-    if (pathname === "/checkout/payment" && firstEventSend) {
+    if (pathname === "/checkout/payment" && addressGaEventSended) {
       sendEventForCheckoutPayment();
     }
   }, [pathname]);

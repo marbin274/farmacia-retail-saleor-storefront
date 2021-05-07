@@ -69,7 +69,7 @@ import {
 } from "@sdk/utils";
 import ApolloClient from "apollo-client";
 import { IPrivacyPolicy } from "../api/Checkout/types";
-import { launchEcommerceEvent, ecommerceProductsMapper } from "@sdk/gaConfig";
+import { launchPurchaseEvent, ecommerceProductsMapper } from "@sdk/gaConfig";
 import { INetworkManager } from "./types";
 
 export class NetworkManager implements INetworkManager {
@@ -828,7 +828,7 @@ export class NetworkManager implements INetworkManager {
         const productsArray: any = data?.checkoutComplete?.order.lines;
         const orderId: any = data?.checkoutComplete?.order.number;
         const tax: any = (total * (0.18 / 1.18)).toFixed(2);
-        launchEcommerceEvent(
+        launchPurchaseEvent(
           orderId,
           total,
           tax,

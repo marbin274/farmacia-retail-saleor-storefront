@@ -7,24 +7,30 @@ declare global {
 const GA_USER_ID_KEY = "@user_id";
 
 export enum steps {
-  address = 1,
-  payment,
-  review,
+  addressCheckoutRoute = 1,
+  filledContactUserData,
+  privacyPolicyAcepted,
+  filledInputForAddress,
+  shippingMethodSelected,
+  paymentCheckoutRoute,
+  reviewCheckoutRoute,
 }
 
 export const ecommerceProductsMapper = (products?: any[] | null) => {
-  return products?.map(product => ({
-    brand: ``,
-    category: ``,
-    id: product?.variant?.sku,
-    list: ``,
-    name: product?.productName || product?.name,
-    position: ``,
-    price:
-      product?.unitPrice?.gross?.amount || product?.totalPrice?.gross?.amount,
-    quantity: product?.quantity,
-    variant: ``,
-  })) || [];
+  return (
+    products?.map(product => ({
+      brand: ``,
+      category: ``,
+      id: product?.variant?.sku,
+      list: ``,
+      name: product?.productName || product?.name,
+      position: ``,
+      price:
+        product?.unitPrice?.gross?.amount || product?.totalPrice?.gross?.amount,
+      quantity: product?.quantity,
+      variant: ``,
+    })) || []
+  );
 };
 
 export const launchRemoveToCartEvent = (
@@ -120,7 +126,7 @@ export const launchDetailProductEvent = (
   });
 };
 
-export const launchEcommerceEvent = (
+export const launchPurchaseEvent = (
   id: string,
   revenue: number,
   tax: number,
@@ -170,4 +176,7 @@ export const launchSearchEvent = (searchTerm?: string) => {
     event: "search",
     searchTerm,
   });
+};
+export let getLocalStorageForCart = () => {
+  return JSON.parse(localStorage.getItem("data_checkout") as string)?.lines;
 };
