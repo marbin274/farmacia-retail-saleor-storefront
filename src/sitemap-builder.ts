@@ -13,7 +13,6 @@ const generateSitemap = async (hostname: string) => {
   const sitemap = new SitemapGenerator({ hostname, destinationDir: distDir });
 
   sitemap.add({ url: "/" });
-  sitemap.add({ url: "/page/about/" });
 
   await getCategories(({ url }) => {
     sitemap.add({ url });
