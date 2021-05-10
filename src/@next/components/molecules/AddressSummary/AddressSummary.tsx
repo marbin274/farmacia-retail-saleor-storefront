@@ -8,8 +8,8 @@ import { IProps } from "./types";
  */
 const AddressSummary: React.FC<IProps> = ({ address, checkout, email }: IProps) => {
   if (address) {
-    const direction = ` ${address.streetAddress1} ${address.city}  ${address.countryArea} ${address.country?.country} `;
-    const reference = ` ${address.streetAddress2}`;
+    const direction = address.streetAddress1;
+    const reference = address.streetAddress2;
     return (
       <S.Wrapper>
         <S.Text>
