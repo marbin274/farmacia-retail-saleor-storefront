@@ -130,6 +130,10 @@ export interface OrdersByUser_me_orders_edges_node {
   id: string;
   token: string;
   /**
+   * An extract of the checkout token to identify the order
+   */
+  sequentialCode: string | null;
+  /**
    * User-friendly number of an order.
    */
   number: string | null;

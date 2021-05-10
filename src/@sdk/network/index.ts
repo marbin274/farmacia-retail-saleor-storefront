@@ -819,9 +819,9 @@ export class NetworkManager implements INetworkManager {
         return {
           error: errors,
         };
-      } else if (data?.checkoutComplete?.errors.length) {
+      } else if (data?.checkoutComplete?.checkoutErrors.length) {
         return {
-          error: data?.checkoutComplete?.errors,
+          error: data?.checkoutComplete?.checkoutErrors,
         };
       } else if (data?.checkoutComplete?.order) {
         const total: any = data?.checkoutComplete?.order.subtotal?.gross.amount;

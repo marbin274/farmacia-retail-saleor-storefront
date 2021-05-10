@@ -25,6 +25,8 @@ import React, {
   useState,
 } from "react";
 import { RouteComponentProps, useHistory } from "react-router";
+import { CheckoutErrorCode } from "@temp/@sdk/gqlTypes/globalTypes";
+import NoStockIcon from "images/auna/no-stock.svg";
 
 export interface ICheckoutPaymentSubpageHandles {
   submitPayment: () => void;
@@ -165,15 +167,50 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
       changeSubmitProgress(false);
       if (confirmErrors) {
         removePaymentItems();
-        alertService.sendAlert({
-          buttonText: "Entendido",
-          icon: ErrorPaymentIcon,
-          message:
-            "Por favor valida que todos tus datos de pago sean correctos e inténtalo de nuevo",
-          redirectionLink: CHECKOUT_STEPS[1].link,
-          title: "No pudimos procesar el pago",
-          type: "Info",
-        });
+
+        switch(confirmErrors[0].code) {
+          case CheckoutErrorCode.INSUFFICIENT_STOCK:
+            alertService.sendAlert({
+              buttonText: "Entendido",
+              icon: NoStockIcon,
+              message: confirmErrors[0].message,
+              title: "Producto sin stock",
+              type: "Info",
+            });
+            break;
+          case CheckoutErrorCode.SCHEDULE_NOT_AVAILABLE:
+          case CheckoutErrorCode.EXCEEDS_SCHEDULE_DURATION:
+          case CheckoutErrorCode.DELIVERY_DATE_EXPIRED:
+            alertService.sendAlert({
+              buttonText: "Entendido",
+              message: confirmErrors[0].message,
+              redirectionLink: CHECKOUT_STEPS[0].link,
+              title: "Horario de entrega",
+              type: "Info",
+            });
+            break;
+          case CheckoutErrorCode.NIUBIZ:
+            alertService.sendAlert({
+              buttonText: "Entendido",
+              icon: ErrorPaymentIcon,
+              message: confirmErrors[0].message,
+              redirectionLink: CHECKOUT_STEPS[0].link,
+              title: "No pudimos procesar el pago",
+              type: "Info",
+            });
+            break;
+          default:
+            alertService.sendAlert({
+              buttonText: "Entendido",
+              icon: ErrorPaymentIcon,
+              message:
+                "Por favor valida que todos tus datos de pago sean correctos e inténtalo de nuevo",
+              redirectionLink: CHECKOUT_STEPS[1].link,
+              title: "No pudimos procesar el pago",
+              type: "Info",
+            });
+        }
+
         setGatewayErrors(confirmErrors);
         if (confirmErrors?.message?.includes("GraphQL error: ")){
           setGatewayErrors([{field: undefined, message: "Error al procesar pago"}]);

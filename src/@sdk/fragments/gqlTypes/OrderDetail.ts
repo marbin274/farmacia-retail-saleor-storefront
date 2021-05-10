@@ -539,6 +539,10 @@ export interface OrderDetail {
    * User-friendly number of an order.
    */
   number: string | null;
+  /**
+   * An extract of the checkout token to identify the order
+   */
+  sequentialCode: string | null;
   shippingAddress: OrderDetail_shippingAddress | null;
   /**
    * List of order lines.
@@ -556,8 +560,4 @@ export interface OrderDetail {
    * Total price of shipping.
    */
   shippingPrice: OrderDetail_shippingPrice | null;
-  /**
-   * An extract of the checkout token to identify the order
-   */
-  sequentialCode: string | null;
 }

@@ -539,6 +539,10 @@ export interface OrderByToken_orderByToken {
    * User-friendly number of an order.
    */
   number: string | null;
+  /**
+   * An extract of the checkout token to identify the order
+   */
+  sequentialCode: string | null;
   shippingAddress: OrderByToken_orderByToken_shippingAddress | null;
   /**
    * List of order lines.
@@ -556,10 +560,6 @@ export interface OrderByToken_orderByToken {
    * Total price of shipping.
    */
   shippingPrice: OrderByToken_orderByToken_shippingPrice | null;
-  /**
-   * An extract of the checkout token to identify the order
-   */
-  sequentialCode: string | null;
 }
 
 export interface OrderByToken {

@@ -253,9 +253,10 @@ export const completeCheckoutMutation = gql`
   ${orderDetailFragment}
   mutation CompleteCheckout($checkoutId: ID!, $paymentData: JSONString) {
     checkoutComplete(checkoutId: $checkoutId, paymentData: $paymentData) {
-      errors {
+      checkoutErrors {
         field
         message
+        code
       }
       order {
         ...OrderDetail
