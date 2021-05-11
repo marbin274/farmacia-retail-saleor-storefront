@@ -78,11 +78,12 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
     const errors: ICheckoutShippingMethodError[] | undefined = dataError?.error;
     changeSubmitProgress(false);
     if (errors) {
-      const scheduleTimeNotFound = errors.find(it => it.code === CheckoutErrorCode.NOT_FOUND && it.field === "scheduleTimeId");
+      const scheduleTimeNotFound = errors.find(it =>
+        (it.code === CheckoutErrorCode.NOT_FOUND && it.field === "scheduleTimeId") ||
+        (it.code === CheckoutErrorCode.SCHEDULE_NOT_AVAILABLE)
+      );
+      setShippingMethod({ shippingMethodId: "" });
       alertService.sendAlert({
-        acceptDialog: scheduleTimeNotFound ? () => {
-          setShippingMethod({ shippingMethodId: "" });
-        } : undefined,
         buttonText: "Entendido",
         icon: scheduleTimeNotFound && shippingMethodCalendarInfoIco,
         message:  !scheduleTimeNotFound ? errors[0].message : SHIPPING_METHOD_NOT_FOUND,

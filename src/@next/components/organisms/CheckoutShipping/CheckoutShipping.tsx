@@ -40,6 +40,7 @@ const CheckoutShipping: React.FC<IProps> = ({
     setErrors,
     setFieldValue,
   } = useFormik<ICheckoutShipping>({
+    enableReinitialize:true,
     initialValues: {
       dateSelected: !scheduleDate?.date
         ? undefined
