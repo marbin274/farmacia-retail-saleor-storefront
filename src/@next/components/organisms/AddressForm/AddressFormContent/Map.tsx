@@ -4,6 +4,12 @@ import { mapsApiKey } from "@temp/constants";
 import MapIcon from "@temp/images/auna/map-icon.svg";
 import * as S from "./styles";
 import { LIMA_BOUNDS } from "@temp/core/config";
+import {
+  launchCheckoutEvent,
+  steps,
+  ecommerceProductsMapper,
+  getLocalStorageForCart,
+} from "@temp/@sdk/gaConfig";
 
 type IProps = {
   location?: google.maps.LatLngLiteral;
@@ -92,6 +98,15 @@ export const Map: FC<IProps> = ({ location, onChangeLocation }) => {
     setMarkerOnMap(location.lat, location.lng);
     map.setCenter({ lat: location.lat, lng: location.lng });
   }, [location?.lng, map]);
+
+  useEffect(() => {
+    if (!!location?.lat) {
+      launchCheckoutEvent(
+        steps.filledInputForAddress,
+        ecommerceProductsMapper(getLocalStorageForCart())
+      );
+    }
+  }, [location?.lng]);
 
   return (
     <S.MapWrapper>

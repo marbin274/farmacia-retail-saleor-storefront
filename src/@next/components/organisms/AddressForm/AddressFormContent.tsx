@@ -134,19 +134,6 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
     }
   }, [values?.firstName, values?.documentNumber, values?.phone, values?.email]);
 
-  React.useEffect(() => {
-    const delayDebounceFn = setTimeout(() => {
-      if (values?.streetAddress1) {
-        launchCheckoutEvent(
-          steps.filledInputForAddress,
-          ecommerceProductsMapper(getLocalStorageForCart())
-        );
-      }
-    }, 1000);
-
-    return () => clearTimeout(delayDebounceFn);
-  }, [values?.streetAddress1]);
-
   const fieldsProps: IFieldsProps = {
     basicInputProps,
     fieldErrors,
