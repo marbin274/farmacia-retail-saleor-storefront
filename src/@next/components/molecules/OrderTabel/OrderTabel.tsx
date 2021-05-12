@@ -59,13 +59,13 @@ export const OrderTabel: React.FC<IProps> = ({ orders, history }: IProps) => {
                               .slice(0, 5)
                               .map((product: any) => (
                                 <span
-                                  key={product.variant.product.id}
+                                  key={product.variant.productId}
                                   onClick={evt => {
                                     evt.stopPropagation();
                                     history.push(
                                       generateProductUrl(
-                                        product.variant.product.id,
-                                        product.variant.product.name
+                                        product.variant.productId,
+                                        product.productName
                                       )
                                     );
                                   }}

@@ -33,12 +33,10 @@ export const ordersByUser = gql`
             }
             lines {
               id
+              productName
               variant {
                 id
-                product {
-                  name
-                  id
-                }
+                productId
               }
               thumbnail {
                 alt

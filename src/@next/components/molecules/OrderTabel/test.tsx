@@ -18,6 +18,7 @@ const ORDERS = [
       lines: [
         {
           id: "T3JkZXJMaW5lOjE3Nw==",
+          productName: "Apple Juice",
           thumbnail: {
             alt: "",
             url: "https://dummyimage.com/600x400/000/fff",
@@ -27,10 +28,7 @@ const ORDERS = [
           },
           variant: {
             id: "UHJvZHVjdFZhcmlhbnQ6MjAz",
-            product: {
-              id: "UHJvZHVjdDo3Mg==",
-              name: "Apple Juice",
-            },
+            productId: "UHJvZHVjdDo3Mg==",
           },
         },
       ],
@@ -53,7 +51,7 @@ const ORDERS = [
       lines: [
         {
           id: "T3JkZXJMaW5lOjE3NQ==",
-
+          productName: "Bean Juice",
           thumbnail: {
             alt: "",
             url: "https://dummyimage.com/600x400/000/fff",
@@ -63,10 +61,7 @@ const ORDERS = [
           },
           variant: {
             id: "UHJvZHVjdFZhcmlhbnQ6MjIz",
-            product: {
-              id: "UHJvZHVjdDo3OQ==",
-              name: "Bean Juice",
-            },
+            productId: "UHJvZHVjdDo3OQ==",
           },
         },
       ],
