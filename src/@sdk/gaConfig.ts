@@ -91,7 +91,7 @@ export const launchCheckoutEvent = (
   step: number,
   products?: any[],
   eventCallback?: () => void
-) => {
+) => {  
   return pushToDatalayer({
     ecommerce: {
       checkout: {
@@ -103,6 +103,27 @@ export const launchCheckoutEvent = (
     eventCallback,
   });
 };
+
+export const launchCheckoutFilledContactUserDataEvent = () =>{
+  launchCheckoutEvent(
+    steps.filledContactUserData,
+    ecommerceProductsMapper(getLocalStorageForCart())
+  );
+}
+
+export const launchCheckoutPrivacyPolicyAceptedEvent = () =>{
+  launchCheckoutEvent(
+    steps.privacyPolicyAcepted,
+    ecommerceProductsMapper(getLocalStorageForCart())
+  );
+}
+
+export const launchCheckoutFilledInputForAddressEvent = () =>{
+  launchCheckoutEvent(
+    steps.filledInputForAddress,
+    ecommerceProductsMapper(getLocalStorageForCart())
+  );
+}
 
 export const launchDetailProductEvent = (
   name: string,

@@ -1,9 +1,8 @@
-import { InputSelect, TextField, AddressAutocomplete } from "@components/molecules";
+import { AddressAutocomplete, InputSelect, TextField } from "@components/molecules";
 import React from "react";
-import { IProps, ISelectProps } from "./types";
+import { IFieldsProps, ISelectProps } from "./types";
 
-export const FirstNameTextField = ({ fieldsProps }: IProps) => {
-    const { fieldErrors, required, values, basicInputProps } = fieldsProps;
+export const FirstNameTextField = ({ fieldErrors, required, values, onBlur, onChange }: IFieldsProps) => {
     return <TextField
         data-cy="addressFormFirstName"
         name="firstName"
@@ -12,12 +11,12 @@ export const FirstNameTextField = ({ fieldsProps }: IProps) => {
         value={!values?.firstName ? "" : values?.firstName}
         autoComplete="given-name"
         errors={fieldErrors!.firstName}
-        {...basicInputProps()}
+        onChange={onChange}
+        onBlur={onBlur}
     />
 }
 
-export const PhoneTextField = ({ fieldsProps }: IProps) => {
-    const { fieldErrors, values, basicInputProps } = fieldsProps;
+export const PhoneTextField = ({ fieldErrors, values, onBlur, onChange }: IFieldsProps) => {
     return <TextField
         data-cy="addressFormPhone"
         name="phone"
@@ -29,12 +28,12 @@ export const PhoneTextField = ({ fieldsProps }: IProps) => {
         type="tel"
         errors={fieldErrors!.phone}
         pattern="\d*"
-        {...basicInputProps()}
+        onChange={onChange}
+        onBlur={onBlur}
     />
 }
 
-export const StreetAddress1 = ({ fieldsProps }: IProps) => {
-    const { fieldErrors, values, setFieldValue } = fieldsProps;
+export const StreetAddress1 = ({ fieldErrors, values, onBlur, onChange, setFieldValue }: IFieldsProps) => {
 
     return (
         <AddressAutocomplete
@@ -47,18 +46,14 @@ export const StreetAddress1 = ({ fieldsProps }: IProps) => {
                 lng: values?.longitude ? Number(values?.longitude) : undefined,
                 text: values?.streetAddress1 || "",
             }}
-            onChangeValue={value => {
-                setFieldValue("streetAddress1", value.text || "");
-                setFieldValue("latitude", value.lat ? String(value.lat) : "");
-                setFieldValue("longitude", value.lng ? String(value.lng) : "");
-            }}
+            onChangeValue={onChange}
             errors={fieldErrors!.streetAddress1}
+            onBlur={onBlur}
         />
     );
 };
 
-export const StreetAddress2 = ({ fieldsProps }: IProps) => {
-    const { fieldErrors, values, basicInputProps } = fieldsProps;
+export const StreetAddress2 = ({ fieldErrors, values, onBlur, onChange }: IFieldsProps) => {
     return <TextField
         data-cy="addressFormStreetAddress2"
         name="streetAddress2"
@@ -69,7 +64,8 @@ export const StreetAddress2 = ({ fieldsProps }: IProps) => {
         }
         autoComplete="address-line2"
         errors={fieldErrors!.streetAddress2}
-        {...basicInputProps()}
+        onChange={onChange}
+        onBlur={onBlur}
     />
 }
 
