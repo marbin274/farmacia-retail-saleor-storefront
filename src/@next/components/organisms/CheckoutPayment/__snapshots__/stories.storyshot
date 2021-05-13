@@ -411,6 +411,7 @@ exports[`Storyshots @components/organisms/CheckoutPayment default 1`] = `
                         onChange={[Function]}
                         onFocus={[Function]}
                         placeholder="Ingresa tu cupón"
+                        value=""
                       />
                       
                     </div>
@@ -865,6 +866,7 @@ exports[`Storyshots @components/organisms/CheckoutPayment with addresses 1`] = `
                         onChange={[Function]}
                         onFocus={[Function]}
                         placeholder="Ingresa tu cupón"
+                        value=""
                       />
                       
                     </div>

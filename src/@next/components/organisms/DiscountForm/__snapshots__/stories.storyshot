@@ -266,6 +266,7 @@ exports[`Storyshots @components/organisms/DiscountForm default 1`] = `
                     onChange={[Function]}
                     onFocus={[Function]}
                     placeholder="Ingresa tu cupón"
+                    value=""
                   />
                   
                 </div>
