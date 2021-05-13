@@ -194,7 +194,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
               buttonText: "Entendido",
               icon: ErrorPaymentIcon,
               message: confirmErrors[0].message,
-              redirectionLink: CHECKOUT_STEPS[0].link,
+              redirectionLink: CHECKOUT_STEPS[1].link,
               title: "No pudimos procesar el pago",
               type: "Info",
             });
