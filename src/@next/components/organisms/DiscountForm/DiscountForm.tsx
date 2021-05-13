@@ -91,7 +91,7 @@ export const DiscountForm: React.FC<IProps> = ({
               "% de descuento en toda tu compra";
           }
         }
-
+        
         return (
           <S.DiscountForm id={formId} ref={formRef} onSubmit={handleSubmit}>
             <S.Input>
@@ -107,10 +107,13 @@ export const DiscountForm: React.FC<IProps> = ({
                           data-cy="checkoutPaymentPromoCodeInput"
                           error={hasErrors}
                           name="inputCode"
-                          value={promoCode ? values.inputCode : undefined}
+                          value={values?.inputCode}
                           label=""
                           placeholder="Ingresa tu cupón"
-                          onChange={handleChange}
+                          onChange={(e) => {
+                            const value = e.currentTarget?.value?.toUpperCase();
+                            setFieldValue("inputCode", value);
+                          }}
                           onFocus={() => {
                             errors = null;
                           }}
