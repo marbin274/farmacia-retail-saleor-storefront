@@ -1,5 +1,5 @@
 import { IFilterAttributes } from "@app/types";
-import { OrderStatus } from "@temp/@sdk/gqlTypes/globalTypes";
+import { OrderStatus } from "../@sdk/gqlTypes/globalTypes";
 import { History, LocationState } from "history";
 import { Base64 } from "js-base64";
 import { each } from "lodash";

@@ -1,4 +1,4 @@
-import { styled, mediaUp } from "@styles";
+import { styled, mediaUp, media } from "@styles";
 import { aunaInteractive, white } from "@styles/constants";
 import { Button } from "@components/atoms";
 
@@ -73,7 +73,10 @@ export const MailInfo = styled.div`
   ${mediaUp.mediumScreen`
     width: 26.75rem;
   `};
-  
+  ${media.smallScreen`
+    align-items: center;
+    flex-direction: column;
+  `};
 `;
 
 export const MailInfoIcon = styled.div`

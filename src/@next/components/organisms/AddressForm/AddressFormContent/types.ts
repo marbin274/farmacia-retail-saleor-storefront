@@ -4,7 +4,8 @@ export interface IFieldsProps {
     fieldErrors: any;
     required?: boolean;
     values: IAddressWithEmail | undefined;
-    basicInputProps: any;
+    onChange: React.ChangeEventHandler<HTMLInputElement> | any | undefined;
+    onBlur: React.FocusEventHandler<HTMLInputElement> | undefined;
     setFieldValue: (field: string, value: string | boolean) => void;
 }
 export interface IProps {

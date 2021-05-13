@@ -71,7 +71,7 @@ export const SearchForm: React.FC<SearchFormProps> = ({
       if (search.length > 0) {
         launchSearchEvent(search);
       }
-    }, 3000);
+    }, 1000);
 
     return () => clearTimeout(delayDebounceFn);
   }, [search]);

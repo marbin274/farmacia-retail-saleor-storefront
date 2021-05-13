@@ -18,3 +18,5 @@ export const TERMS_AND_CONTIDIONS_REQUIRED = "Debes aceptar para poder comprar";
 export const SHIPPING_METHOD_REQUIRED = "Debes seleccionar el método de envío";
 export const SHIPPING_METHOD_DATE_INVALID = "Debe ingresar una fecha de envío";
 export const SHIPPING_METHOD_SCHEDULE_INVALID = "Debe seleccionar una hora de envío";
+export const SHIPPING_METHOD_NOT_FOUND_TITLE = "Horario de entrega";
+export const SHIPPING_METHOD_NOT_FOUND = "Hemos actualizado los horarios disponibles para entregar tu pedido, por favor escoge nuevamente";

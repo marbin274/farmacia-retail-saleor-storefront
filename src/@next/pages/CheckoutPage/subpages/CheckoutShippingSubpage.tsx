@@ -1,7 +1,10 @@
 import { CheckoutShipping } from "@components/organisms";
 import { useCheckout } from "@sdk/react";
 import { alertService } from "@temp/@next/components/atoms/Alert";
+import { SHIPPING_METHOD_NOT_FOUND, SHIPPING_METHOD_NOT_FOUND_TITLE } from "@temp/@next/utils/schemasMessages";
 import { IAvailableShippingMethods } from "@temp/@sdk/api/Checkout/types";
+import { CheckoutErrorCode } from "@temp/@sdk/gqlTypes/globalTypes";
+import { UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_errors as ICheckoutShippingMethodError } from "@temp/@sdk/mutations/gqlTypes/UpdateCheckoutShippingMethod";
 import { IShippingMethodUpdate } from "@temp/@sdk/repository";
 import { CHECKOUT_STEPS } from "@temp/core/config";
 import { IFormError } from "@types";
@@ -12,6 +15,7 @@ import React, {
   useRef,
 } from "react";
 import { RouteComponentProps, useHistory } from "react-router";
+import shippingMethodCalendarInfoIco from "images/auna/shipping-method-calendar-info.svg";
 
 export interface ICheckoutShippingSubpageHandles {
   submitShipping: () => void;
@@ -71,15 +75,22 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
   ) => {
     changeSubmitProgress(true);
     const { dataError } = await setShippingMethod(shippingMethodUpdate);
-    const errors = dataError?.error;
+    const errors: ICheckoutShippingMethodError[] | undefined = dataError?.error;
     changeSubmitProgress(false);
     if (errors) {
+      const scheduleTimeNotFound = errors.find(it =>
+        (it.code === CheckoutErrorCode.NOT_FOUND && it.field === "scheduleTimeId") ||
+        (it.code === CheckoutErrorCode.SCHEDULE_NOT_AVAILABLE)
+      );
+      setShippingMethod({ shippingMethodId: "" });
       alertService.sendAlert({
         buttonText: "Entendido",
-        message: errors?.[0]?.message,
+        icon: scheduleTimeNotFound && shippingMethodCalendarInfoIco,
+        message:  !scheduleTimeNotFound ? errors[0].message : SHIPPING_METHOD_NOT_FOUND,
+        title: scheduleTimeNotFound && SHIPPING_METHOD_NOT_FOUND_TITLE,
         type: "Error",
       });
-      setAddressSubPageErrors(errors);
+      setAddressSubPageErrors(errors as IFormError[]);
     } else {
       setAddressSubPageErrors([]);
       if (!clicked) {

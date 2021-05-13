@@ -33,6 +33,7 @@ import {
 } from "./subpages";
 import { IProps } from "./types";
 import { CartDeliveryDataModal } from '../../components/organisms/CartDeliveryDataModal/CartDeliveryDataModal';
+import { SHIPPING_METHOD_NOT_FOUND, SHIPPING_METHOD_NOT_FOUND_TITLE } from "@temp/@next/utils/schemasMessages";
 const prepareCartSummary = (
   activeStepIndex: number,
   onClickHandle: () => void,
@@ -138,9 +139,8 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
       },
       buttonText: "Entendido",
       icon: shippingMethodCalendarInfoIco,
-      message:
-        "Hemos actualizado los horarios disponibles para entregar tu pedido, por favor escoge nuevamente",
-      title: "Horario de entrega",
+      message: SHIPPING_METHOD_NOT_FOUND,
+      title: SHIPPING_METHOD_NOT_FOUND_TITLE,
       type: "Info",
     });
   }
@@ -206,7 +206,7 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
         if (checkoutPaymentSubpageRef.current?.submitPayment) {
           checkoutPaymentSubpageRef.current?.submitPayment();
         }
-        launchCheckoutEvent(steps.review, ecommerceProductsMapper(items));
+        launchCheckoutEvent(steps.reviewCheckoutRoute, ecommerceProductsMapper(items));
         break;
       case 2:
         if (checkoutReviewSubpageRef.current?.complete) {
@@ -227,29 +227,35 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     net: discount,
   };
 
-  const [firstEventSend, setFirstEventSend] = useState(false);
+  const [addressGaEventSended, setAddressGaEventSended] = useState(false); 
 
   const sendEventForCheckoutAddress = () => {
-    setFirstEventSend(true);
-    launchCheckoutEvent(steps.address, ecommerceProductsMapper(items));
-  };
-  const sendEventForCheckoutPayment = () => {
-    launchCheckoutEvent(steps.payment, ecommerceProductsMapper(items));
+    setAddressGaEventSended(true);
+    launchCheckoutEvent(steps.addressCheckoutRoute, ecommerceProductsMapper(items));
   };
 
-  const sendEventsForCheckoutAddressAndPayment = () => {
-    launchCheckoutEvent(steps.address, ecommerceProductsMapper(items));
-    launchCheckoutEvent(steps.payment, ecommerceProductsMapper(items));
+  const sendEventForCheckoutPayment = () => {
+    launchCheckoutEvent(steps.paymentCheckoutRoute, ecommerceProductsMapper(items));
   };
+
+  const sendEventsWhenSkippingFirstStep = () => {
+    launchCheckoutEvent(steps.addressCheckoutRoute, ecommerceProductsMapper(items));
+    launchCheckoutEvent(steps.filledContactUserData, ecommerceProductsMapper(items));
+    launchCheckoutEvent(steps.privacyPolicyAcepted, ecommerceProductsMapper(items));
+    launchCheckoutEvent(steps.filledInputForAddress, ecommerceProductsMapper(items));
+    launchCheckoutEvent(steps.shippingMethodSelected, ecommerceProductsMapper(items));
+    launchCheckoutEvent(steps.paymentCheckoutRoute, ecommerceProductsMapper(items));
+  };
+  
   React.useEffect(() => {
     if (pathname === "/checkout/address") {
       sendEventForCheckoutAddress();
     }
-    if (pathname === "/checkout/payment" && !firstEventSend) {
-      sendEventsForCheckoutAddressAndPayment();
+    if (pathname === "/checkout/payment" && !addressGaEventSended) {
+      sendEventsWhenSkippingFirstStep();
     }
 
-    if (pathname === "/checkout/payment" && firstEventSend) {
+    if (pathname === "/checkout/payment" && addressGaEventSended) {
       sendEventForCheckoutPayment();
     }
   }, [pathname]);

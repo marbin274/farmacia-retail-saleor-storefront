@@ -2,14 +2,14 @@
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
-import { PaymentChargeStatusEnum, ShippingStatusEnum, OrderStatus } from "./../../gqlTypes/globalTypes";
+import { CheckoutErrorCode, PaymentChargeStatusEnum, ShippingStatusEnum, OrderStatus } from "./../../gqlTypes/globalTypes";
 
 // ====================================================
 // GraphQL mutation operation: CompleteCheckout
 // ====================================================
 
-export interface CompleteCheckout_checkoutComplete_errors {
-  __typename: "Error";
+export interface CompleteCheckout_checkoutComplete_checkoutErrors {
+  __typename: "CheckoutError";
   /**
    * Name of a field that caused the error. A value of `null` indicates that the
    * error isn't associated with a particular field.
@@ -19,6 +19,10 @@ export interface CompleteCheckout_checkoutComplete_errors {
    * The error message.
    */
   message: string | null;
+  /**
+   * The error code.
+   */
+  code: CheckoutErrorCode;
 }
 
 export interface CompleteCheckout_checkoutComplete_order_shippingAddress_country {
@@ -552,6 +556,10 @@ export interface CompleteCheckout_checkoutComplete_order {
    * User-friendly number of an order.
    */
   number: string | null;
+  /**
+   * An extract of the checkout token to identify the order
+   */
+  sequentialCode: string | null;
   shippingAddress: CompleteCheckout_checkoutComplete_order_shippingAddress | null;
   /**
    * List of order lines.
@@ -569,18 +577,11 @@ export interface CompleteCheckout_checkoutComplete_order {
    * Total price of shipping.
    */
   shippingPrice: CompleteCheckout_checkoutComplete_order_shippingPrice | null;
-  /**
-   * An extract of the checkout token to identify the order
-   */
-  sequentialCode: string | null;
 }
 
 export interface CompleteCheckout_checkoutComplete {
   __typename: "CheckoutComplete";
-  /**
-   * List of errors that occurred executing the mutation.
-   */
-  errors: CompleteCheckout_checkoutComplete_errors[];
+  checkoutErrors: CompleteCheckout_checkoutComplete_checkoutErrors[];
   /**
    * Placed order.
    */

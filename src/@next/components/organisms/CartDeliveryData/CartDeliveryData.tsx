@@ -23,7 +23,7 @@ export function LineDetailDeliveryData({label, text}: LineDeliveryData){
 const CartDeliveryData: React.FC<Iprops> = ({checkout}) => {
   const billingAddress = checkout?.billingAddress;
   const shippingAddress = checkout?.shippingAddress;
-  const direction = `${shippingAddress?.streetAddress1} ${shippingAddress?.city} ${shippingAddress?.country?.country}`; 
+  const direction = shippingAddress?.streetAddress1; 
   const scheduleDate = checkout?.scheduleDate;
   return (
     <>

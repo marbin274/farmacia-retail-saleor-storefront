@@ -20,7 +20,7 @@ describe("<CartDelivery/>", ()=>{
     const wrapper = mount(<CartDeliveryData {...PROPS}/>);
     const text = wrapper.render().text();
     const shippingAddress = PROPS.checkout?.shippingAddress;
-    const direction = `${shippingAddress?.streetAddress1} ${shippingAddress?.city} ${shippingAddress?.country?.country}`;
+    const direction = shippingAddress?.streetAddress1;
     expect(text).toContain(PROPS.checkout?.billingAddress?.firstName);
     expect(text).toContain(PROPS.checkout?.documentNumber);
     expect(text).toContain(PROPS.checkout?.email);
