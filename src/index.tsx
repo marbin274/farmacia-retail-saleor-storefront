@@ -23,7 +23,7 @@ import { ApolloProvider } from "react-apollo";
 import { render } from "react-dom";
 import { Route, Router } from "react-router-dom";
 import { QueryParamProvider } from "use-query-params";
-
+import { OptimizelyProvider } from "@optimizely/react-sdk";
 import { App } from "./app";
 import {
   apiUrl,
@@ -49,7 +49,8 @@ import {
 import * as Sentry from "@sentry/react";
 import { Integrations } from "@sentry/tracing";
 import { alertService } from "./@next/components/atoms/Alert";
-import { launchSetLocation } from "./@sdk/gaConfig";
+import { launchSetLocation, getGaUserId } from "./@sdk/gaConfig";
+import { optimizelyClient, getOptimizelyUserId } from "./@sdk/optimizelyConfig";
 
 const cache = new InMemoryCache({
   dataIdFromObject: apolloCacheObject => {
@@ -196,17 +197,24 @@ const startApp = async () => {
   }
 
   render(
-    <ThemeProvider theme={defaultTheme}>
-      <AlertProvider
-        template={NotificationTemplate as any}
-        {...notificationOptions}
-      >
-        <ServiceWorkerProvider timeout={serviceWorkerTimeout}>
-          <GlobalStyle />
-          <Root />
-        </ServiceWorkerProvider>
-      </AlertProvider>
-    </ThemeProvider>,
+    <OptimizelyProvider
+      optimizely={optimizelyClient}
+      user={{
+        id: getOptimizelyUserId(),
+      }}
+    >
+      <ThemeProvider theme={defaultTheme}>
+        <AlertProvider
+          template={NotificationTemplate as any}
+          {...notificationOptions}
+        >
+          <ServiceWorkerProvider timeout={serviceWorkerTimeout}>
+            <GlobalStyle />
+            <Root />
+          </ServiceWorkerProvider>
+        </AlertProvider>
+      </ThemeProvider>
+    </OptimizelyProvider>,
     document.getElementById("root")
   );
 

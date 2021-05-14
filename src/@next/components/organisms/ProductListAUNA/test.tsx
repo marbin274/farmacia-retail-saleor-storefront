@@ -1,10 +1,15 @@
-import './matchMedia.mock';
+import "./matchMedia.mock";
 import { mount, shallow } from "enzyme";
 import "jest-styled-components";
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { ProductListAUNA } from ".";
 import { products, productsOnCart } from "./fixtures";
+
+jest.mock("@sdk/optimizelyConfig", () => ({
+  trackAddToCart: jest.fn(),
+  useAddToCartButtonVariable: () => "Agregar",
+}));
 
 describe("<ProductList />", () => {
   it("exists", () => {
@@ -22,6 +27,7 @@ describe("<ProductList />", () => {
 
     expect(wrapper.exists()).toEqual(true);
   });
+  
   it("show loading", () => {
     const wrapper = mount(
       <BrowserRouter>
