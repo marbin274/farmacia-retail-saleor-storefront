@@ -1,10 +1,9 @@
 import React, { useMemo, useState } from "react";
-
-import { CredentialsProvider } from "../";
 import { SaleorManager } from "../../../";
 import { SaleorAPI } from "../../../api";
 import { SaleorContext } from "../../context";
 import { IProps } from "./types";
+
 
 export function SaleorProvider<TCacheShape = any>({
   client,
@@ -23,7 +22,7 @@ export function SaleorProvider<TCacheShape = any>({
 
   return (
     <SaleorContext.Provider value={context}>
-      {context ? <CredentialsProvider>{children}</CredentialsProvider> : <></>}
+      {context ? <>{children}</> : <></>}
     </SaleorContext.Provider>
   );
 }
