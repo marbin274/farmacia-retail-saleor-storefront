@@ -73,6 +73,7 @@ Lightbox.displayName = "S.Lightbox";
 export const Overlay = styled.div<IStyleProps>`
   display: flex;
   position: fixed;
+  overflow-y: auto;
   width: 100%;
   height: 100%;
   min-height: 100%;
