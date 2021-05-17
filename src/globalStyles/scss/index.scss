@@ -232,3 +232,11 @@ body {
     background-size: 0.75rem;
   }
 }
+
+.category, .collection{
+  padding-top: 6rem;
+
+  @media (max-width: $small-screen) {
+    padding-top: 4.4rem;
+  }
+}

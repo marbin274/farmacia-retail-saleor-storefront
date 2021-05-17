@@ -1,5 +1,5 @@
-import { MainMenuSubItem } from "@temp/components/MainMenu/gqlTypes/MainMenuSubItem";
+import { SimpleCategory } from "@temp/views/Category/gqlTypes/SimpleCategory";
 
 export interface IProps {
-  subItems: MainMenuSubItem[];
+  category: SimpleCategory;
 }

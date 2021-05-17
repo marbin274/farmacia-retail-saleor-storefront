@@ -475,7 +475,7 @@ export interface Category_paginatedProducts {
   edges: Category_paginatedProducts_edges[];
 }
 
-export interface Category_category_backgroundImage {
+export interface Category_category_ancestors_edges_node_backgroundImage {
   __typename: "Image";
   /**
    * The URL of the image.
@@ -483,13 +483,90 @@ export interface Category_category_backgroundImage {
   url: string;
 }
 
-export interface Category_category_ancestors_edges_node {
+export interface Category_category_ancestors_edges_node_children_edges_node_backgroundImage {
+  __typename: "Image";
+  /**
+   * The URL of the image.
+   */
+  url: string;
+}
+
+export interface Category_category_ancestors_edges_node_children_edges_node_children_edges_node_backgroundImage {
+  __typename: "Image";
+  /**
+   * The URL of the image.
+   */
+  url: string;
+}
+
+export interface Category_category_ancestors_edges_node_children_edges_node_children_edges_node {
   __typename: "Category";
+  seoDescription: string | null;
+  seoTitle: string | null;
   /**
    * The ID of the object.
    */
   id: string;
   name: string;
+  backgroundImage: Category_category_ancestors_edges_node_children_edges_node_children_edges_node_backgroundImage | null;
+}
+
+export interface Category_category_ancestors_edges_node_children_edges_node_children_edges {
+  __typename: "CategoryCountableEdge";
+  /**
+   * The item at the end of the edge.
+   */
+  node: Category_category_ancestors_edges_node_children_edges_node_children_edges_node;
+}
+
+export interface Category_category_ancestors_edges_node_children_edges_node_children {
+  __typename: "CategoryCountableConnection";
+  edges: Category_category_ancestors_edges_node_children_edges_node_children_edges[];
+}
+
+export interface Category_category_ancestors_edges_node_children_edges_node {
+  __typename: "Category";
+  seoDescription: string | null;
+  seoTitle: string | null;
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+  backgroundImage: Category_category_ancestors_edges_node_children_edges_node_backgroundImage | null;
+  /**
+   * List of children of the category.
+   */
+  children: Category_category_ancestors_edges_node_children_edges_node_children | null;
+}
+
+export interface Category_category_ancestors_edges_node_children_edges {
+  __typename: "CategoryCountableEdge";
+  /**
+   * The item at the end of the edge.
+   */
+  node: Category_category_ancestors_edges_node_children_edges_node;
+}
+
+export interface Category_category_ancestors_edges_node_children {
+  __typename: "CategoryCountableConnection";
+  edges: Category_category_ancestors_edges_node_children_edges[];
+}
+
+export interface Category_category_ancestors_edges_node {
+  __typename: "Category";
+  seoDescription: string | null;
+  seoTitle: string | null;
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+  backgroundImage: Category_category_ancestors_edges_node_backgroundImage | null;
+  /**
+   * List of children of the category.
+   */
+  children: Category_category_ancestors_edges_node_children | null;
 }
 
 export interface Category_category_ancestors_edges {
@@ -505,8 +582,90 @@ export interface Category_category_ancestors {
   edges: Category_category_ancestors_edges[];
 }
 
+export interface Category_category_backgroundImage {
+  __typename: "Image";
+  /**
+   * The URL of the image.
+   */
+  url: string;
+}
+
+export interface Category_category_children_edges_node_backgroundImage {
+  __typename: "Image";
+  /**
+   * The URL of the image.
+   */
+  url: string;
+}
+
+export interface Category_category_children_edges_node_children_edges_node_backgroundImage {
+  __typename: "Image";
+  /**
+   * The URL of the image.
+   */
+  url: string;
+}
+
+export interface Category_category_children_edges_node_children_edges_node {
+  __typename: "Category";
+  seoDescription: string | null;
+  seoTitle: string | null;
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+  backgroundImage: Category_category_children_edges_node_children_edges_node_backgroundImage | null;
+}
+
+export interface Category_category_children_edges_node_children_edges {
+  __typename: "CategoryCountableEdge";
+  /**
+   * The item at the end of the edge.
+   */
+  node: Category_category_children_edges_node_children_edges_node;
+}
+
+export interface Category_category_children_edges_node_children {
+  __typename: "CategoryCountableConnection";
+  edges: Category_category_children_edges_node_children_edges[];
+}
+
+export interface Category_category_children_edges_node {
+  __typename: "Category";
+  seoDescription: string | null;
+  seoTitle: string | null;
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+  backgroundImage: Category_category_children_edges_node_backgroundImage | null;
+  /**
+   * List of children of the category.
+   */
+  children: Category_category_children_edges_node_children | null;
+}
+
+export interface Category_category_children_edges {
+  __typename: "CategoryCountableEdge";
+  /**
+   * The item at the end of the edge.
+   */
+  node: Category_category_children_edges_node;
+}
+
+export interface Category_category_children {
+  __typename: "CategoryCountableConnection";
+  edges: Category_category_children_edges[];
+}
+
 export interface Category_category {
   __typename: "Category";
+  /**
+   * List of ancestors of the category.
+   */
+  ancestors: Category_category_ancestors | null;
   seoDescription: string | null;
   seoTitle: string | null;
   /**
@@ -516,9 +675,9 @@ export interface Category_category {
   name: string;
   backgroundImage: Category_category_backgroundImage | null;
   /**
-   * List of ancestors of the category.
+   * List of children of the category.
    */
-  ancestors: Category_category_ancestors | null;
+  children: Category_category_children | null;
 }
 
 export interface Category_attributes_edges_node_values {
@@ -574,13 +733,98 @@ export interface Category_attributes {
   edges: Category_attributes_edges[];
 }
 
-export interface Category_shop_navigation_main_items_category {
+export interface Category_shop_navigation_main_items_category_backgroundImage {
+  __typename: "Image";
+  /**
+   * The URL of the image.
+   */
+  url: string;
+}
+
+export interface Category_shop_navigation_main_items_category_children_edges_node_backgroundImage {
+  __typename: "Image";
+  /**
+   * The URL of the image.
+   */
+  url: string;
+}
+
+export interface Category_shop_navigation_main_items_category_children_edges_node_children_edges_node_backgroundImage {
+  __typename: "Image";
+  /**
+   * The URL of the image.
+   */
+  url: string;
+}
+
+export interface Category_shop_navigation_main_items_category_children_edges_node_children_edges_node {
   __typename: "Category";
+  seoDescription: string | null;
+  seoTitle: string | null;
   /**
    * The ID of the object.
    */
   id: string;
   name: string;
+  backgroundImage: Category_shop_navigation_main_items_category_children_edges_node_children_edges_node_backgroundImage | null;
+}
+
+export interface Category_shop_navigation_main_items_category_children_edges_node_children_edges {
+  __typename: "CategoryCountableEdge";
+  /**
+   * The item at the end of the edge.
+   */
+  node: Category_shop_navigation_main_items_category_children_edges_node_children_edges_node;
+}
+
+export interface Category_shop_navigation_main_items_category_children_edges_node_children {
+  __typename: "CategoryCountableConnection";
+  edges: Category_shop_navigation_main_items_category_children_edges_node_children_edges[];
+}
+
+export interface Category_shop_navigation_main_items_category_children_edges_node {
+  __typename: "Category";
+  seoDescription: string | null;
+  seoTitle: string | null;
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+  backgroundImage: Category_shop_navigation_main_items_category_children_edges_node_backgroundImage | null;
+  /**
+   * List of children of the category.
+   */
+  children: Category_shop_navigation_main_items_category_children_edges_node_children | null;
+}
+
+export interface Category_shop_navigation_main_items_category_children_edges {
+  __typename: "CategoryCountableEdge";
+  /**
+   * The item at the end of the edge.
+   */
+  node: Category_shop_navigation_main_items_category_children_edges_node;
+}
+
+export interface Category_shop_navigation_main_items_category_children {
+  __typename: "CategoryCountableConnection";
+  edges: Category_shop_navigation_main_items_category_children_edges[];
+}
+
+export interface Category_shop_navigation_main_items_category {
+  __typename: "Category";
+  seoDescription: string | null;
+  seoTitle: string | null;
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+  backgroundImage: Category_shop_navigation_main_items_category_backgroundImage | null;
+  /**
+   * List of children of the category.
+   */
+  children: Category_shop_navigation_main_items_category_children | null;
 }
 
 export interface Category_shop_navigation_main_items_collection {
@@ -605,13 +849,98 @@ export interface Category_shop_navigation_main_items_parent {
   id: string;
 }
 
-export interface Category_shop_navigation_main_items_children_category {
+export interface Category_shop_navigation_main_items_children_category_backgroundImage {
+  __typename: "Image";
+  /**
+   * The URL of the image.
+   */
+  url: string;
+}
+
+export interface Category_shop_navigation_main_items_children_category_children_edges_node_backgroundImage {
+  __typename: "Image";
+  /**
+   * The URL of the image.
+   */
+  url: string;
+}
+
+export interface Category_shop_navigation_main_items_children_category_children_edges_node_children_edges_node_backgroundImage {
+  __typename: "Image";
+  /**
+   * The URL of the image.
+   */
+  url: string;
+}
+
+export interface Category_shop_navigation_main_items_children_category_children_edges_node_children_edges_node {
   __typename: "Category";
+  seoDescription: string | null;
+  seoTitle: string | null;
   /**
    * The ID of the object.
    */
   id: string;
   name: string;
+  backgroundImage: Category_shop_navigation_main_items_children_category_children_edges_node_children_edges_node_backgroundImage | null;
+}
+
+export interface Category_shop_navigation_main_items_children_category_children_edges_node_children_edges {
+  __typename: "CategoryCountableEdge";
+  /**
+   * The item at the end of the edge.
+   */
+  node: Category_shop_navigation_main_items_children_category_children_edges_node_children_edges_node;
+}
+
+export interface Category_shop_navigation_main_items_children_category_children_edges_node_children {
+  __typename: "CategoryCountableConnection";
+  edges: Category_shop_navigation_main_items_children_category_children_edges_node_children_edges[];
+}
+
+export interface Category_shop_navigation_main_items_children_category_children_edges_node {
+  __typename: "Category";
+  seoDescription: string | null;
+  seoTitle: string | null;
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+  backgroundImage: Category_shop_navigation_main_items_children_category_children_edges_node_backgroundImage | null;
+  /**
+   * List of children of the category.
+   */
+  children: Category_shop_navigation_main_items_children_category_children_edges_node_children | null;
+}
+
+export interface Category_shop_navigation_main_items_children_category_children_edges {
+  __typename: "CategoryCountableEdge";
+  /**
+   * The item at the end of the edge.
+   */
+  node: Category_shop_navigation_main_items_children_category_children_edges_node;
+}
+
+export interface Category_shop_navigation_main_items_children_category_children {
+  __typename: "CategoryCountableConnection";
+  edges: Category_shop_navigation_main_items_children_category_children_edges[];
+}
+
+export interface Category_shop_navigation_main_items_children_category {
+  __typename: "Category";
+  seoDescription: string | null;
+  seoTitle: string | null;
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+  backgroundImage: Category_shop_navigation_main_items_children_category_backgroundImage | null;
+  /**
+   * List of children of the category.
+   */
+  children: Category_shop_navigation_main_items_children_category_children | null;
 }
 
 export interface Category_shop_navigation_main_items_children_collection {
@@ -636,13 +965,98 @@ export interface Category_shop_navigation_main_items_children_parent {
   id: string;
 }
 
-export interface Category_shop_navigation_main_items_children_children_category {
+export interface Category_shop_navigation_main_items_children_children_category_backgroundImage {
+  __typename: "Image";
+  /**
+   * The URL of the image.
+   */
+  url: string;
+}
+
+export interface Category_shop_navigation_main_items_children_children_category_children_edges_node_backgroundImage {
+  __typename: "Image";
+  /**
+   * The URL of the image.
+   */
+  url: string;
+}
+
+export interface Category_shop_navigation_main_items_children_children_category_children_edges_node_children_edges_node_backgroundImage {
+  __typename: "Image";
+  /**
+   * The URL of the image.
+   */
+  url: string;
+}
+
+export interface Category_shop_navigation_main_items_children_children_category_children_edges_node_children_edges_node {
   __typename: "Category";
+  seoDescription: string | null;
+  seoTitle: string | null;
   /**
    * The ID of the object.
    */
   id: string;
   name: string;
+  backgroundImage: Category_shop_navigation_main_items_children_children_category_children_edges_node_children_edges_node_backgroundImage | null;
+}
+
+export interface Category_shop_navigation_main_items_children_children_category_children_edges_node_children_edges {
+  __typename: "CategoryCountableEdge";
+  /**
+   * The item at the end of the edge.
+   */
+  node: Category_shop_navigation_main_items_children_children_category_children_edges_node_children_edges_node;
+}
+
+export interface Category_shop_navigation_main_items_children_children_category_children_edges_node_children {
+  __typename: "CategoryCountableConnection";
+  edges: Category_shop_navigation_main_items_children_children_category_children_edges_node_children_edges[];
+}
+
+export interface Category_shop_navigation_main_items_children_children_category_children_edges_node {
+  __typename: "Category";
+  seoDescription: string | null;
+  seoTitle: string | null;
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+  backgroundImage: Category_shop_navigation_main_items_children_children_category_children_edges_node_backgroundImage | null;
+  /**
+   * List of children of the category.
+   */
+  children: Category_shop_navigation_main_items_children_children_category_children_edges_node_children | null;
+}
+
+export interface Category_shop_navigation_main_items_children_children_category_children_edges {
+  __typename: "CategoryCountableEdge";
+  /**
+   * The item at the end of the edge.
+   */
+  node: Category_shop_navigation_main_items_children_children_category_children_edges_node;
+}
+
+export interface Category_shop_navigation_main_items_children_children_category_children {
+  __typename: "CategoryCountableConnection";
+  edges: Category_shop_navigation_main_items_children_children_category_children_edges[];
+}
+
+export interface Category_shop_navigation_main_items_children_children_category {
+  __typename: "Category";
+  seoDescription: string | null;
+  seoTitle: string | null;
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+  backgroundImage: Category_shop_navigation_main_items_children_children_category_backgroundImage | null;
+  /**
+   * List of children of the category.
+   */
+  children: Category_shop_navigation_main_items_children_children_category_children | null;
 }
 
 export interface Category_shop_navigation_main_items_children_children_collection {
@@ -674,11 +1088,11 @@ export interface Category_shop_navigation_main_items_children_children {
    */
   id: string;
   name: string;
-  category: Category_shop_navigation_main_items_children_children_category | null;
   /**
    * URL to the menu item.
    */
   url: string | null;
+  category: Category_shop_navigation_main_items_children_children_category | null;
   collection: Category_shop_navigation_main_items_children_children_collection | null;
   page: Category_shop_navigation_main_items_children_children_page | null;
   parent: Category_shop_navigation_main_items_children_children_parent | null;
@@ -691,11 +1105,11 @@ export interface Category_shop_navigation_main_items_children {
    */
   id: string;
   name: string;
-  category: Category_shop_navigation_main_items_children_category | null;
   /**
    * URL to the menu item.
    */
   url: string | null;
+  category: Category_shop_navigation_main_items_children_category | null;
   collection: Category_shop_navigation_main_items_children_collection | null;
   page: Category_shop_navigation_main_items_children_page | null;
   parent: Category_shop_navigation_main_items_children_parent | null;
@@ -709,11 +1123,11 @@ export interface Category_shop_navigation_main_items {
    */
   id: string;
   name: string;
-  category: Category_shop_navigation_main_items_category | null;
   /**
    * URL to the menu item.
    */
   url: string | null;
+  category: Category_shop_navigation_main_items_category | null;
   collection: Category_shop_navigation_main_items_collection | null;
   page: Category_shop_navigation_main_items_page | null;
   parent: Category_shop_navigation_main_items_parent | null;

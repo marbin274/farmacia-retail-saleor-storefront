@@ -105,10 +105,6 @@ const Page: React.FC<PageProps> = ({
       []
     );
 
-  const navigationItems = shop.navigation.main.items.filter(
-    item => item.category.id === category.id
-  )[0];
-
   return (
     <div className="category">
       {isSmallScreen && (
@@ -126,7 +122,7 @@ const Page: React.FC<PageProps> = ({
       )}
       <div className="category__container category__body">
         <CategoryNavigation
-          subItems={navigationItems ? navigationItems.children : []}
+          category={category}
         />
         <section className="category__products">
           {!isSmallScreen && (
@@ -144,8 +140,6 @@ const Page: React.FC<PageProps> = ({
           )}
           <Breadcrumbs
             breadcrumbs={extractBreadcrumbs(category)}
-            showHomeIcon
-            className="category__breadcrumbs"
           />
           <FilterSidebar
             show={showFilters}
