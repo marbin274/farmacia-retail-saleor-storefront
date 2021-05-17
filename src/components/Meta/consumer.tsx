@@ -5,10 +5,18 @@ import { Consumer as MetaConsumer } from "./context";
 
 const Consumer: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
   <MetaConsumer>
-    {({ title, description, image, type, url, custom }) => (
-      <>
+    {({ title, description, image, type, url, custom }) => {
+      const pathname: string = document.location.pathname?.includes("search") ? "/" : document.location.pathname;
+      const canonicalURL: string = `${document.location.protocol}//${document.location.hostname}${pathname}`;      
+      return <>
         <Helmet
           title={title}
+          link={[
+            {
+              href: canonicalURL,
+              rel: "canonical",
+            },
+          ]}
           meta={[
             { name: "description", content: description },
             { property: "og:url", content: url },
@@ -21,7 +29,7 @@ const Consumer: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
         />
         {children}
       </>
-    )}
+    }}
   </MetaConsumer>
 );
 

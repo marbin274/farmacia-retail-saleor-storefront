@@ -3,9 +3,9 @@ import { RouteComponentProps } from "react-router";
 
 import { IFilters } from "@types";
 import { StringParam, useQueryParam } from "use-query-params";
-import { NotFound, OfflinePlaceholder } from "../../components";
+import { MetaWrapper, NotFound, OfflinePlaceholder } from "../../components";
 import NetworkStatus from "../../components/NetworkStatus";
-import { PRODUCTS_PER_PAGE } from "../../core/config";
+import { META_DEFAULTS, PRODUCTS_PER_PAGE } from "../../core/config";
 import {
   convertSortByFromString,
   convertToAttributeScalar,
@@ -183,35 +183,43 @@ export const View: React.FC<ViewProps> = ({ match }) => {
                 );
 
               return (
-                <Page
-                  clearFilters={clearFilters}
-                  attributes={data.attributes.edges.map(edge => edge.node)}
-                  displayLoader={loading}
-                  hasNextPage={maybe(
-                    () => data.products.pageInfo.hasNextPage,
-                    false
-                  )}
-                  sortOptions={sortOptions}
-                  setSearch={setSearch}
-                  search={search}
-                  activeSortOption={filters.sortBy}
-                  filters={filters}
-                  products={data.products}
-                  productsOnCart={productsOnCart}
-                  onAttributeFiltersChange={onFiltersChange}
-                  onLoadMore={handleLoadMore}
-                  activeFilters={
-                    filters!.attributes
-                      ? Object.keys(filters!.attributes).length
-                      : 0
-                  }
-                  onOrder={value => {
-                    setSort(value.value);
+                <MetaWrapper
+                  meta={{
+                    description: "Resultados de búsqueda",
+                    title: META_DEFAULTS.title,
+                    type: "product.search",
                   }}
-                  addToCart={addToCart}
-                  removeItemToCart={removeItemToCart}
-                  subtractItemToCart={subtractItemToCart}
-                />
+                >
+                  <Page
+                    clearFilters={clearFilters}
+                    attributes={data.attributes.edges.map(edge => edge.node)}
+                    displayLoader={loading}
+                    hasNextPage={maybe(
+                      () => data.products.pageInfo.hasNextPage,
+                      false
+                    )}
+                    sortOptions={sortOptions}
+                    setSearch={setSearch}
+                    search={search}
+                    activeSortOption={filters.sortBy}
+                    filters={filters}
+                    products={data.products}
+                    productsOnCart={productsOnCart}
+                    onAttributeFiltersChange={onFiltersChange}
+                    onLoadMore={handleLoadMore}
+                    activeFilters={
+                      filters!.attributes
+                        ? Object.keys(filters!.attributes).length
+                        : 0
+                    }
+                    onOrder={value => {
+                      setSort(value.value);
+                    }}
+                    addToCart={addToCart}
+                    removeItemToCart={removeItemToCart}
+                    subtractItemToCart={subtractItemToCart}
+                  />
+                </MetaWrapper>
               );
             }
 
