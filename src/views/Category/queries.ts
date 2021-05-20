@@ -1,3 +1,4 @@
+import { mainMenuSubItem } from "@temp/components/MainMenu/queries";
 import gql from "graphql-tag";
 import { TypedQuery } from "../../core/queries";
 import {
@@ -7,30 +8,59 @@ import {
 } from "../Product/queries";
 import { Category, CategoryVariables } from "./gqlTypes/Category";
 
+export const basicFieldCategory = gql`
+  fragment BasicFieldCategory on Category {
+    seoDescription
+    seoTitle
+    id
+    name
+    backgroundImage {
+      url
+    }
+  }
+`;
+
+export const childrenField = gql`
+  ${basicFieldCategory}
+  fragment ChildrenField on Category{
+    ...BasicFieldCategory
+    children(first: 5){
+      edges{
+        node{
+          ...BasicFieldCategory
+          children(first: 5){
+            edges{
+              node{
+                ...BasicFieldCategory
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const simpleCategory = gql`  
+  ${childrenField}
+  fragment SimpleCategory on Category {       
+    ancestors(first: 2) {
+      edges {
+        node {
+          ...ChildrenField
+        }
+      }
+    }
+  ...ChildrenField 
+  }
+`;
+
 export const categoryProductsQuery = gql`
   ${basicProductFragment}
   ${productPricingFragment}
   ${productVariantFragmentSimple}
-
-  fragment MainMenuSubItem on MenuItem {
-    id
-    name
-    category {
-      id
-      name
-    }
-    url
-    collection {
-      id
-      name
-    }
-    page {
-      slug
-    }
-    parent {
-      id
-    }
-  }
+  ${simpleCategory}
+  ${mainMenuSubItem}
 
   query Category(
     $id: ID!
@@ -77,21 +107,7 @@ export const categoryProductsQuery = gql`
       }
     }
     category(id: $id) {
-      seoDescription
-      seoTitle
-      id
-      name
-      backgroundImage {
-        url
-      }
-      ancestors(last: 5) {
-        edges {
-          node {
-            id
-            name
-          }
-        }
-      }
+      ...SimpleCategory
     }
     attributes(filter: { inCategory: $id }, first: 100) {
       edges {

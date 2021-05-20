@@ -137,7 +137,8 @@ module.exports = ({ sourceDir, distDir }) => ({
       MAPS_API_KEY: "__",
       MERCHANT_PASSWORD: "__",
       MERCHANT_USERNAME: "__",
-      MERCHANT_ID: "__"
+      MERCHANT_ID: "__",
+      OPTIMIZELY_SDK_KEY: "__"
     }),
   ],
   node: {

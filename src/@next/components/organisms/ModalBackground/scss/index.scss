@@ -14,11 +14,11 @@
     #lightbox-modal{
         width: 48.75rem;
         @media (max-width: $small-screen) {
-            margin-top: 1.875rem;
+             top: 8%;
              width: 19.5rem;
         }
         @media (max-width: $xs-small-screen) {
-            margin-top: 1.875rem;
+            top: 8%;
             width: 17.375rem;
         }
         

@@ -86,7 +86,7 @@ export const CartContent = styled.div`
   display: flex;
   flex: 0 0 auto;
   margin-left: 2.5rem;
-  width: 12rem;
+  min-width: 12rem;
 
   .itemHandler {
     width: 100%;

@@ -1,4 +1,5 @@
 import { launchAddToCartEvent, launchRemoveToCartEvent } from "@sdk/gaConfig";
+import { trackAddToCart, useAddToCartButtonVariable } from "@sdk/optimizelyConfig";
 import { ISimpleProduct } from "@temp/@next/types/IProduct";
 import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
 import { checkStockLimitOrStockAvailable, ICheckStockLimitOrStockAvailable } from "@temp/@next/utils/products";
@@ -44,6 +45,7 @@ const ItemsHandler: FC<IProps> = ({
       checkStockLimitOrStockAvailable(product) :
       { isLimitMax: false, stockLimitMax: 0 }
   ), [product]);
+  const text = useAddToCartButtonVariable();
 
   useEffect(() => {
     setIsValueLessThanMaxOrderPerProduct(quantity < MAX_ORDER_PER_PRODUCT);
@@ -104,6 +106,12 @@ const ItemsHandler: FC<IProps> = ({
     );
   };
 
+  // quitar cuando ya no se use el A/B testing
+  const handleButtonAddClick = () => {
+    trackAddToCart();
+    handleAddClick();
+  }
+
   return (
     <>
       {addToCart && product.quantity ? (
@@ -131,11 +139,11 @@ const ItemsHandler: FC<IProps> = ({
       ) : (
         <div className="button">
           <Button 
-          onClick={handleAddClick} 
+          onClick={handleButtonAddClick} 
           disabled={!canAddToCart}
           type="button"
           >
-            Agregar
+            {text}
           </Button>
         </div>
       )}

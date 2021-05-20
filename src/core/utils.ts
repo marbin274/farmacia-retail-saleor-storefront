@@ -1,11 +1,12 @@
 import { IFilterAttributes } from "@app/types";
-import { OrderStatus } from "../@sdk/gqlTypes/globalTypes";
+import { MainMenuSubItem } from "@temp/components/MainMenu/gqlTypes/MainMenuSubItem";
 import { History, LocationState } from "history";
 import { Base64 } from "js-base64";
 import { each } from "lodash";
 import { parse as parseQs, stringify as stringifyQs } from "query-string";
 import { FetchResult } from "react-apollo";
 import { OrderDirection, ProductOrderField } from "../../gqlTypes/globalTypes";
+import { OrderStatus } from "../@sdk/gqlTypes/globalTypes";
 import { FormError } from "./types";
 
 export const slugify = (text: string | number): string =>
@@ -61,6 +62,17 @@ export const generateCollectionUrl = (id: string, name: string) =>
   `/collection/${slugify(name)}/${getDBIdFromGraphqlId(id, "Collection")}/`;
 
 export const generatePageUrl = (slug: string) => `/page/${slug}/`;
+
+export const convertCategoryToMenuItem = (id: string, name: string): MainMenuSubItem => {
+  return {
+    category: {
+      id,
+      name,
+    },
+    id,
+    name,
+  } as any;
+}
 
 interface AttributeDict {
   [attributeSlug: string]: string[];

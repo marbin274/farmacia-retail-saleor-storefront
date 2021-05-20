@@ -34,6 +34,7 @@ jobs:
           CDN_URL: ${{ secrets.CDN_URL_QA }}
           GTM_PREVIEW: ${{ secrets.GTM_PREVIEW }}
           MAPS_API_KEY: ${{ secrets.MAPS_API_KEY_QA }}
+          OPTIMIZELY_SDK_KEY: ${{ secrets.OPTIMIZELY_SDK_KEY_QA }}
           ENVIRONMENT_NAME: "qa"
 
       - name: 4- Build application release ${{ github.event.pull_request.base.ref }}
@@ -48,6 +49,7 @@ jobs:
           MERCHANT_PASSWORD: ${{ secrets.MERCHANT_PASSWORD }}
           MERCHANT_USERNAME: ${{ secrets.MERCHANT_USERNAME }}
           MERCHANT_ID: ${{ secrets.MERCHANT_ID }}
+          OPTIMIZELY_SDK_KEY: ${{ secrets.OPTIMIZELY_SDK_KEY_PROD }}
 
           ENVIRONMENT_NAME: "prod"
 

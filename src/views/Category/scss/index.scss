@@ -3,11 +3,6 @@
 .category {
   background-color: $auna-grey-06;
   display: flex;
-  padding-top: 6rem;
-
-  @media (max-width: $small-screen) {
-    padding-top: 4.4rem;
-  }
 
   &__container {
     margin: 0 auto 0 auto;

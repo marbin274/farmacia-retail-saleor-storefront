@@ -284,14 +284,14 @@ $custom-breakpoint: 624px;
         }
       }
     }
-  }
 
-  .search__products__list {
-    @media (max-width: $small-screen) {
-      padding-bottom: 200px;
-      padding-top: 1rem;
+    &__list {
+      @media (max-width: $small-screen) {
+        padding-bottom: 20rem;
+        padding-top: 1rem;
+      }
+      padding-bottom: 15.625rem;
     }
-    padding-bottom: 250px;
   }
 
   .show_more_products {

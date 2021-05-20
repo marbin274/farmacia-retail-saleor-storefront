@@ -11,3 +11,4 @@ export const mapsApiKey = process.env.MAPS_API_KEY;
 export const merchantPassword = process.env.MERCHANT_PASSWORD;
 export const merchantUsername = process.env.MERCHANT_USERNAME;
 export const merchantId = process.env.MERCHANT_ID;
+export const optimizelySdkKey = process.env.OPTIMIZELY_SDK_KEY;

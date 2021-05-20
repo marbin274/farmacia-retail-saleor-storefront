@@ -8,6 +8,11 @@ jest.mock("react-dom", () => ({
   findDOMNode: () => {}
 }));
 
+jest.mock("@sdk/optimizelyConfig", () => ({
+  trackAddToCart: jest.fn(),
+  useAddToCartButtonVariable: () => "Agregar",
+}));
+
 global.matchMedia = media => ({
   addListener: jest.fn(),
   matches: true,

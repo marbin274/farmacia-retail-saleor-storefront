@@ -2,15 +2,49 @@ import gql from "graphql-tag";
 import { TypedQuery } from "../../core/queries";
 import { MainMenu } from "./gqlTypes/MainMenu";
 
-export const mainMenu = gql`
+
+export const menuCategoryBasicFieldCategory = gql`
+  fragment MenuCategoryBasicFieldCategory on Category {
+    seoDescription
+    seoTitle
+    id
+    name
+    backgroundImage {
+      url
+    }
+  }
+`;
+
+export const menuCategoryChildrenField = gql`
+  ${menuCategoryBasicFieldCategory}
+  fragment MenuCategoryChildrenField on Category{
+    ...MenuCategoryBasicFieldCategory
+    children(first: 5){
+      edges{
+        node{
+          ...MenuCategoryBasicFieldCategory
+          children(first: 5){
+            edges{
+              node{
+                ...MenuCategoryBasicFieldCategory
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const mainMenuSubItem = gql`
+  ${menuCategoryChildrenField}
   fragment MainMenuSubItem on MenuItem {
     id
     name
-    category {
-      id
-      name
-    }
     url
+    category {
+      ...MenuCategoryChildrenField
+    }
     collection {
       id
       name
@@ -22,7 +56,10 @@ export const mainMenu = gql`
       id
     }
   }
+`;
 
+export const mainMenu = gql`  
+  ${mainMenuSubItem}
   query MainMenu {
     shop {
       navigation {

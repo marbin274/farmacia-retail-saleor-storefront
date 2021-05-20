@@ -4,6 +4,11 @@
     "tslint-config-prettier",
     "tslint-plugin-cypress"
   ],
+  "linterOptions": {
+    "exclude": [
+      "node_modules/**"
+    ]
+  },
   "rules": {
     "interface-name": false,
     "member-access": [true, "no-public"],
@@ -35,6 +40,7 @@
         },
         "esSpecCompliant": true
       }
-    ]
+    ],
+    "array-type": false
   }
 }
