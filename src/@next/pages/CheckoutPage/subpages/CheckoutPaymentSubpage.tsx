@@ -3,7 +3,7 @@ import { useCart, useCheckout, useUserDetails } from "@sdk/react";
 import { alertService } from "@temp/@next/components/atoms/Alert";
 import { IUserDataForNiubiz } from "@temp/@next/components/organisms/CheckoutPayment/types";
 import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
-import { ShopContext } from "@temp/components/ShopProvider/context";
+import { useShopContext } from "@temp/components/ShopProvider/context";
 import {
   AVAILABLE_PAYMENTS,
   billingAddressAlwaysSameAsShipping,
@@ -18,7 +18,6 @@ import PromoCodeCorrect from "images/auna/promo-code-correct.svg";
 import React, {
   forwardRef,
   RefForwardingComponent,
-  useContext,
   useEffect,
   useImperativeHandle,
   useRef,
@@ -75,7 +74,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
 
 
   const { items, totalPrice } = useCart();
-  const { countries } = useContext(ShopContext);
+  const { countries } = useShopContext();
 
   const isShippingRequiredForProducts =
     items &&

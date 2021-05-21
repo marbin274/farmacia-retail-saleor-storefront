@@ -7,6 +7,7 @@ import { useShopDetails } from "@sdk/react";
 
 const ShopProvider: React.FC = ({ children }) => {
   const { data } = useShopDetails();
+  
   return (
     <ShopContext.Provider value={maybe(() => data.shop, defaultContext)}>
       {children}

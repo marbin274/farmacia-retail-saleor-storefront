@@ -3,14 +3,13 @@ import { useCheckout, useUserDetails } from "@sdk/react";
 import { alertService } from "@temp/@next/components/atoms/Alert/AlertService";
 import { addressFormSchema } from "@temp/@next/components/organisms/AddressForm/adddressFormSchema";
 import { IPrivacyPolicy } from "@temp/@sdk/api/Checkout/types";
-import { ShopContext } from "@temp/components/ShopProvider/context";
+import { useShopContext } from "@temp/components/ShopProvider/context";
 import { IAddress, IAddressWithEmail, IFormError } from "@types";
 import { filterNotEmptyArrayItems } from "@utils/misc";
 import NoStockIcon from "images/auna/no-stock.svg";
 import React, {
   forwardRef,
   RefForwardingComponent,
-  useContext,
   useImperativeHandle,
   useRef,
 } from "react";
@@ -105,7 +104,7 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     setShippingAddress,
     selectedShippingAddressId,
   } = useCheckout();
-  const { countries } = useContext(ShopContext);
+  const { countries } = useShopContext();
 
   const checkoutShippingAddress = checkout?.shippingAddress
     ? {

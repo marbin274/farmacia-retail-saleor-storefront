@@ -58,7 +58,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
   errors = [],
   handleSubmit,
   values,
-  citiesOptions,
+  districtsOptions,
   setFieldValue,
   setFieldTouched,
   comeFromModal,
@@ -76,7 +76,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
   const fieldErrors: any = convertIFormErrorsToObjectErrors(errors);
 
   const _cities: any[] = [];
-  citiesOptions?.map(x => {
+  districtsOptions?.map(x => {
     const item: any = {
       code: x,
       description: x,

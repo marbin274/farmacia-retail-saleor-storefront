@@ -19,6 +19,11 @@ export const getShop = gql`
         }
       }
       isShippingAvailable
+      availableDistricts {
+        id
+        name
+        isDefault
+      }
     }
   }
 `;

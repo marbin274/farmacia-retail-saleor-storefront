@@ -50,6 +50,16 @@ export interface GetShop_shop_geolocalization {
   country: GetShop_shop_geolocalization_country | null;
 }
 
+export interface GetShop_shop_availableDistricts {
+  __typename: "District";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+  isDefault: boolean | null;
+}
+
 export interface GetShop_shop {
   __typename: "Shop";
   /**
@@ -72,6 +82,10 @@ export interface GetShop_shop {
    * Indicate if the store is in the shipping hours
    */
   isShippingAvailable: boolean | null;
+  /**
+   * List of districts.
+   */
+  availableDistricts: (GetShop_shop_availableDistricts | null)[] | null;
 }
 
 export interface GetShop {

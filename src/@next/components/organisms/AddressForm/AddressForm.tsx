@@ -40,7 +40,7 @@ export const AddressForm: React.FC<IProps> = ({
   formId,
   defaultValue,
   countriesOptions,
-  citiesOptions,
+  districtsOptions,
   user,
   comeFromModal,
   checkoutData,
@@ -153,7 +153,7 @@ export const AddressForm: React.FC<IProps> = ({
 
           const scrollToErrors = (errors: IFormErrorSort[]) => {
             if (errors[0]?.field) {
-              document.getElementsByName(errors[0].field)[0].focus();
+              document.getElementsByName(errors[0].field)[0]?.focus();
             }
           }
 
@@ -197,7 +197,7 @@ export const AddressForm: React.FC<IProps> = ({
           >
             <AddressFormContent
               {...{
-                citiesOptions,
+                districtsOptions,
                 comeFromModal,
                 countriesOptions,
                 defaultValue,

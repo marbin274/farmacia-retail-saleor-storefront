@@ -15,7 +15,7 @@ const AddressGridSelector: React.FC<IProps> = ({
   addresses,
   selectedAddressId,
   countriesOptions,
-  citiesOptions,
+  districtsOptions,
   userId,
   errors,
   onSelect,
@@ -106,7 +106,7 @@ const AddressGridSelector: React.FC<IProps> = ({
           submitBtnText={"Add"}
           title={"Add new address"}
           countriesOptions={countriesOptions}
-          citiesOptions={citiesOptions}
+          districtsOptions={districtsOptions}
           formId={newAddressFormId}
           userId={userId}
           target={addNewModalTarget}

@@ -1,10 +1,8 @@
+import { useShopContext } from "@temp/components/ShopProvider/context";
 import { filterNotEmptyArrayItems } from "@utils/misc";
 import React from "react";
 import { AddressForm } from "../AddressForm";
-import { citiesOptions } from "./cities";
 import { IProps } from "./types";
-
-
 
 /**
  * Address form used in checkout.
@@ -21,12 +19,14 @@ const CheckoutAddress: React.FC<IProps> = ({
   errors,
   checkoutData,
 }: IProps) => {
+  const { availableDistricts } = useShopContext();
+
   return (
     <section>
       <AddressForm
         formId={formId}
         formRef={formRef}
-        citiesOptions={citiesOptions}
+        districtsOptions={availableDistricts?.map(x => x!.name)}
         countriesOptions={countries?.filter(filterNotEmptyArrayItems)}
         checkoutData={checkoutData}
         address={{

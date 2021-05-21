@@ -4,8 +4,7 @@ import "./scss/index.scss";
 import { AddressFormModal, AddressGrid } from "@components/organisms";
 import { AddressTypeEnum, CountryCode } from "@sdk/gqlTypes/globalTypes";
 import { useDefaultUserAddress, useDeleteUserAddresss, useUpdateUserAddress } from "@sdk/react";
-import { ShopContext } from "../../components/ShopProvider/context";
-import { citiesOptions } from "@temp/@next/components/organisms/CheckoutAddress/cities";
+import { useShopContext } from "../../components/ShopProvider/context";
 import { UserDetails_me } from "@temp/@sdk/queries/gqlTypes/UserDetails";
 import { IAddressBookDisplay } from "@temp/@next/types";
 import { removeCountryCodeInPhoneNumber } from "@temp/@next/utils/addresForm";
@@ -13,13 +12,15 @@ import { removeCountryCodeInPhoneNumber } from "@temp/@next/utils/addresForm";
 const AddressBook: React.FC<{
   user: UserDetails_me;
 }> = ({ user }) => {
-  const { defaultCountry, countries } = React.useContext(ShopContext);
+  const { availableDistricts, defaultCountry, countries } = useShopContext();
   const [displayNewModal, setDisplayNewModal] = React.useState(false);
   const [displayEditModal, setDisplayEditModal] = React.useState(false);
   const [addressData, setAddressData] = React.useState(null);
   const [setDefaultUserAddress] = useDefaultUserAddress();
   const [setDeleteUserAddress] = useDeleteUserAddresss();
   const [setUpdateUserAddress] = useUpdateUserAddress();
+
+  const districtsOptions = availableDistricts.map(x => x.name);
 
   const userAddresses = user.addresses.map(it => {
     const address = { ...it, phone: removeCountryCodeInPhoneNumber(it.phone) };
@@ -87,7 +88,7 @@ const AddressBook: React.FC<{
           title="Agregar nueva dirección"
           {...{ countriesOptions: countries }}
           formId="address-form"
-          citiesOptions={citiesOptions}
+          districtsOptions={districtsOptions}
         />
       )}
       {displayEditModal && (
@@ -100,7 +101,7 @@ const AddressBook: React.FC<{
           title="Editar dirección"
           {...{ countriesOptions: countries }}
           formId="address-form"
-          citiesOptions={citiesOptions}
+          districtsOptions={districtsOptions}
         />
       )}
     </div>
