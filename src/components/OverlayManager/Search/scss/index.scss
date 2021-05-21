@@ -154,6 +154,13 @@ $custom-breakpoint: 624px;
         }
       }
 
+      &__link {
+        width: 21.875rem;
+        @media (max-width: $small-screen) {
+          width: auto;
+        }
+      }
+
       &__side {
         display: flex;
         &.actions {
@@ -167,9 +174,9 @@ $custom-breakpoint: 624px;
           }
           .button {
             > button {
-              padding: 0.6rem 2.16rem;
-              border-radius: 44px;
-              width: 100%;
+              padding: 0.6rem 0.5rem;
+              border-radius: 2.75rem;
+              width: 8.125rem;
               span {
                 font-size: $small-font-size;
               }

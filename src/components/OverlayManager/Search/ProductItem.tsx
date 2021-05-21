@@ -26,7 +26,10 @@ const ProductItem: React.FC<SearchResults_products_edges> = ({ node }) => {
   return (
     <li className="search__products__item">
       <div className="search__products__item__content">
-        <Link to={generateProductUrl(product.id, product.name)}>
+        <Link
+          to={generateProductUrl(product.id, product.name)}
+          className="search__products__item__link"
+        >
           <div className="search__products__item__side">
             <Thumbnail source={node} />
             <p className="search__products__item__side__name">
