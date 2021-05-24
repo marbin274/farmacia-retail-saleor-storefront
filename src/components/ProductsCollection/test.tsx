@@ -119,40 +119,7 @@ const props: IProductsCollectionProps = {
         url:
           "https://my-site/30009651_SENSIBIO_H2O_SOL-thumbnail-510x510-70.jpg",
       },
-      variants: [
-        {
-          id: "UHJvZHVjdFZhcmlhbnQ6MzYxOA==",
-          pricing: {
-            onSale: true,
-            price: {
-              gross: {
-                amount: 79.9,
-                culture: "es-PE",
-                currency: "PEN",
-              },
-              net: {
-                amount: 79.9,
-                culture: "es-PE",
-                currency: "PEN",
-              },
-            },
-            priceUndiscounted: {
-              gross: {
-                amount: 126.2,
-                culture: "es-PE",
-                currency: "PEN",
-              },
-              net: {
-                amount: 126.2,
-                culture: "es-PE",
-                currency: "PEN",
-              },
-            },
-          },
-          quantityAvailable: 50,
-          sku: "30009651",
-        },
-      ],
+      
     },
     {
       attributes: [],
@@ -224,40 +191,7 @@ const props: IProductsCollectionProps = {
       thumbnail2x: {
         url: "https://my-site/alcohol_atomizador-thumbnail-510x510.png",
       },
-      variants: [
-        {
-          id: "UHJvZHVjdFZhcmlhbnQ6NDMyNg==",
-          pricing: {
-            onSale: true,
-            price: {
-              gross: {
-                amount: 8.9,
-                culture: "es-PE",
-                currency: "PEN",
-              },
-              net: {
-                amount: 8.9,
-                culture: "es-PE",
-                currency: "PEN",
-              },
-            },
-            priceUndiscounted: {
-              gross: {
-                amount: 12.9,
-                culture: "es-PE",
-                currency: "PEN",
-              },
-              net: {
-                amount: 12.9,
-                culture: "es-PE",
-                currency: "PEN",
-              },
-            },
-          },
-          quantityAvailable: 50,
-          sku: "16011459",
-        },
-      ],
+      
     },
   ],
 };

@@ -34,13 +34,9 @@ export const getProductsWithQuantity = (products: ISimpleProduct[], productsOnCa
 
 export const getOneProductWithQuantity = (product: ISimpleProduct, productsOnCart?: IItems): ISimpleProduct => {
     const productOnCart = productsOnCart?.find(({ variant }) =>
-        (product.variants && product.variants[0]) ? variant.id === product.variants[0].id : false
+        (product.variant) ? variant.id === product.variant.id : false
     );
     product.quantity = productOnCart ? productOnCart.quantity : 0;
-
-    if (!product.variants) {
-        product.variants = [];
-    }
 
     return {
         ...product,
@@ -72,8 +68,8 @@ export const checkStockLimitOrStockAvailable = (product: ISimpleProduct): ICheck
 export const getStockAvailable = (product: ISimpleProduct): IStockAvailable => {
     let stockAvailable = 0;
     const  quantity = product.quantity ||0;
-    if (product.variants?.[0]?.quantityAvailable) {
-        stockAvailable = product.variants[0].quantityAvailable;
+    if (product.variant?.quantityAvailable) {
+        stockAvailable = product.variant.quantityAvailable;
     }
     else if (product.variant?.quantityAvailable) {
         stockAvailable = product.variant.quantityAvailable;
@@ -120,8 +116,8 @@ export const productStickerRules = (product: ISimpleProduct) => {
     const isOnSale = checkProductIsOnSale(product);
     const quantity = product.quantity || 0;
     let quantityAvailable = 0;
-    if (product.variants?.[0].quantityAvailable) {
-        quantityAvailable = product.variants[0].quantityAvailable;
+    if (product.variant?.quantityAvailable) {
+        quantityAvailable = product.variant.quantityAvailable;
     }
     else if (product.variant?.quantityAvailable) {
         quantityAvailable = product.variant.quantityAvailable;
@@ -136,8 +132,8 @@ export const checkPricingVariantIsOnSale = (variantPricing: IProductVariantPrici
     return !isEqual(variantPricing.priceUndiscounted, variantPricing.price);
 }
 export const checkProductIsOnSale = (product: ISimpleProduct): boolean => {
-    if (product?.variants?.[0]?.pricing) {
-        return checkPricingVariantIsOnSale(product.variants[0].pricing);
+    if (product?.variant?.pricing) {
+        return checkPricingVariantIsOnSale(product.variant.pricing);
     } else if (product?.variant?.pricing) {
         return checkPricingVariantIsOnSale(product.variant.pricing);
     }

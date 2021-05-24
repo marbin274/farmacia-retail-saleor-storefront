@@ -49,8 +49,8 @@ export const ProductTileAUNA: React.FC<IProps> = ({
             onClick={() =>
               launchDetailProductEvent(
                 product?.name,
-                product?.variants?.[0]?.sku as string,
-                product?.variants?.[0]?.pricing?.price?.gross?.amount as number
+                product?.variant?.sku as string,
+                product?.variant?.pricing?.price?.gross?.amount as number
               )
             }
           >

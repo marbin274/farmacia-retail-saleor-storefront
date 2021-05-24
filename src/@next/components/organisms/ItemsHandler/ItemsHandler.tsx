@@ -58,7 +58,7 @@ const ItemsHandler: FC<IProps> = ({
   const handleAddClick = () => {
     if (isEnabledToAddProduct) {
       if (canAddToCart) {
-        const firstProductVariant = product?.variants?.[0] || product?.variant;
+        const firstProductVariant = product?.variant;
         const total: number = product?.quantity as number;
         
         if (firstProductVariant) {  
@@ -87,7 +87,7 @@ const ItemsHandler: FC<IProps> = ({
   };
 
   const handleRemoveClick = () => {
-    const firstProductVariant = product?.variants?.[0] || product?.variant;
+    const firstProductVariant = product?.variant;
     const total: number = product?.quantity as number;
     if (firstProductVariant) {
       removePaymentItems();

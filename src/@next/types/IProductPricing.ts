@@ -1,10 +1,10 @@
 import { ITaxedMoney, ITaxedMoneyRange } from "@app/types/IMoney";
 
 export interface IProductPricing {
-  onSale?: boolean;
+  onSale?: boolean | null;
   discount?: ITaxedMoney;
   discountLocalCurrency?: ITaxedMoney;
-  priceRange?: ITaxedMoneyRange;
+  priceRange?: ITaxedMoneyRange | null;
   priceRangeLocalCurrency?: ITaxedMoneyRange;
-  priceRangeUndiscounted?:ITaxedMoneyRange;
+  priceRangeUndiscounted?:ITaxedMoneyRange | null;
 }

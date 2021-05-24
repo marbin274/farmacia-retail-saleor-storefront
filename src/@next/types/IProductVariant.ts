@@ -17,12 +17,4 @@ export interface IProductVariant extends INode, IObjectWithMetadata{
   pricing?: IProductVariantPricing | null | undefined;
   revenue?: ITaxedMoney;
   quantityAvailable?: number;
-
-  // todo implement complete data interfaces system
-  // attributes?: [SelectedAttribute!]!
-  // images?: [IProductImage];
-  // translation?: IProductVariantTranslation;
-  // digitalContent?: IDigitalContent
-  // stocks?: [IStock]
-  // weight?: IWeight;
 }

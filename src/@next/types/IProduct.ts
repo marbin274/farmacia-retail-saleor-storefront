@@ -10,20 +10,17 @@ import { ProductDetails_product_attributes } from "@temp/@sdk/queries/gqlTypes/P
 export interface ISimpleProduct extends INode {
   attributes?: ProductDetails_product_attributes[];
   name: string;
-  seoTitle?: string;
-  seoDescription?: string;
+  seoTitle?: string | null;
+  seoDescription?: string | null;
   isPublished?: boolean;
   slug?: string;
-  category?: ICategory;
-  isAvailable?: boolean;
+  category?: ICategory | null;
+  isAvailable?: boolean | null;
   thumbnail?: IImage  | null;
   thumbnail2x?: IImage | null;
   basePrice?: IMoney;
-  pricing?: IProductPricing;
-  // items in cart, checkout lines
-  variant?: IProductVariant;
-  // product list, product auna tile, product search result
-  variants?: IProductVariant[];
+  pricing?: IProductPricing | null;
+  variant?: IProductVariant | null;
   quantity?: number;
   quantityAvailable?: number | undefined;
 }
@@ -33,14 +30,4 @@ export interface IProduct extends ISimpleProduct, IObjectWithMetadata {
   minimalVariantPrice?: IMoney;
   updatedAt?: Date;
   chargeTaxes?: boolean;
-
-  // todo implement complete data interfaces system
-  // taxType?: TaxType
-  // attributes?: SelectedAttribute[];
-  // margin?: Margin
-  // imageById(...)?: ProductImage
-  // images?: [ProductImage]
-  // collections?: [Collection]
-  // translation(...)?: ProductTranslation
-  // weight?: IWeight;
 }

@@ -66,39 +66,5 @@ export const product: ISimpleProduct = {
   quantity: 0,
   thumbnail: null,
   thumbnail2x: null,
-  variants: [
-    {
-      id: "UHJvZHVjdFZhcmlhbnQ6Njgw",
-      pricing: {
-        onSale: false,
-        price: {
-          gross: {
-            amount: 18.3,
-            culture: "es-PE",
-            currency: "PEN",
-          },
-          net: {
-            amount: 18.3,
-            culture: "es-PE",
-            currency: "PEN",
-          },
-        },
-        priceUndiscounted: {
-          gross: {
-            amount: 18.3,
-            culture: "es-PE",
-            currency: "PEN",
-          },
-          net: {
-            amount: 18.3,
-            culture: "es-PE",
-            currency: "PEN",
-          },
-        },
-      }, 
-      quantityAvailable: 50,
-      sku: "30000711",           
-    },
-  ],
 
 }

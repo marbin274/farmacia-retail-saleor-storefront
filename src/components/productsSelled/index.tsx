@@ -3,7 +3,7 @@ import { ProductTileAUNA } from "@temp/@next/components/molecules";
 import { ISimpleProduct } from "@temp/@next/types/IProduct";
 import { getProductsWithQuantity } from "@temp/@next/utils/products";
 import { PRODUCTS_PER_PAGE } from "@temp/core/config";
-import { generateProductUrl } from "@temp/core/utils";
+import { convertToSimpleProduct, generateProductUrl } from "@temp/core/utils";
 import { ReportingPeriod } from "gqlTypes/globalTypes";
 import React from "react";
 import { TypedSelledProductsQuery } from "./queries";
@@ -28,9 +28,9 @@ export const ProductsSelled: React.FC<IProps> = ({
             {({ data }) => {
                 if (data?.reportProductSales?.edges?.length) {
 
-                    const products: ISimpleProduct[] = data.reportProductSales.edges.reduce((prev, act)=>{
+                    const products: ISimpleProduct[] = data.reportProductSales.edges.reduce((prev: ISimpleProduct[], act)=>{
                         if(!productDetail || productDetail.id !== act.node.product.id){                            
-                            prev.push(act.node.product);
+                            prev.push(convertToSimpleProduct(act.node.product));
                         }
                         return prev;
                     },[])

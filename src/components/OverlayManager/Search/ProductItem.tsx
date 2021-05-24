@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 import { Thumbnail } from "@components/molecules";
 
-import { generateProductUrl } from "../../../core/utils";
 import { SearchResults_products_edges } from "./gqlTypes/SearchResults";
 import { Money } from "src/@next/components/containers/Money/Money";
 import { useCart } from "@temp/@sdk/react";
@@ -14,10 +13,11 @@ import {
   getProductPricingClass,
 } from "@temp/@next/utils/products";
 import ItemsHandler from "@temp/@next/components/organisms/ItemsHandler/ItemsHandler";
+import { convertToSimpleProduct, generateProductUrl } from "@temp/core/utils";
 
 const ProductItem: React.FC<SearchResults_products_edges> = ({ node }) => {
   const { items, addItem, subtractItem } = useCart();
-  const product = getOneProductWithQuantity(node, items);
+  const product = getOneProductWithQuantity(convertToSimpleProduct(node), items);
   const { canAddToCart, isStockAvailable } = checkProductCanAddToCart(
     product,
     items

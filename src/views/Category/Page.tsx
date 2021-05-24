@@ -9,7 +9,7 @@ import {
 import { ProductListHeader } from "../../@next/components/molecules";
 import { ProductListAUNA } from "../../@next/components/organisms";
 import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
-import { maybe } from "../../core/utils";
+import { convertToSimpleProduct, maybe } from "@temp/core/utils";
 import {
   Category_category,
   Category_paginatedProducts,
@@ -151,7 +151,7 @@ const Page: React.FC<PageProps> = ({
           {canDisplayProducts && (
             <>
               <ProductListAUNA
-                products={products.edges.map(edge => edge.node)}
+                products={products.edges.map((edge) => convertToSimpleProduct(edge.node))}
                 productsOnCart={items}
                 loading={displayLoader}
                 addToCart={addToCart}

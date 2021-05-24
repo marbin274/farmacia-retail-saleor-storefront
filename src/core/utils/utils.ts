@@ -5,9 +5,9 @@ import { Base64 } from "js-base64";
 import { each } from "lodash";
 import { parse as parseQs, stringify as stringifyQs } from "query-string";
 import { FetchResult } from "react-apollo";
-import { OrderDirection, ProductOrderField } from "../../gqlTypes/globalTypes";
-import { OrderStatus } from "../@sdk/gqlTypes/globalTypes";
-import { FormError } from "./types";
+import { OrderDirection, ProductOrderField } from "../../../gqlTypes/globalTypes";
+import { FormError } from "../types";
+
 
 export const slugify = (text: string | number): string =>
   text
@@ -187,22 +187,4 @@ export const findFormErrors = (result: void | FetchResult): FormError[] => {
 };
 
 export const removeEmptySpaces = (text: string) => text.replace(/\s+/g, "");
-
-export const translateOrderStatus = (
-  status: string,
-  statusDisplay = ""
-): string => {
-  switch (status) {
-    case OrderStatus.UNFULFILLED:
-      return "Recibido";
-    case OrderStatus.PARTIALLY_FULFILLED:
-      return "Pagado";
-    case OrderStatus.FULFILLED:
-      return "Atendido";
-    case OrderStatus.CANCELED:
-      return "Cancelado";
-    default:
-      return statusDisplay;
-  }
-};
 

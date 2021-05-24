@@ -3,11 +3,14 @@ import {
   ICheckoutModelLine,
   ICheckoutModelLineVariantLocalStorage
 } from "@sdk/repository";
+import { ISimpleProduct } from "@temp/@next/types/IProduct";
 import {
   checkProductCanAddToCart,
+  getOneProductWithQuantity,
   productStickerRules
 } from "@temp/@next/utils/products";
 import { ProductsSelled } from "@temp/components/productsSelled";
+import { convertToSimpleProduct } from "@temp/core/utils";
 import React from "react";
 import Media from "react-media";
 import { ProductDescription } from "../../components";
@@ -19,7 +22,6 @@ import { ProductDetails_product } from "./gqlTypes/ProductDetails";
 // TODO: Add as soon as we need to add more product information below the
 // import { ProductDescription as NewProductDescription } from "../../@next/components/molecules";
 // TODO: Add as soon as we need to add the breadcrumb
-// import { Breadcrumbs, ProductDescription } from "../../components";
 
 export interface IProps {
   product: ProductDetails_product;
@@ -35,11 +37,12 @@ export interface IProps {
 export const Page: React.FC<IProps> = (props) => {
 
   const { add, remove, subtract, items, product } = props;
+  const simpleProduct: ISimpleProduct = getOneProductWithQuantity(convertToSimpleProduct(product), items);
   const { canAddToCart } = checkProductCanAddToCart(
-    props.product,
-    props.items
+    simpleProduct,
+    items
   );
-  const { isOnSale, isOutStock } = productStickerRules(product);
+  const { isOnSale, isOutStock } = productStickerRules(simpleProduct);
 
 
   return (
@@ -69,7 +72,7 @@ export const Page: React.FC<IProps> = (props) => {
                       isOnSale={isOnSale}
                       isOutStock={isOutStock}
                       items={items}
-                      product={product}
+                      product={simpleProduct}
                       pricing={product.pricing}
                       productVariants={product.variants}
                       addToCart={add}
@@ -94,7 +97,7 @@ export const Page: React.FC<IProps> = (props) => {
                         isOnSale={isOnSale}
                         isOutStock={isOutStock}
                         items={items}
-                        product={product}
+                        product={simpleProduct}
                         pricing={product.pricing}
                         productVariants={product.variants}
                         addToCart={add}
