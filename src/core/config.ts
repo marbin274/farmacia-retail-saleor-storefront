@@ -277,3 +277,5 @@ export const ADDRESS_FORM_SORT = {
 
 export const ADDRESS_FORM_SHOW_GENERAL_ERRORS = 3;
 export const ADDRESS_FORM_TOTAL_COUNT = 7;
+
+export const DISTRICT_SELECTED_DEFAULT = {code: "", description: ""};

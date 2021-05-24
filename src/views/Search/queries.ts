@@ -16,6 +16,7 @@ export const searchProductsQuery = gql`
     $pageSize: Int
     $sortBy: ProductOrder
     $after: String
+    $districtId: ID
   ) {
     products(
       filter: { search: $query, attributes: $attributes }

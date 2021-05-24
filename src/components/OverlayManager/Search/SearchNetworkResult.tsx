@@ -7,6 +7,7 @@ import React from "react";
 import { NothingFound, ProductItem } from "./";
 import { TypedSearchResults } from "./queries";
 import * as appPaths from "@temp/app/routes";
+import { useDistrictSelected } from "@temp/@next/hooks/useDistrictSelected";
 
 export const SearchNetworkResult = ({
   search,
@@ -14,6 +15,7 @@ export const SearchNetworkResult = ({
   hasSearchPhrase,
 }) => {
   const linkToSearch = appPaths.searchUrl + "?q=" + search + "";
+  const [districtSelected] = useDistrictSelected();
   return (
     <div
       className={classNames("search__products", "search__products--expanded", {
@@ -28,7 +30,10 @@ export const SearchNetworkResult = ({
                 renderOnError
                 displayError={false}
                 errorPolicy="all"
-                variables={{ query: search }}
+                variables={{ 
+                  query: search,
+                  districtId: districtSelected.code,
+                }}
               >
                 {({ data, error, loading }) => {
                   if (hasResults(data)) {

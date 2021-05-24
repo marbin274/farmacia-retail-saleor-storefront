@@ -11,12 +11,14 @@ import { IDiscount, IShippingPrice, ISubtotalPrice, IItems } from "../api/Cart/t
 import { ITotalPrice } from '@temp/@sdk/api/Cart/types';
 
 export enum LocalStorageItems {
-  JOB_QUEUE_CHECKOUT = "job_queueCheckout",
   CHECKOUT = "data_checkout",
-  PAYMENT = "data_payment",
-  RESET_PASSWORD_EMAIL = "reset_password_email",
+  DISTRICT_SELECTED = "district_selected",
   FINAL_CHECKOUT = "final_checkout",
   FINAL_USECART = "final_use_cart",
+  JOB_QUEUE_CHECKOUT = "job_queueCheckout",
+  PAYMENT = "data_payment",
+  RESET_PASSWORD_EMAIL = "reset_password_email",
+  SHOW_CHANGE_DISTRICT_MODAL= "show_change_district_modal",
 }
 
 export interface ICheckoutModelLineTotalPrice {
@@ -51,6 +53,7 @@ export interface ICheckoutModelLine {
   quantity: number;
   totalPrice?: ICheckoutModelLineTotalPrice | null;
   variant: ICheckoutModelLineVariant;
+  variants?: ICheckoutModelLineVariant[];
 }
 
 export interface ICheckoutModelPriceValue {
@@ -194,6 +197,11 @@ export interface IShippingMethodUpdate {
 //     setPromoCode: false,
 //   },
 // };
+
+export interface ISelecValue {
+  code: string;
+  description: string;
+}
 
 export interface ILocalRepository {
   getCheckout(): ICheckoutModel | null;

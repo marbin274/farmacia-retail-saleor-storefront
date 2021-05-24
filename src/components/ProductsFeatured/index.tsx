@@ -1,6 +1,7 @@
 import { ISimpleProduct } from "@app/types/IProduct";
 import { Carousel } from "@temp/@next/components/containers";
 import { ProductTileAUNA } from "@temp/@next/components/molecules";
+import { useDistrictSelected } from "@temp/@next/hooks/useDistrictSelected";
 import { getProductsWithQuantity } from "@temp/@next/utils/products";
 import { TypedFeaturedProductsQuery } from "@temp/components/ProductsFeatured/queries";
 import { PRODUCTS_PER_PAGE } from "@temp/core/config";
@@ -17,10 +18,16 @@ const ProductsFeatured: React.FC<IProps> = ({
   addToCart,
   subtractItemToCart,
 }) => {
+
+  const [districtSelected] = useDistrictSelected();
+
   return (
     <TypedFeaturedProductsQuery
       displayError={false}
-      variables={{ first: PRODUCTS_PER_PAGE }}
+      variables={{ 
+        first: PRODUCTS_PER_PAGE,
+        districtId: districtSelected.code,
+       }}
     >
       {({ data }) => {
         if (data?.shop?.homepageCollections?.length) {

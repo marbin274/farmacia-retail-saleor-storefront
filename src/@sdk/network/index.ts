@@ -44,6 +44,7 @@ import {
   UpdateCheckoutShippingMethod
 } from "@sdk/mutations/gqlTypes/UpdateCheckoutShippingMethod";
 import * as CheckoutQueries from "@sdk/queries/checkout";
+import * as ProductQueries from "@sdk/queries/products";
 import { CheckoutDetails } from "@sdk/queries/gqlTypes/CheckoutDetails";
 import {
   CheckoutProductVariants,
@@ -71,6 +72,7 @@ import { IPrivacyPolicy } from "../api/Checkout/types";
 import { UpdateCheckoutShippingMethodWithScheduleDateVariables } from "../mutations/gqlTypes/UpdateCheckoutShippingMethodWithScheduleDate";
 import { launchPurchaseEvent, ecommerceProductsMapper } from "@sdk/gaConfig";
 import { INetworkManager } from "./types";
+import { VariantsProductsAvailable, VariantsProductsAvailableVariables, VariantsProductsAvailable_productVariants } from "../queries/gqlTypes/VariantsProductsAvailable";
 
 export class NetworkManager implements INetworkManager {
   private client: ApolloClient<any>;
@@ -257,6 +259,50 @@ export class NetworkManager implements INetworkManager {
         ...linesWithMissingVariantUpdated,
         ...linesWithProperVariantUpdated,
       ],
+    };
+  };
+
+  getCartLines = async (
+    checkoutlines: ICheckoutModelLine[] | null
+  ) => {
+    const ids = checkoutlines ? checkoutlines.map(it => it.variant.id) : [];
+    let variants: VariantsProductsAvailable_productVariants | null | undefined;
+    if (ids.length) {
+      try {
+        const observable = this.client.watchQuery<VariantsProductsAvailable, VariantsProductsAvailableVariables>(
+          {
+            fetchPolicy: "network-only",
+            query: ProductQueries.variantsProductsAvailable,
+            variables: {
+              ids,
+            },
+          }
+        );
+
+        variants = await new Promise((resolve, reject) => {
+          observable.subscribe(
+            result => {
+              const { data, errors } = result;
+              if (errors?.length) {
+                reject(errors);
+              } else {
+                resolve(data.productVariants);
+              }
+            },
+            error => {
+              reject(error);
+            }
+          );
+        });
+      } catch (error) {
+        return {
+          error,
+        };
+      }
+    }
+
+    return {
+      data: variants,
     };
   };
 

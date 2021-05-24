@@ -2,7 +2,7 @@ import { ErrorListener } from "@sdk/helpers";
 import { JobsManager } from "@sdk/jobs";
 import { ErrorCartTypes } from "@sdk/jobs/Cart";
 import { NetworkManager } from "@sdk/network";
-import { CheckoutRepositoryManager, ICheckoutModel, ICheckoutModelLineVariantLocalStorage } from "@sdk/repository";
+import { CheckoutRepositoryManager, ICheckoutModel, ICheckoutModelLine, ICheckoutModelLineVariantLocalStorage } from "@sdk/repository";
 import { SaleorState } from "@sdk/state";
 import { ISaleorStateSummeryPrices, StateItems } from "@sdk/state/types";
 
@@ -203,4 +203,27 @@ export class SaleorCartAPI extends ErrorListener implements ISaleorCartAPI {
       });
     }
   };
+
+  getCartLines = async () => {
+    
+    const { data, error } = await this.networkManager.getCartLines(
+      this.saleorState.checkout?.lines || null
+    );
+
+    if (error) {
+      this.fireError(error, ErrorCartTypes.SET_CART_ITEM);
+    }
+
+    return {
+      data,
+      error,
+    }
+  }
+
+  updateCartLines = (lines: ICheckoutModelLine[]) => {
+    this.checkoutRepositoryManager.getRepository().setCheckout({
+      ...this.saleorState.checkout,
+      lines,
+    });
+  }
 }

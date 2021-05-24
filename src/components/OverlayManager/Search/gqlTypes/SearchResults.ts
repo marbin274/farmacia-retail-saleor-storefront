@@ -343,4 +343,5 @@ export interface SearchResults {
 
 export interface SearchResultsVariables {
   query: string;
+  districtId?: string | null;
 }

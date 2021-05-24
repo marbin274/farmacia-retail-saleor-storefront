@@ -133,3 +133,17 @@ export const variantsProducts = gql`
     }
   }
 `;
+
+export const variantsProductsAvailable = gql`
+  query VariantsProductsAvailable($ids: [ID]) {
+    productVariants(ids: $ids, first: 100) {
+      edges {
+        node {
+          id
+          isAvailable
+          quantityAvailable
+        }
+      }
+    }
+  }
+`;
