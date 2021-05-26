@@ -204,10 +204,11 @@ export class SaleorCartAPI extends ErrorListener implements ISaleorCartAPI {
     }
   };
 
-  getCartLines = async () => {
+  getCartLines = async (districtId:string) => {
     
     const { data, error } = await this.networkManager.getCartLines(
-      this.saleorState.checkout?.lines || null
+      this.saleorState.checkout?.lines || null,
+      districtId
     );
 
     if (error) {

@@ -44,4 +44,5 @@ export interface VariantsProductsAvailable {
 
 export interface VariantsProductsAvailableVariables {
   ids?: (string | null)[] | null;
+  districtId?: string | null;
 }

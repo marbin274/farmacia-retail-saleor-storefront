@@ -135,13 +135,13 @@ export const variantsProducts = gql`
 `;
 
 export const variantsProductsAvailable = gql`
-  query VariantsProductsAvailable($ids: [ID]) {
+  query VariantsProductsAvailable($ids: [ID], $districtId: ID) {
     productVariants(ids: $ids, first: 100) {
       edges {
         node {
           id
           isAvailable
-          quantityAvailable
+          quantityAvailable(district: $districtId)
         }
       }
     }

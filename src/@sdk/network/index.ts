@@ -263,7 +263,8 @@ export class NetworkManager implements INetworkManager {
   };
 
   getCartLines = async (
-    checkoutlines: ICheckoutModelLine[] | null
+    checkoutlines: ICheckoutModelLine[] | null,
+    districtId: string
   ) => {
     const ids = checkoutlines ? checkoutlines.map(it => it.variant.id) : [];
     let variants: VariantsProductsAvailable_productVariants | null | undefined;
@@ -275,6 +276,7 @@ export class NetworkManager implements INetworkManager {
             query: ProductQueries.variantsProductsAvailable,
             variables: {
               ids,
+              districtId,
             },
           }
         );

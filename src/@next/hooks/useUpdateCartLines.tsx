@@ -1,15 +1,17 @@
 import { useCart } from "@temp/@sdk/react";
 import { ICheckoutModelLine, ICheckoutModelLineVariant } from "@temp/@sdk/repository";
 import React from "react";
+import { useDistrictSelected } from "./useDistrictSelected";
 
 export const useUpdateCartLines = () => {
     const [loading, setLoading] = React.useState<boolean>(false);
+    const [district] = useDistrictSelected();
     const { items, getCartLines, updateCartLines } = useCart();
 
     const handleUpdate = async () => {
         if (items) {
             setLoading(true);
-            const { data, error } = await getCartLines();
+            const { data, error } = await getCartLines(district.code);
             if (!error) {
                 const itemsUpdate: ICheckoutModelLine[] = items.map(line => {
                     const variantUpdate = data?.edges.find(it => it.node.id === line.variant.id);
