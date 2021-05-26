@@ -21,18 +21,32 @@ $custom-breakpoint: 624px;
   }
 
   &__input {
+    background-color: $auna-black;
+    display: flex;
+    flex-direction: column;
     margin-top: 80px;
+    padding: 1.563rem 0.75rem;
+    @media (min-width: $medium-screen-styled) {
+      align-items: center;
+      flex-direction: row;
+      justify-content: center;      
+    }
+    @media (min-width: $medium-screen) {     
+      justify-content: center;      
+    }
     &--clear {
       cursor: pointer;
     }
 
-    .input {
-      padding: 36px;
-      background-color: $auna-black;
-
+    .input {    
+      @media (min-width: $medium-screen-styled) {
+        width: 40rem;
+        padding-bottom: 0rem;
+        padding-right: 2rem;
+      }
       input,
       input::placeholder {
-        font-size: 16px;
+        font-size: 1rem;
       }
 
       &__content {

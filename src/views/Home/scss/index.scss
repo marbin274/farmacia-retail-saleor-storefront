@@ -4,11 +4,12 @@
   background-color: $white;
   padding-top: 4.7rem;
   z-index: 0;
-  @media (max-width: $medium-screen) {
-    padding-top: 2.7rem;
+  padding-top: 3.849rem;
+  @media (min-width: $small-screen) {
+    padding-top: 4.162rem;
   }
-  @media (max-width: $small-screen) {
-    padding-top: 3.3rem;
+  @media (min-width: $medium-screen) {
+    padding-top: 4.75rem;
   }
   .search {
     min-height: initial;

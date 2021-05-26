@@ -1,11 +1,8 @@
 @import "@temp/globalStyles/scss/variables.scss";
 
-.container {
-  margin-top: 1rem !important;
-}
 .product_list_wrapper {
   margin-top: 0;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   @media (max-width: $small-screen) {
     background: transparent;
   }

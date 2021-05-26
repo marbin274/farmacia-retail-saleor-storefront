@@ -3,11 +3,20 @@
 .product-page {
   background-color: $white;
   z-index: 0;
-  margin-top: 4rem;
+  margin-top: 4.412rem;
+  @media (min-width: $medium-screen) {
+    margin-top: 5rem;
+  }
   .breadcrumbs {
     background-color: $white;
     padding: $spacer / 2 $spacer $spacer / 2 $spacer * 1.5;
     margin-top: $spacer * 2;
+  }
+  .container{
+    margin: 0.5rem auto 0 auto;
+    @media (min-width: $medium-screen) {
+      margin: 2rem auto 0 auto;
+    }
   }
 
   &__product {
@@ -102,6 +111,21 @@
           }
         }
       }
+    }
+  }
+  &__address-geo{
+    padding: 0.5rem 1rem;
+    .container{
+      margin: 0 auto;
+    }
+    .district {
+      @media (min-width: $medium-screen-styled) {
+        max-width: inherit;
+      }
+    }
+    @media (min-width: $medium-screen) {
+      padding: 1rem;
+      background-color: #F6F8FA;
     }
   }
 

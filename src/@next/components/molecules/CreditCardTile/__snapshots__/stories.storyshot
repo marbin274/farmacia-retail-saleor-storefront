@@ -176,7 +176,7 @@ exports[`Storyshots @components/molecules/CreditCardTile default 1`] = `
       >
         <div>
           <div
-            className="c9"
+            className="icon_button c9"
             data-cy="icon_button"
             onClick={[Function]}
           >

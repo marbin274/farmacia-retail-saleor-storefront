@@ -8,11 +8,11 @@ import { useDistrictSelected } from "@temp/@next/hooks/useDistrictSelected";
 
 const ShopProvider: React.FC = ({ children }) => {
   const { data } = useShopDetails();
-  const [, setDistrict] = useDistrictSelected();
+  const [district, setDistrict] = useDistrictSelected();
 
   React.useEffect(() => {
     const districtDefault = data?.shop?.availableDistricts?.find(it => !!it.isDefault);
-    if (districtDefault) {
+    if (districtDefault && !district.code) {
       setDistrict({ code: districtDefault.id, description: districtDefault.name });
     }
   }, [data]);

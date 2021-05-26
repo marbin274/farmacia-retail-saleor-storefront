@@ -1,6 +1,7 @@
 export * from "./AccountMenu";
 export * from "./AccountMenuMobile";
 export * from "./AccountTabTiles";
+export * from "./AddressGeocalization";
 export * from "./AddressSummary";
 export * from "./AddressTile";
 export * from "./AddressTileOption";

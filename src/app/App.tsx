@@ -1,5 +1,6 @@
 import { Alert } from "@temp/@next/components/atoms/Alert";
 import { ItemsNotification } from "@temp/@next/components/atoms/ItemsNotification";
+import { AddressGeoModal } from "@temp/@next/components/molecules/AddressGeoModal/AddressGeoModal";
 import { useDistrictSelected } from "@temp/@next/hooks/useDistrictSelected";
 import { useUpdateCartLines } from "@temp/@next/hooks/useUpdateCartLines";
 import es from "date-fns/locale/es";
@@ -28,6 +29,7 @@ const App: React.FC = () => {
     <>
       <ItemsNotification />
       <Alert />
+      <AddressGeoModal />
       <MetaConsumer />
       <header>
         <MainMenu />

@@ -52,6 +52,7 @@ const View: React.FC = () => {
               }}
             >
               <SearchForm
+                addressGeocalizationMode="ligth"
                 autofocus={false}
                 handleSubmit={handleSubmit}
                 >

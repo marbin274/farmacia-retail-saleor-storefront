@@ -262,7 +262,7 @@ exports[`Storyshots @components/organisms/SelectSidebar default 1`] = `
             </span>
           </h4>
           <div
-            className="c6"
+            className="icon_button c6"
             data-cy="icon_button"
             onClick={[Function]}
           >
@@ -707,7 +707,7 @@ exports[`Storyshots @components/organisms/SelectSidebar with footer 1`] = `
             </span>
           </h4>
           <div
-            className="c6"
+            className="icon_button c6"
             data-cy="icon_button"
             onClick={[Function]}
           >
