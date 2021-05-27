@@ -53,7 +53,6 @@ export interface ICheckoutModelLine {
   quantity: number;
   totalPrice?: ICheckoutModelLineTotalPrice | null;
   variant: ICheckoutModelLineVariant;
-  variants?: ICheckoutModelLineVariant[];
 }
 
 export interface ICheckoutModelPriceValue {

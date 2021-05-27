@@ -32,9 +32,6 @@ export const useUpdateCartLines = () => {
                         ...line,
                         quantity,
                         variant,
-                        variants: [{
-                            ...variant,
-                        }],
                     }
                 });
                 updateCartLines(itemsUpdate);
