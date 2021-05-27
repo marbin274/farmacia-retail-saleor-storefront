@@ -28,6 +28,20 @@ export const useUpdateCartLines = () => {
                         ...line.variant,
                         quantityAvailable: variantUpdate.node.quantityAvailable,
                     };
+
+                    const variantPrice = variant.pricing!.price!;
+
+                    line.totalPrice = {
+                        gross: {
+                            ...variantPrice.gross,
+                            amount: variantPrice.gross.amount * variant.quantityAvailable!,
+                        },
+                        net: {
+                            ...variantPrice.net,
+                            amount: variantPrice.net.amount * variant.quantityAvailable!,
+                        },
+                    };
+
                     return {
                         ...line,
                         quantity,
