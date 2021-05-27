@@ -96,16 +96,16 @@ const Page: React.FC<IPageProps> = ({
                     const bannerMobile = banner.images?.find(it => it.screenType === "mobile");
                     return (
                       <div key={index} onClick={() => { redirectTo(banner.link) }}>
-                        {bannerDesktop && <img src={bannerDesktop.url} className="banner-image desktop" />}
-                        {bannerMobile && <img src={bannerMobile.url} className="banner-image mobile" />}
+                        {bannerDesktop && <img src={bannerDesktop.url} className="banner-image desktop"  alt="banner desktop" />}
+                        {bannerMobile && <img src={bannerMobile.url} className="banner-image mobile" alt="banner mobile" />}
                       </div>
                     );
                   }
                   )
                   }
                 </BannerCarousel>) : (<div>
-                  <img src={BannerDesktop} className="banner-image desktop" />
-                  <img src={BannerMobile} className="banner-image mobile" />
+                  <img src={BannerDesktop} className="banner-image desktop"  alt="banner desktop" />
+                  <img src={BannerMobile} className="banner-image mobile"   alt="banner mobile"/>
                 </div>
                 )
               }

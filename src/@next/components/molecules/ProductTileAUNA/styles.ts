@@ -6,16 +6,16 @@ const productHeight = "24rem";
 export const ProductCard = styled.div<{
   canAddToCart?: boolean | 0 | undefined;
 }>`
-  color: ${aunaBlack}
+  color: ${aunaBlack};
   background: inherit;
   height: ${productHeight};
   text-align: center;
-  transition: 0 .3s;
+  transition: 0 0.3s;
   max-width: 11rem;
   position: relative;
   margin: 0 auto 1.5rem;
   :hover {
-    translate-Y: -.1rem;
+    transform: translateY(-0.1rem);
   }
 
   .img {
@@ -23,7 +23,7 @@ export const ProductCard = styled.div<{
     height: 176px;
     max-width: 100%;
     vertical-align: middle;
-     img {
+    img {
       width: auto;
       height: 11rem;
       max-width: 100%;
@@ -41,7 +41,6 @@ export const ProductCard = styled.div<{
     text-align: center;
     overflow: hidden;
   }
-  
 
   .price {
     font-family: "Poppins", sans-serif;
@@ -76,11 +75,10 @@ export const ProductCard = styled.div<{
       }
 
       :disabled {
-        color: #B8BCD5;
+        color: #b8bcd5;
         border-color: transparent;
         cursor: not-allowed;
       }
-
     }
   }
 

@@ -31,7 +31,7 @@ export const DropdownSelect: React.FC<IProps> = ({
         <Label>Ordenar por:</Label>
         <S.Value className="clear-label">{` ${value ? value.label : "Limpiar"}`}</S.Value>
         <S.Indicator rotate={String(menuIsOpen)}>
-          <img src={caretDown} />
+          <img src={caretDown} alt="caretdown" />
         </S.Indicator>
       </S.SortLine>
     ),

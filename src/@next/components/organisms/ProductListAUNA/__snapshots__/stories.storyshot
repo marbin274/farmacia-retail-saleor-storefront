@@ -131,16 +131,17 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   background: inherit;
   height: 24rem;
   text-align: center;
-  -webkit-transition: 0 .3s;
-  transition: 0 .3s;
+  -webkit-transition: 0 0.3s;
+  transition: 0 0.3s;
   max-width: 11rem;
   position: relative;
   margin: 0 auto 1.5rem;
 }
 
 .c2:hover {
-  -webkit-translate-Y: -.1rem;
-  translate-Y: -.1rem;
+  -webkit-transform: translateY(-0.1rem);
+  -ms-transform: translateY(-0.1rem);
+  transform: translateY(-0.1rem);
 }
 
 .c2 .img {
@@ -199,7 +200,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
 }
 
 .c2 .button button:disabled {
-  color: #B8BCD5;
+  color: #b8bcd5;
   border-color: transparent;
   cursor: not-allowed;
 }

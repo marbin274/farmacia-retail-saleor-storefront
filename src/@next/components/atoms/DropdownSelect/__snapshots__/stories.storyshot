@@ -117,6 +117,7 @@ exports[`Storyshots @components/atoms/DropdownSelect default 1`] = `
             rotate="false"
           >
             <img
+              alt="caretdown"
               src={[Function]}
             />
           </div>
