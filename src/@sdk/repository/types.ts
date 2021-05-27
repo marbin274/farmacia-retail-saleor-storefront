@@ -18,7 +18,7 @@ export enum LocalStorageItems {
   JOB_QUEUE_CHECKOUT = "job_queueCheckout",
   PAYMENT = "data_payment",
   RESET_PASSWORD_EMAIL = "reset_password_email",
-  SHOW_CHANGE_DISTRICT_MODAL= "show_change_district_modal",
+  SHOW_ADDRESS_GEOCALIZATION_INFO= "show_address_geocalization_info",
 }
 
 export interface ICheckoutModelLineTotalPrice {

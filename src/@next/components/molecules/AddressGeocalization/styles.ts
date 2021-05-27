@@ -10,14 +10,14 @@ export const Wrapper = styled.div`
     display:flex;
     position: relative;
     ${mediaUp.mediumScreen`
-        width: 16rem;
+        width: 18rem;
     `}    
 `;
 
 export const Localization = styled.div<{ mode: addressLocationType }>`
     color: ${({ mode, theme }) => mode === "ligth" ? theme.colors.white : theme.colors.aunaBlack};
     display: flex;
-    flex: 2;
+    flex: 3;
 `;
 
 export const GeocalizationIcon = styled.div`
@@ -90,7 +90,7 @@ export const Alert = styled.div`
     padding: 1rem;
     position: absolute;    
     width: 18.5rem;
-    z-index: 1;
+    z-index: 4;
     ${css`
         animation: ${moved};
         animation-delay: 4s;

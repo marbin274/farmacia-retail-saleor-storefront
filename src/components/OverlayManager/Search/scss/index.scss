@@ -40,9 +40,9 @@ $custom-breakpoint: 624px;
 
     .input {    
       @media (min-width: $medium-screen-styled) {
-        width: 40rem;
+        width: 36rem;
         padding-bottom: 0rem;
-        padding-right: 2rem;
+        padding-right: 1rem;
       }
       input,
       input::placeholder {

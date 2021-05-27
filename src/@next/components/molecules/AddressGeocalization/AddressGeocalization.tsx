@@ -1,18 +1,16 @@
-import { useLocalStorage } from "@temp/@next/hooks";
-import { useDistrictSelected } from "@temp/@next/hooks/useDistrictSelected";
-import { LocalStorageItems } from "@temp/@sdk/repository";
+import { useAddressGeocalizationInfo, useDistrictSelected } from "@temp/@next/hooks";
 import React from "react";
-import { Button, Icon, IconButton } from "../../atoms";
+import { Button, IconButton } from "../../atoms";
 import { addressGeoModalService } from "../AddressGeoModal/AddressGeoModalService";
+import { AddressGeocalizationInfo } from "./AddressGeocalizationInfo";
 import * as S from "./styles";
 import { IProps } from "./types";
 
 
 export const AddressGeocalization: React.FC<IProps> = React.memo(({ mode }) => {
 
-    const [districtSelected] = useDistrictSelected();
-    const { storedValue: show, setValue: setShow } = useLocalStorage<boolean>(LocalStorageItems.SHOW_CHANGE_DISTRICT_MODAL, true);
-
+    const [districtSelected] = useDistrictSelected();    
+    const [show] = useAddressGeocalizationInfo();
     const handleChangeAddress = () => {
         addressGeoModalService.show(true);
     }
@@ -39,46 +37,14 @@ export const AddressGeocalization: React.FC<IProps> = React.memo(({ mode }) => {
             <Button
                 color="secondary"
                 outline
+                type="button"
                 onClick={handleChangeAddress}
             >
                 Cambiar
             </Button>
         </S.Button>
         {
-            !!show && <S.Alert>
-                <S.AlertBody>
-                    <S.AlertIcon>
-                        <Icon
-                            name="medicineBottle"
-                            size={40}
-                            viewPort={40}
-                        />
-                    </S.AlertIcon>
-                    <S.AlertText>
-                        <span>¡Hola!</span> aquí puedes cambiar el distrito donde enviaremos tus productos.
-                </S.AlertText>
-                </S.AlertBody>
-                <S.AlertAction>
-                    <div>
-                        <Button
-                            color="secondary"
-                            outline
-                            onClick={() => { setShow(false) }}
-                        >
-                            Manterner
-                    </Button>
-                    </div>
-                    <div>
-
-                        <Button
-                            color="primary"
-                            onClick={handleChangeAddress}
-                        >
-                            Cambiar distrito
-                    </Button>
-                    </div>
-                </S.AlertAction>
-            </S.Alert>
+            !!show && <AddressGeocalizationInfo/>
         }
     </S.Wrapper>;
 });
