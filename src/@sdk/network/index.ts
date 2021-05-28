@@ -48,6 +48,7 @@ import * as ProductQueries from "@sdk/queries/products";
 import { CheckoutDetails } from "@sdk/queries/gqlTypes/CheckoutDetails";
 import {
   CheckoutProductVariants,
+  CheckoutProductVariantsVariables,
   CheckoutProductVariants_productVariants
 } from "@sdk/queries/gqlTypes/CheckoutProductVariants";
 import {
@@ -62,7 +63,7 @@ import {
   ICheckoutModelLine,
   IOrderModel,
   IPaymentModel,
-  IShippingMethodUpdate
+  IShippingMethodUpdate,
 } from "@sdk/repository";
 import {
   filterNotEmptyArrayItems
@@ -143,7 +144,8 @@ export class NetworkManager implements INetworkManager {
   };
 
   getRefreshedCheckoutLines = async (
-    checkoutlines: ICheckoutModelLine[] | null
+    checkoutlines: ICheckoutModelLine[] | null,
+    districtId: string
   ) => {
     const idsOfMissingVariants = checkoutlines
       ?.filter(line => !line.variant || !line.totalPrice)
@@ -153,13 +155,14 @@ export class NetworkManager implements INetworkManager {
 
     let variants: CheckoutProductVariants_productVariants | null | undefined;
     if (idsOfMissingVariants && idsOfMissingVariants.length) {
-      try {
-        const observable = this.client.watchQuery<CheckoutProductVariants, any>(
+      try {        
+        const observable = this.client.watchQuery<CheckoutProductVariants, CheckoutProductVariantsVariables>(
           {
             fetchPolicy: "network-only",
             query: CheckoutQueries.checkoutProductVariants,
             variables: {
               ids: idsOfMissingVariants,
+              districtId,
             },
           }
         );

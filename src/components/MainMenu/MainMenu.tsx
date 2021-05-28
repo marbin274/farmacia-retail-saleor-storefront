@@ -1,5 +1,4 @@
 import { useCart, useSignOut, useUserDetails } from "@sdk/react";
-import { useUpdateCartLines } from "@temp/@next/hooks/useUpdateCartLines";
 import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
 import * as appPaths from "@temp/app/routes";
 import { baseUrl } from "@temp/app/routes/paths";
@@ -34,7 +33,7 @@ const MainMenu: React.FC = () => {
   const location = useLocation();
   const [signOut] = useSignOut();
   const { items } = useCart();
-  const { update: updateCartLines } = useUpdateCartLines();
+  
 
   const mediumScreenPlusOne = "993px";
 
@@ -294,8 +293,7 @@ const MainMenu: React.FC = () => {
                 <Online>
                   <li
                     className="main-menu__icon main-menu__cart"
-                    onClick={() => {
-                      updateCartLines();
+                    onClick={() => {                      
                       overlayContext.show(OverlayType.cart, OverlayTheme.right);
                     }}
                   >

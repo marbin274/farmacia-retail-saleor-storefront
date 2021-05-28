@@ -9,4 +9,5 @@ export * from "./useProductVariantsAttributes";
 export * from "./useProductVariantsAttributesValuesSelection";
 export * from "./useSelectableProductVariantsAttributeValues";
 export * from "./useServiceWorker";
+export * from "./useUpdateCartLines";
 

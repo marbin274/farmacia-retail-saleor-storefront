@@ -9,6 +9,7 @@ import {
   IShippingMethodUpdate,
 } from "@sdk/repository";
 import { IPrivacyPolicy } from "../api/Checkout/types";
+import { VariantsProductsAvailable_productVariants } from "../queries/gqlTypes/VariantsProductsAvailable";
 
 export enum PendingSaveItems {
   UPDATE_CART = "updateCart",
@@ -33,8 +34,13 @@ export interface INetworkManager {
     checkoutToken: string | null
   ) => Promise<INetworkManagerResponse<ICheckoutModel>>;
   getRefreshedCheckoutLines: (
-    checkoutlines: ICheckoutModelLine[] | null
+    checkoutlines: ICheckoutModelLine[] | null,
+    districtId: string
   ) => Promise<INetworkManagerResponse<ICheckoutModelLine[]>>;
+  getCartLines: (
+    checkoutlines: ICheckoutModelLine[] | null,
+    districtId: string
+  ) => Promise<INetworkManagerResponse<VariantsProductsAvailable_productVariants | null | undefined>>;
   createCheckout: (
     email: string,
     lines: Array<{ variantId: string; quantity: number }>,

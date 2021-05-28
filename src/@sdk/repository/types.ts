@@ -205,6 +205,8 @@ export interface ISelecValue {
 export interface ILocalRepository {
   getCheckout(): ICheckoutModel | null;
   setCheckout(checkout: ICheckoutModel | null): void;
+  getDistrict(): ISelecValue | null;
+  setDistrict(district: ISelecValue): void;
   getResetPasswordEmail(): string | null;
   setResetPasswordEmail(email: string): void;
   getPayment(): IPaymentModel | null;

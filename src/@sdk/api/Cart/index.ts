@@ -188,10 +188,10 @@ export class SaleorCartAPI extends ErrorListener implements ISaleorCartAPI {
       if (line.quantity > 0) {
          line.totalPrice = null;
       }
-    }
-
+    }    
     const { data, error } = await this.networkManager.getRefreshedCheckoutLines(
-      checkout.lines
+      checkout.lines,
+      this.checkoutRepositoryManager.getRepository().getDistrict()?.code || ''
     );
 
     if (error) {
@@ -204,11 +204,11 @@ export class SaleorCartAPI extends ErrorListener implements ISaleorCartAPI {
     }
   };
 
-  getCartLines = async (districtId:string) => {
+  getCartLines = async () => {
     
     const { data, error } = await this.networkManager.getCartLines(
       this.saleorState.checkout?.lines || null,
-      districtId
+      this.checkoutRepositoryManager.getRepository().getDistrict()?.code || ''
     );
 
     if (error) {

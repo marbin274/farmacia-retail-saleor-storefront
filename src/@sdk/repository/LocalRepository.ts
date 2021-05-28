@@ -5,6 +5,7 @@ import {
   IPaymentModel,
   LocalStorageItems,
   IUseCart,
+  ISelecValue,
 } from "./types";
 
 export class LocalRepository extends Repository implements ILocalRepository {
@@ -13,6 +14,12 @@ export class LocalRepository extends Repository implements ILocalRepository {
   }
   setCheckout(checkout: ICheckoutModel | null): void {
     this.saveObject(LocalStorageItems.CHECKOUT, checkout);
+  }
+  getDistrict(): ISelecValue | null {
+    return this.retrieveObject(LocalStorageItems.DISTRICT_SELECTED);
+  }
+  setDistrict(district: ISelecValue): void {
+    this.saveObject(LocalStorageItems.DISTRICT_SELECTED, district);
   }
   getFinallCheckout():  ICheckoutModel | null {
     return this.retrieveObject(LocalStorageItems.FINAL_CHECKOUT);

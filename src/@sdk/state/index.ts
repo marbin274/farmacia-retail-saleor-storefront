@@ -138,7 +138,10 @@ export class SaleorState extends NamedObservable<StateItems>
           const {
             data,
             error,
-          } = await this.networkManager.getRefreshedCheckoutLines(activeLines);
+          } = await this.networkManager.getRefreshedCheckoutLines(
+            activeLines,
+            this.repository.getDistrict()?.code || ''
+            );
 
           if (!error) {
             checkoutModel.lines = data;

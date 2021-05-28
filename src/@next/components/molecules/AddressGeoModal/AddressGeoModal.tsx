@@ -1,7 +1,6 @@
 import { Overlay } from "@components/organisms";
 import { turquoise } from "@temp/@next/globalStyles/constants";
-import { useDistrictSelected } from "@temp/@next/hooks/useDistrictSelected";
-import { useAddressGeocalizationInfo } from "@temp/@next/hooks";
+import { useAddressGeocalizationInfo, useDistrictSelected } from "@temp/@next/hooks";
 import { useCart } from "@temp/@sdk/react";
 import { useShopContext } from "@temp/components/ShopProvider/context";
 import React from "react";
@@ -13,15 +12,17 @@ import * as S from "./styles";
 
 export const AddressGeoModal: React.FC = () => {
     const { availableDistricts } = useShopContext();
+    const [, setShowAddressGeocalizationInfo] = useAddressGeocalizationInfo();
+    const [districtSelected, setDistrictSelected] = useDistrictSelected();
     const [show, setShow] = React.useState(false);
     const [showInfo, setShowInfo] = React.useState<boolean>(false);
-    const [districtSelected, setDistrictSelected] = useDistrictSelected();    
-    const [, setShowAddressGeocalizationInfo] = useAddressGeocalizationInfo();
     const [district, setDistrict] = React.useState(districtSelected);
+
     const { items } = useCart();
 
     const handleConfirm = () => {
         setDistrictSelected(district);
+        
         if (items?.length) {
             setShowInfo(true);
             return;

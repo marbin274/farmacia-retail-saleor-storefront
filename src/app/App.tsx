@@ -13,17 +13,24 @@ import { Routes } from "./routes";
 registerLocale("es", es)
 
 const App: React.FC = () => {
-  const { update } = useUpdateCartLines();
-  const [, setDistrict] = useDistrictSelected();
+  const { update: updateCartLines } = useUpdateCartLines();
+  const [district, setDistrict] = useDistrictSelected();
   
   React.useEffect(() => {
     (window as any).updateCartLines = () => {
-      update();
+      updateCartLines();
     }
     (window as any).updateDistrict = (district) => {
       setDistrict(district);
     }
   });
+
+  React.useEffect(() => {
+    if (district) {
+      updateCartLines();
+    }
+  }, [district]);
+
 
   return (
     <>
