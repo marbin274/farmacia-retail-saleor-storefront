@@ -8,8 +8,10 @@ import { addressLocationType } from "./types";
 export const Wrapper = styled.div`
     align-items: baseline;    
     display:flex;
+    padding: 0rem 1.25rem;
     position: relative;
     ${mediaUp.mediumScreen`
+        padding: 0rem;
         width: 18rem;
     `}    
 `;

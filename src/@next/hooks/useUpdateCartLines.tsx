@@ -32,11 +32,11 @@ export const useUpdateCartLines = () => {
                     line.totalPrice = {
                         gross: {
                             ...variantPrice.gross,
-                            amount: variantPrice.gross.amount * variant.quantityAvailable!,
+                            amount: variantPrice.gross.amount * quantity,
                         },
                         net: {
                             ...variantPrice.net,
-                            amount: variantPrice.net.amount * variant.quantityAvailable!,
+                            amount: variantPrice.net.amount * quantity,
                         },
                     };
 

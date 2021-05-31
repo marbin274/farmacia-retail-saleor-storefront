@@ -25,69 +25,62 @@ export const userCheckoutDetails = gql`
   }
 `;
 
-export const checkoutProductVariantFragment = gql`
-  ${checkoutPriceFragment}
-  fragment ProductVariant on ProductVariant {
-    id
-    name
-    sku
-    quantityAvailable(district: $districtId)
-    isAvailable
-    pricing {
-      onSale
-      priceUndiscounted {
-        ...Price
-      }
-      price {
-        ...Price
-      }
-    }
-    attributes {
-      attribute {
-        id
-        name
-      }
-      values {
-        id
-        name
-        value: name
-      }
-    }
-    product {
-      id
-      name
-      attributes {
-        attribute {
-          id
-          name
-        }
-        values {
-          id
-          name
-          value: name
-        }
-      }
-      thumbnail {
-        url
-        alt
-      }
-      thumbnail2x: thumbnail(size: 510) {
-        url
-      }
-      productType {
-        isShippingRequired
-      }
-    }
-  }
-`;
-
 export const checkoutProductVariants = gql`
-  ${checkoutProductVariantFragment}
+  ${checkoutPriceFragment}
   query CheckoutProductVariants($ids: [ID], $districtId: ID) {
     productVariants(ids: $ids, first: 100) {
       edges {
         node {
-          ...ProductVariant
+          id
+          name
+          sku
+          quantityAvailable(district: $districtId)
+          isAvailable
+          pricing {
+            onSale
+            priceUndiscounted {
+              ...Price
+            }
+            price {
+              ...Price
+            }
+          }
+          attributes {
+            attribute {
+              id
+              name
+            }
+            values {
+              id
+              name
+              value: name
+            }
+          }
+          product {
+            id
+            name
+            attributes {
+              attribute {
+                id
+                name
+              }
+              values {
+                id
+                name
+                value: name
+              }
+            }
+            thumbnail {
+              url
+              alt
+            }
+            thumbnail2x: thumbnail(size: 510) {
+              url
+            }
+            productType {
+              isShippingRequired
+            }
+          }
         }
       }
     }
