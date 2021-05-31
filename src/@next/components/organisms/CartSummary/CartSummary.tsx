@@ -134,11 +134,11 @@ const CartSummary: React.FC<IProps> = ({
                       canAddToCart={canAddToCart}
                       index={index}
                       isOnSale={isOnSale}
-                      sku={product.variant.sku || ""}
-                      quantity={product.quantity}
-                      name={product.name}
-                      price={product.variant.pricing?.price}
-                      thumbnail={product.variant.product?.thumbnail}
+                      sku={product?.variant?.sku || ""}
+                      quantity={product?.quantity}
+                      name={product?.name}
+                      price={product?.variant?.pricing?.price}
+                      thumbnail={product?.variant?.product?.thumbnail}
                     />
                   </S.ProductLine>
                   <S.HR />

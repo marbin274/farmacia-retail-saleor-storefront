@@ -1,7 +1,11 @@
 import { SaleorState } from "@sdk/state";
-import { Checkout_lines_variant_pricing } from '../../fragments/gqlTypes/Checkout';
+import { Checkout_lines_variant_pricing } from "../../fragments/gqlTypes/Checkout";
 import { LocalRepository } from "../LocalRepository";
-import { ICheckoutModel, ICheckoutModelLine, ICheckoutModelLineVariantLocalStorage } from "../types";
+import {
+  ICheckoutModel,
+  ICheckoutModelLine,
+  ICheckoutModelLineVariantLocalStorage,
+} from "../types";
 import { ICheckoutRepositoryManager } from "./types";
 
 export class CheckoutRepositoryManager implements ICheckoutRepositoryManager {
@@ -17,7 +21,10 @@ export class CheckoutRepositoryManager implements ICheckoutRepositoryManager {
     return this.repository;
   };
 
-  addItemToCart = (variantLS: ICheckoutModelLineVariantLocalStorage, quantity: number) => {
+  addItemToCart = (
+    variantLS: ICheckoutModelLineVariantLocalStorage,
+    quantity: number
+  ) => {
     const lines = this.saleorState.checkout?.lines || [];
     let variant = lines.find(variant => variant.variant.id === variantLS.id);
     const alteredLines = lines.filter(
@@ -28,19 +35,20 @@ export class CheckoutRepositoryManager implements ICheckoutRepositoryManager {
       variant.quantity = newVariantQuantity;
       alteredLines.push(variant);
     } else {
-      const product = variantLS?.product
+      const product = variantLS?.product;
       variant = {
         id: variantLS?.id,
         name: product?.name || "",
         quantity,
         variant: {
           id: variantLS.id,
-          pricing: (product.pricing as Checkout_lines_variant_pricing),
+          pricing: product.pricing as Checkout_lines_variant_pricing,
           product: {
             __typename: "Product",
-            attributes:[],
+            attributes: [],
             id: product?.id || "",
             name: product?.name || "",
+            category: variantLS?.product?.category,
             productType: {
               __typename: "ProductType",
               isShippingRequired: true,
@@ -48,7 +56,7 @@ export class CheckoutRepositoryManager implements ICheckoutRepositoryManager {
             thumbnail: null,
             thumbnail2x: null,
           },
-          quantityAvailable: product.quantityAvailable,          
+          quantityAvailable: product.quantityAvailable,
         },
       };
       alteredLines.push(variant);
@@ -102,30 +110,34 @@ export class CheckoutRepositoryManager implements ICheckoutRepositoryManager {
       variant.quantity = quantity;
       alteredLines.push(variant);
     }
-    const alteredCheckout: ICheckoutModel | null = this.getAlteredCheckout(alteredLines);
+    const alteredCheckout: ICheckoutModel | null = this.getAlteredCheckout(
+      alteredLines
+    );
     this.repository.setCheckout(alteredCheckout);
 
     return alteredCheckout;
   };
 
-  getAlteredCheckout = (alteredLines: ICheckoutModelLine[]): ICheckoutModel | null => {
+  getAlteredCheckout = (
+    alteredLines: ICheckoutModelLine[]
+  ): ICheckoutModel | null => {
     const alteredCheckout: ICheckoutModel | null = this.saleorState.checkout
       ? {
-        ...this.saleorState.checkout,
-        availableShippingMethods: undefined,
-        id: undefined,
-        lines: alteredLines,
-        shippingAddress: {
-          ...this.saleorState.checkout.shippingAddress,
-          city: undefined,
+          ...this.saleorState.checkout,
+          availableShippingMethods: undefined,
           id: undefined,
-        },
-        shippingMethod: null,
-        token: undefined,
-      }
+          lines: alteredLines,
+          shippingAddress: {
+            ...this.saleorState.checkout.shippingAddress,
+            city: undefined,
+            id: undefined,
+          },
+          shippingMethod: null,
+          token: undefined,
+        }
       : {
-        lines: alteredLines,
-      };
+          lines: alteredLines,
+        };
     return alteredCheckout;
-  }
+  };
 }

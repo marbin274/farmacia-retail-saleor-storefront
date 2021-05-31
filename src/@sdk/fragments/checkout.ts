@@ -107,9 +107,9 @@ export const checkoutShippingMethodFragment = gql`
     scheduleDates {
       date
       scheduleTimes {
-          id
-          startTime
-          endTime
+        id
+        startTime
+        endTime
       }
     }
     subtitle

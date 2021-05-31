@@ -4,7 +4,7 @@ import {
   Checkout_lines_variant_pricing,
   Checkout_lines_variant_product
 } from "../fragments/gqlTypes/Checkout";
-
+import { ICategory } from "@app/types/ICategory";
 import { ProductDetails_product_variants_pricing } from '../queries/gqlTypes/ProductDetails';
 import { IProductVariantPricing } from '@app/types/IProductVariantPricing';
 import { IDiscount, IShippingPrice, ISubtotalPrice, IItems } from "../api/Cart/types";
@@ -26,6 +26,11 @@ export interface ICheckoutModelLineTotalPrice {
   net: ICheckoutModelPriceValue;
 }
 
+export interface ICheckoutModelLineVariantProduct extends Checkout_lines_variant_product  {
+  category?: ICategory | null;
+
+}
+
 export interface ICheckoutModelLineVariant {
   attributes?: Checkout_lines_variant_attributes[];
   id: string;
@@ -33,9 +38,10 @@ export interface ICheckoutModelLineVariant {
   name?: string;
   sku?: string;
   pricing?: Checkout_lines_variant_pricing  | null;
-  product?: Checkout_lines_variant_product;
+  product?: ICheckoutModelLineVariantProduct;
   quantityAvailable?: number;
 }
+
 
 export interface ICheckoutModelLineVariantLocalStorage {
   id: string;
@@ -43,7 +49,8 @@ export interface ICheckoutModelLineVariantLocalStorage {
     id: string | undefined,
     name: string | undefined,
     pricing?: ProductDetails_product_variants_pricing | IProductVariantPricing | undefined | null,
-    quantityAvailable?: number
+    quantityAvailable?: number,
+    category?: ICategory | null;
   };
 }
 

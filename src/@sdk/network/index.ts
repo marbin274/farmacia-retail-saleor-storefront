@@ -6,43 +6,41 @@ import { CountryCode } from "@sdk/gqlTypes/globalTypes";
 import * as CheckoutMutations from "@sdk/mutations/checkout";
 import {
   AddCheckoutPromoCode,
-  AddCheckoutPromoCodeVariables
+  AddCheckoutPromoCodeVariables,
 } from "@sdk/mutations/gqlTypes/AddCheckoutPromoCode";
 import {
   CompleteCheckout,
-  CompleteCheckoutVariables
+  CompleteCheckoutVariables,
 } from "@sdk/mutations/gqlTypes/CompleteCheckout";
 import {
   CreateCheckout,
-  CreateCheckoutVariables
+  CreateCheckoutVariables,
 } from "@sdk/mutations/gqlTypes/CreateCheckout";
 import {
   CreateCheckoutPayment,
-  CreateCheckoutPaymentVariables
+  CreateCheckoutPaymentVariables,
 } from "@sdk/mutations/gqlTypes/CreateCheckoutPayment";
 import {
   RemoveCheckoutPromoCode,
-  RemoveCheckoutPromoCodeVariables
+  RemoveCheckoutPromoCodeVariables,
 } from "@sdk/mutations/gqlTypes/RemoveCheckoutPromoCode";
 import {
   UpdateCheckoutBillingAddress,
-  UpdateCheckoutBillingAddressVariables
+  UpdateCheckoutBillingAddressVariables,
 } from "@sdk/mutations/gqlTypes/UpdateCheckoutBillingAddress";
 import {
   UpdateCheckoutBillingAddressWithEmail,
-  UpdateCheckoutBillingAddressWithEmailVariables
+  UpdateCheckoutBillingAddressWithEmailVariables,
 } from "@sdk/mutations/gqlTypes/UpdateCheckoutBillingAddressWithEmail";
 import {
   UpdateCheckoutLine,
-  UpdateCheckoutLineVariables
+  UpdateCheckoutLineVariables,
 } from "@sdk/mutations/gqlTypes/UpdateCheckoutLine";
 import {
   UpdateCheckoutShippingAddress,
-  UpdateCheckoutShippingAddressVariables
+  UpdateCheckoutShippingAddressVariables,
 } from "@sdk/mutations/gqlTypes/UpdateCheckoutShippingAddress";
-import {
-  UpdateCheckoutShippingMethod
-} from "@sdk/mutations/gqlTypes/UpdateCheckoutShippingMethod";
+import { UpdateCheckoutShippingMethod } from "@sdk/mutations/gqlTypes/UpdateCheckoutShippingMethod";
 import * as CheckoutQueries from "@sdk/queries/checkout";
 import * as ProductQueries from "@sdk/queries/products";
 import { CheckoutDetails } from "@sdk/queries/gqlTypes/CheckoutDetails";
@@ -53,7 +51,7 @@ import {
 } from "@sdk/queries/gqlTypes/CheckoutProductVariants";
 import {
   GetShopPaymentGateways,
-  GetShopPaymentGateways_shop_availablePaymentGateways
+  GetShopPaymentGateways_shop_availablePaymentGateways,
 } from "@sdk/queries/gqlTypes/GetShopPaymentGateways";
 import { UserCheckoutDetails } from "@sdk/queries/gqlTypes/UserCheckoutDetails";
 import * as ShopQueries from "@sdk/queries/shop";
@@ -65,15 +63,17 @@ import {
   IPaymentModel,
   IShippingMethodUpdate,
 } from "@sdk/repository";
-import {
-  filterNotEmptyArrayItems
-} from "@sdk/utils";
+import { filterNotEmptyArrayItems } from "@sdk/utils";
 import ApolloClient from "apollo-client";
 import { IPrivacyPolicy } from "../api/Checkout/types";
 import { UpdateCheckoutShippingMethodWithScheduleDateVariables } from "../mutations/gqlTypes/UpdateCheckoutShippingMethodWithScheduleDate";
 import { launchPurchaseEvent, ecommerceProductsMapper } from "@sdk/gaConfig";
 import { INetworkManager } from "./types";
-import { VariantsProductsAvailable, VariantsProductsAvailableVariables, VariantsProductsAvailable_productVariants } from "../queries/gqlTypes/VariantsProductsAvailable";
+import {
+  VariantsProductsAvailable,
+  VariantsProductsAvailableVariables,
+  VariantsProductsAvailable_productVariants,
+} from "../queries/gqlTypes/VariantsProductsAvailable";
 
 export class NetworkManager implements INetworkManager {
   private client: ApolloClient<any>;
@@ -209,19 +209,22 @@ export class NetworkManager implements INetworkManager {
                 },
               }
             : null;
-
           const variant = {
             attributes: edge.node.attributes,
             id: edge.node.id,
             isAvailable: edge.node.isAvailable,
             name: edge.node.name,
             pricing: edge.node.pricing,
-            product: edge.node.product,
+            product: {
+              ...edge.node.product,
+              category: existingLine?.variant.product?.category,
+            },
             quantityAvailable: edge.node.quantityAvailable,
             sku: edge.node.sku,
           };
+
           return {
-            attributes:edge.node.product.attributes,
+            attributes: edge.node.product.attributes,
             id: edge.node.product.id || "",
             name: edge.node.product.name,
             quantity: existingLine?.quantity || 0,
@@ -233,15 +236,15 @@ export class NetworkManager implements INetworkManager {
     const linesWithProperVariantUpdated: ICheckoutModelLine[] = linesWithProperVariant.map(
       (line): ICheckoutModelLine => {
         const variantPricing = line.variant.pricing?.price;
-         const totalPrice  = variantPricing
+        const totalPrice = variantPricing
           ? {
               gross: {
                 ...variantPricing.gross,
-                amount: variantPricing.gross.amount  * line.quantity,
+                amount: variantPricing.gross.amount * line.quantity,
               },
               net: {
                 ...variantPricing.net,
-                amount: variantPricing.net.amount  * line.quantity,
+                amount: variantPricing.net.amount * line.quantity,
               },
             }
           : null;
@@ -485,7 +488,7 @@ export class NetworkManager implements INetworkManager {
     try {
       const variables = {
         checkoutId,
-        documentNumber: documentNumber || '',
+        documentNumber: documentNumber || "",
         email,
         privacyPolicy: privacyPolicy || {},
         shippingAddress: {
@@ -679,11 +682,14 @@ export class NetworkManager implements INetworkManager {
     }
   };
 
-  setShippingMethod = async (shippingMethodUpdate: IShippingMethodUpdate, checkoutId: string) => {
+  setShippingMethod = async (
+    shippingMethodUpdate: IShippingMethodUpdate,
+    checkoutId: string
+  ) => {
     try {
-      const mutation = shippingMethodUpdate.scheduleDate ?
-        CheckoutMutations.updateCheckoutShippingMethodMutationWithScheduleDate :
-        CheckoutMutations.updateCheckoutShippingMethodMutation;
+      const mutation = shippingMethodUpdate.scheduleDate
+        ? CheckoutMutations.updateCheckoutShippingMethodMutationWithScheduleDate
+        : CheckoutMutations.updateCheckoutShippingMethodMutation;
       const { data, errors } = await this.client.mutate<
         UpdateCheckoutShippingMethod,
         UpdateCheckoutShippingMethodWithScheduleDateVariables
@@ -692,7 +698,8 @@ export class NetworkManager implements INetworkManager {
         variables: {
           checkoutId,
           date: shippingMethodUpdate.scheduleDate?.date,
-          scheduleTimeId: shippingMethodUpdate.scheduleDate?.scheduleTimeId || '',
+          scheduleTimeId:
+            shippingMethodUpdate.scheduleDate?.scheduleTimeId || "",
           shippingMethodId: shippingMethodUpdate.shippingMethodId,
         },
       });
@@ -741,11 +748,12 @@ export class NetworkManager implements INetworkManager {
         };
       } else if (data?.checkoutAddPromoCode?.checkout) {
         return {
-          data: this.constructCheckoutModel({
-            ...data.checkoutAddPromoCode.checkout,
-            availableShippingMethods: [],            
-          },
-          data.checkoutAddPromoCode.message
+          data: this.constructCheckoutModel(
+            {
+              ...data.checkoutAddPromoCode.checkout,
+              availableShippingMethods: [],
+            },
+            data.checkoutAddPromoCode.message
           ),
         };
       } else {
@@ -901,27 +909,30 @@ export class NetworkManager implements INetworkManager {
     return !!getAuthToken();
   };
 
-  private constructCheckoutModel = ({
-    id,
-    token,
-    email,
-    shippingAddress,
-    billingAddress,
-    discount,
-    discountName,
-    voucherDiscountType,
-    voucherDiscountValue,
-    translatedDiscountName,
-    voucherType,
-    voucherCode,
-    lines,
-    availableShippingMethods,
-    shippingMethod,
-    documentNumber,
-    termsAndConditions,
-    dataTreatmentPolicy,
-    scheduleDate,
-  }: Checkout, message?: string | null): ICheckoutModel => ({
+  private constructCheckoutModel = (
+    {
+      id,
+      token,
+      email,
+      shippingAddress,
+      billingAddress,
+      discount,
+      discountName,
+      voucherDiscountType,
+      voucherDiscountValue,
+      translatedDiscountName,
+      voucherType,
+      voucherCode,
+      lines,
+      availableShippingMethods,
+      shippingMethod,
+      documentNumber,
+      termsAndConditions,
+      dataTreatmentPolicy,
+      scheduleDate,
+    }: Checkout,
+    message?: string | null
+  ): ICheckoutModel => ({
     availableShippingMethods: availableShippingMethods
       ? availableShippingMethods.filter(filterNotEmptyArrayItems)
       : [],
