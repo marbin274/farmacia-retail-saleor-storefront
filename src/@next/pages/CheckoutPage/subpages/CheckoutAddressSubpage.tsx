@@ -1,17 +1,22 @@
-import { CheckoutAddress } from "@components/organisms";
+import { CheckoutAddress, StockValidationModal } from "@components/organisms";
 import { useCheckout, useUserDetails } from "@sdk/react";
 import { alertService } from "@temp/@next/components/atoms/Alert/AlertService";
 import { addressFormSchema } from "@temp/@next/components/organisms/AddressForm/adddressFormSchema";
+import { useDistrictSelected } from "@temp/@next/hooks/useDistrictSelected";
+import { useUpdateCartLines } from "@temp/@next/hooks/useUpdateCartLines";
 import { IPrivacyPolicy } from "@temp/@sdk/api/Checkout/types";
+import { CheckoutErrorCode } from "@temp/@sdk/gqlTypes/globalTypes";
+import { CreateCheckout_checkoutCreate_checkoutErrors_products } from "@temp/@sdk/mutations/gqlTypes/CreateCheckout";
+import { baseUrl } from "@temp/app/routes/paths";
 import { useShopContext } from "@temp/components/ShopProvider/context";
 import { IAddress, IAddressWithEmail, IFormError } from "@types";
 import { filterNotEmptyArrayItems } from "@utils/misc";
-import NoStockIcon from "images/auna/no-stock.svg";
 import React, {
   forwardRef,
   RefForwardingComponent,
   useImperativeHandle,
   useRef,
+  useState,
 } from "react";
 import { RouteComponentProps } from "react-router";
 
@@ -37,9 +42,26 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
   }: IProps,
   ref
 ) => {
+  const [showStockValidation, setShowStockValidation] = useState(false);
+  const [stockValidationProducts, setStockValidationProducts] = useState<
+    CreateCheckout_checkoutCreate_checkoutErrors_products[]
+  >();
+  const [currentDistrict, setCurrentDistrict] = useState("");
   const checkoutAddressFormId = "address-form";
   const checkoutAddressFormRef = useRef<HTMLFormElement>(null);
   const checkoutNewAddressFormId = "new-address-form";
+  const { data: user } = useUserDetails();
+  const {
+    checkout,
+    setShippingAddress,
+    selectedShippingAddressId,
+  } = useCheckout();
+  const { availableDistricts, countries } = useShopContext();
+  const [, setDistrict] = useDistrictSelected();
+  const {
+    update: updateCartLines,
+    loading: updatingCartLines,
+  } = useUpdateCartLines();
 
   const _addressFormSchema = addressFormSchema;
 
@@ -96,15 +118,6 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
       }
     },
   }));
-  // const history = useHistory();
-  const { data: user } = useUserDetails();
-
-  const {
-    checkout,
-    setShippingAddress,
-    selectedShippingAddressId,
-  } = useCheckout();
-  const { countries } = useShopContext();
 
   const checkoutShippingAddress = checkout?.shippingAddress
     ? {
@@ -136,7 +149,7 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     }
 
     changeSubmitProgress(true);
-    const { dataError } = await setShippingAddress(
+    const { checkoutErrors, dataError } = await setShippingAddress(
       {
         ...address,
         id: userAddressId,
@@ -153,20 +166,24 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
       documentNumber ? documentNumber : ""
     );
 
+    if (checkoutErrors?.length! > 0) {
+      const checkoutError = checkoutErrors![0];
+      if (checkoutError.code === CheckoutErrorCode.INSUFFICIENT_STOCK) {
+        setStockValidationProducts(
+          checkoutError.products! as CreateCheckout_checkoutCreate_checkoutErrors_products[]
+        );
+        setCurrentDistrict(address.city || "");
+        setShowStockValidation(true);
+        changeSubmitProgress(false);
+        return;
+      }
+    }
+
     const errors = dataError?.error;
     changeSubmitProgress(false);
     if (errors) {
       setAddressSubPageErrors(errors);
       switch (errors[0].field) {
-        case "quantity":
-          alertService.sendAlert({
-            buttonText: "Entendido",
-            icon: NoStockIcon,
-            message: errors[0].message,
-            title: "Producto sin stock",
-            type: "Info",
-          });
-          break;
         default:
           alertService.sendAlert({
             buttonText: "Entendido",
@@ -199,23 +216,57 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
       onSelect: () => null,
     }));
 
+  const onStockValidationContinue = async () => {
+    if (updatingCartLines) {
+      return;
+    }
+
+    setShowStockValidation(false);
+    const district = availableDistricts?.find(x => x?.name === currentDistrict);
+    setDistrict({ code: district!.id, description: district!.name });
+    setCurrentDistrict("");
+    setStockValidationProducts(undefined);
+
+    await updateCartLines();
+    checkoutAddressFormRef.current?.dispatchEvent(
+      new Event("submit", { cancelable: true })
+    );
+  };
+
   return (
-    <CheckoutAddress
-      {...props}
-      errors={addressSubPageErrors}
-      formId={checkoutAddressFormId}
-      formRef={checkoutAddressFormRef}
-      checkoutAddress={checkoutShippingAddress}
-      email={checkout?.email}
-      checkoutData={checkout}
-      userAddresses={userAdresses}
-      selectedUserAddressId={selectedShippingAddressId}
-      countries={countries}
-      user={user}
-      newAddressFormId={checkoutNewAddressFormId}
-      setShippingAddress={handleSetShippingAddress}
-      setFormValue={handleFormValues}
-    />
+    <>
+      <CheckoutAddress
+        {...props}
+        availableDistricts={availableDistricts!}
+        errors={addressSubPageErrors}
+        formId={checkoutAddressFormId}
+        formRef={checkoutAddressFormRef}
+        checkoutAddress={checkoutShippingAddress}
+        email={checkout?.email}
+        checkoutData={checkout}
+        userAddresses={userAdresses}
+        selectedUserAddressId={selectedShippingAddressId}
+        countries={countries}
+        user={user}
+        newAddressFormId={checkoutNewAddressFormId}
+        setShippingAddress={handleSetShippingAddress}
+        setFormValue={handleFormValues}
+      />
+      <StockValidationModal
+        show={showStockValidation}
+        onClose={() => {
+          setShowStockValidation(false);
+          setCurrentDistrict("");
+          setStockValidationProducts(undefined);
+        }}
+        products={stockValidationProducts}
+        onClickKeepSearching={() => {
+          props.history.push(baseUrl);
+        }}
+        onClickContinue={onStockValidationContinue}
+        district={currentDistrict}
+      />
+    </>
   );
 };
 

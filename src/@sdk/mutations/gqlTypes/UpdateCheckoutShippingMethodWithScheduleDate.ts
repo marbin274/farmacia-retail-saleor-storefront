@@ -743,12 +743,20 @@ export interface UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMe
   dataTreatmentPolicy: boolean;
 }
 
+export interface UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMethodUpdate_errors_products {
+  __typename: "FailedProduct";
+  /**
+   * Product variant SKU which causes error.
+   */
+  sku: string | null;
+  /**
+   * Stock available 
+   */
+  quantityAvailable: number | null;
+}
+
 export interface UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMethodUpdate_errors {
   __typename: "CheckoutError";
-  /**
-   * The error code.
-   */
-  code: CheckoutErrorCode;
   /**
    * Name of a field that caused the error. A value of `null` indicates that the
    * error isn't associated with a particular field.
@@ -758,6 +766,14 @@ export interface UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMe
    * The error message.
    */
   message: string | null;
+  /**
+   * The error code.
+   */
+  code: CheckoutErrorCode;
+  /**
+   * List of products that produce errors.
+   */
+  products: (UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMethodUpdate_errors_products | null)[] | null;
 }
 
 export interface UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMethodUpdate {

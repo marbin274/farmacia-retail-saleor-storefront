@@ -68,6 +68,7 @@ export const theme = {
   aunaBlack,
   aunaBlackGray,
   aunaBrand3,
+  aunaBrand5,
   aunaDisabled: aunaGrey80,
   aunaDisabledBackground: aunaGrey40,
   aunaError,

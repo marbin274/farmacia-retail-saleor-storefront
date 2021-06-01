@@ -162,7 +162,7 @@ export class SaleorCheckoutAPI extends ErrorListener
     alteredLines = alteredLinesFromLocalStorage?.filter(x => x.quantity > 0);
 
     if (alteredLines && checkoutId) {
-      const { data, dataError } = await this.jobsManager.run(
+      const { checkoutErrors, data, dataError } = await this.jobsManager.run(
         "checkout",
         "setShippingAddress",
         {
@@ -176,12 +176,13 @@ export class SaleorCheckoutAPI extends ErrorListener
       );
 
       return {
+        checkoutErrors,
         data,
         dataError,
         pending: false,
       };
     } else if (alteredLines) {
-      const { data, dataError } = await this.jobsManager.run(
+      const { checkoutErrors, data, dataError } = await this.jobsManager.run(
         "checkout",
         "createCheckout",
         {
@@ -197,6 +198,7 @@ export class SaleorCheckoutAPI extends ErrorListener
       );
 
       return {
+        checkoutErrors,
         data,
         dataError,
         pending: false,

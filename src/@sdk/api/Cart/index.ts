@@ -221,10 +221,14 @@ export class SaleorCartAPI extends ErrorListener implements ISaleorCartAPI {
     }
   }
 
-  updateCartLines = (lines: ICheckoutModelLine[]) => {
+  updateCartLines = async (lines: ICheckoutModelLine[]) => {
     this.checkoutRepositoryManager.getRepository().setCheckout({
       ...this.saleorState.checkout,
       lines,
     });
+
+    if (this.saleorState.checkout?.id) {
+      this.jobsManager.addToQueue("cart", "setCartItem");
+    }
   }
 }

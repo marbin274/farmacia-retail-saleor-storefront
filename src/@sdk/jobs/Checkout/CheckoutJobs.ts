@@ -36,7 +36,7 @@ export class CheckoutJobs {
     privacyPolicy?: IPrivacyPolicy;
     documentNumber: string;
   }): PromiseCheckoutJobRunResponse => {
-    const { data, error } = await this.networkManager.createCheckout(
+    const { checkoutErrors, data, error } = await this.networkManager.createCheckout(
       email,
       lines,
       shippingAddress,
@@ -45,11 +45,11 @@ export class CheckoutJobs {
       documentNumber
     );
 
-    if (error) {
-      /**
-       * TODO: Differentiate errors!!! THIS IS A BUG!!!
-       * DataErrorCheckoutTypes.SET_SHIPPING_ADDRESS is just one of every possible - instead of deprecated errors, checkoutErrors should be used.
-       */
+    if (checkoutErrors?.length! > 0) {
+      return {
+        checkoutErrors,
+      };
+    } else if (error) {
       return {
         dataError: {
           error,
@@ -86,15 +86,19 @@ export class CheckoutJobs {
   }): PromiseCheckoutJobRunResponse => {
     const checkout = this.repository.getCheckout();
 
-    const { data, error } = await this.networkManager.setShippingAddress(
+    const { checkoutErrors, data, error } = await this.networkManager.setShippingAddress(
       shippingAddress,
       email,
       checkoutId,
       documentNumber,
       privacyPolicy
     );
-
-    if (error) {
+    
+    if (checkoutErrors?.length! > 0) {
+      return {
+        checkoutErrors,
+      };
+    } else if (error) {
       return {
         dataError: {
           error,

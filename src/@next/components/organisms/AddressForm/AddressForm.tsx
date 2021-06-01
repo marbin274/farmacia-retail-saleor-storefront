@@ -128,7 +128,6 @@ export const AddressForm: React.FC<IProps> = ({
   return (
     <Formik
       initialValues={addressWithPickedFields}
-      enableReinitialize={true}
       onSubmit={handleOnSubmitAddressForm}
       validationSchema={formSchemaValidation}
     >

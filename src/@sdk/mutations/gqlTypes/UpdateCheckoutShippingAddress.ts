@@ -2,7 +2,7 @@
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
-import { AddressInput, PrivacyPolicyInput } from "./../../gqlTypes/globalTypes";
+import { AddressInput, PrivacyPolicyInput, CheckoutErrorCode } from "./../../gqlTypes/globalTypes";
 
 // ====================================================
 // GraphQL mutation operation: UpdateCheckoutShippingAddress
@@ -756,6 +756,39 @@ export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_che
   dataTreatmentPolicy: boolean;
 }
 
+export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkoutErrors_products {
+  __typename: "FailedProduct";
+  /**
+   * Product variant SKU which causes error.
+   */
+  sku: string | null;
+  /**
+   * Stock available 
+   */
+  quantityAvailable: number | null;
+}
+
+export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkoutErrors {
+  __typename: "CheckoutError";
+  /**
+   * Name of a field that caused the error. A value of `null` indicates that the
+   * error isn't associated with a particular field.
+   */
+  field: string | null;
+  /**
+   * The error message.
+   */
+  message: string | null;
+  /**
+   * The error code.
+   */
+  code: CheckoutErrorCode;
+  /**
+   * List of products that produce errors.
+   */
+  products: (UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkoutErrors_products | null)[] | null;
+}
+
 export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate {
   __typename: "CheckoutShippingAddressUpdate";
   /**
@@ -766,6 +799,7 @@ export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate {
    * An updated checkout.
    */
   checkout: UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout | null;
+  checkoutErrors: UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkoutErrors[];
 }
 
 export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_scheduleDate_scheduleTime {

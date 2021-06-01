@@ -10,27 +10,26 @@ import { Footer, MainMenu, MetaConsumer, OverlayManager } from "../components";
 import "../globalStyles/scss/index.scss";
 import { Routes } from "./routes";
 
-registerLocale("es", es)
+registerLocale("es", es);
 
 const App: React.FC = () => {
   const { update: updateCartLines } = useUpdateCartLines();
   const [district, setDistrict] = useDistrictSelected();
-  
+
   React.useEffect(() => {
     (window as any).updateCartLines = () => {
       updateCartLines();
-    }
-    (window as any).updateDistrict = (district) => {
+    };
+    (window as any).updateDistrict = district => {
       setDistrict(district);
-    }
+    };
   });
 
   React.useEffect(() => {
-    if (district) {
+    if (district && !window.location.pathname.includes("/checkout/")) {
       updateCartLines();
     }
   }, [district]);
-
 
   return (
     <>

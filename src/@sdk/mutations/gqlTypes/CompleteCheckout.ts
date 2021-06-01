@@ -8,6 +8,18 @@ import { CheckoutErrorCode, PaymentChargeStatusEnum, ShippingStatusEnum, OrderSt
 // GraphQL mutation operation: CompleteCheckout
 // ====================================================
 
+export interface CompleteCheckout_checkoutComplete_checkoutErrors_products {
+  __typename: "FailedProduct";
+  /**
+   * Product variant SKU which causes error.
+   */
+  sku: string | null;
+  /**
+   * Stock available 
+   */
+  quantityAvailable: number | null;
+}
+
 export interface CompleteCheckout_checkoutComplete_checkoutErrors {
   __typename: "CheckoutError";
   /**
@@ -23,6 +35,10 @@ export interface CompleteCheckout_checkoutComplete_checkoutErrors {
    * The error code.
    */
   code: CheckoutErrorCode;
+  /**
+   * List of products that produce errors.
+   */
+  products: (CompleteCheckout_checkoutComplete_checkoutErrors_products | null)[] | null;
 }
 
 export interface CompleteCheckout_checkoutComplete_order_shippingAddress_country {

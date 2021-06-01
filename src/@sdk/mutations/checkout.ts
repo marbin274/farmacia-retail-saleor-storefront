@@ -4,11 +4,15 @@ import { checkoutFragment } from "../fragments/checkout";
 import { paymentFragment } from "../fragments/payment";
 import { orderDetailFragment } from "../fragments/user";
 
-export const checkoutShippingErrorFragment = gql`
-  fragment CheckoutShippingErrorFragment on CheckoutError {
-    code
+export const checkoutErrorsFragment = gql`
+  fragment CheckoutErrorsFragment on CheckoutError {
     field
     message
+    code
+    products {
+      sku
+      quantityAvailable
+    }
   }
 `
 
@@ -23,17 +27,30 @@ export const updateCheckoutLineMutation = gql`
         field
         message
       }
+      checkoutErrors {
+        field
+        message
+        code
+        products {
+          sku
+          quantityAvailable
+        }
+      }
     }
   }
 `;
 
 export const createCheckoutMutation = gql`
   ${checkoutFragment}
+  ${checkoutErrorsFragment}
   mutation CreateCheckout($checkoutInput: CheckoutCreateInput!) {
     checkoutCreate(input: $checkoutInput) {
       errors {
         field
         message
+      }
+      checkoutErrors {
+        ...CheckoutErrorsFragment
       }
       checkout {
         ...Checkout
@@ -96,6 +113,7 @@ export const updateCheckoutBillingAddressMutation = gql`
 
 export const updateCheckoutShippingAddressMutation = gql`
   ${checkoutFragment}
+  ${checkoutErrorsFragment}
   mutation UpdateCheckoutShippingAddress(
     $checkoutId: ID!
     $shippingAddress: AddressInput!
@@ -113,6 +131,9 @@ export const updateCheckoutShippingAddressMutation = gql`
       }
       checkout {
         ...Checkout
+      }
+      checkoutErrors {
+        ...CheckoutErrorsFragment
       }
     }
     checkoutEmailUpdate(
@@ -135,7 +156,7 @@ export const updateCheckoutShippingAddressMutation = gql`
 
 export const updateCheckoutShippingMethodMutation = gql`
   ${checkoutFragment}
-  ${checkoutShippingErrorFragment}
+  ${checkoutErrorsFragment}
   mutation UpdateCheckoutShippingMethod(
     $checkoutId: ID!
     $shippingMethodId: ID!
@@ -148,7 +169,7 @@ export const updateCheckoutShippingMethodMutation = gql`
         ...Checkout
       }
       errors: checkoutErrors {
-        ...CheckoutShippingErrorFragment
+        ...CheckoutErrorsFragment
       }
     }
   }
@@ -156,7 +177,7 @@ export const updateCheckoutShippingMethodMutation = gql`
 
 export const updateCheckoutShippingMethodMutationWithScheduleDate = gql`
   ${checkoutFragment}
-  ${checkoutShippingErrorFragment}
+  ${checkoutErrorsFragment}
   mutation UpdateCheckoutShippingMethodWithScheduleDate(
     $checkoutId: ID!
     $shippingMethodId: ID!
@@ -175,7 +196,7 @@ export const updateCheckoutShippingMethodMutationWithScheduleDate = gql`
         ...Checkout
       }
       errors: checkoutErrors {
-        ...CheckoutShippingErrorFragment
+        ...CheckoutErrorsFragment
       }
     }
   }
@@ -251,12 +272,11 @@ export const createCheckoutPaymentMutation = gql`
 
 export const completeCheckoutMutation = gql`
   ${orderDetailFragment}
+  ${checkoutErrorsFragment}
   mutation CompleteCheckout($checkoutId: ID!, $paymentData: JSONString) {
     checkoutComplete(checkoutId: $checkoutId, paymentData: $paymentData) {
       checkoutErrors {
-        field
-        message
-        code
+        ...CheckoutErrorsFragment
       }
       order {
         ...OrderDetail

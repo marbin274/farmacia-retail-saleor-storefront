@@ -2,7 +2,7 @@
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
-import { CheckoutCreateInput } from "./../../gqlTypes/globalTypes";
+import { CheckoutCreateInput, CheckoutErrorCode } from "./../../gqlTypes/globalTypes";
 
 // ====================================================
 // GraphQL mutation operation: CreateCheckout
@@ -19,6 +19,39 @@ export interface CreateCheckout_checkoutCreate_errors {
    * The error message.
    */
   message: string | null;
+}
+
+export interface CreateCheckout_checkoutCreate_checkoutErrors_products {
+  __typename: "FailedProduct";
+  /**
+   * Product variant SKU which causes error.
+   */
+  sku: string | null;
+  /**
+   * Stock available 
+   */
+  quantityAvailable: number | null;
+}
+
+export interface CreateCheckout_checkoutCreate_checkoutErrors {
+  __typename: "CheckoutError";
+  /**
+   * Name of a field that caused the error. A value of `null` indicates that the
+   * error isn't associated with a particular field.
+   */
+  field: string | null;
+  /**
+   * The error message.
+   */
+  message: string | null;
+  /**
+   * The error code.
+   */
+  code: CheckoutErrorCode;
+  /**
+   * List of products that produce errors.
+   */
+  products: (CreateCheckout_checkoutCreate_checkoutErrors_products | null)[] | null;
 }
 
 export interface CreateCheckout_checkoutCreate_checkout_scheduleDate_scheduleTime {
@@ -762,6 +795,7 @@ export interface CreateCheckout_checkoutCreate {
    * List of errors that occurred executing the mutation.
    */
   errors: CreateCheckout_checkoutCreate_errors[];
+  checkoutErrors: CreateCheckout_checkoutCreate_checkoutErrors[];
   checkout: CreateCheckout_checkoutCreate_checkout | null;
 }
 

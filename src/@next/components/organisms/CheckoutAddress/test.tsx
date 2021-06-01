@@ -8,17 +8,6 @@ import { CheckoutAddress } from ".";
 import { ANONYMOUS_USER_PROPS, mockCity } from "./fixtures";
 import { removeCountryCodeInPhoneNumber } from "@temp/@next/utils/addresForm";
 
-jest.mock("@temp/components/ShopProvider/context", () => ({
-  useShopContext: () => ({
-    availableDistricts: [
-      {
-        id: "id",
-        name: "San Isidro",
-      },
-    ],
-  }),
-}));
-
 describe("<CheckoutAddress />", () => {
   it("renders address form", () => {
     const setShippingAddress = jest.fn();

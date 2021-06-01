@@ -1,4 +1,5 @@
 import { ApolloError } from "apollo-client";
+import { CreateCheckout_checkoutCreate_checkoutErrors } from "../mutations/gqlTypes/CreateCheckout";
 import { PasswordChange } from "../mutations/gqlTypes/PasswordChange";
 import { SetPassword } from "../mutations/gqlTypes/SetPassword";
 import { TokenAuth_tokenCreate } from "../mutations/gqlTypes/TokenAuth";
@@ -15,6 +16,7 @@ export interface FunctionRunResponse<D, F> {
   data?: any;
   dataError?: ErrorResponse<D>;
   functionError?: ErrorResponse<F>;
+  checkoutErrors?: CreateCheckout_checkoutCreate_checkoutErrors[];
   pending: boolean;
 }
 

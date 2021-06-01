@@ -415,6 +415,10 @@ export class NetworkManager implements INetworkManager {
         return {
           error: errors,
         };
+      } else if (data?.checkoutCreate?.checkoutErrors.length) {
+        return {
+          checkoutErrors: data?.checkoutCreate?.checkoutErrors,
+        };
       } else if (data?.checkoutCreate?.errors.length) {
         return {
           error: data?.checkoutCreate?.errors,
@@ -524,6 +528,10 @@ export class NetworkManager implements INetworkManager {
       } else if (data?.checkoutEmailUpdate?.errors.length) {
         return {
           error: data?.checkoutEmailUpdate?.errors,
+        };
+      } else if (data?.checkoutShippingAddressUpdate?.checkoutErrors.length) {
+        return {
+          checkoutErrors: data?.checkoutShippingAddressUpdate?.checkoutErrors,
         };
       } else if (data?.checkoutShippingAddressUpdate?.errors.length) {
         return {
