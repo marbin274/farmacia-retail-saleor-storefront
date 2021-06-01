@@ -64,6 +64,9 @@ export const Actions = styled.div`
 export const TextInfo = styled.div`
     display: flex;
     font-size:  ${({ theme }) => theme.typography.smallFontSize};
+    > svg {
+        margin-right: .5rem;
+    }
     > span {
         margin-bottom: 1rem;
     }

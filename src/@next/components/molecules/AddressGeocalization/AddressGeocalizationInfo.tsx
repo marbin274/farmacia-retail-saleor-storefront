@@ -13,7 +13,7 @@ export const AddressGeocalizationInfo: React.FC = () => {
     }
 
     return (
-        <S.Alert>
+        <S.Alert className="district--alert">
             <S.AlertBody>
                 <S.AlertIcon>
                     <Icon

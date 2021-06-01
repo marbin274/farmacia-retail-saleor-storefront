@@ -114,9 +114,24 @@
     }
   }
   &__address-geo{
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0rem;
     .container{
+      padding: 0rem;
       margin: 0 auto;
+      > div {
+        padding: 0rem 0.5rem;
+        .district--alert{
+          left: .5rem; 
+          @media (min-width: $medium-screen-styled){
+            left: 1.5rem;            
+          }   
+          &::after{
+            @media (min-width: $medium-screen-styled){              
+              left: calc(50% - 6.35rem);         
+            }
+          }                 
+        }
+      }
     }
     .district {
       @media (min-width: $medium-screen-styled) {

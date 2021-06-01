@@ -88,9 +88,10 @@ export const Alert = styled.div`
     background: ${white};
     border-radius: 1rem;
     box-shadow: 0px 0px 0.875rem rgb(0 0 0 / 50%);
-    top: ${alertTop}rem;
+    left: -0.1875rem;
     padding: 1rem;
     position: absolute;    
+    top: ${alertTop}rem;
     width: 18.5rem;
     z-index: 4;
     ${css`

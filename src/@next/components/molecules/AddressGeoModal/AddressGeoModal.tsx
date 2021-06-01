@@ -3,6 +3,7 @@ import { turquoise } from "@temp/@next/globalStyles/constants";
 import { useAddressGeocalizationInfo, useDistrictSelected } from "@temp/@next/hooks";
 import { useCart } from "@temp/@sdk/react";
 import { useShopContext } from "@temp/components/ShopProvider/context";
+import { TOTAL_DISTRICT } from "@temp/core/config";
 import React from "react";
 import { InputSelect } from "..";
 import { Button, Icon, IconButton } from "../../atoms";
@@ -22,13 +23,12 @@ export const AddressGeoModal: React.FC = () => {
 
     const handleConfirm = () => {
         setDistrictSelected(district);
-        
+        setShowAddressGeocalizationInfo(false);
         if (items?.length) {
             setShowInfo(true);
             return;
         }
-        setShow(false);
-        setShowAddressGeocalizationInfo(false);
+        setShow(false);        
     }
 
     const handleChangeDistrict = (value: any, name?: any) => {
@@ -92,8 +92,8 @@ export const AddressGeoModal: React.FC = () => {
 
                             />
                             <S.TextInfo>
-                                <IconButton name="info" size={40} viewPort={20} onClick={handleCloseModal} />
-                                <span>Llegamos a 23 distritos de Lima, pero seguiremos ampliando nuestra cobertura</span>
+                                <Icon name="info" size={50} heightViewPort={50} widthViewPort={20} />
+                                <span>Llegamos a {TOTAL_DISTRICT} distritos de Lima, pero seguiremos ampliando nuestra cobertura</span>
                             </S.TextInfo>
                         </S.Body>
                         <S.Actions>

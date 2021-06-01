@@ -18,7 +18,7 @@ export const featuredProducts = gql`
       homepageCollections {
         id
         name
-        products(first: $first) {
+        products(district: $districtId, first: $first) {
           edges {
             node {
               ...BasicProductFields

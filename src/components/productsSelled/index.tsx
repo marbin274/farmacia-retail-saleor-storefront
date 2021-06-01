@@ -1,5 +1,6 @@
 import { Carousel } from "@temp/@next/components/containers";
 import { ProductTileAUNA } from "@temp/@next/components/molecules";
+import { useDistrictSelected } from "@temp/@next/hooks";
 import { ISimpleProduct } from "@temp/@next/types/IProduct";
 import { getProductsWithQuantity } from "@temp/@next/utils/products";
 import { PRODUCTS_PER_PAGE } from "@temp/core/config";
@@ -17,10 +18,12 @@ export const ProductsSelled: React.FC<IProps> = ({
     addToCart,
     subtractItemToCart,
 }) => {
+    const [districtSelected] = useDistrictSelected();
     return (
         <TypedSelledProductsQuery
             displayError={false}
             variables={{ 
+                districtId: districtSelected.code,
                 first: PRODUCTS_PER_PAGE,
                 period: ReportingPeriod.THIS_MONTH,
              }}
