@@ -217,7 +217,7 @@ export class NetworkManager implements INetworkManager {
             pricing: edge.node.pricing,
             product: {
               ...edge.node.product,
-              category: existingLine?.variant.product?.category,
+              category: existingLine?.variant.product?.category || null,
             },
             quantityAvailable: edge.node.quantityAvailable,
             sku: edge.node.sku,

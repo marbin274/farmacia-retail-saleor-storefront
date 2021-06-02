@@ -546,6 +546,15 @@ export interface CheckoutDetails_checkout_lines_variant_attributes {
   values: (CheckoutDetails_checkout_lines_variant_attributes_values | null)[];
 }
 
+export interface CheckoutDetails_checkout_lines_variant_product_category {
+  __typename: "Category";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+}
+
 export interface CheckoutDetails_checkout_lines_variant_product_attributes_attribute {
   __typename: "Attribute";
   /**
@@ -618,6 +627,7 @@ export interface CheckoutDetails_checkout_lines_variant_product {
    */
   id: string;
   name: string;
+  category: CheckoutDetails_checkout_lines_variant_product_category | null;
   /**
    * List of attributes assigned to this product.
    */

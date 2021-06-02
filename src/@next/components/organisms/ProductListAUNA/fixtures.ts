@@ -655,6 +655,11 @@ export const productsOnCart: IItems = [
       },
       product: {
         attributes: [],
+        category: {
+          __typename: "Category",
+          id: "",
+          name: "",
+        },
         id: "UHJvZHVjdDoyMDg=",
         name: "Abrilar 35Mg/5ML Jarabe - Frasco 100 ML",
         thumbnail: {
@@ -735,6 +740,11 @@ export const productsOnCart: IItems = [
       },
       product: {
         attributes: [],
+        category: {
+          __typename: "Category",
+          id: "",
+          name: "",
+        },
         id: "UHJvZHVjdDoyMjc=",
         name: "Betacort Depot Solución Inyectable",
         thumbnail: {

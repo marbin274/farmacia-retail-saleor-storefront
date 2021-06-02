@@ -548,6 +548,15 @@ export interface UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMe
   values: (UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMethodUpdate_checkout_lines_variant_attributes_values | null)[];
 }
 
+export interface UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMethodUpdate_checkout_lines_variant_product_category {
+  __typename: "Category";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+}
+
 export interface UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMethodUpdate_checkout_lines_variant_product_attributes_attribute {
   __typename: "Attribute";
   /**
@@ -620,6 +629,7 @@ export interface UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMe
    */
   id: string;
   name: string;
+  category: UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMethodUpdate_checkout_lines_variant_product_category | null;
   /**
    * List of attributes assigned to this product.
    */

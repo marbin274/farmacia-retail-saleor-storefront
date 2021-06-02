@@ -1,3 +1,4 @@
+import { IItems } from "@temp/@sdk/api/Cart/types";
 import { IAvailableShippingMethods } from "@temp/@sdk/api/Checkout/types";
 import { IShippingMethodUpdate, IScheduleDate } from "@temp/@sdk/repository";
 import { IFormError } from "@types";
@@ -11,6 +12,7 @@ export interface IProps {
   errors?: IFormError[];
   formId?: string;
   formRef?: React.RefObject<HTMLFormElement>;
+  items?:IItems;
 }
 
 export interface ICheckoutShipping{

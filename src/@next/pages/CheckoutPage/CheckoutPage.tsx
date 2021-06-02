@@ -167,6 +167,7 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
 
   useEffect(() => {
     setSelectedPaymentGateway(payment?.gateway);
+
   }, [payment?.gateway]);
 
   useEffect(() => {

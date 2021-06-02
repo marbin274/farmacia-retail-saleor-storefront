@@ -548,6 +548,15 @@ export interface AddCheckoutPromoCode_checkoutAddPromoCode_checkout_lines_varian
   values: (AddCheckoutPromoCode_checkoutAddPromoCode_checkout_lines_variant_attributes_values | null)[];
 }
 
+export interface AddCheckoutPromoCode_checkoutAddPromoCode_checkout_lines_variant_product_category {
+  __typename: "Category";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+}
+
 export interface AddCheckoutPromoCode_checkoutAddPromoCode_checkout_lines_variant_product_attributes_attribute {
   __typename: "Attribute";
   /**
@@ -620,6 +629,7 @@ export interface AddCheckoutPromoCode_checkoutAddPromoCode_checkout_lines_varian
    */
   id: string;
   name: string;
+  category: AddCheckoutPromoCode_checkoutAddPromoCode_checkout_lines_variant_product_category | null;
   /**
    * List of attributes assigned to this product.
    */

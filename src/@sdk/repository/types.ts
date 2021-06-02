@@ -2,13 +2,18 @@ import {
   Checkout_availableShippingMethods,
   Checkout_lines_variant_attributes,
   Checkout_lines_variant_pricing,
-  Checkout_lines_variant_product
+  Checkout_lines_variant_product,
 } from "../fragments/gqlTypes/Checkout";
 import { ICategory } from "@app/types/ICategory";
-import { ProductDetails_product_variants_pricing } from '../queries/gqlTypes/ProductDetails';
-import { IProductVariantPricing } from '@app/types/IProductVariantPricing';
-import { IDiscount, IShippingPrice, ISubtotalPrice, IItems } from "../api/Cart/types";
-import { ITotalPrice } from '@temp/@sdk/api/Cart/types';
+import { ProductDetails_product_variants_pricing } from "../queries/gqlTypes/ProductDetails";
+import { IProductVariantPricing } from "@app/types/IProductVariantPricing";
+import {
+  IDiscount,
+  IShippingPrice,
+  ISubtotalPrice,
+  IItems,
+} from "../api/Cart/types";
+import { ITotalPrice } from "@temp/@sdk/api/Cart/types";
 
 export enum LocalStorageItems {
   CHECKOUT = "data_checkout",
@@ -18,17 +23,12 @@ export enum LocalStorageItems {
   JOB_QUEUE_CHECKOUT = "job_queueCheckout",
   PAYMENT = "data_payment",
   RESET_PASSWORD_EMAIL = "reset_password_email",
-  SHOW_ADDRESS_GEOCALIZATION_INFO= "show_address_geocalization_info",
+  SHOW_ADDRESS_GEOCALIZATION_INFO = "show_address_geocalization_info",
 }
 
 export interface ICheckoutModelLineTotalPrice {
   gross: ICheckoutModelPriceValue;
   net: ICheckoutModelPriceValue;
-}
-
-export interface ICheckoutModelLineVariantProduct extends Checkout_lines_variant_product  {
-  category?: ICategory | null;
-
 }
 
 export interface ICheckoutModelLineVariant {
@@ -37,19 +37,22 @@ export interface ICheckoutModelLineVariant {
   isAvailable?: boolean | null;
   name?: string;
   sku?: string;
-  pricing?: Checkout_lines_variant_pricing  | null;
-  product?: ICheckoutModelLineVariantProduct;
+  pricing?: Checkout_lines_variant_pricing | null;
+  product?:Checkout_lines_variant_product;
   quantityAvailable?: number;
 }
-
 
 export interface ICheckoutModelLineVariantLocalStorage {
   id: string;
   product: {
-    id: string | undefined,
-    name: string | undefined,
-    pricing?: ProductDetails_product_variants_pricing | IProductVariantPricing | undefined | null,
-    quantityAvailable?: number,
+    id: string | undefined;
+    name: string | undefined;
+    pricing?:
+      | ProductDetails_product_variants_pricing
+      | IProductVariantPricing
+      | undefined
+      | null;
+    quantityAvailable?: number;
     category?: ICategory | null;
   };
 }
@@ -116,7 +119,7 @@ export interface IScheduleTime {
 export interface IScheduleDate {
   id: string;
   date: Date;
-  scheduleTime:IScheduleTime;
+  scheduleTime: IScheduleTime;
 }
 
 export interface IPaymentCreditCard {
@@ -177,13 +180,13 @@ export interface IOrderModel {
 }
 
 export interface IShippingMethodUpdateScheduleDate {
-    scheduleTimeId: string;
-    date: string;
+  scheduleTimeId: string;
+  date: string;
 }
 
 export interface IShippingMethodUpdate {
   shippingMethodId: string;
-  scheduleDate?: IShippingMethodUpdateScheduleDate
+  scheduleDate?: IShippingMethodUpdateScheduleDate;
 }
 
 // export interface IJobsModel {

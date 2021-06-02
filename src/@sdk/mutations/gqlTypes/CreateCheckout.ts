@@ -594,6 +594,15 @@ export interface CreateCheckout_checkoutCreate_checkout_lines_variant_attributes
   values: (CreateCheckout_checkoutCreate_checkout_lines_variant_attributes_values | null)[];
 }
 
+export interface CreateCheckout_checkoutCreate_checkout_lines_variant_product_category {
+  __typename: "Category";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+}
+
 export interface CreateCheckout_checkoutCreate_checkout_lines_variant_product_attributes_attribute {
   __typename: "Attribute";
   /**
@@ -666,6 +675,7 @@ export interface CreateCheckout_checkoutCreate_checkout_lines_variant_product {
    */
   id: string;
   name: string;
+  category: CreateCheckout_checkoutCreate_checkout_lines_variant_product_category | null;
   /**
    * List of attributes assigned to this product.
    */

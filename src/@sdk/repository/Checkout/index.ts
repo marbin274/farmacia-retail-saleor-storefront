@@ -48,7 +48,11 @@ export class CheckoutRepositoryManager implements ICheckoutRepositoryManager {
             attributes: [],
             id: product?.id || "",
             name: product?.name || "",
-            category: variantLS?.product?.category,
+            category: variantLS?.product?.category ? {
+              name: variantLS.product.category.name || "" ,
+              id: variantLS.product.category.id,
+              __typename: "Category",
+            } : null,
             productType: {
               __typename: "ProductType",
               isShippingRequired: true,

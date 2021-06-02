@@ -548,6 +548,15 @@ export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_check
   values: (UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_checkout_lines_variant_attributes_values | null)[];
 }
 
+export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_checkout_lines_variant_product_category {
+  __typename: "Category";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+}
+
 export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_checkout_lines_variant_product_attributes_attribute {
   __typename: "Attribute";
   /**
@@ -620,6 +629,7 @@ export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_check
    */
   id: string;
   name: string;
+  category: UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_checkout_lines_variant_product_category | null;
   /**
    * List of attributes assigned to this product.
    */
