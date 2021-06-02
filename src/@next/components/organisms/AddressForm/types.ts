@@ -26,6 +26,7 @@ export type AddressError = { field?: string; message: string };
 
 export interface IProps {
   user?: UserDetails_me | null;
+  userLoading?: boolean,
   address?: IAddressWithEmail;
   countriesOptions?: Array<{
     code: string;

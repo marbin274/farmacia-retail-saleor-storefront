@@ -12,6 +12,7 @@ const CheckoutAddress: React.FC<IProps> = ({
   email,
   countries,
   user,
+  userLoading,
   formRef,
   formId,
   setShippingAddress,
@@ -41,6 +42,7 @@ const CheckoutAddress: React.FC<IProps> = ({
         includeEmail={true}
         errors={errors}
         user={user}
+        userLoading={userLoading}
         setFormValue={setFormValue}
       />
     </section>

@@ -42,12 +42,15 @@ export const AddressForm: React.FC<IProps> = ({
   countriesOptions,
   districtsOptions,
   user,
+  userLoading,
   comeFromModal,
   checkoutData,
   setFormValue,
   errors: requestErrors,
   ...props
 }: IProps) => {
+  if (userLoading) return null;
+
   let addressWithPickedFields: Partial<IAddressWithEmail> = {};
   if (address) {
     addressWithPickedFields = pick(address, ADDRESS_FIELDS);

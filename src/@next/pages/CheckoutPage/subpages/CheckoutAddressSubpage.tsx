@@ -50,7 +50,7 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
   const checkoutAddressFormId = "address-form";
   const checkoutAddressFormRef = useRef<HTMLFormElement>(null);
   const checkoutNewAddressFormId = "new-address-form";
-  const { data: user } = useUserDetails();
+  const { data: user, loading: userLoading } = useUserDetails();
   const {
     checkout,
     setShippingAddress,
@@ -248,6 +248,7 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
         selectedUserAddressId={selectedShippingAddressId}
         countries={countries}
         user={user}
+        userLoading={userLoading}
         newAddressFormId={checkoutNewAddressFormId}
         setShippingAddress={handleSetShippingAddress}
         setFormValue={handleFormValues}
