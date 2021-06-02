@@ -581,4 +581,5 @@ export interface OrderByToken {
 
 export interface OrderByTokenVariables {
   token: any;
+  districtId?: string | null;
 }

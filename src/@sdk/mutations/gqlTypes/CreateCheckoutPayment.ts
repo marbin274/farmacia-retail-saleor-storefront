@@ -848,4 +848,5 @@ export interface CreateCheckoutPayment {
 export interface CreateCheckoutPaymentVariables {
   checkoutId: string;
   paymentInput: PaymentInput;
+  districtId?: string | null;
 }

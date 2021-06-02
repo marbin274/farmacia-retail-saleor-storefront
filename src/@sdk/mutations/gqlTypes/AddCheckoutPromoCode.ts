@@ -810,4 +810,5 @@ export interface AddCheckoutPromoCode {
 export interface AddCheckoutPromoCodeVariables {
   checkoutId: string;
   promoCode: string;
+  districtId?: string | null;
 }

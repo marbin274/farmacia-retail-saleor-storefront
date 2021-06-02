@@ -805,4 +805,5 @@ export interface UpdateCheckoutShippingMethod {
 export interface UpdateCheckoutShippingMethodVariables {
   checkoutId: string;
   shippingMethodId: string;
+  districtId?: string | null;
 }

@@ -769,3 +769,7 @@ export interface UserCheckoutDetails {
    */
   me: UserCheckoutDetails_me | null;
 }
+
+export interface UserCheckoutDetailsVariables {
+  districtId?: string | null;
+}

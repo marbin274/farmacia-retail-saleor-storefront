@@ -822,4 +822,5 @@ export interface UpdateCheckoutLine {
 export interface UpdateCheckoutLineVariables {
   checkoutId: string;
   lines: (CheckoutLineInput | null)[];
+  districtId?: string | null;
 }

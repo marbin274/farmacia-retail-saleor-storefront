@@ -1599,4 +1599,5 @@ export interface UpdateCheckoutShippingAddressVariables {
   email: string;
   documentNumber: string;
   privacyPolicy: PrivacyPolicyInput;
+  districtId?: string | null;
 }

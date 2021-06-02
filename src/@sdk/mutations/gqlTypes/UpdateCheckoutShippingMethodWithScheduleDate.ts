@@ -807,4 +807,5 @@ export interface UpdateCheckoutShippingMethodWithScheduleDateVariables {
   shippingMethodId: string;
   scheduleTimeId: string;
   date: any;
+  districtId?: string | null;
 }

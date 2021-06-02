@@ -818,4 +818,5 @@ export interface CreateCheckout {
 
 export interface CreateCheckoutVariables {
   checkoutInput: CheckoutCreateInput;
+  districtId?: string | null;
 }

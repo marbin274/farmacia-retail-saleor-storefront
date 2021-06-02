@@ -788,4 +788,5 @@ export interface UpdateCheckoutBillingAddress {
 export interface UpdateCheckoutBillingAddressVariables {
   checkoutId: string;
   billingAddress: AddressInput;
+  districtId?: string | null;
 }

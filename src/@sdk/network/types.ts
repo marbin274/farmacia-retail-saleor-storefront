@@ -31,7 +31,8 @@ export interface INetworkManagerResponse<T> {
 
 export interface INetworkManager {
   getCheckout: (
-    checkoutToken: string | null
+    checkoutToken: string | null,
+    district?: string
   ) => Promise<INetworkManagerResponse<ICheckoutModel>>;
   getRefreshedCheckoutLines: (
     checkoutlines: ICheckoutModelLine[] | null,
@@ -52,7 +53,8 @@ export interface INetworkManager {
   ) => Promise<INetworkManagerResponse<ICheckoutModel>>;
   setBillingAddress: (
     billingAddress: ICheckoutAddress,
-    checkoutId: string
+    checkoutId: string,
+    districtId?: string
   ) => Promise<INetworkManagerResponse<ICheckoutModel>>;
   setBillingAddressWithEmail: (
     billingAddress: ICheckoutAddress,

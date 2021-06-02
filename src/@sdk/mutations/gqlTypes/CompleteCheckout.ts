@@ -628,4 +628,5 @@ export interface CompleteCheckout {
 export interface CompleteCheckoutVariables {
   checkoutId: string;
   paymentData?: any | null;
+  districtId?: string | null;
 }

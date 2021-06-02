@@ -1563,4 +1563,5 @@ export interface UpdateCheckoutBillingAddressWithEmailVariables {
   checkoutId: string;
   billingAddress: AddressInput;
   email: string;
+  districtId?: string | null;
 }

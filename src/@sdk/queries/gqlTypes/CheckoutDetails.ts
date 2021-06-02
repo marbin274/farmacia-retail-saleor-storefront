@@ -760,4 +760,5 @@ export interface CheckoutDetails {
 
 export interface CheckoutDetailsVariables {
   token: any;
+  districtId?: string | null;
 }

@@ -806,4 +806,5 @@ export interface RemoveCheckoutPromoCode {
 export interface RemoveCheckoutPromoCodeVariables {
   checkoutId: string;
   promoCode: string;
+  districtId?: string | null;
 }

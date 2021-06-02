@@ -82,7 +82,7 @@ export class NetworkManager implements INetworkManager {
     this.client = client;
   }
 
-  getCheckout = async (checkoutToken: string | null) => {
+  getCheckout = async (checkoutToken: string | null, districtId?: string) => {
     let checkout: Checkout | null;
     try {
       checkout = await new Promise((resolve, reject) => {
@@ -90,6 +90,9 @@ export class NetworkManager implements INetworkManager {
           const observable = this.client.watchQuery<UserCheckoutDetails, any>({
             fetchPolicy: "network-only",
             query: CheckoutQueries.userCheckoutDetails,
+            variables: {
+              districtId,
+            },
           });
           observable.subscribe(
             result => {
@@ -109,6 +112,7 @@ export class NetworkManager implements INetworkManager {
             fetchPolicy: "network-only",
             query: CheckoutQueries.checkoutDetails,
             variables: {
+              districtId,
               token: checkoutToken,
             },
           });
@@ -357,7 +361,8 @@ export class NetworkManager implements INetworkManager {
     shippingAddress?: ICheckoutAddress,
     billingAddress?: ICheckoutAddress,
     privacyPolicy?: IPrivacyPolicy,
-    documentNumber?: string
+    documentNumber?: string,
+    districtId?: string
   ) => {
     try {
       billingAddress = shippingAddress;
@@ -402,6 +407,7 @@ export class NetworkManager implements INetworkManager {
             streetAddress2: shippingAddress.streetAddress2,
           },
         },
+        districtId,
       };
       const { data, errors } = await this.client.mutate<
         CreateCheckout,
@@ -436,7 +442,7 @@ export class NetworkManager implements INetworkManager {
     return {};
   };
 
-  setCartItem = async (checkout: ICheckoutModel) => {
+  setCartItem = async (checkout: ICheckoutModel, districtId?: string) => {
     const checkoutId = checkout.id;
     const lines = checkout.lines;
 
@@ -455,6 +461,7 @@ export class NetworkManager implements INetworkManager {
           variables: {
             checkoutId,
             lines: alteredLines,
+            districtId,
           },
         });
 
@@ -487,11 +494,13 @@ export class NetworkManager implements INetworkManager {
     email: string,
     checkoutId: string,
     documentNumber?: string,
-    privacyPolicy?: IPrivacyPolicy
+    privacyPolicy?: IPrivacyPolicy,
+    districtId?: string
   ) => {
     try {
       const variables = {
         checkoutId,
+        districtId,
         documentNumber: documentNumber || "",
         email,
         privacyPolicy: privacyPolicy || {},
@@ -571,7 +580,8 @@ export class NetworkManager implements INetworkManager {
 
   setBillingAddress = async (
     billingAddress: ICheckoutAddress,
-    checkoutId: string
+    checkoutId: string,
+    districtId?: string
   ) => {
     try {
       const variables = {
@@ -593,6 +603,7 @@ export class NetworkManager implements INetworkManager {
           streetAddress2: billingAddress.streetAddress2,
         },
         checkoutId,
+        districtId,
       };
       const { data, errors } = await this.client.mutate<
         UpdateCheckoutBillingAddress,
@@ -629,7 +640,8 @@ export class NetworkManager implements INetworkManager {
   setBillingAddressWithEmail = async (
     billingAddress: ICheckoutAddress,
     email: string,
-    checkoutId: string
+    checkoutId: string,
+    districtId?: string
   ) => {
     try {
       const variables = {
@@ -651,6 +663,7 @@ export class NetworkManager implements INetworkManager {
           streetAddress2: billingAddress.streetAddress2,
         },
         checkoutId,
+        districtId,
         email,
       };
       const { data, errors } = await this.client.mutate<
@@ -692,7 +705,8 @@ export class NetworkManager implements INetworkManager {
 
   setShippingMethod = async (
     shippingMethodUpdate: IShippingMethodUpdate,
-    checkoutId: string
+    checkoutId: string,
+    districtId?: string
   ) => {
     try {
       const mutation = shippingMethodUpdate.scheduleDate
@@ -706,6 +720,7 @@ export class NetworkManager implements INetworkManager {
         variables: {
           checkoutId,
           date: shippingMethodUpdate.scheduleDate?.date,
+          districtId,
           scheduleTimeId:
             shippingMethodUpdate.scheduleDate?.scheduleTimeId || "",
           shippingMethodId: shippingMethodUpdate.shippingMethodId,
@@ -736,14 +751,14 @@ export class NetworkManager implements INetworkManager {
     }
   };
 
-  addPromoCode = async (promoCode: string, checkoutId: string) => {
+  addPromoCode = async (promoCode: string, checkoutId: string, districtId?: string) => {
     try {
       const { data, errors } = await this.client.mutate<
         AddCheckoutPromoCode,
         AddCheckoutPromoCodeVariables
       >({
         mutation: CheckoutMutations.addCheckoutPromoCode,
-        variables: { checkoutId, promoCode },
+        variables: { checkoutId, districtId, promoCode },
       });
 
       if (errors?.length) {
@@ -774,14 +789,14 @@ export class NetworkManager implements INetworkManager {
     }
   };
 
-  removePromoCode = async (promoCode: string, checkoutId: string) => {
+  removePromoCode = async (promoCode: string, checkoutId: string, districtId?: string) => {
     try {
       const { data, errors } = await this.client.mutate<
         RemoveCheckoutPromoCode,
         RemoveCheckoutPromoCodeVariables
       >({
         mutation: CheckoutMutations.removeCheckoutPromoCode,
-        variables: { checkoutId, promoCode },
+        variables: { checkoutId, districtId, promoCode },
       });
 
       if (errors?.length) {
@@ -813,7 +828,8 @@ export class NetworkManager implements INetworkManager {
     checkoutId: string,
     paymentGateway: string,
     paymentToken: string,
-    billingAddress: ICheckoutAddress
+    billingAddress: ICheckoutAddress,
+    districtId?: string
   ) => {
     try {
       const variables = {
@@ -840,6 +856,7 @@ export class NetworkManager implements INetworkManager {
           gateway: paymentGateway,
           token: paymentToken,
         },
+        districtId,
       };
       const { data, errors } = await this.client.mutate<
         CreateCheckoutPayment,
@@ -871,14 +888,14 @@ export class NetworkManager implements INetworkManager {
     }
   };
 
-  completeCheckout = async (checkoutId: string, paymentData?: string) => {
+  completeCheckout = async (checkoutId: string, paymentData?: string, districtId?: string) => {
     try {
       const { data, errors } = await this.client.mutate<
         CompleteCheckout,
         CompleteCheckoutVariables
       >({
         mutation: CheckoutMutations.completeCheckoutMutation,
-        variables: { checkoutId, paymentData },
+        variables: { checkoutId, districtId, paymentData },
       });
 
       if (errors?.length) {

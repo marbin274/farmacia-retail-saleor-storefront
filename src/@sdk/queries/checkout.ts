@@ -6,7 +6,7 @@ import {
 
 export const checkoutDetails = gql`
   ${checkoutFragment}
-  query CheckoutDetails($token: UUID!) {
+  query CheckoutDetails($token: UUID!, $districtId: ID) {
     checkout(token: $token) {
       ...Checkout
     }
@@ -15,7 +15,7 @@ export const checkoutDetails = gql`
 
 export const userCheckoutDetails = gql`
   ${checkoutFragment}
-  query UserCheckoutDetails {
+  query UserCheckoutDetails($districtId: ID) {
     me {
       id
       checkout {
