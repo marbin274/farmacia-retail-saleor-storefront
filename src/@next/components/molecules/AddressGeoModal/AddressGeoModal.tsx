@@ -38,9 +38,14 @@ export const AddressGeoModal: React.FC = () => {
     const handleCloseModal = () => {
         setShow(false);
         setTimeout(() => {
+            setDistrict(districtSelected);
             setShowInfo(false);
         }, 500);
     }
+
+    React.useEffect(()=>{
+        setDistrict(districtSelected);
+    },[districtSelected]);
 
     React.useEffect(() => {
         const subscription = addressGeoModalService
