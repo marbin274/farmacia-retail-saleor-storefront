@@ -10,6 +10,7 @@ import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
 import {
   checkProductCanAddToCart,
   checkProductIsOnSale,
+  convertProductOnCartInProduct,
   getProductPricingClass,
 } from "@temp/@next/utils/products";
 import { generateProductUrl } from "@temp/core/utils";
@@ -32,7 +33,7 @@ const ProductList: React.FC<IProductList> = ({
   <ul className="cart__list">
     {products.map(product => {
       const { variant, quantity } = product;
-      const { canAddToCart } = checkProductCanAddToCart(product, products);
+      const { canAddToCart } = checkProductCanAddToCart(convertProductOnCartInProduct(product), products);
       const isOnSale = checkProductIsOnSale(product);
       const id: string | undefined = variant.product?.id;
       const name: string | undefined = product.name

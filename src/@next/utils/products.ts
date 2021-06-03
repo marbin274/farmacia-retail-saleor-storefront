@@ -1,4 +1,5 @@
 import { IItems } from "@sdk/api/Cart/types";
+import { ICheckoutModelLine } from "@temp/@sdk/repository";
 import { ATTRIBUTE_PROMOTION_LIMIT_MAX_NAME, MAX_ORDER_PER_PRODUCT } from "@temp/core/config";
 import isEqual from "lodash/isEqual";
 import { IProductVariantPricing } from "../types";
@@ -149,4 +150,6 @@ export const getProductPricingClass = (canAddToCart: boolean, isOnSale: boolean)
     return `${className} ${!canAddToCart ? "outStock_price" : isOnSale ? "discounted_price" : ""}`
 }
 
-
+export const convertProductOnCartInProduct = (productOnCart: ICheckoutModelLine): ISimpleProduct =>{
+    return {...productOnCart, id: productOnCart.variant.product?.id || ''};
+}
