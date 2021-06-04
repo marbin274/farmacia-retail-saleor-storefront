@@ -239,6 +239,8 @@ export class CheckoutJobs {
         promoCodeDiscount: data?.promoCodeDiscount,
         scheduleDate: data?.scheduleDate,
         shippingMethod: data?.shippingMethod,
+        slotId: data?.slotId,
+        slots: data?.slots,
       };
       this.repository.setCheckout(newCheckout);
       return { data };

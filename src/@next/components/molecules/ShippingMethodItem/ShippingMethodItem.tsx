@@ -17,13 +17,11 @@ export const ShippingMethodItem: React.FC<IProps> = ({
     isScheduled,
     name,
     selected,
-    scheduleSelected: scheduleSelectedId,
+    scheduleTimeId,
+    selectedSlotId,
     scheduleDates,
     subtitle,
-    touched,
     price,
-    handleChange,
-    setErrors,
     setFieldValue,
     setShippingMethod,
 }) => {
@@ -49,93 +47,112 @@ export const ShippingMethodItem: React.FC<IProps> = ({
         return date;
     },[scheduleDates]);
 
-    const scheduleSelected = React.useMemo(()=>(
+    const slotSelected = React.useMemo(()=>(
         scheduleTimes
-        ?.find(it => it.id === scheduleSelectedId)
-    ), [scheduleSelectedId]);
+        ?.find(it => it.id === selectedSlotId)
+    ), [selectedSlotId]);
 
     const handleOnChangeScheduleSelected = (value: IKeyValue) => {
-        setFieldValue("scheduleSelected", value.id);
+        setFieldValue("selectedSlotId", value.id);
+        setFieldValue("selectedScheduleTimeId", scheduleTimeId!);
         if (id && dateSelected && value.id) {
             setShippingMethod({
-                scheduleDate: { date: format(dateSelected, SHIPPING_FORMAT_DATE), scheduleTimeId: value.id },
+                scheduleDate: { date: format(dateSelected, SHIPPING_FORMAT_DATE), scheduleTimeId: scheduleTimeId! }, // TODO: ver si convertir a slot y date
                 shippingMethodId: id,
+                slotId: value.id,
             });
         }
     }
 
-    return <>
-        <S.ShippingMethodItem>            
-            <Radio
-                readOnly
-                data-cy={`checkoutShippingMethodOption${index}Input`}
-                name="shippingMethod"
-                value={id}
-                checked={selected}
-            ></Radio>
-            <S.ShippingMethodText>
-                <S.ShippingMethodTitle
-                    data-cy={`checkoutShippingMethodOption${index}Name`}
-                    selected={selected}
-                >
-                    {name}
-                </S.ShippingMethodTitle>
-                <S.ShippingMethodSubTitle
-                    selected={selected}
-                >
-                    {isScheduled ? "Escoge la fecha y la hora de entrega" : subtitle}
-                </S.ShippingMethodSubTitle>
-            </S.ShippingMethodText>
-            <S.ShippingMethodPrice
-                selected={selected}
+    return (
+      <>
+        <S.ShippingMethodItem>
+          <Radio
+            readOnly
+            data-cy={`checkoutShippingMethodOption${index}Input`}
+            name="shippingMethod"
+            value={id}
+            checked={selected}
+          ></Radio>
+          <S.ShippingMethodText>
+            <S.ShippingMethodTitle
+              data-cy={`checkoutShippingMethodOption${index}Name`}
+              selected={selected}
             >
-                <Money
-                    data-cy={`checkoutShippingMethodOption${index}Price`}
-                    money={price}
-                />
-            </S.ShippingMethodPrice>
+              {name}
+            </S.ShippingMethodTitle>
+            <S.ShippingMethodSubTitle selected={selected}>
+              {isScheduled ? "Escoge la fecha y la hora de entrega" : subtitle}
+            </S.ShippingMethodSubTitle>
+          </S.ShippingMethodText>
+          <S.ShippingMethodPrice selected={selected}>
+            <Money
+              data-cy={`checkoutShippingMethodOption${index}Price`}
+              money={price}
+            />
+          </S.ShippingMethodPrice>
         </S.ShippingMethodItem>
-        {
-            (selected && isScheduled) &&
-            <S.ShippingMethodItemControl>
-                <S.ShippingMethodScheduleControl>
-                    <S.ShippingMethodLabel>Escoge el día de entrega</S.ShippingMethodLabel>
-                    <S.ShippingMethodControl>
-                        <DatePicker
-                            name="dateSelected"
-                            errors={errors?.dateSelected ? [{field:"dateSelected", message: errors.dateSelected}] : undefined}
-                            minDate={minDate}
-                            maxDate={maxDate}
-                            value={dateSelected}
-                            onChange={(date: Date | [Date, Date] | null)=>{
-                                setFieldValue("dateSelected", date);
-                                setFieldValue("scheduleSelected", "");
-                            }}
-                        />
-                    </S.ShippingMethodControl>
-                </S.ShippingMethodScheduleControl>
-                <S.ShippingMethodScheduleControl>
-                    <S.ShippingMethodLabel>Escoge el rango</S.ShippingMethodLabel>
-                    <S.ShippingMethodControl>
-                        <InputSelect
-                            indicatorIcon={shippingMethodClockIcon}
-                            inputProps={{
-                                "data-cy": "addressFormCity",
-                                placeholder: "",
-                            }}
-                            label=""
-                            name="scheduleSelected"
-                            options={scheduleTimes}
-                            value={scheduleSelected || ''}
-                            onChange={handleOnChangeScheduleSelected}
-                            optionLabelKey="description"
-                            optionValueKey="id"
-                            errors={errors?.scheduleSelected ? [{field:"scheduleSelected", message: errors.scheduleSelected}] : undefined}
-                        />
-                    </S.ShippingMethodControl>
-                </S.ShippingMethodScheduleControl>
-            </S.ShippingMethodItemControl>
-        }
-    </>;
+        {selected && isScheduled && (
+          <S.ShippingMethodItemControl>
+            <S.ShippingMethodScheduleControl>
+              <S.ShippingMethodLabel>
+                Escoge el día de entrega
+              </S.ShippingMethodLabel>
+              <S.ShippingMethodControl>
+                <DatePicker
+                  name="dateSelected"
+                  errors={
+                    errors?.dateSelected
+                      ? [
+                          {
+                            field: "dateSelected",
+                            message: errors.dateSelected,
+                          },
+                        ]
+                      : undefined
+                  }
+                  minDate={minDate}
+                  maxDate={maxDate}
+                  value={dateSelected}
+                  onChange={(date: Date | [Date, Date] | null) => {
+                    setFieldValue("dateSelected", date);
+                    setFieldValue("scheduleSelected", "");
+                  }}
+                />
+              </S.ShippingMethodControl>
+            </S.ShippingMethodScheduleControl>
+            <S.ShippingMethodScheduleControl>
+              <S.ShippingMethodLabel>Escoge el rango</S.ShippingMethodLabel>
+              <S.ShippingMethodControl>
+                <InputSelect
+                  indicatorIcon={shippingMethodClockIcon}
+                  inputProps={{
+                    "data-cy": "addressFormCity",
+                    placeholder: "",
+                  }}
+                  label=""
+                  name="scheduleSelected"
+                  options={scheduleTimes}
+                  value={slotSelected || ""}
+                  onChange={handleOnChangeScheduleSelected}
+                  optionLabelKey="description"
+                  optionValueKey="id"
+                  errors={
+                    errors?.scheduleSelected
+                      ? [
+                          {
+                            field: "scheduleSelected",
+                            message: errors.scheduleSelected,
+                          },
+                        ]
+                      : undefined
+                  }
+                />
+              </S.ShippingMethodControl>
+            </S.ShippingMethodScheduleControl>
+          </S.ShippingMethodItemControl>
+        )}
+      </>
+    );
 }
 

@@ -295,7 +295,7 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
                   className="c12"
                   selected={false}
                 >
-                  subTitle
+                  Escoge la fecha y la hora de entrega
                 </p>
               </div>
               <div

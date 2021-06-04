@@ -47,6 +47,8 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
     checkout,
     availableShippingMethods,
     setShippingMethod,
+    selectedSlotId,
+    slots,
   } = useCheckout();
   const { items } = useCart();
 
@@ -111,6 +113,8 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
       items={items}
       formId={checkoutShippingFormId}
       formRef={checkoutShippingFormRef}
+      slots={slots}
+      selectedSlotId={selectedSlotId}
     />
   );
 };

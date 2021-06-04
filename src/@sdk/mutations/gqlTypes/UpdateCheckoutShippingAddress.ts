@@ -715,6 +715,54 @@ export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_che
   culture: string;
 }
 
+export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_slots_scheduled {
+  __typename: "ShippingSlot";
+  /**
+   * Slot id.
+   */
+  id: string | null;
+  /**
+   * Slot available from.
+   */
+  slotFrom: string | null;
+  /**
+   * Slot available to.
+   */
+  slotTo: string | null;
+}
+
+export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_slots_express {
+  __typename: "ShippingSlot";
+  /**
+   * Slot id.
+   */
+  id: string | null;
+  /**
+   * Slot available from.
+   */
+  slotFrom: string | null;
+  /**
+   * Slot available to.
+   */
+  slotTo: string | null;
+}
+
+export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_slots {
+  __typename: "Slot";
+  /**
+   * List of scheduled slots.
+   */
+  scheduled: (UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_slots_scheduled | null)[] | null;
+  /**
+   * List of express slots.
+   */
+  express: (UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_slots_express | null)[] | null;
+  /**
+   * Datetime.
+   */
+  datetime: string | null;
+}
+
 export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout {
   __typename: "Checkout";
   token: any;
@@ -764,6 +812,11 @@ export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_che
   documentNumber: string | null;
   termsAndConditions: boolean;
   dataTreatmentPolicy: boolean;
+  /**
+   * List of slots.
+   */
+  slots: UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_slots | null;
+  slotId: string | null;
 }
 
 export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkoutErrors_products {
@@ -1506,6 +1559,54 @@ export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_disc
   culture: string;
 }
 
+export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_slots_scheduled {
+  __typename: "ShippingSlot";
+  /**
+   * Slot id.
+   */
+  id: string | null;
+  /**
+   * Slot available from.
+   */
+  slotFrom: string | null;
+  /**
+   * Slot available to.
+   */
+  slotTo: string | null;
+}
+
+export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_slots_express {
+  __typename: "ShippingSlot";
+  /**
+   * Slot id.
+   */
+  id: string | null;
+  /**
+   * Slot available from.
+   */
+  slotFrom: string | null;
+  /**
+   * Slot available to.
+   */
+  slotTo: string | null;
+}
+
+export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_slots {
+  __typename: "Slot";
+  /**
+   * List of scheduled slots.
+   */
+  scheduled: (UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_slots_scheduled | null)[] | null;
+  /**
+   * List of express slots.
+   */
+  express: (UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_slots_express | null)[] | null;
+  /**
+   * Datetime.
+   */
+  datetime: string | null;
+}
+
 export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout {
   __typename: "Checkout";
   token: any;
@@ -1555,6 +1656,11 @@ export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout {
   documentNumber: string | null;
   termsAndConditions: boolean;
   dataTreatmentPolicy: boolean;
+  /**
+   * List of slots.
+   */
+  slots: UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_slots | null;
+  slotId: string | null;
 }
 
 export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_errors {

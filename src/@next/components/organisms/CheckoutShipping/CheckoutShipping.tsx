@@ -1,7 +1,6 @@
 import { ErrorMessage } from "@components/atoms";
 import { ShippingMethodItem } from "@components/molecules";
 import { convertShippingMethodDateToDate } from "@temp/@next/utils/dateUtils";
-import { Checkout_availableShippingMethods_scheduleDates } from "@temp/@sdk/fragments/gqlTypes/Checkout";
 import {
   launchCheckoutEvent,
   steps,
@@ -15,6 +14,7 @@ import { SHIPPING_FORMAT_DATE } from "@temp/core/config";
 import { format } from "date-fns";
 import { useFormik } from "formik";
 import React from "react";
+import { ISlotScheduleDate } from "../../molecules/ShippingMethodItem/types";
 import { shippingMethodFormSchema } from "./schema";
 import * as S from "./styles";
 import { ICheckoutShipping, IProps } from "./types";
@@ -30,6 +30,8 @@ const CheckoutShipping: React.FC<IProps> = ({
   formId,
   formRef,
   items,
+  selectedSlotId,
+  slots,
 }: IProps) => {
   const {
     errors: formikErrors,
@@ -48,7 +50,9 @@ const CheckoutShipping: React.FC<IProps> = ({
       isScheduled:
         shippingMethods?.find(it => it.id === selectedShippingMethodId)
           ?.isScheduled || false,
-      scheduleSelected: scheduleDate?.scheduleTime?.id,
+      // scheduleSelected: scheduleDate?.scheduleTime?.id,
+      selectedScheduleTimeId: scheduleDate?.scheduleTime?.id || "",
+      selectedSlotId,
       shippingMethod: selectedShippingMethodId,
     },
     onSubmit: values => {
@@ -57,6 +61,7 @@ const CheckoutShipping: React.FC<IProps> = ({
           selectShippingMethod(
             {
               shippingMethodId: values.shippingMethod,
+              slotId: values.selectedSlotId,
             },
             false
           );
@@ -64,16 +69,17 @@ const CheckoutShipping: React.FC<IProps> = ({
         } else if (
           values.isScheduled &&
           values.dateSelected &&
-          values.scheduleSelected
+          values.selectedSlotId
         ) {
           const scheduleDate: IShippingMethodUpdateScheduleDate = {
             date: format(values.dateSelected, SHIPPING_FORMAT_DATE) || "",
-            scheduleTimeId: values.scheduleSelected || "",
+            scheduleTimeId: values.selectedScheduleTimeId || "",
           };
           selectShippingMethod(
             {
               scheduleDate,
               shippingMethodId: values.shippingMethod,
+              slotId: values.selectedSlotId,
             },
             false
           );
@@ -96,12 +102,12 @@ const CheckoutShipping: React.FC<IProps> = ({
     </S.GroupLabel>
   );
 
-
   const handleOnclick = (
     id: string,
     isScheduled: boolean,
-    scheduleDates: Array<Checkout_availableShippingMethods_scheduleDates | null> | null,
-    selected: boolean
+    scheduleDates: ISlotScheduleDate[] | null,
+    selected: boolean,
+    slotId?: string
   ) => {
     if (!selected) {
       launchCheckoutEvent(
@@ -110,71 +116,154 @@ const CheckoutShipping: React.FC<IProps> = ({
       );
       setFieldValue("shippingMethod", id);
       setFieldValue("isScheduled", isScheduled);
-      const shippingMethod: IShippingMethodUpdate = { shippingMethodId: id };
+      setFieldValue("selectedSlotId", slotId);
+      const shippingMethod: IShippingMethodUpdate = {
+        shippingMethodId: id,
+        slotId,
+      };
       if (isScheduled) {
         const scheduleDate = scheduleDates?.[0];
+        const scheduleTime = scheduleDate?.scheduleTimes?.[0];
+
         const date = convertShippingMethodDateToDate(scheduleDate?.date);
+        const scheduleTimeId = scheduleTime?.scheduleTimeId;
+        slotId = scheduleTime?.id;
+
         shippingMethod.scheduleDate = {
           date: scheduleDate?.date,
-          scheduleTimeId: scheduleDate?.scheduleTimes?.[0]?.id || "",
+          scheduleTimeId: scheduleTimeId || "",
         };
+        shippingMethod.slotId = slotId;
+
         setFieldValue("dateSelected", date);
-        setFieldValue("scheduleSelected", scheduleDate?.scheduleTimes?.[0]?.id);
+        setFieldValue("selectedSlotId", slotId);
+        setFieldValue("selectedScheduleTimeId", scheduleTimeId);
       }
       setShippingMethod(shippingMethod);
     }
     setErrors({});
   };
 
+  const renderExpressItem = () => {
+    const express = slots?.express?.[0];
+
+    if (!express) {
+      return null;
+    }
+
+    const shippingMethod = shippingMethods?.find(x => !x.isScheduled);
+
+    if (!shippingMethod) {
+      return null;
+    }
+
+    const { id, name, price, subtitle } = shippingMethod;
+    const selected = values?.shippingMethod === id;
+    const index = 0;
+
+    return (
+      <S.ShippingMethodContainer
+        data-cy={`checkoutShippingMethodOption${index}Input`}
+        hasError={!!formikErrors?.shippingMethod && !values.shippingMethod}
+        selected={selected}
+        onClick={() => {
+          handleOnclick(id, false, null, selected, express.id);
+        }}
+      >
+        <S.ShippingMethodItem>
+          <ShippingMethodItem
+            dateSelected={values.dateSelected}
+            errors={formikErrors}
+            id={id}
+            index={index}
+            isScheduled={false}
+            name={name}
+            selected={selected}
+            selectedSlotId={values.selectedSlotId}
+            subtitle={subtitle}
+            touched={touched}
+            price={price}
+            handleChange={handleChange}
+            setErrors={setErrors}
+            setFieldValue={setFieldValue}
+            setShippingMethod={setShippingMethod}
+          />
+        </S.ShippingMethodItem>
+      </S.ShippingMethodContainer>
+    );
+  };
+
+  const renderScheduledItem = () => {
+    const scheduled = slots?.scheduled;
+
+    if (!scheduled?.length) {
+      return;
+    }
+
+    const shippingMethod = shippingMethods?.find(x => !!x.isScheduled);
+
+    if (!shippingMethod?.scheduleDates?.length) {      
+      return null;
+    }
+
+    const { id, name, price, scheduleDates, subtitle } = shippingMethod;
+    const selected = values?.shippingMethod === id;
+    const index = 1;
+
+    const defaultScheduleDate = scheduleDates?.[0];
+    const defaultScheduleTime = defaultScheduleDate?.scheduleTimes?.[0];
+    
+    const slotScheduleDates: ISlotScheduleDate[] = [{
+      date: defaultScheduleDate?.date,
+      scheduleTimes: scheduled!.map(x => ({
+        id: x.id!,
+        startTime: format(new Date(x.slotFrom!), "HH:mm:ss"),
+        endTime: format(new Date(x.slotTo!), "HH:mm:ss"),
+        scheduleTimeId: defaultScheduleTime?.id!,
+      })),
+    }];
+
+    return (
+      <S.ShippingMethodContainer
+        data-cy={`checkoutShippingMethodOption${index}Input`}
+        hasError={!!formikErrors?.shippingMethod && !values.shippingMethod}
+        selected={selected}
+        onClick={() => {
+          handleOnclick(id, true, slotScheduleDates, selected);
+        }}
+      >
+        <S.ShippingMethodItem>
+          <ShippingMethodItem
+            dateSelected={values.dateSelected}
+            errors={formikErrors}
+            id={id}
+            index={index}
+            isScheduled={true}
+            name={name}
+            selected={selected}
+            selectedSlotId={values.selectedSlotId}
+            scheduleDates={slotScheduleDates}
+            subtitle={subtitle}
+            touched={touched}
+            price={price}
+            handleChange={handleChange}
+            setErrors={setErrors}
+            setFieldValue={setFieldValue}
+            setShippingMethod={setShippingMethod}
+            scheduleTimeId={defaultScheduleTime?.id}
+          />
+        </S.ShippingMethodItem>
+      </S.ShippingMethodContainer>
+    );
+  }
+
   return (
     <section>
       <S.FieldsGroup>
         {renderGroupLabel(3, "¿Cuando desea recibir su pedido?")}
         <form id={formId} ref={formRef} onSubmit={handleSubmit}>
-          {shippingMethods?.map(
-            (
-              { id, isScheduled, name, price, scheduleDates, subtitle },
-              index
-            ) => {
-              const selected: boolean =
-                !!values.shippingMethod && values.shippingMethod === id;
-
-              return (
-                <S.ShippingMethodContainer
-                  key={id}
-                  data-cy={`checkoutShippingMethodOption${index}Input`}
-                  hasError={
-                    !!formikErrors?.shippingMethod && !values.shippingMethod
-                  }
-                  selected={selected}
-                  onClick={() => {
-                    handleOnclick(id, !!isScheduled, scheduleDates, selected);
-                  }}
-                >
-                  <S.ShippingMethodItem>
-                    <ShippingMethodItem
-                      dateSelected={values.dateSelected}
-                      errors={formikErrors}
-                      id={id}
-                      index={index}
-                      isScheduled={isScheduled}
-                      name={name}
-                      selected={selected}
-                      scheduleSelected={values.scheduleSelected}
-                      scheduleDates={scheduleDates}
-                      subtitle={subtitle}
-                      touched={touched}
-                      price={price}
-                      handleChange={handleChange}
-                      setErrors={setErrors}
-                      setFieldValue={setFieldValue}
-                      setShippingMethod={setShippingMethod}
-                    />
-                  </S.ShippingMethodItem>
-                </S.ShippingMethodContainer>
-              );
-            }
-          )}
+          {renderExpressItem()}
+          {renderScheduledItem()}
           {!!shippingMethods?.length &&
             formikErrors?.shippingMethod &&
             !values.shippingMethod && (
