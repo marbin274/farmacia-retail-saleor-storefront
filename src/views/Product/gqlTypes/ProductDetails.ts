@@ -738,6 +738,7 @@ export interface ProductDetails_product_variants {
    * The ID of the object.
    */
   id: string;
+  gtin: string;
   sku: string;
   name: string;
   /**

@@ -77,6 +77,7 @@ export const productVariantFragment = gql`
   ${priceFragment}
   fragment ProductVariantFields on ProductVariant {
     id
+    gtin
     sku
     name
     isAvailable
