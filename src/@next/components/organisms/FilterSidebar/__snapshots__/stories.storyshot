@@ -244,7 +244,7 @@ exports[`Storyshots @components/organisms/FilterSidebar default 1`] = `
               Filtros
             </span>
             <div
-              className="c5"
+              className="icon_button c5"
               data-cy="icon_button"
               onClick={[Function]}
             >

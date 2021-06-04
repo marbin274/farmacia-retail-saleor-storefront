@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots @components/organisms/CartSummary default 1`] = `
+exports[`Storyshots @components/organisms/CategoryNavigation default 1`] = `
 .c0 {
   position: relative;
   margin: 20px;
 }
 
-.c5 {
+.c3 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -18,28 +18,18 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
 }
 
 .c1 {
-  width: 300px;
-  border-right: 1px solid #E4E5ED;
+  width: 18.75rem;
+  background-color: #fff;
+  padding: 1.25rem 2rem;
+  padding-top: 1.875rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
 }
 
 .c2 {
-  margin-bottom: 48px;
+  margin-bottom: 1rem;
   font-weight: 600;
-  font-size: 18px;
-}
-
-.c3 {
-  margin: 0 12px;
-}
-
-.c4 {
-  margin-bottom: 32px;
-  font-weight: normal;
-  font-size: 16px;
-}
-
-.c4:last-child {
-  margin-bottom: 0;
+  font-size: 14px;
 }
 
 @media (max-width:992px) {
@@ -59,33 +49,9 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
     >
       Categorías
     </p>
-    <ul
-      className="c3"
-    >
-      <li
-        className="c4"
-      >
-        <a
-          href="/category/hijo-primero/37/"
-          onClick={[Function]}
-        >
-          Link Hijo
-        </a>
-      </li>
-      <li
-        className="c4"
-      >
-        <a
-          href="/category/hijo-primero/37/"
-          onClick={[Function]}
-        >
-          Link Hijo
-        </a>
-      </li>
-    </ul>
   </nav>
   <div
-    className="c5"
+    className="c3"
   />
 </div>
 `;

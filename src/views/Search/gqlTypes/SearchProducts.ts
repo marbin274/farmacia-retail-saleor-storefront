@@ -565,4 +565,5 @@ export interface SearchProductsVariables {
   pageSize?: number | null;
   sortBy?: ProductOrder | null;
   after?: string | null;
+  districtId?: string | null;
 }

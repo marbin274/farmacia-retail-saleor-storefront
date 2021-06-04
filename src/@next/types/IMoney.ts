@@ -15,6 +15,6 @@ export interface ITaxedMoney {
 }
 
 export interface ITaxedMoneyRange {
-  start: ITaxedMoney;
-  stop: ITaxedMoney;
+  start: ITaxedMoney | null;
+  stop: ITaxedMoney | null;
 }

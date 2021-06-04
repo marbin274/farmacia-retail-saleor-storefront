@@ -417,6 +417,7 @@ export interface AddressInput {
   latitude?: number | null;
   longitude?: number | null;
   isDefault?: boolean | null;
+  district?: string | null;
 }
 
 export interface AttributeInput {

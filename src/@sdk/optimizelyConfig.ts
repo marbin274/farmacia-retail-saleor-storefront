@@ -1,8 +1,10 @@
-import { createInstance, useDecision } from "@optimizely/react-sdk";
+import { createInstance, useDecision, setLogger } from "@optimizely/react-sdk";
 import { nanoid } from "nanoid";
 import { optimizelySdkKey } from "@temp/constants";
 
 const OPTIMIZELY_USER_ID_KEY = "@opt_id";
+
+setLogger(null);
 
 export const optimizelyClient = createInstance({
   sdkKey: optimizelySdkKey,

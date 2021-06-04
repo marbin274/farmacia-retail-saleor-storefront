@@ -33,6 +33,7 @@ const MainMenu: React.FC = () => {
   const location = useLocation();
   const [signOut] = useSignOut();
   const { items } = useCart();
+  
 
   const mediumScreenPlusOne = "993px";
 
@@ -292,7 +293,7 @@ const MainMenu: React.FC = () => {
                 <Online>
                   <li
                     className="main-menu__icon main-menu__cart"
-                    onClick={() => {
+                    onClick={() => {                      
                       overlayContext.show(OverlayType.cart, OverlayTheme.right);
                     }}
                   >

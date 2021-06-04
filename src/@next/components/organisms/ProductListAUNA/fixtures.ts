@@ -74,42 +74,7 @@ export const products: ISimpleProduct[] = [
       id: "Q2F0ZWdvcnk6NzY=",
       name: "Antibióticos y corticoides",
     },
-    variants: [
-      {
-        quantityOrdered: 1,
-        id: "UHJvZHVjdFZhcmlhbnQ6NDIz",
-        sku: "30002865",
-        name: "",
-        quantityAvailable: 49,
-        pricing: {
-          onSale: false,
-          priceUndiscounted: {
-            gross: {
-              amount: 1,
-              currency: "PEN",
-              culture: "es-PE",
-            },
-            net: {
-              amount: 1,
-              currency: "PEN",
-              culture: "es-PE",
-            },
-          },
-          price: {
-            gross: {
-              amount: 1,
-              currency: "PEN",
-              culture: "es-PE",
-            },
-            net: {
-              amount: 1,
-              currency: "PEN",
-              culture: "es-PE",
-            },
-          },
-        },
-      },
-    ],
+    
     quantity: 6,
   },
   {
@@ -183,42 +148,7 @@ export const products: ISimpleProduct[] = [
       id: "Q2F0ZWdvcnk6Nzc=",
       name: "Antigripales",
     },
-    variants: [
-      {
-        quantityOrdered: 1,
-        id: "UHJvZHVjdFZhcmlhbnQ6NDA0",
-        sku: "30000711",
-        name: "",
-        quantityAvailable: 50,
-        pricing: {
-          onSale: false,
-          priceUndiscounted: {
-            gross: {
-              amount: 2,
-              currency: "PEN",
-              culture: "es-PE",
-            },
-            net: {
-              amount: 2,
-              currency: "PEN",
-              culture: "es-PE",
-            },
-          },
-          price: {
-            gross: {
-              amount: 2,
-              currency: "PEN",
-              culture: "es-PE",
-            },
-            net: {
-              amount: 2,
-              currency: "PEN",
-              culture: "es-PE",
-            },
-          },
-        },
-      },
-    ],
+    
     quantity: 1,
   },
   {
@@ -292,42 +222,7 @@ export const products: ISimpleProduct[] = [
       id: "Q2F0ZWdvcnk6NzU=",
       name: "Hipertensión",
     },
-    variants: [
-      {
-        quantityOrdered: 1,
-        id: "UHJvZHVjdFZhcmlhbnQ6NDE5",
-        sku: "30002794",
-        name: "",
-        quantityAvailable: 50,
-        pricing: {
-          onSale: false,
-          priceUndiscounted: {
-            gross: {
-              amount: 3,
-              currency: "PEN",
-              culture: "es-PE",
-            },
-            net: {
-              amount: 3,
-              currency: "PEN",
-              culture: "es-PE",
-            },
-          },
-          price: {
-            gross: {
-              amount: 3,
-              currency: "PEN",
-              culture: "es-PE",
-            },
-            net: {
-              amount: 3,
-              currency: "PEN",
-              culture: "es-PE",
-            },
-          },
-        },
-      },
-    ],
+   
     quantity: 0,
   },
   {
@@ -401,42 +296,7 @@ export const products: ISimpleProduct[] = [
       id: "Q2F0ZWdvcnk6Nzc=",
       name: "Antigripales",
     },
-    variants: [
-      {
-        quantityOrdered: 1,
-        id: "UHJvZHVjdFZhcmlhbnQ6NDE0",
-        sku: "30002712",
-        name: "",
-        quantityAvailable: 50,
-        pricing: {
-          onSale: false,
-          priceUndiscounted: {
-            gross: {
-              amount: 5,
-              currency: "PEN",
-              culture: "es-PE",
-            },
-            net: {
-              amount: 5,
-              currency: "PEN",
-              culture: "es-PE",
-            },
-          },
-          price: {
-            gross: {
-              amount: 5,
-              currency: "PEN",
-              culture: "es-PE",
-            },
-            net: {
-              amount: 5,
-              currency: "PEN",
-              culture: "es-PE",
-            },
-          },
-        },
-      },
-    ],
+    
     quantity: 0,
   },
   {
@@ -510,42 +370,7 @@ export const products: ISimpleProduct[] = [
       id: "Q2F0ZWdvcnk6NzI=",
       name: "Fiebre",
     },
-    variants: [
-      {
-        quantityOrdered: 1,
-        id: "UHJvZHVjdFZhcmlhbnQ6NDAy",
-        sku: "30000088",
-        name: "",
-        quantityAvailable: 50,
-        pricing: {
-          onSale: false,
-          priceUndiscounted: {
-            gross: {
-              amount: 6,
-              currency: "PEN",
-              culture: "es-PE",
-            },
-            net: {
-              amount: 6,
-              currency: "PEN",
-              culture: "es-PE",
-            },
-          },
-          price: {
-            gross: {
-              amount: 6,
-              currency: "PEN",
-              culture: "es-PE",
-            },
-            net: {
-              amount: 6,
-              currency: "PEN",
-              culture: "es-PE",
-            },
-          },
-        },
-      },
-    ],
+    
     quantity: 0,
   },
   {
@@ -619,42 +444,7 @@ export const products: ISimpleProduct[] = [
       id: "Q2F0ZWdvcnk6NzE=",
       name: "Dolor muscular",
     },
-    variants: [
-      {
-        quantityOrdered: 11,
-        id: "UHJvZHVjdFZhcmlhbnQ6NDEw",
-        sku: "30001358",
-        name: "",
-        quantityAvailable: 50,
-        pricing: {
-          onSale: false,
-          priceUndiscounted: {
-            gross: {
-              amount: 6,
-              currency: "PEN",
-              culture: "es-PE",
-            },
-            net: {
-              amount: 6,
-              currency: "PEN",
-              culture: "es-PE",
-            },
-          },
-          price: {
-            gross: {
-              amount: 6,
-              currency: "PEN",
-              culture: "es-PE",
-            },
-            net: {
-              amount: 6,
-              currency: "PEN",
-              culture: "es-PE",
-            },
-          },
-        },
-      },
-    ],
+    
     quantity: 0,
   },
   {
@@ -728,42 +518,7 @@ export const products: ISimpleProduct[] = [
       id: "Q2F0ZWdvcnk6Njg=",
       name: "Cicatrizantes",
     },
-    variants: [
-      {
-        id: "UHJvZHVjdFZhcmlhbnQ6NDM0",
-        sku: "30005627",
-        name: "",
-        quantityAvailable: 50,
-        pricing: {
-          onSale: false,
-          priceUndiscounted: {
-            gross: {
-              amount: 6,
-              currency: "PEN",
-              culture: "es-PE",
-            },
-            net: {
-              amount: 6,
-              currency: "PEN",
-              culture: "es-PE",
-            },
-          },
-          price: {
-            gross: {
-              amount: 6,
-              currency: "PEN",
-              culture: "es-PE",
-            },
-            net: {
-              amount: 6,
-              currency: "PEN",
-              culture: "es-PE",
-            },
-          },
-        },
-        quantityOrdered: 0,
-      },
-    ],
+    
     quantity: 0,
   },
   {
@@ -837,42 +592,7 @@ export const products: ISimpleProduct[] = [
       id: "Q2F0ZWdvcnk6NDY=",
       name: "CÓLICOS",
     },
-    variants: [
-      {
-        id: "UHJvZHVjdFZhcmlhbnQ6NDA3",
-        sku: "30001239",
-        name: "",
-        quantityAvailable: 50,
-        pricing: {
-          onSale: false,
-          priceUndiscounted: {
-            gross: {
-              amount: 6,
-              currency: "PEN",
-              culture: "es-PE",
-            },
-            net: {
-              amount: 6,
-              currency: "PEN",
-              culture: "es-PE",
-            },
-          },
-          price: {
-            gross: {
-              amount: 6,
-              currency: "PEN",
-              culture: "es-PE",
-            },
-            net: {
-              amount: 6,
-              currency: "PEN",
-              culture: "es-PE",
-            },
-          },
-        },
-        quantityOrdered: 0,
-      },
-    ],
+    
     quantity: 0,
   },
 ];
@@ -935,6 +655,11 @@ export const productsOnCart: IItems = [
       },
       product: {
         attributes: [],
+        category: {
+          __typename: "Category",
+          id: "",
+          name: "",
+        },
         id: "UHJvZHVjdDoyMDg=",
         name: "Abrilar 35Mg/5ML Jarabe - Frasco 100 ML",
         thumbnail: {
@@ -1015,6 +740,11 @@ export const productsOnCart: IItems = [
       },
       product: {
         attributes: [],
+        category: {
+          __typename: "Category",
+          id: "",
+          name: "",
+        },
         id: "UHJvZHVjdDoyMjc=",
         name: "Betacort Depot Solución Inyectable",
         thumbnail: {

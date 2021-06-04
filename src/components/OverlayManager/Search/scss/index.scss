@@ -21,18 +21,32 @@ $custom-breakpoint: 624px;
   }
 
   &__input {
+    background-color: $auna-black;
+    display: flex;
+    flex-direction: column;
     margin-top: 80px;
+    padding: 1.563rem 0.75rem;
+    @media (min-width: $medium-screen-styled) {
+      align-items: center;
+      flex-direction: row;
+      justify-content: center;      
+    }
+    @media (min-width: $medium-screen) {     
+      justify-content: center;      
+    }
     &--clear {
       cursor: pointer;
     }
 
-    .input {
-      padding: 36px;
-      background-color: $auna-black;
-
+    .input {    
+      @media (min-width: $medium-screen-styled) {
+        width: 36rem;
+        padding-bottom: 0rem;
+        padding-right: 1rem;
+      }
       input,
       input::placeholder {
-        font-size: 16px;
+        font-size: 1rem;
       }
 
       &__content {
@@ -154,6 +168,13 @@ $custom-breakpoint: 624px;
         }
       }
 
+      &__link {
+        width: 21.875rem;
+        @media (max-width: $small-screen) {
+          width: auto;
+        }
+      }
+
       &__side {
         display: flex;
         &.actions {
@@ -167,9 +188,9 @@ $custom-breakpoint: 624px;
           }
           .button {
             > button {
-              padding: 0.6rem 2.16rem;
-              border-radius: 44px;
-              width: 100%;
+              padding: 0.6rem 0.5rem;
+              border-radius: 2.75rem;
+              width: 8.125rem;
               span {
                 font-size: $small-font-size;
               }

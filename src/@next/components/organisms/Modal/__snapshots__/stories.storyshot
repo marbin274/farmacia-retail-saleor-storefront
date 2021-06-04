@@ -313,7 +313,7 @@ exports[`Storyshots @components/organisms/Modal Modal Form 1`] = `
               Modal title
             </h4>
             <div
-              className="c7"
+              className="icon_button c7"
               data-cy="icon_button"
               onClick={[Function]}
             >
@@ -665,7 +665,7 @@ exports[`Storyshots @components/organisms/Modal Modal Form disabled 1`] = `
               Modal title
             </h4>
             <div
-              className="c7"
+              className="icon_button c7"
               data-cy="icon_button"
               onClick={[Function]}
             >
@@ -1008,7 +1008,7 @@ exports[`Storyshots @components/organisms/Modal Modal Info 1`] = `
               Modal title
             </h4>
             <div
-              className="c7"
+              className="icon_button c7"
               data-cy="icon_button"
               onClick={[Function]}
             >

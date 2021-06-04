@@ -11,7 +11,7 @@ import { ProductListHeader } from "../../@next/components/molecules";
 import { ProductListAUNA } from "../../@next/components/organisms";
 import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
 import { DebounceChange, TextField } from "../../components";
-import { maybe } from "../../core/utils";
+import { convertToSimpleProduct, maybe } from "@temp/core/utils";
 import { SearchProducts_products } from "./gqlTypes/SearchProducts";
 import "./scss/index.scss";
 import homeIcon from "images/home.svg";
@@ -168,7 +168,7 @@ const Page: React.FC<PageProps> = ({
         </div>
         {canDisplayProducts && (
           <ProductListAUNA
-            products={products.edges.map(edge => edge.node)}
+            products={products.edges.map((edge) => convertToSimpleProduct(edge.node))}
             productsOnCart={productsOnCart}
             canLoadMore={hasNextPage}
             loading={displayLoader}

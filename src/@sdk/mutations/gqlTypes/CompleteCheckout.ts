@@ -8,6 +8,18 @@ import { CheckoutErrorCode, PaymentChargeStatusEnum, ShippingStatusEnum, OrderSt
 // GraphQL mutation operation: CompleteCheckout
 // ====================================================
 
+export interface CompleteCheckout_checkoutComplete_checkoutErrors_products {
+  __typename: "FailedProduct";
+  /**
+   * Product variant SKU which causes error.
+   */
+  sku: string | null;
+  /**
+   * Stock available 
+   */
+  quantityAvailable: number | null;
+}
+
 export interface CompleteCheckout_checkoutComplete_checkoutErrors {
   __typename: "CheckoutError";
   /**
@@ -23,6 +35,10 @@ export interface CompleteCheckout_checkoutComplete_checkoutErrors {
    * The error code.
    */
   code: CheckoutErrorCode;
+  /**
+   * List of products that produce errors.
+   */
+  products: (CompleteCheckout_checkoutComplete_checkoutErrors_products | null)[] | null;
 }
 
 export interface CompleteCheckout_checkoutComplete_order_shippingAddress_country {
@@ -212,6 +228,15 @@ export interface CompleteCheckout_checkoutComplete_order_lines_variant_attribute
   values: (CompleteCheckout_checkoutComplete_order_lines_variant_attributes_values | null)[];
 }
 
+export interface CompleteCheckout_checkoutComplete_order_lines_variant_product_category {
+  __typename: "Category";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+}
+
 export interface CompleteCheckout_checkoutComplete_order_lines_variant_product_attributes_attribute {
   __typename: "Attribute";
   /**
@@ -284,6 +309,7 @@ export interface CompleteCheckout_checkoutComplete_order_lines_variant_product {
    */
   id: string;
   name: string;
+  category: CompleteCheckout_checkoutComplete_order_lines_variant_product_category | null;
   /**
    * List of attributes assigned to this product.
    */
@@ -602,4 +628,5 @@ export interface CompleteCheckout {
 export interface CompleteCheckoutVariables {
   checkoutId: string;
   paymentData?: any | null;
+  districtId?: string | null;
 }

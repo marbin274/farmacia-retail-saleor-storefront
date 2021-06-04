@@ -26,6 +26,11 @@ export const productVariantFragmentSimple = gql`
       price {
         ...Price
       }
+      product{
+        category{
+          name
+        }
+      }
     }
   }
 `;

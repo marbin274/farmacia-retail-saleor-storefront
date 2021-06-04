@@ -481,4 +481,5 @@ export interface FeaturedProducts {
 
 export interface FeaturedProductsVariables {
   first?: number | null;
+  districtId?: string | null;
 }

@@ -70,6 +70,7 @@ export const categoryProductsQuery = gql`
     $sortBy: ProductOrder
     $priceLte: Float
     $priceGte: Float
+    $districtId: ID
   ) {
     paginatedProducts(
       page: $page

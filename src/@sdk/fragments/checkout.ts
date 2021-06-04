@@ -44,7 +44,7 @@ export const checkoutProductVariantFragment = gql`
     id
     name
     sku
-    quantityAvailable
+    quantityAvailable(district: $districtId)
     isAvailable
     pricing {
       onSale
@@ -69,6 +69,10 @@ export const checkoutProductVariantFragment = gql`
     product {
       id
       name
+      category{
+        id
+        name
+      }
       attributes {
         attribute {
           id
@@ -107,9 +111,9 @@ export const checkoutShippingMethodFragment = gql`
     scheduleDates {
       date
       scheduleTimes {
-          id
-          startTime
-          endTime
+        id
+        startTime
+        endTime
       }
     }
     subtitle

@@ -36,20 +36,23 @@ export class CheckoutJobs {
     privacyPolicy?: IPrivacyPolicy;
     documentNumber: string;
   }): PromiseCheckoutJobRunResponse => {
-    const { data, error } = await this.networkManager.createCheckout(
+    const districtId = this.repository.getDistrict()?.code;
+
+    const { checkoutErrors, data, error } = await this.networkManager.createCheckout(
       email,
       lines,
       shippingAddress,
       billingAddress,
       privacyPolicy,
-      documentNumber
+      documentNumber,
+      districtId
     );
 
-    if (error) {
-      /**
-       * TODO: Differentiate errors!!! THIS IS A BUG!!!
-       * DataErrorCheckoutTypes.SET_SHIPPING_ADDRESS is just one of every possible - instead of deprecated errors, checkoutErrors should be used.
-       */
+    if (checkoutErrors?.length! > 0) {
+      return {
+        checkoutErrors,
+      };
+    } else if (error) {
       return {
         dataError: {
           error,
@@ -85,16 +88,22 @@ export class CheckoutJobs {
     privacyPolicy: IPrivacyPolicy;
   }): PromiseCheckoutJobRunResponse => {
     const checkout = this.repository.getCheckout();
+    const districtId = this.repository.getDistrict()?.code;
 
-    const { data, error } = await this.networkManager.setShippingAddress(
+    const { checkoutErrors, data, error } = await this.networkManager.setShippingAddress(
       shippingAddress,
       email,
       checkoutId,
       documentNumber,
-      privacyPolicy
+      privacyPolicy,
+      districtId
     );
-
-    if (error) {
+    
+    if (checkoutErrors?.length! > 0) {
+      return {
+        checkoutErrors,
+      };
+    } else if (error) {
       return {
         dataError: {
           error,
@@ -130,10 +139,12 @@ export class CheckoutJobs {
     selectedBillingAddressId?: string;
   }): PromiseCheckoutJobRunResponse => {
     const checkout = this.repository.getCheckout();
+    const districtId = this.repository.getDistrict()?.code;
 
     const { data, error } = await this.networkManager.setBillingAddress(
       billingAddress,
-      checkoutId
+      checkoutId,
+      districtId
     );
 
     if (error) {
@@ -167,13 +178,16 @@ export class CheckoutJobs {
   }): PromiseCheckoutJobRunResponse => {
     const checkout = this.repository.getCheckout();
 
+    const districtId = this.repository.getDistrict()?.code;
+
     const {
       data,
       error,
     } = await this.networkManager.setBillingAddressWithEmail(
       billingAddress,
       email,
-      checkoutId
+      checkoutId,
+      districtId
     );
 
     if (error) {
@@ -203,10 +217,12 @@ export class CheckoutJobs {
     shippingMethodUpdate: IShippingMethodUpdate;
   }): PromiseCheckoutJobRunResponse => {
     const checkout = this.repository.getCheckout();
+    const districtId = this.repository.getDistrict()?.code;
 
     const { data, error } = await this.networkManager.setShippingMethod(
       shippingMethodUpdate,
-      checkoutId
+      checkoutId,
+      districtId
     );
 
     if (error) {
@@ -237,10 +253,12 @@ export class CheckoutJobs {
     promoCode: string;
   }): PromiseCheckoutJobRunResponse => {
     const checkout = this.repository.getCheckout();
+    const districtId = this.repository.getDistrict()?.code;
 
     const { data, error } = await this.networkManager.addPromoCode(
       promoCode,
-      checkoutId
+      checkoutId,
+      districtId
     );
 
     if (error) {
@@ -267,10 +285,12 @@ export class CheckoutJobs {
     promoCode: string;
   }): PromiseCheckoutJobRunResponse => {
     const checkout = this.repository.getCheckout();
+    const districtId = this.repository.getDistrict()?.code;
 
     const { data, error } = await this.networkManager.removePromoCode(
       promoCode,
-      checkoutId
+      checkoutId,
+      districtId
     );
 
     if (error) {
@@ -305,13 +325,15 @@ export class CheckoutJobs {
     creditCard?: ICreditCard;
   }): PromiseCheckoutJobRunResponse => {
     const payment = this.repository.getPayment();
+    const districtId = this.repository.getDistrict()?.code;
 
     const { data, error } = await this.networkManager.createPayment(
       amount,
       checkoutId,
       paymentGateway,
       paymentToken,
-      billingAddress
+      billingAddress,
+      districtId
     );
 
     if (error) {
@@ -340,9 +362,12 @@ export class CheckoutJobs {
     checkoutId: string;
     paymentData?: string;
   }): PromiseCheckoutJobRunResponse => {
+    const districtId = this.repository.getDistrict()?.code;
+
     const { data, error } = await this.networkManager.completeCheckout(
       checkoutId,
-      paymentData
+      paymentData,
+      districtId
     );
 
     if (error) {

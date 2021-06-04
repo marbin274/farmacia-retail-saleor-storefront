@@ -94,7 +94,7 @@ exports[`Storyshots @components/atoms/DropdownMenu clickable 1`] = `
       onMouseLeave={[Function]}
     >
       <div
-        className="c3"
+        className="icon_button c3"
         data-cy="icon_button"
         onClick={[Function]}
       >
@@ -211,7 +211,7 @@ exports[`Storyshots @components/atoms/DropdownMenu hoverable 1`] = `
       onMouseLeave={[Function]}
     >
       <div
-        className="c3"
+        className="icon_button c3"
         data-cy="icon_button"
         onClick={[Function]}
       >

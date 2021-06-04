@@ -286,4 +286,5 @@ export interface CheckoutProductVariants {
 
 export interface CheckoutProductVariantsVariables {
   ids?: (string | null)[] | null;
+  districtId?: string | null;
 }

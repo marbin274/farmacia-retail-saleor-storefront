@@ -28,3 +28,4 @@ export * from "./ProductListAUNA";
 export * from "./ItemsHandler";
 export * from "./ProductBottomDetail";
 export * from "./CartDeliveryData";
+export * from "./StockValidationModal";

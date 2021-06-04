@@ -1,19 +1,18 @@
 import { filterNotEmptyArrayItems } from "@utils/misc";
 import React from "react";
 import { AddressForm } from "../AddressForm";
-import { citiesOptions } from "./cities";
 import { IProps } from "./types";
-
-
 
 /**
  * Address form used in checkout.
  */
 const CheckoutAddress: React.FC<IProps> = ({
+  availableDistricts,
   checkoutAddress,
   email,
   countries,
   user,
+  userLoading,
   formRef,
   formId,
   setShippingAddress,
@@ -26,7 +25,7 @@ const CheckoutAddress: React.FC<IProps> = ({
       <AddressForm
         formId={formId}
         formRef={formRef}
-        citiesOptions={citiesOptions}
+        districtsOptions={availableDistricts?.map(x => x!.name)}
         countriesOptions={countries?.filter(filterNotEmptyArrayItems)}
         checkoutData={checkoutData}
         address={{
@@ -43,6 +42,7 @@ const CheckoutAddress: React.FC<IProps> = ({
         includeEmail={true}
         errors={errors}
         user={user}
+        userLoading={userLoading}
         setFormValue={setFormValue}
       />
     </section>

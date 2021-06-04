@@ -561,6 +561,15 @@ export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_check
   values: (UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_checkout_lines_variant_attributes_values | null)[];
 }
 
+export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_checkout_lines_variant_product_category {
+  __typename: "Category";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+}
+
 export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_checkout_lines_variant_product_attributes_attribute {
   __typename: "Attribute";
   /**
@@ -633,6 +642,7 @@ export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_check
    */
   id: string;
   name: string;
+  category: UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_checkout_lines_variant_product_category | null;
   /**
    * List of attributes assigned to this product.
    */
@@ -778,4 +788,5 @@ export interface UpdateCheckoutBillingAddress {
 export interface UpdateCheckoutBillingAddressVariables {
   checkoutId: string;
   billingAddress: AddressInput;
+  districtId?: string | null;
 }

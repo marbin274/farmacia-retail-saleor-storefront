@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Helmet } from "react-helmet";
-
 import { Consumer as MetaConsumer } from "./context";
 
 const Consumer: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
@@ -20,6 +19,13 @@ const Consumer: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
         canonicalURL = homeCanonicalURL;
       }
 
+      function getParameterByName(name: string) {
+        const match = RegExp("[?&]" + name + "=([^&]*)").exec(
+          window.location.search
+        );
+        return match && decodeURIComponent(match[1].replace(/\+/g, " "));
+      }
+
       return (
         <>
           <Helmet
@@ -37,6 +43,10 @@ const Consumer: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
               { property: "og:description", content: description },
               { property: "og:type", content: type },
               { property: "og:image", content: image },
+              !!getParameterByName("filters") && {
+                name: "robots",
+                content: "nofollow",
+              },
               ...custom,
             ]}
           />

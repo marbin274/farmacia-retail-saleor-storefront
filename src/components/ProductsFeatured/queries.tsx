@@ -13,12 +13,12 @@ import {
 export const featuredProducts = gql`
   ${basicProductFragment}
   ${productPricingFragment}
-  query FeaturedProducts($first: Int) {
+  query FeaturedProducts($first: Int, $districtId: ID) {
     shop {
       homepageCollections {
         id
         name
-        products(first: $first) {
+        products(district: $districtId, first: $first) {
           edges {
             node {
               ...BasicProductFields
@@ -49,7 +49,7 @@ export const featuredProducts = gql`
                     ...Price
                   }
                 }
-                quantityAvailable
+                quantityAvailable(district: $districtId)
               }
             }
           }

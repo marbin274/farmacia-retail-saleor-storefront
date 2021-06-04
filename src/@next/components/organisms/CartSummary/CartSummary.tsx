@@ -4,6 +4,7 @@ import { CartSummaryRow, CartResume } from "@components/molecules";
 import {
   checkProductCanAddToCart,
   checkProductIsOnSale,
+  convertProductOnCartInProduct,
 } from "@temp/@next/utils/products";
 import {  smallScreen } from "@temp/@next/globalStyles/constants";
 
@@ -125,7 +126,7 @@ const CartSummary: React.FC<IProps> = ({
           <S.HR />
           <S.CartSummaryProductList>
             {products?.map((product, index) => {
-              const { canAddToCart } = checkProductCanAddToCart(product, products);
+              const { canAddToCart } = checkProductCanAddToCart(convertProductOnCartInProduct(product), products);
               const isOnSale = checkProductIsOnSale(product);
               return (
                 <div key={`${product.variant.sku}-${index}`}>
@@ -134,11 +135,11 @@ const CartSummary: React.FC<IProps> = ({
                       canAddToCart={canAddToCart}
                       index={index}
                       isOnSale={isOnSale}
-                      sku={product.variant.sku || ""}
-                      quantity={product.quantity}
-                      name={product.name}
-                      price={product.variant.pricing?.price}
-                      thumbnail={product.variant.product?.thumbnail}
+                      sku={product?.variant?.sku || ""}
+                      quantity={product?.quantity}
+                      name={product?.name}
+                      price={product?.variant?.pricing?.price}
+                      thumbnail={product?.variant?.product?.thumbnail}
                     />
                   </S.ProductLine>
                   <S.HR />

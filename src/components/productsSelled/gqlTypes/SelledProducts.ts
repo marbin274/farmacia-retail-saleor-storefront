@@ -524,6 +524,7 @@ export interface SelledProducts {
 }
 
 export interface SelledProductsVariables {
+  districtId?: string | null;
   period: ReportingPeriod;
   first?: number | null;
 }

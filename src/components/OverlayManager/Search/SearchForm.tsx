@@ -10,8 +10,11 @@ import { maybe } from "../../../core/utils";
 import { DebouncedTextField } from "../../Debounce";
 import { SearchResults } from "./gqlTypes/SearchResults";
 import "./scss/index.scss";
+import { AddressGeocalization } from "@components/molecules";
+import { addressLocationType } from "@components/molecules/AddressGeocalization/types";
 
 interface SearchFormProps {
+  addressGeocalizationMode?: addressLocationType;
   autofocus?: boolean;
   handleSubmit?: (searchQs?: string) => void;
   handleInputBlur?: () => void;
@@ -23,6 +26,7 @@ interface SearchFormProps {
 }
 
 export const SearchForm: React.FC<SearchFormProps> = ({
+  addressGeocalizationMode,
   autofocus,
   handleInputBlur: inputBlur,
   handleSubmit: submit,
@@ -94,6 +98,7 @@ export const SearchForm: React.FC<SearchFormProps> = ({
           placeholder="Busca por nombre o marca"
           onBlur={handleInputBlur}
         />
+        {addressGeocalizationMode && <AddressGeocalization mode={addressGeocalizationMode}/>}
       </div>
       {children(search, hasSearchPhrase, hasResults)}
     </form>

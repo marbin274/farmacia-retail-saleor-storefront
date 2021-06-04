@@ -1,5 +1,5 @@
 import { CheckoutShipping } from "@components/organisms";
-import { useCheckout } from "@sdk/react";
+import { useCart, useCheckout } from "@sdk/react";
 import { alertService } from "@temp/@next/components/atoms/Alert";
 import { SHIPPING_METHOD_NOT_FOUND, SHIPPING_METHOD_NOT_FOUND_TITLE } from "@temp/@next/utils/schemasMessages";
 import { IAvailableShippingMethods } from "@temp/@sdk/api/Checkout/types";
@@ -48,6 +48,7 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
     availableShippingMethods,
     setShippingMethod,
   } = useCheckout();
+  const { items } = useCart();
 
   const shippingMethods: IAvailableShippingMethods = [];
   availableShippingMethods?.forEach(it => {
@@ -107,6 +108,7 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
       scheduleDate={checkout?.scheduleDate}
       errors={addressSubPageErrors}
       selectShippingMethod={handleSetShippingMethod}
+      items={items}
       formId={checkoutShippingFormId}
       formRef={checkoutShippingFormRef}
     />

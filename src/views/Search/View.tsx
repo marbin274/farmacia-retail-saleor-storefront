@@ -20,6 +20,7 @@ import {
   IRemoveItemToCartCallback,
   ISubtractItemToCartCallback,
 } from "@temp/@next/components/molecules/ProductTileAUNA/types";
+import { useDistrictSelected } from "@temp/@next/hooks/useDistrictSelected";
 
 type ViewProps = RouteComponentProps<{
   id: string;
@@ -49,6 +50,7 @@ export const FilterQuerySet = {
 
 
 export const View: React.FC<ViewProps> = ({ match }) => {
+  const [districtSelected] = useDistrictSelected();
   const [sort, setSort] = useQueryParam("sortBy", StringParam);
   const [search, setSearch] = useQueryParam("q", StringParam);
   const [attributeFilters, setAttributeFilters] = useQueryParam(
@@ -103,6 +105,7 @@ export const View: React.FC<ViewProps> = ({ match }) => {
     id: getGraphqlIdFromDBId(match.params.id, "Category"),
     query: search || null,
     sortBy: convertSortByFromString(filters.sortBy),
+    districtId: districtSelected.code,
   };
 
   const sortOptions = [

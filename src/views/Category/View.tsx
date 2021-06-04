@@ -22,6 +22,7 @@ import {
 import { CategoryVariables } from "./gqlTypes/Category";
 import Media from "react-media";
 import { smallScreen } from "@temp/@next/globalStyles/constants";
+import { useDistrictSelected } from "@temp/@next/hooks/useDistrictSelected";
 
 type ViewProps = RouteComponentProps<{
   id: string;
@@ -51,6 +52,7 @@ export const FilterQuerySet = {
 };
 
 export const View: FC<ViewProps> = ({ match }) => {
+  const [districtSelected] = useDistrictSelected();
   const [
     { filters: attributeFilters, page, sortBy: sort },
     setQuery,
@@ -121,6 +123,7 @@ export const View: FC<ViewProps> = ({ match }) => {
     id: getGraphqlIdFromDBId(match.params.id, "Category"),
     page: page || 1,
     sortBy: convertSortByFromString(filters.sortBy),
+    districtId: districtSelected.code,
   };
 
   const sortOptions = [

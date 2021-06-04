@@ -80,7 +80,7 @@ export const productVariantFragment = gql`
     sku
     name
     isAvailable
-    quantityAvailable(countryCode: $countryCode)
+    quantityAvailable(countryCode: $countryCode, district: $districtId)
     images {
       id
       url
@@ -114,7 +114,7 @@ export const productDetailsQuery = gql`
   ${selectedAttributeFragment}
   ${productVariantFragment}
   ${productPricingFragment}
-  query ProductDetails($id: ID!, $countryCode: CountryCode) {
+  query ProductDetails($id: ID!, $countryCode: CountryCode, $districtId: ID) {
     product(id: $id) {
       ...BasicProductFields
       ...ProductPricingField
@@ -183,7 +183,7 @@ export const productVariantFragmentSimple = gql`
         id
         sku
         name
-        quantityAvailable
+        quantityAvailable(district: $districtId)
         images {
             id
             url

@@ -1,11 +1,14 @@
 import { IAddressWithAddressType } from "@types";
 
-import { GetShop_shop_countries } from "@temp/@sdk/queries/gqlTypes/GetShop";
+import {
+  GetShop_shop_availableDistricts,
+  GetShop_shop_countries,
+} from "@temp/@sdk/queries/gqlTypes/GetShop";
 import { Address } from "./types";
 
 interface ICheckoutAddressData extends IAddressWithAddressType {
   email?: string;
-};
+}
 
 const formAddress: ICheckoutAddressData = {
   city: "San Isidro",
@@ -50,7 +53,7 @@ const userAddress: Address = {
   id: "12345",
 };
 
-export const mockCity = {"code": "San Isidro", "description": "San Isidro"};
+export const mockCity = { code: "San Isidro", description: "San Isidro" };
 
 const countries: GetShop_shop_countries[] = [
   { __typename: "CountryDisplay", code: "PL", country: "Poland" },
@@ -69,7 +72,25 @@ const countries: GetShop_shop_countries[] = [
   { __typename: "CountryDisplay", code: "GB", country: "Great Britain" },
 ];
 
+const availableDistricts: GetShop_shop_availableDistricts[] = [
+  {
+    id: "1",
+    isActive: true,
+    isDefault: false,
+    name: "Miraflores",
+    __typename: "District",
+  },
+  {
+    id: "2",
+    isActive: true,
+    isDefault: false,
+    name: "San Isidro",
+    __typename: "District",
+  },
+];
+
 export const LOGGED_IN_USER_PROPS = {
+  availableDistricts,
   countries,
   userAddresses: [
     {
@@ -79,6 +100,7 @@ export const LOGGED_IN_USER_PROPS = {
 };
 
 export const ANONYMOUS_USER_PROPS = {
+  availableDistricts,
   checkoutAddress: formAddress,
   countries,
   email: formAddress.email,

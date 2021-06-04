@@ -20,6 +20,7 @@ export const Photo = styled.div`
   img {
     height: auto;
     max-width: 60px;
+    
   }
 `;
 export const Sku = styled.div`

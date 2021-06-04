@@ -7,13 +7,18 @@ import { Loader } from "@components/atoms";
 import { useOrderDetails, useUserDetails } from "@sdk/react";
 
 import Page from "./Page";
+import { useDistrictSelected } from "@temp/@next/hooks";
 
 const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
   match: {
     params: { token },
   },
 }) => {
-  const { data: order, loading } = useOrderDetails({ token });
+  const [district] = useDistrictSelected();
+  const { data: order, loading } = useOrderDetails({
+    token,
+    districtId: district?.code,
+  });
   const { data: user } = useUserDetails();
   const guest = !user;
 

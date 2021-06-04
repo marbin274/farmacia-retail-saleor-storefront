@@ -20,7 +20,7 @@ export const ecommerceProductsMapper = (products?: any[] | null) => {
   return (
     products?.map(product => ({
       brand: ``,
-      category: ``,
+      category: product?.variant?.product?.category?.name || ``,
       id: product?.variant?.sku,
       list: ``,
       name: product?.productName || product?.name,
@@ -28,7 +28,6 @@ export const ecommerceProductsMapper = (products?: any[] | null) => {
       price:
         product?.unitPrice?.gross?.amount || product?.totalPrice?.gross?.amount,
       quantity: product?.quantity,
-      variant: ``,
     })) || []
   );
 };
@@ -91,7 +90,7 @@ export const launchCheckoutEvent = (
   step: number,
   products?: any[],
   eventCallback?: () => void
-) => {  
+) => {
   return pushToDatalayer({
     ecommerce: {
       checkout: {
@@ -104,26 +103,26 @@ export const launchCheckoutEvent = (
   });
 };
 
-export const launchCheckoutFilledContactUserDataEvent = () =>{
+export const launchCheckoutFilledContactUserDataEvent = () => {
   launchCheckoutEvent(
     steps.filledContactUserData,
     ecommerceProductsMapper(getLocalStorageForCart())
   );
-}
+};
 
-export const launchCheckoutPrivacyPolicyAceptedEvent = () =>{
+export const launchCheckoutPrivacyPolicyAceptedEvent = () => {
   launchCheckoutEvent(
     steps.privacyPolicyAcepted,
     ecommerceProductsMapper(getLocalStorageForCart())
   );
-}
+};
 
-export const launchCheckoutFilledInputForAddressEvent = () =>{
+export const launchCheckoutFilledInputForAddressEvent = () => {
   launchCheckoutEvent(
     steps.filledInputForAddress,
     ecommerceProductsMapper(getLocalStorageForCart())
   );
-}
+};
 
 export const launchDetailProductEvent = (
   name: string,

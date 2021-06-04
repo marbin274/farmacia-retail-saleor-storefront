@@ -2,6 +2,7 @@ import {
   DataErrorCheckoutTypes,
   FunctionErrorCheckoutTypes,
 } from "../api/Checkout/types";
+import { CreateCheckout_checkoutCreate_checkoutErrors } from "../mutations/gqlTypes/CreateCheckout";
 import { IJobs } from "./Jobs";
 import { IQueuedJobs } from "./QueuedJobs";
 
@@ -13,6 +14,10 @@ export interface JobErrorResponse<T> {
 export interface JobRunResponse<D, F> {
   data?: any;
   dataError?: JobErrorResponse<D>;
+  checkoutErrors?: Omit<
+    CreateCheckout_checkoutCreate_checkoutErrors,
+    "__typename"
+  >[];
 }
 
 export type PromiseCheckoutJobRunResponse = Promise<

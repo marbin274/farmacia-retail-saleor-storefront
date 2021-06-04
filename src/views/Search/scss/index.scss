@@ -1,11 +1,8 @@
 @import "@temp/globalStyles/scss/variables.scss";
 
-.container {
-  margin-top: 1rem !important;
-}
 .product_list_wrapper {
   margin-top: 0;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   @media (max-width: $small-screen) {
     background: transparent;
   }
@@ -103,14 +100,16 @@
   z-index: 0;
   &.container {
     z-index: 0;
+    margin-top: 1rem;
   }
   &__header {
     background-color: $auna-black;
-    // margin-top: 1rem;
-    // padding-bottom: 1rem;
     padding: 2rem;
 
     &__input {
+      .container {
+        margin: 0 auto;
+      }
       .input {
         width: 100%;
         margin: 0 auto;

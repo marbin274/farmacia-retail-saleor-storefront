@@ -90,7 +90,7 @@ export const OrderTabel: React.FC<IProps> = ({ orders, history }: IProps) => {
                         {matches ? (
                           <Button size="sm">Ver detalle</Button>
                         ) : (
-                          <img src={arrowImg} />
+                          <img src={arrowImg} alt="arrow image"/>
                         )}
                       </S.Action>
                     </S.Row>

@@ -280,7 +280,7 @@ exports[`Storyshots @components/organisms/AddressGrid default 1`] = `
             >
               <div>
                 <div
-                  className="c13"
+                  className="icon_button c13"
                   data-cy="icon_button"
                   onClick={[Function]}
                 >
@@ -298,7 +298,7 @@ exports[`Storyshots @components/organisms/AddressGrid default 1`] = `
               </div>
               <div>
                 <div
-                  className="c13"
+                  className="icon_button c13"
                   data-cy="icon_button"
                   onClick={[Function]}
                 >
@@ -394,7 +394,7 @@ exports[`Storyshots @components/organisms/AddressGrid default 1`] = `
             >
               <div>
                 <div
-                  className="c13"
+                  className="icon_button c13"
                   data-cy="icon_button"
                   onClick={[Function]}
                 >
@@ -412,7 +412,7 @@ exports[`Storyshots @components/organisms/AddressGrid default 1`] = `
               </div>
               <div>
                 <div
-                  className="c13"
+                  className="icon_button c13"
                   data-cy="icon_button"
                   onClick={[Function]}
                 >
@@ -514,7 +514,7 @@ exports[`Storyshots @components/organisms/AddressGrid default 1`] = `
             >
               <div>
                 <div
-                  className="c13"
+                  className="icon_button c13"
                   data-cy="icon_button"
                   onClick={[Function]}
                 >
@@ -532,7 +532,7 @@ exports[`Storyshots @components/organisms/AddressGrid default 1`] = `
               </div>
               <div>
                 <div
-                  className="c13"
+                  className="icon_button c13"
                   data-cy="icon_button"
                   onClick={[Function]}
                 >
@@ -634,7 +634,7 @@ exports[`Storyshots @components/organisms/AddressGrid default 1`] = `
             >
               <div>
                 <div
-                  className="c13"
+                  className="icon_button c13"
                   data-cy="icon_button"
                   onClick={[Function]}
                 >
@@ -652,7 +652,7 @@ exports[`Storyshots @components/organisms/AddressGrid default 1`] = `
               </div>
               <div>
                 <div
-                  className="c13"
+                  className="icon_button c13"
                   data-cy="icon_button"
                   onClick={[Function]}
                 >

@@ -813,4 +813,5 @@ export interface ProductDetails {
 export interface ProductDetailsVariables {
   id: string;
   countryCode?: CountryCode | null;
+  districtId?: string | null;
 }

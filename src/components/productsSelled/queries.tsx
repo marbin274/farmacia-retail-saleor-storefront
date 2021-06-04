@@ -14,8 +14,8 @@ import {
 export const selledProducts = gql`
 ${basicProductFragment}
 ${productPricingFragment}
-query SelledProducts($period: ReportingPeriod!, $first: Int){
-  reportProductSales(period: $period, first: $first) {
+query SelledProducts($districtId: ID, $period: ReportingPeriod!, $first: Int){
+  reportProductSales(district: $districtId, period: $period, first: $first) {
     edges {
       node {
         id
@@ -64,7 +64,7 @@ query SelledProducts($period: ReportingPeriod!, $first: Int){
                 ...Price
               }
             }
-            quantityAvailable
+            quantityAvailable(district: $districtId)
           }
         }
         quantityOrdered

@@ -6,7 +6,6 @@ import {
   launchCheckoutEvent,
   steps,
   ecommerceProductsMapper,
-  getLocalStorageForCart,
 } from "@temp/@sdk/gaConfig";
 import {
   IShippingMethodUpdate,
@@ -30,6 +29,7 @@ const CheckoutShipping: React.FC<IProps> = ({
   selectShippingMethod,
   formId,
   formRef,
+  items,
 }: IProps) => {
   const {
     errors: formikErrors,
@@ -96,6 +96,7 @@ const CheckoutShipping: React.FC<IProps> = ({
     </S.GroupLabel>
   );
 
+
   const handleOnclick = (
     id: string,
     isScheduled: boolean,
@@ -105,7 +106,7 @@ const CheckoutShipping: React.FC<IProps> = ({
     if (!selected) {
       launchCheckoutEvent(
         steps.shippingMethodSelected,
-        ecommerceProductsMapper(getLocalStorageForCart())
+        ecommerceProductsMapper(items)
       );
       setFieldValue("shippingMethod", id);
       setFieldValue("isScheduled", isScheduled);

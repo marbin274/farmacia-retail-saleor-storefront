@@ -16,6 +16,7 @@ import { getGraphqlIdFromDBId, maybe } from "../../core/utils";
 import { ProductDetails_product } from "./gqlTypes/ProductDetails";
 import Page from "./Page";
 import { TypedProductDetailsQuery } from "./queries";
+import { useDistrictSelected } from "@temp/@next/hooks/useDistrictSelected";
 
 const canDisplay = (product: ProductDetails_product) =>
   maybe(
@@ -58,12 +59,13 @@ const extractMeta = (product: ProductDetails_product) => {
 
 const View: React.FC<RouteComponentProps<{ id: string }>> = ({ match }) => {
   const { addItem, removeItem, subtractItem, items } = useCart();
-
+  const [districtSelected] = useDistrictSelected();
   return (
     <TypedProductDetailsQuery
       loaderFull
       variables={{
         id: getGraphqlIdFromDBId(match.params.id, "Product"),
+        districtId: districtSelected.code,
       }}
       errorPolicy="all"
       key={match.params.id}

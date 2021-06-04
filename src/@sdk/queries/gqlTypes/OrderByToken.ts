@@ -195,6 +195,15 @@ export interface OrderByToken_orderByToken_lines_variant_attributes {
   values: (OrderByToken_orderByToken_lines_variant_attributes_values | null)[];
 }
 
+export interface OrderByToken_orderByToken_lines_variant_product_category {
+  __typename: "Category";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+}
+
 export interface OrderByToken_orderByToken_lines_variant_product_attributes_attribute {
   __typename: "Attribute";
   /**
@@ -267,6 +276,7 @@ export interface OrderByToken_orderByToken_lines_variant_product {
    */
   id: string;
   name: string;
+  category: OrderByToken_orderByToken_lines_variant_product_category | null;
   /**
    * List of attributes assigned to this product.
    */
@@ -571,4 +581,5 @@ export interface OrderByToken {
 
 export interface OrderByTokenVariables {
   token: any;
+  districtId?: string | null;
 }

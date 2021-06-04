@@ -4,14 +4,13 @@ import { mount, shallow } from "enzyme";
 import "jest-styled-components";
 import React from "react";
 import { AddressForm } from ".";
-import { citiesOptions } from "../CheckoutAddress/cities";
 import { address, checkoutData, countries, userAddress } from "./fixtures";
 import { IProps } from "./types";
 
 
 const PROPS: IProps = {
   address,
-  citiesOptions,
+  districtsOptions: ["Miraflores", "Surquillo"],
   countriesOptions: countries,
   errors: [],
   handleSubmit: jest.fn(),

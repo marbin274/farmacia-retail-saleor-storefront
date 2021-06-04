@@ -1,8 +1,14 @@
 import { launchAddToCartEvent, launchRemoveToCartEvent } from "@sdk/gaConfig";
-import { trackAddToCart, useAddToCartButtonVariable } from "@sdk/optimizelyConfig";
+import {
+  trackAddToCart,
+  useAddToCartButtonVariable,
+} from "@sdk/optimizelyConfig";
 import { ISimpleProduct } from "@temp/@next/types/IProduct";
 import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
-import { checkStockLimitOrStockAvailable, ICheckStockLimitOrStockAvailable } from "@temp/@next/utils/products";
+import {
+  checkStockLimitOrStockAvailable,
+  ICheckStockLimitOrStockAvailable,
+} from "@temp/@next/utils/products";
 import { MAX_ORDER_PER_PRODUCT } from "@temp/core/config";
 import classNames from "classnames";
 import React, { FC, useEffect, useState } from "react";
@@ -11,7 +17,7 @@ import { itemNotificationsService } from "../../atoms/ItemsNotification";
 import {
   IAddToCartCallback,
   IRemoveItemToCartCallback,
-  ISubtractItemToCartCallback
+  ISubtractItemToCartCallback,
 } from "../../molecules/ProductTileAUNA/types";
 import "./scss/index.scss";
 type IProps = {
@@ -40,11 +46,15 @@ const ItemsHandler: FC<IProps> = ({
   ] = useState(false);
   const quantity: number = product?.quantity || 0;
   const [isValueLessThanMax, setIsValueLessThanMax] = useState(false);
-  const { isLimitMax, stockLimitMax } = React.useMemo((): ICheckStockLimitOrStockAvailable | { isLimitMax: boolean, stockLimitMax: number } => (
-    product ?
-      checkStockLimitOrStockAvailable(product) :
-      { isLimitMax: false, stockLimitMax: 0 }
-  ), [product]);
+  const { isLimitMax, stockLimitMax } = React.useMemo(
+    ():
+      | ICheckStockLimitOrStockAvailable
+      | { isLimitMax: boolean; stockLimitMax: number } =>
+      product
+        ? checkStockLimitOrStockAvailable(product)
+        : { isLimitMax: false, stockLimitMax: 0 },
+    [product]
+  );
   const text = useAddToCartButtonVariable();
 
   useEffect(() => {
@@ -58,20 +68,24 @@ const ItemsHandler: FC<IProps> = ({
   const handleAddClick = () => {
     if (isEnabledToAddProduct) {
       if (canAddToCart) {
-        const firstProductVariant = product?.variants?.[0] || product?.variant;
+        const firstProductVariant = product?.variant;
         const total: number = product?.quantity as number;
-        
-        if (firstProductVariant) {  
+
+        if (firstProductVariant) {
           removePaymentItems();
-          addToCart?.({
-            id: firstProductVariant.id,
-            product: { 
-              id: product?.id, 
-              name: product?.name,
-              pricing: firstProductVariant?.pricing,
-              quantityAvailable: firstProductVariant?.quantityAvailable,
+          addToCart?.(
+            {
+              id: firstProductVariant.id,
+              product: {
+                id: product?.id,
+                name: product?.name,
+                pricing: firstProductVariant?.pricing,
+                quantityAvailable: firstProductVariant?.quantityAvailable,
+                category: product?.category,
+              },
             },
-          }, 1);
+            1
+          );
           itemNotificationsService.sendNotifications(product, 1);
         }
 
@@ -87,7 +101,7 @@ const ItemsHandler: FC<IProps> = ({
   };
 
   const handleRemoveClick = () => {
-    const firstProductVariant = product?.variants?.[0] || product?.variant;
+    const firstProductVariant = product?.variant;
     const total: number = product?.quantity as number;
     if (firstProductVariant) {
       removePaymentItems();
@@ -110,7 +124,7 @@ const ItemsHandler: FC<IProps> = ({
   const handleButtonAddClick = () => {
     trackAddToCart();
     handleAddClick();
-  }
+  };
 
   return (
     <>
@@ -123,7 +137,7 @@ const ItemsHandler: FC<IProps> = ({
               type="button"
             >
               -
-          </Button>
+            </Button>
             <p>{quantity}</p>
             <Button
               disabled={!canAddToCart}
@@ -132,16 +146,22 @@ const ItemsHandler: FC<IProps> = ({
               type="button"
             >
               +
-          </Button>
+            </Button>
           </div>
-          {(!canAddToCart && isLimitMax) && <div><span className="itemHandler__limit-max">Max. {stockLimitMax} por promoción</span></div>}
+          {!canAddToCart && isLimitMax && (
+            <div>
+              <span className="itemHandler__limit-max">
+                Max. {stockLimitMax} por promoción
+              </span>
+            </div>
+          )}
         </div>
       ) : (
         <div className="button">
-          <Button 
-          onClick={handleButtonAddClick} 
-          disabled={!canAddToCart}
-          type="button"
+          <Button
+            onClick={handleButtonAddClick}
+            disabled={!canAddToCart}
+            type="button"
           >
             {text}
           </Button>

@@ -150,6 +150,15 @@ export interface ProductVariant_attributes {
   values: (ProductVariant_attributes_values | null)[];
 }
 
+export interface ProductVariant_product_category {
+  __typename: "Category";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+}
+
 export interface ProductVariant_product_attributes_attribute {
   __typename: "Attribute";
   /**
@@ -222,6 +231,7 @@ export interface ProductVariant_product {
    */
   id: string;
   name: string;
+  category: ProductVariant_product_category | null;
   /**
    * List of attributes assigned to this product.
    */

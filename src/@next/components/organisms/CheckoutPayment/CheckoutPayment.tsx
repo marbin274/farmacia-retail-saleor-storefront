@@ -13,9 +13,9 @@ import ReactSVG from "react-svg";
  * Payment options used in checkout.
  */
 const CheckoutPayment: React.FC<IProps> = ({
+  cartLinesUpdated,
   gatewayErrors,
   promoCodeErrors,
-  clearPromoCodeErrors,
   checkoutBillingAddress,
   paymentGateways,
   promoCodeDiscountFormId,
@@ -52,15 +52,25 @@ const CheckoutPayment: React.FC<IProps> = ({
     }
   };
 
+  const refreshReRenderNiubiz = () => {
+    setReRenderNiubiz(!reRenderNiubiz)
+    setTimeout(()=>{
+      setReRenderNiubiz(true)
+    },300)
+  }
+
   React.useEffect(()=>{
     if ((errorValidation) ){
-      setReRenderNiubiz(!reRenderNiubiz)
-      setTimeout(()=>{
-        setReRenderNiubiz(true)
-      },300)
-      
+      refreshReRenderNiubiz();
     }  
   }, [gatewayErrors])
+
+  React.useEffect(() => {
+    if(cartLinesUpdated) {
+      refreshReRenderNiubiz();
+    }
+  }, [cartLinesUpdated])
+
 
   return (
     <S.Wrapper>

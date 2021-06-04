@@ -1,5 +1,5 @@
 import { ICheckout, IPrivacyPolicy } from "@temp/@sdk/api/Checkout/types";
-import { GetShop_shop_countries } from "@temp/@sdk/queries/gqlTypes/GetShop";
+import { GetShop_shop_availableDistricts, GetShop_shop_countries } from "@temp/@sdk/queries/gqlTypes/GetShop";
 import { UserDetails_me } from "@temp/@sdk/queries/gqlTypes/UserDetails";
 import {
   IAddress,
@@ -33,4 +33,6 @@ export interface IProps {
     documentNumber?: string
   ) => void;
   setFormValue?: (address?: IAddressWithEmail) => void;
+  availableDistricts: (GetShop_shop_availableDistricts | null)[];
+  userLoading?: boolean;
 }

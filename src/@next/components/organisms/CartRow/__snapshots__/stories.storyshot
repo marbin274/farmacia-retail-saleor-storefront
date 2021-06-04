@@ -568,7 +568,7 @@ exports[`Storyshots @components/organisms/CartRow default 1`] = `
       className="c18"
     >
       <div
-        className="c19"
+        className="icon_button c19"
         data-cy="cartPageItemundefinedBtnRemove"
         onClick={[Function]}
       >

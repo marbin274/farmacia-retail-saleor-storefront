@@ -1183,4 +1183,5 @@ export interface CategoryVariables {
   sortBy?: ProductOrder | null;
   priceLte?: number | null;
   priceGte?: number | null;
+  districtId?: string | null;
 }

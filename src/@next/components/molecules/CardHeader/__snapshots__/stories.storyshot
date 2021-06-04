@@ -159,7 +159,7 @@ exports[`Storyshots @components/molecules/CardHeader with big text size 1`] = `
       Some Title
     </h4>
     <div
-      className="c3"
+      className="icon_button c3"
       data-cy="icon_button"
       onClick={[Function]}
     >
@@ -278,7 +278,7 @@ exports[`Storyshots @components/molecules/CardHeader with close icon 1`] = `
       Some Title
     </h4>
     <div
-      className="c3"
+      className="icon_button c3"
       data-cy="icon_button"
       onClick={[Function]}
     >
@@ -397,7 +397,7 @@ exports[`Storyshots @components/molecules/CardHeader with custom icon 1`] = `
       Some Title
     </h4>
     <div
-      className="c3"
+      className="icon_button c3"
       data-cy="icon_button"
       onClick={[Function]}
     >

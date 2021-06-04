@@ -15,7 +15,6 @@ import {
 import ItemsHandler from "@temp/@next/components/organisms/ItemsHandler/ItemsHandler";
 import { ISimpleProduct } from "@temp/@next/types/IProduct";
 import {
-  getOneProductWithQuantity,
   getProductPricingClass
 } from "@temp/@next/utils/products";
 import { IProductVariantsAttributesSelectedValues } from "@types";
@@ -45,14 +44,10 @@ const HEADER_HEIGHT = 70;
 export const ProductDescription: React.FC<ProductDescriptionProps> = (props) => {
 
 
-  const { canAddToCart, descriptionJson } = props;
+  const { canAddToCart, descriptionJson, product } = props;
   const { name } = props.product;
   const min = props.pricing.priceRange.start;
   const max = props.pricing.priceRange.stop;
-  const product = getOneProductWithQuantity(
-    props.product,
-    props.items
-  );
   const [showBottomDetail, setShowBottomDetail] = React.useState<boolean>(false);
   const [showBottomDetailProductInfo, setShowBottomDetailProductInfo] = React.useState<boolean>(false);
   const [variantPricing, setVariantPricing] = React.useState<ProductDetails_product_variants_pricing | null>(null);

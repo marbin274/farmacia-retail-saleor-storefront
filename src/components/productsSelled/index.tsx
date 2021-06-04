@@ -1,9 +1,10 @@
 import { Carousel } from "@temp/@next/components/containers";
 import { ProductTileAUNA } from "@temp/@next/components/molecules";
+import { useDistrictSelected } from "@temp/@next/hooks";
 import { ISimpleProduct } from "@temp/@next/types/IProduct";
 import { getProductsWithQuantity } from "@temp/@next/utils/products";
 import { PRODUCTS_PER_PAGE } from "@temp/core/config";
-import { generateProductUrl } from "@temp/core/utils";
+import { convertToSimpleProduct, generateProductUrl } from "@temp/core/utils";
 import { ReportingPeriod } from "gqlTypes/globalTypes";
 import React from "react";
 import { TypedSelledProductsQuery } from "./queries";
@@ -17,10 +18,12 @@ export const ProductsSelled: React.FC<IProps> = ({
     addToCart,
     subtractItemToCart,
 }) => {
+    const [districtSelected] = useDistrictSelected();
     return (
         <TypedSelledProductsQuery
             displayError={false}
             variables={{ 
+                districtId: districtSelected.code,
                 first: PRODUCTS_PER_PAGE,
                 period: ReportingPeriod.THIS_MONTH,
              }}
@@ -28,9 +31,9 @@ export const ProductsSelled: React.FC<IProps> = ({
             {({ data }) => {
                 if (data?.reportProductSales?.edges?.length) {
 
-                    const products: ISimpleProduct[] = data.reportProductSales.edges.reduce((prev, act)=>{
+                    const products: ISimpleProduct[] = data.reportProductSales.edges.reduce((prev: ISimpleProduct[], act)=>{
                         if(!productDetail || productDetail.id !== act.node.product.id){                            
-                            prev.push(act.node.product);
+                            prev.push(convertToSimpleProduct(act.node.product));
                         }
                         return prev;
                     },[])

@@ -40,14 +40,17 @@ export const AddressForm: React.FC<IProps> = ({
   formId,
   defaultValue,
   countriesOptions,
-  citiesOptions,
+  districtsOptions,
   user,
+  userLoading,
   comeFromModal,
   checkoutData,
   setFormValue,
   errors: requestErrors,
   ...props
 }: IProps) => {
+  if (userLoading) return null;
+
   let addressWithPickedFields: Partial<IAddressWithEmail> = {};
   if (address) {
     addressWithPickedFields = pick(address, ADDRESS_FIELDS);
@@ -128,7 +131,6 @@ export const AddressForm: React.FC<IProps> = ({
   return (
     <Formik
       initialValues={addressWithPickedFields}
-      enableReinitialize={true}
       onSubmit={handleOnSubmitAddressForm}
       validationSchema={formSchemaValidation}
     >
@@ -153,7 +155,7 @@ export const AddressForm: React.FC<IProps> = ({
 
           const scrollToErrors = (errors: IFormErrorSort[]) => {
             if (errors[0]?.field) {
-              document.getElementsByName(errors[0].field)[0].focus();
+              document.getElementsByName(errors[0].field)[0]?.focus();
             }
           }
 
@@ -197,7 +199,7 @@ export const AddressForm: React.FC<IProps> = ({
           >
             <AddressFormContent
               {...{
-                citiesOptions,
+                districtsOptions,
                 comeFromModal,
                 countriesOptions,
                 defaultValue,

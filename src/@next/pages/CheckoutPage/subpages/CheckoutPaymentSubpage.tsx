@@ -1,9 +1,9 @@
-import { CheckoutPayment } from "@components/organisms";
+import { CheckoutPayment, StockValidationModal } from "@components/organisms";
 import { useCart, useCheckout, useUserDetails } from "@sdk/react";
 import { alertService } from "@temp/@next/components/atoms/Alert";
 import { IUserDataForNiubiz } from "@temp/@next/components/organisms/CheckoutPayment/types";
 import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
-import { ShopContext } from "@temp/components/ShopProvider/context";
+import { useShopContext } from "@temp/components/ShopProvider/context";
 import {
   AVAILABLE_PAYMENTS,
   billingAddressAlwaysSameAsShipping,
@@ -18,7 +18,6 @@ import PromoCodeCorrect from "images/auna/promo-code-correct.svg";
 import React, {
   forwardRef,
   RefForwardingComponent,
-  useContext,
   useEffect,
   useImperativeHandle,
   useRef,
@@ -26,7 +25,9 @@ import React, {
 } from "react";
 import { RouteComponentProps, useHistory } from "react-router";
 import { CheckoutErrorCode } from "@temp/@sdk/gqlTypes/globalTypes";
-import NoStockIcon from "images/auna/no-stock.svg";
+import { useUpdateCartLines } from "@temp/@next/hooks/useUpdateCartLines";
+import { useDistrictSelected } from "@temp/@next/hooks/useDistrictSelected";
+import { baseUrl } from "@temp/app/routes/paths";
 
 export interface ICheckoutPaymentSubpageHandles {
   submitPayment: () => void;
@@ -75,7 +76,19 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
 
 
   const { items, totalPrice } = useCart();
-  const { countries } = useContext(ShopContext);
+  const { availableDistricts, countries } = useShopContext();
+  const [showStockValidation, setShowStockValidation] = useState(false);
+  const [stockValidationProducts, setStockValidationProducts] = useState<
+    any[]
+  >();
+  
+  const [, setDistrict] = useDistrictSelected();
+  const {
+    update: updateCartLines,
+    loading: updatingCartLines,
+  } = useUpdateCartLines();
+
+  const [cartLinesUpdated, setCartLinesUpdated] = useState(false);
 
   const isShippingRequiredForProducts =
     items &&
@@ -167,23 +180,19 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
       changeSubmitProgress(false);
       if (confirmErrors) {
         removePaymentItems();
+        const confirmError = confirmErrors[0];
 
-        switch(confirmErrors[0].code) {
+        switch(confirmError.code) {
           case CheckoutErrorCode.INSUFFICIENT_STOCK:
-            alertService.sendAlert({
-              buttonText: "Entendido",
-              icon: NoStockIcon,
-              message: confirmErrors[0].message,
-              title: "Producto sin stock",
-              type: "Info",
-            });
-            break;
+            setStockValidationProducts(confirmError.products!);
+            setShowStockValidation(true);
+            return;
           case CheckoutErrorCode.SCHEDULE_NOT_AVAILABLE:
           case CheckoutErrorCode.EXCEEDS_SCHEDULE_DURATION:
           case CheckoutErrorCode.DELIVERY_DATE_EXPIRED:
             alertService.sendAlert({
               buttonText: "Entendido",
-              message: confirmErrors[0].message,
+              message: confirmError.message,
               redirectionLink: CHECKOUT_STEPS[0].link,
               title: "Horario de entrega",
               type: "Info",
@@ -193,7 +202,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
             alertService.sendAlert({
               buttonText: "Entendido",
               icon: ErrorPaymentIcon,
-              message: confirmErrors[0].message,
+              message: confirmError.message,
               redirectionLink: CHECKOUT_STEPS[1].link,
               title: "No pudimos procesar el pago",
               type: "Info",
@@ -227,9 +236,6 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
           },
         });
       }
-
-
-
     }
   };
 
@@ -360,6 +366,28 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
     }
   };
 
+  const onStockValidationContinue = async () => {
+    if (updatingCartLines) {
+      return;
+    }
+
+    setCartLinesUpdated(false);
+    setShowStockValidation(false);
+
+    const district = availableDistricts?.find(
+      x =>
+        x?.name?.toLocaleLowerCase() ===
+        checkout?.shippingAddress?.city?.toLocaleLowerCase()
+    );
+
+    setDistrict({ code: district!.id, description: district!.name });
+
+    await updateCartLines();
+
+    setCartLinesUpdated(true);
+    setStockValidationProducts(undefined);
+  }
+
   const userDataForNiubiz: IUserDataForNiubiz = {
     dataTreatmentPolicy: checkout?.dataTreatmentPolicy,
     documentNumber: checkout?.documentNumber,
@@ -368,6 +396,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
   };
 
   return (
+    <>
     <CheckoutPayment
       {...props}
       billingErrors={billingErrors}
@@ -425,7 +454,22 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
       requestPayload={requestPayload}
       totalPrice={totalPrice}
       userDataForNiubiz={userDataForNiubiz}
+      cartLinesUpdated={cartLinesUpdated}
     />
+    <StockValidationModal
+        show={showStockValidation}
+        onClose={() => {
+          setShowStockValidation(false);
+          setStockValidationProducts(undefined);
+        }}
+        products={stockValidationProducts}
+        onClickKeepSearching={() => {
+          history.push(baseUrl);
+        }}
+        onClickContinue={onStockValidationContinue}
+        district={checkout?.shippingAddress?.city!}
+      />
+    </>
   );
 };
 

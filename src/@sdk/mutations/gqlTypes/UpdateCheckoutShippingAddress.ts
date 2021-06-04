@@ -2,7 +2,7 @@
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
-import { AddressInput, PrivacyPolicyInput } from "./../../gqlTypes/globalTypes";
+import { AddressInput, PrivacyPolicyInput, CheckoutErrorCode } from "./../../gqlTypes/globalTypes";
 
 // ====================================================
 // GraphQL mutation operation: UpdateCheckoutShippingAddress
@@ -561,6 +561,15 @@ export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_che
   values: (UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_lines_variant_attributes_values | null)[];
 }
 
+export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_lines_variant_product_category {
+  __typename: "Category";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+}
+
 export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_lines_variant_product_attributes_attribute {
   __typename: "Attribute";
   /**
@@ -633,6 +642,7 @@ export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_che
    */
   id: string;
   name: string;
+  category: UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_lines_variant_product_category | null;
   /**
    * List of attributes assigned to this product.
    */
@@ -756,6 +766,39 @@ export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_che
   dataTreatmentPolicy: boolean;
 }
 
+export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkoutErrors_products {
+  __typename: "FailedProduct";
+  /**
+   * Product variant SKU which causes error.
+   */
+  sku: string | null;
+  /**
+   * Stock available 
+   */
+  quantityAvailable: number | null;
+}
+
+export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkoutErrors {
+  __typename: "CheckoutError";
+  /**
+   * Name of a field that caused the error. A value of `null` indicates that the
+   * error isn't associated with a particular field.
+   */
+  field: string | null;
+  /**
+   * The error message.
+   */
+  message: string | null;
+  /**
+   * The error code.
+   */
+  code: CheckoutErrorCode;
+  /**
+   * List of products that produce errors.
+   */
+  products: (UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkoutErrors_products | null)[] | null;
+}
+
 export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate {
   __typename: "CheckoutShippingAddressUpdate";
   /**
@@ -766,6 +809,7 @@ export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate {
    * An updated checkout.
    */
   checkout: UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout | null;
+  checkoutErrors: UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkoutErrors[];
 }
 
 export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_scheduleDate_scheduleTime {
@@ -1308,6 +1352,15 @@ export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_line
   values: (UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_lines_variant_attributes_values | null)[];
 }
 
+export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_lines_variant_product_category {
+  __typename: "Category";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+}
+
 export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_lines_variant_product_attributes_attribute {
   __typename: "Attribute";
   /**
@@ -1380,6 +1433,7 @@ export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_line
    */
   id: string;
   name: string;
+  category: UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_lines_variant_product_category | null;
   /**
    * List of attributes assigned to this product.
    */
@@ -1545,4 +1599,5 @@ export interface UpdateCheckoutShippingAddressVariables {
   email: string;
   documentNumber: string;
   privacyPolicy: PrivacyPolicyInput;
+  districtId?: string | null;
 }

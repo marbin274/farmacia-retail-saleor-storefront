@@ -2,7 +2,7 @@
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
-import { CheckoutLineInput } from "./../../gqlTypes/globalTypes";
+import { CheckoutLineInput, CheckoutErrorCode } from "./../../gqlTypes/globalTypes";
 
 // ====================================================
 // GraphQL mutation operation: UpdateCheckoutLine
@@ -548,6 +548,15 @@ export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_lines_variant_a
   values: (UpdateCheckoutLine_checkoutLinesUpdate_checkout_lines_variant_attributes_values | null)[];
 }
 
+export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_lines_variant_product_category {
+  __typename: "Category";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+}
+
 export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_lines_variant_product_attributes_attribute {
   __typename: "Attribute";
   /**
@@ -620,6 +629,7 @@ export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_lines_variant_p
    */
   id: string;
   name: string;
+  category: UpdateCheckoutLine_checkoutLinesUpdate_checkout_lines_variant_product_category | null;
   /**
    * List of attributes assigned to this product.
    */
@@ -756,6 +766,39 @@ export interface UpdateCheckoutLine_checkoutLinesUpdate_errors {
   message: string | null;
 }
 
+export interface UpdateCheckoutLine_checkoutLinesUpdate_checkoutErrors_products {
+  __typename: "FailedProduct";
+  /**
+   * Product variant SKU which causes error.
+   */
+  sku: string | null;
+  /**
+   * Stock available 
+   */
+  quantityAvailable: number | null;
+}
+
+export interface UpdateCheckoutLine_checkoutLinesUpdate_checkoutErrors {
+  __typename: "CheckoutError";
+  /**
+   * Name of a field that caused the error. A value of `null` indicates that the
+   * error isn't associated with a particular field.
+   */
+  field: string | null;
+  /**
+   * The error message.
+   */
+  message: string | null;
+  /**
+   * The error code.
+   */
+  code: CheckoutErrorCode;
+  /**
+   * List of products that produce errors.
+   */
+  products: (UpdateCheckoutLine_checkoutLinesUpdate_checkoutErrors_products | null)[] | null;
+}
+
 export interface UpdateCheckoutLine_checkoutLinesUpdate {
   __typename: "CheckoutLinesUpdate";
   /**
@@ -766,6 +809,7 @@ export interface UpdateCheckoutLine_checkoutLinesUpdate {
    * List of errors that occurred executing the mutation.
    */
   errors: UpdateCheckoutLine_checkoutLinesUpdate_errors[];
+  checkoutErrors: UpdateCheckoutLine_checkoutLinesUpdate_checkoutErrors[];
 }
 
 export interface UpdateCheckoutLine {
@@ -778,4 +822,5 @@ export interface UpdateCheckoutLine {
 export interface UpdateCheckoutLineVariables {
   checkoutId: string;
   lines: (CheckoutLineInput | null)[];
+  districtId?: string | null;
 }

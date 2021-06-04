@@ -26,12 +26,13 @@ export type AddressError = { field?: string; message: string };
 
 export interface IProps {
   user?: UserDetails_me | null;
+  userLoading?: boolean,
   address?: IAddressWithEmail;
   countriesOptions?: Array<{
     code: string;
     country: string;
   }>;
-  citiesOptions?: string[];
+  districtsOptions?: string[];
   defaultValue?: any;
   formId?: string;
   formRef?: React.RefObject<HTMLFormElement>;

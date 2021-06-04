@@ -108,10 +108,12 @@ export class SaleorState extends NamedObservable<StateItems>
   ) => {
     // 1. Try to take checkout from backend database
     const checkout = this.repository.getCheckout();
+    const districtId = this.repository.getDistrict()?.code;
 
     if (checkout?.token) {
       const { data, error } = await this.networkManager.getCheckout(
-        checkout?.token
+        checkout?.token,
+        districtId
       );
 
       if (error) {
@@ -138,7 +140,10 @@ export class SaleorState extends NamedObservable<StateItems>
           const {
             data,
             error,
-          } = await this.networkManager.getRefreshedCheckoutLines(activeLines);
+          } = await this.networkManager.getRefreshedCheckoutLines(
+            activeLines,
+            this.repository.getDistrict()?.code || ''
+            );
 
           if (!error) {
             checkoutModel.lines = data;
