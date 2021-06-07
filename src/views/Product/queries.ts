@@ -123,6 +123,14 @@ export const productDetailsQuery = gql`
       category {
         id
         name
+        ancestors(first: 3) {
+          edges {
+            node {
+              id
+              name
+            }
+          }
+        }
         products(first: 3) {
           edges {
             node {

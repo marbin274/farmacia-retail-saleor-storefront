@@ -15,6 +15,7 @@ import React from "react";
 import Media from "react-media";
 import { ProductDescription } from "../../components";
 import { structuredData } from "../../core/SEO/Product/structuredData";
+import { structuredData as structuredCategoryData } from "../../core/SEO/Category/structuredData";
 import { smallScreen } from "../../globalStyles/scss/variables.scss";
 import { ProductDetails_product } from "./gqlTypes/ProductDetails";
 // TODO: Add as soon as we need to add related products
@@ -54,6 +55,9 @@ export const Page: React.FC<IProps> = (props) => {
         <div className="product-page__product">
           <script className="structured-data-list" type="application/ld+json">
             {structuredData(product)}
+          </script>
+          <script className="structured-data-list" type="application/ld+json">
+            {structuredCategoryData(product.category)}
           </script>
           <Media query={{ maxWidth: smallScreen }}>
             {matches =>

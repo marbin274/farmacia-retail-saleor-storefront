@@ -23,6 +23,7 @@ import { CategoryNavigation } from "@temp/@next/components/organisms/CategoryNav
 import { MainMenu_shop } from "@temp/components/MainMenu/gqlTypes/MainMenu";
 import { IItems } from "@temp/@sdk/api/Cart/types";
 import { Pagination } from "@components/molecules";
+import { structuredData } from "@temp/core/SEO/Category/structuredData";
 
 interface SortItem {
   label: string;
@@ -129,6 +130,9 @@ const Page: React.FC<PageProps> = ({
         />
       )}
       <div className="category__container category__body">
+        <script className="structured-data-list" type="application/ld+json">
+          {structuredData(category)}
+        </script>
         <CategoryNavigation
           category={category}
         />
