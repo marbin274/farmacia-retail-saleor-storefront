@@ -83,6 +83,7 @@ const Page: React.FC<PageProps> = ({
   );
   const hasProducts = canDisplayProducts && !!products.totalCount;
   const [showFilters, setShowFilters] = React.useState(false);
+  const categoryContainerRef = React.useRef<HTMLDivElement>(null);
 
   const getAttribute = (attributeSlug: string, valueSlug: string) => {
     return {
@@ -105,8 +106,15 @@ const Page: React.FC<PageProps> = ({
       []
     );
 
+  React.useEffect(() =>
+    categoryContainerRef?.current.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" })
+    , [products]);
+
   return (
-    <div className="category">
+    <div
+      className="category"
+      ref={categoryContainerRef}
+    >
       {isSmallScreen && (
         <ProductListHeader
           activeSortOption={activeSortOption}
