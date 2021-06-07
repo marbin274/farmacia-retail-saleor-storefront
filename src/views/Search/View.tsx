@@ -2,7 +2,7 @@ import * as React from "react";
 import { RouteComponentProps } from "react-router";
 
 import { IFilters } from "@types";
-import { StringParam, useQueryParam } from "use-query-params";
+import { NumberParam, StringParam, useQueryParam, useQueryParams } from "use-query-params";
 import { MetaWrapper, NotFound, OfflinePlaceholder } from "../../components";
 import NetworkStatus from "../../components/NetworkStatus";
 import { META_DEFAULTS, PRODUCTS_PER_PAGE } from "../../core/config";
@@ -21,6 +21,8 @@ import {
   ISubtractItemToCartCallback,
 } from "@temp/@next/components/molecules/ProductTileAUNA/types";
 import { useDistrictSelected } from "@temp/@next/hooks/useDistrictSelected";
+import Media from "react-media";
+import { smallScreen } from "@temp/@next/globalStyles/constants";
 
 type ViewProps = RouteComponentProps<{
   id: string;
@@ -51,15 +53,18 @@ export const FilterQuerySet = {
 
 export const View: React.FC<ViewProps> = ({ match }) => {
   const [districtSelected] = useDistrictSelected();
-  const [sort, setSort] = useQueryParam("sortBy", StringParam);
   const [search, setSearch] = useQueryParam("q", StringParam);
-  const [attributeFilters, setAttributeFilters] = useQueryParam(
-    "filters",
-    FilterQuerySet
-  );
+  const [
+    { filters: attributeFilters, page, sortBy: sort },
+    setQuery,
+  ] = useQueryParams({
+    filters: FilterQuerySet,
+    page: NumberParam,
+    sortBy: StringParam,
+  });
 
   const clearFilters = () => {
-    setAttributeFilters({});
+    setQuery({ filters: {} });
   };
 
   const onFiltersChange = (name, value) => {
@@ -68,25 +73,34 @@ export const View: React.FC<ViewProps> = ({ match }) => {
         if (filters.attributes[`${name}`].length === 1) {
           const att = { ...attributeFilters };
           delete att[`${name}`];
-          setAttributeFilters({
-            ...att,
+          setQuery({
+            filters: { ...att },
           });
         } else {
-          setAttributeFilters({
-            ...attributeFilters,
-            [`${name}`]: attributeFilters[`${name}`].filter(
-              item => item !== value
-            ),
+          setQuery({
+            filters: {
+              ...attributeFilters,
+              [`${name}`]: attributeFilters[`${name}`].filter(
+                item => item !== value
+              ),
+            },
           });
         }
       } else {
-        setAttributeFilters({
-          ...attributeFilters,
-          [`${name}`]: [...attributeFilters[`${name}`], value],
+        setQuery({
+          filters: {
+            ...attributeFilters,
+            [`${name}`]: [...attributeFilters[`${name}`], value],
+          },
         });
       }
     } else {
-      setAttributeFilters({ ...attributeFilters, [`${name}`]: [value] });
+      setQuery({
+        filters: {
+          ...attributeFilters,
+          [`${name}`]: [value],
+        },
+      });
     }
   };
 
@@ -104,6 +118,7 @@ export const View: React.FC<ViewProps> = ({ match }) => {
       : {},
     id: getGraphqlIdFromDBId(match.params.id, "Category"),
     query: search || null,
+    page: page || 1,
     sortBy: convertSortByFromString(filters.sortBy),
     districtId: districtSelected.code,
   };
@@ -145,6 +160,11 @@ export const View: React.FC<ViewProps> = ({ match }) => {
     removeItem,
     subtractItem,
   } = useCart();
+
+  const handlePageChange = (page: number) => {
+    setQuery({ page });
+  };
+
   const addToCart: IAddToCartCallback = (product, quantity) => {
     addItem(product, quantity);
   };
@@ -157,34 +177,27 @@ export const View: React.FC<ViewProps> = ({ match }) => {
     subtractItem(product);
   };
 
+  const getPageSize = (isMobile: boolean): number => {
+    return isMobile ? 8 : 12;
+  };
+
   return (
     <NetworkStatus>
       {isOnline => (
+        <Media query={{ maxWidth: smallScreen }}>
+        {matches => (
         <TypedSearchProductsQuery
-          variables={variables}
+          variables={{ ...variables, pageSize: getPageSize(matches) }}
           errorPolicy="all"
           loaderFull
         >
           {({ loading, data, loadMore }) => {
             const canDisplayFilters = maybe(
-              () => !!data.attributes.edges && !!data.products.edges,
+              () => !!data.attributes.edges && !!data.paginatedProducts.edges,
               false
             );
 
             if (canDisplayFilters) {
-              const handleLoadMore = () =>
-                loadMore(
-                  (prev, next) => ({
-                    ...prev,
-                    products: {
-                      ...prev.products,
-                      edges: [...prev.products.edges, ...next.products.edges],
-                      pageInfo: next.products.pageInfo,
-                    },
-                  }),
-                  { after: data.products.pageInfo.endCursor }
-                );
-
               return (
                 <MetaWrapper
                   meta={{
@@ -198,7 +211,7 @@ export const View: React.FC<ViewProps> = ({ match }) => {
                     attributes={data.attributes.edges.map(edge => edge.node)}
                     displayLoader={loading}
                     hasNextPage={maybe(
-                      () => data.products.pageInfo.hasNextPage,
+                      () => data.paginatedProducts.pageInfo.hasNextPage,
                       false
                     )}
                     sortOptions={sortOptions}
@@ -206,27 +219,33 @@ export const View: React.FC<ViewProps> = ({ match }) => {
                     search={search}
                     activeSortOption={filters.sortBy}
                     filters={filters}
-                    products={data.products}
+                    products={data.paginatedProducts}
                     productsOnCart={productsOnCart}
                     onAttributeFiltersChange={onFiltersChange}
-                    onLoadMore={handleLoadMore}
                     activeFilters={
                       filters!.attributes
                         ? Object.keys(filters!.attributes).length
                         : 0
                     }
                     onOrder={value => {
-                      setSort(value.value);
+                      setQuery({
+                        page: 1,
+                        sortBy: value.value,
+                      });
                     }}
                     addToCart={addToCart}
                     removeItemToCart={removeItemToCart}
                     subtractItemToCart={subtractItemToCart}
+                    page={page || 1}
+                    pageSize={getPageSize(matches)}
+                    onPageChange={handlePageChange}
+                    total={data.paginatedProducts.totalCount}
                   />
                 </MetaWrapper>
               );
             }
 
-            if (data && data.products === null) {
+            if (data && data.paginatedProducts === null) {
               return <NotFound />;
             }
 
@@ -236,7 +255,9 @@ export const View: React.FC<ViewProps> = ({ match }) => {
           }}
         </TypedSearchProductsQuery>
       )}
-    </NetworkStatus>
+      </Media>
+    )}
+  </NetworkStatus>
   );
 };
 

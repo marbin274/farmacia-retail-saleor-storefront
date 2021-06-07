@@ -1,3 +1,4 @@
+import { IPaginationProps } from "@temp/@next/components/molecules/Pagination/types";
 import {
   IAddToCartCallback,
   IRemoveItemToCartCallback,
@@ -12,10 +13,10 @@ import rightArrowIcon from "images/right-arrow.svg";
 import * as React from "react";
 import { Link } from "react-router-dom";
 import ReactSVG from "react-svg";
-import { ProductListHeader } from "../../@next/components/molecules";
+import { Pagination, ProductListHeader } from "../../@next/components/molecules";
 import { ProductListAUNA } from "../../@next/components/organisms";
 import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
-import { SearchProducts_products } from "./gqlTypes/SearchProducts";
+import { SearchProducts_paginatedProducts } from "./gqlTypes/SearchProducts";
 import "./scss/index.scss";
 
 interface SortItem {
@@ -25,7 +26,7 @@ interface SortItem {
 
 interface SortOptions extends Array<SortItem> {}
 
-interface PageProps {
+interface PageProps extends IPaginationProps {
   activeFilters: number;
   attributes: IFilterAttributes[];
   activeSortOption: string;
@@ -37,11 +38,10 @@ interface PageProps {
     newValue: string,
     updateType?: "replace" | "replaceIn" | "push" | "pushIn"
   ) => void;
-  products: SearchProducts_products;
+  products: SearchProducts_paginatedProducts;
   productsOnCart: IItems;
   sortOptions: SortOptions;
   clearFilters: () => void;
-  onLoadMore: () => void;
   onAttributeFiltersChange: (attributeSlug: string, value: string) => void;
   onOrder: (order: { value?: string; label: string }) => void;
   addToCart: IAddToCartCallback;
@@ -58,7 +58,6 @@ const Page: React.FC<PageProps> = ({
   displayLoader,
   hasNextPage,
   clearFilters,
-  onLoadMore,
   products,
   productsOnCart,
   filters,
@@ -68,11 +67,16 @@ const Page: React.FC<PageProps> = ({
   addToCart,
   removeItemToCart,
   subtractItemToCart,
+  page,
+  total: totalProducts,
+  pageSize,
+  onPageChange,
 }) => {
   const canDisplayProducts = maybe(
     () => !!products.edges && products.totalCount !== undefined
   );
   const [showFilters, setShowFilters] = React.useState(false);
+  const searchContainerRef = React.useRef<HTMLDivElement>(null);
 
   const getAttribute = (attributeSlug: string, valueSlug: string) => {
     return {
@@ -95,8 +99,15 @@ const Page: React.FC<PageProps> = ({
       []
     );
 
+    React.useEffect(() =>
+      searchContainerRef?.current.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" })
+    , [products]);
+
   return (
-    <div className="category">
+    <div 
+      className="category"
+      ref={searchContainerRef}
+    >
       <div className="search-page container">
         <FilterSidebar
           show={showFilters}
@@ -137,16 +148,24 @@ const Page: React.FC<PageProps> = ({
           <Link to={appPaths.baseUrl}>Atrás</Link>
         </div>
         {canDisplayProducts && (
-          <ProductListAUNA
-            products={products.edges.map((edge) => convertToSimpleProduct(edge.node))}
-            productsOnCart={productsOnCart}
-            canLoadMore={hasNextPage}
-            loading={displayLoader}
-            onLoadMore={onLoadMore}
-            addToCart={addToCart}
-            removeItemToCart={removeItemToCart}
-            subtractItemToCart={subtractItemToCart}
-          />
+          <>
+            <ProductListAUNA
+              products={products.edges.map((edge) => convertToSimpleProduct(edge.node))}
+              productsOnCart={productsOnCart}
+              canLoadMore={hasNextPage}
+              loading={displayLoader}
+              addToCart={addToCart}
+              removeItemToCart={removeItemToCart}
+              subtractItemToCart={subtractItemToCart}
+            />
+            <Pagination
+              page={page}
+              pageSize={pageSize}
+              total={totalProducts}
+              onPageChange={onPageChange}
+              className="category__pagination"
+            />
+          </>
         )}
       </div>
     </div>

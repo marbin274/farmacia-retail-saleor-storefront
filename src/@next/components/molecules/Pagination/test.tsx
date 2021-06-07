@@ -1,8 +1,9 @@
 import React from "react";
 import { mount, shallow } from "enzyme";
 import { PageItem } from "@components/atoms";
-import { Pagination, IPaginationProps } from "./Pagination";
+import { Pagination } from "./Pagination";
 import { Container, PageInfo, PageInfoMobile } from "./styles";
+import { IPaginationProps } from "./types";
 
 const DEFAULT_PROPS: IPaginationProps = {
   page: 1,

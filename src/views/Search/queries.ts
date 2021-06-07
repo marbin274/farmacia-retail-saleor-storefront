@@ -14,15 +14,21 @@ export const searchProductsQuery = gql`
     $query: String!
     $attributes: [AttributeInput]
     $pageSize: Int
+    $page: Int
     $sortBy: ProductOrder
-    $after: String
+    $priceLte: Float
+    $priceGte: Float
     $districtId: ID
   ) {
-    products(
-      filter: { search: $query, attributes: $attributes }
-      first: $pageSize
+    paginatedProducts(
+      page: $page
+      pageSize: $pageSize
       sortBy: $sortBy
-      after: $after
+      filter: {
+        attributes: $attributes
+        minimalPrice: { gte: $priceGte, lte: $priceLte }
+        search: $query
+      }
     ) {
       totalCount
       edges {

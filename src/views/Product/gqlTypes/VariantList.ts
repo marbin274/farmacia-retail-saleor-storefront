@@ -256,4 +256,5 @@ export interface VariantList {
 export interface VariantListVariables {
   ids?: string[] | null;
   countryCode?: CountryCode | null;
+  districtId?: string | null;
 }

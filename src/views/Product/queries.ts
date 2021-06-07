@@ -162,7 +162,7 @@ export const productDetailsQuery = gql`
 export const productVariantsQuery = gql`
   ${basicProductFragment}
   ${productVariantFragment}
-  query VariantList($ids: [ID!], $countryCode: CountryCode) {
+  query VariantList($ids: [ID!], $countryCode: CountryCode, $districtId: ID) {
     productVariants(ids: $ids, first: 100) {
       edges {
         node {
