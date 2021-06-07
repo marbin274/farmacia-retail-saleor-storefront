@@ -53,6 +53,7 @@ export const OverlayNavItems = styled.div`
     box-shadow: 0rem 0.0625rem 0.875rem rgb(0 0 0 / 50%);
     padding: 2rem 2rem 2rem 0.5rem;
     position: relative;
+    width: 100%;
     z-index: 1;
 `;
 
@@ -83,8 +84,8 @@ export const lvl2List = styled.ul`
     display: flex;
     flex-wrap: wrap;
     > li {
-        width: 25%;
         padding: 1rem 0rem;
+        width: 25%;
         > div {
             padding-left: 1rem;
             > a {

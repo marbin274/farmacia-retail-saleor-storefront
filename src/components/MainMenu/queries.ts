@@ -62,7 +62,7 @@ export const mainMenu = gql`
   ${mainMenuSubItem}
   ${menuCategoryChildrenField}
   query MainMenu {
-    categories (first: 100){
+    categories (first: 100, level: 0){
       edges{
         node{
           ...MenuCategoryChildrenField
