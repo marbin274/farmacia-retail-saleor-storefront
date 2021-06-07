@@ -66,6 +66,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
     setBillingAsShippingAddress,
     setShippingMethod,
     selectedBillingAddressId,
+    selectedSlotId,
     availablePaymentGateways,
     promoCodeDiscount,
     addPromoCode,
@@ -136,7 +137,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
   useImperativeHandle(ref, () => ({
     submitPayment: () => {
       const shippingMethodId = checkout?.shippingMethod?.id || "";
-      setShippingMethod({shippingMethodId});
+      setShippingMethod({shippingMethodId, slotId: selectedSlotId});
       if (billingAsShippingState) {
         handleSetBillingAddress();
       } else if (user && selectedBillingAddressId) {

@@ -85,7 +85,7 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
         (it.code === CheckoutErrorCode.NOT_FOUND && it.field === "scheduleTimeId") ||
         (it.code === CheckoutErrorCode.SCHEDULE_NOT_AVAILABLE)
       );
-      setShippingMethod({ shippingMethodId: "" });
+      setShippingMethod({ shippingMethodId: "", slotId: undefined });
       alertService.sendAlert({
         buttonText: "Entendido",
         icon: scheduleTimeNotFound && shippingMethodCalendarInfoIco,

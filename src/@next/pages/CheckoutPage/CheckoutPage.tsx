@@ -135,7 +135,7 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
   if (isAttentionSchedule === false) {
     alertService.sendAlert({
       acceptDialog: () => {
-        setShippingMethod({ shippingMethodId: "" });
+        setShippingMethod({ shippingMethodId: "", slotId: undefined });
       },
       buttonText: "Entendido",
       icon: shippingMethodCalendarInfoIco,
