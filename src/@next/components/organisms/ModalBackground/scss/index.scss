@@ -4,7 +4,8 @@
     &__container{
         height: 100vh;
         padding-top: 8rem;
-        width: 100%;
+        width: 80vw;
+        margin: 0 auto;
         @media (max-width: $small-screen) {
             padding-top: 0rem;
         }
