@@ -13,36 +13,21 @@ $custom-breakpoint: 624px;
 }
 
 .search {
-  width: 100vw;
-  min-height: 100vh;
 
-  &--has-results {
-    min-height: 100vh;
+  @media (max-width: $medium-screen) {
+    width: 100%;
   }
 
-  &__input {
-    background-color: $auna-black;
-    display: flex;
-    flex-direction: column;
-    margin-top: 80px;
-    padding: 1.563rem 0.75rem;
-    @media (min-width: $medium-screen-styled) {
-      align-items: center;
-      flex-direction: row;
-      justify-content: center;      
-    }
-    @media (min-width: $medium-screen) {     
-      justify-content: center;      
-    }
+  &__input {   
     &--clear {
       cursor: pointer;
     }
 
     .input {    
+      margin: 0 auto;
+      padding: 0;
       @media (min-width: $medium-screen-styled) {
         width: 36rem;
-        padding-bottom: 0rem;
-        padding-right: 1rem;
       }
       input,
       input::placeholder {
@@ -51,11 +36,9 @@ $custom-breakpoint: 624px;
 
       &__content {
         @extend .size;
-        background-color: $auna-black;
-
         align-items: center;
-        border: 1px solid $white;
-        border-radius: 4px;
+        border: 0.0625rem solid $auna-interactive;
+        border-radius: 0.5rem;
         box-shadow: none;
         display: flex;
         justify-content: center;
@@ -63,21 +46,22 @@ $custom-breakpoint: 624px;
       }
 
       &__inner-icon {
-        margin-right: 16px;
-
+        background-color: $auna-interactive;
+        border-top-right-radius: 0.3125rem;
+        border-bottom-right-radius: 0.3125rem;
+        padding: 0.625rem 1rem;
         svg * {
-          fill: $auna-interactive;
+          fill: $white;
         }
       }
 
       &__field {
-        background-color: $auna-black;
         border: none;
         box-shadow: none;
-        color: $white;
         flex: 1;
-        padding: 12px 16px;
+        padding: 0.75rem 1rem;;
         margin: 0;
+        border-radius: 0.5rem;
 
         @media (max-width: $custom-breakpoint) {
           font-size: 14px;
@@ -87,9 +71,6 @@ $custom-breakpoint: 624px;
           box-shadow: none;
         }
 
-        &::placeholder {
-          color: $white;
-        }
       }
     }
   }
@@ -98,13 +79,17 @@ $custom-breakpoint: 624px;
     background: $auna-grey-20;
     overflow: auto;
     padding: 20px 0;
-    position: relative;
+    position: fixed;
     right: 0;
+    top: 12.9rem;
     transition: 300ms;
     height: calc(100vh - 3rem);
-    // ul {
-    //   margin-bottom: 9rem;
-    // }
+    width: 100vw;
+    z-index: 4;
+
+    @media (min-width: $medium-screen) {
+      top: 9.7rem;
+    }
 
     &--expanded {
       right: 0;
@@ -313,20 +298,21 @@ $custom-breakpoint: 624px;
       }
       padding-bottom: 15.625rem;
     }
-  }
 
-  .show_more_products {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    padding: 1rem;
-    z-index: 1000;
-    background-color: $auna-grey-20;
-
-    span {
-      font-size: $base-font-size;
-      font-weight: $font-weight-light;
+    .show_more_products {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      padding: 1rem;
+      z-index: 1000;
+      background-color: $auna-grey-20;
+  
+      span {
+        font-size: $base-font-size;
+        font-weight: $font-weight-light;
+      }
     }
-  }
+
+  }  
 }

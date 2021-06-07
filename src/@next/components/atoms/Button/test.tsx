@@ -57,7 +57,7 @@ describe("<Button />", () => {
 
     expect(ButtonComponent).toHaveStyleRule(
       "border",
-      `1px solid ${defaultTheme.colors.aunaInteractive}`
+      `1px solid ${defaultTheme.colors.interactive}`
     );
 
     expect(ButtonComponent).toHaveStyleRule(

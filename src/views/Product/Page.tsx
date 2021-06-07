@@ -1,4 +1,4 @@
-import { AddressGeocalization, ProductImage } from "@components/molecules";
+import { ProductImage } from "@components/molecules";
 import {
   ICheckoutModelLine,
   ICheckoutModelLineVariantLocalStorage
@@ -47,11 +47,6 @@ export const Page: React.FC<IProps> = (props) => {
 
   return (
     <div className="product-page">
-      <div className="product-page__address-geo">
-        <div className="container">
-          <AddressGeocalization mode={"dark"}/>
-        </div>
-      </div>
       {/* <div className="container">
         <Breadcrumbs breadcrumbs={populateBreadcrumbs(product)} /> 
       </div>*/}

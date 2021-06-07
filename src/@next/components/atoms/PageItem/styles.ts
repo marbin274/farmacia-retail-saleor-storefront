@@ -9,8 +9,8 @@ export const Container = styled.div<{ selected?: boolean }>`
   height: 2.5rem;
   border-radius: 0.5rem;
   color: ${({ selected, theme }) =>
-    selected ? "white" : theme.colors.aunaInteractive};
+    selected ? "white" : theme.colors.interactive};
   background-color: ${({ theme, selected }) =>
-    selected ? theme.colors.aunaInteractive : "white"};
+    selected ? theme.colors.interactive : "white"};
   cursor: pointer;
 `;

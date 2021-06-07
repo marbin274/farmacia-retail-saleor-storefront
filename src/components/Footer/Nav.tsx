@@ -4,7 +4,7 @@ import * as React from "react";
 import {withRouter, RouteComponentProps} from 'react-router-dom'
 import ReactSVG from "react-svg";
 import { NavLink } from "..";
-import arrowDowm from "../../images/arrow_down.svg";
+import arrowDowm from "../../images/arrow-down.svg";
 import { TypedSecondaryMenuQuery } from "./queries";
 import "./scss/index.scss";
 import SocialMedia from "../SocialMedia";

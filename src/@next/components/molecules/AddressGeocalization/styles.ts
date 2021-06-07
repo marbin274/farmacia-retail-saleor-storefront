@@ -1,5 +1,5 @@
 import { mediaUp } from "@temp/@next/globalStyles";
-import { mediumScreen, white } from "@temp/@next/globalStyles/constants";
+import { largeScreen, white } from "@temp/@next/globalStyles/constants";
 import styled, { css, keyframes } from "styled-components";
 import { addressLocationType } from "./types";
 
@@ -10,10 +10,7 @@ export const Wrapper = styled.div`
     display:flex;
     padding: 0rem 1.25rem;
     position: relative;
-    ${mediaUp.mediumScreen`
-        padding: 0rem;
-        width: 18rem;
-    `}    
+    width: 100%;   
 `;
 
 export const Localization = styled.div<{ mode: addressLocationType }>`
@@ -25,6 +22,7 @@ export const Localization = styled.div<{ mode: addressLocationType }>`
 export const GeocalizationIcon = styled.div`
     .icon_button {
         height: 2.5rem;
+        margin: 0.2rem 0rem;
         width: 2.5rem;
     }
 `;
@@ -88,7 +86,7 @@ export const Alert = styled.div`
     background: ${white};
     border-radius: 1rem;
     box-shadow: 0px 0px 0.875rem rgb(0 0 0 / 50%);
-    left: -0.1875rem;
+    left: 0.5rem;
     padding: 1rem;
     position: absolute;    
     top: ${alertTop}rem;
@@ -109,7 +107,7 @@ export const Alert = styled.div`
         border-width: 0.7rem;
         content: ' ';
         position: absolute;
-        left: calc(50% - 6.35rem);
+        left: calc(50% - 5.35rem);
         z-index: 1;
     }
 
@@ -122,7 +120,7 @@ export const Alert = styled.div`
     ${mediaUp.smallScreen`
         width: 23.5rem;
     `}
-    ${`@media (min-width: ${mediumScreen}px) and (max-width: 1144px){
+    ${`@media (min-width: ${largeScreen}px) and (max-width: 1144px){
         left: -3rem;
         width: 18.5rem;
         ::after {

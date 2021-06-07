@@ -10,8 +10,8 @@ import {
   SecondaryMenu_shop_navigation_secondary_items,
   SecondaryMenu_shop_navigation_secondary_items_children,
 } from "../Footer/gqlTypes/SecondaryMenu";
-import { MainMenu_shop_navigation_main_items } from "../MainMenu/gqlTypes/MainMenu";
-import { MainMenuSubItem } from "../MainMenu/gqlTypes/MainMenuSubItem";
+import { MainMenu_shop_navigation_main_items } from "@temp/components/MainMenu/gqlTypes/MainMenu";
+import { MainMenuSubItem } from "@temp/components/MainMenu/gqlTypes/MainMenuSubItem";
 import * as S from "./styles";
 
 export interface NavLinkProps

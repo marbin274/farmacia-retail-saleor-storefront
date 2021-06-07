@@ -39,6 +39,6 @@ export const NavLink = styled(NavLinkComponent)`
   color: ${({ theme }) => theme.colors.greyText};
 
   &:hover {
-    color: ${({ theme }) => theme.colors.aunaInteractive};
+    color: ${({ theme }) => theme.colors.interactive};
   }
 `;

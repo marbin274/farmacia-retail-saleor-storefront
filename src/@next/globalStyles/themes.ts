@@ -25,7 +25,7 @@ export const defaultTheme = {
       primary: {
         activeBackground: C.theme.aunaInteractivePressed,
         aunaGray60: C.aunaGrey60,
-        background: C.theme.aunaInteractive,
+        background: C.theme.interactive,
         color: C.white,
         disabledBackground: C.theme.aunaDisabledBackground,
         disabledColor: C.theme.aunaDisabled,
@@ -35,11 +35,11 @@ export const defaultTheme = {
       secondary: {
         activeBackground: C.theme.aunaInteractivePressed,
         background: C.white,
-        color: C.theme.aunaInteractive,
+        color: C.theme.interactive,
         disabledBackground: C.theme.aunaDisabledBackground,
         disabledColor: C.theme.aunaDisabled,
         hoverBackground: C.theme.white,
-        hoverColor: C.theme.aunaInteractive,
+        hoverColor: C.theme.interactive,
         orangeAuna: C.theme.aunaOrange,
       },
     },
@@ -64,9 +64,9 @@ export const defaultTheme = {
       primary: {
         activeBackground: C.theme.complementary1,
         background: C.theme.primaryLight,
-        color: C.theme.aunaInteractive,
+        color: C.theme.interactive,
         hoverBackground: "none",
-        hoverColor: C.theme.aunaInteractive,
+        hoverColor: C.theme.interactive,
       },
       secondary: {
         activeBackground: C.theme.primaryTransparent,

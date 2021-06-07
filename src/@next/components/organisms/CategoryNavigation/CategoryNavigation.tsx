@@ -1,4 +1,4 @@
-import { MainMenuSubItem } from "@temp/components/MainMenu/gqlTypes/MainMenuSubItem";
+import { MainMenuSubItem } from "@temp/components/MainMenu/gqlTypes//MainMenuSubItem";
 import { convertCategoryToMenuItem } from "@temp/core/utils";
 import { SimpleCategory_ancestors_edges, SimpleCategory_ancestors_edges_node_children_edges } from "@temp/views/Category/gqlTypes/SimpleCategory";
 import React from "react";
