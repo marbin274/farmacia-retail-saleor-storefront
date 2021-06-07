@@ -102,6 +102,15 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
     }
   };
 
+  const getSelectedSlotId = () => {
+    const slotExists = slots?.scheduled?.find(x => x.id === selectedSlotId);
+    if (slotExists) {
+      return selectedSlotId;
+    }
+
+    return "";
+  }
+
   return (
     <CheckoutShipping
       {...props}
@@ -114,7 +123,7 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
       formId={checkoutShippingFormId}
       formRef={checkoutShippingFormRef}
       slots={slots}
-      selectedSlotId={selectedSlotId}
+      selectedSlotId={getSelectedSlotId()}
     />
   );
 };

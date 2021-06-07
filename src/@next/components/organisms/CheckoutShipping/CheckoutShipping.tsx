@@ -50,9 +50,8 @@ const CheckoutShipping: React.FC<IProps> = ({
       isScheduled:
         shippingMethods?.find(it => it.id === selectedShippingMethodId)
           ?.isScheduled || false,
-      // scheduleSelected: scheduleDate?.scheduleTime?.id,
       selectedScheduleTimeId: scheduleDate?.scheduleTime?.id || "",
-      selectedSlotId,
+      selectedSlotId: selectedSlotId || "",
       shippingMethod: selectedShippingMethodId,
     },
     onSubmit: values => {
@@ -127,7 +126,6 @@ const CheckoutShipping: React.FC<IProps> = ({
 
         const date = convertShippingMethodDateToDate(scheduleDate?.date);
         const scheduleTimeId = scheduleTime?.scheduleTimeId;
-        slotId = scheduleTime?.id;
 
         shippingMethod.scheduleDate = {
           date: scheduleDate?.date,

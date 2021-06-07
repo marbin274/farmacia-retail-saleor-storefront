@@ -116,7 +116,7 @@ export const ShippingMethodItem: React.FC<IProps> = ({
                   value={dateSelected}
                   onChange={(date: Date | [Date, Date] | null) => {
                     setFieldValue("dateSelected", date);
-                    setFieldValue("scheduleSelected", "");
+                    setFieldValue("selectedSlotId", "");
                   }}
                 />
               </S.ShippingMethodControl>
@@ -131,18 +131,18 @@ export const ShippingMethodItem: React.FC<IProps> = ({
                     placeholder: "",
                   }}
                   label=""
-                  name="scheduleSelected"
+                  name="selectedSlotId"
                   options={scheduleTimes}
                   value={slotSelected || ""}
                   onChange={handleOnChangeScheduleSelected}
                   optionLabelKey="description"
                   optionValueKey="id"
                   errors={
-                    errors?.scheduleSelected
+                    errors?.selectedSlotId
                       ? [
                           {
-                            field: "scheduleSelected",
-                            message: errors.scheduleSelected,
+                            field: "selectedSlotId",
+                            message: errors.selectedSlotId,
                           },
                         ]
                       : undefined
