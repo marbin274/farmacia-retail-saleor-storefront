@@ -126,6 +126,7 @@ const CheckoutShipping: React.FC<IProps> = ({
 
         const date = convertShippingMethodDateToDate(scheduleDate?.date);
         const scheduleTimeId = scheduleTime?.scheduleTimeId;
+        slotId = scheduleTime?.id;
 
         shippingMethod.scheduleDate = {
           date: scheduleDate?.date,

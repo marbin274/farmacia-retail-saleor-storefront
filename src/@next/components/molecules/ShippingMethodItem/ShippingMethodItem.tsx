@@ -57,7 +57,7 @@ export const ShippingMethodItem: React.FC<IProps> = ({
         setFieldValue("selectedScheduleTimeId", scheduleTimeId!);
         if (id && dateSelected && value.id) {
             setShippingMethod({
-                scheduleDate: { date: format(dateSelected, SHIPPING_FORMAT_DATE), scheduleTimeId: scheduleTimeId! }, // TODO: ver si convertir a slot y date
+                scheduleDate: { date: format(dateSelected, SHIPPING_FORMAT_DATE), scheduleTimeId: scheduleTimeId! },
                 shippingMethodId: id,
                 slotId: value.id,
             });
