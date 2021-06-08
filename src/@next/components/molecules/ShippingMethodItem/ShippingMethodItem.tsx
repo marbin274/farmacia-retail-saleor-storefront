@@ -25,25 +25,30 @@ export const ShippingMethodItem: React.FC<IProps> = ({
     setFieldValue,
     setShippingMethod,
 }) => {
-    
     const scheduleTimes:IKeyValue[] = React.useMemo(()=>{
-        if (!dateSelected || !scheduleDates || !scheduleDates.length) { return [] };
-        const dateString = format(dateSelected, SHIPPING_FORMAT_DATE);
-        const scheduleDate = scheduleDates?.find(it => it?.date === dateString);
-        if(!scheduleDate || !scheduleDate.scheduleTimes){
-            return [];
-        }
-        return scheduleDate.scheduleTimes.map(it => ({id: it?.id, description: getScheduleTimesFormat(it?.startTime, it?.endTime)}));
+      if (!dateSelected || !scheduleDates || !scheduleDates.length) { return [] };
+      const scheduleTimes = scheduleDates?.[0]?.scheduleTimes;
+      if(!scheduleTimes?.length) { return [] };
+
+      const dateString = format(dateSelected, SHIPPING_FORMAT_DATE); 
+      const result = scheduleTimes?.filter(it => it?.date === dateString);
+      if(!result?.length){
+          return [];
+      }
+      return result.map(it => ({id: it?.id, description: getScheduleTimesFormat(it?.startTime, it?.endTime)}));
     },[dateSelected, scheduleDates]);
 
     const minDate: Date | undefined = React.useMemo(()=>{
-        if(!scheduleDates){ return undefined};
-        const date = convertShippingMethodDateToDate(scheduleDates?.[0]?.date);
+        const scheduleTimes = scheduleDates?.[0]?.scheduleTimes;
+        if(!scheduleTimes){ return undefined};
+        const date = convertShippingMethodDateToDate(scheduleTimes?.[0]?.date);
         return date;
     },[scheduleDates]);
+
     const maxDate: Date | undefined = React.useMemo(()=>{
-        if(!scheduleDates){ return undefined};
-        const date = convertShippingMethodDateToDate(scheduleDates?.[scheduleDates.length - 1]?.date);
+        const scheduleTimes = scheduleDates?.[0]?.scheduleTimes;
+        if(!scheduleTimes){ return undefined};
+        const date = convertShippingMethodDateToDate(scheduleTimes?.[scheduleTimes.length - 1]?.date);
         return date;
     },[scheduleDates]);
 

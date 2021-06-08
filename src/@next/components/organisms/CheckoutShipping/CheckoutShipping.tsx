@@ -10,7 +10,7 @@ import {
   IShippingMethodUpdate,
   IShippingMethodUpdateScheduleDate,
 } from "@temp/@sdk/repository";
-import { SHIPPING_FORMAT_DATE } from "@temp/core/config";
+import { HOURS_FORMAT, SHIPPING_FORMAT_DATE } from "@temp/core/config";
 import { format } from "date-fns";
 import { useFormik } from "formik";
 import React from "react";
@@ -124,12 +124,12 @@ const CheckoutShipping: React.FC<IProps> = ({
         const scheduleDate = scheduleDates?.[0];
         const scheduleTime = scheduleDate?.scheduleTimes?.[0];
 
-        const date = convertShippingMethodDateToDate(scheduleDate?.date);
+        const date = convertShippingMethodDateToDate(scheduleTime?.date);
         const scheduleTimeId = scheduleTime?.scheduleTimeId;
         slotId = scheduleTime?.id;
 
         shippingMethod.scheduleDate = {
-          date: scheduleDate?.date,
+          date: scheduleTime?.date!,
           scheduleTimeId: scheduleTimeId || "",
         };
         shippingMethod.slotId = slotId;
@@ -211,16 +211,18 @@ const CheckoutShipping: React.FC<IProps> = ({
 
     const defaultScheduleDate = scheduleDates?.[0];
     const defaultScheduleTime = defaultScheduleDate?.scheduleTimes?.[0];
-    
-    const slotScheduleDates: ISlotScheduleDate[] = [{
-      date: defaultScheduleDate?.date,
-      scheduleTimes: scheduled!.map(x => ({
-        id: x.id!,
-        startTime: format(new Date(x.slotFrom!), "HH:mm:ss"),
-        endTime: format(new Date(x.slotTo!), "HH:mm:ss"),
-        scheduleTimeId: defaultScheduleTime?.id!,
-      })),
-    }];
+
+    const slotScheduleDates: ISlotScheduleDate[] = [
+      {
+        scheduleTimes: scheduled!.map(x => ({
+          date: format(new Date(x.slotFrom!), SHIPPING_FORMAT_DATE),
+          id: x.id!,
+          startTime: format(new Date(x.slotFrom!), HOURS_FORMAT),
+          endTime: format(new Date(x.slotTo!), HOURS_FORMAT),
+          scheduleTimeId: defaultScheduleTime?.id!,
+        })),
+      },
+    ];
 
     return (
       <S.ShippingMethodContainer

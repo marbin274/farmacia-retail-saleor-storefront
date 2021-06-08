@@ -34,8 +34,8 @@ export interface ISlotScheduleTime {
     startTime: any;
     endTime: any;
     scheduleTimeId: string;
+    date: string;
 }
 export interface ISlotScheduleDate {
-    date: any | null;
     scheduleTimes: ISlotScheduleTime[];
 }
