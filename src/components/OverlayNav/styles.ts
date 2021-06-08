@@ -2,23 +2,33 @@ import { styled } from "@styles";
 
 export const Wrapper = styled.div`
 display: flex;
+left: 0;
 margin-top: 1rem;
 position: absolute;
-width: calc(100% + 22rem);
 z-index:1;
+width: 100vw;
+height: 100vh;
+background-color: rgba(184, 188, 213, 0.8);
 a {
     text-transform: capitalize;
+    span {
+        text-transform: capitalize;
+    }
 }
+`;
+
+export const Overlay = styled.div`
+    display: flex;
+    height: max-content;
 `;
 
 export const lvl1List = styled.ul`
 background-color: ${({ theme }) => theme.colors.white};
-border-bottom-left-radius: 2rem;
-box-shadow: -0.25rem 0rem 0.313rem rgb(0 0 0 / 12%);
-height: 100%;
+border-bottom-left-radius: 1rem;
+height: max-content;
 width: 17rem;
 min-width: 17rem;
-padding: 1rem 0rem;
+padding: 1rem 0rem 0rem;
 position: relative;
 z-index: 2;
 li {   
@@ -30,6 +40,9 @@ li {
         path {
             fill: ${({ theme }) => theme.colors.white};
         }
+    }
+    :last-child {
+        border-bottom-left-radius: 1rem;
     }
     > a {
         display: flex;
@@ -50,7 +63,7 @@ export const OverlayNavItems = styled.div`
     background-color: ${({ theme }) => theme.colors.backgroundLight};
     border-bottom-left-radius: 0.625rem;
     border-bottom-right-radius: 0.625rem;
-    box-shadow: 0rem 0.0625rem 0.875rem rgb(0 0 0 / 50%);
+    height: max-content;
     padding: 2rem 2rem 2rem 0.5rem;
     position: relative;
     width: 100%;
@@ -75,8 +88,6 @@ export const OverlayNavItemTitle = styled.div`
 `;
 
 export const divide = styled.hr`
-    border: 0.0625rem solid #B8BCD5
-    border-top: none;
     margin-left: 1rem;
 `;
 

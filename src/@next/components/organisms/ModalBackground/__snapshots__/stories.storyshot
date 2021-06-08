@@ -38,7 +38,7 @@ exports[`Storyshots @components/organisms/ModalBackground Modal 1`] = `
   height: 100%;
   min-height: 100%;
   top: 0;
-  z-index: 2;
+  z-index: 5;
   -webkit-transition: opacity 0.2s ease;
   transition: opacity 0.2s ease;
   -webkit-transition-delay: 0;
@@ -170,7 +170,7 @@ exports[`Storyshots @components/organisms/ModalBackground Modal Info 1`] = `
   height: 100%;
   min-height: 100%;
   top: 0;
-  z-index: 2;
+  z-index: 5;
   -webkit-transition: opacity 0.2s ease;
   transition: opacity 0.2s ease;
   -webkit-transition-delay: 0;

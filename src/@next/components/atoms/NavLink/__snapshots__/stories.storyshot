@@ -42,7 +42,7 @@ exports[`Storyshots @components/atoms/NavLink default 1`] = `
     href="/page/undefined/"
     onClick={[Function]}
   >
-    Route
+    ELEMENT I
   </a>
   <div
     className="c2"

@@ -1,16 +1,22 @@
+import { Icon, NavLink } from "@temp/@next/components/atoms";
 import { MainMenuSubItem } from "@temp/components/MainMenu/gqlTypes//MainMenuSubItem";
 import { convertCategoryToMenuItem } from "@temp/core/utils";
-import { SimpleCategory_ancestors_edges, SimpleCategory_ancestors_edges_node_children_edges } from "@temp/views/Category/gqlTypes/SimpleCategory";
+import { SimpleCategory_ancestors_edges_node, SimpleCategory_ancestors_edges_node_children_edges } from "@temp/views/Category/gqlTypes/SimpleCategory";
 import React from "react";
 import * as S from "./styles";
 import { IProps } from "./types";
 
 export const CategoryNavigation: React.FC<IProps> = ({ category }) => {
-  const ancestors: SimpleCategory_ancestors_edges[] = category.ancestors?.edges || [];
+  const ancestorNode: SimpleCategory_ancestors_edges_node | null =
+    category.ancestors?.edges?.length ?
+      (category.ancestors.edges.slice(-1).pop()?.node || null)
+      : null;
 
-  const edges: SimpleCategory_ancestors_edges_node_children_edges[] | undefined = ancestors[0] ? ancestors[0].node.children?.edges : category.children?.edges;
+  const hasChildren: boolean = !!category.children?.edges?.length;
 
-  const getListElement = (id: string, name: string, level: number) => {
+  const edges: SimpleCategory_ancestors_edges_node_children_edges[] | undefined = !hasChildren ? ancestorNode?.children?.edges : category.children?.edges;
+
+  const getListElement = (id: string, name: string) => {
     const item: MainMenuSubItem = convertCategoryToMenuItem(id, name);
 
     return (
@@ -19,22 +25,31 @@ export const CategoryNavigation: React.FC<IProps> = ({ category }) => {
     </S.Link>
     )
   }
-
+  const isLvl1 = !category.ancestors?.edges.length;
+  
+  
   return (
     <S.Wrapper>
-      <S.Title>Categorías</S.Title>
+      <S.Title>
+        {
+          !isLvl1 &&
+          <S.TitleIcon>
+            <NavLink
+              fullWidth
+              item={convertCategoryToMenuItem(ancestorNode?.id || '', ancestorNode?.name || '')}
+            >
+              <Icon name="arrow_left" size={18} viewPort={24} />
+            </NavLink>
+          </S.TitleIcon>
+        }
+        <S.TitleName isLvl1={isLvl1}>{hasChildren ? category.name: ancestorNode?.name}</S.TitleName>
+      </S.Title>
+      <hr />
       {edges?.map((subItem, index) => {
         const { id, name } = subItem.node;
         return (
           <ul key={index}>
-            {getListElement(id, name, 1)}
-            {
-              // TODO: activate lvl 3 from subItem.node.children              
-              // children &&
-              // <ul>
-              //   {children.edges.map(subItem => getListElement(subItem.node.id, subItem.node.name, 2))}
-              // </ul>              
-            }
+            {getListElement(id, name)}
           </ul>
         )
       })}

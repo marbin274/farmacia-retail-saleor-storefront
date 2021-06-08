@@ -91,7 +91,7 @@ export const Alert = styled.div`
     position: absolute;    
     top: ${alertTop}rem;
     width: 18.5rem;
-    z-index: 4;
+    z-index: 3;
     ${css`
         animation: ${moved};
         animation-delay: 4s;

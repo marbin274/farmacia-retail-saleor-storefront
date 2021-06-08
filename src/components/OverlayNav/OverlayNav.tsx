@@ -1,62 +1,90 @@
 import { Button, Icon, NavLink } from "@temp/@next/components/atoms";
-import { generateCategoryUrl } from "@temp/core/utils";
 import React from "react";
 import { INavItem } from "../MobileNav";
 import * as S from "./styles";
 
 interface IProps {
     categories: INavItem[] | null;
+    close: () => void;
 }
 
-export const OverlayNav: React.FC<IProps> = ({ categories }) => {
-    const [item, setItem] = React.useState<INavItem | null>(null);
+export const OverlayNav: React.FC<IProps> = ({ categories, close }) => {
+    const [itemLvl1Selected, setItemLvl1Selected] = React.useState<INavItem | null>(null);
+
+    const getLink = React.useCallback((lvl: INavItem) => {
+        return (
+            <NavLink
+                fullWidth
+                item={(
+                    {
+                        ...lvl,
+                        name: lvl.name?.toLowerCase(),
+                    })}
+                onClick={close}
+            />
+        );
+    }, []);
+
+
     return (
-        <S.Wrapper
-            onMouseLeave={() => { setItem(null) }}
-        >
-            <S.lvl1List>
-                {categories.map(it =>
-                    <li
-                        key={it.id}
-                        onMouseEnter={() => { setItem(it); }}
-                    >
-                        <a href={generateCategoryUrl(it.id, it.name)}>
-                            <span>{it.name}</span>
-                            <Icon name="arrow_right" size={18} viewPort={24} />
-                        </a>
-                    </li>
-                )}
-            </S.lvl1List>
-            {
-                item &&
-                <S.OverlayNavItems>
-                    <S.OverlayNavItemTitle>
-                        <h4>{item.name}</h4>
-                        <a href={generateCategoryUrl(item.id, item.name)}>
-                            <Button
-                                color="primary"
-                                outline
-                                type="button"
+        <S.Wrapper>
+            <S.Overlay
+                className="container"
+                onMouseLeave={() => { setItemLvl1Selected(null) }}
+            >
+                <S.lvl1List>
+                    {categories.map(it =>
+                        <li
+                            key={it.id}
+                            onMouseEnter={() => { setItemLvl1Selected(it); }}
+                        >
+                            <NavLink
+                                fullWidth
+                                item={it}
+                                onClick={close}
                             >
-                                Ver todos
-                        </Button>
-                        </a>
-                    </S.OverlayNavItemTitle>
-                    <S.divide />
-                    <S.lvl2List>
-                        {item.children?.map(lvl2 =>
-                            <li>
-                                <div><NavLink fullWidth item={lvl2} /></div>
-                                {
-                                    lvl2.children &&
-                                    <S.lvl3List>
-                                        {lvl2.children.map(lvl3 => <li><NavLink fullWidth item={lvl3} /></li>)}
-                                    </S.lvl3List>
-                                }
-                            </li>)}
-                    </S.lvl2List>
-                </S.OverlayNavItems>
-            }
+                                <span>{it.name?.toLowerCase()}</span>
+                                <Icon name="arrow_right" size={18} viewPort={24} />
+                            </NavLink>
+
+                        </li>
+                    )}
+                </S.lvl1List>
+                {
+                    itemLvl1Selected &&
+                    <S.OverlayNavItems>
+                        <S.OverlayNavItemTitle>
+                            <h4>{itemLvl1Selected.name}</h4>
+                            <NavLink
+                                fullWidth
+                                item={itemLvl1Selected}
+                                onClick={close}
+                            >
+                                <Button
+                                    color="primary"
+                                    outline
+                                    type="button"
+                                >
+                                    Ver todos
+                                </Button>
+                            </NavLink>
+                        </S.OverlayNavItemTitle>
+                        <S.divide />
+                        <S.lvl2List>
+                            {itemLvl1Selected.children?.map((lvl2: INavItem) =>
+                                <li key={lvl2.id}>
+                                    <div>{getLink(lvl2)}</div>
+                                    {
+                                        lvl2.children &&
+                                        <S.lvl3List>
+                                            {lvl2.children.map((lvl3: INavItem) => <li key={lvl3.id}>{getLink(lvl3)}</li>)}
+                                        </S.lvl3List>
+                                    }
+                                </li>)}
+                        </S.lvl2List>
+                    </S.OverlayNavItems>
+                }
+            </S.Overlay>
         </S.Wrapper>
     );
 }

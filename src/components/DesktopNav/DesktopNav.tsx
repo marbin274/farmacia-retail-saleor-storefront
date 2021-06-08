@@ -16,12 +16,18 @@ export const DesktopNav: React.FC<IProps> = ({ categories, navMain }) => {
                 >
                     <IconHamburger open={open} />
                     <span>Categorías</span>
-        </Button>
+                </Button>
                 <ul>
                     {navMain.map(it => <li key={it.id}><NavLink item={it} /></li>)}
                 </ul>
             </S.Wrapper>
-            {open && <OverlayNav categories={categories} />}
+            {
+                open &&
+                <OverlayNav
+                    categories={categories}
+                    close={() => { setOpen(false) }}
+                />
+            }
         </>
     );
 }

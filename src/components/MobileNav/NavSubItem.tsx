@@ -2,9 +2,7 @@ import React from "react";
 import ReactSVG from "react-svg";
 import NavItem, { INavItem } from "./NavItem";
 import arrowImg from "../../images/arrow-left.svg";
-import { Button } from "@temp/@next/components/atoms";
-import { Link} from "react-router-dom";
-import { generateCategoryUrl } from "@temp/core/utils";
+
 
 interface NavItemProps extends INavItem {
     hideOverlay(): void;
@@ -49,11 +47,6 @@ export const NavSubItem: React.FC<NavItemProps> = ({
                     />
                 ))
             }
-            <li className="side-nav__menu-item__subitem-button">
-                <Link to={generateCategoryUrl(item.id, item.name)}>
-                    <Button>Ver todos</Button>
-                </Link>
-            </li>
         </>
     );
 }

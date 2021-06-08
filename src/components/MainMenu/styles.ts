@@ -4,7 +4,7 @@ export const Wrapper = styled.nav`
     background-color: ${({ theme }) => theme.colors.aunaBlack};
     padding: 0rem 0rem 1rem;
     width: 100%;
-    margin-top: 9rem;
+    margin-top: 8.9rem;
     ${mediaUp.smallScreen`
         margin-top: 9.3rem;
     `}
@@ -33,7 +33,6 @@ export const Container = styled.div`
 
 export const Menu = styled.div`
     display: none;
-    position: relative;
     ${mediaUp.largeScreen`
         display: block;
     `}

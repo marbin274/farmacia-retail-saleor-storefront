@@ -81,14 +81,14 @@ $custom-breakpoint: 624px;
     padding: 20px 0;
     position: fixed;
     right: 0;
-    top: 12.9rem;
+    top: 9rem;
     transition: 300ms;
     height: calc(100vh - 3rem);
     width: 100vw;
     z-index: 4;
 
     @media (min-width: $medium-screen) {
-      top: 9.7rem;
+      top: 4.7rem;
     }
 
     &--expanded {

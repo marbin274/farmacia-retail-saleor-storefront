@@ -1,10 +1,13 @@
 import { TypedMainMenuQuery } from "@temp/components/MainMenu/queries";
 import { convertCategoryToMenuItem, maybe } from "@temp/core/utils";
 import React from "react";
+import { useLocation } from "react-router-dom";
 import { Header as HeaderComponent, INavItem, MainMenu } from "../components";
 import "../globalStyles/scss/index.scss";
 
 export const Header: React.FC = () => {
+    const location = useLocation();
+    const hideMenuCondition = (location.pathname.includes("checkout") || location.pathname.includes("order-finalized"));
 
     return (
 
@@ -25,8 +28,15 @@ export const Header: React.FC = () => {
                 const navMain: INavItem[] = maybe(() => data.shop.navigation?.main?.items, []);
                 return (
                     <>
-                        <HeaderComponent categories={categories} />
-                        <MainMenu categories={categories} navMain={navMain} />
+                        <HeaderComponent
+                            categories={categories}
+                            hideMenuCondition={hideMenuCondition}
+                        />
+                        <MainMenu
+                            categories={categories}
+                            hideMenuCondition={hideMenuCondition}
+                            navMain={navMain}
+                        />
                     </>
                 );
             }}

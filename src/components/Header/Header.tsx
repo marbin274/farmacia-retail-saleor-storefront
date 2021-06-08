@@ -7,7 +7,7 @@ import logoImg from "images/logo.svg";
 import userImg from "images/user.svg";
 import React from "react";
 import Media from "react-media";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ReactSVG from "react-svg";
 import {
   MenuDropdown,
@@ -25,9 +25,8 @@ import { SearchForm } from "../OverlayManager/Search";
 import "./scss/index.scss";
 import { IProps } from "./types";
 
-const Header: React.FC<IProps> = ({ categories }) => {
+const Header: React.FC<IProps> = ({ categories, hideMenuCondition }) => {
   const { data: user } = useUserDetails();
-  const location = useLocation();
   const [signOut] = useSignOut();
   const { items } = useCart();
 
@@ -42,7 +41,6 @@ const Header: React.FC<IProps> = ({ categories }) => {
     (items &&
       items.reduce((prevVal, currVal) => prevVal + currVal.quantity, 0)) ||
     0;
-  const hideMenuCondition = !(location.pathname.includes("checkout") || location.pathname.includes("order-finalized"));
 
   return (
     <header>
@@ -51,7 +49,7 @@ const Header: React.FC<IProps> = ({ categories }) => {
           <nav className="main-header" id="header">
             <div className="main-header__left">
               <ul>
-                {hideMenuCondition ? (
+                {!hideMenuCondition ? (
                   <Media
                     query={{ maxWidth: mediumScreen }}
                     render={() => (
@@ -91,7 +89,7 @@ const Header: React.FC<IProps> = ({ categories }) => {
                     query={{ maxWidth: smallScreen }}
                     render={() => (
                       <>
-                        {hideMenuCondition ? (
+                        {!hideMenuCondition ? (
                           <>
                             {user ? (
                               <MenuDropdown
@@ -153,7 +151,7 @@ const Header: React.FC<IProps> = ({ categories }) => {
             </div>
 
             <div className="main-header__center">
-              {hideMenuCondition ? (
+              {!hideMenuCondition ? (
                 <Media
                   query={{ maxWidth: mediumScreen }}
                   render={() => (
@@ -179,7 +177,7 @@ const Header: React.FC<IProps> = ({ categories }) => {
                 </div>
               )}
             </div>
-            {hideMenuCondition ? (
+            {!hideMenuCondition ? (
               <div className="main-header__right">
                 <ul>
                   <Media
@@ -262,9 +260,12 @@ const Header: React.FC<IProps> = ({ categories }) => {
             ) : (
               <></>
             )}
-            <div className="main-header__search">
-              <SearchForm />
-            </div>
+            {
+              !hideMenuCondition &&
+              <div className="main-header__search">
+                <SearchForm />
+              </div>
+            }
           </nav>
         )}
       </OverlayContext.Consumer>
