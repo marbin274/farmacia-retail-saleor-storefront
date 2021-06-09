@@ -123,7 +123,7 @@ export const View: FC<ViewProps> = ({ match }) => {
     id: getGraphqlIdFromDBId(match.params.id, "Category"),
     page: page || 1,
     sortBy: convertSortByFromString(filters.sortBy),
-    districtId: districtSelected.code,
+    districtId: districtSelected.id,
   };
 
   const sortOptions = [

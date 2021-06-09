@@ -30,7 +30,7 @@ export const AddressGeocalization: React.FC<IProps> = React.memo(({ mode }) => {
             </S.GeocalizationIcon>
             <S.District className="district">
                 <S.Label>Enviar a: </S.Label>
-                <S.Address className="district-name">{districtSelected.description}</S.Address>
+                <S.Address className="district-name">{districtSelected.name}</S.Address>
             </S.District>
         </S.Localization>
         <S.Button>

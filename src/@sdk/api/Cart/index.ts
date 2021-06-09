@@ -191,7 +191,7 @@ export class SaleorCartAPI extends ErrorListener implements ISaleorCartAPI {
     }    
     const { data, error } = await this.networkManager.getRefreshedCheckoutLines(
       checkout.lines,
-      this.checkoutRepositoryManager.getRepository().getDistrict()?.code || ''
+      this.checkoutRepositoryManager.getRepository().getDistrict()?.id || ''
     );
 
     if (error) {
@@ -208,7 +208,7 @@ export class SaleorCartAPI extends ErrorListener implements ISaleorCartAPI {
     
     const { data, error } = await this.networkManager.getCartLines(
       this.saleorState.checkout?.lines || null,
-      this.checkoutRepositoryManager.getRepository().getDistrict()?.code || ''
+      this.checkoutRepositoryManager.getRepository().getDistrict()?.id || ''
     );
 
     if (error) {

@@ -50,7 +50,7 @@ export const SearchNetworkResult = () => {
                   errorPolicy="all"
                   variables={{
                     query: search,
-                    districtId: districtSelected.code,
+                    districtId: districtSelected.id,
                   }}
                 >
                   {({ data, error, loading }) => {

@@ -12,8 +12,8 @@ const ShopProvider: React.FC = ({ children }) => {
 
   React.useEffect(() => {
     const districtDefault = data?.shop?.availableDistricts?.find(it => !!it.isDefault);
-    if (districtDefault && !district.code) {
-      setDistrict({ code: districtDefault.id, description: districtDefault.name });
+    if (districtDefault && !district.id) {
+      setDistrict(districtDefault);
     }
   }, [data]);
 

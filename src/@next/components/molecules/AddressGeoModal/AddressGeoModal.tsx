@@ -1,7 +1,7 @@
 import { Overlay } from "@components/organisms";
 import { turquoise } from "@temp/@next/globalStyles/constants";
 import { useAddressGeocalizationInfo, useDistrictSelected } from "@temp/@next/hooks";
-import { useCart } from "@temp/@sdk/react";
+import { IDistrictSelected } from "@temp/@sdk/repository";
 import { useShopContext } from "@temp/components/ShopProvider/context";
 import { TOTAL_DISTRICT } from "@temp/core/config";
 import React from "react";
@@ -17,14 +17,12 @@ export const AddressGeoModal: React.FC = () => {
     const [districtSelected, setDistrictSelected] = useDistrictSelected();
     const [show, setShow] = React.useState(false);
     const [showInfo, setShowInfo] = React.useState<boolean>(false);
-    const [district, setDistrict] = React.useState(districtSelected);
-
-    const { items } = useCart();
+    const [district, setDistrict] = React.useState<IDistrictSelected>(districtSelected);
 
     const handleConfirm = () => {
         setDistrictSelected(district);
         setShowAddressGeocalizationInfo(false);
-        if (items?.length) {
+        if (districtSelected.warehouse?.id !== district.warehouse?.id) {
             setShowInfo(true);
             return;
         }
@@ -89,10 +87,10 @@ export const AddressGeoModal: React.FC = () => {
                                 }}
                                 name="district"
                                 label=""
-                                options={availableDistricts?.map(it => ({ code: it?.id, description: it?.name }))}
+                                options={availableDistricts || []}
                                 value={district}
-                                optionLabelKey="description"
-                                optionValueKey="code"
+                                optionLabelKey="name"
+                                optionValueKey="id"
                                 onChange={handleChangeDistrict}
 
                             />

@@ -26,7 +26,7 @@ const ProductsFeatured: React.FC<IProps> = ({
       displayError={false}
       variables={{ 
         first: PRODUCTS_PER_PAGE,
-        districtId: districtSelected.code,
+        districtId: districtSelected.id,
        }}
     >
       {({ data }) => {

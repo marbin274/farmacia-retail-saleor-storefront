@@ -1,5 +1,6 @@
 import { aunaBrand5, aunaOrangeOnSale } from "@styles/constants";
 import { IPaymentGateway } from "@temp/@next/types";
+import { IDistrictSelected } from "@temp/@sdk/repository";
 import {
   environmentName,
   merchantPassword,
@@ -286,8 +287,9 @@ export const ADDRESS_FORM_SORT = {
 export const ADDRESS_FORM_SHOW_GENERAL_ERRORS = 3;
 export const ADDRESS_FORM_TOTAL_COUNT = 7;
 
-export const DISTRICT_SELECTED_DEFAULT = {
-  code: "",
-  description: "Miraflores",
+export const DISTRICT_SELECTED_DEFAULT: IDistrictSelected = {
+  id: "",
+  name: "Miraflores",
+  warehouse: null,
 };
 export const TOTAL_DISTRICT = 23;

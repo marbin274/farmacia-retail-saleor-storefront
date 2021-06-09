@@ -21,7 +21,7 @@ export class CartQueuedJobs extends QueuedJobsHandler<ErrorCartTypes> {
     const checkout = this.repository.getCheckout();
 
     if (checkout) {
-      const districtId = this.repository.getDistrict()?.code;
+      const districtId = this.repository.getDistrict()?.id;
 
       const { data, error } = await this.networkManager.setCartItem(checkout, districtId);
       if (error && this.onErrorListener) {

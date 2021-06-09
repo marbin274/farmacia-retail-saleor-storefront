@@ -380,7 +380,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
         checkout?.shippingAddress?.city?.toLocaleLowerCase()
     );
 
-    setDistrict({ code: district!.id, description: district!.name });
+    setDistrict(district);
 
     await updateCartLines();
 

@@ -1,18 +1,18 @@
-import { ISelecValue, LocalStorageItems } from "@temp/@sdk/repository";
+import { IDistrictSelected, LocalStorageItems } from "@temp/@sdk/repository";
 import { DISTRICT_SELECTED_DEFAULT } from "@temp/core/config";
 import React from "react";
 import { districtSelectedService } from "../services/districtSelectedService";
 import { useLocalStorage } from "./useLocalStorage";
 
 
-export const useDistrictSelected = (): [ISelecValue, (value: ISelecValue) => void] => {
+export const useDistrictSelected = (): [IDistrictSelected, (value?: IDistrictSelected | null) => void] => {
 
-    const { storedValue, setValue } = useLocalStorage<ISelecValue>(LocalStorageItems.DISTRICT_SELECTED, DISTRICT_SELECTED_DEFAULT);
+    const { storedValue, setValue } = useLocalStorage<IDistrictSelected>(LocalStorageItems.DISTRICT_SELECTED, DISTRICT_SELECTED_DEFAULT);
 
     React.useEffect(() => {
         districtSelectedService
             .on()
-            .subscribe((payload: ISelecValue) => {
+            .subscribe((payload: IDistrictSelected) => {
                 setValue(payload);
             });
     }, []);
