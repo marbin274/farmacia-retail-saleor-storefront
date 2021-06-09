@@ -38,13 +38,13 @@ export const SOCIAL_MEDIA = [
     ariaLabel: "facebook",
     href: "https://www.facebook.com/farmauna.pe",
     path: require("../images/auna/social/facebook.svg"),
-    rel: "noopener noreferrer",
+    rel: "noopener nofollow",
   },
   {
     ariaLabel: "instagram",
     href: "https://www.instagram.com/farmauna_pe/",
     path: require("../images/auna/social/instagram.svg"),
-    rel: "noopener noreferrer",
+    rel: "noopener nofollow",
   },
 ];
 export const META_DEFAULTS = {

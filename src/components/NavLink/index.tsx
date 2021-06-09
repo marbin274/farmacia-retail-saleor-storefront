@@ -40,7 +40,7 @@ const NavLinkComponent: React.FC<NavLinkProps & RouteComponentProps> = ({
   if (url) {
     if (name === "Libro de reclamaciones" || name === "Derechos ARCO") {
       return (
-        <a href={url} {...props} rel="noopener noreferrer">
+        <a href={url} {...props} rel="noopener nofollow">
           {name}
         </a>
       );

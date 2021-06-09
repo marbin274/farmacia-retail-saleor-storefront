@@ -152,7 +152,7 @@ class Nav extends React.PureComponent<IProps, IState> {
           <div className="terms">
             <a
               href={DOCUMENTS_URLS_S3.terminosYCondicionesUrl}
-              rel="noopener noreferrer"
+              rel="noopener nofollow"
             >
               Términos y condiciones
             </a>
@@ -160,7 +160,7 @@ class Nav extends React.PureComponent<IProps, IState> {
           <div className="privacy">
             <a
               href={DOCUMENTS_URLS_S3.politicasDePrivacidadUrl}
-              rel="noopener noreferrer"
+              rel="noopener nofollow"
             >
               Políticas de privacidad
             </a>
