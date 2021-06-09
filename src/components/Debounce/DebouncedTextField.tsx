@@ -1,34 +1,35 @@
+import debounce from 'lodash.debounce';
 import * as React from "react";
 import TextField, { TextFieldProps } from "../TextField";
-import DebounceChange from "./DebounceChange";
-
 
 interface DebouncedTextFieldProps extends TextFieldProps {
   time?: number;
-  resetValue?: boolean;
-  inputRef: any;
+  handleDebounce:(nextValue: string)=>void;
 }
 
 const DebouncedTextField: React.FC<DebouncedTextFieldProps> = props => {
   const {
-    inputRef,
     time,
-    resetValue,
-    value: originalValue,
+    value,
     onChange,
+    handleDebounce,
     ...textFieldProps
   } = props;
+
+  const debouncedSave = React.useCallback(
+		debounce((nextValue: string) => handleDebounce(nextValue), time),
+		[]
+	);
+
+  const handleChange = event =>{
+    const { value: nextValue } = event.target;
+    onChange(event);
+    debouncedSave(nextValue);
+  }
+
+  
   return (
-    <DebounceChange
-      resetValue={resetValue}
-      debounce={onChange}
-      time={time}
-      value={originalValue}
-    >
-      {({ change, value }) => (
-        <TextField {...textFieldProps} inputRef={inputRef} value={value} onChange={change} />
-      )}
-    </DebounceChange>
+    <TextField {...textFieldProps} value={value} onChange={handleChange} />
   );
 };
 

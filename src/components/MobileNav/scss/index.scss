@@ -62,9 +62,10 @@
     }
 
     &-link {
+      color: $auna-grey-100;      
       font-weight: 500;
       font-size: 18px;
-      color: $auna-grey-100;
+      text-transform: capitalize;
     }
 
     &-close,

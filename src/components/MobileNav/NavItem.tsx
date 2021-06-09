@@ -47,7 +47,7 @@ const NavItem: React.FC<NavItemProps> = ({
     >
       <div className={"side-nav__menu-item-content"}>
         <NavLink
-          item={convertCategoryToMenuItem(item.id, item.name)}
+          item={convertCategoryToMenuItem(item.id, item.name?.toLowerCase())}
           className={"side-nav__menu-item-link"}
         />
         {hasSubNavigation && (

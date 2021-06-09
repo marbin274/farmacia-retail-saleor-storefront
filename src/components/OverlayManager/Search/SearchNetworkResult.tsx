@@ -73,13 +73,14 @@ export const SearchNetworkResult = () => {
                             ))}
                           </ul>
                           <div className="show_more_products">
-                            <Button onClick={()=>{
-                              setSearch('');
-                            }}>
+                            
                               <Link to={linkToSearch}>
-                                Ver todos los resultados
+                                  <Button onClick={()=>{
+                                    searchProductsService.setSearch('');
+                                  }}>
+                                  Ver todos los resultados
+                                  </Button>
                             </Link>
-                            </Button>
                           </div>
                         </>
                       );

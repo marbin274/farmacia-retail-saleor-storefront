@@ -48,7 +48,7 @@ export const SearchForm: React.FC<SearchFormProps> = React.memo(({
       return (
         <div
           onClick={() => {
-            setSearch("");
+            clearSearch();
           }}
           className={"search__input--clear"}>
           <Icon
@@ -62,19 +62,38 @@ export const SearchForm: React.FC<SearchFormProps> = React.memo(({
       return <Icon name="search" size={24} />;
     }
   };
+
+  const clearSearch = ()=>{
+    searchProductsService.setSearch('');
+  }
+
   React.useEffect(() => {
-    searchProductsService.setSearch(search);
-    if (!search) {
-      textFieldRef.current.value = "";
-    }
+
+    const suscription = searchProductsService
+      .on()
+      .subscribe((payload: string) => {
+        if (!payload) {
+          setSearch('');
+        }
+      });
+
     const delayDebounceFn = setTimeout(() => {
       if (search.length > 0) {
         launchSearchEvent(search);
       }
     }, 1000);
 
-    return () => clearTimeout(delayDebounceFn);
+    return () => {
+      suscription.unsubscribe();
+      clearTimeout(delayDebounceFn);
+    };
   }, [search]);
+
+
+  const handleDebounce = (nextvalue:any)=>{
+    searchProductsService.setSearch(nextvalue);
+  }
+
 
   return (
     <form
@@ -85,14 +104,15 @@ export const SearchForm: React.FC<SearchFormProps> = React.memo(({
       onSubmit={handleSubmit}
     >
       <div className="search__input">
-        <DebouncedTextField
+      <DebouncedTextField
           inputRef={textFieldRef}
-          onChange={({ target }) => setSearch(target.value)}
           value={search}
           innerIcon={getFieldIcono()}
           autoFocus={autofocus}
           placeholder="Busca por nombre o marca"
+          onChange={({ target }) => setSearch(target.value)}
           onBlur={handleInputBlur}
+          handleDebounce={handleDebounce}
         />
       </div>
     </form>
