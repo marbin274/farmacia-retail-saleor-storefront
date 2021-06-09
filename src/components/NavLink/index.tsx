@@ -22,16 +22,30 @@ export interface NavLinkProps
     | SecondaryMenu_shop_navigation_secondary_items
     | SecondaryMenu_shop_navigation_secondary_items_children;
 }
- const NavLinkComponent: React.FC<NavLinkProps & RouteComponentProps> = ({ item, match, ...props }) => {
+const NavLinkComponent: React.FC<NavLinkProps & RouteComponentProps> = ({
+  item,
+  match,
+  ...props
+}) => {
   const { name, url, category, collection, page } = item;
   const link = (url: string) => {
     const isActive = window.location.pathname === url;
-    return <Link to={url} {...props}>
-      <S.NavActive isActive={isActive}>{name} </S.NavActive>
-    </Link>
+    return (
+      <Link to={url} {...props}>
+        <S.NavActive isActive={isActive}>{name} </S.NavActive>
+      </Link>
+    );
   };
 
   if (url) {
+    if (name === "Libro de reclamaciones" || name === "Derechos ARCO") {
+      return (
+        <a href={url} {...props} rel="noopener noreferrer">
+          {name}
+        </a>
+      );
+    }
+
     return (
       <a href={url} {...props}>
         {name}
@@ -48,4 +62,4 @@ export interface NavLinkProps
   return <span {...props}>{name}</span>;
 };
 
-export const  NavLink = withRouter(NavLinkComponent);
+export const NavLink = withRouter(NavLinkComponent);
