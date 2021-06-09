@@ -258,11 +258,13 @@ const CheckoutShipping: React.FC<IProps> = ({
     );
   }
 
-  return (
-    <section>
-      <S.FieldsGroup>
-        {renderGroupLabel(3, "¿Cuando desea recibir su pedido?")}
-        <form id={formId} ref={formRef} onSubmit={handleSubmit}>
+  const renderForm = () => {
+    if ((!slots?.express && !slots?.scheduled) || !shippingMethods?.length) {
+      return null;
+    }
+
+    return (
+      <form id={formId} ref={formRef} onSubmit={handleSubmit}>
           {renderExpressItem()}
           {renderScheduledItem()}
           {!!shippingMethods?.length &&
@@ -273,6 +275,14 @@ const CheckoutShipping: React.FC<IProps> = ({
               />
             )}
         </form>
+    )
+  }
+
+  return (
+    <section>
+      <S.FieldsGroup>
+        {renderGroupLabel(3, "¿Cuando desea recibir su pedido?")}
+        {renderForm()}
       </S.FieldsGroup>
     </section>
   );

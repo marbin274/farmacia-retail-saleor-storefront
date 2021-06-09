@@ -54,7 +54,9 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
   const {
     checkout,
     setShippingAddress,
+    setShippingMethod,
     selectedShippingAddressId,
+    selectedSlotId,
   } = useCheckout();
   const { availableDistricts, countries } = useShopContext();
   const [, setDistrict] = useDistrictSelected();
@@ -165,6 +167,10 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
         : { dataTreatmentPolicy: false, termsAndConditions: false },
       documentNumber ? documentNumber : ""
     );
+
+    if (selectedSlotId) {
+      await setShippingMethod({ shippingMethodId: "", slotId: undefined });
+    }
 
     if (checkoutErrors?.length! > 0) {
       const checkoutError = checkoutErrors![0];

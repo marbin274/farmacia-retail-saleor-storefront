@@ -121,6 +121,8 @@ export class CheckoutJobs {
         selectedShippingAddressId,
         shippingAddress: data?.shippingAddress,
         shippingMethod: data?.shippingMethod,
+        slotId: data?.slotId,
+        slots: data?.slots,
         termsAndConditions: data?.termsAndConditions,
       });
       return { data };
