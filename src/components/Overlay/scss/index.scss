@@ -9,7 +9,7 @@
   top: 0;
   transition: 300ms;
   width: 100%;
-  z-index: 2;
+  z-index: 5;
 
   &--search,
   &--main-menu-nav {
@@ -38,7 +38,7 @@
     height: 100%;
     background-color: #f1f2f7;
     animation: sidenavLeftOpen 0.3s;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 
   &__right {
@@ -48,7 +48,7 @@
     top: 0;
     height: 100%;
     animation: sidenavRightOpen 0.3s;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 
   &__center {

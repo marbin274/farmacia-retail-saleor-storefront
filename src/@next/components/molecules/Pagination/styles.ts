@@ -67,7 +67,7 @@ export const PageInfoMobile = styled.div`
 
 export const PageButton = styled.div`
   padding: 0.625rem 1rem;
-  color: ${({ theme }) => theme.colors.aunaInteractive};
+  color: ${({ theme }) => theme.colors.interactive};
   background-color: white;
   border-radius: 0.5rem;
   cursor: pointer;

@@ -6,6 +6,7 @@ interface Medium {
   ariaLabel: string | "";
   path?: string;
   href: string;
+  rel: string;
 }
 
 export interface IconProps extends React.HTMLProps<HTMLAnchorElement> {
@@ -18,6 +19,7 @@ const SocialMediaIcon: React.FC<IconProps> = ({ medium, target }) => (
     href={medium.href}
     target={target || "_blank"}
     aria-label={medium.ariaLabel}
+    rel={medium.rel}
   >
     <ReactSVG path={medium.path} className="social-icon" />
   </a>

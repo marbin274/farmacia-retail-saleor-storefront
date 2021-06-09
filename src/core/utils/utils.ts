@@ -7,6 +7,10 @@ import { parse as parseQs, stringify as stringifyQs } from "query-string";
 import { FetchResult } from "react-apollo";
 import { OrderDirection, ProductOrderField } from "../../../gqlTypes/globalTypes";
 import { FormError } from "../types";
+import {
+  CategoryDetails_category,
+  CategoryDetails_category_ancestors_edges_node,
+} from "@sdk/queries/gqlTypes/CategoryDetails";
 
 
 export const slugify = (text: string | number): string =>
@@ -188,3 +192,23 @@ export const findFormErrors = (result: void | FetchResult): FormError[] => {
 
 export const removeEmptySpaces = (text: string) => text.replace(/\s+/g, "");
 
+export const buildCategory = (category: CategoryDetails_category_ancestors_edges_node, index: number) => ({
+  "@type": "ListItem",
+  "position": index,
+  "name": category.name,
+  "item": `${window.location.protocol}//${window.location.hostname}${generateCategoryUrl(category.id, category.name)}`,
+});
+
+export const structuredCategory = (category: CategoryDetails_category) => {
+  const itemList = (category.ancestors?.edges || []).map(
+    (ancestor: { node: CategoryDetails_category_ancestors_edges_node }, index: number) => buildCategory(ancestor.node, index + 1)
+  );
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      ...itemList,
+      buildCategory(category, itemList.length + 1),
+    ],
+  };
+}

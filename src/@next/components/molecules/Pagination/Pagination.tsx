@@ -11,17 +11,10 @@ import {
   PageInfoMobile,
   PageItems,
 } from "./styles";
+import { IProps } from "./types";
 
-export type IPaginationProps = {
-  page: number;
-  total: number;
-  pageSize: number;
-  onPageChange?: (page: number) => void;
-  pageItemsLimit?: number;
-  className?: string;
-};
 
-export const Pagination: FC<IPaginationProps> = ({
+export const Pagination: FC<IProps> = ({
   page,
   total,
   pageSize,

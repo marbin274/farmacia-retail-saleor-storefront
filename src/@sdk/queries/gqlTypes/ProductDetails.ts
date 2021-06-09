@@ -736,6 +736,7 @@ export interface ProductDetails_product_variants {
    */
   id: string;
   sku: string;
+  gtin: string | null;
   name: string;
   /**
    * Quantity of a product available for sale in one checkout.

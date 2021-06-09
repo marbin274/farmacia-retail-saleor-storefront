@@ -33,7 +33,7 @@ export const LeftSide = styled.div`
     width: 24rem;
   `}
   span, button {
-    color: ${props => props.theme.colors.aunaInteractive};
+    color: ${props => props.theme.colors.interactive};
     font-size: ${props => props.theme.typography.smallFontSize};
     font-weight: ${props => props.theme.typography.normalFontWeight};
   }

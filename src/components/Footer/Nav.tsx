@@ -1,24 +1,23 @@
 import { DOCUMENTS_URLS_S3 } from "@temp/core/config";
 import { indexOf } from "lodash";
 import * as React from "react";
-import {withRouter, RouteComponentProps} from 'react-router-dom'
+import { withRouter, RouteComponentProps } from "react-router-dom";
 import ReactSVG from "react-svg";
 import { NavLink } from "..";
-import arrowDowm from "../../images/arrow_down.svg";
+import arrowDowm from "../../images/arrow-down.svg";
 import { TypedSecondaryMenuQuery } from "./queries";
 import "./scss/index.scss";
 import SocialMedia from "../SocialMedia";
-import classNames from 'classnames'
+import classNames from "classnames";
 
 type IProps = RouteComponentProps;
 
 type IState = {
   width: number;
   higher: boolean;
-}
+};
 
 class Nav extends React.PureComponent<IProps, IState> {
-
   state: IState = { width: 0, higher: false };
 
   updateDimensions = () => {
@@ -28,10 +27,10 @@ class Nav extends React.PureComponent<IProps, IState> {
   componentDidMount() {
     this.state.width = window.screen.width;
     this.setHigher();
-    window.addEventListener('resize', this.updateDimensions);
+    window.addEventListener("resize", this.updateDimensions);
   }
   componentWillUnmount() {
-    window.removeEventListener('resize', this.updateDimensions);
+    window.removeEventListener("resize", this.updateDimensions);
   }
 
   componentDidUpdate(prevProps: IProps) {
@@ -45,9 +44,11 @@ class Nav extends React.PureComponent<IProps, IState> {
       higher: this.props.location.pathname.includes("/product/"),
     });
   }
- 
+
   render() {
-    const _arrows = Array.from(document.getElementsByClassName("footer-nav__arrow-icon")).map(x => x.id);
+    const _arrows = Array.from(
+      document.getElementsByClassName("footer-nav__arrow-icon")
+    ).map(x => x.id);
 
     if (this.state.width > 540) {
       _arrows.map(x => {
@@ -56,7 +57,9 @@ class Nav extends React.PureComponent<IProps, IState> {
     }
 
     function onClickArrow(data) {
-      const arrows = Array.from(document.getElementsByClassName("footer-nav__arrow-icon")).map(x => x.id);
+      const arrows = Array.from(
+        document.getElementsByClassName("footer-nav__arrow-icon")
+      ).map(x => x.id);
       let currentArrow = "";
 
       arrows.map(x => {
@@ -69,10 +72,11 @@ class Nav extends React.PureComponent<IProps, IState> {
         }
       });
 
-
       const children: any[] = data.children;
 
-      const pElements: any[] = Array.from(document.getElementsByTagName("p")).filter(x => x.id.length > 0).map(x => x.id);
+      const pElements: any[] = Array.from(document.getElementsByTagName("p"))
+        .filter(x => x.id.length > 0)
+        .map(x => x.id);
 
       children.map(x => {
         const index = pElements.filter(u => u === x.id)[0];
@@ -87,14 +91,15 @@ class Nav extends React.PureComponent<IProps, IState> {
         const element = document.getElementById(x.id);
         if (window.getComputedStyle(element).display === "none") {
           element.style.display = "block";
-          document.getElementById(currentArrow).style.transform = "rotate(180deg)";
+          document.getElementById(currentArrow).style.transform =
+            "rotate(180deg)";
           return;
         }
         element.style.display = "none";
-        document.getElementById(currentArrow).style.transform = "rotate(360deg)";
+        document.getElementById(currentArrow).style.transform =
+          "rotate(360deg)";
       });
     }
-
 
     return (
       <footer
@@ -145,12 +150,18 @@ class Nav extends React.PureComponent<IProps, IState> {
             </label>
           </div>
           <div className="terms">
-            <a href={DOCUMENTS_URLS_S3.terminosYCondicionesUrl}>
+            <a
+              href={DOCUMENTS_URLS_S3.terminosYCondicionesUrl}
+              rel="noopener nofollow"
+            >
               Términos y condiciones
             </a>
           </div>
           <div className="privacy">
-            <a href={DOCUMENTS_URLS_S3.politicasDePrivacidadUrl}>
+            <a
+              href={DOCUMENTS_URLS_S3.politicasDePrivacidadUrl}
+              rel="noopener nofollow"
+            >
               Políticas de privacidad
             </a>
           </div>

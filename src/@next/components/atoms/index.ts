@@ -16,6 +16,7 @@ export * from "./EmailLink";
 export * from "./ErrorMessage";
 export * from "./Icon";
 export * from "./IconButton";
+export * from "./IconHamburger";
 export * from "./Input";
 export * from "./InputLabel";
 export * from "./Label";

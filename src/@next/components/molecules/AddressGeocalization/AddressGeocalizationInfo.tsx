@@ -34,7 +34,7 @@ export const AddressGeocalizationInfo: React.FC = () => {
                         type="button"
                         onClick={() => { setShow(false) }}
                     >
-                        Manterner
+                        Mantener
         </Button>
                 </div>
                 <div>

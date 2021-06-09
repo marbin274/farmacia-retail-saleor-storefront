@@ -230,7 +230,7 @@ export const View: FC<ViewProps> = ({ match }) => {
                         page={page || 1}
                         pageSize={getPageSize(matches)}
                         onPageChange={handlePageChange}
-                        totalProducts={data.paginatedProducts.totalCount}
+                        total={data.paginatedProducts.totalCount}
                         isSmallScreen={matches}
                       />
                     </MetaWrapper>

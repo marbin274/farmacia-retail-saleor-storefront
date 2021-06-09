@@ -1,35 +1,40 @@
+import { convertCategoryToMenuItem } from "@temp/core/utils";
+import { MainMenuSubItem } from "@temp/views/Category/gqlTypes/MainMenuSubItem";
 import classNames from "classnames";
 import * as React from "react";
 import ReactSVG from "react-svg";
 import { NavLink } from "..";
-import { MainMenuSubItem } from "../MainMenu/gqlTypes/MainMenuSubItem";
-import arrowImg from "../../images/arrow_down.svg";
+import arrowDownImg from "../../images/arrow-down.svg";
+import arrowRightImg from "../../images/arrow-right.svg";
 import NavChildren from "./NavChildren";
-import { convertCategoryToMenuItem } from "@temp/core/utils";
 
-export interface INavItem extends MainMenuSubItem {
-  children?: INavItem[];
+export interface INavItem extends Omit<MainMenuSubItem, '__typename'> {
+  children?: INavItem[] | null;
 }
 
 interface NavItemProps extends INavItem {
+  arrowDirection?: arrowDirection;
   isOpen: boolean;
   hideOverlay(): void;
-  showSubItems(itemName: string, isOpen: boolean): void;
+  showSubItems(itemName: INavItem, isOpen: boolean): void;
 }
+
+type arrowDirection = "rigth" | "down";
 
 const NavItem: React.FC<NavItemProps> = ({
   hideOverlay,
   showSubItems,
+  arrowDirection = "down",
   isOpen,
   ...item
 }) => {
-  const [isOpenMenu, setOpenMenu] =  React.useState(isOpen);
-  const childrens: MainMenuSubItem[] = item.category?.children?.edges?.map(it => convertCategoryToMenuItem(it.node.id, it.node.name)) || [];
+  const [isOpenMenu, setOpenMenu] = React.useState(isOpen);
+  const childrens: INavItem[] = item?.children || [];
   const hasSubNavigation: boolean = !!childrens.length;
 
-  function openHideMenu(isOpen: boolean){
+  function openHideMenu(isOpen: boolean) {
     setOpenMenu(!isOpen)
-    showSubItems(item.name, isOpenMenu)
+    showSubItems(item, isOpenMenu)
   }
 
   return (
@@ -42,14 +47,13 @@ const NavItem: React.FC<NavItemProps> = ({
     >
       <div className={"side-nav__menu-item-content"}>
         <NavLink
-          item={item}
+          item={convertCategoryToMenuItem(item.id, item.name?.toLowerCase())}
           className={"side-nav__menu-item-link"}
-          onClick={() => hasSubNavigation && openHideMenu(isOpenMenu)}
         />
         {hasSubNavigation && (
           <ReactSVG
             className={"side-nav__menu-item-arrow"}
-            path={arrowImg}
+            path={arrowDirection === "down" ? arrowDownImg : arrowRightImg}
             onClick={() => openHideMenu(isOpenMenu)}
           />
         )}

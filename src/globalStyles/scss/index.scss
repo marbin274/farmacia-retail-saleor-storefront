@@ -52,10 +52,15 @@ body {
   header {
     background-color: $white;
     position: fixed;
-    z-index: 1;
+    z-index: 5;
     @media (min-width: $medium-screen) {
       width: 100%;
     }
+  }
+
+  hr {
+    border: 0.0625rem solid #B8BCD5;
+    border-top: none;
   }
 
   .container {
@@ -232,10 +237,6 @@ body {
   }
 }
 
-.category, .collection{
-  padding-top: 6rem;
-
-  @media (max-width: $small-screen) {
-    padding-top: 4.4rem;
-  }
+.category, .collection {
+  padding-top: 1rem;
 }

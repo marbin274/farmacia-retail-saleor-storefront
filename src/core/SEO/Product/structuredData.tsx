@@ -8,6 +8,7 @@ const getVariantsStructuredData = variants => {
     price: variant.pricing.price.gross.amount.toFixed(2),
     priceCurrency: variant.pricing.price.gross.currency,
     sku: variant.sku,
+    gtin: variant?.gtin,
   }));
 };
 

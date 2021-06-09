@@ -75,7 +75,6 @@ export const theme = {
   aunaGrey06,
   aunaGreyDark,
   aunaInputGray,
-  aunaInteractive,
   aunaInteractiveHover,
   aunaInteractivePressed,
   aunaLightGray: aunaGrey60,

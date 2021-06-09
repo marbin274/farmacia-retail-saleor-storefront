@@ -2,28 +2,7 @@
 
 .home-page {
   background-color: $white;
-  padding-top: 4.7rem;
   z-index: 0;
-  padding-top: 3.849rem;
-  @media (min-width: $small-screen) {
-    padding-top: 4.162rem;
-  }
-  @media (min-width: $medium-screen) {
-    padding-top: 4.75rem;
-  }
-  .search {
-    min-height: initial;
-    &__input {
-      margin-top: 0px;
-      touch-action: none;
-      -ms-touch-action: none;
-    }
-    &__products {
-      position: absolute;
-      left: 0;
-      z-index: 3;
-    }
-  }
   .home-view {
     .container {
       margin-top: 0;
@@ -213,3 +192,4 @@
     }
   }
 }
+

@@ -65,13 +65,13 @@ export const Secondary = styled(Primary)`
 `;
 
 export const Outline = styled(Primary)`
-  border: ${({theme}) => `1px solid ${theme.colors.aunaInteractive}`};
+  border: ${({theme}) => `1px solid ${theme.colors.interactive}`};
   background-color: transparent;
-  color: ${({theme}) => theme.colors.aunaInteractive};
+  color: ${({theme}) => theme.colors.interactive};
 
   &:hover {
     background-color: transparent;
-    color: ${({theme}) => theme.colors.aunaInteractive};
+    color: ${({theme}) => theme.colors.interactive};
   }
 `;
 
