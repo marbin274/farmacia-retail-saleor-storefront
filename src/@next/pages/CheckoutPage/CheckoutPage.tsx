@@ -126,7 +126,7 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     return <Redirect to={BASE_URL} />;
   }
 
-  // TODO: borrar  si se ve que no es necesario validar las fechas más adelante
+  // Descomentar si se dejara de utilizar slots y se vuelve a shipping methods de saleor
   // if (isAttentionSchedule === false) {
   //   alertService.sendAlert({
   //     acceptDialog: () => {

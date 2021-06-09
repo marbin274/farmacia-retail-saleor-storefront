@@ -11,6 +11,7 @@ import { IFormError } from "@types";
 import React, {
   forwardRef,
   RefForwardingComponent,
+  useEffect,
   useImperativeHandle,
   useRef,
 } from "react";
@@ -51,6 +52,19 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
     slots,
   } = useCheckout();
   const { items } = useCart();
+
+  useEffect(() => {
+    checkIfSlotExists();
+  }, []);
+
+  const checkIfSlotExists = async () => {
+    if (selectedSlotId) {
+      changeSubmitProgress(true);
+      await setShippingMethod({ shippingMethodId: "", slotId: undefined });
+    }
+
+    changeSubmitProgress(false);
+  };
 
   const shippingMethods: IAvailableShippingMethods = [];
   availableShippingMethods?.forEach(it => {
