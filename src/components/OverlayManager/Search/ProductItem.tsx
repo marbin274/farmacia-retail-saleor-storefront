@@ -30,7 +30,7 @@ const ProductItem: React.FC<SearchResults_products_edges> = ({ node }) => {
         <Link
           to={generateProductUrl(product.id, product.name)}
           onClick={()=>{
-            searchProductsService.setSearch('');
+            searchProductsService.hide();
           }}
           className="search__products__item__link"
         >

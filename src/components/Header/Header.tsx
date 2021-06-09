@@ -1,4 +1,5 @@
 import { useCart, useSignOut, useUserDetails } from "@sdk/react";
+import { searchProductsService } from "@temp/@next/services/searchProductsService";
 import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
 import * as appPaths from "@temp/app/routes";
 import cartImg from "images/cart.svg";
@@ -33,6 +34,10 @@ const Header: React.FC<IProps> = ({ categories, hideMenuCondition }) => {
 
   const mediumScreenPlusOne = "993px";
 
+  const closeSearch = ()=>{
+    searchProductsService.hide();
+  }
+
   const handleSignOut = () => {
     signOut();
   };
@@ -66,6 +71,7 @@ const Header: React.FC<IProps> = ({ categories, hideMenuCondition }) => {
                         <ReactSVG
                           path={hamburgerImg}
                           className={"main-header__hamburger--icon"}
+                          onClick={closeSearch}
                         />
                       </li>
                     )}
@@ -80,7 +86,7 @@ const Header: React.FC<IProps> = ({ categories, hideMenuCondition }) => {
                       onClick={removePaymentItems}
                       to={appPaths.baseUrl}
                     >
-                      <ReactSVG path={logoImg} />
+                      <ReactSVG path={logoImg} onClick={closeSearch} />
                     </Link>
                   )}
                 />
@@ -96,28 +102,31 @@ const Header: React.FC<IProps> = ({ categories, hideMenuCondition }) => {
                                 suffixClass={"__rightdown"}
                                 head={
                                   <li className="main-header__icon main-header__user--active">
-                                    <ReactSVG path={userImg} />
+                                    <ReactSVG path={userImg} onClick={closeSearch} />
                                   </li>
                                 }
                                 content={
                                   <ul className="main-header__dropdown">
                                     <li data-testid="my_account__link">
-                                      <Link to={appPaths.accountUrl}>
+                                      <Link to={appPaths.accountUrl} onClick={closeSearch}>
                                         Mi cuenta
                                           </Link>
                                     </li>
                                     <li data-testid="address_book__link">
-                                      <Link to={appPaths.addressBookUrl}>
+                                      <Link to={appPaths.addressBookUrl} onClick={closeSearch}>
                                         Mis direcciones
                                           </Link>
                                     </li>
                                     <li data-testid="order_history__link">
-                                      <Link to={appPaths.orderHistoryUrl}>
+                                      <Link to={appPaths.orderHistoryUrl} onClick={closeSearch}>
                                         Historial de pedidos
                                           </Link>
                                     </li>
                                     <li
-                                      onClick={handleSignOut}
+                                      onClick={() => {
+                                        handleSignOut();
+                                        closeSearch()
+                                      }}
                                       data-testid="logout-link"
                                     >
                                       Cerrar sesión
@@ -129,12 +138,13 @@ const Header: React.FC<IProps> = ({ categories, hideMenuCondition }) => {
                               <li
                                 data-testid="login-btn"
                                 className="main-header__icon"
-                                onClick={() =>
+                                onClick={() =>{
                                   overlayContext.show(
                                     OverlayType.login,
                                     OverlayTheme.left
-                                  )
-                                }
+                                  );
+                                  closeSearch();
+                                }}
                               >
                                 <ReactSVG path={userImg} />
                               </li>
@@ -160,7 +170,7 @@ const Header: React.FC<IProps> = ({ categories, hideMenuCondition }) => {
                       to={appPaths.baseUrl}
                       className="main-header__center--icon"
                     >
-                      <ReactSVG path={logoImg} className="logo" />
+                      <ReactSVG path={logoImg} className="logo" onClick={closeSearch} />
                     </Link>
                   )}
                 />
@@ -170,7 +180,7 @@ const Header: React.FC<IProps> = ({ categories, hideMenuCondition }) => {
                     query={{ maxWidth: mediumScreen }}
                     render={() => (
                       <Link onClick={removePaymentItems} to={appPaths.baseUrl}>
-                        <ReactSVG path={logoImg} className="logo" />
+                        <ReactSVG path={logoImg} className="logo" onClick={closeSearch} />
                       </Link>
                     )}
                   />
@@ -188,26 +198,29 @@ const Header: React.FC<IProps> = ({ categories, hideMenuCondition }) => {
                           <MenuDropdown
                             head={
                               <li className="main-header__icon main-header__user--active">
-                                <ReactSVG path={userImg} />
+                                <ReactSVG path={userImg} onClick={closeSearch} />
                               </li>
                             }
                             content={
                               <ul className="main-header__dropdown">
                                 <li data-testid="my_account__link">
-                                  <Link to={appPaths.accountUrl}>Mi cuenta</Link>
+                                  <Link to={appPaths.accountUrl} onClick={closeSearch}>Mi cuenta</Link>
                                 </li>
                                 <li data-testid="address_book__link">
-                                  <Link to={appPaths.addressBookUrl}>
+                                  <Link to={appPaths.addressBookUrl} onClick={closeSearch}>
                                     Mis direcciones
                                 </Link>
                                 </li>
                                 <li data-testid="order_history__link">
-                                  <Link to={appPaths.orderHistoryUrl}>
+                                  <Link to={appPaths.orderHistoryUrl} onClick={closeSearch}>
                                     Historial de pedidos
                                 </Link>
                                 </li>
                                 <li
-                                  onClick={handleSignOut}
+                                  onClick={() => {
+                                    handleSignOut();
+                                    closeSearch();
+                                  }}
                                   data-testid="logout-link"
                                 >
                                   Cerrar sesión
@@ -226,7 +239,7 @@ const Header: React.FC<IProps> = ({ categories, hideMenuCondition }) => {
                               )
                             }
                           >
-                            <ReactSVG path={userImg} />
+                            <ReactSVG path={userImg} onClick={closeSearch} />
                           </li>
                         )}
                       </>
@@ -237,6 +250,7 @@ const Header: React.FC<IProps> = ({ categories, hideMenuCondition }) => {
                       className="main-header__icon main-header__cart"
                       onClick={() => {
                         overlayContext.show(OverlayType.cart, OverlayTheme.right);
+                        closeSearch();
                       }}
                     >
                       <ReactSVG path={cartImg} />

@@ -64,7 +64,7 @@ export const SearchForm: React.FC<SearchFormProps> = React.memo(({
   };
 
   const clearSearch = ()=>{
-    searchProductsService.setSearch('');
+    searchProductsService.hide();
   }
 
   React.useEffect(() => {

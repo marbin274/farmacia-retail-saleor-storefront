@@ -76,7 +76,7 @@ export const SearchNetworkResult = () => {
                             
                               <Link to={linkToSearch}>
                                   <Button onClick={()=>{
-                                    searchProductsService.setSearch('');
+                                    searchProductsService.hide();
                                   }}>
                                   Ver todos los resultados
                                   </Button>
