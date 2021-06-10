@@ -209,6 +209,16 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
               type: "Info",
             });
             break;
+          case CheckoutErrorCode.INVALID_SLOT:
+            alertService.sendAlert({
+              buttonText: "Entendido",
+              icon: ErrorPaymentIcon,
+              message: "Por favor selecciona nuevamente ¿Cuándo deseas recibir tu pedido?",
+              redirectionLink: CHECKOUT_STEPS[0].link,
+              title: "El tiempo de espera caducó",
+              type: "Info",
+            });
+            break;
           default:
             alertService.sendAlert({
               buttonText: "Entendido",
