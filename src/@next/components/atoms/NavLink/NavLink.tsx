@@ -29,6 +29,7 @@ const getLinkUrl = ({ category, collection, page }: IProps["item"]) => {
 export const NavLink: React.FC<IProps> = ({
   item,
   fullWidth = false,
+  children,
   ...props
 }) => {
   const { name, url, category, collection, page } = item;
@@ -50,7 +51,10 @@ export const NavLink: React.FC<IProps> = ({
       fullWidth={fullWidth}
       {...props}
     >
-      {name}
+      {
+        children ? <>{children}</>
+          : name
+      }
     </S.Link>
   ) : null;
 };

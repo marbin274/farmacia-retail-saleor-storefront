@@ -5,6 +5,7 @@ export const productVariants: ProductDetails_product_variants[] = [
   {
     id: "UHJvZHVjdFZhcmlhbnQ6MjAy",
     sku: "93855755",
+    gtin: "gtin-93855755",
     name: "1l / cotton / yellow",
     quantityAvailable: 50,
     isAvailable: true,
@@ -97,6 +98,7 @@ culture: "es-PE",
   {
     id: "UHJvZHVjdFZhcmlhbnQ6MjA0",
     sku: "80884671",
+    gtin: "gtin-80884671",
     name: "2l / wool / red",
     quantityAvailable: 50,
     isAvailable: true,
@@ -189,6 +191,7 @@ culture: "es-PE",
   {
     id: "UHJvZHVjdFZhcmlhbnQ6MzE2",
     sku: "100",
+    gtin: "gtin-100",
     name: "500ml / wool / turquoise",
     quantityAvailable: 50,
     isAvailable: true,

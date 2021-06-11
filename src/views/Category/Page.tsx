@@ -1,28 +1,29 @@
-import "./scss/index.scss";
-import * as React from "react";
-import { IFilterAttributes, IFilters } from "@types";
-import {
-  Breadcrumbs,
-  extractBreadcrumbs,
-  EmptyProduct,
-} from "../../components";
-import { ProductListHeader } from "../../@next/components/molecules";
-import { ProductListAUNA } from "../../@next/components/organisms";
-import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
-import { convertToSimpleProduct, maybe } from "@temp/core/utils";
-import {
-  Category_category,
-  Category_paginatedProducts,
-} from "./gqlTypes/Category";
+import { Pagination } from "@components/molecules";
+import { IPaginationProps } from "@temp/@next/components/molecules/Pagination/types";
 import {
   IAddToCartCallback,
   IRemoveItemToCartCallback,
-  ISubtractItemToCartCallback,
+  ISubtractItemToCartCallback
 } from "@temp/@next/components/molecules/ProductTileAUNA/types";
 import { CategoryNavigation } from "@temp/@next/components/organisms/CategoryNavigation/CategoryNavigation";
-import { MainMenu_shop } from "@temp/components/MainMenu/gqlTypes/MainMenu";
 import { IItems } from "@temp/@sdk/api/Cart/types";
-import { Pagination } from "@components/molecules";
+import { MainMenu_shop } from "@temp/components/MainMenu/gqlTypes/MainMenu";
+import { structuredData } from "@temp/core/SEO/Category/structuredData";
+import { convertToSimpleProduct, maybe } from "@temp/core/utils";
+import { IFilterAttributes, IFilters } from "@types";
+import * as React from "react";
+import { ProductListHeader } from "../../@next/components/molecules";
+import { ProductListAUNA } from "../../@next/components/organisms";
+import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
+import {
+  Breadcrumbs,
+
+  EmptyProduct, extractBreadcrumbs
+} from "../../components";
+import {
+  Category_category,
+  Category_paginatedProducts
+} from "./gqlTypes/Category";
 
 interface SortItem {
   label: string;
@@ -31,7 +32,7 @@ interface SortItem {
 
 interface SortOptions extends Array<SortItem> {}
 
-interface PageProps {
+interface PageProps extends IPaginationProps {
   addToCart: IAddToCartCallback;
   removeItemToCart: IRemoveItemToCartCallback;
   subtractItemToCart: ISubtractItemToCartCallback;
@@ -49,10 +50,6 @@ interface PageProps {
   onAttributeFiltersChange: (attributeSlug: string, value: string) => void;
   onOrder: (order: { value?: string; label: string }) => void;
   items: IItems;
-  page: number;
-  pageSize: number;
-  onPageChange: (page: number) => void;
-  totalProducts: number;
 }
 
 const Page: React.FC<PageProps> = ({
@@ -75,7 +72,7 @@ const Page: React.FC<PageProps> = ({
   page,
   pageSize,
   removeItemToCart,
-  totalProducts,
+  total: totalProducts,
   subtractItemToCart,
 }) => {
   const canDisplayProducts = maybe(
@@ -83,6 +80,7 @@ const Page: React.FC<PageProps> = ({
   );
   const hasProducts = canDisplayProducts && !!products.totalCount;
   const [showFilters, setShowFilters] = React.useState(false);
+  const categoryContainerRef = React.useRef<HTMLDivElement>(null);
 
   const getAttribute = (attributeSlug: string, valueSlug: string) => {
     return {
@@ -105,8 +103,15 @@ const Page: React.FC<PageProps> = ({
       []
     );
 
+  React.useEffect(() =>
+    categoryContainerRef?.current.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" })
+    , [products]);
+
   return (
-    <div className="category">
+    <div
+      className="category"
+      ref={categoryContainerRef}
+    >
       {isSmallScreen && (
         <ProductListHeader
           activeSortOption={activeSortOption}
@@ -121,6 +126,9 @@ const Page: React.FC<PageProps> = ({
         />
       )}
       <div className="category__container category__body">
+        <script className="structured-data-list" type="application/ld+json">
+          {structuredData(category)}
+        </script>
         <CategoryNavigation
           category={category}
         />

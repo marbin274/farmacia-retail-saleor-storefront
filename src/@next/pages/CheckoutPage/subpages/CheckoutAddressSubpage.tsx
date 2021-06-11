@@ -223,7 +223,7 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
 
     setShowStockValidation(false);
     const district = availableDistricts?.find(x => x?.name === currentDistrict);
-    setDistrict({ code: district!.id, description: district!.name });
+    setDistrict(district);
     setCurrentDistrict("");
     setStockValidationProducts(undefined);
 

@@ -23,7 +23,7 @@ export const ProductsSelled: React.FC<IProps> = ({
         <TypedSelledProductsQuery
             displayError={false}
             variables={{ 
-                districtId: districtSelected.code,
+                districtId: districtSelected.id,
                 first: PRODUCTS_PER_PAGE,
                 period: ReportingPeriod.THIS_MONTH,
              }}

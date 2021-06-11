@@ -181,7 +181,7 @@ exports[`Storyshots @components/organisms/SelectSidebar default 1`] = `
   height: 100%;
   min-height: 100%;
   top: 0;
-  z-index: 2;
+  z-index: 5;
   -webkit-transition: opacity 0.2s ease;
   transition: opacity 0.2s ease;
   -webkit-transition-delay: 0;
@@ -621,7 +621,7 @@ exports[`Storyshots @components/organisms/SelectSidebar with footer 1`] = `
   height: 100%;
   min-height: 100%;
   top: 0;
-  z-index: 2;
+  z-index: 5;
   -webkit-transition: opacity 0.2s ease;
   transition: opacity 0.2s ease;
   -webkit-transition-delay: 0;

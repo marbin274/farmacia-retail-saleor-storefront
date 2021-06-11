@@ -1,24 +1,23 @@
+import { IPaginationProps } from "@temp/@next/components/molecules/Pagination/types";
 import {
   IAddToCartCallback,
   IRemoveItemToCartCallback,
-  ISubtractItemToCartCallback,
+  ISubtractItemToCartCallback
 } from "@temp/@next/components/molecules/ProductTileAUNA/types";
 import { IItems } from "@temp/@sdk/api/Cart/types";
-import { IFilterAttributes, IFilters } from "@types";
-import * as React from "react";
-import ReactSVG from "react-svg";
-import { ProductListHeader } from "../../@next/components/molecules";
-import { ProductListAUNA } from "../../@next/components/organisms";
-import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
-import { DebounceChange, TextField } from "../../components";
+import * as appPaths from "@temp/app/routes";
 import { convertToSimpleProduct, maybe } from "@temp/core/utils";
-import { SearchProducts_products } from "./gqlTypes/SearchProducts";
-import "./scss/index.scss";
+import { IFilterAttributes, IFilters } from "@types";
 import homeIcon from "images/home.svg";
 import rightArrowIcon from "images/right-arrow.svg";
+import * as React from "react";
 import { Link } from "react-router-dom";
-import * as appPaths from "@temp/app/routes";
-import { SEARCH_PRODUCTS_QUERY_MIN_LENGTH } from "@temp/core/config";
+import ReactSVG from "react-svg";
+import { Pagination, ProductListHeader } from "../../@next/components/molecules";
+import { ProductListAUNA } from "../../@next/components/organisms";
+import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
+import { SearchProducts_paginatedProducts } from "./gqlTypes/SearchProducts";
+import "./scss/index.scss";
 
 interface SortItem {
   label: string;
@@ -27,7 +26,7 @@ interface SortItem {
 
 interface SortOptions extends Array<SortItem> {}
 
-interface PageProps {
+interface PageProps extends IPaginationProps {
   activeFilters: number;
   attributes: IFilterAttributes[];
   activeSortOption: string;
@@ -39,11 +38,10 @@ interface PageProps {
     newValue: string,
     updateType?: "replace" | "replaceIn" | "push" | "pushIn"
   ) => void;
-  products: SearchProducts_products;
+  products: SearchProducts_paginatedProducts;
   productsOnCart: IItems;
   sortOptions: SortOptions;
   clearFilters: () => void;
-  onLoadMore: () => void;
   onAttributeFiltersChange: (attributeSlug: string, value: string) => void;
   onOrder: (order: { value?: string; label: string }) => void;
   addToCart: IAddToCartCallback;
@@ -60,7 +58,6 @@ const Page: React.FC<PageProps> = ({
   displayLoader,
   hasNextPage,
   clearFilters,
-  onLoadMore,
   products,
   productsOnCart,
   filters,
@@ -70,11 +67,16 @@ const Page: React.FC<PageProps> = ({
   addToCart,
   removeItemToCart,
   subtractItemToCart,
+  page,
+  total: totalProducts,
+  pageSize,
+  onPageChange,
 }) => {
   const canDisplayProducts = maybe(
     () => !!products.edges && products.totalCount !== undefined
   );
   const [showFilters, setShowFilters] = React.useState(false);
+  const searchContainerRef = React.useRef<HTMLDivElement>(null);
 
   const getAttribute = (attributeSlug: string, valueSlug: string) => {
     return {
@@ -97,36 +99,15 @@ const Page: React.FC<PageProps> = ({
       []
     );
 
+    React.useEffect(() =>
+      searchContainerRef?.current.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" })
+    , [products]);
+
   return (
-    <div className="category">
-      <div className="search-page">
-        <div className="search-page__header">
-          <div className="search-page__header__input container">
-            <DebounceChange
-              debounce={(evt: React.ChangeEvent<any>) => {
-                const query = (evt.target?.value as string);                
-                if (!query || query.length < SEARCH_PRODUCTS_QUERY_MIN_LENGTH) {
-                  return false;
-                }
-                setSearch(query.toLowerCase());
-              }}
-              value={search}
-              time={500}
-            >
-              {({ change, value }) => {
-                return (
-                  <TextField
-                    placeholder="Busca por nombre"
-                    autoFocus
-                    onChange={change}
-                    value={value}
-                  />
-                );
-              }}
-            </DebounceChange>
-          </div>
-        </div>
-      </div>
+    <div 
+      className="category"
+      ref={searchContainerRef}
+    >
       <div className="search-page container">
         <FilterSidebar
           show={showFilters}
@@ -167,16 +148,24 @@ const Page: React.FC<PageProps> = ({
           <Link to={appPaths.baseUrl}>Atrás</Link>
         </div>
         {canDisplayProducts && (
-          <ProductListAUNA
-            products={products.edges.map((edge) => convertToSimpleProduct(edge.node))}
-            productsOnCart={productsOnCart}
-            canLoadMore={hasNextPage}
-            loading={displayLoader}
-            onLoadMore={onLoadMore}
-            addToCart={addToCart}
-            removeItemToCart={removeItemToCart}
-            subtractItemToCart={subtractItemToCart}
-          />
+          <>
+            <ProductListAUNA
+              products={products.edges.map((edge) => convertToSimpleProduct(edge.node))}
+              productsOnCart={productsOnCart}
+              canLoadMore={hasNextPage}
+              loading={displayLoader}
+              addToCart={addToCart}
+              removeItemToCart={removeItemToCart}
+              subtractItemToCart={subtractItemToCart}
+            />
+            <Pagination
+              page={page}
+              pageSize={pageSize}
+              total={totalProducts}
+              onPageChange={onPageChange}
+              className="category__pagination"
+            />
+          </>
         )}
       </div>
     </div>

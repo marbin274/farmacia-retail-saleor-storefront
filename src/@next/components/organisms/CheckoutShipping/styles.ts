@@ -67,7 +67,7 @@ export const GroupLabelTitle = styled.span`
 
 export const ShippingMethodContainer = styled.div<{ selected: boolean, hasError: boolean }>`
     background-color: ${({ selected, theme }) => !!selected ? theme.colors.complementary1 : theme.colors.backgroundLight};
-    border: 1px solid ${({ hasError, selected, theme }) => hasError ? `${theme.colors.aunaError}` : (!!selected ? `${(theme.colors.aunaInteractive)}` : theme.colors.backgroundLight)};
+    border: 1px solid ${({ hasError, selected, theme }) => hasError ? `${theme.colors.aunaError}` : (!!selected ? `${(theme.colors.interactive)}` : theme.colors.backgroundLight)};
     border-radius: 16px;
     display: flex;
     flex-direction: row;
@@ -75,7 +75,7 @@ export const ShippingMethodContainer = styled.div<{ selected: boolean, hasError:
     padding: 2rem 1rem;
     margin: 1rem 0rem;
     &:hover {
-      border-color: ${({ theme }) => theme.colors.aunaInteractive};
+      border-color: ${({ theme }) => theme.colors.interactive};
     }
 `
 

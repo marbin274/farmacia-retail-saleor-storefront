@@ -6,7 +6,6 @@ import {
 } from "../..";
 import { searchUrl } from "../../../app/routes";
 import { SearchForm } from "./SearchForm";
-import { SearchNetworkResult } from "./SearchNetworkResult";
 
 interface SearchProps extends RouteComponentProps {
   overlay: OverlayContextInterface;
@@ -28,16 +27,7 @@ const Search = (props: SearchProps) => {
         autofocus={true}
         handleInputBlur={handleInputBlur}
         handleSubmit={handleSubmit}
-      >
-        {(search, hasSearchPhrase, hasResults) => {
-          return <SearchNetworkResult
-            search={search}
-            hasResults={hasResults}
-            hasSearchPhrase={hasSearchPhrase}
-          />
-        }
-        }
-      </SearchForm>
+      />
     </Overlay>
   );
 }

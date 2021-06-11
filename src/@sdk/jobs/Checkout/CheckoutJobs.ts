@@ -36,7 +36,7 @@ export class CheckoutJobs {
     privacyPolicy?: IPrivacyPolicy;
     documentNumber: string;
   }): PromiseCheckoutJobRunResponse => {
-    const districtId = this.repository.getDistrict()?.code;
+    const districtId = this.repository.getDistrict()?.id;
 
     const { checkoutErrors, data, error } = await this.networkManager.createCheckout(
       email,
@@ -88,7 +88,7 @@ export class CheckoutJobs {
     privacyPolicy: IPrivacyPolicy;
   }): PromiseCheckoutJobRunResponse => {
     const checkout = this.repository.getCheckout();
-    const districtId = this.repository.getDistrict()?.code;
+    const districtId = this.repository.getDistrict()?.id;
 
     const { checkoutErrors, data, error } = await this.networkManager.setShippingAddress(
       shippingAddress,
@@ -139,7 +139,7 @@ export class CheckoutJobs {
     selectedBillingAddressId?: string;
   }): PromiseCheckoutJobRunResponse => {
     const checkout = this.repository.getCheckout();
-    const districtId = this.repository.getDistrict()?.code;
+    const districtId = this.repository.getDistrict()?.id;
 
     const { data, error } = await this.networkManager.setBillingAddress(
       billingAddress,
@@ -178,7 +178,7 @@ export class CheckoutJobs {
   }): PromiseCheckoutJobRunResponse => {
     const checkout = this.repository.getCheckout();
 
-    const districtId = this.repository.getDistrict()?.code;
+    const districtId = this.repository.getDistrict()?.id;
 
     const {
       data,
@@ -217,7 +217,7 @@ export class CheckoutJobs {
     shippingMethodUpdate: IShippingMethodUpdate;
   }): PromiseCheckoutJobRunResponse => {
     const checkout = this.repository.getCheckout();
-    const districtId = this.repository.getDistrict()?.code;
+    const districtId = this.repository.getDistrict()?.id;
 
     const { data, error } = await this.networkManager.setShippingMethod(
       shippingMethodUpdate,
@@ -253,7 +253,7 @@ export class CheckoutJobs {
     promoCode: string;
   }): PromiseCheckoutJobRunResponse => {
     const checkout = this.repository.getCheckout();
-    const districtId = this.repository.getDistrict()?.code;
+    const districtId = this.repository.getDistrict()?.id;
 
     const { data, error } = await this.networkManager.addPromoCode(
       promoCode,
@@ -285,7 +285,7 @@ export class CheckoutJobs {
     promoCode: string;
   }): PromiseCheckoutJobRunResponse => {
     const checkout = this.repository.getCheckout();
-    const districtId = this.repository.getDistrict()?.code;
+    const districtId = this.repository.getDistrict()?.id;
 
     const { data, error } = await this.networkManager.removePromoCode(
       promoCode,
@@ -325,7 +325,7 @@ export class CheckoutJobs {
     creditCard?: ICreditCard;
   }): PromiseCheckoutJobRunResponse => {
     const payment = this.repository.getPayment();
-    const districtId = this.repository.getDistrict()?.code;
+    const districtId = this.repository.getDistrict()?.id;
 
     const { data, error } = await this.networkManager.createPayment(
       amount,
@@ -362,7 +362,7 @@ export class CheckoutJobs {
     checkoutId: string;
     paymentData?: string;
   }): PromiseCheckoutJobRunResponse => {
-    const districtId = this.repository.getDistrict()?.code;
+    const districtId = this.repository.getDistrict()?.id;
 
     const { data, error } = await this.networkManager.completeCheckout(
       checkoutId,

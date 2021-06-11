@@ -8,6 +8,10 @@ export const getShop = gql`
         isActive
         isDefault
         name
+        warehouse{
+          id
+          name
+        }
       }
       displayGrossPrices
       defaultCountry {

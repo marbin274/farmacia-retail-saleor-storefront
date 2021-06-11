@@ -15,9 +15,10 @@ export { default as Error } from "./Error";
 export { default as ErrorPage } from "./ErrorPage";
 export { Footer } from "./Footer";
 export { default as Form } from "./Form";
+export { Header } from "./Header";
 export { default as Loader } from "./Loader";
 export { default as LoginForm } from "./LoginForm";
-export { MainMenu } from "./MainMenu";
+export * from "./MainMenu";
 export { default as MenuDropdown } from "./MenuDropdown";
 export { default as Message } from "./Message";
 export {
@@ -47,6 +48,7 @@ export {
   ShowOverlayType,
 } from "./Overlay";
 export { OverlayManager } from "./OverlayManager";
+export * from "./OverlayNav";
 export { default as PasswordResetForm } from "./PasswordResetForm";
 export { default as PriceRangeFilter } from "./PriceRangeFilter";
 export { default as ProductDescription } from "./ProductDescription";

@@ -14,6 +14,7 @@ import {
 } from "@temp/@next/utils/products";
 import ItemsHandler from "@temp/@next/components/organisms/ItemsHandler/ItemsHandler";
 import { convertToSimpleProduct, generateProductUrl } from "@temp/core/utils";
+import { searchProductsService } from "@temp/@next/services/searchProductsService";
 
 const ProductItem: React.FC<SearchResults_products_edges> = ({ node }) => {
   const { items, addItem, subtractItem } = useCart();
@@ -28,6 +29,9 @@ const ProductItem: React.FC<SearchResults_products_edges> = ({ node }) => {
       <div className="search__products__item__content">
         <Link
           to={generateProductUrl(product.id, product.name)}
+          onClick={()=>{
+            searchProductsService.hide();
+          }}
           className="search__products__item__link"
         >
           <div className="search__products__item__side">

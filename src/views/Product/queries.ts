@@ -77,6 +77,7 @@ export const productVariantFragment = gql`
   ${priceFragment}
   fragment ProductVariantFields on ProductVariant {
     id
+    gtin
     sku
     name
     isAvailable
@@ -122,6 +123,14 @@ export const productDetailsQuery = gql`
       category {
         id
         name
+        ancestors(first: 3) {
+          edges {
+            node {
+              id
+              name
+            }
+          }
+        }
         products(first: 3) {
           edges {
             node {
@@ -153,7 +162,7 @@ export const productDetailsQuery = gql`
 export const productVariantsQuery = gql`
   ${basicProductFragment}
   ${productVariantFragment}
-  query VariantList($ids: [ID!], $countryCode: CountryCode) {
+  query VariantList($ids: [ID!], $countryCode: CountryCode, $districtId: ID) {
     productVariants(ids: $ids, first: 100) {
       edges {
         node {

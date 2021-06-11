@@ -2,11 +2,7 @@
 
 .product-page {
   background-color: $white;
-  z-index: 0;
-  margin-top: 4.412rem;
-  @media (min-width: $medium-screen) {
-    margin-top: 5rem;
-  }
+  z-index: 0; 
   .breadcrumbs {
     background-color: $white;
     padding: $spacer / 2 $spacer $spacer / 2 $spacer * 1.5;

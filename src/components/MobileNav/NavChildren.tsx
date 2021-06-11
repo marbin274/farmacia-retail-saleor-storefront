@@ -1,6 +1,7 @@
+import { convertCategoryToMenuItem } from "@temp/core/utils";
 import * as React from "react";
-import { INavItem } from ".";
 import { NavLink } from "../NavLink";
+import { INavItem } from "./NavItem";
 
 interface NavChildrenProps {
   subItems: INavItem[];
@@ -11,7 +12,7 @@ const NavChildren: React.FC<NavChildrenProps> = ({ subItems }) => (
     {subItems.map(subItem => (
       <NavLink
         key={subItem.id}
-        item={subItem}
+        item={convertCategoryToMenuItem(subItem.id, subItem.name)}
         className="side-nav__nav-children__child"
       />
     ))}

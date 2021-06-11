@@ -8,7 +8,7 @@ import { AttributeInput, ProductOrder } from "./../../../../gqlTypes/globalTypes
 // GraphQL query operation: SearchProducts
 // ====================================================
 
-export interface SearchProducts_products_edges_node_pricing_priceRangeUndiscounted_start_gross {
+export interface SearchProducts_paginatedProducts_edges_node_pricing_priceRangeUndiscounted_start_gross {
   __typename: "Money";
   /**
    * Amount of money.
@@ -24,7 +24,7 @@ export interface SearchProducts_products_edges_node_pricing_priceRangeUndiscount
   culture: string;
 }
 
-export interface SearchProducts_products_edges_node_pricing_priceRangeUndiscounted_start_net {
+export interface SearchProducts_paginatedProducts_edges_node_pricing_priceRangeUndiscounted_start_net {
   __typename: "Money";
   /**
    * Amount of money.
@@ -40,19 +40,19 @@ export interface SearchProducts_products_edges_node_pricing_priceRangeUndiscount
   culture: string;
 }
 
-export interface SearchProducts_products_edges_node_pricing_priceRangeUndiscounted_start {
+export interface SearchProducts_paginatedProducts_edges_node_pricing_priceRangeUndiscounted_start {
   __typename: "TaxedMoney";
   /**
    * Amount of money including taxes.
    */
-  gross: SearchProducts_products_edges_node_pricing_priceRangeUndiscounted_start_gross;
+  gross: SearchProducts_paginatedProducts_edges_node_pricing_priceRangeUndiscounted_start_gross;
   /**
    * Amount of money without taxes.
    */
-  net: SearchProducts_products_edges_node_pricing_priceRangeUndiscounted_start_net;
+  net: SearchProducts_paginatedProducts_edges_node_pricing_priceRangeUndiscounted_start_net;
 }
 
-export interface SearchProducts_products_edges_node_pricing_priceRangeUndiscounted_stop_gross {
+export interface SearchProducts_paginatedProducts_edges_node_pricing_priceRangeUndiscounted_stop_gross {
   __typename: "Money";
   /**
    * Amount of money.
@@ -68,7 +68,7 @@ export interface SearchProducts_products_edges_node_pricing_priceRangeUndiscount
   culture: string;
 }
 
-export interface SearchProducts_products_edges_node_pricing_priceRangeUndiscounted_stop_net {
+export interface SearchProducts_paginatedProducts_edges_node_pricing_priceRangeUndiscounted_stop_net {
   __typename: "Money";
   /**
    * Amount of money.
@@ -84,31 +84,31 @@ export interface SearchProducts_products_edges_node_pricing_priceRangeUndiscount
   culture: string;
 }
 
-export interface SearchProducts_products_edges_node_pricing_priceRangeUndiscounted_stop {
+export interface SearchProducts_paginatedProducts_edges_node_pricing_priceRangeUndiscounted_stop {
   __typename: "TaxedMoney";
   /**
    * Amount of money including taxes.
    */
-  gross: SearchProducts_products_edges_node_pricing_priceRangeUndiscounted_stop_gross;
+  gross: SearchProducts_paginatedProducts_edges_node_pricing_priceRangeUndiscounted_stop_gross;
   /**
    * Amount of money without taxes.
    */
-  net: SearchProducts_products_edges_node_pricing_priceRangeUndiscounted_stop_net;
+  net: SearchProducts_paginatedProducts_edges_node_pricing_priceRangeUndiscounted_stop_net;
 }
 
-export interface SearchProducts_products_edges_node_pricing_priceRangeUndiscounted {
+export interface SearchProducts_paginatedProducts_edges_node_pricing_priceRangeUndiscounted {
   __typename: "TaxedMoneyRange";
   /**
    * Lower bound of a price range.
    */
-  start: SearchProducts_products_edges_node_pricing_priceRangeUndiscounted_start | null;
+  start: SearchProducts_paginatedProducts_edges_node_pricing_priceRangeUndiscounted_start | null;
   /**
    * Upper bound of a price range.
    */
-  stop: SearchProducts_products_edges_node_pricing_priceRangeUndiscounted_stop | null;
+  stop: SearchProducts_paginatedProducts_edges_node_pricing_priceRangeUndiscounted_stop | null;
 }
 
-export interface SearchProducts_products_edges_node_pricing_priceRange_start_gross {
+export interface SearchProducts_paginatedProducts_edges_node_pricing_priceRange_start_gross {
   __typename: "Money";
   /**
    * Amount of money.
@@ -124,7 +124,7 @@ export interface SearchProducts_products_edges_node_pricing_priceRange_start_gro
   culture: string;
 }
 
-export interface SearchProducts_products_edges_node_pricing_priceRange_start_net {
+export interface SearchProducts_paginatedProducts_edges_node_pricing_priceRange_start_net {
   __typename: "Money";
   /**
    * Amount of money.
@@ -140,19 +140,19 @@ export interface SearchProducts_products_edges_node_pricing_priceRange_start_net
   culture: string;
 }
 
-export interface SearchProducts_products_edges_node_pricing_priceRange_start {
+export interface SearchProducts_paginatedProducts_edges_node_pricing_priceRange_start {
   __typename: "TaxedMoney";
   /**
    * Amount of money including taxes.
    */
-  gross: SearchProducts_products_edges_node_pricing_priceRange_start_gross;
+  gross: SearchProducts_paginatedProducts_edges_node_pricing_priceRange_start_gross;
   /**
    * Amount of money without taxes.
    */
-  net: SearchProducts_products_edges_node_pricing_priceRange_start_net;
+  net: SearchProducts_paginatedProducts_edges_node_pricing_priceRange_start_net;
 }
 
-export interface SearchProducts_products_edges_node_pricing_priceRange_stop_gross {
+export interface SearchProducts_paginatedProducts_edges_node_pricing_priceRange_stop_gross {
   __typename: "Money";
   /**
    * Amount of money.
@@ -168,7 +168,7 @@ export interface SearchProducts_products_edges_node_pricing_priceRange_stop_gros
   culture: string;
 }
 
-export interface SearchProducts_products_edges_node_pricing_priceRange_stop_net {
+export interface SearchProducts_paginatedProducts_edges_node_pricing_priceRange_stop_net {
   __typename: "Money";
   /**
    * Amount of money.
@@ -184,31 +184,31 @@ export interface SearchProducts_products_edges_node_pricing_priceRange_stop_net 
   culture: string;
 }
 
-export interface SearchProducts_products_edges_node_pricing_priceRange_stop {
+export interface SearchProducts_paginatedProducts_edges_node_pricing_priceRange_stop {
   __typename: "TaxedMoney";
   /**
    * Amount of money including taxes.
    */
-  gross: SearchProducts_products_edges_node_pricing_priceRange_stop_gross;
+  gross: SearchProducts_paginatedProducts_edges_node_pricing_priceRange_stop_gross;
   /**
    * Amount of money without taxes.
    */
-  net: SearchProducts_products_edges_node_pricing_priceRange_stop_net;
+  net: SearchProducts_paginatedProducts_edges_node_pricing_priceRange_stop_net;
 }
 
-export interface SearchProducts_products_edges_node_pricing_priceRange {
+export interface SearchProducts_paginatedProducts_edges_node_pricing_priceRange {
   __typename: "TaxedMoneyRange";
   /**
    * Lower bound of a price range.
    */
-  start: SearchProducts_products_edges_node_pricing_priceRange_start | null;
+  start: SearchProducts_paginatedProducts_edges_node_pricing_priceRange_start | null;
   /**
    * Upper bound of a price range.
    */
-  stop: SearchProducts_products_edges_node_pricing_priceRange_stop | null;
+  stop: SearchProducts_paginatedProducts_edges_node_pricing_priceRange_stop | null;
 }
 
-export interface SearchProducts_products_edges_node_pricing {
+export interface SearchProducts_paginatedProducts_edges_node_pricing {
   __typename: "ProductPricingInfo";
   /**
    * Whether it is in sale or not.
@@ -217,14 +217,14 @@ export interface SearchProducts_products_edges_node_pricing {
   /**
    * The undiscounted price range of the product variants.
    */
-  priceRangeUndiscounted: SearchProducts_products_edges_node_pricing_priceRangeUndiscounted | null;
+  priceRangeUndiscounted: SearchProducts_paginatedProducts_edges_node_pricing_priceRangeUndiscounted | null;
   /**
    * The discounted price range of the product variants.
    */
-  priceRange: SearchProducts_products_edges_node_pricing_priceRange | null;
+  priceRange: SearchProducts_paginatedProducts_edges_node_pricing_priceRange | null;
 }
 
-export interface SearchProducts_products_edges_node_attributes_attribute {
+export interface SearchProducts_paginatedProducts_edges_node_attributes_attribute {
   __typename: "Attribute";
   /**
    * The ID of the object.
@@ -236,7 +236,7 @@ export interface SearchProducts_products_edges_node_attributes_attribute {
   name: string | null;
 }
 
-export interface SearchProducts_products_edges_node_attributes_values {
+export interface SearchProducts_paginatedProducts_edges_node_attributes_values {
   __typename: "AttributeValue";
   /**
    * The ID of the object.
@@ -252,19 +252,19 @@ export interface SearchProducts_products_edges_node_attributes_values {
   value: string | null;
 }
 
-export interface SearchProducts_products_edges_node_attributes {
+export interface SearchProducts_paginatedProducts_edges_node_attributes {
   __typename: "SelectedAttribute";
   /**
    * Name of an attribute displayed in the interface.
    */
-  attribute: SearchProducts_products_edges_node_attributes_attribute;
+  attribute: SearchProducts_paginatedProducts_edges_node_attributes_attribute;
   /**
    * Values of an attribute.
    */
-  values: (SearchProducts_products_edges_node_attributes_values | null)[];
+  values: (SearchProducts_paginatedProducts_edges_node_attributes_values | null)[];
 }
 
-export interface SearchProducts_products_edges_node_thumbnail {
+export interface SearchProducts_paginatedProducts_edges_node_thumbnail {
   __typename: "Image";
   /**
    * The URL of the image.
@@ -276,7 +276,7 @@ export interface SearchProducts_products_edges_node_thumbnail {
   alt: string | null;
 }
 
-export interface SearchProducts_products_edges_node_thumbnail2x {
+export interface SearchProducts_paginatedProducts_edges_node_thumbnail2x {
   __typename: "Image";
   /**
    * The URL of the image.
@@ -284,7 +284,7 @@ export interface SearchProducts_products_edges_node_thumbnail2x {
   url: string;
 }
 
-export interface SearchProducts_products_edges_node_category {
+export interface SearchProducts_paginatedProducts_edges_node_category {
   __typename: "Category";
   /**
    * The ID of the object.
@@ -293,7 +293,7 @@ export interface SearchProducts_products_edges_node_category {
   name: string;
 }
 
-export interface SearchProducts_products_edges_node_variants_images {
+export interface SearchProducts_paginatedProducts_edges_node_variants_images {
   __typename: "ProductImage";
   /**
    * The ID of the object.
@@ -306,7 +306,7 @@ export interface SearchProducts_products_edges_node_variants_images {
   alt: string;
 }
 
-export interface SearchProducts_products_edges_node_variants_pricing_priceUndiscounted_gross {
+export interface SearchProducts_paginatedProducts_edges_node_variants_pricing_priceUndiscounted_gross {
   __typename: "Money";
   /**
    * Amount of money.
@@ -322,7 +322,7 @@ export interface SearchProducts_products_edges_node_variants_pricing_priceUndisc
   culture: string;
 }
 
-export interface SearchProducts_products_edges_node_variants_pricing_priceUndiscounted_net {
+export interface SearchProducts_paginatedProducts_edges_node_variants_pricing_priceUndiscounted_net {
   __typename: "Money";
   /**
    * Amount of money.
@@ -338,19 +338,19 @@ export interface SearchProducts_products_edges_node_variants_pricing_priceUndisc
   culture: string;
 }
 
-export interface SearchProducts_products_edges_node_variants_pricing_priceUndiscounted {
+export interface SearchProducts_paginatedProducts_edges_node_variants_pricing_priceUndiscounted {
   __typename: "TaxedMoney";
   /**
    * Amount of money including taxes.
    */
-  gross: SearchProducts_products_edges_node_variants_pricing_priceUndiscounted_gross;
+  gross: SearchProducts_paginatedProducts_edges_node_variants_pricing_priceUndiscounted_gross;
   /**
    * Amount of money without taxes.
    */
-  net: SearchProducts_products_edges_node_variants_pricing_priceUndiscounted_net;
+  net: SearchProducts_paginatedProducts_edges_node_variants_pricing_priceUndiscounted_net;
 }
 
-export interface SearchProducts_products_edges_node_variants_pricing_price_gross {
+export interface SearchProducts_paginatedProducts_edges_node_variants_pricing_price_gross {
   __typename: "Money";
   /**
    * Amount of money.
@@ -366,7 +366,7 @@ export interface SearchProducts_products_edges_node_variants_pricing_price_gross
   culture: string;
 }
 
-export interface SearchProducts_products_edges_node_variants_pricing_price_net {
+export interface SearchProducts_paginatedProducts_edges_node_variants_pricing_price_net {
   __typename: "Money";
   /**
    * Amount of money.
@@ -382,19 +382,19 @@ export interface SearchProducts_products_edges_node_variants_pricing_price_net {
   culture: string;
 }
 
-export interface SearchProducts_products_edges_node_variants_pricing_price {
+export interface SearchProducts_paginatedProducts_edges_node_variants_pricing_price {
   __typename: "TaxedMoney";
   /**
    * Amount of money including taxes.
    */
-  gross: SearchProducts_products_edges_node_variants_pricing_price_gross;
+  gross: SearchProducts_paginatedProducts_edges_node_variants_pricing_price_gross;
   /**
    * Amount of money without taxes.
    */
-  net: SearchProducts_products_edges_node_variants_pricing_price_net;
+  net: SearchProducts_paginatedProducts_edges_node_variants_pricing_price_net;
 }
 
-export interface SearchProducts_products_edges_node_variants_pricing {
+export interface SearchProducts_paginatedProducts_edges_node_variants_pricing {
   __typename: "VariantPricingInfo";
   /**
    * Whether it is in sale or not.
@@ -403,14 +403,14 @@ export interface SearchProducts_products_edges_node_variants_pricing {
   /**
    * The price without any discount.
    */
-  priceUndiscounted: SearchProducts_products_edges_node_variants_pricing_priceUndiscounted | null;
+  priceUndiscounted: SearchProducts_paginatedProducts_edges_node_variants_pricing_priceUndiscounted | null;
   /**
    * The price, with any discount subtracted.
    */
-  price: SearchProducts_products_edges_node_variants_pricing_price | null;
+  price: SearchProducts_paginatedProducts_edges_node_variants_pricing_price | null;
 }
 
-export interface SearchProducts_products_edges_node_variants {
+export interface SearchProducts_paginatedProducts_edges_node_variants {
   __typename: "ProductVariant";
   /**
    * The ID of the object.
@@ -425,19 +425,19 @@ export interface SearchProducts_products_edges_node_variants {
   /**
    * List of images for the product variant.
    */
-  images: (SearchProducts_products_edges_node_variants_images | null)[] | null;
+  images: (SearchProducts_paginatedProducts_edges_node_variants_images | null)[] | null;
   /**
    * Lists the storefront variant's pricing, the current price and discounts, only meant for displaying.
    */
-  pricing: SearchProducts_products_edges_node_variants_pricing | null;
+  pricing: SearchProducts_paginatedProducts_edges_node_variants_pricing | null;
 }
 
-export interface SearchProducts_products_edges_node {
+export interface SearchProducts_paginatedProducts_edges_node {
   __typename: "Product";
   /**
    * Lists the storefront product's pricing, the current price and discounts, only meant for displaying.
    */
-  pricing: SearchProducts_products_edges_node_pricing | null;
+  pricing: SearchProducts_paginatedProducts_edges_node_pricing | null;
   /**
    * The ID of the object.
    */
@@ -446,31 +446,31 @@ export interface SearchProducts_products_edges_node {
   /**
    * List of attributes assigned to this product.
    */
-  attributes: SearchProducts_products_edges_node_attributes[];
+  attributes: SearchProducts_paginatedProducts_edges_node_attributes[];
   /**
    * The main thumbnail for a product.
    */
-  thumbnail: SearchProducts_products_edges_node_thumbnail | null;
+  thumbnail: SearchProducts_paginatedProducts_edges_node_thumbnail | null;
   /**
    * The main thumbnail for a product.
    */
-  thumbnail2x: SearchProducts_products_edges_node_thumbnail2x | null;
-  category: SearchProducts_products_edges_node_category | null;
+  thumbnail2x: SearchProducts_paginatedProducts_edges_node_thumbnail2x | null;
+  category: SearchProducts_paginatedProducts_edges_node_category | null;
   /**
    * List of variants for the product.
    */
-  variants: (SearchProducts_products_edges_node_variants | null)[] | null;
+  variants: (SearchProducts_paginatedProducts_edges_node_variants | null)[] | null;
 }
 
-export interface SearchProducts_products_edges {
+export interface SearchProducts_paginatedProducts_edges {
   __typename: "ProductCountableEdge";
   /**
    * The item at the end of the edge.
    */
-  node: SearchProducts_products_edges_node;
+  node: SearchProducts_paginatedProducts_edges_node;
 }
 
-export interface SearchProducts_products_pageInfo {
+export interface SearchProducts_paginatedProducts_pageInfo {
   __typename: "PageInfo";
   /**
    * When paginating forwards, the cursor to continue.
@@ -482,17 +482,17 @@ export interface SearchProducts_products_pageInfo {
   hasNextPage: boolean;
 }
 
-export interface SearchProducts_products {
+export interface SearchProducts_paginatedProducts {
   __typename: "ProductCountableConnection";
   /**
    * A total count of items in the collection.
    */
   totalCount: number | null;
-  edges: SearchProducts_products_edges[];
+  edges: SearchProducts_paginatedProducts_edges[];
   /**
    * Pagination data for this connection.
    */
-  pageInfo: SearchProducts_products_pageInfo;
+  pageInfo: SearchProducts_paginatedProducts_pageInfo;
 }
 
 export interface SearchProducts_attributes_edges_node_values {
@@ -549,10 +549,7 @@ export interface SearchProducts_attributes {
 }
 
 export interface SearchProducts {
-  /**
-   * List of the shop's products.
-   */
-  products: SearchProducts_products | null;
+  paginatedProducts: SearchProducts_paginatedProducts | null;
   /**
    * List of the shop's attributes.
    */
@@ -563,7 +560,9 @@ export interface SearchProductsVariables {
   query: string;
   attributes?: (AttributeInput | null)[] | null;
   pageSize?: number | null;
+  page?: number | null;
   sortBy?: ProductOrder | null;
-  after?: string | null;
+  priceLte?: number | null;
+  priceGte?: number | null;
   districtId?: string | null;
 }

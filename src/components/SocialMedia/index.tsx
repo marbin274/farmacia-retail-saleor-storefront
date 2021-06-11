@@ -16,6 +16,7 @@ const SocialMedia: React.FC = () => {
               ariaLabel: media.ariaLabel,
               href: media.href,
               path: media.path,
+              rel:media.rel,
             }}
           />
         )}

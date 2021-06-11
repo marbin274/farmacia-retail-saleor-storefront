@@ -10,8 +10,8 @@ import {
   SecondaryMenu_shop_navigation_secondary_items,
   SecondaryMenu_shop_navigation_secondary_items_children,
 } from "../Footer/gqlTypes/SecondaryMenu";
-import { MainMenu_shop_navigation_main_items } from "../MainMenu/gqlTypes/MainMenu";
-import { MainMenuSubItem } from "../MainMenu/gqlTypes/MainMenuSubItem";
+import { MainMenu_shop_navigation_main_items } from "@temp/components/MainMenu/gqlTypes/MainMenu";
+import { MainMenuSubItem } from "@temp/components/MainMenu/gqlTypes/MainMenuSubItem";
 import * as S from "./styles";
 
 export interface NavLinkProps
@@ -22,16 +22,30 @@ export interface NavLinkProps
     | SecondaryMenu_shop_navigation_secondary_items
     | SecondaryMenu_shop_navigation_secondary_items_children;
 }
- const NavLinkComponent: React.FC<NavLinkProps & RouteComponentProps> = ({ item, match, ...props }) => {
+const NavLinkComponent: React.FC<NavLinkProps & RouteComponentProps> = ({
+  item,
+  match,
+  ...props
+}) => {
   const { name, url, category, collection, page } = item;
   const link = (url: string) => {
     const isActive = window.location.pathname === url;
-    return <Link to={url} {...props}>
-      <S.NavActive isActive={isActive}>{name} </S.NavActive>
-    </Link>
+    return (
+      <Link to={url} {...props}>
+        <S.NavActive isActive={isActive}>{name} </S.NavActive>
+      </Link>
+    );
   };
 
   if (url) {
+    if (name === "Libro de reclamaciones" || name === "Derechos ARCO") {
+      return (
+        <a href={url} {...props} rel="noopener nofollow">
+          {name}
+        </a>
+      );
+    }
+
     return (
       <a href={url} {...props}>
         {name}
@@ -48,4 +62,4 @@ export interface NavLinkProps
   return <span {...props}>{name}</span>;
 };
 
-export const  NavLink = withRouter(NavLinkComponent);
+export const NavLink = withRouter(NavLinkComponent);

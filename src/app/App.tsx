@@ -3,11 +3,13 @@ import { ItemsNotification } from "@temp/@next/components/atoms/ItemsNotificatio
 import { AddressGeoModal } from "@temp/@next/components/molecules/AddressGeoModal/AddressGeoModal";
 import { useDistrictSelected } from "@temp/@next/hooks/useDistrictSelected";
 import { useUpdateCartLines } from "@temp/@next/hooks/useUpdateCartLines";
+import { SearchNetworkResult } from "@temp/components/OverlayManager/Search";
 import es from "date-fns/locale/es";
 import React from "react";
 import { registerLocale } from "react-datepicker";
-import { Footer, MainMenu, MetaConsumer, OverlayManager } from "../components";
+import { Footer, MetaConsumer, OverlayManager } from "../components";
 import "../globalStyles/scss/index.scss";
+import { Header } from "./Header";
 import { Routes } from "./routes";
 
 registerLocale("es", es);
@@ -36,10 +38,9 @@ const App: React.FC = () => {
       <ItemsNotification />
       <Alert />
       <AddressGeoModal />
+      <SearchNetworkResult />
       <MetaConsumer />
-      <header>
-        <MainMenu />
-      </header>
+      <Header />
       <Routes />
       <Footer />
       <OverlayManager />

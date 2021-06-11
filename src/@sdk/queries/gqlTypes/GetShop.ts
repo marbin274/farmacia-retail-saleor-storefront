@@ -6,6 +6,15 @@
 // GraphQL query operation: GetShop
 // ====================================================
 
+export interface GetShop_shop_availableDistricts_warehouse {
+  __typename: "Warehouse";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+}
+
 export interface GetShop_shop_availableDistricts {
   __typename: "District";
   /**
@@ -15,6 +24,7 @@ export interface GetShop_shop_availableDistricts {
   isActive: boolean;
   isDefault: boolean | null;
   name: string;
+  warehouse: GetShop_shop_availableDistricts_warehouse | null;
 }
 
 export interface GetShop_shop_defaultCountry {

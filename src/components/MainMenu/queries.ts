@@ -19,11 +19,11 @@ export const menuCategoryChildrenField = gql`
   ${menuCategoryBasicFieldCategory}
   fragment MenuCategoryChildrenField on Category{
     ...MenuCategoryBasicFieldCategory
-    children(first: 5){
+    children(first: 100){
       edges{
         node{
           ...MenuCategoryBasicFieldCategory
-          children(first: 5){
+          children(first: 100){
             edges{
               node{
                 ...MenuCategoryBasicFieldCategory
@@ -37,13 +37,13 @@ export const menuCategoryChildrenField = gql`
 `;
 
 export const mainMenuSubItem = gql`
-  ${menuCategoryChildrenField}
   fragment MainMenuSubItem on MenuItem {
     id
     name
     url
     category {
-      ...MenuCategoryChildrenField
+      id
+      name
     }
     collection {
       id
@@ -60,19 +60,21 @@ export const mainMenuSubItem = gql`
 
 export const mainMenu = gql`  
   ${mainMenuSubItem}
+  ${menuCategoryChildrenField}
   query MainMenu {
+    categories (first: 100, level: 0){
+      edges{
+        node{
+          ...MenuCategoryChildrenField
+        }
+      }
+    }
     shop {
       navigation {
         main {
           id
           items {
             ...MainMenuSubItem
-            children {
-              ...MainMenuSubItem
-              children {
-                ...MainMenuSubItem
-              }
-            }
           }
         }
       }

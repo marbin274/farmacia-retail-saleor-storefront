@@ -157,6 +157,7 @@ export interface ProductVariantFields {
    */
   id: string;
   sku: string;
+  gtin: string | null;
   name: string;
   /**
    * Quantity of a product available for sale in one checkout.

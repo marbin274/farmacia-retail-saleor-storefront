@@ -33,6 +33,7 @@ export const productVariantFragment = gql`
   fragment ProductVariantFields on ProductVariant {
     id
     sku
+    gtin
     name
     quantityAvailable(countryCode: $countryCode)
     isAvailable

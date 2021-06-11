@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/CategoryNavigation default 1`] = `
   margin: 20px;
 }
 
-.c3 {
+.c4 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -20,16 +20,23 @@ exports[`Storyshots @components/organisms/CategoryNavigation default 1`] = `
 .c1 {
   width: 18.75rem;
   background-color: #fff;
-  padding: 1.25rem 2rem;
+  padding: 1.25rem 1rem;
   padding-top: 1.875rem;
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
 }
 
 .c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.c3 {
   font-weight: 600;
-  font-size: 14px;
 }
 
 @media (max-width:992px) {
@@ -44,14 +51,17 @@ exports[`Storyshots @components/organisms/CategoryNavigation default 1`] = `
   <nav
     className="c1"
   >
-    <p
+    <div
       className="c2"
     >
-      Categorías
-    </p>
+      <span
+        className="c3"
+      />
+    </div>
+    <hr />
   </nav>
   <div
-    className="c3"
+    className="c4"
   />
 </div>
 `;
