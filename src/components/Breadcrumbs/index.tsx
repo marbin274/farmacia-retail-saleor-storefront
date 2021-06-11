@@ -5,11 +5,11 @@ import classNames from "classnames";
 import * as React from "react";
 import Media from "react-media";
 import { Link } from "react-router-dom";
-import homeIcon from "images/home.svg";
 
 import { baseUrl } from "../../app/routes";
 import { getDBIdFromGraphqlId, slugify } from "../../core/utils";
 import { Category_category } from "../../views/Category/gqlTypes/Category";
+import { HomeIcon, NextIcon } from "@farmacia-retail/farmauna-components";
 
 export interface Breadcrumb {
   value: string;
@@ -63,12 +63,12 @@ const Breadcrumbs: React.FC<IBreadcrumbProps> = ({
         <ul className={classNames("breadcrumbs", className)}>
           <li>
             <Link to={baseUrl}>
-              {showHomeIcon ? (
-                <img src={homeIcon} alt="" className="breadcrumbs__home-icon" />
-              ) : (
-                "Inicio"
+              {showHomeIcon && (
+                <HomeIcon size={20} className="breadcrumbs__home-icon" />
               )}
+              <span className="breadcrumbs__home_title">Inicio</span>
             </Link>
+            <NextIcon size={10} className="breadcrumbs__next-icon" />
           </li>
           {breadcrumbs.map((breadcrumb, index) => (
             <li
@@ -78,6 +78,9 @@ const Breadcrumbs: React.FC<IBreadcrumbProps> = ({
               })}
             >
               <Link to={breadcrumb.link}>{breadcrumb.value}</Link>
+              {index < breadcrumbs.length - 1 && (
+                <NextIcon size={10} className="breadcrumbs__next-icon" />
+              )}
             </li>
           ))}
         </ul>

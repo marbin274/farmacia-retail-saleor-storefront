@@ -5,7 +5,12 @@ import { addSerializer } from "jest-specific-snapshot";
 
 jest.mock("react-dom", () => ({
   createPortal: node => node,
-  findDOMNode: () => {}
+  findDOMNode: () => {},
+}));
+
+jest.mock("@sdk/optimizelyConfig", () => ({
+  trackAddToCart: jest.fn(),
+  useAddToCartButtonVariable: () => "Agregar",
 }));
 
 jest.mock("@sdk/optimizelyConfig", () => ({
@@ -16,12 +21,12 @@ jest.mock("@sdk/optimizelyConfig", () => ({
 global.matchMedia = media => ({
   addListener: jest.fn(),
   matches: true,
-  removeListener: jest.fn()
+  removeListener: jest.fn(),
 });
 
 addSerializer(styleSheetSerializer);
 
 initStoryshots({
   framework: "react",
-  test: multiSnapshotWithOptions({})
+  test: multiSnapshotWithOptions({}),
 });

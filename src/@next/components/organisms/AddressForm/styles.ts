@@ -11,18 +11,6 @@ import {
 export const AddressForm = styled.form`
   width: 100%;
 
-  .additionals {
-    margin-top: 2rem;
-    width: 100%;
-    ${media.smallScreen`
-      width: 100%;
-    `}
-
-    a {
-      color: ${aunaInteractive};
-    }
-  }
-
   .labelValidation {
     color: ${aunaError};
     font-size: ${smallFontSize};
@@ -34,12 +22,24 @@ export const PrivacyAndPolicies = styled.div`
   margin-top: 1rem;
   margin-bottom: 1rem;
   width: 100%;
+
   > div {
     margin-bottom: 0rem;
+
+    > p {
+      margin-left: 2rem;
+      margin-top: 0.5rem;
+    }
   }
-  ${media.smallScreen`
-    width: 100%;
-  `}
+
+  a {
+    color: ${aunaInteractive};
+  }
+`;
+
+export const TreatmentPolicy = styled.div`
+  margin-top: 2rem;
+  width: 100%;
 
   a {
     color: ${aunaInteractive};
@@ -47,18 +47,24 @@ export const PrivacyAndPolicies = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  width: 100%;
 `;
 
 export const RowWithTwoCells = styled.div`
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  ${media.smallScreen`
+    grid-template-columns: 1fr;
+  `}
   & > div {
-    width: calc(50% - ${props => props.theme.spacing.fieldSpacer} / 2);
+    &:last-child {
+      ${media.smallScreen`
+        margin-top: 1.5rem;
+      `}
+    }
     ${media.smallScreen`
       width: 100%;
     `}
@@ -67,6 +73,7 @@ export const RowWithTwoCells = styled.div`
 
 export const RowWithOneCell = styled.div`
   width: 100%;
+  margin-bottom: 1.5rem;
 `;
 
 export const FieldsGroup = styled.div`

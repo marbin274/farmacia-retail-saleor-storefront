@@ -14,29 +14,34 @@ const Checkout: React.FC<IProps> = ({
   loading,
   navigation,
   checkout,
+  cartResume,
   cartSummary,
   button,
   selectedPaymentGateway,
 }: IProps) => {
-
   return (
-    <Container>
-      {loading && (
-        <S.Loader>
-          <Loader fullScreen={true} />
-        </S.Loader>
-      )}
-      <S.Wrapper>
-        <S.Navigation>{navigation}</S.Navigation>
-        <S.FormSummyContainer>
-          <S.Checkout>
-            {checkout}
-            <S.Button disabled={!checkoutId}>{button}</S.Button>
-          </S.Checkout>
-          <S.CartSummary>{cartSummary}</S.CartSummary>
-        </S.FormSummyContainer>
-      </S.Wrapper>
-    </Container>
+    <>
+      <S.Navigation>{navigation}</S.Navigation>
+      <Container>
+        {loading && (
+          <S.Loader>
+            <Loader fullScreen={true} />
+          </S.Loader>
+        )}
+        <S.Wrapper>
+          <S.FormSummyContainer>
+            <S.Checkout>
+              {checkout}
+              <S.CheckoutOptions>
+                {cartResume}
+                <S.Button disabled={!checkoutId}>{button}</S.Button>
+              </S.CheckoutOptions>
+            </S.Checkout>
+            <S.CartSummary>{cartSummary}</S.CartSummary>
+          </S.FormSummyContainer>
+        </S.Wrapper>
+      </Container>
+    </>
   );
 };
 

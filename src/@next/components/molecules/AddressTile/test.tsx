@@ -1,5 +1,4 @@
-import { IconButton } from "@components/atoms";
-import { mount, shallow } from "enzyme";
+import { render, screen, fireEvent } from '@testing-library/react';
 import "jest-styled-components";
 import React from "react";
 import { AddressTile } from ".";
@@ -35,42 +34,30 @@ const DEFAULT_PROPS = {
 
 describe("<AddressTile />", () => {
   it("exists", () => {
-    const wrapper = shallow(<AddressTile {...DEFAULT_PROPS} />);
-
-    expect(wrapper.exists()).toEqual(true);
+    render(<AddressTile {...DEFAULT_PROPS} />);
+    const addressTile = screen.getByRole("address-tile");
+    expect(addressTile).toBeTruthy();
   });
 
   it("should run onRemove function for clicking on trash button", () => {
-    const wrapper = mount(<AddressTile {...DEFAULT_PROPS} />);
-
-    wrapper
-      .find(IconButton)
-      .last()
-      .simulate("click");
-
-    expect(onRemove).toHaveBeenCalled();
+    render(<AddressTile {...DEFAULT_PROPS} />);
+    const deleteOption = screen.getByRole("delete-option");
+    fireEvent.click(deleteOption);
+    expect(onRemove).toHaveBeenCalledTimes(1);
   });
 
 
   it("should run onEdit function for clicking on edit button", () => {
-    const wrapper = mount(<AddressTile {...DEFAULT_PROPS} />);
-
-    wrapper
-      .find(IconButton)
-      .first()
-      .simulate("click");
-
-    expect(onEdit).toHaveBeenCalled();
+    render(<AddressTile {...DEFAULT_PROPS} />);
+    const editOption = screen.getByRole("edit-option");
+    fireEvent.click(editOption);
+    expect(onEdit).toHaveBeenCalledTimes(1);
   });
 
   it("should run remove setDefault method for clicking on Set default when address is default already", () => {
-    const wrapper = mount(<AddressTile {...DEFAULT_PROPS} />);
-
-    wrapper
-      .find('[role="default-address"]')
-      .first()
-      .simulate("click");
-
+    render(<AddressTile {...DEFAULT_PROPS} />);
+    const defaultAddress = screen.getByRole("default-address");
+    fireEvent.click(defaultAddress);
     expect(removeDefault).toBeCalled();
   });
 
@@ -84,26 +71,18 @@ describe("<AddressTile />", () => {
       },
     };
 
-    const wrapper = mount(<AddressTile {...DEFAULT_PROPS_NOT_DEFAULT} />);
-
-    wrapper
-      .find('[role="default-address"]')
-      .first()
-      .simulate("click");
+    render(<AddressTile {...DEFAULT_PROPS_NOT_DEFAULT} />);
+    const defaultAddress = screen.getByRole("default-address");
+    fireEvent.click(defaultAddress);
 
     expect(setDefault).toHaveBeenCalledWith("BILLING");
     expect(setDefault).toHaveBeenCalledWith("SHIPPING");
   });
 
   it("should present Default address if address is default shipping", () => {
-    const wrapper = mount(<AddressTile {...DEFAULT_PROPS} />);
-    const setDefaultAddressText = wrapper
-      .find('[role="default-address"]')
-      .first()
-      .find("span")
-      .first();
-
-    expect(getComputedStyle(setDefaultAddressText.getDOMNode()).getPropertyValue("color")).toBe("rgb(0, 176, 202)"); // aunaInteractive
+    render(<AddressTile {...DEFAULT_PROPS} />);
+    const addressStatusFlag = screen.getByRole("address-status-flag");
+    expect(addressStatusFlag.classList.contains('fa-bg-brand-01')).toBe(true)
   });
 
 });

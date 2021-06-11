@@ -1,10 +1,11 @@
 import React from "react";
 
-import { Attribute, IconButton, Tile } from "@components/atoms";
+import { Attribute, Tile } from "@components/atoms";
 
 import { usePasswordChange } from "@sdk/react";
 import { PasswordChangeForm } from "./PasswordChangeForm";
 import * as S from "./styles";
+import { Button, PencilIcon } from "@farmacia-retail/farmauna-components";
 
 export const PasswordTile: React.FC = () => {
   const [isEditing, setIsEditing] = React.useState(false);
@@ -18,15 +19,17 @@ export const PasswordTile: React.FC = () => {
   return (
     <S.TileWrapper>
       <Tile>
-        <S.Wrapper>
-          <S.Header>
+        <S.Wrapper className="wrapper_background_account">
+          <S.Header className="my_data">
             Mi contraseña
             {!isEditing && (
-              <IconButton
-                name="edit"
-                size={22}
-                onClick={() => setIsEditing(isEditing => !isEditing)}
-              />
+              <Button
+              icon={<PencilIcon />}
+              iconOnly={true}
+              size="small"
+              onClick={() => setIsEditing(isEditing => !isEditing)}
+            />
+
             )}
           </S.Header>
           <S.Content>

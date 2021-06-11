@@ -19,10 +19,8 @@ exports[`Storyshots @components/molecules/TextField default 1`] = `
 
 .c5 {
   background-color: transparent;
-  color: #9194A7;
   left: 0px;
   position: absolute;
-  font-size: 0.9rem;
   pointer-events: none;
   top: -1.5rem;
 }
@@ -42,7 +40,7 @@ exports[`Storyshots @components/molecules/TextField default 1`] = `
 
 .c2:hover {
   color: #E4E5ED;
-  border-color: #00B0CA;
+  border-color: #00BF8E;
 }
 
 .c3 {
@@ -113,7 +111,7 @@ exports[`Storyshots @components/molecules/TextField default 1`] = `
           value="Value"
         />
         <label
-          className="c5"
+          className="fa-text-gray-01 fa-text-sm c5"
           disabled={false}
         >
           Label
@@ -149,10 +147,8 @@ exports[`Storyshots @components/molecules/TextField with content left 1`] = `
 
 .c6 {
   background-color: transparent;
-  color: #9194A7;
   left: 0px;
   position: absolute;
-  font-size: 0.9rem;
   pointer-events: none;
   top: -1.5rem;
 }
@@ -172,7 +168,7 @@ exports[`Storyshots @components/molecules/TextField with content left 1`] = `
 
 .c2:hover {
   color: #E4E5ED;
-  border-color: #00B0CA;
+  border-color: #00BF8E;
 }
 
 .c3 {
@@ -261,7 +257,7 @@ exports[`Storyshots @components/molecules/TextField with content left 1`] = `
           value="Value"
         />
         <label
-          className="c6"
+          className="fa-text-gray-01 fa-text-sm c6"
           disabled={false}
         >
           Label
@@ -297,10 +293,8 @@ exports[`Storyshots @components/molecules/TextField with content right 1`] = `
 
 .c5 {
   background-color: transparent;
-  color: #9194A7;
   left: 0px;
   position: absolute;
-  font-size: 0.9rem;
   pointer-events: none;
   top: -1.5rem;
 }
@@ -320,7 +314,7 @@ exports[`Storyshots @components/molecules/TextField with content right 1`] = `
 
 .c2:hover {
   color: #E4E5ED;
-  border-color: #00B0CA;
+  border-color: #00BF8E;
 }
 
 .c6 {
@@ -402,7 +396,7 @@ exports[`Storyshots @components/molecules/TextField with content right 1`] = `
           value="Value"
         />
         <label
-          className="c5"
+          className="fa-text-gray-01 fa-text-sm c5"
           disabled={false}
         >
           Label
@@ -456,10 +450,8 @@ exports[`Storyshots @components/molecules/TextField with errors 1`] = `
 
 .c5 {
   background-color: transparent;
-  color: #9194A7;
   left: 0px;
   position: absolute;
-  font-size: 0.9rem;
   pointer-events: none;
   top: -1.5rem;
 }
@@ -550,7 +542,7 @@ exports[`Storyshots @components/molecules/TextField with errors 1`] = `
           value="Value"
         />
         <label
-          className="c5"
+          className="fa-text-gray-01 fa-text-sm c5"
           disabled={false}
         >
           Label

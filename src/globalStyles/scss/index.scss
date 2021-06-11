@@ -43,23 +43,14 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    overflow: hidden;
+    overflow-x: clip;
     & > div:first-of-type {
       flex: 1;
     }
   }
 
-  header {
-    background-color: $white;
-    position: fixed;
-    z-index: 5;
-    @media (min-width: $medium-screen) {
-      width: 100%;
-    }
-  }
-
   hr {
-    border: 0.0625rem solid #B8BCD5;
+    border: 0.0625rem solid #b8bcd5;
     border-top: none;
   }
 
@@ -159,19 +150,30 @@ body {
   letter-spacing: 0em;
   &.outStock_price {
     color: $auna-grey-out-stock;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 1rem;
   }
   &.discounted_price {
-    color: $auna-orange-on-sale;
+    color: #858699;
     span,
     p {
-      color: $auna-orange-on-sale;
+      color: #00bf8e;
+      font-size: 1.125rem;
+      font-weight: 600;
     }
+
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 1rem;
   }
   &.undiscounted_price {
     text-decoration: line-through;
     color: $auna-grey-100;
-    font-size: $base-font-size !important;
+    font-size: 0.875rem;
     font-weight: normal;
+    display: inline-block;
+    vertical-align: middle;
   }
 }
 
@@ -237,6 +239,7 @@ body {
   }
 }
 
-.category, .collection {
+.category,
+.collection {
   padding-top: 1rem;
 }

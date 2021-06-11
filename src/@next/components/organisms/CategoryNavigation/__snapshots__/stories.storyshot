@@ -18,21 +18,18 @@ exports[`Storyshots @components/organisms/CategoryNavigation default 1`] = `
 }
 
 .c1 {
-  width: 18.75rem;
+  width: 18rem;
   background-color: #fff;
-  padding: 1.25rem 1rem;
+  padding: 2rem 1rem;
   padding-top: 1.875rem;
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
+  border-radius: 16px;
 }
 
 .c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-bottom: 1rem;
-  font-size: 1.25rem;
+  font-weight: 600;
+  font-size: 16px;
+  color: #2F2C3A;
+  margin: 0 0 0.813rem 1rem;
 }
 
 .c3 {
@@ -51,13 +48,13 @@ exports[`Storyshots @components/organisms/CategoryNavigation default 1`] = `
   <nav
     className="c1"
   >
-    <div
+    <p
       className="c2"
     >
       <span
         className="c3"
       />
-    </div>
+    </p>
     <hr />
   </nav>
   <div

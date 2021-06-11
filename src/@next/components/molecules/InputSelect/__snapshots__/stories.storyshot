@@ -19,7 +19,6 @@ exports[`Storyshots @components/molecules/InputSelect default 1`] = `
 
 .c2 {
   padding-top: 1.4rem;
-  margin-bottom: 1.875rem;
 }
 
 .c5 {
@@ -28,26 +27,20 @@ exports[`Storyshots @components/molecules/InputSelect default 1`] = `
 
 .c4 {
   background-color: transparent;
-  color: #9194A7;
   left: 0px;
   position: absolute;
-  font-size: 0.9rem;
   pointer-events: none;
   top: -1.5rem;
 }
 
 .c3 {
-  fill: #00B0CA;
+  fill: #131336;
   position: absolute;
-  right: 1rem;
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-transform-origin: center center;
-  -ms-transform-origin: center center;
-  transform-origin: center center;
+  right: 0.75rem;
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+  top: 0.5rem;
 }
 
 .c1 {
@@ -68,7 +61,7 @@ exports[`Storyshots @components/molecules/InputSelect default 1`] = `
         onKeyDown={[Function]}
       >
         <div
-          className="css-d1vkk-control"
+          className="css-12edi2t-control"
           onMouseDown={[Function]}
           onTouchEnd={[Function]}
         >
@@ -140,22 +133,26 @@ exports[`Storyshots @components/molecules/InputSelect default 1`] = `
           </div>
           <div
             className="c3"
-            rotate="false"
           >
             <svg
-              height={10}
-              viewBox="0 0 32 32"
-              width={10}
+              className=" "
+              color="currentColor"
+              fill="currentColor"
+              height={16}
+              viewBox="0 0 24 24"
+              width={16}
+              xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M16 29.856l-15.999-27.712h31.999l-15.999 27.712z"
-                fill="inherit"
+                clipRule="evenodd"
+                d="M17.7071 9.82845C17.3166 10.2239 16.6834 10.2239 16.2929 9.82845L8.97604 2.42013L1.68232 9.82845C1.27857 10.21 0.645782 10.1879 0.268949 9.7791C-0.107886 9.3703 -0.0860655 8.7296 0.317686 8.34806L8.31768 0.272307C8.71163 -0.0999703 9.32607 -0.0892473 9.70711 0.296555L17.7071 8.39655C18.0976 8.79196 18.0976 9.43304 17.7071 9.82845Z"
+                fillRule="evenodd"
               />
             </svg>
           </div>
         </div>
         <label
-          className="c4"
+          className="fa-text-gray-01 fa-text-sm c4"
           disabled={false}
         >
           Country

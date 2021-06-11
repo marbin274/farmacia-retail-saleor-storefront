@@ -1,15 +1,14 @@
-import { Button } from "@app/components/atoms";
 import { IFormError } from "@app/types";
 import { joinFormikErrorsToIFormErrorsAndConvertToObjectErrors } from "@app/utils/errorsManagement";
-import { TextField } from "@components/molecules";
 import { LocalRepository } from "@temp/@sdk/repository";
-import { passwordResetUrl, resetPasswordMailSentUrl } from "@temp/app/routes";
+import { passwordResetUrl } from "@temp/app/routes";
 import { useFormik } from "formik";
 import React from "react";
 import { MutationFn } from "react-apollo";
-import { useHistory } from "react-router-dom";
 import { ResetPassword, ResetPasswordVariables } from "./gqlTypes/ResetPassword";
 import { passwordResetFormSchema } from "./passwordResetForm.schema";
+import { Button, InputField } from "@farmacia-retail/farmauna-components";
+import { ResetPasswordMailSent } from "@temp/views/Account";
 
 interface ResetPasswordFormContentProps {
     called: boolean;
@@ -26,7 +25,6 @@ const ResetPasswordFormContent: React.FC<ResetPasswordFormContentProps> = ({ cal
     const [showMessageSuccess, setShowMessageSuccess] = React.useState<boolean>(false);
     const [showMessageErrors, setShowMessageErrors] = React.useState<boolean>(false);
 
-    const history = useHistory();
     const localRepository = new LocalRepository();
 
     const { handleSubmit, handleChange, handleBlur, touched, errors: formikErrors, values } = useFormik<ResetPasswordVariables>({
@@ -43,6 +41,10 @@ const ResetPasswordFormContent: React.FC<ResetPasswordFormContentProps> = ({ cal
     }
 
     React.useEffect(() => {
+        document.querySelector<HTMLElement>('.overlay__header').style.display = 'block';
+    }, []);
+
+    React.useEffect(() => {
         if (called && !loading) {
             const hasErrors = requestErrors && requestErrors.length > 0;
             setShowMessageErrors(called && hasErrors);
@@ -54,32 +56,57 @@ const ResetPasswordFormContent: React.FC<ResetPasswordFormContentProps> = ({ cal
     React.useEffect(() => {
         if (showMessageSuccess) {
             localRepository.setResetPasswordEmail(values.email);
-            history.push(resetPasswordMailSentUrl);
+            setOpen(!open);
         }
     }, [showMessageSuccess]);
 
     const errors = joinFormikErrorsToIFormErrorsAndConvertToObjectErrors(formikErrors, requestErrors, touched, showMessageErrors);
 
-    return <form onSubmit={handleSubmit}>
-        <TextField
-            autoComplete="email"
-            placeholder="Ejemplo: juanperez@mail.com"
-            errors={errors!.email}
-            label="Correo"
-            name="email"
-            type="text"
-            value={!values?.email ? "" : values?.email}
-            onBlur={(e) => { changeShowMessages(false); handleBlur(e); }}
-            onChange={(e) => { changeShowMessages(false); handleChange(e); }}
-            inputWrapperClassname="password-reset-form__input-wrapper"
-        />
-        {children}
-        <div className="password-reset-form__button">
-            <Button type="submit" {...(loading && { disabled: true })}>
-                {loading ? "Cargando" : "Enviar instrucciones"}
-            </Button>
-        </div>
-    </form>;
+    const [open, setOpen] = React.useState<boolean>(true);
+
+    return (
+
+        <>
+            { open ? (
+                <>
+                    <p className="fa-my-6">
+                        Ingresa tu dirección de correo electrónico y te enviaremos las instrucciones para restablecer tu contraseña
+                    </p>
+                    <form onSubmit={handleSubmit}>
+
+                        <InputField
+                            autoComplete="email"
+                            placeholder="Ejemplo: juanperez@mail.com"
+                            error={!!errors?.email ? errors!.email[0].message : ''}
+                            label="Correo electrónico"
+                            name="email"
+                            type="text"
+                            value={!values?.email ? "" : values?.email}
+                            onBlur={(e) => { changeShowMessages(false); handleBlur(e); }}
+                            onChange={(e) => { changeShowMessages(false); handleChange(e); }}
+                            className="password-reset-form__input-wrapper"
+                        />
+                        {children}
+                        <div className="password-reset-form__button">
+
+                            <Button type="submit" {...(loading && { disabled: true })} variant="default">
+                                {loading ? "Cargando" : "Enviar instrucciones"}
+                            </Button>
+                        </div>
+                    </form>
+                </>
+            ) : (
+
+                <div>
+                    <ResetPasswordMailSent />
+                </div>
+            )
+            }
+        </>
+
+    )
+
+
 }
 
 export default ResetPasswordFormContent;

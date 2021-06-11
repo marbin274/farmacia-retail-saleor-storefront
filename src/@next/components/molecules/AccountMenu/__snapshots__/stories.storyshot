@@ -18,29 +18,35 @@ exports[`Storyshots @components/molecules/AccountMenu default 1`] = `
 }
 
 .c2 {
-  background-color: #f1f5f5;
+  background-color: #fff;
   height: 100%;
-  padding-left: 3rem;
-  padding-top: 2.5rem;
-  border-radius: 0.5rem;
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  box-sizing: border-box;
+  width: 20rem;
+  margin-right: 2.5rem;
 }
 
 .c3 {
   font-size: 1.5rem;
-  font-weight: 400;
+  font-weight: 600;
   text-transform: "uppercase";
-  padding-bottom: 2rem;
+  padding-bottom: 1.5rem;
 }
 
 .c4 {
   cursor: pointer;
   padding-bottom: 1.5rem;
-  color: #00B0CA;
+  color: #00BF8E;
+  font-size: 0.875rem;
+  font-weight: 500;
 }
 
 .c5 {
   cursor: pointer;
   padding-bottom: 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
 }
 
 .c1 {

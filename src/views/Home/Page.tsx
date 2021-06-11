@@ -28,10 +28,10 @@ interface IPageProps {
   subtractItemToCart: ISubtractItemToCartCallback;
 }
 
-const imageAboutAunaMobile = `${cndUrl}/media/banner_coverage/about-auna-mobile.png`;
-const imageAboutAunaDesktop = `${cndUrl}/media/banner_coverage/about-auna-desktop.png`;
-const imageConverageDistrictMobile = `${cndUrl}/media/banner_coverage/coverage-district-mobile.png`;
-const imageConverageDistrictDesktop = `${cndUrl}/media/banner_coverage/coverage-district-desktop.png`;
+const imageAboutAunaMobile = `${cndUrl}/media/banner_coverage/about-auna-mobile-new.png`;
+const imageAboutAunaDesktop = `${cndUrl}/media/banner_coverage/about-auna-desktop-new.png`;
+const imageConverageDistrictMobile = `${cndUrl}/media/banner_coverage/coverage-district-mobile-new.png`;
+const imageConverageDistrictDesktop = `${cndUrl}/media/banner_coverage/coverage-district-desktop-new.png`;
 
 const imageCoverageDistrictDesktop = `${cndUrl}/media/banner_coverage/home-banner-coverage-delivery.png`;
 const imageCoverageDistrictMobile = `${cndUrl}/media/banner_coverage/home-banner-coverage-delivery-mobile.png`;
@@ -67,6 +67,7 @@ const Page: React.FC<IPageProps> = ({
       <S.WraperOpenBanner>
         <S.TopImagesContainer>
           <S.TopImageItem
+            className="about-auna"
             imageDesktop={imageAboutAunaDesktop}
             imageMobile={imageAboutAunaMobile}
             aboutauna
@@ -75,6 +76,7 @@ const Page: React.FC<IPageProps> = ({
             }}
           />
           <S.TopImageItem
+            className="district"
             imageDesktop={imageConverageDistrictDesktop}
             imageMobile={imageConverageDistrictMobile}
             onClick={() => {
@@ -158,7 +160,7 @@ const Page: React.FC<IPageProps> = ({
           {structuredData(shop)}
         </script>
 
-        <div className="inner-container">
+        <div>
           <div className="home-page__products">
             <ProductsFeatured
               productsOnCart={productsOnCart}

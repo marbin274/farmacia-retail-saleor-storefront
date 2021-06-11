@@ -2,6 +2,7 @@ import { defaultTheme } from "@styles";
 import { mount, shallow } from "enzyme";
 import "jest-styled-components";
 import React from "react";
+import { BulletXFilledIcon } from "@farmacia-retail/farmauna-components";
 
 import { IconButton } from "@components/atoms";
 
@@ -57,12 +58,10 @@ describe("<CardHeader />", () => {
     const closeIcon = renderHeader({
       ...DEFAULT_PROPS,
       onHide,
-    }).find(IconButton);
+    }).find(BulletXFilledIcon);
 
     closeIcon.simulate("click");
-
     expect(closeIcon.exists()).toEqual(true);
-    expect(closeIcon.prop("name")).toEqual("x");
     expect(onHide).toHaveBeenCalled();
   });
 
@@ -74,16 +73,5 @@ describe("<CardHeader />", () => {
 
     expect(icon.exists()).toEqual(true);
     expect(icon.prop("name")).toEqual("edit");
-  });
-
-  it("should render border-bottom when `divider` prop is set to true", () => {
-    const header = mount(<CardHeader {...DEFAULT_PROPS} divider={true} />).find(
-      S.Header
-    );
-
-    expect(header).toHaveStyleRule(
-      "border-bottom",
-      `1px solid ${defaultTheme.colors.light}`
-    );
   });
 });

@@ -2,19 +2,19 @@ import { convertCategoryToMenuItem } from "@temp/core/utils";
 import { MainMenuSubItem } from "@temp/views/Category/gqlTypes/MainMenuSubItem";
 import classNames from "classnames";
 import * as React from "react";
-import ReactSVG from "react-svg";
 import { NavLink } from "..";
-import arrowDownImg from "../../images/arrow-down.svg";
-import arrowRightImg from "../../images/arrow-right.svg";
 import NavChildren from "./NavChildren";
+import { NextIcon, DownIcon, UpIcon } from "@farmacia-retail/farmauna-components";
+import farmatheme from "@farmatheme";
 
-export interface INavItem extends Omit<MainMenuSubItem, '__typename'> {
+export interface INavItem extends Omit<MainMenuSubItem, "__typename"> {
   children?: INavItem[] | null;
 }
 
 interface NavItemProps extends INavItem {
   arrowDirection?: arrowDirection;
   isOpen: boolean;
+  firstLevel?: boolean;
   hideOverlay(): void;
   showSubItems(itemName: INavItem, isOpen: boolean): void;
 }
@@ -26,6 +26,7 @@ const NavItem: React.FC<NavItemProps> = ({
   showSubItems,
   arrowDirection = "down",
   isOpen,
+  firstLevel = false,
   ...item
 }) => {
   const [isOpenMenu, setOpenMenu] = React.useState(isOpen);
@@ -33,8 +34,8 @@ const NavItem: React.FC<NavItemProps> = ({
   const hasSubNavigation: boolean = !!childrens.length;
 
   function openHideMenu(isOpen: boolean) {
-    setOpenMenu(!isOpen)
-    showSubItems(item, isOpenMenu)
+    setOpenMenu(!isOpen);
+    showSubItems(item, isOpenMenu);
   }
 
   return (
@@ -45,17 +46,23 @@ const NavItem: React.FC<NavItemProps> = ({
         "side-nav__menu-item--is-open": isOpenMenu,
       })}
     >
-      <div className={"side-nav__menu-item-content"}>
+      <div className={"hover:fa-bg-white side-nav__menu-item-content"}>
         <NavLink
           item={convertCategoryToMenuItem(item.id, item.name?.toLowerCase())}
           className={"side-nav__menu-item-link"}
         />
         {hasSubNavigation && (
-          <ReactSVG
-            className={"side-nav__menu-item-arrow"}
-            path={arrowDirection === "down" ? arrowDownImg : arrowRightImg}
-            onClick={() => openHideMenu(isOpenMenu)}
-          />
+          <div className={"side-nav__menu-item-arrow"}>
+            {firstLevel && (
+              <NextIcon size={16} onClick={() => openHideMenu(isOpenMenu)} color={farmatheme.theme.colors.highlight.medium} />
+            )}
+            {!firstLevel &&
+              (isOpenMenu ? (
+                <DownIcon size={16} onClick={() => openHideMenu(isOpenMenu)} color={farmatheme.theme.colors.highlight.medium} />
+              ) : (
+                <UpIcon size={16} onClick={() => openHideMenu(isOpenMenu)} color={farmatheme.theme.colors.highlight.medium} />
+              ))}
+          </div>
         )}
       </div>
       {isOpenMenu && hasSubNavigation && <NavChildren subItems={childrens} />}

@@ -13,53 +13,75 @@ $custom-breakpoint: 624px;
 }
 
 .search {
-
   @media (max-width: $medium-screen) {
     width: 100%;
   }
 
-  &__input {   
+  &__input {
+    display: flex;
+    flex-direction: column;
+
+    input {
+      width: 100%;
+    }
+    @media (min-width: $medium-screen-styled) {
+      align-items: center;
+      flex-direction: row;
+      justify-content: center;
+    }
+    @media (min-width: $medium-screen) {
+      justify-content: center;
+    }
     &--clear {
       cursor: pointer;
+      margin: auto;
+      transform: translate(0.0625rem, 0.0625rem);
     }
-
-    .input {    
-      margin: 0 auto;
-      padding: 0;
-      @media (min-width: $medium-screen-styled) {
-        width: 36rem;
+    .input {
+      @media (min-width: $medium-screen) {
+        width: 26.25rem;
       }
-      input,
+      input {
+        color: #2f2c3a;
+      }
+
       input::placeholder {
-        font-size: 1rem;
+        font-size: 0.875rem;
+        line-height: 100%;
+        color: #908ba7;
       }
 
       &__content {
         @extend .size;
+        background-color: #ffffff;
         align-items: center;
-        border: 0.0625rem solid $auna-interactive;
-        border-radius: 0.5rem;
+        border: 0.0625rem solid $darkGreen3;
+        border-radius: 2.5rem;
         box-shadow: none;
         display: flex;
         justify-content: center;
-        padding: 0;
+        padding-right: 0.5rem;
       }
 
       &__inner-icon {
-        background-color: $auna-interactive;
-        border-top-right-radius: 0.3125rem;
-        border-bottom-right-radius: 0.3125rem;
-        padding: 0.625rem 1rem;
-        svg * {
+        background-color: $darkGreen3;
+        border-radius: 50%;
+        display: flex;
+        width: 2rem;
+        height: 2rem;
+
+        svg {
+          margin: auto;
           fill: $white;
         }
       }
 
       &__field {
+        background-color: transparent;
         border: none;
         box-shadow: none;
         flex: 1;
-        padding: 0.75rem 1rem;;
+        padding: 0.75rem 1rem;
         margin: 0;
         border-radius: 0.5rem;
 
@@ -70,7 +92,6 @@ $custom-breakpoint: 624px;
         &:focus {
           box-shadow: none;
         }
-
       }
     }
   }
@@ -78,17 +99,18 @@ $custom-breakpoint: 624px;
   &__products {
     background: $auna-grey-20;
     overflow: auto;
-    padding: 20px 0;
+    padding: 50px 0;
     position: fixed;
+    top: 100px;
     right: 0;
-    top: 9rem;
+    top: 12.9rem;
     transition: 300ms;
     height: calc(100vh - 3rem);
     width: 100vw;
     z-index: 4;
 
     @media (min-width: $medium-screen) {
-      top: 4.7rem;
+      top: 9.7rem;
     }
 
     &--expanded {
@@ -103,6 +125,10 @@ $custom-breakpoint: 624px;
     &--not-found {
       @extend .size;
       padding: 14px;
+      > p {
+        text-align: center;
+        color: #908ba7;
+      }
 
       div {
         text-align: center;
@@ -120,19 +146,40 @@ $custom-breakpoint: 624px;
       margin-bottom: 24px;
       color: $auna-black;
       font-weight: 300;
-      text-align: center;
+      text-align: left;
+      max-width: 645px;
+
+      h4 {
+        color: #2f2c3a;
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 24px;
+
+        @media (max-width: $medium-screen) {
+          font-size: 1.25rem;
+        }
+      }
+      p {
+        font-size: 16px;
+        color: #23212b;
+      }
     }
     &__item {
       @extend .size;
       background-color: $white;
-      border-radius: 6px;
-      padding: 8px 36px;
+      border-radius: 24px;
+      padding: 32px;
       border: 1px solid $auna-complementary1;
-      margin-bottom: 2.65px;
+      margin: 0 0 1.5rem 0;
+      max-width: none;
+      height: 8.875rem;
+      position: relative;
+      overflow: hidden;
 
-      @media (max-width: $custom-breakpoint) {
-        padding: 10px 15px;
-        margin-bottom: 10px;
+      @media (max-width: $medium-screen) {
+        width: 100%;
+        height: auto;
+        padding: 32px 23px;
       }
 
       &:hover {
@@ -165,7 +212,7 @@ $custom-breakpoint: 624px;
         &.actions {
           align-items: center;
           flex-direction: column;
-          justify-content: center;
+          justify-content: flex-end;
           @media (max-width: $small-screen) {
             flex-direction: row;
             justify-content: space-between;
@@ -179,43 +226,56 @@ $custom-breakpoint: 624px;
               span {
                 font-size: $small-font-size;
               }
-            }
-          }
-          .item-action {
-            width: 100%;
-            padding: 0.69rem 1.32rem;
-            span {
-              font-size: $price-font-size;
+
+              @media (max-width: $small-screen) {
+                width: 6.5rem;
+              }
             }
           }
         }
         > div {
           display: flex;
+
+          @media (max-width: $small-screen) {
+            margin-right: -0.625rem;
+          }
         }
         &__name {
           color: $base-font-color;
           display: flex;
           flex-direction: column;
           justify-content: center;
+          font-weight: 600;
 
           > span {
             color: #727171;
             font-size: 12px;
+            padding: 5px 0;
+            position: relative;
 
-            @media (max-width: $custom-breakpoint) {
-              color: $white;
+            @media (max-width: $medium-screen) {
+              padding: 15px 0;
             }
+          }
+
+          @media (max-width: $medium-screen) {
+            margin-right: 0;
           }
         }
 
         &__price {
-          align-items: center;
-          display: flex;
-          color: $auna-black;
-          margin-bottom: 10px;
-          @media (max-width: $custom-breakpoint) {
+          color: #00bf8e;
+          font-weight: 600;
+          font-size: 20px;
+          float: right;
+          @media (max-width: $medium-screen) {
             font-size: 12px;
             margin-bottom: 0px;
+            float: left;
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            left: 0;
           }
 
           > span {
@@ -223,8 +283,9 @@ $custom-breakpoint: 624px;
             font-weight: $bold-font-weight;
             margin-left: 6px;
 
-            @media (max-width: $custom-breakpoint) {
-              font-size: $small-font-size;
+            @media (max-width: $medium-screen) {
+              font-size: 1.2rem;
+              margin: 0;
             }
           }
         }
@@ -243,6 +304,19 @@ $custom-breakpoint: 624px;
           }
           @media (max-width: $small-screen) {
             margin-left: 4rem;
+            justify-content: flex-end;
+          }
+        }
+        .title_price {
+          font-size: 12px;
+          font-weight: 500;
+          color: #aca8bd;
+          display: inline-block;
+          vertical-align: middle;
+          margin: -2px 16px 0 0;
+
+          @media (max-width: $medium-screen) {
+            margin: 0;
           }
         }
       }
@@ -253,9 +327,10 @@ $custom-breakpoint: 624px;
         display: inline-block;
         margin-right: 34px;
         vertical-align: top;
+        transform: scale(1.8);
 
-        @media (max-width: $custom-breakpoint) {
-          margin-right: 12px;
+        @media (max-width: $medium-screen) {
+          margin-right: 1.563rem;
         }
       }
 
@@ -293,26 +368,35 @@ $custom-breakpoint: 624px;
 
     &__list {
       @media (max-width: $small-screen) {
-        padding-bottom: 20rem;
+        padding-bottom: 10rem;
         padding-top: 1rem;
       }
       padding-bottom: 15.625rem;
+      max-width: 645px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: $medium-screen) {
+      padding: 1.25rem;
+      top: 9.55rem;
     }
 
     .show_more_products {
       position: fixed;
       bottom: 0;
+      left: 0;
       width: 100%;
       text-align: center;
       padding: 1rem;
       z-index: 1000;
-      background-color: $auna-grey-20;
-  
+      background-color: #ffffff;
+      border-bottom-left-radius: 35px;
+      border-bottom-right-radius: 35px;
+
       span {
         font-size: $base-font-size;
         font-weight: $font-weight-light;
       }
     }
-
-  }  
+  }
 }

@@ -65,7 +65,7 @@ const View: React.FC<RouteComponentProps<{ id: string }>> = ({ match }) => {
       loaderFull
       variables={{
         id: getGraphqlIdFromDBId(match.params.id, "Product"),
-        districtId: districtSelected.code,
+        districtId: districtSelected.id,
       }}
       errorPolicy="all"
       key={match.params.id}

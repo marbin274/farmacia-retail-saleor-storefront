@@ -2,13 +2,13 @@ import { media, styled } from "@styles";
 export const Container = styled.div`
 width: ${props => `${props.theme.container.width}px`};
   max-width: 100vw;
-  height: 526px;
   margin: 0 auto;
-  padding: 0 ${props => props.theme.spacing.spacer};
-  margin-bottom: 0.625rem;
   ${media.largeScreen`
     width: 100%;      
   `}
+  ${media.smallScreen`
+    height: auto;      
+`}
 `;
 
 export const WraperOpenBanner = styled.div`

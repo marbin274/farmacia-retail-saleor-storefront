@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
+  background-color: #F7F6F8;
 `;
 
 export const GeneralError = styled.p`

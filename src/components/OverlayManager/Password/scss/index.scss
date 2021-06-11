@@ -1,11 +1,12 @@
 @import "../../../../globalStyles/scss/variables.scss";
 
 .password-reset {
-  width: 25rem;
+  width:100%;
   max-width: 100vw;
+  padding: 3.2rem 0 3.2rem 0;
 
   &__content {
-    padding: $spacer;
+    padding-top: 0.25rem;
     &__image {
       text-align: center;
     }
@@ -14,14 +15,18 @@
 .overlay {
   &__header {
     &-text {
-      font-size: $base-font-size;
       font-style: normal;
-      font-weight: $font-weight-bold;
+      font-weight: $bold-font-weight;
       line-height: $h3-font-size;
       letter-spacing: 0em;
-      text-align: center;
       color: $auna-black;
       width: 100%;
+      text-align: center;
+      font-size: 1.5rem;
+
+      .forgot-password {
+        text-align: center;
+      }
     }
   }
 }

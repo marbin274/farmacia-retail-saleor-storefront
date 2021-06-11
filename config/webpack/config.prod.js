@@ -11,8 +11,12 @@ module.exports = ({ sourceDir, distDir }) => ({
           MiniCssExtractPlugin.loader,
           {
             loader: "css-loader",
-            options: { sourceMap: true },
+            options: { 
+              sourceMap: true,  
+              importLoaders: 1  
+            },
           },
+          "postcss-loader",
           { loader: "sass-loader" },
         ],
       },

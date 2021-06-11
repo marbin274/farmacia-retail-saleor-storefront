@@ -1,12 +1,9 @@
-import { Address, IconButton, Tile } from "@components/atoms";
-import starIcon from "images/auna/star.svg";
-import starActiveIcon from "images/auna/starActive.svg";
+import { Address, Tile } from "@components/atoms";
+import { PencilIcon, StarFilledIcon, TrashIcon } from "@farmacia-retail/farmauna-components";
+import farmatheme from "@farmatheme";
 import React from "react";
-import ReactSVG from "react-svg";
 import * as S from "./styles";
 import { IProps } from "./types";
-
-
 
 export const AddressTile: React.FC<IProps> = ({
   onEdit,
@@ -15,50 +12,64 @@ export const AddressTile: React.FC<IProps> = ({
   removeDefault,
   address,
 }: IProps) => {
-
-
-  const isDefault: boolean = React.useMemo(() => address.isDefaultShippingAddress, [address]);
+  const isDefault: boolean = React.useMemo(
+    () => address.isDefaultShippingAddress,
+    [address]
+  );
   const handleOnchangeDefaultAddress = () => {
-    if (isDefault) { 
+    if (isDefault) {
       removeDefault();
-      return; 
+      return;
     }
     setDefault("BILLING");
     setDefault("SHIPPING");
-  }
-
+  };
 
   const header = (
-    <S.HeaderContent>
+    <S.HeaderContent role="address-tile">
       <S.SelectDefaultAddress
         role="default-address"
         isDefault={isDefault}
-        onClick={handleOnchangeDefaultAddress}>
-        <S.SelectIcon>
-          <ReactSVG path={isDefault ? starActiveIcon : starIcon} />
-        </S.SelectIcon>
-        <span>Usar como dirección principal</span>
+        onClick={handleOnchangeDefaultAddress}
+      >
+        <div
+          role="address-status-flag"
+          className={`fa-h-6 fa-w-6 fa-flex fa-items-center fa-justify-center fa-rounded ${
+            isDefault ? "fa-bg-brand-01" : "fa-bg-neutral-medium"
+          }`}
+        >
+          <StarFilledIcon
+            size={12}
+            color={farmatheme.theme.colors.neutral.lightest}
+          />
+        </div>
+        <span className="fa-text-xs fa-font-semibold">
+          Usar como dirección principal
+        </span>
       </S.SelectDefaultAddress>
+      <div className="fa-flex fa-items-center ">
+        <div
+          role="edit-option"
+          onClick={onEdit}
+          className="hover:fa-bg-primary-light fa-rounded-lg fa-cursor-pointer fa-bg-primary-lightest fa-w-6 fa-h-6 fa-flex fa-items-center fa-justify-center"
+        >
+          <PencilIcon size={13} color={farmatheme.theme.colors.green} />
+        </div>
+        <div
+          role="delete-option"
+          onClick={onRemove}
+          className="hover:fa-bg-primary-light fa-rounded-lg fa-cursor-pointer fa-bg-primary-lightest fa-w-6 fa-h-6 fa-flex fa-items-center fa-justify-center fa-ml-2 "
+        >
+          <TrashIcon size={13} color={farmatheme.theme.colors.green} />
+        </div>
+      </div>
     </S.HeaderContent>
-  );
-  const footer = (
-    <S.FooterContent>
-      <div>
-        <IconButton name="edit" onClick={onEdit} size={22} />
-      </div>
-      <div>
-        <IconButton name="trash" onClick={onRemove} size={22} />
-      </div>
-    </S.FooterContent>
   );
 
   const content = <Address {...address} />;
   return (
     <S.Wrapper>
-      <Tile
-        footer={footer}
-        header={header}
-      >{content}</Tile>
+      <Tile header={header}>{content}</Tile>
     </S.Wrapper>
   );
 };

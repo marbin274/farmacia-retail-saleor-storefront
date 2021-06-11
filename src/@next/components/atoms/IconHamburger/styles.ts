@@ -13,9 +13,10 @@ const div = css`
 export const Wrapper = styled.label<{open:boolean}>`    
     cursor: pointer;
     display: block;
-    margin: 0.2rem;
-    height: 0.875rem;
-    width: 0.875rem;
+    height: 1rem;
+    width: 1rem;
+    margin-top: 0.05rem;
+    margin-left: 0.05rem;
     div {
         ${div}
     }
@@ -24,14 +25,15 @@ export const Wrapper = styled.label<{open:boolean}>`
 export const FirstLine = styled.div<{open:boolean}>`
     transform-origin: 0;
     ${({open})=>open && `
-        top: -0.063.rem;
+        top: -0.08rem;
         transform: rotateZ(45deg);
+        left: 0.08rem;
     `}
 `;
 
 export const SecondLine = styled.div<{open:boolean}>`   
     right: 0;
-    width: 0.875rem;
+    width: 1rem;
     ${({open})=>open && `
         right: 0.188rem;
         transform: rotateZ(-45deg);
@@ -41,7 +43,7 @@ export const SecondLine = styled.div<{open:boolean}>`
 
 export const ThirdLine = styled.div<{open:boolean}>`
     margin-bottom: 0rem !important;
-    transform-origin: 0.875rem;
+    transform-origin: 1rem;
     ${({open})=>open && `
     top: 0.063rem;
         transform: rotateZ(45deg);

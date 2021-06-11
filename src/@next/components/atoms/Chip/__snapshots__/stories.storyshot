@@ -25,7 +25,7 @@ exports[`Storyshots @components/atoms/Chip default 1`] = `
   transition: 0.3s;
   outline: none;
   border-radius: 2rem;
-  color: #00B0CA;
+  color: #00BF8E;
   width: auto;
   display: inline-block;
   cursor: default;
@@ -48,7 +48,7 @@ exports[`Storyshots @components/atoms/Chip default 1`] = `
 }
 
 .c3 > svg > path {
-  fill: #00B0CA;
+  fill: #00BF8E;
 }
 
 .c3:hover {
@@ -56,7 +56,7 @@ exports[`Storyshots @components/atoms/Chip default 1`] = `
 }
 
 .c3:hover > svg > path {
-  fill: #00B0CA;
+  fill: #00BF8E;
 }
 
 .c3:active {

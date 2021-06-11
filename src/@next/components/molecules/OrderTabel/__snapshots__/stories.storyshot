@@ -6,7 +6,7 @@ exports[`Storyshots @components/molecules/OrderTabel default 1`] = `
   margin: 20px;
 }
 
-.c13 {
+.c11 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -15,51 +15,6 @@ exports[`Storyshots @components/molecules/OrderTabel default 1`] = `
   left: 0;
   pointer-events: none;
   box-sizing: border-box;
-}
-
-.c11 {
-  background-color: #00B0CA;
-  padding: 0.1rem 2rem;
-  border: none;
-  border-radius: 40px;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-  outline: none;
-  cursor: pointer;
-  color: #fff;
-  width: auto;
-}
-
-.c11:hover {
-  background-color: #0BC1DC;
-  color: #fff;
-}
-
-.c11:active {
-  background-color: #029FB7;
-  box-shadow: -3px 3px 14px 0px rgba(129,67,67,0.2);
-}
-
-.c11:disabled {
-  background-color: #F1F2F7;
-  color: #B8BCD5;
-  cursor: default;
-}
-
-.c11:disabled,
-.c11:disabled:hover {
-  cursor: default;
-}
-
-.c12 {
-  display: inline-block;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.25rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
 .c9 {
@@ -99,12 +54,13 @@ exports[`Storyshots @components/molecules/OrderTabel default 1`] = `
   height: 5rem;
   cursor: pointer;
   font-size: 0.875rem;
-  border-top: 1px solid #eaeaea;
+  border-radius: 2.5rem;
+  -webkit-transition: background 0.2s ease-in-out;
+  transition: background 0.2s ease-in-out;
 }
 
 .c10:hover {
-  background-color: white;
-  border-radius: 0.5rem;
+  background: #F1F1F4;
   border-top-color: transparent;
 }
 
@@ -114,10 +70,6 @@ exports[`Storyshots @components/molecules/OrderTabel default 1`] = `
 
 .c10:hover .c8 {
   opacity: 1;
-}
-
-.c10:last-child {
-  border-bottom: 1px solid #eaeaea;
 }
 
 .c10:last-child:hover {
@@ -188,13 +140,6 @@ exports[`Storyshots @components/molecules/OrderTabel default 1`] = `
 .c7 {
   width: 16%;
   text-align: left;
-}
-
-@media (max-width:540px) {
-  .c11 {
-    padding: 0.9rem 1rem;
-    width: 88%;
-  }
 }
 
 @media (max-width:992px) {
@@ -301,15 +246,43 @@ exports[`Storyshots @components/molecules/OrderTabel default 1`] = `
         className="c8 c9"
       >
         <button
-          className="c11"
-          color="primary"
-          size="sm"
+          className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-8 fa-px-3 fa-text-sm fa-flex fa-items-center fa-justify-center rounded-full"
+          disabled={false}
+          style={
+            Object {
+              "height": "2rem",
+              "margin": "0",
+              "padding": "0",
+              "width": "2rem",
+            }
+          }
         >
           <span
-            className="c12"
-            size="sm"
+            className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
           >
-            Ver detalle
+            <svg
+              className=" "
+              color="currentColor"
+              fill="none"
+              height={16}
+              viewBox="0 0 16 16"
+              width={16}
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M14 8H1"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeWidth="1.5"
+              />
+              <path
+                d="M10 3.5L14.5 8L10 12.5"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="1.5"
+              />
+            </svg>
           </span>
         </button>
       </div>
@@ -357,22 +330,50 @@ exports[`Storyshots @components/molecules/OrderTabel default 1`] = `
         className="c8 c9"
       >
         <button
-          className="c11"
-          color="primary"
-          size="sm"
+          className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-8 fa-px-3 fa-text-sm fa-flex fa-items-center fa-justify-center rounded-full"
+          disabled={false}
+          style={
+            Object {
+              "height": "2rem",
+              "margin": "0",
+              "padding": "0",
+              "width": "2rem",
+            }
+          }
         >
           <span
-            className="c12"
-            size="sm"
+            className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
           >
-            Ver detalle
+            <svg
+              className=" "
+              color="currentColor"
+              fill="none"
+              height={16}
+              viewBox="0 0 16 16"
+              width={16}
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M14 8H1"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeWidth="1.5"
+              />
+              <path
+                d="M10 3.5L14.5 8L10 12.5"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="1.5"
+              />
+            </svg>
           </span>
         </button>
       </div>
     </div>
   </div>
   <div
-    className="c13"
+    className="c11"
   />
 </div>
 `;

@@ -18,6 +18,7 @@
       "@components/organisms": ["./src/@next/components/organisms/index.ts"],
       "@components/templates": ["./src/@next/components/templates/index.ts"],
       "@components/containers": ["./src/@next/components/containers/index.ts"],
+      "@farmatheme": ["<rootDir>/node_modules/@farmacia-retail/farmauna-components/tailwind.config"], 
       "@pages": ["./src/@next/pages/index.ts"],
       "@styles": ["./src/@next/globalStyles/index.ts"],
       "@styles/*": ["./src/@next/globalStyles/*"],

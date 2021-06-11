@@ -1,30 +1,42 @@
 import React from "react";
-import { Button, Icon } from "../../atoms";
+import { Icon } from "../../atoms";
 import * as S from "./styles";
+import { Button, BulletXFilledIcon } from "@farmacia-retail/farmauna-components";
 
 export const AddressGeoModalInfo = ({ onClose }: { onClose: () => void }) => {
 
     return (
         <S.Modal>
-            <div>
-                <Icon
-                    heightViewPort={92}
-                    name="manWithMedicine"
-                    widthViewPort={96}
-                    size={96}
-                />
-            </div>
-            <S.Title>Revisa tu carrito de compras </S.Title>
-            <S.Body>
-                <p>Es posible que algunos productos se hayan actualizado.</p>
-            </S.Body>
-            <S.Actions>
-                <Button
-                    onClick={onClose}
-                >
-                    Entendido
+            <S.Header>
+                <S.CloseIcon>
+                    <BulletXFilledIcon
+                        size={32}
+                        color="#452FBA"
+                        onClick={onClose}
+                    />
+                </S.CloseIcon>
+            </S.Header>
+            <S.Content>
+                <div>
+                    <Icon
+                        heightViewPort={92}
+                        name="manWithMedicine"
+                        widthViewPort={96}
+                        size={96}
+                    />
+                </div>
+                <S.Title>Carrito de compras actualizado</S.Title>
+                <S.Body>
+                    <p>Se ha modificado el estado de tus productos en tu carrito</p>
+                </S.Body>
+                <S.Actions>
+                    <Button variant="default"
+                        onClick={onClose}
+                    >
+                        Entendido
             </Button>
-            </S.Actions>
+                </S.Actions>
+            </S.Content>
         </S.Modal>
     );
 }

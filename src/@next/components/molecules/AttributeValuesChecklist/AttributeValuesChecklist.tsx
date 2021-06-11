@@ -1,9 +1,10 @@
 import React from "react";
 
-import { ButtonLink, Checkbox, Icon } from "@components/atoms";
+import { Checkbox } from "@components/atoms";
 
 import * as S from "./styles";
 import { IProps } from "./types";
+import { Button, PlusIcon } from "@farmacia-retail/farmauna-components";
 
 export const AttributeValuesChecklist: React.FC<IProps> = ({
   title,
@@ -37,14 +38,13 @@ export const AttributeValuesChecklist: React.FC<IProps> = ({
         })}
       {!viewAllOptions && values.length > valuesShowLimitNumber && (
         <S.ViewMoreButton>
-          <ButtonLink
-            size="sm"
-            color="secondary"
+          <Button 
             onClick={() => setViewAllOptions(true)}
-          >
-            <Icon name="plus" size={12} />
-            <span>Ver todo</span>
-          </ButtonLink>
+            variant="outline" 
+            icon={<PlusIcon size={15}/>}
+            >
+            ver todo
+          </Button>
         </S.ViewMoreButton>
       )}
       <S.BottomBorder />

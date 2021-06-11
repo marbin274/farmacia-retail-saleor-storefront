@@ -1,11 +1,9 @@
-import { defaultTheme } from "@styles";
-import { mount, shallow } from "enzyme";
+import { shallow } from "enzyme";
 import "jest-styled-components";
 import React from "react";
-
-import { Button, ButtonLink } from "@components/atoms";
+import { Button } from "@farmacia-retail/farmauna-components";
+import { ButtonLink } from "@components/atoms";
 import { FormFooter } from ".";
-import * as S from "./styles";
 import { IProps } from "./types";
 
 describe("<FormFooter />", () => {
@@ -75,18 +73,5 @@ describe("<FormFooter />", () => {
     expect(button.prop("onClick")).toEqual(onCancel);
     expect(button.prop("type")).toEqual("button");
     expect(button.children().text()).toEqual(cancelBtnText);
-  });
-
-  it("should render border-top if `divider` prop is set to true", () => {
-    const PROPS = {
-      ...DEFAULT_PROPS,
-      divider: true,
-    };
-    const formFooter = mount(<FormFooter {...PROPS} />).find(S.Footer);
-
-    expect(formFooter).toHaveStyleRule(
-      "border-top",
-      `1px solid ${defaultTheme.colors.light}`
-    );
   });
 });

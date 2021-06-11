@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/NiubizPaymentGateway default 1`] = `
   margin: 20px;
 }
 
-.c5 {
+.c9 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -71,220 +71,188 @@ exports[`Storyshots @components/organisms/NiubizPaymentGateway default 1`] = `
 }
 
 .c3 {
-  margin-top: 20px;
-}
-
-.c4 h4 {
-  font-weight: 500;
-  font-size: 24px;
-  margin-bottom: 1rem;
-}
-
-.c4 h5:nth-child(2) {
-  font-weight: 400;
-  font-size: 14px;
-  margin-bottom: 1.5rem;
-}
-
-.c4 h5:nth-child(3) {
-  font-weight: 400;
-  font-size: 14px;
-  margin-bottom: 1rem;
-}
-
-.c4 label {
-  color: #9194a7;
-  font-size: 14px;
-}
-
-.c4 .identity {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-bottom: 1rem;
-}
-
-.c4 .identity div:nth-child(1) {
-  width: 45%;
-}
-
-.c4 .identity div:nth-child(2) {
-  width: 50%;
-  margin-left: 5%;
-}
-
-.c4 .error {
-  margin-top: 1.8rem;
-  margin-left: 1rem;
-  font-size: 12px;
-  color: #e84545;
-  margin-bottom: -2rem;
-}
-
-.c4 .number-creditcard-error {
-  margin-top: 0;
-}
-
-.c4 .creditcard {
-  margin-top: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.c4 .creditcard #txtNumeroTarjeta {
-  background-color: #fff;
-  height: 3rem;
-}
-
-.c4 .creditcard #txtNumeroTarjeta iframe {
-  padding: 0.8rem 0.8rem 1rem 0.8rem;
-  border: 1px solid #e4e5ed;
-  height: 3rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  border-radius: 4px;
-  border-color: #e4e5ed;
-}
-
-.c4 .creditcard #txtNumeroTarjeta input {
-  background-color: #fff;
-}
-
-.c4 .expirydate_and_cvv {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-bottom: 2.7em;
-}
-
-.c4 .expirydate_and_cvv .expirydate {
-  width: 45%;
-}
-
-.c4 .expirydate_and_cvv .cvv {
-  width: 50%;
-  margin-left: 5%;
-}
-
-.c4 .expirydate_and_cvv #txtFechaVencimiento {
-  width: 100%;
-}
-
-.c4 .expirydate_and_cvv #txtFechaVencimiento iframe {
-  padding: 0.8rem 0.8rem 1rem 0.8rem;
-  border: 1px solid #e4e5ed;
-  height: 3rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  border-radius: 4px;
-  background-color: #fff;
-  border-color: #e4e5ed;
-}
-
-.c4 .expirydate_and_cvv #txtCvv {
-  margin-bottom: 20px;
-}
-
-.c4 .expirydate_and_cvv #txtCvv iframe {
-  padding: 0.8rem 0.8rem 1rem 0.6rem;
-  border: 1px solid #e4e5ed;
-  height: 3rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  border-radius: 4px;
-  background-color: #fff;
-  border-color: #e4e5ed;
+  margin-top: 1.25rem;
 }
 
 .c4 .card-title {
-  fontsize: 26px;
-  line-height: 2.1875rem;
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #23212b;
 }
 
-.c4 input {
-  padding: 0.75rem 1rem;
-  margin: 0;
-  border: none;
-  color: #131336;
-  width: 100%;
+.c4 .card-subtitle {
+  font-size: 1rem;
+  height: 2rem;
+  display: block;
+  font-weight: normal;
+  margin-bottom: 1.625rem;
+  line-height: 1.375rem;
+  -webkit-letter-spacing: 0.015em;
+  -moz-letter-spacing: 0.015em;
+  -ms-letter-spacing: 0.015em;
+  letter-spacing: 0.015em;
+}
+
+.c4 .row {
+  max-width: 40.25rem;
+}
+
+.c4 .row-input {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 1.5rem;
+}
+
+.c4 .row-input > div {
+  max-width: 19.375rem;
+}
+
+.c4 .row-input > div:nth-child(1) {
+  width: calc(100% - 0.75rem);
+}
+
+.c4 .row-input > div:nth-child(2) {
+  width: calc(100% - 0.75rem);
+}
+
+.c4 .row-input > div > label {
+  font-size: 0.875rem;
+  color: #23212b;
+  font-weight: 600;
+}
+
+.c4 .row-input .card-input > div {
+  background-color: #f7f6f8;
   height: 3rem;
-  font-size: 0.9rem;
-  outline: none;
+}
+
+.c4 .row-input .card-input > div iframe {
+  padding: 0.75rem 0.75rem 0.75rem 1rem;
+  border: 0.0625rem solid #aca8bd;
+  border-radius: 0.5rem;
+  height: 3rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
   background-color: #fff;
-  border-radius: 4px;
-  border: 1px solid #e4e5ed;
 }
 
-.c4 input::-webkit-input-placeholder {
-  color: #9194a7;
+.c4 .row-input .card-input > div input {
+  background-color: #fff;
 }
 
-.c4 input::-moz-placeholder {
-  color: #9194a7;
+.c4 .row-input .card-input #txtNumeroTarjeta iframe {
+  border-color: #ACA8BD;
 }
 
-.c4 input:-ms-input-placeholder {
-  color: #9194a7;
+.c4 .row-input .card-input #txtNumeroTarjeta iframe:focus {
+  border-color: #2f2c3a;
 }
 
-.c4 input::placeholder {
-  color: #9194a7;
+.c4 .row-input .card-input #txtFechaVencimiento iframe {
+  border-color: #ACA8BD;
+}
+
+.c4 .row-input .card-input #txtFechaVencimiento iframe:focus {
+  border-color: #2f2c3a;
+}
+
+.c4 .row-input .card-input #txtCvv iframe {
+  border-color: #ACA8BD;
+}
+
+.c4 .row-input .card-input #txtCvv iframe:focus {
+  border-color: #2f2c3a;
+}
+
+.c4 .row-input .card-input .error {
+  height: auto;
+  color: #c82328;
+  margin-top: 0.5rem;
+  line-height: 0.75rem;
+  font-size: 0.75rem;
 }
 
 .c4 .niubiz-logo-container {
-  margin-top: 5px;
+  margin-top: 0.3125rem;
+}
+
+.c5 {
+  margin-bottom: 2.75rem;
+}
+
+.c5 > div > div {
+  margin-bottom: 0.7em;
+}
+
+.c6 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex: justify-content;
+  -ms-flex: justify-content;
+  flex: justify-content;
+  position: relative;
+  width: calc(100% - 3em);
+}
+
+.c7 {
+  margin-left: 0.3125rem;
+  padding-top: 0.9375rem;
+  padding-right: 0.625rem;
+}
+
+.c8 {
+  margin-left: 0.3125rem;
 }
 
 @media (max-width:540px) {
-  .c3 {
-    background-color: #F6F8FA;
-    border-radius: 1rem;
-    padding: 0.9375rem;
+  .c4 .card-title {
+    margin-bottom: 1rem;
+    line-height: 1.75rem;
   }
 }
 
 @media (max-width:540px) {
-  .c4 .identity {
-    display: block;
-  }
-
-  .c4 .identity div:nth-child(1) {
-    width: auto;
-  }
-
-  .c4 .identity div:nth-child(2) {
-    width: auto;
-    margin-left: 0;
+  .c4 .row-input {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    margin-bottom: 1rem;
   }
 }
 
 @media (max-width:540px) {
-  .c4 .expirydate_and_cvv {
-    display: block;
+  .c4 .row-input > div:nth-child(1) {
+    width: 100%;
+    margin-bottom: 1rem;
   }
 }
 
 @media (max-width:540px) {
-  .c4 .expirydate_and_cvv .expirydate {
-    width: auto;
+  .c4 .row-input > div:nth-child(2) {
+    width: 100%;
   }
 }
 
 @media (max-width:540px) {
-  .c4 .expirydate_and_cvv .cvv {
-    width: auto;
-    margin-left: 0;
-    margin-top: 2.5rem;
+  .c4 .row-input > div {
+    max-width: 100%;
   }
 }
 
@@ -324,78 +292,139 @@ exports[`Storyshots @components/organisms/NiubizPaymentGateway default 1`] = `
             <h4
               className="card-title"
             >
-              Paga con tu tarjeta  de crédito o débito
+              Paga con tu tarjeta de crédito o débito
             </h4>
-            <h5>
+            <h5
+              className="card-subtitle"
+            >
               Ingresa los datos del titular de la tarjeta
             </h5>
+            <div
+              className="c5"
+            >
+              <span
+                className="c6"
+              >
+                <div
+                  className="c7"
+                >
+                  <div />
+                </div>
+                <div
+                  className="c8"
+                >
+                  <div />
+                </div>
+                <div
+                  className="c8"
+                >
+                  <div />
+                </div>
+                <div
+                  className="c8"
+                >
+                  <div />
+                </div>
+                <div
+                  className="c8"
+                >
+                  <div />
+                </div>
+              </span>
+            </div>
             <div
               className="row"
             >
               <div
-                className="identity"
+                className="row-input"
               >
-                <div>
+                <div
+                  className="fa-w-auto"
+                >
+                  <label
+                    className="fa-text-gray-01 fa-text-sm"
+                  >
+                    Nombre del titular de la tarjeta
+                    
+                  </label>
+                  <div
+                    className="fa-w-full fa-relative fa-h-12"
+                  >
+                    <input
+                      className="fa-w-full fa-appearance-none fa-border fa-text-sm fa-outline-none fa-placeholder-neutral-medium fa-text-neutral-darkest fa-bg-neutral-lightest fa-border-neutral-medium focus:fa-border-neutral-darkest fa-rounded-lg fa-px-4 fa-h-12 form-control form-control-sm"
+                      disabled={false}
+                      id="nombre"
+                      placeholder="Ejemplo: Juan"
+                      type="text"
+                    />
+                  </div>
+                </div>
+                <div
+                  className="fa-w-auto"
+                >
+                  <label
+                    className="fa-text-gray-01 fa-text-sm"
+                  >
+                    Apellido del titular de la tarjeta
+                    
+                  </label>
+                  <div
+                    className="fa-w-full fa-relative fa-h-12"
+                  >
+                    <input
+                      className="fa-w-full fa-appearance-none fa-border fa-text-sm fa-outline-none fa-placeholder-neutral-medium fa-text-neutral-darkest fa-bg-neutral-lightest fa-border-neutral-medium focus:fa-border-neutral-darkest fa-rounded-lg fa-px-4 fa-h-12 form-control form-control-sm"
+                      disabled={false}
+                      id="apellido"
+                      placeholder="Ejemplo: Perez"
+                      type="text"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                className="row-input"
+              >
+                <div
+                  className="fa-w-auto"
+                >
+                  <label
+                    className="fa-text-gray-01 fa-text-sm"
+                  >
+                    Correo electrónico
+                    
+                  </label>
+                  <div
+                    className="fa-w-full fa-relative fa-h-12"
+                  >
+                    <input
+                      className="fa-w-full fa-appearance-none fa-border fa-text-sm fa-outline-none fa-placeholder-neutral-medium fa-text-neutral-darkest fa-bg-neutral-lightest fa-border-neutral-medium focus:fa-border-neutral-darkest fa-rounded-lg fa-px-4 fa-h-12 form-control form-control-sm"
+                      disabled={false}
+                      id="email"
+                      placeholder="ejemplo@mail.com"
+                      type="text"
+                    />
+                  </div>
+                </div>
+                <div
+                  className="card-input"
+                >
                   <label
                     htmlFor=""
                   >
-                    Nombre
+                    Número de tarjeta
                   </label>
-                  <input
-                    className="form-control form-control-sm"
-                    id="nombre"
-                    placeholder="Ejemplo: Juan"
-                    type="text"
+                  <div
+                    className="form-control form-control-sm ncp-card"
+                    id="txtNumeroTarjeta"
                   />
-                </div>
-                <div>
-                  <label
-                    htmlFor=""
-                  >
-                    Apellido
-                  </label>
-                  <input
-                    className="form-control form-control-sm"
-                    id="apellido"
-                    placeholder="Ejemplo: Perez"
-                    type="text"
-                  />
+                  
                 </div>
               </div>
               <div
-                className="email"
-              >
-                <label
-                  htmlFor=""
-                >
-                  Correo
-                </label>
-                <input
-                  className="form-control form-control-sm"
-                  id="email"
-                  placeholder="ejemplo@mail.com"
-                  type="text"
-                />
-              </div>
-              <div
-                className="creditcard"
-              >
-                <label
-                  htmlFor=""
-                >
-                  Número de tarjeta
-                </label>
-                <div
-                  className="form-control form-control-sm ncp-card"
-                  id="txtNumeroTarjeta"
-                />
-                
-              </div>
-              <div
-                className="expirydate_and_cvv"
+                className="row-input"
               >
                 <div
-                  className="expirydate"
+                  className="card-input"
                 >
                   <label
                     htmlFor=""
@@ -409,7 +438,7 @@ exports[`Storyshots @components/organisms/NiubizPaymentGateway default 1`] = `
                   
                 </div>
                 <div
-                  className="cvv"
+                  className="card-input"
                 >
                   <label
                     htmlFor=""
@@ -430,7 +459,7 @@ exports[`Storyshots @components/organisms/NiubizPaymentGateway default 1`] = `
     </div>
   </div>
   <div
-    className="c5"
+    className="c9"
   />
 </div>
 `;

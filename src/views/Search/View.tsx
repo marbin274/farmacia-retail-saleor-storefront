@@ -120,7 +120,7 @@ export const View: React.FC<ViewProps> = ({ match }) => {
     query: search || null,
     page: page || 1,
     sortBy: convertSortByFromString(filters.sortBy),
-    districtId: districtSelected.code,
+    districtId: districtSelected.id,
   };
 
   const sortOptions = [

@@ -2,14 +2,12 @@ import { styled } from "@styles";
 
 export const Wrapper = styled.div``;
 
-export const DropdownIndicator = styled.div<{ rotate: string }>`
-  fill: ${props => props.theme.input.borderColorActive};
+export const DropdownIndicator = styled.div<{withArrow: boolean}>`
+  fill: ${props => props.theme.input.textColor};
   position: absolute;
-  right: 1rem;
-  transition-duration: 0.3s;
-  transform: ${props =>
-    props.rotate === "true" ? "rotate(-180deg)" : "rotate(0deg)"};
-  transform-origin: center center;
+  right: 0.75rem;
+  transform: rotate(180deg);
+  ${(props) => props.withArrow ? 'top: 0.5rem' : ''}
 `;
 
 export const ClearIndicator = styled.div`

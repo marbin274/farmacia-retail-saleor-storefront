@@ -2,8 +2,8 @@ import { Chip, DropdownSelect, Icon } from "@components/atoms";
 import React from "react";
 import * as S from "./styles";
 import { IProps } from "./types";
-
-
+import { FilterIcon } from "@farmacia-retail/farmauna-components";
+import { StringParam, useQueryParam } from "use-query-params";
 
 export const ProductListHeader: React.FC<IProps> = ({
   hideFilters = false,
@@ -17,17 +17,23 @@ export const ProductListHeader: React.FC<IProps> = ({
   onChange,
   onCloseFilterAttribute,
 }: IProps) => {
+
+  
+  const [search] = useQueryParam("q", StringParam);
   return (
     <S.Wrapper>
       <S.Bar>
-        {!hideFilters &&
+        {!hideFilters && (
           <S.LeftSide>
-            <S.FiltersButton onClick={openFiltersMenu} data-cy="filters__button">
+            <S.FiltersButton
+              onClick={openFiltersMenu}
+              data-cy="filters__button"
+            >
               <S.Filters>
-                <Icon name="filter" size={18} viewPort={24} />
+                <FilterIcon size={18} color={"#452FBA"} />
                 <span>
-                  Filtros
-              {activeFilters > 0 && (
+                  Filtrar
+                  {activeFilters > 0 && (
                     <>
                       <span> ({activeFilters})</span>
                     </>
@@ -42,15 +48,16 @@ export const ProductListHeader: React.FC<IProps> = ({
               </S.Clear>
             )}
           </S.LeftSide>
-        }
+        )}
 
         <S.RightSide>
           <S.Element
             className="products_found"
             data-cy="no-of-products-found_label"
           >
-            <S.Label>Productos encontrados: </S.Label>
-            <S.NumberProducts>{numberOfProducts}</S.NumberProducts>
+            <S.NumberProducts>{numberOfProducts} </S.NumberProducts>
+            <S.Label>Productos encontrados con: </S.Label>
+            <S.Label>"<S.SearchText>{search}</S.SearchText>"</S.Label>
           </S.Element>
           <S.Element>
             <S.Sort>

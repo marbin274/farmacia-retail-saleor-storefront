@@ -17,7 +17,7 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
   const [district] = useDistrictSelected();
   const { data: order, loading } = useOrderDetails({
     token,
-    districtId: district?.code,
+    districtId: district?.id,
   });
   const { data: user } = useUserDetails();
   const guest = !user;

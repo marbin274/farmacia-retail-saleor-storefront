@@ -14,7 +14,6 @@ storiesOf("@components/atoms/Tile", module)
     <Tile
       tileType="hover"
       header={<h3>This is header</h3>}
-      footer={<p>And this is footer</p>}
     >
       <div>This is body</div>
     </Tile>

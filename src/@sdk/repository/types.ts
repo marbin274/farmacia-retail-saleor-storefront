@@ -227,11 +227,20 @@ export interface ISelecValue {
   description: string;
 }
 
+export interface IDistrictSelected {
+  id: string;
+  name: string;
+  warehouse: {
+    id: string;
+    name: string;
+  } | null;
+}
+
 export interface ILocalRepository {
   getCheckout(): ICheckoutModel | null;
   setCheckout(checkout: ICheckoutModel | null): void;
-  getDistrict(): ISelecValue | null;
-  setDistrict(district: ISelecValue): void;
+  getDistrict(): IDistrictSelected | null;
+  setDistrict(district: IDistrictSelected): void;
   getResetPasswordEmail(): string | null;
   setResetPasswordEmail(email: string): void;
   getPayment(): IPaymentModel | null;

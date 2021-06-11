@@ -1,10 +1,11 @@
 import { maybe } from "@temp/core/utils";
 import { History } from "history";
 import React from "react";
-import { useHistory } from "react-router";
+import { useHistory, useLocation } from "react-router";
 import { TypedAccountRegisterMutation } from "./queries";
 import { RegisterFormContent } from "./RegisterFormContent";
 import "./scss/index.scss";
+import { Button } from "@farmacia-retail/farmauna-components";
 
 interface IRegisterForm {
   hide?: () => void;
@@ -15,9 +16,20 @@ interface IRegisterForm {
 
 const RegisterForm: React.FC<IRegisterForm> = ({ hide, onSwitchSection }) => {
   const history = useHistory();
+  const location = useLocation();
+
+  const hideOnClickLogin = location.pathname.includes("login");
 
   const setEmail = (email: string) => {
     sessionStorage.setItem("user-registered-email", email);
+  };
+
+  const onClickSwitch = () => {
+    if (hideOnClickLogin) {
+      hide();
+    } else {
+      onSwitchSection();
+    }
   };
 
   return (
@@ -36,17 +48,6 @@ const RegisterForm: React.FC<IRegisterForm> = ({ hide, onSwitchSection }) => {
       {(registerCustomer, { loading, data }) => {
         return (
           <>
-            <div className="login__content__welcome">
-              <h4>
-                ¡Bienvenido a la <br />
-                farmacia que te cuida!
-              </h4>
-              <p>
-                Crear una cuenta es la mejor forma de administrar tus datos,
-                hacer seguimiento a tus pedidos y recibir información
-                personalizada
-              </p>
-            </div>
             <RegisterFormContent
               errors={data?.accountRegister?.errors}
               loading={loading}
@@ -55,7 +56,9 @@ const RegisterForm: React.FC<IRegisterForm> = ({ hide, onSwitchSection }) => {
             />
             <div className="login-form__change-section">
               <p>¿Ya tienes cuenta?</p>
-              <button onClick={onSwitchSection}>Ingresar</button>
+              <Button variant="outline" onClick={onClickSwitch}>
+                Ingresar con mi cuenta
+              </Button>
             </div>
           </>
         );

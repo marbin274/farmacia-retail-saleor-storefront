@@ -19,10 +19,8 @@ exports[`Storyshots @components/organisms/CreditCardForm default 1`] = `
 
 .c7 {
   background-color: transparent;
-  color: #9194A7;
   left: 0px;
   position: absolute;
-  font-size: 0.9rem;
   pointer-events: none;
   top: -1.5rem;
 }
@@ -42,7 +40,7 @@ exports[`Storyshots @components/organisms/CreditCardForm default 1`] = `
 
 .c4:hover {
   color: #E4E5ED;
-  border-color: #00B0CA;
+  border-color: #00BF8E;
 }
 
 .c5 {
@@ -178,7 +176,7 @@ exports[`Storyshots @components/organisms/CreditCardForm default 1`] = `
               value=""
             />
             <label
-              className="c7"
+              className="fa-text-gray-01 fa-text-sm c7"
               disabled={false}
             >
               Number
@@ -220,7 +218,7 @@ exports[`Storyshots @components/organisms/CreditCardForm default 1`] = `
                 value=""
               />
               <label
-                className="c7"
+                className="fa-text-gray-01 fa-text-sm c7"
                 disabled={false}
               >
                 Expiry Date
@@ -259,7 +257,7 @@ exports[`Storyshots @components/organisms/CreditCardForm default 1`] = `
                 value=""
               />
               <label
-                className="c7"
+                className="fa-text-gray-01 fa-text-sm c7"
                 disabled={false}
               >
                 CVC
@@ -298,10 +296,8 @@ exports[`Storyshots @components/organisms/CreditCardForm disabled 1`] = `
 
 .c7 {
   background-color: transparent;
-  color: #7d7d7d;
   left: 0px;
   position: absolute;
-  font-size: 0.9rem;
   pointer-events: none;
   top: -1.5rem;
 }
@@ -457,7 +453,7 @@ exports[`Storyshots @components/organisms/CreditCardForm disabled 1`] = `
               value=""
             />
             <label
-              className="c7"
+              className="fa-text-gray-01 fa-text-sm c7"
               disabled={true}
             >
               Number
@@ -499,7 +495,7 @@ exports[`Storyshots @components/organisms/CreditCardForm disabled 1`] = `
                 value=""
               />
               <label
-                className="c7"
+                className="fa-text-gray-01 fa-text-sm c7"
                 disabled={true}
               >
                 Expiry Date
@@ -538,7 +534,7 @@ exports[`Storyshots @components/organisms/CreditCardForm disabled 1`] = `
                 value=""
               />
               <label
-                className="c7"
+                className="fa-text-gray-01 fa-text-sm c7"
                 disabled={true}
               >
                 CVC
@@ -588,10 +584,8 @@ exports[`Storyshots @components/organisms/CreditCardForm error 1`] = `
 
 .c7 {
   background-color: transparent;
-  color: #9194A7;
   left: 0px;
   position: absolute;
-  font-size: 0.9rem;
   pointer-events: none;
   top: -1.5rem;
 }
@@ -611,7 +605,7 @@ exports[`Storyshots @components/organisms/CreditCardForm error 1`] = `
 
 .c13:hover {
   color: #E4E5ED;
-  border-color: #00B0CA;
+  border-color: #00BF8E;
 }
 
 .c4 {
@@ -765,7 +759,7 @@ exports[`Storyshots @components/organisms/CreditCardForm error 1`] = `
               value=""
             />
             <label
-              className="c7"
+              className="fa-text-gray-01 fa-text-sm c7"
               disabled={false}
             >
               Number
@@ -817,7 +811,7 @@ exports[`Storyshots @components/organisms/CreditCardForm error 1`] = `
                 value=""
               />
               <label
-                className="c7"
+                className="fa-text-gray-01 fa-text-sm c7"
                 disabled={false}
               >
                 Expiry Date
@@ -856,7 +850,7 @@ exports[`Storyshots @components/organisms/CreditCardForm error 1`] = `
                 value=""
               />
               <label
-                className="c7"
+                className="fa-text-gray-01 fa-text-sm c7"
                 disabled={false}
               >
                 CVC

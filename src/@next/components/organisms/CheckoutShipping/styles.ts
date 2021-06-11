@@ -1,4 +1,4 @@
-import { styled } from "@styles";
+import { media, styled } from "@styles";
 import {aunaBrand3, white} from "@styles/constants";
 
 
@@ -65,17 +65,24 @@ export const GroupLabelTitle = styled.span`
     padding-left: 1rem;
 `;
 
-export const ShippingMethodContainer = styled.div<{ selected: boolean, hasError: boolean }>`
-    background-color: ${({ selected, theme }) => !!selected ? theme.colors.complementary1 : theme.colors.backgroundLight};
+export const ShippingMethodContainer = styled.div<{ isScheduledSelected?: boolean, selected: boolean, hasError: boolean }>`
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 1rem;
     border: 1px solid ${({ hasError, selected, theme }) => hasError ? `${theme.colors.aunaError}` : (!!selected ? `${(theme.colors.interactive)}` : theme.colors.backgroundLight)};
-    border-radius: 16px;
-    display: flex;
     flex-direction: row;
     cursor: pointer;
-    padding: 2rem 1rem;
+    display: flex;
     margin: 1rem 0rem;
+    height: 7.8125rem;
+    box-shadow: 1px 1px 9px 2px #ddd;
+    transition: box-shadow 0.2s ease-in-out;
+    margin-bottom: ${(props: any) => props.isScheduledSelected ? '8rem' : '0'};
+    ${media.largeScreen`
+    margin-bottom: ${(props: any) => props.isScheduledSelected ? '12.5rem' : '0'};
+    `}
     &:hover {
-      border-color: ${({ theme }) => theme.colors.interactive};
+      box-shadow: 0px 0px 6px 2px #ccc;
     }
 `
 

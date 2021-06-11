@@ -1,15 +1,15 @@
 import { Overlay } from "@components/organisms";
-import { turquoise } from "@temp/@next/globalStyles/constants";
 import { useAddressGeocalizationInfo, useDistrictSelected } from "@temp/@next/hooks";
-import { useCart } from "@temp/@sdk/react";
+import { IDistrictSelected } from "@temp/@sdk/repository";
 import { useShopContext } from "@temp/components/ShopProvider/context";
 import { TOTAL_DISTRICT } from "@temp/core/config";
 import React from "react";
 import { InputSelect } from "..";
-import { Button, Icon, IconButton } from "../../atoms";
+import { Icon } from "../../atoms";
 import { AddressGeoModalInfo } from "./AddressGeoModalInfo";
 import { addressGeoModalService } from "./AddressGeoModalService";
 import * as S from "./styles";
+import { Button, BulletXFilledIcon } from "@farmacia-retail/farmauna-components";
 
 export const AddressGeoModal: React.FC = () => {
     const { availableDistricts } = useShopContext();
@@ -17,14 +17,12 @@ export const AddressGeoModal: React.FC = () => {
     const [districtSelected, setDistrictSelected] = useDistrictSelected();
     const [show, setShow] = React.useState(false);
     const [showInfo, setShowInfo] = React.useState<boolean>(false);
-    const [district, setDistrict] = React.useState(districtSelected);
-
-    const { items } = useCart();
+    const [district, setDistrict] = React.useState<IDistrictSelected>(districtSelected);
 
     const handleConfirm = () => {
         setDistrictSelected(district);
         setShowAddressGeocalizationInfo(false);
-        if (items?.length) {
+        if (districtSelected.warehouse?.id !== district.warehouse?.id) {
             setShowInfo(true);
             return;
         }
@@ -69,7 +67,11 @@ export const AddressGeoModal: React.FC = () => {
                 <S.Modal>
                     <S.Header>
                         <S.CloseIcon>
-                            <IconButton name="x" color={turquoise} size={19} onClick={handleCloseModal} />
+                            <BulletXFilledIcon
+                                size={32}
+                                color="#452FBA"
+                                onClick={handleCloseModal}
+                                />
                         </S.CloseIcon>
                     </S.Header>
                     <S.Content>
@@ -89,10 +91,10 @@ export const AddressGeoModal: React.FC = () => {
                                 }}
                                 name="district"
                                 label=""
-                                options={availableDistricts?.map(it => ({ code: it?.id, description: it?.name }))}
+                                options={availableDistricts || []}
                                 value={district}
-                                optionLabelKey="description"
-                                optionValueKey="code"
+                                optionLabelKey="name"
+                                optionValueKey="id"
                                 onChange={handleChangeDistrict}
 
                             />
@@ -102,7 +104,7 @@ export const AddressGeoModal: React.FC = () => {
                             </S.TextInfo>
                         </S.Body>
                         <S.Actions>
-                            <Button
+                            <Button variant="default"
                                 onClick={handleConfirm}
                             >
                                 Confirmar

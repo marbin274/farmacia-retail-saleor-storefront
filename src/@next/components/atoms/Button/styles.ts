@@ -22,12 +22,12 @@ export const Primary = styled.button<{
 }>`
   background-color: ${props => getButtonColors(props).background};
   padding: ${(props: { size: Size }) => padding[props.size]}; 
-  border: none;
+  border: 1px solid #008A66;
   border-radius: 40px;
   transition: 0.3s;
   outline: none;
   cursor: pointer;
-  color: ${props => getButtonColors(props).color};
+  color: #008A66;
   width: ${props => (props.fullWidth ? "100%" : "auto")};
 
   &:hover {

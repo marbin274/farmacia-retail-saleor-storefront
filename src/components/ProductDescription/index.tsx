@@ -1,22 +1,21 @@
 import { RichTextContent } from "@components/atoms";
 import { TaxedMoney } from "@components/containers";
 import {
-  ProductBottomDetail, ProductVariantPicker
+  ProductBottomDetail,
+  ProductVariantPicker,
 } from "@components/organisms";
 import {
   ProductDetails_product_pricing,
   ProductDetails_product_variants,
-  ProductDetails_product_variants_pricing
+  ProductDetails_product_variants_pricing,
 } from "@sdk/queries/gqlTypes/ProductDetails";
-import {
-  ICheckoutModelLine,
-  ICheckoutModelLineVariantLocalStorage
-} from "@sdk/repository";
-import ItemsHandler from "@temp/@next/components/organisms/ItemsHandler/ItemsHandler";
 import { ISimpleProduct } from "@temp/@next/types/IProduct";
 import {
-  getProductPricingClass
-} from "@temp/@next/utils/products";
+  ICheckoutModelLine,
+  ICheckoutModelLineVariantLocalStorage,
+} from "@sdk/repository";
+import ItemsHandler from "@temp/@next/components/organisms/ItemsHandler/ItemsHandler";
+import { getProductPricingClass } from "@temp/@next/utils/products";
 import { IProductVariantsAttributesSelectedValues } from "@types";
 import isEqual from "lodash/isEqual";
 import * as React from "react";
@@ -35,25 +34,32 @@ export interface ProductDescriptionProps {
     variant: ICheckoutModelLineVariantLocalStorage,
     quantity?: number
   ): void;
+  subtractToCart(varinatId: string): void;
   removeToCart(varinatId: string): void;
 }
 
-
 const HEADER_HEIGHT = 70;
 
-export const ProductDescription: React.FC<ProductDescriptionProps> = (props) => {
-
-
+export const ProductDescription: React.FC<ProductDescriptionProps> = props => {
   const { canAddToCart, descriptionJson, product } = props;
   const { name } = props.product;
   const min = props.pricing.priceRange.start;
   const max = props.pricing.priceRange.stop;
-  const [showBottomDetail, setShowBottomDetail] = React.useState<boolean>(false);
-  const [showBottomDetailProductInfo, setShowBottomDetailProductInfo] = React.useState<boolean>(false);
-  const [variantPricing, setVariantPricing] = React.useState<ProductDetails_product_variants_pricing | null>(null);
+  const [showBottomDetail, setShowBottomDetail] = React.useState<boolean>(
+    false
+  );
+  const [
+    showBottomDetailProductInfo,
+    setShowBottomDetailProductInfo,
+  ] = React.useState<boolean>(false);
+  const [
+    variantPricing,
+    setVariantPricing,
+  ] = React.useState<ProductDetails_product_variants_pricing | null>(null);
 
   const addToCartRef = React.useRef<HTMLDivElement>();
   const priceRef = React.useRef<HTMLDivElement>();
+  const productDescriptionRef = React.useRef<HTMLDivElement>();
 
   const getProductPrice = () => {
     if (variantPricing) {
@@ -129,11 +135,29 @@ export const ProductDescription: React.FC<ProductDescriptionProps> = (props) => 
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
-    }
+    };
   }, []);
 
+  const handleScrollContainer = () => {
+    const addToCartRect = addToCartRef.current.getBoundingClientRect();
+    const productDescriptionRect = productDescriptionRef.current.getBoundingClientRect();
+
+    const isVisible =
+      addToCartRect.top <= productDescriptionRect.top
+        ? productDescriptionRect.top - addToCartRect.top <= addToCartRect.height
+        : addToCartRect.bottom - productDescriptionRect.bottom <=
+          addToCartRect.height;
+
+    setShowBottomDetail(!isVisible);
+  };
+
   return (
-    <div className="product-description">
+    <div
+      id="product-description"
+      ref={productDescriptionRef}
+      onScroll={handleScrollContainer}
+      className="product-description"
+    >
       <h3>{name}</h3>
       <div ref={priceRef}>{renderPrice()}</div>
       <div className="product-description__quantity" ref={addToCartRef}>
@@ -141,8 +165,8 @@ export const ProductDescription: React.FC<ProductDescriptionProps> = (props) => 
           canAddToCart={canAddToCart}
           product={product}
           addToCart={props.addToCart}
-          removeItemToCart={props.removeToCart}
-          subtractItemToCart={props.removeToCart}
+          removeItemToCart={props.subtractToCart}
+          subtractItemToCart={props.subtractToCart}
         />
       </div>
       <RichTextContent descriptionJson={descriptionJson} />
@@ -159,17 +183,17 @@ export const ProductDescription: React.FC<ProductDescriptionProps> = (props) => 
           renderPrice={renderPrice}
           canAddToCart={canAddToCart}
           addToCart={props.addToCart}
-          removeItemToCart={props.removeToCart}
-          subtractItemToCart={props.removeToCart}
+          removeItemToCart={props.subtractToCart}
+          subtractItemToCart={props.subtractToCart}
           hideProductDetails={
-            props.isSmallScreen &&
-            !showBottomDetailProductInfo
+            props.isSmallScreen && !showBottomDetailProductInfo
           }
         />
       )}
+
+      <hr />
     </div>
   );
-
-}
+};
 
 export default ProductDescription;

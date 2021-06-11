@@ -10,22 +10,16 @@
   }
 
   li {
-    &:not(:last-of-type) {
-      &:after {
-        content: url("../../../images/breadcrumbs-arrow.svg");
-        display: inline-block;
-        margin: 0 $spacer / 2;
-      }
-    }
-
     @media (max-width: $small-screen) {
       line-height: 1.5rem;
     }
 
     a {
+      font-size: 2rem;
+      font-weight: 600;
       text-decoration: none;
-      vertical-align: middle;
-      transition: 0.3s;
+      color: #2F2C3A;
+      
     }
   }
 
@@ -38,7 +32,6 @@
   &__active {
     a {
       color: $base-font-color;
-      font-weight: $bold-font-weight;
 
       &:hover {
         color: $base-font-color;
@@ -47,6 +40,21 @@
   }
 
   &__home-icon {
-    margin-right: 0.25rem;
+    display: inline-block;
+    margin-right: 0.75rem;
+    vertical-align: middle;
+  }
+
+  &__home_title {
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+    vertical-align: middle;
+  }
+
+  &__next-icon {
+    display: inline-block;
+    margin: auto 0.75rem;
+    vertical-align: middle;
   }
 }

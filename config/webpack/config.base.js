@@ -28,6 +28,7 @@ module.exports = ({ sourceDir, distDir }) => ({
   resolve: {
     alias: {
       "react-dom": "@hot-loader/react-dom",
+      "@farmatheme": "@farmacia-retail/farmauna-components/tailwind.config"
     },
     extensions: [".ts", ".tsx", ".js", ".jsx"],
     plugins: [
@@ -139,7 +140,9 @@ module.exports = ({ sourceDir, distDir }) => ({
       MERCHANT_PASSWORD: "__",
       MERCHANT_USERNAME: "__",
       MERCHANT_ID: "__",
-      OPTIMIZELY_SDK_KEY: "__"
+      OPTIMIZELY_SDK_KEY: "__",
+      ELASTIC_APM_HOST: "__",
+      ELASTIC_APM_ENV: "__"
     }),
   ],
   node: {

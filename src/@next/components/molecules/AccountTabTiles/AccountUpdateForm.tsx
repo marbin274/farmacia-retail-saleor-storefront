@@ -1,8 +1,8 @@
 import { Formik } from "formik";
 import React from "react";
 import { TextField } from "../TextField";
-
-import { Button, Attribute } from "@components/atoms";
+import { Button } from "@farmacia-retail/farmauna-components";
+import { Attribute } from "@components/atoms";
 import * as S from "./styles";
 import { UserDetails_me } from "@temp/@sdk/queries/gqlTypes/UserDetails";
 
@@ -79,14 +79,10 @@ export const AccountUpdateForm: React.FC<IProps> = ({
                 </S.AttributeWrapper>
               </S.ContentEditOneLine>
               <S.FormButtons>
-                <Button type="button" size="sm" outline onClick={hide}>
+                <Button type="button" variant="outline" onClick={hide}>
                   Cancelar
                 </Button>
-                <Button
-                  type="submit"
-                  disabled={isSubmitting || !isValid}
-                  size="sm"
-                >
+                <Button type="submit" disabled={isSubmitting || !isValid}>
                   Guardar
                 </Button>
               </S.FormButtons>

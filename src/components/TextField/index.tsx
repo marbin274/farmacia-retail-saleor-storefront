@@ -47,12 +47,13 @@ const TextField: React.FC<TextFieldProps> = ({
     {iconLeft && <span className="input__icon-left">{iconLeft}</span>}
     {iconRight && <span className="input__icon-right">{iconRight}</span>}
     <div className="input__content">
+    {label && <span className="input__label">{label}</span>}
+    
       <input
         {...rest}
         ref={inputRef}
         className={generateClassName({ errors, iconLeft, styleType })}
       />
-      {label && <span className="input__label">{label}</span>}
       {innerIcon && <span className="input__inner-icon">{innerIcon}</span>}
     </div>
     {errors && (

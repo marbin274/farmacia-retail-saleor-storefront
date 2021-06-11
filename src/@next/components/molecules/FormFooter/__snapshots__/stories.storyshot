@@ -6,7 +6,7 @@ exports[`Storyshots @components/molecules/FormFooter with submit and cancel butt
   margin: 20px;
 }
 
-.c5 {
+.c3 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -15,51 +15,6 @@ exports[`Storyshots @components/molecules/FormFooter with submit and cancel butt
   left: 0;
   pointer-events: none;
   box-sizing: border-box;
-}
-
-.c3 {
-  background-color: #00B0CA;
-  padding: 0.9rem 3.7rem;
-  border: none;
-  border-radius: 40px;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-  outline: none;
-  cursor: pointer;
-  color: #fff;
-  width: auto;
-}
-
-.c3:hover {
-  background-color: #0BC1DC;
-  color: #fff;
-}
-
-.c3:active {
-  background-color: #029FB7;
-  box-shadow: -3px 3px 14px 0px rgba(129,67,67,0.2);
-}
-
-.c3:disabled {
-  background-color: #F1F2F7;
-  color: #B8BCD5;
-  cursor: default;
-}
-
-.c3:disabled,
-.c3:disabled:hover {
-  cursor: default;
-}
-
-.c4 {
-  display: inline-block;
-  font-size: 1.125rem;
-  font-weight: 400;
-  line-height: 1.25rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
 .c2 {
@@ -98,18 +53,18 @@ exports[`Storyshots @components/molecules/FormFooter with submit and cancel butt
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 1.1rem 1.875rem;
+  padding: 0.5rem 1.875rem;
 }
 
-.c1 button:last-child {
+.c1 button {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.c1 button:nth-child(2) {
   margin-left: 2rem;
-}
-
-@media (max-width:540px) {
-  .c3 {
-    padding: 0.9rem 1rem;
-    width: 88%;
-  }
 }
 
 @media (max-width:540px) {
@@ -125,7 +80,7 @@ exports[`Storyshots @components/molecules/FormFooter with submit and cancel butt
 }
 
 @media (max-width:540px) {
-  .c1 button:last-child {
+  .c1 button:nth-child(2) {
     margin-left: 0;
   }
 }
@@ -146,23 +101,21 @@ exports[`Storyshots @components/molecules/FormFooter with submit and cancel butt
       Cancel
     </button>
     <button
-      className="c3"
-      color="primary"
+      className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
       disabled={false}
       onClick={[Function]}
-      size="md"
+      style={Object {}}
       type="button"
     >
       <span
-        className="c4"
-        size="md"
+        className="fa-align-middle fa-ml-2"
       >
         Save
       </span>
     </button>
   </div>
   <div
-    className="c5"
+    className="c3"
   />
 </div>
 `;
@@ -173,7 +126,7 @@ exports[`Storyshots @components/molecules/FormFooter with submit button 1`] = `
   margin: 20px;
 }
 
-.c4 {
+.c2 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -182,51 +135,6 @@ exports[`Storyshots @components/molecules/FormFooter with submit button 1`] = `
   left: 0;
   pointer-events: none;
   box-sizing: border-box;
-}
-
-.c2 {
-  background-color: #00B0CA;
-  padding: 0.9rem 3.7rem;
-  border: none;
-  border-radius: 40px;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-  outline: none;
-  cursor: pointer;
-  color: #fff;
-  width: auto;
-}
-
-.c2:hover {
-  background-color: #0BC1DC;
-  color: #fff;
-}
-
-.c2:active {
-  background-color: #029FB7;
-  box-shadow: -3px 3px 14px 0px rgba(129,67,67,0.2);
-}
-
-.c2:disabled {
-  background-color: #F1F2F7;
-  color: #B8BCD5;
-  cursor: default;
-}
-
-.c2:disabled,
-.c2:disabled:hover {
-  cursor: default;
-}
-
-.c3 {
-  display: inline-block;
-  font-size: 1.125rem;
-  font-weight: 400;
-  line-height: 1.25rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
 .c1 {
@@ -243,18 +151,18 @@ exports[`Storyshots @components/molecules/FormFooter with submit button 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 1.1rem 1.875rem;
+  padding: 0.5rem 1.875rem;
 }
 
-.c1 button:last-child {
+.c1 button {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.c1 button:nth-child(2) {
   margin-left: 2rem;
-}
-
-@media (max-width:540px) {
-  .c2 {
-    padding: 0.9rem 1rem;
-    width: 88%;
-  }
 }
 
 @media (max-width:540px) {
@@ -270,7 +178,7 @@ exports[`Storyshots @components/molecules/FormFooter with submit button 1`] = `
 }
 
 @media (max-width:540px) {
-  .c1 button:last-child {
+  .c1 button:nth-child(2) {
     margin-left: 0;
   }
 }
@@ -282,23 +190,21 @@ exports[`Storyshots @components/molecules/FormFooter with submit button 1`] = `
     className="c1"
   >
     <button
-      className="c2"
-      color="primary"
+      className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
       disabled={false}
       onClick={[Function]}
-      size="md"
+      style={Object {}}
       type="button"
     >
       <span
-        className="c3"
-        size="md"
+        className="fa-align-middle fa-ml-2"
       >
         Save
       </span>
     </button>
   </div>
   <div
-    className="c4"
+    className="c2"
   />
 </div>
 `;
@@ -309,7 +215,7 @@ exports[`Storyshots @components/molecules/FormFooter with top divider 1`] = `
   margin: 20px;
 }
 
-.c4 {
+.c2 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -318,51 +224,6 @@ exports[`Storyshots @components/molecules/FormFooter with top divider 1`] = `
   left: 0;
   pointer-events: none;
   box-sizing: border-box;
-}
-
-.c2 {
-  background-color: #00B0CA;
-  padding: 0.9rem 3.7rem;
-  border: none;
-  border-radius: 40px;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-  outline: none;
-  cursor: pointer;
-  color: #fff;
-  width: auto;
-}
-
-.c2:hover {
-  background-color: #0BC1DC;
-  color: #fff;
-}
-
-.c2:active {
-  background-color: #029FB7;
-  box-shadow: -3px 3px 14px 0px rgba(129,67,67,0.2);
-}
-
-.c2:disabled {
-  background-color: #F1F2F7;
-  color: #B8BCD5;
-  cursor: default;
-}
-
-.c2:disabled,
-.c2:disabled:hover {
-  cursor: default;
-}
-
-.c3 {
-  display: inline-block;
-  font-size: 1.125rem;
-  font-weight: 400;
-  line-height: 1.25rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
 .c1 {
@@ -379,19 +240,18 @@ exports[`Storyshots @components/molecules/FormFooter with top divider 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 1.1rem 1.875rem;
-  border-top: 1px solid #f1f5f5;
+  padding: 0.5rem 1.875rem;
 }
 
-.c1 button:last-child {
+.c1 button {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.c1 button:nth-child(2) {
   margin-left: 2rem;
-}
-
-@media (max-width:540px) {
-  .c2 {
-    padding: 0.9rem 1rem;
-    width: 88%;
-  }
 }
 
 @media (max-width:540px) {
@@ -407,7 +267,7 @@ exports[`Storyshots @components/molecules/FormFooter with top divider 1`] = `
 }
 
 @media (max-width:540px) {
-  .c1 button:last-child {
+  .c1 button:nth-child(2) {
     margin-left: 0;
   }
 }
@@ -419,23 +279,21 @@ exports[`Storyshots @components/molecules/FormFooter with top divider 1`] = `
     className="c1"
   >
     <button
-      className="c2"
-      color="primary"
+      className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
       disabled={false}
       onClick={[Function]}
-      size="md"
+      style={Object {}}
       type="button"
     >
       <span
-        className="c3"
-        size="md"
+        className="fa-align-middle fa-ml-2"
       >
         Save
       </span>
     </button>
   </div>
   <div
-    className="c4"
+    className="c2"
   />
 </div>
 `;

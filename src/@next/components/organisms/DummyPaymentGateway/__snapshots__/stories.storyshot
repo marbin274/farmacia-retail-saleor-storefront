@@ -23,7 +23,7 @@ exports[`Storyshots @components/organisms/DummyPaymentGateway default 1`] = `
   height: 0.5em;
   margin: 0 auto;
   border-radius: 0.25em;
-  background: #00B0CA;
+  background: #00BF8E;
 }
 
 .c3 {
@@ -32,7 +32,7 @@ exports[`Storyshots @components/organisms/DummyPaymentGateway default 1`] = `
   height: 0.5em;
   margin: 0 auto;
   border-radius: 0.25em;
-  background: #00B0CA;
+  background: #00BF8E;
 }
 
 .c4 {
@@ -85,7 +85,7 @@ exports[`Storyshots @components/organisms/DummyPaymentGateway default 1`] = `
   width: 1em;
   height: 1em;
   margin: 0.25em 1em 0.25em 0.25em;
-  border: 0.1em solid #00B0CA;
+  border: 0.1em solid #00BF8E;
   border-radius: 0.5em;
   background: #fff;
 }

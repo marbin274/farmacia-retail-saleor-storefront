@@ -20,7 +20,7 @@ export const Tile = styled.div<TileProps>`
   padding-left: ${props => props.theme.spacing.gutter};
   width: calc(100% / ${props => props.columns});
 
-  ${media.smallScreen`
+  ${media.largeScreen`
     width: 100%;
   `}
 `;

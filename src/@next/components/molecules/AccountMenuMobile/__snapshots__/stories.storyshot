@@ -19,7 +19,8 @@ exports[`Storyshots @components/molecules/AccountMenuMobile default 1`] = `
 
 .c2 {
   background-color: #fff;
-  padding: 1.25rem;
+  padding: 0 1rem;
+  height: 2.5rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -33,9 +34,9 @@ exports[`Storyshots @components/molecules/AccountMenuMobile default 1`] = `
   -ms-flex-align: center;
   align-items: center;
   position: relative;
-  margin-bottom: 2rem;
-  border: 1px solid #E4E5ED;
-  border-radius: 0.25rem;
+  margin-bottom: 1.625rem;
+  border: 1px solid #908BA7;
+  border-radius: 2.5rem;
 }
 
 .c1 {
@@ -55,13 +56,18 @@ exports[`Storyshots @components/molecules/AccountMenuMobile default 1`] = `
     >
       Mi perfil
       <svg
-        height={8}
-        viewBox="0 0 32 32"
-        width={8}
+        className=" "
+        color="#131336"
+        fill="#131336"
+        height={12}
+        viewBox="0 0 24 24"
+        width={12}
+        xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M16 29.856l-15.999-27.712h31.999l-15.999 27.712z"
-          fill="#00B0CA"
+          clipRule="evenodd"
+          d="M0.292893 1.17155C0.683417 0.776149 1.31658 0.776149 1.70711 1.17155L9.02396 8.57987L16.3177 1.17155C16.7214 0.79001 17.3542 0.812103 17.7311 1.2209C18.1079 1.6297 18.0861 2.2704 17.6823 2.65194L9.68232 10.7277C9.28837 11.1 8.67393 11.0892 8.29289 10.7034L0.292893 2.60345C-0.0976311 2.20804 -0.0976311 1.56696 0.292893 1.17155Z"
+          fillRule="evenodd"
         />
       </svg>
     </div>

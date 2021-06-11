@@ -7,6 +7,7 @@ import { turquoise, aunaBlack } from "@temp/@next/globalStyles/constants";
 import { Link } from "react-router-dom";
 import * as S from "./styles";
 import { IProps } from "./types";
+import { DownIcon } from "@farmacia-retail/farmauna-components";
 
 export const AccountMenuMobile: React.FC<IProps> = ({
   links,
@@ -31,7 +32,7 @@ export const AccountMenuMobile: React.FC<IProps> = ({
       ref={setElementRef()}
     >
       {getActiveSectionName()}
-      <Icon name="select_arrow" size={8} color={turquoise} />
+      <DownIcon size={12} color={aunaBlack} />
       {showMenu && (
         <S.Overlay>
           <S.MenuHeader>Mi Cuenta</S.MenuHeader>

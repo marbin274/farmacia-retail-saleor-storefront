@@ -1,19 +1,10 @@
 import React, { useEffect, useState } from "react";
-
-// import {AunaPaymentGateway} from "@components/organisms/AunaPaymentGateway";
 import { NiubizPaymentGateway } from "@components/organisms/NiubizPaymentGateway";
-import visaIcon from "@temp/images/auna/visa-payment.svg";
-import masterCardIcon from "@temp/images/auna/mastercard-payment.svg";
-import niubizTextIcon from "@temp/images/auna/niubiz-text.svg"
-import americanExpress from "@temp/images/auna/american-express-payment.svg";
-import dinersClub from "@temp/images/auna/diners-club-payment.svg";
-import ReactSVG from "react-svg";
 import { Loader } from "@components/atoms";
 import { PROVIDERS } from "@temp/core/config";
 import { IProps } from "./types";
 import * as S from "./styles";
 import * as Sentry from "@sentry/react";
-// import { useHistory } from "react-router";
 
 const PaymentGatewaysList: React.FC<IProps> = ({
   paymentGateways,
@@ -31,7 +22,6 @@ const PaymentGatewaysList: React.FC<IProps> = ({
   voucherCode,
   reRender,
 }: IProps) => {
-
   // @ts-ignore
   const [token, setToken] = useState("");
   // @ts-ignore
@@ -62,40 +52,12 @@ const PaymentGatewaysList: React.FC<IProps> = ({
   return (
     <S.Wrapper>
       {paymentGateways.map(({ id, name, config }, index) => {
-        const checked = selectedPaymentGateway === id;
-
         switch (id) {
           case PROVIDERS.DUMMY.id:
-            return (
-              <div key={index}>
-               
-              </div>
-            );
+            return <div key={index}></div>;
           case PROVIDERS.AUNA.id: {
             return (
               <div key={index}>
-                <S.PaymentSubtitle>
-                  Pagos seguros con:
-                </S.PaymentSubtitle>
-                <S.RadioContainerPayment>
-                    <S.PaymentLine>
-                      <S.PaymentIconNiubiz >  
-                        <ReactSVG path={niubizTextIcon} />
-                      </S.PaymentIconNiubiz>
-                      <S.PaymentIcon checked={checked}>
-                        <ReactSVG path={visaIcon} />
-                      </S.PaymentIcon>
-                      <S.PaymentIcon checked={checked}>
-                        <ReactSVG path={masterCardIcon} />
-                      </S.PaymentIcon>
-                      <S.PaymentIcon checked={checked}>
-                        <ReactSVG path={americanExpress} />
-                      </S.PaymentIcon>
-                      <S.PaymentIcon checked={checked}>
-                        <ReactSVG path={dinersClub} />
-                      </S.PaymentIcon>
-                    </S.PaymentLine>
-                </S.RadioContainerPayment>
                 {reRender ? (
                   <NiubizPaymentGateway
                     config={config}
@@ -111,8 +73,9 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                     totalPrice={totalPrice}
                     userDataForNiubiz={userDataForNiubiz}
                   />
-
-                ) : <Loader />}
+                ) : (
+                  <Loader />
+                )}
               </div>
             );
           }

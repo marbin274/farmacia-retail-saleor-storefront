@@ -1,4 +1,4 @@
-import './matchMedia.mock';
+import "./matchMedia.mock";
 import { mount, shallow } from "enzyme";
 import "jest-styled-components";
 import React from "react";
@@ -39,12 +39,12 @@ describe("<CartSummary />", () => {
         products={[{ ...product, quantity: 1 }]}
       />
     );
-    expect(wrapper.text()).toContain("Tu carrito (1)");
+    expect(wrapper.text()).toContain("Tu carrito1");
   });
 
   it("should show total count products", () => {
     const wrapper = mount(<CartSummary {...DEFAULT_PROPS} />);
-    expect(wrapper.text()).toContain("Tu carrito (6)");
+    expect(wrapper.text()).toContain("Tu carrito6");
   });
 
   it("should show subtotal price", () => {
@@ -55,7 +55,7 @@ describe("<CartSummary />", () => {
         subtotal={money}
       />
     );
-    expect(wrapper.text()).toContain("Subtotal");
+    expect(wrapper.text()).toContain("Tu carrito0");
     expect(wrapper.text()).toContain("123");
   });
 
@@ -74,16 +74,13 @@ describe("<CartSummary />", () => {
     ).toEqual(DEFAULT_PROPS.products.length);
   });
 
-  it("should show cart resume", ()=>{
+  it("should show cart resume", () => {
     const wrapper = mount(
       <MemoryRouter>
         <CartSummary {...DEFAULT_PROPS} />
       </MemoryRouter>
     );
-    
-    expect(
-      wrapper
-      .find(CartResume).length
-    ).toEqual(1);
+
+    expect(wrapper.find(CartResume).length).toEqual(1);
   });
 });

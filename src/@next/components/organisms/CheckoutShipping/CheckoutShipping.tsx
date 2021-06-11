@@ -94,11 +94,10 @@ const CheckoutShipping: React.FC<IProps> = ({
     }
   };
 
-  const renderGroupLabel = (id: number, title: string) => (
-    <S.GroupLabel>
-      <S.GroupLabelIndex>{id}</S.GroupLabelIndex>
-      <S.GroupLabelTitle>{title}</S.GroupLabelTitle>
-    </S.GroupLabel>
+  const renderGroupLabel = (title: string) => (
+    <span className='fa-text-2xl fa-mb-6 fa-block'>
+      {title}
+    </span>
   );
 
   const handleOnclick = (
@@ -156,7 +155,7 @@ const CheckoutShipping: React.FC<IProps> = ({
       return null;
     }
 
-    const { id, name, price, subtitle } = shippingMethod;
+    const { id, isScheduled, name, price, subtitle } = shippingMethod;
     const selected = values?.shippingMethod === id;
     const index = 0;
 
@@ -165,6 +164,7 @@ const CheckoutShipping: React.FC<IProps> = ({
         data-cy={`checkoutShippingMethodOption${index}Input`}
         hasError={!!formikErrors?.shippingMethod && !values.shippingMethod}
         selected={selected}
+        isScheduledSelected={!!selected && !!isScheduled}
         onClick={() => {
           handleOnclick(id, false, null, selected, express.id);
         }}
@@ -205,7 +205,7 @@ const CheckoutShipping: React.FC<IProps> = ({
       return null;
     }
 
-    const { id, name, price, scheduleDates, subtitle } = shippingMethod;
+    const { id, isScheduled, name, price, scheduleDates, subtitle } = shippingMethod;
     const selected = values?.shippingMethod === id;
     const index = 1;
 
@@ -229,6 +229,7 @@ const CheckoutShipping: React.FC<IProps> = ({
         data-cy={`checkoutShippingMethodOption${index}Input`}
         hasError={!!formikErrors?.shippingMethod && !values.shippingMethod}
         selected={selected}
+        isScheduledSelected={!!selected && !!isScheduled}
         onClick={() => {
           handleOnclick(id, true, slotScheduleDates, selected);
         }}
@@ -265,15 +266,17 @@ const CheckoutShipping: React.FC<IProps> = ({
 
     return (
       <form id={formId} ref={formRef} onSubmit={handleSubmit}>
+        <div className='fa-grid fa-grid-cols-1 lg:fa-grid-cols-2 fa-gap-x-8 fa-relative'>
           {renderExpressItem()}
           {renderScheduledItem()}
-          {!!shippingMethods?.length &&
-            formikErrors?.shippingMethod &&
-            !values.shippingMethod && (
-              <ErrorMessage
-                errors={[{ message: formikErrors.shippingMethod }]}
-              />
-            )}
+        </div>
+        {!!shippingMethods?.length &&
+          formikErrors?.shippingMethod &&
+          !values.shippingMethod && (
+            <ErrorMessage
+              errors={[{ message: formikErrors.shippingMethod }]}
+            />
+          )}
         </form>
     )
   }
@@ -281,7 +284,7 @@ const CheckoutShipping: React.FC<IProps> = ({
   return (
     <section>
       <S.FieldsGroup>
-        {renderGroupLabel(3, "¿Cuando desea recibir su pedido?")}
+        {renderGroupLabel("Escoge el tiempo de entrega")}
         {renderForm()}
       </S.FieldsGroup>
     </section>

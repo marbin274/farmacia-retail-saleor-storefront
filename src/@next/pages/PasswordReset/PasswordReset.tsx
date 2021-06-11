@@ -1,7 +1,6 @@
 import { ResetPasswordForm } from "@components/molecules";
 import { setAuthToken } from "@sdk/auth";
 import { useSetPassword, useUserDetails } from "@sdk/react";
-import { Button } from "@temp/@next/components/atoms";
 import { BASE_URL } from "@temp/core/config";
 import { Formik } from "formik";
 import resetPasswordChangedIcon from 'images/auna/reset-password-changed.svg';
@@ -12,6 +11,7 @@ import { passwordResetSchema } from "./PasswordReset.schema";
 import './scss/index.scss';
 import * as S from "./styles";
 import { FormikProps, IProps } from "./types";
+import { Button } from "@farmacia-retail/farmauna-components";
 
 
 const initialData: FormikProps = {
@@ -76,11 +76,10 @@ export const PasswordReset: React.FC<IProps> = ({ history }: IProps) => {
       { showPasswordMessageChanged ?
         <div className="password-changed-confirm">
           <ReactSVG path={resetPasswordChangedIcon} />
-          <br />
-          <br />
+          <div className="title-new-password-form">Restaurar contraseña</div>
           <p><strong>{user ? user.firstName : "Hola"},</strong> se cambió con éxito tu nueva contraseña</p>
           <div className="password-changed-confirm__button">
-            <Button onClick={handleClickGoHome}>Entendido</Button>
+            <Button onClick={handleClickGoHome}>Iniciar sesión</Button>
           </div>
         </div> :
         <Formik

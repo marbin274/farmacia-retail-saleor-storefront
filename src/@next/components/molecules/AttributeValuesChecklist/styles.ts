@@ -12,6 +12,7 @@ export const Header = styled.div`
   font-size: ${props => props.theme.typography.h4FontSize};
   font-weight: ${props => props.theme.typography.boldFontWeight};
   padding-bottom: 1.5rem;
+  display:none;
 `;
 
 export const BottomBorder = styled.div`
@@ -20,11 +21,12 @@ export const BottomBorder = styled.div`
 `;
 
 export const ViewMoreButton = styled.div`
-  padding-bottom: 1.25rem;
+
+  padding: 3.125rem 0 1.25rem 0;
   span {
     color: ${props => props.theme.colors.interactive};
     font-size:${props => props.theme.typography.smallFontSize};
     font-weight:${props => props.theme.typography.normalFontWeight};
-    margin-left: 1rem;
+    margin-left: 0.5rem;
   }
 `;

@@ -6,9 +6,8 @@ export interface Iprops {
 export interface LineDeliveryData {
   label?: string | null;
   text: string | null | undefined;
+  direction?: "row" | "column";
 }
-export interface TitleDelivery{
+export interface TitleDelivery {
   children: React.ReactNode;
 }
-
-

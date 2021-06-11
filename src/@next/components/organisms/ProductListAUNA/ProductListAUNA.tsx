@@ -1,10 +1,11 @@
-import { Button, Loader } from "@components/atoms";
+import { Loader } from "@components/atoms";
 import { ProductTileAUNA } from "@components/molecules";
 import { getProductsWithQuantity } from "@temp/@next/utils/products";
 import { generateProductUrl } from "@temp/core/utils";
 import React from "react";
 import * as S from "./styles";
 import { IProps } from "./types";
+import { Button, PlusIcon } from "@farmacia-retail/farmauna-components";
 
 export const ProductListAUNA: React.FC<IProps> = ({
   canLoadMore = false,
@@ -40,12 +41,14 @@ export const ProductListAUNA: React.FC<IProps> = ({
           <Loader />
         ) : (
             canLoadMore && (
-              <Button
-                data-cy="load-more_button"
-                color="secondary"
-                onClick={onLoadMore}
+              <Button 
+              variant="outline"
+              data-cy="load-more_button"
+              onClick={onLoadMore}
+              type="button"
+              icon={<PlusIcon size={12} />}
               >
-                Cargar +
+                Cargar más
               </Button>
             )
           )}

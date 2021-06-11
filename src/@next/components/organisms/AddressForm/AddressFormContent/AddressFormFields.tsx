@@ -1,93 +1,128 @@
-import { AddressAutocomplete, InputSelect, TextField } from "@components/molecules";
+import { AddressAutocomplete, InputSelect } from "@components/molecules";
 import React from "react";
 import { IFieldsProps, ISelectProps } from "./types";
+import { InputField } from "@farmacia-retail/farmauna-components";
 
-export const FirstNameTextField = ({ fieldErrors, required, values, onBlur, onChange }: IFieldsProps) => {
-    return <TextField
-        data-cy="addressFormFirstName"
-        name="firstName"
-        label={`${(required ? "*" : "")}Nombre completo`}
-        placeholder="Ejemplo: Juan Perez"
-        value={!values?.firstName ? "" : values?.firstName}
-        autoComplete="given-name"
-        errors={fieldErrors!.firstName}
-        onChange={onChange}
-        onBlur={onBlur}
+export const FirstNameTextField = ({
+  fieldErrors,
+  required,
+  values,
+  onBlur,
+  onChange,
+}: IFieldsProps) => {
+  return (
+    <InputField
+      data-cy="addressFormFirstName"
+      name="firstName"
+      label={`Nombre completo`}
+      placeholder="Ejemplo: Juan Perez"
+      value={!values?.firstName ? "" : values?.firstName}
+      autoComplete="given-name"
+      error={!!fieldErrors?.firstName ? fieldErrors?.firstName[0].message : ""}
+      onChange={onChange}
+      inputSize="large"
+      onBlur={onBlur}
     />
-}
-
-export const PhoneTextField = ({ fieldErrors, values, onBlur, onChange }: IFieldsProps) => {
-    return <TextField
-        data-cy="addressFormPhone"
-        name="phone"
-        placeholder="Ejemplo: 912345678"
-        maxLength={9}
-        label="*Número de celular"
-        value={!values?.phone ? "" : values?.phone}
-        autoComplete="tel"
-        type="tel"
-        errors={fieldErrors!.phone}
-        pattern="\d*"
-        onChange={onChange}
-        onBlur={onBlur}
-    />
-}
-
-export const StreetAddress1 = ({ fieldErrors, values, onBlur, onChange, setFieldValue }: IFieldsProps) => {
-
-    return (
-        <AddressAutocomplete
-            data-cy="addressAutocomplete"
-            name="streetAddress1"
-            label="*Dirección"
-            placeholder="Ejemplo: Av.arenales 213"
-            value={{
-                lat: values?.latitude ? Number(values?.latitude) : undefined,
-                lng: values?.longitude ? Number(values?.longitude) : undefined,
-                text: values?.streetAddress1 || "",
-            }}
-            onChangeValue={onChange}
-            errors={fieldErrors!.streetAddress1}
-            onBlur={onBlur}
-        />
-    );
+  );
 };
 
-export const StreetAddress2 = ({ fieldErrors, values, onBlur, onChange }: IFieldsProps) => {
-    return <TextField
-        data-cy="addressFormStreetAddress2"
-        name="streetAddress2"
-        placeholder="Ejemplo: Edificio, apartamento"
-        label="Referencia"
-        value={
-            !values?.streetAddress2 ? "" : values?.streetAddress2
-        }
-        autoComplete="address-line2"
-        errors={fieldErrors!.streetAddress2}
-        onChange={onChange}
-        onBlur={onBlur}
+export const PhoneTextField = ({
+  fieldErrors,
+  values,
+  onBlur,
+  onChange,
+}: IFieldsProps) => {
+  return (
+    <InputField
+      data-cy="addressFormPhone"
+      name="phone"
+      placeholder="Ejem: 912345678"
+      maxLength={9}
+      label="Número de celular"
+      value={!values?.phone ? "" : values?.phone}
+      autoComplete="tel"
+      type="tel"
+      error={!!fieldErrors?.phone ? fieldErrors?.phone[0].message : ""}
+      pattern="\d*"
+      onChange={onChange}
+      inputSize="large"
+      onBlur={onBlur}
     />
-}
+  );
+};
+
+export const StreetAddress1 = ({
+  fieldErrors,
+  values,
+  onBlur,
+  onChange,
+  setFieldValue,
+}: IFieldsProps) => {
+  return (
+    <AddressAutocomplete
+      data-cy="addressAutocomplete"
+      name="streetAddress1"
+      label="Dirección"
+      placeholder="Ejemplo: Av. Arenales 213"
+      value={{
+        lat: values?.latitude ? Number(values?.latitude) : undefined,
+        lng: values?.longitude ? Number(values?.longitude) : undefined,
+        text: values?.streetAddress1 || "",
+      }}
+      onChangeValue={onChange}
+      errors={fieldErrors!.streetAddress1}
+      inputSize="large"
+      onBlur={onBlur}
+    />
+  );
+};
+
+export const StreetAddress2 = ({
+  fieldErrors,
+  values,
+  onBlur,
+  onChange,
+}: IFieldsProps) => {
+  return (
+    <InputField
+      data-cy="addressFormStreetAddress2"
+      name="streetAddress2"
+      placeholder="Ejem: Colegio, edificio, avenida"
+      label="Referencia"
+      value={!values?.streetAddress2 ? "" : values?.streetAddress2}
+      autoComplete="address-line2"
+      error={
+        fieldErrors!.streetAddress2
+          ? fieldErrors?.streetAddress2[0].message
+          : ""
+      }
+      onChange={onChange}
+      inputSize="large"
+      onBlur={onBlur}
+    />
+  );
+};
 
 export const CitySelect = ({ fieldsProps }: ISelectProps) => {
-    const { cities, fieldErrors, handleChange, handleBlur, values } = fieldsProps;
-    const value = values!.city &&
-        cities &&
-        cities!.find(
-            option =>
-                option.code.toLowerCase() ===
-                values!.city?.toLowerCase()
-        );
-    const showPlaceHolder = !value || (value && value.length === 0);
+  const { cities, fieldErrors, handleChange, handleBlur, values } = fieldsProps;
+  const value =
+    values!.city &&
+    cities &&
+    cities!.find(
+      option => option.code.toLowerCase() === values!.city?.toLowerCase()
+    );
+  const showPlaceHolder = !value || (value && value.length === 0);
 
-    return <InputSelect
-        inputProps={{            
-            "data-cy": "addressFormCity",
-            name:"city",
-            placeholder: showPlaceHolder ? "Selecciona tu distrito" : "",            
+  return (
+    <div className="fa-flex fa-flex-col">
+      <InputSelect
+        inputProps={{
+          "data-cy": "addressFormCity",
+          name: "city",
+          placeholder: showPlaceHolder ? "Selecciona tu distrito" : "",
         }}
         name="city"
-        label="*Distrito"
+        label="Distrito"
         options={cities}
         value={value}
         optionLabelKey="description"
@@ -95,6 +130,10 @@ export const CitySelect = ({ fieldsProps }: ISelectProps) => {
         errors={fieldErrors!.city}
         onChange={handleChange}
         onBlur={handleBlur}
-        
-    />
-}
+      />
+      <span className="fa-text-xs fa-mt-2" style={{ color: "#908BA7" }}>
+        Llegamos a 22 distritos de Lima
+      </span>
+    </div>
+  );
+};

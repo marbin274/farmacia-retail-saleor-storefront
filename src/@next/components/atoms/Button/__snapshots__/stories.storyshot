@@ -18,15 +18,15 @@ exports[`Storyshots @components/atoms/Button Primary 1`] = `
 }
 
 .c1 {
-  background-color: #00B0CA;
+  background-color: #00BF8E;
   padding: 0.9rem 3.7rem;
-  border: none;
+  border: 1px solid #008A66;
   border-radius: 40px;
   -webkit-transition: 0.3s;
   transition: 0.3s;
   outline: none;
   cursor: pointer;
-  color: #fff;
+  color: #008A66;
   width: auto;
 }
 
@@ -53,7 +53,7 @@ exports[`Storyshots @components/atoms/Button Primary 1`] = `
 
 .c2 {
   display: inline-block;
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 400;
   line-height: 1.25rem;
   -webkit-user-select: none;
@@ -110,22 +110,22 @@ exports[`Storyshots @components/atoms/Button Secondary 1`] = `
 .c1 {
   background-color: #fff;
   padding: 0.9rem 3.7rem;
-  border: none;
+  border: 1px solid #008A66;
   border-radius: 40px;
   -webkit-transition: 0.3s;
   transition: 0.3s;
   outline: none;
   cursor: pointer;
-  color: #00B0CA;
+  color: #008A66;
   width: auto;
-  box-shadow: inset 0px 0px 0px 3px #00B0CA;
-  border-left: 1px solid #00B0CA;
-  border-right: 1px solid #00B0CA;
+  box-shadow: inset 0px 0px 0px 3px #00BF8E;
+  border-left: 1px solid #00BF8E;
+  border-right: 1px solid #00BF8E;
 }
 
 .c1:hover {
   background-color: #fff;
-  color: #00B0CA;
+  color: #00BF8E;
 }
 
 .c1:active {
@@ -146,7 +146,7 @@ exports[`Storyshots @components/atoms/Button Secondary 1`] = `
 
 .c2 {
   display: inline-block;
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 400;
   line-height: 1.25rem;
   -webkit-user-select: none;
@@ -201,15 +201,15 @@ exports[`Storyshots @components/atoms/Button Size sm 1`] = `
 }
 
 .c1 {
-  background-color: #00B0CA;
+  background-color: #00BF8E;
   padding: 0.1rem 2rem;
-  border: none;
+  border: 1px solid #008A66;
   border-radius: 40px;
   -webkit-transition: 0.3s;
   transition: 0.3s;
   outline: none;
   cursor: pointer;
-  color: #fff;
+  color: #008A66;
   width: auto;
 }
 

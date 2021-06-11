@@ -1,5 +1,6 @@
 import { aunaBrand5, aunaOrangeOnSale } from "@styles/constants";
 import { IPaymentGateway } from "@temp/@next/types";
+import { IDistrictSelected } from "@temp/@sdk/repository";
 import {
   environmentName,
   merchantPassword,
@@ -66,7 +67,7 @@ export const CHECKOUT_STEPS = [
   {
     index: 0,
     link: "/checkout/address",
-    name: "Paso 1: Completa los datos",
+    name: "Datos Personales",
     nextActionName: "Ir a Pago",
     nextStepLink: "/checkout/payment",
     onlyIfShippingRequired: true,
@@ -75,7 +76,7 @@ export const CHECKOUT_STEPS = [
   {
     index: 1,
     link: "/checkout/payment",
-    name: "Paso 2: Ingresa tu tarjeta",
+    name: "Datos de Pago",
     nextActionName: "Pagar y confirmar",
     nextStepLink: "/checkout/review",
     onlyIfShippingRequired: false,
@@ -84,7 +85,7 @@ export const CHECKOUT_STEPS = [
   {
     index: 2,
     link: "/checkout/review",
-    name: "Paso 3: Recibimos tu orden",
+    name: "¡Listo!",
     nextActionName: "Pagar y hacer pedido",
     nextStepLink: "/order-finalized",
     onlyIfShippingRequired: false,
@@ -287,8 +288,9 @@ export const ADDRESS_FORM_SORT = {
 export const ADDRESS_FORM_SHOW_GENERAL_ERRORS = 3;
 export const ADDRESS_FORM_TOTAL_COUNT = 7;
 
-export const DISTRICT_SELECTED_DEFAULT = {
-  code: "",
-  description: "Miraflores",
+export const DISTRICT_SELECTED_DEFAULT: IDistrictSelected = {
+  id: "",
+  name: "Miraflores",
+  warehouse: null,
 };
 export const TOTAL_DISTRICT = 23;

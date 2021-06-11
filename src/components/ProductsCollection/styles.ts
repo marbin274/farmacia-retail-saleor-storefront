@@ -10,6 +10,9 @@ export const Content = styled.div`
   ${media.largeScreen`
     width: 100%;      
   `}
+  ${media.smallScreen`
+    height: auto;      
+  `}
 `;
 
 export const Container = styled.div`

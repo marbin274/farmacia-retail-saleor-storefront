@@ -26,7 +26,7 @@ const ProductsFeatured: React.FC<IProps> = ({
       displayError={false}
       variables={{ 
         first: PRODUCTS_PER_PAGE,
-        districtId: districtSelected.code,
+        districtId: districtSelected.id,
        }}
     >
       {({ data }) => {
@@ -40,9 +40,11 @@ const ProductsFeatured: React.FC<IProps> = ({
             return (
               <div key={collection.id} className="products-featured">
                 <S.Container>
-                  <h2 className="home-page__products-title">
-                    {collection.name}
-                  </h2>
+                  <div className='inner-container'>
+                    <h2 className="home-page__products-title">
+                      {collection.name}
+                    </h2>
+                  </div>
                   <Carousel>
                     {getProductsWithQuantity(products, productsOnCart).map(
                       product => (

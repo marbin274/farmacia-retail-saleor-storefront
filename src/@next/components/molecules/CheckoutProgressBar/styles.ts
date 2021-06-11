@@ -1,11 +1,9 @@
-import { styled } from "@styles";
-import { aunaBlack, aunaDisabled, aunaPrimary, white } from "@styles/constants";
-
-import { DOT_STATUS } from "./";
+import { defaultTheme, media, mediaUp, styled } from "@styles";
+import { aunaDisabled, aunaPrimary, white } from "@styles/constants";
 import addressIcon from "images/auna/checkout-address.svg";
-// import deliveryIcon from "images/auna/checkout-delivery.svg";
 import doneIcon from "images/auna/checkout-done.svg";
 import paymentIcon from "images/auna/checkout-payment.svg";
+import { DOT_STATUS } from "./";
 
 export const ICON_COLORS = [
   aunaDisabled, // INACTIVE
@@ -36,28 +34,66 @@ export const flexCentered = {
 
 export const Dot = styled.div<{ status: DOT_STATUS }>`
   position: relative;
-  width: 2.7rem;
-  height: 2.7rem;
-  border: 3px solid ${props => ICON_COLORS[props.status]};
-  background-color: ${props => ICON_BG_COLORS[props.status]};
-  border-radius: 10rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  background-color: ${props =>
+    props.status === DOT_STATUS.INACTIVE ? "#008A66" : "#452fba"};
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  color: white;
+
+  span {
+    margin: auto;
+    font-size: 0.875rem;
+    line-height: 0.875rem;
+  }
+
+  svg {
+    margin: auto;
+  }
+`;
+
+export const DotStatus = styled.p<{ status: DOT_STATUS }>`
+  display: block;
+  position: absolute;
+  width: 8.875rem;
+  top: 2rem;
+  left: -3.75rem;
+  text-align: center;
+  font-weight: 600;
+
+  ${media.mediumScreen`
+    display: none;
+  `};
+
+  ${({ status }) =>
+    status === DOT_STATUS.INACTIVE &&
+    `
+    color: #A8F0DD;
+  `}
 `;
 
 export const Label = styled.div`
-  color: ${aunaBlack};
-  white-space: pre;
-  display: block;
-  font-family: "Poppins", sans-serif;
-  font-size: 1.0rem;
-  padding: 1rem 0;
-  text-align: center;
+  display: none;
+  ${media.mediumScreen`
+    color: ${white};
+    white-space: pre;
+    display: block;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    line-height: 1rem;
+    padding-top: 0.5rem;
+    text-align: center;
+  `};
 `;
 
 export const ProgressBar = styled.div<{ done?: boolean }>`
-  z-index: -1;
+  z-index: 0;
   width: 100%;
   height: 4px;
-  background-color: ${props => (props.done ? aunaPrimary : aunaDisabled)};
+  background-color: ${props => (props.done ? "#452FBA" : "#008A66")};
 `;
 
 export const Step = styled.div`
@@ -81,4 +117,33 @@ export const Wrapper = styled.div`
   max-width: 23em;
   position: relative;
   width: 80%;
+  ${mediaUp.smallScreen`
+    margin-bottom: 2rem;
+  `};
+`;
+
+export const GoBack = styled.div`
+  position: absolute;
+  left: 5%;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  height: 1.5rem;
+  color: #ffffff;
+  cursor: pointer;
+  a {
+    display: flex;
+    align-items: center;
+  }
+  span {
+    margin-left: 1rem;
+  }
+
+  ${media.mediumScreen`
+    display: none;
+  `};
+
+  @media (min-width: ${defaultTheme.grid.containerWidth}px) {
+    left: calc((100vw - ${defaultTheme.grid.containerWidth}px) / 2 + 1rem);
+  }
 `;

@@ -9,6 +9,7 @@ export interface IProps {
     } | null;
   };
   canAddToCart?: boolean;
-  isOnSale?:boolean;
-  isOutStock?:boolean;
+  isOnSale?: boolean;
+  isOutStock?: boolean;
+  hasMagnifier?: boolean;
 }

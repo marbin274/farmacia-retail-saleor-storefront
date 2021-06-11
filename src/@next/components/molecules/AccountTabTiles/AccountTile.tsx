@@ -2,10 +2,11 @@ import React from "react";
 
 import { useAccountUpdate, useUserDetails } from "@sdk/react";
 
-import { Attribute, IconButton, Tile } from "@components/atoms";
+import { Attribute, Tile } from "@components/atoms";
 
 import { AccountUpdateForm } from "./AccountUpdateForm";
 import * as S from "./styles";
+import { Button, PencilIcon } from "@farmacia-retail/farmauna-components";
 
 export const AccountTile: React.FC = () => {
   const [isEditing, setIsEditing] = React.useState(false);
@@ -20,18 +21,22 @@ export const AccountTile: React.FC = () => {
   return (
     <S.TileWrapper>
       <Tile>
-        <S.Wrapper>
-          <S.Header>Mis datos</S.Header>
+        <S.Wrapper className="wrapper_background_account">
+          <S.Header className="my_data">
+            Mis datos
+            {!isEditing && (
+              <Button
+                icon={<PencilIcon />}
+                iconOnly={true}
+                size="small"
+                onClick={() => setIsEditing(isEditing => !isEditing)}
+              />
+
+            )}
+          </S.Header>
           <S.Content>
-            <S.HeaderSmall>
+            <S.HeaderSmall className="personal_data">
               Datos personales
-              {!isEditing && (
-                <IconButton
-                  name="edit"
-                  size={22}
-                  onClick={() => setIsEditing(isEditing => !isEditing)}
-                />
-              )}
             </S.HeaderSmall>
             {isEditing ? (
               <AccountUpdateForm

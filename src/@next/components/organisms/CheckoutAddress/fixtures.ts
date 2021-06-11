@@ -79,6 +79,7 @@ const availableDistricts: GetShop_shop_availableDistricts[] = [
     isDefault: false,
     name: "Miraflores",
     __typename: "District",
+    warehouse: null,
   },
   {
     id: "2",
@@ -86,6 +87,7 @@ const availableDistricts: GetShop_shop_availableDistricts[] = [
     isDefault: false,
     name: "San Isidro",
     __typename: "District",
+    warehouse: null,
   },
 ];
 

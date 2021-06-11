@@ -14,14 +14,22 @@ import {
   getProductPricingClass,
 } from "@temp/@next/utils/products";
 import { generateProductUrl } from "@temp/core/utils";
+import { Button, TrashIcon } from "@farmacia-retail/farmauna-components";
 import * as React from "react";
 import { Link } from "react-router-dom";
+import "react-popper-tooltip/dist/styles.css";
+import { Tooltip } from "@temp/@next/components/atoms";
 
 interface IProductList {
+  itemToDelete: string;
+  modalOpen: boolean;
   products: ICheckoutModelLine[];
   onAdd(variant: ICheckoutModelLineVariantLocalStorage, quantity: number): void;
   onRemove(variantId: string): void;
   onSubtract(variantId: string): void;
+  onConfirm: () => void;
+  onCancel: () => void;
+  onClose: () => void;
 }
 
 const ProductList: React.FC<IProductList> = ({
@@ -29,11 +37,18 @@ const ProductList: React.FC<IProductList> = ({
   onAdd,
   onRemove,
   onSubtract,
+  modalOpen,
+  itemToDelete,
+  onConfirm,
+  onCancel,
 }) => (
   <ul className="cart__list">
     {products.map(product => {
       const { variant, quantity } = product;
-      const { canAddToCart } = checkProductCanAddToCart(convertProductOnCartInProduct(product), products);
+      const { canAddToCart } = checkProductCanAddToCart(
+        convertProductOnCartInProduct(product),
+        products
+      );
       const isOnSale = checkProductIsOnSale(product);
       const id: string | undefined = variant.product?.id;
       const name: string | undefined = product.name
@@ -45,49 +60,71 @@ const ProductList: React.FC<IProductList> = ({
       if (!productUrl) {
         return null;
       }
-
       return (
         <li key={id} className="cart__list__item">
-          <Link to={productUrl}>
+          <Link className="cart__list__item__image" to={productUrl}>
             {variant.product && <Thumbnail source={variant.product} />}
           </Link>
           <div className="cart__list__item__details">
-            <div className="cart__list__item__up">
-              <Link to={productUrl}>
-                <p className="cart__list__item__details--name">{name}</p>
-              </Link>
-              <button
-                className="cart__list__item__details--button"
-                onClick={() => {
-                  removePaymentItems();
-                  onRemove(variant.id);
-                  launchRemoveToCartEvent(
-                    variant?.sku,
-                    variant?.product?.name,
-                    variant?.pricing?.price?.gross,
-                    quantity
-                  );
-                }}
-              >
-                Eliminar
-              </button>
-            </div>
-            <div className="cart__list__item__down">
-              <TaxedMoney
-                className={`cart__list__item__quantity__price price ${getProductPricingClass(
-                  canAddToCart,
-                  isOnSale
-                )}`}
-                taxedMoney={variant.pricing.price}
-              />
-              <ItemsHandler
-                canAddToCart={canAddToCart}
-                product={product}
-                addToCart={onAdd}
-                removeItemToCart={onRemove}
-                subtractItemToCart={onSubtract}
-              />
-            </div>
+            {modalOpen && itemToDelete === variant.id ? (
+              <div className="cart__list__item__delete">
+                <h4>¿Deseas eliminar este producto?</h4>
+                <h4>{name}</h4>
+                <div className="cart__list__item__delete--options">
+                  <Button onClick={onConfirm}>Aceptar</Button>
+                  <Button onClick={onCancel} variant="outline">
+                    Cancelar
+                  </Button>
+                </div>
+              </div>
+            ) : (
+              <>
+                <div className="cart__list__item__up">
+                  <Link to={productUrl}>
+                    <p className="cart__list__item__details--name">{name}</p>
+                  </Link>
+                </div>
+                <div className="cart__list__item__down">
+                  <div className="cart__list__item__price">
+                    <p className="cart__list__item__price__title">Precio</p>
+                    <TaxedMoney
+                      className={`cart__list__item__price__value ${getProductPricingClass(
+                        canAddToCart,
+                        isOnSale
+                      )}`}
+                      taxedMoney={variant.pricing.price}
+                    />
+                  </div>
+                  <ItemsHandler
+                    canAddToCart={canAddToCart}
+                    product={product}
+                    addToCart={onAdd}
+                    removeItemToCart={onRemove}
+                    subtractItemToCart={onSubtract}
+                  />
+                  <Tooltip
+                    className="cart__list__item__details--button-tooltip"
+                    text="Quitar"
+                  >
+                    <Button
+                      className="cart__list__item__details--button"
+                      icon={<TrashIcon size={16} />}
+                      onClick={() => {
+                        removePaymentItems();
+                        onRemove(variant.id);
+                        launchRemoveToCartEvent(
+                          variant?.sku,
+                          variant?.product?.name,
+                          variant?.pricing?.price?.gross,
+                          quantity
+                        );
+                      }}
+                      iconOnly
+                    />
+                  </Tooltip>
+                </div>
+              </>
+            )}
           </div>
         </li>
       );

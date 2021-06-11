@@ -12,4 +12,5 @@ export interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
   value?: string | number;
   touched?: boolean;
   inputWrapperClassname?: string;
+  inputSize?: "small" | "normal" | "large";
 }

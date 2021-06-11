@@ -5,6 +5,7 @@ export const MapWrapper = styled.div`
   height: auto;
   border-radius: 1rem;
   overflow: hidden;
+  margin-top: 2.5rem;
   margin-bottom: 1.5rem;
 `;
 

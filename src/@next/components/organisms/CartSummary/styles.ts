@@ -4,34 +4,33 @@ import {
   aunaComplementary1,
   aunaBlack,
   aunaBrand3,
-  aunaGreyDark,
   aunaGrey20,
-  turquoise
+  turquoise,
 } from "@styles/constants";
 
-export const CartSummaryContainer = styled.div` 
+export const CartSummaryContainer = styled.div`
   ${mediaUp.mediumScreen`
     flex: 1;
   `}
-`
+`;
 export const Wrapper = styled.div<{ mobileCartOpened: boolean }>`
   background-color: ${aunaGrey20};
   ${media.smallScreen`
-    background-color: ${ (props: any )=> props.mobileCartOpened ? aunaGrey20 : aunaComplementary1};
+    background-color: ${(props: any) =>
+      props.mobileCartOpened ? "#fff" : aunaComplementary1};
   `}
   overflow-y: auto;
   overflow-x: hidden;  
   z-index: 1;
   ${mediaUp.mediumScreen`
     flex: 1;
-    margin-top: 1rem;
     background-color: initial;
   `}
   ${media.mediumScreen`
     width: 100%;
     height: 100%;
     position: fixed;
-    top: calc(100% - 86px);
+    top: calc(100% - 5.375rem);
     left: 0%;
     transition: all 0.5s ease;
     position: fixed;
@@ -40,30 +39,32 @@ export const Wrapper = styled.div<{ mobileCartOpened: boolean }>`
   ${props =>
     props.mobileCartOpened &&
     media.mediumScreen`
-    top: 56px;
-    padding-bottom: 70px;
+    top: 5rem;
+    padding-bottom: 4.375rem;
   `}
   ${props =>
     !props.mobileCartOpened &&
     media.mediumScreen`
-    height: 100px;
+    height: 6.25rem;
     overflow: hidden;
   `}
+
+  hr {
+    border-color: #F7F6F8;
+  }
 `;
 export const Content = styled.div`
-  padding: 0 20px 32px 20px;
-  ${mediaUp.mediumScreen`
-    overflow: overlay;
-    max-height: 40rem;
-  `}
-`;
-
-export const ProductLine = styled.div`
-  padding: 0.625rem 0.7rem 0.625rem 0rem;
+  height: calc(100% - 5.5rem);
 `;
 
 export const CartSummaryProductList = styled.div`
-  margin-bottom: 17px;
+  height: calc(100% - 6.625rem);
+  padding: 0 1.25rem;
+  overflow: auto;
+`;
+
+export const ProductLine = styled.div`
+  padding: 1rem 0.7rem 1rem 0rem;
 `;
 
 export const ShowCart = styled.div`
@@ -74,8 +75,8 @@ export const ShowCart = styled.div`
   padding: 0.875rem 1rem;
   width: 7.5625rem;
   height: 3rem;
-  left: calc(50% - 7.5625rem/2 + 6.0625rem);
-  top: calc(50% - 3rem/2);
+  left: calc(50% - 7.5625rem / 2 + 6.0625rem);
+  top: calc(50% - 3rem / 2);
   border: 0.0625rem solid ${turquoise};
   box-sizing: border-box;
   border-radius: 1.5rem;
@@ -83,43 +84,28 @@ export const ShowCart = styled.div`
 `;
 
 export const BadgeCartWrapper = styled.div`
-${media.smallScreen`
+  ${media.smallScreen`
     display:flex;
     flex-direction: row;
-  `}  
-`;
-
-
-export const HR = styled.hr`
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid ${aunaComplementary1};
-  margin: 0;
-  padding: 0;
-  ${media.smallScreen`
-    border-top: 1px solid ${aunaGreyDark};
-    display:none;
-  `}
-  ${mediaUp.mediumScreen`
-    border: none;
   `}
 `;
 
-export const Header = styled.div<{mobileCartOpened: boolean}>`
+export const Header = styled.div<{ mobileCartOpened: boolean }>`
+  background-color: #e8fcf7;
   align-items: center;
-  padding-top: 1.25rem;
-  ${media.smallScreen`
-    padding-top: 0;
-    align-items: ${(props: any)=> props.mobileCartOpened ? "flex-start" : "center"};
-    flex-direction: column;
-    padding-right: 0.9375rem;
-  `}
-  ${mediaUp.mediumScreen`
-    margin-bottom: 2rem;
-  `}
+  padding: 1.875rem 0 1.375rem 1.5rem;
   display: flex;
   justify-content: space-between;
+  ${mediaUp.mediumScreen`
+  margin-bottom: 1rem;
+  `}
+  ${media.smallScreen`
+    align-items: ${(props: any) =>
+      props.mobileCartOpened ? "flex-start" : "center"};
+    flex-direction: column;
+    padding-right: 0.9375rem;
+    padding: 1rem 2.25rem 1.5rem;
+  `}
 `;
 export const Block = styled.div<{
   position: number;
@@ -128,29 +114,35 @@ export const Block = styled.div<{
   display: flex;
   justify-content: space-between;
   width: 100%;
-  ${media.smallScreen`
-  margin: ${(props: any) =>
-    props.position === 2 ? "0 1.5rem 1.875rem 1.5rem" : "16px 16px 0 auto"};
-  `}
+  width: ${(props: any) => (props.position === 1 ? "fit-content" : "100%")};
   ${media.mediumScreen`  
-  margin: ${(props: any) =>
-    props.position === 2 ?  "0 0 30px 24px" : "16px 16px 0 auto"};
-  `}   
-  width: ${ (props: any) =>
-    props.position === 1 ? "fit-content" : "-webkit-fill-available"};
+    margin: ${(props: any) =>
+      props.position === 2 ? "0 0 30px 1.5rem" : "16px 16px 0 auto"};
+  `}
+  ${media.smallScreen`
+  margin: ${(props: any) => (props.position === 2 ? "0" : "1rem 1rem 0 auto")};
+  `}
+
+  button {
+    span {
+      margin-left: 0;
+    }
+  }
 `;
-export const Title = styled.div<{mobileCartOpened: boolean}>`
+export const Title = styled.div<{ mobileCartOpened: boolean }>`
   display: flex;
-  flex-direction: column;
   margin: 0;
   font-weight: 500;
-  padding-left: 1.2rem;
-  font-size: ${({theme}: { theme: DefaultTheme }) => theme.typography.h4FontSize}
+  font-size: ${({ theme }: { theme: DefaultTheme }) =>
+    theme.typography.h4FontSize}
   color: ${aunaBrand3};
   ${mediaUp.mediumScreen`
-    color: ${({theme}: { theme: DefaultTheme }) => theme.colors.shippingMethodBlack}
-    font-size: ${({theme}: { theme: DefaultTheme }) => theme.typography.baseFontSize}
-    font-weight: ${({theme}: { theme: DefaultTheme }) => theme.typography.boldFontWeight}
+    color: ${({ theme }: { theme: DefaultTheme }) =>
+      theme.colors.shippingMethodBlack}
+    font-size: ${({ theme }: { theme: DefaultTheme }) =>
+      theme.typography.baseFontSize}
+    font-weight: ${({ theme }: { theme: DefaultTheme }) =>
+      theme.typography.boldFontWeight}
   `}
   ${media.mediumScreen`
     font-size: ${(props: { theme: DefaultTheme }) =>
@@ -158,50 +150,111 @@ export const Title = styled.div<{mobileCartOpened: boolean}>`
     cursor: pointer;
   `}
   ${media.smallScreen`
-    padding-left: 0.625rem;
-    font-size: ${(props: any) => props.mobileCartOpened ? "1.375rem" : "1.125rem"};
-    color: ${(props:any) => props.mobileCartOpened ? aunaBrand3 : aunaBlack};
+    font-size: ${(props: any) =>
+      props.mobileCartOpened ? "1.375rem" : "1.125rem"};
+    color: ${(props: any) => (props.mobileCartOpened ? aunaBrand3 : aunaBlack)};
   `}
 `;
 
+export const TitleIcon = styled.div`
+  width: 2rem;
+  height: 2rem;
+  background-color: #00bf8e;
+  border-radius: 50%;
+  display: flex;
+  color: ${(props: { theme: DefaultTheme }) => props.theme.colors.white};
+  svg {
+    margin: auto;
+  }
+`;
+
+export const TitleText = styled.div`
+  margin-left: 1.5rem;
+  span {
+    display: block;
+    color: #23212b;
+    &:nth-child(1) {
+      font-size: ${({ theme }: { theme: DefaultTheme }) =>
+        theme.typography.h3FontSize};
+      font-weight: ${({ theme }: { theme: DefaultTheme }) =>
+        theme.typography.boldFontWeight};
+      line-height: 2rem;
+
+      ${media.smallScreen`
+        font-size: 1rem;
+      `}
+    }
+    &:nth-child(2) {
+      margin-top: 0.25rem;
+      font-size: ${({ theme }: { theme: DefaultTheme }) =>
+        theme.typography.baseFontSize};
+      font-weight: 500;
+      line-height: ${({ theme }: { theme: DefaultTheme }) =>
+        theme.typography.h3FontSize};
+
+      ${media.smallScreen`
+        font-size: 0.75rem;
+        line-height: 0.75rem;
+      `}
+    }
+  }
+
+  ${media.smallScreen`
+    margin-left: 1rem;
+  `}
+`;
 export const Text = styled.span<{ mobileCartOpened: boolean }>`
   font-weight: 300;
   font-size: 0.75rem;
   ${media.smallScreen`
-    font-size: ${ (props: any) => props.mobileCartOpened ? "0.875rem" : "0.75rem"};
+    font-size: ${(props: any) =>
+      props.mobileCartOpened ? "0.875rem" : "0.75rem"};
   `}
   margin: 2px 0 0 3px;
 `;
 export const Close = styled.div<{ mobileCartOpened: boolean }>`
-  display: none;
-  ${media.mediumScreen`
-    display: ${(props: any) => (props.mobileCartOpened ? "unset" : "none")};
-    margin-bottom: 8px;
-  `}
+  height: 2rem;
+  width: 2rem;
+  align-self: flex-start;
+  display: flex;
+  color: white;
+  background-color: #452fba;
+  border-radius: 50%;
+  color: #fff;
+
+  svg {
+    margin: auto;
+    path {
+      transform: translate(0.125rem, 0.125rem);
+    }
+  }
 `;
 export const HeadClose = styled.div<{ mobileCartOpened: boolean }>`
-    display: none;
-    ${media.mediumScreen`
-      display: ${(props: any) => (props.mobileCartOpened ? "flex" : "none")};
-      flex-direction: row;
-      justify-content: space-between;
-      width: 100%;
-      padding: 1.25rem 1.25rem 0 1.25rem;
-    `}
+  display: none;
+  ${media.mediumScreen`
+    display: ${(props: any) => (props.mobileCartOpened ? "flex" : "none")};
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  `}
 `;
 export const CostLine = styled.div<{ last: boolean }>`
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  span {
-    display: inline-block;
-  }
-  font-weight: ${(props:any) => (props.last ? 500 : "normal")};
+  align-items: center;
+  font-weight: ${(props: any) => (props.last ? 500 : "normal")};
   font-size: ${(props: any) => (props.last ? "0.875rem" : "0.75rem")};
   ${media.smallScreen`
-  font-size: ${(props: any) => (props.last ? "1.25rem" : "0.75rem")};
-  `}
+    font-size: ${(props: any) => (props.last ? "1.25rem" : "0.75rem")};
+  `};
 
   color: ${props => (props.last ? "#121314" : "#9B9B9B")};
+
+  span  {
+    font-weight: 600;
+    font-size: 1rem;
+  }
 `;
 
 export const CostLineLabel = styled.span`
@@ -211,14 +264,12 @@ export const CostLineLabel = styled.span`
   `}
 `;
 
-export const CostTotalWrapper = styled.span`
-  div span {
-    font-size: 1rem;
-    span {
-      font-size: 1.125rem;
-      font-weigth: 500;
-    }
-  }
+export const CostTotalWrapper = styled.div`
+  width: 100%;
+  height: 5.625rem;
+  background-color: #f7f6f8;
+  display: flex;
+  padding: 0 4.25rem;
   ${mediaUp.mediumScreen`
     display: none;
   `}
