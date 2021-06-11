@@ -5,8 +5,13 @@ import { Base64 } from "js-base64";
 import { each } from "lodash";
 import { parse as parseQs, stringify as stringifyQs } from "query-string";
 import { FetchResult } from "react-apollo";
-import { OrderDirection, ProductOrderField } from "../../../gqlTypes/globalTypes";
+import {
+  OrderDirection,
+  ProductOrderField,
+} from "../../../gqlTypes/globalTypes";
 import { FormError } from "../types";
+import { Breadcrumb } from "@temp/components";
+import { ProductDetails_product } from "@temp/views/Product/gqlTypes/ProductDetails";
 import {
   CategoryDetails_category,
   CategoryDetails_category_ancestors_edges_node,
@@ -67,7 +72,10 @@ export const generateCollectionUrl = (id: string, name: string) =>
 
 export const generatePageUrl = (slug: string) => `/page/${slug}/`;
 
-export const convertCategoryToMenuItem = (id: string, name: string): MainMenuSubItem => {
+export const convertCategoryToMenuItem = (
+  id: string,
+  name: string
+): MainMenuSubItem => {
   return {
     category: {
       id,
@@ -76,7 +84,7 @@ export const convertCategoryToMenuItem = (id: string, name: string): MainMenuSub
     id,
     name,
   } as any;
-}
+};
 
 interface AttributeDict {
   [attributeSlug: string]: string[];
@@ -192,6 +200,23 @@ export const findFormErrors = (result: void | FetchResult): FormError[] => {
 
 export const removeEmptySpaces = (text: string) => text.replace(/\s+/g, "");
 
+export const getBreadcrumbsFromProduct = (product: ProductDetails_product) => {
+  const breadcrumbs: Breadcrumb[] = [];
+
+  if (!!product.category) {
+    breadcrumbs.push({
+      link: generateCategoryUrl(product.category.id, product.category.name),
+      value: product.category.name,
+    });
+  }
+
+  breadcrumbs.push({
+    link: generateProductUrl(product.id, product.name),
+    value: product.name,
+  });
+
+  return breadcrumbs;
+};
 export const buildCategory = (category: CategoryDetails_category_ancestors_edges_node, index: number) => ({
   "@type": "ListItem",
   "position": index,

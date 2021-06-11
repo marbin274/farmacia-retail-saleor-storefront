@@ -4,11 +4,10 @@ import { joinFormikErrorsToIFormErrorsAndConvertToObjectErrors } from "@temp/@ne
 import { TokenAuthVariables } from "@temp/@sdk/mutations/gqlTypes/TokenAuth";
 import { useFormik } from "formik";
 import * as React from "react";
-import { Button } from "..";
 import ForgottenPassword from "../OverlayManager/Login/ForgottenPassword";
 import { loginFormSchema } from "./loginForm.schema";
 import "./scss/index.scss";
-import { TextField } from "@components/molecules";
+import { Button, InputField } from "@farmacia-retail/farmauna-components";
 
 interface ILoginForm {
   hide?: () => void;
@@ -70,28 +69,35 @@ const LoginForm: React.FC<ILoginForm> = ({
   return (
     <div className="login-form">
       <form onSubmit={handleSubmit}>
-        <TextField
-          autoComplete="email"
-          errors={errors!.email}
-          name="email"
-          placeholder="Correo registrado en Farmauna"
-          type="text"
-          value={!values?.email ? "" : values?.email.toLowerCase()}
-          onBlur={handleBlur}
-          onChange={handleChange}
-          inputWrapperClassname="login-form__input-wrapper"
-        />
-        <TextField
-          autoComplete="password"
-          errors={errors!.password}
-          name="password"
-          placeholder="Contraseña"
-          type="password"
-          value={!values?.password ? "" : values?.password}
-          onBlur={handleBlur}
-          onChange={handleChange}
-          inputWrapperClassname="login-form__input-wrapper"
-        />
+
+        <div className="InputField">
+          <InputField
+            label="Correo electrónico"
+            className="login-form__input-wrapper"
+            error={!!errors?.email ? errors!.email[0].message : ''}
+            placeholder="Correo electrónico"
+            autoComplete="email"
+            name="email"
+            type="text"
+            value={!values?.email ? "" : values?.email.toLowerCase()}
+            onBlur={handleBlur}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="InputField">
+          <InputField
+            label="Contraseña"
+            type="password"
+            autoComplete="password"
+            error={!!errors?.password ? errors!.password[0].message : ''}
+            placeholder="Contraseña"
+            name="password"
+            value={!values?.password ? "" : values?.password}
+            onBlur={handleBlur}
+            onChange={handleChange}
+            className="login-form__input-wrapper"
+          />
+        </div>
         <ForgottenPassword onClick={onForgottenPassword} />
         {requestErrors?.extraInfo?.userInputErrors?.[0]?.message && (
           <div className="login-form__errors">
@@ -101,14 +107,16 @@ const LoginForm: React.FC<ILoginForm> = ({
           </div>
         )}
         <div className="login-form__button">
-          <Button type="submit" {...(loading && { disabled: true })}>
+          <Button type="submit" size="large" {...(loading && { disabled: true })}>
             {loading ? "Cargando" : "Ingresar"}
           </Button>
         </div>
         {!hideRegister && (
           <div className="login-form__change-section">
             <p>¿No tienes cuenta?</p>
-            <button onClick={onSwitchSection}>Regístrate</button>
+            <Button variant="outline" onClick={onSwitchSection}>
+              Regístrate
+            </Button>
           </div>
         )}
       </form>

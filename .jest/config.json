@@ -13,6 +13,7 @@
     "@app/([^\\.]*)$": "<rootDir>/src/@next/$1",
     "@sdk/([^\\.]*)$": "<rootDir>/src/@sdk/$1",
     "@utils/([^\\.]*)$": "<rootDir>/src/@next/utils/$1",
+    "@farmatheme": "<rootDir>/node_modules/@farmacia-retail/farmauna-components/tailwind.config", 
     "images/([^\\.]*.*)$": "<rootDir>/src/images/$1",
     "@hooks": "<rootDir>/src/@next/hooks/index.ts",
     "@components/atoms": "<rootDir>/src/@next/components/atoms/index.ts",

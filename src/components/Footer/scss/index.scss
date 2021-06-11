@@ -33,6 +33,7 @@
           margin-bottom: $spacer;
           font-size: $small-font-size;
           color: $gray;
+          display: block;
 
           a {
             text-decoration: none;
@@ -45,18 +46,27 @@
 
   &-nav {
     background-color: $gray-light;
-    padding: $spacer * 2 0 $spacer * 2;
+    padding: 5.625rem 0 0 0;
 
     @media (max-width: $medium-screen) {
-      padding-bottom: 3rem;
+      padding-bottom: 0rem;
+      padding-top: 4.063rem;
     }
 
     .container {
       display: flex;
       flex-wrap: wrap;
-      margin: 0 auto;
+      justify-content: space-between;
       div:not(:last-of-type) {
         padding-right: $spacer * 3;
+      }
+
+      @media (max-width: $medium-screen) {
+        flex-direction: column;
+        padding-left: 4.563rem;
+      }
+      @media (max-width: $xs-small-screen) {
+        padding-left: 4rem;
       }
     }
 
@@ -67,25 +77,73 @@
     }
 
     &__section {
+      @media (max-width: $medium-screen) {
+        margin-bottom: 2rem;
+      }
       &-header {
-        margin-bottom: $spacer;
+        margin-bottom: 37px;
         font-weight: $font-weight-bold;
         color: $white;
         font-size: $small-font-size;
+
+        @media (max-width: $medium-screen) {
+          margin-bottom: 0.813rem;
+        }
       }
 
       &-content {
         p {
-          margin-bottom: $spacer;
           color: $gray;
           font-size: $small-font-size - 0.1;
           font-weight: $font-weight-bold - 200;
-          display: block;
+          display: block !important;
           a {
             text-decoration: none;
             color: $gray;
             font-size: $small-font-size - 0.1;
             font-weight: $font-weight-bold - 200;
+          }
+        }
+
+        .email_footer {
+          font-size: 0.875rem;
+          font-weight: 600;
+
+          a {
+            color: #a8de3b;
+
+            &:after {
+              content: "";
+              width: 14px;
+              height: 9px;
+              display: inline-block;
+              vertical-align: middle;
+              background: url("../../../images/icon-previous-email.svg")
+                no-repeat;
+              margin-left: 5px;
+            }
+          }
+        }
+
+        .phone_footer {
+          margin-top: 30px;
+          .phone {
+            font-size: 2rem;
+            font-weight: 600;
+
+            &::before {
+              content: "";
+              width: 25px;
+              height: 25px;
+              display: inline-block;
+              vertical-align: middle;
+              margin: -5px 10px 0 0;
+              background: url("../../../images/phone-icon.svg") no-repeat;
+            }
+
+            @media (max-width: $xs-small-screen) {
+              font-size: 1.688rem;
+            }
           }
         }
       }
@@ -98,26 +156,57 @@
     }
 
     .container_terms_and_privacy {
-      display: block;
-      padding-bottom: 2rem;
-      border-top: solid 1px #b8bcd5;
-      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      margin-top: 4.375rem;
+      .content_terms {
+        width: 1140px;
+        height: 95px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1rem;
+
+        @media (max-width: $medium-screen) {
+          width: 100%;
+          flex-direction: column;
+          height: auto;
+          padding: 40px 0;
+        }
+      }
     }
 
     .copyright {
-      margin-bottom: $spacer;
       color: $gray;
       font-size: $small-font-size - 0.1;
       font-weight: $font-weight-bold - 200;
-      float: left;
+      font-weight: 300;
+
+      label {
+        margin-right: 28px;
+        font-size: 14px;
+        font-weight: 300;
+
+        @media (max-width: $medium-screen) {
+          margin-right: auto;
+          margin-bottom: 10px;
+        }
+      }
+
+      @media (max-width: $medium-screen) {
+        display: flex;
+        flex-direction: column;
+      }
     }
 
     .privacy {
-      float: right;
-      color: $gray;
-      margin-right: $spacer * 2;
-      font-size: $small-font-size - 0.1;
-      font-weight: $font-weight-bold;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.875rem;
+      font-weight: 400;
+
+      @media (max-width: $medium-screen) {
+        margin-top: 12px;
+      }
     }
 
     .terms {
@@ -130,7 +219,7 @@
   }
 }
 
-@media only screen and (max-width: $small-screen) {
+/* @media only screen and (max-width: $small-screen) {
   .footer {
     .container {
       div:not(:last-of-type) {
@@ -206,12 +295,12 @@
       }
     }
   }
-}
+} */
 
-.nav-higher {
+/* .nav-higher {
   padding-bottom: 10rem;
   
   @media (max-width: $small-screen) {
     padding-bottom: 13rem;
   }
-}
+} */

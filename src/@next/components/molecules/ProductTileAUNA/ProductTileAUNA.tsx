@@ -4,7 +4,7 @@ import { Thumbnail } from "@components/molecules";
 import {
   checkProductCanAddToCart,
   getProductPricingClass,
-  productStickerRules
+  productStickerRules,
 } from "@temp/@next/utils/products";
 import { launchDetailProductEvent } from "@temp/@sdk/gaConfig";
 import React, { useEffect, useState } from "react";
@@ -43,7 +43,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
     <S.ProductCard data-cy="product-tile" canAddToCart={canAddToCart}>
       <Link to={productLink} key={product.id}>
         <S.WrapperStockout>
-        <ProductSticker isOnSale={isOnSale} isOutStock={isOutStock} />
+          <ProductSticker isOnSale={isOnSale} isOutStock={isOutStock} />
           <div
             className="img"
             onClick={() =>
@@ -58,9 +58,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
               <Thumbnail source={thumbnails} />
             </S.Image>
           </div>
-          <div className="description">
-            <S.Title>{product.name}</S.Title>
-          </div>
+
           <div className={getProductPricingClass(canAddToCart, isOnSale)}>
             <S.Price>
               <TaxedMoney taxedMoney={product?.pricing?.priceRange?.start} />
@@ -73,6 +71,9 @@ export const ProductTileAUNA: React.FC<IProps> = ({
               />
             </div>
           )}
+          <div className="description">
+            <S.Title>{product.name}</S.Title>
+          </div>
         </S.WrapperStockout>
       </Link>
       <ItemsHandler

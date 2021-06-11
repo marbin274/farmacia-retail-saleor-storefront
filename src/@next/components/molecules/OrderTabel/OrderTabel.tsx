@@ -1,7 +1,6 @@
-import { Button } from "@components/atoms";
+import { ArrowRightIcon, Button } from "@farmacia-retail/farmauna-components";
 import { TaxedMoney } from "@components/containers";
 import { generateProductUrl } from "@temp/core/utils";
-import arrowImg from "images/breadcrumbs-arrow.svg";
 import React from "react";
 import Media from "react-media";
 import { ThemeContext } from "styled-components";
@@ -87,11 +86,7 @@ export const OrderTabel: React.FC<IProps> = ({ orders, history }: IProps) => {
                       )}
                       <S.Status>{order.node.customerStatusDisplay}</S.Status>
                       <S.Action>
-                        {matches ? (
-                          <Button size="sm">Ver detalle</Button>
-                        ) : (
-                          <img src={arrowImg} alt="arrow image"/>
-                        )}
+                        <Button icon={<ArrowRightIcon size={16} />} size="small" iconOnly />
                       </S.Action>
                     </S.Row>
                   );

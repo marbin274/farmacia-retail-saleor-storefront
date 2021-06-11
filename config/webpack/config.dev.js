@@ -1,5 +1,6 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HotModulePlugin = require("webpack").HotModuleReplacementPlugin;
+const path = require("path");
 
 module.exports = ({ sourceDir, distDir }) => ({
   output: {
@@ -13,12 +14,21 @@ module.exports = ({ sourceDir, distDir }) => ({
           "style-loader",
           {
             loader: "css-loader",
-            options: { sourceMap: true },
+            options: { 
+              sourceMap: true,  
+              importLoaders: 1  
+            },
           },
+          "postcss-loader",
           { loader: "sass-loader" },
         ],
       },
     ],
+  },
+  devServer: {
+    watchContentBase: true,
+    contentBase: path.resolve(__dirname, "dist"),
+    open: true,
   },
   plugins: [
     new MiniCssExtractPlugin({

@@ -2,7 +2,7 @@ import { MAX_ORDER_PER_PRODUCT } from "@temp/core/config";
 import { mount, shallow } from "enzyme";
 import "jest-styled-components";
 import React from "react";
-import { Button } from "../../atoms";
+import { Button } from "@farmacia-retail/farmauna-components";
 import { product } from "./test.data";
 
 import ItemsHandler from "./ItemsHandler";

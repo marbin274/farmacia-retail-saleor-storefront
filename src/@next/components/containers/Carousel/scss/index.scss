@@ -1,6 +1,10 @@
 @import "@temp/globalStyles/scss/variables.scss";
 
 .carousel {
+  &__button {
+    width: 3.125rem;
+    height: 3.125rem;
+  }
   &__control {
     padding: $carousel-control-padding;
     background-color: $white;
@@ -17,7 +21,7 @@
       }
 
       svg {
-        transform: rotate(180deg);
+        transform: rotate(0deg) !important;
         margin-top: 0.5rem;
       }
     }
@@ -31,6 +35,7 @@
 
       svg {
         margin-top: 0.4rem;
+        transform: rotate(180deg) !important;
       }
     }
   }
@@ -38,4 +43,6 @@
   .slider-slide {
     text-align: center;
   }
+
+  
 }

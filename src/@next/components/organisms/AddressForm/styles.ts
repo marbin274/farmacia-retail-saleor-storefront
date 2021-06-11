@@ -52,12 +52,19 @@ export const Wrapper = styled.div`
 
 export const RowWithTwoCells = styled.div`
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  ${media.smallScreen`
+    grid-template-columns: 1fr;
+  `}
   & > div {
-    width: calc(50% - ${props => props.theme.spacing.fieldSpacer} / 2);
+    &:last-child {
+      ${media.smallScreen`
+        margin-top: 1.5rem;
+      `}
+    }
     ${media.smallScreen`
       width: 100%;
     `}
@@ -66,6 +73,7 @@ export const RowWithTwoCells = styled.div`
 
 export const RowWithOneCell = styled.div`
   width: 100%;
+  margin-bottom: 1.5rem;
 `;
 
 export const FieldsGroup = styled.div`

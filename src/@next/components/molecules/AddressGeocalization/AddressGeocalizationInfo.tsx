@@ -1,8 +1,9 @@
 import React from "react";
-import { Button, Icon } from "../../atoms";
+import { Icon } from "../../atoms";
 import * as S from "./styles";
 import { addressGeoModalService } from "../AddressGeoModal/AddressGeoModalService";
 import { useAddressGeocalizationInfo } from "@temp/@next/hooks";
+import { Button } from "@farmacia-retail/farmauna-components";
 
 export const AddressGeocalizationInfo: React.FC = () => {
 
@@ -29,8 +30,7 @@ export const AddressGeocalizationInfo: React.FC = () => {
             <S.AlertAction>
                 <div>
                     <Button
-                        color="secondary"
-                        outline
+                        variant="outline"
                         type="button"
                         onClick={() => { setShow(false) }}
                     >
@@ -40,7 +40,7 @@ export const AddressGeocalizationInfo: React.FC = () => {
                 <div>
 
                     <Button
-                        color="primary"
+                        variant="default"
                         type="button"
                         onClick={handleChangeAddress}
                     >

@@ -4,7 +4,8 @@ import {
   mediumScreen,
   smallScreen,
   xLargeScreen,
-  xSmallScreen, 
+  xSmallScreen,
+  xxSmallScreen, 
   xxLargeScreen,
   xxxLargeScreen
 } from "./constants";
@@ -16,6 +17,7 @@ const breakpoints = {
   smallScreen,
   xLargeScreen,
   xSmallScreen,
+  xxSmallScreen,
   xxLargeScreen,
   xxxLargeScreen,
   

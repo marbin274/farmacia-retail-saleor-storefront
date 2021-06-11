@@ -4,13 +4,14 @@ import {
   Checkbox,
   DataTreatmentPolicyLink,
   ErrorMessage,
-  TermsAndConditionsLink
+  TermsAndConditionsLink,
 } from "@components/atoms";
-import { IAddressAutocompleteValue, TextField } from "@components/molecules";
+import { IAddressAutocompleteValue } from "@components/molecules";
 import { IAddressWithEmail } from "@temp/@next/types";
 import {
   launchCheckoutFilledContactUserDataEvent,
-  launchCheckoutFilledInputForAddressEvent, launchCheckoutPrivacyPolicyAceptedEvent
+  launchCheckoutFilledInputForAddressEvent,
+  launchCheckoutPrivacyPolicyAceptedEvent,
 } from "@temp/@sdk/gaConfig";
 import React, { useState } from "react";
 import {
@@ -18,13 +19,13 @@ import {
   FirstNameTextField,
   PhoneTextField,
   StreetAddress1,
-  StreetAddress2
+  StreetAddress2,
 } from "./AddressFormContent/AddressFormFields";
 import Map from "./AddressFormContent/Map";
 import { IFieldsProps, ISelectFieldsProps } from "./AddressFormContent/types";
 import * as S from "./styles";
 import { PropsWithFormik } from "./types";
-
+import { InputField } from "@farmacia-retail/farmauna-components";
 
 const isValuesInvalid = (values?: IAddressWithEmail): boolean => {
   return (
@@ -48,7 +49,7 @@ const checkFilledContactUser = (values?: IAddressWithEmail): boolean => {
     values?.phone?.length === 9 &&
     values?.email.includes("@")
   );
-}
+};
 
 export const AddressFormContent: React.FC<PropsWithFormik> = ({
   formRef,
@@ -63,11 +64,14 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
   setFieldTouched,
   comeFromModal,
 }) => {
-  const initialTermAndconditions = values && values?.termsAndConditions ? values?.termsAndConditions : false;
+  const initialTermAndconditions =
+    values && values?.termsAndConditions ? values?.termsAndConditions : false;
   const registerFilledContactUserDataRef = React.useRef<boolean>(false);
   const registerPrivacyPolicyAceptedRef = React.useRef<boolean>(false);
   const registerFilledInputForAddressRef = React.useRef<boolean>(false);
-  const [privacyAndPolicies, setPrivacyAndPolicies] = useState<boolean>(initialTermAndconditions);
+  const [privacyAndPolicies, setPrivacyAndPolicies] = useState<boolean>(
+    initialTermAndconditions
+  );
 
   const [additionals, setAdditionals] = useState(
     values && values?.dataTreatmentPolicy ? values?.dataTreatmentPolicy : false
@@ -84,35 +88,35 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
     _cities.push(item);
   });
 
-  const registerFilledContactUserData = (isChecked: boolean)=>{
+  const registerFilledContactUserData = (isChecked: boolean) => {
     if (!registerFilledContactUserDataRef.current && isChecked) {
       registerFilledContactUserDataRef.current = true;
       launchCheckoutFilledContactUserDataEvent();
-    }  
-  }
+    }
+  };
 
-  const registerFillPrivacyPolicyAcepted = (isChecked: boolean)=>{
+  const registerFillPrivacyPolicyAcepted = (isChecked: boolean) => {
     if (!registerPrivacyPolicyAceptedRef.current && isChecked) {
       registerPrivacyPolicyAceptedRef.current = true;
       launchCheckoutPrivacyPolicyAceptedEvent();
-    }  
-  } 
+    }
+  };
 
-  const registerFilledInputForAddress = (isChecked: boolean)=>{
+  const registerFilledInputForAddress = (isChecked: boolean) => {
     if (!registerFilledInputForAddressRef.current && isChecked) {
       registerFilledInputForAddressRef.current = true;
       launchCheckoutFilledInputForAddressEvent();
-    }  
-  }
+    }
+  };
 
-  const handleOnBlurCheckContactUser = (e: React.FocusEvent)=>{
+  const handleOnBlurCheckContactUser = (e: React.FocusEvent) => {
     registerFilledContactUserData(checkFilledContactUser(values));
     handleBlur?.(e);
-  }
+  };
 
   const handlePrivacyAndPolicies = () => {
     setFieldTouched("termsAndConditions", true);
-    setFieldValue("termsAndConditions", !privacyAndPolicies); 
+    setFieldValue("termsAndConditions", !privacyAndPolicies);
     registerFillPrivacyPolicyAcepted(!privacyAndPolicies);
   };
 
@@ -121,8 +125,6 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
     setFieldTouched("dataTreatmentPolicy", true);
     setFieldValue("dataTreatmentPolicy", !additionals);
   };
-
-  
 
   const handleCityChange = (value: any, name: any) => {
     const isValid = !isValuesInvalid(values);
@@ -134,14 +136,10 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
     }, 300);
   };
 
-  const renderGroupLabel = (id: number, title: string) => (
-    <S.GroupLabel>
-      <S.GroupLabelIndex>{id}</S.GroupLabelIndex>
-      <S.GroupLabelTitle>{title}</S.GroupLabelTitle>
-    </S.GroupLabel>
+  const renderGroupLabel = (title: string) => (
+    <span className="fa-text-2xl fa-mb-6 fa-block fa-font-semibold">{title}</span>
   );
 
-  
   const fieldsProps: IFieldsProps = {
     fieldErrors,
     onBlur: handleBlur,
@@ -171,14 +169,11 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
     setAdditionals(!!values?.dataTreatmentPolicy);
   }, [values?.dataTreatmentPolicy]);
 
-  React.useEffect(()=>{
-
+  React.useEffect(() => {
     registerFilledContactUserData(checkFilledContactUser(values));
     registerFillPrivacyPolicyAcepted(!!values?.termsAndConditions);
     registerFilledInputForAddress(!!values?.streetAddress1);
-
   }, []);
-
   return (
     <div>
       <S.Wrapper>
@@ -186,17 +181,19 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
           <S.AddressForm id={formId} ref={formRef} onSubmit={handleSubmit}>
             <div style={{ width: "100%" }}>
               <S.FieldsGroup>
-                {renderGroupLabel(1, "Cliente")}
-                <FirstNameTextField
-                  {...fieldsProps}
-                />
-                <PhoneTextField  {...fieldsProps} />
+                {renderGroupLabel("Cliente")}
+                <div className='fa-mb-4'>
+                  <FirstNameTextField {...fieldsProps} />
+                </div>
+                <PhoneTextField {...fieldsProps} />
               </S.FieldsGroup>
               <S.FieldsGroup>
-                {renderGroupLabel(2, "Dirección")}
+                {renderGroupLabel("Dirección")}
                 <S.RowWithOneCell>
-                  <StreetAddress1  {...fieldsProps} />
-                  <StreetAddress2  {...fieldsProps} />
+                <div className='fa-mb-4'>
+                  <StreetAddress1 {...fieldsProps} />
+                </div>
+                  <StreetAddress2 {...fieldsProps} />
                 </S.RowWithOneCell>
                 <S.RowWithOneCell>
                   <CitySelect
@@ -214,26 +211,31 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
         ) : (
           <div>
             <S.FieldsGroup>
-              {renderGroupLabel(1, "Datos Personales")}
+              {renderGroupLabel("Cliente")}
               <S.RowWithTwoCells>
                 <FirstNameTextField
                   {...fieldsProps}
                   required={true}
                   onBlur={handleOnBlurCheckContactUser}
                 />
-                <TextField
+                <InputField
                   data-cy="addressFormDNI"
                   name="documentNumber"
                   placeholder="Ejemplo: 04123456"
-                  label="*Número de documento"
+                  label="Número de documento"
                   maxLength={DOCUMENT_NUMBER_MAX_LENGTH}
                   value={!values?.documentNumber ? "" : values?.documentNumber}
                   pattern="[0-9]*"
                   inputMode="numeric"
                   type="text"
                   autoComplete="documento"
-                  errors={fieldErrors!.documentNumber}
+                  error={
+                    !!fieldErrors?.documentNumber
+                      ? fieldErrors?.documentNumber[0].message
+                      : ""
+                  }
                   onBlur={handleOnBlurCheckContactUser}
+                  inputSize="large"
                   onChange={e => {
                     const value = e.currentTarget?.value?.toUpperCase();
                     setFieldValue("documentNumber", value);
@@ -241,19 +243,22 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                 />
               </S.RowWithTwoCells>
               <S.RowWithTwoCells>
-                <TextField
+                <InputField
                   data-cy="addressFormEmail"
                   name="email"
                   placeholder="Ejemplo: juan@gmail.com"
-                  label="*Correo electrónico"
+                  label="Correo electrónico"
                   value={!values?.email ? "" : values?.email}
                   autoComplete="email"
                   type="email"
-                  errors={fieldErrors!.email}
+                  error={
+                    !!fieldErrors?.email ? fieldErrors?.email[0].message : ""
+                  }
+                  inputSize="large"
                   onBlur={handleOnBlurCheckContactUser}
                   onChange={handleChange}
                 />
-                <PhoneTextField 
+                <PhoneTextField
                   {...fieldsProps}
                   onBlur={handleOnBlurCheckContactUser}
                 />
@@ -286,28 +291,45 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
               </S.RowWithOneCell>
             </S.FieldsGroup>
             <S.FieldsGroup>
-              {renderGroupLabel(2, "Dirección de entrega")}
-              <S.RowWithTwoCells>
-                <StreetAddress1 
+              {renderGroupLabel("Dirección")}
+              <S.RowWithOneCell>
+                <StreetAddress1
                   {...fieldsProps}
-                  onChange={(value: IAddressAutocompleteValue)=>{
+                  onChange={(value: IAddressAutocompleteValue) => {
                     setFieldValue("streetAddress1", value.text || "");
-                    setFieldValue("latitude", value.lat ? String(value.lat) : "");
-                    setFieldValue("longitude", value.lng ? String(value.lng) : "");
+                    setFieldValue(
+                      "latitude",
+                      value.lat ? String(value.lat) : ""
+                    );
+                    setFieldValue(
+                      "longitude",
+                      value.lng ? String(value.lng) : ""
+                    );
                     registerFilledInputForAddress(!!(value.text && value.lat));
                   }}
-                  onBlur={(e: React.FocusEvent)=>{
-                    registerFilledInputForAddress(!!(values?.streetAddress1?.length));
+                  onBlur={(e: React.FocusEvent) => {
+                    registerFilledInputForAddress(
+                      !!values?.streetAddress1?.length
+                    );
                     handleBlur?.(e);
                   }}
-                 />
+                />
+                <span
+                  className="fa-text-xs fa-mt-2"
+                  style={{ color: "#908BA7" }}
+                >
+                  Se actualizará el mapa una vez ingresada la dirección
+                </span>
+              </S.RowWithOneCell>
+
+              <S.RowWithOneCell>
                 <S.Referencia>
                   <StreetAddress2 {...fieldsProps} />
                 </S.Referencia>
-              </S.RowWithTwoCells>
+              </S.RowWithOneCell>
               <Map
                 location={getCoordinates()}
-                onChangeLocation={(location, address) => {                  
+                onChangeLocation={(location, address) => {
                   setFieldValue("streetAddress1", address);
                   setFieldValue("latitude", String(location.lat));
                   setFieldValue("longitude", String(location.lng));

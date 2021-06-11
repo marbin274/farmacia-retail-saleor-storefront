@@ -23,7 +23,7 @@ exports[`Storyshots @components/atoms/Radio default 1`] = `
   height: 0.5em;
   margin: 0 auto;
   border-radius: 0.25em;
-  background: #00B0CA;
+  background: #00BF8E;
 }
 
 .c1 {

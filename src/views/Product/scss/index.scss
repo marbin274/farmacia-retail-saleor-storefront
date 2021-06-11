@@ -1,22 +1,38 @@
 @import "../../../globalStyles/scss/variables.scss";
 
 .product-page {
-  background-color: $white;
-  z-index: 0; 
+  background-color: #f7f6f8;
+  z-index: 0;
+
   .breadcrumbs {
-    background-color: $white;
+    background-color: inherit;
     padding: $spacer / 2 $spacer $spacer / 2 $spacer * 1.5;
     margin-top: $spacer * 2;
+
+    @media (max-width: $medium-screen) {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    a {
+      font-size: 14px;
+      color: #23212b;
+      font-weight: 400;
+    }
   }
-  .container{
+  .container {
     margin: 0.5rem auto 0 auto;
-    @media (min-width: $medium-screen) {
-      margin: 2rem auto 0 auto;
+    @media (max-width: $medium-screen) {
+      margin: 1.5rem auto 0 auto;
+    }
+    @media (max-width: $small-screen) {
+      margin: 1rem auto 0 auto;
     }
   }
 
   &__product {
     display: flex;
+
+    margin-bottom: $spacer * 3;
 
     @media (max-width: $medium-screen) {
       display: block;
@@ -41,24 +57,33 @@
       margin-bottom: $spacer * 9;
     }
 
+    &__image {
+      width: 100%;
+      @media (min-width: $medium-screen) {
+        position: sticky;
+        top: 6rem;
+        align-self: flex-start;
+      }
+    }
+
+    hr {
+      border-color: #e2e3f1;
+      margin: 3rem 0;
+      max-width: 30rem;
+    }
+
     &__info {
       position: relative;
       display: flex;
       flex-direction: column;
+      width: $container-width;
+
+      @media (max-width: $medium-screen) {
+        width: 100%;
+      }
 
       @media (min-width: $medium-screen) {
-        width: 100%;
         margin-left: 40px;
-      }
-
-      @media (max-width: $small-screen) {
-        padding: 1rem;
-      }
-
-      > div {
-        @media (min-width: $small-screen) {
-          // padding-right: 1rem;
-        }
       }
 
       &--fixed {
@@ -109,23 +134,23 @@
       }
     }
   }
-  &__address-geo{
+  &__address-geo {
     padding: 0.5rem 0rem;
-    .container{
+    .container {
       padding: 0rem;
       margin: 0 auto;
       > div {
         padding: 0rem 0.5rem;
-        .district--alert{
-          left: .5rem; 
-          @media (min-width: $medium-screen-styled){
-            left: 1.5rem;            
-          }   
-          &::after{
-            @media (min-width: $medium-screen-styled){              
-              left: calc(50% - 6.35rem);         
+        .district--alert {
+          left: 0.5rem;
+          @media (min-width: $medium-screen-styled) {
+            left: 1.5rem;
+          }
+          &::after {
+            @media (min-width: $medium-screen-styled) {
+              left: calc(50% - 6.35rem);
             }
-          }                 
+          }
         }
       }
     }
@@ -136,7 +161,7 @@
     }
     @media (min-width: $medium-screen) {
       padding: 1rem;
-      background-color: #F6F8FA;
+      background-color: #f6f8fa;
     }
   }
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Button, IconButton } from "@components/atoms";
+import { IconButton } from "@components/atoms";
 import { AttributeValuesChecklist } from "@components/molecules";
 import { useHandlerWhenClickedOutside } from "@hooks";
 
@@ -8,6 +8,7 @@ import { Overlay } from "../";
 import { IFilters, ISingleFilterAttribute } from "../../../types";
 import * as S from "./styles";
 import { IProps } from "./types";
+import { Button  } from "@farmacia-retail/farmauna-components";
 
 const checkIfAttributeIsChecked = (
   filters: IFilters,

@@ -1,4 +1,4 @@
-import { Button, Loader } from "@app/components/atoms";
+import { Loader } from "@app/components/atoms";
 import { Link } from "react-router-dom";
 import { NetworkStatus, OfflinePlaceholder } from "@temp/components";
 import { Error } from "@temp/components/Error";
@@ -7,6 +7,7 @@ import React from "react";
 import { NothingFound, ProductItem } from "./";
 import { TypedSearchResults } from "./queries";
 import * as appPaths from "@temp/app/routes";
+import { Button } from "@farmacia-retail/farmauna-components";
 import { useDistrictSelected } from "@temp/@next/hooks/useDistrictSelected";
 import { maybe } from "@temp/core/utils";
 import { SearchResults } from "./gqlTypes/SearchResults";
@@ -61,10 +62,13 @@ export const SearchNetworkResult = () => {
                             {loading ? (
                               <Loader />
                             ) : (
-                              <p>
-                                {data.products.edges.length} resultados para{" "}
-                                <span>"{search}"</span>
-                              </p>
+                              <>
+                                <h4>Resultado de búsqueda</h4>
+                                <p>
+                                  <span>{data.products.edges.length}</span>{" "}
+                                  resultados para <span>"{search}"</span>
+                                </p>
+                              </>
                             )}
                           </div>
                           <ul className="search__products__list">

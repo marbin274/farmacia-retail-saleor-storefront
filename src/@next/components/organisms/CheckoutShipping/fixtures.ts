@@ -5,7 +5,7 @@ const shippingMethods: IAvailableShippingMethods = [
     __typename:"ShippingMethod",
     id: "1",
     isScheduled: false,
-    name: "Basic",
+    name: "75 minutos aproximadamente",
     price: {
       __typename:"Money",
       amount: 32,
@@ -19,7 +19,7 @@ const shippingMethods: IAvailableShippingMethods = [
     __typename:"ShippingMethod",
     id: "2",
     isScheduled: false,
-    name: "Extra",
+    name: "75 minutos aproximadamente",
     price: {
       __typename:"Money",
       amount: 64,

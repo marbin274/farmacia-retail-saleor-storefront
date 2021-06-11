@@ -1,15 +1,8 @@
 @import "../../../globalStyles/scss/variables.scss";
 
 .login-form {
-  .input {
-    margin-bottom: 8px;
-  }
-  &__errors {
-    margin: 15px 0px;
-    text-align: center;
-  }
   &__button {
-    margin-top: 35px;
+    margin-top: 2.188rem;
     text-align: center;
 
     > button {
@@ -23,30 +16,27 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    max-width: 156px;
+    width: 100%;
     margin: auto;
-    border-top: 0.75px solid $auna-grey-80;
-    margin-top: 24px;
-    padding-top: 18px;
+    margin-top: 1.5rem;
 
     > p {
-      margin-bottom: 16px;
+      margin-bottom: 1rem;
       color: $auna-black;
       font-weight: 500;
-      font-size: 14px;
+      font-size: 0.875rem;
     }
 
     > button {
-      color: $auna-interactive;
-      font-size: 14px;
+      font-size: 0.875rem;
     }
   }
 
   &__terms-conditions {
     color: $auna-black;
-    font-size: 14px;
+    font-size: 0.875rem;
     text-align: center;
-    margin-top: 36px;
+    margin-top: 2.25rem;
 
     > a {
       color: $auna-interactive;
@@ -55,5 +45,13 @@
 
   &__input-wrapper {
     background-color: white;
+  }
+
+  .InputField {
+    margin: 0 0 1.25rem 0;
+
+    label {
+      margin-bottom: 0.625rem;
+    }
   }
 }

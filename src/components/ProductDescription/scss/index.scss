@@ -1,16 +1,31 @@
 @import "@temp/globalStyles/scss/variables.scss";
 
 .product-description {
+  @media (min-width: $medium-screen) {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &:-webkit-scrollbar {
+      display: none;
+    }
+  }
+
   .price {
-    font-size: $price-font-size;
-    margin: 1rem auto;
+    font-size: $h3-font-size;
+    margin: 1.5rem auto;
+    &.discounted_price {
+      span,
+      p {
+        font-size: $h3-font-size;
+      }
+    }
   }
   h3 {
-    color: $auna-black;
-    font-size: $h3-title-font-size;
-    font-weight: $font-weight-normal;
-    line-height: 2.5rem;
+    max-width: 22.5rem;
+    font-size: $h3-font-size;
+    font-weight: $bold-font-weight;
+    line-height: 1.875rem;
     margin-bottom: 0.688rem;
+    color: #2f2c3a;
   }
 
   @media (max-width: $small-screen) {
@@ -28,7 +43,7 @@
     color: $base-font-color-2;
     font-size: $base-font-size;
     font-weight: $font-weight-light;
-    margin-bottom: 28px;
+    margin-bottom: 1.75rem;
   }
 
   > div {
@@ -44,7 +59,7 @@
     h4 {
       font-weight: $bold-font-weight;
       color: $gray;
-      border-bottom: 1px solid $gray;
+      border-bottom: 0.0625rem solid $gray;
       padding-bottom: $spacer / 2;
       margin-bottom: $spacer / 2;
     }
@@ -60,7 +75,7 @@
 
   &__selected-attributes {
     font-size: $small-font-size;
-    margin-top: 20px;
+    margin-top: 1.25rem;
 
     > span:first-child {
       color: $gray-dark;
@@ -69,7 +84,6 @@
 
   &__variant-picker {
     display: grid;
-    margin-top: 20px;
 
     .react-select-wrapper,
     .input {
@@ -93,15 +107,14 @@
 
   &__error-message {
     color: $message-error-color;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
   }
 
   &__quantity {
     display: flex;
     flex-direction: row;
-    height: 42px;
-    margin-bottom: 1.5rem;
+    height: 2.625rem;
 
     @media (max-width: $small-screen) {
       display: none;
@@ -109,36 +122,30 @@
 
     .itemHandler {
       width: 100% !important;
-      max-width: 150px;
+      max-width: 9.375rem;
     }
     .button {
       width: 100% !important;
-      max-width: 10.625rem;
-      
-      button {
-        padding: 0.5rem;
-        font-size: $base-font-size;
-        width: 100% !important;
-      }
+      max-width: 9.375rem;
     }
 
     > div {
-      margin-right: 10px;
-      min-width: 112px;
+      margin-right: 0.625rem;
+      min-width: 7rem;
     }
 
     > p {
       @extend .product-description__price;
-      margin-bottom: 12px !important;
+      margin-bottom: 0.75rem !important;
     }
   }
 
   &__action {
     padding: initial !important;
-    max-width: 269px;
+    max-width: 16.8125rem;
 
     > span > span > span {
-      font-size: 16px;
+      font-size: 1rem;
 
       &::after {
         content: "Agregar al carrito";

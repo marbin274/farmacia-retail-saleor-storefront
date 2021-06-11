@@ -6,7 +6,7 @@ exports[`Storyshots @components/molecules/ResetPasswordForm default 1`] = `
   margin: 20px;
 }
 
-.c12 {
+.c3 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -15,135 +15,6 @@ exports[`Storyshots @components/molecules/ResetPasswordForm default 1`] = `
   left: 0;
   pointer-events: none;
   box-sizing: border-box;
-}
-
-.c10 {
-  background-color: #00B0CA;
-  padding: 0.9rem 3.7rem;
-  border: none;
-  border-radius: 40px;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-  outline: none;
-  cursor: pointer;
-  color: #fff;
-  width: 100%;
-}
-
-.c10:hover {
-  background-color: #0BC1DC;
-  color: #fff;
-}
-
-.c10:active {
-  background-color: #029FB7;
-  box-shadow: -3px 3px 14px 0px rgba(129,67,67,0.2);
-}
-
-.c10:disabled {
-  background-color: #F1F2F7;
-  color: #B8BCD5;
-  cursor: default;
-}
-
-.c10:disabled,
-.c10:disabled:hover {
-  cursor: default;
-}
-
-.c11 {
-  display: inline-block;
-  font-size: 1.125rem;
-  font-weight: 400;
-  line-height: 1.25rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.c7 {
-  background-color: transparent;
-  color: #9194A7;
-  left: 0px;
-  position: absolute;
-  font-size: 0.9rem;
-  pointer-events: none;
-  top: -1.5rem;
-}
-
-.c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  border: 1px solid #E4E5ED;
-  border-radius: 4px;
-  color: #E4E5ED;
-  outline: none;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-}
-
-.c4:hover {
-  color: #E4E5ED;
-  border-color: #00B0CA;
-}
-
-.c5 {
-  position: relative;
-  width: 100%;
-  padding-right: 2rem;
-  border-radius: 4px;
-  background-color: white;
-}
-
-.c6 {
-  padding: 0.75rem 0.5rem 0.75rem 1rem;
-  margin: 0;
-  border: none;
-  color: #131336;
-  width: 100%;
-  font-size: 0.9rem;
-  outline: none;
-  background-color: transparent;
-  border-radius: 4px;
-}
-
-.c6::-webkit-input-placeholder {
-  color: #9194A7;
-}
-
-.c6::-moz-placeholder {
-  color: #9194A7;
-}
-
-.c6:-ms-input-placeholder {
-  color: #9194A7;
-}
-
-.c6::placeholder {
-  color: #9194A7;
-}
-
-.c8 {
-  height: 1.5rem;
-  position: absolute;
-  right: 0.5rem;
-  top: calc(50% - 0.65rem);
-  width: 1.5rem;
-  color: #00B0CA;
-  cursor: pointer;
-}
-
-.c3 {
-  padding-top: 1.4rem;
-  margin-bottom: 1rem;
-  position: relative;
-}
-
-.c9 {
-  top: 100%;
 }
 
 .c1 {
@@ -163,6 +34,7 @@ exports[`Storyshots @components/molecules/ResetPasswordForm default 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   width: 100%;
+  background: #F7F6F8;
 }
 
 .c1 h3 {
@@ -182,148 +54,162 @@ exports[`Storyshots @components/molecules/ResetPasswordForm default 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  height: 10.5rem;
+  height: 9rem;
   margin: 1rem auto;
-}
-
-@media (max-width:540px) {
-  .c10 {
-    padding: 0.9rem 1rem;
-    width: 100%;
-  }
 }
 
 <div
   className="c0"
 >
   <div
-    className="container"
+    className="rest-password-form"
   >
     <div
-      className="c1"
+      className="container"
     >
       <div
-        className="new-password-form"
+        className="c1"
       >
         <div
-          className="new-password-form__image"
-        />
-        <div
-          className="new-password-form__text"
-        >
-          <p>
-            Crea una nueva contraseña que contenga mínimo 8 caracteres
-          </p>
-        </div>
-        <form
-          onSubmit={[Function]}
+          className="new-password-form"
         >
           <div
-            className="c2"
+            className="content-new-password-form"
           >
             <div
-              className="c3"
+              className="title-new-password-form"
+            >
+              Restaurar contraseña
+            </div>
+            <div
+              className="new-password-form__image"
+            />
+            <div
+              className="new-password-form__text"
+            >
+              <p>
+                Crea una nueva contraseña que contenga mínimo 8 caracteres
+              </p>
+            </div>
+            <form
+              onSubmit={[Function]}
             >
               <div
-                className="c4"
-                disabled={false}
+                className="c2"
               >
                 <div
-                  className="c5"
+                  className="fa-w-auto"
                 >
-                  <input
-                    className="c6"
-                    disabled={false}
-                    name="password"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                    placeholder="Ingresa la nueva contraseña"
-                    type="password"
-                    value=""
-                  />
                   <label
-                    className="c7"
-                    disabled={false}
+                    className="fa-text-gray-01 fa-text-sm"
                   >
                     Nueva contraseña
+                    
                   </label>
                   <div
-                    className="c8"
-                    disabled={false}
-                    error={0}
-                    onMouseDown={[Function]}
-                  />
+                    className="fa-w-full fa-relative fa-h-10"
+                  >
+                    <input
+                      className="fa-w-full fa-appearance-none fa-border fa-text-sm fa-outline-none fa-placeholder-neutral-medium fa-text-neutral-darkest fa-bg-neutral-lightest fa-border-neutral-medium focus:fa-border-neutral-darkest fa-rounded-lg fa-px-4 fa-h-10"
+                      disabled={false}
+                      name="password"
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      placeholder="Ingresa la nueva contraseña"
+                      type="password"
+                      value=""
+                    />
+                    <svg
+                      className="fa-cursor-pointer fa-absolute fa-inset-y-0 fa-right-4 fa-m-auto fa-z-10"
+                      color="currentColor"
+                      data-testid="svg-eye-pwd"
+                      fill="currentColor"
+                      height={16}
+                      onClick={[Function]}
+                      viewBox="0 0 24 24"
+                      width={16}
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M15.0938 11.79C15.0938 13.4219 13.7087 14.7448 12 14.7448C10.2914 14.7448 8.90624 13.4219 8.90624 11.79C8.90624 10.1581 10.2914 8.83517 12 8.83517C13.7087 8.83517 15.0938 10.1581 15.0938 11.79Z"
+                      />
+                      <path
+                        clipRule="evenodd"
+                        d="M2.0616 12.1125C3.68606 16.0436 7.58293 18.58 12 18.58C16.4079 18.58 20.3139 16.0348 21.9384 12.1038C22.0205 11.9033 22.0205 11.6767 21.9384 11.4675C20.3139 7.53644 16.4171 5 12 5C7.58293 5 3.68606 7.53644 2.0616 11.4762C1.97947 11.6767 1.97947 11.9033 2.0616 12.1125ZM11.9909 16.8367C8.45905 16.8367 5.31964 14.8669 3.89596 11.79C5.31964 8.71315 8.45905 6.74326 12 6.74326C15.5318 6.74326 18.6712 8.71315 20.0858 11.79C18.6712 14.8669 15.5318 16.8367 11.9909 16.8367Z"
+                        fillRule="evenodd"
+                      />
+                    </svg>
+                  </div>
                 </div>
-              </div>
-              <div
-                className="c9"
-              />
-            </div>
-            <div
-              className="c3"
-            >
-              <div
-                className="c4"
-                disabled={false}
-              >
                 <div
-                  className="c5"
+                  className="fa-w-auto"
                 >
-                  <input
-                    className="c6"
-                    disabled={false}
-                    name="retypedPassword"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                    placeholder="Ingresa nuevamente la contraseña"
-                    type="password"
-                    value=""
-                  />
                   <label
-                    className="c7"
-                    disabled={false}
+                    className="fa-text-gray-01 fa-text-sm"
                   >
                     Confirma contraseña
+                    
                   </label>
                   <div
-                    className="c8"
-                    disabled={false}
-                    error={0}
-                    onMouseDown={[Function]}
-                  />
+                    className="fa-w-full fa-relative fa-h-10"
+                  >
+                    <input
+                      className="fa-w-full fa-appearance-none fa-border fa-text-sm fa-outline-none fa-placeholder-neutral-medium fa-text-neutral-darkest fa-bg-neutral-lightest fa-border-neutral-medium focus:fa-border-neutral-darkest fa-rounded-lg fa-px-4 fa-h-10"
+                      disabled={false}
+                      name="retypedPassword"
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      placeholder="Ingresa nuevamente la contraseña"
+                      type="password"
+                      value=""
+                    />
+                    <svg
+                      className="fa-cursor-pointer fa-absolute fa-inset-y-0 fa-right-4 fa-m-auto fa-z-10"
+                      color="currentColor"
+                      data-testid="svg-eye-pwd"
+                      fill="currentColor"
+                      height={16}
+                      onClick={[Function]}
+                      viewBox="0 0 24 24"
+                      width={16}
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M15.0938 11.79C15.0938 13.4219 13.7087 14.7448 12 14.7448C10.2914 14.7448 8.90624 13.4219 8.90624 11.79C8.90624 10.1581 10.2914 8.83517 12 8.83517C13.7087 8.83517 15.0938 10.1581 15.0938 11.79Z"
+                      />
+                      <path
+                        clipRule="evenodd"
+                        d="M2.0616 12.1125C3.68606 16.0436 7.58293 18.58 12 18.58C16.4079 18.58 20.3139 16.0348 21.9384 12.1038C22.0205 11.9033 22.0205 11.6767 21.9384 11.4675C20.3139 7.53644 16.4171 5 12 5C7.58293 5 3.68606 7.53644 2.0616 11.4762C1.97947 11.6767 1.97947 11.9033 2.0616 12.1125ZM11.9909 16.8367C8.45905 16.8367 5.31964 14.8669 3.89596 11.79C5.31964 8.71315 8.45905 6.74326 12 6.74326C15.5318 6.74326 18.6712 8.71315 20.0858 11.79C18.6712 14.8669 15.5318 16.8367 11.9909 16.8367Z"
+                        fillRule="evenodd"
+                      />
+                    </svg>
+                  </div>
                 </div>
               </div>
               <div
-                className="c9"
-              />
-            </div>
-          </div>
-          <div
-            className="new-password-form__button"
-          >
-            <button
-              className="c10"
-              color="primary"
-              disabled={false}
-              size="md"
-              type="submit"
-            >
-              <span
-                className="c11"
-                size="md"
+                className="new-password-form__button"
               >
-                Guardar nueva contraseña
-              </span>
-            </button>
+                <button
+                  className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3 fa-w-full"
+                  disabled={false}
+                  style={Object {}}
+                  type="submit"
+                >
+                  <span
+                    className="fa-align-middle fa-ml-2"
+                  >
+                    Guardar nueva contraseña
+                  </span>
+                </button>
+              </div>
+            </form>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   </div>
   <div
-    className="c12"
+    className="c3"
   />
 </div>
 `;

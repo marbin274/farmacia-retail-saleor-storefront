@@ -1,12 +1,7 @@
 import { styled, media } from "@styles";
 
 export const Wrapper = styled.div`
-  margin-top: 20px;
-  ${media.smallScreen`
-   background-color: #F6F8FA;
-   border-radius: 1rem;
-   padding: 0.9375rem;
-  `}
+  margin-top: 1.25rem;
 `;
 
 export const Payment = styled.div<{
@@ -15,164 +10,169 @@ export const Payment = styled.div<{
   invalidExpiryCode: string;
   invalidCvc: string;
 }>`
-  h4 {
-    font-weight: 500;
-    font-size: 24px;
-    margin-bottom: 1rem;
-  }
-
-  h5:nth-child(2) {
-    font-weight: 400;
-    font-size: 14px;
-    margin-bottom: 1.5rem;
-  }
-
-  h5:nth-child(3) {
-    font-weight: 400;
-    font-size: 14px;
-    margin-bottom: 1rem;
-  }
-
-  label {
-    color: #9194a7;
-    font-size: 14px;
-  }
-
-  .identity {
-    div:nth-child(1) {
-      width: 45%;
-    }
-
-    div:nth-child(2) {
-      width: 50%;
-      margin-left: 5%;
-    }
-    ${media.smallScreen`
-        display: block;
-        div:nth-child(1) {
-          width: auto;
-        }
-    
-        div:nth-child(2) {
-          width: auto;
-          margin-left:0;
-        }
-    `}
-    display: flex;
-    margin-bottom: 1rem;
-  }
-
-  .email {
-  }
-
-  .error {
-    margin-top: 1.8rem;
-    margin-left: 1rem;
-    font-size: 12px;
-    color: #e84545;
-    margin-bottom: -2rem;
-  }
-  .number-creditcard-error{
-    margin-top:0;
-  }
-
-  .creditcard {
-    margin-top: 1rem;
-    margin-bottom: 1.5rem;
-    #txtNumeroTarjeta {
-      background-color: #fff;
-      height: 3rem;
-      iframe {
-        padding: 0.8rem 0.8rem 1rem 0.8rem;
-        border: 1px solid #e4e5ed;
-        height: 3rem;
-        display: flex;
-        width: 100%;
-        border-radius: 4px;
-        border-color: ${(props: any) => props.formErrors.some((x: any) => x.code === props.invalidNumberCode) ? "#e84545" : "#e4e5ed"};
-      }
-      input {
-        background-color: #fff;
-      }
-    }
-  }
-
-  .expirydate_and_cvv {
-    display: flex;
-    ${media.smallScreen`
-      display: block;
-    `}
-    margin-bottom: 2.7em;
-    .expirydate {
-      width: 45%;
-      ${media.smallScreen`
-        width: auto;
-      `}
-    }
-
-    .cvv {
-      width: 50%;
-      margin-left: 5%;
-      ${media.smallScreen`
-        width: auto;
-        margin-left: 0;
-        margin-top: 2.5rem;
-      `}
-    }
-
-    #txtFechaVencimiento {
-      width: 100%;
-      iframe {
-        padding: 0.8rem 0.8rem 1rem 0.8rem;
-        border: 1px solid #e4e5ed;
-        height: 3rem;
-        display: flex;
-        width: 100%;
-        border-radius: 4px;
-        background-color: #fff;
-        border-color: ${(props: any) => props.formErrors.some((x: any) => x.code === props.invalidExpiryCode) ? "#e84545" : "#e4e5ed"};
-
-      }
-    }
-
-    #txtCvv {
-      iframe {
-        padding: 0.8rem 0.8rem 1rem 0.6rem;
-        border: 1px solid #e4e5ed;
-        height: 3rem;
-        display: flex;
-        width: 100%;
-        border-radius: 4px;
-        background-color: #fff;
-        border-color: ${(props: any) => props.formErrors.some((x: any) => x.code === props.invalidCvc) ? "#e84545" : "#e4e5ed"};
-      }
-      margin-bottom: 20px;
-    }
-  }
-
   .card-title {
-    fontsize: 26px;
-    line-height: 2.1875rem;
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: #23212b;
+
+    ${media.smallScreen`
+      margin-bottom: 1rem;
+      line-height: 1.75rem;
+    `}
   }
 
-  input {
-    padding: 0.75rem 1rem;
-    margin: 0;
-    border: none;
-    color: #131336;
-    width: 100%;
-    height: 3rem;
-    font-size: 0.9rem;
-    outline: none;
-    background-color: #fff;
-    border-radius: 4px;
-    border: 1px solid #e4e5ed;
+  .card-subtitle {
+    font-size: ${props => props.theme.typography.baseFontSize};
+    height: 2rem;
+    display: block;
+    font-weight: normal;
+    margin-bottom: 1.625rem;
+    line-height: 1.375rem;
+    letter-spacing: 0.015em;
+  }
 
-    ::placeholder {
-      color: #9194a7;
+  .row {
+    max-width: 40.25rem;
+  }
+
+  .row-input {
+    display: flex;
+    justify-content: space-between;
+    display: flex;
+    margin-bottom: 1.5rem;
+
+    ${media.smallScreen`
+      flex-direction: column;
+      margin-bottom: 1rem;
+    `}
+    > div {
+      max-width: 19.375rem;
+      &:nth-child(1) {
+        width: calc(100% - 0.75rem);
+
+        ${media.smallScreen`
+          width: 100%;
+          margin-bottom: 1rem;
+        `}
+      }
+      &:nth-child(2) {
+        width: calc(100% - 0.75rem);
+
+        ${media.smallScreen`
+          width: 100%;
+        `}
+      }
+
+      ${media.smallScreen`
+        max-width: 100%;
+      `}
+
+      > label {
+        font-size: 0.875rem;
+        color: #23212b;
+        font-weight: 600;
+      }
+    }
+
+    .card-input {
+      > div {
+        background-color: #f7f6f8;
+
+        height: 3rem;
+        iframe {
+          padding: 0.75rem 0.75rem 0.75rem 1rem;
+          border: 0.0625rem solid #aca8bd;
+          border-radius: 0.5rem;
+          height: 3rem;
+          display: flex;
+          width: 100%;
+          background-color: #fff;
+        }
+        input {
+          background-color: #fff;
+        }
+      }
+
+      #txtNumeroTarjeta {
+        iframe {
+          border-color: ${(props: any) =>
+            props.formErrors.some(
+              (x: any) => x.code === props.invalidNumberCode
+            )
+              ? "#c82328"
+              : "#ACA8BD"};
+
+          &:focus {
+            border-color: #2f2c3a;
+          }
+        }
+      }
+      #txtFechaVencimiento {
+        iframe {
+          border-color: ${(props: any) =>
+            props.formErrors.some(
+              (x: any) => x.code === props.invalidExpiryCode
+            )
+              ? "#c82328"
+              : "#ACA8BD"};
+
+          &:focus {
+            border-color: #2f2c3a;
+          }
+        }
+      }
+      #txtCvv {
+        iframe {
+          border-color: ${(props: any) =>
+            props.formErrors.some((x: any) => x.code === props.invalidCvc)
+              ? "#c82328"
+              : "#ACA8BD"};
+
+          &:focus {
+            border-color: #2f2c3a;
+          }
+        }
+      }
+
+      .error {
+        height: auto;
+        color: #c82328;
+        margin-top: 0.5rem;
+        line-height: 0.75rem;
+        font-size: 0.75rem;
+      }
     }
   }
+
   .niubiz-logo-container {
-    margin-top: 5px;
+    margin-top: 0.3125rem;
   }
+`;
+
+export const RadioContainerPayment = styled.div`
+  margin-bottom: 2.75rem;
+  > div {
+    > div {
+      margin-bottom: 0.7em;
+    }
+  }
+`;
+
+export const PaymentLine = styled.span`
+  display: inline-flex;
+  flex: justify-content;
+  position: relative;
+  width: calc(100% - 3em);
+`;
+
+export const PaymentIconNiubiz = styled.div`
+  margin-left: 0.3125rem;
+  padding-top: 0.9375rem;
+  padding-right: 0.625rem;
+`;
+
+export const PaymentIcon = styled.div`
+  margin-left: 0.3125rem;
 `;

@@ -1,4 +1,4 @@
-import { Button } from "@temp/@next/components/atoms";
+import { Button } from "@farmacia-retail/farmauna-components";
 import { generateCategoryUrl } from "@temp/core/utils";
 import * as React from "react";
 import { Link } from "react-router-dom";
@@ -13,24 +13,43 @@ const MobileNav: React.FC<{ overlay: OverlayContextInterface }> = ({
 
   return (
     <Overlay context={overlay}>
-      <div className="side-nav" onClick={evt => evt.stopPropagation()}>
+      <div
+        className="fa-flex fa-flex-col fa-bg-highlight-lightest side-nav"
+        onClick={evt => evt.stopPropagation()}
+      >
         <div className={"side-nav--body"}>
-        <MobileNavList
-          items={items}
-          openParent={openParent}
-          hideOverlay={overlay.hide}
-          setOpenParent={setOpenParent}
-        />
-        </div>   
-        {
-        openParent &&
-        <div className={"side-nav--actions"}>
+          <MobileNavList
+            items={items}
+            openParent={openParent}
+            hideOverlay={overlay.hide}
+            setOpenParent={setOpenParent}
+          />
+        </div>
+      </div>
+      {openParent && (
+        <div
+          className={"fa-mt-auto fa-bg-highlight-lightest side-nav--actions"}
+        >
           <Link to={generateCategoryUrl(openParent.id, openParent.name)}>
-            <Button>Ver todos</Button>
+            <Button>
+              <span className="fa-mr-2">Ver todos</span>
+            </Button>
           </Link>
         </div>
-      }     
-      </div>      
+      )}
+      {!openParent && (
+        <div className="fa-bg-white info-contact">
+          <div className="contact-nav">
+            <p>¿Necesitas asesoría?</p>
+            <p>
+              <a href="mailto:consultas@farmauna.com">consultas@farmauna.com</a>
+            </p>
+          </div>
+          <div className="contact-phone">
+            <span>01 3913655</span>
+          </div>
+        </div>
+      )}
     </Overlay>
   );
 };

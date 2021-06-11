@@ -1,6 +1,6 @@
 import React, { FC, useCallback, useEffect, useRef } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
-import { TextField } from "@components/molecules";
+import { InputField } from "@farmacia-retail/farmauna-components";
 import { IProps as ITextFieldProps } from "@components/molecules/TextField/types";
 import { mapsApiKey } from "@temp/constants";
 import { LIMA_BOUNDS } from "@temp/core/config";
@@ -12,6 +12,7 @@ export type IAddressAutocompleteValue = {
 };
 
 type IProps = {
+  placeholder: string;
   value?: IAddressAutocompleteValue;
   onChangeValue?: (value: IAddressAutocompleteValue) => void;
 };
@@ -67,7 +68,7 @@ export const AddressAutocomplete: FC<IAddressAutocompleteProps> = ({
   }, []);
 
   return (
-    <TextField
+    <InputField
       {...props}
       value={value?.text}
       ref={inputRef}

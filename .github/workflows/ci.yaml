@@ -1,6 +1,6 @@
 on:
   pull_request:
-    branches: [master, release]
+    branches: [master, release, redesign]
 
 jobs:
   build:
@@ -9,7 +9,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x]
+        node-version: [14.x]
 
     steps:
       - uses: actions/checkout@v2
@@ -17,21 +17,31 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+
       - name: 2- Install dependencies
         run: npm install
-      - name: 3- Run typescript checker
-        run: npx tsc --noEmit & npx tsc --noEmit -p src/@sdk & npx tsc --noEmit -p src/@next
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      # - name: 3- Run typescript checker
+      #   run: npx tsc --noEmit & npx tsc --noEmit -p src/@sdk & npx tsc --noEmit -p src/@next
       - name: 4- Run tslint
         run: npm run tslint
-      - name: 5- Build application master ${{ github.event.pull_request.base.ref }} - by ${{ github.actor }}
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      - name: 5- Run tests
+        run: npm run test
+        env: 
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      - name: 6- Build application master ${{ github.event.pull_request.base.ref }} - by ${{ github.actor }}
         if: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'master' }}
         run: npm run build
         env:
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
           API_URI: ${{ secrets.GRAPHQL_URL_QA }}
-      - name: 5- Build application release ${{ github.event.pull_request.base.ref }} - by ${{ github.actor }}
+      - name: 6- Build application release ${{ github.event.pull_request.base.ref }} - by ${{ github.actor }}
         if: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'release' }}
         run: npm run build
         env:
           API_URI: ${{ secrets.GRAPHQL_URL_PROD }}
-      - name: 6- Run tests
-        run: npm run test
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+

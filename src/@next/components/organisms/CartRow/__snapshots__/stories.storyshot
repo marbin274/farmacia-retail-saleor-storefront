@@ -61,10 +61,8 @@ exports[`Storyshots @components/organisms/CartRow default 1`] = `
 
 .c14 {
   background-color: transparent;
-  color: #9194A7;
   left: 0px;
   position: absolute;
-  font-size: 0.9rem;
   pointer-events: none;
   top: -1.5rem;
 }
@@ -84,7 +82,7 @@ exports[`Storyshots @components/organisms/CartRow default 1`] = `
 
 .c11:hover {
   color: #E4E5ED;
-  border-color: #00B0CA;
+  border-color: #00BF8E;
 }
 
 .c15 {
@@ -514,7 +512,7 @@ exports[`Storyshots @components/organisms/CartRow default 1`] = `
               value="3"
             />
             <label
-              className="c14"
+              className="fa-text-gray-01 fa-text-sm c14"
               disabled={false}
             >
               Quantity

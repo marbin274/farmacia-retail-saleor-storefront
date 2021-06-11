@@ -10,21 +10,16 @@ describe("<Tile />", () => {
   it("renders header, footer and content", () => {
     const headerText = "This is header";
     const contentText = "This is content";
-    const footerText = "This is footer";
 
     const addHTMLSurroundingTag = (text: string) => <p>{text}</p>;
 
     const wrapper = shallow(
-      <Tile
-        header={addHTMLSurroundingTag(headerText)}
-        footer={addHTMLSurroundingTag(footerText)}
-      >
+      <Tile header={addHTMLSurroundingTag(headerText)}>
         {addHTMLSurroundingTag(contentText)}
       </Tile>
     );
     expect(wrapper.text()).toContain(headerText);
     expect(wrapper.text()).toContain(contentText);
-    expect(wrapper.text()).toContain(footerText);
   });
   it("changes style for hover tile type", () => {
     const wrapper = mount(
@@ -64,37 +59,24 @@ describe("<Tile />", () => {
     );
     expect(wrapper.find(S.Content).length).toEqual(1);
     expect(wrapper.find(S.Header).length).toEqual(0);
-    expect(wrapper.find(S.Footer).length).toEqual(0);
   });
 
   it("should display three elements if footer and header elements were passed", () => {
     const header = <p>This is header</p>;
-    const footer = <p>This is footer</p>;
     const wrapper = shallow(
-      <Tile header={header} footer={footer}>
+      <Tile header={header}>
         <p>This is content</p>
       </Tile>
     );
     expect(wrapper.find(S.Header).length).toEqual(1);
-    expect(wrapper.find(S.Footer).length).toEqual(1);
   });
 
   it("changes style for addNew tile type", () => {
-    const wrapper = mount(
-      <Tile>
-        <p>This is content</p>
-      </Tile>
-    );
 
     const wrapperWithAddNew = mount(
       <Tile tileType="addNew">
         <p>This is content</p>
       </Tile>
-    );
-
-    expect(wrapper).toHaveStyleRule(
-      "background-color",
-      defaultTheme.tile.backgroundColor
     );
 
     expect(wrapperWithAddNew).toHaveStyleRule(

@@ -1,3 +1,4 @@
+import { Button } from "@farmacia-retail/farmauna-components";
 import React from "react";
 import { PasswordResetForm } from "..";
 
@@ -7,16 +8,17 @@ interface IResetPasswordForm {
 
 const ResetPasswordForm: React.FC<IResetPasswordForm> = ({ onClick }) => (
   <div className="checkout-login__user__form">
-    <div className="checkout-login__user__form__header">
+    <div className="fa-text-2xl fa-font-semibold fa-mb-4">
       ¿Ya te registraste?
     </div>
     <PasswordResetForm>
-      <button
-        className="login__content__password-reminder__forget"
+      <Button
+        className='fa-mt-4'
+        variant="link"
         onClick={onClick}
       >
         Volver al login
-      </button>
+      </Button>
     </PasswordResetForm>
   </div>
 );

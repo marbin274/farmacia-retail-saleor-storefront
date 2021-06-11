@@ -1,12 +1,19 @@
 import { media, mediaUp, styled } from "@styles";
 
 export const Wrapper = styled.div`
-  background-color: ${props => props.theme.colors.aunaGrey06};
-  border-radius: 0.5rem;
+  background-color: ${props => props.theme.colors.white};
+  border-radius: 1rem;
+  height:4rem;
+  display:flex;
+  align-items:center;
+  margin-bottom:1rem;
 
   ${media.smallScreen`
     border-radius: 0;
   `}
+  > span {
+    color: #908BA7;
+  }
 `;
 
 export const Bar = styled.div`
@@ -14,16 +21,16 @@ export const Bar = styled.div`
   justify-content: space-between;
   align-items: center;
   font-size: ${props => props.theme.typography.smallFontSize};
-  flex-direction: column;
-  ${mediaUp.mediumScreen`
+  width:100%;
+  ${media.mediumScreen`
     flex-direction: row;
-    background-color: #F1F2F7;
+    
   `}
 `;
 
 export const LeftSide = styled.div`
   align-items: center;
-  background-color: ${props => props.theme.colors.aunaDisabledBackground};  
+    
   display: flex;
   justify-content: space-between;
   padding: 1rem .8rem;
@@ -36,6 +43,9 @@ export const LeftSide = styled.div`
     color: ${props => props.theme.colors.interactive};
     font-size: ${props => props.theme.typography.smallFontSize};
     font-weight: ${props => props.theme.typography.normalFontWeight};
+    color: #452FBA;
+    display:flex;
+    align-items:center;
   }
 `;
 
@@ -44,16 +54,43 @@ export const RightSide = styled.div`
   justify-content: space-between;
   padding: 1rem .8rem;
   width: 100%;
-  ${mediaUp.mediumScreen`
-    background-color: ${(props: any) => props.theme.colors.aunaDisabledBackground};
-    justify-content: flex-end;
-  `}
+  font-size:20px;
+  align-items:center;
+  font-weight:600;
+  ${media.smallScreen`
+    font-size:16px;
+`}
   .select-input{
     justify-content: flex-end;
     .clear-label {
       margin-right: 1rem;
+      width: 14.75rem;
+      height: 2.5rem;
+      border-radius: 40px;
+      background: #FFFFFF;
+      border: 1px solid #908BA7;
+      position:relative;
+      padding:0 0 0 15px;
+      display:flex;
+      align-items: center;
+      justify-content: flex-start;
+      ${media.smallScreen`
+        margin-right:0;
+  `}
     }
   }
+
+  ${media.mediumScreen`
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+`}
+  ${media.xSmallScreen`
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+`}
+ 
 `;
 export const FiltersButton = styled.button`
   font-size: ${props => props.theme.typography.smallFontSize};
@@ -78,8 +115,12 @@ export const Clear = styled.button`
 `;
 
 export const Element = styled.span`
+ 
 ${mediaUp.mediumScreen`
-  margin-left: 1rem;
+  margin-top: 1.5rem;
+`}
+${mediaUp.xSmallScreen`
+  margin-top: 1.5rem;
 `}
 `;
 
@@ -94,14 +135,20 @@ export const Filters = styled.span`
 
 export const Label = styled.span`
   color: ${props => props.theme.colors.greyText};
+  color:#2F2C3A;
+`;
+
+export const SearchText = styled.span`
+  color: ${props => props.theme.colors.interactive};
 `;
 
 export const Sort = styled.div`
   width: inherit;
   display: inline-block;
+  margin-bottom:20px;
 
   .label {
-    display: none;
+    display: block;
     ${mediaUp.mediumScreen`
       display:  block;
     `}
@@ -134,8 +181,10 @@ export const FiltersChipsWrapper = styled.div`
   > div {
     margin: 0.4rem;
   }
+  display:none;
 `;
 
 export const NumberProducts = styled.span`
   font-weight: ${({theme}) =>theme.typography.boldFontWeight};
 `
+;

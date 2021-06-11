@@ -98,7 +98,6 @@ const AddressBook: React.FC<{
           }}
           address={addressData}
           submitBtnText="Guardar"
-          title="Editar dirección"
           {...{ countriesOptions: countries }}
           formId="address-form"
           districtsOptions={districtsOptions}

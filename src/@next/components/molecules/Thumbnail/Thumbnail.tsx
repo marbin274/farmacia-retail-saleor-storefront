@@ -5,10 +5,12 @@ import { maybe } from "@utils/misc";
 import { PlaceholderImage } from "@components/atoms";
 import { CachedImage } from "../";
 import { IProps } from "./types";
+import { ImageMagnifier } from "@farmacia-retail/farmauna-components";
 
 export const Thumbnail: React.FC<IProps> = ({
   source,
   children,
+  hasMagnifier,
   ...props
 }: IProps) => {
   const { thumbnail, thumbnail2x } = source;
@@ -17,13 +19,21 @@ export const Thumbnail: React.FC<IProps> = ({
     return <PlaceholderImage />;
   }
 
+  const url = maybe(() => thumbnail!.url);
+  const url2x = maybe(() => thumbnail2x!.url);
+  const alt = maybe(() => (thumbnail!.alt ? thumbnail!.alt : ""), "");
+  if (hasMagnifier) {
+    return (
+      <ImageMagnifier
+        src={url! || url2x!}
+        srcLarge={url2x || url}
+        alt={alt}
+      ></ImageMagnifier>
+    );
+  }
+
   return (
-    <CachedImage
-      {...props}
-      url={maybe(() => thumbnail!.url)}
-      url2x={maybe(() => thumbnail2x!.url)}
-      alt={maybe(() => (thumbnail!.alt ? thumbnail!.alt : ""), "")}
-    >
+    <CachedImage {...props} url={url} url2x={url2x} alt={alt}>
       {children}
     </CachedImage>
   );

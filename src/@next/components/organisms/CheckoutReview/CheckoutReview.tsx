@@ -1,6 +1,9 @@
 import { CreditCardIcon } from "@components/atoms";
 import { AddressSummary, OutOfTimeMessage } from "@components/molecules";
-import { formatShippingMethodDateToString, getScheduleTimesFormat } from "@temp/@next/utils/dateUtils";
+import {
+  formatShippingMethodDateToString,
+  getScheduleTimesFormat,
+} from "@temp/@next/utils/dateUtils";
 import React from "react";
 import * as S from "./styles";
 import { IProps } from "./types";
@@ -20,15 +23,33 @@ const CheckoutReview: React.FC<IProps> = ({
       <div>
         <S.MainTitle> Datos de entrega</S.MainTitle>
         <S.Title data-cy="checkoutReviewSectionTitle">Datos personales</S.Title>
-        <S.Text><S.TextBold>{checkout?.billingAddress?.firstName} {checkout?.billingAddress?.lastName}</S.TextBold></S.Text>
-        <S.Text>Número de documento: <S.TextBold>{checkout?.documentNumber}</S.TextBold></S.Text>
-        <S.Text>Correo electrónico: <S.TextBold>{email}</S.TextBold></S.Text>
-        <S.Text>Telefono: <S.TextBold>{checkout?.billingAddress?.phone}</S.TextBold></S.Text>
-        <S.Title data-cy="checkoutReviewSectionTitle">Dirección de entrega</S.Title>
-        <AddressSummary address={shippingAddress}  checkout={checkout} email={email} />
+        <S.Text>
+          <S.TextBold>
+            {checkout?.billingAddress?.firstName}{" "}
+            {checkout?.billingAddress?.lastName}
+          </S.TextBold>
+        </S.Text>
+        <S.Text>
+          Número de documento:{" "}
+          <S.TextBold>{checkout?.documentNumber}</S.TextBold>
+        </S.Text>
+        <S.Text>
+          Correo electrónico: <S.TextBold>{email}</S.TextBold>
+        </S.Text>
+        <S.Text>
+          Telefono: <S.TextBold>{checkout?.billingAddress?.phone}</S.TextBold>
+        </S.Text>
+        <S.Title className="secondary" data-cy="checkoutReviewSectionTitle">
+          Dirección de entrega
+        </S.Title>
+        <AddressSummary
+          address={shippingAddress}
+          checkout={checkout}
+          email={email}
+        />
       </div>
       <div>
-        <S.Title data-cy="checkoutReviewSectionTitle">
+        <S.Title className="secondary" data-cy="checkoutReviewSectionTitle">
           Tiempo de entrega
         </S.Title>
         {!scheduleDate ? (
@@ -55,9 +76,10 @@ const CheckoutReview: React.FC<IProps> = ({
         )}
       </div>
       <div>
-        <S.Title data-cy="checkoutReviewSectionTitle">Método de pago</S.Title>
+        <S.Title className="secondary" data-cy="checkoutReviewSectionTitle">
+          Método de pago
+        </S.Title>
         <CreditCardIcon creditCardProvider={creditCardProvider} />
-        <S.SubTitle>Tarjeta de Crédito / Débito</S.SubTitle>
       </div>
       <OutOfTimeMessage isShippingAvailable={true} />
     </S.Wrapper>
@@ -65,4 +87,3 @@ const CheckoutReview: React.FC<IProps> = ({
 };
 
 export { CheckoutReview };
-

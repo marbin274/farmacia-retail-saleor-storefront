@@ -95,7 +95,6 @@ export const Map: FC<IProps> = ({ location, onChangeLocation }) => {
 
   return (
     <S.MapWrapper>
-      <S.MapHint>Puedes mover tu ubicación en el mapa</S.MapHint>
       <S.Map ref={mapRef} />
     </S.MapWrapper>
   );

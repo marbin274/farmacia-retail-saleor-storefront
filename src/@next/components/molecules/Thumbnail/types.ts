@@ -4,5 +4,6 @@ export interface IProps {
     thumbnail2x: { url?: string } | null;
   };
   noPhotoDefault?: boolean;
+  hasMagnifier?: boolean;
   children?: any;
 }

@@ -18,14 +18,14 @@ exports[`Storyshots @components/atoms/AddNewTile default 1`] = `
 }
 
 .c1 {
-  background-color: #F6F8FA;
   border: 1px transparent solid;
   overflow: auto;
   height: 100%;
   padding: 0;
   -webkit-transition: all 0.3s,color 0s,fill 0s;
   transition: all 0.3s,color 0s,fill 0s;
-  border-radius: 0.5rem;
+  border-radius: 1.5rem;
+  background: #FFFFFF;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -59,7 +59,7 @@ exports[`Storyshots @components/atoms/AddNewTile default 1`] = `
 }
 
 .c2 {
-  padding: 1rem 1.25rem 0rem;
+  padding: 0 1.5rem 1.5rem 2rem;
 }
 
 .c3 {

@@ -1,19 +1,18 @@
 import { styled } from "@styles";
 import { css } from "styled-components";
-
+import farmatheme from "@farmatheme";
 interface WrapperProps {
   readonly tileType?: "hover" | "addNew";
 }
 
 export const Wrapper = styled.div<WrapperProps>`
-  background-color: ${props => props.theme.tile.backgroundColor};
   border: 1px transparent solid;
   overflow: auto;
   height: 100%;
   padding: 0;
   transition: all 0.3s, color 0s, fill 0s;
-  border-radius: 0.5rem;
-
+  border-radius: 1.5rem;
+  background: ${farmatheme.theme.colors.neutral.lightest}
   display: flex;
   flex-direction: column;
   align-items: left;
@@ -47,10 +46,11 @@ export const Wrapper = styled.div<WrapperProps>`
 Wrapper.displayName = "Tile";
 
 export const Header = styled.div`
+  padding: 1.5rem 1.5rem 1rem 2rem;
 `;
 
 export const Content = styled.div`
-  padding: 1rem 1.25rem 0rem;
+  padding: 0 1.5rem 1.5rem 2rem;
 `;
 
 export const Footer = styled.div`

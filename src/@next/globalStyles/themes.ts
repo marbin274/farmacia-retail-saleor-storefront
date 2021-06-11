@@ -48,9 +48,9 @@ export const defaultTheme = {
       small: "0.9rem 1rem",
     },
     typography: {
-      fontSize: "1.125rem",
+      fontSize: "1rem",
       fontWeight: "600",
-      lineHeight: "1.25rem",
+      lineHeight: "normal",
       smallFontSize: "1rem",
       textTransform: "uppercase",
     },

@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   margin: 20px;
 }
 
-.c9 {
+.c5 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -17,99 +17,30 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   box-sizing: border-box;
 }
 
-.c5 {
-  background-color: #00B0CA;
-  padding: 0.9rem 3.7rem;
-  border: none;
-  border-radius: 40px;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-  outline: none;
-  cursor: pointer;
-  color: #fff;
+.c2 {
+  color: #131336;
+  background: #ffffff;
+  height: 25.8rem;
+  text-align: center;
+  -webkit-transition: 0 .3s;
+  transition: 0 .3s;
+  padding: 2rem;
+  position: relative;
+  border-radius: 16px;
+}
+
+.c2:hover {
+  box-shadow: 0px 8px 16px rgba(144,139,167,0.2);
+}
+
+.c2 .img {
   width: auto;
-}
-
-.c5:hover {
-  background-color: #0BC1DC;
-  color: #fff;
-}
-
-.c5:active {
-  background-color: #029FB7;
-  box-shadow: -3px 3px 14px 0px rgba(129,67,67,0.2);
-}
-
-.c5:disabled {
-  background-color: #F1F2F7;
-  color: #B8BCD5;
-  cursor: default;
-}
-
-.c5:disabled,
-.c5:disabled:hover {
-  cursor: default;
-}
-
-.c8 {
-  background-color: #fff;
-  padding: 0.9rem 3.7rem;
-  border: none;
-  border-radius: 40px;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-  outline: none;
-  cursor: pointer;
-  color: #00B0CA;
-  width: auto;
-  box-shadow: inset 0px 0px 0px 3px #00B0CA;
-  border-left: 1px solid #00B0CA;
-  border-right: 1px solid #00B0CA;
-}
-
-.c8:hover {
-  background-color: #fff;
-  color: #00B0CA;
-}
-
-.c8:active {
-  background-color: #029FB7;
-  box-shadow: -3px 3px 14px 0px rgba(129,67,67,0.2);
-}
-
-.c8:disabled {
-  background-color: #F1F2F7;
-  color: #B8BCD5;
-  cursor: default;
-}
-
-.c8:disabled,
-.c8:disabled:hover {
-  cursor: default;
-}
-
-.c6 {
-  display: inline-block;
-  font-size: 1.125rem;
-  font-weight: 400;
-  line-height: 1.25rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.c4 {
-  position: absolute;
-  top: -19px;
-  left: -53px;
-  -webkit-transform: rotate(-43.6deg);
-  -ms-transform: rotate(-43.6deg);
-  transform: rotate(-43.6deg);
-  background: #404497;
-  color: #fff;
-  width: 166px;
-  height: 86px;
+  height: 170px;
+  max-width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -118,70 +49,45 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
-  padding: 12px;
-  font-size: 16px;
-}
-
-.c2 {
-  color: #131336;
-  background: inherit;
-  height: 24rem;
-  text-align: center;
-  -webkit-transition: 0 0.3s;
-  transition: 0 0.3s;
-  max-width: 11rem;
-  position: relative;
-  margin: 0 auto 1.5rem;
-}
-
-.c2:hover {
-  -webkit-transform: translateY(-0.1rem);
-  -ms-transform: translateY(-0.1rem);
-  transform: translateY(-0.1rem);
-}
-
-.c2 .img {
-  width: auto;
-  height: 176px;
-  max-width: 100%;
   vertical-align: middle;
+  margin: 0 auto;
 }
 
 .c2 .img img {
   width: auto;
-  height: 11rem;
+  height: 170px;
   max-width: 100%;
   vertical-align: middle;
+  margin: auto;
+  margin-top: 8px;
 }
 
 .c2 .description {
   font-family: "Poppins",sans-serif;
-  font-size: 1.2rem;
-  height: 35%;
-  font-weight: normal;
+  height: 85px;
+  font-weight: 600;
   line-height: 1.4;
   padding: 0.4rem 0;
   text-align: center;
   overflow: hidden;
+  margin-bottom: 20px;
 }
 
 .c2 .price {
   font-family: "Poppins",sans-serif;
-  font-size: 1.5rem;
-  font-weight: normal;
   padding: 0.7rem 0rem 0rem 0rem;
   text-align: center;
+  color: #00BF8E;
+  font-size: 1.125rem;
+  font-weight: 600;
 }
 
 .c2 .button button {
   cursor: pointer;
   padding: 0.5rem;
   border-radius: 23px;
-  width: 100%;
+  width: 7.688rem;
+  height: 48px;
 }
 
 .c2 .button button:hover {
@@ -200,61 +106,39 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
 }
 
 .c2 .button button:disabled {
-  color: #b8bcd5;
   border-color: transparent;
   cursor: not-allowed;
 }
 
 .c3 {
-  height: 24rem;
   overflow: hidden;
   position: relative;
-  border-radius: 16px;
+  height: 18rem;
+  margin-bottom: 16px;
 }
 
 .c1 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 5rem 3rem;
+  grid-gap: 1rem 1rem;
 }
 
-.c7 {
+.c4 {
   text-align: center;
   margin: 2.5rem 0;
 }
 
-@media (max-width:540px) {
-  .c5 {
-    padding: 0.9rem 1rem;
-    width: 88%;
-  }
-}
-
-@media (max-width:540px) {
-  .c8 {
-    padding: 0.9rem 1rem;
-    width: 88%;
-  }
-}
-
-@media (max-width:992px) {
-  .c4 {
-    top: -25px;
-    left: -62px;
-  }
-}
-
 @media (max-width:992px) {
   .c1 {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 5rem 1.5rem;
   }
 }
 
 @media (max-width:540px) {
   .c1 {
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 6rem 1rem;
+    grid-template-columns: 1fr;
+    grid-gap: 1rem 1rem;
   }
 }
 
@@ -275,11 +159,30 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         <div
           className="c3"
         >
-          <p
-            className="c4"
+          <div
+            className="fa-flex fa-justify-start"
           >
-            Agotado
-          </p>
+            <span
+              className="fa-rounded-2xl fa-inline-block fa-text-xs fa-leading-3 fa-p-1.5 fa-bg-gray-03 fa-pointer-events-none"
+              role="chip"
+              style={
+                Object {
+                  "backgroundColor": undefined,
+                }
+              }
+            >
+              <span
+                className="fa-text-white fa-block"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+              >
+                Agotado
+              </span>
+            </span>
+          </div>
           <div
             className="img"
             onClick={[Function]}
@@ -294,15 +197,6 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
             </div>
           </div>
           <div
-            className="description"
-          >
-            <h4
-              className=""
-            >
-              Betacort Depot Solución Inyectable
-            </h4>
-          </div>
-          <div
             className="price outStock_price"
           >
             <p
@@ -313,22 +207,67 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
               </span>
             </p>
           </div>
+          <div
+            className="description"
+          >
+            <h4
+              className=""
+            >
+              Betacort Depot Solución Inyectable
+            </h4>
+          </div>
         </div>
       </a>
       <div
         className="button"
       >
         <button
-          className="c5"
-          color="primary"
+          className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-h-10 fa-px-3 fa-bg-neutral-medium fa-text-white fa-cursor-not-allowed"
           disabled={true}
           onClick={[Function]}
-          size="md"
+          style={Object {}}
           type="button"
         >
           <span
-            className="c6"
-            size="md"
+            className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
+          >
+            <svg
+              className=" "
+              color="currentColor"
+              fill="currentColor"
+              height={16}
+              viewBox="0 0 24 24"
+              width={16}
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9 21C10.1046 21 11 20.1046 11 19C11 17.8954 10.1046 17 9 17C7.89543 17 7 17.8954 7 19C7 20.1046 7.89543 21 9 21Z"
+                fill="transparent"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              />
+              <path
+                d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z"
+                fill="transparent"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              />
+              <path
+                d="M3 3H5L7 15C7.21572 15.6135 7.62494 16.1402 8.16602 16.501C8.7071 16.8617 9.35075 17.0368 10 17H17C17.6493 17.0368 18.2929 16.8617 18.834 16.501C19.3751 16.1402 19.7843 15.6135 20 15L21 8L10 8"
+                fill="transparent"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              />
+            </svg>
+          </span>
+          <span
+            className="fa-align-middle fa-ml-2"
           >
             Agregar
           </span>
@@ -346,11 +285,30 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         <div
           className="c3"
         >
-          <p
-            className="c4"
+          <div
+            className="fa-flex fa-justify-start"
           >
-            Agotado
-          </p>
+            <span
+              className="fa-rounded-2xl fa-inline-block fa-text-xs fa-leading-3 fa-p-1.5 fa-bg-gray-03 fa-pointer-events-none"
+              role="chip"
+              style={
+                Object {
+                  "backgroundColor": undefined,
+                }
+              }
+            >
+              <span
+                className="fa-text-white fa-block"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+              >
+                Agotado
+              </span>
+            </span>
+          </div>
           <div
             className="img"
             onClick={[Function]}
@@ -365,15 +323,6 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
             </div>
           </div>
           <div
-            className="description"
-          >
-            <h4
-              className=""
-            >
-              Abrilar 35Mg/5ML Jarabe - Frasco 100 ML
-            </h4>
-          </div>
-          <div
             className="price outStock_price"
           >
             <p
@@ -384,22 +333,67 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
               </span>
             </p>
           </div>
+          <div
+            className="description"
+          >
+            <h4
+              className=""
+            >
+              Abrilar 35Mg/5ML Jarabe - Frasco 100 ML
+            </h4>
+          </div>
         </div>
       </a>
       <div
         className="button"
       >
         <button
-          className="c5"
-          color="primary"
+          className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-h-10 fa-px-3 fa-bg-neutral-medium fa-text-white fa-cursor-not-allowed"
           disabled={true}
           onClick={[Function]}
-          size="md"
+          style={Object {}}
           type="button"
         >
           <span
-            className="c6"
-            size="md"
+            className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
+          >
+            <svg
+              className=" "
+              color="currentColor"
+              fill="currentColor"
+              height={16}
+              viewBox="0 0 24 24"
+              width={16}
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9 21C10.1046 21 11 20.1046 11 19C11 17.8954 10.1046 17 9 17C7.89543 17 7 17.8954 7 19C7 20.1046 7.89543 21 9 21Z"
+                fill="transparent"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              />
+              <path
+                d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z"
+                fill="transparent"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              />
+              <path
+                d="M3 3H5L7 15C7.21572 15.6135 7.62494 16.1402 8.16602 16.501C8.7071 16.8617 9.35075 17.0368 10 17H17C17.6493 17.0368 18.2929 16.8617 18.834 16.501C19.3751 16.1402 19.7843 15.6135 20 15L21 8L10 8"
+                fill="transparent"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              />
+            </svg>
+          </span>
+          <span
+            className="fa-align-middle fa-ml-2"
           >
             Agregar
           </span>
@@ -417,11 +411,30 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         <div
           className="c3"
         >
-          <p
-            className="c4"
+          <div
+            className="fa-flex fa-justify-start"
           >
-            Agotado
-          </p>
+            <span
+              className="fa-rounded-2xl fa-inline-block fa-text-xs fa-leading-3 fa-p-1.5 fa-bg-gray-03 fa-pointer-events-none"
+              role="chip"
+              style={
+                Object {
+                  "backgroundColor": undefined,
+                }
+              }
+            >
+              <span
+                className="fa-text-white fa-block"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+              >
+                Agotado
+              </span>
+            </span>
+          </div>
           <div
             className="img"
             onClick={[Function]}
@@ -436,15 +449,6 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
             </div>
           </div>
           <div
-            className="description"
-          >
-            <h4
-              className=""
-            >
-              Amlodipino-Gef 10Mg Tabletas - Caja 10 Und
-            </h4>
-          </div>
-          <div
             className="price outStock_price"
           >
             <p
@@ -455,22 +459,67 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
               </span>
             </p>
           </div>
+          <div
+            className="description"
+          >
+            <h4
+              className=""
+            >
+              Amlodipino-Gef 10Mg Tabletas - Caja 10 Und
+            </h4>
+          </div>
         </div>
       </a>
       <div
         className="button"
       >
         <button
-          className="c5"
-          color="primary"
+          className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-h-10 fa-px-3 fa-bg-neutral-medium fa-text-white fa-cursor-not-allowed"
           disabled={true}
           onClick={[Function]}
-          size="md"
+          style={Object {}}
           type="button"
         >
           <span
-            className="c6"
-            size="md"
+            className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
+          >
+            <svg
+              className=" "
+              color="currentColor"
+              fill="currentColor"
+              height={16}
+              viewBox="0 0 24 24"
+              width={16}
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9 21C10.1046 21 11 20.1046 11 19C11 17.8954 10.1046 17 9 17C7.89543 17 7 17.8954 7 19C7 20.1046 7.89543 21 9 21Z"
+                fill="transparent"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              />
+              <path
+                d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z"
+                fill="transparent"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              />
+              <path
+                d="M3 3H5L7 15C7.21572 15.6135 7.62494 16.1402 8.16602 16.501C8.7071 16.8617 9.35075 17.0368 10 17H17C17.6493 17.0368 18.2929 16.8617 18.834 16.501C19.3751 16.1402 19.7843 15.6135 20 15L21 8L10 8"
+                fill="transparent"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              />
+            </svg>
+          </span>
+          <span
+            className="fa-align-middle fa-ml-2"
           >
             Agregar
           </span>
@@ -488,11 +537,30 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         <div
           className="c3"
         >
-          <p
-            className="c4"
+          <div
+            className="fa-flex fa-justify-start"
           >
-            Agotado
-          </p>
+            <span
+              className="fa-rounded-2xl fa-inline-block fa-text-xs fa-leading-3 fa-p-1.5 fa-bg-gray-03 fa-pointer-events-none"
+              role="chip"
+              style={
+                Object {
+                  "backgroundColor": undefined,
+                }
+              }
+            >
+              <span
+                className="fa-text-white fa-block"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+              >
+                Agotado
+              </span>
+            </span>
+          </div>
           <div
             className="img"
             onClick={[Function]}
@@ -507,15 +575,6 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
             </div>
           </div>
           <div
-            className="description"
-          >
-            <h4
-              className=""
-            >
-              Ab Broncol NF 1200Mg/5ML Solución Inyectable Intramuscular
-            </h4>
-          </div>
-          <div
             className="price outStock_price"
           >
             <p
@@ -526,22 +585,67 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
               </span>
             </p>
           </div>
+          <div
+            className="description"
+          >
+            <h4
+              className=""
+            >
+              Ab Broncol NF 1200Mg/5ML Solución Inyectable Intramuscular
+            </h4>
+          </div>
         </div>
       </a>
       <div
         className="button"
       >
         <button
-          className="c5"
-          color="primary"
+          className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-h-10 fa-px-3 fa-bg-neutral-medium fa-text-white fa-cursor-not-allowed"
           disabled={true}
           onClick={[Function]}
-          size="md"
+          style={Object {}}
           type="button"
         >
           <span
-            className="c6"
-            size="md"
+            className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
+          >
+            <svg
+              className=" "
+              color="currentColor"
+              fill="currentColor"
+              height={16}
+              viewBox="0 0 24 24"
+              width={16}
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9 21C10.1046 21 11 20.1046 11 19C11 17.8954 10.1046 17 9 17C7.89543 17 7 17.8954 7 19C7 20.1046 7.89543 21 9 21Z"
+                fill="transparent"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              />
+              <path
+                d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z"
+                fill="transparent"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              />
+              <path
+                d="M3 3H5L7 15C7.21572 15.6135 7.62494 16.1402 8.16602 16.501C8.7071 16.8617 9.35075 17.0368 10 17H17C17.6493 17.0368 18.2929 16.8617 18.834 16.501C19.3751 16.1402 19.7843 15.6135 20 15L21 8L10 8"
+                fill="transparent"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              />
+            </svg>
+          </span>
+          <span
+            className="fa-align-middle fa-ml-2"
           >
             Agregar
           </span>
@@ -559,11 +663,30 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         <div
           className="c3"
         >
-          <p
-            className="c4"
+          <div
+            className="fa-flex fa-justify-start"
           >
-            Agotado
-          </p>
+            <span
+              className="fa-rounded-2xl fa-inline-block fa-text-xs fa-leading-3 fa-p-1.5 fa-bg-gray-03 fa-pointer-events-none"
+              role="chip"
+              style={
+                Object {
+                  "backgroundColor": undefined,
+                }
+              }
+            >
+              <span
+                className="fa-text-white fa-block"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+              >
+                Agotado
+              </span>
+            </span>
+          </div>
           <div
             className="img"
             onClick={[Function]}
@@ -578,15 +701,6 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
             </div>
           </div>
           <div
-            className="description"
-          >
-            <h4
-              className=""
-            >
-              Antalgina 500Mg Tabletas 
-            </h4>
-          </div>
-          <div
             className="price outStock_price"
           >
             <p
@@ -597,22 +711,67 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
               </span>
             </p>
           </div>
+          <div
+            className="description"
+          >
+            <h4
+              className=""
+            >
+              Antalgina 500Mg Tabletas 
+            </h4>
+          </div>
         </div>
       </a>
       <div
         className="button"
       >
         <button
-          className="c5"
-          color="primary"
+          className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-h-10 fa-px-3 fa-bg-neutral-medium fa-text-white fa-cursor-not-allowed"
           disabled={true}
           onClick={[Function]}
-          size="md"
+          style={Object {}}
           type="button"
         >
           <span
-            className="c6"
-            size="md"
+            className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
+          >
+            <svg
+              className=" "
+              color="currentColor"
+              fill="currentColor"
+              height={16}
+              viewBox="0 0 24 24"
+              width={16}
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9 21C10.1046 21 11 20.1046 11 19C11 17.8954 10.1046 17 9 17C7.89543 17 7 17.8954 7 19C7 20.1046 7.89543 21 9 21Z"
+                fill="transparent"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              />
+              <path
+                d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z"
+                fill="transparent"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              />
+              <path
+                d="M3 3H5L7 15C7.21572 15.6135 7.62494 16.1402 8.16602 16.501C8.7071 16.8617 9.35075 17.0368 10 17H17C17.6493 17.0368 18.2929 16.8617 18.834 16.501C19.3751 16.1402 19.7843 15.6135 20 15L21 8L10 8"
+                fill="transparent"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              />
+            </svg>
+          </span>
+          <span
+            className="fa-align-middle fa-ml-2"
           >
             Agregar
           </span>
@@ -630,11 +789,30 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         <div
           className="c3"
         >
-          <p
-            className="c4"
+          <div
+            className="fa-flex fa-justify-start"
           >
-            Agotado
-          </p>
+            <span
+              className="fa-rounded-2xl fa-inline-block fa-text-xs fa-leading-3 fa-p-1.5 fa-bg-gray-03 fa-pointer-events-none"
+              role="chip"
+              style={
+                Object {
+                  "backgroundColor": undefined,
+                }
+              }
+            >
+              <span
+                className="fa-text-white fa-block"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+              >
+                Agotado
+              </span>
+            </span>
+          </div>
           <div
             className="img"
             onClick={[Function]}
@@ -649,15 +827,6 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
             </div>
           </div>
           <div
-            className="description"
-          >
-            <h4
-              className=""
-            >
-              Arcoxia 90Mg Tabletas Recubiertas - Caja 14 Und
-            </h4>
-          </div>
-          <div
             className="price outStock_price"
           >
             <p
@@ -668,22 +837,67 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
               </span>
             </p>
           </div>
+          <div
+            className="description"
+          >
+            <h4
+              className=""
+            >
+              Arcoxia 90Mg Tabletas Recubiertas - Caja 14 Und
+            </h4>
+          </div>
         </div>
       </a>
       <div
         className="button"
       >
         <button
-          className="c5"
-          color="primary"
+          className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-h-10 fa-px-3 fa-bg-neutral-medium fa-text-white fa-cursor-not-allowed"
           disabled={true}
           onClick={[Function]}
-          size="md"
+          style={Object {}}
           type="button"
         >
           <span
-            className="c6"
-            size="md"
+            className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
+          >
+            <svg
+              className=" "
+              color="currentColor"
+              fill="currentColor"
+              height={16}
+              viewBox="0 0 24 24"
+              width={16}
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9 21C10.1046 21 11 20.1046 11 19C11 17.8954 10.1046 17 9 17C7.89543 17 7 17.8954 7 19C7 20.1046 7.89543 21 9 21Z"
+                fill="transparent"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              />
+              <path
+                d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z"
+                fill="transparent"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              />
+              <path
+                d="M3 3H5L7 15C7.21572 15.6135 7.62494 16.1402 8.16602 16.501C8.7071 16.8617 9.35075 17.0368 10 17H17C17.6493 17.0368 18.2929 16.8617 18.834 16.501C19.3751 16.1402 19.7843 15.6135 20 15L21 8L10 8"
+                fill="transparent"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              />
+            </svg>
+          </span>
+          <span
+            className="fa-align-middle fa-ml-2"
           >
             Agregar
           </span>
@@ -701,11 +915,30 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         <div
           className="c3"
         >
-          <p
-            className="c4"
+          <div
+            className="fa-flex fa-justify-start"
           >
-            Agotado
-          </p>
+            <span
+              className="fa-rounded-2xl fa-inline-block fa-text-xs fa-leading-3 fa-p-1.5 fa-bg-gray-03 fa-pointer-events-none"
+              role="chip"
+              style={
+                Object {
+                  "backgroundColor": undefined,
+                }
+              }
+            >
+              <span
+                className="fa-text-white fa-block"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+              >
+                Agotado
+              </span>
+            </span>
+          </div>
           <div
             className="img"
             onClick={[Function]}
@@ -720,15 +953,6 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
             </div>
           </div>
           <div
-            className="description"
-          >
-            <h4
-              className=""
-            >
-              Bepanthen Ungüento - Tubo 30 Gr
-            </h4>
-          </div>
-          <div
             className="price outStock_price"
           >
             <p
@@ -739,22 +963,67 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
               </span>
             </p>
           </div>
+          <div
+            className="description"
+          >
+            <h4
+              className=""
+            >
+              Bepanthen Ungüento - Tubo 30 Gr
+            </h4>
+          </div>
         </div>
       </a>
       <div
         className="button"
       >
         <button
-          className="c5"
-          color="primary"
+          className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-h-10 fa-px-3 fa-bg-neutral-medium fa-text-white fa-cursor-not-allowed"
           disabled={true}
           onClick={[Function]}
-          size="md"
+          style={Object {}}
           type="button"
         >
           <span
-            className="c6"
-            size="md"
+            className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
+          >
+            <svg
+              className=" "
+              color="currentColor"
+              fill="currentColor"
+              height={16}
+              viewBox="0 0 24 24"
+              width={16}
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9 21C10.1046 21 11 20.1046 11 19C11 17.8954 10.1046 17 9 17C7.89543 17 7 17.8954 7 19C7 20.1046 7.89543 21 9 21Z"
+                fill="transparent"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              />
+              <path
+                d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z"
+                fill="transparent"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              />
+              <path
+                d="M3 3H5L7 15C7.21572 15.6135 7.62494 16.1402 8.16602 16.501C8.7071 16.8617 9.35075 17.0368 10 17H17C17.6493 17.0368 18.2929 16.8617 18.834 16.501C19.3751 16.1402 19.7843 15.6135 20 15L21 8L10 8"
+                fill="transparent"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              />
+            </svg>
+          </span>
+          <span
+            className="fa-align-middle fa-ml-2"
           >
             Agregar
           </span>
@@ -772,11 +1041,30 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
         <div
           className="c3"
         >
-          <p
-            className="c4"
+          <div
+            className="fa-flex fa-justify-start"
           >
-            Agotado
-          </p>
+            <span
+              className="fa-rounded-2xl fa-inline-block fa-text-xs fa-leading-3 fa-p-1.5 fa-bg-gray-03 fa-pointer-events-none"
+              role="chip"
+              style={
+                Object {
+                  "backgroundColor": undefined,
+                }
+              }
+            >
+              <span
+                className="fa-text-white fa-block"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+              >
+                Agotado
+              </span>
+            </span>
+          </div>
           <div
             className="img"
             onClick={[Function]}
@@ -791,15 +1079,6 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
             </div>
           </div>
           <div
-            className="description"
-          >
-            <h4
-              className=""
-            >
-              Buscapina Compositum N 500Mg-10Mg Grageas 
-            </h4>
-          </div>
-          <div
             className="price outStock_price"
           >
             <p
@@ -810,22 +1089,67 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
               </span>
             </p>
           </div>
+          <div
+            className="description"
+          >
+            <h4
+              className=""
+            >
+              Buscapina Compositum N 500Mg-10Mg Grageas 
+            </h4>
+          </div>
         </div>
       </a>
       <div
         className="button"
       >
         <button
-          className="c5"
-          color="primary"
+          className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-h-10 fa-px-3 fa-bg-neutral-medium fa-text-white fa-cursor-not-allowed"
           disabled={true}
           onClick={[Function]}
-          size="md"
+          style={Object {}}
           type="button"
         >
           <span
-            className="c6"
-            size="md"
+            className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
+          >
+            <svg
+              className=" "
+              color="currentColor"
+              fill="currentColor"
+              height={16}
+              viewBox="0 0 24 24"
+              width={16}
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9 21C10.1046 21 11 20.1046 11 19C11 17.8954 10.1046 17 9 17C7.89543 17 7 17.8954 7 19C7 20.1046 7.89543 21 9 21Z"
+                fill="transparent"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              />
+              <path
+                d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z"
+                fill="transparent"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              />
+              <path
+                d="M3 3H5L7 15C7.21572 15.6135 7.62494 16.1402 8.16602 16.501C8.7071 16.8617 9.35075 17.0368 10 17H17C17.6493 17.0368 18.2929 16.8617 18.834 16.501C19.3751 16.1402 19.7843 15.6135 20 15L21 8L10 8"
+                fill="transparent"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              />
+            </svg>
+          </span>
+          <span
+            className="fa-align-middle fa-ml-2"
           >
             Agregar
           </span>
@@ -834,25 +1158,53 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
     </div>
   </div>
   <div
-    className="c7"
+    className="c4"
   >
     <button
-      className="c8"
-      color="secondary"
+      className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-transparent fa-text-primary-dark fa-border-2 fa-border-primary-medium hover:fa-border-primary-dark focus:fa-border-primary-light fa-h-10 fa-px-3"
       data-cy="load-more_button"
+      disabled={false}
       onClick={[Function]}
-      size="md"
+      style={Object {}}
+      type="button"
     >
       <span
-        className="c6"
-        size="md"
+        className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
       >
-        Cargar +
+        <svg
+          className=" "
+          color="currentColor"
+          fill="currentColor"
+          height={12}
+          viewBox="0 0 24 24"
+          width={12}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12 1.5V22.5"
+            stroke="currentColor"
+            strokeLinecap="square"
+            strokeMiterlimit="10"
+            strokeWidth="2"
+          />
+          <path
+            d="M22.5 12H1.5"
+            stroke="currentColor"
+            strokeLinecap="square"
+            strokeMiterlimit="10"
+            strokeWidth="2"
+          />
+        </svg>
+      </span>
+      <span
+        className="fa-align-middle fa-ml-2"
+      >
+        Cargar más
       </span>
     </button>
   </div>
   <div
-    className="c9"
+    className="c5"
   />
 </div>
 `;

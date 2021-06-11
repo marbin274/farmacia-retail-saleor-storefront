@@ -28,6 +28,7 @@ module.exports = ({ sourceDir, distDir }) => ({
   resolve: {
     alias: {
       "react-dom": "@hot-loader/react-dom",
+      "@farmatheme": "@farmacia-retail/farmauna-components/tailwind.config"
     },
     extensions: [".ts", ".tsx", ".js", ".jsx"],
     plugins: [

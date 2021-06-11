@@ -19,8 +19,16 @@ exports[`Storyshots @components/atoms/Label default 1`] = `
 
 .c1 {
   color: #9194A7;
+  font-weight: 500;
+  font-size: 14px;
   display: inline-block;
   white-space: pre;
+}
+
+@media (max-width:540px) {
+  .c1 {
+    margin-right: 0;
+  }
 }
 
 <div

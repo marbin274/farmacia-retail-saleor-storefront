@@ -8,7 +8,7 @@ width: ${props => `${props.theme.container.width}px`};
   margin: 0 auto;
   padding: 0 ${props => props.theme.spacing.spacer};
   ${media.largeScreen`
-    width: 100%;      
+    width: 100%;    
   `}
 `;
 
@@ -16,32 +16,33 @@ export const WraperOpenBanner = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  height:4.625rem;
 `;
 export const TopImagesContainer = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
+  height:100%;
 `;
 
 export const TopImageItem = styled.div<{ imageMobile: string, imageDesktop: string, aboutauna?:boolean }>`
   background: no-repeat url("${(props: any )=> props.imageMobile}") transparent;
   background-size: 100% 100%;
   cursor: pointer;
-  height: 4rem; 
+  height: 4rem;
   width: ${({aboutauna})=>aboutauna ? "55%": "45%"};  
   ${mediaUp.mediumScreen`
     background: no-repeat url("${(props: any) => props.imageDesktop}") transparent;
-    background-size: contain;
+    background-size: cover;
   `}
   @media(min-width: ${mediumScreen}px) and (max-width: ${largeScreen}px){
-    height: 2.5rem;
-    width: 21.5rem;
+    width: auto;
   }
   ${mediaUp.largeScreen`
-    width: 34.625rem;
+    height:auto;
   `}
   @media(min-width: ${largeScreen}px) and (max-width: ${xLargeScreen}px){
-    height: 3.7rem;
+    height: auto;
   }
 `
 export const TopImageDistrictBannerOpen = styled.div<{

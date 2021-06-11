@@ -6,7 +6,7 @@ exports[`Storyshots @components/molecules/AddressTileOption default 1`] = `
   margin: 20px;
 }
 
-.c5 {
+.c4 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -19,17 +19,13 @@ exports[`Storyshots @components/molecules/AddressTileOption default 1`] = `
 
 .c2 {
   color: #131336;
-}
-
-.c2 p {
-  line-height: 2rem;
-}
-
-.c3 {
-  display: block;
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 1.25rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .c1 {
@@ -43,7 +39,7 @@ exports[`Storyshots @components/molecules/AddressTileOption default 1`] = `
   cursor: pointer;
 }
 
-.c4 {
+.c3 {
   display: none;
 }
 
@@ -64,46 +60,82 @@ exports[`Storyshots @components/molecules/AddressTileOption default 1`] = `
       className="c2"
     >
       <span
-        className="c3"
+        className="fa-text-lg fa-mb-4 fa-font-semibold"
       >
         John Doe
       </span>
       <p>
         Mirumee
       </p>
-      <p>
+      <span
+        className="fa-text-sm fa-mb-4 fa-font-medium"
+      >
         St Street
-      </p>
-      <p>
+      </span>
+      <span
+        className="fa-text-sm fa-mb-4 fa-font-medium"
+      >
         Second
-      </p>
-      <p>
-        55-555,
-         
-        Wroclaw
-      </p>
-      <p>
-        dolnyslask
-        , 
-      </p>
-      <p>
-        Poland
-      </p>
-      <p>
-        Celular: 
-        555-5555
-      </p>
+      </span>
+      <div
+        className="fa-grid fa-grid-cols-1 lg:fa-grid-cols-2 fa-gap-x-4"
+      >
+        <div
+          className="fa-flex fa-items-start"
+        >
+          <span
+            className="fa-mr-2 fa-text-neutral-dark"
+          >
+            Distrito: 
+          </span>
+          <span>
+            55-555,
+             
+            Wroclaw
+          </span>
+        </div>
+        <div
+          className="fa-flex fa-items-start"
+        >
+          <span
+            className="fa-mr-2 fa-text-neutral-dark"
+          >
+            Pais: 
+          </span>
+          <span>
+            <span>
+              dolnyslask
+              , 
+            </span>
+            <span>
+              Poland
+            </span>
+          </span>
+        </div>
+        <div
+          className="fa-flex fa-items-start"
+        >
+          <span
+            className="fa-mr-2  fa-text-neutral-dark"
+          >
+            Celular: 
+          </span>
+          <span>
+            555-5555
+          </span>
+        </div>
+      </div>
     </div>
     <input
       checked={false}
-      className="c4"
+      className="c3"
       name="address"
       type="radio"
       value="12345"
     />
   </label>
   <div
-    className="c5"
+    className="c4"
   />
 </div>
 `;

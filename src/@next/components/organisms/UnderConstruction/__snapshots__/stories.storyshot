@@ -18,12 +18,12 @@ exports[`Storyshots @components/organisms/UnderConstruction UnderConstruction 1`
 }
 
 .c5 {
-  color: #00B0CA;
+  color: #00BF8E;
   font-size: 1em;
 }
 
 .c5 a {
-  color: #00B0CA;
+  color: #00BF8E;
 }
 
 .c6 {
@@ -66,7 +66,7 @@ exports[`Storyshots @components/organisms/UnderConstruction UnderConstruction 1`
 }
 
 .c3 a {
-  color: #00B0CA;
+  color: #00BF8E;
 }
 
 .c4 {
@@ -108,7 +108,7 @@ exports[`Storyshots @components/organisms/UnderConstruction UnderConstruction 1`
 }
 
 .c9:hover {
-  color: #00B0CA;
+  color: #00BF8E;
 }
 
 @media (max-width:540px) {

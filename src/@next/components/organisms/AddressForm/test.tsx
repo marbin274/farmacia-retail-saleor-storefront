@@ -1,4 +1,4 @@
-import { Input } from "@components/atoms";
+import { InputField } from "@farmacia-retail/farmauna-components";
 import { removeCountryCodeInPhoneNumber } from "@temp/@next/utils/addresForm";
 import { mount, shallow } from "enzyme";
 import "jest-styled-components";
@@ -28,7 +28,7 @@ describe("<AddressForm />", () => {
 
     const getField = (n: number) =>
       wrapper
-        .find(Input)
+        .find(InputField)
         .at(n)
         .prop("value");
 
@@ -37,12 +37,6 @@ describe("<AddressForm />", () => {
     expect(getField(3)).toEqual(PROPS.address?.phone);
     expect(getField(4)).toEqual(PROPS.address?.streetAddress1);
     expect(getField(5)).toEqual(PROPS.address?.streetAddress2);
-  });
-
-  it("should display map component always", ()=>{
-    const wrapper = mount(<AddressForm {...PROPS} />);
-    
-    expect(wrapper.render().text()).toContain("Puedes mover tu ubicación en el mapa");
   });
 });
 
@@ -57,7 +51,7 @@ describe("form contain data", () => {
 
     const getField = (n: number) =>
       wrapper
-        .find(Input)
+        .find(InputField)
         .at(n)
         .prop("value");
 
@@ -80,7 +74,7 @@ describe("form contain data", () => {
 
     const getField = (n: number) =>
       wrapper
-        .find(Input)
+        .find(InputField)
         .at(n)
         .prop("value");
 
@@ -105,7 +99,7 @@ describe("form contain data", () => {
 
     const getField = (n: number) =>
       wrapper
-        .find(Input)
+        .find(InputField)
         .at(n)
         .prop("value");
 

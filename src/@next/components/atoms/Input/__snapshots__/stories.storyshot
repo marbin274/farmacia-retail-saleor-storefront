@@ -19,10 +19,8 @@ exports[`Storyshots @components/atoms/Input default 1`] = `
 
 .c4 {
   background-color: transparent;
-  color: #9194A7;
   left: 0px;
   position: absolute;
-  font-size: 0.9rem;
   pointer-events: none;
   top: -1.5rem;
 }
@@ -42,7 +40,7 @@ exports[`Storyshots @components/atoms/Input default 1`] = `
 
 .c1:hover {
   color: #E4E5ED;
-  border-color: #00B0CA;
+  border-color: #00BF8E;
 }
 
 .c2 {
@@ -99,7 +97,7 @@ exports[`Storyshots @components/atoms/Input default 1`] = `
         value=""
       />
       <label
-        className="c4"
+        className="fa-text-gray-01 fa-text-sm c4"
         disabled={false}
       >
         Empty
@@ -131,10 +129,8 @@ exports[`Storyshots @components/atoms/Input disabled 1`] = `
 
 .c4 {
   background-color: transparent;
-  color: #7d7d7d;
   left: 0px;
   position: absolute;
-  font-size: 0.9rem;
   pointer-events: none;
   top: -1.5rem;
 }
@@ -211,7 +207,7 @@ exports[`Storyshots @components/atoms/Input disabled 1`] = `
         value=""
       />
       <label
-        className="c4"
+        className="fa-text-gray-01 fa-text-sm c4"
         disabled={true}
       >
         Text goes here
@@ -243,10 +239,8 @@ exports[`Storyshots @components/atoms/Input error 1`] = `
 
 .c4 {
   background-color: transparent;
-  color: #9194A7;
   left: 0px;
   position: absolute;
-  font-size: 0.9rem;
   pointer-events: none;
   top: -1.5rem;
 }
@@ -323,7 +317,7 @@ exports[`Storyshots @components/atoms/Input error 1`] = `
         value="Some text"
       />
       <label
-        className="c4"
+        className="fa-text-gray-01 fa-text-sm c4"
         disabled={false}
       >
         Text goes here
@@ -355,10 +349,8 @@ exports[`Storyshots @components/atoms/Input with value 1`] = `
 
 .c4 {
   background-color: transparent;
-  color: #9194A7;
   left: 0px;
   position: absolute;
-  font-size: 0.9rem;
   pointer-events: none;
   top: -1.5rem;
 }
@@ -378,7 +370,7 @@ exports[`Storyshots @components/atoms/Input with value 1`] = `
 
 .c1:hover {
   color: #E4E5ED;
-  border-color: #00B0CA;
+  border-color: #00BF8E;
 }
 
 .c5 {
@@ -446,7 +438,7 @@ exports[`Storyshots @components/atoms/Input with value 1`] = `
         value="Example text"
       />
       <label
-        className="c4"
+        className="fa-text-gray-01 fa-text-sm c4"
         disabled={false}
       >
         Text goes here

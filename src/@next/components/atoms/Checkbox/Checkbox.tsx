@@ -1,10 +1,7 @@
 import React from "react";
-
 import * as S from "./styles";
 import { IProps } from "./types";
-
-import checkout_done from "../../../../images/auna/checkout-done-small.svg";
-import ReactSVG from "react-svg";
+import { CheckIcon } from "@farmacia-retail/farmauna-components";
 
 const ENTER_KEY: number = 13;
 const SPACE_KEY: number = 32;
@@ -12,6 +9,7 @@ const SPACE_KEY: number = 32;
 export const Checkbox: React.FC<IProps> = ({
   checked,
   children,
+  parentStyles,
   error,
   name,
   onChange = () => null,
@@ -20,8 +18,9 @@ export const Checkbox: React.FC<IProps> = ({
   const ref = React.useRef<HTMLDivElement>(null);
 
   return (
-    <S.Checkbox ref={ref}>
+    <S.Checkbox ref={ref} style={{...parentStyles}}>
       <S.Label
+        htmlFor={props?.id}
         onClick={evt => {
           evt.preventDefault();
           onChange(evt);
@@ -49,7 +48,7 @@ export const Checkbox: React.FC<IProps> = ({
           }}
         >
           <S.Span error={!!error}>
-            <ReactSVG path={checkout_done} className={"checkout_icon"} />
+            <CheckIcon className={"checkout_icon"} size={16} />
           </S.Span>
         </div>
       </S.Label>

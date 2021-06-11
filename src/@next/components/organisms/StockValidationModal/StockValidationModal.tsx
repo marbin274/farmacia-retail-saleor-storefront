@@ -1,31 +1,28 @@
-import React, { FC } from "react";
-import { Button, IconButton } from "@components/atoms";
+import { TaxedMoney } from "@components/containers";
 import { CachedImage } from "@components/molecules";
 import { Overlay } from "@components/organisms";
-import { TaxedMoney } from "@components/containers";
-import { turquoise } from "@temp/@next/globalStyles/constants";
-import GpsIcon from "images/gps.svg";
-import {
-  Container,
-  Header,
-  Title,
-  CloseIcon,
-  CurrentDistrict,
-  ProductsWrapper,
-  ProductItemTop,
-  ProductInfo,
-  ProductImage,
-  ProductNumerics,
-  Quantity,
-  ProductName,
-  NoStock,
-  ProductItem,
-  StockMessage,
-  ButtonsWrapper,
-} from "./styles";
+import { CreateCheckout_checkoutCreate_checkoutErrors_products } from "@temp/@sdk/mutations/gqlTypes/CreateCheckout";
 import { useCart } from "@temp/@sdk/react";
 import { ICheckoutModelLine } from "@temp/@sdk/repository";
-import { CreateCheckout_checkoutCreate_checkoutErrors_products } from "@temp/@sdk/mutations/gqlTypes/CreateCheckout";
+import { Button, Chip, GpsIcon } from "@farmacia-retail/farmauna-components";
+import React, { FC } from "react";
+import {
+  ButtonsWrapper,
+  Container,
+  CurrentDistrict,
+  Header,
+  ImageBox,
+  ProductImage,
+  ProductInfo,
+  ProductItem,
+  ProductItemTop,
+  ProductName,
+  ProductNumerics,
+  ProductsWrapper,
+  Quantity,
+  StockMessage,
+  Title,
+} from "./styles";
 
 type IStockValidationModalProps = {
   show: boolean;
@@ -81,44 +78,41 @@ export const StockValidationModal: FC<IStockValidationModalProps> = ({
     return finalProducts.map(item => {
       const { line, quantityAvailable } = item;
 
-      let totalPrice;
+      const variantPrice = line.variant.pricing!.price!;
+      const totalPrice = {
+        gross: {
+          ...variantPrice.gross,
+          amount: variantPrice.gross.amount * (quantityAvailable || 1),
+        },
+        net: {
+          ...variantPrice.net,
+          amount: variantPrice.net.amount * (quantityAvailable || 1),
+        },
+      };
 
-      if (quantityAvailable > 0) {
-        const variantPrice = line.variant.pricing!.price!;
-        totalPrice = {
-          gross: {
-            ...variantPrice.gross,
-            amount: variantPrice.gross.amount * quantityAvailable,
-          },
-          net: {
-            ...variantPrice.net,
-            amount: variantPrice.net.amount * quantityAvailable,
-          },
-        };
-      }
+      const hasQuantityAvailable = quantityAvailable > 0;
 
       return (
         <ProductItem key={line.id}>
           <ProductItemTop>
             <ProductImage>
-              <CachedImage {...line.variant.product?.thumbnail} />
+              <ImageBox>
+                <CachedImage {...line.variant.product?.thumbnail} />
+              </ImageBox>
+              {!hasQuantityAvailable && <Chip label="Agotado" disabled />}
             </ProductImage>
             <ProductInfo>
               <ProductName>{line.name}</ProductName>
-              {quantityAvailable > 0 ? (
-                <ProductNumerics>
-                  <Quantity>{quantityAvailable}</Quantity>
-                  <TaxedMoney taxedMoney={totalPrice} />
-                </ProductNumerics>
-              ) : (
-                <NoStock>Agotado</NoStock>
-              )}
+              <ProductNumerics>
+                <Quantity>{quantityAvailable || line.quantity}</Quantity>
+                <TaxedMoney taxedMoney={totalPrice} />
+              </ProductNumerics>
             </ProductInfo>
           </ProductItemTop>
-          {quantityAvailable > 0 && (
+          {hasQuantityAvailable && (
             <StockMessage>
               <span>
-                De <span>{line.quantity}</span> solo tenemos{" "}
+                De {line.quantity} solo tenemos{" "}
                 <span>{quantityAvailable} disponibles</span>
               </span>
             </StockMessage>
@@ -136,37 +130,35 @@ export const StockValidationModal: FC<IStockValidationModalProps> = ({
             <Title>
               <div>
                 {allOutOfStock
-                  ? "Productos agotados en"
+                  ? "Actualmente, tenemos algunos productos agotados en"
                   : "Tenemos pocos productos en"}
               </div>
               <CurrentDistrict>
-                <img src={GpsIcon} /> {district}
+                <GpsIcon size={21} /> {district}
               </CurrentDistrict>
             </Title>
-            {allOutOfStock && (
-              <CloseIcon>
-                <IconButton
-                  name="x"
-                  color={turquoise}
-                  size={19}
-                  onClick={onClose}
-                />
-              </CloseIcon>
-            )}
           </Header>
           <ProductsWrapper allOutOfStock={allOutOfStock}>
             {renderCartItems()}
           </ProductsWrapper>
           <ButtonsWrapper>
             {allOutOfStock ? (
-              <Button onClick={onClickKeepSearching}>Seguir buscando</Button>
+              <Button onClick={onClickKeepSearching} size="large">
+                Seguir buscando
+              </Button>
             ) : (
               <>
                 <p>
                   ¿Deseas finalizar tu compra con los productos disponibles?
                 </p>
-                <Button onClick={onClickContinue}>Sí, continuar</Button>
-                <Button outline onClick={onClickKeepSearching}>
+                <Button onClick={onClickContinue} size="large">
+                  Sí, continuar
+                </Button>
+                <Button
+                  variant="outline"
+                  onClick={onClickKeepSearching}
+                  size="large"
+                >
                   Seguir buscando
                 </Button>
               </>

@@ -11,8 +11,7 @@ import {
 } from "@temp/core/config";
 import { IAddress, ICardData, IFormError } from "@types";
 import { filterNotEmptyArrayItems } from "@utils/misc";
-import ErrorPaymentIcon from "images/auna/credit-card-cancel.svg";
-import ErrorPromoCodeIcon from "images/auna/promo-code-error.svg";
+import VoucherSVG from "@temp/images/auna/checkout-cupon-small.svg";
 import PromoCodeCorrect from "images/auna/promo-code-correct.svg";
 
 import React, {
@@ -74,14 +73,13 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
     completeCheckout,
   } = useCheckout();
 
-
   const { items, totalPrice } = useCart();
   const { availableDistricts, countries } = useShopContext();
   const [showStockValidation, setShowStockValidation] = useState(false);
   const [stockValidationProducts, setStockValidationProducts] = useState<
     any[]
   >();
-  
+
   const [, setDistrict] = useDistrictSelected();
   const {
     update: updateCartLines,
@@ -122,7 +120,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
   const paymentGateways = availablePaymentGateways?.length
     ? availablePaymentGateways
     : AVAILABLE_PAYMENTS;
-  // TODO 
+  // TODO
   // reload data from backend and  put in cache
 
   const checkoutBillingFormId = "billing-form";
@@ -136,7 +134,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
   useImperativeHandle(ref, () => ({
     submitPayment: () => {
       const shippingMethodId = checkout?.shippingMethod?.id || "";
-      setShippingMethod({shippingMethodId});
+      setShippingMethod({ shippingMethodId });
       if (billingAsShippingState) {
         handleSetBillingAddress();
       } else if (user && selectedBillingAddressId) {
@@ -163,7 +161,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
   ) => {
     const { dataError } = await createPayment(gateway, token, cardData);
     const errors = dataError?.error;
-    
+
     if (errors) {
       changeSubmitProgress(false);
       alertService.sendAlert({
@@ -182,7 +180,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
         removePaymentItems();
         const confirmError = confirmErrors[0];
 
-        switch(confirmError.code) {
+        switch (confirmError.code) {
           case CheckoutErrorCode.INSUFFICIENT_STOCK:
             setStockValidationProducts(confirmError.products!);
             setShowStockValidation(true);
@@ -195,34 +193,34 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
               message: confirmError.message,
               redirectionLink: CHECKOUT_STEPS[0].link,
               title: "Horario de entrega",
-              type: "Info",
+              type: "Text",
             });
             break;
           case CheckoutErrorCode.NIUBIZ:
             alertService.sendAlert({
               buttonText: "Entendido",
-              icon: ErrorPaymentIcon,
               message: confirmError.message,
               redirectionLink: CHECKOUT_STEPS[1].link,
               title: "No pudimos procesar el pago",
-              type: "Info",
+              type: "Text",
             });
             break;
           default:
             alertService.sendAlert({
               buttonText: "Entendido",
-              icon: ErrorPaymentIcon,
               message:
                 "Por favor valida que todos tus datos de pago sean correctos e inténtalo de nuevo",
               redirectionLink: CHECKOUT_STEPS[1].link,
               title: "No pudimos procesar el pago",
-              type: "Info",
+              type: "Text",
             });
         }
 
         setGatewayErrors(confirmErrors);
-        if (confirmErrors?.message?.includes("GraphQL error: ")){
-          setGatewayErrors([{field: undefined, message: "Error al procesar pago"}]);
+        if (confirmErrors?.message?.includes("GraphQL error: ")) {
+          setGatewayErrors([
+            { field: undefined, message: "Error al procesar pago" },
+          ]);
         }
       } else {
         setGatewayErrors([]);
@@ -312,26 +310,24 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
   const handleAddPromoCode = async (promoCode: string) => {
     const { dataError, data } = await addPromoCode(promoCode);
     changeSubmitProgress(false);
-    
 
     if (dataError?.error) {
       alertService.sendAlert({
         buttonText: "Entendido",
-        icon: ErrorPromoCodeIcon,
+        icon: VoucherSVG,
         message: dataError?.error[0].message,
         title: "Código promocional incorrecto",
         type: "Info",
       });
       setPromoCodeErrors(dataError?.error);
     } else {
-      const messageDiscount =  data?.promoCodeDiscount?.message
-      if (messageDiscount){
+      const messageDiscount = data?.promoCodeDiscount?.message;
+      if (messageDiscount) {
         showMessageDiscount(messageDiscount);
       }
       clearPromoCodeErrors();
     }
   };
-
 
   const showMessageDiscount = (messageDiscount: string) => {
     alertService.sendAlert({
@@ -341,7 +337,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
       title: "Código promocional correcto",
       type: "Info",
     });
-  }
+  };
 
   const handleRemovePromoCode = async (promoCode: string) => {
     const { dataError } = await removePromoCode(promoCode);
@@ -386,7 +382,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
 
     setCartLinesUpdated(true);
     setStockValidationProducts(undefined);
-  }
+  };
 
   const userDataForNiubiz: IUserDataForNiubiz = {
     dataTreatmentPolicy: checkout?.dataTreatmentPolicy,
@@ -397,66 +393,66 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
 
   return (
     <>
-    <CheckoutPayment
-      {...props}
-      billingErrors={billingErrors}
-      gatewayErrors={gatewayErrors}
-      billingFormId={checkoutBillingFormId}
-      billingFormRef={checkoutBillingFormRef}
-      userAddresses={user?.addresses
-        ?.filter(filterNotEmptyArrayItems)
-        .map(
-          ({
-            isDefaultBillingAddress,
-            isDefaultShippingAddress,
-            phone,
-            ...address
-          }) => ({
-            ...address,
-            isDefaultBillingAddress: !!isDefaultBillingAddress,
-            isDefaultShippingAddress: !!isDefaultShippingAddress,
-            latitude: address.latitude || undefined,
-            longitude: address.longitude || undefined,
-            phone: phone ? phone : undefined,
-          })
-        )}
-      selectedUserAddressId={selectedBillingAddressId}
-      checkoutBillingAddress={checkoutBillingAddress}
-      countries={countries}
-      paymentGateways={paymentGateways}
-      selectedPaymentGateway={selectedPaymentGateway}
-      selectedPaymentGatewayToken={selectedPaymentGatewayToken}
-      selectPaymentGateway={selectPaymentGateway}
-      setBillingAddress={handleSetBillingAddress}
-      billingAsShippingPossible={!!isShippingRequiredForProducts}
-      billingAsShippingAddress={billingAsShippingState}
-      setBillingAsShippingAddress={setBillingAsShippingState}
-      promoCodeDiscountFormId={promoCodeDiscountFormId}
-      promoCodeDiscountFormRef={promoCodeDiscountFormRef}
-      promoCodeDiscount={{
-        voucherCode: promoCodeDiscount?.voucherCode,
-        voucherDiscountType: promoCodeDiscount?.voucherDiscountType,
-        voucherDiscountValue: promoCodeDiscount?.voucherDiscountValue,
-        voucherType: promoCodeDiscount?.voucherType,
-      }}
-      addPromoCode={handleAddPromoCode}
-      removeVoucherCode={handleRemovePromoCode}
-      submitUnchangedDiscount={handleSubmitUnchangedDiscount}
-      promoCodeErrors={promoCodeErrors}
-      clearPromoCodeErrors={clearPromoCodeErrors}
-      gatewayFormId={checkoutGatewayFormId}
-      gatewayFormRef={checkoutGatewayFormRef}
-      userId={user?.id}
-      newAddressFormId={checkoutNewAddressFormId}
-      processPayment={handleProcessPayment}
-      onGatewayError={handlePaymentGatewayError}
-      changeRequestPayload={changeRequestPayload}
-      requestPayload={requestPayload}
-      totalPrice={totalPrice}
-      userDataForNiubiz={userDataForNiubiz}
-      cartLinesUpdated={cartLinesUpdated}
-    />
-    <StockValidationModal
+      <CheckoutPayment
+        {...props}
+        billingErrors={billingErrors}
+        gatewayErrors={gatewayErrors}
+        billingFormId={checkoutBillingFormId}
+        billingFormRef={checkoutBillingFormRef}
+        userAddresses={user?.addresses
+          ?.filter(filterNotEmptyArrayItems)
+          .map(
+            ({
+              isDefaultBillingAddress,
+              isDefaultShippingAddress,
+              phone,
+              ...address
+            }) => ({
+              ...address,
+              isDefaultBillingAddress: !!isDefaultBillingAddress,
+              isDefaultShippingAddress: !!isDefaultShippingAddress,
+              latitude: address.latitude || undefined,
+              longitude: address.longitude || undefined,
+              phone: phone ? phone : undefined,
+            })
+          )}
+        selectedUserAddressId={selectedBillingAddressId}
+        checkoutBillingAddress={checkoutBillingAddress}
+        countries={countries}
+        paymentGateways={paymentGateways}
+        selectedPaymentGateway={selectedPaymentGateway}
+        selectedPaymentGatewayToken={selectedPaymentGatewayToken}
+        selectPaymentGateway={selectPaymentGateway}
+        setBillingAddress={handleSetBillingAddress}
+        billingAsShippingPossible={!!isShippingRequiredForProducts}
+        billingAsShippingAddress={billingAsShippingState}
+        setBillingAsShippingAddress={setBillingAsShippingState}
+        promoCodeDiscountFormId={promoCodeDiscountFormId}
+        promoCodeDiscountFormRef={promoCodeDiscountFormRef}
+        promoCodeDiscount={{
+          voucherCode: promoCodeDiscount?.voucherCode,
+          voucherDiscountType: promoCodeDiscount?.voucherDiscountType,
+          voucherDiscountValue: promoCodeDiscount?.voucherDiscountValue,
+          voucherType: promoCodeDiscount?.voucherType,
+        }}
+        addPromoCode={handleAddPromoCode}
+        removeVoucherCode={handleRemovePromoCode}
+        submitUnchangedDiscount={handleSubmitUnchangedDiscount}
+        promoCodeErrors={promoCodeErrors}
+        clearPromoCodeErrors={clearPromoCodeErrors}
+        gatewayFormId={checkoutGatewayFormId}
+        gatewayFormRef={checkoutGatewayFormRef}
+        userId={user?.id}
+        newAddressFormId={checkoutNewAddressFormId}
+        processPayment={handleProcessPayment}
+        onGatewayError={handlePaymentGatewayError}
+        changeRequestPayload={changeRequestPayload}
+        requestPayload={requestPayload}
+        totalPrice={totalPrice}
+        userDataForNiubiz={userDataForNiubiz}
+        cartLinesUpdated={cartLinesUpdated}
+      />
+      <StockValidationModal
         show={showStockValidation}
         onClose={() => {
           setShowStockValidation(false);

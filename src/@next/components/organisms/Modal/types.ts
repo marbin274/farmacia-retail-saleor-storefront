@@ -1,6 +1,6 @@
 export interface IProps {
   target?: HTMLElement | null;
-  title: string;
+  title?: string;
   hide: () => void;
   cancelBtnText?: string;
   children: React.ReactNode;

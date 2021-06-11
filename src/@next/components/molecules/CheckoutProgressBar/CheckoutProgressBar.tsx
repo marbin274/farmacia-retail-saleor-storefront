@@ -1,7 +1,7 @@
 import { CHECKOUT_STEPS } from "@temp/core/config";
 import React from "react";
 import { Link } from "react-router-dom";
-import ReactSVG from "react-svg";
+import { BackIcon, CheckIcon } from "@farmacia-retail/farmauna-components";
 import * as S from "./styles";
 import { IProps, IStep } from "./types";
 
@@ -13,11 +13,12 @@ export enum DOT_STATUS {
 
 const drawDot = (step: IStep, status: DOT_STATUS) => (
   <S.Dot status={status}>
-    <ReactSVG
-      path={S.ICONS[step.index]}
-      style={S.flexCentered}
-      svgStyle={{ fill: S.ICON_COLORS[status], stroke: S.ICON_COLORS[status] }}
-    />
+    {status === DOT_STATUS.DONE ? (
+      <CheckIcon size={12} color="white" />
+    ) : (
+      <span>{step.index + 1}</span>
+    )}
+    <S.DotStatus status={status}>{step.name}</S.DotStatus>
   </S.Dot>
 );
 
@@ -91,9 +92,20 @@ const CheckoutProgressBar: React.FC<IProps> = ({
   pathName,
 }: IProps) => {
   const activeStep = steps?.find(st => st.index === activeStepIndex);
+  const activeIndexStep = steps?.findIndex(st => st.index === activeStepIndex);
 
   return (
     <div>
+      {activeIndexStep < steps?.length - 1 && (
+        <S.GoBack>
+          <Link
+            to={activeIndexStep === 0 ? "/" : steps[activeIndexStep - 1].link}
+          >
+            <BackIcon size={12} /> <span>Volver</span>
+          </Link>
+        </S.GoBack>
+      )}
+
       <S.Wrapper>{generateSteps(steps, activeStepIndex, pathName)}</S.Wrapper>
       {activeStep && <S.Label>{activeStep.name}</S.Label>}
     </div>

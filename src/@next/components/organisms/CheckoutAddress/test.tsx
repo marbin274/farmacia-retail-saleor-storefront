@@ -1,8 +1,8 @@
 import { mount } from "enzyme";
 import "jest-styled-components";
 import React from "react";
-
-import { Input, Select } from "@components/atoms";
+import { InputField } from "@farmacia-retail/farmauna-components";
+import { Select } from "@components/atoms";
 
 import { CheckoutAddress } from ".";
 import { ANONYMOUS_USER_PROPS, mockCity } from "./fixtures";
@@ -30,7 +30,7 @@ describe("<CheckoutAddress />", () => {
     const address = ANONYMOUS_USER_PROPS.checkoutAddress;
     const getValue = (n: number) =>
       wrapper
-        .find(Input)
+        .find(InputField)
         .at(n)
         .prop("value");
 

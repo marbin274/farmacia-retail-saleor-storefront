@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
   margin: 20px;
 }
 
-.c14 {
+.c10 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -17,26 +17,26 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
   box-sizing: border-box;
 }
 
-.c9 {
+.c6 {
   display: none;
   width: 0.5em;
   height: 0.5em;
   margin: 0 auto;
   border-radius: 0.25em;
-  background: #00B0CA;
+  background: #00BF8E;
 }
 
-.c8 {
+.c5 {
   cursor: pointer;
 }
 
-.c8 input[type="radio"] {
+.c5 input[type="radio"] {
   opacity: 0;
   position: fixed;
   width: 0;
 }
 
-.c8 > div {
+.c5 > div {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -53,56 +53,35 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
   background: #fff;
 }
 
-.c7 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
 }
 
-.c10 {
-  width: 80%;
+.c7 {
+  width: 100%;
 }
 
-.c11 {
+.c8 {
   color: #000000;
-  font-size: 1rem;
+  font-size: 0.875rem;
   font-weight: 600;
   opacity: 0.7;
+  margin-bottom: 0.5rem;
 }
 
-.c12 {
+.c9 {
   color: #000000;
   font-size: 0.875rem;
   font-weight: normal;
   opacity: 0.7;
-}
-
-.c13 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  width: 20%;
-}
-
-.c13 span {
-  color: #000000;
-  font-size: 0.875rem;
-  font-weight: 600;
-  opacity: 0.7;
+  margin-bottom: 0.5rem;
 }
 
 .c1 {
@@ -112,47 +91,31 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
 }
 
 .c2 {
-  padding-bottom: 0.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.c3 {
-  display: inline-block;
-  color: #fff;
-  background-color: #0050B5;
-  border-radius: 5rem;
-  height: 1.9rem;
-  padding: 0.4rem;
-  text-align: center;
-  width: 1.9rem;
-}
-
-.c4 {
-  font-weight: bolder;
-  padding-left: 1rem;
-}
-
-.c5 {
-  background-color: #F6F8FA;
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 1rem;
   border: 1px solid #F6F8FA;
-  border-radius: 16px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
   cursor: pointer;
-  padding: 2rem 1rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   margin: 1rem 0rem;
+  height: 7.8125rem;
+  box-shadow: 1px 1px 9px 2px #ddd;
+  -webkit-transition: box-shadow 0.2s ease-in-out;
+  transition: box-shadow 0.2s ease-in-out;
+  margin-bottom: 0;
 }
 
-.c5:hover {
-  border-color: #00B0CA;
+.c2:hover {
+  box-shadow: 0px 0px 6px 2px #ccc;
 }
 
-.c6 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -163,6 +126,12 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
   width: 100%;
 }
 
+@media (max-width:992px) {
+  .c2 {
+    margin-bottom: 0;
+  }
+}
+
 <div
   className="c0"
 >
@@ -170,143 +139,180 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
     <div
       className="c1"
     >
-      <div
-        className="c2"
+      <span
+        className="fa-text-2xl fa-mb-6 fa-block"
       >
-        <span
-          className="c3"
-        >
-          3
-        </span>
-        <span
-          className="c4"
-        >
-          ¿Cuando desea recibir su pedido?
-        </span>
-      </div>
+        Escoge el tiempo de entrega
+      </span>
       <form
         onSubmit={[Function]}
       >
         <div
-          className="c5"
-          data-cy="checkoutShippingMethodOption0Input"
-          onClick={[Function]}
-          selected={false}
+          className="fa-grid fa-grid-cols-1 lg:fa-grid-cols-2 fa-gap-x-8 fa-relative"
         >
           <div
-            className="c6"
+            className="c2"
+            data-cy="checkoutShippingMethodOption0Input"
+            onClick={[Function]}
+            selected={false}
           >
             <div
-              className="c7"
+              className="c3"
             >
-              <label
-                checked={false}
-                className="c8"
+              <div
+                className="c4"
               >
-                <input
+                <label
                   checked={false}
-                  data-cy="checkoutShippingMethodOption0Input"
-                  name="shippingMethod"
-                  readOnly={true}
-                  type="radio"
-                  value="1"
-                />
-                 
-                <div>
-                  <span
+                  className="c5"
+                >
+                  <input
                     checked={false}
-                    className="c9"
+                    data-cy="checkoutShippingMethodOption0Input"
+                    name="shippingMethod"
+                    readOnly={true}
+                    type="radio"
+                    value="1"
                   />
+                   
+                  <div>
+                    <span
+                      checked={false}
+                      className="c6"
+                    />
+                  </div>
+                </label>
+                <div
+                  className="fa-flex fa-flex-col fa-w-full"
+                >
+                  <div
+                    className="c7"
+                  >
+                    <p
+                      className="c8"
+                      data-cy="checkoutShippingMethodOption0Name"
+                      selected={false}
+                    >
+                      Delivery programado
+                    </p>
+                    <p
+                      className="c9"
+                      selected={false}
+                    >
+                      75 minutos aproximadamente
+                    </p>
+                  </div>
+                  <span
+                    className="fa-rounded-2xl fa-inline-block fa-text-xs fa-leading-3 fa-p-1.5 fa-bg-gray-03 fa-pointer-events-none"
+                    role="chip"
+                    style={
+                      Object {
+                        "backgroundColor": undefined,
+                        "display": "block",
+                        "textAlign": "center",
+                        "width": "4.25rem",
+                      }
+                    }
+                  >
+                    <span
+                      className="fa-text-white fa-block"
+                      style={
+                        Object {
+                          "color": undefined,
+                        }
+                      }
+                    >
+                      <span
+                        data-cy="checkoutShippingMethodOption0Price"
+                      >
+                        
+                      </span>
+                    </span>
+                  </span>
                 </div>
-              </label>
-              <div
-                className="c10"
-              >
-                <p
-                  className="c11"
-                  data-cy="checkoutShippingMethodOption0Name"
-                  selected={false}
-                >
-                  Basic
-                </p>
-                <p
-                  className="c12"
-                  selected={false}
-                >
-                  subTitle
-                </p>
-              </div>
-              <div
-                className="c13"
-                selected={false}
-              >
-                <span
-                  data-cy="checkoutShippingMethodOption0Price"
-                >
-                  
-                </span>
               </div>
             </div>
           </div>
-        </div>
-        <div
-          className="c5"
-          data-cy="checkoutShippingMethodOption1Input"
-          onClick={[Function]}
-          selected={false}
-        >
           <div
-            className="c6"
+            className="c2"
+            data-cy="checkoutShippingMethodOption1Input"
+            onClick={[Function]}
+            selected={false}
           >
             <div
-              className="c7"
+              className="c3"
             >
-              <label
-                checked={false}
-                className="c8"
+              <div
+                className="c4"
               >
-                <input
+                <label
                   checked={false}
-                  data-cy="checkoutShippingMethodOption1Input"
-                  name="shippingMethod"
-                  readOnly={true}
-                  type="radio"
-                  value="2"
-                />
-                 
-                <div>
-                  <span
+                  className="c5"
+                >
+                  <input
                     checked={false}
-                    className="c9"
+                    data-cy="checkoutShippingMethodOption1Input"
+                    name="shippingMethod"
+                    readOnly={true}
+                    type="radio"
+                    value="2"
                   />
+                   
+                  <div>
+                    <span
+                      checked={false}
+                      className="c6"
+                    />
+                  </div>
+                </label>
+                <div
+                  className="fa-flex fa-flex-col fa-w-full"
+                >
+                  <div
+                    className="c7"
+                  >
+                    <p
+                      className="c8"
+                      data-cy="checkoutShippingMethodOption1Name"
+                      selected={false}
+                    >
+                      Delivery programado
+                    </p>
+                    <p
+                      className="c9"
+                      selected={false}
+                    >
+                      75 minutos aproximadamente
+                    </p>
+                  </div>
+                  <span
+                    className="fa-rounded-2xl fa-inline-block fa-text-xs fa-leading-3 fa-p-1.5 fa-bg-gray-03 fa-pointer-events-none"
+                    role="chip"
+                    style={
+                      Object {
+                        "backgroundColor": undefined,
+                        "display": "block",
+                        "textAlign": "center",
+                        "width": "4.25rem",
+                      }
+                    }
+                  >
+                    <span
+                      className="fa-text-white fa-block"
+                      style={
+                        Object {
+                          "color": undefined,
+                        }
+                      }
+                    >
+                      <span
+                        data-cy="checkoutShippingMethodOption1Price"
+                      >
+                        
+                      </span>
+                    </span>
+                  </span>
                 </div>
-              </label>
-              <div
-                className="c10"
-              >
-                <p
-                  className="c11"
-                  data-cy="checkoutShippingMethodOption1Name"
-                  selected={false}
-                >
-                  Extra
-                </p>
-                <p
-                  className="c12"
-                  selected={false}
-                >
-                  subTitle
-                </p>
-              </div>
-              <div
-                className="c13"
-                selected={false}
-              >
-                <span
-                  data-cy="checkoutShippingMethodOption1Price"
-                >
-                  
-                </span>
               </div>
             </div>
           </div>
@@ -315,7 +321,7 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
     </div>
   </section>
   <div
-    className="c14"
+    className="c10"
   />
 </div>
 `;

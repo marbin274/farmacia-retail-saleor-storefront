@@ -3,9 +3,8 @@ import ReactDatePicker from "react-datepicker";
 import { IProps } from "./types";
 import { ErrorMessage } from "@components/atoms";
 import * as S from "./styles";
-import ReactSVG from "react-svg";
-import shippingMethodCalendarIcon from "images/auna/shipping-method-calendar.svg";
 import { SHIPPING_DISPLAY_FORMAT_DATE } from "@temp/core/config";
+import { CalendarIcon } from "@farmacia-retail/farmauna-components";
 
 export const DatePicker: React.FC<IProps> = ({ errors, minDate, maxDate, value, onChange }) => {
 
@@ -14,7 +13,7 @@ export const DatePicker: React.FC<IProps> = ({ errors, minDate, maxDate, value, 
       <S.ButtonSelectDate className="control">
         <button type="button" className="example-custom-input" onClick={onClick} ref={ref}>
           {value || ""}
-          <ReactSVG path={shippingMethodCalendarIcon}/>
+          <CalendarIcon size={16} /> 
         </button>
       </S.ButtonSelectDate>
     )

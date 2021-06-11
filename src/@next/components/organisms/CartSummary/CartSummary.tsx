@@ -1,20 +1,16 @@
-// import downArrowImg from "images/down-arrow-auna.svg"; //TODO: Use it as soon as we need to show more info
 import { TaxedMoney } from "@components/containers";
-import { CartSummaryRow, CartResume } from "@components/molecules";
+import { CartResume, CartSummaryRow } from "@components/molecules";
+import { smallScreen } from "@temp/@next/globalStyles/constants";
 import {
   checkProductCanAddToCart,
   checkProductIsOnSale,
   convertProductOnCartInProduct,
 } from "@temp/@next/utils/products";
-import {  smallScreen } from "@temp/@next/globalStyles/constants";
-
-import cartSummaryMobileImg from "images/cart-summary-new.svg";
-import closeCircleImg from "images/close-circle-small.svg";
+import { Button, CartIcon, XIcon } from "@farmacia-retail/farmauna-components";
 import React, { useState } from "react";
-import ReactSVG from "react-svg";
+import Media from "react-media";
 import * as S from "./styles";
 import { ICostLine, IProps } from "./types";
-import  Media  from 'react-media';
 
 const CostLine = ({
   name,
@@ -43,90 +39,96 @@ const CartSummary: React.FC<IProps> = ({
   activeStepIndex,
   onClickHandle,
 }: IProps) => {
+  const totalProducts: number = React.useMemo(
+    () =>
+      products?.reduce((prevVal, currVal) => prevVal + currVal.quantity, 0) ||
+      0,
+    [products]
+  );
   const [mobileCartOpened, setMobileCartOpened] = useState(false);
 
-  const totalProducts: number = React.useMemo(()=>
-  products?.reduce(
-    (prevVal, currVal) => prevVal + currVal.quantity,
-    0
-  ) || 0, [products]);
-  const CartSummaryTitle = (mobileCartOpened: boolean) => {  
-    return <S.Title 
-      data-cy="cartSummaryTitle"
-      mobileCartOpened={mobileCartOpened}>
-      Tu carrito{" "}
-      {totalProducts && (
-        <S.Text mobileCartOpened={mobileCartOpened}>
-          {totalProducts || 0}{" "}
-          {totalProducts === 1 ? "producto" : "productos"}
-        </S.Text>
-      )}
-    </S.Title>
-  }
+  const CartSummaryTitle = (mobileCartOpened: boolean) => {
+    return (
+      <S.Title mobileCartOpened={mobileCartOpened} data-cy="cartSummaryTitle">
+        <S.TitleIcon>
+          <CartIcon />
+        </S.TitleIcon>
+        <S.TitleText>
+          <span>Tu carrito</span>
+          <span>
+            {totalProducts} {totalProducts === 1 ? "producto" : "productos"} en
+            total
+          </span>
+        </S.TitleText>
+      </S.Title>
+    );
+  };
 
   const mobileHeader = (mobileCartOpened: boolean) => {
-    return  !mobileCartOpened? (
+    return !mobileCartOpened ? (
       <S.Block position={2}>
-        <S.BadgeCartWrapper>
-          <ReactSVG
-            path={cartSummaryMobileImg}
-            style={{ position: "relative" }}
-          />
-          {CartSummaryTitle(mobileCartOpened)}
-        </S.BadgeCartWrapper>
-      <S.ShowCart>
-        Ver carrito
-      </S.ShowCart>
-    </S.Block>)
-    : (
+        {CartSummaryTitle(mobileCartOpened)}
+        <Button variant="outline" size="small">
+          Ver carrito
+        </Button>
+      </S.Block>
+    ) : (
       <S.HeadClose mobileCartOpened={mobileCartOpened}>
-         {CartSummaryTitle(mobileCartOpened)}
+        {CartSummaryTitle(mobileCartOpened)}
         <S.Close mobileCartOpened={mobileCartOpened}>
-          <ReactSVG path={closeCircleImg} />
+          <XIcon size={12} />
         </S.Close>
       </S.HeadClose>
-    )
-  }
+    );
+  };
 
   const desktopHeader = (mobileCartOpened: boolean) => {
-    return <>
-      <S.Title mobileCartOpened={mobileCartOpened} data-cy="cartSummaryTitle">
-        Tu carrito ({totalProducts})
-       </S.Title>
-    </>
-  }
+    return (
+      <>
+        <S.Title mobileCartOpened={mobileCartOpened} data-cy="cartSummaryTitle">
+          <S.TitleIcon>
+            <CartIcon />
+          </S.TitleIcon>
+          <S.TitleText>
+            <span>Tu carrito</span>
+            <span>
+              {totalProducts} {totalProducts === 1 ? "producto" : "productos"}{" "}
+              en total
+            </span>
+          </S.TitleText>
+        </S.Title>
+      </>
+    );
+  };
 
   return (
     <S.CartSummaryContainer>
-      <CartResume
-        activeStepIndex={activeStepIndex}
-        onClickHandle={onClickHandle} 
-        promoPrice={promoCode}
-        subTotalPrice={subtotal}
-        shippingPrice={shipping}
-        totalPrice={total}
-        totalProducts={totalProducts}
-      />
       <S.Wrapper mobileCartOpened={mobileCartOpened}>
         <S.Header
           onClick={() => setMobileCartOpened(!mobileCartOpened)}
-          mobileCartOpened={mobileCartOpened}>
+          mobileCartOpened={mobileCartOpened}
+        >
           <Media query={{ maxWidth: smallScreen }}>
             {(matches: any) =>
               matches ? (
                 <>
-                  <S.Block position={1}></S.Block>
+                  {/* <S.Block position={1}></S.Block> */}
                   {mobileHeader(mobileCartOpened)}
                 </>
-              ) : (desktopHeader(mobileCartOpened))}
+              ) : (
+                desktopHeader(mobileCartOpened)
+              )
+            }
           </Media>
         </S.Header>
 
         <S.Content>
-          <S.HR />
           <S.CartSummaryProductList>
             {products?.map((product, index) => {
-              const { canAddToCart } = checkProductCanAddToCart(convertProductOnCartInProduct(product), products);
+              const { canAddToCart } = checkProductCanAddToCart(
+                convertProductOnCartInProduct(product),
+                products
+              );
               const isOnSale = checkProductIsOnSale(product);
               return (
                 <div key={`${product.variant.sku}-${index}`}>
@@ -142,22 +144,35 @@ const CartSummary: React.FC<IProps> = ({
                       thumbnail={product?.variant?.product?.thumbnail}
                     />
                   </S.ProductLine>
-                  <S.HR />
                 </div>
               );
             })}
-            <S.HR />
           </S.CartSummaryProductList>
-          {subtotal &&
+          {total && (
             <S.CostTotalWrapper>
-              <CostLine name="Subtotal" cost={subtotal} last={true} />
+              <CostLine name="Total" cost={total} last={true} />
             </S.CostTotalWrapper>
-          }
-          
+          )}
         </S.Content>
+        <Media
+          query={{ minWidth: smallScreen }}
+          render={() => (
+            <>
+              <hr></hr>
+              <CartResume
+                activeStepIndex={activeStepIndex}
+                onClickHandle={onClickHandle}
+                promoPrice={promoCode}
+                subTotalPrice={subtotal}
+                shippingPrice={shipping}
+                totalPrice={total}
+                totalProducts={totalProducts}
+              />
+            </>
+          )}
+        />
       </S.Wrapper>
     </S.CartSummaryContainer>
-
   );
 };
 

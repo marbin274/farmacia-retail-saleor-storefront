@@ -2,7 +2,8 @@ import React from "react";
 import * as S from "./styles";
 import { IProps } from "./types";
 import { TaxedMoney } from "@components/containers";
-import { CHECKOUT_STEPS } from '@temp/core/config';
+import { CHECKOUT_STEPS } from "@temp/core/config";
+import { Button } from "@farmacia-retail/farmauna-components";
 
 export const CartResume: React.FC<IProps> = ({
   promoPrice,
@@ -23,12 +24,11 @@ export const CartResume: React.FC<IProps> = ({
         <S.Body>
           <S.LineInfo>
             <S.LineInfoDescriptionDetail>
-              <span>
-                Datos de entrega 
-              </span>  
-              <S.ShowDetailResumeWrapper onClick={()=>{ onClickHandle()}}>
+              <span>Datos de entrega</span>
+
+              <Button variant="outline" size="small" onClick={onClickHandle}>
                 Ver Detalle
-              </S.ShowDetailResumeWrapper>
+              </Button>
             </S.LineInfoDescriptionDetail>
           </S.LineInfo>
         </S.Body>
@@ -42,7 +42,7 @@ export const CartResume: React.FC<IProps> = ({
             <TaxedMoney taxedMoney={subTotalPrice} />
           </S.LineInfoPrice>
         </S.LineInfo>
-        {promoPrice && (
+        {promoPrice && activeStepIndex === indexOfStep2Checkout && (
           <S.LineInfo>
             <S.LineInfoDescription>Cupón de descuento</S.LineInfoDescription>
             <S.LineInfoPrice>
@@ -62,7 +62,9 @@ export const CartResume: React.FC<IProps> = ({
       </S.Body>
       <S.Footer>
         <S.LineInfo>
-          <S.LineInfoDescription>Total</S.LineInfoDescription>
+          <S.LineInfoDescription className="line-info-total">
+            Total
+          </S.LineInfoDescription>
           <S.LineInfoPrice>
             <TaxedMoney taxedMoney={totalPrice} />
           </S.LineInfoPrice>

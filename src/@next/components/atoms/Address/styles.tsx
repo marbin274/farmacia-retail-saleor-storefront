@@ -2,9 +2,8 @@ import { styled } from "@styles";
 
 export const Wrapper = styled.div`
   color: ${({ theme }) => theme.colors.aunaBlack}
-  p {
-    line-height: 2rem;
-  }
+  display: flex;
+  flex-direction: column;
 `
 
 export const Name = styled.span`

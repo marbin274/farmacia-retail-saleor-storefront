@@ -4,9 +4,9 @@ import { ControlProps } from "react-select/lib/components/Control";
 import { InputProps } from "react-select/lib/components/Input";
 import { OptionProps } from "react-select/lib/components/Option";
 import { ThemeContext } from "styled-components";
-
+import { DownIcon, UpIcon } from "@farmacia-retail/farmauna-components";
 import { Icon, InputLabel, Select } from "@components/atoms";
-
+import farmatheme from "@farmatheme";
 import * as S from "./styles";
 import { IProps } from "./types";
 import ReactSVG from "react-svg";
@@ -17,25 +17,28 @@ export const InputSelect: React.FC<IProps> = ({
   indicatorIcon,
   ...props
 }: IProps) => {
-  const customTheme = React.useContext(ThemeContext);
 
   const customStyles = {
     control: (provided: any, state: { menuIsOpen: any }) => ({
       ...provided,
       ":hover": {
-        border: `1px solid ${customTheme.input.borderColorActive}`,
+        border: `1px solid ${farmatheme.theme.colors.neutral.darkest}`,
         outlineColor: 'none',
       },
-      background: "none",
+      background: "white",
+      
       border: state.menuIsOpen
-        ? `1px solid ${customTheme.input.borderColorActive}`
-        : `1px solid ${customTheme.input.borderColor}`,
-      borderRadius: customTheme.input.borderRadius,
+        ? `1px solid ${farmatheme.theme.colors.neutral.darkest}`
+        : `1px solid ${farmatheme.theme.colors.neutral.medium}`,
+      borderRadius: '0.5rem',
       boxShadow: 0,
+      width: '100%',
       boxSizing: "border-box",
       margin: 0,
-      // outline: state.menuIsOpen ? `1px solid ${secondaryColor}` : "",
-      padding: "0.55rem 1rem",
+      fontSize: '0.875rem',
+      lineHeight: '1.25rem',
+      padding: "0 3rem 0 1rem",
+      height: "2.5rem",
     }),
     valueContainer: (provided: any) => {
       return {
@@ -78,11 +81,12 @@ export const InputSelect: React.FC<IProps> = ({
           </S.ClearIndicator>
         );
       } else {
-        // Boolean to string conversion done due to
-        // https://github.com/styled-components/styled-components/issues/1198
+        const menuIsOpenIcon = selectProps.menuIsOpen ? <DownIcon size={16} />:  <UpIcon size={16} />;
         return (
-          <S.DropdownIndicator rotate={indicatorIcon ? "" :String(selectProps.menuIsOpen)}>
-            { indicatorIcon ? <ReactSVG path={indicatorIcon}/> :<Icon name="select_arrow" size={10} color='inherit'/>}
+          <S.DropdownIndicator withArrow={!indicatorIcon}>
+            { indicatorIcon ? (
+              typeof(indicatorIcon) === 'string' ? <ReactSVG path={indicatorIcon}/> : indicatorIcon
+            ) : menuIsOpenIcon}
           </S.DropdownIndicator>
         );
       }

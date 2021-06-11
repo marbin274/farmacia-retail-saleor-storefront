@@ -19,7 +19,6 @@ exports[`Storyshots @components/atoms/Select sample select 1`] = `
 
 .c1 {
   padding-top: 1.4rem;
-  margin-bottom: 1.875rem;
 }
 
 .c2 {

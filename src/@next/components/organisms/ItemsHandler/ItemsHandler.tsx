@@ -12,7 +12,6 @@ import {
 import { MAX_ORDER_PER_PRODUCT } from "@temp/core/config";
 import classNames from "classnames";
 import React, { FC, useEffect, useState } from "react";
-import { Button } from "../../atoms";
 import { itemNotificationsService } from "../../atoms/ItemsNotification";
 import {
   IAddToCartCallback,
@@ -20,6 +19,8 @@ import {
   ISubtractItemToCartCallback,
 } from "../../molecules/ProductTileAUNA/types";
 import "./scss/index.scss";
+import { Button, CartIcon } from "@farmacia-retail/farmauna-components";
+
 type IProps = {
   canAddToCart?: boolean;
   disableOnAdd?: boolean;
@@ -162,6 +163,7 @@ const ItemsHandler: FC<IProps> = ({
             onClick={handleButtonAddClick}
             disabled={!canAddToCart}
             type="button"
+            icon={<CartIcon />}
           >
             {text}
           </Button>

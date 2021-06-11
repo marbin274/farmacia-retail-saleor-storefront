@@ -2,8 +2,7 @@ import { mount, shallow } from "enzyme";
 import "jest-styled-components";
 import React from "react";
 
-import { Attribute, IconButton } from "@components/atoms";
-import { TextField } from "../";
+import { Attribute } from "@components/atoms";
 import { AccountTile } from "./AccountTile";
 import { PasswordTile } from "./PasswordTile";
 
@@ -26,13 +25,7 @@ describe("<PasswordTile />", () => {
     expect(wrapper.find(Attribute)).toHaveLength(1);
   });
 
-  it("should change view to password change view when clicked on edit icon", () => {
-    const wrapper = mount(<PasswordTile />);
 
-    wrapper.find(IconButton).simulate("click");
-
-    expect(wrapper.find(TextField)).toHaveLength(3);
-  });
 });
 
 describe("<AccountTile />", () => {
@@ -48,11 +41,5 @@ describe("<AccountTile />", () => {
     expect(wrapper.find(Attribute)).toHaveLength(4);
   });
 
-  it("should change view to password change view when clicked on edit icon", () => {
-    const wrapper = mount(<AccountTile />);
 
-    wrapper.find(IconButton).simulate("click");
-
-    expect(wrapper.find(TextField)).toHaveLength(2);
-  });
 });

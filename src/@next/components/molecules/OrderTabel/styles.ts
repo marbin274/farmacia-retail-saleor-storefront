@@ -1,4 +1,5 @@
 import { media, styled } from "@styles";
+import farmatheme from "@farmatheme";
 
 export const Wrapper = styled.div``;
 
@@ -40,11 +41,10 @@ export const Action = styled.div`
 
 export const Row = styled(BaseRow)`
   font-size: 0.875rem;
-  border-top: 1px solid ${props => props.theme.colors.tableDivider};
-
+  border-radius: 2.5rem;
+  transition: background 0.2s ease-in-out;
   &:hover {
-    background-color: white;
-    border-radius: 0.5rem;
+    background: ${farmatheme.theme.colors.neutral.light};
     border-top-color: transparent;
 
     + ${BaseRow} {
@@ -57,8 +57,6 @@ export const Row = styled(BaseRow)`
   }
 
   :last-child {
-    border-bottom: 1px solid ${props => props.theme.colors.tableDivider};
-
     &:hover {
       border-bottom-color: transparent;
     }

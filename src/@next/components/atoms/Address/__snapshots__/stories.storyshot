@@ -6,7 +6,7 @@ exports[`Storyshots @components/atoms/Address default 1`] = `
   margin: 20px;
 }
 
-.c3 {
+.c2 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -19,17 +19,13 @@ exports[`Storyshots @components/atoms/Address default 1`] = `
 
 .c1 {
   color: #131336;
-}
-
-.c1 p {
-  line-height: 2rem;
-}
-
-.c2 {
-  display: block;
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 1.25rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 <div
@@ -39,38 +35,74 @@ exports[`Storyshots @components/atoms/Address default 1`] = `
     className="c1"
   >
     <span
-      className="c2"
+      className="fa-text-lg fa-mb-4 fa-font-semibold"
     >
       John Doe
     </span>
     <p>
       Mirumee
     </p>
-    <p>
+    <span
+      className="fa-text-sm fa-mb-4 fa-font-medium"
+    >
       St Street
-    </p>
-    <p>
+    </span>
+    <span
+      className="fa-text-sm fa-mb-4 fa-font-medium"
+    >
       Second
-    </p>
-    <p>
-      55-555,
-       
-      Wroclaw
-    </p>
-    <p>
-      dolnyslask
-      , 
-    </p>
-    <p>
-      Poland
-    </p>
-    <p>
-      Celular: 
-      555-5555
-    </p>
+    </span>
+    <div
+      className="fa-grid fa-grid-cols-1 lg:fa-grid-cols-2 fa-gap-x-4"
+    >
+      <div
+        className="fa-flex fa-items-start"
+      >
+        <span
+          className="fa-mr-2 fa-text-neutral-dark"
+        >
+          Distrito: 
+        </span>
+        <span>
+          55-555,
+           
+          Wroclaw
+        </span>
+      </div>
+      <div
+        className="fa-flex fa-items-start"
+      >
+        <span
+          className="fa-mr-2 fa-text-neutral-dark"
+        >
+          Pais: 
+        </span>
+        <span>
+          <span>
+            dolnyslask
+            , 
+          </span>
+          <span>
+            Poland
+          </span>
+        </span>
+      </div>
+      <div
+        className="fa-flex fa-items-start"
+      >
+        <span
+          className="fa-mr-2  fa-text-neutral-dark"
+        >
+          Celular: 
+        </span>
+        <span>
+          555-5555
+        </span>
+      </div>
+    </div>
   </div>
   <div
-    className="c3"
+    className="c2"
   />
 </div>
 `;

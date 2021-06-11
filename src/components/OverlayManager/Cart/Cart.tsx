@@ -1,28 +1,25 @@
-import * as React from "react";
-import { Link } from "react-router-dom";
-import ReactSVG from "react-svg";
 import { TaxedMoney } from "@components/containers";
 import { useCart, useCheckout, useUserDetails } from "@sdk/react";
-import "./scss/index.scss";
+import { checkoutLoginUrl, checkoutUrl } from "@temp/app/routes";
+import { Button, CartIcon, XIcon } from "@farmacia-retail/farmauna-components";
+import * as React from "react";
+import { useHistory, useLocation } from "react-router-dom";
 import {
-  Button,
   Offline,
   OfflinePlaceholder,
   Online,
   Overlay,
   OverlayContextInterface,
 } from "../..";
-import { checkoutUrl, checkoutLoginUrl } from "@temp/app/routes";
-import DeleteModal from "./DeleteModal";
 import Empty from "./Empty";
 import ProductList from "./ProductList";
-import aunaImg from "../../../images/logo.svg";
-import closeImg from "../../../images/close-circle.svg";
-import cartImg from "../../../images/cart-light.svg";
+import "./scss/index.scss";
 
 const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
   const [isModelOpen, setIsModelOpen] = React.useState(false);
   const [itemToDelete, setItemToDelete] = React.useState(null);
+  const history = useHistory();
+  const location = useLocation();
   const { data: user } = useUserDetails();
   const { checkout } = useCheckout();
   const {
@@ -62,120 +59,115 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
     setIsModelOpen(false);
   };
 
-  const goToRoute = (): string => {
-    if ( user || checkout.id) {
-      return checkoutUrl;
-    }  else {
-      return checkoutLoginUrl;
+  const onClickBuyIcon = () => {
+    const isInLoginPage = location.pathname.includes("login");
+
+    if (isInLoginPage) overlay.hide();
+    else {
+      const urlToGo =
+        user || (checkout && checkout.id) ? checkoutUrl : checkoutLoginUrl;
+      history.push(urlToGo);
     }
   };
 
   return (
     <Overlay context={overlay}>
       <Online>
-        {isModelOpen ? (
-          <div className="cart">
-            <DeleteModal
-              onConfirm={() => removeItemAndHideModal()}
-              onCancel={() => setIsModelOpen(false)}
-              onClose={() => setIsModelOpen(false)}
-            />
-          </div>
-        ) : (
-          <div className="cart">
-            <div className="overlay__header">
-              <div className="overlay__header__top">
-                <div />
-                <ReactSVG
-                  path={aunaImg}
-                  onClick={overlay.hide}
-                  className="overlay__header__close-icon"
-                />
-                <ReactSVG
-                  path={closeImg}
-                  onClick={overlay.hide}
-                  className="overlay__header__close-icon"
-                />
+        <div className="cart">
+          <div className="overlay__header">
+            <div className="overlay__header__text">
+              <div className="overlay__header__text__cart-icon">
+                <CartIcon></CartIcon>
               </div>
-              <div className="overlay__header__bottom">
-                <div className="overlay__header-text">
-                  <span>Tu carrito</span>
-                  <span className="overlay__header-text-items">
-                    {totalProducts || 0}{" "}
-                    {totalProducts === 1 ? "producto" : "productos"}
-                  </span>
-                </div>
-                <ReactSVG
-                  path={cartImg}
-                  className="overlay__header__cart-icon"
-                />
+              <div className="overlay__header__text__info">
+                <span>Tu carrito</span>
+                <span className="overlay__header-text-items">
+                  {totalProducts || 0}{" "}
+                  {totalProducts === 1
+                    ? "producto en total"
+                    : "productos en total"}
+                </span>
               </div>
             </div>
+            <div className="overlay__header__close-icon">
+              <XIcon onClick={overlay.hide} size={16}></XIcon>
+            </div>
+          </div>
+          <div className="cart__body">
             {items?.length ? (
-              <div className="cart__body">
-                <ProductList
-                  products={items}
-                  onAdd={addItem}
-                  onRemove={showModal}
-                  onSubtract={subtractItem}
-                />
-                <div className="cart__footer">
-                  <div className="cart__footer__price cart__footer__price--sub">
-                    <span>Subtotal</span>
-                    <span>
-                      <TaxedMoney
-                        data-cy="cartPageSubtotalPrice"
-                        taxedMoney={subtotalPrice}
-                      />
-                    </span>
-                  </div>
-
-                  {shippingTaxedPrice && shippingTaxedPrice.gross.amount !== 0 && (
-                    <div className="cart__footer__price">
-                      <span>Shipping</span>
-                      <span>
-                        <TaxedMoney
-                          data-cy="cartPageShippingPrice"
-                          taxedMoney={shippingTaxedPrice}
-                        />
-                      </span>
-                    </div>
-                  )}
-
-                  {promoTaxedPrice && promoTaxedPrice.gross.amount !== 0 && (
-                    <div className="cart__footer__price">
-                      <span>Promo code</span>
-                      <span>
-                        -&nbsp;
-                        <TaxedMoney
-                          data-cy="cartPagePromoCodePrice"
-                          taxedMoney={promoTaxedPrice}
-                        />
-                      </span>
-                    </div>
-                  )}
-
-                  <div className="cart__footer__price">
-                    <span>Total</span>
-                    <span>
-                      <TaxedMoney
-                        data-cy="cartPageTotalPrice"
-                        taxedMoney={totalPrice}
-                      />
-                    </span>
-                  </div>
-                  <div className="cart__footer__button">
-                    <Link to={goToRoute}>
-                      <Button>Comprar</Button>
-                    </Link>
-                  </div>
-                </div>
-              </div>
+              <ProductList
+                modalOpen={isModelOpen}
+                itemToDelete={itemToDelete}
+                products={items}
+                onAdd={addItem}
+                onRemove={showModal}
+                onSubtract={subtractItem}
+                onConfirm={() => removeItemAndHideModal()}
+                onCancel={() => setIsModelOpen(false)}
+                onClose={() => setIsModelOpen(false)}
+              />
             ) : (
               <Empty overlayHide={overlay.showCatalog} />
             )}
+            <div className="cart__footer">
+              <div className="cart__footer__details">
+                <div className="cart__footer__details__price">
+                  <span>Subtotal:</span>
+                  <span>
+                    <TaxedMoney
+                      data-cy="cartPageSubtotalPrice"
+                      taxedMoney={subtotalPrice}
+                    />
+                  </span>
+                </div>
+
+                {shippingTaxedPrice && shippingTaxedPrice.gross.amount !== 0 && (
+                  <div className="cart__footer__details__price">
+                    <span>Shipping:</span>
+                    <span>
+                      <TaxedMoney
+                        data-cy="cartPageShippingPrice"
+                        taxedMoney={shippingTaxedPrice}
+                      />
+                    </span>
+                  </div>
+                )}
+
+                {promoTaxedPrice && promoTaxedPrice.gross.amount !== 0 && (
+                  <div className="cart__footer__details__price">
+                    <span>Promo code:</span>
+                    <span>
+                      -&nbsp;
+                      <TaxedMoney
+                        data-cy="cartPagePromoCodePrice"
+                        taxedMoney={promoTaxedPrice}
+                      />
+                    </span>
+                  </div>
+                )}
+
+                <div className="cart__footer__details__price cart__footer__details__price--total">
+                  <span>Total:</span>
+                  <span>
+                    <TaxedMoney
+                      data-cy="cartPageTotalPrice"
+                      taxedMoney={totalPrice}
+                    />
+                  </span>
+                </div>
+              </div>
+              <div className="cart__footer__details__button">
+                <Button
+                  icon={<CartIcon />}
+                  size="normal"
+                  onClick={onClickBuyIcon}
+                >
+                  Comprar
+                </Button>
+              </div>
+            </div>
           </div>
-        )}
+        </div>
       </Online>
       <Offline>
         <div className="cart">

@@ -1,7 +1,9 @@
-import { Button, Icon, NavLink } from "@temp/@next/components/atoms";
+import { NavLink } from "@temp/@next/components/atoms";
 import React from "react";
 import { INavItem } from "../MobileNav";
 import * as S from "./styles";
+import { NextIcon, Button } from "@farmacia-retail/farmauna-components";
+import farmatheme from "@farmatheme";
 
 interface IProps {
     categories: INavItem[] | null;
@@ -29,7 +31,7 @@ export const OverlayNav: React.FC<IProps> = ({ categories, close }) => {
     return (
         <S.Wrapper>
             <S.Overlay
-                className="container"
+                className=""
                 onMouseLeave={() => { setItemLvl1Selected(null) }}
             >
                 <S.lvl1List>
@@ -44,7 +46,7 @@ export const OverlayNav: React.FC<IProps> = ({ categories, close }) => {
                                 onClick={close}
                             >
                                 <span>{it.name?.toLowerCase()}</span>
-                                <Icon name="arrow_right" size={18} viewPort={24} />
+                                <NextIcon color={farmatheme.theme.colors.highlight.medium} size={18} />
                             </NavLink>
 
                         </li>
@@ -62,14 +64,15 @@ export const OverlayNav: React.FC<IProps> = ({ categories, close }) => {
                             >
                                 <Button
                                     color="primary"
-                                    outline
+                                    variant="outline"
                                     type="button"
                                 >
-                                    Ver todos
+                                    <span className='fa-font-semibold'>
+                                        Ver todos
+                                    </span>
                                 </Button>
                             </NavLink>
                         </S.OverlayNavItemTitle>
-                        <S.divide />
                         <S.lvl2List>
                             {itemLvl1Selected.children?.map((lvl2: INavItem) =>
                                 <li key={lvl2.id}>

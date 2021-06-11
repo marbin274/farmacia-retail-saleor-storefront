@@ -23,14 +23,17 @@ export const Value = styled.div`
   text-overflow: ellipsis;
   white-space: nowrap;
   margin-left: 0.625rem;
+  color:#23212B;
+  font-weight:500;
+  font-size:0.875rem;
 `;
 
 export const Indicator = styled.div<{ rotate: string }>`
-  right: 1rem;
+  right: 2rem;
+  position: absolute;
   transition-duration: 0.3s;
   transform: ${props =>
     props.rotate === "true"
-      ? "rotate(180deg) translateY(-0.25rem)"
-      : "rotate(0deg)"};
-  margin-top: -0.25rem;
+      ? "rotate(180deg) translateY(0.25rem)"
+      : "rotate(0deg) translateY(0.25rem)"};
 `;
