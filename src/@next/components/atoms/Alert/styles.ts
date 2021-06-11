@@ -24,10 +24,9 @@ export const Modal = styled.div`
 export const Icon = styled.div`
   text-align: center;
   width: auto;
+  margin-bottom: 1rem;
   svg {
     margin: auto;
-    transform: scale(1.5);
-    height: 2rem;
     path {
       fill: #00bf8e;
     }

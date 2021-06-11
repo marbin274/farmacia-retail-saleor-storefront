@@ -55,6 +55,11 @@ export const ShippingMethodItem: React.FC<IProps> = ({
         return date;
     },[scheduleDates]);
 
+    const slotSelected = React.useMemo(()=>(
+      scheduleTimes
+      ?.find(it => it.id === selectedSlotId)
+    ), [selectedSlotId]);
+
     const handleOnChangeScheduleSelected = (value: IKeyValue) => {
         setFieldValue("selectedSlotId", value.id);
         setFieldValue("selectedScheduleTimeId", scheduleTimeId!);
@@ -143,7 +148,7 @@ export const ShippingMethodItem: React.FC<IProps> = ({
                 label=""
                 name="selectedSlotId"
                 options={scheduleTimes}
-                value={selectedSlotId || ""}
+                value={slotSelected || ""}
                 onChange={handleOnChangeScheduleSelected}
                 optionLabelKey="description"
                 optionValueKey="id"
