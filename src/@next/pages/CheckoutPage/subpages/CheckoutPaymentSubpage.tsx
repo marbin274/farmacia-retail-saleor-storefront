@@ -14,6 +14,7 @@ import { filterNotEmptyArrayItems } from "@utils/misc";
 import ErrorPaymentIcon from "images/auna/credit-card-cancel.svg";
 import ErrorPromoCodeIcon from "images/auna/promo-code-error.svg";
 import PromoCodeCorrect from "images/auna/promo-code-correct.svg";
+import ClockIcon from "images/auna/clock.svg";
 
 import React, {
   forwardRef,
@@ -212,8 +213,8 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
           case CheckoutErrorCode.INVALID_SLOT:
             alertService.sendAlert({
               buttonText: "Entendido",
-              icon: ErrorPaymentIcon,
-              message: "Por favor selecciona nuevamente ¿Cuándo deseas recibir tu pedido?",
+              icon: ClockIcon,
+              message: "Por favor, selecciona nuevamente cuándo deseas recibir tu pedido",
               redirectionLink: CHECKOUT_STEPS[0].link,
               title: "El tiempo de espera caducó",
               type: "Info",
