@@ -46,7 +46,6 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
   const [stockValidationProducts, setStockValidationProducts] = useState<
     CreateCheckout_checkoutCreate_checkoutErrors_products[]
   >();
-  const [currentDistrict, setCurrentDistrict] = useState("");
   const checkoutAddressFormId = "address-form";
   const checkoutAddressFormRef = useRef<HTMLFormElement>(null);
   const checkoutNewAddressFormId = "new-address-form";
@@ -57,7 +56,7 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     selectedShippingAddressId,
   } = useCheckout();
   const { availableDistricts, countries } = useShopContext();
-  const [, setDistrict] = useDistrictSelected();
+  const [selectedDistrict, setDistrict] = useDistrictSelected();
   const {
     update: updateCartLines,
     loading: updatingCartLines,
@@ -166,13 +165,20 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
       documentNumber ? documentNumber : ""
     );
 
+    const district = availableDistricts?.find(
+      x => x?.name.toLowerCase() === address.city?.toLocaleLowerCase()
+    );
+
+    if (selectedDistrict?.id !== district?.id) {
+      setDistrict(district);
+    }
+
     if (checkoutErrors?.length! > 0) {
       const checkoutError = checkoutErrors![0];
       if (checkoutError.code === CheckoutErrorCode.INSUFFICIENT_STOCK) {
         setStockValidationProducts(
           checkoutError.products! as CreateCheckout_checkoutCreate_checkoutErrors_products[]
         );
-        setCurrentDistrict(address.city || "");
         setShowStockValidation(true);
         changeSubmitProgress(false);
         return;
@@ -222,9 +228,6 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     }
 
     setShowStockValidation(false);
-    const district = availableDistricts?.find(x => x?.name === currentDistrict);
-    setDistrict(district);
-    setCurrentDistrict("");
     setStockValidationProducts(undefined);
 
     await updateCartLines();
@@ -257,7 +260,6 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
         show={showStockValidation}
         onClose={() => {
           setShowStockValidation(false);
-          setCurrentDistrict("");
           setStockValidationProducts(undefined);
         }}
         products={stockValidationProducts}
@@ -265,7 +267,7 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
           props.history.push(baseUrl);
         }}
         onClickContinue={onStockValidationContinue}
-        district={currentDistrict}
+        district={selectedDistrict.name}
       />
     </>
   );

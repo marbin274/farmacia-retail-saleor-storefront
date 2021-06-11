@@ -34,6 +34,8 @@ import {
 import { IProps } from "./types";
 import { CartDeliveryDataModal } from '../../components/organisms/CartDeliveryDataModal/CartDeliveryDataModal';
 import { SHIPPING_METHOD_NOT_FOUND, SHIPPING_METHOD_NOT_FOUND_TITLE } from "@temp/@next/utils/schemasMessages";
+import { useUpdateCartLines } from "@temp/@next/hooks";
+
 const prepareCartSummary = (
   activeStepIndex: number,
   onClickHandle: () => void,
@@ -99,6 +101,14 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     totalPrice,
     items,
   } = useCart();
+
+  const { update: updateCartLines } = useUpdateCartLines();
+
+  useEffect(() => {
+    return () => {
+      updateCartLines();
+    };
+  }, []);
   
   const localRepository = new LocalRepository()
   if (items!==undefined){
