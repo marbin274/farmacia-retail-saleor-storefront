@@ -1,6 +1,6 @@
 on:
   pull_request:
-    branches: [master, release, redesign]
+    branches: [master, release]
 
 jobs:
   build:
