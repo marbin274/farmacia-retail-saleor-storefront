@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   margin: 20px;
 }
 
-.c26 {
+.c28 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -17,7 +17,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   box-sizing: border-box;
 }
 
-.c15 {
+.c16 {
   width: 100%;
   margin-bottom: 1.25rem;
   display: -webkit-box;
@@ -37,7 +37,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   margin-left: -0.25rem;
 }
 
-.c16 {
+.c17 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -54,30 +54,30 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   padding-right: 1rem;
 }
 
-.c16 input[type="checkbox"] {
+.c17 input[type="checkbox"] {
   display: none;
   position: relative;
   right: -999em;
 }
 
-.c16 .checkout_icon {
+.c17 .checkout_icon {
   color: red;
 }
 
-.c16 input:checked + div span {
+.c17 input:checked + div span {
   background-clip: content-box;
   background-color: #00B0CA;
   border: solid 0.125rem #00B0CA;
 }
 
-.c16 input:checked + div span div {
+.c17 input:checked + div span div {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c17 {
+.c18 {
   border-radius: 0.125rem;
   border: solid 0.188rem #E4E5ED;
   display: block;
@@ -85,20 +85,20 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   width: 1.25rem;
 }
 
-.c17 div {
+.c18 div {
   display: none;
 }
 
-.c17 div svg {
+.c18 div svg {
   fill: #fff;
 }
 
-.c23 {
+.c25 {
   padding-top: 1.4rem;
   margin-bottom: 1.875rem;
 }
 
-.c25 {
+.c27 {
   top: 100%;
 }
 
@@ -166,7 +166,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   color: #9194A7;
 }
 
-.c24 {
+.c26 {
   fill: #00B0CA;
   position: absolute;
   right: 1rem;
@@ -190,7 +190,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   top: 100%;
 }
 
-.c19 {
+.c21 {
   width: 100%;
   height: auto;
   border-radius: 1rem;
@@ -198,12 +198,12 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   margin-bottom: 1.5rem;
 }
 
-.c21 {
+.c23 {
   width: 100%;
   height: 21.25rem;
 }
 
-.c20 {
+.c22 {
   background-color: #E6F6F9;
   font-size: 0.875rem;
   font-weight: 600;
@@ -211,28 +211,36 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   padding: 1rem;
 }
 
-.c14 {
+.c15 {
   margin-top: 1rem;
   margin-bottom: 1rem;
   width: 100%;
 }
 
-.c14 > div {
+.c15 > div {
   margin-bottom: 0rem;
 }
 
-.c14 a {
+.c15 > div > p {
+  margin-left: 2rem;
+  margin-top: 0.5rem;
+}
+
+.c15 a {
+  color: #00B0CA;
+}
+
+.c19 {
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.c19 a {
   color: #00B0CA;
 }
 
 .c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
+  width: 100%;
 }
 
 .c7 {
@@ -252,6 +260,10 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
 
 .c7 > div {
   width: calc(50% - 1.875rem / 2);
+}
+
+.c14 {
+  width: 100%;
 }
 
 .c3 {
@@ -280,22 +292,16 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   padding-left: 1rem;
 }
 
-.c18 {
+.c20 {
   display: none;
 }
 
-.c22 {
+.c24 {
   display: block;
 }
 
 .c1 {
   width: 600px;
-}
-
-@media (max-width:540px) {
-  .c14 {
-    width: 100%;
-  }
 }
 
 @media (max-width:540px) {
@@ -305,13 +311,13 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
 }
 
 @media (min-width:720px) {
-  .c18 {
+  .c20 {
     display: block;
   }
 }
 
 @media (min-width:720px) {
-  .c22 {
+  .c24 {
     display: none;
   }
 }
@@ -503,16 +509,16 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                 </div>
               </div>
               <div
-                className="c7"
+                className="c14"
               >
                 <div
-                  className="c14"
+                  className="c15"
                 >
                   <div
-                    className="c15"
+                    className="c16"
                   >
                     <label
-                      className="c16"
+                      className="c17"
                       onClick={[Function]}
                     >
                       <input
@@ -528,7 +534,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                         tabIndex={0}
                       >
                         <span
-                          className="c17"
+                          className="c18"
                         >
                           <div
                             className="checkout_icon"
@@ -542,30 +548,37 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                       *Estoy de acuerdo con las
                       <a
                         href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-politicas-privacidad.pdf"
+                        target="_blank"
                       >
-                         Políticas de privacidad 
+                         
+                        Políticas de privacidad
+                         
                       </a>
-                        y
+                       
+                      y
                       <a
                         href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-terminos-condiciones.pdf"
+                        target="_blank"
                       >
-                         Términos y condiciones 
+                         
+                        Términos y condiciones
+                         
                       </a>
                     </label>
                   </div>
                 </div>
               </div>
               <div
-                className="c7"
+                className="c14"
               >
                 <div
-                  className="additionals"
+                  className="c19"
                 >
                   <div
-                    className="c15"
+                    className="c16"
                   >
                     <label
-                      className="c16"
+                      className="c17"
                       onClick={[Function]}
                     >
                       <input
@@ -581,7 +594,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                         tabIndex={0}
                       >
                         <span
-                          className="c17"
+                          className="c18"
                         >
                           <div
                             className="checkout_icon"
@@ -592,11 +605,15 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                     <label
                       htmlFor=""
                     >
-                       Acepto el tratamiento para
+                       
+                      Acepto el tratamiento para
                       <a
                         href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-fines-adicionales.pdf"
+                        target="_blank"
                       >
-                         Fines adicionales 
+                         
+                        Fines adicionales
+                         
                       </a>
                     </label>
                   </div>
@@ -657,7 +674,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                   />
                 </div>
                 <div
-                  className="c18"
+                  className="c20"
                 >
                   <div
                     className="c8"
@@ -696,22 +713,22 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                 </div>
               </div>
               <div
-                className="c19"
+                className="c21"
               >
                 <div
-                  className="c20"
+                  className="c22"
                 >
                   Puedes mover tu ubicación en el mapa
                 </div>
                 <div
-                  className="c21"
+                  className="c23"
                 />
               </div>
               <div
                 className="c7"
               >
                 <div
-                  className="c22"
+                  className="c24"
                 >
                   <div
                     className="c8"
@@ -749,7 +766,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                   </div>
                 </div>
                 <div
-                  className="c23"
+                  className="c25"
                 >
                   <div
                     className="css-1pcexqc-container control"
@@ -845,7 +862,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                         </div>
                       </div>
                       <div
-                        className="c24"
+                        className="c26"
                         rotate="false"
                       >
                         <svg
@@ -868,7 +885,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                     </label>
                   </div>
                   <div
-                    className="c25"
+                    className="c27"
                   />
                 </div>
               </div>
@@ -879,7 +896,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
     </form>
   </div>
   <div
-    className="c26"
+    className="c28"
   />
 </div>
 `;
@@ -890,7 +907,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   margin: 20px;
 }
 
-.c26 {
+.c28 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -901,7 +918,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   box-sizing: border-box;
 }
 
-.c15 {
+.c16 {
   width: 100%;
   margin-bottom: 1.25rem;
   display: -webkit-box;
@@ -921,7 +938,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   margin-left: -0.25rem;
 }
 
-.c16 {
+.c17 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -938,30 +955,30 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   padding-right: 1rem;
 }
 
-.c16 input[type="checkbox"] {
+.c17 input[type="checkbox"] {
   display: none;
   position: relative;
   right: -999em;
 }
 
-.c16 .checkout_icon {
+.c17 .checkout_icon {
   color: red;
 }
 
-.c16 input:checked + div span {
+.c17 input:checked + div span {
   background-clip: content-box;
   background-color: #00B0CA;
   border: solid 0.125rem #00B0CA;
 }
 
-.c16 input:checked + div span div {
+.c17 input:checked + div span div {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c17 {
+.c18 {
   border-radius: 0.125rem;
   border: solid 0.188rem #E4E5ED;
   display: block;
@@ -969,20 +986,20 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   width: 1.25rem;
 }
 
-.c17 div {
+.c18 div {
   display: none;
 }
 
-.c17 div svg {
+.c18 div svg {
   fill: #fff;
 }
 
-.c23 {
+.c25 {
   padding-top: 1.4rem;
   margin-bottom: 1.875rem;
 }
 
-.c25 {
+.c27 {
   top: 100%;
 }
 
@@ -1050,7 +1067,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   color: #9194A7;
 }
 
-.c24 {
+.c26 {
   fill: #00B0CA;
   position: absolute;
   right: 1rem;
@@ -1074,7 +1091,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   top: 100%;
 }
 
-.c19 {
+.c21 {
   width: 100%;
   height: auto;
   border-radius: 1rem;
@@ -1082,12 +1099,12 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   margin-bottom: 1.5rem;
 }
 
-.c21 {
+.c23 {
   width: 100%;
   height: 21.25rem;
 }
 
-.c20 {
+.c22 {
   background-color: #E6F6F9;
   font-size: 0.875rem;
   font-weight: 600;
@@ -1095,28 +1112,36 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   padding: 1rem;
 }
 
-.c14 {
+.c15 {
   margin-top: 1rem;
   margin-bottom: 1rem;
   width: 100%;
 }
 
-.c14 > div {
+.c15 > div {
   margin-bottom: 0rem;
 }
 
-.c14 a {
+.c15 > div > p {
+  margin-left: 2rem;
+  margin-top: 0.5rem;
+}
+
+.c15 a {
+  color: #00B0CA;
+}
+
+.c19 {
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.c19 a {
   color: #00B0CA;
 }
 
 .c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
+  width: 100%;
 }
 
 .c7 {
@@ -1136,6 +1161,10 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
 
 .c7 > div {
   width: calc(50% - 1.875rem / 2);
+}
+
+.c14 {
+  width: 100%;
 }
 
 .c3 {
@@ -1164,22 +1193,16 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   padding-left: 1rem;
 }
 
-.c18 {
+.c20 {
   display: none;
 }
 
-.c22 {
+.c24 {
   display: block;
 }
 
 .c1 {
   width: 600px;
-}
-
-@media (max-width:540px) {
-  .c14 {
-    width: 100%;
-  }
 }
 
 @media (max-width:540px) {
@@ -1189,13 +1212,13 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
 }
 
 @media (min-width:720px) {
-  .c18 {
+  .c20 {
     display: block;
   }
 }
 
 @media (min-width:720px) {
-  .c22 {
+  .c24 {
     display: none;
   }
 }
@@ -1387,16 +1410,16 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                 </div>
               </div>
               <div
-                className="c7"
+                className="c14"
               >
                 <div
-                  className="c14"
+                  className="c15"
                 >
                   <div
-                    className="c15"
+                    className="c16"
                   >
                     <label
-                      className="c16"
+                      className="c17"
                       onClick={[Function]}
                     >
                       <input
@@ -1412,7 +1435,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                         tabIndex={0}
                       >
                         <span
-                          className="c17"
+                          className="c18"
                         >
                           <div
                             className="checkout_icon"
@@ -1426,30 +1449,37 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                       *Estoy de acuerdo con las
                       <a
                         href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-politicas-privacidad.pdf"
+                        target="_blank"
                       >
-                         Políticas de privacidad 
+                         
+                        Políticas de privacidad
+                         
                       </a>
-                        y
+                       
+                      y
                       <a
                         href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-terminos-condiciones.pdf"
+                        target="_blank"
                       >
-                         Términos y condiciones 
+                         
+                        Términos y condiciones
+                         
                       </a>
                     </label>
                   </div>
                 </div>
               </div>
               <div
-                className="c7"
+                className="c14"
               >
                 <div
-                  className="additionals"
+                  className="c19"
                 >
                   <div
-                    className="c15"
+                    className="c16"
                   >
                     <label
-                      className="c16"
+                      className="c17"
                       onClick={[Function]}
                     >
                       <input
@@ -1465,7 +1495,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                         tabIndex={0}
                       >
                         <span
-                          className="c17"
+                          className="c18"
                         >
                           <div
                             className="checkout_icon"
@@ -1476,11 +1506,15 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                     <label
                       htmlFor=""
                     >
-                       Acepto el tratamiento para
+                       
+                      Acepto el tratamiento para
                       <a
                         href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-fines-adicionales.pdf"
+                        target="_blank"
                       >
-                         Fines adicionales 
+                         
+                        Fines adicionales
+                         
                       </a>
                     </label>
                   </div>
@@ -1541,7 +1575,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                   />
                 </div>
                 <div
-                  className="c18"
+                  className="c20"
                 >
                   <div
                     className="c8"
@@ -1580,22 +1614,22 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                 </div>
               </div>
               <div
-                className="c19"
+                className="c21"
               >
                 <div
-                  className="c20"
+                  className="c22"
                 >
                   Puedes mover tu ubicación en el mapa
                 </div>
                 <div
-                  className="c21"
+                  className="c23"
                 />
               </div>
               <div
                 className="c7"
               >
                 <div
-                  className="c22"
+                  className="c24"
                 >
                   <div
                     className="c8"
@@ -1633,7 +1667,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                   </div>
                 </div>
                 <div
-                  className="c23"
+                  className="c25"
                 >
                   <div
                     className="css-1pcexqc-container control"
@@ -1729,7 +1763,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                         </div>
                       </div>
                       <div
-                        className="c24"
+                        className="c26"
                         rotate="false"
                       >
                         <svg
@@ -1752,7 +1786,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                     </label>
                   </div>
                   <div
-                    className="c25"
+                    className="c27"
                   />
                 </div>
               </div>
@@ -1763,7 +1797,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
     </form>
   </div>
   <div
-    className="c26"
+    className="c28"
   />
 </div>
 `;
@@ -1774,7 +1808,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   margin: 20px;
 }
 
-.c26 {
+.c28 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1785,7 +1819,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   box-sizing: border-box;
 }
 
-.c15 {
+.c16 {
   width: 100%;
   margin-bottom: 1.25rem;
   display: -webkit-box;
@@ -1805,7 +1839,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   margin-left: -0.25rem;
 }
 
-.c16 {
+.c17 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1822,30 +1856,30 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   padding-right: 1rem;
 }
 
-.c16 input[type="checkbox"] {
+.c17 input[type="checkbox"] {
   display: none;
   position: relative;
   right: -999em;
 }
 
-.c16 .checkout_icon {
+.c17 .checkout_icon {
   color: red;
 }
 
-.c16 input:checked + div span {
+.c17 input:checked + div span {
   background-clip: content-box;
   background-color: #00B0CA;
   border: solid 0.125rem #00B0CA;
 }
 
-.c16 input:checked + div span div {
+.c17 input:checked + div span div {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c17 {
+.c18 {
   border-radius: 0.125rem;
   border: solid 0.188rem #E4E5ED;
   display: block;
@@ -1853,20 +1887,20 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   width: 1.25rem;
 }
 
-.c17 div {
+.c18 div {
   display: none;
 }
 
-.c17 div svg {
+.c18 div svg {
   fill: #fff;
 }
 
-.c23 {
+.c25 {
   padding-top: 1.4rem;
   margin-bottom: 1.875rem;
 }
 
-.c25 {
+.c27 {
   top: 100%;
 }
 
@@ -1934,7 +1968,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   color: #9194A7;
 }
 
-.c24 {
+.c26 {
   fill: #00B0CA;
   position: absolute;
   right: 1rem;
@@ -1958,7 +1992,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   top: 100%;
 }
 
-.c19 {
+.c21 {
   width: 100%;
   height: auto;
   border-radius: 1rem;
@@ -1966,12 +2000,12 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   margin-bottom: 1.5rem;
 }
 
-.c21 {
+.c23 {
   width: 100%;
   height: 21.25rem;
 }
 
-.c20 {
+.c22 {
   background-color: #E6F6F9;
   font-size: 0.875rem;
   font-weight: 600;
@@ -1979,28 +2013,36 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   padding: 1rem;
 }
 
-.c14 {
+.c15 {
   margin-top: 1rem;
   margin-bottom: 1rem;
   width: 100%;
 }
 
-.c14 > div {
+.c15 > div {
   margin-bottom: 0rem;
 }
 
-.c14 a {
+.c15 > div > p {
+  margin-left: 2rem;
+  margin-top: 0.5rem;
+}
+
+.c15 a {
+  color: #00B0CA;
+}
+
+.c19 {
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.c19 a {
   color: #00B0CA;
 }
 
 .c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
+  width: 100%;
 }
 
 .c7 {
@@ -2020,6 +2062,10 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
 
 .c7 > div {
   width: calc(50% - 1.875rem / 2);
+}
+
+.c14 {
+  width: 100%;
 }
 
 .c3 {
@@ -2048,22 +2094,16 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   padding-left: 1rem;
 }
 
-.c18 {
+.c20 {
   display: none;
 }
 
-.c22 {
+.c24 {
   display: block;
 }
 
 .c1 {
   width: 600px;
-}
-
-@media (max-width:540px) {
-  .c14 {
-    width: 100%;
-  }
 }
 
 @media (max-width:540px) {
@@ -2073,13 +2113,13 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
 }
 
 @media (min-width:720px) {
-  .c18 {
+  .c20 {
     display: block;
   }
 }
 
 @media (min-width:720px) {
-  .c22 {
+  .c24 {
     display: none;
   }
 }
@@ -2271,16 +2311,16 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                 </div>
               </div>
               <div
-                className="c7"
+                className="c14"
               >
                 <div
-                  className="c14"
+                  className="c15"
                 >
                   <div
-                    className="c15"
+                    className="c16"
                   >
                     <label
-                      className="c16"
+                      className="c17"
                       onClick={[Function]}
                     >
                       <input
@@ -2296,7 +2336,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                         tabIndex={0}
                       >
                         <span
-                          className="c17"
+                          className="c18"
                         >
                           <div
                             className="checkout_icon"
@@ -2310,30 +2350,37 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                       *Estoy de acuerdo con las
                       <a
                         href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-politicas-privacidad.pdf"
+                        target="_blank"
                       >
-                         Políticas de privacidad 
+                         
+                        Políticas de privacidad
+                         
                       </a>
-                        y
+                       
+                      y
                       <a
                         href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-terminos-condiciones.pdf"
+                        target="_blank"
                       >
-                         Términos y condiciones 
+                         
+                        Términos y condiciones
+                         
                       </a>
                     </label>
                   </div>
                 </div>
               </div>
               <div
-                className="c7"
+                className="c14"
               >
                 <div
-                  className="additionals"
+                  className="c19"
                 >
                   <div
-                    className="c15"
+                    className="c16"
                   >
                     <label
-                      className="c16"
+                      className="c17"
                       onClick={[Function]}
                     >
                       <input
@@ -2349,7 +2396,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                         tabIndex={0}
                       >
                         <span
-                          className="c17"
+                          className="c18"
                         >
                           <div
                             className="checkout_icon"
@@ -2360,11 +2407,15 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                     <label
                       htmlFor=""
                     >
-                       Acepto el tratamiento para
+                       
+                      Acepto el tratamiento para
                       <a
                         href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-fines-adicionales.pdf"
+                        target="_blank"
                       >
-                         Fines adicionales 
+                         
+                        Fines adicionales
+                         
                       </a>
                     </label>
                   </div>
@@ -2425,7 +2476,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                   />
                 </div>
                 <div
-                  className="c18"
+                  className="c20"
                 >
                   <div
                     className="c8"
@@ -2464,22 +2515,22 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                 </div>
               </div>
               <div
-                className="c19"
+                className="c21"
               >
                 <div
-                  className="c20"
+                  className="c22"
                 >
                   Puedes mover tu ubicación en el mapa
                 </div>
                 <div
-                  className="c21"
+                  className="c23"
                 />
               </div>
               <div
                 className="c7"
               >
                 <div
-                  className="c22"
+                  className="c24"
                 >
                   <div
                     className="c8"
@@ -2517,7 +2568,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                   </div>
                 </div>
                 <div
-                  className="c23"
+                  className="c25"
                 >
                   <div
                     className="css-1pcexqc-container control"
@@ -2613,7 +2664,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                         </div>
                       </div>
                       <div
-                        className="c24"
+                        className="c26"
                         rotate="false"
                       >
                         <svg
@@ -2636,7 +2687,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                     </label>
                   </div>
                   <div
-                    className="c25"
+                    className="c27"
                   />
                 </div>
               </div>
@@ -2647,7 +2698,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
     </form>
   </div>
   <div
-    className="c26"
+    className="c28"
   />
 </div>
 `;

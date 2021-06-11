@@ -258,7 +258,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                   onBlur={handleOnBlurCheckContactUser}
                 />
               </S.RowWithTwoCells>
-              <S.RowWithTwoCells>
+              <S.RowWithOneCell>
                 <S.PrivacyAndPolicies>
                   <Checkbox
                     data-cy="addressFormTermsAndConditions"
@@ -271,9 +271,9 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                   </Checkbox>
                   <ErrorMessage errors={fieldErrors!.termsAndConditions} />
                 </S.PrivacyAndPolicies>
-              </S.RowWithTwoCells>
-              <S.RowWithTwoCells>
-                <div className="additionals">
+              </S.RowWithOneCell>
+              <S.RowWithOneCell>
+                <S.TreatmentPolicy>
                   <Checkbox
                     data-cy="checkoutPaymentPromoCodeCheckbox"
                     name="dataTreatmentPolicy"
@@ -282,8 +282,8 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                   >
                     <DataTreatmentPolicyLink />
                   </Checkbox>
-                </div>
-              </S.RowWithTwoCells>
+                </S.TreatmentPolicy>
+              </S.RowWithOneCell>
             </S.FieldsGroup>
             <S.FieldsGroup>
               {renderGroupLabel(2, "Dirección de entrega")}
