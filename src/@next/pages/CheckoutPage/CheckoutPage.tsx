@@ -7,7 +7,7 @@ import { IItems } from "@sdk/api/Cart/types";
 import {
   ecommerceProductsMapper,
   launchCheckoutEvent,
-  steps
+  steps,
 } from "@sdk/gaConfig";
 import { useCart, useCheckout } from "@sdk/react";
 import { alertService } from "@temp/@next/components/atoms/Alert";
@@ -15,17 +15,17 @@ import { smallScreen } from "@temp/@next/globalStyles/constants";
 import { useUpdateCartLines } from "@temp/@next/hooks";
 import {
   checkAttentionSchedule,
-  removePaymentItems
+  removePaymentItems,
 } from "@temp/@next/utils/checkoutValidations";
 import {
   SHIPPING_METHOD_NOT_FOUND,
-  SHIPPING_METHOD_NOT_FOUND_TITLE
+  SHIPPING_METHOD_NOT_FOUND_TITLE,
 } from "@temp/@next/utils/schemasMessages";
 import { LocalRepository } from "@temp/@sdk/repository";
 import { BASE_URL, CHECKOUT_STEPS } from "@temp/core/config";
 import { IFormError, ITaxedMoney } from "@types";
 import shippingMethodCalendarInfoIco from "images/auna/shipping-method-calendar-info.svg";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import Media from "react-media";
 import { Redirect, useLocation } from "react-router-dom";
 import { CartDeliveryDataModal } from "../../components/organisms/CartDeliveryDataModal/CartDeliveryDataModal";
@@ -38,7 +38,7 @@ import {
   ICheckoutAddressSubpageHandles,
   ICheckoutPaymentSubpageHandles,
   ICheckoutReviewSubpageHandles,
-  ICheckoutShippingSubpageHandles
+  ICheckoutShippingSubpageHandles,
 } from "./subpages";
 import { IProps } from "./types";
 
@@ -144,20 +144,8 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     items,
   } = useCart();
 
-
-  const { update: updateCartLines } = useUpdateCartLines();
-  const totalProducts: number = items
-    ? items.reduce((prevVal, currVal) => prevVal + currVal.quantity, 0)
-    : 0;
-  useEffect(() => {
-    return () => {
-      updateCartLines();
-    };
-  }, []);
-    
-  const localRepository = new LocalRepository()
-  if (items!==undefined){
-
+  const localRepository = new LocalRepository();
+  if (items !== undefined) {
     localRepository.setFinallUseCart({
       discount,
       items,
@@ -203,6 +191,14 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     return <Redirect to="/cart/" />;
   }
 
+  const totalProducts: number = useMemo(() => {
+    return items
+      ? items.reduce((prevVal, currVal) => prevVal + currVal.quantity, 0)
+      : 0;
+  }, [items]);
+
+  const { update: updateCartLines } = useUpdateCartLines();
+
   const [submitInProgress, setSubmitInProgress] = useState(false);
   const [addressSubPageErrors, setAddressSubPageErrors] = useState<
     IFormError[]
@@ -219,8 +215,13 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
   ] = useState<string | undefined>(payment?.token);
 
   useEffect(() => {
-    setSelectedPaymentGateway(payment?.gateway);
+    return () => {
+      updateCartLines();
+    };
+  }, []);
 
+  useEffect(() => {
+    setSelectedPaymentGateway(payment?.gateway);
   }, [payment?.gateway]);
 
   useEffect(() => {
