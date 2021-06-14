@@ -12,5 +12,3 @@ export const merchantPassword = process.env.MERCHANT_PASSWORD;
 export const merchantUsername = process.env.MERCHANT_USERNAME;
 export const merchantId = process.env.MERCHANT_ID;
 export const optimizelySdkKey = process.env.OPTIMIZELY_SDK_KEY;
-export const elasticApmHost = process.env.ELASTIC_APM_HOST;
-export const elasticApmEnv = process.env.ELASTIC_APM_ENV;
