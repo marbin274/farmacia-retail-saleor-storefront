@@ -1,10 +1,8 @@
 import { media, mediaUp, styled } from "@styles";
 
 export const Wrapper = styled.div`
-  background-color: ${props => props.theme.colors.white};
-  border-radius: 1rem;
-  height:4rem;
   display:flex;
+  flex-direction: column;
   align-items:center;
   margin-bottom:1rem;
 
@@ -14,6 +12,8 @@ export const Wrapper = styled.div`
 `;
 
 export const Bar = styled.div`
+  background-color: ${props => props.theme.colors.white};
+  border-radius: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -175,10 +175,10 @@ export const Sort = styled.div`
 export const FiltersChipsWrapper = styled.div`
   margin-top: .5rem;
   padding: 0rem .5rem;
+  align-self: flex-start;
   > div {
     margin: 0.4rem;
   }
-  display:none;
 `;
 
 export const NumberProducts = styled.span`
