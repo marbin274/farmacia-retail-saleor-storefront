@@ -22,8 +22,10 @@ jobs:
         run: npm install
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-      # - name: 3- Run typescript checker
-      #   run: npx tsc --noEmit & npx tsc --noEmit -p src/@sdk & npx tsc --noEmit -p src/@next
+      - name: 3- Run typescript checker
+        run: npx tsc --noEmit & npx tsc --noEmit -p src/@sdk & npx tsc --noEmit -p src/@next
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
       - name: 4- Run tslint
         run: npm run tslint
         env:
