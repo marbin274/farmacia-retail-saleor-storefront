@@ -58,10 +58,11 @@ export const RightSide = styled.div`
     font-size:16px;
 `}
   .select-input{
+    cursor: pointer;
+    margin-right: 2rem;
     justify-content: flex-end;
     .clear-label {
       margin-right:0;
-      width: 8.5rem;
       height: 2.5rem;
       border-radius: 40px;
       background: #FFFFFF;

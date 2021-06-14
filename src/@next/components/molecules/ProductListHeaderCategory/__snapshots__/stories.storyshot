@@ -78,10 +78,9 @@ exports[`Storyshots @components/molecules/ProductListHeaderCategory default 1`] 
 }
 
 .c16 {
-  right: 2rem;
-  position: absolute;
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
+  margin-left: 0.625rem;
   -webkit-transform: rotate(0deg) translateY(0.25rem);
   -ms-transform: rotate(0deg) translateY(0.25rem);
   transform: rotate(0deg) translateY(0.25rem);
@@ -172,6 +171,8 @@ exports[`Storyshots @components/molecules/ProductListHeaderCategory default 1`] 
 }
 
 .c6 .select-input {
+  cursor: pointer;
+  margin-right: 2rem;
   -webkit-box-pack: end;
   -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
@@ -180,7 +181,6 @@ exports[`Storyshots @components/molecules/ProductListHeaderCategory default 1`] 
 
 .c6 .select-input .clear-label {
   margin-right: 0;
-  width: 8.5rem;
   height: 2.5rem;
   border-radius: 40px;
   background: #FFFFFF;
@@ -605,10 +605,9 @@ exports[`Storyshots @components/molecules/ProductListHeaderCategory with active 
 }
 
 .c17 {
-  right: 2rem;
-  position: absolute;
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
+  margin-left: 0.625rem;
   -webkit-transform: rotate(0deg) translateY(0.25rem);
   -ms-transform: rotate(0deg) translateY(0.25rem);
   transform: rotate(0deg) translateY(0.25rem);
@@ -699,6 +698,8 @@ exports[`Storyshots @components/molecules/ProductListHeaderCategory with active 
 }
 
 .c7 .select-input {
+  cursor: pointer;
+  margin-right: 2rem;
   -webkit-box-pack: end;
   -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
@@ -707,7 +708,6 @@ exports[`Storyshots @components/molecules/ProductListHeaderCategory with active 
 
 .c7 .select-input .clear-label {
   margin-right: 0;
-  width: 8.5rem;
   height: 2.5rem;
   border-radius: 40px;
   background: #FFFFFF;

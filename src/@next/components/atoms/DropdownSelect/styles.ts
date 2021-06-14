@@ -29,9 +29,8 @@ export const Value = styled.div`
 `;
 
 export const Indicator = styled.div<{ rotate: string }>`
-  right: 2rem;
-  position: absolute;
   transition-duration: 0.3s;
+  margin-left: 0.625rem;
   transform: ${props =>
     props.rotate === "true"
       ? "rotate(180deg) translateY(0.25rem)"

@@ -78,10 +78,9 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
 }
 
 .c17 {
-  right: 2rem;
-  position: absolute;
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
+  margin-left: 0.625rem;
   -webkit-transform: rotate(0deg) translateY(0.25rem);
   -ms-transform: rotate(0deg) translateY(0.25rem);
   transform: rotate(0deg) translateY(0.25rem);
@@ -615,10 +614,9 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
 }
 
 .c18 {
-  right: 2rem;
-  position: absolute;
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
+  margin-left: 0.625rem;
   -webkit-transform: rotate(0deg) translateY(0.25rem);
   -ms-transform: rotate(0deg) translateY(0.25rem);
   transform: rotate(0deg) translateY(0.25rem);
