@@ -77,7 +77,7 @@ const Breadcrumbs: React.FC<IBreadcrumbProps> = ({
                 breadcrumbs__active: index === breadcrumbs.length - 1,
               })}
             >
-              <Link to={breadcrumb.link}>{breadcrumb.value}</Link>
+              <Link to={breadcrumb.link}>{breadcrumb.value?.toLocaleLowerCase()}</Link>
               {index < breadcrumbs.length - 1 && (
                 <NextIcon size={10} className="breadcrumbs__next-icon" />
               )}

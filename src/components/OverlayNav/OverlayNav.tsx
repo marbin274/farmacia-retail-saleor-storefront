@@ -56,7 +56,7 @@ export const OverlayNav: React.FC<IProps> = ({ categories, close }) => {
                     itemLvl1Selected &&
                     <S.OverlayNavItems>
                         <S.OverlayNavItemTitle>
-                            <h4>{itemLvl1Selected.name}</h4>
+                            <h4>{itemLvl1Selected.name?.toLocaleLowerCase()}</h4>
                             <NavLink
                                 fullWidth
                                 item={itemLvl1Selected}

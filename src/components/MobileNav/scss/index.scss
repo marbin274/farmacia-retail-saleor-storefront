@@ -106,7 +106,8 @@
     &-link {
       color: $auna-grey-100;
       font-weight: 500;
-      font-size: 14px;
+      font-size: $small-font-size;    
+      text-transform: capitalize;
       color: #323e48;
     }
 
@@ -140,7 +141,7 @@
       flex-direction: column;
       padding: 1rem;
       border-radius: 0.5rem;
-      font-size: 0.875rem;
+      font-size: $small-font-size;
       color: #908ba7;
       margin-left: 1.25rem;
       &:active,

@@ -29,6 +29,7 @@ export const TitleIcon = styled.span`
 `;
 
 export const TitleName = styled.span<{ isLvl1: boolean }>`
+  text-transform: capitalize;
   ${({ isLvl1, theme }) => !isLvl1 && `color: ${theme.colors.interactive}`}
   ${({ isLvl1, theme }) => isLvl1 && `font-weight: ${theme.typography.boldFontWeight}`}
 `;

@@ -19,6 +19,7 @@ a {
 export const Overlay = styled.div`
     display: flex;
     height: max-content;
+    width: 71.25rem;
 `;
 
 export const lvl1List = styled.ul`
@@ -67,7 +68,7 @@ export const OverlayNavItems = styled.div`
     box-shadow: 0rem 0.0625rem 0.875rem rgb(0 0 0 / 50%);
     height: max-content;
     padding: 2rem 2rem 2rem 0.5rem;
-    position: relative;
+    position: relative;    
     width: 100%;
     z-index: 1;
 `;
@@ -79,6 +80,7 @@ export const OverlayNavItemTitle = styled.div`
     padding-left: 1rem;
     > h4 {
         font-weight: ${({ theme }) => theme.typography.boldFontWeight};
+        text-transform: capitalize;
     }
     button {
         margin-left: 1rem;

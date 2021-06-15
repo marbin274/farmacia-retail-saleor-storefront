@@ -42,7 +42,7 @@ export const CategoryNavigation: React.FC<IProps> = ({ category }) => {
             </NavLink>
           </S.TitleIcon>
         }
-        <S.TitleName isLvl1={isLvl1}>{hasChildren ? category.name: ancestorNode?.name}</S.TitleName>
+        <S.TitleName isLvl1={isLvl1}>{hasChildren ? category.name: ancestorNode?.name?.toLowerCase()}</S.TitleName>
       </S.Title>
       <hr />
       {edges?.map((subItem, index) => {
