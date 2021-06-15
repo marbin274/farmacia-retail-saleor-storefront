@@ -64,13 +64,13 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
 
 .c2 .description {
   font-family: "Poppins",sans-serif;
-  height: 85px;
+  height: 5.3125rem;
   font-weight: 600;
   line-height: 1.4;
   padding: 0.4rem 0;
   text-align: center;
   overflow: hidden;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 .c2 .price {
@@ -80,6 +80,16 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
   color: #00BF8E;
   font-size: 1.125rem;
   font-weight: 600;
+}
+
+.c2 .price.undiscounted_price {
+  -webkit-text-decoration: line-through;
+  text-decoration: line-through;
+  color: $auna-grey-100;
+  font-size: 0.875rem;
+  font-weight: normal;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .c2 .button button {
