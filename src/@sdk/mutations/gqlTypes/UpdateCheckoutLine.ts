@@ -702,6 +702,54 @@ export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_discount {
   culture: string;
 }
 
+export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_slots_scheduled {
+  __typename: "ShippingSlot";
+  /**
+   * Slot id.
+   */
+  id: string | null;
+  /**
+   * Slot available from.
+   */
+  slotFrom: string | null;
+  /**
+   * Slot available to.
+   */
+  slotTo: string | null;
+}
+
+export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_slots_express {
+  __typename: "ShippingSlot";
+  /**
+   * Slot id.
+   */
+  id: string | null;
+  /**
+   * Slot available from.
+   */
+  slotFrom: string | null;
+  /**
+   * Slot available to.
+   */
+  slotTo: string | null;
+}
+
+export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_slots {
+  __typename: "Slot";
+  /**
+   * List of scheduled slots.
+   */
+  scheduled: (UpdateCheckoutLine_checkoutLinesUpdate_checkout_slots_scheduled | null)[] | null;
+  /**
+   * List of express slots.
+   */
+  express: (UpdateCheckoutLine_checkoutLinesUpdate_checkout_slots_express | null)[] | null;
+  /**
+   * Datetime.
+   */
+  datetime: string | null;
+}
+
 export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout {
   __typename: "Checkout";
   token: any;
@@ -751,6 +799,11 @@ export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout {
   documentNumber: string | null;
   termsAndConditions: boolean;
   dataTreatmentPolicy: boolean;
+  /**
+   * List of slots.
+   */
+  slots: UpdateCheckoutLine_checkoutLinesUpdate_checkout_slots | null;
+  slotId: string | null;
 }
 
 export interface UpdateCheckoutLine_checkoutLinesUpdate_errors {

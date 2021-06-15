@@ -1,7 +1,5 @@
 import { ErrorMessage } from "@components/atoms";
-import { ShippingMethodItem } from "@components/molecules";
 import { convertShippingMethodDateToDate } from "@temp/@next/utils/dateUtils";
-import { Checkout_availableShippingMethods_scheduleDates } from "@temp/@sdk/fragments/gqlTypes/Checkout";
 import {
   launchCheckoutEvent,
   steps,
@@ -15,9 +13,11 @@ import { SHIPPING_FORMAT_DATE } from "@temp/core/config";
 import { format } from "date-fns";
 import { useFormik } from "formik";
 import React from "react";
+import { ISlotScheduleDate } from "../../molecules/ShippingMethodItem/types";
 import { shippingMethodFormSchema } from "./schema";
 import * as S from "./styles";
 import { ICheckoutShipping, IProps } from "./types";
+import { ExpressShippingMethod, ScheduledShippingMethod } from "./components"
 
 /**
  * Shipping method selector used in checkout.
@@ -30,6 +30,8 @@ const CheckoutShipping: React.FC<IProps> = ({
   formId,
   formRef,
   items,
+  selectedSlotId,
+  slots,
 }: IProps) => {
   const {
     errors: formikErrors,
@@ -48,7 +50,8 @@ const CheckoutShipping: React.FC<IProps> = ({
       isScheduled:
         shippingMethods?.find(it => it.id === selectedShippingMethodId)
           ?.isScheduled || false,
-      scheduleSelected: scheduleDate?.scheduleTime?.id,
+      selectedScheduleTimeId: scheduleDate?.scheduleTime?.id || "",
+      selectedSlotId: selectedSlotId || "",
       shippingMethod: selectedShippingMethodId,
     },
     onSubmit: values => {
@@ -57,6 +60,7 @@ const CheckoutShipping: React.FC<IProps> = ({
           selectShippingMethod(
             {
               shippingMethodId: values.shippingMethod,
+              slotId: values.selectedSlotId,
             },
             false
           );
@@ -64,16 +68,17 @@ const CheckoutShipping: React.FC<IProps> = ({
         } else if (
           values.isScheduled &&
           values.dateSelected &&
-          values.scheduleSelected
+          values.selectedSlotId
         ) {
           const scheduleDate: IShippingMethodUpdateScheduleDate = {
             date: format(values.dateSelected, SHIPPING_FORMAT_DATE) || "",
-            scheduleTimeId: values.scheduleSelected || "",
+            scheduleTimeId: values.selectedScheduleTimeId || "",
           };
           selectShippingMethod(
             {
               scheduleDate,
               shippingMethodId: values.shippingMethod,
+              slotId: values.selectedSlotId,
             },
             false
           );
@@ -95,12 +100,12 @@ const CheckoutShipping: React.FC<IProps> = ({
     </span>
   );
 
-
   const handleOnclick = (
     id: string,
     isScheduled: boolean,
-    scheduleDates: Array<Checkout_availableShippingMethods_scheduleDates | null> | null,
-    selected: boolean
+    scheduleDates: ISlotScheduleDate[] | null,
+    selected: boolean,
+    slotId?: string
   ) => {
     if (!selected) {
       launchCheckoutEvent(
@@ -109,82 +114,81 @@ const CheckoutShipping: React.FC<IProps> = ({
       );
       setFieldValue("shippingMethod", id);
       setFieldValue("isScheduled", isScheduled);
-      const shippingMethod: IShippingMethodUpdate = { shippingMethodId: id };
+      setFieldValue("selectedSlotId", slotId);
+      const shippingMethod: IShippingMethodUpdate = {
+        shippingMethodId: id,
+        slotId,
+      };
       if (isScheduled) {
         const scheduleDate = scheduleDates?.[0];
-        const date = convertShippingMethodDateToDate(scheduleDate?.date);
+        const scheduleTime = scheduleDate?.scheduleTimes?.[0];
+
+        const date = convertShippingMethodDateToDate(scheduleTime?.date);
+        const scheduleTimeId = scheduleTime?.scheduleTimeId;
+        slotId = scheduleTime?.id;
+
         shippingMethod.scheduleDate = {
-          date: scheduleDate?.date,
-          scheduleTimeId: scheduleDate?.scheduleTimes?.[0]?.id || "",
+          date: scheduleTime?.date!,
+          scheduleTimeId: scheduleTimeId || "",
         };
+        shippingMethod.slotId = slotId;
+
         setFieldValue("dateSelected", date);
-        setFieldValue("scheduleSelected", scheduleDate?.scheduleTimes?.[0]?.id);
+        setFieldValue("selectedSlotId", slotId);
+        setFieldValue("selectedScheduleTimeId", scheduleTimeId);
       }
       setShippingMethod(shippingMethod);
     }
     setErrors({});
   };
 
+  const renderForm = () => {
+    if ((!slots?.express && !slots?.scheduled) || !shippingMethods?.length) {
+      return null;
+    }
+
+    return (
+      <form id={formId} ref={formRef} onSubmit={handleSubmit}>
+        <div className="fa-grid fa-grid-cols-1 lg:fa-grid-cols-2 fa-gap-x-8 fa-relative">
+          <ExpressShippingMethod
+            slots={slots}
+            shippingMethods={shippingMethods}
+            formikErrors={formikErrors}
+            values={values}
+            setErrors={setErrors}
+            touched={touched}
+            setFieldValue={setFieldValue}
+            setShippingMethod={setShippingMethod}
+            onClick={handleOnclick}
+            handleChange={handleChange}
+          />
+          <ScheduledShippingMethod
+            slots={slots}
+            shippingMethods={shippingMethods}
+            formikErrors={formikErrors}
+            values={values}
+            setErrors={setErrors}
+            touched={touched}
+            setFieldValue={setFieldValue}
+            setShippingMethod={setShippingMethod}
+            onClick={handleOnclick}
+            handleChange={handleChange}
+          />
+        </div>
+        {!!shippingMethods?.length &&
+          formikErrors?.shippingMethod &&
+          !values.shippingMethod && (
+            <ErrorMessage errors={[{ message: formikErrors.shippingMethod }]} />
+          )}
+      </form>
+    );
+  }
+
   return (
     <section>
       <S.FieldsGroup>
         {renderGroupLabel("Escoge el tiempo de entrega")}
-        <form id={formId} ref={formRef} onSubmit={handleSubmit}>
-          <div className='fa-grid fa-grid-cols-1 lg:fa-grid-cols-2 fa-gap-x-8 fa-relative'>
-          {shippingMethods?.map(
-            (
-              { id, isScheduled, name, price, scheduleDates, subtitle },
-              index
-            ) => {
-              const selected: boolean =
-                !!values.shippingMethod && values.shippingMethod === id;
-
-              return (
-                <S.ShippingMethodContainer
-                  key={id}
-                  data-cy={`checkoutShippingMethodOption${index}Input`}
-                  hasError={
-                    !!formikErrors?.shippingMethod && !values.shippingMethod
-                  }
-                  isScheduledSelected={!!selected && !!isScheduled}
-                  selected={selected}
-                  onClick={() => {
-                    handleOnclick(id, !!isScheduled, scheduleDates, selected);
-                  }}
-                >
-                  <S.ShippingMethodItem>
-                    <ShippingMethodItem
-                      dateSelected={values.dateSelected}
-                      errors={formikErrors}
-                      id={id}
-                      index={index}
-                      isScheduled={isScheduled}
-                      name={name}
-                      selected={selected}
-                      scheduleSelected={values.scheduleSelected}
-                      scheduleDates={scheduleDates}
-                      subtitle={subtitle}
-                      touched={touched}
-                      price={price}
-                      handleChange={handleChange}
-                      setErrors={setErrors}
-                      setFieldValue={setFieldValue}
-                      setShippingMethod={setShippingMethod}
-                    />
-                  </S.ShippingMethodItem>
-                </S.ShippingMethodContainer>
-              );
-            }
-          )}
-          </div>
-          {!!shippingMethods?.length &&
-            formikErrors?.shippingMethod &&
-            !values.shippingMethod && (
-              <ErrorMessage
-                errors={[{ message: formikErrors.shippingMethod }]}
-              />
-            )}
-        </form>
+        {renderForm()}
       </S.FieldsGroup>
     </section>
   );

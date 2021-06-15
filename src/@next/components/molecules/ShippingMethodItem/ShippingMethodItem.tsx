@@ -13,72 +13,64 @@ import * as S from "./styles";
 import { IKeyValue, IProps } from "./types";
 
 export const ShippingMethodItem: React.FC<IProps> = ({
-  dateSelected,
-  id,
-  errors,
-  index,
-  isScheduled,
-  name,
-  selected,
-  scheduleSelected: scheduleSelectedId,
-  scheduleDates,
-  subtitle,
-  touched,
-  price,
-  handleChange,
-  setErrors,
-  setFieldValue,
-  setShippingMethod,
+    dateSelected,
+    id,
+    errors,
+    index,
+    isScheduled,
+    name,
+    selected,
+    scheduleTimeId,
+    selectedSlotId,
+    scheduleDates,
+    subtitle,
+    price,
+    setFieldValue,
+    setShippingMethod,
 }) => {
-  const scheduleTimes: IKeyValue[] = React.useMemo(() => {
-    if (!dateSelected || !scheduleDates || !scheduleDates.length) {
-      return [];
-    }
-    const dateString = format(dateSelected, SHIPPING_FORMAT_DATE);
-    const scheduleDate = scheduleDates?.find(it => it?.date === dateString);
-    if (!scheduleDate || !scheduleDate.scheduleTimes) {
-      return [];
-    }
-    return scheduleDate.scheduleTimes.map(it => ({
-      id: it?.id,
-      description: getScheduleTimesFormat(it?.startTime, it?.endTime),
-    }));
-  }, [dateSelected, scheduleDates]);
+    const scheduleTimes:IKeyValue[] = React.useMemo(()=>{
+      if (!dateSelected || !scheduleDates || !scheduleDates.length) { return [] };
+      const scheduleTimes = scheduleDates?.[0]?.scheduleTimes;
+      if(!scheduleTimes?.length) { return [] };
 
-  const minDate: Date | undefined = React.useMemo(() => {
-    if (!scheduleDates) {
-      return undefined;
-    }
-    const date = convertShippingMethodDateToDate(scheduleDates?.[0]?.date);
-    return date;
-  }, [scheduleDates]);
-  const maxDate: Date | undefined = React.useMemo(() => {
-    if (!scheduleDates) {
-      return undefined;
-    }
-    const date = convertShippingMethodDateToDate(
-      scheduleDates?.[scheduleDates.length - 1]?.date
-    );
-    return date;
-  }, [scheduleDates]);
+      const dateString = format(dateSelected, SHIPPING_FORMAT_DATE); 
+      const result = scheduleTimes?.filter(it => it?.date === dateString);
+      if(!result?.length){
+          return [];
+      }
+      return result.map(it => ({id: it?.id, description: getScheduleTimesFormat(it?.startTime, it?.endTime)}));
+    },[dateSelected, scheduleDates]);
 
-  const scheduleSelected = React.useMemo(
-    () => scheduleTimes?.find(it => it.id === scheduleSelectedId),
-    [scheduleSelectedId]
-  );
+    const minDate: Date | undefined = React.useMemo(()=>{
+        const scheduleTimes = scheduleDates?.[0]?.scheduleTimes;
+        if(!scheduleTimes){ return undefined};
+        const date = convertShippingMethodDateToDate(scheduleTimes?.[0]?.date);
+        return date;
+    },[scheduleDates]);
 
-  const handleOnChangeScheduleSelected = (value: IKeyValue) => {
-    setFieldValue("scheduleSelected", value.id);
-    if (id && dateSelected && value.id) {
-      setShippingMethod({
-        scheduleDate: {
-          date: format(dateSelected, SHIPPING_FORMAT_DATE),
-          scheduleTimeId: value.id,
-        },
-        shippingMethodId: id,
-      });
+    const maxDate: Date | undefined = React.useMemo(()=>{
+        const scheduleTimes = scheduleDates?.[0]?.scheduleTimes;
+        if(!scheduleTimes){ return undefined};
+        const date = convertShippingMethodDateToDate(scheduleTimes?.[scheduleTimes.length - 1]?.date);
+        return date;
+    },[scheduleDates]);
+
+    const slotSelected = React.useMemo(()=>(
+      scheduleTimes
+      ?.find(it => it.id === selectedSlotId)
+    ), [selectedSlotId]);
+
+    const handleOnChangeScheduleSelected = (value: IKeyValue) => {
+        setFieldValue("selectedSlotId", value.id);
+        setFieldValue("selectedScheduleTimeId", scheduleTimeId!);
+        if (id && dateSelected && value.id) {
+            setShippingMethod({
+                scheduleDate: { date: format(dateSelected, SHIPPING_FORMAT_DATE), scheduleTimeId: scheduleTimeId! },
+                shippingMethodId: id,
+                slotId: value.id,
+            });
+        }
     }
-  };
 
   return (
     <>
@@ -139,7 +131,7 @@ export const ShippingMethodItem: React.FC<IProps> = ({
                 value={dateSelected}
                 onChange={(date: Date | [Date, Date] | null) => {
                   setFieldValue("dateSelected", date);
-                  setFieldValue("scheduleSelected", "");
+                  setFieldValue("selectedSlotId", "");
                 }}
               />
             </S.ShippingMethodControl>
@@ -154,18 +146,18 @@ export const ShippingMethodItem: React.FC<IProps> = ({
                   placeholder: "",
                 }}
                 label=""
-                name="scheduleSelected"
+                name="selectedSlotId"
                 options={scheduleTimes}
-                value={scheduleSelected || ""}
+                value={slotSelected || ""}
                 onChange={handleOnChangeScheduleSelected}
                 optionLabelKey="description"
                 optionValueKey="id"
                 errors={
-                  errors?.scheduleSelected
+                  errors?.selectedSlotId
                     ? [
                         {
-                          field: "scheduleSelected",
-                          message: errors.scheduleSelected,
+                          field: "selectedSlotId",
+                          message: errors.selectedSlotId,
                         },
                       ]
                     : undefined

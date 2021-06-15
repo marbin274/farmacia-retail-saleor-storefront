@@ -33,6 +33,7 @@ exports[`Storyshots @components/organisms/CategoryNavigation default 1`] = `
 }
 
 .c3 {
+  text-transform: capitalize;
   font-weight: 600;
 }
 

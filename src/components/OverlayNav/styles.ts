@@ -19,6 +19,7 @@ a {
 export const Overlay = styled.div`
     display: flex;
     height: max-content;
+    width: 71.25rem;
 `;
 
 export const lvl1List = styled.ul`
@@ -38,6 +39,9 @@ li {
             color: ${farmatheme.theme.colors.highlight.medium};
         }
     }
+    > a:focus, a:hover {
+        color: ${farmatheme.theme.colors.highlight.medium};
+    }
     :last-child {
         border-bottom-left-radius: 1rem;
     }
@@ -48,7 +52,7 @@ li {
         justify-content: space-between;
         padding: 1rem 1.5rem;
         font-size: ${({theme})=> theme.typography.labelFontSize};
-        font-weight: normal;
+        font-weight: 500;
         width: 100%;
     }
     > svg {
@@ -64,7 +68,7 @@ export const OverlayNavItems = styled.div`
     box-shadow: 0rem 0.0625rem 0.875rem rgb(0 0 0 / 50%);
     height: max-content;
     padding: 2rem 2rem 2rem 0.5rem;
-    position: relative;
+    position: relative;    
     width: 100%;
     z-index: 1;
 `;
@@ -76,6 +80,7 @@ export const OverlayNavItemTitle = styled.div`
     padding-left: 1rem;
     > h4 {
         font-weight: ${({ theme }) => theme.typography.boldFontWeight};
+        text-transform: capitalize;
     }
     button {
         margin-left: 1rem;

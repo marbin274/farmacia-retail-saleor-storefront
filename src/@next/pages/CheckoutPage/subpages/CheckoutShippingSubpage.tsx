@@ -11,6 +11,7 @@ import { IFormError } from "@types";
 import React, {
   forwardRef,
   RefForwardingComponent,
+  useEffect,
   useImperativeHandle,
   useRef,
 } from "react";
@@ -47,8 +48,23 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
     checkout,
     availableShippingMethods,
     setShippingMethod,
+    selectedSlotId,
+    slots,
   } = useCheckout();
   const { items } = useCart();
+
+  useEffect(() => {
+    checkIfSlotExists();
+  }, []);
+
+  const checkIfSlotExists = async () => {
+    if (selectedSlotId) {
+      changeSubmitProgress(true);
+      await setShippingMethod({ shippingMethodId: "", slotId: undefined });
+    }
+
+    changeSubmitProgress(false);
+  };
 
   const shippingMethods: IAvailableShippingMethods = [];
   availableShippingMethods?.forEach(it => {
@@ -83,7 +99,7 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
         (it.code === CheckoutErrorCode.NOT_FOUND && it.field === "scheduleTimeId") ||
         (it.code === CheckoutErrorCode.SCHEDULE_NOT_AVAILABLE)
       );
-      setShippingMethod({ shippingMethodId: "" });
+      setShippingMethod({ shippingMethodId: "", slotId: undefined });
       alertService.sendAlert({
         buttonText: "Entendido",
         icon: scheduleTimeNotFound && shippingMethodCalendarInfoIco,
@@ -111,6 +127,8 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
       items={items}
       formId={checkoutShippingFormId}
       formRef={checkoutShippingFormRef}
+      slots={slots}
+      selectedSlotId={selectedSlotId}
     />
   );
 };

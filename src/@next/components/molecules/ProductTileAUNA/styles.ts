@@ -41,13 +41,13 @@ export const ProductCard = styled.div<{
 
   .description {
     font-family: "Poppins", sans-serif;
-    height: 85px;
+    height: 5.3125rem;
     font-weight: 600;
     line-height: 1.4;
     padding: 0.4rem 0;
     text-align: center;
     overflow: hidden;
-    margin-bottom:20px;
+    margin-bottom: 1.25rem;
   }
 
   .price {
@@ -57,6 +57,15 @@ export const ProductCard = styled.div<{
     color: #00BF8E;
     font-size: 1.125rem;
     font-weight: 600;
+
+    &.undiscounted_price {
+      text-decoration: line-through;
+      color: $auna-grey-100;
+      font-size: 0.875rem;
+      font-weight: normal;
+      display: inline-block;
+      vertical-align: middle;
+    }
   }
 
   .button {
