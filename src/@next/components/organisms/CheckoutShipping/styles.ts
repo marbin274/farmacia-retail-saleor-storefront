@@ -52,7 +52,7 @@ export const GroupLabel = styled.div`
 export const GroupLabelIndex = styled.span`
     display: inline-block;
     color: ${white};
-    background-color: ${aunaBrand3}
+    background-color: ${aunaBrand3};
     border-radius: 5rem;
     height: 1.9rem;
     padding: 0.4rem;
