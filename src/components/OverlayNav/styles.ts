@@ -38,6 +38,9 @@ li {
             color: ${farmatheme.theme.colors.highlight.medium};
         }
     }
+    > a:focus, a:hover {
+        color: ${farmatheme.theme.colors.highlight.medium};
+    }
     :last-child {
         border-bottom-left-radius: 1rem;
     }
@@ -48,7 +51,7 @@ li {
         justify-content: space-between;
         padding: 1rem 1.5rem;
         font-size: ${({theme})=> theme.typography.labelFontSize};
-        font-weight: normal;
+        font-weight: 500;
         width: 100%;
     }
     > svg {
