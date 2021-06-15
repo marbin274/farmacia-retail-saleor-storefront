@@ -149,11 +149,11 @@ export const Alert = styled.div`
     `}
     ${mediaUp.xSmallScreen`
         width: 20rem;
-        right: -1rem;
+        right: 0rem;
     `}
     ${mediaUp.xxSmallScreen`
         width: 23rem;
-        right: -1rem;
+        right: 0rem;
     `}
     ${`@media (min-width: ${largeScreen}px) and (max-width: 1144px){
         left: -4rem;
