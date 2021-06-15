@@ -1,5 +1,6 @@
 import { media, styled } from "@styles";
 import { aunaBlack, aunaGrey100 } from "@styles/constants";
+import farmatheme from "@farmatheme";
 
 const productHeight = "25.8rem";
 
@@ -60,7 +61,7 @@ export const ProductCard = styled.div<{
 
     &.undiscounted_price {
       text-decoration: line-through;
-      color: $auna-grey-100;
+      color: ${farmatheme.theme.colors.neutral.dark};
       font-size: 0.875rem;
       font-weight: normal;
       display: inline-block;
