@@ -4,7 +4,12 @@
   $item-height: 3.7rem;
   max-width: calc(100vw - 5rem);
   width: 30rem;
-  height: 100vh;
+  min-height: 100vh;
+
+  @media (max-width: $small-screen) {
+    max-width: calc(100vw - 3.5rem);
+  }
+
   > ul {
     height: calc(100%);
     position: relative;
@@ -92,6 +97,7 @@
           }
           &-link {
             color: $auna-black;
+            text-transform: capitalize;
           }
         }
       }
@@ -100,7 +106,8 @@
     &-link {
       color: $auna-grey-100;
       font-weight: 500;
-      font-size: 14px;
+      font-size: $small-font-size;    
+      text-transform: capitalize;
       color: #323e48;
     }
 
@@ -134,7 +141,7 @@
       flex-direction: column;
       padding: 1rem;
       border-radius: 0.5rem;
-      font-size: 0.875rem;
+      font-size: $small-font-size;
       color: #908ba7;
       margin-left: 1.25rem;
       &:active,

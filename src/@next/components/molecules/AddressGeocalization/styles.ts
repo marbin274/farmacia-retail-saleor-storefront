@@ -110,7 +110,7 @@ export const Alert = styled.div`
     position: absolute;    
     top: ${alertTop}rem;
     width: 24rem;
-    z-index: 3;
+    z-index: 1;
     ${css`
         animation: ${moved};
         animation-delay: 4s;
@@ -139,6 +139,11 @@ export const Alert = styled.div`
             right: 3rem;
         }
     `}
+
+    ${media.xSmallScreen`
+        width: 18.125rem;
+    `}
+
     ${mediaUp.largeScreen`
         left: -5rem;
         right: auto;
@@ -149,11 +154,11 @@ export const Alert = styled.div`
     `}
     ${mediaUp.xSmallScreen`
         width: 20rem;
-        right: -1rem;
+        right: 0rem;
     `}
     ${mediaUp.xxSmallScreen`
         width: 23rem;
-        right: -1rem;
+        right: 0rem;
     `}
     ${`@media (min-width: ${largeScreen}px) and (max-width: 1144px){
         left: -4rem;
@@ -198,11 +203,19 @@ export const AlertAction = styled.div`
     margin-left: 1rem;
     width: 10.188rem;
   }
+  span {
+    font-size: ${({ theme }) => theme.typography.smallFontSize};
+  }
+
   button {
     padding: 0.5rem;
     width: 100%;
-  }
-  span {
-    font-size: ${({ theme }) => theme.typography.smallFontSize};
+
+    ${media.xSmallScreen`
+        > span {
+          margin-left: 0;
+          font-size: ${({ theme }) => theme.typography.labelFontSize}
+        }
+    `}
   }
 `;

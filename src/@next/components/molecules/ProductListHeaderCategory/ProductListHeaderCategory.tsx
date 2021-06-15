@@ -28,7 +28,7 @@ export const ProductListHeaderCategory: React.FC<IProps> = ({
                 <FilterIcon size={18} color={'#452FBA'} />
                 <span>
                   Filtrar
-              {activeFilters > 0 && (
+                  {activeFilters > 0 && (
                     <>
                       <span> ({activeFilters})</span>
                     </>

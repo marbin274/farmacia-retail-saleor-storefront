@@ -92,10 +92,6 @@
     animation: sidenavLeftOpen 0.3s;
     overflow-y: auto;
 
-    @media (max-width: $xs-small-screen) {
-      padding-right: 1.563rem;
-    }
-
     .info-contact {
       position: relative;
       width: 100%;
