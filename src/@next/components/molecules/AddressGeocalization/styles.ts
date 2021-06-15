@@ -139,6 +139,11 @@ export const Alert = styled.div`
             right: 3rem;
         }
     `}
+
+    ${media.xSmallScreen`
+        width: 18.125rem;
+    `}
+
     ${mediaUp.largeScreen`
         left: -5rem;
         right: auto;
@@ -198,11 +203,19 @@ export const AlertAction = styled.div`
     margin-left: 1rem;
     width: 10.188rem;
   }
+  span {
+    font-size: ${({ theme }) => theme.typography.smallFontSize};
+  }
+
   button {
     padding: 0.5rem;
     width: 100%;
-  }
-  span {
-    font-size: ${({ theme }) => theme.typography.smallFontSize};
+
+    ${media.xSmallScreen`
+        > span {
+          margin-left: 0;
+          font-size: ${({ theme }) => theme.typography.labelFontSize}
+        }
+    `}
   }
 `;
