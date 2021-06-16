@@ -250,7 +250,7 @@ exports[`Storyshots @components/organisms/CheckoutPayment default 1`] = `
                   name="inputCode"
                   onChange={[Function]}
                   onFocus={[Function]}
-                  placeholder="Ingresa tu cupón"
+                  placeholder="Ejem: YEPS-03JD-N08T"
                   type="text"
                   value=""
                 />
@@ -536,7 +536,7 @@ exports[`Storyshots @components/organisms/CheckoutPayment with addresses 1`] = `
                   name="inputCode"
                   onChange={[Function]}
                   onFocus={[Function]}
-                  placeholder="Ingresa tu cupón"
+                  placeholder="Ejem: YEPS-03JD-N08T"
                   type="text"
                   value=""
                 />
