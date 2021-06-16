@@ -1,5 +1,7 @@
 @import "@temp/globalStyles/scss/variables.scss";
 
+$mobile-screen-size: 360px;
+
 .overlay {
   &__right {
     border-top-left-radius: 3.75rem;
@@ -130,6 +132,9 @@
             height: 7.5rem;
             margin-right: 0.5rem;
           }
+          @media (max-width: $mobile-screen-size) {
+            width: 4.3rem;
+          }
 
           img {
             height: 6.625rem;
@@ -185,11 +190,25 @@
           margin-top: 0.75rem;
           align-items: flex-end;
           .itemHandler {
+            position: relative;
             min-width: 8.125rem;
             max-height: 2.5rem;
 
             @media (max-width: $small-screen) {
               max-width: calc(100% - 6.375rem);
+            }
+
+            &--actions {
+              @media (max-width: $mobile-screen-size) {
+                width: 7rem;
+              }
+            }
+
+            > div {
+              &:nth-child(2) {
+                position: absolute;
+                bottom: -1.25rem;
+              }
             }
           }
           > span {
@@ -217,6 +236,9 @@
 
             @media (max-width: $small-screen) {
               font-size: 1.125rem;
+            }
+            @media (max-width: $mobile-screen-size) {
+              margin-right: 0.5rem !important;
             }
           }
         }
