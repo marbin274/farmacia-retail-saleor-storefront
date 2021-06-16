@@ -1,4 +1,5 @@
 import { TaxedMoney } from "@components/containers";
+import { ArrowLeftIcon } from "@farmacia-retail/farmauna-components";
 import {
   OrderDetail,
   OrderDetail_lines,
@@ -116,7 +117,7 @@ const Page: React.FC<{
     <div className="order-details__container">
       {!guest && (
         <Link className="order-details__link" to={orderHistoryUrl}>
-          Volver al historial de pedidos
+          <ArrowLeftIcon /> <span>Regresar a historial de pedidos</span>
         </Link>
       )}
       <div className="fa-bg-white fa-rounded-3xl fa-p-10 fa-flex fa-flex-col">
@@ -150,7 +151,7 @@ const Page: React.FC<{
           <div>{getAdressDetails()}</div>
         </div>
       </div>
-      <div className='md:fa-px-12 fa-bg-white fa-rounded-3xl fa-px-6 fa-mt-4 fa-py-8 fa-mb-24'>
+      <div className="md:fa-px-12 fa-bg-white fa-rounded-3xl fa-px-6 fa-mt-4 fa-py-8 fa-mb-24">
         <CartTable
           lines={extractOrderLines(order.lines)}
           totalCost={<TaxedMoney taxedMoney={order.total} />}
