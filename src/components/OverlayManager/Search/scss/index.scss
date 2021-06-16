@@ -209,7 +209,7 @@ $custom-breakpoint: 624px;
       }
 
       &__link {
-        width: 21.875rem;
+        width: 27rem;
         @media (max-width: $small-screen) {
           width: auto;
         }
@@ -262,7 +262,7 @@ $custom-breakpoint: 624px;
             position: relative;
 
             @media (max-width: $medium-screen) {
-              padding: 15px 0;
+              padding: 0.313rem 0 1.5rem 0;
             }
           }
 
