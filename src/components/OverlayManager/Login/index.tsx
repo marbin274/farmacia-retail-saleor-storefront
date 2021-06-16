@@ -31,7 +31,7 @@ const Login: FC<{
           <div className="scroll">
             <div className="overlay__header">
               <p className="overlay__header-text">
-                {active === "login" ? "Ingresar" : "Regístrate"}
+                {active === "login" ? "Iniciar Sesión" : "Regístrate"}
               </p>
               {active === "login" ? (
                 <p className="overlay__header-text-sub">

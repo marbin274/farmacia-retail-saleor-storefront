@@ -5,7 +5,11 @@ export const DataTreatmentPolicyLink = () => (
   <label htmlFor="">
     {" "}
     Acepto el tratamiento para
-    <a target="_blank" href={DOCUMENTS_URLS_S3.finesAdicionalesUrls}>
+    <a
+      target="_blank"
+      className="fa-text-highlight-medium fa-font-semibold"
+      href={DOCUMENTS_URLS_S3.finesAdicionalesUrls}
+    >
       {" "}
       Fines adicionales{" "}
     </a>

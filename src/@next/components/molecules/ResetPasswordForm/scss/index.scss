@@ -34,7 +34,7 @@
             text-align: center;
         }
         &__button {
-            margin: 3rem 0rem;
+            margin: 4rem 0rem;
             text-align: center;
         }
     
@@ -49,6 +49,15 @@
         .content-new-password-form {
             width: 21.25rem;
             margin: 0 auto;
+
+            @media (max-width: $small-screen) {
+                form {
+                    .fa-w-auto {
+                        padding-bottom: 1.5rem;
+                    }
+                }
+            }
+            
         }
     }
 

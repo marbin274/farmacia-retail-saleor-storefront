@@ -95,77 +95,80 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
           </div>
           <div className="cart__body">
             {items?.length ? (
-              <ProductList
-                modalOpen={isModelOpen}
-                itemToDelete={itemToDelete}
-                products={items}
-                onAdd={addItem}
-                onRemove={showModal}
-                onSubtract={subtractItem}
-                onConfirm={() => removeItemAndHideModal()}
-                onCancel={() => setIsModelOpen(false)}
-                onClose={() => setIsModelOpen(false)}
-              />
+              <>
+                <ProductList
+                  modalOpen={isModelOpen}
+                  itemToDelete={itemToDelete}
+                  products={items}
+                  onAdd={addItem}
+                  onRemove={showModal}
+                  onSubtract={subtractItem}
+                  onConfirm={() => removeItemAndHideModal()}
+                  onCancel={() => setIsModelOpen(false)}
+                  onClose={() => setIsModelOpen(false)}
+                />
+                <div className="cart__footer">
+                  <div className="cart__footer__details">
+                    <div className="cart__footer__details__price">
+                      <span>Subtotal:</span>
+                      <span>
+                        <TaxedMoney
+                          data-cy="cartPageSubtotalPrice"
+                          taxedMoney={subtotalPrice}
+                        />
+                      </span>
+                    </div>
+
+                    {shippingTaxedPrice &&
+                      shippingTaxedPrice.gross.amount !== 0 && (
+                        <div className="cart__footer__details__price">
+                          <span>Shipping:</span>
+                          <span>
+                            <TaxedMoney
+                              data-cy="cartPageShippingPrice"
+                              taxedMoney={shippingTaxedPrice}
+                            />
+                          </span>
+                        </div>
+                      )}
+
+                    {promoTaxedPrice && promoTaxedPrice.gross.amount !== 0 && (
+                      <div className="cart__footer__details__price">
+                        <span>Promo code:</span>
+                        <span>
+                          -&nbsp;
+                          <TaxedMoney
+                            data-cy="cartPagePromoCodePrice"
+                            taxedMoney={promoTaxedPrice}
+                          />
+                        </span>
+                      </div>
+                    )}
+
+                    <div className="cart__footer__details__price cart__footer__details__price--total">
+                      <span>Total:</span>
+                      <span>
+                        <TaxedMoney
+                          data-cy="cartPageTotalPrice"
+                          taxedMoney={totalPrice}
+                        />
+                      </span>
+                    </div>
+                  </div>
+                  <div className="cart__footer__details__button">
+                    <Button
+                      icon={<CartIcon />}
+                      size="normal"
+                      onClick={onClickBuyIcon}
+                    >
+                      Comprar
+                    </Button>
+                  </div>
+                </div>
+              </>
             ) : (
               <Empty overlayHide={overlay.showCatalog} />
             )}
-            <div className="cart__footer">
-              <div className="cart__footer__details">
-                <div className="cart__footer__details__price">
-                  <span>Subtotal:</span>
-                  <span>
-                    <TaxedMoney
-                      data-cy="cartPageSubtotalPrice"
-                      taxedMoney={subtotalPrice}
-                    />
-                  </span>
-                </div>
-
-                {shippingTaxedPrice && shippingTaxedPrice.gross.amount !== 0 && (
-                  <div className="cart__footer__details__price">
-                    <span>Shipping:</span>
-                    <span>
-                      <TaxedMoney
-                        data-cy="cartPageShippingPrice"
-                        taxedMoney={shippingTaxedPrice}
-                      />
-                    </span>
-                  </div>
-                )}
-
-                {promoTaxedPrice && promoTaxedPrice.gross.amount !== 0 && (
-                  <div className="cart__footer__details__price">
-                    <span>Promo code:</span>
-                    <span>
-                      -&nbsp;
-                      <TaxedMoney
-                        data-cy="cartPagePromoCodePrice"
-                        taxedMoney={promoTaxedPrice}
-                      />
-                    </span>
-                  </div>
-                )}
-
-                <div className="cart__footer__details__price cart__footer__details__price--total">
-                  <span>Total:</span>
-                  <span>
-                    <TaxedMoney
-                      data-cy="cartPageTotalPrice"
-                      taxedMoney={totalPrice}
-                    />
-                  </span>
-                </div>
-              </div>
-              <div className="cart__footer__details__button">
-                <Button
-                  icon={<CartIcon />}
-                  size="normal"
-                  onClick={onClickBuyIcon}
-                >
-                  Comprar
-                </Button>
-              </div>
-            </div>
           </div>
         </div>
       </Online>

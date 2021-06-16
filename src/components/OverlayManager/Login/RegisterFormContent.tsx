@@ -2,7 +2,7 @@ import {
   Checkbox,
   DataTreatmentPolicyLink,
   ErrorMessage,
-  TermsAndConditionsLink
+  TermsAndConditionsLink,
 } from "@app/components/atoms";
 import { joinFormikErrorsToIFormErrorsAndConvertToObjectErrors } from "@app/utils/errorsManagement";
 import { DOCUMENT_NUMBER_MAX_LENGTH } from "@app/utils/schemasConfig";
@@ -13,7 +13,6 @@ import { RegisterAccountVariables } from "./gqlTypes/RegisterAccount";
 import { registerFormSchema } from "./registerForm.schema";
 import { ILoginForm, IProps } from "./types";
 import { Button, InputField } from "@farmacia-retail/farmauna-components";
-
 
 const initialValues: ILoginForm = {
   confirmPassword: "",
@@ -93,7 +92,7 @@ export const RegisterFormContent: React.FC<IProps> = ({
           label="Nombres"
           type="text"
           value={!values?.firstName ? "" : values?.firstName}
-          error={!!errors?.firstName ? errors!.firstName[0].message : ''}
+          error={!!errors?.firstName ? errors!.firstName[0].message : ""}
           onChange={handleChange}
           onBlur={handleBlur}
         />
@@ -105,7 +104,7 @@ export const RegisterFormContent: React.FC<IProps> = ({
           label="Apellidos"
           type="text"
           value={!values?.lastName ? "" : values?.lastName}
-          error={!!errors?.lastName ? errors!.lastName[0].message : ''}
+          error={!!errors?.lastName ? errors!.lastName[0].message : ""}
           onChange={handleChange}
           onBlur={handleBlur}
         />
@@ -117,7 +116,9 @@ export const RegisterFormContent: React.FC<IProps> = ({
           label="Documento"
           type="text"
           value={!values?.documentNumber ? "" : values?.documentNumber}
-          error={!!errors?.documentNumber ? errors!.documentNumber[0].message : ''}
+          error={
+            !!errors?.documentNumber ? errors!.documentNumber[0].message : ""
+          }
           maxLength={DOCUMENT_NUMBER_MAX_LENGTH}
           onChange={handleChange}
           onBlur={handleBlur}
@@ -130,7 +131,7 @@ export const RegisterFormContent: React.FC<IProps> = ({
           label="Correo electrónico"
           type="text"
           value={!values?.email ? "" : values?.email}
-          error={!!errors?.email ? errors!.email[0].message : ''}
+          error={!!errors?.email ? errors!.email[0].message : ""}
           onChange={handleChange}
           onBlur={handleBlur}
         />
@@ -142,7 +143,7 @@ export const RegisterFormContent: React.FC<IProps> = ({
           label="Contraseña"
           type="password"
           value={!values?.password ? "" : values?.password}
-          error={!!errors?.password ? errors!.password[0].message : ''}
+          error={!!errors?.password ? errors!.password[0].message : ""}
           onChange={handleChange}
           onBlur={handleBlur}
           autoComplete="off"
@@ -155,7 +156,9 @@ export const RegisterFormContent: React.FC<IProps> = ({
           label="Confirmar contraseña"
           type="password"
           value={!values?.confirmPassword ? "" : values?.confirmPassword}
-          error={!!errors?.confirmPassword ? errors!.confirmPassword[0].message : ''}
+          error={
+            !!errors?.confirmPassword ? errors!.confirmPassword[0].message : ""
+          }
           onChange={handleChange}
           onBlur={handleBlur}
           autoComplete="off"
@@ -183,7 +186,7 @@ export const RegisterFormContent: React.FC<IProps> = ({
         </Checkbox>
       </div>
       <div className="login__content__button">
-        <Button type="submit" {...(loading && { disabled: true })}>
+        <Button type="submit" size="large" {...(loading && { disabled: true })}>
           {loading ? "Cargando" : "Crear cuenta"}
         </Button>
       </div>
