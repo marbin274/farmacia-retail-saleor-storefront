@@ -112,6 +112,12 @@ $custom-breakpoint: 624px;
       height: calc(100% - 4.7rem);
     }
 
+    &--in-front {
+      @media (max-width: $medium-screen) {
+        z-index: 4;
+      }
+    }
+
     &--expanded {
       right: 0;
     }
