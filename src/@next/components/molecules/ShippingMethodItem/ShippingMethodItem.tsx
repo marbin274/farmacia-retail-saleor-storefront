@@ -96,12 +96,12 @@ export const ShippingMethodItem: React.FC<IProps> = ({
               data-cy={`checkoutShippingMethodOption${index}Name`}
               selected={selected}
             >
-              {isScheduled ? name : "Delivery programado"}
+              {name}
             </S.ShippingMethodTitle>
             <S.ShippingMethodSubTitle selected={selected}>
               {isScheduled
-                ? "Escoge la fecha y la hora"
-                : "75 minutos aproximadamente"}
+                ? "Escoge la fecha y la hora de entrega"
+                : subtitle}
             </S.ShippingMethodSubTitle>
           </S.ShippingMethodText>
           <Chip

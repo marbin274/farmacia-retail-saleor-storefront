@@ -193,13 +193,13 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
                       data-cy="checkoutShippingMethodOption0Name"
                       selected={false}
                     >
-                      Delivery programado
+                      75 minutos aproximadamente
                     </p>
                     <p
                       className="c9"
                       selected={false}
                     >
-                      75 minutos aproximadamente
+                      subTitle
                     </p>
                   </div>
                   <span
@@ -276,13 +276,13 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
                       data-cy="checkoutShippingMethodOption1Name"
                       selected={false}
                     >
-                      Delivery programado
+                      75 minutos aproximadamente
                     </p>
                     <p
                       className="c9"
                       selected={false}
                     >
-                      75 minutos aproximadamente
+                      subTitle
                     </p>
                   </div>
                   <span

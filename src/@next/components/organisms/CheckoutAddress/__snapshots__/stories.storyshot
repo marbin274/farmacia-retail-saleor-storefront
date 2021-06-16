@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
   margin: 20px;
 }
 
-.c18 {
+.c16 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -98,15 +98,15 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
   fill: #fff;
 }
 
-.c14 {
+.c12 {
   padding-top: 1.4rem;
 }
 
-.c17 {
+.c15 {
   top: 100%;
 }
 
-.c16 {
+.c14 {
   background-color: transparent;
   left: 0px;
   position: absolute;
@@ -114,7 +114,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
   top: -1.5rem;
 }
 
-.c15 {
+.c13 {
   fill: #131336;
   position: absolute;
   right: 0.75rem;
@@ -124,7 +124,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
   top: 0.5rem;
 }
 
-.c11 {
+.c10 {
   width: 100%;
   height: auto;
   border-radius: 1rem;
@@ -133,7 +133,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
   margin-bottom: 1.5rem;
 }
 
-.c12 {
+.c11 {
   width: 100%;
   height: 21.25rem;
 }
@@ -180,14 +180,6 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
   width: 100%;
 }
 
-.c10 {
-  display: none;
-}
-
-.c13 {
-  display: block;
-}
-
 @media (max-width:540px) {
   .c3 {
     grid-template-columns: 1fr;
@@ -203,18 +195,6 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
 @media (max-width:540px) {
   .c3 > div {
     width: 100%;
-  }
-}
-
-@media (min-width:720px) {
-  .c10 {
-    display: block;
-  }
-}
-
-@media (min-width:720px) {
-  .c13 {
-    display: none;
   }
 }
 
@@ -546,7 +526,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                 className="c4"
               >
                 <div
-                  className="c10"
+                  className=""
                 >
                   <div
                     className="fa-w-auto"
@@ -577,50 +557,20 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                 </div>
               </div>
               <div
-                className="c11"
+                className="c10"
               >
                 <div
-                  className="c12"
+                  className="c11"
                 />
               </div>
               <div
                 className="c3"
               >
                 <div
-                  className="c13"
-                >
-                  <div
-                    className="fa-w-auto"
-                  >
-                    <label
-                      className="fa-text-gray-01 fa-text-sm"
-                    >
-                      Referencia
-                      
-                    </label>
-                    <div
-                      className="fa-w-full fa-relative fa-h-12"
-                    >
-                      <input
-                        autoComplete="address-line2"
-                        className="fa-w-full fa-appearance-none fa-border fa-text-sm fa-outline-none fa-placeholder-neutral-medium fa-text-neutral-darkest fa-bg-neutral-lightest fa-border-neutral-medium focus:fa-border-neutral-darkest fa-rounded-lg fa-px-4 fa-h-12"
-                        data-cy="addressFormStreetAddress2"
-                        disabled={false}
-                        name="streetAddress2"
-                        onBlur={[Function]}
-                        onChange={[Function]}
-                        placeholder="Ejem: Colegio, edificio, avenida"
-                        type="text"
-                        value="Second"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div
                   className="fa-flex fa-flex-col"
                 >
                   <div
-                    className="c14"
+                    className="c12"
                   >
                     <div
                       className="css-1pcexqc-container control"
@@ -701,7 +651,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                           </div>
                         </div>
                         <div
-                          className="c15"
+                          className="c13"
                         >
                           <svg
                             className=" "
@@ -721,14 +671,14 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                         </div>
                       </div>
                       <label
-                        className="fa-text-gray-01 fa-text-sm c16"
+                        className="fa-text-gray-01 fa-text-sm c14"
                         disabled={false}
                       >
                         Distrito
                       </label>
                     </div>
                     <div
-                      className="c17"
+                      className="c15"
                     />
                   </div>
                   <span
@@ -750,7 +700,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
     </form>
   </section>
   <div
-    className="c18"
+    className="c16"
   />
 </div>
 `;
@@ -761,7 +711,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
   margin: 20px;
 }
 
-.c18 {
+.c16 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -853,15 +803,15 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
   fill: #fff;
 }
 
-.c14 {
+.c12 {
   padding-top: 1.4rem;
 }
 
-.c17 {
+.c15 {
   top: 100%;
 }
 
-.c16 {
+.c14 {
   background-color: transparent;
   left: 0px;
   position: absolute;
@@ -869,7 +819,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
   top: -1.5rem;
 }
 
-.c15 {
+.c13 {
   fill: #131336;
   position: absolute;
   right: 0.75rem;
@@ -879,7 +829,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
   top: 0.5rem;
 }
 
-.c11 {
+.c10 {
   width: 100%;
   height: auto;
   border-radius: 1rem;
@@ -888,7 +838,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
   margin-bottom: 1.5rem;
 }
 
-.c12 {
+.c11 {
   width: 100%;
   height: 21.25rem;
 }
@@ -935,14 +885,6 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
   width: 100%;
 }
 
-.c10 {
-  display: none;
-}
-
-.c13 {
-  display: block;
-}
-
 @media (max-width:540px) {
   .c3 {
     grid-template-columns: 1fr;
@@ -958,18 +900,6 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
 @media (max-width:540px) {
   .c3 > div {
     width: 100%;
-  }
-}
-
-@media (min-width:720px) {
-  .c10 {
-    display: block;
-  }
-}
-
-@media (min-width:720px) {
-  .c13 {
-    display: none;
   }
 }
 
@@ -1301,7 +1231,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
                 className="c4"
               >
                 <div
-                  className="c10"
+                  className=""
                 >
                   <div
                     className="fa-w-auto"
@@ -1332,50 +1262,20 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
                 </div>
               </div>
               <div
-                className="c11"
+                className="c10"
               >
                 <div
-                  className="c12"
+                  className="c11"
                 />
               </div>
               <div
                 className="c3"
               >
                 <div
-                  className="c13"
-                >
-                  <div
-                    className="fa-w-auto"
-                  >
-                    <label
-                      className="fa-text-gray-01 fa-text-sm"
-                    >
-                      Referencia
-                      
-                    </label>
-                    <div
-                      className="fa-w-full fa-relative fa-h-12"
-                    >
-                      <input
-                        autoComplete="address-line2"
-                        className="fa-w-full fa-appearance-none fa-border fa-text-sm fa-outline-none fa-placeholder-neutral-medium fa-text-neutral-darkest fa-bg-neutral-lightest fa-border-neutral-medium focus:fa-border-neutral-darkest fa-rounded-lg fa-px-4 fa-h-12"
-                        data-cy="addressFormStreetAddress2"
-                        disabled={false}
-                        name="streetAddress2"
-                        onBlur={[Function]}
-                        onChange={[Function]}
-                        placeholder="Ejem: Colegio, edificio, avenida"
-                        type="text"
-                        value=""
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div
                   className="fa-flex fa-flex-col"
                 >
                   <div
-                    className="c14"
+                    className="c12"
                   >
                     <div
                       className="css-1pcexqc-container control"
@@ -1471,7 +1371,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
                           </div>
                         </div>
                         <div
-                          className="c15"
+                          className="c13"
                         >
                           <svg
                             className=" "
@@ -1491,14 +1391,14 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
                         </div>
                       </div>
                       <label
-                        className="fa-text-gray-01 fa-text-sm c16"
+                        className="fa-text-gray-01 fa-text-sm c14"
                         disabled={false}
                       >
                         Distrito
                       </label>
                     </div>
                     <div
-                      className="c17"
+                      className="c15"
                     />
                   </div>
                   <span
@@ -1520,7 +1420,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
     </form>
   </section>
   <div
-    className="c18"
+    className="c16"
   />
 </div>
 `;
