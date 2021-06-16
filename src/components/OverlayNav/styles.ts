@@ -8,6 +8,8 @@ position: absolute;
 width: 100vw;
 height: 100vh;
 z-index:1;
+background: rgba(35, 33, 43, 0.8);
+left: 0;
 a {
     text-transform: capitalize;
     span {
@@ -20,6 +22,8 @@ export const Overlay = styled.div`
     display: flex;
     height: max-content;
     width: 71.25rem;
+    max-width: 100%;
+    margin: 0 auto;
 `;
 
 export const lvl1List = styled.ul`

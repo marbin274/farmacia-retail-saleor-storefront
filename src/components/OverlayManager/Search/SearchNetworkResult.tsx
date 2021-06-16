@@ -1,5 +1,5 @@
 import { Loader } from "@app/components/atoms";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { NetworkStatus, OfflinePlaceholder } from "@temp/components";
 import { Error } from "@temp/components/Error";
 import classNames from "classnames";
@@ -15,9 +15,12 @@ import { SEARCH_PRODUCTS_QUERY_MIN_LENGTH } from "@temp/core/config";
 import { searchProductsService } from "@temp/@next/services/searchProductsService";
 
 export const SearchNetworkResult = () => {
-  const [search, setSearch] = React.useState<string>('');
+  const [search, setSearch] = React.useState<string>("");
   const linkToSearch = appPaths.searchUrl + "?q=" + search + "";
   const [districtSelected] = useDistrictSelected();
+  const location = useLocation();
+
+  const isInProductDetail = location.pathname.includes("product");
 
   const hasSearchPhrase = search.length >= SEARCH_PRODUCTS_QUERY_MIN_LENGTH;
 
@@ -29,84 +32,104 @@ export const SearchNetworkResult = () => {
   React.useEffect(() => {
     const suscription = searchProductsService
       .on()
-      .subscribe((payload: string) => setSearch(payload || ''));
+      .subscribe((payload: string) => setSearch(payload || ""));
     return suscription.unsubscribe;
   }, []);
 
-  return (
-
-    !hasSearchPhrase ? <></> :
-      <div
-        className={classNames("search__products", "search__products--expanded", {
+  return !hasSearchPhrase ? (
+    <></>
+  ) : (
+    <div
+      className={classNames(
+        "search__products",
+        "search__products--expanded",
+        {
           "search__products--background-opacity": !hasSearchPhrase,
-        })}
-      >
-        <NetworkStatus>
-          {isOnline => {
-            if (hasSearchPhrase) {
-              return (
-                <TypedSearchResults
-                  renderOnError
-                  displayError={false}
-                  errorPolicy="all"
-                  variables={{
-                    query: search,
-                    districtId: districtSelected.id,
-                  }}
-                >
-                  {({ data, error, loading }) => {
-                    if (hasResults(data)) {
-                      return (
-                        <>
-                          <div className="search__products__results">
-                            {loading ? (
-                              <Loader />
-                            ) : (
-                              <>
-                                <h4>Resultado de búsqueda</h4>
-                                <p>
-                                  <span>{data.products.edges.length}</span>{" "}
-                                  resultados para <span>"{search}"</span>
-                                </p>
-                              </>
-                            )}
+        },
+        { "search__products--in-front": isInProductDetail }
+      )}
+    >
+      <NetworkStatus>
+        {isOnline => {
+          if (hasSearchPhrase) {
+            return (
+              <TypedSearchResults
+                renderOnError
+                displayError={false}
+                errorPolicy="all"
+                variables={{
+                  query: search,
+                  districtId: districtSelected.id,
+                }}
+              >
+                {({ data, error, loading }) => {
+                  if (hasResults(data)) {
+                    return (
+                      <>
+                        <div className="search__products__header">
+                          {loading ? (
+                            <Loader />
+                          ) : (
+                            <>
+                              <h4>Resultado de búsqueda</h4>
+                              <p>
+                                <span>{data.products.edges.length}</span>{" "}
+                                resultados para <span>"{search}"</span>
+                              </p>
+                            </>
+                          )}
+                        </div>
+                        <div className="search__products__body">
+                          <div className="search__products__list">
+                            <ul>
+                              {data.products.edges.map(product => (
+                                <ProductItem
+                                  {...product}
+                                  key={product.node.id}
+                                />
+                              ))}
+                            </ul>
                           </div>
-                          <ul className="search__products__list">
-                            {data.products.edges.map(product => (
-                              <ProductItem {...product} key={product.node.id} />
-                            ))}
-                          </ul>
                           <div className="show_more_products">
-                            
-                              <Link to={linkToSearch}>
-                                  <Button onClick={()=>{
-                                    searchProductsService.hide();
-                                  }}>
-                                  Ver todos los resultados
-                                  </Button>
+                            <Link to={linkToSearch}>
+                              <Button
+                                onClick={() => {
+                                  searchProductsService.hide();
+                                }}
+                              >
+                                Ver todos los resultados
+                              </Button>
                             </Link>
                           </div>
-                        </>
-                      );
-                    }
+                        </div>
+                      </>
+                    );
+                  }
 
-                    if (error) {
-                      return isOnline ? (
-                        <Error error={error.message} />
-                      ) : (
-                        <OfflinePlaceholder />
-                      );
-                    }
+                  if (error) {
+                    return isOnline ? (
+                      <Error error={error.message} />
+                    ) : (
+                      <OfflinePlaceholder />
+                    );
+                  }
 
-                    return <NothingFound search={search} />;
-                  }}
-                </TypedSearchResults>
-              );
-            }
-            return null;
-          }}
-        </NetworkStatus>
-      </div>
+                  if (error) {
+                    return isOnline ? (
+                      <Error error={error.message} />
+                    ) : (
+                      <OfflinePlaceholder />
+                    );
+                  }
 
+                  return <NothingFound search={search} />;
+                }}
+              </TypedSearchResults>
+            );
+          }
+          return null;
+        }}
+      </NetworkStatus>
+    </div>
   );
 };

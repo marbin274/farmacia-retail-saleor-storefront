@@ -55,7 +55,6 @@ export const Container = styled.div`
 
 export const Menu = styled.div`
   display: none;
-  position: relative;
   ${mediaUp.largeScreen`
     display: block;
   `};

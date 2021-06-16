@@ -2,7 +2,6 @@ import { media, mediaUp, styled } from "@styles";
 import {
   aunaBrand3,
   white,
-  aunaInteractive,
   aunaError,
   smallFontSize,
   smallFontWeight,
@@ -31,19 +30,11 @@ export const PrivacyAndPolicies = styled.div`
       margin-top: 0.5rem;
     }
   }
-
-  a {
-    color: ${aunaInteractive};
-  }
 `;
 
 export const TreatmentPolicy = styled.div`
   margin-top: 2rem;
   width: 100%;
-
-  a {
-    color: ${aunaInteractive};
-  }
 `;
 
 export const Wrapper = styled.div`

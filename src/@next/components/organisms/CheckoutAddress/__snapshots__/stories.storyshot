@@ -153,17 +153,9 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
   margin-top: 0.5rem;
 }
 
-.c5 a {
-  color: #00BF8E;
-}
-
 .c9 {
   margin-top: 2rem;
   width: 100%;
-}
-
-.c9 a {
-  color: #00BF8E;
 }
 
 .c1 {
@@ -416,6 +408,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                     >
                       *Estoy de acuerdo con las
                       <a
+                        className="fa-text-highlight-medium fa-font-semibold"
                         href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-politicas-privacidad.pdf"
                         target="_blank"
                       >
@@ -426,6 +419,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                        
                       y
                       <a
+                        className="fa-text-highlight-medium fa-font-semibold"
                         href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-terminos-condiciones.pdf"
                         target="_blank"
                       >
@@ -488,6 +482,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
                        
                       Acepto el tratamiento para
                       <a
+                        className="fa-text-highlight-medium fa-font-semibold"
                         href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-fines-adicionales.pdf"
                         target="_blank"
                       >
@@ -913,17 +908,9 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
   margin-top: 0.5rem;
 }
 
-.c5 a {
-  color: #00BF8E;
-}
-
 .c9 {
   margin-top: 2rem;
   width: 100%;
-}
-
-.c9 a {
-  color: #00BF8E;
 }
 
 .c1 {
@@ -1176,6 +1163,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
                     >
                       *Estoy de acuerdo con las
                       <a
+                        className="fa-text-highlight-medium fa-font-semibold"
                         href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-politicas-privacidad.pdf"
                         target="_blank"
                       >
@@ -1186,6 +1174,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
                        
                       y
                       <a
+                        className="fa-text-highlight-medium fa-font-semibold"
                         href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-terminos-condiciones.pdf"
                         target="_blank"
                       >
@@ -1248,6 +1237,7 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
                        
                       Acepto el tratamiento para
                       <a
+                        className="fa-text-highlight-medium fa-font-semibold"
                         href="https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-fines-adicionales.pdf"
                         target="_blank"
                       >

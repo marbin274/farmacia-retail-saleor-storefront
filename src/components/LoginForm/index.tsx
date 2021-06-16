@@ -69,12 +69,11 @@ const LoginForm: React.FC<ILoginForm> = ({
   return (
     <div className="login-form">
       <form onSubmit={handleSubmit}>
-
         <div className="InputField">
           <InputField
             label="Correo electrónico"
             className="login-form__input-wrapper"
-            error={!!errors?.email ? errors!.email[0].message : ''}
+            error={!!errors?.email ? errors!.email[0].message : ""}
             placeholder="Correo electrónico"
             autoComplete="email"
             name="email"
@@ -89,7 +88,7 @@ const LoginForm: React.FC<ILoginForm> = ({
             label="Contraseña"
             type="password"
             autoComplete="password"
-            error={!!errors?.password ? errors!.password[0].message : ''}
+            error={!!errors?.password ? errors!.password[0].message : ""}
             placeholder="Contraseña"
             name="password"
             value={!values?.password ? "" : values?.password}
@@ -107,14 +106,18 @@ const LoginForm: React.FC<ILoginForm> = ({
           </div>
         )}
         <div className="login-form__button">
-          <Button type="submit" size="large" {...(loading && { disabled: true })}>
+          <Button
+            type="submit"
+            size="large"
+            {...(loading && { disabled: true })}
+          >
             {loading ? "Cargando" : "Ingresar"}
           </Button>
         </div>
         {!hideRegister && (
           <div className="login-form__change-section">
             <p>¿No tienes cuenta?</p>
-            <Button variant="outline" onClick={onSwitchSection}>
+            <Button variant="outline" size="large" onClick={onSwitchSection}>
               Regístrate
             </Button>
           </div>

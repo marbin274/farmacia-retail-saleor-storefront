@@ -24,11 +24,11 @@ export const childrenField = gql`
   ${basicFieldCategory}
   fragment ChildrenField on Category{
     ...BasicFieldCategory
-    children(first: 5){
+    children(first: 100){
       edges{
         node{
           ...BasicFieldCategory
-          children(first: 5){
+          children(first: 100){
             edges{
               node{
                 ...BasicFieldCategory

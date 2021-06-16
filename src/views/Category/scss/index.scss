@@ -89,11 +89,9 @@
 
   &__breadcrumbs {
     margin-bottom: 2rem;
-
     li {
-      &:first-child {
-        display: none;
-      }
+      display: flex;
+      align-items: center;
     }
   }
   @media (max-width: $medium-screen) {

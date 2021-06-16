@@ -56,7 +56,7 @@ const RegisterForm: React.FC<IRegisterForm> = ({ hide, onSwitchSection }) => {
             />
             <div className="login-form__change-section">
               <p>¿Ya tienes cuenta?</p>
-              <Button variant="outline" onClick={onClickSwitch}>
+              <Button variant="outline" size="large" onClick={onClickSwitch}>
                 Ingresar con mi cuenta
               </Button>
             </div>

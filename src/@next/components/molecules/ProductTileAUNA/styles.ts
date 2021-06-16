@@ -1,5 +1,6 @@
 import { media, styled } from "@styles";
 import { aunaBlack, aunaGrey100 } from "@styles/constants";
+import farmatheme from "@farmatheme";
 
 const productHeight = "25.8rem";
 
@@ -54,13 +55,12 @@ export const ProductCard = styled.div<{
     font-family: "Poppins", sans-serif;
     padding: 0.7rem 0rem 0rem 0rem;
     text-align: center;
-    color: #00BF8E;
     font-size: 1.125rem;
     font-weight: 600;
 
     &.undiscounted_price {
       text-decoration: line-through;
-      color: $auna-grey-100;
+      color: ${farmatheme.theme.colors.neutral.dark};
       font-size: 0.875rem;
       font-weight: normal;
       display: inline-block;
