@@ -1,6 +1,6 @@
 on:
   push:
-    branches: [master, release]
+    branches: [master, qa2, release]
 
 jobs:
   deploy:
@@ -40,6 +40,20 @@ jobs:
           ELASTIC_APM_ENV: ${{ secrets.ELASTIC_APM_ENV }}
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
           ENVIRONMENT_NAME: "qa"
+      - name: 3.2- Build application qa2 ${{ github.event.pull_request.base.ref }}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/qa2' }}
+        run: npm run build
+        env:
+          API_URI: ${{ secrets.GRAPHQL_URL_QA2 }}
+          SENTRY_DSN: ${{ secrets.SENTRY_DSN_QA }}
+          GTM_ID: ${{ secrets.GTM_ID_QA }}
+          GTM_AUTH: ${{ secrets.GTM_AUTH }}
+          CDN_URL: ${{ secrets.CDN_URL_QA }}
+          GTM_PREVIEW: ${{ secrets.GTM_PREVIEW }}
+          MAPS_API_KEY: ${{ secrets.MAPS_API_KEY_QA }}
+          OPTIMIZELY_SDK_KEY: ${{ secrets.OPTIMIZELY_SDK_KEY_QA }}
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          ENVIRONMENT_NAME: "qa2"
       - name: 4- Build application release ${{ github.event.pull_request.base.ref }}
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/release' }}
         run: npm run build
@@ -63,6 +77,18 @@ jobs:
           args: --follow-symlinks --delete
         env:
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET_QA }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_QA }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_QA }}
+          AWS_REGION: ${{ secrets.AWS_REGION_QA }}
+          SOURCE_DIR: "dist"
+
+      - name: 5.2- aws s3 copy qa - by ${{ github.actor }}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/qa2' }}
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --follow-symlinks --delete
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET_QA2 }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_QA }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_QA }}
           AWS_REGION: ${{ secrets.AWS_REGION_QA }}

@@ -35,8 +35,6 @@ import {
   gtmId,
   gtmAuth,
   gtmPreview,
-  elasticApmHost,
-  elasticApmEnv,
 } from "./constants";
 import { history } from "./history";
 
@@ -55,7 +53,6 @@ import { Integrations } from "@sentry/tracing";
 import { alertService } from "./@next/components/atoms/Alert";
 import { launchSetLocation, getGaUserId } from "./@sdk/gaConfig";
 import { optimizelyClient, getOptimizelyUserId } from "./@sdk/optimizelyConfig";
-import { init as initApm } from '@elastic/apm-rum';
 
 const cache = new InMemoryCache({
   dataIdFromObject: apolloCacheObject => {
@@ -172,21 +169,6 @@ const startApp = async () => {
       },
     });
   };
-
-  const apm = initApm({
-
-    // Set required service name (allowed characters: a-z, A-Z, 0-9, -, _, and space)
-    serviceName: 'saleor-storefront',
-  
-    // Set custom APM Server URL (default: http://localhost:8200)
-    serverUrl: elasticApmHost,
-  
-    // Set the service version (required for source map feature)
-    serviceVersion: '1.0',
-  
-    // Set the service environment
-    environment: elasticApmEnv,
-  })
 
   switch (environmentName) {
     case "qa":

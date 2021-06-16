@@ -9,7 +9,7 @@ const productIntHeight = "18rem";
 export const ProductCard = styled.div<{
   canAddToCart?: boolean | 0 | undefined;
 }>`
-  color: ${aunaBlack}
+  color: ${aunaBlack};
   background: #ffffff;
   height: ${productHeight};
   text-align: center;
