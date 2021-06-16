@@ -84,7 +84,6 @@ export const DiscountForm: React.FC<IProps> = ({
                     label="Ingresa tu cupón"
                     name="inputCode"
                     inputSize="large"
-                    message="Puedes obtenerlo desde nuestra web"
                     placeholder="Ingresa tu cupón"
                     value={values?.inputCode}
                     onChange={e => {
