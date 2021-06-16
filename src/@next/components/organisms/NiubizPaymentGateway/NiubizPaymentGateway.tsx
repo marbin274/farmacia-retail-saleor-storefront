@@ -539,7 +539,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                         )}
                       </div>
                       <div className="card-input">
-                        <label htmlFor="">CVV</label>
+                        <label htmlFor="">CVC/CVV</label>
                         <div
                           id="txtCvv"
                           className="form-control form-control-sm"
