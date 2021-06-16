@@ -15,11 +15,12 @@
     }
 
     a {
-      font-size: 2rem;
+      font-size: 0.875rem;
       font-weight: 600;
       text-decoration: none;
       color: #2F2C3A;
       text-transform: capitalize;
+      line-height: 1.5rem;
     }
   }
 
@@ -41,7 +42,7 @@
 
   &__home-icon {
     display: inline-block;
-    margin-right: 0.75rem;
+    margin: 0 0.75rem 0 0.5rem;
     vertical-align: middle;
   }
 
@@ -54,7 +55,7 @@
 
   &__next-icon {
     display: inline-block;
-    margin: auto 0.75rem;
+    margin: 0.25rem 0.75rem 0 0.75rem;
     vertical-align: middle;
   }
 }
