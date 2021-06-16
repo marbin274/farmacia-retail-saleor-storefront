@@ -58,7 +58,7 @@ export const SearchNetworkResult = () => {
                     if (hasResults(data)) {
                       return (
                         <>
-                          <div className="search__products__results">
+                          <div className="search__products__header">
                             {loading ? (
                               <Loader />
                             ) : (
@@ -71,20 +71,24 @@ export const SearchNetworkResult = () => {
                               </>
                             )}
                           </div>
-                          <ul className="search__products__list">
-                            {data.products.edges.map(product => (
-                              <ProductItem {...product} key={product.node.id} />
-                            ))}
-                          </ul>
-                          <div className="show_more_products">
-                            
+                          <div className="search__products__body">
+                            <div className="search__products__list">
+                              <ul>
+                                {data.products.edges.map(product => (
+                                  <ProductItem {...product} key={product.node.id} />
+                                ))}
+                              </ul>
+                            </div>
+                            <div className="show_more_products">
+
                               <Link to={linkToSearch}>
-                                  <Button onClick={()=>{
-                                    searchProductsService.hide();
-                                  }}>
+                                <Button onClick={() => {
+                                  searchProductsService.hide();
+                                }}>
                                   Ver todos los resultados
-                                  </Button>
-                            </Link>
+                                </Button>
+                              </Link>
+                            </div>
                           </div>
                         </>
                       );

@@ -98,19 +98,18 @@ $custom-breakpoint: 624px;
 
   &__products {
     background: $auna-grey-20;
-    overflow: auto;
-    padding: 50px 0;
+    padding: 1.25rem 1.25rem 0rem 1.25rem;
     position: fixed;
-    top: 100px;
     right: 0;
     top: 12.9rem;
     transition: 300ms;
-    height: calc(100vh - 3rem);
+    height: calc(100% - 12.9rem);
     width: 100vw;
     z-index: 2;
 
     @media (min-width: $medium-screen) {
       top: 4.7rem;
+      height: calc(100% - 4.7rem);
     }
 
     &--expanded {
@@ -138,7 +137,7 @@ $custom-breakpoint: 624px;
         }
       }
     }
-    &__results {
+    &__header {
       span {
         font-weight: 500;
       }
@@ -163,6 +162,9 @@ $custom-breakpoint: 624px;
         font-size: 16px;
         color: #23212b;
       }
+    }
+    &__body {
+      height: calc(100% - 5rem);
     }
     &__item {
       @extend .size;
@@ -367,31 +369,24 @@ $custom-breakpoint: 624px;
     }
 
     &__list {
-      @media (max-width: $small-screen) {
-        padding-bottom: 10rem;
-        padding-top: 1rem;
-      }
-      padding-bottom: 15.625rem;
-      max-width: 645px;
-      margin: 0 auto;
-    }
-
-    @media (max-width: $medium-screen) {
-      padding: 1.25rem;
-      top: 9.55rem;
+      height: calc(100% - 5rem);
+      overflow: auto;
+      > ul {
+        margin: 0 auto;
+        max-width: 645px;
+      }      
     }
 
     .show_more_products {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      text-align: center;
-      padding: 1rem;
-      z-index: 1000;
+      align-items: center;
+      display: flex;
       background-color: #ffffff;
       border-bottom-left-radius: 35px;
       border-bottom-right-radius: 35px;
+      height: 4.5rem;
+      justify-content: center;
+      text-align: center;
+      width: 100%;
 
       span {
         font-size: $base-font-size;
