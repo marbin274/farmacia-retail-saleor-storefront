@@ -27,10 +27,13 @@ export const AddressGeocalization: React.FC<IProps> = React.memo(({ mode }) => {
               size={20}
               heightViewPort={21}
               widthViewPort={14}
+              onClick={handleChangeAddress}
             />
           </S.GeocalizationIcon>
-          <S.District className="district">
-            <S.Label>Enviar a: </S.Label>
+          <S.District
+            className="district"            
+          >
+            <S.Label onClick={handleChangeAddress}>Enviar a: </S.Label>
             <S.Address className="district-name">
               {districtSelected.name}
             </S.Address>

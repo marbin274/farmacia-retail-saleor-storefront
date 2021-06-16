@@ -53,6 +53,7 @@ export const District = styled.div`
 `;
 
 export const Label = styled.span`
+  cursor: pointer;
   font-size: ${({ theme }) => theme.typography.labelFontSize};
   font-weight: normal;
   min-width: 3.125rem;
