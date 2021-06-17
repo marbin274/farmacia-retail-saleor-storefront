@@ -2,7 +2,7 @@ import { Formik } from "formik";
 import React from "react";
 import { TextField } from "../TextField";
 
-import { Button } from "@components/atoms";
+import { Button } from "@farmacia-retail/farmauna-components";
 import { IFormError } from "@types";
 import * as S from "./styles";
 import { registerFormSchema } from "./passwordChange.schema";
@@ -101,14 +101,10 @@ export const PasswordChangeForm: React.FC<{
                 </S.ContentExtendInput>
               </S.ContentEditOneLine>
               <S.FormButtons>
-                <Button type="button" size="sm" outline onClick={hide}>
+                <Button type="button" variant="outline" onClick={hide}>
                   Cancelar
                 </Button>
-                <Button
-                  type="submit"
-                  disabled={isSubmitting || !isValid}
-                  size="sm"
-                >
+                <Button type="submit" disabled={isSubmitting || !isValid}>
                   Guardar
                 </Button>
               </S.FormButtons>

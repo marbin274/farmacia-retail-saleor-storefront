@@ -1,7 +1,6 @@
 import { Formik } from "formik";
 import React from "react";
-
-import { Button ,Input } from "@components/atoms";
+import { Button, InputField } from "@farmacia-retail/farmauna-components";
 import * as S from "./styles";
 import { IProps } from "./types";
 import ReactSVG from "react-svg";
@@ -15,7 +14,6 @@ export const DiscountForm: React.FC<IProps> = ({
   removeVoucher,
   formId,
   formRef,
-  setShowLabelCupon,
   setReRenderNiubiz,
 }: IProps) => {
   const promoCode = discount && discount.promoCode;
@@ -23,19 +21,12 @@ export const DiscountForm: React.FC<IProps> = ({
   const [inputCode, setInputCode] = React.useState("");
   const [tempPromoCode, setTempPromoCode] = React.useState(promoCode);
 
-  React.useEffect(()=>{
-    setShowLabelCupon(!discount?.promoCode);
-  }, [errors])
-
   const handleApplyBtnClick = (newInputCode: string) => {
     if (addPromoCode) {
       addPromoCode({
         giftCards: undefined,
         promoCode: newInputCode,
       });
-      if(errors?.length === 0){
-        setShowLabelCupon(false);
-      }
     }
 
     setInputCode("");
@@ -45,10 +36,9 @@ export const DiscountForm: React.FC<IProps> = ({
     setTempPromoCode(undefined);
     setInputCode("");
     if (removeVoucher) {
-      setReRenderNiubiz(false)
+      setReRenderNiubiz(false);
       await removeVoucher(newInputCode);
-      setReRenderNiubiz(true)
-      setShowLabelCupon(true);
+      setReRenderNiubiz(true);
     }
   };
 
@@ -69,88 +59,73 @@ export const DiscountForm: React.FC<IProps> = ({
         setSubmitting(false);
       }}
     >
-      {({
-        handleChange,
-        handleSubmit,
-        handleBlur,
-        values,
-        setFieldValue,
-        setFieldTouched,
-      }) => {
-        const hasErrors = !!(values.errors && values.errors.length);
+      {({ handleSubmit, values, setFieldValue }) => {
         let discountDescription = "";
-
+        let discountValue = <span></span>;
         if (discount?.voucherType === "shipping") {
           discountDescription = "Delivery gratis en esta compra";
         } else {
           if (discount?.voucherDiscountType === "fixed") {
-            discountDescription = `S/ ${discount?.voucherDiscountValue} de descuento en toda tu compra`;
+            discountValue = <span>S/ {discount?.voucherDiscountValue}</span>;
+            discountDescription = " de descuento en toda tu compra";
           } else {
-            discountDescription =
-              discount?.voucherDiscountValue +
-              "% de descuento en toda tu compra";
+            discountValue = <span>{discount?.voucherDiscountValue}%</span>;
+            discountDescription = " de descuento en toda tu compra";
           }
         }
-        
+
         return (
           <S.DiscountForm id={formId} ref={formRef} onSubmit={handleSubmit}>
-            <S.Input>
+            {!discount?.promoCode && (
               <S.InputWithButton>
-                {!discount?.promoCode && (
-                  <S.InputWrapper>
-                    <div
-                      id="flex"
-                      className={errors && errors.length ? "error" : "flex"}
-                    >
-                      <div className="input">
-                        <Input
-                          data-cy="checkoutPaymentPromoCodeInput"
-                          error={hasErrors}
-                          name="inputCode"
-                          value={values?.inputCode}
-                          label=""
-                          placeholder="Ingresa tu cupón"
-                          onChange={(e) => {
-                            const value = e.currentTarget?.value?.toUpperCase();
-                            setFieldValue("inputCode", value);
-                          }}
-                          onFocus={() => {
-                            errors = null;
-                          }}
-                        />
-                      </div>
-                      <div className="button">
-                        <Button
-                          type="button"
-                          disabled={false}
-                          data-cy="checkoutPaymentPromoCodeBtn"
-                          onClick={() => handleApplyBtnClick(values.inputCode)}
-                        >
-                          Aplicar
-                        </Button>
-                      </div>
-                    </div>
-                  </S.InputWrapper>
-                )}
+                <S.InputWrapper className="wrapper">
+                  <InputField
+                    data-cy="checkoutPaymentPromoCodeInput"
+                    label="Ingresa tu cupón"
+                    name="inputCode"
+                    inputSize="large"
+                    placeholder="Ejem: YEPS-03JD-N08T"
+                    value={values?.inputCode}
+                    onChange={e => {
+                      const value = e.currentTarget?.value?.toUpperCase();
+                      setFieldValue("inputCode", value);
+                    }}
+                    onFocus={() => {
+                      errors = null;
+                    }}
+                  />
+                </S.InputWrapper>
+
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="large"
+                  data-cy="checkoutPaymentPromoCodeBtn"
+                  onClick={() => handleApplyBtnClick(values.inputCode)}
+                >
+                  Aplicar
+                </Button>
               </S.InputWithButton>
-            </S.Input>
+            )}
             {discount?.promoCode && (
-              <div>
-                <S.ChipsWrapper className="promoCode" >
-                    <div className="voucherTitle">
-                      <ReactSVG path={voucherSVG} />
-                      <span data-cy="checkoutPaymentPromoCodeChip">
-                        {discount?.promoCode}
-                      </span>
-                    </div>
-                    <div className="voucherDescription">
-                      {discountDescription}
-                    </div>
-                    <S.LinkWrapper onClick={() => handleRemoveBtnClick(discount?.promoCode)}>
-                        Eliminar
-                    </S.LinkWrapper>
-                </S.ChipsWrapper>
-              </div>
+              <S.ChipsWrapper className="promoCode">
+                <div className="voucherTitle">
+                  <ReactSVG path={voucherSVG} />
+
+                  <span data-cy="checkoutPaymentPromoCodeChip">
+                    {discount?.promoCode}
+                  </span>
+                </div>
+                <div className="voucherDescription">
+                  {discountValue}
+                  {discountDescription}
+                </div>
+                <S.LinkWrapper
+                  onClick={() => handleRemoveBtnClick(discount?.promoCode)}
+                >
+                  Eliminar
+                </S.LinkWrapper>
+              </S.ChipsWrapper>
             )}
           </S.DiscountForm>
         );

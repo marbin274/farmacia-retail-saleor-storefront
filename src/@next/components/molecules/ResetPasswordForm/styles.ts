@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   width: 100%;
+  background: #F7F6F8;
 
   h3 {
     font-weight: ${props => props.theme.typography.boldFontWeight};
@@ -21,6 +22,6 @@ export const InputFields = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 10.5rem;
+  height: 9rem;
   margin: 1rem auto;
 `;

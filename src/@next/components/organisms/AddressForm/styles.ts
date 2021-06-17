@@ -2,7 +2,6 @@ import { media, mediaUp, styled } from "@styles";
 import {
   aunaBrand3,
   white,
-  aunaInteractive,
   aunaError,
   smallFontSize,
   smallFontWeight,
@@ -10,18 +9,6 @@ import {
 
 export const AddressForm = styled.form`
   width: 100%;
-
-  .additionals {
-    margin-top: 2rem;
-    width: 100%;
-    ${media.smallScreen`
-      width: 100%;
-    `}
-
-    a {
-      color: ${aunaInteractive};
-    }
-  }
 
   .labelValidation {
     color: ${aunaError};
@@ -34,31 +21,42 @@ export const PrivacyAndPolicies = styled.div`
   margin-top: 1rem;
   margin-bottom: 1rem;
   width: 100%;
+
   > div {
     margin-bottom: 0rem;
-  }
-  ${media.smallScreen`
-    width: 100%;
-  `}
 
-  a {
-    color: ${aunaInteractive};
+    > p {
+      margin-left: 2rem;
+      margin-top: 0.5rem;
+    }
   }
 `;
 
+export const TreatmentPolicy = styled.div`
+  margin-top: 2rem;
+  width: 100%;
+`;
+
 export const Wrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  width: 100%;
 `;
 
 export const RowWithTwoCells = styled.div`
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  ${media.smallScreen`
+    grid-template-columns: 1fr;
+  `}
   & > div {
-    width: calc(50% - ${props => props.theme.spacing.fieldSpacer} / 2);
+    margin-top: 1.5rem;
+    &:last-child {
+      ${media.smallScreen`
+        margin-top: 1.5rem;
+      `}
+    }
     ${media.smallScreen`
       width: 100%;
     `}
@@ -67,6 +65,7 @@ export const RowWithTwoCells = styled.div`
 
 export const RowWithOneCell = styled.div`
   width: 100%;
+  margin-bottom: 1.5rem;
 `;
 
 export const FieldsGroup = styled.div`
@@ -95,9 +94,11 @@ export const GroupLabelTitle = styled.span`
   padding-left: 1rem;
 `;
 
-export const Referencia = styled.div<{mobile?:boolean}>`
-  display: ${({ mobile }) => !!mobile ? "block" : "none"};
-  ${mediaUp.mediumScreen`
-    display: ${({ mobile }: any) => !!mobile ? "none" : "block"};
-  `}
+export const Referencia = styled.div<{alwaysShow?:boolean, mobile?:boolean}>`
+  ${({alwaysShow})=>!alwaysShow && `
+    display: ${({ mobile }) => !!mobile ? "block" : "none"};
+    ${mediaUp.mediumScreen`
+      display: ${({ mobile }: any) => !!mobile ? "none" : "block"};
+    `}
+  `}  
 `;

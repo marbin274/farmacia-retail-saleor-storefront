@@ -5,5 +5,5 @@ export interface IProps extends ISelect {
   label: string;
   inputProps?: object;
   errors?: IFormError[];
-  indicatorIcon?: string;
+  indicatorIcon?: string | JSX.Element;
 }

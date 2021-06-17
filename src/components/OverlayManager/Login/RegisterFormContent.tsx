@@ -1,20 +1,18 @@
 import {
-  Button,
   Checkbox,
   DataTreatmentPolicyLink,
   ErrorMessage,
-  TermsAndConditionsLink
+  TermsAndConditionsLink,
 } from "@app/components/atoms";
 import { joinFormikErrorsToIFormErrorsAndConvertToObjectErrors } from "@app/utils/errorsManagement";
 import { DOCUMENT_NUMBER_MAX_LENGTH } from "@app/utils/schemasConfig";
-import { TextField } from "@components/molecules";
 import { accountConfirmUrl } from "@temp/app/routes";
 import { useFormik } from "formik";
 import React, { useState } from "react";
 import { RegisterAccountVariables } from "./gqlTypes/RegisterAccount";
 import { registerFormSchema } from "./registerForm.schema";
 import { ILoginForm, IProps } from "./types";
-
+import { Button, InputField } from "@farmacia-retail/farmauna-components";
 
 const initialValues: ILoginForm = {
   confirmPassword: "",
@@ -62,7 +60,7 @@ export const RegisterFormContent: React.FC<IProps> = ({
         redirectUrl: values.redirectUrl,
         termsAndConditions: values.termsAndConditions,
       };
-      registerCustomer({variables});
+      registerCustomer({ variables });
     },
     validationSchema: registerFormSchema,
   });
@@ -86,70 +84,86 @@ export const RegisterFormContent: React.FC<IProps> = ({
 
   return (
     <form onSubmit={handleSubmit}>
-      <TextField
-        data-cy="registerFormFirstName"
-        name="firstName"
-        placeholder="Nombre"
-        label="*Nombre"
-        type="text"
-        value={!values?.firstName ? "" : values?.firstName}
-        errors={errors!.firstName}
-        onChange={handleChange}
-        onBlur={handleBlur}
-      />
-      <TextField
-        name="lastName"
-        placeholder="Apellido"
-        label="*Apellido"
-        type="text"
-        value={!values?.lastName ? "" : values?.lastName}
-        errors={errors!.lastName}
-        onChange={handleChange}
-        onBlur={handleBlur}
-      />
-      <TextField
-        name="documentNumber"
-        placeholder="Documento"
-        label="*Documento"
-        type="text"
-        value={!values?.documentNumber ? "" : values?.documentNumber}
-        errors={errors!.documentNumber}
-        maxLength={DOCUMENT_NUMBER_MAX_LENGTH}
-        onChange={handleChange}
-        onBlur={handleBlur}
-      />
-      <TextField
-        name="email"
-        placeholder="Correo"
-        label="*Correo"
-        type="text"
-        value={!values?.email ? "" : values?.email}
-        errors={errors.email}
-        onChange={handleChange}
-        onBlur={handleBlur}
-      />
-      <TextField
-        name="password"
-        placeholder="Contraseña"
-        label="*Contraseña"
-        type="password"
-        value={!values?.password ? "" : values?.password}
-        errors={errors!.password}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        autoComplete="off"
-      />
-      <TextField
-        name="confirmPassword"
-        placeholder="Ingresa nuevamente la contraseña"
-        label="*Confirmar contraseña"
-        type="password"
-        value={!values?.confirmPassword ? "" : values?.confirmPassword}
-        errors={errors!.confirmPassword}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        autoComplete="off"
-      />
+      <div className="InputField">
+        <InputField
+          data-cy="registerFormFirstName"
+          name="firstName"
+          placeholder="Ingresa tus nombres"
+          label="Nombres"
+          type="text"
+          value={!values?.firstName ? "" : values?.firstName}
+          error={!!errors?.firstName ? errors!.firstName[0].message : ""}
+          onChange={handleChange}
+          onBlur={handleBlur}
+        />
+      </div>
+      <div className="InputField">
+        <InputField
+          name="lastName"
+          placeholder="Ingresa tus apellidos"
+          label="Apellidos"
+          type="text"
+          value={!values?.lastName ? "" : values?.lastName}
+          error={!!errors?.lastName ? errors!.lastName[0].message : ""}
+          onChange={handleChange}
+          onBlur={handleBlur}
+        />
+      </div>
+      <div className="InputField">
+        <InputField
+          name="documentNumber"
+          placeholder="Ingresa tu documento de identidad (DNI)"
+          label="Documento"
+          type="text"
+          value={!values?.documentNumber ? "" : values?.documentNumber}
+          error={
+            !!errors?.documentNumber ? errors!.documentNumber[0].message : ""
+          }
+          maxLength={DOCUMENT_NUMBER_MAX_LENGTH}
+          onChange={handleChange}
+          onBlur={handleBlur}
+        />
+      </div>
+      <div className="InputField">
+        <InputField
+          name="email"
+          placeholder="Ingresa tu correo electrónico"
+          label="Correo electrónico"
+          type="text"
+          value={!values?.email ? "" : values?.email}
+          error={!!errors?.email ? errors!.email[0].message : ""}
+          onChange={handleChange}
+          onBlur={handleBlur}
+        />
+      </div>
+      <div className="InputField">
+        <InputField
+          name="password"
+          placeholder="Crea una contraseña"
+          label="Contraseña"
+          type="password"
+          value={!values?.password ? "" : values?.password}
+          error={!!errors?.password ? errors!.password[0].message : ""}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          autoComplete="off"
+        />
+      </div>
+      <div className="InputField">
+        <InputField
+          name="confirmPassword"
+          placeholder="Ingresa nuevamente la contraseña"
+          label="Confirmar contraseña"
+          type="password"
+          value={!values?.confirmPassword ? "" : values?.confirmPassword}
+          error={
+            !!errors?.confirmPassword ? errors!.confirmPassword[0].message : ""
+          }
+          onChange={handleChange}
+          onBlur={handleBlur}
+          autoComplete="off"
+        />
+      </div>
       <div className="login__privacy__policies">
         <Checkbox
           data-cy="checkoutPaymentPromoCodeCheckbox"
@@ -172,7 +186,7 @@ export const RegisterFormContent: React.FC<IProps> = ({
         </Checkbox>
       </div>
       <div className="login__content__button">
-        <Button type="submit" {...(loading && { disabled: true })}>
+        <Button type="submit" size="large" {...(loading && { disabled: true })}>
           {loading ? "Cargando" : "Crear cuenta"}
         </Button>
       </div>

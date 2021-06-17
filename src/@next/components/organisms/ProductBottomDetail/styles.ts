@@ -12,6 +12,9 @@ export const Container = styled.div`
 
   ${media.smallScreen`
     max-height: 13rem;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    box-shadow: 0px -0.5rem 1rem rgb(0 0 0 / 8%);
   `}
 `;
 
@@ -97,15 +100,15 @@ export const CartContent = styled.div`
   }
 
   ${media.smallScreen`
-      width: 100%;
-      margin-left: 0;
+      width: auto;
+      margin-left: 5.5rem;
 
       .button {
-        width: 100%;
+        width: 7.75rem;
       }
 
       button {
-        width: 100%;
+        width: 7.75rem;
       }
    `}
 `;

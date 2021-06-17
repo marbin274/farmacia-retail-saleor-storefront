@@ -5,7 +5,7 @@ export interface IProps {
   submitBtnText: string;
   target?: HTMLElement | null;
   formId?: string;
-  title: string;
+  title?: string;
   userId?: string;
   address?: {
     address: IAddressWithEmail;

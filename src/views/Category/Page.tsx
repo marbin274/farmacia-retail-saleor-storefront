@@ -1,20 +1,19 @@
-import { Pagination } from "@components/molecules";
-import { IPaginationProps } from "@temp/@next/components/molecules/Pagination/types";
 import {
   IAddToCartCallback,
   IRemoveItemToCartCallback,
-  ISubtractItemToCartCallback
+  ISubtractItemToCartCallback,
 } from "@temp/@next/components/molecules/ProductTileAUNA/types";
 import { CategoryNavigation } from "@temp/@next/components/organisms/CategoryNavigation/CategoryNavigation";
 import { IItems } from "@temp/@sdk/api/Cart/types";
 import { MainMenu_shop } from "@temp/components/MainMenu/gqlTypes/MainMenu";
-import { structuredData } from "@temp/core/SEO/Category/structuredData";
 import { convertToSimpleProduct, maybe } from "@temp/core/utils";
 import { IFilterAttributes, IFilters } from "@types";
+import { Pagination } from "@farmacia-retail/farmauna-components";
 import * as React from "react";
-import { ProductListHeader } from "../../@next/components/molecules";
-import { ProductListAUNA } from "../../@next/components/organisms";
+import { ProductListHeaderCategory } from "../../@next/components/molecules";
+import { ProductListCategoryAuna } from "../../@next/components/organisms";
 import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
+import { IPaginationProps } from "@temp/@next/components/molecules/Pagination/types";
 import {
   Breadcrumbs,
 
@@ -24,7 +23,8 @@ import {
   Category_category,
   Category_paginatedProducts
 } from "./gqlTypes/Category";
-
+import "./scss/index.scss";
+import { structuredData } from "@temp/core/SEO/Category/structuredData";
 interface SortItem {
   label: string;
   value?: string;
@@ -103,17 +103,20 @@ const Page: React.FC<PageProps> = ({
       []
     );
 
-  React.useEffect(() =>
-    categoryContainerRef?.current.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" })
-    , [products]);
+  React.useEffect(
+    () =>
+      categoryContainerRef?.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest",
+      }),
+    [products]
+  );
 
   return (
-    <div
-      className="category"
-      ref={categoryContainerRef}
-    >
+    <div className="category" ref={categoryContainerRef}>
       {isSmallScreen && (
-        <ProductListHeader
+        <ProductListHeaderCategory
           activeSortOption={activeSortOption}
           openFiltersMenu={() => setShowFilters(true)}
           numberOfProducts={products ? products.totalCount : 0}
@@ -125,16 +128,21 @@ const Page: React.FC<PageProps> = ({
           onCloseFilterAttribute={onAttributeFiltersChange}
         />
       )}
+      <div className="category__container">
+        <Breadcrumbs
+          breadcrumbs={extractBreadcrumbs(category)}
+          showHomeIcon
+          className="category__breadcrumbs"
+        />
+      </div>
       <div className="category__container category__body">
         <script className="structured-data-list" type="application/ld+json">
           {structuredData(category)}
         </script>
-        <CategoryNavigation
-          category={category}
-        />
+        <CategoryNavigation category={category} />
         <section className="category__products">
           {!isSmallScreen && (
-            <ProductListHeader
+            <ProductListHeaderCategory
               activeSortOption={activeSortOption}
               openFiltersMenu={() => setShowFilters(true)}
               numberOfProducts={products ? products.totalCount : 0}
@@ -146,9 +154,7 @@ const Page: React.FC<PageProps> = ({
               onCloseFilterAttribute={onAttributeFiltersChange}
             />
           )}
-          <Breadcrumbs
-            breadcrumbs={extractBreadcrumbs(category)}
-          />
+          <Breadcrumbs breadcrumbs={extractBreadcrumbs(category)} />
           <FilterSidebar
             show={showFilters}
             hide={() => setShowFilters(false)}
@@ -158,8 +164,10 @@ const Page: React.FC<PageProps> = ({
           />
           {canDisplayProducts && (
             <>
-              <ProductListAUNA
-                products={products.edges.map((edge) => convertToSimpleProduct(edge.node))}
+              <ProductListCategoryAuna
+                products={products.edges.map(edge =>
+                  convertToSimpleProduct(edge.node)
+                )}
                 productsOnCart={items}
                 loading={displayLoader}
                 addToCart={addToCart}
@@ -171,7 +179,6 @@ const Page: React.FC<PageProps> = ({
                 pageSize={pageSize}
                 total={totalProducts}
                 onPageChange={onPageChange}
-                className="category__pagination"
               />
             </>
           )}

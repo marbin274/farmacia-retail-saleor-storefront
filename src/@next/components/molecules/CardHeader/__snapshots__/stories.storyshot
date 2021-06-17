@@ -26,11 +26,12 @@ exports[`Storyshots @components/molecules/CardHeader default 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  position: relative;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 1.1rem 1.875rem;
+  padding: 1.1rem 1.875rem 0.5rem 1.875rem;
 }
 
 .c2 {
@@ -40,6 +41,7 @@ exports[`Storyshots @components/molecules/CardHeader default 1`] = `
   text-transform: camelcase;
   padding-right: 0.6rem;
   margin: 0;
+  margin-top: 2rem;
 }
 
 <div
@@ -129,12 +131,12 @@ exports[`Storyshots @components/molecules/CardHeader with big text size 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  position: relative;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 1.1rem 1.875rem;
-  border-bottom: 1px solid #f1f5f5;
+  padding: 1.1rem 1.875rem 0.5rem 1.875rem;
 }
 
 .c2 {
@@ -144,6 +146,7 @@ exports[`Storyshots @components/molecules/CardHeader with big text size 1`] = `
   text-transform: camelcase;
   padding-right: 0.6rem;
   margin: 0;
+  margin-top: 2rem;
 }
 
 <div
@@ -187,7 +190,7 @@ exports[`Storyshots @components/molecules/CardHeader with close icon 1`] = `
   margin: 20px;
 }
 
-.c4 {
+.c3 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -196,48 +199,6 @@ exports[`Storyshots @components/molecules/CardHeader with close icon 1`] = `
   left: 0;
   pointer-events: none;
   box-sizing: border-box;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  padding: 0;
-  margin: 0;
-  cursor: pointer;
-  width: 36px;
-  height: 36px;
-  background-color: #fff;
-  border-radius: 50%;
-  border-width: 0;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
-
-.c3 svg {
-  display: block;
-}
-
-.c3 svg path {
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
-
-.c3:hover {
-  background-color: rgb(33,18,94);
-}
-
-.c3:hover svg path {
-  fill: #fff;
 }
 
 .c1 {
@@ -249,11 +210,12 @@ exports[`Storyshots @components/molecules/CardHeader with close icon 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  position: relative;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 1.1rem 1.875rem;
+  padding: 1.1rem 1.875rem 0.5rem 1.875rem;
 }
 
 .c2 {
@@ -263,6 +225,7 @@ exports[`Storyshots @components/molecules/CardHeader with close icon 1`] = `
   text-transform: camelcase;
   padding-right: 0.6rem;
   margin: 0;
+  margin-top: 2rem;
 }
 
 <div
@@ -277,25 +240,23 @@ exports[`Storyshots @components/molecules/CardHeader with close icon 1`] = `
     >
       Some Title
     </h4>
-    <div
-      className="icon_button c3"
-      data-cy="icon_button"
+    <svg
+      className="fa-cursor-pointer overlay__header__close-icon"
+      color="#452FBA"
+      fill="#452FBA"
+      height={32}
       onClick={[Function]}
+      viewBox="0 0 24 24"
+      width={32}
+      xmlns="http://www.w3.org/2000/svg"
     >
-      <svg
-        height={19}
-        viewBox="0 0 32 32"
-        width={19}
-      >
-        <path
-          d="M16 12.8l-12.8-12.8-3.2 3.2 12.8 12.8-12.8 12.8 3.2 3.2 12.8-12.8 12.8 12.8 3.2-3.2-12.8-12.8 12.8-12.8-3.2-3.2-12.8 12.8z"
-          fill="#00B0CA"
-        />
-      </svg>
-    </div>
+      <path
+        d="M12.0002 1.94995C6.4602 1.94995 1.9502 6.45995 1.9502 12C1.9502 17.54 6.4602 22.0499 12.0002 22.0499C17.5402 22.0499 22.0502 17.54 22.0502 12C22.0502 6.45995 17.5402 1.94995 12.0002 1.94995ZM15.5402 14.12C15.9302 14.51 15.9302 15.14 15.5402 15.53C15.3402 15.73 15.0902 15.82 14.8302 15.82C14.5702 15.82 14.3202 15.72 14.1202 15.53L12.0002 13.41L9.8802 15.53C9.6802 15.73 9.4302 15.82 9.1702 15.82C8.9102 15.82 8.6602 15.72 8.4602 15.53C8.0702 15.14 8.0702 14.51 8.4602 14.12L10.5902 12L8.4602 9.87995C8.0702 9.48995 8.0702 8.85995 8.4602 8.46995C8.8502 8.07995 9.4802 8.07995 9.8702 8.46995L12.0002 10.59L14.1202 8.46995C14.5102 8.07995 15.1402 8.07995 15.5302 8.46995C15.9202 8.85995 15.9202 9.48995 15.5302 9.87995L13.4102 12L15.5402 14.12Z"
+      />
+    </svg>
   </div>
   <div
-    className="c4"
+    className="c3"
   />
 </div>
 `;
@@ -368,11 +329,12 @@ exports[`Storyshots @components/molecules/CardHeader with custom icon 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  position: relative;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 1.1rem 1.875rem;
+  padding: 1.1rem 1.875rem 0.5rem 1.875rem;
 }
 
 .c2 {
@@ -382,6 +344,7 @@ exports[`Storyshots @components/molecules/CardHeader with custom icon 1`] = `
   text-transform: camelcase;
   padding-right: 0.6rem;
   margin: 0;
+  margin-top: 2rem;
 }
 
 <div
@@ -445,12 +408,12 @@ exports[`Storyshots @components/molecules/CardHeader with divider 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  position: relative;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 1.1rem 1.875rem;
-  border-bottom: 1px solid #f1f5f5;
+  padding: 1.1rem 1.875rem 0.5rem 1.875rem;
 }
 
 .c2 {
@@ -460,6 +423,7 @@ exports[`Storyshots @components/molecules/CardHeader with divider 1`] = `
   text-transform: camelcase;
   padding-right: 0.6rem;
   margin: 0;
+  margin-top: 2rem;
 }
 
 <div
@@ -507,11 +471,12 @@ exports[`Storyshots @components/molecules/CardHeader with paragraph text style 1
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  position: relative;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 1.1rem 1.875rem;
+  padding: 1.1rem 1.875rem 0.5rem 1.875rem;
 }
 
 .c2 {

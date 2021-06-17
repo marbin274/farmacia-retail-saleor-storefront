@@ -9,6 +9,7 @@
 !.linguirc
 !.prettierrc
 !.husky
+!.npmrc
 dist
 node_modules
 src/locales/_build

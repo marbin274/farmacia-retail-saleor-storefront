@@ -1,115 +1,95 @@
 import { media, styled } from "@styles";
-import { turquoise } from '@styles/constants';
 
-
-
-export const DiscountForm = styled.form`
-  .promoCode {
-    padding: 1.25rem;
-    div:nth-child(1){
-      padding: 0;
-      span:nth-child(1) {
-        margin-right: 5rem;
-      }
-    }
-    button {
-      margin-top: -1.4rem;
-      background: ${props => props.theme.colors.aunaBlackGray}; 
-      border-radius: %;
-      padding: 0px 5px 0px 5px;
-        &:active {
-          -webkit-box-shadow: none;
-          -moz-box-shadow: none;
-          box-shadow: none;
-          background: transparent;
-        }
-        &:disabled {
-          cursor: not-allowed;
-        }
-      svg {
-        width: 12px;
-        padding-top: 5px;
-        path {
-          fill: ${props => props.theme.colors.white}; 
-        }
-      }
-    }
-  }
-  .voucherTitle{
-    display: flex;
-    margin-left: -3px;
-    span{
-      margin-left: 1rem;
-      color: ${props => props.theme.colors.aunaBlack};
-      font-size: ${props => props.theme.typography.smallFontSize};
-      font-weight: ${props => props.theme.typography.normalFontWeight};
-      margin-right: 1rem;
-      
-      font-weight: 600;
-    }
-  }
-  .voucherDescription {
-    margin-left: 35px;
-    font-size: ${props => props.theme.typography.labelFontSize};
-    font-weight: ${props => props.theme.typography.normalFontWeight};
-    color: ${props => props.theme.colors.aunaBlack};
-    padding-bottom: 0.375rem;
-  }
-
-  ${media.smallScreen`
-    .promoCode {
-      button {
-        float: right;
-        margin-top: -3rem;
-      }
-    }
-  `}
-`;
-
-export const Input = styled.div`
-  margin-bottom: ${props => props.theme.spacing.spacer};
-`;
+export const DiscountForm = styled.form``;
 
 export const InputWithButton = styled.div`
   display: flex;
-`;
-
-export const InputWrapper = styled.div`
-  width: 21.875rem; 
+  width: 26.375rem;
+  align-items: flex-end;
   ${media.largeScreen`
     flex: auto;
   `}
+
   ${media.smallScreen`
-    flex: 1;
     width: 100%;
     max-width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
   `}
-`;
 
-export const ButtonWrapper = styled.div`
-  width: auto;
-  min-width: 110px;
   button {
-    padding: 0.8rem 1rem;
+    > span {
+      font-weight: 600;
+      margin-left: 0;
+    }
+    ${media.smallScreen`
+      margin-top: 1rem;
+    `}
   }
 `;
 
-export const ChipsWrapper = styled.div`
-  padding: 1.25rem;
-  width: 328px;
-  height: 7rem;
-  background: #F6F8FA;
-  border-radius: 1rem;
+export const InputWrapper = styled.div`
+  width: calc(100% - 7rem);
+  margin-right: 1.3125rem;
+  > div {
+    > label {
+      font-weight: 600;
+    }
+  }
   ${media.smallScreen`
     width: 100%;
-    padding-left: 1.875rem;
+    max-width: 19.375rem;
   `}
-  `;
+`;
+
+export const ChipsWrapper = styled.div`
+  background: #ffffff;
+  border: 0.09375rem solid #00bf8e !important;
+  border-radius: 1rem;
+  width: 23.75rem;
+  min-height: 7.5rem;
+  padding: 1.125rem 2rem;
+
+  ${media.smallScreen`
+    width: 100%;
+    max-width: 21.875rem;
+  `}
+
+  .voucherTitle {
+    display: flex;
+    align-items: center;
+    margin-left: -0.25rem;
+    svg {
+      path {
+        fill: #00bf8e;
+      }
+    }
+
+    > span {
+      margin-left: 1rem;
+      color: #23212b;
+      font-weight: 600;
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
+  }
+  .voucherDescription {
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+    margin-left: 2.1875rem;
+    padding-bottom: 0.375rem;
+    > span {
+      font-weight: 600;
+      color: #00bf8e;
+    }
+  }
+`;
 export const LinkWrapper = styled.span`
   margin-top: 0.9375rem;
-  color: ${turquoise};
+  color: #452fba;
   cursor: pointer;
   font-size: ${props => props.theme.typography.smallFontSize};
   margin-left: 2.125rem;
+  font-weight: 500;
 `;
-

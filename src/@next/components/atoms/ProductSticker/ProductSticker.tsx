@@ -1,20 +1,24 @@
-import { PRODUCT_STICKERS } from '@temp/core/config';
-import React from 'react';
-import * as S from './styles';
+import { PRODUCT_STICKERS } from "@temp/core/config";
+import React from "react";
+import { Chip } from "@farmacia-retail/farmauna-components";
 
 interface IProductLabelProps {
-    isOnSale?: boolean;
-    isOutStock?: boolean;
+  isOnSale?: boolean;
+  isOutStock?: boolean;
 }
 
-export const ProductSticker = ({ isOnSale, isOutStock }: IProductLabelProps) => {
-    if (isOutStock) {
-        return <S.ProductSticker backgroundColor={PRODUCT_STICKERS.Agotado.backgroundColor}>{PRODUCT_STICKERS.Agotado.label}</S.ProductSticker>;
-    }
-    if (isOnSale) {
-        return <S.ProductSticker backgroundColor={PRODUCT_STICKERS.Oferta.backgroundColor}>{PRODUCT_STICKERS.Oferta.label}</S.ProductSticker>;
-    } else {
-        return null;
-    }
-}
-
+export const ProductSticker = ({
+  isOnSale,
+  isOutStock,
+}: IProductLabelProps) => {
+  let chipComponent = null;
+  if (isOnSale) {
+    chipComponent = <Chip label={PRODUCT_STICKERS.Oferta.label} />;
+  }
+  if (isOutStock) {
+    chipComponent = (
+      <Chip label={PRODUCT_STICKERS.Agotado.label} disabled={true} />
+    );
+  }
+  return <div className="fa-flex fa-justify-start">{chipComponent}</div>;
+};

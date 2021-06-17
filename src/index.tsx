@@ -23,6 +23,8 @@ import { ApolloProvider } from "react-apollo";
 import { render } from "react-dom";
 import { Route, Router } from "react-router-dom";
 import { QueryParamProvider } from "use-query-params";
+import "./globalStyles/index.css";
+
 import { OptimizelyProvider } from "@optimizely/react-sdk";
 import { App } from "./app";
 import {

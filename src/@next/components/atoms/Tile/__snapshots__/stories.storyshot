@@ -18,14 +18,14 @@ exports[`Storyshots @components/atoms/Tile addNew tile style 1`] = `
 }
 
 .c1 {
-  background-color: #F6F8FA;
   border: 1px transparent solid;
   overflow: auto;
   height: 100%;
   padding: 0;
   -webkit-transition: all 0.3s,color 0s,fill 0s;
   transition: all 0.3s,color 0s,fill 0s;
-  border-radius: 0.5rem;
+  border-radius: 1.5rem;
+  background: #FFFFFF;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -59,7 +59,7 @@ exports[`Storyshots @components/atoms/Tile addNew tile style 1`] = `
 }
 
 .c2 {
-  padding: 1rem 1.25rem 0rem;
+  padding: 0 1.5rem 1.5rem 2rem;
 }
 
 <div
@@ -88,7 +88,7 @@ exports[`Storyshots @components/atoms/Tile default 1`] = `
   margin: 20px;
 }
 
-.c3 {
+.c4 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -100,14 +100,14 @@ exports[`Storyshots @components/atoms/Tile default 1`] = `
 }
 
 .c1 {
-  background-color: #F6F8FA;
   border: 1px transparent solid;
   overflow: auto;
   height: 100%;
   padding: 0;
   -webkit-transition: all 0.3s,color 0s,fill 0s;
   transition: all 0.3s,color 0s,fill 0s;
-  border-radius: 0.5rem;
+  border-radius: 1.5rem;
+  background: #FFFFFF;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -122,7 +122,11 @@ exports[`Storyshots @components/atoms/Tile default 1`] = `
 }
 
 .c2 {
-  padding: 1rem 1.25rem 0rem;
+  padding: 1.5rem 1.5rem 1rem 2rem;
+}
+
+.c3 {
+  padding: 0 1.5rem 1.5rem 2rem;
 }
 
 <div
@@ -132,18 +136,14 @@ exports[`Storyshots @components/atoms/Tile default 1`] = `
     className="c1"
   >
     <div
-      className=""
+      className="c2"
     >
-      <div
-        className="c2"
-      >
-        <h3>
-          This is header
-        </h3>
-      </div>
+      <h3>
+        This is header
+      </h3>
     </div>
     <div
-      className="c2"
+      className="c3"
     >
       <div>
         This is body
@@ -151,7 +151,7 @@ exports[`Storyshots @components/atoms/Tile default 1`] = `
     </div>
   </div>
   <div
-    className="c3"
+    className="c4"
   />
 </div>
 `;
@@ -174,14 +174,14 @@ exports[`Storyshots @components/atoms/Tile with hover 1`] = `
 }
 
 .c1 {
-  background-color: #F6F8FA;
   border: 1px transparent solid;
   overflow: auto;
   height: 100%;
   padding: 0;
   -webkit-transition: all 0.3s,color 0s,fill 0s;
   transition: all 0.3s,color 0s,fill 0s;
-  border-radius: 0.5rem;
+  border-radius: 1.5rem;
+  background: #FFFFFF;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -201,13 +201,11 @@ exports[`Storyshots @components/atoms/Tile with hover 1`] = `
 }
 
 .c2 {
-  padding: 1rem 1.25rem 0rem;
+  padding: 1.5rem 1.5rem 1rem 2rem;
 }
 
 .c3 {
-  margin-top: auto;
-  padding: 0 1rem;
-  margin-bottom: 1rem;
+  padding: 0 1.5rem 1.5rem 2rem;
 }
 
 <div
@@ -217,29 +215,18 @@ exports[`Storyshots @components/atoms/Tile with hover 1`] = `
     className="c1"
   >
     <div
-      className=""
-    >
-      <div
-        className="c2"
-      >
-        <h3>
-          This is header
-        </h3>
-      </div>
-    </div>
-    <div
       className="c2"
     >
-      <div>
-        This is body
-      </div>
+      <h3>
+        This is header
+      </h3>
     </div>
     <div
       className="c3"
     >
-      <p>
-        And this is footer
-      </p>
+      <div>
+        This is body
+      </div>
     </div>
   </div>
   <div

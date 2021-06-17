@@ -1,47 +1,42 @@
 import React from "react";
-import ReactSVG from "react-svg";
 import { Link } from "react-router-dom";
-import medicinesImg from "images/auna/medicines.svg";
-import arrowImg from "images/breadcrumbs-arrow.svg";
-import { Button } from "..";
 import { OverlayContextInterface, OverlayTheme, OverlayType } from "../Overlay";
+import { Button } from "@farmacia-retail/farmauna-components";
+import MedicalHealth from "images/medical-health.svg";
 
 const CheckoutAsGuest: React.FC<{
   overlay: OverlayContextInterface;
   checkoutUrl: string;
 }> = ({ overlay, checkoutUrl }) => (
-  <div className="checkout-login__guest">
-    <div className="checkout-login__guest__content">
-      <div className="checkout-login__guest__content__top">
-        <ReactSVG
-          path={medicinesImg}
-          className="checkout-login__guest__content__top__img"
-        />
-        <span className="checkout-login__guest__content__top__text">
-          Quiero comprar como:
-        </span>
-        <Link to={checkoutUrl} className="checkout-login__link_guest">
-          <Button
-            className="checkout-login__button_guest"
-          >
-            Invitado
-          </Button>
-        </Link>
-      </div>
-      <div className="checkout-login__guest__content__bottom">
-        <span>¿Aún no te registras?</span>
-        <div
-          className="checkout-login__button_register"
-          onClick={() => overlay.show(OverlayType.register, OverlayTheme.right)}
-        >
-          Regístrate
-          <ReactSVG
-            path={arrowImg}
-            className="checkout-login__button_register__icon"
-          />
-        </div>
-      </div>
-    </div>
+  <div className="fa-flex fa-flex-col fa-items-center">
+    <span className="fa-mb-10 fa-text-2xl fa-font-semibold">
+      No soy cliente
+    </span>
+    <img
+      className="fa-mb-6"
+      src={MedicalHealth}
+      alt="No soy cliente de Farmauna"
+      style={{ maxWidth: "4.5rem" }}
+    />
+    <span className="fa-mb-6 fa-font-medium fa-text-sm">
+      Quiero comprar como:
+    </span>
+    <Link to={checkoutUrl} className="fa-w-full fa-mb-4">
+      <Button size="large" className="fa-w-full">
+        Invitado
+      </Button>
+    </Link>
+    <span className="fa-mb-4 fa-font-medium fa-text-sm">
+      ¿No tienes cuenta?
+    </span>
+    <Button
+      size="large"
+      className="fa-w-full"
+      variant="outline"
+      onClick={() => overlay.show(OverlayType.register, OverlayTheme.center)}
+    >
+      Regístrate
+    </Button>
   </div>
 );
 

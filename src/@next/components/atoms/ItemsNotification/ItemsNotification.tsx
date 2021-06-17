@@ -2,10 +2,9 @@ import React, { useEffect, useState } from "react";
 import { itemNotificationsService } from "./ItemsNotificationService";
 import { IItemsNotificationServiceProps } from "./types";
 import * as S from "./styles";
-import { Button } from "..";
-import ReactSVG from "react-svg";
-import CloseIcon from "images/close.svg";
-import CheckIcon from "images/check.svg";
+import { Button, XIcon, CheckIcon } from "@farmacia-retail/farmauna-components";
+import { Thumbnail } from "@temp/@next/components/molecules";
+import { ISimpleProduct } from "@temp/@next/types/IProduct";
 
 export const ItemsNotification: React.FC<any> = () => {
   const [notifications, setNotifications] = useState<
@@ -55,34 +54,48 @@ export const ItemsNotification: React.FC<any> = () => {
     setNotifications([]);
   };
 
+  const getSourceFromProduct = (product: ISimpleProduct) => {
+    return {
+      thumbnail: {
+        url:
+          product?.thumbnail?.url ||
+          product?.variant?.product?.thumbnail?.url ||
+          "",
+      },
+      thumbnail2x: {
+        url:
+          product?.thumbnail2x?.url ||
+          product?.variant?.product?.thumbnail2x?.url ||
+          "",
+      },
+    };
+  };
+
   return notifications.length > 0 ? (
     <S.NotificationContainer>
       <div className="container">
         <S.ItemNotification>
           <S.Header>
-            {notifications.length > 1 ? (
-              <p>Productos Agregados</p>
-            ) : (
-              <p>Producto Agregado</p>
-            )}
-            <Button onClick={hide}>
-              <ReactSVG path={CloseIcon} />
-            </Button>
+            <S.HeaderTitleEvent>
+              <S.HeaderCheckContainer>
+                <CheckIcon />
+              </S.HeaderCheckContainer>
+              <p>
+                {notifications.length > 1
+                  ? "Productos Agregados"
+                  : "Producto Agregado"}
+              </p>
+            </S.HeaderTitleEvent>
+            <Button icon={<XIcon size={8} />} onClick={hide} iconOnly />
           </S.Header>
           <S.Body>
             {notifications.map((message, index) => {
               return (
                 <S.Item key={index}>
-                  <div className="check">
-                    <ReactSVG path={CheckIcon} />
-                  </div>
-                  <div>
-                    <label>
-                      <strong>{message.quantity}</strong>
-                    </label>
-                    &nbsp;
-                    <label>{message.product.name}</label>
-                  </div>
+                  <S.ItemImage>
+                    <Thumbnail source={getSourceFromProduct(message.product)} />
+                  </S.ItemImage>
+                  <label>{message.product.name}</label>
                 </S.Item>
               );
             })}

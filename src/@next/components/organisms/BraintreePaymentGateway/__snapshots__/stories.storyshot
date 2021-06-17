@@ -19,10 +19,8 @@ exports[`Storyshots @components/organisms/BraintreePaymentGateway default 1`] = 
 
 .c8 {
   background-color: transparent;
-  color: #9194A7;
   left: 0px;
   position: absolute;
-  font-size: 0.9rem;
   pointer-events: none;
   top: -1.5rem;
 }
@@ -42,7 +40,7 @@ exports[`Storyshots @components/organisms/BraintreePaymentGateway default 1`] = 
 
 .c5:hover {
   color: #E4E5ED;
-  border-color: #00B0CA;
+  border-color: #00BF8E;
 }
 
 .c6 {
@@ -185,7 +183,7 @@ exports[`Storyshots @components/organisms/BraintreePaymentGateway default 1`] = 
                 value=""
               />
               <label
-                className="c8"
+                className="fa-text-gray-01 fa-text-sm c8"
                 disabled={false}
               >
                 Number
@@ -227,7 +225,7 @@ exports[`Storyshots @components/organisms/BraintreePaymentGateway default 1`] = 
                   value=""
                 />
                 <label
-                  className="c8"
+                  className="fa-text-gray-01 fa-text-sm c8"
                   disabled={false}
                 >
                   ExpiryDate
@@ -266,7 +264,7 @@ exports[`Storyshots @components/organisms/BraintreePaymentGateway default 1`] = 
                   value=""
                 />
                 <label
-                  className="c8"
+                  className="fa-text-gray-01 fa-text-sm c8"
                   disabled={false}
                 >
                   CVC

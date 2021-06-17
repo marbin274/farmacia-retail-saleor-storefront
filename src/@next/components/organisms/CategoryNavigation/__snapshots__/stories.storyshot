@@ -18,24 +18,32 @@ exports[`Storyshots @components/organisms/CategoryNavigation default 1`] = `
 }
 
 .c1 {
-  width: 18.75rem;
+  width: 18rem;
   background-color: #fff;
-  padding: 1.25rem 1rem;
+  padding: 2rem 1rem;
   padding-top: 1.875rem;
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
+  border-radius: 16px;
 }
 
 .c2 {
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  color: #2F2C3A;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin-bottom: 1rem;
-  font-size: 1.25rem;
+  font-weight: 600;
+  font-size: 16px;
+  margin: 0 0 0.813rem 1rem;
 }
 
 .c3 {
+  text-transform: capitalize;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
   font-weight: 600;
 }
 
@@ -51,14 +59,13 @@ exports[`Storyshots @components/organisms/CategoryNavigation default 1`] = `
   <nav
     className="c1"
   >
-    <div
+    <p
       className="c2"
     >
       <span
         className="c3"
       />
-    </div>
-    <hr />
+    </p>
   </nav>
   <div
     className="c4"

@@ -1,41 +1,43 @@
 import { media, styled } from "@styles";
 import { white } from "@styles/constants";
 import { NavLink as NavLinkComponent } from "@temp/components/NavLink";
+import farmatheme from "@farmatheme";
 
 export const Wrapper = styled.nav`
-  width: 18.75rem;
+  width: 18rem;
   background-color: ${white};
-  padding: 1.25rem 1rem;
+  padding: 2rem 1rem;
   padding-top: 1.875rem;
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
+  border-radius:16px;
 
   ${media.largeScreen`
     display: none;
   `}
 `;
 
-export const Title = styled.div`
+export const Title = styled.p`
+  align-items: flex-start;
+  color: ${farmatheme.theme.colors.neutral.darkest};
   display: flex;
-  margin-bottom: 1rem;  
-  font-size: ${({ theme }) => theme.typography.bigFontSize};
-`;
-
-export const TitleIcon = styled.span`
-  align-items: center;
-  display: flex;
-  margin-right: .5rem;
+  font-weight: 600;
+  font-size: 16px;
+  margin: 0 0 0.813rem 1rem;
 `;
 
 export const TitleName = styled.span<{ isLvl1: boolean }>`
-  ${({ isLvl1, theme }) => !isLvl1 && `color: ${theme.colors.interactive}`}
+  text-transform: capitalize;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  ${({ isLvl1 }) => !isLvl1 && `color: ${farmatheme.theme.colors.highlight.medium}`}
   ${({ isLvl1, theme }) => isLvl1 && `font-weight: ${theme.typography.boldFontWeight}`}
 `;
 
 export const Link = styled.li`
-  margin-bottom: 0.25rem;
-  font-weight: normal;
-  font-size: 16px;
+  margin-bottom: 0.438rem;
+  font-weight: 400;
+  font-size: 14px;
+  coloR: #908BA7;
+ 
 
   &:last-child {
     margin-bottom: 0;
@@ -43,14 +45,21 @@ export const Link = styled.li`
 `;
 
 export const NavLink = styled(NavLinkComponent)`
-color: ${({ theme }) => theme.colors.greyText};
-  border-radius: 0.3125rem;
+  border-radius: 0.5rem;
+  padding: 0;
   display: block;
-  margin-right: 0.625rem;
-  padding: 1rem 0.5rem;
-  width: 100%;
+  margin-right: 0;
+  font-weight: 500;
+  color: ${farmatheme.theme.colors.neutral.darkest};
+  padding:17px 16px;
   &:hover {
-    background-color: ${({ theme }) => theme.colors.complementary1};
-    color: ${({ theme }) => theme.colors.interactive};
+    color:  ${farmatheme.theme.colors.primary.medium};
+    background: ${farmatheme.theme.colors.primary.lightest};
+
+  }
+
+  &:active {
+    background:#E8FCF7;
+    color:  ${farmatheme.theme.colors.primary.medium};
   }
 `;

@@ -5,6 +5,7 @@ import { withRouter, RouteComponentProps } from "react-router-dom";
 import ReactSVG from "react-svg";
 import { NavLink } from "..";
 import arrowDowm from "../../images/arrow-down.svg";
+import logoFarmaunaFooter from "../../images/logo-farmauna-footer.svg";
 import { TypedSecondaryMenuQuery } from "./queries";
 import "./scss/index.scss";
 import SocialMedia from "../SocialMedia";
@@ -108,6 +109,24 @@ class Nav extends React.PureComponent<IProps, IState> {
         })}
       >
         <div className="container">
+          <div className="footer-nav__section">
+            <div className="footer-nav__section-header">
+              <div className="logo-footer-farmauna">
+                <img src={logoFarmaunaFooter} alt="Logo Farmauna" />
+              </div>
+            </div>
+            <div className="footer-nav__section-content">
+              <p>¿Necesitas asesoría?</p>
+              <p className="email_footer">
+                <a href="mailto:consultas@farmauna.com" target="_blank">
+                  consultas@farmauna.com
+                </a>
+              </p>
+              <p className="phone_footer">
+                <span className="phone">01 3913655</span>
+              </p>
+            </div>
+          </div>
           <TypedSecondaryMenuQuery>
             {({ data }) => {
               return data.shop.navigation.secondary.items.map(item => (
@@ -143,27 +162,29 @@ class Nav extends React.PureComponent<IProps, IState> {
 
           <SocialMedia />
         </div>
-        <div className="container_terms_and_privacy container">
-          <div className="copyright">
-            <label htmlFor="">
-              Copyright Auna 2020 <br /> Todos los derechos reservados
-            </label>
-          </div>
-          <div className="terms">
-            <a
-              href={DOCUMENTS_URLS_S3.terminosYCondicionesUrl}
-              rel="noopener nofollow"
-            >
-              Términos y condiciones
-            </a>
-          </div>
-          <div className="privacy">
-            <a
-              href={DOCUMENTS_URLS_S3.politicasDePrivacidadUrl}
-              rel="noopener nofollow"
-            >
-              Políticas de privacidad
-            </a>
+        <div className="container_terms_and_privacy">
+          <div className="content_terms">
+            <div className="copyright">
+              <label htmlFor="">
+                <a
+                  href={DOCUMENTS_URLS_S3.politicasDePrivacidadUrl}
+                  rel="noopener nofollow"
+                >
+                  Políticas de privacidad
+                </a>
+              </label>
+              <label htmlFor="">
+                <a
+                  href={DOCUMENTS_URLS_S3.terminosYCondicionesUrl}
+                  rel="noopener nofollow"
+                >
+                  Términos y condiciones
+                </a>
+              </label>
+            </div>
+            <div className="privacy">
+              <a href="">© Copyright Farmauna 2021</a>
+            </div>
           </div>
         </div>
       </footer>

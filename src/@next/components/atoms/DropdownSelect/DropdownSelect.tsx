@@ -8,7 +8,7 @@ import { Select } from "../Select";
 import { useHandlerWhenClickedOutside } from "../../../hooks";
 import * as S from "./styles";
 import { IProps } from "./types";
-import caretDown from "images/caret-down.svg";
+import { DownIcon } from "@farmacia-retail/farmauna-components";
 
 export const DropdownSelect: React.FC<IProps> = ({
   options,
@@ -29,9 +29,11 @@ export const DropdownSelect: React.FC<IProps> = ({
         onClick={() => setMenuIsOpen(!menuIsOpen)}
       >
         <Label>Ordenar por:</Label>
-        <S.Value className="clear-label">{` ${value ? value.label : "Limpiar"}`}</S.Value>
+        <S.Value className="clear-label">{` ${
+          value ? value.label : "Limpiar"
+        }`}</S.Value>
         <S.Indicator rotate={String(menuIsOpen)}>
-          <img src={caretDown} alt="caretdown" />
+          <DownIcon />
         </S.Indicator>
       </S.SortLine>
     ),

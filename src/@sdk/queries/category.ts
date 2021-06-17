@@ -10,7 +10,7 @@ export const categoryQuery = gql`
       backgroundImage {
         url
       }
-      ancestors(last: 5) {
+      ancestors(last: 100) {
         edges {
           node {
             id

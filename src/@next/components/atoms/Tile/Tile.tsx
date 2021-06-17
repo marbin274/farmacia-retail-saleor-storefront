@@ -12,9 +12,7 @@ export const Tile: React.FC<IProps> = ({
   return (
     <S.Wrapper {...props}>
       {header && (
-        <S.Header>
-          <S.Content>{header}</S.Content>
-        </S.Header>
+        <S.Header>{header}</S.Header>
       )}
       <S.Content>{children}</S.Content>
       {footer && <S.Footer>{footer}</S.Footer>}

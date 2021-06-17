@@ -1,10 +1,7 @@
 import React from "react";
-
-import { IconButton } from "@components/atoms";
-
 import * as S from "./styles";
 import { IProps } from "./types";
-import { turquoise } from "@temp/@next/globalStyles/constants";
+import { BulletXFilledIcon } from "@farmacia-retail/farmauna-components";
 
 export const CardHeader: React.FC<IProps> = ({
   children,
@@ -23,7 +20,14 @@ export const CardHeader: React.FC<IProps> = ({
       ) : (
         <S.Paragraph>{children}</S.Paragraph>
       )}
-      {withCloseIcon && <IconButton name="x" color={turquoise} size={19} onClick={onHide} />}
+      {withCloseIcon && (
+        <BulletXFilledIcon
+          size={32}
+          color="#452FBA"
+          onClick={onHide}
+          className="overlay__header__close-icon"
+        />
+      )}
       {customIcon}
     </S.Header>
   );

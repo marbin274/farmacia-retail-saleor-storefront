@@ -68,7 +68,7 @@ exports[`Storyshots @components/organisms/SideNavbar default 1`] = `
   transition: opacity 0.2s ease;
   -webkit-transition-delay: 0;
   transition-delay: 0;
-  background-color: rgba(199,207,207,0.8);
+  background-color: rgba(35,33,43,0.8);
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;

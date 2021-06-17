@@ -214,7 +214,7 @@ export const View: FC<ViewProps> = ({ match }) => {
                         onAttributeFiltersChange={onFiltersChange}
                         activeFilters={
                           filters!.attributes
-                            ? Object.keys(filters!.attributes).length
+                            ? Object.keys(filters!.attributes!.brand).length
                             : 0
                         }
                         onOrder={value => {

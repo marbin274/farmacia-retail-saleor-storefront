@@ -39,6 +39,6 @@ describe("<CheckoutProgressBar />", () => {
       </MemoryRouter>
     );
 
-    expect(wrapper.find("a").length).toEqual(steps.length);
+    expect(wrapper.find("a").length).toEqual(steps.length + 1);
   });
 });

@@ -66,21 +66,24 @@ const Page: React.FC<IPageProps> = ({
     <>
       <S.WraperOpenBanner>
         <S.TopImagesContainer>
-          <S.TopImageItem
-            imageDesktop={imageAboutAunaDesktop}
-            imageMobile={imageAboutAunaMobile}
-            aboutauna
-            onClick={() => {
-              history.push(somosAunaPage);
-            }}
-          />
-          <S.TopImageItem
-            imageDesktop={imageConverageDistrictDesktop}
-            imageMobile={imageConverageDistrictMobile}
-            onClick={() => {
-              setShowModal(true);
-            }}
-          />
+          <S.TopImageAunaContainer>
+            <S.TopImageAuna
+              imageDesktop={imageAboutAunaDesktop}
+              imageMobile={imageAboutAunaMobile}
+              onClick={() => {
+                history.push(somosAunaPage);
+              }}
+            />
+          </S.TopImageAunaContainer>
+          <S.TopImageDistrictContainer>
+            <S.TopImageDistrict
+              imageDesktop={imageConverageDistrictDesktop}
+              imageMobile={imageConverageDistrictMobile}
+              onClick={() => {
+                setShowModal(true);
+              }}
+            />
+          </S.TopImageDistrictContainer>
         </S.TopImagesContainer>
       </S.WraperOpenBanner>
       <ModalBackground
@@ -158,7 +161,7 @@ const Page: React.FC<IPageProps> = ({
           {structuredData(shop)}
         </script>
 
-        <div className="inner-container">
+        <div>
           <div className="home-page__products">
             <ProductsFeatured
               productsOnCart={productsOnCart}

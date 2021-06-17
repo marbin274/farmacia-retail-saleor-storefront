@@ -1,25 +1,34 @@
-import { Button, Loader } from "@components/atoms";
-import { CheckoutProgressBar } from "@components/molecules";
+import { Loader } from "@components/atoms";
+import { CartResume, CheckoutProgressBar } from "@components/molecules";
 import { CartSummary } from "@components/organisms";
 import { Checkout } from "@components/templates";
+import { Button } from "@farmacia-retail/farmauna-components";
 import { IItems } from "@sdk/api/Cart/types";
 import {
   ecommerceProductsMapper,
   launchCheckoutEvent,
-  steps
+  steps,
 } from "@sdk/gaConfig";
 import { useCart, useCheckout } from "@sdk/react";
 import { alertService } from "@temp/@next/components/atoms/Alert";
+import { smallScreen } from "@temp/@next/globalStyles/constants";
+import { useUpdateCartLines } from "@temp/@next/hooks";
 import {
   checkAttentionSchedule,
-  removePaymentItems
+  removePaymentItems,
 } from "@temp/@next/utils/checkoutValidations";
+import {
+  SHIPPING_METHOD_NOT_FOUND,
+  SHIPPING_METHOD_NOT_FOUND_TITLE,
+} from "@temp/@next/utils/schemasMessages";
 import { LocalRepository } from "@temp/@sdk/repository";
 import { BASE_URL, CHECKOUT_STEPS } from "@temp/core/config";
 import { IFormError, ITaxedMoney } from "@types";
 import shippingMethodCalendarInfoIco from "images/auna/shipping-method-calendar-info.svg";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import Media from "react-media";
 import { Redirect, useLocation } from "react-router-dom";
+import { CartDeliveryDataModal } from "../../components/organisms/CartDeliveryDataModal/CartDeliveryDataModal";
 import { CheckoutRouter } from "./CheckoutRouter";
 import {
   CheckoutAddressSubpage,
@@ -29,11 +38,10 @@ import {
   ICheckoutAddressSubpageHandles,
   ICheckoutPaymentSubpageHandles,
   ICheckoutReviewSubpageHandles,
-  ICheckoutShippingSubpageHandles
+  ICheckoutShippingSubpageHandles,
 } from "./subpages";
 import { IProps } from "./types";
-import { CartDeliveryDataModal } from '../../components/organisms/CartDeliveryDataModal/CartDeliveryDataModal';
-import { SHIPPING_METHOD_NOT_FOUND, SHIPPING_METHOD_NOT_FOUND_TITLE } from "@temp/@next/utils/schemasMessages";
+
 const prepareCartSummary = (
   activeStepIndex: number,
   onClickHandle: () => void,
@@ -52,6 +60,33 @@ const prepareCartSummary = (
       products={items}
       activeStepIndex={activeStepIndex}
       onClickHandle={onClickHandle}
+    />
+  );
+};
+
+const prepareCartResume = (
+  activeStepIndex: number,
+  onClickHandle: () => void,
+  totalProducts: number,
+  subtotalPrice?: ITaxedMoney | null,
+  totalPrice?: ITaxedMoney | null,
+  shippingTaxedPrice?: ITaxedMoney | null,
+  promoTaxedPrice?: ITaxedMoney | null
+) => {
+  return (
+    <Media
+      query={{ maxWidth: smallScreen }}
+      render={() => (
+        <CartResume
+          activeStepIndex={activeStepIndex}
+          onClickHandle={onClickHandle}
+          promoPrice={promoTaxedPrice}
+          subTotalPrice={subtotalPrice}
+          shippingPrice={shippingTaxedPrice}
+          totalPrice={totalPrice}
+          totalProducts={totalProducts}
+        />
+      )}
     />
   );
 };
@@ -76,10 +111,19 @@ const getCheckoutProgress = (
   ) : null;
 };
 
-const getButton = (text: string, onClick: () => void) => {
+const getButton = (
+  text: string,
+  checkoutId: string | undefined,
+  onClick: () => void
+) => {
   if (text) {
     return (
-      <Button data-cy="checkoutPageBtnNextStep" onClick={onClick} type="submit">
+      <Button
+        data-cy="checkoutPageBtnNextStep"
+        onClick={onClick}
+        disabled={!checkoutId}
+        type="submit"
+      >
         {text}
       </Button>
     );
@@ -99,18 +143,17 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     totalPrice,
     items,
   } = useCart();
-  
-  const localRepository = new LocalRepository()
-  if (items!==undefined){
+
+  const localRepository = new LocalRepository();
+  if (items !== undefined) {
     localRepository.setFinallUseCart({
       discount,
       items,
       shippingPrice,
       subtotalPrice,
       totalPrice,
-    })
+    });
   }
-  
 
   const {
     availableShippingMethods,
@@ -119,7 +162,6 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     payment,
     setShippingMethod,
   } = useCheckout();
-  
 
   const { isAttentionSchedule } = checkAttentionSchedule(
     checkoutLoaded,
@@ -149,13 +191,20 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     return <Redirect to="/cart/" />;
   }
 
+  const totalProducts: number = useMemo(() => {
+    return items
+      ? items.reduce((prevVal, currVal) => prevVal + currVal.quantity, 0)
+      : 0;
+  }, [items]);
+
+  const { update: updateCartLines } = useUpdateCartLines();
+
   const [submitInProgress, setSubmitInProgress] = useState(false);
   const [addressSubPageErrors, setAddressSubPageErrors] = useState<
     IFormError[]
   >([]);
 
-  const [displayModalShowDetail, setDisplayModalShowDetail] = useState(false);  
-
+  const [displayModalShowDetail, setDisplayModalShowDetail] = useState(false);
 
   const [selectedPaymentGateway, setSelectedPaymentGateway] = useState<
     string | undefined
@@ -166,8 +215,13 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
   ] = useState<string | undefined>(payment?.token);
 
   useEffect(() => {
-    setSelectedPaymentGateway(payment?.gateway);
+    return () => {
+      updateCartLines();
+    };
+  }, []);
 
+  useEffect(() => {
+    setSelectedPaymentGateway(payment?.gateway);
   }, [payment?.gateway]);
 
   useEffect(() => {
@@ -199,7 +253,10 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
         if (!checkout?.id && checkoutAddressSubpageRef.current?.submitAddress) {
           checkoutAddressSubpageRef.current?.submitAddress();
         }
-        if (checkout?.id && checkoutShippingSubpageRef.current?.submitShipping) {
+        if (
+          checkout?.id &&
+          checkoutShippingSubpageRef.current?.submitShipping
+        ) {
           checkoutShippingSubpageRef.current?.submitShipping();
         }
         break;
@@ -207,7 +264,10 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
         if (checkoutPaymentSubpageRef.current?.submitPayment) {
           checkoutPaymentSubpageRef.current?.submitPayment();
         }
-        launchCheckoutEvent(steps.reviewCheckoutRoute, ecommerceProductsMapper(items));
+        launchCheckoutEvent(
+          steps.reviewCheckoutRoute,
+          ecommerceProductsMapper(items)
+        );
         break;
       case 2:
         if (checkoutReviewSubpageRef.current?.complete) {
@@ -228,26 +288,50 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     net: discount,
   };
 
-  const [addressGaEventSended, setAddressGaEventSended] = useState(false); 
+  const [addressGaEventSended, setAddressGaEventSended] = useState(false);
 
   const sendEventForCheckoutAddress = () => {
     setAddressGaEventSended(true);
-    launchCheckoutEvent(steps.addressCheckoutRoute, ecommerceProductsMapper(items));
+    launchCheckoutEvent(
+      steps.addressCheckoutRoute,
+      ecommerceProductsMapper(items)
+    );
   };
 
   const sendEventForCheckoutPayment = () => {
-    launchCheckoutEvent(steps.paymentCheckoutRoute, ecommerceProductsMapper(items));
+    launchCheckoutEvent(
+      steps.paymentCheckoutRoute,
+      ecommerceProductsMapper(items)
+    );
   };
 
   const sendEventsWhenSkippingFirstStep = () => {
-    launchCheckoutEvent(steps.addressCheckoutRoute, ecommerceProductsMapper(items));
-    launchCheckoutEvent(steps.filledContactUserData, ecommerceProductsMapper(items));
-    launchCheckoutEvent(steps.privacyPolicyAcepted, ecommerceProductsMapper(items));
-    launchCheckoutEvent(steps.filledInputForAddress, ecommerceProductsMapper(items));
-    launchCheckoutEvent(steps.shippingMethodSelected, ecommerceProductsMapper(items));
-    launchCheckoutEvent(steps.paymentCheckoutRoute, ecommerceProductsMapper(items));
+    launchCheckoutEvent(
+      steps.addressCheckoutRoute,
+      ecommerceProductsMapper(items)
+    );
+    launchCheckoutEvent(
+      steps.filledContactUserData,
+      ecommerceProductsMapper(items)
+    );
+    launchCheckoutEvent(
+      steps.privacyPolicyAcepted,
+      ecommerceProductsMapper(items)
+    );
+    launchCheckoutEvent(
+      steps.filledInputForAddress,
+      ecommerceProductsMapper(items)
+    );
+    launchCheckoutEvent(
+      steps.shippingMethodSelected,
+      ecommerceProductsMapper(items)
+    );
+    launchCheckoutEvent(
+      steps.paymentCheckoutRoute,
+      ecommerceProductsMapper(items)
+    );
   };
-  
+
   React.useEffect(() => {
     if (pathname === "/checkout/address") {
       sendEventForCheckoutAddress();
@@ -321,13 +405,15 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     setDisplayModalShowDetail(true);
   };
   return (
-    <>
-      {displayModalShowDetail  && (
-         <CartDeliveryDataModal
+    <div style={{ backgroundColor: "#F7F6F8" }}>
+      {displayModalShowDetail && (
+        <CartDeliveryDataModal
           checkout={checkout}
-          hideModal={()=>{setDisplayModalShowDetail(false);}}
+          hideModal={() => {
+            setDisplayModalShowDetail(false);
+          }}
           title="Datos de entrega"
-       />
+        />
       )}
       <Checkout
         checkoutId={checkout?.id}
@@ -339,6 +425,15 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
           !!isShippingRequiredForProducts,
           pathname
         )}
+        cartResume={prepareCartResume(
+          activeStepIndex,
+          onClickHandle,
+          totalProducts,
+          subtotalPrice,
+          totalPrice,
+          shippingTaxedPrice,
+          promoTaxedPrice
+        )}
         cartSummary={prepareCartSummary(
           activeStepIndex,
           onClickHandle,
@@ -349,9 +444,13 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
           items
         )}
         checkout={checkoutView}
-        button={getButton(activeStep.nextActionName, handleNextStepClick)}
+        button={getButton(
+          activeStep.nextActionName,
+          checkout?.id,
+          handleNextStepClick
+        )}
       />
-    </>
+    </div>
   );
 };
 

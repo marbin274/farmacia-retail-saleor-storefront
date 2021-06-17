@@ -1,10 +1,9 @@
 import { CardHeader, FormFooter } from "@components/molecules";
 import { Overlay } from "@components/organisms";
 import React from "react";
-import './scss/index.scss';
+import "./scss/index.scss";
 import * as S from "./styles";
 import { IProps } from "./types";
-
 
 const getCancelBtnProps = (action: () => void, text?: string) =>
   text && {
@@ -17,9 +16,9 @@ const getCancelBtnProps = (action: () => void, text?: string) =>
 const getSubmitBtnProps = (text: string, action?: () => void) => ({
   submitBtn: action
     ? {
-      action,
-      text,
-    }
+        action,
+        text,
+      }
     : { text },
 });
 
@@ -39,18 +38,16 @@ export const Modal: React.FC<IProps> = ({
     <Overlay position="center" show={show} target={target}>
       <S.Container>
         <S.Modal>
-          <CardHeader divider onHide={hide}>
-            {title}
-          </CardHeader>
+          <CardHeader onHide={hide}>{title}</CardHeader>
           <S.Content>{children}</S.Content>
           {submitBtnText && (
-             <FormFooter
-            divider
-            disabled={disabled}
-            {...getSubmitBtnProps(submitBtnText, onSubmit)}
-            {...getCancelBtnProps(hide, cancelBtnText)}
-            formId={formId}
-          />
+            <FormFooter
+              divider
+              disabled={disabled}
+              {...getSubmitBtnProps(submitBtnText, onSubmit)}
+              {...getCancelBtnProps(hide, cancelBtnText)}
+              formId={formId}
+            />
           )}
         </S.Modal>
       </S.Container>

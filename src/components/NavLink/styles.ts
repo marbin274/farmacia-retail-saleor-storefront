@@ -1,7 +1,7 @@
 import { styled } from "@styles";
-import { turquoise } from '@styles/constants';
+import farmatheme from '@farmatheme';
 
 export const NavActive= styled.span<{isActive: boolean}>`
-  color: ${ props => props.isActive ? turquoise : null};
+  color: ${ props => props.isActive ? farmatheme.theme.colors.highlight.darkest : null};
 `;
 

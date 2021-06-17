@@ -1,14 +1,16 @@
 import { styled } from "@styles";
 
 export const Checkbox = styled.div`
-  width: 100%;
   margin-bottom: 1.25rem;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   cursor: pointer;
   position: relative;
-  margin-left: -0.25rem;
+  margin-left: 0.25rem;
+  font-size:14px;
+  color:#23212B;
+  font-weight:500;
 `;
 
 export const Label = styled.label`
@@ -26,10 +28,13 @@ export const Label = styled.label`
     color: red;
   }
   input:checked + div {
+    background-color: ${props => props.theme.colors.primary};
+    background-color: #452FBA;
+    border-radius: 0.25rem;
+    overflow: hidden;
     span {
+      padding: 0.25rem 0.25rem 0.25rem 0.125rem;
       background-clip: content-box;
-      background-color: ${props => props.theme.colors.primary};
-      border: solid 0.125rem ${props => props.theme.colors.primary};
       div {
         display: flex;
       }
@@ -40,13 +45,11 @@ export const Label = styled.label`
 export const Span = styled.span<{error: boolean}>`
   border-radius: 0.125rem;
   border: solid 0.188rem ${({ error, theme }) => error ? theme.input.borderColorError : theme.colors.aunaLightGray};
+  border: 1px solid #452FBA;
   display: block;
   height: 1.25rem;
   width: 1.25rem;
-    div {
-      display: none;
-      svg {
-        fill: ${props => props.theme.colors.white};
-      }
+  svg {
+    fill: ${props => props.theme.colors.white};
   }
 `

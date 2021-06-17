@@ -19,7 +19,6 @@ const View: React.FC = () => {
     subtractItem,
   } = useCart();
 
-
   return (
     <div className="home-page">
       <TypedHomePageQuery alwaysRender errorPolicy="all" loaderFull>

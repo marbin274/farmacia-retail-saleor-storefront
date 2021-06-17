@@ -1,33 +1,28 @@
-import { media, styled } from "@styles";
-import { white } from "@temp/@next/globalStyles/constants";
+import { styled } from "@styles";
 
 const shippingTextOpacity = "0.7"
 
 export const ShippingMethodItem = styled.div`
   display: flex;
-  align-items: center;
-`;
-export const ShippingMethodItemControl = styled.div`
-  display: flex;
-  ${media.largeScreen`
-    flex-direction: column;
-  `}
+  align-items: flex-start;
 `;
 
 export const ShippingMethodText = styled.div`
-  width: 80%;
+  width: 100%;
 `
 export const ShippingMethodTitle = styled.p<{ selected: boolean }>`
   color: ${({ theme }) => theme.colors.shippingMethodBlack};
-  font-size: ${({ theme }) => theme.typography.baseFontSize};
+  font-size: ${({ theme }) => theme.typography.baseFontSizeSmall};
   font-weight: ${({ theme }) => theme.typography.boldFontWeight};
   opacity: ${({selected}) => !!selected ? "initial": shippingTextOpacity};
+  margin-bottom: 0.5rem;
 `
 export const ShippingMethodSubTitle = styled.p<{ selected: boolean }>`
   color: ${({ theme }) => theme.colors.shippingMethodBlack};
-  font-size: ${({ theme }) => theme.typography.smallFontSize};
+  font-size: ${({ theme }) => theme.typography.baseFontSizeSmall};
   font-weight: normal;
   opacity: ${({selected}) => !!selected ? "initial": shippingTextOpacity};
+  margin-bottom: 0.5rem;
 `
 
 export const ShippingMethodPrice = styled.div<{ selected: boolean }>`    
@@ -43,23 +38,7 @@ export const ShippingMethodPrice = styled.div<{ selected: boolean }>`
   }
 `
 
-export const ShippingMethodScheduleControl = styled.div`
-  padding: 1rem 1rem 0rem;
-  flex: 1;
-`
 export const ShippingMethodDate = styled.div``
 export const ShippingMethodTime = styled.div``
-export const ShippingMethodLabel = styled.span`
-  color: ${({ theme }) => theme.colors.greyText};
-`
-export const ShippingMethodControl = styled.div`
-  color: ${({ theme }) => theme.colors.aunaBlack};
-  font-size: ${({ theme }) => theme.typography.smallFontSize};  
-  > div {
-    padding-top: 0px;
-    margin: 0px;
-  }
-  .control{
-    background-color: ${white};
-  }
-`
+
+

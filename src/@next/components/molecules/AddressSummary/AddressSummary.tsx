@@ -6,23 +6,21 @@ import { IProps } from "./types";
 /**
  * Address summary
  */
-const AddressSummary: React.FC<IProps> = ({ address, checkout, email }: IProps) => {
+const AddressSummary: React.FC<IProps> = ({
+  address,
+  checkout,
+  email,
+}: IProps) => {
   if (address) {
     const direction = address.streetAddress1;
     const reference = address.streetAddress2;
     return (
       <S.Wrapper>
         <S.Text>
-          Direccion: 
-          <S.TextBold>
-            {direction} 
-          </S.TextBold>
+          Direccion: <S.TextBold>{direction}</S.TextBold>
         </S.Text>
         <S.Text>
-          Referencia:
-          <S.TextBold>
-            {reference} 
-          </S.TextBold>
+          Referencia: <S.TextBold>{reference}</S.TextBold>
         </S.Text>
       </S.Wrapper>
     );

@@ -1,8 +1,9 @@
 @import "@temp/globalStyles/scss/variables.scss";
 
 .order-details {
+  background-color: #f7f6f8;
   &__container {
-    margin: 3rem auto 0 auto;
+    margin: 0 auto;
   }
 
   h3 {
@@ -12,11 +13,16 @@
 
   &__link {
     font-size: $small-font-size;
-    color: $auna-interactive;
+    color: $gray-light;
     margin-top: 2rem;
     display: inline-block;
     margin-bottom: 2rem;
-
+    display: flex;
+    align-items: center;
+    svg {
+      margin-right: 1rem;
+      display: inline-block;
+    }
     @media (min-width: $small-screen) {
       margin-top: 2.5rem;
     }

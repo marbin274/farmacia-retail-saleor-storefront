@@ -12,8 +12,15 @@ import {
 import { alertService } from "../../atoms/Alert";
 import { IAlertServiceProps } from "../../atoms/Alert/types";
 import { IUserDataForNiubiz } from "../CheckoutPayment/types";
+import { InputField } from "@farmacia-retail/farmauna-components";
 import * as S from "./styles";
 import { IProps } from "./types";
+import ReactSVG from "react-svg";
+import visaIcon from "@temp/images/auna/visa-payment.svg";
+import masterCardIcon from "@temp/images/auna/mastercard-payment.svg";
+import niubizTextIcon from "@temp/images/auna/niubiz-text.svg";
+import americanExpress from "@temp/images/auna/american-express-payment.svg";
+import dinersClub from "@temp/images/auna/diners-club-payment.svg";
 const ip = require("ip");
 
 const INITIAL_CARD_ERROR_STATE = {
@@ -105,6 +112,12 @@ const getTokenizerRequirements = (
 
   return tokenizerRequirements;
 };
+
+enum ERROR_DICTIONARY {
+  CARD_NUMBER = 0,
+  EXPIRATION_DATE = 1,
+  CVV = 2,
+}
 
 const NiubizPaymentGateway: React.FC<IProps> = ({
   config,
@@ -238,7 +251,6 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                 // TODO: Replace this line with a proper error management tool
               }
             }
-           
           });
         });
 
@@ -311,11 +323,10 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
     if (!data.name || !data.lastName || !data.email) {
       configureErrorMessages({
         buttonText: "Entendido",
-        icon: ErrorFormPopulateIcon,
         message:
           "Para poder continuar es necesario ingresar tu nombre, apellido y correo.",
         title: "Faltan datos",
-        type: "Info",
+        type: "Text",
       });
       return;
     }
@@ -352,7 +363,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
               buttonText: "Entendido",
               message:
                 "Ha ocurrido un error al procesar tu pago por favor inténtalo de nuevo.",
-              type: "Info",
+              type: "Text",
             });
           }
         })
@@ -364,13 +375,13 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
               message:
                 "Es necesario completar todos los campos de la tarjeta de crédito/débito.",
               title: "Faltan datos",
-              type: "Info",
+              type: "Text",
             });
           } else {
             configureErrorMessages({
               buttonText: "Entendido",
               message: error,
-              type: "Error",
+              type: "Text",
             });
           }
         });
@@ -378,7 +389,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
       configureErrorMessages({
         buttonText: "Entendido",
         message: error,
-        type: "Error",
+        type: "Text",
       });
     }
   };
@@ -409,6 +420,22 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
     initial: "",
   };
 
+  const getErrorFromDictionary = (errorDictionary: ERROR_DICTIONARY) => {
+    return formErrors.length &&
+      formErrors.filter(x => x.code === errorsDictionary[errorDictionary])
+        .length ? (
+      <div className="error number-creditcard-error">
+        {
+          formErrors.filter(
+            x => x.code === errorsDictionary[errorDictionary]
+          )[0].message
+        }
+      </div>
+    ) : (
+      ""
+    );
+  };
+
   return (
     <div>
       {showForm ? <label htmlFor=""></label> : <Loader fullScreen={true} />}
@@ -426,113 +453,104 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                 className="card"
                 style={showForm ? styles.show : styles.hidde}
               >
-                <S.Payment  
-                  formErrors={formErrors} 
-                  invalidNumberCode={errorsDictionary[0]}
-                  invalidExpiryCode={errorsDictionary[1]}
-                  invalidCvc={errorsDictionary[2]}
-                  className="card-body">
+                <S.Payment
+                  formErrors={formErrors}
+                  invalidNumberCode={
+                    errorsDictionary[ERROR_DICTIONARY.CARD_NUMBER]
+                  }
+                  invalidExpiryCode={
+                    errorsDictionary[ERROR_DICTIONARY.EXPIRATION_DATE]
+                  }
+                  invalidCvc={errorsDictionary[ERROR_DICTIONARY.CVV]}
+                  className="card-body"
+                >
                   <h4 className="card-title">
-                    Paga con tu tarjeta  de crédito o débito 
+                    Paga con tu tarjeta de crédito o débito
                   </h4>
-                  <h5>Ingresa los datos del titular de la tarjeta</h5>
+                  <h5 className="card-subtitle">
+                    Ingresa los datos del titular de la tarjeta
+                  </h5>
+                  <S.RadioContainerPayment>
+                    <S.PaymentLine>
+                      <S.PaymentIconNiubiz>
+                        <ReactSVG path={niubizTextIcon} />
+                      </S.PaymentIconNiubiz>
+                      <S.PaymentIcon>
+                        <ReactSVG path={visaIcon} />
+                      </S.PaymentIcon>
+                      <S.PaymentIcon>
+                        <ReactSVG path={masterCardIcon} />
+                      </S.PaymentIcon>
+                      <S.PaymentIcon>
+                        <ReactSVG path={americanExpress} />
+                      </S.PaymentIcon>
+                      <S.PaymentIcon>
+                        <ReactSVG path={dinersClub} />
+                      </S.PaymentIcon>
+                    </S.PaymentLine>
+                  </S.RadioContainerPayment>
+
                   <div className="row">
-                    <div className="identity">
-                      <div>
-                        <label htmlFor="">Nombre</label>
-                        <input
-                          type="text"
-                          id="nombre"
-                          className="form-control form-control-sm"
-                          placeholder="Ejemplo: Juan"
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="">Apellido</label>
-                        <input
-                          type="text"
-                          id="apellido"
-                          className="form-control form-control-sm"
-                          placeholder="Ejemplo: Perez"
-                        />
-                      </div>
+                    <div className="row-input">
+                      <InputField
+                        label="Nombre del titular de la tarjeta"
+                        type="text"
+                        id="nombre"
+                        inputSize="large"
+                        className="form-control form-control-sm"
+                        placeholder="Ejemplo: Juan"
+                      />
+                      <InputField
+                        label="Apellido del titular de la tarjeta"
+                        type="text"
+                        id="apellido"
+                        inputSize="large"
+                        className="form-control form-control-sm"
+                        placeholder="Ejemplo: Perez"
+                      />
                     </div>
-                    <div className="email">
-                      <label htmlFor="">Correo</label>
-                      <input
+                    <div className="row-input">
+                      <InputField
+                        label="Correo electrónico"
                         type="text"
                         id="email"
+                        inputSize="large"
                         className="form-control form-control-sm"
                         placeholder="ejemplo@mail.com"
                       />
+                      <div className="card-input">
+                        <label htmlFor="">Número de tarjeta</label>
+                        <div
+                          id="txtNumeroTarjeta"
+                          className="form-control form-control-sm ncp-card"
+                        ></div>
+                        {getErrorFromDictionary(ERROR_DICTIONARY.CARD_NUMBER)}
+                      </div>
                     </div>
-                    <div className="creditcard">
-                      <label htmlFor="">Número de tarjeta</label>
-                      <div
-                        id="txtNumeroTarjeta"
-                        className="form-control form-control-sm ncp-card"
-                      ></div>
-                      {formErrors.length &&
-                      formErrors.filter(x => x.code === errorsDictionary[0])
-                        .length ? (
-                        <div className="error number-creditcard-error">
-                          {
-                            formErrors.filter(
-                              x => x.code === errorsDictionary[0]
-                            )[0].message
-                          }
-                        </div>
-                      ) : (
-                        ""
-                      )}
-                    </div>
-                    <div className="expirydate_and_cvv">
-                      <div className="expirydate">
+                    <div className="row-input">
+                      <div className="card-input">
                         <label htmlFor="">Fecha de vencimiento</label>
                         <div
                           id="txtFechaVencimiento"
                           className="form-control form-control-sm"
-                        ></div>
-                        {formErrors.length &&
-                        formErrors.filter(x => x.code === errorsDictionary[1])
-                          .length ? (
-                          <div className="error">
-                            {
-                              formErrors.filter(
-                                x => x.code === errorsDictionary[1]
-                              )[0].message
-                            }
-                          </div>
-                        ) : (
-                          ""
+                        />
+                        {getErrorFromDictionary(
+                          ERROR_DICTIONARY.EXPIRATION_DATE
                         )}
                       </div>
-                      <div className="cvv">
-                        <label htmlFor="">CVV</label>
+                      <div className="card-input">
+                        <label htmlFor="">CVC/CVV</label>
                         <div
                           id="txtCvv"
                           className="form-control form-control-sm"
-                        ></div>
-                        {formErrors.length &&
-                        formErrors.filter(x => x.code === errorsDictionary[2])
-                          .length ? (
-                          <div className="error">
-                            {
-                              formErrors.filter(
-                                x => x.code === errorsDictionary[2]
-                              )[0].message
-                            }
-                          </div>
-                        ) : (
-                          ""
-                        )}
+                        />
+                        {getErrorFromDictionary(ERROR_DICTIONARY.CVV)}
                       </div>
                     </div>
                   </div>
                 </S.Payment>
               </div>
             </form>
-            {/* <ErrorMessage errors={allErrors} /> */}
           </S.Wrapper>
         )}
       </Formik>

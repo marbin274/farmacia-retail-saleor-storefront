@@ -1,21 +1,23 @@
 import { media, styled } from "@styles";
-import { white, aunaGrey40 } from "@styles/constants";
+import { white } from "@styles/constants";
 
 export const Wrapper = styled.div`
-  width: 612px;
-  min-width: 552px;
-  height: 718px;
+  width: 35rem;
+  min-width: 34.5rem;
+  height: 35rem;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
   position: relative;
-  background: ${aunaGrey40};
+  background: ${white};
+  border-radius: 1rem;
 
   ${media.largeScreen`
-    width: 100vw;
-    height: 198px;
-    margin-left: -16px;
-    margin-bottom: 148px;
+    width: calc(100vw - 3rem);
+    min-width: 14.5rem;
+    margin: auto;
+    height: 20.625rem;
+    margin-bottom: 2.5rem;
     justify-content: flex-start;
   `}
 `;
@@ -24,29 +26,35 @@ export const ImageFrame = styled.div<{
   canAddToCart?: boolean;
 }>`
   display: flex;
-  border: 2px solid ${aunaGrey40};
+  position: relative;
+  border: 0.125rem solid ${white};
   justify-content: center;
   align-items: center;
   background: ${white};
-  border-radius: 16px;
-  width: 412px;
-  height: 518px;
-  position: absolute;
-  overflow: hidden;
-  top: 60px;
-  margin-right: 40px;
+  border-radius: 1rem;
+  width: 100%;
+  height: 100%;
 
-  > img {
-    max-width: 356px;
-    max-height: 426px;
+  .GlassMagnifier {
+    max-width: 22.25rem;
+    max-height: 26.625rem;
+    height: 100%;
+    > div {
+      height: 100%;
+      > img  {
+        max-height: 26.625rem;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
     width: 100%;
     ${({ canAddToCart }) => (canAddToCart ? "opacity: 1;" : "opacity: 0.5;")}
   }
 
   ${media.largeScreen`
-      margin-left: 22px;
-      top: 32px;
-      width: 216px;
-      height: 280px;
+      margin: auto;
+      width: 13.5rem;
+      height: 17.5rem;
   `}
 `;

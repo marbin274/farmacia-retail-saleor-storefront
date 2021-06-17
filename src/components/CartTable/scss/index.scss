@@ -1,6 +1,9 @@
 @import "@temp/globalStyles/scss/variables.scss";
 
 .cart-table {
+  @media (max-width: $small-screen) {
+    font-size: 0.75rem;
+  }
   thead tr {
     border-bottom: 1px solid $auna-grey-60;
 

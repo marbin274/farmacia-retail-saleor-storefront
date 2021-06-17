@@ -1,6 +1,6 @@
 import React from "react";
-
-import { Button, ButtonLink } from "@components/atoms";
+import { Button } from "@farmacia-retail/farmauna-components";
+import { ButtonLink } from "@components/atoms";
 import * as S from "./styles";
 import { IButtonProps, IProps } from "./types";
 

@@ -6,7 +6,7 @@ exports[`Storyshots @components/molecules/CartSummaryRow default 1`] = `
   margin: 20px;
 }
 
-.c7 {
+.c9 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -18,65 +18,139 @@ exports[`Storyshots @components/molecules/CartSummaryRow default 1`] = `
 }
 
 .c1 {
-  display: grid;
-  grid-row-gap: 6px;
-  grid-column-gap: 20px;
-  grid-template-columns: 60px auto auto;
-  grid-template-areas: "photo name name" "photo sku ." "photo . ." "photo quantity price";
-}
-
-.c6 {
-  grid-area: photo;
-  width: -webkit-min-content;
-  width: -moz-min-content;
-  width: min-content;
-}
-
-.c6 img {
-  height: auto;
-  max-width: 60px;
-}
-
-.c3 {
-  grid-area: sku;
-  color: rgba(50,50,50,0.6);
-  font-size: 10px;
-  font-weight: 500;
-  text-transform: uppercase;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c2 {
-  grid-area: name;
-  font-size: 1.125rem;
+  width: calc(100% - 5rem);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
-.c5 {
-  grid-area: price;
-  text-align: right;
-  font-weight: 500;
-}
-
-.c5 .price {
-  font-size: 1rem;
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
 }
 
 .c4 {
-  grid-area: quantity;
+  width: 4.25rem;
+  height: 4.25rem;
+  border: 0.0625rem solid #c8c5d3;
+  border-radius: 0.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c4 img {
+  height: auto;
+  max-height: 3rem;
+  max-width: 60px;
+  object-fit: cover;
+  margin: auto;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   color: #131336;
-  font-size: 18px;
+  font-size: 0.875rem;
   font-weight: 500;
+  position: absolute;
+  top: -0.75rem;
+  right: -0.75rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #452fba;
+  border-radius: 50%;
+  color: #fff;
+}
+
+.c5 span {
+  margin: auto;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c7 {
+  min-height: 2.5rem;
+  margin: 0rem .5rem 0rem 1.25rem;
+  font-size: 1rem;
+  line-height: 1.25rem;
+  color: #908ba7;
+}
+
+.c8 {
+  text-align: right;
+  color: #00bf8e;
+}
+
+.c8 .price {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.c8 .price.discounted_price {
+  margin: 0px;
 }
 
 @media (max-width:540px) {
   .c2 {
+    width: 100%;
+  }
+}
+
+@media (max-width:540px) {
+  .c6 {
+    min-width: calc(100% - 3.25rem);
+  }
+}
+
+@media (max-width:540px) {
+  .c7 {
     font-size: 0.875rem;
   }
 }
 
-@media (min-width:720px) {
-  .c2 {
-    color: #131336;
-    font-size: 0.875rem;
+@media (max-width:540px) {
+  .c8 {
+    text-align: left;
+    margin-left: 1.25rem;
   }
 }
 
@@ -88,31 +162,56 @@ exports[`Storyshots @components/molecules/CartSummaryRow default 1`] = `
   >
     <div
       className="c2"
-      data-cy="cartSummaryItemundefinedName"
     >
-      The Great Square Table
-    </div>
-    <div
-      className="c3"
-    >
-      SKU 
-      <span
-        data-cy="cartSummaryItemundefinedSKU"
+      <div
+        className="c3"
       >
-        TGS-122A
-      </span>
-    </div>
-    <div
-      className="c4"
-    >
-      <span
-        data-cy="cartSummaryItemundefinedQuantity"
+        <div
+          className="c4"
+        >
+          <img
+            alt="Product image"
+            data-cy="cartSummaryItemundefinedImage"
+            onError={[Function]}
+            src="test-file-stub"
+            srcSet="test-file-stub 1x"
+          />
+        </div>
+        <div
+          className="c5"
+        >
+          <span
+            data-cy="cartSummaryItemundefinedQuantity"
+          >
+            2
+          </span>
+        </div>
+      </div>
+      <div
+        className="c6"
       >
-        2
-      </span>
+        <div
+          className="c7"
+          data-cy="cartSummaryItemundefinedName"
+        >
+          The Great Square Table
+        </div>
+        <div
+          className="c8"
+          data-cy="cartSummaryItemundefinedPrice"
+        >
+          <div
+            className="price"
+          >
+            <span>
+              $123.00
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
     <div
-      className="c5"
+      className="c8"
       data-cy="cartSummaryItemundefinedPrice"
     >
       <div
@@ -123,20 +222,9 @@ exports[`Storyshots @components/molecules/CartSummaryRow default 1`] = `
         </span>
       </div>
     </div>
-    <div
-      className="c6"
-    >
-      <img
-        alt="Product image"
-        data-cy="cartSummaryItemundefinedImage"
-        onError={[Function]}
-        src="test-file-stub"
-        srcSet="test-file-stub 1x"
-      />
-    </div>
   </div>
   <div
-    className="c7"
+    className="c9"
   />
 </div>
 `;

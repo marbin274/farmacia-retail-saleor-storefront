@@ -13,8 +13,6 @@ export const Loader = styled.div`
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  
-  padding: 3rem 0 3rem 0;
 
   ${media.mediumScreen`
     grid-template-columns: 1fr;
@@ -26,64 +24,65 @@ export const Wrapper = styled.div`
 `;
 
 export const Navigation = styled.div`
+  position: relative;
   grid-area: navigation;
-  padding-bottom: 43px;
-  height: 85px;
+  padding-top: 1.75rem;
+  padding-bottom: 1.875rem;
+  background-color: #00bf8e;
+  border-bottom-left-radius: 3.125rem;
 `;
 
 export const FormSummyContainer = styled.div`
-  margin-top: 2.5rem;
   ${mediaUp.mediumScreen`
     display: flex;
     justify-content: space-between;
   `}
-`
+`;
 
 export const Checkout = styled.div`
   grid-area: checkout;
   max-width: 43rem;
   flex: 1;
+  padding-top: 1.5rem;
+  padding-bottom: 3rem;
   ${mediaUp.mediumScreen`
     min-width: 26rem;
   `}
+  ${media.smallScreen`
+    padding-bottom: 5.5rem;
+  `}
 `;
-export const CartSummary = styled.div`  
-    margin-top: 2rem;
+export const CartSummary = styled.div`
+  margin-top: 2rem;
+  background-color: #fff;
   ${mediaUp.mediumScreen`
-    max-width: 22.5rem;
+    max-width: 24rem;
+    margin-top: 0;
+  `}
+  ${media.smallScreen`
     margin-top: 0;
   `}
 `;
-export const Button = styled.div<{disabled: boolean}>`  
+
+export const CheckoutOptions = styled.div`
+  ${media.smallScreen`
+    width: 100vw;
+    transform: translateX(-1rem);
+    background-color: #fff;
+    padding: 1rem;
+  `}
+
+  > div {
+    &:nth-child(1) {
+      margin: 1rem 0rem;
+    }
+  }
+`;
+
+export const Button = styled.div<{ disabled: boolean }>`
   ${media.smallScreen`
     max-width: 100%;
     display: flex;
     justify-content: center;
   `}
-  >  {
-    &:first-child {
-      padding: 0.9rem 1.5rem;
-      ${({ disabled, theme }) => disabled && `background-color: ${theme.colors.aunaDisabled};`}
-      ${mediaUp.mediumScreen`
-        min-width: 13.25rem;
-        width: 15.25rem;
-
-      `}
-      ${media.smallScreen`
-        width: 90%;
-      `}
-      > {
-        &:first-child{
-          font-size: 1rem;
-          ${media.smallScreen`
-          font-size: 1rem;
-          `}
-          ${media.xSmallScreen`
-            font-size: 0.875rem;
-          `}
-
-        }
-      }
-    }
-  }
 `;

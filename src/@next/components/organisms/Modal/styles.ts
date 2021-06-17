@@ -26,7 +26,7 @@ export const Modal = styled.div`
   background-color: ${props => props.theme.colors.white};
   margin-left: auto;
   margin-right: auto;
-  border-radius: 16px;
+  border-radius: 2.5rem;
 `;
 
 export const Content = styled.div`

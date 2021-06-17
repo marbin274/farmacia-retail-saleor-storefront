@@ -16,17 +16,12 @@ export const TileWrapper = styled.div`
 export const Header = styled.div`
   width: 95%;
   padding-bottom: 1rem;
-  border-bottom: 1px solid ${props => props.theme.colors.dividerDark};
   font-weight: ${props => props.theme.typography.boldFontWeight};
   font-size: ${props => props.theme.typography.h4FontSize};
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 4rem;
-
-  ${media.smallScreen`
-    text-transform: uppercase;
-  `}
 `;
 
 export const HeaderSmall = styled(Header)`
@@ -48,7 +43,7 @@ export const AttributeWrapper = styled.div`
 `;
 
 export const Content = styled.div`
-  padding: 1.5rem 0;
+  padding: 0;
   width: 95%;
 `;
 
@@ -97,7 +92,7 @@ export const FormButtons = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  
+
   button:last-child {
     margin-left: 1.5rem;
   }
@@ -105,4 +100,10 @@ export const FormButtons = styled.div`
   ${media.largeScreen`
     justify-content: center;
   `}
+
+  button {
+    span {
+      margin-left: 0;
+    }
+  }
 `;

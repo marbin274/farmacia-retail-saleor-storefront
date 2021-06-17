@@ -1,3 +1,4 @@
+import "./matchMedia.mock.js";
 import { mount, shallow } from "enzyme";
 import "jest-styled-components";
 import React from "react";
@@ -22,14 +23,10 @@ describe("<CartSummaryRow />", () => {
 
   it("should display product price", () => {
     const wrapper = mount(<CartSummaryRow {...DEFAULT_PROPS} />);
-  
-    expect(wrapper.text()).toContain(DEFAULT_PROPS.price?.gross ? DEFAULT_PROPS.price.gross.amount : undefined);
-  });
 
-  it("should display product sku", () => {
-    const wrapper = mount(<CartSummaryRow {...DEFAULT_PROPS} />);
-
-    expect(wrapper.text()).toContain(DEFAULT_PROPS.sku);
+    expect(wrapper.text()).toContain(
+      DEFAULT_PROPS.price?.gross ? DEFAULT_PROPS.price.gross.amount : undefined
+    );
   });
 
   it("should display product thumbnail", () => {

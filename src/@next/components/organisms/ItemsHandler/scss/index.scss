@@ -5,26 +5,31 @@
   flex-direction: column;
   align-items: center;
   &--actions{
-    align-items: stretch;
+    align-items: center;
     align-content: center;
-    background: $auna-complementary1;
+    background: $auna-complementary2;
     border-radius: 40px;
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
     justify-content: space-between;
-    width: 100%;
+    width: 8rem;
+    height: 3rem;
     p {
       display: flex;
       align-items: center;
       padding: 0;
+      font-size: 1rem;
+      font-weight: 500;
     }
   
     .add_remove_button {
       display: flex;
       align-items: center;
-      background: transparent;
-      border-radius: 23px;
+      background-color: $darkGreen3;
+      border-radius: 6.25rem;
+      width: 1.5rem;
+      height: 1.5rem;
       &:nth-child(1) {
         justify-content: flex-start;
         margin-left: 1rem;
@@ -34,11 +39,14 @@
         margin-right: 1rem;
       }
       span {
-        font-size: 2rem;
+        font-size: 0.8rem;
+        margin-left: 0 !important;
+        width: 100%;
+        font-weight: 500;
       }
       &:hover {
-        background-color: $auna-complementary1;
-        color: $auna-complementary-hover !important;
+        background-color: $darkGreen3;
+        color: $white !important;
       }
   
       &:disabled {
@@ -53,10 +61,10 @@
   
       &:focus {
         box-shadow: none;
-        background-color: $auna-complementary1;
+        background-color: $darkGreen3;
       }
   
-      color: $auna-interactive !important;
+      color: $white !important;
       cursor: pointer;
       padding: 0.5rem;
     }
@@ -74,12 +82,12 @@
     &:nth-child(1) {
       justify-content: flex-start;
       margin: 0 0 0 1rem;
-      width: 20%;
+      
     }
     &:nth-child(3) {
       justify-content: flex-end;
       margin: 0 1rem 0 0;
-      width: 20%;
+     
     }
   }
 }

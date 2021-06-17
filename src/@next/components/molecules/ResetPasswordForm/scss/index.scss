@@ -1,21 +1,66 @@
 @import "@temp/globalStyles/scss/variables.scss";
 
-.new-password-form {
-    max-width: 24rem;
-    &__image {
-        padding-bottom: 3rem;
-        text-align: center;
+.rest-password-form {
+
+    background: #F7F6F8;
+    width: 100%;
+
+    .new-password-form {
+        width: 46rem;
+        @media (max-width: $small-screen) {
+            width: 24rem;
+          }
+        
+        background: #FFFFFF;
+        border-radius: 1.5rem;
+        margin: 3.75rem 0;
+        @media (max-width: $small-screen) {
+            padding-top: 5.938rem;
+          }
+        &__image {
+            padding-bottom: 2rem;
+            text-align: center;
+    
+            svg {
+                margin: 0 auto;
+            }
+        }
+        &__text {
+            color: $black;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin: 0 auto 2.125rem auto;
+            max-width: 16rem;
+            text-align: center;
+        }
+        &__button {
+            margin: 4rem 0rem;
+            text-align: center;
+        }
+    
+        .title-new-password-form {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #323E48;
+            text-align: center;
+            padding: 3.125rem 0;
+    
+        }
+        .content-new-password-form {
+            width: 21.25rem;
+            margin: 0 auto;
+
+            @media (max-width: $small-screen) {
+                form {
+                    .fa-w-auto {
+                        padding-bottom: 1.5rem;
+                    }
+                }
+            }
+            
+        }
     }
-    &__text {
-        color: $black;
-        font-size: $small-font-size;
-        font-weight: bold;
-        margin: 0 auto;
-        max-width: 16rem;
-        text-align: center;
-    }
-    &__button {
-        margin: 2.5rem 0rem;
-        text-align: center;
-    }
+
 }
+
+

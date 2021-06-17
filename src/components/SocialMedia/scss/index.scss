@@ -12,4 +12,11 @@
     display: flex;
     flex-direction: row;
   }
+  .social_media_container__title {
+    margin-bottom: 37px;
+
+    @media (max-width: $medium-screen) {
+      display: none;
+    }
+  }
 }

@@ -10,5 +10,9 @@ export const InputLabel: React.FC<IProps> = ({
   error = false,
   labelBackground,
 }: IProps) => {
-  return <S.Label {...{ active, disabled, error, labelBackground }}>{children}</S.Label>;
+  return (
+    <S.Label className='fa-text-gray-01 fa-text-sm' {...{ active, disabled, error, labelBackground }}>
+      {children}
+    </S.Label>
+  );
 };

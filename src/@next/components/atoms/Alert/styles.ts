@@ -1,48 +1,51 @@
-import { media, styled } from "@styles";
+import { mediaUp, styled } from "@styles";
+
+export const Container = styled.div`
+  height: max-content;
+`;
 
 export const Modal = styled.div`
   display: flex;
+  background-color: ${props => props.theme.colors.white};
+  border-radius: 1rem;
   flex-direction: column;
   justify-content: space-between;
+  margin: 1rem;
+  padding: 3rem;
   width: 100%;
-  z-index: 1000;
-  padding: 24px;
-  overflow-y: auto;
-  background-color: ${props => props.theme.colors.white};
-  border-radius: 16px;
-  position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-
-  ${media.smallScreen`
-    width: 90%;
-    margin-left: 5%;
+  ${mediaUp.largeScreen`
+      margin: 0 auto;
+      width: 30rem;
   `}
 `;
 
 export const Icon = styled.div`
   text-align: center;
-  width: 60%;
-  margin: 0 auto;
+  width: auto;
+  svg {
+    margin: auto;
+    transform: scale(0.8);
+  }
 `;
 
 export const Title = styled.div`
   text-align: center;
-  width: 60%;
   margin: 0 auto;
-  font-weight: ${props => props.theme.typography.normalFontWeight};
-  font-size: ${props => props.theme.typography.baseFontSize};
+  font-weight: ${props => props.theme.typography.boldFontWeight};
+  font-size: ${props => props.theme.typography.baseLineHeight};
+  line-height: ${props => props.theme.typography.h3FontSize};
   margin-bottom: 1rem;
+  color: #23212b;
 `;
 
 export const Message = styled.div`
   text-align: center;
-  font-weight: ${props => props.theme.typography.smallFontWeight};
+  font-weight: ${props => props.theme.typography.normalFontWeight};
   font-size: ${props => props.theme.typography.smallFontSize};
-  width: 60%;
+  line-height: ${props => props.theme.typography.baseLineHeight};
   margin: 0 auto;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
+  color: #23212b;
 `;
 
 export const Footer = styled.div`
@@ -52,7 +55,13 @@ export const Footer = styled.div`
   margin: 0 auto;
 
   button {
-    width: 100%;
+    font-size: ${props => props.theme.typography.baseFontSize};
+    line-height: ${props => props.theme.typography.h3FontSize};
+    font-weight: ${props => props.theme.typography.boldFontWeight};
+
+    span {
+      margin-left: 0;
+    }
   }
 `;
 

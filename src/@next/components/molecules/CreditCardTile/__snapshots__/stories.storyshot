@@ -6,7 +6,7 @@ exports[`Storyshots @components/molecules/CreditCardTile default 1`] = `
   margin: 20px;
 }
 
-.c10 {
+.c11 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -18,14 +18,14 @@ exports[`Storyshots @components/molecules/CreditCardTile default 1`] = `
 }
 
 .c1 {
-  background-color: #F6F8FA;
   border: 1px transparent solid;
   overflow: auto;
   height: 100%;
   padding: 0;
   -webkit-transition: all 0.3s,color 0s,fill 0s;
   transition: all 0.3s,color 0s,fill 0s;
-  border-radius: 0.5rem;
+  border-radius: 1.5rem;
+  background: #FFFFFF;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -40,10 +40,14 @@ exports[`Storyshots @components/molecules/CreditCardTile default 1`] = `
 }
 
 .c2 {
-  padding: 1rem 1.25rem 0rem;
+  padding: 1.5rem 1.5rem 1rem 2rem;
 }
 
-.c7 {
+.c5 {
+  padding: 0 1.5rem 1.5rem 2rem;
+}
+
+.c8 {
   margin-top: auto;
   padding: 0 1rem;
   margin-bottom: 1rem;
@@ -55,7 +59,7 @@ exports[`Storyshots @components/molecules/CreditCardTile default 1`] = `
   margin-bottom: 0px !important;
 }
 
-.c9 {
+.c10 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -80,20 +84,20 @@ exports[`Storyshots @components/molecules/CreditCardTile default 1`] = `
   transition: 0.3s;
 }
 
-.c9 svg {
+.c10 svg {
   display: block;
 }
 
-.c9 svg path {
+.c10 svg path {
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }
 
-.c9:hover {
+.c10:hover {
   background-color: rgb(33,18,94);
 }
 
-.c9:hover svg path {
+.c10:hover svg path {
   fill: #fff;
 }
 
@@ -101,16 +105,16 @@ exports[`Storyshots @components/molecules/CreditCardTile default 1`] = `
   padding: 0 1rem;
 }
 
-.c5 {
+.c6 {
   font-weight: 600;
 }
 
-.c6 {
+.c7 {
   margin-top: 0.5rem;
   margin-bottom: 1rem;
 }
 
-.c8 > div {
+.c9 > div {
   display: inline-block;
   padding: 0;
   margin: 0;
@@ -124,59 +128,55 @@ exports[`Storyshots @components/molecules/CreditCardTile default 1`] = `
     className="c1"
   >
     <div
-      className=""
+      className="c2"
     >
-      <div
-        className="c2"
-      >
-        <div>
-          <div
-            className="c3"
-          >
-            <div />
-          </div>
-          <span
-            className="c4"
-          >
-            XXXX XXXX XXXX 
-            9876
-          </span>
+      <div>
+        <div
+          className="c3"
+        >
+          <div />
         </div>
+        <span
+          className="c4"
+        >
+          XXXX XXXX XXXX 
+          9876
+        </span>
       </div>
     </div>
     <div
-      className="c2"
+      className="c5"
     >
       <div
-        className="c5"
+        className="c6"
       >
         Expires on
       </div>
       <div
-        className="c6"
+        className="c7"
       >
         05/2019
       </div>
       <div
-        className="c5"
+        className="c6"
       >
         Name on card
       </div>
       <div
-        className="c6"
+        className="c7"
       >
         John Doe
       </div>
     </div>
     <div
-      className="c7"
+      className="c8"
     >
       <div
-        className="c8"
+        className="c9"
       >
         <div>
           <div
-            className="icon_button c9"
+            className="icon_button c10"
             data-cy="icon_button"
             onClick={[Function]}
           >
@@ -196,7 +196,7 @@ exports[`Storyshots @components/molecules/CreditCardTile default 1`] = `
     </div>
   </div>
   <div
-    className="c10"
+    className="c11"
   />
 </div>
 `;

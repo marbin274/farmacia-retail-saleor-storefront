@@ -1,7 +1,6 @@
-import { Button } from "@components/atoms";
+import { ArrowRightIcon, Button } from "@farmacia-retail/farmauna-components";
 import { TaxedMoney } from "@components/containers";
 import { generateProductUrl } from "@temp/core/utils";
-import arrowImg from "images/breadcrumbs-arrow.svg";
 import React from "react";
 import Media from "react-media";
 import { ThemeContext } from "styled-components";
@@ -11,7 +10,7 @@ import { IProps } from "./types";
 
 const header = (matches: boolean) => (
   <S.HeaderRow>
-    <S.IndexNumber>Codigo de orden</S.IndexNumber>
+    <S.IndexNumber>Código de orden</S.IndexNumber>
     {matches && (
       <>
         <S.ProductsOrdered>Productos</S.ProductsOrdered>
@@ -23,8 +22,6 @@ const header = (matches: boolean) => (
     <S.Action />
   </S.HeaderRow>
 );
-
-
 
 export const OrderTabel: React.FC<IProps> = ({ orders, history }: IProps) => {
   const theme = React.useContext(ThemeContext);
@@ -87,11 +84,11 @@ export const OrderTabel: React.FC<IProps> = ({ orders, history }: IProps) => {
                       )}
                       <S.Status>{order.node.customerStatusDisplay}</S.Status>
                       <S.Action>
-                        {matches ? (
-                          <Button size="sm">Ver detalle</Button>
-                        ) : (
-                          <img src={arrowImg} alt="arrow image"/>
-                        )}
+                        <Button
+                          icon={<ArrowRightIcon size={16} />}
+                          size="small"
+                          iconOnly
+                        />
                       </S.Action>
                     </S.Row>
                   );

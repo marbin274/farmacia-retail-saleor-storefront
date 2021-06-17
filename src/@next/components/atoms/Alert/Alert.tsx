@@ -2,7 +2,7 @@ import { Overlay } from "@components/organisms";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import ReactSVG from "react-svg";
-import { Button } from "../Button";
+import { Button } from "@farmacia-retail/farmauna-components";
 import { alertService } from "./AlertService";
 import * as S from "./styles";
 import { alertTypes, IAlertServiceProps } from "./types";
@@ -46,7 +46,7 @@ export const Alert: React.FC<any> = () => {
   }, []);
 
   const hide = () => {
-    if(alert.acceptDialog){
+    if (alert.acceptDialog) {
       alert.acceptDialog();
     }
     setShow(false);
@@ -70,22 +70,23 @@ export const Alert: React.FC<any> = () => {
       duration={0}
       transparent={false}
     >
-      <div className="modal__container">
         <S.Modal>
-          <S.Icon>
-            <ReactSVG path={alert.icon || alertTypes[alert.type].icon} />
-          </S.Icon>
+          {alert.type !== "Text" && (
+            <S.Icon className="icon">
+              <ReactSVG path={alert.icon || alertTypes[alert.type].icon} />
+            </S.Icon>
+          )}
           <S.Title>{alert.title || alertTypes[alert.type].title}</S.Title>
           <S.Message>{alert.message}</S.Message>
           <S.Footer>
-            {alert.redirectionLink ? (
-              <Button onClick={redirectTo}>{alert.buttonText}</Button>
-            ) : (
-              <Button onClick={hide}>{alert.buttonText}</Button>
-            )}
+            <Button
+              size="large"
+              onClick={alert.redirectionLink ? redirectTo : hide}
+            >
+              {alert.buttonText}
+            </Button>
           </S.Footer>
         </S.Modal>
-      </div>
     </Overlay>
   );
 };

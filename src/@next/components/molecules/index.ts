@@ -21,12 +21,12 @@ export * from "./OverlayItem";
 export * from "./ProductDescription";
 export * from "./ProductImage";
 export * from "./ProductListHeader";
+export * from "./ProductListHeaderCategory";
 export * from "./ProductTile";
 export * from "./ProductTileAUNA";
+export * from "./ProductTileHorizontalAUNA";
 export * from "./ResetPasswordForm";
 export * from "./ShippingMethodItem";
 export * from "./TextField";
 export * from "./Thumbnail";
 export * from "./AddressAutocomplete";
-export * from "./Pagination";
-

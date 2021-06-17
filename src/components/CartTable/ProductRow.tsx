@@ -47,19 +47,19 @@ const ProductRow: React.FC<ReadProductRowProps & EditableProductRowProps> = ({
               <Thumbnail source={line.product} />
             </Link>
           )}
-          <Link to={productUrl}>{line.product.name}</Link>
+          <Link className='fa-text-xs' to={productUrl}>{line.product.name}</Link>
         </div>
       </td>
 
-      <td>
+      <td className='lg:fa-font-semibold fa-text-neutral-dark lg:fa-text-black'>
         <TaxedMoney taxedMoney={line.pricing.price} />
       </td>
 
-      <td className="cart-table__quantity-cell">
+      <td className="fa-font-semibold cart-table__quantity-cell">
         <p>{line.quantity}</p>
       </td>
 
-      <td colSpan={2} className="cart-table__total-cell" >
+      <td colSpan={2} className="fa-font-semibold cart-table__total-cell" >
         <TaxedMoney taxedMoney={line.totalPrice} />
       </td>
     </tr>

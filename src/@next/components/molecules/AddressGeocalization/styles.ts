@@ -1,30 +1,33 @@
-import { mediaUp } from "@temp/@next/globalStyles";
+import { mediaUp, media } from "@temp/@next/globalStyles";
 import { largeScreen, white } from "@temp/@next/globalStyles/constants";
 import styled, { css, keyframes } from "styled-components";
 import { addressLocationType } from "./types";
-
-
+import farmatheme from "@farmatheme";
 
 export const Wrapper = styled.div`
-    align-items: baseline;    
-    display:flex;
-    padding: 0rem 1.25rem;
-    position: relative;
-    width: 100%;   
+  align-items: center;
+  display: flex;
+  position: relative;
+  width: 100%;
+  ${mediaUp.largeScreen`
+        padding: 0rem;
+        width: 18rem;
+    `}
 `;
 
 export const Localization = styled.div<{ mode: addressLocationType }>`
-    color: ${({ mode, theme }) => mode === "ligth" ? theme.colors.white : theme.colors.aunaBlack};
-    display: flex;
-    flex: 3;
+  color: ${({ mode, theme }) =>
+    mode === "ligth" ? theme.colors.white : theme.colors.aunaBlack};
+  display: flex;
+  flex: 3;
 `;
 
 export const GeocalizationIcon = styled.div`
-    .icon_button {
-        height: 2.5rem;
-        margin: 0.2rem 0rem;
-        width: 2.5rem;
-    }
+  .icon_button {
+    height: 2.5rem;
+    margin: 0.2rem 0rem;
+    width: 2.5rem;
+  }
 `;
 
 export const District = styled.div`
@@ -32,40 +35,57 @@ export const District = styled.div`
     flex-direction: column;
     padding: 0rem .5rem;
     max-width: 10rem;
+    color: ${farmatheme.theme.colors.white};
     ${mediaUp.xSmallScreen`
         max-width: 12rem;
     `}
     ${mediaUp.smallScreen`
         max-width: 100%;
     `}
-    ${mediaUp.mediumScreen`
+    ${mediaUp.largeScreen`
         max-width: 8.125rem;
     `}
+
+    ${media.largeScreen`
+        align-items: center;
+        flex-direction: row;
+    `};
 `;
 
 export const Label = styled.span`
-    font-size: ${({theme}) => theme.typography.labelFontSize};
-    font-weight: normal;
+  cursor: pointer;
+  font-size: ${({ theme }) => theme.typography.labelFontSize};
+  font-weight: normal;
+  min-width: 3.125rem;
 `;
 
 export const Address = styled.span`
-    font-size: ${({theme}) => theme.typography.smallFontSize};
-    font-weight: ${({theme}) => theme.typography.boldFontWeight};
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
+  font-size: ${({ theme }) => theme.typography.smallFontSize};
+  font-weight: ${({ theme }) => theme.typography.boldFontWeight};
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  ${media.largeScreen`
+    margin-left: 0.5rem
+  `};
 `;
 
 export const Button = styled.div`
-    color: #fff;
+  color: #fff;
+
+  ${mediaUp.largeScreen`
     flex: 1;
-    > button {
-        padding: 0.3rem 0.5rem;
-        width: 100%;
-        span {
-            font-size: ${({theme}) => theme.typography.smallFontSize};
-        }
+  `};
+
+  > button {
+    color: ${farmatheme.theme.colors.white};
+    border: 1px solid ${farmatheme.theme.colors.white};
+    width: 100%;
+    span {
+      margin-left: 0;
+      font-size: ${({ theme }) => theme.typography.smallFontSize};
     }
+  }
 `;
 
 const alertTop = 3.5;
@@ -84,14 +104,14 @@ const moved = keyframes`
 
 export const Alert = styled.div`
     background: ${white};
-    border-radius: 1rem;
+    border-radius: 1.5rem;
     box-shadow: 0px 0px 0.875rem rgb(0 0 0 / 50%);
     left: 0.5rem;
-    padding: 1rem;
+    padding: 1.5rem;
     position: absolute;    
     top: ${alertTop}rem;
-    width: 18.5rem;
-    z-index: 3;
+    width: 24rem;
+    z-index: 1;
     ${css`
         animation: ${moved};
         animation-delay: 4s;
@@ -107,69 +127,96 @@ export const Alert = styled.div`
         border-width: 0.7rem;
         content: ' ';
         position: absolute;
-        left: calc(50% - 5.35rem);
+        right: 3rem;
         z-index: 1;
     }
 
-    ${mediaUp.xSmallScreen`
-        width: 21.5rem;
-        ::after{
-            left: calc(50% - 7.35rem);
+    ${media.largeScreen`
+        left: auto;
+        right: -1rem;
+        width: 24.125rem;
+        ::after {
+            left: auto;
+            right: 3rem;
         }
     `}
-    ${mediaUp.smallScreen`
-        width: 23.5rem;
+
+    ${media.xSmallScreen`
+        width: 18.125rem;
+    `}
+
+    ${mediaUp.largeScreen`
+        left: -5rem;
+        right: auto;
+        ::after {
+            left: auto;
+            right: 2rem;
+        }
+    `}
+    ${mediaUp.xSmallScreen`
+        width: 20rem;
+        right: 0rem;
+    `}
+    ${mediaUp.xxSmallScreen`
+        width: 23rem;
+        right: 0rem;
     `}
     ${`@media (min-width: ${largeScreen}px) and (max-width: 1144px){
-        left: -3rem;
-        width: 18.5rem;
-        ::after {
-            left: calc(50% - 3.35rem);
-        }
+        left: -4rem;
+        width: 22rem;
     }
     `}
 `;
 
-
-export const AlertBody = styled.div`    
-    color: #151515;
-    display: flex;
+export const AlertBody = styled.div`
+  color: #151515;
+  display: flex;
 `;
 
 export const AlertIcon = styled.div`
+    width:auto:
+    height:3.5rem;
     align-items: center;
-    background-color: #F6F8FA;
     border-radius: 1rem;
     display: flex;
-    flex: 1;
-    justify-content: center;    
+    flex: 0;
+    justify-content: flex-start;
+    padding: 0 0.5rem 0 0    
 `;
 
 export const AlertText = styled.span`
     flex: 3
     margin-left: 1rem;
+    font-size:0.875rem;
     > span {
-        font-weight: ${({theme}) => theme.typography.boldFontWeight};
+        font-weight: ${({ theme }) => theme.typography.boldFontWeight};
     }
 `;
 
 export const AlertAction = styled.div`
-    display: flex;
-    justify-content: space-around;
-    padding-top: 1rem;
-    > div: first-child{
-        width: 117px;
-    }
-    > div: nth-child(2){
-        margin-left: 1rem;
-        width: 10.188rem;
-    }
-    button {
-        padding: 0.5rem;
-        width: 100%;
-    }
-    span {
-        font-size:${({theme}) => theme.typography.smallFontSize};
-    }
-`;
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 1rem;
+  >div: first-child {
+    width: 7.25rem;
+  }
+  >div: nth-child(2) {
+    margin-left: 1rem;
+    width: 10.188rem;
+  }
+  span {
+    font-size: ${({ theme }) => theme.typography.smallFontSize};
+  }
 
+  button {
+    padding: 0.5rem;
+    width: 100%;
+
+    ${media.xSmallScreen`
+        > span {
+          margin-left: 0;
+          font-size: ${({ theme }) => theme.typography.labelFontSize}
+        }
+    `}
+  }
+`;

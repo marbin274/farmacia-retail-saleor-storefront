@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/ProductDescription default 1`] = `
   margin: 20px;
 }
 
-.c4 {
+.c2 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -18,60 +18,8 @@ exports[`Storyshots @components/organisms/ProductDescription default 1`] = `
 }
 
 .c1 {
-  background-color: #00B0CA;
-  padding: 0.9rem 3.7rem;
-  border: none;
-  border-radius: 40px;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-  outline: none;
-  cursor: pointer;
-  color: #fff;
-  width: auto;
-}
-
-.c1:hover {
-  background-color: #0BC1DC;
-  color: #fff;
-}
-
-.c1:active {
-  background-color: #029FB7;
-  box-shadow: -3px 3px 14px 0px rgba(129,67,67,0.2);
-}
-
-.c1:disabled {
-  background-color: #F1F2F7;
-  color: #B8BCD5;
-  cursor: default;
-}
-
-.c1:disabled,
-.c1:disabled:hover {
-  cursor: default;
-}
-
-.c2 {
-  display: inline-block;
-  font-size: 1.125rem;
-  font-weight: 400;
-  line-height: 1.25rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.c3 {
   display: grid;
   grid-template-columns: 1fr;
-}
-
-@media (max-width:540px) {
-  .c1 {
-    padding: 0.9rem 1rem;
-    width: 88%;
-  }
 }
 
 <div
@@ -79,6 +27,8 @@ exports[`Storyshots @components/organisms/ProductDescription default 1`] = `
 >
   <div
     className="product-description"
+    id="product-description"
+    onScroll={[Function]}
   >
     <h3>
       "Producto 1"
@@ -95,16 +45,52 @@ exports[`Storyshots @components/organisms/ProductDescription default 1`] = `
         className="button"
       >
         <button
-          className="c1"
-          color="primary"
+          className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-h-10 fa-px-3 fa-bg-neutral-medium fa-text-white fa-cursor-not-allowed"
           disabled={true}
           onClick={[Function]}
-          size="md"
+          style={Object {}}
           type="button"
         >
           <span
-            className="c2"
-            size="md"
+            className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
+          >
+            <svg
+              className=" "
+              color="currentColor"
+              fill="currentColor"
+              height={16}
+              viewBox="0 0 24 24"
+              width={16}
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9 21C10.1046 21 11 20.1046 11 19C11 17.8954 10.1046 17 9 17C7.89543 17 7 17.8954 7 19C7 20.1046 7.89543 21 9 21Z"
+                fill="transparent"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              />
+              <path
+                d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z"
+                fill="transparent"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              />
+              <path
+                d="M3 3H5L7 15C7.21572 15.6135 7.62494 16.1402 8.16602 16.501C8.7071 16.8617 9.35075 17.0368 10 17H17C17.6493 17.0368 18.2929 16.8617 18.834 16.501C19.3751 16.1402 19.7843 15.6135 20 15L21 8L10 8"
+                fill="transparent"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              />
+            </svg>
+          </span>
+          <span
+            className="fa-align-middle fa-ml-2"
           >
             Agregar
           </span>
@@ -123,12 +109,13 @@ exports[`Storyshots @components/organisms/ProductDescription default 1`] = `
       className="product-description__variant-picker"
     >
       <div
-        className="c3"
+        className="c1"
       />
     </div>
+    <hr />
   </div>
   <div
-    className="c4"
+    className="c2"
   />
 </div>
 `;

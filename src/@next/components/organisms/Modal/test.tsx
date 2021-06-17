@@ -52,7 +52,7 @@ describe("<Modal />", () => {
 
     expect(header.exists()).toEqual(true);
     expect(header.contains(DEFAULT_PROPS.title)).toBe(true);
-    expect(header.prop("divider")).toEqual(true);
+
     expect(header.prop("onHide")).toEqual(DEFAULT_PROPS.hide);
   });
 
@@ -67,7 +67,6 @@ describe("<Modal />", () => {
     const footer = renderModal(DEFAULT_PROPS).find("FormFooter");
 
     expect(footer.exists()).toEqual(true);
-    expect(footer.prop("divider")).toEqual(true);
     expect(footer.prop("disabled")).toEqual(DEFAULT_PROPS.disabled);
     expect(footer.prop("submitBtn")).toEqual({
       action: DEFAULT_PROPS.onSubmit,

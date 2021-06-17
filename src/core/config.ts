@@ -67,8 +67,8 @@ export const CHECKOUT_STEPS = [
   {
     index: 0,
     link: "/checkout/address",
-    name: "Paso 1: Completa los datos",
-    nextActionName: "Ir a Pago",
+    name: "Datos Personales",
+    nextActionName: "Continuar con el pago",
     nextStepLink: "/checkout/payment",
     onlyIfShippingRequired: true,
     step: CheckoutStep.Address,
@@ -76,8 +76,8 @@ export const CHECKOUT_STEPS = [
   {
     index: 1,
     link: "/checkout/payment",
-    name: "Paso 2: Ingresa tu tarjeta",
-    nextActionName: "Pagar y confirmar",
+    name: "Datos de Pago",
+    nextActionName: "Confirmar pago",
     nextStepLink: "/checkout/review",
     onlyIfShippingRequired: false,
     step: CheckoutStep.Payment,
@@ -85,7 +85,7 @@ export const CHECKOUT_STEPS = [
   {
     index: 2,
     link: "/checkout/review",
-    name: "Paso 3: Recibimos tu orden",
+    name: "¡Listo!",
     nextActionName: "Pagar y hacer pedido",
     nextStepLink: "/order-finalized",
     onlyIfShippingRequired: false,

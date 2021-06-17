@@ -4,10 +4,9 @@ import { TitleSize } from "./types";
 export const Header = styled.div<{ divider: boolean }>`
   display: flex;
   justify-content: space-between;
+  position: relative;
   align-items: center;
-  padding: ${props => `1.1rem ${props.theme.spacing.gutter}`};
-  ${({ divider, theme }) =>
-    divider && `border-bottom: 1px solid ${theme.colors.light};`}
+  padding: ${props => `1.1rem ${props.theme.spacing.gutter} 0.5rem  ${props.theme.spacing.gutter}`};
 `;
 
 export const Title = styled.h4<{ size: TitleSize }>`
@@ -18,6 +17,7 @@ export const Title = styled.h4<{ size: TitleSize }>`
   text-transform: camelcase;
   padding-right: 0.6rem;
   margin: 0;
+  margin-top: 2rem;
 `;
 
 export const Paragraph = styled.p`

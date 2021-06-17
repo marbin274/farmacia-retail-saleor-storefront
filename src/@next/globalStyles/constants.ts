@@ -15,7 +15,7 @@ export const grayMedium = "#c4c4c4";
 export const grayDark = "#323232";
 export const grayLight = "#f1f5f5";
 export const green = "#3ed256";
-export const overlayColor = "rgba(199, 207, 207, 0.8)";
+export const overlayColor = "rgba(35, 33, 43, 0.8)";
 export const rose = "#c22d74";
 export const turquoise = "#00B0CA";
 export const turquoiseDark = "#06a09e";
@@ -34,7 +34,7 @@ export const aunaBrand5 = "#404497";
 export const aunaBrand6 = "#EA5B2E";
 
 export const aunaPrimary = "#C2DF0A";
-export const aunaInteractive = "#00B0CA";
+export const aunaInteractive = "#00BF8E";
 export const aunaInteractiveHover = "#0BC1DC";
 export const aunaInteractivePressed = "#029FB7";
 
@@ -148,4 +148,5 @@ export const xLargeScreen = 1280;
 export const largeScreen = 992;
 export const mediumScreen = 720;
 export const smallScreen = 540;
+export const xxSmallScreen = 400;
 export const xSmallScreen = 340;
