@@ -115,6 +115,7 @@ $custom-breakpoint: 624px;
     &--in-front {
       @media (max-width: $medium-screen) {
         z-index: 4;
+        top: 9.5rem;
       }
     }
 
