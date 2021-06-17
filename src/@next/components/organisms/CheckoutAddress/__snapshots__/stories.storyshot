@@ -129,8 +129,6 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
   height: auto;
   border-radius: 1rem;
   overflow: hidden;
-  margin-top: 2.5rem;
-  margin-bottom: 1.5rem;
 }
 
 .c11 {
@@ -168,6 +166,10 @@ exports[`Storyshots @components/organisms/CheckoutAddress default 1`] = `
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 1.5rem;
   margin-bottom: 1.5rem;
+}
+
+.c3 > div {
+  margin-top: 1.5rem;
 }
 
 .c4 {
@@ -834,8 +836,6 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
   height: auto;
   border-radius: 1rem;
   overflow: hidden;
-  margin-top: 2.5rem;
-  margin-bottom: 1.5rem;
 }
 
 .c11 {
@@ -873,6 +873,10 @@ exports[`Storyshots @components/organisms/CheckoutAddress with addresses 1`] = `
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 1.5rem;
   margin-bottom: 1.5rem;
+}
+
+.c3 > div {
+  margin-top: 1.5rem;
 }
 
 .c4 {

@@ -51,6 +51,7 @@ export const RowWithTwoCells = styled.div`
     grid-template-columns: 1fr;
   `}
   & > div {
+    margin-top: 1.5rem;
     &:last-child {
       ${media.smallScreen`
         margin-top: 1.5rem;

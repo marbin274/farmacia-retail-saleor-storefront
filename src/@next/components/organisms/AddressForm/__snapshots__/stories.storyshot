@@ -129,8 +129,6 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   height: auto;
   border-radius: 1rem;
   overflow: hidden;
-  margin-top: 2.5rem;
-  margin-bottom: 1.5rem;
 }
 
 .c12 {
@@ -168,6 +166,10 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 1.5rem;
   margin-bottom: 1.5rem;
+}
+
+.c4 > div {
+  margin-top: 1.5rem;
 }
 
 .c5 {
@@ -855,8 +857,6 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   height: auto;
   border-radius: 1rem;
   overflow: hidden;
-  margin-top: 2.5rem;
-  margin-bottom: 1.5rem;
 }
 
 .c12 {
@@ -894,6 +894,10 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 1.5rem;
   margin-bottom: 1.5rem;
+}
+
+.c4 > div {
+  margin-top: 1.5rem;
 }
 
 .c5 {
@@ -1581,8 +1585,6 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   height: auto;
   border-radius: 1rem;
   overflow: hidden;
-  margin-top: 2.5rem;
-  margin-bottom: 1.5rem;
 }
 
 .c12 {
@@ -1620,6 +1622,10 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 1.5rem;
   margin-bottom: 1.5rem;
+}
+
+.c4 > div {
+  margin-top: 1.5rem;
 }
 
 .c5 {
