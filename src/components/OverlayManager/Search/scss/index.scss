@@ -272,7 +272,7 @@ $custom-breakpoint: 624px;
         }
 
         &__price {
-          color: #00bf8e;
+          color: #161536;
           font-weight: 600;
           font-size: 20px;
           float: right;
@@ -284,6 +284,10 @@ $custom-breakpoint: 624px;
             flex-direction: column;
             position: absolute;
             left: 0;
+          }
+
+          &__on-sale {
+            color: $gray-light;
           }
 
           > span {
@@ -380,7 +384,7 @@ $custom-breakpoint: 624px;
       > ul {
         margin: 0 auto;
         max-width: 645px;
-      }      
+      }
     }
 
     .show_more_products {
