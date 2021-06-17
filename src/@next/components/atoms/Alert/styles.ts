@@ -9,7 +9,7 @@ export const Modal = styled.div`
   background-color: ${props => props.theme.colors.white};
   border-radius: 1rem;
   flex-direction: column;
-  justify-content: space-between;  
+  justify-content: space-between;
   margin: 1rem;
   padding: 3rem;
   width: 100%;
@@ -24,11 +24,7 @@ export const Icon = styled.div`
   width: auto;
   svg {
     margin: auto;
-    transform: scale(1.5);
-    height: 2rem;
-    path {
-      fill: #00bf8e;
-    }
+    transform: scale(0.8);
   }
 `;
 
