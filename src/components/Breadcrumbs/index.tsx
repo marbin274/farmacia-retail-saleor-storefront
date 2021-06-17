@@ -21,6 +21,7 @@ type IBreadcrumbProps = {
   breadcrumbsAlwaysVisible?: boolean;
   className?: string;
   showHomeIcon?: boolean;
+  backLabelMobile?: string;
 };
 
 export const extractBreadcrumbs = (category: Category_category) => {
@@ -52,6 +53,7 @@ const Breadcrumbs: React.FC<IBreadcrumbProps> = ({
   breadcrumbsAlwaysVisible,
   className,
   showHomeIcon,
+  backLabelMobile,
 }) => (
   <Media
     query={{
@@ -77,7 +79,9 @@ const Breadcrumbs: React.FC<IBreadcrumbProps> = ({
                 breadcrumbs__active: index === breadcrumbs.length - 1,
               })}
             >
-              <Link to={breadcrumb.link}>{breadcrumb.value?.toLocaleLowerCase()}</Link>
+              <Link to={breadcrumb.link}>
+                {breadcrumb.value?.toLocaleLowerCase()}
+              </Link>
               {index < breadcrumbs.length - 1 && (
                 <NextIcon size={10} className="breadcrumbs__next-icon" />
               )}
@@ -86,7 +90,9 @@ const Breadcrumbs: React.FC<IBreadcrumbProps> = ({
         </ul>
       ) : (
         <div className="breadcrumbs">
-          <Link to={getBackLink(breadcrumbs)}>Atrás</Link>
+          <Link to={getBackLink(breadcrumbs)}>
+            {backLabelMobile || "Atrás"}
+          </Link>
         </div>
       )
     }

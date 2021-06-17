@@ -13,11 +13,11 @@ import { SHIPPING_FORMAT_DATE } from "@temp/core/config";
 import { format } from "date-fns";
 import { useFormik } from "formik";
 import React from "react";
-import { ISlotScheduleDate } from "../../molecules/ShippingMethodItem/types";
 import { shippingMethodFormSchema } from "./schema";
 import * as S from "./styles";
 import { ICheckoutShipping, IProps } from "./types";
-import { ExpressShippingMethod, ScheduledShippingMethod } from "./components"
+import { ExpressShippingMethod, ScheduledShippingMethod } from "./components";
+import { ISlotScheduleDate } from "@components/organisms/CheckoutShippingProgrammed/types";
 
 /**
  * Shipping method selector used in checkout.
@@ -35,14 +35,12 @@ const CheckoutShipping: React.FC<IProps> = ({
 }: IProps) => {
   const {
     errors: formikErrors,
-    touched,
     values,
     handleSubmit,
-    handleChange,
     setErrors,
     setFieldValue,
   } = useFormik<ICheckoutShipping>({
-    enableReinitialize:true,
+    enableReinitialize: true,
     initialValues: {
       dateSelected: !scheduleDate?.date
         ? undefined
@@ -95,9 +93,7 @@ const CheckoutShipping: React.FC<IProps> = ({
   };
 
   const renderGroupLabel = (title: string) => (
-    <span className='fa-text-2xl fa-mb-6 fa-block'>
-      {title}
-    </span>
+    <span className="fa-text-2xl fa-mb-6 fa-block">{title}</span>
   );
 
   const handleOnclick = (
@@ -155,24 +151,16 @@ const CheckoutShipping: React.FC<IProps> = ({
             shippingMethods={shippingMethods}
             formikErrors={formikErrors}
             values={values}
-            setErrors={setErrors}
-            touched={touched}
-            setFieldValue={setFieldValue}
-            setShippingMethod={setShippingMethod}
             onClick={handleOnclick}
-            handleChange={handleChange}
           />
           <ScheduledShippingMethod
             slots={slots}
             shippingMethods={shippingMethods}
             formikErrors={formikErrors}
             values={values}
-            setErrors={setErrors}
-            touched={touched}
             setFieldValue={setFieldValue}
             setShippingMethod={setShippingMethod}
             onClick={handleOnclick}
-            handleChange={handleChange}
           />
         </div>
         {!!shippingMethods?.length &&
@@ -182,7 +170,7 @@ const CheckoutShipping: React.FC<IProps> = ({
           )}
       </form>
     );
-  }
+  };
 
   return (
     <section>

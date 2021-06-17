@@ -51,6 +51,7 @@ export const RowWithTwoCells = styled.div`
     grid-template-columns: 1fr;
   `}
   & > div {
+    margin-top: 1.5rem;
     &:last-child {
       ${media.smallScreen`
         margin-top: 1.5rem;
@@ -93,9 +94,11 @@ export const GroupLabelTitle = styled.span`
   padding-left: 1rem;
 `;
 
-export const Referencia = styled.div<{mobile?:boolean}>`
-  display: ${({ mobile }) => !!mobile ? "block" : "none"};
-  ${mediaUp.mediumScreen`
-    display: ${({ mobile }: any) => !!mobile ? "none" : "block"};
-  `}
+export const Referencia = styled.div<{alwaysShow?:boolean, mobile?:boolean}>`
+  ${({alwaysShow})=>!alwaysShow && `
+    display: ${({ mobile }) => !!mobile ? "block" : "none"};
+    ${mediaUp.mediumScreen`
+      display: ${({ mobile }: any) => !!mobile ? "none" : "block"};
+    `}
+  `}  
 `;

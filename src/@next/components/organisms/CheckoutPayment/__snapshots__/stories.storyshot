@@ -23,10 +23,10 @@ exports[`Storyshots @components/organisms/CheckoutPayment default 1`] = `
   display: -ms-flexbox;
   display: flex;
   width: 26.375rem;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
 }
 
 .c5 button > span {
@@ -250,16 +250,11 @@ exports[`Storyshots @components/organisms/CheckoutPayment default 1`] = `
                   name="inputCode"
                   onChange={[Function]}
                   onFocus={[Function]}
-                  placeholder="Ingresa tu cupón"
+                  placeholder="Ejem: YEPS-03JD-N08T"
                   type="text"
                   value=""
                 />
               </div>
-              <span
-                className="fa-block fa-mt-2 fa-text-xs fa-leading-3 fa-text-neutral-dark"
-              >
-                Puedes obtenerlo desde nuestra web
-              </span>
             </div>
           </div>
           <button
@@ -314,10 +309,10 @@ exports[`Storyshots @components/organisms/CheckoutPayment with addresses 1`] = `
   display: -ms-flexbox;
   display: flex;
   width: 26.375rem;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
 }
 
 .c5 button > span {
@@ -541,16 +536,11 @@ exports[`Storyshots @components/organisms/CheckoutPayment with addresses 1`] = `
                   name="inputCode"
                   onChange={[Function]}
                   onFocus={[Function]}
-                  placeholder="Ingresa tu cupón"
+                  placeholder="Ejem: YEPS-03JD-N08T"
                   type="text"
                   value=""
                 />
               </div>
-              <span
-                className="fa-block fa-mt-2 fa-text-xs fa-leading-3 fa-text-neutral-dark"
-              >
-                Puedes obtenerlo desde nuestra web
-              </span>
             </div>
           </div>
           <button

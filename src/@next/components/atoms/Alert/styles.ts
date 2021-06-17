@@ -1,23 +1,21 @@
-import { media, styled } from "@styles";
+import { mediaUp, styled } from "@styles";
+
+export const Container = styled.div`
+  height: max-content;
+`;
 
 export const Modal = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 100%;
-  z-index: 1000;
-  padding: 3rem;
-  overflow-y: auto;
   background-color: ${props => props.theme.colors.white};
   border-radius: 1rem;
-  position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-
-  ${media.smallScreen`
-    width: 90%;
-    margin-left: 5%;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 1rem;
+  padding: 3rem;
+  width: 100%;
+  ${mediaUp.largeScreen`
+      margin: 0 auto;
+      width: 30rem;
   `}
 `;
 
@@ -27,9 +25,7 @@ export const Icon = styled.div`
   margin-bottom: 1rem;
   svg {
     margin: auto;
-    path {
-      fill: #00bf8e;
-    }
+    transform: scale(0.8);
   }
 `;
 

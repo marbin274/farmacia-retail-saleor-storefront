@@ -44,7 +44,6 @@ const returnTab: any = (path: string, userDetails: UserDetails_me, history) => {
 const Account: React.FC<RouteComponentProps> = ({ history, match }) => {
   const { data: user, loading } = useUserDetails();
 
-
   const links = [
     { url: accountUrl, label: "Mi perfil" },
     { url: addressBookUrl, label: "Mis direcciones" },
@@ -59,14 +58,16 @@ const Account: React.FC<RouteComponentProps> = ({ history, match }) => {
     history.push(baseUrl);
   }
 
-
   return (
     <div className="account_container">
       <div className="container">
         <Link to={baseUrl}>
           <HomeIcon size={20} className="breadcrumbs__home-icon" />
         </Link>
-        <Breadcrumbs breadcrumbs={[{ link: match.path, value: "Mi Cuenta" }]} />
+        <Breadcrumbs
+          breadcrumbs={[{ link: match.path, value: "Mi Cuenta" }]}
+          backLabelMobile="Mi cuenta"
+        />
         <div className="account">
           <Media minWidth={largeScreen + 1}>
             <div className="account__menu">

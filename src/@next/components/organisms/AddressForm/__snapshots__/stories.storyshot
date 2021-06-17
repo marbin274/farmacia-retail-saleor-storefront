@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   margin: 20px;
 }
 
-.c19 {
+.c17 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -98,15 +98,15 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   fill: #fff;
 }
 
-.c15 {
+.c13 {
   padding-top: 1.4rem;
 }
 
-.c18 {
+.c16 {
   top: 100%;
 }
 
-.c17 {
+.c15 {
   background-color: transparent;
   left: 0px;
   position: absolute;
@@ -114,7 +114,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   top: -1.5rem;
 }
 
-.c16 {
+.c14 {
   fill: #131336;
   position: absolute;
   right: 0.75rem;
@@ -124,16 +124,14 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   top: 0.5rem;
 }
 
-.c12 {
+.c11 {
   width: 100%;
   height: auto;
   border-radius: 1rem;
   overflow: hidden;
-  margin-top: 2.5rem;
-  margin-bottom: 1.5rem;
 }
 
-.c13 {
+.c12 {
   width: 100%;
   height: 21.25rem;
 }
@@ -170,6 +168,10 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
   margin-bottom: 1.5rem;
 }
 
+.c4 > div {
+  margin-top: 1.5rem;
+}
+
 .c5 {
   width: 100%;
   margin-bottom: 1.5rem;
@@ -178,14 +180,6 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
 .c3 {
   padding-top: 1rem;
   width: 100%;
-}
-
-.c11 {
-  display: none;
-}
-
-.c14 {
-  display: block;
 }
 
 .c1 {
@@ -207,18 +201,6 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
 @media (max-width:540px) {
   .c4 > div {
     width: 100%;
-  }
-}
-
-@media (min-width:720px) {
-  .c11 {
-    display: block;
-  }
-}
-
-@media (min-width:720px) {
-  .c14 {
-    display: none;
   }
 }
 
@@ -552,7 +534,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                 className="c5"
               >
                 <div
-                  className="c11"
+                  className=""
                 >
                   <div
                     className="fa-w-auto"
@@ -583,50 +565,20 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                 </div>
               </div>
               <div
-                className="c12"
+                className="c11"
               >
                 <div
-                  className="c13"
+                  className="c12"
                 />
               </div>
               <div
                 className="c4"
               >
                 <div
-                  className="c14"
-                >
-                  <div
-                    className="fa-w-auto"
-                  >
-                    <label
-                      className="fa-text-gray-01 fa-text-sm"
-                    >
-                      Referencia
-                      
-                    </label>
-                    <div
-                      className="fa-w-full fa-relative fa-h-12"
-                    >
-                      <input
-                        autoComplete="address-line2"
-                        className="fa-w-full fa-appearance-none fa-border fa-text-sm fa-outline-none fa-placeholder-neutral-medium fa-text-neutral-darkest fa-bg-neutral-lightest fa-border-neutral-medium focus:fa-border-neutral-darkest fa-rounded-lg fa-px-4 fa-h-12"
-                        data-cy="addressFormStreetAddress2"
-                        disabled={false}
-                        name="streetAddress2"
-                        onBlur={[Function]}
-                        onChange={[Function]}
-                        placeholder="Ejem: Colegio, edificio, avenida"
-                        type="text"
-                        value=""
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div
                   className="fa-flex fa-flex-col"
                 >
                   <div
-                    className="c15"
+                    className="c13"
                   >
                     <div
                       className="css-1pcexqc-container control"
@@ -722,7 +674,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                           </div>
                         </div>
                         <div
-                          className="c16"
+                          className="c14"
                         >
                           <svg
                             className=" "
@@ -742,14 +694,14 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
                         </div>
                       </div>
                       <label
-                        className="fa-text-gray-01 fa-text-sm c17"
+                        className="fa-text-gray-01 fa-text-sm c15"
                         disabled={false}
                       >
                         Distrito
                       </label>
                     </div>
                     <div
-                      className="c18"
+                      className="c16"
                     />
                   </div>
                   <span
@@ -771,7 +723,7 @@ exports[`Storyshots @components/organisms/AddressForm default 1`] = `
     </form>
   </div>
   <div
-    className="c19"
+    className="c17"
   />
 </div>
 `;
@@ -782,7 +734,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   margin: 20px;
 }
 
-.c19 {
+.c17 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -874,15 +826,15 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   fill: #fff;
 }
 
-.c15 {
+.c13 {
   padding-top: 1.4rem;
 }
 
-.c18 {
+.c16 {
   top: 100%;
 }
 
-.c17 {
+.c15 {
   background-color: transparent;
   left: 0px;
   position: absolute;
@@ -890,7 +842,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   top: -1.5rem;
 }
 
-.c16 {
+.c14 {
   fill: #131336;
   position: absolute;
   right: 0.75rem;
@@ -900,16 +852,14 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   top: 0.5rem;
 }
 
-.c12 {
+.c11 {
   width: 100%;
   height: auto;
   border-radius: 1rem;
   overflow: hidden;
-  margin-top: 2.5rem;
-  margin-bottom: 1.5rem;
 }
 
-.c13 {
+.c12 {
   width: 100%;
   height: 21.25rem;
 }
@@ -946,6 +896,10 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
   margin-bottom: 1.5rem;
 }
 
+.c4 > div {
+  margin-top: 1.5rem;
+}
+
 .c5 {
   width: 100%;
   margin-bottom: 1.5rem;
@@ -954,14 +908,6 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
 .c3 {
   padding-top: 1rem;
   width: 100%;
-}
-
-.c11 {
-  display: none;
-}
-
-.c14 {
-  display: block;
 }
 
 .c1 {
@@ -983,18 +929,6 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
 @media (max-width:540px) {
   .c4 > div {
     width: 100%;
-  }
-}
-
-@media (min-width:720px) {
-  .c11 {
-    display: block;
-  }
-}
-
-@media (min-width:720px) {
-  .c14 {
-    display: none;
   }
 }
 
@@ -1328,7 +1262,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                 className="c5"
               >
                 <div
-                  className="c11"
+                  className=""
                 >
                   <div
                     className="fa-w-auto"
@@ -1359,50 +1293,20 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                 </div>
               </div>
               <div
-                className="c12"
+                className="c11"
               >
                 <div
-                  className="c13"
+                  className="c12"
                 />
               </div>
               <div
                 className="c4"
               >
                 <div
-                  className="c14"
-                >
-                  <div
-                    className="fa-w-auto"
-                  >
-                    <label
-                      className="fa-text-gray-01 fa-text-sm"
-                    >
-                      Referencia
-                      
-                    </label>
-                    <div
-                      className="fa-w-full fa-relative fa-h-12"
-                    >
-                      <input
-                        autoComplete="address-line2"
-                        className="fa-w-full fa-appearance-none fa-border fa-text-sm fa-outline-none fa-placeholder-neutral-medium fa-text-neutral-darkest fa-bg-neutral-lightest fa-border-neutral-medium focus:fa-border-neutral-darkest fa-rounded-lg fa-px-4 fa-h-12"
-                        data-cy="addressFormStreetAddress2"
-                        disabled={false}
-                        name="streetAddress2"
-                        onBlur={[Function]}
-                        onChange={[Function]}
-                        placeholder="Ejem: Colegio, edificio, avenida"
-                        type="text"
-                        value=""
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div
                   className="fa-flex fa-flex-col"
                 >
                   <div
-                    className="c15"
+                    className="c13"
                   >
                     <div
                       className="css-1pcexqc-container control"
@@ -1498,7 +1402,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                           </div>
                         </div>
                         <div
-                          className="c16"
+                          className="c14"
                         >
                           <svg
                             className=" "
@@ -1518,14 +1422,14 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
                         </div>
                       </div>
                       <label
-                        className="fa-text-gray-01 fa-text-sm c17"
+                        className="fa-text-gray-01 fa-text-sm c15"
                         disabled={false}
                       >
                         Distrito
                       </label>
                     </div>
                     <div
-                      className="c18"
+                      className="c16"
                     />
                   </div>
                   <span
@@ -1547,7 +1451,7 @@ exports[`Storyshots @components/organisms/AddressForm with errors 1`] = `
     </form>
   </div>
   <div
-    className="c19"
+    className="c17"
   />
 </div>
 `;
@@ -1558,7 +1462,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   margin: 20px;
 }
 
-.c19 {
+.c17 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1650,15 +1554,15 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   fill: #fff;
 }
 
-.c15 {
+.c13 {
   padding-top: 1.4rem;
 }
 
-.c18 {
+.c16 {
   top: 100%;
 }
 
-.c17 {
+.c15 {
   background-color: transparent;
   left: 0px;
   position: absolute;
@@ -1666,7 +1570,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   top: -1.5rem;
 }
 
-.c16 {
+.c14 {
   fill: #131336;
   position: absolute;
   right: 0.75rem;
@@ -1676,16 +1580,14 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   top: 0.5rem;
 }
 
-.c12 {
+.c11 {
   width: 100%;
   height: auto;
   border-radius: 1rem;
   overflow: hidden;
-  margin-top: 2.5rem;
-  margin-bottom: 1.5rem;
 }
 
-.c13 {
+.c12 {
   width: 100%;
   height: 21.25rem;
 }
@@ -1722,6 +1624,10 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
   margin-bottom: 1.5rem;
 }
 
+.c4 > div {
+  margin-top: 1.5rem;
+}
+
 .c5 {
   width: 100%;
   margin-bottom: 1.5rem;
@@ -1730,14 +1636,6 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
 .c3 {
   padding-top: 1rem;
   width: 100%;
-}
-
-.c11 {
-  display: none;
-}
-
-.c14 {
-  display: block;
 }
 
 .c1 {
@@ -1759,18 +1657,6 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
 @media (max-width:540px) {
   .c4 > div {
     width: 100%;
-  }
-}
-
-@media (min-width:720px) {
-  .c11 {
-    display: block;
-  }
-}
-
-@media (min-width:720px) {
-  .c14 {
-    display: none;
   }
 }
 
@@ -2104,7 +1990,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                 className="c5"
               >
                 <div
-                  className="c11"
+                  className=""
                 >
                   <div
                     className="fa-w-auto"
@@ -2135,50 +2021,20 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                 </div>
               </div>
               <div
-                className="c12"
+                className="c11"
               >
                 <div
-                  className="c13"
+                  className="c12"
                 />
               </div>
               <div
                 className="c4"
               >
                 <div
-                  className="c14"
-                >
-                  <div
-                    className="fa-w-auto"
-                  >
-                    <label
-                      className="fa-text-gray-01 fa-text-sm"
-                    >
-                      Referencia
-                      
-                    </label>
-                    <div
-                      className="fa-w-full fa-relative fa-h-12"
-                    >
-                      <input
-                        autoComplete="address-line2"
-                        className="fa-w-full fa-appearance-none fa-border fa-text-sm fa-outline-none fa-placeholder-neutral-medium fa-text-neutral-darkest fa-bg-neutral-lightest fa-border-neutral-medium focus:fa-border-neutral-darkest fa-rounded-lg fa-px-4 fa-h-12"
-                        data-cy="addressFormStreetAddress2"
-                        disabled={false}
-                        name="streetAddress2"
-                        onBlur={[Function]}
-                        onChange={[Function]}
-                        placeholder="Ejem: Colegio, edificio, avenida"
-                        type="text"
-                        value="Street line 2"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div
                   className="fa-flex fa-flex-col"
                 >
                   <div
-                    className="c15"
+                    className="c13"
                   >
                     <div
                       className="css-1pcexqc-container control"
@@ -2274,7 +2130,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                           </div>
                         </div>
                         <div
-                          className="c16"
+                          className="c14"
                         >
                           <svg
                             className=" "
@@ -2294,14 +2150,14 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
                         </div>
                       </div>
                       <label
-                        className="fa-text-gray-01 fa-text-sm c17"
+                        className="fa-text-gray-01 fa-text-sm c15"
                         disabled={false}
                       >
                         Distrito
                       </label>
                     </div>
                     <div
-                      className="c18"
+                      className="c16"
                     />
                   </div>
                   <span
@@ -2323,7 +2179,7 @@ exports[`Storyshots @components/organisms/AddressForm with partial data 1`] = `
     </form>
   </div>
   <div
-    className="c19"
+    className="c17"
   />
 </div>
 `;

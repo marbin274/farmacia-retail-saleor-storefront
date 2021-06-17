@@ -1,4 +1,4 @@
-import { OrderStatus } from "@temp/@sdk/gqlTypes/globalTypes";
+import { OrderStatus } from "../../@sdk/gqlTypes/globalTypes"; // NO USAR temp porque falla la generacion de sitemap
 
 export const translateOrderStatus = (
     status: string,

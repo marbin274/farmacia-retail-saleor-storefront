@@ -6,9 +6,8 @@ import {
   ISlots,
 } from "@temp/@sdk/repository";
 import { IFormError } from "@types";
-import { FormikErrors, FormikTouched } from "formik";
-import { ChangeEvent } from "react";
-import { ISlotScheduleDate } from "../../molecules/ShippingMethodItem/types";
+import { FormikErrors} from "formik";
+import { ISlotScheduleDate } from "@components/organisms/CheckoutShippingProgrammed/types";
 
 export interface IProps {
   shippingMethods: IAvailableShippingMethods | undefined;
@@ -39,14 +38,12 @@ export type ISlotShippingMethodItem = {
   shippingMethods: IAvailableShippingMethods | undefined;
   values: ICheckoutShipping;
   formikErrors: FormikErrors<ICheckoutShipping>;
-  setErrors: (errors: FormikErrors<ICheckoutShipping>) => void;
-  touched: FormikTouched<ICheckoutShipping>;
-  setFieldValue: (
+  setFieldValue?: (
     field: string,
     value: any,
     shouldValidate?: boolean | undefined
   ) => Promise<void> | Promise<FormikErrors<ICheckoutShipping>>;
-  setShippingMethod: (value: IShippingMethodUpdate) => void;
+  setShippingMethod?: (value: IShippingMethodUpdate) => void;
   onClick: (
     id: string,
     isScheduled: boolean,
@@ -54,5 +51,4 @@ export type ISlotShippingMethodItem = {
     selected: boolean,
     slotId?: string
   ) => void;
-  handleChange: (e: ChangeEvent<any>) => void;
 };
