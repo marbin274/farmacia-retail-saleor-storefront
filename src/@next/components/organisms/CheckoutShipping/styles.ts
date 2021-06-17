@@ -1,4 +1,4 @@
-import { media, styled } from "@styles";
+import {  styled } from "@styles";
 import {aunaBrand3, white} from "@styles/constants";
 
 
@@ -74,13 +74,8 @@ export const ShippingMethodContainer = styled.div<{ isScheduledSelected?: boolea
     cursor: pointer;
     display: flex;
     margin: 1rem 0rem;
-    height: 7.8125rem;
     box-shadow: 1px 1px 9px 2px #ddd;
     transition: box-shadow 0.2s ease-in-out;
-    margin-bottom: ${(props: any) => props.isScheduledSelected ? '8rem' : '0'};
-    ${media.largeScreen`
-    margin-bottom: ${(props: any) => props.isScheduledSelected ? '12.5rem' : '0'};
-    `}
     &:hover {
       box-shadow: 0px 0px 6px 2px #ccc;
     }

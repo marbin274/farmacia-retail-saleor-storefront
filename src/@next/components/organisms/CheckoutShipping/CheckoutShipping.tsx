@@ -15,6 +15,7 @@ import { SHIPPING_FORMAT_DATE } from "@temp/core/config";
 import { format } from "date-fns";
 import { useFormik } from "formik";
 import React from "react";
+import { CheckoutShippingProgrammed } from "../CheckoutShippingProgrammed";
 import { shippingMethodFormSchema } from "./schema";
 import * as S from "./styles";
 import { ICheckoutShipping, IProps } from "./types";
@@ -33,14 +34,12 @@ const CheckoutShipping: React.FC<IProps> = ({
 }: IProps) => {
   const {
     errors: formikErrors,
-    touched,
     values,
     handleSubmit,
-    handleChange,
     setErrors,
     setFieldValue,
   } = useFormik<ICheckoutShipping>({
-    enableReinitialize:true,
+    enableReinitialize: true,
     initialValues: {
       dateSelected: !scheduleDate?.date
         ? undefined
@@ -90,11 +89,8 @@ const CheckoutShipping: React.FC<IProps> = ({
   };
 
   const renderGroupLabel = (title: string) => (
-    <span className='fa-text-2xl fa-mb-6 fa-block'>
-      {title}
-    </span>
+    <span className="fa-text-2xl fa-mb-6 fa-block">{title}</span>
   );
-
 
   const handleOnclick = (
     id: string,
@@ -130,52 +126,61 @@ const CheckoutShipping: React.FC<IProps> = ({
       <S.FieldsGroup>
         {renderGroupLabel("Escoge el tiempo de entrega")}
         <form id={formId} ref={formRef} onSubmit={handleSubmit}>
-          <div className='fa-grid fa-grid-cols-1 lg:fa-grid-cols-2 fa-gap-x-8 fa-relative'>
-          {shippingMethods?.map(
-            (
-              { id, isScheduled, name, price, scheduleDates, subtitle },
-              index
-            ) => {
-              const selected: boolean =
-                !!values.shippingMethod && values.shippingMethod === id;
+          <div className="fa-grid fa-grid-cols-1 lg:fa-grid-cols-2 fa-gap-x-8 fa-relative">
+            {shippingMethods?.map(
+              (
+                { id, isScheduled, name, price, scheduleDates, subtitle },
+                index
+              ) => {
+                const selected: boolean =
+                  !!values.shippingMethod && values.shippingMethod === id;
 
-              return (
-                <S.ShippingMethodContainer
-                  key={id}
-                  data-cy={`checkoutShippingMethodOption${index}Input`}
-                  hasError={
-                    !!formikErrors?.shippingMethod && !values.shippingMethod
-                  }
-                  isScheduledSelected={!!selected && !!isScheduled}
-                  selected={selected}
-                  onClick={() => {
-                    handleOnclick(id, !!isScheduled, scheduleDates, selected);
-                  }}
-                >
-                  <S.ShippingMethodItem>
-                    <ShippingMethodItem
+                return (
+                  <>
+                    <S.ShippingMethodContainer
+                      key={id}
+                      data-cy={`checkoutShippingMethodOption${index}Input`}
+                      hasError={
+                        !!formikErrors?.shippingMethod && !values.shippingMethod
+                      }
+                      isScheduledSelected={!!selected && !!isScheduled}
+                      selected={selected}
+                      onClick={() => {
+                        handleOnclick(
+                          id,
+                          !!isScheduled,
+                          scheduleDates,
+                          selected
+                        );
+                      }}
+                    >
+                      <S.ShippingMethodItem>
+                        <ShippingMethodItem
+                          id={id}
+                          price={price}
+                          index={index}
+                          isScheduled={isScheduled}
+                          name={name}
+                          selected={selected}
+                          subtitle={subtitle}
+                        />
+                      </S.ShippingMethodItem>
+                    </S.ShippingMethodContainer>
+                    <CheckoutShippingProgrammed
                       dateSelected={values.dateSelected}
                       errors={formikErrors}
                       id={id}
-                      index={index}
                       isScheduled={isScheduled}
-                      name={name}
                       selected={selected}
                       scheduleSelected={values.scheduleSelected}
                       scheduleDates={scheduleDates}
-                      subtitle={subtitle}
-                      touched={touched}
-                      price={price}
-                      handleChange={handleChange}
-                      setErrors={setErrors}
                       setFieldValue={setFieldValue}
                       setShippingMethod={setShippingMethod}
                     />
-                  </S.ShippingMethodItem>
-                </S.ShippingMethodContainer>
-              );
-            }
-          )}
+                  </>
+                );
+              }
+            )}
           </div>
           {!!shippingMethods?.length &&
             formikErrors?.shippingMethod &&
