@@ -323,7 +323,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
               </S.RowWithOneCell>
 
               <S.RowWithOneCell>
-                <S.Referencia>
+                <S.Referencia alwaysShow>
                   <StreetAddress2 {...fieldsProps} />
                 </S.Referencia>
               </S.RowWithOneCell>
@@ -337,9 +337,6 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                 }}
               />
               <S.RowWithTwoCells>
-                <S.Referencia mobile>
-                  <StreetAddress2 {...fieldsProps} />
-                </S.Referencia>
                 <CitySelect
                   fieldsProps={{
                     ...cityProps,

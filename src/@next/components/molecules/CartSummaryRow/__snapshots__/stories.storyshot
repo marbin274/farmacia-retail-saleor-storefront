@@ -109,7 +109,7 @@ exports[`Storyshots @components/molecules/CartSummaryRow default 1`] = `
 
 .c7 {
   min-height: 2.5rem;
-  margin-left: 1.25rem;
+  margin: 0rem .5rem 0rem 1.25rem;
   font-size: 1rem;
   line-height: 1.25rem;
   color: #908ba7;
@@ -123,6 +123,10 @@ exports[`Storyshots @components/molecules/CartSummaryRow default 1`] = `
 .c8 .price {
   font-weight: 600;
   font-size: 1rem;
+}
+
+.c8 .price.discounted_price {
+  margin: 0px;
 }
 
 @media (max-width:540px) {

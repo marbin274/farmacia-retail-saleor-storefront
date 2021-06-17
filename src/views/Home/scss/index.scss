@@ -30,36 +30,7 @@
         padding: 0 1rem;
       }
     }
-    .about-auna {
-      width: 24.813rem;
-      position: relative;
-      display: flex;
-      align-items: center;
-      &::before {
-        content: "";
-        width: 1px;
-        height: 21px;
-        border: 1px solid #e2e3f1;
-        position: absolute;
-        right: 0;
-      }
-      @media (max-width: $small-screen) {
-        width: 6.063rem;
-        height: 60px;
-        margin-right: 0.875rem;
-        &::before {
-          content: none;
-        }
-      }
-    }
-    .district {
-      width: 34.063rem;
-
-      @media (max-width: $small-screen) {
-        width: 11.875rem;
-        height: 60px;
-      }
-    }
+    
   }
 
   &__top-banner {
@@ -306,8 +277,6 @@
     &.desktop {
       max-width: $banner-desktop-max-width;
       max-height: $banner-desktop-max-height-new;
-      border-top-left-radius: 3.75rem;
-      border-bottom-right-radius: 3.75rem;
       @media (max-width: $small-screen) {
         display: none;
       }
@@ -316,8 +285,6 @@
       display: none;
       @media (max-width: $small-screen) {
         display: block;
-        border-top-left-radius: 3.75rem;
-        border-bottom-right-radius: 3.75rem;
       }
     }
   }

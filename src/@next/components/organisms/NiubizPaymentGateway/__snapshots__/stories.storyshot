@@ -443,7 +443,7 @@ exports[`Storyshots @components/organisms/NiubizPaymentGateway default 1`] = `
                   <label
                     htmlFor=""
                   >
-                    CVV
+                    CVC/CVV
                   </label>
                   <div
                     className="form-control form-control-sm"

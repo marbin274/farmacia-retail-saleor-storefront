@@ -5,7 +5,7 @@ export const DiscountForm = styled.form``;
 export const InputWithButton = styled.div`
   display: flex;
   width: 26.375rem;
-  align-items: center;
+  align-items: flex-end;
   ${media.largeScreen`
     flex: auto;
   `}

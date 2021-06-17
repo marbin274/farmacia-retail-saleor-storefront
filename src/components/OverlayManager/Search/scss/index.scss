@@ -115,6 +115,7 @@ $custom-breakpoint: 624px;
     &--in-front {
       @media (max-width: $medium-screen) {
         z-index: 4;
+        top: 9.5rem;
       }
     }
 
@@ -209,7 +210,7 @@ $custom-breakpoint: 624px;
       }
 
       &__link {
-        width: 21.875rem;
+        width: 27rem;
         @media (max-width: $small-screen) {
           width: auto;
         }
@@ -262,7 +263,7 @@ $custom-breakpoint: 624px;
             position: relative;
 
             @media (max-width: $medium-screen) {
-              padding: 15px 0;
+              padding: 0.313rem 0 1.5rem 0;
             }
           }
 
@@ -272,7 +273,7 @@ $custom-breakpoint: 624px;
         }
 
         &__price {
-          color: #00bf8e;
+          color: #161536;
           font-weight: 600;
           font-size: 20px;
           float: right;
@@ -284,6 +285,10 @@ $custom-breakpoint: 624px;
             flex-direction: column;
             position: absolute;
             left: 0;
+          }
+
+          &__on-sale {
+            color: $gray-light;
           }
 
           > span {
@@ -380,7 +385,7 @@ $custom-breakpoint: 624px;
       > ul {
         margin: 0 auto;
         max-width: 645px;
-      }      
+      }
     }
 
     .show_more_products {

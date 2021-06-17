@@ -5,14 +5,9 @@ import { ISlotShippingMethodItem } from "../../types";
 
 export const ExpressShippingMethod: FC<ISlotShippingMethodItem> = ({
   formikErrors,
-  handleChange,
   onClick,
   shippingMethods,
-  setErrors,
-  setFieldValue,
   slots,
-  setShippingMethod,
-  touched,
   values,
 }) => {
   const express = slots?.express?.[0];
@@ -43,21 +38,13 @@ export const ExpressShippingMethod: FC<ISlotShippingMethodItem> = ({
     >
       <S.ShippingMethodItem>
         <ShippingMethodItem
-          dateSelected={values.dateSelected}
-          errors={formikErrors}
           id={id}
           index={index}
-          isScheduled={false}
+          isScheduled={isScheduled}
           name={name}
           selected={selected}
-          selectedSlotId={values.selectedSlotId}
           subtitle={subtitle}
-          touched={touched}
           price={price}
-          handleChange={handleChange}
-          setErrors={setErrors}
-          setFieldValue={setFieldValue}
-          setShippingMethod={setShippingMethod}
         />
       </S.ShippingMethodItem>
     </S.ShippingMethodContainer>

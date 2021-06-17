@@ -16,21 +16,19 @@ export const Wrapper = styled.nav`
 `;
 
 export const Title = styled.p`
+  align-items: flex-start;
+  color: ${farmatheme.theme.colors.neutral.darkest};
+  display: flex;
   font-weight: 600;
   font-size: 16px;
-  color: ${farmatheme.theme.colors.neutral.darkest};
   margin: 0 0 0.813rem 1rem;
-`;
-
-export const TitleIcon = styled.span`
-  align-items: center;
-  display: flex;
-  margin-right: .5rem;
 `;
 
 export const TitleName = styled.span<{ isLvl1: boolean }>`
   text-transform: capitalize;
-  ${({ isLvl1, theme }) => !isLvl1 && `color: ${theme.colors.interactive}`}
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  ${({ isLvl1 }) => !isLvl1 && `color: ${farmatheme.theme.colors.highlight.medium}`}
   ${({ isLvl1, theme }) => isLvl1 && `font-weight: ${theme.typography.boldFontWeight}`}
 `;
 
@@ -47,22 +45,21 @@ export const Link = styled.li`
 `;
 
 export const NavLink = styled(NavLinkComponent)`
-color: ${({ theme }) => theme.colors.greyText};
-  border-radius: 0.3125rem;
+  border-radius: 0.5rem;
   padding: 0;
   display: block;
   margin-right: 0;
-  color: ${({ theme }) => theme.colors.greyText};
+  font-weight: 500;
+  color: ${farmatheme.theme.colors.neutral.darkest};
   padding:17px 16px;
-
   &:hover {
-    color: ${({ theme }) => theme.colors.interactive};
-    background:#E8FCF7;
-    
+    color:  ${farmatheme.theme.colors.primary.medium};
+    background: ${farmatheme.theme.colors.primary.lightest};
+
   }
 
   &:active {
     background:#E8FCF7;
-    color: ${({ theme }) => theme.colors.interactive};
+    color:  ${farmatheme.theme.colors.primary.medium};
   }
 `;

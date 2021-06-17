@@ -329,7 +329,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
         icon: VoucherSVG,
         message: dataError?.error[0].message,
         title: "Código promocional incorrecto",
-        type: "Info",
+        type: "Text",
       });
       setPromoCodeErrors(dataError?.error);
     } else {

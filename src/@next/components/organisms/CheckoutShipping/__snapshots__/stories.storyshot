@@ -104,11 +104,9 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
   display: -ms-flexbox;
   display: flex;
   margin: 1rem 0rem;
-  height: 7.8125rem;
   box-shadow: 1px 1px 9px 2px #ddd;
   -webkit-transition: box-shadow 0.2s ease-in-out;
   transition: box-shadow 0.2s ease-in-out;
-  margin-bottom: 0;
 }
 
 .c2:hover {
@@ -124,12 +122,6 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   width: 100%;
-}
-
-@media (max-width:992px) {
-  .c2 {
-    margin-bottom: 0;
-  }
 }
 
 <div
@@ -193,13 +185,13 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
                       data-cy="checkoutShippingMethodOption0Name"
                       selected={false}
                     >
-                      Delivery programado
+                      75 minutos aproximadamente
                     </p>
                     <p
                       className="c9"
                       selected={false}
                     >
-                      75 minutos aproximadamente
+                      subTitle
                     </p>
                   </div>
                   <span
@@ -282,7 +274,7 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
                       className="c9"
                       selected={false}
                     >
-                      Escoge la fecha y la hora
+                      Escoge la fecha y la hora de entrega
                     </p>
                   </div>
                   <span

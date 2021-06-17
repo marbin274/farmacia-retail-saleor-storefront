@@ -64,7 +64,7 @@ export const WrapperDetail = styled.div`
 
 export const Name = styled.div`
   min-height: 2.5rem;
-  margin-left: 1.25rem;
+  margin: 0rem .5rem 0rem 1.25rem;
   font-size: ${props => props.theme.typography.baseFontSize};
   line-height: 1.25rem;
   color: #908ba7;
@@ -79,6 +79,9 @@ export const Price = styled.div`
   .price {
     font-weight: ${(props: any) => props.theme.typography.boldFontWeight};
     font-size: ${baseFontSize};
+    &.discounted_price{
+      margin: 0px;
+    }
   }
   ${media.smallScreen`
     text-align: left;

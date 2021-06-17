@@ -1,10 +1,12 @@
-import { Icon, NavLink } from "@temp/@next/components/atoms";
+import { NavLink } from "@temp/@next/components/atoms";
 import { MainMenuSubItem } from "@temp/components/MainMenu/gqlTypes//MainMenuSubItem";
 import { convertCategoryToMenuItem } from "@temp/core/utils";
 import { SimpleCategory_ancestors_edges_node, SimpleCategory_ancestors_edges_node_children_edges } from "@temp/views/Category/gqlTypes/SimpleCategory";
 import React from "react";
 import * as S from "./styles";
 import { IProps } from "./types";
+import { BackIcon } from "@farmacia-retail/farmauna-components";
+import farmatheme from "@farmatheme";
 
 export const CategoryNavigation: React.FC<IProps> = ({ category }) => {
   const ancestorNode: SimpleCategory_ancestors_edges_node | null =
@@ -27,24 +29,22 @@ export const CategoryNavigation: React.FC<IProps> = ({ category }) => {
   }
   const isLvl1 = !category.ancestors?.edges.length;
   
-  
   return (
     <S.Wrapper>
       <S.Title>
         {
           !isLvl1 &&
-          <S.TitleIcon>
+          <span className='fa-flex fa-items-center fa-mr-2 fa-mt-1'>
             <NavLink
               fullWidth
               item={convertCategoryToMenuItem(ancestorNode?.id || '', ancestorNode?.name || '')}
             >
-              <Icon name="arrow_left" size={18} viewPort={24} />
+              <BackIcon size={18} color={farmatheme.theme.colors.highlight.medium} />
             </NavLink>
-          </S.TitleIcon>
+          </span>
         }
         <S.TitleName isLvl1={isLvl1}>{hasChildren ? category.name: ancestorNode?.name?.toLowerCase()}</S.TitleName>
       </S.Title>
-      <hr />
       {edges?.map((subItem, index) => {
         const { id, name } = subItem.node;
         return (

@@ -1,10 +1,10 @@
 import { media, mediaUp, styled } from "@styles";
-import { xSmallScreen,smallScreen,largeScreen, mediumScreen, xLargeScreen } from "@temp/@next/globalStyles/constants";
+import { smallScreen, xSmallScreen } from "@temp/@next/globalStyles/constants";
 
 export const Container = styled.div`
 width: ${props => `${props.theme.container.width}px`};
   max-width: 100vw;
-  height: 526px;
+  height: 32.875rem;
   margin: 0 auto;
   padding: 0 ${props => props.theme.spacing.spacer};
   ${media.largeScreen`
@@ -16,35 +16,64 @@ export const WraperOpenBanner = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height:4.625rem;
 `;
 export const TopImagesContainer = styled.div`
+  align-items: center;
   display: flex;
-  justify-content: center;
   width: 100%;
   height:100%;
 `;
 
-export const TopImageItem = styled.div<{ imageMobile: string, imageDesktop: string, aboutauna?:boolean }>`
-  background: no-repeat url("${(props: any )=> props.imageMobile}") transparent;
+export const TopImageItem = styled.div<{ imageMobile: string, imageDesktop: string }>`
+  background-image: url("${(props: any )=> props.imageMobile}");
+  background-repeat: no-repeat;
   background-size: 100% 100%;
   cursor: pointer;
-  height: 4rem;
-  width: ${({aboutauna})=>aboutauna ? "55%": "45%"};  
+  height: 3.5rem; 
+  ${mediaUp.smallScreen`
+    background-image: url("${(props: any) => props.imageDesktop}");
+  `}
+`;
+
+export const TopImageAunaContainer = styled.div`
+  width: 7.875rem;
+  ${mediaUp.xSmallScreen`
+    width: 7.875rem;
+  `}
+  ${mediaUp.smallScreen`
+    flex: 1;    
+    justify-content: flex-end;
+    display: flex;
+  `}
+`;
+
+export const TopImageAuna = styled(TopImageItem as any)` 
+  max-width: 24.8125rem;
+  ${mediaUp.smallScreen`
+    background-size: 100% 100%;
+    flex: 1;
+    height: 3.125rem;  
+    width: initial;
+  `}
   ${mediaUp.mediumScreen`
-    background: no-repeat url("${(props: any) => props.imageDesktop}") transparent;
-    background-size: cover;
+    height: 4.625rem;  
   `}
-  @media(min-width: ${mediumScreen}px) and (max-width: ${largeScreen}px){
-    width: auto;
-  }
-  ${mediaUp.largeScreen`
-    height:auto;
+`;
+
+export const TopImageDistrictContainer = styled.div`
+  flex: 1;
+`;
+
+export const TopImageDistrict = styled(TopImageItem as any)`
+max-width: 34.0625rem;
+  ${mediaUp.smallScreen`
+    height: 3.125rem;  
   `}
-  @media(min-width: ${largeScreen}px) and (max-width: ${xLargeScreen}px){
-    height: auto;
-  }
-`
+  ${mediaUp.mediumScreen`
+    height: 4.625rem;  
+  `}
+`;
+
 export const TopImageDistrictBannerOpen = styled.div<{
   imageMobile: string,
   imageDesktop: string
@@ -66,7 +95,7 @@ export const SSkeletonBanner = styled.div`
     background-position: center top;
     background: linear-gradient(-90deg, #F0F0F0 0%, #F8F8F8 50%, #F0F0F0 100%);
     @media (max-width: ${smallScreen}px) {
-      height: 460px;
+      height: 28.75rem;
       border-radius: 0;
       background-position: center top;
       margin-top: 1rem;

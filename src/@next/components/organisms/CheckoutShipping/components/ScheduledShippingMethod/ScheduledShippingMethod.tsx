@@ -1,21 +1,19 @@
 import { ShippingMethodItem } from "@temp/@next/components/molecules";
-import { ISlotScheduleDate } from "@temp/@next/components/molecules/ShippingMethodItem/types";
+import { ISlotScheduleDate } from "@components/organisms/CheckoutShippingProgrammed/types";
 import React, { FC } from "react";
 import { format } from "date-fns";
 import { HOURS_FORMAT, SHIPPING_FORMAT_DATE } from "@temp/core/config";
 import * as S from "../../styles";
 import { ISlotShippingMethodItem } from "../../types";
+import { CheckoutShippingProgrammed } from "../../../CheckoutShippingProgrammed";
 
 export const ScheduledShippingMethod: FC<ISlotShippingMethodItem> = ({
   formikErrors,
-  handleChange,
   onClick,
   shippingMethods,
-  setErrors,
   setFieldValue,
   slots,
   setShippingMethod,
-  touched,
   values,
 }) => {
   const scheduled = slots?.scheduled;
@@ -57,36 +55,40 @@ export const ScheduledShippingMethod: FC<ISlotShippingMethodItem> = ({
   ];
 
   return (
-    <S.ShippingMethodContainer
-      data-cy={`checkoutShippingMethodOption${index}Input`}
-      hasError={!!formikErrors?.shippingMethod && !values.shippingMethod}
-      selected={selected}
-      isScheduledSelected={!!selected && !!isScheduled}
-      onClick={() => {
-        onClick(id, true, slotScheduleDates, selected);
-      }}
-    >
-      <S.ShippingMethodItem>
-        <ShippingMethodItem
-          dateSelected={values.dateSelected}
-          errors={formikErrors}
-          id={id}
-          index={index}
-          isScheduled={true}
-          name={name}
-          selected={selected}
-          selectedSlotId={values.selectedSlotId}
-          scheduleDates={slotScheduleDates}
-          subtitle={subtitle}
-          touched={touched}
-          price={price}
-          handleChange={handleChange}
-          setErrors={setErrors}
-          setFieldValue={setFieldValue}
-          setShippingMethod={setShippingMethod}
-          scheduleTimeId={defaultScheduleTime?.id}
-        />
-      </S.ShippingMethodItem>
-    </S.ShippingMethodContainer>
+    <>
+      <S.ShippingMethodContainer
+        data-cy={`checkoutShippingMethodOption${index}Input`}
+        hasError={!!formikErrors?.shippingMethod && !values.shippingMethod}
+        selected={selected}
+        isScheduledSelected={!!selected && !!isScheduled}
+        onClick={() => {
+          onClick(id, true, slotScheduleDates, selected);
+        }}
+      >
+        <S.ShippingMethodItem>
+          <ShippingMethodItem
+            id={id}
+            index={index}
+            isScheduled={isScheduled}
+            name={name}
+            selected={selected}
+            subtitle={subtitle}
+            price={price}
+          />
+        </S.ShippingMethodItem>
+      </S.ShippingMethodContainer>
+      <CheckoutShippingProgrammed
+        dateSelected={values.dateSelected}
+        errors={formikErrors}
+        id={id}
+        isScheduled={isScheduled}
+        selected={selected}
+        selectedSlotId={values.selectedSlotId}
+        scheduleDates={slotScheduleDates}
+        setFieldValue={setFieldValue!}
+        setShippingMethod={setShippingMethod!}
+        scheduleTimeId={values.selectedScheduleTimeId}
+      />
+    </>
   );
 };

@@ -70,7 +70,6 @@ export const Alert: React.FC<any> = () => {
       duration={0}
       transparent={false}
     >
-      <div className="modal__container">
         <S.Modal>
           {alert.type !== "Text" && (
             <S.Icon>
@@ -88,7 +87,6 @@ export const Alert: React.FC<any> = () => {
             </Button>
           </S.Footer>
         </S.Modal>
-      </div>
     </Overlay>
   );
 };

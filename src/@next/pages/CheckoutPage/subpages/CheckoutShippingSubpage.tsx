@@ -1,7 +1,10 @@
 import { CheckoutShipping } from "@components/organisms";
 import { useCart, useCheckout } from "@sdk/react";
 import { alertService } from "@temp/@next/components/atoms/Alert";
-import { SHIPPING_METHOD_NOT_FOUND, SHIPPING_METHOD_NOT_FOUND_TITLE } from "@temp/@next/utils/schemasMessages";
+import {
+  SHIPPING_METHOD_NOT_FOUND,
+  SHIPPING_METHOD_NOT_FOUND_TITLE,
+} from "@temp/@next/utils/schemasMessages";
 import { IAvailableShippingMethods } from "@temp/@sdk/api/Checkout/types";
 import { CheckoutErrorCode } from "@temp/@sdk/gqlTypes/globalTypes";
 import { UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_errors as ICheckoutShippingMethodError } from "@temp/@sdk/mutations/gqlTypes/UpdateCheckoutShippingMethod";
@@ -71,9 +74,10 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
     const shippingMethod = { ...it };
     if (it.isScheduled && !shippingMethod.scheduleDates) {
       return;
-    }
-    else if (it.isScheduled && shippingMethod.scheduleDates) {
-      shippingMethod.scheduleDates = shippingMethod.scheduleDates.filter(it => it?.scheduleTimes?.length);
+    } else if (it.isScheduled && shippingMethod.scheduleDates) {
+      shippingMethod.scheduleDates = shippingMethod.scheduleDates.filter(
+        it => it?.scheduleTimes?.length
+      );
     }
     shippingMethods.push(shippingMethod);
   });
@@ -95,15 +99,19 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
     const errors: ICheckoutShippingMethodError[] | undefined = dataError?.error;
     changeSubmitProgress(false);
     if (errors) {
-      const scheduleTimeNotFound = errors.find(it =>
-        (it.code === CheckoutErrorCode.NOT_FOUND && it.field === "scheduleTimeId") ||
-        (it.code === CheckoutErrorCode.SCHEDULE_NOT_AVAILABLE)
+      const scheduleTimeNotFound = errors.find(
+        it =>
+          (it.code === CheckoutErrorCode.NOT_FOUND &&
+            it.field === "scheduleTimeId") ||
+          it.code === CheckoutErrorCode.SCHEDULE_NOT_AVAILABLE
       );
       setShippingMethod({ shippingMethodId: "", slotId: undefined });
       alertService.sendAlert({
         buttonText: "Entendido",
         icon: scheduleTimeNotFound && shippingMethodCalendarInfoIco,
-        message:  !scheduleTimeNotFound ? errors[0].message : SHIPPING_METHOD_NOT_FOUND,
+        message: !scheduleTimeNotFound
+          ? errors[0].message
+          : SHIPPING_METHOD_NOT_FOUND,
         title: scheduleTimeNotFound && SHIPPING_METHOD_NOT_FOUND_TITLE,
         type: "Error",
       });

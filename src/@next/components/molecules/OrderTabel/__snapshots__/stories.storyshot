@@ -177,7 +177,7 @@ exports[`Storyshots @components/molecules/OrderTabel default 1`] = `
       <div
         className="c3"
       >
-        Codigo de orden
+        Código de orden
       </div>
       <div
         className="c4"
