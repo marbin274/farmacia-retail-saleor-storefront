@@ -5,7 +5,7 @@ on:
 jobs:
   build:
     name: "STOREFRONT CI "
-    runs-on: [ubuntu-latest, self-hosted,qa]
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [14.x]
