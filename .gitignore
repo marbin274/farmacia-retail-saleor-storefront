@@ -10,6 +10,7 @@
 !.prettierrc
 !.husky
 !.npmrc
+!.prettierignore
 dist
 node_modules
 src/locales/_build

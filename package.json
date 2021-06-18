@@ -146,6 +146,7 @@
     "postcss-cli": "^8.3.1",
     "postcss-loader": "^2.1.6",
     "postcss-preset-env": "^5.3.0",
+    "pretty-quick": "^3.1.1",
     "query-string": "^6.1.0",
     "react-apollo": "^2.5.1",
     "react-docgen-typescript-loader": "^3.6.0",
@@ -197,6 +198,8 @@
     "test:e2e:run:record": "start-server-and-test start http://localhost:3000 cy:run:record",
     "test:e2e:dev": "start-server-and-test start http://localhost:3000 cy:open",
     "test:update:snapshot": "jest --updateSnapshot --config .jest/config.json",
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "prettier": "prettier --config ./.prettierrc --write './**/*.{js,ts,jsx,tsx}' --loglevel=warn",
+    "pretty-quick": "pretty-quick --staged"
   }
 }
