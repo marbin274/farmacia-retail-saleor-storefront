@@ -1,11 +1,11 @@
 on:
   pull_request:
-    branches: [self-hosted]
+    branches: [master, release]
 
 jobs:
   build:
     name: "STOREFRONT CI "
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted]
     strategy:
       matrix:
         node-version: [14.x]
