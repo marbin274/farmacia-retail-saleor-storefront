@@ -8,6 +8,7 @@
   "browserslist": "last 2 versions",
   "dependencies": {
     "@babel/runtime": "^7.5.5",
+    "@farmacia-retail/farmauna-components": "^0.1.7",
     "@googlemaps/js-api-loader": "^1.11.3",
     "@lhci/cli": "^0.3.9",
     "@optimizely/react-sdk": "^2.5.0",

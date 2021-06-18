@@ -25,7 +25,7 @@ jobs:
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
       - name: 3- Build application master ${{ github.event.pull_request.base.ref }}
-        if: ${{ github.ref == 'refs/heads/master' }}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
         run: npm run build && npm run sitemap ${{ secrets.FRONT_URL_QA }}
         env:
           API_URI: ${{ secrets.GRAPHQL_URL_QA }}
@@ -41,7 +41,7 @@ jobs:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
           ENVIRONMENT_NAME: "qa"
       - name: 4- Build application release ${{ github.event.pull_request.base.ref }}
-        if: ${{ github.ref == 'refs/heads/release' }}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/release' }}
         run: npm run build && npm run sitemap ${{ secrets.FRONT_URL_PROD }}
         env:
           API_URI: ${{ secrets.GRAPHQL_URL_PROD }}
