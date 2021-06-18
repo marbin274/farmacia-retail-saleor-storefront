@@ -31,6 +31,10 @@ export const PROVIDERS = {
     id: "mirumee.payments.dummy",
     label: "AUNA Payments Gateway",
   },
+  POS: {
+    id: "farmacia-retail.payments.pos",
+    label: "POS contra entrega",
+  },
 };
 export const billingAddressAlwaysSameAsShipping = true;
 

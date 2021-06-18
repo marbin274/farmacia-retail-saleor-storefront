@@ -276,9 +276,7 @@ exports[`Storyshots @components/organisms/CheckoutPayment default 1`] = `
     </div>
     <div
       className="c7"
-    >
-      <div />
-    </div>
+    />
   </div>
   <div
     className="c8"
@@ -562,9 +560,7 @@ exports[`Storyshots @components/organisms/CheckoutPayment with addresses 1`] = `
     </div>
     <div
       className="c7"
-    >
-      <div />
-    </div>
+    />
   </div>
   <div
     className="c8"
