@@ -801,5 +801,12 @@ export interface Checkout {
    * List of slots.
    */
   slots: Checkout_slots | null;
+  /**
+   * Slot id.
+   */
   slotId: string | null;
+  /**
+   * Slot date.
+   */
+  deliveryDate: string | null;
 }

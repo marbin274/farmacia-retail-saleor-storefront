@@ -816,7 +816,14 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    * List of slots.
    */
   slots: UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_slots | null;
+  /**
+   * Slot id.
+   */
   slotId: string | null;
+  /**
+   * Slot date.
+   */
+  deliveryDate: string | null;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate {
@@ -1626,7 +1633,14 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    * List of slots.
    */
   slots: UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_slots | null;
+  /**
+   * Slot id.
+   */
   slotId: string | null;
+  /**
+   * Slot date.
+   */
+  deliveryDate: string | null;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_errors {

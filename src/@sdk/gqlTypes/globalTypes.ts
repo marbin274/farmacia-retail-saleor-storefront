@@ -394,6 +394,7 @@ export enum ShippingStatusEnum {
   DELIVERED = "DELIVERED",
   IN_TRANSIT = "IN_TRANSIT",
   NOT_SEND = "NOT_SEND",
+  PICKING_STARTED = "PICKING_STARTED",
 }
 
 export interface AccountInput {

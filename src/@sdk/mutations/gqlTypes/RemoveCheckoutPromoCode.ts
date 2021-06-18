@@ -803,7 +803,14 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout {
    * List of slots.
    */
   slots: RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_slots | null;
+  /**
+   * Slot id.
+   */
   slotId: string | null;
+  /**
+   * Slot date.
+   */
+  deliveryDate: string | null;
 }
 
 export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_errors {

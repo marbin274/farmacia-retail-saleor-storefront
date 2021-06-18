@@ -816,7 +816,14 @@ export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_che
    * List of slots.
    */
   slots: UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_slots | null;
+  /**
+   * Slot id.
+   */
   slotId: string | null;
+  /**
+   * Slot date.
+   */
+  deliveryDate: string | null;
 }
 
 export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkoutErrors_products {
@@ -1660,7 +1667,14 @@ export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout {
    * List of slots.
    */
   slots: UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_slots | null;
+  /**
+   * Slot id.
+   */
   slotId: string | null;
+  /**
+   * Slot date.
+   */
+  deliveryDate: string | null;
 }
 
 export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_errors {

@@ -816,7 +816,14 @@ export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_check
    * List of slots.
    */
   slots: UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_checkout_slots | null;
+  /**
+   * Slot id.
+   */
   slotId: string | null;
+  /**
+   * Slot date.
+   */
+  deliveryDate: string | null;
 }
 
 export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate {

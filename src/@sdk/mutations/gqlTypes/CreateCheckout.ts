@@ -849,7 +849,14 @@ export interface CreateCheckout_checkoutCreate_checkout {
    * List of slots.
    */
   slots: CreateCheckout_checkoutCreate_checkout_slots | null;
+  /**
+   * Slot id.
+   */
   slotId: string | null;
+  /**
+   * Slot date.
+   */
+  deliveryDate: string | null;
 }
 
 export interface CreateCheckout_checkoutCreate {

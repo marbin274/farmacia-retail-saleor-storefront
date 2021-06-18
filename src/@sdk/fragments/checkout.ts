@@ -211,5 +211,6 @@ export const checkoutFragment = gql`
       datetime
     }
     slotId
+    deliveryDate
   }
 `;

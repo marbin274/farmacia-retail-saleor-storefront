@@ -75,6 +75,7 @@ export class SaleorCheckoutAPI extends ErrorListener
         scheduleDate,
         slotId,
         slots,
+        deliveryDate,
       }: ICheckoutModel) => {
         this.checkout = {
           billingAddress,
@@ -87,6 +88,7 @@ export class SaleorCheckoutAPI extends ErrorListener
           shippingMethod,
           termsAndConditions,
           token,
+          deliveryDate,
         };
         this.selectedShippingAddressId = selectedShippingAddressId;
         this.selectedBillingAddressId = selectedBillingAddressId;

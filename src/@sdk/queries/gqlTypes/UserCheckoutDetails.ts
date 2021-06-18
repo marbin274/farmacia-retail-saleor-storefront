@@ -801,7 +801,14 @@ export interface UserCheckoutDetails_me_checkout {
    * List of slots.
    */
   slots: UserCheckoutDetails_me_checkout_slots | null;
+  /**
+   * Slot id.
+   */
   slotId: string | null;
+  /**
+   * Slot date.
+   */
+  deliveryDate: string | null;
 }
 
 export interface UserCheckoutDetails_me {
