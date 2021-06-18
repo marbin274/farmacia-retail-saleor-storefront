@@ -123,6 +123,7 @@
       padding: 1rem 1rem 3rem 1rem;
       font-weight: 600;
       line-height: normal;
+      max-width: 63rem;
 
       @media (max-width: $medium-screen) {
         padding: 1rem 1rem 1.875rem 1rem;
