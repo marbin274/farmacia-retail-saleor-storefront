@@ -50,7 +50,7 @@ const ProductItem: React.FC<SearchResults_products_edges> = ({ node }) => {
                     "search__products__item__side__price__on-sale"}`}
                 >
                   <span className="title_price">Precio</span>
-                  <Money money={product.pricing.priceRange.start.net} />
+                  <Money className={isStockAvailable ? '' : 'fa-text-gray-02'} money={product.pricing.priceRange.start.net} />
                 </span>
               </span>
             </p>
