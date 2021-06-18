@@ -5,7 +5,8 @@ on:
 jobs:
   build:
     name: "STOREFRONT CI "
-    runs-on: ubuntu-latest
+#    runs-on: ubuntu-latest
+    runs-on: [self-hosted,qa]
 
     strategy:
       matrix:
