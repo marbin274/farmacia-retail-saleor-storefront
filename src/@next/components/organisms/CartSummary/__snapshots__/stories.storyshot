@@ -126,7 +126,7 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
 }
 
 .c18 .price.discounted_price {
-  margin: 0px;
+  margin: 0 0 0 1rem;
 }
 
 .c22 {

@@ -23,6 +23,7 @@ import {
   StockMessage,
   Title,
 } from "./styles";
+import { checkProductIsOnSale } from "@temp/@next/utils/products";
 
 type IStockValidationModalProps = {
   show: boolean;
@@ -56,7 +57,7 @@ export const StockValidationModal: FC<IStockValidationModalProps> = ({
     }
 
     for (const product of products) {
-      const line = items.find(x => x.variant.sku === product.sku);
+      const line = items.find((x) => x.variant.sku === product.sku);
       if (!line) continue;
 
       outOfStockProducts.push({
@@ -72,25 +73,30 @@ export const StockValidationModal: FC<IStockValidationModalProps> = ({
 
   const allOutOfStock =
     items?.length === finalProducts?.length &&
-    !finalProducts.find(x => x.quantityAvailable > 0);
+    !finalProducts.find((x) => x.quantityAvailable > 0);
 
   const renderCartItems = () => {
-    return finalProducts.map(item => {
+    return finalProducts.map((item) => {
       const { line, quantityAvailable } = item;
 
+      const hasQuantityAvailable = quantityAvailable > 0;
       const variantPrice = line.variant.pricing!.price!;
+
       const totalPrice = {
         gross: {
           ...variantPrice.gross,
-          amount: variantPrice.gross.amount * (quantityAvailable || 1),
+          amount:
+            variantPrice.gross.amount *
+            (hasQuantityAvailable ? quantityAvailable : 1),
         },
         net: {
           ...variantPrice.net,
-          amount: variantPrice.net.amount * (quantityAvailable || 1),
+          amount:
+            variantPrice.net.amount *
+            (hasQuantityAvailable ? quantityAvailable : 1),
         },
       };
-
-      const hasQuantityAvailable = quantityAvailable > 0;
+      const isOnSale = checkProductIsOnSale(line);
 
       return (
         <ProductItem key={line.id}>
@@ -103,8 +109,16 @@ export const StockValidationModal: FC<IStockValidationModalProps> = ({
             </ProductImage>
             <ProductInfo>
               <ProductName>{line.name}</ProductName>
-              <ProductNumerics>
-                <Quantity>{quantityAvailable || line.quantity}</Quantity>
+              <ProductNumerics
+                isOnSale={isOnSale}
+                hasQuantityAvailable={hasQuantityAvailable}
+              >
+                {!allOutOfStock && (
+                  <Quantity>
+                    {hasQuantityAvailable ? quantityAvailable : ""}
+                  </Quantity>
+                )}
+
                 <TaxedMoney taxedMoney={totalPrice} />
               </ProductNumerics>
             </ProductInfo>

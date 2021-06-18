@@ -191,7 +191,26 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                 {renderGroupLabel("Dirección")}
                 <S.RowWithOneCell>
                 <div className='fa-mb-4'>
-                  <StreetAddress1 {...fieldsProps} />
+                  <StreetAddress1 
+                    {...fieldsProps}
+                    onChange={(value: IAddressAutocompleteValue) => {
+                      setFieldValue("streetAddress1", value.text || "");
+                      setFieldValue(
+                        "latitude",
+                        value.lat ? String(value.lat) : ""
+                      );
+                      setFieldValue(
+                        "longitude",
+                        value.lng ? String(value.lng) : ""
+                      );
+                      registerFilledInputForAddress(!!(value.text && value.lat));
+                    }}
+                    onBlur={(e: React.FocusEvent) => {
+                      registerFilledInputForAddress(
+                        !!values?.streetAddress1?.length
+                      );
+                      handleBlur?.(e);
+                    }} />
                 </div>
                   <StreetAddress2 {...fieldsProps} />
                 </S.RowWithOneCell>

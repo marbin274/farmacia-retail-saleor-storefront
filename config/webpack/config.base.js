@@ -140,9 +140,7 @@ module.exports = ({ sourceDir, distDir }) => ({
       MERCHANT_PASSWORD: "__",
       MERCHANT_USERNAME: "__",
       MERCHANT_ID: "__",
-      OPTIMIZELY_SDK_KEY: "__",
-      ELASTIC_APM_HOST: "__",
-      ELASTIC_APM_ENV: "__"
+      OPTIMIZELY_SDK_KEY: "__"
     }),
   ],
   node: {
