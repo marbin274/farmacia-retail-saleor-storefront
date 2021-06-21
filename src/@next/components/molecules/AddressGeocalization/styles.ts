@@ -1,6 +1,7 @@
 import { mediaUp, media } from "@temp/@next/globalStyles";
 import { largeScreen, white } from "@temp/@next/globalStyles/constants";
-import styled, { css, keyframes } from "styled-components";
+import { css, keyframes } from "styled-components";
+import { styled } from "@styles";
 import { addressLocationType } from "./types";
 import farmatheme from "@farmatheme";
 
@@ -188,6 +189,7 @@ export const AlertText = styled.span`
 `;
 
 export const AlertAction = styled.div`
+  ${({theme})=>`
   display: flex;
   justify-content: flex-end;
   padding-top: 1rem;
@@ -199,7 +201,7 @@ export const AlertAction = styled.div`
     width: 10.188rem;
   }
   span {
-    font-size: ${({ theme }) => theme.typography.smallFontSize};
+    font-size: ${theme.typography.smallFontSize};
   }
 
   button {
@@ -211,11 +213,12 @@ export const AlertAction = styled.div`
     ${media.xSmallScreen`
         > span {
           margin-left: 0;
-          font-size: ${({ theme }: any) => theme.typography.labelFontSize}
+          font-size: ${theme.typography.labelFontSize}
         }
     `}
     span {
       color:currentcolor;
     }
   }
+  `}
 `;

@@ -25,7 +25,7 @@ interface SortItem {
   value?: string;
 }
 
-interface SortOptions extends Array<SortItem> {}
+export interface SortOptions extends Array<SortItem> {}
 
 interface PageProps extends IPaginationProps {
   activeFilters: number;
@@ -127,7 +127,7 @@ const Page: React.FC<PageProps> = ({
                 clearFilters={clearFilters}
                 hideFilters
                 openFiltersMenu={() => setShowFilters(true)}
-                numberOfProducts={products ? products.totalCount : 0}
+                numberOfProducts={products?.totalCount ? products.totalCount : 0}
                 sortOptions={sortOptions}
                 onChange={onOrder}
                 onCloseFilterAttribute={onAttributeFiltersChange}

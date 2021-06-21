@@ -73,7 +73,7 @@ export const CheckoutShippingProgrammed: React.FC<IProps> = ({
   };
 
   return (
-    selected && isScheduled && (
+    (selected && isScheduled) ? (
         <S.ShippingMethodItemControl>
           <S.ShippingMethodScheduleControl>
             <span className="fa-text-gray-01 fa-text-sm fa-block fa-h-10">
@@ -127,6 +127,6 @@ export const CheckoutShippingProgrammed: React.FC<IProps> = ({
             </S.ShippingMethodControl>
           </S.ShippingMethodScheduleControl>
         </S.ShippingMethodItemControl>
-    )
+    ) : null
   );
 };
