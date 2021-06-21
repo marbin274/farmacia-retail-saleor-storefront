@@ -38,3 +38,8 @@ export const TopImageDistrictBannerOpen = styled.div<{
   `};
 
  `;
+
+ export const SkeletonItem = styled.div`
+  margin-bottom: 1.5rem;
+  width: 100%;
+ `;

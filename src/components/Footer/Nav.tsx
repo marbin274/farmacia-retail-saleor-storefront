@@ -10,7 +10,7 @@ import { TypedSecondaryMenuQuery } from "./queries";
 import "./scss/index.scss";
 import SocialMedia from "../SocialMedia";
 import classNames from "classnames";
-
+import { Skeleton } from "./skeleton";
 type IProps = RouteComponentProps;
 
 type IState = {
@@ -127,7 +127,9 @@ class Nav extends React.PureComponent<IProps, IState> {
               </p>
             </div>
           </div>
-          <TypedSecondaryMenuQuery>
+          <TypedSecondaryMenuQuery
+            loader={<Skeleton />}
+          >
             {({ data }) => {
               return data.shop.navigation.secondary.items.map(item => (
                 <div className="footer-nav__section" key={item.id}>

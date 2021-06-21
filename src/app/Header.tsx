@@ -14,7 +14,11 @@ export const Header: React.FC = () => {
   const isProductPage = location.pathname.includes("product");
 
   return (
-    <TypedMainMenuQuery renderOnError displayLoader={false}>
+    <TypedMainMenuQuery
+      alwaysRender
+      renderOnError
+      displayLoader={false}
+    >
       {({ data }) => {
         const categories: INavItem[] = maybe(
           () =>
