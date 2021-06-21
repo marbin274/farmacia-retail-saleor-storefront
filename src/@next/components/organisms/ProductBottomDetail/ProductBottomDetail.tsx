@@ -36,11 +36,13 @@ export const ProductBottomDetail: FC<IProps> = ({
             <S.ProductContent>
               <S.ProductImg>
                 <Thumbnail
+                  height={510}
                   source={{
                     thumbnail: { url: product.thumbnail?.url! },
                     thumbnail2x: { url: product.thumbnail2x?.url! },
                   }}
-                />
+                  width={510} 
+                  />
               </S.ProductImg>
               <S.ProductInfo>
                 <S.ProductName>{product.name}</S.ProductName>

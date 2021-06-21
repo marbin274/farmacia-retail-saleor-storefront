@@ -112,7 +112,7 @@ class Nav extends React.PureComponent<IProps, IState> {
           <div className="footer-nav__section">
             <div className="footer-nav__section-header">
               <div className="logo-footer-farmauna">
-                <img src={logoFarmaunaFooter} alt="Logo Farmauna" />
+                <img height={22} src={logoFarmaunaFooter} alt="Logo Farmauna" width={133} />
               </div>
             </div>
             <div className="footer-nav__section-content">
