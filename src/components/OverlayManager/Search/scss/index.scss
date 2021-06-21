@@ -226,6 +226,8 @@ $custom-breakpoint: 624px;
             flex-direction: row;
             justify-content: space-between;
             margin-left: 4rem;
+            position: relative;
+            z-index: 10;
           }
           .button {
             > button {
