@@ -42,15 +42,15 @@ const ProductItem: React.FC<SearchResults_products_edges> = ({ node }) => {
           <div className="search__products__item__side">
             <Thumbnail source={node} />
             <p className="search__products__item__side__name">
-              {product.name}
+              <div className="search__products__item__side__name_primary">{product.name}</div>
               <span>
-                {product.category?.name}
+                <div className="search__products__item__side__name_category">{product.category?.name}</div>
                 <span
                   className={`search__products__item__side__price ${isOnSale &&
                     "search__products__item__side__price__on-sale"}`}
                 >
                   <span className="title_price">Precio</span>
-                  <Money money={product.pricing.priceRange.start.net} />
+                  <Money className={isStockAvailable ? '' : 'fa-text-gray-02'} money={product.pricing.priceRange.start.net} />
                 </span>
               </span>
             </p>

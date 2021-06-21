@@ -123,6 +123,7 @@
       padding: 1rem 1rem 3rem 1rem;
       font-weight: 600;
       line-height: normal;
+      max-width: 63rem;
 
       @media (max-width: $medium-screen) {
         padding: 1rem 1rem 1.875rem 1rem;
@@ -167,6 +168,9 @@
       .slider-control-centerright {
         top: -17% !important;
         right: 29px !important;
+        height: 3.125rem;
+        display: flex;
+        align-items: center;
         @media (max-width: $medium-screen) {
           top: auto !important;
           bottom: -20px !important;
@@ -175,7 +179,13 @@
 
       .slider-control-centerleft {
         left: auto !important;
-        right: 90px !important;
+        right: 7.625rem !important;
+        
+        @media (max-width: $medium-screen) {
+          left: auto !important;
+          right: calc(50% + 3.125rem)!important;
+          transform: translate(50%, -50%)!important;
+        }
         @media (max-width: $small-screen) {
           left: 30% !important;
           right: auto !important;
@@ -184,10 +194,11 @@
 
       .slider-control-centerright {
         left: auto !important;
-        right: 0 !important;
+        right: 3rem !important;
         @media (max-width: $medium-screen) {
           left: auto !important;
-          right: 30% !important;
+          right: calc(50% - 3.125rem)!important;
+          transform: translate(50%, -50%)!important;
         }
       }
     }
