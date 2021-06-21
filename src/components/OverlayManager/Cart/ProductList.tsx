@@ -43,12 +43,10 @@ const ProductList: React.FC<IProductList> = ({
   onCancel,
 }) => (
   <ul className="cart__list">
-    {products.map(product => {
-      const { variant, quantity } = product;
-      const { canAddToCart } = checkProductCanAddToCart(
-        convertProductOnCartInProduct(product),
-        products
-      );
+    {products.map(ProductOnCart => {
+      const product = convertProductOnCartInProduct(ProductOnCart);
+      const { variant, quantity } = ProductOnCart;
+      const { canAddToCart } = checkProductCanAddToCart(product, products);
       const isOnSale = checkProductIsOnSale(product);
       const id: string | undefined = variant.product?.id;
       const name: string | undefined = product.name
