@@ -80,7 +80,7 @@ export const Price = styled.div`
     font-weight: ${(props: any) => props.theme.typography.boldFontWeight};
     font-size: ${baseFontSize};
     &.discounted_price{
-      margin: 0px;
+      margin: 0;
     }
   }
   ${media.smallScreen`

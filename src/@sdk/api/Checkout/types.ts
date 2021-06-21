@@ -75,6 +75,7 @@ export interface ICheckout {
   dataTreatmentPolicy?: boolean;
   termsAndConditions?: boolean;
   documentNumber?: string | null;
+  deliveryDate?: string;
 }
 
 export enum FunctionErrorCheckoutTypes {

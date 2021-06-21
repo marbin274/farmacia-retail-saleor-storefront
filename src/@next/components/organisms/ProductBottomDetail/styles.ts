@@ -71,7 +71,7 @@ export const ProductPrice = styled.div`
   }
 
   .price.undiscounted_price {
-    margin: 0;
+    margin: 0 0 0 1rem;
   }
 
   div.price {

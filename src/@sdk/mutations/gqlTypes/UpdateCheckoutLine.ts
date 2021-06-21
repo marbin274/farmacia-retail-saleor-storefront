@@ -803,7 +803,14 @@ export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout {
    * List of slots.
    */
   slots: UpdateCheckoutLine_checkoutLinesUpdate_checkout_slots | null;
+  /**
+   * Slot id.
+   */
   slotId: string | null;
+  /**
+   * Slot date.
+   */
+  deliveryDate: string | null;
 }
 
 export interface UpdateCheckoutLine_checkoutLinesUpdate_errors {

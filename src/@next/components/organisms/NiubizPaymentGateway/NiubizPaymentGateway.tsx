@@ -22,6 +22,7 @@ import niubizTextIcon from "@temp/images/auna/niubiz-text.svg";
 import americanExpress from "@temp/images/auna/american-express-payment.svg";
 import dinersClub from "@temp/images/auna/diners-club-payment.svg";
 const ip = require("ip");
+import farmatheme from "@farmatheme";
 
 const INITIAL_CARD_ERROR_STATE = {
   fieldErrors: {
@@ -210,7 +211,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
             fontSize: "1rem",
             fontSmoothing: "antialiased",
             placeholder: {
-              color: "#9194a7",
+              color: farmatheme.theme.colors.neutral.medium,
             },
           },
           invalid: {
@@ -228,7 +229,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
         _window.cardNumber = _window?.payform.createElement(
           "card-number",
           {
-            placeholder: " ",
+            placeholder: "Ejem: 9729 2800 2334 3423",
             style: elementStyles,
           },
           "txtNumeroTarjeta"
@@ -257,7 +258,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
         _window.cardCvv = _payform.createElement(
           "card-cvc",
           {
-            placeholder: " ",
+            placeholder: "Ejem: 972 0",
             style: elementStyles,
           },
           "txtCvv"
@@ -272,7 +273,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
         _window.cardExpiry = _payform.createElement(
           "card-expiry",
           {
-            placeholder: " ",
+            placeholder: "Ejem: 02/20",
             style: elementStyles,
           },
           "txtFechaVencimiento"
@@ -401,6 +402,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
     script.async = true;
     document.body.appendChild(script);
     createTokenScript();
+
     return () => {
       removeNiubizElements(script, idIframes);
     };

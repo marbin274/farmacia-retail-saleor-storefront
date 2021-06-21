@@ -803,7 +803,14 @@ export interface UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMe
    * List of slots.
    */
   slots: UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMethodUpdate_checkout_slots | null;
+  /**
+   * Slot id.
+   */
   slotId: string | null;
+  /**
+   * Slot date.
+   */
+  deliveryDate: string | null;
 }
 
 export interface UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMethodUpdate_errors_products {

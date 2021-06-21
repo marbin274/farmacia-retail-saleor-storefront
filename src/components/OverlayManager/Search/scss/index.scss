@@ -177,7 +177,7 @@ $custom-breakpoint: 624px;
       @extend .size;
       background-color: $white;
       border-radius: 24px;
-      padding: 32px;
+      padding: 2rem 1.25rem;
       border: 1px solid $auna-complementary1;
       margin: 0 0 1.5rem 0;
       max-width: none;
@@ -210,7 +210,7 @@ $custom-breakpoint: 624px;
       }
 
       &__link {
-        width: 27rem;
+        width: 28rem;
         @media (max-width: $small-screen) {
           width: auto;
         }
@@ -226,6 +226,8 @@ $custom-breakpoint: 624px;
             flex-direction: row;
             justify-content: space-between;
             margin-left: 4rem;
+            position: relative;
+            z-index: 10;
           }
           .button {
             > button {
@@ -246,7 +248,7 @@ $custom-breakpoint: 624px;
           display: flex;
 
           @media (max-width: $small-screen) {
-            margin-right: -0.625rem;
+            margin-right: -1.1rem;
           }
         }
         &__name {
@@ -255,11 +257,13 @@ $custom-breakpoint: 624px;
           flex-direction: column;
           justify-content: center;
           font-weight: 600;
+          height: 5.313rem;
+          margin-left: 0.313rem;
 
           > span {
             color: #727171;
             font-size: 12px;
-            padding: 5px 0;
+            top: 0.938rem;
             position: relative;
 
             @media (max-width: $medium-screen) {
@@ -270,6 +274,32 @@ $custom-breakpoint: 624px;
           @media (max-width: $medium-screen) {
             margin-right: 0;
           }
+          &_category {
+            display: inline-block;
+            width: 14rem;
+            height: 2.25rem;
+            overflow: hidden;
+            line-height: normal;
+
+            @media (max-width: $medium-screen) {
+              width: 13rem;
+              font-size: 0.688rem;
+            }
+          }
+
+          &_primary {
+            height: 3.125rem;
+            overflow: hidden;
+            position: relative;
+            z-index: 5;
+            display: contents;
+            @media (max-width: $medium-screen) {
+              overflow: inherit;
+              height: 4.375rem;
+              font-size: 0.844rem;
+              line-height: normal;
+            }
+          }
         }
 
         &__price {
@@ -278,6 +308,16 @@ $custom-breakpoint: 624px;
           font-size: 20px;
           float: right;
           @media (max-width: $medium-screen) {
+            font-size: 12px;
+            margin-bottom: 0px;
+            float: left;
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            left: 0;
+            top:30px
+          }
+          @media (max-width: $small-screen) {
             font-size: 12px;
             margin-bottom: 0px;
             float: left;
@@ -297,7 +337,7 @@ $custom-breakpoint: 624px;
             margin-left: 6px;
 
             @media (max-width: $medium-screen) {
-              font-size: 1.2rem;
+              font-size: 1rem;
               margin: 0;
             }
           }
@@ -332,20 +372,23 @@ $custom-breakpoint: 624px;
             margin: 0;
           }
         }
-      }
 
-      img {
-        width: 3.6rem;
-        height: 3.6rem;
-        display: inline-block;
-        margin-right: 34px;
-        vertical-align: top;
-        transform: scale(1.8);
-
-        @media (max-width: $medium-screen) {
-          margin-right: 1.563rem;
+        img {
+          width: 3.6rem;
+          height: 3.6rem;
+          display: inline-block;
+          margin: 0 1.563rem 0 0.313rem;
+          vertical-align: top;
+          transform: scale(1.8);
+  
+          @media (max-width: $medium-screen) {
+            margin-right: 1.3rem;
+            margin-left: 0;
+          }
         }
       }
+
+      
 
       ul {
         max-height: calc(100vh - 9rem);

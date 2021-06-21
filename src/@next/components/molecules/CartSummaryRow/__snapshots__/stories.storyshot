@@ -126,7 +126,7 @@ exports[`Storyshots @components/molecules/CartSummaryRow default 1`] = `
 }
 
 .c8 .price.discounted_price {
-  margin: 0px;
+  margin: 0;
 }
 
 @media (max-width:540px) {

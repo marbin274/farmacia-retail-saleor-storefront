@@ -5,4 +5,5 @@ export interface IProps {
     culture: string;
   } | null;
   defaultValue?: string;
+  className?: string;
 }

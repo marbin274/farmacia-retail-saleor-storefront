@@ -116,6 +116,7 @@ export class CheckoutJobs {
         availableShippingMethods: data?.availableShippingMethods,
         billingAsShipping: false,
         dataTreatmentPolicy: data?.dataTreatmentPolicy,
+        deliveryDate: data?.deliveryDate,
         documentNumber: data?.documentNumber,
         email: data?.email,
         selectedShippingAddressId,
@@ -238,6 +239,7 @@ export class CheckoutJobs {
       const newCheckout = {
         ...checkout,
         availableShippingMethods: data?.availableShippingMethods,
+        deliveryDate: data?.deliveryDate,
         promoCodeDiscount: data?.promoCodeDiscount,
         scheduleDate: data?.scheduleDate,
         shippingMethod: data?.shippingMethod,

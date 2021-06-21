@@ -816,7 +816,14 @@ export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout {
    * List of slots.
    */
   slots: CreateCheckoutPayment_checkoutPaymentCreate_checkout_slots | null;
+  /**
+   * Slot id.
+   */
   slotId: string | null;
+  /**
+   * Slot date.
+   */
+  deliveryDate: string | null;
 }
 
 export interface CreateCheckoutPayment_checkoutPaymentCreate_payment_creditCard {

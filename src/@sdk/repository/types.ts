@@ -177,6 +177,7 @@ export interface ICheckoutModel {
   scheduleDate?: IScheduleDate | null;
   slotId?: string;
   slots?: ISlots;
+  deliveryDate?: string;
 }
 
 export interface IPaymentModel {
