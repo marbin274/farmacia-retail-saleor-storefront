@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig",
   "compilerOptions": {
-    "strict": true
+    "strict": false
   },
-  "include": ["../../webpack.d.ts"]
+  "include": ["../../webpack.d.ts", "**/*"]
 }
