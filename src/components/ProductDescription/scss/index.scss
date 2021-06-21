@@ -16,6 +16,36 @@
       span,
       p {
         font-size: $h3-font-size;
+        @media (max-width: $small-screen) {  
+         font-size: 1rem;
+         position: relative;
+         &::before {
+           position: absolute;
+           content: "Precio";
+           color: #ACA8BD;
+           font-size: 12px;
+           left: 0;
+           top: -1.688rem;
+           font-weight: normal;
+         }
+        }
+      }
+    }
+    &.undiscounted_price {
+      span {
+        @media (max-width: $small-screen) {  
+         font-size: 0.875rem;
+          position: relative;
+         &::before {
+          position: absolute;
+          content: "Antes";
+          color: #ACA8BD;
+          font-size: 12px;
+          left: 0;
+          top: -1.688rem;
+          font-weight: normal;
+        }
+        }
       }
     }
   }
@@ -41,13 +71,13 @@
 
   &__price {
     color: $base-font-color-2;
-    font-size: $base-font-size;
-    font-weight: $font-weight-light;
+    font-size: $small-font-size;
+    font-weight: $bold-font-normal;
     margin-bottom: 1.75rem;
   }
 
   > div {
-    > p {
+    > p, ul {
       @extend .product-description__price;
       margin-bottom: 0 !important;
     }
@@ -116,10 +146,6 @@
     flex-direction: row;
     height: 2.625rem;
 
-    @media (max-width: $small-screen) {
-      display: none;
-    }
-
     .itemHandler {
       width: 100% !important;
       max-width: 9.375rem;
@@ -179,6 +205,15 @@
           transition: opacity $animation-speed ease-out;
         }
       }
+    }
+  }
+ 
+
+  @media (max-width: $small-screen) {
+    .price__button {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
   }
 }

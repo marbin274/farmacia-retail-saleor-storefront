@@ -42,8 +42,11 @@
 
   &__home-icon {
     display: inline-block;
-    margin: 0 0.75rem 0 0.5rem;
+    margin: 0;
     vertical-align: middle;
+    @media (max-width: $small-screen) {
+      margin: 0 0 0 0.5rem;
+    }
   }
 
   &__home_title {
