@@ -205,12 +205,17 @@ export const AlertAction = styled.div`
   button {
     padding: 0.5rem;
     width: 100%;
-
+    ${media.largeScreen`
+      border-color:currentcolor;
+`}
     ${media.xSmallScreen`
         > span {
           margin-left: 0;
           font-size: ${({ theme }: any) => theme.typography.labelFontSize}
         }
     `}
+    span {
+      color:currentcolor;
+    }
   }
 `;
