@@ -105,6 +105,7 @@ export const ProductName = styled.div`
 `;
 
 export const ProductPrice = styled.div`
+  align-items: baseline;
   display: flex;
   justify-content: space-between;
   margin-top: 0.5rem;
