@@ -4,15 +4,13 @@ import { ProductTileAUNA } from "@temp/@next/components/molecules";
 import { useDistrictSelected } from "@temp/@next/hooks/useDistrictSelected";
 import { getProductsWithQuantity } from "@temp/@next/utils/products";
 import { TypedFeaturedProductsQuery } from "@temp/components/ProductsFeatured/queries";
-import { COLLECTIONS_PER_PAGE, PRODUCTS_PER_PAGE } from "@temp/core/config";
+import { PRODUCTS_PER_PAGE } from "@temp/core/config";
 import { convertToSimpleProduct, generateProductUrl, maybe } from "@temp/core/utils";
 import * as React from "react";
 import "./scss/index.scss";
 import { Skeleton } from "./skeleton";
 import * as S from "./styles";
 import { IProps } from "./types";
-import { CollectionSortField } from "../../../gqlTypes/globalTypes";
-import { OrderDirection } from "@sdk/gqlTypes/globalTypes";
 
 
 const ProductsFeatured: React.FC<IProps> = ({
@@ -30,14 +28,12 @@ const ProductsFeatured: React.FC<IProps> = ({
       loader={<Skeleton />}
       variables={{
         first: PRODUCTS_PER_PAGE,
-        firstCollection: COLLECTIONS_PER_PAGE,
         districtId: districtSelected.id,
-        sortBy: { direction: OrderDirection.ASC, field: CollectionSortField.SORT_ORDER },
       }}
     >
       {({ data }) => {
-        if (data?.shop?.homepageCollections?.edges.length) {
-          return data.shop.homepageCollections.edges.map(({ node: collection }) => {
+        if (data?.shop?.homepageCollections?.length) {
+          return data.shop.homepageCollections.map(collection => {
             const products: ISimpleProduct[] = maybe(
               () =>
                 collection.products.edges.map((product): ISimpleProduct => convertToSimpleProduct(product.node)),

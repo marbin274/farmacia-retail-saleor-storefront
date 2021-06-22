@@ -13,52 +13,43 @@ import {
 export const featuredProducts = gql`
   ${basicProductFragment}
   ${productPricingFragment}
-  query FeaturedProducts(
-    $first: Int,
-    $districtId: ID,
-    $firstCollection: Int,
-    $sortBy: CollectionSortingInput
-  ) {
+  query FeaturedProducts($first: Int, $districtId: ID) {
     shop {
-      homepageCollections(first: $firstCollection, sortBy: $sortBy) {
-        edges {
-          node {
-            id
-            name
-            products(district: $districtId, first: $first) {
-              edges {
-                node {
-                  ...BasicProductFields
-                  ...ProductPricingField
-                  attributes {
-                    attribute {
-                      id
-                      name
-                    }
-                    values {
-                      id
-                      name
-                    }
+      homepageCollections {
+        id
+        name
+        products(district: $districtId, first: $first) {
+          edges {
+            node {
+              ...BasicProductFields
+              ...ProductPricingField
+              attributes {
+                attribute {
+                  id
+                  name
+                }
+                values {
+                  id
+                  name
+                }
+              }
+              category {
+                id
+                name
+              }
+              variants {
+                id
+                sku
+                pricing {
+                  onSale
+                  price {
+                    ...Price
                   }
-                  category {
-                    id
-                    name
-                  }
-                  variants {
-                    id
-                    sku
-                    pricing {
-                      onSale
-                      price {
-                        ...Price
-                      }
-                      priceUndiscounted {
-                        ...Price
-                      }
-                    }
-                    quantityAvailable(district: $districtId)
+                  priceUndiscounted {
+                    ...Price
                   }
                 }
+                quantityAvailable(district: $districtId)
               }
             }
           }
