@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NiubizPaymentGateway } from "@components/organisms/NiubizPaymentGateway";
-import { Radio } from "@components/atoms";
+import { TileRadio } from "@components/molecules";
 import { PROVIDERS } from "@temp/core/config";
 import { IProps } from "./types";
 import * as S from "./styles";
@@ -52,40 +52,32 @@ const PaymentGatewaysList: React.FC<IProps> = ({
 
   return (
     <S.Wrapper>
-      {paymentGateways.map(({ id, name, config }, index) => {
+      {paymentGateways.map(({ id, config }, index) => {
         const checked = selectedPaymentGateway === id;
 
         switch (id) {
           case PROVIDERS.POS.id:
             return (
-            <div key={index}>
-              <S.Tile checked={checked}>
-                <Radio
-                  data-cy="checkoutPaymentGatewayPosInput"
-                  name="payment-method"
-                  value="pos"
-                  checked={checked}
-                  onChange={() => selectPaymentGateway?.(id)}
-                >
-                  {name}
-                </Radio>
-              </S.Tile>
-            </div>);
+              <TileRadio
+                key={index}
+                label={PROVIDERS.POS.label}
+                radioProps={{ name: "payment-method", value: "pos", checked }}
+                onClick={() => selectPaymentGateway?.(id)}
+              />
+            );
           case PROVIDERS.AUNA.id: {
             return (
-              <div key={index}>
-                <S.Tile checked={checked}>
-                  <Radio
-                    data-cy="checkoutPaymentGatewayDummyInput"
-                    name="payment-method"
-                    value="dummy"
-                    checked={checked}
-                    onChange={() => selectPaymentGateway?.(id)}
-                  >
-                    {name}
-                  </Radio>
-                </S.Tile>
-                {checked && reRender && (
+              <TileRadio
+                key={index}
+                label={PROVIDERS.AUNA.label}
+                radioProps={{
+                  name: "payment-method",
+                  value: "niubiz",
+                  checked,
+                }}
+                onClick={() => selectPaymentGateway?.(id)}
+              >
+                {reRender && (
                   <NiubizPaymentGateway
                     config={config}
                     formRef={formRef}
@@ -101,7 +93,7 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                     userDataForNiubiz={userDataForNiubiz}
                   />
                 )}
-              </div>
+              </TileRadio>
             );
           }
         }

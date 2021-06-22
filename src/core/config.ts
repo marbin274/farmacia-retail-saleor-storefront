@@ -17,7 +17,7 @@ export const CONSULTATION_EMAIL = "consultas@farmauna.com";
 export const PROVIDERS = {
   AUNA: {
     id: "farmacia-retail.payments.niubiz",
-    label: "AUNA Payments Gateway",
+    label: "Tarjeta de crédito/débito",
   },
   BRAINTREE: {
     id: "mirumee.payments.braintree",
