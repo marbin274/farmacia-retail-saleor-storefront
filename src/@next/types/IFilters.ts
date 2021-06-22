@@ -5,6 +5,6 @@ export interface IFilters {
   attributes: Attributes;
   pageSize: number;
   sortBy: string;
-  priceLte: number;
-  priceGte: number;
+  priceLte: number | null;
+  priceGte: number | null;
 }

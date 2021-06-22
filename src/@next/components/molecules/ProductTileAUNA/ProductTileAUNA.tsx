@@ -55,7 +55,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
             }
           >
             <S.Image>
-              <Thumbnail source={thumbnails} />
+              <Thumbnail height={510} width={510} source={thumbnails} />
             </S.Image>
           </div>
 

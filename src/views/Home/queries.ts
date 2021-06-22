@@ -37,35 +37,35 @@ export const productVariantFragmentSimple = gql`
 
 // get all available products according the specified filter
 export const homePageQuery = gql` 
-  query HomePage {
-    shop {
-      description
-      name
-      homepageCollection {
-        id
-        backgroundImage {
-          url
-        }
-        name
+query HomePage {
+  shop {
+    description
+    name
+    homepageCollection {
+      id
+      backgroundImage {
+        url
       }
-      analyticsConfig {
-        tagManagerId
-        tagManagerAuth
-        tagManagerEnvironmentId
-      }
+      name      
     }
-    mainBanner {
-        id,
-        frames{
-            id,
-            link,
-            images {
-                screenType,
-                url
-            }
-        }
+    analyticsConfig {
+      tagManagerId
+      tagManagerAuth
+      tagManagerEnvironmentId
     }
   }
+  mainBanner {
+      id,
+      frames{
+          id,
+          link,
+          images {
+              screenType,
+              url
+          }
+      }
+  }
+}
 `;
 
 export const TypedHomePageQuery = TypedQuery<HomePage, {}>(homePageQuery);

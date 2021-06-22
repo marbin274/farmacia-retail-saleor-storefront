@@ -36,27 +36,31 @@ export const ProductBottomDetail: FC<IProps> = ({
             <S.ProductContent>
               <S.ProductImg>
                 <Thumbnail
+                  height={510}
                   source={{
                     thumbnail: { url: product.thumbnail?.url! },
                     thumbnail2x: { url: product.thumbnail2x?.url! },
                   }}
-                />
+                  width={510} 
+                  />
               </S.ProductImg>
               <S.ProductInfo>
                 <S.ProductName>{product.name}</S.ProductName>
-                <S.ProductPrice>{renderPrice()}</S.ProductPrice>
+                <div className="inline-element">
+                    <S.ProductPrice>
+                      {renderPrice()}
+                    </S.ProductPrice>
+                    <ItemsHandler
+                    canAddToCart={canAddToCart}
+                    product={product}
+                    addToCart={addToCart}
+                    removeItemToCart={removeItemToCart}
+                    subtractItemToCart={subtractItemToCart}
+                  />
+                </div>
               </S.ProductInfo>
             </S.ProductContent>
           )}
-          <S.CartContent>
-            <ItemsHandler
-              canAddToCart={canAddToCart}
-              product={product}
-              addToCart={addToCart}
-              removeItemToCart={removeItemToCart}
-              subtractItemToCart={subtractItemToCart}
-            />
-          </S.CartContent>
         </S.Content>
       </div>
     </S.Container>

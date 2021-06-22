@@ -303,10 +303,6 @@ export interface SearchResults_products_edges {
    * The item at the end of the edge.
    */
   node: SearchResults_products_edges_node;
-  /**
-   * When paginating backwards, are there more items?
-   */
-  hideSearch(): void;
 }
 
 export interface SearchResults_products_pageInfo {

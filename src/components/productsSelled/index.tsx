@@ -9,6 +9,7 @@ import React from "react";
 import { TypedSelledProductsQuery } from "./queries";
 import * as S from "./styles";
 import { IProps } from "./types";
+import { Skeleton } from "./skeleton";
 
 export const ProductsSelled: React.FC<IProps> = ({
   productDetail,
@@ -20,6 +21,7 @@ export const ProductsSelled: React.FC<IProps> = ({
   const [districtSelected] = useDistrictSelected();
   return (
     <TypedSelledProductsQuery
+      loader={<Skeleton/>}
       displayError={false}
       variables={{
         districtId: districtSelected.id,

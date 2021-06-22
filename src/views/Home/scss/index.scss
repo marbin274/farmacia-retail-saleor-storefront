@@ -115,7 +115,7 @@
   }
 
   &__products {
-    margin: 2rem 0 4rem 0;
+    padding: 2rem 0 4rem 0;
 
     &-title {
       color: #323e48;
@@ -279,15 +279,19 @@
   }
 }
 .banner-container {
-  width: 100vw;
+  aspect-ratio: 360 / 460;
   text-align: center;
   position: relative;
+  @media (min-width: $small-screen) {
+    aspect-ratio: 1920 / 500;
+  }
   .banner-image {
     width: 100%;
     margin: 0 auto;
+    &.loading{
+      display:none !important;
+    }
     &.desktop {
-      max-width: $banner-desktop-max-width;
-      max-height: $banner-desktop-max-height-new;
       @media (max-width: $small-screen) {
         display: none;
       }

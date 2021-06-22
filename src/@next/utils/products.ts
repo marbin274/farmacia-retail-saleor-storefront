@@ -207,5 +207,9 @@ export const getProductPricingClass = (
 export const convertProductOnCartInProduct = (
   productOnCart: ICheckoutModelLine
 ): ISimpleProduct => {
-  return { ...productOnCart, id: productOnCart.variant.product?.id || "" };
+  return { 
+    ...productOnCart, 
+    attributes: productOnCart.variant.product?.attributes || [],
+    id: productOnCart.variant.product?.id || "",
+   };
 };

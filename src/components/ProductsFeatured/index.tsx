@@ -8,6 +8,7 @@ import { PRODUCTS_PER_PAGE } from "@temp/core/config";
 import { convertToSimpleProduct, generateProductUrl, maybe } from "@temp/core/utils";
 import * as React from "react";
 import "./scss/index.scss";
+import { Skeleton } from "./skeleton";
 import * as S from "./styles";
 import { IProps } from "./types";
 
@@ -24,10 +25,11 @@ const ProductsFeatured: React.FC<IProps> = ({
   return (
     <TypedFeaturedProductsQuery
       displayError={false}
-      variables={{ 
+      loader={<Skeleton />}
+      variables={{
         first: PRODUCTS_PER_PAGE,
         districtId: districtSelected.id,
-       }}
+      }}
     >
       {({ data }) => {
         if (data?.shop?.homepageCollections?.length) {
@@ -68,7 +70,8 @@ const ProductsFeatured: React.FC<IProps> = ({
               </div>
             );
           });
-        } else {
+        }
+        else {
           return null;
         }
       }}

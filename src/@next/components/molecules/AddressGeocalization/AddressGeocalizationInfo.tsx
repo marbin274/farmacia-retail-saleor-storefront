@@ -13,34 +13,36 @@ export const AddressGeocalizationInfo: React.FC = () => {
   };
 
   return (
-    <S.Alert className="district--alert">
-      <S.AlertBody>
-        <S.AlertIcon>
-          <Icon name="medicineBottle" size={40} viewPort={40} />
-        </S.AlertIcon>
-        <S.AlertText>
-          <span>¡Hola!</span> aquí puedes cambiar el distrito donde enviaremos
-          tus productos.
-        </S.AlertText>
-      </S.AlertBody>
-      <S.AlertAction>
-        <div>
-          <Button
-            variant="outline"
-            type="button"
-            onClick={() => {
-              setShow(false);
-            }}
-          >
-            Mantener
-          </Button>
-        </div>
-        <div>
-          <Button variant="default" type="button" onClick={handleChangeAddress}>
-            Cambiar distrito
-          </Button>
-        </div>
-      </S.AlertAction>
-    </S.Alert>
+    <S.AlertWrapper>
+      <S.Alert className="district--alert">
+        <S.AlertBody>
+          <S.AlertIcon>
+            <Icon name="medicineBottle" size={40} viewPort={40} />
+          </S.AlertIcon>
+          <S.AlertText>
+            <span>¡Hola!</span> aquí puedes cambiar el distrito donde enviaremos
+            tus productos.
+          </S.AlertText>
+        </S.AlertBody>
+        <S.AlertAction>
+          <div>
+            <Button
+              variant="outline"
+              type="button"
+              onClick={() => {
+                setShow(false);
+              }}
+            >
+              Mantener
+            </Button>
+          </div>
+          <div>
+            <Button variant="default" type="button" onClick={handleChangeAddress}>
+              Cambiar distrito
+            </Button>
+          </div>
+        </S.AlertAction>
+      </S.Alert>
+    </S.AlertWrapper>
   );
 };

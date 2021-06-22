@@ -31,6 +31,7 @@ export * from "./Radio";
 export * from "./RichTextContent";
 export * from "./Select";
 export * from "./ShadowBox";
+export * from "./Skeleton";
 export * from "./SocialMediaIcon";
 export * from "./TermsAndConditionsLink";
 export * from "./Tile";
