@@ -203,12 +203,15 @@ export const AlertAction = styled.div`
   span {
     font-size: ${theme.typography.smallFontSize};
   }
-
   button {
     padding: 0.5rem;
     width: 100%;
+    border-color:currentcolor !important;
     ${media.largeScreen`
-      border-color:currentcolor;
+    .button-border-change {
+      border: 1px solid #452FBA !important;
+      border-radius: 1.5rem;
+    }
 `}
     ${media.xSmallScreen`
         > span {
@@ -217,7 +220,7 @@ export const AlertAction = styled.div`
         }
     `}
     span {
-      color:currentcolor;
+      color:currentcolor !important;
     }
   }
   `}

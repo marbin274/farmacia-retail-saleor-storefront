@@ -1,5 +1,6 @@
 import { media, styled } from "@styles";
 import { white } from "@styles/constants";
+import farmatheme from "@farmatheme";
 
 export const ProductCard = styled.div<{
   canAddToCart?: boolean | 0 | undefined;
@@ -7,15 +8,19 @@ export const ProductCard = styled.div<{
   position: relative;
   height: 9rem;
   width: 100%;
-  border-radius: 1.5rem;
   background-color: ${white};
-  padding: 0.5rem;
-  margin-bottom: 1.5rem;
+  padding: 1.25rem;
+  margin-bottom:1rem;
+  border-radius: 1.5rem;
 
   ${media.largeScreen`
-    height: 15.125rem;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+    height: 8.125rem;
+    padding: 0.5rem;
+    border-bottom: 0.063rem solid #D3D7E5;
+    border-radius:0;
+    &:last-child {
+      border-bottom:0;
+    }
   `}
 
   .itemHandler,
@@ -31,26 +36,28 @@ export const WrapperImage = styled.div`
   display: inline-block;
   border-radius: 1.25rem;
   background-color: ${white};
-  width: 8.125rem;
-  height: 8.125rem;
+  width: 8rem;
+  height: auto;
   vertical-align: top;
   position: relative;
 
   ${media.largeScreen`
-    height: 12.125rem;
+    width: 4.5rem;
+    height: 4.5rem;
   `}
 
   .img {
-    position: absolute;
-    top: 0;
-    bottom: 0;
     display: flex;
     height: 100%;
-    max-height: 8.125rem;
     margin: auto;
 
     img {
       align-items: center;
+      height: 7.5rem;
+
+    ${media.largeScreen`
+       height: auto;
+  `}
     }
   }
 `;
@@ -60,18 +67,23 @@ export const WrapperDetail = styled.div`
   width: calc(100% - 8.875rem);
   margin-left: 0.5rem;
   vertical-align: top;
-  padding-top: 0.75rem;
+  padding-top: 0;
 
   a {
     outline: none;
   }
+
+  ${media.largeScreen`
+    width: calc(100% - 5rem);
+    padding-top:0;
+  `}
 `;
 
 export const ProductTitle = styled.h3`
   width: 100%;
   height: 3rem;
   color: #2f2c3a;
-  font-size: 1.25rem !important;
+  font-size: 1.25rem;
   font-weight: 600;
   line-height: 1.5rem !important;
   display: -webkit-box;
@@ -82,7 +94,10 @@ export const ProductTitle = styled.h3`
 
   ${media.largeScreen`
     -webkit-line-clamp: 3;
-    height: 4.5rem;
+    height: 3.125rem;
+    overflow:hidden;
+    margin-bottom:1rem;
+    font-size: 0.875rem;
   `}
 `;
 
@@ -91,22 +106,46 @@ export const ProductPrice = styled.div`
 
   .price {
     display: inline-block;
-    margin: 0 1rem 0 0 !important;
+    margin: 0 1rem 0 0;
+
+    ${media.largeScreen`
+      margin-right: 0;
+  `}
 
     span {
-      font-size: 1.25rem !important;
+      font-size: 1.25rem;
       font-weight: 600;
+      color: ${farmatheme.theme.colors.neutral.darkest};
     }
+
+    ${media.largeScreen`
+      p {
+        margin: 0 0 0 0;
+      }
+      span {
+        font-size: 0.6875rem;
+      }
+  `}
   }
   .undiscounted_price {
     text-decoration: none !important;
     vertical-align: top !important;
     span {
       font-size: 1.25rem !important;
+      ${media.largeScreen`
+        font-size: 0.6875rem !important;
+        color: ${farmatheme.theme.colors.neutral.dark};
+  `}
       font-weight: 400;
       text-decoration: line-through;
     }
   }
+  
+  ${media.largeScreen`
+    display: flex;
+    justify-content: space-between;
+  `}
+  
 `;
 
 export const ProductTitlePrice = styled.p`
@@ -124,7 +163,8 @@ export const WrapperItemHandler = styled.div`
   right: 1.25rem;
 
   ${media.largeScreen`
-    bottom: 1.5rem;
+    position:relative;
+    bottom: auto;
     top: auto;
     right: auto;
     left: auto;

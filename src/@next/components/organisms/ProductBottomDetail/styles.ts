@@ -61,8 +61,8 @@ export const ProductImg = styled.div`
   margin-right: 0.5rem;
 
   img {
-    width: 4rem;
-    height: 4rem;
+    width: 5rem;
+    height: auto;
   }
 
   ${mediaUp.mediumScreen`
