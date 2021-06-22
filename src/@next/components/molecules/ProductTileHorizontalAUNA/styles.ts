@@ -123,7 +123,7 @@ export const ProductPrice = styled.div`
         margin: 0 0 0 0;
       }
       span {
-        font-size: 0.6875rem;
+        font-size: 0.75rem;
       }
   `}
   }
@@ -133,7 +133,7 @@ export const ProductPrice = styled.div`
     span {
       font-size: 1.25rem !important;
       ${media.largeScreen`
-        font-size: 0.6875rem !important;
+        font-size: 0.75rem !important;
         color: ${farmatheme.theme.colors.neutral.dark};
   `}
       font-weight: 400;
