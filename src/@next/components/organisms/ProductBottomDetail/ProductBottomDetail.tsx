@@ -8,6 +8,8 @@ import {
   ISubtractItemToCartCallback,
 } from "@components/molecules/ProductTileAUNA/types";
 import { Thumbnail } from "@components/molecules";
+import { useMediaQuery } from "react-responsive";
+import { smallScreen } from "@temp/@next/globalStyles/constants";
 
 type IProps = {
   product: ISimpleProduct;
@@ -28,6 +30,10 @@ export const ProductBottomDetail: FC<IProps> = ({
   subtractItemToCart,
   hideProductDetails,
 }) => {
+  const isMaxSmallScreen = useMediaQuery({
+    query: `(max-width: ${smallScreen}px)`,
+  });
+
   return (
     <S.Container>
       <div className="container">
@@ -41,24 +47,33 @@ export const ProductBottomDetail: FC<IProps> = ({
                     thumbnail: { url: product.thumbnail?.url! },
                     thumbnail2x: { url: product.thumbnail2x?.url! },
                   }}
-                  width={510} 
-                  />
+                  width={510}
+                />
               </S.ProductImg>
-              <S.ProductInfo>
+              <S.ProductInfo className="productInfo">
                 <S.ProductName>{product.name}</S.ProductName>
                 <div className="inline-element">
-                    <S.ProductPrice>
-                      {renderPrice()}
-                    </S.ProductPrice>
+                  <S.ProductPrice>{renderPrice()}</S.ProductPrice>
+                  {isMaxSmallScreen && (
                     <ItemsHandler
-                    canAddToCart={canAddToCart}
-                    product={product}
-                    addToCart={addToCart}
-                    removeItemToCart={removeItemToCart}
-                    subtractItemToCart={subtractItemToCart}
-                  />
+                      canAddToCart={canAddToCart}
+                      product={product}
+                      addToCart={addToCart}
+                      removeItemToCart={removeItemToCart}
+                      subtractItemToCart={subtractItemToCart}
+                    />
+                  )}
                 </div>
               </S.ProductInfo>
+              {!isMaxSmallScreen && (
+                <ItemsHandler
+                  canAddToCart={canAddToCart}
+                  product={product}
+                  addToCart={addToCart}
+                  removeItemToCart={removeItemToCart}
+                  subtractItemToCart={subtractItemToCart}
+                />
+              )}
             </S.ProductContent>
           )}
         </S.Content>

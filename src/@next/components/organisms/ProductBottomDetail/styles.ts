@@ -1,4 +1,4 @@
-import { media, styled, defaultTheme } from "@styles";
+import { media, styled, mediaUp } from "@styles";
 import farmatheme from "@farmatheme";
 
 export const Container = styled.div`
@@ -6,16 +6,22 @@ export const Container = styled.div`
   bottom: -0.063rem;
   left: 0;
   right: 0;
-  border-top: 1px solid ${defaultTheme.colors.aunaLightGray};
   background-color: white;
   z-index: 1;
-  max-height: 0;
+  max-height: 8.5rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  box-shadow: 0px -0.5rem 1rem rgb(0 0 0 / 8%);
+
+  ${mediaUp.mediumScreen`
+    min-height: 7rem;
+    .container {
+      display: flex;  
+    }
+  `}
 
   ${media.smallScreen`
-    max-height: 13rem;
-    border-top-left-radius: 16px;
-    border-top-right-radius: 16px;
-    box-shadow: 0px -0.5rem 1rem rgb(0 0 0 / 8%);
+    max-height: 10rem;
 
     .container {
       margin:0 !important;
@@ -29,6 +35,11 @@ export const Content = styled.div`
   padding-top: 1rem;
   padding-bottom: 1rem;
 
+  ${mediaUp.mediumScreen`
+    min-width: 38.5rem;
+    margin: auto;
+  `}
+
   ${media.smallScreen`
      flex-direction: column;
      padding:0;
@@ -37,22 +48,26 @@ export const Content = styled.div`
 
 export const ProductContent = styled.div`
   display: flex;
+  align-items: center;
 
   ${media.smallScreen`
-     margin-bottom: 1rem;
      padding: 1.5rem 0;
   `}
 `;
 
 export const ProductImg = styled.div`
-  width: 5rem;
-  height: 5rem;
+  width: 4rem;
+  height: 4rem;
   margin-right: 0.5rem;
 
   img {
-    width: 5rem;
-    height: 5rem;
+    width: 4rem;
+    height: 4rem;
   }
+
+  ${mediaUp.mediumScreen`
+    margin-right: 2rem;
+  `}
 `;
 
 export const ProductInfo = styled.div`
@@ -60,13 +75,20 @@ export const ProductInfo = styled.div`
   flex-direction: column;
 
   ${media.smallScreen`
-  .inline-element {
-    display:flex;
-    justify-content: space-between;
-    align-items:center;
-    margin-top:0.938rem;
-  }
-`}
+    width: calc(100% - 5.5rem);
+
+    .inline-element {
+      display:flex;
+      justify-content: space-between;
+      align-items:center;
+      margin-top:0.938rem;
+    }
+  `}
+
+  ${mediaUp.mediumScreen`
+    width: 21.875rem;
+    margin-right: 3.5rem;
+  `}
 `;
 
 export const ProductName = styled.div`
@@ -74,30 +96,73 @@ export const ProductName = styled.div`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  font-size: 0.875rem;
+  line-height: 120%;
+  font-weight: 500;
   ${media.smallScreen`
-    font-size:0.875rem;
-    font-weight:500;
     color:${farmatheme.theme.colors.neutral.darkest}
   `}
 `;
 
 export const ProductPrice = styled.div`
   display: flex;
+  justify-content: space-between;
   margin-top: 0.5rem;
-
-  .price.discounted_price {
-    font-size: 1.5rem;
-    margin-right: 1rem;
-    margin: 0 0.5rem 0 0;
-  }
-
-  .price.undiscounted_price {
-    margin: 0; 
-  }
 
   div.price {
     font-size: 1.5rem;
     margin: 0;
+    ${mediaUp.mediumScreen`
+      > span {
+        font-size: 1rem !important;
+        line-height: 120%;
+
+        &:before{
+          content: "Precio";
+          margin-right: 1rem;
+          font-size: 0.75rem !important;
+          font-weight: 500;
+          color: ${farmatheme.theme.colors.neutral.medium};
+        }
+      }
+    `}
+  }
+  .price.discounted_price {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    margin: 0 0.5rem 0 0;
+    ${mediaUp.mediumScreen`
+      > span {
+        font-size: 1rem !important;
+        line-height: 120%;
+
+        &:before{
+          content: "Precio";
+          margin-right: 1rem;
+          font-size: 0.75rem !important;
+          font-weight: 500;
+          color: ${farmatheme.theme.colors.neutral.medium};
+        }
+      }
+    `}
+  }
+
+  .price.undiscounted_price {
+    margin: 0;
+    ${mediaUp.mediumScreen`
+      text-decoration: none !important;
+      > span {
+        font-size: 0.875rem;
+        line-height: 120%;
+
+        &:before{
+          content: "Antes";
+          margin-right: 1rem;
+          font-size: 0.75rem;
+          color: ${farmatheme.theme.colors.neutral.medium};
+        }
+      }
+    `}
   }
 
   .product-description__error-message {
