@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NiubizPaymentGateway } from "@components/organisms/NiubizPaymentGateway";
 import { TileRadio } from "@components/molecules";
 import { PROVIDERS } from "@temp/core/config";
+import PosIcon from "images/auna/pos.svg";
 import { IProps } from "./types";
 import * as S from "./styles";
 import * as Sentry from "@sentry/react";
@@ -63,7 +64,15 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                 label={PROVIDERS.POS.label}
                 radioProps={{ name: "payment-method", value: "pos", checked }}
                 onClick={() => selectPaymentGateway?.(id)}
-              />
+              >
+                <div className="fa-flex fa-items-center">
+                  <img src={PosIcon} width={32} height={32} className="fa-mr-2" />
+                  <div className="fa-text-xs">
+                    El motorizado se acercará a tu dirección con un POS para
+                    efectuar el pago con tarjeta.
+                  </div>
+                </div>
+              </TileRadio>
             );
           case PROVIDERS.AUNA.id: {
             return (
