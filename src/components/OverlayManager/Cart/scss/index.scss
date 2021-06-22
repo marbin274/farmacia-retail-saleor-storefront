@@ -252,11 +252,10 @@ $small-screen-plus-one: 541px;
           display: flex;
           justify-content: space-between;
           margin-top: 0.5rem;
-          align-items: flex-end;
+          align-items: flex-start;
           .itemHandler {
-            position: relative;
             min-width: 8.125rem;
-            max-height: 2.5rem;
+            min-height: 2.5rem;
 
             @media (max-width: $small-screen) {
               max-width: calc(100% - 6.375rem);
@@ -267,12 +266,12 @@ $small-screen-plus-one: 541px;
                 width: 7rem;
               }
             }
+          }
 
-            > div {
-              &:nth-child(2) {
-                position: absolute;
-                bottom: -1.25rem;
-              }
+          > div {
+            &:nth-child(1),
+            &:nth-child(3) {
+              margin-top: 0.5rem;
             }
           }
           > span {
