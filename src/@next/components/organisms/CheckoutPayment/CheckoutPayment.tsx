@@ -70,9 +70,9 @@ const CheckoutPayment: React.FC<IProps> = ({
 
   return (
     <S.Wrapper>
-      <S.CuponWraper>
-        <S.CuponLabel>Cupón de descuento</S.CuponLabel>
-      </S.CuponWraper>
+      <S.SubtitleWraper>
+        <S.SubtitleLabel>Cupón de descuento</S.SubtitleLabel>
+      </S.SubtitleWraper>
       <S.DiscountField>
         <DiscountForm
           setReRenderNiubiz={flag => {
@@ -92,6 +92,9 @@ const CheckoutPayment: React.FC<IProps> = ({
           errors={promoCodeErrors}
         />
       </S.DiscountField>
+      <S.SubtitleWraper>
+        <S.SubtitleLabel>¿Cómo deseas pagar?</S.SubtitleLabel>
+      </S.SubtitleWraper>
       <PaymentGatewaysList
         reRender={reRenderNiubiz}
         errors={gatewayErrors}

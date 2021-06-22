@@ -275,6 +275,15 @@ exports[`Storyshots @components/organisms/CheckoutPayment default 1`] = `
       </form>
     </div>
     <div
+      className="c2"
+    >
+      <span
+        className="c3"
+      >
+        ¿Cómo deseas pagar?
+      </span>
+    </div>
+    <div
       className="c7"
     />
   </div>
@@ -557,6 +566,15 @@ exports[`Storyshots @components/organisms/CheckoutPayment with addresses 1`] = `
           </button>
         </div>
       </form>
+    </div>
+    <div
+      className="c2"
+    >
+      <span
+        className="c3"
+      >
+        ¿Cómo deseas pagar?
+      </span>
     </div>
     <div
       className="c7"
