@@ -23,7 +23,7 @@
            position: absolute;
            content: "Precio";
            color: #ACA8BD;
-           font-size: 12px;
+           font-size: 0.75rem;
            left: 0;
            top: -1.688rem;
            font-weight: normal;
@@ -40,7 +40,7 @@
           position: absolute;
           content: "Antes";
           color: #ACA8BD;
-          font-size: 12px;
+          font-size: 0.75rem;
           left: 0;
           top: -1.688rem;
           font-weight: normal;
@@ -48,6 +48,33 @@
         }
       }
     }
+    &.outStock_price {
+      span {
+        font-size: 1.5rem;
+        font-weight: 600;
+        position: relative;
+      }
+    }
+    @media (max-width: $small-screen) {  
+      &.outStock_price {
+        span {
+          font-size: 1rem;
+          line-height:1.875rem;
+          &::before {
+            position: absolute;
+            content: "Precio";
+            color: #ACA8BD;
+            font-size: 0.75rem;
+            left: 0;
+            top: -1.688rem;
+            font-weight: normal;
+          }
+        }
+      }
+    }
+
+   
+
   }
   h3 {
     max-width: 22.5rem;
@@ -144,11 +171,11 @@
   &__quantity {
     display: flex;
     flex-direction: row;
-    height: 2.625rem;
 
     .itemHandler {
       width: 100% !important;
       max-width: 9.375rem;
+      align-items: flex-start;
     }
     .button {
       width: 100% !important;
