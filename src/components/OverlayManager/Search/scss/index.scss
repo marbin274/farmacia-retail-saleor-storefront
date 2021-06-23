@@ -166,7 +166,6 @@ $custom-breakpoint: 624px;
       background-color: $white;
       padding: 1.5rem 2rem 1rem 1rem;
       max-width: none;
-      height: 8.875rem;
       position: relative;
       overflow: hidden;
       border-radius: 1.5rem;
@@ -245,7 +244,7 @@ $custom-breakpoint: 624px;
           > span {
             color: #727171;
             font-size: 0.75rem;
-            margin-top: 1rem;
+            margin-top: 0.25rem;
             position: relative;
           }
 
@@ -342,8 +341,10 @@ $custom-breakpoint: 624px;
         }
 
         img {
-          max-width: 74px;
-          height: auto;
+          max-height: 4.625rem;
+          width: auto;
+          margin-top: auto;
+          margin-bottom: auto;
           display: inline-block;
           vertical-align: top;
   
@@ -393,13 +394,16 @@ $custom-breakpoint: 624px;
       overflow: auto;
       > ul {
         margin: 0 auto;
-        max-width: 645px;
+        max-width: 40.3125rem;
+        @media (min-width: $medium-screen) {
+          margin-bottom: 5rem;
+        }
       }
     }
 
     .show_more_products {
-      align-items: center;
       display: flex;
+      align-items: center;
       background-color: #ffffff;
       border-top-left-radius: 2.1875rem;
       border-top-right-radius: 2.1875rem;
