@@ -61,8 +61,8 @@ export const ProductImg = styled.div`
   margin-right: 0.5rem;
 
   img {
-    width: 5rem;
-    height: auto;
+    width: 4rem;
+    height: 4rem;
   }
 
   ${mediaUp.mediumScreen`
@@ -82,6 +82,17 @@ export const ProductInfo = styled.div`
       justify-content: space-between;
       align-items:center;
       margin-top:0.938rem;
+
+      .itemHandler{
+        .itemHandler--actions {
+          height: 2.5rem;
+          width: 7rem;
+        }
+        .itemHandler__limit-max {
+          font-size: 0.625rem !important;
+        }
+      }
+    
     }
   `}
 
@@ -110,6 +121,10 @@ export const ProductPrice = styled.div`
   justify-content: space-between;
   margin-top: 0.5rem;
 
+  ${media.smallScreen`
+    margin-right: 0.4rem;
+  `};
+
   div.price {
     font-size: 1.5rem;
     margin: 0;
@@ -128,6 +143,27 @@ export const ProductPrice = styled.div`
       }
     `}
   }
+
+  .price.outStock_price {
+    ${media.smallScreen`
+      > span {
+        position: relative;
+        font-size: 1rem;
+        line-height: 120%;
+        margin-right: 1rem;
+        &::before {
+          position: absolute;
+          content: "Precio" !important;
+          color: #aca8bd;
+          font-size: 0.75rem;
+          left: 0;
+          top: -1.3rem;
+          font-weight: normal;
+        }
+      }
+    `}
+  }
+
   .price.discounted_price {
     font-size: 1.5rem;
     margin-right: 1rem;
@@ -155,11 +191,13 @@ export const ProductPrice = styled.div`
       > span {
         font-size: 0.875rem;
         line-height: 120%;
+        text-decoration: line-through !important;
 
         &:before{
           content: "Antes";
           margin-right: 1rem;
           font-size: 0.75rem;
+          display: inline-block;
           color: ${farmatheme.theme.colors.neutral.medium};
         }
       }
@@ -170,33 +208,4 @@ export const ProductPrice = styled.div`
     margin-top: 0;
     margin-bottom: 0;
   }
-`;
-
-export const CartContent = styled.div`
-  display: flex;
-  flex: 0 0 auto;
-  margin-left: 2.5rem;
-  min-width: 12rem;
-
-  .itemHandler {
-    width: 100%;
-  }
-
-  .itemHandler--actions {
-    height: 3rem;
-  }
-
-  ${media.smallScreen`
-      width: auto;
-      margin-left: 5.5rem;
-
-      .button {
-        width: 7.75rem;
-      }
-
-      button {
-        width: 7.188rem;
-
-      }
-   `}
 `;
