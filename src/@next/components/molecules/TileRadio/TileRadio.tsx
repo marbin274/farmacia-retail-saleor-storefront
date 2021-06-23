@@ -31,7 +31,7 @@ export const TileRadio: FC<ITileRadioProps> = ({
           }
         )}
       >
-        <Radio checked={checked} {...rest} />
+        <Radio checked={checked} selectedColor="purple" {...rest} />
         <span className="fa-font-semibold fa-text-sm">{label}</span>
       </div>
       {checked && children && <div className="fa-px-4 fa-py-3">{children}</div>}

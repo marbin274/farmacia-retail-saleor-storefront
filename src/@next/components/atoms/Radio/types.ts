@@ -1,3 +1,5 @@
+export type RadioColor = 'green' | 'purple'
+
 export interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
   /**
    * Label or additional content which belongs to the radio.
@@ -7,4 +9,5 @@ export interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
    * If true, it will not wrap radio input in label tag.
    */
   customLabel?: boolean;
+  selectedColor?: RadioColor;
 }
