@@ -16,6 +16,35 @@
       z-index: 3;
     }
   }
+  &__products {
+    .home-page_product {
+      height: 25.8rem;
+      border-width: 0;
+      padding: 2rem;
+      .description {
+        height: 3.625rem;
+      }
+      &-sticker {
+        margin-top: 0;
+        align-self: flex-start;
+      }
+      &-image {
+        flex-direction: column-reverse;
+      }
+      &-price {
+        display: block;
+      }
+      &-title {
+        text-align: center;
+      }
+      &-button {
+        justify-content: center;
+      }
+    }
+    .search-page_product-price {
+      display: none;
+    }
+  }
   .home-view {
     .container {
       margin-top: 0;

@@ -41,7 +41,10 @@ export const ProductTileAUNA: React.FC<IProps> = ({
   }, [product.thumbnail, product.thumbnail2x]);
 
   return (
-    <S.ProductCard  className='fa-border-b fa-border-solid fa-border-neutral-medium lg:fa-border-0' data-cy="product-tile" canAddToCart={canAddToCart}>
+    <S.ProductCard  
+      className='home-page_product fa-border-b fa-border-solid fa-border-neutral-medium lg:fa-border-0' 
+      data-cy="product-tile" 
+      canAddToCart={canAddToCart}>
       <div className='fa-w-full fa-block lg:fa-hidden'>
         <S.LinkContainer 
           to={productLink} 
@@ -51,7 +54,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
               e.preventDefault();
             }
           }}>
-          <div className='fa-flex fa-flex-col fa-items-center'>
+          <div className='home-page_product-image fa-flex fa-flex-col fa-items-center'>
             <div
               className="img fa-rounded-lg fa-bg-white fa-overflow-hidden"
               onClick={() =>
@@ -66,19 +69,29 @@ export const ProductTileAUNA: React.FC<IProps> = ({
                 <Thumbnail height={510} width={510} source={thumbnails} />
               </S.Image>
             </div>
-            <div className='fa-mt-2'>
+            <div className='home-page_product-sticker fa-mt-2'>
               <ProductSticker isOnSale={isOnSale} isOutStock={isOutStock} />
             </div>
           </div>
           <div className='fa-px-4 fa-pb-4'>
-            <div className="description">
-              <S.Title className='fa-text-left'>{product.name}</S.Title>
-            </div>
-            <div className='fa-flex fa-justify-between'>
+            <div className='home-page_product-price fa-hidden'>
               <div className={getProductPricingClass(canAddToCart, isOnSale)}>
-                <S.Price className='fa-font-base'>
-                  <TaxedMoney taxedMoney={product?.pricing?.priceRange?.start} />
-                </S.Price>
+                <TaxedMoney taxedMoney={product?.pricing?.priceRange?.start} />
+              </div>
+              <div className="price undiscounted_price">
+                <TaxedMoney taxedMoney={product?.pricing?.priceRangeUndiscounted?.start} />
+              </div>
+            </div>
+            <div className="description">
+              <S.Title className='home-page_product-title fa-text-left'>{product.name}</S.Title>
+            </div>
+            <div className='home-page_product-button fa-flex fa-justify-between'>
+              <div className='search-page_product-price'>
+                <div className={getProductPricingClass(canAddToCart, isOnSale)}>
+                  <S.Price className='fa-font-base'>
+                    <TaxedMoney taxedMoney={product?.pricing?.priceRange?.start} />
+                  </S.Price>
+                </div>
               </div>
               <div ref={refActions}>
                 <ItemsHandler
