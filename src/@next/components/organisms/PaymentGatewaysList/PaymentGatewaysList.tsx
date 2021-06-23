@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { NiubizPaymentGateway } from "@components/organisms/NiubizPaymentGateway";
+import { NOT_CHARGE_TOKEN } from "@components/organisms/DummyPaymentGateway";
 import { TileRadio } from "@components/molecules";
 import { PROVIDERS } from "@temp/core/config";
 import PosIcon from "images/auna/pos.svg";
 import { IProps } from "./types";
 import * as S from "./styles";
 import * as Sentry from "@sentry/react";
+import { DummyPaymentGateway } from "..";
 
 const PaymentGatewaysList: React.FC<IProps> = ({
   paymentGateways,
@@ -17,7 +19,6 @@ const PaymentGatewaysList: React.FC<IProps> = ({
   errors,
   onError,
   changeRequestPayload,
-  requestPayload,
   totalPrice,
   userDataForNiubiz,
   voucherCode,
@@ -51,26 +52,70 @@ const PaymentGatewaysList: React.FC<IProps> = ({
     }
   }, [voucherCode]);
 
+  const generatePurchaseNumber = (): number => {
+    const payload: any = {
+      purchase_number: Math.floor(Math.random() * (999999999999 - 1)) + 1,
+    };
+
+    changeRequestPayload(payload);
+    localStorage.setItem("purchase_number", payload.purchase_number);
+    
+    return payload.purchase_number;
+  };
+
   return (
     <S.Wrapper>
       {paymentGateways.map(({ id, config }, index) => {
         const checked = selectedPaymentGateway === id;
 
         switch (id) {
+          case PROVIDERS.DUMMY.id:
+            return (
+              <TileRadio
+                key={index}
+                label={PROVIDERS.DUMMY.label}
+                radioProps={{ name: "payment-method", value: "dummy", checked }}
+                onClick={() => {
+                  generatePurchaseNumber();
+                  selectPaymentGateway?.(id);
+                }}
+              >
+                <DummyPaymentGateway
+                  formRef={formRef}
+                  formId={formId}
+                  processPayment={token => processPayment(id, token)}
+                />
+              </TileRadio>
+            );
           case PROVIDERS.POS.id:
             return (
               <TileRadio
                 key={index}
                 label={PROVIDERS.POS.label}
                 radioProps={{ name: "payment-method", value: "pos", checked }}
-                onClick={() => selectPaymentGateway?.(id)}
+                onClick={() => {
+                  generatePurchaseNumber();
+                  selectPaymentGateway?.(id);
+                }}
               >
                 <div className="fa-flex fa-items-center">
-                  <img src={PosIcon} width={32} height={32} className="fa-mr-2" />
+                  <img
+                    src={PosIcon}
+                    width={32}
+                    height={32}
+                    className="fa-mr-2"
+                  />
                   <div className="fa-text-xs">
                     El motorizado se acercará a tu dirección con un POS para
                     efectuar el pago con tarjeta.
                   </div>
+                  <form
+                    id={formId}
+                    ref={formRef}
+                    onSubmit={() => {
+                      processPayment(id, NOT_CHARGE_TOKEN);
+                    }}
+                  />
                 </div>
               </TileRadio>
             );
@@ -96,10 +141,9 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                     }
                     errors={errors}
                     onError={onError}
-                    changeRequestPayload={changeRequestPayload}
-                    requestPayload={requestPayload}
                     totalPrice={totalPrice}
                     userDataForNiubiz={userDataForNiubiz}
+                    generatePurchaseNumber={generatePurchaseNumber}
                   />
                 )}
               </TileRadio>

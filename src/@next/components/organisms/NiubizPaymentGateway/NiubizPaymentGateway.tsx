@@ -127,10 +127,9 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
   formId,
   errors = [],
   onError,
-  changeRequestPayload,
-  requestPayload,
   totalPrice,
   userDataForNiubiz,
+  generatePurchaseNumber,
 }: IProps) => {
   // @ts-ignore
   const [sessionKey, setSessionKey] = useState("");
@@ -151,12 +150,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
 
   let purchaseNumber = "";
   useEffect(() => {
-    const payload: any = {
-      purchase_number: Math.floor(Math.random() * (999999999999 - 1)) + 1,
-    };
-    purchaseNumber = payload.purchase_number;
-    changeRequestPayload(payload);
-    localStorage.setItem("purchase_number", purchaseNumber);
+    purchaseNumber = generatePurchaseNumber().toString();
   }, []);
 
   const createTokenScript = () => {

@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
   margin: 20px;
 }
 
-.c25 {
+.c23 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -17,38 +17,10 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
   box-sizing: border-box;
 }
 
-.c24 {
+.c22 {
   display: inline-block;
   vertical-align: middle;
   margin-bottom: 0px !important;
-}
-
-.c8 {
-  position: relative;
-  width: 1.5rem;
-  height: 1.5rem;
-  border: none;
-  background-color: #452fba;
-  border-radius: 50%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  color: white;
-}
-
-.c8 span {
-  margin: auto;
-  font-size: 0.875rem;
-  line-height: 0.875rem;
-}
-
-.c8 svg {
-  margin: auto;
 }
 
 .c5 {
@@ -56,7 +28,7 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
   width: 1.5rem;
   height: 1.5rem;
   border: none;
-  background-color: #008A66;
+  background-color: #452fba;
   border-radius: 50%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -79,16 +51,6 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
   margin: auto;
 }
 
-.c9 {
-  display: block;
-  position: absolute;
-  width: 8.875rem;
-  top: 2rem;
-  left: -3.75rem;
-  text-align: center;
-  font-weight: 600;
-}
-
 .c6 {
   display: block;
   position: absolute;
@@ -97,10 +59,9 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
   left: -3.75rem;
   text-align: center;
   font-weight: 600;
-  color: #A8F0DD;
 }
 
-.c10 {
+.c8 {
   display: none;
 }
 
@@ -108,7 +69,7 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
   z-index: 0;
   width: 100%;
   height: 4px;
-  background-color: #008A66;
+  background-color: #452FBA;
 }
 
 .c4 {
@@ -150,18 +111,18 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
   width: 80%;
 }
 
-.c19 {
+.c17 {
   text-align: center;
 }
 
-.c20 {
+.c18 {
   color: #452fba;
   font-size: 1.5rem;
   line-height: 2.25rem;
   font-weight: 600;
 }
 
-.c21 {
+.c19 {
   color: #452fba;
   font-weight: 600;
   margin-top: 1rem;
@@ -170,22 +131,22 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
   line-height: 200%;
 }
 
-.c21.secondary {
+.c19.secondary {
   margin-top: 2rem;
 }
 
-.c22 {
+.c20 {
   color: #131336;
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 2.125rem;
 }
 
-.c23 {
+.c21 {
   font-weight: 600;
 }
 
-.c11 {
+.c9 {
   width: 1140px;
   max-width: 100vw;
   margin: 0 auto 0;
@@ -205,7 +166,7 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
   border-bottom-left-radius: 3.125rem;
 }
 
-.c12 {
+.c10 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -229,11 +190,11 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
   margin-top: 2.625rem;
 }
 
-.c12 button {
+.c10 button {
   margin-top: 2rem;
 }
 
-.c13 {
+.c11 {
   color: #452fba;
   font-size: 1.5rem;
   font-weight: 600;
@@ -243,15 +204,15 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
   margin-bottom: 1.5rem;
 }
 
-.c13 span {
+.c11 span {
   display: block;
 }
 
-.c13 span:nth-child(1) {
+.c11 span:nth-child(1) {
   margin-bottom: 0.8rem;
 }
 
-.c14 {
+.c12 {
   font-size: 1.25rem;
   line-height: 140%;
   border-radius: 1rem 0;
@@ -260,12 +221,12 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
   font-weight: 400;
 }
 
-.c14 span {
+.c12 span {
   color: #452fba;
   font-weight: 600;
 }
 
-.c15 {
+.c13 {
   color: #131336;
   display: -webkit-box;
   display: -webkit-flex;
@@ -281,7 +242,7 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
   margin-top: 2rem;
 }
 
-.c16 {
+.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -289,18 +250,18 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
   color: #908ba7;
 }
 
-.c16 svg {
+.c14 svg {
   margin: auto;
 }
 
-.c17 {
+.c15 {
   line-height: 175%;
   font-size: 1rem;
   font-weight: 400;
   max-width: 20rem;
 }
 
-.c18 {
+.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -313,14 +274,8 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
   border-radius: 2rem;
 }
 
-.c18 > div {
+.c16 > div {
   margin: auto;
-}
-
-@media (max-width:720px) {
-  .c9 {
-    display: none;
-  }
 }
 
 @media (max-width:720px) {
@@ -330,7 +285,7 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
 }
 
 @media (max-width:720px) {
-  .c10 {
+  .c8 {
     color: #fff;
     white-space: pre;
     display: block;
@@ -349,26 +304,26 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
 }
 
 @media (max-width:992px) {
-  .c11 {
+  .c9 {
     width: 100%;
   }
 }
 
 @media (max-width:540px) {
-  .c12 {
+  .c10 {
     padding: 3rem 2rem;
   }
 }
 
 @media (max-width:540px) {
-  .c14 {
+  .c12 {
     font-size: 0.875rem;
     text-align: center;
   }
 }
 
 @media (max-width:540px) {
-  .c15 {
+  .c13 {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -376,14 +331,14 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
 }
 
 @media (max-width:540px) {
-  .c17 {
+  .c15 {
     font-size: 0.875rem;
     text-align: center;
   }
 }
 
 @media (max-width:540px) {
-  .c18 {
+  .c16 {
     padding: 2.5rem 2rem 3.125rem;
   }
 }
@@ -404,20 +359,33 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
           <div
             className="c4"
           >
-            <span>
+            <a
+              href="/checkout/address"
+              onClick={[Function]}
+            >
               <div
                 className="c5"
               >
-                <span>
-                  1
-                </span>
+                <svg
+                  className=" "
+                  color="white"
+                  fill="white"
+                  height={12}
+                  viewBox="0 0 24 24"
+                  width={12}
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6.93511 16.9996C6.68021 16.9996 6.44353 16.9009 6.27056 16.7213L1.24553 11.4598C0.899603 11.1006 0.91781 10.535 1.28194 10.1938C1.64608 9.85261 2.22869 9.87057 2.56551 10.2297L6.9169 14.7819L19.4158 1.28696C19.7526 0.918831 20.3261 0.900874 20.6993 1.23309C21.0726 1.5653 21.0999 2.13095 20.754 2.49908L7.60875 16.7123C7.43579 16.8919 7.1991 16.9996 6.93511 16.9996Z"
+                  />
+                </svg>
                 <p
                   className="c6"
                 >
                   Datos Personales
                 </p>
               </div>
-            </span>
+            </a>
             <div
               className="c7"
             />
@@ -425,20 +393,33 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
           <div
             className="c4"
           >
-            <span>
+            <a
+              href="/checkout/payment"
+              onClick={[Function]}
+            >
               <div
                 className="c5"
               >
-                <span>
-                  2
-                </span>
+                <svg
+                  className=" "
+                  color="white"
+                  fill="white"
+                  height={12}
+                  viewBox="0 0 24 24"
+                  width={12}
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6.93511 16.9996C6.68021 16.9996 6.44353 16.9009 6.27056 16.7213L1.24553 11.4598C0.899603 11.1006 0.91781 10.535 1.28194 10.1938C1.64608 9.85261 2.22869 9.87057 2.56551 10.2297L6.9169 14.7819L19.4158 1.28696C19.7526 0.918831 20.3261 0.900874 20.6993 1.23309C21.0726 1.5653 21.0999 2.13095 20.754 2.49908L7.60875 16.7123C7.43579 16.8919 7.1991 16.9996 6.93511 16.9996Z"
+                  />
+                </svg>
                 <p
                   className="c6"
                 >
                   Datos de Pago
                 </p>
               </div>
-            </span>
+            </a>
             <div
               className="c7"
             />
@@ -446,37 +427,40 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
           <div
             className="c4"
           >
-            <span>
+            <a
+              href="/checkout/review"
+              onClick={[Function]}
+            >
               <div
-                className="c8"
+                className="c5"
               >
                 <span>
                   3
                 </span>
                 <p
-                  className="c9"
+                  className="c6"
                 >
                   ¡Listo!
                 </p>
               </div>
-            </span>
+            </a>
           </div>
         </div>
         <div
-          className="c10"
+          className="c8"
         >
           ¡Listo!
         </div>
       </div>
     </div>
     <div
-      className="c11"
+      className="c9"
     >
       <div
-        className="c12"
+        className="c10"
       >
         <p
-          className="c13"
+          className="c11"
         >
           <span>
             ¡Gracias!
@@ -486,7 +470,7 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
           </span>
         </p>
         <div
-          className="c14"
+          className="c12"
         >
           El código de tu orden es: 
           <span>
@@ -494,10 +478,10 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
           </span>
         </div>
         <div
-          className="c15"
+          className="c13"
         >
           <div
-            className="c16"
+            className="c14"
           >
             <svg
               className=" "
@@ -517,7 +501,7 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
             </svg>
           </div>
           <div
-            className="c17"
+            className="c15"
           >
             Recibirás en tu correo electrónico la confirmación y detalle de tu compra
           </div>
@@ -536,59 +520,59 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
         </button>
       </div>
       <div
-        className="c18"
+        className="c16"
       >
         <div
-          className="c19"
+          className="c17"
         >
           <div>
             <h3
-              className="c20"
+              className="c18"
             >
                Datos de entrega
             </h3>
             <h4
-              className="c21"
+              className="c19"
               data-cy="checkoutReviewSectionTitle"
             >
               Datos personales
             </h4>
             <p
-              className="c22"
+              className="c20"
             >
               <span
-                className="c23"
+                className="c21"
               >
                  
               </span>
             </p>
             <p
-              className="c22"
+              className="c20"
             >
               Número de documento:
                
               <span
-                className="c23"
+                className="c21"
               />
             </p>
             <p
-              className="c22"
+              className="c20"
             >
               Correo electrónico: 
               <span
-                className="c23"
+                className="c21"
               />
             </p>
             <p
-              className="c22"
+              className="c20"
             >
               Telefono: 
               <span
-                className="c23"
+                className="c21"
               />
             </p>
             <h4
-              className="secondary c21"
+              className="secondary c19"
               data-cy="checkoutReviewSectionTitle"
             >
               Dirección de entrega
@@ -596,24 +580,24 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
           </div>
           <div>
             <h4
-              className="secondary c21"
+              className="secondary c19"
               data-cy="checkoutReviewSectionTitle"
             >
               Tiempo de entrega
             </h4>
             <span
-              className="c23"
+              className="c21"
             />
           </div>
           <div>
             <h4
-              className="secondary c21"
+              className="secondary c19"
               data-cy="checkoutReviewSectionTitle"
             >
               Método de pago
             </h4>
             <div
-              className="c24"
+              className="c22"
             >
               <div />
             </div>
@@ -623,7 +607,7 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
     </div>
   </div>
   <div
-    className="c25"
+    className="c23"
   />
 </div>
 `;

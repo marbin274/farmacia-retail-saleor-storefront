@@ -29,7 +29,7 @@ export const PROVIDERS = {
   },
   DUMMY: {
     id: "mirumee.payments.dummy",
-    label: "AUNA Payments Gateway",
+    label: "AUNA Dummy Payments Gateway",
   },
   POS: {
     id: "farmacia-retail.payments.pos",
