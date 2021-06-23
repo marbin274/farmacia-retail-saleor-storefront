@@ -6,7 +6,7 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
   margin: 20px;
 }
 
-.c5 {
+.c7 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -17,25 +17,27 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
   box-sizing: border-box;
 }
 
+.c3 {
+  display: grid;
+  grid-template-columns: 5.625rem 1fr;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+}
+
 .c2 {
   color: #131336;
-  background: #ffffff;
-  height: 25.8rem;
   text-align: center;
   -webkit-transition: 0 .3s;
   transition: 0 .3s;
-  padding: 2rem;
+  padding: 1rem;
   position: relative;
-  border-radius: 16px;
-}
-
-.c2:hover {
-  box-shadow: 0px 8px 16px rgba(144,139,167,0.2);
 }
 
 .c2 .img {
   width: auto;
-  height: 170px;
+  max-height: 10.625rem;
   max-width: 100%;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -55,7 +57,7 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
 
 .c2 .img img {
   width: auto;
-  height: 170px;
+  max-height: 10.625rem;
   max-width: 100%;
   vertical-align: middle;
   margin: auto;
@@ -64,7 +66,6 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
 
 .c2 .description {
   font-family: "Poppins",sans-serif;
-  height: 5.3125rem;
   font-weight: 600;
   line-height: 1.4;
   padding: 0.4rem 0;
@@ -119,7 +120,7 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
   cursor: not-allowed;
 }
 
-.c3 {
+.c5 {
   overflow: hidden;
   position: relative;
   height: 18rem;
@@ -132,9 +133,45 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
   grid-gap: 1rem 1rem;
 }
 
-.c4 {
+.c6 {
   text-align: center;
   margin: 2.5rem 0;
+}
+
+@media (min-width:992px) {
+  .c2 {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 1rem;
+  }
+
+  .c2:hover {
+    box-shadow: 0 0.5rem 1rem rgba(144,139,167,0.2);
+  }
+}
+
+@media (min-width:992px) {
+  .c2 .description {
+    height: 5.3125rem;
+  }
+}
+
+@media (max-width:992px) {
+  .c4 > span {
+    font-size: 1rem !important;
+    line-height: 120%;
+    position: relative;
+  }
+
+  .c4 > span:before {
+    content: "Precio";
+    margin-right: 1rem;
+    font-size: 0.75rem !important;
+    font-weight: 500;
+    color: #C8C5D3;
+    position: absolute;
+    top: -1.25rem;
+  }
 }
 
 @media (max-width:992px) {
@@ -158,848 +195,1832 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
     className="c1"
   >
     <div
-      className="c2"
+      className="fa-border-b fa-border-solid fa-border-neutral-medium lg:fa-border-0 c2"
       data-cy="product-tile"
     >
-      <a
-        href="/product/betacort-depot-solucin-inyectable/227/"
-        onClick={[Function]}
+      <div
+        className="fa-w-full fa-block lg:fa-hidden"
       >
-        <div
+        <a
           className="c3"
+          href="/product/betacort-depot-solucin-inyectable/227/"
+          onClick={[Function]}
         >
           <div
-            className="fa-flex fa-justify-start"
-          />
-          <div
-            className="img"
-            onClick={[Function]}
+            className="fa-flex fa-flex-col fa-items-center"
           >
             <div
-              className=""
+              className="img fa-rounded-lg fa-bg-white fa-overflow-hidden"
+              onClick={[Function]}
             >
-              <img
-                alt=""
-                src={[Function]}
+              <div
+                className=""
+              >
+                <img
+                  alt=""
+                  src={[Function]}
+                />
+              </div>
+            </div>
+            <div
+              className="fa-mt-2"
+            >
+              <div
+                className="fa-flex fa-justify-start"
               />
             </div>
           </div>
           <div
-            className="price"
+            className="fa-px-4 fa-pb-4"
           >
-            <p
-              className=""
+            <div
+              className="description"
             >
-              <span>
-                
-              </span>
-            </p>
-          </div>
-          <div
-            className="description"
-          >
-            <h4
-              className=""
+              <h4
+                className="fa-text-left "
+              >
+                Betacort Depot Solución Inyectable
+              </h4>
+            </div>
+            <div
+              className="fa-flex fa-justify-between"
             >
-              Betacort Depot Solución Inyectable
-            </h4>
+              <div
+                className="price"
+              >
+                <p
+                  className="fa-font-base c4"
+                >
+                  <span>
+                    
+                  </span>
+                </p>
+              </div>
+              <div>
+                <div
+                  className="button"
+                >
+                  <button
+                    className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
+                    disabled={false}
+                    onClick={[Function]}
+                    style={Object {}}
+                    type="button"
+                  >
+                    <span
+                      className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
+                    >
+                      <svg
+                        className=" "
+                        color="currentColor"
+                        fill="currentColor"
+                        height={16}
+                        viewBox="0 0 24 24"
+                        width={16}
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M9 21C10.1046 21 11 20.1046 11 19C11 17.8954 10.1046 17 9 17C7.89543 17 7 17.8954 7 19C7 20.1046 7.89543 21 9 21Z"
+                          fill="transparent"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                        />
+                        <path
+                          d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z"
+                          fill="transparent"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                        />
+                        <path
+                          d="M3 3H5L7 15C7.21572 15.6135 7.62494 16.1402 8.16602 16.501C8.7071 16.8617 9.35075 17.0368 10 17H17C17.6493 17.0368 18.2929 16.8617 18.834 16.501C19.3751 16.1402 19.7843 15.6135 20 15L21 8L10 8"
+                          fill="transparent"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                        />
+                      </svg>
+                    </span>
+                    <span
+                      className="fa-align-middle fa-ml-2"
+                    >
+                      Agregar
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </a>
+        </a>
+      </div>
       <div
-        className="button"
+        className="fa-hidden lg:fa-block"
       >
-        <button
-          className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
-          disabled={false}
+        <a
+          href="/product/betacort-depot-solucin-inyectable/227/"
           onClick={[Function]}
-          style={Object {}}
-          type="button"
         >
-          <span
-            className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
+          <div
+            className="c5"
           >
-            <svg
-              className=" "
-              color="currentColor"
-              fill="currentColor"
-              height={16}
-              viewBox="0 0 24 24"
-              width={16}
-              xmlns="http://www.w3.org/2000/svg"
+            <div
+              className="fa-flex fa-justify-start"
+            />
+            <div
+              className="img"
+              onClick={[Function]}
             >
-              <path
-                d="M9 21C10.1046 21 11 20.1046 11 19C11 17.8954 10.1046 17 9 17C7.89543 17 7 17.8954 7 19C7 20.1046 7.89543 21 9 21Z"
-                fill="transparent"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-              />
-              <path
-                d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z"
-                fill="transparent"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-              />
-              <path
-                d="M3 3H5L7 15C7.21572 15.6135 7.62494 16.1402 8.16602 16.501C8.7071 16.8617 9.35075 17.0368 10 17H17C17.6493 17.0368 18.2929 16.8617 18.834 16.501C19.3751 16.1402 19.7843 15.6135 20 15L21 8L10 8"
-                fill="transparent"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-              />
-            </svg>
-          </span>
-          <span
-            className="fa-align-middle fa-ml-2"
+              <div
+                className=""
+              >
+                <img
+                  alt=""
+                  src={[Function]}
+                />
+              </div>
+            </div>
+            <div
+              className="price"
+            >
+              <p
+                className="c4"
+              >
+                <span>
+                  
+                </span>
+              </p>
+            </div>
+            <div
+              className="description"
+            >
+              <h4
+                className=""
+              >
+                Betacort Depot Solución Inyectable
+              </h4>
+            </div>
+          </div>
+        </a>
+        <div
+          className="button"
+        >
+          <button
+            className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
+            disabled={false}
+            onClick={[Function]}
+            style={Object {}}
+            type="button"
           >
-            Agregar
-          </span>
-        </button>
+            <span
+              className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
+            >
+              <svg
+                className=" "
+                color="currentColor"
+                fill="currentColor"
+                height={16}
+                viewBox="0 0 24 24"
+                width={16}
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9 21C10.1046 21 11 20.1046 11 19C11 17.8954 10.1046 17 9 17C7.89543 17 7 17.8954 7 19C7 20.1046 7.89543 21 9 21Z"
+                  fill="transparent"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                />
+                <path
+                  d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z"
+                  fill="transparent"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                />
+                <path
+                  d="M3 3H5L7 15C7.21572 15.6135 7.62494 16.1402 8.16602 16.501C8.7071 16.8617 9.35075 17.0368 10 17H17C17.6493 17.0368 18.2929 16.8617 18.834 16.501C19.3751 16.1402 19.7843 15.6135 20 15L21 8L10 8"
+                  fill="transparent"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                />
+              </svg>
+            </span>
+            <span
+              className="fa-align-middle fa-ml-2"
+            >
+              Agregar
+            </span>
+          </button>
+        </div>
       </div>
     </div>
     <div
-      className="c2"
+      className="fa-border-b fa-border-solid fa-border-neutral-medium lg:fa-border-0 c2"
       data-cy="product-tile"
     >
-      <a
-        href="/product/abrilar-35mg5ml-jarabe-frasco-100-ml/208/"
-        onClick={[Function]}
+      <div
+        className="fa-w-full fa-block lg:fa-hidden"
       >
-        <div
+        <a
           className="c3"
+          href="/product/abrilar-35mg5ml-jarabe-frasco-100-ml/208/"
+          onClick={[Function]}
         >
           <div
-            className="fa-flex fa-justify-start"
-          />
-          <div
-            className="img"
-            onClick={[Function]}
+            className="fa-flex fa-flex-col fa-items-center"
           >
             <div
-              className=""
+              className="img fa-rounded-lg fa-bg-white fa-overflow-hidden"
+              onClick={[Function]}
             >
-              <img
-                alt=""
-                src={[Function]}
+              <div
+                className=""
+              >
+                <img
+                  alt=""
+                  src={[Function]}
+                />
+              </div>
+            </div>
+            <div
+              className="fa-mt-2"
+            >
+              <div
+                className="fa-flex fa-justify-start"
               />
             </div>
           </div>
           <div
-            className="price"
+            className="fa-px-4 fa-pb-4"
           >
-            <p
-              className=""
+            <div
+              className="description"
             >
-              <span>
-                
-              </span>
-            </p>
-          </div>
-          <div
-            className="description"
-          >
-            <h4
-              className=""
+              <h4
+                className="fa-text-left "
+              >
+                Abrilar 35Mg/5ML Jarabe - Frasco 100 ML
+              </h4>
+            </div>
+            <div
+              className="fa-flex fa-justify-between"
             >
-              Abrilar 35Mg/5ML Jarabe - Frasco 100 ML
-            </h4>
+              <div
+                className="price"
+              >
+                <p
+                  className="fa-font-base c4"
+                >
+                  <span>
+                    
+                  </span>
+                </p>
+              </div>
+              <div>
+                <div
+                  className="button"
+                >
+                  <button
+                    className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
+                    disabled={false}
+                    onClick={[Function]}
+                    style={Object {}}
+                    type="button"
+                  >
+                    <span
+                      className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
+                    >
+                      <svg
+                        className=" "
+                        color="currentColor"
+                        fill="currentColor"
+                        height={16}
+                        viewBox="0 0 24 24"
+                        width={16}
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M9 21C10.1046 21 11 20.1046 11 19C11 17.8954 10.1046 17 9 17C7.89543 17 7 17.8954 7 19C7 20.1046 7.89543 21 9 21Z"
+                          fill="transparent"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                        />
+                        <path
+                          d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z"
+                          fill="transparent"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                        />
+                        <path
+                          d="M3 3H5L7 15C7.21572 15.6135 7.62494 16.1402 8.16602 16.501C8.7071 16.8617 9.35075 17.0368 10 17H17C17.6493 17.0368 18.2929 16.8617 18.834 16.501C19.3751 16.1402 19.7843 15.6135 20 15L21 8L10 8"
+                          fill="transparent"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                        />
+                      </svg>
+                    </span>
+                    <span
+                      className="fa-align-middle fa-ml-2"
+                    >
+                      Agregar
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </a>
+        </a>
+      </div>
       <div
-        className="button"
+        className="fa-hidden lg:fa-block"
       >
-        <button
-          className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
-          disabled={false}
+        <a
+          href="/product/abrilar-35mg5ml-jarabe-frasco-100-ml/208/"
           onClick={[Function]}
-          style={Object {}}
-          type="button"
         >
-          <span
-            className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
+          <div
+            className="c5"
           >
-            <svg
-              className=" "
-              color="currentColor"
-              fill="currentColor"
-              height={16}
-              viewBox="0 0 24 24"
-              width={16}
-              xmlns="http://www.w3.org/2000/svg"
+            <div
+              className="fa-flex fa-justify-start"
+            />
+            <div
+              className="img"
+              onClick={[Function]}
             >
-              <path
-                d="M9 21C10.1046 21 11 20.1046 11 19C11 17.8954 10.1046 17 9 17C7.89543 17 7 17.8954 7 19C7 20.1046 7.89543 21 9 21Z"
-                fill="transparent"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-              />
-              <path
-                d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z"
-                fill="transparent"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-              />
-              <path
-                d="M3 3H5L7 15C7.21572 15.6135 7.62494 16.1402 8.16602 16.501C8.7071 16.8617 9.35075 17.0368 10 17H17C17.6493 17.0368 18.2929 16.8617 18.834 16.501C19.3751 16.1402 19.7843 15.6135 20 15L21 8L10 8"
-                fill="transparent"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-              />
-            </svg>
-          </span>
-          <span
-            className="fa-align-middle fa-ml-2"
+              <div
+                className=""
+              >
+                <img
+                  alt=""
+                  src={[Function]}
+                />
+              </div>
+            </div>
+            <div
+              className="price"
+            >
+              <p
+                className="c4"
+              >
+                <span>
+                  
+                </span>
+              </p>
+            </div>
+            <div
+              className="description"
+            >
+              <h4
+                className=""
+              >
+                Abrilar 35Mg/5ML Jarabe - Frasco 100 ML
+              </h4>
+            </div>
+          </div>
+        </a>
+        <div
+          className="button"
+        >
+          <button
+            className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
+            disabled={false}
+            onClick={[Function]}
+            style={Object {}}
+            type="button"
           >
-            Agregar
-          </span>
-        </button>
+            <span
+              className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
+            >
+              <svg
+                className=" "
+                color="currentColor"
+                fill="currentColor"
+                height={16}
+                viewBox="0 0 24 24"
+                width={16}
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9 21C10.1046 21 11 20.1046 11 19C11 17.8954 10.1046 17 9 17C7.89543 17 7 17.8954 7 19C7 20.1046 7.89543 21 9 21Z"
+                  fill="transparent"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                />
+                <path
+                  d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z"
+                  fill="transparent"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                />
+                <path
+                  d="M3 3H5L7 15C7.21572 15.6135 7.62494 16.1402 8.16602 16.501C8.7071 16.8617 9.35075 17.0368 10 17H17C17.6493 17.0368 18.2929 16.8617 18.834 16.501C19.3751 16.1402 19.7843 15.6135 20 15L21 8L10 8"
+                  fill="transparent"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                />
+              </svg>
+            </span>
+            <span
+              className="fa-align-middle fa-ml-2"
+            >
+              Agregar
+            </span>
+          </button>
+        </div>
       </div>
     </div>
     <div
-      className="c2"
+      className="fa-border-b fa-border-solid fa-border-neutral-medium lg:fa-border-0 c2"
       data-cy="product-tile"
     >
-      <a
-        href="/product/amlodipino-gef-10mg-tabletas-caja-10-und/223/"
-        onClick={[Function]}
+      <div
+        className="fa-w-full fa-block lg:fa-hidden"
       >
-        <div
+        <a
           className="c3"
+          href="/product/amlodipino-gef-10mg-tabletas-caja-10-und/223/"
+          onClick={[Function]}
         >
           <div
-            className="fa-flex fa-justify-start"
-          />
-          <div
-            className="img"
-            onClick={[Function]}
+            className="fa-flex fa-flex-col fa-items-center"
           >
             <div
-              className=""
+              className="img fa-rounded-lg fa-bg-white fa-overflow-hidden"
+              onClick={[Function]}
             >
-              <img
-                alt=""
-                src={[Function]}
+              <div
+                className=""
+              >
+                <img
+                  alt=""
+                  src={[Function]}
+                />
+              </div>
+            </div>
+            <div
+              className="fa-mt-2"
+            >
+              <div
+                className="fa-flex fa-justify-start"
               />
             </div>
           </div>
           <div
-            className="price"
+            className="fa-px-4 fa-pb-4"
           >
-            <p
-              className=""
+            <div
+              className="description"
             >
-              <span>
-                
-              </span>
-            </p>
-          </div>
-          <div
-            className="description"
-          >
-            <h4
-              className=""
+              <h4
+                className="fa-text-left "
+              >
+                Amlodipino-Gef 10Mg Tabletas - Caja 10 Und
+              </h4>
+            </div>
+            <div
+              className="fa-flex fa-justify-between"
             >
-              Amlodipino-Gef 10Mg Tabletas - Caja 10 Und
-            </h4>
+              <div
+                className="price"
+              >
+                <p
+                  className="fa-font-base c4"
+                >
+                  <span>
+                    
+                  </span>
+                </p>
+              </div>
+              <div>
+                <div
+                  className="button"
+                >
+                  <button
+                    className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
+                    disabled={false}
+                    onClick={[Function]}
+                    style={Object {}}
+                    type="button"
+                  >
+                    <span
+                      className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
+                    >
+                      <svg
+                        className=" "
+                        color="currentColor"
+                        fill="currentColor"
+                        height={16}
+                        viewBox="0 0 24 24"
+                        width={16}
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M9 21C10.1046 21 11 20.1046 11 19C11 17.8954 10.1046 17 9 17C7.89543 17 7 17.8954 7 19C7 20.1046 7.89543 21 9 21Z"
+                          fill="transparent"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                        />
+                        <path
+                          d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z"
+                          fill="transparent"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                        />
+                        <path
+                          d="M3 3H5L7 15C7.21572 15.6135 7.62494 16.1402 8.16602 16.501C8.7071 16.8617 9.35075 17.0368 10 17H17C17.6493 17.0368 18.2929 16.8617 18.834 16.501C19.3751 16.1402 19.7843 15.6135 20 15L21 8L10 8"
+                          fill="transparent"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                        />
+                      </svg>
+                    </span>
+                    <span
+                      className="fa-align-middle fa-ml-2"
+                    >
+                      Agregar
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </a>
+        </a>
+      </div>
       <div
-        className="button"
+        className="fa-hidden lg:fa-block"
       >
-        <button
-          className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
-          disabled={false}
+        <a
+          href="/product/amlodipino-gef-10mg-tabletas-caja-10-und/223/"
           onClick={[Function]}
-          style={Object {}}
-          type="button"
         >
-          <span
-            className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
+          <div
+            className="c5"
           >
-            <svg
-              className=" "
-              color="currentColor"
-              fill="currentColor"
-              height={16}
-              viewBox="0 0 24 24"
-              width={16}
-              xmlns="http://www.w3.org/2000/svg"
+            <div
+              className="fa-flex fa-justify-start"
+            />
+            <div
+              className="img"
+              onClick={[Function]}
             >
-              <path
-                d="M9 21C10.1046 21 11 20.1046 11 19C11 17.8954 10.1046 17 9 17C7.89543 17 7 17.8954 7 19C7 20.1046 7.89543 21 9 21Z"
-                fill="transparent"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-              />
-              <path
-                d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z"
-                fill="transparent"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-              />
-              <path
-                d="M3 3H5L7 15C7.21572 15.6135 7.62494 16.1402 8.16602 16.501C8.7071 16.8617 9.35075 17.0368 10 17H17C17.6493 17.0368 18.2929 16.8617 18.834 16.501C19.3751 16.1402 19.7843 15.6135 20 15L21 8L10 8"
-                fill="transparent"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-              />
-            </svg>
-          </span>
-          <span
-            className="fa-align-middle fa-ml-2"
+              <div
+                className=""
+              >
+                <img
+                  alt=""
+                  src={[Function]}
+                />
+              </div>
+            </div>
+            <div
+              className="price"
+            >
+              <p
+                className="c4"
+              >
+                <span>
+                  
+                </span>
+              </p>
+            </div>
+            <div
+              className="description"
+            >
+              <h4
+                className=""
+              >
+                Amlodipino-Gef 10Mg Tabletas - Caja 10 Und
+              </h4>
+            </div>
+          </div>
+        </a>
+        <div
+          className="button"
+        >
+          <button
+            className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
+            disabled={false}
+            onClick={[Function]}
+            style={Object {}}
+            type="button"
           >
-            Agregar
-          </span>
-        </button>
+            <span
+              className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
+            >
+              <svg
+                className=" "
+                color="currentColor"
+                fill="currentColor"
+                height={16}
+                viewBox="0 0 24 24"
+                width={16}
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9 21C10.1046 21 11 20.1046 11 19C11 17.8954 10.1046 17 9 17C7.89543 17 7 17.8954 7 19C7 20.1046 7.89543 21 9 21Z"
+                  fill="transparent"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                />
+                <path
+                  d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z"
+                  fill="transparent"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                />
+                <path
+                  d="M3 3H5L7 15C7.21572 15.6135 7.62494 16.1402 8.16602 16.501C8.7071 16.8617 9.35075 17.0368 10 17H17C17.6493 17.0368 18.2929 16.8617 18.834 16.501C19.3751 16.1402 19.7843 15.6135 20 15L21 8L10 8"
+                  fill="transparent"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                />
+              </svg>
+            </span>
+            <span
+              className="fa-align-middle fa-ml-2"
+            >
+              Agregar
+            </span>
+          </button>
+        </div>
       </div>
     </div>
     <div
-      className="c2"
+      className="fa-border-b fa-border-solid fa-border-neutral-medium lg:fa-border-0 c2"
       data-cy="product-tile"
     >
-      <a
-        href="/product/ab-broncol-nf-1200mg5ml-solucin-inyectable-intramuscular/218/"
-        onClick={[Function]}
+      <div
+        className="fa-w-full fa-block lg:fa-hidden"
       >
-        <div
+        <a
           className="c3"
+          href="/product/ab-broncol-nf-1200mg5ml-solucin-inyectable-intramuscular/218/"
+          onClick={[Function]}
         >
           <div
-            className="fa-flex fa-justify-start"
-          />
-          <div
-            className="img"
-            onClick={[Function]}
+            className="fa-flex fa-flex-col fa-items-center"
           >
             <div
-              className=""
+              className="img fa-rounded-lg fa-bg-white fa-overflow-hidden"
+              onClick={[Function]}
             >
-              <img
-                alt=""
-                src={[Function]}
+              <div
+                className=""
+              >
+                <img
+                  alt=""
+                  src={[Function]}
+                />
+              </div>
+            </div>
+            <div
+              className="fa-mt-2"
+            >
+              <div
+                className="fa-flex fa-justify-start"
               />
             </div>
           </div>
           <div
-            className="price"
+            className="fa-px-4 fa-pb-4"
           >
-            <p
-              className=""
+            <div
+              className="description"
             >
-              <span>
-                
-              </span>
-            </p>
-          </div>
-          <div
-            className="description"
-          >
-            <h4
-              className=""
+              <h4
+                className="fa-text-left "
+              >
+                Ab Broncol NF 1200Mg/5ML Solución Inyectable Intramuscular
+              </h4>
+            </div>
+            <div
+              className="fa-flex fa-justify-between"
             >
-              Ab Broncol NF 1200Mg/5ML Solución Inyectable Intramuscular
-            </h4>
+              <div
+                className="price"
+              >
+                <p
+                  className="fa-font-base c4"
+                >
+                  <span>
+                    
+                  </span>
+                </p>
+              </div>
+              <div>
+                <div
+                  className="button"
+                >
+                  <button
+                    className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
+                    disabled={false}
+                    onClick={[Function]}
+                    style={Object {}}
+                    type="button"
+                  >
+                    <span
+                      className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
+                    >
+                      <svg
+                        className=" "
+                        color="currentColor"
+                        fill="currentColor"
+                        height={16}
+                        viewBox="0 0 24 24"
+                        width={16}
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M9 21C10.1046 21 11 20.1046 11 19C11 17.8954 10.1046 17 9 17C7.89543 17 7 17.8954 7 19C7 20.1046 7.89543 21 9 21Z"
+                          fill="transparent"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                        />
+                        <path
+                          d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z"
+                          fill="transparent"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                        />
+                        <path
+                          d="M3 3H5L7 15C7.21572 15.6135 7.62494 16.1402 8.16602 16.501C8.7071 16.8617 9.35075 17.0368 10 17H17C17.6493 17.0368 18.2929 16.8617 18.834 16.501C19.3751 16.1402 19.7843 15.6135 20 15L21 8L10 8"
+                          fill="transparent"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                        />
+                      </svg>
+                    </span>
+                    <span
+                      className="fa-align-middle fa-ml-2"
+                    >
+                      Agregar
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </a>
+        </a>
+      </div>
       <div
-        className="button"
+        className="fa-hidden lg:fa-block"
       >
-        <button
-          className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
-          disabled={false}
+        <a
+          href="/product/ab-broncol-nf-1200mg5ml-solucin-inyectable-intramuscular/218/"
           onClick={[Function]}
-          style={Object {}}
-          type="button"
         >
-          <span
-            className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
+          <div
+            className="c5"
           >
-            <svg
-              className=" "
-              color="currentColor"
-              fill="currentColor"
-              height={16}
-              viewBox="0 0 24 24"
-              width={16}
-              xmlns="http://www.w3.org/2000/svg"
+            <div
+              className="fa-flex fa-justify-start"
+            />
+            <div
+              className="img"
+              onClick={[Function]}
             >
-              <path
-                d="M9 21C10.1046 21 11 20.1046 11 19C11 17.8954 10.1046 17 9 17C7.89543 17 7 17.8954 7 19C7 20.1046 7.89543 21 9 21Z"
-                fill="transparent"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-              />
-              <path
-                d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z"
-                fill="transparent"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-              />
-              <path
-                d="M3 3H5L7 15C7.21572 15.6135 7.62494 16.1402 8.16602 16.501C8.7071 16.8617 9.35075 17.0368 10 17H17C17.6493 17.0368 18.2929 16.8617 18.834 16.501C19.3751 16.1402 19.7843 15.6135 20 15L21 8L10 8"
-                fill="transparent"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-              />
-            </svg>
-          </span>
-          <span
-            className="fa-align-middle fa-ml-2"
+              <div
+                className=""
+              >
+                <img
+                  alt=""
+                  src={[Function]}
+                />
+              </div>
+            </div>
+            <div
+              className="price"
+            >
+              <p
+                className="c4"
+              >
+                <span>
+                  
+                </span>
+              </p>
+            </div>
+            <div
+              className="description"
+            >
+              <h4
+                className=""
+              >
+                Ab Broncol NF 1200Mg/5ML Solución Inyectable Intramuscular
+              </h4>
+            </div>
+          </div>
+        </a>
+        <div
+          className="button"
+        >
+          <button
+            className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
+            disabled={false}
+            onClick={[Function]}
+            style={Object {}}
+            type="button"
           >
-            Agregar
-          </span>
-        </button>
+            <span
+              className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
+            >
+              <svg
+                className=" "
+                color="currentColor"
+                fill="currentColor"
+                height={16}
+                viewBox="0 0 24 24"
+                width={16}
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9 21C10.1046 21 11 20.1046 11 19C11 17.8954 10.1046 17 9 17C7.89543 17 7 17.8954 7 19C7 20.1046 7.89543 21 9 21Z"
+                  fill="transparent"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                />
+                <path
+                  d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z"
+                  fill="transparent"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                />
+                <path
+                  d="M3 3H5L7 15C7.21572 15.6135 7.62494 16.1402 8.16602 16.501C8.7071 16.8617 9.35075 17.0368 10 17H17C17.6493 17.0368 18.2929 16.8617 18.834 16.501C19.3751 16.1402 19.7843 15.6135 20 15L21 8L10 8"
+                  fill="transparent"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                />
+              </svg>
+            </span>
+            <span
+              className="fa-align-middle fa-ml-2"
+            >
+              Agregar
+            </span>
+          </button>
+        </div>
       </div>
     </div>
     <div
-      className="c2"
+      className="fa-border-b fa-border-solid fa-border-neutral-medium lg:fa-border-0 c2"
       data-cy="product-tile"
     >
-      <a
-        href="/product/antalgina-500mg-tabletas/206/"
-        onClick={[Function]}
+      <div
+        className="fa-w-full fa-block lg:fa-hidden"
       >
-        <div
+        <a
           className="c3"
+          href="/product/antalgina-500mg-tabletas/206/"
+          onClick={[Function]}
         >
           <div
-            className="fa-flex fa-justify-start"
-          />
-          <div
-            className="img"
-            onClick={[Function]}
+            className="fa-flex fa-flex-col fa-items-center"
           >
             <div
-              className=""
+              className="img fa-rounded-lg fa-bg-white fa-overflow-hidden"
+              onClick={[Function]}
             >
-              <img
-                alt=""
-                src={[Function]}
+              <div
+                className=""
+              >
+                <img
+                  alt=""
+                  src={[Function]}
+                />
+              </div>
+            </div>
+            <div
+              className="fa-mt-2"
+            >
+              <div
+                className="fa-flex fa-justify-start"
               />
             </div>
           </div>
           <div
-            className="price"
+            className="fa-px-4 fa-pb-4"
           >
-            <p
-              className=""
+            <div
+              className="description"
             >
-              <span>
-                
-              </span>
-            </p>
-          </div>
-          <div
-            className="description"
-          >
-            <h4
-              className=""
+              <h4
+                className="fa-text-left "
+              >
+                Antalgina 500Mg Tabletas 
+              </h4>
+            </div>
+            <div
+              className="fa-flex fa-justify-between"
             >
-              Antalgina 500Mg Tabletas 
-            </h4>
+              <div
+                className="price"
+              >
+                <p
+                  className="fa-font-base c4"
+                >
+                  <span>
+                    
+                  </span>
+                </p>
+              </div>
+              <div>
+                <div
+                  className="button"
+                >
+                  <button
+                    className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
+                    disabled={false}
+                    onClick={[Function]}
+                    style={Object {}}
+                    type="button"
+                  >
+                    <span
+                      className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
+                    >
+                      <svg
+                        className=" "
+                        color="currentColor"
+                        fill="currentColor"
+                        height={16}
+                        viewBox="0 0 24 24"
+                        width={16}
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M9 21C10.1046 21 11 20.1046 11 19C11 17.8954 10.1046 17 9 17C7.89543 17 7 17.8954 7 19C7 20.1046 7.89543 21 9 21Z"
+                          fill="transparent"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                        />
+                        <path
+                          d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z"
+                          fill="transparent"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                        />
+                        <path
+                          d="M3 3H5L7 15C7.21572 15.6135 7.62494 16.1402 8.16602 16.501C8.7071 16.8617 9.35075 17.0368 10 17H17C17.6493 17.0368 18.2929 16.8617 18.834 16.501C19.3751 16.1402 19.7843 15.6135 20 15L21 8L10 8"
+                          fill="transparent"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                        />
+                      </svg>
+                    </span>
+                    <span
+                      className="fa-align-middle fa-ml-2"
+                    >
+                      Agregar
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </a>
+        </a>
+      </div>
       <div
-        className="button"
+        className="fa-hidden lg:fa-block"
       >
-        <button
-          className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
-          disabled={false}
+        <a
+          href="/product/antalgina-500mg-tabletas/206/"
           onClick={[Function]}
-          style={Object {}}
-          type="button"
         >
-          <span
-            className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
+          <div
+            className="c5"
           >
-            <svg
-              className=" "
-              color="currentColor"
-              fill="currentColor"
-              height={16}
-              viewBox="0 0 24 24"
-              width={16}
-              xmlns="http://www.w3.org/2000/svg"
+            <div
+              className="fa-flex fa-justify-start"
+            />
+            <div
+              className="img"
+              onClick={[Function]}
             >
-              <path
-                d="M9 21C10.1046 21 11 20.1046 11 19C11 17.8954 10.1046 17 9 17C7.89543 17 7 17.8954 7 19C7 20.1046 7.89543 21 9 21Z"
-                fill="transparent"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-              />
-              <path
-                d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z"
-                fill="transparent"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-              />
-              <path
-                d="M3 3H5L7 15C7.21572 15.6135 7.62494 16.1402 8.16602 16.501C8.7071 16.8617 9.35075 17.0368 10 17H17C17.6493 17.0368 18.2929 16.8617 18.834 16.501C19.3751 16.1402 19.7843 15.6135 20 15L21 8L10 8"
-                fill="transparent"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-              />
-            </svg>
-          </span>
-          <span
-            className="fa-align-middle fa-ml-2"
+              <div
+                className=""
+              >
+                <img
+                  alt=""
+                  src={[Function]}
+                />
+              </div>
+            </div>
+            <div
+              className="price"
+            >
+              <p
+                className="c4"
+              >
+                <span>
+                  
+                </span>
+              </p>
+            </div>
+            <div
+              className="description"
+            >
+              <h4
+                className=""
+              >
+                Antalgina 500Mg Tabletas 
+              </h4>
+            </div>
+          </div>
+        </a>
+        <div
+          className="button"
+        >
+          <button
+            className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
+            disabled={false}
+            onClick={[Function]}
+            style={Object {}}
+            type="button"
           >
-            Agregar
-          </span>
-        </button>
+            <span
+              className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
+            >
+              <svg
+                className=" "
+                color="currentColor"
+                fill="currentColor"
+                height={16}
+                viewBox="0 0 24 24"
+                width={16}
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9 21C10.1046 21 11 20.1046 11 19C11 17.8954 10.1046 17 9 17C7.89543 17 7 17.8954 7 19C7 20.1046 7.89543 21 9 21Z"
+                  fill="transparent"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                />
+                <path
+                  d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z"
+                  fill="transparent"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                />
+                <path
+                  d="M3 3H5L7 15C7.21572 15.6135 7.62494 16.1402 8.16602 16.501C8.7071 16.8617 9.35075 17.0368 10 17H17C17.6493 17.0368 18.2929 16.8617 18.834 16.501C19.3751 16.1402 19.7843 15.6135 20 15L21 8L10 8"
+                  fill="transparent"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                />
+              </svg>
+            </span>
+            <span
+              className="fa-align-middle fa-ml-2"
+            >
+              Agregar
+            </span>
+          </button>
+        </div>
       </div>
     </div>
     <div
-      className="c2"
+      className="fa-border-b fa-border-solid fa-border-neutral-medium lg:fa-border-0 c2"
       data-cy="product-tile"
     >
-      <a
-        href="/product/arcoxia-90mg-tabletas-recubiertas-caja-14-und/214/"
-        onClick={[Function]}
+      <div
+        className="fa-w-full fa-block lg:fa-hidden"
       >
-        <div
+        <a
           className="c3"
+          href="/product/arcoxia-90mg-tabletas-recubiertas-caja-14-und/214/"
+          onClick={[Function]}
         >
           <div
-            className="fa-flex fa-justify-start"
-          />
-          <div
-            className="img"
-            onClick={[Function]}
+            className="fa-flex fa-flex-col fa-items-center"
           >
             <div
-              className=""
+              className="img fa-rounded-lg fa-bg-white fa-overflow-hidden"
+              onClick={[Function]}
             >
-              <img
-                alt=""
-                src={[Function]}
+              <div
+                className=""
+              >
+                <img
+                  alt=""
+                  src={[Function]}
+                />
+              </div>
+            </div>
+            <div
+              className="fa-mt-2"
+            >
+              <div
+                className="fa-flex fa-justify-start"
               />
             </div>
           </div>
           <div
-            className="price"
+            className="fa-px-4 fa-pb-4"
           >
-            <p
-              className=""
+            <div
+              className="description"
             >
-              <span>
-                
-              </span>
-            </p>
-          </div>
-          <div
-            className="description"
-          >
-            <h4
-              className=""
+              <h4
+                className="fa-text-left "
+              >
+                Arcoxia 90Mg Tabletas Recubiertas - Caja 14 Und
+              </h4>
+            </div>
+            <div
+              className="fa-flex fa-justify-between"
             >
-              Arcoxia 90Mg Tabletas Recubiertas - Caja 14 Und
-            </h4>
+              <div
+                className="price"
+              >
+                <p
+                  className="fa-font-base c4"
+                >
+                  <span>
+                    
+                  </span>
+                </p>
+              </div>
+              <div>
+                <div
+                  className="button"
+                >
+                  <button
+                    className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
+                    disabled={false}
+                    onClick={[Function]}
+                    style={Object {}}
+                    type="button"
+                  >
+                    <span
+                      className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
+                    >
+                      <svg
+                        className=" "
+                        color="currentColor"
+                        fill="currentColor"
+                        height={16}
+                        viewBox="0 0 24 24"
+                        width={16}
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M9 21C10.1046 21 11 20.1046 11 19C11 17.8954 10.1046 17 9 17C7.89543 17 7 17.8954 7 19C7 20.1046 7.89543 21 9 21Z"
+                          fill="transparent"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                        />
+                        <path
+                          d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z"
+                          fill="transparent"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                        />
+                        <path
+                          d="M3 3H5L7 15C7.21572 15.6135 7.62494 16.1402 8.16602 16.501C8.7071 16.8617 9.35075 17.0368 10 17H17C17.6493 17.0368 18.2929 16.8617 18.834 16.501C19.3751 16.1402 19.7843 15.6135 20 15L21 8L10 8"
+                          fill="transparent"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                        />
+                      </svg>
+                    </span>
+                    <span
+                      className="fa-align-middle fa-ml-2"
+                    >
+                      Agregar
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </a>
+        </a>
+      </div>
       <div
-        className="button"
+        className="fa-hidden lg:fa-block"
       >
-        <button
-          className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
-          disabled={false}
+        <a
+          href="/product/arcoxia-90mg-tabletas-recubiertas-caja-14-und/214/"
           onClick={[Function]}
-          style={Object {}}
-          type="button"
         >
-          <span
-            className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
+          <div
+            className="c5"
           >
-            <svg
-              className=" "
-              color="currentColor"
-              fill="currentColor"
-              height={16}
-              viewBox="0 0 24 24"
-              width={16}
-              xmlns="http://www.w3.org/2000/svg"
+            <div
+              className="fa-flex fa-justify-start"
+            />
+            <div
+              className="img"
+              onClick={[Function]}
             >
-              <path
-                d="M9 21C10.1046 21 11 20.1046 11 19C11 17.8954 10.1046 17 9 17C7.89543 17 7 17.8954 7 19C7 20.1046 7.89543 21 9 21Z"
-                fill="transparent"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-              />
-              <path
-                d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z"
-                fill="transparent"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-              />
-              <path
-                d="M3 3H5L7 15C7.21572 15.6135 7.62494 16.1402 8.16602 16.501C8.7071 16.8617 9.35075 17.0368 10 17H17C17.6493 17.0368 18.2929 16.8617 18.834 16.501C19.3751 16.1402 19.7843 15.6135 20 15L21 8L10 8"
-                fill="transparent"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-              />
-            </svg>
-          </span>
-          <span
-            className="fa-align-middle fa-ml-2"
+              <div
+                className=""
+              >
+                <img
+                  alt=""
+                  src={[Function]}
+                />
+              </div>
+            </div>
+            <div
+              className="price"
+            >
+              <p
+                className="c4"
+              >
+                <span>
+                  
+                </span>
+              </p>
+            </div>
+            <div
+              className="description"
+            >
+              <h4
+                className=""
+              >
+                Arcoxia 90Mg Tabletas Recubiertas - Caja 14 Und
+              </h4>
+            </div>
+          </div>
+        </a>
+        <div
+          className="button"
+        >
+          <button
+            className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
+            disabled={false}
+            onClick={[Function]}
+            style={Object {}}
+            type="button"
           >
-            Agregar
-          </span>
-        </button>
+            <span
+              className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
+            >
+              <svg
+                className=" "
+                color="currentColor"
+                fill="currentColor"
+                height={16}
+                viewBox="0 0 24 24"
+                width={16}
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9 21C10.1046 21 11 20.1046 11 19C11 17.8954 10.1046 17 9 17C7.89543 17 7 17.8954 7 19C7 20.1046 7.89543 21 9 21Z"
+                  fill="transparent"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                />
+                <path
+                  d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z"
+                  fill="transparent"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                />
+                <path
+                  d="M3 3H5L7 15C7.21572 15.6135 7.62494 16.1402 8.16602 16.501C8.7071 16.8617 9.35075 17.0368 10 17H17C17.6493 17.0368 18.2929 16.8617 18.834 16.501C19.3751 16.1402 19.7843 15.6135 20 15L21 8L10 8"
+                  fill="transparent"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                />
+              </svg>
+            </span>
+            <span
+              className="fa-align-middle fa-ml-2"
+            >
+              Agregar
+            </span>
+          </button>
+        </div>
       </div>
     </div>
     <div
-      className="c2"
+      className="fa-border-b fa-border-solid fa-border-neutral-medium lg:fa-border-0 c2"
       data-cy="product-tile"
     >
-      <a
-        href="/product/bepanthen-ungento-tubo-30-gr/238/"
-        onClick={[Function]}
+      <div
+        className="fa-w-full fa-block lg:fa-hidden"
       >
-        <div
+        <a
           className="c3"
+          href="/product/bepanthen-ungento-tubo-30-gr/238/"
+          onClick={[Function]}
         >
           <div
-            className="fa-flex fa-justify-start"
-          />
-          <div
-            className="img"
-            onClick={[Function]}
+            className="fa-flex fa-flex-col fa-items-center"
           >
             <div
-              className=""
+              className="img fa-rounded-lg fa-bg-white fa-overflow-hidden"
+              onClick={[Function]}
             >
-              <img
-                alt=""
-                src={[Function]}
+              <div
+                className=""
+              >
+                <img
+                  alt=""
+                  src={[Function]}
+                />
+              </div>
+            </div>
+            <div
+              className="fa-mt-2"
+            >
+              <div
+                className="fa-flex fa-justify-start"
               />
             </div>
           </div>
           <div
-            className="price"
+            className="fa-px-4 fa-pb-4"
           >
-            <p
-              className=""
+            <div
+              className="description"
             >
-              <span>
-                
-              </span>
-            </p>
-          </div>
-          <div
-            className="description"
-          >
-            <h4
-              className=""
+              <h4
+                className="fa-text-left "
+              >
+                Bepanthen Ungüento - Tubo 30 Gr
+              </h4>
+            </div>
+            <div
+              className="fa-flex fa-justify-between"
             >
-              Bepanthen Ungüento - Tubo 30 Gr
-            </h4>
+              <div
+                className="price"
+              >
+                <p
+                  className="fa-font-base c4"
+                >
+                  <span>
+                    
+                  </span>
+                </p>
+              </div>
+              <div>
+                <div
+                  className="button"
+                >
+                  <button
+                    className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
+                    disabled={false}
+                    onClick={[Function]}
+                    style={Object {}}
+                    type="button"
+                  >
+                    <span
+                      className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
+                    >
+                      <svg
+                        className=" "
+                        color="currentColor"
+                        fill="currentColor"
+                        height={16}
+                        viewBox="0 0 24 24"
+                        width={16}
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M9 21C10.1046 21 11 20.1046 11 19C11 17.8954 10.1046 17 9 17C7.89543 17 7 17.8954 7 19C7 20.1046 7.89543 21 9 21Z"
+                          fill="transparent"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                        />
+                        <path
+                          d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z"
+                          fill="transparent"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                        />
+                        <path
+                          d="M3 3H5L7 15C7.21572 15.6135 7.62494 16.1402 8.16602 16.501C8.7071 16.8617 9.35075 17.0368 10 17H17C17.6493 17.0368 18.2929 16.8617 18.834 16.501C19.3751 16.1402 19.7843 15.6135 20 15L21 8L10 8"
+                          fill="transparent"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                        />
+                      </svg>
+                    </span>
+                    <span
+                      className="fa-align-middle fa-ml-2"
+                    >
+                      Agregar
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </a>
+        </a>
+      </div>
       <div
-        className="button"
+        className="fa-hidden lg:fa-block"
       >
-        <button
-          className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
-          disabled={false}
+        <a
+          href="/product/bepanthen-ungento-tubo-30-gr/238/"
           onClick={[Function]}
-          style={Object {}}
-          type="button"
         >
-          <span
-            className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
+          <div
+            className="c5"
           >
-            <svg
-              className=" "
-              color="currentColor"
-              fill="currentColor"
-              height={16}
-              viewBox="0 0 24 24"
-              width={16}
-              xmlns="http://www.w3.org/2000/svg"
+            <div
+              className="fa-flex fa-justify-start"
+            />
+            <div
+              className="img"
+              onClick={[Function]}
             >
-              <path
-                d="M9 21C10.1046 21 11 20.1046 11 19C11 17.8954 10.1046 17 9 17C7.89543 17 7 17.8954 7 19C7 20.1046 7.89543 21 9 21Z"
-                fill="transparent"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-              />
-              <path
-                d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z"
-                fill="transparent"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-              />
-              <path
-                d="M3 3H5L7 15C7.21572 15.6135 7.62494 16.1402 8.16602 16.501C8.7071 16.8617 9.35075 17.0368 10 17H17C17.6493 17.0368 18.2929 16.8617 18.834 16.501C19.3751 16.1402 19.7843 15.6135 20 15L21 8L10 8"
-                fill="transparent"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-              />
-            </svg>
-          </span>
-          <span
-            className="fa-align-middle fa-ml-2"
+              <div
+                className=""
+              >
+                <img
+                  alt=""
+                  src={[Function]}
+                />
+              </div>
+            </div>
+            <div
+              className="price"
+            >
+              <p
+                className="c4"
+              >
+                <span>
+                  
+                </span>
+              </p>
+            </div>
+            <div
+              className="description"
+            >
+              <h4
+                className=""
+              >
+                Bepanthen Ungüento - Tubo 30 Gr
+              </h4>
+            </div>
+          </div>
+        </a>
+        <div
+          className="button"
+        >
+          <button
+            className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
+            disabled={false}
+            onClick={[Function]}
+            style={Object {}}
+            type="button"
           >
-            Agregar
-          </span>
-        </button>
+            <span
+              className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
+            >
+              <svg
+                className=" "
+                color="currentColor"
+                fill="currentColor"
+                height={16}
+                viewBox="0 0 24 24"
+                width={16}
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9 21C10.1046 21 11 20.1046 11 19C11 17.8954 10.1046 17 9 17C7.89543 17 7 17.8954 7 19C7 20.1046 7.89543 21 9 21Z"
+                  fill="transparent"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                />
+                <path
+                  d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z"
+                  fill="transparent"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                />
+                <path
+                  d="M3 3H5L7 15C7.21572 15.6135 7.62494 16.1402 8.16602 16.501C8.7071 16.8617 9.35075 17.0368 10 17H17C17.6493 17.0368 18.2929 16.8617 18.834 16.501C19.3751 16.1402 19.7843 15.6135 20 15L21 8L10 8"
+                  fill="transparent"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                />
+              </svg>
+            </span>
+            <span
+              className="fa-align-middle fa-ml-2"
+            >
+              Agregar
+            </span>
+          </button>
+        </div>
       </div>
     </div>
     <div
-      className="c2"
+      className="fa-border-b fa-border-solid fa-border-neutral-medium lg:fa-border-0 c2"
       data-cy="product-tile"
     >
-      <a
-        href="/product/buscapina-compositum-n-500mg-10mg-grageas/211/"
-        onClick={[Function]}
+      <div
+        className="fa-w-full fa-block lg:fa-hidden"
       >
-        <div
+        <a
           className="c3"
+          href="/product/buscapina-compositum-n-500mg-10mg-grageas/211/"
+          onClick={[Function]}
         >
           <div
-            className="fa-flex fa-justify-start"
-          />
-          <div
-            className="img"
-            onClick={[Function]}
+            className="fa-flex fa-flex-col fa-items-center"
           >
             <div
-              className=""
+              className="img fa-rounded-lg fa-bg-white fa-overflow-hidden"
+              onClick={[Function]}
             >
-              <img
-                alt=""
-                src={[Function]}
+              <div
+                className=""
+              >
+                <img
+                  alt=""
+                  src={[Function]}
+                />
+              </div>
+            </div>
+            <div
+              className="fa-mt-2"
+            >
+              <div
+                className="fa-flex fa-justify-start"
               />
             </div>
           </div>
           <div
-            className="price"
+            className="fa-px-4 fa-pb-4"
           >
-            <p
-              className=""
+            <div
+              className="description"
             >
-              <span>
-                
-              </span>
-            </p>
-          </div>
-          <div
-            className="description"
-          >
-            <h4
-              className=""
+              <h4
+                className="fa-text-left "
+              >
+                Buscapina Compositum N 500Mg-10Mg Grageas 
+              </h4>
+            </div>
+            <div
+              className="fa-flex fa-justify-between"
             >
-              Buscapina Compositum N 500Mg-10Mg Grageas 
-            </h4>
+              <div
+                className="price"
+              >
+                <p
+                  className="fa-font-base c4"
+                >
+                  <span>
+                    
+                  </span>
+                </p>
+              </div>
+              <div>
+                <div
+                  className="button"
+                >
+                  <button
+                    className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
+                    disabled={false}
+                    onClick={[Function]}
+                    style={Object {}}
+                    type="button"
+                  >
+                    <span
+                      className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
+                    >
+                      <svg
+                        className=" "
+                        color="currentColor"
+                        fill="currentColor"
+                        height={16}
+                        viewBox="0 0 24 24"
+                        width={16}
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M9 21C10.1046 21 11 20.1046 11 19C11 17.8954 10.1046 17 9 17C7.89543 17 7 17.8954 7 19C7 20.1046 7.89543 21 9 21Z"
+                          fill="transparent"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                        />
+                        <path
+                          d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z"
+                          fill="transparent"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                        />
+                        <path
+                          d="M3 3H5L7 15C7.21572 15.6135 7.62494 16.1402 8.16602 16.501C8.7071 16.8617 9.35075 17.0368 10 17H17C17.6493 17.0368 18.2929 16.8617 18.834 16.501C19.3751 16.1402 19.7843 15.6135 20 15L21 8L10 8"
+                          fill="transparent"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                        />
+                      </svg>
+                    </span>
+                    <span
+                      className="fa-align-middle fa-ml-2"
+                    >
+                      Agregar
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </a>
+        </a>
+      </div>
       <div
-        className="button"
+        className="fa-hidden lg:fa-block"
       >
-        <button
-          className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
-          disabled={false}
+        <a
+          href="/product/buscapina-compositum-n-500mg-10mg-grageas/211/"
           onClick={[Function]}
-          style={Object {}}
-          type="button"
         >
-          <span
-            className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
+          <div
+            className="c5"
           >
-            <svg
-              className=" "
-              color="currentColor"
-              fill="currentColor"
-              height={16}
-              viewBox="0 0 24 24"
-              width={16}
-              xmlns="http://www.w3.org/2000/svg"
+            <div
+              className="fa-flex fa-justify-start"
+            />
+            <div
+              className="img"
+              onClick={[Function]}
             >
-              <path
-                d="M9 21C10.1046 21 11 20.1046 11 19C11 17.8954 10.1046 17 9 17C7.89543 17 7 17.8954 7 19C7 20.1046 7.89543 21 9 21Z"
-                fill="transparent"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-              />
-              <path
-                d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z"
-                fill="transparent"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-              />
-              <path
-                d="M3 3H5L7 15C7.21572 15.6135 7.62494 16.1402 8.16602 16.501C8.7071 16.8617 9.35075 17.0368 10 17H17C17.6493 17.0368 18.2929 16.8617 18.834 16.501C19.3751 16.1402 19.7843 15.6135 20 15L21 8L10 8"
-                fill="transparent"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-              />
-            </svg>
-          </span>
-          <span
-            className="fa-align-middle fa-ml-2"
+              <div
+                className=""
+              >
+                <img
+                  alt=""
+                  src={[Function]}
+                />
+              </div>
+            </div>
+            <div
+              className="price"
+            >
+              <p
+                className="c4"
+              >
+                <span>
+                  
+                </span>
+              </p>
+            </div>
+            <div
+              className="description"
+            >
+              <h4
+                className=""
+              >
+                Buscapina Compositum N 500Mg-10Mg Grageas 
+              </h4>
+            </div>
+          </div>
+        </a>
+        <div
+          className="button"
+        >
+          <button
+            className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
+            disabled={false}
+            onClick={[Function]}
+            style={Object {}}
+            type="button"
           >
-            Agregar
-          </span>
-        </button>
+            <span
+              className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
+            >
+              <svg
+                className=" "
+                color="currentColor"
+                fill="currentColor"
+                height={16}
+                viewBox="0 0 24 24"
+                width={16}
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9 21C10.1046 21 11 20.1046 11 19C11 17.8954 10.1046 17 9 17C7.89543 17 7 17.8954 7 19C7 20.1046 7.89543 21 9 21Z"
+                  fill="transparent"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                />
+                <path
+                  d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z"
+                  fill="transparent"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                />
+                <path
+                  d="M3 3H5L7 15C7.21572 15.6135 7.62494 16.1402 8.16602 16.501C8.7071 16.8617 9.35075 17.0368 10 17H17C17.6493 17.0368 18.2929 16.8617 18.834 16.501C19.3751 16.1402 19.7843 15.6135 20 15L21 8L10 8"
+                  fill="transparent"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                />
+              </svg>
+            </span>
+            <span
+              className="fa-align-middle fa-ml-2"
+            >
+              Agregar
+            </span>
+          </button>
+        </div>
       </div>
     </div>
   </div>
   <div
-    className="c4"
+    className="c6"
   >
     <button
       className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-transparent fa-text-primary-dark fa-border-2 fa-border-primary-medium hover:fa-border-primary-dark focus:fa-border-primary-light fa-h-10 fa-px-3"
@@ -1045,7 +2066,7 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
     </button>
   </div>
   <div
-    className="c5"
+    className="c7"
   />
 </div>
 `;

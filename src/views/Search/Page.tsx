@@ -8,11 +8,8 @@ import { IItems } from "@temp/@sdk/api/Cart/types";
 import * as appPaths from "@temp/app/routes";
 import { convertToSimpleProduct, maybe } from "@temp/core/utils";
 import { IFilterAttributes, IFilters } from "@types";
-import homeIcon from "images/home.svg";
-import rightArrowIcon from "images/right-arrow.svg";
 import * as React from "react";
 import { Link } from "react-router-dom";
-import ReactSVG from "react-svg";
 import { Pagination } from "@farmacia-retail/farmauna-components";
 import { ProductListHeader } from "../../@next/components/molecules";
 import { ProductListAUNA } from "../../@next/components/organisms";
@@ -132,11 +129,6 @@ const Page: React.FC<PageProps> = ({
                 onChange={onOrder}
                 onCloseFilterAttribute={onAttributeFiltersChange}
               />
-            </div>
-            <div className="page_breadcrumb">
-              <ReactSVG path={homeIcon} />
-              <ReactSVG className="arrow_icon" path={rightArrowIcon} />
-              <span>Resultado de búsqueda</span>
             </div>
           </div>
         ) : (

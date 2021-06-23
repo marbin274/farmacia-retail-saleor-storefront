@@ -28,6 +28,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
     thumbnail: { url: "" },
     thumbnail2x: { url: "" },
   });
+  const refActions = React.useRef({} as any);
 
   const { canAddToCart } = checkProductCanAddToCart(product, productsOnCart);
   const { isOnSale, isOutStock } = productStickerRules(product);
@@ -40,49 +41,102 @@ export const ProductTileAUNA: React.FC<IProps> = ({
   }, [product.thumbnail, product.thumbnail2x]);
 
   return (
-    <S.ProductCard data-cy="product-tile" canAddToCart={canAddToCart}>
-      <Link to={productLink} key={product.id}>
-        <S.WrapperStockout>
-          <ProductSticker isOnSale={isOnSale} isOutStock={isOutStock} />
-          <div
-            className="img"
-            onClick={() =>
-              launchDetailProductEvent(
-                product?.name,
-                product?.variant?.sku as string,
-                product?.variant?.pricing?.price?.gross?.amount as number
-              )
+    <S.ProductCard  className='fa-border-b fa-border-solid fa-border-neutral-medium lg:fa-border-0' data-cy="product-tile" canAddToCart={canAddToCart}>
+      <div className='fa-w-full fa-block lg:fa-hidden'>
+        <S.LinkContainer 
+          to={productLink} 
+          key={product.id} 
+          onClick={(e)=> {
+            if (refActions?.current?.contains(e.target)) {
+              e.preventDefault();
             }
-          >
-            <S.Image>
-              <Thumbnail height={510} width={510} source={thumbnails} />
-            </S.Image>
-          </div>
-
-          <div className={getProductPricingClass(canAddToCart, isOnSale)}>
-            <S.Price>
-              <TaxedMoney taxedMoney={product?.pricing?.priceRange?.start} />
-            </S.Price>
-          </div>
-          {isOnSale && (
-            <div className="price undiscounted_price">
-              <TaxedMoney
-                taxedMoney={product?.pricing?.priceRangeUndiscounted?.start}
-              />
+          }}>
+          <div className='fa-flex fa-flex-col fa-items-center'>
+            <div
+              className="img fa-rounded-lg fa-bg-white fa-overflow-hidden"
+              onClick={() =>
+                launchDetailProductEvent(
+                  product?.name,
+                  product?.variant?.sku as string,
+                  product?.variant?.pricing?.price?.gross?.amount as number
+                )
+              }
+            >
+              <S.Image>
+                <Thumbnail height={510} width={510} source={thumbnails} />
+              </S.Image>
             </div>
-          )}
-          <div className="description">
-            <S.Title>{product.name}</S.Title>
+            <div className='fa-mt-2'>
+              <ProductSticker isOnSale={isOnSale} isOutStock={isOutStock} />
+            </div>
           </div>
-        </S.WrapperStockout>
-      </Link>
-      <ItemsHandler
-        canAddToCart={canAddToCart}
-        product={product}
-        addToCart={addToCart}
-        removeItemToCart={removeItemToCart}
-        subtractItemToCart={subtractItemToCart}
-      />
+          <div className='fa-px-4 fa-pb-4'>
+            <div className="description">
+              <S.Title className='fa-text-left'>{product.name}</S.Title>
+            </div>
+            <div className='fa-flex fa-justify-between'>
+              <div className={getProductPricingClass(canAddToCart, isOnSale)}>
+                <S.Price className='fa-font-base'>
+                  <TaxedMoney taxedMoney={product?.pricing?.priceRange?.start} />
+                </S.Price>
+              </div>
+              <div ref={refActions}>
+                <ItemsHandler
+                  canAddToCart={canAddToCart}
+                  product={product}
+                  addToCart={addToCart}
+                  removeItemToCart={removeItemToCart}
+                  subtractItemToCart={subtractItemToCart}
+                />
+              </div>
+            </div>
+          </div>
+        </S.LinkContainer>
+      </div>
+      <div className='fa-hidden lg:fa-block'>
+        <Link to={productLink} key={product.id}>
+          <S.WrapperStockout>
+            <ProductSticker isOnSale={isOnSale} isOutStock={isOutStock} />
+            <div
+              className="img"
+              onClick={() =>
+                launchDetailProductEvent(
+                  product?.name,
+                  product?.variant?.sku as string,
+                  product?.variant?.pricing?.price?.gross?.amount as number
+                )
+              }
+            >
+              <S.Image>
+                <Thumbnail height={510} width={510} source={thumbnails} />
+              </S.Image>
+            </div>
+
+            <div className={getProductPricingClass(canAddToCart, isOnSale)}>
+              <S.Price>
+                <TaxedMoney taxedMoney={product?.pricing?.priceRange?.start} />
+              </S.Price>
+            </div>
+            {isOnSale && (
+              <div className="price undiscounted_price">
+                <TaxedMoney
+                  taxedMoney={product?.pricing?.priceRangeUndiscounted?.start}
+                />
+              </div>
+            )}
+            <div className="description">
+              <S.Title>{product.name}</S.Title>
+            </div>
+          </S.WrapperStockout>
+        </Link>
+        <ItemsHandler
+          canAddToCart={canAddToCart}
+          product={product}
+          addToCart={addToCart}
+          removeItemToCart={removeItemToCart}
+          subtractItemToCart={subtractItemToCart}
+        />
+      </div>
     </S.ProductCard>
   );
 };
