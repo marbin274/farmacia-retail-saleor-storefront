@@ -208,6 +208,7 @@ export interface VariantList_productVariants_edges_node {
    * The ID of the object.
    */
   id: string;
+  gtin: string | null;
   sku: string;
   name: string;
   /**

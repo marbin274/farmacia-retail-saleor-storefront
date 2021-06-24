@@ -23,7 +23,7 @@ export const Title = styled.div`
   padding-top: 0.5rem;
   text-align: center;
   width: 100%;
-  font-weight: ${props => props.theme.typography.boldFontWeight};
+  font-weight: ${(props) => props.theme.typography.boldFontWeight};
 `;
 
 export const CurrentDistrict = styled.div`
@@ -42,7 +42,7 @@ export const ProductsWrapper = styled.div<{ allOutOfStock: boolean }>`
   border-radius: 1.5rem;
   padding: 1.5rem;
   margin-bottom: 1rem;
-  max-height: ${props => (props.allOutOfStock ? 21.25 : 16)}rem;
+  max-height: ${(props) => (props.allOutOfStock ? 21.25 : 16)}rem;
   overflow: hidden;
   overflow-y: scroll;
 `;
@@ -98,12 +98,21 @@ export const ProductName = styled.div`
   color: ${farmatheme.theme.colors.neutral.darkest};
 `;
 
-export const ProductNumerics = styled.div`
+export const ProductNumerics = styled.div<{
+  hasQuantityAvailable: boolean;
+  isOnSale: boolean;
+}>`
   display: flex;
   justify-content: space-between;
-  font-weight: ${props => props.theme.typography.boldFontWeight};
+  font-weight: ${(props) => props.theme.typography.boldFontWeight};
   font-size: 0.875rem;
-  color: ${farmatheme.theme.colors.primary.medium};
+  color: ${farmatheme.theme.colors.neutral.darkest};
+
+  ${(props) =>
+    props.isOnSale && `color: ${farmatheme.theme.colors.highlight.medium}`}
+  ${(props) =>
+    !props.hasQuantityAvailable &&
+    `color: ${farmatheme.theme.colors.neutral.dark}`}
 `;
 
 export const Quantity = styled.span`
@@ -111,7 +120,7 @@ export const Quantity = styled.span`
 `;
 
 export const NoStock = styled.span`
-  background-color: ${props => props.theme.colors.aunaBrand5};
+  background-color: ${(props) => props.theme.colors.aunaBrand5};
   color: white;
   font-size: 0.75rem;
   padding: 0.25rem 1rem;

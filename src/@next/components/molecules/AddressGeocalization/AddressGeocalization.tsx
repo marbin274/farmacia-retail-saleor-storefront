@@ -39,7 +39,7 @@ export const AddressGeocalization: React.FC<IProps> = React.memo(({ mode }) => {
             </S.Address>
           </S.District>
         </S.Localization>
-        <S.Button>
+        <S.Button className="button-border-change">
           <Button
             color="secondary"
             variant="outline"

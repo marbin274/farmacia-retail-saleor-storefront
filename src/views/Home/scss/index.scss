@@ -16,6 +16,38 @@
       z-index: 3;
     }
   }
+  &__products {
+    .home-page_product {
+      height: 26.5rem;
+      border-width: 0;
+      padding: 2rem;
+      .description {
+        height: 5rem;
+      }
+      &-sticker {
+        margin-top: 0;
+        align-self: flex-start;
+      }
+      &-image {
+        flex-direction: column-reverse;
+      }
+      &-price {
+        display: block;
+        span:before {
+          content: '';
+        }
+      }
+      &-title {
+        text-align: center;
+      }
+      &-button {
+        justify-content: center;
+      }
+    }
+    .search-page_product-price {
+      display: none;
+    }
+  }
   .home-view {
     .container {
       margin-top: 0;
@@ -115,7 +147,7 @@
   }
 
   &__products {
-    margin: 2rem 0 4rem 0;
+    padding: 2rem 0 4rem 0;
 
     &-title {
       color: #323e48;
@@ -123,6 +155,7 @@
       padding: 1rem 1rem 3rem 1rem;
       font-weight: 600;
       line-height: normal;
+      max-width: 63rem;
 
       @media (max-width: $medium-screen) {
         padding: 1rem 1rem 1.875rem 1rem;
@@ -167,6 +200,9 @@
       .slider-control-centerright {
         top: -17% !important;
         right: 29px !important;
+        height: 3.125rem;
+        display: flex;
+        align-items: center;
         @media (max-width: $medium-screen) {
           top: auto !important;
           bottom: -20px !important;
@@ -175,7 +211,13 @@
 
       .slider-control-centerleft {
         left: auto !important;
-        right: 90px !important;
+        right: 7.625rem !important;
+        
+        @media (max-width: $medium-screen) {
+          left: auto !important;
+          right: calc(50% + 3.125rem)!important;
+          transform: translate(50%, -50%)!important;
+        }
         @media (max-width: $small-screen) {
           left: 30% !important;
           right: auto !important;
@@ -184,10 +226,11 @@
 
       .slider-control-centerright {
         left: auto !important;
-        right: 0 !important;
+        right: 3rem !important;
         @media (max-width: $medium-screen) {
           left: auto !important;
-          right: 30% !important;
+          right: calc(50% - 3.125rem)!important;
+          transform: translate(50%, -50%)!important;
         }
       }
     }
@@ -268,15 +311,19 @@
   }
 }
 .banner-container {
-  width: 100vw;
+  aspect-ratio: 360 / 460;
   text-align: center;
   position: relative;
+  @media (min-width: $small-screen) {
+    aspect-ratio: 1920 / 500;
+  }
   .banner-image {
     width: 100%;
     margin: 0 auto;
+    &.loading{
+      display:none !important;
+    }
     &.desktop {
-      max-width: $banner-desktop-max-width;
-      max-height: $banner-desktop-max-height-new;
       @media (max-width: $small-screen) {
         display: none;
       }
