@@ -1,19 +1,33 @@
 import { DefaultTheme, styled, defaultTheme } from "@styles";
 import { css } from "styled-components";
-import farmatheme from "@farmatheme"
+import farmatheme from "@farmatheme";
 import { RadioColor } from "./types";
 
-const getColor = (color: RadioColor) => {
-  if(color === "purple") {
+const getCheckedColor = (color: RadioColor, hasError?: boolean) => {
+  if (hasError) {
+    return farmatheme.theme.colors.error.medium;
+  }
+
+  if (color === "purple") {
     return farmatheme.theme.colors.interactive;
   }
+
   return defaultTheme.input.borderColorActive;
-}
+};
+
+const getColor = (hasError?: boolean) => {
+  if (hasError) {
+    return farmatheme.theme.colors.error.medium;
+  }
+
+  return defaultTheme.input.labelColor;
+};
 
 type IBaseProps = {
   checked: boolean;
   selectedColor: RadioColor;
-}
+  hasError?: boolean;
+};
 
 const inputStyle = css<IBaseProps & { theme: DefaultTheme }>`
   ${props => props.checked && `color: #21125E;`}
@@ -34,20 +48,21 @@ const inputStyle = css<IBaseProps & { theme: DefaultTheme }>`
     border: 0.1em solid
       ${props =>
         props.checked
-          ? props => getColor(props.selectedColor)
-          : props.theme.input.labelColor};
+          ? props => getCheckedColor(props.selectedColor, props.hasError)
+          : getColor(props.hasError)};
     border-radius: 0.5em;
     background: ${props => props.theme.colors.white};
   }
 `;
 
 export const Span = styled.span<IBaseProps>`
-  display: ${({checked})=> checked ? "block": "none"};
+  display: ${({ checked }) => (checked ? "block" : "none")};
   width: 0.5em;
   height: 0.5em;
   margin: 0 auto;
   border-radius: 0.25em;
-  background: ${({ selectedColor }) => getColor(selectedColor)};
+  background: ${({ hasError, selectedColor }) =>
+    getCheckedColor(selectedColor, hasError)};
 `;
 
 export const Input = styled.div<IBaseProps>`

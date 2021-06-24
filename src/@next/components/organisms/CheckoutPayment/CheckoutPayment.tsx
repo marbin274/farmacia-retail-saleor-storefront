@@ -11,6 +11,7 @@ import { IProps } from "./types";
 const CheckoutPayment: React.FC<IProps> = ({
   cartLinesUpdated,
   gatewayErrors,
+  gatewayListError,
   promoCodeErrors,
   checkoutBillingAddress,
   paymentGateways,
@@ -30,6 +31,7 @@ const CheckoutPayment: React.FC<IProps> = ({
   changeRequestPayload,
   requestPayload,
   selectedDistrict,
+  setGatewayListError,
   totalPrice,
   userDataForNiubiz,
 }: IProps) => {
@@ -114,6 +116,8 @@ const CheckoutPayment: React.FC<IProps> = ({
         userDataForNiubiz={userDataForNiubiz}
         voucherCode={promoCodeDiscount?.voucherCode}
         selectedDistrict={selectedDistrict}
+        gatewayListError={gatewayListError}
+        setGatewayListError={setGatewayListError}
       />
     </S.Wrapper>
   );

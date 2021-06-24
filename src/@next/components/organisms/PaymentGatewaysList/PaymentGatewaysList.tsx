@@ -17,6 +17,7 @@ const PaymentGatewaysList: React.FC<IProps> = ({
   formId,
   processPayment,
   errors,
+  gatewayListError,
   onError,
   changeRequestPayload,
   totalPrice,
@@ -24,6 +25,7 @@ const PaymentGatewaysList: React.FC<IProps> = ({
   voucherCode,
   reRender,
   selectedDistrict,
+  setGatewayListError,
 }: IProps) => {
   // @ts-ignore
   const [token, setToken] = useState("");
@@ -62,6 +64,19 @@ const PaymentGatewaysList: React.FC<IProps> = ({
     return payload.purchase_number;
   };
 
+  const onSelectPaymentMethod = (
+    id: string,
+    shouldGeneratePurchaseNumber: boolean
+  ) => {
+    setGatewayListError(null);
+    if (shouldGeneratePurchaseNumber) {
+      generatePurchaseNumber();
+    }
+    selectPaymentGateway?.(id);
+  };
+
+  const hasListError = !!gatewayListError;
+
   return (
     <S.Wrapper>
       {paymentGateways.map(({ id, config }, index) => {
@@ -74,10 +89,8 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                 key={index}
                 label={PROVIDERS.DUMMY.label}
                 radioProps={{ name: "payment-method", value: "dummy", checked }}
-                onClick={() => {
-                  generatePurchaseNumber();
-                  selectPaymentGateway?.(id);
-                }}
+                onClick={() => onSelectPaymentMethod(id, true)}
+                hasError={hasListError}
               >
                 <DummyPaymentGateway
                   formRef={formRef}
@@ -96,10 +109,8 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                 key={index}
                 label={PROVIDERS.POS.label}
                 radioProps={{ name: "payment-method", value: "pos", checked }}
-                onClick={() => {
-                  generatePurchaseNumber();
-                  selectPaymentGateway?.(id);
-                }}
+                onClick={() => onSelectPaymentMethod(id, true)}
+                hasError={hasListError}
               >
                 <div className="fa-flex fa-items-center">
                   <img
@@ -132,7 +143,8 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                   value: "niubiz",
                   checked,
                 }}
-                onClick={() => selectPaymentGateway?.(id)}
+                onClick={() => onSelectPaymentMethod(id, false)}
+                hasError={hasListError}
               >
                 {reRender && (
                   <NiubizPaymentGateway
@@ -154,6 +166,9 @@ const PaymentGatewaysList: React.FC<IProps> = ({
           }
         }
       })}
+      {hasListError && (
+        <p className="fa-text-error-medium fa-text-sm">{gatewayListError}</p>
+      )}
     </S.Wrapper>
   );
 };

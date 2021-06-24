@@ -6,6 +6,7 @@ import { ITileRadioProps } from "./types";
 export const TileRadio: FC<ITileRadioProps> = ({
   children,
   className,
+  hasError,
   label,
   onClick,
   radioProps: { checked, ...rest },
@@ -15,6 +16,7 @@ export const TileRadio: FC<ITileRadioProps> = ({
       className={classNames(
         "fa-border-solid fa-border fa-bg-white fa-rounded-2xl fa-select-none",
         {
+          "fa-border-error-medium": !!hasError,
           "fa-border-transparent": !checked,
           "fa-border-interactive": !!checked,
         },
@@ -31,7 +33,13 @@ export const TileRadio: FC<ITileRadioProps> = ({
           }
         )}
       >
-        <Radio checked={checked} selectedColor="purple" {...rest} readOnly />
+        <Radio
+          {...rest}
+          checked={checked}
+          selectedColor="purple"
+          hasError={hasError}
+          readOnly
+        />
         <span className="fa-font-semibold fa-text-sm">{label}</span>
       </div>
       {checked && children && <div className="fa-px-4 fa-py-3">{children}</div>}

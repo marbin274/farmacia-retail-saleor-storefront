@@ -54,4 +54,6 @@ export interface IProps {
   voucherCode: string | null | undefined;
   reRender: boolean;
   selectedDistrict: string;
+  gatewayListError?: string;
+  setGatewayListError?: React.Dispatch<React.SetStateAction<string>>;
 }

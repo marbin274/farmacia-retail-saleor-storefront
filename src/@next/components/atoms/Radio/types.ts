@@ -10,4 +10,5 @@ export interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
    */
   customLabel?: boolean;
   selectedColor?: RadioColor;
+  hasError?: boolean;
 }
