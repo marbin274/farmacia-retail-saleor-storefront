@@ -52,7 +52,7 @@ export const ProductTileHorizontalAUNA: React.FC<IProps> = ({
               )
             }
           >
-            <Thumbnail source={thumbnails} />
+            <Thumbnail height={510} width={510} source={thumbnails} />
           </div>
         </S.WrapperImage>
       </Link>

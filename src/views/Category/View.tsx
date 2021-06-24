@@ -23,6 +23,7 @@ import { CategoryVariables } from "./gqlTypes/Category";
 import Media from "react-media";
 import { smallScreen } from "@temp/@next/globalStyles/constants";
 import { useDistrictSelected } from "@temp/@next/hooks/useDistrictSelected";
+import { convertToFilterSideBar, FilterQuerySet } from "@temp/core/utils/filters";
 
 type ViewProps = RouteComponentProps<{
   id: string;
@@ -31,25 +32,6 @@ type ViewProps = RouteComponentProps<{
 
 const DEFAULT_SORT = "-stock";
 
-export const FilterQuerySet = {
-  encode(valueObj) {
-    const str = [];
-    Object.keys(valueObj).forEach(value => {
-      str.push(value + "_" + valueObj[value].join("_"));
-    });
-    return str.join(".");
-  },
-
-  decode(strValue) {
-    const obj = {};
-    const propsWithValues = strValue.split(".").filter(n => n);
-    propsWithValues.map(value => {
-      const propWithValues = value.split("_").filter(n => n);
-      obj[propWithValues[0]] = propWithValues.slice(1);
-    });
-    return obj;
-  },
-};
 
 export const View: FC<ViewProps> = ({ match }) => {
   const [districtSelected] = useDistrictSelected();
@@ -201,9 +183,7 @@ export const View: FC<ViewProps> = ({ match }) => {
                     >
                       <Page
                         clearFilters={clearFilters}
-                        attributes={data.attributes.edges.map(
-                          edge => edge.node
-                        )}
+                        attributes={convertToFilterSideBar(data.attributes)}
                         category={data.category}
                         displayLoader={loading}
                         sortOptions={sortOptions}
@@ -254,3 +234,4 @@ export const View: FC<ViewProps> = ({ match }) => {
 };
 
 export default View;
+

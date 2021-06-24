@@ -97,17 +97,18 @@ $custom-breakpoint: 624px;
   }
 
   &__products {
-    background: $auna-grey-20;
-    padding: 1.25rem 1.25rem 0rem 1.25rem;
+    background:  $white;
+    padding: 0;
     position: fixed;
     right: 0;
-    top: 12.9rem;
+    top: 7.7rem;
     transition: 300ms;
-    height: calc(100% - 12.9rem);
+    height: calc(100% - 7.7rem);
     width: 100vw;
-    z-index: 2;
+    z-index: 4;
 
     @media (min-width: $medium-screen) {
+      background: $auna-grey-20;
       top: 4.7rem;
       height: calc(100% - 4.7rem);
     }
@@ -115,12 +116,13 @@ $custom-breakpoint: 624px;
     &--in-front {
       @media (max-width: $medium-screen) {
         z-index: 4;
-        top: 9.5rem;
+        top: 7.7rem;
       }
     }
 
     &--expanded {
       right: 0;
+      z-index: 4;
     }
 
     &--background-opacity {
@@ -145,50 +147,36 @@ $custom-breakpoint: 624px;
       }
     }
     &__header {
-      span {
-        font-weight: 500;
-      }
       @extend .size;
-      margin-bottom: 24px;
       color: $auna-black;
       font-weight: 300;
       text-align: left;
-      max-width: 645px;
-
-      h4 {
-        color: #2f2c3a;
-        font-size: 24px;
-        font-weight: 600;
-        margin-bottom: 24px;
-
-        @media (max-width: $medium-screen) {
-          font-size: 1.25rem;
-        }
-      }
-      p {
-        font-size: 16px;
-        color: #23212b;
-      }
+      max-width: 35.25rem;
+      padding: 1rem;
     }
     &__body {
-      height: calc(100% - 5rem);
+      height: calc(100% - 2.9rem);
+      background: $white;
+      @media (min-width: $medium-screen) {
+        background: $auna-grey-20;
+      }
     }
     &__item {
       @extend .size;
       background-color: $white;
-      border-radius: 24px;
-      padding: 2rem 1.25rem;
-      border: 1px solid $auna-complementary1;
-      margin: 0 0 1.5rem 0;
+      padding: 1.5rem 2rem 1rem 1rem;
       max-width: none;
-      height: 8.875rem;
       position: relative;
       overflow: hidden;
+      border-radius: 1.5rem;
+      margin-bottom: 1.5rem;
 
       @media (max-width: $medium-screen) {
-        width: 100%;
+        border-radius: 0;
         height: auto;
-        padding: 32px 23px;
+        padding: 1rem 1.5rem;
+        margin: 0;
+        width: 100%;
       }
 
       &:hover {
@@ -210,7 +198,7 @@ $custom-breakpoint: 624px;
       }
 
       &__link {
-        width: 28rem;
+        width: 100%;
         @media (max-width: $small-screen) {
           width: auto;
         }
@@ -218,6 +206,10 @@ $custom-breakpoint: 624px;
 
       &__side {
         display: flex;
+        &--card {
+          display: grid;
+          grid-template-columns: 5.625rem 1fr;
+        }
         &.actions {
           align-items: center;
           flex-direction: column;
@@ -225,31 +217,20 @@ $custom-breakpoint: 624px;
           @media (max-width: $small-screen) {
             flex-direction: row;
             justify-content: space-between;
-            margin-left: 4rem;
             position: relative;
             z-index: 10;
           }
           .button {
             > button {
-              padding: 0.6rem 0.5rem;
               border-radius: 2.75rem;
-              width: 8.125rem;
               span {
                 font-size: $small-font-size;
-              }
-
-              @media (max-width: $small-screen) {
-                width: 6.5rem;
               }
             }
           }
         }
         > div {
           display: flex;
-
-          @media (max-width: $small-screen) {
-            margin-right: -1.1rem;
-          }
         }
         &__name {
           color: $base-font-color;
@@ -257,18 +238,14 @@ $custom-breakpoint: 624px;
           flex-direction: column;
           justify-content: center;
           font-weight: 600;
-          height: 5.313rem;
           margin-left: 0.313rem;
+          width: 100%;
 
           > span {
             color: #727171;
-            font-size: 12px;
-            top: 0.938rem;
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
             position: relative;
-
-            @media (max-width: $medium-screen) {
-              padding: 0.313rem 0 1.5rem 0;
-            }
           }
 
           @media (max-width: $medium-screen) {
@@ -308,23 +285,17 @@ $custom-breakpoint: 624px;
           font-size: 20px;
           float: right;
           @media (max-width: $medium-screen) {
-            font-size: 12px;
-            margin-bottom: 0px;
+            font-size: 0.75rem;
+            margin-bottom: 0;
             float: left;
             display: flex;
-            flex-direction: column;
-            position: absolute;
-            left: 0;
-            top:30px
           }
           @media (max-width: $small-screen) {
-            font-size: 12px;
-            margin-bottom: 0px;
+            font-size: 0.75rem;
+            margin-bottom: 0;
             float: left;
             display: flex;
             flex-direction: column;
-            position: absolute;
-            left: 0;
           }
 
           &__on-sale {
@@ -361,28 +332,24 @@ $custom-breakpoint: 624px;
           }
         }
         .title_price {
-          font-size: 12px;
+          font-size: 0.75rem;
           font-weight: 500;
           color: #aca8bd;
           display: inline-block;
           vertical-align: middle;
-          margin: -2px 16px 0 0;
-
-          @media (max-width: $medium-screen) {
-            margin: 0;
-          }
+          margin: 0 1rem 0 0;
         }
 
         img {
-          width: 3.6rem;
-          height: 3.6rem;
+          max-height: 4.625rem;
+          width: auto;
+          margin-top: auto;
+          margin-bottom: auto;
           display: inline-block;
-          margin: 0 1.563rem 0 0.313rem;
           vertical-align: top;
-          transform: scale(1.8);
   
           @media (max-width: $medium-screen) {
-            margin-right: 1.3rem;
+            margin-right: 0;
             margin-left: 0;
           }
         }
@@ -427,21 +394,26 @@ $custom-breakpoint: 624px;
       overflow: auto;
       > ul {
         margin: 0 auto;
-        max-width: 645px;
+        max-width: 40.3125rem;
+        @media (min-width: $medium-screen) {
+          margin-bottom: 5rem;
+        }
       }
     }
 
     .show_more_products {
-      align-items: center;
       display: flex;
+      align-items: center;
       background-color: #ffffff;
-      border-bottom-left-radius: 35px;
-      border-bottom-right-radius: 35px;
+      border-top-left-radius: 2.1875rem;
+      border-top-right-radius: 2.1875rem;
       height: 4.5rem;
       justify-content: center;
       text-align: center;
       width: 100%;
-
+      box-shadow: 0 -0.5rem 1rem rgba(0, 0, 0, 0.08);
+      position: sticky;
+      bottom: 0;
       span {
         font-size: $base-font-size;
         font-weight: $font-weight-light;

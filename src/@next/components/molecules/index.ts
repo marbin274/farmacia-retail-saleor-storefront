@@ -27,6 +27,7 @@ export * from "./ProductTileAUNA";
 export * from "./ProductTileHorizontalAUNA";
 export * from "./ResetPasswordForm";
 export * from "./ShippingMethodItem";
+export * from "./SkeletonCarousel";
 export * from "./TextField";
 export * from "./Thumbnail";
 export * from "./AddressAutocomplete";

@@ -1,12 +1,13 @@
+import { LocalStorageItems } from "@temp/@sdk/repository";
 import { ApolloQueryResult, ErrorPolicy, FetchPolicy } from "apollo-client";
 import { DocumentNode } from "graphql";
 import * as React from "react";
 import { Query, QueryProps, QueryResult } from "react-apollo";
-
 import { Error } from "../components/Error";
 import Loader from "../components/Loader";
 import { RequireAtLeastOne } from "./tsUtils";
 import { maybe } from "./utils";
+
 
 interface LoadMore<TData, TVariables> {
   loadMore: (
@@ -22,6 +23,7 @@ interface TypedQueryInnerProps<TData, TVariables> {
   displayError?: boolean;
   displayLoader?: boolean;
   fetchPolicy?: FetchPolicy;
+  loader?: React.ReactElement;
   loaderFull?: boolean;
   renderOnError?: boolean;
   skip?: boolean;
@@ -32,6 +34,7 @@ interface TypedQueryInnerProps<TData, TVariables> {
 }
 
 export function TypedQuery<TData, TVariables>(query: DocumentNode) {
+  
   return (props: TypedQueryInnerProps<TData, TVariables>) => {
     const {
       children,
@@ -41,6 +44,7 @@ export function TypedQuery<TData, TVariables>(query: DocumentNode) {
       alwaysRender = false,
       fetchPolicy = "cache-and-network",
       errorPolicy,
+      loader,
       loaderFull,
       skip,
       variables,
@@ -63,7 +67,7 @@ export function TypedQuery<TData, TVariables>(query: DocumentNode) {
             LoadMore<TData, TVariables>
         ) => {
           const { error, loading, data, fetchMore } = queryData;
-          const hasData = maybe(() => !!Object.keys(data).length, false);
+          const hasData = maybe(() => !!Object.keys(data).length, false);          
           const loadMore = (
             mergeFunc: (
               previousResults: TData,
@@ -82,15 +86,20 @@ export function TypedQuery<TData, TVariables>(query: DocumentNode) {
               variables: { ...variables, ...extraVariables },
             });
 
+         
           if (displayError && error && !hasData) {
             return <Error error={error.message} />;
           }
-
-          if (displayLoader && loading && !hasData) {
-            return <Loader full={loaderFull} />;
+          const districtChanged = localStorage.getItem(LocalStorageItems.DISTRICT_CHANGED);
+          if (displayLoader && loading && loader && districtChanged === "true") {
+            localStorage.setItem(LocalStorageItems.DISTRICT_CHANGED, "false")
+            return <>{loader}</>;
+          }
+          else if (displayLoader && loading && !hasData) {
+            return loader ? <>{loader}</> : <Loader full={loaderFull} />;
           }
 
-          if (hasData || (renderOnError && error) || alwaysRender) {
+          if (hasData || (renderOnError && error) || alwaysRender) {            
             return children({ ...queryData, loadMore });
           }
 

@@ -66,16 +66,18 @@ export const SearchNetworkResult = () => {
                   if (hasResults(data)) {
                     return (
                       <>
-                        <div className="search__products__header">
+                        <div className="fa-border-b fa-border-solid fa-border-neutral-medium lg:fa-border-0 search__products__header">
                           {loading ? (
                             <Loader />
                           ) : (
                             <>
-                              <h4>Resultado de búsqueda</h4>
-                              <p>
-                                <span>{data.products.edges.length}</span>{" "}
-                                resultados para <span>"{search}"</span>
-                              </p>
+                              <span className='fa-text-neutral-darkest fa-font-semibold fa-text-2xl fa-mb-6 lg:fa-block fa-hidden'>Resultado de búsqueda</span>
+                              <span className='fa-text-sm fa-flex'>
+                                <span className='fa-text-neutral-darkest fa-font-semibold fa-mr-1'>{data.products.edges.length}</span>
+                                <h4 className='fa-text-sm'>
+                                  {" "}resultados de <span className='fa-text-neutral-darkest fa-font-semibold'>"{search}"</span>
+                                </h4>
+                              </span>
                             </>
                           )}
                         </div>
@@ -93,6 +95,7 @@ export const SearchNetworkResult = () => {
                           <div className="show_more_products">
                             <Link to={linkToSearch}>
                               <Button
+                                variant="outline"
                                 onClick={() => {
                                   searchProductsService.hide();
                                 }}

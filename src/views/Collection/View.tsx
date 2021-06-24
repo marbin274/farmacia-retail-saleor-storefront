@@ -14,30 +14,11 @@ import {
 } from "../../core/utils";
 import Page from "./Page";
 import { TypedCollectionProductsQuery } from "./queries";
+import { convertToFilterSideBar, FilterQuerySet } from "@temp/core/utils/filters";
 
 type ViewProps = RouteComponentProps<{
   id: string;
 }>;
-
-export const FilterQuerySet = {
-  encode(valueObj) {
-    const str = [];
-    Object.keys(valueObj).forEach(value => {
-      str.push(value + "_" + valueObj[value].join("_"));
-    });
-    return str.join(".");
-  },
-
-  decode(strValue) {
-    const obj = {};
-    const propsWithValues = strValue.split(".").filter(n => n);
-    propsWithValues.map(value => {
-      const propWithValues = value.split("_").filter(n => n);
-      obj[propWithValues[0]] = propWithValues.slice(1);
-    });
-    return obj;
-  },
-};
 
 export const View: React.FC<ViewProps> = ({ match }) => {
   const [sort, setSort] = useQueryParam("sortBy", StringParam);
@@ -163,7 +144,7 @@ export const View: React.FC<ViewProps> = ({ match }) => {
                 >
                   <Page
                     clearFilters={clearFilters}
-                    attributes={data.attributes.edges.map(edge => edge.node)}
+                    attributes={convertToFilterSideBar(data.attributes)}
                     collection={data.collection}
                     displayLoader={loading}
                     hasNextPage={maybe(

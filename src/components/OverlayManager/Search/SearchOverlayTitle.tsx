@@ -12,7 +12,7 @@ export const SearchOverlayTitle: FC<SearchOverlayTitleProps> = ({
   return (
     <div className="fa-w-full fa-flex fa-items-center fa-justify-between fa-mb-4">
       <span className="fa-text-neutral-lightest fa-font-semibold fa-text-base fa-leading-5">
-        Búsqueda
+        Resultado de búsqueda
       </span>
       <div className="fa-flex fa-items-center fa-mr-2">
         <span className="fa-font-normal fa-text-sm fa-text-neutral-lightest fa-mr-2">

@@ -169,6 +169,7 @@ export interface ProductVariantFields {
    * The ID of the object.
    */
   id: string;
+  gtin: string | null;
   sku: string;
   name: string;
   /**

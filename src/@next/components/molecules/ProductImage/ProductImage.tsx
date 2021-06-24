@@ -15,7 +15,7 @@ export const ProductImage: React.FC<IProps> = ({
     <S.Wrapper>
       <S.ImageFrame canAddToCart={canAddToCart}>
         <ProductDetailSticker isOnSale={isOnSale} isOutStock={isOutStock} />
-        <Thumbnail source={product} hasMagnifier={hasMagnifier} />
+        <Thumbnail height={510} source={product} hasMagnifier={hasMagnifier} width={510} />
       </S.ImageFrame>
     </S.Wrapper>
   );
