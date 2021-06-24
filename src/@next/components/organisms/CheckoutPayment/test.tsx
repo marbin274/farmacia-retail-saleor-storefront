@@ -30,6 +30,7 @@ describe("<CheckoutPayment />", () => {
         onGatewayError={onGatewayError}
         clearPromoCodeErrors={clearPromoCodeErrors}
         changeRequestPayload={changeRequestPayload}
+        selectedDistrict="Miraflores"
       />
     );
 

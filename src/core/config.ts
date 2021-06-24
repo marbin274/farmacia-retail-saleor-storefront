@@ -297,3 +297,5 @@ export const DISTRICT_SELECTED_DEFAULT: IDistrictSelected = {
   warehouse: null,
 };
 export const TOTAL_DISTRICT = 23;
+
+export const POS_DISTRICTS = ["miraflores"];

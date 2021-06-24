@@ -29,6 +29,7 @@ const CheckoutPayment: React.FC<IProps> = ({
   onGatewayError,
   changeRequestPayload,
   requestPayload,
+  selectedDistrict,
   totalPrice,
   userDataForNiubiz,
 }: IProps) => {
@@ -112,6 +113,7 @@ const CheckoutPayment: React.FC<IProps> = ({
         totalPrice={totalPrice}
         userDataForNiubiz={userDataForNiubiz}
         voucherCode={promoCodeDiscount?.voucherCode}
+        selectedDistrict={selectedDistrict}
       />
     </S.Wrapper>
   );

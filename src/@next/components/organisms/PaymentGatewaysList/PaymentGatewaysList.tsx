@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NiubizPaymentGateway } from "@components/organisms/NiubizPaymentGateway";
 import { NOT_CHARGE_TOKEN } from "@components/organisms/DummyPaymentGateway";
 import { TileRadio } from "@components/molecules";
-import { PROVIDERS } from "@temp/core/config";
+import { POS_DISTRICTS, PROVIDERS } from "@temp/core/config";
 import PosIcon from "images/auna/pos.svg";
 import { IProps } from "./types";
 import * as S from "./styles";
@@ -23,16 +23,15 @@ const PaymentGatewaysList: React.FC<IProps> = ({
   userDataForNiubiz,
   voucherCode,
   reRender,
+  selectedDistrict,
 }: IProps) => {
   // @ts-ignore
   const [token, setToken] = useState("");
   // @ts-ignore
   const [orderNumber, setOrderNumber] = useState("");
 
-  // const history = useHistory();
   useEffect(() => {
     const pathname = window.location.pathname;
-    // alert(pathname);
     const pathElements = pathname.split("/");
     if (selectPaymentGateway) {
       selectPaymentGateway("");
@@ -88,6 +87,10 @@ const PaymentGatewaysList: React.FC<IProps> = ({
               </TileRadio>
             );
           case PROVIDERS.POS.id:
+            if (!POS_DISTRICTS.includes(selectedDistrict.toLocaleLowerCase())) {
+              return null;
+            }
+
             return (
               <TileRadio
                 key={index}

@@ -451,6 +451,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
         totalPrice={totalPrice}
         userDataForNiubiz={userDataForNiubiz}
         cartLinesUpdated={cartLinesUpdated}
+        selectedDistrict={checkout.shippingAddress.city}
       />
       <StockValidationModal
         show={showStockValidation}
