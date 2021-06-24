@@ -42,8 +42,8 @@ export const ProductTileAUNA: React.FC<IProps> = ({
 
   return (
     <S.ProductCard  
-      className='home-page_product fa-border-b fa-border-solid fa-border-neutral-medium lg:fa-border-0' 
-      data-cy="product-tile" 
+     className='home-page_product fa-border-b fa-border-solid fa-border-neutral-medium lg:fa-border-0' 
+      data-cy="product-tile"  
       canAddToCart={canAddToCart}>
       <div className='fa-w-full fa-block lg:fa-hidden'>
         <S.LinkContainer 
@@ -61,7 +61,8 @@ export const ProductTileAUNA: React.FC<IProps> = ({
                 launchDetailProductEvent(
                   product?.name,
                   product?.variant?.sku as string,
-                  product?.variant?.pricing?.price?.gross?.amount as number
+                  product?.variant?.pricing?.price?.gross?.amount as number,
+                  product?.category?.name
                 )
               }
             >
@@ -123,7 +124,8 @@ export const ProductTileAUNA: React.FC<IProps> = ({
                 launchDetailProductEvent(
                   product?.name,
                   product?.variant?.sku as string,
-                  product?.variant?.pricing?.price?.gross?.amount as number
+                  product?.variant?.pricing?.price?.gross?.amount as number,
+                  product?.category?.name
                 )
               }
             >
