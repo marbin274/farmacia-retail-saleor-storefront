@@ -18,11 +18,11 @@
   }
   &__products {
     .home-page_product {
-      height: 25.8rem;
+      height: 26.5rem;
       border-width: 0;
       padding: 2rem;
       .description {
-        height: 3.625rem;
+        height: 5rem;
       }
       &-sticker {
         margin-top: 0;
@@ -33,6 +33,9 @@
       }
       &-price {
         display: block;
+        span:before {
+          content: '';
+        }
       }
       &-title {
         text-align: center;

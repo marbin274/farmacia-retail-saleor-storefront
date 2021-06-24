@@ -442,7 +442,7 @@ exports[`Storyshots @components/molecules/ProductListHeaderCategory default 1`] 
         className="c6"
       >
         <span
-          className="products_found c7"
+          className="products_found fa-hidden sm:fa-block c7"
           data-cy="no-of-products-found_label"
         >
           <span
@@ -1018,7 +1018,7 @@ exports[`Storyshots @components/molecules/ProductListHeaderCategory with active 
         className="c7"
       >
         <span
-          className="products_found c8"
+          className="products_found fa-hidden sm:fa-block c8"
           data-cy="no-of-products-found_label"
         >
           <span
