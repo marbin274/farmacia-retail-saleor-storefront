@@ -299,3 +299,8 @@ export const DISTRICT_SELECTED_DEFAULT: IDistrictSelected = {
 export const TOTAL_DISTRICT = 23;
 
 export const POS_DISTRICTS = ["miraflores"];
+
+export const COUNTRY_DEFAULT = { 
+  code: "PE", 
+  country: "Peru",
+};

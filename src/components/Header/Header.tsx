@@ -57,10 +57,7 @@ const Header: React.FC<IProps> = ({
   };
 
   const onClickSearchIcon = (overlayContext: OverlayContextInterface) => {
-    if (!isProductPage) window.scrollTo({ top: 0, behavior: "smooth" });
-    else {
-      overlayContext.show(OverlayType.search, OverlayTheme.right);
-    }
+    overlayContext.show(OverlayType.search, OverlayTheme.right);
   };
 
   React.useEffect(() => {

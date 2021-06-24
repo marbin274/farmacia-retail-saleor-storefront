@@ -9,6 +9,7 @@ import { CheckoutErrorCode } from "@temp/@sdk/gqlTypes/globalTypes";
 import { CreateCheckout_checkoutCreate_checkoutErrors_products } from "@temp/@sdk/mutations/gqlTypes/CreateCheckout";
 import { baseUrl } from "@temp/app/routes/paths";
 import { useShopContext } from "@temp/components/ShopProvider/context";
+import { COUNTRY_DEFAULT } from "@temp/core/config";
 import { IAddress, IAddressWithEmail, IFormError } from "@types";
 import { filterNotEmptyArrayItems } from "@utils/misc";
 import React, {
@@ -16,7 +17,7 @@ import React, {
   RefForwardingComponent,
   useImperativeHandle,
   useRef,
-  useState,
+  useState
 } from "react";
 import { RouteComponentProps } from "react-router";
 
@@ -82,10 +83,7 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
           setShippingAddress(
             {
               city: data?.city,
-              country: {
-                code: "PE",
-                country: "Peru",
-              },
+              country: COUNTRY_DEFAULT,
               firstName: data?.firstName,
               id: data?.id,
               phone: data?.phone,

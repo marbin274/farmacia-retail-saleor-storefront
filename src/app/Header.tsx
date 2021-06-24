@@ -11,7 +11,9 @@ export const Header: React.FC = () => {
     location.pathname.includes("checkout") ||
     location.pathname.includes("order-finalized");
 
-  const isProductPage = location.pathname.includes("product");
+  const isProductPage = 
+    location.pathname.includes("product") || 
+    location.pathname.includes("search");
 
   return (
     <TypedMainMenuQuery
