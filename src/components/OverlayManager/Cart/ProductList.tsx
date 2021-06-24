@@ -43,12 +43,10 @@ const ProductList: React.FC<IProductList> = ({
   onCancel,
 }) => (
   <ul className="cart__list">
-    {products.map(product => {
-      const { variant, quantity } = product;
-      const { canAddToCart } = checkProductCanAddToCart(
-        convertProductOnCartInProduct(product),
-        products
-      );
+    {products.map((ProductOnCart) => {
+      const product = convertProductOnCartInProduct(ProductOnCart);
+      const { variant, quantity } = ProductOnCart;
+      const { canAddToCart } = checkProductCanAddToCart(product, products);
       const isOnSale = checkProductIsOnSale(product);
       const id: string | undefined = variant.product?.id;
       const name: string | undefined = product.name
@@ -60,19 +58,23 @@ const ProductList: React.FC<IProductList> = ({
       if (!productUrl) {
         return null;
       }
+
+      const isToDelete = modalOpen && itemToDelete === variant.id;
       return (
-        <li key={id} className="cart__list__item">
+        <li key={id} className={`cart__list__item ${isToDelete && "delete"}`}>
           <Link className="cart__list__item__image" to={productUrl}>
             {variant.product && <Thumbnail source={variant.product} />}
           </Link>
           <div className="cart__list__item__details">
-            {modalOpen && itemToDelete === variant.id ? (
+            {isToDelete ? (
               <div className="cart__list__item__delete">
                 <h4>¿Deseas eliminar este producto?</h4>
                 <h4>{name}</h4>
                 <div className="cart__list__item__delete--options">
-                  <Button onClick={onConfirm}>Aceptar</Button>
-                  <Button onClick={onCancel} variant="outline">
+                  <Button onClick={onConfirm} size="small">
+                    Aceptar
+                  </Button>
+                  <Button onClick={onCancel} size="small" variant="outline">
                     Cancelar
                   </Button>
                 </div>

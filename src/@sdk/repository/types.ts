@@ -17,6 +17,7 @@ import { ITotalPrice } from "@temp/@sdk/api/Cart/types";
 
 export enum LocalStorageItems {
   CHECKOUT = "data_checkout",
+  DISTRICT_CHANGED = "district_changed",
   DISTRICT_SELECTED = "district_selected",
   FINAL_CHECKOUT = "final_checkout",
   FINAL_USECART = "final_use_cart",

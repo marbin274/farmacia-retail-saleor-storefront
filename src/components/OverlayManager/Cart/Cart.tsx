@@ -14,10 +14,19 @@ import {
 import Empty from "./Empty";
 import ProductList from "./ProductList";
 import "./scss/index.scss";
+import { useMediaQuery } from "react-responsive";
+import { smallScreen } from "@temp/@next/globalStyles/constants";
 
 const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
   const [isModelOpen, setIsModelOpen] = React.useState(false);
   const [itemToDelete, setItemToDelete] = React.useState(null);
+  const isSmallScreen = useMediaQuery({
+    query: `(max-width: ${smallScreen}px)`,
+  });
+  const cartBodyRef = React.useRef<HTMLDivElement>();
+  const [isScrolledBodyCart, setIsScrolledBodyCart] =
+    React.useState<boolean>(false);
+  const isScrolledAndSmall = isScrolledBodyCart && isSmallScreen;
   const history = useHistory();
   const location = useLocation();
   const { data: user } = useUserDetails();
@@ -70,18 +79,42 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
     }
   };
 
+  const onScrollCart = () => {
+    if (!isSmallScreen) return;
+    const { top: cartBodyTop } = cartBodyRef.current.getBoundingClientRect();
+    const limitTopScroll = 60; // HEIGHT HEADER - 2.25rem
+    const isScrolled = cartBodyTop <= limitTopScroll;
+    if (isScrolled !== isScrolledBodyCart) setIsScrolledBodyCart(isScrolled);
+  };
+
   return (
     <Overlay context={overlay}>
       <Online>
-        <div className="cart">
-          <div className="overlay__header">
+        <div className="cart" onScroll={onScrollCart}>
+          <div
+            className={`overlay__header ${isScrolledAndSmall && "scrolled"}`}
+          >
             <div className="overlay__header__text">
               <div className="overlay__header__text__cart-icon">
                 <CartIcon></CartIcon>
               </div>
               <div className="overlay__header__text__info">
-                <span>Tu carrito</span>
-                <span className="overlay__header-text-items">
+                <span
+                  className={`overlay__header__text__info__title ${
+                    isScrolledAndSmall && "scrolled"
+                  }`}
+                >
+                  Tu carrito{" "}
+                  {isScrolledAndSmall
+                    ? `(${totalProducts || 0} 
+                  ${totalProducts === 1 ? "producto" : "productos"})`
+                    : ""}
+                </span>
+                <span
+                  className={`overlay__header__text__info__items ${
+                    isScrolledAndSmall && "scrolled"
+                  }`}
+                >
                   {totalProducts || 0}{" "}
                   {totalProducts === 1
                     ? "producto en total"
@@ -89,11 +122,15 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
                 </span>
               </div>
             </div>
-            <div className="overlay__header__close-icon">
+            <div
+              className={`overlay__header__close-icon ${
+                isScrolledAndSmall && "scrolled"
+              }`}
+            >
               <XIcon onClick={overlay.hide} size={16}></XIcon>
             </div>
           </div>
-          <div className="cart__body">
+          <div className="cart__body" ref={cartBodyRef}>
             {items?.length ? (
               <>
                 <ProductList
@@ -158,7 +195,7 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
                   <div className="cart__footer__details__button">
                     <Button
                       icon={<CartIcon />}
-                      size="normal"
+                      size="large"
                       onClick={onClickBuyIcon}
                     >
                       Comprar

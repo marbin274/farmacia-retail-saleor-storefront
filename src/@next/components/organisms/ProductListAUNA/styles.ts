@@ -1,18 +1,12 @@
-import { media, styled } from "@styles";
+import { mediaUp, styled } from "@styles";
 
 export const List = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-gap: 1rem 1rem ;
 
-  ${media.largeScreen`
+  ${mediaUp.xLargeScreen`
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 5rem 1.5rem ;
-  `}
-
-  ${media.smallScreen`
-    grid-template-columns: 1fr;
-    grid-gap: 1rem 1rem;
   `}
 `;
 

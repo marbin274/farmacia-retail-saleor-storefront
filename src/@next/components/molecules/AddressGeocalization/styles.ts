@@ -1,6 +1,7 @@
 import { mediaUp, media } from "@temp/@next/globalStyles";
 import { largeScreen, white } from "@temp/@next/globalStyles/constants";
-import styled, { css, keyframes } from "styled-components";
+import { css, keyframes } from "styled-components";
+import { styled } from "@styles";
 import { addressLocationType } from "./types";
 import farmatheme from "@farmatheme";
 
@@ -88,7 +89,7 @@ export const Button = styled.div`
   }
 `;
 
-const alertTop = 3.5;
+const alertTop = 1;
 const alertMove = 0.4;
 const alertAnimation = 3.055;
 
@@ -102,16 +103,40 @@ const moved = keyframes`
     ${alertAnimation * 6}%  {top:${alertTop}rem}
 `;
 
+export const AlertWrapper = styled.div`
+  height: 13rem;
+  position: absolute;
+  right: -0.8rem;
+  top: 2.5rem;
+  width: 18rem;
+  z-index: 1;
+
+  ${mediaUp.xSmallScreen`
+    width: 20rem;
+  `}
+  ${mediaUp.xxSmallScreen`
+    width: 23rem;
+    right: 0rem;
+  `}
+  ${mediaUp.largeScreen`
+    left: -5rem;
+    right: auto;
+  `}
+  ${`@media (min-width: ${largeScreen}px) and (max-width: 1144px){
+      left: -4rem;
+      width: 22rem;
+    }
+  `}
+`;
+
 export const Alert = styled.div`
     background: ${white};
     border-radius: 1.5rem;
-    box-shadow: 0px 0px 0.875rem rgb(0 0 0 / 50%);
-    left: 0.5rem;
-    padding: 1.5rem;
-    position: absolute;    
-    top: ${alertTop}rem;
-    width: 24rem;
-    z-index: 1;
+    box-shadow: 0px 0px 0.875rem rgb(0 0 0 / 50%);    
+    padding: 1.5rem;   
+    position: absolute;
+    top: 1rem;
+    width: 100%; 
     ${css`
         animation: ${moved};
         animation-delay: 4s;
@@ -131,40 +156,10 @@ export const Alert = styled.div`
         z-index: 1;
     }
 
-    ${media.largeScreen`
-        left: auto;
-        right: -1rem;
-        width: 24.125rem;
+    ${mediaUp.xSmallScreen`     
         ::after {
-            left: auto;
-            right: 3rem;
-        }
-    `}
-
-    ${media.xSmallScreen`
-        width: 18.125rem;
-    `}
-
-    ${mediaUp.largeScreen`
-        left: -5rem;
-        right: auto;
-        ::after {
-            left: auto;
             right: 2rem;
         }
-    `}
-    ${mediaUp.xSmallScreen`
-        width: 20rem;
-        right: 0rem;
-    `}
-    ${mediaUp.xxSmallScreen`
-        width: 23rem;
-        right: 0rem;
-    `}
-    ${`@media (min-width: ${largeScreen}px) and (max-width: 1144px){
-        left: -4rem;
-        width: 22rem;
-    }
     `}
 `;
 
@@ -194,6 +189,7 @@ export const AlertText = styled.span`
 `;
 
 export const AlertAction = styled.div`
+  ${({theme})=>`
   display: flex;
   justify-content: flex-end;
   padding-top: 1rem;
@@ -205,18 +201,27 @@ export const AlertAction = styled.div`
     width: 10.188rem;
   }
   span {
-    font-size: ${({ theme }) => theme.typography.smallFontSize};
+    font-size: ${theme.typography.smallFontSize};
   }
-
   button {
     padding: 0.5rem;
     width: 100%;
-
+    border-color:currentcolor !important;
+    ${media.largeScreen`
+    .button-border-change {
+      border: 1px solid #452FBA !important;
+      border-radius: 1.5rem;
+    }
+`}
     ${media.xSmallScreen`
         > span {
           margin-left: 0;
-          font-size: ${({ theme }) => theme.typography.labelFontSize}
+          font-size: ${theme.typography.labelFontSize}
         }
     `}
+    span {
+      color:currentcolor !important;
+    }
   }
+  `}
 `;

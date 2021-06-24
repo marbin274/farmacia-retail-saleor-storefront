@@ -1,29 +1,36 @@
-import { media, styled } from "@styles";
+import { mediaUp, styled, media } from "@styles";
 import { aunaBlack, aunaGrey100 } from "@styles/constants";
 import farmatheme from "@farmatheme";
-
-const productHeight = "25.8rem";
+import { Link } from "react-router-dom";
 
 const productIntHeight = "18rem";
+
+export const LinkContainer = styled(Link)`
+  display: grid;
+  grid-template-columns: 5.625rem 1fr;
+  align-items: flex-start;
+`;
 
 export const ProductCard = styled.div<{
   canAddToCart?: boolean | 0 | undefined;
 }>`
   color: ${aunaBlack};
-  background: #ffffff;
-  height: ${productHeight};
   text-align: center;
   transition: 0 .3s;
-  padding: 2rem;
+  padding: 1rem;
   position: relative;
-  border-radius: 16px;
-  :hover {
-    box-shadow: 0px 8px 16px rgba(144, 139, 167, 0.2);
-  }
+  ${mediaUp.largeScreen`
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 1rem;
+    &:hover {
+      box-shadow: 0 0.5rem 1rem rgba(144, 139, 167, 0.2);
+    }
+  `}
 
   .img {
     width: auto;
-    height: 170px;
+    max-height: 10.625rem;
     max-width: 100%;
     align-items: center;
     display:flex;
@@ -32,7 +39,7 @@ export const ProductCard = styled.div<{
     margin: 0 auto;
      img {
       width: auto;
-      height: 170px;
+      max-height: 10.625rem;
       max-width: 100%;
       vertical-align: middle;
       margin: auto;
@@ -42,13 +49,15 @@ export const ProductCard = styled.div<{
 
   .description {
     font-family: "Poppins", sans-serif;
-    height: 5.3125rem;
     font-weight: 600;
     line-height: 1.4;
     padding: 0.4rem 0;
     text-align: center;
     overflow: hidden;
     margin-bottom: 1.25rem;
+    ${mediaUp.largeScreen`
+      height: 5.3125rem;
+    `}
   }
 
   .price {
@@ -100,8 +109,6 @@ export const ProductCard = styled.div<{
     }
   }
 
-  ${media.largeScreen`
-  `}
 `;
 
 export const Title = styled.h4``;
@@ -115,7 +122,24 @@ export const ProductAttribute = styled.h5`
   text-align: center;
 `;
 
-export const Price = styled.p``;
+export const Price = styled.p`
+  ${media.largeScreen`
+  > span {
+    font-size: 1rem !important;
+    line-height: 120%;
+    position: relative;
+    &:before{
+      content: "Precio";
+      margin-right: 1rem;
+      font-size: 0.75rem !important;
+      font-weight: 500;
+      color: ${farmatheme.theme.colors.neutral.medium};
+      position: absolute;
+      top: -1.25rem;
+    }
+  }
+  `}
+`;
 
 export const Image = styled.div``;
 

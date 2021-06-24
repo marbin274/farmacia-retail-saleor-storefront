@@ -244,6 +244,28 @@ export interface ProductDetails_product_pricing {
   priceRange: ProductDetails_product_pricing_priceRange | null;
 }
 
+export interface ProductDetails_product_category_ancestors_edges_node {
+  __typename: "Category";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+}
+
+export interface ProductDetails_product_category_ancestors_edges {
+  __typename: "CategoryCountableEdge";
+  /**
+   * The item at the end of the edge.
+   */
+  node: ProductDetails_product_category_ancestors_edges_node;
+}
+
+export interface ProductDetails_product_category_ancestors {
+  __typename: "CategoryCountableConnection";
+  edges: ProductDetails_product_category_ancestors_edges[];
+}
+
 export interface ProductDetails_product_category_products_edges_node_thumbnail {
   __typename: "Image";
   /**
@@ -522,6 +544,10 @@ export interface ProductDetails_product_category {
   id: string;
   name: string;
   /**
+   * List of ancestors of the category.
+   */
+  ancestors: ProductDetails_product_category_ancestors | null;
+  /**
    * List of products in the category.
    */
   products: ProductDetails_product_category_products | null;
@@ -738,7 +764,7 @@ export interface ProductDetails_product_variants {
    * The ID of the object.
    */
   id: string;
-  gtin: string;
+  gtin: string | null;
   sku: string;
   name: string;
   /**

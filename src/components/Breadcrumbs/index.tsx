@@ -68,7 +68,6 @@ const Breadcrumbs: React.FC<IBreadcrumbProps> = ({
               {showHomeIcon && (
                 <HomeIcon size={20} className="breadcrumbs__home-icon" />
               )}
-              <span className="breadcrumbs__home_title">Inicio</span>
             </Link>
             <NextIcon size={10} className="breadcrumbs__next-icon" />
           </li>

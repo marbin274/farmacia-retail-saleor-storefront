@@ -150,7 +150,7 @@ const ItemsHandler: FC<IProps> = ({
             </Button>
           </div>
           {!canAddToCart && isLimitMax && (
-            <div>
+            <div className='fa-text-center'>
               <span className="itemHandler__limit-max">
                 Max. {stockLimitMax} por promoción
               </span>

@@ -11,10 +11,16 @@ export const Header: React.FC = () => {
     location.pathname.includes("checkout") ||
     location.pathname.includes("order-finalized");
 
-  const isProductPage = location.pathname.includes("product");
+  const isProductPage = 
+    location.pathname.includes("product") || 
+    location.pathname.includes("search");
 
   return (
-    <TypedMainMenuQuery renderOnError displayLoader={false}>
+    <TypedMainMenuQuery
+      alwaysRender
+      renderOnError
+      displayLoader={false}
+    >
       {({ data }) => {
         const categories: INavItem[] = maybe(
           () =>

@@ -436,7 +436,7 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
         </button>
       </div>
       <div
-        className="c6"
+        className="product_list_header__right_side c6"
       >
         <span
           className="products_found c7"
@@ -464,7 +464,7 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
           </span>
         </span>
         <span
-          className="c7"
+          className="product_list_header__dropdown c7"
         >
           <div
             className="c11"
@@ -1017,7 +1017,7 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
         </button>
       </div>
       <div
-        className="c7"
+        className="product_list_header__right_side c7"
       >
         <span
           className="products_found c8"
@@ -1045,7 +1045,7 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
           </span>
         </span>
         <span
-          className="c8"
+          className="product_list_header__dropdown c8"
         >
           <div
             className="c12"

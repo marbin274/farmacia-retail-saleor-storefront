@@ -50,7 +50,8 @@ export const ProductListHeader: React.FC<IProps> = ({
           </S.LeftSide>
         )}
 
-        <S.RightSide>
+        <S.RightSide 
+          className="product_list_header__right_side">
           <S.Element
             className="products_found"
             data-cy="no-of-products-found_label"
@@ -59,7 +60,7 @@ export const ProductListHeader: React.FC<IProps> = ({
             <S.Label>Productos encontrados con: </S.Label>
             <S.Label>"<S.SearchText>{search}</S.SearchText>"</S.Label>
           </S.Element>
-          <S.Element>
+          <S.Element className="product_list_header__dropdown">
             <S.Sort>
               <DropdownSelect
                 onChange={onChange}

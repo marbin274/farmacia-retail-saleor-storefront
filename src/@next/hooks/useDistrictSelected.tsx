@@ -8,11 +8,13 @@ import { useLocalStorage } from "./useLocalStorage";
 export const useDistrictSelected = (): [IDistrictSelected, (value?: IDistrictSelected | null) => void] => {
 
     const { storedValue, setValue } = useLocalStorage<IDistrictSelected>(LocalStorageItems.DISTRICT_SELECTED, DISTRICT_SELECTED_DEFAULT);
+    const { setValue: setDistrictChanged } = useLocalStorage<boolean>(LocalStorageItems.DISTRICT_CHANGED, false);
 
     React.useEffect(() => {
         districtSelectedService
             .on()
             .subscribe((payload: IDistrictSelected) => {
+                setDistrictChanged(true);
                 setValue(payload);
             });
     }, []);

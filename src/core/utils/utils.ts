@@ -146,7 +146,7 @@ export const convertSortByFromString = (sortBy: string) => {
   return { field, direction };
 };
 
-export const maybe = <T>(exp: () => T, d?: T) => {
+export const maybe = <T>(exp: () => any, d?: T) => {
   try {
     const result = exp();
     return result === undefined ? d : result;
