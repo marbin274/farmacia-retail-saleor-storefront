@@ -76,11 +76,18 @@ export const ProductTileAUNA: React.FC<IProps> = ({
           <div className='fa-px-4 fa-pb-4'>
             <div className='home-page_product-price fa-hidden'>
               <div className={getProductPricingClass(canAddToCart, isOnSale)}>
-                <TaxedMoney taxedMoney={product?.pricing?.priceRange?.start} />
+                <S.Price>
+                  <TaxedMoney taxedMoney={product?.pricing?.priceRange?.start} />
+                </S.Price>
               </div>
-              <div className="price undiscounted_price">
-                <TaxedMoney taxedMoney={product?.pricing?.priceRangeUndiscounted?.start} />
-              </div>
+              {isOnSale && (
+                <div className="price undiscounted_price">
+                  <TaxedMoney
+                    taxedMoney={product?.pricing?.priceRangeUndiscounted?.start}
+                  />
+                </div>
+              )}
+
             </div>
             <div className="description">
               <S.Title className='home-page_product-title fa-text-left'>{product.name}</S.Title>

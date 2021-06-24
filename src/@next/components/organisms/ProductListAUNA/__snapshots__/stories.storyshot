@@ -252,16 +252,13 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
               <div
                 className="price outStock_price"
               >
-                <span>
-                  
-                </span>
-              </div>
-              <div
-                className="price undiscounted_price"
-              >
-                <span>
-                  
-                </span>
+                <p
+                  className="c4"
+                >
+                  <span>
+                    
+                  </span>
+                </p>
               </div>
             </div>
             <div
@@ -544,16 +541,13 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
               <div
                 className="price outStock_price"
               >
-                <span>
-                  
-                </span>
-              </div>
-              <div
-                className="price undiscounted_price"
-              >
-                <span>
-                  
-                </span>
+                <p
+                  className="c4"
+                >
+                  <span>
+                    
+                  </span>
+                </p>
               </div>
             </div>
             <div
@@ -836,16 +830,13 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
               <div
                 className="price outStock_price"
               >
-                <span>
-                  
-                </span>
-              </div>
-              <div
-                className="price undiscounted_price"
-              >
-                <span>
-                  
-                </span>
+                <p
+                  className="c4"
+                >
+                  <span>
+                    
+                  </span>
+                </p>
               </div>
             </div>
             <div
@@ -1128,16 +1119,13 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
               <div
                 className="price outStock_price"
               >
-                <span>
-                  
-                </span>
-              </div>
-              <div
-                className="price undiscounted_price"
-              >
-                <span>
-                  
-                </span>
+                <p
+                  className="c4"
+                >
+                  <span>
+                    
+                  </span>
+                </p>
               </div>
             </div>
             <div
@@ -1420,16 +1408,13 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
               <div
                 className="price outStock_price"
               >
-                <span>
-                  
-                </span>
-              </div>
-              <div
-                className="price undiscounted_price"
-              >
-                <span>
-                  
-                </span>
+                <p
+                  className="c4"
+                >
+                  <span>
+                    
+                  </span>
+                </p>
               </div>
             </div>
             <div
@@ -1712,16 +1697,13 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
               <div
                 className="price outStock_price"
               >
-                <span>
-                  
-                </span>
-              </div>
-              <div
-                className="price undiscounted_price"
-              >
-                <span>
-                  
-                </span>
+                <p
+                  className="c4"
+                >
+                  <span>
+                    
+                  </span>
+                </p>
               </div>
             </div>
             <div
@@ -2004,16 +1986,13 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
               <div
                 className="price outStock_price"
               >
-                <span>
-                  
-                </span>
-              </div>
-              <div
-                className="price undiscounted_price"
-              >
-                <span>
-                  
-                </span>
+                <p
+                  className="c4"
+                >
+                  <span>
+                    
+                  </span>
+                </p>
               </div>
             </div>
             <div
@@ -2296,16 +2275,13 @@ exports[`Storyshots @components/organisms/ProductListAUNA default 1`] = `
               <div
                 className="price outStock_price"
               >
-                <span>
-                  
-                </span>
-              </div>
-              <div
-                className="price undiscounted_price"
-              >
-                <span>
-                  
-                </span>
+                <p
+                  className="c4"
+                >
+                  <span>
+                    
+                  </span>
+                </p>
               </div>
             </div>
             <div
