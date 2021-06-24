@@ -47,7 +47,7 @@ export const ProductListHeaderCategory: React.FC<IProps> = ({
 
         <S.RightSide>
           <S.Element
-            className="products_found fa-hidden sm:fa-block"
+            className="products_found"
             data-cy="no-of-products-found_label"
           >
             <S.Label>Productos encontrados :  </S.Label>

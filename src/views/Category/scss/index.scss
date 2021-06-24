@@ -103,6 +103,9 @@
         margin-top: 0!important;
       }
     }
+    .products_found {
+      display: none;
+    }
   }
 
   @media (min-width: $medium-screen) {

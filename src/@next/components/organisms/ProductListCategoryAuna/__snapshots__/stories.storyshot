@@ -176,8 +176,8 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
 
 @media (max-width:992px) {
   .c1 {
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 5rem 1.5rem;
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
   }
 }
 
