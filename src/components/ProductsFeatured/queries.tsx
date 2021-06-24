@@ -13,43 +13,52 @@ import {
 export const featuredProducts = gql`
   ${basicProductFragment}
   ${productPricingFragment}
-  query FeaturedProducts($first: Int, $districtId: ID) {
+  query FeaturedProducts(
+    $first: Int,
+    $districtId: ID,
+    $firstCollection: Int,
+    $sortBy: CollectionSortingInput
+  ) {
     shop {
-      homepageCollections {
-        id
-        name
-        products(district: $districtId, first: $first) {
-          edges {
-            node {
-              ...BasicProductFields
-              ...ProductPricingField
-              attributes {
-                attribute {
-                  id
-                  name
-                }
-                values {
-                  id
-                  name
-                }
-              }
-              category {
-                id
-                name
-              }
-              variants {
-                id
-                sku
-                pricing {
-                  onSale
-                  price {
-                    ...Price
+      homepageCollections(first: $firstCollection, sortBy: $sortBy) {
+        edges {
+          node {
+            id
+            name
+            products(district: $districtId, first: $first) {
+              edges {
+                node {
+                  ...BasicProductFields
+                  ...ProductPricingField
+                  attributes {
+                    attribute {
+                      id
+                      name
+                    }
+                    values {
+                      id
+                      name
+                    }
                   }
-                  priceUndiscounted {
-                    ...Price
+                  category {
+                    id
+                    name
+                  }
+                  variants {
+                    id
+                    sku
+                    pricing {
+                      onSale
+                      price {
+                        ...Price
+                      }
+                      priceUndiscounted {
+                        ...Price
+                      }
+                    }
+                    quantityAvailable(district: $districtId)
                   }
                 }
-                quantityAvailable(district: $districtId)
               }
             }
           }
