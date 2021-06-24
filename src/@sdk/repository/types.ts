@@ -22,6 +22,7 @@ export enum LocalStorageItems {
   FINAL_CHECKOUT = "final_checkout",
   FINAL_USECART = "final_use_cart",
   JOB_QUEUE_CHECKOUT = "job_queueCheckout",
+  OPTIMIZELY_USER_ID_KEY = "@opt_id",
   PAYMENT = "data_payment",
   RESET_PASSWORD_EMAIL = "reset_password_email",
   SHOW_ADDRESS_GEOCALIZATION_INFO = "show_address_geocalization_info",
