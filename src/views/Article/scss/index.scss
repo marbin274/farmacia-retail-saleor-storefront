@@ -24,7 +24,7 @@
       background-color: $auna-complementary1;
       display: inline-block;
       padding: 1rem 2rem;
-
+      text-align: center;
       @media (max-width: $small-screen) {
         padding: 1rem;
       }
@@ -38,6 +38,15 @@
         @media (max-width: $small-screen) {
           font-size: 1.75rem;
         }
+      }
+    }
+  }
+
+  &__image {
+    img{
+      width: 100%;
+      @media (min-width: $medium-screen) {
+        border-radius: 2rem;
       }
     }
   }
