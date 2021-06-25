@@ -15,30 +15,28 @@
 
     @media (max-width: $small-screen) {
       width: 100%;
-      padding: 0 1rem 0 2rem;
+      padding: 0 1rem 0 1rem;
       top: auto;
       left: 0;
       bottom: 0;
       transform: none;
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
-
     }
-     .scroll {
+    .scroll {
       padding: 3.2rem 0 3.2rem 0;
-
       @media (max-width: $small-screen) {
-        padding: 3.2rem 0 3.2rem 0;
+        padding: 3.2rem 0 7.5rem 0;
       }
-     }
+    }
   }
 
   .login {
     max-width: 100vw;
-  
+
     &__tabs {
       display: flex;
-  
+
       span {
         flex-grow: 1;
         width: 100%;
@@ -49,88 +47,87 @@
         padding: $spacer;
         border-bottom: 0.063rem solid $gray-light;
         cursor: pointer;
-  
+
         &:first-of-type {
           border-right: 0.063rem solid $white;
         }
-  
+
         &:last-of-type {
           border-left: 0.063rem solid $white;
         }
-  
+
         &.active-tab {
           border-bottom: 0.063rem solid $turquoise;
         }
       }
     }
-  
+
     &__content {
       padding: 0 2rem 0 0;
       max-height: 65vh;
-      overflow-y: auto;
+      overflow: auto;
       @media (max-width: $small-screen) {
-        padding: 0 1rem 0 0;
+        padding: 0 0 0 0;
       }
-  
+
       &__welcome {
         margin-bottom: 2rem;
-  
+
         > h4 {
           color: $auna-black;
           font-size: 1.5rem;
           line-height: 1.5rem;
           margin-bottom: 1.125rem;
         }
-  
+
         > p {
           color: $auna-grey-100;
           font-size: 0.75rem;
           line-height: 1.125rem;
         }
       }
-  
+
       .input {
         margin-bottom: $spacer;
       }
-  
+
       &__button {
         margin-top: $spacer * 2;
-  
+
         > button {
           width: 100%;
           max-width: 100%;
           font-weight: 600;
         }
       }
-  
+
       &__password-reminder {
         display: flex;
         justify-content: space-between;
         color: $auna-black;
         font-size: $small-font-size;
         align-items: center;
-  
+
         &__remember {
           > input[type="checkbox" i] {
             margin: auto 0.5rem auto 0;
           }
         }
-  
+
         &__forget {
-          color: #452FBA;
+          color: #452fba;
           font-size: 0.875rem;
         }
       }
 
       label {
-        color: #23212B;
+        color: #23212b;
         font-size: 0.875rem;
         font-weight: 500;
-        
       }
 
       .InputField {
-        margin: 0 0 1.25rem 0;
+        margin: 0 0 1rem 0;
         @media (max-width: $small-screen) {
           margin-bottom: 0.6rem;
         }
@@ -138,18 +135,16 @@
     }
     &__header {
       border: 0;
-
-      
     }
   }
 
   &__header {
-    border:0;
+    border: 0;
     padding: 0;
     align-items: inherit;
     display: block;
     p {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
       @media (max-width: $small-screen) {
         margin-bottom: 0.5rem;
       }
@@ -177,9 +172,9 @@
 
   &__header-text-sub {
     font-size: 0.875rem;
-    color: #908BA7;
+    color: #908ba7;
   }
-  
+
   .login__privacy__policies {
     padding-left: 0.1rem;
     margin-top: 2rem;
@@ -194,7 +189,7 @@
       font-weight: 400;
     }
   }
-  
+
   .login__additionals {
     margin-top: 2rem;
     padding-left: 0.1rem;
@@ -209,34 +204,34 @@
       font-weight: 400;
     }
   }
-  
+
   .register_successfully {
     height: 100vh;
     padding: 1.8rem;
     font-size: $base-font-size;
-  
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-  
+
     .register_header {
       text-align: center;
       margin-bottom: 3rem;
-  
+
       width: 100%;
     }
-  
+
     .register_title {
       text-align: center;
       margin-bottom: 1.5rem;
-  
+
       width: 100%;
       p {
         font-weight: $big-bold-font-weight;
       }
     }
-  
+
     .register_body {
       text-align: center;
       margin-bottom: 3rem;
@@ -244,16 +239,16 @@
       strong {
         font-weight: $bold-font-weight;
       }
-  
+
       width: 100%;
       p {
         font-weight: $font-weight-light;
       }
     }
-  
+
     .register_button {
       text-align: center;
-  
+
       width: 100%;
       button {
         width: 100%;
