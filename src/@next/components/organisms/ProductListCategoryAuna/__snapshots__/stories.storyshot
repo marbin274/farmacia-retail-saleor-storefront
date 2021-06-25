@@ -277,59 +277,41 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
               </div>
               <div>
                 <div
-                  className="button"
+                  className="itemHandler"
                 >
-                  <button
-                    className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
-                    disabled={false}
-                    onClick={[Function]}
-                    style={Object {}}
-                    type="button"
+                  <div
+                    className="itemHandler--actions"
                   >
-                    <span
-                      className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
+                    <button
+                      className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3 item-action add_remove_button"
+                      disabled={false}
+                      onClick={[Function]}
+                      style={Object {}}
+                      type="button"
                     >
-                      <svg
-                        className=" "
-                        color="currentColor"
-                        fill="currentColor"
-                        height={16}
-                        viewBox="0 0 24 24"
-                        width={16}
-                        xmlns="http://www.w3.org/2000/svg"
+                      <span
+                        className="fa-align-middle fa-ml-2"
                       >
-                        <path
-                          d="M9 21C10.1046 21 11 20.1046 11 19C11 17.8954 10.1046 17 9 17C7.89543 17 7 17.8954 7 19C7 20.1046 7.89543 21 9 21Z"
-                          fill="transparent"
-                          stroke="currentColor"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                        />
-                        <path
-                          d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z"
-                          fill="transparent"
-                          stroke="currentColor"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                        />
-                        <path
-                          d="M3 3H5L7 15C7.21572 15.6135 7.62494 16.1402 8.16602 16.501C8.7071 16.8617 9.35075 17.0368 10 17H17C17.6493 17.0368 18.2929 16.8617 18.834 16.501C19.3751 16.1402 19.7843 15.6135 20 15L21 8L10 8"
-                          fill="transparent"
-                          stroke="currentColor"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                        />
-                      </svg>
-                    </span>
-                    <span
-                      className="fa-align-middle fa-ml-2"
+                        -
+                      </span>
+                    </button>
+                    <p>
+                      6
+                    </p>
+                    <button
+                      className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3 item-action add_remove_button"
+                      disabled={false}
+                      onClick={[Function]}
+                      style={Object {}}
+                      type="button"
                     >
-                      Agregar
-                    </span>
-                  </button>
+                      <span
+                        className="fa-align-middle fa-ml-2"
+                      >
+                        +
+                      </span>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -385,59 +367,41 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
           </div>
         </a>
         <div
-          className="button"
+          className="itemHandler"
         >
-          <button
-            className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
-            disabled={false}
-            onClick={[Function]}
-            style={Object {}}
-            type="button"
+          <div
+            className="itemHandler--actions"
           >
-            <span
-              className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
+            <button
+              className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3 item-action add_remove_button"
+              disabled={false}
+              onClick={[Function]}
+              style={Object {}}
+              type="button"
             >
-              <svg
-                className=" "
-                color="currentColor"
-                fill="currentColor"
-                height={16}
-                viewBox="0 0 24 24"
-                width={16}
-                xmlns="http://www.w3.org/2000/svg"
+              <span
+                className="fa-align-middle fa-ml-2"
               >
-                <path
-                  d="M9 21C10.1046 21 11 20.1046 11 19C11 17.8954 10.1046 17 9 17C7.89543 17 7 17.8954 7 19C7 20.1046 7.89543 21 9 21Z"
-                  fill="transparent"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                />
-                <path
-                  d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z"
-                  fill="transparent"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                />
-                <path
-                  d="M3 3H5L7 15C7.21572 15.6135 7.62494 16.1402 8.16602 16.501C8.7071 16.8617 9.35075 17.0368 10 17H17C17.6493 17.0368 18.2929 16.8617 18.834 16.501C19.3751 16.1402 19.7843 15.6135 20 15L21 8L10 8"
-                  fill="transparent"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                />
-              </svg>
-            </span>
-            <span
-              className="fa-align-middle fa-ml-2"
+                -
+              </span>
+            </button>
+            <p>
+              6
+            </p>
+            <button
+              className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3 item-action add_remove_button"
+              disabled={false}
+              onClick={[Function]}
+              style={Object {}}
+              type="button"
             >
-              Agregar
-            </span>
-          </button>
+              <span
+                className="fa-align-middle fa-ml-2"
+              >
+                +
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -524,59 +488,41 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
               </div>
               <div>
                 <div
-                  className="button"
+                  className="itemHandler"
                 >
-                  <button
-                    className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
-                    disabled={false}
-                    onClick={[Function]}
-                    style={Object {}}
-                    type="button"
+                  <div
+                    className="itemHandler--actions"
                   >
-                    <span
-                      className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
+                    <button
+                      className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3 item-action add_remove_button"
+                      disabled={false}
+                      onClick={[Function]}
+                      style={Object {}}
+                      type="button"
                     >
-                      <svg
-                        className=" "
-                        color="currentColor"
-                        fill="currentColor"
-                        height={16}
-                        viewBox="0 0 24 24"
-                        width={16}
-                        xmlns="http://www.w3.org/2000/svg"
+                      <span
+                        className="fa-align-middle fa-ml-2"
                       >
-                        <path
-                          d="M9 21C10.1046 21 11 20.1046 11 19C11 17.8954 10.1046 17 9 17C7.89543 17 7 17.8954 7 19C7 20.1046 7.89543 21 9 21Z"
-                          fill="transparent"
-                          stroke="currentColor"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                        />
-                        <path
-                          d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z"
-                          fill="transparent"
-                          stroke="currentColor"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                        />
-                        <path
-                          d="M3 3H5L7 15C7.21572 15.6135 7.62494 16.1402 8.16602 16.501C8.7071 16.8617 9.35075 17.0368 10 17H17C17.6493 17.0368 18.2929 16.8617 18.834 16.501C19.3751 16.1402 19.7843 15.6135 20 15L21 8L10 8"
-                          fill="transparent"
-                          stroke="currentColor"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                        />
-                      </svg>
-                    </span>
-                    <span
-                      className="fa-align-middle fa-ml-2"
+                        -
+                      </span>
+                    </button>
+                    <p>
+                      1
+                    </p>
+                    <button
+                      className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3 item-action add_remove_button"
+                      disabled={false}
+                      onClick={[Function]}
+                      style={Object {}}
+                      type="button"
                     >
-                      Agregar
-                    </span>
-                  </button>
+                      <span
+                        className="fa-align-middle fa-ml-2"
+                      >
+                        +
+                      </span>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -632,59 +578,41 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
           </div>
         </a>
         <div
-          className="button"
+          className="itemHandler"
         >
-          <button
-            className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
-            disabled={false}
-            onClick={[Function]}
-            style={Object {}}
-            type="button"
+          <div
+            className="itemHandler--actions"
           >
-            <span
-              className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
+            <button
+              className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3 item-action add_remove_button"
+              disabled={false}
+              onClick={[Function]}
+              style={Object {}}
+              type="button"
             >
-              <svg
-                className=" "
-                color="currentColor"
-                fill="currentColor"
-                height={16}
-                viewBox="0 0 24 24"
-                width={16}
-                xmlns="http://www.w3.org/2000/svg"
+              <span
+                className="fa-align-middle fa-ml-2"
               >
-                <path
-                  d="M9 21C10.1046 21 11 20.1046 11 19C11 17.8954 10.1046 17 9 17C7.89543 17 7 17.8954 7 19C7 20.1046 7.89543 21 9 21Z"
-                  fill="transparent"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                />
-                <path
-                  d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z"
-                  fill="transparent"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                />
-                <path
-                  d="M3 3H5L7 15C7.21572 15.6135 7.62494 16.1402 8.16602 16.501C8.7071 16.8617 9.35075 17.0368 10 17H17C17.6493 17.0368 18.2929 16.8617 18.834 16.501C19.3751 16.1402 19.7843 15.6135 20 15L21 8L10 8"
-                  fill="transparent"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                />
-              </svg>
-            </span>
-            <span
-              className="fa-align-middle fa-ml-2"
+                -
+              </span>
+            </button>
+            <p>
+              1
+            </p>
+            <button
+              className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3 item-action add_remove_button"
+              disabled={false}
+              onClick={[Function]}
+              style={Object {}}
+              type="button"
             >
-              Agregar
-            </span>
-          </button>
+              <span
+                className="fa-align-middle fa-ml-2"
+              >
+                +
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </div>

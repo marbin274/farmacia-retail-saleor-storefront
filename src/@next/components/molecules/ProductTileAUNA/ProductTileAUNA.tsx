@@ -1,12 +1,14 @@
 import { ProductSticker } from "@components/atoms";
 import { TaxedMoney } from "@components/containers";
 import { Thumbnail } from "@components/molecules";
+import { trackAddProductToCartFromPersonalized, trackSelectProductFromPersonalized } from "@temp/@next/optimizely/tracks";
 import {
   checkProductCanAddToCart,
   getProductPricingClass,
   productStickerRules,
 } from "@temp/@next/utils/products";
 import { launchDetailProductEvent } from "@temp/@sdk/gaConfig";
+import { ICheckoutModelLineVariantLocalStorage } from "@temp/@sdk/repository";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ItemsHandler from "../../organisms/ItemsHandler/ItemsHandler";
@@ -17,6 +19,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
   addToCart,
   removeItemToCart,
   subtractItemToCart,
+  isPersonalized,
   productUrl: productLink,
   product,
   productsOnCart,
@@ -32,6 +35,13 @@ export const ProductTileAUNA: React.FC<IProps> = ({
 
   const { canAddToCart } = checkProductCanAddToCart(product, productsOnCart);
   const { isOnSale, isOutStock } = productStickerRules(product);
+
+  const handleAddToCart = (productId: ICheckoutModelLineVariantLocalStorage, quantity: number) => {
+    if (!!isPersonalized) {
+      trackAddProductToCartFromPersonalized();
+    }
+    addToCart(productId, quantity);
+  }
 
   useEffect(() => {
     setThumbnails({
@@ -50,6 +60,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
           to={productLink} 
           key={product.id} 
           onClick={(e)=> {
+            trackSelectProductFromPersonalized();
             if (refActions?.current?.contains(e.target)) {
               e.preventDefault();
             }
@@ -105,7 +116,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
                 <ItemsHandler
                   canAddToCart={canAddToCart}
                   product={product}
-                  addToCart={addToCart}
+                  addToCart={handleAddToCart}
                   removeItemToCart={removeItemToCart}
                   subtractItemToCart={subtractItemToCart}
                 />
@@ -115,7 +126,13 @@ export const ProductTileAUNA: React.FC<IProps> = ({
         </S.LinkContainer>
       </div>
       <div className='fa-hidden lg:fa-block'>
-        <Link to={productLink} key={product.id}>
+        <Link 
+        key={product.id}
+          onClick={() => {
+            trackSelectProductFromPersonalized();
+          }}
+          to={productLink}
+        >
           <S.WrapperStockout>
             <ProductSticker isOnSale={isOnSale} isOutStock={isOutStock} />
             <div
@@ -154,7 +171,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
         <ItemsHandler
           canAddToCart={canAddToCart}
           product={product}
-          addToCart={addToCart}
+          addToCart={handleAddToCart}
           removeItemToCart={removeItemToCart}
           subtractItemToCart={subtractItemToCart}
         />
