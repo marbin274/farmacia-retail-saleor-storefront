@@ -52,7 +52,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
 
   return (
     <S.ProductCard  
-     className='home-page_product fa-border-b fa-border-solid fa-border-neutral-medium lg:fa-border-0' 
+     className='home-page__product fa-border-b fa-border-solid fa-border-neutral-medium lg:fa-border-0' 
       data-cy="product-tile"  
       canAddToCart={canAddToCart}>
       <div className='fa-w-full fa-block lg:fa-hidden'>
@@ -65,7 +65,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
               e.preventDefault();
             }
           }}>
-          <div className='home-page_product-image fa-flex fa-flex-col fa-items-center'>
+          <div className='home-page__product-image fa-flex fa-flex-col fa-items-center'>
             <div
               className="img fa-rounded-lg fa-bg-white fa-overflow-hidden"
               onClick={() =>
@@ -81,12 +81,12 @@ export const ProductTileAUNA: React.FC<IProps> = ({
                 <Thumbnail height={510} width={510} source={thumbnails} />
               </S.Image>
             </div>
-            <div className='home-page_product-sticker fa-mt-2'>
+            <div className='home-page__product-sticker fa-mt-2'>
               <ProductSticker isOnSale={isOnSale} isOutStock={isOutStock} />
             </div>
           </div>
           <div className='fa-px-4 fa-pb-4'>
-            <div className='home-page_product-price fa-hidden'>
+            <div className='home-page__product-price fa-hidden'>
               <div className={getProductPricingClass(canAddToCart, isOnSale)}>
                 <S.Price>
                   <TaxedMoney taxedMoney={product?.pricing?.priceRange?.start} />
@@ -102,10 +102,10 @@ export const ProductTileAUNA: React.FC<IProps> = ({
 
             </div>
             <div className="description">
-              <S.Title className='home-page_product-title fa-text-left'>{product.name}</S.Title>
+              <S.Title className='home-page__product-title fa-text-left'>{product.name}</S.Title>
             </div>
-            <div className='home-page_product-button fa-flex fa-justify-between'>
-              <div className='search-page_product-price'>
+            <div className='home-page__product-button fa-flex fa-justify-between'>
+              <div className='search-page__product-price'>
                 <div className={getProductPricingClass(canAddToCart, isOnSale)}>
                   <S.Price className='fa-font-base'>
                     <TaxedMoney taxedMoney={product?.pricing?.priceRange?.start} />

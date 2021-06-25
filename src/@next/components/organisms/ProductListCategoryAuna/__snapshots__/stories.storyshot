@@ -184,7 +184,7 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
 @media (max-width:540px) {
   .c1 {
     grid-template-columns: 1fr;
-    grid-gap: 1rem 1rem;
+    grid-gap: 0 1rem;
   }
 }
 
@@ -195,7 +195,7 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
     className="c1"
   >
     <div
-      className="home-page_product fa-border-b fa-border-solid fa-border-neutral-medium lg:fa-border-0 c2"
+      className="home-page__product fa-border-b fa-border-solid fa-border-neutral-medium lg:fa-border-0 c2"
       data-cy="product-tile"
     >
       <div
@@ -207,7 +207,7 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
           onClick={[Function]}
         >
           <div
-            className="home-page_product-image fa-flex fa-flex-col fa-items-center"
+            className="home-page__product-image fa-flex fa-flex-col fa-items-center"
           >
             <div
               className="img fa-rounded-lg fa-bg-white fa-overflow-hidden"
@@ -223,7 +223,7 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
               </div>
             </div>
             <div
-              className="home-page_product-sticker fa-mt-2"
+              className="home-page__product-sticker fa-mt-2"
             >
               <div
                 className="fa-flex fa-justify-start"
@@ -234,7 +234,7 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
             className="fa-px-4 fa-pb-4"
           >
             <div
-              className="home-page_product-price fa-hidden"
+              className="home-page__product-price fa-hidden"
             >
               <div
                 className="price"
@@ -252,16 +252,16 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
               className="description"
             >
               <h4
-                className="home-page_product-title fa-text-left "
+                className="home-page__product-title fa-text-left "
               >
                 Betacort Depot Solución Inyectable
               </h4>
             </div>
             <div
-              className="home-page_product-button fa-flex fa-justify-between"
+              className="home-page__product-button fa-flex fa-justify-between"
             >
               <div
-                className="search-page_product-price"
+                className="search-page__product-price"
               >
                 <div
                   className="price"
@@ -406,7 +406,7 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
       </div>
     </div>
     <div
-      className="home-page_product fa-border-b fa-border-solid fa-border-neutral-medium lg:fa-border-0 c2"
+      className="home-page__product fa-border-b fa-border-solid fa-border-neutral-medium lg:fa-border-0 c2"
       data-cy="product-tile"
     >
       <div
@@ -418,7 +418,7 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
           onClick={[Function]}
         >
           <div
-            className="home-page_product-image fa-flex fa-flex-col fa-items-center"
+            className="home-page__product-image fa-flex fa-flex-col fa-items-center"
           >
             <div
               className="img fa-rounded-lg fa-bg-white fa-overflow-hidden"
@@ -434,7 +434,7 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
               </div>
             </div>
             <div
-              className="home-page_product-sticker fa-mt-2"
+              className="home-page__product-sticker fa-mt-2"
             >
               <div
                 className="fa-flex fa-justify-start"
@@ -445,7 +445,7 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
             className="fa-px-4 fa-pb-4"
           >
             <div
-              className="home-page_product-price fa-hidden"
+              className="home-page__product-price fa-hidden"
             >
               <div
                 className="price"
@@ -463,16 +463,16 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
               className="description"
             >
               <h4
-                className="home-page_product-title fa-text-left "
+                className="home-page__product-title fa-text-left "
               >
                 Abrilar 35Mg/5ML Jarabe - Frasco 100 ML
               </h4>
             </div>
             <div
-              className="home-page_product-button fa-flex fa-justify-between"
+              className="home-page__product-button fa-flex fa-justify-between"
             >
               <div
-                className="search-page_product-price"
+                className="search-page__product-price"
               >
                 <div
                   className="price"
@@ -617,7 +617,7 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
       </div>
     </div>
     <div
-      className="home-page_product fa-border-b fa-border-solid fa-border-neutral-medium lg:fa-border-0 c2"
+      className="home-page__product fa-border-b fa-border-solid fa-border-neutral-medium lg:fa-border-0 c2"
       data-cy="product-tile"
     >
       <div
@@ -629,7 +629,7 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
           onClick={[Function]}
         >
           <div
-            className="home-page_product-image fa-flex fa-flex-col fa-items-center"
+            className="home-page__product-image fa-flex fa-flex-col fa-items-center"
           >
             <div
               className="img fa-rounded-lg fa-bg-white fa-overflow-hidden"
@@ -645,7 +645,7 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
               </div>
             </div>
             <div
-              className="home-page_product-sticker fa-mt-2"
+              className="home-page__product-sticker fa-mt-2"
             >
               <div
                 className="fa-flex fa-justify-start"
@@ -656,7 +656,7 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
             className="fa-px-4 fa-pb-4"
           >
             <div
-              className="home-page_product-price fa-hidden"
+              className="home-page__product-price fa-hidden"
             >
               <div
                 className="price"
@@ -674,16 +674,16 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
               className="description"
             >
               <h4
-                className="home-page_product-title fa-text-left "
+                className="home-page__product-title fa-text-left "
               >
                 Amlodipino-Gef 10Mg Tabletas - Caja 10 Und
               </h4>
             </div>
             <div
-              className="home-page_product-button fa-flex fa-justify-between"
+              className="home-page__product-button fa-flex fa-justify-between"
             >
               <div
-                className="search-page_product-price"
+                className="search-page__product-price"
               >
                 <div
                   className="price"
@@ -864,7 +864,7 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
       </div>
     </div>
     <div
-      className="home-page_product fa-border-b fa-border-solid fa-border-neutral-medium lg:fa-border-0 c2"
+      className="home-page__product fa-border-b fa-border-solid fa-border-neutral-medium lg:fa-border-0 c2"
       data-cy="product-tile"
     >
       <div
@@ -876,7 +876,7 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
           onClick={[Function]}
         >
           <div
-            className="home-page_product-image fa-flex fa-flex-col fa-items-center"
+            className="home-page__product-image fa-flex fa-flex-col fa-items-center"
           >
             <div
               className="img fa-rounded-lg fa-bg-white fa-overflow-hidden"
@@ -892,7 +892,7 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
               </div>
             </div>
             <div
-              className="home-page_product-sticker fa-mt-2"
+              className="home-page__product-sticker fa-mt-2"
             >
               <div
                 className="fa-flex fa-justify-start"
@@ -903,7 +903,7 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
             className="fa-px-4 fa-pb-4"
           >
             <div
-              className="home-page_product-price fa-hidden"
+              className="home-page__product-price fa-hidden"
             >
               <div
                 className="price"
@@ -921,16 +921,16 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
               className="description"
             >
               <h4
-                className="home-page_product-title fa-text-left "
+                className="home-page__product-title fa-text-left "
               >
                 Ab Broncol NF 1200Mg/5ML Solución Inyectable Intramuscular
               </h4>
             </div>
             <div
-              className="home-page_product-button fa-flex fa-justify-between"
+              className="home-page__product-button fa-flex fa-justify-between"
             >
               <div
-                className="search-page_product-price"
+                className="search-page__product-price"
               >
                 <div
                   className="price"
@@ -1111,7 +1111,7 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
       </div>
     </div>
     <div
-      className="home-page_product fa-border-b fa-border-solid fa-border-neutral-medium lg:fa-border-0 c2"
+      className="home-page__product fa-border-b fa-border-solid fa-border-neutral-medium lg:fa-border-0 c2"
       data-cy="product-tile"
     >
       <div
@@ -1123,7 +1123,7 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
           onClick={[Function]}
         >
           <div
-            className="home-page_product-image fa-flex fa-flex-col fa-items-center"
+            className="home-page__product-image fa-flex fa-flex-col fa-items-center"
           >
             <div
               className="img fa-rounded-lg fa-bg-white fa-overflow-hidden"
@@ -1139,7 +1139,7 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
               </div>
             </div>
             <div
-              className="home-page_product-sticker fa-mt-2"
+              className="home-page__product-sticker fa-mt-2"
             >
               <div
                 className="fa-flex fa-justify-start"
@@ -1150,7 +1150,7 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
             className="fa-px-4 fa-pb-4"
           >
             <div
-              className="home-page_product-price fa-hidden"
+              className="home-page__product-price fa-hidden"
             >
               <div
                 className="price"
@@ -1168,16 +1168,16 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
               className="description"
             >
               <h4
-                className="home-page_product-title fa-text-left "
+                className="home-page__product-title fa-text-left "
               >
                 Antalgina 500Mg Tabletas 
               </h4>
             </div>
             <div
-              className="home-page_product-button fa-flex fa-justify-between"
+              className="home-page__product-button fa-flex fa-justify-between"
             >
               <div
-                className="search-page_product-price"
+                className="search-page__product-price"
               >
                 <div
                   className="price"
@@ -1358,7 +1358,7 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
       </div>
     </div>
     <div
-      className="home-page_product fa-border-b fa-border-solid fa-border-neutral-medium lg:fa-border-0 c2"
+      className="home-page__product fa-border-b fa-border-solid fa-border-neutral-medium lg:fa-border-0 c2"
       data-cy="product-tile"
     >
       <div
@@ -1370,7 +1370,7 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
           onClick={[Function]}
         >
           <div
-            className="home-page_product-image fa-flex fa-flex-col fa-items-center"
+            className="home-page__product-image fa-flex fa-flex-col fa-items-center"
           >
             <div
               className="img fa-rounded-lg fa-bg-white fa-overflow-hidden"
@@ -1386,7 +1386,7 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
               </div>
             </div>
             <div
-              className="home-page_product-sticker fa-mt-2"
+              className="home-page__product-sticker fa-mt-2"
             >
               <div
                 className="fa-flex fa-justify-start"
@@ -1397,7 +1397,7 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
             className="fa-px-4 fa-pb-4"
           >
             <div
-              className="home-page_product-price fa-hidden"
+              className="home-page__product-price fa-hidden"
             >
               <div
                 className="price"
@@ -1415,16 +1415,16 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
               className="description"
             >
               <h4
-                className="home-page_product-title fa-text-left "
+                className="home-page__product-title fa-text-left "
               >
                 Arcoxia 90Mg Tabletas Recubiertas - Caja 14 Und
               </h4>
             </div>
             <div
-              className="home-page_product-button fa-flex fa-justify-between"
+              className="home-page__product-button fa-flex fa-justify-between"
             >
               <div
-                className="search-page_product-price"
+                className="search-page__product-price"
               >
                 <div
                   className="price"
@@ -1605,7 +1605,7 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
       </div>
     </div>
     <div
-      className="home-page_product fa-border-b fa-border-solid fa-border-neutral-medium lg:fa-border-0 c2"
+      className="home-page__product fa-border-b fa-border-solid fa-border-neutral-medium lg:fa-border-0 c2"
       data-cy="product-tile"
     >
       <div
@@ -1617,7 +1617,7 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
           onClick={[Function]}
         >
           <div
-            className="home-page_product-image fa-flex fa-flex-col fa-items-center"
+            className="home-page__product-image fa-flex fa-flex-col fa-items-center"
           >
             <div
               className="img fa-rounded-lg fa-bg-white fa-overflow-hidden"
@@ -1633,7 +1633,7 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
               </div>
             </div>
             <div
-              className="home-page_product-sticker fa-mt-2"
+              className="home-page__product-sticker fa-mt-2"
             >
               <div
                 className="fa-flex fa-justify-start"
@@ -1644,7 +1644,7 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
             className="fa-px-4 fa-pb-4"
           >
             <div
-              className="home-page_product-price fa-hidden"
+              className="home-page__product-price fa-hidden"
             >
               <div
                 className="price"
@@ -1662,16 +1662,16 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
               className="description"
             >
               <h4
-                className="home-page_product-title fa-text-left "
+                className="home-page__product-title fa-text-left "
               >
                 Bepanthen Ungüento - Tubo 30 Gr
               </h4>
             </div>
             <div
-              className="home-page_product-button fa-flex fa-justify-between"
+              className="home-page__product-button fa-flex fa-justify-between"
             >
               <div
-                className="search-page_product-price"
+                className="search-page__product-price"
               >
                 <div
                   className="price"
@@ -1852,7 +1852,7 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
       </div>
     </div>
     <div
-      className="home-page_product fa-border-b fa-border-solid fa-border-neutral-medium lg:fa-border-0 c2"
+      className="home-page__product fa-border-b fa-border-solid fa-border-neutral-medium lg:fa-border-0 c2"
       data-cy="product-tile"
     >
       <div
@@ -1864,7 +1864,7 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
           onClick={[Function]}
         >
           <div
-            className="home-page_product-image fa-flex fa-flex-col fa-items-center"
+            className="home-page__product-image fa-flex fa-flex-col fa-items-center"
           >
             <div
               className="img fa-rounded-lg fa-bg-white fa-overflow-hidden"
@@ -1880,7 +1880,7 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
               </div>
             </div>
             <div
-              className="home-page_product-sticker fa-mt-2"
+              className="home-page__product-sticker fa-mt-2"
             >
               <div
                 className="fa-flex fa-justify-start"
@@ -1891,7 +1891,7 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
             className="fa-px-4 fa-pb-4"
           >
             <div
-              className="home-page_product-price fa-hidden"
+              className="home-page__product-price fa-hidden"
             >
               <div
                 className="price"
@@ -1909,16 +1909,16 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
               className="description"
             >
               <h4
-                className="home-page_product-title fa-text-left "
+                className="home-page__product-title fa-text-left "
               >
                 Buscapina Compositum N 500Mg-10Mg Grageas 
               </h4>
             </div>
             <div
-              className="home-page_product-button fa-flex fa-justify-between"
+              className="home-page__product-button fa-flex fa-justify-between"
             >
               <div
-                className="search-page_product-price"
+                className="search-page__product-price"
               >
                 <div
                   className="price"

@@ -61,6 +61,10 @@ export const RightSide = styled.div`
     cursor: pointer;
     margin-right: 2rem;
     justify-content: flex-end;
+    .select-container {
+      display: flex;
+      align-items: center;
+    }
     .clear-label {
       margin-right:0;
       height: 2.5rem;

@@ -28,6 +28,9 @@
       align-items: center;
       flex-direction: column;
     }
+    @media (max-width: $medium-screen) {
+      padding: 0;
+    }
 
     .breadcrumbs {
       display: none;
@@ -45,8 +48,15 @@
     @media (min-width: $small-screen) {
       margin-left: 1.5rem;
     }
+  
+    @media (max-width: $medium-screen) {
+      background-color: $white;
+      .home-page__product {
+        padding: 1rem 1.5rem;
+        background-color: $white;
+      }
+    }
   }
-
   &__header {
     text-align: center;
     padding-top: $spacer * 4.5;
