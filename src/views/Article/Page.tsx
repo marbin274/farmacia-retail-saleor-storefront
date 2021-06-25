@@ -18,7 +18,7 @@ export const Page: React.FC<PageProps> = ({
   const isMainBlog: boolean = page.slug === "blog";
 
   const imageSection = (() =>
-    <div className="article-page__image">
+    <div className="article-page__image container">
       <img alt="page-image" src={page.contentImage} />
     </div>);
 
@@ -41,7 +41,7 @@ export const Page: React.FC<PageProps> = ({
         <Breadcrumbs breadcrumbs={breadcrumbs} breadcrumbsAlwaysVisible />        
       </div>
       {
-        !isMainBlog && <>{imageSection()}</>
+        !isMainBlog && <div className="blog-page">{imageSection()}</div>
       }
       <div className="container">
         <div className="article-page__container">
