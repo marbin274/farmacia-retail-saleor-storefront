@@ -186,6 +186,7 @@
       ul {
         li {
           background-color: white;
+          border: 0;
           @media (min-width: $medium-screen) {
             width: 13rem !important;
           }

@@ -286,11 +286,10 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
                       className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3 item-action add_remove_button"
                       disabled={false}
                       onClick={[Function]}
-                      style={Object {}}
                       type="button"
                     >
                       <span
-                        className="fa-align-middle fa-ml-2"
+                        className="fa-align-middle"
                       >
                         -
                       </span>
@@ -302,11 +301,10 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
                       className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3 item-action add_remove_button"
                       disabled={false}
                       onClick={[Function]}
-                      style={Object {}}
                       type="button"
                     >
                       <span
-                        className="fa-align-middle fa-ml-2"
+                        className="fa-align-middle"
                       >
                         +
                       </span>
@@ -376,11 +374,10 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
               className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3 item-action add_remove_button"
               disabled={false}
               onClick={[Function]}
-              style={Object {}}
               type="button"
             >
               <span
-                className="fa-align-middle fa-ml-2"
+                className="fa-align-middle"
               >
                 -
               </span>
@@ -392,11 +389,10 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
               className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3 item-action add_remove_button"
               disabled={false}
               onClick={[Function]}
-              style={Object {}}
               type="button"
             >
               <span
-                className="fa-align-middle fa-ml-2"
+                className="fa-align-middle"
               >
                 +
               </span>
@@ -497,11 +493,10 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
                       className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3 item-action add_remove_button"
                       disabled={false}
                       onClick={[Function]}
-                      style={Object {}}
                       type="button"
                     >
                       <span
-                        className="fa-align-middle fa-ml-2"
+                        className="fa-align-middle"
                       >
                         -
                       </span>
@@ -513,11 +508,10 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
                       className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3 item-action add_remove_button"
                       disabled={false}
                       onClick={[Function]}
-                      style={Object {}}
                       type="button"
                     >
                       <span
-                        className="fa-align-middle fa-ml-2"
+                        className="fa-align-middle"
                       >
                         +
                       </span>
@@ -587,11 +581,10 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
               className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3 item-action add_remove_button"
               disabled={false}
               onClick={[Function]}
-              style={Object {}}
               type="button"
             >
               <span
-                className="fa-align-middle fa-ml-2"
+                className="fa-align-middle"
               >
                 -
               </span>
@@ -603,11 +596,10 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
               className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3 item-action add_remove_button"
               disabled={false}
               onClick={[Function]}
-              style={Object {}}
               type="button"
             >
               <span
-                className="fa-align-middle fa-ml-2"
+                className="fa-align-middle"
               >
                 +
               </span>
@@ -705,7 +697,6 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
                     className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
                     disabled={false}
                     onClick={[Function]}
-                    style={Object {}}
                     type="button"
                   >
                     <span
@@ -813,7 +804,6 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
             className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
             disabled={false}
             onClick={[Function]}
-            style={Object {}}
             type="button"
           >
             <span
@@ -952,7 +942,6 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
                     className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
                     disabled={false}
                     onClick={[Function]}
-                    style={Object {}}
                     type="button"
                   >
                     <span
@@ -1060,7 +1049,6 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
             className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
             disabled={false}
             onClick={[Function]}
-            style={Object {}}
             type="button"
           >
             <span
@@ -1199,7 +1187,6 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
                     className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
                     disabled={false}
                     onClick={[Function]}
-                    style={Object {}}
                     type="button"
                   >
                     <span
@@ -1307,7 +1294,6 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
             className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
             disabled={false}
             onClick={[Function]}
-            style={Object {}}
             type="button"
           >
             <span
@@ -1446,7 +1432,6 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
                     className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
                     disabled={false}
                     onClick={[Function]}
-                    style={Object {}}
                     type="button"
                   >
                     <span
@@ -1554,7 +1539,6 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
             className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
             disabled={false}
             onClick={[Function]}
-            style={Object {}}
             type="button"
           >
             <span
@@ -1693,7 +1677,6 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
                     className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
                     disabled={false}
                     onClick={[Function]}
-                    style={Object {}}
                     type="button"
                   >
                     <span
@@ -1801,7 +1784,6 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
             className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
             disabled={false}
             onClick={[Function]}
-            style={Object {}}
             type="button"
           >
             <span
@@ -1940,7 +1922,6 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
                     className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
                     disabled={false}
                     onClick={[Function]}
-                    style={Object {}}
                     type="button"
                   >
                     <span
@@ -2048,7 +2029,6 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
             className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
             disabled={false}
             onClick={[Function]}
-            style={Object {}}
             type="button"
           >
             <span
@@ -2107,7 +2087,6 @@ exports[`Storyshots @components/organisms/ProductListCategoryAuna default 1`] = 
       data-cy="load-more_button"
       disabled={false}
       onClick={[Function]}
-      style={Object {}}
       type="button"
     >
       <span
