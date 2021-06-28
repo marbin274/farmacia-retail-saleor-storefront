@@ -23,10 +23,7 @@ export const Page: React.FC<PageProps> = ({
     </div>);
 
   return (
-    <div className="article-page">
-      {
-        isMainBlog && <>{imageSection()}</>
-      }
+    <>
       {
         !isMainBlog && <div
           className="article-page__header"
@@ -37,21 +34,27 @@ export const Page: React.FC<PageProps> = ({
           </span>
         </div>
       }
-      <div className="container">
-        <Breadcrumbs breadcrumbs={breadcrumbs} breadcrumbsAlwaysVisible />        
-      </div>
-      {
-        !isMainBlog && <div className="blog-page">{imageSection()}</div>
-      }
-      <div className="container">
-        <div className="article-page__container">
-          <RichTextContent
-            descriptionJson={page.contentJson}
-            className="article-page__content"
-          />
+      <div className="article-page">
+        {
+          isMainBlog && <>{imageSection()}</>
+        }
+
+        <div className="container">
+          <Breadcrumbs breadcrumbs={breadcrumbs} breadcrumbsAlwaysVisible />
+        </div>
+        {
+          !isMainBlog && <div className="blog-page">{imageSection()}</div>
+        }
+        <div className="container">
+          <div className="article-page__container">
+            <RichTextContent
+              descriptionJson={page.contentJson}
+              className="article-page__content"
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 export default Page;
