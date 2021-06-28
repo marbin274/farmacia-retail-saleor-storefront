@@ -43,7 +43,6 @@ export const ProductCard = styled.div<{
       max-width: 100%;
       vertical-align: middle;
       margin: auto;
-      margin-top:8px;
     }
   }
 
@@ -151,5 +150,4 @@ export const WrapperStockout = styled.div`
   overflow: hidden;
   position: relative;
   height: ${productIntHeight};
-  margin-bottom: 16px;
 `;

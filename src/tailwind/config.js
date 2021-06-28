@@ -2,4 +2,7 @@ const tailwindConfig = require("@farmacia-retail/farmauna-components/tailwind.co
 
 module.exports = {
   ...tailwindConfig,
+  plugins: [
+    require('@tailwindcss/line-clamp'),
+  ],
 };

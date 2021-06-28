@@ -18,16 +18,18 @@
   }
   &__products {
     .home-page__product {
-      height: 26.5rem;
       border-width: 0;
       padding: 2rem;
       .description {
-        height: 5rem;
+        height: 4rem;
         margin-bottom: 0.5rem;
       }
       &-sticker {
         margin-top: 0;
         align-self: flex-start;
+        & > div {
+          position: absolute;
+        }
       }
       &-image {
         flex-direction: column-reverse;
