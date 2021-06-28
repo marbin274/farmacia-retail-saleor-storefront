@@ -33,11 +33,10 @@ const SEARCH_HEIGHT = 56;
 const Header: React.FC<IProps> = ({
   categories,
   hideMenuCondition,
-  isProductPage,
+  isLightHeader,
 }) => {
-  const [isVisibleSearchIcon, setVisibleSearchIcon] = React.useState<boolean>(
-    false
-  );
+  const [isVisibleSearchIcon, setVisibleSearchIcon] =
+    React.useState<boolean>(false);
   const { data: user } = useUserDetails();
   const [signOut] = useSignOut();
   const { items } = useCart();
@@ -202,7 +201,7 @@ const Header: React.FC<IProps> = ({
     if (hideMenuCondition) return <></>;
     const canShowSearchIcon =
       (isMaxLargeScreen && isVisibleSearchIcon) ||
-      (isProductPage && isMaxLargeScreen);
+      (isLightHeader && isMaxLargeScreen);
     return (
       <div className="main-header__right">
         <ul>
@@ -245,7 +244,7 @@ const Header: React.FC<IProps> = ({
 
   const renderHeader = (overlayContext: OverlayContextInterface) => {
     const justifyCenterLogo = hideMenuCondition && isMaxLargeScreen;
-    const hasBorderHeader = isProductPage && isMaxLargeScreen;
+    const hasBorderHeader = isLightHeader && isMaxLargeScreen;
     return (
       <header
         className={`header ${hasBorderHeader && "header__border-bottom"}`}
