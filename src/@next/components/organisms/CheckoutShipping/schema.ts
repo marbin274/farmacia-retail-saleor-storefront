@@ -13,7 +13,7 @@ export const shippingMethodFormSchema = yup.object().shape({
         }),
     isScheduled: yup
         .boolean().nullable().required(),
-    scheduleSelected: yup
+    selectedSlotId: yup
         .string()
         .when("isScheduled", {
             is: (value: boolean | null) => value === true,

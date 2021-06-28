@@ -10,21 +10,12 @@ import {
   steps,
 } from "@sdk/gaConfig";
 import { useCart, useCheckout } from "@sdk/react";
-import { alertService } from "@temp/@next/components/atoms/Alert";
 import { smallScreen } from "@temp/@next/globalStyles/constants";
 import { useUpdateCartLines } from "@temp/@next/hooks";
-import {
-  checkAttentionSchedule,
-  removePaymentItems,
-} from "@temp/@next/utils/checkoutValidations";
-import {
-  SHIPPING_METHOD_NOT_FOUND,
-  SHIPPING_METHOD_NOT_FOUND_TITLE,
-} from "@temp/@next/utils/schemasMessages";
+import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
 import { LocalRepository } from "@temp/@sdk/repository";
 import { BASE_URL, CHECKOUT_STEPS } from "@temp/core/config";
 import { IFormError, ITaxedMoney } from "@types";
-import shippingMethodCalendarInfoIco from "images/auna/shipping-method-calendar-info.svg";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import Media from "react-media";
 import { Redirect, useLocation } from "react-router-dom";
@@ -41,7 +32,6 @@ import {
   ICheckoutShippingSubpageHandles,
 } from "./subpages";
 import { IProps } from "./types";
-
 const prepareCartSummary = (
   activeStepIndex: number,
   onClickHandle: () => void,
@@ -156,36 +146,37 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
   }
 
   const {
-    availableShippingMethods,
+    // availableShippingMethods,
     loaded: checkoutLoaded,
     checkout,
     payment,
-    setShippingMethod,
+    // setShippingMethod,
   } = useCheckout();
 
-  const { isAttentionSchedule } = checkAttentionSchedule(
-    checkoutLoaded,
-    checkout,
-    availableShippingMethods
-  );
+  // const { isAttentionSchedule } = checkAttentionSchedule(
+  //   checkoutLoaded,
+  //   checkout,
+  //   availableShippingMethods
+  // );
 
   if (!items || !items?.length) {
     removePaymentItems();
     return <Redirect to={BASE_URL} />;
   }
 
-  if (isAttentionSchedule === false) {
-    alertService.sendAlert({
-      acceptDialog: () => {
-        setShippingMethod({ shippingMethodId: "" });
-      },
-      buttonText: "Entendido",
-      icon: shippingMethodCalendarInfoIco,
-      message: SHIPPING_METHOD_NOT_FOUND,
-      title: SHIPPING_METHOD_NOT_FOUND_TITLE,
-      type: "Info",
-    });
-  }
+  // Descomentar si se dejara de utilizar slots y se vuelve a shipping methods de saleor
+  // if (isAttentionSchedule === false) {
+  //   alertService.sendAlert({
+  //     acceptDialog: () => {
+  //       setShippingMethod({ shippingMethodId: "", slotId: undefined });
+  //     },
+  //     buttonText: "Entendido",
+  //     icon: shippingMethodCalendarInfoIco,
+  //     message: SHIPPING_METHOD_NOT_FOUND,
+  //     title: SHIPPING_METHOD_NOT_FOUND_TITLE,
+  //     type: "Info",
+  //   });
+  // }
 
   if (cartLoaded && (!items || !items?.length)) {
     return <Redirect to="/cart/" />;
