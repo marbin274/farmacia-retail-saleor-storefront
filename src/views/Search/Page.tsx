@@ -11,7 +11,7 @@ import { IFilterAttributes, IFilters } from "@types";
 import * as React from "react";
 import { Link } from "react-router-dom";
 import { Pagination } from "@farmacia-retail/farmauna-components";
-import { ProductListHeader } from "../../@next/components/molecules";
+import { ProductListHeaderSearch } from "../../@next/components/molecules";
 import { ProductListAUNA } from "../../@next/components/organisms";
 import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
 import { SearchProducts_paginatedProducts } from "./gqlTypes/SearchProducts";
@@ -117,7 +117,7 @@ const Page: React.FC<PageProps> = ({
         {products.totalCount > 0 ? (
           <div>
             <div className="product_list_container">
-              <ProductListHeader
+              <ProductListHeaderSearch
                 activeSortOption={activeSortOption}
                 activeFilters={activeFilters}
                 activeFiltersAttributes={activeFiltersAttributes}

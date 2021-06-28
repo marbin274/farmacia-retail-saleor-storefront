@@ -299,6 +299,7 @@ export interface CheckoutLineInput {
   quantity: number;
   variantId: string;
 }
+
 export interface CollectionSortingInput {
   direction: OrderDirection;
   field: CollectionSortField;

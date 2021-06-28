@@ -10,6 +10,7 @@ import { AddressGeoModalInfo } from "./AddressGeoModalInfo";
 import { addressGeoModalService } from "./AddressGeoModalService";
 import * as S from "./styles";
 import { Button, BulletXFilledIcon } from "@farmacia-retail/farmauna-components";
+import farmatheme from "@farmatheme";
 
 export const AddressGeoModal: React.FC = () => {
     const { availableDistricts } = useShopContext();
@@ -69,7 +70,7 @@ export const AddressGeoModal: React.FC = () => {
                         <S.CloseIcon>
                             <BulletXFilledIcon
                                 size={32}
-                                color="#452FBA"
+                                color={farmatheme.theme.colors.interactive}
                                 onClick={handleCloseModal}
                                 />
                         </S.CloseIcon>

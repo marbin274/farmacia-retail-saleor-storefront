@@ -28,7 +28,7 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
   width: 1.5rem;
   height: 1.5rem;
   border: none;
-  background-color: #452fba;
+  background-color: #452FBA;
   border-radius: 50%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -155,14 +155,14 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
 }
 
 .c20 {
-  color: #452fba;
+  color: #452FBA;
   font-size: 1.5rem;
   line-height: 2.25rem;
   font-weight: 600;
 }
 
 .c21 {
-  color: #452fba;
+  color: #452FBA;
   font-weight: 600;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
@@ -234,7 +234,7 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
 }
 
 .c13 {
-  color: #452fba;
+  color: #452FBA;
   font-size: 1.5rem;
   font-weight: 600;
   margin: 0;
@@ -261,7 +261,7 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
 }
 
 .c14 span {
-  color: #452fba;
+  color: #452FBA;
   font-weight: 600;
 }
 

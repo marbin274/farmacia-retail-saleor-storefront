@@ -9,6 +9,7 @@ import {
 } from "../..";
 import "./scss/index.scss";
 import { BulletXFilledIcon } from "@farmacia-retail/farmauna-components";
+import farmatheme from "@farmatheme";
 
 const Password: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
 
@@ -20,7 +21,7 @@ const Password: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) =
             <div className="overlay__header-text" ><span className="forgot-password">Olvidé mi contraseña</span></div>
             <BulletXFilledIcon
               size={32}
-              color='#452FBA'
+              color={farmatheme.theme.colors.interactive}
               onClick={overlay.hide}
               className="overlay__header__close-icon"
             />

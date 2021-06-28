@@ -28,14 +28,14 @@ exports[`Storyshots @components/organisms/CheckoutReview default 1`] = `
 }
 
 .c2 {
-  color: #452fba;
+  color: #452FBA;
   font-size: 1.5rem;
   line-height: 2.25rem;
   font-weight: 600;
 }
 
 .c3 {
-  color: #452fba;
+  color: #452FBA;
   font-weight: 600;
   margin-top: 1rem;
   margin-bottom: 0.5rem;

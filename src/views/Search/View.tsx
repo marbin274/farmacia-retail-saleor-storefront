@@ -12,7 +12,7 @@ import {
   getGraphqlIdFromDBId,
   maybe,
 } from "../../core/utils";
-import Page, { SortOptions } from "./Page";
+import Page from "./Page";
 import { TypedSearchProductsQuery } from "./queries";
 import { useCart } from "@sdk/react";
 import {
@@ -24,6 +24,7 @@ import { useDistrictSelected } from "@temp/@next/hooks/useDistrictSelected";
 import Media from "react-media";
 import { smallScreen } from "@temp/@next/globalStyles/constants";
 import { convertToFilterSideBar, FilterQuerySet } from "@temp/core/utils/filters";
+import { SORT_OPTIONS } from "@temp/core/utils/sorts";
 
 type ViewProps = RouteComponentProps<{
   id: string;
@@ -104,36 +105,6 @@ export const View: React.FC<ViewProps> = ({ match }) => {
     districtId: districtSelected.id,
   };
 
-  const sortOptions: SortOptions = [
-    {
-      label: "Limpiar...",
-    },
-    {
-      label: "Precio más alto",
-      value: "price",
-    },
-    {
-      label: "Precio más bajo",
-      value: "-price",
-    },
-    {
-      label: "Nombre (A-Z)",
-      value: "name",
-    },
-    {
-      label: "Nombre (Z-A)",
-      value: "-name",
-    },
-    // TODO: uncomment as soon as we need to extend the cagetory filters
-    // {
-    //   label: "Last updated Ascending",
-    //   value: "updated_at",
-    // },
-    // {
-    //   label: "Last updated Descending",
-    //   value: "-updated_at",
-    // },
-  ];
   const {
     items: productsOnCart,
     addItem,
@@ -190,7 +161,7 @@ export const View: React.FC<ViewProps> = ({ match }) => {
                       () => data.paginatedProducts?.pageInfo.hasNextPage,
                       false
                     )}
-                    sortOptions={sortOptions}
+                    sortOptions={SORT_OPTIONS}
                     setSearch={setSearch}
                     search={search}
                     activeSortOption={filters.sortBy}

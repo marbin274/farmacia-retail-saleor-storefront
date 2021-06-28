@@ -1,6 +1,6 @@
 import { styled } from "@styles";
+import farmatheme from "@farmatheme";
 
-// TODO: AGREGAR THEME DE FARMAUNATHEME
 export const Container = styled.div<{ selected?: boolean }>`
   display: flex;
   align-items: center;
@@ -10,7 +10,7 @@ export const Container = styled.div<{ selected?: boolean }>`
   height: 2.5rem;
   border-radius: 6.25rem;
   color: ${({ selected }) => (selected ? "white" : "#23212B")};
-  background-color: ${({ selected }) => (selected ? "#452FBA" : "white")};
-  border: ${({ selected }) => (selected ? "" : "1px solid #452FBA")};
+  background-color: ${({ selected }) => (selected ? farmatheme.theme.colors.interactive : "white")};
+  border: ${({ selected }) => (selected ? "" : `1px solid ${farmatheme.theme.colors.interactive}`)};
   cursor: pointer;
 `;

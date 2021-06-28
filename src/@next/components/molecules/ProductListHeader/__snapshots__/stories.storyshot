@@ -6,7 +6,7 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
   margin: 20px;
 }
 
-.c20 {
+.c19 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -17,7 +17,7 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
   box-sizing: border-box;
 }
 
-.c15 {
+.c14 {
   color: #9194A7;
   font-weight: 500;
   font-size: 14px;
@@ -25,15 +25,15 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
   white-space: pre;
 }
 
-.c13 {
+.c12 {
   padding-top: 1.4rem;
 }
 
-.c18 {
+.c17 {
   top: 100%;
 }
 
-.c12 {
+.c11 {
   width: auto;
   display: -webkit-box;
   display: -webkit-flex;
@@ -46,7 +46,7 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
   z-index: 1000;
 }
 
-.c14 {
+.c13 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -66,7 +66,7 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
   padding-bottom: 0.5rem;
 }
 
-.c16 {
+.c15 {
   color: #131336;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -77,7 +77,7 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
   font-size: 0.875rem;
 }
 
-.c17 {
+.c16 {
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
   margin-left: 0.625rem;
@@ -87,13 +87,13 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
 }
 
 .c1 {
-  background-color: #fff;
-  border-radius: 1rem;
-  height: 4rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -101,11 +101,9 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
   margin-bottom: 1rem;
 }
 
-.c1 > span {
-  color: #908BA7;
-}
-
 .c2 {
+  background-color: #fff;
+  border-radius: 1rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -160,13 +158,13 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
   padding: 1rem .8rem;
   width: 100%;
-  font-size: 20px;
+  font-size: 0.875rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -175,26 +173,32 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
 }
 
 .c6 .select-input {
+  cursor: pointer;
+  margin-right: 2rem;
   -webkit-box-pack: end;
   -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
   justify-content: flex-end;
 }
 
-.c6 .select-input > span {
-  color: #2F2C3A;
+.c6 .select-input .select-container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
-.c6 .select-input .select-container {
-  margin-left: 1rem;
-  min-width: 14.75rem;
-  max-width: 14.75rem;
+.c6 .select-input .clear-label {
+  margin-right: 0;
   height: 2.5rem;
-  border-radius: 40px;
+  border-radius: 2.5rem;
   background: #FFFFFF;
-  border: 1px solid #908BA7;
   position: relative;
-  padding: 0 0 0 15px;
+  padding: 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -207,17 +211,6 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
   -webkit-justify-content: flex-start;
   -ms-flex-pack: start;
   justify-content: flex-start;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  padding: 0 1rem;
-  cursor: pointer;
-  z-index: 2;
-}
-
-.c6 .select-input .select-container__value {
-  margin: 0;
 }
 
 .c4 {
@@ -233,6 +226,13 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
   cursor: pointer;
 }
 
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .c5 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -246,66 +246,59 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
   margin-left: .5rem;
 }
 
-.c9 {
+.c8 {
   color: #9194A7;
-  color: #2F2C3A;
+  color: #908BA7;
+  padding: 0 0.625rem;
 }
 
 .c10 {
-  color: #00BF8E;
-}
-
-.c11 {
   width: inherit;
   display: inline-block;
-  margin-bottom: 20px;
 }
 
-.c11 .label {
+.c10 .label {
   display: block;
 }
 
-.c11 > div {
+.c10 > div {
   margin: 0;
   padding: 0;
 }
 
-.c11 > div > div {
+.c10 > div > div {
+  margin: 0;
+  padding: 0 0 0 0.625rem;
+}
+
+.c10 > div > div > div {
   margin: 0;
   padding: 0;
 }
 
-.c11 > div > div > div {
-  margin: 0;
+.c10 > div > div > div > div {
+  margin: 0 0 0 0.625rem;
   padding: 0;
 }
 
-.c11 > div > div > div > div {
-  margin: 0;
-  padding: 0;
-  border-bottom-left-radius: 1.25rem;
-  border-bottom-right-radius: 1.25rem;
-  width: 14.75rem;
-  padding-top: 1.25rem;
-  margin-top: -1.25rem;
-}
-
-.c19 {
+.c18 {
   margin-top: .5rem;
   padding: 0rem .5rem;
-  display: none;
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
 }
 
-.c19 > div {
+.c18 > div {
   margin: 0.4rem;
 }
 
-.c8 {
+.c9 {
   font-weight: 600;
 }
 
 @media (max-width:540px) {
-  .c15 {
+  .c14 {
     margin-right: 0;
   }
 }
@@ -330,38 +323,19 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
     -webkit-justify-content: space-between;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    width: 24rem;
+    width: auto;
   }
 }
 
 @media (max-width:540px) {
   .c6 {
-    font-size: 16px;
+    font-size: 1rem;
   }
 }
 
 @media (max-width:540px) {
-  .c6 .select-input {
-    -webkit-align-items: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    width: 100vw;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    padding: 0 1rem;
-  }
-
-  .c6 .select-input .select-container {
-    margin-left: 0.5rem;
-    min-width: 12.875rem;
-    max-width: 12.875rem;
+  .c6 .select-input .clear-label {
+    margin-right: 0;
   }
 }
 
@@ -399,39 +373,19 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
 
 @media (min-width:720px) {
   .c7 {
-    margin-top: 1.5rem;
+    margin-top: 0;
   }
 }
 
 @media (min-width:340px) {
   .c7 {
-    margin-top: 1.5rem;
+    margin-top: 0;
   }
 }
 
 @media (min-width:720px) {
-  .c11 .label {
+  .c10 .label {
     display: block;
-  }
-}
-
-@media (max-width:540px) {
-  .c11 > div > div > div {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: end;
-    -webkit-justify-content: flex-end;
-    -ms-flex-pack: end;
-    justify-content: flex-end;
-  }
-}
-
-@media (max-width:540px) {
-  .c11 > div > div > div > div.select-input + div {
-    margin-right: 1rem;
-    width: 12.875rem;
   }
 }
 
@@ -496,7 +450,7 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
         </button>
       </div>
       <div
-        className="product_list_header__right_side c6"
+        className="c6"
       >
         <span
           className="products_found c7"
@@ -505,48 +459,40 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
           <span
             className="c8"
           >
+            Productos encontrados :  
+          </span>
+          <span
+            className="c9"
+          >
+             
             255
              
           </span>
-          <span
-            className="c9"
-          >
-            Productos encontrados con: 
-          </span>
-          <span
-            className="c9"
-          >
-            "
-            <span
-              className="c10"
-            />
-            "
-          </span>
         </span>
         <span
-          className="product_list_header__dropdown c7"
+          className="c7"
         >
           <div
-            className="c11"
+            className="c10"
           >
             <div
-              className="c12"
+              className="c11"
               data-cy="dropdown-select"
             >
               <div
-                className="c13"
+                className="c12"
               >
                 <div
                   className="css-1pcexqc-container control"
                   onKeyDown={[Function]}
                 >
                   <div
-                    className="select-input c14"
+                    className="select-input c13"
                     data-cy="dropdown-select-input"
                     onClick={[Function]}
                   >
                     <span
-                      className="label c15"
+                      className="label c14"
                     >
                       Ordenar por:
                     </span>
@@ -554,12 +500,12 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
                       className="select-container"
                     >
                       <div
-                        className="select-container__value c16"
+                        className="select-container__value c15"
                       >
                          Limpiar
                       </div>
                       <div
-                        className="c17"
+                        className="c16"
                         rotate="false"
                       >
                         <svg
@@ -582,7 +528,7 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
                   </div>
                 </div>
                 <div
-                  className="c18"
+                  className="c17"
                 />
               </div>
             </div>
@@ -591,11 +537,11 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
       </div>
     </div>
     <div
-      className="c19"
+      className="c18"
     />
   </div>
   <div
-    className="c20"
+    className="c19"
   />
 </div>
 `;
@@ -606,7 +552,7 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
   margin: 20px;
 }
 
-.c21 {
+.c20 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -617,7 +563,7 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
   box-sizing: border-box;
 }
 
-.c16 {
+.c15 {
   color: #9194A7;
   font-weight: 500;
   font-size: 14px;
@@ -625,15 +571,15 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
   white-space: pre;
 }
 
-.c14 {
+.c13 {
   padding-top: 1.4rem;
 }
 
-.c19 {
+.c18 {
   top: 100%;
 }
 
-.c13 {
+.c12 {
   width: auto;
   display: -webkit-box;
   display: -webkit-flex;
@@ -646,7 +592,7 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
   z-index: 1000;
 }
 
-.c15 {
+.c14 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -666,7 +612,7 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
   padding-bottom: 0.5rem;
 }
 
-.c17 {
+.c16 {
   color: #131336;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -677,7 +623,7 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
   font-size: 0.875rem;
 }
 
-.c18 {
+.c17 {
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
   margin-left: 0.625rem;
@@ -687,13 +633,13 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
 }
 
 .c1 {
-  background-color: #fff;
-  border-radius: 1rem;
-  height: 4rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -701,11 +647,9 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
   margin-bottom: 1rem;
 }
 
-.c1 > span {
-  color: #908BA7;
-}
-
 .c2 {
+  background-color: #fff;
+  border-radius: 1rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -760,13 +704,13 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
   padding: 1rem .8rem;
   width: 100%;
-  font-size: 20px;
+  font-size: 0.875rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -775,26 +719,32 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
 }
 
 .c7 .select-input {
+  cursor: pointer;
+  margin-right: 2rem;
   -webkit-box-pack: end;
   -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
   justify-content: flex-end;
 }
 
-.c7 .select-input > span {
-  color: #2F2C3A;
+.c7 .select-input .select-container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
-.c7 .select-input .select-container {
-  margin-left: 1rem;
-  min-width: 14.75rem;
-  max-width: 14.75rem;
+.c7 .select-input .clear-label {
+  margin-right: 0;
   height: 2.5rem;
-  border-radius: 40px;
+  border-radius: 2.5rem;
   background: #FFFFFF;
-  border: 1px solid #908BA7;
   position: relative;
-  padding: 0 0 0 15px;
+  padding: 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -807,17 +757,6 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
   -webkit-justify-content: flex-start;
   -ms-flex-pack: start;
   justify-content: flex-start;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  padding: 0 1rem;
-  cursor: pointer;
-  z-index: 2;
-}
-
-.c7 .select-input .select-container__value {
-  margin: 0;
 }
 
 .c4 {
@@ -848,6 +787,13 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
   margin-left: .5rem;
 }
 
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .c5 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -861,66 +807,59 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
   margin-left: .5rem;
 }
 
-.c10 {
+.c9 {
   color: #9194A7;
-  color: #2F2C3A;
+  color: #908BA7;
+  padding: 0 0.625rem;
 }
 
 .c11 {
-  color: #00BF8E;
-}
-
-.c12 {
   width: inherit;
   display: inline-block;
-  margin-bottom: 20px;
 }
 
-.c12 .label {
+.c11 .label {
   display: block;
 }
 
-.c12 > div {
+.c11 > div {
   margin: 0;
   padding: 0;
 }
 
-.c12 > div > div {
+.c11 > div > div {
+  margin: 0;
+  padding: 0 0 0 0.625rem;
+}
+
+.c11 > div > div > div {
   margin: 0;
   padding: 0;
 }
 
-.c12 > div > div > div {
-  margin: 0;
+.c11 > div > div > div > div {
+  margin: 0 0 0 0.625rem;
   padding: 0;
 }
 
-.c12 > div > div > div > div {
-  margin: 0;
-  padding: 0;
-  border-bottom-left-radius: 1.25rem;
-  border-bottom-right-radius: 1.25rem;
-  width: 14.75rem;
-  padding-top: 1.25rem;
-  margin-top: -1.25rem;
-}
-
-.c20 {
+.c19 {
   margin-top: .5rem;
   padding: 0rem .5rem;
-  display: none;
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
 }
 
-.c20 > div {
+.c19 > div {
   margin: 0.4rem;
 }
 
-.c9 {
+.c10 {
   font-weight: 600;
 }
 
 @media (max-width:540px) {
-  .c16 {
+  .c15 {
     margin-right: 0;
   }
 }
@@ -945,38 +884,19 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
     -webkit-justify-content: space-between;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    width: 24rem;
+    width: auto;
   }
 }
 
 @media (max-width:540px) {
   .c7 {
-    font-size: 16px;
+    font-size: 1rem;
   }
 }
 
 @media (max-width:540px) {
-  .c7 .select-input {
-    -webkit-align-items: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    width: 100vw;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    padding: 0 1rem;
-  }
-
-  .c7 .select-input .select-container {
-    margin-left: 0.5rem;
-    min-width: 12.875rem;
-    max-width: 12.875rem;
+  .c7 .select-input .clear-label {
+    margin-right: 0;
   }
 }
 
@@ -1014,46 +934,26 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
 
 @media (min-width:720px) {
   .c6 {
-    padding-left: 0px;
+    padding-left: 0rem;
     width: 7rem;
   }
 }
 
 @media (min-width:720px) {
   .c8 {
-    margin-top: 1.5rem;
+    margin-top: 0;
   }
 }
 
 @media (min-width:340px) {
   .c8 {
-    margin-top: 1.5rem;
+    margin-top: 0;
   }
 }
 
 @media (min-width:720px) {
-  .c12 .label {
+  .c11 .label {
     display: block;
-  }
-}
-
-@media (max-width:540px) {
-  .c12 > div > div > div {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: end;
-    -webkit-justify-content: flex-end;
-    -ms-flex-pack: end;
-    justify-content: flex-end;
-  }
-}
-
-@media (max-width:540px) {
-  .c12 > div > div > div > div.select-input + div {
-    margin-right: 1rem;
-    width: 12.875rem;
   }
 }
 
@@ -1141,7 +1041,7 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
         </button>
       </div>
       <div
-        className="product_list_header__right_side c7"
+        className="c7"
       >
         <span
           className="products_found c8"
@@ -1150,48 +1050,40 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
           <span
             className="c9"
           >
+            Productos encontrados :  
+          </span>
+          <span
+            className="c10"
+          >
+             
             255
              
           </span>
-          <span
-            className="c10"
-          >
-            Productos encontrados con: 
-          </span>
-          <span
-            className="c10"
-          >
-            "
-            <span
-              className="c11"
-            />
-            "
-          </span>
         </span>
         <span
-          className="product_list_header__dropdown c8"
+          className="c8"
         >
           <div
-            className="c12"
+            className="c11"
           >
             <div
-              className="c13"
+              className="c12"
               data-cy="dropdown-select"
             >
               <div
-                className="c14"
+                className="c13"
               >
                 <div
                   className="css-1pcexqc-container control"
                   onKeyDown={[Function]}
                 >
                   <div
-                    className="select-input c15"
+                    className="select-input c14"
                     data-cy="dropdown-select-input"
                     onClick={[Function]}
                   >
                     <span
-                      className="label c16"
+                      className="label c15"
                     >
                       Ordenar por:
                     </span>
@@ -1199,12 +1091,12 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
                       className="select-container"
                     >
                       <div
-                        className="select-container__value c17"
+                        className="select-container__value c16"
                       >
                          Limpiar
                       </div>
                       <div
-                        className="c18"
+                        className="c17"
                         rotate="false"
                       >
                         <svg
@@ -1227,7 +1119,7 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
                   </div>
                 </div>
                 <div
-                  className="c19"
+                  className="c18"
                 />
               </div>
             </div>
@@ -1236,11 +1128,11 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
       </div>
     </div>
     <div
-      className="c20"
+      className="c19"
     />
   </div>
   <div
-    className="c21"
+    className="c20"
   />
 </div>
 `;

@@ -2,6 +2,7 @@ import React from "react";
 import { Icon } from "../../atoms";
 import * as S from "./styles";
 import { Button, BulletXFilledIcon } from "@farmacia-retail/farmauna-components";
+import farmatheme from "@farmatheme";
 
 export const AddressGeoModalInfo = ({ onClose }: { onClose: () => void }) => {
 
@@ -11,7 +12,7 @@ export const AddressGeoModalInfo = ({ onClose }: { onClose: () => void }) => {
                 <S.CloseIcon>
                     <BulletXFilledIcon
                         size={32}
-                        color="#452FBA"
+                        color={farmatheme.theme.colors.interactive}
                         onClick={onClose}
                     />
                 </S.CloseIcon>

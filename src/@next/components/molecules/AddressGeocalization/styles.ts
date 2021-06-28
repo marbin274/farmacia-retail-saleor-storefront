@@ -209,7 +209,7 @@ export const AlertAction = styled.div`
     border-color:currentcolor !important;
     ${media.largeScreen`
     .button-border-change {
-      border: 1px solid #452FBA !important;
+      border: 1px solid ${farmatheme.theme.colors.interactive} !important;
       border-radius: 1.5rem;
     }
 `}

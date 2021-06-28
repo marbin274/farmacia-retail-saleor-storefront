@@ -2,22 +2,19 @@ import { media, mediaUp, styled } from "@styles";
 import farmatheme from "@farmatheme";
 
 export const Wrapper = styled.div`
-  background-color: ${props => props.theme.colors.white};
-  border-radius: 1rem;
-  height:4rem;
   display:flex;
+  flex-direction: column;
   align-items:center;
   margin-bottom:1rem;
 
   ${media.smallScreen`
     border-radius: 0;
   `}
-  > span {
-    color: #908BA7;
-  }
 `;
 
 export const Bar = styled.div`
+  background-color: ${props => props.theme.colors.white};
+  border-radius: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -25,24 +22,26 @@ export const Bar = styled.div`
   width:100%;
   ${media.mediumScreen`
     flex-direction: row;
+    
   `}
 `;
 
 export const LeftSide = styled.div`
   align-items: center;
+    
   display: flex;
   justify-content: space-between;
   padding: 1rem .8rem;
   width: 100%;
   ${mediaUp.mediumScreen`
     justify-content: space-between;
-    width: 24rem;
+    width: auto;
   `}
   span, button {
     color: ${props => props.theme.colors.interactive};
     font-size: ${props => props.theme.typography.smallFontSize};
     font-weight: ${props => props.theme.typography.normalFontWeight};
-    color: #452FBA;
+    color: ${farmatheme.theme.colors.interactive};
     display:flex;
     align-items:center;
   }
@@ -50,53 +49,37 @@ export const LeftSide = styled.div`
 
 export const RightSide = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 1rem .8rem;
   width: 100%;
-  font-size:20px;
+  font-size:0.875rem;
   align-items:center;
   font-weight:600;
   ${media.smallScreen`
-    font-size:16px;
+    font-size:1rem;
 `}
   .select-input{
-    & > span {
-      color: ${farmatheme.theme.colors.neutral.darkest};
-    }
+    cursor: pointer;
+    margin-right: 2rem;
     justify-content: flex-end;
     .select-container {
-      margin-left: 1rem;
-      min-width: 14.75rem;
-      max-width: 14.75rem;
+      display: flex;
+      align-items: center;
+    }
+    .clear-label {
+      margin-right:0;
       height: 2.5rem;
-      border-radius: 40px;
+      border-radius: 2.5rem;
       background: #FFFFFF;
-      border: 1px solid #908BA7;
       position:relative;
-      padding:0 0 0 15px;
+      padding:0;
       display:flex;
       align-items: center;
       justify-content: flex-start;
-      justify-content: space-between;
-      padding: 0 1rem;
-      cursor: pointer;
-      z-index: 2;
-      &__value {
-        margin: 0;
-      }
+      ${media.smallScreen`
+        margin-right:0;
+  `}
     }
-    ${media.smallScreen`  
-        align-items: center;
-        justify-content: space-between;
-        width: 100vw;
-        display: flex;
-        padding: 0 1rem;  
-        .select-container {
-          margin-left: 0.5rem;
-          min-width: 12.875rem;
-          max-width: 12.875rem;
-        }
-    `}
   }
 
   ${media.mediumScreen`
@@ -128,19 +111,22 @@ export const Clear = styled.button`
     margin-left: .5rem;
   }
   ${mediaUp.mediumScreen`
-    padding-left: 0px;
+    padding-left: 0rem;
     width: 7rem;
   `}
 `;
 
 export const Element = styled.span`
+
+display:flex;
  
 ${mediaUp.mediumScreen`
-  margin-top: 1.5rem;
+  margin-top: 0;
 `}
 ${mediaUp.xSmallScreen`
-  margin-top: 1.5rem;
+  margin-top: 0;
 `}
+
 `;
 
 export const Filters = styled.span`
@@ -154,17 +140,14 @@ export const Filters = styled.span`
 
 export const Label = styled.span`
   color: ${props => props.theme.colors.greyText};
-  color:#2F2C3A;
-`;
-
-export const SearchText = styled.span`
-  color: ${props => props.theme.colors.interactive};
+  color:#908BA7;
+  padding:0 0.625rem;
 `;
 
 export const Sort = styled.div`
   width: inherit;
   display: inline-block;
-  margin-bottom:20px;
+  
 
   .label {
     display: block;
@@ -179,29 +162,15 @@ export const Sort = styled.div`
 
     > div {
       margin: 0;
-      padding: 0;
+      padding: 0 0 0 0.625rem;
 
       > div {
         margin: 0;
         padding: 0;
-        ${media.smallScreen`
-          display: flex;
-          justify-content: flex-end;
-        `}
+
         > div {
-          margin: 0;
+          margin: 0 0 0 0.625rem;
           padding: 0;
-          border-bottom-left-radius: 1.25rem;
-          border-bottom-right-radius: 1.25rem;
-          width: 14.75rem;
-          padding-top: 1.25rem;
-          margin-top: -1.25rem;
-          ${media.smallScreen`
-            &.select-input + div {
-              margin-right: 1rem;
-              width: 12.875rem;
-            }
-          `}
         }
       }
     }
@@ -211,13 +180,12 @@ export const Sort = styled.div`
 export const FiltersChipsWrapper = styled.div`
   margin-top: .5rem;
   padding: 0rem .5rem;
+  align-self: flex-start;
   > div {
     margin: 0.4rem;
   }
-  display:none;
 `;
 
 export const NumberProducts = styled.span`
   font-weight: ${({theme}) =>theme.typography.boldFontWeight};
 `
-;

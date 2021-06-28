@@ -1,552 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots @components/molecules/ProductListHeaderCategory default 1`] = `
-.c0 {
-  position: relative;
-  margin: 20px;
-}
-
-.c19 {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border: 3px solid rgba(0,0,0,0.2);
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  box-sizing: border-box;
-}
-
-.c14 {
-  color: #9194A7;
-  font-weight: 500;
-  font-size: 14px;
-  display: inline-block;
-  white-space: pre;
-}
-
-.c12 {
-  padding-top: 1.4rem;
-}
-
-.c17 {
-  top: 100%;
-}
-
-.c11 {
-  width: auto;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  font-size: 0.875rem;
-  z-index: 1000;
-}
-
-.c13 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  padding-bottom: 0.5rem;
-}
-
-.c15 {
-  color: #131336;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  margin-left: 0.625rem;
-  color: #23212B;
-  font-weight: 500;
-  font-size: 0.875rem;
-}
-
-.c16 {
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  margin-left: 0.625rem;
-  -webkit-transform: rotate(0deg) translateY(0.25rem);
-  -ms-transform: rotate(0deg) translateY(0.25rem);
-  transform: rotate(0deg) translateY(0.25rem);
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.c2 {
-  background-color: #fff;
-  border-radius: 1rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  font-size: 0.875rem;
-  width: 100%;
-}
-
-.c3 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  padding: 1rem .8rem;
-  width: 100%;
-}
-
-.c3 span,
-.c3 button {
-  color: #00BF8E;
-  font-size: 0.875rem;
-  font-weight: 400;
-  color: #452FBA;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  padding: 1rem .8rem;
-  width: 100%;
-  font-size: 14px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  font-weight: 600;
-}
-
-.c6 .select-input {
-  cursor: pointer;
-  margin-right: 2rem;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-}
-
-.c6 .select-input .select-container {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c6 .select-input .clear-label {
-  margin-right: 0;
-  height: 2.5rem;
-  border-radius: 40px;
-  background: #FFFFFF;
-  position: relative;
-  padding: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-}
-
-.c4 {
-  font-size: 0.875rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  cursor: pointer;
-}
-
-.c7 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c5 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  font-weight: 600;
-  padding: 0 0.6rem;
-}
-
-.c5 > span {
-  margin-left: .5rem;
-}
-
-.c8 {
-  color: #9194A7;
-  color: #908BA7;
-  padding: 0 10px;
-}
-
-.c10 {
-  width: inherit;
-  display: inline-block;
-}
-
-.c10 .label {
-  display: block;
-}
-
-.c10 > div {
-  margin: 0;
-  padding: 0;
-}
-
-.c10 > div > div {
-  margin: 0;
-  padding: 0 0 0 10px;
-}
-
-.c10 > div > div > div {
-  margin: 0;
-  padding: 0;
-}
-
-.c10 > div > div > div > div {
-  margin: 0 0 0 10px;
-  padding: 0;
-}
-
-.c18 {
-  margin-top: .5rem;
-  padding: 0rem .5rem;
-  -webkit-align-self: flex-start;
-  -ms-flex-item-align: start;
-  align-self: flex-start;
-}
-
-.c18 > div {
-  margin: 0.4rem;
-}
-
-.c9 {
-  font-weight: 600;
-}
-
-@media (max-width:540px) {
-  .c14 {
-    margin-right: 0;
-  }
-}
-
-@media (max-width:540px) {
-  .c1 {
-    border-radius: 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c2 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
-}
-
-@media (min-width:720px) {
-  .c3 {
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    width: auto;
-  }
-}
-
-@media (max-width:540px) {
-  .c6 {
-    font-size: 16px;
-  }
-}
-
-@media (max-width:540px) {
-  .c6 .select-input .clear-label {
-    margin-right: 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c6 {
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    -webkit-align-items: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
-}
-
-@media (max-width:340px) {
-  .c6 {
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    -webkit-align-items: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
-}
-
-@media (min-width:720px) {
-  .c7 {
-    margin-top: 0;
-  }
-}
-
-@media (min-width:340px) {
-  .c7 {
-    margin-top: 0;
-  }
-}
-
-@media (min-width:720px) {
-  .c10 .label {
-    display: block;
-  }
-}
-
-<div
-  className="c0"
->
-  <div
-    className="c1"
-  >
-    <div
-      className="c2"
-    >
-      <div
-        className="c3"
-      >
-        <button
-          className="c4"
-          data-cy="filters__button"
-          onClick={[Function]}
-        >
-          <span
-            className="c5"
-          >
-            <svg
-              className=" "
-              color="#452FBA"
-              fill="#452FBA"
-              height={18}
-              viewBox="0 0 24 24"
-              width={18}
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                clipRule="evenodd"
-                d="M19.4367 4.85732C18.9967 6.49732 17.5067 7.71733 15.7267 7.71733C13.5967 7.71733 11.8667 5.98732 11.8667 3.86732C11.8667 1.73732 13.5967 0.00732422 15.7267 0.00732422C17.5067 0.00732422 18.9867 1.22732 19.4367 2.85732H20.9967C21.5467 2.85732 21.9967 3.30732 21.9967 3.85732C21.9967 4.40732 21.5467 4.85732 20.9967 4.85732H19.4367ZM17.5867 3.86732C17.5867 2.83732 16.7467 2.00732 15.7267 2.00732C14.6967 2.00732 13.8667 2.83732 13.8667 3.86732C13.8667 4.89733 14.7067 5.72732 15.7267 5.72732C16.7567 5.72732 17.5867 4.88732 17.5867 3.86732Z"
-                fillRule="evenodd"
-              />
-              <path
-                d="M1.00732 2.86606H9.73732C10.2873 2.86606 10.7373 3.31606 10.7373 3.86605C10.7373 4.41605 10.2873 4.86605 9.73732 4.86605H1.00732C0.457324 4.86605 0.00732422 4.41605 0.00732422 3.86605C0.00732422 3.31606 0.457324 2.86606 1.00732 2.86606Z"
-              />
-              <path
-                d="M9.73732 17.1632H1.00732C0.457324 17.1632 0.00732422 17.6132 0.00732422 18.1632C0.00732422 18.7132 0.457324 19.1632 1.00732 19.1632H9.73732C10.2873 19.1632 10.7373 18.7132 10.7373 18.1632C10.7373 17.6132 10.2873 17.1632 9.73732 17.1632Z"
-              />
-              <path
-                clipRule="evenodd"
-                d="M19.4367 17.141H20.9967C21.5467 17.141 21.9967 17.591 21.9967 18.141C21.9967 18.691 21.5467 19.141 20.9967 19.141H19.4367C18.9967 20.781 17.5067 22.001 15.7267 22.001C13.5967 22.001 11.8667 20.271 11.8667 18.141C11.8667 16.011 13.5967 14.2809 15.7267 14.2809C17.5067 14.2809 18.9967 15.5009 19.4367 17.141ZM13.8667 18.141C13.8667 19.171 14.7067 20.001 15.7267 20.001C16.7467 20.001 17.5867 19.171 17.5867 18.141C17.5867 17.111 16.7467 16.281 15.7267 16.281C14.6967 16.281 13.8667 17.111 13.8667 18.141Z"
-                fillRule="evenodd"
-              />
-              <path
-                d="M21.0116 10.0146H12.4216C11.8716 10.0146 11.4216 10.4646 11.4216 11.0146C11.4216 11.5646 11.8716 12.0146 12.4216 12.0146H21.0116C21.5616 12.0146 22.0116 11.5646 22.0116 11.0146C22.0116 10.4646 21.5616 10.0146 21.0116 10.0146Z"
-              />
-              <path
-                clipRule="evenodd"
-                d="M2.56732 12.0159H1.00732C0.457324 12.0159 0.00732422 11.5659 0.00732422 11.0159C0.00732422 10.4659 0.457324 10.0159 1.00732 10.0159H2.56732C3.00732 8.37591 4.49732 7.15591 6.27733 7.15591C8.40733 7.15591 10.1373 8.88591 10.1373 11.0159C10.1373 13.1459 8.40733 14.8759 6.27733 14.8759C4.49732 14.8759 3.00732 13.6559 2.56732 12.0159ZM8.13733 11.0159C8.13733 9.98591 7.29733 9.15591 6.27733 9.15591C5.25732 9.15591 4.41732 9.98591 4.41732 11.0159C4.41732 12.0459 5.25732 12.8759 6.27733 12.8759C7.30732 12.8759 8.13733 12.0459 8.13733 11.0159Z"
-                fillRule="evenodd"
-              />
-            </svg>
-            <span>
-              Filtrar
-            </span>
-          </span>
-        </button>
-      </div>
-      <div
-        className="c6"
-      >
-        <span
-          className="products_found c7"
-          data-cy="no-of-products-found_label"
-        >
-          <span
-            className="c8"
-          >
-            Productos encontrados :  
-          </span>
-          <span
-            className="c9"
-          >
-             
-            255
-             
-          </span>
-        </span>
-        <span
-          className="c7"
-        >
-          <div
-            className="c10"
-          >
-            <div
-              className="c11"
-              data-cy="dropdown-select"
-            >
-              <div
-                className="c12"
-              >
-                <div
-                  className="css-1pcexqc-container control"
-                  onKeyDown={[Function]}
-                >
-                  <div
-                    className="select-input c13"
-                    data-cy="dropdown-select-input"
-                    onClick={[Function]}
-                  >
-                    <span
-                      className="label c14"
-                    >
-                      Ordenar por:
-                    </span>
-                    <div
-                      className="select-container"
-                    >
-                      <div
-                        className="select-container__value c15"
-                      >
-                         Limpiar
-                      </div>
-                      <div
-                        className="c16"
-                        rotate="false"
-                      >
-                        <svg
-                          className=" "
-                          color="currentColor"
-                          fill="currentColor"
-                          height={16}
-                          viewBox="0 0 24 24"
-                          width={16}
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            clipRule="evenodd"
-                            d="M0.292893 1.17155C0.683417 0.776149 1.31658 0.776149 1.70711 1.17155L9.02396 8.57987L16.3177 1.17155C16.7214 0.79001 17.3542 0.812103 17.7311 1.2209C18.1079 1.6297 18.0861 2.2704 17.6823 2.65194L9.68232 10.7277C9.28837 11.1 8.67393 11.0892 8.29289 10.7034L0.292893 2.60345C-0.0976311 2.20804 -0.0976311 1.56696 0.292893 1.17155Z"
-                            fillRule="evenodd"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="c17"
-                />
-              </div>
-            </div>
-          </div>
-        </span>
-      </div>
-    </div>
-    <div
-      className="c18"
-    />
-  </div>
-  <div
-    className="c19"
-  />
-</div>
-`;
-
-exports[`Storyshots @components/molecules/ProductListHeaderCategory with active filters 1`] = `
+exports[`Storyshots @components/molecules/ProductListHeaderSearch default 1`] = `
 .c0 {
   position: relative;
   margin: 20px;
@@ -633,13 +87,13 @@ exports[`Storyshots @components/molecules/ProductListHeaderCategory with active 
 }
 
 .c1 {
+  background-color: #fff;
+  border-radius: 1rem;
+  height: 4rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -647,9 +101,611 @@ exports[`Storyshots @components/molecules/ProductListHeaderCategory with active 
   margin-bottom: 1rem;
 }
 
+.c1 > span {
+  color: #908BA7;
+}
+
 .c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 0.875rem;
+  width: 100%;
+}
+
+.c3 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 1rem .8rem;
+  width: 100%;
+}
+
+.c3 span,
+.c3 button {
+  color: #00BF8E;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #452FBA;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 1rem .8rem;
+  width: 100%;
+  font-size: 1.25rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-weight: 600;
+}
+
+.c6 .select-input {
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c6 .select-input > span {
+  color: #2F2C3A;
+}
+
+.c6 .select-input .select-container {
+  margin-left: 1rem;
+  min-width: 14.75rem;
+  max-width: 14.75rem;
+  height: 2.5rem;
+  border-radius: 2.5rem;
+  background: #FFFFFF;
+  border: 0.0625rem solid #908BA7;
+  position: relative;
+  padding: 0 0 0 0.9375rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 0 1rem;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.c6 .select-input .select-container__value {
+  margin: 0;
+}
+
+.c4 {
+  font-size: 0.875rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-weight: 600;
+  padding: 0 0.6rem;
+}
+
+.c5 > span {
+  margin-left: .5rem;
+}
+
+.c9 {
+  color: #9194A7;
+  color: #2F2C3A;
+}
+
+.c10 {
+  color: #00BF8E;
+}
+
+.c11 {
+  width: inherit;
+  display: inline-block;
+  margin-bottom: 1.25rem;
+}
+
+.c11 .label {
+  display: block;
+}
+
+.c11 > div {
+  margin: 0;
+  padding: 0;
+}
+
+.c11 > div > div {
+  margin: 0;
+  padding: 0;
+}
+
+.c11 > div > div > div {
+  margin: 0;
+  padding: 0;
+}
+
+.c11 > div > div > div > div {
+  margin: 0;
+  padding: 0;
+  border-bottom-left-radius: 1.25rem;
+  border-bottom-right-radius: 1.25rem;
+  width: 14.75rem;
+  padding-top: 1.25rem;
+  margin-top: -1.25rem;
+}
+
+.c19 {
+  margin-top: .5rem;
+  padding: 0rem .5rem;
+  display: none;
+}
+
+.c19 > div {
+  margin: 0.4rem;
+}
+
+.c8 {
+  font-weight: 600;
+}
+
+@media (max-width:540px) {
+  .c15 {
+    margin-right: 0;
+  }
+}
+
+@media (max-width:540px) {
+  .c1 {
+    border-radius: 0;
+  }
+}
+
+@media (max-width:720px) {
+  .c2 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+@media (min-width:720px) {
+  .c3 {
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    width: 24rem;
+  }
+}
+
+@media (max-width:540px) {
+  .c6 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width:540px) {
+  .c6 .select-input {
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    width: 100vw;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 0 1rem;
+  }
+
+  .c6 .select-input .select-container {
+    margin-left: 0.5rem;
+    min-width: 12.875rem;
+    max-width: 12.875rem;
+  }
+}
+
+@media (max-width:720px) {
+  .c6 {
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media (max-width:340px) {
+  .c6 {
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media (min-width:720px) {
+  .c7 {
+    margin-top: 1.5rem;
+  }
+}
+
+@media (min-width:340px) {
+  .c7 {
+    margin-top: 1.5rem;
+  }
+}
+
+@media (min-width:720px) {
+  .c11 .label {
+    display: block;
+  }
+}
+
+@media (max-width:540px) {
+  .c11 > div > div > div {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width:540px) {
+  .c11 > div > div > div > div.select-input + div {
+    margin-right: 1rem;
+    width: 12.875rem;
+  }
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1"
+  >
+    <div
+      className="c2"
+    >
+      <div
+        className="c3"
+      >
+        <button
+          className="c4"
+          data-cy="filters__button"
+          onClick={[Function]}
+        >
+          <span
+            className="c5"
+          >
+            <svg
+              className=" "
+              color="#452FBA"
+              fill="#452FBA"
+              height={18}
+              viewBox="0 0 24 24"
+              width={18}
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                clipRule="evenodd"
+                d="M19.4367 4.85732C18.9967 6.49732 17.5067 7.71733 15.7267 7.71733C13.5967 7.71733 11.8667 5.98732 11.8667 3.86732C11.8667 1.73732 13.5967 0.00732422 15.7267 0.00732422C17.5067 0.00732422 18.9867 1.22732 19.4367 2.85732H20.9967C21.5467 2.85732 21.9967 3.30732 21.9967 3.85732C21.9967 4.40732 21.5467 4.85732 20.9967 4.85732H19.4367ZM17.5867 3.86732C17.5867 2.83732 16.7467 2.00732 15.7267 2.00732C14.6967 2.00732 13.8667 2.83732 13.8667 3.86732C13.8667 4.89733 14.7067 5.72732 15.7267 5.72732C16.7567 5.72732 17.5867 4.88732 17.5867 3.86732Z"
+                fillRule="evenodd"
+              />
+              <path
+                d="M1.00732 2.86606H9.73732C10.2873 2.86606 10.7373 3.31606 10.7373 3.86605C10.7373 4.41605 10.2873 4.86605 9.73732 4.86605H1.00732C0.457324 4.86605 0.00732422 4.41605 0.00732422 3.86605C0.00732422 3.31606 0.457324 2.86606 1.00732 2.86606Z"
+              />
+              <path
+                d="M9.73732 17.1632H1.00732C0.457324 17.1632 0.00732422 17.6132 0.00732422 18.1632C0.00732422 18.7132 0.457324 19.1632 1.00732 19.1632H9.73732C10.2873 19.1632 10.7373 18.7132 10.7373 18.1632C10.7373 17.6132 10.2873 17.1632 9.73732 17.1632Z"
+              />
+              <path
+                clipRule="evenodd"
+                d="M19.4367 17.141H20.9967C21.5467 17.141 21.9967 17.591 21.9967 18.141C21.9967 18.691 21.5467 19.141 20.9967 19.141H19.4367C18.9967 20.781 17.5067 22.001 15.7267 22.001C13.5967 22.001 11.8667 20.271 11.8667 18.141C11.8667 16.011 13.5967 14.2809 15.7267 14.2809C17.5067 14.2809 18.9967 15.5009 19.4367 17.141ZM13.8667 18.141C13.8667 19.171 14.7067 20.001 15.7267 20.001C16.7467 20.001 17.5867 19.171 17.5867 18.141C17.5867 17.111 16.7467 16.281 15.7267 16.281C14.6967 16.281 13.8667 17.111 13.8667 18.141Z"
+                fillRule="evenodd"
+              />
+              <path
+                d="M21.0116 10.0146H12.4216C11.8716 10.0146 11.4216 10.4646 11.4216 11.0146C11.4216 11.5646 11.8716 12.0146 12.4216 12.0146H21.0116C21.5616 12.0146 22.0116 11.5646 22.0116 11.0146C22.0116 10.4646 21.5616 10.0146 21.0116 10.0146Z"
+              />
+              <path
+                clipRule="evenodd"
+                d="M2.56732 12.0159H1.00732C0.457324 12.0159 0.00732422 11.5659 0.00732422 11.0159C0.00732422 10.4659 0.457324 10.0159 1.00732 10.0159H2.56732C3.00732 8.37591 4.49732 7.15591 6.27733 7.15591C8.40733 7.15591 10.1373 8.88591 10.1373 11.0159C10.1373 13.1459 8.40733 14.8759 6.27733 14.8759C4.49732 14.8759 3.00732 13.6559 2.56732 12.0159ZM8.13733 11.0159C8.13733 9.98591 7.29733 9.15591 6.27733 9.15591C5.25732 9.15591 4.41732 9.98591 4.41732 11.0159C4.41732 12.0459 5.25732 12.8759 6.27733 12.8759C7.30732 12.8759 8.13733 12.0459 8.13733 11.0159Z"
+                fillRule="evenodd"
+              />
+            </svg>
+            <span>
+              Filtrar
+            </span>
+          </span>
+        </button>
+      </div>
+      <div
+        className="product_list_header__right_side c6"
+      >
+        <span
+          className="products_found c7"
+          data-cy="no-of-products-found_label"
+        >
+          <span
+            className="c8"
+          >
+            255
+             
+          </span>
+          <span
+            className="c9"
+          >
+            Productos encontrados con: 
+          </span>
+          <span
+            className="c9"
+          >
+            "
+            <span
+              className="c10"
+            />
+            "
+          </span>
+        </span>
+        <span
+          className="product_list_header__dropdown c7"
+        >
+          <div
+            className="c11"
+          >
+            <div
+              className="c12"
+              data-cy="dropdown-select"
+            >
+              <div
+                className="c13"
+              >
+                <div
+                  className="css-1pcexqc-container control"
+                  onKeyDown={[Function]}
+                >
+                  <div
+                    className="select-input c14"
+                    data-cy="dropdown-select-input"
+                    onClick={[Function]}
+                  >
+                    <span
+                      className="label c15"
+                    >
+                      Ordenar por:
+                    </span>
+                    <div
+                      className="select-container"
+                    >
+                      <div
+                        className="select-container__value c16"
+                      >
+                         Limpiar
+                      </div>
+                      <div
+                        className="c17"
+                        rotate="false"
+                      >
+                        <svg
+                          className=" "
+                          color="currentColor"
+                          fill="currentColor"
+                          height={16}
+                          viewBox="0 0 24 24"
+                          width={16}
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            clipRule="evenodd"
+                            d="M0.292893 1.17155C0.683417 0.776149 1.31658 0.776149 1.70711 1.17155L9.02396 8.57987L16.3177 1.17155C16.7214 0.79001 17.3542 0.812103 17.7311 1.2209C18.1079 1.6297 18.0861 2.2704 17.6823 2.65194L9.68232 10.7277C9.28837 11.1 8.67393 11.0892 8.29289 10.7034L0.292893 2.60345C-0.0976311 2.20804 -0.0976311 1.56696 0.292893 1.17155Z"
+                            fillRule="evenodd"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="c18"
+                />
+              </div>
+            </div>
+          </div>
+        </span>
+      </div>
+    </div>
+    <div
+      className="c19"
+    />
+  </div>
+  <div
+    className="c20"
+  />
+</div>
+`;
+
+exports[`Storyshots @components/molecules/ProductListHeaderSearch with active filters 1`] = `
+.c0 {
+  position: relative;
+  margin: 20px;
+}
+
+.c21 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 3px solid rgba(0,0,0,0.2);
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.c16 {
+  color: #9194A7;
+  font-weight: 500;
+  font-size: 14px;
+  display: inline-block;
+  white-space: pre;
+}
+
+.c14 {
+  padding-top: 1.4rem;
+}
+
+.c19 {
+  top: 100%;
+}
+
+.c13 {
+  width: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  font-size: 0.875rem;
+  z-index: 1000;
+}
+
+.c15 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding-bottom: 0.5rem;
+}
+
+.c17 {
+  color: #131336;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-left: 0.625rem;
+  color: #23212B;
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.c18 {
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  margin-left: 0.625rem;
+  -webkit-transform: rotate(0deg) translateY(0.25rem);
+  -ms-transform: rotate(0deg) translateY(0.25rem);
+  transform: rotate(0deg) translateY(0.25rem);
+}
+
+.c1 {
   background-color: #fff;
   border-radius: 1rem;
+  height: 4rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.c1 > span {
+  color: #908BA7;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -704,13 +760,13 @@ exports[`Storyshots @components/molecules/ProductListHeaderCategory with active 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   padding: 1rem .8rem;
   width: 100%;
-  font-size: 14px;
+  font-size: 1.25rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -719,32 +775,26 @@ exports[`Storyshots @components/molecules/ProductListHeaderCategory with active 
 }
 
 .c7 .select-input {
-  cursor: pointer;
-  margin-right: 2rem;
   -webkit-box-pack: end;
   -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
   justify-content: flex-end;
 }
 
-.c7 .select-input .select-container {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+.c7 .select-input > span {
+  color: #2F2C3A;
 }
 
-.c7 .select-input .clear-label {
-  margin-right: 0;
+.c7 .select-input .select-container {
+  margin-left: 1rem;
+  min-width: 14.75rem;
+  max-width: 14.75rem;
   height: 2.5rem;
-  border-radius: 40px;
+  border-radius: 2.5rem;
   background: #FFFFFF;
+  border: 0.0625rem solid #908BA7;
   position: relative;
-  padding: 0;
+  padding: 0 0 0 0.9375rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -757,6 +807,17 @@ exports[`Storyshots @components/molecules/ProductListHeaderCategory with active 
   -webkit-justify-content: flex-start;
   -ms-flex-pack: start;
   justify-content: flex-start;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 0 1rem;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.c7 .select-input .select-container__value {
+  margin: 0;
 }
 
 .c4 {
@@ -787,13 +848,6 @@ exports[`Storyshots @components/molecules/ProductListHeaderCategory with active 
   margin-left: .5rem;
 }
 
-.c8 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .c5 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -807,59 +861,66 @@ exports[`Storyshots @components/molecules/ProductListHeaderCategory with active 
   margin-left: .5rem;
 }
 
-.c9 {
+.c10 {
   color: #9194A7;
-  color: #908BA7;
-  padding: 0 10px;
+  color: #2F2C3A;
 }
 
 .c11 {
-  width: inherit;
-  display: inline-block;
+  color: #00BF8E;
 }
 
-.c11 .label {
+.c12 {
+  width: inherit;
+  display: inline-block;
+  margin-bottom: 1.25rem;
+}
+
+.c12 .label {
   display: block;
 }
 
-.c11 > div {
+.c12 > div {
   margin: 0;
   padding: 0;
 }
 
-.c11 > div > div {
-  margin: 0;
-  padding: 0 0 0 10px;
-}
-
-.c11 > div > div > div {
+.c12 > div > div {
   margin: 0;
   padding: 0;
 }
 
-.c11 > div > div > div > div {
-  margin: 0 0 0 10px;
+.c12 > div > div > div {
+  margin: 0;
   padding: 0;
 }
 
-.c19 {
+.c12 > div > div > div > div {
+  margin: 0;
+  padding: 0;
+  border-bottom-left-radius: 1.25rem;
+  border-bottom-right-radius: 1.25rem;
+  width: 14.75rem;
+  padding-top: 1.25rem;
+  margin-top: -1.25rem;
+}
+
+.c20 {
   margin-top: .5rem;
   padding: 0rem .5rem;
-  -webkit-align-self: flex-start;
-  -ms-flex-item-align: start;
-  align-self: flex-start;
+  display: none;
 }
 
-.c19 > div {
+.c20 > div {
   margin: 0.4rem;
 }
 
-.c10 {
+.c9 {
   font-weight: 600;
 }
 
 @media (max-width:540px) {
-  .c15 {
+  .c16 {
     margin-right: 0;
   }
 }
@@ -884,19 +945,38 @@ exports[`Storyshots @components/molecules/ProductListHeaderCategory with active 
     -webkit-justify-content: space-between;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    width: auto;
+    width: 24rem;
   }
 }
 
 @media (max-width:540px) {
   .c7 {
-    font-size: 16px;
+    font-size: 1rem;
   }
 }
 
 @media (max-width:540px) {
-  .c7 .select-input .clear-label {
-    margin-right: 0;
+  .c7 .select-input {
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    width: 100vw;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 0 1rem;
+  }
+
+  .c7 .select-input .select-container {
+    margin-left: 0.5rem;
+    min-width: 12.875rem;
+    max-width: 12.875rem;
   }
 }
 
@@ -934,26 +1014,46 @@ exports[`Storyshots @components/molecules/ProductListHeaderCategory with active 
 
 @media (min-width:720px) {
   .c6 {
-    padding-left: 0px;
+    padding-left: 0rem;
     width: 7rem;
   }
 }
 
 @media (min-width:720px) {
   .c8 {
-    margin-top: 0;
+    margin-top: 1.5rem;
   }
 }
 
 @media (min-width:340px) {
   .c8 {
-    margin-top: 0;
+    margin-top: 1.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c11 .label {
+  .c12 .label {
     display: block;
+  }
+}
+
+@media (max-width:540px) {
+  .c12 > div > div > div {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width:540px) {
+  .c12 > div > div > div > div.select-input + div {
+    margin-right: 1rem;
+    width: 12.875rem;
   }
 }
 
@@ -1041,7 +1141,7 @@ exports[`Storyshots @components/molecules/ProductListHeaderCategory with active 
         </button>
       </div>
       <div
-        className="c7"
+        className="product_list_header__right_side c7"
       >
         <span
           className="products_found c8"
@@ -1050,40 +1150,48 @@ exports[`Storyshots @components/molecules/ProductListHeaderCategory with active 
           <span
             className="c9"
           >
-            Productos encontrados :  
+            255
+             
           </span>
           <span
             className="c10"
           >
-             
-            255
-             
+            Productos encontrados con: 
+          </span>
+          <span
+            className="c10"
+          >
+            "
+            <span
+              className="c11"
+            />
+            "
           </span>
         </span>
         <span
-          className="c8"
+          className="product_list_header__dropdown c8"
         >
           <div
-            className="c11"
+            className="c12"
           >
             <div
-              className="c12"
+              className="c13"
               data-cy="dropdown-select"
             >
               <div
-                className="c13"
+                className="c14"
               >
                 <div
                   className="css-1pcexqc-container control"
                   onKeyDown={[Function]}
                 >
                   <div
-                    className="select-input c14"
+                    className="select-input c15"
                     data-cy="dropdown-select-input"
                     onClick={[Function]}
                   >
                     <span
-                      className="label c15"
+                      className="label c16"
                     >
                       Ordenar por:
                     </span>
@@ -1091,12 +1199,12 @@ exports[`Storyshots @components/molecules/ProductListHeaderCategory with active 
                       className="select-container"
                     >
                       <div
-                        className="select-container__value c16"
+                        className="select-container__value c17"
                       >
                          Limpiar
                       </div>
                       <div
-                        className="c17"
+                        className="c18"
                         rotate="false"
                       >
                         <svg
@@ -1119,7 +1227,7 @@ exports[`Storyshots @components/molecules/ProductListHeaderCategory with active 
                   </div>
                 </div>
                 <div
-                  className="c18"
+                  className="c19"
                 />
               </div>
             </div>
@@ -1128,11 +1236,11 @@ exports[`Storyshots @components/molecules/ProductListHeaderCategory with active 
       </div>
     </div>
     <div
-      className="c19"
+      className="c20"
     />
   </div>
   <div
-    className="c20"
+    className="c21"
   />
 </div>
 `;

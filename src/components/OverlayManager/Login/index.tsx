@@ -12,6 +12,7 @@ import {
 } from "../..";
 import RegisterForm from "./RegisterForm";
 import "./scss/index.scss";
+import farmatheme from "@farmatheme";
 
 const Login: FC<{
   overlay: OverlayContextInterface;
@@ -44,7 +45,7 @@ const Login: FC<{
               )}
               <BulletXFilledIcon
                 size={32}
-                color="#452FBA"
+                color={farmatheme.theme.colors.interactive}
                 onClick={hide}
                 className="overlay__header__close-icon"
               />
