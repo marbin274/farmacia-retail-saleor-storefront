@@ -268,8 +268,6 @@ $custom-breakpoint: 624px;
             height: 3.125rem;
             overflow: hidden;
             position: relative;
-            z-index: 5;
-            display: contents;
             @media (max-width: $medium-screen) {
               overflow: inherit;
               height: 4.375rem;
