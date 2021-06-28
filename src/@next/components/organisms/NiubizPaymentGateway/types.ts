@@ -35,3 +35,15 @@ export interface IProps {
   userDataForNiubiz?: IUserDataForNiubiz;
   generatePurchaseNumber: () => number;
 }
+
+export interface IFormPayment {
+  name: string | undefined;
+  lastname: string | undefined;
+  email: string | undefined;
+}
+
+export const initialValuesFormPayment: IFormPayment = {
+  name: "",
+  lastname: "",
+  email: "",
+};

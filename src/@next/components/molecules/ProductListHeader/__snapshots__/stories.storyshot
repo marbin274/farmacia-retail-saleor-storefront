@@ -181,9 +181,14 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
   justify-content: flex-end;
 }
 
-.c6 .select-input .clear-label {
-  margin-right: 1rem;
-  width: 14.75rem;
+.c6 .select-input > span {
+  color: #2F2C3A;
+}
+
+.c6 .select-input .select-container {
+  margin-left: 1rem;
+  min-width: 14.75rem;
+  max-width: 14.75rem;
   height: 2.5rem;
   border-radius: 40px;
   background: #FFFFFF;
@@ -202,6 +207,17 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
   -webkit-justify-content: flex-start;
   -ms-flex-pack: start;
   justify-content: flex-start;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 0 1rem;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.c6 .select-input .select-container__value {
+  margin: 0;
 }
 
 .c4 {
@@ -267,6 +283,11 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
 .c11 > div > div > div > div {
   margin: 0;
   padding: 0;
+  border-bottom-left-radius: 1.25rem;
+  border-bottom-right-radius: 1.25rem;
+  width: 14.75rem;
+  padding-top: 1.25rem;
+  margin-top: -1.25rem;
 }
 
 .c19 {
@@ -320,8 +341,27 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
 }
 
 @media (max-width:540px) {
-  .c6 .select-input .clear-label {
-    margin-right: 0;
+  .c6 .select-input {
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    width: 100vw;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 0 1rem;
+  }
+
+  .c6 .select-input .select-container {
+    margin-left: 0.5rem;
+    min-width: 12.875rem;
+    max-width: 12.875rem;
   }
 }
 
@@ -372,6 +412,26 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
 @media (min-width:720px) {
   .c11 .label {
     display: block;
+  }
+}
+
+@media (max-width:540px) {
+  .c11 > div > div > div {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width:540px) {
+  .c11 > div > div > div > div.select-input + div {
+    margin-right: 1rem;
+    width: 12.875rem;
   }
 }
 
@@ -491,29 +551,33 @@ exports[`Storyshots @components/molecules/ProductListHeader default 1`] = `
                       Ordenar por:
                     </span>
                     <div
-                      className="clear-label c16"
+                      className="select-container"
                     >
-                       Limpiar
-                    </div>
-                    <div
-                      className="c17"
-                      rotate="false"
-                    >
-                      <svg
-                        className=" "
-                        color="currentColor"
-                        fill="currentColor"
-                        height={16}
-                        viewBox="0 0 24 24"
-                        width={16}
-                        xmlns="http://www.w3.org/2000/svg"
+                      <div
+                        className="select-container__value c16"
                       >
-                        <path
-                          clipRule="evenodd"
-                          d="M0.292893 1.17155C0.683417 0.776149 1.31658 0.776149 1.70711 1.17155L9.02396 8.57987L16.3177 1.17155C16.7214 0.79001 17.3542 0.812103 17.7311 1.2209C18.1079 1.6297 18.0861 2.2704 17.6823 2.65194L9.68232 10.7277C9.28837 11.1 8.67393 11.0892 8.29289 10.7034L0.292893 2.60345C-0.0976311 2.20804 -0.0976311 1.56696 0.292893 1.17155Z"
-                          fillRule="evenodd"
-                        />
-                      </svg>
+                         Limpiar
+                      </div>
+                      <div
+                        className="c17"
+                        rotate="false"
+                      >
+                        <svg
+                          className=" "
+                          color="currentColor"
+                          fill="currentColor"
+                          height={16}
+                          viewBox="0 0 24 24"
+                          width={16}
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            clipRule="evenodd"
+                            d="M0.292893 1.17155C0.683417 0.776149 1.31658 0.776149 1.70711 1.17155L9.02396 8.57987L16.3177 1.17155C16.7214 0.79001 17.3542 0.812103 17.7311 1.2209C18.1079 1.6297 18.0861 2.2704 17.6823 2.65194L9.68232 10.7277C9.28837 11.1 8.67393 11.0892 8.29289 10.7034L0.292893 2.60345C-0.0976311 2.20804 -0.0976311 1.56696 0.292893 1.17155Z"
+                            fillRule="evenodd"
+                          />
+                        </svg>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -717,9 +781,14 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
   justify-content: flex-end;
 }
 
-.c7 .select-input .clear-label {
-  margin-right: 1rem;
-  width: 14.75rem;
+.c7 .select-input > span {
+  color: #2F2C3A;
+}
+
+.c7 .select-input .select-container {
+  margin-left: 1rem;
+  min-width: 14.75rem;
+  max-width: 14.75rem;
   height: 2.5rem;
   border-radius: 40px;
   background: #FFFFFF;
@@ -738,6 +807,17 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
   -webkit-justify-content: flex-start;
   -ms-flex-pack: start;
   justify-content: flex-start;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 0 1rem;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.c7 .select-input .select-container__value {
+  margin: 0;
 }
 
 .c4 {
@@ -818,6 +898,11 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
 .c12 > div > div > div > div {
   margin: 0;
   padding: 0;
+  border-bottom-left-radius: 1.25rem;
+  border-bottom-right-radius: 1.25rem;
+  width: 14.75rem;
+  padding-top: 1.25rem;
+  margin-top: -1.25rem;
 }
 
 .c20 {
@@ -871,8 +956,27 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
 }
 
 @media (max-width:540px) {
-  .c7 .select-input .clear-label {
-    margin-right: 0;
+  .c7 .select-input {
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    width: 100vw;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 0 1rem;
+  }
+
+  .c7 .select-input .select-container {
+    margin-left: 0.5rem;
+    min-width: 12.875rem;
+    max-width: 12.875rem;
   }
 }
 
@@ -930,6 +1034,26 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
 @media (min-width:720px) {
   .c12 .label {
     display: block;
+  }
+}
+
+@media (max-width:540px) {
+  .c12 > div > div > div {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width:540px) {
+  .c12 > div > div > div > div.select-input + div {
+    margin-right: 1rem;
+    width: 12.875rem;
   }
 }
 
@@ -1072,29 +1196,33 @@ exports[`Storyshots @components/molecules/ProductListHeader with active filters 
                       Ordenar por:
                     </span>
                     <div
-                      className="clear-label c17"
+                      className="select-container"
                     >
-                       Limpiar
-                    </div>
-                    <div
-                      className="c18"
-                      rotate="false"
-                    >
-                      <svg
-                        className=" "
-                        color="currentColor"
-                        fill="currentColor"
-                        height={16}
-                        viewBox="0 0 24 24"
-                        width={16}
-                        xmlns="http://www.w3.org/2000/svg"
+                      <div
+                        className="select-container__value c17"
                       >
-                        <path
-                          clipRule="evenodd"
-                          d="M0.292893 1.17155C0.683417 0.776149 1.31658 0.776149 1.70711 1.17155L9.02396 8.57987L16.3177 1.17155C16.7214 0.79001 17.3542 0.812103 17.7311 1.2209C18.1079 1.6297 18.0861 2.2704 17.6823 2.65194L9.68232 10.7277C9.28837 11.1 8.67393 11.0892 8.29289 10.7034L0.292893 2.60345C-0.0976311 2.20804 -0.0976311 1.56696 0.292893 1.17155Z"
-                          fillRule="evenodd"
-                        />
-                      </svg>
+                         Limpiar
+                      </div>
+                      <div
+                        className="c18"
+                        rotate="false"
+                      >
+                        <svg
+                          className=" "
+                          color="currentColor"
+                          fill="currentColor"
+                          height={16}
+                          viewBox="0 0 24 24"
+                          width={16}
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            clipRule="evenodd"
+                            d="M0.292893 1.17155C0.683417 0.776149 1.31658 0.776149 1.70711 1.17155L9.02396 8.57987L16.3177 1.17155C16.7214 0.79001 17.3542 0.812103 17.7311 1.2209C18.1079 1.6297 18.0861 2.2704 17.6823 2.65194L9.68232 10.7277C9.28837 11.1 8.67393 11.0892 8.29289 10.7034L0.292893 2.60345C-0.0976311 2.20804 -0.0976311 1.56696 0.292893 1.17155Z"
+                            fillRule="evenodd"
+                          />
+                        </svg>
+                      </div>
                     </div>
                   </div>
                 </div>

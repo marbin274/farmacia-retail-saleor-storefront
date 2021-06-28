@@ -1,12 +1,14 @@
 import { ProductSticker } from "@components/atoms";
 import { TaxedMoney } from "@components/containers";
 import { Thumbnail } from "@components/molecules";
+import { trackAddProductToCartFromPersonalized, trackSelectProductFromPersonalized } from "@temp/@next/optimizely/tracks";
 import {
   checkProductCanAddToCart,
   getProductPricingClass,
   productStickerRules,
 } from "@temp/@next/utils/products";
 import { launchDetailProductEvent } from "@temp/@sdk/gaConfig";
+import { ICheckoutModelLineVariantLocalStorage } from "@temp/@sdk/repository";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ItemsHandler from "../../organisms/ItemsHandler/ItemsHandler";
@@ -17,6 +19,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
   addToCart,
   removeItemToCart,
   subtractItemToCart,
+  isPersonalized,
   productUrl: productLink,
   product,
   productsOnCart,
@@ -33,6 +36,13 @@ export const ProductTileAUNA: React.FC<IProps> = ({
   const { canAddToCart } = checkProductCanAddToCart(product, productsOnCart);
   const { isOnSale, isOutStock } = productStickerRules(product);
 
+  const handleAddToCart = (productId: ICheckoutModelLineVariantLocalStorage, quantity: number) => {
+    if (!!isPersonalized) {
+      trackAddProductToCartFromPersonalized();
+    }
+    addToCart(productId, quantity);
+  }
+
   useEffect(() => {
     setThumbnails({
       thumbnail: { url: product?.thumbnail?.url || "" },
@@ -42,7 +52,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
 
   return (
     <S.ProductCard  
-     className='home-page_product fa-border-b fa-border-solid fa-border-neutral-medium lg:fa-border-0' 
+     className='home-page__product fa-border-b fa-border-solid fa-border-neutral-medium lg:fa-border-0' 
       data-cy="product-tile"  
       canAddToCart={canAddToCart}>
       <div className='fa-w-full fa-block lg:fa-hidden'>
@@ -50,11 +60,12 @@ export const ProductTileAUNA: React.FC<IProps> = ({
           to={productLink} 
           key={product.id} 
           onClick={(e)=> {
+            trackSelectProductFromPersonalized();
             if (refActions?.current?.contains(e.target)) {
               e.preventDefault();
             }
           }}>
-          <div className='home-page_product-image fa-flex fa-flex-col fa-items-center'>
+          <div className='home-page__product-image fa-flex fa-flex-col fa-items-center'>
             <div
               className="img fa-rounded-lg fa-bg-white fa-overflow-hidden"
               onClick={() =>
@@ -70,12 +81,12 @@ export const ProductTileAUNA: React.FC<IProps> = ({
                 <Thumbnail height={510} width={510} source={thumbnails} />
               </S.Image>
             </div>
-            <div className='home-page_product-sticker fa-mt-2'>
+            <div className='home-page__product-sticker fa-mt-2'>
               <ProductSticker isOnSale={isOnSale} isOutStock={isOutStock} />
             </div>
           </div>
           <div className='fa-px-4 fa-pb-4'>
-            <div className='home-page_product-price fa-hidden'>
+            <div className='home-page__product-price fa-hidden'>
               <div className={getProductPricingClass(canAddToCart, isOnSale)}>
                 <S.Price>
                   <TaxedMoney taxedMoney={product?.pricing?.priceRange?.start} />
@@ -91,10 +102,10 @@ export const ProductTileAUNA: React.FC<IProps> = ({
 
             </div>
             <div className="description">
-              <S.Title className='home-page_product-title fa-text-left'>{product.name}</S.Title>
+              <S.Title className='home-page__product-title fa-text-left'>{product.name}</S.Title>
             </div>
-            <div className='home-page_product-button fa-flex fa-justify-between'>
-              <div className='search-page_product-price'>
+            <div className='home-page__product-button fa-flex fa-justify-between'>
+              <div className='search-page__product-price'>
                 <div className={getProductPricingClass(canAddToCart, isOnSale)}>
                   <S.Price className='fa-font-base'>
                     <TaxedMoney taxedMoney={product?.pricing?.priceRange?.start} />
@@ -105,7 +116,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
                 <ItemsHandler
                   canAddToCart={canAddToCart}
                   product={product}
-                  addToCart={addToCart}
+                  addToCart={handleAddToCart}
                   removeItemToCart={removeItemToCart}
                   subtractItemToCart={subtractItemToCart}
                 />
@@ -115,7 +126,13 @@ export const ProductTileAUNA: React.FC<IProps> = ({
         </S.LinkContainer>
       </div>
       <div className='fa-hidden lg:fa-block'>
-        <Link to={productLink} key={product.id}>
+        <Link 
+        key={product.id}
+          onClick={() => {
+            trackSelectProductFromPersonalized();
+          }}
+          to={productLink}
+        >
           <S.WrapperStockout>
             <ProductSticker isOnSale={isOnSale} isOutStock={isOutStock} />
             <div
@@ -154,7 +171,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
         <ItemsHandler
           canAddToCart={canAddToCart}
           product={product}
-          addToCart={addToCart}
+          addToCart={handleAddToCart}
           removeItemToCart={removeItemToCart}
           subtractItemToCart={subtractItemToCart}
         />

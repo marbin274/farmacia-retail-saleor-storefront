@@ -109,11 +109,11 @@ export const View: React.FC<ViewProps> = ({ match }) => {
       label: "Limpiar...",
     },
     {
-      label: "Precio (↑)",
+      label: "Precio más alto",
       value: "price",
     },
     {
-      label: "Precio (↓)",
+      label: "Precio más bajo",
       value: "-price",
     },
     {

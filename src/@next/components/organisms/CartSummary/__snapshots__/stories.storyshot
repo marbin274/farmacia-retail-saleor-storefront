@@ -567,10 +567,9 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
           <button
             className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-transparent fa-text-primary-dark fa-border-2 fa-border-primary-medium hover:fa-border-primary-dark focus:fa-border-primary-light fa-h-8 fa-px-3 fa-text-sm"
             disabled={false}
-            style={Object {}}
           >
             <span
-              className="fa-align-middle fa-ml-2"
+              className="fa-align-middle"
             >
               Ver carrito
             </span>

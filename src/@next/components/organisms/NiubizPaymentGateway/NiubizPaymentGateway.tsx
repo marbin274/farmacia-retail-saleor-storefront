@@ -1,8 +1,16 @@
 import { Loader } from "@components/atoms";
+import { InputField } from "@farmacia-retail/farmauna-components";
+import farmatheme from "@farmatheme";
+import americanExpress from "@temp/images/auna/american-express-payment.svg";
+import dinersClub from "@temp/images/auna/diners-club-payment.svg";
+import masterCardIcon from "@temp/images/auna/mastercard-payment.svg";
+import niubizTextIcon from "@temp/images/auna/niubiz-text.svg";
+import visaIcon from "@temp/images/auna/visa-payment.svg";
 import { ICardData, IPaymentGatewayConfig } from "@types";
 import { Formik } from "formik";
 import ErrorFormPopulateIcon from "images/auna/form-populate-error.svg";
 import React, { useEffect, useState } from "react";
+import ReactSVG from "react-svg";
 import {
   createSession,
   createToken,
@@ -12,17 +20,10 @@ import {
 import { alertService } from "../../atoms/Alert";
 import { IAlertServiceProps } from "../../atoms/Alert/types";
 import { IUserDataForNiubiz } from "../CheckoutPayment/types";
-import { InputField } from "@farmacia-retail/farmauna-components";
+import { validatePaymentGateway } from "./NiubizPaymentGatewayValidation";
 import * as S from "./styles";
-import { IProps } from "./types";
-import ReactSVG from "react-svg";
-import visaIcon from "@temp/images/auna/visa-payment.svg";
-import masterCardIcon from "@temp/images/auna/mastercard-payment.svg";
-import niubizTextIcon from "@temp/images/auna/niubiz-text.svg";
-import americanExpress from "@temp/images/auna/american-express-payment.svg";
-import dinersClub from "@temp/images/auna/diners-club-payment.svg";
+import { IFormPayment, initialValuesFormPayment, IProps } from "./types";
 const ip = require("ip");
-import farmatheme from "@farmatheme";
 
 const INITIAL_CARD_ERROR_STATE = {
   fieldErrors: {
@@ -35,7 +36,7 @@ const INITIAL_CARD_ERROR_STATE = {
 };
 
 const getConfigElement = (config: IPaymentGatewayConfig[], element: string) => {
-  const result = config.find(x => x.field === element)?.value;
+  const result = config.find((x) => x.field === element)?.value;
   return result;
 };
 
@@ -133,7 +134,6 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
 }: IProps) => {
   // @ts-ignore
   const [sessionKey, setSessionKey] = useState("");
-  // const [submitErrors, setSubmitErrors] = useState<IFormError[]>([]);
 
   // @ts-ignore
   const [cardErrors, setCardErrors] = React.useState<ErrorData>(
@@ -167,7 +167,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
         );
         return createSession(sessionRequirements);
       })
-      .then(key => {
+      .then((key) => {
         setSessionKey(key);
         const tokenizerRequirements = getTokenizerRequirements(
           config,
@@ -178,8 +178,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
           amount,
           callbackurl: "",
           channel: "web",
-          font:
-            "https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap",
+          font: "https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap",
           language: "es",
           merchantConfiguration: {
             tokenizationEnabled: true,
@@ -235,7 +234,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
           });
 
           element.on("change", (data: any[]) => {
-            setFormErrors(data.filter(x => x.type === "validation_error"));
+            setFormErrors(data.filter((x) => x.type === "validation_error"));
             if (data.length !== 0) {
               let error = "";
               for (const d of data) {
@@ -274,7 +273,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
         );
 
         // @ts-ignore
-        _window.cardExpiry.then(element => {
+        _window.cardExpiry.then((element) => {
           setShowForm(true);
 
           element.on("change", (data: any[]) => {
@@ -301,30 +300,14 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
     onError(errors);
   };
 
-  const handleSubmit = async (formData: any) => {
-    // setSubmitErrors([]);
-
+  const handleSubmit = async (formData: IFormPayment) => {
     const data = {
       alias: "KS",
-      // @ts-ignore
-      email: document.getElementById("email")?.value,
-      // @ts-ignore
-      lastName: document.getElementById("apellido")?.value,
-      // @ts-ignore
-      name: document.getElementById("nombre")?.value,
+      email: formData.email,
+      lastName: formData.lastname,
+      name: formData.name,
       recurrence: false,
     };
-
-    if (!data.name || !data.lastName || !data.email) {
-      configureErrorMessages({
-        buttonText: "Entendido",
-        message:
-          "Para poder continuar es necesario ingresar tu nombre, apellido y correo.",
-        title: "Faltan datos",
-        type: "Text",
-      });
-      return;
-    }
 
     niubizTransaction(data);
   };
@@ -402,7 +385,6 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
     };
   }, []);
 
-  // const allErrors = [...errors, ...submitErrors];
   const styles = {
     hidde: {
       display: "none",
@@ -412,18 +394,14 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
     },
   };
 
-  const initialValues = {
-    initial: "",
-  };
-
   const getErrorFromDictionary = (errorDictionary: ERROR_DICTIONARY) => {
     return formErrors.length &&
-      formErrors.filter(x => x.code === errorsDictionary[errorDictionary])
+      formErrors.filter((x) => x.code === errorsDictionary[errorDictionary])
         .length ? (
       <div className="error number-creditcard-error">
         {
           formErrors.filter(
-            x => x.code === errorsDictionary[errorDictionary]
+            (x) => x.code === errorsDictionary[errorDictionary]
           )[0].message
         }
       </div>
@@ -436,13 +414,19 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
     <div>
       {showForm ? <label htmlFor=""></label> : <Loader fullScreen={true} />}
       <Formik
-        initialValues={initialValues}
+        initialValues={initialValuesFormPayment}
+        validate={(values: IFormPayment) => {
+          onError(errors);
+          return validatePaymentGateway(values);
+        }}
+        validateOnBlur={false}
+        validateOnChange={false}
         onSubmit={(values, { setSubmitting }) => {
           handleSubmit(values);
           setSubmitting(false);
         }}
       >
-        {({ handleChange, handleSubmit, values }) => (
+        {({ handleChange, handleSubmit, values, errors }) => (
           <S.Wrapper>
             <form action="" ref={formRef} id={formId} onSubmit={handleSubmit}>
               <div
@@ -491,18 +475,24 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                       <InputField
                         label="Nombre del titular de la tarjeta"
                         type="text"
-                        id="nombre"
+                        id="name"
                         inputSize="large"
                         className="form-control form-control-sm"
                         placeholder="Ejemplo: Juan"
+                        error={errors.name}
+                        value={values.name}
+                        onChange={handleChange}
                       />
                       <InputField
                         label="Apellido del titular de la tarjeta"
                         type="text"
-                        id="apellido"
+                        id="lastname"
                         inputSize="large"
                         className="form-control form-control-sm"
                         placeholder="Ejemplo: Perez"
+                        error={errors.lastname}
+                        value={values.lastname}
+                        onChange={handleChange}
                       />
                     </div>
                     <div className="row-input">
@@ -513,6 +503,9 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                         inputSize="large"
                         className="form-control form-control-sm"
                         placeholder="ejemplo@mail.com"
+                        error={errors.email}
+                        value={values.email}
+                        onChange={handleChange}
                       />
                       <div className="card-input">
                         <label htmlFor="">Número de tarjeta</label>

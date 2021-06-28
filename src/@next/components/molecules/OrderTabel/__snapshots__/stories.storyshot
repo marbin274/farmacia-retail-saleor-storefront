@@ -246,16 +246,8 @@ exports[`Storyshots @components/molecules/OrderTabel default 1`] = `
         className="c8 c9"
       >
         <button
-          className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-8 fa-px-3 fa-text-sm fa-flex fa-items-center fa-justify-center rounded-full"
+          className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-8 fa-px-3 fa-text-sm fa-w-8 fa-flex fa-items-center fa-justify-center rounded-full fa-p-0 fa-m-0"
           disabled={false}
-          style={
-            Object {
-              "height": "2rem",
-              "margin": "0",
-              "padding": "0",
-              "width": "2rem",
-            }
-          }
         >
           <span
             className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"
@@ -330,16 +322,8 @@ exports[`Storyshots @components/molecules/OrderTabel default 1`] = `
         className="c8 c9"
       >
         <button
-          className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-8 fa-px-3 fa-text-sm fa-flex fa-items-center fa-justify-center rounded-full"
+          className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-8 fa-px-3 fa-text-sm fa-w-8 fa-flex fa-items-center fa-justify-center rounded-full fa-p-0 fa-m-0"
           disabled={false}
-          style={
-            Object {
-              "height": "2rem",
-              "margin": "0",
-              "padding": "0",
-              "width": "2rem",
-            }
-          }
         >
           <span
             className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"

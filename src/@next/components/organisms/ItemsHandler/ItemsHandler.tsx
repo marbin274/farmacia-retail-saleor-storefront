@@ -1,8 +1,4 @@
 import { launchAddToCartEvent, launchRemoveToCartEvent } from "@sdk/gaConfig";
-import {
-  trackAddToCart,
-  useAddToCartButtonVariable,
-} from "@sdk/optimizelyConfig";
 import { ISimpleProduct } from "@temp/@next/types/IProduct";
 import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
 import {
@@ -20,6 +16,9 @@ import {
 } from "../../molecules/ProductTileAUNA/types";
 import "./scss/index.scss";
 import { Button, CartIcon } from "@farmacia-retail/farmauna-components";
+import { useAddToCartButtonVariable } from "@temp/@next/optimizely/hooks";
+import { trackAddToCart } from "@temp/@next/optimizely/tracks";
+
 
 type IProps = {
   canAddToCart?: boolean;

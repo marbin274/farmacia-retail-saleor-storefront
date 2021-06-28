@@ -22,7 +22,7 @@ export const documentNumberValidation = Yup.string()
 
 export const emailValidation = Yup.string()
   .required(SchemaMessage.EMAIL_REQUIRED)
-  .matches(SchemasConfig.EMAIL_REGEX_VALIDARION, SchemaMessage.EMAIL_VALIDATION)
+  .matches(SchemasConfig.EMAIL_REGEX_VALIDATION, SchemaMessage.EMAIL_VALIDATION)
   .email(SchemaMessage.EMAIL_VALIDATION);
 
 export const fullNameValidation = Yup.string().required(

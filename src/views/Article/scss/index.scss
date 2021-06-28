@@ -2,7 +2,12 @@
 
 .article-page {
   margin: 0 auto;
-
+  padding-top: 2rem;
+  .blog-page {
+    .article-page__image {
+      margin-bottom: 2.5rem;      
+    }
+  }
   &__container {
     margin: 0 0 3.75rem 0;
   }
@@ -43,6 +48,12 @@
   }
 
   &__image {
+    &.container {
+      padding: 0rem;
+      @media (min-width: $medium-screen) {
+        padding: 0rem 1rem;
+      }
+    }
     img{
       width: 100%;
       @media (min-width: $medium-screen) {

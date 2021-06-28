@@ -2,12 +2,15 @@
 
 .login-form {
   &__button {
-    margin-top: 2.188rem;
+    margin-top: 1rem;
     text-align: center;
 
     > button {
       width: 100%;
       max-width: 100%;
+    }
+    @media (max-width: $small-screen) {
+      margin-top: 1rem;
     }
   }
 

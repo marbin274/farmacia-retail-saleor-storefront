@@ -1,4 +1,5 @@
 import { media, mediaUp, styled } from "@styles";
+import farmatheme from "@farmatheme";
 
 export const Wrapper = styled.div`
   background-color: ${props => props.theme.colors.white};
@@ -24,13 +25,11 @@ export const Bar = styled.div`
   width:100%;
   ${media.mediumScreen`
     flex-direction: row;
-    
   `}
 `;
 
 export const LeftSide = styled.div`
   align-items: center;
-    
   display: flex;
   justify-content: space-between;
   padding: 1rem .8rem;
@@ -61,10 +60,14 @@ export const RightSide = styled.div`
     font-size:16px;
 `}
   .select-input{
+    & > span {
+      color: ${farmatheme.theme.colors.neutral.darkest};
+    }
     justify-content: flex-end;
-    .clear-label {
-      margin-right: 1rem;
-      width: 14.75rem;
+    .select-container {
+      margin-left: 1rem;
+      min-width: 14.75rem;
+      max-width: 14.75rem;
       height: 2.5rem;
       border-radius: 40px;
       background: #FFFFFF;
@@ -74,10 +77,26 @@ export const RightSide = styled.div`
       display:flex;
       align-items: center;
       justify-content: flex-start;
-      ${media.smallScreen`
-        margin-right:0;
-  `}
+      justify-content: space-between;
+      padding: 0 1rem;
+      cursor: pointer;
+      z-index: 2;
+      &__value {
+        margin: 0;
+      }
     }
+    ${media.smallScreen`  
+        align-items: center;
+        justify-content: space-between;
+        width: 100vw;
+        display: flex;
+        padding: 0 1rem;  
+        .select-container {
+          margin-left: 0.5rem;
+          min-width: 12.875rem;
+          max-width: 12.875rem;
+        }
+    `}
   }
 
   ${media.mediumScreen`
@@ -165,10 +184,24 @@ export const Sort = styled.div`
       > div {
         margin: 0;
         padding: 0;
-
+        ${media.smallScreen`
+          display: flex;
+          justify-content: flex-end;
+        `}
         > div {
           margin: 0;
           padding: 0;
+          border-bottom-left-radius: 1.25rem;
+          border-bottom-right-radius: 1.25rem;
+          width: 14.75rem;
+          padding-top: 1.25rem;
+          margin-top: -1.25rem;
+          ${media.smallScreen`
+            &.select-input + div {
+              margin-right: 1rem;
+              width: 12.875rem;
+            }
+          `}
         }
       }
     }

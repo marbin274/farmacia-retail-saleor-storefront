@@ -30,6 +30,7 @@ interface TypedQueryInnerProps<TData, TVariables> {
   variables?: TVariables;
   errorPolicy?: ErrorPolicy;
   alwaysRender?: boolean;
+  alwaysLoader?: boolean;
   onCompleted?: (data: TData) => void;
 }
 
@@ -42,6 +43,7 @@ export function TypedQuery<TData, TVariables>(query: DocumentNode) {
       displayLoader = true,
       renderOnError = false,
       alwaysRender = false,
+      alwaysLoader = false,
       fetchPolicy = "cache-and-network",
       errorPolicy,
       loader,
@@ -94,6 +96,9 @@ export function TypedQuery<TData, TVariables>(query: DocumentNode) {
           if (displayLoader && loading && loader && districtChanged === "true") {
             localStorage.setItem(LocalStorageItems.DISTRICT_CHANGED, "false")
             return <>{loader}</>;
+          }
+          else if (displayLoader && loading && !!alwaysLoader) {
+            return loader ? <>{loader}</> : <Loader full={loaderFull} />;
           }
           else if (displayLoader && loading && !hasData) {
             return loader ? <>{loader}</> : <Loader full={loaderFull} />;
