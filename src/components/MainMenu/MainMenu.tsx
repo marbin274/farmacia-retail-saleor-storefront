@@ -29,10 +29,10 @@ export const MainMenu: React.FC<IProps> = ({
         <S.Wrapper isProductDetail={isProductDetail}>
           {canShowSearch && (
             <S.ContainerSearch>
-              <SearchForm />        
-              <div 
-                  className='fa-absolute fa-w-full fa-h-full fa-top-0 fa-left-0 fa-block'
-                  onClick={onClickSearchIcon} />    
+              <SearchForm />
+              <div
+                className='fa-absolute fa-w-full fa-h-full fa-top-0 fa-left-0 fa-block'
+                onClick={onClickSearchIcon} />
             </S.ContainerSearch>
           )}
           <S.Container className="container">

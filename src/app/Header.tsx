@@ -13,7 +13,11 @@ export const Header: React.FC = () => {
 
   const isProductPage = 
     location.pathname.includes("product") || 
-    location.pathname.includes("search");
+    location.pathname.includes("search") ||
+    location.pathname.includes("account") ||
+    location.pathname.includes("address-book") ||
+    location.pathname.includes("order-history");
+
 
   return (
     <TypedMainMenuQuery
