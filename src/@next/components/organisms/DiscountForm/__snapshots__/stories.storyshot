@@ -110,6 +110,7 @@ exports[`Storyshots @components/organisms/DiscountForm default 1`] = `
               name="inputCode"
               onChange={[Function]}
               onFocus={[Function]}
+              onKeyPress={[Function]}
               placeholder="Ejem: YEPS-03JD-N08T"
               type="text"
               value=""

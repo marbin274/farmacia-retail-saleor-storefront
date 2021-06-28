@@ -86,9 +86,12 @@ export const DiscountForm: React.FC<IProps> = ({
                     inputSize="large"
                     placeholder="Ejem: YEPS-03JD-N08T"
                     value={values?.inputCode}
-                    onChange={e => {
+                    onChange={(e) => {
                       const value = e.currentTarget?.value?.toUpperCase();
                       setFieldValue("inputCode", value);
+                    }}
+                    onKeyPress={(e) => {
+                      e.preventDefault();
                     }}
                     onFocus={() => {
                       errors = null;
