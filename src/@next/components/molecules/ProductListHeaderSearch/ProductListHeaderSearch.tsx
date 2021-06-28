@@ -3,10 +3,10 @@ import React from "react";
 import * as S from "./styles";
 import { IProps } from "./types";
 import { FilterIcon } from "@farmacia-retail/farmauna-components";
+import { StringParam, useQueryParam } from "use-query-params";
+import farmatheme from "@farmatheme";
 
-
-
-export const ProductListHeaderCategory: React.FC<IProps> = ({
+export const ProductListHeaderSearch: React.FC<IProps> = ({
   hideFilters = false,
   numberOfProducts = 0,
   openFiltersMenu,
@@ -18,14 +18,20 @@ export const ProductListHeaderCategory: React.FC<IProps> = ({
   onChange,
   onCloseFilterAttribute,
 }: IProps) => {
+
+  
+  const [search] = useQueryParam("q", StringParam);
   return (
     <S.Wrapper>
       <S.Bar>
-        {!hideFilters &&
+        {!hideFilters && (
           <S.LeftSide>
-            <S.FiltersButton onClick={openFiltersMenu} data-cy="filters__button">
+            <S.FiltersButton
+              onClick={openFiltersMenu}
+              data-cy="filters__button"
+            >
               <S.Filters>
-                <FilterIcon size={18} color={'#452FBA'} />
+                <FilterIcon size={18} color={farmatheme.theme.colors.interactive} />
                 <span>
                   Filtrar
                   {activeFilters > 0 && (
@@ -43,17 +49,19 @@ export const ProductListHeaderCategory: React.FC<IProps> = ({
               </S.Clear>
             )}
           </S.LeftSide>
-        }
+        )}
 
-        <S.RightSide>
+        <S.RightSide 
+          className="product_list_header__right_side">
           <S.Element
             className="products_found"
             data-cy="no-of-products-found_label"
           >
-            <S.Label>Productos encontrados :  </S.Label>
-            <S.NumberProducts> { numberOfProducts } </S.NumberProducts>
+            <S.NumberProducts>{numberOfProducts} </S.NumberProducts>
+            <S.Label>Productos encontrados con: </S.Label>
+            <S.Label>"<S.SearchText>{search}</S.SearchText>"</S.Label>
           </S.Element>
-          <S.Element>
+          <S.Element className="product_list_header__dropdown">
             <S.Sort>
               <DropdownSelect
                 onChange={onChange}

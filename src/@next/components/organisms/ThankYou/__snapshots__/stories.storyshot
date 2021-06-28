@@ -23,6 +23,34 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
   margin-bottom: 0px !important;
 }
 
+.c8 {
+  position: relative;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  background-color: #452FBA;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: white;
+}
+
+.c8 span {
+  margin: auto;
+  font-size: 0.875rem;
+  line-height: 0.875rem;
+}
+
+.c8 svg {
+  margin: auto;
+}
+
 .c5 {
   position: relative;
   width: 1.5rem;
@@ -115,15 +143,15 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
   text-align: center;
 }
 
-.c18 {
-  color: #452fba;
+.c20 {
+  color: #452FBA;
   font-size: 1.5rem;
   line-height: 2.25rem;
   font-weight: 600;
 }
 
-.c19 {
-  color: #452fba;
+.c21 {
+  color: #452FBA;
   font-weight: 600;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
@@ -194,8 +222,8 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
   margin-top: 2rem;
 }
 
-.c11 {
-  color: #452fba;
+.c13 {
+  color: #452FBA;
   font-size: 1.5rem;
   font-weight: 600;
   margin: 0;
@@ -221,8 +249,8 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
   font-weight: 400;
 }
 
-.c12 span {
-  color: #452fba;
+.c14 span {
+  color: #452FBA;
   font-weight: 600;
 }
 

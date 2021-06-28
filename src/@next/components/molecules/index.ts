@@ -1,6 +1,7 @@
 export * from "./AccountMenu";
 export * from "./AccountMenuMobile";
 export * from "./AccountTabTiles";
+export * from "./AddressAutocomplete";
 export * from "./AddressGeocalization";
 export * from "./AddressSummary";
 export * from "./AddressTile";
@@ -21,7 +22,7 @@ export * from "./OverlayItem";
 export * from "./ProductDescription";
 export * from "./ProductImage";
 export * from "./ProductListHeader";
-export * from "./ProductListHeaderCategory";
+export * from "./ProductListHeaderSearch";
 export * from "./ProductTile";
 export * from "./ProductTileAUNA";
 export * from "./ProductTileHorizontalAUNA";

@@ -2,7 +2,7 @@ import { mount, shallow } from "enzyme";
 import "jest-styled-components";
 import React from "react";
 
-import { ProductListHeaderCategory } from ".";
+import { ProductListHeaderSearch } from ".";
 
 const clearFilterMock = jest.fn();
 const onChangeMock = jest.fn();
@@ -29,28 +29,28 @@ const DEFAULT_PROPS = {
   ],
 };
 
-describe("<ProductListHeaderCategory />", () => {
+describe("<ProductListHeaderSearch />", () => {
   it("exists", () => {
-    const wrapper = shallow(<ProductListHeaderCategory {...DEFAULT_PROPS} />);
+    const wrapper = shallow(<ProductListHeaderSearch {...DEFAULT_PROPS} />);
 
     expect(wrapper.exists()).toEqual(true);
   });
 
   it("should display number of products found", () => {
-    const wrapper = shallow(<ProductListHeaderCategory {...DEFAULT_PROPS} />);
+    const wrapper = shallow(<ProductListHeaderSearch {...DEFAULT_PROPS} />);
 
     expect(wrapper.text()).toContain(String(DEFAULT_PROPS.numberOfProducts));
   });
 
   it("should not display Limpiar filtros button if no active filters present", () => {
-    const wrapper = shallow(<ProductListHeaderCategory {...DEFAULT_PROPS} />);
+    const wrapper = shallow(<ProductListHeaderSearch {...DEFAULT_PROPS} />);
 
     expect(wrapper.text()).not.toContain("Limpiar filtros");
   });
 
   it("should display Limpiar filtros button if active filters present are present", () => {
     const wrapper = shallow(
-      <ProductListHeaderCategory {...DEFAULT_PROPS} activeFilters={3} />
+      <ProductListHeaderSearch {...DEFAULT_PROPS} activeFilters={3} />
     );
 
     expect(wrapper.text()).toContain("Borrar filtros");
@@ -58,7 +58,7 @@ describe("<ProductListHeaderCategory />", () => {
 
   it("should display number of active filters if any are present", () => {
     const wrapper = shallow(
-      <ProductListHeaderCategory {...DEFAULT_PROPS} activeFilters={3} />
+      <ProductListHeaderSearch {...DEFAULT_PROPS} activeFilters={3} />
     );
 
     expect(wrapper.text()).toContain("(3)");
@@ -66,7 +66,7 @@ describe("<ProductListHeaderCategory />", () => {
 
   it("should call method for clearing filters when clicking on Limpiar filtros button", () => {
     const wrapper = mount(
-      <ProductListHeaderCategory {...DEFAULT_PROPS} activeFilters={3} />
+      <ProductListHeaderSearch {...DEFAULT_PROPS} activeFilters={3} />
     );
 
     wrapper
@@ -81,7 +81,7 @@ describe("<ProductListHeaderCategory />", () => {
 
   it("should call method for clearing filters when clicking on Limpiar filtros button", () => {
     const wrapper = mount(
-      <ProductListHeaderCategory {...DEFAULT_PROPS} activeFilters={3} />
+      <ProductListHeaderSearch {...DEFAULT_PROPS} activeFilters={3} />
     );
 
     wrapper

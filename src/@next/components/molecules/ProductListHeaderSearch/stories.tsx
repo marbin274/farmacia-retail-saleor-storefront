@@ -2,7 +2,7 @@ import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react";
 import React from "react";
 
-import { ProductListHeaderCategory } from ".";
+import { ProductListHeaderSearch } from ".";
 
 const DEFAULT_PROPS = {
   activeFilters: 0,
@@ -24,9 +24,9 @@ const DEFAULT_PROPS = {
   ],
 };
 
-storiesOf("@components/molecules/ProductListHeaderCategory", module)
-  .addParameters({ component: ProductListHeaderCategory })
-  .add("default", () => <ProductListHeaderCategory {...DEFAULT_PROPS} />)
+storiesOf("@components/molecules/ProductListHeaderSearch", module)
+  .addParameters({ component: ProductListHeaderSearch })
+  .add("default", () => <ProductListHeaderSearch {...DEFAULT_PROPS} />)
   .add("with active filters", () => (
-    <ProductListHeaderCategory {...DEFAULT_PROPS} activeFilters={3} />
+    <ProductListHeaderSearch {...DEFAULT_PROPS} activeFilters={3} />
   ));
