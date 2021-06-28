@@ -147,6 +147,18 @@ export interface IPaymentCreditCard {
   expYear?: number;
 }
 
+export interface IShippingSlot {
+  id?: string;
+  slotFrom?: string;
+  slotTo?: string;
+}
+
+export interface ISlots {
+  express?: IShippingSlot[];
+  scheduled?: IShippingSlot[];
+  datetime?: string;
+}
+
 export interface ICheckoutModel {
   id?: string;
   token?: any;
@@ -165,6 +177,9 @@ export interface ICheckoutModel {
   termsAndConditions?: boolean;
   documentNumber?: string | null;
   scheduleDate?: IScheduleDate | null;
+  slotId?: string;
+  slots?: ISlots;
+  deliveryDate?: string;
 }
 
 export interface IPaymentModel {
@@ -189,6 +204,7 @@ export interface IShippingMethodUpdateScheduleDate {
 export interface IShippingMethodUpdate {
   shippingMethodId: string;
   scheduleDate?: IShippingMethodUpdateScheduleDate;
+  slotId?: string;
 }
 
 // export interface IJobsModel {

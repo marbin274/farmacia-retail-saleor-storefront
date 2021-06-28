@@ -22,6 +22,7 @@ export const Modal = styled.div`
 export const Icon = styled.div`
   text-align: center;
   width: auto;
+  margin-bottom: 1rem;
   svg {
     margin: auto;
     transform: scale(0.8);

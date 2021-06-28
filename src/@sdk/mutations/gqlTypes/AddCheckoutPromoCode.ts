@@ -702,6 +702,54 @@ export interface AddCheckoutPromoCode_checkoutAddPromoCode_checkout_discount {
   culture: string;
 }
 
+export interface AddCheckoutPromoCode_checkoutAddPromoCode_checkout_slots_scheduled {
+  __typename: "ShippingSlot";
+  /**
+   * Slot id.
+   */
+  id: string | null;
+  /**
+   * Slot available from.
+   */
+  slotFrom: string | null;
+  /**
+   * Slot available to.
+   */
+  slotTo: string | null;
+}
+
+export interface AddCheckoutPromoCode_checkoutAddPromoCode_checkout_slots_express {
+  __typename: "ShippingSlot";
+  /**
+   * Slot id.
+   */
+  id: string | null;
+  /**
+   * Slot available from.
+   */
+  slotFrom: string | null;
+  /**
+   * Slot available to.
+   */
+  slotTo: string | null;
+}
+
+export interface AddCheckoutPromoCode_checkoutAddPromoCode_checkout_slots {
+  __typename: "Slot";
+  /**
+   * List of scheduled slots.
+   */
+  scheduled: (AddCheckoutPromoCode_checkoutAddPromoCode_checkout_slots_scheduled | null)[] | null;
+  /**
+   * List of express slots.
+   */
+  express: (AddCheckoutPromoCode_checkoutAddPromoCode_checkout_slots_express | null)[] | null;
+  /**
+   * Datetime.
+   */
+  datetime: string | null;
+}
+
 export interface AddCheckoutPromoCode_checkoutAddPromoCode_checkout {
   __typename: "Checkout";
   token: any;
@@ -751,6 +799,18 @@ export interface AddCheckoutPromoCode_checkoutAddPromoCode_checkout {
   documentNumber: string | null;
   termsAndConditions: boolean;
   dataTreatmentPolicy: boolean;
+  /**
+   * List of slots.
+   */
+  slots: AddCheckoutPromoCode_checkoutAddPromoCode_checkout_slots | null;
+  /**
+   * Slot id.
+   */
+  slotId: string | null;
+  /**
+   * Slot date.
+   */
+  deliveryDate: string | null;
 }
 
 export interface AddCheckoutPromoCode_checkoutAddPromoCode_errors {

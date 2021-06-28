@@ -1,6 +1,6 @@
 on:
   pull_request:
-    branches: [master, release]
+    branches: [master, qa2, release]
 
 jobs:
   build:
