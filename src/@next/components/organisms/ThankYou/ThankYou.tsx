@@ -3,6 +3,7 @@ import { CheckoutReview } from "@components/organisms";
 import { statuses as dummyStatuses } from "@components/organisms/DummyPaymentGateway";
 import { Container } from "@components/templates";
 import { Button, MailIcon } from "@farmacia-retail/farmauna-components";
+import { PROVIDERS } from "@temp/core/config";
 import React from "react";
 import * as S from "./styles";
 import { IProps } from "./types";
@@ -42,18 +43,23 @@ const ThankYou: React.FC<IProps> = ({
       const visaCards = creditCardType(payment?.creditCard.firstDigits);
       return visaCards[0].type;
     }
-    return `visa`;
+    return "";
   };
 
   const getPaymentMethodDescription = () => {
-    if (payment?.gateway === "mirumee.payments.dummy") {
+    if (payment?.gateway === PROVIDERS.DUMMY.id) {
       return `Dummy: ${
         dummyStatuses.find(
           status => status.token === selectedPaymentGatewayToken
         )?.label
       }`;
     }
-    return ``;
+
+    if (payment?.gateway === PROVIDERS.POS.id) {
+      return PROVIDERS.POS.label;
+    }
+
+    return "";
   };
 
   return (
