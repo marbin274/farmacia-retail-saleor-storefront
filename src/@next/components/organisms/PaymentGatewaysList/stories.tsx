@@ -22,5 +22,6 @@ storiesOf("@components/organisms/PaymentGatewaysList", module)
       changeRequestPayload={changeRequestPayload}
       voucherCode={undefined}
       reRender={true}
+      selectedDistrict="Miraflores"
     />
   ));

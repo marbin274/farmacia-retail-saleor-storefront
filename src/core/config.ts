@@ -18,7 +18,7 @@ export const CONSULTATION_EMAIL = "consultas@farmauna.com";
 export const PROVIDERS = {
   AUNA: {
     id: "farmacia-retail.payments.niubiz",
-    label: "AUNA Payments Gateway",
+    label: "Tarjeta de crédito/débito",
   },
   BRAINTREE: {
     id: "mirumee.payments.braintree",
@@ -30,7 +30,11 @@ export const PROVIDERS = {
   },
   DUMMY: {
     id: "mirumee.payments.dummy",
-    label: "AUNA Payments Gateway",
+    label: "AUNA Dummy Payments Gateway",
+  },
+  POS: {
+    id: "farmacia-retail.payments.pos",
+    label: "POS contra entrega",
   },
 };
 export const billingAddressAlwaysSameAsShipping = true;
@@ -295,6 +299,8 @@ export const DISTRICT_SELECTED_DEFAULT: IDistrictSelected = {
   warehouse: null,
 };
 export const TOTAL_DISTRICT = 23;
+
+export const POS_DISTRICTS = ["miraflores"];
 
 export const COUNTRY_DEFAULT = { 
   code: "PE", 
