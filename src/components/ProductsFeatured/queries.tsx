@@ -10,54 +10,75 @@ import {
   FeaturedProductsVariables,
 } from "./gqlTypes/FeaturedProducts";
 
+const featuredProductFragment = gql`
+${basicProductFragment}
+${productPricingFragment}
+fragment FeaturedProductFields on Product {
+  ...BasicProductFields
+  ...ProductPricingField
+  attributes {
+    attribute {
+      id
+      name
+    }
+    values {
+      id
+      name
+    }
+  }
+  category {
+    id
+    name
+  }
+  variants {
+    id
+    sku
+    pricing {
+      onSale
+      price {
+        ...Price
+      }
+      priceUndiscounted {
+        ...Price
+      }
+    }
+    quantityAvailable(district: $districtId)
+  }
+}
+`;
+
 export const featuredProducts = gql`
-  ${basicProductFragment}
-  ${productPricingFragment}
-  query FeaturedProducts($first: Int, $districtId: ID) {
+  ${featuredProductFragment}
+  query FeaturedProducts(
+    $first: Int!,
+    $districtId: ID,
+    $firstCollection: Int,
+    $sortBy: CollectionSortingInput
+  ) {
     shop {
-      homepageCollections {
-        id
-        name
-        products(district: $districtId, first: $first) {
-          edges {
-            node {
-              ...BasicProductFields
-              ...ProductPricingField
-              attributes {
-                attribute {
-                  id
-                  name
+      homepageCollections(first: $firstCollection, sortBy: $sortBy) {
+        edges {
+          node {
+            id
+            name
+            products(district: $districtId, first: $first) {
+              edges {
+                node {
+                  ...FeaturedProductFields
                 }
-                values {
-                  id
-                  name
-                }
-              }
-              category {
-                id
-                name
-              }
-              variants {
-                id
-                sku
-                pricing {
-                  onSale
-                  price {
-                    ...Price
-                  }
-                  priceUndiscounted {
-                    ...Price
-                  }
-                }
-                quantityAvailable(district: $districtId)
               }
             }
           }
         }
       }
     }
+    personalized: recommendedProducts(maxResults: $first) {
+      ...FeaturedProductFields
+    } 
+
   }
 `;
+
 
 export const TypedFeaturedProductsQuery = TypedQuery<
   FeaturedProducts,

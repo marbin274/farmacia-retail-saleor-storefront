@@ -36,3 +36,15 @@ export interface IProps {
   totalPrice?: ITotalPrice;
   userDataForNiubiz?: IUserDataForNiubiz;
 }
+
+export interface IFormPayment {
+  name: string | undefined;
+  lastname: string | undefined;
+  email: string | undefined;
+}
+
+export const initialValuesFormPayment: IFormPayment = {
+  name: "",
+  lastname: "",
+  email: "",
+};

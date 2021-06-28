@@ -88,7 +88,7 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
   right: -0.75rem;
   width: 1.5rem;
   height: 1.5rem;
-  background-color: #452fba;
+  background-color: #452FBA;
   border-radius: 50%;
   color: #fff;
 }
@@ -136,7 +136,7 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
 }
 
 .c23 {
-  color: #452fba;
+  color: #452FBA;
   font-size: 1rem;
   font-weight: 600;
   padding: 1.5rem 2rem;
@@ -567,10 +567,9 @@ exports[`Storyshots @components/organisms/CartSummary default 1`] = `
           <button
             className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-transparent fa-text-primary-dark fa-border-2 fa-border-primary-medium hover:fa-border-primary-dark focus:fa-border-primary-light fa-h-8 fa-px-3 fa-text-sm"
             disabled={false}
-            style={Object {}}
           >
             <span
-              className="fa-align-middle fa-ml-2"
+              className="fa-align-middle"
             >
               Ver carrito
             </span>

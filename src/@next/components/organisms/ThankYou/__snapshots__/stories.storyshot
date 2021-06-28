@@ -28,7 +28,7 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
   width: 1.5rem;
   height: 1.5rem;
   border: none;
-  background-color: #452fba;
+  background-color: #452FBA;
   border-radius: 50%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -155,14 +155,14 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
 }
 
 .c20 {
-  color: #452fba;
+  color: #452FBA;
   font-size: 1.5rem;
   line-height: 2.25rem;
   font-weight: 600;
 }
 
 .c21 {
-  color: #452fba;
+  color: #452FBA;
   font-weight: 600;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
@@ -234,7 +234,7 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
 }
 
 .c13 {
-  color: #452fba;
+  color: #452FBA;
   font-size: 1.5rem;
   font-weight: 600;
   margin: 0;
@@ -261,7 +261,7 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
 }
 
 .c14 span {
-  color: #452fba;
+  color: #452FBA;
   font-weight: 600;
 }
 
@@ -526,10 +526,9 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
           className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-transparent fa-text-primary-dark fa-border-2 fa-border-primary-medium hover:fa-border-primary-dark focus:fa-border-primary-light fa-h-12 fa-px-4"
           disabled={false}
           onClick={[Function]}
-          style={Object {}}
         >
           <span
-            className="fa-align-middle fa-ml-2"
+            className="fa-align-middle"
           >
             Regresar al inicio
           </span>

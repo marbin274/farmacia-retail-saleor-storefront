@@ -353,9 +353,11 @@ exports[`Storyshots @components/organisms/NiubizPaymentGateway default 1`] = `
                     <input
                       className="fa-w-full fa-appearance-none fa-border fa-text-sm fa-outline-none fa-placeholder-neutral-medium fa-text-neutral-darkest fa-bg-neutral-lightest fa-border-neutral-medium focus:fa-border-neutral-darkest fa-rounded-lg fa-px-4 fa-h-12 form-control form-control-sm"
                       disabled={false}
-                      id="nombre"
+                      id="name"
+                      onChange={[Function]}
                       placeholder="Ejemplo: Juan"
                       type="text"
+                      value=""
                     />
                   </div>
                 </div>
@@ -374,9 +376,11 @@ exports[`Storyshots @components/organisms/NiubizPaymentGateway default 1`] = `
                     <input
                       className="fa-w-full fa-appearance-none fa-border fa-text-sm fa-outline-none fa-placeholder-neutral-medium fa-text-neutral-darkest fa-bg-neutral-lightest fa-border-neutral-medium focus:fa-border-neutral-darkest fa-rounded-lg fa-px-4 fa-h-12 form-control form-control-sm"
                       disabled={false}
-                      id="apellido"
+                      id="lastname"
+                      onChange={[Function]}
                       placeholder="Ejemplo: Perez"
                       type="text"
+                      value=""
                     />
                   </div>
                 </div>
@@ -400,8 +404,10 @@ exports[`Storyshots @components/organisms/NiubizPaymentGateway default 1`] = `
                       className="fa-w-full fa-appearance-none fa-border fa-text-sm fa-outline-none fa-placeholder-neutral-medium fa-text-neutral-darkest fa-bg-neutral-lightest fa-border-neutral-medium focus:fa-border-neutral-darkest fa-rounded-lg fa-px-4 fa-h-12 form-control form-control-sm"
                       disabled={false}
                       id="email"
+                      onChange={[Function]}
                       placeholder="ejemplo@mail.com"
                       type="text"
+                      value=""
                     />
                   </div>
                 </div>

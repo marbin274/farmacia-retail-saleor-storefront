@@ -1,19 +1,23 @@
 import { media, mediaUp, styled } from "@styles";
+import farmatheme from "@farmatheme";
 
 export const Wrapper = styled.div`
+  background-color: ${props => props.theme.colors.white};
+  border-radius: 1rem;
+  height:4rem;
   display:flex;
-  flex-direction: column;
   align-items:center;
   margin-bottom:1rem;
 
   ${media.smallScreen`
     border-radius: 0;
   `}
+  > span {
+    color: #908BA7;
+  }
 `;
 
 export const Bar = styled.div`
-  background-color: ${props => props.theme.colors.white};
-  border-radius: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -21,26 +25,24 @@ export const Bar = styled.div`
   width:100%;
   ${media.mediumScreen`
     flex-direction: row;
-    
   `}
 `;
 
 export const LeftSide = styled.div`
   align-items: center;
-    
   display: flex;
   justify-content: space-between;
   padding: 1rem .8rem;
   width: 100%;
   ${mediaUp.mediumScreen`
     justify-content: space-between;
-    width: auto;
+    width: 24rem;
   `}
   span, button {
     color: ${props => props.theme.colors.interactive};
     font-size: ${props => props.theme.typography.smallFontSize};
     font-weight: ${props => props.theme.typography.normalFontWeight};
-    color: #452FBA;
+    color: ${farmatheme.theme.colors.interactive};
     display:flex;
     align-items:center;
   }
@@ -48,33 +50,53 @@ export const LeftSide = styled.div`
 
 export const RightSide = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 1rem .8rem;
   width: 100%;
-  font-size:14px;
+  font-size:1.25rem;
   align-items:center;
   font-weight:600;
   ${media.smallScreen`
-    font-size:16px;
+    font-size:1rem;
 `}
   .select-input{
-    cursor: pointer;
-    margin-right: 2rem;
+    & > span {
+      color: ${farmatheme.theme.colors.neutral.darkest};
+    }
     justify-content: flex-end;
-    .clear-label {
-      margin-right:0;
+    .select-container {
+      margin-left: 1rem;
+      min-width: 14.75rem;
+      max-width: 14.75rem;
       height: 2.5rem;
-      border-radius: 40px;
+      border-radius: 2.5rem;
       background: #FFFFFF;
+      border: 0.0625rem solid #908BA7;
       position:relative;
-      padding:0;
+      padding:0 0 0 0.9375rem;
       display:flex;
       align-items: center;
       justify-content: flex-start;
-      ${media.smallScreen`
-        margin-right:0;
-  `}
+      justify-content: space-between;
+      padding: 0 1rem;
+      cursor: pointer;
+      z-index: 2;
+      &__value {
+        margin: 0;
+      }
     }
+    ${media.smallScreen`  
+        align-items: center;
+        justify-content: space-between;
+        width: 100vw;
+        display: flex;
+        padding: 0 1rem;  
+        .select-container {
+          margin-left: 0.5rem;
+          min-width: 12.875rem;
+          max-width: 12.875rem;
+        }
+    `}
   }
 
   ${media.mediumScreen`
@@ -106,22 +128,19 @@ export const Clear = styled.button`
     margin-left: .5rem;
   }
   ${mediaUp.mediumScreen`
-    padding-left: 0px;
+    padding-left: 0rem;
     width: 7rem;
   `}
 `;
 
 export const Element = styled.span`
-
-display:flex;
  
 ${mediaUp.mediumScreen`
-  margin-top: 0;
+  margin-top: 1.5rem;
 `}
 ${mediaUp.xSmallScreen`
-  margin-top: 0;
+  margin-top: 1.5rem;
 `}
-
 `;
 
 export const Filters = styled.span`
@@ -135,14 +154,17 @@ export const Filters = styled.span`
 
 export const Label = styled.span`
   color: ${props => props.theme.colors.greyText};
-  color:#908BA7;
-  padding:0 10px;
+  color:#2F2C3A;
+`;
+
+export const SearchText = styled.span`
+  color: ${props => props.theme.colors.interactive};
 `;
 
 export const Sort = styled.div`
   width: inherit;
   display: inline-block;
-  
+  margin-bottom:1.25rem;
 
   .label {
     display: block;
@@ -157,15 +179,29 @@ export const Sort = styled.div`
 
     > div {
       margin: 0;
-      padding: 0 0 0 10px;
+      padding: 0;
 
       > div {
         margin: 0;
         padding: 0;
-
+        ${media.smallScreen`
+          display: flex;
+          justify-content: flex-end;
+        `}
         > div {
-          margin: 0 0 0 10px;
+          margin: 0;
           padding: 0;
+          border-bottom-left-radius: 1.25rem;
+          border-bottom-right-radius: 1.25rem;
+          width: 14.75rem;
+          padding-top: 1.25rem;
+          margin-top: -1.25rem;
+          ${media.smallScreen`
+            &.select-input + div {
+              margin-right: 1rem;
+              width: 12.875rem;
+            }
+          `}
         }
       }
     }
@@ -175,12 +211,13 @@ export const Sort = styled.div`
 export const FiltersChipsWrapper = styled.div`
   margin-top: .5rem;
   padding: 0rem .5rem;
-  align-self: flex-start;
   > div {
     margin: 0.4rem;
   }
+  display:none;
 `;
 
 export const NumberProducts = styled.span`
   font-weight: ${({theme}) =>theme.typography.boldFontWeight};
 `
+;

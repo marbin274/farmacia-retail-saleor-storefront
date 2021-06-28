@@ -5,12 +5,11 @@ import {
 } from "@temp/@next/components/molecules/ProductTileAUNA/types";
 import { CategoryNavigation } from "@temp/@next/components/organisms/CategoryNavigation/CategoryNavigation";
 import { IItems } from "@temp/@sdk/api/Cart/types";
-import { MainMenu_shop } from "@temp/components/MainMenu/gqlTypes/MainMenu";
 import { convertToSimpleProduct, maybe } from "@temp/core/utils";
 import { IFilterAttributes, IFilters } from "@types";
 import { Pagination } from "@farmacia-retail/farmauna-components";
 import * as React from "react";
-import { ProductListHeaderCategory } from "../../@next/components/molecules";
+import { ProductListHeader } from "../../@next/components/molecules";
 import { ProductListCategoryAuna } from "../../@next/components/organisms";
 import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
 import { IPaginationProps } from "@temp/@next/components/molecules/Pagination/types";
@@ -44,7 +43,6 @@ interface PageProps extends IPaginationProps {
   filters: IFilters;
   isSmallScreen: boolean;
   products: Category_paginatedProducts;
-  shop: MainMenu_shop;
   sortOptions: SortOptions;
   clearFilters: () => void;
   onAttributeFiltersChange: (attributeSlug: string, value: string) => void;
@@ -62,7 +60,6 @@ const Page: React.FC<PageProps> = ({
   clearFilters,
   isSmallScreen,
   products,
-  shop,
   filters,
   onOrder,
   sortOptions,
@@ -116,7 +113,7 @@ const Page: React.FC<PageProps> = ({
   return (
     <div className="category" ref={categoryContainerRef}>
       {isSmallScreen && (
-        <ProductListHeaderCategory
+        <ProductListHeader
           activeSortOption={activeSortOption}
           openFiltersMenu={() => setShowFilters(true)}
           numberOfProducts={products ? products.totalCount : 0}
@@ -142,7 +139,7 @@ const Page: React.FC<PageProps> = ({
         <CategoryNavigation category={category} />
         <section className="category__products">
           {!isSmallScreen && (
-            <ProductListHeaderCategory
+            <ProductListHeader
               activeSortOption={activeSortOption}
               openFiltersMenu={() => setShowFilters(true)}
               numberOfProducts={products ? products.totalCount : 0}

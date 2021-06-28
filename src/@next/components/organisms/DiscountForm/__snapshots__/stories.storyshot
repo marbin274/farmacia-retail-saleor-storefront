@@ -110,6 +110,7 @@ exports[`Storyshots @components/organisms/DiscountForm default 1`] = `
               name="inputCode"
               onChange={[Function]}
               onFocus={[Function]}
+              onKeyPress={[Function]}
               placeholder="Ejem: YEPS-03JD-N08T"
               type="text"
               value=""
@@ -122,11 +123,10 @@ exports[`Storyshots @components/organisms/DiscountForm default 1`] = `
         data-cy="checkoutPaymentPromoCodeBtn"
         disabled={false}
         onClick={[Function]}
-        style={Object {}}
         type="button"
       >
         <span
-          className="fa-align-middle fa-ml-2"
+          className="fa-align-middle"
         >
           Aplicar
         </span>

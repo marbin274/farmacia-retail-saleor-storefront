@@ -2,20 +2,24 @@
 
 .article-page {
   margin: 0 auto;
-
+  .blog-page {
+    .article-page__image {
+      margin-bottom: 2.5rem;      
+    }
+  }
   &__container {
     margin: 0 0 3.75rem 0;
   }
 
   &__header {
+    align-items: center;
     background-size: cover;
     background-color: $auna-complementary1;
     background-blend-mode: multiply;
     display: flex;
     justify-content: center;
-    align-items: center;
     min-height: 9.56rem;
-
+    margin-top: 2rem;
     @media (max-width: $small-screen) {
       min-height: 5.75rem;
     }
@@ -43,6 +47,13 @@
   }
 
   &__image {
+    &.container {
+      margin-top: 2rem;
+      padding: 0rem;
+      @media (min-width: $medium-screen) {
+        padding: 0rem 1rem;
+      }
+    }
     img{
       width: 100%;
       @media (min-width: $medium-screen) {

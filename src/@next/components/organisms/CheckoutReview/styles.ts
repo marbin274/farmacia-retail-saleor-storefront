@@ -1,19 +1,20 @@
 import { styled } from "@styles";
 import { aunaBlack } from "@styles/constants";
+import farmatheme from "@farmatheme";
 
 export const Wrapper = styled.div`
   text-align: center;
 `;
 
 export const MainTitle = styled.h3`
-  color: #452fba;
+  color: ${farmatheme.theme.colors.interactive};
   font-size: 1.5rem;
   line-height: 2.25rem;
   font-weight: 600;
 `;
 
 export const Title = styled.h4`
-  color: #452fba;
+  color: ${farmatheme.theme.colors.interactive};
   font-weight: 600;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
@@ -42,6 +43,6 @@ export const SubTitle = styled.p`
   font-weight: ${({ theme }) => theme.typography.normalFontWeight};
 `;
 
-export const ImportantText = styled(Text)`
+export const ImportantText = styled(Text as any)`
   color: ${aunaBlack};
 `;

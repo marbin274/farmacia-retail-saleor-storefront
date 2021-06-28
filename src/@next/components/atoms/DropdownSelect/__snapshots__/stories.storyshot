@@ -117,29 +117,33 @@ exports[`Storyshots @components/atoms/DropdownSelect default 1`] = `
             Ordenar por:
           </span>
           <div
-            className="clear-label c5"
+            className="select-container"
           >
-             Limpiar
-          </div>
-          <div
-            className="c6"
-            rotate="false"
-          >
-            <svg
-              className=" "
-              color="currentColor"
-              fill="currentColor"
-              height={16}
-              viewBox="0 0 24 24"
-              width={16}
-              xmlns="http://www.w3.org/2000/svg"
+            <div
+              className="select-container__value c5"
             >
-              <path
-                clipRule="evenodd"
-                d="M0.292893 1.17155C0.683417 0.776149 1.31658 0.776149 1.70711 1.17155L9.02396 8.57987L16.3177 1.17155C16.7214 0.79001 17.3542 0.812103 17.7311 1.2209C18.1079 1.6297 18.0861 2.2704 17.6823 2.65194L9.68232 10.7277C9.28837 11.1 8.67393 11.0892 8.29289 10.7034L0.292893 2.60345C-0.0976311 2.20804 -0.0976311 1.56696 0.292893 1.17155Z"
-                fillRule="evenodd"
-              />
-            </svg>
+               Limpiar
+            </div>
+            <div
+              className="c6"
+              rotate="false"
+            >
+              <svg
+                className=" "
+                color="currentColor"
+                fill="currentColor"
+                height={16}
+                viewBox="0 0 24 24"
+                width={16}
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  clipRule="evenodd"
+                  d="M0.292893 1.17155C0.683417 0.776149 1.31658 0.776149 1.70711 1.17155L9.02396 8.57987L16.3177 1.17155C16.7214 0.79001 17.3542 0.812103 17.7311 1.2209C18.1079 1.6297 18.0861 2.2704 17.6823 2.65194L9.68232 10.7277C9.28837 11.1 8.67393 11.0892 8.29289 10.7034L0.292893 2.60345C-0.0976311 2.20804 -0.0976311 1.56696 0.292893 1.17155Z"
+                  fillRule="evenodd"
+                />
+              </svg>
+            </div>
           </div>
         </div>
       </div>

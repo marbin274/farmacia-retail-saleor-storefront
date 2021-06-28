@@ -46,7 +46,6 @@ const Page: React.FC<IPageProps> = ({
   const history = useHistory();
   const [showModal, setShowModal] = React.useState<boolean>(false);
 
-
   return (
     <>
       <S.WraperOpenBanner>

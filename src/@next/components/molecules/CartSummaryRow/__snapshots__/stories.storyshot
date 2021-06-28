@@ -88,7 +88,7 @@ exports[`Storyshots @components/molecules/CartSummaryRow default 1`] = `
   right: -0.75rem;
   width: 1.5rem;
   height: 1.5rem;
-  background-color: #452fba;
+  background-color: #452FBA;
   border-radius: 50%;
   color: #fff;
 }

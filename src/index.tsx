@@ -159,6 +159,7 @@ const startApp = async () => {
         /public key credentials/i,
         /newestWorker/i,
         /ServiceWorker/i,
+        /Non-Error promise rejection captured/i,
       ],
       integrations: [new Integrations.BrowserTracing()],
       tracesSampler() {
