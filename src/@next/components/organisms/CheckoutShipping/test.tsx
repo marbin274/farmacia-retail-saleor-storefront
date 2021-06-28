@@ -17,6 +17,7 @@ describe("<CheckoutShipping />", () => {
 
     expect(wrapper.exists()).toEqual(true);
     const renderedText = wrapper.text();
+    
     expect(renderedText.includes(DEFAULT_PROPS.shippingMethods[0].name)).toBe(
       true
     );
