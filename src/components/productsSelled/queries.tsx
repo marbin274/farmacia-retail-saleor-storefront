@@ -19,14 +19,6 @@ query SelledProducts($districtId: ID, $period: ReportingPeriod!, $first: Int){
     edges {
       node {
         id
-        revenue(period: $period) {
-          gross {
-            amount
-            currency
-            __typename
-          }
-          __typename
-        }
         attributes {
           values {
             id
