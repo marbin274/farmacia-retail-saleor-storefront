@@ -10,11 +10,11 @@ export const Skeleton = () => {
     return (
         <>
             <div className="footer-nav__section">
-                <SSkeleton height={isLargeScreen ? 2 : 2} width={10} />
-                <SSkeleton height={isLargeScreen ? 1 : 1} width={10} />
-                <SSkeleton height={isLargeScreen ? 1 : 1} width={10} />
-                <SSkeleton height={isLargeScreen ? 1 : 1} width={10} />
-                <SSkeleton height={isLargeScreen ? 1 : 1} width={10} />
+                <SSkeleton height={2} width={10} />
+                <SSkeleton height={1} width={10} />
+                <SSkeleton height={1} width={10} />
+                <SSkeleton height={1} width={10} />
+                <SSkeleton height={1} width={10} />
                 <SSkeleton height={isLargeScreen ? 1 : 1.5625} width={10} />
             </div>
             <div className="footer-nav__section">
