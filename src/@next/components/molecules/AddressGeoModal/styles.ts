@@ -1,7 +1,7 @@
 import { mediaUp, media } from "@temp/@next/globalStyles";
 import { white } from "@temp/@next/globalStyles/constants";
 import styled from "styled-components";
-
+import CartDistrictIcon from "../../../../images/cart-change-district.svg";
 export const Modal = styled.div`
     align-items: center;
     background-color: ${white};
@@ -65,12 +65,16 @@ export const Body = styled.div`
         padding: 0px;
         align-items: center;
     }
+    > p {
+        margin: auto;
+    }
 `;
 export const Actions = styled.div`
     width: 100%;
     button {
         width: 100%;
     }
+    margin-top: 24px;
 `;
 
 export const TextInfo = styled.div`
@@ -85,3 +89,26 @@ export const TextInfo = styled.div`
         font-weight: 400;
     }
 `;
+export const CartBox = styled.div`
+   display: flex;
+   flex-direction: column;
+   position: relative;
+`;
+export const CartItemQuantity = styled.div`
+   position: absolute;
+   top: 0.5rem;
+   left: 6.8rem;
+     @media (max-width: $medium-screen) {
+        top: -0.5rem;
+    }
+     > span {
+        color: white;
+    }
+    `;
+export const CartIcon = styled.img.attrs({
+    src: `${CartDistrictIcon}`,
+    })`
+     margin: auto;
+     width: 80px;
+     height: 80px;
+    `;
