@@ -72,7 +72,7 @@ export const featuredProducts = gql`
         }
       }
     }
-    personalized: recommendedProducts(maxResults: $first) {
+    personalized: recommendedProducts(maxResults: $first, district: $districtId) {
       ...FeaturedProductFields
     } 
 
