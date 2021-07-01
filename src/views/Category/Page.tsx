@@ -15,15 +15,15 @@ import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
 import { IPaginationProps } from "@temp/@next/components/molecules/Pagination/types";
 import {
   Breadcrumbs,
-
-  EmptyProduct, extractBreadcrumbs
+  EmptyProduct,
+  extractBreadcrumbs,
 } from "../../components";
 import {
   Category_category,
-  Category_paginatedProducts
+  Category_paginatedProducts,
 } from "./gqlTypes/Category";
-import "./scss/index.scss";
 import { structuredData } from "@temp/core/SEO/Category/structuredData";
+import { CategoryCollection } from "./styles";
 interface SortItem {
   label: string;
   value?: string;
@@ -111,7 +111,7 @@ const Page: React.FC<PageProps> = ({
   );
 
   return (
-    <div className="category" ref={categoryContainerRef}>
+    <CategoryCollection ref={categoryContainerRef}>
       {isSmallScreen && (
         <ProductListHeader
           activeSortOption={activeSortOption}
@@ -125,19 +125,19 @@ const Page: React.FC<PageProps> = ({
           onCloseFilterAttribute={onAttributeFiltersChange}
         />
       )}
-      <div className="category__container">
+      <div className="collection-container">
         <Breadcrumbs
           breadcrumbs={extractBreadcrumbs(category)}
           showHomeIcon
-          className="category__breadcrumbs"
+          className="collection-breadcrumbs"
         />
       </div>
-      <div className="category__container category__body">
+      <div className="collection-container collection-body">
         <script className="structured-data-list" type="application/ld+json">
           {structuredData(category)}
         </script>
         <CategoryNavigation category={category} />
-        <section className="category__products">
+        <section className="collection-products">
           {!isSmallScreen && (
             <ProductListHeader
               activeSortOption={activeSortOption}
@@ -182,7 +182,7 @@ const Page: React.FC<PageProps> = ({
           {!hasProducts && <EmptyProduct title="No hay productos" />}
         </section>
       </div>
-    </div>
+    </CategoryCollection>
   );
 };
 

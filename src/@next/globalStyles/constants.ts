@@ -140,7 +140,7 @@ export const sparseLineHeight = 1.5;
 // spacing
 export const spacer = 1; // rem
 export const fieldSpacer = "1.875rem";
-
+export const containerWidth = "1140px";
 // breakpoints
 export const xxxLargeScreen = 1920;
 export const xxLargeScreen = 1600;
