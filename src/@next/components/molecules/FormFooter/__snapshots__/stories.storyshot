@@ -104,11 +104,10 @@ exports[`Storyshots @components/molecules/FormFooter with submit and cancel butt
       className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
       disabled={false}
       onClick={[Function]}
-      style={Object {}}
       type="button"
     >
       <span
-        className="fa-align-middle fa-ml-2"
+        className="fa-align-middle"
       >
         Save
       </span>
@@ -193,11 +192,10 @@ exports[`Storyshots @components/molecules/FormFooter with submit button 1`] = `
       className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
       disabled={false}
       onClick={[Function]}
-      style={Object {}}
       type="button"
     >
       <span
-        className="fa-align-middle fa-ml-2"
+        className="fa-align-middle"
       >
         Save
       </span>
@@ -282,11 +280,10 @@ exports[`Storyshots @components/molecules/FormFooter with top divider 1`] = `
       className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
       disabled={false}
       onClick={[Function]}
-      style={Object {}}
       type="button"
     >
       <span
-        className="fa-align-middle fa-ml-2"
+        className="fa-align-middle"
       >
         Save
       </span>

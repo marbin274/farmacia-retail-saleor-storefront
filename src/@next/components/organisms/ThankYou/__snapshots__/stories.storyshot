@@ -526,10 +526,9 @@ exports[`Storyshots @components/organisms/ThankYou default 1`] = `
           className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-transparent fa-text-primary-dark fa-border-2 fa-border-primary-medium hover:fa-border-primary-dark focus:fa-border-primary-light fa-h-12 fa-px-4"
           disabled={false}
           onClick={[Function]}
-          style={Object {}}
         >
           <span
-            className="fa-align-middle fa-ml-2"
+            className="fa-align-middle"
           >
             Regresar al inicio
           </span>
