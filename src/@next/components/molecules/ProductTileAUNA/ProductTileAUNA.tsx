@@ -85,7 +85,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
               <ProductSticker isOnSale={isOnSale} isOutStock={isOutStock} />
             </div>
           </div>
-          <div className='fa-px-4 fa-pb-4'>
+          <div className='fa-px-4'>
             <div className='home-page__product-price fa-hidden'>
               <div className={getProductPricingClass(canAddToCart, isOnSale)}>
                 <S.Price>
