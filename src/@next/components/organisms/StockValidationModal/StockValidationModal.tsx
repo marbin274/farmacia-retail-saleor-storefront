@@ -142,10 +142,10 @@ export const StockValidationModal: FC<IStockValidationModalProps> = ({
         <Container>
           <Header>
             <Title>
-              <div>
+            <div>
                 {allOutOfStock
                   ? "Actualmente, tenemos algunos productos agotados en"
-                  : "Tenemos pocos productos en"}
+                  : "Actualmente, tenemos algunos productos agotados en"}
               </div>
               <CurrentDistrict>
                 <GpsIcon size={21} /> {district}
@@ -163,7 +163,7 @@ export const StockValidationModal: FC<IStockValidationModalProps> = ({
             ) : (
               <>
                 <p>
-                  ¿Deseas finalizar tu compra con los productos disponibles?
+                  ¿Deseas continuar con los productos disponibles?
                 </p>
                 <Button onClick={onClickContinue} size="large">
                   Sí, continuar
