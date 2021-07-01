@@ -5,7 +5,6 @@ import { IProps } from "./types";
 import { FilterIcon } from "@farmacia-retail/farmauna-components";
 import farmatheme from "@farmatheme";
 
-
 export const ProductListHeader: React.FC<IProps> = ({
   hideFilters = false,
   numberOfProducts = 0,
@@ -18,15 +17,21 @@ export const ProductListHeader: React.FC<IProps> = ({
   onChange,
   onCloseFilterAttribute,
 }: IProps) => {
-  
+  console.log(activeFiltersAttributes);
   return (
     <S.Wrapper>
       <S.Bar>
-        {!hideFilters &&
+        {!hideFilters && (
           <S.LeftSide>
-            <S.FiltersButton onClick={openFiltersMenu} data-cy="filters__button">
+            <S.FiltersButton
+              onClick={openFiltersMenu}
+              data-cy="filters__button"
+            >
               <S.Filters>
-                <FilterIcon size={18} color={farmatheme.theme.colors.interactive} />
+                <FilterIcon
+                  size={18}
+                  color={farmatheme.theme.colors.interactive}
+                />
                 <span>
                   Filtrar
                   {activeFilters > 0 && (
@@ -37,22 +42,16 @@ export const ProductListHeader: React.FC<IProps> = ({
                 </span>
               </S.Filters>
             </S.FiltersButton>
-            {activeFilters > 0 && (
-              <S.Clear onClick={clearFilters}>
-                <Icon name="trash" size={18} />
-                <span>Borrar filtros</span>
-              </S.Clear>
-            )}
           </S.LeftSide>
-        }
+        )}
 
         <S.RightSide>
           <S.Element
             className="products_found"
             data-cy="no-of-products-found_label"
           >
-            <S.Label>Productos encontrados :  </S.Label>
-            <S.NumberProducts> { numberOfProducts } </S.NumberProducts>
+            <S.Label>Productos encontrados : </S.Label>
+            <S.NumberProducts> {numberOfProducts} </S.NumberProducts>
           </S.Element>
           <S.Element>
             <S.Sort>
@@ -67,7 +66,11 @@ export const ProductListHeader: React.FC<IProps> = ({
           </S.Element>
         </S.RightSide>
       </S.Bar>
-      <S.FiltersChipsWrapper>
+      <S.FiltersChipsWrapper
+        hasFilters={
+          !!activeFiltersAttributes && activeFiltersAttributes.length > 0
+        }
+      >
         {activeFiltersAttributes.map(
           ({ attributeSlug, valueName, valueSlug }, index) => (
             <Chip

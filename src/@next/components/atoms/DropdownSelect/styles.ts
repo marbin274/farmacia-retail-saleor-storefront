@@ -1,5 +1,5 @@
-import { styled } from "@styles";
-
+import { mediaUp, styled } from "@styles";
+import farmatheme from "@farmatheme";
 export const Wrapper = styled.div`
   width: auto;
   display: flex;
@@ -15,6 +15,14 @@ export const SortLine = styled.div`
   align-items: center;
   justify-content: space-between;
   padding-bottom: 0.5rem;
+
+  span {
+    font-size: 0.75rem;
+    color: ${farmatheme.theme.colors.neutral.dark};
+    ${mediaUp.largeScreen`
+      font-size: 0.875rem;
+    `}
+  }
 `;
 
 export const Value = styled.div`
@@ -22,10 +30,10 @@ export const Value = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  margin-left: 0.625rem;
-  color:#23212B;
-  font-weight:500;
-  font-size:0.875rem;
+  color: #23212b;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 100%;
 `;
 
 export const Indicator = styled.div<{ rotate: string }>`

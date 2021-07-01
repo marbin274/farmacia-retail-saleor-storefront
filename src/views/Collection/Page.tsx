@@ -1,6 +1,10 @@
 import { Pagination } from "@farmacia-retail/farmauna-components";
 import { IPaginationProps } from "@temp/@next/components/molecules/Pagination/types";
-import { IAddToCartCallback, IRemoveItemToCartCallback, ISubtractItemToCartCallback } from "@temp/@next/components/molecules/ProductTileAUNA/types";
+import {
+  IAddToCartCallback,
+  IRemoveItemToCartCallback,
+  ISubtractItemToCartCallback,
+} from "@temp/@next/components/molecules/ProductTileAUNA/types";
 import { IItems } from "@temp/@sdk/api/Cart/types";
 import { structuredData } from "@temp/core/SEO/Collection/structuredData";
 import { IFilterAttributes, IFilters } from "@types";
@@ -9,13 +13,16 @@ import { ProductListHeader } from "../../@next/components/molecules";
 import { ProductListCategoryAuna } from "../../@next/components/organisms";
 import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
 import { Breadcrumbs, EmptyProduct } from "../../components";
-import { convertToSimpleProduct, getDBIdFromGraphqlId, maybe } from "../../core/utils";
-import "./scss/index.scss";
+import {
+  convertToSimpleProduct,
+  getDBIdFromGraphqlId,
+  maybe,
+} from "../../core/utils";
 import {
   Collection_collection,
-  Collection_paginatedProducts
+  Collection_paginatedProducts,
 } from "./gqlTypes/Collection";
-
+import { CollectionWrapper } from "./styles";
 
 interface SortItem {
   label: string;
@@ -103,79 +110,78 @@ const Page: React.FC<PageProps> = ({
       []
     );
 
-    return (
-      <div className="collection" >
-        {isSmallScreen && (
-          <ProductListHeader
-            activeSortOption={activeSortOption}
-            openFiltersMenu={() => setShowFilters(true)}
-            numberOfProducts={products ? products.totalCount : 0}
-            activeFilters={activeFilters}
-            activeFiltersAttributes={activeFiltersAttributes}
-            clearFilters={clearFilters}
-            sortOptions={sortOptions}
-            onChange={onOrder}
-            onCloseFilterAttribute={onAttributeFiltersChange}
-          />
-        )}
-        <div className="collection__container">
-          <Breadcrumbs
-            breadcrumbs={breadcrumbs}
-            showHomeIcon
-            className="collection__breadcrumbs"
-          />
-        </div>
-        <div className="collection__container collection__body">
-          <script className="structured-data-list" type="application/ld+json">
-            {structuredData(collection)}
-          </script>
-          <section className="collection__products">
-            {!isSmallScreen && (
-              <ProductListHeader
-                activeSortOption={activeSortOption}
-                openFiltersMenu={() => setShowFilters(true)}
-                numberOfProducts={products ? products.totalCount : 0}
-                activeFilters={activeFilters}
-                activeFiltersAttributes={activeFiltersAttributes}
-                clearFilters={clearFilters}
-                sortOptions={sortOptions}
-                onChange={onOrder}
-                onCloseFilterAttribute={onAttributeFiltersChange}
-              />
-            )}
-            <Breadcrumbs breadcrumbs={breadcrumbs} />
-            <FilterSidebar
-              show={showFilters}
-              hide={() => setShowFilters(false)}
-              onAttributeFiltersChange={onAttributeFiltersChange}
-              attributes={attributes}
-              filters={filters}
-            />
-            {canDisplayProducts && (
-              <>
-                <ProductListCategoryAuna
-                  products={products.edges.map(edge =>
-                    convertToSimpleProduct(edge.node)
-                  )}
-                  productsOnCart={items}
-                  loading={displayLoader}
-                  addToCart={addToCart}
-                  removeItemToCart={removeItemToCart}
-                  subtractItemToCart={subtractItemToCart}
-                />
-                <Pagination
-                  page={page}
-                  pageSize={pageSize}
-                  total={totalProducts}
-                  onPageChange={onPageChange}
-                />
-              </>
-            )}
-            {!hasProducts && <EmptyProduct title="No hay productos" />}
-          </section>
-        </div>
+  return (
+    <CollectionWrapper>
+      {isSmallScreen && (
+        <ProductListHeader
+          activeSortOption={activeSortOption}
+          openFiltersMenu={() => setShowFilters(true)}
+          numberOfProducts={products ? products.totalCount : 0}
+          activeFilters={activeFilters}
+          activeFiltersAttributes={activeFiltersAttributes}
+          clearFilters={clearFilters}
+          sortOptions={sortOptions}
+          onChange={onOrder}
+          onCloseFilterAttribute={onAttributeFiltersChange}
+        />
+      )}
+      <div className="collection-container">
+        <Breadcrumbs
+          breadcrumbs={breadcrumbs}
+          showHomeIcon
+          className="collection-breadcrumbs"
+        />
       </div>
-    );
-  };
+      <div className="collection-container collection-body">
+        <script className="structured-data-list" type="application/ld+json">
+          {structuredData(collection)}
+        </script>
+        <section className="collection-products">
+          {!isSmallScreen && (
+            <ProductListHeader
+              activeSortOption={activeSortOption}
+              openFiltersMenu={() => setShowFilters(true)}
+              numberOfProducts={products ? products.totalCount : 0}
+              activeFilters={activeFilters}
+              activeFiltersAttributes={activeFiltersAttributes}
+              clearFilters={clearFilters}
+              sortOptions={sortOptions}
+              onChange={onOrder}
+              onCloseFilterAttribute={onAttributeFiltersChange}
+            />
+          )}
+          <FilterSidebar
+            show={showFilters}
+            hide={() => setShowFilters(false)}
+            onAttributeFiltersChange={onAttributeFiltersChange}
+            attributes={attributes}
+            filters={filters}
+          />
+          {canDisplayProducts && (
+            <>
+              <ProductListCategoryAuna
+                products={products.edges.map(edge =>
+                  convertToSimpleProduct(edge.node)
+                )}
+                productsOnCart={items}
+                loading={displayLoader}
+                addToCart={addToCart}
+                removeItemToCart={removeItemToCart}
+                subtractItemToCart={subtractItemToCart}
+              />
+              <Pagination
+                page={page}
+                pageSize={pageSize}
+                total={totalProducts}
+                onPageChange={onPageChange}
+              />
+            </>
+          )}
+          {!hasProducts && <EmptyProduct title="No hay productos" />}
+        </section>
+      </div>
+    </CollectionWrapper>
+  );
+};
 
-  export default Page;
+export default Page;

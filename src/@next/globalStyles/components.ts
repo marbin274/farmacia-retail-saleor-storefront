@@ -83,7 +83,7 @@ export const CollectionStyle = css`
       background-color: ${farmatheme.theme.colors.neutral.lightest};
       .home-page__product {
         background-color: ${farmatheme.theme.colors.neutral.lightest};
-        padding: 1rem 1.5rem;
+        padding: 1rem;
       }
     `}
   }

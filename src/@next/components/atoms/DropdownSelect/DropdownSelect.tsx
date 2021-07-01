@@ -29,8 +29,8 @@ export const DropdownSelect: React.FC<IProps> = ({
         onClick={() => setMenuIsOpen(!menuIsOpen)}
       >
         <Label>Ordenar por:</Label>
-        <div className="select-container">
-          <S.Value className='select-container__value'>{` ${
+        <div className="select-container fa-ml-2 fa-border fa-border-solid fa-border-neutral-dark fa-rounded-3xl fa-px-3 fa-py-2">
+          <S.Value className="select-container__value">{` ${
             value ? value.label : "Limpiar"
           }`}</S.Value>
           <S.Indicator rotate={String(menuIsOpen)}>

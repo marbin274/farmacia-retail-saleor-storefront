@@ -1,18 +1,20 @@
+import { Pagination } from "@farmacia-retail/farmauna-components";
+import { IPaginationProps } from "@temp/@next/components/molecules/Pagination/types";
 import {
   IAddToCartCallback,
   IRemoveItemToCartCallback,
   ISubtractItemToCartCallback,
 } from "@temp/@next/components/molecules/ProductTileAUNA/types";
 import { CategoryNavigation } from "@temp/@next/components/organisms/CategoryNavigation/CategoryNavigation";
+import { aunaGrey100 } from "@temp/@next/globalStyles/constants";
 import { IItems } from "@temp/@sdk/api/Cart/types";
+import { structuredData } from "@temp/core/SEO/Category/structuredData";
 import { convertToSimpleProduct, maybe } from "@temp/core/utils";
 import { IFilterAttributes, IFilters } from "@types";
-import { Pagination } from "@farmacia-retail/farmauna-components";
 import * as React from "react";
 import { ProductListHeader } from "../../@next/components/molecules";
 import { ProductListCategoryAuna } from "../../@next/components/organisms";
 import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
-import { IPaginationProps } from "@temp/@next/components/molecules/Pagination/types";
 import {
   Breadcrumbs,
   EmptyProduct,
@@ -22,8 +24,7 @@ import {
   Category_category,
   Category_paginatedProducts,
 } from "./gqlTypes/Category";
-import { structuredData } from "@temp/core/SEO/Category/structuredData";
-import { CategoryCollection } from "./styles";
+import { CategoryWrapper } from "./styles";
 interface SortItem {
   label: string;
   value?: string;
@@ -41,7 +42,7 @@ interface PageProps extends IPaginationProps {
   category: Category_category;
   displayLoader: boolean;
   filters: IFilters;
-  isSmallScreen: boolean;
+  isLargeScreen: boolean;
   products: Category_paginatedProducts;
   sortOptions: SortOptions;
   clearFilters: () => void;
@@ -58,7 +59,7 @@ const Page: React.FC<PageProps> = ({
   category,
   displayLoader,
   clearFilters,
-  isSmallScreen,
+  isLargeScreen,
   products,
   filters,
   onOrder,
@@ -111,26 +112,39 @@ const Page: React.FC<PageProps> = ({
   );
 
   return (
-    <CategoryCollection ref={categoryContainerRef}>
-      {isSmallScreen && (
-        <ProductListHeader
-          activeSortOption={activeSortOption}
-          openFiltersMenu={() => setShowFilters(true)}
-          numberOfProducts={products ? products.totalCount : 0}
-          activeFilters={activeFilters}
-          activeFiltersAttributes={activeFiltersAttributes}
-          clearFilters={clearFilters}
-          sortOptions={sortOptions}
-          onChange={onOrder}
-          onCloseFilterAttribute={onAttributeFiltersChange}
-        />
-      )}
+    <CategoryWrapper ref={categoryContainerRef}>
       <div className="collection-container">
         <Breadcrumbs
           breadcrumbs={extractBreadcrumbs(category)}
           showHomeIcon
           className="collection-breadcrumbs"
         />
+        {isLargeScreen && (
+          <>
+            <ProductListHeader
+              activeSortOption={activeSortOption}
+              openFiltersMenu={() => setShowFilters(true)}
+              numberOfProducts={products ? products.totalCount : 0}
+              activeFilters={activeFilters}
+              activeFiltersAttributes={activeFiltersAttributes}
+              clearFilters={clearFilters}
+              sortOptions={sortOptions}
+              onChange={onOrder}
+              onCloseFilterAttribute={onAttributeFiltersChange}
+            />
+            <div className="fa-my-2">
+              <span
+                className="fa-text-sm fa-font-normal fa-tracking-tight fa-mr-2"
+                style={{ color: aunaGrey100 }}
+              >
+                Productos encontrados
+              </span>
+              <span className="fa-text-sm fa-font-medium fa-tracking-tight fa-text-neutral-darkest">
+                {products ? products.totalCount : 0}
+              </span>
+            </div>
+          </>
+        )}
       </div>
       <div className="collection-container collection-body">
         <script className="structured-data-list" type="application/ld+json">
@@ -138,7 +152,7 @@ const Page: React.FC<PageProps> = ({
         </script>
         <CategoryNavigation category={category} />
         <section className="collection-products">
-          {!isSmallScreen && (
+          {!isLargeScreen && (
             <ProductListHeader
               activeSortOption={activeSortOption}
               openFiltersMenu={() => setShowFilters(true)}
@@ -151,7 +165,6 @@ const Page: React.FC<PageProps> = ({
               onCloseFilterAttribute={onAttributeFiltersChange}
             />
           )}
-          <Breadcrumbs breadcrumbs={extractBreadcrumbs(category)} />
           <FilterSidebar
             show={showFilters}
             hide={() => setShowFilters(false)}
@@ -182,7 +195,7 @@ const Page: React.FC<PageProps> = ({
           {!hasProducts && <EmptyProduct title="No hay productos" />}
         </section>
       </div>
-    </CategoryCollection>
+    </CategoryWrapper>
   );
 };
 
