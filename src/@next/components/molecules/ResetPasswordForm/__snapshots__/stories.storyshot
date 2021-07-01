@@ -192,10 +192,11 @@ exports[`Storyshots @components/molecules/ResetPasswordForm default 1`] = `
                 <button
                   className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3 fa-w-full"
                   disabled={false}
+                  style={Object {}}
                   type="submit"
                 >
                   <span
-                    className="fa-align-middle"
+                    className="fa-align-middle fa-ml-2"
                   >
                     Guardar nueva contraseña
                   </span>

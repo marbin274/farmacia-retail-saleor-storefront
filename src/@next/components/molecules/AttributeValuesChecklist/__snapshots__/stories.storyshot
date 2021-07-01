@@ -355,6 +355,7 @@ exports[`Storyshots @components/molecules/AttributeValuesChecklist default 1`] =
           className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-transparent fa-text-primary-dark fa-border-2 fa-border-primary-medium hover:fa-border-primary-dark focus:fa-border-primary-light fa-h-10 fa-px-3"
           disabled={false}
           onClick={[Function]}
+          style={Object {}}
         >
           <span
             className="fa-inline-block fa-w-4 fa-h-4 fa-align-middle"

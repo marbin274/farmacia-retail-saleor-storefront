@@ -263,10 +263,11 @@ exports[`Storyshots @components/organisms/Modal Modal Form 1`] = `
               className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
               disabled={false}
               form="form-id"
+              style={Object {}}
               type="submit"
             >
               <span
-                className="fa-align-middle"
+                className="fa-align-middle fa-ml-2"
               >
                 Save
               </span>
@@ -514,10 +515,11 @@ exports[`Storyshots @components/organisms/Modal Modal Form disabled 1`] = `
               className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-h-10 fa-px-3 fa-bg-neutral-medium fa-text-white fa-cursor-not-allowed"
               disabled={true}
               form="modal-submit"
+              style={Object {}}
               type="submit"
             >
               <span
-                className="fa-align-middle"
+                className="fa-align-middle fa-ml-2"
               >
                 Loading
               </span>
@@ -766,10 +768,11 @@ exports[`Storyshots @components/organisms/Modal Modal Info 1`] = `
               disabled={false}
               form="modal-submit"
               onClick={[Function]}
+              style={Object {}}
               type="submit"
             >
               <span
-                className="fa-align-middle"
+                className="fa-align-middle fa-ml-2"
               >
                 OK
               </span>

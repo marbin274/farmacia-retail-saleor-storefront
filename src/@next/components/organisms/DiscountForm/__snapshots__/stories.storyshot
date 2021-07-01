@@ -122,10 +122,11 @@ exports[`Storyshots @components/organisms/DiscountForm default 1`] = `
         data-cy="checkoutPaymentPromoCodeBtn"
         disabled={false}
         onClick={[Function]}
+        style={Object {}}
         type="button"
       >
         <span
-          className="fa-align-middle"
+          className="fa-align-middle fa-ml-2"
         >
           Aplicar
         </span>

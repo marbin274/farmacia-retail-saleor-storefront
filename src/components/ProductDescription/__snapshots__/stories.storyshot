@@ -51,6 +51,7 @@ exports[`Storyshots @components/organisms/ProductDescription default 1`] = `
             className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-h-10 fa-px-3 fa-bg-neutral-medium fa-text-white fa-cursor-not-allowed"
             disabled={true}
             onClick={[Function]}
+            style={Object {}}
             type="button"
           >
             <span

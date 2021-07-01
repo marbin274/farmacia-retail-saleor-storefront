@@ -231,9 +231,10 @@ exports[`Storyshots @components/organisms/FilterSidebar default 1`] = `
               className="fa-rounded-3xl focus:fa-outline-none fa-align-middle fa-text-center fa-bg-primary-medium fa-text-white hover:fa-bg-primary-darkest focus:fa-bg-primary-light fa-h-10 fa-px-3"
               disabled={false}
               onClick={[Function]}
+              style={Object {}}
             >
               <span
-                className="fa-align-middle"
+                className="fa-align-middle fa-ml-2"
               >
                 Aplicar
               </span>
