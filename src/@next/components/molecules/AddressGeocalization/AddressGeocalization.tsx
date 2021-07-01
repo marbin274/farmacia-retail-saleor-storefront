@@ -21,7 +21,7 @@ export const AddressGeocalization: React.FC<IProps> = React.memo(({ mode }) => {
       <S.Wrapper>
         <S.Localization mode={mode}>
           <S.GeocalizationIcon>
-            <GpsIcon size={34} onClick={handleChangeAddress} />
+            <GpsIcon  size={34} onClick={handleChangeAddress} />
           </S.GeocalizationIcon>
           <S.District className="district">
             <S.Label onClick={handleChangeAddress}>Enviar a: </S.Label>

@@ -6,7 +6,7 @@ import { useCart } from "@temp/@sdk/react";
 export const AddressGeoModalInfo = ({ onClose }: { onClose: () => void }) => {
 
   const { items } = useCart();
-  const cartItemsQuantity =
+  const cartItemsQuantity = 
     (items &&
       items.reduce((prevVal, currVal) => prevVal + currVal.quantity, 0)) ||
     0;

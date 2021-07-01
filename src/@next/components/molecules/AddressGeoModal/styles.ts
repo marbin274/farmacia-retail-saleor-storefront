@@ -97,7 +97,7 @@ export const CartBox = styled.div`
 export const CartItemQuantity = styled.div`
    position: absolute;
    top: 0.5rem;
-   left: 6.8rem;
+   left: 6.2rem;
      @media (max-width: $medium-screen) {
         top: -0.5rem;
     }
