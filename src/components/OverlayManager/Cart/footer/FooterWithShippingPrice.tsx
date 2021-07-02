@@ -9,6 +9,8 @@ import { TypedShippingMethods } from "../queries";
 import "../scss/index.scss";
 import { SkeletonCartFooter } from "./skeletonCartFooter";
 import * as S from "./FooterWithShippingPriceStyles";
+import { Icon } from "@temp/@next/components/atoms";
+import { aunaBrand3 } from "@temp/@next/globalStyles/constants";
 
 interface IProps {
     buttonText: string;
@@ -49,9 +51,50 @@ export const FooterWithShippingPrice: React.FC<IProps> = ({ buttonText, hideOver
             }}
         >
             {({ data }) => {
+                let isAllFree: boolean = true;
+                const potentialShippingMethods = data?.potentialShippingMethods.map((shippingMethod): JSX.Element => {
+
+                    const shippingMethodPrice = shippingMethod.price?.amount || 0;
+                    if (shippingMethodPrice > 0) {
+                        isAllFree = false;
+                    }
+                    return (
+                        <S.DetailsPrice key={shippingMethod.id} >
+                            <S.ShippingMethodLabel>Total</S.ShippingMethodLabel>
+                            <S.ShippingMethod>
+                                <S.ShippingMethodName>
+                                    {`Envío ${shippingMethod.isScheduled ? "programado" : "express"}`}
+                                </S.ShippingMethodName>
+                                {
+                                    shippingMethodPrice > 0 ?
+                                        <S.ShippingMethodPrice>
+                                            &nbsp;(+ <Money money={shippingMethod.price} />)
+                                        </S.ShippingMethodPrice>
+                                        : <S.ShippingMethodFree>&nbsp;(Gratis)</S.ShippingMethodFree>
+                                }
+                            </S.ShippingMethod>
+                            <S.ShippingMethodTotal
+                                money={{
+                                    ...shippingMethod.price,
+                                    amount: shippingMethodPrice + (subtotalPrice?.net?.amount || 0) - (discount?.amount || 0)
+                                }} />
+                        </S.DetailsPrice>
+                    );
+                });
+
+
                 return (
                     <S.Container>
-                        <S.Details className="cart__footer__details">
+                        {
+                            isAllFree &&
+                            <S.FreeShipping>
+                                <span>Felicidades tienes <strong>envío gratis</strong></span>
+                                <S.InfoIcon>
+                                    <Icon name="info" color={aunaBrand3} size={20} heightViewPort={20} widthViewPort={20} />
+                                </S.InfoIcon>
+                            </S.FreeShipping>
+                        }
+                        <S.Details>                            
                             <S.DetailsPrice>
                                 <S.DetailsPriceLabel>
                                     Subtotal <span>({`${itemsCount} ${itemsCount === 0 ? "producto" : "productos"}`})</span>
@@ -78,30 +121,7 @@ export const FooterWithShippingPrice: React.FC<IProps> = ({ buttonText, hideOver
                                 </S.DetailsDiscount>
                             }
                             {
-                                data?.potentialShippingMethods?.map(shippingMethod => {
-                                    const shippingMethodPrice = shippingMethod.price?.amount || 0;
-                                    return (
-                                        <S.DetailsPrice key={shippingMethod.id} >
-                                            <S.ShippingMethodLabel>Total</S.ShippingMethodLabel>
-                                            <S.ShippingMethod>
-                                                <S.ShippingMethodName>
-                                                    {`Envío ${shippingMethod.isScheduled ? "programado" : "express"}`}
-                                                </S.ShippingMethodName>
-                                                {shippingMethodPrice > 0 ? <S.ShippingMethodPrice>
-                                                    &nbsp;(+ <Money money={shippingMethod.price} />)
-                                                </S.ShippingMethodPrice>
-                                                    : <S.ShippingMethodFree>&nbsp;(Gratis)</S.ShippingMethodFree>
-                                                }
-                                            </S.ShippingMethod>
-                                            <S.ShippingMethodTotal
-                                                money={{
-                                                    ...shippingMethod.price,
-                                                    amount: shippingMethodPrice + (subtotalPrice?.net?.amount || 0) - (discount?.amount || 0)
-                                                }} />
-                                        </S.DetailsPrice>
-                                    );
-                                }
-                                )
+                                !isAllFree && potentialShippingMethods.map(shippingMethod => shippingMethod)
                             }
                         </S.Details>
                         <S.ButtonContainer>

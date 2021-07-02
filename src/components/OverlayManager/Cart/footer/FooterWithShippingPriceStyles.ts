@@ -1,5 +1,5 @@
 import { mediaUp, styled } from "@styles";
-import { aunaDiscount, neutralDark, neutralDarkest } from "@temp/@next/globalStyles/constants";
+import { aunaBrand3, aunaDiscount, aunaInformativeLightest, neutralDark, neutralDarkest } from "@temp/@next/globalStyles/constants";
 import { Money } from "@components/containers";
 
 export const Container = styled.div`
@@ -9,15 +9,31 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 1.5rem 1rem;
     position: absolute;
     width: 100%;
 `;
 
 export const Details = styled.div`
-    text-align: center;
     flex: 1;
+    padding: 1.5rem 1rem 0rem;
+    text-align: center;
     width: 100%;
+`;
+
+export const FreeShipping = styled.div`
+    background-color: ${aunaInformativeLightest};
+    color: ${aunaBrand3};
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0.5rem;
+    width: 100%;
+    strong {
+        font-weight: ${({ theme }) => theme.typography.boldFontWeight};
+    }
+`;
+
+export const InfoIcon = styled.div`
+    cursor: pointer;
 `;
 
 export const DetailsPrice = styled.div`
@@ -91,6 +107,7 @@ export const ShippingMethodTotal = styled(Money)`
 
 export const ButtonContainer = styled.div`
     margin-top: 0.9375rem;
+    padding: 0rem 1rem 1rem;
     text-align: center;
     width: 100%;
     button {
