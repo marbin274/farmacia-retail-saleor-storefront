@@ -7,7 +7,8 @@ import * as React from "react";
 import { useHistory, useLocation } from "react-router";
 import { TypedShippingMethods } from "../queries";
 import "../scss/index.scss";
-import { SkeletonCartFooter } from "../skeletonCartFooter";
+import { SkeletonCartFooter } from "./skeletonCartFooter";
+import * as S from "./FooterWithShippingPriceStyles";
 
 interface IProps {
     buttonText: string;
@@ -47,54 +48,56 @@ export const FooterWithShippingPrice: React.FC<IProps> = ({ buttonText, hideOver
             }}
         >
             {({ data }) => {
-                return <div className="cart__footer caseB">
-                    <div className="cart__footer__details">
-                        <div className="cart__footer__details__price">
-                            <span className="cart__footer__details__price--label">
-                                Subtotal <span>({`${itemsCount} ${itemsCount === 0 ? "producto": "productos"}`})</span>
-                            </span>
-                            <span  className="cart__footer__details__price--total">
-                                <TaxedMoney
-                                    data-cy="cartPageSubtotalPrice"
-                                    taxedMoney={subtotalPrice}
-                                />
-                            </span>
-                        </div>
-                        {
-                            data?.potentialShippingMethods?.map(shippingMethod => {
-                                const shippingMethodPrice = shippingMethod.price?.amount || 0;
-                                return (
-                                    <div key={shippingMethod.id} className="cart__footer__details__price">
-                                        <span className="cart__footer__details__price__shipping-method--label">Total</span>
-                                        <span className="cart__footer__details__price__shipping-method__shipping">
-                                            <span className="cart__footer__details__price__shipping-method__shipping--name">
-                                                {`Envío ${shippingMethod.isScheduled ? "programado" : "express"}`}
-                                            </span>
-                                            {shippingMethodPrice > 0 ? <span className="cart__footer__details__price__shipping-method__shipping--price">
-                                                &nbsp;(+ <Money money={shippingMethod.price} />)
-                                            </span>
-                                                : <span className="cart__footer__details__price__shipping-method__shipping--free">&nbsp;(Gratis)</span>
-                                            }
-                                        </span>
-                                        <Money className="cart__footer__details__price__shipping-method--total" money={{ ...shippingMethod.price, amount: shippingMethodPrice + (subtotalPrice?.net?.amount || 0) }} />
-                                    </div>
-                                );
+                return (
+                    <S.Container>
+                        <S.Details className="cart__footer__details">
+                            <S.DetailsPrice>
+                                <S.DetailsPriceLabel>
+                                    Subtotal <span>({`${itemsCount} ${itemsCount === 0 ? "producto" : "productos"}`})</span>
+                                </S.DetailsPriceLabel>
+                                <S.DetailsPriceTotal>
+                                    <TaxedMoney
+                                        data-cy="cartPageSubtotalPrice"
+                                        taxedMoney={subtotalPrice}
+                                    />
+                                </S.DetailsPriceTotal>
+                            </S.DetailsPrice>
+                            {
+                                data?.potentialShippingMethods?.map(shippingMethod => {
+                                    const shippingMethodPrice = shippingMethod.price?.amount || 0;
+                                    return (
+                                        <S.DetailsPrice key={shippingMethod.id} >
+                                            <S.ShippingMethodLabel>Total</S.ShippingMethodLabel>
+                                            <S.ShippingMethod>
+                                                <S.ShippingMethodName>
+                                                    {`Envío ${shippingMethod.isScheduled ? "programado" : "express"}`}
+                                                </S.ShippingMethodName>
+                                                {shippingMethodPrice > 0 ? <S.ShippingMethodPrice>
+                                                    &nbsp;(+ <Money money={shippingMethod.price} />)
+                                                </S.ShippingMethodPrice>
+                                                    : <S.ShippingMethodFree>&nbsp;(Gratis)</S.ShippingMethodFree>
+                                                }
+                                            </S.ShippingMethod>
+                                            <S.ShippingMethodTotal money={{ ...shippingMethod.price, amount: shippingMethodPrice + (subtotalPrice?.net?.amount || 0) }} />
+                                        </S.DetailsPrice>
+                                    );
+                                }
+                                )
                             }
-                            )
-                        }
-                    </div>
-                    <div className="cart__footer__details__button">
-                        <Button
-                            icon={<CartIcon />}
-                            fullWidth
-                            size="large"
-                            type="button"
-                            onClick={onClickBuyIcon}
-                        >
-                            {buttonText}
-                        </Button>
-                    </div>
-                </div>
+                        </S.Details>
+                        <S.ButtonContainer>
+                            <Button
+                                icon={<CartIcon />}
+                                fullWidth
+                                size="large"
+                                type="button"
+                                onClick={onClickBuyIcon}
+                            >
+                                {buttonText}
+                            </Button>
+                        </S.ButtonContainer>
+                    </S.Container>
+                )
             }
 
             }
