@@ -74,6 +74,7 @@ import {
   VariantsProductsAvailableVariables,
   VariantsProductsAvailable_productVariants,
 } from "../queries/gqlTypes/VariantsProductsAvailable";
+import { checkPrimeUser } from "../api/Prime";
 
 export class NetworkManager implements INetworkManager {
   private client: ApolloClient<any>;
@@ -430,8 +431,9 @@ export class NetworkManager implements INetworkManager {
           error: data?.checkoutCreate?.errors,
         };
       } else if (data?.checkoutCreate?.checkout) {
+        const isPrime = await checkPrimeUser(email);
         return {
-          data: this.constructCheckoutModel(data.checkoutCreate.checkout),
+          data: this.constructCheckoutModel(data.checkoutCreate.checkout, undefined, isPrime),
         };
       }
     } catch (error) {
@@ -563,9 +565,12 @@ export class NetworkManager implements INetworkManager {
             ? data.checkoutEmailUpdate?.checkout?.dataTreatmentPolicy
             : data.checkoutShippingAddressUpdate.checkout.dataTreatmentPolicy;
         }
+        const isPrime = await checkPrimeUser(email);
         return {
           data: this.constructCheckoutModel(
-            data.checkoutShippingAddressUpdate.checkout
+            data.checkoutShippingAddressUpdate.checkout,
+            undefined,
+            isPrime
           ),
         };
       } else {
@@ -960,7 +965,8 @@ export class NetworkManager implements INetworkManager {
       slotId,
       slots,
     }: Checkout,
-    message?: string | null
+    message?: string | null,
+    isPrime = false
   ): ICheckoutModel => ({
     availableShippingMethods: availableShippingMethods
       ? availableShippingMethods.filter(filterNotEmptyArrayItems)
@@ -971,6 +977,7 @@ export class NetworkManager implements INetworkManager {
     documentNumber,
     email,
     id,
+    isPrime,
     lines: lines
       ?.filter(item => item?.quantity && item.variant.id)
       .map(item => {

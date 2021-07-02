@@ -20,6 +20,7 @@ import React, {
 } from "react";
 import { RouteComponentProps, useHistory } from "react-router";
 import shippingMethodCalendarInfoIco from "images/auna/shipping-method-calendar-info.svg";
+import { Checkout_availableShippingMethods } from "@temp/@sdk/fragments/gqlTypes/Checkout";
 
 export interface ICheckoutShippingSubpageHandles {
   submitShipping: () => void;
@@ -51,10 +52,15 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
     checkout,
     availableShippingMethods,
     setShippingMethod,
+    isPrime,
     selectedSlotId,
     slots,
   } = useCheckout();
   const { items } = useCart();
+
+  const isPrimeShippingMethod = (sm: Checkout_availableShippingMethods) => {
+    return sm.name.toLocaleLowerCase().includes("prime");
+  }
 
   useEffect(() => {
     checkIfSlotExists();
@@ -70,9 +76,18 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
   };
 
   const shippingMethods: IAvailableShippingMethods = [];
+  const primeShippingMethodExists = !!availableShippingMethods?.find(x =>
+    isPrimeShippingMethod(x)
+  );
+
   availableShippingMethods?.forEach(it => {
     const shippingMethod = { ...it };
     if (it.isScheduled && !shippingMethod.scheduleDates) {
+      return;
+    } else if (
+      (isPrime && primeShippingMethodExists && !isPrimeShippingMethod(it)) ||
+      (!isPrime && isPrimeShippingMethod(it))
+    ) {
       return;
     } else if (it.isScheduled && shippingMethod.scheduleDates) {
       shippingMethod.scheduleDates = shippingMethod.scheduleDates.filter(

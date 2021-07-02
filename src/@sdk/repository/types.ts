@@ -177,6 +177,7 @@ export interface ICheckoutModel {
   termsAndConditions?: boolean;
   documentNumber?: string | null;
   scheduleDate?: IScheduleDate | null;
+  isPrime?: boolean;
   slotId?: string;
   slots?: ISlots;
   deliveryDate?: string;
