@@ -22,6 +22,7 @@ export const FooterWithShippingPrice: React.FC<IProps> = ({ buttonText, hideOver
     const { data: user } = useUserDetails();
     const { checkout } = useCheckout();
     const {
+        discount,
         items,
         subtotalPrice,
     } = useCart();
@@ -62,6 +63,20 @@ export const FooterWithShippingPrice: React.FC<IProps> = ({ buttonText, hideOver
                                     />
                                 </S.DetailsPriceTotal>
                             </S.DetailsPrice>
+                            {
+                                discount && <S.DetailsDiscount>
+                                    <S.DetailsDiscountLabel>
+                                        Cupón
+                                    </S.DetailsDiscountLabel>
+                                    <S.DetailsDiscountTotal>
+                                        <Money
+                                            data-cy="cartPageDiscountPrice"
+                                            negative
+                                            money={discount}
+                                        />
+                                    </S.DetailsDiscountTotal>
+                                </S.DetailsDiscount>
+                            }
                             {
                                 data?.potentialShippingMethods?.map(shippingMethod => {
                                     const shippingMethodPrice = shippingMethod.price?.amount || 0;

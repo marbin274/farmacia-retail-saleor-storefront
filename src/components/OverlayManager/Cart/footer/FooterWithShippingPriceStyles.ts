@@ -1,5 +1,5 @@
 import { mediaUp, styled } from "@styles";
-import { neutralDark, neutralDarkest } from "@temp/@next/globalStyles/constants";
+import { aunaDiscount, neutralDark, neutralDarkest } from "@temp/@next/globalStyles/constants";
 import { Money } from "@components/containers";
 
 export const Container = styled.div`
@@ -43,6 +43,17 @@ export const DetailsPriceTotal = styled.span`
     color: ${neutralDarkest};
     flex: 1;
     text-align: right;
+`;
+
+export const DetailsDiscount = styled(DetailsPrice as any)`
+    color: ${aunaDiscount};
+`;
+
+export const DetailsDiscountLabel = styled.span`
+`;
+
+export const DetailsDiscountTotal = styled.span`
+
 `;
 
 export const ShippingMethodLabel = styled.span`

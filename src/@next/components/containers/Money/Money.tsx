@@ -2,6 +2,7 @@ import React from "react";
 import { IProps } from "./types";
 
 export const Money: React.FC<IProps> = ({
+  negative = false,
   money,
   defaultValue,
   ...props
@@ -9,14 +10,15 @@ export const Money: React.FC<IProps> = ({
   if (!money) {
     return <span {...props}>{defaultValue}</span>;
   }
+  const amount = negative ? -Math.abs(money.amount) : money.amount;
   return (
     <span {...props}>
       {money.currency && money.currency !== ""
-        ? money.amount.toLocaleString(money.culture, {
+        ? amount.toLocaleString(money.culture, {
             currency: money.currency,
             style: "currency",
           })
-        : money.amount.toString()}
+        : amount.toString()}
     </span>
   );
 };

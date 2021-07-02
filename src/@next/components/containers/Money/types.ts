@@ -4,6 +4,7 @@ export interface IProps {
     currency: string;
     culture: string;
   } | null;
+  negative?: boolean;
   defaultValue?: string;
   className?: string;
 }

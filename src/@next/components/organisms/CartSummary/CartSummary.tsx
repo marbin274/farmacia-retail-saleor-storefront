@@ -16,13 +16,11 @@ const CostLine = ({
   name,
   cost,
   last = false,
-  negative = false,
 }: ICostLine) => (
   <S.CostLine last={last}>
     <S.CostLineLabel>{name}</S.CostLineLabel>
     <span data-cy={`cartSummaryCost${name.replace(/\s/g, "")}`}>
-      {negative && "- "}
-      <TaxedMoney taxedMoney={cost} />
+      <TaxedMoney negative taxedMoney={cost} />
     </span>
   </S.CostLine>
 );
