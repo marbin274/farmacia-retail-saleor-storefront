@@ -42,7 +42,7 @@ export const CartResume: React.FC<IProps> = ({
             <TaxedMoney taxedMoney={subTotalPrice} />
           </S.LineInfoPrice>
         </S.LineInfo>
-        {promoPrice && promoPrice.gross?.amount > 0 && activeStepIndex === indexOfStep2Checkout && (
+        {promoPrice && promoPrice.gross?.amount > 0 && (
           <S.LineInfo>
             <S.LineInfoDescription>Cupón de descuento</S.LineInfoDescription>
             <S.LineInfoPrice>

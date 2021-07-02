@@ -64,17 +64,17 @@ export const FooterWithShippingPrice: React.FC<IProps> = ({ buttonText, hideOver
                                 </S.DetailsPriceTotal>
                             </S.DetailsPrice>
                             {
-                                discount && <S.DetailsDiscount>
-                                    <S.DetailsDiscountLabel>
+                                discount && discount.amount > 0 && <S.DetailsDiscount>
+                                    <span>
                                         Cupón
-                                    </S.DetailsDiscountLabel>
-                                    <S.DetailsDiscountTotal>
+                                    </span>
+                                    <span>
                                         <Money
                                             data-cy="cartPageDiscountPrice"
                                             negative
                                             money={discount}
                                         />
-                                    </S.DetailsDiscountTotal>
+                                    </span>
                                 </S.DetailsDiscount>
                             }
                             {

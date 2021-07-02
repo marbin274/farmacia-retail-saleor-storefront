@@ -49,12 +49,6 @@ export const DetailsDiscount = styled(DetailsPrice as any)`
     color: ${aunaDiscount};
 `;
 
-export const DetailsDiscountLabel = styled.span`
-`;
-
-export const DetailsDiscountTotal = styled.span`
-
-`;
 
 export const ShippingMethodLabel = styled.span`
     color: ${neutralDarkest};
