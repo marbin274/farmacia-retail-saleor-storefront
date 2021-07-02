@@ -15,21 +15,21 @@ const CartFooter: React.FC<IProps> = ({
   return (
     <S.Wrapper showShipping={!!shippingPrice} showDiscount={!!discountPrice}>
       <S.SubtotalText>Subtotal</S.SubtotalText>
-      <S.SubtotalPrice>{subtotalPrice}</S.SubtotalPrice>
+      <S.SubtotalPrice role="subtotalPrice">{subtotalPrice}</S.SubtotalPrice>
       {shippingPrice && (
         <>
           <S.ShippingText>Shipping</S.ShippingText>
-          <S.ShippingPrice>{shippingPrice}</S.ShippingPrice>
+          <S.ShippingPrice role="shippingPrice">{shippingPrice}</S.ShippingPrice>
         </>
       )}
       {discountPrice && (
         <>
           <S.DiscountText>Promo Code</S.DiscountText>
-          <S.DiscountPrice>{discountPrice}</S.DiscountPrice>
+          <S.DiscountPrice role="discountPrice">{discountPrice}</S.DiscountPrice>
         </>
       )}
       <S.TotalText>Total</S.TotalText>
-      <S.TotalPrice>{totalPrice}</S.TotalPrice>
+      <S.TotalPrice role="totalPrice">{totalPrice}</S.TotalPrice>
     </S.Wrapper>
   );
 };
