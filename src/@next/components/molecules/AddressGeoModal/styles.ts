@@ -1,7 +1,8 @@
 import { mediaUp, media } from "@temp/@next/globalStyles";
 import { white } from "@temp/@next/globalStyles/constants";
 import styled from "styled-components";
-import CartDistrictIcon from "../../../../images/cart-change-district.svg";
+import CartDistrictIcon from  "@temp/images/cart-change-district.svg";
+
 export const Modal = styled.div`
     align-items: center;
     background-color: ${white};

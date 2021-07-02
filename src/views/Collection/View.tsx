@@ -149,7 +149,7 @@ export const View: React.FC<ViewProps> = ({ match }) => {
                       <Page
                         activeFilters={
                           filters!.attributes
-                            ? Object.keys(filters!.attributes).length
+                            ? Object.keys(filters!.attributes!.brand).length
                             : 0
                         }
                         activeSortOption={filters.sortBy}

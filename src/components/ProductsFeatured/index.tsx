@@ -98,7 +98,6 @@ const ProductsFeatured: React.FC<IProps> = ({
                     )}
                   </Carousel>
                 </S.Container>
-                <br />
               </div>
             );
           });

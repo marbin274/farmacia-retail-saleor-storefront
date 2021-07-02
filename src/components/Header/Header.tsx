@@ -32,6 +32,7 @@ const SEARCH_HEIGHT = 56;
 
 const Header: React.FC<IProps> = ({
   categories,
+  collections,
   hideMenuCondition,
   isProductPage,
 }) => {
@@ -155,7 +156,7 @@ const Header: React.FC<IProps> = ({
             className="main-header__hamburguer"
             onClick={() =>
               overlayContext.show(OverlayType.sideNav, OverlayTheme.left, {
-                data: categories,
+                data: collections.concat(categories),
               })
             }
           >
