@@ -93,7 +93,11 @@ export const FooterWithShippingPrice: React.FC<IProps> = ({ buttonText, hideOver
                                                     : <S.ShippingMethodFree>&nbsp;(Gratis)</S.ShippingMethodFree>
                                                 }
                                             </S.ShippingMethod>
-                                            <S.ShippingMethodTotal money={{ ...shippingMethod.price, amount: shippingMethodPrice + (subtotalPrice?.net?.amount || 0) }} />
+                                            <S.ShippingMethodTotal
+                                                money={{
+                                                    ...shippingMethod.price,
+                                                    amount: shippingMethodPrice + (subtotalPrice?.net?.amount || 0) - (discount?.amount || 0)
+                                                }} />
                                         </S.DetailsPrice>
                                     );
                                 }
