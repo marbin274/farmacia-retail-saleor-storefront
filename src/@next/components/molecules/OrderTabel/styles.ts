@@ -81,14 +81,16 @@ export const IndexNumber = styled.div`
 `;
 
 export const ProductsOrdered = styled.div`
-  width: 25%;
-  display: flex;
+  display: grid;
   flex-wrap: nowrap;
-  justify-content: center;
-
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 0.5rem;
+  justify-content: flex-start;
+  width: 25%;
+  
   img {
-    max-width: 50px;
-    height: auto;
+    max-width: 2rem;
+    max-height: 2rem;
   }
 `;
 
