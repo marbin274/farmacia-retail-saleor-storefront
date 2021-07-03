@@ -7,8 +7,8 @@ export const CategoryWrapper = styled.div`
 `;
 
 export const ProductsQuantityWrapper = styled.div`
-  margin-top: 0.5rem;
   margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
 
   > span {
     font-size: 0.875rem;

@@ -1,18 +1,20 @@
-import { Pagination } from "@farmacia-retail/farmauna-components";
+import { Breadcrumbs, Pagination } from "@farmacia-retail/farmauna-components";
 import { IPaginationProps } from "@temp/@next/components/molecules/Pagination/types";
 import {
   IAddToCartCallback,
   IRemoveItemToCartCallback,
   ISubtractItemToCartCallback,
 } from "@temp/@next/components/molecules/ProductTileAUNA/types";
+import { largeScreen } from "@temp/@next/globalStyles/constants";
 import { IItems } from "@temp/@sdk/api/Cart/types";
+import { baseUrl } from "@temp/app/routes";
 import { structuredData } from "@temp/core/SEO/Collection/structuredData";
 import { IFilterAttributes, IFilters } from "@types";
 import * as React from "react";
 import { ProductListHeader } from "../../@next/components/molecules";
 import { ProductListCategoryAuna } from "../../@next/components/organisms";
 import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
-import { Breadcrumbs, EmptyProduct } from "../../components";
+import { EmptyProduct } from "../../components";
 import {
   convertToSimpleProduct,
   getDBIdFromGraphqlId,
@@ -85,7 +87,7 @@ const Page: React.FC<PageProps> = ({
         `/${collection.slug}`,
         `/${getDBIdFromGraphqlId(collection.id, "Collection")}/`,
       ].join(""),
-      value: collection.name,
+      label: collection.name,
     },
   ];
 
@@ -112,25 +114,27 @@ const Page: React.FC<PageProps> = ({
 
   return (
     <CollectionWrapper>
-      {isSmallScreen && (
-        <ProductListHeader
-          activeSortOption={activeSortOption}
-          openFiltersMenu={() => setShowFilters(true)}
-          numberOfProducts={products ? products.totalCount : 0}
-          activeFilters={activeFilters}
-          activeFiltersAttributes={activeFiltersAttributes}
-          clearFilters={clearFilters}
-          sortOptions={sortOptions}
-          onChange={onOrder}
-          onCloseFilterAttribute={onAttributeFiltersChange}
-        />
-      )}
-      <div className="collection-container">
+      <div className="collection-container-breadcrumbs">
         <Breadcrumbs
           breadcrumbs={breadcrumbs}
-          showHomeIcon
-          className="collection-breadcrumbs"
+          minDesktopBreakpoint={largeScreen}
+          baseUrl={baseUrl}
         />
+      </div>
+      <div className="collection-container">
+        {isSmallScreen && (
+          <ProductListHeader
+            activeSortOption={activeSortOption}
+            openFiltersMenu={() => setShowFilters(true)}
+            numberOfProducts={products ? products.totalCount : 0}
+            activeFilters={activeFilters}
+            activeFiltersAttributes={activeFiltersAttributes}
+            clearFilters={clearFilters}
+            sortOptions={sortOptions}
+            onChange={onOrder}
+            onCloseFilterAttribute={onAttributeFiltersChange}
+          />
+        )}
       </div>
       <div className="collection-container collection-body">
         <script className="structured-data-list" type="application/ld+json">

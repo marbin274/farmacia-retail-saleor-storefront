@@ -1,4 +1,4 @@
-import { Pagination } from "@farmacia-retail/farmauna-components";
+import { Breadcrumbs, Pagination } from "@farmacia-retail/farmauna-components";
 import { IPaginationProps } from "@temp/@next/components/molecules/Pagination/types";
 import {
   IAddToCartCallback,
@@ -6,8 +6,9 @@ import {
   ISubtractItemToCartCallback,
 } from "@temp/@next/components/molecules/ProductTileAUNA/types";
 import { CategoryNavigation } from "@temp/@next/components/organisms/CategoryNavigation/CategoryNavigation";
-import { aunaGrey100 } from "@temp/@next/globalStyles/constants";
+import { aunaGrey100, largeScreen } from "@temp/@next/globalStyles/constants";
 import { IItems } from "@temp/@sdk/api/Cart/types";
+import { baseUrl } from "@temp/app/routes";
 import { structuredData } from "@temp/core/SEO/Category/structuredData";
 import { convertToSimpleProduct, maybe } from "@temp/core/utils";
 import { IFilterAttributes, IFilters } from "@types";
@@ -15,16 +16,13 @@ import * as React from "react";
 import { ProductListHeader } from "../../@next/components/molecules";
 import { ProductListCategoryAuna } from "../../@next/components/organisms";
 import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
-import {
-  Breadcrumbs,
-  EmptyProduct,
-  extractBreadcrumbs,
-} from "../../components";
+import { EmptyProduct, extractBreadcrumbs } from "../../components";
 import {
   Category_category,
   Category_paginatedProducts,
 } from "./gqlTypes/Category";
 import { CategoryWrapper } from "./styles";
+
 interface SortItem {
   label: string;
   value?: string;
@@ -101,51 +99,41 @@ const Page: React.FC<PageProps> = ({
       []
     );
 
-  React.useEffect(
-    () =>
-      categoryContainerRef?.current.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-        inline: "nearest",
-      }),
-    [products]
-  );
-
   return (
     <CategoryWrapper ref={categoryContainerRef}>
-      <div className="collection-container">
+      <div className="collection-container-breadcrumbs">
         <Breadcrumbs
           breadcrumbs={extractBreadcrumbs(category)}
-          showHomeIcon
-          className="collection-breadcrumbs"
+          minDesktopBreakpoint={largeScreen}
+          baseUrl={baseUrl}
         />
-        {isLargeScreen && (
-          <>
-            <ProductListHeader
-              activeSortOption={activeSortOption}
-              openFiltersMenu={() => setShowFilters(true)}
-              numberOfProducts={products ? products.totalCount : 0}
-              activeFilters={activeFilters}
-              activeFiltersAttributes={activeFiltersAttributes}
-              clearFilters={clearFilters}
-              sortOptions={sortOptions}
-              onChange={onOrder}
-              onCloseFilterAttribute={onAttributeFiltersChange}
-            />
-            <div className="fa-my-2">
-              <span
-                className="fa-text-sm fa-font-normal fa-tracking-tight fa-mr-2"
-                style={{ color: aunaGrey100 }}
-              >
-                Productos encontrados
-              </span>
-              <span className="fa-text-sm fa-font-medium fa-tracking-tight fa-text-neutral-darkest">
-                {products ? products.totalCount : 0}
-              </span>
-            </div>
-          </>
-        )}
       </div>
+      {isLargeScreen && (
+        <div className="collection-container">
+          <ProductListHeader
+            activeSortOption={activeSortOption}
+            openFiltersMenu={() => setShowFilters(true)}
+            numberOfProducts={products ? products.totalCount : 0}
+            activeFilters={activeFilters}
+            activeFiltersAttributes={activeFiltersAttributes}
+            clearFilters={clearFilters}
+            sortOptions={sortOptions}
+            onChange={onOrder}
+            onCloseFilterAttribute={onAttributeFiltersChange}
+          />
+          <div className="fa-my-2">
+            <span
+              className="fa-text-sm fa-font-normal fa-tracking-tight fa-mr-2"
+              style={{ color: aunaGrey100 }}
+            >
+              Productos encontrados
+            </span>
+            <span className="fa-text-sm fa-font-medium fa-tracking-tight fa-text-neutral-darkest">
+              {products ? products.totalCount : 0}
+            </span>
+          </div>
+        </div>
+      )}
       <div className="collection-container collection-body">
         <script className="structured-data-list" type="application/ld+json">
           {structuredData(category)}

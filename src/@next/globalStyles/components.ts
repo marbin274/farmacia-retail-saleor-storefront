@@ -7,12 +7,11 @@ export const CollectionStyle = css`
   background-color: ${farmatheme.theme.colors.neutral.light};
   display: flex;
   flex-direction: column;
-  padding-top: 1rem;
 
   ${mediaUp.largeScreen`
-    .products_found {
-      margin: 0 !important;
-    }
+  .products_found {
+    margin: 0 !important;
+  }
   `}
 
   ${media.largeScreen`
@@ -30,14 +29,22 @@ export const CollectionStyle = css`
     }
   `}
 
-  .collection-breadcrumbs {
-    margin-bottom: 2rem;
-    li {
-      align-items: center;
-      display: flex;
-    }
-  }
 
+  .collection-container-breadcrumbs {
+    background-color: ${farmatheme.theme.colors.neutral.light};
+    margin: 0 auto;
+    max-width: 100vw;
+    position: sticky;
+    width: ${containerWidth};
+    top: 5rem;
+    z-index: 2;
+
+    ${mediaUp.largeScreen`
+      padding: 1.5rem 1rem;
+      position: initial;
+      z-index: 1;
+    `};
+  }
   .collection-container {
     margin: 0 auto;
     max-width: 100vw;
@@ -75,8 +82,8 @@ export const CollectionStyle = css`
     z-index: 0;
 
     ${mediaUp.largeScreen`
-      width: 50rem;
       margin-left: 1.5rem;
+      width: 50rem;
     `}
 
     ${media.largeScreen`

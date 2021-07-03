@@ -1,9 +1,9 @@
-import { Chip, DropdownSelect, Icon } from "@components/atoms";
+import { Chip, DropdownSelect } from "@components/atoms";
+import { FilterIcon } from "@farmacia-retail/farmauna-components";
+import farmatheme from "@farmatheme";
 import React from "react";
 import * as S from "./styles";
 import { IProps } from "./types";
-import { FilterIcon } from "@farmacia-retail/farmauna-components";
-import farmatheme from "@farmatheme";
 
 export const ProductListHeader: React.FC<IProps> = ({
   hideFilters = false,
@@ -17,7 +17,6 @@ export const ProductListHeader: React.FC<IProps> = ({
   onChange,
   onCloseFilterAttribute,
 }: IProps) => {
-  console.log(activeFiltersAttributes);
   return (
     <S.Wrapper>
       <S.Bar>

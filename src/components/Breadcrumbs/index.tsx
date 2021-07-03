@@ -31,7 +31,7 @@ export const extractBreadcrumbs = (category: Category_category) => {
       `/${slugify(item.name)}`,
       `/${getDBIdFromGraphqlId(item.id, "Category")}/`,
     ].join(""),
-    value: item.name,
+    label: item.name,
   });
 
   let breadcrumbs = [constructLink(category)];
