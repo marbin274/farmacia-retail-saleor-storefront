@@ -700,54 +700,6 @@ export interface Checkout_discount {
   culture: string;
 }
 
-export interface Checkout_slots_scheduled {
-  __typename: "ShippingSlot";
-  /**
-   * Slot id.
-   */
-  id: string | null;
-  /**
-   * Slot available from.
-   */
-  slotFrom: string | null;
-  /**
-   * Slot available to.
-   */
-  slotTo: string | null;
-}
-
-export interface Checkout_slots_express {
-  __typename: "ShippingSlot";
-  /**
-   * Slot id.
-   */
-  id: string | null;
-  /**
-   * Slot available from.
-   */
-  slotFrom: string | null;
-  /**
-   * Slot available to.
-   */
-  slotTo: string | null;
-}
-
-export interface Checkout_slots {
-  __typename: "Slot";
-  /**
-   * List of scheduled slots.
-   */
-  scheduled: (Checkout_slots_scheduled | null)[] | null;
-  /**
-   * List of express slots.
-   */
-  express: (Checkout_slots_express | null)[] | null;
-  /**
-   * Datetime.
-   */
-  datetime: string | null;
-}
-
 export interface Checkout {
   __typename: "Checkout";
   token: any;
@@ -797,16 +749,4 @@ export interface Checkout {
   documentNumber: string | null;
   termsAndConditions: boolean;
   dataTreatmentPolicy: boolean;
-  /**
-   * List of slots.
-   */
-  slots: Checkout_slots | null;
-  /**
-   * Slot id.
-   */
-  slotId: string | null;
-  /**
-   * Slot date.
-   */
-  deliveryDate: string | null;
 }
