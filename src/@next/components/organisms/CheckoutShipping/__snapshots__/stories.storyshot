@@ -268,13 +268,13 @@ exports[`Storyshots @components/organisms/CheckoutShipping default 1`] = `
                       data-cy="checkoutShippingMethodOption1Name"
                       selected={false}
                     >
-                      Extra
+                      75 minutos aproximadamente
                     </p>
                     <p
                       className="c9"
                       selected={false}
                     >
-                      Escoge la fecha y la hora de entrega
+                      subTitle
                     </p>
                   </div>
                   <span

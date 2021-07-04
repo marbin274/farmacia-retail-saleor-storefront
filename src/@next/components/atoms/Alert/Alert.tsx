@@ -72,7 +72,7 @@ export const Alert: React.FC<any> = () => {
     >
         <S.Modal>
           {alert.type !== "Text" && (
-            <S.Icon>
+            <S.Icon className="icon">
               <ReactSVG path={alert.icon || alertTypes[alert.type].icon} />
             </S.Icon>
           )}

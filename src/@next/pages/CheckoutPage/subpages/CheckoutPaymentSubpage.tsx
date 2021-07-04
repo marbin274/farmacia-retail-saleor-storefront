@@ -13,7 +13,6 @@ import { IAddress, ICardData, IFormError } from "@types";
 import { filterNotEmptyArrayItems } from "@utils/misc";
 import VoucherSVG from "@temp/images/auna/checkout-cupon-small.svg";
 import PromoCodeCorrect from "images/auna/promo-code-correct.svg";
-import ClockIcon from "images/auna/clock.svg";
 
 import React, {
   forwardRef,
@@ -66,7 +65,6 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
     setBillingAsShippingAddress,
     setShippingMethod,
     selectedBillingAddressId,
-    selectedSlotId,
     availablePaymentGateways,
     promoCodeDiscount,
     addPromoCode,
@@ -136,7 +134,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
   useImperativeHandle(ref, () => ({
     submitPayment: () => {
       const shippingMethodId = checkout?.shippingMethod?.id || "";
-      setShippingMethod({shippingMethodId, slotId: selectedSlotId});
+      setShippingMethod({ shippingMethodId });
       if (billingAsShippingState) {
         handleSetBillingAddress();
       } else if (user && selectedBillingAddressId) {
@@ -205,16 +203,6 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
               redirectionLink: CHECKOUT_STEPS[1].link,
               title: "No pudimos procesar el pago",
               type: "Text",
-            });
-            break;
-          case CheckoutErrorCode.INVALID_SLOT:
-            alertService.sendAlert({
-              buttonText: "Entendido",
-              icon: ClockIcon,
-              message: "Por favor, selecciona nuevamente cuándo deseas recibir tu pedido",
-              redirectionLink: CHECKOUT_STEPS[0].link,
-              title: "El tiempo de espera caducó",
-              type: "Info",
             });
             break;
           default:

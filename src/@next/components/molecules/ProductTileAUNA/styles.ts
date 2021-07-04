@@ -14,7 +14,7 @@ export const LinkContainer = styled(Link)`
 export const ProductCard = styled.div<{
   canAddToCart?: boolean | 0 | undefined;
 }>`
-  color: ${aunaBlack};
+  color: ${aunaBlack}
   text-align: center;
   transition: 0 .3s;
   padding: 1rem;
