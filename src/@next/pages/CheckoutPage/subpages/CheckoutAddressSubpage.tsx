@@ -53,9 +53,7 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
   const {
     checkout,
     setShippingAddress,
-    setShippingMethod,
     selectedShippingAddressId,
-    selectedSlotId,
   } = useCheckout();
   const { availableDistricts, countries } = useShopContext();
   const [selectedDistrict, setDistrict] = useDistrictSelected();
@@ -167,10 +165,6 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
       documentNumber ? documentNumber : ""
     );
 
-    if (selectedSlotId) {
-      await setShippingMethod({ shippingMethodId: "", slotId: undefined });
-    }
-    
     const district = availableDistricts?.find(
       x => x?.name.toLowerCase() === address.city?.toLocaleLowerCase()
     );

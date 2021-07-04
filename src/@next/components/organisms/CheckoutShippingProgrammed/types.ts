@@ -1,3 +1,4 @@
+import { Checkout_availableShippingMethods_scheduleDates } from "@temp/@sdk/fragments/gqlTypes/Checkout";
 import { IShippingMethodUpdate } from "@temp/@sdk/repository";
 
 export interface IKeyValue{
@@ -11,20 +12,8 @@ export interface IProps {
     id: string;
     isScheduled: boolean | null;
     selected: boolean;
-    scheduleDates?: ISlotScheduleDate[];
+    scheduleSelected?: string;
+    scheduleDates: Array<Checkout_availableShippingMethods_scheduleDates | null> | null;
     setFieldValue: (field: string, value: any) => void;
     setShippingMethod: (value: IShippingMethodUpdate) => void
-    scheduleTimeId?: string;
-    selectedSlotId?: string;
-}
-
-export interface ISlotScheduleTime {
-    id: string;
-    startTime: any;
-    endTime: any;
-    scheduleTimeId: string;
-    date: string;
-}
-export interface ISlotScheduleDate {
-    scheduleTimes: ISlotScheduleTime[];
 }

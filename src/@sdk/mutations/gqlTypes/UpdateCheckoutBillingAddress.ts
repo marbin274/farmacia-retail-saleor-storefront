@@ -715,54 +715,6 @@ export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_check
   culture: string;
 }
 
-export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_checkout_slots_scheduled {
-  __typename: "ShippingSlot";
-  /**
-   * Slot id.
-   */
-  id: string | null;
-  /**
-   * Slot available from.
-   */
-  slotFrom: string | null;
-  /**
-   * Slot available to.
-   */
-  slotTo: string | null;
-}
-
-export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_checkout_slots_express {
-  __typename: "ShippingSlot";
-  /**
-   * Slot id.
-   */
-  id: string | null;
-  /**
-   * Slot available from.
-   */
-  slotFrom: string | null;
-  /**
-   * Slot available to.
-   */
-  slotTo: string | null;
-}
-
-export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_checkout_slots {
-  __typename: "Slot";
-  /**
-   * List of scheduled slots.
-   */
-  scheduled: (UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_checkout_slots_scheduled | null)[] | null;
-  /**
-   * List of express slots.
-   */
-  express: (UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_checkout_slots_express | null)[] | null;
-  /**
-   * Datetime.
-   */
-  datetime: string | null;
-}
-
 export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_checkout {
   __typename: "Checkout";
   token: any;
@@ -812,18 +764,6 @@ export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_check
   documentNumber: string | null;
   termsAndConditions: boolean;
   dataTreatmentPolicy: boolean;
-  /**
-   * List of slots.
-   */
-  slots: UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_checkout_slots | null;
-  /**
-   * Slot id.
-   */
-  slotId: string | null;
-  /**
-   * Slot date.
-   */
-  deliveryDate: string | null;
 }
 
 export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate {

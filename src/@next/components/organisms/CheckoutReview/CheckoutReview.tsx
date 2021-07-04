@@ -1,6 +1,9 @@
 import { CreditCardIcon } from "@components/atoms";
 import { AddressSummary, OutOfTimeMessage } from "@components/molecules";
-import { formatShippingMethodDateToString } from "@temp/@next/utils/dateUtils";
+import {
+  formatShippingMethodDateToString,
+  getScheduleTimesFormat,
+} from "@temp/@next/utils/dateUtils";
 import React from "react";
 import * as S from "./styles";
 import { IProps } from "./types";
@@ -63,7 +66,10 @@ const CheckoutReview: React.FC<IProps> = ({
             <S.Text>
               Hora:{" "}
               <S.TextBold>
-                {checkout?.deliveryDate}
+                {getScheduleTimesFormat(
+                  scheduleDate?.scheduleTime?.startTime,
+                  scheduleDate?.scheduleTime?.endTime
+                )}
               </S.TextBold>
             </S.Text>
           </>
