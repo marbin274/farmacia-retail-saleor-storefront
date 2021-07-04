@@ -164,12 +164,10 @@ export const updateCheckoutShippingMethodMutation = gql`
     $checkoutId: ID!
     $shippingMethodId: ID!
     $districtId: ID
-    $slotId: String
   ) {
     checkoutShippingMethodUpdate(
       checkoutId: $checkoutId
       shippingMethodId: $shippingMethodId
-      slotId: $slotId
     ) {
       checkout {
         ...Checkout
@@ -190,7 +188,6 @@ export const updateCheckoutShippingMethodMutationWithScheduleDate = gql`
     $scheduleTimeId: ID!
     $date: Date!
     $districtId: ID
-    $slotId: String
   ) {
     checkoutShippingMethodUpdate(
       checkoutId: $checkoutId
@@ -199,7 +196,6 @@ export const updateCheckoutShippingMethodMutationWithScheduleDate = gql`
         scheduleTimeId: $scheduleTimeId
         date: $date
       }
-      slotId: $slotId
     ) {
       checkout {
         ...Checkout

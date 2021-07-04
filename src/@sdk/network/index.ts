@@ -724,7 +724,6 @@ export class NetworkManager implements INetworkManager {
           scheduleTimeId:
             shippingMethodUpdate.scheduleDate?.scheduleTimeId || "",
           shippingMethodId: shippingMethodUpdate.shippingMethodId,
-          slotId: shippingMethodUpdate.slotId,
         },
       });
 
@@ -942,7 +941,6 @@ export class NetworkManager implements INetworkManager {
       email,
       shippingAddress,
       billingAddress,
-      deliveryDate,
       discount,
       discountName,
       voucherDiscountType,
@@ -957,8 +955,6 @@ export class NetworkManager implements INetworkManager {
       termsAndConditions,
       dataTreatmentPolicy,
       scheduleDate,
-      slotId,
-      slots,
     }: Checkout,
     message?: string | null
   ): ICheckoutModel => ({
@@ -967,7 +963,6 @@ export class NetworkManager implements INetworkManager {
       : [],
     billingAddress,
     dataTreatmentPolicy,
-    deliveryDate: deliveryDate || '',
     documentNumber,
     email,
     id,
@@ -1005,8 +1000,6 @@ export class NetworkManager implements INetworkManager {
     scheduleDate,
     shippingAddress,
     shippingMethod,
-    slotId: slotId!,
-    slots: (slots as any),
     termsAndConditions,
     token,
   });
