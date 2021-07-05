@@ -11,6 +11,7 @@ import { Formik } from "formik";
 import ErrorFormPopulateIcon from "images/auna/form-populate-error.svg";
 import React, { useEffect, useState } from "react";
 import ReactSVG from "react-svg";
+import _ from "lodash";
 import {
   createSession,
   createToken,
@@ -416,8 +417,13 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
       <Formik
         initialValues={initialValuesFormPayment}
         validate={(values: IFormPayment) => {
-          onError(errors);
-          return validatePaymentGateway(values);
+          const errros = validatePaymentGateway(values);
+
+          if (!_.isEmpty(errors)) {
+            onError(errors);
+          }
+
+          return errros;
         }}
         validateOnBlur={false}
         validateOnChange={false}
