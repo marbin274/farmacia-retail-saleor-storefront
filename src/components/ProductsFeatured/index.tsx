@@ -14,6 +14,9 @@ import { IHomePageCollecction, IProps } from "./types";
 import { CollectionSortField } from "../../../gqlTypes/globalTypes";
 import { OrderDirection } from "@sdk/gqlTypes/globalTypes";
 import { useShowPersonalizedCollection } from "@temp/@next/optimizely/hooks";
+import { useUserDetails } from "@temp/@sdk/react";
+import { useLocalStorage } from "@temp/@next/hooks";
+import { LocalStorageItems } from "@temp/@sdk/repository";
 
 
 const ProductsFeatured: React.FC<IProps> = ({
@@ -22,9 +25,18 @@ const ProductsFeatured: React.FC<IProps> = ({
   addToCart,
   subtractItemToCart,
 }) => {
-
+  const refetchRef = React.useRef(null);
+  const { setValue: setDistrictChanged } = useLocalStorage<boolean>(LocalStorageItems.DISTRICT_CHANGED, false);
   const [districtSelected] = useDistrictSelected();
+  const { data: user } = useUserDetails();
   const showPersonalizedCollection = useShowPersonalizedCollection();
+
+  React.useEffect(() => {
+    if (user?.id) {
+      setDistrictChanged(true);
+      refetchRef.current?.();
+    }
+  }, [user]);
   
   return (
     <TypedFeaturedProductsQuery
@@ -37,7 +49,8 @@ const ProductsFeatured: React.FC<IProps> = ({
         sortBy: { direction: OrderDirection.ASC, field: CollectionSortField.SORT_ORDER },
       }}
     >
-      {({ data }) => {
+      {({ data, refetch }) => {
+
         const homepageCollections: IHomePageCollecction[] = data?.shop?.homepageCollections?.edges.length ?
           data.shop.homepageCollections.edges.map(it => ({
             id: it.node.id,
@@ -49,7 +62,7 @@ const ProductsFeatured: React.FC<IProps> = ({
           [{ id: "", isPersonalized: true, name: "Los recomendados para ti", products: data.personalized }] : [];
 
         const collections : IHomePageCollecction[] = personalizedCollection.concat(homepageCollections);
-
+        refetchRef.current = refetch;
         if (collections) {
           return collections.map(collection => {
             const products: ISimpleProduct[] = maybe(
@@ -85,7 +98,6 @@ const ProductsFeatured: React.FC<IProps> = ({
                     )}
                   </Carousel>
                 </S.Container>
-                <br />
               </div>
             );
           });
