@@ -92,21 +92,6 @@ export const FiltersButton = styled.button`
   font-size: ${props => props.theme.typography.smallFontSize};
 `;
 
-export const Clear = styled.button`
-  color: ${props => props.theme.colors.lightFont};
-  cursor: pointer;
-  display: flex;
-  font-size: ${props => props.theme.typography.smallFontSize};
-  padding-left: 2rem;
-  > span {
-    margin-left: 0.5rem;
-  }
-  ${mediaUp.mediumScreen`
-    padding-left: 0rem;
-    width: 7rem;
-  `}
-`;
-
 export const Element = styled.span`
   display: flex;
 

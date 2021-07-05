@@ -23,13 +23,14 @@ export const ProductListHeader: React.FC<IProps> = ({
   sortOptions,
 }: IProps) => {
   return (
-    <S.Wrapper>
+    <S.Wrapper role="product-list-header">
       <S.Bar>
         {!hideFilters && (
           <S.LeftSide>
             <S.FiltersButton
               onClick={openFiltersMenu}
               data-cy="filters__button"
+              role="filters__button"
             >
               <S.Filters>
                 <FilterIcon
@@ -55,7 +56,9 @@ export const ProductListHeader: React.FC<IProps> = ({
             data-cy="no-of-products-found_label"
           >
             <S.Label>Productos encontrados : </S.Label>
-            <S.NumberProducts> {numberOfProducts} </S.NumberProducts>
+            <S.NumberProducts role="no-of-products-found_value">
+              {numberOfProducts}
+            </S.NumberProducts>
           </S.Element>
           <S.Element>
             <S.Sort>
@@ -75,23 +78,26 @@ export const ProductListHeader: React.FC<IProps> = ({
           !!activeFiltersAttributes && activeFiltersAttributes.length > 0
         }
       >
-        {!!activeFiltersAttributes && activeFiltersAttributes.length > 0 && (
-          <Chip
-            bgColor={farmatheme.theme.colors.highlight.lightest}
-            label={
-              <span className="fa-flex fa-items-center">
-                <TrashIcon
-                  className="fa-mr-2 fa-transform fa-scale-125"
-                  onClick={clearFilters}
-                  size={12}
-                />
-                <span className="fa-font-semibold">Borrar filtros</span>
-              </span>
-            }
-            size="medium"
-            textColor={farmatheme.theme.colors.highlight.medium}
-          />
-        )}
+        {activeFilters > 0 &&
+          !!activeFiltersAttributes &&
+          activeFiltersAttributes.length > 0 && (
+            <Chip
+              bgColor={farmatheme.theme.colors.highlight.lightest}
+              label={
+                <span className="fa-flex fa-items-center" role="clear-filters">
+                  <TrashIcon
+                    className="fa-mr-2 fa-transform fa-scale-125"
+                    onClick={clearFilters}
+                    size={12}
+                    data-testid="clear-filters_icon"
+                  />
+                  <span className="fa-font-semibold">Borrar filtros</span>
+                </span>
+              }
+              size="medium"
+              textColor={farmatheme.theme.colors.highlight.medium}
+            />
+          )}
         {activeFiltersAttributes.map(
           ({ attributeSlug, valueName, valueSlug }, index) => (
             <Chip
