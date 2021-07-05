@@ -3,6 +3,6 @@ import React from "react";
 
 export const SkeletonBanner = () => {
 
-    return (<SSkeleton/>);
+    return (<SSkeleton height={20}/>);
 }
 

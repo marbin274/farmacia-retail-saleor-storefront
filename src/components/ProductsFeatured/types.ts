@@ -2,7 +2,6 @@ import { IAddToCartCallback, IRemoveItemToCartCallback, ISubtractItemToCartCallb
 import { IItems } from "@temp/@sdk/api/Cart/types";
 
 export interface IProps {
-    loading: boolean;
     productsOnCart: IItems;
     title?: string;
     addToCart: IAddToCartCallback;
