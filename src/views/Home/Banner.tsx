@@ -1,19 +1,16 @@
 import { BannerCarousel } from "@temp/@next/components/containers/BannerCarousel";
 import * as React from "react";
 import { useHistory } from "react-router-dom";
+import { TypedBannerQuery } from "./queries";
 import "./scss/index.scss";
+import BannerMobile from "images/auna/home-banner-mob.png";
+import BannerDesktop from "images/auna/home-banner-top.png";
 import { SkeletonBanner } from "./skeleton";
 
 const baseUrlPattern = /(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})*\/?/;
 
-interface IProps {
-    banners?: Array<{ link: string | null, desktop: string, mobile: string }>;
-    loading: boolean;
-}
-
-export const Banner: React.FC<IProps> = ({ banners, loading }) => {
+export const Banner: React.FC = () => {
     const history = useHistory();
-    const [showBanner, setShowBanner] = React.useState<boolean>(false);
 
     const redirectTo = (url?: string) => {
         if (!url) {
@@ -31,42 +28,67 @@ export const Banner: React.FC<IProps> = ({ banners, loading }) => {
     };
 
     return (
-        <div className="banner-container">
+        <TypedBannerQuery
+            alwaysRender
+            loader={<SkeletonBanner />}
+        >
             {
-                !showBanner && <SkeletonBanner />
+                ({ data }) => {
+                    const banners: Array<{ link: string | null, desktop: string, mobile: string }> =
+                        data?.mainBanner?.frames ?
+                            data?.mainBanner.frames.map((banner): { link: string | null, desktop: string, mobile: string } => {
+                                const bannerDesktop = banner.images?.find(
+                                    it => it.screenType === "desktop"
+                                );
+                                const bannerMobile = banner.images?.find(
+                                    it => it.screenType === "mobile"
+                                );
+                                const result: { link: string | null, desktop: string, mobile: string } = {
+                                    link: banner.link,
+                                    desktop: bannerDesktop?.url || '',
+                                    mobile: bannerMobile?.url || '',
+                                }
+                                return result;
+                            })
+                            : [{
+                                link: null,
+                                desktop: BannerDesktop,
+                                mobile: BannerMobile,
+                            }];
+
+                    return <div className="banner-container">
+                        <BannerCarousel>
+                            {banners.map((banner, index) => {
+                                return (
+                                    <div
+                                        key={index}
+                                        onClick={() => {
+                                            redirectTo(banner.link);
+                                        }}
+                                    >
+                                        <img
+                                            alt="banner desktop"
+                                            className={`banner-image desktop`}
+                                            height={500}
+                                            src={banner.desktop}
+                                            width={1920}
+                                        />
+                                        <img
+                                            alt="banner mobile"
+                                            className={`banner-image mobile`}
+                                            height={460}
+                                            src={banner.mobile}
+                                            width={360}
+                                        />
+
+                                    </div>
+                                );
+                            })}
+                        </BannerCarousel>
+
+                    </div>
+                }
             }
-            <BannerCarousel>
-                {banners.map((banner, index) => {
-                    return (
-                        <div
-                            key={index}
-                            onClick={() => {
-                                redirectTo(banner.link);
-                            }}
-                        >
-                            <img
-                                alt="banner desktop"
-                                className={`banner-image desktop ${loading ? "loading" : ""}`}
-                                height={500}
-                                src={banner.desktop}
-                                width={1920}
-                                onLoad={() => setShowBanner(true)}
-                            />
-                            <img
-                                alt="banner mobile"
-                                className={`banner-image mobile ${loading ? "loading" : ""}`}
-                                height={460}
-                                src={banner.mobile}
-                                width={360}
-                                onLoad={() => setShowBanner(true)}
-                            />
-
-                        </div>
-                    );
-                })}
-            </BannerCarousel>
-
-        </div>
-
+        </TypedBannerQuery>
     );
 }

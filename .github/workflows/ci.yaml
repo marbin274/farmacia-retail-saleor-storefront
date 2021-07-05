@@ -45,4 +45,3 @@ jobs:
         env:
           API_URI: ${{ secrets.GRAPHQL_URL_PROD }}
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-
