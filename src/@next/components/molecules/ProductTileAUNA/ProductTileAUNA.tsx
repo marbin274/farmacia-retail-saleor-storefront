@@ -111,7 +111,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
               )}
             </div>
             <div className="description">
-              <S.Title className="home-page__product-title fa-text-left fa-text-sm lg:fa-text-lg">
+              <S.Title className="home-page__product-title fa-line-clamp-2 fa-text-left fa-text-sm lg:fa-text-lg">
                 {product.name}
               </S.Title>
             </div>
@@ -147,7 +147,9 @@ export const ProductTileAUNA: React.FC<IProps> = ({
           to={productLink}
         >
           <S.WrapperStockout>
-            <ProductSticker isOnSale={isOnSale} isOutStock={isOutStock} />
+            <div className="fa-absolute">
+              <ProductSticker isOnSale={isOnSale} isOutStock={isOutStock} />
+            </div>
             <div
               className="img"
               onClick={() =>
@@ -177,7 +179,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
               </div>
             )}
             <div className="description">
-              <S.Title>{product.name}</S.Title>
+              <S.Title className="fa-line-clamp-2">{product.name}</S.Title>
             </div>
           </S.WrapperStockout>
         </Link>

@@ -140,7 +140,10 @@ module.exports = ({ sourceDir, distDir }) => ({
       MERCHANT_PASSWORD: "__",
       MERCHANT_USERNAME: "__",
       MERCHANT_ID: "__",
-      OPTIMIZELY_SDK_KEY: "__"
+      OPTIMIZELY_SDK_KEY: "__",
+      PRIME_API_URL: "__",
+      PRIME_API_KEY: "__",
+      PRIME_SKU: "__",
     }),
   ],
   node: {

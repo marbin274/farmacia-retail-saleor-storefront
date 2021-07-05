@@ -61,6 +61,9 @@ export const aunaBlackGray = "#454545";
 export const aunaInputGray = "#E3E5ED";
 
 export const shippingMethodBlack = "#000000";
+export const neutralDark = "#908BA7";
+export const neutralDarkest = "#23212B";
+export const grisesNegro = "#323E48";
 
 // theme colors
 export const theme = {

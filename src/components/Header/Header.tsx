@@ -32,6 +32,7 @@ const SEARCH_HEIGHT = 56;
 
 const Header: React.FC<IProps> = ({
   categories,
+  collections,
   hideMenuCondition,
   isLightHeader,
 }) => {
@@ -96,21 +97,22 @@ const Header: React.FC<IProps> = ({
           content={
             <ul className="main-header__dropdown">
               <li data-testid="my_account__link">
-                <Link to={appPaths.accountUrl} onClick={closeSearch}>
+                <Link className="fa-w-full fa-flex" to={appPaths.accountUrl} onClick={closeSearch}>
                   Mi cuenta
                 </Link>
               </li>
               <li data-testid="address_book__link">
-                <Link to={appPaths.addressBookUrl} onClick={closeSearch}>
+                <Link className="fa-w-full fa-flex" to={appPaths.addressBookUrl} onClick={closeSearch}>
                   Mis direcciones
                 </Link>
               </li>
               <li data-testid="order_history__link">
-                <Link to={appPaths.orderHistoryUrl} onClick={closeSearch}>
+                <Link className="fa-w-full fa-flex" to={appPaths.orderHistoryUrl} onClick={closeSearch}>
                   Historial de pedidos
                 </Link>
               </li>
               <li
+                className="fa-w-full fa-flex fa-cursor-pointer"
                 onClick={() => {
                   handleSignOut();
                   closeSearch();
@@ -153,7 +155,7 @@ const Header: React.FC<IProps> = ({
             className="main-header__hamburguer"
             onClick={() =>
               overlayContext.show(OverlayType.sideNav, OverlayTheme.left, {
-                data: categories,
+                data: collections.concat(categories),
               })
             }
           >

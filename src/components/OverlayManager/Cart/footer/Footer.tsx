@@ -5,7 +5,7 @@ import { checkoutLoginUrl, checkoutUrl } from "@temp/app/routes";
 import * as React from "react";
 import { useHistory, useLocation } from "react-router";
 import "../scss/index.scss";
-
+import * as S from "./FooterStyles";
 interface IProps {
     hideOverlay(): void;
 }
@@ -47,10 +47,10 @@ export const Footer: React.FC<IProps> = ({ hideOverlay }) => {
     };
 
     return (
-        <div className="cart__footer">
-            <div className="cart__footer__details">
+        <S.Container>
+            <S.Details className="cart__footer__details">
                 <div className="cart__footer__details__price">
-                    <span>Subtotal:</span>
+                    <S.SubTotalLabel>Subtotal:</S.SubTotalLabel>
                     <span>
                         <TaxedMoney
                             data-cy="cartPageSubtotalPrice"
@@ -86,16 +86,16 @@ export const Footer: React.FC<IProps> = ({ hideOverlay }) => {
                 )}
 
                 <div className="cart__footer__details__price cart__footer__details__price--total">
-                    <span>Total:</span>
-                    <span>
+                    <S.TotalLabel>Total:</S.TotalLabel>
+                    <S.TotalPrice>
                         <TaxedMoney
                             data-cy="cartPageTotalPrice"
                             taxedMoney={totalPrice}
                         />
-                    </span>
+                    </S.TotalPrice>
                 </div>
-            </div>
-            <div className="cart__footer__details__button">
+            </S.Details>
+            <S.ButtonContainer>
                 <Button
                     icon={<CartIcon />}
                     size="large"
@@ -103,8 +103,8 @@ export const Footer: React.FC<IProps> = ({ hideOverlay }) => {
                 >
                     Comprar
                 </Button>
-            </div>
-        </div>
+            </S.ButtonContainer>
+        </S.Container>
 
     );
 }

@@ -1,6 +1,6 @@
 export * from "./AddNewTile";
 export * from "./Address";
-export * from "./Attribute";
+export * from "./Attribute"; 
 export * from "./Button";
 export * from "./ButtonLink";
 export * from "./CartFooter";

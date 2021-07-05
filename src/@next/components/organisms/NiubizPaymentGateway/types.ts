@@ -31,10 +31,9 @@ export interface IProps {
    * Method called when gateway error occured.
    */
   onError: (errors: IFormError[]) => void;
-  changeRequestPayload: (requestPayload: any) => void;
-  requestPayload?: string | undefined | null;
   totalPrice?: ITotalPrice;
   userDataForNiubiz?: IUserDataForNiubiz;
+  generatePurchaseNumber: () => number;
 }
 
 export interface IFormPayment {

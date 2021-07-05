@@ -10,15 +10,21 @@ const Radio: React.FC<IProps> = ({
   checked,
   children,
   customLabel = false,
+  hasError = false,
+  selectedColor = "green",
   ...props
 }: IProps) => {
   const StyledInput = customLabel ? S.Input : S.LabeledInput;
 
   return (
-    <StyledInput checked={checked || false}>
+    <StyledInput
+      checked={checked || false}
+      selectedColor={selectedColor}
+      hasError={hasError}
+    >
       <input type="radio" checked={checked} {...props} />{" "}
       <div>
-        <S.Span checked={checked || false}/>
+        <S.Span checked={checked || false} selectedColor={selectedColor} />
       </div>
       {children}
     </StyledInput>

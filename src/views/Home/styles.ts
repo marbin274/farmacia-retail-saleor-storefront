@@ -21,6 +21,7 @@ export const TopImagesContainer = styled.div`
   display: flex;
   width: 100%;
   height:100%;
+  background-color: white;
 `;
 
 export const TopImageItem = styled.div<{ imageMobile: string, imageDesktop: string }>`

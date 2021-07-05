@@ -145,7 +145,4 @@ export const DisabledAddToCartButton = styled.div``;
 
 export const WrapperStockout = styled.div`
   height: ${productIntHeight};
-  margin-bottom: 16px;
-  overflow: hidden;
-  position: relative;
 `;

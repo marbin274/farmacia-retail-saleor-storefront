@@ -37,14 +37,21 @@ export const Header: React.FC = () => {
             ),
           []
         );
+        const collections: INavItem[] = maybe(
+          () => data.shop.navigation?.main?.items.filter(it => !!it.collection),
+          []
+        );
+        
         const navMain: INavItem[] = maybe(
           () => data.shop.navigation?.main?.items,
           []
         );
+        
         return (
           <>
             <HeaderComponent
               categories={categories}
+              collections={collections}
               hideMenuCondition={hideMenuCondition}
               isLightHeader={isLightHeader}
             />

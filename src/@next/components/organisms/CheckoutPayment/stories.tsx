@@ -42,6 +42,7 @@ storiesOf("@components/organisms/CheckoutPayment", module)
       onGatewayError={onGatewayError}
       clearPromoCodeErrors={clearPromoCodeErrors}
       changeRequestPayload={changeRequestPayload}
+      selectedDistrict="Miraflores"
     />
   ))
   .add("with addresses", () => (
@@ -57,5 +58,6 @@ storiesOf("@components/organisms/CheckoutPayment", module)
       onGatewayError={onGatewayError}
       clearPromoCodeErrors={clearPromoCodeErrors}
       changeRequestPayload={changeRequestPayload}
+      selectedDistrict="Miraflores"
     />
   ));
