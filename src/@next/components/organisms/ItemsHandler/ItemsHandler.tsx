@@ -1,4 +1,7 @@
+import { Button, CartIcon } from "@farmacia-retail/farmauna-components";
 import { launchAddToCartEvent, launchRemoveToCartEvent } from "@sdk/gaConfig";
+import { useAddToCartButtonVariable } from "@temp/@next/optimizely/hooks";
+import { trackAddToCart } from "@temp/@next/optimizely/tracks";
 import { ISimpleProduct } from "@temp/@next/types/IProduct";
 import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
 import {
@@ -15,10 +18,6 @@ import {
   ISubtractItemToCartCallback,
 } from "../../molecules/ProductTileAUNA/types";
 import "./scss/index.scss";
-import { Button, CartIcon } from "@farmacia-retail/farmauna-components";
-import { useAddToCartButtonVariable } from "@temp/@next/optimizely/hooks";
-import { trackAddToCart } from "@temp/@next/optimizely/tracks";
-
 
 type IProps = {
   canAddToCart?: boolean;
@@ -149,7 +148,7 @@ const ItemsHandler: FC<IProps> = ({
             </Button>
           </div>
           {!canAddToCart && isLimitMax && (
-            <div className='fa-text-center'>
+            <div className="fa-text-center">
               <span className="itemHandler__limit-max">
                 Max. {stockLimitMax} por promoción
               </span>

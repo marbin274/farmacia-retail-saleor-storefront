@@ -20,8 +20,8 @@ export const Bar = styled.div`
   display: flex;
   font-size: ${props => props.theme.typography.smallFontSize};
   justify-content: space-between;
-  width: 100%;
   padding: 0.5rem 0.5rem 0.5rem 1rem;
+  width: 100%;
 
   ${mediaUp.largeScreen`
     padding: 1rem 1rem 1rem 1.5rem;
@@ -128,8 +128,8 @@ export const Filters = styled.span`
 
 export const Label = styled.span`
   color: ${farmatheme.theme.colors.neutral.dark};
-  padding: 0 0.625rem;
   font-weight: 400;
+  padding: 0 0.625rem;
 `;
 
 export const Sort = styled.div`
@@ -169,12 +169,19 @@ export const Sort = styled.div`
   }
 `;
 
-export const FiltersChipsWrapper = styled.div<{ hasFilters: boolean }>`
+export const FiltersChipsWrapper = styled.div<{
+  hasFilters: boolean;
+}>`
+  align-items: center;
   align-self: flex-start;
+  display: flex;
+  flex-wrap: wrap;
   margin-top: ${({ hasFilters }) => (hasFilters ? "0.5rem" : 0)};
-  padding: ${({ hasFilters }) => (hasFilters ? "0rem 0.5rem" : 0)};
-  > div {
+  > span {
     margin: ${({ hasFilters }) => (hasFilters ? "0.4rem" : 0)};
+    &:first-child {
+      margin-left: 0;
+    }
   }
 `;
 

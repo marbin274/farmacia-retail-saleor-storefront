@@ -16,11 +16,12 @@ import {
 } from "@temp/core/utils";
 import React from "react";
 import Media from "react-media";
-import { Breadcrumbs, ProductDescription } from "../../components";
+import { ProductDescription } from "../../components";
 import { structuredData } from "../../core/SEO/Product/structuredData";
 import { structuredData as structuredCategoryData } from "../../core/SEO/Category/structuredData";
 import { smallScreen } from "../../globalStyles/scss/variables.scss";
 import { ProductDetails_product } from "./gqlTypes/ProductDetails";
+import { Breadcrumbs } from "@farmacia-retail/farmauna-components";
 // TODO: Add as soon as we need to add related products
 // import OtherProducts from "./Other";
 // TODO: Add as soon as we need to add more product information below the
@@ -75,11 +76,7 @@ export const Page: React.FC<IProps> = props => {
   return (
     <div className="product-page">
       <div className="container">
-        <Breadcrumbs
-          showHomeIcon
-          breadcrumbsAlwaysVisible
-          breadcrumbs={getBreadcrumbsFromProduct(product)}
-        />
+        <Breadcrumbs breadcrumbs={getBreadcrumbsFromProduct(product)} />
       </div>
       <div className="container">
         <div className="product-page__product">

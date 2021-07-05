@@ -12,7 +12,7 @@ import {
 import { FormError } from "../types";
 import { Breadcrumb } from "@temp/components";
 import { ProductDetails_product } from "@temp/views/Product/gqlTypes/ProductDetails";
-
+import { ISimpleProduct } from "@temp/@next/types/IProduct";
 
 export const slugify = (text: string | number): string =>
   text
@@ -196,19 +196,19 @@ export const findFormErrors = (result: void | FetchResult): FormError[] => {
 
 export const removeEmptySpaces = (text: string) => text.replace(/\s+/g, "");
 
-export const getBreadcrumbsFromProduct = (product: ProductDetails_product) => {
+export const getBreadcrumbsFromProduct = (product: ISimpleProduct) => {
   const breadcrumbs: Breadcrumb[] = [];
 
   if (!!product.category) {
     breadcrumbs.push({
       link: generateCategoryUrl(product.category.id, product.category.name),
-      value: product.category.name,
+      label: product.category.name,
     });
   }
 
   breadcrumbs.push({
     link: generateProductUrl(product.id, product.name),
-    value: product.name,
+    label: product.name,
   });
 
   return breadcrumbs;

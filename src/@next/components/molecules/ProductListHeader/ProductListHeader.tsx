@@ -1,21 +1,26 @@
-import { Chip, DropdownSelect } from "@components/atoms";
-import { FilterIcon } from "@farmacia-retail/farmauna-components";
+import { DropdownSelect } from "@components/atoms";
+import {
+  Chip,
+  FilterIcon,
+  TrashIcon,
+  XIcon,
+} from "@farmacia-retail/farmauna-components";
 import farmatheme from "@farmatheme";
 import React from "react";
 import * as S from "./styles";
 import { IProps } from "./types";
 
 export const ProductListHeader: React.FC<IProps> = ({
-  hideFilters = false,
-  numberOfProducts = 0,
-  openFiltersMenu,
-  clearFilters,
-  activeSortOption,
   activeFilters = 0,
   activeFiltersAttributes = [],
-  sortOptions,
+  activeSortOption,
+  clearFilters,
+  hideFilters = false,
+  numberOfProducts = 0,
   onChange,
   onCloseFilterAttribute,
+  openFiltersMenu,
+  sortOptions,
 }: IProps) => {
   return (
     <S.Wrapper>
@@ -70,14 +75,42 @@ export const ProductListHeader: React.FC<IProps> = ({
           !!activeFiltersAttributes && activeFiltersAttributes.length > 0
         }
       >
+        {!!activeFiltersAttributes && activeFiltersAttributes.length > 0 && (
+          <Chip
+            bgColor={farmatheme.theme.colors.highlight.lightest}
+            label={
+              <span className="fa-flex fa-items-center">
+                <TrashIcon
+                  className="fa-mr-2 fa-transform fa-scale-125"
+                  onClick={clearFilters}
+                  size={12}
+                />
+                <span className="fa-font-semibold">Borrar filtros</span>
+              </span>
+            }
+            size="medium"
+            textColor={farmatheme.theme.colors.highlight.medium}
+          />
+        )}
         {activeFiltersAttributes.map(
           ({ attributeSlug, valueName, valueSlug }, index) => (
             <Chip
+              bgColor={farmatheme.theme.colors.highlight.lightest}
               key={index}
-              onClose={() => onCloseFilterAttribute(attributeSlug, valueSlug)}
-            >
-              {valueName}
-            </Chip>
+              label={
+                <span className="fa-flex fa-items-center">
+                  <span className="fa-mr-2 fa-font-semibold">{valueName}</span>
+                  <XIcon
+                    onClick={() =>
+                      onCloseFilterAttribute(attributeSlug, valueSlug)
+                    }
+                    size={12}
+                  />
+                </span>
+              }
+              size="medium"
+              textColor={farmatheme.theme.colors.highlight.medium}
+            />
           )
         )}
       </S.FiltersChipsWrapper>

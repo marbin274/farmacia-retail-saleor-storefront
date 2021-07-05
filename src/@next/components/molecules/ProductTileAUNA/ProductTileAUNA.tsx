@@ -111,7 +111,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
               )}
             </div>
             <div className="description">
-              <S.Title className="home-page__product-title fa-text-left">
+              <S.Title className="home-page__product-title fa-text-left fa-text-sm lg:fa-text-lg">
                 {product.name}
               </S.Title>
             </div>
