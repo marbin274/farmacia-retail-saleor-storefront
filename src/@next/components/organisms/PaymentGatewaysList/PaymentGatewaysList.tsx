@@ -4,7 +4,6 @@ import { Loader } from "@components/atoms";
 import { PROVIDERS } from "@temp/core/config";
 import { IProps } from "./types";
 import * as S from "./styles";
-import * as Sentry from "@sentry/react";
 
 const PaymentGatewaysList: React.FC<IProps> = ({
   paymentGateways,
@@ -40,14 +39,6 @@ const PaymentGatewaysList: React.FC<IProps> = ({
       setOrderNumber(pathElements[5]);
     }
     selectedPaymentGateway = undefined;
-    if (!paymentGateways.length) {
-      Sentry.captureException(
-        "Error al renderizar los metodos de pago (Lista vacia).",
-        {
-          level: Sentry.Severity.Error,
-        }
-      );
-    }
   }, [voucherCode]);
   return (
     <S.Wrapper>
