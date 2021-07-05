@@ -1,7 +1,9 @@
 @import "@temp/globalStyles/scss/variables.scss";
 
-.order-details {
+.order-details-wraper {
   background-color: #f7f6f8;
+}
+.order-details {
   &__container {
     margin: 0 auto;
   }

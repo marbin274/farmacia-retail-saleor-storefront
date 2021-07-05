@@ -27,8 +27,10 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
   }
 
   return (
-    <div className="order-details container">
-      <Page guest={guest} order={order} />
+    <div className='order-details-wraper fa-w-full'>
+      <div className="order-details container">
+        <Page guest={guest} order={order} />
+      </div>
     </div>
   );
 };
