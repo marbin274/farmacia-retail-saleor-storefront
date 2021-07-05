@@ -60,53 +60,9 @@ export interface HomePage_shop {
   analyticsConfig: HomePage_shop_analyticsConfig | null;
 }
 
-export interface HomePage_mainBanner_frames_images {
-  __typename: "BannerImage";
-  /**
-   * The screen type of the image
-   */
-  screenType: string;
-  /**
-   * The image's URL
-   */
-  url: string;
-}
-
-export interface HomePage_mainBanner_frames {
-  __typename: "BannerFrame";
-  /**
-   * The ID of the object.
-   */
-  id: string;
-  /**
-   * Frame action link
-   */
-  link: string | null;
-  /**
-   * Lis of banner images
-   */
-  images: (HomePage_mainBanner_frames_images | null)[] | null;
-}
-
-export interface HomePage_mainBanner {
-  __typename: "Banner";
-  /**
-   * The ID of the object.
-   */
-  id: string;
-  /**
-   * The frames containing images for each screen
-   */
-  frames: (HomePage_mainBanner_frames | null)[] | null;
-}
-
 export interface HomePage {
   /**
    * Return information about the shop.
    */
   shop: HomePage_shop;
-  /**
-   * Look up the Banner that must appear in the home page
-   */
-  mainBanner: HomePage_mainBanner | null;
 }
