@@ -16,8 +16,6 @@ import { HomePage_shop } from "./gqlTypes/HomePage";
 import "./scss/index.scss";
 import * as S from "./styles";
 interface IPageProps {
-  banners?: Array<{ link: string | null, desktop: string, mobile: string }>;
-  loading: boolean;
   productsOnCart: IItems;
   shop: HomePage_shop;
   addToCart: IAddToCartCallback;
@@ -35,8 +33,6 @@ const imageCoverageDistrictMobile = `${cndUrl}/media/banner_coverage/home-banner
 
 
 const Page: React.FC<IPageProps> = ({
-  banners,
-  loading,
   productsOnCart,
   shop,
   addToCart,
@@ -45,6 +41,13 @@ const Page: React.FC<IPageProps> = ({
 }) => {
   const history = useHistory();
   const [showModal, setShowModal] = React.useState<boolean>(false);
+  const [showFeatures, setShowFeatures] = React.useState<boolean>(false);
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      setShowFeatures(true);
+    }, 500);
+  }, []);
 
   return (
     <>
@@ -78,10 +81,7 @@ const Page: React.FC<IPageProps> = ({
         }}
         show={showModal}
       />
-      <Banner
-        banners={banners}
-        loading={loading}
-      />
+      <Banner />
       <div className="container">
         <script className="structured-data-list" type="application/ld+json">
           {structuredData(shop)}
@@ -89,13 +89,13 @@ const Page: React.FC<IPageProps> = ({
 
         <div>
           <div className="home-page__products">
-            <ProductsFeatured
+            {showFeatures && <ProductsFeatured
               productsOnCart={productsOnCart}
-              loading={loading}
               addToCart={addToCart}
               removeItemToCart={removeItemToCart}
               subtractItemToCart={subtractItemToCart}
             />
+            }
           </div>
         </div>
       </div>
