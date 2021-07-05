@@ -40,15 +40,26 @@ export const InfoIcon = styled.div`
 export const ToolTipContainer = styled.div`
     background-color: #00295B;
     border-radius: 8px;
-    bottom: -30px;
+    bottom: -33px;
     padding: 1rem;
     position: absolute;
     right: 35px;
     width: 265px;
+    :after {
+        border-color: transparent transparent transparent #00295B;
+        border-style: solid;
+        border-width: 0.7rem;
+        bottom: 33px;
+        content: ' ';
+        position: absolute;
+        right: -22px;
+        z-index: 1;
+    }
 `;
 
 export const ToolTipText = styled.span`
     color: ${white};
+    font-size: ${({ theme }) => theme.typography.smallFontSize};
     strong {
         font-weight: 600;
     }

@@ -11,6 +11,7 @@ import { SkeletonCartFooter } from "./skeletonCartFooter";
 import * as S from "./FooterWithShippingPriceStyles";
 import { Icon } from "@temp/@next/components/atoms";
 import { aunaBrand3 } from "@temp/@next/globalStyles/constants";
+import { useClickedOutside } from "@temp/hooks";
 
 interface IProps {
     buttonText: string;
@@ -29,6 +30,9 @@ export const FooterWithShippingPrice: React.FC<IProps> = ({ buttonText, hideOver
         subtotalPrice,
     } = useCart();
 
+    const [showInfo, setShowInfo] = React.useState<boolean>(false);
+    const { clickedOutside, setElementRef } = useClickedOutside();
+    
     const itemsCount = items?.length || 0;
 
     const onClickBuyIcon = () => {
@@ -41,6 +45,12 @@ export const FooterWithShippingPrice: React.FC<IProps> = ({ buttonText, hideOver
             history.push(urlToGo);
         }
     };
+
+    React.useEffect(() => {
+        if(clickedOutside){
+            setShowInfo(false);
+        }
+    }, [clickedOutside]);
 
     return (
         <TypedShippingMethods
@@ -82,7 +92,7 @@ export const FooterWithShippingPrice: React.FC<IProps> = ({ buttonText, hideOver
                             <S.ShippingMethodTotal
                                 money={{
                                     ...shippingMethod.price,
-                                    amount: shippingMethodPrice + (subtotalPrice?.net?.amount || 0) - (discount?.amount || 0)
+                                    amount: shippingMethodPrice + (subtotalPrice?.net?.amount || 0) - (discount?.amount || 0),
                                 }} />
                         </S.DetailsPrice>
                     );
@@ -95,13 +105,26 @@ export const FooterWithShippingPrice: React.FC<IProps> = ({ buttonText, hideOver
                             isAllFree &&
                             <S.FreeShipping>
                                 <span>Felicidades tienes <strong>envío gratis</strong></span>
-                                <S.InfoIcon>
-                                    <Icon name="info" color={aunaBrand3} size={20} heightViewPort={20} widthViewPort={20} />
-                                    <S.ToolTipContainer>
-                                        <S.ToolTipText>
-                                            Si alcanzas a tener compras <strong>mayores</strong> a <strong>S/ ${orderPrice} soles</strong>, tu <strong>envío es totalmente <span className="free">gratis</span>.</strong>
-                                        </S.ToolTipText>
-                                    </S.ToolTipContainer>
+                                <S.InfoIcon
+                                    ref={setElementRef()}
+                                >
+                                    <span
+                                        onClick={() => setShowInfo(true)}
+                                    >
+                                        <Icon
+                                            color={aunaBrand3}
+                                            heightViewPort={20}
+                                            name="info"
+                                            size={20}
+                                            widthViewPort={20} />
+                                    </span>
+                                    {
+                                        showInfo && <S.ToolTipContainer>
+                                            <S.ToolTipText>
+                                                Si alcanzas a tener compras <strong>mayores</strong> a <strong>S/ {orderPrice} soles</strong>, tu <strong>envío es totalmente <span className="free">gratis</span>.</strong>
+                                            </S.ToolTipText>
+                                        </S.ToolTipContainer>
+                                    }
                                 </S.InfoIcon>
                             </S.FreeShipping>
                         }
