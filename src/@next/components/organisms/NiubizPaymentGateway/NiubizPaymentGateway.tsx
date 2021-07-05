@@ -197,7 +197,6 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
         };
 
         // @ts-ignore
-        // TODO: validar luego contra sentry cuando ocurra un error con window?.payform
         window?.payform.setConfiguration(configuration);
 
         // TODO: Create required controls
