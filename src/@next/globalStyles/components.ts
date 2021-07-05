@@ -35,8 +35,8 @@ export const CollectionStyle = css`
     margin: 0 auto;
     max-width: 100vw;
     position: sticky;
-    width: ${containerWidth};
     top: 5rem;
+    width: ${containerWidth};
     z-index: 2;
 
     ${mediaUp.largeScreen`

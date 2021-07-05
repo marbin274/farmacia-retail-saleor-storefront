@@ -22,6 +22,8 @@ import { structuredData as structuredCategoryData } from "../../core/SEO/Categor
 import { smallScreen } from "../../globalStyles/scss/variables.scss";
 import { ProductDetails_product } from "./gqlTypes/ProductDetails";
 import { Breadcrumbs } from "@farmacia-retail/farmauna-components";
+import { largeScreen } from "@temp/@next/globalStyles/constants";
+import { baseUrl } from "@temp/app/routes";
 // TODO: Add as soon as we need to add related products
 // import OtherProducts from "./Other";
 // TODO: Add as soon as we need to add more product information below the
@@ -75,8 +77,12 @@ export const Page: React.FC<IProps> = props => {
 
   return (
     <div className="product-page">
-      <div className="container">
-        <Breadcrumbs breadcrumbs={getBreadcrumbsFromProduct(product)} />
+      <div className="container-breadcrumbs">
+        <Breadcrumbs
+          baseUrl={baseUrl}
+          breadcrumbs={getBreadcrumbsFromProduct(product)}
+          minDesktopBreakpoint={largeScreen}
+        />
       </div>
       <div className="container">
         <div className="product-page__product">

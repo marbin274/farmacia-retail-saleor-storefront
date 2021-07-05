@@ -11,7 +11,6 @@ import {
 } from "../../../gqlTypes/globalTypes";
 import { FormError } from "../types";
 import { Breadcrumb } from "@temp/components";
-import { ProductDetails_product } from "@temp/views/Product/gqlTypes/ProductDetails";
 import { ISimpleProduct } from "@temp/@next/types/IProduct";
 
 export const slugify = (text: string | number): string =>
