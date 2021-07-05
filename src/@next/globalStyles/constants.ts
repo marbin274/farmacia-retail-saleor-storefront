@@ -24,7 +24,7 @@ export const turquoiseTransparent = "rgba(6, 132, 123, 0.1)";
 export const white = "#fff";
 export const tabelGray = "#eaeaea";
 export const darkGreen = "#06847B";
-
+export const hrColor = "#E2E3F1";
 // AUNA color scheme
 export const aunaBrand1 = "#C2DF0A";
 export const aunaBrand2 = "#FF6900";

@@ -1,7 +1,7 @@
 import { css } from "styled-components";
 import { media, mediaUp } from "./media";
 import farmatheme from "@farmatheme";
-import { containerWidth } from "./constants";
+import { containerWidth, spacer } from "./constants";
 
 export const CollectionStyle = css`
   background-color: ${farmatheme.theme.colors.neutral.light};
@@ -94,4 +94,15 @@ export const CollectionStyle = css`
       }
     `}
   }
+`;
+
+export const ContainerStyle = css`
+  width: 100%;
+  max-width: 100vw;
+  margin: 0 auto;
+  padding: 0 ${spacer}rem;
+
+  ${mediaUp.largeScreen`
+    width: ${containerWidth};
+   `}
 `;

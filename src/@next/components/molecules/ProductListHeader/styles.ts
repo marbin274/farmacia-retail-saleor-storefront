@@ -95,10 +95,10 @@ export const FiltersButton = styled.button`
 export const Element = styled.span`
   display: flex;
 
-  ${mediaUp.mediumScreen`
+  ${mediaUp.xSmallScreen`
     margin-top: 0;
   `}
-  ${mediaUp.xSmallScreen`
+  ${mediaUp.mediumScreen`
     margin-top: 0;
   `}
 `;
