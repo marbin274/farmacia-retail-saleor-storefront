@@ -8,9 +8,18 @@ const shippingMethodsQuery = gql`
         potentialShippingMethods(lines:$lines) {
             id
             isScheduled
+            maximumOrderPrice {
+                amount
+                currency
+                culture
+            }
+            minimumOrderPrice {
+                amount
+                currency
+                culture
+            }              
             name
-            price
-            {
+            price {
                 amount
                 culture
                 currency

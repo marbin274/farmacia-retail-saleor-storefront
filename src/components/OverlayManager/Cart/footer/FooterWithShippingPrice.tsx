@@ -52,12 +52,18 @@ export const FooterWithShippingPrice: React.FC<IProps> = ({ buttonText, hideOver
         >
             {({ data }) => {
                 let isAllFree: boolean = true;
+                let orderPrice: number = 0;
                 const potentialShippingMethods = data?.potentialShippingMethods.map((shippingMethod): JSX.Element => {
 
                     const shippingMethodPrice = shippingMethod.price?.amount || 0;
                     if (shippingMethodPrice > 0) {
                         isAllFree = false;
                     }
+
+                    if(((shippingMethod.minimumOrderPrice?.amount) || 0) > orderPrice){
+                        orderPrice = shippingMethod.minimumOrderPrice?.amount;
+                    }
+
                     return (
                         <S.DetailsPrice key={shippingMethod.id} >
                             <S.ShippingMethodLabel>Total</S.ShippingMethodLabel>
@@ -91,6 +97,11 @@ export const FooterWithShippingPrice: React.FC<IProps> = ({ buttonText, hideOver
                                 <span>Felicidades tienes <strong>envío gratis</strong></span>
                                 <S.InfoIcon>
                                     <Icon name="info" color={aunaBrand3} size={20} heightViewPort={20} widthViewPort={20} />
+                                    <S.ToolTipContainer>
+                                        <S.ToolTipText>
+                                            Si alcanzas a tener compras <strong>mayores</strong> a <strong>S/ ${orderPrice} soles</strong>, tu <strong>envío es totalmente <span className="free">gratis</span>.</strong>
+                                        </S.ToolTipText>
+                                    </S.ToolTipContainer>
                                 </S.InfoIcon>
                             </S.FreeShipping>
                         }

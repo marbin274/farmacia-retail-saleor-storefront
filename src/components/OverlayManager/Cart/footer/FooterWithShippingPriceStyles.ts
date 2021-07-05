@@ -1,5 +1,5 @@
 import { mediaUp, styled } from "@styles";
-import { aunaBrand3, aunaDiscount, aunaInformativeLightest, neutralDark, neutralDarkest } from "@temp/@next/globalStyles/constants";
+import { aunaBrand3, aunaDiscount, aunaInformativeLightest, aunaInteractive, neutralDark, neutralDarkest, white } from "@temp/@next/globalStyles/constants";
 import { Money } from "@components/containers";
 
 export const Container = styled.div`
@@ -34,6 +34,27 @@ export const FreeShipping = styled.div`
 
 export const InfoIcon = styled.div`
     cursor: pointer;
+    position: relative;
+`;
+
+export const ToolTipContainer = styled.div`
+    background-color: #00295B;
+    border-radius: 8px;
+    bottom: -30px;
+    padding: 1rem;
+    position: absolute;
+    right: 35px;
+    width: 265px;
+`;
+
+export const ToolTipText = styled.span`
+    color: ${white};
+    strong {
+        font-weight: 600;
+    }
+    .free {
+        color: ${aunaInteractive};
+    }
 `;
 
 export const DetailsPrice = styled.div`
