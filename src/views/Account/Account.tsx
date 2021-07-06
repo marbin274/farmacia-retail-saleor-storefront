@@ -14,14 +14,12 @@ import {
   baseUrl,
   orderHistoryUrl,
 } from "../../app/routes";
-import { Link } from "react-router-dom";
 
 import { AccountMenu, AccountMenuMobile } from "@components/molecules";
 import { AccountTab, OrdersHistory } from "@pages";
 import { Loader } from "../../components";
 import { Breadcrumbs } from "@farmacia-retail/farmauna-components";
 import { UserDetails_me } from "@temp/@sdk/queries/gqlTypes/UserDetails";
-import { HomeIcon } from "@farmacia-retail/farmauna-components";
 
 const returnTab: any = (path: string, userDetails: UserDetails_me, history) => {
   let tabContent = <></>;
