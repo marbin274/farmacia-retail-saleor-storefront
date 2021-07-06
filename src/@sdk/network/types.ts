@@ -10,6 +10,7 @@ import {
 } from "@sdk/repository";
 import { IPrivacyPolicy } from "../api/Checkout/types";
 import { VariantsProductsAvailable_productVariants } from "../queries/gqlTypes/VariantsProductsAvailable";
+import { Checkout } from "../fragments/gqlTypes/Checkout";
 
 export enum PendingSaveItems {
   UPDATE_CART = "updateCart",
@@ -91,4 +92,10 @@ export interface INetworkManager {
     checkoutId: string, 
     paymentData?: string
   ) => Promise<INetworkManagerResponse<IOrderModel>>;
+}
+
+export interface IConstructCheckoutParams {
+  checkout: Checkout;
+  isPrime?: boolean;
+  message?: string | null;
 }
