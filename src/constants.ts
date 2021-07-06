@@ -1,5 +1,4 @@
 export const apiUrl = process.env.API_URI;
-export const sentryDsn = process.env.SENTRY_DSN;
 export const gtmId = process.env.GTM_ID;
 export const gtmAuth = process.env.GTM_AUTH;
 export const gtmPreview = process.env.GTM_PREVIEW;

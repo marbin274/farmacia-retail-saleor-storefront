@@ -1,6 +1,6 @@
 import { ErrorListener } from "@sdk/helpers";
 import { JobsManager } from "@sdk/jobs";
-import { ICheckoutModel, IPaymentModel, IShippingMethodUpdate, ISlots } from "@sdk/repository";
+import { ICheckoutModel, IPaymentModel, IShippingMethodUpdate } from "@sdk/repository";
 import { SaleorState } from "@sdk/state";
 import { StateItems } from "@sdk/state/types";
 import { primeSku } from "@temp/constants";
@@ -33,8 +33,6 @@ export class SaleorCheckoutAPI extends ErrorListener
   availablePaymentGateways?: IAvailablePaymentGateways;
   payment?: IPayment;
   isPrime?: boolean;
-  slots?: ISlots;
-  selectedSlotId?: string;
 
   private saleorState: SaleorState;
   private jobsManager: JobsManager;
@@ -78,9 +76,6 @@ export class SaleorCheckoutAPI extends ErrorListener
         termsAndConditions,
         documentNumber,
         scheduleDate,
-        slotId,
-        slots,
-        deliveryDate,
       }: ICheckoutModel) => {
         this.checkout = {
           billingAddress,
@@ -93,13 +88,10 @@ export class SaleorCheckoutAPI extends ErrorListener
           shippingMethod,
           termsAndConditions,
           token,
-          deliveryDate,
         };
         this.selectedShippingAddressId = selectedShippingAddressId;
         this.selectedBillingAddressId = selectedBillingAddressId;
         this.availableShippingMethods = availableShippingMethods;
-        this.slots = slots;
-        this.selectedSlotId = slotId;
         this.billingAsShipping = billingAsShipping;
         this.promoCodeDiscount = {
           discountName: promoCodeDiscount?.discountName,
