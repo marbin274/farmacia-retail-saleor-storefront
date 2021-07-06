@@ -6,8 +6,9 @@ import { AddressTypeEnum, CountryCode } from "@sdk/gqlTypes/globalTypes";
 import { useDefaultUserAddress, useDeleteUserAddresss, useUpdateUserAddress } from "@sdk/react";
 import { useShopContext } from "../../components/ShopProvider/context";
 import { UserDetails_me } from "@temp/@sdk/queries/gqlTypes/UserDetails";
-import { IAddressBookDisplay } from "@temp/@next/types";
+import { IAddressBookDisplay, IAddressWithAddressType } from "@temp/@next/types";
 import { removeCountryCodeInPhoneNumber } from "@temp/@next/utils/addresForm";
+import { maybe } from "@temp/@next/utils/misc";
 
 const AddressBook: React.FC<{
   user: UserDetails_me;
@@ -20,10 +21,10 @@ const AddressBook: React.FC<{
   const [setDeleteUserAddress] = useDeleteUserAddresss();
   const [setUpdateUserAddress] = useUpdateUserAddress();
 
-  const districtsOptions = availableDistricts.map(x => x.name);
+  const districtsOptions = maybe(() => availableDistricts.map(x => (x.name || '')), []);
 
-  const userAddresses = user.addresses.map(it => {
-    const address = { ...it, phone: removeCountryCodeInPhoneNumber(it.phone) };
+  const userAddresses = maybe(()=>user.addresses.map(it => {
+    const address: IAddressWithAddressType = { ...it, phone: removeCountryCodeInPhoneNumber(it.phone || '') };
     const addressToDisplay: IAddressBookDisplay = {
       address,
       onEdit: () => {
@@ -47,8 +48,8 @@ const AddressBook: React.FC<{
             firstName: address.firstName,
             isDefault: false,
             lastName: address.lastName,
-            latitude: address.latitude,
-            longitude: address.longitude,
+            latitude: Number(address.latitude),
+            longitude: Number(address.longitude),
             phone: address.phone,
             postalCode: address.postalCode,
             streetAddress1: address.streetAddress1,
@@ -67,7 +68,7 @@ const AddressBook: React.FC<{
       },
     };
     return addressToDisplay;
-  });
+  }), []);
 
   return (
     <div className="address-book-container">

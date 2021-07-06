@@ -29,20 +29,19 @@ export const Thumbnail = styled.div<{ activeThumbnail: boolean }>`
 `;
 
 export const Button = styled.div`
-  height: 50px;
-  width: 100%;
-  position: absolute;
-  z-index: 1;
-  background-color: rgba(50, 50, 50, 0.3);
-  display: flex;
-  justify-content: center;
   align-items: center;
+  background-color: rgba(50, 50, 50, 0.3);
   cursor: pointer;
+  display: flex;
+  height: 50px;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
 `;
 
 export const TopButton = styled(Button)`
   top: 0%;
-
   transform: rotate(180deg);
 `;
 

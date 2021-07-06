@@ -11,12 +11,7 @@ import {
 } from "../../../gqlTypes/globalTypes";
 import { FormError } from "../types";
 import { Breadcrumb } from "@temp/components";
-import { ProductDetails_product } from "@temp/views/Product/gqlTypes/ProductDetails";
-import {
-  CategoryDetails_category,
-  CategoryDetails_category_ancestors_edges_node,
-} from "@sdk/queries/gqlTypes/CategoryDetails";
-
+import { ISimpleProduct } from "@temp/@next/types/IProduct";
 
 export const slugify = (text: string | number): string =>
   text
@@ -146,7 +141,7 @@ export const convertSortByFromString = (sortBy: string) => {
   return { field, direction };
 };
 
-export const maybe = <T>(exp: () => T, d?: T) => {
+export const maybe = <T>(exp: () => any, d?: T) => {
   try {
     const result = exp();
     return result === undefined ? d : result;
@@ -200,40 +195,20 @@ export const findFormErrors = (result: void | FetchResult): FormError[] => {
 
 export const removeEmptySpaces = (text: string) => text.replace(/\s+/g, "");
 
-export const getBreadcrumbsFromProduct = (product: ProductDetails_product) => {
+export const getBreadcrumbsFromProduct = (product: ISimpleProduct) => {
   const breadcrumbs: Breadcrumb[] = [];
 
   if (!!product.category) {
     breadcrumbs.push({
       link: generateCategoryUrl(product.category.id, product.category.name),
-      value: product.category.name,
+      label: product.category.name,
     });
   }
 
   breadcrumbs.push({
     link: generateProductUrl(product.id, product.name),
-    value: product.name,
+    label: product.name,
   });
 
   return breadcrumbs;
 };
-export const buildCategory = (category: CategoryDetails_category_ancestors_edges_node, index: number) => ({
-  "@type": "ListItem",
-  "position": index,
-  "name": category.name,
-  "item": `${window.location.protocol}//${window.location.hostname}${generateCategoryUrl(category.id, category.name)}`,
-});
-
-export const structuredCategory = (category: CategoryDetails_category) => {
-  const itemList = (category.ancestors?.edges || []).map(
-    (ancestor: { node: CategoryDetails_category_ancestors_edges_node }, index: number) => buildCategory(ancestor.node, index + 1)
-  );
-  return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      ...itemList,
-      buildCategory(category, itemList.length + 1),
-    ],
-  };
-}

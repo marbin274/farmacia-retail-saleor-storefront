@@ -21,7 +21,11 @@ const View: React.FC = () => {
 
   return (
     <div className="home-page">
-      <TypedHomePageQuery alwaysRender errorPolicy="all" loaderFull>
+      <TypedHomePageQuery
+        alwaysRender
+        errorPolicy="all"
+        loaderFull
+      >
         {({ data, loading }) => {
           const addToCart: IAddToCartCallback = (product, quantity) => {
             addItem(product, quantity);
@@ -35,16 +39,17 @@ const View: React.FC = () => {
             subtractItem(product);
           };
 
+          
+
           return (
             <MetaWrapper
               meta={{
                 description: data.shop ? data.shop.description : "",
                 title: data.shop ? data.shop.name : "",
               }}
-            >         
-              <div className="home-view">
+            >
+              <div className="home-view fa-bg-neutral-light">
                 <Page
-                  loading={loading}
                   productsOnCart={productsOnCart}
                   shop={data.shop}
                   addToCart={addToCart}

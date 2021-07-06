@@ -1,5 +1,3 @@
-import "./scss/index.scss";
-
 import * as React from "react";
 import { RouteComponentProps } from "react-router";
 
@@ -17,6 +15,7 @@ import { ProductDetails_product } from "./gqlTypes/ProductDetails";
 import Page from "./Page";
 import { TypedProductDetailsQuery } from "./queries";
 import { useDistrictSelected } from "@temp/@next/hooks/useDistrictSelected";
+import { Skeleton } from "./skeleton";
 
 const canDisplay = (product: ProductDetails_product) =>
   maybe(
@@ -63,6 +62,7 @@ const View: React.FC<RouteComponentProps<{ id: string }>> = ({ match }) => {
   return (
     <TypedProductDetailsQuery
       loaderFull
+      loader={<Skeleton />}
       variables={{
         id: getGraphqlIdFromDBId(match.params.id, "Product"),
         districtId: districtSelected.id,

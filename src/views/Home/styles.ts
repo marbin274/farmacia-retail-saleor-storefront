@@ -1,5 +1,4 @@
 import { media, mediaUp, styled } from "@styles";
-import { smallScreen, xSmallScreen } from "@temp/@next/globalStyles/constants";
 
 export const Container = styled.div`
 width: ${props => `${props.theme.container.width}px`};
@@ -22,6 +21,7 @@ export const TopImagesContainer = styled.div`
   display: flex;
   width: 100%;
   height:100%;
+  background-color: white;
 `;
 
 export const TopImageItem = styled.div<{ imageMobile: string, imageDesktop: string }>`
@@ -88,28 +88,3 @@ export const TopImageDistrictBannerOpen = styled.div<{
     background-size: 100% 100%;
   `};
  `;
-
-export const SSkeletonBanner = styled.div`
-  position: relative;
-    cursor: pointer;
-    background-position: center top;
-    background: linear-gradient(-90deg, #F0F0F0 0%, #F8F8F8 50%, #F0F0F0 100%);
-    @media (max-width: ${smallScreen}px) {
-      height: 28.75rem;
-      border-radius: 0;
-      background-position: center top;
-      margin-top: 1rem;
-    }
-    @media (max-width: ${xSmallScreen}px) {
-      width: ${xSmallScreen}px;
-    }
-  animation: pulse 1.2s ease-in-out infinite;
-  @keyframes pulse {
-    0% {
-      background-position: 0% 0%;
-    }
-    100% {
-      background-position: -135% 0%;
-    }
-  }
-`;

@@ -6,13 +6,13 @@ export const List = styled.div`
   grid-gap: 1rem 1rem ;
 
   ${media.largeScreen`
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 5rem 1.5rem ;
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
   `}
 
   ${media.smallScreen`
     grid-template-columns: 1fr;
-    grid-gap: 1rem 1rem;
+    grid-gap: 0 1rem;
   `}
 `;
 

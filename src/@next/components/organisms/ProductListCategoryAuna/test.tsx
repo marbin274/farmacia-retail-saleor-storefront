@@ -6,9 +6,12 @@ import { BrowserRouter } from "react-router-dom";
 import { ProductListCategoryAuna } from ".";
 import { products, productsOnCart } from "./fixtures";
 
-jest.mock("@sdk/optimizelyConfig", () => ({
-  trackAddToCart: jest.fn(),
+jest.mock("@temp/@next/optimizely/hooks", () => ({
   useAddToCartButtonVariable: () => "Agregar",
+}));
+
+jest.mock("@temp/@next/optimizely/tracks", () => ({
+  trackAddToCart: jest.fn(),
 }));
 
 describe("<ProductList />", () => {

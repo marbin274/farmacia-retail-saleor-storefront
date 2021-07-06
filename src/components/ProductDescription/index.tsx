@@ -1,5 +1,6 @@
 import { RichTextContent } from "@components/atoms";
 import { TaxedMoney } from "@components/containers";
+
 import {
   ProductBottomDetail,
   ProductVariantPicker,
@@ -159,15 +160,17 @@ export const ProductDescription: React.FC<ProductDescriptionProps> = props => {
       className="product-description"
     >
       <h3>{name}</h3>
-      <div ref={priceRef}>{renderPrice()}</div>
-      <div className="product-description__quantity" ref={addToCartRef}>
-        <ItemsHandler
-          canAddToCart={canAddToCart}
-          product={product}
-          addToCart={props.addToCart}
-          removeItemToCart={props.subtractToCart}
-          subtractItemToCart={props.subtractToCart}
-        />
+      <div className="price__button">
+        <div ref={priceRef}>{renderPrice()}</div>
+        <div className="product-description__quantity" ref={addToCartRef}>
+          <ItemsHandler
+            canAddToCart={canAddToCart}
+            product={product}
+            addToCart={props.addToCart}
+            removeItemToCart={props.subtractToCart}
+            subtractItemToCart={props.subtractToCart}
+          />
+        </div>
       </div>
       <RichTextContent descriptionJson={descriptionJson} />
       <div className="product-description__variant-picker">

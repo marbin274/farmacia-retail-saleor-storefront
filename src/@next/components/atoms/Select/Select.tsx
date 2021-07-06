@@ -1,7 +1,7 @@
 import React from "react";
 import ReactSelect from "react-select";
 import { ThemeContext } from "styled-components";
-
+import farmatheme  from "@farmatheme";
 import { ErrorMessage } from "../ErrorMessage";
 import * as S from "./styles";
 import { IProps } from "./types";
@@ -20,19 +20,25 @@ const optionStyle = (customTheme: any) => ({
       ...provided,
       alignItems: "center",
       backgroundColor: state.isSelected
-        ? customTheme.colors.primaryLight
+        ? farmatheme.theme.colors.primary.lightest
         : state.isFocused
-        ? customTheme.colors.primaryTransparent
+        ? farmatheme.theme.colors.primary.lightest
         : "white",
-      color: state.isDisabled
+      color: state.isSelected
+        ? farmatheme.theme.colors.primary.medium
+        : state.isDisabled
         ? customTheme.colors.lightFont
         : customTheme.colors.dark,
       display: "flex",
       fontWeight: state.isSelected && customTheme.typography.boldFontWeight,
-      margin: "0 auto",
+      margin: "0.2rem auto",
       minHeight: "34px",
       verticalAlign: "middle",
       width: "95%",
+      cursor: "pointer",
+      borderRadius: "1.5rem",
+      padding: "0.5rem 1rem",
+      transition: "all 0.2s ease-in-out",
     };
   },
 });
@@ -61,7 +67,6 @@ export const Select: React.FC<IProps> = ({
       name ? onChange(value, name) : onChange(value);
     }
   };
-
   return (
     <S.Wrapper errors={!!errors}>
       <ReactSelect

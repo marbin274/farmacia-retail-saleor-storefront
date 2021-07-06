@@ -7,6 +7,7 @@ import {
   aunaGrey20,
   turquoise,
 } from "@styles/constants";
+import farmatheme from "@farmatheme";
 
 export const CartSummaryContainer = styled.div`
   ${mediaUp.mediumScreen`
@@ -218,7 +219,7 @@ export const Close = styled.div<{ mobileCartOpened: boolean }>`
   align-self: flex-start;
   display: flex;
   color: white;
-  background-color: #452fba;
+  background-color: ${farmatheme.theme.colors.interactive};
   border-radius: 50%;
   color: #fff;
 

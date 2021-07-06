@@ -1,5 +1,4 @@
 export const apiUrl = process.env.API_URI;
-export const sentryDsn = process.env.SENTRY_DSN;
 export const gtmId = process.env.GTM_ID;
 export const gtmAuth = process.env.GTM_AUTH;
 export const gtmPreview = process.env.GTM_PREVIEW;
@@ -12,3 +11,6 @@ export const merchantPassword = process.env.MERCHANT_PASSWORD;
 export const merchantUsername = process.env.MERCHANT_USERNAME;
 export const merchantId = process.env.MERCHANT_ID;
 export const optimizelySdkKey = process.env.OPTIMIZELY_SDK_KEY;
+export const primeApiUrl = process.env.PRIME_API_URL;
+export const primeApiKey = process.env.PRIME_API_KEY;
+export const primeSku = process.env.PRIME_SKU || "";

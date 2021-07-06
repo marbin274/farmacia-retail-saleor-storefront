@@ -101,8 +101,6 @@ export const getStockAvailable = (product: ISimpleProduct): IStockAvailable => {
   const quantity = product.quantity || 0;
   if (product.variant?.quantityAvailable) {
     stockAvailable = product.variant.quantityAvailable;
-  } else if (product.variant?.quantityAvailable) {
-    stockAvailable = product.variant.quantityAvailable;
   }
 
   return { stockAvailable, quantity };
@@ -170,9 +168,7 @@ export const productStickerRules = (product: ISimpleProduct) => {
   let quantityAvailable = 0;
   if (product.variant?.quantityAvailable) {
     quantityAvailable = product.variant.quantityAvailable;
-  } else if (product.variant?.quantityAvailable) {
-    quantityAvailable = product.variant.quantityAvailable;
-  }
+  } 
   const isOutStock = quantity >= quantityAvailable;
   return { isOnSale, isOutStock };
 };
@@ -207,5 +203,9 @@ export const getProductPricingClass = (
 export const convertProductOnCartInProduct = (
   productOnCart: ICheckoutModelLine
 ): ISimpleProduct => {
-  return { ...productOnCart, id: productOnCart.variant.product?.id || "" };
+  return { 
+    ...productOnCart, 
+    attributes: productOnCart.variant.product?.attributes || [],
+    id: productOnCart.variant.product?.id || "",
+   };
 };

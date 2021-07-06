@@ -68,12 +68,13 @@ import ApolloClient from "apollo-client";
 import { IPrivacyPolicy } from "../api/Checkout/types";
 import { UpdateCheckoutShippingMethodWithScheduleDateVariables } from "../mutations/gqlTypes/UpdateCheckoutShippingMethodWithScheduleDate";
 import { launchPurchaseEvent, ecommerceProductsMapper } from "@sdk/gaConfig";
-import { INetworkManager } from "./types";
+import { IConstructCheckoutParams, INetworkManager } from "./types";
 import {
   VariantsProductsAvailable,
   VariantsProductsAvailableVariables,
   VariantsProductsAvailable_productVariants,
 } from "../queries/gqlTypes/VariantsProductsAvailable";
+import { checkPrimeUser } from "../api/Prime";
 
 export class NetworkManager implements INetworkManager {
   private client: ApolloClient<any>;
@@ -136,7 +137,7 @@ export class NetworkManager implements INetworkManager {
 
       if (checkout) {
         return {
-          data: this.constructCheckoutModel(checkout),
+          data: this.constructCheckoutModel({ checkout }),
         };
       }
     } catch (error) {
@@ -430,8 +431,12 @@ export class NetworkManager implements INetworkManager {
           error: data?.checkoutCreate?.errors,
         };
       } else if (data?.checkoutCreate?.checkout) {
+        const isPrime = await checkPrimeUser(email);
         return {
-          data: this.constructCheckoutModel(data.checkoutCreate.checkout),
+          data: this.constructCheckoutModel({
+            checkout: data.checkoutCreate.checkout,
+            isPrime,
+          }),
         };
       }
     } catch (error) {
@@ -475,9 +480,9 @@ export class NetworkManager implements INetworkManager {
           };
         } else if (data?.checkoutLinesUpdate?.checkout) {
           return {
-            data: this.constructCheckoutModel(
-              data.checkoutLinesUpdate.checkout
-            ),
+            data: this.constructCheckoutModel({
+              checkout: data.checkoutLinesUpdate.checkout,
+            }),
           };
         }
       } catch (error) {
@@ -563,10 +568,12 @@ export class NetworkManager implements INetworkManager {
             ? data.checkoutEmailUpdate?.checkout?.dataTreatmentPolicy
             : data.checkoutShippingAddressUpdate.checkout.dataTreatmentPolicy;
         }
+        const isPrime = await checkPrimeUser(email);
         return {
-          data: this.constructCheckoutModel(
-            data.checkoutShippingAddressUpdate.checkout
-          ),
+          data: this.constructCheckoutModel({
+            checkout: data.checkoutShippingAddressUpdate.checkout,
+            isPrime,
+          }),
         };
       } else {
         return {};
@@ -623,9 +630,9 @@ export class NetworkManager implements INetworkManager {
         };
       } else if (data?.checkoutBillingAddressUpdate?.checkout) {
         return {
-          data: this.constructCheckoutModel(
-            data.checkoutBillingAddressUpdate.checkout
-          ),
+          data: this.constructCheckoutModel({
+            checkout: data.checkoutBillingAddressUpdate.checkout,
+          }),
         };
       } else {
         return {};
@@ -689,9 +696,9 @@ export class NetworkManager implements INetworkManager {
         };
       } else if (data?.checkoutBillingAddressUpdate?.checkout) {
         return {
-          data: this.constructCheckoutModel(
-            data.checkoutBillingAddressUpdate.checkout
-          ),
+          data: this.constructCheckoutModel({
+            checkout: data.checkoutBillingAddressUpdate.checkout,
+          }),
         };
       } else {
         return {};
@@ -737,9 +744,9 @@ export class NetworkManager implements INetworkManager {
         };
       } else if (data?.checkoutShippingMethodUpdate?.checkout) {
         return {
-          data: this.constructCheckoutModel(
-            data.checkoutShippingMethodUpdate.checkout
-          ),
+          data: this.constructCheckoutModel({
+            checkout: data.checkoutShippingMethodUpdate.checkout,
+          }),
         };
       } else {
         return {};
@@ -771,13 +778,13 @@ export class NetworkManager implements INetworkManager {
         };
       } else if (data?.checkoutAddPromoCode?.checkout) {
         return {
-          data: this.constructCheckoutModel(
-            {
+          data: this.constructCheckoutModel({
+            checkout: {
               ...data.checkoutAddPromoCode.checkout,
               availableShippingMethods: [],
             },
-            data.checkoutAddPromoCode.message
-          ),
+            message: data.checkoutAddPromoCode.message,
+          }),
         };
       } else {
         return {};
@@ -809,9 +816,9 @@ export class NetworkManager implements INetworkManager {
         };
       } else if (data?.checkoutRemovePromoCode?.checkout) {
         return {
-          data: this.constructCheckoutModel(
-            data.checkoutRemovePromoCode.checkout
-          ),
+          data: this.constructCheckoutModel({
+            checkout: data.checkoutRemovePromoCode.checkout,
+          }),
         };
       } else {
         return {};
@@ -934,8 +941,12 @@ export class NetworkManager implements INetworkManager {
     return !!getAuthToken();
   };
 
-  private constructCheckoutModel = (
-    {
+  private constructCheckoutModel = ({
+    checkout,
+    isPrime = false,
+    message,
+  }: IConstructCheckoutParams): ICheckoutModel => {
+    const {
       id,
       token,
       email,
@@ -945,7 +956,6 @@ export class NetworkManager implements INetworkManager {
       discountName,
       voucherDiscountType,
       voucherDiscountValue,
-      translatedDiscountName,
       voucherType,
       voucherCode,
       lines,
@@ -954,55 +964,58 @@ export class NetworkManager implements INetworkManager {
       documentNumber,
       termsAndConditions,
       dataTreatmentPolicy,
-      scheduleDate,
-    }: Checkout,
-    message?: string | null
-  ): ICheckoutModel => ({
-    availableShippingMethods: availableShippingMethods
-      ? availableShippingMethods.filter(filterNotEmptyArrayItems)
-      : [],
-    billingAddress,
-    dataTreatmentPolicy,
-    documentNumber,
-    email,
-    id,
-    lines: lines
-      ?.filter(item => item?.quantity && item.variant.id)
-      .map(item => {
-        const itemVariant = item?.variant;
+    } = checkout;
 
-        return {
-          id: item!.id,
-          name: itemVariant?.product.name ? itemVariant?.product.name : "",
-          quantity: item!.quantity,
-          totalPrice: item?.totalPrice,
-          variant: {
-            attributes: itemVariant?.attributes,
-            id: itemVariant!.id,
-            isAvailable: itemVariant?.isAvailable,
-            name: itemVariant?.name,
-            pricing: itemVariant?.pricing,
-            product: itemVariant?.product,
-            quantityAvailable: itemVariant?.quantityAvailable,
-            sku: itemVariant?.sku,
-          },
-        };
-      }),
-    promoCodeDiscount: {
-      discount,
-      discountName,
-      message,
-      voucherCode,
-      voucherDiscountType,
-      voucherDiscountValue,
-      voucherType,
-    },
-    scheduleDate,
-    shippingAddress,
-    shippingMethod,
-    termsAndConditions,
-    token,
-  });
+    const checkoutModel: ICheckoutModel = 
+    {
+      availableShippingMethods: availableShippingMethods
+        ? availableShippingMethods.filter(filterNotEmptyArrayItems)
+        : [],
+      billingAddress,
+      dataTreatmentPolicy,
+      documentNumber,
+      email,
+      id,
+      isPrime,
+      lines: lines
+        ?.filter(item => item?.quantity && item.variant.id)
+        .map(item => {
+          const itemVariant = item?.variant;
+  
+          return {
+            id: item!.id,
+            name: itemVariant?.product.name ? itemVariant?.product.name : "",
+            quantity: item!.quantity,
+            totalPrice: item?.totalPrice,
+            variant: {
+              attributes: itemVariant?.attributes,
+              id: itemVariant!.id,
+              isAvailable: itemVariant?.isAvailable,
+              name: itemVariant?.name,
+              pricing: itemVariant?.pricing,
+              product: itemVariant?.product,
+              quantityAvailable: itemVariant?.quantityAvailable,
+              sku: itemVariant?.sku,
+            },
+          };
+        }),
+      promoCodeDiscount: {
+        discount,
+        discountName,
+        message,
+        voucherCode,
+        voucherDiscountType,
+        voucherDiscountValue,
+        voucherType,
+      },
+      shippingAddress,
+      shippingMethod,
+      termsAndConditions,
+      token,
+    }
+
+    return checkoutModel;
+  }
 
   private constructPaymentModel = ({
     id,

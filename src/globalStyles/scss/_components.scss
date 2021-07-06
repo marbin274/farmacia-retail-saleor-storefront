@@ -1,3 +1,4 @@
+@import "@temp/globalStyles/scss/variables.scss";
 .c- {
   &option {
     cursor: pointer;
@@ -17,8 +18,8 @@
         top: $spacer * 1.25;
         left: $spacer;
         margin: auto;
-        box-shadow: 0 0 0 1px $blue;
-        border: 2px solid $white;
+        box-shadow: 0 0 0 0.0625rem $blue;
+        border: 0.125rem solid $white;
         background-color: $white;
       }
     }
@@ -32,7 +33,7 @@
     &--disabled {
       label::before {
         background-color: rgba($gray, 0.5);
-        box-shadow: 0 0 0 1px $gray;
+        box-shadow: 0 0 0 0.0625rem $gray;
       }
     }
 

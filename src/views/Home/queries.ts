@@ -3,6 +3,7 @@ import {
 } from "@temp/views/Product/queries";
 import gql from "graphql-tag";
 import { TypedQuery } from "../../core/queries";
+import { Banner } from "./gqlTypes/Banner";
 import { HomePage } from "./gqlTypes/HomePage";
 
 
@@ -37,35 +38,42 @@ export const productVariantFragmentSimple = gql`
 
 // get all available products according the specified filter
 export const homePageQuery = gql` 
-  query HomePage {
-    shop {
-      description
-      name
-      homepageCollection {
-        id
-        backgroundImage {
-          url
-        }
-        name
+query HomePage {
+  shop {
+    description
+    name
+    homepageCollection {
+      id
+      backgroundImage {
+        url
       }
-      analyticsConfig {
-        tagManagerId
-        tagManagerAuth
-        tagManagerEnvironmentId
-      }
+      name      
     }
-    mainBanner {
-        id,
-        frames{
-            id,
-            link,
-            images {
-                screenType,
-                url
-            }
-        }
+    analyticsConfig {
+      tagManagerId
+      tagManagerAuth
+      tagManagerEnvironmentId
     }
   }
+}
 `;
 
 export const TypedHomePageQuery = TypedQuery<HomePage, {}>(homePageQuery);
+
+export const bannerQuery = gql` 
+query Banner {
+  mainBanner {
+      id,
+      frames{
+          id,
+          link,
+          images {
+              screenType,
+              url
+          }
+      }
+  }
+}
+`;
+
+export const TypedBannerQuery = TypedQuery<Banner, {}>(bannerQuery);

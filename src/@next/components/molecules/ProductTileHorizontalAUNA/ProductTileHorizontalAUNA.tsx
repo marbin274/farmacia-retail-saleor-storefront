@@ -48,11 +48,12 @@ export const ProductTileHorizontalAUNA: React.FC<IProps> = ({
               launchDetailProductEvent(
                 product?.name,
                 product?.variant?.sku as string,
-                product?.variant?.pricing?.price?.gross?.amount as number
+                product?.variant?.pricing?.price?.gross?.amount as number,
+                product?.category?.name
               )
             }
           >
-            <Thumbnail source={thumbnails} />
+            <Thumbnail height={510} width={510} source={thumbnails} />
           </div>
         </S.WrapperImage>
       </Link>

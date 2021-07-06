@@ -1,4 +1,3 @@
-import { convertCategoryToMenuItem } from "@temp/core/utils";
 import { MainMenuSubItem } from "@temp/views/Category/gqlTypes/MainMenuSubItem";
 import classNames from "classnames";
 import * as React from "react";
@@ -48,7 +47,7 @@ const NavItem: React.FC<NavItemProps> = ({
     >
       <div className={"hover:fa-bg-white side-nav__menu-item-content"}>
         <NavLink
-          item={convertCategoryToMenuItem(item.id, item.name?.toLowerCase())}
+          item={({...item, name: item.name?.toLowerCase()} as any)}
           className={"side-nav__menu-item-link"}
         />
         {hasSubNavigation && (

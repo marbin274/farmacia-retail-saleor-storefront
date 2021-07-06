@@ -1,4 +1,5 @@
 import { styled } from "@styles";
+import farmatheme from "@farmatheme";
 
 export const Checkbox = styled.div`
   margin-bottom: 1.25rem;
@@ -29,7 +30,7 @@ export const Label = styled.label`
   }
   input:checked + div {
     background-color: ${props => props.theme.colors.primary};
-    background-color: #452FBA;
+    background-color: ${farmatheme.theme.colors.interactive};
     border-radius: 0.25rem;
     overflow: hidden;
     span {
@@ -45,7 +46,7 @@ export const Label = styled.label`
 export const Span = styled.span<{error: boolean}>`
   border-radius: 0.125rem;
   border: solid 0.188rem ${({ error, theme }) => error ? theme.input.borderColorError : theme.colors.aunaLightGray};
-  border: 1px solid #452FBA;
+  border: 1px solid ${farmatheme.theme.colors.interactive};
   display: block;
   height: 1.25rem;
   width: 1.25rem;

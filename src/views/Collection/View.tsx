@@ -2,7 +2,7 @@ import * as React from "react";
 import { RouteComponentProps } from "react-router";
 
 import { IFilters } from "@types";
-import { StringParam, useQueryParam } from "use-query-params";
+import { NumberParam, StringParam, useQueryParams } from "use-query-params";
 import { MetaWrapper, NotFound, OfflinePlaceholder } from "../../components";
 import NetworkStatus from "../../components/NetworkStatus";
 import { PRODUCTS_PER_PAGE } from "../../core/config";
@@ -14,40 +14,38 @@ import {
 } from "../../core/utils";
 import Page from "./Page";
 import { TypedCollectionProductsQuery } from "./queries";
+import { convertToFilterSideBar, FilterQuerySet } from "@temp/core/utils/filters";
+import { IAddToCartCallback, IRemoveItemToCartCallback, ISubtractItemToCartCallback } from "@temp/@next/components/molecules/ProductTileAUNA/types";
+import { useCart } from "@temp/@sdk/react";
+import { useDistrictSelected } from "@temp/@next/hooks";
+import Media from "react-media";
+import { smallScreen } from "@temp/@next/globalStyles/constants";
+import { CollectionVariables } from "./gqlTypes/Collection";
+import { SORT_OPTIONS } from "@temp/core/utils/sorts";
 
 type ViewProps = RouteComponentProps<{
   id: string;
 }>;
 
-export const FilterQuerySet = {
-  encode(valueObj) {
-    const str = [];
-    Object.keys(valueObj).forEach(value => {
-      str.push(value + "_" + valueObj[value].join("_"));
-    });
-    return str.join(".");
-  },
-
-  decode(strValue) {
-    const obj = {};
-    const propsWithValues = strValue.split(".").filter(n => n);
-    propsWithValues.map(value => {
-      const propWithValues = value.split("_").filter(n => n);
-      obj[propWithValues[0]] = propWithValues.slice(1);
-    });
-    return obj;
-  },
-};
+const DEFAULT_SORT = "-stock";
 
 export const View: React.FC<ViewProps> = ({ match }) => {
-  const [sort, setSort] = useQueryParam("sortBy", StringParam);
-  const [attributeFilters, setAttributeFilters] = useQueryParam(
-    "filters",
-    FilterQuerySet
-  );
+  const [districtSelected] = useDistrictSelected();
+  const [
+    { filters: attributeFilters, page, sortBy: sort },
+    setQuery,
+  ] = useQueryParams({
+    filters: FilterQuerySet,
+    page: NumberParam,
+    sortBy: StringParam,
+  });
 
   const clearFilters = () => {
-    setAttributeFilters({});
+    setQuery({ filters: {} });
+  };
+
+  const handlePageChange = (page: number) => {
+    setQuery({ page });
   };
 
   const onFiltersChange = (name, value) => {
@@ -56,25 +54,34 @@ export const View: React.FC<ViewProps> = ({ match }) => {
         if (filters.attributes[`${name}`].length === 1) {
           const att = { ...attributeFilters };
           delete att[`${name}`];
-          setAttributeFilters({
-            ...att,
+          setQuery({
+            filters: { ...att },
           });
         } else {
-          setAttributeFilters({
-            ...attributeFilters,
-            [`${name}`]: attributeFilters[`${name}`].filter(
-              item => item !== value
-            ),
+          setQuery({
+            filters: {
+              ...attributeFilters,
+              [`${name}`]: attributeFilters[`${name}`].filter(
+                item => item !== value
+              ),
+            },
           });
         }
       } else {
-        setAttributeFilters({
-          ...attributeFilters,
-          [`${name}`]: [...attributeFilters[`${name}`], value],
+        setQuery({
+          filters: {
+            ...attributeFilters,
+            [`${name}`]: [...attributeFilters[`${name}`], value],
+          },
         });
       }
     } else {
-      setAttributeFilters({ ...attributeFilters, [`${name}`]: [value] });
+      setQuery({
+        filters: {
+          ...attributeFilters,
+          [`${name}`]: [value],
+        },
+      });
     }
   };
 
@@ -83,121 +90,108 @@ export const View: React.FC<ViewProps> = ({ match }) => {
     pageSize: PRODUCTS_PER_PAGE,
     priceGte: null,
     priceLte: null,
-    sortBy: sort || null,
+    sortBy: sort || DEFAULT_SORT,
   };
-  const variables = {
+  const variables: CollectionVariables = {
     ...filters,
     attributes: filters.attributes
       ? convertToAttributeScalar(filters.attributes)
       : {},
     id: getGraphqlIdFromDBId(match.params.id, "Collection"),
+    page: page || 1,
     sortBy: convertSortByFromString(filters.sortBy),
+    districtId: districtSelected.id,
   };
 
-  const sortOptions = [
-    {
-      label: "Clear...",
-      value: null,
-    },
-    {
-      label: "Price Low-High",
-      value: "price",
-    },
-    {
-      label: "Price High-Low",
-      value: "-price",
-    },
-    {
-      label: "Name Increasing",
-      value: "name",
-    },
-    {
-      label: "Name Decreasing",
-      value: "-name",
-    },
-    {
-      label: "Last updated Ascending",
-      value: "updated_at",
-    },
-    {
-      label: "Last updated Descending",
-      value: "-updated_at",
-    },
-  ];
+  const { addItem, items, subtractItem } = useCart();
+  const addToCart: IAddToCartCallback = (product, quantity) => {
+    addItem(product, quantity);
+  };
+
+  const removeItemToCart: IRemoveItemToCartCallback = product => {
+    subtractItem(product);
+  };
+
+  const subtractItemToCart: ISubtractItemToCartCallback = product => {
+    subtractItem(product);
+  };
+
+  const getPageSize = (isMobile: boolean): number => {
+    return isMobile ? 8 : 12;
+  };
 
   return (
     <NetworkStatus>
       {isOnline => (
-        <TypedCollectionProductsQuery
-          variables={variables}
-          errorPolicy="all"
-          loaderFull
-        >
-          {({ loading, data, loadMore }) => {
-            const canDisplayFilters = maybe(
-              () => !!data.attributes.edges && !!data.collection.name,
-              false
-            );
-
-            if (canDisplayFilters) {
-              const handleLoadMore = () =>
-                loadMore(
-                  (prev, next) => ({
-                    ...prev,
-                    products: {
-                      ...prev.products,
-                      edges: [...prev.products.edges, ...next.products.edges],
-                      pageInfo: next.products.pageInfo,
-                    },
-                  }),
-                  { after: data.products.pageInfo.endCursor }
+        <Media query={{ maxWidth: smallScreen }}>
+          {matches => (
+            <TypedCollectionProductsQuery
+              variables={{ ...variables, pageSize: getPageSize(matches) }}
+              errorPolicy="all"
+              loaderFull
+            >
+              {({ loading, data }) => {
+                const canDisplayFilters = maybe(
+                  () => !!data.attributes.edges && !!data.collection.name,
+                  false
                 );
 
-              return (
-                <MetaWrapper
-                  meta={{
-                    description: data.collection.seoDescription,
-                    title: data.collection.seoTitle,
-                    type: "product.collection",
-                  }}
-                >
-                  <Page
-                    clearFilters={clearFilters}
-                    attributes={data.attributes.edges.map(edge => edge.node)}
-                    collection={data.collection}
-                    displayLoader={loading}
-                    hasNextPage={maybe(
-                      () => data.products.pageInfo.hasNextPage,
-                      false
-                    )}
-                    sortOptions={sortOptions}
-                    activeSortOption={filters.sortBy}
-                    filters={filters}
-                    products={data.products}
-                    onAttributeFiltersChange={onFiltersChange}
-                    onLoadMore={handleLoadMore}
-                    activeFilters={
-                      filters!.attributes
-                        ? Object.keys(filters!.attributes).length
-                        : 0
-                    }
-                    onOrder={value => {
-                      setSort(value.value);
-                    }}
-                  />
-                </MetaWrapper>
-              );
-            }
+                if (canDisplayFilters) {
 
-            if (data && data.collection === null) {
-              return <NotFound />;
-            }
+                  return (
+                    <MetaWrapper
+                      meta={{
+                        description: data.collection.seoDescription,
+                        title: data.collection.seoTitle,
+                        type: "product.collection",
+                      }}
+                    >
+                      <Page
+                        activeFilters={
+                          filters!.attributes
+                            ? Object.keys(filters!.attributes!.brand).length
+                            : 0
+                        }
+                        activeSortOption={filters.sortBy}
+                        attributes={convertToFilterSideBar(data.attributes)}
+                        clearFilters={clearFilters}
+                        collection={data.collection}
+                        displayLoader={loading}
+                        filters={filters}
+                        isSmallScreen={matches}
+                        items={items}
+                        page={page || 1}
+                        pageSize={getPageSize(matches)}
+                        products={data.paginatedProducts}
+                        sortOptions={SORT_OPTIONS}
+                        total={data.paginatedProducts.totalCount}
+                        addToCart={addToCart}
+                        removeItemToCart={removeItemToCart}
+                        subtractItemToCart={subtractItemToCart}
+                        onAttributeFiltersChange={onFiltersChange}
+                        onOrder={value => {
+                          setQuery({
+                            page: 1,
+                            sortBy: value.value,
+                          });
+                        }}
+                        onPageChange={handlePageChange}
+                      />
+                    </MetaWrapper>
+                  );
+                }
 
-            if (!isOnline) {
-              return <OfflinePlaceholder />;
-            }
-          }}
-        </TypedCollectionProductsQuery>
+                if (data && data.collection === null) {
+                  return <NotFound />;
+                }
+
+                if (!isOnline) {
+                  return <OfflinePlaceholder />;
+                }
+              }}
+            </TypedCollectionProductsQuery>
+          )}
+        </Media>
       )}
     </NetworkStatus>
   );

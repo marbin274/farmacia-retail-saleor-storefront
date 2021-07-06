@@ -29,7 +29,6 @@ import { OptimizelyProvider } from "@optimizely/react-sdk";
 import { App } from "./app";
 import {
   apiUrl,
-  sentryDsn,
   environmentName,
   serviceWorkerTimeout,
   gtmId,
@@ -48,8 +47,6 @@ import {
   fireSignOut,
   invalidTokenLinkWithTokenHandler,
 } from "./@sdk/auth";
-import * as Sentry from "@sentry/react";
-import { Integrations } from "@sentry/tracing";
 import { alertService } from "./@next/components/atoms/Alert";
 import { launchSetLocation, getGaUserId } from "./@sdk/gaConfig";
 import { optimizelyClient, getOptimizelyUserId } from "./@sdk/optimizelyConfig";
@@ -151,24 +148,6 @@ const startApp = async () => {
     );
   });
 
-  const initSentry = () => {
-    Sentry.init({
-      dsn: sentryDsn,
-      environment: environmentName,
-      ignoreErrors: [
-        /public key credentials/i,
-        /newestWorker/i,
-        /ServiceWorker/i,
-      ],
-      integrations: [new Integrations.BrowserTracing()],
-      tracesSampler() {
-        if (environmentName === "prod") {
-          return 0.8;
-        }
-        return 1;
-      },
-    });
-  };
 
   switch (environmentName) {
     case "qa":
@@ -181,7 +160,6 @@ const startApp = async () => {
         launchSetLocation();
         TagManager.initialize(tagManagerArgs);
       }
-      initSentry();
       break;
     case "prod":
       if (gtmId) {
@@ -191,7 +169,6 @@ const startApp = async () => {
         launchSetLocation();
         TagManager.initialize(tagManagerArgs);
       }
-      initSentry();
       break;
 
     default:

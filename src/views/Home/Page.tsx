@@ -1,26 +1,21 @@
 import {
   IAddToCartCallback,
   IRemoveItemToCartCallback,
-  ISubtractItemToCartCallback,
+  ISubtractItemToCartCallback
 } from "@app/components/molecules/ProductTileAUNA/types";
 import { IItems } from "@sdk/api/Cart/types";
-import { BannerCarousel } from "@temp/@next/components/containers/BannerCarousel";
 import { ModalBackground } from "@temp/@next/components/organisms/ModalBackground/ModalBackground";
 import { somosAunaPage } from "@temp/app/routes";
 import { ProductsFeatured } from "@temp/components";
 import { cndUrl } from "@temp/constants";
 import { structuredData } from "@temp/core/SEO/Homepage/structuredData";
-import BannerMobile from "images/auna/home-banner-mob.png";
-import BannerDesktop from "images/auna/home-banner-top.png";
 import * as React from "react";
 import { useHistory } from "react-router-dom";
+import { Banner } from "./Banner";
 import { HomePage_shop } from "./gqlTypes/HomePage";
-import { TypedHomePageQuery } from "./queries";
 import "./scss/index.scss";
 import * as S from "./styles";
-
 interface IPageProps {
-  loading: boolean;
   productsOnCart: IItems;
   shop: HomePage_shop;
   addToCart: IAddToCartCallback;
@@ -35,10 +30,9 @@ const imageConverageDistrictDesktop = `${cndUrl}/media/banner_coverage/coverage-
 
 const imageCoverageDistrictDesktop = `${cndUrl}/media/banner_coverage/home-banner-coverage-delivery.png`;
 const imageCoverageDistrictMobile = `${cndUrl}/media/banner_coverage/home-banner-coverage-delivery-mobile.png`;
-const baseUrlPattern = /(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})*\/?/;
+
 
 const Page: React.FC<IPageProps> = ({
-  loading,
   productsOnCart,
   shop,
   addToCart,
@@ -47,21 +41,14 @@ const Page: React.FC<IPageProps> = ({
 }) => {
   const history = useHistory();
   const [showModal, setShowModal] = React.useState<boolean>(false);
+  const [showFeatures, setShowFeatures] = React.useState<boolean>(false);
 
-  const redirectTo = (url?: string) => {
-    if (!url) {
-      return;
-    }
-    let result = "";
-    const match = baseUrlPattern.exec(url);
-    if (match != null) {
-      result = match[0];
-    }
-    if (result.length > 0) {
-      url = url.replace(result, "");
-    }
-    history.push(url);
-  };
+  React.useEffect(() => {
+    setTimeout(() => {
+      setShowFeatures(true);
+    }, 500);
+  }, []);
+
   return (
     <>
       <S.WraperOpenBanner>
@@ -94,68 +81,7 @@ const Page: React.FC<IPageProps> = ({
         }}
         show={showModal}
       />
-      <div className="banner-container">
-        <TypedHomePageQuery alwaysRender errorPolicy="all" loaderFull>
-          {({ data }) => {
-            return (
-              <>
-                {data?.mainBanner ? (
-                  <BannerCarousel>
-                    {data?.mainBanner?.frames?.map((banner, index) => {
-                      const bannerDesktop = banner.images?.find(
-                        it => it.screenType === "desktop"
-                      );
-                      const bannerMobile = banner.images?.find(
-                        it => it.screenType === "mobile"
-                      );
-                      return (
-                        <div
-                          key={index}
-                          onClick={() => {
-                            redirectTo(banner.link);
-                          }}
-                        >
-                          {bannerDesktop ? (
-                            <img
-                              src={bannerDesktop.url}
-                              className="banner-image desktop"
-                              alt="banner desktop"
-                            />
-                          ) : (
-                            <S.SSkeletonBanner />
-                          )}
-                          {bannerMobile ? (
-                            <img
-                              src={bannerMobile.url}
-                              className="banner-image mobile"
-                              alt="banner mobile"
-                            />
-                          ) : (
-                            <S.SSkeletonBanner />
-                          )}
-                        </div>
-                      );
-                    })}
-                  </BannerCarousel>
-                ) : (
-                  <div>
-                    <img
-                      src={BannerDesktop}
-                      className="banner-image desktop"
-                      alt="banner desktop"
-                    />
-                    <img
-                      src={BannerMobile}
-                      className="banner-image mobile"
-                      alt="banner mobile"
-                    />
-                  </div>
-                )}
-              </>
-            );
-          }}
-        </TypedHomePageQuery>
-      </div>
+      <Banner />
       <div className="container">
         <script className="structured-data-list" type="application/ld+json">
           {structuredData(shop)}
@@ -163,17 +89,14 @@ const Page: React.FC<IPageProps> = ({
 
         <div>
           <div className="home-page__products">
-            <ProductsFeatured
+            {showFeatures && <ProductsFeatured
               productsOnCart={productsOnCart}
-              loading={loading}
               addToCart={addToCart}
               removeItemToCart={removeItemToCart}
               subtractItemToCart={subtractItemToCart}
             />
+            }
           </div>
-        </div>
-        <div className="container">
-          <div className="home-page__bottom-section"></div>
         </div>
       </div>
     </>

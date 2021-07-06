@@ -23,32 +23,14 @@ import {
 import { useDistrictSelected } from "@temp/@next/hooks/useDistrictSelected";
 import Media from "react-media";
 import { smallScreen } from "@temp/@next/globalStyles/constants";
+import { convertToFilterSideBar, FilterQuerySet } from "@temp/core/utils/filters";
+import { SORT_OPTIONS } from "@temp/core/utils/sorts";
 
 type ViewProps = RouteComponentProps<{
   id: string;
 }>;
 
-const DEFAULT_SORT = '-stock'
-
-export const FilterQuerySet = {
-  encode(valueObj) {
-    const str = [];
-    Object.keys(valueObj).forEach(value => {
-      str.push(value + "_" + valueObj[value].join("_"));
-    });
-    return str.join(".");
-  },
-
-  decode(strValue) {
-    const obj = {};
-    const propsWithValues = strValue.split(".").filter(n => n);
-    propsWithValues.map(value => {
-      const propWithValues = value.split("_").filter(n => n);
-      obj[propWithValues[0]] = propWithValues.slice(1);
-    });
-    return obj;
-  },
-};
+const DEFAULT_SORT = '-stock';
 
 
 export const View: React.FC<ViewProps> = ({ match }) => {
@@ -67,7 +49,7 @@ export const View: React.FC<ViewProps> = ({ match }) => {
     setQuery({ filters: {} });
   };
 
-  const onFiltersChange = (name, value) => {
+  const onFiltersChange = (name: string, value: string) => {
     if (attributeFilters && attributeFilters.hasOwnProperty(name)) {
       if (attributeFilters[name].includes(value)) {
         if (filters.attributes[`${name}`].length === 1) {
@@ -81,7 +63,7 @@ export const View: React.FC<ViewProps> = ({ match }) => {
             filters: {
               ...attributeFilters,
               [`${name}`]: attributeFilters[`${name}`].filter(
-                item => item !== value
+                (item : {}) => item !== value
               ),
             },
           });
@@ -117,43 +99,12 @@ export const View: React.FC<ViewProps> = ({ match }) => {
       ? convertToAttributeScalar(filters.attributes)
       : {},
     id: getGraphqlIdFromDBId(match.params.id, "Category"),
-    query: search || null,
+    query: search || '',
     page: page || 1,
     sortBy: convertSortByFromString(filters.sortBy),
     districtId: districtSelected.id,
   };
 
-  const sortOptions = [
-    {
-      label: "Limpiar...",
-      value: null,
-    },
-    {
-      label: "Precio (↑)",
-      value: "price",
-    },
-    {
-      label: "Precio (↓)",
-      value: "-price",
-    },
-    {
-      label: "Nombre (A-Z)",
-      value: "name",
-    },
-    {
-      label: "Nombre (Z-A)",
-      value: "-name",
-    },
-    // TODO: uncomment as soon as we need to extend the cagetory filters
-    // {
-    //   label: "Last updated Ascending",
-    //   value: "updated_at",
-    // },
-    // {
-    //   label: "Last updated Descending",
-    //   value: "-updated_at",
-    // },
-  ];
   const {
     items: productsOnCart,
     addItem,
@@ -185,19 +136,15 @@ export const View: React.FC<ViewProps> = ({ match }) => {
     <NetworkStatus>
       {isOnline => (
         <Media query={{ maxWidth: smallScreen }}>
-        {matches => (
+        {(matches : any) => (
         <TypedSearchProductsQuery
           variables={{ ...variables, pageSize: getPageSize(matches) }}
           errorPolicy="all"
           loaderFull
         >
-          {({ loading, data, loadMore }) => {
-            const canDisplayFilters = maybe(
-              () => !!data.attributes.edges && !!data.paginatedProducts.edges,
-              false
-            );
+          {({ loading, data }) => {
 
-            if (canDisplayFilters) {
+            if (!!data?.attributes?.edges && !!data?.paginatedProducts?.edges) {
               return (
                 <MetaWrapper
                   meta={{
@@ -208,13 +155,13 @@ export const View: React.FC<ViewProps> = ({ match }) => {
                 >
                   <Page
                     clearFilters={clearFilters}
-                    attributes={data.attributes.edges.map(edge => edge.node)}
+                    attributes={convertToFilterSideBar(data.attributes)}
                     displayLoader={loading}
-                    hasNextPage={maybe(
-                      () => data.paginatedProducts.pageInfo.hasNextPage,
+                    hasNextPage={maybe<boolean>(
+                      () => data.paginatedProducts?.pageInfo.hasNextPage,
                       false
                     )}
-                    sortOptions={sortOptions}
+                    sortOptions={SORT_OPTIONS}
                     setSearch={setSearch}
                     search={search}
                     activeSortOption={filters.sortBy}
@@ -239,13 +186,13 @@ export const View: React.FC<ViewProps> = ({ match }) => {
                     page={page || 1}
                     pageSize={getPageSize(matches)}
                     onPageChange={handlePageChange}
-                    total={data.paginatedProducts.totalCount}
+                    total={data?.paginatedProducts?.totalCount || 0}
                   />
                 </MetaWrapper>
               );
             }
 
-            if (data && data.paginatedProducts === null) {
+            if (data && data?.paginatedProducts === null) {
               return <NotFound />;
             }
 

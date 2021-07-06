@@ -19,6 +19,8 @@ export const Wrapper = styled.nav<{ isProductDetail: boolean }>`
 `;
 
 export const ContainerSearch = styled.div`
+  position: relative;
+  width: 100%;
   display: flex;
   align-items: baseline;
   margin-bottom: 1rem;

@@ -53,4 +53,7 @@ export interface IProps {
   userDataForNiubiz?: IUserDataForNiubiz;
   voucherCode: string | null | undefined;
   reRender: boolean;
+  selectedDistrict: string;
+  gatewayListError?: string;
+  setGatewayListError?: React.Dispatch<React.SetStateAction<string>>;
 }

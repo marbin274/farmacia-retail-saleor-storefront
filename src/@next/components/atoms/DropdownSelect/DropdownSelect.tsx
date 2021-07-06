@@ -29,12 +29,14 @@ export const DropdownSelect: React.FC<IProps> = ({
         onClick={() => setMenuIsOpen(!menuIsOpen)}
       >
         <Label>Ordenar por:</Label>
-        <S.Value className="clear-label">{` ${
-          value ? value.label : "Limpiar"
-        }`}</S.Value>
-        <S.Indicator rotate={String(menuIsOpen)}>
-          <DownIcon />
-        </S.Indicator>
+        <div className="select-container fa-ml-2 fa-border fa-border-solid fa-border-neutral-dark fa-rounded-3xl fa-px-3 fa-py-2">
+          <S.Value className="select-container__value">{` ${
+            value ? value.label : "Limpiar"
+          }`}</S.Value>
+          <S.Indicator rotate={String(menuIsOpen)}>
+            <DownIcon />
+          </S.Indicator>
+        </div>
       </S.SortLine>
     ),
     IndicatorSeparator: () => null,
