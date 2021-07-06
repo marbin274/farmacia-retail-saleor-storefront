@@ -138,8 +138,6 @@ export class CheckoutRepositoryManager implements ICheckoutRepositoryManager {
             id: undefined,
           },
           shippingMethod: null,
-          slotId: undefined,
-          slots: undefined,
           token: undefined,
         }
       : {
