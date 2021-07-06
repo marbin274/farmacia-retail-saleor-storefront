@@ -14,7 +14,7 @@ const MobileNav: React.FC<{ overlay: OverlayContextInterface }> = ({
   return (
     <Overlay context={overlay}>
       <div
-        className="fa-flex fa-flex-col fa-bg-highlight-lightest side-nav"
+        className="fa-flex fa-flex-col side-nav"
         onClick={evt => evt.stopPropagation()}
       >
         <div className={"side-nav--body"}>
@@ -29,7 +29,7 @@ const MobileNav: React.FC<{ overlay: OverlayContextInterface }> = ({
       </div>
       {openParent && (
         <div
-          className={"fa-mt-auto fa-bg-highlight-lightest side-nav--actions"}
+          className={"fa-mt-auto side-nav--actions"}
         >
           <Link to={generateCategoryUrl(openParent.id, openParent.name)}>
             <Button>

@@ -48,8 +48,8 @@ export const NavList: React.FC<NavListProps> = ({
 
   return (
     <>
-      <ul className="fa-bg-highlight-lightest">
-        <li className="side-nav__menu-item-header">
+      <ul>
+        <S.NavMenuHeader>
           <Button
             onClick={hideOverlay}
             iconOnly
@@ -58,12 +58,20 @@ export const NavList: React.FC<NavListProps> = ({
           <Link className="fa-mx-auto" to={baseUrl} onClick={hideOverlay}>
             <ReactSVG path={logoImg} />
           </Link>
-        </li>
+        </S.NavMenuHeader>
         {!openParent ? (
           <>
-            {collections.map(item => getNavItem(item, true))}
-            <S.categoriesLabel>Categorías</S.categoriesLabel>
-            {categories.map(item => getNavItem(item))}
+            <li>
+              <S.CollectionNav>                
+                {collections.map(item => getNavItem(item, true))}
+              </S.CollectionNav>
+            </li>
+            <li>
+              <ul className="fa-bg-highlight-lightest">
+                <S.CategoriesLabel>Categorías</S.CategoriesLabel>
+                {categories.map(item => getNavItem(item))}
+              </ul>
+            </li>
           </>
         ) : (
           <>
