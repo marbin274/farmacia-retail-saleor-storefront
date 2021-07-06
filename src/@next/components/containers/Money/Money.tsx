@@ -2,8 +2,8 @@ import React from "react";
 import { IProps } from "./types";
 
 export const Money: React.FC<IProps> = ({
-  negative = false,
   money,
+  negative = false,
   defaultValue,
   ...props
 }: IProps) => {

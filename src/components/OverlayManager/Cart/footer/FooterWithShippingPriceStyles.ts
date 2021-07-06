@@ -39,20 +39,20 @@ export const InfoIcon = styled.div`
 
 export const ToolTipContainer = styled.div`
     background-color: #00295B;
-    border-radius: 8px;
-    bottom: -33px;
+    border-radius: 0.5rem;
+    bottom: -2.0625rem;
     padding: 1rem;
     position: absolute;
-    right: 35px;
-    width: 265px;
+    right: 2.1875rem;
+    width: 16.5625rem;
     :after {
         border-color: transparent transparent transparent #00295B;
         border-style: solid;
         border-width: 0.7rem;
-        bottom: 33px;
+        bottom: 2.0625rem;
         content: ' ';
         position: absolute;
-        right: -22px;
+        right: -1.375rem;
         z-index: 1;
     }
 `;
