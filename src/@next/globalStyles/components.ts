@@ -42,7 +42,7 @@ export const CollectionStyle = css`
     ${mediaUp.largeScreen`
       padding: 1.5rem 1rem;
       position: initial;
-      z-index: 1;
+      z-index: 0;
     `};
   }
   .collection-container {

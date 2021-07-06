@@ -4,11 +4,15 @@
   background-color: $white;
   position: sticky;
   width: 100%;
-  z-index: 2;
+  z-index: 4;
   top: 0;
   padding: 0 1rem;
   max-height: 5rem;
   height: 5rem;
+
+  @media (min-width: $medium-screen) {
+    z-index: 2;
+  }
 
   &__border-bottom {
     border-bottom: 0.0625rem solid #e2e3f1;

@@ -9,8 +9,11 @@ export const Wrapper = styled.nav<{ isProductDetail: boolean }>`
   width: 100%;
   padding: ${({ isProductDetail }) =>
     isProductDetail ? "0.5rem 1rem" : "1rem"};
+  z-index: 3;
+
   ${mediaUp.largeScreen`
     padding: 1rem 0rem;
+    z-index: 1;
   `};
 
   > .container {
