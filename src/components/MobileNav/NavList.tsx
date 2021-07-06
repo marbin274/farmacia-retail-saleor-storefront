@@ -33,10 +33,10 @@ export const NavList: React.FC<NavListProps> = ({
     setOpenParent(null);
   };
 
-  const getNavItem = (item: INavItem, isCollection = false) => {
+  const getNavItem = (item: INavItem, isCollection?: boolean) => {
     return <NavItem
       arrowDirection="rigth"
-      firstLevel={true}
+      firstLevel
       hideOverlay={hideOverlay}
       isCollection={isCollection}
       isOpen={openParent?.name === item.name}
@@ -53,7 +53,7 @@ export const NavList: React.FC<NavListProps> = ({
           <Button
             onClick={hideOverlay}
             iconOnly
-            icon={<IconHamburger open={true} />}
+            icon={<IconHamburger open />}
           />
           <Link className="fa-mx-auto" to={baseUrl} onClick={hideOverlay}>
             <ReactSVG path={logoImg} />

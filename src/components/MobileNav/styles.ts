@@ -1,10 +1,18 @@
 import { styled } from "@styles";
-import { aunaComplementary2, aunaComplementary5, aunaInteractive, highlightDarkest, neutralDark } from "@temp/@next/globalStyles/constants";
+import { aunaComplementary2, aunaComplementary5, aunaInteractive, neutralDark, white } from "@temp/@next/globalStyles/constants";
 import { NavLink as NavLinkComponent } from "@temp/components/NavLink";
+import farmatheme from '@farmatheme';
 
 export const NavMenuHeader = styled.li`
+    background: ${white};
     border-bottom: 0.0625rem solid ${aunaComplementary5};
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 1.5rem;
+    > button {
+        transform: scale(.8);
+    }
 `;
 
 export const CategoriesLabel = styled.li`
@@ -22,11 +30,16 @@ export const CollectionNav = styled.ul`
 `;
 
 export const NavLink = styled(NavLinkComponent) <{ isCollection: boolean }>`
-    color: ${({ isCollection }) => isCollection ? aunaInteractive : highlightDarkest};
-    font-size: ${({ theme }) => theme.typography.smallFontSize};
-    font-weight: 500;
-    line-height: 1.05rem;
-    text-transform: capitalize;
+    ${({ isCollection, theme }) =>`        
+        font-size: ${ theme.typography.smallFontSize};
+        font-weight: ${isCollection ? theme.typography.boldFontWeight : "500"};
+        line-height: 1.05rem;
+        text-transform: capitalize;
+        span {
+            color: ${isCollection ? `${aunaInteractive}` : farmatheme.theme.colors.highlight.darkest};
+        }
+    `}
+    
 `;
 
 

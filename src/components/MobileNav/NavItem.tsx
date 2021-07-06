@@ -24,7 +24,7 @@ export const NavItem: React.FC<NavItemProps> = ({
   arrowDirection = "down",
   firstLevel = false,
   hideOverlay,
-  isCollection,
+  isCollection = false,
   isOpen,
   showSubItems,
   ...item

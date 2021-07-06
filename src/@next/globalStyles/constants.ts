@@ -65,7 +65,6 @@ export const shippingMethodBlack = "#000000";
 export const neutralDark = "#908BA7";
 export const neutralDarkest = "#23212B";
 export const grisesNegro = "#323E48";
-export const highlightDarkest = "#271B6A";
 
 // theme colors
 export const theme = {
