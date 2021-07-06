@@ -65,7 +65,7 @@ const Account: React.FC<RouteComponentProps> = ({ history, match }) => {
           <HomeIcon size={20} className="breadcrumbs__home-icon" />
         </Link>
         <Breadcrumbs
-          breadcrumbs={[{ link: match.path, value: "Mi Cuenta" }]}
+          breadcrumbs={[{ link: match.path, label: "Mi Cuenta" }]}
           backLabelMobile="Mi cuenta"
         />
         <div className="account">

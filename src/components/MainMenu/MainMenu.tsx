@@ -12,14 +12,14 @@ export const MainMenu: React.FC<IProps> = ({
   categories,
   hideMenuCondition,
   navMain,
-  isProductPage,
+  isLightHeader,
 }) => {
   const isMaxLargeScreen = useMediaQuery({
     query: `(max-width: ${largeScreen}px)`,
   });
   const overlayContext = useContext(OverlayContext);
-  const canShowSearch = isMaxLargeScreen && !isProductPage;
-  const isProductDetail = isMaxLargeScreen && isProductPage;
+  const canShowSearch = isMaxLargeScreen && !isLightHeader;
+  const isProductDetail = isMaxLargeScreen && isLightHeader;
   const onClickSearchIcon = () => {
     overlayContext.show(OverlayType.search, OverlayTheme.right);
   };
@@ -31,8 +31,9 @@ export const MainMenu: React.FC<IProps> = ({
             <S.ContainerSearch>
               <SearchForm />
               <div
-                className='fa-absolute fa-w-full fa-h-full fa-top-0 fa-left-0 fa-block'
-                onClick={onClickSearchIcon} />
+                className="fa-absolute fa-w-full fa-h-full fa-top-0 fa-left-0 fa-block"
+                onClick={onClickSearchIcon}
+              />
             </S.ContainerSearch>
           )}
           <S.Container className="container">

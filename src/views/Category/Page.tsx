@@ -1,29 +1,28 @@
+import { Breadcrumbs, Pagination } from "@farmacia-retail/farmauna-components";
+import { IPaginationProps } from "@temp/@next/components/molecules/Pagination/types";
 import {
   IAddToCartCallback,
   IRemoveItemToCartCallback,
   ISubtractItemToCartCallback,
 } from "@temp/@next/components/molecules/ProductTileAUNA/types";
 import { CategoryNavigation } from "@temp/@next/components/organisms/CategoryNavigation/CategoryNavigation";
+import { aunaGrey100, largeScreen } from "@temp/@next/globalStyles/constants";
 import { IItems } from "@temp/@sdk/api/Cart/types";
+import { baseUrl } from "@temp/app/routes";
+import { structuredData } from "@temp/core/SEO/Category/structuredData";
 import { convertToSimpleProduct, maybe } from "@temp/core/utils";
 import { IFilterAttributes, IFilters } from "@types";
-import { Pagination } from "@farmacia-retail/farmauna-components";
 import * as React from "react";
 import { ProductListHeader } from "../../@next/components/molecules";
 import { ProductListCategoryAuna } from "../../@next/components/organisms";
 import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
-import { IPaginationProps } from "@temp/@next/components/molecules/Pagination/types";
-import {
-  Breadcrumbs,
-
-  EmptyProduct, extractBreadcrumbs
-} from "../../components";
+import { EmptyProduct, extractBreadcrumbs } from "../../components";
 import {
   Category_category,
-  Category_paginatedProducts
+  Category_paginatedProducts,
 } from "./gqlTypes/Category";
-import "./scss/index.scss";
-import { structuredData } from "@temp/core/SEO/Category/structuredData";
+import { CategoryWrapper } from "./styles";
+
 interface SortItem {
   label: string;
   value?: string;
@@ -41,7 +40,7 @@ interface PageProps extends IPaginationProps {
   category: Category_category;
   displayLoader: boolean;
   filters: IFilters;
-  isSmallScreen: boolean;
+  isLargeScreen: boolean;
   products: Category_paginatedProducts;
   sortOptions: SortOptions;
   clearFilters: () => void;
@@ -58,7 +57,7 @@ const Page: React.FC<PageProps> = ({
   category,
   displayLoader,
   clearFilters,
-  isSmallScreen,
+  isLargeScreen,
   products,
   filters,
   onOrder,
@@ -100,45 +99,48 @@ const Page: React.FC<PageProps> = ({
       []
     );
 
-  React.useEffect(
-    () =>
-      categoryContainerRef?.current.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-        inline: "nearest",
-      }),
-    [products]
-  );
-
   return (
-    <div className="category" ref={categoryContainerRef}>
-      {isSmallScreen && (
-        <ProductListHeader
-          activeSortOption={activeSortOption}
-          openFiltersMenu={() => setShowFilters(true)}
-          numberOfProducts={products ? products.totalCount : 0}
-          activeFilters={activeFilters}
-          activeFiltersAttributes={activeFiltersAttributes}
-          clearFilters={clearFilters}
-          sortOptions={sortOptions}
-          onChange={onOrder}
-          onCloseFilterAttribute={onAttributeFiltersChange}
-        />
-      )}
-      <div className="category__container">
+    <CategoryWrapper ref={categoryContainerRef}>
+      <div className="collection-container-breadcrumbs">
         <Breadcrumbs
           breadcrumbs={extractBreadcrumbs(category)}
-          showHomeIcon
-          className="category__breadcrumbs"
+          minDesktopBreakpoint={largeScreen}
+          baseUrl={baseUrl}
         />
       </div>
-      <div className="category__container category__body">
+      {isLargeScreen && (
+        <div className="collection-container">
+          <ProductListHeader
+            activeSortOption={activeSortOption}
+            openFiltersMenu={() => setShowFilters(true)}
+            numberOfProducts={products ? products.totalCount : 0}
+            activeFilters={activeFilters}
+            activeFiltersAttributes={activeFiltersAttributes}
+            clearFilters={clearFilters}
+            sortOptions={sortOptions}
+            onChange={onOrder}
+            onCloseFilterAttribute={onAttributeFiltersChange}
+          />
+          <div className="fa-my-2">
+            <span
+              className="fa-text-sm fa-font-normal fa-tracking-tight fa-mr-2"
+              style={{ color: aunaGrey100 }}
+            >
+              Productos encontrados
+            </span>
+            <span className="fa-text-sm fa-font-medium fa-tracking-tight fa-text-neutral-darkest">
+              {products ? products.totalCount : 0}
+            </span>
+          </div>
+        </div>
+      )}
+      <div className="collection-container collection-body">
         <script className="structured-data-list" type="application/ld+json">
           {structuredData(category)}
         </script>
         <CategoryNavigation category={category} />
-        <section className="category__products">
-          {!isSmallScreen && (
+        <section className="collection-products">
+          {!isLargeScreen && (
             <ProductListHeader
               activeSortOption={activeSortOption}
               openFiltersMenu={() => setShowFilters(true)}
@@ -151,7 +153,6 @@ const Page: React.FC<PageProps> = ({
               onCloseFilterAttribute={onAttributeFiltersChange}
             />
           )}
-          <Breadcrumbs breadcrumbs={extractBreadcrumbs(category)} />
           <FilterSidebar
             show={showFilters}
             hide={() => setShowFilters(false)}
@@ -182,7 +183,7 @@ const Page: React.FC<PageProps> = ({
           {!hasProducts && <EmptyProduct title="No hay productos" />}
         </section>
       </div>
-    </div>
+    </CategoryWrapper>
   );
 };
 

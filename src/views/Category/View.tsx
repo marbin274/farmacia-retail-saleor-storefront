@@ -21,9 +21,12 @@ import {
 } from "@temp/@next/components/molecules/ProductTileAUNA/types";
 import { CategoryVariables } from "./gqlTypes/Category";
 import Media from "react-media";
-import { smallScreen } from "@temp/@next/globalStyles/constants";
+import { largeScreen } from "@temp/@next/globalStyles/constants";
 import { useDistrictSelected } from "@temp/@next/hooks/useDistrictSelected";
-import { convertToFilterSideBar, FilterQuerySet } from "@temp/core/utils/filters";
+import {
+  convertToFilterSideBar,
+  FilterQuerySet,
+} from "@temp/core/utils/filters";
 import { SORT_OPTIONS } from "@temp/core/utils/sorts";
 
 type ViewProps = RouteComponentProps<{
@@ -32,7 +35,6 @@ type ViewProps = RouteComponentProps<{
 }>;
 
 const DEFAULT_SORT = "-stock";
-
 
 export const View: FC<ViewProps> = ({ match }) => {
   const [districtSelected] = useDistrictSelected();
@@ -109,7 +111,6 @@ export const View: FC<ViewProps> = ({ match }) => {
     districtId: districtSelected.id,
   };
 
-  
   const { addItem, items, subtractItem } = useCart();
   const addToCart: IAddToCartCallback = (product, quantity) => {
     addItem(product, quantity);
@@ -130,7 +131,7 @@ export const View: FC<ViewProps> = ({ match }) => {
   return (
     <NetworkStatus>
       {isOnline => (
-        <Media query={{ maxWidth: smallScreen }}>
+        <Media query={{ maxWidth: largeScreen }}>
           {matches => (
             <TypedCategoryProductsQuery
               variables={{ ...variables, pageSize: getPageSize(matches) }}
@@ -181,7 +182,7 @@ export const View: FC<ViewProps> = ({ match }) => {
                         pageSize={getPageSize(matches)}
                         onPageChange={handlePageChange}
                         total={data.paginatedProducts.totalCount}
-                        isSmallScreen={matches}
+                        isLargeScreen={matches}
                       />
                     </MetaWrapper>
                   );
@@ -204,4 +205,3 @@ export const View: FC<ViewProps> = ({ match }) => {
 };
 
 export default View;
-
