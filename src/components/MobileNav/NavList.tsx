@@ -8,18 +8,21 @@ import { NavSubItem } from "./NavSubItem";
 import "./scss/index.scss";
 import { IconHamburger } from "@temp/@next/components/atoms";
 import { Button } from "@farmacia-retail/farmauna-components";
+import * as S from "./styles";
 
 interface NavListProps {
-  openParent: INavItem | null;
-  items: INavItem[];
+  categories: INavItem[];
+  collections: INavItem[];
   hideOverlay(): void;
+  openParent: INavItem | null;
   setOpenParent(item: INavItem): void;
 }
 
 export const NavList: React.FC<NavListProps> = ({
-  items,
-  openParent,
+  categories,
+  collections,
   hideOverlay,
+  openParent,
   setOpenParent,
 }) => {
   const handleShowSubItems = (itemName: INavItem) => {
@@ -29,6 +32,19 @@ export const NavList: React.FC<NavListProps> = ({
   const handleClearOpenParent = () => {
     setOpenParent(null);
   };
+
+  const getNavItem = (item: INavItem, isCollection = false) => {
+    return <NavItem
+      arrowDirection="rigth"
+      firstLevel={true}
+      hideOverlay={hideOverlay}
+      isCollection={isCollection}
+      isOpen={openParent?.name === item.name}
+      key={item.id}
+      showSubItems={handleShowSubItems}
+      {...item}
+    />
+  }
 
   return (
     <>
@@ -45,17 +61,9 @@ export const NavList: React.FC<NavListProps> = ({
         </li>
         {!openParent ? (
           <>
-            {items.map(item => (
-              <NavItem
-                key={item.id}
-                firstLevel={true}
-                hideOverlay={hideOverlay}
-                showSubItems={handleShowSubItems}
-                isOpen={openParent?.name === item.name}
-                arrowDirection="rigth"
-                {...item}
-              />
-            ))}
+            {collections.map(item => getNavItem(item, true))}
+            <S.categoriesLabel>Categorías</S.categoriesLabel>
+            {categories.map(item => getNavItem(item))}
           </>
         ) : (
           <>

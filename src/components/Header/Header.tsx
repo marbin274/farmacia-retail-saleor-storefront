@@ -155,7 +155,10 @@ const Header: React.FC<IProps> = ({
             className="main-header__hamburguer"
             onClick={() =>
               overlayContext.show(OverlayType.sideNav, OverlayTheme.left, {
-                data: collections.concat(categories),
+                data: {
+                  categories,
+                  collections,
+                },
               })
             }
           >
