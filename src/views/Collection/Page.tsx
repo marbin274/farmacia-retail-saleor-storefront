@@ -111,6 +111,21 @@ const Page: React.FC<PageProps> = ({
         ),
       []
     );
+  
+  const getProductListHeader = () => {
+
+    return <ProductListHeader
+      activeSortOption={activeSortOption}
+      openFiltersMenu={() => setShowFilters(true)}
+      numberOfProducts={products ? products.totalCount : 0}
+      activeFilters={activeFilters}
+      activeFiltersAttributes={activeFiltersAttributes}
+      clearFilters={clearFilters}
+      sortOptions={sortOptions}
+      onChange={onOrder}
+      onCloseFilterAttribute={onAttributeFiltersChange}
+    />
+  }
 
   return (
     <CollectionWrapper>
@@ -122,38 +137,14 @@ const Page: React.FC<PageProps> = ({
         />
       </div>
       <div className="collection-container">
-        {isSmallScreen && (
-          <ProductListHeader
-            activeSortOption={activeSortOption}
-            openFiltersMenu={() => setShowFilters(true)}
-            numberOfProducts={products ? products.totalCount : 0}
-            activeFilters={activeFilters}
-            activeFiltersAttributes={activeFiltersAttributes}
-            clearFilters={clearFilters}
-            sortOptions={sortOptions}
-            onChange={onOrder}
-            onCloseFilterAttribute={onAttributeFiltersChange}
-          />
-        )}
+        {isSmallScreen && getProductListHeader()}
       </div>
       <div className="collection-container collection-body">
         <script className="structured-data-list" type="application/ld+json">
           {structuredData(collection)}
         </script>
         <section className="collection-products">
-          {!isSmallScreen && (
-            <ProductListHeader
-              activeSortOption={activeSortOption}
-              openFiltersMenu={() => setShowFilters(true)}
-              numberOfProducts={products ? products.totalCount : 0}
-              activeFilters={activeFilters}
-              activeFiltersAttributes={activeFiltersAttributes}
-              clearFilters={clearFilters}
-              sortOptions={sortOptions}
-              onChange={onOrder}
-              onCloseFilterAttribute={onAttributeFiltersChange}
-            />
-          )}
+          {!isSmallScreen && getProductListHeader()}
           <FilterSidebar
             show={showFilters}
             hide={() => setShowFilters(false)}
