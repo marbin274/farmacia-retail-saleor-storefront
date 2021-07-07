@@ -101,7 +101,7 @@ export const AddressGeoModal: React.FC = () => {
                             />
                             <S.TextInfo>
                                 <Icon name="info" size={50} heightViewPort={50} widthViewPort={20} />
-                                <span>Llegamos a {TOTAL_DISTRICT} distritos de Lima, pero seguiremos ampliando nuestra cobertura</span>
+                                <span>Llegamos a {TOTAL_DISTRICT} distritos de Lima y seguiremos ampliando nuestra cobertura</span>
                             </S.TextInfo>
                         </S.Body>
                         <S.Actions>

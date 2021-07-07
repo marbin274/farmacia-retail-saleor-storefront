@@ -130,33 +130,32 @@ export const AlertWrapper = styled.div`
 `;
 
 export const Alert = styled.div`
-    background: ${white};
-    border-radius: 1.5rem;
-    box-shadow: 0px 0px 0.875rem rgb(0 0 0 / 50%);    
-    padding: 1.5rem;   
-    position: absolute;
-    top: 1rem;
-    width: 100%; 
-    ${css`
+  background: ${white};
+  border-radius: 1.5rem;
+  box-shadow: 0px 0px 0.875rem rgb(0 0 0 / 50%);
+  padding: 1.5rem;
+  position: absolute;
+  top: 1rem;
+  width: 100%;
+  ${css`
         animation: ${moved};
         animation-delay: 4s;
         animation-duration: 12s;
         animation-iteration-count: infinite
         animation-timing-function: ease-in-out;
-    `}       
-
+    `}
     ::after {
-        top: -1.375rem;
-        border-color: transparent transparent white transparent;
-        border-style: solid;
-        border-width: 0.7rem;
-        content: ' ';
-        position: absolute;
-        right: 3rem;
-        z-index: 1;
-    }
+    border-color: transparent transparent white transparent;
+    border-style: solid;
+    border-width: 0.7rem;
+    content: " ";
+    position: absolute;
+    right: 3rem;
+    top: -1.375rem;
+    z-index: 1;
+  }
 
-    ${mediaUp.xSmallScreen`     
+  ${mediaUp.xSmallScreen`     
         ::after {
             right: 2rem;
         }
@@ -169,27 +168,27 @@ export const AlertBody = styled.div`
 `;
 
 export const AlertIcon = styled.div`
-    width:auto:
-    height:3.5rem;
-    align-items: center;
-    border-radius: 1rem;
-    display: flex;
-    flex: 0;
-    justify-content: flex-start;
-    padding: 0 0.5rem 0 0    
+  align-items: center;
+  border-radius: 1rem;
+  display: flex;
+  flex: 0;
+  height: 3.5rem;
+  justify-content: flex-start;
+  padding: 0 0.5rem 0 0;
+  width: auto;
 `;
 
 export const AlertText = styled.span`
-    flex: 3
-    margin-left: 1rem;
-    font-size:0.875rem;
-    > span {
-        font-weight: ${({ theme }) => theme.typography.boldFontWeight};
-    }
+  font-size: 0.875rem;
+  flex: 3;
+  margin-left: 1rem;
+  > span {
+    font-weight: ${({ theme }) => theme.typography.boldFontWeight};
+  }
 `;
 
 export const AlertAction = styled.div`
-  ${({theme})=>`
+  ${({ theme }) => `
   display: flex;
   justify-content: flex-end;
   padding-top: 1rem;

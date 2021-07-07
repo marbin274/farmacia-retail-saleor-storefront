@@ -59,13 +59,14 @@ export const aunaComplementary5 = "#A8F0DD";
 export const aunaOrange = "#ED7C59";
 export const aunaOrangeOnSale = "#FF6900";
 export const aunaBlackGray = "#454545";
+export const aunaInformativeLightest = "#E6EFFA";
 export const aunaInputGray = "#E3E5ED";
 
 export const shippingMethodBlack = "#000000";
 export const neutralDark = "#908BA7";
 export const neutralDarkest = "#23212B";
 export const grisesNegro = "#323E48";
-
+export const aunaDiscount = "#452FBA";
 // theme colors
 export const theme = {
   activeMenuOption: aunaInteractive,
@@ -79,6 +80,7 @@ export const theme = {
   aunaGrey06,
   aunaGreyDark,
   aunaInputGray,
+  aunaInformativeLightest,
   aunaInteractiveHover,
   aunaInteractivePressed,
   aunaLightGray: aunaGrey60,
