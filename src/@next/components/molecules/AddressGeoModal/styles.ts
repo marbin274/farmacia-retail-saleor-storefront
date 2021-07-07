@@ -71,11 +71,11 @@ export const Body = styled.div`
     }
 `;
 export const Actions = styled.div`
-    width: 100%;
     button {
-        width: 100%;
-    }
+            width: 100%;
+        }
     margin-top: 24px;
+    width: 100%;
 `;
 
 export const TextInfo = styled.div`
@@ -96,9 +96,9 @@ export const CartBox = styled.div`
    position: relative;
 `;
 export const CartItemQuantity = styled.div`
+   left: 6.2rem;
    position: absolute;
    top: 0.5rem;
-   left: 6.2rem;
      @media (max-width: $medium-screen) {
         top: -0.5rem;
     }
@@ -110,6 +110,6 @@ export const CartIcon = styled.img.attrs({
     src: `${CartDistrictIcon}`,
     })`
      margin: auto;
-     width: 80px;
      height: 80px;
+     width: 80px;
     `;
