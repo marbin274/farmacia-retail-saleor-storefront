@@ -9,9 +9,9 @@ export const CollectionStyle = css`
   flex-direction: column;
 
   ${mediaUp.largeScreen`
-  .products_found {
-    margin: 0 !important;
-  }
+    .products_found {
+      margin: 0 !important;
+    }
   `}
 
   ${media.largeScreen`

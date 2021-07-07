@@ -5,7 +5,7 @@ import {
   IRemoveItemToCartCallback,
   ISubtractItemToCartCallback,
 } from "@temp/@next/components/molecules/ProductTileAUNA/types";
-import { largeScreen } from "@temp/@next/globalStyles/constants";
+import { aunaGrey100, largeScreen } from "@temp/@next/globalStyles/constants";
 import { IItems } from "@temp/@sdk/api/Cart/types";
 import { baseUrl } from "@temp/app/routes";
 import { structuredData } from "@temp/core/SEO/Collection/structuredData";
@@ -121,8 +121,8 @@ const Page: React.FC<PageProps> = ({
           baseUrl={baseUrl}
         />
       </div>
-      <div className="collection-container">
-        {isSmallScreen && (
+      {isSmallScreen && (
+        <div className="collection-container">
           <ProductListHeader
             activeSortOption={activeSortOption}
             openFiltersMenu={() => setShowFilters(true)}
@@ -134,8 +134,20 @@ const Page: React.FC<PageProps> = ({
             onChange={onOrder}
             onCloseFilterAttribute={onAttributeFiltersChange}
           />
-        )}
-      </div>
+
+          <div className="fa-my-2">
+            <span
+              className="fa-text-sm fa-font-normal fa-tracking-tight fa-mr-2"
+              style={{ color: aunaGrey100 }}
+            >
+              Productos encontrados
+            </span>
+            <span className="fa-text-sm fa-font-medium fa-tracking-tight fa-text-neutral-darkest">
+              {products ? products.totalCount : 0}
+            </span>
+          </div>
+        </div>
+      )}
       <div className="collection-container collection-body">
         <script className="structured-data-list" type="application/ld+json">
           {structuredData(collection)}

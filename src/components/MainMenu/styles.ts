@@ -112,9 +112,11 @@ export const WrapperAddressGeo = styled.div<{ isProductDetail: boolean }>`
     }
 
     button {
-      border-color: ${farmatheme.theme.colors.highlight.medium};
+      border-width: 0.125rem;
+      border-color: ${farmatheme.theme.colors.primary.medium};
       span {
-        color: ${farmatheme.theme.colors.highlight.medium};
+        color: ${farmatheme.theme.colors.primary.dark};
+        font-weight: 600;
       }
     }
   `
