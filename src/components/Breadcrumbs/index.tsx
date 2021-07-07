@@ -12,7 +12,7 @@ import { Category_category } from "../../views/Category/gqlTypes/Category";
 import { HomeIcon, NextIcon } from "@farmacia-retail/farmauna-components";
 
 export interface Breadcrumb {
-  value: string;
+  label: string;
   link: string;
 }
 
@@ -31,7 +31,7 @@ export const extractBreadcrumbs = (category: Category_category) => {
       `/${slugify(item.name)}`,
       `/${getDBIdFromGraphqlId(item.id, "Category")}/`,
     ].join(""),
-    value: item.name,
+    label: item.name,
   });
 
   let breadcrumbs = [constructLink(category)];
@@ -79,7 +79,7 @@ const Breadcrumbs: React.FC<IBreadcrumbProps> = ({
               })}
             >
               <Link to={breadcrumb.link}>
-                {breadcrumb.value?.toLocaleLowerCase()}
+                {breadcrumb.label?.toLocaleLowerCase()}
               </Link>
               {index < breadcrumbs.length - 1 && (
                 <NextIcon size={10} className="breadcrumbs__next-icon" />

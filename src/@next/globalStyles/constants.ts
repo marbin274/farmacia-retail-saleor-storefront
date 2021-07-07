@@ -24,7 +24,7 @@ export const turquoiseTransparent = "rgba(6, 132, 123, 0.1)";
 export const white = "#fff";
 export const tabelGray = "#eaeaea";
 export const darkGreen = "#06847B";
-
+export const hrColor = "#E2E3F1";
 // AUNA color scheme
 export const aunaBrand1 = "#C2DF0A";
 export const aunaBrand2 = "#FF6900";
@@ -58,13 +58,14 @@ export const aunaComplementary4 = "#E6EEF8";
 export const aunaOrange = "#ED7C59";
 export const aunaOrangeOnSale = "#FF6900";
 export const aunaBlackGray = "#454545";
+export const aunaInformativeLightest = "#E6EFFA";
 export const aunaInputGray = "#E3E5ED";
 
 export const shippingMethodBlack = "#000000";
 export const neutralDark = "#908BA7";
 export const neutralDarkest = "#23212B";
 export const grisesNegro = "#323E48";
-
+export const aunaDiscount = "#452FBA";
 // theme colors
 export const theme = {
   activeMenuOption: aunaInteractive,
@@ -78,6 +79,7 @@ export const theme = {
   aunaGrey06,
   aunaGreyDark,
   aunaInputGray,
+  aunaInformativeLightest,
   aunaInteractiveHover,
   aunaInteractivePressed,
   aunaLightGray: aunaGrey60,
@@ -143,7 +145,7 @@ export const sparseLineHeight = 1.5;
 // spacing
 export const spacer = 1; // rem
 export const fieldSpacer = "1.875rem";
-
+export const containerWidth = "1140px";
 // breakpoints
 export const xxxLargeScreen = 1920;
 export const xxLargeScreen = 1600;

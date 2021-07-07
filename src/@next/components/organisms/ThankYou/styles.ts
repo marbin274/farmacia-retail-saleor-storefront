@@ -1,6 +1,5 @@
 import { styled, media, DefaultTheme } from "@styles";
-import { aunaInteractive, white } from "@styles/constants";
-import { Button } from "@components/atoms";
+import { aunaInteractive } from "@styles/constants";
 import farmatheme from "@farmatheme";
 
 export const WrapperThankyou = styled.div`
@@ -135,17 +134,4 @@ export const Link = styled.a`
   color: ${aunaInteractive};
   cursor: pointer;
   font-size: 14px;
-`;
-
-export const SecondaryButton = styled(Button)`
-  background-color: ${white};
-  border: 1px solid ${aunaInteractive} !important;
-  color: ${aunaInteractive} !important;
-  height: 48px;
-  padding: 0;
-  width: 226px;
-
-  > span {
-    font-size: 16px;
-  }
 `;

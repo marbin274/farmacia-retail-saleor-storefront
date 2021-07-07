@@ -135,20 +135,11 @@ export const checkoutLineFragment = gql`
   }
 `;
 
-export const slotFragment = gql`
-  fragment ShippingSlot on ShippingSlot {
-    id
-    slotFrom
-    slotTo
-  }
-`;
-
 export const checkoutFragment = gql`
   ${checkoutLineFragment}
   ${checkoutAddressFragment}
   ${checkoutPriceFragment}
   ${checkoutShippingMethodFragment}
-  ${slotFragment}
   fragment Checkout on Checkout {
     token
     id
@@ -201,16 +192,5 @@ export const checkoutFragment = gql`
     documentNumber
     termsAndConditions
     dataTreatmentPolicy
-    slots {
-      scheduled {
-        ...ShippingSlot
-      }
-      express {
-        ...ShippingSlot
-      }
-      datetime
-    }
-    slotId
-    deliveryDate
   }
 `;

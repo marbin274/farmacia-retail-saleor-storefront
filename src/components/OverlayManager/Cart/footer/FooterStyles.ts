@@ -19,6 +19,23 @@ export const Details = styled.div`
     text-align: center;
 `;
 
+export const DetailsPrice = styled.div`
+    align-items: center;
+    display: flex;
+    font-weight: 400;
+    justify-content: space-between;
+    font-size: ${({ theme }) => theme.typography.smallFontSize};
+    font-style: normal;
+    line-height: 1.5rem;
+    padding-bottom: 0.75rem;
+`;
+
+export const DetailsPriceTotal = styled(DetailsPrice as any)`
+    color: ${neutralDarkest};
+    flex: 1;
+    text-align: right;
+`;
+
 export const SubTotalLabel = styled.span`
     color: ${neutralDark};
 `;

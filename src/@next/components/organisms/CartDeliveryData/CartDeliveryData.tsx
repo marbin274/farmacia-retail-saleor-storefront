@@ -1,6 +1,9 @@
 import React from "react";
 import { Iprops, TitleDelivery, LineDeliveryData } from "./types";
-import { formatShippingMethodDateToString } from "@temp/@next/utils/dateUtils";
+import {
+  formatShippingMethodDateToString,
+  getScheduleTimesFormat,
+} from "@temp/@next/utils/dateUtils";
 
 import * as S from "./styles";
 
@@ -75,7 +78,10 @@ const CartDeliveryData: React.FC<Iprops> = ({ checkout }) => {
           />
           <LineDetailDeliveryData
             label="Hora"
-            text={checkout?.deliveryDate}
+            text={getScheduleTimesFormat(
+              scheduleDate?.scheduleTime?.startTime,
+              scheduleDate?.scheduleTime?.endTime
+            )}
           />
         </>
       )}

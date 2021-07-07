@@ -6,7 +6,6 @@ import { Button } from "@farmacia-retail/farmauna-components";
 import { alertService } from "./AlertService";
 import * as S from "./styles";
 import { alertTypes, IAlertServiceProps } from "./types";
-import * as Sentry from "@sentry/react";
 
 const dataInitial: IAlertServiceProps = {
   buttonText: "",
@@ -25,9 +24,6 @@ export const Alert: React.FC<any> = () => {
         if (data) {
           switch (data.type) {
             case "Error":
-              Sentry.captureException(data?.message || "Ha ocurrido un error", {
-                level: Sentry.Severity.Error,
-              });
               setShow(true);
               setAlert(data);
               break;
@@ -72,7 +68,7 @@ export const Alert: React.FC<any> = () => {
     >
         <S.Modal>
           {alert.type !== "Text" && (
-            <S.Icon>
+            <S.Icon className="icon">
               <ReactSVG path={alert.icon || alertTypes[alert.type].icon} />
             </S.Icon>
           )}

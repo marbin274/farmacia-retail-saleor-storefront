@@ -1,7 +1,8 @@
 import { ITaxedMoney } from "@types";
 
 export interface IProps {
-  taxedMoney?: ITaxedMoney | null;
-  defaultValue?: string;
   className?: string;
+  defaultValue?: string;
+  negative?: boolean;
+  taxedMoney?: ITaxedMoney | null;
 }

@@ -176,9 +176,9 @@ export const AddressForm: React.FC<IProps> = ({
             }
           };
 
-          const customErrors: IFormErrorSort[] =
-            requestErrors?.length! > 0 ? [...requestErrors!] : [];
-            
+          const customErrors: IFormErrorSort[] = requestErrors
+            ? [...requestErrors]
+            : [];
           for (const property of Object.keys(formikErrors)) {
             const _err: IFormErrorSort = {
               field: property,

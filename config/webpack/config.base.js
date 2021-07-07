@@ -130,7 +130,6 @@ module.exports = ({ sourceDir, distDir }) => ({
     new RobotstxtPlugin(robotOptions),
     new webpack.EnvironmentPlugin({
       API_URI: "http://localhost:8000/graphql/",
-      SENTRY_DSN: "__test__",
       ENVIRONMENT_NAME: "dev",
       GTM_ID: "__",
       GTM_AUTH: "__",
@@ -140,7 +139,10 @@ module.exports = ({ sourceDir, distDir }) => ({
       MERCHANT_PASSWORD: "__",
       MERCHANT_USERNAME: "__",
       MERCHANT_ID: "__",
-      OPTIMIZELY_SDK_KEY: "__"
+      OPTIMIZELY_SDK_KEY: "__",
+      PRIME_API_URL: "__",
+      PRIME_API_KEY: "__",
+      PRIME_SKU: "__",
     }),
   ],
   node: {

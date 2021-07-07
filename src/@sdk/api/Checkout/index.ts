@@ -1,8 +1,9 @@
 import { ErrorListener } from "@sdk/helpers";
 import { JobsManager } from "@sdk/jobs";
-import { ICheckoutModel, IPaymentModel, IShippingMethodUpdate, ISlots } from "@sdk/repository";
+import { ICheckoutModel, IPaymentModel, IShippingMethodUpdate } from "@sdk/repository";
 import { SaleorState } from "@sdk/state";
 import { StateItems } from "@sdk/state/types";
+import { primeSku } from "@temp/constants";
 
 import { PromiseRunResponse } from "../types";
 import {
@@ -31,8 +32,7 @@ export class SaleorCheckoutAPI extends ErrorListener
   availableShippingMethods?: IAvailableShippingMethods;
   availablePaymentGateways?: IAvailablePaymentGateways;
   payment?: IPayment;
-  slots?: ISlots;
-  selectedSlotId?: string;
+  isPrime?: boolean;
 
   private saleorState: SaleorState;
   private jobsManager: JobsManager;
@@ -54,13 +54,16 @@ export class SaleorCheckoutAPI extends ErrorListener
     this.checkoutLoaded = false;
     this.paymentLoaded = false;
     this.paymentGatewaysLoaded = false;
+    this.isPrime = false;
 
     this.saleorState.subscribeToChange(
       StateItems.CHECKOUT,
       ({
         id,
+        isPrime,
         token,
         email,
+        lines,
         shippingAddress,
         billingAddress,
         selectedShippingAddressId,
@@ -73,9 +76,6 @@ export class SaleorCheckoutAPI extends ErrorListener
         termsAndConditions,
         documentNumber,
         scheduleDate,
-        slotId,
-        slots,
-        deliveryDate,
       }: ICheckoutModel) => {
         this.checkout = {
           billingAddress,
@@ -88,13 +88,10 @@ export class SaleorCheckoutAPI extends ErrorListener
           shippingMethod,
           termsAndConditions,
           token,
-          deliveryDate,
         };
         this.selectedShippingAddressId = selectedShippingAddressId;
         this.selectedBillingAddressId = selectedBillingAddressId;
         this.availableShippingMethods = availableShippingMethods;
-        this.slots = slots;
-        this.selectedSlotId = slotId;
         this.billingAsShipping = billingAsShipping;
         this.promoCodeDiscount = {
           discountName: promoCodeDiscount?.discountName,
@@ -108,6 +105,8 @@ export class SaleorCheckoutAPI extends ErrorListener
           this.checkoutLoaded &&
           this.paymentLoaded &&
           this.paymentGatewaysLoaded;
+
+        this.isPrime = isPrime || !!lines?.find(x => x.variant.sku === primeSku);
       }
     );
     this.saleorState.subscribeToChange(
