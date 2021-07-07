@@ -87,7 +87,6 @@ export const CollectionStyle = css`
     `}
 
     ${media.largeScreen`
-      background-color: ${farmatheme.theme.colors.neutral.lightest};
       .home-page__product {
         background-color: ${farmatheme.theme.colors.neutral.lightest};
         padding: 1rem;

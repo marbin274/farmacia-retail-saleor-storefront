@@ -6,6 +6,7 @@ import {
   XIcon,
 } from "@farmacia-retail/farmauna-components";
 import farmatheme from "@farmatheme";
+import { aunaGrey100 } from "@temp/@next/globalStyles/constants";
 import React from "react";
 import * as S from "./styles";
 import { IProps } from "./types";
@@ -23,6 +24,7 @@ export const ProductListHeader: React.FC<IProps> = ({
   sortOptions,
 }: IProps) => {
   return (
+    <>
     <S.Wrapper role="product-list-header">
       <S.Bar>
         {!hideFilters && (
@@ -121,5 +123,18 @@ export const ProductListHeader: React.FC<IProps> = ({
         )}
       </S.FiltersChipsWrapper>
     </S.Wrapper>
+      <S.MobileLabel className="fa-my-2">
+        <span
+          className="fa-text-sm fa-font-normal fa-tracking-tight fa-mr-2"
+          style={{ color: aunaGrey100 }}
+        >
+          Productos encontrados
+        </span>
+        <span className="fa-text-sm fa-font-medium fa-tracking-tight fa-text-neutral-darkest">
+          {numberOfProducts}
+        </span>
+      </S.MobileLabel>
+      
+    </>
   );
 };

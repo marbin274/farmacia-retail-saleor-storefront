@@ -137,14 +137,13 @@ const Page: React.FC<PageProps> = ({
         />
       </div>
       <div className="collection-container">
-        {isSmallScreen && getProductListHeader()}
+        {getProductListHeader()}
       </div>
       <div className="collection-container collection-body">
         <script className="structured-data-list" type="application/ld+json">
           {structuredData(collection)}
         </script>
         <section className="collection-products">
-          {!isSmallScreen && getProductListHeader()}
           <FilterSidebar
             show={showFilters}
             hide={() => setShowFilters(false)}

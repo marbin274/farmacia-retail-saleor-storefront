@@ -173,3 +173,9 @@ export const FiltersChipsWrapper = styled.div<{
 export const NumberProducts = styled.span`
   font-weight: ${({ theme }) => theme.typography.boldFontWeight};
 `;
+
+export const MobileLabel = styled.div`
+  ${mediaUp.mediumScreen`
+    display: none;
+  `}
+`;

@@ -10,8 +10,5 @@ export const CollectionWrapper = styled.div`
       margin-left: 0;
     `}
 
-    .product-list-grid {
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
   }
 `;

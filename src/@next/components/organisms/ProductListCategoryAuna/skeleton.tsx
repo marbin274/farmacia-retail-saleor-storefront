@@ -7,7 +7,7 @@ export const Skeleton = () => {
     return <>
         {
             [...Array(3)].map((_, row) =>
-                <SkeletonProductRow key={row} />
+                <SkeletonProductRow count={3} key={row} />
             )
         }
     </>;
