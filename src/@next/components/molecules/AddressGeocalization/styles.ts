@@ -145,13 +145,13 @@ export const Alert = styled.div`
         animation-timing-function: ease-in-out;
     `}
     ::after {
-    top: -1.375rem;
     border-color: transparent transparent white transparent;
     border-style: solid;
     border-width: 0.7rem;
     content: " ";
     position: absolute;
     right: 3rem;
+    top: -1.375rem;
     z-index: 1;
   }
 
@@ -168,20 +168,20 @@ export const AlertBody = styled.div`
 `;
 
 export const AlertIcon = styled.div`
-  width: auto;
-  height: 3.5rem;
   align-items: center;
   border-radius: 1rem;
   display: flex;
   flex: 0;
+  height: 3.5rem;
   justify-content: flex-start;
   padding: 0 0.5rem 0 0;
+  width: auto;
 `;
 
 export const AlertText = styled.span`
+  font-size: 0.875rem;
   flex: 3;
   margin-left: 1rem;
-  font-size: 0.875rem;
   > span {
     font-weight: ${({ theme }) => theme.typography.boldFontWeight};
   }

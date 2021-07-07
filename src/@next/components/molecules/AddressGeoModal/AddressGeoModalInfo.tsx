@@ -34,8 +34,7 @@ export const AddressGeoModalInfo = ({ onClose }: { onClose: () => void }) => {
 
         <S.Title>Revisa tu carrito <br/> de compras</S.Title>
         <S.Body>
-          <p>Algunos de tus productos </p>
-          <p>han sido actualizados</p>
+          <p>Algunos de tus productos <br/> han sido actualizados </p>      
         </S.Body>
         <S.Actions>
           <Button variant="default" onClick={onClose}>

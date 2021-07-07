@@ -141,12 +141,8 @@ export const StockValidationModal: FC<IStockValidationModalProps> = ({
       {show && (
         <Container>
           <Header>
-            <Title>
-            <div>
-                {allOutOfStock
-                  ? "Actualmente, tenemos algunos productos agotados en"
-                  : "Actualmente, tenemos algunos productos agotados en"}
-              </div>
+            <Title>        
+                <p>Actualmente, tenemos algunos productos agotados en</p>
               <CurrentDistrict>
                 <GpsIcon size={21} /> {district}
               </CurrentDistrict>
