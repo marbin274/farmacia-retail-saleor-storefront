@@ -1,23 +1,23 @@
 import { mediaUp, styled } from "@styles";
 
-export const SkeletonItems = styled.div`
-  height: 31.125rem;
-  display: flex;
-  justify-content: space-around;
-  margin: 1rem 0rem;
-  width: 100%;
-  ${mediaUp.smallScreen`
-  height: 26.188rem;
-  `};
-  > div {
-    display: none;
+export const SkeletonItems = styled.div<{height: number}>`
+    height: ${({ height }) => `${height}rem`};
+    display: flex;
+    justify-content: space-around;
+    margin: 1rem 0rem;
+    width: 100%;
     ${mediaUp.smallScreen`
-        display: block;
+    height: 26.188rem;
     `};
-    &:last-child {
-      display: block;      
+    > div {
+      display: none;
+      ${mediaUp.smallScreen`
+          display: block;
+      `};
+      &:last-child {
+        display: block;
+      }
     }
-  }
 `;
 
 export const SkeletonItem = styled.div`
