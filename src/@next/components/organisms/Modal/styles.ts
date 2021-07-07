@@ -1,13 +1,4 @@
-import { defaultTheme, styled, media } from "@styles";
-
-export const Container = styled.div`
-  height: 100vh;
-  padding-top: 3rem;
-  width: 100%;
-  @media (max-width: ${defaultTheme.breakpoints.smallScreen}) {
-    padding-top: 0rem;
-  }
-`;
+import { styled, media } from "@styles";
 
 export const Modal = styled.div`
   display: flex;
@@ -16,7 +7,6 @@ export const Modal = styled.div`
   width: ${props => props.theme.modal.modalWidthMedium};
   ${media.smallScreen`
     width: 88%;
-    margin-top: 0.3125rem;
   `}
   max-width: 100%;
   max-height: 98%;
@@ -26,7 +16,7 @@ export const Modal = styled.div`
   background-color: ${props => props.theme.colors.white};
   margin-left: auto;
   margin-right: auto;
-  border-radius: 2.5rem;
+  border-radius: 1rem;
 `;
 
 export const Content = styled.div`

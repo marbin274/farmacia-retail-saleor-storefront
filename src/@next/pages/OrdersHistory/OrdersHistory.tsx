@@ -1,7 +1,8 @@
 import { useOrdersByUser } from "@sdk/react/";
 import React from "react";
 
-import { Button, Loader } from "@components/atoms";
+import { Loader } from "@components/atoms";
+import { Button } from "@farmacia-retail/farmauna-components";
 import { OrderTabel } from "@components/molecules";
 
 import * as S from "./styles";
@@ -18,7 +19,7 @@ export const OrdersHistory: React.FC<IProps> = ({ history }: IProps) => {
       fetchPolicy: "network-only",
     }
   );
-
+    
   return loading && !data ? (
     <Loader />
   ) : (
@@ -34,7 +35,7 @@ export const OrdersHistory: React.FC<IProps> = ({ history }: IProps) => {
                 perPage: ORDERS_PER_APICALL,
               });
             }}
-            outline
+            variant={'outline'}
           >
             Cargar más
           </Button>
