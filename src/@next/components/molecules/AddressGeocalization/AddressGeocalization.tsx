@@ -3,8 +3,7 @@ import {
   useDistrictSelected,
 } from "@temp/@next/hooks";
 import React from "react";
-import { Button } from "@farmacia-retail/farmauna-components";
-import { IconButton } from "../../atoms";
+import { Button, GpsIcon } from "@farmacia-retail/farmauna-components";
 import { addressGeoModalService } from "../AddressGeoModal/AddressGeoModalService";
 import { AddressGeocalizationInfo } from "./AddressGeocalizationInfo";
 import * as S from "./styles";
@@ -22,17 +21,9 @@ export const AddressGeocalization: React.FC<IProps> = React.memo(({ mode }) => {
       <S.Wrapper>
         <S.Localization mode={mode}>
           <S.GeocalizationIcon>
-            <IconButton
-              name="addressGeo"
-              size={20}
-              heightViewPort={21}
-              widthViewPort={14}
-              onClick={handleChangeAddress}
-            />
+            <GpsIcon onClick={handleChangeAddress} size={34} />
           </S.GeocalizationIcon>
-          <S.District
-            className="district"            
-          >
+          <S.District className="district">
             <S.Label onClick={handleChangeAddress}>Enviar a: </S.Label>
             <S.Address className="district-name">
               {districtSelected.name}
