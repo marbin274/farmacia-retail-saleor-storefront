@@ -8,6 +8,38 @@ import { CheckoutLineInput } from "./../../../../../gqlTypes/globalTypes";
 // GraphQL query operation: GetShippingMethods
 // ====================================================
 
+export interface GetShippingMethods_potentialShippingMethods_maximumOrderPrice {
+  __typename: "Money";
+  /**
+   * Amount of money.
+   */
+  amount: number;
+  /**
+   * Currency code.
+   */
+  currency: string;
+  /**
+   * Culture Code.
+   */
+  culture: string;
+}
+
+export interface GetShippingMethods_potentialShippingMethods_minimumOrderPrice {
+  __typename: "Money";
+  /**
+   * Amount of money.
+   */
+  amount: number;
+  /**
+   * Currency code.
+   */
+  currency: string;
+  /**
+   * Culture Code.
+   */
+  culture: string;
+}
+
 export interface GetShippingMethods_potentialShippingMethods_price {
   __typename: "Money";
   /**
@@ -34,6 +66,8 @@ export interface GetShippingMethods_potentialShippingMethods {
    * Flag to recognize if this shipping method has schedules to select.
    */
   isScheduled: boolean | null;
+  maximumOrderPrice: GetShippingMethods_potentialShippingMethods_maximumOrderPrice | null;
+  minimumOrderPrice: GetShippingMethods_potentialShippingMethods_minimumOrderPrice | null;
   name: string;
   price: GetShippingMethods_potentialShippingMethods_price | null;
 }

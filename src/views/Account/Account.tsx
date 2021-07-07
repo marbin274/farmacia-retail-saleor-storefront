@@ -14,13 +14,12 @@ import {
   baseUrl,
   orderHistoryUrl,
 } from "../../app/routes";
-import { Link } from "react-router-dom";
 
 import { AccountMenu, AccountMenuMobile } from "@components/molecules";
 import { AccountTab, OrdersHistory } from "@pages";
-import { Breadcrumbs, Loader } from "../../components";
+import { Loader } from "../../components";
+import { Breadcrumbs } from "@farmacia-retail/farmauna-components";
 import { UserDetails_me } from "@temp/@sdk/queries/gqlTypes/UserDetails";
-import { HomeIcon } from "@farmacia-retail/farmauna-components";
 
 const returnTab: any = (path: string, userDetails: UserDetails_me, history) => {
   let tabContent = <></>;
@@ -59,14 +58,11 @@ const Account: React.FC<RouteComponentProps> = ({ history, match }) => {
   }
 
   return (
-    <div className="account_container">
+    <div className="account_container fa-pt-4">
       <div className="container">
-        <Link to={baseUrl}>
-          <HomeIcon size={20} className="breadcrumbs__home-icon" />
-        </Link>
         <Breadcrumbs
           breadcrumbs={[{ link: match.path, label: "Mi Cuenta" }]}
-          backLabelMobile="Mi cuenta"
+          baseUrl={baseUrl}
         />
         <div className="account">
           <Media minWidth={largeScreen + 1}>

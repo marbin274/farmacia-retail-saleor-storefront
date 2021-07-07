@@ -15,11 +15,6 @@ export const SelectDefaultAddress = styled.div<{isDefault?:boolean}>`
   display: flex;
   cursor: pointer;
   align-items: center;
-  > span {
-    color: ${({ isDefault, theme }) => isDefault ? theme.colors.interactive : theme.colors.aunaBlack};
-    opacity: ${({ isDefault }) => isDefault ? "initial":"0.6"};
-    padding-left: 0.5rem;
-  }
 `;
 
 export const MenuItem = styled.div`
