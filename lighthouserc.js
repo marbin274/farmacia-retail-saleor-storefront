@@ -3,7 +3,7 @@ module.exports = {
       collect: {
         startServerCommand: "npm run serve-dist",
         isSinglePageApplication: true,
-        numberOfRuns: 1,
+        numberOfRuns: 5,
         url: [
           "http://localhost:5000",
         ],
