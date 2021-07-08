@@ -1,13 +1,10 @@
 import React from "react";
 import { SkeletonProductRow } from "@components/atoms";
-import { useMediaQuery } from "react-responsive";
-import { largeScreen } from "@temp/@next/globalStyles/constants";
+import { useMediaScreen } from "@temp/@next/globalStyles";
 
 
 export const Skeleton = () => {
-    const isDesktopScreen = useMediaQuery({
-        query: `(min-width: ${largeScreen}px)`,
-      });
+    const { isDesktopScreen } = useMediaScreen();
     return <>
         {
             [...Array(3)].map((_, row) =>

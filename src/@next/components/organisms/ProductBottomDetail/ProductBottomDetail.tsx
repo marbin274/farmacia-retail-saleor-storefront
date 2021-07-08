@@ -8,8 +8,7 @@ import {
   ISubtractItemToCartCallback,
 } from "@components/molecules/ProductTileAUNA/types";
 import { Thumbnail } from "@components/molecules";
-import { useMediaQuery } from "react-responsive";
-import { smallScreen } from "@temp/@next/globalStyles/constants";
+import { useMediaScreen } from "@temp/@next/globalStyles";
 
 type IProps = {
   product: ISimpleProduct;
@@ -30,9 +29,7 @@ export const ProductBottomDetail: FC<IProps> = ({
   subtractItemToCart,
   hideProductDetails,
 }) => {
-  const isMaxSmallScreen = useMediaQuery({
-    query: `(max-width: ${smallScreen}px)`,
-  });
+  const { isMaxSmallScreen } = useMediaScreen();
 
   return (
     <S.Container>

@@ -93,13 +93,10 @@ export const FiltersButton = styled.button`
 `;
 
 export const Element = styled.span`
+  align-items: center;
   display: flex;
-
-  ${mediaUp.xSmallScreen`
-    margin-top: 0;
-  `}
   ${mediaUp.mediumScreen`
-    margin-top: 0;
+    margin: 0rem 0.5rem;
   `}
 `;
 
@@ -171,8 +168,15 @@ export const CategoryFilter = styled(CustomSelectContainer as any)`
       display: flex;
       width: 100%;
     }
-  }
-  
+  }  
+`;
+
+export const CategoryFilterLabel = styled.span`
+  color: #746E91;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin: 0rem 0.5rem;
+  white-space: pre;
 `;
 
 export const Label = styled.span`

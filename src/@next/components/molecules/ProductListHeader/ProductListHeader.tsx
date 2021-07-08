@@ -6,6 +6,7 @@ import {
   XIcon,
 } from "@farmacia-retail/farmauna-components";
 import farmatheme from "@farmatheme";
+import { useMediaScreen } from "@temp/@next/globalStyles";
 import { aunaGrey100 } from "@temp/@next/globalStyles/constants";
 import React from "react";
 import * as S from "./styles";
@@ -23,6 +24,8 @@ export const ProductListHeader: React.FC<IProps> = ({
   openFiltersMenu,
   sortOptions,
 }: IProps) => {
+
+  const { isDesktopScreen } = useMediaScreen();
 
   const categorySelect = () => {
     return (<S.CategoryFilter>
@@ -89,6 +92,13 @@ export const ProductListHeader: React.FC<IProps> = ({
               />
             </S.Sort>
           </S.Element>
+            {
+              isDesktopScreen &&
+              <S.Element>
+                <S.CategoryFilterLabel>Categorías:</S.CategoryFilterLabel>
+                {categorySelect()}
+              </S.Element>
+            }
         </S.RightSide>
       </S.Bar>
       <S.FiltersChipsWrapper
@@ -150,7 +160,7 @@ export const ProductListHeader: React.FC<IProps> = ({
           {numberOfProducts}
         </span>
       </S.MobileLabel>
-      {categorySelect()}
+      {!isDesktopScreen && categorySelect()}
     </>
   );
 };
