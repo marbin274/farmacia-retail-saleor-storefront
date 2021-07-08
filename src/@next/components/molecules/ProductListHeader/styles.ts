@@ -109,7 +109,6 @@ export const CustomSelectContainer = styled.div`
     display: flex;
     justify-content: space-between;
     margin: 0;
-    padding: 0 1rem; 
     width: 100%;
     ${mediaUp.smallScreen`
       justify-content: flex-end;
@@ -130,7 +129,6 @@ export const CustomSelectContainer = styled.div`
     justify-content: flex-start;
     justify-content: space-between;
     position:relative;
-    padding: 0 1rem;
     z-index: 2; 
   }
 
@@ -193,7 +191,7 @@ export const Sort = styled.div`
 
   > div {
     > div {
-      padding: 0px;
+      padding: 0rem;
       .select-input{
         margin: 0;
         padding: 0;

@@ -30,7 +30,7 @@ export const DropdownSelect: React.FC<IProps> = ({
         onClick={() => setMenuIsOpen(!menuIsOpen)}
       >
         {label && <Label>{label}:</Label>}
-        <div className="select-container fa-ml-2 fa-border fa-border-solid fa-border-neutral-dark fa-rounded-3xl fa-px-3 fa-py-2">
+        <div className="select-container fa-border fa-border-solid fa-border-neutral-dark fa-rounded-3xl fa-px-3 fa-py-2">
           <S.Value className="select-container__value">{` ${
             value ? value.label : clearText
           }`}</S.Value>
