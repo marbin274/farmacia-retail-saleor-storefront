@@ -84,10 +84,13 @@ export const ProductListHeader: React.FC<IProps> = ({
             <Chip
               bgColor={farmatheme.theme.colors.highlight.lightest}
               label={
-                <span className="fa-flex fa-items-center" role="clear-filters">
+                <span
+                  className="fa-cursor-pointer fa-flex fa-items-center"
+                  onClick={clearFilters}
+                  role="clear-filters"
+                >
                   <TrashIcon
                     className="fa-mr-2 fa-transform fa-scale-125"
-                    onClick={clearFilters}
                     size={12}
                     data-testid="clear-filters_icon"
                   />

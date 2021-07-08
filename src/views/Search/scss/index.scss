@@ -57,8 +57,12 @@
 }
 .product_list_container {
   margin-bottom: 2rem;
-  > div{
+  > div {
     background-color: $auna-grey-06;
+    @media (max-width: $medium-screen) {
+      padding-top: 3rem;
+      padding-bottom: 3.5rem;
+    }
   }
   .category__container {
     border-radius: 8px;
