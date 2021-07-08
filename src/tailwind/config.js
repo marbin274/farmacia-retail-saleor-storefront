@@ -16,7 +16,7 @@ module.exports = {
   },
   plugins: [require("@tailwindcss/line-clamp")],
   purge: {
-    enabled: true,
+    enabled: process.env.NODE_ENV !== 'develop',
     content: [
       "./src/**/*.html",
       "./src/**/*.js",
