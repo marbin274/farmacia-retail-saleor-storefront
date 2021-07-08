@@ -76,7 +76,6 @@
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
-    "@fullhuman/postcss-purgecss": "^3.0.0",
     "@hot-loader/react-dom": "^16.9.0",
     "@lhci/cli": "^0.7.2",
     "@storybook/addon-actions": "^5.3.13",
