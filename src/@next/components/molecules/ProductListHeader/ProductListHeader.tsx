@@ -23,6 +23,20 @@ export const ProductListHeader: React.FC<IProps> = ({
   openFiltersMenu,
   sortOptions,
 }: IProps) => {
+
+  const categorySelect = () => {
+    return (<S.CategoryFilter>
+      <DropdownSelect
+        clearText="Todas las categorías"
+        onChange={onChange}
+        options={sortOptions}
+        value={sortOptions.find(
+          option => option.value === activeSortOption
+        )}
+      />
+    </S.CategoryFilter>);
+  }
+
   return (
     <>
     <S.Wrapper role="product-list-header">
@@ -65,6 +79,8 @@ export const ProductListHeader: React.FC<IProps> = ({
           <S.Element>
             <S.Sort>
               <DropdownSelect
+                clearText="Limpiar"
+                label="Ordenar por"
                 onChange={onChange}
                 options={sortOptions}
                 value={sortOptions.find(
@@ -134,7 +150,7 @@ export const ProductListHeader: React.FC<IProps> = ({
           {numberOfProducts}
         </span>
       </S.MobileLabel>
-      
+      {categorySelect()}
     </>
   );
 };

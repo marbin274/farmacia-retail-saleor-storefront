@@ -64,6 +64,8 @@ export const ProductListHeaderSearch: React.FC<IProps> = ({
           <S.Element className="product_list_header__dropdown">
             <S.Sort>
               <DropdownSelect
+                clearText="Limpiar"
+                label="Ordenar por"
                 onChange={onChange}
                 options={sortOptions}
                 value={sortOptions.find(

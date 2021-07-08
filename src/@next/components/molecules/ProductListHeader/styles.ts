@@ -1,5 +1,5 @@
-import { mediaUp, styled } from "@styles";
 import farmatheme from "@farmatheme";
+import { mediaUp, styled } from "@styles";
 
 export const Wrapper = styled.div`
   align-items: center;
@@ -103,12 +103,78 @@ export const Element = styled.span`
   `}
 `;
 
-export const Filters = styled.span`
+export const CustomSelectContainer = styled.div`
+  .select-input {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0 1rem; 
+    width: 100%;
+    ${mediaUp.smallScreen`
+      justify-content: flex-end;
+    `}
+    .label {
+      color: ${farmatheme.theme.colors.neutral.darkest};
+    }    
+  }
+
+  .select-container { 
+    align-items: center;
+    background: #FFFFFF;
+    border: 0.0625rem solid #908BA7;
+    border-radius: 2.5rem;
+    cursor: pointer;
+    display:flex;
+    height: 2.5rem;
+    justify-content: flex-start;
+    justify-content: space-between;
+    position:relative;
+    padding: 0 1rem;
+    z-index: 2; 
+  }
+
+  div[class*="menu"] {
+    border-bottom-left-radius: 1.25rem;
+    border-bottom-right-radius: 1.25rem;
+    margin-top: -1.25rem;
+    padding-top: 1.25rem;
+  }
+  .dropdown-select {
+    > div {
+      margin: 0;
+      padding: 0;
+    }
+    .select-control {
+      display: flex;
+      justify-content: flex-end;
+      margin: 0;
+      padding: 0;
+      ${mediaUp.smallScreen`
+        display: block;
+        justify-content: initial;
+      `}
+    }
+  }
+`;
+
+export const Filters = styled(CustomSelectContainer as any)`
   display: flex;
   font-weight: ${props => props.theme.typography.boldFontWeight};
   > span {
     margin-left: 0.5rem;
   }
+`;
+
+export const CategoryFilter = styled(CustomSelectContainer as any)`  
+  .select-input{
+    .select-container {
+      justify-content: space-between;
+      display: flex;
+      width: 100%;
+    }
+  }
+  
 `;
 
 export const Label = styled.span`
@@ -126,29 +192,15 @@ export const Sort = styled.div`
   }
 
   > div {
-    margin: 0;
-    padding: 0;
-
     > div {
-      margin: 0;
-      padding: 0;
-
-      ${mediaUp.mediumScreen`
-        padding: 0 0 0 0.625rem;
-      `}
-
-      > div {
+      padding: 0px;
+      .select-input{
         margin: 0;
         padding: 0;
-
-        > div {
-          margin: 0;
-          padding: 0;
-
-          ${mediaUp.mediumScreen`
-            padding: 0 0 0 0.625rem;
-          `}
-        }
+      }
+      div[class*="-menu"]{
+        margin: 0;
+        padding: 0;
       }
     }
   }

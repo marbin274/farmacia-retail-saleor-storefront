@@ -1,5 +1,6 @@
-import { media, mediaUp, styled } from "@styles";
 import farmatheme from "@farmatheme";
+import { media, mediaUp, styled } from "@styles";
+import { CustomSelectContainer } from "../ProductListHeader/styles";
 
 export const Wrapper = styled.div`
   background-color: ${props => props.theme.colors.white};
@@ -59,45 +60,6 @@ export const RightSide = styled.div`
   ${media.smallScreen`
     font-size:1rem;
 `}
-  .select-input{
-    & > span {
-      color: ${farmatheme.theme.colors.neutral.darkest};
-    }
-    justify-content: flex-end;
-    .select-container {
-      margin-left: 1rem;
-      min-width: 14.75rem;
-      max-width: 14.75rem;
-      height: 2.5rem;
-      border-radius: 2.5rem;
-      background: #FFFFFF;
-      border: 0.0625rem solid #908BA7;
-      position:relative;
-      padding:0 0 0 0.9375rem;
-      display:flex;
-      align-items: center;
-      justify-content: flex-start;
-      justify-content: space-between;
-      padding: 0 1rem;
-      cursor: pointer;
-      z-index: 2;
-      &__value {
-        margin: 0;
-      }
-    }
-    ${media.smallScreen`  
-        align-items: center;
-        justify-content: space-between;
-        width: 100vw;
-        display: flex;
-        padding: 0 1rem;  
-        .select-container {
-          margin-left: 0.5rem;
-          min-width: 12.875rem;
-          max-width: 12.875rem;
-        }
-    `}
-  }
 
   ${media.mediumScreen`
   justify-content: space-between;
@@ -161,51 +123,30 @@ export const SearchText = styled.span`
   color: ${props => props.theme.colors.interactive};
 `;
 
-export const Sort = styled.div`
-  width: inherit;
+
+
+export const Sort = styled(CustomSelectContainer as any)`
   display: inline-block;
   margin-bottom:1.25rem;
+  width: inherit;
 
-  .label {
-    display: block;
-    ${mediaUp.mediumScreen`
-      display:  block;
+  .select-container {
+    max-width: 12.875rem;
+    min-width: 12.875rem;
+    ${mediaUp.smallScreen`  
+      min-width: 14.75rem;
+      margin-left: 1rem;
+      max-width: 14.75rem;
     `}
   }
-
-  > div {
-    margin: 0;
-    padding: 0;
-
-    > div {
-      margin: 0;
-      padding: 0;
-
-      > div {
-        margin: 0;
-        padding: 0;
-        ${media.smallScreen`
-          display: flex;
-          justify-content: flex-end;
-        `}
-        > div {
-          margin: 0;
-          padding: 0;
-          border-bottom-left-radius: 1.25rem;
-          border-bottom-right-radius: 1.25rem;
-          width: 14.75rem;
-          padding-top: 1.25rem;
-          margin-top: -1.25rem;
-          ${media.smallScreen`
-            &.select-input + div {
-              margin-right: 1rem;
-              width: 12.875rem;
-            }
-          `}
-        }
-      }
-    }
+  div[class*="menu"] {    
+    right: 1rem;
+    width: 12.875rem;    
+    ${mediaUp.smallScreen`
+      width: 14.75rem;
+    `}
   }
+  
 `;
 
 export const FiltersChipsWrapper = styled.div`
