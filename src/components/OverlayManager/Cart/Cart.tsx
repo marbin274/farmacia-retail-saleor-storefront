@@ -107,8 +107,9 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
             {items?.length ? (
               <>
                 <ProductList
-                  modalOpen={isModelOpen}
                   itemToDelete={itemToDelete}
+                  modalOpen={isModelOpen}
+                  morePadding={showShippingPrice}
                   products={items}
                   onAdd={addItem}
                   onRemove={showModal}
