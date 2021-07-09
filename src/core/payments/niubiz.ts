@@ -58,6 +58,41 @@ export type GatewayOptions = {
   antifraud?: any | undefined;
 };
 
+export interface ICardTokenizationResult {
+  errorCode: number;
+  errorMessage: string;
+  header: {
+    ecoreTransactionUUID: string;
+    ecoreTransactionDate: number;
+    millis: number;
+  };
+  card: {
+    cardNumber: string;
+    brand: string;
+    expirationMonth: string;
+    expirationYear: string;
+    firstName: string;
+    lastName: string;
+  };
+  order: {
+    transactionToken: string;
+    purchaseNumber: string;
+    amount: number;
+    currency: string;
+    actionCode: string;
+    actionDescription: string;
+    status: string;
+    traceNumber: string;
+    transactionDate: string;
+    transactionId: string;
+  };
+  token: {
+    tokenId: string;
+    ownerId: string;
+    expireOn: string;
+  };
+}
+
 export const createToken = (requirements: GatewayOptions) => {
   const endpoint: string | undefined = requirements?.endpoint;
   const user: string | undefined = requirements?.user || "";
@@ -82,7 +117,7 @@ export const createSession = (requirements: GatewayOptions) => {
     antifraud: requirements.antifraud,
     channel: requirements.channel,
   };
-  
+
   const requestOptions: AxiosRequestConfig = {
     headers: {
       Authorization: requirements.securityToken,
@@ -97,3 +132,17 @@ export const createSession = (requirements: GatewayOptions) => {
   }
 };
 
+export const cardTokenization = async (requirements: GatewayOptions) => {
+  try {
+    const response = await axios.get(requirements.endpoint, {
+      headers: {
+        Authorization: requirements.securityToken,
+        "Content-Type": "application/json",
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
