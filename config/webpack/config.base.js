@@ -4,6 +4,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const RobotstxtPlugin = require("robotstxt-webpack-plugin");
+const StatoscopeWebpackPlugin = require('@statoscope/webpack-plugin').default;
 const webpack = require("webpack");
 
 if (!process.env.API_URI) {
@@ -144,6 +145,20 @@ module.exports = ({ sourceDir, distDir }) => ({
       PRIME_API_KEY: "__",
       PRIME_SKU: "__",
     }),
+
+    new StatoscopeWebpackPlugin({
+      saveReportTo: 'path/to/report-[name]-[hash].html',
+      saveStatsTo: 'path/to/stats-[name]-[hash].json',
+      saveOnlyStats: false,
+      statsOptions: {
+        /* any webpack stats options */
+      },
+      additionalStats: ['path/to/any/stats.json'],
+      watchMode: false,
+      name: 'farmauna-webpack-bundle-report',
+      open: 'file',
+      compressor: 'gzip',
+    })
   ],
   node: {
     fs: "empty",
