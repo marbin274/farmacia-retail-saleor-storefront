@@ -9,8 +9,9 @@ export const Wrapper = styled.div`
   align-items: center;
   margin-bottom: 1rem;
 
-  ${media.smallScreen`
+  ${media.largeScreen`
     border-radius: 0;
+    height: auto;
   `}
   > span {
     color: #908ba7;
@@ -133,12 +134,9 @@ export const Clear = styled.button`
 `;
 
 export const Element = styled.span`
-  ${mediaUp.mediumScreen`
-  margin-top: 1.5rem;
-`}
-  ${mediaUp.xSmallScreen`
-  margin-top: 1.5rem;
-`}
+  ${mediaUp.largeScreen`
+    margin-top: 1.5rem;
+  `}
 `;
 
 export const Filters = styled.span`
@@ -162,8 +160,11 @@ export const SearchText = styled.span`
 export const Sort = styled.div`
   width: inherit;
   display: inline-block;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
 
+  ${mediaUp.largeScreen`
+    margin-bottom: 1.25rem;
+  `}
   .label {
     display: block;
     ${mediaUp.mediumScreen`
@@ -193,12 +194,14 @@ export const Sort = styled.div`
           border-bottom-right-radius: 1.25rem;
           width: 14.75rem;
           padding-top: 1.25rem;
-          margin-top: -1.25rem;
           ${media.smallScreen`
             &.select-input + div {
               margin-right: 1rem;
               width: 12.875rem;
             }
+          `}
+          ${mediaUp.largeScreen`
+            margin-top: -1.25rem;
           `}
         }
       }

@@ -5,6 +5,8 @@ import { IProps } from "./types";
 import { FilterIcon } from "@farmacia-retail/farmauna-components";
 import { StringParam, useQueryParam } from "use-query-params";
 import farmatheme from "@farmatheme";
+import { useMediaQuery } from "react-responsive";
+import { largeScreen } from "@temp/@next/globalStyles/constants";
 
 export const ProductListHeaderSearch: React.FC<IProps> = ({
   hideFilters = false,
@@ -18,9 +20,23 @@ export const ProductListHeaderSearch: React.FC<IProps> = ({
   onChange,
   onCloseFilterAttribute,
 }: IProps) => {
-
-  
+  const isDesktop = useMediaQuery({ query: `(min-width: ${largeScreen}px)` });
   const [search] = useQueryParam("q", StringParam);
+
+  const renderProductsFound = () => {
+    return (
+      <S.Element
+        className="products_found"
+        data-cy="no-of-products-found_label"
+      >
+        <S.NumberProducts>{numberOfProducts} </S.NumberProducts>
+        <S.Label>Productos encontrados con: </S.Label>
+        <S.Label>
+          "<S.SearchText>{search}</S.SearchText>"
+        </S.Label>
+      </S.Element>
+    );
+  };
   return (
     <S.Wrapper>
       <S.Bar>
@@ -31,7 +47,10 @@ export const ProductListHeaderSearch: React.FC<IProps> = ({
               data-cy="filters__button"
             >
               <S.Filters>
-                <FilterIcon size={18} color={farmatheme.theme.colors.interactive} />
+                <FilterIcon
+                  size={18}
+                  color={farmatheme.theme.colors.interactive}
+                />
                 <span>
                   Filtrar
                   {activeFilters > 0 && (
@@ -51,16 +70,8 @@ export const ProductListHeaderSearch: React.FC<IProps> = ({
           </S.LeftSide>
         )}
 
-        <S.RightSide 
-          className="product_list_header__right_side">
-          <S.Element
-            className="products_found"
-            data-cy="no-of-products-found_label"
-          >
-            <S.NumberProducts>{numberOfProducts} </S.NumberProducts>
-            <S.Label>Productos encontrados con: </S.Label>
-            <S.Label>"<S.SearchText>{search}</S.SearchText>"</S.Label>
-          </S.Element>
+        <S.RightSide className="product_list_header__right_side">
+          {isDesktop && renderProductsFound()}
           <S.Element className="product_list_header__dropdown">
             <S.Sort>
               <DropdownSelect
@@ -72,6 +83,7 @@ export const ProductListHeaderSearch: React.FC<IProps> = ({
               />
             </S.Sort>
           </S.Element>
+          {!isDesktop && renderProductsFound()}
         </S.RightSide>
       </S.Bar>
       <S.FiltersChipsWrapper>
