@@ -122,7 +122,6 @@ export const CustomSelectContainer = styled.div`
     border-radius: 2.5rem;
     cursor: pointer;
     display:flex;
-    height: 2.5rem;
     justify-content: flex-start;
     justify-content: space-between;
     position:relative;
@@ -162,13 +161,14 @@ export const Filters = styled(CustomSelectContainer as any)`
 `;
 
 export const CategoryFilter = styled(CustomSelectContainer as any)`  
-  .select-input{
+  .select-input {
     .select-container {
       justify-content: space-between;
       display: flex;
+      min-width: 12.0625rem;
       width: 100%;
     }
-  }  
+  }
 `;
 
 export const CategoryFilterLabel = styled.span`

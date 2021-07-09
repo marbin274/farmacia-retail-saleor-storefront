@@ -8,6 +8,7 @@ import {
 import { largeScreen } from "@temp/@next/globalStyles/constants";
 import { IItems } from "@temp/@sdk/api/Cart/types";
 import { baseUrl } from "@temp/app/routes";
+import { COLLECTION_CATEGORY_FILTER_LABEL } from "@temp/core/config";
 import { structuredData } from "@temp/core/SEO/Collection/structuredData";
 import { IFilterAttributes, IFilters } from "@types";
 import * as React from "react";
@@ -31,12 +32,15 @@ interface SortItem {
   value?: string;
 }
 
-interface SortOptions extends Array<SortItem> {}
+interface SortOptions extends Array<SortItem> {};
+interface CategoryOptions extends Array<SortItem> {};
 
 interface PageProps extends IPaginationProps {
   activeFilters: number;
-  attributes: IFilterAttributes[];
+  activeCategoryOptions?: string[];
   activeSortOption: string;
+  attributes: IFilterAttributes[];
+  categoryOptions: CategoryOptions;
   collection: Collection_collection;
   displayLoader: boolean;
   filters: IFilters;
@@ -47,32 +51,35 @@ interface PageProps extends IPaginationProps {
   addToCart: IAddToCartCallback;
   clearFilters: () => void;
   onAttributeFiltersChange: (attributeSlug: string, value: string) => void;
-  onOrder: (order: { value?: string; label: string }) => void;
+  onChangeCategoryOption?: (category: { value?: string; label: string }) => void;
+  onChangeSortOption: (order: { value?: string; label: string }) => void;
   removeItemToCart: IRemoveItemToCartCallback;
   subtractItemToCart: ISubtractItemToCartCallback;
 }
 
 const Page: React.FC<PageProps> = ({
-  activeFilters,
-  activeSortOption,
+  addToCart,
   attributes,
+  activeFilters,
+  activeCategoryOptions,
+  activeSortOption,
+  categoryOptions,
+  clearFilters,
   collection,
   displayLoader,
   filters,
   items,
-  isSmallScreen,
+  onAttributeFiltersChange,
+  onPageChange,
+  onChangeCategoryOption,
+  onChangeSortOption,
   page,
   pageSize,
   products,
-  sortOptions,
-  total: totalProducts,
-  addToCart,
-  clearFilters,
-  onAttributeFiltersChange,
-  onPageChange,
-  onOrder,
   removeItemToCart,
+  sortOptions,
   subtractItemToCart,
+  total: totalProducts,
 }) => {
   const canDisplayProducts = maybe(
     () => !!products.edges && products.totalCount !== undefined
@@ -115,15 +122,21 @@ const Page: React.FC<PageProps> = ({
   const getProductListHeader = () => {
 
     return <ProductListHeader
-      activeSortOption={activeSortOption}
-      openFiltersMenu={() => setShowFilters(true)}
-      numberOfProducts={products ? products.totalCount : 0}
+      activeSecondaryOptions={activeCategoryOptions}
       activeFilters={activeFilters}
       activeFiltersAttributes={activeFiltersAttributes}
+      activeSortOption={activeSortOption}
       clearFilters={clearFilters}
-      sortOptions={sortOptions}
-      onChange={onOrder}
+      numberOfProducts={products ? products.totalCount : 0}
+      onChangeSecondaryOption={onChangeCategoryOption}
+      onChangeSortOption={onChangeSortOption}
       onCloseFilterAttribute={onAttributeFiltersChange}
+      openFiltersMenu={() => setShowFilters(true)}
+      secondaryLabel="Categorias"
+      secondaryClearLabel={COLLECTION_CATEGORY_FILTER_LABEL}
+      secondaryOptions={categoryOptions}
+      showSecondarySelect
+      sortOptions={sortOptions}
     />
   }
 

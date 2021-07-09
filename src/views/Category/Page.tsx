@@ -123,7 +123,7 @@ const Page: React.FC<PageProps> = ({
               activeFiltersAttributes={activeFiltersAttributes}
               clearFilters={clearFilters}
               sortOptions={sortOptions}
-              onChange={onOrder}
+              onChangeSortOption={onOrder}
               onCloseFilterAttribute={onAttributeFiltersChange}
             />
           </CategoryProductListHeader>

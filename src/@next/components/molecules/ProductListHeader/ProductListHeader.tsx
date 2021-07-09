@@ -15,26 +15,33 @@ import { IProps } from "./types";
 export const ProductListHeader: React.FC<IProps> = ({
   activeFilters = 0,
   activeFiltersAttributes = [],
+  activeSecondaryOptions,
   activeSortOption,
   clearFilters,
   hideFilters = false,
   numberOfProducts = 0,
-  onChange,
+  onChangeSecondaryOption,
+  onChangeSortOption,
   onCloseFilterAttribute,
   openFiltersMenu,
+  secondaryClearLabel,
+  secondaryLabel,
+  secondaryOptions,
+  showSecondarySelect = false,
   sortOptions,
 }: IProps) => {
 
   const { isDesktopScreen } = useMediaScreen();
 
-  const categorySelect = () => {
+  const secondarySelect = () => {    
+    
     return (<S.CategoryFilter>
       <DropdownSelect
-        clearText="Todas las categorías"
-        onChange={onChange}
-        options={sortOptions}
-        value={sortOptions.find(
-          option => option.value === activeSortOption
+        clearText={secondaryClearLabel}
+        onChange={onChangeSecondaryOption}
+        options={secondaryOptions}
+        value={secondaryOptions.find(
+          option => option.value === activeSecondaryOptions?.[0]
         )}
       />
     </S.CategoryFilter>);
@@ -84,7 +91,7 @@ export const ProductListHeader: React.FC<IProps> = ({
               <DropdownSelect
                 clearText="Limpiar"
                 label="Ordenar por"
-                onChange={onChange}
+                onChange={onChangeSortOption}
                 options={sortOptions}
                 value={sortOptions.find(
                   option => option.value === activeSortOption
@@ -93,10 +100,10 @@ export const ProductListHeader: React.FC<IProps> = ({
             </S.Sort>
           </S.Element>
             {
-              isDesktopScreen &&
+              (isDesktopScreen && showSecondarySelect) &&
               <S.Element>
-                <S.CategoryFilterLabel>Categorías:</S.CategoryFilterLabel>
-                {categorySelect()}
+                <S.CategoryFilterLabel>{secondaryLabel}:</S.CategoryFilterLabel>
+                {secondarySelect()}
               </S.Element>
             }
         </S.RightSide>
@@ -160,7 +167,7 @@ export const ProductListHeader: React.FC<IProps> = ({
           {numberOfProducts}
         </span>
       </S.MobileLabel>
-      {!isDesktopScreen && categorySelect()}
+      {(!isDesktopScreen && showSecondarySelect) && secondarySelect()}
     </>
   );
 };

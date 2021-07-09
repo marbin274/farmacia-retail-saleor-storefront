@@ -5,7 +5,7 @@ import { IFilters } from "@types";
 import { NumberParam, StringParam, useQueryParams } from "use-query-params";
 import { MetaWrapper, NotFound, OfflinePlaceholder } from "../../components";
 import NetworkStatus from "../../components/NetworkStatus";
-import { PRODUCTS_PER_PAGE } from "../../core/config";
+import { COLLECTION_CATEGORY_FILTER_LABEL, PRODUCTS_PER_PAGE } from "../../core/config";
 import {
   convertSortByFromString,
   convertToAttributeScalar,
@@ -13,7 +13,7 @@ import {
   maybe,
 } from "../../core/utils";
 import Page from "./Page";
-import { TypedCollectionProductsQuery } from "./queries";
+import { TypedCollectionCategoriesQuery, TypedCollectionProductsQuery } from "./queries";
 import { convertToFilterSideBar, FilterQuerySet } from "@temp/core/utils/filters";
 import { IAddToCartCallback, IRemoveItemToCartCallback, ISubtractItemToCartCallback } from "@temp/@next/components/molecules/ProductTileAUNA/types";
 import { useCart } from "@temp/@sdk/react";
@@ -22,6 +22,8 @@ import Media from "react-media";
 import { smallScreen } from "@temp/@next/globalStyles/constants";
 import { CollectionVariables } from "./gqlTypes/Collection";
 import { SORT_OPTIONS } from "@temp/core/utils/sorts";
+import { SortOptions } from "../Search/Page";
+
 
 type ViewProps = RouteComponentProps<{
   id: string;
@@ -32,9 +34,10 @@ const DEFAULT_SORT = "-stock";
 export const View: React.FC<ViewProps> = ({ match }) => {
   const [districtSelected] = useDistrictSelected();
   const [
-    { filters: attributeFilters, page, sortBy: sort },
+    { category, filters: attributeFilters, page, sortBy: sort },
     setQuery,
   ] = useQueryParams({
+    category: StringParam,
     filters: FilterQuerySet,
     page: NumberParam,
     sortBy: StringParam,
@@ -92,15 +95,19 @@ export const View: React.FC<ViewProps> = ({ match }) => {
     priceLte: null,
     sortBy: sort || DEFAULT_SORT,
   };
+
+  const collectionId = getGraphqlIdFromDBId(match.params.id, "Collection");  
+  
   const variables: CollectionVariables = {
     ...filters,
     attributes: filters.attributes
       ? convertToAttributeScalar(filters.attributes)
       : {},
-    id: getGraphqlIdFromDBId(match.params.id, "Collection"),
+    // categories: category ? [category] : undefined,
+    districtId: districtSelected.id,
+    id: collectionId,
     page: page || 1,
     sortBy: convertSortByFromString(filters.sortBy),
-    districtId: districtSelected.id,
   };
 
   const { addItem, items, subtractItem } = useCart();
@@ -125,71 +132,102 @@ export const View: React.FC<ViewProps> = ({ match }) => {
       {isOnline => (
         <Media query={{ maxWidth: smallScreen }}>
           {matches => (
-            <TypedCollectionProductsQuery
-              variables={{ ...variables, pageSize: getPageSize(matches) }}
-              errorPolicy="all"
-              loaderFull
-            >
-              {({ loading, data }) => {
-                const canDisplayFilters = maybe(
-                  () => !!data.attributes.edges && !!data.collection.name,
-                  false
-                );
-
-                if (canDisplayFilters) {
-
-                  return (
-                    <MetaWrapper
-                      meta={{
-                        description: data.collection.seoDescription,
-                        title: data.collection.seoTitle,
-                        type: "product.collection",
-                      }}
-                    >
-                      <Page
-                        activeFilters={
-                          filters!.attributes
-                            ? Object.keys(filters!.attributes!.brand).length
-                            : 0
-                        }
-                        activeSortOption={filters.sortBy}
-                        attributes={convertToFilterSideBar(data.attributes)}
-                        clearFilters={clearFilters}
-                        collection={data.collection}
-                        displayLoader={loading}
-                        filters={filters}
-                        isSmallScreen={matches}
-                        items={items}
-                        page={page || 1}
-                        pageSize={getPageSize(matches)}
-                        products={data.paginatedProducts}
-                        sortOptions={SORT_OPTIONS}
-                        total={data.paginatedProducts.totalCount}
-                        addToCart={addToCart}
-                        removeItemToCart={removeItemToCart}
-                        subtractItemToCart={subtractItemToCart}
-                        onAttributeFiltersChange={onFiltersChange}
-                        onOrder={value => {
-                          setQuery({
-                            page: 1,
-                            sortBy: value.value,
-                          });
-                        }}
-                        onPageChange={handlePageChange}
-                      />
-                    </MetaWrapper>
-                  );
-                }
-
-                if (data && data.collection === null) {
-                  return <NotFound />;
-                }
-
-                if (!isOnline) {
-                  return <OfflinePlaceholder />;
-                }
+            <TypedCollectionCategoriesQuery
+              alwaysRender
+              variables={{
+                id: collectionId
               }}
-            </TypedCollectionProductsQuery>
+            >
+              {({ data: collectionCategory }) => {
+                const categoryOptions: SortOptions = [{ label: COLLECTION_CATEGORY_FILTER_LABEL, value: null }].concat(
+                  maybe(() =>
+                    collectionCategory?.collection?.categories?.edges?.map(({ node }) => ({ label: node.name, value: node.id }))
+                    , [])
+                );
+                const filterByCategoryId: string | undefined = maybe(
+                  () => categoryOptions?.find(it => it.label === decodeURIComponent(category))?.value
+                  , undefined);
+                const variablesWithCategories = { ...variables, categories: filterByCategoryId && [filterByCategoryId], pageSize: getPageSize(matches) };
+
+                return (
+                  <TypedCollectionProductsQuery
+                    errorPolicy="all"
+                    loaderFull
+                    variables={variablesWithCategories}
+                  >
+                    {({ loading, data }) => {
+                      const canDisplayFilters = maybe(
+                        () => !!data.attributes.edges && !!data.collection.name,
+                        false
+                      );
+
+                      if (canDisplayFilters) {
+
+                        return (
+                          <MetaWrapper
+                            meta={{
+                              description: data.collection.seoDescription,
+                              title: data.collection.seoTitle,
+                              type: "product.collection",
+                            }}
+                          >
+                            <Page
+                              activeFilters={
+                                filters!.attributes
+                                ? Object.keys(filters!.attributes!.brand).length
+                                : 0
+                              }
+                              attributes={convertToFilterSideBar(data.attributes)}
+                              activeSortOption={filters.sortBy}
+                              activeCategoryOptions={variablesWithCategories.categories}
+                              categoryOptions={categoryOptions}
+                              clearFilters={clearFilters}
+                              collection={data.collection}
+                              displayLoader={loading}
+                              filters={filters}
+                              isSmallScreen={matches}
+                              items={items}
+                              page={page || 1}
+                              pageSize={getPageSize(matches)}
+                              products={data.paginatedProducts}
+                              sortOptions={SORT_OPTIONS}
+                              total={data.paginatedProducts.totalCount}
+                              addToCart={addToCart}
+                              removeItemToCart={removeItemToCart}
+                              subtractItemToCart={subtractItemToCart}
+                              onAttributeFiltersChange={onFiltersChange}
+                              onChangeCategoryOption={value => {
+                                setQuery({
+                                  category: value.label,
+                                  page: 1,
+                                });
+                              }}
+                              onChangeSortOption={value => {
+                                setQuery({
+                                  page: 1,
+                                  sortBy: value.value,
+                                });
+                              }}
+                              onPageChange={handlePageChange}
+                            />
+                          </MetaWrapper>
+                        );
+                      }
+
+                      if (data && data.collection === null) {
+                        return <NotFound />;
+                      }
+
+                      if (!isOnline) {
+                        return <OfflinePlaceholder />;
+                      }
+                    }}
+                  </TypedCollectionProductsQuery>
+                );
+              }
+
+              }
+            </TypedCollectionCategoriesQuery>
           )}
         </Media>
       )}

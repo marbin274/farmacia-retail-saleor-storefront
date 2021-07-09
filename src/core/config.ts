@@ -305,3 +305,5 @@ export const COUNTRY_DEFAULT = {
   code: "PE", 
   country: "Peru",
 };
+
+export const COLLECTION_CATEGORY_FILTER_LABEL = "Todas las categorías";
