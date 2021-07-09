@@ -18,11 +18,12 @@ export const BreadcrumbsContainer = styled.div`
   ${mediaUp.largeScreen`
     padding: 1.5rem 1rem;
     position: initial;
-    z-index: 1;
+    z-index: 0;
   `};
 `;
 
 export const Container = styled.div`
+  z-index: 1;
   ${ContainerStyle};
   margin: 1rem auto 0 auto;
 

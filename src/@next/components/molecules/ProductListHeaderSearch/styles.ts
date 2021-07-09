@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
     border-radius: 0;
   `}
   > span {
-    color: #908BA7;
+    color: #908ba7;
   }
 `;
 
@@ -22,7 +22,7 @@ export const Bar = styled.div`
   justify-content: space-between;
   align-items: center;
   font-size: ${props => props.theme.typography.smallFontSize};
-  width:100%;
+  width: 100%;
   ${media.mediumScreen`
     flex-direction: row;
   `}
@@ -32,7 +32,7 @@ export const LeftSide = styled.div`
   align-items: center;
   display: flex;
   justify-content: space-between;
-  padding: 1rem .8rem;
+  padding: 1rem 0.8rem;
   width: 100%;
   ${mediaUp.mediumScreen`
     justify-content: space-between;
@@ -43,19 +43,19 @@ export const LeftSide = styled.div`
     font-size: ${props => props.theme.typography.smallFontSize};
     font-weight: ${props => props.theme.typography.normalFontWeight};
     color: ${farmatheme.theme.colors.interactive};
-    display:flex;
-    align-items:center;
+    display: flex;
+    align-items: center;
   }
 `;
 
 export const RightSide = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 1rem .8rem;
+  padding: 1rem 0.8rem;
   width: 100%;
-  font-size:1.25rem;
-  align-items:center;
-  font-weight:600;
+  font-size: 1.25rem;
+  align-items: center;
+  font-weight: 600;
   ${media.smallScreen`
     font-size:1rem;
 `}
@@ -70,7 +70,6 @@ export const RightSide = styled.div`
   align-items: center;
   flex-direction: column;
 `}
- 
 `;
 export const FiltersButton = styled.button`
   font-size: ${props => props.theme.typography.smallFontSize};
@@ -86,7 +85,7 @@ export const Clear = styled.button`
   padding-left: 2rem;
   font-size: ${props => props.theme.typography.smallFontSize};
   > span {
-    margin-left: .5rem;
+    margin-left: 0.5rem;
   }
   ${mediaUp.mediumScreen`
     padding-left: 0rem;
@@ -104,13 +103,13 @@ export const Filters = styled.span`
   font-weight: ${props => props.theme.typography.boldFontWeight};
   padding: 0 0.6rem;
   > span {
-    margin-left: .5rem;
+    margin-left: 0.5rem;
   }
 `;
 
 export const Label = styled.span`
   color: ${props => props.theme.colors.greyText};
-  color:#2F2C3A;
+  color: #2f2c3a;
 `;
 
 export const SearchText = styled.span`
@@ -146,15 +145,14 @@ export const Sort = styled(CustomSelectContainer as any)`
 `;
 
 export const FiltersChipsWrapper = styled.div`
-  margin-top: .5rem;
-  padding: 0rem .5rem;
+  margin-top: 0.5rem;
+  padding: 0rem 0.5rem;
   > div {
     margin: 0.4rem;
   }
-  display:none;
+  display: none;
 `;
 
 export const NumberProducts = styled.span`
-  font-weight: ${({theme}) =>theme.typography.boldFontWeight};
-`
-;
+  font-weight: ${({ theme }) => theme.typography.boldFontWeight};
+`;

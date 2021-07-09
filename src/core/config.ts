@@ -297,7 +297,7 @@ export const DISTRICT_SELECTED_DEFAULT: IDistrictSelected = {
   name: "Miraflores",
   warehouse: null,
 };
-export const TOTAL_DISTRICT = 23;
+export const TOTAL_DISTRICT = 30;
 
 export const POS_DISTRICTS = ["miraflores"];
 
