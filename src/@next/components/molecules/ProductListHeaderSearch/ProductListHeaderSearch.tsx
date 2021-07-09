@@ -5,8 +5,8 @@ import { IProps } from "./types";
 import { FilterIcon } from "@farmacia-retail/farmauna-components";
 import { StringParam, useQueryParam } from "use-query-params";
 import farmatheme from "@farmatheme";
-import { useMediaQuery } from "react-responsive";
 import { largeScreen } from "@temp/@next/globalStyles/constants";
+import { useMediaScreen } from "@temp/@next/globalStyles";
 
 export const ProductListHeaderSearch: React.FC<IProps> = ({
   hideFilters = false,
@@ -20,7 +20,9 @@ export const ProductListHeaderSearch: React.FC<IProps> = ({
   onChange,
   onCloseFilterAttribute,
 }: IProps) => {
-  const isDesktop = useMediaQuery({ query: `(min-width: ${largeScreen}px)` });
+  const { isCustomMinScreen: isDesktop } = useMediaScreen(
+    largeScreen.toString()
+  );
   const [search] = useQueryParam("q", StringParam);
 
   const renderProductsFound = () => {
@@ -75,6 +77,8 @@ export const ProductListHeaderSearch: React.FC<IProps> = ({
           <S.Element className="product_list_header__dropdown">
             <S.Sort>
               <DropdownSelect
+                clearText="Limpiar"
+                label="Ordenar por"
                 onChange={onChange}
                 options={sortOptions}
                 value={sortOptions.find(

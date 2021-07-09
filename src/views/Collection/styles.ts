@@ -3,11 +3,16 @@ import styled from "styled-components";
 
 export const CollectionWrapper = styled.div`
   ${CollectionStyle}
+  z-index: 2;
   .collection-products {
-    width: initial;
+    width: 100%;
 
     ${mediaUp.largeScreen`
       margin-left: 0;
     `}
   }
+`;
+
+export const HeaderProducts = styled.div`
+  z-index: 1;
 `;

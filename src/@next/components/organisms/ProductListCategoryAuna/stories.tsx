@@ -12,7 +12,6 @@ storiesOf("@components/organisms/ProductListCategoryAuna", module)
       <ProductListCategoryAuna
         products={products}
         productsOnCart={productsOnCart}
-        canLoadMore={true}
         loading={false}
         onLoadMore={() => null}
       />

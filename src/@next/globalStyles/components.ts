@@ -1,4 +1,4 @@
-import { css } from "styled-components";
+import styled, { css } from "styled-components";
 import { media, mediaUp } from "./media";
 import farmatheme from "@farmatheme";
 import { containerWidth, spacer } from "./constants";
@@ -37,7 +37,7 @@ export const CollectionStyle = css`
     position: sticky;
     top: 5rem;
     width: ${containerWidth};
-    z-index: 2;
+    z-index: 3;
 
     ${mediaUp.largeScreen`
       padding: 1.5rem 1rem;
@@ -87,7 +87,6 @@ export const CollectionStyle = css`
     `}
 
     ${media.largeScreen`
-      background-color: ${farmatheme.theme.colors.neutral.lightest};
       .home-page__product {
         background-color: ${farmatheme.theme.colors.neutral.lightest};
         padding: 1rem;
@@ -105,4 +104,63 @@ export const ContainerStyle = css`
   ${mediaUp.largeScreen`
     width: ${containerWidth};
    `}
+`;
+
+export const CustomSelectContainer = styled.div`
+  .select-input {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    width: 100%;
+    ${mediaUp.smallScreen`
+      justify-content: flex-end;
+    `}
+    .label {
+      color: ${farmatheme.theme.colors.neutral.darkest};
+    }    
+  }
+
+  .select-container { 
+    align-items: center;
+    background: #FFFFFF;
+    border: 0.0625rem solid #908BA7;
+    border-radius: 2.5rem;
+    cursor: pointer;
+    display:flex;
+    justify-content: flex-start;
+    justify-content: space-between;
+    position:relative;
+    z-index: 0; 
+    ${mediaUp.largeScreen`
+      z-index: 1; 
+    `}
+  }
+
+  div[class*="menu"] {
+    border-bottom-left-radius: 1.25rem;
+    border-bottom-right-radius: 1.25rem;
+    margin-top: -1.25rem;
+    padding-top: 1.25rem;
+    z-index: -1; 
+    ${mediaUp.largeScreen`
+      z-index: 0; 
+    `}
+  }
+  .dropdown-select {
+    > div {
+      margin: 0;
+      padding: 0;
+    }
+    .select-control {
+      display: flex;
+      justify-content: flex-end;
+      margin: 0;
+      padding: 0;
+      ${mediaUp.smallScreen`
+        display: block;
+        justify-content: initial;
+      `}
+    }
+  }
 `;

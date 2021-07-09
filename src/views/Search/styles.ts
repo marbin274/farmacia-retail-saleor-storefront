@@ -30,7 +30,8 @@ export const SearchListHeader = styled.div`
 
   > div {
     background-color: ${aunaGrey06};
-
+    position: relative;
+    z-index: 1;
     ${media.largeScreen`
       margin-bottom: 0;
     `}

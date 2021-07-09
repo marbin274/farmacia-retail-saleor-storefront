@@ -13,7 +13,7 @@ export const Wrapper = styled.nav<{ isProductDetail: boolean }>`
 
   ${mediaUp.largeScreen`
     padding: 1rem 0rem;
-    z-index: 1;
+    z-index: 2;
   `};
 
   > .container {
