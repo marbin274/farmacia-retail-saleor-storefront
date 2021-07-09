@@ -1,5 +1,5 @@
 import farmatheme from "@farmatheme";
-import { mediaUp, styled } from "@styles";
+import { CustomSelectContainer, mediaUp, styled } from "@styles";
 
 export const Wrapper = styled.div`
   align-items: center;
@@ -100,64 +100,6 @@ export const Element = styled.span`
   `}
 `;
 
-export const CustomSelectContainer = styled.div`
-  .select-input {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    margin: 0;
-    width: 100%;
-    ${mediaUp.smallScreen`
-      justify-content: flex-end;
-    `}
-    .label {
-      color: ${farmatheme.theme.colors.neutral.darkest};
-    }    
-  }
-
-  .select-container { 
-    align-items: center;
-    background: #FFFFFF;
-    border: 0.0625rem solid #908BA7;
-    border-radius: 2.5rem;
-    cursor: pointer;
-    display:flex;
-    justify-content: flex-start;
-    justify-content: space-between;
-    position:relative;
-    z-index: 0; 
-    ${mediaUp.largeScreen`
-      z-index: 1; 
-    `}
-  }
-
-  div[class*="menu"] {
-    border-bottom-left-radius: 1.25rem;
-    border-bottom-right-radius: 1.25rem;
-    margin-top: -1.25rem;
-    padding-top: 1.25rem;
-    z-index: -1; 
-    ${mediaUp.largeScreen`
-      z-index: 0; 
-    `}
-  }
-  .dropdown-select {
-    > div {
-      margin: 0;
-      padding: 0;
-    }
-    .select-control {
-      display: flex;
-      justify-content: flex-end;
-      margin: 0;
-      padding: 0;
-      ${mediaUp.smallScreen`
-        display: block;
-        justify-content: initial;
-      `}
-    }
-  }
-`;
 
 export const Filters = styled(CustomSelectContainer as any)`
   display: flex;
@@ -167,7 +109,11 @@ export const Filters = styled(CustomSelectContainer as any)`
   }
 `;
 
-export const CategoryFilter = styled(CustomSelectContainer as any)`  
+export const CategoryFilter = styled(CustomSelectContainer as any)`
+  padding-bottom: 1rem;
+  ${mediaUp.smallScreen`
+    padding-bottom: initial;
+  `}  
   .select-input {
     .select-container {
       justify-content: space-between;

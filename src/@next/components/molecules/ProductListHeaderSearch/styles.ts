@@ -1,6 +1,5 @@
 import farmatheme from "@farmatheme";
-import { media, mediaUp, styled } from "@styles";
-import { CustomSelectContainer } from "../ProductListHeader/styles";
+import { CustomSelectContainer, media, mediaUp, styled } from "@styles";
 
 export const Wrapper = styled.div`
   background-color: ${props => props.theme.colors.white};
