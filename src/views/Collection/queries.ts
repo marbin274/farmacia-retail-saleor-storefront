@@ -7,6 +7,7 @@ import {
   productVariantFragmentSimple,
 } from "../Product/queries";
 import { Collection, CollectionVariables } from "./gqlTypes/Collection";
+import { CollectionCategories, CollectionCategoriesVariables } from "./gqlTypes/CollectionCategories";
 
 export const collectionProductsQuery = gql`
   ${basicProductFragment}
@@ -15,12 +16,13 @@ export const collectionProductsQuery = gql`
   query Collection(
     $id: ID!, 
     $attributes: [AttributeInput],
-    $pageSize: Int, 
+    $categories: [ID],
+    $districtId: ID,
     $page: Int, 
-    $sortBy: ProductOrder, 
-    $priceLte: Float, 
+    $pageSize: Int, 
     $priceGte: Float, 
-    $districtId: ID
+    $priceLte: Float, 
+    $sortBy: ProductOrder, 
   ) {
     paginatedProducts(
       page: $page
@@ -28,6 +30,7 @@ export const collectionProductsQuery = gql`
       sortBy: $sortBy
       filter: {
         attributes: $attributes, 
+        categories: $categories,
         collections: [$id], 
         minimalPrice: {
           gte: $priceGte, 
@@ -92,3 +95,26 @@ export const TypedCollectionProductsQuery = TypedQuery<
   Collection,
   CollectionVariables
 >(collectionProductsQuery);
+
+export const collectionCategoriesQuery = gql`
+  query CollectionCategories(
+    $id: ID!
+  ) {   
+    collection(id: $id) {
+      id
+      categories(first: 10) {
+        edges {
+          node {
+            id
+            name
+          }
+        }
+      }
+    } 
+  }
+`;
+
+export const TypedCollectionCategoriesQuery = TypedQuery<
+  CollectionCategories,
+  CollectionCategoriesVariables
+>(collectionCategoriesQuery);

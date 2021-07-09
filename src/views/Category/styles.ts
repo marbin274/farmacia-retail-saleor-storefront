@@ -1,9 +1,17 @@
-import { CollectionStyle, DefaultTheme } from "@temp/@next/globalStyles";
+import { CollectionStyle, DefaultTheme, mediaUp } from "@temp/@next/globalStyles";
 import styled from "styled-components";
 import farmatheme from "@farmatheme";
 
 export const CategoryWrapper = styled.div`
   ${CollectionStyle}
+`;
+
+export const CategoryProductListHeader = styled.div`
+  background-color: ${farmatheme.theme.colors.neutral.light};
+  padding: 0rem 1rem;
+  ${mediaUp.mediumScreen`
+    padding: 0rem;
+  `}
 `;
 
 export const ProductsQuantityWrapper = styled.div`

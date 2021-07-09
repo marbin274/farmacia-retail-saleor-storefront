@@ -6,6 +6,8 @@ import {
   XIcon,
 } from "@farmacia-retail/farmauna-components";
 import farmatheme from "@farmatheme";
+import { useMediaScreen } from "@temp/@next/globalStyles";
+import { aunaGrey100 } from "@temp/@next/globalStyles/constants";
 import React from "react";
 import * as S from "./styles";
 import { IProps } from "./types";
@@ -13,16 +15,40 @@ import { IProps } from "./types";
 export const ProductListHeader: React.FC<IProps> = ({
   activeFilters = 0,
   activeFiltersAttributes = [],
+  activeSecondaryOptions,
   activeSortOption,
   clearFilters,
   hideFilters = false,
   numberOfProducts = 0,
-  onChange,
+  onChangeSecondaryOption,
+  onChangeSortOption,
   onCloseFilterAttribute,
   openFiltersMenu,
+  secondaryClearLabel,
+  secondaryLabel,
+  secondaryOptions,
+  showSecondarySelect = false,
   sortOptions,
 }: IProps) => {
+
+  const { isDesktopScreen } = useMediaScreen();
+
+  const secondarySelect = () => {    
+    
+    return (<S.CategoryFilter>
+      <DropdownSelect
+        clearText={secondaryClearLabel}
+        onChange={onChangeSecondaryOption}
+        options={secondaryOptions}
+        value={secondaryOptions.find(
+          option => option.value === activeSecondaryOptions?.[0]
+        )}
+      />
+    </S.CategoryFilter>);
+  }
+
   return (
+    <>
     <S.Wrapper role="product-list-header">
       <S.Bar>
         {!hideFilters && (
@@ -63,7 +89,9 @@ export const ProductListHeader: React.FC<IProps> = ({
           <S.Element>
             <S.Sort>
               <DropdownSelect
-                onChange={onChange}
+                clearText="Limpiar"
+                label="Ordenar por"
+                onChange={onChangeSortOption}
                 options={sortOptions}
                 value={sortOptions.find(
                   option => option.value === activeSortOption
@@ -71,6 +99,13 @@ export const ProductListHeader: React.FC<IProps> = ({
               />
             </S.Sort>
           </S.Element>
+            {
+              (isDesktopScreen && showSecondarySelect) &&
+              <S.Element>
+                <S.CategoryFilterLabel>{secondaryLabel}:</S.CategoryFilterLabel>
+                {secondarySelect()}
+              </S.Element>
+            }
         </S.RightSide>
       </S.Bar>
       <S.FiltersChipsWrapper
@@ -124,5 +159,18 @@ export const ProductListHeader: React.FC<IProps> = ({
         )}
       </S.FiltersChipsWrapper>
     </S.Wrapper>
+      <S.MobileLabel className="fa-my-2">
+        <span
+          className="fa-text-sm fa-font-normal fa-tracking-tight fa-mr-2"
+          style={{ color: aunaGrey100 }}
+        >
+          Productos encontrados
+        </span>
+        <span className="fa-text-sm fa-font-medium fa-tracking-tight fa-text-neutral-darkest">
+          {numberOfProducts}
+        </span>
+      </S.MobileLabel>
+      {(!isDesktopScreen && showSecondarySelect) && secondarySelect()}
+    </>
   );
 };
