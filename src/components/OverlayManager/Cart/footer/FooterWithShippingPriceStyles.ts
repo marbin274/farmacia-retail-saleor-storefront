@@ -97,6 +97,14 @@ export const DetailsDiscount = styled(DetailsPrice as any)`
     color: ${aunaDiscount};
 `;
 
+export const DetailsTotal = styled(DetailsPrice as any)`
+    font-weight: ${({ theme }) => theme.typography.boldFontWeight};
+`;
+
+export const DetailsTotalMount = styled(DetailsPriceTotal as any)`
+    font-size: ${({ theme }) => theme.typography.baseFontSize};
+`;
+
 
 export const ShippingMethodLabel = styled.span`
     color: ${neutralDarkest};
