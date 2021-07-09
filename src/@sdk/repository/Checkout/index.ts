@@ -131,6 +131,7 @@ export class CheckoutRepositoryManager implements ICheckoutRepositoryManager {
           availableShippingMethods: undefined,
           id: undefined,
           lines: alteredLines,
+          promoCodeDiscount: undefined,
           shippingAddress: {
             ...this.saleorState.checkout.shippingAddress,
             city: undefined,
