@@ -17,7 +17,8 @@ export const Header: React.FC = () => {
     location.pathname.includes("account") ||
     location.pathname.includes("address-book") ||
     location.pathname.includes("order-history") ||
-    location.pathname.includes("category");
+    location.pathname.includes("category") ||
+    location.pathname.includes("collection");
 
   return (
     <TypedMainMenuQuery alwaysRender renderOnError displayLoader={false}>
@@ -27,9 +28,9 @@ export const Header: React.FC = () => {
             data.categories.edges.map(
               (lvl1): INavItem => ({
                 ...convertCategoryToMenuItem(lvl1.node.id, lvl1.node.name),
-                children: lvl1.node.children.edges.map((lvl2) => ({
+                children: lvl1.node.children.edges.map(lvl2 => ({
                   ...convertCategoryToMenuItem(lvl2.node.id, lvl2.node.name),
-                  children: lvl2.node.children.edges.map((lvl3) =>
+                  children: lvl2.node.children.edges.map(lvl3 =>
                     convertCategoryToMenuItem(lvl3.node.id, lvl3.node.name)
                   ),
                 })),
@@ -41,12 +42,12 @@ export const Header: React.FC = () => {
           () => data.shop.navigation?.main?.items.filter(it => !!it.collection),
           []
         );
-        
+
         const navMain: INavItem[] = maybe(
           () => data.shop.navigation?.main?.items,
           []
         );
-        
+
         return (
           <>
             <HeaderComponent
