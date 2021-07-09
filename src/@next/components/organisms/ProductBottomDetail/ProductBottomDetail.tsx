@@ -29,7 +29,7 @@ export const ProductBottomDetail: FC<IProps> = ({
   subtractItemToCart,
   hideProductDetails,
 }) => {
-  const { isMaxSmallScreen } = useMediaScreen();
+  const { isMobileScreen } = useMediaScreen();
 
   return (
     <S.Container>
@@ -51,7 +51,7 @@ export const ProductBottomDetail: FC<IProps> = ({
                 <S.ProductName>{product.name}</S.ProductName>
                 <div className="inline-element">
                   <S.ProductPrice>{renderPrice()}</S.ProductPrice>
-                  {isMaxSmallScreen && (
+                  {isMobileScreen && (
                     <ItemsHandler
                       canAddToCart={canAddToCart}
                       product={product}
@@ -62,7 +62,7 @@ export const ProductBottomDetail: FC<IProps> = ({
                   )}
                 </div>
               </S.ProductInfo>
-              {!isMaxSmallScreen && (
+              {!isMobileScreen && (
                 <ItemsHandler
                   canAddToCart={canAddToCart}
                   product={product}

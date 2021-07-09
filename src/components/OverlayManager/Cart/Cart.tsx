@@ -18,12 +18,12 @@ import { useMediaScreen } from "@temp/@next/globalStyles";
 const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
   const [isModelOpen, setIsModelOpen] = React.useState(false);
   const [itemToDelete, setItemToDelete] = React.useState(null);
-  const { isMaxSmallScreen } = useMediaScreen();
+  const { isMobileScreen } = useMediaScreen();
   const { buttonText, showShippingPrice } = useShowShippingPriceInCart();
   const cartBodyRef = React.useRef<HTMLDivElement>();
   const [isScrolledBodyCart, setIsScrolledBodyCart] =
     React.useState<boolean>(false);
-  const isScrolledAndSmall = isScrolledBodyCart && isMaxSmallScreen;
+  const isScrolledAndSmall = isScrolledBodyCart && isMobileScreen;
   const {
     addItem,
     items,
@@ -50,7 +50,7 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
  
 
   const onScrollCart = () => {
-    if (!isMaxSmallScreen) return;
+    if (!isMobileScreen) return;
     const { top: cartBodyTop } = cartBodyRef.current.getBoundingClientRect();
     const limitTopScroll = 60; // HEIGHT HEADER - 2.25rem
     const isScrolled = cartBodyTop <= limitTopScroll;

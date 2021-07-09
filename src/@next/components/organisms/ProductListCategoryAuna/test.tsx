@@ -21,7 +21,6 @@ describe("<ProductList />", () => {
         <ProductListCategoryAuna
           products={products}
           productsOnCart={productsOnCart}
-          canLoadMore={true}
           loading={false}
           onLoadMore={jest.fn()}
         />
@@ -37,7 +36,6 @@ describe("<ProductList />", () => {
         <ProductListCategoryAuna
           products={products}
           productsOnCart={productsOnCart}
-          canLoadMore={true}
           loading={true}
           onLoadMore={jest.fn()}
         />

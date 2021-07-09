@@ -48,7 +48,7 @@ export const useMediaScreen = (screen?: string) => {
     query: `(max-width: ${largeScreen}px)`,
   });
 
-  const isMaxSmallScreen = useMediaQuery({
+  const isMobileScreen = useMediaQuery({
     query: `(max-width: ${smallScreen}px)`,
   });
   
@@ -58,7 +58,7 @@ export const useMediaScreen = (screen?: string) => {
     isCustomMaxScreen,
     isCustomMinScreen,
     isMaxLargeScreen,
-    isMaxSmallScreen,
+    isMobileScreen,
   };
 }
 
