@@ -25,7 +25,7 @@ export const FreeShipping = styled.div`
     color: ${aunaBrand3};
     display: flex;
     justify-content: space-between;
-    padding: 1rem 0.5rem;
+    padding: 1rem;
     width: 100%;
     strong {
         font-weight: ${({ theme }) => theme.typography.boldFontWeight};
