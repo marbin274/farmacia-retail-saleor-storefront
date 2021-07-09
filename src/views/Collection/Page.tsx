@@ -25,7 +25,7 @@ import {
   Collection_collection,
   Collection_paginatedProducts,
 } from "./gqlTypes/Collection";
-import { CollectionWrapper } from "./styles";
+import { CollectionWrapper, HeaderProducts } from "./styles";
 
 interface SortItem {
   label: string;
@@ -149,9 +149,9 @@ const Page: React.FC<PageProps> = ({
           baseUrl={baseUrl}
         />
       </div>
-      <div className="collection-container">
+      <HeaderProducts className="collection-container">
         {getProductListHeader()}
-      </div>
+      </HeaderProducts>
       <div className="collection-container collection-body">
         <script className="structured-data-list" type="application/ld+json">
           {structuredData(collection)}

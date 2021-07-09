@@ -125,7 +125,10 @@ export const CustomSelectContainer = styled.div`
     justify-content: flex-start;
     justify-content: space-between;
     position:relative;
-    z-index: 2; 
+    z-index: 0; 
+    ${mediaUp.largeScreen`
+      z-index: 1; 
+    `}
   }
 
   div[class*="menu"] {
@@ -133,6 +136,10 @@ export const CustomSelectContainer = styled.div`
     border-bottom-right-radius: 1.25rem;
     margin-top: -1.25rem;
     padding-top: 1.25rem;
+    z-index: -1; 
+    ${mediaUp.largeScreen`
+      z-index: 0; 
+    `}
   }
   .dropdown-select {
     > div {

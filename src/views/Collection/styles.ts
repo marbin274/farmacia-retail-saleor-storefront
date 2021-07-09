@@ -12,3 +12,7 @@ export const CollectionWrapper = styled.div`
 
   }
 `;
+
+export const HeaderProducts = styled.div`
+  z-index: 1;
+`;
