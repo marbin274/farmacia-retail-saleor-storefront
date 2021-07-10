@@ -11,7 +11,6 @@ export interface IProps {
   removeItemToCart?: IRemoveItemToCartCallback;
   subtractItemToCart?: ISubtractItemToCartCallback;
   products: ISimpleProduct[];
-  canLoadMore?: boolean;
   loading?: boolean;
   onLoadMore?: () => void;
   productsOnCart?: IItems;

@@ -1,7 +1,6 @@
 import { AddressGeocalization } from "@temp/@next/components/molecules";
-import { largeScreen } from "@temp/@next/globalStyles/constants";
+import { useMediaScreen } from "@temp/@next/globalStyles";
 import React, { useContext } from "react";
-import { useMediaQuery } from "react-responsive";
 import { DesktopNav } from "../DesktopNav";
 import { OverlayContext, OverlayTheme, OverlayType } from "../Overlay";
 import { SearchForm } from "../OverlayManager/Search";
@@ -14,9 +13,7 @@ export const MainMenu: React.FC<IProps> = ({
   navMain,
   isLightHeader,
 }) => {
-  const isMaxLargeScreen = useMediaQuery({
-    query: `(max-width: ${largeScreen}px)`,
-  });
+  const { isMaxLargeScreen } = useMediaScreen();
   const overlayContext = useContext(OverlayContext);
   const canShowSearch = isMaxLargeScreen && !isLightHeader;
   const isProductDetail = isMaxLargeScreen && isLightHeader;

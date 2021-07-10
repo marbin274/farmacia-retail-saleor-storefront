@@ -8,18 +8,21 @@ import { NavSubItem } from "./NavSubItem";
 import "./scss/index.scss";
 import { IconHamburger } from "@temp/@next/components/atoms";
 import { Button } from "@farmacia-retail/farmauna-components";
+import * as S from "./styles";
 
 interface NavListProps {
-  openParent: INavItem | null;
-  items: INavItem[];
+  categories: INavItem[];
+  collections: INavItem[];
   hideOverlay(): void;
+  openParent: INavItem | null;
   setOpenParent(item: INavItem): void;
 }
 
 export const NavList: React.FC<NavListProps> = ({
-  items,
-  openParent,
+  categories,
+  collections,
   hideOverlay,
+  openParent,
   setOpenParent,
 }) => {
   const handleShowSubItems = (itemName: INavItem) => {
@@ -30,32 +33,45 @@ export const NavList: React.FC<NavListProps> = ({
     setOpenParent(null);
   };
 
+  const getNavItem = (item: INavItem, isCollection?: boolean) => {
+    return <NavItem
+      arrowDirection="rigth"
+      firstLevel
+      hideOverlay={hideOverlay}
+      isCollection={isCollection}
+      isOpen={openParent?.name === item.name}
+      key={item.id}
+      showSubItems={handleShowSubItems}
+      {...item}
+    />
+  }
+
   return (
     <>
-      <ul className="fa-bg-highlight-lightest">
-        <li className="side-nav__menu-item-header">
+      <ul>
+        <S.NavMenuHeader>
           <Button
             onClick={hideOverlay}
             iconOnly
-            icon={<IconHamburger open={true} />}
+            icon={<IconHamburger open />}
           />
           <Link className="fa-mx-auto" to={baseUrl} onClick={hideOverlay}>
             <ReactSVG path={logoImg} />
           </Link>
-        </li>
+        </S.NavMenuHeader>
         {!openParent ? (
           <>
-            {items.map(item => (
-              <NavItem
-                key={item.id}
-                firstLevel={true}
-                hideOverlay={hideOverlay}
-                showSubItems={handleShowSubItems}
-                isOpen={openParent?.name === item.name}
-                arrowDirection="rigth"
-                {...item}
-              />
-            ))}
+            <li>
+              <S.CollectionNav>                
+                {collections.map(item => getNavItem(item, true))}
+              </S.CollectionNav>
+            </li>
+            <li>
+              <ul className="fa-bg-highlight-lightest">
+                <S.CategoriesLabel>Categorías</S.CategoriesLabel>
+                {categories.map(item => getNavItem(item))}
+              </ul>
+            </li>
           </>
         ) : (
           <>

@@ -56,9 +56,11 @@
   }
 }
 .product_list_container {
-  margin-bottom: 2rem;
+  margin-bottom: 2rem;  
   > div {
     background-color: $auna-grey-06;
+    position: relative;
+    z-index: 1;
     @media (max-width: $medium-screen) {
       padding-top: 3rem;
       padding-bottom: 3.5rem;
