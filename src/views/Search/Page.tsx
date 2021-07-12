@@ -1,22 +1,19 @@
+import { Pagination } from "@farmacia-retail/farmauna-components";
 import { IPaginationProps } from "@temp/@next/components/molecules/Pagination/types";
 import {
   IAddToCartCallback,
   IRemoveItemToCartCallback,
-  ISubtractItemToCartCallback
+  ISubtractItemToCartCallback,
 } from "@temp/@next/components/molecules/ProductTileAUNA/types";
 import { IItems } from "@temp/@sdk/api/Cart/types";
-import * as appPaths from "@temp/app/routes";
 import { convertToSimpleProduct, maybe } from "@temp/core/utils";
 import { IFilterAttributes, IFilters } from "@types";
 import * as React from "react";
-import { Link } from "react-router-dom";
-import { Pagination } from "@farmacia-retail/farmauna-components";
-import { ProductListHeader } from "../../@next/components/molecules";
+import { ProductListHeaderSearch } from "../../@next/components/molecules";
 import { ProductListAUNA } from "../../@next/components/organisms";
 import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
 import { SearchProducts_paginatedProducts } from "./gqlTypes/SearchProducts";
-import "./scss/index.scss";
-
+import * as S from "./styles";
 interface SortItem {
   label: string;
   value?: string;
@@ -51,8 +48,6 @@ const Page: React.FC<PageProps> = ({
   activeFilters,
   activeSortOption,
   attributes,
-  search,
-  setSearch,
   displayLoader,
   hasNextPage,
   clearFilters,
@@ -97,16 +92,19 @@ const Page: React.FC<PageProps> = ({
       []
     );
 
-    React.useEffect(() =>
-      searchContainerRef?.current.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" })
-    , [products]);
+  React.useEffect(
+    () =>
+      searchContainerRef?.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest",
+      }),
+    [products]
+  );
 
   return (
-    <div 
-      className="category"
-      ref={searchContainerRef}
-    >
-      <div className="search-page container">
+    <div className="fa-bg-neutral-light fa-z-0" ref={searchContainerRef}>
+      <S.SearchPage>
         <FilterSidebar
           show={showFilters}
           hide={() => setShowFilters(false)}
@@ -115,35 +113,31 @@ const Page: React.FC<PageProps> = ({
           filters={filters}
         />
         {products.totalCount > 0 ? (
-          <div>
-            <div className="product_list_container">
-              <ProductListHeader
-                activeSortOption={activeSortOption}
-                activeFilters={activeFilters}
-                activeFiltersAttributes={activeFiltersAttributes}
-                clearFilters={clearFilters}
-                hideFilters
-                openFiltersMenu={() => setShowFilters(true)}
-                numberOfProducts={products?.totalCount ? products.totalCount : 0}
-                sortOptions={sortOptions}
-                onChange={onOrder}
-                onCloseFilterAttribute={onAttributeFiltersChange}
-              />
-            </div>
-          </div>
+          <S.SearchListHeader>
+            <ProductListHeaderSearch
+              activeSortOption={activeSortOption}
+              activeFilters={activeFilters}
+              activeFiltersAttributes={activeFiltersAttributes}
+              clearFilters={clearFilters}
+              hideFilters
+              openFiltersMenu={() => setShowFilters(true)}
+              numberOfProducts={products?.totalCount ? products.totalCount : 0}
+              sortOptions={sortOptions}
+              onChange={onOrder}
+              onCloseFilterAttribute={onAttributeFiltersChange}
+            />
+          </S.SearchListHeader>
         ) : (
-          <div className="no_products">
+          <S.SearchNoProducts>
             <span> Productos encontrados</span> <span>"0"</span>
-          </div>
+          </S.SearchNoProducts>
         )}
-
-        <div className="go_home_div">
-          <Link to={appPaths.baseUrl}>Atrás</Link>
-        </div>
         {canDisplayProducts && (
           <>
             <ProductListAUNA
-              products={products.edges.map((edge) => convertToSimpleProduct(edge.node))}
+              products={products.edges.map(edge =>
+                convertToSimpleProduct(edge.node)
+              )}
               productsOnCart={productsOnCart}
               canLoadMore={hasNextPage}
               loading={displayLoader}
@@ -160,7 +154,7 @@ const Page: React.FC<PageProps> = ({
             />
           </>
         )}
-      </div>
+      </S.SearchPage>
     </div>
   );
 };

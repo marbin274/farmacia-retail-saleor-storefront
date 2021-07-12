@@ -1,7 +1,6 @@
 import { AddressGeocalization } from "@temp/@next/components/molecules";
-import { largeScreen } from "@temp/@next/globalStyles/constants";
+import { useMediaScreen } from "@temp/@next/globalStyles";
 import React, { useContext } from "react";
-import { useMediaQuery } from "react-responsive";
 import { DesktopNav } from "../DesktopNav";
 import { OverlayContext, OverlayTheme, OverlayType } from "../Overlay";
 import { SearchForm } from "../OverlayManager/Search";
@@ -12,14 +11,12 @@ export const MainMenu: React.FC<IProps> = ({
   categories,
   hideMenuCondition,
   navMain,
-  isProductPage,
+  isLightHeader,
 }) => {
-  const isMaxLargeScreen = useMediaQuery({
-    query: `(max-width: ${largeScreen}px)`,
-  });
+  const { isMaxLargeScreen } = useMediaScreen();
   const overlayContext = useContext(OverlayContext);
-  const canShowSearch = isMaxLargeScreen && !isProductPage;
-  const isProductDetail = isMaxLargeScreen && isProductPage;
+  const canShowSearch = isMaxLargeScreen && !isLightHeader;
+  const isProductDetail = isMaxLargeScreen && isLightHeader;
   const onClickSearchIcon = () => {
     overlayContext.show(OverlayType.search, OverlayTheme.right);
   };
@@ -29,10 +26,11 @@ export const MainMenu: React.FC<IProps> = ({
         <S.Wrapper isProductDetail={isProductDetail}>
           {canShowSearch && (
             <S.ContainerSearch>
-              <SearchForm />        
-              <div 
-                  className='fa-absolute fa-w-full fa-h-full fa-top-0 fa-left-0 fa-block'
-                  onClick={onClickSearchIcon} />    
+              <SearchForm />
+              <div
+                className="fa-absolute fa-w-full fa-h-full fa-top-0 fa-left-0 fa-block"
+                onClick={onClickSearchIcon}
+              />
             </S.ContainerSearch>
           )}
           <S.Container className="container">

@@ -1,6 +1,7 @@
 import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react";
 import React from "react";
+import { MemoryRouter } from 'react-router-dom';
 
 import { ThankYou } from ".";
 import { steps } from './fixtures';
@@ -12,13 +13,15 @@ storiesOf("@components/organisms/ThankYou", module)
     const orderDetails = action("Order details has been clicked");
 
     return (
-      <ThankYou
-        steps={steps}
-        totalProducts={3}
-        orderNumber={"#341414"}
-        continueShopping={continueShopping}
-        orderDetails={orderDetails}
-        sequentialCode={"F53E053E"}
-      />
+      <MemoryRouter>
+        <ThankYou
+          steps={steps}
+          totalProducts={3}
+          orderNumber={"#341414"}
+          continueShopping={continueShopping}
+          orderDetails={orderDetails}
+          sequentialCode={"F53E053E"}
+        />
+      </MemoryRouter>
     );
   });

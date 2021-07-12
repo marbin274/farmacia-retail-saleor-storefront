@@ -1,11 +1,12 @@
 import {
   getName,
-  removeCountryCodeInPhoneNumber,
+  removeCountryCodeInPhoneNumber
 } from "@temp/@next/utils/addresForm";
 import { IPrivacyPolicy } from "@temp/@sdk/api/Checkout/types";
 import {
   ADDRESS_FORM_SHOW_GENERAL_ERRORS,
   ADDRESS_FORM_SORT,
+  COUNTRY_DEFAULT
 } from "@temp/core/config";
 import { IAddressWithEmail, IFormErrorSort } from "@types";
 import { Form, Formik, FormikHelpers } from "formik";
@@ -15,11 +16,10 @@ import React from "react";
 import { alertService } from "../../atoms/Alert";
 import {
   addressFormModalSchema,
-  addressFormSchema,
+  addressFormSchema
 } from "./adddressFormSchema";
 import { AddressFormContent } from "./AddressFormContent";
 import { IProps } from "./types";
-
 const ADDRESS_FIELDS = [
   "city",
   // "companyName", // currently unused
@@ -125,10 +125,7 @@ export const AddressForm: React.FC<IProps> = ({
     if (submitAddressForm) {
       const _values: IAddressWithEmail = {
         ...values,
-        country: {
-          code: "PE",
-          country: "Peru",
-        },
+        country: COUNTRY_DEFAULT,
         latitude: Number(values.latitude),
         longitude: Number(values.longitude),
       };

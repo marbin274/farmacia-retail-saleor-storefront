@@ -1,7 +1,6 @@
 @import "@temp/globalStyles/scss/variables.scss";
 
 .order-details {
-  background-color: #f7f6f8;
   &__container {
     margin: 0 auto;
   }
@@ -15,7 +14,6 @@
     font-size: $small-font-size;
     color: $gray-light;
     margin-top: 2rem;
-    display: inline-block;
     margin-bottom: 2rem;
     display: flex;
     align-items: center;

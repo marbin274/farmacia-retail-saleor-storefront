@@ -36,7 +36,7 @@ const LandingPage: FC<IProps> = ({ landing }) => {
       </S.BannerContainer>
       <div className="container">
         <Breadcrumbs
-          breadcrumbs={[{ link: location.pathname, value: landing.title }]}
+          breadcrumbs={[{ link: location.pathname, label: landing.title }]}
           breadcrumbsAlwaysVisible
         />
         <S.CollectionsContainer>

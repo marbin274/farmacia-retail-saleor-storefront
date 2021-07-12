@@ -4,6 +4,7 @@ import addressIcon from "images/auna/checkout-address.svg";
 import doneIcon from "images/auna/checkout-done.svg";
 import paymentIcon from "images/auna/checkout-payment.svg";
 import { DOT_STATUS } from "./";
+import farmatheme from "@farmatheme";
 
 export const ICON_COLORS = [
   aunaDisabled, // INACTIVE
@@ -38,7 +39,7 @@ export const Dot = styled.div<{ status: DOT_STATUS }>`
   height: 1.5rem;
   border: none;
   background-color: ${props =>
-    props.status === DOT_STATUS.INACTIVE ? "#008A66" : "#452fba"};
+    props.status === DOT_STATUS.INACTIVE ? "#008A66" : farmatheme.theme.colors.interactive};
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -93,7 +94,7 @@ export const ProgressBar = styled.div<{ done?: boolean }>`
   z-index: 0;
   width: 100%;
   height: 4px;
-  background-color: ${props => (props.done ? "#452FBA" : "#008A66")};
+  background-color: ${props => (props.done ? farmatheme.theme.colors.interactive : "#008A66")};
 `;
 
 export const Step = styled.div`

@@ -10,6 +10,7 @@ import {
 
 export const BASE_URL = "/";
 export const PRODUCTS_PER_PAGE = 8;
+export const COLLECTIONS_PER_PAGE = 8;
 export const LANDING_COLLECTIONS_PER_PAGE = 100; // TODO: Cauando se llegue a implentar paginación cambiar a un valor menor
 export const SUPPORT_EMAIL = "support@example.com";
 export const CONSULTATION_EMAIL = "consultas@farmauna.com";
@@ -17,7 +18,7 @@ export const CONSULTATION_EMAIL = "consultas@farmauna.com";
 export const PROVIDERS = {
   AUNA: {
     id: "farmacia-retail.payments.niubiz",
-    label: "AUNA Payments Gateway",
+    label: "Tarjeta de crédito/débito",
   },
   BRAINTREE: {
     id: "mirumee.payments.braintree",
@@ -29,7 +30,11 @@ export const PROVIDERS = {
   },
   DUMMY: {
     id: "mirumee.payments.dummy",
-    label: "AUNA Payments Gateway",
+    label: "AUNA Dummy Payments Gateway",
+  },
+  POS: {
+    id: "farmacia-retail.payments.pos",
+    label: "POS contra entrega",
   },
 };
 export const billingAddressAlwaysSameAsShipping = true;
@@ -293,3 +298,12 @@ export const DISTRICT_SELECTED_DEFAULT: IDistrictSelected = {
   warehouse: null,
 };
 export const TOTAL_DISTRICT = 30;
+
+export const POS_DISTRICTS = ["miraflores"];
+
+export const COUNTRY_DEFAULT = { 
+  code: "PE", 
+  country: "Peru",
+};
+
+export const COLLECTION_CATEGORY_FILTER_LABEL = "Todas las categorías";

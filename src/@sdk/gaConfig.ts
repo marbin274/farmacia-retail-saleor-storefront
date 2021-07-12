@@ -127,7 +127,8 @@ export const launchCheckoutFilledInputForAddressEvent = () => {
 export const launchDetailProductEvent = (
   name: string,
   id: string,
-  price: number
+  price: number,
+  category: string
 ) => {
   return pushToDatalayer({
     ecommerce: {
@@ -138,6 +139,7 @@ export const launchDetailProductEvent = (
             id,
             name,
             price,
+            category,
           },
         ],
       },

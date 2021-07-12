@@ -6,6 +6,13 @@
 // START Enums and Input Objects
 //==============================================================
 
+export enum CollectionSortField {
+  AVAILABILITY = "AVAILABILITY",
+  NAME = "NAME",
+  PRODUCT_COUNT = "PRODUCT_COUNT",
+  SORT_ORDER = "SORT_ORDER",
+}
+
 /**
  * An enumeration.
  */
@@ -286,6 +293,16 @@ export interface AttributeInput {
   slug: string;
   value?: string | null;
   values?: (string | null)[] | null;
+}
+
+export interface CheckoutLineInput {
+  quantity: number;
+  variantId: string;
+}
+
+export interface CollectionSortingInput {
+  direction: OrderDirection;
+  field: CollectionSortField;
 }
 
 export interface ProductOrder {

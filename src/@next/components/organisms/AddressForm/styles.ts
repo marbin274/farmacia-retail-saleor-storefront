@@ -69,8 +69,11 @@ export const RowWithOneCell = styled.div`
 `;
 
 export const FieldsGroup = styled.div`
-  padding-top: 1rem;
+  padding-bottom: 1rem;
   width: 100%;
+  &:last-child {
+    padding-bottom: 0rem;
+  }
 `;
 
 export const GroupLabel = styled.div`

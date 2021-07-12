@@ -1,190 +1,188 @@
-import { media, mediaUp, styled } from "@styles";
+import farmatheme from "@farmatheme";
+import { CustomSelectContainer, mediaUp, styled } from "@styles";
 
 export const Wrapper = styled.div`
-  background-color: ${props => props.theme.colors.white};
-  border-radius: 1rem;
-  height:4rem;
-  display:flex;
-  align-items:center;
-  margin-bottom:1rem;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
 
-  ${media.smallScreen`
-    border-radius: 0;
+  ${mediaUp.largeScreen`
+    margin-bottom: 1rem;
+    width: 100%;
   `}
-  > span {
-    color: #908BA7;
-  }
 `;
 
 export const Bar = styled.div`
-  display: flex;
-  justify-content: space-between;
   align-items: center;
+  background-color: ${props => props.theme.colors.white};
+  border-radius: 1rem;
+  display: flex;
   font-size: ${props => props.theme.typography.smallFontSize};
-  width:100%;
-  ${media.mediumScreen`
-    flex-direction: row;
-    
+  justify-content: space-between;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  width: 100%;
+
+  ${mediaUp.largeScreen`
+    padding: 1rem 1rem 1rem 1.5rem;
   `}
 `;
 
 export const LeftSide = styled.div`
   align-items: center;
-    
   display: flex;
   justify-content: space-between;
-  padding: 1rem .8rem;
   width: 100%;
+
   ${mediaUp.mediumScreen`
     justify-content: space-between;
-    width: 24rem;
+    width: auto;
   `}
+
   span, button {
-    color: ${props => props.theme.colors.interactive};
+    align-items: center;
+    color: ${farmatheme.theme.colors.interactive};
+    display: flex;
     font-size: ${props => props.theme.typography.smallFontSize};
     font-weight: ${props => props.theme.typography.normalFontWeight};
-    color: #452FBA;
-    display:flex;
-    align-items:center;
   }
 `;
 
 export const RightSide = styled.div`
+  align-items: center;
   display: flex;
+  font-size: 1rem;
+  font-weight: 600;
   justify-content: space-between;
-  padding: 1rem .8rem;
   width: 100%;
-  font-size:20px;
-  align-items:center;
-  font-weight:600;
-  ${media.smallScreen`
-    font-size:16px;
-`}
-  .select-input{
-    justify-content: flex-end;
-    .clear-label {
-      margin-right: 1rem;
-      width: 14.75rem;
-      height: 2.5rem;
-      border-radius: 40px;
-      background: #FFFFFF;
-      border: 1px solid #908BA7;
-      position:relative;
-      padding:0 0 0 15px;
-      display:flex;
-      align-items: center;
-      justify-content: flex-start;
-      ${media.smallScreen`
-        margin-right:0;
+
+  ${mediaUp.smallScreen`
+    font-size: 0.875rem;
   `}
+
+  ${mediaUp.mediumScreen`
+    justify-content: flex-end;
+  `}
+  
+
+  .select-input {
+    cursor: pointer;
+    justify-content: flex-end;
+    .select-container {
+      align-items: center;
+      display: flex;
+    }
+    .clear-label {
+      align-items: center;
+      background: #ffffff;
+      border-radius: 2.5rem;
+      display: flex;
+      height: 2.5rem;
+      justify-content: flex-start;
+      margin-right: 0;
+      padding: 0;
+      position: relative;
     }
   }
-
-  ${media.mediumScreen`
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
-`}
-  ${media.xSmallScreen`
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
-`}
- 
 `;
 export const FiltersButton = styled.button`
-  font-size: ${props => props.theme.typography.smallFontSize};
-  display: flex;
   align-items: center;
   cursor: pointer;
-`;
-
-export const Clear = styled.button`
   display: flex;
-  color: ${props => props.theme.colors.lightFont};
-  cursor: pointer;
-  padding-left: 2rem;
   font-size: ${props => props.theme.typography.smallFontSize};
-  > span {
-    margin-left: .5rem;
-  }
-  ${mediaUp.mediumScreen`
-    padding-left: 0px;
-    width: 7rem;
-  `}
 `;
 
 export const Element = styled.span`
- 
-${mediaUp.mediumScreen`
-  margin-top: 1.5rem;
-`}
-${mediaUp.xSmallScreen`
-  margin-top: 1.5rem;
-`}
+  align-items: center;
+  display: flex;
+  ${mediaUp.mediumScreen`
+    margin: 0rem 0.5rem;
+  `}
 `;
 
-export const Filters = styled.span`
+
+export const Filters = styled(CustomSelectContainer as any)`
   display: flex;
   font-weight: ${props => props.theme.typography.boldFontWeight};
-  padding: 0 0.6rem;
   > span {
-    margin-left: .5rem;
+    margin-left: 0.5rem;
   }
+`;
+
+export const CategoryFilter = styled(CustomSelectContainer as any)`
+  padding-bottom: 1rem;
+  ${mediaUp.smallScreen`
+    padding-bottom: initial;
+  `}  
+  .select-input {
+    .select-container {
+      justify-content: space-between;
+      display: flex;
+      min-width: 12.0625rem;
+      width: 100%;
+    }
+  }
+`;
+
+export const CategoryFilterLabel = styled.span`
+  color: #746E91;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin: 0rem 0.5rem;
+  white-space: pre;
 `;
 
 export const Label = styled.span`
-  color: ${props => props.theme.colors.greyText};
-  color:#2F2C3A;
-`;
-
-export const SearchText = styled.span`
-  color: ${props => props.theme.colors.interactive};
+  color: ${farmatheme.theme.colors.neutral.dark};
+  font-weight: 400;
+  padding: 0 0.625rem;
 `;
 
 export const Sort = styled.div`
-  width: inherit;
   display: inline-block;
-  margin-bottom:20px;
+  width: inherit;
 
   .label {
     display: block;
-    ${mediaUp.mediumScreen`
-      display:  block;
-    `}
   }
 
   > div {
-    margin: 0;
-    padding: 0;
-
     > div {
-      margin: 0;
-      padding: 0;
-
-      > div {
+      padding: 0rem;
+      .select-input{
         margin: 0;
         padding: 0;
-
-        > div {
-          margin: 0;
-          padding: 0;
-        }
+      }
+      div[class*="-menu"]{
+        margin: 0;
+        padding: 0;
       }
     }
   }
 `;
 
-export const FiltersChipsWrapper = styled.div`
-  margin-top: .5rem;
-  padding: 0rem .5rem;
-  > div {
-    margin: 0.4rem;
+export const FiltersChipsWrapper = styled.div<{
+  hasFilters: boolean;
+}>`
+  align-items: center;
+  align-self: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: ${({ hasFilters }) => (hasFilters ? "0.5rem" : 0)};
+  > span {
+    margin: ${({ hasFilters }) => (hasFilters ? "0.4rem" : 0)};
+    &:first-child {
+      margin-left: 0;
+    }
   }
-  display:none;
 `;
 
 export const NumberProducts = styled.span`
-  font-weight: ${({theme}) =>theme.typography.boldFontWeight};
-`
-;
+  font-weight: ${({ theme }) => theme.typography.boldFontWeight};
+`;
+
+export const MobileLabel = styled.div`
+  ${mediaUp.mediumScreen`
+    display: none;
+  `}
+`;

@@ -6,7 +6,7 @@ export const Header = styled.div<{ divider: boolean }>`
   justify-content: space-between;
   position: relative;
   align-items: center;
-  padding: ${props => `1.1rem ${props.theme.spacing.gutter} 0.5rem  ${props.theme.spacing.gutter}`};
+  padding: ${props => `0.2rem ${props.theme.spacing.gutter} 0.5rem  ${props.theme.spacing.gutter}`};
 `;
 
 export const Title = styled.h4<{ size: TitleSize }>`

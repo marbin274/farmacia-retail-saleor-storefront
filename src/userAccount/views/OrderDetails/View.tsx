@@ -8,6 +8,7 @@ import { useOrderDetails, useUserDetails } from "@sdk/react";
 
 import Page from "./Page";
 import { useDistrictSelected } from "@temp/@next/hooks";
+import * as S from "./styles";
 
 const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
   match: {
@@ -27,9 +28,11 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
   }
 
   return (
-    <div className="order-details container">
-      <Page guest={guest} order={order} />
-    </div>
+    <S.Wraper className='fa-w-full'>
+      <div className="order-details container">
+        <Page guest={guest} order={order} />
+      </div>
+    </S.Wraper>
   );
 };
 

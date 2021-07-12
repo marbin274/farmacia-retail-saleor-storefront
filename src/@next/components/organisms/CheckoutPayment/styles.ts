@@ -109,10 +109,11 @@ export const Tile = styled.label<{ checked: boolean }>`
   cursor: pointer;
 `;
 
-export const CuponWraper = styled.div`
+export const SubtitleWraper = styled.div`
   margin-bottom: 1.5rem;
 `;
-export const CuponLabel = styled.span`
+
+export const SubtitleLabel = styled.span`
   font-weight: ${boldFontWeight};
   font-size: ${h3FontSize};
   line-height: ${h3FontSize};

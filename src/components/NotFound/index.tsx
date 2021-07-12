@@ -3,7 +3,7 @@ import "./scss/index.scss";
 import * as React from "react";
 import { Link } from "react-router-dom";
 import { BASE_URL } from "../../core/config";
-import Button from "../Button";
+import { Button } from "@farmacia-retail/farmauna-components";
 
 interface NotFoundProps {
   message?: string;
@@ -20,7 +20,7 @@ const NotFound: React.FC<NotFoundProps> = () => (
     </div>
     <div className="not-found-page__button">
       <Link to={BASE_URL}>
-        <Button secondary>Back to home</Button>
+        <Button>Back to home</Button>
       </Link>
     </div>
   </div>

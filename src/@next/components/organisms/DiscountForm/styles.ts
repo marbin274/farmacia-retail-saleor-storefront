@@ -1,4 +1,5 @@
 import { media, styled } from "@styles";
+import farmatheme from "@farmatheme";
 
 export const DiscountForm = styled.form``;
 
@@ -87,7 +88,7 @@ export const ChipsWrapper = styled.div`
 `;
 export const LinkWrapper = styled.span`
   margin-top: 0.9375rem;
-  color: #452fba;
+  color: ${farmatheme.theme.colors.interactive};
   cursor: pointer;
   font-size: ${props => props.theme.typography.smallFontSize};
   margin-left: 2.125rem;
