@@ -1,7 +1,6 @@
 import { Button, CartIcon } from "@farmacia-retail/farmauna-components";
 import { launchAddToCartEvent, launchRemoveToCartEvent } from "@sdk/gaConfig";
 import { useAddToCartButtonVariable } from "@temp/@next/optimizely/hooks";
-import { trackAddToCart } from "@temp/@next/optimizely/tracks";
 import { ISimpleProduct } from "@temp/@next/types/IProduct";
 import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
 import {
@@ -121,7 +120,6 @@ const ItemsHandler: FC<IProps> = ({
 
   // quitar cuando ya no se use el A/B testing
   const handleButtonAddClick = () => {
-    trackAddToCart();
     handleAddClick();
   };
 

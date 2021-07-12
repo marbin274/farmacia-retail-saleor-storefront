@@ -8,6 +8,8 @@ import { products, productsOnCart } from "./fixtures";
 
 jest.mock("@temp/@next/optimizely/hooks", () => ({
   useAddToCartButtonVariable: () => "Agregar",
+  useShowPersonalizedCollection: () => ({enable:false, variationKey: ""}),
+
 }));
 
 jest.mock("@temp/@next/optimizely/tracks", () => ({

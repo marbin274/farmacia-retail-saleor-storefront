@@ -10,7 +10,7 @@ export interface IProps {
   addToCart?: IAddToCartCallback;
   removeItemToCart?: IRemoveItemToCartCallback;
   subtractItemToCart?: ISubtractItemToCartCallback;
-  isPersonalized?: boolean;
+  fromHome?: boolean;
   productUrl: string;
   product: ISimpleProduct;
   productsOnCart: IItems;

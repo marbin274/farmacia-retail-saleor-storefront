@@ -3,7 +3,6 @@ import { TaxedMoney } from "@components/containers";
 import { Thumbnail } from "@components/molecules";
 import {
   trackAddProductToCartFromPersonalized,
-  trackSelectProductFromPersonalized,
 } from "@temp/@next/optimizely/tracks";
 import {
   checkProductCanAddToCart,
@@ -17,12 +16,14 @@ import { Link } from "react-router-dom";
 import ItemsHandler from "../../organisms/ItemsHandler/ItemsHandler";
 import * as S from "./styles";
 import { IProps } from "./types";
+import { useShowPersonalizedCollection } from "@temp/@next/optimizely/hooks";
+import { VariationKeys } from "@temp/@next/optimizely/types";
 
 export const ProductTileAUNA: React.FC<IProps> = ({
   addToCart,
   removeItemToCart,
   subtractItemToCart,
-  isPersonalized,
+  fromHome,
   productUrl: productLink,
   product,
   productsOnCart,
@@ -38,12 +39,19 @@ export const ProductTileAUNA: React.FC<IProps> = ({
 
   const { canAddToCart } = checkProductCanAddToCart(product, productsOnCart);
   const { isOnSale, isOutStock } = productStickerRules(product);
+  const showPersonalizedCollection = useShowPersonalizedCollection();
 
   const handleAddToCart = (
     productId: ICheckoutModelLineVariantLocalStorage,
     quantity: number
   ) => {
-    if (!!isPersonalized) {
+    if (
+      !!fromHome &&
+      (showPersonalizedCollection.variationKey ===
+        VariationKeys.SHOW_PERSONALIZE ||
+        showPersonalizedCollection.variationKey ===
+          VariationKeys.HIDE_PERSONALIZE)
+    ) {
       trackAddProductToCartFromPersonalized();
     }
     addToCart(productId, quantity);
@@ -67,7 +75,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
           to={productLink}
           key={product.id}
           onClick={e => {
-            trackSelectProductFromPersonalized();
+            
             if (refActions?.current?.contains(e.target)) {
               e.preventDefault();
             }
@@ -141,9 +149,6 @@ export const ProductTileAUNA: React.FC<IProps> = ({
       <div className="fa-hidden lg:fa-block">
         <Link
           key={product.id}
-          onClick={() => {
-            trackSelectProductFromPersonalized();
-          }}
           to={productLink}
         >
           <S.WrapperStockout>

@@ -17,6 +17,7 @@ import { useShowPersonalizedCollection } from "@temp/@next/optimizely/hooks";
 import { useUserDetails } from "@temp/@sdk/react";
 import { useLocalStorage } from "@temp/@next/hooks";
 import { LocalStorageItems } from "@temp/@sdk/repository";
+import { VariationKeys } from "@temp/@next/optimizely/types";
 
 
 const ProductsFeatured: React.FC<IProps> = ({
@@ -51,15 +52,28 @@ const ProductsFeatured: React.FC<IProps> = ({
     >
       {({ data, refetch }) => {
 
-        const homepageCollections: IHomePageCollecction[] = data?.shop?.homepageCollections?.edges.length ?
-          data.shop.homepageCollections.edges.map(it => ({
-            id: it.node.id,
-            name: it.node.name,
-            products: it.node.products.edges.map(edge => ({ ...edge.node })),
-          })) : [];
+        const homepageCollections: IHomePageCollecction[] = data?.shop
+          ?.homepageCollections?.edges.length
+          ? data.shop.homepageCollections.edges.map(it => ({
+              id: it.node.id,
+              name: it.node.name,
+              products: it.node.products.edges.map(edge => ({ ...edge.node })),
+            }))
+          : [];
 
-        const personalizedCollection: IHomePageCollecction[] = data?.personalized?.length && showPersonalizedCollection ?
-          [{ id: "", isPersonalized: true, name: "Los recomendados para ti", products: data.personalized }] : [];
+        const personalizedCollection: IHomePageCollecction[] =
+          data?.personalized?.length &&
+          showPersonalizedCollection.enable === true &&
+          showPersonalizedCollection.variationKey ===
+            VariationKeys.SHOW_PERSONALIZE
+            ? [
+                {
+                  id: "",
+                  name: "Los recomendados para ti",
+                  products: data.personalized,
+                },
+              ]
+            : [];
 
         const collections : IHomePageCollecction[] = personalizedCollection.concat(homepageCollections);
         refetchRef.current = refetch;
@@ -84,7 +98,7 @@ const ProductsFeatured: React.FC<IProps> = ({
                         <ProductTileAUNA
                           key={product.id}
                           addToCart={addToCart}
-                          isPersonalized={collection.isPersonalized}
+                          fromHome={true}
                           removeItemToCart={removeItemToCart}
                           subtractItemToCart={subtractItemToCart}
                           product={product}
