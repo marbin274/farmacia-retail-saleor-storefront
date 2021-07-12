@@ -150,10 +150,6 @@ module.exports = ({ sourceDir, distDir }) => ({
       saveReportTo: 'path/to/report-[name]-[hash].html',
       saveStatsTo: 'path/to/stats-[name]-[hash].json',
       saveOnlyStats: false,
-      statsOptions: {
-        /* any webpack stats options */
-      },
-      additionalStats: ['path/to/any/stats.json'],
       watchMode: false,
       name: 'farmauna-webpack-bundle-report',
       open: 'file',
