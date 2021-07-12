@@ -27,6 +27,9 @@ export const CollectionNav = styled.ul`
     background-color: ${aunaComplementary2};
     box-shadow: 0rem 0.3125rem 0.375rem rgb(0 0 0 / 14%);
     position: relative;
+    a {
+        font-weight: 600;
+    }
 `;
 
 export const NavLink = styled(NavLinkComponent) <{ isCollection: boolean }>`
