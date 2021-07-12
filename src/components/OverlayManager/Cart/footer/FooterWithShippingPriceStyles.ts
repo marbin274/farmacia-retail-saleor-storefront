@@ -15,18 +15,28 @@ export const Container = styled.div`
 
 export const Details = styled.div`
     flex: 1;
-    padding: 1.5rem 1rem 0rem;
+    padding: 1.5rem 1.5rem 0rem;
     text-align: center;
     width: 100%;
 `;
 
 export const FreeShipping = styled.div`
-    background-color: ${aunaInformativeLightest};
+    
     color: ${aunaBrand3};
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem;
     width: 100%;
+    ${mediaUp.mediumScreen`
+        padding: 1rem 1.5rem 0rem;
+    `}
+    > div {
+        background-color: ${aunaInformativeLightest};
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem 1.5rem;
+        width: 100%;
+        ${mediaUp.mediumScreen`
+            border-radius: 8px;
+    `} 
+    }
     strong {
         font-weight: ${({ theme }) => theme.typography.boldFontWeight};
     }
@@ -147,7 +157,7 @@ export const ShippingMethodTotal = styled(Money)`
 
 export const ButtonContainer = styled.div`
     margin-top: 0.9375rem;
-    padding: 0rem 1rem 1rem;
+    padding: 0rem 1.5rem 1rem;
     text-align: center;
     width: 100%;
     button {
