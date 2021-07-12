@@ -1,13 +1,11 @@
 import { useDecision } from "@optimizely/react-sdk";
-import { FlagKeys, VariationKeys } from "../types";
+import { FlagKeys } from "../types";
 
-export const useShowPersonalizedCollection = (): boolean => {
+export const useShowPersonalizedCollection = (): { enable:boolean, variationKey:string } => {
     const [decision, clientReady] = useDecision(FlagKeys.SHOW_PERSONALIZED_COLLECTION);
-    
     if (!clientReady || !decision.enabled) {
-        return false;
+        return {enable: false, variationKey: ''};
     }
-    
-    return decision.variationKey === VariationKeys.ON;
+    return {enable:true, variationKey: decision.variationKey};
   };
   
