@@ -1,7 +1,10 @@
 import { ProductSticker } from "@components/atoms";
 import { TaxedMoney } from "@components/containers";
 import { Thumbnail } from "@components/molecules";
-import { trackAddProductToCartFromPersonalized, trackSelectProductFromPersonalized } from "@temp/@next/optimizely/tracks";
+import {
+  trackAddProductToCartFromPersonalized,
+  trackSelectProductFromPersonalized,
+} from "@temp/@next/optimizely/tracks";
 import {
   checkProductCanAddToCart,
   getProductPricingClass,
@@ -36,12 +39,15 @@ export const ProductTileAUNA: React.FC<IProps> = ({
   const { canAddToCart } = checkProductCanAddToCart(product, productsOnCart);
   const { isOnSale, isOutStock } = productStickerRules(product);
 
-  const handleAddToCart = (productId: ICheckoutModelLineVariantLocalStorage, quantity: number) => {
+  const handleAddToCart = (
+    productId: ICheckoutModelLineVariantLocalStorage,
+    quantity: number
+  ) => {
     if (!!isPersonalized) {
       trackAddProductToCartFromPersonalized();
     }
     addToCart(productId, quantity);
-  }
+  };
 
   useEffect(() => {
     setThumbnails({
@@ -51,21 +57,23 @@ export const ProductTileAUNA: React.FC<IProps> = ({
   }, [product.thumbnail, product.thumbnail2x]);
 
   return (
-    <S.ProductCard  
-     className='home-page__product fa-border-b fa-border-solid fa-border-neutral-medium lg:fa-border-0' 
-      data-cy="product-tile"  
-      canAddToCart={canAddToCart}>
-      <div className='fa-w-full fa-block lg:fa-hidden'>
-        <S.LinkContainer 
-          to={productLink} 
-          key={product.id} 
-          onClick={(e)=> {
+    <S.ProductCard
+      className="home-page__product fa-border-b fa-border-solid fa-border-neutral-medium lg:fa-border-0"
+      data-cy="product-tile"
+      canAddToCart={canAddToCart}
+    >
+      <div className="fa-w-full fa-block lg:fa-hidden">
+        <S.LinkContainer
+          to={productLink}
+          key={product.id}
+          onClick={e => {
             trackSelectProductFromPersonalized();
             if (refActions?.current?.contains(e.target)) {
               e.preventDefault();
             }
-          }}>
-          <div className='home-page__product-image fa-flex fa-flex-col fa-items-center'>
+          }}
+        >
+          <div className="home-page__product-image fa-flex fa-flex-col fa-items-center">
             <div
               className="img fa-rounded-lg fa-bg-white fa-overflow-hidden"
               onClick={() =>
@@ -81,15 +89,17 @@ export const ProductTileAUNA: React.FC<IProps> = ({
                 <Thumbnail height={510} width={510} source={thumbnails} />
               </S.Image>
             </div>
-            <div className='home-page__product-sticker fa-mt-2'>
+            <div className="home-page__product-sticker fa-mt-2">
               <ProductSticker isOnSale={isOnSale} isOutStock={isOutStock} />
             </div>
           </div>
-          <div className='fa-px-4'>
-            <div className='home-page__product-price fa-hidden'>
+          <div className="fa-pl-4">
+            <div className="home-page__product-price fa-hidden">
               <div className={getProductPricingClass(canAddToCart, isOnSale)}>
                 <S.Price>
-                  <TaxedMoney taxedMoney={product?.pricing?.priceRange?.start} />
+                  <TaxedMoney
+                    taxedMoney={product?.pricing?.priceRange?.start}
+                  />
                 </S.Price>
               </div>
               {isOnSale && (
@@ -99,16 +109,19 @@ export const ProductTileAUNA: React.FC<IProps> = ({
                   />
                 </div>
               )}
-
             </div>
             <div className="description">
-              <S.Title className='home-page__product-title fa-text-left fa-line-clamp-2'>{product.name}</S.Title>
+              <S.Title className="home-page__product-title fa-line-clamp-2 fa-text-left fa-text-sm lg:fa-text-lg">
+                {product.name}
+              </S.Title>
             </div>
-            <div className='home-page__product-button fa-flex fa-justify-between'>
-              <div className='search-page__product-price'>
+            <div className="home-page__product-button fa-flex fa-justify-between">
+              <div className="search-page__product-price">
                 <div className={getProductPricingClass(canAddToCart, isOnSale)}>
-                  <S.Price className='fa-font-base'>
-                    <TaxedMoney taxedMoney={product?.pricing?.priceRange?.start} />
+                  <S.Price className="fa-font-base">
+                    <TaxedMoney
+                      taxedMoney={product?.pricing?.priceRange?.start}
+                    />
                   </S.Price>
                 </div>
               </div>
@@ -125,16 +138,16 @@ export const ProductTileAUNA: React.FC<IProps> = ({
           </div>
         </S.LinkContainer>
       </div>
-      <div className='fa-hidden lg:fa-block'>
-        <Link 
-        key={product.id}
+      <div className="fa-hidden lg:fa-block">
+        <Link
+          key={product.id}
           onClick={() => {
             trackSelectProductFromPersonalized();
           }}
           to={productLink}
         >
           <S.WrapperStockout>
-            <div className='fa-absolute'>
+            <div className="fa-absolute">
               <ProductSticker isOnSale={isOnSale} isOutStock={isOutStock} />
             </div>
             <div
@@ -166,7 +179,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
               </div>
             )}
             <div className="description">
-              <S.Title className='fa-line-clamp-2'>{product.name}</S.Title>
+              <S.Title className="fa-line-clamp-2">{product.name}</S.Title>
             </div>
           </S.WrapperStockout>
         </Link>

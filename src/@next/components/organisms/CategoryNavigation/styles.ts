@@ -4,11 +4,10 @@ import { NavLink as NavLinkComponent } from "@temp/components/NavLink";
 import farmatheme from "@farmatheme";
 
 export const Wrapper = styled.nav`
-  width: 18rem;
   background-color: ${white};
-  padding: 2rem 1rem;
-  padding-top: 1.875rem;
-  border-radius:16px;
+  border-radius: 16px;
+  padding: 1.875rem 1rem 2rem;
+  width: 18rem;
 
   ${media.largeScreen`
     display: none;
@@ -19,47 +18,58 @@ export const Title = styled.p`
   align-items: flex-start;
   color: ${farmatheme.theme.colors.neutral.darkest};
   display: flex;
-  font-weight: 600;
   font-size: 16px;
+  font-weight: 600;
   margin: 0 0 0.813rem 1rem;
 `;
 
-export const TitleName = styled.span<{ isLvl1: boolean }>`
-  text-transform: capitalize;
+export const TitleName = styled.span`
+  color: ${farmatheme.theme.colors.highlight.medium};
   font-size: 1.125rem;
+  font-weight: 600;
   line-height: 1.75rem;
-  ${({ isLvl1 }) => !isLvl1 && `color: ${farmatheme.theme.colors.highlight.medium}`}
-  ${({ isLvl1, theme }) => isLvl1 && `font-weight: ${theme.typography.boldFontWeight}`}
+  text-transform: capitalize;
 `;
 
 export const Link = styled.li`
-  margin-bottom: 0.438rem;
-  font-weight: 400;
+  color: #908ba7;
   font-size: 14px;
-  coloR: #908BA7;
- 
+  font-weight: 400;
+  margin-bottom: 0.438rem;
 
   &:last-child {
     margin-bottom: 0;
   }
 `;
 
-export const NavLink = styled(NavLinkComponent)`
+export const NavLink = styled(NavLinkComponent)<{ isActive: boolean }>`
   border-radius: 0.5rem;
-  padding: 0;
-  display: block;
-  margin-right: 0;
-  font-weight: 500;
   color: ${farmatheme.theme.colors.neutral.darkest};
-  padding:17px 16px;
-  &:hover {
-    color:  ${farmatheme.theme.colors.primary.medium};
-    background: ${farmatheme.theme.colors.primary.lightest};
-
-  }
+  display: block;
+  font-weight: 500;
+  margin-right: 0;
+  padding: 1.0625rem 1rem;
 
   &:active {
-    background:#E8FCF7;
-    color:  ${farmatheme.theme.colors.primary.medium};
+    background: ${farmatheme.theme.colors.primary.lightest};
+    color: ${farmatheme.theme.colors.primary.medium};
   }
+
+  &:hover {
+    background: ${farmatheme.theme.colors.primary.lightest};
+    color: ${farmatheme.theme.colors.primary.medium};
+    > span {
+      color: ${farmatheme.theme.colors.primary.medium};
+    }
+  }
+
+  ${({ isActive }) =>
+    isActive &&
+    `
+      background: ${farmatheme.theme.colors.primary.lightest};
+      color: ${farmatheme.theme.colors.primary.medium};
+      > span {
+        color: ${farmatheme.theme.colors.primary.medium};
+      }
+    `}
 `;

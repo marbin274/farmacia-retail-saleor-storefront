@@ -48,8 +48,8 @@ export const Footer: React.FC<IProps> = ({ hideOverlay }) => {
 
     return (
         <S.Container>
-            <S.Details className="cart__footer__details">
-                <div className="cart__footer__details__price">
+            <S.Details>
+                <S.DetailsPrice>
                     <S.SubTotalLabel>Subtotal:</S.SubTotalLabel>
                     <span>
                         <TaxedMoney
@@ -57,35 +57,35 @@ export const Footer: React.FC<IProps> = ({ hideOverlay }) => {
                             taxedMoney={subtotalPrice}
                         />
                     </span>
-                </div>
+                </S.DetailsPrice>
 
                 {shippingTaxedPrice &&
                     shippingTaxedPrice.gross.amount !== 0 && (
-                        <div className="cart__footer__details__price">
-                            <span>Shipping:</span>
+                        <S.DetailsPrice>
+                            <S.SubTotalLabel>Shipping:</S.SubTotalLabel>
                             <span>
                                 <TaxedMoney
                                     data-cy="cartPageShippingPrice"
                                     taxedMoney={shippingTaxedPrice}
                                 />
                             </span>
-                        </div>
+                        </S.DetailsPrice>
                     )}
 
                 {promoTaxedPrice && promoTaxedPrice.gross.amount !== 0 && (
-                    <div className="cart__footer__details__price">
-                        <span>Promo code:</span>
+                    <S.DetailsPrice>
+                        <S.SubTotalLabel>Promo code:</S.SubTotalLabel>
                         <span>
-                            -&nbsp;
                             <TaxedMoney
                                 data-cy="cartPagePromoCodePrice"
+                                negative
                                 taxedMoney={promoTaxedPrice}
                             />
                         </span>
-                    </div>
+                    </S.DetailsPrice>
                 )}
 
-                <div className="cart__footer__details__price cart__footer__details__price--total">
+                <S.DetailsPriceTotal>
                     <S.TotalLabel>Total:</S.TotalLabel>
                     <S.TotalPrice>
                         <TaxedMoney
@@ -93,7 +93,7 @@ export const Footer: React.FC<IProps> = ({ hideOverlay }) => {
                             taxedMoney={totalPrice}
                         />
                     </S.TotalPrice>
-                </div>
+                </S.DetailsPriceTotal>
             </S.Details>
             <S.ButtonContainer>
                 <Button

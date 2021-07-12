@@ -7,7 +7,11 @@ import * as React from "react";
 import { useHistory, useLocation } from "react-router";
 import { TypedShippingMethods } from "../queries";
 import "../scss/index.scss";
-import { SkeletonCartFooter } from "../skeletonCartFooter";
+import { SkeletonCartFooter } from "./skeletonCartFooter";
+import * as S from "./FooterWithShippingPriceStyles";
+import { Icon } from "@temp/@next/components/atoms";
+import { aunaBrand3 } from "@temp/@next/globalStyles/constants";
+import { useClickedOutside } from "@temp/hooks";
 
 interface IProps {
     buttonText: string;
@@ -21,10 +25,15 @@ export const FooterWithShippingPrice: React.FC<IProps> = ({ buttonText, hideOver
     const { data: user } = useUserDetails();
     const { checkout } = useCheckout();
     const {
+        discount,
         items,
         subtotalPrice,
+        totalPrice,
     } = useCart();
 
+    const [showInfo, setShowInfo] = React.useState<boolean>(false);
+    const { clickedOutside, setElementRef } = useClickedOutside();
+    
     const itemsCount = items?.length || 0;
 
     const onClickBuyIcon = () => {
@@ -38,6 +47,12 @@ export const FooterWithShippingPrice: React.FC<IProps> = ({ buttonText, hideOver
         }
     };
 
+    React.useEffect(() => {
+        if(clickedOutside){
+            setShowInfo(false);
+        }
+    }, [clickedOutside]);
+
     return (
         <TypedShippingMethods
             alwaysLoader
@@ -47,54 +62,129 @@ export const FooterWithShippingPrice: React.FC<IProps> = ({ buttonText, hideOver
             }}
         >
             {({ data }) => {
-                return <div className="cart__footer caseB">
-                    <div className="cart__footer__details">
-                        <div className="cart__footer__details__price">
-                            <span className="cart__footer__details__price--label">
-                                Subtotal <span>({`${itemsCount} ${itemsCount === 0 ? "producto": "productos"}`})</span>
-                            </span>
-                            <span  className="cart__footer__details__price--total">
-                                <TaxedMoney
-                                    data-cy="cartPageSubtotalPrice"
-                                    taxedMoney={subtotalPrice}
-                                />
-                            </span>
-                        </div>
+                let isAllFree: boolean = true;
+                let orderPrice: number = 0;
+                const potentialShippingMethods = data?.potentialShippingMethods.map((shippingMethod): JSX.Element => {
+
+                    const shippingMethodPrice = shippingMethod.price?.amount || 0;
+                    if (shippingMethodPrice > 0) {
+                        isAllFree = false;
+                    }
+
+                    if(((shippingMethod.minimumOrderPrice?.amount) || 0) > orderPrice){
+                        orderPrice = shippingMethod.minimumOrderPrice?.amount;
+                    }
+
+                    return (
+                        <S.DetailsPrice key={shippingMethod.id} >
+                            <S.ShippingMethodLabel>Total</S.ShippingMethodLabel>
+                            <S.ShippingMethod>
+                                <S.ShippingMethodName>
+                                    {`Envío ${shippingMethod.isScheduled ? "programado" : "express"}`}
+                                </S.ShippingMethodName>
+                                {
+                                    shippingMethodPrice > 0 ?
+                                        <S.ShippingMethodPrice>
+                                            &nbsp;(+ <Money money={shippingMethod.price} />)
+                                        </S.ShippingMethodPrice>
+                                        : <S.ShippingMethodFree>&nbsp;(Gratis)</S.ShippingMethodFree>
+                                }
+                            </S.ShippingMethod>
+                            <S.ShippingMethodTotal
+                                money={{
+                                    ...shippingMethod.price,
+                                    amount: shippingMethodPrice + (subtotalPrice?.net?.amount || 0) - (discount?.amount || 0),
+                                }} />
+                        </S.DetailsPrice>
+                    );
+                });
+
+
+                return (
+                    <S.Container>
                         {
-                            data?.potentialShippingMethods?.map(shippingMethod => {
-                                const shippingMethodPrice = shippingMethod.price?.amount || 0;
-                                return (
-                                    <div key={shippingMethod.id} className="cart__footer__details__price">
-                                        <span className="cart__footer__details__price__shipping-method--label">Total</span>
-                                        <span className="cart__footer__details__price__shipping-method__shipping">
-                                            <span className="cart__footer__details__price__shipping-method__shipping--name">
-                                                {`Envío ${shippingMethod.isScheduled ? "programado" : "express"}`}
-                                            </span>
-                                            {shippingMethodPrice > 0 ? <span className="cart__footer__details__price__shipping-method__shipping--price">
-                                                &nbsp;(+ <Money money={shippingMethod.price} />)
-                                            </span>
-                                                : <span className="cart__footer__details__price__shipping-method__shipping--free">&nbsp;(Gratis)</span>
-                                            }
-                                        </span>
-                                        <Money className="cart__footer__details__price__shipping-method--total" money={{ ...shippingMethod.price, amount: shippingMethodPrice + (subtotalPrice?.net?.amount || 0) }} />
-                                    </div>
-                                );
-                            }
-                            )
+                            isAllFree &&
+                            <S.FreeShipping>
+                                <span>Felicidades tienes <strong>envío gratis</strong></span>
+                                <S.InfoIcon
+                                    ref={setElementRef()}
+                                >
+                                    <span
+                                        onClick={() => setShowInfo(true)}
+                                    >
+                                        <Icon
+                                            color={aunaBrand3}
+                                            heightViewPort={20}
+                                            name="info"
+                                            size={20}
+                                            widthViewPort={20} />
+                                    </span>
+                                    {
+                                        showInfo && <S.ToolTipContainer>
+                                            <S.ToolTipText>
+                                                Si alcanzas a tener compras <strong>mayores</strong> a <strong>S/ {orderPrice} soles</strong>, tu <strong>envío es totalmente <span className="free">gratis</span>.</strong>
+                                            </S.ToolTipText>
+                                        </S.ToolTipContainer>
+                                    }
+                                </S.InfoIcon>
+                            </S.FreeShipping>
                         }
-                    </div>
-                    <div className="cart__footer__details__button">
-                        <Button
-                            icon={<CartIcon />}
-                            fullWidth
-                            size="large"
-                            type="button"
-                            onClick={onClickBuyIcon}
-                        >
-                            {buttonText}
-                        </Button>
-                    </div>
-                </div>
+                        <S.Details>                            
+                            <S.DetailsPrice>
+                                <S.DetailsPriceLabel>
+                                    Subtotal <span>({`${itemsCount} ${itemsCount === 0 ? "producto" : "productos"}`})</span>
+                                </S.DetailsPriceLabel>
+                                <S.DetailsPriceTotal>
+                                    <TaxedMoney
+                                        data-cy="cartPageSubtotalPrice"
+                                        taxedMoney={subtotalPrice}
+                                    />
+                                </S.DetailsPriceTotal>
+                            </S.DetailsPrice>
+                            {
+                                discount && discount.amount > 0 && <S.DetailsDiscount>
+                                    <span>
+                                        Cupón
+                                    </span>
+                                    <span>
+                                        <Money
+                                            data-cy="cartPageDiscountPrice"
+                                            negative
+                                            money={discount}
+                                        />
+                                    </span>
+                                </S.DetailsDiscount>
+                            }
+                            {
+                                !isAllFree && potentialShippingMethods.map(shippingMethod => shippingMethod)
+                            }
+                            {
+                                isAllFree && <S.DetailsTotal>
+                                    <S.DetailsPriceLabel>
+                                        Total
+                                    </S.DetailsPriceLabel>
+                                    <S.DetailsTotalMount>
+                                        <TaxedMoney
+                                            data-cy="cartPageTotalPrice"
+                                            taxedMoney={totalPrice}
+                                        />
+                                    </S.DetailsTotalMount>
+                                </S.DetailsTotal>
+                            }
+                        </S.Details>
+                        <S.ButtonContainer>
+                            <Button
+                                icon={<CartIcon />}
+                                fullWidth
+                                size="large"
+                                type="button"
+                                onClick={onClickBuyIcon}
+                            >
+                                {buttonText}
+                            </Button>
+                        </S.ButtonContainer>
+                    </S.Container>
+                )
             }
 
             }

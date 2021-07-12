@@ -1,8 +1,0 @@
-@import "@temp/globalStyles/scss/_components.scss";
-
-.collection {  
-  @include products-page();
-  &__products {
-    width: initial;
-  }
-}

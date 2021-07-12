@@ -1,5 +1,3 @@
-import "./scss/index.scss";
-
 import * as React from "react";
 import { RouteComponentProps } from "react-router";
 
@@ -64,7 +62,7 @@ const View: React.FC<RouteComponentProps<{ id: string }>> = ({ match }) => {
   return (
     <TypedProductDetailsQuery
       loaderFull
-      loader={<Skeleton/>}
+      loader={<Skeleton />}
       variables={{
         id: getGraphqlIdFromDBId(match.params.id, "Product"),
         districtId: districtSelected.id,
