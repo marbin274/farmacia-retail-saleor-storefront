@@ -205,7 +205,7 @@ export const TitleText = styled.div`
   `}
 `;
 export const Text = styled.span<{ mobileCartOpened: boolean }>`
-  font-weight: 300;
+  font-weight: 400;
   font-size: 0.75rem;
   ${media.smallScreen`
     font-size: ${(props: any) =>

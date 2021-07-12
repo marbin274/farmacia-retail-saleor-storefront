@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   font-size: ${({theme}) => theme.typography.smallFontSize};
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.6;
 `;
 

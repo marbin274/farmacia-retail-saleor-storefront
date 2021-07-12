@@ -1,17 +1,17 @@
 import { MainMenuSubItem } from "@temp/views/Category/gqlTypes/MainMenuSubItem";
 import classNames from "classnames";
 import * as React from "react";
-import { NavLink } from "..";
 import NavChildren from "./NavChildren";
 import { NextIcon, DownIcon, UpIcon } from "@farmacia-retail/farmauna-components";
 import farmatheme from "@farmatheme";
-
+import * as S from "./styles";
 export interface INavItem extends Omit<MainMenuSubItem, "__typename"> {
   children?: INavItem[] | null;
 }
 
 interface NavItemProps extends INavItem {
   arrowDirection?: arrowDirection;
+  isCollection?: boolean;
   isOpen: boolean;
   firstLevel?: boolean;
   hideOverlay(): void;
@@ -20,12 +20,13 @@ interface NavItemProps extends INavItem {
 
 type arrowDirection = "rigth" | "down";
 
-const NavItem: React.FC<NavItemProps> = ({
-  hideOverlay,
-  showSubItems,
+export const NavItem: React.FC<NavItemProps> = ({
   arrowDirection = "down",
-  isOpen,
   firstLevel = false,
+  hideOverlay,
+  isCollection = false,
+  isOpen,
+  showSubItems,
   ...item
 }) => {
   const [isOpenMenu, setOpenMenu] = React.useState(isOpen);
@@ -46,7 +47,8 @@ const NavItem: React.FC<NavItemProps> = ({
       })}
     >
       <div className={"hover:fa-bg-white side-nav__menu-item-content"}>
-        <NavLink
+        <S.NavLink
+          isCollection={isCollection}
           item={({...item, name: item.name?.toLowerCase()} as any)}
           className={"side-nav__menu-item-link"}
         />

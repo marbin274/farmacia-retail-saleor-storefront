@@ -29,24 +29,26 @@ export const NavSubItem: React.FC<NavItemProps> = ({
                     <span>Categorías</span>
                 </div>
             </li>
-            <li>
-                <div className="fa-text-highlight-dark fa-text-base fa-font-semibold fa-p-6 fa-flex fa-items-center">
-                    <span>{item.name}</span>
-                </div>
-            </li>
-            {
-                item.children.map((item) => (
-                    <NavItem
-                        key={item.id}
-                        firstLevel={false}
-                        hideOverlay={hideOverlay}
-                        showSubItems={handleShowSubItems}
-                        arrowDirection="down"
-                        isOpen={openParent?.name === item.name}
-                        {...item}
-                    />
-                ))
-            }
+            <ul className="fa-bg-highlight-lightest">
+                <li>
+                    <div className="fa-text-highlight-dark fa-text-base fa-font-semibold fa-p-6 fa-flex fa-items-center">
+                        <span>{item.name}</span>
+                    </div>
+                </li>
+                {
+                    item.children.map((item) => (
+                        <NavItem
+                            key={item.id}
+                            firstLevel={false}
+                            hideOverlay={hideOverlay}
+                            showSubItems={handleShowSubItems}
+                            arrowDirection="down"
+                            isOpen={openParent?.name === item.name}
+                            {...item}
+                        />
+                    ))
+                }
+            </ul>
         </>
     );
 }

@@ -1,5 +1,5 @@
-import { mediaUp, styled } from "@styles";
 import farmatheme from "@farmatheme";
+import { CustomSelectContainer, mediaUp, styled } from "@styles";
 
 export const Wrapper = styled.div`
   align-items: center;
@@ -93,22 +93,43 @@ export const FiltersButton = styled.button`
 `;
 
 export const Element = styled.span`
+  align-items: center;
   display: flex;
-
-  ${mediaUp.xSmallScreen`
-    margin-top: 0;
-  `}
   ${mediaUp.mediumScreen`
-    margin-top: 0;
+    margin: 0rem 0.5rem;
   `}
 `;
 
-export const Filters = styled.span`
+
+export const Filters = styled(CustomSelectContainer as any)`
   display: flex;
   font-weight: ${props => props.theme.typography.boldFontWeight};
   > span {
     margin-left: 0.5rem;
   }
+`;
+
+export const CategoryFilter = styled(CustomSelectContainer as any)`
+  padding-bottom: 1rem;
+  ${mediaUp.smallScreen`
+    padding-bottom: initial;
+  `}  
+  .select-input {
+    .select-container {
+      justify-content: space-between;
+      display: flex;
+      min-width: 12.0625rem;
+      width: 100%;
+    }
+  }
+`;
+
+export const CategoryFilterLabel = styled.span`
+  color: #746E91;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin: 0rem 0.5rem;
+  white-space: pre;
 `;
 
 export const Label = styled.span`
@@ -126,29 +147,15 @@ export const Sort = styled.div`
   }
 
   > div {
-    margin: 0;
-    padding: 0;
-
     > div {
-      margin: 0;
-      padding: 0;
-
-      ${mediaUp.mediumScreen`
-        padding: 0 0 0 0.625rem;
-      `}
-
-      > div {
+      padding: 0rem;
+      .select-input{
         margin: 0;
         padding: 0;
-
-        > div {
-          margin: 0;
-          padding: 0;
-
-          ${mediaUp.mediumScreen`
-            padding: 0 0 0 0.625rem;
-          `}
-        }
+      }
+      div[class*="-menu"]{
+        margin: 0;
+        padding: 0;
       }
     }
   }
@@ -172,4 +179,10 @@ export const FiltersChipsWrapper = styled.div<{
 
 export const NumberProducts = styled.span`
   font-weight: ${({ theme }) => theme.typography.boldFontWeight};
+`;
+
+export const MobileLabel = styled.div`
+  ${mediaUp.mediumScreen`
+    display: none;
+  `}
 `;
