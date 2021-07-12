@@ -106,7 +106,14 @@ export const WrapperAddressGeo = styled.div<{ isProductDetail: boolean }>`
     span {
       color: ${farmatheme.theme.colors.neutral.darkest};
     }
+    svg{
+      color: ${farmatheme.theme.colors.highlight.medium};
 
+      ${mediaUp.largeScreen`
+        color: ${farmatheme.theme.colors.neutral.lightest};
+      `}
+    
+    }
     .icon_button{
       height: 1.5rem;
     }
