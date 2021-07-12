@@ -733,7 +733,6 @@ export class NetworkManager implements INetworkManager {
           shippingMethodId: shippingMethodUpdate.shippingMethodId,
         },
       });
-
       if (errors?.length) {
         return {
           error: errors,
@@ -951,6 +950,7 @@ export class NetworkManager implements INetworkManager {
       token,
       email,
       shippingAddress,
+      scheduleDate,
       billingAddress,
       discount,
       discountName,
@@ -975,6 +975,7 @@ export class NetworkManager implements INetworkManager {
       dataTreatmentPolicy,
       documentNumber,
       email,
+      scheduleDate,
       id,
       isPrime,
       lines: lines
