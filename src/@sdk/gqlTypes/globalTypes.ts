@@ -428,6 +428,14 @@ export interface AttributeInput {
   values?: (string | null)[] | null;
 }
 
+export interface CardTokenInput {
+  cardNumber?: string | null;
+  brand?: string | null;
+  binNumber?: string | null;
+  default?: boolean | null;
+  tokenId?: string | null;
+}
+
 export interface CheckoutCreateInput {
   lines: (CheckoutLineInput | null)[];
   email?: string | null;

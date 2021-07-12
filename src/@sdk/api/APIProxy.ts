@@ -92,6 +92,21 @@ export class APIProxy {
     (data) => data!.accountUpdate
   );
 
+  setDefaultUserCardToken = this.fireQuery(
+    MUTATIONS.SetDefaultUserCardToken,
+    (data) => data!.accountSetDefaultCardToken
+  );
+
+  setCreateUserCardToken = this.fireQuery(
+    MUTATIONS.CreateUserCardToken,
+    (data) => data!.accountCardTokenCreate
+  );
+
+  setDeleteUserCardToken = this.fireQuery(
+    MUTATIONS.DeleteUserCardToken,
+    (data) => data!.accountCardTokenDelete
+  );
+
   client: ApolloClient<any>;
 
   constructor(client: ApolloClient<any>) {
