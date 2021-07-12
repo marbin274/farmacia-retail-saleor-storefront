@@ -107,6 +107,7 @@ const ProductsFeatured: React.FC<IProps> = ({
                             product.id,
                             product.name
                           )}
+                          user={user}
                         />
                       )
                     )}

@@ -15,6 +15,7 @@ storiesOf("@components/organisms/ProductListCategoryAuna", module)
         canLoadMore={true}
         loading={false}
         onLoadMore={() => null}
+        user={null}
       />
     </BrowserRouter>
   ));

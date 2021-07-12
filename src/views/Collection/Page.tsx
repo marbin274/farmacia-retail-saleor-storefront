@@ -7,6 +7,7 @@ import {
 } from "@temp/@next/components/molecules/ProductTileAUNA/types";
 import { aunaGrey100, largeScreen } from "@temp/@next/globalStyles/constants";
 import { IItems } from "@temp/@sdk/api/Cart/types";
+import { useUserDetails } from "@temp/@sdk/react";
 import { baseUrl } from "@temp/app/routes";
 import { structuredData } from "@temp/core/SEO/Collection/structuredData";
 import { IFilterAttributes, IFilters } from "@types";
@@ -74,6 +75,7 @@ const Page: React.FC<PageProps> = ({
   removeItemToCart,
   subtractItemToCart,
 }) => {
+  const { data: user } = useUserDetails();
   const canDisplayProducts = maybe(
     () => !!products.edges && products.totalCount !== undefined
   );
@@ -184,6 +186,7 @@ const Page: React.FC<PageProps> = ({
                 addToCart={addToCart}
                 removeItemToCart={removeItemToCart}
                 subtractItemToCart={subtractItemToCart}
+                user={user}
               />
               <Pagination
                 page={page}

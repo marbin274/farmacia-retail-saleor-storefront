@@ -27,6 +27,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
   productUrl: productLink,
   product,
   productsOnCart,
+  user,
 }: IProps) => {
   const [thumbnails, setThumbnails] = useState<{
     thumbnail: { url: string | undefined };
@@ -45,12 +46,12 @@ export const ProductTileAUNA: React.FC<IProps> = ({
     productId: ICheckoutModelLineVariantLocalStorage,
     quantity: number
   ) => {
+        
     if (
-      !!fromHome &&
-      (showPersonalizedCollection.variationKey ===
-        VariationKeys.SHOW_PERSONALIZE ||
-        showPersonalizedCollection.variationKey ===
-          VariationKeys.HIDE_PERSONALIZE)
+      (!!fromHome) &&
+      (user?.id) && 
+      (showPersonalizedCollection.variationKey === VariationKeys.SHOW_PERSONALIZE ||
+        showPersonalizedCollection.variationKey === VariationKeys.HIDE_PERSONALIZE)
     ) {
       trackAddProductToCartFromPersonalized();
     }
