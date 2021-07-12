@@ -5,7 +5,6 @@ import { aunaGrey06, boldFontWeight } from "@temp/@next/globalStyles/constants";
 
 export const SearchPage = styled.div`
   ${ContainerStyle}
-  z-index: 0;
   margin-top: 0;
   padding: 0;
   ${mediaUp.largeScreen`
