@@ -9,11 +9,9 @@ export const PaymentMethods: FC<IPaymentMethodsProps> = ({
 }) => {
   return (
     <div className="fa-grid fa-grid-cols-1 md:fa-grid-cols-2 fa-gap-4">
-      {creditCards?.length === 0 && (
-        <AddNewTile type="tajeta" onClick={onClickAdd} />
-      )}
+      <AddNewTile type="tajeta" onClick={onClickAdd} />
       {creditCards?.map(c => (
-        <CreditCardTile creditCard={c} />
+        <CreditCardTile creditCard={c} key={c.id} />
       ))}
     </div>
   );

@@ -73,6 +73,7 @@ export interface ICardTokenizationResult {
     expirationYear: string;
     firstName: string;
     lastName: string;
+    bin?: string; // post response
   };
   order: {
     transactionToken: string;

@@ -1,15 +1,32 @@
-import React, { FC, useRef, useState } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 import { Modal } from "@components/organisms";
 import { IPaymentMethodFormModalProps } from "./types";
 import { NiubizForm } from "../NiubizForm";
 import { ICardTokenizationResult } from "@temp/core/payments/niubiz";
+import { useCreateUserCardToken } from "@temp/@sdk/react";
 
 export const PatmentMethodFormModal: FC<IPaymentMethodFormModalProps> = ({
-  show,
   onClose,
+  show,
+  user,
 }) => {
   const [loading, setLoading] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
+
+  const [
+    createUserCardToken,
+    { data: createData, error: createError },
+  ] = useCreateUserCardToken();
+
+  useEffect(() => {
+    if (createData?.user && !createData?.errors.length && !createError) {
+      onClose?.();
+    }
+
+    if (!createData?.user && (createData?.errors.length > 0 || createError)) {
+      // TODO: mostrar error
+    }
+  }, [createData, createError]);
 
   // TODO: unificar con checkout
   const generatePurchaseNumber = (): number => {
@@ -32,7 +49,14 @@ export const PatmentMethodFormModal: FC<IPaymentMethodFormModalProps> = ({
   };
 
   const handleCardTokenization = (data: ICardTokenizationResult) => {
-    setLoading(false);
+    createUserCardToken({
+      input: {
+        binNumber: data.card.bin,
+        brand: data.card.brand,
+        cardNumber: data.card.cardNumber,
+        tokenId: data.token.tokenId,
+      },
+    });
   };
 
   const onError = () => {
@@ -53,8 +77,8 @@ export const PatmentMethodFormModal: FC<IPaymentMethodFormModalProps> = ({
         <NiubizForm
           generatePurchaseNumber={generatePurchaseNumber}
           userDataForNiubiz={{
-            documentNumber: "71073040",
-            email: "umelendez@auna.pe",
+            documentNumber: user.documentNumber,
+            email: user.email,
           }}
           formRef={formRef}
           onCardTokenization={handleCardTokenization}

@@ -314,7 +314,10 @@ export const NiubizForm: FC<INiubizFormProps> = ({
             cardTokenization(ctRequirements)
               .then((res: ICardTokenizationResult) => {
                 if (res.errorCode === 0) {
-                  onCardTokenization?.(res);
+                  onCardTokenization?.({
+                    ...res,
+                    card: { ...res.card, bin: result.bin },
+                  });
                 } else {
                   showTokenizationCommonError();
                 }

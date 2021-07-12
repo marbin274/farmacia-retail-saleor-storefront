@@ -15,6 +15,7 @@ export const PaymentMethodList: FC<IProps> = ({ user }) => {
       <PatmentMethodFormModal
         show={showAddModal}
         onClose={() => setShowAddModal(false)}
+        user={user}
       />
     </div>
   );
