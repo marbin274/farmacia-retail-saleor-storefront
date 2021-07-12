@@ -125,26 +125,7 @@ $small-screen-plus-one: 541px;
         min-height: calc(100% - 6rem);
       }
     }
-    &__list {
-      padding: 1rem 1.5rem;
-      height: calc(100% - 6.75rem);
-
-      -ms-overflow-style: none; /* hide scroll on IE and Edge */
-      scrollbar-width: none; /* hide scroll on Firefox */
-      &::-webkit-scrollbar {
-        display: none; /*hide scroll on chrome, safari and opera*/
-      }
-
-      @media (min-width: $small-screen-plus-one) {
-        overflow: auto;
-      }
-      @media (max-width: $small-screen) {
-        padding: 0;
-        height: auto;
-        min-height: calc(100% - 6rem);
-        padding-bottom: 13.25rem;
-        background-color: #f7f6f8;
-      }
+    &__list {      
 
       &__item {
         width: 23rem;
@@ -166,13 +147,6 @@ $small-screen-plus-one: 541px;
           margin-bottom: 0;
           &.delete {
             background-color: $white;
-          }
-        }
-
-        &:last-child {
-          margin-bottom: 4.5rem;
-          @media (max-width: $small-screen) {
-            margin-bottom: 0;
           }
         }
 

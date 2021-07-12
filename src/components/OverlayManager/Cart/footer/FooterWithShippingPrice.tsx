@@ -28,6 +28,7 @@ export const FooterWithShippingPrice: React.FC<IProps> = ({ buttonText, hideOver
         discount,
         items,
         subtotalPrice,
+        totalPrice,
     } = useCart();
 
     const [showInfo, setShowInfo] = React.useState<boolean>(false);
@@ -156,6 +157,19 @@ export const FooterWithShippingPrice: React.FC<IProps> = ({ buttonText, hideOver
                             }
                             {
                                 !isAllFree && potentialShippingMethods.map(shippingMethod => shippingMethod)
+                            }
+                            {
+                                isAllFree && <S.DetailsTotal>
+                                    <S.DetailsPriceLabel>
+                                        Total
+                                    </S.DetailsPriceLabel>
+                                    <S.DetailsTotalMount>
+                                        <TaxedMoney
+                                            data-cy="cartPageTotalPrice"
+                                            taxedMoney={totalPrice}
+                                        />
+                                    </S.DetailsTotalMount>
+                                </S.DetailsTotal>
                             }
                         </S.Details>
                         <S.ButtonContainer>
