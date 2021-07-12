@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const CollectionWrapper = styled.div`
   ${CollectionStyle}
-  z-index: 2;
+  z-index: 0;
   .collection-products {
     width: 100%;
 

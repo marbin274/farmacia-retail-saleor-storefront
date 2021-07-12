@@ -103,7 +103,7 @@ const Page: React.FC<PageProps> = ({
   );
 
   return (
-    <div className="fa-bg-neutral-light" ref={searchContainerRef}>
+    <div className="fa-bg-neutral-light fa-z-0" ref={searchContainerRef}>
       <S.SearchPage>
         <FilterSidebar
           show={showFilters}

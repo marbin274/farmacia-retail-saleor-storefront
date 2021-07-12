@@ -8,7 +8,7 @@ import farmatheme from "@farmatheme";
 
 export const CategoryWrapper = styled.div`
   ${CollectionStyle}
-  z-index: 2;
+  z-index: 0;
 `;
 
 export const CategoryProductListHeader = styled.div`
