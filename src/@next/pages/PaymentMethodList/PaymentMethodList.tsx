@@ -3,13 +3,13 @@ import { PaymentMethods } from "./components/PaymentMethods";
 import { PatmentMethodFormModal } from "./components/PatmentMethodFormModal";
 import { IProps } from "./types";
 
-export const PaymentMethodList: FC<IProps> = () => {
+export const PaymentMethodList: FC<IProps> = ({ user }) => {
   const [showAddModal, setShowAddModal] = useState(false);
 
   return (
     <div>
       <PaymentMethods
-        creditCards={[]}
+        creditCards={user?.cardTokens}
         onClickAdd={() => setShowAddModal(true)}
       />
       <PatmentMethodFormModal

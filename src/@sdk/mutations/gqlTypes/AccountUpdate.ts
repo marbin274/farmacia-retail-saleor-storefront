@@ -150,6 +150,19 @@ export interface AccountUpdate_accountUpdate_user_addresses {
   longitude: number | null;
 }
 
+export interface AccountUpdate_accountUpdate_user_cardTokens {
+  __typename: "CardToken";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  cardNumber: string;
+  brand: string;
+  binNumber: string;
+  default: boolean;
+  tokenId: string;
+}
+
 export interface AccountUpdate_accountUpdate_user {
   __typename: "User";
   /**
@@ -175,6 +188,10 @@ export interface AccountUpdate_accountUpdate_user {
    * List of all user's addresses.
    */
   addresses: (AccountUpdate_accountUpdate_user_addresses | null)[] | null;
+  /**
+   * List of all user's cards.
+   */
+  cardTokens: (AccountUpdate_accountUpdate_user_cardTokens | null)[] | null;
 }
 
 export interface AccountUpdate_accountUpdate {

@@ -150,6 +150,19 @@ export interface SetCustomerDefaultAddress_accountSetDefaultAddress_user_address
   longitude: number | null;
 }
 
+export interface SetCustomerDefaultAddress_accountSetDefaultAddress_user_cardTokens {
+  __typename: "CardToken";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  cardNumber: string;
+  brand: string;
+  binNumber: string;
+  default: boolean;
+  tokenId: string;
+}
+
 export interface SetCustomerDefaultAddress_accountSetDefaultAddress_user {
   __typename: "User";
   /**
@@ -175,6 +188,10 @@ export interface SetCustomerDefaultAddress_accountSetDefaultAddress_user {
    * List of all user's addresses.
    */
   addresses: (SetCustomerDefaultAddress_accountSetDefaultAddress_user_addresses | null)[] | null;
+  /**
+   * List of all user's cards.
+   */
+  cardTokens: (SetCustomerDefaultAddress_accountSetDefaultAddress_user_cardTokens | null)[] | null;
 }
 
 export interface SetCustomerDefaultAddress_accountSetDefaultAddress {

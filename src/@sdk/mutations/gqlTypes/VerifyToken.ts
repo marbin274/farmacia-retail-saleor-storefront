@@ -135,6 +135,19 @@ export interface VerifyToken_tokenVerify_user_addresses {
   longitude: number | null;
 }
 
+export interface VerifyToken_tokenVerify_user_cardTokens {
+  __typename: "CardToken";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  cardNumber: string;
+  brand: string;
+  binNumber: string;
+  default: boolean;
+  tokenId: string;
+}
+
 export interface VerifyToken_tokenVerify_user {
   __typename: "User";
   /**
@@ -160,6 +173,10 @@ export interface VerifyToken_tokenVerify_user {
    * List of all user's addresses.
    */
   addresses: (VerifyToken_tokenVerify_user_addresses | null)[] | null;
+  /**
+   * List of all user's cards.
+   */
+  cardTokens: (VerifyToken_tokenVerify_user_cardTokens | null)[] | null;
 }
 
 export interface VerifyToken_tokenVerify {

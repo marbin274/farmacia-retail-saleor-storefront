@@ -38,7 +38,7 @@ const returnTab: any = (path: string, userDetails: UserDetails_me, history) => {
       break;
     }
     case paymentMethodsUrl: {
-      tabContent = <PaymentMethodList {...{ history }} />;
+      tabContent = <PaymentMethodList history={history} user={userDetails} />;
       break;
     }
   }

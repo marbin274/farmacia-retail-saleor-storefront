@@ -135,6 +135,19 @@ export interface User_addresses {
   longitude: number | null;
 }
 
+export interface User_cardTokens {
+  __typename: "CardToken";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  cardNumber: string;
+  brand: string;
+  binNumber: string;
+  default: boolean;
+  tokenId: string;
+}
+
 export interface User {
   __typename: "User";
   /**
@@ -160,4 +173,8 @@ export interface User {
    * List of all user's addresses.
    */
   addresses: (User_addresses | null)[] | null;
+  /**
+   * List of all user's cards.
+   */
+  cardTokens: (User_cardTokens | null)[] | null;
 }

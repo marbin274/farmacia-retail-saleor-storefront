@@ -135,6 +135,19 @@ export interface UserDetails_me_addresses {
   longitude: number | null;
 }
 
+export interface UserDetails_me_cardTokens {
+  __typename: "CardToken";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  cardNumber: string;
+  brand: string;
+  binNumber: string;
+  default: boolean;
+  tokenId: string;
+}
+
 export interface UserDetails_me {
   __typename: "User";
   /**
@@ -160,6 +173,10 @@ export interface UserDetails_me {
    * List of all user's addresses.
    */
   addresses: (UserDetails_me_addresses | null)[] | null;
+  /**
+   * List of all user's cards.
+   */
+  cardTokens: (UserDetails_me_cardTokens | null)[] | null;
 }
 
 export interface UserDetails {
