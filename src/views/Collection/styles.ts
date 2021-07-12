@@ -9,7 +9,6 @@ export const CollectionWrapper = styled.div`
     ${mediaUp.largeScreen`
       margin-left: 0;
     `}
-
   }
 `;
 

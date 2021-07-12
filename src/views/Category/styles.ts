@@ -1,4 +1,8 @@
-import { CollectionStyle, DefaultTheme, mediaUp } from "@temp/@next/globalStyles";
+import {
+  CollectionStyle,
+  DefaultTheme,
+  mediaUp,
+} from "@temp/@next/globalStyles";
 import styled from "styled-components";
 import farmatheme from "@farmatheme";
 

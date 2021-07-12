@@ -4,12 +4,13 @@ import { CustomSelectContainer, media, mediaUp, styled } from "@styles";
 export const Wrapper = styled.div`
   background-color: ${props => props.theme.colors.white};
   border-radius: 1rem;
-  display:flex;
-  align-items:center;
-  margin-bottom:1rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
 
-  ${media.smallScreen`
+  ${media.largeScreen`
     border-radius: 0;
+    height: auto;
   `}
   > span {
     color: #908ba7;
@@ -95,6 +96,18 @@ export const Clear = styled.button`
 export const Element = styled.span`
   text-align: center;
   width: 100%;
+
+  &.products_found {
+    padding-top: 1rem;
+    text-align: left;
+    z-index: 0;
+    ${mediaUp.largeScreen`
+      padding-top: 0;
+    `}
+  }
+  &.product_list_header__dropdown {
+    z-index: 1;
+  }
 `;
 
 export const Filters = styled.span`
@@ -115,11 +128,8 @@ export const SearchText = styled.span`
   color: ${props => props.theme.colors.interactive};
 `;
 
-
-
 export const Sort = styled(CustomSelectContainer as any)`
   display: inline-block;
-  padding-top: 1rem;
   width: inherit;
   ${mediaUp.smallScreen`  
     padding-top: 0rem;
@@ -135,12 +145,11 @@ export const Sort = styled(CustomSelectContainer as any)`
   }
   div[class*="menu"] {
     right: 0;
-    width: 12.875rem;    
+    width: 12.875rem;
     ${mediaUp.smallScreen`
       width: 14.75rem;
     `}
   }
-  
 `;
 
 export const FiltersChipsWrapper = styled.div`
