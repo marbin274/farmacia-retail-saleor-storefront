@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { IProps } from "./types";
 import { ErrorMessage } from "@components/atoms";
 import * as S from "./styles";

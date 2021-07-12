@@ -51,9 +51,10 @@ export const aunaGrey06 = "#f9f9f9";
 export const aunaGreyDark = "#E8E8E8";
 
 export const aunaComplementary1 = "#E6F6F9";
-export const aunaComplementary2 = "#F3F9CE";
+export const aunaComplementary2 = "#E8FCF7";
 export const aunaComplementary3 = "#FFF0E6";
 export const aunaComplementary4 = "#E6EEF8";
+export const aunaComplementary5 = "#A8F0DD";
 
 export const aunaOrange = "#ED7C59";
 export const aunaOrangeOnSale = "#FF6900";
@@ -127,10 +128,10 @@ export const baseFontFamily = "'Inter', sans-serif";
 export const baseFontSizeSmall = "0.875rem";
 export const baseFontSize = "1rem"; // 16px
 export const baseLineHeight = "1.25rem"; // 20px
-export const boldFontWeight = 600;
-export const extraBoldFontWeight = 800;
+export const boldFontWeight = 500;
+export const extraBoldFontWeight = 600;
 export const normalFontWeight = 400;
-export const smallFontWeight = 300;
+export const smallFontWeight = 400;
 export const h1FontSize = "4rem"; // 64px
 export const h2FontSize = "3rem"; // 48px
 export const h1LineHeight = 1;

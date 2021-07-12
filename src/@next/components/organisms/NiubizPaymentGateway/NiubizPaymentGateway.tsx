@@ -416,13 +416,13 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
       <Formik
         initialValues={initialValuesFormPayment}
         validate={(values: IFormPayment) => {
-          const errros = validatePaymentGateway(values);
+          const formErrors = validatePaymentGateway(values);
 
-          if (!_.isEmpty(errors)) {
+          if (!_.isEmpty(formErrors)) {
             onError(errors);
           }
 
-          return errros;
+          return formErrors;
         }}
         validateOnBlur={false}
         validateOnChange={false}
