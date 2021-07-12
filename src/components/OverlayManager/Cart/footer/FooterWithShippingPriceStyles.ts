@@ -34,7 +34,7 @@ export const FreeShipping = styled.div`
         padding: 1rem 1.5rem;
         width: 100%;
         ${mediaUp.mediumScreen`
-            border-radius: 8px;
+            border-radius: 0.5rem;
     `} 
     }
     strong {
