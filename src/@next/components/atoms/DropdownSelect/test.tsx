@@ -28,13 +28,13 @@ const DEFAULT_PROPS = {
 
 describe("<DropdownSelect />", () => {
   it("exists", () => {
-    const wrapper = shallow(<DropdownSelect {...DEFAULT_PROPS} />);
+    const wrapper = shallow(<DropdownSelect clearText="" {...DEFAULT_PROPS} />);
 
     expect(wrapper.exists()).toEqual(true);
   });
 
   it("should open select menu on click", () => {
-    const wrapper = mount(<DropdownSelect {...DEFAULT_PROPS} />);
+    const wrapper = mount(<DropdownSelect clearText="" {...DEFAULT_PROPS} />);
 
     wrapper
       .find(S.SortLine)
@@ -45,7 +45,7 @@ describe("<DropdownSelect />", () => {
   });
 
   it("should close menu when clicking on option", () => {
-    const wrapper = mount(<DropdownSelect {...DEFAULT_PROPS} />);
+    const wrapper = mount(<DropdownSelect clearText="" {...DEFAULT_PROPS} />);
 
     wrapper
       .find(S.SortLine)
@@ -63,7 +63,7 @@ describe("<DropdownSelect />", () => {
     DEFAULT_PROPS.onChange.mockReset();
 
     const wrapper = mount(
-      <DropdownSelect {...DEFAULT_PROPS} value={DEFAULT_PROPS.options[0]} />
+      <DropdownSelect clearText="" {...DEFAULT_PROPS} value={DEFAULT_PROPS.options[0]} />
     );
 
     wrapper

@@ -14,7 +14,7 @@ const DEFAULT_PROPS = {
   activeFiltersAttributes: [],
   clearFilters: clearFilterMock,
   numberOfProducts: 255,
-  onChange: onChangeMock,
+  onChangeSortOption: onChangeMock,
   onCloseFilterAttribute: onCloseFilterAttributeMock,
   openFiltersMenu: openFiltersMenuMock,
   sortOptions: [

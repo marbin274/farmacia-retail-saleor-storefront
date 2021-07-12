@@ -6,7 +6,7 @@ import {
   ISubtractItemToCartCallback,
 } from "@temp/@next/components/molecules/ProductTileAUNA/types";
 import { CategoryNavigation } from "@temp/@next/components/organisms/CategoryNavigation/CategoryNavigation";
-import { aunaGrey100, largeScreen } from "@temp/@next/globalStyles/constants";
+import { largeScreen } from "@temp/@next/globalStyles/constants";
 import { IItems } from "@temp/@sdk/api/Cart/types";
 import { useUserDetails } from "@temp/@sdk/react";
 import { baseUrl } from "@temp/app/routes";
@@ -22,7 +22,7 @@ import {
   Category_category,
   Category_paginatedProducts,
 } from "./gqlTypes/Category";
-import { CategoryWrapper } from "./styles";
+import { CategoryProductListHeader, CategoryWrapper } from "./styles";
 
 interface SortItem {
   label: string;
@@ -109,39 +109,13 @@ const Page: React.FC<PageProps> = ({
           baseUrl={baseUrl}
         />
       </div>
-      {isLargeScreen && (
-        <div className="collection-container">
-          <ProductListHeader
-            activeSortOption={activeSortOption}
-            openFiltersMenu={() => setShowFilters(true)}
-            numberOfProducts={products ? products.totalCount : 0}
-            activeFilters={activeFilters}
-            activeFiltersAttributes={activeFiltersAttributes}
-            clearFilters={clearFilters}
-            sortOptions={sortOptions}
-            onChange={onOrder}
-            onCloseFilterAttribute={onAttributeFiltersChange}
-          />
-          <div className="fa-my-2">
-            <span
-              className="fa-text-sm fa-font-normal fa-tracking-tight fa-mr-2"
-              style={{ color: aunaGrey100 }}
-            >
-              Productos encontrados
-            </span>
-            <span className="fa-text-sm fa-font-medium fa-tracking-tight fa-text-neutral-darkest">
-              {products ? products.totalCount : 0}
-            </span>
-          </div>
-        </div>
-      )}
       <div className="collection-container collection-body">
         <script className="structured-data-list" type="application/ld+json">
           {structuredData(category)}
         </script>
         <CategoryNavigation category={category} />
         <section className="collection-products">
-          {!isLargeScreen && (
+          <CategoryProductListHeader>
             <ProductListHeader
               activeSortOption={activeSortOption}
               openFiltersMenu={() => setShowFilters(true)}
@@ -150,10 +124,10 @@ const Page: React.FC<PageProps> = ({
               activeFiltersAttributes={activeFiltersAttributes}
               clearFilters={clearFilters}
               sortOptions={sortOptions}
-              onChange={onOrder}
+              onChangeSortOption={onOrder}
               onCloseFilterAttribute={onAttributeFiltersChange}
             />
-          )}
+          </CategoryProductListHeader>
           <FilterSidebar
             show={showFilters}
             hide={() => setShowFilters(false)}

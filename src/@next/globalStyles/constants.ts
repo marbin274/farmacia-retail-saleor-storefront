@@ -51,9 +51,10 @@ export const aunaGrey06 = "#f9f9f9";
 export const aunaGreyDark = "#E8E8E8";
 
 export const aunaComplementary1 = "#E6F6F9";
-export const aunaComplementary2 = "#F3F9CE";
+export const aunaComplementary2 = "#E8FCF7";
 export const aunaComplementary3 = "#FFF0E6";
 export const aunaComplementary4 = "#E6EEF8";
+export const aunaComplementary5 = "#A8F0DD";
 
 export const aunaOrange = "#ED7C59";
 export const aunaOrangeOnSale = "#FF6900";

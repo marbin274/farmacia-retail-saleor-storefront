@@ -1,16 +1,13 @@
-import { Loader } from "@components/atoms";
 import { ProductTileAUNA } from "@components/molecules";
 import { getProductsWithQuantity } from "@temp/@next/utils/products";
 import { generateProductUrl } from "@temp/core/utils";
 import React from "react";
 import * as S from "./styles";
 import { IProps } from "./types";
-import { Button, PlusIcon } from "@farmacia-retail/farmauna-components";
+import { Skeleton } from "./skeleton";
 
 export const ProductListCategoryAuna: React.FC<IProps> = ({
-  canLoadMore = false,
   loading = false,
-  onLoadMore = () => null,
   products,
   productsOnCart,
   addToCart,
@@ -18,43 +15,29 @@ export const ProductListCategoryAuna: React.FC<IProps> = ({
   subtractItemToCart,
   user,
 }: IProps) => {
-
   return (
     <>
-      <S.List>
-        {getProductsWithQuantity(
-          products,
-          productsOnCart
-        ).map(product => (
-          <ProductTileAUNA
-            key={product.id}
-            addToCart={addToCart}
-            removeItemToCart={removeItemToCart}
-            subtractItemToCart={subtractItemToCart}
-            product={product}
-            productsOnCart={productsOnCart}
-            productUrl={generateProductUrl(product.id, product.name)}
-            user={user}
-          />
-        ))}
-      </S.List>
-      <S.Loader>
-        {loading ? (
-          <Loader />
-        ) : (
-            canLoadMore && (
-              <Button 
-              variant="outline"
-              data-cy="load-more_button"
-              onClick={onLoadMore}
-              type="button"
-              icon={<PlusIcon size={12} />}
-              >
-                Cargar más
-              </Button>
-            )
-          )}
-      </S.Loader>
+      {
+        loading ?
+          <Skeleton /> :
+          <S.List className="product-list-grid">
+            {getProductsWithQuantity(
+              products,
+              productsOnCart
+            ).map(product => (
+              <ProductTileAUNA
+                key={product.id}
+                addToCart={addToCart}
+                removeItemToCart={removeItemToCart}
+                subtractItemToCart={subtractItemToCart}
+                product={product}
+                productsOnCart={productsOnCart}
+                productUrl={generateProductUrl(product.id, product.name)}
+                user={user}
+              />
+            ))}
+          </S.List>
+      }
     </>
   );
 };
