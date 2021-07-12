@@ -28,6 +28,7 @@ export const FooterWithShippingPrice: React.FC<IProps> = ({ buttonText, hideOver
         discount,
         items,
         subtotalPrice,
+        totalPrice,
     } = useCart();
 
     const [showInfo, setShowInfo] = React.useState<boolean>(false);
@@ -104,28 +105,30 @@ export const FooterWithShippingPrice: React.FC<IProps> = ({ buttonText, hideOver
                         {
                             isAllFree &&
                             <S.FreeShipping>
-                                <span>Felicidades tienes <strong>envío gratis</strong></span>
-                                <S.InfoIcon
-                                    ref={setElementRef()}
-                                >
-                                    <span
-                                        onClick={() => setShowInfo(true)}
+                                <div>
+                                    <span>Felicidades tienes <strong>envío gratis</strong></span>
+                                    <S.InfoIcon
+                                        ref={setElementRef()}
                                     >
-                                        <Icon
-                                            color={aunaBrand3}
-                                            heightViewPort={20}
-                                            name="info"
-                                            size={20}
-                                            widthViewPort={20} />
-                                    </span>
-                                    {
-                                        showInfo && <S.ToolTipContainer>
-                                            <S.ToolTipText>
-                                                Si alcanzas a tener compras <strong>mayores</strong> a <strong>S/ {orderPrice} soles</strong>, tu <strong>envío es totalmente <span className="free">gratis</span>.</strong>
-                                            </S.ToolTipText>
-                                        </S.ToolTipContainer>
-                                    }
-                                </S.InfoIcon>
+                                        <span
+                                            onClick={() => setShowInfo(true)}
+                                        >
+                                            <Icon
+                                                color={aunaBrand3}
+                                                heightViewPort={20}
+                                                name="info"
+                                                size={20}
+                                                widthViewPort={20} />
+                                        </span>
+                                        {
+                                            showInfo && <S.ToolTipContainer>
+                                                <S.ToolTipText>
+                                                    Si alcanzas a tener compras <strong>mayores</strong> a <strong>S/ {orderPrice} soles</strong>, tu <strong>envío es totalmente <span className="free">gratis</span>.</strong>
+                                                </S.ToolTipText>
+                                            </S.ToolTipContainer>
+                                        }
+                                    </S.InfoIcon>
+                                </div>
                             </S.FreeShipping>
                         }
                         <S.Details>                            
@@ -156,6 +159,19 @@ export const FooterWithShippingPrice: React.FC<IProps> = ({ buttonText, hideOver
                             }
                             {
                                 !isAllFree && potentialShippingMethods.map(shippingMethod => shippingMethod)
+                            }
+                            {
+                                isAllFree && <S.DetailsTotal>
+                                    <S.DetailsPriceLabel>
+                                        Total
+                                    </S.DetailsPriceLabel>
+                                    <S.DetailsTotalMount>
+                                        <TaxedMoney
+                                            data-cy="cartPageTotalPrice"
+                                            taxedMoney={totalPrice}
+                                        />
+                                    </S.DetailsTotalMount>
+                                </S.DetailsTotal>
                             }
                         </S.Details>
                         <S.ButtonContainer>

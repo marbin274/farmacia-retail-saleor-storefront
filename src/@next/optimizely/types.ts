@@ -2,6 +2,7 @@
 export enum EventKeys {
     ADD_TO_CART = "add-to-cart",
     ADD_PRODUCT_TO_CART_FROM_PERSONALIZED = "add-product-to-cart-from-personalized",
+    ADD_PRODUCT_TO_CART_FROM_NOT_PERSONALIZED = "add-product-to-cart-from-not-personalized",
     GO_CHECKOUT_KNOWING_SHIPPING_PRICE = "go-checkout-knowing-shipping-price",
     SELECT_PRODUCT_FROM_PERSONALIZED = "select-product-from-personalized",
 }
@@ -14,8 +15,10 @@ export enum FlagKeys {
 
 export enum VariationKeys {
     HIDE_SHIPPING_PRICE = "hide_shipping_price",
+    HIDE_PERSONALIZE = "hide",
     OFF = "off",
     ON = "on",
+    SHOW_PERSONALIZE = "show",
     SHOW_SHIPPING_PRICE = "show_shipping_price",
 }
 

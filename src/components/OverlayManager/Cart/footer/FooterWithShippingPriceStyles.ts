@@ -15,18 +15,28 @@ export const Container = styled.div`
 
 export const Details = styled.div`
     flex: 1;
-    padding: 1.5rem 1rem 0rem;
+    padding: 1.5rem 1.5rem 0rem;
     text-align: center;
     width: 100%;
 `;
 
 export const FreeShipping = styled.div`
-    background-color: ${aunaInformativeLightest};
+    
     color: ${aunaBrand3};
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem 0.5rem;
     width: 100%;
+    ${mediaUp.mediumScreen`
+        padding: 1rem 1.5rem 0rem;
+    `}
+    > div {
+        background-color: ${aunaInformativeLightest};
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem 1.5rem;
+        width: 100%;
+        ${mediaUp.mediumScreen`
+            border-radius: 0.5rem;
+    `} 
+    }
     strong {
         font-weight: ${({ theme }) => theme.typography.boldFontWeight};
     }
@@ -97,6 +107,14 @@ export const DetailsDiscount = styled(DetailsPrice as any)`
     color: ${aunaDiscount};
 `;
 
+export const DetailsTotal = styled(DetailsPrice as any)`
+    font-weight: ${({ theme }) => theme.typography.boldFontWeight};
+`;
+
+export const DetailsTotalMount = styled(DetailsPriceTotal as any)`
+    font-size: ${({ theme }) => theme.typography.baseFontSize};
+`;
+
 
 export const ShippingMethodLabel = styled.span`
     color: ${neutralDarkest};
@@ -139,7 +157,7 @@ export const ShippingMethodTotal = styled(Money)`
 
 export const ButtonContainer = styled.div`
     margin-top: 0.9375rem;
-    padding: 0rem 1rem 1rem;
+    padding: 0rem 1.5rem 1rem;
     text-align: center;
     width: 100%;
     button {

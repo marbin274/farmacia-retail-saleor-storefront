@@ -37,7 +37,7 @@ export const CollectionStyle = css`
     position: sticky;
     top: 5rem;
     width: ${containerWidth};
-    z-index: 3;
+    z-index: 2;
 
     ${mediaUp.largeScreen`
       padding: 1.5rem 1rem;

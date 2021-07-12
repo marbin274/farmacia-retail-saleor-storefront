@@ -107,7 +107,7 @@ export const AlertWrapper = styled.div`
   height: 13rem;
   position: absolute;
   right: -0.8rem;
-  top: 2.5rem;
+  top: 2.1rem;
   width: 18rem;
   z-index: 1;
 

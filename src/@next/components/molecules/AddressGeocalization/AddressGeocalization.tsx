@@ -8,10 +8,15 @@ import { addressGeoModalService } from "../AddressGeoModal/AddressGeoModalServic
 import { AddressGeocalizationInfo } from "./AddressGeocalizationInfo";
 import * as S from "./styles";
 import { IProps } from "./types";
+import { useMediaQuery } from "react-responsive";
+import { largeScreen } from "@temp/@next/globalStyles/constants";
 
 export const AddressGeocalization: React.FC<IProps> = React.memo(({ mode }) => {
   const [districtSelected] = useDistrictSelected();
   const [show] = useAddressGeocalizationInfo();
+
+  const isDesktop = useMediaQuery({ query: `(min-width: ${largeScreen}px)` });
+
   const handleChangeAddress = () => {
     addressGeoModalService.show(true);
   };
@@ -21,7 +26,7 @@ export const AddressGeocalization: React.FC<IProps> = React.memo(({ mode }) => {
       <S.Wrapper>
         <S.Localization mode={mode}>
           <S.GeocalizationIcon>
-            <GpsIcon onClick={handleChangeAddress} size={34} />
+            <GpsIcon onClick={handleChangeAddress} size={isDesktop ? 32 : 24} />
           </S.GeocalizationIcon>
           <S.District className="district">
             <S.Label onClick={handleChangeAddress}>Enviar a: </S.Label>
