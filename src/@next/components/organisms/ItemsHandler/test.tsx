@@ -1,4 +1,4 @@
-import { MAX_ORDER_PER_PRODUCT } from "@temp/core/config";
+import { MAX_ORDER_PER_PRODUCT } from "@sdk/config";
 import { mount, shallow } from "enzyme";
 import "jest-styled-components";
 import React from "react";

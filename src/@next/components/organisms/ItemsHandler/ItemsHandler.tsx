@@ -6,7 +6,7 @@ import {
   checkStockLimitOrStockAvailable,
   ICheckStockLimitOrStockAvailable,
 } from "@sdk/utils/products";
-import { MAX_ORDER_PER_PRODUCT } from "@temp/core/config";
+import { MAX_ORDER_PER_PRODUCT } from "@sdk/config";
 import classNames from "classnames";
 import React, { FC, useEffect, useState } from "react";
 import { itemNotificationsService } from "../../atoms/ItemsNotification";

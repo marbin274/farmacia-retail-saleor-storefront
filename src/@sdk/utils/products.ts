@@ -3,7 +3,7 @@ import { ISimpleProduct } from "@sdk/types/IProduct";
 import {
     ATTRIBUTE_PROMOTION_LIMIT_MAX_NAME,
     MAX_ORDER_PER_PRODUCT
-} from "@temp/core/config";
+} from "@sdk/config";
 import isEqual from "lodash/isEqual";
 
 export interface IQuantityAvailable {
