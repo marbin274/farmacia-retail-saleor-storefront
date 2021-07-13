@@ -1,11 +1,14 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 import {
   useSetDefaultUserCardToken,
   useDeleteUserCardToken,
+  useCreateUserCardToken,
 } from "@temp/@sdk/react";
 import { alertService } from "@temp/@next/components/atoms/Alert";
 import CreditCardIcon from "images/auna/credit-card.svg";
+import { Alert } from "@components/molecules";
 import { Modal } from "@components/organisms";
+import { CheckIcon, TrashIcon } from "@farmacia-retail/farmauna-components";
 import { PaymentMethods } from "./components/PaymentMethods";
 import { PatmentMethodFormModal } from "./components/PatmentMethodFormModal";
 import { IProps } from "./types";
@@ -14,6 +17,25 @@ export const PaymentMethodList: FC<IProps> = ({ user }) => {
   const [showAddModal, setShowAddModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [cardTokenToDelete, setCardTokenToDelete] = useState<string>();
+  const [showAddSuccess, setShowAddSuccess] = useState(false);
+  const [showDeleteSuccess, setShowDeleteSuccess] = useState(false);
+  const addFormRef = useRef<HTMLFormElement>(null);
+
+  const [
+    createUserCardToken,
+    { data: createData, error: createError, loading: createLoading },
+  ] = useCreateUserCardToken();
+
+  useEffect(() => {
+    if (createData?.user && !createData?.errors.length && !createError) {
+      setShowAddModal(false);
+      setShowAddSuccess(true);
+    }
+
+    if (!createData?.user && (createData?.errors.length > 0 || createError)) {
+      showGenericError();
+    }
+  }, [createData, createError]);
 
   const [
     setDefaultCardToken,
@@ -24,11 +46,6 @@ export const PaymentMethodList: FC<IProps> = ({ user }) => {
     },
   ] = useSetDefaultUserCardToken();
 
-  const [
-    deleteCardToken,
-    { data: deleteData, error: deleteError, loading: deleteLoading },
-  ] = useDeleteUserCardToken();
-
   useEffect(() => {
     if (
       !setDefaultData?.user &&
@@ -38,7 +55,16 @@ export const PaymentMethodList: FC<IProps> = ({ user }) => {
     }
   }, [setDefaultData, setDefaultError]);
 
+  const [
+    deleteCardToken,
+    { data: deleteData, error: deleteError, loading: deleteLoading },
+  ] = useDeleteUserCardToken();
+
   useEffect(() => {
+    if (deleteData?.user && !deleteData?.errors.length && !deleteError) {
+      setShowDeleteSuccess(true);
+    }
+
     if (!deleteData?.user && (deleteData?.errors.length > 0 || deleteError)) {
       showGenericError();
     }
@@ -50,6 +76,11 @@ export const PaymentMethodList: FC<IProps> = ({ user }) => {
       message: "Ha ocurrido un error al procesar la solicitud",
       type: "Text",
     });
+  };
+
+  const clearAlers = () => {
+    setShowAddSuccess(false);
+    setShowDeleteSuccess(false);
   };
 
   const performSetDefault = (id: string) => {
@@ -69,23 +100,54 @@ export const PaymentMethodList: FC<IProps> = ({ user }) => {
       return;
     }
 
+    clearAlers();
     deleteCardToken({ id: cardTokenToDelete });
     setShowDeleteModal(false);
   };
 
   return (
     <div>
+      {showAddSuccess && (
+        <Alert
+          icon={<CheckIcon size={12} />}
+          message="Tarjeta guardada con éxito"
+          className="fa-mb-4"
+        />
+      )}
+      {showDeleteSuccess && (
+        <Alert
+          icon={<TrashIcon size={12} />}
+          message="La tarjeta ha sido eliminada"
+          className="fa-mb-4"
+          type="error"
+        />
+      )}
       <PaymentMethods
         creditCards={user?.cardTokens}
         onClickAdd={() => setShowAddModal(true)}
         onClickSetDefault={performSetDefault}
         onClickDelete={onClickDelete}
       />
-      <PatmentMethodFormModal
-        show={showAddModal}
-        onClose={() => setShowAddModal(false)}
-        user={user}
-      />
+      {showAddModal && (
+        <PatmentMethodFormModal
+          formRef={addFormRef}
+          show={showAddModal}
+          onClose={() => setShowAddModal(false)}
+          user={user}
+          loading={createLoading}
+          onSubmit={data => {
+            clearAlers();
+            createUserCardToken({
+              input: {
+                binNumber: data.card.bin,
+                brand: data.card.brand,
+                cardNumber: data.card.cardNumber,
+                tokenId: data.token.tokenId,
+              },
+            });
+          }}
+        />
+      )}
       <Modal
         show={showDeleteModal}
         hide={() => setShowDeleteModal(false)}

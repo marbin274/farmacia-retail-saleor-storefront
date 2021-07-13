@@ -1,37 +1,18 @@
-import React, { FC, useEffect, useRef, useState } from "react";
+import React, { FC, useState } from "react";
 import { Modal } from "@components/organisms";
 import { IPaymentMethodFormModalProps } from "./types";
 import { NiubizForm } from "../NiubizForm";
-import { ICardTokenizationResult } from "@temp/core/payments/niubiz";
-import { useCreateUserCardToken } from "@temp/@sdk/react";
-import { alertService } from "@temp/@next/components/atoms/Alert";
 
 export const PatmentMethodFormModal: FC<IPaymentMethodFormModalProps> = ({
-  onClose,
+  formRef,
   show,
+  onClose,
+  onSubmit,
   user,
+  loading: createLoading,
 }) => {
   const [loading, setLoading] = useState(false);
-  const formRef = useRef<HTMLFormElement>(null);
-
-  const [
-    createUserCardToken,
-    { data: createData, error: createError },
-  ] = useCreateUserCardToken();
-
-  useEffect(() => {
-    if (createData?.user && !createData?.errors.length && !createError) {
-      onClose?.();
-    }
-
-    if (!createData?.user && (createData?.errors.length > 0 || createError)) {
-      alertService.sendAlert({
-        buttonText: "Entendido",
-        message: "Ha ocurrido un error al procesar la solicitud",
-        type: "Text",
-      });
-    }
-  }, [createData, createError]);
+  const isLoading = loading || createLoading;
 
   // TODO: unificar con checkout
   const generatePurchaseNumber = (): number => {
@@ -43,7 +24,7 @@ export const PatmentMethodFormModal: FC<IPaymentMethodFormModalProps> = ({
   };
 
   const performSubmit = () => {
-    if (loading) {
+    if (isLoading) {
       return;
     }
 
@@ -51,17 +32,6 @@ export const PatmentMethodFormModal: FC<IPaymentMethodFormModalProps> = ({
       setLoading(true);
       formRef.current?.dispatchEvent(new Event("submit", { cancelable: true }));
     }
-  };
-
-  const handleCardTokenization = (data: ICardTokenizationResult) => {
-    createUserCardToken({
-      input: {
-        binNumber: data.card.bin,
-        brand: data.card.brand,
-        cardNumber: data.card.cardNumber,
-        tokenId: data.token.tokenId,
-      },
-    });
   };
 
   const onError = () => {
@@ -75,9 +45,8 @@ export const PatmentMethodFormModal: FC<IPaymentMethodFormModalProps> = ({
       hide={onClose}
       submitBtnText="Guardar"
       onSubmit={performSubmit}
-      disabled={loading}
+      disabled={isLoading}
     >
-      {loading && <h1>LOADING</h1>}
       {show && (
         <NiubizForm
           generatePurchaseNumber={generatePurchaseNumber}
@@ -86,7 +55,7 @@ export const PatmentMethodFormModal: FC<IPaymentMethodFormModalProps> = ({
             email: user.email,
           }}
           formRef={formRef}
-          onCardTokenization={handleCardTokenization}
+          onCardTokenization={onSubmit}
           onError={onError}
         />
       )}
