@@ -43,7 +43,6 @@ module.exports = ({ sourceDir, distDir }) => ({
   output: {
     path: distDir,
     publicPath: "/",
-    filename: '[name].[contenthash].js',
   },
   devtool: "source-map",
   module: {
@@ -109,8 +108,7 @@ module.exports = ({ sourceDir, distDir }) => ({
       filename: `${distDir}/index.html`,
       template: `${sourceDir}/index.html`,
       API_URI: process.env.API_URI,
-      GTM_ID: process.env.GTM_ID,
-      minify: true,
+      GTM_ID: process.env.GTM_ID
     }),
     new ForkTsCheckerWebpackPlugin({
       tslint: true,
