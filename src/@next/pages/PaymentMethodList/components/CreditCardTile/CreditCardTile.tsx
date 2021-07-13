@@ -10,6 +10,7 @@ import { ICreditCardTileProps } from "./types";
 
 export const CreditCardTile: FC<ICreditCardTileProps> = ({
   creditCard,
+  onClickDelete,
   onClickSetDefault,
 }) => {
   return (
@@ -36,7 +37,11 @@ export const CreditCardTile: FC<ICreditCardTileProps> = ({
             Usar como tarjeta principal
           </span>
         </div>
-        <Button icon={<TrashIcon />} size="small" />
+        <Button
+          icon={<TrashIcon />}
+          size="small"
+          onClick={() => onClickDelete(creditCard.id)}
+        />
       </div>
 
       <div className="fa-h-px fa-bg-neutral-medium fa-mt-3 fa-mb-4" />

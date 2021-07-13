@@ -6,6 +6,7 @@ import { IPaymentMethodsProps } from "./types";
 export const PaymentMethods: FC<IPaymentMethodsProps> = ({
   creditCards,
   onClickAdd,
+  onClickDelete,
   onClickSetDefault,
 }) => {
   return (
@@ -16,6 +17,7 @@ export const PaymentMethods: FC<IPaymentMethodsProps> = ({
           creditCard={c}
           key={c.id}
           onClickSetDefault={onClickSetDefault}
+          onClickDelete={onClickDelete}
         />
       ))}
     </div>
