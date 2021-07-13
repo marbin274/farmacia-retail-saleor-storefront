@@ -5,6 +5,7 @@ import {
   ISubtractItemToCartCallback,
 } from "@components/molecules/ProductTileAUNA/types";
 import { IItems } from "@temp/@sdk/api/Cart/types";
+import { UserDetails_me } from "@temp/@sdk/queries/gqlTypes/UserDetails";
 
 export interface IProps {
   addToCart?: IAddToCartCallback;
@@ -14,4 +15,5 @@ export interface IProps {
   loading?: boolean;
   onLoadMore?: () => void;
   productsOnCart?: IItems;
+  user: UserDetails_me;
 }
