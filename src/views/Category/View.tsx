@@ -21,9 +21,13 @@ import {
 } from "@temp/@next/components/molecules/ProductTileAUNA/types";
 import { CategoryVariables } from "./gqlTypes/Category";
 import Media from "react-media";
-import { smallScreen } from "@temp/@next/globalStyles/constants";
+import { largeScreen } from "@temp/@next/globalStyles/constants";
 import { useDistrictSelected } from "@temp/@next/hooks/useDistrictSelected";
-import { convertToFilterSideBar, FilterQuerySet } from "@temp/core/utils/filters";
+import {
+  convertToFilterSideBar,
+  FilterQuerySet,
+} from "@temp/core/utils/filters";
+import { SORT_OPTIONS } from "@temp/core/utils/sorts";
 
 type ViewProps = RouteComponentProps<{
   id: string;
@@ -31,7 +35,6 @@ type ViewProps = RouteComponentProps<{
 }>;
 
 const DEFAULT_SORT = "-stock";
-
 
 export const View: FC<ViewProps> = ({ match }) => {
   const [districtSelected] = useDistrictSelected();
@@ -108,37 +111,6 @@ export const View: FC<ViewProps> = ({ match }) => {
     districtId: districtSelected.id,
   };
 
-  const sortOptions = [
-    {
-      label: "Limpiar...",
-      value: null,
-    },
-    {
-      label: "Precio (↑)",
-      value: "price",
-    },
-    {
-      label: "Precio (↓)",
-      value: "-price",
-    },
-    {
-      label: "Nombre (A-Z)",
-      value: "name",
-    },
-    {
-      label: "Nombre (Z-A)",
-      value: "-name",
-    },
-    // TODO: uncomment as soon as we need to extend the cagetory filters
-    // {
-    //   label: "Last updated Ascending",
-    //   value: "updated_at",
-    // },
-    // {
-    //   label: "Last updated Descending",
-    //   value: "-updated_at",
-    // },
-  ];
   const { addItem, items, subtractItem } = useCart();
   const addToCart: IAddToCartCallback = (product, quantity) => {
     addItem(product, quantity);
@@ -159,7 +131,7 @@ export const View: FC<ViewProps> = ({ match }) => {
   return (
     <NetworkStatus>
       {isOnline => (
-        <Media query={{ maxWidth: smallScreen }}>
+        <Media query={{ maxWidth: largeScreen }}>
           {matches => (
             <TypedCategoryProductsQuery
               variables={{ ...variables, pageSize: getPageSize(matches) }}
@@ -186,11 +158,10 @@ export const View: FC<ViewProps> = ({ match }) => {
                         attributes={convertToFilterSideBar(data.attributes)}
                         category={data.category}
                         displayLoader={loading}
-                        sortOptions={sortOptions}
+                        sortOptions={SORT_OPTIONS}
                         activeSortOption={filters.sortBy}
                         filters={filters}
                         products={data.paginatedProducts}
-                        shop={data.shop}
                         onAttributeFiltersChange={onFiltersChange}
                         activeFilters={
                           filters!.attributes
@@ -211,7 +182,7 @@ export const View: FC<ViewProps> = ({ match }) => {
                         pageSize={getPageSize(matches)}
                         onPageChange={handlePageChange}
                         total={data.paginatedProducts.totalCount}
-                        isSmallScreen={matches}
+                        isLargeScreen={matches}
                       />
                     </MetaWrapper>
                   );
@@ -234,4 +205,3 @@ export const View: FC<ViewProps> = ({ match }) => {
 };
 
 export default View;
-

@@ -16,11 +16,15 @@ import {
 } from "@temp/core/utils";
 import React from "react";
 import Media from "react-media";
-import { Breadcrumbs, ProductDescription } from "../../components";
+import { ProductDescription } from "../../components";
 import { structuredData } from "../../core/SEO/Product/structuredData";
 import { structuredData as structuredCategoryData } from "../../core/SEO/Category/structuredData";
 import { smallScreen } from "../../globalStyles/scss/variables.scss";
 import { ProductDetails_product } from "./gqlTypes/ProductDetails";
+import { Breadcrumbs } from "@farmacia-retail/farmauna-components";
+import { largeScreen } from "@temp/@next/globalStyles/constants";
+import { baseUrl } from "@temp/app/routes";
+import * as S from "./styles";
 // TODO: Add as soon as we need to add related products
 // import OtherProducts from "./Other";
 // TODO: Add as soon as we need to add more product information below the
@@ -73,16 +77,16 @@ export const Page: React.FC<IProps> = props => {
   );
 
   return (
-    <div className="product-page">
-      <div className="container">
+    <S.ProductPage>
+      <S.BreadcrumbsContainer>
         <Breadcrumbs
-          showHomeIcon
-          breadcrumbsAlwaysVisible
+          baseUrl={baseUrl}
           breadcrumbs={getBreadcrumbsFromProduct(product)}
+          minDesktopBreakpoint={largeScreen}
         />
-      </div>
-      <div className="container">
-        <div className="product-page__product">
+      </S.BreadcrumbsContainer>
+      <S.Container>
+        <S.ProductWrapper>
           <script className="structured-data-list" type="application/ld+json">
             {structuredData(product)}
           </script>
@@ -92,7 +96,7 @@ export const Page: React.FC<IProps> = props => {
           <Media query={{ maxWidth: smallScreen }}>
             {matches => (
               <>
-                <div className="product-page__product__image">
+                <S.ProductImageWrapper>
                   <ProductImage
                     canAddToCart={canAddToCart}
                     isOnSale={isOnSale}
@@ -100,24 +104,24 @@ export const Page: React.FC<IProps> = props => {
                     product={product}
                     hasMagnifier
                   />
-                </div>
+                </S.ProductImageWrapper>
                 {matches ? (
-                  <div className="product-page__product__info">
+                  <S.ProductInfoWrapper>
                     {renderProductRightInfo(matches)}
-                  </div>
+                  </S.ProductInfoWrapper>
                 ) : (
-                  <div className="product-page__product__info">
-                    <div className={"product-page__product__info--fixed"}>
+                  <S.ProductInfoWrapper>
+                    <S.ProductInfoFixedWrapper>
                       {renderProductRightInfo(matches)}
-                    </div>
-                  </div>
+                    </S.ProductInfoFixedWrapper>
+                  </S.ProductInfoWrapper>
                 )}
               </>
             )}
           </Media>
-        </div>
-      </div>
-    </div>
+        </S.ProductWrapper>
+      </S.Container>
+    </S.ProductPage>
   );
 };
 

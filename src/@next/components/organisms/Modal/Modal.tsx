@@ -36,7 +36,7 @@ export const Modal: React.FC<IProps> = ({
 }: IProps) => {
   return (
     <Overlay position="center" show={show} target={target}>
-      <S.Container>
+      <div className='fa-h-screen lg:fa-p-12 fa-w-full fa-flex fa-items-center'>
         <S.Modal>
           <CardHeader onHide={hide}>{title}</CardHeader>
           <S.Content>{children}</S.Content>
@@ -50,7 +50,7 @@ export const Modal: React.FC<IProps> = ({
             />
           )}
         </S.Modal>
-      </S.Container>
+      </div>
     </Overlay>
   );
 };

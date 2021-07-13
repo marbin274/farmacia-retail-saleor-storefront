@@ -16,11 +16,11 @@ export const Carousel: React.FC<CarouselType> = ({ children, ...rest }) => {
     renderCenterLeftControls: ({ previousSlide, currentSlide }: any) =>
       currentSlide !== 0 ? (
         <div onClick={previousSlide}>
-          <Button iconOnly={true} icon={<ArrowLeftIcon />} />
+          <Button iconOnly icon={<ArrowLeftIcon />} />
         </div>
       ) : (
-        <div className='carousel__button fa-flex fa-h-10 fa-items-center fa-px-3'>    
-          <ArrowLeftIcon />
+        <div>    
+          <Button iconOnly disabled icon={<ArrowLeftIcon />} />
         </div>
       ),
     renderCenterRightControls: ({
@@ -31,11 +31,11 @@ export const Carousel: React.FC<CarouselType> = ({ children, ...rest }) => {
     }: any) => (
       slideCount - slidesToShow !== currentSlide && slideCount > slidesToShow ? (
         <div onClick={nextSlide}>
-          <Button iconOnly={true} icon={<ArrowRightIcon />} />
+          <Button iconOnly icon={<ArrowRightIcon />} />
         </div>
       ) :  (
-        <div className='carousel__button fa-flex fa-h-10 fa-items-center fa-px-3'>
-          <ArrowRightIcon />    
+        <div>
+          <Button iconOnly disabled icon={<ArrowRightIcon />} />
         </div>
       )
     ),

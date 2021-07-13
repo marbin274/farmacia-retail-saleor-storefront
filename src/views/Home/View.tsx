@@ -48,7 +48,7 @@ const View: React.FC = () => {
                 title: data.shop ? data.shop.name : "",
               }}
             >
-              <div className="home-view">
+              <div className="home-view fa-bg-neutral-light">
                 <Page
                   productsOnCart={productsOnCart}
                   shop={data.shop}

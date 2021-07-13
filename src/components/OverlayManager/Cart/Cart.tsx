@@ -1,9 +1,6 @@
-import { TaxedMoney } from "@components/containers";
-import { useCart, useCheckout, useUserDetails } from "@sdk/react";
-import { checkoutLoginUrl, checkoutUrl } from "@temp/app/routes";
-import { Button, CartIcon, XIcon } from "@farmacia-retail/farmauna-components";
+import { useCart } from "@sdk/react";
+import { CartIcon, XIcon } from "@farmacia-retail/farmauna-components";
 import * as React from "react";
-import { useHistory, useLocation } from "react-router-dom";
 import {
   Offline,
   OfflinePlaceholder,
@@ -14,44 +11,26 @@ import {
 import Empty from "./Empty";
 import ProductList from "./ProductList";
 import "./scss/index.scss";
-import { useMediaQuery } from "react-responsive";
-import { smallScreen } from "@temp/@next/globalStyles/constants";
+import { Footer, FooterWithShippingPrice } from "./footer";
+import { useShowShippingPriceInCart } from "@temp/@next/optimizely/hooks";
+import { useMediaScreen } from "@temp/@next/globalStyles";
 
 const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
   const [isModelOpen, setIsModelOpen] = React.useState(false);
   const [itemToDelete, setItemToDelete] = React.useState(null);
-  const isSmallScreen = useMediaQuery({
-    query: `(max-width: ${smallScreen}px)`,
-  });
+  const { isMobileScreen } = useMediaScreen();
+  const { buttonText, showShippingPrice } = useShowShippingPriceInCart();
   const cartBodyRef = React.useRef<HTMLDivElement>();
   const [isScrolledBodyCart, setIsScrolledBodyCart] =
     React.useState<boolean>(false);
-  const isScrolledAndSmall = isScrolledBodyCart && isSmallScreen;
-  const history = useHistory();
-  const location = useLocation();
-  const { data: user } = useUserDetails();
-  const { checkout } = useCheckout();
+  const isScrolledAndSmall = isScrolledBodyCart && isMobileScreen;
   const {
     addItem,
-    discount,
     items,
     removeItem,
-    shippingPrice,
-    subtotalPrice,
     subtractItem,
-    totalPrice,
   } = useCart();
-  const shippingTaxedPrice =
-    checkout?.shippingMethod?.id && shippingPrice
-      ? {
-          gross: shippingPrice,
-          net: shippingPrice,
-        }
-      : null;
-  const promoTaxedPrice = discount && {
-    gross: discount,
-    net: discount,
-  };
+  
 
   const totalProducts = items?.reduce(
     (prevVal, currVal) => prevVal + currVal.quantity,
@@ -68,19 +47,10 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
     setIsModelOpen(false);
   };
 
-  const onClickBuyIcon = () => {
-    const isInLoginPage = location.pathname.includes("login");
-
-    if (isInLoginPage) overlay.hide();
-    else {
-      const urlToGo =
-        user || (checkout && checkout.id) ? checkoutUrl : checkoutLoginUrl;
-      history.push(urlToGo);
-    }
-  };
+ 
 
   const onScrollCart = () => {
-    if (!isSmallScreen) return;
+    if (!isMobileScreen) return;
     const { top: cartBodyTop } = cartBodyRef.current.getBoundingClientRect();
     const limitTopScroll = 60; // HEIGHT HEADER - 2.25rem
     const isScrolled = cartBodyTop <= limitTopScroll;
@@ -134,8 +104,9 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
             {items?.length ? (
               <>
                 <ProductList
-                  modalOpen={isModelOpen}
                   itemToDelete={itemToDelete}
+                  modalOpen={isModelOpen}
+                  morePadding={showShippingPrice}
                   products={items}
                   onAdd={addItem}
                   onRemove={showModal}
@@ -144,64 +115,11 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
                   onCancel={() => setIsModelOpen(false)}
                   onClose={() => setIsModelOpen(false)}
                 />
-                <div className="cart__footer">
-                  <div className="cart__footer__details">
-                    <div className="cart__footer__details__price">
-                      <span>Subtotal:</span>
-                      <span>
-                        <TaxedMoney
-                          data-cy="cartPageSubtotalPrice"
-                          taxedMoney={subtotalPrice}
-                        />
-                      </span>
-                    </div>
-
-                    {shippingTaxedPrice &&
-                      shippingTaxedPrice.gross.amount !== 0 && (
-                        <div className="cart__footer__details__price">
-                          <span>Shipping:</span>
-                          <span>
-                            <TaxedMoney
-                              data-cy="cartPageShippingPrice"
-                              taxedMoney={shippingTaxedPrice}
-                            />
-                          </span>
-                        </div>
-                      )}
-
-                    {promoTaxedPrice && promoTaxedPrice.gross.amount !== 0 && (
-                      <div className="cart__footer__details__price">
-                        <span>Promo code:</span>
-                        <span>
-                          -&nbsp;
-                          <TaxedMoney
-                            data-cy="cartPagePromoCodePrice"
-                            taxedMoney={promoTaxedPrice}
-                          />
-                        </span>
-                      </div>
-                    )}
-
-                    <div className="cart__footer__details__price cart__footer__details__price--total">
-                      <span>Total:</span>
-                      <span>
-                        <TaxedMoney
-                          data-cy="cartPageTotalPrice"
-                          taxedMoney={totalPrice}
-                        />
-                      </span>
-                    </div>
-                  </div>
-                  <div className="cart__footer__details__button">
-                    <Button
-                      icon={<CartIcon />}
-                      size="large"
-                      onClick={onClickBuyIcon}
-                    >
-                      Comprar
-                    </Button>
-                  </div>
-                </div>
+                {
+                  showShippingPrice ?
+                    <FooterWithShippingPrice buttonText={buttonText} hideOverlay={overlay.hide} />
+                    : <Footer hideOverlay={overlay.hide} />
+                }
               </>
             ) : (
               <Empty overlayHide={overlay.showCatalog} />

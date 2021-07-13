@@ -7,9 +7,12 @@ import { product } from "./test.data";
 
 import ItemsHandler from "./ItemsHandler";
 
-jest.mock("@sdk/optimizelyConfig", () => ({
-  trackAddToCart: jest.fn(),
+jest.mock("@temp/@next/optimizely/hooks", () => ({
   useAddToCartButtonVariable: () => "Agregar",
+}));
+
+jest.mock("@temp/@next/optimizely/tracks", () => ({
+  trackAddToCart: jest.fn(),
 }));
 
 const addToCart = jest.fn();

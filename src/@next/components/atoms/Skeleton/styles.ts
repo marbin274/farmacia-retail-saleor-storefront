@@ -33,7 +33,7 @@ const skeletonPulse = css`
     animation-duration: 1.2s;
     animation-iteration-count: infinite
     animation-timing-function: ease-in-out;
-    background: linear-gradient(-90deg,${({ theme }) => theme.colors.aunaDisabledBackground} 0%,#EDECF0 50%,${({ theme }) => theme.colors.aunaDisabledBackground} 100%);
+    background: linear-gradient(-90deg,#F2F2F2 0%,#DDDDDD 50%,#F2F2F2 100%);
     background-size: 400% 400%;
 `;
 
@@ -51,7 +51,7 @@ const skeletonWave = css`
         animation-iteration-count: infinite
         animation-timing-function: linear;
         transform: translateX(-100%);
-        background: linear-gradient(90deg,transparent,#EDECF0 50%,#EDECF0 50%,transparent);
+        background: linear-gradient(90deg,transparent,#DDDDDD 50%,#DDDDDD 50%,transparent);
     }
 `;
 

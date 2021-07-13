@@ -34,7 +34,7 @@ export const FilterQuerySet: QueryParamConfig<IObject> = {
       const obj:IObject = {};
       if( typeof strValue === "string"){
         const propsWithValues = strValue.split(".").filter(n => n);
-        propsWithValues.map(value => {
+        propsWithValues.forEach(value => {
           const propWithValues = value.split("_").filter(n => n);
           obj[propWithValues[0]] = propWithValues.slice(1);
         });

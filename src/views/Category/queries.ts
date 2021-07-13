@@ -1,4 +1,3 @@
-import { mainMenuSubItem } from "@temp/components/MainMenu/queries";
 import gql from "graphql-tag";
 import { TypedQuery } from "../../core/queries";
 import {
@@ -60,7 +59,6 @@ export const categoryProductsQuery = gql`
   ${productPricingFragment}
   ${productVariantFragmentSimple}
   ${simpleCategory}
-  ${mainMenuSubItem}
 
   query Category(
     $id: ID!
@@ -121,22 +119,6 @@ export const categoryProductsQuery = gql`
             id
             name
             slug
-          }
-        }
-      }
-    }
-    shop {
-      navigation {
-        main {
-          id
-          items {
-            ...MainMenuSubItem
-            children {
-              ...MainMenuSubItem
-              children {
-                ...MainMenuSubItem
-              }
-            }
           }
         }
       }

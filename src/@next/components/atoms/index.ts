@@ -1,6 +1,6 @@
 export * from "./AddNewTile";
 export * from "./Address";
-export * from "./Attribute";
+export * from "./Attribute"; 
 export * from "./Button";
 export * from "./ButtonLink";
 export * from "./CartFooter";
@@ -32,6 +32,7 @@ export * from "./RichTextContent";
 export * from "./Select";
 export * from "./ShadowBox";
 export * from "./Skeleton";
+export * from "./SkeletonProductRow";
 export * from "./SocialMediaIcon";
 export * from "./TermsAndConditionsLink";
 export * from "./Tile";

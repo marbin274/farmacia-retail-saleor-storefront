@@ -17,7 +17,19 @@ const CheckoutReview: React.FC<IProps> = ({
   shippingMethodName,
   email,
   creditCardProvider,
+  paymentMethodName,
 }: IProps) => {
+
+  const renderPaymentMethod = () => {
+    if (paymentMethodName) {
+      return paymentMethodName;
+    } else if (creditCardProvider) {
+      return <CreditCardIcon creditCardProvider={creditCardProvider} />;
+    }
+
+    return null;
+  };
+
   return (
     <S.Wrapper>
       <div>
@@ -79,7 +91,7 @@ const CheckoutReview: React.FC<IProps> = ({
         <S.Title className="secondary" data-cy="checkoutReviewSectionTitle">
           Método de pago
         </S.Title>
-        <CreditCardIcon creditCardProvider={creditCardProvider} />
+        {renderPaymentMethod()}
       </div>
       <OutOfTimeMessage isShippingAvailable={true} />
     </S.Wrapper>

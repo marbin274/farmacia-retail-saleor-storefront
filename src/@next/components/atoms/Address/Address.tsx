@@ -17,16 +17,16 @@ export const Address: React.FC<IAddress> = ({
   phone,
 }: IAddress) => (
   <S.Wrapper>
-    <span className='fa-text-lg fa-mb-4 fa-font-semibold'>{`${firstName} ${lastName}`}</span>
-    {companyName && <p>{companyName}</p>}
-    <span className='fa-text-sm fa-mb-4 fa-font-medium'>{streetAddress1}</span>
-    {streetAddress2 && <span className='fa-text-sm fa-mb-4 fa-font-medium'>{streetAddress2}</span>}
+    <span className='fa-text-lg fa-mb-4 fa-font-semibold' role='fullname'>{`${firstName} ${lastName}`}</span>
+    {companyName && <p role='companyName'>{companyName}</p>}
+    <span className='fa-text-sm fa-mb-4 fa-font-medium' role='streetAddress1'>{streetAddress1}</span>
+    {streetAddress2 && <span className='fa-text-sm fa-mb-4 fa-font-medium' role='streetAddress2'>{streetAddress2}</span>}
     <div className='fa-grid fa-grid-cols-1 lg:fa-grid-cols-2 fa-gap-x-4'>
-      <div className='fa-flex fa-items-start'>
+      <div className='fa-flex fa-items-start' role='location'>
         <span className='fa-mr-2 fa-text-neutral-dark'>Distrito: </span>
         <span>{postalCode && `${postalCode},`} {city}</span>
       </div>
-      <div className='fa-flex fa-items-start'>
+      <div className='fa-flex fa-items-start' role='country'>
         <span className='fa-mr-2 fa-text-neutral-dark'>Pais: </span>
         <span>
           {countryArea && <span>{countryArea}, </span>}
@@ -35,7 +35,7 @@ export const Address: React.FC<IAddress> = ({
       </div>
       {
         phone && 
-        <div className='fa-flex fa-items-start'>
+        <div className='fa-flex fa-items-start' role='phone'>
           <span className='fa-mr-2  fa-text-neutral-dark'>Celular: </span>
           <span>{phone}</span>
         </div>
