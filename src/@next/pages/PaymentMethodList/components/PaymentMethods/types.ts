@@ -3,4 +3,5 @@ import { UserDetails_me_cardTokens } from "@temp/@sdk/queries/gqlTypes/UserDetai
 export type IPaymentMethodsProps = {
   creditCards: UserDetails_me_cardTokens[];
   onClickAdd: () => void;
+  onClickSetDefault: (id: string) => void;
 };
