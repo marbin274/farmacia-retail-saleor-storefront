@@ -1,5 +1,7 @@
 import React, { FC, useState } from "react";
 import { Modal } from "@components/organisms";
+import { PROVIDERS } from "@temp/core/config";
+import { useCheckout } from "@sdk/react";
 import { IPaymentMethodFormModalProps } from "./types";
 import { NiubizForm } from "../NiubizForm";
 
@@ -13,6 +15,8 @@ export const PatmentMethodFormModal: FC<IPaymentMethodFormModalProps> = ({
 }) => {
   const [loading, setLoading] = useState(false);
   const isLoading = loading || createLoading;
+
+  const { availablePaymentGateways } = useCheckout();
 
   // TODO: unificar con checkout
   const generatePurchaseNumber = (): number => {
@@ -49,6 +53,10 @@ export const PatmentMethodFormModal: FC<IPaymentMethodFormModalProps> = ({
     >
       {show && (
         <NiubizForm
+          config={
+            availablePaymentGateways?.find(x => x.id === PROVIDERS.AUNA.id)
+              ?.config
+          }
           generatePurchaseNumber={generatePurchaseNumber}
           userDataForNiubiz={{
             documentNumber: user.documentNumber,

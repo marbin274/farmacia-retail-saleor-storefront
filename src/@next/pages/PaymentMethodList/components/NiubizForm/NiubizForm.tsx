@@ -11,7 +11,6 @@ import niubizTextIcon from "@temp/images/auna/niubiz-text.svg";
 import visaIcon from "@temp/images/auna/visa-payment.svg";
 import ReactSVG from "react-svg";
 import farmatheme from "@farmatheme";
-import { AVAILABLE_PAYMENTS } from "@temp/core/config";
 import {
   createSession,
   createToken,
@@ -29,8 +28,6 @@ import {
   getTokenizerRequirements,
   getCardTokenizationRequirements,
 } from "./utils";
-
-const config = AVAILABLE_PAYMENTS[0].config;
 
 const styles = {
   hidde: {
@@ -69,6 +66,7 @@ export const initialValuesFormPayment: IFormPayment = {
 };
 
 export const NiubizForm: FC<INiubizFormProps> = ({
+  config,
   formId,
   formRef,
   generatePurchaseNumber,
