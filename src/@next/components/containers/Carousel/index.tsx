@@ -4,12 +4,14 @@ import * as React from "react";
 import Media from "react-media";
 import "./scss/index.scss";
 import {ArrowRightIcon, ArrowLeftIcon, Button} from "@farmacia-retail/farmauna-components";
+import { useIsNearScreen } from "@temp/hooks";
 
 interface CarouselType extends CarouselProps {
   children: React.ReactNode;
 }
 
 export const Carousel: React.FC<CarouselType> = ({ children, ...rest }) => {
+  const { isNearScreen, fromRef } = useIsNearScreen();
   const settings = {
     className: "carousel",
     renderBottomCenterControls: () => null,
@@ -60,17 +62,21 @@ export const Carousel: React.FC<CarouselType> = ({ children, ...rest }) => {
     )
   };
 
-  return (
-    <Media query={{ maxWidth: smallScreen }}>
-      {(matches: any) =>
-        matches ? (
-          carousel(1, true)
-        ) : (
-            <Media query={{ maxWidth: largeScreen }}>
-              {(matches: any) => carousel(matches ? 2 : 4, false)}
-            </Media>
-          )
-      }
-    </Media>
-  );
+  return <div ref={fromRef}>
+    {
+      isNearScreen && (
+        <Media query={{ maxWidth: smallScreen }}>
+          {(matches: any) =>
+            matches ? (
+              carousel(1, true)
+            ) : (
+                <Media query={{ maxWidth: largeScreen }}>
+                  {(matches: any) => carousel(matches ? 2 : 4, false)}
+                </Media>
+              )
+          }
+        </Media>
+      )
+    }
+  </div>
 };
