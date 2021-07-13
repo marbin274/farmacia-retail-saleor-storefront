@@ -1,8 +1,8 @@
-import { ISimpleProduct } from "@app/types/IProduct";
+import { ISimpleProduct } from "@sdk/types/IProduct";
 import { Carousel } from "@temp/@next/components/containers";
 import { ProductTileAUNA } from "@temp/@next/components/molecules";
 import { useDistrictSelected } from "@temp/@next/hooks/useDistrictSelected";
-import { getProductsWithQuantity } from "@temp/@next/utils/products";
+import { getProductsWithQuantity } from "@sdk/utils/products";
 import { TypedFeaturedProductsQuery } from "@temp/components/ProductsFeatured/queries";
 import { COLLECTIONS_PER_PAGE, PRODUCTS_PER_PAGE } from "@temp/core/config";
 import { convertToSimpleProduct, generateProductUrl, maybe } from "@temp/core/utils";

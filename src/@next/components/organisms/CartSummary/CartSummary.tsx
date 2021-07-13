@@ -4,8 +4,10 @@ import { smallScreen } from "@temp/@next/globalStyles/constants";
 import {
   checkProductCanAddToCart,
   checkProductIsOnSale,
+} from "@sdk/utils/products";
+import {
   convertProductOnCartInProduct,
-} from "@temp/@next/utils/products";
+} from "@temp/@next/utils/products"
 import { Button, CartIcon, XIcon } from "@farmacia-retail/farmauna-components";
 import React, { useState } from "react";
 import Media from "react-media";

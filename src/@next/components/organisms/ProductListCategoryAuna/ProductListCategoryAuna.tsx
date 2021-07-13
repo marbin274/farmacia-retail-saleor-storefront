@@ -1,5 +1,5 @@
 import { ProductTileAUNA } from "@components/molecules";
-import { getProductsWithQuantity } from "@temp/@next/utils/products";
+import { getProductsWithQuantity } from "@sdk/utils/products";
 import { generateProductUrl } from "@temp/core/utils";
 import React from "react";
 import * as S from "./styles";

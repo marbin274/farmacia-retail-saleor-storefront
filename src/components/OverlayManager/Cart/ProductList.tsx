@@ -10,9 +10,11 @@ import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
 import {
   checkProductCanAddToCart,
   checkProductIsOnSale,
+} from "@sdk/utils/products";
+import {
   convertProductOnCartInProduct,
-  getProductPricingClass,
-} from "@temp/@next/utils/products";
+  getProductPricingClass,  
+} from "@temp/@next/utils/products"
 import { generateProductUrl } from "@temp/core/utils";
 import { Button, TrashIcon } from "@farmacia-retail/farmauna-components";
 import * as React from "react";

@@ -1,4 +1,4 @@
-import { ISimpleProduct } from "@temp/@next/types/IProduct";
+import { ISimpleProduct } from "@sdk/types/IProduct";
 
 export interface IItemsNotificationServiceProps {
   product: ISimpleProduct;

@@ -1,11 +1,11 @@
 import { Button, CartIcon } from "@farmacia-retail/farmauna-components";
 import { launchAddToCartEvent, launchRemoveToCartEvent } from "@sdk/gaConfig";
-import { ISimpleProduct } from "@temp/@next/types/IProduct";
+import { ISimpleProduct } from "@sdk/types/IProduct";
 import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
 import {
   checkStockLimitOrStockAvailable,
   ICheckStockLimitOrStockAvailable,
-} from "@temp/@next/utils/products";
+} from "@sdk/utils/products";
 import { MAX_ORDER_PER_PRODUCT } from "@temp/core/config";
 import classNames from "classnames";
 import React, { FC, useEffect, useState } from "react";

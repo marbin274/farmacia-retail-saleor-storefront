@@ -4,7 +4,7 @@ import { Breadcrumbs, ProductsCollection } from "@temp/components";
 import { BannerCarousel } from "@temp/@next/components/containers/BannerCarousel";
 import { Landing_landing } from "./gqlTypes/Landing";
 import { maybe } from "@temp/core/utils";
-import { ISimpleProduct } from "@temp/@next/types/IProduct";
+import { ISimpleProduct } from "@sdk/types/IProduct";
 
 type IProps = {
   landing: Landing_landing;
