@@ -4,5 +4,5 @@ export interface IProps {
   categories: INavItem[] | null;
   hideMenuCondition: boolean;
   navMain: INavItem[] | null;
-  isProductPage: boolean;
+  isLightHeader: boolean;
 }

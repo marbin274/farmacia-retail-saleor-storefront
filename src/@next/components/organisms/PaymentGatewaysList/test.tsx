@@ -21,6 +21,7 @@ describe("<PaymentGatewaysList />", () => {
         changeRequestPayload={changeRequestPayload}
         voucherCode={undefined}
         reRender={true}
+        selectedDistrict="Miraflores"
       />
     );
 

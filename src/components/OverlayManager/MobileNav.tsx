@@ -9,7 +9,7 @@ const MobileNav: React.FC<{ overlay: OverlayContextInterface }> = ({
 }) => {
   const [openParent, setOpenParent] = React.useState<INavItem | null>(null);
 
-  const items: INavItem[] = overlay.context.data;
+  const { categories, collections } = overlay.context.data;
 
   return (
     <Overlay context={overlay}>
@@ -19,9 +19,10 @@ const MobileNav: React.FC<{ overlay: OverlayContextInterface }> = ({
       >
         <div className={"side-nav--body"}>
           <MobileNavList
-            items={items}
-            openParent={openParent}
+            categories={categories}
+            collections={collections}
             hideOverlay={overlay.hide}
+            openParent={openParent}
             setOpenParent={setOpenParent}
           />
         </div>

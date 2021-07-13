@@ -1,5 +1,6 @@
 import { styled, media } from "@styles";
 import { turquoise } from "@styles/constants";
+import farmatheme from "@farmatheme";
 
 export const Wrapper = styled.div`
   margin: 2.5rem 1.5rem 1.5rem;
@@ -8,7 +9,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Title = styled.div`
-  color: #452fba;
+  color: ${farmatheme.theme.colors.interactive};
   font-size: ${({ theme }) => theme.typography.baseFontSize};
   font-weight: ${({ theme }) => theme.typography.boldFontWeight};
   padding: 1.5rem 2rem;

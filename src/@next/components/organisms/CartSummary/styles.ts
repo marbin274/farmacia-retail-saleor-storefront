@@ -7,6 +7,7 @@ import {
   aunaGrey20,
   turquoise,
 } from "@styles/constants";
+import farmatheme from "@farmatheme";
 
 export const CartSummaryContainer = styled.div`
   ${mediaUp.mediumScreen`
@@ -204,7 +205,7 @@ export const TitleText = styled.div`
   `}
 `;
 export const Text = styled.span<{ mobileCartOpened: boolean }>`
-  font-weight: 300;
+  font-weight: 400;
   font-size: 0.75rem;
   ${media.smallScreen`
     font-size: ${(props: any) =>
@@ -218,7 +219,7 @@ export const Close = styled.div<{ mobileCartOpened: boolean }>`
   align-self: flex-start;
   display: flex;
   color: white;
-  background-color: #452fba;
+  background-color: ${farmatheme.theme.colors.interactive};
   border-radius: 50%;
   color: #fff;
 

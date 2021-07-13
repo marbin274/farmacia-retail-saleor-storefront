@@ -7,7 +7,7 @@ const EMAIL_REQUIRED = "Ingresa tu correo registrado en Farmauna";
 
 export const emailValidation = Yup.string()
   .required(EMAIL_REQUIRED)
-  .matches(SchemasConfig.EMAIL_REGEX_VALIDARION, SchemaMessage.EMAIL_VALIDATION)
+  .matches(SchemasConfig.EMAIL_REGEX_VALIDATION, SchemaMessage.EMAIL_VALIDATION)
   .email(SchemaMessage.EMAIL_VALIDATION);
 
 export const loginFormSchema = Yup.object().shape({

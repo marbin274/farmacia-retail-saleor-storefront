@@ -97,6 +97,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
   const [billingErrors, setBillingErrors] = useState<IFormError[]>([]);
   const [gatewayErrors, setGatewayErrors] = useState<IFormError[]>([]);
   const [promoCodeErrors, setPromoCodeErrors] = useState<IFormError[]>([]);
+  const [gatewayListError, setGatewayListError] = useState<string>();
 
   // this variable overrides billingAsShipping if config option billingAddressAlwaysSameAsShipping is set
   const billingAsShippingOverride = billingAddressAlwaysSameAsShipping
@@ -133,6 +134,10 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
 
   useImperativeHandle(ref, () => ({
     submitPayment: () => {
+      if (!validatePaymentGateway()) {
+        return;
+      }
+
       const shippingMethodId = checkout?.shippingMethod?.id || "";
       setShippingMethod({ shippingMethodId });
       if (billingAsShippingState) {
@@ -142,13 +147,21 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
           new Event("submit", { cancelable: true })
         );
       } else {
-        // TODO validate form
-        checkoutGatewayFormRef.current?.dispatchEvent(
-          new Event("submit", { cancelable: true })
-        );
+        submitCheckoutGatewayForm();
       }
     },
   }));
+
+  const validatePaymentGateway = (): boolean => {
+    setGatewayListError(null);
+
+    if (!selectedPaymentGateway) {
+      setGatewayListError("Debes seleccionar el método de pago");
+      return false;
+    }
+
+    return true;
+  };
 
   const clearPromoCodeErrors = () => {
     setPromoCodeErrors([]);
@@ -451,6 +464,9 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
         totalPrice={totalPrice}
         userDataForNiubiz={userDataForNiubiz}
         cartLinesUpdated={cartLinesUpdated}
+        selectedDistrict={checkout.shippingAddress.city}
+        gatewayListError={gatewayListError}
+        setGatewayListError={setGatewayListError}
       />
       <StockValidationModal
         show={showStockValidation}

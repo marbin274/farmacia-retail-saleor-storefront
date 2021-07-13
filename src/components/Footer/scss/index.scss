@@ -180,12 +180,12 @@
       color: $gray;
       font-size: $small-font-size - 0.1;
       font-weight: $font-weight-bold - 200;
-      font-weight: 300;
+      font-weight: 400;
 
       label {
         margin-right: 28px;
         font-size: 14px;
-        font-weight: 300;
+        font-weight: 400;
 
         @media (max-width: $medium-screen) {
           margin-right: auto;

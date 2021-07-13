@@ -2,6 +2,7 @@ import React from "react";
 import * as S from "./styles";
 import { IProps } from "./types";
 import { BulletXFilledIcon } from "@farmacia-retail/farmauna-components";
+import farmatheme from "@farmatheme";
 
 export const CardHeader: React.FC<IProps> = ({
   children,
@@ -23,7 +24,7 @@ export const CardHeader: React.FC<IProps> = ({
       {withCloseIcon && (
         <BulletXFilledIcon
           size={32}
-          color="#452FBA"
+          color={farmatheme.theme.colors.interactive}
           onClick={onHide}
           className="overlay__header__close-icon"
         />

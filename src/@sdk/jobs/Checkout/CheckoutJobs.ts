@@ -380,7 +380,7 @@ export class CheckoutJobs {
     } else {
       this.repository.setFinallCheckout(this.repository.getCheckout())
       this.repository.setCheckout({});
-      this.repository.setPayment({});
+      // this.repository.setPayment({}); // descomentar si se llegara a separar la confirmación del checkout del pago nuevamente
       return { data };
     }
   };
