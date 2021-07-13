@@ -78,6 +78,7 @@
     "@babel/preset-typescript": "^7.3.3",
     "@hot-loader/react-dom": "^16.9.0",
     "@lhci/cli": "^0.7.2",
+    "@statoscope/webpack-plugin": "^5.5.1",
     "@storybook/addon-actions": "^5.3.13",
     "@storybook/addon-docs": "^5.3.13",
     "@storybook/addon-knobs": "^5.3.13",
