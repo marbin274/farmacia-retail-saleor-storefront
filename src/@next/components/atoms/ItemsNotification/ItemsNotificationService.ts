@@ -1,4 +1,4 @@
-import { ISimpleProduct } from "@temp/@next/types/IProduct";
+import { ISimpleProduct } from "@sdk/types/IProduct"
 import { Subject } from "rxjs";
 import { IItemsNotificationServiceProps } from "./types";
 

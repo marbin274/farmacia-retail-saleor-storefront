@@ -23,7 +23,7 @@ import {
   StockMessage,
   Title,
 } from "./styles";
-import { checkProductIsOnSale } from "@temp/@next/utils/products";
+import { checkProductIsOnSale } from "@sdk/utils/products";
 
 type IStockValidationModalProps = {
   show: boolean;

@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { ISimpleProduct } from "@temp/@next/types/IProduct";
+import { ISimpleProduct } from "@sdk/types/IProduct";
 import ItemsHandler from "@temp/@next/components/organisms/ItemsHandler/ItemsHandler";
 import * as S from "./styles";
 import {

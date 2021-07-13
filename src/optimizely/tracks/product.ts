@@ -1,4 +1,4 @@
-import { optimizelyClient } from "@temp/@sdk/optimizelyConfig";
+import { optimizelyClient } from "@temp/optimizelyConfig";
 import { EventKeys } from "../types";
 
 export const trackAddProductToCartFromPersonalized = () => {
