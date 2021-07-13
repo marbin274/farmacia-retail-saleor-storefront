@@ -3,6 +3,7 @@ import {
   useSetDefaultUserCardToken,
   useDeleteUserCardToken,
 } from "@temp/@sdk/react";
+import { alertService } from "@temp/@next/components/atoms/Alert";
 import CreditCardIcon from "images/auna/credit-card.svg";
 import { Modal } from "@components/organisms";
 import { PaymentMethods } from "./components/PaymentMethods";
@@ -33,15 +34,23 @@ export const PaymentMethodList: FC<IProps> = ({ user }) => {
       !setDefaultData?.user &&
       (setDefaultData?.errors.length > 0 || setDefaultError)
     ) {
-      // TODO: mostrar error
+      showGenericError();
     }
   }, [setDefaultData, setDefaultError]);
 
   useEffect(() => {
     if (!deleteData?.user && (deleteData?.errors.length > 0 || deleteError)) {
-      // TODO: mostrar error
+      showGenericError();
     }
   }, [deleteData, deleteError]);
+
+  const showGenericError = () => {
+    alertService.sendAlert({
+      buttonText: "Entendido",
+      message: "Ha ocurrido un error al procesar la solicitud",
+      type: "Text",
+    });
+  };
 
   const performSetDefault = (id: string) => {
     if (setDefaultLoading) {

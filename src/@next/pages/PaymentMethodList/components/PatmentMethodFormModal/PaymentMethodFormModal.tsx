@@ -4,6 +4,7 @@ import { IPaymentMethodFormModalProps } from "./types";
 import { NiubizForm } from "../NiubizForm";
 import { ICardTokenizationResult } from "@temp/core/payments/niubiz";
 import { useCreateUserCardToken } from "@temp/@sdk/react";
+import { alertService } from "@temp/@next/components/atoms/Alert";
 
 export const PatmentMethodFormModal: FC<IPaymentMethodFormModalProps> = ({
   onClose,
@@ -24,7 +25,11 @@ export const PatmentMethodFormModal: FC<IPaymentMethodFormModalProps> = ({
     }
 
     if (!createData?.user && (createData?.errors.length > 0 || createError)) {
-      // TODO: mostrar error
+      alertService.sendAlert({
+        buttonText: "Entendido",
+        message: "Ha ocurrido un error al procesar la solicitud",
+        type: "Text",
+      });
     }
   }, [createData, createError]);
 

@@ -34,35 +34,25 @@ export const Payment = styled.div<{
   }
 
   .row {
-    max-width: 40.25rem;
+    max-width: 100%;
   }
 
   .row-input {
     display: flex;
     justify-content: space-between;
     display: flex;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 
-    ${media.smallScreen`
-      flex-direction: column;
-      margin-bottom: 1rem;
-    `}
+    flex-direction: column;
+
     > div {
-      max-width: 19.375rem;
       &:nth-child(1) {
-        width: calc(100% - 0.75rem);
-
-        ${media.smallScreen`
-          width: 100%;
-          margin-bottom: 1rem;
-        `}
+        width: 100%;
+        margin-bottom: 1rem;
       }
-      &:nth-child(2) {
-        width: calc(100% - 0.75rem);
 
-        ${media.smallScreen`
-          width: 100%;
-        `}
+      &:nth-child(2) {
+        width: 100%;
       }
 
       ${media.smallScreen`
