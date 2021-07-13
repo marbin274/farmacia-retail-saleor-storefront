@@ -13,7 +13,6 @@ import { ProductListHeaderSearch } from "../../@next/components/molecules";
 import { ProductListAUNA } from "../../@next/components/organisms";
 import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
 import { SearchProducts_paginatedProducts } from "./gqlTypes/SearchProducts";
-import { useUserDetails } from "@temp/@sdk/react";
 
 import * as S from "./styles";
 interface SortItem {
@@ -71,7 +70,6 @@ const Page: React.FC<PageProps> = ({
     () => !!products.edges && products.totalCount !== undefined
   );
   const [showFilters, setShowFilters] = React.useState(false);
-  const { data: user } = useUserDetails();
   const searchContainerRef = React.useRef<HTMLDivElement>(null);
 
   const getAttribute = (attributeSlug: string, valueSlug: string) => {
@@ -147,7 +145,6 @@ const Page: React.FC<PageProps> = ({
               addToCart={addToCart}
               removeItemToCart={removeItemToCart}
               subtractItemToCart={subtractItemToCart}
-              user={user}
             />
             <Pagination
               page={page}

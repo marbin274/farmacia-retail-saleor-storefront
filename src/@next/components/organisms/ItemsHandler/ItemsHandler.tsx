@@ -1,6 +1,5 @@
 import { Button, CartIcon } from "@farmacia-retail/farmauna-components";
 import { launchAddToCartEvent, launchRemoveToCartEvent } from "@sdk/gaConfig";
-import { useAddToCartButtonVariable } from "@temp/@next/optimizely/hooks";
 import { ISimpleProduct } from "@temp/@next/types/IProduct";
 import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
 import {
@@ -53,7 +52,6 @@ const ItemsHandler: FC<IProps> = ({
         : { isLimitMax: false, stockLimitMax: 0 },
     [product]
   );
-  const text = useAddToCartButtonVariable();
 
   useEffect(() => {
     setIsValueLessThanMaxOrderPerProduct(quantity < MAX_ORDER_PER_PRODUCT);
@@ -161,7 +159,7 @@ const ItemsHandler: FC<IProps> = ({
             type="button"
             icon={<CartIcon />}
           >
-            {text}
+            Agregar
           </Button>
         </div>
       )}

@@ -13,11 +13,12 @@ import * as S from "./styles";
 import { IHomePageCollecction, IProps } from "./types";
 import { CollectionSortField } from "../../../gqlTypes/globalTypes";
 import { OrderDirection } from "@sdk/gqlTypes/globalTypes";
-import { useShowPersonalizedCollection } from "@temp/@next/optimizely/hooks";
+import { useShowPersonalizedCollection } from "@temp/optimizely/hooks";
 import { useUserDetails } from "@temp/@sdk/react";
 import { useLocalStorage } from "@temp/@next/hooks";
 import { LocalStorageItems } from "@temp/@sdk/repository";
-import { VariationKeys } from "@temp/@next/optimizely/types";
+import { VariationKeys } from "@temp/optimizely/types";
+import { trackAddProductToCartFromPersonalized } from "@temp/optimizely/tracks";
 
 
 const ProductsFeatured: React.FC<IProps> = ({
@@ -31,6 +32,16 @@ const ProductsFeatured: React.FC<IProps> = ({
   const [districtSelected] = useDistrictSelected();
   const { data: user } = useUserDetails();
   const showPersonalizedCollection = useShowPersonalizedCollection();
+
+  const handleTrackAddProductToCartFromPersonalized = () => {
+    if (
+      (user?.id) &&
+      (showPersonalizedCollection.variationKey === VariationKeys.SHOW_PERSONALIZE ||
+        showPersonalizedCollection.variationKey === VariationKeys.HIDE_PERSONALIZE)
+    ) {
+      trackAddProductToCartFromPersonalized();
+    }
+  }
 
   React.useEffect(() => {
     if (user?.id) {
@@ -98,7 +109,6 @@ const ProductsFeatured: React.FC<IProps> = ({
                         <ProductTileAUNA
                           key={product.id}
                           addToCart={addToCart}
-                          fromHome={true}
                           removeItemToCart={removeItemToCart}
                           subtractItemToCart={subtractItemToCart}
                           product={product}
@@ -107,7 +117,7 @@ const ProductsFeatured: React.FC<IProps> = ({
                             product.id,
                             product.name
                           )}
-                          user={user}
+                          handleTrackAddProductToCartFromPersonalized={handleTrackAddProductToCartFromPersonalized}
                         />
                       )
                     )}

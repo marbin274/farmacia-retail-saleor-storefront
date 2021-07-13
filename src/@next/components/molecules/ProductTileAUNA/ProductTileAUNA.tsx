@@ -2,9 +2,6 @@ import { ProductSticker } from "@components/atoms";
 import { TaxedMoney } from "@components/containers";
 import { Thumbnail } from "@components/molecules";
 import {
-  trackAddProductToCartFromPersonalized,
-} from "@temp/@next/optimizely/tracks";
-import {
   checkProductCanAddToCart,
   getProductPricingClass,
   productStickerRules,
@@ -16,18 +13,15 @@ import { Link } from "react-router-dom";
 import ItemsHandler from "../../organisms/ItemsHandler/ItemsHandler";
 import * as S from "./styles";
 import { IProps } from "./types";
-import { useShowPersonalizedCollection } from "@temp/@next/optimizely/hooks";
-import { VariationKeys } from "@temp/@next/optimizely/types";
 
 export const ProductTileAUNA: React.FC<IProps> = ({
   addToCart,
-  removeItemToCart,
-  subtractItemToCart,
-  fromHome,
   productUrl: productLink,
   product,
   productsOnCart,
-  user,
+  removeItemToCart,
+  subtractItemToCart,
+  handleTrackAddProductToCartFromPersonalized,
 }: IProps) => {
   const [thumbnails, setThumbnails] = useState<{
     thumbnail: { url: string | undefined };
@@ -40,21 +34,13 @@ export const ProductTileAUNA: React.FC<IProps> = ({
 
   const { canAddToCart } = checkProductCanAddToCart(product, productsOnCart);
   const { isOnSale, isOutStock } = productStickerRules(product);
-  const showPersonalizedCollection = useShowPersonalizedCollection();
 
   const handleAddToCart = (
     productId: ICheckoutModelLineVariantLocalStorage,
     quantity: number
-  ) => {
-        
-    if (
-      (!!fromHome) &&
-      (user?.id) && 
-      (showPersonalizedCollection.variationKey === VariationKeys.SHOW_PERSONALIZE ||
-        showPersonalizedCollection.variationKey === VariationKeys.HIDE_PERSONALIZE)
-    ) {
-      trackAddProductToCartFromPersonalized();
-    }
+  ) => {       
+    
+    handleTrackAddProductToCartFromPersonalized?.();
     addToCart(productId, quantity);
   };
 

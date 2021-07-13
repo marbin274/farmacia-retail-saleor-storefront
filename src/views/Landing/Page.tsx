@@ -5,14 +5,12 @@ import { BannerCarousel } from "@temp/@next/components/containers/BannerCarousel
 import { Landing_landing } from "./gqlTypes/Landing";
 import { maybe } from "@temp/core/utils";
 import { ISimpleProduct } from "@temp/@next/types/IProduct";
-import { useUserDetails } from "@temp/@sdk/react";
 
 type IProps = {
   landing: Landing_landing;
 };
 
 const LandingPage: FC<IProps> = ({ landing }) => {
-  const { data: user } = useUserDetails();
   return (
     <S.Container>
       <S.BannerContainer>
@@ -57,7 +55,6 @@ const LandingPage: FC<IProps> = ({ landing }) => {
                   key={collection.id}
                   name={collection.name}
                   products={products}
-                  user={user}
                 />
               );
             })}

@@ -13,7 +13,6 @@ export const ProductListCategoryAuna: React.FC<IProps> = ({
   addToCart,
   removeItemToCart,
   subtractItemToCart,
-  user,
 }: IProps) => {
   return (
     <>
@@ -33,7 +32,6 @@ export const ProductListCategoryAuna: React.FC<IProps> = ({
                 product={product}
                 productsOnCart={productsOnCart}
                 productUrl={generateProductUrl(product.id, product.name)}
-                user={user}
               />
             ))}
           </S.List>
