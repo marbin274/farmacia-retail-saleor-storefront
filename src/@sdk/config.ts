@@ -6,3 +6,6 @@ export const defaultConfig: Config = {
     checkout: true,
   },
 };
+export const ATTRIBUTE_PROMOTION_LIMIT_MAX_NAME = "limit-max";
+export const MAX_ORDER_PER_PRODUCT = 50;
+

@@ -10,8 +10,10 @@ import {
   checkProductCanAddToCart,
   checkProductIsOnSale,
   getOneProductWithQuantity,
-  getProductPricingClass,
-} from "@temp/@next/utils/products";
+} from "@sdk/utils/products";
+import {
+  getProductPricingClass,  
+} from "@temp/@next/utils/products"
 import ItemsHandler from "@temp/@next/components/organisms/ItemsHandler/ItemsHandler";
 import { convertToSimpleProduct, generateProductUrl } from "@temp/core/utils";
 import { searchProductsService } from "@temp/@next/services/searchProductsService";

@@ -14,7 +14,6 @@ const CartSummaryRow: React.FC<IProps> = ({
   canAddToCart,
   index,
   isOnSale,
-  sku,
   name,
   price,
   quantity,

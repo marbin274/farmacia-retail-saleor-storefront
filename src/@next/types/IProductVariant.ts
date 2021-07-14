@@ -1,7 +1,7 @@
 import {IMoney, ITaxedMoney} from "@app/types/IMoney";
 import {INode} from "@app/types/INode";
 import {IObjectWithMetadata} from "@app/types/IObjectWithMetadata";
-import {IProduct} from "@app/types/IProduct";
+import { IProduct } from "@sdk/types/IProduct";
 import {IProductVariantPricing} from "@app/types/IProductVariantPricing";
 
 

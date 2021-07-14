@@ -1,4 +1,4 @@
-import { MapFn, QueryShape, WatchMapFn } from "./types";
+import { MapFn, QueryShape, WatchMapFn } from "../types";
 
 // errors are nested in data as it currently stands in the API
 // this helper extracts all errors present

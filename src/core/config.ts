@@ -98,7 +98,7 @@ export const CHECKOUT_STEPS = [
   },
 ];
 
-export const MAX_ORDER_PER_PRODUCT = 50;
+
 
 export const DOCUMENTS_URLS_S3 = {
   finesAdicionalesUrls:
@@ -120,7 +120,7 @@ export const PRODUCT_STICKERS = {
   },
 };
 
-export const ATTRIBUTE_PROMOTION_LIMIT_MAX_NAME = "limit-max";
+
 export const SEARCH_PRODUCTS_QUERY_MIN_LENGTH = 3;
 export const SHIPPING_FORMAT_DATE = "yyyy-MM-dd";
 export const HOURS_TO_FORMAT_DATE = "T00:00:00";

@@ -11,7 +11,7 @@ import {
 } from "../../../gqlTypes/globalTypes";
 import { FormError } from "../types";
 import { Breadcrumb } from "@temp/components";
-import { ISimpleProduct } from "@temp/@next/types/IProduct";
+import { ISimpleProduct } from "@sdk/types/IProduct";
 
 export const slugify = (text: string | number): string =>
   text
