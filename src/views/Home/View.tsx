@@ -39,8 +39,6 @@ const View: React.FC = () => {
             subtractItem(product);
           };
 
-          
-
           return (
             <MetaWrapper
               meta={{
