@@ -1,10 +1,9 @@
-import { largeScreen, smallScreen } from "@temp/@next/globalStyles/constants";
 import NukaCarousel, { CarouselProps } from "nuka-carousel";
 import * as React from "react";
-import Media from "react-media";
 import "./scss/index.scss";
+import { useMediaScreen } from "@temp/@next/globalStyles";
 import {ArrowRightIcon, ArrowLeftIcon, Button} from "@farmacia-retail/farmauna-components";
-import { useIsNearScreen } from "@temp/hooks";
+import { useIsNearScreen } from "@temp/@next/hooks";
 
 interface CarouselType extends CarouselProps {
   children: React.ReactNode;
@@ -61,21 +60,13 @@ export const Carousel: React.FC<CarouselType> = ({ children, ...rest }) => {
       </NukaCarousel>
     )
   };
-
+  const { isDesktopScreen, isMobileScreen } = useMediaScreen();
   return <div ref={fromRef}>
     {
       isNearScreen && (
-        <Media query={{ maxWidth: smallScreen }}>
-          {(matches: any) =>
-            matches ? (
-              carousel(1, true)
-            ) : (
-                <Media query={{ maxWidth: largeScreen }}>
-                  {(matches: any) => carousel(matches ? 2 : 4, false)}
-                </Media>
-              )
-          }
-        </Media>
+        isMobileScreen ?
+          carousel(1, true) :
+          carousel(isDesktopScreen ? 4 : 2, false)
       )
     }
   </div>
