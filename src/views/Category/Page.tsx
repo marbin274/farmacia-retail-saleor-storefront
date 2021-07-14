@@ -8,6 +8,7 @@ import {
 import { CategoryNavigation } from "@temp/@next/components/organisms/CategoryNavigation/CategoryNavigation";
 import { largeScreen } from "@temp/@next/globalStyles/constants";
 import { IItems } from "@temp/@sdk/api/Cart/types";
+import { useUserDetails } from "@temp/@sdk/react";
 import { baseUrl } from "@temp/app/routes";
 import { structuredData } from "@temp/core/SEO/Category/structuredData";
 import { convertToSimpleProduct, maybe } from "@temp/core/utils";
@@ -71,6 +72,7 @@ const Page: React.FC<PageProps> = ({
   total: totalProducts,
   subtractItemToCart,
 }) => {
+  const { data: user } = useUserDetails();
   const canDisplayProducts = maybe(
     () => !!products.edges && products.totalCount !== undefined
   );
@@ -144,6 +146,7 @@ const Page: React.FC<PageProps> = ({
                 addToCart={addToCart}
                 removeItemToCart={removeItemToCart}
                 subtractItemToCart={subtractItemToCart}
+                user={user}
               />
               <Pagination
                 page={page}
