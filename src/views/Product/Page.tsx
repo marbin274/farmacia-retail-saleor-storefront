@@ -3,12 +3,12 @@ import {
   ICheckoutModelLine,
   ICheckoutModelLineVariantLocalStorage,
 } from "@sdk/repository";
-import { ISimpleProduct } from "@temp/@next/types/IProduct";
+import { ISimpleProduct } from "@sdk/types/IProduct";
 import {
   checkProductCanAddToCart,
   getOneProductWithQuantity,
   productStickerRules,
-} from "@temp/@next/utils/products";
+} from "@sdk/utils/products";
 import { ProductsSelled } from "@temp/components/productsSelled";
 import {
   convertToSimpleProduct,

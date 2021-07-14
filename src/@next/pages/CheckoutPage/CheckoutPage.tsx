@@ -14,7 +14,6 @@ import { alertService } from "@temp/@next/components/atoms/Alert";
 import { smallScreen } from "@temp/@next/globalStyles/constants";
 import { useUpdateCartLines } from "@temp/@next/hooks";
 import {
-  checkAttentionSchedule,
   removePaymentItems,
 } from "@temp/@next/utils/checkoutValidations";
 import {
@@ -41,6 +40,7 @@ import {
   ICheckoutShippingSubpageHandles,
 } from "./subpages";
 import { IProps } from "./types";
+import { checkAttentionSchedule } from "@sdk/utils/checkoutValidations";
 
 const prepareCartSummary = (
   activeStepIndex: number,

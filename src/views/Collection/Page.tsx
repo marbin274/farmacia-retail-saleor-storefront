@@ -8,7 +8,6 @@ import {
 import { largeScreen } from "@temp/@next/globalStyles/constants";
 import { useScrollTo } from "@temp/@next/hooks";
 import { IItems } from "@temp/@sdk/api/Cart/types";
-import { useUserDetails } from "@temp/@sdk/react";
 import { baseUrl } from "@temp/app/routes";
 import { COLLECTION_CATEGORY_FILTER_LABEL } from "@temp/core/config";
 import { structuredData } from "@temp/core/SEO/Collection/structuredData";
@@ -83,7 +82,6 @@ const Page: React.FC<PageProps> = ({
   subtractItemToCart,
   total: totalProducts,
 }) => {
-  const { data: user } = useUserDetails();
   const canDisplayProducts = maybe(
     () => !!products.edges && products.totalCount !== undefined
   );
@@ -183,7 +181,6 @@ const Page: React.FC<PageProps> = ({
                 addToCart={addToCart}
                 removeItemToCart={removeItemToCart}
                 subtractItemToCart={subtractItemToCart}
-                user={user}
               />
               <Pagination
                 page={page}
