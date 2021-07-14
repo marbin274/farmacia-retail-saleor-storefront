@@ -1,7 +1,7 @@
 import { ProductTileHorizontalAUNA } from "@temp/@next/components/molecules";
 import { useDistrictSelected } from "@temp/@next/hooks";
-import { ISimpleProduct } from "@temp/@next/types/IProduct";
-import { getProductsWithQuantity } from "@temp/@next/utils/products";
+import { ISimpleProduct } from "@sdk/types/IProduct";
+import { getProductsWithQuantity } from "@sdk/utils/products";
 import { PRODUCTS_PER_PAGE } from "@temp/core/config";
 import { convertToSimpleProduct, generateProductUrl } from "@temp/core/utils";
 import { ReportingPeriod } from "../../../gqlTypes/globalTypes";

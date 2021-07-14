@@ -2,9 +2,11 @@ import { TaxedMoney } from "@components/containers";
 import { Thumbnail } from "@components/molecules";
 import {
   checkProductCanAddToCart,
-  getProductPricingClass,
   productStickerRules,
-} from "@temp/@next/utils/products";
+} from "@sdk/utils/products";
+import {
+  getProductPricingClass,  
+} from "@temp/@next/utils/products"
 import { launchDetailProductEvent } from "@temp/@sdk/gaConfig";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
