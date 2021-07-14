@@ -7,6 +7,7 @@ import {
 } from "@temp/@next/components/molecules/ProductTileAUNA/types";
 import { CategoryNavigation } from "@temp/@next/components/organisms/CategoryNavigation/CategoryNavigation";
 import { largeScreen } from "@temp/@next/globalStyles/constants";
+import { useScrollTo } from "@temp/@next/hooks";
 import { IItems } from "@temp/@sdk/api/Cart/types";
 import { useUserDetails } from "@temp/@sdk/react";
 import { baseUrl } from "@temp/app/routes";
@@ -78,7 +79,8 @@ const Page: React.FC<PageProps> = ({
   );
   const hasProducts = canDisplayProducts && !!products.totalCount;
   const [showFilters, setShowFilters] = React.useState(false);
-  const categoryContainerRef = React.useRef<HTMLDivElement>(null);
+  const { goTop } = useScrollTo();
+
   const getAttribute = (attributeSlug: string, valueSlug: string) => {
     return {
       attributeSlug,
@@ -100,8 +102,12 @@ const Page: React.FC<PageProps> = ({
       []
     );
 
+  React.useEffect(() => goTop(),
+    [products]
+  );
+
   return (
-    <CategoryWrapper ref={categoryContainerRef}>
+    <CategoryWrapper>
       <div className="collection-container-breadcrumbs">
         <Breadcrumbs
           breadcrumbs={extractBreadcrumbs(category)}

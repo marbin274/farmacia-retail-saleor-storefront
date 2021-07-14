@@ -16,6 +16,7 @@ import { SearchProducts_paginatedProducts } from "./gqlTypes/SearchProducts";
 import { useUserDetails } from "@temp/@sdk/react";
 
 import * as S from "./styles";
+import { useScrollTo } from "@temp/@next/hooks";
 interface SortItem {
   label: string;
   value?: string;
@@ -72,7 +73,7 @@ const Page: React.FC<PageProps> = ({
   );
   const [showFilters, setShowFilters] = React.useState(false);
   const { data: user } = useUserDetails();
-  const searchContainerRef = React.useRef<HTMLDivElement>(null);
+  const { goTop } = useScrollTo();
 
   const getAttribute = (attributeSlug: string, valueSlug: string) => {
     return {
@@ -95,18 +96,12 @@ const Page: React.FC<PageProps> = ({
       []
     );
 
-  React.useEffect(
-    () =>
-      searchContainerRef?.current.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-        inline: "nearest",
-      }),
+  React.useEffect(() => goTop(),
     [products]
   );
 
   return (
-    <div className="fa-bg-neutral-light fa-z-0" ref={searchContainerRef}>
+    <div className="fa-bg-neutral-light fa-z-0">
       <S.SearchPage>
         <FilterSidebar
           show={showFilters}

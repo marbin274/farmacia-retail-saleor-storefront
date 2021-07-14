@@ -7,6 +7,7 @@ export * from "./useLocalStorage";
 export * from "./useNetworkStatus";
 export * from "./useProductVariantsAttributes";
 export * from "./useProductVariantsAttributesValuesSelection";
+export * from "./useScrollTo";
 export * from "./useSelectableProductVariantsAttributeValues";
 export * from "./useServiceWorker";
 export * from "./useUpdateCartLines";
