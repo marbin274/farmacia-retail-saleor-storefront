@@ -1,5 +1,6 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HotModulePlugin = require("webpack").HotModuleReplacementPlugin;
+const StatoscopeWebpackPlugin = require('@statoscope/webpack-plugin').default;
 const path = require("path");
 
 module.exports = ({ sourceDir, distDir }) => ({
@@ -36,5 +37,14 @@ module.exports = ({ sourceDir, distDir }) => ({
       chunkFilename: "[id].css",
     }),
     new HotModulePlugin(),
+    new StatoscopeWebpackPlugin({
+      saveReportTo: 'performance/report-[name]-[hash].html',
+      saveStatsTo: 'performance/stats-[name]-[hash].json',
+      saveOnlyStats: false,
+      watchMode: false,
+      name: 'farmauna-webpack-bundle-report',
+      open: 'file',
+      compressor: 'gzip',
+    })
   ],
 });

@@ -6,6 +6,8 @@ import "./scss/index.scss";
 import BannerMobile from "images/auna/home-banner-mob.png";
 import BannerDesktop from "images/auna/home-banner-top.png";
 import { SkeletonBanner } from "./skeleton";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const baseUrlPattern = /(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})*\/?/;
 
@@ -66,20 +68,24 @@ export const Banner: React.FC = () => {
                                             redirectTo(banner.link);
                                         }}
                                     >
-                                        <img
-                                            alt="banner desktop"
-                                            className={`banner-image desktop`}
-                                            height={500}
-                                            src={banner.desktop}
-                                            width={1920}
-                                        />
-                                        <img
-                                            alt="banner mobile"
-                                            className={`banner-image mobile`}
-                                            height={460}
-                                            src={banner.mobile}
-                                            width={360}
-                                        />
+                                        <span className={`banner-image desktop`}>
+                                            <LazyLoadImage
+                                                alt="banner desktop"
+                                                effect="blur"
+                                                height={500}
+                                                src={banner.desktop}
+                                                width={1920}
+                                            />
+                                        </span>
+                                        <span className={`banner-image mobile`}>
+                                            <LazyLoadImage
+                                                alt="banner mobile"
+                                                effect="blur"
+                                                height={460}
+                                                src={banner.mobile}
+                                                width={360}
+                                            />
+                                        </span>
 
                                     </div>
                                 );

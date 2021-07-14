@@ -297,8 +297,7 @@ export const DISTRICT_SELECTED_DEFAULT: IDistrictSelected = {
   name: "Miraflores",
   warehouse: null,
 };
-export const TOTAL_DISTRICT = 30;
-
+export const TOTAL_DISTRICT = 30; // TODO: this variable should be dinamically loaded from the backend
 export const POS_DISTRICTS = ["miraflores"];
 
 export const COUNTRY_DEFAULT = { 
