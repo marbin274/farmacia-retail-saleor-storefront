@@ -5,4 +5,6 @@ export type IPaymentMethodsProps = {
   onClickAdd: () => void;
   onClickSetDefault: (id: string) => void;
   onClickDelete: (id: string) => void;
+  showAddSuccess?: boolean;
+  showDeleteSuccess?: boolean;
 };

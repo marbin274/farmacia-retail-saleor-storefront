@@ -13,6 +13,10 @@ export const CreditCardTile: FC<ICreditCardTileProps> = ({
   onClickDelete,
   onClickSetDefault,
 }) => {
+  const formatCardNumber = () => {
+    return creditCard?.cardNumber.replace(/\*/g, "•");
+  };
+
   return (
     <div className="fa-bg-white fa-p-6 fa-rounded-3xl">
       <div className="fa-flex fa-items-center fa-justify-between">
@@ -41,12 +45,13 @@ export const CreditCardTile: FC<ICreditCardTileProps> = ({
           icon={<TrashIcon />}
           size="small"
           onClick={() => onClickDelete(creditCard.id)}
+          iconOnly
         />
       </div>
 
       <div className="fa-h-px fa-bg-neutral-medium fa-mt-3 fa-mb-4" />
       <p className="fa-text-lg fa-font-semibold fa-mb-4">
-        {creditCard.cardNumber}
+        {formatCardNumber()}
       </p>
       <div className="fa-flex fa-items-center fa-justify-between">
         <div className="fa-truncate fa-mr-4">{`${creditCard.firstName} ${creditCard.lastName}`}</div>

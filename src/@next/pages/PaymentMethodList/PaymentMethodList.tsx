@@ -133,14 +133,14 @@ export const PaymentMethodList: FC<IProps> = ({ user }) => {
         <Alert
           icon={<CheckIcon size={12} />}
           message="Tarjeta guardada con éxito"
-          className="fa-mb-4"
+          className="fa-mb-4 fa-hidden md:fa-flex"
         />
       )}
       {showDeleteSuccess && (
         <Alert
           icon={<TrashIcon size={12} />}
           message="La tarjeta ha sido eliminada"
-          className="fa-mb-4"
+          className="fa-mb-4 fa-hidden md:fa-flex"
           type="error"
         />
       )}
@@ -149,6 +149,8 @@ export const PaymentMethodList: FC<IProps> = ({ user }) => {
         onClickAdd={() => setShowAddModal(true)}
         onClickSetDefault={performSetDefault}
         onClickDelete={onClickDelete}
+        showAddSuccess={showAddSuccess}
+        showDeleteSuccess={showDeleteSuccess}
       />
       {showAddModal && (
         <PatmentMethodFormModal
