@@ -21,3 +21,5 @@ cypress/screenshots
 
 coverage*
 firebase.json
+
+performance

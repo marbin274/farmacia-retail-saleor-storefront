@@ -10,4 +10,6 @@ export * from "./useProductVariantsAttributesValuesSelection";
 export * from "./useSelectableProductVariantsAttributeValues";
 export * from "./useServiceWorker";
 export * from "./useUpdateCartLines";
+export * from "./useIsNearScreen";
+
 
