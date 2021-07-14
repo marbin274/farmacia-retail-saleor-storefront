@@ -44,12 +44,12 @@ export const Wrapper = styled.div<WrapperProps>`
 Wrapper.displayName = "Tile";
 
 export const Header = styled.div`
-  padding: 1.5rem 1.5rem 1rem 2rem;
+  padding: 1.5rem 1.5rem 1rem 1.5rem;
 `;
 
 export const Content = styled.div<WrapperProps>`
   padding: ${props =>
-    props.tileType === "addNew" ? "1rem" : "0 1.5rem 1.5rem 2rem"};
+    props.tileType === "addNew" ? "1rem" : "0 1.5rem 1.5rem 1.5rem"};
 `;
 
 export const Footer = styled.div`
