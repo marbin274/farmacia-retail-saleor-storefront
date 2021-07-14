@@ -93,8 +93,7 @@ export const getCardTokenizationRequirements = (
   transactionToken: string,
   token: string
 ) => {
-  // @ts-ignore
-  const endpoint = getConfigElement(config, "nb_card_tokenization");
+  const endpoint = getConfigElement(config, "nb_tokenization_url");
   const merchantId = getConfigElement(config, "merchant_id");
 
   const url = `${endpoint}${merchantId}/${transactionToken}`;
