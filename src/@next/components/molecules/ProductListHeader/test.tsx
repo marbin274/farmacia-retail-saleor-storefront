@@ -1,4 +1,4 @@
-import { mount, shallow } from "enzyme";
+import { fireEvent, render, screen } from "@testing-library/react";
 import "jest-styled-components";
 import React from "react";
 
@@ -14,7 +14,7 @@ const DEFAULT_PROPS = {
   activeFiltersAttributes: [],
   clearFilters: clearFilterMock,
   numberOfProducts: 255,
-  onChange: onChangeMock,
+  onChangeSortOption: onChangeMock,
   onCloseFilterAttribute: onCloseFilterAttributeMock,
   openFiltersMenu: openFiltersMenuMock,
   sortOptions: [
@@ -31,64 +31,77 @@ const DEFAULT_PROPS = {
 
 describe("<ProductListHeader />", () => {
   it("exists", () => {
-    const wrapper = shallow(<ProductListHeader {...DEFAULT_PROPS} />);
+    render(<ProductListHeader {...DEFAULT_PROPS} />);
 
-    expect(wrapper.exists()).toEqual(true);
+    const productListHeader = screen.getByRole("product-list-header");
+    expect(productListHeader).toBeTruthy();
   });
 
   it("should display number of products found", () => {
-    const wrapper = shallow(<ProductListHeader {...DEFAULT_PROPS} />);
+    render(<ProductListHeader {...DEFAULT_PROPS} />);
 
-    expect(wrapper.text()).toContain(String(DEFAULT_PROPS.numberOfProducts));
+    const valueNumbOfProductsFound = screen.getByRole(
+      "no-of-products-found_value"
+    );
+    expect(valueNumbOfProductsFound.textContent).toContain(
+      DEFAULT_PROPS.numberOfProducts
+    );
   });
 
-  it("should not display Limpiar filtros button if no active filters present", () => {
-    const wrapper = shallow(<ProductListHeader {...DEFAULT_PROPS} />);
+  it("should not display Borrar filtros chip if no active filters present", () => {
+    render(<ProductListHeader {...DEFAULT_PROPS} />);
 
-    expect(wrapper.text()).not.toContain("Limpiar filtros");
+    const clearFiltersChip = screen.queryByRole("clear-filters");
+
+    expect(clearFiltersChip).toBeNull();
   });
 
-  it("should display Limpiar filtros button if active filters present are present", () => {
-    const wrapper = shallow(
-      <ProductListHeader {...DEFAULT_PROPS} activeFilters={3} />
+  it("should display Borrar filtros chip if active filters present are present", () => {
+    render(
+      <ProductListHeader
+        {...DEFAULT_PROPS}
+        activeFilters={3}
+        activeFiltersAttributes={[
+          { attributeSlug: "", valueName: "", valueSlug: "" },
+        ]}
+      />
     );
 
-    expect(wrapper.text()).toContain("Borrar filtros");
+    const clearFiltersChip = screen.queryByRole("clear-filters");
+
+    expect(clearFiltersChip).toBeTruthy();
   });
 
   it("should display number of active filters if any are present", () => {
-    const wrapper = shallow(
-      <ProductListHeader {...DEFAULT_PROPS} activeFilters={3} />
-    );
+    render(<ProductListHeader {...DEFAULT_PROPS} activeFilters={3} />);
 
-    expect(wrapper.text()).toContain("(3)");
+    const productListHeader = screen.getByRole("product-list-header");
+
+    expect(productListHeader.textContent).toContain("(3)");
   });
 
-  it("should call method for clearing filters when clicking on Limpiar filtros button", () => {
-    const wrapper = mount(
-      <ProductListHeader {...DEFAULT_PROPS} activeFilters={3} />
+  it("should call method for clearing filters when clicking on Borrar filtros button", () => {
+    render(
+      <ProductListHeader
+        {...DEFAULT_PROPS}
+        activeFilters={3}
+        activeFiltersAttributes={[
+          { attributeSlug: "", valueName: "", valueSlug: "" },
+        ]}
+      />
     );
+    const clearFiltersIcon = screen.getByTestId("clear-filters_icon");
 
-    wrapper
-      .find("span")
-      .filterWhere(item => {
-        return item.prop("children") === "Borrar filtros";
-      })
-      .simulate("click");
-
+    fireEvent.click(clearFiltersIcon);
     expect(clearFilterMock).toHaveBeenCalledTimes(1);
   });
 
-  it("should call method for clearing filters when clicking on Limpiar filtros button", () => {
-    const wrapper = mount(
-      <ProductListHeader {...DEFAULT_PROPS} activeFilters={3} />
-    );
+  it("should call method for open filters when clicking on Filtrar button", () => {
+    render(<ProductListHeader {...DEFAULT_PROPS} />);
 
-    wrapper
-      .find("button")
-      .at(0)
-      .simulate("click");
+    const openFiltersIcon = screen.getByRole("filters__button");
 
+    fireEvent.click(openFiltersIcon);
     expect(openFiltersMenuMock).toHaveBeenCalledTimes(1);
   });
 });

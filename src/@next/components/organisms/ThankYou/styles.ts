@@ -1,6 +1,6 @@
 import { styled, media, DefaultTheme } from "@styles";
-import { aunaInteractive, white } from "@styles/constants";
-import { Button } from "@components/atoms";
+import { aunaInteractive } from "@styles/constants";
+import farmatheme from "@farmatheme";
 
 export const WrapperThankyou = styled.div`
   background-color: #f6f7f9;
@@ -38,7 +38,7 @@ export const Wrapper = styled.div`
 `;
 
 export const ThankYouHeader = styled.p`
-  color: #452fba;
+  color: ${farmatheme.theme.colors.interactive};
   font-size: 1.5rem;
   font-weight: 600;
   margin: 0;
@@ -61,7 +61,7 @@ export const OrderInfo = styled.div`
   padding: 1.5rem;
   font-weight: 400;
   span {
-    color: #452fba;
+    color: ${farmatheme.theme.colors.interactive};
     font-weight: ${({ theme }: { theme: DefaultTheme }) =>
       theme.typography.boldFontWeight};
   }
@@ -134,17 +134,4 @@ export const Link = styled.a`
   color: ${aunaInteractive};
   cursor: pointer;
   font-size: 14px;
-`;
-
-export const SecondaryButton = styled(Button)`
-  background-color: ${white};
-  border: 1px solid ${aunaInteractive} !important;
-  color: ${aunaInteractive} !important;
-  height: 48px;
-  padding: 0;
-  width: 226px;
-
-  > span {
-    font-size: 16px;
-  }
 `;

@@ -29,7 +29,7 @@ export const View: React.FC<ViewProps> = ({
         const breadcrumbs = [
           {
             link: generatePageUrl(slug),
-            value: page.title,
+            label: page.title,
           },
         ];
         return (

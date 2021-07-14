@@ -3,6 +3,7 @@ import {
 } from "@temp/views/Product/queries";
 import gql from "graphql-tag";
 import { TypedQuery } from "../../core/queries";
+import { Banner } from "./gqlTypes/Banner";
 import { HomePage } from "./gqlTypes/HomePage";
 
 
@@ -54,6 +55,13 @@ query HomePage {
       tagManagerEnvironmentId
     }
   }
+}
+`;
+
+export const TypedHomePageQuery = TypedQuery<HomePage, {}>(homePageQuery);
+
+export const bannerQuery = gql` 
+query Banner {
   mainBanner {
       id,
       frames{
@@ -68,4 +76,4 @@ query HomePage {
 }
 `;
 
-export const TypedHomePageQuery = TypedQuery<HomePage, {}>(homePageQuery);
+export const TypedBannerQuery = TypedQuery<Banner, {}>(bannerQuery);

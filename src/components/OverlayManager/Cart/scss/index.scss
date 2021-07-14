@@ -125,26 +125,7 @@ $small-screen-plus-one: 541px;
         min-height: calc(100% - 6rem);
       }
     }
-    &__list {
-      padding: 1rem 1.5rem;
-      height: calc(100% - 6.75rem);
-
-      -ms-overflow-style: none; /* hide scroll on IE and Edge */
-      scrollbar-width: none; /* hide scroll on Firefox */
-      &::-webkit-scrollbar {
-        display: none; /*hide scroll on chrome, safari and opera*/
-      }
-
-      @media (min-width: $small-screen-plus-one) {
-        overflow: auto;
-      }
-      @media (max-width: $small-screen) {
-        padding: 0;
-        height: auto;
-        min-height: calc(100% - 6rem);
-        padding-bottom: 11.25rem;
-        background-color: #f7f6f8;
-      }
+    &__list {      
 
       &__item {
         width: 23rem;
@@ -166,13 +147,6 @@ $small-screen-plus-one: 541px;
           margin-bottom: 0;
           &.delete {
             background-color: $white;
-          }
-        }
-
-        &:last-child {
-          margin-bottom: 4.5rem;
-          @media (max-width: $small-screen) {
-            margin-bottom: 0;
           }
         }
 
@@ -341,68 +315,6 @@ $small-screen-plus-one: 541px;
       }
     }
 
-    &__footer {
-      position: absolute;
-      bottom: 0;
-      padding: 1.5rem;
-      background-color: $white;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      @media (max-width: $small-screen) {
-        box-shadow: 0 -0.5rem 1rem rgba(0, 0, 0, 0.08);
-        border-top-left-radius: 1rem;
-        border-top-right-radius: 1rem;
-      }
-
-      &__details {
-        width: 50%;
-        &__price {
-          display: flex;
-          font-weight: 400;
-          justify-content: space-between;
-          font-size: $small-font-size;
-          font-style: normal;
-          line-height: 1.5rem;
-          padding-bottom: 0.75rem;
-
-          span {
-            &:nth-child(1) {
-              color: #908ba7;
-            }
-            &:nth-child(2) {
-              span {
-                color: #23212b;
-              }
-            }
-          }
-
-          &--total {
-            padding-bottom: 0;
-            span {
-              &:nth-child(2) {
-                font-weight: 600;
-                font-size: $base-line-height;
-                line-height: 1.5rem;
-                span {
-                  color: #323e48;
-                }
-              }
-            }
-          }
-        }
-      }
-      &__button {
-        margin-top: 15px;
-        text-align: center;
-
-        button {
-          width: 85%;
-        }
-      }
-    }
 
     &__empty {
       align-items: center;

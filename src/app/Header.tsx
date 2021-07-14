@@ -11,16 +11,17 @@ export const Header: React.FC = () => {
     location.pathname.includes("checkout") ||
     location.pathname.includes("order-finalized");
 
-  const isProductPage = 
-    location.pathname.includes("product") || 
-    location.pathname.includes("search");
+  const isLightHeader =
+    location.pathname.includes("product") ||
+    location.pathname.includes("search") ||
+    location.pathname.includes("account") ||
+    location.pathname.includes("address-book") ||
+    location.pathname.includes("order-history") ||
+    location.pathname.includes("category") ||
+    location.pathname.includes("collection");
 
   return (
-    <TypedMainMenuQuery
-      alwaysRender
-      renderOnError
-      displayLoader={false}
-    >
+    <TypedMainMenuQuery alwaysRender renderOnError displayLoader={false}>
       {({ data }) => {
         const categories: INavItem[] = maybe(
           () =>
@@ -37,22 +38,29 @@ export const Header: React.FC = () => {
             ),
           []
         );
+        const collections: INavItem[] = maybe(
+          () => data.shop.navigation?.main?.items.filter(it => !!it.collection),
+          []
+        );
+
         const navMain: INavItem[] = maybe(
           () => data.shop.navigation?.main?.items,
           []
         );
+
         return (
           <>
             <HeaderComponent
               categories={categories}
+              collections={collections}
               hideMenuCondition={hideMenuCondition}
-              isProductPage={isProductPage}
+              isLightHeader={isLightHeader}
             />
             <MainMenu
               categories={categories}
               hideMenuCondition={hideMenuCondition}
               navMain={navMain}
-              isProductPage={isProductPage}
+              isLightHeader={isLightHeader}
             />
           </>
         );

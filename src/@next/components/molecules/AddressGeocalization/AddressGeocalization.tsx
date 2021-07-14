@@ -3,16 +3,20 @@ import {
   useDistrictSelected,
 } from "@temp/@next/hooks";
 import React from "react";
-import { Button } from "@farmacia-retail/farmauna-components";
-import { IconButton } from "../../atoms";
+import { Button, GpsIcon } from "@farmacia-retail/farmauna-components";
 import { addressGeoModalService } from "../AddressGeoModal/AddressGeoModalService";
 import { AddressGeocalizationInfo } from "./AddressGeocalizationInfo";
 import * as S from "./styles";
 import { IProps } from "./types";
+import { useMediaQuery } from "react-responsive";
+import { largeScreen } from "@temp/@next/globalStyles/constants";
 
 export const AddressGeocalization: React.FC<IProps> = React.memo(({ mode }) => {
   const [districtSelected] = useDistrictSelected();
   const [show] = useAddressGeocalizationInfo();
+
+  const isDesktop = useMediaQuery({ query: `(min-width: ${largeScreen}px)` });
+
   const handleChangeAddress = () => {
     addressGeoModalService.show(true);
   };
@@ -22,17 +26,9 @@ export const AddressGeocalization: React.FC<IProps> = React.memo(({ mode }) => {
       <S.Wrapper>
         <S.Localization mode={mode}>
           <S.GeocalizationIcon>
-            <IconButton
-              name="addressGeo"
-              size={20}
-              heightViewPort={21}
-              widthViewPort={14}
-              onClick={handleChangeAddress}
-            />
+            <GpsIcon onClick={handleChangeAddress} size={isDesktop ? 32 : 24} />
           </S.GeocalizationIcon>
-          <S.District
-            className="district"            
-          >
+          <S.District className="district">
             <S.Label onClick={handleChangeAddress}>Enviar a: </S.Label>
             <S.Address className="district-name">
               {districtSelected.name}

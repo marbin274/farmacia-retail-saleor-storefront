@@ -81,4 +81,7 @@ export interface IProps {
   requestPayload?: string | undefined | null;
   totalPrice?: ITotalPrice;
   userDataForNiubiz?: IUserDataForNiubiz;
+  selectedDistrict: string;
+  gatewayListError?: string;
+  setGatewayListError?: React.Dispatch<React.SetStateAction<string>>;
 }

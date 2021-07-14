@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   margin: 1rem;
 
   button {
-    padding: 0.75rem 1.75rem;
+    padding: 0rem 1.75rem;
   }
 `;
 

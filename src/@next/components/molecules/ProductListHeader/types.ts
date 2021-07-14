@@ -10,14 +10,20 @@ interface ActiveFiltersAttribute {
 }
 
 export interface IProps {
-  activeSortOption?: string;
+  activeSecondaryOptions?: string[];
   activeFilters: number;
   activeFiltersAttributes: ActiveFiltersAttribute[];
+  activeSortOption?: string;
+  clearFilters: () => void;
   hideFilters?: boolean;
   numberOfProducts: number;
-  sortOptions: SortOptions[];
-  onChange: (order: { value?: string; label: string }) => void;
+  onChangeSecondaryOption?: (value: { value?: string; label: string }) => void;
+  onChangeSortOption: (order: { value?: string; label: string }) => void;
   onCloseFilterAttribute: (attributeSlug: string, valueSlug: string) => void;
   openFiltersMenu: () => void;
-  clearFilters: () => void;
+  secondaryClearLabel?: string;
+  secondaryLabel?: string;
+  secondaryOptions?: SortOptions[];
+  showSecondarySelect?: boolean;
+  sortOptions: SortOptions[];
 }

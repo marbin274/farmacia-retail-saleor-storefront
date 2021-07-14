@@ -3,6 +3,7 @@ import { CreateCheckout_checkoutCreate_checkoutErrors } from "../mutations/gqlTy
 import { PasswordChange } from "../mutations/gqlTypes/PasswordChange";
 import { SetPassword } from "../mutations/gqlTypes/SetPassword";
 import { TokenAuth_tokenCreate } from "../mutations/gqlTypes/TokenAuth";
+import { VariantsProductsAvailable_productVariants } from "../queries/gqlTypes/VariantsProductsAvailable";
 
 export interface ErrorResponse<T> {
   error?: any;
@@ -35,5 +36,10 @@ export type SetPasswordChange = {
 
 export type SetPasswordResult = {
   data: SetPassword | null;
+  error: ApolloError | null;
+} | null;
+
+export type GetCartLinesResult = {
+  data: VariantsProductsAvailable_productVariants | null | undefined;
   error: ApolloError | null;
 } | null;

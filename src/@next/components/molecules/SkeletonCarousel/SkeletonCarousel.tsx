@@ -1,5 +1,5 @@
 import React from "react";
-import { Skeleton as SSkeleton } from "@temp/@next/components/atoms"
+import { Skeleton as SSkeleton, SkeletonProductRow } from "@temp/@next/components/atoms"
 import * as S from "./styles";
 
 
@@ -12,16 +12,7 @@ export const SkeletonCarousel = ()=>{
                     height={3}
                 />
             </S.SkeletonTitle>
-            <S.SkeletonItems>
-                {
-                    [...Array(4)].map((_, item) =>
-                        <SSkeleton
-                            key={item}
-                            width={15}
-                        />
-                    )
-                }
-            </S.SkeletonItems>
+            <SkeletonProductRow />
         </S.SkeletonRow>
     );
 }

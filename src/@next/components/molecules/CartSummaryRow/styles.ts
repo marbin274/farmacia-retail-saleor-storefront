@@ -1,5 +1,6 @@
 import { styled, media, DefaultTheme } from "@styles";
 import { aunaBlack, baseFontSize } from "@styles/constants";
+import farmatheme from "@farmatheme";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -46,7 +47,7 @@ export const Quantity = styled.div`
   right: -0.75rem;
   width: 1.5rem;
   height: 1.5rem;
-  background-color: #452fba;
+  background-color: ${farmatheme.theme.colors.interactive};
   border-radius: 50%;
   color: ${({ theme }: { theme: DefaultTheme }) => theme.colors.white};
   span {

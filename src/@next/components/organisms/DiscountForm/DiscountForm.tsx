@@ -90,6 +90,12 @@ export const DiscountForm: React.FC<IProps> = ({
                       const value = e.currentTarget?.value?.toUpperCase();
                       setFieldValue("inputCode", value);
                     }}
+                    onKeyPress={e => {
+                      if (e.key === "enter") {
+                        e.preventDefault();
+                        handleApplyBtnClick(values.inputCode);
+                      }
+                    }}
                     onFocus={() => {
                       errors = null;
                     }}

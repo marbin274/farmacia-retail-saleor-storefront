@@ -32,7 +32,7 @@ export const ShippingMethodControl = styled.div`
     padding-top: 0px;
     margin: 0px;
   }
-  .control{
+  .select-control{
     background-color: ${white};
   }
 `
