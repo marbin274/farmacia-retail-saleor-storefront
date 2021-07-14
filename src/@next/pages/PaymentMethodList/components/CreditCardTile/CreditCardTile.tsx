@@ -49,7 +49,7 @@ export const CreditCardTile: FC<ICreditCardTileProps> = ({
         {creditCard.cardNumber}
       </p>
       <div className="fa-flex fa-items-center fa-justify-between">
-        <div className="fa-truncate fa-mr-4">Cristina Cáceres</div>
+        <div className="fa-truncate fa-mr-4">{`${creditCard.firstName} ${creditCard.lastName}`}</div>
         <CreditCardIcon creditCardProvider={creditCard.brand as CCProviders} />
       </div>
     </div>

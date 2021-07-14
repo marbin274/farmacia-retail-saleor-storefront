@@ -74,6 +74,7 @@ export interface ICardTokenizationResult {
     firstName: string;
     lastName: string;
     bin?: string; // post response
+    email?: string; // post response
   };
   order: {
     transactionToken: string;

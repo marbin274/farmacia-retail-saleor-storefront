@@ -146,6 +146,9 @@ export interface UserDetails_me_cardTokens {
   binNumber: string;
   default: boolean;
   tokenId: string;
+  firstName: string;
+  lastName: string;
+  email: string;
 }
 
 export interface UserDetails_me {

@@ -159,6 +159,9 @@ export interface SetDefaultUserCardToken_accountSetDefaultCardToken_user_cardTok
   binNumber: string;
   default: boolean;
   tokenId: string;
+  firstName: string;
+  lastName: string;
+  email: string;
 }
 
 export interface SetDefaultUserCardToken_accountSetDefaultCardToken_user {

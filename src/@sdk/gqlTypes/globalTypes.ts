@@ -434,6 +434,9 @@ export interface CardTokenInput {
   binNumber?: string | null;
   default?: boolean | null;
   tokenId?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  email?: string | null;
 }
 
 export interface CheckoutCreateInput {

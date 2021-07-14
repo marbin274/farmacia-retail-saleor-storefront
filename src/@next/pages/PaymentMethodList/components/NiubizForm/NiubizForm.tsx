@@ -314,7 +314,7 @@ export const NiubizForm: FC<INiubizFormProps> = ({
                 if (res.errorCode === 0) {
                   onCardTokenization?.({
                     ...res,
-                    card: { ...res.card, bin: result.bin },
+                    card: { ...res.card, bin: result.bin, email: data.email },
                   });
                 } else {
                   showTokenizationCommonError();

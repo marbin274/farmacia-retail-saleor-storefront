@@ -195,7 +195,7 @@ const AVAILABLE_PAYMENTS_QA: IPaymentGateway[] = [
         value: "false",
       },
       {
-        field: "nb_card_tokenization",
+        field: "nb_tokenization_url",
         value:
           "https://apitestenv.vnforapps.com/api.ecommerce/v2/ecommerce/token/card/",
       },
@@ -274,7 +274,7 @@ const AVAILABLE_PAYMENTS_PRD: IPaymentGateway[] = [
         value: "false",
       },
       {
-        field: "nb_card_tokenization",
+        field: "nb_tokenization_url",
         value:
           "https://apiprod.vnforapps.com/api.ecommerce/v2/ecommerce/token/card/",
       },

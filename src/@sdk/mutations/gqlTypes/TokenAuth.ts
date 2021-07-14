@@ -159,6 +159,9 @@ export interface TokenAuth_tokenCreate_user_cardTokens {
   binNumber: string;
   default: boolean;
   tokenId: string;
+  firstName: string;
+  lastName: string;
+  email: string;
 }
 
 export interface TokenAuth_tokenCreate_user {

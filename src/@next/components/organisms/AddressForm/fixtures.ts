@@ -66,6 +66,9 @@ export const userCardTokenItem: UserDetails_me_cardTokens = {
   default: false,
   id: "id",
   tokenId: "658677890568790",
+  firstName: "Lalo",
+  lastName: "Landa",
+  email: "lalo@email.com",
 }
 
 export const userAddress: UserDetails_me = {

@@ -161,6 +161,9 @@ export interface UpdateUserAddress_accountAddressUpdate_user_cardTokens {
   binNumber: string;
   default: boolean;
   tokenId: string;
+  firstName: string;
+  lastName: string;
+  email: string;
 }
 
 export interface UpdateUserAddress_accountAddressUpdate_user {

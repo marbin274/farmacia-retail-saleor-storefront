@@ -161,6 +161,9 @@ export interface SetCustomerDefaultAddress_accountSetDefaultAddress_user_cardTok
   binNumber: string;
   default: boolean;
   tokenId: string;
+  firstName: string;
+  lastName: string;
+  email: string;
 }
 
 export interface SetCustomerDefaultAddress_accountSetDefaultAddress_user {

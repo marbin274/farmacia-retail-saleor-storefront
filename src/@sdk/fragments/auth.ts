@@ -29,6 +29,9 @@ export const userFragment = gql`
       binNumber
       default
       tokenId
+      firstName
+      lastName
+      email
     }
   }
 `;

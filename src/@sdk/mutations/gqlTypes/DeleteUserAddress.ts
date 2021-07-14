@@ -159,6 +159,9 @@ export interface DeleteUserAddress_accountAddressDelete_user_cardTokens {
   binNumber: string;
   default: boolean;
   tokenId: string;
+  firstName: string;
+  lastName: string;
+  email: string;
 }
 
 export interface DeleteUserAddress_accountAddressDelete_user {

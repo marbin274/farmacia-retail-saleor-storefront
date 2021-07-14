@@ -12,6 +12,7 @@ import { CheckIcon, TrashIcon } from "@farmacia-retail/farmauna-components";
 import { PaymentMethods } from "./components/PaymentMethods";
 import { PatmentMethodFormModal } from "./components/PatmentMethodFormModal";
 import { IProps } from "./types";
+import { ICardTokenizationResult } from "@temp/core/payments/niubiz";
 
 export const PaymentMethodList: FC<IProps> = ({ user }) => {
   const [showAddModal, setShowAddModal] = useState(false);
@@ -105,6 +106,27 @@ export const PaymentMethodList: FC<IProps> = ({ user }) => {
     setShowDeleteModal(false);
   };
 
+  const performCreate = (data: ICardTokenizationResult) => {
+    if (createLoading) {
+      return;
+    }
+
+    clearAlers();
+    const { card, token } = data;
+
+    createUserCardToken({
+      input: {
+        binNumber: card.bin,
+        brand: card.brand,
+        cardNumber: card.cardNumber,
+        tokenId: token.tokenId,
+        firstName: card.firstName,
+        lastName: card.lastName,
+        email: card.email,
+      },
+    });
+  };
+
   return (
     <div>
       {showAddSuccess && (
@@ -135,17 +157,7 @@ export const PaymentMethodList: FC<IProps> = ({ user }) => {
           onClose={() => setShowAddModal(false)}
           user={user}
           loading={createLoading}
-          onSubmit={data => {
-            clearAlers();
-            createUserCardToken({
-              input: {
-                binNumber: data.card.bin,
-                brand: data.card.brand,
-                cardNumber: data.card.cardNumber,
-                tokenId: data.token.tokenId,
-              },
-            });
-          }}
+          onSubmit={performCreate}
         />
       )}
       <Modal

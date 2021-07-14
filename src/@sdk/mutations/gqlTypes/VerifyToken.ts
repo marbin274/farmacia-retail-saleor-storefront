@@ -146,6 +146,9 @@ export interface VerifyToken_tokenVerify_user_cardTokens {
   binNumber: string;
   default: boolean;
   tokenId: string;
+  firstName: string;
+  lastName: string;
+  email: string;
 }
 
 export interface VerifyToken_tokenVerify_user {
