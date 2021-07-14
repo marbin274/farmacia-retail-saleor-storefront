@@ -20,7 +20,7 @@ export interface IProps {
    */
   errors?: IFormError[];
   /**
-   * Postal code used by Braintree.
+   * Postal code .
    */
   postalCode?: string;
   /**

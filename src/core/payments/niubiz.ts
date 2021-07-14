@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig } from "axios";
-// import * as braintree from "braintree-web";
+
 export interface PaymentData {
   lastDigits: string;
   ccType: string;
