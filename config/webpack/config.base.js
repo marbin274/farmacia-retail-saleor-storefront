@@ -20,7 +20,7 @@ const robotOptions = {
       userAgent: "Googlebot",
       allow: "/",
       disallow: ["/order-finalized", "/checkout*","*/ayuda@auna.pe",
-        "*/consultas@farmauna.com","*/search/?q=*","*/cdn*","*/app*","*/js*"]
+        "*/consultas@farmauna.com","*/search/?q=*"]
     },
   ],
   host: "https://www.farmauna.com/",

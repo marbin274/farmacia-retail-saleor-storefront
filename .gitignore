@@ -1,4 +1,5 @@
 .*
+!.github/workflows/sonarqube-ci.yml
 !.github/workflows/lighthouse-ci.yml
 !.dockerignore
 !.storybook
