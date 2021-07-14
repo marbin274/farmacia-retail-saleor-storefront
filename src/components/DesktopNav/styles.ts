@@ -10,7 +10,6 @@ export const Wrapper = styled.div`
 `;
 
 export const CategoryButton = styled(Button)`
-    padding: 0.875rem 1.9rem;
     > span {
         display: flex;
         font-size: ${({theme})=> theme.typography.smallFontSize};
