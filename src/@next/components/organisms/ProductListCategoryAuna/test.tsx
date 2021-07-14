@@ -8,7 +8,9 @@ import { products, productsOnCart } from "./fixtures";
 
 jest.mock("@temp/@next/optimizely/hooks", () => ({
   useAddToCartButtonVariable: () => "Agregar",
+  useShowPersonalizedCollection: () => ({enable:false, variationKey: ""}),
 }));
+
 
 jest.mock("@temp/@next/optimizely/tracks", () => ({
   trackAddToCart: jest.fn(),
@@ -23,6 +25,7 @@ describe("<ProductList />", () => {
           productsOnCart={productsOnCart}
           loading={false}
           onLoadMore={jest.fn()}
+          user={null}
         />
       </BrowserRouter>
     );
@@ -38,6 +41,7 @@ describe("<ProductList />", () => {
           productsOnCart={productsOnCart}
           loading={true}
           onLoadMore={jest.fn()}
+          user={null}
         />
       </BrowserRouter>
     );

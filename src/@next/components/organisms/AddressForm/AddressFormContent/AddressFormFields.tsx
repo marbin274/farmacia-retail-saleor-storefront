@@ -2,7 +2,7 @@ import { AddressAutocomplete, InputSelect } from "@components/molecules";
 import React from "react";
 import { IFieldsProps, ISelectProps } from "./types";
 import { InputField } from "@farmacia-retail/farmauna-components";
-
+import { TOTAL_DISTRICT } from "@temp/core/config";
 export const FirstNameTextField = ({
   fieldErrors,
   required,
@@ -132,7 +132,7 @@ export const CitySelect = ({ fieldsProps }: ISelectProps) => {
         onBlur={handleBlur}
       />
       <span className="fa-text-xs fa-mt-2" style={{ color: "#908BA7" }}>
-        Llegamos a 22 distritos de Lima
+        Llegamos a {TOTAL_DISTRICT} distritos de Lima
       </span>
     </div>
   );
