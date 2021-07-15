@@ -73,7 +73,6 @@ export const ItemsNotification: React.FC<any> = () => {
 
   return notifications.length > 0 ? (
     <S.NotificationContainer>
-      <div className="container">
         <S.ItemNotification>
           <S.Header>
             <S.HeaderTitleEvent>
@@ -101,7 +100,6 @@ export const ItemsNotification: React.FC<any> = () => {
             })}
           </S.Body>
         </S.ItemNotification>
-      </div>
     </S.NotificationContainer>
   ) : null;
 };
