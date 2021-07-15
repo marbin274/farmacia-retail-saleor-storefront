@@ -45,7 +45,13 @@ const ResetPasswordMailSent: React.FC<ResetPasswordMailSentProps> = ({onClose}) 
             <h3>Revise su correo electrónico</h3>
             <p>Hemos enviado las instrucciones para que puedas restaurar la contraseña a <strong>{resetPasswordEmail}</strong></p>
             <div className="reset-password-mail-sent__button">
-                <Button onClick={handleOnClick}>Entendido</Button>
+                <Button 
+                    size="large"
+                    fullWidth 
+                    onClick={handleOnClick}
+                >
+                    Entendido
+                </Button>
             </div>
         </div>
     )

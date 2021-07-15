@@ -14,6 +14,7 @@ interface ResetPasswordFormContentProps {
     called: boolean;
     loading: boolean;
     errors?: IFormError[],
+    buttonBack?: React.ReactChild;
     onClose: () => void;
     passwordReset: MutationFn<ResetPassword, ResetPasswordVariables>;
 }
@@ -22,7 +23,7 @@ const initialValues: ResetPasswordVariables = {
     email: '',
     redirectUrl: `${window.location.origin}${passwordResetUrl}`,
 };
-const ResetPasswordFormContent: React.FC<ResetPasswordFormContentProps> = ({ onClose, called, loading, errors: requestErrors, children, passwordReset }) => {
+const ResetPasswordFormContent: React.FC<ResetPasswordFormContentProps> = ({ buttonBack, onClose, called, loading, errors: requestErrors, children, passwordReset }) => {
     const [showMessageSuccess, setShowMessageSuccess] = React.useState<boolean>(false);
     const [showMessageErrors, setShowMessageErrors] = React.useState<boolean>(false);
 
@@ -91,10 +92,15 @@ const ResetPasswordFormContent: React.FC<ResetPasswordFormContentProps> = ({ onC
                         />
                         {children}
                         <div className="password-reset-form__button">
-
-                            <Button type="submit" {...(loading && { disabled: true })} variant="default">
+                            <Button 
+                                type="submit" 
+                                {...(loading && { disabled: true })}
+                                variant="default"
+                                size="large"
+                                fullWidth>
                                 {loading ? "Cargando" : "Enviar instrucciones"}
                             </Button>
+                            {buttonBack}
                         </div>
                     </form>
                 </>

@@ -4,10 +4,11 @@ import ResetPasswordFormContent from "./ResetPasswordFormContent";
 import "./scss/index.scss";
 interface IPasswordResetForm {
   children?: React.ReactChild;
+  buttonBack?: React.ReactChild;
   onClick?: () => void;
 }
 
-const PasswordResetForm: React.FC<IPasswordResetForm> = ({ children, onClick }) => (
+const PasswordResetForm: React.FC<IPasswordResetForm> = ({ children, buttonBack, onClick }) => (
   <div className="password-reset-form">
     <TypedPasswordResetMutation>
       {(passwordReset, { loading, data, called }) => {
@@ -19,6 +20,7 @@ const PasswordResetForm: React.FC<IPasswordResetForm> = ({ children, onClick }) 
               loading={loading}
               errors={data?.requestPasswordReset?.errors}
               passwordReset={passwordReset}
+              buttonBack={buttonBack}
             >
               {children}
             </ResetPasswordFormContent>
