@@ -1,4 +1,3 @@
-// import {ICardPaymentInput} from "@temp/core/payments/braintree";
 import { ITotalPrice } from "@temp/@sdk/api/Cart/types";
 import { IAddress, ICardData, IFormError, IPaymentGateway } from "@types";
 import { IUserDataForNiubiz } from "../CheckoutPayment/types";
