@@ -8,9 +8,6 @@ export * from "./CartSummary";
 export * from "./CheckoutAddress";
 export * from "./CheckoutPayment";
 export * from "./CheckoutReview";
-export * from "./ThankYou";
-export * from "./ProductListAUNA";
-export * from "./ProductListCategoryAuna";
 export * from "./CheckoutShipping";
 export * from "./CreditCardGrid";
 export * from "./DiscountForm";
@@ -26,8 +23,8 @@ export * from "./ProductListAUNA";
 export * from "./ProductVariantPicker";
 export * from "./SelectSidebar";
 export * from "./SideNavbar";
+export * from "./StockValidationModal";
 export * from "./ThankYou";
 export * from "./TopNavbar";
 
-export * from "./CartDeliveryData";
-export * from "./StockValidationModal";
+

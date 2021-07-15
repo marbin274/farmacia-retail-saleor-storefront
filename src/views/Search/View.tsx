@@ -167,7 +167,7 @@ export const View: React.FC<ViewProps> = ({ match }) => {
                     activeSortOption={filters.sortBy}
                     filters={filters}
                     products={data.paginatedProducts}
-                    productsOnCart={productsOnCart}
+                    items={productsOnCart}
                     onAttributeFiltersChange={onFiltersChange}
                     activeFilters={
                       filters!.attributes
