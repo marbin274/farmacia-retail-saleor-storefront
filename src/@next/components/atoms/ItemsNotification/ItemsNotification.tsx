@@ -4,7 +4,7 @@ import { IItemsNotificationServiceProps } from "./types";
 import * as S from "./styles";
 import { Button, XIcon, CheckIcon } from "@farmacia-retail/farmauna-components";
 import { Thumbnail } from "@temp/@next/components/molecules";
-import { ISimpleProduct } from "@temp/@next/types/IProduct";
+import { ISimpleProduct } from "@sdk/types/IProduct";
 
 export const ItemsNotification: React.FC<any> = () => {
   const [notifications, setNotifications] = useState<

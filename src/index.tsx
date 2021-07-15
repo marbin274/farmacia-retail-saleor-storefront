@@ -49,7 +49,7 @@ import {
 } from "./@sdk/auth";
 import { alertService } from "./@next/components/atoms/Alert";
 import { launchSetLocation, getGaUserId } from "./@sdk/gaConfig";
-import { optimizelyClient, getOptimizelyUserId } from "./@sdk/optimizelyConfig";
+import { getOptimizelyUserId, optimizelyClient } from "./optimizelyConfig";
 
 const cache = new InMemoryCache({
   dataIdFromObject: apolloCacheObject => {

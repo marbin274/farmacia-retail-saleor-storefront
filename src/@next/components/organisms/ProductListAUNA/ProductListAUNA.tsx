@@ -1,6 +1,6 @@
 import { Loader } from "@components/atoms";
 import { ProductTileAUNA } from "@components/molecules";
-import { getProductsWithQuantity } from "@temp/@next/utils/products";
+import { getProductsWithQuantity } from "@sdk/utils/products";
 import { generateProductUrl } from "@temp/core/utils";
 import React from "react";
 import * as S from "./styles";
@@ -16,7 +16,6 @@ export const ProductListAUNA: React.FC<IProps> = ({
   addToCart,
   removeItemToCart,
   subtractItemToCart,
-  user,
 }: IProps) => {
 
   return (
@@ -34,7 +33,6 @@ export const ProductListAUNA: React.FC<IProps> = ({
             product={product}
             productsOnCart={productsOnCart}
             productUrl={generateProductUrl(product.id, product.name)}
-            user={user}
           />
         ))}
       </S.List>
