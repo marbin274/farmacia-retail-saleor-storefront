@@ -15,11 +15,11 @@ const BaseRow = styled.div`
 `;
 
 export const Action = styled.div`
-  width: 15%;
+  width: 8%;
   opacity: 0;
 
   ${media.largeScreen`
-     width: 15%;
+     width: 8%;
      opacity: 1;
 
       img {
@@ -76,7 +76,7 @@ export const HeaderRow = styled(BaseRow)`
 export const IndexNumber = styled.div`
   width: 15%;
   ${media.largeScreen`
-     width: 60%;
+     width: 32%;
   `}
 `;
 
@@ -95,7 +95,7 @@ export const ProductsOrdered = styled.div`
 `;
 
 export const DateOfOrder = styled.div`
-  width: 16%;
+  width: 17%;
 `;
 
 export const Value = styled.div`
@@ -103,9 +103,9 @@ export const Value = styled.div`
 `;
 
 export const Status = styled.div`
-  width: 16%;
+  width: 22%;
   text-align: left;
   ${media.largeScreen`
-     width: 50%;
+     width: 60%;
   `}
 `;

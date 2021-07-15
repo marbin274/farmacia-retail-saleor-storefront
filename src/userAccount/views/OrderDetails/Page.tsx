@@ -90,17 +90,6 @@ const Page: React.FC<{
             <Description>{address.city}</Description>
           </div>
           <div className="fa-flex fa-mb-4">
-            <Title className="fa-mr-2">País</Title>
-            <Description className="fa-flex fa-flex-col">
-              <div>
-                {`${address.postalCode ? `, ${address.postalCode}` : ""}`}
-              </div>
-
-              {address.countryArea && <div>{address.countryArea}</div>}
-              <div>{address.country.country}</div>
-            </Description>
-          </div>
-          <div className="fa-flex fa-mb-4">
             <Title className="fa-mr-2">Celular</Title>
             <Description>{address.phone}</Description>
           </div>
@@ -108,6 +97,23 @@ const Page: React.FC<{
       );
     }
   };
+  const getCountry = () => {
+    if (address) {
+      return (
+        <div className="fa-flex fa-mb-4">
+          <Title className="fa-mr-2">País</Title>
+          <Description className="fa-flex fa-flex-col">
+            <div>
+              {`${address.postalCode ? `, ${address.postalCode}` : ""}`}
+            </div>
+  
+            {address.countryArea && <div>{address.countryArea}</div>}
+            <div>{address.country.country}</div>
+          </Description>
+        </div>
+      );
+    }
+  }
 
   if (!order) {
     return <NotFound />;
@@ -122,7 +128,7 @@ const Page: React.FC<{
       )}
       <div className="fa-bg-white fa-rounded-3xl fa-p-10 fa-flex fa-flex-col">
         <span className="fa-mb-6 fa-font-semibold fa-text-xl">{`${address.firstName} ${address.lastName}`}</span>
-        <div className="fa-grid fa-gap-x-2 fa-grid-cols-1 md:fa-grid-cols-3 ">
+        <div className="fa-grid fa-gap-x-4 fa-grid-cols-1 md:fa-grid-cols-4 ">
           <div>
             <div className="fa-flex fa-flex-col">
               <Title className="fa-mb-2">Número de pedido</Title>
@@ -149,6 +155,7 @@ const Page: React.FC<{
           </div>
           <div>{getAdressGeneral()}</div>
           <div>{getAdressDetails()}</div>
+          <div>{getCountry()}</div>
         </div>
       </div>
       <div className="md:fa-px-12 fa-bg-white fa-rounded-3xl fa-px-6 fa-mt-4 fa-py-8 fa-mb-24">
