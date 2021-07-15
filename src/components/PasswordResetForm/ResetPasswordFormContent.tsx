@@ -14,14 +14,15 @@ interface ResetPasswordFormContentProps {
     called: boolean;
     loading: boolean;
     errors?: IFormError[],
+    onClose: () => void;
     passwordReset: MutationFn<ResetPassword, ResetPasswordVariables>;
 }
+
 const initialValues: ResetPasswordVariables = {
     email: '',
     redirectUrl: `${window.location.origin}${passwordResetUrl}`,
 };
-const ResetPasswordFormContent: React.FC<ResetPasswordFormContentProps> = ({ called, loading, errors: requestErrors, children, passwordReset }) => {
-
+const ResetPasswordFormContent: React.FC<ResetPasswordFormContentProps> = ({ onClose, called, loading, errors: requestErrors, children, passwordReset }) => {
     const [showMessageSuccess, setShowMessageSuccess] = React.useState<boolean>(false);
     const [showMessageErrors, setShowMessageErrors] = React.useState<boolean>(false);
 
@@ -41,7 +42,9 @@ const ResetPasswordFormContent: React.FC<ResetPasswordFormContentProps> = ({ cal
     }
 
     React.useEffect(() => {
-        document.querySelector<HTMLElement>('.overlay__header').style.display = 'block';
+        if (document.querySelector<HTMLElement>('.overlay__header')) {
+            document.querySelector<HTMLElement>('.overlay__header').style.display = 'block';
+        }
     }, []);
 
     React.useEffect(() => {
@@ -98,7 +101,7 @@ const ResetPasswordFormContent: React.FC<ResetPasswordFormContentProps> = ({ cal
             ) : (
 
                 <div>
-                    <ResetPasswordMailSent />
+                    <ResetPasswordMailSent onClose={onClose} />
                 </div>
             )
             }

@@ -11,10 +11,11 @@ const ResetPasswordForm: React.FC<IResetPasswordForm> = ({ onClick }) => (
     <div className="fa-text-2xl fa-font-semibold fa-mb-4">
       ¿Ya te registraste?
     </div>
-    <PasswordResetForm>
+    <PasswordResetForm onClick={onClick}>
       <Button
         className='fa-mt-4'
         variant="link"
+        type="button"
         onClick={onClick}
       >
         Volver al login
