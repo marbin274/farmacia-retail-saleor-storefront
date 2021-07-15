@@ -15,12 +15,5 @@ export const Skeleton = ({ columns }: { columns: number }) => {
             }
         </List>
     );
-    // return <>
-    //     {
-    //         [...Array(3)].map((_, row) =>
-    //             <SkeletonProductRow count={3} height={!isDesktopScreen ? 11 : undefined} key={row} width={isDesktopScreen ? 22 : undefined} />
-    //         )
-    //     }
-    // </>;
 }
 

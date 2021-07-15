@@ -156,7 +156,7 @@ const Page: React.FC<PageProps> = ({
         <script className="structured-data-list" type="application/ld+json">
           {structuredData(collection)}
         </script>
-        <div className="collection-products">
+        <section className="collection-products">
           <FilterSidebar
             show={showFilters}
             hide={() => setShowFilters(false)}
@@ -181,7 +181,7 @@ const Page: React.FC<PageProps> = ({
             />
           )}
           {!hasProducts && <EmptyProduct title="No hay productos" />}
-        </div>
+        </section>
       </div>
     </CollectionWrapper>
   );
