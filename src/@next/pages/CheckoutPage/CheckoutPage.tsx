@@ -12,7 +12,6 @@ import {
 import { useCart, useCheckout } from "@sdk/react";
 import { alertService } from "@temp/@next/components/atoms/Alert";
 import { smallScreen } from "@temp/@next/globalStyles/constants";
-import { useUpdateCartLines } from "@temp/@next/hooks";
 import {
   checkAttentionSchedule,
   removePaymentItems,
@@ -197,7 +196,6 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
       : 0;
   }, [items]);
 
-  const { update: updateCartLines } = useUpdateCartLines();
 
   const [submitInProgress, setSubmitInProgress] = useState(false);
   const [addressSubPageErrors, setAddressSubPageErrors] = useState<
@@ -214,11 +212,6 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     setSelectedPaymentGatewayToken,
   ] = useState<string | undefined>(payment?.token);
 
-  useEffect(() => {
-    return () => {
-      updateCartLines();
-    };
-  }, []);
 
   useEffect(() => {
     setSelectedPaymentGateway(payment?.gateway);
