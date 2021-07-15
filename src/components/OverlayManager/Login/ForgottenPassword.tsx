@@ -27,7 +27,7 @@ const ForgottenPassword: React.FC<{
           variant="link"
           type="button"
           className="login__content__password-reminder__forget"
-          onClick={onClick}
+          onClick={(onClick)}
         >
           Olvidé mi contraseña
         </Button>

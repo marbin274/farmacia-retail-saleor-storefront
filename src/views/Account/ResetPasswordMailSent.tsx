@@ -5,37 +5,47 @@ import * as React from 'react';
 import { useHistory } from 'react-router-dom';
 import ReactSVG from 'react-svg';
 import { Button } from "@farmacia-retail/farmauna-components";
+interface ResetPasswordMailSentProps {
+    onClose?: () => void;
+}
 
-const ResetPasswordMailSent = () => {
+const ResetPasswordMailSent: React.FC<ResetPasswordMailSentProps> = ({onClose}) => {
     const localRepository = new LocalRepository();
     const resetPasswordEmail = localRepository.getResetPasswordEmail();
     const history = useHistory();
 
     const handleOnClick = () => {
-        document.querySelector<HTMLElement>('.overlay').style.display = 'none';
-        document.querySelector<HTMLElement>('body').style.overflow = '';
+        if (document.querySelector<HTMLElement>('.overlay__header')) {
+            document.querySelector<HTMLElement>('.overlay').style.display = 'none';
+            document.querySelector<HTMLElement>('body').style.overflow = '';
+        }
+        if (onClose) {
+            onClose();
+        }
     }
     React.useEffect(() => {
         return () => {
             localRepository.setResetPasswordEmail(undefined);
         }
     }, []);
+
     React.useEffect(() => {
-        document.querySelector<HTMLElement>('.overlay__header').style.display = 'none';
+        if (document.querySelector<HTMLElement>('.overlay__header')) {
+            document.querySelector<HTMLElement>('.overlay__header').style.display = 'none';
+        }
     }, []);
+
     if (!resetPasswordEmail) {
         history.push(baseUrl);
     }
 
     return (
-        <div className="container">
-            <div className="reset-password-mail-sent">
-                <ReactSVG path={ResetPasswordMailSentIcon} className="reset-password-mail-sent__image" />
-                <h3>Revise su correo electrónico</h3>
-                <p>Hemos enviado las instrucciones para que puedas restaurar la contraseña a <strong>{resetPasswordEmail}</strong></p>
-                <div className="reset-password-mail-sent__button">
-                    <Button onClick={handleOnClick}>Entendido</Button>
-                </div>
+        <div className="reset-password-mail-sent">
+            <ReactSVG path={ResetPasswordMailSentIcon} className="reset-password-mail-sent__image" />
+            <h3>Revise su correo electrónico</h3>
+            <p>Hemos enviado las instrucciones para que puedas restaurar la contraseña a <strong>{resetPasswordEmail}</strong></p>
+            <div className="reset-password-mail-sent__button">
+                <Button onClick={handleOnClick}>Entendido</Button>
             </div>
         </div>
     )
