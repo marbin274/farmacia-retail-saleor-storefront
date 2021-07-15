@@ -20,10 +20,6 @@ export const PROVIDERS = {
     id: "farmacia-retail.payments.niubiz",
     label: "Tarjeta de crédito/débito",
   },
-  BRAINTREE: {
-    id: "mirumee.payments.braintree",
-    label: "Braintree",
-  },
   CASH: {
     id: "mirumee.payments.cash",
     label: "Contra entrega : paga en efectivo a la entrega ",
