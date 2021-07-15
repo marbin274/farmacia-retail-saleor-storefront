@@ -1,5 +1,5 @@
 // tslint:disable: object-literal-sort-keys
-import { ISimpleProduct } from "@app/types/IProduct";
+import { ISimpleProduct } from "@sdk/types/IProduct";
 import { IItems } from "@temp/@sdk/api/Cart/types";
 
 export const products: ISimpleProduct[] = [

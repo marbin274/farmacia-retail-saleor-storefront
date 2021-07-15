@@ -20,10 +20,6 @@ export const PROVIDERS = {
     id: "farmacia-retail.payments.niubiz",
     label: "Tarjeta de crédito/débito",
   },
-  BRAINTREE: {
-    id: "mirumee.payments.braintree",
-    label: "Braintree",
-  },
   CASH: {
     id: "mirumee.payments.cash",
     label: "Contra entrega : paga en efectivo a la entrega ",
@@ -98,7 +94,7 @@ export const CHECKOUT_STEPS = [
   },
 ];
 
-export const MAX_ORDER_PER_PRODUCT = 50;
+
 
 export const DOCUMENTS_URLS_S3 = {
   finesAdicionalesUrls:
@@ -120,7 +116,7 @@ export const PRODUCT_STICKERS = {
   },
 };
 
-export const ATTRIBUTE_PROMOTION_LIMIT_MAX_NAME = "limit-max";
+
 export const SEARCH_PRODUCTS_QUERY_MIN_LENGTH = 3;
 export const SHIPPING_FORMAT_DATE = "yyyy-MM-dd";
 export const HOURS_TO_FORMAT_DATE = "T00:00:00";
@@ -307,8 +303,7 @@ export const DISTRICT_SELECTED_DEFAULT: IDistrictSelected = {
   name: "Miraflores",
   warehouse: null,
 };
-export const TOTAL_DISTRICT = 30;
-
+export const TOTAL_DISTRICT = 30; // TODO: this variable should be dinamically loaded from the backend
 export const POS_DISTRICTS = ["miraflores"];
 
 export const COUNTRY_DEFAULT = {

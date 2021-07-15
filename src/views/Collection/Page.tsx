@@ -6,8 +6,8 @@ import {
   ISubtractItemToCartCallback,
 } from "@temp/@next/components/molecules/ProductTileAUNA/types";
 import { largeScreen } from "@temp/@next/globalStyles/constants";
+import { useScrollTo } from "@temp/@next/hooks";
 import { IItems } from "@temp/@sdk/api/Cart/types";
-import { useUserDetails } from "@temp/@sdk/react";
 import { baseUrl } from "@temp/app/routes";
 import { COLLECTION_CATEGORY_FILTER_LABEL } from "@temp/core/config";
 import { structuredData } from "@temp/core/SEO/Collection/structuredData";
@@ -82,12 +82,12 @@ const Page: React.FC<PageProps> = ({
   subtractItemToCart,
   total: totalProducts,
 }) => {
-  const { data: user } = useUserDetails();
   const canDisplayProducts = maybe(
     () => !!products.edges && products.totalCount !== undefined
   );
   const hasProducts = canDisplayProducts && !!products.totalCount;
   const [showFilters, setShowFilters] = React.useState(false);
+  const { goTop } = useScrollTo();
 
   const breadcrumbs = [
     {
@@ -142,6 +142,10 @@ const Page: React.FC<PageProps> = ({
     />
   }
 
+  React.useEffect(() => goTop(),
+    [products]
+  );
+
   return (
     <CollectionWrapper>
       <div className="collection-container-breadcrumbs">
@@ -177,7 +181,6 @@ const Page: React.FC<PageProps> = ({
                 addToCart={addToCart}
                 removeItemToCart={removeItemToCart}
                 subtractItemToCart={subtractItemToCart}
-                user={user}
               />
               <Pagination
                 page={page}
