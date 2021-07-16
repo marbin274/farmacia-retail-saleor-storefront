@@ -136,9 +136,8 @@ const CheckoutShipping: React.FC<IProps> = ({
                   !!values.shippingMethod && values.shippingMethod === id;
 
                 return (
-                  <>
+                  <React.Fragment key={index}>
                     <S.ShippingMethodContainer
-                      key={id}
                       data-cy={`checkoutShippingMethodOption${index}Input`}
                       hasError={
                         !!formikErrors?.shippingMethod && !values.shippingMethod
@@ -177,7 +176,7 @@ const CheckoutShipping: React.FC<IProps> = ({
                       setFieldValue={setFieldValue}
                       setShippingMethod={setShippingMethod}
                     />
-                  </>
+                  </React.Fragment>
                 );
               }
             )}
