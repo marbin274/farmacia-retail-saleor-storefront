@@ -75,8 +75,10 @@ export const HeaderRow = styled(BaseRow)`
 
 export const IndexNumber = styled.div`
   width: 15%;
+  text-align: left;
   ${media.largeScreen`
      width: 32%;
+     padding-right: 1rem;
   `}
 `;
 
@@ -95,16 +97,18 @@ export const ProductsOrdered = styled.div`
 `;
 
 export const DateOfOrder = styled.div`
+  text-align: left;
   width: 17%;
 `;
 
 export const Value = styled.div`
+  text-align: left;
   width: 18%;
 `;
 
 export const Status = styled.div`
-  width: 22%;
   text-align: left;
+  width: 22%;
   ${media.largeScreen`
      width: 60%;
   `}
