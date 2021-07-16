@@ -4,7 +4,7 @@ import { ButtonLink } from "@components/atoms";
 import * as S from "./styles";
 import { IButtonProps, IProps } from "./types";
 
-const LoadingText = () => <>Loading</>;
+const LoadingText = () => <>Cargando</>;
 
 const getBtnAction = (btn: IButtonProps) =>
   btn.action && { onClick: btn.action };

@@ -550,7 +550,7 @@ export interface OrderDetail {
    */
   number: string | null;
   /**
-   * An extract of the checkout token to identify the order
+   * An extract of the checkout token to identify the order.
    */
   sequentialCode: string | null;
   shippingAddress: OrderDetail_shippingAddress | null;

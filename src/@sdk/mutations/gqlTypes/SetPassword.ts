@@ -150,6 +150,22 @@ export interface SetPassword_setPassword_user_addresses {
   longitude: number | null;
 }
 
+export interface SetPassword_setPassword_user_cardTokens {
+  __typename: "CardToken";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  cardNumber: string;
+  brand: string;
+  binNumber: string;
+  default: boolean;
+  tokenId: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+}
+
 export interface SetPassword_setPassword_user {
   __typename: "User";
   /**
@@ -175,6 +191,10 @@ export interface SetPassword_setPassword_user {
    * List of all user's addresses.
    */
   addresses: (SetPassword_setPassword_user_addresses | null)[] | null;
+  /**
+   * List of all user's cards.
+   */
+  cardTokens: (SetPassword_setPassword_user_cardTokens | null)[] | null;
 }
 
 export interface SetPassword_setPassword_accountErrors {
