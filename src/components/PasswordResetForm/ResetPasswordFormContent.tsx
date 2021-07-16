@@ -93,11 +93,12 @@ const ResetPasswordFormContent: React.FC<ResetPasswordFormContentProps> = ({ but
                         {children}
                         <div className="password-reset-form__button">
                             <Button 
-                                type="submit" 
                                 {...(loading && { disabled: true })}
-                                variant="default"
+                                fullWidth 
                                 size="large"
-                                fullWidth>
+                                type="submit"
+                                variant="default"
+                            >
                                 {loading ? "Cargando" : "Enviar instrucciones"}
                             </Button>
                             {buttonBack}
