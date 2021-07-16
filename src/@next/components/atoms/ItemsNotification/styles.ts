@@ -1,22 +1,23 @@
-import { media, styled } from "@styles";
+import { media, mediaUp, styled } from "@styles";
 import { baseFontSize, black, smallFontSize } from "@styles/constants";
 
 export const NotificationContainer = styled.div`
+  margin: auto;
   position: fixed;
-  width: 100%;
-  z-index: 1000;
+  padding: 0;
+  right: 1rem;
   top: 5rem;
-  margin: 0 auto;
+  z-index: 1000;
+  ${mediaUp.smallScreen`
+    right: 2rem;
+  `}
   .container {
+    display: flex;
+    justify-content: flex-end;
     margin-top: 0;
     margin-right: 0;
-    justify-content: flex-end;
-    display: flex;
-
-    ${media.smallScreen`
-      width: 90%;
-      padding: 0;
-      margin: auto;
+    ${mediaUp.smallScreen`
+      margin: 0 auto;
   `}
   }
 `;
