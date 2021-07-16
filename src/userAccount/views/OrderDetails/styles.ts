@@ -10,5 +10,3 @@ export const OrderInformation = styled.div`
         grid-template-columns: 1fr 1fr 1fr 5rem;
     `};
 `
-
-// 

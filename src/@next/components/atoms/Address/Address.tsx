@@ -27,7 +27,7 @@ export const Address: React.FC<IAddress> = ({
         <span>{postalCode && `${postalCode},`} {city}</span>
       </div>
       <div className='fa-flex fa-items-start fa-mb-2' role='country'>
-        <span className='fa-mr-2 fa-text-neutral-dark'>Pais: </span>
+        <span className='fa-mr-2 fa-text-neutral-dark'>País: </span>
         <span>
           {countryArea && <span>{countryArea}, </span>}
           <span>{country!.country}</span>

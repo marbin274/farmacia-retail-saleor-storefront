@@ -1,4 +1,4 @@
-import { media, styled } from "@styles";
+import { media, mediaUp, styled } from "@styles";
 import farmatheme from "@farmatheme";
 
 export const Wrapper = styled.div``;
@@ -15,16 +15,15 @@ const BaseRow = styled.div`
 `;
 
 export const Action = styled.div`
-  width: 8%;
   opacity: 0;
+  width: 8%;
 
   ${media.largeScreen`
-     width: 8%;
-     opacity: 1;
-
-      img {
-        width: 0.75rem;
-      }
+    opacity: 1;
+    width: 8%;
+    img {
+      width: 0.75rem;
+    }
   `}
 
   button {
@@ -40,10 +39,10 @@ export const Action = styled.div`
 `;
 
 export const Row = styled(BaseRow)`
-  font-size: 0.875rem;
   border-radius: 2.5rem;
-  transition: background 0.2s ease-in-out;
+  font-size: 0.875rem;
   padding-left: 1rem;
+  transition: background 0.2s ease-in-out;
   &:hover {
     background: ${farmatheme.theme.colors.neutral.light};
     border-top-color: transparent;
@@ -76,11 +75,11 @@ export const HeaderRow = styled(BaseRow)`
 `;
 
 export const IndexNumber = styled.div`
-  width: 15%;
   text-align: left;
+  width: 15%;
   ${media.largeScreen`
-     width: 32%;
-     padding-right: 1rem;
+    padding-right: 1rem;
+    width: 32%;
   `}
 `;
 
@@ -110,8 +109,8 @@ export const Value = styled.div`
 
 export const Status = styled.div`
   text-align: left;
-  width: 22%;
-  ${media.largeScreen`
-     width: 60%;
+  width: 60%;
+  ${mediaUp.largeScreen`
+    width: 22%;
   `}
 `;

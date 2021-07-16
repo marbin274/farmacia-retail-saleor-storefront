@@ -17,14 +17,14 @@ export const TileWrapper = styled.div`
 `;
 
 export const Header = styled.div`
-  width: 100%;
-  padding-bottom: 1rem;
+  align-items: center;
+  display: flex;
   font-weight: ${props => props.theme.typography.boldFontWeight};
   font-size: ${props => props.theme.typography.h4FontSize};
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   height: 4rem;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  width: 100%;
 `;
 
 export const HeaderSmall = styled(Header)`
