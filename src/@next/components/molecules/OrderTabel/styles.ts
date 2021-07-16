@@ -43,6 +43,7 @@ export const Row = styled(BaseRow)`
   font-size: 0.875rem;
   border-radius: 2.5rem;
   transition: background 0.2s ease-in-out;
+  padding-left: 1rem;
   &:hover {
     background: ${farmatheme.theme.colors.neutral.light};
     border-top-color: transparent;
@@ -71,6 +72,7 @@ export const HeaderRow = styled(BaseRow)`
   color: ${props => props.theme.colors.lightFont};
   cursor: default;
   font-size: 0.75rem;
+  padding-left: 1rem;
 `;
 
 export const IndexNumber = styled.div`

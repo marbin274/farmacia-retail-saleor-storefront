@@ -9,7 +9,7 @@ import {
 
 export const AddressForm = styled.form`
   width: 100%;
-
+  max-width: 23rem;
   .labelValidation {
     color: ${aunaError};
     font-size: ${smallFontSize};
