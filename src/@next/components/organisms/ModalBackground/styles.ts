@@ -1,4 +1,4 @@
-import { styled, media } from "@styles";
+import { styled, media, mediaUp } from "@styles";
 
 export const Modal = styled.div<{
   imageMobile: string,
@@ -12,12 +12,13 @@ export const Modal = styled.div<{
   z-index: 1000;
   padding-bottom: 2rem;
   overflow-y: auto;
-  background: no-repeat url("${(props: any) => props.imageDesktop}") transparent;
-  background-size: contain;
+  background-color: transparent;
+  background-image: url("${(props: any) => props.imageMobile}");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
   
-  ${media.smallScreen`
-    background: no-repeat url("${(props: any )=> props.imageMobile}") transparent;
-    background-size: contain;
+  ${mediaUp.mediumScreen`
+    background-image: url("${(props: any )=> props.imageDesktop}");    
   `};
 `;
 

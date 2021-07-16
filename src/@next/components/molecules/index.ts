@@ -6,6 +6,7 @@ export * from "./AddressGeocalization";
 export * from "./AddressSummary";
 export * from "./AddressTile";
 export * from "./AddressTileOption";
+export * from "./Alert";
 export * from "./AttributeValuesChecklist";
 export * from "./CachedImage";
 export * from "./CardHeader";

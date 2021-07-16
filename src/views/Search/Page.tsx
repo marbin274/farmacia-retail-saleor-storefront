@@ -14,6 +14,7 @@ import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
 import { SearchProducts_paginatedProducts } from "./gqlTypes/SearchProducts";
 
 import * as S from "./styles";
+import { useScrollTo } from "@temp/@next/hooks";
 interface SortItem {
   label: string;
   value?: string;
@@ -68,7 +69,7 @@ const Page: React.FC<PageProps> = ({
     () => !!products.edges && products.totalCount !== undefined
   );
   const [showFilters, setShowFilters] = React.useState(false);
-  const searchContainerRef = React.useRef<HTMLDivElement>(null);
+  const { goTop } = useScrollTo();
 
   const getAttribute = (attributeSlug: string, valueSlug: string) => {
     return {
@@ -91,18 +92,12 @@ const Page: React.FC<PageProps> = ({
       []
     );
 
-  React.useEffect(
-    () =>
-      searchContainerRef?.current.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-        inline: "nearest",
-      }),
+  React.useEffect(() => goTop(),
     [products]
   );
 
   return (
-    <div className="fa-bg-neutral-light fa-z-0" ref={searchContainerRef}>
+    <div className="fa-bg-neutral-light fa-z-0">
       <S.SearchPage>
         <FilterSidebar
           show={showFilters}
