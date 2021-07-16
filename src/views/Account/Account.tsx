@@ -13,10 +13,11 @@ import {
   addressBookUrl,
   baseUrl,
   orderHistoryUrl,
+  paymentMethodsUrl
 } from "../../app/routes";
 
 import { AccountMenu, AccountMenuMobile } from "@components/molecules";
-import { AccountTab, OrdersHistory } from "@pages";
+import { AccountTab, OrdersHistory, PaymentMethodList } from "@pages";
 import { Loader } from "../../components";
 import { Breadcrumbs } from "@farmacia-retail/farmauna-components";
 import { UserDetails_me } from "@temp/@sdk/queries/gqlTypes/UserDetails";
@@ -36,6 +37,10 @@ const returnTab: any = (path: string, userDetails: UserDetails_me, history) => {
       tabContent = <OrdersHistory {...{ history }} />;
       break;
     }
+    case paymentMethodsUrl: {
+      tabContent = <PaymentMethodList history={history} user={userDetails} />;
+      break;
+    }
   }
   return tabContent;
 };
@@ -47,6 +52,7 @@ const Account: React.FC<RouteComponentProps> = ({ history, match }) => {
     { url: accountUrl, label: "Mi perfil" },
     { url: addressBookUrl, label: "Mis direcciones" },
     { url: orderHistoryUrl, label: "Historial de pedidos" },
+    { url: paymentMethodsUrl, label: "Mis medios de pago" },
   ];
 
   if (loading) {

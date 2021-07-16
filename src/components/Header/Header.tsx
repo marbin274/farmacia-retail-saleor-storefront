@@ -104,6 +104,11 @@ const Header: React.FC<IProps> = ({
                   Historial de pedidos
                 </Link>
               </li>
+              <li data-testid="order_history__link">
+                <Link className="fa-w-full fa-flex" to={appPaths.paymentMethodsUrl} onClick={closeSearch}>
+                  Mis medios de pago
+                </Link>
+              </li>
               <li
                 className="fa-w-full fa-flex fa-cursor-pointer"
                 onClick={() => {
