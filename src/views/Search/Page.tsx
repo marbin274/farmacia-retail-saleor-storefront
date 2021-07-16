@@ -1,4 +1,3 @@
-import { Pagination } from "@farmacia-retail/farmauna-components";
 import { IPaginationProps } from "@temp/@next/components/molecules/Pagination/types";
 import {
   IAddToCartCallback,
@@ -36,7 +35,7 @@ interface PageProps extends IPaginationProps {
     updateType?: "replace" | "replaceIn" | "push" | "pushIn"
   ) => void;
   products: SearchProducts_paginatedProducts;
-  productsOnCart: IItems;
+  items: IItems;
   sortOptions: SortOptions;
   clearFilters: () => void;
   onAttributeFiltersChange: (attributeSlug: string, value: string) => void;
@@ -51,10 +50,9 @@ const Page: React.FC<PageProps> = ({
   activeSortOption,
   attributes,
   displayLoader,
-  hasNextPage,
   clearFilters,
   products,
-  productsOnCart,
+  items,
   filters,
   onOrder,
   sortOptions,
@@ -129,26 +127,20 @@ const Page: React.FC<PageProps> = ({
           </S.SearchNoProducts>
         )}
         {canDisplayProducts && (
-          <>
-            <ProductListAUNA
-              products={products.edges.map(edge =>
-                convertToSimpleProduct(edge.node)
-              )}
-              productsOnCart={productsOnCart}
-              canLoadMore={hasNextPage}
-              loading={displayLoader}
-              addToCart={addToCart}
-              removeItemToCart={removeItemToCart}
-              subtractItemToCart={subtractItemToCart}
-            />
-            <Pagination
-              page={page}
-              pageSize={pageSize}
-              total={totalProducts}
-              onPageChange={onPageChange}
-              className="category__pagination"
-            />
-          </>
+          <ProductListAUNA
+            addToCart={addToCart}
+            loading={displayLoader}
+            page={page}
+            pageSize={pageSize}
+            products={products.edges.map(edge =>
+              convertToSimpleProduct(edge.node)
+            )}
+            productsOnCart={items}
+            onPageChange={onPageChange}
+            removeItemToCart={removeItemToCart}
+            subtractItemToCart={subtractItemToCart}
+            total={totalProducts}
+          />
         )}
       </S.SearchPage>
     </div>

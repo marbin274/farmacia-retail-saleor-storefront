@@ -26,6 +26,9 @@ describe("<ProductList />", () => {
           canLoadMore={true}
           loading={false}
           onLoadMore={jest.fn()}
+          page={1}
+          pageSize={12}
+          total={1}
         />
       </BrowserRouter>
     );
@@ -42,6 +45,9 @@ describe("<ProductList />", () => {
           canLoadMore={true}
           loading={true}
           onLoadMore={jest.fn()}
+          page={1}
+          pageSize={12}
+          total={1}
         />
       </BrowserRouter>
     );

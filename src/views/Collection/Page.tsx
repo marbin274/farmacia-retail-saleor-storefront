@@ -1,4 +1,4 @@
-import { Breadcrumbs, Pagination } from "@farmacia-retail/farmauna-components";
+import { Breadcrumbs } from "@farmacia-retail/farmauna-components";
 import { IPaginationProps } from "@temp/@next/components/molecules/Pagination/types";
 import {
   IAddToCartCallback,
@@ -14,7 +14,7 @@ import { structuredData } from "@temp/core/SEO/Collection/structuredData";
 import { IFilterAttributes, IFilters } from "@types";
 import * as React from "react";
 import { ProductListHeader } from "../../@next/components/molecules";
-import { ProductListCategoryAuna } from "../../@next/components/organisms";
+import { ProductListAUNA } from "../../@next/components/organisms";
 import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
 import { EmptyProduct } from "../../components";
 import {
@@ -171,24 +171,20 @@ const Page: React.FC<PageProps> = ({
             filters={filters}
           />
           {canDisplayProducts && (
-            <>
-              <ProductListCategoryAuna
-                products={products.edges.map(edge =>
-                  convertToSimpleProduct(edge.node)
-                )}
-                productsOnCart={items}
-                loading={displayLoader}
-                addToCart={addToCart}
-                removeItemToCart={removeItemToCart}
-                subtractItemToCart={subtractItemToCart}
-              />
-              <Pagination
-                page={page}
-                pageSize={pageSize}
-                total={totalProducts}
-                onPageChange={onPageChange}
-              />
-            </>
+            <ProductListAUNA
+              addToCart={addToCart}
+              loading={displayLoader}
+              page={page}
+              pageSize={pageSize}
+              products={products.edges.map(edge =>
+                convertToSimpleProduct(edge.node)
+              )}
+              productsOnCart={items}
+              onPageChange={onPageChange}
+              removeItemToCart={removeItemToCart}
+              subtractItemToCart={subtractItemToCart}
+              total={totalProducts}
+            />
           )}
           {!hasProducts && <EmptyProduct title="No hay productos" />}
         </section>

@@ -1,6 +1,6 @@
 import { mediaUp, styled } from "@styles";
 
-export const SkeletonItems = styled.div<{height: number}>`
+export const SkeletonProduct = styled.div<{height: number}>`
     height: ${({ height }) => `${height}rem`};
     display: flex;
     justify-content: space-around;
