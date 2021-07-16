@@ -148,6 +148,22 @@ export interface TokenAuth_tokenCreate_user_addresses {
   longitude: number | null;
 }
 
+export interface TokenAuth_tokenCreate_user_cardTokens {
+  __typename: "CardToken";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  cardNumber: string;
+  brand: string;
+  binNumber: string;
+  default: boolean;
+  tokenId: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+}
+
 export interface TokenAuth_tokenCreate_user {
   __typename: "User";
   /**
@@ -173,6 +189,10 @@ export interface TokenAuth_tokenCreate_user {
    * List of all user's addresses.
    */
   addresses: (TokenAuth_tokenCreate_user_addresses | null)[] | null;
+  /**
+   * List of all user's cards.
+   */
+  cardTokens: (TokenAuth_tokenCreate_user_cardTokens | null)[] | null;
 }
 
 export interface TokenAuth_tokenCreate {

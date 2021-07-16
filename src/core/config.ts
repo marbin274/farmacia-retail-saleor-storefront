@@ -190,6 +190,11 @@ const AVAILABLE_PAYMENTS_QA: IPaymentGateway[] = [
         field: "require_3d_secure",
         value: "false",
       },
+      {
+        field: "nb_tokenization_url",
+        value:
+          "https://apitestenv.vnforapps.com/api.ecommerce/v2/ecommerce/token/card/",
+      },
     ],
     id: "farmacia-retail.payments.niubiz",
     name: "Niubiz",
@@ -264,6 +269,11 @@ const AVAILABLE_PAYMENTS_PRD: IPaymentGateway[] = [
         field: "require_3d_secure",
         value: "false",
       },
+      {
+        field: "nb_tokenization_url",
+        value:
+          "https://apiprod.vnforapps.com/api.ecommerce/v2/ecommerce/token/card/",
+      },
     ],
     id: "farmacia-retail.payments.niubiz",
     name: "Niubiz",
@@ -296,8 +306,8 @@ export const DISTRICT_SELECTED_DEFAULT: IDistrictSelected = {
 export const TOTAL_DISTRICT = 30; // TODO: this variable should be dinamically loaded from the backend
 export const POS_DISTRICTS = ["miraflores"];
 
-export const COUNTRY_DEFAULT = { 
-  code: "PE", 
+export const COUNTRY_DEFAULT = {
+  code: "PE",
   country: "Peru",
 };
 

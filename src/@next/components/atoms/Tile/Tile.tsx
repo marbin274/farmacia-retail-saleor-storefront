@@ -14,7 +14,7 @@ export const Tile: React.FC<IProps> = ({
       {header && (
         <S.Header>{header}</S.Header>
       )}
-      <S.Content>{children}</S.Content>
+      <S.Content tileType={props.tileType}>{children}</S.Content>
       {footer && <S.Footer>{footer}</S.Footer>}
     </S.Wrapper>
   );

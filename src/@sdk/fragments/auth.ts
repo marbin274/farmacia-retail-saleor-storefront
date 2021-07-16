@@ -22,5 +22,16 @@ export const userFragment = gql`
     addresses {
       ...Address
     }
+    cardTokens {
+      id
+      cardNumber
+      brand
+      binNumber
+      default
+      tokenId
+      firstName
+      lastName
+      email
+    }
   }
 `;

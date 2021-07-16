@@ -1,4 +1,4 @@
-import { UserDetails_me, UserDetails_me_addresses } from "@temp/@sdk/queries/gqlTypes/UserDetails";
+import { UserDetails_me, UserDetails_me_addresses, UserDetails_me_cardTokens } from "@temp/@sdk/queries/gqlTypes/UserDetails";
 
 export const countries = [
   { code: "PL", country: "Poland" },
@@ -58,9 +58,23 @@ export const userAddressItem: UserDetails_me_addresses = {
   streetAddress2: "Paradero óvalo",
 }
 
+export const userCardTokenItem: UserDetails_me_cardTokens = {
+  __typename: "CardToken",
+  binNumber: "1234",
+  brand: "visa",
+  cardNumber: "5678********3455",
+  default: false,
+  id: "id",
+  tokenId: "658677890568790",
+  firstName: "Lalo",
+  lastName: "Landa",
+  email: "lalo@email.com",
+}
+
 export const userAddress: UserDetails_me = {
   __typename:"User",
   addresses: [userAddressItem],
+  cardTokens: [userCardTokenItem],
   dataTreatmentPolicy: false,
   defaultBillingAddress:null,
   defaultShippingAddress: userAddressItem,
