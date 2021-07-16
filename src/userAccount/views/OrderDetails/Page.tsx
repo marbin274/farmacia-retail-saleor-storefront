@@ -15,6 +15,7 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 import ReactSVG from "react-svg";
 import { orderHistoryUrl } from "../../../app/routes";
+import * as S from "./styles";
 
 const Title: React.FC<{ className?: string }> = ({
   children,
@@ -128,7 +129,7 @@ const Page: React.FC<{
       )}
       <div className="fa-bg-white fa-rounded-3xl fa-p-10 fa-flex fa-flex-col">
         <span className="fa-mb-6 fa-font-semibold fa-text-xl">{`${address.firstName} ${address.lastName}`}</span>
-        <div className="fa-grid fa-gap-x-4 fa-grid-cols-1 md:fa-grid-cols-4 ">
+        <S.OrderInformation className="fa-grid fa-gap-x-4">
           <div>
             <div className="fa-flex fa-flex-col">
               <Title className="fa-mb-2">Número de pedido</Title>
@@ -156,7 +157,7 @@ const Page: React.FC<{
           <div>{getAdressGeneral()}</div>
           <div>{getAdressDetails()}</div>
           <div>{getCountry()}</div>
-        </div>
+        </S.OrderInformation>
       </div>
       <div className="md:fa-px-12 fa-bg-white fa-rounded-3xl fa-px-6 fa-mt-4 fa-py-8 fa-mb-24">
         <CartTable
