@@ -15,11 +15,9 @@ export const PaymentMethods: FC<IPaymentMethodsProps> = ({
 }) => {
   return (
     <>
-      <AddNewTile
-        type="tajeta"
-        onClick={onClickAdd}
-        className="fa-flex md:fa-hidden fa-mb-4"
-      />
+      <div className="fa-flex md:fa-hidden fa-mb-4">
+        <AddNewTile type="tajeta" onClick={onClickAdd} className="fa-w-full" />
+      </div>
       {showAddSuccess && (
         <Alert
           icon={<CheckIcon size={12} />}
@@ -36,11 +34,9 @@ export const PaymentMethods: FC<IPaymentMethodsProps> = ({
         />
       )}
       <div className="fa-grid fa-grid-cols-1 md:fa-grid-cols-2 fa-gap-4">
-        <AddNewTile
-          type="tajeta"
-          onClick={onClickAdd}
-          className="fa-hidden md:fa-flex"
-        />
+        <div className="fa-hidden md:fa-flex">
+          <AddNewTile type="tajeta" onClick={onClickAdd} className="fa-w-full" />
+        </div>
         {creditCards?.map(c => (
           <CreditCardTile
             creditCard={c}

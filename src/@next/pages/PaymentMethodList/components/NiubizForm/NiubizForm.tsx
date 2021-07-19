@@ -71,6 +71,7 @@ export const NiubizForm: FC<INiubizFormProps> = ({
   formRef,
   generatePurchaseNumber,
   onError,
+  onForceClose,
   userDataForNiubiz,
   onCardTokenization,
 }) => {
@@ -277,9 +278,13 @@ export const NiubizForm: FC<INiubizFormProps> = ({
 
   const showTokenizationCommonError = () => {
     configureErrorMessages({
-      buttonText: "Entendido",
-      message: "Ha ocurrido un error al procesar la solicitud.",
+      buttonText: "Volver a intentar",
+      message:
+        "Por favor verifique la fecha de vencimiento y  CVC/CVV estén correctos.",
       type: "Text",
+      acceptDialog: () => {
+        onForceClose?.();
+      },
     });
   };
 

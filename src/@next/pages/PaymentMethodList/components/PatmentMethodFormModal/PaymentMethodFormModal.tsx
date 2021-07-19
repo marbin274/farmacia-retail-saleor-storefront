@@ -42,6 +42,10 @@ export const PatmentMethodFormModal: FC<IPaymentMethodFormModalProps> = ({
     setLoading(false);
   };
 
+  const onForceClose = () => {
+    onClose();
+  };
+
   return (
     <Modal
       title="Guardar nueva tarjeta"
@@ -65,6 +69,7 @@ export const PatmentMethodFormModal: FC<IPaymentMethodFormModalProps> = ({
           formRef={formRef}
           onCardTokenization={onSubmit}
           onError={onError}
+          onForceClose={onForceClose}
         />
       )}
     </Modal>

@@ -64,11 +64,10 @@ export const userCardTokenItem: UserDetails_me_cardTokens = {
   brand: "visa",
   cardNumber: "5678********3455",
   default: false,
-  id: "id",
-  tokenId: "658677890568790",
-  firstName: "Lalo",
-  lastName: "Landa",
   email: "lalo@email.com",
+  firstName: "Lalo",
+  id: "id",
+  lastName: "Landa",
 }
 
 export const userAddress: UserDetails_me = {
