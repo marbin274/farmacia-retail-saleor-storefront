@@ -299,7 +299,7 @@ export const DISTRICT_SELECTED_DEFAULT: IDistrictSelected = {
 };
 export const TOTAL_DISTRICT = 30;
 
-export const POS_DISTRICTS = ["miraflores"];
+export const POS_DISTRICTS = ["miraflores","surquillo","santiago de surco","barranco"];
 
 export const COUNTRY_DEFAULT = { 
   code: "PE", 
