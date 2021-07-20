@@ -152,18 +152,17 @@ export interface SetCustomerDefaultAddress_accountSetDefaultAddress_user_address
 
 export interface SetCustomerDefaultAddress_accountSetDefaultAddress_user_cardTokens {
   __typename: "CardToken";
+  binNumber: string;
+  brand: string;
+  cardNumber: string;
+  default: boolean;
+  email: string;
+  firstName: string;
   /**
    * The ID of the object.
    */
   id: string;
-  cardNumber: string;
-  brand: string;
-  binNumber: string;
-  default: boolean;
-  tokenId: string;
-  firstName: string;
   lastName: string;
-  email: string;
 }
 
 export interface SetCustomerDefaultAddress_accountSetDefaultAddress_user {

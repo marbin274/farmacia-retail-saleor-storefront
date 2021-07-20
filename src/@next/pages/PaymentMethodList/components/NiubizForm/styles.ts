@@ -1,4 +1,4 @@
-import { styled, media } from "@styles";
+import { media, styled } from "@styles";
 
 export const Wrapper = styled.div`
   margin-top: 1.25rem;
