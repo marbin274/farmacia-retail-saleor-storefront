@@ -134,7 +134,7 @@ const Page: React.FC<PageProps> = ({
       onChangeSortOption={onChangeSortOption}
       onCloseFilterAttribute={onAttributeFiltersChange}
       openFiltersMenu={() => setShowFilters(true)}
-      secondaryLabel="Categorias"
+      secondaryLabel="Categorías"
       secondaryClearLabel={COLLECTION_CATEGORY_FILTER_LABEL}
       secondaryOptions={categoryOptions}
       showSecondarySelect

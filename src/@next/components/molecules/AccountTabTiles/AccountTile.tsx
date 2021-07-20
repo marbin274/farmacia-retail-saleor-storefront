@@ -24,15 +24,17 @@ export const AccountTile: React.FC = () => {
         <S.Wrapper className="wrapper_background_account">
           <S.Header className="my_data">
             Mis datos
-            {!isEditing && (
-              <Button
-                icon={<PencilIcon />}
-                iconOnly={true}
-                size="small"
-                onClick={() => setIsEditing(isEditing => !isEditing)}
-              />
+            <div className='fa-self-start'>
+              {!isEditing && (
+                <Button
+                  icon={<PencilIcon />}
+                  iconOnly={true}
+                  size="small"
+                  onClick={() => setIsEditing(isEditing => !isEditing)}
+                />
 
-            )}
+              )}
+            </div>
           </S.Header>
           <S.Content>
             <S.HeaderSmall className="personal_data">

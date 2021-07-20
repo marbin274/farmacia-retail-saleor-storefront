@@ -137,7 +137,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
   };
 
   const renderGroupLabel = (title: string) => (
-    <span className="fa-text-2xl fa-mb-6 fa-block fa-font-semibold">{title}</span>
+    <span className="fa-text-xl fa-mb-6 fa-block fa-font-semibold">{title}</span>
   );
 
   const fieldsProps: IFieldsProps = {
@@ -179,6 +179,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
       <S.Wrapper>
         {comeFromModal ? (
           <S.AddressForm id={formId} ref={formRef} onSubmit={handleSubmit}>
+            <span className="fa-text-2xl fa-mb-8 fa-block fa-font-semibold">Editar dirección</span>
             <div style={{ width: "100%" }}>
               <S.FieldsGroup>
                 {renderGroupLabel("Cliente")}
@@ -186,6 +187,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                   <FirstNameTextField {...fieldsProps} />
                 </div>
                 <PhoneTextField {...fieldsProps} />
+                <div className='fa-block fa-mb-8'/>
               </S.FieldsGroup>
               <S.FieldsGroup>
                 {renderGroupLabel("Dirección")}

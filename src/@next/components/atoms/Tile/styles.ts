@@ -6,22 +6,22 @@ interface WrapperProps {
 }
 
 export const Wrapper = styled.div<WrapperProps>`
-  border: 1px transparent solid;
-  overflow: auto;
-  height: 100%;
-  padding: 0;
-  transition: all 0.3s, color 0s, fill 0s;
-  border-radius: 1.5rem;
+  align-items: left;
   background: ${farmatheme.theme.colors.neutral.lightest};
+  border: 1px transparent solid;
+  border-radius: 1.5rem;
   display: flex;
   flex-direction: column;
-  align-items: left;
+  height: 100%;
+  overflow: auto;
+  padding: 0;
+  transition: all 0.3s, color 0s, fill 0s;
   ${props => {
     if (props.tileType === "hover") {
       return css`
         :hover {
-          cursor: pointer;
           border-color: ${props.theme.tile.hoverBorder};
+          cursor: pointer;
         }
       `;
     }
@@ -44,16 +44,16 @@ export const Wrapper = styled.div<WrapperProps>`
 Wrapper.displayName = "Tile";
 
 export const Header = styled.div`
-  padding: 1.5rem 1.5rem 1rem 2rem;
+  padding: 1.5rem 1.5rem 1rem 1.5rem;
 `;
 
 export const Content = styled.div<WrapperProps>`
   padding: ${props =>
-    props.tileType === "addNew" ? "1rem" : "0 1.5rem 1.5rem 2rem"};
+    props.tileType === "addNew" ? "1rem" : "0 1.5rem 1.5rem 1.5rem"};
 `;
 
 export const Footer = styled.div`
   margin-top: auto;
-  padding: 0 1rem;
   margin-bottom: 1rem;
+  padding: 0 1rem;
 `;
