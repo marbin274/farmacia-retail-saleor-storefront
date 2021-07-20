@@ -9,7 +9,7 @@ import {
   billingAddressAlwaysSameAsShipping,
   CHECKOUT_STEPS,
 } from "@temp/core/config";
-import { IAddress, ICardData, IFormError } from "@types";
+import { IAddress, IFormError } from "@types";
 import { filterNotEmptyArrayItems } from "@utils/misc";
 import VoucherSVG from "@temp/images/auna/checkout-cupon-small.svg";
 import PromoCodeCorrect from "images/auna/promo-code-correct.svg";
@@ -27,6 +27,7 @@ import { CheckoutErrorCode } from "@temp/@sdk/gqlTypes/globalTypes";
 import { useUpdateCartLines } from "@temp/@next/hooks/useUpdateCartLines";
 import { useDistrictSelected } from "@temp/@next/hooks/useDistrictSelected";
 import { baseUrl } from "@temp/app/routes/paths";
+import { IProcesPaymentArgs } from "@temp/@next/components/organisms/PaymentGatewaysList/types";
 
 export interface ICheckoutPaymentSubpageHandles {
   submitPayment: () => void;
@@ -167,12 +168,18 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
     setPromoCodeErrors([]);
   };
 
-  const handleProcessPayment = async (
-    gateway: string,
-    token: string,
-    cardData?: ICardData
-  ) => {
-    const { dataError } = await createPayment(gateway, token, cardData);
+  const handleProcessPayment = async ({
+    cardData,
+    gateway,
+    token,
+    withToken,
+  }: IProcesPaymentArgs) => {
+    const { dataError } = await createPayment(
+      gateway,
+      token,
+      cardData,
+      withToken
+    );
     const errors = dataError?.error;
 
     if (errors) {

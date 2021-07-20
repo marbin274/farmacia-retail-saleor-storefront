@@ -5,6 +5,13 @@ import React from "react";
 import { PaymentGatewaysList } from ".";
 import { paymentGateways, userDataFroNiubiz } from "./fixtures";
 
+jest.mock("@temp/@sdk/react", () => ({
+  useUserDetails: () => ({
+    data: undefined,
+    loading: false,
+  }),
+}));
+
 describe("<PaymentGatewaysList />", () => {
   it("renders payment gateways", () => {
     const processPayment = jest.fn();
@@ -27,6 +34,4 @@ describe("<PaymentGatewaysList />", () => {
 
     expect(wrapper.exists()).toEqual(true);
   });
-
-  
 });

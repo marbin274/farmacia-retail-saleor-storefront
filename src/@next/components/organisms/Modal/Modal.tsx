@@ -25,6 +25,7 @@ const getSubmitBtnProps = (text: string, action?: () => void) => ({
 export const Modal: React.FC<IProps> = ({
   cancelBtnText,
   children,
+  contentClassName,
   disabled,
   hide,
   formId = "modal-submit",
@@ -36,10 +37,10 @@ export const Modal: React.FC<IProps> = ({
 }: IProps) => {
   return (
     <Overlay position="center" show={show} target={target}>
-      <div className='fa-h-screen lg:fa-p-12 fa-w-full fa-flex fa-items-center'>
+      <div className="fa-h-screen lg:fa-p-12 fa-w-full fa-flex fa-items-center">
         <S.Modal>
           <CardHeader onHide={hide}>{title}</CardHeader>
-          <S.Content>{children}</S.Content>
+          <S.Content className={contentClassName}>{children}</S.Content>
           {submitBtnText && (
             <FormFooter
               divider

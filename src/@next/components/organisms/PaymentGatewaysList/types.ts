@@ -34,12 +34,7 @@ export interface IProps {
   /**
    * Method called after the form is submitted. Passed gateway id and token attribute will be used to create payment.
    */
-  processPayment: (
-    gateway: string,
-    token: string,
-    cardData?: ICardData,
-    requestPayload?: string
-  ) => void;
+  processPayment: (data: IProcesPaymentArgs) => void;
   /**
    * Method called when gateway error occured.
    */
@@ -56,3 +51,13 @@ export interface IProps {
   gatewayListError?: string;
   setGatewayListError?: React.Dispatch<React.SetStateAction<string>>;
 }
+
+export type IProcesPaymentArgs = {
+  cardData?: ICardData;
+  gateway: string;
+  /**
+   * true if payment uses a card token
+   */
+  token: string;
+  withToken?: boolean;
+};
