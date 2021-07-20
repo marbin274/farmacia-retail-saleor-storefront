@@ -4,9 +4,10 @@ export interface IProps {
   hide: () => void;
   cancelBtnText?: string;
   children: React.ReactNode;
-  submitBtnText: string;
+  submitBtnText?: string;
   disabled: boolean;
   formId?: string;
   show: boolean;
   onSubmit?: () => void;
+  contentClassName?: string;
 }

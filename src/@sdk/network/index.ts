@@ -835,7 +835,8 @@ export class NetworkManager implements INetworkManager {
     paymentGateway: string,
     paymentToken: string,
     billingAddress: ICheckoutAddress,
-    districtId?: string
+    districtId?: string,
+    withToken?: boolean
   ) => {
     try {
       const variables = {
@@ -861,6 +862,7 @@ export class NetworkManager implements INetworkManager {
           },
           gateway: paymentGateway,
           token: paymentToken,
+          withToken,
         },
         districtId,
       };

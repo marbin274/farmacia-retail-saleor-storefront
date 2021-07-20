@@ -5,6 +5,13 @@ import React from "react";
 import { CheckoutPayment } from ".";
 import { LOGGED_IN_USER_PROPS } from "./fixtures";
 
+jest.mock("@temp/@sdk/react", () => ({
+  useUserDetails: () => ({
+    data: undefined,
+    loading: false,
+  }),
+}));
+
 describe("<CheckoutPayment />", () => {
   it("renders user addresses", () => {
     const setBillingAddress = jest.fn();
