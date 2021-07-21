@@ -87,7 +87,9 @@ export const ProductTileAUNA: React.FC<IProps> = ({
               </S.Image>
             </div>
             <div className="home-page__product-sticker fa-mt-2">
-              <ProductSticker isOnSale={isOnSale} isOutStock={isOutStock} />
+              <div className="fa-flex fa-justify-start">
+                <ProductSticker isOnSale={isOnSale} isOutStock={isOutStock} />
+              </div>
             </div>
           </div>
           <div className="fa-pl-4">
@@ -142,7 +144,9 @@ export const ProductTileAUNA: React.FC<IProps> = ({
         >
           <S.WrapperStockout>
             <div className="fa-absolute">
-              <ProductSticker isOnSale={isOnSale} isOutStock={isOutStock} />
+              <div className="fa-flex fa-justify-start">
+                <ProductSticker isOnSale={isOnSale} isOutStock={isOutStock} />
+              </div>
             </div>
             <div
               className="img"
