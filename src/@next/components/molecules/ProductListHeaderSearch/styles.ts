@@ -100,7 +100,6 @@ export const Element = styled.span`
   &.products_found {
     padding-top: 1rem;
     text-align: left;
-    z-index: 0;
     ${mediaUp.largeScreen`
       padding-top: 0;
     `}

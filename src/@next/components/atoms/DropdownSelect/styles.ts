@@ -5,7 +5,6 @@ export const Wrapper = styled.div`
   flex-direction: column;
   font-size: ${props => props.theme.typography.smallFontSize};
   width: auto;
-  z-index: 1000;
 `;
 
 export const SortLine = styled.div`
