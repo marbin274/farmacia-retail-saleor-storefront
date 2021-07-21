@@ -10,18 +10,21 @@ export const Wrapper = styled.div`
 
 export const TileWrapper = styled.div`
   height: auto;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
+  &:last-child {
+    margin-bottom: 0rem;
+  }
 `;
 
 export const Header = styled.div`
-  width: 95%;
-  padding-bottom: 1rem;
+  align-items: center;
+  display: flex;
   font-weight: ${props => props.theme.typography.boldFontWeight};
   font-size: ${props => props.theme.typography.h4FontSize};
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   height: 4rem;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  width: 100%;
 `;
 
 export const HeaderSmall = styled(Header)`
@@ -44,7 +47,7 @@ export const AttributeWrapper = styled.div`
 
 export const Content = styled.div`
   padding: 0;
-  width: 95%;
+  width: 100%;
 `;
 
 export const ContentOneLine = styled.div`
@@ -91,7 +94,7 @@ export const FormButtons = styled.div`
   padding-top: 2rem;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: flex-start;
 
   button:last-child {
     margin-left: 1.5rem;
