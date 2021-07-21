@@ -33,8 +33,8 @@ interface SortItem {
   value?: string;
 }
 
-interface SortOptions extends Array<SortItem> {};
-interface CategoryOptions extends Array<SortItem> {};
+interface SortOptions extends Array<SortItem> {}
+interface CategoryOptions extends Array<SortItem> {}
 
 interface PageProps extends IPaginationProps {
   activeFilters: number;
@@ -52,7 +52,10 @@ interface PageProps extends IPaginationProps {
   addToCart: IAddToCartCallback;
   clearFilters: () => void;
   onAttributeFiltersChange: (attributeSlug: string, value: string) => void;
-  onChangeCategoryOption?: (category: { value?: string; label: string }) => void;
+  onChangeCategoryOption?: (category: {
+    value?: string;
+    label: string;
+  }) => void;
   onChangeSortOption: (order: { value?: string; label: string }) => void;
   removeItemToCart: IRemoveItemToCartCallback;
   subtractItemToCart: ISubtractItemToCartCallback;
@@ -120,31 +123,30 @@ const Page: React.FC<PageProps> = ({
         ),
       []
     );
-  
+
   const getProductListHeader = () => {
+    return (
+      <ProductListHeader
+        activeSecondaryOptions={activeCategoryOptions}
+        activeFilters={activeFilters}
+        activeFiltersAttributes={activeFiltersAttributes}
+        activeSortOption={activeSortOption}
+        clearFilters={clearFilters}
+        numberOfProducts={products ? products.totalCount : 0}
+        onChangeSecondaryOption={onChangeCategoryOption}
+        onChangeSortOption={onChangeSortOption}
+        onCloseFilterAttribute={onAttributeFiltersChange}
+        openFiltersMenu={() => setShowFilters(true)}
+        secondaryLabel="Categorias"
+        secondaryClearLabel={COLLECTION_CATEGORY_FILTER_LABEL}
+        secondaryOptions={categoryOptions}
+        showSecondarySelect
+        sortOptions={sortOptions}
+      />
+    );
+  };
 
-    return <ProductListHeader
-      activeSecondaryOptions={activeCategoryOptions}
-      activeFilters={activeFilters}
-      activeFiltersAttributes={activeFiltersAttributes}
-      activeSortOption={activeSortOption}
-      clearFilters={clearFilters}
-      numberOfProducts={products ? products.totalCount : 0}
-      onChangeSecondaryOption={onChangeCategoryOption}
-      onChangeSortOption={onChangeSortOption}
-      onCloseFilterAttribute={onAttributeFiltersChange}
-      openFiltersMenu={() => setShowFilters(true)}
-      secondaryLabel="Categorias"
-      secondaryClearLabel={COLLECTION_CATEGORY_FILTER_LABEL}
-      secondaryOptions={categoryOptions}
-      showSecondarySelect
-      sortOptions={sortOptions}
-    />
-  }
-
-  React.useEffect(() => goTop(),
-    [products]
-  );
+  React.useEffect(() => goTop(), [products]);
 
   return (
     <CollectionWrapper>

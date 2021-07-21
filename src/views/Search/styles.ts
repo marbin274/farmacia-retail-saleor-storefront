@@ -23,14 +23,14 @@ export const SearchPage = styled.div`
 `;
 
 export const SearchListHeader = styled.div`
+  z-index: 1;
   ${mediaUp.largeScreen`
     margin-bottom: 2rem;
-  `}
+    `}
 
   > div {
     background-color: ${aunaGrey06};
     position: relative;
-    z-index: 1;
     ${media.largeScreen`
       margin-bottom: 0;
     `}
