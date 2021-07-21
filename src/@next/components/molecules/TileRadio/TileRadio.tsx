@@ -5,6 +5,7 @@ import { ITileRadioProps } from "./types";
 
 export const TileRadio: FC<ITileRadioProps> = ({
   children,
+  contentNoSpacing = false,
   className,
   hasError,
   label,
@@ -14,7 +15,7 @@ export const TileRadio: FC<ITileRadioProps> = ({
   return (
     <div
       className={classNames(
-        "fa-border-solid fa-border fa-bg-white fa-rounded-2xl fa-select-none",
+        "fa-border-solid fa-border fa-bg-white fa-rounded-2xl fa-select-none fa-overflow-hidden",
         {
           "fa-border-error-medium": !!hasError,
           "fa-border-transparent": !checked,
@@ -22,7 +23,6 @@ export const TileRadio: FC<ITileRadioProps> = ({
         },
         className
       )}
-      onClick={onClick}
     >
       <div
         className={classNames(
@@ -32,6 +32,7 @@ export const TileRadio: FC<ITileRadioProps> = ({
             "fa-bg-highlight-lightest fa-text-interactive": !!checked,
           }
         )}
+        onClick={onClick}
       >
         <Radio
           {...rest}
@@ -42,7 +43,11 @@ export const TileRadio: FC<ITileRadioProps> = ({
         />
         <span className="fa-font-semibold fa-text-sm">{label}</span>
       </div>
-      {checked && children && <div className="fa-px-4 fa-py-3">{children}</div>}
+      {checked && children && (
+        <div className={classNames({ "fa-px-4 fa-py-3": !contentNoSpacing })}>
+          {children}
+        </div>
+      )}
     </div>
   );
 };

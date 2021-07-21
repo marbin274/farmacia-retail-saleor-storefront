@@ -316,6 +316,7 @@ export class CheckoutJobs {
     paymentToken,
     billingAddress,
     creditCard,
+    withToken,
   }: {
     checkoutId: string;
     amount: number;
@@ -323,6 +324,7 @@ export class CheckoutJobs {
     paymentToken: string;
     billingAddress: ICheckoutAddress;
     creditCard?: ICreditCard;
+    withToken?: boolean;
   }): PromiseCheckoutJobRunResponse => {
     const payment = this.repository.getPayment();
     const districtId = this.repository.getDistrict()?.id;
@@ -333,7 +335,8 @@ export class CheckoutJobs {
       paymentGateway,
       paymentToken,
       billingAddress,
-      districtId
+      districtId,
+      withToken
     );
 
     if (error) {

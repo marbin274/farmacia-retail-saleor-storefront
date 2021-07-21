@@ -150,18 +150,17 @@ export interface DeleteUserCardToken_accountCardTokenDelete_user_addresses {
 
 export interface DeleteUserCardToken_accountCardTokenDelete_user_cardTokens {
   __typename: "CardToken";
+  binNumber: string;
+  brand: string;
+  cardNumber: string;
+  default: boolean;
+  email: string;
+  firstName: string;
   /**
    * The ID of the object.
    */
   id: string;
-  cardNumber: string;
-  brand: string;
-  binNumber: string;
-  default: boolean;
-  tokenId: string;
-  firstName: string;
   lastName: string;
-  email: string;
 }
 
 export interface DeleteUserCardToken_accountCardTokenDelete_user {
@@ -202,7 +201,7 @@ export interface DeleteUserCardToken_accountCardTokenDelete {
    */
   errors: DeleteUserCardToken_accountCardTokenDelete_errors[];
   /**
-   * A user instance for which the adress was created.
+   * A user instance for which the card token was created.
    */
   user: DeleteUserCardToken_accountCardTokenDelete_user | null;
 }

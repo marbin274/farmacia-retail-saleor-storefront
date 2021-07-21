@@ -1,12 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { NiubizPaymentGateway } from "@components/organisms/NiubizPaymentGateway";
+import {
+  NiubizPaymentGateway,
+  CardTokenPaymentGateway,
+} from "@components/organisms";
 import { NOT_CHARGE_TOKEN } from "@components/organisms/DummyPaymentGateway";
-import { TileRadio } from "@components/molecules";
+import { TileRadio, Collapse } from "@components/molecules";
 import { POS_DISTRICTS, PROVIDERS } from "@temp/core/config";
 import PosIcon from "images/auna/pos.svg";
 import { IProps } from "./types";
 import * as S from "./styles";
 import { DummyPaymentGateway } from "..";
+import { IPaymentGatewayConfig } from "@temp/@next/types";
+import { useUserDetails } from "@temp/@sdk/react";
+
+const CARD_TOKEN_OPTION = 1;
+const CARD_FORM_OPTION = 2;
 
 const PaymentGatewaysList: React.FC<IProps> = ({
   paymentGateways,
@@ -30,6 +38,12 @@ const PaymentGatewaysList: React.FC<IProps> = ({
   const [token, setToken] = useState("");
   // @ts-ignore
   const [orderNumber, setOrderNumber] = useState("");
+  const [collapseOption, setCollapseOption] = useState<number>();
+  const { data: user, loading: userLoading } = useUserDetails();
+  const [selectedCardToken, setSelectedCardToken] = useState<string>();
+  const [cardTokenError, setCardTokenError] = useState<string>();
+
+  const userHasCardTokens = user?.cardTokens?.length > 0;
 
   useEffect(() => {
     const pathname = window.location.pathname;
@@ -51,7 +65,7 @@ const PaymentGatewaysList: React.FC<IProps> = ({
 
     changeRequestPayload(payload);
     localStorage.setItem("purchase_number", payload.purchase_number);
-    
+
     return payload.purchase_number;
   };
 
@@ -59,14 +73,52 @@ const PaymentGatewaysList: React.FC<IProps> = ({
     id: string,
     shouldGeneratePurchaseNumber: boolean
   ) => {
+    if (userLoading || id === selectedPaymentGateway) {
+      return;
+    }
+
     setGatewayListError(null);
     if (shouldGeneratePurchaseNumber) {
       generatePurchaseNumber();
     }
     selectPaymentGateway?.(id);
+
+    setSelectedCardToken(undefined);
+    setCardTokenError(undefined);
+
+    if (id === PROVIDERS.AUNA.id && userHasCardTokens) {
+      selectCardTokenOption();
+    } else {
+      setCollapseOption(undefined);
+    }
+  };
+
+  const selectCardTokenOption = () => {
+    setCollapseOption(CARD_TOKEN_OPTION);
+    generatePurchaseNumber();
   };
 
   const hasListError = !!gatewayListError;
+
+  const renderNiubizForm = (id: string, config: IPaymentGatewayConfig[]) => (
+    <>
+      {reRender && (
+        <NiubizPaymentGateway
+          config={config}
+          formRef={formRef}
+          formId={formId}
+          processPayment={(token, card) =>
+            processPayment({ gateway: id, token, cardData: card })
+          }
+          errors={errors}
+          onError={onError}
+          totalPrice={totalPrice}
+          userDataForNiubiz={userDataForNiubiz}
+          generatePurchaseNumber={generatePurchaseNumber}
+        />
+      )}
+    </>
+  );
 
   return (
     <S.Wrapper>
@@ -86,7 +138,9 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                 <DummyPaymentGateway
                   formRef={formRef}
                   formId={formId}
-                  processPayment={token => processPayment(id, token)}
+                  processPayment={token =>
+                    processPayment({ gateway: id, token })
+                  }
                 />
               </TileRadio>
             );
@@ -118,7 +172,7 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                     id={formId}
                     ref={formRef}
                     onSubmit={() => {
-                      processPayment(id, NOT_CHARGE_TOKEN);
+                      processPayment({ gateway: id, token: NOT_CHARGE_TOKEN });
                     }}
                   />
                 </div>
@@ -136,21 +190,58 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                 }}
                 onClick={() => onSelectPaymentMethod(id, false)}
                 hasError={hasListError}
+                contentNoSpacing={userHasCardTokens}
               >
-                {reRender && (
-                  <NiubizPaymentGateway
-                    config={config}
-                    formRef={formRef}
-                    formId={formId}
-                    processPayment={(token, card) =>
-                      processPayment(id, token, card)
-                    }
-                    errors={errors}
-                    onError={onError}
-                    totalPrice={totalPrice}
-                    userDataForNiubiz={userDataForNiubiz}
-                    generatePurchaseNumber={generatePurchaseNumber}
-                  />
+                {userHasCardTokens ? (
+                  <>
+                    <Collapse
+                      header="Mi tarjeta guardada"
+                      active={collapseOption === CARD_TOKEN_OPTION}
+                      hasError={!!cardTokenError}
+                      onClick={selectCardTokenOption}
+                    >
+                      <>
+                        <CardTokenPaymentGateway
+                          cardTokens={user?.cardTokens}
+                          onSelectCardToken={ct => setSelectedCardToken(ct)}
+                          selectedCardTokenId={selectedCardToken}
+                        />
+                        <form
+                          id={formId}
+                          ref={formRef}
+                          onSubmit={() => {
+                            setCardTokenError(undefined);
+                            if (!selectedCardToken) {
+                              onError([]);
+                              setCardTokenError(
+                                "Elige una tarjeta guardada o compra con una nueva"
+                              );
+                              return;
+                            }
+
+                            processPayment({
+                              gateway: id,
+                              token: selectedCardToken,
+                              withToken: true,
+                            });
+                          }}
+                        />
+                      </>
+                    </Collapse>
+                    <Collapse
+                      header="Comprar con tarjeta"
+                      active={collapseOption === CARD_FORM_OPTION}
+                      hasError={!!cardTokenError}
+                      onClick={() => {
+                        setSelectedCardToken(undefined);
+                        setCollapseOption(CARD_FORM_OPTION);
+                      }}
+                    >
+                      {renderNiubizForm(id, config)}
+                    </Collapse>
+                  </>
+                ) : (
+                  <>{renderNiubizForm(id, config)}</>
                 )}
               </TileRadio>
             );
@@ -159,6 +250,9 @@ const PaymentGatewaysList: React.FC<IProps> = ({
       })}
       {hasListError && (
         <p className="fa-text-error-medium fa-text-sm">{gatewayListError}</p>
+      )}
+      {cardTokenError && (
+        <p className="fa-text-error-medium fa-text-sm">{cardTokenError}</p>
       )}
     </S.Wrapper>
   );

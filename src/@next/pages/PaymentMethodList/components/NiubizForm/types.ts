@@ -4,12 +4,13 @@ import { ICardTokenizationResult } from "@temp/core/payments/niubiz";
 
 export type INiubizFormProps = {
   config: IPaymentGatewayConfig[];
-  userDataForNiubiz: IUserDataForNiubiz;
-  generatePurchaseNumber: () => number;
-  formRef?: React.RefObject<HTMLFormElement>;
   formId?: string;
-  onError?: () => void;
+  formRef?: React.RefObject<HTMLFormElement>;
+  generatePurchaseNumber: () => number;
   onCardTokenization?: (data: ICardTokenizationResult) => void;
+  onError?: () => void;
+  onForceClose?: () => void;
+  userDataForNiubiz: IUserDataForNiubiz;
 };
 
 export interface IFormPayment {

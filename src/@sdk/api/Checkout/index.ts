@@ -472,7 +472,8 @@ export class SaleorCheckoutAPI extends ErrorListener
   createPayment = async (
     gateway: string,
     token: string,
-    creditCard?: ICreditCard
+    creditCard?: ICreditCard,
+    withToken?: boolean
   ): PromiseRunResponse<DataErrorCheckoutTypes, FunctionErrorCheckoutTypes> => {
     await this.saleorState.provideCheckout(this.fireError);
     await this.saleorState.providePayment();
@@ -496,6 +497,7 @@ export class SaleorCheckoutAPI extends ErrorListener
           creditCard,
           paymentGateway: gateway,
           paymentToken: token,
+          withToken,
         }
       );
       return {

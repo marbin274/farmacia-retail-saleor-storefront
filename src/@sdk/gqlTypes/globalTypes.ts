@@ -458,6 +458,7 @@ export interface PaymentInput {
   token: string;
   amount?: any | null;
   billingAddress?: AddressInput | null;
+  withToken?: boolean | null;
 }
 
 export interface PrivacyPolicyInput {
