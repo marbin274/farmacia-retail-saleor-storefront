@@ -25,7 +25,7 @@ const CheckoutLogin: React.FC<{}> = () => {
   const isGuest = tabSelected === "ScreenAsGuest";
   const isSignIn = tabSelected === "ScreenSignIn";
   return (
-    <div className="checkout-login-container">
+    <div className="checkout-login-container fa-z-0">
       <div className="container">
         <Online>
           <div className="fa-bg-white fa-rounded-full fa-flex fa-h-14 fa-items-center fa-justify-around lg:fa-hidden lg:fa-mt-0 fa-mt-4 fa-block">

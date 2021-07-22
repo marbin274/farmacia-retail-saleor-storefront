@@ -29,7 +29,7 @@
     &:focus,
     &:not([value=""]) {
       border: 1px solid $turquoise;
-      
+
       & + .input__label {
         background-color: $white;
         @include focusedLabel();
@@ -134,13 +134,13 @@
   &__icon-left {
     position: absolute;
     left: $spacer;
-    z-index: 100;
+    z-index: 2;
     transform: translate(0, 105%);
   }
 
   &__icon-right {
     position: absolute;
-    z-index: 100;
+    z-index: 2;
     right: $spacer;
     transform: translate(0, 208%);
   }
