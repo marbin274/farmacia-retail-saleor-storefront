@@ -8,8 +8,8 @@ import { Money } from "src/@next/components/containers/Money/Money";
 import { useCart } from "@temp/@sdk/react";
 import {
   checkProductCanAddToCart,
-  checkProductIsOnSale,
   getOneProductWithQuantity,
+  productStickerRules,
 } from "@sdk/utils/products";
 import {
   getProductPricingClass,  
@@ -29,7 +29,7 @@ const ProductItem: React.FC<SearchResults_products_edges> = ({ node }) => {
     product,
     items
   );
-  const isOnSale = checkProductIsOnSale(product);
+  const { isOnSale, isOutStock } = productStickerRules(product);
   const refActions = React.useRef({} as any);
 
   const linkToProduct = generateProductUrl(product.id, product.name) + "";
@@ -52,10 +52,10 @@ const ProductItem: React.FC<SearchResults_products_edges> = ({ node }) => {
               <Thumbnail source={node} />
               <span className='lg:fa-absolute lg:fa-top-0 lg:fa-left-0'>
                 {
-                  !isStockAvailable && <Chip bgColor={farmatheme.theme.colors.neutral.medium} label="Agotado"/>
+                  isOutStock && <Chip bgColor={farmatheme.theme.colors.neutral.medium} label="Agotado"/>
                 }
                 {
-                  (isOnSale && isStockAvailable) && <Chip label="Oferta"/>
+                  (isOnSale && !isOutStock) && <Chip label="Oferta"/>
                 }
               </span>
             </div>
