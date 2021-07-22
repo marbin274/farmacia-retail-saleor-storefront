@@ -1,61 +1,10 @@
 @import "../../../globalStyles/scss/variables.scss";
 
-.account_container {
-  background-color: #f7f6f8;
-  @media (max-width: $medium-screen) {
-    width: 100%;
-  }
-
-  .breadcrumbs {
-    li {
-      a {
-        font-size: 0.875rem;
-      }
-    }
-    &__next-icon {
-      margin-top: 5px;
-    }
-
-    @media screen and (max-width: $small-screen) {
-      display: inline-flex;
-      margin-bottom: 0 !important;
-    }
-  }
-
-  .wrapper_background_account {
-    background-color: white;
-    border-radius: 1.5rem;
-    padding: 2rem 0.5rem 0.5rem 0.5rem;;
-  }
-
-  form {
-    background-color: transparent !important;
-  }
-
-  .my_data {
-    font-size: 1.5rem;
-    font-weight: 600;
-  }
-
-  .personal_data {
-    font-weight: 1rem;
-    font-weight: 600;
-  }
-}
-
 .account {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: stretch;
-  margin-bottom: 4rem;
-  margin-top: 1rem;
 
   @media screen and (max-width: $medium-screen) {
-    flex-direction: column;
 
     &__menu_mobile {
-      width: 100%;
       padding: 2rem 1.25rem 0 1.2rem;
     }
   }
@@ -64,51 +13,6 @@
     &__menu_mobile {
       width: 100%;
       padding: 0 1.25rem 0 1.2rem;
-    }
-  }
-
-  &__menu {
-    width: auto;
-  }
-
-  &__content {
-    width: 100%;
-  }
-}
-
-.reset-password-mail-sent {
-  max-width: 19rem;
-  margin: 0 auto;
-  text-align: center;
-  &__image {
-    padding: 2rem 0rem 3rem 0rem;
-
-    svg {
-      margin: 0 auto;
-    }
-  }
-  h3 {
-    color: $black;
-    font-weight: 700;
-    font-size: $base-font-size;
-    line-height: $h3-font-size;
-    margin-bottom: 1.5rem;
-  }
-  p {
-    color: $black;
-    font-size: $small-font-size;
-    font-weight: $font-weight-normal;
-    strong {
-      font-weight: 700;
-      color: #908ba7;
-    }
-  }
-  &__button {
-    margin: 0 auto;
-    padding: 2rem 0rem;
-    button {
-      width: 100%;
-      font-weight: 600;
     }
   }
 }
