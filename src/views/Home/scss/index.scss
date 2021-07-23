@@ -268,19 +268,6 @@
     }
   }
 
-  &__districts-list {
-    background: no-repeat url("../../../images/auna/home-banner-footer.jpg")
-      #f6f8fa;
-    height: 23.75rem;
-
-    @media (max-width: $small-screen) {
-      background: no-repeat
-        url("../../../images/auna/home-banner-footer-mob.jpg") #f6f8fa;
-      background-size: 100% 100%;
-      height: 39.563rem;
-    }
-  }
-
   .product-list {
     grid-column: 1;
     grid-row: 2;
