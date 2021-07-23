@@ -1,4 +1,4 @@
-import { styled, media } from "@styles";
+import { styled, media, CustomSelectContainer } from "@styles";
 
 export const Wrapper = styled.div`
   background-color: ${props => props.theme.colors.white};
@@ -31,6 +31,18 @@ export const Overlay = styled.div`
 export const MenuHeader = styled.div`
   font-weight: ${props => props.theme.typography.boldFontWeight};
   padding-bottom: 2rem;
+`;
+
+export const RoutesWrapper = styled(CustomSelectContainer as any)`
+  margin-bottom: 1rem;  
+  position: relative;
+  z-index: 1;
+  .select-input {
+    .select-container {
+      padding: .75rem 1rem
+      width: 100%;
+    }
+  }
 `;
 
 export const MenuItem = styled.div<{

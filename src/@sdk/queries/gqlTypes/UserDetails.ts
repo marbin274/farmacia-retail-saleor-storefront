@@ -157,6 +157,10 @@ export interface UserDetails_me {
    */
   id: string;
   email: string;
+  /**
+   * List of favorite categories ID.
+   */
+  favoriteCategories: (string | null)[] | null;
   firstName: string;
   lastName: string;
   isStaff: boolean;

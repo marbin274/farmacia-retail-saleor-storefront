@@ -13,6 +13,7 @@ export const useUpdateUserAddress = mutationFactory("setUpdateuserAddress");
 export const usePasswordChange = mutationFactory("setPasswordChange");
 export const useAccountUpdate = mutationFactory("setAccountUpdate");
 export const useSetPassword = mutationFactory("setPassword");
+export const useSaveFavoriteCategories = mutationFactory("SaveFavoriteCategories");
 
 export const useSetDefaultUserCardToken = mutationFactory("setDefaultUserCardToken");
 export const useCreateUserCardToken = mutationFactory("setCreateUserCardToken");

@@ -172,6 +172,10 @@ export interface UpdateUserAddress_accountAddressUpdate_user {
    */
   id: string;
   email: string;
+  /**
+   * List of favorite categories ID.
+   */
+  favoriteCategories: (string | null)[] | null;
   firstName: string;
   lastName: string;
   isStaff: boolean;

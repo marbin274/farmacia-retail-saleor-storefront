@@ -1,14 +1,13 @@
 import * as React from "react";
-import Media from "react-responsive";
 import { RouteComponentProps, withRouter } from "react-router";
 
 import { useUserDetails } from "@sdk/react";
-import { largeScreen } from "@styles/constants";
 import AddressBook from "../../account/AddressBook/AddressBook";
 
 import "./scss/index.scss";
 
 import {
+  accountCategoriesUrl,
   accountUrl,
   addressBookUrl,
   baseUrl,
@@ -17,14 +16,19 @@ import {
 } from "../../app/routes";
 
 import { AccountMenu, AccountMenuMobile } from "@components/molecules";
-import { AccountTab, OrdersHistory, PaymentMethodList } from "@pages";
+import { AccountTab, CategoriesTab, OrdersHistory, PaymentMethodList } from "@pages";
 import { Loader } from "../../components";
 import { Breadcrumbs } from "@farmacia-retail/farmauna-components";
 import { UserDetails_me } from "@temp/@sdk/queries/gqlTypes/UserDetails";
+import { useMediaScreen } from "@temp/@next/globalStyles";
 
 const returnTab: any = (path: string, userDetails: UserDetails_me, history) => {
   let tabContent = <></>;
   switch (path) {
+    case accountCategoriesUrl: {
+      tabContent = <CategoriesTab />;
+      break;
+    }
     case accountUrl: {
       tabContent = <AccountTab />;
       break;
@@ -47,9 +51,11 @@ const returnTab: any = (path: string, userDetails: UserDetails_me, history) => {
 
 const Account: React.FC<RouteComponentProps> = ({ history, match }) => {
   const { data: user, loading } = useUserDetails();
+  const { isDesktopScreen } = useMediaScreen();
 
   const links = [
     { url: accountUrl, label: "Mi perfil" },
+    { url: accountCategoriesUrl, label: "Categorías"},
     { url: addressBookUrl, label: "Mis direcciones" },
     { url: orderHistoryUrl, label: "Historial de pedidos" },
     { url: paymentMethodsUrl, label: "Mis medios de pago" },
@@ -71,16 +77,14 @@ const Account: React.FC<RouteComponentProps> = ({ history, match }) => {
           baseUrl={baseUrl}
         />
         <div className="account">
-          <Media minWidth={largeScreen + 1}>
-            <div className="account__menu">
+          {
+            isDesktopScreen ? <div className="account__menu">
               <AccountMenu links={links} active={match.path} />
             </div>
-          </Media>
-          <Media maxWidth={largeScreen}>
-            <div className="account__menu_mobile">
-              <AccountMenuMobile links={links} active={match.path} />
-            </div>
-          </Media>
+              : <div className="account__menu_mobile">
+                <AccountMenuMobile links={links} active={match.path} />
+              </div>
+          }
           <div className="account__content">
             {user && returnTab(match.path, user, history)}
           </div>
