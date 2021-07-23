@@ -23,7 +23,9 @@ export const useIsNearScreen = (distance: string = '100px') => {
       observer = new IntersectionObserver(onChange, {
         rootMargin: distance,
       });
-      observer.observe(fromRef.current);
+      if (fromRef?.current) {
+        observer.observe(fromRef.current);
+      }
     });
 
     return () => observer && observer.disconnect();
