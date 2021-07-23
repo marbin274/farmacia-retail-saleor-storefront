@@ -5,13 +5,16 @@ import {
 } from "@components/organisms";
 import { NOT_CHARGE_TOKEN } from "@components/organisms/DummyPaymentGateway";
 import { TileRadio, Collapse } from "@components/molecules";
+import { alertService } from "@components/atoms/Alert";
 import { POS_DISTRICTS, PROVIDERS } from "@temp/core/config";
 import PosIcon from "images/auna/pos.svg";
 import { IProps } from "./types";
 import * as S from "./styles";
 import { DummyPaymentGateway } from "..";
 import { IPaymentGatewayConfig } from "@temp/@next/types";
-import { useUserDetails } from "@temp/@sdk/react";
+import { useCreateUserCardToken, useUserDetails } from "@temp/@sdk/react";
+import { ICardTokenizationResult } from "@temp/core/payments/niubiz";
+import { generateNiubizPurchaseNumber } from "../NiubizPaymentGateway/utils";
 
 const CARD_TOKEN_OPTION = 1;
 const CARD_FORM_OPTION = 2;
@@ -33,6 +36,7 @@ const PaymentGatewaysList: React.FC<IProps> = ({
   reRender,
   selectedDistrict,
   setGatewayListError,
+  onForceReRender,
 }: IProps) => {
   // @ts-ignore
   const [token, setToken] = useState("");
@@ -42,7 +46,10 @@ const PaymentGatewaysList: React.FC<IProps> = ({
   const { data: user, loading: userLoading } = useUserDetails();
   const [selectedCardToken, setSelectedCardToken] = useState<string>();
   const [cardTokenError, setCardTokenError] = useState<string>();
+  const [saveCardSelected, setSaveCardSelected] = useState(false);
+  const [cardNumberTosave, setCardNumberToSave] = useState<string>();
 
+  const userLoggedIn = !!user;
   const userHasCardTokens = user?.cardTokens?.length > 0;
 
   useEffect(() => {
@@ -58,13 +65,41 @@ const PaymentGatewaysList: React.FC<IProps> = ({
     selectedPaymentGateway = undefined;
   }, [voucherCode]);
 
+  const [
+    createUserCardToken,
+    { data: createData, error: createError, loading: createLoading },
+  ] = useCreateUserCardToken();
+
+  useEffect(() => {
+    if (createData?.user && !createData?.errors.length && !createError) {
+      processPayment({
+        gateway: PROVIDERS.AUNA.id,
+        token: createData.user.cardTokens.find(
+          x => x.cardNumber === cardNumberTosave
+        ).id,
+        withToken: true,
+      });
+      setCardNumberToSave(undefined);
+    }
+
+    if (!createData?.user && (createData?.errors.length > 0 || createError)) {
+      onError([]);
+      setCardNumberToSave(undefined);
+      alertService.sendAlert({
+        buttonText: "Entendido",
+        message: "Ha ocurrido un error al intentar guardar la tarjeta",
+        type: "Text",
+      });
+    }
+  }, [createData, createError]);
+
   const generatePurchaseNumber = (): number => {
-    const payload: any = {
-      purchase_number: Math.floor(Math.random() * (999999999999 - 1)) + 1,
+    const payload = {
+      purchase_number: generateNiubizPurchaseNumber(),
     };
 
     changeRequestPayload(payload);
-    localStorage.setItem("purchase_number", payload.purchase_number);
+    localStorage.setItem("purchase_number", String(payload.purchase_number));
 
     return payload.purchase_number;
   };
@@ -98,6 +133,32 @@ const PaymentGatewaysList: React.FC<IProps> = ({
     generatePurchaseNumber();
   };
 
+  const onChangeSaveCardSelected = (value: boolean) => {
+    setSaveCardSelected(value);
+    onForceReRender?.();
+  };
+
+  const onCardTokenization = (data: ICardTokenizationResult) => {
+    if (createLoading) {
+      return;
+    }
+
+    const { card, token } = data;
+
+    setCardNumberToSave(card.cardNumber);
+    createUserCardToken({
+      input: {
+        binNumber: card.bin,
+        brand: card.brand,
+        cardNumber: card.cardNumber,
+        tokenId: token.tokenId,
+        firstName: card.firstName,
+        lastName: card.lastName,
+        email: card.email,
+      },
+    });
+  };
+
   const hasListError = !!gatewayListError;
 
   const renderNiubizForm = (id: string, config: IPaymentGatewayConfig[]) => (
@@ -115,6 +176,11 @@ const PaymentGatewaysList: React.FC<IProps> = ({
           totalPrice={totalPrice}
           userDataForNiubiz={userDataForNiubiz}
           generatePurchaseNumber={generatePurchaseNumber}
+          saveCardSelected={saveCardSelected}
+          onClickSaveCard={onChangeSaveCardSelected}
+          showSaveCardCheck={userLoggedIn}
+          onCardTokenization={onCardTokenization}
+          onForceReRender={onForceReRender}
         />
       )}
     </>
@@ -190,7 +256,7 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                 }}
                 onClick={() => onSelectPaymentMethod(id, false)}
                 hasError={hasListError}
-                contentNoSpacing={userHasCardTokens}
+                contentNoSpacing
               >
                 {userHasCardTokens ? (
                   <>
@@ -229,7 +295,7 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                       </>
                     </Collapse>
                     <Collapse
-                      header="Comprar con tarjeta"
+                      header="Comprar con otra tarjeta"
                       active={collapseOption === CARD_FORM_OPTION}
                       hasError={!!cardTokenError}
                       onClick={() => {
@@ -241,7 +307,9 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                     </Collapse>
                   </>
                 ) : (
-                  <>{renderNiubizForm(id, config)}</>
+                  <div className="fa-bg-neutral-light fa-p-4">
+                    {renderNiubizForm(id, config)}
+                  </div>
                 )}
               </TileRadio>
             );

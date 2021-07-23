@@ -1,9 +1,9 @@
 import React, { FC, useState } from "react";
-import { Modal } from "@components/organisms";
+import { Modal, NiubizPaymentGateway } from "@components/organisms";
 import { PROVIDERS } from "@temp/core/config";
 import { useCheckout } from "@sdk/react";
 import { IPaymentMethodFormModalProps } from "./types";
-import { NiubizForm } from "../NiubizForm";
+import { generateNiubizPurchaseNumber } from "@temp/@next/components/organisms/NiubizPaymentGateway/utils";
 
 export const PatmentMethodFormModal: FC<IPaymentMethodFormModalProps> = ({
   formRef,
@@ -17,15 +17,6 @@ export const PatmentMethodFormModal: FC<IPaymentMethodFormModalProps> = ({
   const isLoading = loading || createLoading;
 
   const { availablePaymentGateways } = useCheckout();
-
-  // TODO: unificar con checkout
-  const generatePurchaseNumber = (): number => {
-    const payload: any = {
-      purchase_number: Math.floor(Math.random() * (999999999999 - 1)) + 1,
-    };
-
-    return payload.purchase_number;
-  };
 
   const performSubmit = () => {
     if (isLoading) {
@@ -56,21 +47,25 @@ export const PatmentMethodFormModal: FC<IPaymentMethodFormModalProps> = ({
       disabled={isLoading}
     >
       {show && (
-        <NiubizForm
-          config={
-            availablePaymentGateways?.find(x => x.id === PROVIDERS.AUNA.id)
-              ?.config
-          }
-          generatePurchaseNumber={generatePurchaseNumber}
-          userDataForNiubiz={{
-            documentNumber: user.documentNumber,
-            email: user.email,
-          }}
-          formRef={formRef}
-          onCardTokenization={onSubmit}
-          onError={onError}
-          onForceClose={onForceClose}
-        />
+        <div className="fa-mt-4">
+          <NiubizPaymentGateway
+            config={
+              availablePaymentGateways?.find(x => x.id === PROVIDERS.AUNA.id)
+                ?.config
+            }
+            generatePurchaseNumber={generateNiubizPurchaseNumber}
+            userDataForNiubiz={{
+              documentNumber: user.documentNumber,
+              email: user.email,
+            }}
+            formRef={formRef}
+            onCardTokenization={onSubmit}
+            onError={onError}
+            onForceReRender={onForceClose}
+            saveCardSelected
+            fullWidthInputs
+          />
+        </div>
       )}
     </Modal>
   );

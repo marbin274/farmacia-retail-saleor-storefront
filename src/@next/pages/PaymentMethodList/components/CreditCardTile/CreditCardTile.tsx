@@ -21,6 +21,7 @@ export const CreditCardTile: FC<ICreditCardTileProps> = ({
     <div className="fa-bg-white fa-p-6 fa-rounded-3xl">
       <div className="fa-flex fa-items-center fa-justify-between">
         <div
+          data-testid="main-card-option"
           className="fa-flex fa-items-center fa-cursor-pointer"
           onClick={() => onClickSetDefault(creditCard.id)}
         >
@@ -42,6 +43,7 @@ export const CreditCardTile: FC<ICreditCardTileProps> = ({
           </span>
         </div>
         <Button
+          data-testid="delete-button"
           icon={<TrashIcon />}
           size="small"
           onClick={() => onClickDelete(creditCard.id)}
@@ -50,11 +52,17 @@ export const CreditCardTile: FC<ICreditCardTileProps> = ({
       </div>
 
       <div className="fa-h-px fa-bg-neutral-medium fa-mt-3 fa-mb-4" />
-      <p className="fa-text-lg fa-font-semibold fa-mb-4">
+      <p
+        data-testid="card-number"
+        className="fa-text-lg fa-font-semibold fa-mb-4"
+      >
         {formatCardNumber()}
       </p>
       <div className="fa-flex fa-items-center fa-justify-between">
-        <div className="fa-truncate fa-mr-4">{`${creditCard.firstName} ${creditCard.lastName}`}</div>
+        <div
+          data-testid="fullname"
+          className="fa-truncate fa-mr-4"
+        >{`${creditCard.firstName} ${creditCard.lastName}`}</div>
         <CreditCardIcon creditCardProvider={creditCard.brand as CCProviders} />
       </div>
     </div>

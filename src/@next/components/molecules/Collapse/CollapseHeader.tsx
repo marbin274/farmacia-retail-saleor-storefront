@@ -8,9 +8,11 @@ export const CollapseHeader: FC<ICollapseHeaderProps> = ({
   hasError,
   title,
   onClick,
+  ...rest
 }) => {
   return (
     <div
+      {...rest}
       className={classNames(
         "fa-py-3 fa-px-4 fa-flex fa-justify-between fa-items-center fa-cursor-pointer fa-selection-none",
         {

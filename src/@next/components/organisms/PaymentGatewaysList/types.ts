@@ -50,6 +50,7 @@ export interface IProps {
   selectedDistrict: string;
   gatewayListError?: string;
   setGatewayListError?: React.Dispatch<React.SetStateAction<string>>;
+  onForceReRender?: () => void;
 }
 
 export type IProcesPaymentArgs = {

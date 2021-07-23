@@ -118,6 +118,7 @@ const CheckoutPayment: React.FC<IProps> = ({
         selectedDistrict={selectedDistrict}
         gatewayListError={gatewayListError}
         setGatewayListError={setGatewayListError}
+        onForceReRender={refreshReRenderNiubiz}
       />
     </S.Wrapper>
   );

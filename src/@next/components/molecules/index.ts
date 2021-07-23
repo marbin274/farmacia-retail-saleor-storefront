@@ -22,6 +22,7 @@ export * from "./InputSelect";
 export * from "./OrderTabel";
 export * from "./OutOfTimeMessage";
 export * from "./OverlayItem";
+export * from "./PopAlert";
 export * from "./ProductDescription";
 export * from "./ProductImage";
 export * from "./ProductListHeader";

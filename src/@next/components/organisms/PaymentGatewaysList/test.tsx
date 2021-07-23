@@ -10,6 +10,14 @@ jest.mock("@temp/@sdk/react", () => ({
     data: undefined,
     loading: false,
   }),
+  useCreateUserCardToken: () => [
+    jest.fn(),
+    {
+      data: undefined,
+      error: undefined,
+      loading: false,
+    },
+  ],
 }));
 
 describe("<PaymentGatewaysList />", () => {

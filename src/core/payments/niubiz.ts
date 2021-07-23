@@ -58,7 +58,7 @@ export type GatewayOptions = {
   antifraud?: any | undefined;
 };
 
-export interface ICardTokenizationResult {
+export type ICardTokenizationResult = {
   errorCode: number;
   errorMessage: string;
   header: {
@@ -93,7 +93,16 @@ export interface ICardTokenizationResult {
     ownerId: string;
     expireOn: string;
   };
-}
+};
+
+export type INiubizCreateTokenData = {
+  alias: string;
+  email: string;
+  lastName: string;
+  name: string;
+  recurrence?: boolean;
+  userBlockId?: number;
+};
 
 export const createToken = (requirements: GatewayOptions) => {
   const endpoint: string | undefined = requirements?.endpoint;

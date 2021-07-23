@@ -1,4 +1,5 @@
 import { ITotalPrice } from "@temp/@sdk/api/Cart/types";
+import { ICardTokenizationResult } from "@temp/core/payments/niubiz";
 import { ICardData, IFormError, IPaymentGatewayConfig } from "@types";
 import { IUserDataForNiubiz } from "../CheckoutPayment/types";
 
@@ -26,7 +27,7 @@ export interface IProps {
   /**
    * Method called after the form is submitted. Passed token attribute will be used to create payment.
    */
-  processPayment: (token: string, cardData?: ICardData) => void;
+  processPayment?: (token: string, cardData?: ICardData) => void;
   /**
    * Method called when gateway error occured.
    */
@@ -34,6 +35,12 @@ export interface IProps {
   totalPrice?: ITotalPrice;
   userDataForNiubiz?: IUserDataForNiubiz;
   generatePurchaseNumber: () => number;
+  saveCardSelected?: boolean;
+  onClickSaveCard?: (value: boolean) => void;
+  showSaveCardCheck?: boolean;
+  onCardTokenization?: (data: ICardTokenizationResult) => void;
+  onForceReRender?: () => void;
+  fullWidthInputs?: boolean;
 }
 
 export interface IFormPayment {
