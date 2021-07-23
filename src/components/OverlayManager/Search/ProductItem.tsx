@@ -64,7 +64,7 @@ const ProductItem: React.FC<SearchResults_products_edges> = ({ node }) => {
                     "search__products__item__side__price__on-sale"}`}
                 >
                   <span className="title_price">Precio</span>
-                  <Money className={isStockAvailable ? '' : 'fa-text-gray-02'} money={product.pricing.priceRange.start.net} />
+                  <Money className={canAddToCart ? '' : 'fa-text-gray-02'} money={product.pricing.priceRange.start.net} />
                 </span>
                 <div className="search__products__item__side actions" ref={refActions}>
                     <div
