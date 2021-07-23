@@ -4,7 +4,9 @@ import { IUserDataForNiubiz } from "@temp/@next/components/organisms/CheckoutPay
 import _ from "lodash";
 const ip = require("ip");
 
-// TODO: unificar con metodos de formulario de checkout cuando se haga el paso 3
+export const generateNiubizPurchaseNumber = () =>
+  Math.floor(Math.random() * (999999999999 - 1)) + 1;
+
 export const getConfigElement = (
   config: IPaymentGatewayConfig[],
   element: string
@@ -38,7 +40,8 @@ export const getSessionRequirements = (
   config: IPaymentGatewayConfig[],
   token: string,
   amount: any,
-  user?: IUserDataForNiubiz | undefined
+  user?: IUserDataForNiubiz | undefined,
+  channel?: "web" | "paycard"
 ) => {
   const merchantId = getConfigElement(config, "merchant_id") || "342062522";
 
@@ -61,7 +64,7 @@ export const getSessionRequirements = (
         77: 0,
       },
     },
-    channel: "paycard",
+    channel,
     endpoint: url,
     securityToken: token,
   };

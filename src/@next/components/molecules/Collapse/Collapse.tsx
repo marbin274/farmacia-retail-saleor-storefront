@@ -11,8 +11,9 @@ export const Collapse: FC<ICollapseProps> = ({
   onClick,
 }) => {
   return (
-    <div className="fa-bg-white">
+    <div>
       <CollapseHeader
+        data-testid="header"
         title={header}
         active={active}
         hasError={hasError}
