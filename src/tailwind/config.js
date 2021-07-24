@@ -15,15 +15,4 @@ module.exports = {
     },
   },
   plugins: [require("@tailwindcss/line-clamp")],
-  purge: {
-    enabled: process.env.NODE_ENV !== 'develop',
-    content: [
-      "./src/**/*.html",
-      "./src/**/*.js",
-      "./src/**/*.jsx",
-      "./src/**/*.ts",
-      "./src/**/*.tsx",
-      "./public/index.html",
-    ],
-  },
 };
