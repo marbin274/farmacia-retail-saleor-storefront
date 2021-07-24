@@ -1,13 +1,13 @@
 export interface IProps {
-  target?: HTMLElement | null;
-  title?: string;
-  hide: () => void;
   cancelBtnText?: string;
   children: React.ReactNode;
-  submitBtnText?: string;
+  contentNoSpacing?: boolean;
   disabled: boolean;
   formId?: string;
-  show: boolean;
+  hide: () => void;
   onSubmit?: () => void;
-  contentClassName?: string;
+  show: boolean;
+  submitBtnText?: string;
+  target?: HTMLElement | null;
+  title?: string;
 }
