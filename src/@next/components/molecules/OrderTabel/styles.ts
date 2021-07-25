@@ -110,7 +110,10 @@ export const Value = styled.div`
 export const Status = styled.div`
   text-align: left;
   width: 60%;
+  padding-left: 1.5rem;
+  padding-right: 0.5rem;
   ${mediaUp.largeScreen`
     width: 22%;
+    padding: 0;
   `}
 `;
