@@ -1,7 +1,7 @@
 import {
   IAddToCartCallback,
   IRemoveItemToCartCallback,
-  ISubtractItemToCartCallback
+  ISubtractItemToCartCallback,
 } from "@temp/@next/components/molecules/ProductTileAUNA/types";
 import { useCart } from "@temp/@sdk/react";
 import { MetaWrapper } from "@temp/components";
@@ -9,7 +9,6 @@ import * as React from "react";
 import Page from "./Page";
 import { TypedHomePageQuery } from "./queries";
 import "./scss/index.scss";
-
 
 const View: React.FC = () => {
   const {
@@ -20,13 +19,9 @@ const View: React.FC = () => {
   } = useCart();
 
   return (
-    <div className="home-page">
-      <TypedHomePageQuery
-        alwaysRender
-        errorPolicy="all"
-        loaderFull
-      >
-        {({ data, loading }) => {
+    <div className="fa-bg-neutral-lightest fa-z-o">
+      <TypedHomePageQuery alwaysRender errorPolicy="all" loaderFull>
+        {({ data }) => {
           const addToCart: IAddToCartCallback = (product, quantity) => {
             addItem(product, quantity);
           };

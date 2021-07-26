@@ -1,7 +1,7 @@
 import {
   IAddToCartCallback,
   IRemoveItemToCartCallback,
-  ISubtractItemToCartCallback
+  ISubtractItemToCartCallback,
 } from "@app/components/molecules/ProductTileAUNA/types";
 import { IItems } from "@sdk/api/Cart/types";
 import { ModalBackground } from "@temp/@next/components/organisms/ModalBackground/ModalBackground";
@@ -11,7 +11,7 @@ import { cndUrl } from "@temp/constants";
 import { structuredData } from "@temp/core/SEO/Homepage/structuredData";
 import * as React from "react";
 import { useHistory } from "react-router-dom";
-import { Banner } from "./Banner";
+import { Banner } from "./components";
 import { HomePage_shop } from "./gqlTypes/HomePage";
 import "./scss/index.scss";
 import * as S from "./styles";
@@ -30,7 +30,6 @@ const imageConverageDistrictDesktop = `${cndUrl}/media/banner_coverage/coverage-
 
 const imageCoverageDistrictDesktop = `${cndUrl}/media/banner_coverage/home-banner-coverage-delivery.png`;
 const imageCoverageDistrictMobile = `${cndUrl}/media/banner_coverage/home-banner-coverage-delivery-mobile.png`;
-
 
 const Page: React.FC<IPageProps> = ({
   productsOnCart,
@@ -89,13 +88,14 @@ const Page: React.FC<IPageProps> = ({
 
         <div>
           <div className="home-page__products">
-            {showFeatures && <ProductsFeatured
-              productsOnCart={productsOnCart}
-              addToCart={addToCart}
-              removeItemToCart={removeItemToCart}
-              subtractItemToCart={subtractItemToCart}
-            />
-            }
+            {showFeatures && (
+              <ProductsFeatured
+                productsOnCart={productsOnCart}
+                addToCart={addToCart}
+                removeItemToCart={removeItemToCart}
+                subtractItemToCart={subtractItemToCart}
+              />
+            )}
           </div>
         </div>
       </div>
