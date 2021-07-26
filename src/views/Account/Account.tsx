@@ -55,7 +55,7 @@ const Account: React.FC<RouteComponentProps> = ({ history, match }) => {
 
   const links = [
     { url: accountUrl, label: "Mi perfil" },
-    { url: accountCategoriesUrl, label: "Categorías"},
+    { url: accountCategoriesUrl, label: "Mis categorías"},
     { url: addressBookUrl, label: "Mis direcciones" },
     { url: orderHistoryUrl, label: "Historial de pedidos" },
     { url: paymentMethodsUrl, label: "Mis medios de pago" },
