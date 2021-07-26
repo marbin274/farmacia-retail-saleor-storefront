@@ -36,6 +36,7 @@ import {
 } from "./gqlTypes/VariantsProducts";
 
 import * as User from "./user";
+import { CategoryList } from "./gqlTypes/CategoryList";
 
 type QueryOptions<T = {}> = T extends { [n: string]: never }
   ? Omit<ApolloQueryOptions<{}>, "query">
@@ -57,6 +58,14 @@ export const QUERIES = {
   ): ObservableQuery<CategoryDetails, any> =>
     client.watchQuery({
       query: Category.categoryQuery,
+      ...options,
+    }),
+  CategoryList: <TCacheShape>(
+    client: ApolloClient<TCacheShape>,
+    options: QueryOptions<null>
+  ): ObservableQuery<CategoryList, any> =>
+    client.watchQuery({
+      query: Category.categoryListQuery,
       ...options,
     }),
   GetShopDetails: <TCacheShape>(

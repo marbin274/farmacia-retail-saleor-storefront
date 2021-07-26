@@ -10,6 +10,7 @@ import { fireSignOut, getAuthToken, setAuthToken } from "../auth";
 import { removeGaUserId, setGaUserId } from "../gaConfig";
 import { MUTATIONS } from "../mutations";
 import { PasswordChange } from "../mutations/gqlTypes/PasswordChange";
+import { SaveFavoriteCategories } from "../mutations/gqlTypes/SaveFavoriteCategories";
 import { SetPassword } from "../mutations/gqlTypes/SetPassword";
 import { TokenAuth_tokenCreate } from "../mutations/gqlTypes/TokenAuth";
 import { QUERIES } from "../queries";
@@ -28,7 +29,7 @@ import {
   isDataEmpty,
   mergeEdges,
 } from "../utils";
-import { SetPasswordChange, SetPasswordResult, SignIn } from "./types";
+import { SaveFavoriteCategoriesResult, SetPasswordChange, SetPasswordResult, SignIn } from "./types";
 
 export class APIProxy {
   getAttributes = this.watchQuery(
@@ -49,6 +50,11 @@ export class APIProxy {
   getCategoryDetails = this.watchQuery(
     QUERIES.CategoryDetails,
     (data) => data.category
+  );
+
+  getCategoryList = this.watchQuery(
+    QUERIES.CategoryList,
+    (data) => data.categories
   );
 
   getOrdersByUser = this.watchQuery(QUERIES.OrdersByUser, (data) =>
@@ -196,6 +202,29 @@ export class APIProxy {
     } | null = null;
 
     result = await this.fireQuery(MUTATIONS.SetPassword, (data) => data!)(
+      variables,
+      {
+        ...options,
+        fetchPolicy: "no-cache",
+      }
+    );
+    const { data } = result;
+
+    return {
+      data,
+      error: null,
+    };
+  };
+
+  SaveFavoriteCategories = async (
+    variables: InferOptions<MUTATIONS["SaveFavoriteCategories"]>["variables"],
+    options?: Omit<InferOptions<MUTATIONS["SaveFavoriteCategories"]>, "variables">
+  ): Promise<SaveFavoriteCategoriesResult> => {
+    let result: {
+      data: SaveFavoriteCategories | null;
+    } | null = null;
+
+    result = await this.fireQuery(MUTATIONS.SaveFavoriteCategories, (data) => data!)(
       variables,
       {
         ...options,

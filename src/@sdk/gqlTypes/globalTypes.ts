@@ -453,6 +453,11 @@ export interface CheckoutLineInput {
   variantId: string;
 }
 
+export interface FavoriteCategoryInput {
+  categoryId: string;
+  isFavorite: boolean;
+}
+
 export interface PaymentInput {
   gateway: string;
   token: string;

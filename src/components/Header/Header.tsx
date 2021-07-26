@@ -94,6 +94,11 @@ const Header: React.FC<IProps> = ({
                   Mi cuenta
                 </Link>
               </li>
+              <li data-testid="categories__link">
+                <Link className="fa-w-full fa-flex" to={appPaths.accountCategoriesUrl} onClick={closeSearch}>
+                  Categorías
+                </Link>
+              </li>
               <li data-testid="address_book__link">
                 <Link className="fa-w-full fa-flex" to={appPaths.addressBookUrl} onClick={closeSearch}>
                   Mis direcciones
