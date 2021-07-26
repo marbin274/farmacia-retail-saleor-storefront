@@ -63,6 +63,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
   setFieldValue,
   setFieldTouched,
   comeFromModal,
+  temporaryStreeAddress1Error,
 }) => {
   const initialTermAndconditions =
     values && values?.termsAndConditions ? values?.termsAndConditions : false;
@@ -129,6 +130,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
   const handleCityChange = (value: any, name: any) => {
     const isValid = !isValuesInvalid(values);
     setFieldValue(name, isValid ? value.code : "");
+
     setTimeout(() => {
       formRef?.current?.dispatchEvent(
         new Event("submit", { cancelable: true })
@@ -137,7 +139,9 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
   };
 
   const renderGroupLabel = (title: string) => (
-    <span className="fa-text-xl fa-mb-6 fa-block fa-font-semibold">{title}</span>
+    <span className="fa-text-xl fa-mb-6 fa-block fa-font-semibold">
+      {title}
+    </span>
   );
 
   const fieldsProps: IFieldsProps = {
@@ -179,41 +183,46 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
       <S.Wrapper>
         {comeFromModal ? (
           <S.AddressForm id={formId} ref={formRef} onSubmit={handleSubmit}>
-            <span className="fa-text-2xl fa-mb-8 fa-block fa-font-semibold">Editar dirección</span>
+            <span className="fa-text-2xl fa-mb-8 fa-block fa-font-semibold">
+              Editar dirección
+            </span>
             <div style={{ width: "100%" }}>
               <S.FieldsGroup>
                 {renderGroupLabel("Cliente")}
-                <div className='fa-mb-4'>
+                <div className="fa-mb-4">
                   <FirstNameTextField {...fieldsProps} />
                 </div>
                 <PhoneTextField {...fieldsProps} />
-                <div className='fa-block fa-mb-8'/>
+                <div className="fa-block fa-mb-8" />
               </S.FieldsGroup>
               <S.FieldsGroup>
                 {renderGroupLabel("Dirección")}
                 <S.RowWithOneCell>
-                <div className='fa-mb-4'>
-                  <StreetAddress1 
-                    {...fieldsProps}
-                    onChange={(value: IAddressAutocompleteValue) => {
-                      setFieldValue("streetAddress1", value.text || "");
-                      setFieldValue(
-                        "latitude",
-                        value.lat ? String(value.lat) : ""
-                      );
-                      setFieldValue(
-                        "longitude",
-                        value.lng ? String(value.lng) : ""
-                      );
-                      registerFilledInputForAddress(!!(value.text && value.lat));
-                    }}
-                    onBlur={(e: React.FocusEvent) => {
-                      registerFilledInputForAddress(
-                        !!values?.streetAddress1?.length
-                      );
-                      handleBlur?.(e);
-                    }} />
-                </div>
+                  <div className="fa-mb-4">
+                    <StreetAddress1
+                      {...fieldsProps}
+                      onChange={(value: IAddressAutocompleteValue) => {
+                        setFieldValue("streetAddress1", value.text || "");
+                        setFieldValue(
+                          "latitude",
+                          value.lat ? String(value.lat) : ""
+                        );
+                        setFieldValue(
+                          "longitude",
+                          value.lng ? String(value.lng) : ""
+                        );
+                        registerFilledInputForAddress(
+                          !!(value.text && value.lat)
+                        );
+                      }}
+                      onBlur={(e: React.FocusEvent) => {
+                        registerFilledInputForAddress(
+                          !!values?.streetAddress1?.length
+                        );
+                        handleBlur?.(e);
+                      }}
+                    />
+                  </div>
                   <StreetAddress2 {...fieldsProps} />
                 </S.RowWithOneCell>
                 <S.RowWithOneCell>
@@ -316,6 +325,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
               <S.RowWithOneCell>
                 <StreetAddress1
                   {...fieldsProps}
+                  temporaryError={temporaryStreeAddress1Error}
                   onChange={(value: IAddressAutocompleteValue) => {
                     setFieldValue("streetAddress1", value.text || "");
                     setFieldValue(
@@ -335,12 +345,6 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                     handleBlur?.(e);
                   }}
                 />
-                <span
-                  className="fa-text-xs fa-mt-2"
-                  style={{ color: "#908BA7" }}
-                >
-                  Se actualizará el mapa una vez ingresada la dirección
-                </span>
               </S.RowWithOneCell>
 
               <S.RowWithOneCell>

@@ -15,19 +15,30 @@ export const Message: React.FC<IProps> = ({
 
   return (
     <S.Wrapper status={status} data-cy="alert">
-      <S.TopWrapper>
-        <S.Title>{title}</S.Title>
-        {isAction ? (
-          !children && (
-            <S.ActionButton onClick={onClick}>{actionText}</S.ActionButton>
-          )
-        ) : (
-          <S.CloseButton onClick={onClick}>
-            <Icon name="x" size={15} />
-          </S.CloseButton>
-        )}
-      </S.TopWrapper>
-      {children && <S.Content>{children}</S.Content>}
+      {title && (
+        <S.TopWrapper>
+          <S.Title>{title}</S.Title>
+          {isAction ? (
+            !children && (
+              <S.ActionButton onClick={onClick}>{actionText}</S.ActionButton>
+            )
+          ) : (
+            <S.CloseButton onClick={onClick}>
+              <Icon name="x" size={15} />
+            </S.CloseButton>
+          )}
+        </S.TopWrapper>
+      )}
+      {children && (
+        <S.Content hasTitle={!!title}>
+          {children}
+          {!title && !isAction && (
+            <S.CloseButton className="fa-ml-4" onClick={onClick}>
+              <Icon name="x" size={15} />
+            </S.CloseButton>
+          )}
+        </S.Content>
+      )}
       {children && isAction && (
         <S.ActionButton onClick={onClick} style={{ marginTop: "1rem" }}>
           {actionText}
