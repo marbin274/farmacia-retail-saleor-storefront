@@ -66,38 +66,41 @@ export const CategoriesTab: React.FC = () => {
         }
     }, [categories, favoriteCategories])
 
-    return (<>
-        <ImagesTop
-            imageMobile={imageMobile}
-            imageDesktop={imageDesktop}
-            className="fa-mb-4"
-        />
-        <p className="fa-text-center fa-font-medium fa-text-sm fa-mb-4">
-            Elige las categorías que prefieras y te recomendaremos los productos con los mejores descuentos.
-        </p>
-        {
-            categories?.edges &&
-            <>{categories.edges.map(({ node: category }, index) => {
-                const isSelected = !!categoriesSelected.find(it => it === category.id);
-                return (
-                    <CategoryItem
-                        key={index}
-                        category={category}
-                        isSelected={isSelected}
-                        loading={categoriesLoading || userLoading}
-                        toogle={handleOnToogleCheck}
-                    />
-                );
-            })
-            }
-                <div className="md:fa-w-64">
-                    <Button
-                        disabled={!canSave}
-                        fullWidth
-                        onClick={handleOnSave}
-                    >Guardar</Button>
+    return (
+        <div className="account-categories md:fa-bg-white md:fa-p-8 md:fa-rounded-3xl">
+            <ImagesTop
+                imageMobile={imageMobile}
+                imageDesktop={imageDesktop}
+                className="fa-mb-4"
+            />
+            <p className="fa-text-center fa-font-medium fa-text-sm fa-mb-4">
+                Elige las categorías que prefieras y te recomendaremos los productos con los mejores descuentos.
+            </p>
+            {
+                categories?.edges &&
+                <div className="md:fa-bg-neutral-light md:fa-p-6 md:fa-rounded-3xl">
+                    {categories.edges.map(({ node: category }, index) => {
+                        const isSelected = !!categoriesSelected.find(it => it === category.id);
+                        return (
+                            <CategoryItem
+                                key={index}
+                                category={category}
+                                isSelected={isSelected}
+                                loading={categoriesLoading || userLoading}
+                                toogle={handleOnToogleCheck}
+                            />
+                        );
+                    })
+                    }
+                    <div className="md:fa-w-64 md:fa-mt-6 md:fa-mb-2">
+                        <Button
+                            disabled={!canSave}
+                            fullWidth
+                            onClick={handleOnSave}
+                        >Guardar</Button>
+                    </div>
                 </div>
-            </>
-        }
-    </>);
+            }
+        </div>
+    );
 }
