@@ -1,6 +1,6 @@
+import React from "react";
 import { CardHeader, FormFooter } from "@components/molecules";
 import { Overlay } from "@components/organisms";
-import React from "react";
 import "./scss/index.scss";
 import * as S from "./styles";
 import { IProps } from "./types";
@@ -25,10 +25,10 @@ const getSubmitBtnProps = (text: string, action?: () => void) => ({
 export const Modal: React.FC<IProps> = ({
   cancelBtnText,
   children,
-  contentClassName,
+  contentNoSpacing,
   disabled,
-  hide,
   formId = "modal-submit",
+  hide,
   onSubmit,
   submitBtnText,
   show,
@@ -40,7 +40,11 @@ export const Modal: React.FC<IProps> = ({
       <div className="fa-h-screen lg:fa-p-12 fa-w-full fa-flex fa-items-center">
         <S.Modal>
           <CardHeader onHide={hide}>{title}</CardHeader>
-          <S.Content className={contentClassName}>{children}</S.Content>
+          {contentNoSpacing ? (
+            <div>{children}</div>
+          ) : (
+            <S.Content>{children}</S.Content>
+          )}
           {submitBtnText && (
             <FormFooter
               divider

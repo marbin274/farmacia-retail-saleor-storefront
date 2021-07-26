@@ -76,9 +76,9 @@ export const CardTokenPaymentGateway: FC<ICardTokenPaymentGatewayProps> = ({
           setShowModal(false);
         }}
         disabled={false}
-        contentClassName="fa-p-0 fa-m-0 fa-mt-6"
+        contentNoSpacing
       >
-        <Content className="fa-p-4 fa-bg-neutral-light fa-overflow-scroll">
+        <Content className="fa-p-4 fa-bg-neutral-light fa-overflow-scroll fa-p-0 fa-m-0 fa-mt-6">
           {cardsToSelect.map(c => (
             <CreditCardItem
               selected={c.id === newSelectedCardId}

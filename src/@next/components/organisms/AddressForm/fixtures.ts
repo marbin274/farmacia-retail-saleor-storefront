@@ -79,6 +79,7 @@ export const userAddress: UserDetails_me = {
   defaultShippingAddress: userAddressItem,
   documentNumber: "85475126",
   email: "abcd@www.com",
+  favoriteCategories: [],
   firstName: "Paola",
   id:"",
   isStaff:false,

@@ -13,6 +13,7 @@ export const accountConfirmUrl = `${baseUrl}account-confirm/`;
 export const orderHistoryUrl = `${baseUrl}order-history/`;
 export const addressBookUrl = `${baseUrl}address-book/`;
 export const paymentMethodsUrl = `${baseUrl}payment-methods/`;
+export const accountCategoriesUrl = `${baseUrl}select-categories/`
 export const passwordResetUrl = `${baseUrl}reset-password/`;
 export const checkoutUrl = `${baseUrl}checkout/`;
 export const orderFinalizedUrl = `${baseUrl}order-finalized/`;
