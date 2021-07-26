@@ -27,3 +27,12 @@ export const CategoryItemRoot = styled.div`
 export const CategoryName = styled.span`
   flex: 10;
 `;
+
+export const SaveConfirm = styled.div`
+  ${mediaUp.mediumScreen`
+    left: 0;
+    position: absolute;
+    top: -3.5rem;
+    width: 100%;
+  `}
+`;

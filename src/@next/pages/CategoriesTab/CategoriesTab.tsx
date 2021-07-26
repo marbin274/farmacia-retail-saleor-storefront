@@ -7,7 +7,7 @@ import { default as imageMobile } from "@temp/images/auna/select-categories-mobi
 import lodash from "lodash";
 import React from "react";
 import { CategoryItem } from "./CategoryItem";
-import { ImagesTop } from "./styles";
+import { ImagesTop, SaveConfirm } from "./styles";
 
 
 export const CategoriesTab: React.FC = () => {
@@ -18,6 +18,7 @@ export const CategoriesTab: React.FC = () => {
 
     const [categoriesSelected, setCategoriesSelected] = React.useState<string[]>([]);
     const [canSave, setCanSave] = React.useState<boolean>(false);
+    const [showSaveConfirm, setShowSaveConfirm] = React.useState<boolean>(false)
 
     const [
         saveFavoriteCategories, {
@@ -55,6 +56,10 @@ export const CategoriesTab: React.FC = () => {
             await saveFavoriteCategories({
                 categories: categoriesToSend,
             });
+            setShowSaveConfirm(true);
+            setTimeout(() => {
+                setShowSaveConfirm(false);
+            }, 3000);
             userRefetch();
         }
 
@@ -67,7 +72,7 @@ export const CategoriesTab: React.FC = () => {
     }, [categories, favoriteCategories])
 
     return (
-        <div className="account-categories md:fa-bg-white md:fa-p-8 md:fa-rounded-3xl">
+        <div className="account-categories fa-relative md:fa-bg-white md:fa-p-8 md:fa-rounded-3xl">
             <ImagesTop
                 imageMobile={imageMobile}
                 imageDesktop={imageDesktop}
@@ -76,6 +81,12 @@ export const CategoriesTab: React.FC = () => {
             <p className="fa-text-center fa-font-medium fa-text-sm fa-mb-4">
                 Elige las categorías que prefieras y te recomendaremos los productos con los mejores descuentos.
             </p>
+            {
+                showSaveConfirm && <SaveConfirm className="fa-flex fa-bg-primary-lightest fa-text-xs fa-p-3 fa-my-2 fa-rounded-lg">
+                    <span></span>
+                    <span className="fa-text-brand-03">Categorías guardada con éxito</span>
+                </SaveConfirm>
+            }
             {
                 categories?.edges &&
                 <div className="md:fa-bg-neutral-light md:fa-p-6 md:fa-rounded-3xl">

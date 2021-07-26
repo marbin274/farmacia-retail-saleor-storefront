@@ -4,6 +4,13 @@ module.exports = {
   ...tailwindConfig,
   theme: {
     ...tailwindConfig.theme,
+    colors: {
+      ...tailwindConfig.theme.colors,
+      brand: {
+        ...tailwindConfig.theme.colors.brand,
+        '03': '#008A66',
+      },
+    },
     screens: {
       xs: "320px",
       sm: "540px",
