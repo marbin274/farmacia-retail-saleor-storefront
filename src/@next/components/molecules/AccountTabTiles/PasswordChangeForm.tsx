@@ -52,7 +52,7 @@ export const PasswordChangeForm: React.FC<{
           isValid,
         }) => {
           return (
-            <S.Form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
               <S.ContentEditOneLine>
                 <S.ContentExtendInput>
                   <TextField
@@ -108,7 +108,7 @@ export const PasswordChangeForm: React.FC<{
                   Guardar
                 </Button>
               </S.FormButtons>
-            </S.Form>
+            </form>
           );
         }}
       </Formik>
