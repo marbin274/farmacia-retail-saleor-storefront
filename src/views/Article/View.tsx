@@ -1,8 +1,5 @@
-import "./scss/index.scss";
-
 import * as React from "react";
 import { RouteComponentProps } from "react-router-dom";
-
 import { MetaWrapper, NotFound } from "../../components";
 import { generatePageUrl, maybe } from "../../core/utils";
 import { Article_shop } from "./gqlTypes/Article";
