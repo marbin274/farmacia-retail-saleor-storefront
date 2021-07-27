@@ -1,4 +1,4 @@
-import { media, mediaUp, styled } from "@styles";
+import { mediaUp, styled } from "@styles";
 import farmatheme from "@farmatheme";
 
 export const Blog = styled.div`
@@ -16,17 +16,21 @@ export const Blog = styled.div`
 `;
 
 export const Header = styled.div`
-  min-height: 9.56rem;
-  ${media.smallScreen`
-    min-height: 5.75rem;
+  min-height: 5.75rem;
+  ${mediaUp.smallScreen`
+    min-height: 9.56rem;
   `}
 `;
 
 export const Title = styled.h1`
-  ${media.smallScreen`
-    padding: 1rem;
+  padding: 1rem;
+  h1 {
+    font-size: 1.75rem;
+  }
+  ${mediaUp.smallScreen`
+    padding: 0rem;
     h1 {
-      font-size: 1.75rem;
+      font-size: 2.5rem;
     }
   `}
 `;
