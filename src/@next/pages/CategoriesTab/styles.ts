@@ -1,4 +1,5 @@
 import {mediaUp, styled} from "@styles";
+import { Alert } from "@temp/@next/components/molecules";
 
 export const ImagesTop = styled.div<{
     imageMobile: string,
@@ -28,11 +29,11 @@ export const CategoryName = styled.span`
   flex: 10;
 `;
 
-export const SaveConfirm = styled.div`
+export const SaveConfirm = styled(Alert as any)`
   ${mediaUp.mediumScreen`
     left: 0;
     position: absolute;
-    top: -3.5rem;
+    top: -3rem;
     width: 100%;
   `}
 `;

@@ -1,4 +1,4 @@
-import { Button } from "@farmacia-retail/farmauna-components";
+import { Button, CheckIcon } from "@farmacia-retail/farmauna-components";
 import { FavoriteCategoryInput } from "@temp/@sdk/gqlTypes/globalTypes";
 import { CategoryList_categories_edges_node } from "@temp/@sdk/queries/gqlTypes/CategoryList";
 import { useCategories, useSaveFavoriteCategories, useUserDetails } from "@temp/@sdk/react";
@@ -8,7 +8,6 @@ import lodash from "lodash";
 import React from "react";
 import { CategoryItem } from "./CategoryItem";
 import { ImagesTop, SaveConfirm } from "./styles";
-
 
 export const CategoriesTab: React.FC = () => {
     const { data: categories } = useCategories();
@@ -82,10 +81,11 @@ export const CategoriesTab: React.FC = () => {
                 Elige las categorías que prefieras y te recomendaremos los productos con los mejores descuentos.
             </p>
             {
-                showSaveConfirm && <SaveConfirm className="fa-flex fa-bg-primary-lightest fa-text-xs fa-p-3 fa-my-2 fa-rounded-lg">
-                    <span></span>
-                    <span className="fa-text-brand-03">Categorías guardada con éxito</span>
-                </SaveConfirm>
+                showSaveConfirm && <SaveConfirm
+                icon={<CheckIcon size={12} />}
+                message="Categorías guardadas con éxito"
+                className="fa-mb-4 md:fa-flex"
+              />
             }
             {
                 categories?.edges &&
