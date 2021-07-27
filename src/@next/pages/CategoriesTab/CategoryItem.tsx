@@ -62,10 +62,10 @@ export const CategoryItem = ({
             </S.CategoryItemRoot>
             {
                 isOpen &&
-                <div className="fa-my-4 fa-pt-4 fa-border-t fa-border-solid fa-border-neutral-medium">
+                <div className="fa-mt-4 fa-border-t fa-border-solid fa-border-neutral-medium">
                     <ul>
-                        {category.children.edges.map(({ node: child }) =>
-                            <li className="fa-my-4 fa-text-neutral-dark fa-font-medium">{child.name}</li>
+                        {category.children.edges.map(({ node: child }, index) =>
+                            <li key={index} className="fa-my-5 fa-text-neutral-dark fa-font-medium">{child.name}</li>
                         )}
                     </ul>
                     <NavLink
@@ -73,7 +73,7 @@ export const CategoryItem = ({
                         item={convertCategoryToMenuItem(category.id, category.name)}
                     >
                         <Button
-                            className="fa-font-semibold"
+                            className="fa-font-semibold fa-px-5"
                             type="button"
                             variant="outline"
                         >Ver todos los productos</Button>

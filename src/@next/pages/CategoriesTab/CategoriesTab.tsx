@@ -1,4 +1,4 @@
-import { Button } from "@farmacia-retail/farmauna-components";
+import { Button, CheckIcon } from "@farmacia-retail/farmauna-components";
 import { FavoriteCategoryInput } from "@temp/@sdk/gqlTypes/globalTypes";
 import { CategoryList_categories_edges_node } from "@temp/@sdk/queries/gqlTypes/CategoryList";
 import { useCategories, useSaveFavoriteCategories, useUserDetails } from "@temp/@sdk/react";
@@ -7,8 +7,7 @@ import { default as imageMobile } from "@temp/images/auna/select-categories-mobi
 import lodash from "lodash";
 import React from "react";
 import { CategoryItem } from "./CategoryItem";
-import { ImagesTop } from "./styles";
-
+import { ImagesTop, SaveConfirm } from "./styles";
 
 export const CategoriesTab: React.FC = () => {
     const { data: categories } = useCategories();
@@ -18,6 +17,7 @@ export const CategoriesTab: React.FC = () => {
 
     const [categoriesSelected, setCategoriesSelected] = React.useState<string[]>([]);
     const [canSave, setCanSave] = React.useState<boolean>(false);
+    const [showSaveConfirm, setShowSaveConfirm] = React.useState<boolean>(false)
 
     const [
         saveFavoriteCategories, {
@@ -55,6 +55,10 @@ export const CategoriesTab: React.FC = () => {
             await saveFavoriteCategories({
                 categories: categoriesToSend,
             });
+            setShowSaveConfirm(true);
+            setTimeout(() => {
+                setShowSaveConfirm(false);
+            }, 3000);
             userRefetch();
         }
 
@@ -66,38 +70,48 @@ export const CategoriesTab: React.FC = () => {
         }
     }, [categories, favoriteCategories])
 
-    return (<>
-        <ImagesTop
-            imageMobile={imageMobile}
-            imageDesktop={imageDesktop}
-            className="fa-mb-4"
-        />
-        <p className="fa-text-center fa-font-medium fa-text-sm fa-mb-4">
-            Elige las categorías que prefieras y te recomendaremos los productos con los mejores descuentos.
-        </p>
-        {
-            categories?.edges &&
-            <>{categories.edges.map(({ node: category }, index) => {
-                const isSelected = !!categoriesSelected.find(it => it === category.id);
-                return (
-                    <CategoryItem
-                        key={index}
-                        category={category}
-                        isSelected={isSelected}
-                        loading={categoriesLoading || userLoading}
-                        toogle={handleOnToogleCheck}
-                    />
-                );
-            })
+    return (
+        <div className="account-categories fa-relative md:fa-bg-white md:fa-p-8 md:fa-rounded-3xl">
+            <ImagesTop
+                imageMobile={imageMobile}
+                imageDesktop={imageDesktop}
+                className="fa-mb-4"
+            />
+            <p className="fa-text-center fa-font-medium fa-text-sm fa-mb-4">
+                Elige las categorías que prefieras y te recomendaremos los productos con los mejores descuentos.
+            </p>
+            {
+                showSaveConfirm && <SaveConfirm
+                icon={<CheckIcon size={12} />}
+                message="Categorías guardadas con éxito"
+                className="fa-mb-4 md:fa-flex"
+              />
             }
-                <div className="md:fa-w-64">
-                    <Button
-                        disabled={!canSave}
-                        fullWidth
-                        onClick={handleOnSave}
-                    >Guardar</Button>
+            {
+                categories?.edges &&
+                <div className="md:fa-bg-neutral-light md:fa-p-6 md:fa-rounded-3xl">
+                    {categories.edges.map(({ node: category }, index) => {
+                        const isSelected = !!categoriesSelected.find(it => it === category.id);
+                        return (
+                            <CategoryItem
+                                key={index}
+                                category={category}
+                                isSelected={isSelected}
+                                loading={categoriesLoading || userLoading}
+                                toogle={handleOnToogleCheck}
+                            />
+                        );
+                    })
+                    }
+                    <div className="md:fa-w-64 md:fa-mt-6 md:fa-mb-2">
+                        <Button
+                            disabled={!canSave}
+                            fullWidth
+                            onClick={handleOnSave}
+                        >Guardar</Button>
+                    </div>
                 </div>
-            </>
-        }
-    </>);
+            }
+        </div>
+    );
 }
