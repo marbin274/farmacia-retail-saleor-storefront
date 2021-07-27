@@ -13,7 +13,7 @@ export const Alert: FC<IAlertProps> = ({
       className={classNames(
         "fa-px-2.5 fa-py-2.5 fa-rounded-lg fa-text-xs fa-flex fa-items-center",
         {
-          "fa-bg-primary-lightest fa-text-primary-dark": type === "success",
+          "fa-bg-primary-lightest fa-text-brand-03": type === "success",
           "fa-bg-error-lightest fa-text-error-dark": type === "error",
         },
         className
