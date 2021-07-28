@@ -1,11 +1,7 @@
 import * as React from "react";
 import { RouteComponentProps, withRouter } from "react-router";
-
 import { useUserDetails } from "@sdk/react";
 import AddressBook from "../../account/AddressBook/AddressBook";
-
-import "./scss/index.scss";
-
 import {
   accountCategoriesUrl,
   accountUrl,
@@ -55,7 +51,7 @@ const Account: React.FC<RouteComponentProps> = ({ history, match }) => {
 
   const links = [
     { url: accountUrl, label: "Mi perfil" },
-    { url: accountCategoriesUrl, label: "Categorías"},
+    { url: accountCategoriesUrl, label: "Mis categorías"},
     { url: addressBookUrl, label: "Mis direcciones" },
     { url: orderHistoryUrl, label: "Historial de pedidos" },
     { url: paymentMethodsUrl, label: "Mis medios de pago" },
@@ -70,18 +66,18 @@ const Account: React.FC<RouteComponentProps> = ({ history, match }) => {
   }
 
   return (
-    <div className="account_container fa-pt-4">
+    <div className="fa-bg-neutral-light fa-pt-4 fa-w-auto md:fa-w-auto">
       <div className="container">
         <Breadcrumbs
           breadcrumbs={[{ link: match.path, label: "Mi Cuenta" }]}
           baseUrl={baseUrl}
         />
-        <div className="account">
+        <div className="fa-flex fa-flex-nowrap fa-items-stretch fa-mb-16 fa-mt-4 fa-flex-col md:fa-flex-row">
           {
-            isDesktopScreen ? <div className="account__menu">
+            isDesktopScreen ? <div className="fa-w-auto">
               <AccountMenu links={links} active={match.path} />
             </div>
-              : <div className="account__menu_mobile">
+              : <div className="md:fa-w-full">
                 <AccountMenuMobile links={links} active={match.path} />
               </div>
           }

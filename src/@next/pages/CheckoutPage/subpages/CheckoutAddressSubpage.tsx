@@ -17,9 +17,10 @@ import React, {
   RefForwardingComponent,
   useImperativeHandle,
   useRef,
-  useState
+  useState,
 } from "react";
 import { RouteComponentProps } from "react-router";
+import { useAlert } from "react-alert";
 
 export interface ICheckoutAddressSubpageHandles {
   submitAddress: () => void;
@@ -62,8 +63,27 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     update: updateCartLines,
     loading: updatingCartLines,
   } = useUpdateCartLines();
+  const [
+    temporaryStreeAddress1Error,
+    setTemporaryStreeAddress1Error,
+  ] = useState<string>();
+  const alert = useAlert();
 
   const _addressFormSchema = addressFormSchema;
+
+  const showTemporaryStreeAddress1Error = () => {
+    if (temporaryStreeAddress1Error) {
+      return;
+    }
+
+    setTemporaryStreeAddress1Error(
+      "Selecciona una de las direcciones sugeridas"
+    );
+
+    setTimeout(() => {
+      setTemporaryStreeAddress1Error(undefined);
+    }, 5000);
+  };
 
   const handleFormValues = (data: IAddressWithEmail | undefined) => {
     _addressFormSchema
@@ -199,6 +219,25 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
       }
     } else {
       setAddressSubPageErrors([]);
+
+      if (address.streetAddress1 && !address.latitude) {
+        alert.show(
+          {
+            content: (
+              <span className="fa-text-sm">
+                Debes ingresar tu dirección y seleccionar una de las opciones
+                desplegadas
+              </span>
+            ),
+          },
+          {
+            timeout: 5000,
+            type: "error",
+          }
+        );
+        showTemporaryStreeAddress1Error();
+      }
+
       if (checkout?.shippingMethod?.id) {
         // history.push(CHECKOUT_STEPS[0].nextStepLink);
       }
@@ -253,6 +292,7 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
         newAddressFormId={checkoutNewAddressFormId}
         setShippingAddress={handleSetShippingAddress}
         setFormValue={handleFormValues}
+        temporaryStreeAddress1Error={temporaryStreeAddress1Error}
       />
       <StockValidationModal
         show={showStockValidation}

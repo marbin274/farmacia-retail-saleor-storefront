@@ -12,9 +12,10 @@ export type IAddressAutocompleteValue = {
 };
 
 type IProps = {
+  error?: string;
+  onChangeValue?: (value: IAddressAutocompleteValue) => void;
   placeholder: string;
   value?: IAddressAutocompleteValue;
-  onChangeValue?: (value: IAddressAutocompleteValue) => void;
 };
 
 type IAddressAutocompleteProps = IProps & Omit<ITextFieldProps, "value">;

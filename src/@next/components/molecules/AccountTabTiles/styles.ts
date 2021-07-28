@@ -19,7 +19,7 @@ export const TileWrapper = styled.div`
 export const Header = styled.div`
   align-items: center;
   display: flex;
-  font-weight: ${props => props.theme.typography.boldFontWeight};
+  font-weight: ${props => props.theme.typography.extraBoldFontWeight};
   font-size: ${props => props.theme.typography.h4FontSize};
   height: 4rem;
   justify-content: space-between;
@@ -83,10 +83,6 @@ export const ContentEditOneLine = styled.div`
 
 export const ContentExtendInput = styled.div`
   width: 60%;
-`;
-
-export const Form = styled.form`
-  background-color: ${props => props.theme.tile.backgroundColor};
 `;
 
 export const FormButtons = styled.div`

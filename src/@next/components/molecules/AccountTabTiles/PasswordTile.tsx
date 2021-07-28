@@ -19,9 +19,9 @@ export const PasswordTile: React.FC = () => {
   return (
     <S.TileWrapper>
       <Tile>
-        <S.Wrapper className="wrapper_background_account">
+        <S.Wrapper className="fa-pt-8 fa-px-2 fa-pb-2">
           <S.Header className="my_data">
-            Mi contraseña
+            <span className="fa-text-2xl fa-font-semibold">Mi contraseña</span>
             {!isEditing && (
               <Button
               icon={<PencilIcon />}

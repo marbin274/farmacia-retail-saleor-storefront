@@ -11,7 +11,7 @@ const PROPS = {
   active: "/account/",
   links: [
     {
-      label: "Categorías",
+      label: "Mis categorías",
       url: "/select-categories/",
     },
     {
@@ -48,7 +48,7 @@ describe("<AccountMenuMobile />", () => {
     );
 
     expect(wrapper.text()).toContain("Mi perfil");
-    expect(wrapper.text()).not.toContain("Categorías");
+    expect(wrapper.text()).not.toContain("Mis categorías");
     expect(wrapper.text()).not.toContain("Mis direcciones");
     expect(wrapper.text()).not.toContain("Historial de pedidos");
     expect(wrapper.text()).not.toContain("Mis medios de pago");
@@ -69,7 +69,7 @@ describe("<AccountMenuMobile />", () => {
       .simulate("click");
 
     expect(wrapper.text()).toContain("Mi perfil");
-    expect(wrapper.text()).toContain("Categorías");
+    expect(wrapper.text()).toContain("Mis categorías");
     expect(wrapper.text()).toContain("Mis direcciones");
     expect(wrapper.text()).toContain("Historial de pedidos");
     expect(wrapper.text()).toContain("Mis medios de pago");

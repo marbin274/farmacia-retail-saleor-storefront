@@ -2,8 +2,16 @@ const tailwindConfig = require("@farmacia-retail/farmauna-components/tailwind.co
 
 module.exports = {
   ...tailwindConfig,
+  prefix: 'fa-',
   theme: {
     ...tailwindConfig.theme,
+    colors: {
+      ...tailwindConfig.theme.colors,
+      brand: {
+        ...tailwindConfig.theme.colors.brand,
+        '03': '#008A66',
+      },
+    },
     screens: {
       xs: "320px",
       sm: "540px",
