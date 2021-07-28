@@ -13,7 +13,6 @@ import * as React from "react";
 import { useHistory } from "react-router-dom";
 import { Banner } from "./components";
 import { HomePage_shop } from "./gqlTypes/HomePage";
-import "./scss/index.scss";
 import * as S from "./styles";
 interface IPageProps {
   productsOnCart: IItems;
@@ -81,24 +80,22 @@ const Page: React.FC<IPageProps> = ({
         show={showModal}
       />
       <Banner />
-      <div className="container">
+      <S.ProductsFeaturedWrapper>
         <script className="structured-data-list" type="application/ld+json">
           {structuredData(shop)}
         </script>
 
-        <div>
-          <div className="home-page__products">
-            {showFeatures && (
-              <ProductsFeatured
-                productsOnCart={productsOnCart}
-                addToCart={addToCart}
-                removeItemToCart={removeItemToCart}
-                subtractItemToCart={subtractItemToCart}
-              />
-            )}
-          </div>
+        <div className="fa-pt-8 fa-px-0 fa-pb-16">
+          {showFeatures && (
+            <ProductsFeatured
+              productsOnCart={productsOnCart}
+              addToCart={addToCart}
+              removeItemToCart={removeItemToCart}
+              subtractItemToCart={subtractItemToCart}
+            />
+          )}
         </div>
-      </div>
+      </S.ProductsFeaturedWrapper>
     </>
   );
 };

@@ -5,4 +5,10 @@ export const BannerWrapper = styled.div`
   ${mediaUp.smallScreen`
       aspect-ratio: 1920 / 500;
     `}
+
+  ul {
+    li {
+      border: 0 !important;
+    }
+  }
 `;

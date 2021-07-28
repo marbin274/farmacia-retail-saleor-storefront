@@ -8,7 +8,6 @@ import { MetaWrapper } from "@temp/components";
 import * as React from "react";
 import Page from "./Page";
 import { TypedHomePageQuery } from "./queries";
-import "./scss/index.scss";
 
 const View: React.FC = () => {
   const {
@@ -41,7 +40,7 @@ const View: React.FC = () => {
                 title: data.shop ? data.shop.name : "",
               }}
             >
-              <div className="home-view fa-bg-neutral-light">
+              <div className="fa-bg-neutral-light">
                 <Page
                   productsOnCart={productsOnCart}
                   shop={data.shop}

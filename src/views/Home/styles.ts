@@ -1,27 +1,16 @@
-import { media, mediaUp, styled } from "@styles";
-
-export const Container = styled.div`
-  width: ${props => `${props.theme.container.width}px`};
-  max-width: 100vw;
-  height: 32.875rem;
-  margin: 0 auto;
-  padding: 0 ${props => props.theme.spacing.spacer};
-  ${media.largeScreen`
-    width: 100%;    
-  `}
-`;
+import { ContainerStyle, media, mediaUp, styled } from "@styles";
 
 export const WraperOpenBanner = styled.div`
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: center;
 `;
 export const TopImagesContainer = styled.div`
   align-items: center;
-  display: flex;
-  width: 100%;
-  height: 100%;
   background-color: white;
+  display: flex;
+  height: 100%;
+  width: 100%;
 `;
 
 export const TopImageItem = styled.div<{
@@ -44,9 +33,9 @@ export const TopImageAunaContainer = styled.div`
     width: 7.875rem;
   `}
   ${mediaUp.smallScreen`
+    display: flex;
     flex: 1;    
     justify-content: flex-end;
-    display: flex;
   `}
 `;
 
@@ -81,15 +70,23 @@ export const TopImageDistrictBannerOpen = styled.div<{
   imageMobile: string;
   imageDesktop: string;
 }>`
-  width: 45rem;
-  height: 4rem; 
-  cursor: pointer;
-  background: no-repeat url("${(props: any) =>
-    props.imageDesktop}") transparent;
+  background: no-repeat url(${(props: any) => props.imageDesktop}) transparent;
   background-size: contain;
+  cursor: pointer;
+  height: 4rem;
+  width: 45rem;
   ${media.smallScreen`
     background: no-repeat url("${(props: any) =>
       props.imageMobile}") transparent;
     background-size: 100% 100%;
   `};
- `;
+`;
+
+export const ProductsFeaturedWrapper = styled.div`
+  ${ContainerStyle};
+  padding: 0;
+
+  ${mediaUp.smallScreen`
+    padding: 0 1rem;
+  `};
+`;

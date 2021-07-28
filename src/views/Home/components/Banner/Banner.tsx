@@ -79,15 +79,6 @@ export const Banner: React.FC = () => {
                       redirectTo(banner.link);
                     }}
                   >
-                    <span className="fa-w-full fa-my-0 fa-mx-auto fa-hidden sm:fa-block">
-                      <LazyLoadImage
-                        alt="banner desktop"
-                        effect="blur"
-                        height={500}
-                        src={banner.desktop}
-                        width={1920}
-                      />
-                    </span>
                     <span className="fa-w-full fa-my-0 fa-mx-auto sm:fa-hidden">
                       <LazyLoadImage
                         alt="banner mobile"
@@ -95,6 +86,15 @@ export const Banner: React.FC = () => {
                         height={460}
                         src={banner.mobile}
                         width={360}
+                      />
+                    </span>
+                    <span className="fa-w-full fa-my-0 fa-mx-auto fa-hidden sm:fa-block">
+                      <LazyLoadImage
+                        alt="banner desktop"
+                        effect="blur"
+                        height={500}
+                        src={banner.desktop}
+                        width={1920}
                       />
                     </span>
                   </div>
