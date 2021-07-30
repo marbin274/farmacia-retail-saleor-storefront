@@ -70,15 +70,15 @@ export const TopImageDistrictBannerOpen = styled.div<{
   imageMobile: string;
   imageDesktop: string;
 }>`
-  background: no-repeat url(${(props: any) => props.imageDesktop}) transparent;
-  background-size: contain;
+  background: no-repeat url("${(props: any) => props.imageMobile}") transparent;
+  background-size: 100% 100%;
   cursor: pointer;
   height: 4rem;
   width: 45rem;
-  ${media.smallScreen`
-    background: no-repeat url("${(props: any) =>
-      props.imageMobile}") transparent;
-    background-size: 100% 100%;
+  ${mediaUp.smallScreen`
+    background: no-repeat url(${(props: any) =>
+      props.imageDesktop}) transparent;
+    background-size: contain;
   `};
 `;
 

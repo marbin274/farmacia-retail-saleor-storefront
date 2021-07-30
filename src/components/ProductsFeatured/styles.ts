@@ -1,4 +1,4 @@
-import { media, mediaUp, styled } from "@styles";
+import { mediaUp, styled } from "@styles";
 import { aunaBlack } from "@temp/@next/globalStyles/constants";
 
 export const Container = styled.div`
@@ -6,10 +6,6 @@ export const Container = styled.div`
   min-height: 25rem;
   padding: 0.1rem 0;
   width: 100%;
-
-  ${media.smallScreen`
-    height: auto;      
-  `}
 
   ${mediaUp.largeScreen`
     width: ${props => `${props.theme.container.width}px`};
@@ -38,49 +34,54 @@ export const Container = styled.div`
   }
 
   .slider.carousel {
-    ${media.largeScreen`
-      height: 30.625rem !important;
+    height: 30.625rem !important;
+    ${mediaUp.largeScreen`
+      height: inherit;
     `}
   }
 
   .slider-control-centerleft,
   .slider-control-centerright {
     align-items: center;
+    bottom: -0.875rem !important;
     display: flex;
     height: 3.125rem;
     right: 29px !important;
-    top: -14% !important;
+    top: auto !important;
 
-    ${media.largeScreen`
-      bottom: -0.875rem !important;
-      top: auto !important;
+    ${mediaUp.largeScreen`
+      bottom: inital !important;
+      top: -14% !important;
     `};
   }
 
   .slider-control-centerleft {
-    left: auto !important;
-    right: 7.625rem !important;
+    left: 30% !important;
+    right: auto !important;
+    transform: translate(50%, -50%) !important;
 
-    ${media.largeScreen`
+    ${mediaUp.smallScreen`
       left: auto !important;
       right: calc(50% + 3.125rem) !important;
-      transform: translate(50%, -50%) !important;
+
     `}
 
-    ${media.smallScreen`
-      left: 30% !important;
-      right: auto !important;
+    ${mediaUp.largeScreen`
+      left: auto !important;
+      right: 7.625rem !important;
+      transform: translateY(-50%) !important;
     `}
   }
 
   .slider-control-centerright {
     left: auto !important;
-    right: 3rem !important;
+    right: calc(50% - 3.125rem) !important;
+    transform: translate(50%, -50%) !important;
 
-    ${media.largeScreen`
+    ${mediaUp.largeScreen`
       left: auto !important;
-      right: calc(50% - 3.125rem) !important;
-      transform: translate(50%, -50%) !important;
+      right: 3rem !important;
+      transform: translateY(-50%) !important;
     `}
   }
   .home-page__product {
@@ -91,8 +92,8 @@ export const Container = styled.div`
       margin-bottom: 0.5rem;
     }
     &-sticker {
-      margin-top: 0;
       align-self: flex-start;
+      margin-top: 0;
       & > div {
         position: absolute;
       }
@@ -120,8 +121,9 @@ export const Container = styled.div`
 `;
 
 export const InnerContainer = styled.div`
-  ${media.smallScreen`
-    padding: 0 1rem;
+  padding: 0 1rem;
+  ${mediaUp.smallScreen`
+    padding: initial;
   `}
 `;
 
