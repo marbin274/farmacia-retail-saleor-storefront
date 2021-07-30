@@ -1,8 +1,35 @@
-import { styled, media, mediaUp } from "@styles";
+import { Overlay } from "@components/organisms";
+import { mediaUp, styled } from "@styles";
+
+export const OverlayStyled = styled(Overlay)`
+  #lightbox-modal {
+    top: 8%;
+    width: 17.375rem;
+
+    ${mediaUp.xSmallScreen`
+      width: 19.5rem;
+    `}
+
+    ${mediaUp.smallScreen`
+      width: 48.75rem;
+      top: 0;
+    `}
+  }
+`;
+
+export const ModalContainer = styled.div`
+  height: 100vh;
+  margin: 0 auto;
+  padding-top: 0;
+  width: 80vw;
+  ${mediaUp.smallScreen`
+    padding-top: 8rem;
+  `}
+`;
 
 export const Modal = styled.div<{
-  imageMobile: string,
-  imageDesktop: string
+  imageMobile: string;
+  imageDesktop: string;
 }>`  
   display: flex;
   flex-direction: column;
@@ -18,19 +45,19 @@ export const Modal = styled.div<{
   background-size: 100% auto;
   
   ${mediaUp.mediumScreen`
-    background-image: url("${(props: any )=> props.imageDesktop}");    
+    background-image: url("${(props: any) => props.imageDesktop}");    
   `};
 `;
 
 export const CloseDiv = styled.div`
-  margin-top: 0.9375rem;
-  margin-right: 0.9375rem;
   cursor: pointer;
-  ${media.smallScreen`
-    margin-top: 0;
-    margin-right: 0;
-  `}
   margin-left: auto;
+  margin-right: 0;
+  margin-top: 0;
+  ${mediaUp.smallScreen`
+    margin-top: 0.9375rem;
+    margin-right: 0.9375rem;
+  `}
 `;
 
 export const Content = styled.div`
