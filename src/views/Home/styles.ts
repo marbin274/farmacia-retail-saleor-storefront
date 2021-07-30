@@ -1,4 +1,4 @@
-import { ContainerStyle, media, mediaUp, styled } from "@styles";
+import { ContainerStyle, mediaUp, styled } from "@styles";
 
 export const WraperOpenBanner = styled.div`
   align-items: center;

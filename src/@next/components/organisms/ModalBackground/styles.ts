@@ -1,5 +1,5 @@
-import { styled, media, mediaUp } from "@styles";
 import { Overlay } from "@components/organisms";
+import { mediaUp, styled } from "@styles";
 
 export const OverlayStyled = styled(Overlay)`
   #lightbox-modal {
