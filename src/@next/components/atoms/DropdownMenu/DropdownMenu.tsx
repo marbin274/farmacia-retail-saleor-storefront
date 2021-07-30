@@ -1,7 +1,5 @@
-import React, { useState } from "react";
-
-import { useHandlerWhenClickedOutside } from "@hooks";
-
+import { useClickedOutside } from "@hooks";
+import React, { useEffect, useState } from "react";
 import * as S from "./styles";
 import { IProps } from "./types";
 
@@ -11,9 +9,12 @@ export const DropdownMenu: React.FC<IProps> = ({
   type,
 }: IProps) => {
   const [visible, setVisible] = useState(false);
-  const { setElementRef } = useHandlerWhenClickedOutside(() => {
+  const { clickedOutside, setElementRef } = useClickedOutside();
+
+  useEffect(() => {
     setVisible(false);
-  });
+  }, [clickedOutside]);
+
   return (
     <S.Wrapper
       ref={setElementRef()}

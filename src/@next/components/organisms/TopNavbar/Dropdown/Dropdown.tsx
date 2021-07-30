@@ -1,7 +1,7 @@
 import React from "react";
 
 import { NavLink, ShadowBox } from "@components/atoms";
-import { useHandlerWhenClickedOutside } from "@hooks";
+import { useClickedOutside } from "@hooks";
 
 import * as S from "./styles";
 
@@ -14,7 +14,11 @@ const Column: React.FC<any> = ({ item }) => (
 );
 
 export const Dropdown: React.FC<any> = ({ onHide, item }) => {
-  const { setElementRef } = useHandlerWhenClickedOutside(onHide);
+  const { clickedOutside, setElementRef } = useClickedOutside();
+
+  React.useEffect(() => {
+    onHide();
+  }, [clickedOutside]);
 
   return (
     <S.Wrapper ref={setElementRef} onMouseLeave={onHide} onClick={onHide}>
