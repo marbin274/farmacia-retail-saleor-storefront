@@ -10,7 +10,7 @@ import Page from "./Page";
 import { useDistrictSelected } from "@temp/@next/hooks";
 import * as S from "./styles";
 
-const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
+export const OrderDetails: React.FC<RouteComponentProps<{ token?: string }>> = ({
   match: {
     params: { token },
   },
@@ -36,4 +36,4 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
   );
 };
 
-export default View;
+export default OrderDetails;

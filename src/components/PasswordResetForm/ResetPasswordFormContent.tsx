@@ -8,7 +8,7 @@ import { MutationFn } from "react-apollo";
 import { ResetPassword, ResetPasswordVariables } from "./gqlTypes/ResetPassword";
 import { passwordResetFormSchema } from "./passwordResetForm.schema";
 import { Button, InputField } from "@farmacia-retail/farmauna-components";
-import ResetPasswordMailSent from "@app/pages/AccountPage/subpages/ResetPasswordMailSent";
+import { ResetPasswordMailSentPage } from "@app/pages";
 interface ResetPasswordFormContentProps {
     called: boolean;
     loading: boolean;
@@ -107,7 +107,7 @@ const ResetPasswordFormContent: React.FC<ResetPasswordFormContentProps> = ({ but
             ) : (
 
                 <div>
-                    <ResetPasswordMailSent onClose={onClose} />
+                    <ResetPasswordMailSentPage onClose={onClose} />
                 </div>
             )
             }
