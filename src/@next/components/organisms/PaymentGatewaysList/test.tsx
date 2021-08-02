@@ -22,6 +22,11 @@ jest.mock("@temp/@sdk/react", () => ({
 
 describe("<PaymentGatewaysList />", () => {
   it("renders payment gateways", () => {
+    // @ts-ignore
+    Object.defineProperty(global.document, "getElementById", {
+      value: () => true,
+    });
+
     const processPayment = jest.fn();
     const selectPaymentGateway = jest.fn();
     const onError = jest.fn();

@@ -48,3 +48,21 @@ export function filterNotEmptyArrayItems<TValue>(
 ): value is TValue {
   return value !== null && value !== undefined;
 }
+
+export const loadScript = (
+  id: string,
+  src: string,
+  callback?: ((this: GlobalEventHandlers, ev: Event) => any) | null,
+  onError?: OnErrorEventHandler
+) => {
+  const fjs = document.getElementsByTagName("script")[0];
+  if (document.getElementById(id)) return;
+  const js = document.createElement("script");
+  js.async = true;
+  js.defer = true;
+  js.id = id;
+  js.src = src;
+  if (callback) js.onload = callback;
+  if (onError) js.onerror = onError;
+  fjs.parentNode?.insertBefore(js, fjs);
+};

@@ -56,6 +56,7 @@ import {
   SaveFavoriteCategories,
   SaveFavoriteCategoriesVariables
 } from "./gqlTypes/SaveFavoriteCategories";
+import { AccountConfirm, AccountConfirmVariables } from "./gqlTypes/AccountConfirm";
 
 export type MutationOptions<TData, TVariables> = Omit<
   ApolloMutationOptions<TData, TVariables>,
@@ -121,6 +122,14 @@ export const MUTATIONS = {
   ) =>
     client.mutate({
       mutation: User.saveFavoriteCategories,
+      ...options,
+    }),
+  SetAccountConfirm: <TCacheShape>(
+    client: ApolloClient<TCacheShape>,
+    options: MutationOptions<AccountConfirm, AccountConfirmVariables>
+  ) =>
+    client.mutate({
+      mutation: User.setAccountConfirm,
       ...options,
     }),
   TokenAuth: <TCacheShape>(

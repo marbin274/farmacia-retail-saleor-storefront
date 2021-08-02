@@ -144,6 +144,7 @@ module.exports = ({ sourceDir, distDir }) => ({
       PRIME_API_URL: "__",
       PRIME_API_KEY: "__",
       PRIME_SKU: "__",
+      NIUBIZ_ANTIFRAUD_SCRIPT_URL: "__",
     }),
   ],
   node: {

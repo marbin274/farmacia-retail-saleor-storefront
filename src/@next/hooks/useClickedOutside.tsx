@@ -1,16 +1,14 @@
 import * as React from "react";
 
-import { maybe } from "@utils/tsUtils";
+import { maybe } from "@temp/core/utils";
 
-export const useHandlerWhenClickedOutside = (callback: () => void) => {
-  const elementRef = React.useRef<HTMLDivElement>(null);
+const useClickedOutside = () => {
+  const [clickedOutside, setClickedOutside] = React.useState<boolean>(false);
+  const elementRef = React.useRef(null);
 
   const handleClickOutside = (e: MouseEvent) => {
     if (maybe(() => elementRef.current && e.target, null)) {
-      if (elementRef.current!.contains(e.target as Element)) {
-        return;
-      }
-      callback();
+      setClickedOutside(!elementRef.current.contains(e.target as Node));
     }
   };
 
@@ -22,6 +20,9 @@ export const useHandlerWhenClickedOutside = (callback: () => void) => {
   }, []);
 
   return {
+    clickedOutside,
     setElementRef,
   };
 };
+
+export default useClickedOutside;

@@ -35,7 +35,7 @@ import {
   gtmAuth,
   gtmPreview,
 } from "./core/constants";
-import { history } from "./history";
+import { history } from "./libraries/history";
 
 import { OverlayProvider } from "./components";
 

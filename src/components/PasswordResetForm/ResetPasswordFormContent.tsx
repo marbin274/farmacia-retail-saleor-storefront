@@ -8,8 +8,7 @@ import { MutationFn } from "react-apollo";
 import { ResetPassword, ResetPasswordVariables } from "./gqlTypes/ResetPassword";
 import { passwordResetFormSchema } from "./passwordResetForm.schema";
 import { Button, InputField } from "@farmacia-retail/farmauna-components";
-import { ResetPasswordMailSent } from "@temp/views/Account";
-
+import ResetPasswordMailSent from "@app/pages/AccountPage/subpages/ResetPasswordMailSent";
 interface ResetPasswordFormContentProps {
     called: boolean;
     loading: boolean;

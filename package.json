@@ -69,6 +69,7 @@
     "typeface-montserrat": "0.0.54",
     "url-join": "^4.0.0",
     "use-query-params": "^0.4.1",
+    "uuid": "^3.3.2",
     "yup": "^0.32.8"
   },
   "devDependencies": {
@@ -118,6 +119,7 @@
     "@types/react-svg": "^5.0.0",
     "@types/styled-components": "^4.1.16",
     "@types/url-join": "^4.0.0",
+    "@types/uuid": "^8.3.1",
     "apollo-storybook-react": "^0.2.4",
     "autoprefixer": "^9.8.6",
     "babel-core": "^7.0.0-bridge.0",

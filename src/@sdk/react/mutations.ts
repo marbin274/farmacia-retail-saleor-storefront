@@ -11,9 +11,10 @@ export const useUpdateUserAddress = mutationFactory("setUpdateuserAddress");
 
 // User mutations
 export const usePasswordChange = mutationFactory("setPasswordChange");
+export const useAccountConfirm = mutationFactory("setAccountConfirm");
 export const useAccountUpdate = mutationFactory("setAccountUpdate");
 export const useSetPassword = mutationFactory("setPassword");
-export const useSaveFavoriteCategories = mutationFactory("SaveFavoriteCategories");
+export const useSaveFavoriteCategories = mutationFactory("saveFavoriteCategories");
 
 export const useSetDefaultUserCardToken = mutationFactory("setDefaultUserCardToken");
 export const useCreateUserCardToken = mutationFactory("setCreateUserCardToken");
