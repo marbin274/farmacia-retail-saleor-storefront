@@ -6,7 +6,7 @@ import {
   merchantPassword,
   merchantUsername,
   merchantId,
-} from "@temp/constants";
+} from "@temp/core/constants";
 
 export const BASE_URL = "/";
 export const PRODUCTS_PER_PAGE = 8;
@@ -94,8 +94,6 @@ export const CHECKOUT_STEPS = [
   },
 ];
 
-
-
 export const DOCUMENTS_URLS_S3 = {
   finesAdicionalesUrls:
     "https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-fines-adicionales.pdf",
@@ -115,7 +113,6 @@ export const PRODUCT_STICKERS = {
     label: "Oferta",
   },
 };
-
 
 export const SEARCH_PRODUCTS_QUERY_MIN_LENGTH = 3;
 export const SHIPPING_FORMAT_DATE = "yyyy-MM-dd";
@@ -304,7 +301,12 @@ export const DISTRICT_SELECTED_DEFAULT: IDistrictSelected = {
   warehouse: null,
 };
 export const TOTAL_DISTRICT = 30; // TODO: this variable should be dinamically loaded from the backend
-export const POS_DISTRICTS = ["miraflores","surquillo","santiago de surco","barranco"];
+export const POS_DISTRICTS = [
+  "miraflores",
+  "surquillo",
+  "santiago de surco",
+  "barranco",
+];
 
 export const COUNTRY_DEFAULT = {
   code: "PE",

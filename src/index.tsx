@@ -34,7 +34,7 @@ import {
   gtmId,
   gtmAuth,
   gtmPreview,
-} from "./constants";
+} from "./core/constants";
 import { history } from "./history";
 
 import { OverlayProvider } from "./components";
@@ -147,7 +147,6 @@ const startApp = async () => {
       </Router>
     );
   });
-
 
   switch (environmentName) {
     case "qa":
