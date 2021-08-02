@@ -2,14 +2,14 @@ const tailwindConfig = require("@farmacia-retail/farmauna-components/tailwind.co
 
 module.exports = {
   ...tailwindConfig,
-  prefix: 'fa-',
+  prefix: "fa-",
   theme: {
     ...tailwindConfig.theme,
     colors: {
       ...tailwindConfig.theme.colors,
       brand: {
         ...tailwindConfig.theme.colors.brand,
-        '03': '#008A66',
+        "03": "#008A66",
       },
     },
     screens: {
@@ -24,7 +24,7 @@ module.exports = {
   },
   plugins: [require("@tailwindcss/line-clamp")],
   purge: {
-    enabled: process.env.NODE_ENV !== 'develop',
+    enabled: process.env.NODE_ENV !== "develop",
     content: [
       "./src/**/*.html",
       "./src/**/*.js",
