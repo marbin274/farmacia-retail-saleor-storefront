@@ -11,6 +11,7 @@ import { removeGaUserId, setGaUserId } from "../gaConfig";
 import { MUTATIONS } from "../mutations";
 import { PasswordChange } from "../mutations/gqlTypes/PasswordChange";
 import { SaveFavoriteCategories } from "../mutations/gqlTypes/SaveFavoriteCategories";
+import { AccountConfirm } from "../mutations/gqlTypes/AccountConfirm";
 import { SetPassword } from "../mutations/gqlTypes/SetPassword";
 import { TokenAuth_tokenCreate } from "../mutations/gqlTypes/TokenAuth";
 import { QUERIES } from "../queries";
@@ -29,7 +30,7 @@ import {
   isDataEmpty,
   mergeEdges,
 } from "../utils";
-import { SaveFavoriteCategoriesResult, SetPasswordChange, SetPasswordResult, SignIn } from "./types";
+import { SaveFavoriteCategoriesResult, SetAccountConfirmResult, SetPasswordChange, SetPasswordResult, SignIn } from "./types";
 
 export class APIProxy {
   getAttributes = this.watchQuery(
@@ -183,7 +184,7 @@ export class APIProxy {
   };
 
   signOut = () =>
-    new Promise(async (resolve, reject) => {
+    new Promise<void>(async (resolve, reject) => {
       try {
         fireSignOut(this.client);
 
@@ -216,7 +217,7 @@ export class APIProxy {
     };
   };
 
-  SaveFavoriteCategories = async (
+  saveFavoriteCategories = async (
     variables: InferOptions<MUTATIONS["SaveFavoriteCategories"]>["variables"],
     options?: Omit<InferOptions<MUTATIONS["SaveFavoriteCategories"]>, "variables">
   ): Promise<SaveFavoriteCategoriesResult> => {
@@ -225,6 +226,29 @@ export class APIProxy {
     } | null = null;
 
     result = await this.fireQuery(MUTATIONS.SaveFavoriteCategories, (data) => data!)(
+      variables,
+      {
+        ...options,
+        fetchPolicy: "no-cache",
+      }
+    );
+    const { data } = result;
+
+    return {
+      data,
+      error: null,
+    };
+  };
+
+  setAccountConfirm = async (
+    variables: InferOptions<MUTATIONS["SetAccountConfirm"]>["variables"],
+    options?: Omit<InferOptions<MUTATIONS["SetAccountConfirm"]>, "variables">
+  ): Promise<SetAccountConfirmResult> => {
+    let result: {
+      data: AccountConfirm | null;
+    } | null = null;
+
+    result = await this.fireQuery(MUTATIONS.SetAccountConfirm, (data) => data!)(
       variables,
       {
         ...options,

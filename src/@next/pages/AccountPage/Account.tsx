@@ -1,7 +1,7 @@
 import * as React from "react";
 import { RouteComponentProps, withRouter } from "react-router";
 import { useUserDetails } from "@sdk/react";
-import AddressBook from "../../account/AddressBook/AddressBook";
+import AddressBook from "./subpages/AddressBook/AddressBook";
 import {
   accountCategoriesUrl,
   accountUrl,
@@ -9,11 +9,11 @@ import {
   baseUrl,
   orderHistoryUrl,
   paymentMethodsUrl
-} from "../../app/routes";
+} from "@temp/app/routes";
 
 import { AccountMenu, AccountMenuMobile } from "@components/molecules";
 import { AccountTab, CategoriesTab, OrdersHistory, PaymentMethodList } from "@pages";
-import { Loader } from "../../components";
+import { Loader } from "@temp/components";
 import { Breadcrumbs } from "@farmacia-retail/farmauna-components";
 import { UserDetails_me } from "@temp/@sdk/queries/gqlTypes/UserDetails";
 import { useMediaScreen } from "@temp/@next/globalStyles";

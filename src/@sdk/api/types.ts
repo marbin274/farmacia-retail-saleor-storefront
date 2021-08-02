@@ -1,4 +1,5 @@
 import { ApolloError } from "apollo-client";
+import { AccountConfirm } from "../mutations/gqlTypes/AccountConfirm";
 import { CreateCheckout_checkoutCreate_checkoutErrors } from "../mutations/gqlTypes/CreateCheckout";
 import { PasswordChange } from "../mutations/gqlTypes/PasswordChange";
 import { SaveFavoriteCategories } from "../mutations/gqlTypes/SaveFavoriteCategories";
@@ -42,6 +43,11 @@ export type SetPasswordResult = {
 
 export type SaveFavoriteCategoriesResult = {
   data: SaveFavoriteCategories | null;
+  error: ApolloError | null;
+} | null;
+
+export type SetAccountConfirmResult = {
+  data: AccountConfirm | null;
   error: ApolloError | null;
 } | null;
 

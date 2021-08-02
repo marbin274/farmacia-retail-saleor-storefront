@@ -1,11 +1,10 @@
 import React from "react";
-import "./scss/index.scss";
 
 import { AddressFormModal, AddressGrid } from "@components/organisms";
 import { AddressTypeEnum, CountryCode } from "@sdk/gqlTypes/globalTypes";
 import { useDefaultUserAddress, useDeleteUserAddresss, useUpdateUserAddress } from "@sdk/react";
-import { useShopContext } from "../../components/ShopProvider/context";
-import { UserDetails_me } from "@temp/@sdk/queries/gqlTypes/UserDetails";
+import { useShopContext } from "@temp/components/ShopProvider/context";
+import { UserDetails_me } from "@sdk/queries/gqlTypes/UserDetails";
 import { IAddressBookDisplay, IAddressWithAddressType } from "@temp/@next/types";
 import { removeCountryCodeInPhoneNumber } from "@temp/@next/utils/addresForm";
 import { maybe } from "@temp/@next/utils/misc";
@@ -71,7 +70,7 @@ const AddressBook: React.FC<{
   }), []);
 
   return (
-    <div className="address-book-container">
+    <div className="fa-w-full">
       <AddressGrid
         addresses={userAddresses}
         addNewAddress={() => {

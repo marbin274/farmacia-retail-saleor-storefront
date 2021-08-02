@@ -62,3 +62,15 @@ export const saveFavoriteCategories = gql`
     }
   }
 `;
+
+export const setAccountConfirm = gql`
+mutation AccountConfirm($email: String!, $token: String!) {
+  confirmAccount(email: $email, token: $token) {
+    accountErrors {
+      field
+      message
+      code
+    }
+  }
+}
+`;

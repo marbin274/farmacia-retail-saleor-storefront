@@ -1,6 +1,5 @@
-export * from "./AccountTab";
+export * from "./AccountPage";
 export * from "./CartPage";
-export * from "./CategoriesTab";
 export * from "./CheckoutPage";
 export * from "./OrdersHistory";
 export * from "./PasswordReset";

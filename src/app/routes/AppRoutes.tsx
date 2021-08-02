@@ -1,27 +1,25 @@
 import {
+  Account,
+  AccountConfirm,
   CartPage,
   CheckoutPage,
   PasswordReset,
+  ResetPasswordMailSent,
   ThankYouPage,
-  UserRegistered,
+  UserRegistered
 } from "@pages";
 import * as React from "react";
 import { Route, Switch } from "react-router-dom";
 import { CheckoutLogin, NotFound } from "../../components";
 import UserAccount, * as accountPaths from "../../userAccount/routes";
 import { OrderDetails } from "../../userAccount/views";
-import {
-  Account,
-  AccountConfirm,
-  ResetPasswordMailSent,
-} from "../../views/Account";
 import { ArticlePage } from "../../views/Article";
 import { CategoryPage } from "../../views/Category";
 import { CollectionPage } from "../../views/Collection";
 import { HomePage } from "../../views/Home";
+import { LandingPage } from "../../views/Landing";
 import { ProductPage } from "../../views/Product";
 import { SearchPage } from "../../views/Search";
-import { LandingPage } from "../../views/Landing";
 import * as paths from "./paths";
 
 export const Routes: React.FC = () => (
