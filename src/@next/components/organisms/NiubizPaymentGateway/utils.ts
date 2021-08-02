@@ -1,7 +1,10 @@
 import { IPaymentGatewayConfig } from "@temp/@next/types";
 import { GatewayOptions } from "@temp/core/payments/niubiz";
 import { IUserDataForNiubiz } from "@temp/@next/components/organisms/CheckoutPayment/types";
+import { v4 as uuidv4 } from "uuid";
 import _ from "lodash";
+import { loadScript } from "@sdk/utils";
+import { niubizAntifraudScriptUrl } from "@temp/constants";
 const ip = require("ip");
 
 export const generateNiubizPurchaseNumber = () =>
@@ -107,4 +110,28 @@ export const getCardTokenizationRequirements = (
   };
 
   return tokenizerRequirements;
+};
+
+export const loadNiubizAntiFraudScript = (callback?: () => void) => {
+  const scriptId = "niubiz-antifraud";
+
+  if (document.getElementById(scriptId)) {
+    callback?.();
+    return;
+  }
+
+  loadScript(scriptId, niubizAntifraudScriptUrl, callback);
+};
+
+export const initNiubizAntiFraud = (
+  config: IPaymentGatewayConfig[],
+  purchaseNumber: string
+) => {
+  const merchantId = getConfigElement(config, "merchant_id");
+  const uuid = uuidv4();
+
+  // @ts-ignore
+  window.initDFP?.(uuid, purchaseNumber, ip.address(), merchantId);
+
+  return uuid;
 };

@@ -34,7 +34,7 @@ export interface IProps {
   onError: (errors: IFormError[]) => void;
   totalPrice?: ITotalPrice;
   userDataForNiubiz?: IUserDataForNiubiz;
-  generatePurchaseNumber: () => number;
+  generatePurchaseNumber: (withAntiFraud: boolean) => number;
   saveCardSelected?: boolean;
   onClickSaveCard?: (value: boolean) => void;
   showSaveCardCheck?: boolean;

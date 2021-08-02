@@ -22,6 +22,11 @@ jest.mock("@temp/@sdk/react", () => ({
 
 describe("<CheckoutPayment />", () => {
   it("renders user addresses", () => {
+    // @ts-ignore
+    Object.defineProperty(global.document, "getElementById", {
+      value: () => true,
+    });
+
     const setBillingAddress = jest.fn();
     const setBillingAsShippingAddress = jest.fn();
     const addPromoCode = jest.fn();

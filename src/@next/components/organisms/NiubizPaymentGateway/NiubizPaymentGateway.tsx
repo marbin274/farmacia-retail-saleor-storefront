@@ -74,7 +74,9 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
   const [formErrors, setFormErrors] = useState<any[]>([]);
 
   useEffect(() => {
-    const purchaseNumber = generatePurchaseNumber().toString();
+    const purchaseNumber = generatePurchaseNumber(
+      saveCardSelected && showSaveCardCheck
+    ).toString();
 
     const payformUrl =
       getConfigElement(config, "nb_payform_url") ||
