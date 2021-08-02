@@ -14,3 +14,4 @@ export const optimizelySdkKey = process.env.OPTIMIZELY_SDK_KEY;
 export const primeApiUrl = process.env.PRIME_API_URL;
 export const primeApiKey = process.env.PRIME_API_KEY;
 export const primeSku = process.env.PRIME_SKU || "";
+export const niubizAntifraudScriptUrl = process.env.NIUBIZ_ANTIFRAUD_SCRIPT_URL || "";

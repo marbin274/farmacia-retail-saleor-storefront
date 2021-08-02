@@ -14,7 +14,11 @@ import { DummyPaymentGateway } from "..";
 import { IPaymentGatewayConfig } from "@temp/@next/types";
 import { useCreateUserCardToken, useUserDetails } from "@temp/@sdk/react";
 import { ICardTokenizationResult } from "@temp/core/payments/niubiz";
-import { generateNiubizPurchaseNumber } from "../NiubizPaymentGateway/utils";
+import {
+  generateNiubizPurchaseNumber,
+  initNiubizAntiFraud,
+  loadNiubizAntiFraudScript,
+} from "../NiubizPaymentGateway/utils";
 
 const CARD_TOKEN_OPTION = 1;
 const CARD_FORM_OPTION = 2;
@@ -48,9 +52,16 @@ const PaymentGatewaysList: React.FC<IProps> = ({
   const [cardTokenError, setCardTokenError] = useState<string>();
   const [saveCardSelected, setSaveCardSelected] = useState(false);
   const [cardNumberTosave, setCardNumberToSave] = useState<string>();
+  const [scriptLoaded, setScriptLoaded] = useState(false);
 
   const userLoggedIn = !!user;
   const userHasCardTokens = user?.cardTokens?.length > 0;
+
+  useEffect(() => {
+    loadNiubizAntiFraudScript(() => {
+      setScriptLoaded(true);
+    });
+  }, []);
 
   useEffect(() => {
     const pathname = window.location.pathname;
@@ -93,15 +104,27 @@ const PaymentGatewaysList: React.FC<IProps> = ({
     }
   }, [createData, createError]);
 
-  const generatePurchaseNumber = (): number => {
-    const payload = {
-      purchase_number: generateNiubizPurchaseNumber(),
+  const generatePurchaseNumber = (withAntiFraud?: boolean): number => {
+    const purchaseNumber = generateNiubizPurchaseNumber();
+
+    const payload: any = {
+      purchase_number: purchaseNumber,
     };
 
-    changeRequestPayload(payload);
-    localStorage.setItem("purchase_number", String(payload.purchase_number));
+    if (withAntiFraud) {
+      const config = paymentGateways.find(x => x.id === PROVIDERS.AUNA.id)
+        .config;
 
-    return payload.purchase_number;
+      payload.device_fingerprint = initNiubizAntiFraud(
+        config,
+        String(purchaseNumber)
+      );
+    }
+
+    changeRequestPayload(payload);
+    localStorage.setItem("purchase_number", String(purchaseNumber));
+
+    return purchaseNumber;
   };
 
   const onSelectPaymentMethod = (
@@ -130,7 +153,7 @@ const PaymentGatewaysList: React.FC<IProps> = ({
 
   const selectCardTokenOption = () => {
     setCollapseOption(CARD_TOKEN_OPTION);
-    generatePurchaseNumber();
+    generatePurchaseNumber(true);
   };
 
   const onChangeSaveCardSelected = (value: boolean) => {
@@ -185,6 +208,10 @@ const PaymentGatewaysList: React.FC<IProps> = ({
       )}
     </>
   );
+
+  if (!scriptLoaded) {
+    return null;
+  }
 
   return (
     <S.Wrapper>
