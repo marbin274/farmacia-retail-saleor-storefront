@@ -1,13 +1,11 @@
+import { Label, Select } from "@components/atoms";
+import { DownIcon } from "@farmacia-retail/farmauna-components";
 import React from "react";
 import { components } from "react-select";
 import { ThemeContext } from "styled-components";
-
-import { Label, Select } from "@components/atoms";
-
-import { useHandlerWhenClickedOutside } from "../../../hooks";
+import { useClickedOutside } from "../../../hooks";
 import * as S from "./styles";
 import { IProps } from "./types";
-import { DownIcon } from "@farmacia-retail/farmauna-components";
 
 export const DropdownSelect: React.FC<IProps> = ({
   clearText,
@@ -18,9 +16,11 @@ export const DropdownSelect: React.FC<IProps> = ({
   value,
 }: IProps) => {
   const [menuIsOpen, setMenuIsOpen] = React.useState(false);
-  const { setElementRef } = useHandlerWhenClickedOutside(() => {
+  const { clickedOutside, setElementRef } = useClickedOutside();
+
+  React.useEffect(() => {
     setMenuIsOpen(false);
-  });
+  }, [clickedOutside]);
 
   const customComponents = {
     Control: () => (
@@ -49,7 +49,11 @@ export const DropdownSelect: React.FC<IProps> = ({
   };
 
   return (
-    <S.Wrapper className="dropdown-select" data-cy="dropdown-select" ref={setElementRef()}>
+    <S.Wrapper
+      className="dropdown-select"
+      data-cy="dropdown-select"
+      ref={setElementRef()}
+    >
       <Select
         customComponents={customComponents}
         name={name}
