@@ -81,7 +81,7 @@ const Account: React.FC<RouteComponentProps> = ({ history, match }) => {
                 <AccountMenuMobile links={links} active={match.path} />
               </div>
           }
-          <div className="account__content">
+          <div className="fa-w-full">
             {user && returnTab(match.path, user, history)}
           </div>
         </div>
