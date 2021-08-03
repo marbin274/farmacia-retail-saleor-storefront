@@ -7,7 +7,7 @@ import { IItems } from "@sdk/api/Cart/types";
 import { ModalBackground } from "@temp/@next/components/organisms/ModalBackground/ModalBackground";
 import { somosAunaPage } from "@temp/app/routes";
 import { ProductsFeatured } from "@temp/components";
-import { cndUrl } from "@temp/constants";
+import { cndUrl } from "@temp/core/constants";
 import { structuredData } from "@temp/core/SEO/Homepage/structuredData";
 import * as React from "react";
 import { useHistory } from "react-router-dom";
