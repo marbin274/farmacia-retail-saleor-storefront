@@ -14,7 +14,7 @@ import AunaError from "@temp/images/auna/auna-error.svg";
 import * as React from "react";
 import { Link } from "react-router-dom";
 import ReactSVG from "react-svg";
-import { orderHistoryUrl } from "../../../app/routes";
+import { orderHistoryUrl } from "@app/pages/AccountPage/paths";
 import * as S from "./styles";
 
 const Title: React.FC<{ className?: string }> = ({

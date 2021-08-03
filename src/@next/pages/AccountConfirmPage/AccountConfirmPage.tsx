@@ -5,7 +5,7 @@ import { BASE_URL } from "@temp/core/config";
 import { RouteComponentProps } from "react-router";
 import { useAccountConfirm } from "@temp/@sdk/react";
 
-export const AccountConfirm: React.FC<RouteComponentProps> = ({ history }) => {
+export const AccountConfirmPage: React.FC<RouteComponentProps> = ({ history }) => {
   const [query] = useQueryParams({
     email: StringParam,
     token: StringParam,
@@ -59,4 +59,4 @@ export const AccountConfirm: React.FC<RouteComponentProps> = ({ history }) => {
   );
 };
 
-export default AccountConfirm;
+export default AccountConfirmPage;

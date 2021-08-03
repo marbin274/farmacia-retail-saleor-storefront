@@ -1,2 +1,1 @@
-export { default as Account } from "./Account";
-export * from "./subpages";
+export { default as AccountPage } from "./Account";

@@ -9,7 +9,7 @@ import { IAddressBookDisplay, IAddressWithAddressType } from "@temp/@next/types"
 import { removeCountryCodeInPhoneNumber } from "@temp/@next/utils/addresForm";
 import { maybe } from "@temp/@next/utils/misc";
 
-const AddressBook: React.FC<{
+export const AddressBook: React.FC<{
   user: UserDetails_me;
 }> = ({ user }) => {
   const { availableDistricts, defaultCountry, countries } = useShopContext();

@@ -9,7 +9,7 @@ interface ResetPasswordMailSentProps {
     onClose?: () => void;
 }
 
-export const ResetPasswordMailSent: React.FC<ResetPasswordMailSentProps> = ({onClose}) => {
+export const ResetPasswordMailSentPage: React.FC<ResetPasswordMailSentProps> = ({onClose}) => {
     const localRepository = new LocalRepository();
     const resetPasswordEmail = localRepository.getResetPasswordEmail();
     const history = useHistory();
@@ -57,4 +57,4 @@ export const ResetPasswordMailSent: React.FC<ResetPasswordMailSentProps> = ({onC
     )
 }
 
-export default ResetPasswordMailSent;
+export default ResetPasswordMailSentPage;
