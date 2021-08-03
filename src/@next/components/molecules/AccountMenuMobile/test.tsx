@@ -6,31 +6,11 @@ import { MemoryRouter } from "react-router";
 import { AccountMenuMobile } from ".";
 import { DropdownSelect } from "../../atoms";
 import { SortLine } from "../../atoms/DropdownSelect/styles";
+import { links } from "@app/pages/AccountPage/paths";
 
 const PROPS = {
   active: "/account/",
-  links: [
-    {
-      label: "Mis categorías",
-      url: "/select-categories/",
-    },
-    {
-      label: "Mi perfil",
-      url: "/account/",
-    },
-    {
-      label: "Mis direcciones",
-      url: "/address-book/",
-    },
-    {
-      label: "Historial de pedidos",
-      url: "/order-history/",
-    },
-    {
-      label: "Mis medios de pago",
-      url: "/payment-methods/",
-    },
-  ],
+  links,
 };
 
 describe("<AccountMenuMobile />", () => {

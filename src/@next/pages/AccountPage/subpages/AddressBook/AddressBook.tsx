@@ -2,16 +2,15 @@ import React from "react";
 
 import { AddressFormModal, AddressGrid } from "@components/organisms";
 import { AddressTypeEnum, CountryCode } from "@sdk/gqlTypes/globalTypes";
-import { useDefaultUserAddress, useDeleteUserAddresss, useUpdateUserAddress } from "@sdk/react";
+import { useDefaultUserAddress, useDeleteUserAddresss, useUpdateUserAddress, useUserDetails } from "@sdk/react";
 import { useShopContext } from "@temp/components/ShopProvider/context";
-import { UserDetails_me } from "@sdk/queries/gqlTypes/UserDetails";
 import { IAddressBookDisplay, IAddressWithAddressType } from "@temp/@next/types";
 import { removeCountryCodeInPhoneNumber } from "@temp/@next/utils/addresForm";
 import { maybe } from "@temp/@next/utils/misc";
+import AccountLayout from "@app/pages/AccountPage/AccountLayout";
 
-export const AddressBook: React.FC<{
-  user: UserDetails_me;
-}> = ({ user }) => {
+export const AddressBook: React.FC = () => {
+  const { data: user } = useUserDetails();
   const { availableDistricts, defaultCountry, countries } = useShopContext();
   const [displayNewModal, setDisplayNewModal] = React.useState(false);
   const [displayEditModal, setDisplayEditModal] = React.useState(false);
@@ -70,40 +69,42 @@ export const AddressBook: React.FC<{
   }), []);
 
   return (
-    <div className="fa-w-full">
-      <AddressGrid
-        addresses={userAddresses}
-        addNewAddress={() => {
-          setDisplayNewModal(true);
-        }}
-      />
-      {displayNewModal && (
-        <AddressFormModal
-          hideModal={() => {
-            setDisplayNewModal(false);
+    <AccountLayout>
+      <div className="fa-w-full">
+        <AddressGrid
+          addresses={userAddresses}
+          addNewAddress={() => {
+            setDisplayNewModal(true);
           }}
-          userId={user.id}
-          {...{ defaultValue: defaultCountry ? defaultCountry : {} }}
-          submitBtnText="Guardar"
-          title="Agregar nueva dirección"
-          {...{ countriesOptions: countries }}
-          formId="address-form"
-          districtsOptions={districtsOptions}
         />
-      )}
-      {displayEditModal && (
-        <AddressFormModal
-          hideModal={() => {
-            setDisplayEditModal(false);
-          }}
-          address={addressData}
-          submitBtnText="Guardar"
-          {...{ countriesOptions: countries }}
-          formId="address-form"
-          districtsOptions={districtsOptions}
-        />
-      )}
-    </div>
+        {displayNewModal && (
+          <AddressFormModal
+            hideModal={() => {
+              setDisplayNewModal(false);
+            }}
+            userId={user.id}
+            {...{ defaultValue: defaultCountry ? defaultCountry : {} }}
+            submitBtnText="Guardar"
+            title="Agregar nueva dirección"
+            {...{ countriesOptions: countries }}
+            formId="address-form"
+            districtsOptions={districtsOptions}
+          />
+        )}
+        {displayEditModal && (
+          <AddressFormModal
+            hideModal={() => {
+              setDisplayEditModal(false);
+            }}
+            address={addressData}
+            submitBtnText="Guardar"
+            {...{ countriesOptions: countries }}
+            formId="address-form"
+            districtsOptions={districtsOptions}
+          />
+        )}
+      </div>
+    </AccountLayout>
   );
 };
 

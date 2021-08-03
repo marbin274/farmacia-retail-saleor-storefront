@@ -4,19 +4,11 @@ import React from "react";
 
 import { MemoryRouter } from "react-router";
 import { AccountMenu } from ".";
+import { links } from "@app/pages/AccountPage/paths";
 
 const PROPS = {
   active: "/account/",
-  links: [
-    {
-      label: "Mi perfil",
-      url: "/account/",
-    },
-    {
-      label: "Mis direcciones",
-      url: "/address-book/",
-    },
-  ],
+  links,
 };
 
 describe("<AccountMenu />", () => {

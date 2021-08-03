@@ -1,52 +1,20 @@
-import { AccountMenu, AccountMenuMobile } from "@components/molecules";
-import { Breadcrumbs } from "@farmacia-retail/farmauna-components";
-import { useUserDetails } from "@sdk/react";
-import { useMediaScreen } from "@temp/@next/globalStyles";
-import { baseUrl } from "@temp/app/routes";
-import { links } from "@app/pages/AccountPage/paths";
-import { Loader } from "@temp/components";
-import * as React from "react";
-import { RouteComponentProps, useLocation, withRouter } from "react-router";
-import AccountRoutes from "./routes";
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+import { accountCategoriesUrl, addressBookUrl, orderDetailsUrl, orderHistoryUrl, paymentMethodsUrl } from "./paths";
+import { AccountTab, AddressBook, CategoriesTab, OrderDetails, OrdersHistory, PaymentMethodList } from "./subpages";
+
+export * from "./paths";
 
 
-const Account: React.FC<RouteComponentProps> = ({ history }) => {
-  const { data: user, loading } = useUserDetails();
-  const { isDesktopScreen } = useMediaScreen();
-  const location = useLocation();
-  
+const Account: React.FC = () => (
+  <Switch>
+    <Route path={accountCategoriesUrl} component={CategoriesTab} />
+    <Route path={addressBookUrl} component={AddressBook} />
+    <Route path={orderDetailsUrl} component={OrderDetails} />
+    <Route path={orderHistoryUrl} component={OrdersHistory} />
+    <Route path={paymentMethodsUrl} component={PaymentMethodList} />
+    <Route component={AccountTab} />
+  </Switch>
+);
 
-  if (loading) {
-    return <Loader />;
-  }
-
-  if (!user) {
-    history.push(baseUrl);
-  }
-
-  return (
-    <div className="fa-bg-neutral-light fa-pt-4 fa-w-auto md:fa-w-auto">
-      <div className="container">
-        <Breadcrumbs
-          breadcrumbs={[{ link: location.pathname, label: "Mi Cuenta" }]}
-          baseUrl={baseUrl}
-        />
-        <div className="fa-flex fa-flex-nowrap fa-items-stretch fa-mb-16 fa-mt-4 fa-flex-col md:fa-flex-row">
-          {
-            isDesktopScreen ? <div className="fa-w-auto">
-              <AccountMenu links={links} active={location.pathname} />
-            </div>
-              : <div className="md:fa-w-full">
-                <AccountMenuMobile links={links} active={location.pathname} />
-              </div>
-          }
-          <div className="fa-w-full">
-            {user && <AccountRoutes />}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default withRouter(Account);
+export default Account;
