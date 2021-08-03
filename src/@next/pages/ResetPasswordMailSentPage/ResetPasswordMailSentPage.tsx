@@ -40,11 +40,11 @@ export const ResetPasswordMailSentPage: React.FC<ResetPasswordMailSentProps> = (
     }
 
     return (
-        <div className="reset-password-mail-sent">
-            <ReactSVG path={ResetPasswordMailSentIcon} className="reset-password-mail-sent__image" />
-            <h3>Revise su correo electrónico</h3>
-            <p>Hemos enviado las instrucciones para que puedas restaurar la contraseña a <strong>{resetPasswordEmail}</strong></p>
-            <div className="reset-password-mail-sent__button">
+        <div className="fa-text-center">
+            <ReactSVG path={ResetPasswordMailSentIcon} className="fa-flex fa-justify-center fa-mb-6" />
+            <h3 className="fa-font-semibold fa-text-2xl fa-mb-6">Revise su correo electrónico</h3>
+            <p className="fa-text-sm fa-font-medium fa-text-neutral-dark fa-px-8">Hemos enviado las instrucciones para que puedas restaurar la contraseña a <strong className="fa-text-highlight-medium">{resetPasswordEmail}</strong></p>
+            <div className="fa-mt-6">
                 <Button 
                     size="large"
                     fullWidth 
