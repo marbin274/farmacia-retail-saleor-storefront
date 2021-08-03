@@ -6,7 +6,11 @@ import {
 import { NOT_CHARGE_TOKEN } from "@components/organisms/DummyPaymentGateway";
 import { TileRadio, Collapse } from "@components/molecules";
 import { alertService } from "@components/atoms/Alert";
-import { POS_DISTRICTS, PROVIDERS } from "@temp/core/config";
+import {
+  HIDE_CARDTOKENS_IN_CHECKOUT,
+  POS_DISTRICTS,
+  PROVIDERS,
+} from "@temp/core/config";
 import PosIcon from "images/auna/pos.svg";
 import { IProps } from "./types";
 import * as S from "./styles";
@@ -54,8 +58,9 @@ const PaymentGatewaysList: React.FC<IProps> = ({
   const [cardNumberTosave, setCardNumberToSave] = useState<string>();
   const [scriptLoaded, setScriptLoaded] = useState(false);
 
-  const userLoggedIn = !!user;
-  const userHasCardTokens = user?.cardTokens?.length > 0;
+  const userLoggedIn = !HIDE_CARDTOKENS_IN_CHECKOUT && !!user;
+  const userHasCardTokens =
+    !HIDE_CARDTOKENS_IN_CHECKOUT && user?.cardTokens?.length > 0;
 
   useEffect(() => {
     loadNiubizAntiFraudScript(() => {
