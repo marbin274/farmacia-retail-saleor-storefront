@@ -5,6 +5,7 @@ import {
 } from "apollo-client";
 
 import { RequireOnlyOne } from "../tsHelpers";
+import * as Article from "./article";
 import * as AttributesList from "./attributes";
 import * as Category from "./category";
 import * as Orders from "./orders";
@@ -37,6 +38,7 @@ import {
 
 import * as User from "./user";
 import { CategoryList } from "./gqlTypes/CategoryList";
+import { ArticleDetailVariables, ArticleDetail } from "./gqlTypes/ArticleDetail";
 
 type QueryOptions<T = {}> = T extends { [n: string]: never }
   ? Omit<ApolloQueryOptions<{}>, "query">
@@ -44,6 +46,14 @@ type QueryOptions<T = {}> = T extends { [n: string]: never }
 
 // TODO: Add ability to pass custom fragments to queries
 export const QUERIES = {
+  Article: <TCacheShape>(
+    client: ApolloClient<TCacheShape>,
+    options: QueryOptions<ArticleDetailVariables>
+  ): ObservableQuery<ArticleDetail, any> =>
+    client.watchQuery({
+      query: Article.articleDetail,
+      ...options,
+  }),
   Attributes: <TCacheShape>(
     client: ApolloClient<TCacheShape>,
     options: QueryOptions<AttributesVariables>

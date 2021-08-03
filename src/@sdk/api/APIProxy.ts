@@ -33,6 +33,11 @@ import {
 import { SaveFavoriteCategoriesResult, SetAccountConfirmResult, SetPasswordChange, SetPasswordResult, SignIn } from "./types";
 
 export class APIProxy {
+  getArticle = this.watchQuery(
+    QUERIES.Article,
+    (data) => data
+  );
+
   getAttributes = this.watchQuery(
     QUERIES.Attributes,
     (data) => data.attributes

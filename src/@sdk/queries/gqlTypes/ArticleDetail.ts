@@ -3,10 +3,10 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL query operation: Article
+// GraphQL query operation: ArticleDetail
 // ====================================================
 
-export interface Article_page {
+export interface ArticleDetail_page {
   __typename: "Page";
   contentImage: string | null;
   contentJson: any;
@@ -20,7 +20,7 @@ export interface Article_page {
   title: string;
 }
 
-export interface Article_shop_homepageCollection_backgroundImage {
+export interface ArticleDetail_shop_homepageCollection_backgroundImage {
   __typename: "Image";
   /**
    * The URL of the image.
@@ -28,34 +28,34 @@ export interface Article_shop_homepageCollection_backgroundImage {
   url: string;
 }
 
-export interface Article_shop_homepageCollection {
+export interface ArticleDetail_shop_homepageCollection {
   __typename: "Collection";
   /**
    * The ID of the object.
    */
   id: string;
-  backgroundImage: Article_shop_homepageCollection_backgroundImage | null;
+  backgroundImage: ArticleDetail_shop_homepageCollection_backgroundImage | null;
 }
 
-export interface Article_shop {
+export interface ArticleDetail_shop {
   __typename: "Shop";
   /**
    * Collection displayed on homepage.
    */
-  homepageCollection: Article_shop_homepageCollection | null;
+  homepageCollection: ArticleDetail_shop_homepageCollection | null;
 }
 
-export interface Article {
+export interface ArticleDetail {
   /**
    * Look up a page by ID or slug.
    */
-  page: Article_page | null;
+  page: ArticleDetail_page | null;
   /**
    * Return information about the shop.
    */
-  shop: Article_shop;
+  shop: ArticleDetail_shop;
 }
 
-export interface ArticleVariables {
+export interface ArticleDetailVariables {
   slug: string;
 }
