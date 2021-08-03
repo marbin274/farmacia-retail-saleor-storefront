@@ -4,7 +4,7 @@ import { IUserDataForNiubiz } from "@temp/@next/components/organisms/CheckoutPay
 import { v4 as uuidv4 } from "uuid";
 import _ from "lodash";
 import { loadScript } from "@sdk/utils";
-import { niubizAntifraudScriptUrl } from "@temp/constants";
+import { niubizAntifraudScriptUrl } from "@temp/core/constants";
 const ip = require("ip");
 
 export const generateNiubizPurchaseNumber = () =>
