@@ -92,8 +92,8 @@ const Header: React.FC<IProps> = ({
             <ul className="main-header__dropdown">
               {
                 links.map((it, index) =>
-                  <li data-testid={`${it.testId}__link`}>
-                    <Link key={index} className="fa-w-full fa-flex" to={it.url} onClick={closeSearch}>
+                  <li key={index} data-testid={`${it.testId}__link`}>
+                    <Link className="fa-w-full fa-flex" to={it.url} onClick={closeSearch}>
                       {it.label}
                     </Link>
                   </li>
