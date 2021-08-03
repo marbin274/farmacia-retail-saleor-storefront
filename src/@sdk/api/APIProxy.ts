@@ -72,6 +72,11 @@ export class APIProxy {
     (data) => data.orderByToken
   );
 
+  getLanding = this.watchQuery(
+    QUERIES.Landing,
+    (data) => data
+  );
+
   getVariantsProducts = this.watchQuery(
     QUERIES.VariantsProducts,
     (data) => data.productVariants

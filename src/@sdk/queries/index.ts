@@ -6,6 +6,7 @@ import {
 
 import { RequireOnlyOne } from "../tsHelpers";
 import * as Article from "./article";
+import * as LandingQuery from "./landing";
 import * as AttributesList from "./attributes";
 import * as Category from "./category";
 import * as Orders from "./orders";
@@ -39,6 +40,7 @@ import {
 import * as User from "./user";
 import { CategoryList } from "./gqlTypes/CategoryList";
 import { ArticleDetailVariables, ArticleDetail } from "./gqlTypes/ArticleDetail";
+import { LandingVariables, Landing } from "./gqlTypes/Landing";
 
 type QueryOptions<T = {}> = T extends { [n: string]: never }
   ? Omit<ApolloQueryOptions<{}>, "query">
@@ -86,6 +88,14 @@ export const QUERIES = {
       query: Shop.getShop,
       ...options,
     }),
+  Landing: <TCacheShape>(
+    client: ApolloClient<TCacheShape>,
+    options: QueryOptions<LandingVariables>
+  ): ObservableQuery<Landing, any> =>
+    client.watchQuery({
+      query: LandingQuery.landing,
+      ...options,
+  }),
   OrderDetails: <TCacheShape>(
     client: ApolloClient<TCacheShape>,
     options: QueryOptions<OrderByTokenVariables>

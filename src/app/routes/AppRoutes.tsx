@@ -4,6 +4,7 @@ import {
   ArticlePage,
   CartPage,
   CheckoutPage,
+  LandingPage,
   PasswordReset,
   ResetPasswordMailSentPage,
   ThankYouPage,
@@ -15,7 +16,6 @@ import { CheckoutLogin, NotFound } from "../../components";
 import { CategoryPage } from "../../views/Category";
 import { CollectionPage } from "../../views/Collection";
 import { HomePage } from "../../views/Home";
-import { LandingPage } from "../../views/Landing";
 import { ProductPage } from "../../views/Product";
 import { SearchPage } from "../../views/Search";
 import * as paths from "./paths";
