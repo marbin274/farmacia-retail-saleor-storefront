@@ -3,6 +3,7 @@ import {
   useSetDefaultUserCardToken,
   useDeleteUserCardToken,
   useCreateUserCardToken,
+  useUserDetails,
 } from "@temp/@sdk/react";
 import { alertService } from "@temp/@next/components/atoms/Alert";
 import CreditCardIcon from "images/auna/credit-card.svg";
@@ -14,7 +15,8 @@ import { PatmentMethodFormModal } from "./components/PatmentMethodFormModal";
 import { IProps } from "./types";
 import { ICardTokenizationResult } from "@temp/core/payments/niubiz";
 
-export const PaymentMethodList: FC<IProps> = ({ user }) => {
+export const PaymentMethodList: FC<IProps> = () => {
+  const { data: user } = useUserDetails();
   const [showAddModal, setShowAddModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [cardTokenToDelete, setCardTokenToDelete] = useState<string>();
