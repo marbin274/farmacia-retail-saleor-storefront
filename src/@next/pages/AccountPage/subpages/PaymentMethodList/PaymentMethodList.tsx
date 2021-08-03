@@ -3,6 +3,7 @@ import {
   useSetDefaultUserCardToken,
   useDeleteUserCardToken,
   useCreateUserCardToken,
+  useUserDetails,
 } from "@temp/@sdk/react";
 import { alertService } from "@temp/@next/components/atoms/Alert";
 import CreditCardIcon from "images/auna/credit-card.svg";
@@ -13,8 +14,10 @@ import { PaymentMethods } from "./components/PaymentMethods";
 import { PatmentMethodFormModal } from "./components/PatmentMethodFormModal";
 import { IProps } from "./types";
 import { ICardTokenizationResult } from "@temp/core/payments/niubiz";
+import AccountLayout from "@app/pages/AccountPage/AccountLayout";
 
-export const PaymentMethodList: FC<IProps> = ({ user }) => {
+export const PaymentMethodList: FC<IProps> = () => {
+  const { data: user } = useUserDetails();
   const [showAddModal, setShowAddModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [cardTokenToDelete, setCardTokenToDelete] = useState<string>();
@@ -128,55 +131,57 @@ export const PaymentMethodList: FC<IProps> = ({ user }) => {
   };
 
   return (
-    <div>
-      {showAddSuccess && (
-        <Alert
-          icon={<CheckIcon size={12} />}
-          message="Tarjeta guardada con éxito"
-          className="fa-mb-4 fa-hidden md:fa-flex"
+    <AccountLayout>
+      <div>
+        {showAddSuccess && (
+          <Alert
+            icon={<CheckIcon size={12} />}
+            message="Tarjeta guardada con éxito"
+            className="fa-mb-4 fa-hidden md:fa-flex"
+          />
+        )}
+        {showDeleteSuccess && (
+          <Alert
+            icon={<TrashIcon size={12} />}
+            message="La tarjeta ha sido eliminada"
+            className="fa-mb-4 fa-hidden md:fa-flex"
+            type="error"
+          />
+        )}
+        <PaymentMethods
+          creditCards={user?.cardTokens}
+          onClickAdd={() => setShowAddModal(true)}
+          onClickSetDefault={performSetDefault}
+          onClickDelete={onClickDelete}
+          showAddSuccess={showAddSuccess}
+          showDeleteSuccess={showDeleteSuccess}
         />
-      )}
-      {showDeleteSuccess && (
-        <Alert
-          icon={<TrashIcon size={12} />}
-          message="La tarjeta ha sido eliminada"
-          className="fa-mb-4 fa-hidden md:fa-flex"
-          type="error"
-        />
-      )}
-      <PaymentMethods
-        creditCards={user?.cardTokens}
-        onClickAdd={() => setShowAddModal(true)}
-        onClickSetDefault={performSetDefault}
-        onClickDelete={onClickDelete}
-        showAddSuccess={showAddSuccess}
-        showDeleteSuccess={showDeleteSuccess}
-      />
-      {showAddModal && (
-        <PatmentMethodFormModal
-          formRef={addFormRef}
-          show={showAddModal}
-          onClose={() => setShowAddModal(false)}
-          user={user}
-          loading={createLoading}
-          onSubmit={performCreate}
-        />
-      )}
-      <Modal
-        show={showDeleteModal}
-        hide={() => setShowDeleteModal(false)}
-        submitBtnText="Sí, borrar"
-        onSubmit={performDelete}
-        title=""
-        disabled={false}
-      >
-        <div className="fa-flex fa-items-center fa-flex-col">
-          <img src={CreditCardIcon} alt="credit-card" className="fa-mb-6" />
-          <p className="fa-text-center fa-mb-4">
-            ¿Seguro que deseas borrar esta tarjeta de Farmauna?
-          </p>
-        </div>
-      </Modal>
-    </div>
+        {showAddModal && (
+          <PatmentMethodFormModal
+            formRef={addFormRef}
+            show={showAddModal}
+            onClose={() => setShowAddModal(false)}
+            user={user}
+            loading={createLoading}
+            onSubmit={performCreate}
+          />
+        )}
+        <Modal
+          show={showDeleteModal}
+          hide={() => setShowDeleteModal(false)}
+          submitBtnText="Sí, borrar"
+          onSubmit={performDelete}
+          title=""
+          disabled={false}
+        >
+          <div className="fa-flex fa-items-center fa-flex-col">
+            <img src={CreditCardIcon} alt="credit-card" className="fa-mb-6" />
+            <p className="fa-text-center fa-mb-4">
+              ¿Seguro que deseas borrar esta tarjeta de Farmauna?
+            </p>
+          </div>
+        </Modal>
+      </div>
+    </AccountLayout>
   );
 };

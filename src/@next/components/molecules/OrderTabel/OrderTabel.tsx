@@ -7,6 +7,7 @@ import { ThemeContext } from "styled-components";
 import { Thumbnail } from "..";
 import * as S from "./styles";
 import { IProps } from "./types";
+import { orderHistoryUrl } from "@app/pages/AccountPage/paths";
 
 const header = (matches: boolean) => (
   <S.HeaderRow>
@@ -24,7 +25,7 @@ const header = (matches: boolean) => (
 );
 
 export const OrderTabel: React.FC<IProps> = ({ orders, history }: IProps) => {
-  const theme = React.useContext(ThemeContext);
+  const theme = React.useContext(ThemeContext);  
   return (
     <S.Wrapper>
       <Media
@@ -45,7 +46,7 @@ export const OrderTabel: React.FC<IProps> = ({ orders, history }: IProps) => {
                       key={order.node.number}
                       onClick={(evt: { stopPropagation: () => void }) => {
                         evt.stopPropagation();
-                        history.push(`/order-history/${order.node.token}`);
+                        history.push(`${orderHistoryUrl + order.node.token}`);
                       }}
                     >
                       <S.IndexNumber>{order.node.sequentialCode}</S.IndexNumber>
