@@ -2,16 +2,14 @@ import React from "react";
 
 import { AddressFormModal, AddressGrid } from "@components/organisms";
 import { AddressTypeEnum, CountryCode } from "@sdk/gqlTypes/globalTypes";
-import { useDefaultUserAddress, useDeleteUserAddresss, useUpdateUserAddress } from "@sdk/react";
+import { useDefaultUserAddress, useDeleteUserAddresss, useUpdateUserAddress, useUserDetails } from "@sdk/react";
 import { useShopContext } from "@temp/components/ShopProvider/context";
-import { UserDetails_me } from "@sdk/queries/gqlTypes/UserDetails";
 import { IAddressBookDisplay, IAddressWithAddressType } from "@temp/@next/types";
 import { removeCountryCodeInPhoneNumber } from "@temp/@next/utils/addresForm";
 import { maybe } from "@temp/@next/utils/misc";
 
-export const AddressBook: React.FC<{
-  user: UserDetails_me;
-}> = ({ user }) => {
+export const AddressBook: React.FC = () => {
+  const { data: user } = useUserDetails();
   const { availableDistricts, defaultCountry, countries } = useShopContext();
   const [displayNewModal, setDisplayNewModal] = React.useState(false);
   const [displayEditModal, setDisplayEditModal] = React.useState(false);

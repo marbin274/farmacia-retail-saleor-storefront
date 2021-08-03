@@ -4,6 +4,7 @@ import React from "react";
 import { MemoryRouter } from "react-router";
 
 import { AccountMenuMobile } from ".";
+import { links } from "@app/pages/AccountPage/paths";
 
 const Wrapper = styled.div`
   margin-top: 100px;
@@ -12,16 +13,7 @@ const Wrapper = styled.div`
 
 const PROPS = {
   active: "/account/",
-  links: [
-    {
-      label: "Mi perfil",
-      url: "/account/",
-    },
-    {
-      label: "Mis direcciones",
-      url: "/address-book/",
-    },
-  ],
+  links,
 };
 
 storiesOf("@components/molecules/AccountMenuMobile", module)

@@ -7,6 +7,7 @@ import { Thumbnail } from "../";
 
 import { OrderTabel } from ".";
 import * as S from "./styles";
+import { orderHistoryUrl } from "@temp/@next/pages/AccountPage/paths";
 
 const history = createBrowserHistory();
 const ORDERS = [
@@ -114,7 +115,7 @@ describe("<OrderTabel />", () => {
       .simulate("click");
 
     expect(historySpy).toHaveBeenCalledWith(
-      `/order-history/${ORDERS[0].node.token}`
+      `${orderHistoryUrl + ORDERS[0].node.token}`
     );
   });
 
