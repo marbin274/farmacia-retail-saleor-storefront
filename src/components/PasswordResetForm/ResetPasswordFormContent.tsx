@@ -8,20 +8,21 @@ import { MutationFn } from "react-apollo";
 import { ResetPassword, ResetPasswordVariables } from "./gqlTypes/ResetPassword";
 import { passwordResetFormSchema } from "./passwordResetForm.schema";
 import { Button, InputField } from "@farmacia-retail/farmauna-components";
-import { ResetPasswordMailSent } from "@temp/views/Account";
-
+import { ResetPasswordMailSentPage } from "@app/pages";
 interface ResetPasswordFormContentProps {
     called: boolean;
     loading: boolean;
     errors?: IFormError[],
+    buttonBack?: React.ReactChild;
+    onClose: () => void;
     passwordReset: MutationFn<ResetPassword, ResetPasswordVariables>;
 }
+
 const initialValues: ResetPasswordVariables = {
     email: '',
     redirectUrl: `${window.location.origin}${passwordResetUrl}`,
 };
-const ResetPasswordFormContent: React.FC<ResetPasswordFormContentProps> = ({ called, loading, errors: requestErrors, children, passwordReset }) => {
-
+const ResetPasswordFormContent: React.FC<ResetPasswordFormContentProps> = ({ buttonBack, onClose, called, loading, errors: requestErrors, children, passwordReset }) => {
     const [showMessageSuccess, setShowMessageSuccess] = React.useState<boolean>(false);
     const [showMessageErrors, setShowMessageErrors] = React.useState<boolean>(false);
 
@@ -41,7 +42,9 @@ const ResetPasswordFormContent: React.FC<ResetPasswordFormContentProps> = ({ cal
     }
 
     React.useEffect(() => {
-        document.querySelector<HTMLElement>('.overlay__header').style.display = 'block';
+        if (document.querySelector<HTMLElement>('.overlay__header')) {
+            document.querySelector<HTMLElement>('.overlay__header').style.display = 'block';
+        }
     }, []);
 
     React.useEffect(() => {
@@ -88,17 +91,23 @@ const ResetPasswordFormContent: React.FC<ResetPasswordFormContentProps> = ({ cal
                         />
                         {children}
                         <div className="password-reset-form__button">
-
-                            <Button type="submit" {...(loading && { disabled: true })} variant="default">
+                            <Button 
+                                {...(loading && { disabled: true })}
+                                fullWidth 
+                                size="large"
+                                type="submit"
+                                variant="default"
+                            >
                                 {loading ? "Cargando" : "Enviar instrucciones"}
                             </Button>
+                            {buttonBack}
                         </div>
                     </form>
                 </>
             ) : (
 
                 <div>
-                    <ResetPasswordMailSent />
+                    <ResetPasswordMailSentPage onClose={onClose} />
                 </div>
             )
             }

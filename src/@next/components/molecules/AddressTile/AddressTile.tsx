@@ -47,7 +47,7 @@ export const AddressTile: React.FC<IProps> = ({
           Usar como dirección principal
         </span>
       </S.SelectDefaultAddress>
-      <div className="fa-flex fa-items-center ">
+      <div className="fa-flex fa-items-center fa-ml-2">
         <Button
           role="edit-option"
           className='fa-mr-4'

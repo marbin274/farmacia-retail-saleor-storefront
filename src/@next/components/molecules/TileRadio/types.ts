@@ -6,4 +6,5 @@ export type ITileRadioProps = {
   onClick?: () => void;
   hasError?: boolean;
   radioProps: InputHTMLAttributes<HTMLInputElement>;
+  contentNoSpacing?: boolean;
 };

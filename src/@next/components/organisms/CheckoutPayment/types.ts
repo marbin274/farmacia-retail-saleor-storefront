@@ -3,10 +3,10 @@ import { ITotalPrice } from "@temp/@sdk/api/Cart/types";
 import {
   IAddress,
   IAddressWithAddressType,
-  ICardData,
   IFormError,
   IPaymentGateway,
 } from "@types";
+import { IProcesPaymentArgs } from "../PaymentGatewaysList/types";
 
 export interface IPromoCodeDiscount {
   voucherCode?: string | null;
@@ -68,11 +68,7 @@ export interface IProps {
   /**
    * Method called after the form is submitted. Passed gateway id and token attribute will be used to create payment.
    */
-  processPayment: (
-    gateway: string,
-    token: string,
-    cardData?: ICardData
-  ) => void;
+  processPayment: (data: IProcesPaymentArgs) => void;
   /**
    * Method called when gateway error occured.
    */

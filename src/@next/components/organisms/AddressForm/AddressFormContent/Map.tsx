@@ -1,6 +1,6 @@
 import React, { FC, useCallback, useEffect, useRef, useState } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
-import { mapsApiKey } from "@temp/constants";
+import { mapsApiKey } from "@temp/core/constants";
 import MapIcon from "@temp/images/auna/map-icon.svg";
 import * as S from "./styles";
 import { LIMA_BOUNDS } from "@temp/core/config";

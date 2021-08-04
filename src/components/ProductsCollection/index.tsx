@@ -1,4 +1,4 @@
-import { ISimpleProduct } from "@app/types/IProduct";
+import { ISimpleProduct } from "@sdk/types/IProduct";
 import { Carousel } from "@temp/@next/components/containers";
 import { ProductTileAUNA } from "@temp/@next/components/molecules";
 import {
@@ -6,8 +6,7 @@ import {
   IRemoveItemToCartCallback,
   ISubtractItemToCartCallback,
 } from "@temp/@next/components/molecules/ProductTileAUNA/types";
-import { getProductsWithQuantity } from "@temp/@next/utils/products";
-import { UserDetails_me } from "@temp/@sdk/queries/gqlTypes/UserDetails";
+import { getProductsWithQuantity } from "@sdk/utils/products";
 import { useCart } from "@temp/@sdk/react";
 import { generateProductUrl } from "@temp/core/utils";
 import React, { FC, useCallback } from "react";
@@ -16,10 +15,9 @@ import * as S from "./styles";
 export type IProductsCollectionProps = {
   name: string;
   products: ISimpleProduct[];
-  user: UserDetails_me;
 };
 
-const ProductsCollection: FC<IProductsCollectionProps> = ({ name, products, user }) => {
+const ProductsCollection: FC<IProductsCollectionProps> = ({ name, products }) => {
   const {
     items: productsOnCart,
     addItem,
@@ -56,7 +54,6 @@ const ProductsCollection: FC<IProductsCollectionProps> = ({ name, products, user
               product={product}
               productsOnCart={productsOnCart}
               productUrl={generateProductUrl(product.id, product.name)}
-              user={user}
             />
           ))}
         </Carousel>

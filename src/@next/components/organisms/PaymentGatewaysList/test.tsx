@@ -5,8 +5,28 @@ import React from "react";
 import { PaymentGatewaysList } from ".";
 import { paymentGateways, userDataFroNiubiz } from "./fixtures";
 
+jest.mock("@temp/@sdk/react", () => ({
+  useUserDetails: () => ({
+    data: undefined,
+    loading: false,
+  }),
+  useCreateUserCardToken: () => [
+    jest.fn(),
+    {
+      data: undefined,
+      error: undefined,
+      loading: false,
+    },
+  ],
+}));
+
 describe("<PaymentGatewaysList />", () => {
   it("renders payment gateways", () => {
+    // @ts-ignore
+    Object.defineProperty(global.document, "getElementById", {
+      value: () => true,
+    });
+
     const processPayment = jest.fn();
     const selectPaymentGateway = jest.fn();
     const onError = jest.fn();
@@ -27,6 +47,4 @@ describe("<PaymentGatewaysList />", () => {
 
     expect(wrapper.exists()).toEqual(true);
   });
-
-  
 });

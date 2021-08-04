@@ -5,8 +5,28 @@ import React from "react";
 import { CheckoutPayment } from ".";
 import { LOGGED_IN_USER_PROPS } from "./fixtures";
 
+jest.mock("@temp/@sdk/react", () => ({
+  useUserDetails: () => ({
+    data: undefined,
+    loading: false,
+  }),
+  useCreateUserCardToken: () => [
+    jest.fn(),
+    {
+      data: undefined,
+      error: undefined,
+      loading: false,
+    },
+  ],
+}));
+
 describe("<CheckoutPayment />", () => {
   it("renders user addresses", () => {
+    // @ts-ignore
+    Object.defineProperty(global.document, "getElementById", {
+      value: () => true,
+    });
+
     const setBillingAddress = jest.fn();
     const setBillingAsShippingAddress = jest.fn();
     const addPromoCode = jest.fn();

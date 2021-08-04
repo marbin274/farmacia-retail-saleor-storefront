@@ -194,7 +194,6 @@ const props: IProductsCollectionProps = {
       
     },
   ],
-  user: null,
 };
 
 describe("<ProductsCollection />", () => {

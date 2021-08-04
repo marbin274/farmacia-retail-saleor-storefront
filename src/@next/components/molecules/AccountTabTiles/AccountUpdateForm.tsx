@@ -43,7 +43,7 @@ export const AccountUpdateForm: React.FC<IProps> = ({
           isValid,
         }) => {
           return (
-            <S.Form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
               <S.ContentEditOneLine>
                 <S.ContentExtendInput>
                   <TextField
@@ -86,7 +86,7 @@ export const AccountUpdateForm: React.FC<IProps> = ({
                   Guardar
                 </Button>
               </S.FormButtons>
-            </S.Form>
+            </form>
           );
         }}
       </Formik>

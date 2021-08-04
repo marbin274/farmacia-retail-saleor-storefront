@@ -9,6 +9,20 @@ type SearchOverlayTitleProps = {
 export const SearchOverlayTitle: FC<SearchOverlayTitleProps> = ({
   overlayContext,
 }) => {
+
+  React.useEffect(() => {
+    const suscription = searchProductsService
+      .on()
+      .subscribe((payload: string) => {
+        if (!payload?.length) {
+          overlayContext.hide();
+        }
+      });
+    return ()=>{
+      suscription?.unsubscribe();
+    }
+  }, []);
+
   return (
     <div className="fa-w-full fa-flex fa-items-center fa-justify-between fa-mb-4">
       <span className="fa-text-neutral-lightest fa-font-semibold fa-text-base fa-leading-5">

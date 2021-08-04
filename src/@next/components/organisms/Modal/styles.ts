@@ -11,7 +11,6 @@ export const Modal = styled.div`
   max-width: 100%;
   max-height: 98%;
   z-index: 1000;
-  padding-bottom: 2rem;
   overflow-y: auto;
   background-color: ${props => props.theme.colors.white};
   margin-left: auto;

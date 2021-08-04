@@ -57,6 +57,7 @@ export enum CheckoutErrorCode {
   INSUFFICIENT_STOCK = "INSUFFICIENT_STOCK",
   INVALID = "INVALID",
   INVALID_SHIPPING_METHOD = "INVALID_SHIPPING_METHOD",
+  INVALID_SLOT = "INVALID_SLOT",
   NIUBIZ = "NIUBIZ",
   NOT_FOUND = "NOT_FOUND",
   PAYMENT_ERROR = "PAYMENT_ERROR",
@@ -393,6 +394,7 @@ export enum ShippingStatusEnum {
   DELIVERED = "DELIVERED",
   IN_TRANSIT = "IN_TRANSIT",
   NOT_SEND = "NOT_SEND",
+  PICKING_STARTED = "PICKING_STARTED",
 }
 
 export interface AccountInput {
@@ -426,6 +428,17 @@ export interface AttributeInput {
   values?: (string | null)[] | null;
 }
 
+export interface CardTokenInput {
+  cardNumber?: string | null;
+  brand?: string | null;
+  binNumber?: string | null;
+  default?: boolean | null;
+  tokenId?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  email?: string | null;
+}
+
 export interface CheckoutCreateInput {
   lines: (CheckoutLineInput | null)[];
   email?: string | null;
@@ -440,11 +453,17 @@ export interface CheckoutLineInput {
   variantId: string;
 }
 
+export interface FavoriteCategoryInput {
+  categoryId: string;
+  isFavorite: boolean;
+}
+
 export interface PaymentInput {
   gateway: string;
   token: string;
   amount?: any | null;
   billingAddress?: AddressInput | null;
+  withToken?: boolean | null;
 }
 
 export interface PrivacyPolicyInput {

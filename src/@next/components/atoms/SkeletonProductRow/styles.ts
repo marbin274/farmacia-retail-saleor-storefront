@@ -19,10 +19,3 @@ export const SkeletonItems = styled.div<{height: number}>`
       }
     }
 `;
-
-export const SkeletonItem = styled.div`
-  width: 100%;
-  ${mediaUp.smallScreen`
-    margin: 0rem 2rem;
-  `};
- `;

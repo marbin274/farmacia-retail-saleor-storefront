@@ -3,7 +3,7 @@ import { JobsManager } from "@sdk/jobs";
 import { ICheckoutModel, IPaymentModel, IShippingMethodUpdate } from "@sdk/repository";
 import { SaleorState } from "@sdk/state";
 import { StateItems } from "@sdk/state/types";
-import { primeSku } from "@temp/constants";
+import { primeSku } from "@temp/core/constants";
 
 import { PromiseRunResponse } from "../types";
 import {
@@ -472,7 +472,8 @@ export class SaleorCheckoutAPI extends ErrorListener
   createPayment = async (
     gateway: string,
     token: string,
-    creditCard?: ICreditCard
+    creditCard?: ICreditCard,
+    withToken?: boolean
   ): PromiseRunResponse<DataErrorCheckoutTypes, FunctionErrorCheckoutTypes> => {
     await this.saleorState.provideCheckout(this.fireError);
     await this.saleorState.providePayment();
@@ -496,6 +497,7 @@ export class SaleorCheckoutAPI extends ErrorListener
           creditCard,
           paymentGateway: gateway,
           paymentToken: token,
+          withToken,
         }
       );
       return {

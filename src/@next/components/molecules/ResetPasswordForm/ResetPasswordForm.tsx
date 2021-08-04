@@ -28,16 +28,18 @@ export const ResetPasswordForm: React.FC<IProps> = ({
               <div className="new-password-form__text"><p>Crea una nueva contraseña que contenga mínimo 8 caracteres</p></div>
               <form onSubmit={handleSubmit}>
                 <S.InputFields>
-                  <InputField
-                    label="Nueva contraseña"
-                    name="password"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    type="password"
-                    placeholder="Ingresa la nueva contraseña"
-                    value={values.password}
-                    error={!!errors?.password ? errors!.password : passwordError}
-                  />
+                  <div className="fa-mb-4">
+                    <InputField
+                      label="Nueva contraseña"
+                      name="password"
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      type="password"
+                      placeholder="Ingresa la nueva contraseña"
+                      value={values.password}
+                      error={!!errors?.password ? errors!.password : passwordError}
+                    />
+                  </div>
                   <InputField
                     label="Confirma contraseña"
                     onBlur={handleBlur}
