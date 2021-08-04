@@ -84,6 +84,11 @@ export class APIProxy {
 
   getShopDetails = this.watchQuery(QUERIES.GetShopDetails, (data) => data);
 
+  searchProducts = this.watchQuery(
+    QUERIES.SearchProducts,
+    (data) => data
+  );
+
   setUserDefaultAddress = this.fireQuery(
     MUTATIONS.AddressTypeUpdate,
     (data) => data!.accountSetDefaultAddress

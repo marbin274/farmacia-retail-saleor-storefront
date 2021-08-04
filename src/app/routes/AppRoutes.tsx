@@ -7,6 +7,7 @@ import {
   LandingPage,
   PasswordReset,
   ResetPasswordMailSentPage,
+  SearchPage,
   ThankYouPage,
   UserRegistered
 } from "@pages";
@@ -17,7 +18,6 @@ import { CategoryPage } from "../../views/Category";
 import { CollectionPage } from "../../views/Collection";
 import { HomePage } from "../../views/Home";
 import { ProductPage } from "../../views/Product";
-import { SearchPage } from "../../views/Search";
 import * as paths from "./paths";
 
 export const Routes: React.FC = () => (

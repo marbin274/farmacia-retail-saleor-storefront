@@ -75,6 +75,30 @@ export const productVariantFragment = gql`
   }
 `;
 
+export const productVariantFragmentSimple = gql`
+    ${priceFragment}
+    fragment ProductVariantFieldsSimple on ProductVariant {
+        id
+        sku
+        name
+        quantityAvailable(district: $districtId)
+        images {
+            id
+            url
+            alt
+        }
+        pricing {
+            onSale
+            priceUndiscounted {
+                ...Price
+            }
+            price {
+                ...Price
+            }
+        }
+    }
+`;
+
 
 export const productPricingFragment = gql`
   ${priceFragment}

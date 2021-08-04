@@ -20,7 +20,7 @@ import { useCart } from "@temp/@sdk/react";
 import { useDistrictSelected } from "@temp/@next/hooks";
 import { CollectionVariables } from "./gqlTypes/Collection";
 import { SORT_OPTIONS } from "@temp/core/utils/sorts";
-import { SortOptions } from "../Search/Page";
+import { SortOptions } from "@app/pages/SearchPage/Page";
 import { useMediaScreen } from "@temp/@next/globalStyles";
 
 

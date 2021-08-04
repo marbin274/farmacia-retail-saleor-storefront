@@ -8,10 +8,10 @@ import { IItems } from "@temp/@sdk/api/Cart/types";
 import { convertToSimpleProduct, maybe } from "@temp/core/utils";
 import { IFilterAttributes, IFilters } from "@types";
 import * as React from "react";
-import { ProductListHeaderSearch } from "../../@next/components/molecules";
-import { ProductListAUNA } from "../../@next/components/organisms";
-import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
-import { SearchProducts_paginatedProducts } from "./gqlTypes/SearchProducts";
+import { ProductListHeaderSearch } from "@app/components/molecules";
+import { ProductListAUNA } from "@app/components/organisms";
+import { FilterSidebar } from "@app/components/organisms/FilterSidebar";
+import { SearchProducts_paginatedProducts } from "@sdk/queries/gqlTypes/SearchProducts";
 
 import * as S from "./styles";
 import { useScrollTo } from "@temp/@next/hooks";
