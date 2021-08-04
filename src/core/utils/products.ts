@@ -1,5 +1,5 @@
 import { IProductVariant } from "@temp/@next/types";
-import { ISimpleProduct } from "@temp/@next/types/IProduct";
+import { ISimpleProduct } from "@sdk/types/IProduct";
 import { ProductDetails_product } from "@temp/@sdk/queries/gqlTypes/ProductDetails";
 import { SearchResults_products_edges_node } from "@temp/components/OverlayManager/Search/gqlTypes/SearchResults"
 import { FeaturedProducts_shop_homepageCollections_edges_node_products_edges_node } from "@temp/components/ProductsFeatured/gqlTypes/FeaturedProducts";

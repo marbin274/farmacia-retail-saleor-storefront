@@ -3,7 +3,7 @@ import addImg from "../../../images/add.svg";
 import ReactSVG from "react-svg";
 import minusImg from "../../../images/minus.svg";
 import classNames from "classnames";
-import { MAX_ORDER_PER_PRODUCT } from "@temp/core/config";
+import { MAX_ORDER_PER_PRODUCT } from "@sdk/config";
 
 type IProps = {
   className?: string;

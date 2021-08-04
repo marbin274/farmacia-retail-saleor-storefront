@@ -2,7 +2,7 @@ import React, { FC, useCallback, useEffect, useRef } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
 import { InputField } from "@farmacia-retail/farmauna-components";
 import { IProps as ITextFieldProps } from "@components/molecules/TextField/types";
-import { mapsApiKey } from "@temp/constants";
+import { mapsApiKey } from "@temp/core/constants";
 import { LIMA_BOUNDS } from "@temp/core/config";
 
 export type IAddressAutocompleteValue = {
@@ -12,9 +12,10 @@ export type IAddressAutocompleteValue = {
 };
 
 type IProps = {
+  error?: string;
+  onChangeValue?: (value: IAddressAutocompleteValue) => void;
   placeholder: string;
   value?: IAddressAutocompleteValue;
-  onChangeValue?: (value: IAddressAutocompleteValue) => void;
 };
 
 type IAddressAutocompleteProps = IProps & Omit<ITextFieldProps, "value">;

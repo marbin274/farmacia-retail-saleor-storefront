@@ -135,6 +135,21 @@ export interface User_addresses {
   longitude: number | null;
 }
 
+export interface User_cardTokens {
+  __typename: "CardToken";
+  binNumber: string;
+  brand: string;
+  cardNumber: string;
+  default: boolean;
+  email: string;
+  firstName: string;
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  lastName: string;
+}
+
 export interface User {
   __typename: "User";
   /**
@@ -142,6 +157,10 @@ export interface User {
    */
   id: string;
   email: string;
+  /**
+   * List of favorite categories ID.
+   */
+  favoriteCategories: (string | null)[] | null;
   firstName: string;
   lastName: string;
   isStaff: boolean;
@@ -160,4 +179,8 @@ export interface User {
    * List of all user's addresses.
    */
   addresses: (User_addresses | null)[] | null;
+  /**
+   * List of all user's cards.
+   */
+  cardTokens: (User_cardTokens | null)[] | null;
 }

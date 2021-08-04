@@ -21,18 +21,20 @@ export const AccountTile: React.FC = () => {
   return (
     <S.TileWrapper>
       <Tile>
-        <S.Wrapper className="wrapper_background_account">
+        <S.Wrapper className="fa-pt-8 fa-px-2 fa-pb-2">
           <S.Header className="my_data">
-            Mis datos
-            {!isEditing && (
-              <Button
-                icon={<PencilIcon />}
-                iconOnly={true}
-                size="small"
-                onClick={() => setIsEditing(isEditing => !isEditing)}
-              />
+            <span className='fa-text-2xl fa-font-semibold'>Mis datos</span>
+            <div className='fa-self-start'>
+              {!isEditing && (
+                <Button
+                  icon={<PencilIcon />}
+                  iconOnly={true}
+                  size="small"
+                  onClick={() => setIsEditing(isEditing => !isEditing)}
+                />
 
-            )}
+              )}
+            </div>
           </S.Header>
           <S.Content>
             <S.HeaderSmall className="personal_data">

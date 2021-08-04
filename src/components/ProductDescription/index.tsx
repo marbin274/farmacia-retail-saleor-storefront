@@ -10,13 +10,15 @@ import {
   ProductDetails_product_variants,
   ProductDetails_product_variants_pricing,
 } from "@sdk/queries/gqlTypes/ProductDetails";
-import { ISimpleProduct } from "@temp/@next/types/IProduct";
+import { ISimpleProduct } from "@sdk/types/IProduct";
 import {
   ICheckoutModelLine,
   ICheckoutModelLineVariantLocalStorage,
 } from "@sdk/repository";
 import ItemsHandler from "@temp/@next/components/organisms/ItemsHandler/ItemsHandler";
-import { getProductPricingClass } from "@temp/@next/utils/products";
+import {
+  getProductPricingClass,  
+} from "@temp/@next/utils/products"
 import { IProductVariantsAttributesSelectedValues } from "@types";
 import isEqual from "lodash/isEqual";
 import * as React from "react";

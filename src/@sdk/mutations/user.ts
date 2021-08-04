@@ -47,3 +47,30 @@ export const setPassword = gql`
     }
   }
 `;
+
+export const saveFavoriteCategories = gql`
+  mutation SaveFavoriteCategories ($categories: [FavoriteCategoryInput]!){
+    accountSetFavoriteCategories(
+        categories: $categories
+  ) {
+        user {
+            favoriteCategories
+        }
+        accountErrors{
+            message
+        }
+    }
+  }
+`;
+
+export const setAccountConfirm = gql`
+mutation AccountConfirm($email: String!, $token: String!) {
+  confirmAccount(email: $email, token: $token) {
+    accountErrors {
+      field
+      message
+      code
+    }
+  }
+}
+`;

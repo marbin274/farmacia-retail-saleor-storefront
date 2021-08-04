@@ -2,7 +2,7 @@ import React from "react";
 
 import { ButtonLink } from "@components/atoms";
 import { CardHeader, OverlayItem } from "@components/molecules";
-import { useHandlerWhenClickedOutside } from "@hooks";
+import { useClickedOutside } from "@hooks";
 
 import { Overlay } from "../";
 import * as S from "./styles";
@@ -20,9 +20,11 @@ export const SelectSidebar: React.FC<IProps> = ({
   footerTitle,
   onClickFooter,
 }: IProps) => {
-  const { setElementRef } = useHandlerWhenClickedOutside(() => {
+  const { clickedOutside, setElementRef } = useClickedOutside();
+
+  React.useEffect(() => {
     hide();
-  });
+  }, [clickedOutside]);
 
   return (
     <Overlay

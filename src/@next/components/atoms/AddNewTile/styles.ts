@@ -1,21 +1,21 @@
-import { styled } from "@styles";
+import { styled, media } from "@styles";
 
 export const Content = styled.div`
   font-size: ${props => props.theme.typography.h4FontSize};
-  text-align: center;
-  vertical-align: center;
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
 
-  p {
-    margin: 0;
-    margin-bottom: calc(${props => props.theme.spacing.spacer} / 3);
-    font-weight: ${props => props.theme.typography.boldFontWeight};
-  }
+  ${media.smallScreen`
+    flex-direction: row;
+    padding-top: 0;
+    padding-bottom: 0;
+  `}
 `;
 
 export const Text = styled.div`
-  color: ${({theme}) => theme.colors.aunaBlack};
   font-size: ${({theme}) => theme.typography.baseFontSize};
 `

@@ -1,6 +1,8 @@
 import { ApolloError } from "apollo-client";
+import { AccountConfirm } from "../mutations/gqlTypes/AccountConfirm";
 import { CreateCheckout_checkoutCreate_checkoutErrors } from "../mutations/gqlTypes/CreateCheckout";
 import { PasswordChange } from "../mutations/gqlTypes/PasswordChange";
+import { SaveFavoriteCategories } from "../mutations/gqlTypes/SaveFavoriteCategories";
 import { SetPassword } from "../mutations/gqlTypes/SetPassword";
 import { TokenAuth_tokenCreate } from "../mutations/gqlTypes/TokenAuth";
 import { VariantsProductsAvailable_productVariants } from "../queries/gqlTypes/VariantsProductsAvailable";
@@ -36,6 +38,16 @@ export type SetPasswordChange = {
 
 export type SetPasswordResult = {
   data: SetPassword | null;
+  error: ApolloError | null;
+} | null;
+
+export type SaveFavoriteCategoriesResult = {
+  data: SaveFavoriteCategories | null;
+  error: ApolloError | null;
+} | null;
+
+export type SetAccountConfirmResult = {
+  data: AccountConfirm | null;
   error: ApolloError | null;
 } | null;
 

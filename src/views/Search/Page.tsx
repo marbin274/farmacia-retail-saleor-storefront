@@ -1,4 +1,3 @@
-import { Pagination } from "@farmacia-retail/farmauna-components";
 import { IPaginationProps } from "@temp/@next/components/molecules/Pagination/types";
 import {
   IAddToCartCallback,
@@ -13,9 +12,9 @@ import { ProductListHeaderSearch } from "../../@next/components/molecules";
 import { ProductListAUNA } from "../../@next/components/organisms";
 import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
 import { SearchProducts_paginatedProducts } from "./gqlTypes/SearchProducts";
-import { useUserDetails } from "@temp/@sdk/react";
 
 import * as S from "./styles";
+import { useScrollTo } from "@temp/@next/hooks";
 interface SortItem {
   label: string;
   value?: string;
@@ -36,7 +35,7 @@ interface PageProps extends IPaginationProps {
     updateType?: "replace" | "replaceIn" | "push" | "pushIn"
   ) => void;
   products: SearchProducts_paginatedProducts;
-  productsOnCart: IItems;
+  items: IItems;
   sortOptions: SortOptions;
   clearFilters: () => void;
   onAttributeFiltersChange: (attributeSlug: string, value: string) => void;
@@ -51,10 +50,9 @@ const Page: React.FC<PageProps> = ({
   activeSortOption,
   attributes,
   displayLoader,
-  hasNextPage,
   clearFilters,
   products,
-  productsOnCart,
+  items,
   filters,
   onOrder,
   sortOptions,
@@ -71,8 +69,7 @@ const Page: React.FC<PageProps> = ({
     () => !!products.edges && products.totalCount !== undefined
   );
   const [showFilters, setShowFilters] = React.useState(false);
-  const { data: user } = useUserDetails();
-  const searchContainerRef = React.useRef<HTMLDivElement>(null);
+  const { goTop } = useScrollTo();
 
   const getAttribute = (attributeSlug: string, valueSlug: string) => {
     return {
@@ -95,18 +92,12 @@ const Page: React.FC<PageProps> = ({
       []
     );
 
-  React.useEffect(
-    () =>
-      searchContainerRef?.current.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-        inline: "nearest",
-      }),
+  React.useEffect(() => goTop(),
     [products]
   );
 
   return (
-    <div className="fa-bg-neutral-light fa-z-0" ref={searchContainerRef}>
+    <div className="fa-bg-neutral-light fa-z-0">
       <S.SearchPage>
         <FilterSidebar
           show={showFilters}
@@ -136,27 +127,20 @@ const Page: React.FC<PageProps> = ({
           </S.SearchNoProducts>
         )}
         {canDisplayProducts && (
-          <>
-            <ProductListAUNA
-              products={products.edges.map(edge =>
-                convertToSimpleProduct(edge.node)
-              )}
-              productsOnCart={productsOnCart}
-              canLoadMore={hasNextPage}
-              loading={displayLoader}
-              addToCart={addToCart}
-              removeItemToCart={removeItemToCart}
-              subtractItemToCart={subtractItemToCart}
-              user={user}
-            />
-            <Pagination
-              page={page}
-              pageSize={pageSize}
-              total={totalProducts}
-              onPageChange={onPageChange}
-              className="category__pagination"
-            />
-          </>
+          <ProductListAUNA
+            addToCart={addToCart}
+            loading={displayLoader}
+            page={page}
+            pageSize={pageSize}
+            products={products.edges.map(edge =>
+              convertToSimpleProduct(edge.node)
+            )}
+            productsOnCart={items}
+            onPageChange={onPageChange}
+            removeItemToCart={removeItemToCart}
+            subtractItemToCart={subtractItemToCart}
+            total={totalProducts}
+          />
         )}
       </S.SearchPage>
     </div>

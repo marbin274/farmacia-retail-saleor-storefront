@@ -6,7 +6,7 @@ import {
   merchantPassword,
   merchantUsername,
   merchantId,
-} from "@temp/constants";
+} from "@temp/core/constants";
 
 export const BASE_URL = "/";
 export const PRODUCTS_PER_PAGE = 8;
@@ -19,10 +19,6 @@ export const PROVIDERS = {
   AUNA: {
     id: "farmacia-retail.payments.niubiz",
     label: "Tarjeta de crédito/débito",
-  },
-  BRAINTREE: {
-    id: "mirumee.payments.braintree",
-    label: "Braintree",
   },
   CASH: {
     id: "mirumee.payments.cash",
@@ -98,8 +94,6 @@ export const CHECKOUT_STEPS = [
   },
 ];
 
-export const MAX_ORDER_PER_PRODUCT = 50;
-
 export const DOCUMENTS_URLS_S3 = {
   finesAdicionalesUrls:
     "https://saleor-frontend-storage.s3.us-east-2.amazonaws.com/legal/farmacia-fines-adicionales.pdf",
@@ -120,7 +114,6 @@ export const PRODUCT_STICKERS = {
   },
 };
 
-export const ATTRIBUTE_PROMOTION_LIMIT_MAX_NAME = "limit-max";
 export const SEARCH_PRODUCTS_QUERY_MIN_LENGTH = 3;
 export const SHIPPING_FORMAT_DATE = "yyyy-MM-dd";
 export const HOURS_TO_FORMAT_DATE = "T00:00:00";
@@ -193,6 +186,11 @@ const AVAILABLE_PAYMENTS_QA: IPaymentGateway[] = [
       {
         field: "require_3d_secure",
         value: "false",
+      },
+      {
+        field: "nb_tokenization_url",
+        value:
+          "https://apitestenv.vnforapps.com/api.ecommerce/v2/ecommerce/token/card/",
       },
     ],
     id: "farmacia-retail.payments.niubiz",
@@ -268,6 +266,11 @@ const AVAILABLE_PAYMENTS_PRD: IPaymentGateway[] = [
         field: "require_3d_secure",
         value: "false",
       },
+      {
+        field: "nb_tokenization_url",
+        value:
+          "https://apiprod.vnforapps.com/api.ecommerce/v2/ecommerce/token/card/",
+      },
     ],
     id: "farmacia-retail.payments.niubiz",
     name: "Niubiz",
@@ -297,13 +300,19 @@ export const DISTRICT_SELECTED_DEFAULT: IDistrictSelected = {
   name: "Miraflores",
   warehouse: null,
 };
-export const TOTAL_DISTRICT = 30;
+export const TOTAL_DISTRICT = 30; // TODO: this variable should be dinamically loaded from the backend
+export const POS_DISTRICTS = [
+  "miraflores",
+  "surquillo",
+  "santiago de surco",
+  "barranco",
+];
 
-export const POS_DISTRICTS = ["miraflores","surquillo","santiago de surco","barranco"];
-
-export const COUNTRY_DEFAULT = { 
-  code: "PE", 
+export const COUNTRY_DEFAULT = {
+  code: "PE",
   country: "Peru",
 };
 
 export const COLLECTION_CATEGORY_FILTER_LABEL = "Todas las categorías";
+
+export const HIDE_CARDTOKENS_IN_CHECKOUT = true;

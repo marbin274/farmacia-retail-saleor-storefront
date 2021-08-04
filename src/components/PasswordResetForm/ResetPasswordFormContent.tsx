@@ -8,8 +8,7 @@ import { MutationFn } from "react-apollo";
 import { ResetPassword, ResetPasswordVariables } from "./gqlTypes/ResetPassword";
 import { passwordResetFormSchema } from "./passwordResetForm.schema";
 import { Button, InputField } from "@farmacia-retail/farmauna-components";
-import { ResetPasswordMailSent } from "@temp/views/Account";
-
+import { ResetPasswordMailSentPage } from "@app/pages";
 interface ResetPasswordFormContentProps {
     called: boolean;
     loading: boolean;
@@ -93,11 +92,12 @@ const ResetPasswordFormContent: React.FC<ResetPasswordFormContentProps> = ({ but
                         {children}
                         <div className="password-reset-form__button">
                             <Button 
-                                type="submit" 
                                 {...(loading && { disabled: true })}
-                                variant="default"
+                                fullWidth 
                                 size="large"
-                                fullWidth>
+                                type="submit"
+                                variant="default"
+                            >
                                 {loading ? "Cargando" : "Enviar instrucciones"}
                             </Button>
                             {buttonBack}
@@ -107,7 +107,7 @@ const ResetPasswordFormContent: React.FC<ResetPasswordFormContentProps> = ({ but
             ) : (
 
                 <div>
-                    <ResetPasswordMailSent onClose={onClose} />
+                    <ResetPasswordMailSentPage onClose={onClose} />
                 </div>
             )
             }

@@ -5,4 +5,5 @@ export interface IProps {
   hideMenuCondition: boolean;
   navMain: INavItem[] | null;
   isLightHeader: boolean;
+  hideMenuConditionMobile: boolean;
 }

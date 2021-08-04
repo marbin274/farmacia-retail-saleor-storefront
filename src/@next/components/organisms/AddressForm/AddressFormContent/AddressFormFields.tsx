@@ -56,24 +56,33 @@ export const StreetAddress1 = ({
   values,
   onBlur,
   onChange,
-  setFieldValue,
-}: IFieldsProps) => {
+  temporaryError,
+}: IFieldsProps & { temporaryError?: string }) => {
+  const error = fieldErrors?.streetAddress1?.[0]?.message || temporaryError;
+
   return (
-    <AddressAutocomplete
-      data-cy="addressAutocomplete"
-      name="streetAddress1"
-      label="Dirección"
-      placeholder="Ejemplo: Av. Arenales 213"
-      value={{
-        lat: values?.latitude ? Number(values?.latitude) : undefined,
-        lng: values?.longitude ? Number(values?.longitude) : undefined,
-        text: values?.streetAddress1 || "",
-      }}
-      onChangeValue={onChange}
-      errors={fieldErrors!.streetAddress1}
-      inputSize="large"
-      onBlur={onBlur}
-    />
+    <>
+      <AddressAutocomplete
+        data-cy="addressAutocomplete"
+        name="streetAddress1"
+        label="Dirección"
+        placeholder="Ejemplo: Av. Arenales 213"
+        value={{
+          lat: values?.latitude ? Number(values?.latitude) : undefined,
+          lng: values?.longitude ? Number(values?.longitude) : undefined,
+          text: values?.streetAddress1 || "",
+        }}
+        onChangeValue={onChange}
+        error={error}
+        inputSize="large"
+        onBlur={onBlur}
+      />
+      {!error && (
+        <span className="fa-text-xs fa-mt-2 fa-text-neutral-dark">
+          Escribe tu dirección y elige una de las opciones desplegadas
+        </span>
+      )}
+    </>
   );
 };
 
@@ -131,7 +140,7 @@ export const CitySelect = ({ fieldsProps }: ISelectProps) => {
         onChange={handleChange}
         onBlur={handleBlur}
       />
-      <span className="fa-text-xs fa-mt-2" style={{ color: "#908BA7" }}>
+      <span className="fa-text-xs fa-mt-2 fa-text-neutral-dark">
         Llegamos a {TOTAL_DISTRICT} distritos de Lima
       </span>
     </div>
