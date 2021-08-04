@@ -5,8 +5,6 @@ import { TypedBannerQuery } from "../../queries";
 import BannerMobile from "images/auna/home-banner-mob.png";
 import BannerDesktop from "images/auna/home-banner-top.png";
 import { SkeletonBanner } from "../../skeleton";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import "react-lazy-load-image-component/src/effects/blur.css";
 import { Banner as BannerData } from "../../gqlTypes/Banner";
 import * as S from "./styles";
 
@@ -80,18 +78,18 @@ export const Banner: React.FC = () => {
                     }}
                   >
                     <span className="fa-w-full fa-my-0 fa-mx-auto sm:fa-hidden">
-                      <LazyLoadImage
+                      <img
+                        className="fa-mx-auto fa-my-0"
                         alt="banner mobile"
-                        effect="blur"
                         height={460}
                         src={banner.mobile}
                         width={360}
                       />
                     </span>
                     <span className="fa-w-full fa-my-0 fa-mx-auto fa-hidden sm:fa-block">
-                      <LazyLoadImage
+                      <img
+                        className="fa-mx-auto fa-my-0"
                         alt="banner desktop"
-                        effect="blur"
                         height={500}
                         src={banner.desktop}
                         width={1920}
