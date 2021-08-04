@@ -22,7 +22,7 @@ export const Wrapper = styled.div<{ mobileCartOpened: boolean }>`
   `}
   overflow-y: auto;
   overflow-x: hidden;  
-  z-index: 1;
+
   ${mediaUp.mediumScreen`
     flex: 1;
     background-color: initial;
@@ -135,7 +135,7 @@ export const Title = styled.div<{ mobileCartOpened: boolean }>`
   margin: 0;
   font-weight: 500;
   font-size: ${({ theme }: { theme: DefaultTheme }) =>
-    theme.typography.h4FontSize}
+    theme.typography.h4FontSize};
   color: ${aunaBrand3};
   ${mediaUp.mediumScreen`
     color: ${({ theme }: { theme: DefaultTheme }) =>

@@ -11,6 +11,7 @@ export const MainMenu: React.FC<IProps> = ({
   categories,
   hideMenuCondition,
   navMain,
+  hideMenuConditionMobile,
   isLightHeader,
 }) => {
   const { isMaxLargeScreen } = useMediaScreen();
@@ -20,9 +21,10 @@ export const MainMenu: React.FC<IProps> = ({
   const onClickSearchIcon = () => {
     overlayContext.show(OverlayType.search, OverlayTheme.right);
   };
+  const hideMenu = hideMenuCondition || hideMenuConditionMobile;
   return (
     <>
-      {!hideMenuCondition && (
+      {(!hideMenu) && (
         <S.Wrapper isProductDetail={isProductDetail}>
           {canShowSearch && (
             <S.ContainerSearch>

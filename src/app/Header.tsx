@@ -1,3 +1,4 @@
+import { useMediaScreen } from "@temp/@next/globalStyles";
 import { TypedMainMenuQuery } from "@temp/components/MainMenu/queries";
 import { convertCategoryToMenuItem, maybe } from "@temp/core/utils";
 import React from "react";
@@ -7,16 +8,29 @@ import "../globalStyles/scss/index.scss";
 
 export const Header: React.FC = () => {
   const location = useLocation();
+  const { isMobileScreen } = useMediaScreen();
+
   const hideMenuCondition =
     location.pathname.includes("checkout") ||
     location.pathname.includes("order-finalized");
 
+  const hideMenuConditionMobile = 
+    isMobileScreen && (
+      location.pathname.includes("select-categories") ||
+      location.pathname.includes("payment-methods") ||  
+      location.pathname.includes("account") ||
+      location.pathname.includes("address-book") ||
+      location.pathname.includes("order-history")
+    )
+    
   const isLightHeader =
-    location.pathname.includes("product") ||
-    location.pathname.includes("search") ||
+    location.pathname.includes("select-categories") ||
+    location.pathname.includes("payment-methods") ||  
     location.pathname.includes("account") ||
     location.pathname.includes("address-book") ||
     location.pathname.includes("order-history") ||
+    location.pathname.includes("product") ||
+    location.pathname.includes("search") ||
     location.pathname.includes("category") ||
     location.pathname.includes("collection");
 
@@ -58,6 +72,7 @@ export const Header: React.FC = () => {
             />
             <MainMenu
               categories={categories}
+              hideMenuConditionMobile={hideMenuConditionMobile}
               hideMenuCondition={hideMenuCondition}
               navMain={navMain}
               isLightHeader={isLightHeader}

@@ -3,7 +3,7 @@ import {
   IRemoveItemToCartCallback,
   ISubtractItemToCartCallback,
 } from "@temp/@next/components/molecules/ProductTileAUNA/types";
-import { ISimpleProduct } from "@temp/@next/types/IProduct";
+import { ISimpleProduct } from "@sdk/types/IProduct";
 import { IItems } from "@temp/@sdk/api/Cart/types";
 // import { ProductDetails_product } from "@temp/views/Product/gqlTypes/ProductDetails";
 

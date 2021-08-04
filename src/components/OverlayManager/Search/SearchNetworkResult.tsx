@@ -93,12 +93,12 @@ export const SearchNetworkResult = () => {
                             </ul>
                           </div>
                           <div className="show_more_products">
-                            <Link to={linkToSearch}>
+                            <Link
+                              to={linkToSearch}
+                            >
                               <Button
+                                onClick={() => searchProductsService.hide()}
                                 variant="outline"
-                                onClick={() => {
-                                  searchProductsService.hide();
-                                }}
                               >
                                 Ver todos los resultados
                               </Button>

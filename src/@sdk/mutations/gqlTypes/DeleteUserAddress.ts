@@ -148,6 +148,21 @@ export interface DeleteUserAddress_accountAddressDelete_user_addresses {
   longitude: number | null;
 }
 
+export interface DeleteUserAddress_accountAddressDelete_user_cardTokens {
+  __typename: "CardToken";
+  binNumber: string;
+  brand: string;
+  cardNumber: string;
+  default: boolean;
+  email: string;
+  firstName: string;
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  lastName: string;
+}
+
 export interface DeleteUserAddress_accountAddressDelete_user {
   __typename: "User";
   /**
@@ -155,6 +170,10 @@ export interface DeleteUserAddress_accountAddressDelete_user {
    */
   id: string;
   email: string;
+  /**
+   * List of favorite categories ID.
+   */
+  favoriteCategories: (string | null)[] | null;
   firstName: string;
   lastName: string;
   isStaff: boolean;
@@ -173,6 +192,10 @@ export interface DeleteUserAddress_accountAddressDelete_user {
    * List of all user's addresses.
    */
   addresses: (DeleteUserAddress_accountAddressDelete_user_addresses | null)[] | null;
+  /**
+   * List of all user's cards.
+   */
+  cardTokens: (DeleteUserAddress_accountAddressDelete_user_cardTokens | null)[] | null;
 }
 
 export interface DeleteUserAddress_accountAddressDelete {

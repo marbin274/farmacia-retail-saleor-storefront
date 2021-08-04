@@ -2,6 +2,7 @@ import * as React from "react";
 import { RichTextContent } from "@components/atoms";
 import { Breadcrumb, Breadcrumbs } from "../../components";
 import { Article_page } from "./gqlTypes/Article";
+import * as S from "./styles";
 
 interface PageProps {
   breadcrumbs: Breadcrumb[];
@@ -17,24 +18,31 @@ export const Page: React.FC<PageProps> = ({
 
   const isMainBlog: boolean = page.slug === "blog";
 
-  const imageSection = (() =>
-    <div className="article-page__image container">
-      <img alt="page-image" src={page.contentImage} />
-    </div>);
+  const imageSection = () => (
+    <>
+      {page?.contentImage ? (
+        <div className="fa-mt-8 lg:fa-px-4 fa-p-0 fa-mx-auto">
+          <img className="fa-w-full lg:fa-rounded-3xl fa-overflow-hidden" alt="page-image" src={page.contentImage} />
+        </div>
+      ) : (
+        <> </>
+      )}
+    </>
+  );
 
   return (
     <>
       {
-        !isMainBlog && <div
-          className="article-page__header"
+        !isMainBlog && <S.Header
+          className="fa-mt-8 fa-flex fa-justify-center fa-items-center fa-bg-cover fa-bg-primary-lightest fa-bg-blend-multiply"
           style={headerImage ? { backgroundImage: `url(${headerImage})` } : null}
         >
-          <span className="article-page__header__title">
-            <h1>{page.title}</h1>
-          </span>
-        </div>
+          <S.Title className="fa-px-8 fa-py-4 fa-text-primary-medium fa-inline-block fa-text-center">
+            <h1 className="fa-text-display-3-m fa-font-semibold">{page.title}</h1>
+          </S.Title>
+        </S.Header>
       }
-      <div className="article-page">
+      <div className="fa-mx-auto fa-my-0">
         {
           isMainBlog && <>{imageSection()}</>
         }
@@ -43,15 +51,15 @@ export const Page: React.FC<PageProps> = ({
           <Breadcrumbs breadcrumbs={breadcrumbs} breadcrumbsAlwaysVisible />
         </div>
         {
-          !isMainBlog && <div className="blog-page">{imageSection()}</div>
+          !isMainBlog && <S.Blog className="blog-page">{imageSection()}</S.Blog>
         }
         <div className="container">
-          <div className="article-page__container">
+          <S.Content className="fa-mx-0 fa-mt-0 fa-mb-14">
             <RichTextContent
               descriptionJson={page.contentJson}
-              className="article-page__content"
+              className="fa-w-full fa-text-left fa-text-neutral-darkest"
             />
-          </div>
+          </S.Content>
         </div>
       </div>
     </>

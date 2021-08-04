@@ -12,7 +12,7 @@ import Empty from "./Empty";
 import ProductList from "./ProductList";
 import "./scss/index.scss";
 import { Footer, FooterWithShippingPrice } from "./footer";
-import { useShowShippingPriceInCart } from "@temp/@next/optimizely/hooks";
+import { useShowShippingPriceInCart } from "@temp/optimizely/hooks";
 import { useMediaScreen } from "@temp/@next/globalStyles";
 
 const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {

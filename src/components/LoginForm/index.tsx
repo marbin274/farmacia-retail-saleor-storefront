@@ -69,7 +69,7 @@ const LoginForm: React.FC<ILoginForm> = ({
   return (
     <div className="login-form">
       <form onSubmit={handleSubmit}>
-        <div className="InputField">
+        <div className="InputField fa-pb-2">
           <InputField
             label="Correo electrónico"
             className="login-form__input-wrapper"

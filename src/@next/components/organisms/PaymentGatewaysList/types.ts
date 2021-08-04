@@ -1,4 +1,3 @@
-// import {ICardPaymentInput} from "@temp/core/payments/braintree";
 import { ITotalPrice } from "@temp/@sdk/api/Cart/types";
 import { IAddress, ICardData, IFormError, IPaymentGateway } from "@types";
 import { IUserDataForNiubiz } from "../CheckoutPayment/types";
@@ -35,12 +34,7 @@ export interface IProps {
   /**
    * Method called after the form is submitted. Passed gateway id and token attribute will be used to create payment.
    */
-  processPayment: (
-    gateway: string,
-    token: string,
-    cardData?: ICardData,
-    requestPayload?: string
-  ) => void;
+  processPayment: (data: IProcesPaymentArgs) => void;
   /**
    * Method called when gateway error occured.
    */
@@ -56,4 +50,15 @@ export interface IProps {
   selectedDistrict: string;
   gatewayListError?: string;
   setGatewayListError?: React.Dispatch<React.SetStateAction<string>>;
+  onForceReRender?: () => void;
 }
+
+export type IProcesPaymentArgs = {
+  cardData?: ICardData;
+  gateway: string;
+  /**
+   * true if payment uses a card token
+   */
+  token: string;
+  withToken?: boolean;
+};

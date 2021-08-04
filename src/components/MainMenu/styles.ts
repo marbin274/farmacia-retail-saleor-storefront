@@ -65,37 +65,6 @@ export const Menu = styled.div`
   `};
 `;
 
-export const Search = styled.div`
-  display: block;
-  position: relative;
-  ${mediaUp.largeScreen`
-        display: none;
-    `};
-  .search {
-    min-height: initial;
-    &__input {
-      margin-top: 0px;
-      padding: 0px;
-      touch-action: none;
-      -ms-touch-action: none;
-      .input {
-        padding: 0rem 1rem 1rem 1rem;
-        &__field {
-          color: ${({ theme }) => theme.colors.white};
-          &::placeholder {
-            color: ${({ theme }) => theme.colors.white};
-          }
-        }
-      }
-    }
-    &__products {
-      position: absolute;
-      left: 0;
-      z-index: 3;
-    }
-  }
-`;
-
 export const WrapperAddressGeo = styled.div<{ isProductDetail: boolean }>`
   position: relative;
   width: 100%;

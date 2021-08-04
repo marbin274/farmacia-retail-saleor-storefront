@@ -134,7 +134,7 @@ const CheckoutShipping: React.FC<IProps> = ({
               ) => {
                 const selected: boolean =
                   !!values.shippingMethod && values.shippingMethod === id;
-
+                  
                 return (
                   <React.Fragment key={index}>
                     <S.ShippingMethodContainer

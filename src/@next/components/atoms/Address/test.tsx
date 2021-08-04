@@ -31,7 +31,7 @@ describe("<Address />", () => {
     expect(screen.queryByRole('streetAddress1').textContent).toBe(props.streetAddress1);
     expect(screen.queryByRole('streetAddress2').textContent).toBe(props.streetAddress2);
     expect(screen.queryByRole('location').textContent).toBe(`Distrito: ${props.postalCode}, ${props.city}`);
-    expect(screen.queryByRole('country').textContent).toBe(`Pais: ${props.countryArea}, ${props.country.country}`);
+    expect(screen.queryByRole('country').textContent).toBe(`País: ${props.countryArea}, ${props.country.country}`);
     expect(screen.queryByRole('phone').textContent).toBe(`Celular: ${props.phone}`);
   });
 
@@ -43,7 +43,7 @@ describe("<Address />", () => {
     expect(screen.queryByRole('streetAddress1').textContent).toBe(props.streetAddress1);
     expect(screen.queryByRole('streetAddress2').textContent).toBe(props.streetAddress2);
     expect(screen.queryByRole('location').textContent).toBe(`Distrito: ${props.postalCode}, ${props.city}`);
-    expect(screen.queryByRole('country').textContent).toBe(`Pais: ${props.countryArea}, ${props.country.country}`);
+    expect(screen.queryByRole('country').textContent).toBe(`País: ${props.countryArea}, ${props.country.country}`);
     expect(screen.queryByRole('phone').textContent).toBe(`Celular: ${props.phone}`);
   });
 
@@ -55,7 +55,7 @@ describe("<Address />", () => {
     expect(screen.queryByRole('streetAddress1').textContent).toBe(props.streetAddress1);
     expect(screen.queryByRole('streetAddress2')).not.toBeInTheDocument();
     expect(screen.queryByRole('location').textContent).toBe(`Distrito: ${props.postalCode}, ${props.city}`);
-    expect(screen.queryByRole('country').textContent).toBe(`Pais: ${props.countryArea}, ${props.country.country}`);
+    expect(screen.queryByRole('country').textContent).toBe(`País: ${props.countryArea}, ${props.country.country}`);
     expect(screen.queryByRole('phone').textContent).toBe(`Celular: ${props.phone}`);
   });
 
@@ -67,7 +67,7 @@ describe("<Address />", () => {
     expect(screen.queryByRole('streetAddress1').textContent).toBe(props.streetAddress1);
     expect(screen.queryByRole('streetAddress2').textContent).toBe(props.streetAddress2);
     expect(screen.queryByRole('location').textContent).toBe(`Distrito:  ${props.city}`);
-    expect(screen.queryByRole('country').textContent).toBe(`Pais: ${props.countryArea}, ${props.country.country}`);
+    expect(screen.queryByRole('country').textContent).toBe(`País: ${props.countryArea}, ${props.country.country}`);
     expect(screen.queryByRole('phone').textContent).toBe(`Celular: ${props.phone}`);
   });
 
@@ -79,7 +79,7 @@ describe("<Address />", () => {
     expect(screen.queryByRole('streetAddress1').textContent).toBe(props.streetAddress1);
     expect(screen.queryByRole('streetAddress2').textContent).toBe(props.streetAddress2);
     expect(screen.queryByRole('location').textContent).toBe(`Distrito: ${props.postalCode}, ${props.city}`);
-    expect(screen.queryByRole('country').textContent).toBe(`Pais: ${props.country.country}`);
+    expect(screen.queryByRole('country').textContent).toBe(`País: ${props.country.country}`);
     expect(screen.queryByRole('phone').textContent).toBe(`Celular: ${props.phone}`);
   });
 
@@ -91,7 +91,7 @@ describe("<Address />", () => {
     expect(screen.queryByRole('streetAddress1').textContent).toBe(props.streetAddress1);
     expect(screen.queryByRole('streetAddress2').textContent).toBe(props.streetAddress2);
     expect(screen.queryByRole('location').textContent).toBe(`Distrito: ${props.postalCode}, ${props.city}`);
-    expect(screen.queryByRole('country').textContent).toBe(`Pais: ${props.countryArea}, ${props.country.country}`);
+    expect(screen.queryByRole('country').textContent).toBe(`País: ${props.countryArea}, ${props.country.country}`);
     expect(screen.queryByRole('phone')).not.toBeInTheDocument();
   });
 });

@@ -4,12 +4,12 @@ import classNames from "classnames";
 import { filter, find } from "lodash";
 import * as React from "react";
 
-import { useClickedOutside } from "../../hooks";
+import { useClickedOutside } from "@temp/@next/hooks";
 import {
   IFilteredListArgs,
   ISelectChange,
   ISelectItem,
-  ISelectProps
+  ISelectProps,
 } from "./customTypes";
 import SelectOptionsList from "./SelectOptionsList";
 

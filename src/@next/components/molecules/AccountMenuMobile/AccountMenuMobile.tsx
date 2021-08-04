@@ -1,65 +1,32 @@
+import { DropdownSelect } from "@components/atoms";
 import React from "react";
-
-import { Icon } from "@components/atoms";
-import { useHandlerWhenClickedOutside } from "@hooks";
-import { turquoise, aunaBlack } from "@temp/@next/globalStyles/constants";
-
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 import * as S from "./styles";
 import { IProps } from "./types";
-import { DownIcon } from "@farmacia-retail/farmauna-components";
+
+
 
 export const AccountMenuMobile: React.FC<IProps> = ({
   links,
   active,
 }: IProps) => {
-  const [showMenu, setShowMenu] = React.useState(false);
+  const options = React.useMemo(()=> links.map(it => ({ label: it.label, value: it.url })), [links])
+  const history = useHistory();
 
-  const { setElementRef } = useHandlerWhenClickedOutside(() => {
-    setShowMenu(false);
-  });
-
-  const getActiveSectionName = () => {
-    const link = links.find(x => x.url === active);
-    return link?.label || '';
+  const onChangeOption = ({ value }) => {
+    history.push(value);
   }
 
   return (
-    <S.Wrapper
-      onClick={() => {
-        setShowMenu(true);
-      }}
-      ref={setElementRef()}
-    >
-      {getActiveSectionName()}
-      <DownIcon size={12} color={aunaBlack} />
-      {showMenu && (
-        <S.Overlay>
-          <S.MenuHeader>Mi Cuenta</S.MenuHeader>
-          {links.map(link => {
-            return (
-              <div
-                onClick={evt => {
-                  evt.stopPropagation();
-                  setShowMenu(false);
-                }}
-                key={link.url}
-              >
-                <Link to={link.url}>
-                  <S.MenuItem active={active === link.url}>
-                    {link.label}
-                    <Icon
-                      name="select_arrow"
-                      size={8}
-                      color={active === link.url ? turquoise : aunaBlack}
-                    />
-                  </S.MenuItem>
-                </Link>
-              </div>
-            );
-          })}
-        </S.Overlay>
-      )}
-    </S.Wrapper>
+    <S.RoutesWrapper>
+      <DropdownSelect
+        clearText={"Mi perfil"}
+        onChange={onChangeOption}
+        options={options}
+        value={options.find(
+          option => option.value === active
+        )}
+      />
+    </S.RoutesWrapper>
   );
 };

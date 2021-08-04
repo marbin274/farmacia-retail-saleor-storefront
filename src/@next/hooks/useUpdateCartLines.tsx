@@ -9,10 +9,11 @@ import React from "react";
 export const useUpdateCartLines = () => {
   const [loading, setLoading] = React.useState<boolean>(false);
   const { getCartLines, updateCartLines } = useCart();
-
+  
   const handleUpdate = async () => {
     const localRepository = new LocalRepository();
     const items = localRepository.getCheckout()?.lines;
+    
     if (items) {
       setLoading(true);
       const { data, error } = await getCartLines();

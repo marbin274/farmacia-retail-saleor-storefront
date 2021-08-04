@@ -1,7 +1,7 @@
-name: CI
+name: Lighthouse CI
 on: 
   pull_request:
-    branches: [master, qa2, release]
+    branches: [ master ]
 
 jobs:
   lighthouseci:
@@ -19,4 +19,4 @@ jobs:
           node-version: 12.x
       - run: npm install
       - run: npm run build
-      - run: npx lhci autorun --config=./lighthouserc-ci.js
+      - run: npx lhci autorun --config=./lighthouserc.js
