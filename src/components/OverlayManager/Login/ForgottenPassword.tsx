@@ -13,7 +13,7 @@ const ForgottenPassword: React.FC<{
 
   return (
     <>
-      <div className="fa-flex fa-items-center fa-justify-between">
+      <div className="fa-flex fa-items-center fa-justify-between fa-ml-2">
         <Checkbox
           parentStyles={{ marginBottom: 0, marginLeft: 0 }}
           name='remember'
