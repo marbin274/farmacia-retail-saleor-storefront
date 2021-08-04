@@ -30,7 +30,6 @@ $small-screen-plus-one: 541px;
       align-items: flex-start;
       background-color: #00bf8e;
       border: none;
-      z-index: 1;
       color: $white;
 
       @media (max-width: $small-screen) {
@@ -125,8 +124,7 @@ $small-screen-plus-one: 541px;
         min-height: calc(100% - 6rem);
       }
     }
-    &__list {      
-
+    &__list {
       &__item {
         width: 23rem;
         min-height: 8rem;
@@ -314,7 +312,6 @@ $small-screen-plus-one: 541px;
         }
       }
     }
-
 
     &__empty {
       align-items: center;

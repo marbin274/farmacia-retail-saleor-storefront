@@ -1,4 +1,4 @@
-import { Breadcrumbs, Pagination } from "@farmacia-retail/farmauna-components";
+import { Breadcrumbs } from "@farmacia-retail/farmauna-components";
 import { IPaginationProps } from "@temp/@next/components/molecules/Pagination/types";
 import {
   IAddToCartCallback,
@@ -6,15 +6,15 @@ import {
   ISubtractItemToCartCallback,
 } from "@temp/@next/components/molecules/ProductTileAUNA/types";
 import { largeScreen } from "@temp/@next/globalStyles/constants";
+import { useScrollTo } from "@temp/@next/hooks";
 import { IItems } from "@temp/@sdk/api/Cart/types";
-import { useUserDetails } from "@temp/@sdk/react";
 import { baseUrl } from "@temp/app/routes";
 import { COLLECTION_CATEGORY_FILTER_LABEL } from "@temp/core/config";
 import { structuredData } from "@temp/core/SEO/Collection/structuredData";
 import { IFilterAttributes, IFilters } from "@types";
 import * as React from "react";
 import { ProductListHeader } from "../../@next/components/molecules";
-import { ProductListCategoryAuna } from "../../@next/components/organisms";
+import { ProductListAUNA } from "../../@next/components/organisms";
 import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
 import { EmptyProduct } from "../../components";
 import {
@@ -33,8 +33,8 @@ interface SortItem {
   value?: string;
 }
 
-interface SortOptions extends Array<SortItem> {};
-interface CategoryOptions extends Array<SortItem> {};
+interface SortOptions extends Array<SortItem> {}
+interface CategoryOptions extends Array<SortItem> {}
 
 interface PageProps extends IPaginationProps {
   activeFilters: number;
@@ -52,7 +52,10 @@ interface PageProps extends IPaginationProps {
   addToCart: IAddToCartCallback;
   clearFilters: () => void;
   onAttributeFiltersChange: (attributeSlug: string, value: string) => void;
-  onChangeCategoryOption?: (category: { value?: string; label: string }) => void;
+  onChangeCategoryOption?: (category: {
+    value?: string;
+    label: string;
+  }) => void;
   onChangeSortOption: (order: { value?: string; label: string }) => void;
   removeItemToCart: IRemoveItemToCartCallback;
   subtractItemToCart: ISubtractItemToCartCallback;
@@ -82,12 +85,12 @@ const Page: React.FC<PageProps> = ({
   subtractItemToCart,
   total: totalProducts,
 }) => {
-  const { data: user } = useUserDetails();
   const canDisplayProducts = maybe(
     () => !!products.edges && products.totalCount !== undefined
   );
   const hasProducts = canDisplayProducts && !!products.totalCount;
   const [showFilters, setShowFilters] = React.useState(false);
+  const { goTop } = useScrollTo();
 
   const breadcrumbs = [
     {
@@ -120,27 +123,30 @@ const Page: React.FC<PageProps> = ({
         ),
       []
     );
-  
-  const getProductListHeader = () => {
 
-    return <ProductListHeader
-      activeSecondaryOptions={activeCategoryOptions}
-      activeFilters={activeFilters}
-      activeFiltersAttributes={activeFiltersAttributes}
-      activeSortOption={activeSortOption}
-      clearFilters={clearFilters}
-      numberOfProducts={products ? products.totalCount : 0}
-      onChangeSecondaryOption={onChangeCategoryOption}
-      onChangeSortOption={onChangeSortOption}
-      onCloseFilterAttribute={onAttributeFiltersChange}
-      openFiltersMenu={() => setShowFilters(true)}
-      secondaryLabel="Categorias"
-      secondaryClearLabel={COLLECTION_CATEGORY_FILTER_LABEL}
-      secondaryOptions={categoryOptions}
-      showSecondarySelect
-      sortOptions={sortOptions}
-    />
-  }
+  const getProductListHeader = () => {
+    return (
+      <ProductListHeader
+        activeSecondaryOptions={activeCategoryOptions}
+        activeFilters={activeFilters}
+        activeFiltersAttributes={activeFiltersAttributes}
+        activeSortOption={activeSortOption}
+        clearFilters={clearFilters}
+        numberOfProducts={products ? products.totalCount : 0}
+        onChangeSecondaryOption={onChangeCategoryOption}
+        onChangeSortOption={onChangeSortOption}
+        onCloseFilterAttribute={onAttributeFiltersChange}
+        openFiltersMenu={() => setShowFilters(true)}
+        secondaryLabel="Categorías"
+        secondaryClearLabel={COLLECTION_CATEGORY_FILTER_LABEL}
+        secondaryOptions={categoryOptions}
+        showSecondarySelect
+        sortOptions={sortOptions}
+      />
+    );
+  };
+
+  React.useEffect(() => goTop(), [products]);
 
   return (
     <CollectionWrapper>
@@ -167,25 +173,20 @@ const Page: React.FC<PageProps> = ({
             filters={filters}
           />
           {canDisplayProducts && (
-            <>
-              <ProductListCategoryAuna
-                products={products.edges.map(edge =>
-                  convertToSimpleProduct(edge.node)
-                )}
-                productsOnCart={items}
-                loading={displayLoader}
-                addToCart={addToCart}
-                removeItemToCart={removeItemToCart}
-                subtractItemToCart={subtractItemToCart}
-                user={user}
-              />
-              <Pagination
-                page={page}
-                pageSize={pageSize}
-                total={totalProducts}
-                onPageChange={onPageChange}
-              />
-            </>
+            <ProductListAUNA
+              addToCart={addToCart}
+              loading={displayLoader}
+              page={page}
+              pageSize={pageSize}
+              products={products.edges.map(edge =>
+                convertToSimpleProduct(edge.node)
+              )}
+              productsOnCart={items}
+              onPageChange={onPageChange}
+              removeItemToCart={removeItemToCart}
+              subtractItemToCart={subtractItemToCart}
+              total={totalProducts}
+            />
           )}
           {!hasProducts && <EmptyProduct title="No hay productos" />}
         </section>

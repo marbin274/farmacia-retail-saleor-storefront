@@ -1,60 +1,58 @@
-import { Loader } from "@components/atoms";
 import { ProductTileAUNA } from "@components/molecules";
-import { getProductsWithQuantity } from "@temp/@next/utils/products";
+import { getProductsWithQuantity } from "@sdk/utils/products";
 import { generateProductUrl } from "@temp/core/utils";
 import React from "react";
 import * as S from "./styles";
 import { IProps } from "./types";
-import { Button, PlusIcon } from "@farmacia-retail/farmauna-components";
+import { Skeleton } from "./skeleton";
+import { Pagination } from "@farmacia-retail/farmauna-components";
 
 export const ProductListAUNA: React.FC<IProps> = ({
-  canLoadMore = false,
+  addToCart,
+  columns = 4,
   loading = false,
-  onLoadMore = () => null,
+  onPageChange,
+  page,
+  pageSize,
   products,
   productsOnCart,
-  addToCart,
   removeItemToCart,
   subtractItemToCart,
-  user,
+  total,
 }: IProps) => {
-
   return (
     <>
-      <S.List>
-        {getProductsWithQuantity(
-          products,
-          productsOnCart
-        ).map(product => (
-          <ProductTileAUNA
-            key={product.id}
-            addToCart={addToCart}
-            removeItemToCart={removeItemToCart}
-            subtractItemToCart={subtractItemToCart}
-            product={product}
-            productsOnCart={productsOnCart}
-            productUrl={generateProductUrl(product.id, product.name)}
-            user={user}
-          />
-        ))}
-      </S.List>
-      <S.Loader>
-        {loading ? (
-          <Loader />
-        ) : (
-            canLoadMore && (
-              <Button 
-              variant="outline"
-              data-cy="load-more_button"
-              onClick={onLoadMore}
-              type="button"
-              icon={<PlusIcon size={12} />}
-              >
-                Cargar más
-              </Button>
-            )
-          )}
-      </S.Loader>
+      {
+        loading ?
+          <Skeleton columns={columns}/> :
+          <>
+          <S.List
+            className="product-list-grid"
+            columns={columns}
+          >
+            {getProductsWithQuantity(
+              products,
+              productsOnCart
+            ).map(product => (
+              <ProductTileAUNA
+                key={product.id}
+                addToCart={addToCart}
+                removeItemToCart={removeItemToCart}
+                subtractItemToCart={subtractItemToCart}
+                product={product}
+                productsOnCart={productsOnCart}
+                productUrl={generateProductUrl(product.id, product.name)}
+              />
+            ))}
+          </S.List>
+            <Pagination
+              page={page}
+              pageSize={pageSize}
+              total={total}
+              onPageChange={onPageChange}
+            />
+          </>
+      }
     </>
   );
 };

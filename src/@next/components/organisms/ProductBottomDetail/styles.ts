@@ -143,22 +143,20 @@ export const ProductPrice = styled.div`
       }
     `}
   }
-
   .price.outStock_price {
     ${media.smallScreen`
       > span {
-        position: relative;
         font-size: 1rem;
         line-height: 120%;
-        margin-right: 1rem;
+        position: relative;
         &::before {
-          position: absolute;
           content: "Precio" !important;
           color: #aca8bd;
           font-size: 0.75rem;
-          left: 0;
-          top: -1.3rem;
           font-weight: normal;
+          left: 0;
+          position: absolute;
+          top: -1.3rem;
         }
       }
     `}

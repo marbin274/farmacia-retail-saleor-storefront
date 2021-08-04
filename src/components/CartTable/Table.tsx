@@ -1,6 +1,6 @@
 import { smallScreen } from "../../globalStyles/scss/variables.scss";
 import "./scss/index.scss";
-
+import * as S from "./styles";
 import * as React from "react";
 import Media from "react-media";
 
@@ -27,7 +27,7 @@ const Table: React.FC<TableProps> = ({
 }) => (
   <Media query={{ minWidth: smallScreen }}>
     {mediumScreen => (
-      <table className="cart-table" style={{margin: 0}}>
+      <S.Table className="cart-table" style={{margin: 0}}>
         <thead>
           <tr>
             <th>Productos</th>
@@ -75,7 +75,7 @@ const Table: React.FC<TableProps> = ({
             />
           )}
         </tfoot>
-      </table>
+      </S.Table>
     )}
   </Media>
 );

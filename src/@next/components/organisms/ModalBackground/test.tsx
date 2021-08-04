@@ -1,12 +1,9 @@
 import { shallow } from "enzyme";
 import "jest-styled-components";
 import React from "react";
-
-import { Overlay } from "@components/organisms";
-
 import { ModalBackground } from ".";
 import { IProps } from "./types";
-
+import { OverlayStyled } from "./styles";
 
 const Children = () => <div>Content</div>;
 const DEFAULT_PROPS = {
@@ -27,20 +24,19 @@ describe("<ModalBackground />", () => {
       </ModalBackground>
     );
 
-    it ("exists", () => {
-      const modal = renderModal(DEFAULT_PROPS);
-      expect(modal.exists()).toEqual(true);
-    });
+  it("exists", () => {
+    const modal = renderModal(DEFAULT_PROPS);
+    expect(modal.exists()).toEqual(true);
+  });
 
-    it("should render <Overlay /> component with [position, show, hide, target] props", () =>{
-      const overlay = renderModal({ ...DEFAULT_PROPS, target: null}).find(
-        Overlay
-      );
-      const overlayProps = overlay.props();
-      expect(overlay.exists()).toEqual(true);
-      expect(overlayProps.hide).toEqual(DEFAULT_PROPS.hide);
-      expect(overlayProps.target).toBeDefined();
-    })
+  it("should render <Overlay /> component with [position, show, hide, target] props", () => {
+    const overlay = renderModal({ ...DEFAULT_PROPS, target: null }).find(
+      OverlayStyled
+    );
+    const overlayProps = overlay.props();
 
-})
-
+    expect(overlay.exists()).toEqual(true);
+    expect(overlayProps.hide).toEqual(DEFAULT_PROPS.hide);
+    expect(overlayProps.target).toBeDefined();
+  });
+});

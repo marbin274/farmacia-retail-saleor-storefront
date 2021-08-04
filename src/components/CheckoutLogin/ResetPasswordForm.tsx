@@ -8,18 +8,21 @@ interface IResetPasswordForm {
 
 const ResetPasswordForm: React.FC<IResetPasswordForm> = ({ onClick }) => (
   <div className="checkout-login__user__form">
-    <div className="fa-text-2xl fa-font-semibold fa-mb-4">
+    <div className="fa-text-center fa-text-2xl fa-font-semibold fa-mb-4">
       ¿Ya te registraste?
     </div>
-    <PasswordResetForm>
+    <PasswordResetForm onClick={onClick} buttonBack={
       <Button
         className='fa-mt-4'
-        variant="link"
+        variant="outline"
+        fullWidth
+        size="large"
+        type="button"
         onClick={onClick}
       >
-        Volver al login
+        Volver iniciar sesión
       </Button>
-    </PasswordResetForm>
+    }/>
   </div>
 );
 

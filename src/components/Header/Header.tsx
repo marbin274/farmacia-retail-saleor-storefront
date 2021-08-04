@@ -26,6 +26,7 @@ import { SearchForm } from "../OverlayManager/Search";
 import "./scss/index.scss";
 import { IProps } from "./types";
 import { useMediaScreen } from "@temp/@next/globalStyles";
+import { links } from "@app/pages/AccountPage/paths";
 
 const SEARCH_HEIGHT = 56;
 
@@ -89,21 +90,15 @@ const Header: React.FC<IProps> = ({
           }
           content={
             <ul className="main-header__dropdown">
-              <li data-testid="my_account__link">
-                <Link className="fa-w-full fa-flex" to={appPaths.accountUrl} onClick={closeSearch}>
-                  Mi cuenta
-                </Link>
-              </li>
-              <li data-testid="address_book__link">
-                <Link className="fa-w-full fa-flex" to={appPaths.addressBookUrl} onClick={closeSearch}>
-                  Mis direcciones
-                </Link>
-              </li>
-              <li data-testid="order_history__link">
-                <Link className="fa-w-full fa-flex" to={appPaths.orderHistoryUrl} onClick={closeSearch}>
-                  Historial de pedidos
-                </Link>
-              </li>
+              {
+                links.map((it, index) =>
+                  <li data-testid={`${it.testId}__link`}>
+                    <Link key={index} className="fa-w-full fa-flex" to={it.url} onClick={closeSearch}>
+                      {it.label}
+                    </Link>
+                  </li>
+                )
+              }
               <li
                 className="fa-w-full fa-flex fa-cursor-pointer"
                 onClick={() => {

@@ -23,9 +23,11 @@ export const Checkbox: React.FC<IProps> = ({
         htmlFor={props?.id}
         onClick={evt => {
           evt.preventDefault();
-          onChange(evt);
-          if (ref.current) {
-            ref.current.blur();
+          if (!props.disabled) {
+            onChange(evt);
+            if (ref.current) {
+              ref.current.blur();
+            }
           }
         }}
       >
@@ -41,9 +43,11 @@ export const Checkbox: React.FC<IProps> = ({
           ref={ref}
           tabIndex={0}
           onKeyDown={evt => {
-            if (evt.which === SPACE_KEY || evt.which === ENTER_KEY) {
-              evt.preventDefault();
-              onChange(evt);
+            if (!props.disabled) {
+              if (evt.which === SPACE_KEY || evt.which === ENTER_KEY) {
+                evt.preventDefault();
+                onChange(evt);
+              }
             }
           }}
         >
