@@ -1,6 +1,6 @@
 import { ErrorListener } from "@sdk/helpers";
 import { JobsManager } from "@sdk/jobs";
-import { ICheckoutModel, IPaymentModel, IShippingMethodUpdate } from "@sdk/repository";
+import { ICheckoutModel, IPaymentModel, IShippingMethodUpdate, ISlots } from "@sdk/repository";
 import { SaleorState } from "@sdk/state";
 import { StateItems } from "@sdk/state/types";
 import { primeSku } from "@temp/core/constants";
@@ -33,6 +33,8 @@ export class SaleorCheckoutAPI extends ErrorListener
   availablePaymentGateways?: IAvailablePaymentGateways;
   payment?: IPayment;
   isPrime?: boolean;
+  slots?: ISlots;
+  selectedSlotId?: string;
 
   private saleorState: SaleorState;
   private jobsManager: JobsManager;
@@ -76,6 +78,8 @@ export class SaleorCheckoutAPI extends ErrorListener
         termsAndConditions,
         documentNumber,
         scheduleDate,
+        slotId,
+        slots,
       }: ICheckoutModel) => {
         this.checkout = {
           billingAddress,
@@ -107,6 +111,8 @@ export class SaleorCheckoutAPI extends ErrorListener
           this.paymentGatewaysLoaded;
 
         this.isPrime = isPrime || !!lines?.find(x => x.variant.sku === primeSku);
+        this.slots = slots;
+        this.selectedSlotId = slotId;
       }
     );
     this.saleorState.subscribeToChange(
