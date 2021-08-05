@@ -13,7 +13,10 @@ export type IAddressAutocompleteValue = {
 
 type IProps = {
   error?: string;
-  onChangeValue?: (value: IAddressAutocompleteValue) => void;
+  onChangeValue?: (
+    value: IAddressAutocompleteValue,
+    onlyText?: boolean
+  ) => void;
   placeholder: string;
   value?: IAddressAutocompleteValue;
 };
@@ -74,11 +77,14 @@ export const AddressAutocomplete: FC<IAddressAutocompleteProps> = ({
       value={value?.text}
       ref={inputRef}
       onChange={e => {
-        onChangeValue?.({
-          lat: value?.lat,
-          lng: value?.lng,
-          text: e.target.value,
-        });
+        onChangeValue?.(
+          {
+            lat: value?.lat,
+            lng: value?.lng,
+            text: e.target.value,
+          },
+          true
+        );
       }}
     />
   );

@@ -326,16 +326,28 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                 <StreetAddress1
                   {...fieldsProps}
                   temporaryError={temporaryStreeAddress1Error}
-                  onChange={(value: IAddressAutocompleteValue) => {
+                  onChange={(
+                    value: IAddressAutocompleteValue,
+                    onlyText: boolean
+                  ) => {
                     setFieldValue("streetAddress1", value.text || "");
-                    setFieldValue(
-                      "latitude",
-                      value.lat ? String(value.lat) : ""
-                    );
-                    setFieldValue(
-                      "longitude",
-                      value.lng ? String(value.lng) : ""
-                    );
+
+                    if (onlyText) {
+                      if (values.latitude) {
+                        setFieldValue("latitude", "");
+                        setFieldValue("longitude", "");
+                      }
+                    } else {
+                      setFieldValue(
+                        "latitude",
+                        value.lat ? String(value.lat) : ""
+                      );
+                      setFieldValue(
+                        "longitude",
+                        value.lng ? String(value.lng) : ""
+                      );
+                    }
+
                     registerFilledInputForAddress(!!(value.text && value.lat));
                   }}
                   onBlur={(e: React.FocusEvent) => {
