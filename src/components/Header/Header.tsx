@@ -23,7 +23,6 @@ import {
   OverlayType,
 } from "..";
 import { SearchForm } from "../OverlayManager/Search";
-import "./scss/index.scss";
 import { IProps } from "./types";
 import { useMediaScreen } from "@temp/@next/globalStyles";
 import { links } from "@app/pages/AccountPage/paths";

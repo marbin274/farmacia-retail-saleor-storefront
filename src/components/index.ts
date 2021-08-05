@@ -11,7 +11,6 @@ export { default as Error } from "./Error";
 export { default as ErrorPage } from "./ErrorPage";
 export { Footer } from "./Footer";
 export { Header } from "./Header";
-export { default as Loader } from "./Loader";
 export { default as LoginForm } from "./LoginForm";
 export * from "./MainMenu";
 export { default as MenuDropdown } from "./MenuDropdown";
