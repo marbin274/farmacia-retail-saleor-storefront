@@ -59,6 +59,7 @@ export interface IProps {
   ) => void;
   setFormValue?: (address?: IAddressWithEmail) => void;
   temporaryStreeAddress1Error?: string;
+  clearTemporaryAddressError?: () => void;
 }
 
 export type PropsWithFormik = Omit<IProps, "handleSubmit"> & IFormikProps;

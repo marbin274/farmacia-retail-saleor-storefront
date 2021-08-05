@@ -15,12 +15,13 @@ import { filterNotEmptyArrayItems } from "@utils/misc";
 import React, {
   forwardRef,
   RefForwardingComponent,
+  useEffect,
   useImperativeHandle,
   useRef,
   useState,
 } from "react";
 import { RouteComponentProps } from "react-router";
-import { useAlert } from "react-alert";
+import { AlertComponentProps, useAlert } from "react-alert";
 
 export interface ICheckoutAddressSubpageHandles {
   submitAddress: () => void;
@@ -67,22 +68,28 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     temporaryStreeAddress1Error,
     setTemporaryStreeAddress1Error,
   ] = useState<string>();
+  const [currentErrorAlert, setCurrentErrorAlert] = useState<
+    AlertComponentProps
+  >();
   const alert = useAlert();
 
   const _addressFormSchema = addressFormSchema;
 
-  const showTemporaryStreeAddress1Error = () => {
-    if (temporaryStreeAddress1Error) {
-      return;
+  useEffect(() => {
+    return () => {
+      clearAlertAddressError();
+    };
+  }, [currentErrorAlert]);
+
+  const clearAlertAddressError = () => {
+    if (currentErrorAlert) {
+      currentErrorAlert.close();
     }
+  };
 
-    setTemporaryStreeAddress1Error(
-      "Selecciona una de las direcciones sugeridas"
-    );
-
-    setTimeout(() => {
-      setTemporaryStreeAddress1Error(undefined);
-    }, 5000);
+  const clearTemporaryAddressError = () => {
+    clearAlertAddressError();
+    setTemporaryStreeAddress1Error("");
   };
 
   const handleFormValues = (data: IAddressWithEmail | undefined) => {
@@ -166,6 +173,8 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     }
 
     changeSubmitProgress(true);
+    setTemporaryStreeAddress1Error("");
+
     const { checkoutErrors, dataError } = await setShippingAddress(
       {
         ...address,
@@ -221,7 +230,9 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
       setAddressSubPageErrors([]);
 
       if (address.streetAddress1 && !address.latitude) {
-        alert.show(
+        clearAlertAddressError();
+
+        const newAlert = alert.show(
           {
             content: (
               <span className="fa-text-sm">
@@ -231,11 +242,16 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
             ),
           },
           {
-            timeout: 5000,
+            timeout: 60000 * 2,
             type: "error",
           }
         );
-        showTemporaryStreeAddress1Error();
+
+        setCurrentErrorAlert(newAlert);
+
+        setTemporaryStreeAddress1Error(
+          "Selecciona una de las direcciones sugeridas"
+        );
       }
 
       if (checkout?.shippingMethod?.id) {
@@ -293,6 +309,7 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
         setShippingAddress={handleSetShippingAddress}
         setFormValue={handleFormValues}
         temporaryStreeAddress1Error={temporaryStreeAddress1Error}
+        clearTemporaryAddressError={clearTemporaryAddressError}
       />
       <StockValidationModal
         show={showStockValidation}

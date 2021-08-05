@@ -36,4 +36,5 @@ export interface IProps {
   availableDistricts: (GetShop_shop_availableDistricts | null)[];
   userLoading?: boolean;
   temporaryStreeAddress1Error?: string;
+  clearTemporaryAddressError?: () => void;
 }
