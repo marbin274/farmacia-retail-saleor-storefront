@@ -27,6 +27,8 @@ import "./scss/index.scss";
 import { IProps } from "./types";
 import { useMediaScreen } from "@temp/@next/globalStyles";
 import { links } from "@app/pages/AccountPage/paths";
+import classNames from "classnames";
+import * as S from "./styles";
 
 const SEARCH_HEIGHT = 56;
 
@@ -36,14 +38,18 @@ const Header: React.FC<IProps> = ({
   hideMenuCondition,
   isLightHeader,
 }) => {
-  const [isVisibleSearchIcon, setVisibleSearchIcon] =
-    React.useState<boolean>(false);
+  const [isVisibleSearchIcon, setVisibleSearchIcon] = React.useState<boolean>(
+    false
+  );
   const { data: user } = useUserDetails();
   const [signOut] = useSignOut();
   const { items } = useCart();
 
   const largeScreenPlusOne = "993";
-  const { isMaxLargeScreen, isCustomMinScreen: isMinLargeScreenPlusOne } = useMediaScreen(largeScreenPlusOne);
+  const {
+    isMaxLargeScreen,
+    isCustomMinScreen: isMinLargeScreenPlusOne,
+  } = useMediaScreen(largeScreenPlusOne);
 
   const handleScroll = () => {
     const isVisible = window.scrollY >= SEARCH_HEIGHT;
@@ -84,21 +90,24 @@ const Header: React.FC<IProps> = ({
         <MenuDropdown
           {...props}
           head={
-            <li className="main-header__icon main-header__user">
-              <PersonIcon size={16} />
+            <li className="fa-cursor-pointer fa-bg-neutral-light fa-w-8 fa-h-8 fa-flex fa-rounded-full fa-ml-2 md:fa-w-11 md:fa-h-11">
+              <PersonIcon className="fa-m-auto" size={16} />
             </li>
           }
           content={
-            <ul className="main-header__dropdown">
-              {
-                links.map((it, index) =>
-                  <li data-testid={`${it.testId}__link`}>
-                    <Link key={index} className="fa-w-full fa-flex" to={it.url} onClick={closeSearch}>
-                      {it.label}
-                    </Link>
-                  </li>
-                )
-              }
+            <ul>
+              {links.map((it, index) => (
+                <li data-testid={`${it.testId}__link`}>
+                  <Link
+                    key={index}
+                    className="fa-w-full fa-flex"
+                    to={it.url}
+                    onClick={closeSearch}
+                  >
+                    {it.label}
+                  </Link>
+                </li>
+              ))}
               <li
                 className="fa-w-full fa-flex fa-cursor-pointer"
                 onClick={() => {
@@ -116,13 +125,13 @@ const Header: React.FC<IProps> = ({
     return (
       <li
         data-testid="login-btn"
-        className={`main-header__icon main-header__user`}
+        className="fa-cursor-pointer fa-bg-neutral-light fa-w-8 fa-h-8 fa-flex fa-rounded-full fa-ml-2 md:fa-w-11 md:fa-h-11"
         onClick={() => {
           overlayContext.show(OverlayType.login, OverlayTheme.center);
           closeSearch();
         }}
       >
-        <PersonIcon size={16} />
+        <PersonIcon className="fa-m-auto" size={16} />
       </li>
     );
   };
@@ -136,11 +145,10 @@ const Header: React.FC<IProps> = ({
   };
 
   const renderHeaderLeft = (overlayContext: OverlayContextInterface) => (
-    <div className="main-header__left">
-      <ul>
+    <div>
+      <ul className="fa-flex fa-items-center">
         {!hideMenuCondition && isMaxLargeScreen && (
-          <li
-            className="main-header__hamburguer"
+          <S.ListHamburguer
             onClick={() =>
               overlayContext.show(OverlayType.sideNav, OverlayTheme.left, {
                 data: {
@@ -151,18 +159,18 @@ const Header: React.FC<IProps> = ({
             }
           >
             <Button
-              iconOnly
               icon={<MenuIcon size={16} onClick={closeSearch} />}
+              iconOnly
             />
-          </li>
+          </S.ListHamburguer>
         )}
         {isMinLargeScreenPlusOne && (
           <>
             {renderHeaderLogo()}
             {!hideMenuCondition && (
-              <div className="main-header__search">
+              <S.SearchContainer>
                 <SearchForm />
-              </div>
+              </S.SearchContainer>
             )}
           </>
         )}
@@ -178,11 +186,11 @@ const Header: React.FC<IProps> = ({
   const renderHeaderCenter = () => {
     if (isMaxLargeScreen) {
       return (
-        <div className="main-header__center">
+        <div>
           {!hideMenuCondition ? (
             renderHeaderLogo()
           ) : (
-            <div className="icon_container">{renderHeaderLogo()}</div>
+            <div>{renderHeaderLogo()}</div>
           )}
         </div>
       );
@@ -196,39 +204,39 @@ const Header: React.FC<IProps> = ({
       (isMaxLargeScreen && isVisibleSearchIcon) ||
       (isLightHeader && isMaxLargeScreen);
     return (
-      <div className="main-header__right">
-        <ul>
+      <div>
+        <ul className="fa-flex fa-items-center">
           {isMinLargeScreenPlusOne && renderHeaderUser(overlayContext, false)}
           <Online>
             {canShowSearchIcon && (
               <li
-                className="main-header__icon main-header__search-icon"
+                className="fa-cursor-pointer fa-w-8 fa-h-8 fa-bg-neutral-light fa-rounded-full fa-flex"
                 onClick={() => onClickSearchIcon(overlayContext)}
               >
-                <SearchIcon size={16} />
+                <SearchIcon className="fa-m-auto" size={16} />
               </li>
             )}
             <li
-              className="main-header__icon main-header__cart"
+              className="fa-cursor-pointer fa-rounded-full fa-border-solid fa-border fa-border-neutral-light fa-p-0.5 fa-ml-2 lg:fa-ml-4"
               onClick={() => {
                 overlayContext.show(OverlayType.cart, OverlayTheme.right);
                 closeSearch();
               }}
             >
-              <div className="main-header__cart__box">
-                <CartIcon />
+              <div className="fa-relative fa-bg-neutral-light fa-w-8 fa-h-8 fa-flex fa-rounded-full lg:fa-w-11 lg:fa-h-11">
+                <CartIcon className="fa-m-auto" />
                 {cartItemsQuantity > 0 ? (
-                  <span className="main-header__cart__box__quantity">
-                    <span>{cartItemsQuantity}</span>
+                  <span className="fa-absolute fa--top-2 fa--right-2 fa-bg-primary-medium fa-rounded-full fa-w-5 fa-h-5 fa-flex lg:fa-top-0">
+                    <S.CartItemsQuantity>
+                      {cartItemsQuantity}
+                    </S.CartItemsQuantity>
                   </span>
                 ) : null}
               </div>
             </li>
           </Online>
           <Offline>
-            <li className="main-header__offline">
-              {isMinLargeScreenPlusOne && <span>Offline</span>}
-            </li>
+            <li>{isMinLargeScreenPlusOne && <span>Offline</span>}</li>
           </Offline>
         </ul>
       </div>
@@ -240,16 +248,24 @@ const Header: React.FC<IProps> = ({
     const hasBorderHeader = isLightHeader && isMaxLargeScreen;
     return (
       <header
-        className={`header ${hasBorderHeader && "header__border-bottom"}`}
+        className={classNames(
+          "fa-bg-neutral-lightest fa-sticky fa-w-full fa-z-4 fa-top-0 fa-py-0 fa-px-4 fa-h-20 fa-max-h-20 lg:fa-z-3",
+          {
+            "fa-border-b fa-border-solid fa-border-light": hasBorderHeader,
+          }
+        )}
       >
-        <nav
-          className={`main-header ${justifyCenterLogo && "justify-center"}`}
+        <S.MainHeader
+          className={classNames("fa-m-auto fa-flex fa-h-20 fa-items-center", {
+            "fa-justify-between": !justifyCenterLogo,
+            "fa-justify-center": justifyCenterLogo,
+          })}
           id="header"
         >
           {renderHeaderLeft(overlayContext)}
           {renderHeaderCenter()}
           {renderHeaderRight(overlayContext)}
-        </nav>
+        </S.MainHeader>
       </header>
     );
   };
