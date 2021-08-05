@@ -1,27 +1,30 @@
 import * as React from "react";
-import { FormError } from "../Form";
 import "./scss/index.scss";
-
-
 
 type Style = "white" | "grey";
 
 interface IClassNameArgs {
-  errors?: FormError[];
+  errors?: {
+    message: string;
+    field?: string;
+  }[];
   iconLeft?: React.ReactNode;
   styleType?: Style;
 }
 
 export interface TextFieldProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
-  errors?: FormError[];
+  errors?: {
+    message: string;
+    field?: string;
+  }[];
   helpText?: string;
   label?: string;
   iconLeft?: React.ReactNode;
   iconRight?: React.ReactNode;
   styleType?: Style;
   innerIcon?: React.ReactNode;
-  inputRef?: any
+  inputRef?: any;
 }
 
 const generateClassName = ({ errors, iconLeft, styleType }: IClassNameArgs) => {
@@ -47,8 +50,8 @@ const TextField: React.FC<TextFieldProps> = ({
     {iconLeft && <span className="input__icon-left">{iconLeft}</span>}
     {iconRight && <span className="input__icon-right">{iconRight}</span>}
     <div className="input__content">
-    {label && <span className="input__label">{label}</span>}
-    
+      {label && <span className="input__label">{label}</span>}
+
       <input
         {...rest}
         ref={inputRef}
