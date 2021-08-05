@@ -341,17 +341,17 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
 
                     if (onlyText) {
                       if (values.latitude) {
-                        setFieldValue("latitude", "");
-                        setFieldValue("longitude", "");
+                        setFieldValue("latitude", undefined);
+                        setFieldValue("longitude", undefined);
                       }
                     } else {
                       setFieldValue(
                         "latitude",
-                        value.lat ? String(value.lat) : ""
+                        value.lat ? String(value.lat) : undefined
                       );
                       setFieldValue(
                         "longitude",
-                        value.lng ? String(value.lng) : ""
+                        value.lng ? String(value.lng) : undefined
                       );
                     }
 
