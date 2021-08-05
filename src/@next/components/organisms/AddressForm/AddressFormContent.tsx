@@ -64,6 +64,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
   setFieldTouched,
   comeFromModal,
   temporaryStreeAddress1Error,
+  clearTemporaryAddressError,
 }) => {
   const initialTermAndconditions =
     values && values?.termsAndConditions ? values?.termsAndConditions : false;
@@ -164,6 +165,12 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
     }
     return { lat: Number(values.latitude), lng: Number(values.longitude) };
   };
+
+  React.useEffect(() => {
+    if (values?.longitude && temporaryStreeAddress1Error) {
+      clearTemporaryAddressError?.();
+    }
+  }, [values?.longitude]);
 
   React.useEffect(() => {
     setPrivacyAndPolicies(!!values?.termsAndConditions);
