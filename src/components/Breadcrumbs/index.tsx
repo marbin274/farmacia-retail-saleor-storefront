@@ -1,16 +1,13 @@
-import { smallScreen } from "../../globalStyles/scss/variables.scss";
-import "./scss/index.scss";
-
+import { HomeIcon, NextIcon } from "@farmacia-retail/farmauna-components";
+import { useMediaScreen } from "@temp/@next/globalStyles";
 import classNames from "classnames";
 import * as React from "react";
-import Media from "react-media";
 import { Link } from "react-router-dom";
-
 import { baseUrl } from "../../app/routes";
 import { getDBIdFromGraphqlId, slugify } from "../../core/utils";
+import { smallScreen } from "../../globalStyles/scss/variables.scss";
 import { Category_category } from "../../views/Category/gqlTypes/Category";
-import { HomeIcon, NextIcon } from "@farmacia-retail/farmauna-components";
-
+import * as S from "./styles";
 export interface Breadcrumb {
   label: string;
   link: string;
@@ -54,48 +51,56 @@ const Breadcrumbs: React.FC<IBreadcrumbProps> = ({
   className,
   showHomeIcon,
   backLabelMobile,
-}) => (
-  <Media
-    query={{
-      minWidth: smallScreen,
-    }}
-  >
-    {matches =>
-      breadcrumbsAlwaysVisible || matches ? (
-        <ul className={classNames("breadcrumbs", className)}>
-          <li>
-            <Link to={baseUrl}>
-              {showHomeIcon && (
-                <HomeIcon size={20} className="breadcrumbs__home-icon" />
-              )}
-            </Link>
-            <NextIcon size={10} className="breadcrumbs__next-icon" />
-          </li>
-          {breadcrumbs.map((breadcrumb, index) => (
-            <li
-              key={index}
-              className={classNames({
-                breadcrumbs__active: index === breadcrumbs.length - 1,
-              })}
-            >
-              <Link to={breadcrumb.link}>
-                {breadcrumb.label?.toLocaleLowerCase()}
-              </Link>
-              {index < breadcrumbs.length - 1 && (
-                <NextIcon size={10} className="breadcrumbs__next-icon" />
-              )}
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <div className="breadcrumbs">
-          <Link to={getBackLink(breadcrumbs)}>
-            {backLabelMobile || "Atrás"}
+}) => {
+  const { isCustomMinScreen: isMinSmallScreen } = useMediaScreen(smallScreen);
+
+  const renderNextIcon = () => {
+    return (
+      <NextIcon
+        size={10}
+        className="fa-inline-block fa-mt-1 fa-mb-1 fa-mx-3 fa-align-middle"
+      />
+    );
+  };
+
+  if (breadcrumbsAlwaysVisible || isMinSmallScreen) {
+    return (
+      <ul
+        className={classNames(
+          "fa-inline-flex fa-flex-wrap fa-mt-4 fa-mb-8 fa-mx-0 sm:fa-mb-4",
+          className
+        )}
+      >
+        <S.ListItem>
+          <Link to={baseUrl}>
+            {showHomeIcon && (
+              <HomeIcon
+                size={20}
+                className="fa-inline-block fa-align-middle fa-my-0 fa-mr-0 fa-ml-2 sm:fa-m-0"
+              />
+            )}
           </Link>
-        </div>
-      )
-    }
-  </Media>
-);
+          {renderNextIcon()}
+        </S.ListItem>
+        {breadcrumbs.map((breadcrumb, index) => (
+          <S.ListItem active={index === breadcrumbs.length - 1} key={index}>
+            <Link to={breadcrumb.link}>
+              {breadcrumb.label?.toLocaleLowerCase()}
+            </Link>
+            {index < breadcrumbs.length - 1 && renderNextIcon()}
+          </S.ListItem>
+        ))}
+      </ul>
+    );
+  }
+
+  return (
+    <div className="fa-inline-flex fa-flex-wrap fa-mt-4 fa-mb-8 fa-mx-0 sm:fa-mb-4">
+      <S.LinkMobile to={getBackLink(breadcrumbs)}>
+        {backLabelMobile || "Atrás"}
+      </S.LinkMobile>
+    </div>
+  );
+};
 
 export default Breadcrumbs;

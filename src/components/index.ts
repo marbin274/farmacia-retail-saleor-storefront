@@ -1,10 +1,8 @@
-export { default as AddressSummary } from "./AddressSummary";
 export {
   Breadcrumb,
   default as Breadcrumbs,
   extractBreadcrumbs,
 } from "./Breadcrumbs";
-export { ButtonProps, default as Button } from "./Button";
 export { CartTable } from "./CartTable";
 export { default as CheckoutLogin } from "./CheckoutLogin";
 export { default as ContentPage } from "./ContentPage";
@@ -28,7 +26,6 @@ export {
   MetaWrapper,
 } from "./Meta";
 export { INavItem, MobileNavList } from "./MobileNav";
-export { default as Modal } from "./Modal";
 export { NavLink } from "./NavLink";
 export { default as NetworkStatus } from "./NetworkStatus";
 export { default as NotFound } from "./NotFound";

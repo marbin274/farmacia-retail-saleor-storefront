@@ -2,13 +2,18 @@ import * as React from "react";
 
 import classNames from "classnames";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
-import { ButtonProps } from "..";
 import { Button } from "@components/atoms";
 
 interface AddToCartButtonState {
   animate: boolean;
   disabled: boolean;
 }
+
+type ButtonProps = {
+  onClick: (evt: React.MouseEvent<HTMLButtonElement>) => void;
+  disabled: boolean;
+  className: string;
+};
 
 class AddToCartButton extends React.PureComponent<
   ButtonProps,
