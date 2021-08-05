@@ -11,7 +11,7 @@ export const addressFormSchema = Yup.object().shape({
   documentNumber: SchemaValidation.documentNumberValidation,
   email: SchemaValidation.emailValidation,
   firstName: SchemaValidation.fullNameValidation,
-  latitude: Yup.number(),
+  latitude: Yup.number().nullable(),
   phone: SchemaValidation.phoneValidation,
   streetAddress1: Yup.string()
     .trim()
