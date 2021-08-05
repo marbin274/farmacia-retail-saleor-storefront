@@ -8,7 +8,7 @@ import {
   xSmallScreen,
   xxSmallScreen, 
   xxLargeScreen,
-  xxxLargeScreen
+  xxxLargeScreen,
 } from "./constants";
 
 

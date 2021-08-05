@@ -115,8 +115,7 @@ const getButton = (
   checkoutId: string | undefined,
   onClick: () => void
 ) => {
-  if (text) {
-    return (
+  return text ? (
       <Button
         data-cy="checkoutPageBtnNextStep"
         onClick={onClick}
@@ -125,10 +124,7 @@ const getButton = (
       >
         {text}
       </Button>
-    );
-  } else {
-    return null;
-  }
+    ) : null;
 };
 
 const CheckoutPage: React.FC<IProps> = ({}: IProps) => {

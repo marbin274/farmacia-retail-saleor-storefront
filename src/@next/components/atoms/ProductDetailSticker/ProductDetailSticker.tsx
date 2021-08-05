@@ -12,8 +12,7 @@ export const ProductDetailSticker = ({
   isOnSale,
   isOutStock,
 }: IProductLabelProps) => {
-  if (isOutStock || isOnSale) {
-    return (
+  return isOutStock || isOnSale ? (
       <S.ProductSticker>
         <Chip
           label={
@@ -24,8 +23,5 @@ export const ProductDetailSticker = ({
           disabled={isOutStock}
         />
       </S.ProductSticker>
-    );
-  } else {
-    return null;
-  }
+    ) : null;
 };

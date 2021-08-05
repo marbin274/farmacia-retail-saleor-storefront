@@ -54,7 +54,7 @@ import {
 
 import {
   SaveFavoriteCategories,
-  SaveFavoriteCategoriesVariables
+  SaveFavoriteCategoriesVariables,
 } from "./gqlTypes/SaveFavoriteCategories";
 import { AccountConfirm, AccountConfirmVariables } from "./gqlTypes/AccountConfirm";
 
