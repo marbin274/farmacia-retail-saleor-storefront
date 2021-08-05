@@ -1,6 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { OverlayContextInterface, OverlayTheme, OverlayType } from "../Overlay";
+import {
+  OverlayContextInterface,
+  OverlayTheme,
+  OverlayType,
+} from "../../Overlay";
 import { Button } from "@farmacia-retail/farmauna-components";
 import MedicalHealth from "images/medical-health.svg";
 

@@ -1,9 +1,17 @@
 @import "@temp/globalStyles/scss/variables.scss";
 
 .cart-table {
+  @media (max-width: $medium-screen) {
+    td:last-child,
+    th:last-child {
+      text-align: right;
+    }
+  }
+
   @media (max-width: $small-screen) {
     font-size: 0.75rem;
   }
+
   thead tr {
     border-bottom: 1px solid $auna-grey-60;
 
@@ -20,13 +28,6 @@
 
   tfoot tr {
     border-bottom: 0;
-  }
-
-  @media (max-width: $medium-screen) {
-    td:last-child,
-    th:last-child {
-      text-align: right;
-    }
   }
 
   &-row--processing td {
