@@ -1,4 +1,4 @@
-import { CheckoutShipping } from "@components/organisms";
+import { CheckoutShipping, CheckoutShippingSlot } from "@components/organisms";
 import { useCart, useCheckout } from "@sdk/react";
 import { alertService } from "@temp/@next/components/atoms/Alert";
 import {
@@ -52,15 +52,14 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
     availableShippingMethods,
     setShippingMethod,
     isPrime,
-  
+    selectedSlotId,
+    slots,
   } = useCheckout();
   const { items } = useCart();
 
   const isPrimeShippingMethod = (sm: Checkout_availableShippingMethods) => {
     return sm.name.toLocaleLowerCase().includes("prime");
-  }
-
-
+  };
 
   const shippingMethods: IAvailableShippingMethods = [];
   const primeShippingMethodExists = !!availableShippingMethods?.find(x =>
@@ -125,6 +124,24 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
       }
     }
   };
+
+  // TODO validar si slots están activos
+
+  return (
+    <CheckoutShippingSlot
+      {...props}
+      shippingMethods={shippingMethods}
+      selectedShippingMethodId={checkout?.shippingMethod?.id}
+      scheduleDate={checkout?.scheduleDate}
+      errors={addressSubPageErrors}
+      selectShippingMethod={handleSetShippingMethod}
+      items={items}
+      formId={checkoutShippingFormId}
+      formRef={checkoutShippingFormRef}
+      slots={slots}
+      selectedSlotId={selectedSlotId}
+    />
+  );
 
   return (
     <CheckoutShipping

@@ -6,14 +6,35 @@ export interface IKeyValue{
     description?:string;
 }
 
-export interface IProps {
+interface IBaseProps  {
     dateSelected?: Date;
-    errors: any;
     id: string;
+    errors: any;
     isScheduled: boolean | null;
     selected: boolean;
+    setFieldValue: (field: string, value: any) => void;
+    setShippingMethod: (value: IShippingMethodUpdate) => void;
+}
+
+export interface ICheckoutShippingProgrammedProps extends IBaseProps {
     scheduleSelected?: string;
     scheduleDates: Array<Checkout_availableShippingMethods_scheduleDates | null> | null;
-    setFieldValue: (field: string, value: any) => void;
-    setShippingMethod: (value: IShippingMethodUpdate) => void
+}
+
+export interface ICheckoutShippingProgrammedSlotProps  extends IBaseProps {
+    scheduleDates?: ISlotScheduleDate[];
+    scheduleTimeId?: string;
+    selectedSlotId?: string;
+}
+
+export interface ISlotScheduleTime {
+    id: string;
+    startTime: any;
+    endTime: any;
+    scheduleTimeId: string;
+    date: string;
+}
+
+export interface ISlotScheduleDate {
+    scheduleTimes: ISlotScheduleTime[];
 }
