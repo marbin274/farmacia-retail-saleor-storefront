@@ -4,7 +4,7 @@ import { ProductTileAUNA } from "@temp/@next/components/molecules";
 import { useDistrictSelected } from "@temp/@next/hooks/useDistrictSelected";
 import { getProductsWithQuantity } from "@sdk/utils/products";
 import { TypedFeaturedProductsQuery } from "@temp/components/ProductsFeatured/queries";
-import { COLLECTIONS_PER_PAGE, PRODUCTS_PER_PAGE } from "@temp/core/config";
+import { COLLECTIONS_PER_PAGE, PRODUCTS_PER_PAGE, PRODUCTS_PER_PAGE_PERSONALIZE } from "@temp/core/config";
 import {
   convertToSimpleProduct,
   generateProductUrl,
@@ -47,6 +47,7 @@ const ProductsFeatured: React.FC<IProps> = ({
       loader={<Skeleton />}
       variables={{
         first: PRODUCTS_PER_PAGE,
+        firstPersonalize: PRODUCTS_PER_PAGE_PERSONALIZE,
         firstCollection: COLLECTIONS_PER_PAGE,
         districtId: districtSelected.id,
         sortBy: {

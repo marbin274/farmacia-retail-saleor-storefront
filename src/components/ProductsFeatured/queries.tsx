@@ -51,6 +51,7 @@ export const featuredProducts = gql`
   ${featuredProductFragment}
   query FeaturedProducts(
     $first: Int!,
+    $firstPersonalize: Int!,
     $districtId: ID,
     $firstCollection: Int,
     $sortBy: CollectionSortingInput
@@ -72,7 +73,7 @@ export const featuredProducts = gql`
         }
       }
     }
-    personalized: recommendedProducts(maxResults: $first, district: $districtId) {
+    personalized: recommendedProducts(maxResults: $firstPersonalize, district: $districtId) {
       ...FeaturedProductFields
     } 
 
