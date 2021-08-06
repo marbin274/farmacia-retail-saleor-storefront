@@ -112,7 +112,9 @@ module.exports = ({ sourceDir, distDir }) => ({
       GTM_ID: process.env.GTM_ID
     }),
     new ForkTsCheckerWebpackPlugin({
-      tslint: true,
+      eslint:  {
+        files: './src/**/*.{ts,tsx,js,jsx}'
+      },
       exclude: "node_modules",
     }),
     // PWA plugins
