@@ -932,6 +932,7 @@ export interface FeaturedProducts {
 
 export interface FeaturedProductsVariables {
   first: number;
+  firstPersonalize: number;
   districtId?: string | null;
   firstCollection?: number | null;
   sortBy?: CollectionSortingInput | null;
