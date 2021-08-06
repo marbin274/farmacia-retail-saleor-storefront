@@ -304,7 +304,6 @@ export const TOTAL_DISTRICT = 30; // TODO: this variable should be dinamically l
 export const POS_DISTRICTS = [
   "miraflores",
   "surquillo",
-  "santiago de surco",
   "barranco",
 ];
 
