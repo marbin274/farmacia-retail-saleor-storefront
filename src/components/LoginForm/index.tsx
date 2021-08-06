@@ -6,7 +6,6 @@ import { useFormik } from "formik";
 import * as React from "react";
 import ForgottenPassword from "../OverlayManager/Login/ForgottenPassword";
 import { loginFormSchema } from "./loginForm.schema";
-import "./scss/index.scss";
 import { Button, InputField } from "@farmacia-retail/farmauna-components";
 import * as S from "./styles";
 interface ILoginForm {

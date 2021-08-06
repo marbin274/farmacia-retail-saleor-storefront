@@ -4,7 +4,12 @@ module.exports = {
   ...tailwindConfig,
   prefix: "fa-",
   theme: {
-    ...tailwindConfig.theme,
+    extend: {
+      ...tailwindConfig.theme.extend,
+      width: {
+        "100": "25rem",
+      },
+    },
     colors: {
       ...tailwindConfig.theme.colors,
       brand: {
