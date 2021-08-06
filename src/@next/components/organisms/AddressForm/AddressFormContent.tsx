@@ -64,6 +64,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
   setFieldTouched,
   comeFromModal,
   temporaryStreeAddress1Error,
+  clearTemporaryAddressError,
 }) => {
   const initialTermAndconditions =
     values && values?.termsAndConditions ? values?.termsAndConditions : false;
@@ -164,6 +165,12 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
     }
     return { lat: Number(values.latitude), lng: Number(values.longitude) };
   };
+
+  React.useEffect(() => {
+    if (values?.longitude && temporaryStreeAddress1Error) {
+      clearTemporaryAddressError?.();
+    }
+  }, [values?.longitude]);
 
   React.useEffect(() => {
     setPrivacyAndPolicies(!!values?.termsAndConditions);
@@ -326,16 +333,28 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                 <StreetAddress1
                   {...fieldsProps}
                   temporaryError={temporaryStreeAddress1Error}
-                  onChange={(value: IAddressAutocompleteValue) => {
+                  onChange={(
+                    value: IAddressAutocompleteValue,
+                    onlyText: boolean
+                  ) => {
                     setFieldValue("streetAddress1", value.text || "");
-                    setFieldValue(
-                      "latitude",
-                      value.lat ? String(value.lat) : ""
-                    );
-                    setFieldValue(
-                      "longitude",
-                      value.lng ? String(value.lng) : ""
-                    );
+
+                    if (onlyText) {
+                      if (values.latitude) {
+                        setFieldValue("latitude", undefined);
+                        setFieldValue("longitude", undefined);
+                      }
+                    } else {
+                      setFieldValue(
+                        "latitude",
+                        value.lat ? String(value.lat) : undefined
+                      );
+                      setFieldValue(
+                        "longitude",
+                        value.lng ? String(value.lng) : undefined
+                      );
+                    }
+
                     registerFilledInputForAddress(!!(value.text && value.lat));
                   }}
                   onBlur={(e: React.FocusEvent) => {

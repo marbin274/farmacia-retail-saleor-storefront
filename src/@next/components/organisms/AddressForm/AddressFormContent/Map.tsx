@@ -16,7 +16,7 @@ type IProps = {
 export const Map: FC<IProps> = ({ location, onChangeLocation }) => {
   const mapRef = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<google.maps.Map>();
-  const [, setMarker] = useState<google.maps.Marker>();
+  const [marker, setMarker] = useState<google.maps.Marker>();
 
   useEffect(() => {
     if (!mapRef.current) {
@@ -85,7 +85,15 @@ export const Map: FC<IProps> = ({ location, onChangeLocation }) => {
   }, [map]);
 
   useEffect(() => {
-    if (!map || !location?.lat || !location?.lng) {
+    if (!map) {
+      return;
+    }
+
+    if (!location?.lat || !location?.lng) {
+      if (marker) {
+        marker.setMap(null);
+        setMarker(undefined);
+      }
       return;
     }
 

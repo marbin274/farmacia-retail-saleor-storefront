@@ -1,5 +1,5 @@
-import { AddressAutocomplete, InputSelect } from "@components/molecules";
-import React from "react";
+import { AddressAutocomplete, IAddressAutocompleteRef, InputSelect } from "@components/molecules";
+import React, { useEffect, useRef } from "react";
 import { IFieldsProps, ISelectProps } from "./types";
 import { InputField } from "@farmacia-retail/farmauna-components";
 import { TOTAL_DISTRICT } from "@temp/core/config";
@@ -59,6 +59,13 @@ export const StreetAddress1 = ({
   temporaryError,
 }: IFieldsProps & { temporaryError?: string }) => {
   const error = fieldErrors?.streetAddress1?.[0]?.message || temporaryError;
+  const ref = useRef<IAddressAutocompleteRef>();
+
+  useEffect(() => {
+    if (error) {
+      ref.current?.focus();
+    }
+  }, [ref, error]);
 
   return (
     <>
@@ -76,6 +83,7 @@ export const StreetAddress1 = ({
         error={error}
         inputSize="large"
         onBlur={onBlur}
+        ref={ref}
       />
       {!error && (
         <span className="fa-text-xs fa-mt-2 fa-text-neutral-dark">
