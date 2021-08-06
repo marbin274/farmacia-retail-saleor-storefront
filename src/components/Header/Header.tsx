@@ -83,7 +83,7 @@ const Header: React.FC<IProps> = ({
     overlayContext: OverlayContextInterface,
     isLeft = true
   ) => {
-    const props = isLeft ? { suffixClass: "__rightdown" } : {};
+    const props = isLeft ? { suffixClass: "rightdown" } : {};
     if (user)
       return (
         <MenuDropdown
