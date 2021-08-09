@@ -1,4 +1,4 @@
-import { SortOptions } from "@temp/views/Search/Page";
+import { SortOptions } from "@app/pages/SearchPage/Page";
 
 export const SORT_OPTIONS: SortOptions = [
     {

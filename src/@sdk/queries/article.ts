@@ -1,10 +1,8 @@
 import gql from "graphql-tag";
 
-import { TypedQuery } from "../../core/queries";
-import { Article, ArticleVariables } from "./gqlTypes/Article";
 
-const articleQuery = gql`
-  query Article($slug: String!) {
+export const articleDetail = gql`
+  query ArticleDetail($slug: String!) {
     page(slug: $slug) {
       contentImage
       contentJson
@@ -25,6 +23,3 @@ const articleQuery = gql`
   }
 `;
 
-export const TypedArticleQuery = TypedQuery<Article, ArticleVariables>(
-  articleQuery
-);

@@ -1,12 +1,7 @@
-import {
-  basicProductFragment,
-  productPricingFragment,
-} from "@temp/views/Product/queries";
 import gql from "graphql-tag";
-import { TypedQuery } from "../../core/queries";
-import { Landing, LandingVariables } from "./gqlTypes/Landing";
+import { basicProductFragment, productPricingFragment } from "../fragments/products";
 
-export const landingQuery = gql`
+export const landing = gql`
   ${basicProductFragment}
   ${productPricingFragment}
   query Landing($slug: String!, $collectionsFirst: Int!, $productsFirst: Int!) {
@@ -70,7 +65,3 @@ export const landingQuery = gql`
     }
   }
 `;
-
-export const TypedLandingQuery = TypedQuery<Landing, LandingVariables>(
-  landingQuery
-);

@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import * as S from "./styles";
 import { Breadcrumbs, ProductsCollection } from "@temp/components";
-import { BannerCarousel } from "@temp/@next/components/containers/BannerCarousel";
-import { Landing_landing } from "./gqlTypes/Landing";
+import { BannerCarousel } from "@app/components/containers/BannerCarousel";
+import { Landing_landing } from "@sdk/queries/gqlTypes/Landing";
 import { maybe } from "@temp/core/utils";
 import { ISimpleProduct } from "@sdk/types/IProduct";
 
