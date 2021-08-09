@@ -12,7 +12,7 @@ import { IAddressWithEmail, IFormErrorSort } from "@types";
 import { Form, Formik, FormikHelpers } from "formik";
 import ErrorFormPopulateIcon from "images/auna/form-populate-error.svg";
 import { pick, sortBy } from "lodash";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { alertService } from "../../atoms/Alert";
 import {
   addressFormModalSchema,
@@ -54,70 +54,82 @@ export const AddressForm: React.FC<IProps> = ({
   checkoutData,
   setFormValue,
   errors: requestErrors,
+  showOptionalAddressError,
   ...props
 }: IProps) => {
   if (userLoading) return null;
 
-  let addressWithPickedFields: Partial<IAddressWithEmail> = {};
-  if (address) {
-    addressWithPickedFields = pick(address, ADDRESS_FIELDS);
-  }
+  const [initialValues, setInitialValues] = useState<
+    Partial<IAddressWithEmail>
+  >();
 
-  if (user) {
-    const address = user.defaultShippingAddress;
-    const streetAddress1 = address?.streetAddress1;
-    const latitude = address?.latitude;
+  useEffect(() => {
+    let addressWithPickedFields: Partial<IAddressWithEmail> = {};
+    if (address) {
+      addressWithPickedFields = pick(address, ADDRESS_FIELDS);
+    }
 
-    addressWithPickedFields.firstName = getName(user.firstName, user.lastName);
-    addressWithPickedFields.streetAddress1 =
-      streetAddress1 && latitude ? streetAddress1 : undefined;
-    addressWithPickedFields.streetAddress2 =
-      address?.streetAddress2 || undefined;
-    addressWithPickedFields.email = user.email;
-    addressWithPickedFields.id = address?.id;
-    addressWithPickedFields.documentNumber = user.documentNumber || "";
-    addressWithPickedFields.phone = address?.phone
-      ? removeCountryCodeInPhoneNumber(address?.phone)
-      : "";
-    addressWithPickedFields.termsAndConditions =
-      user.termsAndConditions || false;
-    addressWithPickedFields.dataTreatmentPolicy = user.dataTreatmentPolicy;
-    addressWithPickedFields.latitude = latitude || "";
-    addressWithPickedFields.longitude = address?.longitude || "";
-  }
+    if (user) {
+      const address = user.defaultShippingAddress;
+      const streetAddress1 = address?.streetAddress1;
+      const latitude = address?.latitude;
 
-  if (checkoutData) {
-    addressWithPickedFields.firstName =
-      checkoutData.shippingAddress?.firstName ||
-      addressWithPickedFields.firstName;
-    addressWithPickedFields.email =
-      checkoutData.email || addressWithPickedFields.email;
-    addressWithPickedFields.documentNumber =
-      checkoutData.documentNumber || addressWithPickedFields.documentNumber;
-    addressWithPickedFields.phone = checkoutData.shippingAddress?.phone
-      ? removeCountryCodeInPhoneNumber(checkoutData.shippingAddress.phone)
-      : addressWithPickedFields.phone;
-    addressWithPickedFields.termsAndConditions =
-      checkoutData.termsAndConditions;
-    addressWithPickedFields.dataTreatmentPolicy =
-      checkoutData.dataTreatmentPolicy;
-    addressWithPickedFields.streetAddress1 =
-      checkoutData.shippingAddress?.streetAddress1 ||
-      addressWithPickedFields.streetAddress1;
-    addressWithPickedFields.streetAddress2 =
-      checkoutData.shippingAddress?.streetAddress2 ||
-      addressWithPickedFields.streetAddress2;
-    addressWithPickedFields.latitude =
-      checkoutData.shippingAddress?.latitude ||
-      addressWithPickedFields.latitude;
-    addressWithPickedFields.longitude =
-      checkoutData.shippingAddress?.longitude ||
-      addressWithPickedFields.longitude;
-  }
+      addressWithPickedFields.firstName = getName(
+        user.firstName,
+        user.lastName
+      );
+      addressWithPickedFields.streetAddress1 =
+        streetAddress1 && latitude ? streetAddress1 : undefined;
+      addressWithPickedFields.streetAddress2 =
+        address?.streetAddress2 || undefined;
+      addressWithPickedFields.email = user.email;
+      addressWithPickedFields.id = address?.id;
+      addressWithPickedFields.documentNumber = user.documentNumber || "";
+      addressWithPickedFields.phone = address?.phone
+        ? removeCountryCodeInPhoneNumber(address?.phone)
+        : "";
+      addressWithPickedFields.termsAndConditions =
+        user.termsAndConditions || false;
+      addressWithPickedFields.dataTreatmentPolicy = user.dataTreatmentPolicy;
+      addressWithPickedFields.latitude = latitude || "";
+      addressWithPickedFields.longitude = address?.longitude || "";
+    }
 
-  if (defaultValue) {
-    addressWithPickedFields.country = defaultValue;
-  }
+    if (checkoutData) {
+      addressWithPickedFields.firstName =
+        checkoutData.shippingAddress?.firstName ||
+        addressWithPickedFields.firstName;
+      addressWithPickedFields.email =
+        checkoutData.email || addressWithPickedFields.email;
+      addressWithPickedFields.documentNumber =
+        checkoutData.documentNumber || addressWithPickedFields.documentNumber;
+      addressWithPickedFields.phone = checkoutData.shippingAddress?.phone
+        ? removeCountryCodeInPhoneNumber(checkoutData.shippingAddress.phone)
+        : addressWithPickedFields.phone;
+      addressWithPickedFields.termsAndConditions =
+        checkoutData.termsAndConditions;
+      addressWithPickedFields.dataTreatmentPolicy =
+        checkoutData.dataTreatmentPolicy;
+      addressWithPickedFields.streetAddress1 =
+        checkoutData.shippingAddress?.streetAddress1 ||
+        addressWithPickedFields.streetAddress1;
+      addressWithPickedFields.streetAddress2 =
+        checkoutData.shippingAddress?.streetAddress2 ||
+        addressWithPickedFields.streetAddress2;
+      addressWithPickedFields.latitude =
+        checkoutData.shippingAddress?.latitude ||
+        addressWithPickedFields.latitude;
+      addressWithPickedFields.longitude =
+        checkoutData.shippingAddress?.longitude ||
+        addressWithPickedFields.longitude;
+    }
+
+    if (defaultValue) {
+      addressWithPickedFields.country = defaultValue;
+    }
+
+    setInitialValues(addressWithPickedFields);
+  }, []);
 
   const handleOnSubmitAddressForm = (
     values: IAddressWithEmail,
@@ -137,7 +149,7 @@ export const AddressForm: React.FC<IProps> = ({
       submitAddressForm(
         _values,
         _values.email,
-        addressWithPickedFields.id,
+        initialValues.id,
         policyPrivacy,
         _values.documentNumber
       );
@@ -149,9 +161,23 @@ export const AddressForm: React.FC<IProps> = ({
     ? addressFormModalSchema
     : addressFormSchema;
 
+  useEffect(() => {
+    if (
+      initialValues &&
+      initialValues.streetAddress1 &&
+      !initialValues.latitude
+    ) {
+      showOptionalAddressError?.();
+    }
+  }, [initialValues]);
+
+  if (!initialValues) {
+    return null;
+  }
+
   return (
     <Formik
-      initialValues={addressWithPickedFields}
+      initialValues={initialValues}
       onSubmit={handleOnSubmitAddressForm}
       validationSchema={formSchemaValidation}
     >
