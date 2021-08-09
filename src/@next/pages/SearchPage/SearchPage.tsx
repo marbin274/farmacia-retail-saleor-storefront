@@ -2,7 +2,7 @@ import { useCart, useSearchProducts } from "@sdk/react";
 import {
   IAddToCartCallback,
   IRemoveItemToCartCallback,
-  ISubtractItemToCartCallback
+  ISubtractItemToCartCallback,
 } from "@temp/@next/components/molecules/ProductTileAUNA/types";
 import { useMediaScreen } from "@temp/@next/globalStyles";
 import { useDistrictSelected } from "@temp/@next/hooks/useDistrictSelected";
@@ -12,7 +12,7 @@ import {
   convertSortByFromString,
   convertToAttributeScalar,
   getGraphqlIdFromDBId,
-  maybe
+  maybe,
 } from "@temp/core/utils";
 import { convertToFilterSideBar, FilterQuerySet } from "@temp/core/utils/filters";
 import { SORT_OPTIONS } from "@temp/core/utils/sorts";
