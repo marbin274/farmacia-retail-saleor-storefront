@@ -4,7 +4,7 @@ import {
   getCategories,
   getCollections,
   getProducts,
-  SitemapGenerator
+  SitemapGenerator,
 } from "./libraries/sitemap";
 
 const distDir = path.join(__dirname, "../dist");

@@ -20,7 +20,7 @@ interface SortItem {
   value?: string;
 }
 
-export interface SortOptions extends Array<SortItem> {}
+export type SortOptions = Array<SortItem>
 
 interface PageProps extends IPaginationProps {
   activeFilters: number;

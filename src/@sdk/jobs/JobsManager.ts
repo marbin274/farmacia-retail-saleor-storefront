@@ -31,6 +31,7 @@ export class JobsManager {
 
   /**
    * Executes job immediately and returns result or error.
+   *
    * @param jobGroup Job group name referencing to the class with job functions.
    * @param jobName Jobs within group/class.
    * @param params Object passed as the first argument to the job function.
@@ -51,6 +52,7 @@ export class JobsManager {
    * Add job to the queue. If there is an internet connection available, job is executed immediatelly.
    * Otherwise job is inserted into the queue and delayed until internet connection will be restored.
    * Queue is persisted in local storage.
+   *
    * @param jobGroup Job group name referencing to the class with job functions.
    * @param jobName Jobs within group/class.
    */
@@ -67,6 +69,7 @@ export class JobsManager {
 
   /**
    * Attach error listener to the queued job group.
+   *
    * @param jobGroup Job group name referencing to the class with job functions.
    * @param onErrorListener Function to be called if error will occur during job execution.
    */

@@ -199,6 +199,6 @@ export const launchSearchEvent = (searchTerm?: string) => {
     searchTerm,
   });
 };
-export let getLocalStorageForCart = () => {
+export const getLocalStorageForCart = () => {
   return JSON.parse(localStorage.getItem("data_checkout") as string)?.lines;
 };

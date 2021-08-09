@@ -81,8 +81,7 @@ const ProductsFeatured: React.FC<IProps> = ({
           homepageCollections
         );
         refetchRef.current = refetch;
-        if (collections) {
-          return collections.map(collection => {
+        return collections ? collections.map(collection => {
             const products: ISimpleProduct[] = maybe(
               () =>
                 collection.products.map(
@@ -115,10 +114,7 @@ const ProductsFeatured: React.FC<IProps> = ({
                 </Carousel>
               </S.Container>
             );
-          });
-        } else {
-          return null;
-        }
+          }) : null;
       }}
     </TypedFeaturedProductsQuery>
   );

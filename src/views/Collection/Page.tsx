@@ -33,8 +33,8 @@ interface SortItem {
   value?: string;
 }
 
-interface SortOptions extends Array<SortItem> {}
-interface CategoryOptions extends Array<SortItem> {}
+type SortOptions = Array<SortItem>
+type CategoryOptions = Array<SortItem>
 
 interface PageProps extends IPaginationProps {
   activeFilters: number;
