@@ -1,6 +1,6 @@
 import { Money, TaxedMoney } from "@components/containers";
 import { Button, CartIcon } from "@farmacia-retail/farmauna-components";
-import { trackAddToCartWithShowShippingPrice } from "@temp/optimizely/tracks";
+import { trackAddToCartWithShowShippingPrice } from "@temp/libraries/optimizely/tracks";
 import { useCart, useCheckout, useUserDetails } from "@temp/@sdk/react";
 import { checkoutUrl, checkoutLoginUrl } from "@temp/app/routes";
 import * as React from "react";

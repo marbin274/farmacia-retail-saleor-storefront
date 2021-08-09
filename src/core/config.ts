@@ -10,6 +10,7 @@ import {
 
 export const BASE_URL = "/";
 export const PRODUCTS_PER_PAGE = 8;
+export const PRODUCTS_PER_PAGE_PERSONALIZE = 16
 export const COLLECTIONS_PER_PAGE = 8;
 export const LANDING_COLLECTIONS_PER_PAGE = 100; // TODO: Cauando se llegue a implentar paginación cambiar a un valor menor
 export const SUPPORT_EMAIL = "support@example.com";
@@ -301,7 +302,11 @@ export const DISTRICT_SELECTED_DEFAULT: IDistrictSelected = {
   warehouse: null,
 };
 export const TOTAL_DISTRICT = 30; // TODO: this variable should be dinamically loaded from the backend
-export const POS_DISTRICTS = ["miraflores", "surquillo", "barranco"];
+export const POS_DISTRICTS = [
+  "miraflores",
+  "surquillo",
+  "barranco",
+];
 
 export const COUNTRY_DEFAULT = {
   code: "PE",
