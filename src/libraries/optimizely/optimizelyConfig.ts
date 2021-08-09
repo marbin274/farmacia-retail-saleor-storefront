@@ -1,7 +1,7 @@
 import { createInstance, setLogger } from "@optimizely/react-sdk";
 import { nanoid } from "nanoid";
 import { optimizelySdkKey } from "@temp/core/constants";
-import { LocalStorageItems } from "./@sdk/repository";
+import { LocalStorageItems } from "@temp/@sdk/repository";
 
 setLogger(null);
 

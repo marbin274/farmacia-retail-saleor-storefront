@@ -10,6 +10,7 @@ import {
 
 export const BASE_URL = "/";
 export const PRODUCTS_PER_PAGE = 8;
+export const PRODUCTS_PER_PAGE_PERSONALIZE = 16
 export const COLLECTIONS_PER_PAGE = 8;
 export const LANDING_COLLECTIONS_PER_PAGE = 100; // TODO: Cauando se llegue a implentar paginación cambiar a un valor menor
 export const SUPPORT_EMAIL = "support@example.com";
@@ -304,7 +305,6 @@ export const TOTAL_DISTRICT = 30; // TODO: this variable should be dinamically l
 export const POS_DISTRICTS = [
   "miraflores",
   "surquillo",
-  "santiago de surco",
   "barranco",
 ];
 
@@ -315,4 +315,4 @@ export const COUNTRY_DEFAULT = {
 
 export const COLLECTION_CATEGORY_FILTER_LABEL = "Todas las categorías";
 
-export const HIDE_CARDTOKENS_IN_CHECKOUT = true;
+export const HIDE_CARDTOKENS_IN_CHECKOUT = false;

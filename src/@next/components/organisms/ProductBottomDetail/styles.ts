@@ -56,13 +56,13 @@ export const ProductContent = styled.div`
 `;
 
 export const ProductImg = styled.div`
-  width: 4rem;
   height: 4rem;
-  margin-right: 0.5rem;
+  margin-right: 0.25rem;
+  width: 4rem;
 
   img {
-    width: 4rem;
     height: 4rem;
+    width: 4rem;
   }
 
   ${mediaUp.mediumScreen`
@@ -78,9 +78,9 @@ export const ProductInfo = styled.div`
     width: calc(100% - 5.5rem);
 
     .inline-element {
+      align-items:center;
       display:flex;
       justify-content: space-between;
-      align-items:center;
       margin-top:0.938rem;
 
       .itemHandler{
