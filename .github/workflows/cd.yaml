@@ -1,6 +1,8 @@
 on:
   push:
     branches: [master, qa2, release]
+    paths-ignore:
+    - '.github/**'
 
 jobs:
   deploy:

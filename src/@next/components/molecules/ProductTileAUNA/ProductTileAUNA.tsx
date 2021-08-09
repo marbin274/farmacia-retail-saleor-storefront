@@ -23,7 +23,6 @@ export const ProductTileAUNA: React.FC<IProps> = ({
   productsOnCart,
   removeItemToCart,
   subtractItemToCart,
-  handleTrackAddProductToCartFromPersonalized,
 }: IProps) => {
   const [thumbnails, setThumbnails] = useState<{
     thumbnail: { url: string | undefined };
@@ -41,8 +40,6 @@ export const ProductTileAUNA: React.FC<IProps> = ({
     productId: ICheckoutModelLineVariantLocalStorage,
     quantity: number
   ) => {       
-    
-    handleTrackAddProductToCartFromPersonalized?.();
     addToCart(productId, quantity);
   };
 
@@ -92,7 +89,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
               </div>
             </div>
           </div>
-          <div className="fa-pl-4">
+          <div>
             <div className="home-page__product-price fa-hidden">
               <div className={getProductPricingClass(canAddToCart, isOnSale)}>
                 <S.Price>

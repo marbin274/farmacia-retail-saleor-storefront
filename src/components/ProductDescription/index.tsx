@@ -76,7 +76,7 @@ export const ProductDescription: React.FC<ProductDescriptionProps> = props => {
       } else {
         return (
           <>
-            <div className={getProductPricingClass(canAddToCart, isOnSale)}>
+            <div className={`fa-pr-2 ${getProductPricingClass(canAddToCart, isOnSale)}`}>
               <TaxedMoney taxedMoney={variantPricing.price} />
             </div>
             <div className="price undiscounted_price">
