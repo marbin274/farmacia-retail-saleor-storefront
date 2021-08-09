@@ -2,6 +2,9 @@ name: SonarQube CI
 on: 
   pull_request:
     branches: [ master ]
+    paths-ignore:
+    - '.github/**'
+
 jobs:
   sonarqube:
     runs-on: ubuntu-latest

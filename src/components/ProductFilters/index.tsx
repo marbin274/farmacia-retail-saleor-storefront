@@ -4,7 +4,7 @@ import * as React from "react";
 
 import { Category_attributes_edges_node } from "../../views/Category/gqlTypes/Category";
 import { Collection_attributes_edges_node } from "../../views/Collection/gqlTypes/Collection";
-import { SearchProducts_attributes_edges_node } from "../../views/Search/gqlTypes/SearchProducts";
+import { SearchProducts_attributes_edges_node } from "@sdk/queries/gqlTypes/SearchProducts";
 import PriceRangeFilter from "../PriceRangeFilter";
 import SelectField, { SelectValue } from "../SelectField";
 

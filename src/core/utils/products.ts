@@ -5,7 +5,7 @@ import { SearchResults_products_edges_node } from "@temp/components/OverlayManag
 import { FeaturedProducts_shop_homepageCollections_edges_node_products_edges_node } from "@temp/components/ProductsFeatured/gqlTypes/FeaturedProducts";
 import { SelledProducts_reportProductSales_edges_node_product } from "@temp/components/productsSelled/gqlTypes/SelledProducts";
 import { Category_paginatedProducts_edges_node } from "@temp/views/Category/gqlTypes/Category";
-import { SearchProducts_paginatedProducts_edges_node } from "@temp/views/Search/gqlTypes/SearchProducts";
+import { SearchProducts_paginatedProducts_edges_node } from "@sdk/queries/gqlTypes/SearchProducts";
 
 type IProductQuery =
     Category_paginatedProducts_edges_node

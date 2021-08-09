@@ -1,5 +1,5 @@
 import { IFilterAttributes } from "@temp/@next/types";
-import { SearchProducts_attributes } from "@temp/views/Search/gqlTypes/SearchProducts";
+import { SearchProducts_attributes } from "@sdk/queries/gqlTypes/SearchProducts";
 import { QueryParamConfig } from "use-query-params";
 
 type IFilters = SearchProducts_attributes;

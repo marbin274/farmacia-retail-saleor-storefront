@@ -6,13 +6,13 @@ import { BrowserRouter } from "react-router-dom";
 import { ProductListAUNA } from ".";
 import { products, productsOnCart } from "./fixtures";
 
-jest.mock("@temp/optimizely/hooks", () => ({
+jest.mock("@temp/libraries/optimizely/hooks", () => ({
   useAddToCartButtonVariable: () => "Agregar",
   useShowPersonalizedCollection: () => ({enable:false, variationKey: ""}),
 
 }));
 
-jest.mock("@temp/optimizely/tracks", () => ({
+jest.mock("@temp/libraries/optimizely/tracks", () => ({
   trackAddToCart: jest.fn(),
 }));
 

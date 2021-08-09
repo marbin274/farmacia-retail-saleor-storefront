@@ -5,6 +5,8 @@ import {
 } from "apollo-client";
 
 import { RequireOnlyOne } from "../tsHelpers";
+import * as Article from "./article";
+import * as LandingQuery from "./landing";
 import * as AttributesList from "./attributes";
 import * as Category from "./category";
 import * as Orders from "./orders";
@@ -37,6 +39,9 @@ import {
 
 import * as User from "./user";
 import { CategoryList } from "./gqlTypes/CategoryList";
+import { ArticleDetailVariables, ArticleDetail } from "./gqlTypes/ArticleDetail";
+import { LandingVariables, Landing } from "./gqlTypes/Landing";
+import { SearchProductsVariables, SearchProducts } from "./gqlTypes/SearchProducts";
 
 type QueryOptions<T = {}> = T extends { [n: string]: never }
   ? Omit<ApolloQueryOptions<{}>, "query">
@@ -44,6 +49,14 @@ type QueryOptions<T = {}> = T extends { [n: string]: never }
 
 // TODO: Add ability to pass custom fragments to queries
 export const QUERIES = {
+  Article: <TCacheShape>(
+    client: ApolloClient<TCacheShape>,
+    options: QueryOptions<ArticleDetailVariables>
+  ): ObservableQuery<ArticleDetail, any> =>
+    client.watchQuery({
+      query: Article.articleDetail,
+      ...options,
+  }),
   Attributes: <TCacheShape>(
     client: ApolloClient<TCacheShape>,
     options: QueryOptions<AttributesVariables>
@@ -76,6 +89,14 @@ export const QUERIES = {
       query: Shop.getShop,
       ...options,
     }),
+  Landing: <TCacheShape>(
+    client: ApolloClient<TCacheShape>,
+    options: QueryOptions<LandingVariables>
+  ): ObservableQuery<Landing, any> =>
+    client.watchQuery({
+      query: LandingQuery.landing,
+      ...options,
+  }),
   OrderDetails: <TCacheShape>(
     client: ApolloClient<TCacheShape>,
     options: QueryOptions<OrderByTokenVariables>
@@ -106,6 +127,14 @@ export const QUERIES = {
   ): ObservableQuery<ProductList, any> =>
     client.watchQuery({
       query: Product.productListDetails,
+      ...options,
+    }),
+  SearchProducts: <TCacheShape>(
+    client: ApolloClient<TCacheShape>,
+    options: QueryOptions<SearchProductsVariables>
+  ): ObservableQuery<SearchProducts, any> =>
+    client.watchQuery({
+      query: Product.searchProducts,
       ...options,
     }),
   UserDetails: <TCacheShape>(

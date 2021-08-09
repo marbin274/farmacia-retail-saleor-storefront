@@ -4,7 +4,7 @@ import { ProductTileAUNA } from "@temp/@next/components/molecules";
 import { useDistrictSelected } from "@temp/@next/hooks/useDistrictSelected";
 import { getProductsWithQuantity } from "@sdk/utils/products";
 import { TypedFeaturedProductsQuery } from "@temp/components/ProductsFeatured/queries";
-import { COLLECTIONS_PER_PAGE, PRODUCTS_PER_PAGE } from "@temp/core/config";
+import { COLLECTIONS_PER_PAGE, PRODUCTS_PER_PAGE, PRODUCTS_PER_PAGE_PERSONALIZE } from "@temp/core/config";
 import {
   convertToSimpleProduct,
   generateProductUrl,
@@ -16,12 +16,9 @@ import * as S from "./styles";
 import { IHomePageCollecction, IProps } from "./types";
 import { CollectionSortField } from "../../../gqlTypes/globalTypes";
 import { OrderDirection } from "@sdk/gqlTypes/globalTypes";
-import { useShowPersonalizedCollection } from "@temp/optimizely/hooks";
 import { useUserDetails } from "@temp/@sdk/react";
 import { useLocalStorage } from "@temp/@next/hooks";
 import { LocalStorageItems } from "@temp/@sdk/repository";
-import { VariationKeys } from "@temp/optimizely/types";
-import { trackAddProductToCartFromPersonalized } from "@temp/optimizely/tracks";
 
 const ProductsFeatured: React.FC<IProps> = ({
   productsOnCart,
@@ -36,19 +33,6 @@ const ProductsFeatured: React.FC<IProps> = ({
   );
   const [districtSelected] = useDistrictSelected();
   const { data: user } = useUserDetails();
-  const showPersonalizedCollection = useShowPersonalizedCollection();
-
-  const handleTrackAddProductToCartFromPersonalized = () => {
-    if (
-      user?.id &&
-      (showPersonalizedCollection.variationKey ===
-        VariationKeys.SHOW_PERSONALIZE ||
-        showPersonalizedCollection.variationKey ===
-          VariationKeys.HIDE_PERSONALIZE)
-    ) {
-      trackAddProductToCartFromPersonalized();
-    }
-  };
 
   React.useEffect(() => {
     if (user?.id) {
@@ -63,6 +47,7 @@ const ProductsFeatured: React.FC<IProps> = ({
       loader={<Skeleton />}
       variables={{
         first: PRODUCTS_PER_PAGE,
+        firstPersonalize: PRODUCTS_PER_PAGE_PERSONALIZE,
         firstCollection: COLLECTIONS_PER_PAGE,
         districtId: districtSelected.id,
         sortBy: {
@@ -82,10 +67,7 @@ const ProductsFeatured: React.FC<IProps> = ({
           : [];
 
         const personalizedCollection: IHomePageCollecction[] =
-          data?.personalized?.length &&
-          showPersonalizedCollection.enable === true &&
-          showPersonalizedCollection.variationKey ===
-            VariationKeys.SHOW_PERSONALIZE
+          data?.personalized?.length
             ? [
                 {
                   id: "",
@@ -127,9 +109,6 @@ const ProductsFeatured: React.FC<IProps> = ({
                           product.id,
                           product.name
                         )}
-                        handleTrackAddProductToCartFromPersonalized={
-                          handleTrackAddProductToCartFromPersonalized
-                        }
                       />
                     )
                   )}

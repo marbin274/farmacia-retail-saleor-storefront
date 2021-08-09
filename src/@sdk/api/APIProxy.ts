@@ -33,6 +33,11 @@ import {
 import { SaveFavoriteCategoriesResult, SetAccountConfirmResult, SetPasswordChange, SetPasswordResult, SignIn } from "./types";
 
 export class APIProxy {
+  getArticle = this.watchQuery(
+    QUERIES.Article,
+    (data) => data
+  );
+
   getAttributes = this.watchQuery(
     QUERIES.Attributes,
     (data) => data.attributes
@@ -67,12 +72,22 @@ export class APIProxy {
     (data) => data.orderByToken
   );
 
+  getLanding = this.watchQuery(
+    QUERIES.Landing,
+    (data) => data
+  );
+
   getVariantsProducts = this.watchQuery(
     QUERIES.VariantsProducts,
     (data) => data.productVariants
   );
 
   getShopDetails = this.watchQuery(QUERIES.GetShopDetails, (data) => data);
+
+  searchProducts = this.watchQuery(
+    QUERIES.SearchProducts,
+    (data) => data
+  );
 
   setUserDefaultAddress = this.fireQuery(
     MUTATIONS.AddressTypeUpdate,

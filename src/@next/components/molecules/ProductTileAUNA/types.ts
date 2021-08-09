@@ -13,5 +13,4 @@ export interface IProps {
   productsOnCart: IItems;
   removeItemToCart?: IRemoveItemToCartCallback;
   subtractItemToCart?: ISubtractItemToCartCallback;
-  handleTrackAddProductToCartFromPersonalized?: () => void;
 }
