@@ -57,6 +57,8 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
   } = useCheckout();
   const { items } = useCart();
 
+  const isInstaleapActive = true; // TODO: validar si plugin está activo
+
   const isPrimeShippingMethod = (sm: Checkout_availableShippingMethods) => {
     return sm.name.toLocaleLowerCase().includes("prime");
   };
@@ -106,7 +108,7 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
             it.field === "scheduleTimeId") ||
           it.code === CheckoutErrorCode.SCHEDULE_NOT_AVAILABLE
       );
-      setShippingMethod({ shippingMethodId: "" });
+      setShippingMethod({ shippingMethodId: "", slotId: undefined });
       alertService.sendAlert({
         buttonText: "Entendido",
         icon: scheduleTimeNotFound && shippingMethodCalendarInfoIco,
@@ -125,23 +127,23 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
     }
   };
 
-  // TODO validar si slots están activos
-
-  return (
-    <CheckoutShippingSlot
-      {...props}
-      shippingMethods={shippingMethods}
-      selectedShippingMethodId={checkout?.shippingMethod?.id}
-      scheduleDate={checkout?.scheduleDate}
-      errors={addressSubPageErrors}
-      selectShippingMethod={handleSetShippingMethod}
-      items={items}
-      formId={checkoutShippingFormId}
-      formRef={checkoutShippingFormRef}
-      slots={slots}
-      selectedSlotId={selectedSlotId}
-    />
-  );
+  if (isInstaleapActive) {
+    return (
+      <CheckoutShippingSlot
+        {...props}
+        shippingMethods={shippingMethods}
+        selectedShippingMethodId={checkout?.shippingMethod?.id}
+        scheduleDate={checkout?.scheduleDate}
+        errors={addressSubPageErrors}
+        selectShippingMethod={handleSetShippingMethod}
+        items={items}
+        formId={checkoutShippingFormId}
+        formRef={checkoutShippingFormRef}
+        slots={slots}
+        selectedSlotId={selectedSlotId}
+      />
+    );
+  }
 
   return (
     <CheckoutShipping

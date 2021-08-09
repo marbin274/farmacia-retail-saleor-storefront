@@ -19,6 +19,9 @@ import { ICheckoutShippingSlotForm, ICheckoutShippingSlotProps } from "./types";
 import { ExpressShippingMethod, ScheduledShippingMethod } from "./components";
 import { ISlotScheduleDate } from "@components/organisms/CheckoutShippingProgrammed/types";
 
+/**
+ * Shipping method selector used in checkout with instaleap integration.
+ */
 export const CheckoutShippingSlot: React.FC<ICheckoutShippingSlotProps> = ({
   shippingMethods,
   selectedShippingMethodId,
@@ -88,10 +91,6 @@ export const CheckoutShippingSlot: React.FC<ICheckoutShippingSlotProps> = ({
       selectShippingMethod(value, true);
     }
   };
-
-  const renderGroupLabel = (title: string) => (
-    <span className="fa-text-2xl fa-mb-6 fa-block">{title}</span>
-  );
 
   const handleOnclick = (
     id: string,
@@ -172,7 +171,9 @@ export const CheckoutShippingSlot: React.FC<ICheckoutShippingSlotProps> = ({
   return (
     <section>
       <S.FieldsGroup>
-        {renderGroupLabel("Escoge el tiempo de entrega")}
+        <span className="fa-text-2xl fa-mb-6 fa-block">
+          Escoge el tiempo de entrega
+        </span>
         {renderForm()}
       </S.FieldsGroup>
     </section>
