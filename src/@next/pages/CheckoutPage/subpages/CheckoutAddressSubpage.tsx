@@ -55,7 +55,9 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
   const {
     checkout,
     setShippingAddress,
+    setShippingMethod,
     selectedShippingAddressId,
+    selectedSlotId,
   } = useCheckout();
   const { availableDistricts, countries } = useShopContext();
   const [selectedDistrict, setDistrict] = useDistrictSelected();
@@ -68,6 +70,8 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     setTemporaryStreeAddress1Error,
   ] = useState<string>();
   const alert = useAlert();
+
+  const isInstaleapActive = true; // TODO: validar si plugin está activo
 
   const _addressFormSchema = addressFormSchema;
 
@@ -189,6 +193,10 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
 
     if (selectedDistrict?.id !== district?.id) {
       setDistrict(district);
+    }
+
+    if (selectedSlotId && isInstaleapActive) {
+      await setShippingMethod({ shippingMethodId: "", slotId: undefined });
     }
 
     if (checkoutErrors?.length! > 0) {

@@ -172,19 +172,23 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     removePaymentItems();
     return <Redirect to={BASE_URL} />;
   }
+  
+  const isInstaleapActive = true; // TODO: validar si plugin está activo
 
-  if (isAttentionSchedule === false) {
-    alertService.sendAlert({
-      acceptDialog: () => {
-        setShippingMethod({ shippingMethodId: "" });
-      },
-      buttonText: "Entendido",
-      icon: shippingMethodCalendarInfoIco,
-      message: SHIPPING_METHOD_NOT_FOUND,
-      title: SHIPPING_METHOD_NOT_FOUND_TITLE,
-      type: "Info",
-    });
-  }
+  useEffect(() => {
+    if (isAttentionSchedule === false && !isInstaleapActive) {
+      alertService.sendAlert({
+        acceptDialog: () => {
+          setShippingMethod({ shippingMethodId: "", slotId: undefined });
+        },
+        buttonText: "Entendido",
+        icon: shippingMethodCalendarInfoIco,
+        message: SHIPPING_METHOD_NOT_FOUND,
+        title: SHIPPING_METHOD_NOT_FOUND_TITLE,
+        type: "Info",
+      });
+    }
+  }, [isAttentionSchedule])
 
   if (cartLoaded && (!items || !items?.length)) {
     return <Redirect to="/cart/" />;

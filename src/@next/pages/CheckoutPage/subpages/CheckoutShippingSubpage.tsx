@@ -14,6 +14,7 @@ import { IFormError } from "@types";
 import React, {
   forwardRef,
   RefForwardingComponent,
+  useEffect,
   useImperativeHandle,
   useRef,
 } from "react";
@@ -58,6 +59,19 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
   const { items } = useCart();
 
   const isInstaleapActive = true; // TODO: validar si plugin está activo
+
+  useEffect(() => {
+    checkIfSlotExists();
+  }, []);
+
+  const checkIfSlotExists = async () => {
+    if (selectedSlotId && isInstaleapActive) {
+      changeSubmitProgress(true);
+      await setShippingMethod({ shippingMethodId: "", slotId: undefined });
+    }
+
+    changeSubmitProgress(false);
+  };
 
   const isPrimeShippingMethod = (sm: Checkout_availableShippingMethods) => {
     return sm.name.toLocaleLowerCase().includes("prime");
