@@ -214,7 +214,7 @@
     "test:update:snapshot": "jest --updateSnapshot --config .jest/config.json",
     "postinstall": "husky install",
     "prettier": "prettier --config ./.prettierrc --write './**/*.{js,ts,jsx,tsx}' --loglevel=warn",
-    "pretty-quick": "pretty-quick --staged --pattern './src/**/*.{ts,tsx}'",
+    "pretty-quick": "pretty-quick --staged",
     "lhci": "npm run build && npx lhci autorun --config=./lighthouserc.js",
     "serve-dist": "serve dist"
   }
