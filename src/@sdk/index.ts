@@ -48,6 +48,7 @@ export class SaleorManager {
 
   /**
    * Use this method to obtain current API and listen to its update on occured changes within it.
+   *
    * @param apiChangeListener Function called to get an API and called on every API update.
    */
   connect(apiChangeListener: (api: SaleorAPI) => any) {

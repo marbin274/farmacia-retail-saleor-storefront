@@ -5,7 +5,7 @@ import {
   OverlayContext,
   OverlayContextInterface,
   OverlayTheme,
-  OverlayType
+  OverlayType,
 } from "./context";
 
 import * as paths from "../../app/routes/paths";

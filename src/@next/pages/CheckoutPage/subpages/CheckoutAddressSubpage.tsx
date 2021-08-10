@@ -92,6 +92,31 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     setTemporaryStreeAddress1Error("");
   };
 
+  const showOptionalAddressError = () => {
+    clearAlertAddressError();
+
+    const newAlert = alert.show(
+      {
+        content: (
+          <span className="fa-text-sm">
+            Debes ingresar tu dirección y seleccionar una de las opciones
+            desplegadas
+          </span>
+        ),
+      },
+      {
+        timeout: 60000 * 2,
+        type: "error",
+      }
+    );
+
+    setCurrentErrorAlert(newAlert);
+
+    setTemporaryStreeAddress1Error(
+      "Selecciona una de las direcciones sugeridas"
+    );
+  };
+
   const handleFormValues = (data: IAddressWithEmail | undefined) => {
     _addressFormSchema
       .isValid({
@@ -230,28 +255,7 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
       setAddressSubPageErrors([]);
 
       if (address.streetAddress1 && !address.latitude) {
-        clearAlertAddressError();
-
-        const newAlert = alert.show(
-          {
-            content: (
-              <span className="fa-text-sm">
-                Debes ingresar tu dirección y seleccionar una de las opciones
-                desplegadas
-              </span>
-            ),
-          },
-          {
-            timeout: 60000 * 2,
-            type: "error",
-          }
-        );
-
-        setCurrentErrorAlert(newAlert);
-
-        setTemporaryStreeAddress1Error(
-          "Selecciona una de las direcciones sugeridas"
-        );
+        showOptionalAddressError();
       }
 
       if (checkout?.shippingMethod?.id) {
@@ -310,6 +314,7 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
         setFormValue={handleFormValues}
         temporaryStreeAddress1Error={temporaryStreeAddress1Error}
         clearTemporaryAddressError={clearTemporaryAddressError}
+        showOptionalAddressError={showOptionalAddressError}
       />
       <StockValidationModal
         show={showStockValidation}

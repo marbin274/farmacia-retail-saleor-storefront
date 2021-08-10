@@ -37,18 +37,15 @@ const Header: React.FC<IProps> = ({
   hideMenuCondition,
   isLightHeader,
 }) => {
-  const [isVisibleSearchIcon, setVisibleSearchIcon] = React.useState<boolean>(
-    false
-  );
+  const [isVisibleSearchIcon, setVisibleSearchIcon] =
+    React.useState<boolean>(false);
   const { data: user } = useUserDetails();
   const [signOut] = useSignOut();
   const { items } = useCart();
 
   const largeScreenPlusOne = "993";
-  const {
-    isMaxLargeScreen,
-    isCustomMinScreen: isMinLargeScreenPlusOne,
-  } = useMediaScreen(largeScreenPlusOne);
+  const { isMaxLargeScreen, isCustomMinScreen: isMinLargeScreenPlusOne } =
+    useMediaScreen(largeScreenPlusOne);
 
   const handleScroll = () => {
     const isVisible = window.scrollY >= SEARCH_HEIGHT;
@@ -96,9 +93,8 @@ const Header: React.FC<IProps> = ({
           content={
             <ul>
               {links.map((it, index) => (
-                <li data-testid={`${it.testId}__link`}>
+                <li key={index} data-testid={`${it.testId}__link`}>
                   <Link
-                    key={index}
                     className="fa-w-full fa-flex"
                     to={it.url}
                     onClick={closeSearch}

@@ -14,6 +14,7 @@ const DEFAULT_BACKGROUND_COLOR = "#fff";
  * Get the element background color.
  * If no background color is provided then the default is rgba(0, 0, 0, 0)
  * in this case the default color to cover is white (#fff)
+ *
  * @param ref Reference to the element to check.
  */
 export const getBackgroundColor = (ref: any): string => {

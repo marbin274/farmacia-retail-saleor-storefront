@@ -1,5 +1,5 @@
 import {
-  priceFragment
+  priceFragment,
 } from "@temp/views/Product/queries";
 import gql from "graphql-tag";
 import { TypedQuery } from "../../core/queries";

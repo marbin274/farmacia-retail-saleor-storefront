@@ -89,7 +89,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
               </div>
             </div>
           </div>
-          <div className="fa-pl-4">
+          <div>
             <div className="home-page__product-price fa-hidden">
               <div className={getProductPricingClass(canAddToCart, isOnSale)}>
                 <S.Price>

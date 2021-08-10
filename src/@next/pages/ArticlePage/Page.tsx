@@ -1,13 +1,13 @@
 import * as React from "react";
 import { RichTextContent } from "@components/atoms";
-import { Breadcrumb, Breadcrumbs } from "../../components";
-import { Article_page } from "./gqlTypes/Article";
+import { Breadcrumb, Breadcrumbs } from "@temp/components";
+import { ArticleDetail_page } from "@sdk/queries/gqlTypes/ArticleDetail";
 import * as S from "./styles";
 
 interface PageProps {
   breadcrumbs: Breadcrumb[];
   headerImage: string | null;
-  page: Article_page;
+  page: ArticleDetail_page;
 }
 
 export const Page: React.FC<PageProps> = ({
@@ -38,7 +38,7 @@ export const Page: React.FC<PageProps> = ({
           style={headerImage ? { backgroundImage: `url(${headerImage})` } : null}
         >
           <S.Title className="fa-px-8 fa-py-4 fa-text-primary-medium fa-inline-block fa-text-center">
-            <h1 className="fa-text-display-3-m fa-font-semibold">{page.title}</h1>
+            <span className="fa-text-display-3-m fa-font-semibold">{page.title}</span>
           </S.Title>
         </S.Header>
       }

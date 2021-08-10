@@ -67,16 +67,13 @@ export const ProductDescription: React.FC<ProductDescriptionProps> = props => {
   const getProductPrice = () => {
     if (variantPricing) {
       const { canAddToCart, isOnSale } = props;
-      if (!isOnSale) {
-        return (
+      return !isOnSale ? (
           <div className="price">
             <TaxedMoney taxedMoney={variantPricing.price} />
           </div>
-        );
-      } else {
-        return (
+        ) : (
           <>
-            <div className={getProductPricingClass(canAddToCart, isOnSale)}>
+            <div className={`fa-pr-2 ${getProductPricingClass(canAddToCart, isOnSale)}`}>
               <TaxedMoney taxedMoney={variantPricing.price} />
             </div>
             <div className="price undiscounted_price">
@@ -84,17 +81,12 @@ export const ProductDescription: React.FC<ProductDescriptionProps> = props => {
             </div>
           </>
         );
-      }
     }
-    if (isEqual(min, max)) {
-      return <TaxedMoney taxedMoney={min} />;
-    } else {
-      return (
+    return isEqual(min, max) ? <TaxedMoney taxedMoney={min} /> : (
         <>
           <TaxedMoney taxedMoney={min} /> - <TaxedMoney taxedMoney={max} />
         </>
       );
-    }
   };
 
   const onVariantPickerChange = (

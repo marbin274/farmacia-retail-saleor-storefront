@@ -2,7 +2,7 @@ import { IItems } from "@sdk/api/Cart/types";
 import { ISimpleProduct } from "@sdk/types/IProduct";
 import {
     ATTRIBUTE_PROMOTION_LIMIT_MAX_NAME,
-    MAX_ORDER_PER_PRODUCT
+    MAX_ORDER_PER_PRODUCT,
 } from "@sdk/config";
 import isEqual from "lodash/isEqual";
 

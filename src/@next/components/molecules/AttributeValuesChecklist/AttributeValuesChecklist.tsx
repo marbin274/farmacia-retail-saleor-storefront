@@ -21,10 +21,7 @@ export const AttributeValuesChecklist: React.FC<IProps> = ({
       {title && <S.Header>{title}</S.Header>}
       {values &&
         values.map((value, index) => {
-          if (!viewAllOptions && index > valuesShowLimitNumber - 1) {
-            return null;
-          } else {
-            return (
+          return !viewAllOptions && index > valuesShowLimitNumber - 1 ? null : (
               <Checkbox
                 key={index}
                 name={name}
@@ -34,7 +31,6 @@ export const AttributeValuesChecklist: React.FC<IProps> = ({
                 {value && value.name}
               </Checkbox>
             );
-          }
         })}
       {!viewAllOptions && values.length > valuesShowLimitNumber && (
         <S.ViewMoreButton>

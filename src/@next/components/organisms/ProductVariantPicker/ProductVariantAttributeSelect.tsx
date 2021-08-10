@@ -89,23 +89,18 @@ export const ProductVariantAttributeSelect: React.FC<{
   };
 
   const getRightInputContent = (isInputFilled: boolean) => {
-    if (isInputFilled) {
-      return (
+    return isInputFilled ? (
         <S.SelectIndicator onClick={onClearSelection}>
           <Icon name="select_x" size={10} />
         </S.SelectIndicator>
-      );
-    } else {
-      return (
+      ) : (
         <S.SelectIndicator onClick={() => setShowSelectSidebar(true)}>
           <Icon name="subcategories" size={10} />
         </S.SelectIndicator>
       );
-    }
   };
 
-  if (selectSidebar) {
-    return (
+  return selectSidebar ? (
       <>
         <Input
           onFocus={() => setShowSelectSidebar(true)}
@@ -126,9 +121,7 @@ export const ProductVariantAttributeSelect: React.FC<{
           target={selectSidebarTarget}
         />
       </>
-    );
-  } else {
-    return (
+    ) : (
       <InputSelect
         name={productVariantsAttribute.attribute.id}
         label={selectLabel}
@@ -142,5 +135,4 @@ export const ProductVariantAttributeSelect: React.FC<{
         clearValue={onClearSelection}
       />
     );
-  }
 };
