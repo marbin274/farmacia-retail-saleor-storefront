@@ -42,11 +42,9 @@ export {
 export { OverlayManager } from "./OverlayManager";
 export * from "./OverlayNav";
 export { default as PasswordResetForm } from "./PasswordResetForm";
-export { default as PriceRangeFilter } from "./PriceRangeFilter";
 export { default as ProductDescription } from "./ProductDescription";
 export { default as ProductsCollection } from "./ProductsCollection";
 export { default as ProductsFeatured } from "./ProductsFeatured";
-export { default as SelectField } from "./SelectField";
 export { default as SocialMedia } from "./SocialMedia";
 export { default as SocialMediaIcon } from "./SocialMediaIcon";
 export { default as TextField } from "./TextField";
