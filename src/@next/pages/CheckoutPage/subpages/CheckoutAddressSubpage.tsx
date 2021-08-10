@@ -9,7 +9,7 @@ import { CheckoutErrorCode } from "@temp/@sdk/gqlTypes/globalTypes";
 import { CreateCheckout_checkoutCreate_checkoutErrors_products } from "@temp/@sdk/mutations/gqlTypes/CreateCheckout";
 import { baseUrl } from "@temp/app/routes/paths";
 import { useShopContext } from "@temp/components/ShopProvider/context";
-import { COUNTRY_DEFAULT } from "@temp/core/config";
+import { COUNTRY_DEFAULT, INSTALEAP_IS_ACTIVE } from "@temp/core/config";
 import { IAddress, IAddressWithEmail, IFormError } from "@types";
 import { filterNotEmptyArrayItems } from "@utils/misc";
 import React, {
@@ -71,7 +71,7 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
   ] = useState<string>();
   const alert = useAlert();
 
-  const isInstaleapActive = true; // TODO: validar si plugin está activo
+  const isInstaleapActive = INSTALEAP_IS_ACTIVE;
 
   const _addressFormSchema = addressFormSchema;
 

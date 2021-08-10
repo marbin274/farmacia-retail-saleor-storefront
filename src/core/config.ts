@@ -317,3 +317,5 @@ export const COUNTRY_DEFAULT = {
 export const COLLECTION_CATEGORY_FILTER_LABEL = "Todas las categorías";
 
 export const HIDE_CARDTOKENS_IN_CHECKOUT = true;
+
+export const INSTALEAP_IS_ACTIVE = true; // TODO: cuando exista el query, validar consultado el backend

@@ -9,7 +9,7 @@ import { IAvailableShippingMethods } from "@temp/@sdk/api/Checkout/types";
 import { CheckoutErrorCode } from "@temp/@sdk/gqlTypes/globalTypes";
 import { UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_errors as ICheckoutShippingMethodError } from "@temp/@sdk/mutations/gqlTypes/UpdateCheckoutShippingMethod";
 import { IShippingMethodUpdate } from "@temp/@sdk/repository";
-import { CHECKOUT_STEPS } from "@temp/core/config";
+import { CHECKOUT_STEPS, INSTALEAP_IS_ACTIVE } from "@temp/core/config";
 import { IFormError } from "@types";
 import React, {
   forwardRef,
@@ -58,7 +58,7 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
   } = useCheckout();
   const { items } = useCart();
 
-  const isInstaleapActive = true; // TODO: validar si plugin está activo
+  const isInstaleapActive = INSTALEAP_IS_ACTIVE;
 
   useEffect(() => {
     checkIfSlotExists();
