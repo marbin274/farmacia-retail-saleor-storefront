@@ -1,8 +1,6 @@
-@import "../../../globalStyles/scss/variables.scss";
+import { styled } from "@styles";
 
-.social-icon {
-  padding: $spacer $spacer / 2;
-
+export const SocialIconWrapper = styled.a`
   svg * {
     transition: 0.3s;
   }
@@ -13,7 +11,7 @@
     }
     path {
       fill: $white;
-    } 
+    }
   }
   &:active {
     svg * {
@@ -21,6 +19,6 @@
     }
     path {
       fill: $white;
-    } 
+    }
   }
-}
+`;

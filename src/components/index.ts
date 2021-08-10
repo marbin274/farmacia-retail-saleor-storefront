@@ -44,7 +44,6 @@ export * from "./OverlayNav";
 export { default as PasswordResetForm } from "./PasswordResetForm";
 export { default as PriceRangeFilter } from "./PriceRangeFilter";
 export { default as ProductDescription } from "./ProductDescription";
-export { Filters, ProductFilters } from "./ProductFilters";
 export { default as ProductsCollection } from "./ProductsCollection";
 export { default as ProductsFeatured } from "./ProductsFeatured";
 export { default as SelectField } from "./SelectField";
