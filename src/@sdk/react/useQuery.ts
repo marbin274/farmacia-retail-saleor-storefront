@@ -42,13 +42,14 @@ const useQuery = <
     error: null,
     loading: true,
   });
-
-  const setData = React.useCallback((data: TData) => {
-    if (!isEqual(data, prevDataRef.current)) {
+  const setData = React.useCallback((data: TData, loading?: boolean) => {    
+    if (!isEqual(data, prevDataRef.current)) {      
       prevDataRef.current = data;
-      setResult({ data, loading: false, error: null });
+      setResult({ data, error: null, loading: false });
     } else {
-      setResult(result => ({ ...result, loading: false }));
+      setResult(previousResult => {
+        return ({ ...previousResult, data, loading: !!loading });
+      });
     }
   }, []);
 
@@ -61,31 +62,40 @@ const useQuery = <
     () =>
       (saleor.legacyAPIProxy[query] as AdditionalAPI)(variables, {
         ...(options as any),
-        onError: (error: ApolloErrorWithUserInput) =>
-          setResult(result => ({ ...result, loading: false, error })),
-        onUpdate: (data: TData) => {
-          setData(data);
+        onError: (error: ApolloErrorWithUserInput) => {            
+            setResult(previousResult => ({
+              ...previousResult,
+              error,
+              loading: false,
+            }));
+          },
+        onUpdate: (data: TData, loading?: boolean) => {
+          setData(data, loading);
         },
       }),
     [query, options.skip, authenticated]
   );
 
   const refetch = React.useCallback(
-    (variables?: TVariables) => {
+    (refetchVariables?: TVariables) => {
       setResult({ data: null, error: null, loading: true });
-      _refetch(variables);
+      _refetch(refetchVariables);
     },
     [query]
   );
 
   const loadMore = React.useCallback(
     (
-      variables: RequireAtLeastOne<TVariables>,
+      loadMoreVariables: RequireAtLeastOne<TVariables>,
       mergeResults: boolean = true
     ) => {
       if (_loadMore) {
-        setResult(result => ({ ...result, error: null, loading: true }));
-        _loadMore(variables, mergeResults);
+        setResult(previousResult => ({
+          ...previousResult,
+          error: null,
+          loading: true,
+        }));
+        _loadMore(loadMoreVariables, mergeResults);
       }
     },
     [query]

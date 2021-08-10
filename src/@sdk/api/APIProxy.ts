@@ -31,6 +31,7 @@ import {
   mergeEdges,
 } from "../utils";
 import { SaveFavoriteCategoriesResult, SetAccountConfirmResult, SetPasswordChange, SetPasswordResult, SignIn } from "./types";
+import { WINDOW_EXISTS } from "../consts";
 
 export class APIProxy {
   getArticle = this.watchQuery(
@@ -306,10 +307,14 @@ export class APIProxy {
       callback(this.isLoggedIn());
     };
 
-    addEventListener("auth", eventHandler);
+    if (WINDOW_EXISTS) {
+      window.addEventListener("auth", eventHandler);
+    }
 
     return () => {
-      removeEventListener("auth", eventHandler);
+      if (WINDOW_EXISTS) {
+        window.removeEventListener("auth", eventHandler);
+      }
     };
   };
 
@@ -333,7 +338,10 @@ export class APIProxy {
         skip?: boolean;
         onComplete?: () => void;
         onError?: (error: ApolloError) => void;
-        onUpdate: (data: ReturnType<typeof mapFn> | null) => void;
+        onUpdate: (
+          data: ReturnType<typeof mapFn> | null,
+          loading?: boolean
+        ) => void;
       }
     ) => {
       const { onComplete, onError, onUpdate, ...apolloClientOptions } = options;
@@ -348,8 +356,8 @@ export class APIProxy {
 
       if (options.skip) {
         return {
-          refetch: (_variables?: TVariables) => {
-            return new Promise((resolve, _reject) => {
+          refetch: () => {
+            return new Promise(resolve => {
               resolve({ data: null });
             });
           },
@@ -358,8 +366,8 @@ export class APIProxy {
       }
 
       const subscription = observable.subscribe(
-        (result) => {
-          const { data, errors: apolloErrors } = result;
+        result => {
+          const { data, errors: apolloErrors, loading } = result;
           const errorHandledData = handleDataErrors(
             mapFn,
             data as any,
@@ -371,14 +379,14 @@ export class APIProxy {
                 onError(errorHandledData.errors);
               }
             } else {
-              onUpdate(errorHandledData.data as TResult);
+              onUpdate(errorHandledData.data as TResult, loading);
               if (onComplete) {
                 onComplete();
               }
             }
           }
         },
-        (error) => {
+        error => {
           if (onError) {
             onError(error);
           }
@@ -413,7 +421,7 @@ export class APIProxy {
                 );
 
                 // use new result for metadata and mutate existing data
-                Object.keys(prevResultRef).forEach((key) => {
+                Object.keys(prevResultRef).forEach(key => {
                   prevResultRef[key] = newResultRef[key];
                 });
                 prevResultRef.edges = mergedEdges;
@@ -426,9 +434,9 @@ export class APIProxy {
             variables: { ...variables, ...extraVariables },
           });
         },
-        refetch: (variables?: TVariables) => {
-          if (variables) {
-            observable.setVariables(variables);
+        refetch: (newVariables?: TVariables) => {
+          if (newVariables) {
+            observable.setVariables(newVariables);
             const cachedResult = observable.currentResult();
             const errorHandledData = handleDataErrors(mapFn, cachedResult.data);
             if (errorHandledData.data) {
@@ -436,10 +444,13 @@ export class APIProxy {
             }
           }
 
-          return this.firePromise(() => observable.refetch(variables), mapFn);
+          return this.firePromise(
+            () => observable.refetch(newVariables),
+            mapFn
+          );
         },
-        setOptions: (options: TOptions) =>
-          this.firePromise(() => observable.setOptions(options), mapFn),
+        setOptions: (newOptions: TOptions) =>
+        this.firePromise(() => observable.setOptions(newOptions), mapFn),
         unsubscribe: subscription.unsubscribe.bind(subscription),
       };
     };
