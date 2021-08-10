@@ -807,6 +807,10 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout {
    * Slot id.
    */
   slotId: string | null;
+  /**
+   * Slot date.
+   */
+  deliveryDate: string | null;
 }
 
 export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_errors {

@@ -807,6 +807,10 @@ export interface AddCheckoutPromoCode_checkoutAddPromoCode_checkout {
    * Slot id.
    */
   slotId: string | null;
+  /**
+   * Slot date.
+   */
+  deliveryDate: string | null;
 }
 
 export interface AddCheckoutPromoCode_checkoutAddPromoCode_errors {

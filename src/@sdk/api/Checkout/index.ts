@@ -80,10 +80,12 @@ export class SaleorCheckoutAPI extends ErrorListener
         scheduleDate,
         slotId,
         slots,
+        deliveryDate,
       }: ICheckoutModel) => {
         this.checkout = {
           billingAddress,
           dataTreatmentPolicy,
+          deliveryDate,
           documentNumber,
           email,
           id,

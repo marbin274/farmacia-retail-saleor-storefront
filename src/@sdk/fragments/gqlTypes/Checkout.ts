@@ -805,4 +805,8 @@ export interface Checkout {
    * Slot id.
    */
   slotId: string | null;
+  /**
+   * Slot date.
+   */
+  deliveryDate: string | null;
 }

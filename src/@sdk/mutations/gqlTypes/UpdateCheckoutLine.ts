@@ -807,6 +807,10 @@ export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout {
    * Slot id.
    */
   slotId: string | null;
+  /**
+   * Slot date.
+   */
+  deliveryDate: string | null;
 }
 
 export interface UpdateCheckoutLine_checkoutLinesUpdate_errors {

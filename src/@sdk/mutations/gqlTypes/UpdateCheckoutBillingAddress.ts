@@ -820,6 +820,10 @@ export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_check
    * Slot id.
    */
   slotId: string | null;
+  /**
+   * Slot date.
+   */
+  deliveryDate: string | null;
 }
 
 export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate {

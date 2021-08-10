@@ -820,6 +820,10 @@ export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_che
    * Slot id.
    */
   slotId: string | null;
+  /**
+   * Slot date.
+   */
+  deliveryDate: string | null;
 }
 
 export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkoutErrors_products {
@@ -1667,6 +1671,10 @@ export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout {
    * Slot id.
    */
   slotId: string | null;
+  /**
+   * Slot date.
+   */
+  deliveryDate: string | null;
 }
 
 export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_errors {

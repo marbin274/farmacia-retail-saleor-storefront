@@ -820,6 +820,10 @@ export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout {
    * Slot id.
    */
   slotId: string | null;
+  /**
+   * Slot date.
+   */
+  deliveryDate: string | null;
 }
 
 export interface CreateCheckoutPayment_checkoutPaymentCreate_payment_creditCard {

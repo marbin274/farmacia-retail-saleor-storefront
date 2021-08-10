@@ -820,6 +820,10 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    * Slot id.
    */
   slotId: string | null;
+  /**
+   * Slot date.
+   */
+  deliveryDate: string | null;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate {
@@ -1633,6 +1637,10 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    * Slot id.
    */
   slotId: string | null;
+  /**
+   * Slot date.
+   */
+  deliveryDate: string | null;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_errors {

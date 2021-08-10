@@ -853,6 +853,10 @@ export interface CreateCheckout_checkoutCreate_checkout {
    * Slot id.
    */
   slotId: string | null;
+  /**
+   * Slot date.
+   */
+  deliveryDate: string | null;
 }
 
 export interface CreateCheckout_checkoutCreate {

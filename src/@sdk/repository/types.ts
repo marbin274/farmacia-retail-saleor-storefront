@@ -180,6 +180,7 @@ export interface ICheckoutModel {
   isPrime?: boolean;
   slotId?: string;
   slots?: ISlots;
+  deliveryDate?: string;
 }
 
 export interface IPaymentModel {

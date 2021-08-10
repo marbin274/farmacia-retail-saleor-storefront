@@ -807,6 +807,10 @@ export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_check
    * Slot id.
    */
   slotId: string | null;
+  /**
+   * Slot date.
+   */
+  deliveryDate: string | null;
 }
 
 export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_errors_products {
