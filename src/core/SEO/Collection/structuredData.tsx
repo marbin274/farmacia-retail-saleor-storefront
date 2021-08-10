@@ -1,7 +1,7 @@
 import { generateCollectionUrl } from "@temp/core/utils";
-import { Collection_collection } from "@temp/views/Collection/gqlTypes/Collection";
+import { CollectionCategories_collection } from "@sdk/queries/gqlTypes/CollectionCategories";
 
-export const structuredCollection = (collection: Collection_collection) => {
+export const structuredCollection = (collection: CollectionCategories_collection) => {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",

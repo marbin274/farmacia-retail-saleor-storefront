@@ -43,7 +43,7 @@ import { CategoryList } from "./gqlTypes/CategoryList";
 import { ArticleDetailVariables, ArticleDetail } from "./gqlTypes/ArticleDetail";
 import { LandingVariables, Landing } from "./gqlTypes/Landing";
 import { SearchProductsVariables, SearchProducts } from "./gqlTypes/SearchProducts";
-import { CollectionListVariables, CollectionList } from "./gqlTypes/CollectionList";
+import { CollectionProductsVariables, CollectionProducts } from "./gqlTypes/CollectionProducts";
 import { CollectionCategoriesVariables, CollectionCategories } from "./gqlTypes/CollectionCategories";
 
 type QueryOptions<T = {}> = T extends { [n: string]: never }
@@ -84,12 +84,12 @@ export const QUERIES = {
       query: Category.categoryListQuery,
       ...options,
     }),
-  CollectionList: <TCacheShape>(
+  CollectionProducts: <TCacheShape>(
     client: ApolloClient<TCacheShape>,
-    options: QueryOptions<CollectionListVariables>
-  ): ObservableQuery<CollectionList, any> =>
+    options: QueryOptions<CollectionProductsVariables>
+  ): ObservableQuery<CollectionProducts, any> =>
     client.watchQuery({
-      query: Collection.collectionList,
+      query: Collection.collectionProducts,
       ...options,
     }),
   CollectionCategories: <TCacheShape>(

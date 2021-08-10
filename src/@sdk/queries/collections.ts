@@ -1,11 +1,11 @@
 import gql from "graphql-tag";
 import { basicProductFragment, productPricingFragment, productVariantFragmentSimple } from "../fragments/products";
 
-export const collectionList = gql`
+export const collectionProducts = gql`
 ${basicProductFragment}
 ${productPricingFragment}
 ${productVariantFragmentSimple}
-query CollectionList(
+query CollectionProducts(
   $id: ID!, 
   $attributes: [AttributeInput],
   $categories: [ID],

@@ -5,10 +5,10 @@
 import { AttributeInput, ProductOrder } from "./../../gqlTypes/globalTypes";
 
 // ====================================================
-// GraphQL query operation: CollectionList
+// GraphQL query operation: CollectionProducts
 // ====================================================
 
-export interface CollectionList_paginatedProducts_edges_node_thumbnail {
+export interface CollectionProducts_paginatedProducts_edges_node_thumbnail {
   __typename: "Image";
   /**
    * The URL of the image.
@@ -20,7 +20,7 @@ export interface CollectionList_paginatedProducts_edges_node_thumbnail {
   alt: string | null;
 }
 
-export interface CollectionList_paginatedProducts_edges_node_thumbnail2x {
+export interface CollectionProducts_paginatedProducts_edges_node_thumbnail2x {
   __typename: "Image";
   /**
    * The URL of the image.
@@ -28,7 +28,7 @@ export interface CollectionList_paginatedProducts_edges_node_thumbnail2x {
   url: string;
 }
 
-export interface CollectionList_paginatedProducts_edges_node_pricing_priceRangeUndiscounted_start_gross {
+export interface CollectionProducts_paginatedProducts_edges_node_pricing_priceRangeUndiscounted_start_gross {
   __typename: "Money";
   /**
    * Amount of money.
@@ -44,7 +44,7 @@ export interface CollectionList_paginatedProducts_edges_node_pricing_priceRangeU
   culture: string;
 }
 
-export interface CollectionList_paginatedProducts_edges_node_pricing_priceRangeUndiscounted_start_net {
+export interface CollectionProducts_paginatedProducts_edges_node_pricing_priceRangeUndiscounted_start_net {
   __typename: "Money";
   /**
    * Amount of money.
@@ -60,19 +60,19 @@ export interface CollectionList_paginatedProducts_edges_node_pricing_priceRangeU
   culture: string;
 }
 
-export interface CollectionList_paginatedProducts_edges_node_pricing_priceRangeUndiscounted_start {
+export interface CollectionProducts_paginatedProducts_edges_node_pricing_priceRangeUndiscounted_start {
   __typename: "TaxedMoney";
   /**
    * Amount of money including taxes.
    */
-  gross: CollectionList_paginatedProducts_edges_node_pricing_priceRangeUndiscounted_start_gross;
+  gross: CollectionProducts_paginatedProducts_edges_node_pricing_priceRangeUndiscounted_start_gross;
   /**
    * Amount of money without taxes.
    */
-  net: CollectionList_paginatedProducts_edges_node_pricing_priceRangeUndiscounted_start_net;
+  net: CollectionProducts_paginatedProducts_edges_node_pricing_priceRangeUndiscounted_start_net;
 }
 
-export interface CollectionList_paginatedProducts_edges_node_pricing_priceRangeUndiscounted_stop_gross {
+export interface CollectionProducts_paginatedProducts_edges_node_pricing_priceRangeUndiscounted_stop_gross {
   __typename: "Money";
   /**
    * Amount of money.
@@ -88,7 +88,7 @@ export interface CollectionList_paginatedProducts_edges_node_pricing_priceRangeU
   culture: string;
 }
 
-export interface CollectionList_paginatedProducts_edges_node_pricing_priceRangeUndiscounted_stop_net {
+export interface CollectionProducts_paginatedProducts_edges_node_pricing_priceRangeUndiscounted_stop_net {
   __typename: "Money";
   /**
    * Amount of money.
@@ -104,31 +104,31 @@ export interface CollectionList_paginatedProducts_edges_node_pricing_priceRangeU
   culture: string;
 }
 
-export interface CollectionList_paginatedProducts_edges_node_pricing_priceRangeUndiscounted_stop {
+export interface CollectionProducts_paginatedProducts_edges_node_pricing_priceRangeUndiscounted_stop {
   __typename: "TaxedMoney";
   /**
    * Amount of money including taxes.
    */
-  gross: CollectionList_paginatedProducts_edges_node_pricing_priceRangeUndiscounted_stop_gross;
+  gross: CollectionProducts_paginatedProducts_edges_node_pricing_priceRangeUndiscounted_stop_gross;
   /**
    * Amount of money without taxes.
    */
-  net: CollectionList_paginatedProducts_edges_node_pricing_priceRangeUndiscounted_stop_net;
+  net: CollectionProducts_paginatedProducts_edges_node_pricing_priceRangeUndiscounted_stop_net;
 }
 
-export interface CollectionList_paginatedProducts_edges_node_pricing_priceRangeUndiscounted {
+export interface CollectionProducts_paginatedProducts_edges_node_pricing_priceRangeUndiscounted {
   __typename: "TaxedMoneyRange";
   /**
    * Lower bound of a price range.
    */
-  start: CollectionList_paginatedProducts_edges_node_pricing_priceRangeUndiscounted_start | null;
+  start: CollectionProducts_paginatedProducts_edges_node_pricing_priceRangeUndiscounted_start | null;
   /**
    * Upper bound of a price range.
    */
-  stop: CollectionList_paginatedProducts_edges_node_pricing_priceRangeUndiscounted_stop | null;
+  stop: CollectionProducts_paginatedProducts_edges_node_pricing_priceRangeUndiscounted_stop | null;
 }
 
-export interface CollectionList_paginatedProducts_edges_node_pricing_priceRange_start_gross {
+export interface CollectionProducts_paginatedProducts_edges_node_pricing_priceRange_start_gross {
   __typename: "Money";
   /**
    * Amount of money.
@@ -144,7 +144,7 @@ export interface CollectionList_paginatedProducts_edges_node_pricing_priceRange_
   culture: string;
 }
 
-export interface CollectionList_paginatedProducts_edges_node_pricing_priceRange_start_net {
+export interface CollectionProducts_paginatedProducts_edges_node_pricing_priceRange_start_net {
   __typename: "Money";
   /**
    * Amount of money.
@@ -160,19 +160,19 @@ export interface CollectionList_paginatedProducts_edges_node_pricing_priceRange_
   culture: string;
 }
 
-export interface CollectionList_paginatedProducts_edges_node_pricing_priceRange_start {
+export interface CollectionProducts_paginatedProducts_edges_node_pricing_priceRange_start {
   __typename: "TaxedMoney";
   /**
    * Amount of money including taxes.
    */
-  gross: CollectionList_paginatedProducts_edges_node_pricing_priceRange_start_gross;
+  gross: CollectionProducts_paginatedProducts_edges_node_pricing_priceRange_start_gross;
   /**
    * Amount of money without taxes.
    */
-  net: CollectionList_paginatedProducts_edges_node_pricing_priceRange_start_net;
+  net: CollectionProducts_paginatedProducts_edges_node_pricing_priceRange_start_net;
 }
 
-export interface CollectionList_paginatedProducts_edges_node_pricing_priceRange_stop_gross {
+export interface CollectionProducts_paginatedProducts_edges_node_pricing_priceRange_stop_gross {
   __typename: "Money";
   /**
    * Amount of money.
@@ -188,7 +188,7 @@ export interface CollectionList_paginatedProducts_edges_node_pricing_priceRange_
   culture: string;
 }
 
-export interface CollectionList_paginatedProducts_edges_node_pricing_priceRange_stop_net {
+export interface CollectionProducts_paginatedProducts_edges_node_pricing_priceRange_stop_net {
   __typename: "Money";
   /**
    * Amount of money.
@@ -204,31 +204,31 @@ export interface CollectionList_paginatedProducts_edges_node_pricing_priceRange_
   culture: string;
 }
 
-export interface CollectionList_paginatedProducts_edges_node_pricing_priceRange_stop {
+export interface CollectionProducts_paginatedProducts_edges_node_pricing_priceRange_stop {
   __typename: "TaxedMoney";
   /**
    * Amount of money including taxes.
    */
-  gross: CollectionList_paginatedProducts_edges_node_pricing_priceRange_stop_gross;
+  gross: CollectionProducts_paginatedProducts_edges_node_pricing_priceRange_stop_gross;
   /**
    * Amount of money without taxes.
    */
-  net: CollectionList_paginatedProducts_edges_node_pricing_priceRange_stop_net;
+  net: CollectionProducts_paginatedProducts_edges_node_pricing_priceRange_stop_net;
 }
 
-export interface CollectionList_paginatedProducts_edges_node_pricing_priceRange {
+export interface CollectionProducts_paginatedProducts_edges_node_pricing_priceRange {
   __typename: "TaxedMoneyRange";
   /**
    * Lower bound of a price range.
    */
-  start: CollectionList_paginatedProducts_edges_node_pricing_priceRange_start | null;
+  start: CollectionProducts_paginatedProducts_edges_node_pricing_priceRange_start | null;
   /**
    * Upper bound of a price range.
    */
-  stop: CollectionList_paginatedProducts_edges_node_pricing_priceRange_stop | null;
+  stop: CollectionProducts_paginatedProducts_edges_node_pricing_priceRange_stop | null;
 }
 
-export interface CollectionList_paginatedProducts_edges_node_pricing {
+export interface CollectionProducts_paginatedProducts_edges_node_pricing {
   __typename: "ProductPricingInfo";
   /**
    * Whether it is in sale or not.
@@ -237,14 +237,14 @@ export interface CollectionList_paginatedProducts_edges_node_pricing {
   /**
    * The undiscounted price range of the product variants.
    */
-  priceRangeUndiscounted: CollectionList_paginatedProducts_edges_node_pricing_priceRangeUndiscounted | null;
+  priceRangeUndiscounted: CollectionProducts_paginatedProducts_edges_node_pricing_priceRangeUndiscounted | null;
   /**
    * The discounted price range of the product variants.
    */
-  priceRange: CollectionList_paginatedProducts_edges_node_pricing_priceRange | null;
+  priceRange: CollectionProducts_paginatedProducts_edges_node_pricing_priceRange | null;
 }
 
-export interface CollectionList_paginatedProducts_edges_node_attributes_attribute {
+export interface CollectionProducts_paginatedProducts_edges_node_attributes_attribute {
   __typename: "Attribute";
   /**
    * The ID of the object.
@@ -256,7 +256,7 @@ export interface CollectionList_paginatedProducts_edges_node_attributes_attribut
   name: string | null;
 }
 
-export interface CollectionList_paginatedProducts_edges_node_attributes_values {
+export interface CollectionProducts_paginatedProducts_edges_node_attributes_values {
   __typename: "AttributeValue";
   /**
    * The ID of the object.
@@ -268,19 +268,19 @@ export interface CollectionList_paginatedProducts_edges_node_attributes_values {
   name: string | null;
 }
 
-export interface CollectionList_paginatedProducts_edges_node_attributes {
+export interface CollectionProducts_paginatedProducts_edges_node_attributes {
   __typename: "SelectedAttribute";
   /**
    * Name of an attribute displayed in the interface.
    */
-  attribute: CollectionList_paginatedProducts_edges_node_attributes_attribute;
+  attribute: CollectionProducts_paginatedProducts_edges_node_attributes_attribute;
   /**
    * Values of an attribute.
    */
-  values: (CollectionList_paginatedProducts_edges_node_attributes_values | null)[];
+  values: (CollectionProducts_paginatedProducts_edges_node_attributes_values | null)[];
 }
 
-export interface CollectionList_paginatedProducts_edges_node_category {
+export interface CollectionProducts_paginatedProducts_edges_node_category {
   __typename: "Category";
   /**
    * The ID of the object.
@@ -289,7 +289,7 @@ export interface CollectionList_paginatedProducts_edges_node_category {
   name: string;
 }
 
-export interface CollectionList_paginatedProducts_edges_node_variants_images {
+export interface CollectionProducts_paginatedProducts_edges_node_variants_images {
   __typename: "ProductImage";
   /**
    * The ID of the object.
@@ -302,7 +302,7 @@ export interface CollectionList_paginatedProducts_edges_node_variants_images {
   alt: string;
 }
 
-export interface CollectionList_paginatedProducts_edges_node_variants_pricing_priceUndiscounted_gross {
+export interface CollectionProducts_paginatedProducts_edges_node_variants_pricing_priceUndiscounted_gross {
   __typename: "Money";
   /**
    * Amount of money.
@@ -318,7 +318,7 @@ export interface CollectionList_paginatedProducts_edges_node_variants_pricing_pr
   culture: string;
 }
 
-export interface CollectionList_paginatedProducts_edges_node_variants_pricing_priceUndiscounted_net {
+export interface CollectionProducts_paginatedProducts_edges_node_variants_pricing_priceUndiscounted_net {
   __typename: "Money";
   /**
    * Amount of money.
@@ -334,19 +334,19 @@ export interface CollectionList_paginatedProducts_edges_node_variants_pricing_pr
   culture: string;
 }
 
-export interface CollectionList_paginatedProducts_edges_node_variants_pricing_priceUndiscounted {
+export interface CollectionProducts_paginatedProducts_edges_node_variants_pricing_priceUndiscounted {
   __typename: "TaxedMoney";
   /**
    * Amount of money including taxes.
    */
-  gross: CollectionList_paginatedProducts_edges_node_variants_pricing_priceUndiscounted_gross;
+  gross: CollectionProducts_paginatedProducts_edges_node_variants_pricing_priceUndiscounted_gross;
   /**
    * Amount of money without taxes.
    */
-  net: CollectionList_paginatedProducts_edges_node_variants_pricing_priceUndiscounted_net;
+  net: CollectionProducts_paginatedProducts_edges_node_variants_pricing_priceUndiscounted_net;
 }
 
-export interface CollectionList_paginatedProducts_edges_node_variants_pricing_price_gross {
+export interface CollectionProducts_paginatedProducts_edges_node_variants_pricing_price_gross {
   __typename: "Money";
   /**
    * Amount of money.
@@ -362,7 +362,7 @@ export interface CollectionList_paginatedProducts_edges_node_variants_pricing_pr
   culture: string;
 }
 
-export interface CollectionList_paginatedProducts_edges_node_variants_pricing_price_net {
+export interface CollectionProducts_paginatedProducts_edges_node_variants_pricing_price_net {
   __typename: "Money";
   /**
    * Amount of money.
@@ -378,19 +378,19 @@ export interface CollectionList_paginatedProducts_edges_node_variants_pricing_pr
   culture: string;
 }
 
-export interface CollectionList_paginatedProducts_edges_node_variants_pricing_price {
+export interface CollectionProducts_paginatedProducts_edges_node_variants_pricing_price {
   __typename: "TaxedMoney";
   /**
    * Amount of money including taxes.
    */
-  gross: CollectionList_paginatedProducts_edges_node_variants_pricing_price_gross;
+  gross: CollectionProducts_paginatedProducts_edges_node_variants_pricing_price_gross;
   /**
    * Amount of money without taxes.
    */
-  net: CollectionList_paginatedProducts_edges_node_variants_pricing_price_net;
+  net: CollectionProducts_paginatedProducts_edges_node_variants_pricing_price_net;
 }
 
-export interface CollectionList_paginatedProducts_edges_node_variants_pricing {
+export interface CollectionProducts_paginatedProducts_edges_node_variants_pricing {
   __typename: "VariantPricingInfo";
   /**
    * Whether it is in sale or not.
@@ -399,14 +399,14 @@ export interface CollectionList_paginatedProducts_edges_node_variants_pricing {
   /**
    * The price without any discount.
    */
-  priceUndiscounted: CollectionList_paginatedProducts_edges_node_variants_pricing_priceUndiscounted | null;
+  priceUndiscounted: CollectionProducts_paginatedProducts_edges_node_variants_pricing_priceUndiscounted | null;
   /**
    * The price, with any discount subtracted.
    */
-  price: CollectionList_paginatedProducts_edges_node_variants_pricing_price | null;
+  price: CollectionProducts_paginatedProducts_edges_node_variants_pricing_price | null;
 }
 
-export interface CollectionList_paginatedProducts_edges_node_variants {
+export interface CollectionProducts_paginatedProducts_edges_node_variants {
   __typename: "ProductVariant";
   /**
    * The ID of the object.
@@ -421,14 +421,14 @@ export interface CollectionList_paginatedProducts_edges_node_variants {
   /**
    * List of images for the product variant.
    */
-  images: (CollectionList_paginatedProducts_edges_node_variants_images | null)[] | null;
+  images: (CollectionProducts_paginatedProducts_edges_node_variants_images | null)[] | null;
   /**
    * Lists the storefront variant's pricing, the current price and discounts, only meant for displaying.
    */
-  pricing: CollectionList_paginatedProducts_edges_node_variants_pricing | null;
+  pricing: CollectionProducts_paginatedProducts_edges_node_variants_pricing | null;
 }
 
-export interface CollectionList_paginatedProducts_edges_node {
+export interface CollectionProducts_paginatedProducts_edges_node {
   __typename: "Product";
   /**
    * The ID of the object.
@@ -438,48 +438,48 @@ export interface CollectionList_paginatedProducts_edges_node {
   /**
    * The main thumbnail for a product.
    */
-  thumbnail: CollectionList_paginatedProducts_edges_node_thumbnail | null;
+  thumbnail: CollectionProducts_paginatedProducts_edges_node_thumbnail | null;
   /**
    * The main thumbnail for a product.
    */
-  thumbnail2x: CollectionList_paginatedProducts_edges_node_thumbnail2x | null;
+  thumbnail2x: CollectionProducts_paginatedProducts_edges_node_thumbnail2x | null;
   /**
    * Lists the storefront product's pricing, the current price and discounts, only meant for displaying.
    */
-  pricing: CollectionList_paginatedProducts_edges_node_pricing | null;
+  pricing: CollectionProducts_paginatedProducts_edges_node_pricing | null;
   /**
    * List of attributes assigned to this product.
    */
-  attributes: CollectionList_paginatedProducts_edges_node_attributes[];
-  category: CollectionList_paginatedProducts_edges_node_category | null;
+  attributes: CollectionProducts_paginatedProducts_edges_node_attributes[];
+  category: CollectionProducts_paginatedProducts_edges_node_category | null;
   /**
    * List of variants for the product.
    */
-  variants: (CollectionList_paginatedProducts_edges_node_variants | null)[] | null;
+  variants: (CollectionProducts_paginatedProducts_edges_node_variants | null)[] | null;
 }
 
-export interface CollectionList_paginatedProducts_edges {
+export interface CollectionProducts_paginatedProducts_edges {
   __typename: "ProductCountableEdge";
   /**
    * The item at the end of the edge.
    */
-  node: CollectionList_paginatedProducts_edges_node;
+  node: CollectionProducts_paginatedProducts_edges_node;
 }
 
-export interface CollectionList_paginatedProducts {
+export interface CollectionProducts_paginatedProducts {
   __typename: "ProductCountableConnection";
   /**
    * A total count of items in the collection.
    */
   totalCount: number | null;
-  edges: CollectionList_paginatedProducts_edges[];
+  edges: CollectionProducts_paginatedProducts_edges[];
 }
 
-export interface CollectionList {
-  paginatedProducts: CollectionList_paginatedProducts | null;
+export interface CollectionProducts {
+  paginatedProducts: CollectionProducts_paginatedProducts | null;
 }
 
-export interface CollectionListVariables {
+export interface CollectionProductsVariables {
   id: string;
   attributes?: (AttributeInput | null)[] | null;
   categories?: (string | null)[] | null;

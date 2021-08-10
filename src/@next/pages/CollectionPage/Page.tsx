@@ -6,8 +6,8 @@ import {
   CollectionCategories_collection
 } from "@sdk/queries/gqlTypes/CollectionCategories";
 import {
-  CollectionListVariables
-} from "@sdk/queries/gqlTypes/CollectionList";
+  CollectionProductsVariables
+} from "@sdk/queries/gqlTypes/CollectionProducts";
 import { IPaginationProps } from "@temp/@next/components/molecules/Pagination/types";
 import {
   IAddToCartCallback,
@@ -18,7 +18,7 @@ import { useMediaScreen } from "@temp/@next/globalStyles";
 import { largeScreen } from "@temp/@next/globalStyles/constants";
 import { useDistrictSelected, useScrollTo } from "@temp/@next/hooks";
 import { IItems } from "@temp/@sdk/api/Cart/types";
-import { useCollectionList } from "@temp/@sdk/react";
+import { useCollectionProducts } from "@temp/@sdk/react";
 import { baseUrl } from "@temp/app/routes";
 import { EmptyProduct } from "@temp/components";
 import { COLLECTION_CATEGORY_FILTER_LABEL, PRODUCTS_PER_PAGE } from "@temp/core/config";
@@ -90,7 +90,7 @@ const Page: React.FC<PageProps> = ({
     sortBy: sort || DEFAULT_SORT,
   };
 
-  const variables: CollectionListVariables = {
+  const variables: CollectionProductsVariables = {
     ...filters,
     attributes: filters.attributes
       ? convertToAttributeScalar(filters.attributes)
@@ -112,7 +112,7 @@ const Page: React.FC<PageProps> = ({
     pageSize: getPageSize(isMobileScreen),
   };
 
-  const { data: products, loading: collectionListLoading } = useCollectionList(variablesWithCategories);
+  const { data: products, loading: collectionListLoading } = useCollectionProducts(variablesWithCategories);
   
   const canDisplayProducts = maybe(
     () => !!products?.edges && products?.totalCount !== undefined
