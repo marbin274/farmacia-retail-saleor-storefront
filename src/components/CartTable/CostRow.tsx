@@ -1,23 +1,18 @@
+import classNames from "classnames";
 import * as React from "react";
 
 const CostRow: React.FC<{
-  mediumScreen: boolean;
+  smallScreen: boolean;
   heading: string;
   cost: React.ReactNode;
   bold?: boolean;
-}> = ({ mediumScreen, heading, cost, bold }) => (
-  <tr className={`cart-table__cost-wrapper${bold && "--bold" || ''}`}>
-    {
-      mediumScreen && (
-        <td colSpan={2}>
-          &nbsp;
-        </td>
-      )
-    }
+}> = ({ smallScreen, heading, cost, bold }) => (
+  <tr className={classNames("fa-border-b-0", { "fa-font-bold": bold })}>
+    {smallScreen && <td colSpan={2}>&nbsp;</td>}
     <td colSpan={2} className="fa-font-semibold fa-text-left md:fa-text-left">
       {heading}
     </td>
-    <td colSpan={2} className="fa-font-semibold cart-table__cost-value">
+    <td colSpan={2} className="fa-font-semibold fa-text-right">
       {cost}
     </td>
   </tr>

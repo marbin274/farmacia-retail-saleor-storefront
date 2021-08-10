@@ -1,11 +1,11 @@
 import { HomeIcon, NextIcon } from "@farmacia-retail/farmauna-components";
 import { useMediaScreen } from "@temp/@next/globalStyles";
+import { smallScreen } from "@temp/@next/globalStyles/constants";
 import classNames from "classnames";
 import * as React from "react";
 import { Link } from "react-router-dom";
 import { baseUrl } from "../../app/routes";
 import { getDBIdFromGraphqlId, slugify } from "../../core/utils";
-import { smallScreen } from "../../globalStyles/scss/variables.scss";
 import { Category_category } from "../../views/Category/gqlTypes/Category";
 import * as S from "./styles";
 export interface Breadcrumb {
@@ -22,7 +22,7 @@ type IBreadcrumbProps = {
 };
 
 export const extractBreadcrumbs = (category: Category_category) => {
-  const constructLink = item => ({
+  const constructLink = (item) => ({
     link: [
       `/category`,
       `/${slugify(item.name)}`,
@@ -34,7 +34,7 @@ export const extractBreadcrumbs = (category: Category_category) => {
   let breadcrumbs = [constructLink(category)];
 
   if (category.ancestors.edges.length) {
-    const ancestorsList = category.ancestors.edges.map(edge =>
+    const ancestorsList = category.ancestors.edges.map((edge) =>
       constructLink(edge.node)
     );
     breadcrumbs = ancestorsList.concat(breadcrumbs);
@@ -52,7 +52,9 @@ const Breadcrumbs: React.FC<IBreadcrumbProps> = ({
   showHomeIcon,
   backLabelMobile,
 }) => {
-  const { isCustomMinScreen: isMinSmallScreen } = useMediaScreen(smallScreen);
+  const { isCustomMinScreen: isMinSmallScreen } = useMediaScreen(
+    smallScreen.toString()
+  );
 
   const renderNextIcon = () => {
     return (
