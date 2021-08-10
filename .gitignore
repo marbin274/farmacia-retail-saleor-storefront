@@ -14,6 +14,7 @@
 !.npmrc
 !.prettierignore
 !.vscode
+!.eslintrc.js
 dist
 node_modules
 src/locales/_build
