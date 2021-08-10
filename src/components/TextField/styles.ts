@@ -41,7 +41,7 @@ export const Input = styled.input`
     }
   }
 
-  &.grey {
+  &.gray {
     &:focus,
     &:not([value=""]) {
       & + .input__label {
