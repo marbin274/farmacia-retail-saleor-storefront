@@ -45,6 +45,7 @@ import { LandingVariables, Landing } from "./gqlTypes/Landing";
 import { SearchProductsVariables, SearchProducts } from "./gqlTypes/SearchProducts";
 import { CollectionProductsVariables, CollectionProducts } from "./gqlTypes/CollectionProducts";
 import { CollectionCategoriesVariables, CollectionCategories } from "./gqlTypes/CollectionCategories";
+import { CategoryProductsVariables, CategoryProducts } from "./gqlTypes/CategoryProducts";
 
 type QueryOptions<T = {}> = T extends { [n: string]: never }
   ? Omit<ApolloQueryOptions<{}>, "query">
@@ -59,7 +60,7 @@ export const QUERIES = {
     client.watchQuery({
       query: Article.articleDetail,
       ...options,
-  }),
+    }),
   Attributes: <TCacheShape>(
     client: ApolloClient<TCacheShape>,
     options: QueryOptions<AttributesVariables>
@@ -82,6 +83,14 @@ export const QUERIES = {
   ): ObservableQuery<CategoryList, any> =>
     client.watchQuery({
       query: Category.categoryListQuery,
+      ...options,
+    }),
+  CategoryProducts: <TCacheShape>(
+    client: ApolloClient<TCacheShape>,
+    options: QueryOptions<CategoryProductsVariables>
+  ): ObservableQuery<CategoryProducts, any> =>
+    client.watchQuery({
+      query: Category.categoryProducts,
       ...options,
     }),
   CollectionProducts: <TCacheShape>(
@@ -115,7 +124,7 @@ export const QUERIES = {
     client.watchQuery({
       query: LandingQuery.landing,
       ...options,
-  }),
+    }),
   OrderDetails: <TCacheShape>(
     client: ApolloClient<TCacheShape>,
     options: QueryOptions<OrderByTokenVariables>

@@ -2,15 +2,15 @@ import React, { FC } from "react";
 import { RouteComponentProps } from "react-router";
 import { IFilters } from "@types";
 import { StringParam, useQueryParams, NumberParam } from "use-query-params";
-import { MetaWrapper, NotFound, OfflinePlaceholder } from "../../components";
-import NetworkStatus from "../../components/NetworkStatus";
-import { PRODUCTS_PER_PAGE } from "../../core/config";
+import { MetaWrapper, NotFound, OfflinePlaceholder } from "@temp/components";
+import NetworkStatus from "@temp/components/NetworkStatus";
+import { PRODUCTS_PER_PAGE } from "@temp/core/config";
 import {
   convertSortByFromString,
   convertToAttributeScalar,
   getGraphqlIdFromDBId,
   maybe,
-} from "../../core/utils";
+} from "@temp/core/utils";
 import Page from "./Page";
 import { TypedCategoryProductsQuery } from "./queries";
 import { useCart } from "@sdk/react";
@@ -36,7 +36,7 @@ type ViewProps = RouteComponentProps<{
 
 const DEFAULT_SORT = "-stock";
 
-export const View: FC<ViewProps> = ({ match }) => {
+export const CategoryPage: FC<ViewProps> = ({ match }) => {
   const [districtSelected] = useDistrictSelected();
   const [
     { filters: attributeFilters, page, sortBy: sort },
@@ -204,4 +204,4 @@ export const View: FC<ViewProps> = ({ match }) => {
   );
 };
 
-export default View;
+export default CategoryPage;

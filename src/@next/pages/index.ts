@@ -2,6 +2,7 @@ export * from "./AccountConfirmPage";
 export * from "./AccountPage";
 export * from "./ArticlePage";
 export * from "./CartPage";
+export * from "./CategoryPage";
 export * from "./CheckoutPage";
 export * from "./CollectionPage";
 export * from "./LandingPage";

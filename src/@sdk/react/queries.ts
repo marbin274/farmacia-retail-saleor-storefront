@@ -22,6 +22,7 @@ export const useVariantsProducts = queryWithVariablesFactory(
 );
 
 export const useCategories = queryFactory("getCategoryList");
+export const useCategoryProducts = queryFactory("getCategoryProducts");
 
 export const useLanding = queryWithVariablesFactory("getLanding");
 export const useSearchProducts = queryWithVariablesFactory("searchProducts");

@@ -14,10 +14,10 @@ import { structuredData } from "@temp/core/SEO/Category/structuredData";
 import { convertToSimpleProduct, maybe } from "@temp/core/utils";
 import { IFilterAttributes, IFilters } from "@types";
 import * as React from "react";
-import { ProductListHeader } from "../../@next/components/molecules";
-import { ProductListAUNA } from "../../@next/components/organisms";
-import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
-import { EmptyProduct, extractBreadcrumbs } from "../../components";
+import { ProductListHeader } from "@app/components/molecules";
+import { ProductListAUNA } from "@app/components/organisms";
+import { FilterSidebar } from "@app/components/organisms/FilterSidebar";
+import { EmptyProduct, extractBreadcrumbs } from "@temp/components";
 import {
   Category_category,
   Category_paginatedProducts,

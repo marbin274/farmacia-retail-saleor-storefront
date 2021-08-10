@@ -13,7 +13,7 @@
 !.husky
 !.npmrc
 !.prettierignore
-!.vscode
+!.vscode/settings.json
 !.eslintrc.js
 dist
 node_modules

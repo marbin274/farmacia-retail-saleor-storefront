@@ -56,12 +56,17 @@ export class APIProxy {
 
   getCategoryDetails = this.watchQuery(
     QUERIES.CategoryDetails,
-    (data) => data.category
+    (data) => data
   );
 
   getCategoryList = this.watchQuery(
     QUERIES.CategoryList,
     (data) => data.categories
+  );
+
+  getCategoryProducts = this.watchQuery(
+    QUERIES.CategoryProducts,
+    (data) => data.paginatedProducts
   );
 
   getCollectionProducts = this.watchQuery(
@@ -460,7 +465,7 @@ export class APIProxy {
           );
         },
         setOptions: (newOptions: TOptions) =>
-        this.firePromise(() => observable.setOptions(newOptions), mapFn),
+          this.firePromise(() => observable.setOptions(newOptions), mapFn),
         unsubscribe: subscription.unsubscribe.bind(subscription),
       };
     };
@@ -516,9 +521,9 @@ const handleDataErrors = <T extends QueryShape, TData>(
   const errors =
     apolloErrors || userInputErrors
       ? new ApolloError({
-          extraInfo: userInputErrors,
-          graphQLErrors: apolloErrors,
-        })
+        extraInfo: userInputErrors,
+        graphQLErrors: apolloErrors,
+      })
       : null;
 
   if (errors && isDataEmpty(data)) {
