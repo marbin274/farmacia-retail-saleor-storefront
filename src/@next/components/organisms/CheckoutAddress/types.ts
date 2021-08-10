@@ -37,4 +37,5 @@ export interface IProps {
   userLoading?: boolean;
   temporaryStreeAddress1Error?: string;
   clearTemporaryAddressError?: () => void;
+  showOptionalAddressError?: () => void;
 }
