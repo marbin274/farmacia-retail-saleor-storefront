@@ -3,6 +3,7 @@ export * from "./AccountPage";
 export * from "./ArticlePage";
 export * from "./CartPage";
 export * from "./CheckoutPage";
+export * from "./CollectionPage";
 export * from "./LandingPage";
 export * from "./PasswordReset";
 export * from "./ResetPasswordMailSentPage";

@@ -64,6 +64,16 @@ export class APIProxy {
     (data) => data.categories
   );
 
+  getCollectionList = this.watchQuery(
+    QUERIES.CollectionList,
+    (data) => data.paginatedProducts
+  );
+
+  getCollectionCategories = this.watchQuery(
+    QUERIES.CollectionCategories,
+    (data) => data
+  );
+
   getOrdersByUser = this.watchQuery(QUERIES.OrdersByUser, (data) =>
     data.me ? data.me.orders : null
   );

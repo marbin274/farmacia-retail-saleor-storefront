@@ -9,7 +9,7 @@ interface IObject {
   }
 
 export const convertToFilterSideBar = (filters: IFilters): IFilterAttributes[] => {
-    return filters.edges.map((edge): IFilterAttributes => (
+    return filters?.edges?.map((edge): IFilterAttributes => (
         {
             filterableInStorefront: edge.node.filterableInStorefront,
             id: edge.node.id || '',
