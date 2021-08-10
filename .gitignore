@@ -12,6 +12,7 @@
 !.prettierrc
 !.husky
 !.npmrc
+!.eslintrc.js
 dist
 node_modules
 src/locales/_build
