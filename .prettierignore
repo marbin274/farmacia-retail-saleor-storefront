@@ -1,0 +1,15 @@
+__mocks__
+.*
+config
+coverage
+dist
+node_modules
+package-lock.json
+sonar-project.properties
+gqlTypes
+src/@sdk/fragments/gqlTypes/*.*
+src/@sdk/gqlTypes/*.*
+src/@sdk/mutations/gqlTypes/*.*
+src/@sdk/queries/gqlTypes/*.*
+src/sitemap/gqlTypes/*.*
+src/views/**/gqlTypes/*.*
