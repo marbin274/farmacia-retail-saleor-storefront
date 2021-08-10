@@ -5,15 +5,20 @@
     <title>Farmauna</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="<%= htmlWebpackPlugin.options.API_URI %>" />
+    <!-- connect to domain of font files -->
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
+    <!-- optionally increase loading priority -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
+    <!-- async CSS -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+      media="print" onload="this.onload=null;this.removeAttribute('media');"
       rel="stylesheet"
     />
-    <link 
-      href="https://cdnjs.cloudflare.com/ajax/libs/react-datepicker/2.14.1/react-datepicker.min.css" 
-      rel="stylesheet" 
-    />
+    <!-- no-JS fallback -->
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
+    </noscript
     <!-- Anti-flicker snippet (recommended)  -->
     <style>
       .async-hide {
@@ -22,8 +27,76 @@
     </style>
     <!-- Anti-flicker snippet (recommended)  -->
     <style>
+      body { margin: 0}
       .async-hide {
         opacity: 0 !important;
+      }
+      .fcp-farmauna__header {
+        background-color: #fff;
+        height: 5rem;
+        padding: 0 1rem;
+        width: 100%;
+      }
+      .fcp-farmauna__menu {
+        background-color: rgb(39, 27, 106);
+        height: 4.5rem;
+        width: 100%;
+      }
+      .lds-ellipsis {
+        display: block;
+        height: 5rem;
+        margin: 3.2rem auto;
+        position: relative;
+        width: 5rem;
+      }
+      .lds-ellipsis div {
+        animation-timing-function: cubic-bezier(0, 1, 1, 0);
+        background: rgb(39, 27, 106);
+        border-radius: 50%;
+        height: 13px;
+        top: 33px;
+        width: 13px;
+        position: absolute;
+      }
+      .lds-ellipsis div:nth-child(1) {
+        animation: lds-ellipsis1 0.6s infinite;
+        left: 8px;
+      }
+      .lds-ellipsis div:nth-child(2) {
+        animation: lds-ellipsis2 0.6s infinite;
+        left: 8px;
+      }
+      .lds-ellipsis div:nth-child(3) {
+        animation: lds-ellipsis2 0.6s infinite;
+        left: 32px;
+      }
+      .lds-ellipsis div:nth-child(4) {
+        animation: lds-ellipsis3 0.6s infinite;
+        left: 56px;
+      }
+      @keyframes lds-ellipsis1 {
+        0% {
+          transform: scale(0);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+      @keyframes lds-ellipsis3 {
+        0% {
+          transform: scale(1);
+        }
+        100% {
+          transform: scale(0);
+        }
+      }
+      @keyframes lds-ellipsis2 {
+        0% {
+          transform: translate(0, 0);
+        }
+        100% {
+          transform: translate(24px, 0);
+        }
       }
     </style>
     <script>
@@ -121,7 +194,13 @@
   </head>
 
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div class='fcp-farmauna__header'></div>
+      <div class='fcp-farmauna__menu'></div>
+      <div class='fcp-farmauna__body'>
+        <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+      </div>
+    </div>
     <div id="modal-root"></div>
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">

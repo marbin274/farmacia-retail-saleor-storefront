@@ -1,11 +1,11 @@
 import { IProductVariant } from "@temp/@next/types";
-import { ISimpleProduct } from "@temp/@next/types/IProduct";
+import { ISimpleProduct } from "@sdk/types/IProduct";
 import { ProductDetails_product } from "@temp/@sdk/queries/gqlTypes/ProductDetails";
 import { SearchResults_products_edges_node } from "@temp/components/OverlayManager/Search/gqlTypes/SearchResults"
 import { FeaturedProducts_shop_homepageCollections_edges_node_products_edges_node } from "@temp/components/ProductsFeatured/gqlTypes/FeaturedProducts";
 import { SelledProducts_reportProductSales_edges_node_product } from "@temp/components/productsSelled/gqlTypes/SelledProducts";
 import { Category_paginatedProducts_edges_node } from "@temp/views/Category/gqlTypes/Category";
-import { SearchProducts_paginatedProducts_edges_node } from "@temp/views/Search/gqlTypes/SearchProducts";
+import { SearchProducts_paginatedProducts_edges_node } from "@sdk/queries/gqlTypes/SearchProducts";
 
 type IProductQuery =
     Category_paginatedProducts_edges_node

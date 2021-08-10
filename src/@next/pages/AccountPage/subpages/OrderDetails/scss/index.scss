@@ -1,0 +1,89 @@
+@import "@temp/globalStyles/scss/variables.scss";
+
+.order-details {
+  &__container {
+    margin: 0 auto;
+  }
+
+  h3 {
+    font-weight: $bold-font-weight;
+    margin: ($spacer * 2.5) 0 ($spacer * 0.5);
+  }
+
+  &__link {
+    font-size: $small-font-size;
+    color: $gray-light;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    svg {
+      margin-right: 1rem;
+      display: inline-block;
+    }
+    @media (min-width: $small-screen) {
+      margin-top: 2.5rem;
+    }
+  }
+
+  &__title {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+  }
+
+  &__info {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__tile-wrapper {
+    width: 33.3333%;
+
+    @media (max-width: $small-screen) {
+      width: 100%;
+    }
+
+    @media (min-width: $small-screen + 1) and (max-width: $medium-screen) {
+      width: 48.5%;
+    }
+  }
+
+  &__tile-wrapper-address {
+    width: 33.3333%;
+    margin-left: 1rem;
+
+    @media (max-width: $small-screen) {
+      width: 100%;
+      margin-top: 1rem;
+      margin-left: 0;
+    }
+
+    @media (min-width: $small-screen + 1) and (max-width: $medium-screen) {
+      width: 48.5%;
+    }
+  }
+
+  &__tile-title {
+    font-weight: $bold-font-weight;
+    margin-bottom: 0.75rem;
+  }
+
+  &__tile-description {
+    margin-bottom: 0.75rem;
+  }
+
+  &__tile-address {
+    line-height: 2;
+  }
+  &__tile-alert-fuilfill {
+    margin-top: 0.25rem;
+    margin-bottom: 1rem;
+    font-size: 00.75rem;
+  }
+  &__tile-alert-fulfill-icon {
+    display: inline-block;
+    vertical-align: middle;
+    height: 1.25rem;
+    margin-right: 0.625rem;
+  }
+}

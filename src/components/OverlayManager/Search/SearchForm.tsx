@@ -41,8 +41,7 @@ export const SearchForm: React.FC<SearchFormProps> = React.memo(
     };
 
     const getFieldIcono = () => {
-      if (hasSearchPhrase) {
-        return (
+      return hasSearchPhrase ? (
           <div
             onClick={() => {
               clearSearch();
@@ -51,10 +50,7 @@ export const SearchForm: React.FC<SearchFormProps> = React.memo(
           >
             <XIcon size={16} />
           </div>
-        );
-      } else {
-        return <SearchIcon size={16} />;
-      }
+        ) : <SearchIcon size={16} />;
     };
 
     const clearSearch = () => {

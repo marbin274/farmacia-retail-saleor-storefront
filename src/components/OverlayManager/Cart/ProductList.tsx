@@ -10,19 +10,23 @@ import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
 import {
   checkProductCanAddToCart,
   checkProductIsOnSale,
+} from "@sdk/utils/products";
+import {
   convertProductOnCartInProduct,
-  getProductPricingClass,
-} from "@temp/@next/utils/products";
+  getProductPricingClass,  
+} from "@temp/@next/utils/products"
 import { generateProductUrl } from "@temp/core/utils";
 import { Button, TrashIcon } from "@farmacia-retail/farmauna-components";
 import * as React from "react";
 import { Link } from "react-router-dom";
 import "react-popper-tooltip/dist/styles.css";
 import { Tooltip } from "@temp/@next/components/atoms";
+import { List } from "./styles";
 
 interface IProductList {
   itemToDelete: string;
   modalOpen: boolean;
+  morePadding?: boolean;
   products: ICheckoutModelLine[];
   onAdd(variant: ICheckoutModelLineVariantLocalStorage, quantity: number): void;
   onRemove(variantId: string): void;
@@ -33,16 +37,17 @@ interface IProductList {
 }
 
 const ProductList: React.FC<IProductList> = ({
+  itemToDelete,
+  modalOpen,
+  morePadding = false,
   products,
   onAdd,
   onRemove,
   onSubtract,
-  modalOpen,
-  itemToDelete,
   onConfirm,
   onCancel,
 }) => (
-  <ul className="cart__list">
+  <List morePadding={morePadding} className="cart__list">
     {products.map((ProductOnCart) => {
       const product = convertProductOnCartInProduct(ProductOnCart);
       const { variant, quantity } = ProductOnCart;
@@ -131,6 +136,6 @@ const ProductList: React.FC<IProductList> = ({
         </li>
       );
     })}
-  </ul>
+  </List>
 );
 export default ProductList;

@@ -7,6 +7,7 @@ export const userFragment = gql`
   fragment User on User {
     id
     email
+    favoriteCategories
     firstName
     lastName
     isStaff
@@ -21,6 +22,16 @@ export const userFragment = gql`
     }
     addresses {
       ...Address
+    }
+    cardTokens {
+      binNumber
+      brand
+      cardNumber
+      default
+      email
+      firstName
+      id
+      lastName
     }
   }
 `;

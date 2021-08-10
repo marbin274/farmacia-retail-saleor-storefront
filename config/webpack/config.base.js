@@ -4,6 +4,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const RobotstxtPlugin = require("robotstxt-webpack-plugin");
+
 const webpack = require("webpack");
 
 if (!process.env.API_URI) {
@@ -19,7 +20,7 @@ const robotOptions = {
       userAgent: "Googlebot",
       allow: "/",
       disallow: ["/order-finalized", "/checkout*","*/ayuda@auna.pe",
-        "*/consultas@farmauna.com","*/search/?q=*","*/cdn*","*/app*","*/js*"]
+        "*/consultas@farmauna.com","*/search/?q=*"]
     },
   ],
   host: "https://www.farmauna.com/",
@@ -111,7 +112,9 @@ module.exports = ({ sourceDir, distDir }) => ({
       GTM_ID: process.env.GTM_ID
     }),
     new ForkTsCheckerWebpackPlugin({
-      tslint: true,
+      eslint:  {
+        files: './src/**/*.{ts,tsx,js,jsx}'
+      },
       exclude: "node_modules",
     }),
     // PWA plugins
@@ -143,6 +146,7 @@ module.exports = ({ sourceDir, distDir }) => ({
       PRIME_API_URL: "__",
       PRIME_API_KEY: "__",
       PRIME_SKU: "__",
+      NIUBIZ_ANTIFRAUD_SCRIPT_URL: "__",
     }),
   ],
   node: {

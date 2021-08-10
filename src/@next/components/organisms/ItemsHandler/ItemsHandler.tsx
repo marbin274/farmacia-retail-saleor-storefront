@@ -1,14 +1,12 @@
 import { Button, CartIcon } from "@farmacia-retail/farmauna-components";
 import { launchAddToCartEvent, launchRemoveToCartEvent } from "@sdk/gaConfig";
-import { useAddToCartButtonVariable } from "@temp/@next/optimizely/hooks";
-import { trackAddToCart } from "@temp/@next/optimizely/tracks";
-import { ISimpleProduct } from "@temp/@next/types/IProduct";
+import { ISimpleProduct } from "@sdk/types/IProduct";
 import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
 import {
   checkStockLimitOrStockAvailable,
   ICheckStockLimitOrStockAvailable,
-} from "@temp/@next/utils/products";
-import { MAX_ORDER_PER_PRODUCT } from "@temp/core/config";
+} from "@sdk/utils/products";
+import { MAX_ORDER_PER_PRODUCT } from "@sdk/config";
 import classNames from "classnames";
 import React, { FC, useEffect, useState } from "react";
 import { itemNotificationsService } from "../../atoms/ItemsNotification";
@@ -54,7 +52,6 @@ const ItemsHandler: FC<IProps> = ({
         : { isLimitMax: false, stockLimitMax: 0 },
     [product]
   );
-  const text = useAddToCartButtonVariable();
 
   useEffect(() => {
     setIsValueLessThanMaxOrderPerProduct(quantity < MAX_ORDER_PER_PRODUCT);
@@ -121,7 +118,6 @@ const ItemsHandler: FC<IProps> = ({
 
   // quitar cuando ya no se use el A/B testing
   const handleButtonAddClick = () => {
-    trackAddToCart();
     handleAddClick();
   };
 
@@ -163,7 +159,7 @@ const ItemsHandler: FC<IProps> = ({
             type="button"
             icon={<CartIcon />}
           >
-            {text}
+            Agregar
           </Button>
         </div>
       )}

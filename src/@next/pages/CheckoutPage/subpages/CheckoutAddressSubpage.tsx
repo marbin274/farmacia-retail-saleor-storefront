@@ -15,11 +15,13 @@ import { filterNotEmptyArrayItems } from "@utils/misc";
 import React, {
   forwardRef,
   RefForwardingComponent,
+  useEffect,
   useImperativeHandle,
   useRef,
-  useState
+  useState,
 } from "react";
 import { RouteComponentProps } from "react-router";
+import { AlertComponentProps, useAlert } from "react-alert";
 
 export interface ICheckoutAddressSubpageHandles {
   submitAddress: () => void;
@@ -62,8 +64,33 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     update: updateCartLines,
     loading: updatingCartLines,
   } = useUpdateCartLines();
+  const [
+    temporaryStreeAddress1Error,
+    setTemporaryStreeAddress1Error,
+  ] = useState<string>();
+  const [currentErrorAlert, setCurrentErrorAlert] = useState<
+    AlertComponentProps
+  >();
+  const alert = useAlert();
 
   const _addressFormSchema = addressFormSchema;
+
+  useEffect(() => {
+    return () => {
+      clearAlertAddressError();
+    };
+  }, [currentErrorAlert]);
+
+  const clearAlertAddressError = () => {
+    if (currentErrorAlert) {
+      currentErrorAlert.close();
+    }
+  };
+
+  const clearTemporaryAddressError = () => {
+    clearAlertAddressError();
+    setTemporaryStreeAddress1Error("");
+  };
 
   const handleFormValues = (data: IAddressWithEmail | undefined) => {
     _addressFormSchema
@@ -146,6 +173,8 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     }
 
     changeSubmitProgress(true);
+    setTemporaryStreeAddress1Error("");
+
     const { checkoutErrors, dataError } = await setShippingAddress(
       {
         ...address,
@@ -199,6 +228,32 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
       }
     } else {
       setAddressSubPageErrors([]);
+
+      if (address.streetAddress1 && !address.latitude) {
+        clearAlertAddressError();
+
+        const newAlert = alert.show(
+          {
+            content: (
+              <span className="fa-text-sm">
+                Debes ingresar tu dirección y seleccionar una de las opciones
+                desplegadas
+              </span>
+            ),
+          },
+          {
+            timeout: 60000 * 2,
+            type: "error",
+          }
+        );
+
+        setCurrentErrorAlert(newAlert);
+
+        setTemporaryStreeAddress1Error(
+          "Selecciona una de las direcciones sugeridas"
+        );
+      }
+
       if (checkout?.shippingMethod?.id) {
         // history.push(CHECKOUT_STEPS[0].nextStepLink);
       }
@@ -253,6 +308,8 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
         newAddressFormId={checkoutNewAddressFormId}
         setShippingAddress={handleSetShippingAddress}
         setFormValue={handleFormValues}
+        temporaryStreeAddress1Error={temporaryStreeAddress1Error}
+        clearTemporaryAddressError={clearTemporaryAddressError}
       />
       <StockValidationModal
         show={showStockValidation}

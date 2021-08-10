@@ -1,4 +1,4 @@
-import { ISimpleProduct } from "@app/types/IProduct";
+import { ISimpleProduct } from "@sdk/types/IProduct";
 import {
   IAddToCartCallback,
   IRemoveItemToCartCallback,
@@ -8,11 +8,16 @@ import { IItems } from "@temp/@sdk/api/Cart/types";
 
 export interface IProps {
   addToCart?: IAddToCartCallback;
-  removeItemToCart?: IRemoveItemToCartCallback;
-  subtractItemToCart?: ISubtractItemToCartCallback;
-  products: ISimpleProduct[];
   canLoadMore?: boolean;
+  columns?: number;
   loading?: boolean;
   onLoadMore?: () => void;
+  onPageChange?: (page: number) => void;
+  page: number;
+  pageSize: number;
+  products: ISimpleProduct[];
   productsOnCart?: IItems;
+  removeItemToCart?: IRemoveItemToCartCallback;
+  subtractItemToCart?: ISubtractItemToCartCallback;
+  total: number;
 }

@@ -11,7 +11,7 @@ import {
 } from "../../../gqlTypes/globalTypes";
 import { FormError } from "../types";
 import { Breadcrumb } from "@temp/components";
-import { ISimpleProduct } from "@temp/@next/types/IProduct";
+import { ISimpleProduct } from "@sdk/types/IProduct";
 
 export const slugify = (text: string | number): string =>
   text
@@ -46,14 +46,10 @@ export const priceToString = (
   locale?: string
 ): string => {
   const { amount } = price;
-  if (locale) {
-    return amount.toLocaleString(locale, {
+  return locale ? amount.toLocaleString(locale, {
       currency: price.currency,
       style: "currency",
-    });
-  } else {
-    return `${price.currency} ${amount.toFixed(2)}`;
-  }
+    }) : `${price.currency} ${amount.toFixed(2)}`;
 };
 
 export const generateProductUrl = (id: string, name: string) =>

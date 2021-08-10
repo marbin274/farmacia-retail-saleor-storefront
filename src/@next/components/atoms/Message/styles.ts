@@ -1,4 +1,4 @@
-import { DefaultTheme, styled } from "@styles";
+import { DefaultTheme, mediaUp, styled } from "@styles";
 
 import { IProps } from "./types";
 
@@ -10,15 +10,20 @@ const borderColors = (theme: DefaultTheme) => ({
 });
 
 export const Wrapper = styled.div<{ status: IProps["status"] }>`
-  width: ${props => props.theme.message.width};
   padding: ${props => props.theme.message.padding};
   background-color: ${props => props.theme.message.backgroundColor};
   box-shadow: 0px 6px 15px 3px rgba(0, 0, 0, 0.25);
   position: fixed;
   bottom: ${props => props.theme.spacing.spacer};
   right: ${props => props.theme.spacing.spacer};
+  left: ${props => props.theme.spacing.spacer};
   border-left: 0.4rem solid;
   border-color: ${props => borderColors(props.theme)[props.status!]};
+
+  ${mediaUp.smallScreen`
+    width: ${props => props.theme.message.width};
+    left: auto;
+  `}
 `;
 
 export const TopWrapper = styled.div`
@@ -45,10 +50,16 @@ export const CloseButton = styled.button`
       fill: ${props => props.theme.colors.primary};
     }
   }
+
+  &:focus {
+    outline: none;
+  }
 `;
 
-export const Content = styled.div`
-  margin: ${props => props.theme.message.contentMargin};
+export const Content = styled.div<{ hasTitle: boolean }>`
+  display: flex;
+  justify-content: center;
+  margin: ${props => (props.hasTitle ? props.theme.message.contentMargin : 0)};
 `;
 
 export const ActionButton = styled.button`

@@ -1,12 +1,12 @@
 import {
   getName,
-  removeCountryCodeInPhoneNumber
+  removeCountryCodeInPhoneNumber,
 } from "@temp/@next/utils/addresForm";
 import { IPrivacyPolicy } from "@temp/@sdk/api/Checkout/types";
 import {
   ADDRESS_FORM_SHOW_GENERAL_ERRORS,
   ADDRESS_FORM_SORT,
-  COUNTRY_DEFAULT
+  COUNTRY_DEFAULT,
 } from "@temp/core/config";
 import { IAddressWithEmail, IFormErrorSort } from "@types";
 import { Form, Formik, FormikHelpers } from "formik";
@@ -16,10 +16,11 @@ import React from "react";
 import { alertService } from "../../atoms/Alert";
 import {
   addressFormModalSchema,
-  addressFormSchema
+  addressFormSchema,
 } from "./adddressFormSchema";
 import { AddressFormContent } from "./AddressFormContent";
 import { IProps } from "./types";
+
 const ADDRESS_FIELDS = [
   "city",
   // "companyName", // currently unused
@@ -194,6 +195,16 @@ export const AddressForm: React.FC<IProps> = ({
 
           if (errorsSort.length > 0 && submitCount > submitCountRef.current) {
             submitCountRef.current = submitCount;
+
+            if (errorsSort.length < ADDRESS_FORM_SHOW_GENERAL_ERRORS) {
+              if (values.streetAddress1 && !values.latitude) {
+                errorsSort.push({
+                  message:
+                    "Selecciona una dirección dentro de las opciones desplegadas.",
+                });
+              }
+            }
+
             alertService.sendAlert({
               acceptDialog: () => {
                 scrollToErrors(errorsSort);

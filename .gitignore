@@ -1,4 +1,6 @@
 .*
+!.github/workflows/sonarqube-ci.yml
+!.github/workflows/lighthouse-ci.yml
 !.dockerignore
 !.storybook
 !.circle
@@ -21,3 +23,5 @@ cypress/screenshots
 
 coverage*
 firebase.json
+
+performance

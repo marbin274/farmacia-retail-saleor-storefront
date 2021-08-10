@@ -47,7 +47,7 @@ import { CheckoutDetails } from "@sdk/queries/gqlTypes/CheckoutDetails";
 import {
   CheckoutProductVariants,
   CheckoutProductVariantsVariables,
-  CheckoutProductVariants_productVariants
+  CheckoutProductVariants_productVariants,
 } from "@sdk/queries/gqlTypes/CheckoutProductVariants";
 import {
   GetShopPaymentGateways,
@@ -733,7 +733,6 @@ export class NetworkManager implements INetworkManager {
           shippingMethodId: shippingMethodUpdate.shippingMethodId,
         },
       });
-
       if (errors?.length) {
         return {
           error: errors,
@@ -836,7 +835,8 @@ export class NetworkManager implements INetworkManager {
     paymentGateway: string,
     paymentToken: string,
     billingAddress: ICheckoutAddress,
-    districtId?: string
+    districtId?: string,
+    withToken?: boolean
   ) => {
     try {
       const variables = {
@@ -862,6 +862,7 @@ export class NetworkManager implements INetworkManager {
           },
           gateway: paymentGateway,
           token: paymentToken,
+          withToken,
         },
         districtId,
       };
@@ -951,6 +952,7 @@ export class NetworkManager implements INetworkManager {
       token,
       email,
       shippingAddress,
+      scheduleDate,
       billingAddress,
       discount,
       discountName,
@@ -975,6 +977,7 @@ export class NetworkManager implements INetworkManager {
       dataTreatmentPolicy,
       documentNumber,
       email,
+      scheduleDate,
       id,
       isPrime,
       lines: lines

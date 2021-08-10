@@ -3,4 +3,5 @@ export interface IProps {
   header?: React.ReactNode;
   footer?: React.ReactNode;
   tileType?: "hover" | "addNew";
+  className?: string;
 }

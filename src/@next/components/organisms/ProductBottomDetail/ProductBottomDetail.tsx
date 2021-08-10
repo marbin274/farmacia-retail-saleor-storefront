@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { ISimpleProduct } from "@temp/@next/types/IProduct";
+import { ISimpleProduct } from "@sdk/types/IProduct";
 import ItemsHandler from "@temp/@next/components/organisms/ItemsHandler/ItemsHandler";
 import * as S from "./styles";
 import {
@@ -8,8 +8,7 @@ import {
   ISubtractItemToCartCallback,
 } from "@components/molecules/ProductTileAUNA/types";
 import { Thumbnail } from "@components/molecules";
-import { useMediaQuery } from "react-responsive";
-import { smallScreen } from "@temp/@next/globalStyles/constants";
+import { useMediaScreen } from "@temp/@next/globalStyles";
 
 type IProps = {
   product: ISimpleProduct;
@@ -30,9 +29,7 @@ export const ProductBottomDetail: FC<IProps> = ({
   subtractItemToCart,
   hideProductDetails,
 }) => {
-  const isMaxSmallScreen = useMediaQuery({
-    query: `(max-width: ${smallScreen}px)`,
-  });
+  const { isMobileScreen } = useMediaScreen();
 
   return (
     <S.Container>
@@ -54,7 +51,7 @@ export const ProductBottomDetail: FC<IProps> = ({
                 <S.ProductName>{product.name}</S.ProductName>
                 <div className="inline-element">
                   <S.ProductPrice>{renderPrice()}</S.ProductPrice>
-                  {isMaxSmallScreen && (
+                  {isMobileScreen && (
                     <ItemsHandler
                       canAddToCart={canAddToCart}
                       product={product}
@@ -65,7 +62,7 @@ export const ProductBottomDetail: FC<IProps> = ({
                   )}
                 </div>
               </S.ProductInfo>
-              {!isMaxSmallScreen && (
+              {!isMobileScreen && (
                 <ItemsHandler
                   canAddToCart={canAddToCart}
                   product={product}

@@ -1,4 +1,4 @@
-import { primeApiUrl, primeApiKey } from "@temp/constants";
+import { primeApiUrl, primeApiKey } from "@temp/core/constants";
 import axios from "axios";
 
 export const checkPrimeUser = async (email: string): Promise<boolean> => {

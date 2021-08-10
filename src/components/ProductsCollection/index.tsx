@@ -1,4 +1,4 @@
-import { ISimpleProduct } from "@app/types/IProduct";
+import { ISimpleProduct } from "@sdk/types/IProduct";
 import { Carousel } from "@temp/@next/components/containers";
 import { ProductTileAUNA } from "@temp/@next/components/molecules";
 import {
@@ -6,7 +6,7 @@ import {
   IRemoveItemToCartCallback,
   ISubtractItemToCartCallback,
 } from "@temp/@next/components/molecules/ProductTileAUNA/types";
-import { getProductsWithQuantity } from "@temp/@next/utils/products";
+import { getProductsWithQuantity } from "@sdk/utils/products";
 import { useCart } from "@temp/@sdk/react";
 import { generateProductUrl } from "@temp/core/utils";
 import React, { FC, useCallback } from "react";

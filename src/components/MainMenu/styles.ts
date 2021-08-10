@@ -9,8 +9,11 @@ export const Wrapper = styled.nav<{ isProductDetail: boolean }>`
   width: 100%;
   padding: ${({ isProductDetail }) =>
     isProductDetail ? "0.5rem 1rem" : "1rem"};
+  z-index: 3;
+
   ${mediaUp.largeScreen`
     padding: 1rem 0rem;
+    z-index: 2;
   `};
 
   > .container {
@@ -62,37 +65,6 @@ export const Menu = styled.div`
   `};
 `;
 
-export const Search = styled.div`
-  display: block;
-  position: relative;
-  ${mediaUp.largeScreen`
-        display: none;
-    `};
-  .search {
-    min-height: initial;
-    &__input {
-      margin-top: 0px;
-      padding: 0px;
-      touch-action: none;
-      -ms-touch-action: none;
-      .input {
-        padding: 0rem 1rem 1rem 1rem;
-        &__field {
-          color: ${({ theme }) => theme.colors.white};
-          &::placeholder {
-            color: ${({ theme }) => theme.colors.white};
-          }
-        }
-      }
-    }
-    &__products {
-      position: absolute;
-      left: 0;
-      z-index: 3;
-    }
-  }
-`;
-
 export const WrapperAddressGeo = styled.div<{ isProductDetail: boolean }>`
   position: relative;
   width: 100%;
@@ -103,15 +75,24 @@ export const WrapperAddressGeo = styled.div<{ isProductDetail: boolean }>`
     span {
       color: ${farmatheme.theme.colors.neutral.darkest};
     }
+    svg{
+      color: ${farmatheme.theme.colors.highlight.medium};
 
+      ${mediaUp.largeScreen`
+        color: ${farmatheme.theme.colors.neutral.lightest};
+      `}
+    
+    }
     .icon_button{
       height: 1.5rem;
     }
 
     button {
-      border-color: ${farmatheme.theme.colors.highlight.medium};
+      border-width: 0.125rem;
+      border-color: ${farmatheme.theme.colors.primary.medium};
       span {
-        color: ${farmatheme.theme.colors.highlight.medium};
+        color: ${farmatheme.theme.colors.primary.dark};
+        font-weight: 600;
       }
     }
   `

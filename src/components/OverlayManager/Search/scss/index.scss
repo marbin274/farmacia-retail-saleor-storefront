@@ -97,7 +97,7 @@ $custom-breakpoint: 624px;
   }
 
   &__products {
-    background:  $white;
+    background: $white;
     padding: 0;
     position: fixed;
     right: 0;
@@ -115,14 +115,17 @@ $custom-breakpoint: 624px;
 
     &--in-front {
       @media (max-width: $medium-screen) {
-        z-index: 4;
         top: 7.7rem;
       }
     }
 
     &--expanded {
       right: 0;
-      z-index: 4;
+      z-index: 5;
+
+      @media (min-width: $medium-screen) {
+        z-index: 3;
+      }
     }
 
     &--background-opacity {
@@ -149,7 +152,7 @@ $custom-breakpoint: 624px;
     &__header {
       @extend .size;
       color: $auna-black;
-      font-weight: 300;
+      font-weight: 400;
       text-align: left;
       max-width: 35.25rem;
       padding: 1rem;
@@ -218,7 +221,6 @@ $custom-breakpoint: 624px;
             flex-direction: row;
             justify-content: space-between;
             position: relative;
-            z-index: 10;
           }
           .button {
             > button {
@@ -345,15 +347,13 @@ $custom-breakpoint: 624px;
           margin-bottom: auto;
           display: inline-block;
           vertical-align: top;
-  
+
           @media (max-width: $medium-screen) {
             margin-right: 0;
             margin-left: 0;
           }
         }
       }
-
-      
 
       ul {
         max-height: calc(100vh - 9rem);

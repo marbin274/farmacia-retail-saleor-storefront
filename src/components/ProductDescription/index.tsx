@@ -10,13 +10,15 @@ import {
   ProductDetails_product_variants,
   ProductDetails_product_variants_pricing,
 } from "@sdk/queries/gqlTypes/ProductDetails";
-import { ISimpleProduct } from "@temp/@next/types/IProduct";
+import { ISimpleProduct } from "@sdk/types/IProduct";
 import {
   ICheckoutModelLine,
   ICheckoutModelLineVariantLocalStorage,
 } from "@sdk/repository";
 import ItemsHandler from "@temp/@next/components/organisms/ItemsHandler/ItemsHandler";
-import { getProductPricingClass } from "@temp/@next/utils/products";
+import {
+  getProductPricingClass,  
+} from "@temp/@next/utils/products"
 import { IProductVariantsAttributesSelectedValues } from "@types";
 import isEqual from "lodash/isEqual";
 import * as React from "react";
@@ -65,16 +67,13 @@ export const ProductDescription: React.FC<ProductDescriptionProps> = props => {
   const getProductPrice = () => {
     if (variantPricing) {
       const { canAddToCart, isOnSale } = props;
-      if (!isOnSale) {
-        return (
+      return !isOnSale ? (
           <div className="price">
             <TaxedMoney taxedMoney={variantPricing.price} />
           </div>
-        );
-      } else {
-        return (
+        ) : (
           <>
-            <div className={getProductPricingClass(canAddToCart, isOnSale)}>
+            <div className={`fa-pr-2 ${getProductPricingClass(canAddToCart, isOnSale)}`}>
               <TaxedMoney taxedMoney={variantPricing.price} />
             </div>
             <div className="price undiscounted_price">
@@ -82,17 +81,12 @@ export const ProductDescription: React.FC<ProductDescriptionProps> = props => {
             </div>
           </>
         );
-      }
     }
-    if (isEqual(min, max)) {
-      return <TaxedMoney taxedMoney={min} />;
-    } else {
-      return (
+    return isEqual(min, max) ? <TaxedMoney taxedMoney={min} /> : (
         <>
           <TaxedMoney taxedMoney={min} /> - <TaxedMoney taxedMoney={max} />
         </>
       );
-    }
   };
 
   const onVariantPickerChange = (

@@ -6,11 +6,13 @@ import { BrowserRouter } from "react-router-dom";
 import { ProductListAUNA } from ".";
 import { products, productsOnCart } from "./fixtures";
 
-jest.mock("@temp/@next/optimizely/hooks", () => ({
+jest.mock("@temp/libraries/optimizely/hooks", () => ({
   useAddToCartButtonVariable: () => "Agregar",
+  useShowPersonalizedCollection: () => ({enable:false, variationKey: ""}),
+
 }));
 
-jest.mock("@temp/@next/optimizely/tracks", () => ({
+jest.mock("@temp/libraries/optimizely/tracks", () => ({
   trackAddToCart: jest.fn(),
 }));
 
@@ -24,6 +26,9 @@ describe("<ProductList />", () => {
           canLoadMore={true}
           loading={false}
           onLoadMore={jest.fn()}
+          page={1}
+          pageSize={12}
+          total={1}
         />
       </BrowserRouter>
     );
@@ -40,6 +45,9 @@ describe("<ProductList />", () => {
           canLoadMore={true}
           loading={true}
           onLoadMore={jest.fn()}
+          page={1}
+          pageSize={12}
+          total={1}
         />
       </BrowserRouter>
     );

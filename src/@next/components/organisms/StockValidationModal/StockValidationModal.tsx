@@ -23,7 +23,7 @@ import {
   StockMessage,
   Title,
 } from "./styles";
-import { checkProductIsOnSale } from "@temp/@next/utils/products";
+import { checkProductIsOnSale } from "@sdk/utils/products";
 
 type IStockValidationModalProps = {
   show: boolean;
@@ -141,12 +141,8 @@ export const StockValidationModal: FC<IStockValidationModalProps> = ({
       {show && (
         <Container>
           <Header>
-            <Title>
-              <div>
-                {allOutOfStock
-                  ? "Actualmente, tenemos algunos productos agotados en"
-                  : "Tenemos pocos productos en"}
-              </div>
+            <Title>        
+                <p>Actualmente, tenemos algunos productos agotados en</p>
               <CurrentDistrict>
                 <GpsIcon size={21} /> {district}
               </CurrentDistrict>
@@ -163,7 +159,7 @@ export const StockValidationModal: FC<IStockValidationModalProps> = ({
             ) : (
               <>
                 <p>
-                  ¿Deseas finalizar tu compra con los productos disponibles?
+                  ¿Deseas continuar con los productos disponibles?
                 </p>
                 <Button onClick={onClickContinue} size="large">
                   Sí, continuar

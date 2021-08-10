@@ -56,13 +56,13 @@ export const ProductContent = styled.div`
 `;
 
 export const ProductImg = styled.div`
-  width: 4rem;
   height: 4rem;
-  margin-right: 0.5rem;
+  margin-right: 0.25rem;
+  width: 4rem;
 
   img {
-    width: 4rem;
     height: 4rem;
+    width: 4rem;
   }
 
   ${mediaUp.mediumScreen`
@@ -78,9 +78,9 @@ export const ProductInfo = styled.div`
     width: calc(100% - 5.5rem);
 
     .inline-element {
+      align-items:center;
       display:flex;
       justify-content: space-between;
-      align-items:center;
       margin-top:0.938rem;
 
       .itemHandler{
@@ -143,22 +143,20 @@ export const ProductPrice = styled.div`
       }
     `}
   }
-
   .price.outStock_price {
     ${media.smallScreen`
       > span {
-        position: relative;
         font-size: 1rem;
         line-height: 120%;
-        margin-right: 1rem;
+        position: relative;
         &::before {
-          position: absolute;
           content: "Precio" !important;
           color: #aca8bd;
           font-size: 0.75rem;
-          left: 0;
-          top: -1.3rem;
           font-weight: normal;
+          left: 0;
+          position: absolute;
+          top: -1.3rem;
         }
       }
     `}

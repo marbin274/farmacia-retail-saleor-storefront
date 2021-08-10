@@ -2,14 +2,18 @@ import { useCart } from "@temp/@sdk/react";
 import {
   ICheckoutModelLine,
   ICheckoutModelLineVariant,
+  LocalRepository,
 } from "@temp/@sdk/repository";
 import React from "react";
 
 export const useUpdateCartLines = () => {
   const [loading, setLoading] = React.useState<boolean>(false);
-  const { items, getCartLines, updateCartLines } = useCart();
-
+  const { getCartLines, updateCartLines } = useCart();
+  
   const handleUpdate = async () => {
+    const localRepository = new LocalRepository();
+    const items = localRepository.getCheckout()?.lines;
+    
     if (items) {
       setLoading(true);
       const { data, error } = await getCartLines();

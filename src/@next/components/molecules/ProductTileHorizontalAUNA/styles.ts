@@ -10,7 +10,7 @@ export const ProductCard = styled.div<{
   width: 100%;
   background-color: ${white};
   padding: 1.25rem;
-  margin-bottom:1rem;
+  margin-bottom: 1rem;
   border-radius: 1.5rem;
 
   ${media.largeScreen`
@@ -23,10 +23,6 @@ export const ProductCard = styled.div<{
     }
   `}
 
-  .itemHandler,
-  .button {
-    z-index: 100;
-  }
   &:last-child {
     margin-bottom: 0;
   }
@@ -55,7 +51,7 @@ export const WrapperImage = styled.div`
       align-items: center;
       height: 7.5rem;
 
-    ${media.largeScreen`
+      ${media.largeScreen`
        height: auto;
   `}
     }
@@ -140,12 +136,11 @@ export const ProductPrice = styled.div`
       text-decoration: line-through;
     }
   }
-  
+
   ${media.largeScreen`
     display: flex;
     justify-content: space-between;
   `}
-  
 `;
 
 export const ProductTitlePrice = styled.p`

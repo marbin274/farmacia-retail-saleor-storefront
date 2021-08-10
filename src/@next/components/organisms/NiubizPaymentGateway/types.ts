@@ -1,4 +1,5 @@
 import { ITotalPrice } from "@temp/@sdk/api/Cart/types";
+import { ICardTokenizationResult } from "@temp/core/payments/niubiz";
 import { ICardData, IFormError, IPaymentGatewayConfig } from "@types";
 import { IUserDataForNiubiz } from "../CheckoutPayment/types";
 
@@ -20,20 +21,26 @@ export interface IProps {
    */
   errors?: IFormError[];
   /**
-   * Postal code used by Braintree.
+   * Postal code .
    */
   postalCode?: string;
   /**
    * Method called after the form is submitted. Passed token attribute will be used to create payment.
    */
-  processPayment: (token: string, cardData?: ICardData) => void;
+  processPayment?: (token: string, cardData?: ICardData) => void;
   /**
    * Method called when gateway error occured.
    */
   onError: (errors: IFormError[]) => void;
   totalPrice?: ITotalPrice;
   userDataForNiubiz?: IUserDataForNiubiz;
-  generatePurchaseNumber: () => number;
+  generatePurchaseNumber: (withAntiFraud: boolean) => number;
+  saveCardSelected?: boolean;
+  onClickSaveCard?: (value: boolean) => void;
+  showSaveCardCheck?: boolean;
+  onCardTokenization?: (data: ICardTokenizationResult) => void;
+  onForceReRender?: () => void;
+  fullWidthInputs?: boolean;
 }
 
 export interface IFormPayment {

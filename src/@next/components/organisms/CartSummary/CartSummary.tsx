@@ -4,8 +4,10 @@ import { smallScreen } from "@temp/@next/globalStyles/constants";
 import {
   checkProductCanAddToCart,
   checkProductIsOnSale,
+} from "@sdk/utils/products";
+import {
   convertProductOnCartInProduct,
-} from "@temp/@next/utils/products";
+} from "@temp/@next/utils/products"
 import { Button, CartIcon, XIcon } from "@farmacia-retail/farmauna-components";
 import React, { useState } from "react";
 import Media from "react-media";
@@ -16,13 +18,11 @@ const CostLine = ({
   name,
   cost,
   last = false,
-  negative = false,
 }: ICostLine) => (
   <S.CostLine last={last}>
     <S.CostLineLabel>{name}</S.CostLineLabel>
     <span data-cy={`cartSummaryCost${name.replace(/\s/g, "")}`}>
-      {negative && "- "}
-      <TaxedMoney taxedMoney={cost} />
+      <TaxedMoney negative taxedMoney={cost} />
     </span>
   </S.CostLine>
 );

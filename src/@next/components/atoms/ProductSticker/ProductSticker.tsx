@@ -1,5 +1,6 @@
 import { PRODUCT_STICKERS } from "@temp/core/config";
 import React from "react";
+import farmatheme from "@farmatheme";
 import { Chip } from "@farmacia-retail/farmauna-components";
 
 interface IProductLabelProps {
@@ -17,8 +18,8 @@ export const ProductSticker = ({
   }
   if (isOutStock) {
     chipComponent = (
-      <Chip label={PRODUCT_STICKERS.Agotado.label} disabled={true} />
+      <Chip label={PRODUCT_STICKERS.Agotado.label}  bgColor={farmatheme.theme.colors.neutral.medium} disabled={true} />
     );
   }
-  return <div className="fa-flex fa-justify-start">{chipComponent}</div>;
+  return chipComponent;
 };

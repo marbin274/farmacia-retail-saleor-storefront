@@ -14,7 +14,9 @@ storiesOf("@components/organisms/ProductListAUNA", module)
         productsOnCart={productsOnCart}
         canLoadMore={true}
         loading={false}
-        onLoadMore={() => null}
+        page={1}
+        pageSize={12}
+        total={1}
       />
     </BrowserRouter>
   ));

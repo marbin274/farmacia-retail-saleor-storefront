@@ -564,10 +564,11 @@ export interface Collection {
 export interface CollectionVariables {
   id: string;
   attributes?: (AttributeInput | null)[] | null;
-  pageSize?: number | null;
-  page?: number | null;
-  sortBy?: ProductOrder | null;
-  priceLte?: number | null;
-  priceGte?: number | null;
+  categories?: (string | null)[] | null;
   districtId?: string | null;
+  page?: number | null;
+  pageSize?: number | null;
+  priceGte?: number | null;
+  priceLte?: number | null;
+  sortBy?: ProductOrder | null;
 }

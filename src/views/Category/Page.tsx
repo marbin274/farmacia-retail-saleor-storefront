@@ -1,4 +1,4 @@
-import { Breadcrumbs, Pagination } from "@farmacia-retail/farmauna-components";
+import { Breadcrumbs } from "@farmacia-retail/farmauna-components";
 import { IPaginationProps } from "@temp/@next/components/molecules/Pagination/types";
 import {
   IAddToCartCallback,
@@ -6,7 +6,8 @@ import {
   ISubtractItemToCartCallback,
 } from "@temp/@next/components/molecules/ProductTileAUNA/types";
 import { CategoryNavigation } from "@temp/@next/components/organisms/CategoryNavigation/CategoryNavigation";
-import { aunaGrey100, largeScreen } from "@temp/@next/globalStyles/constants";
+import { largeScreen } from "@temp/@next/globalStyles/constants";
+import { useScrollTo } from "@temp/@next/hooks";
 import { IItems } from "@temp/@sdk/api/Cart/types";
 import { baseUrl } from "@temp/app/routes";
 import { structuredData } from "@temp/core/SEO/Category/structuredData";
@@ -14,21 +15,21 @@ import { convertToSimpleProduct, maybe } from "@temp/core/utils";
 import { IFilterAttributes, IFilters } from "@types";
 import * as React from "react";
 import { ProductListHeader } from "../../@next/components/molecules";
-import { ProductListCategoryAuna } from "../../@next/components/organisms";
+import { ProductListAUNA } from "../../@next/components/organisms";
 import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
 import { EmptyProduct, extractBreadcrumbs } from "../../components";
 import {
   Category_category,
   Category_paginatedProducts,
 } from "./gqlTypes/Category";
-import { CategoryWrapper } from "./styles";
+import { CategoryProductListHeader, CategoryWrapper } from "./styles";
 
 interface SortItem {
   label: string;
   value?: string;
 }
 
-interface SortOptions extends Array<SortItem> {}
+type SortOptions = Array<SortItem>
 
 interface PageProps extends IPaginationProps {
   addToCart: IAddToCartCallback;
@@ -76,7 +77,7 @@ const Page: React.FC<PageProps> = ({
   );
   const hasProducts = canDisplayProducts && !!products.totalCount;
   const [showFilters, setShowFilters] = React.useState(false);
-  const categoryContainerRef = React.useRef<HTMLDivElement>(null);
+  const { goTop } = useScrollTo();
 
   const getAttribute = (attributeSlug: string, valueSlug: string) => {
     return {
@@ -99,8 +100,12 @@ const Page: React.FC<PageProps> = ({
       []
     );
 
+  React.useEffect(() => goTop(),
+    [products]
+  );
+
   return (
-    <CategoryWrapper ref={categoryContainerRef}>
+    <CategoryWrapper>
       <div className="collection-container-breadcrumbs">
         <Breadcrumbs
           breadcrumbs={extractBreadcrumbs(category)}
@@ -108,39 +113,13 @@ const Page: React.FC<PageProps> = ({
           baseUrl={baseUrl}
         />
       </div>
-      {isLargeScreen && (
-        <div className="collection-container">
-          <ProductListHeader
-            activeSortOption={activeSortOption}
-            openFiltersMenu={() => setShowFilters(true)}
-            numberOfProducts={products ? products.totalCount : 0}
-            activeFilters={activeFilters}
-            activeFiltersAttributes={activeFiltersAttributes}
-            clearFilters={clearFilters}
-            sortOptions={sortOptions}
-            onChange={onOrder}
-            onCloseFilterAttribute={onAttributeFiltersChange}
-          />
-          <div className="fa-my-2">
-            <span
-              className="fa-text-sm fa-font-normal fa-tracking-tight fa-mr-2"
-              style={{ color: aunaGrey100 }}
-            >
-              Productos encontrados
-            </span>
-            <span className="fa-text-sm fa-font-medium fa-tracking-tight fa-text-neutral-darkest">
-              {products ? products.totalCount : 0}
-            </span>
-          </div>
-        </div>
-      )}
       <div className="collection-container collection-body">
         <script className="structured-data-list" type="application/ld+json">
           {structuredData(category)}
         </script>
         <CategoryNavigation category={category} />
         <section className="collection-products">
-          {!isLargeScreen && (
+          <CategoryProductListHeader>
             <ProductListHeader
               activeSortOption={activeSortOption}
               openFiltersMenu={() => setShowFilters(true)}
@@ -149,10 +128,10 @@ const Page: React.FC<PageProps> = ({
               activeFiltersAttributes={activeFiltersAttributes}
               clearFilters={clearFilters}
               sortOptions={sortOptions}
-              onChange={onOrder}
+              onChangeSortOption={onOrder}
               onCloseFilterAttribute={onAttributeFiltersChange}
             />
-          )}
+          </CategoryProductListHeader>
           <FilterSidebar
             show={showFilters}
             hide={() => setShowFilters(false)}
@@ -161,24 +140,21 @@ const Page: React.FC<PageProps> = ({
             filters={filters}
           />
           {canDisplayProducts && (
-            <>
-              <ProductListCategoryAuna
-                products={products.edges.map(edge =>
-                  convertToSimpleProduct(edge.node)
-                )}
-                productsOnCart={items}
-                loading={displayLoader}
-                addToCart={addToCart}
-                removeItemToCart={removeItemToCart}
-                subtractItemToCart={subtractItemToCart}
-              />
-              <Pagination
-                page={page}
-                pageSize={pageSize}
-                total={totalProducts}
-                onPageChange={onPageChange}
-              />
-            </>
+            <ProductListAUNA
+              addToCart={addToCart}
+              columns={3}
+              loading={displayLoader}
+              page={page}
+              pageSize={pageSize}
+              products={products.edges.map(edge =>
+                convertToSimpleProduct(edge.node)
+              )}
+              productsOnCart={items}
+              onPageChange={onPageChange}
+              removeItemToCart={removeItemToCart}
+              subtractItemToCart={subtractItemToCart}
+              total={totalProducts}
+            />
           )}
           {!hasProducts && <EmptyProduct title="No hay productos" />}
         </section>

@@ -147,8 +147,7 @@ export const CartPage: React.FC<IProps> = ({}: IProps) => {
     net: discount,
   };
 
-  if (loaded && items?.length) {
-    return (
+  return loaded && items?.length ? (
       <Cart
         title={title}
         button={getCheckoutButton(history, user)}
@@ -161,8 +160,5 @@ export const CartPage: React.FC<IProps> = ({}: IProps) => {
         )}
         cart={items && generateCart(items, removeItem, updateItem)}
       />
-    );
-  } else {
-    return <CartEmpty button={getShoppingButton(history)} />;
-  }
+    ) : <CartEmpty button={getShoppingButton(history)} />;
 };

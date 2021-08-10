@@ -13,6 +13,6 @@ export interface IProps {
 export interface IHomePageCollecction {
     id: string;
     name: string;
-    isPersonalized?: boolean;
+    fromHome?: boolean;
     products?: FeaturedProducts_shop_homepageCollections_edges_node_products_edges_node[] | FeaturedProducts_personalized[]
 }

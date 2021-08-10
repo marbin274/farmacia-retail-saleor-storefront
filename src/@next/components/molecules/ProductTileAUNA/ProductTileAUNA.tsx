@@ -2,14 +2,12 @@ import { ProductSticker } from "@components/atoms";
 import { TaxedMoney } from "@components/containers";
 import { Thumbnail } from "@components/molecules";
 import {
-  trackAddProductToCartFromPersonalized,
-  trackSelectProductFromPersonalized,
-} from "@temp/@next/optimizely/tracks";
-import {
   checkProductCanAddToCart,
-  getProductPricingClass,
   productStickerRules,
-} from "@temp/@next/utils/products";
+} from "@sdk/utils/products";
+import {
+  getProductPricingClass,  
+} from "@temp/@next/utils/products"
 import { launchDetailProductEvent } from "@temp/@sdk/gaConfig";
 import { ICheckoutModelLineVariantLocalStorage } from "@temp/@sdk/repository";
 import React, { useEffect, useState } from "react";
@@ -20,12 +18,11 @@ import { IProps } from "./types";
 
 export const ProductTileAUNA: React.FC<IProps> = ({
   addToCart,
-  removeItemToCart,
-  subtractItemToCart,
-  isPersonalized,
   productUrl: productLink,
   product,
   productsOnCart,
+  removeItemToCart,
+  subtractItemToCart,
 }: IProps) => {
   const [thumbnails, setThumbnails] = useState<{
     thumbnail: { url: string | undefined };
@@ -42,10 +39,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
   const handleAddToCart = (
     productId: ICheckoutModelLineVariantLocalStorage,
     quantity: number
-  ) => {
-    if (!!isPersonalized) {
-      trackAddProductToCartFromPersonalized();
-    }
+  ) => {       
     addToCart(productId, quantity);
   };
 
@@ -67,7 +61,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
           to={productLink}
           key={product.id}
           onClick={e => {
-            trackSelectProductFromPersonalized();
+            
             if (refActions?.current?.contains(e.target)) {
               e.preventDefault();
             }
@@ -90,10 +84,12 @@ export const ProductTileAUNA: React.FC<IProps> = ({
               </S.Image>
             </div>
             <div className="home-page__product-sticker fa-mt-2">
-              <ProductSticker isOnSale={isOnSale} isOutStock={isOutStock} />
+              <div className="fa-flex fa-justify-start">
+                <ProductSticker isOnSale={isOnSale} isOutStock={isOutStock} />
+              </div>
             </div>
           </div>
-          <div className="fa-pl-4">
+          <div>
             <div className="home-page__product-price fa-hidden">
               <div className={getProductPricingClass(canAddToCart, isOnSale)}>
                 <S.Price>
@@ -141,14 +137,13 @@ export const ProductTileAUNA: React.FC<IProps> = ({
       <div className="fa-hidden lg:fa-block">
         <Link
           key={product.id}
-          onClick={() => {
-            trackSelectProductFromPersonalized();
-          }}
           to={productLink}
         >
           <S.WrapperStockout>
             <div className="fa-absolute">
-              <ProductSticker isOnSale={isOnSale} isOutStock={isOutStock} />
+              <div className="fa-flex fa-justify-start">
+                <ProductSticker isOnSale={isOnSale} isOutStock={isOutStock} />
+              </div>
             </div>
             <div
               className="img"

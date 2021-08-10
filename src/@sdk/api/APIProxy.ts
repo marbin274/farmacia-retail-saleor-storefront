@@ -10,6 +10,8 @@ import { fireSignOut, getAuthToken, setAuthToken } from "../auth";
 import { removeGaUserId, setGaUserId } from "../gaConfig";
 import { MUTATIONS } from "../mutations";
 import { PasswordChange } from "../mutations/gqlTypes/PasswordChange";
+import { SaveFavoriteCategories } from "../mutations/gqlTypes/SaveFavoriteCategories";
+import { AccountConfirm } from "../mutations/gqlTypes/AccountConfirm";
 import { SetPassword } from "../mutations/gqlTypes/SetPassword";
 import { TokenAuth_tokenCreate } from "../mutations/gqlTypes/TokenAuth";
 import { QUERIES } from "../queries";
@@ -28,9 +30,14 @@ import {
   isDataEmpty,
   mergeEdges,
 } from "../utils";
-import { SetPasswordChange, SetPasswordResult, SignIn } from "./types";
+import { SaveFavoriteCategoriesResult, SetAccountConfirmResult, SetPasswordChange, SetPasswordResult, SignIn } from "./types";
 
 export class APIProxy {
+  getArticle = this.watchQuery(
+    QUERIES.Article,
+    (data) => data
+  );
+
   getAttributes = this.watchQuery(
     QUERIES.Attributes,
     (data) => data.attributes
@@ -51,6 +58,11 @@ export class APIProxy {
     (data) => data.category
   );
 
+  getCategoryList = this.watchQuery(
+    QUERIES.CategoryList,
+    (data) => data.categories
+  );
+
   getOrdersByUser = this.watchQuery(QUERIES.OrdersByUser, (data) =>
     data.me ? data.me.orders : null
   );
@@ -60,12 +72,22 @@ export class APIProxy {
     (data) => data.orderByToken
   );
 
+  getLanding = this.watchQuery(
+    QUERIES.Landing,
+    (data) => data
+  );
+
   getVariantsProducts = this.watchQuery(
     QUERIES.VariantsProducts,
     (data) => data.productVariants
   );
 
   getShopDetails = this.watchQuery(QUERIES.GetShopDetails, (data) => data);
+
+  searchProducts = this.watchQuery(
+    QUERIES.SearchProducts,
+    (data) => data
+  );
 
   setUserDefaultAddress = this.fireQuery(
     MUTATIONS.AddressTypeUpdate,
@@ -90,6 +112,21 @@ export class APIProxy {
   setAccountUpdate = this.fireQuery(
     MUTATIONS.AccountUpdate,
     (data) => data!.accountUpdate
+  );
+
+  setDefaultUserCardToken = this.fireQuery(
+    MUTATIONS.SetDefaultUserCardToken,
+    (data) => data!.accountSetDefaultCardToken
+  );
+
+  setCreateUserCardToken = this.fireQuery(
+    MUTATIONS.CreateUserCardToken,
+    (data) => data!.accountCardTokenCreate
+  );
+
+  setDeleteUserCardToken = this.fireQuery(
+    MUTATIONS.DeleteUserCardToken,
+    (data) => data!.accountCardTokenDelete
   );
 
   client: ApolloClient<any>;
@@ -162,7 +199,7 @@ export class APIProxy {
   };
 
   signOut = () =>
-    new Promise(async (resolve, reject) => {
+    new Promise<void>(async (resolve, reject) => {
       try {
         fireSignOut(this.client);
 
@@ -181,6 +218,52 @@ export class APIProxy {
     } | null = null;
 
     result = await this.fireQuery(MUTATIONS.SetPassword, (data) => data!)(
+      variables,
+      {
+        ...options,
+        fetchPolicy: "no-cache",
+      }
+    );
+    const { data } = result;
+
+    return {
+      data,
+      error: null,
+    };
+  };
+
+  saveFavoriteCategories = async (
+    variables: InferOptions<MUTATIONS["SaveFavoriteCategories"]>["variables"],
+    options?: Omit<InferOptions<MUTATIONS["SaveFavoriteCategories"]>, "variables">
+  ): Promise<SaveFavoriteCategoriesResult> => {
+    let result: {
+      data: SaveFavoriteCategories | null;
+    } | null = null;
+
+    result = await this.fireQuery(MUTATIONS.SaveFavoriteCategories, (data) => data!)(
+      variables,
+      {
+        ...options,
+        fetchPolicy: "no-cache",
+      }
+    );
+    const { data } = result;
+
+    return {
+      data,
+      error: null,
+    };
+  };
+
+  setAccountConfirm = async (
+    variables: InferOptions<MUTATIONS["SetAccountConfirm"]>["variables"],
+    options?: Omit<InferOptions<MUTATIONS["SetAccountConfirm"]>, "variables">
+  ): Promise<SetAccountConfirmResult> => {
+    let result: {
+      data: AccountConfirm | null;
+    } | null = null;
+
+    result = await this.fireQuery(MUTATIONS.SetAccountConfirm, (data) => data!)(
       variables,
       {
         ...options,

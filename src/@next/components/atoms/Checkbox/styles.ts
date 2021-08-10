@@ -29,7 +29,6 @@ export const Label = styled.label`
     color: red;
   }
   input:checked + div {
-    background-color: ${props => props.theme.colors.primary};
     background-color: ${farmatheme.theme.colors.interactive};
     border-radius: 0.25rem;
     overflow: hidden;

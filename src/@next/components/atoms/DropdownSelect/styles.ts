@@ -5,7 +5,6 @@ export const Wrapper = styled.div`
   flex-direction: column;
   font-size: ${props => props.theme.typography.smallFontSize};
   width: auto;
-  z-index: 1000;
 `;
 
 export const SortLine = styled.div`
@@ -13,12 +12,12 @@ export const SortLine = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-bottom: 0.5rem;
   position: relative;
 
   span {
     color: ${farmatheme.theme.colors.neutral.dark};
     font-size: 0.75rem;
+    margin: 0rem 0.5rem;
     ${mediaUp.largeScreen`
       font-size: 0.875rem;
     `}

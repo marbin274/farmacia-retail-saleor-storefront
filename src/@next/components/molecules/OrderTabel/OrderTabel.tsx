@@ -7,6 +7,7 @@ import { ThemeContext } from "styled-components";
 import { Thumbnail } from "..";
 import * as S from "./styles";
 import { IProps } from "./types";
+import { orderHistoryUrl } from "@app/pages/AccountPage/paths";
 
 const header = (matches: boolean) => (
   <S.HeaderRow>
@@ -24,7 +25,7 @@ const header = (matches: boolean) => (
 );
 
 export const OrderTabel: React.FC<IProps> = ({ orders, history }: IProps) => {
-  const theme = React.useContext(ThemeContext);
+  const theme = React.useContext(ThemeContext);  
   return (
     <S.Wrapper>
       <Media
@@ -45,7 +46,7 @@ export const OrderTabel: React.FC<IProps> = ({ orders, history }: IProps) => {
                       key={order.node.number}
                       onClick={(evt: { stopPropagation: () => void }) => {
                         evt.stopPropagation();
-                        history.push(`/order-history/${order.node.token}`);
+                        history.push(`${orderHistoryUrl + order.node.token}`);
                       }}
                     >
                       <S.IndexNumber>{order.node.sequentialCode}</S.IndexNumber>
@@ -53,9 +54,10 @@ export const OrderTabel: React.FC<IProps> = ({ orders, history }: IProps) => {
                         <>
                           <S.ProductsOrdered>
                             {order.node.lines
-                              .slice(0, 5)
+                              .slice(0, 2)
                               .map((product: any) => (
-                                <span
+                                <span 
+                                  className="fa-flex fa-items-center fa-justify-center fa-w-10 fa-h-10 fa-bg-white fa-text-neutral-darkest fa-text-sm fa-font-normal fa-rounded-lg"
                                   key={product.variant.productId}
                                   onClick={evt => {
                                     evt.stopPropagation();
@@ -70,6 +72,13 @@ export const OrderTabel: React.FC<IProps> = ({ orders, history }: IProps) => {
                                   <Thumbnail source={product} />
                                 </span>
                               ))}
+                              {
+                                (order.node.lines.length > 2) && (
+                                  <span className="fa-flex fa-items-center fa-justify-center fa-w-10 fa-h-10 fa-bg-white fa-text-neutral-darkest fa-text-sm fa-font-normal fa-rounded-lg">
+                                    + {order.node.lines.length - 2}
+                                  </span>
+                                )
+                              }
                           </S.ProductsOrdered>
                           <S.DateOfOrder>
                             {`${date.getMonth() +

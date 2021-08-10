@@ -11,7 +11,7 @@ export const Footer = styled.div<{ divider: boolean }>`
     justify-content: center;
   }
 
-  padding: ${props => `0.5rem ${props.theme.spacing.gutter}`};
+  padding: ${props => `0.5rem ${props.theme.spacing.gutter} 2rem ${props.theme.spacing.gutter}`};
 
   button {
     flex-grow: 1;

@@ -5,7 +5,7 @@ import {
   Online,
   Overlay,
   OverlayContextInterface,
-  PasswordResetForm
+  PasswordResetForm,
 } from "../..";
 import "./scss/index.scss";
 import { BulletXFilledIcon } from "@farmacia-retail/farmauna-components";

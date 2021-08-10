@@ -67,15 +67,11 @@ export const invalidTokenLinkWithTokenHandler = (
 
 export const authLink = setContext((_, context) => {
   const authToken = getAuthToken();
-  if (authToken) {
-    return {
+  return authToken ? {
       ...context,
       headers: {
         ...context.headers,
         Authorization: authToken ? `JWT ${authToken}` : null,
       },
-    };
-  } else {
-    return context;
-  }
+    } : context;
 });

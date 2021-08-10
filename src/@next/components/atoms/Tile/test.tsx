@@ -2,6 +2,7 @@ import { defaultTheme } from "@styles";
 import { mount, shallow } from "enzyme";
 import "jest-styled-components";
 import React from "react";
+import farmatheme from "@farmatheme";
 
 import { Tile } from ".";
 import * as S from "./styles";
@@ -81,14 +82,7 @@ describe("<Tile />", () => {
 
     expect(wrapperWithAddNew).toHaveStyleRule(
       "background-color",
-      defaultTheme.colors.secondary,
-      {
-        modifier: ":hover",
-      }
-    );
-    expect(wrapperWithAddNew).toHaveStyleRule(
-      "color",
-      defaultTheme.colors.white,
+      farmatheme.theme.colors.primary.lightest,
       {
         modifier: ":hover",
       }

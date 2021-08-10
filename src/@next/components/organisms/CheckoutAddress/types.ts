@@ -35,4 +35,6 @@ export interface IProps {
   setFormValue?: (address?: IAddressWithEmail) => void;
   availableDistricts: (GetShop_shop_availableDistricts | null)[];
   userLoading?: boolean;
+  temporaryStreeAddress1Error?: string;
+  clearTemporaryAddressError?: () => void;
 }

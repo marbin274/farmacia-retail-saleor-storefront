@@ -1,11 +1,10 @@
 import React from "react";
-
 import { maybe } from "@utils/misc";
-
 import { PlaceholderImage } from "@components/atoms";
 import { CachedImage } from "../";
 import { IProps } from "./types";
 import { ImageMagnifier } from "@farmacia-retail/farmauna-components";
+import { useMediaScreen } from "@temp/@next/globalStyles";
 
 export const Thumbnail: React.FC<IProps> = ({
   source,
@@ -22,7 +21,10 @@ export const Thumbnail: React.FC<IProps> = ({
   const url = maybe(() => thumbnail!.url);
   const url2x = maybe(() => thumbnail2x!.url);
   const alt = maybe(() => (thumbnail!.alt ? thumbnail!.alt : ""), "");
-  if (hasMagnifier) {
+
+  const { isMobileScreen } = useMediaScreen();
+
+  if (hasMagnifier && !isMobileScreen) {
     return (
       <ImageMagnifier
         src={url! || url2x!}

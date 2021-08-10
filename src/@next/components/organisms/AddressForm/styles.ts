@@ -8,8 +8,8 @@ import {
 } from "@styles/constants";
 
 export const AddressForm = styled.form`
+  max-width: 23rem;
   width: 100%;
-
   .labelValidation {
     color: ${aunaError};
     font-size: ${smallFontSize};
@@ -42,11 +42,11 @@ export const Wrapper = styled.div`
 `;
 
 export const RowWithTwoCells = styled.div`
-  width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 1.5rem;
   margin-bottom: 1.5rem;
+  width: 100%;
   ${media.smallScreen`
     grid-template-columns: 1fr;
   `}
@@ -64,25 +64,28 @@ export const RowWithTwoCells = styled.div`
 `;
 
 export const RowWithOneCell = styled.div`
-  width: 100%;
   margin-bottom: 1.5rem;
+  width: 100%;
 `;
 
 export const FieldsGroup = styled.div`
-  padding-top: 1rem;
+  padding-bottom: 1rem;
   width: 100%;
+  &:last-child {
+    padding-bottom: 0rem;
+  }
 `;
 
 export const GroupLabel = styled.div`
-  padding-bottom: 0.5rem;
   margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
 `;
 
 export const GroupLabelIndex = styled.span`
-    display: inline-block;
-    color: ${white};
-    background-color: ${aunaBrand3};
+    background-color: ${aunaBrand3};  
     border-radius: 5rem;
+    color: ${white};
+    display: inline-block;
     height: 1.9rem;
     padding: 0.4rem;
     text-align: center;

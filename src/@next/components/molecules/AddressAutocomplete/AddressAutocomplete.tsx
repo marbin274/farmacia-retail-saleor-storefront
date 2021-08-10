@@ -1,8 +1,15 @@
-import React, { FC, useCallback, useEffect, useRef } from "react";
+import React, {
+  RefForwardingComponent,
+  forwardRef,
+  useCallback,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+} from "react";
 import { Loader } from "@googlemaps/js-api-loader";
 import { InputField } from "@farmacia-retail/farmauna-components";
 import { IProps as ITextFieldProps } from "@components/molecules/TextField/types";
-import { mapsApiKey } from "@temp/constants";
+import { mapsApiKey } from "@temp/core/constants";
 import { LIMA_BOUNDS } from "@temp/core/config";
 
 export type IAddressAutocompleteValue = {
@@ -12,18 +19,25 @@ export type IAddressAutocompleteValue = {
 };
 
 type IProps = {
+  error?: string;
+  onChangeValue?: (
+    value: IAddressAutocompleteValue,
+    onlyText?: boolean
+  ) => void;
   placeholder: string;
   value?: IAddressAutocompleteValue;
-  onChangeValue?: (value: IAddressAutocompleteValue) => void;
 };
 
 type IAddressAutocompleteProps = IProps & Omit<ITextFieldProps, "value">;
 
-export const AddressAutocomplete: FC<IAddressAutocompleteProps> = ({
-  onChangeValue,
-  value,
-  ...props
-}) => {
+export type IAddressAutocompleteRef = {
+  focus: (options?: FocusOptions) => void;
+};
+
+const AddressAutocompleteWithRef: RefForwardingComponent<
+  IAddressAutocompleteRef,
+  IAddressAutocompleteProps
+> = ({ onChangeValue, value, ...props }, ref) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -42,6 +56,12 @@ export const AddressAutocomplete: FC<IAddressAutocompleteProps> = ({
         init();
       });
   }, []);
+
+  useImperativeHandle(ref, () => ({
+    focus: () => {
+      inputRef.current.focus();
+    },
+  }));
 
   const init = useCallback(() => {
     const autocomplete = new google.maps.places.Autocomplete(
@@ -73,14 +93,17 @@ export const AddressAutocomplete: FC<IAddressAutocompleteProps> = ({
       value={value?.text}
       ref={inputRef}
       onChange={e => {
-        onChangeValue?.({
-          lat: value?.lat,
-          lng: value?.lng,
-          text: e.target.value,
-        });
+        onChangeValue?.(
+          {
+            lat: value?.lat,
+            lng: value?.lng,
+            text: e.target.value,
+          },
+          true
+        );
       }}
     />
   );
 };
 
-export default AddressAutocomplete;
+export const AddressAutocomplete = forwardRef(AddressAutocompleteWithRef);

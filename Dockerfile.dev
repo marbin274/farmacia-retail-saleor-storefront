@@ -1,8 +1,15 @@
-FROM node:10
+FROM node:14
 WORKDIR /app
+# ENV NPM_AUTH_TOKEN=
+ARG NPM_AUTH_TOKEN
+ENV NPM_AUTH_TOKEN ${NPM_AUTH_TOKEN:-}
 COPY package*.json ./
+COPY .npmrc .npmrc
+
 RUN npm install
+RUN rm .npmrc
 COPY . .
+
 ARG API_URI
 ENV API_URI ${API_URI:-http://localhost:8000/graphql/}
 

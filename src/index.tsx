@@ -34,8 +34,8 @@ import {
   gtmId,
   gtmAuth,
   gtmPreview,
-} from "./constants";
-import { history } from "./history";
+} from "./core/constants";
+import { history } from "./libraries/history";
 
 import { OverlayProvider } from "./components";
 
@@ -49,7 +49,7 @@ import {
 } from "./@sdk/auth";
 import { alertService } from "./@next/components/atoms/Alert";
 import { launchSetLocation, getGaUserId } from "./@sdk/gaConfig";
-import { optimizelyClient, getOptimizelyUserId } from "./@sdk/optimizelyConfig";
+import { getOptimizelyUserId, optimizelyClient } from "./libraries/optimizely/optimizelyConfig";
 
 const cache = new InMemoryCache({
   dataIdFromObject: apolloCacheObject => {
@@ -147,7 +147,6 @@ const startApp = async () => {
       </Router>
     );
   });
-
 
   switch (environmentName) {
     case "qa":

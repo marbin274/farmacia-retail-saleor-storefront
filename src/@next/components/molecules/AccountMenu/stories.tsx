@@ -1,6 +1,7 @@
 import { storiesOf } from "@storybook/react";
 import { styled } from "@styles";
 import React from "react";
+import { links } from "@app/pages/AccountPage/paths";
 
 const Wrapper = styled.div`
   width: 360px;
@@ -8,16 +9,7 @@ const Wrapper = styled.div`
 
 const PROPS = {
   active: "/account/",
-  links: [
-    {
-      label: "Mi perfil",
-      url: "/account/",
-    },
-    {
-      label: "Mis direcciones",
-      url: "/address-book/",
-    },
-  ],
+  links,
 };
 
 import { MemoryRouter } from "react-router";

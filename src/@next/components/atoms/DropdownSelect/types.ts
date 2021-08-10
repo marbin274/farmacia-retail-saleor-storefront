@@ -1,6 +1,8 @@
 export interface IProps {
-  onChange: (value: any, name?: any) => void;
-  value: any;
-  options: any;
+  clearText: string;
+  label?: string;
   name?: any;
+  onChange: (value: any, name?: any) => void;
+  options: any;
+  value: any;
 }

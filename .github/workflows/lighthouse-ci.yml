@@ -1,0 +1,24 @@
+name: Lighthouse CI
+on: 
+  pull_request:
+    branches: [ master ]
+    paths-ignore:
+    - '.github/**'
+
+jobs:
+  lighthouseci:
+    name: Lighthouse CI
+    runs-on: ubuntu-latest
+    env:
+      NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      API_URI: ${{ secrets.GRAPHQL_URL_QA }}
+      CDN_URL: ${{ secrets.CDN_URL_QA }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - run: npm install
+      - run: npm run build
+      - run: npx lhci autorun --config=./lighthouserc.js

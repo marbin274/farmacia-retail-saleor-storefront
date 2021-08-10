@@ -1,4 +1,4 @@
-import { media, styled } from "@styles";
+import { media, mediaUp, styled } from "@styles";
 import farmatheme from "@farmatheme";
 
 export const Wrapper = styled.div``;
@@ -15,16 +15,15 @@ const BaseRow = styled.div`
 `;
 
 export const Action = styled.div`
-  width: 15%;
   opacity: 0;
+  width: 8%;
 
   ${media.largeScreen`
-     width: 15%;
-     opacity: 1;
-
-      img {
-        width: 0.75rem;
-      }
+    opacity: 1;
+    width: 8%;
+    img {
+      width: 0.75rem;
+    }
   `}
 
   button {
@@ -40,8 +39,9 @@ export const Action = styled.div`
 `;
 
 export const Row = styled(BaseRow)`
-  font-size: 0.875rem;
   border-radius: 2.5rem;
+  font-size: 0.875rem;
+  padding-left: 1rem;
   transition: background 0.2s ease-in-out;
   &:hover {
     background: ${farmatheme.theme.colors.neutral.light};
@@ -71,39 +71,49 @@ export const HeaderRow = styled(BaseRow)`
   color: ${props => props.theme.colors.lightFont};
   cursor: default;
   font-size: 0.75rem;
+  padding-left: 1rem;
 `;
 
 export const IndexNumber = styled.div`
+  text-align: left;
   width: 15%;
   ${media.largeScreen`
-     width: 60%;
+    padding-right: 1rem;
+    width: 32%;
   `}
 `;
 
 export const ProductsOrdered = styled.div`
-  width: 25%;
-  display: flex;
+  display: grid;
   flex-wrap: nowrap;
-  justify-content: center;
-
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 0.5rem;
+  justify-content: flex-start;
+  width: 25%;
+  
   img {
-    max-width: 50px;
-    height: auto;
+    max-width: 2rem;
+    max-height: 2rem;
   }
 `;
 
 export const DateOfOrder = styled.div`
-  width: 16%;
+  text-align: left;
+  width: 17%;
 `;
 
 export const Value = styled.div`
+  text-align: left;
   width: 18%;
 `;
 
 export const Status = styled.div`
-  width: 16%;
   text-align: left;
-  ${media.largeScreen`
-     width: 50%;
+  width: 60%;
+  padding-left: 1.5rem;
+  padding-right: 0.5rem;
+  ${mediaUp.largeScreen`
+    width: 22%;
+    padding: 0;
   `}
 `;
