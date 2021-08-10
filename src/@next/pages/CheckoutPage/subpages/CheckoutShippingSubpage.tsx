@@ -1,4 +1,4 @@
-import { CheckoutShipping } from "@components/organisms";
+import { CheckoutShipping, CheckoutShippingSlot } from "@components/organisms";
 import { useCart, useCheckout } from "@sdk/react";
 import { alertService } from "@temp/@next/components/atoms/Alert";
 import {
@@ -9,11 +9,12 @@ import { IAvailableShippingMethods } from "@temp/@sdk/api/Checkout/types";
 import { CheckoutErrorCode } from "@temp/@sdk/gqlTypes/globalTypes";
 import { UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_errors as ICheckoutShippingMethodError } from "@temp/@sdk/mutations/gqlTypes/UpdateCheckoutShippingMethod";
 import { IShippingMethodUpdate } from "@temp/@sdk/repository";
-import { CHECKOUT_STEPS } from "@temp/core/config";
+import { CHECKOUT_STEPS, INSTALEAP_IS_ACTIVE } from "@temp/core/config";
 import { IFormError } from "@types";
 import React, {
   forwardRef,
   RefForwardingComponent,
+  useEffect,
   useImperativeHandle,
   useRef,
 } from "react";
@@ -52,15 +53,29 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
     availableShippingMethods,
     setShippingMethod,
     isPrime,
-  
+    selectedSlotId,
+    slots,
   } = useCheckout();
   const { items } = useCart();
 
+  const isInstaleapActive = INSTALEAP_IS_ACTIVE;
+
+  useEffect(() => {
+    checkIfSlotExists();
+  }, []);
+
+  const checkIfSlotExists = async () => {
+    if (selectedSlotId && isInstaleapActive) {
+      changeSubmitProgress(true);
+      await setShippingMethod({ shippingMethodId: "", slotId: undefined });
+    }
+
+    changeSubmitProgress(false);
+  };
+
   const isPrimeShippingMethod = (sm: Checkout_availableShippingMethods) => {
     return sm.name.toLocaleLowerCase().includes("prime");
-  }
-
-
+  };
 
   const shippingMethods: IAvailableShippingMethods = [];
   const primeShippingMethodExists = !!availableShippingMethods?.find(x =>
@@ -107,7 +122,7 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
             it.field === "scheduleTimeId") ||
           it.code === CheckoutErrorCode.SCHEDULE_NOT_AVAILABLE
       );
-      setShippingMethod({ shippingMethodId: "" });
+      setShippingMethod({ shippingMethodId: "", slotId: undefined });
       alertService.sendAlert({
         buttonText: "Entendido",
         icon: scheduleTimeNotFound && shippingMethodCalendarInfoIco,
@@ -125,6 +140,24 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
       }
     }
   };
+
+  if (isInstaleapActive) {
+    return (
+      <CheckoutShippingSlot
+        {...props}
+        shippingMethods={shippingMethods}
+        selectedShippingMethodId={checkout?.shippingMethod?.id}
+        scheduleDate={checkout?.scheduleDate}
+        errors={addressSubPageErrors}
+        selectShippingMethod={handleSetShippingMethod}
+        items={items}
+        formId={checkoutShippingFormId}
+        formRef={checkoutShippingFormRef}
+        slots={slots}
+        selectedSlotId={selectedSlotId}
+      />
+    );
+  }
 
   return (
     <CheckoutShipping

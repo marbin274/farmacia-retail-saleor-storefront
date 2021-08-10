@@ -20,7 +20,7 @@ import {
   SHIPPING_METHOD_NOT_FOUND_TITLE,
 } from "@temp/@next/utils/schemasMessages";
 import { LocalRepository } from "@temp/@sdk/repository";
-import { BASE_URL, CHECKOUT_STEPS } from "@temp/core/config";
+import { BASE_URL, CHECKOUT_STEPS, INSTALEAP_IS_ACTIVE } from "@temp/core/config";
 import { IFormError, ITaxedMoney } from "@types";
 import shippingMethodCalendarInfoIco from "images/auna/shipping-method-calendar-info.svg";
 import React, { useEffect, useMemo, useRef, useState } from "react";
@@ -172,19 +172,23 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     removePaymentItems();
     return <Redirect to={BASE_URL} />;
   }
+  
+  const isInstaleapActive = INSTALEAP_IS_ACTIVE;
 
-  if (isAttentionSchedule === false) {
-    alertService.sendAlert({
-      acceptDialog: () => {
-        setShippingMethod({ shippingMethodId: "" });
-      },
-      buttonText: "Entendido",
-      icon: shippingMethodCalendarInfoIco,
-      message: SHIPPING_METHOD_NOT_FOUND,
-      title: SHIPPING_METHOD_NOT_FOUND_TITLE,
-      type: "Info",
-    });
-  }
+  useEffect(() => {
+    if (isAttentionSchedule === false && !isInstaleapActive) {
+      alertService.sendAlert({
+        acceptDialog: () => {
+          setShippingMethod({ shippingMethodId: "", slotId: undefined });
+        },
+        buttonText: "Entendido",
+        icon: shippingMethodCalendarInfoIco,
+        message: SHIPPING_METHOD_NOT_FOUND,
+        title: SHIPPING_METHOD_NOT_FOUND_TITLE,
+        type: "Info",
+      });
+    }
+  }, [isAttentionSchedule])
 
   if (cartLoaded && (!items || !items?.length)) {
     return <Redirect to="/cart/" />;

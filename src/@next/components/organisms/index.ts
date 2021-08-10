@@ -10,6 +10,7 @@ export * from "./CheckoutAddress";
 export * from "./CheckoutPayment";
 export * from "./CheckoutReview";
 export * from "./CheckoutShipping";
+export * from "./CheckoutShippingSlot";
 export * from "./CreditCardGrid";
 export * from "./DiscountForm";
 export * from "./DummyPaymentGateway";

@@ -9,7 +9,7 @@ import { CheckoutErrorCode } from "@temp/@sdk/gqlTypes/globalTypes";
 import { CreateCheckout_checkoutCreate_checkoutErrors_products } from "@temp/@sdk/mutations/gqlTypes/CreateCheckout";
 import { baseUrl } from "@temp/app/routes/paths";
 import { useShopContext } from "@temp/components/ShopProvider/context";
-import { COUNTRY_DEFAULT } from "@temp/core/config";
+import { COUNTRY_DEFAULT, INSTALEAP_IS_ACTIVE } from "@temp/core/config";
 import { IAddress, IAddressWithEmail, IFormError } from "@types";
 import { filterNotEmptyArrayItems } from "@utils/misc";
 import React, {
@@ -55,7 +55,9 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
   const {
     checkout,
     setShippingAddress,
+    setShippingMethod,
     selectedShippingAddressId,
+    selectedSlotId,
   } = useCheckout();
   const { availableDistricts, countries } = useShopContext();
   const [selectedDistrict, setDistrict] = useDistrictSelected();
@@ -68,6 +70,8 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     setTemporaryStreeAddress1Error,
   ] = useState<string>();
   const alert = useAlert();
+
+  const isInstaleapActive = INSTALEAP_IS_ACTIVE;
 
   const _addressFormSchema = addressFormSchema;
 
@@ -189,6 +193,10 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
 
     if (selectedDistrict?.id !== district?.id) {
       setDistrict(district);
+    }
+
+    if (selectedSlotId && isInstaleapActive) {
+      await setShippingMethod({ shippingMethodId: "", slotId: undefined });
     }
 
     if (checkoutErrors?.length! > 0) {
