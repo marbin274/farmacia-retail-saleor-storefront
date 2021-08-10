@@ -43,8 +43,7 @@ interface SortItem {
 type SortOptions = Array<SortItem>;
 type CategoryOptions = Array<SortItem>;
 
-interface PageProps extends Omit<IPaginationProps, "total" | "pageSize" | "page"> {
-  
+interface PageProps extends Omit<IPaginationProps, "total" | "pageSize" | "page"> {  
   attributes: IFilterAttributes[];
   categoryOptions: CategoryOptions;
   collection: CollectionCategories_collection;
