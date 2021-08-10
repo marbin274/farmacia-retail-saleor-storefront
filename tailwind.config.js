@@ -7,7 +7,7 @@ module.exports = {
     extend: {
       ...tailwindConfig.theme.extend,
       width: {
-        "100": "25rem",
+        100: "25rem",
       },
     },
     colors: {
@@ -15,6 +15,12 @@ module.exports = {
       brand: {
         ...tailwindConfig.theme.colors.brand,
         "03": "#008A66",
+      },
+      gray: {
+        ...tailwindConfig.theme.colors.gray,
+        DEFAULT: "#E4E5ED",
+        100: "#9194A7",
+        dark: "#7d7d7d",
       },
     },
     screens: {
