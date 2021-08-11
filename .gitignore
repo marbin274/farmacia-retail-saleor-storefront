@@ -12,6 +12,8 @@
 !.prettierrc
 !.husky
 !.npmrc
+!.prettierignore
+!.vscode
 !.eslintrc.js
 dist
 node_modules
