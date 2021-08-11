@@ -1,11 +1,12 @@
 import { SortOptions } from '@app/pages/SearchPage/Page';
+import { Loader } from '@components/atoms';
 import {
   IAddToCartCallback,
   IRemoveItemToCartCallback,
   ISubtractItemToCartCallback,
 } from '@temp/@next/components/molecules/ProductTileAUNA/types';
 import { useCart, useCollectionCategories } from '@temp/@sdk/react';
-import { Loader, MetaWrapper, NotFound } from '@temp/components';
+import { MetaWrapper, NotFound } from '@temp/components';
 import { COLLECTION_CATEGORY_FILTER_LABEL } from '@temp/core/config';
 import { getGraphqlIdFromDBId, maybe } from '@temp/core/utils';
 import { convertToFilterSideBar } from '@temp/core/utils/filters';
