@@ -25,3 +25,5 @@ export const useCategories = queryFactory("getCategoryList");
 
 export const useLanding = queryWithVariablesFactory("getLanding");
 export const useSearchProducts = queryWithVariablesFactory("searchProducts");
+export const useCollectionProducts = queryWithVariablesFactory("getCollectionProducts");
+export const useCollectionCategories = queryWithVariablesFactory("getCollectionCategories");

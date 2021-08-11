@@ -3,10 +3,10 @@ import "./scss/index.scss";
 import * as React from "react";
 
 import { Category_attributes_edges_node } from "../../views/Category/gqlTypes/Category";
-import { Collection_attributes_edges_node } from "../../views/Collection/gqlTypes/Collection";
 import { SearchProducts_attributes_edges_node } from "@sdk/queries/gqlTypes/SearchProducts";
 import PriceRangeFilter from "../PriceRangeFilter";
 import SelectField, { SelectValue } from "../SelectField";
+import { CollectionCategories_attributes_edges_node } from "@temp/@sdk/queries/gqlTypes/CollectionCategories";
 
 export interface AttributeList {
   [attributeSlug: string]: string[];
@@ -23,7 +23,7 @@ export interface Filters {
 export interface ProductFiltersProps {
   attributes:
     | Category_attributes_edges_node[]
-    | Collection_attributes_edges_node[]
+    | CollectionCategories_attributes_edges_node[]
     | SearchProducts_attributes_edges_node[];
   filters: Filters;
   onPriceChange: (field: "priceLte" | "priceGte", value: number) => void;
