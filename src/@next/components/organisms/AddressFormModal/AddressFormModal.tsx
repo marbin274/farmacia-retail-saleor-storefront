@@ -1,13 +1,14 @@
-import React from "react";
+import React from 'react';
 
-import { useCreateUserAddress, useUpdateUserAddress } from "@sdk/react";
+import { useCreateUserAddress, useUpdateUserAddress } from '@sdk/react';
 
-import { AddressForm } from "../AddressForm";
-import { Modal } from "../Modal";
+import { AddressForm } from '../AddressForm';
+import { Modal } from '../Modal';
 
-import { CountryCode } from "@sdk/gqlTypes/globalTypes";
-import { IProps } from "./types";
-import { IAddressWithEmail } from "@temp/@next/types";
+import { CountryCode } from '@sdk/gqlTypes/globalTypes';
+import { IProps } from './types';
+import { IAddressWithEmail } from '@temp/@next/types';
+// import { AddressForm2 } from '../AddressForm2';
 
 export const AddressFormModal: React.FC<IProps> = ({
   hideModal,
@@ -63,6 +64,7 @@ export const AddressFormModal: React.FC<IProps> = ({
       target={target}
       submitBtnText={submitBtnText}
     >
+      {/* <AddressForm2 /> */}
       <AddressForm
         {...props}
         {...{ errors }}
@@ -70,7 +72,7 @@ export const AddressFormModal: React.FC<IProps> = ({
         districtsOptions={districtsOptions}
         comeFromModal={true}
         address={address ? address.address : undefined}
-        handleSubmit={data => {
+        handleSubmit={(data) => {
           if (!!userId) {
             const _data: IAddressWithEmail = {
               city: data?.city,
@@ -83,7 +85,9 @@ export const AddressFormModal: React.FC<IProps> = ({
                 ..._data,
                 country: CountryCode.PE,
                 latitude: data!.latitude ? Number(data!.latitude) : undefined,
-                longitude: data!.longitude ? Number(data!.longitude) : undefined,
+                longitude: data!.longitude
+                  ? Number(data!.longitude)
+                  : undefined,
               },
             });
           } else {
@@ -93,7 +97,9 @@ export const AddressFormModal: React.FC<IProps> = ({
                 ...data,
                 country: CountryCode.PE,
                 latitude: data!.latitude ? Number(data!.latitude) : undefined,
-                longitude: data!.longitude ? Number(data!.longitude) : undefined,
+                longitude: data!.longitude
+                  ? Number(data!.longitude)
+                  : undefined,
               },
             });
           }
