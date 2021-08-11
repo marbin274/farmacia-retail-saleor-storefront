@@ -1,67 +1,66 @@
-import gql from "graphql-tag";
-import { basicProductFragment, productPricingFragment, productVariantFragmentSimple } from "../fragments/products";
+import gql from 'graphql-tag';
+import {
+  basicProductFragment,
+  productPricingFragment,
+  productVariantFragmentSimple,
+} from '../fragments/products';
 
 export const collectionProducts = gql`
-${basicProductFragment}
-${productPricingFragment}
-${productVariantFragmentSimple}
-query CollectionProducts(
-  $id: ID!, 
-  $attributes: [AttributeInput],
-  $categories: [ID],
-  $districtId: ID,
-  $page: Int, 
-  $pageSize: Int, 
-  $priceGte: Float, 
-  $priceLte: Float, 
-  $sortBy: ProductOrder, 
-) {
-  paginatedProducts(
-    page: $page
-    pageSize: $pageSize
-    sortBy: $sortBy
-    filter: {
-      attributes: $attributes, 
-      categories: $categories,
-      collections: [$id], 
-      minimalPrice: {
-        gte: $priceGte, 
-        lte: $priceLte
-      }
-    }
+  ${basicProductFragment}
+  ${productPricingFragment}
+  ${productVariantFragmentSimple}
+  query CollectionProducts(
+    $id: ID!
+    $attributes: [AttributeInput]
+    $categories: [ID]
+    $districtId: ID
+    $page: Int
+    $pageSize: Int
+    $priceGte: Float
+    $priceLte: Float
+    $sortBy: ProductOrder
   ) {
-    totalCount
-    edges {
-      node {
-        ...BasicProductFields
-        ...ProductPricingField
-        attributes {
-          attribute {
+    paginatedProducts(
+      page: $page
+      pageSize: $pageSize
+      sortBy: $sortBy
+      filter: {
+        attributes: $attributes
+        categories: $categories
+        collections: [$id]
+        minimalPrice: { gte: $priceGte, lte: $priceLte }
+      }
+    ) {
+      totalCount
+      edges {
+        node {
+          ...BasicProductFields
+          ...ProductPricingField
+          attributes {
+            attribute {
+              id
+              name
+            }
+            values {
+              id
+              name
+            }
+          }
+          category {
             id
             name
           }
-          values {
-            id
-            name
+          variants {
+            ...ProductVariantFieldsSimple
           }
-        }
-        category {
-          id
-          name
-        }
-        variants {
-          ...ProductVariantFieldsSimple
         }
       }
     }
   }
-}
 `;
 
 export const collectionCategories = gql`
-  query CollectionCategories(
-    $id: ID!
-  ) {   
+  query CollectionCategories($id: ID!) {
     collection(id: $id) {
       id
       backgroundImage {
@@ -78,9 +77,9 @@ export const collectionCategories = gql`
       slug
       name
       seoDescription
-      seoTitle 
+      seoTitle
     }
-    attributes(filter: {inCollection: $id}, first: 100) {
+    attributes(filter: { inCollection: $id }, first: 100) {
       edges {
         node {
           id
@@ -94,7 +93,6 @@ export const collectionCategories = gql`
           }
         }
       }
-    }  
+    }
   }
 `;
-

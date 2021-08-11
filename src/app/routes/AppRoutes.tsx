@@ -35,7 +35,10 @@ export const Routes: React.FC = () => (
     <Route path={paths.pageUrl} component={ArticlePage} />
     <Route path={paths.passwordResetUrl} component={PasswordReset} />
     <Route path={paths.productUrl} component={ProductPage} />
-    <Route path={paths.resetPasswordMailSentUrl} component={ResetPasswordMailSentPage} />
+    <Route
+      path={paths.resetPasswordMailSentUrl}
+      component={ResetPasswordMailSentPage}
+    />
     <Route path={paths.searchUrl} component={SearchPage} />
     <Route path={paths.userRegistered} component={UserRegistered} />
     <Route component={NotFound} />

@@ -2,54 +2,69 @@ import {
   ApolloClient,
   ObservableQuery,
   QueryOptions as ApolloQueryOptions,
-} from "apollo-client";
+} from 'apollo-client';
 
-import { RequireOnlyOne } from "../tsHelpers";
-import * as Article from "./article";
-import * as LandingQuery from "./landing";
-import * as AttributesList from "./attributes";
-import * as Category from "./category";
-import * as Collection from "./collections";
-import * as Orders from "./orders";
-import * as Product from "./products";
-import * as Shop from "./shop";
+import { RequireOnlyOne } from '../tsHelpers';
+import * as Article from './article';
+import * as LandingQuery from './landing';
+import * as AttributesList from './attributes';
+import * as Category from './category';
+import * as Collection from './collections';
+import * as Orders from './orders';
+import * as Product from './products';
+import * as Shop from './shop';
 
-import { OrderByToken, OrderByTokenVariables } from "./gqlTypes/OrderByToken";
+import { OrderByToken, OrderByTokenVariables } from './gqlTypes/OrderByToken';
 
-import { Attributes, AttributesVariables } from "./gqlTypes/Attributes";
+import { Attributes, AttributesVariables } from './gqlTypes/Attributes';
 import {
   ProductDetails,
   ProductDetailsVariables,
-} from "./gqlTypes/ProductDetails";
+} from './gqlTypes/ProductDetails';
 
-import { ProductList, ProductListVariables } from "./gqlTypes/ProductList";
+import { ProductList, ProductListVariables } from './gqlTypes/ProductList';
 
 import {
   CategoryDetails,
   CategoryDetailsVariables,
-} from "./gqlTypes/CategoryDetails";
+} from './gqlTypes/CategoryDetails';
 
-import { GetShop } from "./gqlTypes/GetShop";
+import { GetShop } from './gqlTypes/GetShop';
 
-import { OrdersByUser, OrdersByUserVariables } from "./gqlTypes/OrdersByUser";
-import { UserDetails } from "./gqlTypes/UserDetails";
+import { OrdersByUser, OrdersByUserVariables } from './gqlTypes/OrdersByUser';
+import { UserDetails } from './gqlTypes/UserDetails';
 import {
   VariantsProducts,
   VariantsProductsVariables,
-} from "./gqlTypes/VariantsProducts";
+} from './gqlTypes/VariantsProducts';
 
-import * as User from "./user";
-import { CategoryList } from "./gqlTypes/CategoryList";
-import { ArticleDetailVariables, ArticleDetail } from "./gqlTypes/ArticleDetail";
-import { LandingVariables, Landing } from "./gqlTypes/Landing";
-import { SearchProductsVariables, SearchProducts } from "./gqlTypes/SearchProducts";
-import { CollectionProductsVariables, CollectionProducts } from "./gqlTypes/CollectionProducts";
-import { CollectionCategoriesVariables, CollectionCategories } from "./gqlTypes/CollectionCategories";
-import { CategoryProductsVariables, CategoryProducts } from "./gqlTypes/CategoryProducts";
+import * as User from './user';
+import { CategoryList } from './gqlTypes/CategoryList';
+import {
+  ArticleDetailVariables,
+  ArticleDetail,
+} from './gqlTypes/ArticleDetail';
+import { LandingVariables, Landing } from './gqlTypes/Landing';
+import {
+  SearchProductsVariables,
+  SearchProducts,
+} from './gqlTypes/SearchProducts';
+import {
+  CollectionProductsVariables,
+  CollectionProducts,
+} from './gqlTypes/CollectionProducts';
+import {
+  CollectionCategoriesVariables,
+  CollectionCategories,
+} from './gqlTypes/CollectionCategories';
+import {
+  CategoryProductsVariables,
+  CategoryProducts
+} from "./gqlTypes/CategoryProducts";
 
 type QueryOptions<T = {}> = T extends { [n: string]: never }
-  ? Omit<ApolloQueryOptions<{}>, "query">
-  : RequireOnlyOne<Omit<ApolloQueryOptions<T>, "query">, "variables">;
+  ? Omit<ApolloQueryOptions<{}>, 'query'>
+  : RequireOnlyOne<Omit<ApolloQueryOptions<T>, 'query'>, 'variables'>;
 
 // TODO: Add ability to pass custom fragments to queries
 export const QUERIES = {

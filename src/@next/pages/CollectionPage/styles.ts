@@ -1,5 +1,5 @@
-import { CollectionStyle, mediaUp } from "@temp/@next/globalStyles";
-import styled from "styled-components";
+import { CollectionStyle, mediaUp } from '@temp/@next/globalStyles';
+import styled from 'styled-components';
 
 export const CollectionWrapper = styled.div`
   ${CollectionStyle}
@@ -15,4 +15,3 @@ export const CollectionWrapper = styled.div`
 export const HeaderProducts = styled.div`
   z-index: 1;
 `;
-

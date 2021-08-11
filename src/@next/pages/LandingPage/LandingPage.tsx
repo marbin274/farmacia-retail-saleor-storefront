@@ -4,7 +4,8 @@ import {
   LANDING_COLLECTIONS_PER_PAGE,
   PRODUCTS_PER_PAGE,
 } from "@temp/core/config";
-import { Loader, NotFound } from "@temp/components";
+import { NotFound } from "@temp/components";
+import { Loader } from "@components/atoms";
 import Page from "./Page";
 import { Container } from "./styles";
 import { useLanding } from "@temp/@sdk/react";
@@ -16,7 +17,6 @@ export const LandingPage: FC<IProps> = ({
     params: { slug },
   },
 }) => {
-
   const { data, loading } = useLanding({
     collectionsFirst: LANDING_COLLECTIONS_PER_PAGE,
     productsFirst: PRODUCTS_PER_PAGE,

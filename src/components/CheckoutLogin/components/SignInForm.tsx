@@ -1,10 +1,10 @@
 import React from "react";
-import { LoginForm } from "../";
+import { LoginForm } from "../..";
 
 const SignInForm: React.FC<{
   onClick: () => void;
 }> = ({ onClick }) => (
-  <div className="checkout-login__user__form">
+  <div>
     <div className="fa-text-2xl fa-font-semibold fa-mb-4 lg:fa-text-left fa-text-center">
       Soy Cliente
     </div>
