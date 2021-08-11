@@ -1,59 +1,59 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
-import { TypedQuery } from "../../core/queries";
+import { TypedQuery } from '../../core/queries';
 import {
   basicProductFragment,
   productPricingFragment,
-} from "@temp/views/Product/queries";
+} from '@sdk/fragments/products';
 import {
   FeaturedProducts,
   FeaturedProductsVariables,
-} from "./gqlTypes/FeaturedProducts";
+} from './gqlTypes/FeaturedProducts';
 
 const featuredProductFragment = gql`
-${basicProductFragment}
-${productPricingFragment}
-fragment FeaturedProductFields on Product {
-  ...BasicProductFields
-  ...ProductPricingField
-  attributes {
-    attribute {
+  ${basicProductFragment}
+  ${productPricingFragment}
+  fragment FeaturedProductFields on Product {
+    ...BasicProductFields
+    ...ProductPricingField
+    attributes {
+      attribute {
+        id
+        name
+      }
+      values {
+        id
+        name
+      }
+    }
+    category {
       id
       name
     }
-    values {
+    variants {
       id
-      name
+      sku
+      pricing {
+        onSale
+        price {
+          ...Price
+        }
+        priceUndiscounted {
+          ...Price
+        }
+      }
+      quantityAvailable(district: $districtId)
     }
   }
-  category {
-    id
-    name
-  }
-  variants {
-    id
-    sku
-    pricing {
-      onSale
-      price {
-        ...Price
-      }
-      priceUndiscounted {
-        ...Price
-      }
-    }
-    quantityAvailable(district: $districtId)
-  }
-}
 `;
 
 export const featuredProducts = gql`
   ${featuredProductFragment}
   query FeaturedProducts(
-    $first: Int!,
-    $firstPersonalize: Int!,
-    $districtId: ID,
-    $firstCollection: Int,
+    $first: Int!
+    $firstPersonalize: Int!
+    $districtId: ID
+    $firstCollection: Int
     $sortBy: CollectionSortingInput
   ) {
     shop {
@@ -73,13 +73,14 @@ export const featuredProducts = gql`
         }
       }
     }
-    personalized: recommendedProducts(maxResults: $firstPersonalize, district: $districtId) {
+    personalized: recommendedProducts(
+      maxResults: $firstPersonalize
+      district: $districtId
+    ) {
       ...FeaturedProductFields
-    } 
-
+    }
   }
 `;
-
 
 export const TypedFeaturedProductsQuery = TypedQuery<
   FeaturedProducts,

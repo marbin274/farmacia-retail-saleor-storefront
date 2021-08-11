@@ -59,8 +59,8 @@ import {
 } from './gqlTypes/CollectionCategories';
 import {
   CategoryProductsVariables,
-  CategoryProducts
-} from "./gqlTypes/CategoryProducts";
+  CategoryProducts,
+} from './gqlTypes/CategoryProducts';
 
 type QueryOptions<T = {}> = T extends { [n: string]: never }
   ? Omit<ApolloQueryOptions<{}>, 'query'>
@@ -169,7 +169,7 @@ export const QUERIES = {
     options: QueryOptions<ProductListVariables>
   ): ObservableQuery<ProductList, any> =>
     client.watchQuery({
-      query: Product.productListDetails,
+      query: Product.productList,
       ...options,
     }),
   SearchProducts: <TCacheShape>(

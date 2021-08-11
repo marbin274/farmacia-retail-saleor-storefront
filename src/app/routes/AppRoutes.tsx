@@ -7,18 +7,18 @@ import {
   CheckoutPage,
   CollectionPage,
   LandingPage,
+  ProductPage,
   PasswordReset,
   ResetPasswordMailSentPage,
   SearchPage,
   ThankYouPage,
   UserRegistered,
-} from "@pages";
-import * as React from "react";
-import { Route, Switch } from "react-router-dom";
-import { CheckoutLogin, NotFound } from "../../components";
-import { HomePage } from "../../views/Home";
-import { ProductPage } from "../../views/Product";
-import * as paths from "./paths";
+} from '@pages';
+import * as React from 'react';
+import { Route, Switch } from 'react-router-dom';
+import { CheckoutLogin, NotFound } from '../../components';
+import { HomePage } from '../../views/Home';
+import * as paths from './paths';
 
 export const Routes: React.FC = () => (
   <Switch>

@@ -1,11 +1,8 @@
-import {
-  priceFragment,
-} from "@temp/views/Product/queries";
-import gql from "graphql-tag";
-import { TypedQuery } from "../../core/queries";
-import { Banner } from "./gqlTypes/Banner";
-import { HomePage } from "./gqlTypes/HomePage";
-
+import { priceFragment } from '@sdk/fragments/products';
+import gql from 'graphql-tag';
+import { TypedQuery } from '../../core/queries';
+import { Banner } from './gqlTypes/Banner';
+import { HomePage } from './gqlTypes/HomePage';
 
 export const productVariantFragmentSimple = gql`
   ${priceFragment}
@@ -27,8 +24,8 @@ export const productVariantFragmentSimple = gql`
       price {
         ...Price
       }
-      product{
-        category{
+      product {
+        category {
           name
         }
       }
@@ -37,43 +34,43 @@ export const productVariantFragmentSimple = gql`
 `;
 
 // get all available products according the specified filter
-export const homePageQuery = gql` 
-query HomePage {
-  shop {
-    description
-    name
-    homepageCollection {
-      id
-      backgroundImage {
-        url
+export const homePageQuery = gql`
+  query HomePage {
+    shop {
+      description
+      name
+      homepageCollection {
+        id
+        backgroundImage {
+          url
+        }
+        name
       }
-      name      
-    }
-    analyticsConfig {
-      tagManagerId
-      tagManagerAuth
-      tagManagerEnvironmentId
+      analyticsConfig {
+        tagManagerId
+        tagManagerAuth
+        tagManagerEnvironmentId
+      }
     }
   }
-}
 `;
 
 export const TypedHomePageQuery = TypedQuery<HomePage, {}>(homePageQuery);
 
-export const bannerQuery = gql` 
-query Banner {
-  mainBanner {
-      id,
-      frames{
-          id,
-          link,
-          images {
-              screenType,
-              url
-          }
+export const bannerQuery = gql`
+  query Banner {
+    mainBanner {
+      id
+      frames {
+        id
+        link
+        images {
+          screenType
+          url
+        }
       }
+    }
   }
-}
 `;
 
 export const TypedBannerQuery = TypedQuery<Banner, {}>(bannerQuery);

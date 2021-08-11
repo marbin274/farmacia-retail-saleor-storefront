@@ -1,30 +1,29 @@
-import { ProductImage } from "@components/molecules";
+import { ProductImage } from '@components/molecules';
+import { Breadcrumbs } from '@farmacia-retail/farmauna-components';
+import { ProductDetails_product } from '@sdk/queries/gqlTypes/ProductDetails';
 import {
   ICheckoutModelLine,
   ICheckoutModelLineVariantLocalStorage,
-} from "@sdk/repository";
-import { ISimpleProduct } from "@sdk/types/IProduct";
+} from '@sdk/repository';
+import { ISimpleProduct } from '@sdk/types/IProduct';
 import {
   checkProductCanAddToCart,
   getOneProductWithQuantity,
   productStickerRules,
-} from "@sdk/utils/products";
-import { ProductsSelled } from "@temp/components/productsSelled";
+} from '@sdk/utils/products';
+import { useMediaScreen } from '@temp/@next/globalStyles';
+import { largeScreen } from '@temp/@next/globalStyles/constants';
+import { baseUrl } from '@temp/app/routes';
+import { ProductDescription } from '@temp/components';
+import { ProductsSelled } from '@temp/components/productsSelled';
+import { structuredData as structuredCategoryData } from '@temp/core/SEO/Category/structuredData';
+import { structuredData } from '@temp/core/SEO/Product/structuredData';
 import {
   convertToSimpleProduct,
   getBreadcrumbsFromProduct,
-} from "@temp/core/utils";
-import React from "react";
-import Media from "react-media";
-import { ProductDescription } from "../../components";
-import { structuredData } from "../../core/SEO/Product/structuredData";
-import { structuredData as structuredCategoryData } from "../../core/SEO/Category/structuredData";
-import { smallScreen } from "../../globalStyles/scss/variables.scss";
-import { ProductDetails_product } from "./gqlTypes/ProductDetails";
-import { Breadcrumbs } from "@farmacia-retail/farmauna-components";
-import { largeScreen } from "@temp/@next/globalStyles/constants";
-import { baseUrl } from "@temp/app/routes";
-import * as S from "./styles";
+} from '@temp/core/utils';
+import React from 'react';
+import * as S from './styles';
 // TODO: Add as soon as we need to add related products
 // import OtherProducts from "./Other";
 // TODO: Add as soon as we need to add more product information below the
@@ -41,7 +40,8 @@ export interface IProps {
   items: ICheckoutModelLine[];
 }
 
-export const Page: React.FC<IProps> = props => {
+export const Page: React.FC<IProps> = (props) => {
+  const { isMobileScreen } = useMediaScreen();
   const { add, remove, subtract, items, product } = props;
   const simpleProduct: ISimpleProduct = getOneProductWithQuantity(
     convertToSimpleProduct(product),
@@ -50,7 +50,7 @@ export const Page: React.FC<IProps> = props => {
   const { canAddToCart } = checkProductCanAddToCart(simpleProduct, items);
   const { isOnSale, isOutStock } = productStickerRules(simpleProduct);
 
-  const renderProductRightInfo = matches => (
+  const renderProductRightInfo = () => (
     <>
       <ProductDescription
         canAddToCart={canAddToCart}
@@ -64,7 +64,7 @@ export const Page: React.FC<IProps> = props => {
         addToCart={add}
         removeToCart={remove}
         subtractToCart={subtract}
-        isSmallScreen={matches}
+        isSmallScreen={isMobileScreen}
       />
       <ProductsSelled
         productDetail={product}
@@ -93,32 +93,24 @@ export const Page: React.FC<IProps> = props => {
           <script className="structured-data-list" type="application/ld+json">
             {structuredCategoryData(product.category)}
           </script>
-          <Media query={{ maxWidth: smallScreen }}>
-            {matches => (
-              <>
-                <S.ProductImageWrapper>
-                  <ProductImage
-                    canAddToCart={canAddToCart}
-                    isOnSale={isOnSale}
-                    isOutStock={isOutStock}
-                    product={product}
-                    hasMagnifier
-                  />
-                </S.ProductImageWrapper>
-                {matches ? (
-                  <S.ProductInfoWrapper>
-                    {renderProductRightInfo(matches)}
-                  </S.ProductInfoWrapper>
-                ) : (
-                  <S.ProductInfoWrapper>
-                    <S.ProductInfoFixedWrapper>
-                      {renderProductRightInfo(matches)}
-                    </S.ProductInfoFixedWrapper>
-                  </S.ProductInfoWrapper>
-                )}
-              </>
+          <S.ProductImageWrapper>
+            <ProductImage
+              canAddToCart={canAddToCart}
+              isOnSale={isOnSale}
+              isOutStock={isOutStock}
+              product={product}
+              hasMagnifier
+            />
+          </S.ProductImageWrapper>
+          <S.ProductInfoWrapper>
+            {isMobileScreen ? (
+              renderProductRightInfo()
+            ) : (
+              <S.ProductInfoFixedWrapper>
+                {renderProductRightInfo()}
+              </S.ProductInfoFixedWrapper>
             )}
-          </Media>
+          </S.ProductInfoWrapper>
         </S.ProductWrapper>
       </S.Container>
     </S.ProductPage>

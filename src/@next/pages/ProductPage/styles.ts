@@ -1,6 +1,6 @@
-import { ContainerStyle, mediaUp, styled } from "@styles";
-import farmatheme from "@farmatheme";
-import { containerWidth, hrColor } from "@temp/@next/globalStyles/constants";
+import { ContainerStyle, mediaUp, styled } from '@styles';
+import farmatheme from '@farmatheme';
+import { containerWidth, hrColor } from '@temp/@next/globalStyles/constants';
 
 export const ProductPage = styled.div`
   background-color: ${farmatheme.theme.colors.neutral.light};
