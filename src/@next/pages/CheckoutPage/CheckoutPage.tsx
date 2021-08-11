@@ -20,7 +20,7 @@ import {
   SHIPPING_METHOD_NOT_FOUND_TITLE,
 } from "@temp/@next/utils/schemasMessages";
 import { LocalRepository } from "@temp/@sdk/repository";
-import { BASE_URL, CHECKOUT_STEPS, INSTALEAP_IS_ACTIVE } from "@temp/core/config";
+import { BASE_URL, CHECKOUT_STEPS } from "@temp/core/config";
 import { IFormError, ITaxedMoney } from "@types";
 import shippingMethodCalendarInfoIco from "images/auna/shipping-method-calendar-info.svg";
 import React, { useEffect, useMemo, useRef, useState } from "react";
@@ -40,6 +40,7 @@ import {
 } from "./subpages";
 import { IProps } from "./types";
 import { checkAttentionSchedule } from "@sdk/utils/checkoutValidations";
+import { useFeaturePlugins } from "@temp/@next/hooks";
 
 const prepareCartSummary = (
   activeStepIndex: number,
@@ -162,6 +163,8 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     setShippingMethod,
   } = useCheckout();
 
+  const { lastMileActive } = useFeaturePlugins();
+
   const { isAttentionSchedule } = checkAttentionSchedule(
     checkoutLoaded,
     checkout,
@@ -172,11 +175,9 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     removePaymentItems();
     return <Redirect to={BASE_URL} />;
   }
-  
-  const isInstaleapActive = INSTALEAP_IS_ACTIVE;
 
   useEffect(() => {
-    if (isAttentionSchedule === false && !isInstaleapActive) {
+    if (isAttentionSchedule === false && !lastMileActive) {
       alertService.sendAlert({
         acceptDialog: () => {
           setShippingMethod({ shippingMethodId: "", slotId: undefined });

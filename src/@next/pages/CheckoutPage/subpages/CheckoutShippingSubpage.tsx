@@ -9,7 +9,7 @@ import { IAvailableShippingMethods } from "@temp/@sdk/api/Checkout/types";
 import { CheckoutErrorCode } from "@temp/@sdk/gqlTypes/globalTypes";
 import { UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_errors as ICheckoutShippingMethodError } from "@temp/@sdk/mutations/gqlTypes/UpdateCheckoutShippingMethod";
 import { IShippingMethodUpdate } from "@temp/@sdk/repository";
-import { CHECKOUT_STEPS, INSTALEAP_IS_ACTIVE } from "@temp/core/config";
+import { CHECKOUT_STEPS } from "@temp/core/config";
 import { IFormError } from "@types";
 import React, {
   forwardRef,
@@ -21,6 +21,7 @@ import React, {
 import { RouteComponentProps, useHistory } from "react-router";
 import shippingMethodCalendarInfoIco from "images/auna/shipping-method-calendar-info.svg";
 import { Checkout_availableShippingMethods } from "@temp/@sdk/fragments/gqlTypes/Checkout";
+import { useFeaturePlugins } from "@temp/@next/hooks";
 
 export interface ICheckoutShippingSubpageHandles {
   submitShipping: () => void;
@@ -58,14 +59,14 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
   } = useCheckout();
   const { items } = useCart();
 
-  const isInstaleapActive = INSTALEAP_IS_ACTIVE;
+  const { lastMileActive } = useFeaturePlugins();
 
   useEffect(() => {
     checkIfSlotExists();
   }, []);
 
   const checkIfSlotExists = async () => {
-    if (selectedSlotId && isInstaleapActive) {
+    if (selectedSlotId && lastMileActive) {
       changeSubmitProgress(true);
       await setShippingMethod({ shippingMethodId: "", slotId: undefined });
     }
@@ -141,7 +142,7 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
     }
   };
 
-  if (isInstaleapActive) {
+  if (lastMileActive) {
     return (
       <CheckoutShippingSlot
         {...props}

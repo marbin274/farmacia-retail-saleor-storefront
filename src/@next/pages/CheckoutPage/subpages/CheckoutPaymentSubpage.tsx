@@ -200,7 +200,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
       changeSubmitProgress(false);
       if (confirmErrors) {
         removePaymentItems();
-        const confirmError = confirmErrors[0];
+        const confirmError = confirmErrors[0] || confirmErrors.error;
 
         switch (confirmError.code) {
           case CheckoutErrorCode.INSUFFICIENT_STOCK:

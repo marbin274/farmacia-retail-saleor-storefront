@@ -1,14 +1,16 @@
 import gql from "graphql-tag";
+import { TypedQuery } from "@temp/core/queries";
+import { GetShopFeaturePlugins } from "./gqlTypes/GetShopFeaturePlugins";
 
 export const getShop = gql`
   query GetShop {
     shop {
-      availableDistricts{
-        id      
+      availableDistricts {
+        id
         isActive
         isDefault
         name
-        warehouse{
+        warehouse {
           id
           name
         }
@@ -47,3 +49,20 @@ export const getShopPaymentGateways = gql`
     }
   }
 `;
+
+export const getShopFeaturePlugins = gql`
+  query GetShopFeaturePlugins {
+    shop {
+      availableFeaturePlugins {
+        id
+        name
+        active
+      }
+    }
+  }
+`;
+
+export const TypedShopFeaturePluginsQuery = TypedQuery<
+  GetShopFeaturePlugins,
+  {}
+>(getShopFeaturePlugins);
