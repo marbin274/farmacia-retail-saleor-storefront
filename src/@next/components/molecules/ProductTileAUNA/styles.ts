@@ -1,9 +1,9 @@
-import { mediaUp, styled, media } from "@styles";
-import { aunaBlack, aunaGrey100 } from "@styles/constants";
-import farmatheme from "@farmatheme";
-import { Link } from "react-router-dom";
+import { mediaUp, styled, media } from '@styles';
+import { aunaBlack, aunaGrey100 } from '@styles/constants';
+import farmatheme from '@farmatheme';
+import { Link } from 'react-router-dom';
 
-const productIntHeight = "18rem";
+const productIntHeight = '18rem';
 
 export const LinkContainer = styled(Link)`
   align-items: flex-start;
@@ -48,7 +48,7 @@ export const ProductCard = styled.div<{
   }
 
   .description {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 600;
     line-height: 1.4;
     margin-bottom: 1.25rem;
@@ -61,17 +61,21 @@ export const ProductCard = styled.div<{
   }
 
   .price {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 1.125rem;
     font-weight: 600;
     padding: 0.7rem 0rem 0rem 0rem;
     text-align: center;
 
+    &.discounted_price {
+      margin-right: 0;
+    }
     &.undiscounted_price {
       color: ${farmatheme.theme.colors.neutral.dark};
       display: inline-block;
       font-size: 0.875rem;
       font-weight: normal;
+      margin-left: 1rem;
       text-decoration: line-through;
       vertical-align: middle;
     }
@@ -111,7 +115,7 @@ export const Title = styled.h4``;
 
 export const ProductAttribute = styled.h5`
   color: ${aunaGrey100};
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 1rem;
   font-weight: normal;
   padding: 0.1rem 0;
