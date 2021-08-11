@@ -1,77 +1,98 @@
-import { Breadcrumbs } from "@farmacia-retail/farmauna-components";
-import { IPaginationProps } from "@temp/@next/components/molecules/Pagination/types";
+import { ProductListHeader } from '@app/components/molecules';
+import { ProductListAUNA } from '@app/components/organisms';
+import { FilterSidebar } from '@app/components/organisms/FilterSidebar';
+import { Breadcrumbs } from '@farmacia-retail/farmauna-components';
+import { CategoryDetails_category } from '@sdk/queries/gqlTypes/CategoryDetails';
+import { CategoryProductsVariables } from '@sdk/queries/gqlTypes/CategoryProducts';
 import {
   IAddToCartCallback,
   IRemoveItemToCartCallback,
   ISubtractItemToCartCallback,
-} from "@temp/@next/components/molecules/ProductTileAUNA/types";
-import { CategoryNavigation } from "@temp/@next/components/organisms/CategoryNavigation/CategoryNavigation";
-import { largeScreen } from "@temp/@next/globalStyles/constants";
-import { useScrollTo } from "@temp/@next/hooks";
-import { IItems } from "@temp/@sdk/api/Cart/types";
-import { baseUrl } from "@temp/app/routes";
-import { structuredData } from "@temp/core/SEO/Category/structuredData";
-import { convertToSimpleProduct, maybe } from "@temp/core/utils";
-import { IFilterAttributes, IFilters } from "@types";
-import * as React from "react";
-import { ProductListHeader } from "@app/components/molecules";
-import { ProductListAUNA } from "@app/components/organisms";
-import { FilterSidebar } from "@app/components/organisms/FilterSidebar";
-import { EmptyProduct, extractBreadcrumbs } from "@temp/components";
+} from '@temp/@next/components/molecules/ProductTileAUNA/types';
+import { CategoryNavigation } from '@temp/@next/components/organisms/CategoryNavigation/CategoryNavigation';
+import { useMediaScreen } from '@temp/@next/globalStyles';
+import { largeScreen } from '@temp/@next/globalStyles/constants';
+import { useDistrictSelected, useScrollTo } from '@temp/@next/hooks';
 import {
-  Category_category,
-  Category_paginatedProducts,
-} from "./gqlTypes/Category";
-import { CategoryProductListHeader, CategoryWrapper } from "./styles";
+  getFiltersInitial,
+  onAttributeFiltersChange,
+} from '@temp/@next/utils/filter';
+import { IItems } from '@temp/@sdk/api/Cart/types';
+import { useCategoryProducts } from '@temp/@sdk/react';
+import { baseUrl } from '@temp/app/routes';
+import { EmptyProduct, extractBreadcrumbs } from '@temp/components';
+import { structuredData } from '@temp/core/SEO/Category/structuredData';
+import {
+  convertSortByFromString,
+  convertToAttributeScalar,
+  convertToSimpleProduct,
+  maybe,
+} from '@temp/core/utils';
+import { FilterQuerySet } from '@temp/core/utils/filters';
+import { IFilterAttributes, IFilters } from '@types';
+import * as React from 'react';
+import { NumberParam, StringParam, useQueryParams } from 'use-query-params';
+import { CategoryProductListHeader, CategoryWrapper } from './styles';
 
 interface SortItem {
   label: string;
   value?: string;
 }
 
-type SortOptions = Array<SortItem>
+type SortOptions = Array<SortItem>;
 
-interface PageProps extends IPaginationProps {
+interface PageProps {
+  attributes: IFilterAttributes[];
+  category: CategoryDetails_category;
+  items: IItems;
+  sortOptions: SortOptions;
   addToCart: IAddToCartCallback;
   removeItemToCart: IRemoveItemToCartCallback;
   subtractItemToCart: ISubtractItemToCartCallback;
-  activeFilters: number;
-  attributes: IFilterAttributes[];
-  activeSortOption: string;
-  category: Category_category;
-  displayLoader: boolean;
-  filters: IFilters;
-  isLargeScreen: boolean;
-  products: Category_paginatedProducts;
-  sortOptions: SortOptions;
-  clearFilters: () => void;
-  onAttributeFiltersChange: (attributeSlug: string, value: string) => void;
-  onOrder: (order: { value?: string; label: string }) => void;
-  items: IItems;
 }
+
+const getPageSize = (isMobile: boolean): number => {
+  return isMobile ? 8 : 12;
+};
 
 const Page: React.FC<PageProps> = ({
   addToCart,
-  activeFilters,
-  activeSortOption,
   attributes,
   category,
-  displayLoader,
-  clearFilters,
-  isLargeScreen,
-  products,
-  filters,
-  onOrder,
-  sortOptions,
-  onAttributeFiltersChange,
   items,
-  onPageChange,
-  page,
-  pageSize,
   removeItemToCart,
-  total: totalProducts,
+  sortOptions,
   subtractItemToCart,
 }) => {
+  const { isMobileScreen } = useMediaScreen();
+  const [districtSelected] = useDistrictSelected();
+  const [{ filters: attributeFilters, page, sortBy: sort }, setQuery] =
+    useQueryParams({
+      filters: FilterQuerySet,
+      page: NumberParam,
+      sortBy: StringParam,
+    });
+
+  const filters: IFilters = React.useMemo(
+    () => getFiltersInitial(attributeFilters, sort),
+    [attributeFilters, sort]
+  );
+
+  const variables: CategoryProductsVariables = {
+    ...filters,
+    attributes: filters.attributes
+      ? convertToAttributeScalar(filters.attributes)
+      : {},
+    id: category.id,
+    page: page || 1,
+    pageSize: getPageSize(isMobileScreen),
+    sortBy: convertSortByFromString(filters.sortBy),
+    districtId: districtSelected.id,
+  };
+
+  const { data: products, loading: categoryProductsLoading } =
+    useCategoryProducts(variables);
+
   const canDisplayProducts = maybe(
     () => !!products.edges && products.totalCount !== undefined
   );
@@ -95,14 +116,26 @@ const Page: React.FC<PageProps> = ({
     Object.keys(filters.attributes).reduce(
       (acc, key) =>
         acc.concat(
-          filters.attributes[key].map(valueSlug => getAttribute(key, valueSlug))
+          filters.attributes[key].map((valueSlug) =>
+            getAttribute(key, valueSlug)
+          )
         ),
       []
     );
 
-  React.useEffect(() => goTop(),
-    [products]
-  );
+  const clearFilters = () => {
+    setQuery({ filters: {} });
+  };
+
+  const handlePageChange = (page: number) => {
+    setQuery({ page });
+  };
+
+  const onFiltersChange = (name: string, value: string) => {
+    onAttributeFiltersChange(attributeFilters, filters, name, setQuery, value);
+  };
+
+  React.useEffect(() => goTop(), [products]);
 
   return (
     <CategoryWrapper>
@@ -121,41 +154,48 @@ const Page: React.FC<PageProps> = ({
         <section className="collection-products">
           <CategoryProductListHeader>
             <ProductListHeader
-              activeSortOption={activeSortOption}
+              activeSortOption={filters.sortBy}
               openFiltersMenu={() => setShowFilters(true)}
               numberOfProducts={products ? products.totalCount : 0}
-              activeFilters={activeFilters}
+              activeFilters={
+                filters!.attributes
+                  ? Object.keys(filters!.attributes!.brand).length
+                  : 0
+              }
               activeFiltersAttributes={activeFiltersAttributes}
               clearFilters={clearFilters}
               sortOptions={sortOptions}
-              onChangeSortOption={onOrder}
-              onCloseFilterAttribute={onAttributeFiltersChange}
+              onChangeSortOption={(value) => {
+                setQuery({
+                  page: 1,
+                  sortBy: value.value,
+                });
+              }}
+              onCloseFilterAttribute={onFiltersChange}
             />
           </CategoryProductListHeader>
           <FilterSidebar
             show={showFilters}
             hide={() => setShowFilters(false)}
-            onAttributeFiltersChange={onAttributeFiltersChange}
+            onAttributeFiltersChange={onFiltersChange}
             attributes={attributes}
             filters={filters}
           />
-          {canDisplayProducts && (
-            <ProductListAUNA
-              addToCart={addToCart}
-              columns={3}
-              loading={displayLoader}
-              page={page}
-              pageSize={pageSize}
-              products={products.edges.map(edge =>
-                convertToSimpleProduct(edge.node)
-              )}
-              productsOnCart={items}
-              onPageChange={onPageChange}
-              removeItemToCart={removeItemToCart}
-              subtractItemToCart={subtractItemToCart}
-              total={totalProducts}
-            />
-          )}
+          <ProductListAUNA
+            addToCart={addToCart}
+            columns={3}
+            loading={categoryProductsLoading}
+            page={variables.page}
+            pageSize={variables.pageSize}
+            products={products?.edges.map((edge) =>
+              convertToSimpleProduct(edge.node)
+            )}
+            productsOnCart={items}
+            onPageChange={handlePageChange}
+            removeItemToCart={removeItemToCart}
+            subtractItemToCart={subtractItemToCart}
+            total={products?.totalCount}
+          />
           {!hasProducts && <EmptyProduct title="No hay productos" />}
         </section>
       </div>

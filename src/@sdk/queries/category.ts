@@ -1,12 +1,16 @@
-import gql from "graphql-tag";
-import { simpleCategory } from "../fragments/category";
-import { basicProductFragment, productPricingFragment, productVariantFragmentSimple } from "../fragments/products";
+import gql from 'graphql-tag';
+import { simpleCategory } from '../fragments/category';
+import {
+  basicProductFragment,
+  productPricingFragment,
+  productVariantFragmentSimple,
+} from '../fragments/products';
 
 export const categoryListQuery = gql`
   query CategoryList {
-    categories (first: 100, level: 0) {
-      edges{
-        node{
+    categories(first: 100, level: 0) {
+      edges {
+        node {
           id
           name
           children(last: 100) {
@@ -24,7 +28,7 @@ export const categoryListQuery = gql`
 `;
 
 export const categoryQuery = gql`
-${simpleCategory}
+  ${simpleCategory}
   query CategoryDetails($id: ID!) {
     category(id: $id) {
       ...SimpleCategory
@@ -36,7 +40,7 @@ ${simpleCategory}
           name
           slug
           filterableInStorefront
-          values(category:$id) {
+          values(category: $id) {
             id
             name
             slug
@@ -54,12 +58,12 @@ export const categoryProducts = gql`
   query CategoryProducts(
     $id: ID!
     $attributes: [AttributeInput]
-    $pageSize: Int
-    $page: Int
-    $sortBy: ProductOrder
-    $priceLte: Float
-    $priceGte: Float
     $districtId: ID
+    $page: Int
+    $pageSize: Int
+    $priceGte: Float
+    $priceLte: Float
+    $sortBy: ProductOrder
   ) {
     paginatedProducts(
       page: $page

@@ -4,7 +4,6 @@ import { FilterSidebar } from '@app/components/organisms/FilterSidebar';
 import { Breadcrumbs } from '@farmacia-retail/farmauna-components';
 import { CollectionCategories_collection } from '@sdk/queries/gqlTypes/CollectionCategories';
 import { CollectionProductsVariables } from '@sdk/queries/gqlTypes/CollectionProducts';
-import { IPaginationProps } from '@temp/@next/components/molecules/Pagination/types';
 import {
   IAddToCartCallback,
   IRemoveItemToCartCallback,
@@ -13,14 +12,15 @@ import {
 import { useMediaScreen } from '@temp/@next/globalStyles';
 import { largeScreen } from '@temp/@next/globalStyles/constants';
 import { useDistrictSelected, useScrollTo } from '@temp/@next/hooks';
+import {
+  getFiltersInitial,
+  onAttributeFiltersChange,
+} from '@temp/@next/utils/filter';
 import { IItems } from '@temp/@sdk/api/Cart/types';
 import { useCollectionProducts } from '@temp/@sdk/react';
 import { baseUrl } from '@temp/app/routes';
 import { EmptyProduct } from '@temp/components';
-import {
-  COLLECTION_CATEGORY_FILTER_LABEL,
-  PRODUCTS_PER_PAGE,
-} from '@temp/core/config';
+import { COLLECTION_CATEGORY_FILTER_LABEL } from '@temp/core/config';
 import { structuredData } from '@temp/core/SEO/Collection/structuredData';
 import {
   convertSortByFromString,
@@ -43,8 +43,7 @@ interface SortItem {
 type SortOptions = Array<SortItem>;
 type CategoryOptions = Array<SortItem>;
 
-interface PageProps
-  extends Omit<IPaginationProps, 'total' | 'pageSize' | 'page'> {
+interface PageProps {
   attributes: IFilterAttributes[];
   categoryOptions: CategoryOptions;
   collection: CollectionCategories_collection;
@@ -58,8 +57,6 @@ interface PageProps
 const getPageSize = (isMobile: boolean): number => {
   return isMobile ? 8 : 12;
 };
-
-const DEFAULT_SORT = '-stock';
 
 const Page: React.FC<PageProps> = ({
   addToCart,
@@ -83,13 +80,10 @@ const Page: React.FC<PageProps> = ({
     sortBy: StringParam,
   });
 
-  const filters: IFilters = {
-    attributes: attributeFilters,
-    pageSize: PRODUCTS_PER_PAGE,
-    priceGte: null,
-    priceLte: null,
-    sortBy: sort || DEFAULT_SORT,
-  };
+  const filters: IFilters = React.useMemo(
+    () => getFiltersInitial(attributeFilters, sort),
+    [attributeFilters, sort]
+  );
 
   const variables: CollectionProductsVariables = {
     ...filters,
@@ -167,77 +161,8 @@ const Page: React.FC<PageProps> = ({
     setQuery({ page });
   };
 
-  const onAttributeFiltersChange = (name, value) => {
-    if (attributeFilters && attributeFilters.hasOwnProperty(name)) {
-      if (attributeFilters[name].includes(value)) {
-        if (filters.attributes[`${name}`].length === 1) {
-          const att = { ...attributeFilters };
-          delete att[`${name}`];
-          setQuery({
-            filters: { ...att },
-          });
-        } else {
-          setQuery({
-            filters: {
-              ...attributeFilters,
-              [`${name}`]: attributeFilters[`${name}`].filter(
-                (item) => item !== value
-              ),
-            },
-          });
-        }
-      } else {
-        setQuery({
-          filters: {
-            ...attributeFilters,
-            [`${name}`]: [...attributeFilters[`${name}`], value],
-          },
-        });
-      }
-    } else {
-      setQuery({
-        filters: {
-          ...attributeFilters,
-          [`${name}`]: [value],
-        },
-      });
-    }
-  };
-
-  const getProductListHeader = () => {
-    return (
-      <ProductListHeader
-        activeSecondaryOptions={variablesWithCategories.categories}
-        activeFilters={
-          filters!.attributes
-            ? Object.keys(filters!.attributes!.brand).length
-            : 0
-        }
-        activeFiltersAttributes={activeFiltersAttributes}
-        activeSortOption={filters.sortBy}
-        clearFilters={clearFilters}
-        numberOfProducts={products ? products.totalCount : 0}
-        onChangeSecondaryOption={(value) => {
-          setQuery({
-            category: value.label,
-            page: 1,
-          });
-        }}
-        onChangeSortOption={(value) => {
-          setQuery({
-            page: 1,
-            sortBy: value.value,
-          });
-        }}
-        onCloseFilterAttribute={onAttributeFiltersChange}
-        openFiltersMenu={() => setShowFilters(true)}
-        secondaryLabel="Categorías"
-        secondaryClearLabel={COLLECTION_CATEGORY_FILTER_LABEL}
-        secondaryOptions={categoryOptions}
-        showSecondarySelect
-        sortOptions={sortOptions}
-      />
-    );
+  const onFiltersChange = (name: string, value: string) => {
+    onAttributeFiltersChange(attributeFilters, filters, name, setQuery, value);
   };
 
   React.useEffect(() => goTop(), [products]);
@@ -252,7 +177,37 @@ const Page: React.FC<PageProps> = ({
         />
       </div>
       <HeaderProducts className="collection-container">
-        {getProductListHeader()}
+        <ProductListHeader
+          activeSecondaryOptions={variablesWithCategories.categories}
+          activeFilters={
+            filters!.attributes
+              ? Object.keys(filters!.attributes!.brand).length
+              : 0
+          }
+          activeFiltersAttributes={activeFiltersAttributes}
+          activeSortOption={filters.sortBy}
+          clearFilters={clearFilters}
+          numberOfProducts={products ? products.totalCount : 0}
+          onChangeSecondaryOption={(value) => {
+            setQuery({
+              category: value.label,
+              page: 1,
+            });
+          }}
+          onChangeSortOption={(value) => {
+            setQuery({
+              page: 1,
+              sortBy: value.value,
+            });
+          }}
+          onCloseFilterAttribute={onFiltersChange}
+          openFiltersMenu={() => setShowFilters(true)}
+          secondaryLabel="Categorías"
+          secondaryClearLabel={COLLECTION_CATEGORY_FILTER_LABEL}
+          secondaryOptions={categoryOptions}
+          showSecondarySelect
+          sortOptions={sortOptions}
+        />
       </HeaderProducts>
       <div className="collection-container collection-body">
         <script className="structured-data-list" type="application/ld+json">
@@ -262,7 +217,7 @@ const Page: React.FC<PageProps> = ({
           <FilterSidebar
             show={showFilters}
             hide={() => setShowFilters(false)}
-            onAttributeFiltersChange={onAttributeFiltersChange}
+            onAttributeFiltersChange={onFiltersChange}
             attributes={attributes}
             filters={filters}
           />

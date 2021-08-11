@@ -482,10 +482,10 @@ export interface CategoryProducts {
 export interface CategoryProductsVariables {
   id: string;
   attributes?: (AttributeInput | null)[] | null;
-  pageSize?: number | null;
-  page?: number | null;
-  sortBy?: ProductOrder | null;
-  priceLte?: number | null;
-  priceGte?: number | null;
   districtId?: string | null;
+  page?: number | null;
+  pageSize?: number | null;
+  priceGte?: number | null;
+  priceLte?: number | null;
+  sortBy?: ProductOrder | null;
 }
