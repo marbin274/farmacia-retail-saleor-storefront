@@ -3,41 +3,44 @@ import {
   ApolloError,
   ObservableQuery,
   WatchQueryOptions,
-} from "apollo-client";
-import { GraphQLError } from "graphql";
+} from 'apollo-client';
+import { GraphQLError } from 'graphql';
 
-import { fireSignOut, getAuthToken, setAuthToken } from "../auth";
-import { removeGaUserId, setGaUserId } from "../gaConfig";
-import { MUTATIONS } from "../mutations";
-import { PasswordChange } from "../mutations/gqlTypes/PasswordChange";
-import { SaveFavoriteCategories } from "../mutations/gqlTypes/SaveFavoriteCategories";
-import { AccountConfirm } from "../mutations/gqlTypes/AccountConfirm";
-import { SetPassword } from "../mutations/gqlTypes/SetPassword";
-import { TokenAuth_tokenCreate } from "../mutations/gqlTypes/TokenAuth";
-import { QUERIES } from "../queries";
-import { UserDetails } from "../queries/gqlTypes/UserDetails";
-import { RequireAtLeastOne } from "../tsHelpers";
+import { fireSignOut, getAuthToken, setAuthToken } from '../auth';
+import { removeGaUserId, setGaUserId } from '../gaConfig';
+import { MUTATIONS } from '../mutations';
+import { PasswordChange } from '../mutations/gqlTypes/PasswordChange';
+import { SaveFavoriteCategories } from '../mutations/gqlTypes/SaveFavoriteCategories';
+import { AccountConfirm } from '../mutations/gqlTypes/AccountConfirm';
+import { SetPassword } from '../mutations/gqlTypes/SetPassword';
+import { TokenAuth_tokenCreate } from '../mutations/gqlTypes/TokenAuth';
+import { QUERIES } from '../queries';
+import { UserDetails } from '../queries/gqlTypes/UserDetails';
+import { RequireAtLeastOne } from '../tsHelpers';
 import {
   InferOptions,
   MapFn,
   QueryShape,
   WatchMapFn,
   WatchQueryData,
-} from "../types";
+} from '../types';
 import {
   getErrorsFromData,
   getMappedData,
   isDataEmpty,
   mergeEdges,
-} from "../utils";
-import { SaveFavoriteCategoriesResult, SetAccountConfirmResult, SetPasswordChange, SetPasswordResult, SignIn } from "./types";
-import { WINDOW_EXISTS } from "../consts";
+} from '../utils';
+import {
+  SaveFavoriteCategoriesResult,
+  SetAccountConfirmResult,
+  SetPasswordChange,
+  SetPasswordResult,
+  SignIn,
+} from './types';
+import { WINDOW_EXISTS } from '../consts';
 
 export class APIProxy {
-  getArticle = this.watchQuery(
-    QUERIES.Article,
-    (data) => data
-  );
+  getArticle = this.watchQuery(QUERIES.Article, (data) => data);
 
   getAttributes = this.watchQuery(
     QUERIES.Attributes,
@@ -83,10 +86,7 @@ export class APIProxy {
     (data) => data.orderByToken
   );
 
-  getLanding = this.watchQuery(
-    QUERIES.Landing,
-    (data) => data
-  );
+  getLanding = this.watchQuery(QUERIES.Landing, (data) => data);
 
   getVariantsProducts = this.watchQuery(
     QUERIES.VariantsProducts,
@@ -95,10 +95,7 @@ export class APIProxy {
 
   getShopDetails = this.watchQuery(QUERIES.GetShopDetails, (data) => data);
 
-  searchProducts = this.watchQuery(
-    QUERIES.SearchProducts,
-    (data) => data
-  );
+  searchProducts = this.watchQuery(QUERIES.SearchProducts, (data) => data);
 
   setUserDefaultAddress = this.fireQuery(
     MUTATIONS.AddressTypeUpdate,
@@ -147,19 +144,16 @@ export class APIProxy {
   }
 
   getUserDetails = (
-    variables: InferOptions<QUERIES["UserDetails"]>["variables"],
-    options: Omit<InferOptions<QUERIES["UserDetails"]>, "variables"> & {
-      onUpdate: (data: UserDetails["me"] | null) => void;
+    variables: InferOptions<QUERIES['UserDetails']>['variables'],
+    options: Omit<InferOptions<QUERIES['UserDetails']>, 'variables'> & {
+      onUpdate: (data: UserDetails['me'] | null) => void;
     }
   ) => {
     if (this.isLoggedIn()) {
       return this.watchQuery(QUERIES.UserDetails, (data) => {
         setGaUserId(data.me?.id);
-        return data.me
-      })(
-        variables,
-        options
-      );
+        return data.me;
+      })(variables, options);
     }
     if (options.onUpdate) {
       removeGaUserId();
@@ -167,7 +161,7 @@ export class APIProxy {
     }
     return {
       refetch: () =>
-        new Promise<{ data: UserDetails["me"] }>((resolve, _reject) => {
+        new Promise<{ data: UserDetails['me'] }>((resolve, _reject) => {
           resolve({ data: null });
         }),
       unsubscribe: () => undefined,
@@ -175,8 +169,8 @@ export class APIProxy {
   };
 
   signIn = async (
-    variables: InferOptions<MUTATIONS["TokenAuth"]>["variables"],
-    options?: Omit<InferOptions<MUTATIONS["TokenAuth"]>, "variables">
+    variables: InferOptions<MUTATIONS['TokenAuth']>['variables'],
+    options?: Omit<InferOptions<MUTATIONS['TokenAuth']>, 'variables'>
   ): Promise<SignIn> => {
     await this.client.resetStore();
     let result: {
@@ -188,7 +182,7 @@ export class APIProxy {
       (mutationData) => mutationData!.tokenCreate
     )(variables, {
       ...options,
-      fetchPolicy: "no-cache",
+      fetchPolicy: 'no-cache',
     });
     const { data } = result;
 
@@ -221,8 +215,8 @@ export class APIProxy {
     });
 
   setPassword = async (
-    variables: InferOptions<MUTATIONS["SetPassword"]>["variables"],
-    options?: Omit<InferOptions<MUTATIONS["SetPassword"]>, "variables">
+    variables: InferOptions<MUTATIONS['SetPassword']>['variables'],
+    options?: Omit<InferOptions<MUTATIONS['SetPassword']>, 'variables'>
   ): Promise<SetPasswordResult> => {
     let result: {
       data: SetPassword | null;
@@ -232,7 +226,7 @@ export class APIProxy {
       variables,
       {
         ...options,
-        fetchPolicy: "no-cache",
+        fetchPolicy: 'no-cache',
       }
     );
     const { data } = result;
@@ -244,20 +238,23 @@ export class APIProxy {
   };
 
   saveFavoriteCategories = async (
-    variables: InferOptions<MUTATIONS["SaveFavoriteCategories"]>["variables"],
-    options?: Omit<InferOptions<MUTATIONS["SaveFavoriteCategories"]>, "variables">
+    variables: InferOptions<MUTATIONS['SaveFavoriteCategories']>['variables'],
+    options?: Omit<
+      InferOptions<MUTATIONS['SaveFavoriteCategories']>,
+      'variables'
+    >
   ): Promise<SaveFavoriteCategoriesResult> => {
     let result: {
       data: SaveFavoriteCategories | null;
     } | null = null;
 
-    result = await this.fireQuery(MUTATIONS.SaveFavoriteCategories, (data) => data!)(
-      variables,
-      {
-        ...options,
-        fetchPolicy: "no-cache",
-      }
-    );
+    result = await this.fireQuery(
+      MUTATIONS.SaveFavoriteCategories,
+      (data) => data!
+    )(variables, {
+      ...options,
+      fetchPolicy: 'no-cache',
+    });
     const { data } = result;
 
     return {
@@ -267,8 +264,8 @@ export class APIProxy {
   };
 
   setAccountConfirm = async (
-    variables: InferOptions<MUTATIONS["SetAccountConfirm"]>["variables"],
-    options?: Omit<InferOptions<MUTATIONS["SetAccountConfirm"]>, "variables">
+    variables: InferOptions<MUTATIONS['SetAccountConfirm']>['variables'],
+    options?: Omit<InferOptions<MUTATIONS['SetAccountConfirm']>, 'variables'>
   ): Promise<SetAccountConfirmResult> => {
     let result: {
       data: AccountConfirm | null;
@@ -278,7 +275,7 @@ export class APIProxy {
       variables,
       {
         ...options,
-        fetchPolicy: "no-cache",
+        fetchPolicy: 'no-cache',
       }
     );
     const { data } = result;
@@ -290,8 +287,8 @@ export class APIProxy {
   };
 
   setPasswordChange = async (
-    variables: InferOptions<MUTATIONS["PasswordChange"]>["variables"],
-    options?: Omit<InferOptions<MUTATIONS["PasswordChange"]>, "variables">
+    variables: InferOptions<MUTATIONS['PasswordChange']>['variables'],
+    options?: Omit<InferOptions<MUTATIONS['PasswordChange']>, 'variables'>
   ): Promise<SetPasswordChange> => {
     let result: {
       data: PasswordChange | null;
@@ -301,7 +298,7 @@ export class APIProxy {
       variables,
       {
         ...options,
-        fetchPolicy: "no-cache",
+        fetchPolicy: 'no-cache',
       }
     );
     const { data } = result;
@@ -318,12 +315,12 @@ export class APIProxy {
     };
 
     if (WINDOW_EXISTS) {
-      window.addEventListener("auth", eventHandler);
+      window.addEventListener('auth', eventHandler);
     }
 
     return () => {
       if (WINDOW_EXISTS) {
-        window.removeEventListener("auth", eventHandler);
+        window.removeEventListener('auth', eventHandler);
       }
     };
   };
@@ -337,10 +334,10 @@ export class APIProxy {
     mapFn: WatchMapFn<T, TResult>
   ) {
     return <
-      TVariables extends InferOptions<T>["variables"],
+      TVariables extends InferOptions<T>['variables'],
       TOptions extends Omit<
         InferOptions<T> | WatchQueryOptions<InferOptions<T>>,
-        "variables"
+        'variables'
       >
     >(
       variables: TVariables,
@@ -367,7 +364,7 @@ export class APIProxy {
       if (options.skip) {
         return {
           refetch: () => {
-            return new Promise(resolve => {
+            return new Promise((resolve) => {
               resolve({ data: null });
             });
           },
@@ -376,7 +373,7 @@ export class APIProxy {
       }
 
       const subscription = observable.subscribe(
-        result => {
+        (result) => {
           const { data, errors: apolloErrors, loading } = result;
           const errorHandledData = handleDataErrors(
             mapFn,
@@ -396,7 +393,7 @@ export class APIProxy {
             }
           }
         },
-        error => {
+        (error) => {
           if (onError) {
             onError(error);
           }
@@ -431,7 +428,7 @@ export class APIProxy {
                 );
 
                 // use new result for metadata and mutate existing data
-                Object.keys(prevResultRef).forEach(key => {
+                Object.keys(prevResultRef).forEach((key) => {
                   prevResultRef[key] = newResultRef[key];
                 });
                 prevResultRef.edges = mergedEdges;
@@ -460,7 +457,7 @@ export class APIProxy {
           );
         },
         setOptions: (newOptions: TOptions) =>
-        this.firePromise(() => observable.setOptions(newOptions), mapFn),
+          this.firePromise(() => observable.setOptions(newOptions), mapFn),
         unsubscribe: subscription.unsubscribe.bind(subscription),
       };
     };
@@ -468,8 +465,8 @@ export class APIProxy {
 
   fireQuery<T extends QueryShape, TResult>(query: T, mapFn: MapFn<T, TResult>) {
     return (
-      variables: InferOptions<T>["variables"],
-      options?: Omit<InferOptions<T>, "variables">
+      variables: InferOptions<T>['variables'],
+      options?: Omit<InferOptions<T>, 'variables'>
     ) =>
       this.firePromise(
         () =>

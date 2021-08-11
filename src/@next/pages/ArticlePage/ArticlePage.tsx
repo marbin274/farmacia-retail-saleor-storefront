@@ -1,12 +1,13 @@
 import * as React from "react";
 import { RouteComponentProps } from "react-router-dom";
-import { Loader, MetaWrapper, NotFound } from "@temp/components";
+import { MetaWrapper, NotFound } from "@temp/components";
+import { Loader } from "@components/atoms";
 import { generatePageUrl, maybe } from "@temp/core/utils";
 import { ArticleDetail_shop } from "@sdk/queries/gqlTypes/ArticleDetail";
 import Page from "./Page";
 import { useArticle } from "@sdk/react";
 
-const canDisplay = page =>
+const canDisplay = (page) =>
   maybe(() => !!page && !!page.title && !!page.contentJson);
 const getHeaderImage = (shop: ArticleDetail_shop) =>
   maybe(() => shop.homepageCollection.backgroundImage.url);
@@ -18,7 +19,7 @@ export const ArticlePage: React.FC<ViewProps> = ({
     params: { slug },
   },
 }) => {
-  const {data, loading} = useArticle({slug});
+  const { data, loading } = useArticle({ slug });
 
   if (loading) {
     return <Loader />;
@@ -51,6 +52,5 @@ export const ArticlePage: React.FC<ViewProps> = ({
   if (page === null) {
     return <NotFound />;
   }
-
 };
 export default ArticlePage;

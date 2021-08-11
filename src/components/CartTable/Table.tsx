@@ -1,13 +1,11 @@
-import { smallScreen } from "../../globalStyles/scss/variables.scss";
-import "./scss/index.scss";
-import * as S from "./styles";
+import { useMediaScreen } from "@temp/@next/globalStyles";
+import { smallScreen } from "@styles/constants";
 import * as React from "react";
-import Media from "react-media";
-
 import CostRow from "./CostRow";
-import ProductRow, { EditableProductRowProps, ILine } from "./ProductRow";
+import ProductRow, { ILine } from "./ProductRow";
+import * as S from "./styles";
 
-interface TableProps extends EditableProductRowProps {
+interface TableProps {
   lines: ILine[];
   subtotal: React.ReactNode;
   deliveryCost?: React.ReactNode;
@@ -24,60 +22,63 @@ const Table: React.FC<TableProps> = ({
   discountName,
   lines,
   ...rowProps
-}) => (
-  <Media query={{ minWidth: smallScreen }}>
-    {mediumScreen => (
-      <S.Table className="cart-table" style={{margin: 0}}>
-        <thead>
-          <tr>
-            <th>Productos</th>
-            <th>Precio</th>
-            <th className="cart-table__quantity-header">Cantidad</th>
-            <th colSpan={2} className="cart-table__total-header">Subtotal</th>
-          </tr>
-        </thead>
-        <tbody>
-          {lines.map(line => (
-            <ProductRow
-              key={line.id}
-              line={line}
-              mediumScreen={mediumScreen}
-              {...rowProps}
-            />
-          ))}
-        </tbody>
-        <tfoot>
-          <CostRow
-            mediumScreen={mediumScreen}
-            heading="Subtotal"
-            cost={subtotal}
+}) => {
+  const { isCustomMinScreen: isSmallScreen } = useMediaScreen(
+    smallScreen.toString()
+  );
+  return (
+    <S.Table className="fa-m-0 fa-text-xs sm:fa-text-sm">
+      <thead>
+        <tr className="fa-border-b fa-border-solid fa-border-gray-04">
+          <th className="fa-px-0 fa-py-1 lg:fa-px-2 lg:fa-py-4">Productos</th>
+          <th className="fa-px-0 fa-py-1 lg:fa-px-2 lg:fa-py-4">Precio</th>
+          <th className="fa-text-center">Cantidad</th>
+          <th colSpan={2} className="fa-text-right">
+            Subtotal
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {lines.map((line) => (
+          <ProductRow
+            key={line.id}
+            line={line}
+            smallScreen={isSmallScreen}
+            {...rowProps}
           />
-          {discount && (
-            <CostRow
-              mediumScreen={mediumScreen}
-              heading={`Descuento: ${discountName}`}
-              cost={discount}
-            />
-          )}
-          {deliveryCost && (
-            <CostRow
-              mediumScreen={mediumScreen}
-              heading="Costo del delivery"
-              cost={deliveryCost}
-            />
-          )}
-          {totalCost && (
-            <CostRow
-              mediumScreen={mediumScreen}
-              heading="Total"
-              cost={totalCost}
-              bold
-            />
-          )}
-        </tfoot>
-      </S.Table>
-    )}
-  </Media>
-);
+        ))}
+      </tbody>
+      <tfoot>
+        <CostRow
+          smallScreen={isSmallScreen}
+          heading="Subtotal"
+          cost={subtotal}
+        />
+        {discount && (
+          <CostRow
+            smallScreen={isSmallScreen}
+            heading={`Descuento: ${discountName}`}
+            cost={discount}
+          />
+        )}
+        {deliveryCost && (
+          <CostRow
+            smallScreen={isSmallScreen}
+            heading="Costo del delivery"
+            cost={deliveryCost}
+          />
+        )}
+        {totalCost && (
+          <CostRow
+            smallScreen={isSmallScreen}
+            heading="Total"
+            cost={totalCost}
+            bold
+          />
+        )}
+      </tfoot>
+    </S.Table>
+  );
+};
 
 export default Table;

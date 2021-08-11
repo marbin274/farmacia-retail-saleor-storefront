@@ -1,4 +1,5 @@
 import { useCart, useSearchProducts } from "@sdk/react";
+import { Loader } from "@components/atoms";
 import {
   IAddToCartCallback,
   IRemoveItemToCartCallback,
@@ -6,7 +7,7 @@ import {
 } from "@temp/@next/components/molecules/ProductTileAUNA/types";
 import { useMediaScreen } from "@temp/@next/globalStyles";
 import { useDistrictSelected } from "@temp/@next/hooks/useDistrictSelected";
-import { Loader, MetaWrapper, NotFound } from "@temp/components";
+import { MetaWrapper, NotFound } from "@temp/components";
 import { META_DEFAULTS, PRODUCTS_PER_PAGE } from "@temp/core/config";
 import {
   convertSortByFromString,
@@ -14,37 +15,41 @@ import {
   getGraphqlIdFromDBId,
   maybe,
 } from "@temp/core/utils";
-import { convertToFilterSideBar, FilterQuerySet } from "@temp/core/utils/filters";
+import {
+  convertToFilterSideBar,
+  FilterQuerySet,
+} from "@temp/core/utils/filters";
 import { SORT_OPTIONS } from "@temp/core/utils/sorts";
 import { IFilters } from "@types";
 import * as React from "react";
 import { RouteComponentProps } from "react-router";
-import { NumberParam, StringParam, useQueryParam, useQueryParams } from "use-query-params";
+import {
+  NumberParam,
+  StringParam,
+  useQueryParam,
+  useQueryParams,
+} from "use-query-params";
 import Page from "./Page";
-
 
 type ViewProps = RouteComponentProps<{
   id: string;
 }>;
 
-const DEFAULT_SORT = '-stock';
+const DEFAULT_SORT = "-stock";
 
 const getPageSize = (isMobile: boolean): number => {
   return isMobile ? 8 : 12;
 };
 
-
 export const SearchPage: React.FC<ViewProps> = ({ match }) => {
   const [districtSelected] = useDistrictSelected();
   const [search, setSearch] = useQueryParam("q", StringParam);
-  const [
-    { filters: attributeFilters, page, sortBy: sort },
-    setQuery,
-  ] = useQueryParams({
-    filters: FilterQuerySet,
-    page: NumberParam,
-    sortBy: StringParam,
-  });
+  const [{ filters: attributeFilters, page, sortBy: sort }, setQuery] =
+    useQueryParams({
+      filters: FilterQuerySet,
+      page: NumberParam,
+      sortBy: StringParam,
+    });
 
   const filters: IFilters = {
     attributes: attributeFilters,
@@ -59,7 +64,7 @@ export const SearchPage: React.FC<ViewProps> = ({ match }) => {
       ? convertToAttributeScalar(filters.attributes)
       : {},
     id: getGraphqlIdFromDBId(match.params.id, "Category"),
-    query: search || '',
+    query: search || "",
     page: page || 1,
     sortBy: convertSortByFromString(filters.sortBy),
     districtId: districtSelected.id,
@@ -72,10 +77,11 @@ export const SearchPage: React.FC<ViewProps> = ({ match }) => {
     subtractItem,
   } = useCart();
 
-  const { isMobileScreen } = useMediaScreen()
-  const { data, loading } = useSearchProducts({ ...variables, pageSize: getPageSize(isMobileScreen) });
-
-  
+  const { isMobileScreen } = useMediaScreen();
+  const { data, loading } = useSearchProducts({
+    ...variables,
+    pageSize: getPageSize(isMobileScreen),
+  });
 
   const clearFilters = () => {
     setQuery({ filters: {} });
@@ -95,7 +101,7 @@ export const SearchPage: React.FC<ViewProps> = ({ match }) => {
             filters: {
               ...attributeFilters,
               [`${name}`]: attributeFilters[`${name}`].filter(
-                (item : {}) => item !== value
+                (item: {}) => item !== value
               ),
             },
           });
@@ -118,8 +124,6 @@ export const SearchPage: React.FC<ViewProps> = ({ match }) => {
     }
   };
 
-  
-
   const handlePageChange = (page: number) => {
     setQuery({ page });
   };
@@ -128,14 +132,13 @@ export const SearchPage: React.FC<ViewProps> = ({ match }) => {
     addItem(product, quantity);
   };
 
-  const removeItemToCart: IRemoveItemToCartCallback = product => {
+  const removeItemToCart: IRemoveItemToCartCallback = (product) => {
     removeItem(product);
   };
 
-  const subtractItemToCart: ISubtractItemToCartCallback = product => {
+  const subtractItemToCart: ISubtractItemToCartCallback = (product) => {
     subtractItem(product);
   };
-
 
   if (loading) {
     return <Loader />;
@@ -167,11 +170,9 @@ export const SearchPage: React.FC<ViewProps> = ({ match }) => {
           items={productsOnCart}
           onAttributeFiltersChange={onFiltersChange}
           activeFilters={
-            filters!.attributes
-              ? Object.keys(filters!.attributes).length
-              : 0
+            filters!.attributes ? Object.keys(filters!.attributes).length : 0
           }
-          onOrder={value => {
+          onOrder={(value) => {
             setQuery({
               page: 1,
               sortBy: value.value,
@@ -192,6 +193,6 @@ export const SearchPage: React.FC<ViewProps> = ({ match }) => {
   if (data && data?.paginatedProducts === null) {
     return <NotFound />;
   }
-}
+};
 
 export default SearchPage;

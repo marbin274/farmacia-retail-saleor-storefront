@@ -6,9 +6,8 @@ import { useFormik } from "formik";
 import * as React from "react";
 import ForgottenPassword from "../OverlayManager/Login/ForgottenPassword";
 import { loginFormSchema } from "./loginForm.schema";
-import "./scss/index.scss";
 import { Button, InputField } from "@farmacia-retail/farmauna-components";
-
+import * as S from "./styles";
 interface ILoginForm {
   hide?: () => void;
   onSwitchSection?: () => void;
@@ -69,10 +68,9 @@ const LoginForm: React.FC<ILoginForm> = ({
   return (
     <div className="login-form">
       <form onSubmit={handleSubmit}>
-        <div className="InputField fa-pb-2">
+        <S.InputWrapper className="InputField fa-mx-0 fa-mt-0 fa-mb-5 fa-pb-2">
           <InputField
             label="Correo electrónico"
-            className="login-form__input-wrapper"
             error={!!errors?.email ? errors!.email[0].message : ""}
             placeholder="Correo electrónico"
             autoComplete="email"
@@ -82,8 +80,8 @@ const LoginForm: React.FC<ILoginForm> = ({
             onBlur={handleBlur}
             onChange={handleChange}
           />
-        </div>
-        <div className="InputField">
+        </S.InputWrapper>
+        <S.InputWrapper className="InputField fa-mx-0 fa-mt-0 fa-mb-5 fa-pb-2">
           <InputField
             label="Contraseña"
             type="password"
@@ -94,30 +92,38 @@ const LoginForm: React.FC<ILoginForm> = ({
             value={!values?.password ? "" : values?.password}
             onBlur={handleBlur}
             onChange={handleChange}
-            className="login-form__input-wrapper"
           />
-        </div>
+        </S.InputWrapper>
         <ForgottenPassword onClick={onForgottenPassword} />
         {requestErrors?.extraInfo?.userInputErrors?.[0]?.message && (
-          <div className="login-form__errors">
-            <span className="login-form__errors__error form-error">
+          <div>
+            <span className="fa-text-error-medium">
               {requestErrors.extraInfo.userInputErrors[0].message}
             </span>
           </div>
         )}
-        <div className="login-form__button">
+        <div className="fa-mt-4 fa-text-center">
           <Button
             type="submit"
             size="large"
+            className="fa-max-w-full"
+            fullWidth
             {...(loading && { disabled: true })}
           >
             {loading ? "Cargando" : "Ingresar"}
           </Button>
         </div>
         {!hideRegister && (
-          <div className="login-form__change-section">
-            <p>¿No tienes cuenta?</p>
-            <Button variant="outline" size="large" onClick={onSwitchSection}>
+          <div className="fa-text-center fa-flex fa-flex-col fa-justify-center fa-w-full fa-mx-auto fa-mb-auto fa-mt-6">
+            <p className="fa-mb-4 fa-text-neutral-darkest fa-font-medium fa-text-sm">
+              ¿No tienes cuenta?
+            </p>
+            <Button
+              className="fa-font-semibold fa-text-sm"
+              variant="outline"
+              size="large"
+              onClick={onSwitchSection}
+            >
               Regístrate
             </Button>
           </div>
