@@ -1,4 +1,3 @@
-import './scss/index.scss';
 import * as React from 'react';
 import Nav from './Nav';
 import { useLocation } from 'react-router-dom';
