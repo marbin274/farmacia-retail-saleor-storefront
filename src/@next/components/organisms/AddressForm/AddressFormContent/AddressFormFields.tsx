@@ -60,15 +60,20 @@ export const StreetAddress1 = ({
 }: IFieldsProps & { temporaryError?: string }) => {
   const error = fieldErrors?.streetAddress1?.[0]?.message || temporaryError;
   const ref = useRef<IAddressAutocompleteRef>();
+  const containerRef = React.useRef<HTMLDivElement>();
 
   useEffect(() => {
-    if (error) {
-      ref.current?.focus();
+    if (temporaryError) {
+      ref.current?.focus({ preventScroll: true });
+      containerRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
     }
-  }, [ref, error]);
+  }, [ref, containerRef, temporaryError]);
 
   return (
-    <>
+    <div ref={containerRef}>
       <AddressAutocomplete
         data-cy="addressAutocomplete"
         name="streetAddress1"
@@ -90,7 +95,7 @@ export const StreetAddress1 = ({
           Escribe tu dirección y elige una de las opciones desplegadas
         </span>
       )}
-    </>
+    </div>
   );
 };
 
