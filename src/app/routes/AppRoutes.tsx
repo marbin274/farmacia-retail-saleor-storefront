@@ -6,6 +6,7 @@ import {
   CategoryPage,
   CheckoutPage,
   CollectionPage,
+  HomePage,
   LandingPage,
   ProductPage,
   PasswordReset,
@@ -17,7 +18,6 @@ import {
 import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { CheckoutLogin, NotFound } from '../../components';
-import { HomePage } from '../../views/Home';
 import * as paths from './paths';
 
 export const Routes: React.FC = () => (

@@ -5,6 +5,7 @@ export * from './CartPage';
 export * from './CategoryPage';
 export * from './CheckoutPage';
 export * from './CollectionPage';
+export * from './HomePage';
 export * from './LandingPage';
 export * from './ProductPage';
 export * from './PasswordReset';

@@ -1,4 +1,4 @@
-import { ContainerStyle, mediaUp, styled } from "@styles";
+import { ContainerStyle, mediaUp, styled } from '@styles';
 
 export const WraperOpenBanner = styled.div`
   align-items: center;
@@ -17,11 +17,11 @@ export const TopImageItem = styled.div<{
   imageMobile: string;
   imageDesktop: string;
 }>`
-  background-image: url("${(props: any) => props.imageMobile}");
+  background-image: url('${(props: any) => props.imageMobile}');
   background-repeat: no-repeat;
   background-size: 100% 100%;
   cursor: pointer;
-  height: 3.5rem; 
+  height: 3.5rem;
   ${mediaUp.smallScreen`
     background-image: url("${(props: any) => props.imageDesktop}");
   `}
@@ -70,7 +70,7 @@ export const TopImageDistrictBannerOpen = styled.div<{
   imageMobile: string;
   imageDesktop: string;
 }>`
-  background: no-repeat url("${(props: any) => props.imageMobile}") transparent;
+  background: no-repeat url('${(props: any) => props.imageMobile}') transparent;
   background-size: 100% 100%;
   cursor: pointer;
   height: 4rem;

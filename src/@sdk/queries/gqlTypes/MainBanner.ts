@@ -3,10 +3,10 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL query operation: Banner
+// GraphQL query operation: MainBanner
 // ====================================================
 
-export interface Banner_mainBanner_frames_images {
+export interface MainBanner_mainBanner_frames_images {
   __typename: "BannerImage";
   /**
    * The screen type of the image
@@ -18,7 +18,7 @@ export interface Banner_mainBanner_frames_images {
   url: string;
 }
 
-export interface Banner_mainBanner_frames {
+export interface MainBanner_mainBanner_frames {
   __typename: "BannerFrame";
   /**
    * The ID of the object.
@@ -31,10 +31,10 @@ export interface Banner_mainBanner_frames {
   /**
    * Lis of banner images
    */
-  images: (Banner_mainBanner_frames_images | null)[] | null;
+  images: (MainBanner_mainBanner_frames_images | null)[] | null;
 }
 
-export interface Banner_mainBanner {
+export interface MainBanner_mainBanner {
   __typename: "Banner";
   /**
    * The ID of the object.
@@ -43,12 +43,12 @@ export interface Banner_mainBanner {
   /**
    * The frames containing images for each screen
    */
-  frames: (Banner_mainBanner_frames | null)[] | null;
+  frames: (MainBanner_mainBanner_frames | null)[] | null;
 }
 
-export interface Banner {
+export interface MainBanner {
   /**
    * Look up the Banner that must appear in the home page
    */
-  mainBanner: Banner_mainBanner | null;
+  mainBanner: MainBanner_mainBanner | null;
 }

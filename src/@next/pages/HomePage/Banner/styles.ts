@@ -1,4 +1,4 @@
-import { styled } from "@temp/@next/globalStyles";
+import { styled } from '@temp/@next/globalStyles';
 
 export const BannerWrapper = styled.div`
   ul {

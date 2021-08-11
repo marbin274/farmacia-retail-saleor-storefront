@@ -6,6 +6,7 @@ import {
 
 import { RequireOnlyOne } from '../tsHelpers';
 import * as Article from './article';
+import * as Banner from './banner';
 import * as LandingQuery from './landing';
 import * as AttributesList from './attributes';
 import * as Category from './category';
@@ -61,6 +62,8 @@ import {
   CategoryProductsVariables,
   CategoryProducts,
 } from './gqlTypes/CategoryProducts';
+import { HomePage } from './gqlTypes/HomePage';
+import { MainBanner } from './gqlTypes/MainBanner';
 
 type QueryOptions<T = {}> = T extends { [n: string]: never }
   ? Omit<ApolloQueryOptions<{}>, 'query'>
@@ -132,12 +135,28 @@ export const QUERIES = {
       query: Shop.getShop,
       ...options,
     }),
+  HomePage: <TCacheShape>(
+    client: ApolloClient<TCacheShape>,
+    options: QueryOptions<null>
+  ): ObservableQuery<HomePage, any> =>
+    client.watchQuery({
+      query: Shop.homePage,
+      ...options,
+    }),
   Landing: <TCacheShape>(
     client: ApolloClient<TCacheShape>,
     options: QueryOptions<LandingVariables>
   ): ObservableQuery<Landing, any> =>
     client.watchQuery({
       query: LandingQuery.landing,
+      ...options,
+    }),
+  MainBanner: <TCacheShape>(
+    client: ApolloClient<TCacheShape>,
+    options: QueryOptions<null>
+  ): ObservableQuery<MainBanner, any> =>
+    client.watchQuery({
+      query: Banner.mainBanner,
       ...options,
     }),
   OrderDetails: <TCacheShape>(
