@@ -1,10 +1,10 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 export const categoryListQuery = gql`
   query CategoryList {
-    categories (first: 100, level: 0) {
-      edges{
-        node{
+    root_categories(first: 100) {
+      edges {
+        node {
           id
           name
           children(last: 100) {

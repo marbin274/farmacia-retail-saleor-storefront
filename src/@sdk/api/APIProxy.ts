@@ -64,7 +64,7 @@ export class APIProxy {
 
   getCategoryList = this.watchQuery(
     QUERIES.CategoryList,
-    (data) => data.categories
+    (data) => data.root_categories
   );
 
   getCollectionProducts = this.watchQuery(
