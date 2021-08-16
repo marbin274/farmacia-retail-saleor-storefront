@@ -25,7 +25,7 @@ describe("<AccountMenu />", () => {
       </MemoryRouter>
     );
 
-    expect(wrapper.text()).toContain("Mi Cuenta");
+    expect(wrapper.text()).toContain("Mi cuenta");
     expect(wrapper.text()).toContain("Mi perfil");
     expect(wrapper.text()).toContain("Mis direcciones");
   });
