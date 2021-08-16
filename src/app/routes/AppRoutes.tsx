@@ -3,9 +3,12 @@ import {
   AccountConfirmPage,
   ArticlePage,
   CartPage,
+  CategoryPage,
   CheckoutPage,
   CollectionPage,
+  HomePage,
   LandingPage,
+  ProductPage,
   PasswordReset,
   ResetPasswordMailSentPage,
   SearchPage,
@@ -15,9 +18,6 @@ import {
 import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { CheckoutLogin, NotFound } from '../../components';
-import { CategoryPage } from '../../views/Category';
-import { HomePage } from '../../views/Home';
-import { ProductPage } from '../../views/Product';
 import * as paths from './paths';
 
 export const Routes: React.FC = () => (

@@ -1,19 +1,19 @@
-import { BackIcon } from "@farmacia-retail/farmauna-components";
-import farmatheme from "@farmatheme";
-import { NavLink } from "@temp/@next/components/atoms";
-import { MainMenuSubItem } from "@temp/components/MainMenu/gqlTypes//MainMenuSubItem";
+import { BackIcon } from '@farmacia-retail/farmauna-components';
+import farmatheme from '@farmatheme';
+import { NavLink } from '@temp/@next/components/atoms';
+import { MainMenuSubItem } from '@temp/components/MainMenu/gqlTypes//MainMenuSubItem';
 import {
   convertCategoryToMenuItem,
   generateCategoryUrl,
-} from "@temp/core/utils";
+} from '@temp/core/utils';
 import {
   SimpleCategory_ancestors_edges_node,
   SimpleCategory_ancestors_edges_node_children_edges,
-} from "@temp/views/Category/gqlTypes/SimpleCategory";
-import React from "react";
+} from '@sdk/fragments/gqlTypes/SimpleCategory';
+import React from 'react';
 
-import * as S from "./styles";
-import { IProps } from "./types";
+import * as S from './styles';
+import { IProps } from './types';
 
 export const CategoryNavigation: React.FC<IProps> = ({ category }) => {
   const ancestorNode: SimpleCategory_ancestors_edges_node | null = category
@@ -49,8 +49,8 @@ export const CategoryNavigation: React.FC<IProps> = ({ category }) => {
             <NavLink
               fullWidth
               item={convertCategoryToMenuItem(
-                ancestorNode?.id || "",
-                ancestorNode?.name || ""
+                ancestorNode?.id || '',
+                ancestorNode?.name || ''
               )}
             >
               <BackIcon

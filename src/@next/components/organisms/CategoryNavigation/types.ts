@@ -1,4 +1,4 @@
-import { SimpleCategory } from "@temp/views/Category/gqlTypes/SimpleCategory";
+import { SimpleCategory } from '@sdk/fragments/gqlTypes/SimpleCategory';
 
 export interface IProps {
   category: SimpleCategory;
