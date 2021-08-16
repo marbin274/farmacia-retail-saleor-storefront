@@ -4,8 +4,8 @@ import { usePasswordChange } from "@sdk/react";
 import { PasswordChangeForm } from "./PasswordChangeForm";
 import * as S from "./styles";
 import { Button } from "@farmacia-retail/farmauna-components";
-
 export const PasswordTile: React.FC = () => {
+
   const [isEditing, setIsEditing] = React.useState(false);
   const [setPasswordChange, { data, error }] = usePasswordChange();
 
@@ -16,7 +16,7 @@ export const PasswordTile: React.FC = () => {
   }, [data, error]);
   return (
     <S.TileWrapper >
-      <Tile  className=" rounded-md ">
+      <Tile className=" rounded-md ">
         <S.Wrapper className="fa-flex text-center ">
           <S.Content>
             {isEditing ? (

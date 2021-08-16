@@ -3,8 +3,9 @@ import { Attribute, Tile } from "@components/atoms";
 import * as S from "./styles";
 import categories from "@temp/images/categories.png";
 import { Button } from "@farmacia-retail/farmauna-components";
+import { useHistory } from "react-router-dom";
 export const CategoryTile: React.FC = () => {
-
+  const history = useHistory();
   return (
     <S.TileWrapper >
       <Tile className=" rounded-md ">
@@ -28,6 +29,7 @@ export const CategoryTile: React.FC = () => {
             <S.AttributeWrapper>
               <Button size="small"
                 variant="outline"
+                onClick={() => history.push("/account/select-categories/")}
               >
                 Ir a categorias
               </Button>

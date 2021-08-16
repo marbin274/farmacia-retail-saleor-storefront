@@ -3,8 +3,9 @@ import { Attribute, Tile } from "@components/atoms";
 import * as S from "./styles";
 import card from "@temp/images/card.png";
 import { Button } from "@farmacia-retail/farmauna-components";
+import { useHistory } from "react-router-dom";
 export const MainCardTile: React.FC = () => {
-
+  const history = useHistory();
   return (
     <S.TileWrapper >
       <Tile className=" rounded-md ">
@@ -28,6 +29,7 @@ export const MainCardTile: React.FC = () => {
             <S.AttributeWrapper>
               <Button size="small"
                 variant="outline"
+                onClick={() => history.push("/account/payment-methods/")}
               >
                 Agregar tarjeta
               </Button>
