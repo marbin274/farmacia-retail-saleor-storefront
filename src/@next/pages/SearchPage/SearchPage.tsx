@@ -125,9 +125,9 @@ export const SearchPage: React.FC<ViewProps> = ({ match }) => {
           addToCart={addToCart}
           applyFilters={applyFilters}
           attributes={convertToFilterSideBar(data.attributes)}
-          checkedFilters={checkedFiltersPaged}
+          checkedFiltersPaged={checkedFiltersPaged}
           clearFilters={clearFilters}
-          currentFilters={currentFiltersPaged}
+          currentFiltersPaged={currentFiltersPaged}
           displayLoader={loading}
           hasFilterChanged={hasFilterChanged}
           hasNextPage={maybe<boolean>(

@@ -122,12 +122,12 @@ const Page: React.FC<PageProps> = ({
   };
 
   const activeFiltersAttributes =
-    currentFilters &&
-    currentFilters.attributes &&
-    Object.keys(currentFilters.attributes).reduce(
+    currentFiltersPaged &&
+    currentFiltersPaged.attributes &&
+    Object.keys(currentFiltersPaged.attributes).reduce(
       (acc, key) =>
         acc.concat(
-          currentFilters.attributes[key].map((valueSlug) =>
+          currentFiltersPaged.attributes[key].map((valueSlug) =>
             getAttribute(key, valueSlug)
           )
         ),

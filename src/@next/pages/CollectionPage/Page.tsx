@@ -82,6 +82,7 @@ const Page: React.FC<PageProps> = ({
     onFiltersChangeRemote,
     resetFilters,
     setQuery,
+    category,
   } = useBrandFilters();
 
   const currentFiltersPaged: IFilters = React.useMemo(
@@ -150,12 +151,12 @@ const Page: React.FC<PageProps> = ({
   };
 
   const activeFiltersAttributes =
-    currentFilters &&
-    currentFilters.attributes &&
-    Object.keys(currentFilters.attributes).reduce(
+    currentFiltersPaged &&
+    currentFiltersPaged.attributes &&
+    Object.keys(currentFiltersPaged.attributes).reduce(
       (acc, key) =>
         acc.concat(
-          currentFilters.attributes[key].map((valueSlug) =>
+          currentFiltersPaged.attributes[key].map((valueSlug) =>
             getAttribute(key, valueSlug)
           )
         ),
@@ -187,8 +188,8 @@ const Page: React.FC<PageProps> = ({
         <ProductListHeader
           activeSecondaryOptions={variablesWithCategories.categories}
           activeFilters={
-            currentFiltersPaged!.attributes
-              ? Object.keys(currentFiltersPaged!.attributes!.brand).length
+            currentFiltersPaged?.attributes?.brand
+              ? Object.keys(currentFiltersPaged?.attributes?.brand).length
               : 0
           }
           activeFiltersAttributes={activeFiltersAttributes}

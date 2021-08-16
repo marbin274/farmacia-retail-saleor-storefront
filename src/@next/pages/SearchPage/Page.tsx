@@ -27,8 +27,8 @@ interface PageProps extends IPaginationProps {
   attributes: IFilterAttributes[];
   activeSortOption: string;
   displayLoader: boolean;
-  checkedFilters: IFilters;
-  currentFilters: IFilters;
+  checkedFiltersPaged: IFilters;
+  currentFiltersPaged: IFilters;
   hasNextPage: boolean;
   hasFilterChanged: boolean;
   search?: string;
@@ -56,9 +56,9 @@ const Page: React.FC<PageProps> = ({
   addToCart,
   applyFilters,
   attributes,
-  checkedFilters,
+  checkedFiltersPaged,
   clearFilters,
-  currentFilters,
+  currentFiltersPaged,
   displayLoader,
   hasFilterChanged,
   items,
@@ -92,12 +92,12 @@ const Page: React.FC<PageProps> = ({
   };
 
   const activeFiltersAttributes =
-    currentFilters &&
-    currentFilters.attributes &&
-    Object.keys(currentFilters.attributes).reduce(
+    currentFiltersPaged &&
+    currentFiltersPaged.attributes &&
+    Object.keys(currentFiltersPaged.attributes).reduce(
       (acc, key) =>
         acc.concat(
-          currentFilters.attributes[key].map(valueSlug => getAttribute(key, valueSlug))
+          currentFiltersPaged.attributes[key].map(valueSlug => getAttribute(key, valueSlug))
         ),
       []
     );
@@ -126,7 +126,7 @@ const Page: React.FC<PageProps> = ({
           applyFilters={applyFilterChanges}
           attributes={attributes}
           hasFilterChanged={hasFilterChanged}
-          filters={checkedFilters}
+          filters={checkedFiltersPaged}
         />
         {products.totalCount > 0 ? (
           <S.SearchListHeader>
