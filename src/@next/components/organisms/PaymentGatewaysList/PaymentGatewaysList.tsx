@@ -88,12 +88,17 @@ const PaymentGatewaysList: React.FC<IProps> = ({
 
   useEffect(() => {
     if (createData?.user && !createData?.errors.length && !createError) {
+      const currentCardToken = createData.user.cardTokens.find(
+        x => x.cardNumber === cardNumberTosave
+      );
+
       processPayment({
         gateway: PROVIDERS.AUNA.id,
-        token: createData.user.cardTokens.find(
-          x => x.cardNumber === cardNumberTosave
-        ).id,
+        token: currentCardToken.id,
         withToken: true,
+        cardData: {
+          firstDigits: currentCardToken.binNumber,
+        },
       });
       setCardNumberToSave(undefined);
     }
@@ -317,10 +322,17 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                               return;
                             }
 
+                            const currentCardToken = user.cardTokens.find(
+                              x => x.id === selectedCardToken
+                            );
+
                             processPayment({
                               gateway: id,
                               token: selectedCardToken,
                               withToken: true,
+                              cardData: {
+                                firstDigits: currentCardToken.binNumber,
+                              },
                             });
                           }}
                         />
