@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 import {
   basicProductFragment,
@@ -6,10 +6,9 @@ import {
   productVariantFragment,
   productVariantFragmentSimple,
   selectedAttributeFragment,
-} from "../fragments/products";
+} from '../fragments/products';
 
-
-export const productListDetails = gql`
+export const productList = gql`
   ${basicProductFragment}
   ${productPricingFragment}
   query ProductList(
@@ -57,7 +56,7 @@ export const productDetails = gql`
   ${selectedAttributeFragment}
   ${productVariantFragment}
   ${productPricingFragment}
-  query ProductDetails($id: ID!, $countryCode: CountryCode) {
+  query ProductDetails($id: ID!, $countryCode: CountryCode, $districtId: ID) {
     product(id: $id) {
       ...BasicProductFields
       ...ProductPricingField
@@ -70,10 +69,6 @@ export const productDetails = gql`
             node {
               ...BasicProductFields
               ...ProductPricingField
-              category {
-                id
-                name
-              }
             }
           }
         }
@@ -126,8 +121,6 @@ export const variantsProductsAvailable = gql`
     }
   }
 `;
-
-
 
 export const searchProducts = gql`
   ${productPricingFragment}

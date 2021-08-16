@@ -1,41 +1,43 @@
-import { useCart, useSearchProducts } from "@sdk/react";
-import { Loader } from "@components/atoms";
+import { SORT_OPTIONS } from '@app/utils/sorts';
+import { Loader } from '@components/atoms';
+import { useCart, useSearchProducts } from '@sdk/react';
 import {
   IAddToCartCallback,
   IRemoveItemToCartCallback,
   ISubtractItemToCartCallback,
-} from "@temp/@next/components/molecules/ProductTileAUNA/types";
-import { useMediaScreen } from "@temp/@next/globalStyles";
-import { useDistrictSelected } from "@temp/@next/hooks/useDistrictSelected";
-import { MetaWrapper, NotFound } from "@temp/components";
-import { META_DEFAULTS, PRODUCTS_PER_PAGE } from "@temp/core/config";
+} from '@temp/@next/components/molecules/ProductTileAUNA/types';
+import { useMediaScreen } from '@temp/@next/globalStyles';
+import { useDistrictSelected } from '@temp/@next/hooks/useDistrictSelected';
+import {
+  getFiltersInitial,
+  onAttributeFiltersChange,
+} from '@temp/@next/utils/filter';
+import { MetaWrapper, NotFound } from '@temp/components';
+import { META_DEFAULTS } from '@temp/core/config';
 import {
   convertSortByFromString,
   convertToAttributeScalar,
   getGraphqlIdFromDBId,
   maybe,
-} from "@temp/core/utils";
+} from '@temp/core/utils';
 import {
   convertToFilterSideBar,
   FilterQuerySet,
-} from "@temp/core/utils/filters";
-import { SORT_OPTIONS } from "@temp/core/utils/sorts";
-import { IFilters } from "@types";
-import * as React from "react";
-import { RouteComponentProps } from "react-router";
+} from '@temp/core/utils/filters';
+import { IFilters } from '@types';
+import * as React from 'react';
+import { RouteComponentProps } from 'react-router';
 import {
   NumberParam,
   StringParam,
   useQueryParam,
   useQueryParams,
-} from "use-query-params";
-import Page from "./Page";
+} from 'use-query-params';
+import Page from './Page';
 
 type ViewProps = RouteComponentProps<{
   id: string;
 }>;
-
-const DEFAULT_SORT = "-stock";
 
 const getPageSize = (isMobile: boolean): number => {
   return isMobile ? 8 : 12;
@@ -43,7 +45,7 @@ const getPageSize = (isMobile: boolean): number => {
 
 export const SearchPage: React.FC<ViewProps> = ({ match }) => {
   const [districtSelected] = useDistrictSelected();
-  const [search, setSearch] = useQueryParam("q", StringParam);
+  const [search, setSearch] = useQueryParam('q', StringParam);
   const [{ filters: attributeFilters, page, sortBy: sort }, setQuery] =
     useQueryParams({
       filters: FilterQuerySet,
@@ -51,20 +53,18 @@ export const SearchPage: React.FC<ViewProps> = ({ match }) => {
       sortBy: StringParam,
     });
 
-  const filters: IFilters = {
-    attributes: attributeFilters,
-    pageSize: PRODUCTS_PER_PAGE,
-    priceGte: null,
-    priceLte: null,
-    sortBy: sort || DEFAULT_SORT,
-  };
+  const filters: IFilters = React.useMemo(
+    () => getFiltersInitial(attributeFilters, sort),
+    [attributeFilters, sort]
+  );
+
   const variables = {
     ...filters,
     attributes: filters.attributes
       ? convertToAttributeScalar(filters.attributes)
       : {},
-    id: getGraphqlIdFromDBId(match.params.id, "Category"),
-    query: search || "",
+    id: getGraphqlIdFromDBId(match.params.id, 'Category'),
+    query: search || '',
     page: page || 1,
     sortBy: convertSortByFromString(filters.sortBy),
     districtId: districtSelected.id,
@@ -88,40 +88,7 @@ export const SearchPage: React.FC<ViewProps> = ({ match }) => {
   };
 
   const onFiltersChange = (name: string, value: string) => {
-    if (attributeFilters && attributeFilters.hasOwnProperty(name)) {
-      if (attributeFilters[name].includes(value)) {
-        if (filters.attributes[`${name}`].length === 1) {
-          const att = { ...attributeFilters };
-          delete att[`${name}`];
-          setQuery({
-            filters: { ...att },
-          });
-        } else {
-          setQuery({
-            filters: {
-              ...attributeFilters,
-              [`${name}`]: attributeFilters[`${name}`].filter(
-                (item: {}) => item !== value
-              ),
-            },
-          });
-        }
-      } else {
-        setQuery({
-          filters: {
-            ...attributeFilters,
-            [`${name}`]: [...attributeFilters[`${name}`], value],
-          },
-        });
-      }
-    } else {
-      setQuery({
-        filters: {
-          ...attributeFilters,
-          [`${name}`]: [value],
-        },
-      });
-    }
+    onAttributeFiltersChange(attributeFilters, filters, name, setQuery, value);
   };
 
   const handlePageChange = (page: number) => {
@@ -148,9 +115,9 @@ export const SearchPage: React.FC<ViewProps> = ({ match }) => {
     return (
       <MetaWrapper
         meta={{
-          description: "Resultados de búsqueda",
+          description: 'Resultados de búsqueda',
           title: META_DEFAULTS.title,
-          type: "product.search",
+          type: 'product.search',
         }}
       >
         <Page

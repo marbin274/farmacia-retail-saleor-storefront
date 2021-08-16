@@ -52,19 +52,16 @@ export class APIProxy {
     (data) => data.product
   );
 
-  getProductList = this.watchQuery(
-    QUERIES.ProductList,
-    (data) => data.products
-  );
-
-  getCategoryDetails = this.watchQuery(
-    QUERIES.CategoryDetails,
-    (data) => data.category
-  );
+  getCategoryDetails = this.watchQuery(QUERIES.CategoryDetails, (data) => data);
 
   getCategoryList = this.watchQuery(
     QUERIES.CategoryList,
     (data) => data.root_categories
+  );
+
+  getCategoryProducts = this.watchQuery(
+    QUERIES.CategoryProducts,
+    (data) => data.paginatedProducts
   );
 
   getCollectionProducts = this.watchQuery(
@@ -77,6 +74,15 @@ export class APIProxy {
     (data) => data
   );
 
+  getHomePage = this.watchQuery(QUERIES.HomePage, (data) => data.shop);
+
+  getLanding = this.watchQuery(QUERIES.Landing, (data) => data);
+
+  getMainBanner = this.watchQuery(
+    QUERIES.MainBanner,
+    (data) => data.mainBanner
+  );
+
   getOrdersByUser = this.watchQuery(QUERIES.OrdersByUser, (data) =>
     data.me ? data.me.orders : null
   );
@@ -86,7 +92,10 @@ export class APIProxy {
     (data) => data.orderByToken
   );
 
-  getLanding = this.watchQuery(QUERIES.Landing, (data) => data);
+  getProductList = this.watchQuery(
+    QUERIES.ProductList,
+    (data) => data.products
+  );
 
   getVariantsProducts = this.watchQuery(
     QUERIES.VariantsProducts,

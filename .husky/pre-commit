@@ -1,5 +1,5 @@
 #!/bin/sh
 . "$(dirname $0)/_/husky.sh"
 
-# npm run pretty-quick && npm run tsc && npm run eslint && npm run test
-npm run pretty-quick && npm run tsc && npm run test
+npm run pretty-quick && npm run tsc && npm run eslint && npm run test
+

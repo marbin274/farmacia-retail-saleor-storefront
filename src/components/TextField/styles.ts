@@ -1,13 +1,6 @@
-import { styled } from "@styles";
-import {
-  baseFontColor,
-  turquoise,
-  turquoiseLight,
-  white,
-  blue,
-  rose,
-} from "@styles/constants";
-import { css } from "styled-components";
+import { styled } from '@styles';
+import { rose, turquoiseLight, white } from '@styles/constants';
+import { css } from 'styled-components';
 
 export const IconLeft = styled.span`
   transform: translateY(105%);
@@ -25,25 +18,9 @@ export const FocusedLabel = css`
 export const Input = styled.input`
   box-shadow: 0 0 0 0.0625rem ${white};
 
-  &:focus,
-  &:not([value=""]) {
-    border: 1px solid ${turquoise};
-
-    & + .input__label {
-      background-color: ${white};
-      ${FocusedLabel}
-    }
-  }
-
-  &:-webkit-autofill {
-    & + .input__label {
-      ${FocusedLabel}
-    }
-  }
-
   &.gray {
     &:focus,
-    &:not([value=""]) {
+    &:not([value='']) {
       & + .input__label {
         background-color: ${turquoiseLight};
       }
@@ -55,25 +32,6 @@ export const Input = styled.input`
     }
   }
 
-  &:not([value=""]) {
-    & + .input__label {
-      color: ${baseFontColor};
-    }
-  }
-  &:focus {
-    & + .input__label {
-      color: ${blue};
-    }
-  }
-  &:hover {
-    border-color: ${turquoise};
-    color: ${blue};
-    transition: all 0.3s ease;
-    & + .input__label {
-      color: ${blue};
-    }
-  }
-
   &.error {
     border: 1px solid ${rose};
     & + .input__label {
@@ -81,7 +39,7 @@ export const Input = styled.input`
     }
 
     &:focus,
-    &:not([value=""]) {
+    &:not([value='']) {
       border-color: ${rose};
 
       & + .input__label {

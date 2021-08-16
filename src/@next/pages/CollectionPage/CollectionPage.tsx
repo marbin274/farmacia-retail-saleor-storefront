@@ -10,7 +10,7 @@ import { MetaWrapper, NotFound } from '@temp/components';
 import { COLLECTION_CATEGORY_FILTER_LABEL } from '@temp/core/config';
 import { getGraphqlIdFromDBId, maybe } from '@temp/core/utils';
 import { convertToFilterSideBar } from '@temp/core/utils/filters';
-import { SORT_OPTIONS } from '@temp/core/utils/sorts';
+import { SORT_OPTIONS } from '@app/utils/sorts';
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
 import Page from './Page';
