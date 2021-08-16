@@ -4,34 +4,37 @@ import { Button } from "@farmacia-retail/farmauna-components";
 import { useClickedOutside } from "@hooks";
 import React from "react";
 import { Overlay } from "../";
-import { IFilters, ISingleFilterAttribute } from "../../../types";
+import { ISingleFilterAttribute } from "../../../types";
 import * as S from "./styles";
 import { IProps } from "./types";
 
 const checkIfAttributeIsChecked = (
-  filters: IFilters,
+  filters: any,
   value: ISingleFilterAttribute,
   slug: string
 ) => {
   if (filters!.attributes && filters.attributes.hasOwnProperty(slug)) {
-    return filters.attributes[slug].find(filter => filter === value.slug) ? true : false;
-  } else {
-    return false;
-  }
+    return filters.attributes[slug].find(filter => filter === value.slug)
+  } 
+  return false;
 };
 
-export const FilterSidebar: React.FC<IProps> = ({
-  hide,
-  filters,
-  show,
+export const FilterSidebar: React.FC<IProps> = React.memo(({
+  applyFilters,
   attributes,
-  target,
+  filters,
+  hasFilterChanged,
+  hide,
   onAttributeFiltersChange,
+  show,
+  target,
 }: IProps) => {
   const { clickedOutside, setElementRef } = useClickedOutside();
+
   React.useEffect(() => {
     hide();
   }, [clickedOutside]);
+
   return (
     <Overlay
       duration={0}
@@ -62,7 +65,7 @@ export const FilterSidebar: React.FC<IProps> = ({
                       ...value,
                       selected: checkIfAttributeIsChecked(filters, value, slug),
                     }))}
-                    valuesShowLimit
+                    valuesShowLimit={false}
                     onValueClick={value =>
                       onAttributeFiltersChange(slug, value.slug)
                     }
@@ -71,10 +74,10 @@ export const FilterSidebar: React.FC<IProps> = ({
               })}
           </S.Body>
           <S.Footer>
-            <Button onClick={hide}>Aplicar</Button>
+            <Button disabled={!hasFilterChanged} onClick={applyFilters}>Aplicar</Button>
           </S.Footer>
         </S.SubWrapper>
       </S.Wrapper>
     </Overlay>
   );
-};
+});

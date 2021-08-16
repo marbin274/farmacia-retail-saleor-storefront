@@ -7,31 +7,25 @@ import {
   ISubtractItemToCartCallback,
 } from '@temp/@next/components/molecules/ProductTileAUNA/types';
 import { useMediaScreen } from '@temp/@next/globalStyles';
-import { useDistrictSelected } from '@temp/@next/hooks/useDistrictSelected';
-import {
+import { useBrandFilters } from '@temp/@next/hooks/useBrandFilters';
+import { useDistrictSelected } from '@temp/@next/hooks/useDistrictSelected';import {
   getFiltersInitial,
-  onAttributeFiltersChange,
 } from '@temp/@next/utils/filter';
 import { MetaWrapper, NotFound } from '@temp/components';
 import { META_DEFAULTS } from '@temp/core/config';
 import {
   convertSortByFromString,
   convertToAttributeScalar,
-  getGraphqlIdFromDBId,
-  maybe,
+  getGraphqlIdFromDBId,  maybe,
 } from '@temp/core/utils';
 import {
   convertToFilterSideBar,
-  FilterQuerySet,
 } from '@temp/core/utils/filters';
 import { IFilters } from '@types';
-import * as React from 'react';
-import { RouteComponentProps } from 'react-router';
+import * as React from 'react';import { RouteComponentProps } from 'react-router';
 import {
-  NumberParam,
   StringParam,
   useQueryParam,
-  useQueryParams,
 } from 'use-query-params';
 import Page from './Page';
 
@@ -45,28 +39,41 @@ const getPageSize = (isMobile: boolean): number => {
 
 export const SearchPage: React.FC<ViewProps> = ({ match }) => {
   const [districtSelected] = useDistrictSelected();
-  const [search, setSearch] = useQueryParam('q', StringParam);
-  const [{ filters: attributeFilters, page, sortBy: sort }, setQuery] =
-    useQueryParams({
-      filters: FilterQuerySet,
-      page: NumberParam,
-      sortBy: StringParam,
-    });
+  const [search, setSearch] = useQueryParam("q", StringParam);
+  const {
+    currentFilters,
+    checkedFilters,
+    page,
+    sort,
+    applyFilters,
+    clearFilters,
+    goToFirstPage,
+    hasFilterChanged,
+    handlePageChange,
+    onFiltersChangeLocal,
+    onFiltersChangeRemote,
+    resetFilters,
+  } = useBrandFilters();
 
-  const filters: IFilters = React.useMemo(
-    () => getFiltersInitial(attributeFilters, sort),
-    [attributeFilters, sort]
+  const currentFiltersPaged: IFilters = React.useMemo(
+    () => getFiltersInitial(currentFilters, sort),
+    [currentFilters, sort]
+  );
+
+  const checkedFiltersPaged: IFilters = React.useMemo(
+    () => getFiltersInitial(checkedFilters, sort),
+    [checkedFilters, sort]
   );
 
   const variables = {
-    ...filters,
-    attributes: filters.attributes
-      ? convertToAttributeScalar(filters.attributes)
+    ...currentFiltersPaged,
+    attributes: currentFiltersPaged.attributes
+      ? convertToAttributeScalar(currentFiltersPaged.attributes)
       : {},
     id: getGraphqlIdFromDBId(match.params.id, 'Category'),
     query: search || '',
     page: page || 1,
-    sortBy: convertSortByFromString(filters.sortBy),
+    sortBy: convertSortByFromString(currentFiltersPaged.sortBy),
     districtId: districtSelected.id,
   };
 
@@ -82,18 +89,6 @@ export const SearchPage: React.FC<ViewProps> = ({ match }) => {
     ...variables,
     pageSize: getPageSize(isMobileScreen),
   });
-
-  const clearFilters = () => {
-    setQuery({ filters: {} });
-  };
-
-  const onFiltersChange = (name: string, value: string) => {
-    onAttributeFiltersChange(attributeFilters, filters, name, setQuery, value);
-  };
-
-  const handlePageChange = (page: number) => {
-    setQuery({ page });
-  };
 
   const addToCart: IAddToCartCallback = (product, quantity) => {
     addItem(product, quantity);
@@ -121,36 +116,38 @@ export const SearchPage: React.FC<ViewProps> = ({ match }) => {
         }}
       >
         <Page
-          clearFilters={clearFilters}
+          activeSortOption={currentFiltersPaged.sortBy}
+          activeFilters={
+            currentFiltersPaged!.attributes
+              ? Object.keys(currentFiltersPaged!.attributes).length
+              : 0
+          }
+          addToCart={addToCart}
+          applyFilters={applyFilters}
           attributes={convertToFilterSideBar(data.attributes)}
+          checkedFilters={checkedFiltersPaged}
+          clearFilters={clearFilters}
+          currentFilters={currentFiltersPaged}
           displayLoader={loading}
+          hasFilterChanged={hasFilterChanged}
           hasNextPage={maybe<boolean>(
             () => data.paginatedProducts?.pageInfo.hasNextPage,
             false
           )}
-          sortOptions={SORT_OPTIONS}
+          items={productsOnCart}
+          onAttributeFiltersChangeLocal={onFiltersChangeLocal}
+          onAttributeFiltersChangeRemote={onFiltersChangeRemote}
+          onOrder={goToFirstPage}
+          onPageChange={handlePageChange}
+          products={data.paginatedProducts}
+          removeItemToCart={removeItemToCart}
+          resetFilters={resetFilters}
           setSearch={setSearch}
           search={search}
-          activeSortOption={filters.sortBy}
-          filters={filters}
-          products={data.paginatedProducts}
-          items={productsOnCart}
-          onAttributeFiltersChange={onFiltersChange}
-          activeFilters={
-            filters!.attributes ? Object.keys(filters!.attributes).length : 0
-          }
-          onOrder={(value) => {
-            setQuery({
-              page: 1,
-              sortBy: value.value,
-            });
-          }}
-          addToCart={addToCart}
-          removeItemToCart={removeItemToCart}
+          sortOptions={SORT_OPTIONS}
           subtractItemToCart={subtractItemToCart}
           page={page || 1}
           pageSize={getPageSize(isMobileScreen)}
-          onPageChange={handlePageChange}
           total={data?.paginatedProducts?.totalCount || 0}
         />
       </MetaWrapper>

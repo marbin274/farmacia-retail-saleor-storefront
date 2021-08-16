@@ -27,8 +27,10 @@ interface PageProps extends IPaginationProps {
   attributes: IFilterAttributes[];
   activeSortOption: string;
   displayLoader: boolean;
-  filters: IFilters;
+  checkedFilters: IFilters;
+  currentFilters: IFilters;
   hasNextPage: boolean;
+  hasFilterChanged: boolean;
   search?: string;
   setSearch?: (
     newValue: string,
@@ -38,7 +40,10 @@ interface PageProps extends IPaginationProps {
   items: IItems;
   sortOptions: SortOptions;
   clearFilters: () => void;
-  onAttributeFiltersChange: (attributeSlug: string, value: string) => void;
+  onAttributeFiltersChangeRemote: (attributeSlug: string, value: string) => void;
+  onAttributeFiltersChangeLocal: (attributeSlug: string, value: string) => void;
+  resetFilters: () => void;
+  applyFilters: () => void;
   onOrder: (order: { value?: string; label: string }) => void;
   addToCart: IAddToCartCallback;
   removeItemToCart: IRemoveItemToCartCallback;
@@ -48,22 +53,27 @@ interface PageProps extends IPaginationProps {
 const Page: React.FC<PageProps> = ({
   activeFilters,
   activeSortOption,
-  attributes,
-  displayLoader,
-  clearFilters,
-  products,
-  items,
-  filters,
-  onOrder,
-  sortOptions,
-  onAttributeFiltersChange,
   addToCart,
-  removeItemToCart,
-  subtractItemToCart,
-  page,
-  total: totalProducts,
-  pageSize,
+  applyFilters,
+  attributes,
+  checkedFilters,
+  clearFilters,
+  currentFilters,
+  displayLoader,
+  hasFilterChanged,
+  items,
+  onOrder,
+  onAttributeFiltersChangeLocal,
+  onAttributeFiltersChangeRemote,
   onPageChange,
+  page,
+  pageSize,
+  products,
+  removeItemToCart,
+  resetFilters,
+  sortOptions,
+  subtractItemToCart,
+  total: totalProducts,
 }) => {
   const canDisplayProducts = maybe(
     () => !!products.edges && products.totalCount !== undefined
@@ -82,12 +92,12 @@ const Page: React.FC<PageProps> = ({
   };
 
   const activeFiltersAttributes =
-    filters &&
-    filters.attributes &&
-    Object.keys(filters.attributes).reduce(
+    currentFilters &&
+    currentFilters.attributes &&
+    Object.keys(currentFilters.attributes).reduce(
       (acc, key) =>
         acc.concat(
-          filters.attributes[key].map(valueSlug => getAttribute(key, valueSlug))
+          currentFilters.attributes[key].map(valueSlug => getAttribute(key, valueSlug))
         ),
       []
     );
@@ -96,15 +106,27 @@ const Page: React.FC<PageProps> = ({
     [products]
   );
 
+  const applyFilterChanges = () => {
+    setShowFilters(false);
+    applyFilters();
+  }
+
+  const hideFilters = () => {
+    setShowFilters(false);
+    resetFilters();
+  }
+
   return (
     <div className="fa-bg-neutral-light fa-z-0">
       <S.SearchPage>
         <FilterSidebar
           show={showFilters}
-          hide={() => setShowFilters(false)}
-          onAttributeFiltersChange={onAttributeFiltersChange}
+          hide={hideFilters}
+          onAttributeFiltersChange={onAttributeFiltersChangeLocal}
+          applyFilters={applyFilterChanges}
           attributes={attributes}
-          filters={filters}
+          hasFilterChanged={hasFilterChanged}
+          filters={checkedFilters}
         />
         {products.totalCount > 0 ? (
           <S.SearchListHeader>
@@ -118,7 +140,7 @@ const Page: React.FC<PageProps> = ({
               numberOfProducts={products?.totalCount ? products.totalCount : 0}
               sortOptions={sortOptions}
               onChange={onOrder}
-              onCloseFilterAttribute={onAttributeFiltersChange}
+              onCloseFilterAttribute={onAttributeFiltersChangeRemote}
             />
           </S.SearchListHeader>
         ) : (

@@ -1,4 +1,5 @@
 export const DEFAULT_PROPS = {
+  applyFilters: (filters: any) => undefined,
   attributes: [
     {
       filterableInStorefront: false,
@@ -48,5 +49,8 @@ export const DEFAULT_PROPS = {
     priceLte: 0,
     sortBy: "",
   },
+  hasFilterChanged: false,
+  hide: () => undefined,
+  onAttributeFiltersChange: (attributeSlug: string, value: string) => undefined,
   show: true,
 };
