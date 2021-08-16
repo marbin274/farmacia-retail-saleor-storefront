@@ -58,6 +58,11 @@ export class APIProxy {
     (data) => data.categories
   );
 
+  getFeaturePlugins = this.watchQuery(
+    QUERIES.GetShopFeaturePlugins,
+    (data) => data.shop?.availableFeaturePlugins
+  );
+
   getOrdersByUser = this.watchQuery(QUERIES.OrdersByUser, (data) =>
     data.me ? data.me.orders : null
   );

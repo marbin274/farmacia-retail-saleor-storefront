@@ -21,7 +21,7 @@ import React, {
 import { RouteComponentProps, useHistory } from "react-router";
 import shippingMethodCalendarInfoIco from "images/auna/shipping-method-calendar-info.svg";
 import { Checkout_availableShippingMethods } from "@temp/@sdk/fragments/gqlTypes/Checkout";
-import { useFeaturePlugins } from "@temp/@next/hooks";
+import { useFeaturePlugins } from "@app/hooks";
 
 export interface ICheckoutShippingSubpageHandles {
   submitShipping: () => void;

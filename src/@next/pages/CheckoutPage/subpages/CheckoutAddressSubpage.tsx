@@ -21,7 +21,7 @@ import React, {
 } from "react";
 import { RouteComponentProps } from "react-router";
 import { useAlert } from "react-alert";
-import { useFeaturePlugins } from "@temp/@next/hooks";
+import { useFeaturePlugins } from "@app/hooks";
 
 export interface ICheckoutAddressSubpageHandles {
   submitAddress: () => void;

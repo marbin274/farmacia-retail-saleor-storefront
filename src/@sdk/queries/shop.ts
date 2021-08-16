@@ -1,6 +1,4 @@
 import gql from "graphql-tag";
-import { TypedQuery } from "@temp/core/queries";
-import { GetShopFeaturePlugins } from "./gqlTypes/GetShopFeaturePlugins";
 
 export const getShop = gql`
   query GetShop {
@@ -61,8 +59,3 @@ export const getShopFeaturePlugins = gql`
     }
   }
 `;
-
-export const TypedShopFeaturePluginsQuery = TypedQuery<
-  GetShopFeaturePlugins,
-  {}
->(getShopFeaturePlugins);

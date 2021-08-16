@@ -1,6 +1,6 @@
 import React, { createContext, FC } from "react";
-import { TypedShopFeaturePluginsQuery } from "@temp/@sdk/queries/shop";
-import { GetShopFeaturePlugins_shop_availableFeaturePlugins } from "@temp/@sdk/queries/gqlTypes/GetShopFeaturePlugins";
+import { GetShopFeaturePlugins_shop_availableFeaturePlugins } from "@sdk/queries/gqlTypes/GetShopFeaturePlugins";
+import { useFeaturePlugins as useGetFeaturePlugins } from "@sdk/react";
 
 type IFeaturePluginsContextState = {
   plugins: GetShopFeaturePlugins_shop_availableFeaturePlugins[];
@@ -11,15 +11,11 @@ export const FeaturePluginsContext = createContext<IFeaturePluginsContextState>(
 );
 
 export const FeaturedPluginsProvider: FC = ({ children }) => {
+  const { data } = useGetFeaturePlugins({ fetchPolicy: "network-only" });
+
   return (
-    <TypedShopFeaturePluginsQuery>
-      {({ data }) => (
-        <FeaturePluginsContext.Provider
-          value={{ plugins: data?.shop?.availableFeaturePlugins || [] }}
-        >
-          {children}
-        </FeaturePluginsContext.Provider>
-      )}
-    </TypedShopFeaturePluginsQuery>
+    <FeaturePluginsContext.Provider value={{ plugins: data || [] }}>
+      {children}
+    </FeaturePluginsContext.Provider>
   );
 };

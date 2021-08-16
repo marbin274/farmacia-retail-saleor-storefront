@@ -40,7 +40,7 @@ import {
 } from "./subpages";
 import { IProps } from "./types";
 import { checkAttentionSchedule } from "@sdk/utils/checkoutValidations";
-import { useFeaturePlugins } from "@temp/@next/hooks";
+import { useFeaturePlugins } from "@app/hooks";
 
 const prepareCartSummary = (
   activeStepIndex: number,
