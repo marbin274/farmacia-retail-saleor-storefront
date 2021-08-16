@@ -1,13 +1,13 @@
-import { HomeIcon, NextIcon } from "@farmacia-retail/farmauna-components";
-import { useMediaScreen } from "@temp/@next/globalStyles";
-import { smallScreen } from "@temp/@next/globalStyles/constants";
-import classNames from "classnames";
-import * as React from "react";
-import { Link } from "react-router-dom";
-import { baseUrl } from "../../app/routes";
-import { getDBIdFromGraphqlId, slugify } from "../../core/utils";
-import { Category_category } from "../../views/Category/gqlTypes/Category";
-import * as S from "./styles";
+import { HomeIcon, NextIcon } from '@farmacia-retail/farmauna-components';
+import { useMediaScreen } from '@temp/@next/globalStyles';
+import { smallScreen } from '@temp/@next/globalStyles/constants';
+import classNames from 'classnames';
+import * as React from 'react';
+import { Link } from 'react-router-dom';
+import { baseUrl } from '../../app/routes';
+import { getDBIdFromGraphqlId, slugify } from '../../core/utils';
+import { CategoryDetails_category } from '@sdk/queries/gqlTypes/CategoryDetails';
+import * as S from './styles';
 export interface Breadcrumb {
   label: string;
   link: string;
@@ -21,13 +21,13 @@ type IBreadcrumbProps = {
   backLabelMobile?: string;
 };
 
-export const extractBreadcrumbs = (category: Category_category) => {
+export const extractBreadcrumbs = (category: CategoryDetails_category) => {
   const constructLink = (item) => ({
     link: [
       `/category`,
       `/${slugify(item.name)}`,
-      `/${getDBIdFromGraphqlId(item.id, "Category")}/`,
-    ].join(""),
+      `/${getDBIdFromGraphqlId(item.id, 'Category')}/`,
+    ].join(''),
     label: item.name,
   });
 
@@ -43,7 +43,7 @@ export const extractBreadcrumbs = (category: Category_category) => {
 };
 
 const getBackLink = (breadcrumbs: Breadcrumb[]) =>
-  breadcrumbs.length > 1 ? breadcrumbs[breadcrumbs.length - 2].link : "/";
+  breadcrumbs.length > 1 ? breadcrumbs[breadcrumbs.length - 2].link : '/';
 
 const Breadcrumbs: React.FC<IBreadcrumbProps> = ({
   breadcrumbs,
@@ -69,7 +69,7 @@ const Breadcrumbs: React.FC<IBreadcrumbProps> = ({
     return (
       <ul
         className={classNames(
-          "fa-inline-flex fa-flex-wrap fa-mt-4 fa-mb-8 fa-mx-0 sm:fa-mb-4",
+          'fa-inline-flex fa-flex-wrap fa-mt-4 fa-mb-8 fa-mx-0 sm:fa-mb-4',
           className
         )}
       >
@@ -99,7 +99,7 @@ const Breadcrumbs: React.FC<IBreadcrumbProps> = ({
   return (
     <div className="fa-inline-flex fa-flex-wrap fa-mt-4 fa-mb-8 fa-mx-0 sm:fa-mb-4">
       <S.LinkMobile to={getBackLink(breadcrumbs)}>
-        {backLabelMobile || "Atrás"}
+        {backLabelMobile || 'Atrás'}
       </S.LinkMobile>
     </div>
   );

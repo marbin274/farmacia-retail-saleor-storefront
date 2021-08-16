@@ -1,5 +1,5 @@
-import gql from "graphql-tag";
-import { checkoutPriceFragment } from "./checkout";
+import gql from 'graphql-tag';
+import { checkoutPriceFragment } from './checkout';
 
 export const priceFragment = gql`
   fragment Price on TaxedMoney {
@@ -50,8 +50,13 @@ export const productVariantFragment = gql`
     sku
     gtin
     name
-    quantityAvailable(countryCode: $countryCode)
     isAvailable
+    quantityAvailable(countryCode: $countryCode, district: $districtId)
+    images {
+      id
+      url
+      alt
+    }
     pricing {
       onSale
       priceUndiscounted {
@@ -76,29 +81,28 @@ export const productVariantFragment = gql`
 `;
 
 export const productVariantFragmentSimple = gql`
-    ${priceFragment}
-    fragment ProductVariantFieldsSimple on ProductVariant {
-        id
-        sku
-        name
-        quantityAvailable(district: $districtId)
-        images {
-            id
-            url
-            alt
-        }
-        pricing {
-            onSale
-            priceUndiscounted {
-                ...Price
-            }
-            price {
-                ...Price
-            }
-        }
+  ${priceFragment}
+  fragment ProductVariantFieldsSimple on ProductVariant {
+    id
+    sku
+    name
+    quantityAvailable(district: $districtId)
+    images {
+      id
+      url
+      alt
     }
+    pricing {
+      onSale
+      priceUndiscounted {
+        ...Price
+      }
+      price {
+        ...Price
+      }
+    }
+  }
 `;
-
 
 export const productPricingFragment = gql`
   ${priceFragment}
