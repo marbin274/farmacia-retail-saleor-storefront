@@ -48,7 +48,7 @@ describe("<AccountMenuMobile />", () => {
       .at(0)
       .simulate("click");
 
-    expect(wrapper.text()).toContain("Mi perfil");
+    expect(wrapper.text()).toContain("Mi cuenta");
     expect(wrapper.text()).toContain("Mis categorías");
     expect(wrapper.text()).toContain("Mis direcciones");
     expect(wrapper.text()).toContain("Historial de pedidos");

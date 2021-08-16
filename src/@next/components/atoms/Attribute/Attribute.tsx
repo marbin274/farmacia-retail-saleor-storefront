@@ -13,7 +13,7 @@ export const Attribute: React.FC<IProps> = ({
   return (
     <S.Wrapper>
       <S.Description>{description}</S.Description>
-      <div>{attributeValue}</div>
+      <S.Text>{attributeValue}</S.Text>
     </S.Wrapper>
   );
 };

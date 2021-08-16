@@ -1,4 +1,4 @@
-import { media, styled } from "@styles";
+import { media, styled } from '@styles';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -19,8 +19,8 @@ export const TileWrapper = styled.div`
 export const Header = styled.div`
   align-items: center;
   display: flex;
-  font-weight: ${props => props.theme.typography.extraBoldFontWeight};
-  font-size: ${props => props.theme.typography.h4FontSize};
+  font-weight: ${(props) => props.theme.typography.extraBoldFontWeight};
+  font-size: ${(props) => props.theme.typography.h4FontSize};
   height: 4rem;
   justify-content: space-between;
   padding-bottom: 1rem;
@@ -37,12 +37,9 @@ export const HeaderSmall = styled(Header)`
 `;
 
 export const AttributeWrapper = styled.div`
-  width: 48%;
   margin-bottom: 1rem;
 
-  ${media.largeScreen`
-    width: 100%;
-  `}
+  text-align: center;
 `;
 
 export const Content = styled.div`
@@ -105,4 +102,18 @@ export const FormButtons = styled.div`
       margin-left: 0;
     }
   }
+`;
+
+export const TailiesContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2em;
+
+  ${media.largeScreen`
+    grid-template-columns: 1fr;
+  `}
+`;
+
+export const Image = styled.img`
+  margin: auto;
 `;

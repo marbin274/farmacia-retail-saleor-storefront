@@ -7,7 +7,7 @@ export const orderDetailsUrl = `${orderHistoryUrl}:token/`;
 export const paymentMethodsUrl = `${baseUrl}payment-methods/`;
 
 export const links = [
-    { url: baseUrl, label: "Mi perfil", testId:"my_account" },
+    { url: baseUrl, label: "Mi cuenta", testId:"my_account" },
     { url: accountCategoriesUrl, label: "Mis categorías", testId:"categories" },
     { url: addressBookUrl, label: "Mis direcciones", testId:"address_book" },
     { url: orderHistoryUrl, label: "Historial de pedidos", testId:"order_history" },
