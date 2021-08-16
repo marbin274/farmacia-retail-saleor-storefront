@@ -27,7 +27,7 @@ describe("<AccountMenuMobile />", () => {
       </MemoryRouter>
     );
 
-    expect(wrapper.text()).toContain("Mi perfil");
+    expect(wrapper.text()).toContain("Mi cuenta");
     expect(wrapper.text()).not.toContain("Mis categorías");
     expect(wrapper.text()).not.toContain("Mis direcciones");
     expect(wrapper.text()).not.toContain("Historial de pedidos");

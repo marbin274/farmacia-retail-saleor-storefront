@@ -5,7 +5,7 @@ import { Breadcrumbs } from "@farmacia-retail/farmauna-components";
 import { useUserDetails } from "@sdk/react";
 import { useMediaScreen } from "@temp/@next/globalStyles";
 import { baseUrl } from "@temp/app/routes";
-import profile from "@temp/images/profile_icon.png";
+import profile from "@temp/images/profileicon.svg";
 import * as React from "react";
 import { RouteComponentProps, useLocation, withRouter } from "react-router";
 

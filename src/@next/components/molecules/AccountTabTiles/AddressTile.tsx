@@ -1,7 +1,7 @@
 import React from "react";
 import { Attribute, Tile } from "@components/atoms";
 import * as S from "./styles";
-import gps from "@temp/images/gps_icon_dash.png";
+import gpsicon from "@temp/images/gpsicon.svg";
 import { Button } from "@farmacia-retail/farmauna-components";
 import { useHistory } from "react-router-dom";
 
@@ -17,7 +17,7 @@ export const MainAddressTile = () => {
             </S.HeaderSmall>
 
             <S.AttributeWrapper>
-              <S.Image src={gps} alt="gps" />
+              <S.Image src={gpsicon} alt="gps" />
             </S.AttributeWrapper>
 
             <S.AttributeWrapper>

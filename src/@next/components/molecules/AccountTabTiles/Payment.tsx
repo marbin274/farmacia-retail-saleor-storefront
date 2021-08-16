@@ -1,7 +1,7 @@
 import React from "react";
 import { Attribute, Tile } from "@components/atoms";
 import * as S from "./styles";
-import card from "@temp/images/card.png";
+import card from "@temp/images/card.svg";
 import { Button } from "@farmacia-retail/farmauna-components";
 import { useHistory } from "react-router-dom";
 export const MainCardTile: React.FC = () => {

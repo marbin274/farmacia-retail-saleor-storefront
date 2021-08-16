@@ -1,7 +1,7 @@
 import React from "react";
 import { Attribute, Tile } from "@components/atoms";
 import * as S from "./styles";
-import categories from "@temp/images/categories.png";
+import category from "@temp/images/category.svg";
 import { Button } from "@farmacia-retail/farmauna-components";
 import { useHistory } from "react-router-dom";
 export const CategoryTile: React.FC = () => {
@@ -16,7 +16,7 @@ export const CategoryTile: React.FC = () => {
             </S.HeaderSmall>
 
             <S.AttributeWrapper>
-              <S.Image src={categories} alt="categories" />
+              <S.Image src={category} alt="category" />
             </S.AttributeWrapper>
 
             <S.AttributeWrapper>

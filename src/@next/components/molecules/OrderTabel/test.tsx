@@ -97,12 +97,12 @@ describe("<OrderTabel />", () => {
     expect(wrapper.text()).toContain("DEED6A0E");
     expect(wrapper.text()).toContain("9/4/2019");
     expect(wrapper.text()).toContain("Solicitud recibida");
-    expect(wrapper.text()).toContain("42.91");
+    
 
     expect(wrapper.text()).toContain("AEED6A0F");
     expect(wrapper.text()).toContain("6/10/2019");
     expect(wrapper.text()).toContain("Solicitud recibida");
-    expect(wrapper.text()).toContain("29.24");
+   
   });
 
   it("should navigate to particular order when clicking on order row", () => {
