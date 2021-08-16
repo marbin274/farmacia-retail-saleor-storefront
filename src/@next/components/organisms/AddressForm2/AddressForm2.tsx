@@ -9,12 +9,16 @@ import { Button } from '@farmacia-retail/farmauna-components';
 export const AddressForm2: FC = () => {
   const { availableDistricts } = useShopContext();
 
+  const handleSubbmit = (values: any) => {
+    // TODO: handle :v
+  };
+
   return (
     <Formik
       initialValues={{
         city: undefined,
       }}
-      onSubmit={(values) => console.log(values)}
+      onSubmit={handleSubbmit}
     >
       {(props) => (
         <>

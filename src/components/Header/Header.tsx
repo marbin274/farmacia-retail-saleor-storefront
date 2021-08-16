@@ -1,18 +1,18 @@
-import { searchProductsService } from "@temp/@next/services/searchProductsService";
-import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
-import { useCart, useSignOut, useUserDetails } from "@temp/@sdk/react";
-import * as appPaths from "@temp/app/routes";
+import { searchProductsService } from '@temp/@next/services/searchProductsService';
+import { removePaymentItems } from '@temp/@next/utils/checkoutValidations';
+import { useCart, useSignOut, useUserDetails } from '@temp/@sdk/react';
+import * as appPaths from '@temp/app/routes';
 import {
   Button,
   CartIcon,
   MenuIcon,
   PersonIcon,
   SearchIcon,
-} from "@farmacia-retail/farmauna-components";
-import logoImg from "images/logo.svg";
-import React from "react";
-import { Link } from "react-router-dom";
-import ReactSVG from "react-svg";
+} from '@farmacia-retail/farmauna-components';
+import logoImg from 'images/logo.svg';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import ReactSVG from 'react-svg';
 import {
   MenuDropdown,
   Offline,
@@ -21,13 +21,13 @@ import {
   OverlayContextInterface,
   OverlayTheme,
   OverlayType,
-} from "..";
-import { SearchForm } from "../OverlayManager/Search";
-import { IProps } from "./types";
-import { useMediaScreen } from "@temp/@next/globalStyles";
-import { links } from "@app/pages/AccountPage/paths";
-import classNames from "classnames";
-import * as S from "./styles";
+} from '..';
+import { SearchForm } from '../OverlayManager/Search';
+import { IProps } from './types';
+import { useMediaScreen } from '@temp/@next/globalStyles';
+import { links } from '@app/pages/AccountPage/paths';
+import classNames from 'classnames';
+import * as S from './styles';
 
 const SEARCH_HEIGHT = 56;
 
@@ -43,7 +43,7 @@ const Header: React.FC<IProps> = ({
   const [signOut] = useSignOut();
   const { items } = useCart();
 
-  const largeScreenPlusOne = "993";
+  const largeScreenPlusOne = '993';
   const { isMaxLargeScreen, isCustomMinScreen: isMinLargeScreenPlusOne } =
     useMediaScreen(largeScreenPlusOne);
 
@@ -57,9 +57,9 @@ const Header: React.FC<IProps> = ({
   };
 
   React.useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -80,7 +80,7 @@ const Header: React.FC<IProps> = ({
     overlayContext: OverlayContextInterface,
     isLeft = true
   ) => {
-    const props = isLeft ? { suffixClass: "rightdown" } : {};
+    const props = isLeft ? { suffixClass: 'rightdown' } : {};
     if (user)
       return (
         <MenuDropdown
@@ -244,16 +244,16 @@ const Header: React.FC<IProps> = ({
     return (
       <header
         className={classNames(
-          "fa-bg-neutral-lightest fa-sticky fa-w-full fa-z-4 fa-top-0 fa-py-0 fa-px-4 fa-h-20 fa-max-h-20 lg:fa-z-3",
+          'fa-bg-neutral-lightest fa-sticky fa-w-full fa-z-4 fa-top-0 fa-py-0 fa-px-4 fa-h-20 fa-max-h-20 lg:fa-z-3',
           {
-            "fa-border-b fa-border-solid fa-border-light": hasBorderHeader,
+            'fa-border-b fa-border-solid fa-border-gray-light': hasBorderHeader,
           }
         )}
       >
         <S.MainHeader
-          className={classNames("fa-m-auto fa-flex fa-h-20 fa-items-center", {
-            "fa-justify-between": !justifyCenterLogo,
-            "fa-justify-center": justifyCenterLogo,
+          className={classNames('fa-m-auto fa-flex fa-h-20 fa-items-center', {
+            'fa-justify-between': !justifyCenterLogo,
+            'fa-justify-center': justifyCenterLogo,
           })}
           id="header"
         >

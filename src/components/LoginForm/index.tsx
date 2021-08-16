@@ -1,13 +1,13 @@
-import { useCheckout, useSignIn } from "@sdk/react";
-import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
-import { joinFormikErrorsToIFormErrorsAndConvertToObjectErrors } from "@temp/@next/utils/errorsManagement";
-import { TokenAuthVariables } from "@temp/@sdk/mutations/gqlTypes/TokenAuth";
-import { useFormik } from "formik";
-import * as React from "react";
-import ForgottenPassword from "../OverlayManager/Login/ForgottenPassword";
-import { loginFormSchema } from "./loginForm.schema";
-import { Button, InputField } from "@farmacia-retail/farmauna-components";
-import * as S from "./styles";
+import { useCheckout, useSignIn } from '@sdk/react';
+import { removePaymentItems } from '@temp/@next/utils/checkoutValidations';
+import { joinFormikErrorsToIFormErrorsAndConvertToObjectErrors } from '@temp/@next/utils/errorsManagement';
+import { TokenAuthVariables } from '@temp/@sdk/mutations/gqlTypes/TokenAuth';
+import { useFormik } from 'formik';
+import * as React from 'react';
+import ForgottenPassword from '../OverlayManager/Login/ForgottenPassword';
+import { loginFormSchema } from './loginForm.schema';
+import { Button, InputField } from '@farmacia-retail/farmauna-components';
+import * as S from './styles';
 interface ILoginForm {
   hide?: () => void;
   onSwitchSection?: () => void;
@@ -16,8 +16,8 @@ interface ILoginForm {
 }
 
 const initialValues: TokenAuthVariables = {
-  email: "",
-  password: "",
+  email: '',
+  password: '',
 };
 
 const LoginForm: React.FC<ILoginForm> = ({
@@ -37,7 +37,7 @@ const LoginForm: React.FC<ILoginForm> = ({
     values,
   } = useFormik<TokenAuthVariables>({
     initialValues,
-    onSubmit: async values => {
+    onSubmit: async (values) => {
       const authenticated = await signIn(values);
       if (authenticated && hide) {
         if (checkout?.id) {
@@ -66,17 +66,17 @@ const LoginForm: React.FC<ILoginForm> = ({
   );
 
   return (
-    <div className="login-form">
+    <div>
       <form onSubmit={handleSubmit}>
         <S.InputWrapper className="InputField fa-mx-0 fa-mt-0 fa-mb-5 fa-pb-2">
           <InputField
             label="Correo electrónico"
-            error={!!errors?.email ? errors!.email[0].message : ""}
+            error={!!errors?.email ? errors!.email[0].message : ''}
             placeholder="Correo electrónico"
             autoComplete="email"
             name="email"
             type="text"
-            value={!values?.email ? "" : values?.email.toLowerCase()}
+            value={!values?.email ? '' : values?.email.toLowerCase()}
             onBlur={handleBlur}
             onChange={handleChange}
           />
@@ -86,10 +86,10 @@ const LoginForm: React.FC<ILoginForm> = ({
             label="Contraseña"
             type="password"
             autoComplete="password"
-            error={!!errors?.password ? errors!.password[0].message : ""}
+            error={!!errors?.password ? errors!.password[0].message : ''}
             placeholder="Contraseña"
             name="password"
-            value={!values?.password ? "" : values?.password}
+            value={!values?.password ? '' : values?.password}
             onBlur={handleBlur}
             onChange={handleChange}
           />
@@ -110,7 +110,7 @@ const LoginForm: React.FC<ILoginForm> = ({
             fullWidth
             {...(loading && { disabled: true })}
           >
-            {loading ? "Cargando" : "Ingresar"}
+            {loading ? 'Cargando' : 'Ingresar'}
           </Button>
         </div>
         {!hideRegister && (
