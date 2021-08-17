@@ -1,18 +1,17 @@
-import React from "react";
+import React from 'react';
 
-import { AccountTile } from "./AccountTile";
-import { MainAddressTile } from "./AddressTile";
-import { CategoryTile } from "./CategoryTile";
-import { ShoppingHistoryTile } from "./HistoryTile";
-import { MainCardTile } from "./Payment";
-import * as S from "./styles";
+import { AccountTile } from './AccountTile';
+import { MainAddressTile } from './AddressTile';
+import { CategoryTile } from './CategoryTile';
+import { ShoppingHistoryTile } from './HistoryTile';
+import { MainCardTile } from './Payment';
 
 export const AccountTabTiles: React.FC = () => (
-  <S.TailiesContainer>
+  <div className=" fa-grid fa-grid-cols-1 fa-gap-8  sm:fa-grid-cols-1 md:fa-grid-cols-2  ">
     <AccountTile />
-    <CategoryTile/>
-    <ShoppingHistoryTile/>
-    <MainCardTile/>
-    <MainAddressTile/>
-  </S.TailiesContainer>
+    <CategoryTile />
+    <ShoppingHistoryTile />
+    <MainCardTile />
+    <MainAddressTile />
+  </div>
 );

@@ -104,16 +104,6 @@ export const FormButtons = styled.div`
   }
 `;
 
-export const TailiesContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 2em;
-
-  ${media.largeScreen`
-    grid-template-columns: 1fr;
-  `}
-`;
-
 export const Image = styled.img`
   margin: auto;
 `;
