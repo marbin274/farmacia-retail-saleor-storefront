@@ -38,6 +38,7 @@ export const PasswordTile: React.FC = () => {
                   <Button
                     size="small"
                     variant="outline"
+                    className="fa-ml-4"
                     onClick={() => setIsEditing((isEditing) => !isEditing)}
                   >
                     Cambiar

@@ -34,7 +34,7 @@ const AccountLayout: React.FC<RouteComponentProps> = ({
           baseUrl={baseUrl}
         />
 
-        <div className="fa-flex fa-flex-row fa-mt-5 fa-mb-3 ">
+        <div className="fa-flex fa-flex-row fa-mt-5 fa-mb-3">
           {isDesktopScreen ? (
             <div className="fa-mt-4">
               <img src={profile} alt="profile icon" height="62" width="62" />
