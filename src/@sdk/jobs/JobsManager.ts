@@ -1,8 +1,8 @@
-import { NetworkManager } from "../network";
-import { LocalRepository } from "../repository";
-import { IJobs, Jobs } from "./Jobs";
-import { IQueuedJobs, QueuedJobs } from "./QueuedJobs";
-import { JobFunctionParameters, QueuedJobFunctionParameters } from "./types";
+import { NetworkManager } from '../network';
+import { LocalRepository } from '../repository';
+import { IJobs, Jobs } from './Jobs';
+import { IQueuedJobs, QueuedJobs } from './QueuedJobs';
+import { JobFunctionParameters, QueuedJobFunctionParameters } from './types';
 
 export class JobsManager {
   private queue: Array<{
@@ -26,7 +26,7 @@ export class JobsManager {
 
     this.enqueueAllSavedInRepository();
 
-    window.addEventListener("online", this.onOnline);
+    window.addEventListener('online', this.onOnline);
   }
 
   /**
@@ -43,7 +43,7 @@ export class JobsManager {
   ) {
     const func = this.jobs[jobGroup][jobName];
 
-    if (typeof func === "function") {
+    if (typeof func === 'function') {
       return func(params);
     }
   }
@@ -75,10 +75,10 @@ export class JobsManager {
    */
   attachErrorListener<
     G extends keyof IQueuedJobs,
-    P extends IQueuedJobs[G]["attachErrorListener"]
+    P extends IQueuedJobs[G]['attachErrorListener']
   >(
     jobGroup: G,
-    onErrorListener: QueuedJobFunctionParameters<G, "attachErrorListener", P>[0]
+    onErrorListener: QueuedJobFunctionParameters<G, 'attachErrorListener', P>[0]
   ) {
     const typedErrorListener = onErrorListener as P;
 
@@ -91,7 +91,7 @@ export class JobsManager {
   ) {
     const func = this.queuedJobs[jobGroup][jobName];
 
-    if (typeof func === "function") {
+    if (typeof func === 'function') {
       func();
     }
 
@@ -105,7 +105,7 @@ export class JobsManager {
     const methodName = jobName.toString();
 
     const jobAlreadyQueued = this.queue.some(
-      item => item.jobGroup === jobGroup && item.jobName === jobName
+      (item) => item.jobGroup === jobGroup && item.jobName === jobName
     );
 
     if (!jobAlreadyQueued) {
@@ -121,13 +121,13 @@ export class JobsManager {
     const methodName = jobName.toString();
 
     this.queue.filter(
-      item => item.jobGroup !== jobGroup || item.jobName !== methodName
+      (item) => item.jobGroup !== jobGroup || item.jobName !== methodName
     );
     this.updateJobStateInRepository(jobGroup, jobName, false);
   }
 
   private onOnline = () => {
-    this.queue.forEach(item => {
+    this.queue.forEach((item) => {
       const jobGroup = item.jobGroup as keyof IQueuedJobs;
       const jobName = item.jobName as keyof QueuedJobs[keyof IQueuedJobs];
 
@@ -165,10 +165,10 @@ export class JobsManager {
     const jobs = this.repository.getJobs();
 
     if (jobs) {
-      Object.keys(jobs).forEach(jobGroupString => {
+      Object.keys(jobs).forEach((jobGroupString) => {
         const jobGroup = jobs[jobGroupString];
 
-        Object.keys(jobGroup).forEach(jobNameString => {
+        Object.keys(jobGroup).forEach((jobNameString) => {
           const jobNameState = jobGroup[jobNameString];
 
           if (jobNameState) {

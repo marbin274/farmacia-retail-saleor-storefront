@@ -1,9 +1,9 @@
-import { mediaUp, styled } from "@styles";
-import farmatheme from "@farmatheme";
+import { mediaUp, styled } from '@styles';
+import farmatheme from '@farmatheme';
 
 export const Blog = styled.div`
   .article-page__image {
-    margin-bottom: 2.5rem;      
+    margin-bottom: 2.5rem;
   }
   ${mediaUp.smallScreen`
     .article-page__image {
@@ -36,28 +36,28 @@ export const Title = styled.h1`
 `;
 
 export const Content = styled.div`
-    h1,
-    h2,
-    h3 {
-      font-weight: 600;
-      line-height: 2.125rem;
-    }
+  h1,
+  h2,
+  h3 {
+    font-weight: 600;
+    line-height: 2.125rem;
+  }
 
-    h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-    }
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
 
-    h3 {
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-    }
+  h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
 
-    img {
-      max-width: 100%;
-    }
+  img {
+    max-width: 100%;
+  }
 
-    a {
-      color: ${farmatheme.theme.colors.interactive};
-    };
-`
+  a {
+    color: ${farmatheme.theme.colors.interactive};
+  }
+`;

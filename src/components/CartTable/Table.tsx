@@ -1,9 +1,9 @@
-import { useMediaScreen } from "@temp/@next/globalStyles";
-import { smallScreen } from "@styles/constants";
-import * as React from "react";
-import CostRow from "./CostRow";
-import ProductRow, { ILine } from "./ProductRow";
-import * as S from "./styles";
+import { useMediaScreen } from '@temp/@next/globalStyles';
+import { smallScreen } from '@styles/constants';
+import * as React from 'react';
+import CostRow from './CostRow';
+import ProductRow, { ILine } from './ProductRow';
+import * as S from './styles';
 
 interface TableProps {
   lines: ILine[];

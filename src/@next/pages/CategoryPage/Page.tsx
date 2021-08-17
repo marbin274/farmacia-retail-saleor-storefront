@@ -14,9 +14,7 @@ import { useMediaScreen } from '@temp/@next/globalStyles';
 import { largeScreen } from '@temp/@next/globalStyles/constants';
 import { useDistrictSelected, useScrollTo } from '@temp/@next/hooks';
 import { useBrandFilters } from '@temp/@next/hooks/useBrandFilters';
-import {
-  getFiltersInitial,
-} from '@temp/@next/utils/filter';
+import { getFiltersInitial } from '@temp/@next/utils/filter';
 import { IItems } from '@temp/@sdk/api/Cart/types';
 import { useCategoryProducts } from '@temp/@sdk/react';
 import { baseUrl } from '@temp/app/routes';
@@ -139,12 +137,12 @@ const Page: React.FC<PageProps> = ({
   const applyFilterChanges = () => {
     setShowFilters(false);
     applyFilters();
-  }
+  };
 
-  const hideFilters = () => { 
+  const hideFilters = () => {
     setShowFilters(false);
     resetFilters();
-  }
+  };
 
   return (
     <CategoryWrapper>

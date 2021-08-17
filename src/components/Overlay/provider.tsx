@@ -1,16 +1,18 @@
-import * as React from "react";
-import { RouteComponentProps, withRouter } from "react-router";
+import * as React from 'react';
+import { RouteComponentProps, withRouter } from 'react-router';
 import {
   InnerOverlayContextInterface,
   OverlayContext,
   OverlayContextInterface,
   OverlayTheme,
   OverlayType,
-} from "./context";
+} from './context';
 
-import * as paths from "../../app/routes/paths";
+import * as paths from '../../app/routes/paths';
 
-interface IProps extends Readonly<RouteComponentProps>, Readonly<{ children?: React.ReactNode }> {};
+interface IProps
+  extends Readonly<RouteComponentProps>,
+    Readonly<{ children?: React.ReactNode }> {}
 
 class Provider extends React.Component<
   RouteComponentProps<{}>,
@@ -44,7 +46,10 @@ class Provider extends React.Component<
     context?: InnerOverlayContextInterface | undefined
   ) => {
     this.setState({ type, theme, context });
-    document.body.style.overflow = type !== OverlayType.message && type !== OverlayType.underConstruction ? "hidden" : "";
+    document.body.style.overflow =
+      type !== OverlayType.message && type !== OverlayType.underConstruction
+        ? 'hidden'
+        : '';
     if (type === OverlayType.message) {
       setTimeout(this.hide, this.notificationCloseDelay);
     }
@@ -52,17 +57,16 @@ class Provider extends React.Component<
 
   hide = () => {
     this.setState({ type: undefined });
-    document.body.style.overflow = "";
+    document.body.style.overflow = '';
   };
 
   showCatalog = () => {
-    if (document.location.pathname !== paths.baseUrl){
+    if (document.location.pathname !== paths.baseUrl) {
       this.props.history.push(paths.baseUrl);
     } else {
       this.hide();
     }
-      
-  }
+  };
 
   render() {
     return (

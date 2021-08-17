@@ -1,12 +1,12 @@
-import { Loader } from "@temp/@next/components/atoms";
-import { LocalStorageItems } from "@temp/@sdk/repository";
-import { ApolloQueryResult, ErrorPolicy, FetchPolicy } from "apollo-client";
-import { DocumentNode } from "graphql";
-import * as React from "react";
-import { Query, QueryProps, QueryResult } from "react-apollo";
-import { Error } from "../components/Error";
-import { RequireAtLeastOne } from "./tsUtils";
-import { maybe } from "./utils";
+import { Loader } from '@temp/@next/components/atoms';
+import { LocalStorageItems } from '@temp/@sdk/repository';
+import { ApolloQueryResult, ErrorPolicy, FetchPolicy } from 'apollo-client';
+import { DocumentNode } from 'graphql';
+import * as React from 'react';
+import { Query, QueryProps, QueryResult } from 'react-apollo';
+import { Error } from '../components/Error';
+import { RequireAtLeastOne } from './tsUtils';
+import { maybe } from './utils';
 
 interface LoadMore<TData, TVariables> {
   loadMore: (
@@ -42,7 +42,7 @@ export function TypedQuery<TData, TVariables>(query: DocumentNode) {
       renderOnError = false,
       alwaysRender = false,
       alwaysLoader = false,
-      fetchPolicy = "cache-and-network",
+      fetchPolicy = 'cache-and-network',
       errorPolicy,
       loader,
       loaderFull,
@@ -96,9 +96,9 @@ export function TypedQuery<TData, TVariables>(query: DocumentNode) {
             displayLoader &&
             loading &&
             loader &&
-            districtChanged === "true"
+            districtChanged === 'true'
           ) {
-            localStorage.setItem(LocalStorageItems.DISTRICT_CHANGED, "false");
+            localStorage.setItem(LocalStorageItems.DISTRICT_CHANGED, 'false');
             return <>{loader}</>;
           } else if (displayLoader && loading && !!alwaysLoader) {
             return loader ? <>{loader}</> : <Loader fullScreen={loaderFull} />;

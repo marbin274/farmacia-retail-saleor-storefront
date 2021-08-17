@@ -9,7 +9,7 @@ import { CheckoutErrorCode } from "@temp/@sdk/gqlTypes/globalTypes";
 import { CreateCheckout_checkoutCreate_checkoutErrors_products } from "@temp/@sdk/mutations/gqlTypes/CreateCheckout";
 import { baseUrl } from "@temp/app/routes/paths";
 import { useShopContext } from "@temp/components/ShopProvider/context";
-import { COUNTRY_DEFAULT } from "@temp/core/config";
+import { CHECKOUT_MANDATORY_COORDINATES, COUNTRY_DEFAULT } from "@temp/core/config";
 import { IAddress, IAddressWithEmail, IFormError } from "@types";
 import { filterNotEmptyArrayItems } from "@utils/misc";
 import React, {
@@ -254,7 +254,11 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     } else {
       setAddressSubPageErrors([]);
 
-      if (address.streetAddress1 && !address.latitude) {
+      if (
+        !CHECKOUT_MANDATORY_COORDINATES &&
+        address.streetAddress1 &&
+        !address.latitude
+      ) {
         showOptionalAddressError();
       }
 

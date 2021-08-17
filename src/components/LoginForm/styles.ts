@@ -1,4 +1,4 @@
-import { styled } from "@styles";
+import { styled } from '@styles';
 
 export const InputWrapper = styled.div`
   svg {

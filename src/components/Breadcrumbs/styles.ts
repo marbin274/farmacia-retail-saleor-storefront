@@ -1,9 +1,9 @@
-import { mediaUp, styled } from "@styles";
+import { mediaUp, styled } from '@styles';
 import {
   aunaInteractive,
   baseFontColor,
-} from "@temp/@next/globalStyles/constants";
-import { Link } from "react-router-dom";
+} from '@temp/@next/globalStyles/constants';
+import { Link } from 'react-router-dom';
 
 export const ListItem = styled.li<{ active?: boolean }>`
   line-height: 1.5rem;

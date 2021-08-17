@@ -1,5 +1,8 @@
-import gql from "graphql-tag";
-import { basicProductFragment, productPricingFragment } from "../fragments/products";
+import gql from 'graphql-tag';
+import {
+  basicProductFragment,
+  productPricingFragment,
+} from '../fragments/products';
 
 export const landing = gql`
   ${basicProductFragment}

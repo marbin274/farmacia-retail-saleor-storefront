@@ -1,26 +1,26 @@
-import { IPaginationProps } from "@temp/@next/components/molecules/Pagination/types";
+import { IPaginationProps } from '@temp/@next/components/molecules/Pagination/types';
 import {
   IAddToCartCallback,
   IRemoveItemToCartCallback,
   ISubtractItemToCartCallback,
-} from "@temp/@next/components/molecules/ProductTileAUNA/types";
-import { IItems } from "@temp/@sdk/api/Cart/types";
-import { convertToSimpleProduct, maybe } from "@temp/core/utils";
-import { IFilterAttributes, IFilters } from "@types";
-import * as React from "react";
-import { ProductListHeaderSearch } from "@app/components/molecules";
-import { ProductListAUNA } from "@app/components/organisms";
-import { FilterSidebar } from "@app/components/organisms/FilterSidebar";
-import { SearchProducts_paginatedProducts } from "@sdk/queries/gqlTypes/SearchProducts";
+} from '@temp/@next/components/molecules/ProductTileAUNA/types';
+import { IItems } from '@temp/@sdk/api/Cart/types';
+import { convertToSimpleProduct, maybe } from '@temp/core/utils';
+import { IFilterAttributes, IFilters } from '@types';
+import * as React from 'react';
+import { ProductListHeaderSearch } from '@app/components/molecules';
+import { ProductListAUNA } from '@app/components/organisms';
+import { FilterSidebar } from '@app/components/organisms/FilterSidebar';
+import { SearchProducts_paginatedProducts } from '@sdk/queries/gqlTypes/SearchProducts';
 
-import * as S from "./styles";
-import { useScrollTo } from "@temp/@next/hooks";
+import * as S from './styles';
+import { useScrollTo } from '@temp/@next/hooks';
 interface SortItem {
   label: string;
   value?: string;
 }
 
-export type SortOptions = Array<SortItem>
+export type SortOptions = Array<SortItem>;
 
 interface PageProps extends IPaginationProps {
   activeFilters: number;
@@ -34,13 +34,16 @@ interface PageProps extends IPaginationProps {
   search?: string;
   setSearch?: (
     newValue: string,
-    updateType?: "replace" | "replaceIn" | "push" | "pushIn"
+    updateType?: 'replace' | 'replaceIn' | 'push' | 'pushIn'
   ) => void;
   products: SearchProducts_paginatedProducts;
   items: IItems;
   sortOptions: SortOptions;
   clearFilters: () => void;
-  onAttributeFiltersChangeRemote: (attributeSlug: string, value: string) => void;
+  onAttributeFiltersChangeRemote: (
+    attributeSlug: string,
+    value: string
+  ) => void;
   onAttributeFiltersChangeLocal: (attributeSlug: string, value: string) => void;
   resetFilters: () => void;
   applyFilters: () => void;
@@ -97,24 +100,24 @@ const Page: React.FC<PageProps> = ({
     Object.keys(currentFiltersPaged.attributes).reduce(
       (acc, key) =>
         acc.concat(
-          currentFiltersPaged.attributes[key].map(valueSlug => getAttribute(key, valueSlug))
+          currentFiltersPaged.attributes[key].map((valueSlug) =>
+            getAttribute(key, valueSlug)
+          )
         ),
       []
     );
 
-  React.useEffect(() => goTop(),
-    [products]
-  );
+  React.useEffect(() => goTop(), [products]);
 
   const applyFilterChanges = () => {
     setShowFilters(false);
     applyFilters();
-  }
+  };
 
   const hideFilters = () => {
     setShowFilters(false);
     resetFilters();
-  }
+  };
 
   return (
     <div className="fa-bg-neutral-light fa-z-0">
@@ -154,7 +157,7 @@ const Page: React.FC<PageProps> = ({
             loading={displayLoader}
             page={page}
             pageSize={pageSize}
-            products={products.edges.map(edge =>
+            products={products.edges.map((edge) =>
               convertToSimpleProduct(edge.node)
             )}
             productsOnCart={items}

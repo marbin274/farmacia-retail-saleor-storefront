@@ -1,6 +1,6 @@
-import React from "react";
-import { SocialMediaIcon } from "..";
-import { SOCIAL_MEDIA } from "@temp/core/config";
+import React from 'react';
+import { SocialMediaIcon } from '..';
+import { SOCIAL_MEDIA } from '@temp/core/config';
 
 const SocialMedia: React.FC = () => {
   return (

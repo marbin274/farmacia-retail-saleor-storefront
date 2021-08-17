@@ -1,8 +1,8 @@
-import * as React from "react";
-import { RichTextContent } from "@components/atoms";
-import { Breadcrumb, Breadcrumbs } from "@temp/components";
-import { ArticleDetail_page } from "@sdk/queries/gqlTypes/ArticleDetail";
-import * as S from "./styles";
+import * as React from 'react';
+import { RichTextContent } from '@components/atoms';
+import { Breadcrumb, Breadcrumbs } from '@temp/components';
+import { ArticleDetail_page } from '@sdk/queries/gqlTypes/ArticleDetail';
+import * as S from './styles';
 
 interface PageProps {
   breadcrumbs: Breadcrumb[];
@@ -15,14 +15,17 @@ export const Page: React.FC<PageProps> = ({
   headerImage,
   page,
 }) => {
-
-  const isMainBlog: boolean = page.slug === "blog";
+  const isMainBlog: boolean = page.slug === 'blog';
 
   const imageSection = () => (
     <>
       {page?.contentImage ? (
         <div className="fa-mt-8 lg:fa-px-4 fa-p-0 fa-mx-auto">
-          <img className="fa-w-full lg:fa-rounded-3xl fa-overflow-hidden" alt="page-image" src={page.contentImage} />
+          <img
+            className="fa-w-full lg:fa-rounded-3xl fa-overflow-hidden"
+            alt="page-image"
+            src={page.contentImage}
+          />
         </div>
       ) : (
         <> </>
@@ -32,27 +35,27 @@ export const Page: React.FC<PageProps> = ({
 
   return (
     <>
-      {
-        !isMainBlog && <S.Header
+      {!isMainBlog && (
+        <S.Header
           className="fa-mt-8 fa-flex fa-justify-center fa-items-center fa-bg-cover fa-bg-primary-lightest fa-bg-blend-multiply"
-          style={headerImage ? { backgroundImage: `url(${headerImage})` } : null}
+          style={
+            headerImage ? { backgroundImage: `url(${headerImage})` } : null
+          }
         >
           <S.Title className="fa-px-8 fa-py-4 fa-text-primary-medium fa-inline-block fa-text-center">
-            <span className="fa-text-display-3-m fa-font-semibold">{page.title}</span>
+            <span className="fa-text-display-3-m fa-font-semibold">
+              {page.title}
+            </span>
           </S.Title>
         </S.Header>
-      }
+      )}
       <div className="fa-mx-auto fa-my-0">
-        {
-          isMainBlog && <>{imageSection()}</>
-        }
+        {isMainBlog && <>{imageSection()}</>}
 
         <div className="container">
           <Breadcrumbs breadcrumbs={breadcrumbs} breadcrumbsAlwaysVisible />
         </div>
-        {
-          !isMainBlog && <S.Blog className="blog-page">{imageSection()}</S.Blog>
-        }
+        {!isMainBlog && <S.Blog className="blog-page">{imageSection()}</S.Blog>}
         <div className="container">
           <S.Content className="fa-mx-0 fa-mt-0 fa-mb-14">
             <RichTextContent
@@ -64,5 +67,5 @@ export const Page: React.FC<PageProps> = ({
       </div>
     </>
   );
-}
+};
 export default Page;

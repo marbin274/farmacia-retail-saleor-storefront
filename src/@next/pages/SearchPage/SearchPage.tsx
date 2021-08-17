@@ -8,25 +8,21 @@ import {
 } from '@temp/@next/components/molecules/ProductTileAUNA/types';
 import { useMediaScreen } from '@temp/@next/globalStyles';
 import { useBrandFilters } from '@temp/@next/hooks/useBrandFilters';
-import { useDistrictSelected } from '@temp/@next/hooks/useDistrictSelected';import {
-  getFiltersInitial,
-} from '@temp/@next/utils/filter';
+import { useDistrictSelected } from '@temp/@next/hooks/useDistrictSelected';
+import { getFiltersInitial } from '@temp/@next/utils/filter';
 import { MetaWrapper, NotFound } from '@temp/components';
 import { META_DEFAULTS } from '@temp/core/config';
 import {
   convertSortByFromString,
   convertToAttributeScalar,
-  getGraphqlIdFromDBId,  maybe,
+  getGraphqlIdFromDBId,
+  maybe,
 } from '@temp/core/utils';
-import {
-  convertToFilterSideBar,
-} from '@temp/core/utils/filters';
+import { convertToFilterSideBar } from '@temp/core/utils/filters';
 import { IFilters } from '@types';
-import * as React from 'react';import { RouteComponentProps } from 'react-router';
-import {
-  StringParam,
-  useQueryParam,
-} from 'use-query-params';
+import * as React from 'react';
+import { RouteComponentProps } from 'react-router';
+import { StringParam, useQueryParam } from 'use-query-params';
 import Page from './Page';
 
 type ViewProps = RouteComponentProps<{
@@ -39,7 +35,7 @@ const getPageSize = (isMobile: boolean): number => {
 
 export const SearchPage: React.FC<ViewProps> = ({ match }) => {
   const [districtSelected] = useDistrictSelected();
-  const [search, setSearch] = useQueryParam("q", StringParam);
+  const [search, setSearch] = useQueryParam('q', StringParam);
   const {
     currentFilters,
     checkedFilters,

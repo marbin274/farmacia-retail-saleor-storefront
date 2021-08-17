@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import farmatheme from "@farmatheme";
-import { ContainerStyle, media, mediaUp } from "@temp/@next/globalStyles";
-import { aunaGrey06, boldFontWeight } from "@temp/@next/globalStyles/constants";
+import styled from 'styled-components';
+import farmatheme from '@farmatheme';
+import { ContainerStyle, media, mediaUp } from '@temp/@next/globalStyles';
+import { aunaGrey06, boldFontWeight } from '@temp/@next/globalStyles/constants';
 
 export const SearchPage = styled.div`
   ${ContainerStyle}

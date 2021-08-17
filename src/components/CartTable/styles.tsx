@@ -1,5 +1,5 @@
-import { mediaUp, styled } from "@styles";
-import { Thumbnail } from "@components/molecules";
+import { mediaUp, styled } from '@styles';
+import { Thumbnail } from '@components/molecules';
 
 export const Table = styled.table`
   tr,
