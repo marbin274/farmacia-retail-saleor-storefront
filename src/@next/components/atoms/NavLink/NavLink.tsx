@@ -4,17 +4,17 @@
 // NOTE: This component should only be used for navigation inside application
 // For external urls, use different component
 
-import React from "react";
+import React from 'react';
 
 import {
   generateCategoryUrl,
   generateCollectionUrl,
   generatePageUrl,
-} from "@utils/core";
-import * as S from "./styles";
-import { IProps } from "./types";
+} from '@utils/core';
+import * as S from './styles';
+import { IProps } from './types';
 
-const getLinkUrl = ({ category, collection, page }: IProps["item"]) => {
+const getLinkUrl = ({ category, collection, page }: IProps['item']) => {
   if (category) {
     return generateCategoryUrl(category.id, category.name);
   }
@@ -51,10 +51,7 @@ export const NavLink: React.FC<IProps> = ({
       fullWidth={fullWidth}
       {...props}
     >
-      {
-        children ? <>{children}</>
-          : name
-      }
+      {children ? <>{children}</> : name}
     </S.Link>
   ) : null;
 };

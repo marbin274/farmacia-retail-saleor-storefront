@@ -1,31 +1,31 @@
-import { convertIFormErrorsToObjectErrors } from "@app/utils/errorsManagement";
-import { DOCUMENT_NUMBER_MAX_LENGTH } from "@app/utils/schemasConfig";
+import { convertIFormErrorsToObjectErrors } from '@app/utils/errorsManagement';
+import { DOCUMENT_NUMBER_MAX_LENGTH } from '@app/utils/schemasConfig';
 import {
   Checkbox,
   DataTreatmentPolicyLink,
   ErrorMessage,
   TermsAndConditionsLink,
-} from "@components/atoms";
-import { IAddressAutocompleteValue } from "@components/molecules";
-import { IAddressWithEmail } from "@temp/@next/types";
+} from '@components/atoms';
+import { IAddressAutocompleteValue } from '@components/molecules';
+import { IAddressWithEmail } from '@temp/@next/types';
 import {
   launchCheckoutFilledContactUserDataEvent,
   launchCheckoutFilledInputForAddressEvent,
   launchCheckoutPrivacyPolicyAceptedEvent,
-} from "@temp/@sdk/gaConfig";
-import React, { useState } from "react";
+} from '@temp/@sdk/gaConfig';
+import React, { useState } from 'react';
 import {
   CitySelect,
   FirstNameTextField,
   PhoneTextField,
   StreetAddress1,
   StreetAddress2,
-} from "./AddressFormContent/AddressFormFields";
-import Map from "./AddressFormContent/Map";
-import { IFieldsProps, ISelectFieldsProps } from "./AddressFormContent/types";
-import * as S from "./styles";
-import { PropsWithFormik } from "./types";
-import { InputField } from "@farmacia-retail/farmauna-components";
+} from './AddressFormContent/AddressFormFields';
+import Map from './AddressFormContent/Map';
+import { IFieldsProps, ISelectFieldsProps } from './AddressFormContent/types';
+import * as S from './styles';
+import { PropsWithFormik } from './types';
+import { InputField } from '@farmacia-retail/farmauna-components';
 
 const isValuesInvalid = (values?: IAddressWithEmail): boolean => {
   return (
@@ -47,7 +47,7 @@ const checkFilledContactUser = (values?: IAddressWithEmail): boolean => {
     values?.email &&
     values?.documentNumber?.length >= 8 &&
     values?.phone?.length === 9 &&
-    values?.email.includes("@")
+    values?.email.includes('@')
   );
 };
 
@@ -82,7 +82,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
   const fieldErrors: any = convertIFormErrorsToObjectErrors(errors);
 
   const _cities: any[] = [];
-  districtsOptions?.map(x => {
+  districtsOptions?.map((x) => {
     const item: any = {
       code: x,
       description: x,
@@ -117,24 +117,24 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
   };
 
   const handlePrivacyAndPolicies = () => {
-    setFieldTouched("termsAndConditions", true);
-    setFieldValue("termsAndConditions", !privacyAndPolicies);
+    setFieldTouched('termsAndConditions', true);
+    setFieldValue('termsAndConditions', !privacyAndPolicies);
     registerFillPrivacyPolicyAcepted(!privacyAndPolicies);
   };
 
   const handleAdditionals = () => {
     setAdditionals(!additionals);
-    setFieldTouched("dataTreatmentPolicy", true);
-    setFieldValue("dataTreatmentPolicy", !additionals);
+    setFieldTouched('dataTreatmentPolicy', true);
+    setFieldValue('dataTreatmentPolicy', !additionals);
   };
 
   const handleCityChange = (value: any, name: any) => {
     const isValid = !isValuesInvalid(values);
-    setFieldValue(name, isValid ? value.code : "");
+    setFieldValue(name, isValid ? value.code : '');
 
     setTimeout(() => {
       formRef?.current?.dispatchEvent(
-        new Event("submit", { cancelable: true })
+        new Event('submit', { cancelable: true })
       );
     }, 300);
   };
@@ -193,9 +193,9 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
             <span className="fa-text-2xl fa-mb-8 fa-block fa-font-semibold">
               Editar dirección
             </span>
-            <div style={{ width: "100%" }}>
+            <div style={{ width: '100%' }}>
               <S.FieldsGroup>
-                {renderGroupLabel("Cliente")}
+                {renderGroupLabel('Cliente')}
                 <div className="fa-mb-4">
                   <FirstNameTextField {...fieldsProps} />
                 </div>
@@ -203,20 +203,20 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                 <div className="fa-block fa-mb-8" />
               </S.FieldsGroup>
               <S.FieldsGroup>
-                {renderGroupLabel("Dirección")}
+                {renderGroupLabel('Dirección')}
                 <S.RowWithOneCell>
                   <div className="fa-mb-4">
                     <StreetAddress1
                       {...fieldsProps}
                       onChange={(value: IAddressAutocompleteValue) => {
-                        setFieldValue("streetAddress1", value.text || "");
+                        setFieldValue('streetAddress1', value.text || '');
                         setFieldValue(
-                          "latitude",
-                          value.lat ? String(value.lat) : ""
+                          'latitude',
+                          value.lat ? String(value.lat) : ''
                         );
                         setFieldValue(
-                          "longitude",
-                          value.lng ? String(value.lng) : ""
+                          'longitude',
+                          value.lng ? String(value.lng) : ''
                         );
                         registerFilledInputForAddress(
                           !!(value.text && value.lat)
@@ -248,7 +248,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
         ) : (
           <div>
             <S.FieldsGroup>
-              {renderGroupLabel("Cliente")}
+              {renderGroupLabel('Cliente')}
               <S.RowWithTwoCells>
                 <FirstNameTextField
                   {...fieldsProps}
@@ -261,7 +261,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                   placeholder="Ejemplo: 04123456"
                   label="Número de documento"
                   maxLength={DOCUMENT_NUMBER_MAX_LENGTH}
-                  value={!values?.documentNumber ? "" : values?.documentNumber}
+                  value={!values?.documentNumber ? '' : values?.documentNumber}
                   pattern="[0-9]*"
                   inputMode="numeric"
                   type="text"
@@ -269,13 +269,13 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                   error={
                     !!fieldErrors?.documentNumber
                       ? fieldErrors?.documentNumber[0].message
-                      : ""
+                      : ''
                   }
                   onBlur={handleOnBlurCheckContactUser}
                   inputSize="large"
-                  onChange={e => {
+                  onChange={(e) => {
                     const value = e.currentTarget?.value?.toUpperCase();
-                    setFieldValue("documentNumber", value);
+                    setFieldValue('documentNumber', value);
                   }}
                 />
               </S.RowWithTwoCells>
@@ -285,11 +285,11 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                   name="email"
                   placeholder="Ejemplo: juan@gmail.com"
                   label="Correo electrónico"
-                  value={!values?.email ? "" : values?.email}
+                  value={!values?.email ? '' : values?.email}
                   autoComplete="email"
                   type="email"
                   error={
-                    !!fieldErrors?.email ? fieldErrors?.email[0].message : ""
+                    !!fieldErrors?.email ? fieldErrors?.email[0].message : ''
                   }
                   inputSize="large"
                   onBlur={handleOnBlurCheckContactUser}
@@ -328,7 +328,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
               </S.RowWithOneCell>
             </S.FieldsGroup>
             <S.FieldsGroup>
-              {renderGroupLabel("Dirección")}
+              {renderGroupLabel('Dirección')}
               <S.RowWithOneCell>
                 <StreetAddress1
                   {...fieldsProps}
@@ -337,20 +337,20 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                     value: IAddressAutocompleteValue,
                     onlyText: boolean
                   ) => {
-                    setFieldValue("streetAddress1", value.text || "");
+                    setFieldValue('streetAddress1', value.text || '');
 
                     if (onlyText) {
                       if (values.latitude) {
-                        setFieldValue("latitude", undefined);
-                        setFieldValue("longitude", undefined);
+                        setFieldValue('latitude', undefined);
+                        setFieldValue('longitude', undefined);
                       }
                     } else {
                       setFieldValue(
-                        "latitude",
+                        'latitude',
                         value.lat ? String(value.lat) : undefined
                       );
                       setFieldValue(
-                        "longitude",
+                        'longitude',
                         value.lng ? String(value.lng) : undefined
                       );
                     }
@@ -365,21 +365,20 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                   }}
                 />
               </S.RowWithOneCell>
-
+              <Map
+                location={getCoordinates()}
+                onChangeLocation={(location, address) => {
+                  setFieldValue('streetAddress1', address);
+                  setFieldValue('latitude', String(location.lat));
+                  setFieldValue('longitude', String(location.lng));
+                  registerFilledInputForAddress(!!address?.length);
+                }}
+              />
               <S.RowWithOneCell>
                 <S.Referencia alwaysShow>
                   <StreetAddress2 {...fieldsProps} />
                 </S.Referencia>
               </S.RowWithOneCell>
-              <Map
-                location={getCoordinates()}
-                onChangeLocation={(location, address) => {
-                  setFieldValue("streetAddress1", address);
-                  setFieldValue("latitude", String(location.lat));
-                  setFieldValue("longitude", String(location.lng));
-                  registerFilledInputForAddress(!!address?.length);
-                }}
-              />
               <S.RowWithTwoCells>
                 <CitySelect
                   fieldsProps={{

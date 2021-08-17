@@ -1,10 +1,10 @@
-import React, { FC } from "react";
-import * as S from "./styles";
-import { Breadcrumbs, ProductsCollection } from "@temp/components";
-import { BannerCarousel } from "@app/components/containers/BannerCarousel";
-import { Landing_landing } from "@sdk/queries/gqlTypes/Landing";
-import { maybe } from "@temp/core/utils";
-import { ISimpleProduct } from "@sdk/types/IProduct";
+import React, { FC } from 'react';
+import * as S from './styles';
+import { Breadcrumbs, ProductsCollection } from '@temp/components';
+import { BannerCarousel } from '@app/components/containers/BannerCarousel';
+import { Landing_landing } from '@sdk/queries/gqlTypes/Landing';
+import { maybe } from '@temp/core/utils';
+import { ISimpleProduct } from '@sdk/types/IProduct';
 
 type IProps = {
   landing: Landing_landing;
@@ -15,12 +15,12 @@ const LandingPage: FC<IProps> = ({ landing }) => {
     <S.Container>
       <S.BannerContainer>
         <BannerCarousel>
-          {landing.banner.frames?.map(frame => {
+          {landing.banner.frames?.map((frame) => {
             const bannerDesktop = frame.images?.find(
-              it => it.screenType === "desktop"
+              (it) => it.screenType === 'desktop'
             );
             const bannerMobile = frame.images?.find(
-              it => it.screenType === "mobile"
+              (it) => it.screenType === 'mobile'
             );
 
             return (
@@ -44,7 +44,7 @@ const LandingPage: FC<IProps> = ({ landing }) => {
             {landing.collections?.edges?.map(({ node: collection }) => {
               const products: ISimpleProduct[] = maybe(
                 () =>
-                  collection.products.edges.map(product => ({
+                  collection.products.edges.map((product) => ({
                     ...product.node,
                   })),
                 []

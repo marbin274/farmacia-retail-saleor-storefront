@@ -1,5 +1,5 @@
-import { ContainerStyle, styled } from "@styles";
-import { aunaGrey20 } from "@styles/constants";
+import { ContainerStyle, styled } from '@styles';
+import { aunaGrey20 } from '@styles/constants';
 
 export const CheckoutLoginContainer = styled.div`
   max-width: 100vw;

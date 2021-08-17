@@ -1,8 +1,8 @@
-import * as React from "react";
-import { Link } from "react-router-dom";
-import { BASE_URL } from "../../core/config";
-import { Button } from "@farmacia-retail/farmauna-components";
-import * as S from "./styles";
+import * as React from 'react';
+import { Link } from 'react-router-dom';
+import { BASE_URL } from '../../core/config';
+import { Button } from '@farmacia-retail/farmauna-components';
+import * as S from './styles';
 interface NotFoundProps {
   message?: string;
 }
@@ -13,10 +13,10 @@ const NotFound: React.FC<NotFoundProps> = () => (
     <S.RulerContent className="fa-mt-4 fa-mb-12" />
     <div>
       <p className="fa-inline sm:fa-block">
-        We can’t seem to find a page you are looking for!{" "}
+        We can’t seem to find a page you are looking for!{' '}
       </p>
       <p className="fa-inline sm:fa-block">
-        You may have mistyped the address or the page may have moved.{" "}
+        You may have mistyped the address or the page may have moved.{' '}
       </p>
       <p className="fa-inline sm:fa-block">
         We’re sorry for the error and hope you’ll have a good day.

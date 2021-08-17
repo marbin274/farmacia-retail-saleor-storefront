@@ -1,4 +1,4 @@
-@import "@temp/globalStyles/scss/variables.scss";
+@import '@temp/globalStyles/scss/variables.scss';
 
 .footer {
   &__favicons {
@@ -113,12 +113,12 @@
             color: #a8de3b;
 
             &:after {
-              content: "";
+              content: '';
               width: 14px;
               height: 9px;
               display: inline-block;
               vertical-align: middle;
-              background: url("../../../images/icon-previous-email.svg")
+              background: url('../../../images/icon-previous-email.svg')
                 no-repeat;
               margin-left: 5px;
             }
@@ -132,13 +132,13 @@
             font-weight: 600;
 
             &::before {
-              content: "";
+              content: '';
               width: 25px;
               height: 25px;
               display: inline-block;
               vertical-align: middle;
               margin: -5px 10px 0 0;
-              background: url("../../../images/phone-icon.svg") no-repeat;
+              background: url('../../../images/phone-icon.svg') no-repeat;
             }
 
             @media (max-width: $xs-small-screen) {

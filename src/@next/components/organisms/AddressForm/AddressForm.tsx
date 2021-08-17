@@ -1,43 +1,44 @@
 import {
   getName,
   removeCountryCodeInPhoneNumber,
-} from "@temp/@next/utils/addresForm";
-import { IPrivacyPolicy } from "@temp/@sdk/api/Checkout/types";
+} from '@temp/@next/utils/addresForm';
+import { IPrivacyPolicy } from '@temp/@sdk/api/Checkout/types';
 import {
   ADDRESS_FORM_SHOW_GENERAL_ERRORS,
   ADDRESS_FORM_SORT,
+  CHECKOUT_MANDATORY_COORDINATES,
   COUNTRY_DEFAULT,
-} from "@temp/core/config";
-import { IAddressWithEmail, IFormErrorSort } from "@types";
-import { Form, Formik, FormikHelpers } from "formik";
-import ErrorFormPopulateIcon from "images/auna/form-populate-error.svg";
-import { pick, sortBy } from "lodash";
-import React, { useEffect, useState } from "react";
-import { alertService } from "../../atoms/Alert";
+} from '@temp/core/config';
+import { IAddressWithEmail, IFormErrorSort } from '@types';
+import { Form, Formik, FormikHelpers } from 'formik';
+import ErrorFormPopulateIcon from 'images/auna/form-populate-error.svg';
+import { pick, sortBy } from 'lodash';
+import React, { useEffect, useState } from 'react';
+import { alertService } from '../../atoms/Alert';
 import {
   addressFormModalSchema,
   addressFormSchema,
-} from "./adddressFormSchema";
-import { AddressFormContent } from "./AddressFormContent";
-import { IProps } from "./types";
+} from './adddressFormSchema';
+import { AddressFormContent } from './AddressFormContent';
+import { IProps } from './types';
 
 const ADDRESS_FIELDS = [
-  "city",
+  'city',
   // "companyName", // currently unused
   // "countryArea", // currently unused
-  "firstName",
-  "lastName",
-  "country",
-  "phone",
+  'firstName',
+  'lastName',
+  'country',
+  'phone',
   // "postalCode", // currently unused
-  "streetAddress1",
-  "streetAddress2",
-  "email",
-  "dataTreatmentPolicy",
-  "termsAndConditions",
-  "documentNumber",
-  "latitude",
-  "longitude",
+  'streetAddress1',
+  'streetAddress2',
+  'email',
+  'dataTreatmentPolicy',
+  'termsAndConditions',
+  'documentNumber',
+  'latitude',
+  'longitude',
 ];
 
 export const AddressForm: React.FC<IProps> = ({
@@ -59,9 +60,8 @@ export const AddressForm: React.FC<IProps> = ({
 }: IProps) => {
   if (userLoading) return null;
 
-  const [initialValues, setInitialValues] = useState<
-    Partial<IAddressWithEmail>
-  >();
+  const [initialValues, setInitialValues] =
+    useState<Partial<IAddressWithEmail>>();
 
   useEffect(() => {
     let addressWithPickedFields: Partial<IAddressWithEmail> = {};
@@ -84,15 +84,15 @@ export const AddressForm: React.FC<IProps> = ({
         address?.streetAddress2 || undefined;
       addressWithPickedFields.email = user.email;
       addressWithPickedFields.id = address?.id;
-      addressWithPickedFields.documentNumber = user.documentNumber || "";
+      addressWithPickedFields.documentNumber = user.documentNumber || '';
       addressWithPickedFields.phone = address?.phone
         ? removeCountryCodeInPhoneNumber(address?.phone)
-        : "";
+        : '';
       addressWithPickedFields.termsAndConditions =
         user.termsAndConditions || false;
       addressWithPickedFields.dataTreatmentPolicy = user.dataTreatmentPolicy;
-      addressWithPickedFields.latitude = latitude || "";
-      addressWithPickedFields.longitude = address?.longitude || "";
+      addressWithPickedFields.latitude = latitude || '';
+      addressWithPickedFields.longitude = address?.longitude || '';
     }
 
     if (checkoutData) {
@@ -133,8 +133,20 @@ export const AddressForm: React.FC<IProps> = ({
 
   const handleOnSubmitAddressForm = (
     values: IAddressWithEmail,
-    { setSubmitting }: FormikHelpers<IAddressWithEmail>
+    { setSubmitting, setFieldValue }: FormikHelpers<IAddressWithEmail>
   ) => {
+    if (
+      CHECKOUT_MANDATORY_COORDINATES &&
+      values.streetAddress1 &&
+      !values.latitude &&
+      !comeFromModal
+    ) {
+      showOptionalAddressError?.();
+      setFieldValue('city', '');
+      setSubmitting(false);
+      return;
+    }
+
     if (submitAddressForm) {
       const _values: IAddressWithEmail = {
         ...values,
@@ -216,33 +228,47 @@ export const AddressForm: React.FC<IProps> = ({
               customErrors.push(_err);
             }
           }
-          const errorsSort = sortBy(customErrors, ["sort"]);
+          let errorsSort = sortBy(customErrors, ['sort']);
           setErrors(errorsSort);
 
           if (errorsSort.length > 0 && submitCount > submitCountRef.current) {
             submitCountRef.current = submitCount;
 
-            if (errorsSort.length < ADDRESS_FORM_SHOW_GENERAL_ERRORS) {
-              if (values.streetAddress1 && !values.latitude) {
+            if (
+              errorsSort.length < ADDRESS_FORM_SHOW_GENERAL_ERRORS &&
+              values.streetAddress1 &&
+              !values.latitude
+            ) {
+              if (
+                CHECKOUT_MANDATORY_COORDINATES &&
+                errorsSort.length === 1 &&
+                errorsSort.find((err) => err.field === 'city')
+              ) {
+                errorsSort = [];
+              } else {
                 errorsSort.push({
                   message:
-                    "Selecciona una dirección dentro de las opciones desplegadas.",
+                    'Selecciona una dirección dentro de las opciones desplegadas.',
                 });
               }
+            }
+
+            if (errorsSort.length === 0) {
+              return;
             }
 
             alertService.sendAlert({
               acceptDialog: () => {
                 scrollToErrors(errorsSort);
               },
-              buttonText: "Entendido",
+              buttonText: 'Entendido',
               icon: ErrorFormPopulateIcon,
               message:
                 errorsSort.length > ADDRESS_FORM_SHOW_GENERAL_ERRORS ? (
-                  "Por favor completa los campos  obligatorios que se encuentran de color rojo."
+                  'Por favor completa los campos  obligatorios que se encuentran de color rojo.'
                 ) : (
                   <>
-                    Por favor completa los siguientes campos:{" "}
+                    Por favor completa los siguientes campos:{' '}
                     <ul>
                       {errorsSort.map((it, key) => (
                         <li key={key}>- {it.message}</li>
@@ -250,8 +276,8 @@ export const AddressForm: React.FC<IProps> = ({
                     </ul>
                   </>
                 ),
-              title: "Faltan datos",
-              type: "Text",
+              title: 'Faltan datos',
+              type: 'Text',
             });
           }
         }, [formikErrors, requestErrors, submitCount]);
@@ -277,6 +303,7 @@ export const AddressForm: React.FC<IProps> = ({
                 touched,
                 user,
                 values,
+                showOptionalAddressError,
               }}
               {...props}
             />

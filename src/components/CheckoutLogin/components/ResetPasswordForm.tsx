@@ -1,6 +1,6 @@
-import { Button } from "@farmacia-retail/farmauna-components";
-import React from "react";
-import { PasswordResetForm } from "../..";
+import { Button } from '@farmacia-retail/farmauna-components';
+import React from 'react';
+import { PasswordResetForm } from '../..';
 
 interface IResetPasswordForm {
   onClick: () => void;

@@ -1,6 +1,6 @@
-import * as React from "react";
-import { TypedPasswordResetMutation } from "./queries";
-import ResetPasswordFormContent from "./ResetPasswordFormContent";
+import * as React from 'react';
+import { TypedPasswordResetMutation } from './queries';
+import ResetPasswordFormContent from './ResetPasswordFormContent';
 interface IPasswordResetForm {
   children?: React.ReactChild;
   buttonBack?: React.ReactChild;

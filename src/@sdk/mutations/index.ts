@@ -1,66 +1,69 @@
 import {
   ApolloClient,
   MutationOptions as ApolloMutationOptions,
-} from "apollo-client";
+} from 'apollo-client';
 
-import * as Address from "./address";
-import * as Auth from "./auth";
-import * as User from "./user";
-import * as CardToken from "./cardToken";
+import * as Address from './address';
+import * as Auth from './auth';
+import * as User from './user';
+import * as CardToken from './cardToken';
 
 import {
   DeleteUserAddress,
   DeleteUserAddressVariables,
-} from "./gqlTypes/DeleteUserAddress";
+} from './gqlTypes/DeleteUserAddress';
 import {
   CreateUserAddress,
   CreateUserAddressVariables,
-} from "./gqlTypes/CreateUserAddress";
+} from './gqlTypes/CreateUserAddress';
 import {
   SetCustomerDefaultAddress,
   SetCustomerDefaultAddressVariables,
-} from "./gqlTypes/SetCustomerDefaultAddress";
+} from './gqlTypes/SetCustomerDefaultAddress';
 import {
   UpdateUserAddress,
   UpdateUserAddressVariables,
-} from "./gqlTypes/UpdateUserAddress";
+} from './gqlTypes/UpdateUserAddress';
 
 import {
   CreateUserCardToken,
   CreateUserCardTokenVariables,
-} from "./gqlTypes/CreateUserCardToken";
+} from './gqlTypes/CreateUserCardToken';
 import {
   DeleteUserCardToken,
   DeleteUserCardTokenVariables,
-} from "./gqlTypes/DeleteUserCardToken";
+} from './gqlTypes/DeleteUserCardToken';
 import {
   SetDefaultUserCardToken,
   SetDefaultUserCardTokenVariables,
-} from "./gqlTypes/SetDefaultUserCardToken";
+} from './gqlTypes/SetDefaultUserCardToken';
 
-import { SetPassword, SetPasswordVariables } from "./gqlTypes/SetPassword";
+import { SetPassword, SetPasswordVariables } from './gqlTypes/SetPassword';
 
-import { TokenAuth, TokenAuthVariables } from "./gqlTypes/TokenAuth";
+import { TokenAuth, TokenAuthVariables } from './gqlTypes/TokenAuth';
 
 import {
   PasswordChange,
   PasswordChangeVariables,
-} from "./gqlTypes/PasswordChange";
+} from './gqlTypes/PasswordChange';
 
 import {
   AccountUpdate,
   AccountUpdateVariables,
-} from "./gqlTypes/AccountUpdate";
+} from './gqlTypes/AccountUpdate';
 
 import {
   SaveFavoriteCategories,
   SaveFavoriteCategoriesVariables,
-} from "./gqlTypes/SaveFavoriteCategories";
-import { AccountConfirm, AccountConfirmVariables } from "./gqlTypes/AccountConfirm";
+} from './gqlTypes/SaveFavoriteCategories';
+import {
+  AccountConfirm,
+  AccountConfirmVariables,
+} from './gqlTypes/AccountConfirm';
 
 export type MutationOptions<TData, TVariables> = Omit<
   ApolloMutationOptions<TData, TVariables>,
-  "mutation"
+  'mutation'
 >;
 
 // TODO: Add ability to pass custom fragments to mutations
@@ -118,7 +121,10 @@ export const MUTATIONS = {
     }),
   SaveFavoriteCategories: <TCacheShape>(
     client: ApolloClient<TCacheShape>,
-    options: MutationOptions<SaveFavoriteCategories, SaveFavoriteCategoriesVariables>
+    options: MutationOptions<
+      SaveFavoriteCategories,
+      SaveFavoriteCategoriesVariables
+    >
   ) =>
     client.mutate({
       mutation: User.saveFavoriteCategories,
