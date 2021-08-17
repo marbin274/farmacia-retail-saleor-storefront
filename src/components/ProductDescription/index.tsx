@@ -20,7 +20,6 @@ import { getProductPricingClass } from '@temp/@next/utils/products';
 import { IProductVariantsAttributesSelectedValues } from '@types';
 import isEqual from 'lodash/isEqual';
 import * as React from 'react';
-import './scss/index.scss';
 import * as S from './styles';
 import classNames from 'classnames';
 export interface ProductDescriptionProps {

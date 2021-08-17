@@ -4,7 +4,7 @@ import { joinFormikErrorsToIFormErrorsAndConvertToObjectErrors } from '@temp/@ne
 import { TokenAuthVariables } from '@temp/@sdk/mutations/gqlTypes/TokenAuth';
 import { useFormik } from 'formik';
 import * as React from 'react';
-import ForgottenPassword from '../OverlayManager/Login/ForgottenPassword';
+import ForgottenPassword from '../OverlayManager/Login/components/ForgottenPassword';
 import { loginFormSchema } from './loginForm.schema';
 import { Button, InputField } from '@farmacia-retail/farmauna-components';
 import * as S from './styles';
@@ -68,7 +68,7 @@ const LoginForm: React.FC<ILoginForm> = ({
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <S.InputWrapper className="InputField fa-mx-0 fa-mt-0 fa-mb-5 fa-pb-2">
+        <S.InputWrapper className="fa-mb-2.5 sm:fa-mb-4 fa-mx-0 fa-mt-0 fa-pb-2">
           <InputField
             label="Correo electrónico"
             error={!!errors?.email ? errors!.email[0].message : ''}
@@ -81,7 +81,7 @@ const LoginForm: React.FC<ILoginForm> = ({
             onChange={handleChange}
           />
         </S.InputWrapper>
-        <S.InputWrapper className="InputField fa-mx-0 fa-mt-0 fa-mb-5 fa-pb-2">
+        <S.InputWrapper className="fa-mb-2.5 sm:fa-mb-4 fa-mx-0 fa-mt-0 fa-pb-2">
           <InputField
             label="Contraseña"
             type="password"

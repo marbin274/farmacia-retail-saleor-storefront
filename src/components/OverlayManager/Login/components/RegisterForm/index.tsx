@@ -1,11 +1,10 @@
+import { Button } from '@farmacia-retail/farmauna-components';
 import { maybe } from '@temp/core/utils';
 import { History } from 'history';
 import React from 'react';
 import { useHistory, useLocation } from 'react-router';
-import { TypedAccountRegisterMutation } from './queries';
+import { TypedAccountRegisterMutation } from '../../queries';
 import { RegisterFormContent } from './RegisterFormContent';
-import './scss/index.scss';
-import { Button } from '@farmacia-retail/farmauna-components';
 
 interface IRegisterForm {
   hide?: () => void;

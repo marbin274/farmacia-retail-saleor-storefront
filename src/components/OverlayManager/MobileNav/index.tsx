@@ -8,7 +8,11 @@ import {
   Overlay,
   OverlayContextInterface,
 } from '../..';
-import { MobileNavWrapper } from './styles';
+import {
+  ContactNavWrapper,
+  ContactPhoneWrapper,
+  MobileNavWrapper,
+} from './styles';
 const MobileNav: React.FC<{ overlay: OverlayContextInterface }> = ({
   overlay,
 }) => {
@@ -42,16 +46,25 @@ const MobileNav: React.FC<{ overlay: OverlayContextInterface }> = ({
         </div>
       )}
       {!openParent && (
-        <div className="fa-bg-white info-contact">
-          <div className="contact-nav">
-            <p>¿Necesitas asesoría?</p>
-            <p>
-              <a href="mailto:consultas@farmauna.com">consultas@farmauna.com</a>
+        <div className="fa-bg-white fa-relative fa-w-full fa-bottom-0">
+          <ContactNavWrapper>
+            <p className="fa-font-normal fa-text-sm fa-leading-6 fa-text-black">
+              ¿Necesitas asesoría?
             </p>
-          </div>
-          <div className="contact-phone">
-            <span>01 3913655</span>
-          </div>
+            <p className="fa-font-normal fa-text-sm fa-leading-6 fa-text-black">
+              <a
+                className="fa-text-primary-medium"
+                href="mailto:consultas@farmauna.com"
+              >
+                consultas@farmauna.com
+              </a>
+            </p>
+          </ContactNavWrapper>
+          <ContactPhoneWrapper className="contact-phone fa-border-t fa-border-solid fa-border-gray-light">
+            <span className="fa-text-h2 fa-leading-6 fa-text-primary-medium fa-font-semibold">
+              01 3913655
+            </span>
+          </ContactPhoneWrapper>
         </div>
       )}
     </Overlay>

@@ -6,12 +6,16 @@ module.exports = {
   theme: {
     extend: {
       ...tailwindConfig.theme.extend,
+      maxWidth: {
+        screen: '100vw',
+      },
       width: {
         100: '25rem',
       },
     },
     colors: {
       ...tailwindConfig.theme.colors,
+      aunaBlack: '#131336',
       brand: {
         ...tailwindConfig.theme.colors.brand,
         '03': '#008A66',
