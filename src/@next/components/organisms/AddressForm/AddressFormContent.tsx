@@ -365,12 +365,6 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                   }}
                 />
               </S.RowWithOneCell>
-
-              <S.RowWithOneCell>
-                <S.Referencia alwaysShow>
-                  <StreetAddress2 {...fieldsProps} />
-                </S.Referencia>
-              </S.RowWithOneCell>
               <Map
                 location={getCoordinates()}
                 onChangeLocation={(location, address) => {
@@ -380,6 +374,11 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
                   registerFilledInputForAddress(!!address?.length);
                 }}
               />
+              <S.RowWithOneCell>
+                <S.Referencia alwaysShow>
+                  <StreetAddress2 {...fieldsProps} />
+                </S.Referencia>
+              </S.RowWithOneCell>
               <S.RowWithTwoCells>
                 <CitySelect
                   fieldsProps={{

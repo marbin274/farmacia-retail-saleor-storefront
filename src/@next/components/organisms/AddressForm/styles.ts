@@ -103,5 +103,6 @@ export const Referencia = styled.div<{alwaysShow?:boolean, mobile?:boolean}>`
     ${mediaUp.mediumScreen`
       display: ${({ mobile }: any) => !!mobile ? "none" : "block"};
     `}
-  `}  
+  `}
+  margin-top: 1rem; 
 `;
