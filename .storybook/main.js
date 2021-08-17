@@ -71,7 +71,9 @@ module.exports = {
 
     config.plugins.push(
       new ForkTsCheckerWebpackPlugin({
-        tslint: true,
+        eslint:  {
+          files: './src/**/*.{ts,tsx,js,jsx}' 
+        },
         exclude: "node_modules",
       })
     );

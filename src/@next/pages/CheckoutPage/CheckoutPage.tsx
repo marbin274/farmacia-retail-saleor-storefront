@@ -1,33 +1,31 @@
-import { Loader } from "@components/atoms";
-import { CartResume, CheckoutProgressBar } from "@components/molecules";
-import { CartSummary } from "@components/organisms";
-import { Checkout } from "@components/templates";
-import { Button } from "@farmacia-retail/farmauna-components";
-import { IItems } from "@sdk/api/Cart/types";
+import { Loader } from '@components/atoms';
+import { CartResume, CheckoutProgressBar } from '@components/molecules';
+import { CartSummary } from '@components/organisms';
+import { Checkout } from '@components/templates';
+import { Button } from '@farmacia-retail/farmauna-components';
+import { IItems } from '@sdk/api/Cart/types';
 import {
   ecommerceProductsMapper,
   launchCheckoutEvent,
   steps,
-} from "@sdk/gaConfig";
-import { useCart, useCheckout } from "@sdk/react";
-import { alertService } from "@temp/@next/components/atoms/Alert";
-import { smallScreen } from "@temp/@next/globalStyles/constants";
-import {
-  removePaymentItems,
-} from "@temp/@next/utils/checkoutValidations";
+} from '@sdk/gaConfig';
+import { useCart, useCheckout } from '@sdk/react';
+import { alertService } from '@temp/@next/components/atoms/Alert';
+import { smallScreen } from '@temp/@next/globalStyles/constants';
+import { removePaymentItems } from '@temp/@next/utils/checkoutValidations';
 import {
   SHIPPING_METHOD_NOT_FOUND,
   SHIPPING_METHOD_NOT_FOUND_TITLE,
-} from "@temp/@next/utils/schemasMessages";
-import { LocalRepository } from "@temp/@sdk/repository";
-import { BASE_URL, CHECKOUT_STEPS } from "@temp/core/config";
-import { IFormError, ITaxedMoney } from "@types";
-import shippingMethodCalendarInfoIco from "images/auna/shipping-method-calendar-info.svg";
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import Media from "react-media";
-import { Redirect, useLocation } from "react-router-dom";
-import { CartDeliveryDataModal } from "../../components/organisms/CartDeliveryDataModal/CartDeliveryDataModal";
-import { CheckoutRouter } from "./CheckoutRouter";
+} from '@temp/@next/utils/schemasMessages';
+import { LocalRepository } from '@temp/@sdk/repository';
+import { BASE_URL, CHECKOUT_STEPS } from '@temp/core/config';
+import { IFormError, ITaxedMoney } from '@types';
+import shippingMethodCalendarInfoIco from 'images/auna/shipping-method-calendar-info.svg';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import Media from 'react-media';
+import { Redirect, useLocation } from 'react-router-dom';
+import { CartDeliveryDataModal } from '../../components/organisms/CartDeliveryDataModal/CartDeliveryDataModal';
+import { CheckoutRouter } from './CheckoutRouter';
 import {
   CheckoutAddressSubpage,
   CheckoutPaymentSubpage,
@@ -37,9 +35,9 @@ import {
   ICheckoutPaymentSubpageHandles,
   ICheckoutReviewSubpageHandles,
   ICheckoutShippingSubpageHandles,
-} from "./subpages";
-import { IProps } from "./types";
-import { checkAttentionSchedule } from "@sdk/utils/checkoutValidations";
+} from './subpages';
+import { IProps } from './types';
+import { checkAttentionSchedule } from '@sdk/utils/checkoutValidations';
 
 const prepareCartSummary = (
   activeStepIndex: number,
@@ -115,20 +113,16 @@ const getButton = (
   checkoutId: string | undefined,
   onClick: () => void
 ) => {
-  if (text) {
-    return (
-      <Button
-        data-cy="checkoutPageBtnNextStep"
-        onClick={onClick}
-        disabled={!checkoutId}
-        type="submit"
-      >
-        {text}
-      </Button>
-    );
-  } else {
-    return null;
-  }
+  return text ? (
+    <Button
+      data-cy="checkoutPageBtnNextStep"
+      onClick={onClick}
+      disabled={!checkoutId}
+      type="submit"
+    >
+      {text}
+    </Button>
+  ) : null;
 };
 
 const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
@@ -176,13 +170,13 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
   if (isAttentionSchedule === false) {
     alertService.sendAlert({
       acceptDialog: () => {
-        setShippingMethod({ shippingMethodId: "" });
+        setShippingMethod({ shippingMethodId: '' });
       },
-      buttonText: "Entendido",
+      buttonText: 'Entendido',
       icon: shippingMethodCalendarInfoIco,
       message: SHIPPING_METHOD_NOT_FOUND,
       title: SHIPPING_METHOD_NOT_FOUND_TITLE,
-      type: "Info",
+      type: 'Info',
     });
   }
 
@@ -206,11 +200,8 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
   const [selectedPaymentGateway, setSelectedPaymentGateway] = useState<
     string | undefined
   >(payment?.gateway);
-  const [
-    selectedPaymentGatewayToken,
-    setSelectedPaymentGatewayToken,
-  ] = useState<string | undefined>(payment?.token);
-
+  const [selectedPaymentGatewayToken, setSelectedPaymentGatewayToken] =
+    useState<string | undefined>(payment?.token);
 
   useEffect(() => {
     setSelectedPaymentGateway(payment?.gateway);
@@ -228,15 +219,12 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
   const activeStepIndex = matchingStepIndex !== -1 ? matchingStepIndex : 2;
   const activeStep = CHECKOUT_STEPS[activeStepIndex];
 
-  const checkoutAddressSubpageRef = useRef<ICheckoutAddressSubpageHandles>(
-    null
-  );
-  const checkoutShippingSubpageRef = useRef<ICheckoutShippingSubpageHandles>(
-    null
-  );
-  const checkoutPaymentSubpageRef = useRef<ICheckoutPaymentSubpageHandles>(
-    null
-  );
+  const checkoutAddressSubpageRef =
+    useRef<ICheckoutAddressSubpageHandles>(null);
+  const checkoutShippingSubpageRef =
+    useRef<ICheckoutShippingSubpageHandles>(null);
+  const checkoutPaymentSubpageRef =
+    useRef<ICheckoutPaymentSubpageHandles>(null);
   const checkoutReviewSubpageRef = useRef<ICheckoutReviewSubpageHandles>(null);
 
   const handleNextStepClick = () => {
@@ -325,14 +313,14 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
   };
 
   React.useEffect(() => {
-    if (pathname === "/checkout/address") {
+    if (pathname === '/checkout/address') {
       sendEventForCheckoutAddress();
     }
-    if (pathname === "/checkout/payment" && !addressGaEventSended) {
+    if (pathname === '/checkout/payment' && !addressGaEventSended) {
       sendEventsWhenSkippingFirstStep();
     }
 
-    if (pathname === "/checkout/payment" && addressGaEventSended) {
+    if (pathname === '/checkout/payment' && addressGaEventSended) {
       sendEventForCheckoutPayment();
     }
   }, [pathname]);
@@ -343,7 +331,7 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
         items={items}
         checkout={checkout}
         payment={payment}
-        renderAddress={props => (
+        renderAddress={(props) => (
           <>
             <CheckoutAddressSubpage
               ref={checkoutAddressSubpageRef}
@@ -361,7 +349,7 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
             />
           </>
         )}
-        renderPayment={props => (
+        renderPayment={(props) => (
           <CheckoutPaymentSubpage
             ref={checkoutPaymentSubpageRef}
             selectedPaymentGateway={selectedPaymentGateway}
@@ -373,7 +361,7 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
             {...props}
           />
         )}
-        renderReview={props => (
+        renderReview={(props) => (
           <CheckoutReviewSubpage
             ref={checkoutReviewSubpageRef}
             selectedPaymentGatewayToken={selectedPaymentGatewayToken}
@@ -397,7 +385,7 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     setDisplayModalShowDetail(true);
   };
   return (
-    <div style={{ backgroundColor: "#F7F6F8" }}>
+    <div style={{ backgroundColor: '#F7F6F8' }}>
       {displayModalShowDetail && (
         <CartDeliveryDataModal
           checkout={checkout}

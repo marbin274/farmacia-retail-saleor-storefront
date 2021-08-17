@@ -1,28 +1,26 @@
-import { RichTextContent } from "@components/atoms";
-import { TaxedMoney } from "@components/containers";
+import { RichTextContent } from '@components/atoms';
+import { TaxedMoney } from '@components/containers';
 
 import {
   ProductBottomDetail,
   ProductVariantPicker,
-} from "@components/organisms";
+} from '@components/organisms';
 import {
   ProductDetails_product_pricing,
   ProductDetails_product_variants,
   ProductDetails_product_variants_pricing,
-} from "@sdk/queries/gqlTypes/ProductDetails";
-import { ISimpleProduct } from "@sdk/types/IProduct";
+} from '@sdk/queries/gqlTypes/ProductDetails';
+import { ISimpleProduct } from '@sdk/types/IProduct';
 import {
   ICheckoutModelLine,
   ICheckoutModelLineVariantLocalStorage,
-} from "@sdk/repository";
-import ItemsHandler from "@temp/@next/components/organisms/ItemsHandler/ItemsHandler";
-import {
-  getProductPricingClass,  
-} from "@temp/@next/utils/products"
-import { IProductVariantsAttributesSelectedValues } from "@types";
-import isEqual from "lodash/isEqual";
-import * as React from "react";
-import "./scss/index.scss";
+} from '@sdk/repository';
+import ItemsHandler from '@temp/@next/components/organisms/ItemsHandler/ItemsHandler';
+import { getProductPricingClass } from '@temp/@next/utils/products';
+import { IProductVariantsAttributesSelectedValues } from '@types';
+import isEqual from 'lodash/isEqual';
+import * as React from 'react';
+import './scss/index.scss';
 export interface ProductDescriptionProps {
   canAddToCart: boolean;
   descriptionJson: string;
@@ -43,22 +41,19 @@ export interface ProductDescriptionProps {
 
 const HEADER_HEIGHT = 70;
 
-export const ProductDescription: React.FC<ProductDescriptionProps> = props => {
+export const ProductDescription: React.FC<ProductDescriptionProps> = (
+  props
+) => {
   const { canAddToCart, descriptionJson, product } = props;
   const { name } = props.product;
   const min = props.pricing.priceRange.start;
   const max = props.pricing.priceRange.stop;
-  const [showBottomDetail, setShowBottomDetail] = React.useState<boolean>(
-    false
-  );
-  const [
-    showBottomDetailProductInfo,
-    setShowBottomDetailProductInfo,
-  ] = React.useState<boolean>(false);
-  const [
-    variantPricing,
-    setVariantPricing,
-  ] = React.useState<ProductDetails_product_variants_pricing | null>(null);
+  const [showBottomDetail, setShowBottomDetail] =
+    React.useState<boolean>(false);
+  const [showBottomDetailProductInfo, setShowBottomDetailProductInfo] =
+    React.useState<boolean>(false);
+  const [variantPricing, setVariantPricing] =
+    React.useState<ProductDetails_product_variants_pricing | null>(null);
 
   const addToCartRef = React.useRef<HTMLDivElement>();
   const priceRef = React.useRef<HTMLDivElement>();
@@ -67,34 +62,33 @@ export const ProductDescription: React.FC<ProductDescriptionProps> = props => {
   const getProductPrice = () => {
     if (variantPricing) {
       const { canAddToCart, isOnSale } = props;
-      if (!isOnSale) {
-        return (
-          <div className="price">
+      return !isOnSale ? (
+        <div className="price">
+          <TaxedMoney taxedMoney={variantPricing.price} />
+        </div>
+      ) : (
+        <>
+          <div
+            className={`fa-pr-2 ${getProductPricingClass(
+              canAddToCart,
+              isOnSale
+            )}`}
+          >
             <TaxedMoney taxedMoney={variantPricing.price} />
           </div>
-        );
-      } else {
-        return (
-          <>
-            <div className={`fa-pr-2 ${getProductPricingClass(canAddToCart, isOnSale)}`}>
-              <TaxedMoney taxedMoney={variantPricing.price} />
-            </div>
-            <div className="price undiscounted_price">
-              <TaxedMoney taxedMoney={variantPricing.priceUndiscounted} />
-            </div>
-          </>
-        );
-      }
-    }
-    if (isEqual(min, max)) {
-      return <TaxedMoney taxedMoney={min} />;
-    } else {
-      return (
-        <>
-          <TaxedMoney taxedMoney={min} /> - <TaxedMoney taxedMoney={max} />
+          <div className="price undiscounted_price">
+            <TaxedMoney taxedMoney={variantPricing.priceUndiscounted} />
+          </div>
         </>
       );
     }
+    return isEqual(min, max) ? (
+      <TaxedMoney taxedMoney={min} />
+    ) : (
+      <>
+        <TaxedMoney taxedMoney={min} /> - <TaxedMoney taxedMoney={max} />
+      </>
+    );
   };
 
   const onVariantPickerChange = (
@@ -118,15 +112,11 @@ export const ProductDescription: React.FC<ProductDescriptionProps> = props => {
   };
 
   const handleScroll = () => {
-    const {
-      y: addToCartY,
-      height: addToCartYHeight,
-    } = addToCartRef.current.getBoundingClientRect();
+    const { y: addToCartY, height: addToCartYHeight } =
+      addToCartRef.current.getBoundingClientRect();
 
-    const {
-      y: priceY,
-      height: priceHeight,
-    } = priceRef.current.getBoundingClientRect();
+    const { y: priceY, height: priceHeight } =
+      priceRef.current.getBoundingClientRect();
 
     const underAddToCart = addToCartY + addToCartYHeight - HEADER_HEIGHT < 0;
     const underPrice = priceY + priceHeight - HEADER_HEIGHT < 0;
@@ -135,15 +125,16 @@ export const ProductDescription: React.FC<ProductDescriptionProps> = props => {
   };
 
   React.useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   const handleScrollContainer = () => {
     const addToCartRect = addToCartRef.current.getBoundingClientRect();
-    const productDescriptionRect = productDescriptionRef.current.getBoundingClientRect();
+    const productDescriptionRect =
+      productDescriptionRef.current.getBoundingClientRect();
 
     const isVisible =
       addToCartRect.top <= productDescriptionRect.top

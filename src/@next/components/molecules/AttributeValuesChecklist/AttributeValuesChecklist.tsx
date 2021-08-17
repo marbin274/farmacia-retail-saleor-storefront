@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
-import { Checkbox } from "@components/atoms";
+import { Checkbox } from '@components/atoms';
 
-import * as S from "./styles";
-import { IProps } from "./types";
-import { Button, PlusIcon } from "@farmacia-retail/farmauna-components";
+import * as S from './styles';
+import { IProps } from './types';
+import { Button, PlusIcon } from '@farmacia-retail/farmauna-components';
 
 export const AttributeValuesChecklist: React.FC<IProps> = ({
   title,
@@ -21,28 +21,24 @@ export const AttributeValuesChecklist: React.FC<IProps> = ({
       {title && <S.Header>{title}</S.Header>}
       {values &&
         values.map((value, index) => {
-          if (!viewAllOptions && index > valuesShowLimitNumber - 1) {
-            return null;
-          } else {
-            return (
-              <Checkbox
-                key={index}
-                name={name}
-                checked={!!value.selected}
-                onChange={() => onValueClick(value)}
-              >
-                {value && value.name}
-              </Checkbox>
-            );
-          }
+          return !viewAllOptions && index > valuesShowLimitNumber - 1 ? null : (
+            <Checkbox
+              key={index}
+              name={name}
+              checked={!!value.selected}
+              onChange={() => onValueClick(value)}
+            >
+              {value && value.name}
+            </Checkbox>
+          );
         })}
       {!viewAllOptions && values.length > valuesShowLimitNumber && (
         <S.ViewMoreButton>
-          <Button 
+          <Button
             onClick={() => setViewAllOptions(true)}
-            variant="outline" 
-            icon={<PlusIcon size={15}/>}
-            >
+            variant="outline"
+            icon={<PlusIcon size={15} />}
+          >
             ver todo
           </Button>
         </S.ViewMoreButton>

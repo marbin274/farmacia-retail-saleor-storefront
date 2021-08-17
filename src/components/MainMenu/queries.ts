@@ -1,7 +1,6 @@
-import gql from "graphql-tag";
-import { TypedQuery } from "../../core/queries";
-import { MainMenu } from "./gqlTypes/MainMenu";
-
+import gql from 'graphql-tag';
+import { TypedQuery } from '../../core/queries';
+import { MainMenu } from './gqlTypes/MainMenu';
 
 export const menuCategoryBasicFieldCategory = gql`
   fragment MenuCategoryBasicFieldCategory on Category {
@@ -17,15 +16,15 @@ export const menuCategoryBasicFieldCategory = gql`
 
 export const menuCategoryChildrenField = gql`
   ${menuCategoryBasicFieldCategory}
-  fragment MenuCategoryChildrenField on Category{
+  fragment MenuCategoryChildrenField on Category {
     ...MenuCategoryBasicFieldCategory
-    children(first: 100){
-      edges{
-        node{
+    children(first: 100) {
+      edges {
+        node {
           ...MenuCategoryBasicFieldCategory
-          children(first: 100){
-            edges{
-              node{
+          children(first: 100) {
+            edges {
+              node {
                 ...MenuCategoryBasicFieldCategory
               }
             }
@@ -58,13 +57,13 @@ export const mainMenuSubItem = gql`
   }
 `;
 
-export const mainMenu = gql`  
+export const mainMenu = gql`
   ${mainMenuSubItem}
   ${menuCategoryChildrenField}
   query MainMenu {
-    categories (first: 100, level: 0){
-      edges{
-        node{
+    root_categories(first: 100) {
+      edges {
+        node {
           ...MenuCategoryChildrenField
         }
       }

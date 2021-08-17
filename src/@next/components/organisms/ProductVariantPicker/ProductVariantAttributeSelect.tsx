@@ -1,16 +1,16 @@
-import React from "react";
+import React from 'react';
 
-import { Icon, Input } from "@components/atoms";
-import { InputSelect } from "@components/molecules";
-import { useSelectableProductVariantsAttributeValues } from "@hooks";
-import { ProductDetails_product_variants } from "@sdk/queries/gqlTypes/ProductDetails";
+import { Icon, Input } from '@components/atoms';
+import { InputSelect } from '@components/molecules';
+import { useSelectableProductVariantsAttributeValues } from '@hooks';
+import { ProductDetails_product_variants } from '@sdk/queries/gqlTypes/ProductDetails';
 import {
   IProductVariantsAttribute,
   IProductVariantsAttributesSelectedValues,
-} from "@types";
+} from '@types';
 
-import { SelectSidebar } from "../SelectSidebar";
-import * as S from "./styles";
+import { SelectSidebar } from '../SelectSidebar';
+import * as S from './styles';
 
 export const ProductVariantAttributeSelect: React.FC<{
   selectSidebar: boolean;
@@ -33,28 +33,29 @@ export const ProductVariantAttributeSelect: React.FC<{
 }) => {
   const [showSelectSidebar, setShowSelectSidebar] = React.useState(false);
 
-  const selectableProductVariantsAttributeValues = useSelectableProductVariantsAttributeValues(
-    productVariantsAttributeId,
-    productVariants,
-    productVariantsAttributesSelectedValues
-  );
+  const selectableProductVariantsAttributeValues =
+    useSelectableProductVariantsAttributeValues(
+      productVariantsAttributeId,
+      productVariants,
+      productVariantsAttributesSelectedValues
+    );
 
   const selectedValue = productVariantsAttributesSelectedValues &&
     productVariantsAttributesSelectedValues[productVariantsAttributeId] && {
       disabled: false,
       id: productVariantsAttributesSelectedValues[productVariantsAttributeId]!
         .id,
-      label: productVariantsAttributesSelectedValues[
-        productVariantsAttributeId
-      ]!.name!,
-      value: productVariantsAttributesSelectedValues[
-        productVariantsAttributeId
-      ]!.value!,
+      label:
+        productVariantsAttributesSelectedValues[productVariantsAttributeId]!
+          .name!,
+      value:
+        productVariantsAttributesSelectedValues[productVariantsAttributeId]!
+          .value!,
     };
 
   const attributeOptions = productVariantsAttribute.values
-    .filter(value => value)
-    .map(value => {
+    .filter((value) => value)
+    .map((value) => {
       const isOptionDisabled =
         selectableProductVariantsAttributeValues[productVariantsAttributeId] &&
         !selectableProductVariantsAttributeValues[
@@ -71,17 +72,17 @@ export const ProductVariantAttributeSelect: React.FC<{
 
   const selectLabel = productVariantsAttribute.attribute.name
     ? productVariantsAttribute.attribute.name!
-    : "";
+    : '';
 
   const selectedValuesList = selectedValue ? [selectedValue.value] : [];
 
   const disabledValuesList = attributeOptions
-    .filter(optionValue => optionValue.disabled)
-    .map(optionValue => optionValue.value);
+    .filter((optionValue) => optionValue.disabled)
+    .map((optionValue) => optionValue.value);
 
   const handleSelectValueInSidebar = (optionValue: string) => {
     if (
-      disabledValuesList.every(disabledValue => disabledValue !== optionValue)
+      disabledValuesList.every((disabledValue) => disabledValue !== optionValue)
     ) {
       onChangeSelection(optionValue);
       setShowSelectSidebar(false);
@@ -89,58 +90,50 @@ export const ProductVariantAttributeSelect: React.FC<{
   };
 
   const getRightInputContent = (isInputFilled: boolean) => {
-    if (isInputFilled) {
-      return (
-        <S.SelectIndicator onClick={onClearSelection}>
-          <Icon name="select_x" size={10} />
-        </S.SelectIndicator>
-      );
-    } else {
-      return (
-        <S.SelectIndicator onClick={() => setShowSelectSidebar(true)}>
-          <Icon name="subcategories" size={10} />
-        </S.SelectIndicator>
-      );
-    }
+    return isInputFilled ? (
+      <S.SelectIndicator onClick={onClearSelection}>
+        <Icon name="select_x" size={10} />
+      </S.SelectIndicator>
+    ) : (
+      <S.SelectIndicator onClick={() => setShowSelectSidebar(true)}>
+        <Icon name="subcategories" size={10} />
+      </S.SelectIndicator>
+    );
   };
 
-  if (selectSidebar) {
-    return (
-      <>
-        <Input
-          onFocus={() => setShowSelectSidebar(true)}
-          label={selectLabel}
-          value={selectedValue ? selectedValue.value : ""}
-          onChange={() => null}
-          contentRight={getRightInputContent(!!selectedValue)}
-          readOnly={true}
-        />
-        <SelectSidebar
-          options={attributeOptions}
-          selectedOptions={selectedValuesList}
-          disabledOptions={disabledValuesList}
-          title={`Please select ${selectLabel}`}
-          show={showSelectSidebar}
-          hide={() => setShowSelectSidebar(false)}
-          onSelect={handleSelectValueInSidebar}
-          target={selectSidebarTarget}
-        />
-      </>
-    );
-  } else {
-    return (
-      <InputSelect
-        name={productVariantsAttribute.attribute.id}
+  return selectSidebar ? (
+    <>
+      <Input
+        onFocus={() => setShowSelectSidebar(true)}
         label={selectLabel}
-        value={selectedValue}
-        options={attributeOptions}
-        isOptionDisabled={optionValue => optionValue.disabled}
-        onChange={optionValue =>
-          onChangeSelection(optionValue && optionValue.value)
-        }
-        clearable={true}
-        clearValue={onClearSelection}
+        value={selectedValue ? selectedValue.value : ''}
+        onChange={() => null}
+        contentRight={getRightInputContent(!!selectedValue)}
+        readOnly={true}
       />
-    );
-  }
+      <SelectSidebar
+        options={attributeOptions}
+        selectedOptions={selectedValuesList}
+        disabledOptions={disabledValuesList}
+        title={`Please select ${selectLabel}`}
+        show={showSelectSidebar}
+        hide={() => setShowSelectSidebar(false)}
+        onSelect={handleSelectValueInSidebar}
+        target={selectSidebarTarget}
+      />
+    </>
+  ) : (
+    <InputSelect
+      name={productVariantsAttribute.attribute.id}
+      label={selectLabel}
+      value={selectedValue}
+      options={attributeOptions}
+      isOptionDisabled={(optionValue) => optionValue.disabled}
+      onChange={(optionValue) =>
+        onChangeSelection(optionValue && optionValue.value)
+      }
+      clearable={true}
+      clearValue={onClearSelection}
+    />
+  );
 };

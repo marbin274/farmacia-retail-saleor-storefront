@@ -1,60 +1,60 @@
-import { getAuthToken } from "@sdk/auth";
-import { Checkout } from "@sdk/fragments/gqlTypes/Checkout";
-import { OrderDetail } from "@sdk/fragments/gqlTypes/OrderDetail";
-import { Payment } from "@sdk/fragments/gqlTypes/Payment";
-import { CountryCode } from "@sdk/gqlTypes/globalTypes";
-import * as CheckoutMutations from "@sdk/mutations/checkout";
+import { getAuthToken } from '@sdk/auth';
+import { Checkout } from '@sdk/fragments/gqlTypes/Checkout';
+import { OrderDetail } from '@sdk/fragments/gqlTypes/OrderDetail';
+import { Payment } from '@sdk/fragments/gqlTypes/Payment';
+import { CountryCode } from '@sdk/gqlTypes/globalTypes';
+import * as CheckoutMutations from '@sdk/mutations/checkout';
 import {
   AddCheckoutPromoCode,
   AddCheckoutPromoCodeVariables,
-} from "@sdk/mutations/gqlTypes/AddCheckoutPromoCode";
+} from '@sdk/mutations/gqlTypes/AddCheckoutPromoCode';
 import {
   CompleteCheckout,
   CompleteCheckoutVariables,
-} from "@sdk/mutations/gqlTypes/CompleteCheckout";
+} from '@sdk/mutations/gqlTypes/CompleteCheckout';
 import {
   CreateCheckout,
   CreateCheckoutVariables,
-} from "@sdk/mutations/gqlTypes/CreateCheckout";
+} from '@sdk/mutations/gqlTypes/CreateCheckout';
 import {
   CreateCheckoutPayment,
   CreateCheckoutPaymentVariables,
-} from "@sdk/mutations/gqlTypes/CreateCheckoutPayment";
+} from '@sdk/mutations/gqlTypes/CreateCheckoutPayment';
 import {
   RemoveCheckoutPromoCode,
   RemoveCheckoutPromoCodeVariables,
-} from "@sdk/mutations/gqlTypes/RemoveCheckoutPromoCode";
+} from '@sdk/mutations/gqlTypes/RemoveCheckoutPromoCode';
 import {
   UpdateCheckoutBillingAddress,
   UpdateCheckoutBillingAddressVariables,
-} from "@sdk/mutations/gqlTypes/UpdateCheckoutBillingAddress";
+} from '@sdk/mutations/gqlTypes/UpdateCheckoutBillingAddress';
 import {
   UpdateCheckoutBillingAddressWithEmail,
   UpdateCheckoutBillingAddressWithEmailVariables,
-} from "@sdk/mutations/gqlTypes/UpdateCheckoutBillingAddressWithEmail";
+} from '@sdk/mutations/gqlTypes/UpdateCheckoutBillingAddressWithEmail';
 import {
   UpdateCheckoutLine,
   UpdateCheckoutLineVariables,
-} from "@sdk/mutations/gqlTypes/UpdateCheckoutLine";
+} from '@sdk/mutations/gqlTypes/UpdateCheckoutLine';
 import {
   UpdateCheckoutShippingAddress,
   UpdateCheckoutShippingAddressVariables,
-} from "@sdk/mutations/gqlTypes/UpdateCheckoutShippingAddress";
-import { UpdateCheckoutShippingMethod } from "@sdk/mutations/gqlTypes/UpdateCheckoutShippingMethod";
-import * as CheckoutQueries from "@sdk/queries/checkout";
-import * as ProductQueries from "@sdk/queries/products";
-import { CheckoutDetails } from "@sdk/queries/gqlTypes/CheckoutDetails";
+} from '@sdk/mutations/gqlTypes/UpdateCheckoutShippingAddress';
+import { UpdateCheckoutShippingMethod } from '@sdk/mutations/gqlTypes/UpdateCheckoutShippingMethod';
+import * as CheckoutQueries from '@sdk/queries/checkout';
+import * as ProductQueries from '@sdk/queries/products';
+import { CheckoutDetails } from '@sdk/queries/gqlTypes/CheckoutDetails';
 import {
   CheckoutProductVariants,
   CheckoutProductVariantsVariables,
-  CheckoutProductVariants_productVariants
-} from "@sdk/queries/gqlTypes/CheckoutProductVariants";
+  CheckoutProductVariants_productVariants,
+} from '@sdk/queries/gqlTypes/CheckoutProductVariants';
 import {
   GetShopPaymentGateways,
   GetShopPaymentGateways_shop_availablePaymentGateways,
-} from "@sdk/queries/gqlTypes/GetShopPaymentGateways";
-import { UserCheckoutDetails } from "@sdk/queries/gqlTypes/UserCheckoutDetails";
-import * as ShopQueries from "@sdk/queries/shop";
+} from '@sdk/queries/gqlTypes/GetShopPaymentGateways';
+import { UserCheckoutDetails } from '@sdk/queries/gqlTypes/UserCheckoutDetails';
+import * as ShopQueries from '@sdk/queries/shop';
 import {
   ICheckoutAddress,
   ICheckoutModel,
@@ -62,19 +62,19 @@ import {
   IOrderModel,
   IPaymentModel,
   IShippingMethodUpdate,
-} from "@sdk/repository";
-import { filterNotEmptyArrayItems } from "@sdk/utils";
-import ApolloClient from "apollo-client";
-import { IPrivacyPolicy } from "../api/Checkout/types";
-import { UpdateCheckoutShippingMethodWithScheduleDateVariables } from "../mutations/gqlTypes/UpdateCheckoutShippingMethodWithScheduleDate";
-import { launchPurchaseEvent, ecommerceProductsMapper } from "@sdk/gaConfig";
-import { IConstructCheckoutParams, INetworkManager } from "./types";
+} from '@sdk/repository';
+import { filterNotEmptyArrayItems } from '@sdk/utils';
+import ApolloClient from 'apollo-client';
+import { IPrivacyPolicy } from '../api/Checkout/types';
+import { UpdateCheckoutShippingMethodWithScheduleDateVariables } from '../mutations/gqlTypes/UpdateCheckoutShippingMethodWithScheduleDate';
+import { launchPurchaseEvent, ecommerceProductsMapper } from '@sdk/gaConfig';
+import { IConstructCheckoutParams, INetworkManager } from './types';
 import {
   VariantsProductsAvailable,
   VariantsProductsAvailableVariables,
   VariantsProductsAvailable_productVariants,
-} from "../queries/gqlTypes/VariantsProductsAvailable";
-import { checkPrimeUser } from "../api/Prime";
+} from '../queries/gqlTypes/VariantsProductsAvailable';
+import { checkPrimeUser } from '../api/Prime';
 
 export class NetworkManager implements INetworkManager {
   private client: ApolloClient<any>;
@@ -89,14 +89,14 @@ export class NetworkManager implements INetworkManager {
       checkout = await new Promise((resolve, reject) => {
         if (this.isLoggedIn()) {
           const observable = this.client.watchQuery<UserCheckoutDetails, any>({
-            fetchPolicy: "network-only",
+            fetchPolicy: 'network-only',
             query: CheckoutQueries.userCheckoutDetails,
             variables: {
               districtId,
             },
           });
           observable.subscribe(
-            result => {
+            (result) => {
               const { data, errors } = result;
               if (errors?.length) {
                 reject(errors);
@@ -104,13 +104,13 @@ export class NetworkManager implements INetworkManager {
                 resolve(data.me?.checkout ? data.me.checkout : null);
               }
             },
-            error => {
+            (error) => {
               reject(error);
             }
           );
         } else if (checkoutToken) {
           const observable = this.client.watchQuery<CheckoutDetails, any>({
-            fetchPolicy: "network-only",
+            fetchPolicy: 'network-only',
             query: CheckoutQueries.checkoutDetails,
             variables: {
               districtId,
@@ -118,7 +118,7 @@ export class NetworkManager implements INetworkManager {
             },
           });
           observable.subscribe(
-            result => {
+            (result) => {
               const { data, errors } = result;
               if (errors?.length) {
                 reject(errors);
@@ -126,7 +126,7 @@ export class NetworkManager implements INetworkManager {
                 resolve(data.checkout);
               }
             },
-            error => {
+            (error) => {
               reject(error);
             }
           );
@@ -153,28 +153,29 @@ export class NetworkManager implements INetworkManager {
     districtId: string
   ) => {
     const idsOfMissingVariants = checkoutlines
-      ?.filter(line => !line.variant || !line.totalPrice)
-      .map(line => line.variant.id);
+      ?.filter((line) => !line.variant || !line.totalPrice)
+      .map((line) => line.variant.id);
     const linesWithProperVariant =
-      checkoutlines?.filter(line => line.variant && line.totalPrice) || [];
+      checkoutlines?.filter((line) => line.variant && line.totalPrice) || [];
 
     let variants: CheckoutProductVariants_productVariants | null | undefined;
     if (idsOfMissingVariants && idsOfMissingVariants.length) {
-      try {        
-        const observable = this.client.watchQuery<CheckoutProductVariants, CheckoutProductVariantsVariables>(
-          {
-            fetchPolicy: "network-only",
-            query: CheckoutQueries.checkoutProductVariants,
-            variables: {
-              ids: idsOfMissingVariants,
-              districtId,
-            },
-          }
-        );
+      try {
+        const observable = this.client.watchQuery<
+          CheckoutProductVariants,
+          CheckoutProductVariantsVariables
+        >({
+          fetchPolicy: 'network-only',
+          query: CheckoutQueries.checkoutProductVariants,
+          variables: {
+            ids: idsOfMissingVariants,
+            districtId,
+          },
+        });
 
         variants = await new Promise((resolve, reject) => {
           observable.subscribe(
-            result => {
+            (result) => {
               const { data, errors } = result;
               if (errors?.length) {
                 reject(errors);
@@ -182,7 +183,7 @@ export class NetworkManager implements INetworkManager {
                 resolve(data.productVariants);
               }
             },
-            error => {
+            (error) => {
               reject(error);
             }
           );
@@ -195,9 +196,9 @@ export class NetworkManager implements INetworkManager {
     }
 
     const linesWithMissingVariantUpdated: ICheckoutModelLine[] = variants
-      ? variants.edges.map(edge => {
+      ? variants.edges.map((edge) => {
           const existingLine = checkoutlines?.find(
-            line => line.variant.id === edge.node.id
+            (line) => line.variant.id === edge.node.id
           );
           const variantPricing = edge.node.pricing?.price;
           const totalPrice = variantPricing
@@ -230,7 +231,7 @@ export class NetworkManager implements INetworkManager {
 
           return {
             attributes: edge.node.product.attributes,
-            id: edge.node.product.id || "",
+            id: edge.node.product.id || '',
             name: edge.node.product.name,
             quantity: existingLine?.quantity || 0,
             totalPrice,
@@ -238,8 +239,8 @@ export class NetworkManager implements INetworkManager {
           };
         })
       : [];
-    const linesWithProperVariantUpdated: ICheckoutModelLine[] = linesWithProperVariant.map(
-      (line): ICheckoutModelLine => {
+    const linesWithProperVariantUpdated: ICheckoutModelLine[] =
+      linesWithProperVariant.map((line): ICheckoutModelLine => {
         const variantPricing = line.variant.pricing?.price;
         const totalPrice = variantPricing
           ? {
@@ -261,8 +262,7 @@ export class NetworkManager implements INetworkManager {
           totalPrice,
           variant: line.variant,
         };
-      }
-    );
+      });
 
     return {
       data: [
@@ -276,24 +276,25 @@ export class NetworkManager implements INetworkManager {
     checkoutlines: ICheckoutModelLine[] | null,
     districtId: string
   ) => {
-    const ids = checkoutlines ? checkoutlines.map(it => it.variant.id) : [];
+    const ids = checkoutlines ? checkoutlines.map((it) => it.variant.id) : [];
     let variants: VariantsProductsAvailable_productVariants | null | undefined;
     if (ids.length) {
       try {
-        const observable = this.client.watchQuery<VariantsProductsAvailable, VariantsProductsAvailableVariables>(
-          {
-            fetchPolicy: "network-only",
-            query: ProductQueries.variantsProductsAvailable,
-            variables: {
-              ids,
-              districtId,
-            },
-          }
-        );
+        const observable = this.client.watchQuery<
+          VariantsProductsAvailable,
+          VariantsProductsAvailableVariables
+        >({
+          fetchPolicy: 'network-only',
+          query: ProductQueries.variantsProductsAvailable,
+          variables: {
+            ids,
+            districtId,
+          },
+        });
 
         variants = await new Promise((resolve, reject) => {
           observable.subscribe(
-            result => {
+            (result) => {
               const { data, errors } = result;
               if (errors?.length) {
                 reject(errors);
@@ -301,7 +302,7 @@ export class NetworkManager implements INetworkManager {
                 resolve(data.productVariants);
               }
             },
-            error => {
+            (error) => {
               reject(error);
             }
           );
@@ -325,11 +326,11 @@ export class NetworkManager implements INetworkManager {
     try {
       paymentGateways = await new Promise((resolve, reject) => {
         const observable = this.client.watchQuery<GetShopPaymentGateways, any>({
-          fetchPolicy: "network-only",
+          fetchPolicy: 'network-only',
           query: ShopQueries.getShopPaymentGateways,
         });
         observable.subscribe(
-          result => {
+          (result) => {
             const { data, errors } = result;
             if (errors?.length) {
               reject(errors);
@@ -337,7 +338,7 @@ export class NetworkManager implements INetworkManager {
               resolve(data.shop.availablePaymentGateways);
             }
           },
-          error => {
+          (error) => {
             reject(error);
           }
         );
@@ -452,7 +453,7 @@ export class NetworkManager implements INetworkManager {
     const lines = checkout.lines;
 
     if (checkoutId && lines) {
-      const alteredLines = lines.map(line => ({
+      const alteredLines = lines.map((line) => ({
         quantity: line.quantity,
         variantId: line.variant.id,
       }));
@@ -506,7 +507,7 @@ export class NetworkManager implements INetworkManager {
       const variables = {
         checkoutId,
         districtId,
-        documentNumber: documentNumber || "",
+        documentNumber: documentNumber || '',
         email,
         privacyPolicy: privacyPolicy || {},
         shippingAddress: {
@@ -729,7 +730,7 @@ export class NetworkManager implements INetworkManager {
           date: shippingMethodUpdate.scheduleDate?.date,
           districtId,
           scheduleTimeId:
-            shippingMethodUpdate.scheduleDate?.scheduleTimeId || "",
+            shippingMethodUpdate.scheduleDate?.scheduleTimeId || '',
           shippingMethodId: shippingMethodUpdate.shippingMethodId,
         },
       });
@@ -757,7 +758,11 @@ export class NetworkManager implements INetworkManager {
     }
   };
 
-  addPromoCode = async (promoCode: string, checkoutId: string, districtId?: string) => {
+  addPromoCode = async (
+    promoCode: string,
+    checkoutId: string,
+    districtId?: string
+  ) => {
     try {
       const { data, errors } = await this.client.mutate<
         AddCheckoutPromoCode,
@@ -795,7 +800,11 @@ export class NetworkManager implements INetworkManager {
     }
   };
 
-  removePromoCode = async (promoCode: string, checkoutId: string, districtId?: string) => {
+  removePromoCode = async (
+    promoCode: string,
+    checkoutId: string,
+    districtId?: string
+  ) => {
     try {
       const { data, errors } = await this.client.mutate<
         RemoveCheckoutPromoCode,
@@ -896,7 +905,11 @@ export class NetworkManager implements INetworkManager {
     }
   };
 
-  completeCheckout = async (checkoutId: string, paymentData?: string, districtId?: string) => {
+  completeCheckout = async (
+    checkoutId: string,
+    paymentData?: string,
+    districtId?: string
+  ) => {
     try {
       const { data, errors } = await this.client.mutate<
         CompleteCheckout,
@@ -968,8 +981,7 @@ export class NetworkManager implements INetworkManager {
       dataTreatmentPolicy,
     } = checkout;
 
-    const checkoutModel: ICheckoutModel = 
-    {
+    const checkoutModel: ICheckoutModel = {
       availableShippingMethods: availableShippingMethods
         ? availableShippingMethods.filter(filterNotEmptyArrayItems)
         : [],
@@ -981,13 +993,13 @@ export class NetworkManager implements INetworkManager {
       id,
       isPrime,
       lines: lines
-        ?.filter(item => item?.quantity && item.variant.id)
-        .map(item => {
+        ?.filter((item) => item?.quantity && item.variant.id)
+        .map((item) => {
           const itemVariant = item?.variant;
-  
+
           return {
             id: item!.id,
-            name: itemVariant?.product.name ? itemVariant?.product.name : "",
+            name: itemVariant?.product.name ? itemVariant?.product.name : '',
             quantity: item!.quantity,
             totalPrice: item?.totalPrice,
             variant: {
@@ -1015,10 +1027,10 @@ export class NetworkManager implements INetworkManager {
       shippingMethod,
       termsAndConditions,
       token,
-    }
+    };
 
     return checkoutModel;
-  }
+  };
 
   private constructPaymentModel = ({
     id,

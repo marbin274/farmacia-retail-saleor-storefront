@@ -1,18 +1,18 @@
-import * as React from "react";
-import { Link, withRouter, RouteComponentProps } from "react-router-dom";
+import * as React from 'react';
+import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
 
 import {
   generateCategoryUrl,
   generateCollectionUrl,
   generatePageUrl,
-} from "../../core/utils";
+} from '../../core/utils';
 import {
   SecondaryMenu_shop_navigation_secondary_items,
   SecondaryMenu_shop_navigation_secondary_items_children,
-} from "../Footer/gqlTypes/SecondaryMenu";
-import { MainMenu_shop_navigation_main_items } from "@temp/components/MainMenu/gqlTypes/MainMenu";
-import { MainMenuSubItem } from "@temp/components/MainMenu/gqlTypes/MainMenuSubItem";
-import * as S from "./styles";
+} from '../Footer/gqlTypes/SecondaryMenu';
+import { MainMenu_shop_navigation_main_items } from '@temp/components/MainMenu/gqlTypes/MainMenu';
+import { MainMenuSubItem } from '@temp/components/MainMenu/gqlTypes/MainMenuSubItem';
+import * as S from './styles';
 
 export interface NavLinkProps
   extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
@@ -38,9 +38,9 @@ const NavLinkComponent: React.FC<NavLinkProps & RouteComponentProps> = ({
   };
 
   if (url) {
-    if (name === "Libro de reclamaciones" || name === "Derechos ARCO") {
+    if (name === 'Libro de reclamaciones' || name === 'Derechos ARCO') {
       return (
-        <a href={url} {...props} rel="noopener nofollow">
+        <a href={url} target="_blank" {...props} rel="noopener nofollow">
           {name}
         </a>
       );
