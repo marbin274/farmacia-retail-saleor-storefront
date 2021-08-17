@@ -13,9 +13,9 @@ import { CategoryNavigation } from '@temp/@next/components/organisms/CategoryNav
 import { useMediaScreen } from '@temp/@next/globalStyles';
 import { largeScreen } from '@temp/@next/globalStyles/constants';
 import { useDistrictSelected, useScrollTo } from '@temp/@next/hooks';
+import { useBrandFilters } from '@temp/@next/hooks/useBrandFilters';
 import {
   getFiltersInitial,
-  onAttributeFiltersChange,
 } from '@temp/@next/utils/filter';
 import { IItems } from '@temp/@sdk/api/Cart/types';
 import { useCategoryProducts } from '@temp/@sdk/react';
@@ -28,10 +28,8 @@ import {
   convertToSimpleProduct,
   maybe,
 } from '@temp/core/utils';
-import { FilterQuerySet } from '@temp/core/utils/filters';
 import { IFilterAttributes, IFilters } from '@types';
 import * as React from 'react';
-import { NumberParam, StringParam, useQueryParams } from 'use-query-params';
 import { CategoryProductListHeader, CategoryWrapper } from './styles';
 
 interface SortItem {
@@ -66,27 +64,40 @@ const Page: React.FC<PageProps> = ({
 }) => {
   const { isMobileScreen } = useMediaScreen();
   const [districtSelected] = useDistrictSelected();
-  const [{ filters: attributeFilters, page, sortBy: sort }, setQuery] =
-    useQueryParams({
-      filters: FilterQuerySet,
-      page: NumberParam,
-      sortBy: StringParam,
-    });
+  const {
+    currentFilters,
+    checkedFilters,
+    page,
+    sort,
+    applyFilters,
+    clearFilters,
+    goToFirstPage,
+    hasFilterChanged,
+    handlePageChange,
+    onFiltersChangeLocal,
+    onFiltersChangeRemote,
+    resetFilters,
+  } = useBrandFilters();
 
-  const filters: IFilters = React.useMemo(
-    () => getFiltersInitial(attributeFilters, sort),
-    [attributeFilters, sort]
+  const currentFiltersPaged: IFilters = React.useMemo(
+    () => getFiltersInitial(currentFilters, sort),
+    [currentFilters, sort]
+  );
+
+  const checkedFiltersPaged: IFilters = React.useMemo(
+    () => getFiltersInitial(checkedFilters, sort),
+    [checkedFilters, sort]
   );
 
   const variables: CategoryProductsVariables = {
-    ...filters,
-    attributes: filters.attributes
-      ? convertToAttributeScalar(filters.attributes)
+    ...currentFiltersPaged,
+    attributes: currentFiltersPaged.attributes
+      ? convertToAttributeScalar(currentFiltersPaged.attributes)
       : {},
     id: category.id,
     page: page || 1,
     pageSize: getPageSize(isMobileScreen),
-    sortBy: convertSortByFromString(filters.sortBy),
+    sortBy: convertSortByFromString(currentFiltersPaged.sortBy),
     districtId: districtSelected.id,
   };
 
@@ -111,31 +122,29 @@ const Page: React.FC<PageProps> = ({
   };
 
   const activeFiltersAttributes =
-    filters &&
-    filters.attributes &&
-    Object.keys(filters.attributes).reduce(
+    currentFiltersPaged &&
+    currentFiltersPaged.attributes &&
+    Object.keys(currentFiltersPaged.attributes).reduce(
       (acc, key) =>
         acc.concat(
-          filters.attributes[key].map((valueSlug) =>
+          currentFiltersPaged.attributes[key].map((valueSlug) =>
             getAttribute(key, valueSlug)
           )
         ),
       []
     );
 
-  const clearFilters = () => {
-    setQuery({ filters: {} });
-  };
-
-  const handlePageChange = (page: number) => {
-    setQuery({ page });
-  };
-
-  const onFiltersChange = (name: string, value: string) => {
-    onAttributeFiltersChange(attributeFilters, filters, name, setQuery, value);
-  };
-
   React.useEffect(() => goTop(), [products]);
+
+  const applyFilterChanges = () => {
+    setShowFilters(false);
+    applyFilters();
+  }
+
+  const hideFilters = () => { 
+    setShowFilters(false);
+    resetFilters();
+  }
 
   return (
     <CategoryWrapper>
@@ -154,32 +163,29 @@ const Page: React.FC<PageProps> = ({
         <section className="collection-products">
           <CategoryProductListHeader>
             <ProductListHeader
-              activeSortOption={filters.sortBy}
+              activeSortOption={currentFiltersPaged.sortBy}
               openFiltersMenu={() => setShowFilters(true)}
               numberOfProducts={products ? products.totalCount : 0}
               activeFilters={
-                filters!.attributes
-                  ? Object.keys(filters!.attributes!.brand).length
+                currentFiltersPaged?.attributes?.brand
+                  ? Object.keys(currentFiltersPaged?.attributes?.brand).length
                   : 0
               }
               activeFiltersAttributes={activeFiltersAttributes}
               clearFilters={clearFilters}
               sortOptions={sortOptions}
-              onChangeSortOption={(value) => {
-                setQuery({
-                  page: 1,
-                  sortBy: value.value,
-                });
-              }}
-              onCloseFilterAttribute={onFiltersChange}
+              onChangeSortOption={goToFirstPage}
+              onCloseFilterAttribute={onFiltersChangeRemote}
             />
           </CategoryProductListHeader>
           <FilterSidebar
-            show={showFilters}
-            hide={() => setShowFilters(false)}
-            onAttributeFiltersChange={onFiltersChange}
+            applyFilters={applyFilterChanges}
             attributes={attributes}
-            filters={filters}
+            filters={checkedFiltersPaged}
+            hasFilterChanged={hasFilterChanged}
+            hide={hideFilters}
+            onAttributeFiltersChange={onFiltersChangeLocal}
+            show={showFilters}
           />
           <ProductListAUNA
             addToCart={addToCart}
