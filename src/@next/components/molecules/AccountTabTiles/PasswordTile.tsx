@@ -16,7 +16,7 @@ export const PasswordTile: React.FC = () => {
   }, [data, error]);
   return (
     <S.TileWrapper >
-      <Tile className=" rounded-md ">
+      <Tile className="rounded-md ">
         <S.Wrapper className="fa-flex text-center ">
           <S.Content>
             {isEditing ? (

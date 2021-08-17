@@ -5,7 +5,7 @@ import shoppingbag from '@temp/images/shopping-bag.svg';
 export const ShoppingHistoryTile: React.FC = () => {
   return (
     <S.TileWrapper>
-      <Tile className=" rounded-md ">
+      <Tile className="rounded-md ">
         <S.Wrapper className="fa-flex fa-pt-8 fa-px-2 fa-pb-2 ">
           <S.Content>
             <S.HeaderSmall className="personal_data fa-justify-center">
