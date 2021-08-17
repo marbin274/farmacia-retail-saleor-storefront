@@ -1,12 +1,10 @@
-import React from "react";
-
-import { useAccountUpdate, useUserDetails } from "@sdk/react";
-
-import { Attribute, Tile } from "@components/atoms";
-
-import { AccountUpdateForm } from "./AccountUpdateForm";
-import * as S from "./styles";
-import { Button, PencilIcon } from "@farmacia-retail/farmauna-components";
+import React from 'react';
+import { useAccountUpdate, useUserDetails } from '@sdk/react';
+import { Attribute, Tile } from '@components/atoms';
+import { AccountUpdateForm } from './AccountUpdateForm';
+import * as S from './styles';
+import { Button } from '@farmacia-retail/farmauna-components';
+import { PasswordTile } from './PasswordTile';
 
 export const AccountTile: React.FC = () => {
   const [isEditing, setIsEditing] = React.useState(false);
@@ -22,31 +20,17 @@ export const AccountTile: React.FC = () => {
     <S.TileWrapper>
       <Tile>
         <S.Wrapper className="fa-pt-8 fa-px-2 fa-pb-2">
-          <S.Header className="my_data">
-            <span className='fa-text-2xl fa-font-semibold'>Mis datos</span>
-            <div className='fa-self-start'>
-              {!isEditing && (
-                <Button
-                  icon={<PencilIcon />}
-                  iconOnly={true}
-                  size="small"
-                  onClick={() => setIsEditing(isEditing => !isEditing)}
-                />
-
-              )}
-            </div>
-          </S.Header>
           <S.Content>
-            <S.HeaderSmall className="personal_data">
-              Datos personales
+            <S.HeaderSmall className="personal_data fa-justify-center">
+              Mis datos personales
             </S.HeaderSmall>
             {isEditing ? (
               <AccountUpdateForm
                 initialValues={{
-                  firstName: (user && user.firstName) || "",
-                  lastName: (user && user.lastName) || "",
+                  firstName: (user && user.firstName) || '',
+                  lastName: (user && user.lastName) || '',
                 }}
-                handleSubmit={data => {
+                handleSubmit={(data) => {
                   setAccountUpdate({ input: data });
                 }}
                 hide={() => {
@@ -55,32 +39,43 @@ export const AccountTile: React.FC = () => {
                 user={user}
               />
             ) : (
-              <S.ContentOneLine>
+              <>
                 <S.AttributeWrapper>
                   <Attribute
-                    description="Nombres"
-                    attributeValue={(user && user.firstName) || "-"}
+                    description="Nombres completos "
+                    attributeValue={
+                      `${user?.firstName} ${user?.lastName}` || ''
+                    }
                   />
                 </S.AttributeWrapper>
-                <S.AttributeWrapper>
-                  <Attribute
-                    description="Apellidos"
-                    attributeValue={(user && user.lastName) || "-"}
-                  />
-                </S.AttributeWrapper>
+
                 <S.AttributeWrapper>
                   <Attribute
                     description="Correo"
-                    attributeValue={(user && user.email) || "-"}
+                    attributeValue={(user && user.email) || '-'}
                   />
                 </S.AttributeWrapper>
                 <S.AttributeWrapper>
                   <Attribute
                     description="Número de documento"
-                    attributeValue={(user && user.documentNumber) || "-"}
+                    attributeValue={(user && user.documentNumber) || '-'}
                   />
                 </S.AttributeWrapper>
-              </S.ContentOneLine>
+                <S.AttributeWrapper>
+                  {!isEditing && (
+                    <Button
+                      size="small"
+                      variant="outline"
+                      onClick={() => setIsEditing((isEditing) => !isEditing)}
+                    >
+                      Editar mis datos
+                    </Button>
+                  )}
+                </S.AttributeWrapper>
+                <S.AttributeWrapper className="fa-mt-4 fa-mb-0">
+                  <PasswordTile />
+                </S.AttributeWrapper>
+              </>
             )}
           </S.Content>
         </S.Wrapper>
