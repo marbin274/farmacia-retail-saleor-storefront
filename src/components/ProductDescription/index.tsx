@@ -1,28 +1,28 @@
-import { RichTextContent } from "@components/atoms";
-import { TaxedMoney } from "@components/containers";
+import { RichTextContent } from '@components/atoms';
+import { TaxedMoney } from '@components/containers';
 
 import {
   ProductBottomDetail,
   ProductVariantPicker,
-} from "@components/organisms";
+} from '@components/organisms';
 import {
   ProductDetails_product_pricing,
   ProductDetails_product_variants,
   ProductDetails_product_variants_pricing,
-} from "@sdk/queries/gqlTypes/ProductDetails";
-import { ISimpleProduct } from "@sdk/types/IProduct";
+} from '@sdk/queries/gqlTypes/ProductDetails';
+import { ISimpleProduct } from '@sdk/types/IProduct';
 import {
   ICheckoutModelLine,
   ICheckoutModelLineVariantLocalStorage,
-} from "@sdk/repository";
-import ItemsHandler from "@temp/@next/components/organisms/ItemsHandler/ItemsHandler";
-import {
-  getProductPricingClass,  
-} from "@temp/@next/utils/products"
-import { IProductVariantsAttributesSelectedValues } from "@types";
-import isEqual from "lodash/isEqual";
-import * as React from "react";
-import "./scss/index.scss";
+} from '@sdk/repository';
+import ItemsHandler from '@temp/@next/components/organisms/ItemsHandler/ItemsHandler';
+import { getProductPricingClass } from '@temp/@next/utils/products';
+import { IProductVariantsAttributesSelectedValues } from '@types';
+import isEqual from 'lodash/isEqual';
+import * as React from 'react';
+import './scss/index.scss';
+import * as S from './styles';
+import classNames from 'classnames';
 export interface ProductDescriptionProps {
   canAddToCart: boolean;
   descriptionJson: string;
@@ -43,22 +43,19 @@ export interface ProductDescriptionProps {
 
 const HEADER_HEIGHT = 70;
 
-export const ProductDescription: React.FC<ProductDescriptionProps> = props => {
+export const ProductDescription: React.FC<ProductDescriptionProps> = (
+  props
+) => {
   const { canAddToCart, descriptionJson, product } = props;
   const { name } = props.product;
   const min = props.pricing.priceRange.start;
   const max = props.pricing.priceRange.stop;
-  const [showBottomDetail, setShowBottomDetail] = React.useState<boolean>(
-    false
-  );
-  const [
-    showBottomDetailProductInfo,
-    setShowBottomDetailProductInfo,
-  ] = React.useState<boolean>(false);
-  const [
-    variantPricing,
-    setVariantPricing,
-  ] = React.useState<ProductDetails_product_variants_pricing | null>(null);
+  const [showBottomDetail, setShowBottomDetail] =
+    React.useState<boolean>(false);
+  const [showBottomDetailProductInfo, setShowBottomDetailProductInfo] =
+    React.useState<boolean>(false);
+  const [variantPricing, setVariantPricing] =
+    React.useState<ProductDetails_product_variants_pricing | null>(null);
 
   const addToCartRef = React.useRef<HTMLDivElement>();
   const priceRef = React.useRef<HTMLDivElement>();
@@ -68,25 +65,32 @@ export const ProductDescription: React.FC<ProductDescriptionProps> = props => {
     if (variantPricing) {
       const { canAddToCart, isOnSale } = props;
       return !isOnSale ? (
-          <div className="price">
+        <div className="price">
+          <TaxedMoney taxedMoney={variantPricing.price} />
+        </div>
+      ) : (
+        <>
+          <div
+            className={classNames(
+              'fa-pr-2',
+              getProductPricingClass(canAddToCart, isOnSale)
+            )}
+          >
             <TaxedMoney taxedMoney={variantPricing.price} />
           </div>
-        ) : (
-          <>
-            <div className={`fa-pr-2 ${getProductPricingClass(canAddToCart, isOnSale)}`}>
-              <TaxedMoney taxedMoney={variantPricing.price} />
-            </div>
-            <div className="price undiscounted_price">
-              <TaxedMoney taxedMoney={variantPricing.priceUndiscounted} />
-            </div>
-          </>
-        );
-    }
-    return isEqual(min, max) ? <TaxedMoney taxedMoney={min} /> : (
-        <>
-          <TaxedMoney taxedMoney={min} /> - <TaxedMoney taxedMoney={max} />
+          <div className="price undiscounted_price">
+            <TaxedMoney taxedMoney={variantPricing.priceUndiscounted} />
+          </div>
         </>
       );
+    }
+    return isEqual(min, max) ? (
+      <TaxedMoney taxedMoney={min} />
+    ) : (
+      <>
+        <TaxedMoney taxedMoney={min} /> - <TaxedMoney taxedMoney={max} />
+      </>
+    );
   };
 
   const onVariantPickerChange = (
@@ -103,22 +107,22 @@ export const ProductDescription: React.FC<ProductDescriptionProps> = props => {
     const { isOutStock } = props;
 
     if (isOutStock) {
-      return <div className="product-description__error-message">AGOTADO</div>;
+      return (
+        <div className="product-description__error-message fa-text-error-medium fa-my-8">
+          AGOTADO
+        </div>
+      );
     }
 
     return getProductPrice();
   };
 
   const handleScroll = () => {
-    const {
-      y: addToCartY,
-      height: addToCartYHeight,
-    } = addToCartRef.current.getBoundingClientRect();
+    const { y: addToCartY, height: addToCartYHeight } =
+      addToCartRef.current.getBoundingClientRect();
 
-    const {
-      y: priceY,
-      height: priceHeight,
-    } = priceRef.current.getBoundingClientRect();
+    const { y: priceY, height: priceHeight } =
+      priceRef.current.getBoundingClientRect();
 
     const underAddToCart = addToCartY + addToCartYHeight - HEADER_HEIGHT < 0;
     const underPrice = priceY + priceHeight - HEADER_HEIGHT < 0;
@@ -127,15 +131,16 @@ export const ProductDescription: React.FC<ProductDescriptionProps> = props => {
   };
 
   React.useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   const handleScrollContainer = () => {
     const addToCartRect = addToCartRef.current.getBoundingClientRect();
-    const productDescriptionRect = productDescriptionRef.current.getBoundingClientRect();
+    const productDescriptionRect =
+      productDescriptionRef.current.getBoundingClientRect();
 
     const isVisible =
       addToCartRect.top <= productDescriptionRect.top
@@ -147,16 +152,21 @@ export const ProductDescription: React.FC<ProductDescriptionProps> = props => {
   };
 
   return (
-    <div
+    <S.ProductDescriptionWrapper
       id="product-description"
       ref={productDescriptionRef}
       onScroll={handleScrollContainer}
       className="product-description"
     >
-      <h3>{name}</h3>
-      <div className="price__button">
+      <S.ProductName className="fa-text-h3-m fa-font-semibold">
+        {name}
+      </S.ProductName>
+      <div className="fa-flex fa-justify-between fa-items-center sm:fa-block">
         <div ref={priceRef}>{renderPrice()}</div>
-        <div className="product-description__quantity" ref={addToCartRef}>
+        <S.ProductQuantityWrapper
+          className="fa-flex fa-flex-row"
+          ref={addToCartRef}
+        >
           <ItemsHandler
             canAddToCart={canAddToCart}
             product={product}
@@ -164,16 +174,16 @@ export const ProductDescription: React.FC<ProductDescriptionProps> = props => {
             removeItemToCart={props.subtractToCart}
             subtractItemToCart={props.subtractToCart}
           />
-        </div>
+        </S.ProductQuantityWrapper>
       </div>
       <RichTextContent descriptionJson={descriptionJson} />
-      <div className="product-description__variant-picker">
+      <S.VariantPickerWrapper className="fa-grid">
         <ProductVariantPicker
           productVariants={props.productVariants}
           onChange={onVariantPickerChange}
           selectSidebar={true}
         />
-      </div>
+      </S.VariantPickerWrapper>
       {(props.isSmallScreen || showBottomDetail) && (
         <ProductBottomDetail
           product={product}
@@ -189,7 +199,7 @@ export const ProductDescription: React.FC<ProductDescriptionProps> = props => {
       )}
 
       <hr />
-    </div>
+    </S.ProductDescriptionWrapper>
   );
 };
 
