@@ -6,7 +6,7 @@
 // GraphQL query operation: MainMenu
 // ====================================================
 
-export interface MainMenu_categories_edges_node_backgroundImage {
+export interface MainMenu_root_categories_edges_node_backgroundImage {
   __typename: "Image";
   /**
    * The URL of the image.
@@ -14,7 +14,7 @@ export interface MainMenu_categories_edges_node_backgroundImage {
   url: string;
 }
 
-export interface MainMenu_categories_edges_node_children_edges_node_backgroundImage {
+export interface MainMenu_root_categories_edges_node_children_edges_node_backgroundImage {
   __typename: "Image";
   /**
    * The URL of the image.
@@ -22,7 +22,7 @@ export interface MainMenu_categories_edges_node_children_edges_node_backgroundIm
   url: string;
 }
 
-export interface MainMenu_categories_edges_node_children_edges_node_children_edges_node_backgroundImage {
+export interface MainMenu_root_categories_edges_node_children_edges_node_children_edges_node_backgroundImage {
   __typename: "Image";
   /**
    * The URL of the image.
@@ -30,7 +30,7 @@ export interface MainMenu_categories_edges_node_children_edges_node_children_edg
   url: string;
 }
 
-export interface MainMenu_categories_edges_node_children_edges_node_children_edges_node {
+export interface MainMenu_root_categories_edges_node_children_edges_node_children_edges_node {
   __typename: "Category";
   seoDescription: string | null;
   seoTitle: string | null;
@@ -39,23 +39,23 @@ export interface MainMenu_categories_edges_node_children_edges_node_children_edg
    */
   id: string;
   name: string;
-  backgroundImage: MainMenu_categories_edges_node_children_edges_node_children_edges_node_backgroundImage | null;
+  backgroundImage: MainMenu_root_categories_edges_node_children_edges_node_children_edges_node_backgroundImage | null;
 }
 
-export interface MainMenu_categories_edges_node_children_edges_node_children_edges {
+export interface MainMenu_root_categories_edges_node_children_edges_node_children_edges {
   __typename: "CategoryCountableEdge";
   /**
    * The item at the end of the edge.
    */
-  node: MainMenu_categories_edges_node_children_edges_node_children_edges_node;
+  node: MainMenu_root_categories_edges_node_children_edges_node_children_edges_node;
 }
 
-export interface MainMenu_categories_edges_node_children_edges_node_children {
+export interface MainMenu_root_categories_edges_node_children_edges_node_children {
   __typename: "CategoryCountableConnection";
-  edges: MainMenu_categories_edges_node_children_edges_node_children_edges[];
+  edges: MainMenu_root_categories_edges_node_children_edges_node_children_edges[];
 }
 
-export interface MainMenu_categories_edges_node_children_edges_node {
+export interface MainMenu_root_categories_edges_node_children_edges_node {
   __typename: "Category";
   seoDescription: string | null;
   seoTitle: string | null;
@@ -64,27 +64,27 @@ export interface MainMenu_categories_edges_node_children_edges_node {
    */
   id: string;
   name: string;
-  backgroundImage: MainMenu_categories_edges_node_children_edges_node_backgroundImage | null;
+  backgroundImage: MainMenu_root_categories_edges_node_children_edges_node_backgroundImage | null;
   /**
    * List of children of the category.
    */
-  children: MainMenu_categories_edges_node_children_edges_node_children | null;
+  children: MainMenu_root_categories_edges_node_children_edges_node_children | null;
 }
 
-export interface MainMenu_categories_edges_node_children_edges {
+export interface MainMenu_root_categories_edges_node_children_edges {
   __typename: "CategoryCountableEdge";
   /**
    * The item at the end of the edge.
    */
-  node: MainMenu_categories_edges_node_children_edges_node;
+  node: MainMenu_root_categories_edges_node_children_edges_node;
 }
 
-export interface MainMenu_categories_edges_node_children {
+export interface MainMenu_root_categories_edges_node_children {
   __typename: "CategoryCountableConnection";
-  edges: MainMenu_categories_edges_node_children_edges[];
+  edges: MainMenu_root_categories_edges_node_children_edges[];
 }
 
-export interface MainMenu_categories_edges_node {
+export interface MainMenu_root_categories_edges_node {
   __typename: "Category";
   seoDescription: string | null;
   seoTitle: string | null;
@@ -93,24 +93,24 @@ export interface MainMenu_categories_edges_node {
    */
   id: string;
   name: string;
-  backgroundImage: MainMenu_categories_edges_node_backgroundImage | null;
+  backgroundImage: MainMenu_root_categories_edges_node_backgroundImage | null;
   /**
    * List of children of the category.
    */
-  children: MainMenu_categories_edges_node_children | null;
+  children: MainMenu_root_categories_edges_node_children | null;
 }
 
-export interface MainMenu_categories_edges {
+export interface MainMenu_root_categories_edges {
   __typename: "CategoryCountableEdge";
   /**
    * The item at the end of the edge.
    */
-  node: MainMenu_categories_edges_node;
+  node: MainMenu_root_categories_edges_node;
 }
 
-export interface MainMenu_categories {
+export interface MainMenu_root_categories {
   __typename: "CategoryCountableConnection";
-  edges: MainMenu_categories_edges[];
+  edges: MainMenu_root_categories_edges[];
 }
 
 export interface MainMenu_shop_navigation_main_items_category {
@@ -188,9 +188,9 @@ export interface MainMenu_shop {
 
 export interface MainMenu {
   /**
-   * List of the shop's categories.
+   * List of categories with level 0.
    */
-  categories: MainMenu_categories | null;
+  root_categories: MainMenu_root_categories | null;
   /**
    * Return information about the shop.
    */

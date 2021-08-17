@@ -8,7 +8,7 @@ import {
 
 export const categoryListQuery = gql`
   query CategoryList {
-    categories(first: 100, level: 0) {
+    root_categories(first: 100) {
       edges {
         node {
           id
