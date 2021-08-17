@@ -13,7 +13,6 @@ import * as S from './styles';
 const Password: React.FC<{ overlay: OverlayContextInterface }> = ({
   overlay,
 }) => {
-  console.log(overlay);
   return (
     <S.OverlayWrapper context={overlay}>
       <S.PasswordResetWrapper className="fa-w-full fa-max-w-screen">

@@ -23,7 +23,7 @@ const Login: FC<{
   const changeActiveTab = (active: 'login' | 'register') => {
     setActive(active);
   };
-  console.log(props.overlay);
+
   return (
     <S.OverlayWrapper context={props.overlay}>
       <div className="fa-max-w-screen">
