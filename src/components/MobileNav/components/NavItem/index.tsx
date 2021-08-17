@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import NavChildren from './NavChildren';
+import NavChildren from '../NavChildren';
 import {
   NextIcon,
   DownIcon,
@@ -8,7 +8,8 @@ import {
 } from '@farmacia-retail/farmauna-components';
 import farmatheme from '@farmatheme';
 import * as S from './styles';
-import { MainMenuSubItem } from '../MainMenu/gqlTypes/MainMenuSubItem';
+import { MainMenuSubItem } from '../../../MainMenu/gqlTypes/MainMenuSubItem';
+
 export interface INavItem extends Omit<MainMenuSubItem, '__typename'> {
   children?: INavItem[] | null;
 }
@@ -43,21 +44,21 @@ export const NavItem: React.FC<NavItemProps> = ({
   }
 
   return (
-    <li
-      className={classNames({
-        'side-nav__menu-item': true,
-        'side-nav__menu-item--has-subnavigation': hasSubNavigation,
-        'side-nav__menu-item--is-open': isOpenMenu,
-      })}
-    >
-      <div className={'hover:fa-bg-white side-nav__menu-item-content'}>
+    <S.NavMenuItem className="fa-flex fa-flex-col fa-cursor-pointer">
+      <div className="hover:fa-bg-white fa-flex fa-justify-between fa-items-center fa-py-5 fa-px-6 fa-transition-all fa-duration-100 fa-ease-in-out">
         <S.NavLink
           isCollection={isCollection}
           item={{ ...item, name: item.name?.toLowerCase() } as any}
-          className={'side-nav__menu-item-link'}
+          className={classNames({
+            'fa-text-neutral-darkest fa-capitalize': isOpenMenu,
+          })}
         />
         {hasSubNavigation && (
-          <div className={'side-nav__menu-item-arrow'}>
+          <div
+            className={classNames({
+              'fa-top-0': isOpenMenu,
+            })}
+          >
             {firstLevel && (
               <NextIcon
                 size={16}
@@ -83,7 +84,7 @@ export const NavItem: React.FC<NavItemProps> = ({
         )}
       </div>
       {isOpenMenu && hasSubNavigation && <NavChildren subItems={childrens} />}
-    </li>
+    </S.NavMenuItem>
   );
 };
 

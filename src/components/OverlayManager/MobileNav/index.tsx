@@ -1,9 +1,14 @@
-import { Button } from "@farmacia-retail/farmauna-components";
-import { generateCategoryUrl } from "@temp/core/utils";
-import * as React from "react";
-import { Link } from "react-router-dom";
-import { INavItem, MobileNavList, Overlay, OverlayContextInterface } from "..";
-
+import { Button } from '@farmacia-retail/farmauna-components';
+import { generateCategoryUrl } from '@temp/core/utils';
+import * as React from 'react';
+import { Link } from 'react-router-dom';
+import {
+  INavItem,
+  MobileNavList,
+  Overlay,
+  OverlayContextInterface,
+} from '../..';
+import { MobileNavWrapper } from './styles';
 const MobileNav: React.FC<{ overlay: OverlayContextInterface }> = ({
   overlay,
 }) => {
@@ -13,11 +18,11 @@ const MobileNav: React.FC<{ overlay: OverlayContextInterface }> = ({
 
   return (
     <Overlay context={overlay}>
-      <div
-        className="fa-flex fa-flex-col fa-bg-highlight-lightest side-nav"
-        onClick={evt => evt.stopPropagation()}
+      <MobileNavWrapper
+        className="fa-flex fa-flex-col fa-bg-highlight-lightest fa-min-h-screen"
+        onClick={(evt) => evt.stopPropagation()}
       >
-        <div className={"side-nav--body"}>
+        <div className="fa-relative fa-overflow-auto">
           <MobileNavList
             categories={categories}
             collections={collections}
@@ -26,11 +31,9 @@ const MobileNav: React.FC<{ overlay: OverlayContextInterface }> = ({
             setOpenParent={setOpenParent}
           />
         </div>
-      </div>
+      </MobileNavWrapper>
       {openParent && (
-        <div
-          className={"fa-mt-auto fa-bg-highlight-lightest side-nav--actions"}
-        >
+        <div className="fa-mt-auto fa-bg-highlight-lightest fa-h-20 fa-p-4 fa-text-center fa-w-full">
           <Link to={generateCategoryUrl(openParent.id, openParent.name)}>
             <Button>
               <span className="fa-mr-2">Ver todos</span>
