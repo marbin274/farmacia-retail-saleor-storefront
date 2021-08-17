@@ -20,7 +20,7 @@ export const AccountMenuMobile: React.FC<IProps> = ({
   return (
     <S.RoutesWrapper>
       <DropdownSelect
-        clearText={"Mi perfil"}
+        clearText={"Mi cuenta"}
         onChange={onChangeOption}
         options={options}
         value={options.find(
