@@ -1,10 +1,9 @@
+import { LocalRepository } from '@temp/@sdk/repository';
 declare global {
   interface Window {
     dataLayer: any;
   }
 }
-
-const GA_USER_ID_KEY = '@user_id';
 
 export enum steps {
   addressCheckoutRoute = 1,
@@ -182,15 +181,18 @@ const pushToDatalayer = (data: any) => {
 };
 
 export const setGaUserId = (id?: string) => {
-  localStorage.setItem(GA_USER_ID_KEY, id || '');
+  const localRepository = new LocalRepository();
+  localRepository.setGaUserId(id || '');
 };
 
 export const removeGaUserId = () => {
-  localStorage.removeItem(GA_USER_ID_KEY);
+  const localRepository = new LocalRepository();
+  localRepository.setGaUserId(null);
 };
 
 export const getGaUserId = () => {
-  return localStorage.getItem(GA_USER_ID_KEY) || '';
+  const localRepository = new LocalRepository();
+  localRepository.getGaUserId();
 };
 
 export const launchSearchEvent = (searchTerm?: string) => {
@@ -200,5 +202,6 @@ export const launchSearchEvent = (searchTerm?: string) => {
   });
 };
 export const getLocalStorageForCart = () => {
-  return JSON.parse(localStorage.getItem('data_checkout') as string)?.lines;
+  const localRepository = new LocalRepository();
+  return localRepository.getCheckout()?.lines;
 };

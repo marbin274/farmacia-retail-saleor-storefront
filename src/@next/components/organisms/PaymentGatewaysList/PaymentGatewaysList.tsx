@@ -23,6 +23,7 @@ import {
   initNiubizAntiFraud,
   loadNiubizAntiFraudScript,
 } from '../NiubizPaymentGateway/utils';
+import { LocalRepository } from '@temp/@sdk/repository';
 
 const CARD_TOKEN_OPTION = 1;
 const CARD_FORM_OPTION = 2;
@@ -57,7 +58,7 @@ const PaymentGatewaysList: React.FC<IProps> = ({
   const [saveCardSelected, setSaveCardSelected] = useState(false);
   const [cardNumberTosave, setCardNumberToSave] = useState<string>();
   const [scriptLoaded, setScriptLoaded] = useState(false);
-
+  const localRepository = new LocalRepository();
   const userLoggedIn = !HIDE_CARDTOKENS_IN_CHECKOUT && !!user;
   const userHasCardTokens =
     !HIDE_CARDTOKENS_IN_CHECKOUT && user?.cardTokens?.length > 0;
@@ -133,7 +134,7 @@ const PaymentGatewaysList: React.FC<IProps> = ({
     }
 
     changeRequestPayload(payload);
-    localStorage.setItem('purchase_number', String(purchaseNumber));
+    localRepository.setPurchase(String(purchaseNumber));
 
     return purchaseNumber;
   };
