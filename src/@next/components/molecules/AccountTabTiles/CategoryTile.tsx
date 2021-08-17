@@ -1,13 +1,14 @@
-import React from "react";
-import { Attribute, Tile } from "@components/atoms";
-import * as S from "./styles";
-import category from "@temp/images/category.svg";
-import { Button } from "@farmacia-retail/farmauna-components";
-import { useHistory } from "react-router-dom";
+import React from 'react';
+import { Attribute, Tile } from '@components/atoms';
+import * as S from './styles';
+import category from '@temp/images/category.svg';
+import { Button } from '@farmacia-retail/farmauna-components';
+import { useHistory } from 'react-router-dom';
+import { accountCategoriesUrl } from '@temp/@next/pages/AccountPage/paths';
 export const CategoryTile: React.FC = () => {
   const history = useHistory();
   return (
-    <S.TileWrapper >
+    <S.TileWrapper>
       <Tile className="rounded-md ">
         <S.Wrapper className="fa-flex fa-pt-8 fa-px-2 fa-pb-2 ">
           <S.Content>
@@ -22,19 +23,19 @@ export const CategoryTile: React.FC = () => {
             <S.AttributeWrapper>
               <Attribute
                 description="Elige las categorías que prefieras y te recomendaremos los productos que te podrán interesar. "
-                attributeValue={""}
+                attributeValue={''}
               />
             </S.AttributeWrapper>
 
             <S.AttributeWrapper>
-              <Button size="small"
+              <Button
+                size="small"
                 variant="outline"
-                onClick={() => history.push("/account/select-categories/")}
+                onClick={() => history.push(accountCategoriesUrl)}
               >
                 Ir a categorias
               </Button>
             </S.AttributeWrapper>
-
           </S.Content>
         </S.Wrapper>
       </Tile>

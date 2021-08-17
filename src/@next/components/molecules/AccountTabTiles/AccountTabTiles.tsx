@@ -7,7 +7,7 @@ import { ShoppingHistoryTile } from './HistoryTile';
 import { MainCardTile } from './Payment';
 
 export const AccountTabTiles: React.FC = () => (
-  <div className=" fa-grid fa-grid-cols-1 fa-gap-8  sm:fa-grid-cols-1 md:fa-grid-cols-2  ">
+  <div className="fa-grid fa-grid-cols-1 fa-gap-8  sm:fa-grid-cols-1 md:fa-grid-cols-2">
     <AccountTile />
     <CategoryTile />
     <ShoppingHistoryTile />

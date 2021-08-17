@@ -30,18 +30,18 @@ const AccountLayout: React.FC<RouteComponentProps> = ({
     <div className="fa-bg-neutral-light fa-pt-4 fa-w-auto md:fa-w-auto">
       <div className="container">
         <Breadcrumbs
-          breadcrumbs={[{ link: location.pathname, label: "Mi Cuenta" }]}
+          breadcrumbs={[{ link: location.pathname, label: 'Mi Cuenta' }]}
           baseUrl={baseUrl}
         />
 
         <div className="fa-flex fa-flex-row fa-mt-5 fa-mb-3 ">
           {isDesktopScreen ? (
             <div className="fa-mt-4">
-              <img src={profile} alt="profile icon" height="52" width="52" />
+              <img src={profile} alt="profile icon" height="62" width="62" />
             </div>
           ) : (
             <div className="fa-mt-0">
-              <img src={profile} alt="profile icon" height="52" width="52" />
+              <img src={profile} alt="profile icon" height="62" width="62" />
             </div>
           )}
 
@@ -52,9 +52,7 @@ const AccountLayout: React.FC<RouteComponentProps> = ({
             </div>
           ) : (
             <div className="fa-flex fa-flex-row fa-items-center">
-              <S.Paragraph>
-                Hola
-              </S.Paragraph>
+              <S.Paragraph>Hola</S.Paragraph>
               <S.WrapperMobile>{user?.firstName}</S.WrapperMobile>
             </div>
           )}
