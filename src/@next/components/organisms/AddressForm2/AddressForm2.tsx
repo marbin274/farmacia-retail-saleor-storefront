@@ -5,10 +5,32 @@ import {
   AddessAutocompleteField,
   MapField,
   InputTextField,
+  TileRadioGroupField,
+  ITileRadioOption,
 } from './components/AddressForm2Fields/AddressForm2Fields';
 import { useShopContext } from '@temp/components/ShopProvider/context';
-import { Button } from '@farmacia-retail/farmauna-components';
+import { Button, HomeIcon } from '@farmacia-retail/farmauna-components';
 import { TOTAL_DISTRICT } from '@temp/core/config';
+import { Icon } from '../../atoms';
+
+const ADDRESS_TYPE_OPTIONS: ITileRadioOption[] = [
+  {
+    icon: <HomeIcon />,
+    label: 'Mi casa',
+    value: 'Mi casa',
+  },
+  {
+    icon: <Icon name="work" size={16} viewPort={24} />,
+    label: 'Mi trabajo',
+    value: 'Mi trabajo',
+  },
+  {
+    icon: <Icon name="category2" size={16} viewPort={24} />,
+    label: 'Otros',
+    value: 'Otros',
+    withInput: true,
+  },
+];
 
 type IAddressForm = {
   city?: any;
@@ -16,6 +38,7 @@ type IAddressForm = {
   longitude?: string;
   streetAddress1?: string;
   streetAddress2?: string;
+  alias?: string;
 };
 
 const initialValues: IAddressForm = {
@@ -24,6 +47,7 @@ const initialValues: IAddressForm = {
   longitude: '',
   latitude: '',
   streetAddress2: '',
+  alias: '',
 };
 
 // TODO: cambiar el nombre
@@ -36,6 +60,10 @@ export const AddressForm2: FC = () => {
 
     if (!values.streetAddress1) {
       errors.streetAddress1 = 'test error';
+    }
+
+    if (!values.alias) {
+      errors.alias = 'test error';
     }
 
     return errors;
@@ -69,7 +97,7 @@ export const AddressForm2: FC = () => {
             <div className="fa-mb-4">
               <AddessAutocompleteField
                 name="streetAddress1"
-                label="Buscar Dirección"
+                label="Buscar dirección"
                 placeholder="Ejemplo: Av. Arenales 213"
                 inputSize="large"
                 helperText="Escribe tu dirección y elige una de las opciones desplegadas"
@@ -85,6 +113,16 @@ export const AddressForm2: FC = () => {
                 label="Referencia"
                 autoComplete="address-line2"
                 inputSize="large"
+              />
+            </div>
+            <div className="fa-mb-4">
+              <p className="fa-text-sm">Personaliza tu dirección</p>
+              <p className="fa-text-neutral-dark fa-text-sm fa-mb-2">
+                Selecciona una opción
+              </p>
+              <TileRadioGroupField
+                name="alias"
+                options={ADDRESS_TYPE_OPTIONS}
               />
             </div>
           </div>

@@ -238,6 +238,7 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                 radioProps={{ name: 'payment-method', value: 'dummy', checked }}
                 onClick={() => onSelectPaymentMethod(id, true)}
                 hasError={hasListError}
+                className="fa-bg-white"
               >
                 <DummyPaymentGateway
                   formRef={formRef}
@@ -260,6 +261,7 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                 radioProps={{ name: 'payment-method', value: 'pos', checked }}
                 onClick={() => onSelectPaymentMethod(id, true)}
                 hasError={hasListError}
+                className="fa-bg-white"
               >
                 <div className="fa-flex fa-items-center">
                   <img
@@ -295,6 +297,7 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                 onClick={() => onSelectPaymentMethod(id, false)}
                 hasError={hasListError}
                 contentNoSpacing
+                className="fa-bg-white"
               >
                 {userHasCardTokens ? (
                   <>

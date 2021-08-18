@@ -5,6 +5,7 @@ import {
   IAddressAutocompleteProps,
   IAddressAutocompleteRef,
   InputSelect,
+  TileRadio,
 } from '@components/molecules';
 import { IInputSelectProps } from '@temp/@next/components/molecules/InputSelect/types';
 import { useField, useFormikContext } from 'formik';
@@ -194,5 +195,98 @@ export const InputTextField: FC<IInputTextFieldProps> = ({
         onBlur?.(e);
       }}
     />
+  );
+};
+
+type ITileRadioGroupFieldProps = {
+  name: string;
+  onChangeValue?: (value: string) => void;
+  options: ITileRadioOption[];
+};
+
+export const TileRadioGroupField: FC<ITileRadioGroupFieldProps> = ({
+  name,
+  onChangeValue,
+  options,
+}) => {
+  const [field, meta, helpers] = useField(name);
+
+  const handleChange = (value: string) => {
+    helpers.setValue(value);
+    onChangeValue?.(value);
+  };
+
+  return (
+    <TileRadioGroup
+      value={field.value}
+      onChangeValue={handleChange}
+      hasError={!!meta.error}
+      options={options}
+    />
+  );
+};
+
+type ITileRadioGroupProps = {
+  hasError?: boolean;
+  onChangeValue?: (value: string) => void;
+  value?: string;
+  options: ITileRadioOption[];
+};
+
+export type ITileRadioOption = {
+  icon?: JSX.Element;
+  label: string;
+  value: string;
+  withInput?: boolean;
+};
+
+export const TileRadioGroup: FC<ITileRadioGroupProps> = ({
+  hasError,
+  onChangeValue,
+  options,
+  value,
+}) => {
+  const [option, setOption] = React.useState<string>();
+
+  return (
+    <div>
+      {options.map(({ icon, label, value: optionValue, withInput }) => (
+        <TileRadio
+          key={optionValue}
+          label={label}
+          icon={icon}
+          radioProps={{
+            checked: option === optionValue,
+          }}
+          onClick={() => {
+            setOption(optionValue);
+
+            if (withInput) {
+              onChangeValue?.('');
+            } else {
+              onChangeValue?.(optionValue);
+            }
+          }}
+          className="fa-mb-4 fa-bg-neutral-light"
+          contentBgHighlighted
+          hasError={hasError}
+        >
+          {withInput && (
+            <div>
+              <p className="fa-text-sm fa-mb-2">
+                Ingresa un nombre a la dirección
+              </p>
+              <InputField
+                placeholder=""
+                value={value}
+                onChange={(e) => {
+                  onChangeValue?.(e.target.value);
+                }}
+              />
+            </div>
+          )}
+        </TileRadio>
+      ))}
+    </div>
   );
 };
