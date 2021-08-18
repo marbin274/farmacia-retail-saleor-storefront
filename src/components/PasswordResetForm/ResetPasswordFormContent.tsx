@@ -1,18 +1,18 @@
-import { ResetPasswordMailSentPage } from "@app/pages";
-import { IFormError } from "@app/types";
-import { joinFormikErrorsToIFormErrorsAndConvertToObjectErrors } from "@app/utils/errorsManagement";
-import { Button, InputField } from "@farmacia-retail/farmauna-components";
-import { LocalRepository } from "@temp/@sdk/repository";
-import { passwordResetUrl } from "@temp/app/routes";
-import { useFormik } from "formik";
-import React from "react";
-import { MutationFn } from "react-apollo";
+import { ResetPasswordMailSentPage } from '@app/pages';
+import { IFormError } from '@app/types';
+import { joinFormikErrorsToIFormErrorsAndConvertToObjectErrors } from '@app/utils/errorsManagement';
+import { Button, InputField } from '@farmacia-retail/farmauna-components';
+import { LocalRepository } from '@temp/@sdk/repository';
+import { passwordResetUrl } from '@temp/app/routes';
+import { useFormik } from 'formik';
+import React from 'react';
+import { MutationFn } from 'react-apollo';
 import {
   ResetPassword,
   ResetPasswordVariables,
-} from "./gqlTypes/ResetPassword";
-import { passwordResetFormSchema } from "./passwordResetForm.schema";
-import * as S from "./styles";
+} from './gqlTypes/ResetPassword';
+import { passwordResetFormSchema } from './passwordResetForm.schema';
+import * as S from './styles';
 interface ResetPasswordFormContentProps {
   called: boolean;
   loading: boolean;
@@ -23,7 +23,7 @@ interface ResetPasswordFormContentProps {
 }
 
 const initialValues: ResetPasswordVariables = {
-  email: "",
+  email: '',
   redirectUrl: `${window.location.origin}${passwordResetUrl}`,
 };
 const ResetPasswordFormContent: React.FC<ResetPasswordFormContentProps> = ({
@@ -35,12 +35,10 @@ const ResetPasswordFormContent: React.FC<ResetPasswordFormContentProps> = ({
   children,
   passwordReset,
 }) => {
-  const [showMessageSuccess, setShowMessageSuccess] = React.useState<boolean>(
-    false
-  );
-  const [showMessageErrors, setShowMessageErrors] = React.useState<boolean>(
-    false
-  );
+  const [showMessageSuccess, setShowMessageSuccess] =
+    React.useState<boolean>(false);
+  const [showMessageErrors, setShowMessageErrors] =
+    React.useState<boolean>(false);
 
   const localRepository = new LocalRepository();
 
@@ -53,7 +51,7 @@ const ResetPasswordFormContent: React.FC<ResetPasswordFormContentProps> = ({
     values,
   } = useFormik<ResetPasswordVariables>({
     initialValues,
-    onSubmit: values => {
+    onSubmit: (values) => {
       passwordReset({ variables: values });
     },
     validationSchema: passwordResetFormSchema,
@@ -63,13 +61,6 @@ const ResetPasswordFormContent: React.FC<ResetPasswordFormContentProps> = ({
     setShowMessageErrors(show);
     setShowMessageSuccess(show);
   };
-
-  React.useEffect(() => {
-    if (document.querySelector<HTMLElement>(".overlay__header")) {
-      document.querySelector<HTMLElement>(".overlay__header").style.display =
-        "block";
-    }
-  }, []);
 
   React.useEffect(() => {
     if (called && !loading) {
@@ -108,16 +99,16 @@ const ResetPasswordFormContent: React.FC<ResetPasswordFormContentProps> = ({
             <InputField
               autoComplete="email"
               placeholder="Ejemplo: juanperez@mail.com"
-              error={!!errors?.email ? errors!.email[0].message : ""}
+              error={!!errors?.email ? errors!.email[0].message : ''}
               label="Correo electrónico"
               name="email"
               type="text"
-              value={!values?.email ? "" : values?.email}
-              onBlur={e => {
+              value={!values?.email ? '' : values?.email}
+              onBlur={(e) => {
                 changeShowMessages(false);
                 handleBlur(e);
               }}
-              onChange={e => {
+              onChange={(e) => {
                 changeShowMessages(false);
                 handleChange(e);
               }}
@@ -131,7 +122,7 @@ const ResetPasswordFormContent: React.FC<ResetPasswordFormContentProps> = ({
                 type="submit"
                 variant="default"
               >
-                {loading ? "Cargando" : "Enviar instrucciones"}
+                {loading ? 'Cargando' : 'Enviar instrucciones'}
               </Button>
               {buttonBack}
             </S.ButtonWrapper>

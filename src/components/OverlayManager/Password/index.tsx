@@ -29,7 +29,7 @@ const Password: React.FC<{ overlay: OverlayContextInterface }> = ({
             />
           </div>
           <div className="fa-pt-1">
-            <PasswordResetForm />
+            <PasswordResetForm onClick={overlay.hide} />
           </div>
         </Online>
         <Offline>
