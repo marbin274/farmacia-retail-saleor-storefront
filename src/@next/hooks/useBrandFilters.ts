@@ -21,6 +21,11 @@ export const useBrandFilters = () => {
   const [hasFilterChanged, setHasFilterChanged] = React.useState(false);
 
   React.useEffect(() => {
+    setCurrentFilters({ ...attributeFilters });
+    setCheckedFilters({ ...attributeFilters });
+  }, [attributeFilters]);
+
+  React.useEffect(() => {
     setHasFilterChanged(
       JSON.stringify(currentFilters) !== JSON.stringify(checkedFilters)
     );
@@ -59,8 +64,6 @@ export const useBrandFilters = () => {
 
   const clearFilters = () => {
     setQuery({ filters: {} });
-    setCheckedFilters({});
-    setCurrentFilters({});
   };
 
   const resetFilters = () => {
@@ -69,8 +72,6 @@ export const useBrandFilters = () => {
 
   const updateRemote = (filters) => {
     setQuery({ filters });
-    setCurrentFilters({ ...filters });
-    setCheckedFilters({ ...filters });
   };
 
   const updateLocal = (filters) => {
