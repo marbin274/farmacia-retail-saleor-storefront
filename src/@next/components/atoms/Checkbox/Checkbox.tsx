@@ -1,7 +1,7 @@
-import React from "react";
-import * as S from "./styles";
-import { IProps } from "./types";
-import { CheckIcon } from "@farmacia-retail/farmauna-components";
+import React from 'react';
+import * as S from './styles';
+import { IProps } from './types';
+import { CheckIcon } from '@farmacia-retail/farmauna-components';
 
 const ENTER_KEY: number = 13;
 const SPACE_KEY: number = 32;
@@ -18,10 +18,10 @@ export const Checkbox: React.FC<IProps> = ({
   const ref = React.useRef<HTMLDivElement>(null);
 
   return (
-    <S.Checkbox ref={ref} style={{...parentStyles}}>
+    <S.Checkbox ref={ref} style={{ ...parentStyles }}>
       <S.Label
         htmlFor={props?.id}
-        onClick={evt => {
+        onClick={(evt) => {
           evt.preventDefault();
           if (!props.disabled) {
             onChange(evt);
@@ -42,7 +42,7 @@ export const Checkbox: React.FC<IProps> = ({
         <div
           ref={ref}
           tabIndex={0}
-          onKeyDown={evt => {
+          onKeyDown={(evt) => {
             if (!props.disabled) {
               if (evt.which === SPACE_KEY || evt.which === ENTER_KEY) {
                 evt.preventDefault();
@@ -52,11 +52,11 @@ export const Checkbox: React.FC<IProps> = ({
           }}
         >
           <S.Span error={!!error}>
-            <CheckIcon className={"checkout_icon"} size={16} />
+            <CheckIcon className={'checkout_icon'} size={16} />
           </S.Span>
         </div>
       </S.Label>
-      {children}
+      <S.Children>{children}</S.Children>
     </S.Checkbox>
   );
 };
