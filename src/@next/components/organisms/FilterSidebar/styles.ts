@@ -1,50 +1,32 @@
-import { mediaUp, styled } from "@styles";
-import { white } from "@temp/@next/globalStyles/constants";
+import { mediaUp, styled } from '@styles';
 
 export const Wrapper = styled.div`
-  background-color: ${white};
   box-shadow: 6px 0px 30px rgba(0, 0, 0, 0.15);
-  height: 100%;
-  width: 20rem;
-  padding: 100px 32px 0 60px;
-  ${mediaUp.smallScreen`
-    width: 20rem;
-    padding: 100px 32px 0 60px;
-  `}
-`;
-export const Header = styled.div`
-  align-items: center;
-  display: flex;
-  font-weight: ${props => props.theme.typography.normalFontWeight};
-  font-size: ${props => props.theme.typography.h4FontSize};  
-  justify-content: space-between;  
-  padding: 0;  
-  width: 100%;
-  margin-bottom:44px;
-  > div {
-    background-color: ${props => props.theme.colors.complementary1};
-  }
-  > span {
-    color: #2F2C3A;
-    font-size:32px;
-    font-weight:600;
-    
-  }
+  padding-top: 3.5rem;
 `;
 
 export const SubWrapper = styled.div`
-  height: calc(100% - 3.25rem);
+  margin: 0 auto;
+  max-width: 14rem;
   width: 100%;
 `;
 
 export const Body = styled.div`
-  height: calc(90% - 5.174rem);
-  padding: 1rem 1rem 0rem 0;
-  overflow: auto;
+  display: block;
+  max-height: calc(100vh - 15.5rem);
+  min-width: 14rem;
+  overflow: scroll;
+  padding-bottom: 2rem;
 `;
 
-export const Footer = styled.div` 
-  background: ${white};
+export const WrapperIconButton = styled.div`
+  left: calc(50% + 0.05rem);
+  position: absolute;
+  top: calc(50% + 0.05rem);
+  transform: translate(-50%, -50%);
+`;
+
+export const Footer = styled.div`
   height: auto;
   padding: 0;
   position: relative;
@@ -53,4 +35,4 @@ export const Footer = styled.div`
   ${mediaUp.mediumScreen`
     display:block ;
   `}
-`
+`;

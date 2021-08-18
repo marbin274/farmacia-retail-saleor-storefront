@@ -1,20 +1,21 @@
-import { CheckoutReview } from "@components/organisms";
-import { statuses as dummyStatuses } from "@components/organisms/DummyPaymentGateway";
-import { useCheckout, useShopDetails } from "@sdk/react";
-import { alertService } from "@temp/@next/components/atoms/Alert";
-import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
-import { CHECKOUT_STEPS } from "@temp/core/config";
-import { IFormError } from "@types";
-import ErrorPaymentIcon from "images/auna/credit-card-cancel.svg";
+import { CheckoutReview } from '@components/organisms';
+import { statuses as dummyStatuses } from '@components/organisms/DummyPaymentGateway';
+import { useCheckout, useShopDetails } from '@sdk/react';
+import { alertService } from '@temp/@next/components/atoms/Alert';
+import { removePaymentItems } from '@temp/@next/utils/checkoutValidations';
+import { CHECKOUT_STEPS } from '@temp/core/config';
+import { IFormError } from '@types';
+import ErrorPaymentIcon from 'images/auna/credit-card-cancel.svg';
 import React, {
   forwardRef,
   RefForwardingComponent,
   useImperativeHandle,
   useState,
-} from "react";
-import { RouteComponentProps, useHistory } from "react-router";
+} from 'react';
+import { RouteComponentProps, useHistory } from 'react-router';
+import { LocalRepository } from '@temp/@sdk/repository';
 
-const creditCardType = require("credit-card-type");
+const creditCardType = require('credit-card-type');
 
 export interface ICheckoutReviewSubpageHandles {
   complete: () => void;
@@ -37,12 +38,13 @@ const CheckoutReviewSubpageWithRef: RefForwardingComponent<
   }: IProps,
   ref
 ) => {
+  const localRepository = new LocalRepository();
   const history = useHistory();
   const { checkout, payment, completeCheckout } = useCheckout();
   const { data } = useShopDetails();
   const [errors, setErrors] = useState<IFormError[]>([]);
 
-  if (!localStorage.getItem("data_payment")) {
+  if (!localRepository.getPayment()) {
     history.push(CHECKOUT_STEPS[1].link);
   }
 
@@ -61,10 +63,10 @@ const CheckoutReviewSubpageWithRef: RefForwardingComponent<
     : undefined;
 
   const getPaymentMethodDescription = () => {
-    if (payment?.gateway === "mirumee.payments.dummy") {
+    if (payment?.gateway === 'mirumee.payments.dummy') {
       return `Dummy: ${
         dummyStatuses.find(
-          status => status.token === selectedPaymentGatewayToken
+          (status) => status.token === selectedPaymentGatewayToken
         )?.label
       }`;
     }
@@ -93,13 +95,13 @@ const CheckoutReviewSubpageWithRef: RefForwardingComponent<
 
         removePaymentItems();
         alertService.sendAlert({
-          buttonText: "Entendido",
+          buttonText: 'Entendido',
           icon: ErrorPaymentIcon,
           message:
-            "Por favor valida que todos tus datos de pago sean correctos e inténtalo de nuevo",
+            'Por favor valida que todos tus datos de pago sean correctos e inténtalo de nuevo',
           redirectionLink: CHECKOUT_STEPS[1].link,
-          title: "No pudimos procesar el pago",
-          type: "Info",
+          title: 'No pudimos procesar el pago',
+          type: 'Info',
         });
 
         setErrors(errors);

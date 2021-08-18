@@ -1,6 +1,5 @@
-import { IconButton } from '@components/atoms';
 import { AttributeValuesChecklist } from '@components/molecules';
-import { Button } from '@farmacia-retail/farmauna-components';
+import { Button, XIcon } from '@farmacia-retail/farmauna-components';
 import { useClickedOutside } from '@hooks';
 import React from 'react';
 import { Overlay } from '../';
@@ -45,14 +44,31 @@ export const FilterSidebar: React.FC<IProps> = React.memo(
         transparent
         target={target}
       >
-        <S.Wrapper ref={setElementRef()} data-cy="filter-sidebar">
-          <div>
-            <S.Header>
-              <span>Filtros</span>
-              <IconButton onClick={hide} name="x" size={18} />
-            </S.Header>
-          </div>
+        <S.Wrapper
+          className="fa-bg-neutral-light fa-h-full fa-w-80 fa-flex fa-flex-col"
+          ref={setElementRef()}
+          data-cy="filter-sidebar"
+        >
           <S.SubWrapper>
+            <div className="fa-flex fa-items-center fa-text-2xl fa-font-semibold fa-justify-between fa-p-0 fa-w-full fa-mb-8">
+              <span>Filtros</span>
+              <Button
+                onClick={hide}
+                size="small"
+                className="fa-bg-interactive hover:fa-bg-highlight-dark fa-relative"
+                icon={
+                  <S.WrapperIconButton>
+                    <XIcon size={14} />
+                  </S.WrapperIconButton>
+                }
+                iconOnly
+              />
+            </div>
+          </S.SubWrapper>
+          <S.SubWrapper>
+            <div className="fa-text-neutral-darkest fa-text-base fa-font-semibold fa-mb-6">
+              Filtrar por marca
+            </div>
             <S.Body>
               {attributes
                 .filter((it) => it.filterableInStorefront)
@@ -78,12 +94,18 @@ export const FilterSidebar: React.FC<IProps> = React.memo(
                   );
                 })}
             </S.Body>
-            <S.Footer>
-              <Button disabled={!hasFilterChanged} onClick={applyFilters}>
+          </S.SubWrapper>
+          <S.Footer className="fa-bg-white fa-flex fa-items-center fa-justify-center fa-flex-grow">
+            <S.SubWrapper>
+              <Button
+                disabled={!hasFilterChanged}
+                onClick={applyFilters}
+                fullWidth
+              >
                 Aplicar
               </Button>
-            </S.Footer>
-          </S.SubWrapper>
+            </S.SubWrapper>
+          </S.Footer>
         </S.Wrapper>
       </Overlay>
     );
