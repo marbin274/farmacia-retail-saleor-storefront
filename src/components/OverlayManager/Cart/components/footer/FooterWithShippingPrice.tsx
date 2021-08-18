@@ -1,17 +1,16 @@
-import { Money, TaxedMoney } from "@components/containers";
-import { Button, CartIcon } from "@farmacia-retail/farmauna-components";
-import { trackAddToCartWithShowShippingPrice } from "@temp/libraries/optimizely/tracks";
-import { useCart, useCheckout, useUserDetails } from "@temp/@sdk/react";
-import { checkoutUrl, checkoutLoginUrl } from "@temp/app/routes";
-import * as React from "react";
-import { useHistory, useLocation } from "react-router";
-import { TypedShippingMethods } from "../queries";
-import "../scss/index.scss";
-import { SkeletonCartFooter } from "./skeletonCartFooter";
-import * as S from "./FooterWithShippingPriceStyles";
-import { Icon } from "@temp/@next/components/atoms";
-import { aunaBrand3 } from "@temp/@next/globalStyles/constants";
-import { useClickedOutside } from "@temp/@next/hooks";
+import { Money, TaxedMoney } from '@components/containers';
+import { Button, CartIcon } from '@farmacia-retail/farmauna-components';
+import { trackAddToCartWithShowShippingPrice } from '@temp/libraries/optimizely/tracks';
+import { useCart, useCheckout, useUserDetails } from '@temp/@sdk/react';
+import { checkoutUrl, checkoutLoginUrl } from '@temp/app/routes';
+import * as React from 'react';
+import { useHistory, useLocation } from 'react-router';
+import { TypedShippingMethods } from '../../queries';
+import { SkeletonCartFooter } from './skeletonCartFooter';
+import * as S from './FooterWithShippingPriceStyles';
+import { Icon } from '@temp/@next/components/atoms';
+import { aunaBrand3 } from '@temp/@next/globalStyles/constants';
+import { useClickedOutside } from '@temp/@next/hooks';
 
 interface IProps {
   buttonText: string;
@@ -34,7 +33,7 @@ export const FooterWithShippingPrice: React.FC<IProps> = ({
   const itemsCount = items?.length || 0;
 
   const onClickBuyIcon = () => {
-    const isInLoginPage = location.pathname.includes("login");
+    const isInLoginPage = location.pathname.includes('login');
     trackAddToCartWithShowShippingPrice();
     if (isInLoginPage) hideOverlay();
     else {
@@ -55,7 +54,7 @@ export const FooterWithShippingPrice: React.FC<IProps> = ({
       alwaysLoader
       loader={<SkeletonCartFooter />}
       variables={{
-        lines: items?.map(line => ({
+        lines: items?.map((line) => ({
           quantity: line.quantity,
           variantId: line.variant?.id,
         })),
@@ -81,7 +80,7 @@ export const FooterWithShippingPrice: React.FC<IProps> = ({
                 <S.ShippingMethod>
                   <S.ShippingMethodName>
                     {`Envío ${
-                      shippingMethod.isScheduled ? "programado" : "express"
+                      shippingMethod.isScheduled ? 'programado' : 'express'
                     }`}
                   </S.ShippingMethodName>
                   {shippingMethodPrice > 0 ? (
@@ -127,10 +126,10 @@ export const FooterWithShippingPrice: React.FC<IProps> = ({
                     {showInfo && (
                       <S.ToolTipContainer>
                         <S.ToolTipText>
-                          Si alcanzas a tener compras <strong>mayores</strong> a{" "}
-                          <strong>S/ {orderPrice} soles</strong>, tu{" "}
+                          Si alcanzas a tener compras <strong>mayores</strong> a{' '}
+                          <strong>S/ {orderPrice} soles</strong>, tu{' '}
                           <strong>
-                            envío es totalmente{" "}
+                            envío es totalmente{' '}
                             <span className="free">gratis</span>.
                           </strong>
                         </S.ToolTipText>
@@ -143,11 +142,11 @@ export const FooterWithShippingPrice: React.FC<IProps> = ({
             <S.Details>
               <S.DetailsPrice>
                 <S.DetailsPriceLabel>
-                  Subtotal{" "}
+                  Subtotal{' '}
                   <span>
                     (
                     {`${itemsCount} ${
-                      itemsCount === 0 ? "producto" : "productos"
+                      itemsCount === 0 ? 'producto' : 'productos'
                     }`}
                     )
                   </span>
@@ -172,7 +171,9 @@ export const FooterWithShippingPrice: React.FC<IProps> = ({
                 </S.DetailsDiscount>
               )}
               {!isAllFree &&
-                potentialShippingMethods.map(shippingMethod => shippingMethod)}
+                potentialShippingMethods.map(
+                  (shippingMethod) => shippingMethod
+                )}
               {isAllFree && (
                 <S.DetailsTotal>
                   <S.DetailsPriceLabel>Total</S.DetailsPriceLabel>
