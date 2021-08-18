@@ -1,5 +1,4 @@
-import gql from "graphql-tag";
-
+import gql from 'graphql-tag';
 
 export const articleDetail = gql`
   query ArticleDetail($slug: String!) {
@@ -22,4 +21,3 @@ export const articleDetail = gql`
     }
   }
 `;
-

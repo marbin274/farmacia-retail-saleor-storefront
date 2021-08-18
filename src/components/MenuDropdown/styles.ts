@@ -1,5 +1,5 @@
-import { styled } from "@styles";
-import { turquoise } from "@temp/@next/globalStyles/constants";
+import { styled } from '@styles';
+import { turquoise } from '@temp/@next/globalStyles/constants';
 
 export const MenuDropwdownBody = styled.div`
   box-shadow: 0 0.4375rem 0.9375rem rgba(0, 0, 0, 0.25);

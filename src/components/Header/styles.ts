@@ -1,5 +1,5 @@
-import { styled } from "@styles";
-import { containerWidth } from "@styles/constants";
+import { styled } from '@styles';
+import { containerWidth } from '@styles/constants';
 
 export const MainHeader = styled.nav`
   max-width: ${containerWidth};

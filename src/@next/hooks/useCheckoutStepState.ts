@@ -1,14 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import { IItems } from "@sdk/api/Cart/types";
-import { ICheckout, IPayment } from "@sdk/api/Checkout/types";
-import { CheckoutStep } from "@temp/core/config";
+import { IItems } from '@sdk/api/Cart/types';
+import { ICheckout, IPayment } from '@sdk/api/Checkout/types';
+import { CheckoutStep } from '@temp/core/config';
+import { LocalRepository } from '@temp/@sdk/repository';
 
 export const useCheckoutStepState = (
   items?: IItems,
   checkout?: ICheckout,
   payment?: IPayment
 ): CheckoutStep => {
+  const localRepository = new LocalRepository();
   const isShippingRequiredForProducts =
     items &&
     items.some(
@@ -21,10 +23,7 @@ export const useCheckoutStepState = (
       (!checkout?.id && items && isShippingRequiredForProducts)
     ) {
       return CheckoutStep.Address;
-    } else if (
-      (!checkout?.id && items) ||
-      !localStorage.getItem("purchase_number")
-    ) {
+    } else if ((!checkout?.id && items) || !localRepository.getPurchase()) {
       return CheckoutStep.Payment;
     }
 

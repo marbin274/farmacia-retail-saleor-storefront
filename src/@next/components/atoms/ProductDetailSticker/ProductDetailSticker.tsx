@@ -1,7 +1,7 @@
-import { PRODUCT_STICKERS } from "@temp/core/config";
-import React from "react";
-import * as S from "./styles";
-import { Chip } from "@farmacia-retail/farmauna-components";
+import { PRODUCT_STICKERS } from '@temp/core/config';
+import React from 'react';
+import * as S from './styles';
+import { Chip } from '@farmacia-retail/farmauna-components';
 
 interface IProductLabelProps {
   isOnSale?: boolean;
@@ -13,15 +13,15 @@ export const ProductDetailSticker = ({
   isOutStock,
 }: IProductLabelProps) => {
   return isOutStock || isOnSale ? (
-      <S.ProductSticker>
-        <Chip
-          label={
-            isOutStock
-              ? PRODUCT_STICKERS.Agotado.label
-              : PRODUCT_STICKERS.Oferta.label
-          }
-          disabled={isOutStock}
-        />
-      </S.ProductSticker>
-    ) : null;
+    <S.ProductSticker>
+      <Chip
+        label={
+          isOutStock
+            ? PRODUCT_STICKERS.Agotado.label
+            : PRODUCT_STICKERS.Oferta.label
+        }
+        disabled={isOutStock}
+      />
+    </S.ProductSticker>
+  ) : null;
 };

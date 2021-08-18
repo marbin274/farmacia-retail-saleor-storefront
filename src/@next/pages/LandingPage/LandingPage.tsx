@@ -1,14 +1,14 @@
-import React, { FC } from "react";
-import { RouteComponentProps } from "react-router-dom";
+import React, { FC } from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 import {
   LANDING_COLLECTIONS_PER_PAGE,
   PRODUCTS_PER_PAGE,
-} from "@temp/core/config";
-import { NotFound } from "@temp/components";
-import { Loader } from "@components/atoms";
-import Page from "./Page";
-import { Container } from "./styles";
-import { useLanding } from "@temp/@sdk/react";
+} from '@temp/core/config';
+import { NotFound } from '@temp/components';
+import { Loader } from '@components/atoms';
+import Page from './Page';
+import { Container } from './styles';
+import { useLanding } from '@temp/@sdk/react';
 
 type IProps = RouteComponentProps<{ slug: string }>;
 

@@ -1,12 +1,12 @@
-import { Loader } from "@temp/@next/components/atoms";
-import { LocalStorageItems } from "@temp/@sdk/repository";
-import { ApolloQueryResult, ErrorPolicy, FetchPolicy } from "apollo-client";
-import { DocumentNode } from "graphql";
-import * as React from "react";
-import { Query, QueryProps, QueryResult } from "react-apollo";
-import { Error } from "../components/Error";
-import { RequireAtLeastOne } from "./tsUtils";
-import { maybe } from "./utils";
+import { Loader } from '@temp/@next/components/atoms';
+import { LocalRepository } from '@temp/@sdk/repository';
+import { ApolloQueryResult, ErrorPolicy, FetchPolicy } from 'apollo-client';
+import { DocumentNode } from 'graphql';
+import * as React from 'react';
+import { Query, QueryProps, QueryResult } from 'react-apollo';
+import { Error } from '../components/Error';
+import { RequireAtLeastOne } from './tsUtils';
+import { maybe } from './utils';
 
 interface LoadMore<TData, TVariables> {
   loadMore: (
@@ -34,6 +34,7 @@ interface TypedQueryInnerProps<TData, TVariables> {
 }
 
 export function TypedQuery<TData, TVariables>(query: DocumentNode) {
+  const localRepository = new LocalRepository();
   return (props: TypedQueryInnerProps<TData, TVariables>) => {
     const {
       children,
@@ -42,7 +43,7 @@ export function TypedQuery<TData, TVariables>(query: DocumentNode) {
       renderOnError = false,
       alwaysRender = false,
       alwaysLoader = false,
-      fetchPolicy = "cache-and-network",
+      fetchPolicy = 'cache-and-network',
       errorPolicy,
       loader,
       loaderFull,
@@ -89,16 +90,14 @@ export function TypedQuery<TData, TVariables>(query: DocumentNode) {
           if (displayError && error && !hasData) {
             return <Error error={error.message} />;
           }
-          const districtChanged = localStorage.getItem(
-            LocalStorageItems.DISTRICT_CHANGED
-          );
+          const districtChanged = localRepository.getDistrictChanged();
           if (
             displayLoader &&
             loading &&
             loader &&
-            districtChanged === "true"
+            districtChanged === 'true'
           ) {
-            localStorage.setItem(LocalStorageItems.DISTRICT_CHANGED, "false");
+            localRepository.setDistrictChanged('false');
             return <>{loader}</>;
           } else if (displayLoader && loading && !!alwaysLoader) {
             return loader ? <>{loader}</> : <Loader fullScreen={loaderFull} />;

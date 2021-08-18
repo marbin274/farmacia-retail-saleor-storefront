@@ -2,9 +2,9 @@ import {
   CollectionStyle,
   DefaultTheme,
   mediaUp,
-} from "@temp/@next/globalStyles";
-import styled from "styled-components";
-import farmatheme from "@farmatheme";
+} from '@temp/@next/globalStyles';
+import styled from 'styled-components';
+import farmatheme from '@farmatheme';
 
 export const CategoryWrapper = styled.div`
   ${CollectionStyle}

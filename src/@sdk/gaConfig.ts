@@ -1,10 +1,9 @@
+import { LocalRepository } from '@temp/@sdk/repository';
 declare global {
   interface Window {
     dataLayer: any;
   }
 }
-
-const GA_USER_ID_KEY = "@user_id";
 
 export enum steps {
   addressCheckoutRoute = 1,
@@ -18,7 +17,7 @@ export enum steps {
 
 export const ecommerceProductsMapper = (products?: any[] | null) => {
   return (
-    products?.map(product => ({
+    products?.map((product) => ({
       brand: ``,
       category: product?.variant?.product?.category?.name || ``,
       id: product?.variant?.sku,
@@ -43,18 +42,18 @@ export const launchRemoveToCartEvent = (
       remove: {
         products: [
           {
-            brand: "",
-            category: "",
+            brand: '',
+            category: '',
             id,
             name,
             price,
             quantity,
-            variant: "",
+            variant: '',
           },
         ],
       },
     },
-    event: "removeFromCart",
+    event: 'removeFromCart',
   });
 };
 
@@ -70,19 +69,19 @@ export const launchAddToCartEvent = (
       add: {
         products: [
           {
-            brand: "",
-            category: "",
+            brand: '',
+            category: '',
             id,
             name,
             price,
             quantity,
-            variant: "",
+            variant: '',
           },
         ],
       },
       currencyCode,
     },
-    event: "addToCart",
+    event: 'addToCart',
   });
 };
 
@@ -94,11 +93,11 @@ export const launchCheckoutEvent = (
   return pushToDatalayer({
     ecommerce: {
       checkout: {
-        actionField: { step, option: "" },
+        actionField: { step, option: '' },
         products,
       },
     },
-    event: "checkout",
+    event: 'checkout',
     eventCallback,
   });
 };
@@ -133,7 +132,7 @@ export const launchDetailProductEvent = (
   return pushToDatalayer({
     ecommerce: {
       detail: {
-        actionField: { list: "" },
+        actionField: { list: '' },
         products: [
           {
             id,
@@ -144,7 +143,7 @@ export const launchDetailProductEvent = (
         ],
       },
     },
-    event: "detail",
+    event: 'detail',
   });
 };
 
@@ -158,16 +157,16 @@ export const launchPurchaseEvent = (
     ecommerce: {
       purchase: {
         actionField: {
-          affiliation: "Online Store",
+          affiliation: 'Online Store',
           id,
           revenue,
-          shipping: "",
+          shipping: '',
           tax,
         },
         products,
       },
     },
-    event: "purchase",
+    event: 'purchase',
   });
 };
 
@@ -182,23 +181,27 @@ const pushToDatalayer = (data: any) => {
 };
 
 export const setGaUserId = (id?: string) => {
-  localStorage.setItem(GA_USER_ID_KEY, id || "");
+  const localRepository = new LocalRepository();
+  localRepository.setGaUserId(id || '');
 };
 
 export const removeGaUserId = () => {
-  localStorage.removeItem(GA_USER_ID_KEY);
+  const localRepository = new LocalRepository();
+  localRepository.setGaUserId(null);
 };
 
 export const getGaUserId = () => {
-  return localStorage.getItem(GA_USER_ID_KEY) || "";
+  const localRepository = new LocalRepository();
+  localRepository.getGaUserId();
 };
 
 export const launchSearchEvent = (searchTerm?: string) => {
   return pushToDatalayer({
-    event: "search",
+    event: 'search',
     searchTerm,
   });
 };
 export const getLocalStorageForCart = () => {
-  return JSON.parse(localStorage.getItem("data_checkout") as string)?.lines;
+  const localRepository = new LocalRepository();
+  return localRepository.getCheckout()?.lines;
 };

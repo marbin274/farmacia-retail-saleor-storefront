@@ -1,5 +1,5 @@
-import React from "react";
-import { LoginForm } from "../..";
+import React from 'react';
+import { LoginForm } from '../..';
 
 const SignInForm: React.FC<{
   onClick: () => void;

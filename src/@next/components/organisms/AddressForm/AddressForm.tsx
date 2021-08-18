@@ -6,6 +6,7 @@ import { IPrivacyPolicy } from "@temp/@sdk/api/Checkout/types";
 import {
   ADDRESS_FORM_SHOW_GENERAL_ERRORS,
   ADDRESS_FORM_SORT,
+  CHECKOUT_MANDATORY_COORDINATES,
   COUNTRY_DEFAULT,
 } from "@temp/core/config";
 import { IAddressWithEmail, IFormErrorSort } from "@types";
@@ -133,8 +134,20 @@ export const AddressForm: React.FC<IProps> = ({
 
   const handleOnSubmitAddressForm = (
     values: IAddressWithEmail,
-    { setSubmitting }: FormikHelpers<IAddressWithEmail>
+    { setSubmitting, setFieldValue }: FormikHelpers<IAddressWithEmail>
   ) => {
+    if (
+      CHECKOUT_MANDATORY_COORDINATES &&
+      values.streetAddress1 &&
+      !values.latitude &&
+      !comeFromModal
+    ) {
+      showOptionalAddressError?.();
+      setFieldValue("city", "");
+      setSubmitting(false);
+      return;
+    }
+
     if (submitAddressForm) {
       const _values: IAddressWithEmail = {
         ...values,
@@ -216,19 +229,33 @@ export const AddressForm: React.FC<IProps> = ({
               customErrors.push(_err);
             }
           }
-          const errorsSort = sortBy(customErrors, ["sort"]);
+          let errorsSort = sortBy(customErrors, ["sort"]);
           setErrors(errorsSort);
 
           if (errorsSort.length > 0 && submitCount > submitCountRef.current) {
             submitCountRef.current = submitCount;
-
-            if (errorsSort.length < ADDRESS_FORM_SHOW_GENERAL_ERRORS) {
-              if (values.streetAddress1 && !values.latitude) {
+            
+            if (
+              errorsSort.length < ADDRESS_FORM_SHOW_GENERAL_ERRORS &&
+              values.streetAddress1 &&
+              !values.latitude
+            ) {
+              if (
+                CHECKOUT_MANDATORY_COORDINATES &&
+                errorsSort.length === 1 &&
+                errorsSort.find((err) => err.field === "city")
+              ) {
+                errorsSort = [];
+              } else {
                 errorsSort.push({
                   message:
                     "Selecciona una dirección dentro de las opciones desplegadas.",
                 });
               }
+            }
+
+            if (errorsSort.length === 0) {
+              return;
             }
 
             alertService.sendAlert({
@@ -277,6 +304,7 @@ export const AddressForm: React.FC<IProps> = ({
                 touched,
                 user,
                 values,
+                showOptionalAddressError,
               }}
               {...props}
             />

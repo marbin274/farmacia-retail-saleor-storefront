@@ -1,9 +1,9 @@
-import { Button, EmailLink } from "@components/atoms";
-import { Overlay, OverlayContextInterface } from "@temp/components/Overlay";
-import { CONSULTATION_EMAIL } from "@temp/core/config";
-import OutOfTimeIcon from "@temp/images/auna/out-of-time.svg";
-import * as React from "react";
-import * as S from "./styles";
+import { Button, EmailLink } from '@components/atoms';
+import { Overlay, OverlayContextInterface } from '@temp/components/Overlay';
+import { CONSULTATION_EMAIL } from '@temp/core/config';
+import OutOfTimeIcon from '@temp/images/auna/out-of-time.svg';
+import * as React from 'react';
+import * as S from './styles';
 export interface IProps {
   overlay: OverlayContextInterface;
 }

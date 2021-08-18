@@ -1,26 +1,26 @@
-import * as React from "react";
+import * as React from 'react';
 
-import closeImg from "../../images/x.svg";
-import classNames from "classnames";
-import * as S from "./styles";
+import closeImg from '../../images/x.svg';
+import classNames from 'classnames';
+import * as S from './styles';
 interface MessageProps {
   title: string;
-  status?: "success" | "error";
+  status?: 'success' | 'error';
   onClose: () => void;
 }
 
 const Message: React.FC<MessageProps> = ({
   title,
-  status = "neutral",
+  status = 'neutral',
   children,
   onClose,
 }) => (
   <S.Wrapper
     className={classNames(
-      "fa-w-100 fa-p-6 fa-bg-neutral-lightest fa-fixed fa-bottom-4 fa-right-4 message",
+      'fa-w-100 fa-p-6 fa-bg-neutral-lightest fa-fixed fa-bottom-4 fa-right-4 message',
       {
-        "fa-border-primary-medium": status === "success",
-        "fa-border-error-medium": status === "error",
+        'fa-border-primary-medium': status === 'success',
+        'fa-border-error-medium': status === 'error',
       }
     )}
   >

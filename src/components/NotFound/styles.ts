@@ -1,9 +1,9 @@
-import { mediaUp, styled } from "@styles";
-import { blue } from "@styles/constants";
+import { mediaUp, styled } from '@styles';
+import { blue } from '@styles/constants';
 
 export const NotFoundText = styled.h2`
   font-size: 9rem;
-  font-family: "Montserrat";
+  font-family: 'Montserrat';
   line-height: 100%;
   color: ${blue};
 

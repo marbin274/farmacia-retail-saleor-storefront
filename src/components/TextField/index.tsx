@@ -1,7 +1,7 @@
-import classNames from "classnames";
-import * as React from "react";
-import * as S from "./styles";
-type Style = "white" | "grey";
+import classNames from 'classnames';
+import * as React from 'react';
+import * as S from './styles';
+type Style = 'white' | 'grey';
 
 export interface TextFieldProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -19,12 +19,12 @@ export interface TextFieldProps
 }
 
 const TextField: React.FC<TextFieldProps> = ({
-  label = "",
+  label = '',
   iconLeft,
   iconRight,
   errors,
   helpText,
-  styleType = "white" as Style,
+  styleType = 'white' as Style,
   innerIcon,
   inputRef,
   ...rest
@@ -51,11 +51,11 @@ const TextField: React.FC<TextFieldProps> = ({
         {...rest}
         ref={inputRef}
         className={classNames(
-          "input__field fa-block fa-w-full fa-rounded fa-py-3 fa-px-4 fa-text-sm fa-text-gray-100 fa-border fa-border-solid fa-border-gray fa-outline-none fa-bg-transparent",
+          'input__field fa-block fa-w-full fa-rounded fa-py-3 fa-px-4 fa-text-sm fa-text-gray-100 fa-border fa-border-solid fa-border-gray fa-outline-none fa-bg-transparent',
           {
-            "fa-pl-12": iconLeft,
+            'fa-pl-12': iconLeft,
             error: errors && errors.length,
-            gray: styleType === "grey",
+            gray: styleType === 'grey',
           }
         )}
       />
@@ -63,7 +63,7 @@ const TextField: React.FC<TextFieldProps> = ({
     </div>
     {errors && (
       <span className="fa-text-error-medium fa-text-xs">
-        {errors.map((error) => error.message).join(" ")}
+        {errors.map((error) => error.message).join(' ')}
       </span>
     )}
     {helpText && (
