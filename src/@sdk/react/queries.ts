@@ -21,3 +21,5 @@ export const useVariantsProducts = queryWithVariablesFactory(
 );
 
 export const useCategories = queryFactory("getCategoryList");
+
+export const useFeaturePlugins = queryFactory("getFeaturePlugins");

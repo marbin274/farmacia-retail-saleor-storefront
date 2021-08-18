@@ -3,12 +3,12 @@ import gql from "graphql-tag";
 export const getShop = gql`
   query GetShop {
     shop {
-      availableDistricts{
-        id      
+      availableDistricts {
+        id
         isActive
         isDefault
         name
-        warehouse{
+        warehouse {
           id
           name
         }
@@ -43,6 +43,18 @@ export const getShopPaymentGateways = gql`
           field
           value
         }
+      }
+    }
+  }
+`;
+
+export const getShopFeaturePlugins = gql`
+  query GetShopFeaturePlugins {
+    shop {
+      availableFeaturePlugins {
+        id
+        name
+        active
       }
     }
   }

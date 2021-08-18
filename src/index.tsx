@@ -49,7 +49,8 @@ import {
 } from "./@sdk/auth";
 import { alertService } from "./@next/components/atoms/Alert";
 import { launchSetLocation, getGaUserId } from "./@sdk/gaConfig";
-import { getOptimizelyUserId, optimizelyClient } from "./libraries/optimizely/optimizelyConfig";
+import { getOptimizelyUserId, optimizelyClient } from "./optimizelyConfig";
+import { FeaturedPluginsProvider } from "@contexts";
 
 const cache = new InMemoryCache({
   dataIdFromObject: apolloCacheObject => {
@@ -134,7 +135,9 @@ const startApp = async () => {
                   <SaleorProvider client={apolloClient}>
                     <ShopProvider>
                       <OverlayProvider>
-                        <App />
+                        <FeaturedPluginsProvider>
+                          <App />
+                        </FeaturedPluginsProvider>
                         <Notifications />
                       </OverlayProvider>
                     </ShopProvider>

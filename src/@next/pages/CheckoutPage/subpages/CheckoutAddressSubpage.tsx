@@ -22,6 +22,7 @@ import React, {
 } from "react";
 import { RouteComponentProps } from "react-router";
 import { AlertComponentProps, useAlert } from "react-alert";
+import { useFeaturePlugins } from "@app/hooks";
 
 export interface ICheckoutAddressSubpageHandles {
   submitAddress: () => void;
@@ -56,7 +57,9 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
   const {
     checkout,
     setShippingAddress,
+    setShippingMethod,
     selectedShippingAddressId,
+    selectedSlotId,
   } = useCheckout();
   const { availableDistricts, countries } = useShopContext();
   const [selectedDistrict, setDistrict] = useDistrictSelected();
@@ -72,6 +75,8 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     AlertComponentProps
   >();
   const alert = useAlert();
+
+  const { lastMileActive } = useFeaturePlugins();
 
   const _addressFormSchema = addressFormSchema;
 
@@ -223,6 +228,10 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
 
     if (selectedDistrict?.id !== district?.id) {
       setDistrict(district);
+    }
+
+    if (selectedSlotId && lastMileActive) {
+      await setShippingMethod({ shippingMethodId: "", slotId: undefined });
     }
 
     if (checkoutErrors?.length! > 0) {
