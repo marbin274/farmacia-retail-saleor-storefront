@@ -2,29 +2,31 @@ import { ApolloClient } from 'apollo-client';
 import { ApolloLink } from 'apollo-link';
 import { setContext } from 'apollo-link-context';
 import { ErrorResponse, onError } from 'apollo-link-error';
+import { LocalRepository } from '@temp/@sdk/repository';
 
 export const authEvent = new Event('auth');
+const localRepository = new LocalRepository();
 
 export function getAuthToken(): string | null {
   try {
-    return localStorage.getItem('token');
+    return localRepository.getToken();
   } catch {
     return null;
   }
 }
 
 export function setAuthToken(token: string) {
-  localStorage.setItem('token', token);
+  localRepository.setToken(token);
   dispatchEvent(authEvent);
 }
 
 export function removeAuthToken() {
-  localStorage.removeItem('token');
+  localRepository.setToken(null);
   dispatchEvent(authEvent);
 }
 
 export function clearStorage(): void {
-  localStorage.clear();
+  localRepository.clearStorage();
   dispatchEvent(authEvent);
 }
 
