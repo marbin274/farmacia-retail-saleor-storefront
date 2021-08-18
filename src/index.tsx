@@ -49,7 +49,7 @@ import {
 } from "./@sdk/auth";
 import { alertService } from "./@next/components/atoms/Alert";
 import { launchSetLocation, getGaUserId } from "./@sdk/gaConfig";
-import { getOptimizelyUserId, optimizelyClient } from "./optimizelyConfig";
+import { getOptimizelyUserId, optimizelyClient } from "./libraries/optimizely/optimizelyConfig";
 import { FeaturedPluginsProvider } from "@contexts";
 
 const cache = new InMemoryCache({

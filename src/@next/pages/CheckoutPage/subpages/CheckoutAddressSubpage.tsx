@@ -9,18 +9,19 @@ import { CheckoutErrorCode } from "@temp/@sdk/gqlTypes/globalTypes";
 import { CreateCheckout_checkoutCreate_checkoutErrors_products } from "@temp/@sdk/mutations/gqlTypes/CreateCheckout";
 import { baseUrl } from "@temp/app/routes/paths";
 import { useShopContext } from "@temp/components/ShopProvider/context";
-import { COUNTRY_DEFAULT } from "@temp/core/config";
+import { CHECKOUT_MANDATORY_COORDINATES, COUNTRY_DEFAULT } from "@temp/core/config";
 import { IAddress, IAddressWithEmail, IFormError } from "@types";
 import { filterNotEmptyArrayItems } from "@utils/misc";
 import React, {
   forwardRef,
   RefForwardingComponent,
+  useEffect,
   useImperativeHandle,
   useRef,
   useState,
 } from "react";
 import { RouteComponentProps } from "react-router";
-import { useAlert } from "react-alert";
+import { AlertComponentProps, useAlert } from "react-alert";
 import { useFeaturePlugins } from "@app/hooks";
 
 export interface ICheckoutAddressSubpageHandles {
@@ -70,24 +71,55 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     temporaryStreeAddress1Error,
     setTemporaryStreeAddress1Error,
   ] = useState<string>();
+  const [currentErrorAlert, setCurrentErrorAlert] = useState<
+    AlertComponentProps
+  >();
   const alert = useAlert();
 
   const { lastMileActive } = useFeaturePlugins();
 
   const _addressFormSchema = addressFormSchema;
 
-  const showTemporaryStreeAddress1Error = () => {
-    if (temporaryStreeAddress1Error) {
-      return;
+  useEffect(() => {
+    return () => {
+      clearAlertAddressError();
+    };
+  }, [currentErrorAlert]);
+
+  const clearAlertAddressError = () => {
+    if (currentErrorAlert) {
+      currentErrorAlert.close();
     }
+  };
+
+  const clearTemporaryAddressError = () => {
+    clearAlertAddressError();
+    setTemporaryStreeAddress1Error("");
+  };
+
+  const showOptionalAddressError = () => {
+    clearAlertAddressError();
+
+    const newAlert = alert.show(
+      {
+        content: (
+          <span className="fa-text-sm">
+            Debes ingresar tu dirección y seleccionar una de las opciones
+            desplegadas
+          </span>
+        ),
+      },
+      {
+        timeout: 60000 * 2,
+        type: "error",
+      }
+    );
+
+    setCurrentErrorAlert(newAlert);
 
     setTemporaryStreeAddress1Error(
       "Selecciona una de las direcciones sugeridas"
     );
-
-    setTimeout(() => {
-      setTemporaryStreeAddress1Error(undefined);
-    }, 5000);
   };
 
   const handleFormValues = (data: IAddressWithEmail | undefined) => {
@@ -171,6 +203,8 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     }
 
     changeSubmitProgress(true);
+    setTemporaryStreeAddress1Error("");
+
     const { checkoutErrors, dataError } = await setShippingAddress(
       {
         ...address,
@@ -229,22 +263,12 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     } else {
       setAddressSubPageErrors([]);
 
-      if (address.streetAddress1 && !address.latitude) {
-        alert.show(
-          {
-            content: (
-              <span className="fa-text-sm">
-                Debes ingresar tu dirección y seleccionar una de las opciones
-                desplegadas
-              </span>
-            ),
-          },
-          {
-            timeout: 5000,
-            type: "error",
-          }
-        );
-        showTemporaryStreeAddress1Error();
+      if (
+        !CHECKOUT_MANDATORY_COORDINATES &&
+        address.streetAddress1 &&
+        !address.latitude
+      ) {
+        showOptionalAddressError();
       }
 
       if (checkout?.shippingMethod?.id) {
@@ -302,6 +326,8 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
         setShippingAddress={handleSetShippingAddress}
         setFormValue={handleFormValues}
         temporaryStreeAddress1Error={temporaryStreeAddress1Error}
+        clearTemporaryAddressError={clearTemporaryAddressError}
+        showOptionalAddressError={showOptionalAddressError}
       />
       <StockValidationModal
         show={showStockValidation}

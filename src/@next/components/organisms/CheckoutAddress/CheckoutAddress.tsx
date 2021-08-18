@@ -20,6 +20,8 @@ const CheckoutAddress: React.FC<IProps> = ({
   errors,
   checkoutData,
   temporaryStreeAddress1Error,
+  clearTemporaryAddressError,
+  showOptionalAddressError,
 }: IProps) => {
   return (
     <section>
@@ -46,6 +48,8 @@ const CheckoutAddress: React.FC<IProps> = ({
         userLoading={userLoading}
         setFormValue={setFormValue}
         temporaryStreeAddress1Error={temporaryStreeAddress1Error}
+        clearTemporaryAddressError={clearTemporaryAddressError}
+        showOptionalAddressError={showOptionalAddressError}
       />
     </section>
   );

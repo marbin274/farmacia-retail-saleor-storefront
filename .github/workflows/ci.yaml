@@ -1,6 +1,8 @@
 on:
   pull_request:
     branches: [master, qa2, release]
+    paths-ignore:
+    - '.github/**'
 
 jobs:
   build:
