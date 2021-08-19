@@ -1,5 +1,5 @@
 // TODO: Refactorizar y hacer los field componentes globales
-import React, { FC, RefForwardingComponent } from 'react';
+import React, { FC, RefForwardingComponent, useEffect } from 'react';
 import {
   Alert,
   AddressAutocomplete,
@@ -293,6 +293,18 @@ export const TileRadioGroup: FC<ITileRadioGroupProps> = ({
   value,
 }) => {
   const [option, setOption] = React.useState<string>();
+
+  useEffect(() => {
+    if (!option && value) {
+      let currentOption = options.find((o) => o.value === value);
+
+      if (!currentOption) {
+        currentOption = options.find((o) => o.withInput === true);
+      }
+
+      setOption(currentOption.value);
+    }
+  }, [option, value]);
 
   return (
     <div>

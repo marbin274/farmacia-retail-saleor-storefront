@@ -1,3 +1,4 @@
+import { IAddressWithEmail } from '@temp/@next/types';
 import { GetShop_shop_availableDistricts } from '@temp/@sdk/queries/gqlTypes/GetShop';
 
 export type IAddressForm = {
@@ -11,4 +12,5 @@ export type IAddressForm = {
 
 export type IAddressForm2Props = {
   onSubmit: (values: IAddressForm) => void;
+  address?: IAddressWithEmail;
 };

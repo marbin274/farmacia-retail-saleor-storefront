@@ -36,17 +36,8 @@ const ADDRESS_TYPE_OPTIONS: ITileRadioOption[] = [
   },
 ];
 
-const initialValues: IAddressForm = {
-  city: undefined,
-  streetAddress1: '',
-  longitude: '',
-  latitude: '',
-  streetAddress2: '',
-  alias: '',
-};
-
 // TODO: cambiar el nombre
-export const AddressForm2: FC<IAddressForm2Props> = ({ onSubmit }) => {
+export const AddressForm2: FC<IAddressForm2Props> = ({ address, onSubmit }) => {
   const { availableDistricts } = useShopContext();
 
   const getCityPolygon = (city: GetShop_shop_availableDistricts) => {
@@ -95,7 +86,16 @@ export const AddressForm2: FC<IAddressForm2Props> = ({ onSubmit }) => {
 
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={{
+        alias: address ? 'Mi casa' : '',
+        city: address
+          ? availableDistricts.find((x) => x.name === address.city)
+          : undefined,
+        latitude: address ? String(address.latitude) : '',
+        longitude: address ? String(address.longitude) : '',
+        streetAddress1: address ? address.streetAddress1 : '',
+        streetAddress2: address ? address.streetAddress2 : '',
+      }}
       validate={validate}
       onSubmit={handleSubbmit}
     >

@@ -66,8 +66,8 @@ export const Map: FC<IProps> = ({
     });
 
     newMap.data.setStyle({
-      fillColor: farmatheme.theme.colors.primary.light,
-      strokeColor: farmatheme.theme.colors.primary.light,
+      fillColor: farmatheme.theme.colors.highlight.medium,
+      strokeColor: farmatheme.theme.colors.highlight.medium,
       strokeWeight: 1,
     });
 
