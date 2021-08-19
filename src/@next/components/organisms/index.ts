@@ -2,7 +2,6 @@ export * from './AddressForm';
 export * from './AddressForm2';
 export * from './AddressFormModal';
 export * from './AddressGrid';
-export * from './AddressGridSelector';
 export * from './CardTokenPatmentGateway';
 export * from './CartDeliveryData';
 export * from './CartRow';
