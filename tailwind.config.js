@@ -29,6 +29,7 @@ module.exports = {
       gray: {
         ...tailwindConfig.theme.colors.gray,
         DEFAULT: '#E4E5ED',
+        20: '#F6F8FA',
         100: '#9194A7',
         dark: '#7d7d7d',
         light: '#e2e3f1',

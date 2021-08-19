@@ -1,7 +1,7 @@
-import { Button, XIcon } from "@farmacia-retail/farmauna-components";
-import { OverlayContextInterface } from "@temp/components/Overlay/context";
-import React, { FC } from "react";
-import { searchProductsService } from "@temp/@next/services/searchProductsService";
+import { Button, XIcon } from '@farmacia-retail/farmauna-components';
+import { OverlayContextInterface } from '@temp/components/Overlay/context';
+import React, { FC } from 'react';
+import { searchProductsService } from '@temp/@next/services/searchProductsService';
 
 type SearchOverlayTitleProps = {
   overlayContext: OverlayContextInterface;
@@ -9,7 +9,6 @@ type SearchOverlayTitleProps = {
 export const SearchOverlayTitle: FC<SearchOverlayTitleProps> = ({
   overlayContext,
 }) => {
-
   React.useEffect(() => {
     const suscription = searchProductsService
       .on()
@@ -18,9 +17,9 @@ export const SearchOverlayTitle: FC<SearchOverlayTitleProps> = ({
           overlayContext.hide();
         }
       });
-    return ()=>{
+    return () => {
       suscription?.unsubscribe();
-    }
+    };
   }, []);
 
   return (

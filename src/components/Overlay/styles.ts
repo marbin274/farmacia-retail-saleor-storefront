@@ -44,12 +44,6 @@ export const OverlayWrapper = styled.div`
         position: relative !important;
         border-radius: 0;
         .search-container {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          background-color: #271b6a;
-          padding: 1rem;
-          width: 100%;
           > div {
             > div {
               > button {
@@ -60,34 +54,18 @@ export const OverlayWrapper = styled.div`
             }
           }
 
-          .search {
-            &__input {
-              .input {
-                width: 100%;
-                &__content {
-                  border: none;
-                  max-width: 100% !important;
-                  background-color: rgba(247, 246, 248, 0.15);
+          .search__input {
+            .input {
+              width: 100%;
+              &__content {
+                border: none;
+                max-width: 100% !important;
+                background-color: rgba(247, 246, 248, 0.15);
 
-                  input {
-                    color: #c8c5d3;
-                  }
+                input {
+                  color: #c8c5d3;
                 }
               }
-            }
-          }
-        }
-        .search-message {
-          width: 100%;
-          height: calc(100vh - 9.625rem);
-          p {
-            text-align: center;
-            &:nth-child(1) {
-              margin: 1rem 0;
-              color: #908ba7;
-            }
-            &:nth-child(2) {
-              color: #c8c5d3;
             }
           }
         }
