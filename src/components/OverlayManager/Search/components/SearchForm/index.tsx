@@ -7,7 +7,6 @@ import { stringify } from 'query-string';
 import * as React from 'react';
 import { useHistory } from 'react-router';
 import { DebouncedTextField } from '../../../../Debounce';
-import '../../scss/index.scss';
 import { InputWrapper } from './styles';
 
 interface SearchFormProps {
