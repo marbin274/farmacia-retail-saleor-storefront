@@ -7,4 +7,8 @@ export interface IProps {
    * Value
    */
   attributeValue: string;
+  /**
+   * role
+   */
+  role?: string;
 }

@@ -1,6 +1,6 @@
-import baseStyled, { ThemedStyledInterface } from "styled-components";
+import baseStyled, { ThemedStyledInterface } from 'styled-components';
 
-import * as C from "./constants";
+import * as C from './constants';
 
 export const defaultTheme = {
   banner: {
@@ -10,16 +10,16 @@ export const defaultTheme = {
     mobileMaxWidth: 360,
   },
   breakpoints: {
-    largeScreen: "992px",
-    mediumScreen: "720px",
-    smallScreen: "540px",
-    xLargeScreen: "1280px",
-    xxLargeScreen: "1600px",
-    xxxLargeScreen: "1920px",
+    largeScreen: '992px',
+    mediumScreen: '720px',
+    smallScreen: '540px',
+    xLargeScreen: '1280px',
+    xxLargeScreen: '1600px',
+    xxxLargeScreen: '1920px',
   },
   button: {
     animation: {
-      transition: "0.3s",
+      transition: '0.3s',
     },
     colors: {
       primary: {
@@ -44,20 +44,20 @@ export const defaultTheme = {
       },
     },
     padding: {
-      main: "0.9rem 3.7rem",
-      small: "0.9rem 1rem",
+      main: '0.9rem 3.7rem',
+      small: '0.9rem 1rem',
     },
     typography: {
-      fontSize: "1rem",
-      fontWeight: "600",
-      lineHeight: "normal",
-      smallFontSize: "1rem",
-      textTransform: "uppercase",
+      fontSize: '1rem',
+      fontWeight: '600',
+      lineHeight: 'normal',
+      smallFontSize: '1rem',
+      textTransform: 'uppercase',
     },
   },
   carousel: {
-    carouselControlPadding: "0.2rem 0.5rem",
-    carouselControlShadow: "0px 0px 10px 0px rgba(0, 0, 0, 0.25)",
+    carouselControlPadding: '0.2rem 0.5rem',
+    carouselControlShadow: '0px 0px 10px 0px rgba(0, 0, 0, 0.25)',
   },
   chip: {
     colors: {
@@ -65,20 +65,20 @@ export const defaultTheme = {
         activeBackground: C.theme.complementary1,
         background: C.theme.primaryLight,
         color: C.theme.interactive,
-        hoverBackground: "none",
+        hoverBackground: 'none',
         hoverColor: C.theme.interactive,
       },
       secondary: {
         activeBackground: C.theme.primaryTransparent,
         background: C.theme.secondaryLight,
         color: C.theme.secondaryDark,
-        hoverBackground: "none",
+        hoverBackground: 'none',
         hoverColor: C.theme.secondaryDark,
       },
     },
     typography: {
-      fontSize: "1rem",
-      smallFontSize: "0.75rem",
+      fontSize: '1rem',
+      smallFontSize: '0.75rem',
     },
   },
   colors: {
@@ -89,7 +89,7 @@ export const defaultTheme = {
   },
   dropdown: {
     backgroundColor: C.theme.white,
-    boxShadow: "0px 6px 10px 0px rgba(0, 0, 0, 0.15)",
+    boxShadow: '0px 6px 10px 0px rgba(0, 0, 0, 0.15)',
   },
   grid: {
     containerWidth: 1140,
@@ -102,24 +102,25 @@ export const defaultTheme = {
   },
   input: {
     borderColor: C.aunaGrey60,
-    borderColorActive: C.aunaInteractive,
+    borderColorActive: C.aunaComplementary1,
     borderColorError: C.aunaError,
-    borderRadius: "4px",
-    errorFontSize: "12px",
+    iconColorDefault: C.aunaDiscount,
+    borderRadius: '4px',
+    errorFontSize: '12px',
     labelColor: C.aunaGrey100,
     labelColorActive: C.aunaGrey100,
     labelColorError: C.aunaGrey100,
-    labelFontSize: "0.9rem",
-    labelLeft: "0px",
-    labelTop: "-1.5rem",
+    labelFontSize: '0.9rem',
+    labelLeft: '0px',
+    labelTop: '-1.5rem',
     placeholderColor: C.aunaGrey100,
-    selectMenuShadow: "0px 6px 10px 0px rgba(0, 0, 0, 0.15)",
+    selectMenuShadow: '0px 6px 10px 0px rgba(0, 0, 0, 0.15)',
     textColor: C.aunaBlack,
     textColorActive: C.aunaBlack,
     textColorError: C.aunaError,
     textColorHover: C.aunaGrey60,
-    textFontSize: "0.9rem",
-    topPadding: "1.4rem",
+    textFontSize: '0.9rem',
+    topPadding: '1.4rem',
   },
   link: {
     base: {
@@ -134,26 +135,26 @@ export const defaultTheme = {
   message: {
     backgroundColor: C.white,
     contentMargin: `${C.spacer}rem 0 0`,
-    letterSpacing: "0.5px",
-    padding: "1rem 1.5rem",
+    letterSpacing: '0.5px',
+    padding: '1rem 1.5rem',
     titleMargin: `0 ${C.spacer * 1.5}rem 0 0`,
-    titleTransform: "uppercase",
+    titleTransform: 'uppercase',
     titleWeight: C.extraBoldFontWeight,
-    width: "25rem",
+    width: '25rem',
   },
   modal: {
     modalMinHeight: 455,
     modalWidth: 555,
-    modalWidthMedium: "28rem",
+    modalWidthMedium: '28rem',
   },
   productItem: {
     productItemCategoryColor: C.gray,
     productItemPriceFontWeight: C.boldFontWeight,
     productItemPriceMargin: `${C.spacer}rem 0 0`,
     productItemTitleFontWeight: C.boldFontWeight,
-    productItemTitleHeight: "2.5rem",
+    productItemTitleHeight: '2.5rem',
     productItemTitleMargin: `${C.spacer / 2}rem 0 0`,
-    productItemTitleTextTransform: "uppercase",
+    productItemTitleTextTransform: 'uppercase',
   },
   spacing: {
     /**
@@ -163,7 +164,7 @@ export const defaultTheme = {
     /**
      * 30px in default theme
      */
-    gutter: "1.875rem",
+    gutter: '1.875rem',
     /**
      * 16px in default theme
      */
@@ -224,4 +225,5 @@ export const defaultTheme = {
 };
 
 export type DefaultTheme = typeof defaultTheme;
-export const styled: ThemedStyledInterface<DefaultTheme> = (baseStyled as unknown) as ThemedStyledInterface<DefaultTheme>;
+export const styled: ThemedStyledInterface<DefaultTheme> =
+  baseStyled as unknown as ThemedStyledInterface<DefaultTheme>;

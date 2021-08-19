@@ -38,7 +38,6 @@ export const HeaderSmall = styled(Header)`
 
 export const AttributeWrapper = styled.div`
   margin-bottom: 1rem;
-
   text-align: center;
 `;
 
@@ -49,28 +48,21 @@ export const Content = styled.div`
 
 export const ContentOneLine = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 70%;
+  flex-direction: column;
   flex-wrap: wrap;
-  ${media.smallScreen`
-    flex-direction: column;
-    width: 100%;
-  `}
+  justify-content: space-between;
+  width: 100%;
 `;
 
 export const ContentEditOneLine = styled.div`
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   flex-wrap: wrap;
 
   > div {
-    width: 48%;
-    ${media.largeScreen`
-      width: 100%;
-    `}
+    width: 100%;
   }
 
   ${media.largeScreen`
@@ -79,7 +71,7 @@ export const ContentEditOneLine = styled.div`
 `;
 
 export const ContentExtendInput = styled.div`
-  width: 60%;
+  width: 100%;
 `;
 
 export const FormButtons = styled.div`
@@ -87,7 +79,7 @@ export const FormButtons = styled.div`
   padding-top: 2rem;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: flex-end;
 
   button:last-child {
     margin-left: 1.5rem;
@@ -98,6 +90,7 @@ export const FormButtons = styled.div`
   `}
 
   button {
+    width: 8rem;
     span {
       margin-left: 0;
     }
