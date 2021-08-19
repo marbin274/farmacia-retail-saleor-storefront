@@ -7,11 +7,11 @@ import {
   InputTextField,
   TileRadioGroupField,
   ITileRadioOption,
-} from './components/AddressForm2Fields/AddressForm2Fields';
+} from './components/AddressForm2Fields/AddressFormFields';
 import { useShopContext } from '@temp/components/ShopProvider/context';
 import { Button, HomeIcon } from '@farmacia-retail/farmauna-components';
 import { TOTAL_DISTRICT } from '@temp/core/config';
-import { Icon } from '../../atoms';
+import { Icon } from '../../../../atoms';
 import { GetShop_shop_availableDistricts } from '@temp/@sdk/queries/gqlTypes/GetShop';
 import { SwapTypesToStrings } from '@temp/core/types';
 import { isCoordinatesInsideBouds } from '@temp/core/utils';
@@ -36,8 +36,7 @@ const ADDRESS_TYPE_OPTIONS: ITileRadioOption[] = [
   },
 ];
 
-// TODO: cambiar el nombre
-export const AddressForm2: FC<IAddressForm2Props> = ({ address, onSubmit }) => {
+export const AddressForm: FC<IAddressForm2Props> = ({ address, onSubmit }) => {
   const { availableDistricts } = useShopContext();
 
   const getCityPolygon = (city: GetShop_shop_availableDistricts) => {

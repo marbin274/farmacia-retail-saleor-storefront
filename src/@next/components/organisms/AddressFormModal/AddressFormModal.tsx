@@ -3,7 +3,7 @@ import { useCreateUserAddress, useUpdateUserAddress } from '@sdk/react';
 import { Modal } from '../Modal';
 import { CountryCode } from '@sdk/gqlTypes/globalTypes';
 import { IProps } from './types';
-import { AddressForm2, IAddressForm } from '../AddressForm2';
+import { AddressForm, IAddressForm } from './components/AddressForm';
 
 export const AddressFormModal: React.FC<IProps> = ({
   hideModal,
@@ -79,7 +79,7 @@ export const AddressFormModal: React.FC<IProps> = ({
       disabled={false}
       show={show}
     >
-      <AddressForm2 onSubmit={handleSubmit} address={address?.address} />
+      <AddressForm onSubmit={handleSubmit} address={address?.address} />
     </Modal>
   );
 };

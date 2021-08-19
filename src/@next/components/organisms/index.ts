@@ -1,5 +1,4 @@
 export * from './AddressForm';
-export * from './AddressForm2';
 export * from './AddressFormModal';
 export * from './AddressGrid';
 export * from './CardTokenPatmentGateway';
