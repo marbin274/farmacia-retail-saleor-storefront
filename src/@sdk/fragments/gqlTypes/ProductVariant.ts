@@ -244,7 +244,10 @@ export interface ProductVariant_product {
    * The main thumbnail for a product.
    */
   thumbnail2x: ProductVariant_product_thumbnail2x | null;
-  productType: ProductVariant_product_productType;
+  /**
+   * Product type
+   */
+  productType: ProductVariant_product_productType | null;
 }
 
 export interface ProductVariant {

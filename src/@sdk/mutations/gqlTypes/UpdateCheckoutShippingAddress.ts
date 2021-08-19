@@ -655,7 +655,10 @@ export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_che
    * The main thumbnail for a product.
    */
   thumbnail2x: UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_lines_variant_product_thumbnail2x | null;
-  productType: UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_lines_variant_product_productType;
+  /**
+   * Product type
+   */
+  productType: UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_lines_variant_product_productType | null;
 }
 
 export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_lines_variant {
@@ -1446,7 +1449,10 @@ export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_line
    * The main thumbnail for a product.
    */
   thumbnail2x: UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_lines_variant_product_thumbnail2x | null;
-  productType: UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_lines_variant_product_productType;
+  /**
+   * Product type
+   */
+  productType: UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_lines_variant_product_productType | null;
 }
 
 export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_lines_variant {

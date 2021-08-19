@@ -5,6 +5,7 @@ import { Base64 } from 'js-base64';
 import { each } from 'lodash';
 import { parse as parseQs, stringify as stringifyQs } from 'query-string';
 import { FetchResult } from 'react-apollo';
+import { polygon, point, booleanPointInPolygon } from '@turf/turf';
 import {
   OrderDirection,
   ProductOrderField,
@@ -12,6 +13,7 @@ import {
 import { FormError } from '../types';
 import { Breadcrumb } from '@temp/components';
 import { ISimpleProduct } from '@sdk/types/IProduct';
+import { IGeoJson } from '../types/address';
 
 export const slugify = (text: string | number): string =>
   text
@@ -210,4 +212,25 @@ export const getBreadcrumbsFromProduct = (product: ISimpleProduct) => {
   });
 
   return breadcrumbs;
+};
+
+export const isCoordinatesInsideBouds = (
+  latitude: number,
+  longitude: number,
+  geoJson: IGeoJson
+) => {
+  if (!latitude || !longitude || !geoJson?.features) {
+    return false;
+  }
+
+  for (const feature of geoJson.features) {
+    const poly = polygon(feature.geometry.coordinates);
+    const pt = point([longitude, latitude]);
+
+    if (booleanPointInPolygon(pt, poly)) {
+      return true;
+    }
+  }
+
+  return false;
 };

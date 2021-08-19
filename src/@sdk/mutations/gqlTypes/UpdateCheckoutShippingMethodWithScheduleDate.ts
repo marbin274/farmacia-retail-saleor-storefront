@@ -642,7 +642,10 @@ export interface UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMe
    * The main thumbnail for a product.
    */
   thumbnail2x: UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMethodUpdate_checkout_lines_variant_product_thumbnail2x | null;
-  productType: UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMethodUpdate_checkout_lines_variant_product_productType;
+  /**
+   * Product type
+   */
+  productType: UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMethodUpdate_checkout_lines_variant_product_productType | null;
 }
 
 export interface UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMethodUpdate_checkout_lines_variant {

@@ -640,7 +640,10 @@ export interface UserCheckoutDetails_me_checkout_lines_variant_product {
    * The main thumbnail for a product.
    */
   thumbnail2x: UserCheckoutDetails_me_checkout_lines_variant_product_thumbnail2x | null;
-  productType: UserCheckoutDetails_me_checkout_lines_variant_product_productType;
+  /**
+   * Product type
+   */
+  productType: UserCheckoutDetails_me_checkout_lines_variant_product_productType | null;
 }
 
 export interface UserCheckoutDetails_me_checkout_lines_variant {

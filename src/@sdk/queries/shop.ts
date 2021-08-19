@@ -11,6 +11,7 @@ export const getShop = gql`
         warehouse {
           id
           name
+          polygon
         }
       }
       displayGrossPrices

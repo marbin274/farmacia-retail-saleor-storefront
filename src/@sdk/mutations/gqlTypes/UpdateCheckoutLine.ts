@@ -642,7 +642,10 @@ export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_lines_variant_p
    * The main thumbnail for a product.
    */
   thumbnail2x: UpdateCheckoutLine_checkoutLinesUpdate_checkout_lines_variant_product_thumbnail2x | null;
-  productType: UpdateCheckoutLine_checkoutLinesUpdate_checkout_lines_variant_product_productType;
+  /**
+   * Product type
+   */
+  productType: UpdateCheckoutLine_checkoutLinesUpdate_checkout_lines_variant_product_productType | null;
 }
 
 export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_lines_variant {

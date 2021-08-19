@@ -322,7 +322,10 @@ export interface CompleteCheckout_checkoutComplete_order_lines_variant_product {
    * The main thumbnail for a product.
    */
   thumbnail2x: CompleteCheckout_checkoutComplete_order_lines_variant_product_thumbnail2x | null;
-  productType: CompleteCheckout_checkoutComplete_order_lines_variant_product_productType;
+  /**
+   * Product type
+   */
+  productType: CompleteCheckout_checkoutComplete_order_lines_variant_product_productType | null;
 }
 
 export interface CompleteCheckout_checkoutComplete_order_lines_variant {
@@ -586,6 +589,9 @@ export interface CompleteCheckout_checkoutComplete_order {
    * An extract of the checkout token to identify the order.
    */
   sequentialCode: string | null;
+  /**
+   * Shipping address.
+   */
   shippingAddress: CompleteCheckout_checkoutComplete_order_shippingAddress | null;
   /**
    * List of order lines.

@@ -1,6 +1,7 @@
 // TODO: Refactorizar y hacer los field componentes globales
 import React, { FC, RefForwardingComponent } from 'react';
 import {
+  Alert,
   AddressAutocomplete,
   IAddressAutocompleteProps,
   IAddressAutocompleteRef,
@@ -11,7 +12,13 @@ import { IInputSelectProps } from '@temp/@next/components/molecules/InputSelect/
 import { useField, useFormikContext } from 'formik';
 import { IFormError } from '@temp/@next/types';
 import Map from '@components/organisms/AddressForm/AddressFormContent/Map';
-import { InputField } from '@farmacia-retail/farmauna-components';
+import {
+  InputField,
+  InformationIcon,
+  ErrorIcon,
+} from '@farmacia-retail/farmauna-components';
+import { IGeoJson } from '@temp/core/types/address';
+import { isCoordinatesInsideBouds } from '@temp/core/utils';
 
 type IInputSelectFieldProps = {
   placeholder?: string;
@@ -124,6 +131,7 @@ export const AddessAutocompleteField = React.forwardRef(
 
 type IMapFieldProps = {
   addressName: string;
+  geoJsonBounds?: IGeoJson;
   latName?: string;
   lngName?: string;
   onChangeLocation?: (
@@ -134,11 +142,12 @@ type IMapFieldProps = {
 
 export const MapField: FC<IMapFieldProps> = ({
   addressName,
+  geoJsonBounds,
   latName = 'latitude',
   lngName = 'longitude',
   onChangeLocation,
 }) => {
-  const { values, setFieldValue } = useFormikContext();
+  const { values, setFieldValue, errors } = useFormikContext();
 
   const getCoordinates = () => {
     if (!values?.[latName] || !values?.[lngName]) {
@@ -148,16 +157,53 @@ export const MapField: FC<IMapFieldProps> = ({
     return { lat: Number(values[latName]), lng: Number(values[lngName]) };
   };
 
+  const renderAlert = () => {
+    if (!geoJsonBounds || !values[latName]) {
+      return null;
+    }
+
+    const isInsideBounds = isCoordinatesInsideBouds(
+      Number(values[latName]),
+      Number(values[lngName]),
+      geoJsonBounds
+    );
+
+    if (isInsideBounds) {
+      return (
+        <Alert
+          type="info"
+          message="Verifica tu ubicación en el mapa"
+          icon={<InformationIcon />}
+          className="fa-mt-2"
+        />
+      );
+    }
+
+    return (
+      <Alert
+        type="error"
+        message="Por el momento no tenemos cobertura en esta zona"
+        icon={<ErrorIcon />}
+        className="fa-mt-2"
+      />
+    );
+  };
+
   return (
-    <Map
-      location={getCoordinates()}
-      onChangeLocation={(location, address) => {
-        setFieldValue(addressName, address);
-        setFieldValue(latName, String(location.lat));
-        setFieldValue(lngName, String(location.lng));
-        onChangeLocation?.(location, address);
-      }}
-    />
+    <div>
+      <Map
+        location={getCoordinates()}
+        onChangeLocation={(location, address) => {
+          setFieldValue(addressName, address);
+          setFieldValue(latName, String(location.lat));
+          setFieldValue(lngName, String(location.lng));
+          onChangeLocation?.(location, address);
+        }}
+        geoJson={geoJsonBounds}
+        hasError={!!errors?.[latName]}
+      />
+      {renderAlert()}
+    </div>
   );
 };
 

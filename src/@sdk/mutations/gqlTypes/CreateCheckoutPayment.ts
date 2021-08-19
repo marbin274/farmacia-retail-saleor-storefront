@@ -655,7 +655,10 @@ export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout_lines_vari
    * The main thumbnail for a product.
    */
   thumbnail2x: CreateCheckoutPayment_checkoutPaymentCreate_checkout_lines_variant_product_thumbnail2x | null;
-  productType: CreateCheckoutPayment_checkoutPaymentCreate_checkout_lines_variant_product_productType;
+  /**
+   * Product type
+   */
+  productType: CreateCheckoutPayment_checkoutPaymentCreate_checkout_lines_variant_product_productType | null;
 }
 
 export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout_lines_variant {

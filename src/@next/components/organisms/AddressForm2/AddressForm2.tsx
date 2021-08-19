@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Formik } from 'formik';
+import { Formik, FormikHelpers } from 'formik';
 import {
   InputSelectField,
   AddessAutocompleteField,
@@ -12,6 +12,10 @@ import { useShopContext } from '@temp/components/ShopProvider/context';
 import { Button, HomeIcon } from '@farmacia-retail/farmauna-components';
 import { TOTAL_DISTRICT } from '@temp/core/config';
 import { Icon } from '../../atoms';
+import { GetShop_shop_availableDistricts } from '@temp/@sdk/queries/gqlTypes/GetShop';
+import { SwapTypesToStrings } from '@temp/core/types';
+import { isCoordinatesInsideBouds } from '@temp/core/utils';
+import { IAddressForm, IAddressForm2Props } from './types';
 
 const ADDRESS_TYPE_OPTIONS: ITileRadioOption[] = [
   {
@@ -32,15 +36,6 @@ const ADDRESS_TYPE_OPTIONS: ITileRadioOption[] = [
   },
 ];
 
-type IAddressForm = {
-  city?: any;
-  latitude?: string;
-  longitude?: string;
-  streetAddress1?: string;
-  streetAddress2?: string;
-  alias?: string;
-};
-
 const initialValues: IAddressForm = {
   city: undefined,
   streetAddress1: '',
@@ -51,26 +46,51 @@ const initialValues: IAddressForm = {
 };
 
 // TODO: cambiar el nombre
-// TODO: aún en progreso
-export const AddressForm2: FC = () => {
+export const AddressForm2: FC<IAddressForm2Props> = ({ onSubmit }) => {
   const { availableDistricts } = useShopContext();
 
-  const validate = (values: IAddressForm) => {
-    const errors: Partial<IAddressForm> = {};
+  const getCityPolygon = (city: GetShop_shop_availableDistricts) => {
+    return city?.warehouse?.polygon
+      ? JSON.parse(city.warehouse.polygon)
+      : undefined;
+  };
 
-    if (!values.streetAddress1) {
-      errors.streetAddress1 = 'test error';
+  const validate = (values: IAddressForm) => {
+    const errors: SwapTypesToStrings<IAddressForm> = {};
+
+    if (!values.city?.name) {
+      errors.city = 'Selecciona el distrito de entrega';
     }
 
-    if (!values.alias) {
-      errors.alias = 'test error';
+    if (!values.streetAddress1) {
+      errors.streetAddress1 =
+        'Escribe tu dirección y elige una de las opciones desplegadas';
+    }
+
+    if (!values.latitude) {
+      errors.latitude = 'Obligatorio';
     }
 
     return errors;
   };
 
-  const handleSubbmit = (values: IAddressForm) => {
-    // TODO: handle
+  const handleSubbmit = (
+    values: IAddressForm,
+    { setSubmitting }: FormikHelpers<IAddressForm>
+  ) => {
+    const isInsideBounds = isCoordinatesInsideBouds(
+      Number(values.latitude),
+      Number(values.longitude),
+      getCityPolygon(values.city)
+    );
+
+    if (!isInsideBounds) {
+      setSubmitting(false);
+      return;
+    }
+
+    onSubmit(values);
+    setSubmitting(false);
   };
 
   return (
@@ -79,7 +99,7 @@ export const AddressForm2: FC = () => {
       validate={validate}
       onSubmit={handleSubbmit}
     >
-      {(props) => (
+      {({ handleSubmit, values }) => (
         <>
           <div className="fa-mt-4">
             <div className="fa-mb-4">
@@ -104,7 +124,10 @@ export const AddressForm2: FC = () => {
               />
             </div>
             <div className="fa-mb-4">
-              <MapField addressName="streetAddress1" />
+              <MapField
+                addressName="streetAddress1"
+                geoJsonBounds={getCityPolygon(values.city)}
+              />
             </div>
             <div className="fa-mb-4">
               <InputTextField
@@ -126,10 +149,7 @@ export const AddressForm2: FC = () => {
               />
             </div>
           </div>
-          <Button
-            className="fa-mb-4 fa-w-full"
-            onClick={() => props.handleSubmit()}
-          >
+          <Button className="fa-mb-4 fa-w-full" onClick={() => handleSubmit()}>
             Guardar dirección
           </Button>
         </>

@@ -289,7 +289,10 @@ export interface OrderByToken_orderByToken_lines_variant_product {
    * The main thumbnail for a product.
    */
   thumbnail2x: OrderByToken_orderByToken_lines_variant_product_thumbnail2x | null;
-  productType: OrderByToken_orderByToken_lines_variant_product_productType;
+  /**
+   * Product type
+   */
+  productType: OrderByToken_orderByToken_lines_variant_product_productType | null;
 }
 
 export interface OrderByToken_orderByToken_lines_variant {
@@ -553,6 +556,9 @@ export interface OrderByToken_orderByToken {
    * An extract of the checkout token to identify the order.
    */
   sequentialCode: string | null;
+  /**
+   * Shipping address.
+   */
   shippingAddress: OrderByToken_orderByToken_shippingAddress | null;
   /**
    * List of order lines.
