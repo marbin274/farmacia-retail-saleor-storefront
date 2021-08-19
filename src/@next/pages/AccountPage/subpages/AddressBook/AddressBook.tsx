@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { AddressFormModal, AddressGrid } from '@components/organisms';
 import { AddressTypeEnum, CountryCode } from '@sdk/gqlTypes/globalTypes';
 import {
+  useCreateUserAddress,
   useDefaultUserAddress,
   useDeleteUserAddresss,
   useUpdateUserAddress,
@@ -15,15 +16,34 @@ import {
 import { removeCountryCodeInPhoneNumber } from '@temp/@next/utils/addresForm';
 import { maybe } from '@temp/@next/utils/misc';
 import AccountLayout from '@app/pages/AccountPage/AccountLayout';
+import { IAddressForm } from '@temp/@next/components/organisms/AddressFormModal/types';
 
 export const AddressBook: React.FC = () => {
   const { data: user } = useUserDetails();
-  const [displayNewModal, setDisplayNewModal] = React.useState(false);
-  const [displayEditModal, setDisplayEditModal] = React.useState(false);
-  const [addressData, setAddressData] = React.useState(null);
+  const [displayNewModal, setDisplayNewModal] = useState(false);
+  const [displayEditModal, setDisplayEditModal] = useState(false);
+  const [addressData, setAddressData] = useState<IAddressWithAddressType>(null);
   const [setDefaultUserAddress] = useDefaultUserAddress();
   const [setDeleteUserAddress] = useDeleteUserAddresss();
-  const [setUpdateUserAddress] = useUpdateUserAddress();
+  const [
+    setCreatUserAddress,
+    { data: createData, error: addressCreateErrors },
+  ] = useCreateUserAddress();
+
+  const [
+    setUpdateUserAddress,
+    { data: updateData, error: addressUpdateErrors },
+  ] = useUpdateUserAddress();
+
+  useEffect(() => {
+    if (
+      (createData && !addressCreateErrors) ||
+      (updateData && !addressUpdateErrors)
+    ) {
+      setDisplayNewModal(false);
+      setDisplayEditModal(false);
+    }
+  }, [createData, updateData, addressCreateErrors, addressUpdateErrors]);
 
   const userAddresses = maybe(
     () =>
@@ -35,11 +55,8 @@ export const AddressBook: React.FC = () => {
         const addressToDisplay: IAddressBookDisplay = {
           address,
           onEdit: () => {
+            setAddressData(address);
             setDisplayEditModal(true);
-            setAddressData({
-              address,
-              id: address.id,
-            });
           },
           onRemove: () =>
             setDeleteUserAddress({
@@ -80,12 +97,43 @@ export const AddressBook: React.FC = () => {
     []
   );
 
+  const handleSubmit = (values: IAddressForm) => {
+    if (addressData?.id) {
+      setUpdateUserAddress({
+        id: addressData?.id,
+        input: {
+          alias: values.alias,
+          city: values.city.name,
+          country: CountryCode.PE,
+          latitude: Number(values.latitude),
+          longitude: Number(values.longitude),
+          streetAddress1: values.streetAddress1,
+          streetAddress2: values.streetAddress2,
+        },
+      });
+      return;
+    }
+
+    setCreatUserAddress({
+      input: {
+        alias: values.alias,
+        city: values.city.name,
+        country: CountryCode.PE,
+        latitude: Number(values.latitude),
+        longitude: Number(values.longitude),
+        streetAddress1: values.streetAddress1,
+        streetAddress2: values.streetAddress2,
+      },
+    });
+  };
+
   return (
     <AccountLayout>
       <div className="fa-w-full">
         <AddressGrid
           addresses={userAddresses}
           addNewAddress={() => {
+            setAddressData(undefined);
             setDisplayNewModal(true);
           }}
         />
@@ -96,6 +144,7 @@ export const AddressBook: React.FC = () => {
             }}
             title="Agregar nueva dirección"
             show={displayNewModal}
+            onSubmit={handleSubmit}
           />
         )}
         {displayEditModal && (
@@ -103,8 +152,9 @@ export const AddressBook: React.FC = () => {
             hideModal={() => {
               setDisplayEditModal(false);
             }}
-            address={addressData}
             show={displayEditModal}
+            address={addressData}
+            onSubmit={handleSubmit}
           />
         )}
       </div>
