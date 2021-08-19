@@ -1,4 +1,4 @@
-import { mediaUp, styled } from '@styles';
+import { styled } from '@styles';
 
 export const Wrapper = styled.div`
   box-shadow: 6px 0px 30px rgba(0, 0, 0, 0.15);
@@ -13,7 +13,7 @@ export const SubWrapper = styled.div`
 
 export const Body = styled.div`
   display: block;
-  max-height: calc(100vh - 15.5rem);
+  height: calc(100vh - 15.5rem);
   min-width: 14rem;
   overflow: scroll;
   padding-bottom: 2rem;
@@ -27,12 +27,6 @@ export const WrapperIconButton = styled.div`
 `;
 
 export const Footer = styled.div`
-  height: auto;
   padding: 0;
-  position: relative;
-  text-align: left;
   width: 100%;
-  ${mediaUp.mediumScreen`
-    display:block ;
-  `}
 `;

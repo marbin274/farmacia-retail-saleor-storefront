@@ -51,7 +51,7 @@ export const FilterSidebar: React.FC<IProps> = React.memo(
         >
           <S.SubWrapper>
             <div className="fa-flex fa-items-center fa-text-2xl fa-font-semibold fa-justify-between fa-p-0 fa-w-full fa-mb-8">
-              <span>Filtros</span>
+              <span>Filtrar</span>
               <Button
                 onClick={hide}
                 size="small"
@@ -102,7 +102,7 @@ export const FilterSidebar: React.FC<IProps> = React.memo(
                 onClick={applyFilters}
                 fullWidth
               >
-                Aplicar
+                Aplicar Filtros
               </Button>
             </S.SubWrapper>
           </S.Footer>
