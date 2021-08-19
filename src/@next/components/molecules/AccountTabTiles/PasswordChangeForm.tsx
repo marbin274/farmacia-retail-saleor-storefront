@@ -1,11 +1,11 @@
-import { Formik } from "formik";
-import React from "react";
-import { TextField } from "../TextField";
+import { Formik } from 'formik';
+import React from 'react';
+import { TextField } from '../TextField';
 
-import { Button } from "@farmacia-retail/farmauna-components";
-import { IFormError } from "@types";
-import * as S from "./styles";
-import { registerFormSchema } from "./passwordChange.schema";
+import { Button } from '@farmacia-retail/farmauna-components';
+import { IFormError } from '@types';
+import * as S from './styles';
+import { registerFormSchema } from './passwordChange.schema';
 
 export const PasswordChangeForm: React.FC<{
   handleSubmit: (data: any) => void;
@@ -27,9 +27,9 @@ export const PasswordChangeForm: React.FC<{
     <>
       <Formik
         initialValues={{
-          confirmPassword: "",
-          newPassword: "",
-          oldPassword: "",
+          confirmPassword: '',
+          newPassword: '',
+          oldPassword: '',
         }}
         onSubmit={(values, { setSubmitting }) => {
           handleSubmit({
@@ -52,7 +52,7 @@ export const PasswordChangeForm: React.FC<{
           isValid,
         }) => {
           return (
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="fa-text-left">
               <S.ContentEditOneLine>
                 <S.ContentExtendInput>
                   <TextField
