@@ -52,7 +52,11 @@ export const PasswordChangeForm: React.FC<{
           isValid,
         }) => {
           return (
-            <form onSubmit={handleSubmit} className="fa-text-left">
+            <form
+              onSubmit={handleSubmit}
+              className="fa-text-left"
+              role="password-form"
+            >
               <S.ContentEditOneLine>
                 <S.ContentExtendInput>
                   <TextField

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Attribute, Tile } from '@components/atoms';
+import { Attribute } from '@components/atoms';
 import { usePasswordChange } from '@sdk/react';
 import { PasswordChangeForm } from './PasswordChangeForm';
 import * as S from './styles';
@@ -56,6 +56,7 @@ export const PasswordTile: React.FC<IPasswordTileProps> = ({
                 <Button
                   size="small"
                   variant="outline"
+                  role="edit-password-option"
                   className="fa-ml-4"
                   onClick={() => setIsEditing((isEditing) => !isEditing)}
                 >

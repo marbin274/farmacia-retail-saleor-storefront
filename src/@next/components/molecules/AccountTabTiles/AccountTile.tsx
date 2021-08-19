@@ -81,6 +81,7 @@ export const AccountTile: React.FC<IAccountTitleProps> = ({
                     <S.AttributeWrapper>
                       <Attribute
                         description="Nombres completos "
+                        role="fullname"
                         attributeValue={
                           `${user?.firstName} ${user?.lastName}` || ''
                         }
@@ -90,12 +91,14 @@ export const AccountTile: React.FC<IAccountTitleProps> = ({
                     <S.AttributeWrapper>
                       <Attribute
                         description="Correo electrónico"
+                        role="email"
                         attributeValue={(user && user.email) || '-'}
                       />
                     </S.AttributeWrapper>
                     <S.AttributeWrapper>
                       <Attribute
                         description="Número de documento"
+                        role="document"
                         attributeValue={(user && user.documentNumber) || '-'}
                       />
                     </S.AttributeWrapper>
@@ -103,6 +106,7 @@ export const AccountTile: React.FC<IAccountTitleProps> = ({
                       {!isEditing && (
                         <Button
                           variant="outline"
+                          role="edit-account-option"
                           onClick={() =>
                             setIsEditing((isEditing) => !isEditing)
                           }
