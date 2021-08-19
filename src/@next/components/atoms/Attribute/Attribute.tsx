@@ -14,7 +14,7 @@ export const Attribute: React.FC<IProps> = ({
   return (
     <S.Wrapper>
       <S.Description>{description}</S.Description>
-      <p className="fa-text-center" role={role || ''}>
+      <p className="fa-text-center fa-break-words" role={role || ''}>
         {attributeValue}
       </p>
     </S.Wrapper>
