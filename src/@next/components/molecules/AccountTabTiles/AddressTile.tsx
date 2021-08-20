@@ -5,8 +5,16 @@ import gpsicon from '@temp/images/gpsicon.svg';
 import { Button } from '@farmacia-retail/farmauna-components';
 import { useHistory } from 'react-router-dom';
 import { addressBookUrl } from '@temp/@next/pages/AccountPage/paths';
+import { useUserDetails } from '@temp/@sdk/react';
+import {
+  useAddressGeocalizationInfo,
+  useDistrictSelected,
+} from "@temp/@next/hooks";
 
 export const MainAddressTile = () => {
+  const { data: user } = useUserDetails();
+  const [districtSelected] = useDistrictSelected();
+  const [show] = useAddressGeocalizationInfo();
   const history = useHistory();
   return (
     <S.TileWrapper>
@@ -17,18 +25,60 @@ export const MainAddressTile = () => {
               Mi dirección principal
             </S.HeaderSmall>
 
-            <S.AttributeWrapper>
-              <img className="fa-mx-auto" src={gpsicon} alt="gps" />
-            </S.AttributeWrapper>
+            {
+              user?.defaultShippingAddress ? (<>
+                <S.AttributeWrapper>
+                  <img className="fa-mx-auto" src={gpsicon} alt="gps" />
+                </S.AttributeWrapper>
 
-            <S.AttributeWrapper>
-              <Attribute
-                description="Agrega una dirección de envío y tu compra será más rápida. "
-                attributeValue={''}
-              />
-            </S.AttributeWrapper>
+                <S.AttributeWrapper>
+                  <Attribute
+                    description="Mi dirección 01 "
+                    attributeValue={''}
+                  />
+                </S.AttributeWrapper>
 
-            <S.AttributeWrapper>
+                <S.AttributeWrapper>
+                  <Attribute
+                    description=""
+                    attributeValue={districtSelected?.name || ''}
+                  />
+                </S.AttributeWrapper>
+
+                <S.AttributeWrapper>
+                  <Attribute
+                    description=""
+                    attributeValue={user?.defaultShippingAddress.streetAddress1  || ''}
+                  />
+                </S.AttributeWrapper>
+
+                <S.AttributeWrapper>
+                  <Attribute
+                    description=""
+                    attributeValue={user?.defaultShippingAddress.streetAddress2  || ''}
+                  />
+                </S.AttributeWrapper>
+                <S.AttributeWrapper>
+              <Button
+                size="small"
+                variant="outline"
+                onClick={() => history.push(addressBookUrl)}
+              >
+                Ver todas mis direcciones
+              </Button>
+            </S.AttributeWrapper>
+              </>) : (<>
+                <S.AttributeWrapper>
+                  <img className="fa-mx-auto" src={gpsicon} alt="gps" />
+                </S.AttributeWrapper>
+
+                <S.AttributeWrapper>
+                  <Attribute
+                    description="Agrega una dirección de envío y tu compra será más rápida. "
+                    attributeValue={''}
+                  />
+                </S.AttributeWrapper>
+                <S.AttributeWrapper>
               <Button
                 size="small"
                 variant="outline"
@@ -37,6 +87,9 @@ export const MainAddressTile = () => {
                 Agregar dirección
               </Button>
             </S.AttributeWrapper>
+              </>)
+            }
+
           </S.Content>
         </S.Wrapper>
       </Tile>

@@ -37,7 +37,6 @@ export const MainCardTile: React.FC = () => {
                     />
                   </S.AttributeWrapper>
 
-
                   <S.AttributeWrapper className="fa-flex fa-justify-between">
                     <Attribute
                       description=""
