@@ -19,10 +19,6 @@ export const CategoryTile: React.FC = () => {
               Mis categorías
             </S.HeaderSmall>
 
-            <S.AttributeWrapper>
-              <S.Image src={category} alt="category" />
-            </S.AttributeWrapper>
-
             {user?.favoriteCategories?.length > 0 ? (<>
               <S.AttributeWrapper>
                 <Attribute
@@ -51,6 +47,10 @@ export const CategoryTile: React.FC = () => {
                 </Button>
               </S.AttributeWrapper>
             </>) : (<>
+              <S.AttributeWrapper>
+              <S.Image src={category} alt="category" />
+            </S.AttributeWrapper>
+
               <S.AttributeWrapper>
                 <Attribute
                   description="Elige las categorías que prefieras y te recomendaremos los productos que te podrán interesar. "
