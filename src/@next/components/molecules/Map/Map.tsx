@@ -1,4 +1,3 @@
-// TODO: mover el mapa a un componente global
 import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
 import { Loader } from '@googlemaps/js-api-loader';
 import { mapsApiKey } from '@temp/core/constants';
@@ -6,20 +5,10 @@ import MapIcon from '@temp/images/auna/map-icon.svg';
 import * as S from './styles';
 import { LIMA_BOUNDS } from '@temp/core/config';
 import classNames from 'classnames';
-import { IGeoJson } from '@temp/core/types/address';
 import farmatheme from '@farmatheme';
+import { IMapProps } from './types';
 
-type IProps = {
-  geoJson?: IGeoJson;
-  hasError?: boolean;
-  location?: google.maps.LatLngLiteral;
-  onChangeLocation?: (
-    location: google.maps.LatLngLiteral,
-    address: string
-  ) => void;
-};
-
-export const Map: FC<IProps> = ({
+export const Map: FC<IMapProps> = ({
   geoJson,
   hasError,
   location,

@@ -6,17 +6,17 @@ import { GetShop_shop_availableDistricts } from '@temp/@sdk/queries/gqlTypes/Get
 import { SwapTypesToStrings } from '@temp/core/types';
 import { isCoordinatesInsideBouds } from '@temp/core/utils';
 import { Formik, FormikHelpers } from 'formik';
+import { Button, HomeIcon } from '@farmacia-retail/farmauna-components';
+import { TOTAL_DISTRICT } from '@temp/core/config';
+import { Icon } from '../../atoms';
 import {
-  AddessAutocompleteField,
+  AddressAutocompleteField,
   InputSelectField,
   InputTextField,
   ITileRadioOption,
   MapField,
   TileRadioGroupField,
-} from './components/AddressForm2Fields/AddressFormFields';
-import { Button, HomeIcon } from '@farmacia-retail/farmauna-components';
-import { TOTAL_DISTRICT } from '@temp/core/config';
-import { Icon } from '../../atoms';
+} from '@components/molecules';
 
 const ADDRESS_TYPE_OPTIONS: ITileRadioOption[] = [
   {
@@ -131,7 +131,7 @@ export const AddressFormModal: React.FC<IAddressFormModalProps> = ({
                 </span>
               </div>
               <div className="fa-mb-4">
-                <AddessAutocompleteField
+                <AddressAutocompleteField
                   name="streetAddress1"
                   label="Buscar dirección"
                   placeholder="Ejemplo: Av. Arenales 213"

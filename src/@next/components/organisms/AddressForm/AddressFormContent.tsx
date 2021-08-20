@@ -6,7 +6,7 @@ import {
   ErrorMessage,
   TermsAndConditionsLink,
 } from '@components/atoms';
-import { IAddressAutocompleteValue } from '@components/molecules';
+import { IAddressAutocompleteValue, Map } from '@components/molecules';
 import { IAddressWithEmail } from '@temp/@next/types';
 import {
   launchCheckoutFilledContactUserDataEvent,
@@ -21,7 +21,6 @@ import {
   StreetAddress1,
   StreetAddress2,
 } from './AddressFormContent/AddressFormFields';
-import Map from './AddressFormContent/Map';
 import { IFieldsProps, ISelectFieldsProps } from './AddressFormContent/types';
 import * as S from './styles';
 import { PropsWithFormik } from './types';

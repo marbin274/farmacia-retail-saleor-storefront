@@ -31,6 +31,7 @@ export const AddressGrid: React.FC<IProps> = ({
         </div>
         {addresses.map((address) => (
           <AddressTile
+            key={address.id}
             address={address}
             onClickEdit={onClickEdit}
             onClickDelete={onClickDelete}
