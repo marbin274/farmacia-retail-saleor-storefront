@@ -5,7 +5,6 @@ import { Base64 } from 'js-base64';
 import { each } from 'lodash';
 import { parse as parseQs, stringify as stringifyQs } from 'query-string';
 import { FetchResult } from 'react-apollo';
-import { polygon, point, booleanPointInPolygon } from '@turf/turf';
 import {
   OrderDirection,
   ProductOrderField,
@@ -219,18 +218,28 @@ export const isCoordinatesInsideBouds = (
   longitude: number,
   geoJson: IGeoJson
 ) => {
-  if (!latitude || !longitude || !geoJson?.features) {
-    return false;
-  }
+  const x = latitude;
+  const y = longitude;
+  let inside = false;
 
   for (const feature of geoJson.features) {
-    const poly = polygon(feature.geometry.coordinates);
-    const pt = point([longitude, latitude]);
+    for (const vs of feature.geometry.coordinates) {
+      for (let i = 0, j = vs.length - 1; i < vs.length; j = i++) {
+        const xi = vs[i][1];
+        const yi = vs[i][0];
+        const xj = vs[j][1];
+        const yj = vs[j][0];
 
-    if (booleanPointInPolygon(pt, poly)) {
-      return true;
+        const intersect =
+          yi > y !== yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi;
+        if (intersect) inside = !inside;
+      }
+    }
+
+    if (inside) {
+      break;
     }
   }
 
-  return false;
+  return inside;
 };
