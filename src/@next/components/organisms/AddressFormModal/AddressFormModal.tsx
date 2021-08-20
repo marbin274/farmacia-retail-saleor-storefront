@@ -6,36 +6,16 @@ import { GetShop_shop_availableDistricts } from '@temp/@sdk/queries/gqlTypes/Get
 import { SwapTypesToStrings } from '@temp/core/types';
 import { isCoordinatesInsideBouds } from '@temp/core/utils';
 import { Formik, FormikHelpers } from 'formik';
-import { Button, HomeIcon } from '@farmacia-retail/farmauna-components';
+import { Button } from '@farmacia-retail/farmauna-components';
 import { TOTAL_DISTRICT } from '@temp/core/config';
-import { Icon } from '../../atoms';
 import {
   AddressAutocompleteField,
   InputSelectField,
   InputTextField,
-  ITileRadioOption,
   MapField,
   TileRadioGroupField,
 } from '@components/molecules';
-
-const ADDRESS_TYPE_OPTIONS: ITileRadioOption[] = [
-  {
-    icon: <HomeIcon />,
-    label: 'Mi casa',
-    value: 'Mi casa',
-  },
-  {
-    icon: <Icon name="work" size={16} viewPort={24} />,
-    label: 'Mi trabajo',
-    value: 'Mi trabajo',
-  },
-  {
-    icon: <Icon name="category2" size={16} viewPort={24} />,
-    label: 'Otros',
-    value: 'Otros',
-    withInput: true,
-  },
-];
+import { getAddressTypeOptions } from './data';
 
 export const AddressFormModal: React.FC<IAddressFormModalProps> = ({
   address,
@@ -162,7 +142,7 @@ export const AddressFormModal: React.FC<IAddressFormModalProps> = ({
                 </p>
                 <TileRadioGroupField
                   name="alias"
-                  options={ADDRESS_TYPE_OPTIONS}
+                  options={getAddressTypeOptions()}
                 />
               </div>
             </div>

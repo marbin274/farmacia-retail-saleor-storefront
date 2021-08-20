@@ -2,14 +2,18 @@ import React, { FC } from 'react';
 import { HomeIcon, GpsIcon } from '@farmacia-retail/farmauna-components';
 import { Icon } from '..';
 import { IAddressProps } from './types';
+import {
+  MY_HOME_ADDRESS_OPTION,
+  MY_WORK_ADDRESS_OPTION,
+} from '../../organisms/AddressFormModal/data';
 
 export const Address: FC<IAddressProps> = ({ address, hasError }) => {
   const getIcon = () => {
-    if (address.alias === 'Mi casa') {
+    if (address.alias === MY_HOME_ADDRESS_OPTION) {
       return <HomeIcon size={14} className="fa-ml-px" />;
     }
 
-    if (address.alias === 'Mi trabajo') {
+    if (address.alias === MY_WORK_ADDRESS_OPTION) {
       return <Icon name="work" size={14} viewPort={24} />;
     }
 
