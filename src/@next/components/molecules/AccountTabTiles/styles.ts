@@ -100,3 +100,13 @@ export const FormButtons = styled.div`
 export const Image = styled.img`
   margin: auto;
 `;
+
+export const Chip = styled.p`
+  color: '#452FBA ';
+  font-size: 0.75rem;
+  font-weight: 500;
+  background-color: '#EDEBFA';
+  padding: 0.313rem;
+  border-radius: 1rem;
+  margin: 0.313rem;
+`;
