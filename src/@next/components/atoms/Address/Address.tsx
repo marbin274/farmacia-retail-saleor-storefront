@@ -16,13 +16,25 @@ export const Address: FC<IAddressProps> = ({ address, hasError }) => {
     return <GpsIcon size={14} />;
   };
 
+  const getTitle = () => {
+    if (address.alias) {
+      return address.alias;
+    }
+
+    if (address.firstName) {
+      return `${address.firstName} ${address.lastName}`;
+    }
+
+    return 'Mi dirección';
+  };
+
   return (
     <div>
       <div className="fa-text-highlight-medium fa-flex fa-mb-2">
         <div className="fa-rounded-full fa-bg-highlight-lightest fa-w-6 fa-h-6 fa-flex fa-items-center fa-justify-center fa-mr-2">
           {getIcon()}
         </div>
-        <p>{address.alias || 'Mi dirección'}</p>
+        <p>{getTitle()}</p>
       </div>
       <p className="fa-text-sm fa-font-semibold fa-mb-1">{address.city}</p>
       <p className={`fa-mb-1 ${hasError ? 'fa-text-error-medium' : ''}`}>

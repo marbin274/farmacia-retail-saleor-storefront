@@ -58,6 +58,7 @@ export const Map: FC<IMapProps> = ({
       fillColor: farmatheme.theme.colors.highlight.medium,
       strokeColor: farmatheme.theme.colors.highlight.medium,
       strokeWeight: 1,
+      fillOpacity: 0.1,
     });
 
     setMap(newMap);

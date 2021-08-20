@@ -168,6 +168,22 @@ export const AddressBook: React.FC = () => {
     });
   };
 
+  const getAddressToDeleteAlias = () => {
+    if (!addressToDelete) {
+      return '';
+    }
+
+    if (addressToDelete.alias) {
+      return addressToDelete.alias;
+    }
+
+    if (addressToDelete.firstName) {
+      return `${addressToDelete.firstName} ${addressToDelete.lastName}`;
+    }
+
+    return 'la dirección';
+  };
+
   return (
     <AccountLayout>
       <div className="fa-w-full">
@@ -237,11 +253,7 @@ export const AddressBook: React.FC = () => {
                 className="fa-mt-4 fa-mb-4"
               />
               <p className="fa-text-center fa-font-semibold fa-mb-8">
-                {`¿Seguro que quieres borrar ${
-                  addressToDelete?.alias
-                    ? `"${addressToDelete?.alias}"`
-                    : 'la dirección'
-                } de Farmauna?`}
+                {`¿Seguro que quieres borrar ${getAddressToDeleteAlias()} de Farmauna?`}
               </p>
             </div>
           </Modal>
