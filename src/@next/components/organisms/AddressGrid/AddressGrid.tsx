@@ -1,17 +1,15 @@
-import React from 'react';
-
+import React, { FC } from 'react';
 import { AddNewTile } from '@components/atoms';
 import { AddressTile } from '@components/molecules';
-
 import { IProps } from './types';
 
-export const AddressGrid: React.FC<IProps> = ({
+export const AddressGrid: FC<IProps> = ({
   addresses,
   onClickAdd,
   onClickEdit,
   onClickDelete,
   onClickSetDefault,
-}: IProps) => {
+}) => {
   return (
     <>
       <div className="fa-flex md:fa-hidden fa-mb-4">
