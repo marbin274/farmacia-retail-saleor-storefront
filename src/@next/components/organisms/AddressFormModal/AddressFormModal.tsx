@@ -101,7 +101,7 @@ export const AddressFormModal: React.FC<IAddressFormModalProps> = ({
     >
       <Formik
         initialValues={{
-          alias: address ? 'Mi casa' : '',
+          alias: address ? address.alias : '',
           city: address
             ? availableDistricts.find(
                 (x) => x.name.toLowerCase() === address.city.toLowerCase()

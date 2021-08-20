@@ -1,76 +1,67 @@
-import { Address, Tile } from "@components/atoms";
-import { PencilIcon, StarFilledIcon, TrashIcon, Button } from "@farmacia-retail/farmauna-components";
-import farmatheme from "@farmatheme";
-import React from "react";
-import * as S from "./styles";
-import { IProps } from "./types";
+import React from 'react';
+import classNames from 'classnames';
+import { Address } from '@components/atoms';
+import {
+  PencilIcon,
+  StarFilledIcon,
+  TrashIcon,
+  Button,
+} from '@farmacia-retail/farmauna-components';
+import { IProps } from './types';
 
 export const AddressTile: React.FC<IProps> = ({
-  onEdit,
-  onRemove,
-  setDefault,
-  removeDefault,
   address,
-}: IProps) => {
-  const isDefault: boolean = React.useMemo(
-    () => address.isDefaultShippingAddress,
-    [address]
-  );
-  const handleOnchangeDefaultAddress = () => {
-    if (isDefault) {
-      removeDefault();
-      return;
-    }
-    setDefault("BILLING");
-    setDefault("SHIPPING");
-  };
-
-  const header = (
-    <S.HeaderContent role="address-tile">
-      <S.SelectDefaultAddress
-        role="default-address"
-        isDefault={isDefault}
-        onClick={handleOnchangeDefaultAddress}
-      >
+  onClickDelete,
+  onClickEdit,
+  onClickSetDefault,
+}) => {
+  return (
+    <div className="fa-bg-white fa-p-6 fa-rounded-3xl">
+      <div className="fa-flex fa-items-center fa-justify-between">
         <div
-          role="address-status-flag"
-          className={`fa-flex-shrink-0 fa-h-6 fa-w-6 fa-flex fa-items-center fa-justify-center fa-rounded ${
-            isDefault ? "fa-bg-brand-01" : "fa-bg-neutral-dark"
-          }`}
+          className="fa-flex fa-items-center fa-cursor-pointer"
+          onClick={() => onClickSetDefault(address.id)}
+          data-testid="default-address"
         >
-          <StarFilledIcon
-            size={12}
-            color={farmatheme.theme.colors.neutral.lightest}
+          <div
+            className={classNames('fa-mr-2 fa-p-2 fa-rounded fa-text-white', {
+              'fa-bg-primary-medium': address.isDefaultShippingAddress,
+              'fa-bg-neutral-medium': !address.isDefaultShippingAddress,
+            })}
+          >
+            <StarFilledIcon size={12} />
+          </div>
+          <span
+            className={classNames('fa-text-xs', {
+              'fa-text-primary-medium': address.isDefaultShippingAddress,
+              'fa-text-neutral-medium': !address.isDefaultShippingAddress,
+            })}
+          >
+            Usar como dirección principal
+          </span>
+        </div>
+        <div className="fa-flex fa-items-center">
+          <Button
+            data-testid="edit-button"
+            icon={<PencilIcon />}
+            size="small"
+            onClick={() => onClickEdit(address)}
+            iconOnly
+            className="fa-mr-4"
+          />
+          <Button
+            data-testid="delete-button"
+            icon={<TrashIcon />}
+            size="small"
+            onClick={() => onClickDelete(address.id)}
+            iconOnly
           />
         </div>
-        <span className={`fa-pl-2 fa-text-xs fa-font-semibold ${isDefault ? 'fa-text-primary-medium' : 'fa-text-neutral-dark'}`}>
-          Usar como dirección principal
-        </span>
-      </S.SelectDefaultAddress>
-      <div className="fa-flex fa-items-center fa-ml-2">
-        <Button
-          role="edit-option"
-          className='fa-mr-4'
-          onClick={onEdit}
-          size="small"
-          iconOnly
-          icon={<PencilIcon size={13} color={farmatheme.theme.colors.white} />} 
-        />
-        <Button
-          role="delete-option"
-          onClick={onRemove}
-          size="small"
-          iconOnly
-          icon={<TrashIcon size={13} color={farmatheme.theme.colors.white} />} 
-        />
       </div>
-    </S.HeaderContent>
-  );
 
-  const content = <Address {...address} />;
-  return (
-    <S.Wrapper>
-      <Tile header={header}>{content}</Tile>
-    </S.Wrapper>
+      <div className="fa-h-px fa-bg-neutral-medium fa-mt-3 fa-mb-4" />
+
+      <Address {...address} />
+    </div>
   );
 };

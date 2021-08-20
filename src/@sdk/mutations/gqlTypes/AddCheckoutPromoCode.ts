@@ -157,6 +157,7 @@ export interface AddCheckoutPromoCode_checkoutAddPromoCode_checkout_billingAddre
   isDefaultShippingAddress: boolean | null;
   latitude: number | null;
   longitude: number | null;
+  alias: string | null;
 }
 
 export interface AddCheckoutPromoCode_checkoutAddPromoCode_checkout_shippingAddress_country {
@@ -200,6 +201,7 @@ export interface AddCheckoutPromoCode_checkoutAddPromoCode_checkout_shippingAddr
   isDefaultShippingAddress: boolean | null;
   latitude: number | null;
   longitude: number | null;
+  alias: string | null;
 }
 
 export interface AddCheckoutPromoCode_checkoutAddPromoCode_checkout_availableShippingMethods_price {

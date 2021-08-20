@@ -170,6 +170,7 @@ export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_check
   isDefaultShippingAddress: boolean | null;
   latitude: number | null;
   longitude: number | null;
+  alias: string | null;
 }
 
 export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_checkout_shippingAddress_country {
@@ -213,6 +214,7 @@ export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_check
   isDefaultShippingAddress: boolean | null;
   latitude: number | null;
   longitude: number | null;
+  alias: string | null;
 }
 
 export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_checkout_availableShippingMethods_price {

@@ -170,6 +170,7 @@ export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_che
   isDefaultShippingAddress: boolean | null;
   latitude: number | null;
   longitude: number | null;
+  alias: string | null;
 }
 
 export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_shippingAddress_country {
@@ -213,6 +214,7 @@ export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_che
   isDefaultShippingAddress: boolean | null;
   latitude: number | null;
   longitude: number | null;
+  alias: string | null;
 }
 
 export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_availableShippingMethods_price {
@@ -964,6 +966,7 @@ export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_bill
   isDefaultShippingAddress: boolean | null;
   latitude: number | null;
   longitude: number | null;
+  alias: string | null;
 }
 
 export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_shippingAddress_country {
@@ -1007,6 +1010,7 @@ export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_ship
   isDefaultShippingAddress: boolean | null;
   latitude: number | null;
   longitude: number | null;
+  alias: string | null;
 }
 
 export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_availableShippingMethods_price {

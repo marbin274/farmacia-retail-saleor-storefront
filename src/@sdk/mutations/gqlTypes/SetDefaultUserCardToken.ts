@@ -60,6 +60,7 @@ export interface SetDefaultUserCardToken_accountSetDefaultCardToken_user_default
   isDefaultShippingAddress: boolean | null;
   latitude: number | null;
   longitude: number | null;
+  alias: string | null;
 }
 
 export interface SetDefaultUserCardToken_accountSetDefaultCardToken_user_defaultBillingAddress_country {
@@ -103,6 +104,7 @@ export interface SetDefaultUserCardToken_accountSetDefaultCardToken_user_default
   isDefaultShippingAddress: boolean | null;
   latitude: number | null;
   longitude: number | null;
+  alias: string | null;
 }
 
 export interface SetDefaultUserCardToken_accountSetDefaultCardToken_user_addresses_country {
@@ -146,6 +148,7 @@ export interface SetDefaultUserCardToken_accountSetDefaultCardToken_user_address
   isDefaultShippingAddress: boolean | null;
   latitude: number | null;
   longitude: number | null;
+  alias: string | null;
 }
 
 export interface SetDefaultUserCardToken_accountSetDefaultCardToken_user_cardTokens {

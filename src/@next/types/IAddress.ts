@@ -15,4 +15,5 @@ export interface IAddress {
     code?: string;
     country?: string;
   };
+  alias?: string;
 }

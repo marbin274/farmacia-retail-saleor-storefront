@@ -82,6 +82,7 @@ export interface CompleteCheckout_checkoutComplete_order_shippingAddress {
   isDefaultShippingAddress: boolean | null;
   latitude: number | null;
   longitude: number | null;
+  alias: string | null;
 }
 
 export interface CompleteCheckout_checkoutComplete_order_lines_variant_pricing_priceUndiscounted_gross {

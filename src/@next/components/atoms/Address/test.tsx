@@ -1,97 +1,41 @@
+import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import React from 'react';
-import { Address } from ".";
+import { IAddress } from '@types';
+import { Address } from '.';
 
-describe("<Address />", () => {
-  let props: any;
+const DEFAULT_PROPS: IAddress = {
+  city: 'Wroclaw',
+  companyName: 'Mirumee',
+  country: {
+    code: 'PL',
+    country: 'Poland',
+  },
+  countryArea: 'dolnyslask',
+  firstName: 'John',
+  lastName: 'Doe',
+  phone: '555-5555',
+  postalCode: '55-555',
+  streetAddress1: 'St Street',
+  streetAddress2: 'Second',
+  latitude: 1,
+  longitude: -1,
+  alias: 'My alias',
+};
 
-  beforeEach(() => {
-    props = {
-      city: "Wroclaw",
-      companyName: "Mirumee",
-      country: {
-        code: "PL",
-        country: "Poland",
-      },
-      countryArea: "dolnyslask",
-      firstName: "John",
-      lastName: "Doe",
-      phone: "555-5555",
-      postalCode: "55-555",
-      streetAddress1: "St Street",
-      streetAddress2: "Second",
-    };
-  });
+describe('<Address />', () => {
+  it('render correct information', () => {
+    render(<Address {...DEFAULT_PROPS} />);
+    const streetAddress1 = screen.getByText(DEFAULT_PROPS.streetAddress1);
+    expect(streetAddress1).toBeDefined();
 
-  it("render with basic information", () => {
-    render(<Address {...props} />);
-    expect(screen.queryByRole('fullname').textContent).toBe(`${props.firstName} ${props.lastName}`);
-    expect(screen.queryByRole('companyName').textContent).toBe(props.companyName);
-    expect(screen.queryByRole('streetAddress1').textContent).toBe(props.streetAddress1);
-    expect(screen.queryByRole('streetAddress2').textContent).toBe(props.streetAddress2);
-    expect(screen.queryByRole('location').textContent).toBe(`Distrito: ${props.postalCode}, ${props.city}`);
-    expect(screen.queryByRole('country').textContent).toBe(`País: ${props.countryArea}, ${props.country.country}`);
-    expect(screen.queryByRole('phone').textContent).toBe(`Celular: ${props.phone}`);
-  });
+    const alias = screen.getByText(DEFAULT_PROPS.alias);
+    expect(alias).toBeDefined();
 
-  it("render without companyName", () => {
-    props = {...props, companyName: null};
-    render(<Address {...props} />);
-    expect(screen.queryByRole('fullname').textContent).toBe(`${props.firstName} ${props.lastName}`);
-    expect(screen.queryByRole('companyName')).not.toBeInTheDocument();
-    expect(screen.queryByRole('streetAddress1').textContent).toBe(props.streetAddress1);
-    expect(screen.queryByRole('streetAddress2').textContent).toBe(props.streetAddress2);
-    expect(screen.queryByRole('location').textContent).toBe(`Distrito: ${props.postalCode}, ${props.city}`);
-    expect(screen.queryByRole('country').textContent).toBe(`País: ${props.countryArea}, ${props.country.country}`);
-    expect(screen.queryByRole('phone').textContent).toBe(`Celular: ${props.phone}`);
-  });
+    const streetAddress2 = screen.getByText(DEFAULT_PROPS.streetAddress2);
+    expect(streetAddress2).toBeDefined();
 
-  it("render without streetAddress2", () => {
-    props = {...props, streetAddress2: null};
-    render(<Address {...props} />);
-    expect(screen.queryByRole('fullname').textContent).toBe(`${props.firstName} ${props.lastName}`);
-    expect(screen.queryByRole('companyName').textContent).toBe(props.companyName);
-    expect(screen.queryByRole('streetAddress1').textContent).toBe(props.streetAddress1);
-    expect(screen.queryByRole('streetAddress2')).not.toBeInTheDocument();
-    expect(screen.queryByRole('location').textContent).toBe(`Distrito: ${props.postalCode}, ${props.city}`);
-    expect(screen.queryByRole('country').textContent).toBe(`País: ${props.countryArea}, ${props.country.country}`);
-    expect(screen.queryByRole('phone').textContent).toBe(`Celular: ${props.phone}`);
-  });
-
-  it("render without postalCode", () => {
-    props = {...props, postalCode: null};
-    render(<Address {...props} />);
-    expect(screen.queryByRole('fullname').textContent).toBe(`${props.firstName} ${props.lastName}`);
-    expect(screen.queryByRole('companyName').textContent).toBe(props.companyName);
-    expect(screen.queryByRole('streetAddress1').textContent).toBe(props.streetAddress1);
-    expect(screen.queryByRole('streetAddress2').textContent).toBe(props.streetAddress2);
-    expect(screen.queryByRole('location').textContent).toBe(`Distrito:  ${props.city}`);
-    expect(screen.queryByRole('country').textContent).toBe(`País: ${props.countryArea}, ${props.country.country}`);
-    expect(screen.queryByRole('phone').textContent).toBe(`Celular: ${props.phone}`);
-  });
-
-  it("render without countryArea", () => {
-    props = {...props, countryArea: null};
-    render(<Address {...props} />);
-    expect(screen.queryByRole('fullname').textContent).toBe(`${props.firstName} ${props.lastName}`);
-    expect(screen.queryByRole('companyName').textContent).toBe(props.companyName);
-    expect(screen.queryByRole('streetAddress1').textContent).toBe(props.streetAddress1);
-    expect(screen.queryByRole('streetAddress2').textContent).toBe(props.streetAddress2);
-    expect(screen.queryByRole('location').textContent).toBe(`Distrito: ${props.postalCode}, ${props.city}`);
-    expect(screen.queryByRole('country').textContent).toBe(`País: ${props.country.country}`);
-    expect(screen.queryByRole('phone').textContent).toBe(`Celular: ${props.phone}`);
-  });
-
-  it("render without phone", () => {
-    props = {...props, phone: null};
-    render(<Address {...props} />);
-    expect(screen.queryByRole('fullname').textContent).toBe(`${props.firstName} ${props.lastName}`);
-    expect(screen.queryByRole('companyName').textContent).toBe(props.companyName);
-    expect(screen.queryByRole('streetAddress1').textContent).toBe(props.streetAddress1);
-    expect(screen.queryByRole('streetAddress2').textContent).toBe(props.streetAddress2);
-    expect(screen.queryByRole('location').textContent).toBe(`Distrito: ${props.postalCode}, ${props.city}`);
-    expect(screen.queryByRole('country').textContent).toBe(`País: ${props.countryArea}, ${props.country.country}`);
-    expect(screen.queryByRole('phone')).not.toBeInTheDocument();
+    const city = screen.getByText(DEFAULT_PROPS.city);
+    expect(city).toBeDefined();
   });
 });

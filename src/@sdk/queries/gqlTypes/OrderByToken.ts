@@ -49,6 +49,7 @@ export interface OrderByToken_orderByToken_shippingAddress {
   isDefaultShippingAddress: boolean | null;
   latitude: number | null;
   longitude: number | null;
+  alias: string | null;
 }
 
 export interface OrderByToken_orderByToken_lines_variant_pricing_priceUndiscounted_gross {

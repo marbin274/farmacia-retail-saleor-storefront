@@ -1,45 +1,39 @@
-import React from "react";
-
-import { IAddress } from "@types";
-
-import * as S from "./styles";
+import React from 'react';
+import { IAddress } from '@types';
+import { HomeIcon, GpsIcon } from '@farmacia-retail/farmauna-components';
+import { Icon } from '..';
 
 export const Address: React.FC<IAddress> = ({
-  firstName,
-  lastName,
-  companyName,
+  alias,
   streetAddress1,
   streetAddress2,
   city,
-  postalCode,
-  countryArea,
-  country,
-  phone,
-}: IAddress) => (
-  <S.Wrapper>
-    <span className='fa-text-lg fa-mb-2 fa-font-semibold' role='fullname'>{`${firstName} ${lastName}`}</span>
-    {companyName && <p role='companyName'>{companyName}</p>}
-    <span className='fa-text-sm fa-mb-2 fa-font-medium' role='streetAddress1'>{streetAddress1}</span>
-    {streetAddress2 && <span className='fa-text-sm fa-mb-2 fa-font-medium' role='streetAddress2'>{streetAddress2}</span>}
-    <div className='fa-grid fa-grid-cols-1 lg:fa-grid-cols-2 fa-gap-x-4'>
-      <div className='fa-flex fa-items-start fa-mb-2' role='location'>
-        <span className='fa-mr-2 fa-text-neutral-dark'>Distrito: </span>
-        <span>{postalCode && `${postalCode},`} {city}</span>
-      </div>
-      <div className='fa-flex fa-items-start fa-mb-2' role='country'>
-        <span className='fa-mr-2 fa-text-neutral-dark'>País: </span>
-        <span>
-          {countryArea && <span>{countryArea}, </span>}
-          <span>{country!.country}</span>
-        </span>
-      </div>
-      {
-        phone && 
-        <div className='fa-flex fa-items-start fa-mb-2' role='phone'>
-          <span className='fa-mr-2  fa-text-neutral-dark'>Celular: </span>
-          <span>{phone}</span>
+}: IAddress) => {
+  const getIcon = () => {
+    if (alias === 'Mi casa') {
+      return <HomeIcon size={14} className="fa-ml-px" />;
+    }
+
+    if (alias === 'Mi trabajo') {
+      return <Icon name="work" size={14} viewPort={24} />;
+    }
+
+    return <GpsIcon size={14} />;
+  };
+
+  return (
+    <div>
+      <div className="fa-text-highlight-medium fa-flex fa-mb-2">
+        <div className="fa-rounded-full fa-bg-highlight-lightest fa-w-6 fa-h-6 fa-flex fa-items-center fa-justify-center fa-mr-2">
+          {getIcon()}
         </div>
-      }
+        <p>{alias || 'Mi dirección'}</p>
+      </div>
+      <p className="fa-text-sm fa-font-semibold fa-mb-1">{city}</p>
+      <p className="fa-mb-1">{streetAddress1}</p>
+      <p className="fa-text-sm fa-text-neutral-dark fa-mb-1">
+        {streetAddress2}
+      </p>
     </div>
-  </S.Wrapper>
-);
+  );
+};

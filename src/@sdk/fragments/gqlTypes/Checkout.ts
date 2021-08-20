@@ -155,6 +155,7 @@ export interface Checkout_billingAddress {
   isDefaultShippingAddress: boolean | null;
   latitude: number | null;
   longitude: number | null;
+  alias: string | null;
 }
 
 export interface Checkout_shippingAddress_country {
@@ -198,6 +199,7 @@ export interface Checkout_shippingAddress {
   isDefaultShippingAddress: boolean | null;
   latitude: number | null;
   longitude: number | null;
+  alias: string | null;
 }
 
 export interface Checkout_availableShippingMethods_price {

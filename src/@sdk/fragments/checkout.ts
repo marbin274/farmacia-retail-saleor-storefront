@@ -35,6 +35,7 @@ export const checkoutAddressFragment = gql`
     isDefaultShippingAddress
     latitude
     longitude
+    alias
   }
 `;
 

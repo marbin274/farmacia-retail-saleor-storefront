@@ -157,6 +157,7 @@ export interface UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMe
   isDefaultShippingAddress: boolean | null;
   latitude: number | null;
   longitude: number | null;
+  alias: string | null;
 }
 
 export interface UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMethodUpdate_checkout_shippingAddress_country {
@@ -200,6 +201,7 @@ export interface UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMe
   isDefaultShippingAddress: boolean | null;
   latitude: number | null;
   longitude: number | null;
+  alias: string | null;
 }
 
 export interface UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMethodUpdate_checkout_availableShippingMethods_price {

@@ -9,22 +9,19 @@ import {
   useUpdateUserAddress,
   useUserDetails,
 } from '@sdk/react';
-import {
-  IAddressBookDisplay,
-  IAddressWithAddressType,
-} from '@temp/@next/types';
-import { removeCountryCodeInPhoneNumber } from '@temp/@next/utils/addresForm';
-import { maybe } from '@temp/@next/utils/misc';
 import AccountLayout from '@app/pages/AccountPage/AccountLayout';
 import { IAddressForm } from '@temp/@next/components/organisms/AddressFormModal/types';
+import { UserDetails_me_addresses } from '@temp/@sdk/queries/gqlTypes/UserDetails';
 
 export const AddressBook: React.FC = () => {
   const { data: user } = useUserDetails();
-  const [displayNewModal, setDisplayNewModal] = useState(false);
-  const [displayEditModal, setDisplayEditModal] = useState(false);
-  const [addressData, setAddressData] = useState<IAddressWithAddressType>(null);
-  const [setDefaultUserAddress] = useDefaultUserAddress();
-  const [setDeleteUserAddress] = useDeleteUserAddresss();
+  const [showFormModal, setShowFormModal] = useState(false);
+  const [addressToUpdate, setAddressToUpdate] =
+    useState<UserDetails_me_addresses>(null);
+  const [setDefaultUserAddress, { loading: setDefaultLoading }] =
+    useDefaultUserAddress();
+  const [setDeleteUserAddress, { loading: deleteLoading }] =
+    useDeleteUserAddresss();
   const [
     setCreatUserAddress,
     { data: createData, error: addressCreateErrors },
@@ -40,67 +37,14 @@ export const AddressBook: React.FC = () => {
       (createData && !addressCreateErrors) ||
       (updateData && !addressUpdateErrors)
     ) {
-      setDisplayNewModal(false);
-      setDisplayEditModal(false);
+      setShowFormModal(false);
     }
   }, [createData, updateData, addressCreateErrors, addressUpdateErrors]);
 
-  const userAddresses = maybe(
-    () =>
-      user.addresses.map((it) => {
-        const address: IAddressWithAddressType = {
-          ...it,
-          phone: removeCountryCodeInPhoneNumber(it.phone || ''),
-        };
-        const addressToDisplay: IAddressBookDisplay = {
-          address,
-          onEdit: () => {
-            setAddressData(address);
-            setDisplayEditModal(true);
-          },
-          onRemove: () =>
-            setDeleteUserAddress({
-              addressId: address.id,
-            }),
-          removeDefault: () => {
-            setUpdateUserAddress({
-              id: address.id,
-              input: {
-                city: address.city,
-                companyName: address.companyName,
-                country: CountryCode.PE,
-                countryArea: address.countryArea,
-                firstName: address.firstName,
-                isDefault: false,
-                lastName: address.lastName,
-                latitude: Number(address.latitude),
-                longitude: Number(address.longitude),
-                phone: address.phone,
-                postalCode: address.postalCode,
-                streetAddress1: address.streetAddress1,
-                streetAddress2: address.streetAddress2,
-              },
-            });
-          },
-          setDefault: (type: string) => {
-            setDefaultUserAddress({
-              id: address.id,
-              type:
-                type === 'BILLING'
-                  ? AddressTypeEnum.BILLING
-                  : AddressTypeEnum.SHIPPING,
-            });
-          },
-        };
-        return addressToDisplay;
-      }),
-    []
-  );
-
   const handleSubmit = (values: IAddressForm) => {
-    if (addressData?.id) {
+    if (addressToUpdate?.id) {
       setUpdateUserAddress({
-        id: addressData?.id,
+        id: addressToUpdate?.id,
         input: {
           alias: values.alias,
           city: values.city.name,
@@ -127,33 +71,58 @@ export const AddressBook: React.FC = () => {
     });
   };
 
+  const handleDelete = (id: string) => {
+    if (deleteLoading) {
+      return;
+    }
+
+    setDeleteUserAddress({
+      addressId: id,
+    });
+  };
+
+  const handleSetDefault = (id: string) => {
+    if (setDefaultLoading) {
+      return;
+    }
+
+    setDefaultUserAddress({
+      id,
+      type: AddressTypeEnum.SHIPPING,
+    });
+
+    setDefaultUserAddress({
+      id,
+      type: AddressTypeEnum.BILLING,
+    });
+  };
+
   return (
     <AccountLayout>
       <div className="fa-w-full">
         <AddressGrid
-          addresses={userAddresses}
-          addNewAddress={() => {
-            setAddressData(undefined);
-            setDisplayNewModal(true);
+          addresses={user?.addresses}
+          onClickAdd={() => {
+            setAddressToUpdate(undefined);
+            setShowFormModal(true);
           }}
+          onClickDelete={handleDelete}
+          onClickEdit={(address) => {
+            setAddressToUpdate(address);
+            setShowFormModal(true);
+          }}
+          onClickSetDefault={handleSetDefault}
         />
-        {displayNewModal && (
+        {showFormModal && (
           <AddressFormModal
             hideModal={() => {
-              setDisplayNewModal(false);
+              setShowFormModal(false);
             }}
-            title="Agregar nueva dirección"
-            show={displayNewModal}
-            onSubmit={handleSubmit}
-          />
-        )}
-        {displayEditModal && (
-          <AddressFormModal
-            hideModal={() => {
-              setDisplayEditModal(false);
-            }}
-            show={displayEditModal}
-            address={addressData}
+            title={
+              addressToUpdate ? 'Editar dirección' : 'Agregar nueva dirección'
+            }
+            show={showFormModal}
+            address={addressToUpdate}
             onSubmit={handleSubmit}
           />
         )}
