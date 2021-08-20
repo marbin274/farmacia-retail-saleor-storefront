@@ -9,11 +9,14 @@ import { IProps } from './types';
 export const Attribute: React.FC<IProps> = ({
   description,
   attributeValue,
+  role,
 }: IProps) => {
   return (
     <S.Wrapper>
       <S.Description>{description}</S.Description>
-      <p className="fa-text-center">{attributeValue}</p>
+      <p className="fa-text-center fa-break-words" role={role || ''}>
+        {attributeValue}
+      </p>
     </S.Wrapper>
   );
 };
