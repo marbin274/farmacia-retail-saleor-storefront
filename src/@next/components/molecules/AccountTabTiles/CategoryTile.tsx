@@ -28,11 +28,11 @@ export const CategoryTile: React.FC = () => {
               </S.AttributeWrapper>
 
               <S.AttributeWrapper>
-                <div  className="fa-flex fa-flex-row fa-flex-wrap fa-mx-auto fa-justify-center">
+                <div className="fa-flex fa-flex-row fa-flex-wrap fa-mx-auto fa-justify-center">
                   {
                     user?.favoriteCategories?.map((category, index) =>
-                    (<S.Chip key={index} style={{  color: '#452FBA ',backgroundColor: '#EDEBFA'}}
-                        >{category}</S.Chip>))
+                    (<S.Chip key={index} className="fa-text-interactive fa-bg-complementary-03 "
+                    >{category}</S.Chip>))
                   }
                 </div>
               </S.AttributeWrapper>
@@ -48,8 +48,8 @@ export const CategoryTile: React.FC = () => {
               </S.AttributeWrapper>
             </>) : (<>
               <S.AttributeWrapper>
-              <S.Image src={category} alt="category" />
-            </S.AttributeWrapper>
+                <S.Image src={category} alt="category" />
+              </S.AttributeWrapper>
 
               <S.AttributeWrapper>
                 <Attribute

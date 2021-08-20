@@ -47,7 +47,7 @@ export const ShoppingHistoryTile: React.FC = () => {
                   <Attribute
                     description="Estado"
                     attributeValue={
-                      `${data?.edges[0]?.node?.status}` || ''
+                      `${data?.edges[0]?.node?.customerStatusDisplay}` || ''
                     }
                   />
                 </S.AttributeWrapper>

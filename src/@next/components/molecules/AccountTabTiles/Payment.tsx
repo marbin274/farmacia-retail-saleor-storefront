@@ -30,7 +30,7 @@ export const MainCardTile: React.FC = () => {
                 </S.AttributeWrapper>
 
                 <S.AttributeWrapper className="fa-rounded-lg fa-p-4 fa-shadow-lg fa-mb-4">
-                  <S.AttributeWrapper>
+                  <S.AttributeWrapper className="fa-font-medium">
                     <Attribute
                       description=""
                       attributeValue={user?.cardTokens[0]?.cardNumber}
@@ -78,7 +78,6 @@ export const MainCardTile: React.FC = () => {
               </>
               )
             }
-
           </S.Content>
         </S.Wrapper>
       </Tile>

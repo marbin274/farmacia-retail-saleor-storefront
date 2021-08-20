@@ -2,19 +2,18 @@ import React from 'react';
 import { Attribute, Tile } from '@components/atoms';
 import * as S from './styles';
 import gpsicon from '@temp/images/gpsicon.svg';
+import gpsiconselected from '@temp/images/gps-icon-selected.png';
 import { Button } from '@farmacia-retail/farmauna-components';
 import { useHistory } from 'react-router-dom';
 import { addressBookUrl } from '@temp/@next/pages/AccountPage/paths';
 import { useUserDetails } from '@temp/@sdk/react';
 import {
-  useAddressGeocalizationInfo,
   useDistrictSelected,
 } from "@temp/@next/hooks";
 
 export const MainAddressTile = () => {
   const { data: user } = useUserDetails();
   const [districtSelected] = useDistrictSelected();
-  const [show] = useAddressGeocalizationInfo();
   const history = useHistory();
   return (
     <S.TileWrapper>
@@ -28,7 +27,7 @@ export const MainAddressTile = () => {
             {
               user?.defaultShippingAddress ? (<>
                 <S.AttributeWrapper>
-                  <img className="fa-mx-auto" src={gpsicon} alt="gps" />
+                  <img className="fa-mx-auto" src={gpsiconselected} alt="gps" />
                 </S.AttributeWrapper>
 
                 <S.AttributeWrapper>
