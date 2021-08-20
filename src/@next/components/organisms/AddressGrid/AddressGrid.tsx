@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
 import { AddNewTile } from '@components/atoms';
-import { AddressTile } from '@components/molecules';
+import { AddressTile, Alert } from '@components/molecules';
 import { IProps } from './types';
+import { CheckIcon, TrashIcon } from '@farmacia-retail/farmauna-components';
 
 export const AddressGrid: FC<IProps> = ({
   addresses,
@@ -9,6 +10,8 @@ export const AddressGrid: FC<IProps> = ({
   onClickEdit,
   onClickDelete,
   onClickSetDefault,
+  showAddEditSuccess,
+  showDeleteSuccess,
 }) => {
   return (
     <>
@@ -19,6 +22,21 @@ export const AddressGrid: FC<IProps> = ({
           className="fa-w-full"
         />
       </div>
+      {showAddEditSuccess && (
+        <Alert
+          icon={<CheckIcon size={12} />}
+          message="Tarjeta guardada con éxito"
+          className="fa-mb-4 fa-flex md:fa-hidden"
+        />
+      )}
+      {showDeleteSuccess && (
+        <Alert
+          icon={<TrashIcon size={12} />}
+          message="La tarjeta ha sido eliminada"
+          className="fa-mb-4 fa-flex md:fa-hidden"
+          type="error"
+        />
+      )}
       <div className="fa-grid fa-grid-cols-1 md:fa-grid-cols-2 fa-gap-4">
         <div className="fa-hidden md:fa-flex">
           <AddNewTile

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { AddressFormModal, AddressGrid } from '@components/organisms';
+import { AddressFormModal, AddressGrid, Modal } from '@components/organisms';
 import { AddressTypeEnum, CountryCode } from '@sdk/gqlTypes/globalTypes';
 import {
   useCreateUserAddress,
@@ -12,36 +12,103 @@ import {
 import AccountLayout from '@app/pages/AccountPage/AccountLayout';
 import { IAddressForm } from '@temp/@next/components/organisms/AddressFormModal/types';
 import { UserDetails_me_addresses } from '@temp/@sdk/queries/gqlTypes/UserDetails';
+import DeletePinImg from 'images/auna/delete-pin.svg';
+import { alertService } from '@temp/@next/components/atoms/Alert';
+import { CheckIcon, TrashIcon } from '@farmacia-retail/farmauna-components';
+import { Alert } from '@temp/@next/components/molecules';
 
 export const AddressBook: React.FC = () => {
   const { data: user } = useUserDetails();
   const [showFormModal, setShowFormModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showAddEditSuccess, setShowAddEditSuccess] = useState(false);
+  const [showDeleteSuccess, setShowDeleteSuccess] = useState(false);
   const [addressToUpdate, setAddressToUpdate] =
     useState<UserDetails_me_addresses>(null);
-  const [setDefaultUserAddress, { loading: setDefaultLoading }] =
-    useDefaultUserAddress();
-  const [setDeleteUserAddress, { loading: deleteLoading }] =
-    useDeleteUserAddresss();
+  const [addressToDelete, setAddressToDelete] =
+    useState<UserDetails_me_addresses>(null);
+
   const [
     setCreatUserAddress,
-    { data: createData, error: addressCreateErrors },
+    { data: createData, error: createError, loading: createLoading },
   ] = useCreateUserAddress();
+
+  useEffect(() => {
+    if (createData && !createError) {
+      setShowFormModal(false);
+      setShowAddEditSuccess(true);
+    }
+
+    if (!createData?.user && (createData?.errors.length > 0 || createError)) {
+      showGenericError();
+    }
+  }, [createData, createError]);
 
   const [
     setUpdateUserAddress,
-    { data: updateData, error: addressUpdateErrors },
+    { data: updateData, error: updateError, loading: updateLoading },
   ] = useUpdateUserAddress();
 
   useEffect(() => {
-    if (
-      (createData && !addressCreateErrors) ||
-      (updateData && !addressUpdateErrors)
-    ) {
+    if (updateData && !updateError) {
       setShowFormModal(false);
+      setShowAddEditSuccess(true);
     }
-  }, [createData, updateData, addressCreateErrors, addressUpdateErrors]);
+
+    if (!updateData?.user && (updateData?.errors.length > 0 || updateError)) {
+      showGenericError();
+    }
+  }, [updateData, updateError]);
+
+  const [
+    setDeleteUserAddress,
+    { data: deleteData, error: deleteError, loading: deleteLoading },
+  ] = useDeleteUserAddresss();
+
+  useEffect(() => {
+    if (deleteData?.user && !deleteData?.errors.length && !deleteError) {
+      setShowDeleteSuccess(true);
+    }
+
+    if (!deleteData?.user && (deleteData?.errors.length > 0 || deleteError)) {
+      showGenericError();
+    }
+  }, [deleteData, deleteError]);
+
+  const [
+    setDefaultUserAddress,
+    {
+      data: setDefaultData,
+      error: setDefaultError,
+      loading: setDefaultLoading,
+    },
+  ] = useDefaultUserAddress();
+
+  useEffect(() => {
+    if (
+      !setDefaultData?.user &&
+      (setDefaultData?.errors.length > 0 || setDefaultError)
+    ) {
+      showGenericError();
+    }
+  }, [setDefaultData, setDefaultError]);
+
+  const clearAlers = () => {
+    setShowAddEditSuccess(false);
+    setShowDeleteSuccess(false);
+  };
+
+  const showGenericError = () => {
+    alertService.sendAlert({
+      buttonText: 'Entendido',
+      message: 'Ha ocurrido un error al procesar la solicitud',
+      type: 'Text',
+    });
+  };
 
   const handleSubmit = (values: IAddressForm) => {
+    clearAlers();
+
     if (addressToUpdate?.id) {
       setUpdateUserAddress({
         id: addressToUpdate?.id,
@@ -71,20 +138,24 @@ export const AddressBook: React.FC = () => {
     });
   };
 
-  const handleDelete = (id: string) => {
-    if (deleteLoading) {
+  const handleDelete = () => {
+    if (deleteLoading || !addressToDelete) {
       return;
     }
 
     setDeleteUserAddress({
-      addressId: id,
+      addressId: addressToDelete.id,
     });
+    clearAlers();
+    setShowDeleteModal(false);
   };
 
   const handleSetDefault = (id: string) => {
     if (setDefaultLoading) {
       return;
     }
+
+    clearAlers();
 
     setDefaultUserAddress({
       id,
@@ -100,18 +171,38 @@ export const AddressBook: React.FC = () => {
   return (
     <AccountLayout>
       <div className="fa-w-full">
+        {showAddEditSuccess && (
+          <Alert
+            icon={<CheckIcon size={12} />}
+            message="Dirección guardada con éxito"
+            className="fa-mb-4 fa-hidden md:fa-flex"
+          />
+        )}
+        {showDeleteSuccess && (
+          <Alert
+            icon={<TrashIcon size={12} />}
+            message="La dirección ha sido eliminada"
+            className="fa-mb-4 fa-hidden md:fa-flex"
+            type="error"
+          />
+        )}
         <AddressGrid
           addresses={user?.addresses}
           onClickAdd={() => {
             setAddressToUpdate(undefined);
             setShowFormModal(true);
           }}
-          onClickDelete={handleDelete}
+          onClickDelete={(address) => {
+            setAddressToDelete(address);
+            setShowDeleteModal(true);
+          }}
           onClickEdit={(address) => {
             setAddressToUpdate(address);
             setShowFormModal(true);
           }}
           onClickSetDefault={handleSetDefault}
+          showAddEditSuccess={showAddEditSuccess}
+          showDeleteSuccess={showDeleteSuccess}
         />
         {showFormModal && (
           <AddressFormModal
@@ -124,7 +215,36 @@ export const AddressBook: React.FC = () => {
             show={showFormModal}
             address={addressToUpdate}
             onSubmit={handleSubmit}
+            loading={createLoading || updateLoading}
           />
+        )}
+        {showDeleteModal && (
+          <Modal
+            show={showDeleteModal}
+            submitBtnText="Sí, borrar"
+            hide={() => {
+              setShowDeleteModal(false);
+              setAddressToDelete(undefined);
+            }}
+            onSubmit={() => handleDelete()}
+            disabled={false}
+          >
+            <div className="fa-flex fa-flex-col fa-items-center">
+              <img
+                src={DeletePinImg}
+                width={80}
+                height={80}
+                className="fa-mt-4 fa-mb-4"
+              />
+              <p className="fa-text-center fa-font-semibold fa-mb-8">
+                {`¿Seguro que quieres borrar ${
+                  addressToDelete?.alias
+                    ? `"${addressToDelete?.alias}"`
+                    : 'la dirección'
+                } de Farmauna?`}
+              </p>
+            </div>
+          </Modal>
         )}
       </div>
     </AccountLayout>

@@ -79,7 +79,7 @@ export const AddressTile: FC<IProps> = ({
             data-testid="delete-button"
             icon={<TrashIcon />}
             size="small"
-            onClick={() => onClickDelete(address.id)}
+            onClick={() => onClickDelete(address)}
             iconOnly
           />
         </div>

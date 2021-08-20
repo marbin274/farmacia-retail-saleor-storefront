@@ -40,6 +40,7 @@ const ADDRESS_TYPE_OPTIONS: ITileRadioOption[] = [
 export const AddressFormModal: React.FC<IAddressFormModalProps> = ({
   address,
   hideModal,
+  loading,
   onSubmit,
   show,
   title,
@@ -168,8 +169,9 @@ export const AddressFormModal: React.FC<IAddressFormModalProps> = ({
             <Button
               className="fa-mb-4 fa-w-full"
               onClick={() => handleSubmit()}
+              disabled={loading}
             >
-              Guardar dirección
+              {loading ? 'Cargando' : 'Guardar dirección'}
             </Button>
           </>
         )}

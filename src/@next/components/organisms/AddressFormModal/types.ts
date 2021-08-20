@@ -11,9 +11,10 @@ export type IAddressForm = {
 };
 
 export interface IAddressFormModalProps {
-  hideModal: () => void;
-  title?: string;
   address?: UserDetails_me_addresses;
+  hideModal: () => void;
+  loading?: boolean;
   onSubmit: (values: IAddressForm) => void;
   show?: boolean;
+  title?: string;
 }
