@@ -12,6 +12,7 @@ import {
 import { FormError } from '../types';
 import { Breadcrumb } from '@temp/components';
 import { ISimpleProduct } from '@sdk/types/IProduct';
+import { IGeoJson } from '../types/address';
 
 export const slugify = (text: string | number): string =>
   text
@@ -210,4 +211,35 @@ export const getBreadcrumbsFromProduct = (product: ISimpleProduct) => {
   });
 
   return breadcrumbs;
+};
+
+export const isCoordinatesInsideBouds = (
+  latitude: number,
+  longitude: number,
+  geoJson: IGeoJson
+) => {
+  const x = latitude;
+  const y = longitude;
+  let inside = false;
+
+  for (const feature of geoJson.features) {
+    for (const vs of feature.geometry.coordinates) {
+      for (let i = 0, j = vs.length - 1; i < vs.length; j = i++) {
+        const xi = vs[i][1];
+        const yi = vs[i][0];
+        const xj = vs[j][1];
+        const yj = vs[j][0];
+
+        const intersect =
+          yi > y !== yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi;
+        if (intersect) inside = !inside;
+      }
+    }
+
+    if (inside) {
+      break;
+    }
+  }
+
+  return inside;
 };

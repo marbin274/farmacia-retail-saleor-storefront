@@ -234,7 +234,10 @@ export interface CheckoutProductVariants_productVariants_edges_node_product {
    * The main thumbnail for a product.
    */
   thumbnail2x: CheckoutProductVariants_productVariants_edges_node_product_thumbnail2x | null;
-  productType: CheckoutProductVariants_productVariants_edges_node_product_productType;
+  /**
+   * Product type
+   */
+  productType: CheckoutProductVariants_productVariants_edges_node_product_productType | null;
 }
 
 export interface CheckoutProductVariants_productVariants_edges_node {

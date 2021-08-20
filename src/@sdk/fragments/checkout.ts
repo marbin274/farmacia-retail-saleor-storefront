@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 export const checkoutPriceFragment = gql`
   fragment Price on TaxedMoney {
@@ -35,6 +35,7 @@ export const checkoutAddressFragment = gql`
     isDefaultShippingAddress
     latitude
     longitude
+    alias
   }
 `;
 
@@ -69,7 +70,7 @@ export const checkoutProductVariantFragment = gql`
     product {
       id
       name
-      category{
+      category {
         id
         name
       }

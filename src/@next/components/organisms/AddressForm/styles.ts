@@ -1,11 +1,11 @@
-import { media, mediaUp, styled } from "@styles";
+import { media, mediaUp, styled } from '@styles';
 import {
   aunaBrand3,
   white,
   aunaError,
   smallFontSize,
   smallFontWeight,
-} from "@styles/constants";
+} from '@styles/constants';
 
 export const AddressForm = styled.form`
   max-width: 23rem;
@@ -82,14 +82,14 @@ export const GroupLabel = styled.div`
 `;
 
 export const GroupLabelIndex = styled.span`
-    background-color: ${aunaBrand3};  
-    border-radius: 5rem;
-    color: ${white};
-    display: inline-block;
-    height: 1.9rem;
-    padding: 0.4rem;
-    text-align: center;
-    width: 1.9rem;
+  background-color: ${aunaBrand3};
+  border-radius: 5rem;
+  color: ${white};
+  display: inline-block;
+  height: 1.9rem;
+  padding: 0.4rem;
+  text-align: center;
+  width: 1.9rem;
 `;
 
 export const GroupLabelTitle = styled.span`
@@ -97,12 +97,17 @@ export const GroupLabelTitle = styled.span`
   padding-left: 1rem;
 `;
 
-export const Referencia = styled.div<{alwaysShow?:boolean, mobile?:boolean}>`
-  ${({alwaysShow, mobile})=>!alwaysShow && `
-    display: ${!!mobile ? "block" : "none"};
+export const Referencia = styled.div<{
+  alwaysShow?: boolean;
+  mobile?: boolean;
+}>`
+  ${({ alwaysShow, mobile }) =>
+    !alwaysShow &&
+    `
+    display: ${!!mobile ? 'block' : 'none'};
     ${mediaUp.mediumScreen`
-      display: ${({ mobile }: any) => !!mobile ? "none" : "block"};
+      display: ${({ mobile }: any) => (!!mobile ? 'none' : 'block')};
     `}
   `}
-  margin-top: 1rem; 
+  margin-top: 1rem;
 `;

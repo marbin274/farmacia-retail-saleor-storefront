@@ -47,6 +47,7 @@ export interface UserDetails_me_defaultShippingAddress {
   isDefaultShippingAddress: boolean | null;
   latitude: number | null;
   longitude: number | null;
+  alias: string | null;
 }
 
 export interface UserDetails_me_defaultBillingAddress_country {
@@ -90,6 +91,7 @@ export interface UserDetails_me_defaultBillingAddress {
   isDefaultShippingAddress: boolean | null;
   latitude: number | null;
   longitude: number | null;
+  alias: string | null;
 }
 
 export interface UserDetails_me_addresses_country {
@@ -133,6 +135,7 @@ export interface UserDetails_me_addresses {
   isDefaultShippingAddress: boolean | null;
   latitude: number | null;
   longitude: number | null;
+  alias: string | null;
 }
 
 export interface UserDetails_me_cardTokens {

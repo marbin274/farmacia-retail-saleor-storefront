@@ -1,107 +1,262 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
 
-import { AddressFormModal, AddressGrid } from "@components/organisms";
-import { AddressTypeEnum, CountryCode } from "@sdk/gqlTypes/globalTypes";
-import { useDefaultUserAddress, useDeleteUserAddresss, useUpdateUserAddress, useUserDetails } from "@sdk/react";
-import { useShopContext } from "@temp/components/ShopProvider/context";
-import { IAddressBookDisplay, IAddressWithAddressType } from "@temp/@next/types";
-import { removeCountryCodeInPhoneNumber } from "@temp/@next/utils/addresForm";
-import { maybe } from "@temp/@next/utils/misc";
-import AccountLayout from "@app/pages/AccountPage/AccountLayout";
+import { AddressFormModal, AddressGrid, Modal } from '@components/organisms';
+import { AddressTypeEnum, CountryCode } from '@sdk/gqlTypes/globalTypes';
+import {
+  useCreateUserAddress,
+  useDefaultUserAddress,
+  useDeleteUserAddresss,
+  useUpdateUserAddress,
+  useUserDetails,
+} from '@sdk/react';
+import AccountLayout from '@app/pages/AccountPage/AccountLayout';
+import { IAddressForm } from '@temp/@next/components/organisms/AddressFormModal/types';
+import { UserDetails_me_addresses } from '@temp/@sdk/queries/gqlTypes/UserDetails';
+import DeletePinImg from 'images/auna/delete-pin.svg';
+import { alertService } from '@temp/@next/components/atoms/Alert';
+import { CheckIcon, TrashIcon } from '@farmacia-retail/farmauna-components';
+import { Alert } from '@temp/@next/components/molecules';
 
 export const AddressBook: React.FC = () => {
   const { data: user } = useUserDetails();
-  const { availableDistricts, defaultCountry, countries } = useShopContext();
-  const [displayNewModal, setDisplayNewModal] = React.useState(false);
-  const [displayEditModal, setDisplayEditModal] = React.useState(false);
-  const [addressData, setAddressData] = React.useState(null);
-  const [setDefaultUserAddress] = useDefaultUserAddress();
-  const [setDeleteUserAddress] = useDeleteUserAddresss();
-  const [setUpdateUserAddress] = useUpdateUserAddress();
+  const [showFormModal, setShowFormModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showAddEditSuccess, setShowAddEditSuccess] = useState(false);
+  const [showDeleteSuccess, setShowDeleteSuccess] = useState(false);
+  const [addressToUpdate, setAddressToUpdate] =
+    useState<UserDetails_me_addresses>(null);
+  const [addressToDelete, setAddressToDelete] =
+    useState<UserDetails_me_addresses>(null);
 
-  const districtsOptions = maybe(() => availableDistricts.map(x => (x.name || '')), []);
+  const [
+    setCreatUserAddress,
+    { data: createData, error: createError, loading: createLoading },
+  ] = useCreateUserAddress();
 
-  const userAddresses = maybe(()=>user.addresses.map(it => {
-    const address: IAddressWithAddressType = { ...it, phone: removeCountryCodeInPhoneNumber(it.phone || '') };
-    const addressToDisplay: IAddressBookDisplay = {
-      address,
-      onEdit: () => {
-        setDisplayEditModal(true);
-        setAddressData({
-          address,
-          id: address.id,
-        });
+  useEffect(() => {
+    if (createData && !createError) {
+      setShowFormModal(false);
+      setShowAddEditSuccess(true);
+    }
+
+    if (!createData?.user && (createData?.errors.length > 0 || createError)) {
+      showGenericError();
+    }
+  }, [createData, createError]);
+
+  const [
+    setUpdateUserAddress,
+    { data: updateData, error: updateError, loading: updateLoading },
+  ] = useUpdateUserAddress();
+
+  useEffect(() => {
+    if (updateData && !updateError) {
+      setShowFormModal(false);
+      setShowAddEditSuccess(true);
+    }
+
+    if (!updateData?.user && (updateData?.errors.length > 0 || updateError)) {
+      showGenericError();
+    }
+  }, [updateData, updateError]);
+
+  const [
+    setDeleteUserAddress,
+    { data: deleteData, error: deleteError, loading: deleteLoading },
+  ] = useDeleteUserAddresss();
+
+  useEffect(() => {
+    if (deleteData?.user && !deleteData?.errors.length && !deleteError) {
+      setShowDeleteSuccess(true);
+    }
+
+    if (!deleteData?.user && (deleteData?.errors.length > 0 || deleteError)) {
+      showGenericError();
+    }
+  }, [deleteData, deleteError]);
+
+  const [
+    setDefaultUserAddress,
+    {
+      data: setDefaultData,
+      error: setDefaultError,
+      loading: setDefaultLoading,
+    },
+  ] = useDefaultUserAddress();
+
+  useEffect(() => {
+    if (
+      !setDefaultData?.user &&
+      (setDefaultData?.errors.length > 0 || setDefaultError)
+    ) {
+      showGenericError();
+    }
+  }, [setDefaultData, setDefaultError]);
+
+  const clearAlers = () => {
+    setShowAddEditSuccess(false);
+    setShowDeleteSuccess(false);
+  };
+
+  const showGenericError = () => {
+    alertService.sendAlert({
+      buttonText: 'Entendido',
+      message: 'Ha ocurrido un error al procesar la solicitud',
+      type: 'Text',
+    });
+  };
+
+  const handleSubmit = (values: IAddressForm) => {
+    clearAlers();
+
+    if (addressToUpdate?.id) {
+      setUpdateUserAddress({
+        id: addressToUpdate?.id,
+        input: {
+          alias: values.alias,
+          city: values.city.name,
+          country: CountryCode.PE,
+          latitude: Number(values.latitude),
+          longitude: Number(values.longitude),
+          streetAddress1: values.streetAddress1,
+          streetAddress2: values.streetAddress2,
+        },
+      });
+      return;
+    }
+
+    setCreatUserAddress({
+      input: {
+        alias: values.alias,
+        city: values.city.name,
+        country: CountryCode.PE,
+        latitude: Number(values.latitude),
+        longitude: Number(values.longitude),
+        streetAddress1: values.streetAddress1,
+        streetAddress2: values.streetAddress2,
       },
-      onRemove: () => setDeleteUserAddress({
-        addressId: address.id,
-      }),
-      removeDefault: () => {
-        setUpdateUserAddress({
-          id: address.id,
-          input: {
-            city: address.city,
-            companyName: address.companyName,
-            country: CountryCode.PE,
-            countryArea: address.countryArea,
-            firstName: address.firstName,
-            isDefault: false,
-            lastName: address.lastName,
-            latitude: Number(address.latitude),
-            longitude: Number(address.longitude),
-            phone: address.phone,
-            postalCode: address.postalCode,
-            streetAddress1: address.streetAddress1,
-            streetAddress2: address.streetAddress2,
-          },
-        });
-      },
-      setDefault: (type: string) => {
-        setDefaultUserAddress({
-          id: address.id,
-          type:
-            type === "BILLING"
-              ? AddressTypeEnum.BILLING
-              : AddressTypeEnum.SHIPPING,
-        });
-      },
-    };
-    return addressToDisplay;
-  }), []);
+    });
+  };
+
+  const handleDelete = () => {
+    if (deleteLoading || !addressToDelete) {
+      return;
+    }
+
+    setDeleteUserAddress({
+      addressId: addressToDelete.id,
+    });
+    clearAlers();
+    setShowDeleteModal(false);
+  };
+
+  const handleSetDefault = (id: string) => {
+    if (setDefaultLoading) {
+      return;
+    }
+
+    clearAlers();
+
+    setDefaultUserAddress({
+      id,
+      type: AddressTypeEnum.SHIPPING,
+    });
+
+    setDefaultUserAddress({
+      id,
+      type: AddressTypeEnum.BILLING,
+    });
+  };
+
+  const getAddressToDeleteAlias = () => {
+    if (!addressToDelete) {
+      return '';
+    }
+
+    if (addressToDelete.alias) {
+      return addressToDelete.alias;
+    }
+
+    if (addressToDelete.firstName) {
+      return `${addressToDelete.firstName} ${addressToDelete.lastName}`;
+    }
+
+    return 'la dirección';
+  };
 
   return (
     <AccountLayout>
       <div className="fa-w-full">
-        <AddressGrid
-          addresses={userAddresses}
-          addNewAddress={() => {
-            setDisplayNewModal(true);
-          }}
-        />
-        {displayNewModal && (
-          <AddressFormModal
-            hideModal={() => {
-              setDisplayNewModal(false);
-            }}
-            userId={user.id}
-            {...{ defaultValue: defaultCountry ? defaultCountry : {} }}
-            submitBtnText="Guardar"
-            title="Agregar nueva dirección"
-            {...{ countriesOptions: countries }}
-            formId="address-form"
-            districtsOptions={districtsOptions}
+        {showAddEditSuccess && (
+          <Alert
+            icon={<CheckIcon size={12} />}
+            message="Dirección guardada con éxito"
+            className="fa-mb-4 fa-hidden md:fa-flex"
           />
         )}
-        {displayEditModal && (
+        {showDeleteSuccess && (
+          <Alert
+            icon={<TrashIcon size={12} />}
+            message="La dirección ha sido eliminada"
+            className="fa-mb-4 fa-hidden md:fa-flex"
+            type="error"
+          />
+        )}
+        <AddressGrid
+          addresses={user?.addresses}
+          onClickAdd={() => {
+            setAddressToUpdate(undefined);
+            setShowFormModal(true);
+          }}
+          onClickDelete={(address) => {
+            setAddressToDelete(address);
+            setShowDeleteModal(true);
+          }}
+          onClickEdit={(address) => {
+            setAddressToUpdate(address);
+            setShowFormModal(true);
+          }}
+          onClickSetDefault={handleSetDefault}
+          showAddEditSuccess={showAddEditSuccess}
+          showDeleteSuccess={showDeleteSuccess}
+        />
+        {showFormModal && (
           <AddressFormModal
             hideModal={() => {
-              setDisplayEditModal(false);
+              setShowFormModal(false);
             }}
-            address={addressData}
-            submitBtnText="Guardar"
-            {...{ countriesOptions: countries }}
-            formId="address-form"
-            districtsOptions={districtsOptions}
+            title={
+              addressToUpdate ? 'Editar dirección' : 'Agregar nueva dirección'
+            }
+            show={showFormModal}
+            address={addressToUpdate}
+            onSubmit={handleSubmit}
+            loading={createLoading || updateLoading}
           />
+        )}
+        {showDeleteModal && (
+          <Modal
+            show={showDeleteModal}
+            submitBtnText="Sí, borrar"
+            hide={() => {
+              setShowDeleteModal(false);
+              setAddressToDelete(undefined);
+            }}
+            onSubmit={() => handleDelete()}
+            disabled={false}
+          >
+            <div className="fa-flex fa-flex-col fa-items-center">
+              <img
+                src={DeletePinImg}
+                width={80}
+                height={80}
+                className="fa-mt-4 fa-mb-4"
+              />
+              <p className="fa-text-center fa-font-semibold fa-mb-8">
+                {`¿Seguro que quieres borrar ${getAddressToDeleteAlias()} de Farmauna?`}
+              </p>
+            </div>
+          </Modal>
         )}
       </div>
     </AccountLayout>

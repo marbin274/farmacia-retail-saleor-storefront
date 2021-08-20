@@ -49,6 +49,7 @@ export interface OrderDetail_shippingAddress {
   isDefaultShippingAddress: boolean | null;
   latitude: number | null;
   longitude: number | null;
+  alias: string | null;
 }
 
 export interface OrderDetail_lines_variant_pricing_priceUndiscounted_gross {
@@ -289,7 +290,10 @@ export interface OrderDetail_lines_variant_product {
    * The main thumbnail for a product.
    */
   thumbnail2x: OrderDetail_lines_variant_product_thumbnail2x | null;
-  productType: OrderDetail_lines_variant_product_productType;
+  /**
+   * Product type
+   */
+  productType: OrderDetail_lines_variant_product_productType | null;
 }
 
 export interface OrderDetail_lines_variant {
@@ -553,6 +557,9 @@ export interface OrderDetail {
    * An extract of the checkout token to identify the order.
    */
   sequentialCode: string | null;
+  /**
+   * Shipping address.
+   */
   shippingAddress: OrderDetail_shippingAddress | null;
   /**
    * List of order lines.

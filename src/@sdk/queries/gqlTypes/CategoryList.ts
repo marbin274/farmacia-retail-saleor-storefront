@@ -56,7 +56,7 @@ export interface CategoryList_root_categories {
 
 export interface CategoryList {
   /**
-   * Categories with level 0.
+   * List of categories with level 0.
    */
   root_categories: CategoryList_root_categories | null;
 }

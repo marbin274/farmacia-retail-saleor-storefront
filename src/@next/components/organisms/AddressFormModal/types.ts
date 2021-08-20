@@ -1,19 +1,20 @@
-import { IAddressWithEmail } from "@types";
+import { GetShop_shop_availableDistricts } from '@temp/@sdk/queries/gqlTypes/GetShop';
+import { UserDetails_me_addresses } from '@temp/@sdk/queries/gqlTypes/UserDetails';
 
-export interface IProps {
+export type IAddressForm = {
+  city?: GetShop_shop_availableDistricts;
+  latitude?: string;
+  longitude?: string;
+  streetAddress1?: string;
+  streetAddress2?: string;
+  alias?: string;
+};
+
+export interface IAddressFormModalProps {
+  address?: UserDetails_me_addresses;
   hideModal: () => void;
-  submitBtnText: string;
-  target?: HTMLElement | null;
-  formId?: string;
+  loading?: boolean;
+  onSubmit: (values: IAddressForm) => void;
+  show?: boolean;
   title?: string;
-  userId?: string;
-  address?: {
-    address: IAddressWithEmail;
-    id: string;
-  };
-  countriesOptions?: Array<{
-    code: string;
-    country: string;
-  }>;
-  districtsOptions?: string[];
 }
