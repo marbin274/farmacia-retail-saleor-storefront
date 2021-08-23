@@ -54,7 +54,7 @@ export const MailTo = styled.a`
     height: 0.5625rem;
     display: inline-block;
     vertical-align: middle;
-    background: url('../../../images/icon-previous-email.svg') no-repeat;
+    background: url('../../images/icon-previous-email.svg') no-repeat;
     margin-left: 0.3125rem;
   }
 `;
@@ -67,7 +67,7 @@ export const Phone = styled.span`
     display: inline-block;
     vertical-align: middle;
     margin: -0.3125rem 0.625rem 0 0;
-    background: url('../../../images/phone-icon.svg') no-repeat;
+    background: url('../../images/phone-icon.svg') no-repeat;
   }
 `;
 

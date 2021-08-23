@@ -6,7 +6,7 @@ import { SEARCH_PRODUCTS_QUERY_MIN_LENGTH } from '@temp/core/config';
 import { stringify } from 'query-string';
 import * as React from 'react';
 import { useHistory } from 'react-router';
-import { DebouncedTextField } from '../../../../Debounce';
+import { DebouncedTextField } from '@temp/@next/components/molecules/Debounce';
 import { InputWrapper } from './styles';
 
 interface SearchFormProps {

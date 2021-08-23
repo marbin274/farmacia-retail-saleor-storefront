@@ -1,11 +1,15 @@
-import { ErrorListener } from "@sdk/helpers";
-import { JobsManager } from "@sdk/jobs";
-import { ICheckoutModel, IPaymentModel, IShippingMethodUpdate } from "@sdk/repository";
-import { SaleorState } from "@sdk/state";
-import { StateItems } from "@sdk/state/types";
-import { primeSku } from "@temp/core/constants";
+import { ErrorListener } from '@sdk/helpers';
+import { JobsManager } from '@sdk/jobs';
+import {
+  ICheckoutModel,
+  IPaymentModel,
+  IShippingMethodUpdate,
+} from '@sdk/repository';
+import { SaleorState } from '@sdk/state';
+import { StateItems } from '@sdk/state/types';
+import { primeSku } from '@temp/core/constants';
 
-import { PromiseRunResponse } from "../types";
+import { PromiseRunResponse } from '../types';
 import {
   DataErrorCheckoutTypes,
   FunctionErrorCheckoutTypes,
@@ -19,10 +23,12 @@ import {
   IPrivacyPolicy,
   IPromoCodeDiscount,
   ISaleorCheckoutAPI,
-} from "./types";
+} from './types';
 
-export class SaleorCheckoutAPI extends ErrorListener
-  implements ISaleorCheckoutAPI {
+export class SaleorCheckoutAPI
+  extends ErrorListener
+  implements ISaleorCheckoutAPI
+{
   loaded: boolean;
   checkout?: ICheckout;
   promoCodeDiscount?: IPromoCodeDiscount;
@@ -106,7 +112,8 @@ export class SaleorCheckoutAPI extends ErrorListener
           this.paymentLoaded &&
           this.paymentGatewaysLoaded;
 
-        this.isPrime = isPrime || !!lines?.find(x => x.variant.sku === primeSku);
+        this.isPrime =
+          isPrime || !!lines?.find((x) => x.variant.sku === primeSku);
       }
     );
     this.saleorState.subscribeToChange(
@@ -160,18 +167,18 @@ export class SaleorCheckoutAPI extends ErrorListener
     await this.saleorState.provideCheckout(this.fireError);
     const checkoutId = this.saleorState.checkout?.id;
     const alteredLinesFromLocalStorage = this.saleorState.checkout?.lines?.map(
-      item => ({
+      (item) => ({
         quantity: item!.quantity,
         variantId: item?.variant!.id,
       })
     );
     let alteredLines: IAlteredLines[] | undefined = [];
-    alteredLines = alteredLinesFromLocalStorage?.filter(x => x.quantity > 0);
+    alteredLines = alteredLinesFromLocalStorage?.filter((x) => x.quantity > 0);
 
     if (alteredLines && checkoutId) {
       const { checkoutErrors, data, dataError } = await this.jobsManager.run(
-        "checkout",
-        "setShippingAddress",
+        'checkout',
+        'setShippingAddress',
         {
           checkoutId,
           documentNumber,
@@ -190,8 +197,8 @@ export class SaleorCheckoutAPI extends ErrorListener
       };
     } else if (alteredLines) {
       const { checkoutErrors, data, dataError } = await this.jobsManager.run(
-        "checkout",
-        "createCheckout",
+        'checkout',
+        'createCheckout',
         {
           billingAddress: shippingAddress,
           documentNumber,
@@ -214,7 +221,7 @@ export class SaleorCheckoutAPI extends ErrorListener
       return {
         functionError: {
           error: new Error(
-            "You need to add items to cart before setting shipping address."
+            'You need to add items to cart before setting shipping address.'
           ),
           type: FunctionErrorCheckoutTypes.ITEMS_NOT_ADDED_TO_CART,
         },
@@ -232,9 +239,9 @@ export class SaleorCheckoutAPI extends ErrorListener
     await this.saleorState.provideCheckout(this.fireError);
     const checkoutId = this.saleorState.checkout?.id;
     const isShippingRequiredForProducts = this.saleorState.checkout?.lines
-      ?.filter(line => line.quantity > 0)
-      .some(({ variant }) => variant.product?.productType.isShippingRequired);
-    const alteredLines = this.saleorState.checkout?.lines?.map(item => ({
+      ?.filter((line) => line.quantity > 0)
+      .some(({ variant }) => variant.product?.productType?.isShippingRequired);
+    const alteredLines = this.saleorState.checkout?.lines?.map((item) => ({
       quantity: item!.quantity,
       variantId: item?.variant!.id,
     }));
@@ -245,8 +252,8 @@ export class SaleorCheckoutAPI extends ErrorListener
       this.checkout?.shippingAddress
     ) {
       const { data, dataError } = await this.jobsManager.run(
-        "checkout",
-        "setBillingAddress",
+        'checkout',
+        'setBillingAddress',
         {
           billingAddress,
           billingAsShipping: false,
@@ -264,7 +271,7 @@ export class SaleorCheckoutAPI extends ErrorListener
       return {
         functionError: {
           error: new Error(
-            "You need to set shipping address before setting billing address."
+            'You need to set shipping address before setting billing address.'
           ),
           type: FunctionErrorCheckoutTypes.SHIPPING_ADDRESS_NOT_SET,
         },
@@ -277,8 +284,8 @@ export class SaleorCheckoutAPI extends ErrorListener
       alteredLines
     ) {
       const { data, dataError } = await this.jobsManager.run(
-        "checkout",
-        "setBillingAddressWithEmail",
+        'checkout',
+        'setBillingAddressWithEmail',
         {
           billingAddress,
           checkoutId,
@@ -294,11 +301,11 @@ export class SaleorCheckoutAPI extends ErrorListener
       };
     } else if (!isShippingRequiredForProducts && email && alteredLines) {
       const { data, dataError } = await this.jobsManager.run(
-        "checkout",
-        "createCheckout",
+        'checkout',
+        'createCheckout',
         {
           billingAddress,
-          documentNumber: documentNumber ? documentNumber : "",
+          documentNumber: documentNumber ? documentNumber : '',
           email,
           lines: alteredLines,
           privacyPolicy,
@@ -315,7 +322,7 @@ export class SaleorCheckoutAPI extends ErrorListener
       return {
         functionError: {
           error: new Error(
-            "You need to provide email when products do not require shipping before setting billing address."
+            'You need to provide email when products do not require shipping before setting billing address.'
           ),
           type: FunctionErrorCheckoutTypes.EMAIL_NOT_SET,
         },
@@ -325,7 +332,7 @@ export class SaleorCheckoutAPI extends ErrorListener
       return {
         functionError: {
           error: new Error(
-            "You need to add items to cart before setting billing address."
+            'You need to add items to cart before setting billing address.'
           ),
           type: FunctionErrorCheckoutTypes.ITEMS_NOT_ADDED_TO_CART,
         },
@@ -343,8 +350,8 @@ export class SaleorCheckoutAPI extends ErrorListener
 
     if (checkoutId && this.checkout?.shippingAddress) {
       const { data, dataError } = await this.jobsManager.run(
-        "checkout",
-        "setBillingAddress",
+        'checkout',
+        'setBillingAddress',
         {
           billingAddress: this.checkout.shippingAddress,
           billingAsShipping: true,
@@ -362,7 +369,7 @@ export class SaleorCheckoutAPI extends ErrorListener
       return {
         functionError: {
           error: new Error(
-            "You need to set shipping address before setting billing address."
+            'You need to set shipping address before setting billing address.'
           ),
           type: FunctionErrorCheckoutTypes.SHIPPING_ADDRESS_NOT_SET,
         },
@@ -379,8 +386,8 @@ export class SaleorCheckoutAPI extends ErrorListener
 
     if (checkoutId) {
       const { data, dataError } = await this.jobsManager.run(
-        "checkout",
-        "setShippingMethod",
+        'checkout',
+        'setShippingMethod',
         {
           checkoutId,
           shippingMethodUpdate,
@@ -395,7 +402,7 @@ export class SaleorCheckoutAPI extends ErrorListener
       return {
         functionError: {
           error: new Error(
-            "You need to set shipping address before setting shipping method."
+            'You need to set shipping address before setting shipping method.'
           ),
           type: FunctionErrorCheckoutTypes.SHIPPING_ADDRESS_NOT_SET,
         },
@@ -412,8 +419,8 @@ export class SaleorCheckoutAPI extends ErrorListener
 
     if (checkoutId) {
       const { data, dataError } = await this.jobsManager.run(
-        "checkout",
-        "addPromoCode",
+        'checkout',
+        'addPromoCode',
         {
           checkoutId,
           promoCode,
@@ -429,7 +436,7 @@ export class SaleorCheckoutAPI extends ErrorListener
       return {
         functionError: {
           error: new Error(
-            "You need to set shipping address before modifying promo code."
+            'You need to set shipping address before modifying promo code.'
           ),
           type: FunctionErrorCheckoutTypes.SHIPPING_ADDRESS_NOT_SET,
         },
@@ -446,8 +453,8 @@ export class SaleorCheckoutAPI extends ErrorListener
 
     if (checkoutId) {
       const { data, dataError } = await this.jobsManager.run(
-        "checkout",
-        "removePromoCode",
+        'checkout',
+        'removePromoCode',
         { checkoutId, promoCode }
       );
 
@@ -460,7 +467,7 @@ export class SaleorCheckoutAPI extends ErrorListener
       return {
         functionError: {
           error: new Error(
-            "You need to set shipping address before modifying promo code."
+            'You need to set shipping address before modifying promo code.'
           ),
           type: FunctionErrorCheckoutTypes.SHIPPING_ADDRESS_NOT_SET,
         },
@@ -488,8 +495,8 @@ export class SaleorCheckoutAPI extends ErrorListener
       amount !== undefined
     ) {
       const { data, dataError } = await this.jobsManager.run(
-        "checkout",
-        "createPayment",
+        'checkout',
+        'createPayment',
         {
           amount,
           billingAddress,
@@ -509,7 +516,7 @@ export class SaleorCheckoutAPI extends ErrorListener
       return {
         functionError: {
           error: new Error(
-            "You need to set billing address before creating payment."
+            'You need to set billing address before creating payment.'
           ),
           type: FunctionErrorCheckoutTypes.SHIPPING_ADDRESS_NOT_SET,
         },
@@ -528,8 +535,8 @@ export class SaleorCheckoutAPI extends ErrorListener
 
     if (checkoutId) {
       const { data, dataError } = await this.jobsManager.run(
-        "checkout",
-        "completeCheckout",
+        'checkout',
+        'completeCheckout',
         { checkoutId, paymentData }
       );
       return {
@@ -541,7 +548,7 @@ export class SaleorCheckoutAPI extends ErrorListener
       return {
         functionError: {
           error: new Error(
-            "You need to set shipping address before creating payment."
+            'You need to set shipping address before creating payment.'
           ),
           type: FunctionErrorCheckoutTypes.SHIPPING_ADDRESS_NOT_SET,
         },

@@ -5,8 +5,11 @@ export {
 } from './Breadcrumbs';
 export { CartTable } from './CartTable';
 export { default as CheckoutLogin } from './CheckoutLogin';
-export { DebounceChange, DebouncedTextField } from './Debounce';
-export { default as EmptyProduct } from './EmptyProduct';
+export {
+  DebounceChange,
+  DebouncedTextField,
+} from '../@next/components/molecules/Debounce';
+export { default as EmptyProduct } from '../@next/components/molecules/EmptyProduct';
 export { default as Error } from './Error';
 export { default as ErrorPage } from './ErrorPage';
 export { Footer } from './Footer';
@@ -45,6 +48,5 @@ export { default as PasswordResetForm } from './PasswordResetForm';
 export { default as ProductDescription } from './ProductDescription';
 export { default as ProductsCollection } from './ProductsCollection';
 export { default as ProductsFeatured } from './ProductsFeatured';
-export { default as SocialMedia } from './SocialMedia';
-export { default as SocialMediaIcon } from './SocialMediaIcon';
-export { default as TextField } from './TextField';
+export { default as SocialMedia } from '../@next/components/molecules/SocialMedia';
+export { default as TextField } from '../@next/components/atoms/TextField';

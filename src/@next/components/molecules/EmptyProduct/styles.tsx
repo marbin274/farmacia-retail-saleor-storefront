@@ -1,4 +1,4 @@
-import { styled } from "@temp/@next/globalStyles";
+import { styled } from '@temp/@next/globalStyles';
 
 export const Message = styled.p`
   max-width: 19.6875rem;

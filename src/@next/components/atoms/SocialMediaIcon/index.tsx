@@ -14,7 +14,7 @@ export interface IconProps extends React.HTMLProps<HTMLAnchorElement> {
   target?: string;
 }
 
-const SocialMediaIcon: React.FC<IconProps> = ({ medium, target }) => (
+export const SocialMediaIcon: React.FC<IconProps> = ({ medium, target }) => (
   <S.SocialIconWrapper
     className="fa-py-4 fa-px-2"
     href={medium.href}
@@ -25,5 +25,3 @@ const SocialMediaIcon: React.FC<IconProps> = ({ medium, target }) => (
     <ReactSVG path={medium.path} className="social-icon" />
   </S.SocialIconWrapper>
 );
-
-export default SocialMediaIcon;
