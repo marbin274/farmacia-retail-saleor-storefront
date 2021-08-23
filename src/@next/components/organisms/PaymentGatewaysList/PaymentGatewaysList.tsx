@@ -70,7 +70,7 @@ const PaymentGatewaysList: React.FC<IProps> = ({
   }, []);
 
   useEffect(() => {
-    const pathname = window.location.pathname;
+    const pathname = window?.location.pathname;
     const pathElements = pathname.split('/');
     if (selectPaymentGateway) {
       selectPaymentGateway('');

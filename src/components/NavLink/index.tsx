@@ -29,7 +29,7 @@ const NavLinkComponent: React.FC<NavLinkProps & RouteComponentProps> = ({
 }) => {
   const { name, url, category, collection, page } = item;
   const link = (url: string) => {
-    const isActive = window.location.pathname === url;
+    const isActive = window?.location.pathname === url;
     return (
       <Link to={url} {...props}>
         <S.NavActive isActive={isActive}>{name} </S.NavActive>
