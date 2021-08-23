@@ -61,7 +61,7 @@ export const PasswordChangeForm: React.FC<{
                 <S.ContentExtendInput>
                   <TextField
                     name="oldPassword"
-                    label="Contraseña anterior"
+                    label="Contraseña actual"
                     type="password"
                     value={values.oldPassword}
                     onBlur={handleBlur}

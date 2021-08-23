@@ -3,8 +3,9 @@ import { useAccountUpdate, useUserDetails } from '@sdk/react';
 import { Attribute, Tile } from '@components/atoms';
 import { AccountUpdateForm } from './AccountUpdateForm';
 import * as S from './styles';
-import { Button } from '@farmacia-retail/farmauna-components';
+import { Button, CheckIcon } from '@farmacia-retail/farmauna-components';
 import { PasswordTile } from './PasswordTile';
+import { Alert } from '@temp/@next/components/molecules';
 
 interface IAccountTitleProps {
   startFocusAccount(): void;
@@ -17,6 +18,7 @@ export const AccountTile: React.FC<IAccountTitleProps> = ({
 }) => {
   const [isFocusPassword, setIsFocusPassword] = React.useState(false);
   const [isEditing, setIsEditing] = React.useState(false);
+  const [isSuccessUpdate, setIsSuccessUpdate] = React.useState(false);
   const [setAccountUpdate, { data, error }] = useAccountUpdate();
   const { data: user } = useUserDetails();
 
@@ -42,18 +44,38 @@ export const AccountTile: React.FC<IAccountTitleProps> = ({
   const stopFocusPassword = () => {
     stopFocusAccount();
     setIsFocusPassword(false);
+    setIsSuccessUpdate(false);
   };
 
+  const notifyRequestSuccess = () => {
+    setIsSuccessUpdate(true);
+  };
+
+  React.useEffect(() => {
+    if (isSuccessUpdate) {
+      setTimeout(() => {
+        setIsSuccessUpdate(false);
+      }, 3000);
+    }
+  }, [isSuccessUpdate]);
   return (
     <S.TileWrapper>
+      {isSuccessUpdate && (
+        <Alert
+          icon={<CheckIcon size={12} />}
+          message="La contraseña fue cambiada con éxito"
+          className="fa-mb-4 md:fa-flex"
+        />
+      )}
       <Tile>
         <S.Wrapper className="fa-pt-8 fa-px-4 fa-pb-2">
           <S.Content>
             <S.HeaderSmall
-              className={`personal_data fa-text-neutral-darkest fa-text-lg ${
+              className={`personal_data fa-text-neutral-darkest md:fa-text-lg 
+              ${
                 isEditing || isFocusPassword
-                  ? 'fa-justify-start'
-                  : 'fa-justify-center'
+                  ? 'fa-text-2xl fa-justify-start'
+                  : 'fa-text-lg fa-justify-center'
               }`}
             >
               {isFocusPassword && 'Cambiar contraseña'}
@@ -122,6 +144,7 @@ export const AccountTile: React.FC<IAccountTitleProps> = ({
                   className={`${isEditing ? 'fa-mt-4' : ''} fa-mb-0`}
                 >
                   <PasswordTile
+                    notifyRequestSuccess={notifyRequestSuccess}
                     startFocusPassword={startFocusPassword}
                     stopFocusPassword={stopFocusPassword}
                   />

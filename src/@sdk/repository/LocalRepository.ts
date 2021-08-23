@@ -91,6 +91,6 @@ export class LocalRepository extends Repository implements ILocalRepository {
     this.saveItem(LocalStorageItems.GA_USER_ID_KEY, userId);
   }
   clearStorage(): void {
-    this.clearStorage();
+    this.clearRepositoryStorage();
   }
 }
