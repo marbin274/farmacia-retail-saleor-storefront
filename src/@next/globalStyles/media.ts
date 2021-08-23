@@ -1,16 +1,15 @@
-import { useMediaQuery } from "react-responsive";
-import { css } from "styled-components";
+import { useMediaQuery } from 'react-responsive';
+import { css } from 'styled-components';
 import {
   largeScreen,
   mediumScreen,
   smallScreen,
   xLargeScreen,
   xSmallScreen,
-  xxSmallScreen, 
+  xxSmallScreen,
   xxLargeScreen,
-  xxxLargeScreen
-} from "./constants";
-
+  xxxLargeScreen,
+} from './constants';
 
 const breakpoints = {
   largeScreen,
@@ -21,7 +20,6 @@ const breakpoints = {
   xxSmallScreen,
   xxLargeScreen,
   xxxLargeScreen,
-  
 };
 
 type Breakpoints = keyof typeof breakpoints;
@@ -31,11 +29,10 @@ type Media = Record<
 >;
 
 export const useMediaScreen = (screen?: string) => {
-
   const isDesktopScreen = useMediaQuery({
     query: `(min-width: ${mediumScreen}px)`,
   });
-  
+
   const isCustomMaxScreen = useMediaQuery({
     query: `(max-width: ${screen}px)`,
   });
@@ -51,7 +48,6 @@ export const useMediaScreen = (screen?: string) => {
   const isMobileScreen = useMediaQuery({
     query: `(max-width: ${smallScreen}px)`,
   });
-  
 
   return {
     isDesktopScreen,
@@ -60,7 +56,7 @@ export const useMediaScreen = (screen?: string) => {
     isMaxLargeScreen,
     isMobileScreen,
   };
-}
+};
 
 export const media = Object.keys(breakpoints).reduce(
   (acc, label) => {

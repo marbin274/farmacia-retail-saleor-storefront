@@ -1,36 +1,14 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 import {
   basicProductFragment,
+  productPricingFragment,
   productVariantFragment,
+  productVariantFragmentSimple,
   selectedAttributeFragment,
-} from "../fragments/products";
+} from '../fragments/products';
 
-export const productPricingFragment = gql`
-  fragment ProductPricingField on Product {
-    pricing {
-      onSale
-      priceRangeUndiscounted {
-        start {
-          ...Price
-        }
-        stop {
-          ...Price
-        }
-      }
-      priceRange {
-        start {
-          ...Price
-        }
-        stop {
-          ...Price
-        }
-      }
-    }
-  }
-`;
-
-export const productListDetails = gql`
+export const productList = gql`
   ${basicProductFragment}
   ${productPricingFragment}
   query ProductList(
@@ -78,7 +56,7 @@ export const productDetails = gql`
   ${selectedAttributeFragment}
   ${productVariantFragment}
   ${productPricingFragment}
-  query ProductDetails($id: ID!, $countryCode: CountryCode) {
+  query ProductDetails($id: ID!, $countryCode: CountryCode, $districtId: ID) {
     product(id: $id) {
       ...BasicProductFields
       ...ProductPricingField
@@ -91,10 +69,6 @@ export const productDetails = gql`
             node {
               ...BasicProductFields
               ...ProductPricingField
-              category {
-                id
-                name
-              }
             }
           }
         }
@@ -142,6 +116,85 @@ export const variantsProductsAvailable = gql`
           id
           isAvailable
           quantityAvailable(district: $districtId)
+        }
+      }
+    }
+  }
+`;
+
+export const searchProducts = gql`
+  ${productPricingFragment}
+  ${productVariantFragmentSimple}
+  query SearchProducts(
+    $query: String!
+    $attributes: [AttributeInput]
+    $pageSize: Int
+    $page: Int
+    $sortBy: ProductOrder
+    $priceLte: Float
+    $priceGte: Float
+    $districtId: ID
+  ) {
+    paginatedProducts(
+      page: $page
+      pageSize: $pageSize
+      sortBy: $sortBy
+      filter: {
+        attributes: $attributes
+        minimalPrice: { gte: $priceGte, lte: $priceLte }
+        search: $query
+      }
+    ) {
+      totalCount
+      edges {
+        node {
+          ...ProductPricingField
+          id
+          name
+          attributes {
+            attribute {
+              id
+              name
+            }
+            values {
+              id
+              name
+              value: name
+            }
+          }
+          thumbnail {
+            url
+            alt
+          }
+          thumbnail2x: thumbnail(size: 510) {
+            url
+          }
+          category {
+            id
+            name
+          }
+          variants {
+            ...ProductVariantFieldsSimple
+          }
+        }
+      }
+      pageInfo {
+        endCursor
+        hasNextPage
+      }
+    }
+    attributes(first: 100) {
+      edges {
+        node {
+          filterableInStorefront
+          id
+          name
+          slug
+          values {
+            id
+            name
+            slug
+          }
         }
       }
     }

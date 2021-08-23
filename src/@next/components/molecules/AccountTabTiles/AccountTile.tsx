@@ -1,14 +1,21 @@
-import React from "react";
+import React from 'react';
+import { useAccountUpdate, useUserDetails } from '@sdk/react';
+import { Attribute, Tile } from '@components/atoms';
+import { AccountUpdateForm } from './AccountUpdateForm';
+import * as S from './styles';
+import { Button } from '@farmacia-retail/farmauna-components';
+import { PasswordTile } from './PasswordTile';
 
-import { useAccountUpdate, useUserDetails } from "@sdk/react";
+interface IAccountTitleProps {
+  startFocusAccount(): void;
+  stopFocusAccount(): void;
+}
 
-import { Attribute, Tile } from "@components/atoms";
-
-import { AccountUpdateForm } from "./AccountUpdateForm";
-import * as S from "./styles";
-import { Button, PencilIcon } from "@farmacia-retail/farmauna-components";
-
-export const AccountTile: React.FC = () => {
+export const AccountTile: React.FC<IAccountTitleProps> = ({
+  startFocusAccount,
+  stopFocusAccount,
+}) => {
+  const [isFocusPassword, setIsFocusPassword] = React.useState(false);
   const [isEditing, setIsEditing] = React.useState(false);
   const [setAccountUpdate, { data, error }] = useAccountUpdate();
   const { data: user } = useUserDetails();
@@ -18,35 +25,48 @@ export const AccountTile: React.FC = () => {
       setIsEditing(false);
     }
   }, [data, error]);
+
+  React.useEffect(() => {
+    if (isEditing) {
+      startFocusAccount();
+    } else {
+      stopFocusAccount();
+    }
+  }, [isEditing]);
+
+  const startFocusPassword = () => {
+    startFocusAccount();
+    setIsFocusPassword(true);
+  };
+
+  const stopFocusPassword = () => {
+    stopFocusAccount();
+    setIsFocusPassword(false);
+  };
+
   return (
     <S.TileWrapper>
       <Tile>
-        <S.Wrapper className="fa-pt-8 fa-px-2 fa-pb-2">
-          <S.Header className="my_data">
-            <span className='fa-text-2xl fa-font-semibold'>Mis datos</span>
-            <div className='fa-self-start'>
-              {!isEditing && (
-                <Button
-                  icon={<PencilIcon />}
-                  iconOnly={true}
-                  size="small"
-                  onClick={() => setIsEditing(isEditing => !isEditing)}
-                />
-
-              )}
-            </div>
-          </S.Header>
+        <S.Wrapper className="fa-pt-8 fa-px-4 fa-pb-2">
           <S.Content>
-            <S.HeaderSmall className="personal_data">
-              Datos personales
+            <S.HeaderSmall
+              className={`personal_data fa-text-neutral-darkest fa-text-lg ${
+                isEditing || isFocusPassword
+                  ? 'fa-justify-start'
+                  : 'fa-justify-center'
+              }`}
+            >
+              {isFocusPassword && 'Cambiar contraseña'}
+              {!isFocusPassword && isEditing && 'Editar mis datos'}
+              {!isFocusPassword && !isEditing && 'Mis datos personales'}
             </S.HeaderSmall>
             {isEditing ? (
               <AccountUpdateForm
                 initialValues={{
-                  firstName: (user && user.firstName) || "",
-                  lastName: (user && user.lastName) || "",
+                  firstName: (user && user.firstName) || '',
+                  lastName: (user && user.lastName) || '',
                 }}
-                handleSubmit={data => {
+                handleSubmit={(data) => {
                   setAccountUpdate({ input: data });
                 }}
                 hide={() => {
@@ -55,32 +75,58 @@ export const AccountTile: React.FC = () => {
                 user={user}
               />
             ) : (
-              <S.ContentOneLine>
-                <S.AttributeWrapper>
-                  <Attribute
-                    description="Nombres"
-                    attributeValue={(user && user.firstName) || "-"}
+              <>
+                {!isFocusPassword && (
+                  <>
+                    <S.AttributeWrapper>
+                      <Attribute
+                        description="Nombres completos "
+                        role="fullname"
+                        attributeValue={
+                          `${user?.firstName} ${user?.lastName}` || ''
+                        }
+                      />
+                    </S.AttributeWrapper>
+
+                    <S.AttributeWrapper>
+                      <Attribute
+                        description="Correo electrónico"
+                        role="email"
+                        attributeValue={(user && user.email) || '-'}
+                      />
+                    </S.AttributeWrapper>
+                    <S.AttributeWrapper>
+                      <Attribute
+                        description="Número de documento"
+                        role="document"
+                        attributeValue={(user && user.documentNumber) || '-'}
+                      />
+                    </S.AttributeWrapper>
+                    <S.AttributeWrapper>
+                      {!isEditing && (
+                        <Button
+                          variant="outline"
+                          role="edit-account-option"
+                          onClick={() =>
+                            setIsEditing((isEditing) => !isEditing)
+                          }
+                        >
+                          Editar mis datos
+                        </Button>
+                      )}
+                    </S.AttributeWrapper>
+                  </>
+                )}
+
+                <S.AttributeWrapper
+                  className={`${isEditing ? 'fa-mt-4' : ''} fa-mb-0`}
+                >
+                  <PasswordTile
+                    startFocusPassword={startFocusPassword}
+                    stopFocusPassword={stopFocusPassword}
                   />
                 </S.AttributeWrapper>
-                <S.AttributeWrapper>
-                  <Attribute
-                    description="Apellidos"
-                    attributeValue={(user && user.lastName) || "-"}
-                  />
-                </S.AttributeWrapper>
-                <S.AttributeWrapper>
-                  <Attribute
-                    description="Correo"
-                    attributeValue={(user && user.email) || "-"}
-                  />
-                </S.AttributeWrapper>
-                <S.AttributeWrapper>
-                  <Attribute
-                    description="Número de documento"
-                    attributeValue={(user && user.documentNumber) || "-"}
-                  />
-                </S.AttributeWrapper>
-              </S.ContentOneLine>
+              </>
             )}
           </S.Content>
         </S.Wrapper>

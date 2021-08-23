@@ -1,3 +1,4 @@
+name: Storefront CI
 on:
   pull_request:
     branches: [master, qa2, release]
@@ -6,7 +7,7 @@ on:
 
 jobs:
   build:
-    name: "STOREFRONT CI "
+    name: "STOREFRONT CI"
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -27,21 +28,30 @@ jobs:
         run: npx tsc --noEmit & npx tsc --noEmit -p src/@sdk & npx tsc --noEmit -p src/@next
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-      - name: 4- Run tslint
-        run: npm run tslint
+      - name: 4- Run eslint
+        run: npm run eslint
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
       - name: 5- Run tests
         run: npm run test
         env: 
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-      - name: 6- Build application master ${{ github.event.pull_request.base.ref }} - by ${{ github.actor }}
+
+      - name: 6- SonarQube Scan
+        uses: sonarsource/sonarqube-scan-action@master
+        with:
+          projectBaseDir: './'
+        env:
+          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONARQUBE_HOST }}
+
+      - name: 7- Build application master ${{ github.event.pull_request.base.ref }} - by ${{ github.actor }}
         if: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'master' }}
         run: npm run build
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
           API_URI: ${{ secrets.GRAPHQL_URL_QA }}
-      - name: 6- Build application release ${{ github.event.pull_request.base.ref }} - by ${{ github.actor }}
+      - name: 7- Build application release ${{ github.event.pull_request.base.ref }} - by ${{ github.actor }}
         if: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'release' }}
         run: npm run build
         env:

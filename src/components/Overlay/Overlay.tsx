@@ -1,9 +1,7 @@
-import "./scss/index.scss";
-
-import classNames from "classnames";
-import * as React from "react";
-
-import { OverlayContextInterface } from "./context";
+import classNames from 'classnames';
+import * as React from 'react';
+import { OverlayWrapper } from './styles';
+import { OverlayContextInterface } from './context';
 
 interface OverlayProps {
   context: OverlayContextInterface;
@@ -15,17 +13,17 @@ const Overlay: React.FC<OverlayProps> = ({
   className,
   context: { type, theme, hide },
 }) => (
-  <div
-    className={classNames("overlay", {
+  <OverlayWrapper
+    className={classNames('overlay', {
       [`overlay--${type}`]: !!type,
-      [`${className}`]: !!className, 
+      [`${className}`]: !!className,
     })}
     onClick={hide}
   >
-    <div className={`overlay__${theme}`} onClick={e => e.stopPropagation()}>
+    <div className={`overlay__${theme}`} onClick={(e) => e.stopPropagation()}>
       {children}
     </div>
-  </div>
+  </OverlayWrapper>
 );
 
 export default Overlay;

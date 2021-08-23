@@ -1,12 +1,12 @@
-import { InMemoryCache } from "apollo-cache-inmemory";
-import { ApolloClient } from "apollo-client";
-import { ApolloLink } from "apollo-link";
-import { BatchHttpLink } from "apollo-link-batch-http";
-import { RetryLink } from "apollo-link-retry";
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { ApolloClient } from 'apollo-client';
+import { ApolloLink } from 'apollo-link';
+import { BatchHttpLink } from 'apollo-link-batch-http';
+import { RetryLink } from 'apollo-link-retry';
 
-import { SaleorAPI } from "./api";
-import { APIProxy } from "./api/APIProxy";
-import { Config } from "./types";
+import { SaleorAPI } from './api';
+import { APIProxy } from './api/APIProxy';
+import { Config } from './types';
 
 const getLink = (
   apiUrl: string,
@@ -48,6 +48,7 @@ export class SaleorManager {
 
   /**
    * Use this method to obtain current API and listen to its update on occured changes within it.
+   *
    * @param apiChangeListener Function called to get an API and called on every API update.
    */
   connect(apiChangeListener: (api: SaleorAPI) => any) {

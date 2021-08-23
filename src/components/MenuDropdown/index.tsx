@@ -1,42 +1,40 @@
-import * as React from "react";
+import classNames from 'classnames';
+import * as React from 'react';
+import * as S from './styles';
 
-import "./scss/index.scss";
+type Props = {
+  content: React.ReactNode;
+  head: React.ReactNode;
+  suffixClass?: string;
+};
 
-class MenuDropdown extends React.Component<
-  {
-    head: React.ReactElement<{}>;
-    content: React.ReactElement<{}>;
-    suffixClass: string;
-  },
-  { active: boolean }
-> {
-  static defaultProps = {
-    suffixClass: "",
-  };
-  constructor(props) {
-    super(props);
-    this.state = { active: false };
-  }
-  render() {
-    return (
-      <div
-        data-testid="user-btn"
-        className="menu-dropdown"
-        onMouseOver={() => this.setState({ active: true })}
-        onMouseLeave={() => this.setState({ active: false })}
+const MenuDropdown: React.FC<Props> = (props) => {
+  const [active, setActive] = React.useState(false);
+  return (
+    <div
+      data-testid="user-btn"
+      className="fa-relative"
+      onMouseOver={() => setActive(true)}
+      onMouseLeave={() => setActive(false)}
+    >
+      {props.head}
+      <S.MenuDropwdownBody
+        className={classNames(
+          `fa-absolute fa-right-4 fa-top-6 fa-bg-neutral-lightest fa-p-4 fa-w-60 fa-rounded-lg ${props.suffixClass}`,
+          {
+            'fa-hidden': !active,
+            'fa-block fa-z-2': active,
+          }
+        )}
       >
-        {this.props.head}
+        {props.content}
+      </S.MenuDropwdownBody>
+    </div>
+  );
+};
 
-        <div
-          className={`menu-dropdown__body${" menu-dropdown__body"+this.props.suffixClass}${
-            this.state.active ? " menu-dropdown__body--visible" : ""
-          }`}
-        >
-          {this.props.content}
-        </div>
-      </div>
-    );
-  }
-}
+MenuDropdown.defaultProps = {
+  suffixClass: '',
+};
 
 export default MenuDropdown;

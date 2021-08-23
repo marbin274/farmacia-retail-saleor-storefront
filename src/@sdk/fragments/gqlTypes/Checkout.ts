@@ -155,6 +155,7 @@ export interface Checkout_billingAddress {
   isDefaultShippingAddress: boolean | null;
   latitude: number | null;
   longitude: number | null;
+  alias: string | null;
 }
 
 export interface Checkout_shippingAddress_country {
@@ -198,6 +199,7 @@ export interface Checkout_shippingAddress {
   isDefaultShippingAddress: boolean | null;
   latitude: number | null;
   longitude: number | null;
+  alias: string | null;
 }
 
 export interface Checkout_availableShippingMethods_price {
@@ -640,7 +642,10 @@ export interface Checkout_lines_variant_product {
    * The main thumbnail for a product.
    */
   thumbnail2x: Checkout_lines_variant_product_thumbnail2x | null;
-  productType: Checkout_lines_variant_product_productType;
+  /**
+   * Product type
+   */
+  productType: Checkout_lines_variant_product_productType | null;
 }
 
 export interface Checkout_lines_variant {

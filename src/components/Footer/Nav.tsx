@@ -1,173 +1,99 @@
-import { DOCUMENTS_URLS_S3 } from "@temp/core/config";
-import { indexOf } from "lodash";
-import * as React from "react";
-import { withRouter, RouteComponentProps } from "react-router-dom";
-import ReactSVG from "react-svg";
-import { NavLink } from "..";
-import arrowDowm from "../../images/arrow-down.svg";
-import logoFarmaunaFooter from "../../images/logo-farmauna-footer.svg";
-import { TypedSecondaryMenuQuery } from "./queries";
-import "./scss/index.scss";
-import SocialMedia from "../SocialMedia";
-import classNames from "classnames";
-import { Skeleton } from "./skeleton";
+import { DOCUMENTS_URLS_S3 } from '@temp/core/config';
+import classNames from 'classnames';
+import * as React from 'react';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { NavLink } from '..';
+import logoFarmaunaFooter from '../../images/logo-farmauna-footer.svg';
+import SocialMedia from '../SocialMedia';
+import { TypedSecondaryMenuQuery } from './queries';
+import { Skeleton } from './skeleton';
+import * as S from './styles';
+
 type IProps = RouteComponentProps;
 
 type IState = {
   width: number;
-  higher: boolean;
 };
 
 class Nav extends React.PureComponent<IProps, IState> {
-  state: IState = { width: 0, higher: false };
+  state: IState = { width: 0 };
 
   updateDimensions = () => {
     this.setState({ width: window.innerWidth });
   };
 
   componentDidMount() {
-    this.state.width = window.screen.width;
-    this.setHigher();
-    window.addEventListener("resize", this.updateDimensions);
+    this.setState({ width: window.screen.width });
+    window.addEventListener('resize', this.updateDimensions);
   }
   componentWillUnmount() {
-    window.removeEventListener("resize", this.updateDimensions);
-  }
-
-  componentDidUpdate(prevProps: IProps) {
-    if (this.props.location.pathname !== prevProps.location.pathname) {
-      this.setHigher();
-    }
-  }
-
-  setHigher() {
-    this.setState({
-      higher: this.props.location.pathname.includes("/product/"),
-    });
+    window.removeEventListener('resize', this.updateDimensions);
   }
 
   render() {
-    const _arrows = Array.from(
-      document.getElementsByClassName("footer-nav__arrow-icon")
-    ).map(x => x.id);
-
-    if (this.state.width > 540) {
-      _arrows.map(x => {
-        document.getElementById(x).style.transform = "rotate(360deg)";
-      });
-    }
-
-    function onClickArrow(data) {
-      const arrows = Array.from(
-        document.getElementsByClassName("footer-nav__arrow-icon")
-      ).map(x => x.id);
-      let currentArrow = "";
-
-      arrows.map(x => {
-        if (x !== data.id) {
-          document.getElementById(x).style.transform = "rotate(360deg)";
-        } else {
-          currentArrow = x;
-          document.getElementById(x).style.transform = "rotate(180deg)";
-          return;
-        }
-      });
-
-      const children: any[] = data.children;
-
-      const pElements: any[] = Array.from(document.getElementsByTagName("p"))
-        .filter(x => x.id.length > 0)
-        .map(x => x.id);
-
-      children.map(x => {
-        const index = pElements.filter(u => u === x.id)[0];
-        pElements.splice(indexOf(pElements, index), 1);
-      });
-
-      pElements.map(x => {
-        document.getElementById(x).style.display = "none";
-      });
-
-      children.map(x => {
-        const element = document.getElementById(x.id);
-        if (window.getComputedStyle(element).display === "none") {
-          element.style.display = "block";
-          document.getElementById(currentArrow).style.transform =
-            "rotate(180deg)";
-          return;
-        }
-        element.style.display = "none";
-        document.getElementById(currentArrow).style.transform =
-          "rotate(360deg)";
-      });
-    }
-
     return (
-      <footer
-        className={classNames("footer-nav", {
-          "nav-higher": !!this.state.higher,
-        })}
-      >
-        <div className="container">
-          <div className="footer-nav__section">
-            <div className="footer-nav__section-header">
-              <div className="logo-footer-farmauna">
-                <img height={22} src={logoFarmaunaFooter} alt="Logo Farmauna" width={133} />
+      <S.FooterWrapper className={classNames('fa-bg-interactive')}>
+        <S.Container>
+          <div className="fa-mb-8 lg:fa-mb-0">
+            <div className="fa-mb-3.5 fa-font-medium fa-text-neutral-lightest fa-text-sm lg:fa-mb-9">
+              <div>
+                <img
+                  height={22}
+                  src={logoFarmaunaFooter}
+                  alt="Logo Farmauna"
+                  width={133}
+                />
               </div>
             </div>
-            <div className="footer-nav__section-content">
+            <S.SectionContent>
               <p>¿Necesitas asesoría?</p>
-              <p className="email_footer">
-                <a href="mailto:consultas@farmauna.com" target="_blank">
+              <p className="fa-text-sm fa-font-semibold fa-leading-6">
+                <S.MailTo
+                  className="fa-text-brand-02"
+                  href="mailto:consultas@farmauna.com"
+                  target="_blank"
+                >
                   consultas@farmauna.com
-                </a>
+                </S.MailTo>
               </p>
-              <p className="phone_footer">
-                <span className="phone">01 3913655</span>
+              <p className="fa-mt-8">
+                <S.Phone className="fa-text-h3 xs:fa-text-h2 fa-font-semibold">
+                  01 3913655
+                </S.Phone>
               </p>
-            </div>
+            </S.SectionContent>
           </div>
-          <TypedSecondaryMenuQuery
-            loader={<Skeleton />}
-          >
+          <TypedSecondaryMenuQuery loader={<Skeleton />}>
             {({ data }) => {
-              return data.shop.navigation.secondary.items.map(item => (
-                <div className="footer-nav__section" key={item.id}>
-                  <h5 className="footer-nav__section-header">
+              return data.shop.navigation.secondary.items.map((item) => (
+                <div className="fa-mb-8 lg:fa-mb-0" key={item.id}>
+                  <h5 className="fa-mb-3.5 fa-font-medium fa-text-neutral-lightest fa-text-sm lg:fa-mb-9">
                     <NavLink item={item} />
-                    <ReactSVG
-                      id={item.id}
-                      onClick={() => onClickArrow(item)}
-                      path={arrowDowm}
-                      className={"footer-nav__arrow-icon"}
-                    />
                   </h5>
-                  <div className="footer-nav__section-content">
-                    {item.children.map(subItem => (
+                  <S.SectionContent>
+                    {item.children.map((subItem) => (
                       <p
-                        style={
-                          this.state.width > 540
-                            ? { display: "block" }
-                            : { display: "none" }
-                        }
+                        className={classNames({
+                          'fa-block': this.state.width > 540,
+                          'fa-hidden': this.state.width <= 540,
+                        })}
                         id={subItem.id}
                         key={subItem.id}
                       >
                         <NavLink item={subItem} />
                       </p>
                     ))}
-                  </div>
+                  </S.SectionContent>
                 </div>
               ));
             }}
           </TypedSecondaryMenuQuery>
-
           <SocialMedia />
-        </div>
-        <div className="container_terms_and_privacy">
-          <div className="content_terms">
-            <div className="copyright">
-              <label htmlFor="">
+        </S.Container>
+        <S.ContainerTermsPolicy>
+          <S.ContentTerms>
+            <S.Privacy className="fa-text-gray fa-font-normal fa-flex fa-flex-col lg:fa-block">
+              <label className="fa-mr-auto fa-mb-2.5 fa-text-sm fa-font-normal lg:fa-mr-7 lg:fa-mb-0">
                 <a
                   href={DOCUMENTS_URLS_S3.politicasDePrivacidadUrl}
                   rel="noopener nofollow"
@@ -175,7 +101,7 @@ class Nav extends React.PureComponent<IProps, IState> {
                   Políticas de privacidad
                 </a>
               </label>
-              <label htmlFor="">
+              <label className="fa-mr-auto fa-mb-2.5 fa-text-sm fa-font-normal lg:fa-mr-7 lg:fa-mb-0">
                 <a
                   href={DOCUMENTS_URLS_S3.terminosYCondicionesUrl}
                   rel="noopener nofollow"
@@ -183,13 +109,13 @@ class Nav extends React.PureComponent<IProps, IState> {
                   Términos y condiciones
                 </a>
               </label>
-            </div>
-            <div className="privacy">
-              <a href="">© Copyright Farmauna 2021</a>
-            </div>
-          </div>
-        </div>
-      </footer>
+            </S.Privacy>
+            <S.Copyright className="fa-text-sm fa-font-normal fa-mt-3 lg:fa-mt-0">
+              <a href="#">© Copyright Farmauna 2021</a>
+            </S.Copyright>
+          </S.ContentTerms>
+        </S.ContainerTermsPolicy>
+      </S.FooterWrapper>
     );
   }
 }

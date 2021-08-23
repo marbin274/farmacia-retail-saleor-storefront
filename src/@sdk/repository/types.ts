@@ -3,29 +3,32 @@ import {
   Checkout_lines_variant_attributes,
   Checkout_lines_variant_pricing,
   Checkout_lines_variant_product,
-} from "../fragments/gqlTypes/Checkout";
-import { ICategory } from "@app/types/ICategory";
-import { ProductDetails_product_variants_pricing } from "../queries/gqlTypes/ProductDetails";
-import { IProductVariantPricing } from "@app/types/IProductVariantPricing";
+} from '../fragments/gqlTypes/Checkout';
+import { ICategory } from '@app/types/ICategory';
+import { ProductDetails_product_variants_pricing } from '../queries/gqlTypes/ProductDetails';
+import { IProductVariantPricing } from '@app/types/IProductVariantPricing';
 import {
   IDiscount,
   IShippingPrice,
   ISubtotalPrice,
   IItems,
-} from "../api/Cart/types";
-import { ITotalPrice } from "@temp/@sdk/api/Cart/types";
+} from '../api/Cart/types';
+import { ITotalPrice } from '@temp/@sdk/api/Cart/types';
 
 export enum LocalStorageItems {
-  CHECKOUT = "data_checkout",
-  DISTRICT_CHANGED = "district_changed",
-  DISTRICT_SELECTED = "district_selected",
-  FINAL_CHECKOUT = "final_checkout",
-  FINAL_USECART = "final_use_cart",
-  JOB_QUEUE_CHECKOUT = "job_queueCheckout",
-  OPTIMIZELY_USER_ID_KEY = "@opt_id",
-  PAYMENT = "data_payment",
-  RESET_PASSWORD_EMAIL = "reset_password_email",
-  SHOW_ADDRESS_GEOCALIZATION_INFO = "show_address_geocalization_info",
+  CHECKOUT = 'data_checkout',
+  DISTRICT_CHANGED = 'district_changed',
+  DISTRICT_SELECTED = 'district_selected',
+  FINAL_CHECKOUT = 'final_checkout',
+  FINAL_USECART = 'final_use_cart',
+  JOB_QUEUE_CHECKOUT = 'job_queueCheckout',
+  GA_USER_ID_KEY = '@user_id',
+  OPTIMIZELY_USER_ID_KEY = '@opt_id',
+  PAYMENT = 'data_payment',
+  RESET_PASSWORD_EMAIL = 'reset_password_email',
+  SHOW_ADDRESS_GEOCALIZATION_INFO = 'show_address_geocalization_info',
+  PURCHASE_NUMBER = 'purchase_number',
+  TOKEN = 'token',
 }
 
 export interface ICheckoutModelLineTotalPrice {
@@ -40,7 +43,7 @@ export interface ICheckoutModelLineVariant {
   name?: string;
   sku?: string;
   pricing?: Checkout_lines_variant_pricing | null;
-  product?:Checkout_lines_variant_product;
+  product?: Checkout_lines_variant_product;
   quantityAvailable?: number;
 }
 

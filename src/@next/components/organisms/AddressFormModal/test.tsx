@@ -1,42 +1,29 @@
-import { mount, shallow } from "enzyme";
-import "jest-styled-components";
-import React from "react";
+import { mount, shallow } from 'enzyme';
+import 'jest-styled-components';
+import React from 'react';
 
-import { AddressFormModal } from ".";
+import { AddressFormModal } from '.';
+import { IAddressFormModalProps } from './types';
 
-jest.mock("@sdk/react", () => ({
+jest.mock('@sdk/react', () => ({
   useCreateUserAddress: () => [jest.fn(), { data: null, error: null }],
   useUpdateUserAddress: () => [jest.fn(), { data: null, error: null }],
 }));
 
-const DEFAULT_PROPS = {
-  formId: "address-form",
-  handleSubmit: jest.fn(),
+const DEFAULT_PROPS: IAddressFormModalProps = {
   hideModal: jest.fn(),
-  options: [
-    {
-      code: "PL",
-      country: "Poland",
-    },
-    {
-      code: "PL",
-      country: "United States of America",
-    },
-  ],
-  submitBtnText: "Submit button",
-  title: "This is title",
+  onSubmit: jest.fn(),
+  title: 'My title',
 };
 
-describe("<AddressFormModal />", () => {
-  it("exists", () => {
+describe('<AddressFormModal />', () => {
+  it('exists', () => {
     const wrapper = shallow(<AddressFormModal {...DEFAULT_PROPS} />);
     expect(wrapper.exists()).toEqual(true);
   });
 
-  it("should have correct title and submit button text", () => {
+  it('should have correct title and submit button text', () => {
     const wrapper = mount(<AddressFormModal {...DEFAULT_PROPS} />);
-
-    expect(wrapper.props().submitBtnText).toEqual(DEFAULT_PROPS.submitBtnText);
     expect(wrapper.props().title).toEqual(DEFAULT_PROPS.title);
   });
 });

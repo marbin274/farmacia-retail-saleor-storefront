@@ -1,28 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import {
   NiubizPaymentGateway,
   CardTokenPaymentGateway,
-} from "@components/organisms";
-import { NOT_CHARGE_TOKEN } from "@components/organisms/DummyPaymentGateway";
-import { TileRadio, Collapse } from "@components/molecules";
-import { alertService } from "@components/atoms/Alert";
+} from '@components/organisms';
+import { NOT_CHARGE_TOKEN } from '@components/organisms/DummyPaymentGateway';
+import { TileRadio, Collapse } from '@components/molecules';
+import { alertService } from '@components/atoms/Alert';
 import {
   HIDE_CARDTOKENS_IN_CHECKOUT,
   POS_DISTRICTS,
   PROVIDERS,
-} from "@temp/core/config";
-import PosIcon from "images/auna/pos.svg";
-import { IProps } from "./types";
-import * as S from "./styles";
-import { DummyPaymentGateway } from "..";
-import { IPaymentGatewayConfig } from "@temp/@next/types";
-import { useCreateUserCardToken, useUserDetails } from "@temp/@sdk/react";
-import { ICardTokenizationResult } from "@temp/core/payments/niubiz";
+} from '@temp/core/config';
+import PosIcon from 'images/auna/pos.svg';
+import { IProps } from './types';
+import * as S from './styles';
+import { DummyPaymentGateway } from '..';
+import { IPaymentGatewayConfig } from '@temp/@next/types';
+import { useCreateUserCardToken, useUserDetails } from '@temp/@sdk/react';
+import { ICardTokenizationResult } from '@temp/core/payments/niubiz';
 import {
   generateNiubizPurchaseNumber,
   initNiubizAntiFraud,
   loadNiubizAntiFraudScript,
-} from "../NiubizPaymentGateway/utils";
+} from '../NiubizPaymentGateway/utils';
+import { LocalRepository } from '@temp/@sdk/repository';
 
 const CARD_TOKEN_OPTION = 1;
 const CARD_FORM_OPTION = 2;
@@ -47,9 +48,9 @@ const PaymentGatewaysList: React.FC<IProps> = ({
   onForceReRender,
 }: IProps) => {
   // @ts-ignore
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState('');
   // @ts-ignore
-  const [orderNumber, setOrderNumber] = useState("");
+  const [orderNumber, setOrderNumber] = useState('');
   const [collapseOption, setCollapseOption] = useState<number>();
   const { data: user, loading: userLoading } = useUserDetails();
   const [selectedCardToken, setSelectedCardToken] = useState<string>();
@@ -57,7 +58,7 @@ const PaymentGatewaysList: React.FC<IProps> = ({
   const [saveCardSelected, setSaveCardSelected] = useState(false);
   const [cardNumberTosave, setCardNumberToSave] = useState<string>();
   const [scriptLoaded, setScriptLoaded] = useState(false);
-
+  const localRepository = new LocalRepository();
   const userLoggedIn = !HIDE_CARDTOKENS_IN_CHECKOUT && !!user;
   const userHasCardTokens =
     !HIDE_CARDTOKENS_IN_CHECKOUT && user?.cardTokens?.length > 0;
@@ -70,9 +71,9 @@ const PaymentGatewaysList: React.FC<IProps> = ({
 
   useEffect(() => {
     const pathname = window.location.pathname;
-    const pathElements = pathname.split("/");
+    const pathElements = pathname.split('/');
     if (selectPaymentGateway) {
-      selectPaymentGateway("");
+      selectPaymentGateway('');
     }
     if (pathElements.length > 0) {
       setToken(pathElements[4]);
@@ -88,12 +89,17 @@ const PaymentGatewaysList: React.FC<IProps> = ({
 
   useEffect(() => {
     if (createData?.user && !createData?.errors.length && !createError) {
+      const currentCardToken = createData.user.cardTokens.find(
+        (x) => x.cardNumber === cardNumberTosave
+      );
+
       processPayment({
         gateway: PROVIDERS.AUNA.id,
-        token: createData.user.cardTokens.find(
-          x => x.cardNumber === cardNumberTosave
-        ).id,
+        token: currentCardToken.id,
         withToken: true,
+        cardData: {
+          firstDigits: currentCardToken.binNumber,
+        },
       });
       setCardNumberToSave(undefined);
     }
@@ -102,9 +108,9 @@ const PaymentGatewaysList: React.FC<IProps> = ({
       onError([]);
       setCardNumberToSave(undefined);
       alertService.sendAlert({
-        buttonText: "Entendido",
-        message: "Ha ocurrido un error al intentar guardar la tarjeta",
-        type: "Text",
+        buttonText: 'Entendido',
+        message: 'Ha ocurrido un error al intentar guardar la tarjeta',
+        type: 'Text',
       });
     }
   }, [createData, createError]);
@@ -117,8 +123,9 @@ const PaymentGatewaysList: React.FC<IProps> = ({
     };
 
     if (withAntiFraud) {
-      const config = paymentGateways.find(x => x.id === PROVIDERS.AUNA.id)
-        .config;
+      const config = paymentGateways.find(
+        (x) => x.id === PROVIDERS.AUNA.id
+      ).config;
 
       payload.device_fingerprint = initNiubizAntiFraud(
         config,
@@ -127,7 +134,7 @@ const PaymentGatewaysList: React.FC<IProps> = ({
     }
 
     changeRequestPayload(payload);
-    localStorage.setItem("purchase_number", String(purchaseNumber));
+    localRepository.setPurchase(String(purchaseNumber));
 
     return purchaseNumber;
   };
@@ -229,14 +236,15 @@ const PaymentGatewaysList: React.FC<IProps> = ({
               <TileRadio
                 key={index}
                 label={PROVIDERS.DUMMY.label}
-                radioProps={{ name: "payment-method", value: "dummy", checked }}
+                radioProps={{ name: 'payment-method', value: 'dummy', checked }}
                 onClick={() => onSelectPaymentMethod(id, true)}
                 hasError={hasListError}
+                className="fa-bg-white"
               >
                 <DummyPaymentGateway
                   formRef={formRef}
                   formId={formId}
-                  processPayment={token =>
+                  processPayment={(token) =>
                     processPayment({ gateway: id, token })
                   }
                 />
@@ -251,9 +259,10 @@ const PaymentGatewaysList: React.FC<IProps> = ({
               <TileRadio
                 key={index}
                 label={PROVIDERS.POS.label}
-                radioProps={{ name: "payment-method", value: "pos", checked }}
+                radioProps={{ name: 'payment-method', value: 'pos', checked }}
                 onClick={() => onSelectPaymentMethod(id, true)}
                 hasError={hasListError}
+                className="fa-bg-white"
               >
                 <div className="fa-flex fa-items-center">
                   <img
@@ -282,13 +291,14 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                 key={index}
                 label={PROVIDERS.AUNA.label}
                 radioProps={{
-                  name: "payment-method",
-                  value: "niubiz",
+                  name: 'payment-method',
+                  value: 'niubiz',
                   checked,
                 }}
                 onClick={() => onSelectPaymentMethod(id, false)}
                 hasError={hasListError}
                 contentNoSpacing
+                className="fa-bg-white"
               >
                 {userHasCardTokens ? (
                   <>
@@ -301,7 +311,7 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                       <>
                         <CardTokenPaymentGateway
                           cardTokens={user?.cardTokens}
-                          onSelectCardToken={ct => setSelectedCardToken(ct)}
+                          onSelectCardToken={(ct) => setSelectedCardToken(ct)}
                           selectedCardTokenId={selectedCardToken}
                         />
                         <form
@@ -312,15 +322,22 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                             if (!selectedCardToken) {
                               onError([]);
                               setCardTokenError(
-                                "Elige una tarjeta guardada o compra con una nueva"
+                                'Elige una tarjeta guardada o compra con una nueva'
                               );
                               return;
                             }
+
+                            const currentCardToken = user.cardTokens.find(
+                              (x) => x.id === selectedCardToken
+                            );
 
                             processPayment({
                               gateway: id,
                               token: selectedCardToken,
                               withToken: true,
+                              cardData: {
+                                firstDigits: currentCardToken.binNumber,
+                              },
                             });
                           }}
                         />

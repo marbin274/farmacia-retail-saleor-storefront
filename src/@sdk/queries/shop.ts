@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 export const getShop = gql`
   query GetShop {
@@ -11,6 +11,7 @@ export const getShop = gql`
         warehouse {
           id
           name
+          polygon
         }
       }
       displayGrossPrices
@@ -55,6 +56,27 @@ export const getShopFeaturePlugins = gql`
         id
         name
         active
+      }
+    }
+  }
+`;
+
+export const homePage = gql`
+  query HomePage {
+    shop {
+      description
+      name
+      homepageCollection {
+        id
+        backgroundImage {
+          url
+        }
+        name
+      }
+      analyticsConfig {
+        tagManagerId
+        tagManagerAuth
+        tagManagerEnvironmentId
       }
     }
   }

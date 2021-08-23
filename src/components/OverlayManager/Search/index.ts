@@ -1,5 +1,5 @@
-export { default } from "./Search";
-export * from './NothingFound';
-export { default as ProductItem } from './ProductItem'
-export * from './SearchForm';
-export * from './SearchNetworkResult';
+export { default } from './Search';
+export * from './components/NothingFound';
+export { default as ProductItem } from './components/ProductItem';
+export * from './components/SearchForm';
+export * from './components/SearchNetworkResult';

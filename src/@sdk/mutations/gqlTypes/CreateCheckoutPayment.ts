@@ -170,6 +170,7 @@ export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout_billingAdd
   isDefaultShippingAddress: boolean | null;
   latitude: number | null;
   longitude: number | null;
+  alias: string | null;
 }
 
 export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout_shippingAddress_country {
@@ -213,6 +214,7 @@ export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout_shippingAd
   isDefaultShippingAddress: boolean | null;
   latitude: number | null;
   longitude: number | null;
+  alias: string | null;
 }
 
 export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout_availableShippingMethods_price {
@@ -655,7 +657,10 @@ export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout_lines_vari
    * The main thumbnail for a product.
    */
   thumbnail2x: CreateCheckoutPayment_checkoutPaymentCreate_checkout_lines_variant_product_thumbnail2x | null;
-  productType: CreateCheckoutPayment_checkoutPaymentCreate_checkout_lines_variant_product_productType;
+  /**
+   * Product type
+   */
+  productType: CreateCheckoutPayment_checkoutPaymentCreate_checkout_lines_variant_product_productType | null;
 }
 
 export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout_lines_variant {

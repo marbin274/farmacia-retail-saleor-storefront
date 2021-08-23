@@ -1,14 +1,13 @@
-import { useCheckout, useSignIn } from "@sdk/react";
-import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
-import { joinFormikErrorsToIFormErrorsAndConvertToObjectErrors } from "@temp/@next/utils/errorsManagement";
-import { TokenAuthVariables } from "@temp/@sdk/mutations/gqlTypes/TokenAuth";
-import { useFormik } from "formik";
-import * as React from "react";
-import ForgottenPassword from "../OverlayManager/Login/ForgottenPassword";
-import { loginFormSchema } from "./loginForm.schema";
-import "./scss/index.scss";
-import { Button, InputField } from "@farmacia-retail/farmauna-components";
-
+import { useCheckout, useSignIn } from '@sdk/react';
+import { removePaymentItems } from '@temp/@next/utils/checkoutValidations';
+import { joinFormikErrorsToIFormErrorsAndConvertToObjectErrors } from '@temp/@next/utils/errorsManagement';
+import { TokenAuthVariables } from '@temp/@sdk/mutations/gqlTypes/TokenAuth';
+import { useFormik } from 'formik';
+import * as React from 'react';
+import ForgottenPassword from '../OverlayManager/Login/components/ForgottenPassword';
+import { loginFormSchema } from './loginForm.schema';
+import { Button, InputField } from '@farmacia-retail/farmauna-components';
+import * as S from './styles';
 interface ILoginForm {
   hide?: () => void;
   onSwitchSection?: () => void;
@@ -17,8 +16,8 @@ interface ILoginForm {
 }
 
 const initialValues: TokenAuthVariables = {
-  email: "",
-  password: "",
+  email: '',
+  password: '',
 };
 
 const LoginForm: React.FC<ILoginForm> = ({
@@ -38,7 +37,7 @@ const LoginForm: React.FC<ILoginForm> = ({
     values,
   } = useFormik<TokenAuthVariables>({
     initialValues,
-    onSubmit: async values => {
+    onSubmit: async (values) => {
       const authenticated = await signIn(values);
       if (authenticated && hide) {
         if (checkout?.id) {
@@ -67,57 +66,64 @@ const LoginForm: React.FC<ILoginForm> = ({
   );
 
   return (
-    <div className="login-form">
+    <div>
       <form onSubmit={handleSubmit}>
-        <div className="InputField fa-pb-2">
+        <S.InputWrapper className="fa-mb-2.5 sm:fa-mb-4 fa-mx-0 fa-mt-0 fa-pb-2">
           <InputField
             label="Correo electrónico"
-            className="login-form__input-wrapper"
-            error={!!errors?.email ? errors!.email[0].message : ""}
+            error={!!errors?.email ? errors!.email[0].message : ''}
             placeholder="Correo electrónico"
             autoComplete="email"
             name="email"
             type="text"
-            value={!values?.email ? "" : values?.email.toLowerCase()}
+            value={!values?.email ? '' : values?.email.toLowerCase()}
             onBlur={handleBlur}
             onChange={handleChange}
           />
-        </div>
-        <div className="InputField">
+        </S.InputWrapper>
+        <S.InputWrapper className="fa-mb-2.5 sm:fa-mb-4 fa-mx-0 fa-mt-0 fa-pb-2">
           <InputField
             label="Contraseña"
             type="password"
             autoComplete="password"
-            error={!!errors?.password ? errors!.password[0].message : ""}
+            error={!!errors?.password ? errors!.password[0].message : ''}
             placeholder="Contraseña"
             name="password"
-            value={!values?.password ? "" : values?.password}
+            value={!values?.password ? '' : values?.password}
             onBlur={handleBlur}
             onChange={handleChange}
-            className="login-form__input-wrapper"
           />
-        </div>
+        </S.InputWrapper>
         <ForgottenPassword onClick={onForgottenPassword} />
         {requestErrors?.extraInfo?.userInputErrors?.[0]?.message && (
-          <div className="login-form__errors">
-            <span className="login-form__errors__error form-error">
+          <div>
+            <span className="fa-text-error-medium">
               {requestErrors.extraInfo.userInputErrors[0].message}
             </span>
           </div>
         )}
-        <div className="login-form__button">
+        <div className="fa-mt-4 fa-text-center">
           <Button
             type="submit"
             size="large"
+            className="fa-max-w-full"
+            fullWidth
             {...(loading && { disabled: true })}
           >
-            {loading ? "Cargando" : "Ingresar"}
+            {loading ? 'Cargando' : 'Ingresar'}
           </Button>
         </div>
         {!hideRegister && (
-          <div className="login-form__change-section">
-            <p>¿No tienes cuenta?</p>
-            <Button variant="outline" size="large" onClick={onSwitchSection}>
+          <div className="fa-text-center fa-flex fa-flex-col fa-justify-center fa-w-full fa-mx-auto fa-mb-auto fa-mt-6">
+            <p className="fa-mb-4 fa-text-neutral-darkest fa-font-medium fa-text-sm">
+              ¿No tienes cuenta?
+            </p>
+            <Button
+              className="fa-font-semibold fa-text-sm"
+              variant="outline"
+              size="large"
+              onClick={onSwitchSection}
+            >
               Regístrate
             </Button>
           </div>

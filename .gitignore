@@ -12,6 +12,9 @@
 !.prettierrc
 !.husky
 !.npmrc
+!.prettierignore
+!.vscode/settings.json
+!.eslintrc.js
 dist
 node_modules
 src/locales/_build

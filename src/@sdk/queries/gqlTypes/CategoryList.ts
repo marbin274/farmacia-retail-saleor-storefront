@@ -6,7 +6,7 @@
 // GraphQL query operation: CategoryList
 // ====================================================
 
-export interface CategoryList_categories_edges_node_children_edges_node {
+export interface CategoryList_root_categories_edges_node_children_edges_node {
   __typename: "Category";
   /**
    * The ID of the object.
@@ -15,20 +15,20 @@ export interface CategoryList_categories_edges_node_children_edges_node {
   name: string;
 }
 
-export interface CategoryList_categories_edges_node_children_edges {
+export interface CategoryList_root_categories_edges_node_children_edges {
   __typename: "CategoryCountableEdge";
   /**
    * The item at the end of the edge.
    */
-  node: CategoryList_categories_edges_node_children_edges_node;
+  node: CategoryList_root_categories_edges_node_children_edges_node;
 }
 
-export interface CategoryList_categories_edges_node_children {
+export interface CategoryList_root_categories_edges_node_children {
   __typename: "CategoryCountableConnection";
-  edges: CategoryList_categories_edges_node_children_edges[];
+  edges: CategoryList_root_categories_edges_node_children_edges[];
 }
 
-export interface CategoryList_categories_edges_node {
+export interface CategoryList_root_categories_edges_node {
   __typename: "Category";
   /**
    * The ID of the object.
@@ -38,25 +38,25 @@ export interface CategoryList_categories_edges_node {
   /**
    * List of children of the category.
    */
-  children: CategoryList_categories_edges_node_children | null;
+  children: CategoryList_root_categories_edges_node_children | null;
 }
 
-export interface CategoryList_categories_edges {
+export interface CategoryList_root_categories_edges {
   __typename: "CategoryCountableEdge";
   /**
    * The item at the end of the edge.
    */
-  node: CategoryList_categories_edges_node;
+  node: CategoryList_root_categories_edges_node;
 }
 
-export interface CategoryList_categories {
+export interface CategoryList_root_categories {
   __typename: "CategoryCountableConnection";
-  edges: CategoryList_categories_edges[];
+  edges: CategoryList_root_categories_edges[];
 }
 
 export interface CategoryList {
   /**
-   * List of the shop's categories.
+   * List of categories with level 0.
    */
-  categories: CategoryList_categories | null;
+  root_categories: CategoryList_root_categories | null;
 }

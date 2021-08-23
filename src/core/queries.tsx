@@ -1,13 +1,12 @@
-import { LocalStorageItems } from "@temp/@sdk/repository";
-import { ApolloQueryResult, ErrorPolicy, FetchPolicy } from "apollo-client";
-import { DocumentNode } from "graphql";
-import * as React from "react";
-import { Query, QueryProps, QueryResult } from "react-apollo";
-import { Error } from "../components/Error";
-import Loader from "../components/Loader";
-import { RequireAtLeastOne } from "./tsUtils";
-import { maybe } from "./utils";
-
+import { Loader } from '@temp/@next/components/atoms';
+import { LocalRepository } from '@temp/@sdk/repository';
+import { ApolloQueryResult, ErrorPolicy, FetchPolicy } from 'apollo-client';
+import { DocumentNode } from 'graphql';
+import * as React from 'react';
+import { Query, QueryProps, QueryResult } from 'react-apollo';
+import { Error } from '../components/Error';
+import { RequireAtLeastOne } from './tsUtils';
+import { maybe } from './utils';
 
 interface LoadMore<TData, TVariables> {
   loadMore: (
@@ -35,7 +34,7 @@ interface TypedQueryInnerProps<TData, TVariables> {
 }
 
 export function TypedQuery<TData, TVariables>(query: DocumentNode) {
-  
+  const localRepository = new LocalRepository();
   return (props: TypedQueryInnerProps<TData, TVariables>) => {
     const {
       children,
@@ -44,7 +43,7 @@ export function TypedQuery<TData, TVariables>(query: DocumentNode) {
       renderOnError = false,
       alwaysRender = false,
       alwaysLoader = false,
-      fetchPolicy = "cache-and-network",
+      fetchPolicy = 'cache-and-network',
       errorPolicy,
       loader,
       loaderFull,
@@ -69,7 +68,7 @@ export function TypedQuery<TData, TVariables>(query: DocumentNode) {
             LoadMore<TData, TVariables>
         ) => {
           const { error, loading, data, fetchMore } = queryData;
-          const hasData = maybe(() => !!Object.keys(data).length, false);          
+          const hasData = maybe(() => !!Object.keys(data).length, false);
           const loadMore = (
             mergeFunc: (
               previousResults: TData,
@@ -88,23 +87,25 @@ export function TypedQuery<TData, TVariables>(query: DocumentNode) {
               variables: { ...variables, ...extraVariables },
             });
 
-         
           if (displayError && error && !hasData) {
             return <Error error={error.message} />;
           }
-          const districtChanged = localStorage.getItem(LocalStorageItems.DISTRICT_CHANGED);
-          if (displayLoader && loading && loader && districtChanged === "true") {
-            localStorage.setItem(LocalStorageItems.DISTRICT_CHANGED, "false")
+          const districtChanged = localRepository.getDistrictChanged();
+          if (
+            displayLoader &&
+            loading &&
+            loader &&
+            districtChanged === 'true'
+          ) {
+            localRepository.setDistrictChanged('false');
             return <>{loader}</>;
-          }
-          else if (displayLoader && loading && !!alwaysLoader) {
-            return loader ? <>{loader}</> : <Loader full={loaderFull} />;
-          }
-          else if (displayLoader && loading && !hasData) {
-            return loader ? <>{loader}</> : <Loader full={loaderFull} />;
+          } else if (displayLoader && loading && !!alwaysLoader) {
+            return loader ? <>{loader}</> : <Loader fullScreen={loaderFull} />;
+          } else if (displayLoader && loading && !hasData) {
+            return loader ? <>{loader}</> : <Loader fullScreen={loaderFull} />;
           }
 
-          if (hasData || (renderOnError && error) || alwaysRender) {            
+          if (hasData || (renderOnError && error) || alwaysRender) {
             return children({ ...queryData, loadMore });
           }
 

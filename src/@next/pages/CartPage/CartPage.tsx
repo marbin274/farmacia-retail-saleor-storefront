@@ -1,18 +1,18 @@
-import { History } from "history";
-import React from "react";
-import { useHistory } from "react-router-dom";
+import { History } from 'history';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 
-import { Button, CartFooter, CartHeader } from "@components/atoms";
-import { TaxedMoney } from "@components/containers";
-import { CartRow } from "@components/organisms";
-import { Cart, CartEmpty } from "@components/templates";
-import { IItems } from "@sdk/api/Cart/types";
-import { UserDetails_me } from "@sdk/queries/gqlTypes/UserDetails";
-import { useCart, useCheckout, useUserDetails } from "@sdk/react";
-import { BASE_URL } from "@temp/core/config";
-import { ITaxedMoney } from "@types";
+import { Button, CartFooter, CartHeader } from '@components/atoms';
+import { TaxedMoney } from '@components/containers';
+import { CartRow } from '@components/organisms';
+import { Cart, CartEmpty } from '@components/templates';
+import { IItems } from '@sdk/api/Cart/types';
+import { UserDetails_me } from '@sdk/queries/gqlTypes/UserDetails';
+import { useCart, useCheckout, useUserDetails } from '@sdk/react';
+import { BASE_URL } from '@temp/core/config';
+import { ITaxedMoney } from '@types';
 
-import { IProps } from "./types";
+import { IProps } from './types';
 
 const title = <h1 data-cy="cartPageTitle">My Cart</h1>;
 
@@ -75,18 +75,18 @@ const generateCart = (
   removeItem: (variantId: string) => any,
   updateItem: (variantId: string, quantity: number) => any
 ) => {
-  return items?.map(({ id, variant, quantity, totalPrice  }, index) => (
+  return items?.map(({ id, variant, quantity, totalPrice }, index) => (
     <CartRow
       key={id ? `id-${id}` : `idx-${index}`}
       index={index}
-      name={variant?.product?.name || ""}
+      name={variant?.product?.name || ''}
       maxQuantity={variant.quantityAvailable || quantity}
       quantity={quantity}
       onRemove={() => removeItem(variant.id)}
-      onQuantityChange={quantity => updateItem(variant.id, quantity)}
+      onQuantityChange={(quantity) => updateItem(variant.id, quantity)}
       thumbnail={{
         ...variant?.product?.thumbnail,
-        alt: variant?.product?.thumbnail?.alt || "",
+        alt: variant?.product?.thumbnail?.alt || '',
       }}
       totalPrice={
         <TaxedMoney
@@ -101,16 +101,16 @@ const generateCart = (
         />
       }
       sku={variant.sku}
-      attributes={variant.attributes?.map(attribute => {
+      attributes={variant.attributes?.map((attribute) => {
         return {
           attribute: {
             id: attribute.attribute.id,
-            name: attribute.attribute.name || "",
+            name: attribute.attribute.name || '',
           },
-          values: attribute.values.map(value => {
+          values: attribute.values.map((value) => {
             return {
               id: value?.id,
-              name: value?.name || "",
+              name: value?.name || '',
               value: value?.value,
             };
           }),
@@ -147,22 +147,20 @@ export const CartPage: React.FC<IProps> = ({}: IProps) => {
     net: discount,
   };
 
-  if (loaded && items?.length) {
-    return (
-      <Cart
-        title={title}
-        button={getCheckoutButton(history, user)}
-        cartHeader={cartHeader}
-        cartFooter={prepareCartFooter(
-          totalPrice,
-          shippingTaxedPrice,
-          promoTaxedPrice,
-          subtotalPrice
-        )}
-        cart={items && generateCart(items, removeItem, updateItem)}
-      />
-    );
-  } else {
-    return <CartEmpty button={getShoppingButton(history)} />;
-  }
+  return loaded && items?.length ? (
+    <Cart
+      title={title}
+      button={getCheckoutButton(history, user)}
+      cartHeader={cartHeader}
+      cartFooter={prepareCartFooter(
+        totalPrice,
+        shippingTaxedPrice,
+        promoTaxedPrice,
+        subtotalPrice
+      )}
+      cart={items && generateCart(items, removeItem, updateItem)}
+    />
+  ) : (
+    <CartEmpty button={getShoppingButton(history)} />
+  );
 };
