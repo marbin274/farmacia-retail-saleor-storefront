@@ -56,19 +56,24 @@ export const AddressFormModal: React.FC<IAddressFormModalProps> = ({
     values: IAddressForm,
     { setSubmitting }: FormikHelpers<IAddressForm>
   ) => {
-    const isInsideBounds = isCoordinatesInsideBouds(
+    onSubmit(values);
+    setSubmitting(false);
+  };
+
+  const isSubmitDisabled = (
+    values: IAddressForm,
+    isValid: boolean,
+    dirty: boolean
+  ) => {
+    if (loading || (!dirty && !address) || !isValid) {
+      return true;
+    }
+
+    return !isCoordinatesInsideBouds(
       Number(values.latitude),
       Number(values.longitude),
       getCityPolygon(values.city)
     );
-
-    if (!isInsideBounds) {
-      setSubmitting(false);
-      return;
-    }
-
-    onSubmit(values);
-    setSubmitting(false);
   };
 
   return (
@@ -96,7 +101,7 @@ export const AddressFormModal: React.FC<IAddressFormModalProps> = ({
         validate={validate}
         onSubmit={handleSubbmit}
       >
-        {({ handleSubmit, values }) => (
+        {({ handleSubmit, isValid, values, dirty }) => (
           <>
             <div className="fa-mt-4">
               <div className="fa-mb-4">
@@ -106,6 +111,7 @@ export const AddressFormModal: React.FC<IAddressFormModalProps> = ({
                   options={availableDistricts}
                   optionLabelKey="name"
                   optionValueKey="name"
+                  placeholder="Selecciona tu distrito"
                 />
                 <span className="fa-text-xs fa-mt-2 fa-text-neutral-dark">
                   Llegamos a {TOTAL_DISTRICT} distritos de Lima
@@ -149,7 +155,7 @@ export const AddressFormModal: React.FC<IAddressFormModalProps> = ({
             <Button
               className="fa-mb-4 fa-w-full"
               onClick={() => handleSubmit()}
-              disabled={loading}
+              disabled={isSubmitDisabled(values, isValid, dirty)}
             >
               {loading ? 'Cargando' : 'Guardar dirección'}
             </Button>

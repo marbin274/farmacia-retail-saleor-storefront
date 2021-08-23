@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { HomeIcon, GpsIcon } from '@farmacia-retail/farmauna-components';
+import { HomeIcon } from '@farmacia-retail/farmauna-components';
 import { Icon } from '..';
 import { IAddressProps } from './types';
 import {
@@ -17,7 +17,7 @@ export const Address: FC<IAddressProps> = ({ address, hasError }) => {
       return <Icon name="work" size={14} viewPort={24} />;
     }
 
-    return <GpsIcon size={14} />;
+    return <Icon name="category2" size={14} viewPort={24} />;
   };
 
   const getTitle = () => {
