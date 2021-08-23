@@ -174,11 +174,11 @@ export const AddressBook: React.FC = () => {
     }
 
     if (addressToDelete.alias) {
-      return addressToDelete.alias;
+      return `"${addressToDelete.alias}"`;
     }
 
     if (addressToDelete.firstName) {
-      return `${addressToDelete.firstName} ${addressToDelete.lastName}`;
+      return `"${addressToDelete.firstName} ${addressToDelete.lastName}"`;
     }
 
     return 'la dirección';
@@ -225,9 +225,7 @@ export const AddressBook: React.FC = () => {
             hideModal={() => {
               setShowFormModal(false);
             }}
-            title={
-              addressToUpdate ? 'Editar dirección' : 'Agregar nueva dirección'
-            }
+            title="Agregar nueva dirección"
             show={showFormModal}
             address={addressToUpdate}
             onSubmit={handleSubmit}
