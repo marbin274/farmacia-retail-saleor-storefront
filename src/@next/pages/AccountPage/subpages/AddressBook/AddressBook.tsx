@@ -120,6 +120,7 @@ export const AddressBook: React.FC = () => {
           longitude: Number(values.longitude),
           streetAddress1: values.streetAddress1,
           streetAddress2: values.streetAddress2,
+          isDefault: addressToUpdate.isDefaultShippingAddress,
         },
       });
       return;

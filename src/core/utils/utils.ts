@@ -218,6 +218,10 @@ export const isCoordinatesInsideBouds = (
   longitude: number,
   geoJson: IGeoJson
 ) => {
+  if (!latitude || !longitude || !geoJson?.features) {
+    return false;
+  }
+
   const x = latitude;
   const y = longitude;
   let inside = false;
