@@ -20,7 +20,8 @@ import { getProductPricingClass } from '@temp/@next/utils/products';
 import { IProductVariantsAttributesSelectedValues } from '@types';
 import isEqual from 'lodash/isEqual';
 import * as React from 'react';
-import './scss/index.scss';
+import * as S from './styles';
+import classNames from 'classnames';
 export interface ProductDescriptionProps {
   canAddToCart: boolean;
   descriptionJson: string;
@@ -69,10 +70,10 @@ export const ProductDescription: React.FC<ProductDescriptionProps> = (
       ) : (
         <>
           <div
-            className={`fa-pr-2 ${getProductPricingClass(
-              canAddToCart,
-              isOnSale
-            )}`}
+            className={classNames(
+              'fa-pr-2',
+              getProductPricingClass(canAddToCart, isOnSale)
+            )}
           >
             <TaxedMoney taxedMoney={variantPricing.price} />
           </div>
@@ -105,7 +106,11 @@ export const ProductDescription: React.FC<ProductDescriptionProps> = (
     const { isOutStock } = props;
 
     if (isOutStock) {
-      return <div className="product-description__error-message">AGOTADO</div>;
+      return (
+        <div className="product-description__error-message fa-text-error-medium fa-my-8">
+          AGOTADO
+        </div>
+      );
     }
 
     return getProductPrice();
@@ -146,16 +151,21 @@ export const ProductDescription: React.FC<ProductDescriptionProps> = (
   };
 
   return (
-    <div
+    <S.ProductDescriptionWrapper
       id="product-description"
       ref={productDescriptionRef}
       onScroll={handleScrollContainer}
       className="product-description"
     >
-      <h3>{name}</h3>
-      <div className="price__button">
+      <S.ProductName className="fa-text-h3-m fa-font-semibold">
+        {name}
+      </S.ProductName>
+      <div className="fa-flex fa-justify-between fa-items-center sm:fa-block">
         <div ref={priceRef}>{renderPrice()}</div>
-        <div className="product-description__quantity" ref={addToCartRef}>
+        <S.ProductQuantityWrapper
+          className="fa-flex fa-flex-row"
+          ref={addToCartRef}
+        >
           <ItemsHandler
             canAddToCart={canAddToCart}
             product={product}
@@ -163,16 +173,16 @@ export const ProductDescription: React.FC<ProductDescriptionProps> = (
             removeItemToCart={props.subtractToCart}
             subtractItemToCart={props.subtractToCart}
           />
-        </div>
+        </S.ProductQuantityWrapper>
       </div>
       <RichTextContent descriptionJson={descriptionJson} />
-      <div className="product-description__variant-picker">
+      <S.VariantPickerWrapper className="fa-grid">
         <ProductVariantPicker
           productVariants={props.productVariants}
           onChange={onVariantPickerChange}
           selectSidebar={true}
         />
-      </div>
+      </S.VariantPickerWrapper>
       {(props.isSmallScreen || showBottomDetail) && (
         <ProductBottomDetail
           product={product}
@@ -188,7 +198,7 @@ export const ProductDescription: React.FC<ProductDescriptionProps> = (
       )}
 
       <hr />
-    </div>
+    </S.ProductDescriptionWrapper>
   );
 };
 

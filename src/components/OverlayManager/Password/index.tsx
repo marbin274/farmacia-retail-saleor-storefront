@@ -1,43 +1,42 @@
+import { BulletXFilledIcon } from '@farmacia-retail/farmauna-components';
+import farmatheme from '@farmatheme';
 import * as React from 'react';
 import {
   Offline,
   OfflinePlaceholder,
   Online,
-  Overlay,
   OverlayContextInterface,
   PasswordResetForm,
 } from '../..';
-import './scss/index.scss';
-import { BulletXFilledIcon } from '@farmacia-retail/farmauna-components';
-import farmatheme from '@farmatheme';
+import * as S from './styles';
 
 const Password: React.FC<{ overlay: OverlayContextInterface }> = ({
   overlay,
 }) => {
   return (
-    <Overlay context={overlay}>
-      <div className="password-reset">
+    <S.OverlayWrapper context={overlay}>
+      <S.PasswordResetWrapper className="fa-w-full fa-max-w-screen">
         <Online>
-          <div className="overlay__header">
-            <div className="overlay__header-text">
-              <span className="forgot-password">Olvidé mi contraseña</span>
+          <div className="fa-border-0 fa-p-0 fa-items-center fa-block">
+            <div className="fa-not-italic fa-font-semibold fa-leading-6 fa-tracking-normal fa-text-aunaBlack fa-w-full fa-text-center fa-text-2xl">
+              <span className="fa-text-center">Olvidé mi contraseña</span>
             </div>
             <BulletXFilledIcon
               size={32}
               color={farmatheme.theme.colors.interactive}
               onClick={overlay.hide}
-              className="overlay__header__close-icon"
+              className="fa-absolute fa-top-3.5 fa-right-3.5 sm:fa-top-8 sm:fa-right-8"
             />
           </div>
-          <div className="password-reset__content">
-            <PasswordResetForm />
+          <div className="fa-pt-1">
+            <PasswordResetForm onClick={overlay.hide} />
           </div>
         </Online>
         <Offline>
           <OfflinePlaceholder />
         </Offline>
-      </div>
-    </Overlay>
+      </S.PasswordResetWrapper>
+    </S.OverlayWrapper>
   );
 };
 export default Password;

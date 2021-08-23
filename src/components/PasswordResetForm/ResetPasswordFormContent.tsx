@@ -63,13 +63,6 @@ const ResetPasswordFormContent: React.FC<ResetPasswordFormContentProps> = ({
   };
 
   React.useEffect(() => {
-    if (document.querySelector<HTMLElement>('.overlay__header')) {
-      document.querySelector<HTMLElement>('.overlay__header').style.display =
-        'block';
-    }
-  }, []);
-
-  React.useEffect(() => {
     if (called && !loading) {
       const hasErrors = requestErrors && requestErrors.length > 0;
       setShowMessageErrors(called && hasErrors);

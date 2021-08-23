@@ -6,12 +6,22 @@ module.exports = {
   theme: {
     extend: {
       ...tailwindConfig.theme.extend,
+      maxWidth: {
+        screen: '100vw',
+      },
       width: {
+        18: '4.5rem',
         100: '25rem',
+        104: '26rem',
+      },
+      height: {
+        18: '4.5rem',
       },
     },
     colors: {
       ...tailwindConfig.theme.colors,
+      aunaBlack: '#131336',
+      blackDark: '#000',
       brand: {
         ...tailwindConfig.theme.colors.brand,
         '03': '#008A66',
@@ -19,9 +29,14 @@ module.exports = {
       gray: {
         ...tailwindConfig.theme.colors.gray,
         DEFAULT: '#E4E5ED',
+        20: '#F6F8FA',
         100: '#9194A7',
         dark: '#7d7d7d',
         light: '#e2e3f1',
+      },
+      neutral: {
+        ...tailwindConfig.theme.colors.neutral,
+        darkest: '#23212B',
       },
     },
     screens: {
