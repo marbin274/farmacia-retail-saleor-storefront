@@ -4,7 +4,7 @@ import { useDistrictSelected } from '@temp/@next/hooks/useDistrictSelected';
 import { searchProductsService } from '@temp/@next/services/searchProductsService';
 import * as appPaths from '@temp/app/routes';
 import { NetworkStatus, OfflinePlaceholder } from '@temp/components';
-import { Error } from '@temp/components/Error';
+import { Error } from '@components/atoms/Error';
 import { SEARCH_PRODUCTS_QUERY_MIN_LENGTH } from '@temp/core/config';
 import { maybe } from '@temp/core/utils';
 import classNames from 'classnames';

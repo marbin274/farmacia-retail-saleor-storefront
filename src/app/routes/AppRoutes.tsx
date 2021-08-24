@@ -17,7 +17,8 @@ import {
 } from '@pages';
 import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { CheckoutLogin, NotFound } from '../../components';
+import { NotFound } from '../../components';
+import { CheckoutLogin } from '@components/organisms/CheckoutLogin';
 import * as paths from './paths';
 
 export const Routes: React.FC = () => (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { LoginForm } from '../..';
+import { LoginForm } from '@temp/components';
 
 const SignInForm: React.FC<{
   onClick: () => void;

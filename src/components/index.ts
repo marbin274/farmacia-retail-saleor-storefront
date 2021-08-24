@@ -1,9 +1,7 @@
-export { default as CheckoutLogin } from './CheckoutLogin';
 export {
   DebounceChange,
   DebouncedTextField,
 } from '../@next/components/molecules/Debounce';
-export { default as Error } from './Error';
 export { default as ErrorPage } from './ErrorPage';
 export { Footer } from './Footer';
 export { Header } from './Header';

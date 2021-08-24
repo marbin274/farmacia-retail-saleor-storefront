@@ -4,7 +4,7 @@ import { ApolloQueryResult, ErrorPolicy, FetchPolicy } from 'apollo-client';
 import { DocumentNode } from 'graphql';
 import * as React from 'react';
 import { Query, QueryProps, QueryResult } from 'react-apollo';
-import { Error } from '../components/Error';
+import { Error } from '@components/atoms/Error';
 import { RequireAtLeastOne } from './tsUtils';
 import { maybe } from './utils';
 

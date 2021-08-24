@@ -4,7 +4,7 @@ import {
   OverlayContextInterface,
   OverlayTheme,
   OverlayType,
-} from '../../Overlay';
+} from '@temp/components/Overlay';
 import { Button } from '@farmacia-retail/farmauna-components';
 import MedicalHealth from 'images/medical-health.svg';
 
