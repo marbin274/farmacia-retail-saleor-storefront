@@ -64,6 +64,7 @@ import {
 } from './gqlTypes/CategoryProducts';
 import { HomePage } from './gqlTypes/HomePage';
 import { MainBanner } from './gqlTypes/MainBanner';
+import { FooterSecondaryMenu } from './gqlTypes/FooterSecondaryMenu';
 
 type QueryOptions<T = {}> = T extends { [n: string]: never }
   ? Omit<ApolloQueryOptions<{}>, 'query'>
@@ -125,6 +126,14 @@ export const QUERIES = {
   ): ObservableQuery<CollectionCategories, any> =>
     client.watchQuery({
       query: Collection.collectionCategories,
+      ...options,
+    }),
+  FooterSecondaryMenu: <TCacheShape>(
+    client: ApolloClient<TCacheShape>,
+    options: QueryOptions<null>
+  ): ObservableQuery<FooterSecondaryMenu, any> =>
+    client.watchQuery({
+      query: Shop.footerSecondaryMenu,
       ...options,
     }),
   GetShopDetails: <TCacheShape>(

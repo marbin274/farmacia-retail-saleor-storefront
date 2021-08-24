@@ -74,6 +74,11 @@ export class APIProxy {
     (data) => data
   );
 
+  getFooterSecondaryMenu = this.watchQuery(
+    QUERIES.FooterSecondaryMenu,
+    (data) => data
+  );
+
   getHomePage = this.watchQuery(QUERIES.HomePage, (data) => data.shop);
 
   getLanding = this.watchQuery(QUERIES.Landing, (data) => data);

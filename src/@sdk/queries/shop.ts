@@ -49,6 +49,40 @@ export const getShopPaymentGateways = gql`
   }
 `;
 
+export const footerSecondaryMenu = gql`
+  fragment FooterSecondaryMenuSubItem on MenuItem {
+    id
+    name
+    category {
+      id
+      name
+    }
+    url
+    collection {
+      id
+      name
+    }
+    page {
+      slug
+    }
+  }
+
+  query FooterSecondaryMenu {
+    shop {
+      navigation {
+        secondary {
+          items {
+            ...FooterSecondaryMenuSubItem
+            children {
+              ...FooterSecondaryMenuSubItem
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
 export const homePage = gql`
   query HomePage {
     shop {

@@ -3,10 +3,10 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL fragment: SecondaryMenuSubItem
+// GraphQL fragment: FooterSecondaryMenuSubItem
 // ====================================================
 
-export interface SecondaryMenuSubItem_category {
+export interface FooterSecondaryMenuSubItem_category {
   __typename: "Category";
   /**
    * The ID of the object.
@@ -15,7 +15,7 @@ export interface SecondaryMenuSubItem_category {
   name: string;
 }
 
-export interface SecondaryMenuSubItem_collection {
+export interface FooterSecondaryMenuSubItem_collection {
   __typename: "Collection";
   /**
    * The ID of the object.
@@ -24,23 +24,23 @@ export interface SecondaryMenuSubItem_collection {
   name: string;
 }
 
-export interface SecondaryMenuSubItem_page {
+export interface FooterSecondaryMenuSubItem_page {
   __typename: "Page";
   slug: string;
 }
 
-export interface SecondaryMenuSubItem {
+export interface FooterSecondaryMenuSubItem {
   __typename: "MenuItem";
   /**
    * The ID of the object.
    */
   id: string;
   name: string;
-  category: SecondaryMenuSubItem_category | null;
+  category: FooterSecondaryMenuSubItem_category | null;
   /**
    * URL to the menu item.
    */
   url: string | null;
-  collection: SecondaryMenuSubItem_collection | null;
-  page: SecondaryMenuSubItem_page | null;
+  collection: FooterSecondaryMenuSubItem_collection | null;
+  page: FooterSecondaryMenuSubItem_page | null;
 }
