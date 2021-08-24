@@ -2,7 +2,7 @@ import React from 'react';
 import { Attribute, Tile } from '@components/atoms';
 import * as S from './styles';
 import gpsicon from '@temp/images/gpsicon.svg';
-import gpsiconselected from '@temp/images/gps-icon-selected.png';
+import gpsiconselected from '@temp/images/gps-icon-selected.svg';
 import { Button } from '@farmacia-retail/farmauna-components';
 import { useHistory } from 'react-router-dom';
 import { addressBookUrl } from '@temp/@next/pages/AccountPage/paths';

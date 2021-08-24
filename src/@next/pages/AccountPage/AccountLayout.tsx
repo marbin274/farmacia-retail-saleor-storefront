@@ -11,7 +11,7 @@ import * as S from './styles';
 import { RouteComponentProps, useLocation, withRouter } from 'react-router';
 
 interface AccountLayoutProps extends RouteComponentProps {
-  showTitleMobile: boolean;
+  showTitleMobile?: boolean;
 }
 
 const AccountLayout: React.FC<AccountLayoutProps> = ({
