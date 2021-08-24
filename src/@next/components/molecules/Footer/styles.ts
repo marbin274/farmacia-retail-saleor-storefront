@@ -46,29 +46,18 @@ export const SectionContent = styled.div`
     }
   }
 `;
-
-export const MailTo = styled.a`
-  &:after {
-    content: '';
-    width: 0.875rem;
-    height: 0.5625rem;
-    display: inline-block;
-    vertical-align: middle;
-    background: url('../../images/icon-previous-email.svg') no-repeat;
-    margin-left: 0.3125rem;
-  }
+export const MailToImg = styled.img`
+  width: 0.875rem;
+  height: 0.5625rem;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 0.3125rem;
 `;
 
-export const Phone = styled.span`
-  &::before {
-    content: '';
-    width: 1.5625rem;
-    height: 1.5625rem;
-    display: inline-block;
-    vertical-align: middle;
-    margin: -0.3125rem 0.625rem 0 0;
-    background: url('../../images/phone-icon.svg') no-repeat;
-  }
+export const PhoneImg = styled.img`
+  width: 1.5625rem;
+  height: 1.5625rem;
+  margin-right: 0.625rem;
 `;
 
 export const ContainerTermsPolicy = styled.div`

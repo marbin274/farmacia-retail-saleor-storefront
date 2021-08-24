@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Nav from './Nav';
 import { useLocation } from 'react-router-dom';
-import { useFooterSecondayMenu } from '@temp/@sdk/react';
+import { useFooterSecondayMenu } from '@sdk/react';
 
 const Footer: React.FC = () => {
   const location = useLocation();

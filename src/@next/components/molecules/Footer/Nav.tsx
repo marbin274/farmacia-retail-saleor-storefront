@@ -1,10 +1,12 @@
-import { FooterSecondaryMenu } from '@temp/@sdk/queries/gqlTypes/FooterSecondaryMenu';
+import { FooterSecondaryMenu } from '@sdk/queries/gqlTypes/FooterSecondaryMenu';
 import { DOCUMENTS_URLS_S3 } from '@temp/core/config';
 import classNames from 'classnames';
 import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { NavLink } from '..';
-import logoFarmaunaFooter from '../../images/logo-farmauna-footer.svg';
+import { NavLink } from '../../../../components';
+import logoFarmaunaFooter from '../../../../images/logo-farmauna-footer.svg';
+import iconPreviousEmail from '../../../../images/icon-previous-email.svg';
+import iconPhone from '../../../../images/phone-icon.svg';
 import SocialMedia from '@components/molecules/SocialMedia';
 import { Skeleton } from './skeleton';
 import * as S from './styles';
@@ -71,20 +73,22 @@ const Nav: React.FC<IProps> = ({ secondaryMenu, loading }) => {
           </div>
           <S.SectionContent>
             <p>¿Necesitas asesoría?</p>
-            <p className="fa-text-sm fa-font-semibold fa-leading-6">
-              <S.MailTo
+            <span className="fa-text-sm fa-font-semibold fa-leading-6">
+              <a
                 className="fa-text-brand-02"
                 href="mailto:consultas@farmauna.com"
                 target="_blank"
               >
                 consultas@farmauna.com
-              </S.MailTo>
-            </p>
-            <p className="fa-mt-8">
-              <S.Phone className="fa-text-h3 xs:fa-text-h2 fa-font-semibold">
+              </a>
+              <S.MailToImg src={iconPreviousEmail} alt="logo email" />
+            </span>
+            <div className="fa-mt-8 fa-flex fa-items-center">
+              <S.PhoneImg src={iconPhone} alt="logo phone" />
+              <span className="fa-text-h3 xs:fa-text-h2 fa-font-semibold fa-text-white">
                 01 3913655
-              </S.Phone>
-            </p>
+              </span>
+            </div>
           </S.SectionContent>
         </div>
         {renderSecondaryMenu()}
