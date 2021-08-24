@@ -7,9 +7,7 @@ import { Button } from '@farmacia-retail/farmauna-components';
 import { useHistory } from 'react-router-dom';
 import { addressBookUrl } from '@temp/@next/pages/AccountPage/paths';
 import { useUserDetails } from '@temp/@sdk/react';
-import {
-  useDistrictSelected,
-} from "@temp/@next/hooks";
+import { useDistrictSelected } from '@temp/@next/hooks';
 
 export const MainAddressTile = () => {
   const { data: user } = useUserDetails();
@@ -24,18 +22,15 @@ export const MainAddressTile = () => {
               Mi dirección principal
             </S.HeaderSmall>
 
-            {
-              user?.defaultShippingAddress ? (<>
+            {user?.defaultShippingAddress ? (
+              <>
                 <S.AttributeWrapper>
                   <img className="fa-mx-auto" src={gpsiconselected} alt="gps" />
                 </S.AttributeWrapper>
 
-                <S.AttributeWrapper>
-                  <Attribute
-                    description="Mi dirección 01 "
-                    attributeValue={''}
-                  />
-                </S.AttributeWrapper>
+                <div className="fa-text-highlight-medium fa-text-base fa-font-normal fa-text-center fa-mt-2 fa-mb-4">
+                  {user?.defaultShippingAddress?.alias}
+                </div>
 
                 <S.AttributeWrapper>
                   <Attribute
@@ -47,26 +42,32 @@ export const MainAddressTile = () => {
                 <S.AttributeWrapper>
                   <Attribute
                     description=""
-                    attributeValue={user?.defaultShippingAddress.streetAddress1  || ''}
+                    attributeValue={
+                      user?.defaultShippingAddress.streetAddress1 || ''
+                    }
                   />
                 </S.AttributeWrapper>
 
                 <S.AttributeWrapper>
                   <Attribute
-                    description=""
-                    attributeValue={user?.defaultShippingAddress.streetAddress2  || ''}
+                    description={
+                      user?.defaultShippingAddress.streetAddress2 || ''
+                    }
+                    attributeValue=""
                   />
                 </S.AttributeWrapper>
                 <S.AttributeWrapper>
-              <Button
-                size="small"
-                variant="outline"
-                onClick={() => history.push(addressBookUrl)}
-              >
-                Ver todas mis direcciones
-              </Button>
-            </S.AttributeWrapper>
-              </>) : (<>
+                  <Button
+                    size="small"
+                    variant="outline"
+                    onClick={() => history.push(addressBookUrl)}
+                  >
+                    Ver todas mis direcciones
+                  </Button>
+                </S.AttributeWrapper>
+              </>
+            ) : (
+              <>
                 <S.AttributeWrapper>
                   <img className="fa-mx-auto" src={gpsicon} alt="gps" />
                 </S.AttributeWrapper>
@@ -78,17 +79,16 @@ export const MainAddressTile = () => {
                   />
                 </S.AttributeWrapper>
                 <S.AttributeWrapper>
-              <Button
-                size="small"
-                variant="outline"
-                onClick={() => history.push(addressBookUrl)}
-              >
-                Agregar dirección
-              </Button>
-            </S.AttributeWrapper>
-              </>)
-            }
-
+                  <Button
+                    size="small"
+                    variant="outline"
+                    onClick={() => history.push(addressBookUrl)}
+                  >
+                    Agregar dirección
+                  </Button>
+                </S.AttributeWrapper>
+              </>
+            )}
           </S.Content>
         </S.Wrapper>
       </Tile>

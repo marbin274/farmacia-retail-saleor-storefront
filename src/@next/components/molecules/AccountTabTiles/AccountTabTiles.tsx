@@ -6,15 +6,23 @@ import { CategoryTile } from './CategoryTile';
 import { ShoppingHistoryTile } from './HistoryTile';
 import { MainCardTile } from './Payment';
 
-export const AccountTabTiles: React.FC = () => {
+interface AccountTabTilesProps {
+  setShowTitleMobile(show: boolean): void;
+}
+
+export const AccountTabTiles: React.FC<AccountTabTilesProps> = ({
+  setShowTitleMobile,
+}) => {
   const [isFocusAccount, setIsFocusAccount] = React.useState(false);
 
   const startFocusAccount = () => {
     setIsFocusAccount(true);
+    setShowTitleMobile(false);
   };
 
   const stopFocusAccount = () => {
     setIsFocusAccount(false);
+    setShowTitleMobile(true);
   };
 
   return (

@@ -1,11 +1,12 @@
 import { media, styled } from '@styles';
 
 export const Wrapper = styled.div`
+  align-items: center;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  align-items: center;
+  height: 100%;
   justify-content: flex-start;
+  width: 100%;
 `;
 
 export const TileWrapper = styled.div`
@@ -37,11 +38,14 @@ export const HeaderSmall = styled(Header)`
 `;
 
 export const AttributeWrapper = styled.div`
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   text-align: center;
 `;
 
 export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   padding: 0;
   width: 100%;
 `;
