@@ -10,7 +10,7 @@ import {
   ProductOrderField,
 } from '../../../gqlTypes/globalTypes';
 import { FormError } from '../types';
-import { Breadcrumb } from '@temp/components';
+import { Breadcrumb } from '@components/organisms/Breadcrumbs';
 import { ISimpleProduct } from '@sdk/types/IProduct';
 import { IGeoJson } from '../types/address';
 

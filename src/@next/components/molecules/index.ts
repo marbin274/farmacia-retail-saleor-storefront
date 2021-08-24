@@ -41,3 +41,4 @@ export * from './Thumbnail';
 export * from './TileRadio';
 export * from './TileRadioGroup';
 export * from './TileRadioGroupField';
+export * from './EmptyProduct';

@@ -1,23 +1,26 @@
-import { ISimpleProduct } from "@sdk/types/IProduct";
-import { Carousel } from "@temp/@next/components/containers";
-import { ProductTileAUNA } from "@temp/@next/components/molecules";
+import { ISimpleProduct } from '@sdk/types/IProduct';
+import { Carousel } from '@temp/@next/components/containers';
+import { ProductTileAUNA } from '@temp/@next/components/molecules';
 import {
   IAddToCartCallback,
   IRemoveItemToCartCallback,
   ISubtractItemToCartCallback,
-} from "@temp/@next/components/molecules/ProductTileAUNA/types";
-import { getProductsWithQuantity } from "@sdk/utils/products";
-import { useCart } from "@temp/@sdk/react";
-import { generateProductUrl } from "@temp/core/utils";
-import React, { FC, useCallback } from "react";
-import * as S from "./styles";
+} from '@temp/@next/components/molecules/ProductTileAUNA/types';
+import { getProductsWithQuantity } from '@sdk/utils/products';
+import { useCart } from '@temp/@sdk/react';
+import { generateProductUrl } from '@temp/core/utils';
+import React, { FC, useCallback } from 'react';
+import * as S from './styles';
 
 export type IProductsCollectionProps = {
   name: string;
   products: ISimpleProduct[];
 };
 
-const ProductsCollection: FC<IProductsCollectionProps> = ({ name, products }) => {
+export const ProductsCollection: FC<IProductsCollectionProps> = ({
+  name,
+  products,
+}) => {
   const {
     items: productsOnCart,
     addItem,
@@ -29,12 +32,12 @@ const ProductsCollection: FC<IProductsCollectionProps> = ({ name, products }) =>
     addItem(product, quantity);
   }, []);
 
-  const removeItemToCart = useCallback<IRemoveItemToCartCallback>(product => {
+  const removeItemToCart = useCallback<IRemoveItemToCartCallback>((product) => {
     removeItem(product);
   }, []);
 
   const subtractItemToCart = useCallback<ISubtractItemToCartCallback>(
-    product => {
+    (product) => {
       subtractItem(product);
     },
     []
@@ -45,7 +48,7 @@ const ProductsCollection: FC<IProductsCollectionProps> = ({ name, products }) =>
       <S.Content>
         <S.Title>{name}</S.Title>
         <Carousel>
-          {getProductsWithQuantity(products, productsOnCart).map(product => (
+          {getProductsWithQuantity(products, productsOnCart).map((product) => (
             <ProductTileAUNA
               key={product.id}
               addToCart={addToCart}
@@ -61,5 +64,3 @@ const ProductsCollection: FC<IProductsCollectionProps> = ({ name, products }) =>
     </S.Container>
   );
 };
-
-export default ProductsCollection;

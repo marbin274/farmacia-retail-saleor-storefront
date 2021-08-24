@@ -27,3 +27,5 @@ export * from './SideNavbar';
 export * from './StockValidationModal';
 export * from './ThankYou';
 export * from './TopNavbar';
+export * from './CartTable';
+export * from './ProductsCollection';

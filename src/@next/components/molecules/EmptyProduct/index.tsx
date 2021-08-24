@@ -8,7 +8,10 @@ interface EmptyProductProps {
   message?: string;
 }
 
-const EmptyProduct: React.FC<EmptyProductProps> = ({ title, message }) => {
+export const EmptyProduct: React.FC<EmptyProductProps> = ({
+  title,
+  message,
+}) => {
   return (
     <div className="fa-flex fa-items-center fa-flex-col fa-h-80 fa-mt-auto lg:fa-justify-center">
       <div className="fa-mb-8">
@@ -27,5 +30,3 @@ EmptyProduct.defaultProps = {
     'Intenta buscar productos en otra categoría, por el momento no lo tenemos en venta.',
   title: 'No hay productos',
 };
-
-export default EmptyProduct;

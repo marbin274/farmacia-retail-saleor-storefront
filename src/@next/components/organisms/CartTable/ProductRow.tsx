@@ -4,7 +4,7 @@ import { ProductVariant } from '@sdk/fragments/gqlTypes/ProductVariant';
 import { OrderByToken_orderByToken_lines_unitPrice } from '@sdk/queries/gqlTypes/OrderByToken';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { generateProductUrl } from '../../core/utils';
+import { generateProductUrl } from '@temp/core/utils';
 
 export type ILine = Omit<
   ProductVariant,
