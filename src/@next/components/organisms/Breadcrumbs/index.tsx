@@ -4,8 +4,8 @@ import { smallScreen } from '@temp/@next/globalStyles/constants';
 import classNames from 'classnames';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { baseUrl } from '../../app/routes';
-import { getDBIdFromGraphqlId, slugify } from '../../core/utils';
+import { baseUrl } from '@temp/app/routes';
+import { getDBIdFromGraphqlId, slugify } from '@temp/core/utils';
 import { CategoryDetails_category } from '@sdk/queries/gqlTypes/CategoryDetails';
 import * as S from './styles';
 export interface Breadcrumb {
@@ -45,7 +45,7 @@ export const extractBreadcrumbs = (category: CategoryDetails_category) => {
 const getBackLink = (breadcrumbs: Breadcrumb[]) =>
   breadcrumbs.length > 1 ? breadcrumbs[breadcrumbs.length - 2].link : '/';
 
-const Breadcrumbs: React.FC<IBreadcrumbProps> = ({
+export const Breadcrumbs: React.FC<IBreadcrumbProps> = ({
   breadcrumbs,
   breadcrumbsAlwaysVisible,
   className,
@@ -104,5 +104,3 @@ const Breadcrumbs: React.FC<IBreadcrumbProps> = ({
     </div>
   );
 };
-
-export default Breadcrumbs;
