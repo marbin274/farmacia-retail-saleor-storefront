@@ -106,11 +106,7 @@ export const Image = styled.img`
 `;
 
 export const Chip = styled.p`
-  color: '#452FBA ';
+  border-radius: 1rem;
   font-size: 0.75rem;
   font-weight: 500;
-  background-color: '#EDEBFA';
-  padding: 0.313rem;
-  border-radius: 1rem;
-  margin: 0.313rem;
 `;

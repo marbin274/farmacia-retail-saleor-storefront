@@ -35,7 +35,7 @@ export const CategoryTile: React.FC = () => {
                     {user?.favoriteCategories?.map((category, index) => (
                       <S.Chip
                         key={index}
-                        className="fa-text-interactive fa-bg-complementary-03 fa-px-2"
+                        className="fa-text-interactive fa-bg-complementary-03 fa-px-2 fa-py-1 fa-m-1"
                       >
                         {
                           categories?.edges?.find(
