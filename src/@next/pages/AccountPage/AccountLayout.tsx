@@ -34,6 +34,11 @@ const AccountLayout: React.FC<RouteComponentProps> = ({
           baseUrl={baseUrl}
         />
 
+        {!isDesktopScreen && (
+          <div className="md:fa-w-full fa-my-4">
+            <AccountMenuMobile links={links} active={location.pathname} />
+          </div>
+        )}
         <div className="fa-flex fa-flex-row fa-mt-5 fa-mb-3">
           {isDesktopScreen ? (
             <div className="fa-mt-4">
@@ -44,7 +49,6 @@ const AccountLayout: React.FC<RouteComponentProps> = ({
               <img src={profile} alt="profile icon" height="62" width="62" />
             </div>
           )}
-
           {isDesktopScreen ? (
             <div className="fa-flex fa-flex-col fa-mt-4 fa-mb-4">
               <S.Paragraph>Hola</S.Paragraph>
@@ -58,13 +62,9 @@ const AccountLayout: React.FC<RouteComponentProps> = ({
           )}
         </div>
         <div className="fa-flex fa-flex-nowrap fa-items-stretch fa-mb-16 fa-mt-4 fa-flex-col md:fa-flex-row">
-          {isDesktopScreen ? (
+          {isDesktopScreen && (
             <div className="fa-w-auto">
               <AccountMenu links={links} active={location.pathname} />
-            </div>
-          ) : (
-            <div className="md:fa-w-full">
-              <AccountMenuMobile links={links} active={location.pathname} />
             </div>
           )}
           <div className="fa-w-full">{user && <>{children}</>}</div>
