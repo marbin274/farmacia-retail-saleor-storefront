@@ -5,7 +5,7 @@ import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { NavLink } from '..';
 import logoFarmaunaFooter from '../../images/logo-farmauna-footer.svg';
-import SocialMedia from '../SocialMedia';
+import SocialMedia from '@components/molecules/SocialMedia';
 import { Skeleton } from './skeleton';
 import * as S from './styles';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { SocialMediaIcon } from '..';
+import { SocialMediaIcon } from '@components/atoms';
 import { SOCIAL_MEDIA } from '@temp/core/config';
 
 const SocialMedia: React.FC = () => {

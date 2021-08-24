@@ -1,4 +1,4 @@
-import { media, styled } from "@styles";
+import { media, styled } from '@styles';
 
 export const Content = styled.div`
   width: ${({ theme }) => theme.container.width}px;
