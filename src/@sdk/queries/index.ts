@@ -31,6 +31,7 @@ import {
 } from './gqlTypes/CategoryDetails';
 
 import { GetShop } from './gqlTypes/GetShop';
+import { GetShopFeaturePlugins } from './gqlTypes/GetShopFeaturePlugins';
 
 import { OrdersByUser, OrdersByUserVariables } from './gqlTypes/OrdersByUser';
 import { UserDetails } from './gqlTypes/UserDetails';
@@ -133,6 +134,14 @@ export const QUERIES = {
   ): ObservableQuery<GetShop, any> =>
     client.watchQuery({
       query: Shop.getShop,
+      ...options,
+    }),
+  GetShopFeaturePlugins: <TCacheShape>(
+    client: ApolloClient<TCacheShape>,
+    options: QueryOptions<null>
+  ): ObservableQuery<GetShopFeaturePlugins, any> =>
+    client.watchQuery({
+      query: Shop.getShopFeaturePlugins,
       ...options,
     }),
   HomePage: <TCacheShape>(

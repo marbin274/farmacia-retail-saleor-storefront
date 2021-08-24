@@ -78,10 +78,13 @@ const CartDeliveryData: React.FC<Iprops> = ({ checkout }) => {
           />
           <LineDetailDeliveryData
             label="Hora"
-            text={getScheduleTimesFormat(
-              scheduleDate?.scheduleTime?.startTime,
-              scheduleDate?.scheduleTime?.endTime
-            )}
+            text={
+              checkout?.deliveryDate ||
+              getScheduleTimesFormat(
+                scheduleDate?.scheduleTime?.startTime,
+                scheduleDate?.scheduleTime?.endTime
+              )
+            }
           />
         </>
       )}

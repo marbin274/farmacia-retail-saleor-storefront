@@ -119,6 +119,7 @@ export const SEARCH_PRODUCTS_QUERY_MIN_LENGTH = 3;
 export const SHIPPING_FORMAT_DATE = 'yyyy-MM-dd';
 export const HOURS_TO_FORMAT_DATE = 'T00:00:00';
 export const SHIPPING_DISPLAY_FORMAT_DATE = 'dd/MM/yyyy';
+export const HOURS_FORMAT = 'HH:mm:ss';
 
 // TODO: revisar  cuando se tenga que pintar el poligono de cobertura con la data de backend
 export const LIMA_BOUNDS: google.maps.LatLngBoundsLiteral = {
@@ -311,6 +312,10 @@ export const COUNTRY_DEFAULT = {
 
 export const COLLECTION_CATEGORY_FILTER_LABEL = 'Todas las categorías';
 
-export const HIDE_CARDTOKENS_IN_CHECKOUT = false;
+export const HIDE_CARDTOKENS_IN_CHECKOUT = true;
 export const CHECKOUT_MANDATORY_COORDINATES = true;
+
+export const FEATURE_PLUGINS = {
+  lastMile: 'pharma.lastmile.auna',
+};
 export const DEFAULT_SORT = '-stock';

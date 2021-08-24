@@ -25,6 +25,7 @@ import React, {
 } from 'react';
 import { RouteComponentProps } from 'react-router';
 import { AlertComponentProps, useAlert } from 'react-alert';
+import { useFeaturePlugins } from '@app/hooks';
 
 export interface ICheckoutAddressSubpageHandles {
   submitAddress: () => void;
@@ -55,8 +56,13 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
   const checkoutAddressFormRef = useRef<HTMLFormElement>(null);
   const checkoutNewAddressFormId = 'new-address-form';
   const { data: user, loading: userLoading } = useUserDetails();
-  const { checkout, setShippingAddress, selectedShippingAddressId } =
-    useCheckout();
+  const {
+    checkout,
+    setShippingAddress,
+    setShippingMethod,
+    selectedShippingAddressId,
+    selectedSlotId,
+  } = useCheckout();
   const { availableDistricts, countries } = useShopContext();
   const [selectedDistrict, setDistrict] = useDistrictSelected();
   const { update: updateCartLines, loading: updatingCartLines } =
@@ -66,6 +72,8 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
   const [currentErrorAlert, setCurrentErrorAlert] =
     useState<AlertComponentProps>();
   const alert = useAlert();
+
+  const { lastMileActive } = useFeaturePlugins();
 
   const _addressFormSchema = addressFormSchema;
 
@@ -217,6 +225,10 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
 
     if (selectedDistrict?.id !== district?.id) {
       setDistrict(district);
+    }
+
+    if (selectedSlotId && lastMileActive) {
+      await setShippingMethod({ shippingMethodId: '', slotId: undefined });
     }
 
     if (checkoutErrors?.length! > 0) {
