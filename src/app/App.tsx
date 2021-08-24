@@ -1,7 +1,7 @@
 import { Alert } from '@temp/@next/components/atoms/Alert';
 import { ItemsNotification } from '@temp/@next/components/atoms/ItemsNotification';
 import { AddressGeoModal } from '@temp/@next/components/molecules/AddressGeoModal/AddressGeoModal';
-import { Footer } from '@temp/@next/components/molecules/Footer';
+import { Footer } from '@temp/@next/components/organisms/Footer';
 import { useDistrictSelected } from '@temp/@next/hooks/useDistrictSelected';
 import { useUpdateCartLines } from '@temp/@next/hooks/useUpdateCartLines';
 import { SearchNetworkResult } from '@temp/components/OverlayManager/Search';
