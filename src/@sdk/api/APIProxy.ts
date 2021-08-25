@@ -126,6 +126,8 @@ export class APIProxy {
 
   searchProducts = this.watchQuery(QUERIES.SearchProducts, (data) => data);
 
+  searchResults = this.watchQuery(QUERIES.SearchResults, (data) => data);
+
   selledProducts = this.watchQuery(QUERIES.SelledProducts, (data) => data);
 
   setAccountUpdate = this.fireQuery(

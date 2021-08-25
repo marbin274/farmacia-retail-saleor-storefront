@@ -37,6 +37,8 @@ export const useProductList = queryWithVariablesFactory('getProductList');
 
 export const useSearchProducts = queryWithVariablesFactory('searchProducts');
 
+export const useSearchResults = queryWithVariablesFactory('searchResults');
+
 export const useSelledProducts = queryWithVariablesFactory('selledProducts');
 
 export const useShippingMethods =

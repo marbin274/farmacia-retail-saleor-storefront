@@ -59,6 +59,10 @@ import {
   SearchProductsVariables,
 } from './gqlTypes/SearchProducts';
 import {
+  SearchResults,
+  SearchResultsVariables,
+} from './gqlTypes/SearchResults';
+import {
   SelledProducts,
   SelledProductsVariables,
 } from './gqlTypes/SelledProducts';
@@ -70,6 +74,7 @@ import {
 import * as LandingQuery from './landing';
 import * as Orders from './orders';
 import * as Product from './products';
+import * as Search from './search';
 import * as Shop from './shop';
 import * as User from './user';
 
@@ -237,6 +242,14 @@ export const QUERIES = {
   ): ObservableQuery<ProductList, any> =>
     client.watchQuery({
       query: Product.productList,
+      ...options,
+    }),
+  SearchResults: <TCacheShape>(
+    client: ApolloClient<TCacheShape>,
+    options: QueryOptions<SearchResultsVariables>
+  ): ObservableQuery<SearchResults, any> =>
+    client.watchQuery({
+      query: Search.searchResultsQuery,
       ...options,
     }),
   SearchProducts: <TCacheShape>(

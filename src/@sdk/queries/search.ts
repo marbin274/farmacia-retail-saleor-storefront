@@ -1,13 +1,7 @@
-import { priceFragment } from '@sdk/fragments/products';
 import gql from 'graphql-tag';
+import { priceFragment } from '../fragments/products';
 
-import { TypedQuery } from '../../../core/queries';
-import {
-  SearchResults,
-  SearchResultsVariables,
-} from './gqlTypes/SearchResults';
-
-const searchResultsQuery = gql`
+export const searchResultsQuery = gql`
   ${priceFragment}
   query SearchResults($query: String!, $districtId: ID) {
     products(
@@ -84,8 +78,3 @@ const searchResultsQuery = gql`
     }
   }
 `;
-
-export const TypedSearchResults = TypedQuery<
-  SearchResults,
-  SearchResultsVariables
->(searchResultsQuery);

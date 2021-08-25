@@ -8,12 +8,12 @@ import {
 import ItemsHandler from '@temp/@next/components/organisms/ItemsHandler/ItemsHandler';
 import { searchProductsService } from '@temp/@next/services/searchProductsService';
 import { getProductPricingClass } from '@temp/@next/utils/products';
+import { SearchResults_products_edges } from '@temp/@sdk/queries/gqlTypes/SearchResults';
 import { useCart } from '@temp/@sdk/react';
 import { convertToSimpleProduct, generateProductUrl } from '@temp/core/utils';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Money } from 'src/@next/components/containers/Money/Money';
-import { SearchResults_products_edges } from '../../gqlTypes/SearchResults';
 import * as S from './styles';
 
 const ProductItem: React.FC<SearchResults_products_edges> = ({ node }) => {
