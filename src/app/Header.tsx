@@ -3,7 +3,9 @@ import { TypedMainMenuQuery } from '@temp/components/MainMenu/queries';
 import { convertCategoryToMenuItem, maybe } from '@temp/core/utils';
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { Header as HeaderComponent, INavItem, MainMenu } from '../components';
+import { Header as HeaderComponent } from '@components/organisms/Header';
+import { INavItem, MainMenu } from '../components';
+
 import '../globalStyles/scss/index.scss';
 
 export const Header: React.FC = () => {

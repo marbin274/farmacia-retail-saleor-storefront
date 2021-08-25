@@ -1,9 +1,9 @@
-import * as SchemaMessage from "@temp/@next/utils/schemasMessages";
-import * as SchemasConfig from "@temp/@next/utils/schemasConfig";
-import * as Yup from "yup";
+import * as SchemaMessage from '@temp/@next/utils/schemasMessages';
+import * as SchemasConfig from '@temp/@next/utils/schemasConfig';
+import * as Yup from 'yup';
 
-const PASSWORD_REQUIRED = "Ingresa tu contraseña";
-const EMAIL_REQUIRED = "Ingresa tu correo registrado en Farmauna";
+const PASSWORD_REQUIRED = 'Ingresa tu contraseña';
+const EMAIL_REQUIRED = 'Ingresa tu correo registrado en Farmauna';
 
 export const emailValidation = Yup.string()
   .required(EMAIL_REQUIRED)
