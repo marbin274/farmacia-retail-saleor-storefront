@@ -15,7 +15,7 @@ import { useMediaScreen } from '@temp/@next/globalStyles';
 import { largeScreen } from '@temp/@next/globalStyles/constants';
 import { baseUrl } from '@temp/app/routes';
 import { ProductDescription } from '@temp/components';
-import { ProductsSelled } from '@temp/components/productsSelled';
+import { ProductsSelled } from '@temp/components/ProductsSelled';
 import { structuredData as structuredCategoryData } from '@temp/core/SEO/Category/structuredData';
 import { structuredData } from '@temp/core/SEO/Product/structuredData';
 import {

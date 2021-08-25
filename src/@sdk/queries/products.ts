@@ -272,3 +272,65 @@ export const featuredProducts = gql`
     }
   }
 `;
+
+export const selledProducts = gql`
+  ${basicProductFragment}
+  ${productPricingFragment}
+  query SelledProducts(
+    $districtId: ID
+    $period: ReportingPeriod!
+    $first: Int
+  ) {
+    reportProductSales(district: $districtId, period: $period, first: $first) {
+      edges {
+        node {
+          id
+          attributes {
+            values {
+              id
+              name
+              __typename
+            }
+            __typename
+          }
+          product {
+            ...BasicProductFields
+            ...ProductPricingField
+            attributes {
+              attribute {
+                id
+                name
+              }
+              values {
+                id
+                name
+              }
+            }
+            category {
+              id
+              name
+            }
+            variants {
+              id
+              sku
+              pricing {
+                onSale
+                price {
+                  ...Price
+                }
+                priceUndiscounted {
+                  ...Price
+                }
+              }
+              quantityAvailable(district: $districtId)
+            }
+          }
+          quantityOrdered
+          __typename
+        }
+        __typename
+      }
+      __typename
+    }
+  }
+`;

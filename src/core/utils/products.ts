@@ -1,11 +1,11 @@
-import { IProductVariant } from '@temp/@next/types';
-import { ISimpleProduct } from '@sdk/types/IProduct';
-import { ProductDetails_product } from '@temp/@sdk/queries/gqlTypes/ProductDetails';
-import { SearchResults_products_edges_node } from '@temp/components/OverlayManager/Search/gqlTypes/SearchResults';
-import { SelledProducts_reportProductSales_edges_node_product } from '@temp/components/productsSelled/gqlTypes/SelledProducts';
 import { CategoryProducts_paginatedProducts_edges_node } from '@sdk/queries/gqlTypes/CategoryProducts';
 import { SearchProducts_paginatedProducts_edges_node } from '@sdk/queries/gqlTypes/SearchProducts';
-import { FeaturedProducts_shop_homepageCollections_edges_node_products_edges_node } from '@temp/@sdk/queries/gqlTypes/FeaturedProducts';
+import { ISimpleProduct } from '@sdk/types/IProduct';
+import { IProductVariant } from '@temp/@next/types';
+import { FeaturedProducts_shop_homepageCollections_edges_node_products_edges_node } from '@sdk/queries/gqlTypes/FeaturedProducts';
+import { ProductDetails_product } from '@sdk/queries/gqlTypes/ProductDetails';
+import { SelledProducts_reportProductSales_edges_node_product } from '@sdk/queries/gqlTypes/SelledProducts';
+import { SearchResults_products_edges_node } from '@temp/components/OverlayManager/Search/gqlTypes/SearchResults';
 
 type IProductQuery =
   | CategoryProducts_paginatedProducts_edges_node
