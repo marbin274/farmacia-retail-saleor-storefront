@@ -1,4 +1,4 @@
-import { media, styled } from '@styles';
+import { media, mediaUp, styled } from '@styles';
 
 export const Wrapper = styled.div`
   align-items: center;
@@ -23,7 +23,6 @@ export const Header = styled.div`
   font-weight: ${(props) => props.theme.typography.extraBoldFontWeight};
   font-size: ${(props) => props.theme.typography.h4FontSize};
   height: 4rem;
-  justify-content: space-between;
   padding-bottom: 1rem;
   width: 100%;
 `;
@@ -58,7 +57,7 @@ export const ContentOneLine = styled.div`
   width: 100%;
 `;
 
-export const ContentEditOneLine = styled.div`
+export const ContentEditOneLine = styled.div<{ twoLinesOnDesktop?: boolean }>`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -69,9 +68,14 @@ export const ContentEditOneLine = styled.div`
     width: 100%;
   }
 
-  ${media.largeScreen`
-     flex-direction: column;
-  `}
+  ${(props) =>
+    props?.twoLinesOnDesktop
+      ? mediaUp.largeScreen`
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-column-gap: 1rem;
+    `
+      : ''}
 `;
 
 export const ContentExtendInput = styled.div`

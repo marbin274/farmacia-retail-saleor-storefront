@@ -9,10 +9,7 @@ import * as S from './styles';
 import card from '@temp/images/card.svg';
 import { Button } from '@farmacia-retail/farmauna-components';
 import { useHistory } from 'react-router-dom';
-import {
-  orderHistoryUrl,
-  paymentMethodsUrl,
-} from '@temp/@next/pages/AccountPage/paths';
+import { paymentMethodsUrl } from '@temp/@next/pages/AccountPage/paths';
 import { useUserDetails } from '@temp/@sdk/react';
 
 export const MainCardTile: React.FC = () => {
@@ -65,9 +62,9 @@ export const MainCardTile: React.FC = () => {
                   <Button
                     size="small"
                     variant="outline"
-                    onClick={() => history.push(orderHistoryUrl)}
+                    onClick={() => history.push(paymentMethodsUrl)}
                   >
-                    Ver todas mis compras
+                    Ver mis medios de pago
                   </Button>
                 </S.AttributeWrapper>
               </>

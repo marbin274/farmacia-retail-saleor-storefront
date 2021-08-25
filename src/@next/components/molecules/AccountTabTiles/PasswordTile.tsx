@@ -8,18 +8,23 @@ import { Button } from '@farmacia-retail/farmauna-components';
 interface IPasswordTileProps {
   startFocusPassword(): void;
   stopFocusPassword(): void;
+  notifyRequestSuccess(): void;
 }
 
 export const PasswordTile: React.FC<IPasswordTileProps> = ({
   startFocusPassword,
   stopFocusPassword,
+  notifyRequestSuccess,
 }) => {
   const [isEditing, setIsEditing] = React.useState(false);
   const [setPasswordChange, { data, error }] = usePasswordChange();
 
   React.useEffect(() => {
     if (data && !error) {
-      setIsEditing(false);
+      notifyRequestSuccess();
+      setTimeout(() => {
+        setIsEditing(false);
+      }, [1500]);
     }
   }, [data, error]);
 

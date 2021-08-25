@@ -23,6 +23,7 @@ const DEFAULT_PROPS = {
     stopFocusAccount: jest.fn(),
   },
   password: {
+    notifyRequestSuccess: jest.fn(),
     startFocusPassword: jest.fn(),
     stopFocusPassword: jest.fn(),
   },
