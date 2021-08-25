@@ -2,7 +2,7 @@ import {
   ApolloError,
   MutationUpdaterFn,
   MutationResult,
-  MutationFunction
+  MutationFunction,
 } from '@apollo/client';
 import { DocumentNode } from 'graphql';
 import * as React from 'react';
