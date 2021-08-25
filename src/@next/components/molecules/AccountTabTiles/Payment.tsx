@@ -1,10 +1,15 @@
 import React from 'react';
-import { Attribute, CCProviders, Tile, CreditCardIcon } from '@components/atoms';
+import {
+  Attribute,
+  CCProviders,
+  Tile,
+  CreditCardIcon,
+} from '@components/atoms';
 import * as S from './styles';
 import card from '@temp/images/card.svg';
 import { Button } from '@farmacia-retail/farmauna-components';
 import { useHistory } from 'react-router-dom';
-import { orderHistoryUrl, paymentMethodsUrl } from '@temp/@next/pages/AccountPage/paths';
+import { paymentMethodsUrl } from '@temp/@next/pages/AccountPage/paths';
 import { useUserDetails } from '@temp/@sdk/react';
 
 export const MainCardTile: React.FC = () => {
@@ -19,9 +24,8 @@ export const MainCardTile: React.FC = () => {
               Mi tarjeta principal
             </S.HeaderSmall>
 
-            {
-              user?.cardTokens[0] ? (<>
-
+            {user?.cardTokens[0] ? (
+              <>
                 <S.AttributeWrapper>
                   <Attribute
                     description=""
@@ -40,9 +44,17 @@ export const MainCardTile: React.FC = () => {
                   <S.AttributeWrapper className="fa-flex fa-justify-between">
                     <Attribute
                       description=""
-                      attributeValue={user?.cardTokens[0]?.firstName + ' ' + user?.cardTokens[0]?.lastName}
+                      attributeValue={
+                        user?.cardTokens[0]?.firstName +
+                        ' ' +
+                        user?.cardTokens[0]?.lastName
+                      }
                     />
-                    <CreditCardIcon creditCardProvider={user?.cardTokens[0]?.brand as CCProviders} />
+                    <CreditCardIcon
+                      creditCardProvider={
+                        user?.cardTokens[0]?.brand as CCProviders
+                      }
+                    />
                   </S.AttributeWrapper>
                 </S.AttributeWrapper>
 
@@ -50,13 +62,14 @@ export const MainCardTile: React.FC = () => {
                   <Button
                     size="small"
                     variant="outline"
-                    onClick={() => history.push(orderHistoryUrl)}
+                    onClick={() => history.push(paymentMethodsUrl)}
                   >
-                    Ver todas mis compras
+                    Ver mis medios de pago
                   </Button>
                 </S.AttributeWrapper>
               </>
-              ) : (<>
+            ) : (
+              <>
                 <S.AttributeWrapper>
                   <S.Image src={card} alt="card" />
                 </S.AttributeWrapper>
@@ -76,8 +89,7 @@ export const MainCardTile: React.FC = () => {
                   </Button>
                 </S.AttributeWrapper>
               </>
-              )
-            }
+            )}
           </S.Content>
         </S.Wrapper>
       </Tile>

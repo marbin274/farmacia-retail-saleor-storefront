@@ -33,7 +33,7 @@ export class Repository extends NamedObservable<LocalStorageItems> {
     }
     return null;
   }
-  protected clearStorage() {
+  protected clearRepositoryStorage() {
     localStorage.clear();
   }
 }

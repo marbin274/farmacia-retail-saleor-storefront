@@ -1,19 +1,19 @@
-import { CheckoutPayment, StockValidationModal } from "@components/organisms";
-import { useCart, useCheckout, useUserDetails } from "@sdk/react";
-import { alertService } from "@temp/@next/components/atoms/Alert";
-import { IUserDataForNiubiz } from "@temp/@next/components/organisms/CheckoutPayment/types";
-import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
-import { useShopContext } from "@temp/components/ShopProvider/context";
+import { CheckoutPayment, StockValidationModal } from '@components/organisms';
+import { useCart, useCheckout, useUserDetails } from '@sdk/react';
+import { alertService } from '@temp/@next/components/atoms/Alert';
+import { IUserDataForNiubiz } from '@temp/@next/components/organisms/CheckoutPayment/types';
+import { removePaymentItems } from '@temp/@next/utils/checkoutValidations';
+import { useShopContext } from '@temp/components/ShopProvider/context';
 import {
   AVAILABLE_PAYMENTS,
   billingAddressAlwaysSameAsShipping,
   CHECKOUT_STEPS,
-} from "@temp/core/config";
-import { IAddress, IFormError } from "@types";
-import { filterNotEmptyArrayItems } from "@utils/misc";
-import ClockIcon from "images/auna/clock.svg";
-import VoucherSVG from "@temp/images/auna/checkout-cupon-small.svg";
-import PromoCodeCorrect from "images/auna/promo-code-correct.svg";
+} from '@temp/core/config';
+import { IAddress, IFormError } from '@types';
+import { filterNotEmptyArrayItems } from '@utils/misc';
+import ClockIcon from 'images/auna/clock.svg';
+import VoucherSVG from '@temp/images/auna/checkout-cupon-small.svg';
+import PromoCodeCorrect from 'images/auna/promo-code-correct.svg';
 
 import React, {
   forwardRef,
@@ -22,13 +22,13 @@ import React, {
   useImperativeHandle,
   useRef,
   useState,
-} from "react";
-import { RouteComponentProps, useHistory } from "react-router";
-import { CheckoutErrorCode } from "@temp/@sdk/gqlTypes/globalTypes";
-import { useUpdateCartLines } from "@temp/@next/hooks/useUpdateCartLines";
-import { useDistrictSelected } from "@temp/@next/hooks/useDistrictSelected";
-import { baseUrl } from "@temp/app/routes/paths";
-import { IProcesPaymentArgs } from "@temp/@next/components/organisms/PaymentGatewaysList/types";
+} from 'react';
+import { RouteComponentProps, useHistory } from 'react-router';
+import { CheckoutErrorCode } from '@temp/@sdk/gqlTypes/globalTypes';
+import { useUpdateCartLines } from '@temp/@next/hooks/useUpdateCartLines';
+import { useDistrictSelected } from '@temp/@next/hooks/useDistrictSelected';
+import { baseUrl } from '@temp/app/routes/paths';
+import { IProcesPaymentArgs } from '@temp/@next/components/organisms/PaymentGatewaysList/types';
 
 export interface ICheckoutPaymentSubpageHandles {
   submitPayment: () => void;
@@ -79,15 +79,12 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
   const { items, totalPrice } = useCart();
   const { availableDistricts, countries } = useShopContext();
   const [showStockValidation, setShowStockValidation] = useState(false);
-  const [stockValidationProducts, setStockValidationProducts] = useState<
-    any[]
-  >();
+  const [stockValidationProducts, setStockValidationProducts] =
+    useState<any[]>();
 
   const [, setDistrict] = useDistrictSelected();
-  const {
-    update: updateCartLines,
-    loading: updatingCartLines,
-  } = useUpdateCartLines();
+  const { update: updateCartLines, loading: updatingCartLines } =
+    useUpdateCartLines();
 
   const [cartLinesUpdated, setCartLinesUpdated] = useState(false);
 
@@ -127,12 +124,12 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
   // TODO
   // reload data from backend and  put in cache
 
-  const checkoutBillingFormId = "billing-form";
+  const checkoutBillingFormId = 'billing-form';
   const checkoutBillingFormRef = useRef<HTMLFormElement>(null);
-  const checkoutGatewayFormId = "gateway-form";
+  const checkoutGatewayFormId = 'gateway-form';
   const checkoutGatewayFormRef = useRef<HTMLFormElement>(null);
-  const checkoutNewAddressFormId = "new-address-form";
-  const promoCodeDiscountFormId = "discount-form";
+  const checkoutNewAddressFormId = 'new-address-form';
+  const promoCodeDiscountFormId = 'discount-form';
   const promoCodeDiscountFormRef = useRef<HTMLFormElement>(null);
 
   useImperativeHandle(ref, () => ({
@@ -141,13 +138,13 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
         return;
       }
 
-      const shippingMethodId = checkout?.shippingMethod?.id || "";
+      const shippingMethodId = checkout?.shippingMethod?.id || '';
       setShippingMethod({ shippingMethodId, slotId: selectedSlotId });
       if (billingAsShippingState) {
         handleSetBillingAddress();
       } else if (user && selectedBillingAddressId) {
         checkoutBillingFormRef.current?.dispatchEvent(
-          new Event("submit", { cancelable: true })
+          new Event('submit', { cancelable: true })
         );
       } else {
         submitCheckoutGatewayForm();
@@ -159,7 +156,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
     setGatewayListError(null);
 
     if (!selectedPaymentGateway) {
-      setGatewayListError("Debes seleccionar el método de pago");
+      setGatewayListError('Debes seleccionar el método de pago');
       return false;
     }
 
@@ -187,9 +184,9 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
     if (errors) {
       changeSubmitProgress(false);
       alertService.sendAlert({
-        buttonText: "Entendido",
+        buttonText: 'Entendido',
         message: errors[0].message,
-        type: "Error",
+        type: 'Error',
       });
       setGatewayErrors(errors);
     } else {
@@ -211,47 +208,48 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
           case CheckoutErrorCode.EXCEEDS_SCHEDULE_DURATION:
           case CheckoutErrorCode.DELIVERY_DATE_EXPIRED:
             alertService.sendAlert({
-              buttonText: "Entendido",
+              buttonText: 'Entendido',
               message: confirmError.message,
               redirectionLink: CHECKOUT_STEPS[0].link,
-              title: "Horario de entrega",
-              type: "Text",
+              title: 'Horario de entrega',
+              type: 'Text',
             });
             break;
           case CheckoutErrorCode.NIUBIZ:
             alertService.sendAlert({
-              buttonText: "Entendido",
+              buttonText: 'Entendido',
               message: confirmError.message,
               redirectionLink: CHECKOUT_STEPS[1].link,
-              title: "No pudimos procesar el pago",
-              type: "Text",
+              title: 'No pudimos procesar el pago',
+              type: 'Text',
             });
             break;
           case CheckoutErrorCode.INVALID_SLOT:
             alertService.sendAlert({
-              buttonText: "Entendido",
+              buttonText: 'Entendido',
               icon: ClockIcon,
-              message: "Por favor, selecciona nuevamente cuándo deseas recibir tu pedido",
+              message:
+                'Por favor, selecciona nuevamente cuándo deseas recibir tu pedido',
               redirectionLink: CHECKOUT_STEPS[0].link,
-              title: "El tiempo de espera caducó",
-              type: "Info",
+              title: 'El tiempo de espera caducó',
+              type: 'Info',
             });
             break;
           default:
             alertService.sendAlert({
-              buttonText: "Entendido",
+              buttonText: 'Entendido',
               message:
-                "Por favor valida que todos tus datos de pago sean correctos e inténtalo de nuevo",
+                'Por favor valida que todos tus datos de pago sean correctos e inténtalo de nuevo',
               redirectionLink: CHECKOUT_STEPS[1].link,
-              title: "No pudimos procesar el pago",
-              type: "Text",
+              title: 'No pudimos procesar el pago',
+              type: 'Text',
             });
         }
 
         setGatewayErrors(confirmErrors);
-        if (confirmErrors?.message?.includes("GraphQL error: ")) {
+        if (confirmErrors?.message?.includes('GraphQL error: ')) {
           setGatewayErrors([
-            { field: undefined, message: "Error al procesar pago" },
+            { field: undefined, message: 'Error al procesar pago' },
           ]);
         }
       } else {
@@ -275,7 +273,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
 
   const submitCheckoutGatewayForm = () => {
     checkoutGatewayFormRef?.current?.dispatchEvent(
-      new Event("submit", { cancelable: true })
+      new Event('submit', { cancelable: true })
     );
   };
 
@@ -285,7 +283,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
     userAddressId?: string
   ) => {
     if (!address && !billingAsShippingState) {
-      setBillingErrors([{ message: "Please provide billing address." }]);
+      setBillingErrors([{ message: 'Please provide billing address.' }]);
       return;
     }
 
@@ -297,7 +295,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
       !isShippingRequiredForProducts
     ) {
       setBillingErrors([
-        { field: "email", message: "Please provide email address." },
+        { field: 'email', message: 'Please provide email address.' },
       ]);
       return;
     }
@@ -321,9 +319,9 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
     }
     if (errors) {
       alertService.sendAlert({
-        buttonText: "Entendido",
+        buttonText: 'Entendido',
         message: errors[0].message,
-        type: "Error",
+        type: 'Error',
       });
       changeSubmitProgress(false);
       setBillingErrors(errors);
@@ -331,7 +329,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
       setBillingErrors([]);
       if (promoCodeDiscountFormRef.current) {
         promoCodeDiscountFormRef.current?.dispatchEvent(
-          new Event("submit", { cancelable: true })
+          new Event('submit', { cancelable: true })
         );
       } else if (checkoutGatewayFormRef.current) {
         submitCheckoutGatewayForm();
@@ -345,11 +343,11 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
 
     if (dataError?.error) {
       alertService.sendAlert({
-        buttonText: "Entendido",
+        buttonText: 'Entendido',
         icon: VoucherSVG,
         message: dataError?.error[0].message,
-        title: "Código promocional incorrecto",
-        type: "Text",
+        title: 'Código promocional incorrecto',
+        type: 'Text',
       });
       setPromoCodeErrors(dataError?.error);
     } else {
@@ -363,11 +361,11 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
 
   const showMessageDiscount = (messageDiscount: string) => {
     alertService.sendAlert({
-      buttonText: "Entendido",
+      buttonText: 'Entendido',
       icon: PromoCodeCorrect,
       message: messageDiscount,
-      title: "Código promocional correcto",
-      type: "Info",
+      title: 'Código promocional correcto',
+      type: 'Info',
     });
   };
 
@@ -377,9 +375,9 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
 
     if (dataError?.error) {
       alertService.sendAlert({
-        buttonText: "Entendido",
+        buttonText: 'Entendido',
         message: dataError?.error[0].message,
-        type: "Error",
+        type: 'Error',
       });
       setPromoCodeErrors(dataError?.error);
     } else {
@@ -403,7 +401,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
     setShowStockValidation(false);
 
     const district = availableDistricts?.find(
-      x =>
+      (x) =>
         x?.name?.toLocaleLowerCase() ===
         checkout?.shippingAddress?.city?.toLocaleLowerCase()
     );

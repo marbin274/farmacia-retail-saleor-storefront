@@ -49,7 +49,7 @@ export const AccountUpdateForm: React.FC<IProps> = ({
               <div className="fa-text-black fa-text-base fa-mb-4 fa-font-bold">
                 Datos Personales
               </div>
-              <S.ContentEditOneLine>
+              <S.ContentEditOneLine twoLinesOnDesktop>
                 <S.ContentExtendInput>
                   <TextField
                     name="firstName"
