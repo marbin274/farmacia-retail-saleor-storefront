@@ -74,6 +74,10 @@ export class APIProxy {
     (data) => data
   );
 
+  getFeaturedProducts = this.watchQuery(
+    QUERIES.FeaturedProducts,
+    (data) => data
+  );
   getFeaturePlugins = this.watchQuery(
     QUERIES.GetShopFeaturePlugins,
     (data) => data.shop?.availableFeaturePlugins
@@ -117,34 +121,13 @@ export class APIProxy {
 
   searchProducts = this.watchQuery(QUERIES.SearchProducts, (data) => data);
 
-  setUserDefaultAddress = this.fireQuery(
-    MUTATIONS.AddressTypeUpdate,
-    (data) => data!.accountSetDefaultAddress
-  );
-
-  setDeleteUserAddress = this.fireQuery(
-    MUTATIONS.DeleteUserAddress,
-    (data) => data!.accountAddressDelete
-  );
-
-  setCreateUserAddress = this.fireQuery(
-    MUTATIONS.CreateUserAddress,
-    (data) => data!.accountAddressCreate
-  );
-
-  setUpdateuserAddress = this.fireQuery(
-    MUTATIONS.UpdateUserAddress,
-    (data) => data!.accountAddressUpdate
-  );
-
   setAccountUpdate = this.fireQuery(
     MUTATIONS.AccountUpdate,
     (data) => data!.accountUpdate
   );
-
-  setDefaultUserCardToken = this.fireQuery(
-    MUTATIONS.SetDefaultUserCardToken,
-    (data) => data!.accountSetDefaultCardToken
+  setCreateUserAddress = this.fireQuery(
+    MUTATIONS.CreateUserAddress,
+    (data) => data!.accountAddressCreate
   );
 
   setCreateUserCardToken = this.fireQuery(
@@ -152,9 +135,29 @@ export class APIProxy {
     (data) => data!.accountCardTokenCreate
   );
 
+  setDefaultUserCardToken = this.fireQuery(
+    MUTATIONS.SetDefaultUserCardToken,
+    (data) => data!.accountSetDefaultCardToken
+  );
+  setDeleteUserAddress = this.fireQuery(
+    MUTATIONS.DeleteUserAddress,
+    (data) => data!.accountAddressDelete
+  );
+
   setDeleteUserCardToken = this.fireQuery(
     MUTATIONS.DeleteUserCardToken,
     (data) => data!.accountCardTokenDelete
+  );
+
+  setPasswordReset = this.fireQuery(MUTATIONS.PasswordReset, (data) => data);
+
+  setUpdateuserAddress = this.fireQuery(
+    MUTATIONS.UpdateUserAddress,
+    (data) => data!.accountAddressUpdate
+  );
+  setUserDefaultAddress = this.fireQuery(
+    MUTATIONS.AddressTypeUpdate,
+    (data) => data!.accountSetDefaultAddress
   );
 
   client: ApolloClient<any>;

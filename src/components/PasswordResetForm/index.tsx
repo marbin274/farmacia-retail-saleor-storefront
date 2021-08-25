@@ -1,5 +1,6 @@
+import { ResetPasswordVariables } from '@temp/@sdk/mutations/gqlTypes/ResetPassword';
+import { usePasswordReset } from '@temp/@sdk/react';
 import * as React from 'react';
-import { TypedPasswordResetMutation } from './queries';
 import ResetPasswordFormContent from './ResetPasswordFormContent';
 interface IPasswordResetForm {
   children?: React.ReactChild;
@@ -11,27 +12,25 @@ const PasswordResetForm: React.FC<IPasswordResetForm> = ({
   children,
   buttonBack,
   onClick,
-}) => (
-  <div>
-    <TypedPasswordResetMutation>
-      {(passwordReset, { loading, data, called }) => {
-        return (
-          <>
-            <ResetPasswordFormContent
-              onClose={onClick}
-              called={called}
-              loading={loading}
-              errors={data?.requestPasswordReset?.errors}
-              passwordReset={passwordReset}
-              buttonBack={buttonBack}
-            >
-              {children}
-            </ResetPasswordFormContent>
-          </>
-        );
-      }}
-    </TypedPasswordResetMutation>
-  </div>
-);
+}) => {
+  const [passwordReset, { called, data, loading }] = usePasswordReset();
+  return (
+    <div>
+      {' '}
+      <ResetPasswordFormContent
+        onClose={onClick}
+        called={called}
+        loading={loading}
+        errors={data?.requestPasswordReset?.errors}
+        onPasswordReset={(variables: ResetPasswordVariables) =>
+          passwordReset(variables)
+        }
+        buttonBack={buttonBack}
+      >
+        {children}
+      </ResetPasswordFormContent>
+    </div>
+  );
+};
 
 export default PasswordResetForm;

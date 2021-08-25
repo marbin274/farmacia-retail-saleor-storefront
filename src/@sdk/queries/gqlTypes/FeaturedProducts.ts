@@ -2,7 +2,7 @@
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
-import { CollectionSortingInput } from "./../../../../gqlTypes/globalTypes";
+import { CollectionSortingInput } from "./../../gqlTypes/globalTypes";
 
 // ====================================================
 // GraphQL query operation: FeaturedProducts

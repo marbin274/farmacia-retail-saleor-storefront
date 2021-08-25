@@ -17,6 +17,9 @@ export const useCollectionCategories = queryWithVariablesFactory(
   'getCollectionCategories'
 );
 
+export const useFeaturedProducts = queryWithVariablesFactory(
+  'getFeaturedProducts'
+);
 export const useFooterSecondayMenu = queryFactory('getFooterSecondaryMenu');
 
 export const useHomePage = queryFactory('getHomePage');

@@ -1,5 +1,5 @@
-import gql from "graphql-tag";
-import { userFragment } from "../fragments/auth";
+import gql from 'graphql-tag';
+import { userFragment } from '../fragments/auth';
 
 export const changeUserPassword = gql`
   mutation PasswordChange($newPassword: String!, $oldPassword: String!) {
@@ -49,28 +49,37 @@ export const setPassword = gql`
 `;
 
 export const saveFavoriteCategories = gql`
-  mutation SaveFavoriteCategories ($categories: [FavoriteCategoryInput]!){
-    accountSetFavoriteCategories(
-        categories: $categories
-  ) {
-        user {
-            favoriteCategories
-        }
-        accountErrors{
-            message
-        }
+  mutation SaveFavoriteCategories($categories: [FavoriteCategoryInput]!) {
+    accountSetFavoriteCategories(categories: $categories) {
+      user {
+        favoriteCategories
+      }
+      accountErrors {
+        message
+      }
     }
   }
 `;
 
 export const setAccountConfirm = gql`
-mutation AccountConfirm($email: String!, $token: String!) {
-  confirmAccount(email: $email, token: $token) {
-    accountErrors {
-      field
-      message
-      code
+  mutation AccountConfirm($email: String!, $token: String!) {
+    confirmAccount(email: $email, token: $token) {
+      accountErrors {
+        field
+        message
+        code
+      }
     }
   }
-}
+`;
+
+export const passwordResetMutation = gql`
+  mutation ResetPassword($email: String!, $redirectUrl: String!) {
+    requestPasswordReset(email: $email, redirectUrl: $redirectUrl) {
+      errors {
+        field
+        message
+      }
+    }
+  }
 `;

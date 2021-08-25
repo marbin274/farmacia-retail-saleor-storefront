@@ -76,6 +76,13 @@ export enum CheckoutErrorCode {
   ZERO_QUANTITY = "ZERO_QUANTITY",
 }
 
+export enum CollectionSortField {
+  AVAILABILITY = "AVAILABILITY",
+  NAME = "NAME",
+  PRODUCT_COUNT = "PRODUCT_COUNT",
+  SORT_ORDER = "SORT_ORDER",
+}
+
 /**
  * An enumeration.
  */
@@ -453,6 +460,11 @@ export interface CheckoutCreateInput {
 export interface CheckoutLineInput {
   quantity: number;
   variantId: string;
+}
+
+export interface CollectionSortingInput {
+  direction: OrderDirection;
+  field: CollectionSortField;
 }
 
 export interface FavoriteCategoryInput {

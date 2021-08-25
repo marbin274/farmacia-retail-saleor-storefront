@@ -2,15 +2,11 @@ import { ResetPasswordMailSentPage } from '@app/pages';
 import { IFormError } from '@app/types';
 import { joinFormikErrorsToIFormErrorsAndConvertToObjectErrors } from '@app/utils/errorsManagement';
 import { Button, InputField } from '@farmacia-retail/farmauna-components';
+import { ResetPasswordVariables } from '@temp/@sdk/mutations/gqlTypes/ResetPassword';
 import { LocalRepository } from '@temp/@sdk/repository';
 import { passwordResetUrl } from '@temp/app/routes';
 import { useFormik } from 'formik';
 import React from 'react';
-import { MutationFn } from 'react-apollo';
-import {
-  ResetPassword,
-  ResetPasswordVariables,
-} from './gqlTypes/ResetPassword';
 import { passwordResetFormSchema } from './passwordResetForm.schema';
 import * as S from './styles';
 interface ResetPasswordFormContentProps {
@@ -19,7 +15,7 @@ interface ResetPasswordFormContentProps {
   errors?: IFormError[];
   buttonBack?: React.ReactChild;
   onClose: () => void;
-  passwordReset: MutationFn<ResetPassword, ResetPasswordVariables>;
+  onPasswordReset: (variables: ResetPasswordVariables) => void;
 }
 
 const initialValues: ResetPasswordVariables = {
@@ -33,7 +29,7 @@ const ResetPasswordFormContent: React.FC<ResetPasswordFormContentProps> = ({
   loading,
   errors: requestErrors,
   children,
-  passwordReset,
+  onPasswordReset,
 }) => {
   const [showMessageSuccess, setShowMessageSuccess] =
     React.useState<boolean>(false);
@@ -52,7 +48,7 @@ const ResetPasswordFormContent: React.FC<ResetPasswordFormContentProps> = ({
   } = useFormik<ResetPasswordVariables>({
     initialValues,
     onSubmit: (values) => {
-      passwordReset({ variables: values });
+      onPasswordReset(values);
     },
     validationSchema: passwordResetFormSchema,
   });
