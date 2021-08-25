@@ -21,8 +21,8 @@ import {
   OverlayContextInterface,
   OverlayTheme,
   OverlayType,
-} from '..';
-import { SearchForm } from '../OverlayManager/Search';
+} from '@temp/components';
+import { SearchForm } from '@temp/components/OverlayManager/Search';
 import { IProps } from './types';
 import { useMediaScreen } from '@temp/@next/globalStyles';
 import { links } from '@app/pages/AccountPage/paths';

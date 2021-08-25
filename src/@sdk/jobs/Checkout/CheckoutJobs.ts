@@ -2,11 +2,15 @@ import {
   DataErrorCheckoutTypes,
   ICreditCard,
   IPrivacyPolicy,
-} from "@sdk/api/Checkout/types";
-import { NetworkManager } from "@sdk/network";
-import { ICheckoutAddress, IShippingMethodUpdate, LocalRepository } from "@sdk/repository";
+} from '@sdk/api/Checkout/types';
+import { NetworkManager } from '@sdk/network';
+import {
+  ICheckoutAddress,
+  IShippingMethodUpdate,
+  LocalRepository,
+} from '@sdk/repository';
 
-import { PromiseCheckoutJobRunResponse } from "../types";
+import { PromiseCheckoutJobRunResponse } from '../types';
 
 export class CheckoutJobs {
   private networkManager: NetworkManager;
@@ -38,15 +42,16 @@ export class CheckoutJobs {
   }): PromiseCheckoutJobRunResponse => {
     const districtId = this.repository.getDistrict()?.id;
 
-    const { checkoutErrors, data, error } = await this.networkManager.createCheckout(
-      email,
-      lines,
-      shippingAddress,
-      billingAddress,
-      privacyPolicy,
-      documentNumber,
-      districtId
-    );
+    const { checkoutErrors, data, error } =
+      await this.networkManager.createCheckout(
+        email,
+        lines,
+        shippingAddress,
+        billingAddress,
+        privacyPolicy,
+        documentNumber,
+        districtId
+      );
 
     if (checkoutErrors?.length! > 0) {
       return {
@@ -90,15 +95,16 @@ export class CheckoutJobs {
     const checkout = this.repository.getCheckout();
     const districtId = this.repository.getDistrict()?.id;
 
-    const { checkoutErrors, data, error } = await this.networkManager.setShippingAddress(
-      shippingAddress,
-      email,
-      checkoutId,
-      documentNumber,
-      privacyPolicy,
-      districtId
-    );
-    
+    const { checkoutErrors, data, error } =
+      await this.networkManager.setShippingAddress(
+        shippingAddress,
+        email,
+        checkoutId,
+        documentNumber,
+        privacyPolicy,
+        districtId
+      );
+
     if (checkoutErrors?.length! > 0) {
       return {
         checkoutErrors,
@@ -116,11 +122,14 @@ export class CheckoutJobs {
         availableShippingMethods: data?.availableShippingMethods,
         billingAsShipping: false,
         dataTreatmentPolicy: data?.dataTreatmentPolicy,
+        deliveryDate: data?.deliveryDate,
         documentNumber: data?.documentNumber,
         email: data?.email,
         selectedShippingAddressId,
         shippingAddress: data?.shippingAddress,
         shippingMethod: data?.shippingMethod,
+        slotId: data?.slotId,
+        slots: data?.slots,
         termsAndConditions: data?.termsAndConditions,
       });
       return { data };
@@ -180,15 +189,13 @@ export class CheckoutJobs {
 
     const districtId = this.repository.getDistrict()?.id;
 
-    const {
-      data,
-      error,
-    } = await this.networkManager.setBillingAddressWithEmail(
-      billingAddress,
-      email,
-      checkoutId,
-      districtId
-    );
+    const { data, error } =
+      await this.networkManager.setBillingAddressWithEmail(
+        billingAddress,
+        email,
+        checkoutId,
+        districtId
+      );
 
     if (error) {
       return {
@@ -236,9 +243,12 @@ export class CheckoutJobs {
       const newCheckout = {
         ...checkout,
         availableShippingMethods: data?.availableShippingMethods,
+        deliveryDate: data?.deliveryDate,
         promoCodeDiscount: data?.promoCodeDiscount,
         scheduleDate: data?.scheduleDate,
         shippingMethod: data?.shippingMethod,
+        slotId: data?.slotId,
+        slots: data?.slots,
       };
       this.repository.setCheckout(newCheckout);
       return { data };
@@ -381,7 +391,7 @@ export class CheckoutJobs {
         },
       };
     } else {
-      this.repository.setFinallCheckout(this.repository.getCheckout())
+      this.repository.setFinallCheckout(this.repository.getCheckout());
       this.repository.setCheckout({});
       // this.repository.setPayment({}); // descomentar si se llegara a separar la confirmación del checkout del pago nuevamente
       return { data };

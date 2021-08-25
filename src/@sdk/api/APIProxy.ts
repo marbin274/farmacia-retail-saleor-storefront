@@ -74,6 +74,11 @@ export class APIProxy {
     (data) => data
   );
 
+  getFeaturePlugins = this.watchQuery(
+    QUERIES.GetShopFeaturePlugins,
+    (data) => data.shop?.availableFeaturePlugins
+  );
+
   getFooterSecondaryMenu = this.watchQuery(
     QUERIES.FooterSecondaryMenu,
     (data) => data
@@ -89,7 +94,6 @@ export class APIProxy {
   );
 
   getMainMenu = this.watchQuery(QUERIES.MainMenu, (data) => data);
-
   getOrdersByUser = this.watchQuery(QUERIES.OrdersByUser, (data) =>
     data.me ? data.me.orders : null
   );

@@ -2,7 +2,6 @@ import { BulletXFilledIcon } from '@farmacia-retail/farmauna-components';
 import farmatheme from '@farmatheme';
 import React, { FC, useState } from 'react';
 import {
-  LoginForm,
   Offline,
   OfflinePlaceholder,
   Online,
@@ -10,6 +9,7 @@ import {
   OverlayTheme,
   OverlayType,
 } from '../..';
+import { LoginForm } from '@components/organisms/LoginForm';
 import RegisterForm from './components/RegisterForm';
 import * as S from './styles';
 

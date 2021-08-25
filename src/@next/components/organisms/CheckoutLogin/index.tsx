@@ -1,14 +1,19 @@
 import React, { useContext, useState } from 'react';
 import { Redirect } from 'react-router';
 import { useUserDetails } from '@sdk/react';
-import { Offline, OfflinePlaceholder, Online, OverlayContext } from '..';
+import {
+  Offline,
+  OfflinePlaceholder,
+  Online,
+  OverlayContext,
+} from '@temp/components';
 import { checkoutUrl } from 'src/app/routes/paths';
 import CheckoutAsGuest from './components/CheckoutAsGuest';
 import ResetPasswordForm from './components/ResetPasswordForm';
 import SignInForm from './components/SignInForm';
 import * as S from './styles';
 
-const CheckoutLogin: React.FC<{}> = () => {
+export const CheckoutLogin: React.FC<{}> = () => {
   const [resetPassword, setResetPassword] = useState(false);
   const [tabSelected, setTabSelected] = useState<
     'ScreenSignIn' | 'ScreenAsGuest'
@@ -92,5 +97,3 @@ const CheckoutLogin: React.FC<{}> = () => {
     </S.CheckoutLoginContainer>
   );
 };
-
-export default CheckoutLogin;

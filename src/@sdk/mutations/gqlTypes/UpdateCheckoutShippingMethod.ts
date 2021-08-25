@@ -707,6 +707,54 @@ export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_check
   culture: string;
 }
 
+export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_checkout_slots_scheduled {
+  __typename: "ShippingSlot";
+  /**
+   * Slot id.
+   */
+  id: string | null;
+  /**
+   * Slot available from.
+   */
+  slotFrom: string | null;
+  /**
+   * Slot available to.
+   */
+  slotTo: string | null;
+}
+
+export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_checkout_slots_express {
+  __typename: "ShippingSlot";
+  /**
+   * Slot id.
+   */
+  id: string | null;
+  /**
+   * Slot available from.
+   */
+  slotFrom: string | null;
+  /**
+   * Slot available to.
+   */
+  slotTo: string | null;
+}
+
+export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_checkout_slots {
+  __typename: "Slot";
+  /**
+   * List of scheduled slots.
+   */
+  scheduled: (UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_checkout_slots_scheduled | null)[] | null;
+  /**
+   * List of express slots.
+   */
+  express: (UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_checkout_slots_express | null)[] | null;
+  /**
+   * Datetime.
+   */
+  datetime: string | null;
+}
+
 export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_checkout {
   __typename: "Checkout";
   token: any;
@@ -756,6 +804,18 @@ export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_check
   documentNumber: string | null;
   termsAndConditions: boolean;
   dataTreatmentPolicy: boolean;
+  /**
+   * List of slots.
+   */
+  slots: UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_checkout_slots | null;
+  /**
+   * Slot id.
+   */
+  slotId: string | null;
+  /**
+   * Slot date.
+   */
+  deliveryDate: string | null;
 }
 
 export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_errors_products {
@@ -811,4 +871,5 @@ export interface UpdateCheckoutShippingMethodVariables {
   checkoutId: string;
   shippingMethodId: string;
   districtId?: string | null;
+  slotId?: string | null;
 }

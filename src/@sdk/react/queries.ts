@@ -40,3 +40,5 @@ export const useUserDetails = queryFactory('getUserDetails');
 export const useVariantsProducts = queryWithVariablesFactory(
   'getVariantsProducts'
 );
+
+export const useFeaturePlugins = queryFactory('getFeaturePlugins');

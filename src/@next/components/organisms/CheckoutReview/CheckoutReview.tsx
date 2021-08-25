@@ -1,12 +1,12 @@
-import { CreditCardIcon } from "@components/atoms";
-import { AddressSummary, OutOfTimeMessage } from "@components/molecules";
+import { CreditCardIcon } from '@components/atoms';
+import { AddressSummary, OutOfTimeMessage } from '@components/molecules';
 import {
   formatShippingMethodDateToString,
   getScheduleTimesFormat,
-} from "@temp/@next/utils/dateUtils";
-import React from "react";
-import * as S from "./styles";
-import { IProps } from "./types";
+} from '@temp/@next/utils/dateUtils';
+import React from 'react';
+import * as S from './styles';
+import { IProps } from './types';
 /**
  * Review order view showed in checkout.
  */
@@ -19,7 +19,6 @@ const CheckoutReview: React.FC<IProps> = ({
   creditCardProvider,
   paymentMethodName,
 }: IProps) => {
-
   const renderPaymentMethod = () => {
     if (paymentMethodName) {
       return paymentMethodName;
@@ -37,12 +36,12 @@ const CheckoutReview: React.FC<IProps> = ({
         <S.Title data-cy="checkoutReviewSectionTitle">Datos personales</S.Title>
         <S.Text>
           <S.TextBold>
-            {checkout?.billingAddress?.firstName}{" "}
+            {checkout?.billingAddress?.firstName}{' '}
             {checkout?.billingAddress?.lastName}
           </S.TextBold>
         </S.Text>
         <S.Text>
-          Número de documento:{" "}
+          Número de documento:{' '}
           <S.TextBold>{checkout?.documentNumber}</S.TextBold>
         </S.Text>
         <S.Text>
@@ -70,18 +69,19 @@ const CheckoutReview: React.FC<IProps> = ({
           <>
             <S.TextBold> {shippingMethodName}</S.TextBold>
             <S.Text>
-              Fecha:{" "}
+              Fecha:{' '}
               <S.TextBold>
                 {formatShippingMethodDateToString(scheduleDate?.date)}
               </S.TextBold>
             </S.Text>
             <S.Text>
-              Hora:{" "}
+              Hora:{' '}
               <S.TextBold>
-                {getScheduleTimesFormat(
-                  scheduleDate?.scheduleTime?.startTime,
-                  scheduleDate?.scheduleTime?.endTime
-                )}
+                {checkout?.deliveryDate ||
+                  getScheduleTimesFormat(
+                    scheduleDate?.scheduleTime?.startTime,
+                    scheduleDate?.scheduleTime?.endTime
+                  )}
               </S.TextBold>
             </S.Text>
           </>

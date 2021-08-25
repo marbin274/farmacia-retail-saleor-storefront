@@ -1,11 +1,11 @@
-import React from "react";
-import { Iprops, TitleDelivery, LineDeliveryData } from "./types";
+import React from 'react';
+import { Iprops, TitleDelivery, LineDeliveryData } from './types';
 import {
   formatShippingMethodDateToString,
   getScheduleTimesFormat,
-} from "@temp/@next/utils/dateUtils";
+} from '@temp/@next/utils/dateUtils';
 
-import * as S from "./styles";
+import * as S from './styles';
 
 const TitleDeliveryData: React.FC<TitleDelivery> = ({
   children,
@@ -16,7 +16,7 @@ const TitleDeliveryData: React.FC<TitleDelivery> = ({
 export function LineDetailDeliveryData({
   label,
   text,
-  direction = "row",
+  direction = 'row',
 }: LineDeliveryData) {
   return (
     <S.LineDetailDelivery direction={direction}>
@@ -78,10 +78,13 @@ const CartDeliveryData: React.FC<Iprops> = ({ checkout }) => {
           />
           <LineDetailDeliveryData
             label="Hora"
-            text={getScheduleTimesFormat(
-              scheduleDate?.scheduleTime?.startTime,
-              scheduleDate?.scheduleTime?.endTime
-            )}
+            text={
+              checkout?.deliveryDate ||
+              getScheduleTimesFormat(
+                scheduleDate?.scheduleTime?.startTime,
+                scheduleDate?.scheduleTime?.endTime
+              )
+            }
           />
         </>
       )}

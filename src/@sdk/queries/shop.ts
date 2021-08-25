@@ -82,6 +82,17 @@ export const footerSecondaryMenu = gql`
     }
   }
 `;
+export const getShopFeaturePlugins = gql`
+  query GetShopFeaturePlugins {
+    shop {
+      availableFeaturePlugins {
+        id
+        name
+        active
+      }
+    }
+  }
+`;
 
 export const homePage = gql`
   query HomePage {

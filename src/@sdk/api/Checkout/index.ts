@@ -4,6 +4,7 @@ import {
   ICheckoutModel,
   IPaymentModel,
   IShippingMethodUpdate,
+  ISlots,
 } from '@sdk/repository';
 import { SaleorState } from '@sdk/state';
 import { StateItems } from '@sdk/state/types';
@@ -39,6 +40,8 @@ export class SaleorCheckoutAPI
   availablePaymentGateways?: IAvailablePaymentGateways;
   payment?: IPayment;
   isPrime?: boolean;
+  slots?: ISlots;
+  selectedSlotId?: string;
 
   private saleorState: SaleorState;
   private jobsManager: JobsManager;
@@ -82,10 +85,14 @@ export class SaleorCheckoutAPI
         termsAndConditions,
         documentNumber,
         scheduleDate,
+        slotId,
+        slots,
+        deliveryDate,
       }: ICheckoutModel) => {
         this.checkout = {
           billingAddress,
           dataTreatmentPolicy,
+          deliveryDate,
           documentNumber,
           email,
           id,
@@ -114,6 +121,8 @@ export class SaleorCheckoutAPI
 
         this.isPrime =
           isPrime || !!lines?.find((x) => x.variant.sku === primeSku);
+        this.slots = slots;
+        this.selectedSlotId = slotId;
       }
     );
     this.saleorState.subscribeToChange(

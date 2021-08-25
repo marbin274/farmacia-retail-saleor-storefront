@@ -18,7 +18,9 @@
       "@components/organisms": ["./src/@next/components/organisms/index.ts"],
       "@components/templates": ["./src/@next/components/templates/index.ts"],
       "@components/containers": ["./src/@next/components/containers/index.ts"],
-      "@farmatheme": ["<rootDir>/node_modules/@farmacia-retail/farmauna-components/tailwind.config"], 
+      "@farmatheme": [
+        "<rootDir>/node_modules/@farmacia-retail/farmauna-components/tailwind.config"
+      ],
       "@pages": ["./src/@next/pages/index.ts"],
       "@styles": ["./src/@next/globalStyles/index.ts"],
       "@styles/*": ["./src/@next/globalStyles/*"],
@@ -26,7 +28,9 @@
       "@utils/*": ["./src/@next/utils/*"],
       "@hooks": ["./src/@next/hooks/index.ts"],
       "@hooks/*": ["./src/@next/hooks/*"],
-      "@types": ["./src/@next/types/index.ts"]
+      "@types": ["./src/@next/types/index.ts"],
+      "@contexts": ["./src/@next/contexts/index.ts"],
+      "@contexts/*": ["./src/@next/contexts/*"]
     },
     "skipLibCheck": true
   },

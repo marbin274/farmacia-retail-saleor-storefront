@@ -38,6 +38,7 @@ import {
 } from './subpages';
 import { IProps } from './types';
 import { checkAttentionSchedule } from '@sdk/utils/checkoutValidations';
+import { useFeaturePlugins } from '@app/hooks';
 
 const prepareCartSummary = (
   activeStepIndex: number,
@@ -156,6 +157,8 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     setShippingMethod,
   } = useCheckout();
 
+  const { lastMileActive } = useFeaturePlugins();
+
   const { isAttentionSchedule } = checkAttentionSchedule(
     checkoutLoaded,
     checkout,
@@ -167,18 +170,20 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     return <Redirect to={BASE_URL} />;
   }
 
-  if (isAttentionSchedule === false) {
-    alertService.sendAlert({
-      acceptDialog: () => {
-        setShippingMethod({ shippingMethodId: '' });
-      },
-      buttonText: 'Entendido',
-      icon: shippingMethodCalendarInfoIco,
-      message: SHIPPING_METHOD_NOT_FOUND,
-      title: SHIPPING_METHOD_NOT_FOUND_TITLE,
-      type: 'Info',
-    });
-  }
+  useEffect(() => {
+    if (isAttentionSchedule === false && !lastMileActive) {
+      alertService.sendAlert({
+        acceptDialog: () => {
+          setShippingMethod({ shippingMethodId: '', slotId: undefined });
+        },
+        buttonText: 'Entendido',
+        icon: shippingMethodCalendarInfoIco,
+        message: SHIPPING_METHOD_NOT_FOUND,
+        title: SHIPPING_METHOD_NOT_FOUND_TITLE,
+        type: 'Info',
+      });
+    }
+  }, [isAttentionSchedule]);
 
   if (cartLoaded && (!items || !items?.length)) {
     return <Redirect to="/cart/" />;

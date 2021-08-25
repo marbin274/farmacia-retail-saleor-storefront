@@ -732,6 +732,7 @@ export class NetworkManager implements INetworkManager {
           scheduleTimeId:
             shippingMethodUpdate.scheduleDate?.scheduleTimeId || '',
           shippingMethodId: shippingMethodUpdate.shippingMethodId,
+          slotId: shippingMethodUpdate.slotId,
         },
       });
       if (errors?.length) {
@@ -967,6 +968,7 @@ export class NetworkManager implements INetworkManager {
       shippingAddress,
       scheduleDate,
       billingAddress,
+      deliveryDate,
       discount,
       discountName,
       voucherDiscountType,
@@ -979,6 +981,8 @@ export class NetworkManager implements INetworkManager {
       documentNumber,
       termsAndConditions,
       dataTreatmentPolicy,
+      slotId,
+      slots,
     } = checkout;
 
     const checkoutModel: ICheckoutModel = {
@@ -987,6 +991,7 @@ export class NetworkManager implements INetworkManager {
         : [],
       billingAddress,
       dataTreatmentPolicy,
+      deliveryDate: deliveryDate || '',
       documentNumber,
       email,
       scheduleDate,
@@ -1027,6 +1032,8 @@ export class NetworkManager implements INetworkManager {
       shippingMethod,
       termsAndConditions,
       token,
+      slotId: slotId!,
+      slots: slots as any,
     };
 
     return checkoutModel;
