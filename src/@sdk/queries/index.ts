@@ -7,6 +7,7 @@ import { RequireOnlyOne } from '../tsHelpers';
 import * as Article from './article';
 import * as AttributesList from './attributes';
 import * as Banner from './banner';
+import * as Cart from './cart';
 import * as Category from './category';
 import * as Collection from './collections';
 import {
@@ -36,6 +37,10 @@ import {
   FeaturedProductsVariables,
 } from './gqlTypes/FeaturedProducts';
 import { FooterSecondaryMenu } from './gqlTypes/FooterSecondaryMenu';
+import {
+  GetShippingMethods,
+  GetShippingMethodsVariables,
+} from './gqlTypes/GetShippingMethods';
 import { GetShop } from './gqlTypes/GetShop';
 import { GetShopFeaturePlugins } from './gqlTypes/GetShopFeaturePlugins';
 import { HomePage } from './gqlTypes/HomePage';
@@ -144,6 +149,14 @@ export const QUERIES = {
   ): ObservableQuery<FooterSecondaryMenu, any> =>
     client.watchQuery({
       query: Shop.footerSecondaryMenu,
+      ...options,
+    }),
+  GetShippingMethods: <TCacheShape>(
+    client: ApolloClient<TCacheShape>,
+    options: QueryOptions<GetShippingMethodsVariables>
+  ): ObservableQuery<GetShippingMethods, any> =>
+    client.watchQuery({
+      query: Cart.shippingMethodsQuery,
       ...options,
     }),
   GetShopDetails: <TCacheShape>(

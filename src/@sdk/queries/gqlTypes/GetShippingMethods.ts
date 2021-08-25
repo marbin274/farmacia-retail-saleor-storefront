@@ -2,7 +2,7 @@
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
-import { CheckoutLineInput } from "./../../../../../gqlTypes/globalTypes";
+import { CheckoutLineInput } from "./../../gqlTypes/globalTypes";
 
 // ====================================================
 // GraphQL query operation: GetShippingMethods

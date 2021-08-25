@@ -117,6 +117,11 @@ export class APIProxy {
     (data) => data.productVariants
   );
 
+  getShippingMethods = this.watchQuery(
+    QUERIES.GetShippingMethods,
+    (data) => data
+  );
+
   getShopDetails = this.watchQuery(QUERIES.GetShopDetails, (data) => data);
 
   searchProducts = this.watchQuery(QUERIES.SearchProducts, (data) => data);
