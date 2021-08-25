@@ -1,18 +1,17 @@
+import {
+  FooterSecondaryMenu_shop_navigation_secondary_items,
+  FooterSecondaryMenu_shop_navigation_secondary_items_children,
+} from '@sdk/queries/gqlTypes/FooterSecondaryMenu';
+import { MainMenu_shop_navigation_main_items } from '@sdk/queries/gqlTypes/MainMenu';
+import { MainMenuSubItem } from '@sdk/queries/gqlTypes/MainMenuSubItem';
 import * as React from 'react';
-import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
-
+import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
 import {
   generateCategoryUrl,
   generateCollectionUrl,
   generatePageUrl,
 } from '../../core/utils';
-import { MainMenu_shop_navigation_main_items } from '@temp/components/MainMenu/gqlTypes/MainMenu';
-import { MainMenuSubItem } from '@temp/components/MainMenu/gqlTypes/MainMenuSubItem';
 import * as S from './styles';
-import {
-  FooterSecondaryMenu_shop_navigation_secondary_items,
-  FooterSecondaryMenu_shop_navigation_secondary_items_children,
-} from '@sdk/queries/gqlTypes/FooterSecondaryMenu';
 
 export interface NavLinkProps
   extends React.AnchorHTMLAttributes<HTMLAnchorElement> {

@@ -24,6 +24,7 @@ export const useHomePage = queryFactory('getHomePage');
 export const useLanding = queryWithVariablesFactory('getLanding');
 
 export const useMainBanner = queryFactory('getMainBanner');
+export const useMainMenu = queryFactory('getMainMenu');
 
 export const useOrderDetails = queryWithVariablesFactory('getOrderDetails');
 export const useOrdersByUser = queryWithVariablesFactory('getOrdersByUser');

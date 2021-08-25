@@ -1,5 +1,7 @@
 import { IFilterAttributes } from '@app/types';
-import { MainMenuSubItem } from '@temp/components/MainMenu/gqlTypes/MainMenuSubItem';
+import { Breadcrumb } from '@components/organisms/Breadcrumbs';
+import { MainMenuSubItem } from '@sdk/queries/gqlTypes/MainMenuSubItem';
+import { ISimpleProduct } from '@sdk/types/IProduct';
 import { History, LocationState } from 'history';
 import { Base64 } from 'js-base64';
 import { each } from 'lodash';
@@ -10,8 +12,6 @@ import {
   ProductOrderField,
 } from '../../../gqlTypes/globalTypes';
 import { FormError } from '../types';
-import { Breadcrumb } from '@components/organisms/Breadcrumbs';
-import { ISimpleProduct } from '@sdk/types/IProduct';
 import { IGeoJson } from '../types/address';
 
 export const slugify = (text: string | number): string =>

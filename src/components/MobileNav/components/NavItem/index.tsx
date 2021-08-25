@@ -1,14 +1,14 @@
-import classNames from 'classnames';
-import * as React from 'react';
-import NavChildren from '../NavChildren';
 import {
-  NextIcon,
   DownIcon,
+  NextIcon,
   UpIcon,
 } from '@farmacia-retail/farmauna-components';
 import farmatheme from '@farmatheme';
+import { MainMenuSubItem } from '@temp/@sdk/queries/gqlTypes/MainMenuSubItem';
+import classNames from 'classnames';
+import * as React from 'react';
+import NavChildren from '../NavChildren';
 import * as S from './styles';
-import { MainMenuSubItem } from '../../../MainMenu/gqlTypes/MainMenuSubItem';
 
 export interface INavItem extends Omit<MainMenuSubItem, '__typename'> {
   children?: INavItem[] | null;

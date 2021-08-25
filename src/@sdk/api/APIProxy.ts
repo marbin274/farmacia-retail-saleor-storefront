@@ -88,6 +88,8 @@ export class APIProxy {
     (data) => data.mainBanner
   );
 
+  getMainMenu = this.watchQuery(QUERIES.MainMenu, (data) => data);
+
   getOrdersByUser = this.watchQuery(QUERIES.OrdersByUser, (data) =>
     data.me ? data.me.orders : null
   );
