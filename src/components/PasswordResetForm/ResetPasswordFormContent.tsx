@@ -6,7 +6,7 @@ import { LocalRepository } from '@temp/@sdk/repository';
 import { passwordResetUrl } from '@temp/app/routes';
 import { useFormik } from 'formik';
 import React from 'react';
-import { MutationFn } from 'react-apollo';
+import { MutationFunction } from '@apollo/client';
 import {
   ResetPassword,
   ResetPasswordVariables,
@@ -19,7 +19,7 @@ interface ResetPasswordFormContentProps {
   errors?: IFormError[];
   buttonBack?: React.ReactChild;
   onClose: () => void;
-  passwordReset: MutationFn<ResetPassword, ResetPasswordVariables>;
+  passwordReset: MutationFunction<ResetPassword, ResetPasswordVariables>;
 }
 
 const initialValues: ResetPasswordVariables = {

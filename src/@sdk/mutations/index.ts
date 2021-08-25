@@ -1,7 +1,7 @@
 import {
   ApolloClient,
   MutationOptions as ApolloMutationOptions,
-} from 'apollo-client';
+} from '@apollo/client';
 
 import * as Address from './address';
 import * as Auth from './auth';
