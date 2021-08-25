@@ -23,7 +23,6 @@ export const Header = styled.div`
   font-weight: ${(props) => props.theme.typography.extraBoldFontWeight};
   font-size: ${(props) => props.theme.typography.h4FontSize};
   height: 4rem;
-  justify-content: space-between;
   padding-bottom: 1rem;
   width: 100%;
 `;
