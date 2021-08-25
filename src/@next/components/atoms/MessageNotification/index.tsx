@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import closeImg from '../../images/x.svg';
+import closeImg from '../../../../images/x.svg';
 import classNames from 'classnames';
 import * as S from './styles';
 interface MessageProps {

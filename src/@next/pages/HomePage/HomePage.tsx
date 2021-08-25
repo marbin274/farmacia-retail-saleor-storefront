@@ -1,11 +1,11 @@
-import { Loader } from '@temp/@next/components/atoms';
+import { Loader, MetaWrapper } from '@temp/@next/components/atoms';
 import {
   IAddToCartCallback,
   IRemoveItemToCartCallback,
   ISubtractItemToCartCallback,
 } from '@temp/@next/components/molecules/ProductTileAUNA/types';
 import { useCart, useHomePage } from '@temp/@sdk/react';
-import { MetaWrapper, NotFound } from '@temp/components';
+import { NotFound } from '@temp/components';
 import * as React from 'react';
 import Page from './Page';
 

@@ -1,14 +1,14 @@
-import { Loader } from '@app/components/atoms';
 import {
   IAddToCartCallback,
   IRemoveItemToCartCallback,
   ISubtractItemToCartCallback,
 } from '@app/components/molecules/ProductTileAUNA/types';
+import { SORT_OPTIONS } from '@app/utils/sorts';
+import { Loader, MetaWrapper } from '@components/atoms';
 import { useCart, useCategoryDetails } from '@sdk/react';
-import { MetaWrapper, NotFound } from '@temp/components';
+import { NotFound } from '@temp/components';
 import { getGraphqlIdFromDBId } from '@temp/core/utils';
 import { convertToFilterSideBar } from '@temp/core/utils/filters';
-import { SORT_OPTIONS } from '@app/utils/sorts';
 import React, { FC } from 'react';
 import { RouteComponentProps } from 'react-router';
 import Page from './Page';

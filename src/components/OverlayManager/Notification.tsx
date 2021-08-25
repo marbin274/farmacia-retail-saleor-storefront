@@ -1,14 +1,19 @@
-import * as React from "react";
+import { MessageNotification } from '@components/atoms';
+import * as React from 'react';
 
-import { Message, OverlayContextInterface } from "..";
+import { OverlayContextInterface } from '..';
 
 export const NotificationOverlay: React.FC<{
   overlay: OverlayContextInterface;
 }> = ({ overlay: { hide, context } }) => {
   return (
-    <Message title={context.title} status={context.status} onClose={hide}>
+    <MessageNotification
+      title={context.title}
+      status={context.status}
+      onClose={hide}
+    >
       {context.content}
-    </Message>
+    </MessageNotification>
   );
 };
 

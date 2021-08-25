@@ -15,18 +15,14 @@ export const ContactNavWrapper = styled.div`
 
 export const ContactPhoneWrapper = styled.div`
   margin-top: 1.875rem;
-  padding: 2.125rem 0;
 
+  padding-left: 2.625rem;
+  img {
+    width: 1.5625rem;
+    height: 1.5625rem;
+    margin: -0.3125rem 0.625rem 0 0;
+  }
   span {
-    padding: 2.125rem 0 2.5rem 2.625rem;
-    &:before {
-      content: '';
-      display: inline-block;
-      vertical-align: middle;
-      width: 1.5625rem;
-      height: 1.5625rem;
-      margin: -0.3125rem 0.625rem 0 0;
-      background: url('../../../../images/contact-phone.svg') no-repeat;
-    }
+    padding: 2.125rem 0 2.5rem;
   }
 `;

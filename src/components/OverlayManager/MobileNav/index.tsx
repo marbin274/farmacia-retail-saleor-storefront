@@ -2,17 +2,15 @@ import { Button } from '@farmacia-retail/farmauna-components';
 import { generateCategoryUrl } from '@temp/core/utils';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import {
-  INavItem,
-  MobileNavList,
-  Overlay,
-  OverlayContextInterface,
-} from '../..';
+import { Overlay, OverlayContextInterface } from '../..';
 import {
   ContactNavWrapper,
   ContactPhoneWrapper,
   MobileNavWrapper,
 } from './styles';
+import { INavItem, MobileNavList } from '@components/organisms/MobileNav';
+import phoneSvg from '../../../images/contact-phone.svg';
+
 const MobileNav: React.FC<{ overlay: OverlayContextInterface }> = ({
   overlay,
 }) => {
@@ -51,16 +49,17 @@ const MobileNav: React.FC<{ overlay: OverlayContextInterface }> = ({
             <p className="fa-font-normal fa-text-sm fa-leading-6 fa-text-black">
               ¿Necesitas asesoría?
             </p>
-            <p className="fa-font-normal fa-text-sm fa-leading-6 fa-text-black">
+            <div className="fa-font-normal fa-text-sm fa-leading-6 fa-text-black">
               <a
                 className="fa-text-primary-medium"
                 href="mailto:consultas@farmauna.com"
               >
                 consultas@farmauna.com
               </a>
-            </p>
+            </div>
           </ContactNavWrapper>
-          <ContactPhoneWrapper className="contact-phone fa-border-t fa-border-solid fa-border-gray-light">
+          <ContactPhoneWrapper className="fa-border-t fa-border-solid fa-border-gray-light fa-flex fa-items-center">
+            <img src={phoneSvg} alt="phone-icon" />
             <span className="fa-text-h2 fa-leading-6 fa-text-primary-medium fa-font-semibold">
               01 3913655
             </span>

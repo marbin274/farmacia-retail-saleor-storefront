@@ -1,4 +1,4 @@
-import { INavItem } from '@temp/components/MobileNav';
+import { INavItem } from '@components/organisms/MobileNav';
 
 export interface IProps {
   categories: INavItem[];

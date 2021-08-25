@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import ReactSVG from 'react-svg';
 import { baseUrl } from '@temp/app/routes';
-import logoImg from '../../images/logo.svg';
+import logoImg from '../../../../images/logo.svg';
 import NavItem, { INavItem } from './components/NavItem';
 import { NavSubItem } from './components/NavSubItem';
 import { IconHamburger } from '@temp/@next/components/atoms';

@@ -1,5 +1,5 @@
-import farmatheme from "@farmatheme";
-import { mediaUp, styled } from "@styles";
+import farmatheme from '@farmatheme';
+import { mediaUp, styled } from '@styles';
 
 export const Wrapper = styled.nav<{ isProductDetail: boolean }>`
   background-color: ${({ isProductDetail }) =>
@@ -8,7 +8,7 @@ export const Wrapper = styled.nav<{ isProductDetail: boolean }>`
       : farmatheme.theme.colors.highlight.darkest};
   width: 100%;
   padding: ${({ isProductDetail }) =>
-    isProductDetail ? "0.5rem 1rem" : "1rem"};
+    isProductDetail ? '0.5rem 1rem' : '1rem'};
   z-index: 3;
 
   ${mediaUp.largeScreen`
@@ -96,7 +96,7 @@ export const WrapperAddressGeo = styled.div<{ isProductDetail: boolean }>`
       }
     }
   `
-      : ""}
+      : ''}
 
   ${mediaUp.largeScreen`
         width: 20rem;

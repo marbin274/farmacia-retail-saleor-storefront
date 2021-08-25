@@ -2,8 +2,12 @@ import { AddressGeocalization } from '@temp/@next/components/molecules';
 import { useMediaScreen } from '@temp/@next/globalStyles';
 import React, { useContext } from 'react';
 import { DesktopNav } from '@components/organisms/DesktopNav';
-import { OverlayContext, OverlayTheme, OverlayType } from '../Overlay';
-import { SearchForm } from '../OverlayManager/Search';
+import {
+  OverlayContext,
+  OverlayTheme,
+  OverlayType,
+} from '../../../../components/Overlay';
+import { SearchForm } from '../../../../components/OverlayManager/Search';
 import * as S from './styles';
 import { IProps } from './types';
 

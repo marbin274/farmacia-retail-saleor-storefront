@@ -22,6 +22,8 @@ export * from './InputLabel';
 export * from './Label';
 export * from './Loader';
 export * from './Message';
+export { default as MessageNotification } from './MessageNotification';
+export * from './Meta';
 export * from './NavLink';
 export * from './NotificationTemplate';
 export * from './PlaceholderImage';

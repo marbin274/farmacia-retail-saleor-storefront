@@ -14,7 +14,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ReactSVG from 'react-svg';
 import {
-  MenuDropdown,
   Offline,
   Online,
   OverlayContext,
@@ -28,6 +27,7 @@ import { useMediaScreen } from '@temp/@next/globalStyles';
 import { links } from '@app/pages/AccountPage/paths';
 import classNames from 'classnames';
 import * as S from './styles';
+import { MenuDropdown } from '@components/molecules';
 
 const SEARCH_HEIGHT = 56;
 

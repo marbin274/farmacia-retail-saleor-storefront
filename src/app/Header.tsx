@@ -4,7 +4,8 @@ import { convertCategoryToMenuItem, maybe } from '@temp/core/utils';
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { Header as HeaderComponent } from '@components/organisms/Header';
-import { INavItem, MainMenu } from '../components';
+import { MainMenu } from '@components/organisms/MainMenu';
+import { INavItem } from '@components/organisms/MobileNav';
 
 import '../globalStyles/scss/index.scss';
 

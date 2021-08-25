@@ -22,6 +22,7 @@ export * from './InputSelectField';
 export * from './InputTextField';
 export * from './Map';
 export * from './MapField';
+export { default as MenuDropdown } from './MenuDropdown';
 export * from './OrderTabel';
 export * from './OutOfTimeMessage';
 export * from './OverlayItem';
