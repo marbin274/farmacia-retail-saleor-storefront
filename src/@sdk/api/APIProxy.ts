@@ -158,6 +158,11 @@ export class APIProxy {
 
   setPasswordReset = this.fireQuery(MUTATIONS.PasswordReset, (data) => data);
 
+  setRegisterAccount = this.fireQuery(
+    MUTATIONS.RegisterAccount,
+    (data) => data
+  );
+
   setUpdateuserAddress = this.fireQuery(
     MUTATIONS.UpdateUserAddress,
     (data) => data!.accountAddressUpdate

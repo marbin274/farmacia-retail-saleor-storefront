@@ -9,10 +9,10 @@ import { DOCUMENT_NUMBER_MAX_LENGTH } from '@app/utils/schemasConfig';
 import { accountConfirmUrl } from '@temp/app/routes';
 import { useFormik } from 'formik';
 import React, { useState } from 'react';
-import { RegisterAccountVariables } from '../../gqlTypes/RegisterAccount';
 import { registerFormSchema } from './RegisterForm.schema';
 import { ILoginForm, IProps } from '../../types';
 import { Button, InputField } from '@farmacia-retail/farmauna-components';
+import { RegisterAccountVariables } from '@temp/@sdk/mutations/gqlTypes/RegisterAccount';
 
 const initialValues: ILoginForm = {
   confirmPassword: '',

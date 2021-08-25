@@ -15,6 +15,7 @@ export const useAccountConfirm = mutationFactory('setAccountConfirm');
 export const useAccountUpdate = mutationFactory('setAccountUpdate');
 export const useSetPassword = mutationFactory('setPassword');
 export const usePasswordReset = mutationFactory('setPasswordReset');
+export const useRegisterAccount = mutationFactory('setRegisterAccount');
 export const useSaveFavoriteCategories = mutationFactory(
   'saveFavoriteCategories'
 );

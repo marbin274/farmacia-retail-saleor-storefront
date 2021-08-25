@@ -34,6 +34,10 @@ import {
   PasswordChangeVariables,
 } from './gqlTypes/PasswordChange';
 import {
+  RegisterAccount,
+  RegisterAccountVariables,
+} from './gqlTypes/RegisterAccount';
+import {
   ResetPassword,
   ResetPasswordVariables,
 } from './gqlTypes/ResetPassword';
@@ -131,6 +135,14 @@ export const MUTATIONS = {
   ) =>
     client.mutate({
       mutation: User.changeUserPassword,
+      ...options,
+    }),
+  RegisterAccount: <TCacheShape>(
+    client: ApolloClient<TCacheShape>,
+    options: MutationOptions<RegisterAccount, RegisterAccountVariables>
+  ) =>
+    client.mutate({
+      mutation: User.accountRegisterMutation,
       ...options,
     }),
   SetPassword: <TCacheShape>(
