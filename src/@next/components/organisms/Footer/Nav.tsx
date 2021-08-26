@@ -3,7 +3,7 @@ import { DOCUMENTS_URLS_S3 } from '@temp/core/config';
 import classNames from 'classnames';
 import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { NavLink } from '../../../../components';
+import { NavLink } from '@components/atoms/NavLinkComponent';
 import logoFarmaunaFooter from '../../../../images/logo-farmauna-footer.svg';
 import iconPreviousEmail from '../../../../images/icon-previous-email.svg';
 import iconPhone from '../../../../images/phone-icon.svg';

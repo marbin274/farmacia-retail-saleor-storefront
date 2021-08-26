@@ -1,7 +1,7 @@
 import { Loader, MetaWrapper } from '@components/atoms';
 import { ArticleDetail_shop } from '@sdk/queries/gqlTypes/ArticleDetail';
 import { useArticle } from '@sdk/react';
-import { NotFound } from '@temp/components';
+import { NotFound } from '@pages';
 import { generatePageUrl, maybe } from '@temp/core/utils';
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';

@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 
 interface NetworkStatusProps {
   children: (online: boolean) => React.ReactNode;
@@ -14,7 +14,7 @@ class NetworkStatus extends React.Component<
   NetworkStatusState
 > {
   state: NetworkStatusState = {
-    online: "onLine" in navigator ? navigator.onLine : true,
+    online: 'onLine' in navigator ? navigator.onLine : true,
   };
 
   updateOnlineStatus = () => {
@@ -25,14 +25,14 @@ class NetworkStatus extends React.Component<
   };
 
   componentDidMount() {
-    addEventListener("offline", this.updateOnlineStatus);
-    addEventListener("online", this.updateOnlineStatus);
+    addEventListener('offline', this.updateOnlineStatus);
+    addEventListener('online', this.updateOnlineStatus);
     this.updateOnlineStatus();
   }
 
   componentWillUnmount() {
-    removeEventListener("offline", this.updateOnlineStatus);
-    removeEventListener("online", this.updateOnlineStatus);
+    removeEventListener('offline', this.updateOnlineStatus);
+    removeEventListener('online', this.updateOnlineStatus);
   }
 
   render() {

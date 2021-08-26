@@ -10,7 +10,7 @@ import { useMediaScreen } from '@temp/@next/globalStyles';
 import { useBrandFilters } from '@temp/@next/hooks/useBrandFilters';
 import { useDistrictSelected } from '@temp/@next/hooks/useDistrictSelected';
 import { getFiltersInitial } from '@temp/@next/utils/filter';
-import { NotFound } from '@temp/components';
+import { NotFound } from '@pages';
 import { META_DEFAULTS } from '@temp/core/config';
 import {
   convertSortByFromString,

@@ -2,7 +2,7 @@ import { MetaWrapper } from '@components/atoms';
 import { ProductDetails_product } from '@sdk/queries/gqlTypes/ProductDetails';
 import { useCart, useProductDetails } from '@sdk/react';
 import { useDistrictSelected } from '@temp/@next/hooks/useDistrictSelected';
-import { NotFound } from '@temp/components';
+import { NotFound } from '@pages';
 import { getGraphqlIdFromDBId, maybe } from '@temp/core/utils';
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router';

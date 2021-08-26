@@ -14,3 +14,4 @@ export * from './ResetPasswordMailSentPage';
 export * from './SearchPage';
 export * from './ThankYouPage';
 export * from './UserRegistered';
+export * from './NotFoundPage';

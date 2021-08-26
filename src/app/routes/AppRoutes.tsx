@@ -1,6 +1,7 @@
+import { CheckoutLogin } from '@components/organisms/CheckoutLogin';
 import {
-  AccountPage,
   AccountConfirmPage,
+  AccountPage,
   ArticlePage,
   CartPage,
   CategoryPage,
@@ -8,8 +9,9 @@ import {
   CollectionPage,
   HomePage,
   LandingPage,
-  ProductPage,
+  NotFound,
   PasswordReset,
+  ProductPage,
   ResetPasswordMailSentPage,
   SearchPage,
   ThankYouPage,
@@ -17,8 +19,6 @@ import {
 } from '@pages';
 import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { NotFound } from '../../components';
-import { CheckoutLogin } from '@components/organisms/CheckoutLogin';
 import * as paths from './paths';
 
 export const Routes: React.FC = () => (

@@ -7,7 +7,7 @@ import {
   ISubtractItemToCartCallback,
 } from '@temp/@next/components/molecules/ProductTileAUNA/types';
 import { useCart, useCollectionCategories } from '@temp/@sdk/react';
-import { NotFound } from '@temp/components';
+import { NotFound } from '@pages';
 import { COLLECTION_CATEGORY_FILTER_LABEL } from '@temp/core/config';
 import { getGraphqlIdFromDBId, maybe } from '@temp/core/utils';
 import { convertToFilterSideBar } from '@temp/core/utils/filters';

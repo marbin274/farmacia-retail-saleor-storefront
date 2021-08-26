@@ -4,7 +4,7 @@ import {
   aunaDiscount,
   aunaInteractive,
 } from '@temp/@next/globalStyles/constants';
-import { NavLink as NavLinkComponent } from '@temp/components/NavLink';
+import { NavLink as NavLinkComponent } from '@components/atoms/NavLinkComponent';
 
 export const NavMenuItem = styled.li`
   div {

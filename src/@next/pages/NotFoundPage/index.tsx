@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { BASE_URL } from '../../core/config';
+import { BASE_URL } from '@temp/core/config';
 import { Button } from '@farmacia-retail/farmauna-components';
 import * as S from './styles';
 interface NotFoundProps {
   message?: string;
 }
 
-const NotFound: React.FC<NotFoundProps> = () => (
+export const NotFound: React.FC<NotFoundProps> = () => (
   <div className="fa-flex fa-items-center fa-justify-center fa-flex-col fa-text-center fa-py-8 fa-px-4">
     <S.NotFoundText className="fa-font-black fa-pb-5">404</S.NotFoundText>
     <S.RulerContent className="fa-mt-4 fa-mb-12" />
@@ -29,5 +29,3 @@ const NotFound: React.FC<NotFoundProps> = () => (
     </div>
   </div>
 );
-
-export default NotFound;

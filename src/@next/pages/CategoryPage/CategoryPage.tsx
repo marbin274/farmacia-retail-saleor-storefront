@@ -6,7 +6,7 @@ import {
 import { SORT_OPTIONS } from '@app/utils/sorts';
 import { Loader, MetaWrapper } from '@components/atoms';
 import { useCart, useCategoryDetails } from '@sdk/react';
-import { NotFound } from '@temp/components';
+import { NotFound } from '@pages';
 import { getGraphqlIdFromDBId } from '@temp/core/utils';
 import { convertToFilterSideBar } from '@temp/core/utils/filters';
 import React, { FC } from 'react';

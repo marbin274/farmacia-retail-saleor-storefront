@@ -10,7 +10,7 @@ import {
   generateCategoryUrl,
   generateCollectionUrl,
   generatePageUrl,
-} from '../../core/utils';
+} from '@temp/core/utils';
 import * as S from './styles';
 
 export interface NavLinkProps

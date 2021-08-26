@@ -1,12 +1,12 @@
-import { Loader } from '@app/components/atoms';
+import { Loader, NetworkStatus } from '@app/components/atoms';
 import { Error } from '@components/atoms/Error';
 import { Button } from '@farmacia-retail/farmauna-components';
-import { useDistrictSelected } from '@temp/@next/hooks/useDistrictSelected';
-import { searchProductsService } from '@temp/@next/services/searchProductsService';
 import { SearchResults } from '@sdk/queries/gqlTypes/SearchResults';
 import { useSearchResults } from '@sdk/react';
+import { useDistrictSelected } from '@temp/@next/hooks/useDistrictSelected';
+import { searchProductsService } from '@temp/@next/services/searchProductsService';
 import * as appPaths from '@temp/app/routes';
-import { NetworkStatus, OfflinePlaceholder } from '@temp/components';
+import { OfflinePlaceholder } from '@temp/components';
 import { SEARCH_PRODUCTS_QUERY_MIN_LENGTH } from '@temp/core/config';
 import { maybe } from '@temp/core/utils';
 import classNames from 'classnames';

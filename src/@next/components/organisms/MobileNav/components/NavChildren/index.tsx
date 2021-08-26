@@ -1,6 +1,6 @@
 import { convertCategoryToMenuItem } from '@temp/core/utils';
 import * as React from 'react';
-import { NavLink } from '@temp/components/NavLink';
+import { NavLink } from '@components/atoms/NavLinkComponent';
 import { INavItem } from '../NavItem';
 import * as S from './styles';
 

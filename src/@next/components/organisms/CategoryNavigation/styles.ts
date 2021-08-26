@@ -1,7 +1,7 @@
-import { media, styled } from "@styles";
-import { white } from "@styles/constants";
-import { NavLink as NavLinkComponent } from "@temp/components/NavLink";
-import farmatheme from "@farmatheme";
+import { media, styled } from '@styles';
+import { white } from '@styles/constants';
+import { NavLink as NavLinkComponent } from '@components/atoms/NavLinkComponent';
+import farmatheme from '@farmatheme';
 
 export const Wrapper = styled.nav`
   background-color: ${white};

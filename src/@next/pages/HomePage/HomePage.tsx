@@ -5,7 +5,7 @@ import {
   ISubtractItemToCartCallback,
 } from '@temp/@next/components/molecules/ProductTileAUNA/types';
 import { useCart, useHomePage } from '@temp/@sdk/react';
-import { NotFound } from '@temp/components';
+import { NotFound } from '@pages';
 import * as React from 'react';
 import Page from './Page';
 

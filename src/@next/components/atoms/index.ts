@@ -25,6 +25,7 @@ export * from './Message';
 export { default as MessageNotification } from './MessageNotification';
 export * from './Meta';
 export * from './NavLink';
+export { default as NetworkStatus } from './NetworkStatus';
 export * from './NotificationTemplate';
 export * from './PlaceholderImage';
 export * from './ProductDetailSticker';

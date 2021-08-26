@@ -9,7 +9,7 @@ import {
   ShippingStatusEnum,
 } from '@temp/@sdk/gqlTypes/globalTypes';
 import { CartTable } from '@components/organisms';
-import { NotFound } from '@temp/components';
+import { NotFound } from '@pages';
 import { ILine } from '@components/organisms/CartTable/ProductRow';
 import AunaError from '@temp/images/auna/auna-error.svg';
 import * as React from 'react';
