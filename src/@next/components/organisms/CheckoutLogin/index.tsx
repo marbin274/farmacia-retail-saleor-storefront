@@ -1,13 +1,9 @@
+import { Offline, OfflinePlaceholder, Online } from '@components/atoms';
+import { OverlayContext } from '@components/organisms/OverlayComponent';
+import { useUserDetails } from '@sdk/react';
+import { checkoutUrl } from '@temp/app/routes/paths';
 import React, { useContext, useState } from 'react';
 import { Redirect } from 'react-router';
-import { useUserDetails } from '@sdk/react';
-import {
-  Offline,
-  OfflinePlaceholder,
-  Online,
-  OverlayContext,
-} from '@temp/components';
-import { checkoutUrl } from 'src/app/routes/paths';
 import CheckoutAsGuest from './components/CheckoutAsGuest';
 import ResetPasswordForm from './components/ResetPasswordForm';
 import SignInForm from './components/SignInForm';

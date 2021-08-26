@@ -5,11 +5,11 @@ import { AddressGeoModal } from '@temp/@next/components/molecules/AddressGeoModa
 import { Footer } from '@temp/@next/components/organisms/Footer';
 import { useDistrictSelected } from '@temp/@next/hooks/useDistrictSelected';
 import { useUpdateCartLines } from '@temp/@next/hooks/useUpdateCartLines';
-import { SearchNetworkResult } from '@temp/components/OverlayManager/Search';
+import { SearchNetworkResult } from '@temp/@next/components/organisms/OverlayManager/Search';
 import es from 'date-fns/locale/es';
 import React from 'react';
 import { registerLocale } from 'react-datepicker';
-import { OverlayManager } from '../components';
+import { OverlayManager } from '@components/organisms/OverlayManager';
 import '../globalStyles/scss/index.scss';
 import { Header } from './Header';
 

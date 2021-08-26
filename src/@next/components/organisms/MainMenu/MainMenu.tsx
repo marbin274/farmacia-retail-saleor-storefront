@@ -6,8 +6,8 @@ import {
   OverlayContext,
   OverlayTheme,
   OverlayType,
-} from '../../../../components/Overlay';
-import { SearchForm } from '../../../../components/OverlayManager/Search';
+} from '@components/organisms/OverlayComponent';
+import { SearchForm } from '../OverlayManager/Search';
 import * as S from './styles';
 import { IProps } from './types';
 

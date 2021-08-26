@@ -2,7 +2,7 @@ import { IconHamburger, NavLink } from '@components/atoms';
 import React from 'react';
 import { IProps } from './types';
 import * as S from './styles';
-import { OverlayNav } from '@temp/components';
+import { OverlayNav } from '@components/organisms';
 import { Button } from '@farmacia-retail/farmauna-components';
 import { useClickedOutside } from '@temp/@next/hooks';
 

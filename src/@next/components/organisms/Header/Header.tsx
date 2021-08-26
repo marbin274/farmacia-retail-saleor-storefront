@@ -1,7 +1,12 @@
-import { searchProductsService } from '@temp/@next/services/searchProductsService';
-import { removePaymentItems } from '@temp/@next/utils/checkoutValidations';
-import { useCart, useSignOut, useUserDetails } from '@temp/@sdk/react';
-import * as appPaths from '@temp/app/routes';
+import { links } from '@app/pages/AccountPage/paths';
+import { Offline, Online } from '@components/atoms';
+import { MenuDropdown } from '@components/molecules';
+import {
+  OverlayContext,
+  OverlayContextInterface,
+  OverlayTheme,
+  OverlayType,
+} from '@components/organisms/OverlayComponent';
 import {
   Button,
   CartIcon,
@@ -9,25 +14,19 @@ import {
   PersonIcon,
   SearchIcon,
 } from '@farmacia-retail/farmauna-components';
+import { SearchForm } from '@temp/@next/components/organisms/OverlayManager/Search';
+import { useMediaScreen } from '@temp/@next/globalStyles';
+import { searchProductsService } from '@temp/@next/services/searchProductsService';
+import { removePaymentItems } from '@temp/@next/utils/checkoutValidations';
+import { useCart, useSignOut, useUserDetails } from '@temp/@sdk/react';
+import * as appPaths from '@temp/app/routes';
+import classNames from 'classnames';
 import logoImg from 'images/logo.svg';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ReactSVG from 'react-svg';
-import {
-  Offline,
-  Online,
-  OverlayContext,
-  OverlayContextInterface,
-  OverlayTheme,
-  OverlayType,
-} from '@temp/components';
-import { SearchForm } from '@temp/components/OverlayManager/Search';
-import { IProps } from './types';
-import { useMediaScreen } from '@temp/@next/globalStyles';
-import { links } from '@app/pages/AccountPage/paths';
-import classNames from 'classnames';
 import * as S from './styles';
-import { MenuDropdown } from '@components/molecules';
+import { IProps } from './types';
 
 const SEARCH_HEIGHT = 56;
 

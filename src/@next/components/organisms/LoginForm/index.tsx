@@ -4,7 +4,7 @@ import { joinFormikErrorsToIFormErrorsAndConvertToObjectErrors } from '@temp/@ne
 import { TokenAuthVariables } from '@temp/@sdk/mutations/gqlTypes/TokenAuth';
 import { useFormik } from 'formik';
 import * as React from 'react';
-import ForgottenPassword from '@temp/components/OverlayManager/Login/components/ForgottenPassword';
+import ForgottenPassword from '@temp/@next/components/organisms/OverlayManager/Login/components/ForgottenPassword';
 import { loginFormSchema } from './loginForm.schema';
 import { Button, InputField } from '@farmacia-retail/farmauna-components';
 import * as S from './styles';
