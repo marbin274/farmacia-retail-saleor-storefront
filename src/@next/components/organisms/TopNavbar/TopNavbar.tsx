@@ -2,19 +2,19 @@
 // are not yet implemented (ie wishlist)
 // Replace it with MainMenu component once all the blocks are finished
 
-import React from "react";
-import Media from "react-responsive";
+import React from 'react';
+import Media from 'react-responsive';
 
-import { Icon, NavLink } from "@components/atoms";
-import { largeScreen, smallScreen } from "@styles/constants";
-import { maybe } from "@utils/misc";
+import { Icon, NavLink } from '@components/atoms';
+import { largeScreen, smallScreen } from '@styles/constants';
+import { maybe } from '@utils/misc';
 
-import LogoSmall from "images/logo-small.svg";
-import Logo from "images/logo.svg";
+import LogoSmall from 'images/logo-small.svg';
+import Logo from 'images/logo.svg';
 
-import { Dropdown } from "./Dropdown";
-import * as S from "./styles";
-import { IProps } from "./types";
+import { Dropdown } from './Dropdown';
+import * as S from './styles';
+import { IProps } from './types';
 
 const menuVisibleRatio = 0.8;
 const getElementWidth = (node: Element) => node.scrollWidth;
@@ -58,13 +58,13 @@ const useElementWidthChanged = (
     if (node !== null) {
       nodeRef.current = node;
       setWidth(getElementWidth(node));
-      window.addEventListener("resize", eventHandler);
+      window?.addEventListener('resize', eventHandler);
     }
   }, []);
 
   React.useEffect(() => {
     return () => {
-      window.removeEventListener("resize", eventHandler);
+      window?.removeEventListener('resize', eventHandler);
     };
   }, []);
 
@@ -95,7 +95,7 @@ export const TopNavbar: React.FC<IProps> = ({ items }: IProps) => {
               </li>
             </S.Mobile>
           )}
-          <S.Desktop style={{ visibility: navVisible ? "visible" : "hidden" }}>
+          <S.Desktop style={{ visibility: navVisible ? 'visible' : 'hidden' }}>
             {/* get rid off any types when items is typed */}
             {items.map((item: any, index: any) => (
               <li key={item.id}>

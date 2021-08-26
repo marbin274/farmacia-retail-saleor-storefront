@@ -29,7 +29,7 @@ const App: React.FC = () => {
   });
 
   React.useEffect(() => {
-    if (district && !window.location.pathname.includes('/checkout/')) {
+    if (district && !window?.location?.pathname.includes('/checkout/')) {
       updateCartLines();
     }
   }, [district]);

@@ -1,17 +1,17 @@
-import ApolloClient from "apollo-client";
+import ApolloClient from 'apollo-client';
 
-import { defaultConfig } from "../config";
-import { JobsManager } from "../jobs";
-import { NetworkManager } from "../network";
-import { CheckoutRepositoryManager, LocalRepository } from "../repository";
-import { SaleorState } from "../state";
-import { Config } from "../types";
-import { APIProxy } from "./APIProxy";
-import { SaleorCartAPI } from "./Cart";
-import { SaleorCheckoutAPI } from "./Checkout";
+import { defaultConfig } from '../config';
+import { JobsManager } from '../jobs';
+import { NetworkManager } from '../network';
+import { CheckoutRepositoryManager, LocalRepository } from '../repository';
+import { SaleorState } from '../state';
+import { Config } from '../types';
+import { APIProxy } from './APIProxy';
+import { SaleorCartAPI } from './Cart';
+import { SaleorCheckoutAPI } from './Checkout';
 
-export * from "./Checkout";
-export * from "./Cart";
+export * from './Checkout';
+export * from './Cart';
 
 export class SaleorAPI {
   checkout: SaleorCheckoutAPI;
@@ -66,7 +66,7 @@ export class SaleorAPI {
       jobsManager
     );
 
-    this.legacyAPIProxy.attachAuthListener(authenticated => {
+    this.legacyAPIProxy.attachAuthListener((authenticated) => {
       if (!authenticated) {
         repository.setCheckout({});
         repository.setPayment({});
