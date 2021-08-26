@@ -1,14 +1,13 @@
-import * as React from "react";
-import { Link } from "react-router-dom";
-import ReactSVG from "react-svg";
-import { baseUrl } from "../../app/routes";
-import logoImg from "../../images/logo.svg";
-import NavItem, { INavItem } from "./NavItem";
-import { NavSubItem } from "./NavSubItem";
-import "./scss/index.scss";
-import { IconHamburger } from "@temp/@next/components/atoms";
-import { Button } from "@farmacia-retail/farmauna-components";
-import * as S from "./styles";
+import * as React from 'react';
+import { Link } from 'react-router-dom';
+import ReactSVG from 'react-svg';
+import { baseUrl } from '../../app/routes';
+import logoImg from '../../images/logo.svg';
+import NavItem, { INavItem } from './components/NavItem';
+import { NavSubItem } from './components/NavSubItem';
+import { IconHamburger } from '@temp/@next/components/atoms';
+import { Button } from '@farmacia-retail/farmauna-components';
+import * as S from './styles';
 
 interface NavListProps {
   categories: INavItem[];
@@ -34,17 +33,19 @@ export const NavList: React.FC<NavListProps> = ({
   };
 
   const getNavItem = (item: INavItem, isCollection?: boolean) => {
-    return <NavItem
-      arrowDirection="rigth"
-      firstLevel
-      hideOverlay={hideOverlay}
-      isCollection={isCollection}
-      isOpen={openParent?.name === item.name}
-      key={item.id}
-      showSubItems={handleShowSubItems}
-      {...item}
-    />
-  }
+    return (
+      <NavItem
+        arrowDirection="rigth"
+        firstLevel
+        hideOverlay={hideOverlay}
+        isCollection={isCollection}
+        isOpen={openParent?.name === item.name}
+        key={item.id}
+        showSubItems={handleShowSubItems}
+        {...item}
+      />
+    );
+  };
 
   return (
     <>
@@ -62,14 +63,14 @@ export const NavList: React.FC<NavListProps> = ({
         {!openParent ? (
           <>
             <li>
-              <S.CollectionNav>                
-                {collections.map(item => getNavItem(item, true))}
+              <S.CollectionNav>
+                {collections.map((item) => getNavItem(item, true))}
               </S.CollectionNav>
             </li>
             <li>
               <ul className="fa-bg-highlight-lightest">
                 <S.CategoriesLabel>Categorías</S.CategoriesLabel>
-                {categories.map(item => getNavItem(item))}
+                {categories.map((item) => getNavItem(item))}
               </ul>
             </li>
           </>

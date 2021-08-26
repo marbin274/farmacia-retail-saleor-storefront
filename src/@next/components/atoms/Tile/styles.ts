@@ -1,8 +1,8 @@
-import { styled } from "@styles";
-import { css } from "styled-components";
-import farmatheme from "@farmatheme";
+import { styled } from '@styles';
+import { css } from 'styled-components';
+import farmatheme from '@farmatheme';
 interface WrapperProps {
-  readonly tileType?: "hover" | "addNew";
+  readonly tileType?: 'hover' | 'addNew';
 }
 
 export const Wrapper = styled.div<WrapperProps>`
@@ -16,8 +16,8 @@ export const Wrapper = styled.div<WrapperProps>`
   overflow: auto;
   padding: 0;
   transition: all 0.3s, color 0s, fill 0s;
-  ${props => {
-    if (props.tileType === "hover") {
+  ${(props) => {
+    if (props.tileType === 'hover') {
       return css`
         :hover {
           border-color: ${props.theme.tile.hoverBorder};
@@ -25,7 +25,7 @@ export const Wrapper = styled.div<WrapperProps>`
         }
       `;
     }
-    if (props.tileType === "addNew") {
+    if (props.tileType === 'addNew') {
       return css`
         align-items: center;
         justify-content: center;
@@ -41,15 +41,16 @@ export const Wrapper = styled.div<WrapperProps>`
   }};
 `;
 
-Wrapper.displayName = "Tile";
+Wrapper.displayName = 'Tile';
 
 export const Header = styled.div`
   padding: 1.5rem 1.5rem 1rem 1.5rem;
 `;
 
 export const Content = styled.div<WrapperProps>`
-  padding: ${props =>
-    props.tileType === "addNew" ? "1rem" : "0 1.5rem 1.5rem 1.5rem"};
+  height: 100%;
+  padding: ${(props) =>
+    props.tileType === 'addNew' ? '1rem' : '0 1.5rem 1.5rem 1.5rem'};
 `;
 
 export const Footer = styled.div`

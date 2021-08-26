@@ -420,6 +420,8 @@ export interface AddressInput {
   longitude?: number | null;
   isDefault?: boolean | null;
   district?: string | null;
+  alias?: string | null;
+  isValid?: boolean | null;
 }
 
 export interface AttributeInput {

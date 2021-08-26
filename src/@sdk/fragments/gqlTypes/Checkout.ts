@@ -155,6 +155,7 @@ export interface Checkout_billingAddress {
   isDefaultShippingAddress: boolean | null;
   latitude: number | null;
   longitude: number | null;
+  alias: string | null;
 }
 
 export interface Checkout_shippingAddress_country {
@@ -198,6 +199,7 @@ export interface Checkout_shippingAddress {
   isDefaultShippingAddress: boolean | null;
   latitude: number | null;
   longitude: number | null;
+  alias: string | null;
 }
 
 export interface Checkout_availableShippingMethods_price {
@@ -640,7 +642,10 @@ export interface Checkout_lines_variant_product {
    * The main thumbnail for a product.
    */
   thumbnail2x: Checkout_lines_variant_product_thumbnail2x | null;
-  productType: Checkout_lines_variant_product_productType;
+  /**
+   * Product type
+   */
+  productType: Checkout_lines_variant_product_productType | null;
 }
 
 export interface Checkout_lines_variant {
@@ -700,6 +705,54 @@ export interface Checkout_discount {
   culture: string;
 }
 
+export interface Checkout_slots_scheduled {
+  __typename: "ShippingSlot";
+  /**
+   * Slot id.
+   */
+  id: string | null;
+  /**
+   * Slot available from.
+   */
+  slotFrom: string | null;
+  /**
+   * Slot available to.
+   */
+  slotTo: string | null;
+}
+
+export interface Checkout_slots_express {
+  __typename: "ShippingSlot";
+  /**
+   * Slot id.
+   */
+  id: string | null;
+  /**
+   * Slot available from.
+   */
+  slotFrom: string | null;
+  /**
+   * Slot available to.
+   */
+  slotTo: string | null;
+}
+
+export interface Checkout_slots {
+  __typename: "Slot";
+  /**
+   * List of scheduled slots.
+   */
+  scheduled: (Checkout_slots_scheduled | null)[] | null;
+  /**
+   * List of express slots.
+   */
+  express: (Checkout_slots_express | null)[] | null;
+  /**
+   * Datetime.
+   */
+  datetime: string | null;
+}
+
 export interface Checkout {
   __typename: "Checkout";
   token: any;
@@ -749,4 +802,16 @@ export interface Checkout {
   documentNumber: string | null;
   termsAndConditions: boolean;
   dataTreatmentPolicy: boolean;
+  /**
+   * List of slots.
+   */
+  slots: Checkout_slots | null;
+  /**
+   * Slot id.
+   */
+  slotId: string | null;
+  /**
+   * Slot date.
+   */
+  deliveryDate: string | null;
 }

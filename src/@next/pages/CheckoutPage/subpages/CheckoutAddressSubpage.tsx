@@ -1,17 +1,20 @@
-import { CheckoutAddress, StockValidationModal } from "@components/organisms";
-import { useCheckout, useUserDetails } from "@sdk/react";
-import { alertService } from "@temp/@next/components/atoms/Alert/AlertService";
-import { addressFormSchema } from "@temp/@next/components/organisms/AddressForm/adddressFormSchema";
-import { useDistrictSelected } from "@temp/@next/hooks/useDistrictSelected";
-import { useUpdateCartLines } from "@temp/@next/hooks/useUpdateCartLines";
-import { IPrivacyPolicy } from "@temp/@sdk/api/Checkout/types";
-import { CheckoutErrorCode } from "@temp/@sdk/gqlTypes/globalTypes";
-import { CreateCheckout_checkoutCreate_checkoutErrors_products } from "@temp/@sdk/mutations/gqlTypes/CreateCheckout";
-import { baseUrl } from "@temp/app/routes/paths";
-import { useShopContext } from "@temp/components/ShopProvider/context";
-import { CHECKOUT_MANDATORY_COORDINATES, COUNTRY_DEFAULT } from "@temp/core/config";
-import { IAddress, IAddressWithEmail, IFormError } from "@types";
-import { filterNotEmptyArrayItems } from "@utils/misc";
+import { CheckoutAddress, StockValidationModal } from '@components/organisms';
+import { useCheckout, useUserDetails } from '@sdk/react';
+import { alertService } from '@temp/@next/components/atoms/Alert/AlertService';
+import { addressFormSchema } from '@temp/@next/components/organisms/AddressForm/adddressFormSchema';
+import { useDistrictSelected } from '@temp/@next/hooks/useDistrictSelected';
+import { useUpdateCartLines } from '@temp/@next/hooks/useUpdateCartLines';
+import { IPrivacyPolicy } from '@temp/@sdk/api/Checkout/types';
+import { CheckoutErrorCode } from '@temp/@sdk/gqlTypes/globalTypes';
+import { CreateCheckout_checkoutCreate_checkoutErrors_products } from '@temp/@sdk/mutations/gqlTypes/CreateCheckout';
+import { baseUrl } from '@temp/app/routes/paths';
+import { useShopContext } from '@temp/components/ShopProvider/context';
+import {
+  CHECKOUT_MANDATORY_COORDINATES,
+  COUNTRY_DEFAULT,
+} from '@temp/core/config';
+import { IAddress, IAddressWithEmail, IFormError } from '@types';
+import { filterNotEmptyArrayItems } from '@utils/misc';
 import React, {
   forwardRef,
   RefForwardingComponent,
@@ -19,9 +22,10 @@ import React, {
   useImperativeHandle,
   useRef,
   useState,
-} from "react";
-import { RouteComponentProps } from "react-router";
-import { AlertComponentProps, useAlert } from "react-alert";
+} from 'react';
+import { RouteComponentProps } from 'react-router';
+import { AlertComponentProps, useAlert } from 'react-alert';
+import { useFeaturePlugins } from '@app/hooks';
 
 export interface ICheckoutAddressSubpageHandles {
   submitAddress: () => void;
@@ -46,32 +50,30 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
   ref
 ) => {
   const [showStockValidation, setShowStockValidation] = useState(false);
-  const [stockValidationProducts, setStockValidationProducts] = useState<
-    CreateCheckout_checkoutCreate_checkoutErrors_products[]
-  >();
-  const checkoutAddressFormId = "address-form";
+  const [stockValidationProducts, setStockValidationProducts] =
+    useState<CreateCheckout_checkoutCreate_checkoutErrors_products[]>();
+  const checkoutAddressFormId = 'address-form';
   const checkoutAddressFormRef = useRef<HTMLFormElement>(null);
-  const checkoutNewAddressFormId = "new-address-form";
+  const checkoutNewAddressFormId = 'new-address-form';
   const { data: user, loading: userLoading } = useUserDetails();
   const {
     checkout,
     setShippingAddress,
+    setShippingMethod,
     selectedShippingAddressId,
+    selectedSlotId,
   } = useCheckout();
   const { availableDistricts, countries } = useShopContext();
   const [selectedDistrict, setDistrict] = useDistrictSelected();
-  const {
-    update: updateCartLines,
-    loading: updatingCartLines,
-  } = useUpdateCartLines();
-  const [
-    temporaryStreeAddress1Error,
-    setTemporaryStreeAddress1Error,
-  ] = useState<string>();
-  const [currentErrorAlert, setCurrentErrorAlert] = useState<
-    AlertComponentProps
-  >();
+  const { update: updateCartLines, loading: updatingCartLines } =
+    useUpdateCartLines();
+  const [temporaryStreeAddress1Error, setTemporaryStreeAddress1Error] =
+    useState<string>();
+  const [currentErrorAlert, setCurrentErrorAlert] =
+    useState<AlertComponentProps>();
   const alert = useAlert();
+
+  const { lastMileActive } = useFeaturePlugins();
 
   const _addressFormSchema = addressFormSchema;
 
@@ -89,7 +91,7 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
 
   const clearTemporaryAddressError = () => {
     clearAlertAddressError();
-    setTemporaryStreeAddress1Error("");
+    setTemporaryStreeAddress1Error('');
   };
 
   const showOptionalAddressError = () => {
@@ -106,14 +108,14 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
       },
       {
         timeout: 60000 * 2,
-        type: "error",
+        type: 'error',
       }
     );
 
     setCurrentErrorAlert(newAlert);
 
     setTemporaryStreeAddress1Error(
-      "Selecciona una de las direcciones sugeridas"
+      'Selecciona una de las direcciones sugeridas'
     );
   };
 
@@ -142,12 +144,12 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
               streetAddress1: data?.streetAddress1,
               streetAddress2: data?.streetAddress2,
             },
-            data?.email ? data?.email : "",
+            data?.email ? data?.email : '',
             {
               dataTreatmentPolicy: data?.dataTreatmentPolicy,
               termsAndConditions: data?.termsAndConditions,
             },
-            data?.documentNumber ? data.documentNumber : ""
+            data?.documentNumber ? data.documentNumber : ''
           );
         }
       });
@@ -157,12 +159,12 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     submitAddress: () => {
       if (user && selectedShippingAddressId) {
         checkoutAddressFormRef.current?.dispatchEvent(
-          new Event("submit", { cancelable: true })
+          new Event('submit', { cancelable: true })
         );
       } else {
         // TODO validate form
         checkoutAddressFormRef.current?.dispatchEvent(
-          new Event("submit", { cancelable: true })
+          new Event('submit', { cancelable: true })
         );
       }
     },
@@ -184,21 +186,21 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
   ) => {
     if (!address) {
       setAddressSubPageErrors([
-        { message: "Please provide shipping address." },
+        { message: 'Please provide shipping address.' },
       ]);
       return;
     }
-    const shippingEmail = user?.email || email || "";
+    const shippingEmail = user?.email || email || '';
 
     if (!shippingEmail) {
       setAddressSubPageErrors([
-        { field: "email", message: "Please provide email address." },
+        { field: 'email', message: 'Please provide email address.' },
       ]);
       return;
     }
 
     changeSubmitProgress(true);
-    setTemporaryStreeAddress1Error("");
+    setTemporaryStreeAddress1Error('');
 
     const { checkoutErrors, dataError } = await setShippingAddress(
       {
@@ -214,15 +216,19 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
             termsAndConditions: privacyPolicy.termsAndConditions,
           }
         : { dataTreatmentPolicy: false, termsAndConditions: false },
-      documentNumber ? documentNumber : ""
+      documentNumber ? documentNumber : ''
     );
 
     const district = availableDistricts?.find(
-      x => x?.name.toLowerCase() === address.city?.toLocaleLowerCase()
+      (x) => x?.name.toLowerCase() === address.city?.toLocaleLowerCase()
     );
 
     if (selectedDistrict?.id !== district?.id) {
       setDistrict(district);
+    }
+
+    if (selectedSlotId && lastMileActive) {
+      await setShippingMethod({ shippingMethodId: '', slotId: undefined });
     }
 
     if (checkoutErrors?.length! > 0) {
@@ -244,10 +250,10 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
       switch (errors[0].field) {
         default:
           alertService.sendAlert({
-            buttonText: "Entendido",
+            buttonText: 'Entendido',
             message: errors[0].message,
-            title: "Ha ocurrido un error",
-            type: "Error",
+            title: 'Ha ocurrido un error',
+            type: 'Error',
           });
           break;
       }
@@ -270,7 +276,7 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
 
   const userAdresses = user?.addresses
     ?.filter(filterNotEmptyArrayItems)
-    .map(address => ({
+    .map((address) => ({
       address: {
         ...address,
         isDefaultBillingAddress: address.isDefaultBillingAddress || false,
@@ -279,7 +285,7 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
         longitude: address.longitude || undefined,
         phone: address.phone || undefined,
       },
-      id: address?.id || "",
+      id: address?.id || '',
       onSelect: () => null,
     }));
 
@@ -293,7 +299,7 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
 
     await updateCartLines();
     checkoutAddressFormRef.current?.dispatchEvent(
-      new Event("submit", { cancelable: true })
+      new Event('submit', { cancelable: true })
     );
   };
 

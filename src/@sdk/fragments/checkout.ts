@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 export const checkoutPriceFragment = gql`
   fragment Price on TaxedMoney {
@@ -35,6 +35,7 @@ export const checkoutAddressFragment = gql`
     isDefaultShippingAddress
     latitude
     longitude
+    alias
   }
 `;
 
@@ -69,7 +70,7 @@ export const checkoutProductVariantFragment = gql`
     product {
       id
       name
-      category{
+      category {
         id
         name
       }
@@ -135,11 +136,20 @@ export const checkoutLineFragment = gql`
   }
 `;
 
+export const slotFragment = gql`
+  fragment ShippingSlot on ShippingSlot {
+    id
+    slotFrom
+    slotTo
+  }
+`;
+
 export const checkoutFragment = gql`
   ${checkoutLineFragment}
   ${checkoutAddressFragment}
   ${checkoutPriceFragment}
   ${checkoutShippingMethodFragment}
+  ${slotFragment}
   fragment Checkout on Checkout {
     token
     id
@@ -192,5 +202,16 @@ export const checkoutFragment = gql`
     documentNumber
     termsAndConditions
     dataTreatmentPolicy
+    slots {
+      scheduled {
+        ...ShippingSlot
+      }
+      express {
+        ...ShippingSlot
+      }
+      datetime
+    }
+    slotId
+    deliveryDate
   }
 `;

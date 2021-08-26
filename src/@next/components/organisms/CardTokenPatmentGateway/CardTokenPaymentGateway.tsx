@@ -1,10 +1,10 @@
-import React, { FC, useState, useEffect } from "react";
-import { Button } from "@farmacia-retail/farmauna-components";
-import { Modal } from "@components/organisms";
-import { CreditCardItem } from "@components/molecules";
-import { UserDetails_me_cardTokens } from "@temp/@sdk/queries/gqlTypes/UserDetails";
-import { ICardTokenPaymentGatewayProps } from "./types";
-import { Content } from "./styles";
+import React, { FC, useState, useEffect } from 'react';
+import { Button } from '@farmacia-retail/farmauna-components';
+import { Modal } from '@components/organisms';
+import { CreditCardItem } from '@components/molecules';
+import { UserDetails_me_cardTokens } from '@temp/@sdk/queries/gqlTypes/UserDetails';
+import { ICardTokenPaymentGatewayProps } from './types';
+import { Content } from './styles';
 
 export const CardTokenPaymentGateway: FC<ICardTokenPaymentGatewayProps> = ({
   cardTokens,
@@ -12,9 +12,8 @@ export const CardTokenPaymentGateway: FC<ICardTokenPaymentGatewayProps> = ({
   selectedCardTokenId,
 }) => {
   const [showModal, setShowModal] = useState(false);
-  const [currentCardToken, setCurrentCardToken] = useState<
-    UserDetails_me_cardTokens
-  >();
+  const [currentCardToken, setCurrentCardToken] =
+    useState<UserDetails_me_cardTokens>();
   const [cardsToSelect, setCardsToSelect] = useState<
     UserDetails_me_cardTokens[]
   >([]);
@@ -22,7 +21,7 @@ export const CardTokenPaymentGateway: FC<ICardTokenPaymentGatewayProps> = ({
 
   useEffect(() => {
     if (cardTokens.length > 0) {
-      const favorite = cardTokens.find(c => c.default === true);
+      const favorite = cardTokens.find((c) => c.default === true);
 
       if (favorite) {
         setCurrentCardToken(favorite);
@@ -34,7 +33,7 @@ export const CardTokenPaymentGateway: FC<ICardTokenPaymentGatewayProps> = ({
 
   const onClickSelectAnotherCard = () => {
     const nonSelectedCards = cardTokens.filter(
-      c => c.id !== currentCardToken.id
+      (c) => c.id !== currentCardToken.id
     );
 
     setCardsToSelect(nonSelectedCards);
@@ -42,7 +41,7 @@ export const CardTokenPaymentGateway: FC<ICardTokenPaymentGatewayProps> = ({
   };
 
   const handleSelectNewCard = () => {
-    const card = cardTokens.find(c => c.id === newSelectedCardId);
+    const card = cardTokens.find((c) => c.id === newSelectedCardId);
 
     setCurrentCardToken(card);
     onSelectCardToken(card.id);
@@ -59,7 +58,7 @@ export const CardTokenPaymentGateway: FC<ICardTokenPaymentGatewayProps> = ({
             selected={currentCardToken.id === selectedCardTokenId}
             className="fa-w-full md:fa-w-96 fa-mb-4"
             creditCard={currentCardToken}
-            onClickSelect={id => onSelectCardToken(id)}
+            onClickSelect={(id) => onSelectCardToken(id)}
           />
         )}
         {cardTokens.length > 1 && (
@@ -78,13 +77,13 @@ export const CardTokenPaymentGateway: FC<ICardTokenPaymentGatewayProps> = ({
         disabled={false}
         contentNoSpacing
       >
-        <Content className="fa-p-4 fa-bg-neutral-light fa-overflow-scroll fa-p-0 fa-m-0 fa-mt-6">
-          {cardsToSelect.map(c => (
+        <Content className="fa-p-4 fa-bg-neutral-light fa-overflow-scroll fa-m-0 fa-mt-6">
+          {cardsToSelect.map((c) => (
             <CreditCardItem
               selected={c.id === newSelectedCardId}
               className="fa-w-full fa-mb-4"
               creditCard={c}
-              onClickSelect={id => setNewSelectedCardId(id)}
+              onClickSelect={(id) => setNewSelectedCardId(id)}
             />
           ))}
         </Content>

@@ -1,10 +1,9 @@
-import { Formik } from "formik";
-import React from "react";
-import { TextField } from "../TextField";
-import { Button } from "@farmacia-retail/farmauna-components";
-import { Attribute } from "@components/atoms";
-import * as S from "./styles";
-import { UserDetails_me } from "@temp/@sdk/queries/gqlTypes/UserDetails";
+import { Formik } from 'formik';
+import React from 'react';
+import { TextField } from '../TextField';
+import { Button } from '@farmacia-retail/farmauna-components';
+import * as S from './styles';
+import { UserDetails_me } from '@temp/@sdk/queries/gqlTypes/UserDetails';
 
 type IProps = {
   handleSubmit: (data: any) => void;
@@ -20,7 +19,6 @@ export const AccountUpdateForm: React.FC<IProps> = ({
   handleSubmit,
   hide,
   initialValues,
-  user,
 }) => {
   return (
     <>
@@ -43,8 +41,15 @@ export const AccountUpdateForm: React.FC<IProps> = ({
           isValid,
         }) => {
           return (
-            <form onSubmit={handleSubmit}>
-              <S.ContentEditOneLine>
+            <form
+              onSubmit={handleSubmit}
+              className="fa-w-full"
+              role="account-form"
+            >
+              <div className="fa-text-black fa-text-base fa-mb-4 fa-font-bold">
+                Datos Personales
+              </div>
+              <S.ContentEditOneLine twoLinesOnDesktop>
                 <S.ContentExtendInput>
                   <TextField
                     name="firstName"
@@ -65,18 +70,6 @@ export const AccountUpdateForm: React.FC<IProps> = ({
                     onChange={handleChange}
                   />
                 </S.ContentExtendInput>
-                <S.AttributeWrapper>
-                  <Attribute
-                    description="Correo"
-                    attributeValue={(user && user.email) || "-"}
-                  />
-                </S.AttributeWrapper>
-                <S.AttributeWrapper>
-                  <Attribute
-                    description="Número de documento"
-                    attributeValue={(user && user.documentNumber) || "-"}
-                  />
-                </S.AttributeWrapper>
               </S.ContentEditOneLine>
               <S.FormButtons>
                 <Button type="button" variant="outline" onClick={hide}>

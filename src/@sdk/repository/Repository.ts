@@ -1,5 +1,5 @@
-import { NamedObservable } from "../helpers";
-import { LocalStorageItems } from "./types";
+import { NamedObservable } from '../helpers';
+import { LocalStorageItems } from './types';
 
 export class Repository extends NamedObservable<LocalStorageItems> {
   protected saveItem(name: LocalStorageItems, item: string | null): void {
@@ -32,5 +32,8 @@ export class Repository extends NamedObservable<LocalStorageItems> {
       return JSON.parse(item);
     }
     return null;
+  }
+  protected clearRepositoryStorage() {
+    localStorage.clear();
   }
 }

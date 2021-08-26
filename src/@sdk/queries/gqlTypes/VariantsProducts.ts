@@ -17,7 +17,10 @@ export interface VariantsProducts_productVariants_edges_node_product {
    * The ID of the object.
    */
   id: string;
-  productType: VariantsProducts_productVariants_edges_node_product_productType;
+  /**
+   * Product type
+   */
+  productType: VariantsProducts_productVariants_edges_node_product_productType | null;
 }
 
 export interface VariantsProducts_productVariants_edges_node {

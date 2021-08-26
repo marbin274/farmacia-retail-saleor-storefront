@@ -1,4 +1,4 @@
-import { CheckoutShipping } from "@components/organisms";
+import { CheckoutShipping, CheckoutShippingSlot } from "@components/organisms";
 import { useCart, useCheckout } from "@sdk/react";
 import { alertService } from "@temp/@next/components/atoms/Alert";
 import {
@@ -14,12 +14,14 @@ import { IFormError } from "@types";
 import React, {
   forwardRef,
   RefForwardingComponent,
+  useEffect,
   useImperativeHandle,
   useRef,
 } from "react";
 import { RouteComponentProps, useHistory } from "react-router";
 import shippingMethodCalendarInfoIco from "images/auna/shipping-method-calendar-info.svg";
 import { Checkout_availableShippingMethods } from "@temp/@sdk/fragments/gqlTypes/Checkout";
+import { useFeaturePlugins } from "@app/hooks";
 
 export interface ICheckoutShippingSubpageHandles {
   submitShipping: () => void;
@@ -52,15 +54,29 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
     availableShippingMethods,
     setShippingMethod,
     isPrime,
-  
+    selectedSlotId,
+    slots,
   } = useCheckout();
   const { items } = useCart();
 
+  const { lastMileActive } = useFeaturePlugins();
+
+  useEffect(() => {
+    checkIfSlotExists();
+  }, []);
+
+  const checkIfSlotExists = async () => {
+    if (selectedSlotId && lastMileActive) {
+      changeSubmitProgress(true);
+      await setShippingMethod({ shippingMethodId: "", slotId: undefined });
+    }
+
+    changeSubmitProgress(false);
+  };
+
   const isPrimeShippingMethod = (sm: Checkout_availableShippingMethods) => {
     return sm.name.toLocaleLowerCase().includes("prime");
-  }
-
-
+  };
 
   const shippingMethods: IAvailableShippingMethods = [];
   const primeShippingMethodExists = !!availableShippingMethods?.find(x =>
@@ -107,7 +123,7 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
             it.field === "scheduleTimeId") ||
           it.code === CheckoutErrorCode.SCHEDULE_NOT_AVAILABLE
       );
-      setShippingMethod({ shippingMethodId: "" });
+      setShippingMethod({ shippingMethodId: "", slotId: undefined });
       alertService.sendAlert({
         buttonText: "Entendido",
         icon: scheduleTimeNotFound && shippingMethodCalendarInfoIco,
@@ -125,6 +141,24 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
       }
     }
   };
+
+  if (lastMileActive) {
+    return (
+      <CheckoutShippingSlot
+        {...props}
+        shippingMethods={shippingMethods}
+        selectedShippingMethodId={checkout?.shippingMethod?.id}
+        scheduleDate={checkout?.scheduleDate}
+        errors={addressSubPageErrors}
+        selectShippingMethod={handleSetShippingMethod}
+        items={items}
+        formId={checkoutShippingFormId}
+        formRef={checkoutShippingFormRef}
+        slots={slots}
+        selectedSlotId={selectedSlotId}
+      />
+    );
+  }
 
   return (
     <CheckoutShipping

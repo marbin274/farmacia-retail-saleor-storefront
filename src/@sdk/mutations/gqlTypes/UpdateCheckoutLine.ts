@@ -157,6 +157,7 @@ export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_billingAddress 
   isDefaultShippingAddress: boolean | null;
   latitude: number | null;
   longitude: number | null;
+  alias: string | null;
 }
 
 export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_shippingAddress_country {
@@ -200,6 +201,7 @@ export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_shippingAddress
   isDefaultShippingAddress: boolean | null;
   latitude: number | null;
   longitude: number | null;
+  alias: string | null;
 }
 
 export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_availableShippingMethods_price {
@@ -642,7 +644,10 @@ export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_lines_variant_p
    * The main thumbnail for a product.
    */
   thumbnail2x: UpdateCheckoutLine_checkoutLinesUpdate_checkout_lines_variant_product_thumbnail2x | null;
-  productType: UpdateCheckoutLine_checkoutLinesUpdate_checkout_lines_variant_product_productType;
+  /**
+   * Product type
+   */
+  productType: UpdateCheckoutLine_checkoutLinesUpdate_checkout_lines_variant_product_productType | null;
 }
 
 export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_lines_variant {
@@ -702,6 +707,54 @@ export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_discount {
   culture: string;
 }
 
+export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_slots_scheduled {
+  __typename: "ShippingSlot";
+  /**
+   * Slot id.
+   */
+  id: string | null;
+  /**
+   * Slot available from.
+   */
+  slotFrom: string | null;
+  /**
+   * Slot available to.
+   */
+  slotTo: string | null;
+}
+
+export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_slots_express {
+  __typename: "ShippingSlot";
+  /**
+   * Slot id.
+   */
+  id: string | null;
+  /**
+   * Slot available from.
+   */
+  slotFrom: string | null;
+  /**
+   * Slot available to.
+   */
+  slotTo: string | null;
+}
+
+export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout_slots {
+  __typename: "Slot";
+  /**
+   * List of scheduled slots.
+   */
+  scheduled: (UpdateCheckoutLine_checkoutLinesUpdate_checkout_slots_scheduled | null)[] | null;
+  /**
+   * List of express slots.
+   */
+  express: (UpdateCheckoutLine_checkoutLinesUpdate_checkout_slots_express | null)[] | null;
+  /**
+   * Datetime.
+   */
+  datetime: string | null;
+}
+
 export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout {
   __typename: "Checkout";
   token: any;
@@ -751,6 +804,18 @@ export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout {
   documentNumber: string | null;
   termsAndConditions: boolean;
   dataTreatmentPolicy: boolean;
+  /**
+   * List of slots.
+   */
+  slots: UpdateCheckoutLine_checkoutLinesUpdate_checkout_slots | null;
+  /**
+   * Slot id.
+   */
+  slotId: string | null;
+  /**
+   * Slot date.
+   */
+  deliveryDate: string | null;
 }
 
 export interface UpdateCheckoutLine_checkoutLinesUpdate_errors {

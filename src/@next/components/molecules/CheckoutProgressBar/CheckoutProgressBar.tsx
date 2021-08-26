@@ -1,9 +1,10 @@
-import { CHECKOUT_STEPS } from "@temp/core/config";
-import React from "react";
-import { Link } from "react-router-dom";
-import { BackIcon, CheckIcon } from "@farmacia-retail/farmauna-components";
-import * as S from "./styles";
-import { IProps, IStep } from "./types";
+import { CHECKOUT_STEPS } from '@temp/core/config';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { BackIcon, CheckIcon } from '@farmacia-retail/farmauna-components';
+import * as S from './styles';
+import { IProps, IStep } from './types';
+import { LocalRepository } from '@temp/@sdk/repository';
 
 export enum DOT_STATUS {
   INACTIVE,
@@ -48,9 +49,10 @@ const generateProgressBar = (
   numberOfSteps: number,
   currentPath: string
 ) => {
+  const localRepository = new LocalRepository();
   if (index !== numberOfSteps - 1) {
-    return localStorage.getItem("purchase_number") &&
-      currentPath === "/checkout/review" ? (
+    return localRepository.getPurchase() &&
+      currentPath === '/checkout/review' ? (
       <S.ProgressBar done={false} />
     ) : (
       <S.ProgressBar done={currentActive > index} />
@@ -63,11 +65,11 @@ const generateSteps = (
   currentActive: number,
   currentPath: string
 ) => {
-  return steps?.map(step => {
+  const localRepository = new LocalRepository();
+  return steps?.map((step) => {
     return (
       <S.Step key={step.index}>
-        {localStorage.getItem("purchase_number") &&
-        currentPath === "/checkout/review" ? (
+        {localRepository.getPurchase() && currentPath === '/checkout/review' ? (
           <span>{generateDot(step, currentActive, true)}</span>
         ) : (
           <Link to={step.link}>{generateDot(step, currentActive)}</Link>
@@ -91,15 +93,17 @@ const CheckoutProgressBar: React.FC<IProps> = ({
   activeStepIndex,
   pathName,
 }: IProps) => {
-  const activeStep = steps?.find(st => st.index === activeStepIndex);
-  const activeIndexStep = steps?.findIndex(st => st.index === activeStepIndex);
+  const activeStep = steps?.find((st) => st.index === activeStepIndex);
+  const activeIndexStep = steps?.findIndex(
+    (st) => st.index === activeStepIndex
+  );
 
   return (
     <div>
       {activeIndexStep < steps?.length - 1 && (
         <S.GoBack>
           <Link
-            to={activeIndexStep === 0 ? "/" : steps[activeIndexStep - 1].link}
+            to={activeIndexStep === 0 ? '/' : steps[activeIndexStep - 1].link}
           >
             <BackIcon size={12} /> <span>Volver</span>
           </Link>

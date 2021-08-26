@@ -62,6 +62,7 @@ export interface AccountUpdate_accountUpdate_user_defaultShippingAddress {
   isDefaultShippingAddress: boolean | null;
   latitude: number | null;
   longitude: number | null;
+  alias: string | null;
 }
 
 export interface AccountUpdate_accountUpdate_user_defaultBillingAddress_country {
@@ -105,6 +106,7 @@ export interface AccountUpdate_accountUpdate_user_defaultBillingAddress {
   isDefaultShippingAddress: boolean | null;
   latitude: number | null;
   longitude: number | null;
+  alias: string | null;
 }
 
 export interface AccountUpdate_accountUpdate_user_addresses_country {
@@ -148,6 +150,7 @@ export interface AccountUpdate_accountUpdate_user_addresses {
   isDefaultShippingAddress: boolean | null;
   latitude: number | null;
   longitude: number | null;
+  alias: string | null;
 }
 
 export interface AccountUpdate_accountUpdate_user_cardTokens {

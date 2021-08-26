@@ -170,6 +170,7 @@ export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout_billingAdd
   isDefaultShippingAddress: boolean | null;
   latitude: number | null;
   longitude: number | null;
+  alias: string | null;
 }
 
 export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout_shippingAddress_country {
@@ -213,6 +214,7 @@ export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout_shippingAd
   isDefaultShippingAddress: boolean | null;
   latitude: number | null;
   longitude: number | null;
+  alias: string | null;
 }
 
 export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout_availableShippingMethods_price {
@@ -655,7 +657,10 @@ export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout_lines_vari
    * The main thumbnail for a product.
    */
   thumbnail2x: CreateCheckoutPayment_checkoutPaymentCreate_checkout_lines_variant_product_thumbnail2x | null;
-  productType: CreateCheckoutPayment_checkoutPaymentCreate_checkout_lines_variant_product_productType;
+  /**
+   * Product type
+   */
+  productType: CreateCheckoutPayment_checkoutPaymentCreate_checkout_lines_variant_product_productType | null;
 }
 
 export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout_lines_variant {
@@ -715,6 +720,54 @@ export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout_discount {
   culture: string;
 }
 
+export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout_slots_scheduled {
+  __typename: "ShippingSlot";
+  /**
+   * Slot id.
+   */
+  id: string | null;
+  /**
+   * Slot available from.
+   */
+  slotFrom: string | null;
+  /**
+   * Slot available to.
+   */
+  slotTo: string | null;
+}
+
+export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout_slots_express {
+  __typename: "ShippingSlot";
+  /**
+   * Slot id.
+   */
+  id: string | null;
+  /**
+   * Slot available from.
+   */
+  slotFrom: string | null;
+  /**
+   * Slot available to.
+   */
+  slotTo: string | null;
+}
+
+export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout_slots {
+  __typename: "Slot";
+  /**
+   * List of scheduled slots.
+   */
+  scheduled: (CreateCheckoutPayment_checkoutPaymentCreate_checkout_slots_scheduled | null)[] | null;
+  /**
+   * List of express slots.
+   */
+  express: (CreateCheckoutPayment_checkoutPaymentCreate_checkout_slots_express | null)[] | null;
+  /**
+   * Datetime.
+   */
+  datetime: string | null;
+}
+
 export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout {
   __typename: "Checkout";
   token: any;
@@ -764,6 +817,18 @@ export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout {
   documentNumber: string | null;
   termsAndConditions: boolean;
   dataTreatmentPolicy: boolean;
+  /**
+   * List of slots.
+   */
+  slots: CreateCheckoutPayment_checkoutPaymentCreate_checkout_slots | null;
+  /**
+   * Slot id.
+   */
+  slotId: string | null;
+  /**
+   * Slot date.
+   */
+  deliveryDate: string | null;
 }
 
 export interface CreateCheckoutPayment_checkoutPaymentCreate_payment_creditCard {

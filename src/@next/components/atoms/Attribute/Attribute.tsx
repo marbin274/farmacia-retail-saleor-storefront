@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import * as S from "./styles";
-import { IProps } from "./types";
+import * as S from './styles';
+import { IProps } from './types';
 
 /**
  * The attribute
@@ -9,11 +9,14 @@ import { IProps } from "./types";
 export const Attribute: React.FC<IProps> = ({
   description,
   attributeValue,
+  role,
 }: IProps) => {
   return (
     <S.Wrapper>
       <S.Description>{description}</S.Description>
-      <div>{attributeValue}</div>
+      <p className="fa-text-center fa-break-words" role={role || ''}>
+        {attributeValue}
+      </p>
     </S.Wrapper>
   );
 };

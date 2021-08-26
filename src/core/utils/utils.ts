@@ -1,27 +1,28 @@
-import { IFilterAttributes } from "@app/types";
-import { MainMenuSubItem } from "@temp/components/MainMenu/gqlTypes/MainMenuSubItem";
-import { History, LocationState } from "history";
-import { Base64 } from "js-base64";
-import { each } from "lodash";
-import { parse as parseQs, stringify as stringifyQs } from "query-string";
-import { FetchResult } from "react-apollo";
+import { IFilterAttributes } from '@app/types';
+import { MainMenuSubItem } from '@temp/components/MainMenu/gqlTypes/MainMenuSubItem';
+import { History, LocationState } from 'history';
+import { Base64 } from 'js-base64';
+import { each } from 'lodash';
+import { parse as parseQs, stringify as stringifyQs } from 'query-string';
+import { FetchResult } from 'react-apollo';
 import {
   OrderDirection,
   ProductOrderField,
-} from "../../../gqlTypes/globalTypes";
-import { FormError } from "../types";
-import { Breadcrumb } from "@temp/components";
-import { ISimpleProduct } from "@sdk/types/IProduct";
+} from '../../../gqlTypes/globalTypes';
+import { FormError } from '../types';
+import { Breadcrumb } from '@temp/components';
+import { ISimpleProduct } from '@sdk/types/IProduct';
+import { IGeoJson } from '../types/address';
 
 export const slugify = (text: string | number): string =>
   text
     .toString()
     .toLowerCase()
     .trim()
-    .replace(/\s+/g, "-") // Replace spaces with -
-    .replace(/&/g, "-and-") // Replace & with 'and'
-    .replace(/[^\w\-]+/g, "") // Remove all non-word chars
-    .replace(/\-\-+/g, "-"); // Replace multiple - with single -
+    .replace(/\s+/g, '-') // Replace spaces with -
+    .replace(/&/g, '-and-') // Replace & with 'and'
+    .replace(/[^\w\-]+/g, '') // Remove all non-word chars
+    .replace(/\-\-+/g, '-'); // Replace multiple - with single -
 
 export const getDBIdFromGraphqlId = (
   graphqlId: string,
@@ -32,7 +33,7 @@ export const getDBIdFromGraphqlId = (
   const regexp = /(\w+):(\d+)/;
   const arr = regexp.exec(rawId);
   if (schema && schema !== arr![1]) {
-    throw new Error("Schema is not correct");
+    throw new Error('Schema is not correct');
   }
   return parseInt(arr![2], 10);
 };
@@ -46,24 +47,22 @@ export const priceToString = (
   locale?: string
 ): string => {
   const { amount } = price;
-  if (locale) {
-    return amount.toLocaleString(locale, {
-      currency: price.currency,
-      style: "currency",
-    });
-  } else {
-    return `${price.currency} ${amount.toFixed(2)}`;
-  }
+  return locale
+    ? amount.toLocaleString(locale, {
+        currency: price.currency,
+        style: 'currency',
+      })
+    : `${price.currency} ${amount.toFixed(2)}`;
 };
 
 export const generateProductUrl = (id: string, name: string) =>
-  `/product/${slugify(name)}/${getDBIdFromGraphqlId(id, "Product")}/`;
+  `/product/${slugify(name)}/${getDBIdFromGraphqlId(id, 'Product')}/`;
 
 export const generateCategoryUrl = (id: string, name: string) =>
-  `/category/${slugify(name)}/${getDBIdFromGraphqlId(id, "Category")}/`;
+  `/category/${slugify(name)}/${getDBIdFromGraphqlId(id, 'Category')}/`;
 
 export const generateCollectionUrl = (id: string, name: string) =>
-  `/collection/${slugify(name)}/${getDBIdFromGraphqlId(id, "Collection")}/`;
+  `/collection/${slugify(name)}/${getDBIdFromGraphqlId(id, 'Collection')}/`;
 
 export const generatePageUrl = (slug: string) => `/page/${slug}/`;
 
@@ -99,39 +98,40 @@ interface QueryString {
 export const getAttributesFromQs = (qs: QueryString) =>
   Object.keys(qs)
     .filter(
-      key => !["pageSize", "priceGte", "priceLte", "sortBy", "q"].includes(key)
+      (key) =>
+        !['pageSize', 'priceGte', 'priceLte', 'sortBy', 'q'].includes(key)
     )
     .reduce((prev: any, curr: any) => {
-      prev[curr] = typeof qs[curr] === "string" ? [qs[curr]] : qs[curr];
+      prev[curr] = typeof qs[curr] === 'string' ? [qs[curr]] : qs[curr];
       return prev;
     }, {});
 
 export const getValueOrEmpty = <T>(value: T): T | string =>
-  value === undefined || value === null ? "" : value;
+  value === undefined || value === null ? '' : value;
 
 export const convertSortByFromString = (sortBy: string) => {
   if (!sortBy) {
     return null;
   }
-  const direction = sortBy.startsWith("-")
+  const direction = sortBy.startsWith('-')
     ? OrderDirection.DESC
     : OrderDirection.ASC;
 
   let field;
-  switch (sortBy.replace(/^-/, "")) {
-    case "name":
+  switch (sortBy.replace(/^-/, '')) {
+    case 'name':
       field = ProductOrderField.NAME;
       break;
 
-    case "price":
+    case 'price':
       field = ProductOrderField.MINIMAL_PRICE;
       break;
 
-    case "updated_at":
+    case 'updated_at':
       field = ProductOrderField.DATE;
       break;
 
-    case "stock":
+    case 'stock':
       field = ProductOrderField.STOCK_AVAILABLE;
       break;
 
@@ -171,12 +171,12 @@ export const updateQueryString = (
   const querystring = parseQueryString(location);
 
   return (key: string, value?: any) => {
-    if (value === "") {
+    if (value === '') {
       delete querystring[key];
     } else {
       querystring[key] = value || key;
     }
-    history.replace("?" + stringifyQs(querystring));
+    history.replace('?' + stringifyQs(querystring));
   };
 };
 
@@ -193,7 +193,7 @@ export const findFormErrors = (result: void | FetchResult): FormError[] => {
   return [];
 };
 
-export const removeEmptySpaces = (text: string) => text.replace(/\s+/g, "");
+export const removeEmptySpaces = (text: string) => text.replace(/\s+/g, '');
 
 export const getBreadcrumbsFromProduct = (product: ISimpleProduct) => {
   const breadcrumbs: Breadcrumb[] = [];
@@ -211,4 +211,39 @@ export const getBreadcrumbsFromProduct = (product: ISimpleProduct) => {
   });
 
   return breadcrumbs;
+};
+
+export const isCoordinatesInsideBouds = (
+  latitude: number,
+  longitude: number,
+  geoJson: IGeoJson
+) => {
+  if (!latitude || !longitude || !geoJson?.features) {
+    return false;
+  }
+
+  const x = latitude;
+  const y = longitude;
+  let inside = false;
+
+  for (const feature of geoJson.features) {
+    for (const vs of feature.geometry.coordinates) {
+      for (let i = 0, j = vs.length - 1; i < vs.length; j = i++) {
+        const xi = vs[i][1];
+        const yi = vs[i][0];
+        const xj = vs[j][1];
+        const yj = vs[j][0];
+
+        const intersect =
+          yi > y !== yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi;
+        if (intersect) inside = !inside;
+      }
+    }
+
+    if (inside) {
+      break;
+    }
+  }
+
+  return inside;
 };

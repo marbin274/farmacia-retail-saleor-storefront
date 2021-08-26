@@ -19,7 +19,6 @@ const CheckoutReview: React.FC<IProps> = ({
   creditCardProvider,
   paymentMethodName,
 }: IProps) => {
-
   const renderPaymentMethod = () => {
     if (paymentMethodName) {
       return paymentMethodName;
@@ -78,10 +77,11 @@ const CheckoutReview: React.FC<IProps> = ({
             <S.Text>
               Hora:{" "}
               <S.TextBold>
-                {getScheduleTimesFormat(
-                  scheduleDate?.scheduleTime?.startTime,
-                  scheduleDate?.scheduleTime?.endTime
-                )}
+                {checkout?.deliveryDate ||
+                  getScheduleTimesFormat(
+                    scheduleDate?.scheduleTime?.startTime,
+                    scheduleDate?.scheduleTime?.endTime
+                  )}
               </S.TextBold>
             </S.Text>
           </>

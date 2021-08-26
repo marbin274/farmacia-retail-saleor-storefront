@@ -1,21 +1,21 @@
-import { isEqual } from "apollo-utilities";
-import React from "react";
+import { isEqual } from 'apollo-utilities';
+import React from 'react';
 
-import { APIProxy } from "../api/APIProxy";
-import { RequireAtLeastOne } from "../tsHelpers";
-import { useAuth, useSaleorClient } from "./helpers";
+import { APIProxy } from '../api/APIProxy';
+import { RequireAtLeastOne } from '../tsHelpers';
+import { useAuth, useSaleorClient } from './helpers';
 import {
   ApolloErrorWithUserInput,
   Options,
   Variables,
   WatchQueryReturnData,
-} from "./types";
+} from './types';
 
 type OmittedOptions<T extends keyof APIProxy> = Omit<
   Options<T>,
-  "onUpdate" | "onComplete" | "onError"
+  'onUpdate' | 'onComplete' | 'onError'
 > & { skip?: boolean };
-type AdditionalAPI = ReturnType<APIProxy["watchQuery"]>;
+type AdditionalAPI = ReturnType<APIProxy['watchQuery']>;
 type Result<TData> = {
   data: TData | null;
   loading: boolean;
@@ -42,13 +42,14 @@ const useQuery = <
     error: null,
     loading: true,
   });
-
-  const setData = React.useCallback((data: TData) => {
+  const setData = React.useCallback((data: TData, loading?: boolean) => {
     if (!isEqual(data, prevDataRef.current)) {
       prevDataRef.current = data;
-      setResult({ data, loading: false, error: null });
+      setResult({ data, error: null, loading: false });
     } else {
-      setResult(result => ({ ...result, loading: false }));
+      setResult((previousResult) => {
+        return { ...previousResult, data, loading: !!loading };
+      });
     }
   }, []);
 
@@ -61,31 +62,40 @@ const useQuery = <
     () =>
       (saleor.legacyAPIProxy[query] as AdditionalAPI)(variables, {
         ...(options as any),
-        onError: (error: ApolloErrorWithUserInput) =>
-          setResult(result => ({ ...result, loading: false, error })),
-        onUpdate: (data: TData) => {
-          setData(data);
+        onError: (error: ApolloErrorWithUserInput) => {
+          setResult((previousResult) => ({
+            ...previousResult,
+            error,
+            loading: false,
+          }));
+        },
+        onUpdate: (data: TData, loading?: boolean) => {
+          setData(data, loading);
         },
       }),
     [query, options.skip, authenticated]
   );
 
   const refetch = React.useCallback(
-    (variables?: TVariables) => {
+    (refetchVariables?: TVariables) => {
       setResult({ data: null, error: null, loading: true });
-      _refetch(variables);
+      _refetch(refetchVariables);
     },
     [query]
   );
 
   const loadMore = React.useCallback(
     (
-      variables: RequireAtLeastOne<TVariables>,
+      loadMoreVariables: RequireAtLeastOne<TVariables>,
       mergeResults: boolean = true
     ) => {
       if (_loadMore) {
-        setResult(result => ({ ...result, error: null, loading: true }));
-        _loadMore(variables, mergeResults);
+        setResult((previousResult) => ({
+          ...previousResult,
+          error: null,
+          loading: true,
+        }));
+        _loadMore(loadMoreVariables, mergeResults);
       }
     },
     [query]
@@ -122,11 +132,12 @@ const useQuery = <
   };
 };
 
-export const queryWithVariablesFactory = <T extends keyof APIProxy>(
-  query: T
-) => (variables: Variables<T>, options?: OmittedOptions<T>) =>
-  useQuery(query, variables, options);
+export const queryWithVariablesFactory =
+  <T extends keyof APIProxy>(query: T) =>
+  (variables: Variables<T>, options?: OmittedOptions<T>) =>
+    useQuery(query, variables, options);
 
-export const queryFactory = <T extends keyof APIProxy>(query: T) => (
-  options?: OmittedOptions<T>
-) => useQuery(query, undefined, options);
+export const queryFactory =
+  <T extends keyof APIProxy>(query: T) =>
+  (options?: OmittedOptions<T>) =>
+    useQuery(query, undefined, options);

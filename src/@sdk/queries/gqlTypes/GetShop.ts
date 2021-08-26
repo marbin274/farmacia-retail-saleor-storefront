@@ -13,6 +13,7 @@ export interface GetShop_shop_availableDistricts_warehouse {
    */
   id: string;
   name: string;
+  polygon: any;
 }
 
 export interface GetShop_shop_availableDistricts {

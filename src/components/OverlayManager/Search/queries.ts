@@ -1,16 +1,20 @@
-import { priceFragment } from "@temp/views/Product/queries";
-import gql from "graphql-tag";
+import { priceFragment } from '@sdk/fragments/products';
+import gql from 'graphql-tag';
 
-import { TypedQuery } from "../../../core/queries";
+import { TypedQuery } from '../../../core/queries';
 import {
   SearchResults,
   SearchResultsVariables,
-} from "./gqlTypes/SearchResults";
+} from './gqlTypes/SearchResults';
 
 const searchResultsQuery = gql`
   ${priceFragment}
   query SearchResults($query: String!, $districtId: ID) {
-    products(filter: { search: $query }, first: 100,  sortBy: {field: STOCK_AVAILABLE, direction: DESC}) {
+    products(
+      filter: { search: $query }
+      first: 100
+      sortBy: { field: STOCK_AVAILABLE, direction: DESC }
+    ) {
       edges {
         node {
           id

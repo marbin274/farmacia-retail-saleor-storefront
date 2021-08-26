@@ -1,8 +1,8 @@
-import { IFormError } from "@types";
-import { FocusEventHandler } from "react";
+import { IFormError } from '@types';
+import { FocusEventHandler } from 'react';
 
 export interface IProps {
-  value: any;
+  value?: any;
   name?: string;
   options?: any[];
   isOptionDisabled?: (option: any) => boolean;
@@ -12,7 +12,7 @@ export interface IProps {
   menuIsOpen?: boolean;
   customStyles?: any;
   optionValueKey?: string;
-  onChange: (value: any, name?: any) => void;
+  onChange?: (value: any, name?: any) => void;
   onBlur?: FocusEventHandler;
   clearable?: boolean;
   clearValue?: () => void;

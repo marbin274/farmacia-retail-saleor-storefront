@@ -1,30 +1,32 @@
-import { ApolloClient } from "apollo-client";
-import { ApolloLink } from "apollo-link";
-import { setContext } from "apollo-link-context";
-import { ErrorResponse, onError } from "apollo-link-error";
+import { ApolloClient } from 'apollo-client';
+import { ApolloLink } from 'apollo-link';
+import { setContext } from 'apollo-link-context';
+import { ErrorResponse, onError } from 'apollo-link-error';
+import { LocalRepository } from '@temp/@sdk/repository';
 
-export const authEvent = new Event("auth");
+export const authEvent = new Event('auth');
+const localRepository = new LocalRepository();
 
 export function getAuthToken(): string | null {
   try {
-    return localStorage.getItem("token");
+    return localRepository.getToken();
   } catch {
     return null;
   }
 }
 
 export function setAuthToken(token: string) {
-  localStorage.setItem("token", token);
+  localRepository.setToken(token);
   dispatchEvent(authEvent);
 }
 
 export function removeAuthToken() {
-  localStorage.removeItem("token");
+  localRepository.setToken(null);
   dispatchEvent(authEvent);
 }
 
 export function clearStorage(): void {
-  localStorage.clear();
+  localRepository.clearStorage();
   dispatchEvent(authEvent);
 }
 
@@ -53,7 +55,7 @@ export const invalidTokenLinkWithTokenHandler = (
 } => {
   const link = onError((error: ResponseError) => {
     const isTokenExpired = error.graphQLErrors?.some(
-      error => error.extensions?.exception?.code === "JSONWebTokenExpired"
+      (error) => error.extensions?.exception?.code === 'JSONWebTokenExpired'
     );
     if (
       isTokenExpired ||
@@ -67,15 +69,13 @@ export const invalidTokenLinkWithTokenHandler = (
 
 export const authLink = setContext((_, context) => {
   const authToken = getAuthToken();
-  if (authToken) {
-    return {
-      ...context,
-      headers: {
-        ...context.headers,
-        Authorization: authToken ? `JWT ${authToken}` : null,
-      },
-    };
-  } else {
-    return context;
-  }
+  return authToken
+    ? {
+        ...context,
+        headers: {
+          ...context.headers,
+          Authorization: authToken ? `JWT ${authToken}` : null,
+        },
+      }
+    : context;
 });

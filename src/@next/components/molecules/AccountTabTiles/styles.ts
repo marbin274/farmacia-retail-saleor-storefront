@@ -1,11 +1,12 @@
-import { media, styled } from "@styles";
+import { media, mediaUp, styled } from '@styles';
 
 export const Wrapper = styled.div`
+  align-items: center;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  align-items: center;
+  height: 100%;
   justify-content: flex-start;
+  width: 100%;
 `;
 
 export const TileWrapper = styled.div`
@@ -19,10 +20,9 @@ export const TileWrapper = styled.div`
 export const Header = styled.div`
   align-items: center;
   display: flex;
-  font-weight: ${props => props.theme.typography.extraBoldFontWeight};
-  font-size: ${props => props.theme.typography.h4FontSize};
+  font-weight: ${(props) => props.theme.typography.extraBoldFontWeight};
+  font-size: ${(props) => props.theme.typography.h4FontSize};
   height: 4rem;
-  justify-content: space-between;
   padding-bottom: 1rem;
   width: 100%;
 `;
@@ -37,52 +37,49 @@ export const HeaderSmall = styled(Header)`
 `;
 
 export const AttributeWrapper = styled.div`
-  width: 48%;
-  margin-bottom: 1rem;
-
-  ${media.largeScreen`
-    width: 100%;
-  `}
+  margin-bottom: 0.5rem;
+  text-align: center;
 `;
 
 export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   padding: 0;
   width: 100%;
 `;
 
 export const ContentOneLine = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 70%;
+  flex-direction: column;
   flex-wrap: wrap;
-  ${media.smallScreen`
-    flex-direction: column;
-    width: 100%;
-  `}
+  justify-content: space-between;
+  width: 100%;
 `;
 
-export const ContentEditOneLine = styled.div`
+export const ContentEditOneLine = styled.div<{ twoLinesOnDesktop?: boolean }>`
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   flex-wrap: wrap;
 
   > div {
-    width: 48%;
-    ${media.largeScreen`
-      width: 100%;
-    `}
+    width: 100%;
   }
 
-  ${media.largeScreen`
-     flex-direction: column;
-  `}
+  ${(props) =>
+    props?.twoLinesOnDesktop
+      ? mediaUp.largeScreen`
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-column-gap: 1rem;
+    `
+      : ''}
 `;
 
 export const ContentExtendInput = styled.div`
-  width: 60%;
+  width: 100%;
 `;
 
 export const FormButtons = styled.div`
@@ -90,7 +87,7 @@ export const FormButtons = styled.div`
   padding-top: 2rem;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: flex-end;
 
   button:last-child {
     margin-left: 1.5rem;
@@ -101,8 +98,19 @@ export const FormButtons = styled.div`
   `}
 
   button {
+    width: 8rem;
     span {
       margin-left: 0;
     }
   }
+`;
+
+export const Image = styled.img`
+  margin: auto;
+`;
+
+export const Chip = styled.p`
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 500;
 `;

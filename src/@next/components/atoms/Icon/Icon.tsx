@@ -1,22 +1,22 @@
-import React from "react";
+import React from 'react';
 
-import { icons } from "./definitions";
-import { IProps } from "./types";
+import { icons } from './definitions';
+import { IProps } from './types';
 
 const getPathColor = (color: string | string[], index: number) => {
-  if (typeof color === "string") {
+  if (typeof color === 'string') {
     return color;
   }
 
-  return color[index] ? color[index] : "inherit";
+  return color[index] ? color[index] : 'inherit';
 };
 
-export const Icon: React.FC<IProps> = ({ 
-  color, 
+export const Icon: React.FC<IProps> = ({
+  color,
   heightViewPort,
   name,
-  size = 32, 
-  viewPort = 32, 
+  size = 32,
+  viewPort = 32,
   widthViewPort,
 }: IProps) => {
   const icon = icons[name];
@@ -33,6 +33,8 @@ export const Icon: React.FC<IProps> = ({
             stroke={path.stroke}
             strokeWidth={path.strokeWidth}
             strokeMiterlimit={path.strokeMiterlimit}
+            fillRule={path.fillRule}
+            clipRule={path.clipRule}
           />
         ))}
     </svg>

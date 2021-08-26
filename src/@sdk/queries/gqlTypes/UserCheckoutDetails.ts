@@ -155,6 +155,7 @@ export interface UserCheckoutDetails_me_checkout_billingAddress {
   isDefaultShippingAddress: boolean | null;
   latitude: number | null;
   longitude: number | null;
+  alias: string | null;
 }
 
 export interface UserCheckoutDetails_me_checkout_shippingAddress_country {
@@ -198,6 +199,7 @@ export interface UserCheckoutDetails_me_checkout_shippingAddress {
   isDefaultShippingAddress: boolean | null;
   latitude: number | null;
   longitude: number | null;
+  alias: string | null;
 }
 
 export interface UserCheckoutDetails_me_checkout_availableShippingMethods_price {
@@ -640,7 +642,10 @@ export interface UserCheckoutDetails_me_checkout_lines_variant_product {
    * The main thumbnail for a product.
    */
   thumbnail2x: UserCheckoutDetails_me_checkout_lines_variant_product_thumbnail2x | null;
-  productType: UserCheckoutDetails_me_checkout_lines_variant_product_productType;
+  /**
+   * Product type
+   */
+  productType: UserCheckoutDetails_me_checkout_lines_variant_product_productType | null;
 }
 
 export interface UserCheckoutDetails_me_checkout_lines_variant {
@@ -700,6 +705,54 @@ export interface UserCheckoutDetails_me_checkout_discount {
   culture: string;
 }
 
+export interface UserCheckoutDetails_me_checkout_slots_scheduled {
+  __typename: "ShippingSlot";
+  /**
+   * Slot id.
+   */
+  id: string | null;
+  /**
+   * Slot available from.
+   */
+  slotFrom: string | null;
+  /**
+   * Slot available to.
+   */
+  slotTo: string | null;
+}
+
+export interface UserCheckoutDetails_me_checkout_slots_express {
+  __typename: "ShippingSlot";
+  /**
+   * Slot id.
+   */
+  id: string | null;
+  /**
+   * Slot available from.
+   */
+  slotFrom: string | null;
+  /**
+   * Slot available to.
+   */
+  slotTo: string | null;
+}
+
+export interface UserCheckoutDetails_me_checkout_slots {
+  __typename: "Slot";
+  /**
+   * List of scheduled slots.
+   */
+  scheduled: (UserCheckoutDetails_me_checkout_slots_scheduled | null)[] | null;
+  /**
+   * List of express slots.
+   */
+  express: (UserCheckoutDetails_me_checkout_slots_express | null)[] | null;
+  /**
+   * Datetime.
+   */
+  datetime: string | null;
+}
+
 export interface UserCheckoutDetails_me_checkout {
   __typename: "Checkout";
   token: any;
@@ -749,6 +802,18 @@ export interface UserCheckoutDetails_me_checkout {
   documentNumber: string | null;
   termsAndConditions: boolean;
   dataTreatmentPolicy: boolean;
+  /**
+   * List of slots.
+   */
+  slots: UserCheckoutDetails_me_checkout_slots | null;
+  /**
+   * Slot id.
+   */
+  slotId: string | null;
+  /**
+   * Slot date.
+   */
+  deliveryDate: string | null;
 }
 
 export interface UserCheckoutDetails_me {
