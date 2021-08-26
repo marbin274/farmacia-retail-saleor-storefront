@@ -9,10 +9,11 @@ jobs:
   build:
     name: "STOREFRONT CI"
     runs-on: ubuntu-latest
+    env:
+      NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
     strategy:
       matrix:
         node-version: [14.x]
-
     steps:
       - uses: actions/checkout@v2
       - name: 1- Use Node.js ${{ matrix.node-version }}
@@ -22,20 +23,15 @@ jobs:
 
       - name: 2- Install dependencies
         run: npm install
-        env:
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+
       - name: 3- Run typescript checker
         run: npx tsc --noEmit & npx tsc --noEmit -p src/@sdk & npx tsc --noEmit -p src/@next
-        env:
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+
       - name: 4- Run eslint
         run: npm run eslint
-        env:
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+
       - name: 5- Run tests
         run: npm run test
-        env: 
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
       - name: 6- SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@master
@@ -49,11 +45,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'master' }}
         run: npm run build
         env:
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
           API_URI: ${{ secrets.GRAPHQL_URL_QA }}
+
       - name: 7- Build application release ${{ github.event.pull_request.base.ref }} - by ${{ github.actor }}
         if: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'release' }}
         run: npm run build
         env:
-          API_URI: ${{ secrets.GRAPHQL_URL_PROD }}
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
