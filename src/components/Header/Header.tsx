@@ -48,7 +48,7 @@ const Header: React.FC<IProps> = ({
     useMediaScreen(largeScreenPlusOne);
 
   const handleScroll = () => {
-    const isVisible = window.scrollY >= SEARCH_HEIGHT;
+    const isVisible = window?.scrollY >= SEARCH_HEIGHT;
     setVisibleSearchIcon(isVisible);
   };
 
@@ -57,9 +57,9 @@ const Header: React.FC<IProps> = ({
   };
 
   React.useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    window?.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window?.removeEventListener('scroll', handleScroll);
     };
   }, []);
 

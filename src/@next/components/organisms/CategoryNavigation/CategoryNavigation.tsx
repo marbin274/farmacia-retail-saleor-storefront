@@ -32,7 +32,7 @@ export const CategoryNavigation: React.FC<IProps> = ({ category }) => {
   const getListElement = (id: string, name: string) => {
     const item: MainMenuSubItem = convertCategoryToMenuItem(id, name);
     const isActive =
-      window.location.pathname === generateCategoryUrl(item.id, item.name);
+      window?.location?.pathname === generateCategoryUrl(item.id, item.name);
     return (
       <S.Link key={item.id}>
         <S.NavLink item={item} isActive={isActive} />

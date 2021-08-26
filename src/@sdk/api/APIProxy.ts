@@ -202,7 +202,7 @@ export class APIProxy {
 
     if (data?.token && data.errors.length === 0) {
       setAuthToken(data.token);
-      if (window.PasswordCredential && variables) {
+      if (window?.PasswordCredential && variables) {
         navigator.credentials.store(
           new window.PasswordCredential({
             id: variables.email,
@@ -329,12 +329,12 @@ export class APIProxy {
     };
 
     if (WINDOW_EXISTS) {
-      window.addEventListener('auth', eventHandler);
+      window?.addEventListener('auth', eventHandler);
     }
 
     return () => {
       if (WINDOW_EXISTS) {
-        window.removeEventListener('auth', eventHandler);
+        window?.removeEventListener('auth', eventHandler);
       }
     };
   };

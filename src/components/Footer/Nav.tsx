@@ -21,15 +21,15 @@ class Nav extends React.PureComponent<IProps, IState> {
   state: IState = { width: 0 };
 
   updateDimensions = () => {
-    this.setState({ width: window.innerWidth });
+    this.setState({ width: window?.innerWidth });
   };
 
   componentDidMount() {
-    this.setState({ width: window.screen.width });
-    window.addEventListener('resize', this.updateDimensions);
+    this.setState({ width: window?.screen.width });
+    window?.addEventListener('resize', this.updateDimensions);
   }
   componentWillUnmount() {
-    window.removeEventListener('resize', this.updateDimensions);
+    window?.removeEventListener('resize', this.updateDimensions);
   }
 
   render() {

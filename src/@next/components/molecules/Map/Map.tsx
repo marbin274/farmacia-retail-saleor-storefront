@@ -24,7 +24,7 @@ export const Map: FC<IMapProps> = ({
       return;
     }
 
-    if (window.google?.maps) {
+    if (window?.google?.maps) {
       init();
       return;
     }

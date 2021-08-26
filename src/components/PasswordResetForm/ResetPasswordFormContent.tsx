@@ -24,7 +24,7 @@ interface ResetPasswordFormContentProps {
 
 const initialValues: ResetPasswordVariables = {
   email: '',
-  redirectUrl: `${window.location.origin}${passwordResetUrl}`,
+  redirectUrl: `${window?.location.origin}${passwordResetUrl}`,
 };
 const ResetPasswordFormContent: React.FC<ResetPasswordFormContentProps> = ({
   buttonBack,

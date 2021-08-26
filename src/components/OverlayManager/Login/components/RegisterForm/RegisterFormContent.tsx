@@ -22,7 +22,7 @@ const initialValues: ILoginForm = {
   firstName: '',
   lastName: '',
   password: '',
-  redirectUrl: `${window.location.origin}${accountConfirmUrl}`,
+  redirectUrl: `${window?.location.origin}${accountConfirmUrl}`,
   termsAndConditions: false,
 };
 export const RegisterFormContent: React.FC<IProps> = ({

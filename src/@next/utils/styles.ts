@@ -6,7 +6,7 @@ export const getContentWindowHeight = () => {
   const headerHeight = headerRef ? headerRef.offsetHeight : 0;
   const footerHeight = footerRef ? footerRef.offsetHeight : 0;
 
-  return window.innerHeight - headerHeight - footerHeight;
+  return window?.innerHeight || 0 - headerHeight - footerHeight;
 };
 
 const DEFAULT_BACKGROUND_COLOR = '#fff';
@@ -23,7 +23,7 @@ export const getBackgroundColor = (ref: any): string => {
     if (el.nodeName === 'BODY') {
       return DEFAULT_BACKGROUND_COLOR;
     }
-    const bgColor = window.getComputedStyle(
+    const bgColor = window?.getComputedStyle(
       el.parentElement,
       null
     ).backgroundColor;
