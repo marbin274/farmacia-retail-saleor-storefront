@@ -204,6 +204,11 @@ export interface UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMe
   alias: string | null;
 }
 
+export interface UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMethodUpdate_checkout_availableShippingMethods_methodType {
+  __typename: "ShippingMethodType";
+  code: string;
+}
+
 export interface UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMethodUpdate_checkout_availableShippingMethods_price {
   __typename: "Money";
   /**
@@ -248,17 +253,19 @@ export interface UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMe
    * The ID of the object.
    */
   id: string;
+  methodType: UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMethodUpdate_checkout_availableShippingMethods_methodType | null;
   name: string;
-  /**
-   * Flag to recognize if this shipping method has schedules to select.
-   */
-  isScheduled: boolean | null;
   price: UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMethodUpdate_checkout_availableShippingMethods_price | null;
   /**
    * List of filtered schedules a customer can pick.
    */
   scheduleDates: (UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMethodUpdate_checkout_availableShippingMethods_scheduleDates | null)[] | null;
   subtitle: string | null;
+}
+
+export interface UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMethodUpdate_checkout_shippingMethod_methodType {
+  __typename: "ShippingMethodType";
+  code: string;
 }
 
 export interface UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMethodUpdate_checkout_shippingMethod_price {
@@ -305,11 +312,8 @@ export interface UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMe
    * The ID of the object.
    */
   id: string;
+  methodType: UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMethodUpdate_checkout_shippingMethod_methodType | null;
   name: string;
-  /**
-   * Flag to recognize if this shipping method has schedules to select.
-   */
-  isScheduled: boolean | null;
   price: UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMethodUpdate_checkout_shippingMethod_price | null;
   /**
    * List of filtered schedules a customer can pick.

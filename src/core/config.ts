@@ -319,3 +319,12 @@ export const FEATURE_PLUGINS = {
   lastMile: 'pharma.lastmile.auna',
 };
 export const DEFAULT_SORT = '-stock';
+
+export const SHIPPING_TYPES = {
+  express: 'EXPRESS',
+  scheduled: 'SCHEDULED',
+};
+
+export const SHIPPING_TYPES_SUFFIX = {
+  prime: 'PRIME',
+};

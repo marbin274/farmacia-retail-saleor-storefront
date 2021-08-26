@@ -217,6 +217,11 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
   alias: string | null;
 }
 
+export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_availableShippingMethods_methodType {
+  __typename: "ShippingMethodType";
+  code: string;
+}
+
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_availableShippingMethods_price {
   __typename: "Money";
   /**
@@ -261,17 +266,19 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    * The ID of the object.
    */
   id: string;
+  methodType: UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_availableShippingMethods_methodType | null;
   name: string;
-  /**
-   * Flag to recognize if this shipping method has schedules to select.
-   */
-  isScheduled: boolean | null;
   price: UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_availableShippingMethods_price | null;
   /**
    * List of filtered schedules a customer can pick.
    */
   scheduleDates: (UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_availableShippingMethods_scheduleDates | null)[] | null;
   subtitle: string | null;
+}
+
+export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_shippingMethod_methodType {
+  __typename: "ShippingMethodType";
+  code: string;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_shippingMethod_price {
@@ -318,11 +325,8 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    * The ID of the object.
    */
   id: string;
+  methodType: UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_shippingMethod_methodType | null;
   name: string;
-  /**
-   * Flag to recognize if this shipping method has schedules to select.
-   */
-  isScheduled: boolean | null;
   price: UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_shippingMethod_price | null;
   /**
    * List of filtered schedules a customer can pick.
@@ -1039,6 +1043,11 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
   alias: string | null;
 }
 
+export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_availableShippingMethods_methodType {
+  __typename: "ShippingMethodType";
+  code: string;
+}
+
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_availableShippingMethods_price {
   __typename: "Money";
   /**
@@ -1083,17 +1092,19 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    * The ID of the object.
    */
   id: string;
+  methodType: UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_availableShippingMethods_methodType | null;
   name: string;
-  /**
-   * Flag to recognize if this shipping method has schedules to select.
-   */
-  isScheduled: boolean | null;
   price: UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_availableShippingMethods_price | null;
   /**
    * List of filtered schedules a customer can pick.
    */
   scheduleDates: (UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_availableShippingMethods_scheduleDates | null)[] | null;
   subtitle: string | null;
+}
+
+export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_shippingMethod_methodType {
+  __typename: "ShippingMethodType";
+  code: string;
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_shippingMethod_price {
@@ -1140,11 +1151,8 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    * The ID of the object.
    */
   id: string;
+  methodType: UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_shippingMethod_methodType | null;
   name: string;
-  /**
-   * Flag to recognize if this shipping method has schedules to select.
-   */
-  isScheduled: boolean | null;
   price: UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_shippingMethod_price | null;
   /**
    * List of filtered schedules a customer can pick.

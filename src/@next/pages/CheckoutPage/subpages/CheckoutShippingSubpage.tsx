@@ -1,27 +1,30 @@
-import { CheckoutShipping, CheckoutShippingSlot } from "@components/organisms";
-import { useCart, useCheckout } from "@sdk/react";
-import { alertService } from "@temp/@next/components/atoms/Alert";
+import { CheckoutShipping, CheckoutShippingSlot } from '@components/organisms';
+import { useCart, useCheckout } from '@sdk/react';
+import { alertService } from '@temp/@next/components/atoms/Alert';
 import {
   SHIPPING_METHOD_NOT_FOUND,
   SHIPPING_METHOD_NOT_FOUND_TITLE,
-} from "@temp/@next/utils/schemasMessages";
-import { IAvailableShippingMethods } from "@temp/@sdk/api/Checkout/types";
-import { CheckoutErrorCode } from "@temp/@sdk/gqlTypes/globalTypes";
-import { UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_errors as ICheckoutShippingMethodError } from "@temp/@sdk/mutations/gqlTypes/UpdateCheckoutShippingMethod";
-import { IShippingMethodUpdate } from "@temp/@sdk/repository";
-import { CHECKOUT_STEPS } from "@temp/core/config";
-import { IFormError } from "@types";
+} from '@temp/@next/utils/schemasMessages';
+import { IAvailableShippingMethods } from '@temp/@sdk/api/Checkout/types';
+import { CheckoutErrorCode } from '@temp/@sdk/gqlTypes/globalTypes';
+import { UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_errors as ICheckoutShippingMethodError } from '@temp/@sdk/mutations/gqlTypes/UpdateCheckoutShippingMethod';
+import { IShippingMethodUpdate } from '@temp/@sdk/repository';
+import { CHECKOUT_STEPS } from '@temp/core/config';
+import { IFormError } from '@types';
 import React, {
   forwardRef,
   RefForwardingComponent,
   useEffect,
   useImperativeHandle,
   useRef,
-} from "react";
-import { RouteComponentProps, useHistory } from "react-router";
-import shippingMethodCalendarInfoIco from "images/auna/shipping-method-calendar-info.svg";
-import { Checkout_availableShippingMethods } from "@temp/@sdk/fragments/gqlTypes/Checkout";
-import { useFeaturePlugins } from "@app/hooks";
+} from 'react';
+import { RouteComponentProps, useHistory } from 'react-router';
+import shippingMethodCalendarInfoIco from 'images/auna/shipping-method-calendar-info.svg';
+import { useFeaturePlugins } from '@app/hooks';
+import {
+  isPrimeShippingMethod,
+  isScheduledShippingMethod,
+} from '@temp/core/utils';
 
 export interface ICheckoutShippingSubpageHandles {
   submitShipping: () => void;
@@ -45,7 +48,7 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
   }: IProps,
   ref
 ) => {
-  const checkoutShippingFormId = "shipping-form";
+  const checkoutShippingFormId = 'shipping-form';
   const checkoutShippingFormRef = useRef<HTMLFormElement>(null);
 
   const history = useHistory();
@@ -68,33 +71,29 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
   const checkIfSlotExists = async () => {
     if (selectedSlotId && lastMileActive) {
       changeSubmitProgress(true);
-      await setShippingMethod({ shippingMethodId: "", slotId: undefined });
+      await setShippingMethod({ shippingMethodId: '', slotId: undefined });
     }
 
     changeSubmitProgress(false);
   };
 
-  const isPrimeShippingMethod = (sm: Checkout_availableShippingMethods) => {
-    return sm.name.toLocaleLowerCase().includes("prime");
-  };
-
   const shippingMethods: IAvailableShippingMethods = [];
-  const primeShippingMethodExists = !!availableShippingMethods?.find(x =>
+  const primeShippingMethodExists = !!availableShippingMethods?.find((x) =>
     isPrimeShippingMethod(x)
   );
 
-  availableShippingMethods?.forEach(it => {
+  availableShippingMethods?.forEach((it) => {
     const shippingMethod = { ...it };
-    if (it.isScheduled && !shippingMethod.scheduleDates) {
+    if (isScheduledShippingMethod(it) && !shippingMethod.scheduleDates) {
       return;
     } else if (
       (isPrime && primeShippingMethodExists && !isPrimeShippingMethod(it)) ||
       (!isPrime && isPrimeShippingMethod(it))
     ) {
       return;
-    } else if (it.isScheduled && shippingMethod.scheduleDates) {
+    } else if (isScheduledShippingMethod(it) && shippingMethod.scheduleDates) {
       shippingMethod.scheduleDates = shippingMethod.scheduleDates.filter(
-        it => it?.scheduleTimes?.length
+        (it) => it?.scheduleTimes?.length
       );
     }
     shippingMethods.push(shippingMethod);
@@ -103,7 +102,7 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
   useImperativeHandle(ref, () => ({
     submitShipping: () => {
       checkoutShippingFormRef.current?.dispatchEvent(
-        new Event("submit", { cancelable: true })
+        new Event('submit', { cancelable: true })
       );
     },
   }));
@@ -118,20 +117,20 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
     changeSubmitProgress(false);
     if (errors) {
       const scheduleTimeNotFound = errors.find(
-        it =>
+        (it) =>
           (it.code === CheckoutErrorCode.NOT_FOUND &&
-            it.field === "scheduleTimeId") ||
+            it.field === 'scheduleTimeId') ||
           it.code === CheckoutErrorCode.SCHEDULE_NOT_AVAILABLE
       );
-      setShippingMethod({ shippingMethodId: "", slotId: undefined });
+      setShippingMethod({ shippingMethodId: '', slotId: undefined });
       alertService.sendAlert({
-        buttonText: "Entendido",
+        buttonText: 'Entendido',
         icon: scheduleTimeNotFound && shippingMethodCalendarInfoIco,
         message: !scheduleTimeNotFound
           ? errors[0].message
           : SHIPPING_METHOD_NOT_FOUND,
         title: scheduleTimeNotFound && SHIPPING_METHOD_NOT_FOUND_TITLE,
-        type: "Error",
+        type: 'Error',
       });
       setAddressSubPageErrors(errors as IFormError[]);
     } else {
