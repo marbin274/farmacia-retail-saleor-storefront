@@ -18,12 +18,13 @@ import {
   maybe,
 } from '@temp/core/utils';
 import * as React from 'react';
-import { CollectionSortField } from '../../../gqlTypes/globalTypes';
+import { CollectionSortField } from '../../../../../gqlTypes/globalTypes';
 import { Skeleton } from './skeleton';
 import * as S from './styles';
 import { IHomePageCollecction, IProps } from './types';
 
-const ProductsFeatured: React.FC<IProps> = ({
+export const ProductsFeatured: React.FC<IProps> = ({
+  title = 'Nuestros recomendados',
   productsOnCart,
   removeItemToCart,
   addToCart,
@@ -121,9 +122,3 @@ const ProductsFeatured: React.FC<IProps> = ({
     </>
   );
 };
-
-ProductsFeatured.defaultProps = {
-  title: 'Nuestros recomendados',
-};
-
-export default ProductsFeatured;

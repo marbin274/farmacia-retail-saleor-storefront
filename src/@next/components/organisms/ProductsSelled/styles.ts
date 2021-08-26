@@ -1,5 +1,5 @@
-import { media, styled } from "@styles";
-import farmatheme from "@farmatheme";
+import { media, styled } from '@styles';
+import farmatheme from '@farmatheme';
 
 export const Container = styled.div`
   margin: 0 auto;
@@ -24,7 +24,7 @@ export const Title = styled.h3`
   font-size: ${({ theme }) => theme.typography.h3FontSize};
   font-weight: ${({ theme }) => theme.typography.boldFontWeight};
   margin-bottom: 2rem;
-  text-align:left;
+  text-align: left;
 
   ${media.largeScreen`
     text-align:center;
@@ -37,20 +37,18 @@ export const TopImageDistrictBannerOpen = styled.div<{
   imageDesktop: string;
 }>`
   width: 45rem;
-  height: 4rem; 
+  height: 4rem;
   cursor: pointer;
-  background: no-repeat url("${(props: any) =>
-    props.imageDesktop}") transparent;
+  background: no-repeat url('${(props: any) => props.imageDesktop}') transparent;
   background-size: contain;
   ${media.smallScreen`
     background: no-repeat url("${(props: any) =>
       props.imageMobile}") transparent;
     background-size: 100% 100%;
   `};
+`;
 
- `;
-
- export const SkeletonItem = styled.div`
+export const SkeletonItem = styled.div`
   margin-bottom: 1.5rem;
   width: 100%;
- `;
+`;

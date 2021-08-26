@@ -6,7 +6,7 @@ import { useSelledProducts } from '@temp/@sdk/react';
 import { PRODUCTS_PER_PAGE } from '@temp/core/config';
 import { convertToSimpleProduct, generateProductUrl } from '@temp/core/utils';
 import React from 'react';
-import { ReportingPeriod } from '../../../gqlTypes/globalTypes';
+import { ReportingPeriod } from '../../../../../gqlTypes/globalTypes';
 import { Skeleton } from './skeleton';
 import * as S from './styles';
 import { IProps } from './types';

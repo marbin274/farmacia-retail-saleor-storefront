@@ -1,6 +1,5 @@
 import { RichTextContent } from '@components/atoms';
 import { TaxedMoney } from '@components/containers';
-
 import {
   ProductBottomDetail,
   ProductVariantPicker,
@@ -10,18 +9,19 @@ import {
   ProductDetails_product_variants,
   ProductDetails_product_variants_pricing,
 } from '@sdk/queries/gqlTypes/ProductDetails';
-import { ISimpleProduct } from '@sdk/types/IProduct';
 import {
   ICheckoutModelLine,
   ICheckoutModelLineVariantLocalStorage,
 } from '@sdk/repository';
+import { ISimpleProduct } from '@sdk/types/IProduct';
 import ItemsHandler from '@temp/@next/components/organisms/ItemsHandler/ItemsHandler';
 import { getProductPricingClass } from '@temp/@next/utils/products';
 import { IProductVariantsAttributesSelectedValues } from '@types';
+import classNames from 'classnames';
 import isEqual from 'lodash/isEqual';
 import * as React from 'react';
 import * as S from './styles';
-import classNames from 'classnames';
+
 export interface ProductDescriptionProps {
   canAddToCart: boolean;
   descriptionJson: string;

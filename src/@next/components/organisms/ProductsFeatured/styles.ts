@@ -1,5 +1,5 @@
-import { mediaUp, styled } from "@styles";
-import { aunaBlack } from "@temp/@next/globalStyles/constants";
+import { mediaUp, styled } from '@styles';
+import { aunaBlack } from '@temp/@next/globalStyles/constants';
 
 export const Container = styled.div`
   max-width: 100vw;
@@ -8,7 +8,7 @@ export const Container = styled.div`
   width: 100%;
 
   ${mediaUp.largeScreen`
-    width: ${props => `${props.theme.container.width}px`};
+    width: ${(props) => `${props.theme.container.width}px`};
   `}
 
   a {
@@ -104,7 +104,7 @@ export const Container = styled.div`
     &-price {
       display: block;
       span:before {
-        content: "";
+        content: '';
       }
     }
     &-title {

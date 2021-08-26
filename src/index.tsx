@@ -5,6 +5,7 @@ import {
   ServiceWorkerProvider,
 } from '@components/containers';
 import { OverlayProvider } from '@components/organisms/OverlayComponent';
+import ShopProvider from './@next/components/organisms/ShopProvider';
 import { FeaturedPluginsProvider } from '@contexts';
 import { OptimizelyProvider } from '@optimizely/react-sdk';
 import { SaleorProvider, useAuth } from '@sdk/react';
@@ -33,7 +34,6 @@ import {
 } from './@sdk/auth';
 import { launchSetLocation } from './@sdk/gaConfig';
 import { App } from './app';
-import ShopProvider from './components/ShopProvider';
 import {
   apiUrl,
   environmentName,

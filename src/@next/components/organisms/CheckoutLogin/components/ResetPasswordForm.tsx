@@ -1,6 +1,6 @@
 import { Button } from '@farmacia-retail/farmauna-components';
 import React from 'react';
-import { PasswordResetForm } from '@temp/components';
+import { PasswordResetForm } from '@components/organisms/PasswordResetForm';
 
 interface IResetPasswordForm {
   onClick: () => void;

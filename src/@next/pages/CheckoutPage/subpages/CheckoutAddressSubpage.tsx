@@ -1,14 +1,15 @@
+import { useFeaturePlugins } from '@app/hooks';
+import { alertService } from '@components/atoms/Alert/AlertService';
 import { CheckoutAddress, StockValidationModal } from '@components/organisms';
+import { addressFormSchema } from '@components/organisms/AddressForm/adddressFormSchema';
+import { useShopContext } from '../../../components/organisms/ShopProvider/context';
 import { useCheckout, useUserDetails } from '@sdk/react';
-import { alertService } from '@temp/@next/components/atoms/Alert/AlertService';
-import { addressFormSchema } from '@temp/@next/components/organisms/AddressForm/adddressFormSchema';
 import { useDistrictSelected } from '@temp/@next/hooks/useDistrictSelected';
 import { useUpdateCartLines } from '@temp/@next/hooks/useUpdateCartLines';
 import { IPrivacyPolicy } from '@temp/@sdk/api/Checkout/types';
 import { CheckoutErrorCode } from '@temp/@sdk/gqlTypes/globalTypes';
 import { CreateCheckout_checkoutCreate_checkoutErrors_products } from '@temp/@sdk/mutations/gqlTypes/CreateCheckout';
 import { baseUrl } from '@temp/app/routes/paths';
-import { useShopContext } from '@temp/components/ShopProvider/context';
 import {
   CHECKOUT_MANDATORY_COORDINATES,
   COUNTRY_DEFAULT,
@@ -23,9 +24,8 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import { RouteComponentProps } from 'react-router';
 import { AlertComponentProps, useAlert } from 'react-alert';
-import { useFeaturePlugins } from '@app/hooks';
+import { RouteComponentProps } from 'react-router';
 
 export interface ICheckoutAddressSubpageHandles {
   submitAddress: () => void;

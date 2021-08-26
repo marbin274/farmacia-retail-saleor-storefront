@@ -1,9 +1,9 @@
 import { Offline, OfflinePlaceholder, Online } from '@components/atoms';
+import { PasswordResetForm } from '@components/organisms/PasswordResetForm';
 import { OverlayContextInterface } from '@components/organisms/OverlayComponent';
 import { BulletXFilledIcon } from '@farmacia-retail/farmauna-components';
 import farmatheme from '@farmatheme';
 import * as React from 'react';
-import { PasswordResetForm } from '../../../../../components';
 import * as S from './styles';
 
 const Password: React.FC<{ overlay: OverlayContextInterface }> = ({

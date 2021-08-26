@@ -8,7 +8,7 @@ interface IPasswordResetForm {
   onClick?: () => void;
 }
 
-const PasswordResetForm: React.FC<IPasswordResetForm> = ({
+export const PasswordResetForm: React.FC<IPasswordResetForm> = ({
   children,
   buttonBack,
   onClick,
@@ -16,7 +16,6 @@ const PasswordResetForm: React.FC<IPasswordResetForm> = ({
   const [passwordReset, { called, data, loading }] = usePasswordReset();
   return (
     <div>
-      {' '}
       <ResetPasswordFormContent
         onClose={onClick}
         called={called}
@@ -32,5 +31,3 @@ const PasswordResetForm: React.FC<IPasswordResetForm> = ({
     </div>
   );
 };
-
-export default PasswordResetForm;
