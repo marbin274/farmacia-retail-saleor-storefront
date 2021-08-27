@@ -21,7 +21,7 @@ const Consumer: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
 
       function getParameterByName(name: string) {
         const match = RegExp('[?&]' + name + '=([^&]*)').exec(
-          window.location.search
+          window?.location?.search
         );
         return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
       }

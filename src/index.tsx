@@ -1,31 +1,30 @@
-// @ts-nocheck
+import {
+  ApolloClient,
+  ApolloProvider,
+  defaultDataIdFromObject,
+  InMemoryCache,
+  NormalizedCacheObject,
+} from '@apollo/client';
 import { NotificationTemplate } from '@components/atoms';
 import {
   ServiceWorkerContext,
   ServiceWorkerProvider,
 } from '@components/containers';
 import { OverlayProvider } from '@components/organisms/OverlayComponent';
-import ShopProvider from './@next/components/organisms/ShopProvider';
 import { FeaturedPluginsProvider } from '@contexts';
 import { OptimizelyProvider } from '@optimizely/react-sdk';
 import { SaleorProvider, useAuth } from '@sdk/react';
 import { defaultTheme, GlobalStyle } from '@styles';
-import {
-  defaultDataIdFromObject,
-  InMemoryCache,
-  NormalizedCacheObject,
-} from 'apollo-cache-inmemory';
-import { persistCache } from 'apollo-cache-persist';
-import { ApolloClient } from 'apollo-client';
+import { persistCache } from 'apollo3-cache-persist';
 import * as React from 'react';
 import { positions, Provider as AlertProvider, useAlert } from 'react-alert';
-import { ApolloProvider } from 'react-apollo';
 import { render } from 'react-dom';
 import TagManager from 'react-gtm-module';
 import { hot } from 'react-hot-loader';
 import { Route, Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { QueryParamProvider } from 'use-query-params';
+import ShopProvider from './@next/components/organisms/ShopProvider';
 import { createSaleorClient } from './@sdk';
 import {
   authLink,
@@ -61,7 +60,7 @@ const cache = new InMemoryCache({
 const startApp = async () => {
   await persistCache({
     cache,
-    storage: window.localStorage,
+    storage: window?.localStorage,
   });
 
   const notificationOptions = {

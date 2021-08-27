@@ -6,7 +6,7 @@ import { History, LocationState } from 'history';
 import { Base64 } from 'js-base64';
 import { each } from 'lodash';
 import { parse as parseQs, stringify as stringifyQs } from 'query-string';
-import { FetchResult } from 'react-apollo';
+import { FetchResult } from '@apollo/client';
 import {
   OrderDirection,
   ProductOrderField,

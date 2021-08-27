@@ -3,7 +3,8 @@ import {
   ApolloError,
   ObservableQuery,
   WatchQueryOptions,
-} from 'apollo-client';
+} from '@apollo/client';
+
 import { GraphQLError } from 'graphql';
 
 import { fireSignOut, getAuthToken, setAuthToken } from '../auth';
@@ -225,7 +226,7 @@ export class APIProxy {
 
     if (data?.token && data.errors.length === 0) {
       setAuthToken(data.token);
-      if (window.PasswordCredential && variables) {
+      if (window?.PasswordCredential && variables) {
         navigator.credentials.store(
           new window.PasswordCredential({
             id: variables.email,
@@ -352,12 +353,12 @@ export class APIProxy {
     };
 
     if (WINDOW_EXISTS) {
-      window.addEventListener('auth', eventHandler);
+      window?.addEventListener('auth', eventHandler);
     }
 
     return () => {
       if (WINDOW_EXISTS) {
-        window.removeEventListener('auth', eventHandler);
+        window?.removeEventListener('auth', eventHandler);
       }
     };
   };
@@ -481,8 +482,11 @@ export class APIProxy {
         refetch: (newVariables?: TVariables) => {
           if (newVariables) {
             observable.setVariables(newVariables);
-            const cachedResult = observable.currentResult();
-            const errorHandledData = handleDataErrors(mapFn, cachedResult.data);
+            const cachedResult = observable.getCurrentResult();
+            const errorHandledData = handleDataErrors(
+              mapFn,
+              cachedResult.data as {}
+            );
             if (errorHandledData.data) {
               onUpdate(errorHandledData.data as TResult);
             }

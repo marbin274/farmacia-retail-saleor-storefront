@@ -36,7 +36,7 @@ const extractMeta = (product: ProductDetails_product) => {
     image: maybe(() => product.thumbnail.url, null),
     title: product.name || product.seoTitle,
     type: 'product.item',
-    url: window.location.href,
+    url: window?.location?.href,
   };
 };
 

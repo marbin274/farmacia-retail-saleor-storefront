@@ -29,10 +29,10 @@ const DEFAULT_PROPS: IProps = {
       longitude: -1,
     },
   ],
-  onClickAdd: () => {},
-  onClickEdit: () => {},
-  onClickDelete: () => {},
-  onClickSetDefault: () => {},
+  onClickAdd: () => undefined,
+  onClickEdit: () => undefined,
+  onClickDelete: () => undefined,
+  onClickSetDefault: () => undefined,
 };
 
 describe('<AddressGrid />', () => {

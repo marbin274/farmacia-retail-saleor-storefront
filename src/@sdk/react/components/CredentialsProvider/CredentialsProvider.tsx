@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import { useSaleorClient, useSignIn } from "../..";
-import { IProps } from "./types";
+import { useSaleorClient, useSignIn } from '../..';
+import { IProps } from './types';
 
 export function CredentialsProvider({
   children,
@@ -23,7 +23,7 @@ export function CredentialsProvider({
   };
 
   React.useEffect(() => {
-    if (!saleor.legacyAPIProxy.isLoggedIn() && window.PasswordCredential) {
+    if (!saleor.legacyAPIProxy.isLoggedIn() && window?.PasswordCredential) {
       autoSignIn();
     }
   }, []);

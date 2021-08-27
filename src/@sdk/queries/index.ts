@@ -2,7 +2,8 @@ import {
   ApolloClient,
   ObservableQuery,
   QueryOptions as ApolloQueryOptions,
-} from 'apollo-client';
+} from '@apollo/client';
+
 import { RequireOnlyOne } from '../tsHelpers';
 import * as Article from './article';
 import * as AttributesList from './attributes';

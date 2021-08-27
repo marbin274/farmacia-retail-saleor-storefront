@@ -1,13 +1,13 @@
+import { NavLink } from '@components/atoms/NavLinkComponent';
+import SocialMedia from '@components/molecules/SocialMedia';
 import { FooterSecondaryMenu } from '@sdk/queries/gqlTypes/FooterSecondaryMenu';
 import { DOCUMENTS_URLS_S3 } from '@temp/core/config';
 import classNames from 'classnames';
 import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { NavLink } from '@components/atoms/NavLinkComponent';
-import logoFarmaunaFooter from '../../../../images/logo-farmauna-footer.svg';
 import iconPreviousEmail from '../../../../images/icon-previous-email.svg';
+import logoFarmaunaFooter from '../../../../images/logo-farmauna-footer.svg';
 import iconPhone from '../../../../images/phone-icon.svg';
-import SocialMedia from '@components/molecules/SocialMedia';
 import { Skeleton } from './skeleton';
 import * as S from './styles';
 
@@ -20,11 +20,11 @@ const Nav: React.FC<IProps> = ({ secondaryMenu, loading }) => {
   const [width, setWidth] = React.useState(0);
 
   const updateDimensions = () => {
-    setWidth(window.innerWidth);
+    setWidth(window?.innerWidth);
   };
 
   React.useEffect(() => {
-    setWidth(window.screen.width);
+    setWidth(window?.screen.width);
     window.addEventListener('resize', updateDimensions);
     return () => {
       window.removeEventListener('resize', updateDimensions);

@@ -42,7 +42,7 @@ const AddressAutocompleteWithRef: RefForwardingComponent<
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (window.google?.maps) {
+    if (window?.google?.maps) {
       init();
       return;
     }

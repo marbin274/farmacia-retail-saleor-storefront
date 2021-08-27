@@ -1,13 +1,18 @@
 import { Loader } from '@temp/@next/components/atoms';
 import { LocalRepository } from '@temp/@sdk/repository';
-import { ApolloQueryResult, ErrorPolicy, FetchPolicy } from 'apollo-client';
+import {
+  ApolloQueryResult,
+  ErrorPolicy,
+  FetchPolicy,
+  QueryResult,
+  QueryFunctionOptions,
+} from '@apollo/client';
 import { DocumentNode } from 'graphql';
 import * as React from 'react';
-import { Query, QueryProps, QueryResult } from 'react-apollo';
+import { Query } from '@apollo/client/react/components';
 import { Error } from '@components/atoms/Error';
 import { RequireAtLeastOne } from './tsUtils';
 import { maybe } from './utils';
-
 interface LoadMore<TData, TVariables> {
   loadMore: (
     mergeFunc: (prev: TData, next: TData) => TData,
@@ -18,7 +23,7 @@ interface LoadMore<TData, TVariables> {
 interface TypedQueryInnerProps<TData, TVariables> {
   children: (
     result: QueryResult<TData, TVariables> & LoadMore<TData, TVariables>
-  ) => React.ReactNode;
+  ) => JSX.Element;
   displayError?: boolean;
   displayLoader?: boolean;
   fetchPolicy?: FetchPolicy;
@@ -51,7 +56,7 @@ export function TypedQuery<TData, TVariables>(query: DocumentNode) {
       variables,
       onCompleted,
     } = props as JSX.LibraryManagedAttributes<
-      QueryProps<TData, TVariables>,
+      QueryFunctionOptions<TData, TVariables>,
       TypedQueryInnerProps<TData, TVariables>
     >;
     return (
