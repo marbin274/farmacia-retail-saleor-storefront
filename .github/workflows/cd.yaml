@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: 2- Install dependencies
-        run: npm install
+        run: npm cache clean --force && npm install
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
       - name: 3- Build application master ${{ github.event.pull_request.base.ref }}
