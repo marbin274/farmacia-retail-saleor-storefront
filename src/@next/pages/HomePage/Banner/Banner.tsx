@@ -20,26 +20,26 @@ type BannerType = {
 const getBannersFromData = (data: MainBanner_mainBanner): BannerType[] => {
   return data?.frames
     ? data?.frames.map((banner): BannerType => {
-        const bannerDesktop = banner.images?.find(
-          (it) => it.screenType === 'desktop'
-        );
-        const bannerMobile = banner.images?.find(
-          (it) => it.screenType === 'mobile'
-        );
-        const result: BannerType = {
-          link: banner.link,
-          desktop: bannerDesktop?.url || '',
-          mobile: bannerMobile?.url || '',
-        };
-        return result;
-      })
+      const bannerDesktop = banner.images?.find(
+        (it) => it.screenType === 'desktop'
+      );
+      const bannerMobile = banner.images?.find(
+        (it) => it.screenType === 'mobile'
+      );
+      const result: BannerType = {
+        link: banner.link,
+        desktop: bannerDesktop?.url || '',
+        mobile: bannerMobile?.url || '',
+      };
+      return result;
+    })
     : [
-        {
-          link: null,
-          desktop: BannerDesktop,
-          mobile: BannerMobile,
-        },
-      ];
+      {
+        link: null,
+        desktop: BannerDesktop,
+        mobile: BannerMobile,
+      },
+    ];
 };
 
 export const Banner: React.FC = () => {
@@ -74,7 +74,9 @@ export const Banner: React.FC = () => {
 
   return (
     <S.BannerWrapper className="fa-relative fa-text-center">
-      <BannerCarousel>
+      <BannerCarousel
+        autoplay={banners.length > 1}
+      >
         {banners.map((banner, index) => {
           return (
             <div

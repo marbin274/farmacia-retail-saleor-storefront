@@ -15,10 +15,10 @@ interface CarouselType extends CarouselProps {
 
 export const Carousel: React.FC<CarouselType> = ({ children, ...rest }) => {
   const { isNearScreen, fromRef } = useIsNearScreen();
-  const settings = {
+  const settings: CarouselProps = {
     className: "carousel",
     renderBottomCenterControls: () => null,
-    renderCenterLeftControls: ({ previousSlide, currentSlide }: any) =>
+    renderCenterLeftControls: ({ previousSlide, currentSlide }) =>
       currentSlide !== 0 ? (
         <div onClick={previousSlide}>
           <Button iconOnly icon={<ArrowLeftIcon />} />
@@ -33,9 +33,9 @@ export const Carousel: React.FC<CarouselType> = ({ children, ...rest }) => {
       currentSlide,
       slideCount,
       slidesToShow,
-    }: any) =>
+    }) =>
       slideCount - slidesToShow !== currentSlide &&
-      slideCount > slidesToShow ? (
+        slideCount > slidesToShow ? (
         <div onClick={nextSlide}>
           <Button iconOnly icon={<ArrowRightIcon />} />
         </div>
@@ -48,7 +48,7 @@ export const Carousel: React.FC<CarouselType> = ({ children, ...rest }) => {
   };
 
   const carousel = (slides: number, isMobile: boolean) => {
-    const carouselSettings = { ...settings };
+    const carouselSettings: CarouselProps = { ...settings };
     if (isMobile) {
       carouselSettings.cellSpacing = 24;
       carouselSettings.slideWidth = 0.78;
