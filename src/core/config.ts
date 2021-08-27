@@ -325,6 +325,6 @@ export const SHIPPING_TYPES = {
   scheduled: 'SCHEDULED',
 };
 
-export const SHIPPING_TYPES_SUFFIX = {
+export const SHIPPING_SUBTYPES = {
   prime: 'PRIME',
 };

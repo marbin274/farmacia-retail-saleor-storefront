@@ -1,5 +1,5 @@
 import { Checkout_availableShippingMethods } from '@temp/@sdk/fragments/gqlTypes/Checkout';
-import { SHIPPING_TYPES } from '../config';
+import { SHIPPING_TYPES, SHIPPING_SUBTYPES } from '../config';
 
 export const isPrimeShippingMethod = (
   shippingMethod: Partial<Checkout_availableShippingMethods>
@@ -8,7 +8,7 @@ export const isPrimeShippingMethod = (
     return false;
   }
 
-  return shippingMethod.methodType.code.includes(SHIPPING_TYPES.scheduled);
+  return shippingMethod.methodType.code.includes(SHIPPING_SUBTYPES.prime);
 };
 
 export const isScheduledShippingMethod = (
