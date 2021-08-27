@@ -1,8 +1,6 @@
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import { ApolloClient } from 'apollo-client';
-import { ApolloLink } from 'apollo-link';
-import { BatchHttpLink } from 'apollo-link-batch-http';
-import { RetryLink } from 'apollo-link-retry';
+import { ApolloClient, ApolloLink, InMemoryCache } from '@apollo/client';
+import { BatchHttpLink } from '@apollo/client/link/batch-http';
+import { RetryLink } from '@apollo/client/link/retry';
 
 import { SaleorAPI } from './api';
 import { APIProxy } from './api/APIProxy';

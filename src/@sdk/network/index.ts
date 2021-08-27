@@ -64,7 +64,7 @@ import {
   IShippingMethodUpdate,
 } from '@sdk/repository';
 import { filterNotEmptyArrayItems } from '@sdk/utils';
-import ApolloClient from 'apollo-client';
+import { ApolloClient } from '@apollo/client';
 import { IPrivacyPolicy } from '../api/Checkout/types';
 import { UpdateCheckoutShippingMethodWithScheduleDateVariables } from '../mutations/gqlTypes/UpdateCheckoutShippingMethodWithScheduleDate';
 import { launchPurchaseEvent, ecommerceProductsMapper } from '@sdk/gaConfig';

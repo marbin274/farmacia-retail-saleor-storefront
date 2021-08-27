@@ -28,9 +28,9 @@ const DEFAULT_PROPS: IProps = {
     latitude: 1,
     longitude: -1,
   },
-  onClickEdit: () => {},
-  onClickDelete: () => {},
-  onClickSetDefault: () => {},
+  onClickEdit: () => undefined,
+  onClickDelete: () => undefined,
+  onClickSetDefault: () => undefined,
 };
 
 describe('<AddressTile />', () => {

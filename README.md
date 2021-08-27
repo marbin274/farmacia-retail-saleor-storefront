@@ -100,3 +100,11 @@ Go to `http://localhost:3000` to access the storefront .
   - `[fix] fix bug #patch` for change Z
 - Then github actions will be deployed a new tag release with the version set above (automatic and autoincrement).
 - This feature has been added in saleor-dashboard, saleor-storefront and saleor-platform.
+
+## License
+
+This project is licensed under the BSD-3-Clause License - see the [LICENSE](https://github.com/mirumee/saleor-storefront/blob/master/LICENSE) file for details
+
+#### Crafted with ❤️ by [Mirumee Software](http://mirumee.com)
+
+hello@mirumee.com

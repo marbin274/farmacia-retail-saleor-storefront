@@ -1,20 +1,24 @@
+import { alertService } from '@components/atoms/Alert';
 import { CheckoutPayment, StockValidationModal } from '@components/organisms';
+import { IUserDataForNiubiz } from '@components/organisms/CheckoutPayment/types';
+import { useShopContext } from '../../../components/organisms/ShopProvider/context';
 import { useCart, useCheckout, useUserDetails } from '@sdk/react';
-import { alertService } from '@temp/@next/components/atoms/Alert';
-import { IUserDataForNiubiz } from '@temp/@next/components/organisms/CheckoutPayment/types';
+import { IProcesPaymentArgs } from '@temp/@next/components/organisms/PaymentGatewaysList/types';
+import { useDistrictSelected } from '@temp/@next/hooks/useDistrictSelected';
+import { useUpdateCartLines } from '@temp/@next/hooks/useUpdateCartLines';
 import { removePaymentItems } from '@temp/@next/utils/checkoutValidations';
-import { useShopContext } from '@temp/components/ShopProvider/context';
+import { CheckoutErrorCode } from '@temp/@sdk/gqlTypes/globalTypes';
+import { baseUrl } from '@temp/app/routes/paths';
 import {
   AVAILABLE_PAYMENTS,
   billingAddressAlwaysSameAsShipping,
   CHECKOUT_STEPS,
 } from '@temp/core/config';
+import VoucherSVG from '@temp/images/auna/checkout-cupon-small.svg';
 import { IAddress, IFormError } from '@types';
 import { filterNotEmptyArrayItems } from '@utils/misc';
 import ClockIcon from 'images/auna/clock.svg';
-import VoucherSVG from '@temp/images/auna/checkout-cupon-small.svg';
 import PromoCodeCorrect from 'images/auna/promo-code-correct.svg';
-
 import React, {
   forwardRef,
   RefForwardingComponent,
@@ -24,11 +28,6 @@ import React, {
   useState,
 } from 'react';
 import { RouteComponentProps, useHistory } from 'react-router';
-import { CheckoutErrorCode } from '@temp/@sdk/gqlTypes/globalTypes';
-import { useUpdateCartLines } from '@temp/@next/hooks/useUpdateCartLines';
-import { useDistrictSelected } from '@temp/@next/hooks/useDistrictSelected';
-import { baseUrl } from '@temp/app/routes/paths';
-import { IProcesPaymentArgs } from '@temp/@next/components/organisms/PaymentGatewaysList/types';
 
 export interface ICheckoutPaymentSubpageHandles {
   submitPayment: () => void;

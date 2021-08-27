@@ -1,4 +1,4 @@
-import { ApolloError } from "apollo-client";
+import { ApolloError } from '@apollo/client';
 
 import {
   ICheckoutAddress,
@@ -7,16 +7,16 @@ import {
   IOrderModel,
   IPaymentModel,
   IShippingMethodUpdate,
-} from "@sdk/repository";
-import { IPrivacyPolicy } from "../api/Checkout/types";
-import { VariantsProductsAvailable_productVariants } from "../queries/gqlTypes/VariantsProductsAvailable";
-import { Checkout } from "../fragments/gqlTypes/Checkout";
+} from '@sdk/repository';
+import { IPrivacyPolicy } from '../api/Checkout/types';
+import { VariantsProductsAvailable_productVariants } from '../queries/gqlTypes/VariantsProductsAvailable';
+import { Checkout } from '../fragments/gqlTypes/Checkout';
 
 export enum PendingSaveItems {
-  UPDATE_CART = "updateCart",
-  BILLING_ADDRESS = "billingAddress",
-  SHIPPING_ADDRESS = "shippingAddress",
-  SHIPPING_AS_BILLING_ADDRESS = "shippingAsBillingAddress",
+  UPDATE_CART = 'updateCart',
+  BILLING_ADDRESS = 'billingAddress',
+  SHIPPING_ADDRESS = 'shippingAddress',
+  SHIPPING_AS_BILLING_ADDRESS = 'shippingAsBillingAddress',
 }
 
 export interface ApolloErrorWithUserInput extends ApolloError {
@@ -42,7 +42,11 @@ export interface INetworkManager {
   getCartLines: (
     checkoutlines: ICheckoutModelLine[] | null,
     districtId: string
-  ) => Promise<INetworkManagerResponse<VariantsProductsAvailable_productVariants | null | undefined>>;
+  ) => Promise<
+    INetworkManagerResponse<
+      VariantsProductsAvailable_productVariants | null | undefined
+    >
+  >;
   createCheckout: (
     email: string,
     lines: Array<{ variantId: string; quantity: number }>,
@@ -89,7 +93,7 @@ export interface INetworkManager {
     billingAddress: ICheckoutAddress
   ) => Promise<INetworkManagerResponse<IPaymentModel>>;
   completeCheckout: (
-    checkoutId: string, 
+    checkoutId: string,
     paymentData?: string
   ) => Promise<INetworkManagerResponse<IOrderModel>>;
 }

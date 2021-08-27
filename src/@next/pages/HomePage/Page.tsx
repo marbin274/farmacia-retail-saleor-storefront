@@ -3,16 +3,16 @@ import {
   IRemoveItemToCartCallback,
   ISubtractItemToCartCallback,
 } from '@app/components/molecules/ProductTileAUNA/types';
+import { ProductsFeatured } from '@components/organisms/ProductsFeatured';
 import { IItems } from '@sdk/api/Cart/types';
+import { HomePage_shop } from '@sdk/queries/gqlTypes/HomePage';
 import { ModalBackground } from '@temp/@next/components/organisms/ModalBackground/ModalBackground';
 import { somosAunaPage } from '@temp/app/routes';
-import { ProductsFeatured } from '@temp/components';
 import { cndUrl } from '@temp/core/constants';
 import { structuredData } from '@temp/core/SEO/Homepage/structuredData';
 import * as React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Banner } from './Banner';
-import { HomePage_shop } from '@sdk/queries/gqlTypes/HomePage';
 import * as S from './styles';
 
 interface IPageProps {

@@ -1,4 +1,6 @@
 import { ProductImage } from '@components/molecules';
+import { ProductsSelled } from '@components/organisms/ProductsSelled';
+import { ProductDescription } from '@components/organisms/ProductDescription';
 import { Breadcrumbs } from '@farmacia-retail/farmauna-components';
 import { ProductDetails_product } from '@sdk/queries/gqlTypes/ProductDetails';
 import {
@@ -14,8 +16,6 @@ import {
 import { useMediaScreen } from '@temp/@next/globalStyles';
 import { largeScreen } from '@temp/@next/globalStyles/constants';
 import { baseUrl } from '@temp/app/routes';
-import { ProductDescription } from '@temp/components';
-import { ProductsSelled } from '@temp/components/productsSelled';
 import { structuredData as structuredCategoryData } from '@temp/core/SEO/Category/structuredData';
 import { structuredData } from '@temp/core/SEO/Product/structuredData';
 import {
@@ -24,6 +24,7 @@ import {
 } from '@temp/core/utils';
 import React from 'react';
 import * as S from './styles';
+
 // TODO: Add as soon as we need to add related products
 // import OtherProducts from "./Other";
 // TODO: Add as soon as we need to add more product information below the

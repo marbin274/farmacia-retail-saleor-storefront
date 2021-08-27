@@ -8,7 +8,6 @@ import { useHistory } from 'react-router-dom';
 import { orderHistoryUrl } from '@temp/@next/pages/AccountPage/paths';
 
 export const ShoppingHistoryTile: React.FC = () => {
-
   const history = useHistory();
 
   const { data } = useOrdersByUser(
@@ -16,7 +15,7 @@ export const ShoppingHistoryTile: React.FC = () => {
       perPage: 1,
     },
     {
-      fetchPolicy: "network-only",
+      fetchPolicy: 'network-only',
     }
   );
 
@@ -29,48 +28,52 @@ export const ShoppingHistoryTile: React.FC = () => {
               Mi última compra
             </S.HeaderSmall>
 
-            {
-              data?.edges?.length > 0 ? (<>
+            {data?.edges?.length > 0 ? (
+              <>
+                <S.AttributeWrapper></S.AttributeWrapper>
                 <S.AttributeWrapper>
-                  
+                  <S.AttributeWrapper>
+                    <Attribute
+                      description="Código de orden"
+                      attributeValue={
+                        `${data?.edges[0]?.node?.sequentialCode}` || ''
+                      }
+                    />
+                  </S.AttributeWrapper>
+                  <S.AttributeWrapper>
+                    <Attribute
+                      description="Estado"
+                      attributeValue={
+                        `${data?.edges[0]?.node?.customerStatusDisplay}` || ''
+                      }
+                    />
+                  </S.AttributeWrapper>
+                  <S.AttributeWrapper>
+                    <Button
+                      size="small"
+                      variant="outline"
+                      onClick={() =>
+                        history.push(
+                          `${orderHistoryUrl + data?.edges[0]?.node?.token}`
+                        )
+                      }
+                    >
+                      Ver detalles
+                    </Button>
+                  </S.AttributeWrapper>
+                  <S.AttributeWrapper>
+                    <Button
+                      size="small"
+                      variant="outline"
+                      onClick={() => history.push(orderHistoryUrl)}
+                    >
+                      Ver todas mis compras
+                    </Button>
+                  </S.AttributeWrapper>
                 </S.AttributeWrapper>
-                <S.AttributeWrapper>
-                <S.AttributeWrapper>
-                  <Attribute
-                    description="Código de orden"
-                    attributeValue={
-                      `${data?.edges[0]?.node?.sequentialCode}` || ''
-                    }
-                  />
-                </S.AttributeWrapper>
-                <S.AttributeWrapper>
-                  <Attribute
-                    description="Estado"
-                    attributeValue={
-                      `${data?.edges[0]?.node?.customerStatusDisplay}` || ''
-                    }
-                  />
-                </S.AttributeWrapper>
-                <S.AttributeWrapper>
-                <Button
-                  size="small"
-                  variant="outline"
-                  onClick={() => history.push(`${orderHistoryUrl + data?.edges[0]?.node?.token}`)}
-                >
-                  Ver detalles
-                </Button>
-              </S.AttributeWrapper>
-              <S.AttributeWrapper>
-                <Button
-                  size="small"
-                  variant="outline"
-                  onClick={() => history.push(orderHistoryUrl)}
-                >
-                  Ver todas mis compras
-                </Button>
-              </S.AttributeWrapper>
-                </S.AttributeWrapper>
-              </>) : (<>
+              </>
+            ) : (
+              <>
                 <S.AttributeWrapper>
                   <S.Image src={shoppingbag} alt="shopping" />
                 </S.AttributeWrapper>
@@ -80,9 +83,8 @@ export const ShoppingHistoryTile: React.FC = () => {
                     attributeValue=""
                   />
                 </S.AttributeWrapper>
-              </>)
-            }
-
+              </>
+            )}
           </S.Content>
         </S.Wrapper>
       </Tile>

@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import * as S from './styles';
-import { Breadcrumbs, ProductsCollection } from '@temp/components';
+import { Breadcrumbs } from '@components/organisms/Breadcrumbs';
+import { ProductsCollection } from '@components/organisms';
 import { BannerCarousel } from '@app/components/containers/BannerCarousel';
 import { Landing_landing } from '@sdk/queries/gqlTypes/Landing';
 import { maybe } from '@temp/core/utils';

@@ -1,7 +1,7 @@
-import { ShippingMethodItem } from "@temp/@next/components/molecules";
-import React, { FC } from "react";
-import * as S from "../../styles";
-import { ISlotShippingMethodItem } from "../../types";
+import { ShippingMethodItem } from '@temp/@next/components/molecules';
+import React, { FC } from 'react';
+import * as S from '../../styles';
+import { ISlotShippingMethodItem } from '../../types';
 
 export const ExpressShippingMethod: FC<ISlotShippingMethodItem> = ({
   formikErrors,
@@ -16,7 +16,7 @@ export const ExpressShippingMethod: FC<ISlotShippingMethodItem> = ({
     return null;
   }
 
-  const shippingMethod = shippingMethods?.find(x => !x.isScheduled);
+  const shippingMethod = shippingMethods?.find((x) => !x.isScheduled);
 
   if (!shippingMethod) {
     return null;

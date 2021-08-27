@@ -1,6 +1,9 @@
+import { useFeaturePlugins } from '@app/hooks';
 import { Loader } from '@components/atoms';
+import { alertService } from '@components/atoms/Alert';
 import { CartResume, CheckoutProgressBar } from '@components/molecules';
 import { CartSummary } from '@components/organisms';
+import { CartDeliveryDataModal } from '@components/organisms/CartDeliveryDataModal/CartDeliveryDataModal';
 import { Checkout } from '@components/templates';
 import { Button } from '@farmacia-retail/farmauna-components';
 import { IItems } from '@sdk/api/Cart/types';
@@ -10,7 +13,7 @@ import {
   steps,
 } from '@sdk/gaConfig';
 import { useCart, useCheckout } from '@sdk/react';
-import { alertService } from '@temp/@next/components/atoms/Alert';
+import { checkAttentionSchedule } from '@sdk/utils/checkoutValidations';
 import { smallScreen } from '@temp/@next/globalStyles/constants';
 import { removePaymentItems } from '@temp/@next/utils/checkoutValidations';
 import {
@@ -24,7 +27,6 @@ import shippingMethodCalendarInfoIco from 'images/auna/shipping-method-calendar-
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import Media from 'react-media';
 import { Redirect, useLocation } from 'react-router-dom';
-import { CartDeliveryDataModal } from '../../components/organisms/CartDeliveryDataModal/CartDeliveryDataModal';
 import { CheckoutRouter } from './CheckoutRouter';
 import {
   CheckoutAddressSubpage,
@@ -37,8 +39,6 @@ import {
   ICheckoutShippingSubpageHandles,
 } from './subpages';
 import { IProps } from './types';
-import { checkAttentionSchedule } from '@sdk/utils/checkoutValidations';
-import { useFeaturePlugins } from '@app/hooks';
 
 const prepareCartSummary = (
   activeStepIndex: number,
