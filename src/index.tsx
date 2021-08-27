@@ -1,32 +1,32 @@
 // @ts-nocheck
-import { hot } from "react-hot-loader";
-import { ThemeProvider } from "styled-components";
+import { hot } from 'react-hot-loader';
+import { ThemeProvider } from 'styled-components';
 
-import { NotificationTemplate } from "@components/atoms";
+import { NotificationTemplate } from '@components/atoms';
 import {
   ServiceWorkerContext,
   ServiceWorkerProvider,
-} from "@components/containers";
-import { SaleorProvider, useAuth } from "@sdk/react";
-import { defaultTheme, GlobalStyle } from "@styles";
-import TagManager from "react-gtm-module";
+} from '@components/containers';
+import { SaleorProvider, useAuth } from '@sdk/react';
+import { defaultTheme, GlobalStyle } from '@styles';
+import TagManager from 'react-gtm-module';
 import {
   defaultDataIdFromObject,
   InMemoryCache,
   NormalizedCacheObject,
-} from "apollo-cache-inmemory";
-import { persistCache } from "apollo-cache-persist";
-import { ApolloClient } from "apollo-client";
-import * as React from "react";
-import { positions, Provider as AlertProvider, useAlert } from "react-alert";
-import { ApolloProvider } from "react-apollo";
-import { render } from "react-dom";
-import { Route, Router } from "react-router-dom";
-import { QueryParamProvider } from "use-query-params";
-import "./globalStyles/index.css";
+} from 'apollo-cache-inmemory';
+import { persistCache } from 'apollo-cache-persist';
+import { ApolloClient } from 'apollo-client';
+import * as React from 'react';
+import { positions, Provider as AlertProvider, useAlert } from 'react-alert';
+import { ApolloProvider } from 'react-apollo';
+import { render } from 'react-dom';
+import { Route, Router } from 'react-router-dom';
+import { QueryParamProvider } from 'use-query-params';
+import './globalStyles/index.css';
 
-import { OptimizelyProvider } from "@optimizely/react-sdk";
-import { App } from "./app";
+import { OptimizelyProvider } from '@optimizely/react-sdk';
+import { App } from './app';
 import {
   apiUrl,
   environmentName,
@@ -34,28 +34,31 @@ import {
   gtmId,
   gtmAuth,
   gtmPreview,
-} from "./core/constants";
-import { history } from "./libraries/history";
+} from './core/constants';
+import { history } from './libraries/history';
 
-import { OverlayProvider } from "./components";
+import { OverlayProvider } from './components';
 
-import ShopProvider from "./components/ShopProvider";
+import ShopProvider from './components/ShopProvider';
 
-import { createSaleorClient } from "./@sdk";
+import { createSaleorClient } from './@sdk';
 import {
   authLink,
   fireSignOut,
   invalidTokenLinkWithTokenHandler,
-} from "./@sdk/auth";
-import { alertService } from "./@next/components/atoms/Alert";
-import { launchSetLocation, getGaUserId } from "./@sdk/gaConfig";
-import { getOptimizelyUserId, optimizelyClient } from "./libraries/optimizely/optimizelyConfig";
-import { FeaturedPluginsProvider } from "@contexts";
+} from './@sdk/auth';
+import { alertService } from './@next/components/atoms/Alert';
+import { launchSetLocation, getGaUserId } from './@sdk/gaConfig';
+import {
+  getOptimizelyUserId,
+  optimizelyClient,
+} from './libraries/optimizely/optimizelyConfig';
+import { FeaturedPluginsProvider } from '@contexts';
 
 const cache = new InMemoryCache({
-  dataIdFromObject: apolloCacheObject => {
-    if (apolloCacheObject.__typename === "Shop") {
-      return "shop";
+  dataIdFromObject: (apolloCacheObject) => {
+    if (apolloCacheObject.__typename === 'Shop') {
+      return 'shop';
     }
     return defaultDataIdFromObject(apolloCacheObject);
   },
@@ -64,7 +67,7 @@ const cache = new InMemoryCache({
 const startApp = async () => {
   await persistCache({
     cache,
-    storage: window.localStorage,
+    storage: window?.localStorage,
   });
 
   const notificationOptions = {
@@ -109,16 +112,16 @@ const startApp = async () => {
         if (authenticated) {
           alert.show(
             {
-              title: "¡Hola de nuevo!",
+              title: '¡Hola de nuevo!',
             },
-            { type: "success" }
+            { type: 'success' }
           );
         } else {
           alert.show(
             {
-              title: "Cerraste sesión",
+              title: 'Cerraste sesión',
             },
-            { type: "success" }
+            { type: 'success' }
           );
         }
       });
@@ -152,7 +155,7 @@ const startApp = async () => {
   });
 
   switch (environmentName) {
-    case "qa":
+    case 'qa':
       if (gtmId && gtmAuth && gtmPreview) {
         const tagManagerArgs = {
           auth: gtmAuth,
@@ -163,7 +166,7 @@ const startApp = async () => {
         TagManager.initialize(tagManagerArgs);
       }
       break;
-    case "prod":
+    case 'prod':
       if (gtmId) {
         const tagManagerArgs = {
           gtmId,
@@ -196,7 +199,7 @@ const startApp = async () => {
         </AlertProvider>
       </ThemeProvider>
     </OptimizelyProvider>,
-    document.getElementById("root")
+    document.getElementById('root')
   );
 
   // Hot Module Replacement API

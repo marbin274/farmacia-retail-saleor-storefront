@@ -24,7 +24,7 @@ export const Map: FC<IMapProps> = ({
       return;
     }
 
-    if (window.google?.maps) {
+    if (window?.google?.maps) {
       init();
       return;
     }
@@ -43,6 +43,7 @@ export const Map: FC<IMapProps> = ({
   const init = useCallback(() => {
     const newMap = new google.maps.Map(mapRef.current!, {
       center: { lat: -12.046373, lng: -77.042755 },
+      clickableIcons: false,
       fullscreenControl: true,
       mapTypeControl: false,
       panControl: false,
