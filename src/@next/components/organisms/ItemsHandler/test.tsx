@@ -1,5 +1,6 @@
 import { MAX_ORDER_PER_PRODUCT } from '@sdk/config';
 import { mount, shallow } from 'enzyme';
+import { Button } from '@farmacia-retail/farmauna-components';
 import 'jest-styled-components';
 import React from 'react';
 import { AddRemoveButton } from './styles';
@@ -40,7 +41,7 @@ describe('<ItemHandler />', () => {
       />
     );
 
-    const buttonAdd = wrapper.find('div').find(AddRemoveButton).at(0);
+    const buttonAdd = wrapper.find('div').find(Button).at(0);
     expect(buttonAdd.text()).toContain('Agregar');
     expect(buttonAdd.prop('disabled')).toEqual(true);
   });
@@ -56,7 +57,7 @@ describe('<ItemHandler />', () => {
       />
     );
 
-    const buttonAdd = wrapper.find('div').find(AddRemoveButton).at(0);
+    const buttonAdd = wrapper.find('div').find(Button).at(0);
     expect(buttonAdd.text()).toContain('Agregar');
     expect(buttonAdd.prop('disabled')).toEqual(false);
   });
