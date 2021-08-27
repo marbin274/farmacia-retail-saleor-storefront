@@ -10,7 +10,7 @@ import {
   Button,
 } from '@farmacia-retail/farmauna-components';
 import { IProps } from './types';
-import { useShopContext } from '@temp/components/ShopProvider/context';
+import { useShopContext } from '../../organisms/ShopProvider/context';
 import { isCoordinatesInsideBouds } from '@temp/core/utils';
 
 export const AddressTile: FC<IProps> = ({

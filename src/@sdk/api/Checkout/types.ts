@@ -1,14 +1,14 @@
-import { Checkout_availableShippingMethods } from "@sdk/fragments/gqlTypes/Checkout";
-import { GetShopPaymentGateways_shop_availablePaymentGateways } from "@sdk/queries/gqlTypes/GetShopPaymentGateways";
+import { Checkout_availableShippingMethods } from '@sdk/fragments/gqlTypes/Checkout';
+import { GetShopPaymentGateways_shop_availablePaymentGateways } from '@sdk/queries/gqlTypes/GetShopPaymentGateways';
 import {
   ICheckoutModelPrice,
   ICheckoutModelPriceValue,
   IPaymentCreditCard,
   IScheduleDate,
   IShippingMethodUpdate,
-} from "@sdk/repository";
+} from '@sdk/repository';
 
-import { PromiseQueuedResponse, PromiseRunResponse } from "../types";
+import { PromiseQueuedResponse, PromiseRunResponse } from '../types';
 
 export type IPrice = ICheckoutModelPrice | null | undefined;
 export type IPriceValue = ICheckoutModelPriceValue | null | undefined;
@@ -38,7 +38,8 @@ export interface IPrivacyPolicy {
 }
 
 export type IAvailableShippingMethods = Checkout_availableShippingMethods[];
-export type IAvailablePaymentGateways = GetShopPaymentGateways_shop_availablePaymentGateways[];
+export type IAvailablePaymentGateways =
+  GetShopPaymentGateways_shop_availablePaymentGateways[];
 
 export interface IShippingMethod {
   id: string;
@@ -79,20 +80,20 @@ export interface ICheckout {
 }
 
 export enum FunctionErrorCheckoutTypes {
-  "SHIPPING_ADDRESS_NOT_SET",
-  "ITEMS_NOT_ADDED_TO_CART",
-  "EMAIL_NOT_SET",
+  'SHIPPING_ADDRESS_NOT_SET',
+  'ITEMS_NOT_ADDED_TO_CART',
+  'EMAIL_NOT_SET',
 }
 export enum DataErrorCheckoutTypes {
-  "SET_SHIPPING_ADDRESS",
-  "SET_BILLING_ADDRESS",
-  "SET_SHIPPING_METHOD",
-  "ADD_PROMO_CODE",
-  "REMOVE_PROMO_CODE",
-  "CREATE_PAYMENT",
-  "COMPLETE_CHECKOUT",
-  "GET_CHECKOUT",
-  "GET_PAYMENT_GATEWAYS",
+  'SET_SHIPPING_ADDRESS',
+  'SET_BILLING_ADDRESS',
+  'SET_SHIPPING_METHOD',
+  'ADD_PROMO_CODE',
+  'REMOVE_PROMO_CODE',
+  'CREATE_PAYMENT',
+  'COMPLETE_CHECKOUT',
+  'GET_CHECKOUT',
+  'GET_PAYMENT_GATEWAYS',
 }
 
 export interface IAlteredLines {

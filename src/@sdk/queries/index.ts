@@ -6,65 +6,78 @@ import {
 
 import { RequireOnlyOne } from '../tsHelpers';
 import * as Article from './article';
-import * as Banner from './banner';
-import * as LandingQuery from './landing';
 import * as AttributesList from './attributes';
+import * as Banner from './banner';
+import * as Cart from './cart';
 import * as Category from './category';
 import * as Collection from './collections';
-import * as Orders from './orders';
-import * as Product from './products';
-import * as Shop from './shop';
-
-import { OrderByToken, OrderByTokenVariables } from './gqlTypes/OrderByToken';
-
-import { Attributes, AttributesVariables } from './gqlTypes/Attributes';
 import {
-  ProductDetails,
-  ProductDetailsVariables,
-} from './gqlTypes/ProductDetails';
-
-import { ProductList, ProductListVariables } from './gqlTypes/ProductList';
-
+  ArticleDetail,
+  ArticleDetailVariables,
+} from './gqlTypes/ArticleDetail';
+import { Attributes, AttributesVariables } from './gqlTypes/Attributes';
 import {
   CategoryDetails,
   CategoryDetailsVariables,
 } from './gqlTypes/CategoryDetails';
-
+import { CategoryList } from './gqlTypes/CategoryList';
+import {
+  CategoryProducts,
+  CategoryProductsVariables,
+} from './gqlTypes/CategoryProducts';
+import {
+  CollectionCategories,
+  CollectionCategoriesVariables,
+} from './gqlTypes/CollectionCategories';
+import {
+  CollectionProducts,
+  CollectionProductsVariables,
+} from './gqlTypes/CollectionProducts';
+import {
+  FeaturedProducts,
+  FeaturedProductsVariables,
+} from './gqlTypes/FeaturedProducts';
+import { FooterSecondaryMenu } from './gqlTypes/FooterSecondaryMenu';
+import {
+  GetShippingMethods,
+  GetShippingMethodsVariables,
+} from './gqlTypes/GetShippingMethods';
 import { GetShop } from './gqlTypes/GetShop';
 import { GetShopFeaturePlugins } from './gqlTypes/GetShopFeaturePlugins';
-
+import { HomePage } from './gqlTypes/HomePage';
+import { Landing, LandingVariables } from './gqlTypes/Landing';
+import { MainBanner } from './gqlTypes/MainBanner';
+import { MainMenu } from './gqlTypes/MainMenu';
+import { OrderByToken, OrderByTokenVariables } from './gqlTypes/OrderByToken';
 import { OrdersByUser, OrdersByUserVariables } from './gqlTypes/OrdersByUser';
+import {
+  ProductDetails,
+  ProductDetailsVariables,
+} from './gqlTypes/ProductDetails';
+import { ProductList, ProductListVariables } from './gqlTypes/ProductList';
+import {
+  SearchProducts,
+  SearchProductsVariables,
+} from './gqlTypes/SearchProducts';
+import {
+  SearchResults,
+  SearchResultsVariables,
+} from './gqlTypes/SearchResults';
+import {
+  SelledProducts,
+  SelledProductsVariables,
+} from './gqlTypes/SelledProducts';
 import { UserDetails } from './gqlTypes/UserDetails';
 import {
   VariantsProducts,
   VariantsProductsVariables,
 } from './gqlTypes/VariantsProducts';
-
+import * as LandingQuery from './landing';
+import * as Orders from './orders';
+import * as Product from './products';
+import * as Search from './search';
+import * as Shop from './shop';
 import * as User from './user';
-import { CategoryList } from './gqlTypes/CategoryList';
-import {
-  ArticleDetailVariables,
-  ArticleDetail,
-} from './gqlTypes/ArticleDetail';
-import { LandingVariables, Landing } from './gqlTypes/Landing';
-import {
-  SearchProductsVariables,
-  SearchProducts,
-} from './gqlTypes/SearchProducts';
-import {
-  CollectionProductsVariables,
-  CollectionProducts,
-} from './gqlTypes/CollectionProducts';
-import {
-  CollectionCategoriesVariables,
-  CollectionCategories,
-} from './gqlTypes/CollectionCategories';
-import {
-  CategoryProductsVariables,
-  CategoryProducts,
-} from './gqlTypes/CategoryProducts';
-import { HomePage } from './gqlTypes/HomePage';
-import { MainBanner } from './gqlTypes/MainBanner';
 
 type QueryOptions<T = {}> = T extends { [n: string]: never }
   ? Omit<ApolloQueryOptions<{}>, 'query'>
@@ -128,6 +141,30 @@ export const QUERIES = {
       query: Collection.collectionCategories,
       ...options,
     }),
+  FeaturedProducts: <TCacheShape>(
+    client: ApolloClient<TCacheShape>,
+    options: QueryOptions<FeaturedProductsVariables>
+  ): ObservableQuery<FeaturedProducts, any> =>
+    client.watchQuery({
+      query: Product.featuredProducts,
+      ...options,
+    }),
+  FooterSecondaryMenu: <TCacheShape>(
+    client: ApolloClient<TCacheShape>,
+    options: QueryOptions<null>
+  ): ObservableQuery<FooterSecondaryMenu, any> =>
+    client.watchQuery({
+      query: Shop.footerSecondaryMenu,
+      ...options,
+    }),
+  GetShippingMethods: <TCacheShape>(
+    client: ApolloClient<TCacheShape>,
+    options: QueryOptions<GetShippingMethodsVariables>
+  ): ObservableQuery<GetShippingMethods, any> =>
+    client.watchQuery({
+      query: Cart.shippingMethodsQuery,
+      ...options,
+    }),
   GetShopDetails: <TCacheShape>(
     client: ApolloClient<TCacheShape>,
     options: QueryOptions<null>
@@ -168,6 +205,14 @@ export const QUERIES = {
       query: Banner.mainBanner,
       ...options,
     }),
+  MainMenu: <TCacheShape>(
+    client: ApolloClient<TCacheShape>,
+    options: QueryOptions<null>
+  ): ObservableQuery<MainMenu, any> =>
+    client.watchQuery({
+      query: Category.mainMenu,
+      ...options,
+    }),
   OrderDetails: <TCacheShape>(
     client: ApolloClient<TCacheShape>,
     options: QueryOptions<OrderByTokenVariables>
@@ -200,12 +245,28 @@ export const QUERIES = {
       query: Product.productList,
       ...options,
     }),
+  SearchResults: <TCacheShape>(
+    client: ApolloClient<TCacheShape>,
+    options: QueryOptions<SearchResultsVariables>
+  ): ObservableQuery<SearchResults, any> =>
+    client.watchQuery({
+      query: Search.searchResultsQuery,
+      ...options,
+    }),
   SearchProducts: <TCacheShape>(
     client: ApolloClient<TCacheShape>,
     options: QueryOptions<SearchProductsVariables>
   ): ObservableQuery<SearchProducts, any> =>
     client.watchQuery({
       query: Product.searchProducts,
+      ...options,
+    }),
+  SelledProducts: <TCacheShape>(
+    client: ApolloClient<TCacheShape>,
+    options: QueryOptions<SelledProductsVariables>
+  ): ObservableQuery<SelledProducts, any> =>
+    client.watchQuery({
+      query: Product.selledProducts,
       ...options,
     }),
   UserDetails: <TCacheShape>(

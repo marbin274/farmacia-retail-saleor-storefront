@@ -1,14 +1,3 @@
-import { hot } from 'react-hot-loader';
-import { ThemeProvider } from 'styled-components';
-
-import { NotificationTemplate } from '@components/atoms';
-import {
-  ServiceWorkerContext,
-  ServiceWorkerProvider,
-} from '@components/containers';
-import { SaleorProvider, useAuth } from '@sdk/react';
-import { defaultTheme, GlobalStyle } from '@styles';
-import TagManager from 'react-gtm-module';
 import {
   ApolloClient,
   ApolloProvider,
@@ -16,30 +5,26 @@ import {
   InMemoryCache,
   NormalizedCacheObject,
 } from '@apollo/client';
+import { NotificationTemplate } from '@components/atoms';
+import {
+  ServiceWorkerContext,
+  ServiceWorkerProvider,
+} from '@components/containers';
+import { OverlayProvider } from '@components/organisms/OverlayComponent';
+import { FeaturedPluginsProvider } from '@contexts';
+import { OptimizelyProvider } from '@optimizely/react-sdk';
+import { SaleorProvider, useAuth } from '@sdk/react';
+import { defaultTheme, GlobalStyle } from '@styles';
 import { persistCache } from 'apollo3-cache-persist';
 import * as React from 'react';
 import { positions, Provider as AlertProvider, useAlert } from 'react-alert';
 import { render } from 'react-dom';
+import TagManager from 'react-gtm-module';
+import { hot } from 'react-hot-loader';
 import { Route, Router } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
 import { QueryParamProvider } from 'use-query-params';
-import './globalStyles/index.css';
-
-import { OptimizelyProvider } from '@optimizely/react-sdk';
-import { App } from './app';
-import {
-  apiUrl,
-  environmentName,
-  serviceWorkerTimeout,
-  gtmId,
-  gtmAuth,
-  gtmPreview,
-} from './core/constants';
-import { history } from './libraries/history';
-
-import { OverlayProvider } from './components';
-
-import ShopProvider from './components/ShopProvider';
-
+import ShopProvider from './@next/components/organisms/ShopProvider';
 import { createSaleorClient } from './@sdk';
 import {
   authLink,
@@ -47,11 +32,21 @@ import {
   invalidTokenLinkWithTokenHandler,
 } from './@sdk/auth';
 import { launchSetLocation } from './@sdk/gaConfig';
+import { App } from './app';
+import {
+  apiUrl,
+  environmentName,
+  gtmAuth,
+  gtmId,
+  gtmPreview,
+  serviceWorkerTimeout,
+} from './core/constants';
+import './globalStyles/index.css';
+import { history } from './libraries/history';
 import {
   getOptimizelyUserId,
   optimizelyClient,
 } from './libraries/optimizely/optimizelyConfig';
-import { FeaturedPluginsProvider } from '@contexts';
 
 const cache = new InMemoryCache({
   dataIdFromObject: (apolloCacheObject) => {

@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-import { Money } from "../Money";
-import { IProps } from "./types";
+import { Money } from '../Money';
+import { IProps } from './types';
 
-import { useShopContext } from "../../../../components/ShopProvider/context";
+import { useShopContext } from '../../organisms/ShopProvider/context';
 
 export const TaxedMoney: React.FC<IProps> = ({
   taxedMoney,
@@ -19,5 +19,5 @@ export const TaxedMoney: React.FC<IProps> = ({
   return <Money {...props} money={money} defaultValue={defaultValue} />;
 };
 
-TaxedMoney.displayName = "TaxedMoney";
+TaxedMoney.displayName = 'TaxedMoney';
 export default TaxedMoney;

@@ -1,13 +1,3 @@
-import React from 'react';
-import { Modal } from '../Modal';
-import { IAddressForm, IAddressFormModalProps } from './types';
-import { useShopContext } from '@temp/components/ShopProvider/context';
-import { GetShop_shop_availableDistricts } from '@temp/@sdk/queries/gqlTypes/GetShop';
-import { SwapTypesToStrings } from '@temp/core/types';
-import { isCoordinatesInsideBouds } from '@temp/core/utils';
-import { Formik, FormikHelpers } from 'formik';
-import { Button } from '@farmacia-retail/farmauna-components';
-import { TOTAL_DISTRICT } from '@temp/core/config';
 import {
   AddressAutocompleteField,
   InputSelectField,
@@ -15,7 +5,17 @@ import {
   MapField,
   TileRadioGroupField,
 } from '@components/molecules';
+import { useShopContext } from '../../organisms/ShopProvider/context';
+import { Button } from '@farmacia-retail/farmauna-components';
+import { GetShop_shop_availableDistricts } from '@temp/@sdk/queries/gqlTypes/GetShop';
+import { TOTAL_DISTRICT } from '@temp/core/config';
+import { SwapTypesToStrings } from '@temp/core/types';
+import { isCoordinatesInsideBouds } from '@temp/core/utils';
+import { Formik, FormikHelpers } from 'formik';
+import React from 'react';
+import { Modal } from '../Modal';
 import { getAddressTypeOptions } from './data';
+import { IAddressForm, IAddressFormModalProps } from './types';
 
 export const AddressFormModal: React.FC<IAddressFormModalProps> = ({
   address,

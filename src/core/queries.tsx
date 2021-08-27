@@ -10,7 +10,7 @@ import {
 import { DocumentNode } from 'graphql';
 import * as React from 'react';
 import { Query } from '@apollo/client/react/components';
-import { Error } from '../components/Error';
+import { Error } from '@components/atoms/Error';
 import { RequireAtLeastOne } from './tsUtils';
 import { maybe } from './utils';
 interface LoadMore<TData, TVariables> {

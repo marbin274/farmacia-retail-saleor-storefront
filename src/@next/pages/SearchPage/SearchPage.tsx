@@ -1,5 +1,5 @@
 import { SORT_OPTIONS } from '@app/utils/sorts';
-import { Loader } from '@components/atoms';
+import { Loader, MetaWrapper } from '@components/atoms';
 import { useCart, useSearchProducts } from '@sdk/react';
 import {
   IAddToCartCallback,
@@ -10,7 +10,7 @@ import { useMediaScreen } from '@temp/@next/globalStyles';
 import { useBrandFilters } from '@temp/@next/hooks/useBrandFilters';
 import { useDistrictSelected } from '@temp/@next/hooks/useDistrictSelected';
 import { getFiltersInitial } from '@temp/@next/utils/filter';
-import { MetaWrapper, NotFound } from '@temp/components';
+import { NotFound } from '@pages';
 import { META_DEFAULTS } from '@temp/core/config';
 import {
   convertSortByFromString,
