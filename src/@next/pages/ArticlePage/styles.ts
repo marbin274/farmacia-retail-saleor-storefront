@@ -1,4 +1,4 @@
-import { mediaUp, styled } from '@styles';
+import { ContainerStyle, mediaUp, styled } from '@styles';
 import farmatheme from '@farmatheme';
 
 export const Blog = styled.div`
@@ -33,6 +33,10 @@ export const Title = styled.h1`
       font-size: 2.5rem;
     }
   `}
+`;
+
+export const Container = styled.div`
+  ${ContainerStyle}
 `;
 
 export const Content = styled.div`

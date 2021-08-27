@@ -39,7 +39,7 @@ export const MainMenu: React.FC<IProps> = ({
               />
             </S.ContainerSearch>
           )}
-          <S.Container className="container">
+          <S.Container>
             <S.Menu>
               <DesktopNav categories={categories} navMain={navMain} />
             </S.Menu>

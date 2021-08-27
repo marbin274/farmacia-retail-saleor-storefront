@@ -1,5 +1,5 @@
-import { media, styled, mediaUp } from "@styles";
-import farmatheme from "@farmatheme";
+import { media, styled, mediaUp, ContainerStyle } from '@styles';
+import farmatheme from '@farmatheme';
 
 export const Container = styled.div`
   position: fixed;
@@ -15,17 +15,22 @@ export const Container = styled.div`
 
   ${mediaUp.mediumScreen`
     min-height: 7rem;
-    .container {
-      display: flex;  
-    }
   `}
 
   ${media.smallScreen`
     max-height: 10rem;
+  `}
+`;
 
-    .container {
-      margin:0 !important;
-    }
+export const ContainerWrapper = styled.div`
+  ${ContainerStyle};
+  margin: 0;
+
+  ${mediaUp.smallScreen`
+    margin: 0 auto; 
+  `}
+  ${mediaUp.mediumScreen`
+      display: flex;  
   `}
 `;
 

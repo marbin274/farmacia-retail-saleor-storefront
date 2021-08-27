@@ -33,7 +33,7 @@ const AccountLayout: React.FC<AccountLayoutProps> = ({
 
   return (
     <div className="fa-bg-neutral-light fa-pt-4 fa-w-auto md:fa-w-auto">
-      <div className="container">
+      <S.Container>
         <Breadcrumbs
           breadcrumbs={[{ link: location.pathname, label: 'Mi Cuenta' }]}
           baseUrl={baseUrl}
@@ -79,7 +79,7 @@ const AccountLayout: React.FC<AccountLayoutProps> = ({
           )}
           <div className="fa-w-full">{user && <>{children}</>}</div>
         </div>
-      </div>
+      </S.Container>
     </div>
   );
 };
