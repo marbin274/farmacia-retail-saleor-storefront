@@ -1,9 +1,8 @@
-import React from "react";
-import { CardHeader, FormFooter } from "@components/molecules";
-import { Overlay } from "@components/organisms";
-import "./scss/index.scss";
-import * as S from "./styles";
-import { IProps } from "./types";
+import React from 'react';
+import { CardHeader, FormFooter } from '@components/molecules';
+import { Overlay } from '@components/organisms';
+import * as S from './styles';
+import { IProps } from './types';
 
 const getCancelBtnProps = (action: () => void, text?: string) =>
   text && {
@@ -27,7 +26,7 @@ export const Modal: React.FC<IProps> = ({
   children,
   contentNoSpacing,
   disabled,
-  formId = "modal-submit",
+  formId = 'modal-submit',
   hide,
   onSubmit,
   submitBtnText,

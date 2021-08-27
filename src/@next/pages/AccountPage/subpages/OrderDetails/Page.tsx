@@ -122,10 +122,14 @@ const Page: React.FC<{
   }
 
   return (
-    <div className="order-details__container">
+    <div className="fa-mx-auto fa-my-0">
       {!guest && (
-        <Link className="order-details__link" to={orderHistoryUrl}>
-          <ArrowLeftIcon /> <span>Regresar a historial de pedidos</span>
+        <Link
+          className="fa-text-sm fa-flex fa-items-center fa-mt-10 md:fa-mt-8 fa-mb-8 fa-text-interactive"
+          to={orderHistoryUrl}
+        >
+          <ArrowLeftIcon className="fa-mr-4 fa-inline-block" />{' '}
+          <span>Regresar a historial de pedidos</span>
         </Link>
       )}
       <div className="fa-bg-white fa-rounded-3xl fa-p-10 fa-flex fa-flex-col">
@@ -149,7 +153,7 @@ const Page: React.FC<{
                 <span>
                   <ReactSVG
                     path={AunaError}
-                    className="order-details__tile-alert-fulfill-icon"
+                    className="fa-inline-block fa-align-middle fa-h-5 fa-mr-2.5"
                   />
                   <span>Este pedido fue entregado parcialmente</span>
                 </span>
