@@ -17,7 +17,6 @@ module.exports = ({ sourceDir, distDir }) => ({
             },
           },
           "postcss-loader",
-          { loader: "sass-loader" },
         ],
       },
     ],
