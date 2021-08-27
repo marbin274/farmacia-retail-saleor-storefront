@@ -86,42 +86,50 @@ const ProductsFeatured: React.FC<IProps> = ({
         const collections: IHomePageCollecction[] =
           personalizedCollection.concat(homepageCollections);
         refetchRef.current = refetch;
-        return collections
-          ? collections.map((collection) => {
-              const products: ISimpleProduct[] = maybe(
-                () =>
-                  collection.products.map(
-                    (product): ISimpleProduct => convertToSimpleProduct(product)
-                  ),
-                []
-              );
-              return (
-                <S.Container key={collection.id} className="fa-my-0 fa-mx-auto">
-                  <S.InnerContainer>
-                    <S.CollectionName>{collection.name}</S.CollectionName>
-                  </S.InnerContainer>
-                  <Carousel>
-                    {getProductsWithQuantity(products, productsOnCart).map(
-                      (product) => (
-                        <ProductTileAUNA
-                          key={product.id}
-                          addToCart={addToCart}
-                          removeItemToCart={removeItemToCart}
-                          subtractItemToCart={subtractItemToCart}
-                          product={product}
-                          productsOnCart={productsOnCart}
-                          productUrl={generateProductUrl(
-                            product.id,
-                            product.name
-                          )}
-                        />
-                      )
-                    )}
-                  </Carousel>
-                </S.Container>
-              );
-            })
-          : null;
+        return (
+          <>
+            {collections
+              ? collections.map((collection) => {
+                  const products: ISimpleProduct[] = maybe(
+                    () =>
+                      collection.products.map(
+                        (product): ISimpleProduct =>
+                          convertToSimpleProduct(product)
+                      ),
+                    []
+                  );
+                  return (
+                    <S.Container
+                      key={collection.id}
+                      className="fa-my-0 fa-mx-auto"
+                    >
+                      <S.InnerContainer>
+                        <S.CollectionName>{collection.name}</S.CollectionName>
+                      </S.InnerContainer>
+                      <Carousel>
+                        {getProductsWithQuantity(products, productsOnCart).map(
+                          (product) => (
+                            <ProductTileAUNA
+                              key={product.id}
+                              addToCart={addToCart}
+                              removeItemToCart={removeItemToCart}
+                              subtractItemToCart={subtractItemToCart}
+                              product={product}
+                              productsOnCart={productsOnCart}
+                              productUrl={generateProductUrl(
+                                product.id,
+                                product.name
+                              )}
+                            />
+                          )
+                        )}
+                      </Carousel>
+                    </S.Container>
+                  );
+                })
+              : null}
+          </>
+        );
       }}
     </TypedFeaturedProductsQuery>
   );

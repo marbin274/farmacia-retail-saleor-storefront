@@ -17,10 +17,10 @@ import * as S from './styles';
 export interface NavLinkProps
   extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   item:
-  | MainMenu_shop_navigation_main_items
-  | MainMenuSubItem
-  | SecondaryMenu_shop_navigation_secondary_items
-  | SecondaryMenu_shop_navigation_secondary_items_children;
+    | MainMenu_shop_navigation_main_items
+    | MainMenuSubItem
+    | SecondaryMenu_shop_navigation_secondary_items
+    | SecondaryMenu_shop_navigation_secondary_items_children;
 }
 const NavLinkComponent: React.FC<NavLinkProps & RouteComponentProps> = ({
   item,
@@ -41,7 +41,12 @@ const NavLinkComponent: React.FC<NavLinkProps & RouteComponentProps> = ({
     if (name === 'Libro de reclamaciones' || name === 'Derechos ARCO') {
       if (name === 'Libro de reclamaciones') {
         return (
-          <a href="https://wcentrix.net/app/form_web.html?accountID=Fa6578&wcboxID=456c31fd61444d7dad4f8c0abe1ba9d7" target="_blank" {...props} rel="noopener nofollow">
+          <a
+            href="https://wcentrix.net/app/form_web.html?accountID=Fa6578&wcboxID=456c31fd61444d7dad4f8c0abe1ba9d7"
+            target="_blank"
+            {...props}
+            rel="noopener nofollow"
+          >
             {name}
           </a>
         );

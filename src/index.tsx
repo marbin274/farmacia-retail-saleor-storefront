@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { hot } from 'react-hot-loader';
 import { ThemeProvider } from 'styled-components';
 
@@ -11,15 +10,15 @@ import { SaleorProvider, useAuth } from '@sdk/react';
 import { defaultTheme, GlobalStyle } from '@styles';
 import TagManager from 'react-gtm-module';
 import {
+  ApolloClient,
+  ApolloProvider,
   defaultDataIdFromObject,
   InMemoryCache,
   NormalizedCacheObject,
-} from 'apollo-cache-inmemory';
-import { persistCache } from 'apollo-cache-persist';
-import { ApolloClient } from 'apollo-client';
+} from '@apollo/client';
+import { persistCache } from 'apollo3-cache-persist';
 import * as React from 'react';
 import { positions, Provider as AlertProvider, useAlert } from 'react-alert';
-import { ApolloProvider } from 'react-apollo';
 import { render } from 'react-dom';
 import { Route, Router } from 'react-router-dom';
 import { QueryParamProvider } from 'use-query-params';
@@ -47,8 +46,7 @@ import {
   fireSignOut,
   invalidTokenLinkWithTokenHandler,
 } from './@sdk/auth';
-import { alertService } from './@next/components/atoms/Alert';
-import { launchSetLocation, getGaUserId } from './@sdk/gaConfig';
+import { launchSetLocation } from './@sdk/gaConfig';
 import {
   getOptimizelyUserId,
   optimizelyClient,

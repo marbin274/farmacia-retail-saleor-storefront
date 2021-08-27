@@ -3,7 +3,8 @@ import {
   ApolloError,
   ObservableQuery,
   WatchQueryOptions,
-} from 'apollo-client';
+} from '@apollo/client';
+
 import { GraphQLError } from 'graphql';
 
 import { fireSignOut, getAuthToken, setAuthToken } from '../auth';
@@ -458,8 +459,11 @@ export class APIProxy {
         refetch: (newVariables?: TVariables) => {
           if (newVariables) {
             observable.setVariables(newVariables);
-            const cachedResult = observable.currentResult();
-            const errorHandledData = handleDataErrors(mapFn, cachedResult.data);
+            const cachedResult = observable.getCurrentResult();
+            const errorHandledData = handleDataErrors(
+              mapFn,
+              cachedResult.data as {}
+            );
             if (errorHandledData.data) {
               onUpdate(errorHandledData.data as TResult);
             }

@@ -1,4 +1,4 @@
-import { isEqual } from 'apollo-utilities';
+import { equal as isEqual } from '@wry/equality';
 import React from 'react';
 
 import { APIProxy } from '../api/APIProxy';

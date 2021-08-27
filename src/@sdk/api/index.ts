@@ -1,4 +1,4 @@
-import ApolloClient from 'apollo-client';
+import { ApolloClient } from '@apollo/client';
 
 import { defaultConfig } from '../config';
 import { JobsManager } from '../jobs';

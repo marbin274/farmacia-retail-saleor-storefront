@@ -69,27 +69,31 @@ class Nav extends React.PureComponent<IProps, IState> {
           </div>
           <TypedSecondaryMenuQuery loader={<Skeleton />}>
             {({ data }) => {
-              return data.shop.navigation.secondary.items.map((item) => (
-                <div className="fa-mb-8 lg:fa-mb-0" key={item.id}>
-                  <h5 className="fa-mb-3.5 fa-font-medium fa-text-neutral-lightest fa-text-sm lg:fa-mb-9">
-                    <NavLink item={item} />
-                  </h5>
-                  <S.SectionContent>
-                    {item.children.map((subItem) => (
-                      <p
-                        className={classNames({
-                          'fa-block': this.state.width > 540,
-                          'fa-hidden': this.state.width <= 540,
-                        })}
-                        id={subItem.id}
-                        key={subItem.id}
-                      >
-                        <NavLink item={subItem} />
-                      </p>
-                    ))}
-                  </S.SectionContent>
-                </div>
-              ));
+              return (
+                <>
+                  {data.shop.navigation.secondary.items.map((item) => (
+                    <div className="fa-mb-8 lg:fa-mb-0" key={item.id}>
+                      <h5 className="fa-mb-3.5 fa-font-medium fa-text-neutral-lightest fa-text-sm lg:fa-mb-9">
+                        <NavLink item={item} />
+                      </h5>
+                      <S.SectionContent>
+                        {item.children.map((subItem) => (
+                          <p
+                            className={classNames({
+                              'fa-block': this.state.width > 540,
+                              'fa-hidden': this.state.width <= 540,
+                            })}
+                            id={subItem.id}
+                            key={subItem.id}
+                          >
+                            <NavLink item={subItem} />
+                          </p>
+                        ))}
+                      </S.SectionContent>
+                    </div>
+                  ))}
+                </>
+              );
             }}
           </TypedSecondaryMenuQuery>
           <SocialMedia />
