@@ -1,13 +1,13 @@
-@import "@temp/globalStyles/scss/variables.scss";
+import { styled } from '@styles';
+import farmatheme from '@farmatheme';
 
-.html_from_json {
+export const Wrapper = styled.div`
   width: 100% !important;
-  color: $base-font-color-2;
   text-align: justify;
 
   strong {
-    font-weight: $font-weight-bold + 100;
-    color: $auna-black;
+    font-weight: 600;
+    color: ${farmatheme.theme.colors.black};
   }
 
   p:empty {
@@ -25,17 +25,17 @@
   ul {
     padding-left: 2.5rem;
     margin-top: 0.7rem;
-    font-weight: $font-weight-light;
+    font-weight: 400;
     li {
       list-style-type: initial;
-      font-weight: $font-weight-light;
+      font-weight: 400;
     }
   }
 
   ol {
     padding-left: 2.5rem;
     margin-top: 0.7rem;
-    font-weight: $font-weight-light;
+    font-weight: 400;
     li {
       list-style-type: decimal;
     }
@@ -54,8 +54,8 @@
   }
 
   blockquote {
+    border-left: 0.125rem solid ${farmatheme.theme.colors.gray['04']};
     margin: 0;
-    padding: 8px 16px;
-    border-left: 2px solid $gray;
+    padding: 0.5rem 1rem;
   }
-}
+`;
