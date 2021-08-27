@@ -4,6 +4,8 @@ import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { NavLink } from '..';
 import logoFarmaunaFooter from '../../images/logo-farmauna-footer.svg';
+import iconPreviousEmail from '../../images/icon-previous-email.svg';
+import iconPhone from '../../images/phone-icon.svg';
 import SocialMedia from '../SocialMedia';
 import { TypedSecondaryMenuQuery } from './queries';
 import { Skeleton } from './skeleton';
@@ -19,15 +21,15 @@ class Nav extends React.PureComponent<IProps, IState> {
   state: IState = { width: 0 };
 
   updateDimensions = () => {
-    this.setState({ width: window.innerWidth });
+    this.setState({ width: window?.innerWidth });
   };
 
   componentDidMount() {
-    this.setState({ width: window.screen.width });
-    window.addEventListener('resize', this.updateDimensions);
+    this.setState({ width: window?.screen.width });
+    window?.addEventListener('resize', this.updateDimensions);
   }
   componentWillUnmount() {
-    window.removeEventListener('resize', this.updateDimensions);
+    window?.removeEventListener('resize', this.updateDimensions);
   }
 
   render() {
@@ -47,20 +49,22 @@ class Nav extends React.PureComponent<IProps, IState> {
             </div>
             <S.SectionContent>
               <p>¿Necesitas asesoría?</p>
-              <p className="fa-text-sm fa-font-semibold fa-leading-6">
-                <S.MailTo
+              <span className="fa-text-sm fa-font-semibold fa-leading-6">
+                <a
                   className="fa-text-brand-02"
                   href="mailto:consultas@farmauna.com"
                   target="_blank"
                 >
                   consultas@farmauna.com
-                </S.MailTo>
-              </p>
-              <p className="fa-mt-8">
-                <S.Phone className="fa-text-h3 xs:fa-text-h2 fa-font-semibold">
+                </a>
+                <S.MailToImg src={iconPreviousEmail} alt="logo email" />
+              </span>
+              <div className="fa-mt-8 fa-flex fa-items-center">
+                <S.PhoneImg src={iconPhone} alt="logo phone" />
+                <span className="fa-text-h3 xs:fa-text-h2 fa-font-semibold fa-text-white">
                   01 3913655
-                </S.Phone>
-              </p>
+                </span>
+              </div>
             </S.SectionContent>
           </div>
           <TypedSecondaryMenuQuery loader={<Skeleton />}>

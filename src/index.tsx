@@ -65,7 +65,7 @@ const cache = new InMemoryCache({
 const startApp = async () => {
   await persistCache({
     cache,
-    storage: window.localStorage,
+    storage: window?.localStorage,
   });
 
   const notificationOptions = {

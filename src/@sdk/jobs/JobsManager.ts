@@ -26,7 +26,7 @@ export class JobsManager {
 
     this.enqueueAllSavedInRepository();
 
-    window.addEventListener('online', this.onOnline);
+    window?.addEventListener('online', this.onOnline);
   }
 
   /**
