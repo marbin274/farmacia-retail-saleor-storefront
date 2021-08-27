@@ -11,6 +11,7 @@ import * as S from './FooterWithShippingPriceStyles';
 import { Icon } from '@temp/@next/components/atoms';
 import { aunaBrand3 } from '@temp/@next/globalStyles/constants';
 import { useClickedOutside } from '@temp/@next/hooks';
+import { isScheduledShippingMethod } from '@temp/core/utils';
 
 interface IProps {
   buttonText: string;
@@ -80,7 +81,9 @@ export const FooterWithShippingPrice: React.FC<IProps> = ({
                 <S.ShippingMethod>
                   <S.ShippingMethodName>
                     {`Envío ${
-                      shippingMethod.isScheduled ? 'programado' : 'express'
+                      isScheduledShippingMethod(shippingMethod)
+                        ? 'programado'
+                        : 'express'
                     }`}
                   </S.ShippingMethodName>
                   {shippingMethodPrice > 0 ? (

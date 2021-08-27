@@ -2,7 +2,7 @@ import { Checkout_availableShippingMethods } from '@temp/@sdk/fragments/gqlTypes
 import { SHIPPING_TYPES } from '../config';
 
 export const isPrimeShippingMethod = (
-  shippingMethod: Checkout_availableShippingMethods
+  shippingMethod: Partial<Checkout_availableShippingMethods>
 ) => {
   if (!shippingMethod?.methodType) {
     return false;
@@ -12,7 +12,7 @@ export const isPrimeShippingMethod = (
 };
 
 export const isScheduledShippingMethod = (
-  shippingMethod: Checkout_availableShippingMethods
+  shippingMethod: Partial<Checkout_availableShippingMethods>
 ) => {
   if (!shippingMethod?.methodType) {
     return false;
@@ -22,7 +22,7 @@ export const isScheduledShippingMethod = (
 };
 
 export const isExpressShippingMethod = (
-  shippingMethod: Checkout_availableShippingMethods
+  shippingMethod: Partial<Checkout_availableShippingMethods>
 ) => {
   if (!shippingMethod?.methodType) {
     return false;
