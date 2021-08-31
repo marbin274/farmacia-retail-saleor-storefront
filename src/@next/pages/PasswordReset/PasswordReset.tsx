@@ -84,7 +84,7 @@ export const PasswordReset: React.FC<IProps> = ({ history }: IProps) => {
           </div>
           <p className="fa-text-black fa-text-sm">
             <strong className="fa-font-semibold">
-              {!!user ? user?.firstName : 'Hola'},
+              {user?.firstName && 'Hola'},
             </strong>{' '}
             se cambió con éxito tu nueva contraseña
           </p>
