@@ -328,3 +328,4 @@ export const SHIPPING_TYPES = {
 export const SHIPPING_SUBTYPES = {
   prime: 'PRIME',
 };
+export const PHONE_NUMBER = '01 6429911';
