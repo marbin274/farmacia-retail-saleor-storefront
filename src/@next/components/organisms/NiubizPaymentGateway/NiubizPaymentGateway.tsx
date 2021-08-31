@@ -246,6 +246,13 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
     onError(errors);
   };
 
+  const randomNumberForCardSelected = () => {
+    const num = new Uint32Array(1);
+    window.crypto.getRandomValues(num);
+    const useNum = num[0] * Math.pow(2, -32);
+    return Math.floor(useNum * 10000) + 1;
+  };
+
   const handleSubmit = async (formData: IFormPayment) => {
     const data: INiubizCreateTokenData = {
       alias: 'KS',
@@ -255,7 +262,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
     };
 
     if (saveCardSelected) {
-      data.userBlockId = Math.floor(Math.random() * 10000) + 1;
+      data.userBlockId = randomNumberForCardSelected();
       handleTokenization(data);
     } else {
       data.recurrence = false;

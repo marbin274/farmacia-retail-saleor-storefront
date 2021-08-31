@@ -3,10 +3,8 @@ import { ISimpleProduct } from '@sdk/types/IProduct';
 import { getProductsWithQuantity } from '@sdk/utils/products';
 import { Carousel } from '@temp/@next/components/containers';
 import { ProductTileAUNA } from '@temp/@next/components/molecules';
-import { useLocalStorage } from '@temp/@next/hooks';
 import { useDistrictSelected } from '@temp/@next/hooks/useDistrictSelected';
-import { useFeaturedProducts, useUserDetails } from '@temp/@sdk/react';
-import { LocalStorageItems } from '@temp/@sdk/repository';
+import { useFeaturedProducts } from '@temp/@sdk/react';
 import {
   COLLECTIONS_PER_PAGE,
   PRODUCTS_PER_PAGE,
@@ -24,37 +22,25 @@ import * as S from './styles';
 import { IHomePageCollecction, IProps } from './types';
 
 export const ProductsFeatured: React.FC<IProps> = ({
-  title = 'Nuestros recomendados',
   productsOnCart,
   removeItemToCart,
   addToCart,
   subtractItemToCart,
 }) => {
-  const refetchRef = React.useRef(null);
-  const { setValue: setDistrictChanged } = useLocalStorage<boolean>(
-    LocalStorageItems.DISTRICT_CHANGED,
-    false
-  );
   const [districtSelected] = useDistrictSelected();
-  const { data, loading, refetch } = useFeaturedProducts({
-    first: PRODUCTS_PER_PAGE,
-    firstPersonalize: PRODUCTS_PER_PAGE_PERSONALIZE,
-    firstCollection: COLLECTIONS_PER_PAGE,
-    districtId: districtSelected.id,
-    sortBy: {
-      direction: OrderDirection.ASC,
-      field: CollectionSortField.SORT_ORDER,
+  const { data, loading } = useFeaturedProducts(
+    {
+      first: PRODUCTS_PER_PAGE,
+      firstPersonalize: PRODUCTS_PER_PAGE_PERSONALIZE,
+      firstCollection: COLLECTIONS_PER_PAGE,
+      districtId: districtSelected.id,
+      sortBy: {
+        direction: OrderDirection.ASC,
+        field: CollectionSortField.SORT_ORDER,
+      },
     },
-  });
-
-  const { data: user } = useUserDetails();
-
-  React.useEffect(() => {
-    if (user?.id) {
-      setDistrictChanged(true);
-      refetchRef.current?.();
-    }
-  }, [user]);
+    { fetchPolicy: 'cache-and-network' }
+  );
 
   if (loading) return <Skeleton />;
 
@@ -82,7 +68,6 @@ export const ProductsFeatured: React.FC<IProps> = ({
 
   const collections: IHomePageCollecction[] =
     personalizedCollection.concat(homepageCollections);
-  refetchRef.current = refetch;
 
   if (!collections) return null;
 
