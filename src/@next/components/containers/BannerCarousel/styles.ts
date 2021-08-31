@@ -1,6 +1,7 @@
 import { styled } from "@temp/@next/globalStyles";
-import { containerWidth } from "@temp/@next/globalStyles/constants";
+import { aunaInteractive, containerWidth } from "@temp/@next/globalStyles/constants";
 import farmatheme from "@farmatheme";
+import { Button } from "@farmacia-retail/farmauna-components";
 export const BannerCarouselWrapper = styled.div`
   .carousel {
     &__control {
@@ -41,6 +42,28 @@ export const BannerCarouselWrapper = styled.div`
       border: 0.0625rem solid #d7d4eb;
       border-radius: 1rem;
       text-align: center;
+    }
+    .slider-control-bottomcenter {
+      bottom: -1.5rem;
+    }
+  }
+`;
+
+export const ControlCenter = styled.div`
+  transition: width 0.3s;
+  &::before {
+    content: '';
+  }
+`;
+
+export const ControlSide = styled(Button as any)`
+  background-color: ${farmatheme.theme.colors.neutral.lightest};
+  border-color: ${farmatheme.theme.colors.neutral.medium};
+  margin: 0rem 1rem;
+  &:hover {
+    background-color: ${aunaInteractive};
+    svg {
+      color: ${farmatheme.theme.colors.neutral.lightest};
     }
   }
 `;
