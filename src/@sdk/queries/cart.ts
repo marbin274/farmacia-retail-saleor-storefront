@@ -10,6 +10,9 @@ export const shippingMethodsQuery = gql`
         currency
         culture
       }
+      methodType {
+        code
+      }
       minimumOrderPrice {
         amount
         currency

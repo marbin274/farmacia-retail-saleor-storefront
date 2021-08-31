@@ -24,6 +24,11 @@ export interface GetShippingMethods_potentialShippingMethods_maximumOrderPrice {
   culture: string;
 }
 
+export interface GetShippingMethods_potentialShippingMethods_methodType {
+  __typename: "ShippingMethodType";
+  code: string;
+}
+
 export interface GetShippingMethods_potentialShippingMethods_minimumOrderPrice {
   __typename: "Money";
   /**
@@ -62,11 +67,8 @@ export interface GetShippingMethods_potentialShippingMethods {
    * The ID of the object.
    */
   id: string;
-  /**
-   * Flag to recognize if this shipping method has schedules to select.
-   */
-  isScheduled: boolean | null;
   maximumOrderPrice: GetShippingMethods_potentialShippingMethods_maximumOrderPrice | null;
+  methodType: GetShippingMethods_potentialShippingMethods_methodType | null;
   minimumOrderPrice: GetShippingMethods_potentialShippingMethods_minimumOrderPrice | null;
   name: string;
   price: GetShippingMethods_potentialShippingMethods_price | null;

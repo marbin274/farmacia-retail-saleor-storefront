@@ -20,8 +20,11 @@ import React, {
 } from 'react';
 import { RouteComponentProps, useHistory } from 'react-router';
 import shippingMethodCalendarInfoIco from 'images/auna/shipping-method-calendar-info.svg';
-import { Checkout_availableShippingMethods } from '@temp/@sdk/fragments/gqlTypes/Checkout';
 import { useFeaturePlugins } from '@app/hooks';
+import {
+  isPrimeShippingMethod,
+  isScheduledShippingMethod,
+} from '@temp/core/utils';
 
 export interface ICheckoutShippingSubpageHandles {
   submitShipping: () => void;
@@ -74,10 +77,6 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
     changeSubmitProgress(false);
   };
 
-  const isPrimeShippingMethod = (sm: Checkout_availableShippingMethods) => {
-    return sm.name.toLocaleLowerCase().includes('prime');
-  };
-
   const shippingMethods: IAvailableShippingMethods = [];
   const primeShippingMethodExists = !!availableShippingMethods?.find((x) =>
     isPrimeShippingMethod(x)
@@ -85,14 +84,14 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
 
   availableShippingMethods?.forEach((it) => {
     const shippingMethod = { ...it };
-    if (it.isScheduled && !shippingMethod.scheduleDates) {
+    if (isScheduledShippingMethod(it) && !shippingMethod.scheduleDates) {
       return;
     } else if (
       (isPrime && primeShippingMethodExists && !isPrimeShippingMethod(it)) ||
       (!isPrime && isPrimeShippingMethod(it))
     ) {
       return;
-    } else if (it.isScheduled && shippingMethod.scheduleDates) {
+    } else if (isScheduledShippingMethod(it) && shippingMethod.scheduleDates) {
       shippingMethod.scheduleDates = shippingMethod.scheduleDates.filter(
         (it) => it?.scheduleTimes?.length
       );
