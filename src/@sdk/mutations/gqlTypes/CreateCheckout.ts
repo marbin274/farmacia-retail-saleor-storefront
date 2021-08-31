@@ -1,5 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 import { CheckoutCreateInput, CheckoutErrorCode } from "./../../gqlTypes/globalTypes";
@@ -843,10 +844,22 @@ export interface CreateCheckout_checkoutCreate_checkout {
   discount: CreateCheckout_checkoutCreate_checkout_discount | null;
   discountName: string | null;
   translatedDiscountName: string | null;
+  /**
+   * Voucher code
+   */
   voucherCode: string | null;
+  /**
+   * Voucher type
+   */
   voucherType: string | null;
+  /**
+   * Voucher discount type
+   */
   voucherDiscountType: string | null;
-  voucherDiscountValue: number;
+  /**
+   * Voucher discount value
+   */
+  voucherDiscountValue: number | null;
   documentNumber: string | null;
   termsAndConditions: boolean;
   dataTreatmentPolicy: boolean;

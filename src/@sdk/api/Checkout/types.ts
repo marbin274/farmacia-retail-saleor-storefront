@@ -50,7 +50,7 @@ export interface IShippingMethod {
 export interface IPromoCodeDiscount {
   voucherCode?: string | null;
   discountName?: string | null;
-  voucherDiscountValue: number | undefined;
+  voucherDiscountValue: number | undefined | null;
   voucherDiscountType: string | null | undefined;
   voucherType: string | null | undefined;
 }

@@ -1,5 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 import { AddressInput } from "./../../gqlTypes/globalTypes";
@@ -810,10 +811,22 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
   discount: UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_discount | null;
   discountName: string | null;
   translatedDiscountName: string | null;
+  /**
+   * Voucher code
+   */
   voucherCode: string | null;
+  /**
+   * Voucher type
+   */
   voucherType: string | null;
+  /**
+   * Voucher discount type
+   */
   voucherDiscountType: string | null;
-  voucherDiscountValue: number;
+  /**
+   * Voucher discount value
+   */
+  voucherDiscountValue: number | null;
   documentNumber: string | null;
   termsAndConditions: boolean;
   dataTreatmentPolicy: boolean;
@@ -1632,10 +1645,22 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
   discount: UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_discount | null;
   discountName: string | null;
   translatedDiscountName: string | null;
+  /**
+   * Voucher code
+   */
   voucherCode: string | null;
+  /**
+   * Voucher type
+   */
   voucherType: string | null;
+  /**
+   * Voucher discount type
+   */
   voucherDiscountType: string | null;
-  voucherDiscountValue: number;
+  /**
+   * Voucher discount value
+   */
+  voucherDiscountValue: number | null;
   documentNumber: string | null;
   termsAndConditions: boolean;
   dataTreatmentPolicy: boolean;

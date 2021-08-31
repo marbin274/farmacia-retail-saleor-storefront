@@ -18,7 +18,7 @@ import {
   maybe,
 } from '@temp/core/utils';
 import * as React from 'react';
-import { CollectionSortField } from '../../../../../gqlTypes/globalTypes';
+import { CollectionSortField } from '@sdk/gqlTypes/globalTypes';
 import { Skeleton } from './skeleton';
 import * as S from './styles';
 import { IHomePageCollecction, IProps } from './types';
@@ -61,23 +61,23 @@ export const ProductsFeatured: React.FC<IProps> = ({
   const homepageCollections: IHomePageCollecction[] = data?.shop
     ?.homepageCollections?.edges.length
     ? data.shop.homepageCollections.edges.map((it) => ({
-        id: it.node.id,
-        name: it.node.name,
-        products: it.node.products.edges.map((edge) => ({
-          ...edge.node,
-        })),
-      }))
+      id: it.node.id,
+      name: it.node.name,
+      products: it.node.products.edges.map((edge) => ({
+        ...edge.node,
+      })),
+    }))
     : [];
 
   const personalizedCollection: IHomePageCollecction[] = data?.personalized
     ?.length
     ? [
-        {
-          id: '',
-          name: 'Los recomendados para ti',
-          products: data.personalized,
-        },
-      ]
+      {
+        id: '',
+        name: 'Los recomendados para ti',
+        products: data.personalized,
+      },
+    ]
     : [];
 
   const collections: IHomePageCollecction[] =
