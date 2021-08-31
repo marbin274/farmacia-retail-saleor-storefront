@@ -204,6 +204,11 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_shippi
   alias: string | null;
 }
 
+export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_availableShippingMethods_methodType {
+  __typename: "ShippingMethodType";
+  code: string;
+}
+
 export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_availableShippingMethods_price {
   __typename: "Money";
   /**
@@ -248,17 +253,19 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_availa
    * The ID of the object.
    */
   id: string;
+  methodType: RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_availableShippingMethods_methodType | null;
   name: string;
-  /**
-   * Flag to recognize if this shipping method has schedules to select.
-   */
-  isScheduled: boolean | null;
   price: RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_availableShippingMethods_price | null;
   /**
    * List of filtered schedules a customer can pick.
    */
   scheduleDates: (RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_availableShippingMethods_scheduleDates | null)[] | null;
   subtitle: string | null;
+}
+
+export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_shippingMethod_methodType {
+  __typename: "ShippingMethodType";
+  code: string;
 }
 
 export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_shippingMethod_price {
@@ -305,11 +312,8 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_shippi
    * The ID of the object.
    */
   id: string;
+  methodType: RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_shippingMethod_methodType | null;
   name: string;
-  /**
-   * Flag to recognize if this shipping method has schedules to select.
-   */
-  isScheduled: boolean | null;
   price: RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_shippingMethod_price | null;
   /**
    * List of filtered schedules a customer can pick.

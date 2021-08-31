@@ -102,8 +102,10 @@ export const checkoutProductVariantFragment = gql`
 export const checkoutShippingMethodFragment = gql`
   fragment ShippingMethod on ShippingMethod {
     id
+    methodType {
+      code
+    }
     name
-    isScheduled
     price {
       currency
       amount

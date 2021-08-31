@@ -217,6 +217,11 @@ export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout_shippingAd
   alias: string | null;
 }
 
+export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout_availableShippingMethods_methodType {
+  __typename: "ShippingMethodType";
+  code: string;
+}
+
 export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout_availableShippingMethods_price {
   __typename: "Money";
   /**
@@ -261,17 +266,19 @@ export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout_availableS
    * The ID of the object.
    */
   id: string;
+  methodType: CreateCheckoutPayment_checkoutPaymentCreate_checkout_availableShippingMethods_methodType | null;
   name: string;
-  /**
-   * Flag to recognize if this shipping method has schedules to select.
-   */
-  isScheduled: boolean | null;
   price: CreateCheckoutPayment_checkoutPaymentCreate_checkout_availableShippingMethods_price | null;
   /**
    * List of filtered schedules a customer can pick.
    */
   scheduleDates: (CreateCheckoutPayment_checkoutPaymentCreate_checkout_availableShippingMethods_scheduleDates | null)[] | null;
   subtitle: string | null;
+}
+
+export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout_shippingMethod_methodType {
+  __typename: "ShippingMethodType";
+  code: string;
 }
 
 export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout_shippingMethod_price {
@@ -318,11 +325,8 @@ export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout_shippingMe
    * The ID of the object.
    */
   id: string;
+  methodType: CreateCheckoutPayment_checkoutPaymentCreate_checkout_shippingMethod_methodType | null;
   name: string;
-  /**
-   * Flag to recognize if this shipping method has schedules to select.
-   */
-  isScheduled: boolean | null;
   price: CreateCheckoutPayment_checkoutPaymentCreate_checkout_shippingMethod_price | null;
   /**
    * List of filtered schedules a customer can pick.
