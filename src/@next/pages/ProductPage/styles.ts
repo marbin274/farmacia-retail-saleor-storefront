@@ -77,6 +77,10 @@ export const ProductInfoFixedWrapper = styled.div`
   width: 100% !important;
 `;
 
+export const SkeletonContainer = styled.div`
+  ${ContainerStyle}
+`;
+
 export const SkeletonProduct = styled.div`
   display: flex;
   flex-direction: column;

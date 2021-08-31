@@ -52,18 +52,18 @@ export const Page: React.FC<PageProps> = ({
       <div className="fa-mx-auto fa-my-0">
         {isMainBlog && <>{imageSection()}</>}
 
-        <div className="container">
+        <S.Container>
           <Breadcrumbs breadcrumbs={breadcrumbs} breadcrumbsAlwaysVisible />
-        </div>
+        </S.Container>
         {!isMainBlog && <S.Blog className="blog-page">{imageSection()}</S.Blog>}
-        <div className="container">
+        <S.Container>
           <S.Content className="fa-mx-0 fa-mt-0 fa-mb-14">
             <RichTextContent
               descriptionJson={page.contentJson}
               className="fa-w-full fa-text-left fa-text-neutral-darkest"
             />
           </S.Content>
-        </div>
+        </S.Container>
       </div>
     </>
   );

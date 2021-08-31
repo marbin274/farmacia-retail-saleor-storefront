@@ -7,8 +7,6 @@ import { Header as HeaderComponent } from '@components/organisms/Header';
 import { MainMenu } from '@components/organisms/MainMenu';
 import { INavItem } from '@components/organisms/MobileNav';
 
-import '../globalStyles/scss/index.scss';
-
 export const Header: React.FC = () => {
   const location = useLocation();
   const { isMobileScreen } = useMediaScreen();

@@ -41,7 +41,7 @@ import {
   gtmPreview,
   serviceWorkerTimeout,
 } from './core/constants';
-import './globalStyles/index.css';
+import './index.css';
 import { history } from './libraries/history';
 import {
   getOptimizelyUserId,
