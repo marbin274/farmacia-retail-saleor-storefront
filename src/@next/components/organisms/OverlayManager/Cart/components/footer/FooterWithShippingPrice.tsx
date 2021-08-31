@@ -10,6 +10,7 @@ import {
   useUserDetails,
 } from '@temp/@sdk/react';
 import { checkoutLoginUrl, checkoutUrl } from '@temp/app/routes';
+import { isScheduledShippingMethod } from '@temp/core/utils';
 import { trackAddToCartWithShowShippingPrice } from '@temp/libraries/optimizely/tracks';
 import * as React from 'react';
 import { useHistory, useLocation } from 'react-router';
@@ -80,7 +81,11 @@ export const FooterWithShippingPrice: React.FC<IProps> = ({
           <S.ShippingMethodLabel>Total</S.ShippingMethodLabel>
           <S.ShippingMethod>
             <S.ShippingMethodName>
-              {`Envío ${shippingMethod.isScheduled ? 'programado' : 'express'}`}
+              {`Envío ${
+                isScheduledShippingMethod(shippingMethod)
+                  ? 'programado'
+                  : 'express'
+              }`}
             </S.ShippingMethodName>
             {shippingMethodPrice > 0 ? (
               <S.ShippingMethodPrice>
