@@ -1,13 +1,13 @@
-import { IItems } from "@temp/@sdk/api/Cart/types";
-import { IAvailableShippingMethods } from "@temp/@sdk/api/Checkout/types";
+import { IItems } from '@temp/@sdk/api/Cart/types';
+import { IAvailableShippingMethods } from '@temp/@sdk/api/Checkout/types';
 import {
   IShippingMethodUpdate,
   IScheduleDate,
   ISlots,
-} from "@temp/@sdk/repository";
-import { IFormError } from "@types";
-import { FormikErrors } from "formik";
-import { ISlotScheduleDate } from "../CheckoutShippingProgrammed/types";
+} from '@temp/@sdk/repository';
+import { IFormError } from '@types';
+import { FormikErrors } from 'formik';
+import { ISlotScheduleDate } from '../CheckoutShippingProgrammed/types';
 
 export type ICheckoutShippingSlotProps = {
   shippingMethods: IAvailableShippingMethods | undefined;

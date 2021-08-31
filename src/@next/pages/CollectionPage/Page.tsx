@@ -17,7 +17,7 @@ import { getFiltersInitial } from '@temp/@next/utils/filter';
 import { IItems } from '@temp/@sdk/api/Cart/types';
 import { useCollectionProducts } from '@temp/@sdk/react';
 import { baseUrl } from '@temp/app/routes';
-import { EmptyProduct } from '@temp/components';
+import { EmptyProduct } from '@components/molecules';
 import { COLLECTION_CATEGORY_FILTER_LABEL } from '@temp/core/config';
 import { structuredData } from '@temp/core/SEO/Collection/structuredData';
 import {

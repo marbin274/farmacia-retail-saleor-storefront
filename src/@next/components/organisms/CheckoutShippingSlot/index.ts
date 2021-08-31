@@ -1,1 +1,1 @@
-export * from "./CheckoutShippingSlot";
+export * from './CheckoutShippingSlot';

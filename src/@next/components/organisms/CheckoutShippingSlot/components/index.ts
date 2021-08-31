@@ -1,2 +1,2 @@
-export * from "./ExpressShippingMethod";
-export * from "./ScheduledShippingMethod";
+export * from './ExpressShippingMethod';
+export * from './ScheduledShippingMethod';

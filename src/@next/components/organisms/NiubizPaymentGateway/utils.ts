@@ -7,8 +7,12 @@ import { loadScript } from '@sdk/utils';
 import { niubizAntifraudScriptUrl } from '@temp/core/constants';
 const ip = require('ip');
 
-export const generateNiubizPurchaseNumber = () =>
-  Math.floor(Math.random() * (999999999999 - 1)) + 1;
+export const generateNiubizPurchaseNumber = () => {
+  const num = new Uint32Array(1);
+  window.crypto.getRandomValues(num);
+  const useNum = num[0] * Math.pow(2, -32);
+  return Math.floor(useNum * (999999999999 - 1)) + 1;
+};
 
 export const getConfigElement = (
   config: IPaymentGatewayConfig[],

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { RichTextContent } from '@components/atoms';
-import { Breadcrumb, Breadcrumbs } from '@temp/components';
+import { Breadcrumb, Breadcrumbs } from '@components/organisms/Breadcrumbs';
 import { ArticleDetail_page } from '@sdk/queries/gqlTypes/ArticleDetail';
 import * as S from './styles';
 

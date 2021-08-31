@@ -200,3 +200,137 @@ export const searchProducts = gql`
     }
   }
 `;
+
+const featuredProductFragment = gql`
+  ${basicProductFragment}
+  ${productPricingFragment}
+  fragment FeaturedProductFields on Product {
+    ...BasicProductFields
+    ...ProductPricingField
+    attributes {
+      attribute {
+        id
+        name
+      }
+      values {
+        id
+        name
+      }
+    }
+    category {
+      id
+      name
+    }
+    variants {
+      id
+      sku
+      pricing {
+        onSale
+        price {
+          ...Price
+        }
+        priceUndiscounted {
+          ...Price
+        }
+      }
+      quantityAvailable(district: $districtId)
+    }
+  }
+`;
+
+export const featuredProducts = gql`
+  ${featuredProductFragment}
+  query FeaturedProducts(
+    $first: Int!
+    $firstPersonalize: Int!
+    $districtId: ID
+    $firstCollection: Int
+    $sortBy: CollectionSortingInput
+  ) {
+    shop {
+      homepageCollections(first: $firstCollection, sortBy: $sortBy) {
+        edges {
+          node {
+            id
+            name
+            products(district: $districtId, first: $first) {
+              edges {
+                node {
+                  ...FeaturedProductFields
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    personalized: recommendedProducts(
+      maxResults: $firstPersonalize
+      district: $districtId
+    ) {
+      ...FeaturedProductFields
+    }
+  }
+`;
+
+export const selledProducts = gql`
+  ${basicProductFragment}
+  ${productPricingFragment}
+  query SelledProducts(
+    $districtId: ID
+    $period: ReportingPeriod!
+    $first: Int
+  ) {
+    reportProductSales(district: $districtId, period: $period, first: $first) {
+      edges {
+        node {
+          id
+          attributes {
+            values {
+              id
+              name
+              __typename
+            }
+            __typename
+          }
+          product {
+            ...BasicProductFields
+            ...ProductPricingField
+            attributes {
+              attribute {
+                id
+                name
+              }
+              values {
+                id
+                name
+              }
+            }
+            category {
+              id
+              name
+            }
+            variants {
+              id
+              sku
+              pricing {
+                onSale
+                price {
+                  ...Price
+                }
+                priceUndiscounted {
+                  ...Price
+                }
+              }
+              quantityAvailable(district: $districtId)
+            }
+          }
+          quantityOrdered
+          __typename
+        }
+        __typename
+      }
+      __typename
+    }
+  }
+`;

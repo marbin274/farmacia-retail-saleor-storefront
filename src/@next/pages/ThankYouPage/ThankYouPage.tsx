@@ -6,7 +6,7 @@ import { BASE_URL, CHECKOUT_STEPS } from '@temp/core/config';
 import { generateGuestOrderDetailsUrl } from '@utils/core';
 
 import { IProps } from './types';
-import { OverlayContext } from '@temp/components/Overlay';
+import { OverlayContext } from '@temp/@next/components/organisms/OverlayComponent';
 import { useCheckout, useShopDetails } from '@sdk/react';
 import { LocalRepository } from '@temp/@sdk/repository';
 import { isEmpty } from 'lodash';

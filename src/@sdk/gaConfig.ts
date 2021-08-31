@@ -177,7 +177,7 @@ export const launchSetLocation = () => {
 };
 
 const pushToDatalayer = (data: any) => {
-  return window?.dataLayer?.push({ ...data, userId: getGaUserId() });
+  return window?.dataLayer?.push({ ...data, userId: getGaUserId() || '' });
 };
 
 export const setGaUserId = (id?: string) => {
@@ -192,7 +192,7 @@ export const removeGaUserId = () => {
 
 export const getGaUserId = () => {
   const localRepository = new LocalRepository();
-  localRepository.getGaUserId();
+  return localRepository.getGaUserId() || '';
 };
 
 export const launchSearchEvent = (searchTerm?: string) => {

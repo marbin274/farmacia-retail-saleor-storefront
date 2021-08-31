@@ -1,17 +1,16 @@
 import { BackIcon } from '@farmacia-retail/farmauna-components';
 import farmatheme from '@farmatheme';
-import { NavLink } from '@temp/@next/components/atoms';
-import { MainMenuSubItem } from '@temp/components/MainMenu/gqlTypes//MainMenuSubItem';
-import {
-  convertCategoryToMenuItem,
-  generateCategoryUrl,
-} from '@temp/core/utils';
 import {
   SimpleCategory_ancestors_edges_node,
   SimpleCategory_ancestors_edges_node_children_edges,
 } from '@sdk/fragments/gqlTypes/SimpleCategory';
+import { NavLink } from '@temp/@next/components/atoms';
+import { MainMenuSubItem } from '@temp/@sdk/queries/gqlTypes/MainMenuSubItem';
+import {
+  convertCategoryToMenuItem,
+  generateCategoryUrl,
+} from '@temp/core/utils';
 import React from 'react';
-
 import * as S from './styles';
 import { IProps } from './types';
 

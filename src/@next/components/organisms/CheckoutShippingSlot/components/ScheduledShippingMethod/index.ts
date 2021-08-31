@@ -1,1 +1,1 @@
-export * from "./ScheduledShippingMethod";
+export * from './ScheduledShippingMethod';

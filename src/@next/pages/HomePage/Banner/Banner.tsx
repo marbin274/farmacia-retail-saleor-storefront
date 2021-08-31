@@ -7,7 +7,7 @@ import { SkeletonBanner } from '../skeleton';
 import { MainBanner_mainBanner } from '@sdk/queries/gqlTypes/MainBanner';
 import * as S from './styles';
 import { useMainBanner } from '@temp/@sdk/react';
-import { NotFound } from '@temp/components';
+import { NotFound } from '@pages';
 
 const baseUrlPattern = /(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})*\/?/;
 

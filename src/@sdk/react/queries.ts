@@ -17,11 +17,17 @@ export const useCollectionCategories = queryWithVariablesFactory(
   'getCollectionCategories'
 );
 
+export const useFeaturedProducts = queryWithVariablesFactory(
+  'getFeaturedProducts'
+);
+export const useFooterSecondayMenu = queryFactory('getFooterSecondaryMenu');
+
 export const useHomePage = queryFactory('getHomePage');
 
 export const useLanding = queryWithVariablesFactory('getLanding');
 
 export const useMainBanner = queryFactory('getMainBanner');
+export const useMainMenu = queryFactory('getMainMenu');
 
 export const useOrderDetails = queryWithVariablesFactory('getOrderDetails');
 export const useOrdersByUser = queryWithVariablesFactory('getOrdersByUser');
@@ -30,6 +36,13 @@ export const useProductDetails = queryWithVariablesFactory('getProductDetails');
 export const useProductList = queryWithVariablesFactory('getProductList');
 
 export const useSearchProducts = queryWithVariablesFactory('searchProducts');
+
+export const useSearchResults = queryWithVariablesFactory('searchResults');
+
+export const useSelledProducts = queryWithVariablesFactory('selledProducts');
+
+export const useShippingMethods =
+  queryWithVariablesFactory('getShippingMethods');
 
 export const useShopDetails = queryFactory('getShopDetails');
 
