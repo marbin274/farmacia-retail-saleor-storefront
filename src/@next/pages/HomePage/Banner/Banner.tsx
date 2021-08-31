@@ -7,7 +7,7 @@ import { SkeletonBanner } from '../skeleton';
 import { MainBanner_mainBanner } from '@sdk/queries/gqlTypes/MainBanner';
 import * as S from './styles';
 import { useMainBanner } from '@temp/@sdk/react';
-import { NotFound } from '@pages';
+import { NotFound } from '../../NotFoundPage';
 
 const baseUrlPattern = /(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})*\/?/;
 
@@ -45,7 +45,9 @@ const getBannersFromData = (data: MainBanner_mainBanner): BannerType[] => {
 export const Banner: React.FC = () => {
   const history = useHistory();
 
-  const { data: mainBanner, loading: mainBannerLoading } = useMainBanner();
+  const { data: mainBanner, loading: mainBannerLoading } = useMainBanner({
+    fetchPolicy: 'cache-and-network',
+  });
 
   const redirectTo = (url?: string) => {
     if (!url) {
