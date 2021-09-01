@@ -68,6 +68,10 @@ export interface GetShippingMethods_potentialShippingMethods {
    * The ID of the object.
    */
   id: string;
+  /**
+   * Flag to recognize if this shipping method has schedules to select.
+   */
+  isScheduled: boolean | null;
   maximumOrderPrice: GetShippingMethods_potentialShippingMethods_maximumOrderPrice | null;
   methodType: GetShippingMethods_potentialShippingMethods_methodType | null;
   minimumOrderPrice: GetShippingMethods_potentialShippingMethods_minimumOrderPrice | null;
