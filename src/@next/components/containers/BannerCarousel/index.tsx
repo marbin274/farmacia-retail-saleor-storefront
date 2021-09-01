@@ -14,8 +14,9 @@ interface CarouselType extends CarouselProps {
 }
 
 export const BannerCarousel: React.FC<CarouselType> = ({
-  children,
   autoplay,
+  children,
+  wrapAround = true,
   ...rest
 }) => {
   const { isMobileScreen } = useMediaScreen();
@@ -92,7 +93,7 @@ export const BannerCarousel: React.FC<CarouselType> = ({
         slidesToShow={slides}
         slidesToScroll={slides}
         pauseOnHover={true}
-        wrapAround={true}
+        wrapAround={wrapAround}
         {...settings}
       >
         {children}
