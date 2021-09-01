@@ -12,8 +12,7 @@ import { AddressInput, PrivacyPolicyInput, CheckoutErrorCode } from "./../../gql
 export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_errors {
   __typename: "Error";
   /**
-   * Name of a field that caused the error. A value of `null` indicates that the
-   * error isn't associated with a particular field.
+   * Name of a field that caused the error. A value of `null` indicates that the error isn't associated with a particular field.
    */
   field: string | null;
   /**
@@ -859,8 +858,7 @@ export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_che
 export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkoutErrors {
   __typename: "CheckoutError";
   /**
-   * Name of a field that caused the error. A value of `null` indicates that the
-   * error isn't associated with a particular field.
+   * Name of a field that caused the error. A value of `null` indicates that the error isn't associated with a particular field.
    */
   field: string | null;
   /**
@@ -1715,8 +1713,7 @@ export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout {
 export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_errors {
   __typename: "Error";
   /**
-   * Name of a field that caused the error. A value of `null` indicates that the
-   * error isn't associated with a particular field.
+   * Name of a field that caused the error. A value of `null` indicates that the error isn't associated with a particular field.
    */
   field: string | null;
   /**

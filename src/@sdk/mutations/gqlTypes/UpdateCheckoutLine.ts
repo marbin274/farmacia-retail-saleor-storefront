@@ -834,8 +834,7 @@ export interface UpdateCheckoutLine_checkoutLinesUpdate_checkout {
 export interface UpdateCheckoutLine_checkoutLinesUpdate_errors {
   __typename: "Error";
   /**
-   * Name of a field that caused the error. A value of `null` indicates that the
-   * error isn't associated with a particular field.
+   * Name of a field that caused the error. A value of `null` indicates that the error isn't associated with a particular field.
    */
   field: string | null;
   /**
@@ -859,8 +858,7 @@ export interface UpdateCheckoutLine_checkoutLinesUpdate_checkoutErrors_products 
 export interface UpdateCheckoutLine_checkoutLinesUpdate_checkoutErrors {
   __typename: "CheckoutError";
   /**
-   * Name of a field that caused the error. A value of `null` indicates that the
-   * error isn't associated with a particular field.
+   * Name of a field that caused the error. A value of `null` indicates that the error isn't associated with a particular field.
    */
   field: string | null;
   /**

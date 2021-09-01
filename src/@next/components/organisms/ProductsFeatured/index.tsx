@@ -1,4 +1,4 @@
-import { OrderDirection } from '@sdk/gqlTypes/globalTypes';
+import { CollectionSortField, OrderDirection } from '@sdk/gqlTypes/globalTypes';
 import { ISimpleProduct } from '@sdk/types/IProduct';
 import { getProductsWithQuantity } from '@sdk/utils/products';
 import { Carousel } from '@temp/@next/components/containers';
@@ -18,7 +18,6 @@ import {
   maybe,
 } from '@temp/core/utils';
 import * as React from 'react';
-import { CollectionSortField } from '@sdk/gqlTypes/globalTypes';
 import { Skeleton } from './skeleton';
 import * as S from './styles';
 import { IHomePageCollecction, IProps } from './types';

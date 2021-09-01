@@ -24,8 +24,7 @@ export interface CheckoutErrorsFragment_products {
 export interface CheckoutErrorsFragment {
   __typename: "CheckoutError";
   /**
-   * Name of a field that caused the error. A value of `null` indicates that the
-   * error isn't associated with a particular field.
+   * Name of a field that caused the error. A value of `null` indicates that the error isn't associated with a particular field.
    */
   field: string | null;
   /**

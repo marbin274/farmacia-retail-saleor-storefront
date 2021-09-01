@@ -834,8 +834,7 @@ export interface AddCheckoutPromoCode_checkoutAddPromoCode_checkout {
 export interface AddCheckoutPromoCode_checkoutAddPromoCode_errors {
   __typename: "Error";
   /**
-   * Name of a field that caused the error. A value of `null` indicates that the
-   * error isn't associated with a particular field.
+   * Name of a field that caused the error. A value of `null` indicates that the error isn't associated with a particular field.
    */
   field: string | null;
   /**
@@ -847,8 +846,7 @@ export interface AddCheckoutPromoCode_checkoutAddPromoCode_errors {
 export interface AddCheckoutPromoCode_checkoutAddPromoCode_checkoutErrors {
   __typename: "CheckoutError";
   /**
-   * Name of a field that caused the error. A value of `null` indicates that the
-   * error isn't associated with a particular field.
+   * Name of a field that caused the error. A value of `null` indicates that the error isn't associated with a particular field.
    */
   field: string | null;
   /**

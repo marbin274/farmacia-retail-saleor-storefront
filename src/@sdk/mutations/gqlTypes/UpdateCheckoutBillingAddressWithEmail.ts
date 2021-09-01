@@ -12,8 +12,7 @@ import { AddressInput } from "./../../gqlTypes/globalTypes";
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_errors {
   __typename: "Error";
   /**
-   * Name of a field that caused the error. A value of `null` indicates that the
-   * error isn't associated with a particular field.
+   * Name of a field that caused the error. A value of `null` indicates that the error isn't associated with a particular field.
    */
   field: string | null;
   /**
@@ -1681,8 +1680,7 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_errors {
   __typename: "Error";
   /**
-   * Name of a field that caused the error. A value of `null` indicates that the
-   * error isn't associated with a particular field.
+   * Name of a field that caused the error. A value of `null` indicates that the error isn't associated with a particular field.
    */
   field: string | null;
   /**
