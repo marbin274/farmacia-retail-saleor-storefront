@@ -1,5 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 // ====================================================
@@ -25,6 +26,9 @@ export interface GetShop_shop_availableDistricts {
   isActive: boolean;
   isDefault: boolean | null;
   name: string;
+  /**
+   * Warehouse for district.
+   */
   warehouse: GetShop_shop_availableDistricts_warehouse | null;
 }
 

@@ -10,7 +10,7 @@ import { FetchResult } from '@apollo/client';
 import {
   OrderDirection,
   ProductOrderField,
-} from '../../../gqlTypes/globalTypes';
+} from '@sdk/gqlTypes/globalTypes';
 import { FormError } from '../types';
 import { IGeoJson } from '../types/address';
 
@@ -49,9 +49,9 @@ export const priceToString = (
   const { amount } = price;
   return locale
     ? amount.toLocaleString(locale, {
-        currency: price.currency,
-        style: 'currency',
-      })
+      currency: price.currency,
+      style: 'currency',
+    })
     : `${price.currency} ${amount.toFixed(2)}`;
 };
 
