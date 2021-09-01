@@ -1,10 +1,10 @@
+import React, { useState, useEffect } from 'react';
 import { ResetPasswordForm } from '@components/molecules';
 import { setAuthToken } from '@sdk/auth';
 import { useSetPassword, useUserDetails } from '@sdk/react';
 import { BASE_URL } from '@temp/core/config';
 import { Formik } from 'formik';
 import resetPasswordChangedIcon from 'images/auna/reset-password-changed.svg';
-import React from 'react';
 import ReactSVG from 'react-svg';
 import { StringParam, useQueryParams } from 'use-query-params';
 import { passwordResetSchema } from './PasswordReset.schema';
@@ -23,10 +23,10 @@ export const PasswordReset: React.FC<IProps> = ({ history }: IProps) => {
     token: StringParam,
   });
   const { data: user } = useUserDetails();
-  const [tokenError, setTokenError] = React.useState(false);
-  const [passwordError, setPasswordError] = React.useState('');
+  const [tokenError, setTokenError] = useState<boolean>(false);
+  const [passwordError, setPasswordError] = useState<string>('');
   const [showPasswordMessageChanged, setShowPasswordMessageChanged] =
-    React.useState<boolean>(false);
+    useState<boolean>(false);
 
   const [setPassword, { data, error: graphqlErrors, loading }] =
     useSetPassword();
@@ -51,23 +51,23 @@ export const PasswordReset: React.FC<IProps> = ({ history }: IProps) => {
     history.push(BASE_URL);
   };
 
-  React.useEffect(() => {
-    if (data && data.setPassword && data.setPassword.token) {
-      setAuthToken(data.setPassword.token);
+  useEffect(() => {
+    if (data?.setPassword?.token) {
+      setAuthToken(data?.setPassword?.token);
       setShowPasswordMessageChanged(true);
     }
-    if (
-      graphqlErrors &&
-      graphqlErrors.extraInfo &&
-      graphqlErrors.extraInfo.userInputErrors
-    ) {
-      graphqlErrors.extraInfo.userInputErrors.filter((error) => {
-        error.field === 'token' ? setTokenError(true) : setTokenError(false);
-        error.field === 'password'
-          ? setPasswordError(error.message)
-          : setPasswordError('');
-      });
-    }
+
+    graphqlErrors?.extraInfo?.userInputErrors?.filter((error) => {
+      switch (error.field) {
+        case 'password':
+          return setPasswordError(error.message);
+        case 'error':
+          return setTokenError(true);
+        default:
+          setTokenError(false);
+          setPasswordError('');
+      }
+    });
   }, [data, graphqlErrors]);
 
   return (
@@ -84,7 +84,7 @@ export const PasswordReset: React.FC<IProps> = ({ history }: IProps) => {
           </div>
           <p className="fa-text-black fa-text-sm">
             <strong className="fa-font-semibold">
-              {user ? user.firstName : 'Hola'},
+              {user?.firstName || 'Hola'},
             </strong>{' '}
             se cambió con éxito tu nueva contraseña
           </p>

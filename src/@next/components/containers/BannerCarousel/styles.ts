@@ -1,7 +1,10 @@
-import { styled } from "@temp/@next/globalStyles";
-import { aunaInteractive, containerWidth } from "@temp/@next/globalStyles/constants";
-import farmatheme from "@farmatheme";
-import { Button } from "@farmacia-retail/farmauna-components";
+import { styled } from '@temp/@next/globalStyles';
+import {
+  aunaInteractive,
+  containerWidth,
+} from '@temp/@next/globalStyles/constants';
+import farmatheme from '@farmatheme';
+import { Button } from '@farmacia-retail/farmauna-components';
 export const BannerCarouselWrapper = styled.div`
   .carousel {
     &__control {
