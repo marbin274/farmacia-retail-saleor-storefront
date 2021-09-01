@@ -45,9 +45,7 @@ const getBannersFromData = (data: MainBanner_mainBanner): BannerType[] => {
 export const Banner: React.FC = () => {
   const history = useHistory();
 
-  const { data: mainBanner, loading: mainBannerLoading } = useMainBanner({
-    fetchPolicy: 'cache-and-network',
-  });
+  const { data: mainBanner, loading: mainBannerLoading } = useMainBanner();
 
   const redirectTo = (url?: string) => {
     if (!url) {
