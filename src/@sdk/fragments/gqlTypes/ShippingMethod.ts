@@ -7,6 +7,11 @@
 // GraphQL fragment: ShippingMethod
 // ====================================================
 
+export interface ShippingMethod_methodType {
+  __typename: "ShippingMethodType";
+  code: string;
+}
+
 export interface ShippingMethod_price {
   __typename: "Money";
   /**
@@ -51,11 +56,8 @@ export interface ShippingMethod {
    * The ID of the object.
    */
   id: string;
+  methodType: ShippingMethod_methodType | null;
   name: string;
-  /**
-   * Flag to recognize if this shipping method has schedules to select.
-   */
-  isScheduled: boolean | null;
   price: ShippingMethod_price | null;
   /**
    * List of filtered schedules a customer can pick.

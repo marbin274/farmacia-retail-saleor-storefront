@@ -205,6 +205,11 @@ export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_check
   alias: string | null;
 }
 
+export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_checkout_availableShippingMethods_methodType {
+  __typename: "ShippingMethodType";
+  code: string;
+}
+
 export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_checkout_availableShippingMethods_price {
   __typename: "Money";
   /**
@@ -249,17 +254,19 @@ export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_check
    * The ID of the object.
    */
   id: string;
+  methodType: UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_checkout_availableShippingMethods_methodType | null;
   name: string;
-  /**
-   * Flag to recognize if this shipping method has schedules to select.
-   */
-  isScheduled: boolean | null;
   price: UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_checkout_availableShippingMethods_price | null;
   /**
    * List of filtered schedules a customer can pick.
    */
   scheduleDates: (UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_checkout_availableShippingMethods_scheduleDates | null)[] | null;
   subtitle: string | null;
+}
+
+export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_checkout_shippingMethod_methodType {
+  __typename: "ShippingMethodType";
+  code: string;
 }
 
 export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_checkout_shippingMethod_price {
@@ -306,11 +313,8 @@ export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_check
    * The ID of the object.
    */
   id: string;
+  methodType: UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_checkout_shippingMethod_methodType | null;
   name: string;
-  /**
-   * Flag to recognize if this shipping method has schedules to select.
-   */
-  isScheduled: boolean | null;
   price: UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_checkout_shippingMethod_price | null;
   /**
    * List of filtered schedules a customer can pick.

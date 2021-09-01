@@ -4,7 +4,7 @@ import * as S from './styles';
 
 export const Skeleton: React.FC = () => {
   return (
-    <div className="container">
+    <S.SkeletonContainer>
       <S.SkeletonProduct>
         <div>
           <SSkeleton />
@@ -17,6 +17,6 @@ export const Skeleton: React.FC = () => {
           <SSkeleton height={10} />
         </S.SkeletonDescription>
       </S.SkeletonProduct>
-    </div>
+    </S.SkeletonContainer>
   );
 };

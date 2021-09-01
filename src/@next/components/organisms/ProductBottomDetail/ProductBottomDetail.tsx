@@ -1,14 +1,14 @@
-import React, { FC } from "react";
-import { ISimpleProduct } from "@sdk/types/IProduct";
-import ItemsHandler from "@temp/@next/components/organisms/ItemsHandler/ItemsHandler";
-import * as S from "./styles";
+import React, { FC } from 'react';
+import { ISimpleProduct } from '@sdk/types/IProduct';
+import ItemsHandler from '@temp/@next/components/organisms/ItemsHandler/ItemsHandler';
+import * as S from './styles';
 import {
   IAddToCartCallback,
   IRemoveItemToCartCallback,
   ISubtractItemToCartCallback,
-} from "@components/molecules/ProductTileAUNA/types";
-import { Thumbnail } from "@components/molecules";
-import { useMediaScreen } from "@temp/@next/globalStyles";
+} from '@components/molecules/ProductTileAUNA/types';
+import { Thumbnail } from '@components/molecules';
+import { useMediaScreen } from '@temp/@next/globalStyles';
 
 type IProps = {
   product: ISimpleProduct;
@@ -33,7 +33,7 @@ export const ProductBottomDetail: FC<IProps> = ({
 
   return (
     <S.Container>
-      <div className="container">
+      <S.ContainerWrapper>
         <S.Content>
           {!hideProductDetails && (
             <S.ProductContent>
@@ -74,7 +74,7 @@ export const ProductBottomDetail: FC<IProps> = ({
             </S.ProductContent>
           )}
         </S.Content>
-      </div>
+      </S.ContainerWrapper>
     </S.Container>
   );
 };

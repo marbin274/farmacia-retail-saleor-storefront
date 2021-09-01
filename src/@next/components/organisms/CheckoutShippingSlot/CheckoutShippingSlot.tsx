@@ -18,6 +18,7 @@ import * as S from './styles';
 import { ICheckoutShippingSlotForm, ICheckoutShippingSlotProps } from './types';
 import { ExpressShippingMethod, ScheduledShippingMethod } from './components';
 import { ISlotScheduleDate } from '@components/organisms/CheckoutShippingProgrammed/types';
+import { isScheduledShippingMethod } from '@temp/core/utils';
 
 /**
  * Shipping method selector used in checkout with instaleap integration.
@@ -45,9 +46,9 @@ export const CheckoutShippingSlot: React.FC<ICheckoutShippingSlotProps> = ({
       dateSelected: !scheduleDate?.date
         ? undefined
         : convertShippingMethodDateToDate(scheduleDate.date),
-      isScheduled:
+      isScheduled: isScheduledShippingMethod(
         shippingMethods?.find((it) => it.id === selectedShippingMethodId)
-          ?.isScheduled || false,
+      ),
       selectedScheduleTimeId: scheduleDate?.scheduleTime?.id || '',
       selectedSlotId: selectedSlotId || '',
       shippingMethod: selectedShippingMethodId,

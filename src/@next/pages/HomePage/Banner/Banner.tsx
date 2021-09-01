@@ -7,7 +7,7 @@ import { SkeletonBanner } from '../skeleton';
 import { MainBanner_mainBanner } from '@sdk/queries/gqlTypes/MainBanner';
 import * as S from './styles';
 import { useMainBanner } from '@temp/@sdk/react';
-import { NotFound } from '@pages';
+import { NotFound } from '../../NotFoundPage';
 
 const baseUrlPattern = /(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})*\/?/;
 
@@ -20,32 +20,34 @@ type BannerType = {
 const getBannersFromData = (data: MainBanner_mainBanner): BannerType[] => {
   return data?.frames
     ? data?.frames.map((banner): BannerType => {
-        const bannerDesktop = banner.images?.find(
-          (it) => it.screenType === 'desktop'
-        );
-        const bannerMobile = banner.images?.find(
-          (it) => it.screenType === 'mobile'
-        );
-        const result: BannerType = {
-          link: banner.link,
-          desktop: bannerDesktop?.url || '',
-          mobile: bannerMobile?.url || '',
-        };
-        return result;
-      })
+      const bannerDesktop = banner.images?.find(
+        (it) => it.screenType === 'desktop'
+      );
+      const bannerMobile = banner.images?.find(
+        (it) => it.screenType === 'mobile'
+      );
+      const result: BannerType = {
+        link: banner.link,
+        desktop: bannerDesktop?.url || '',
+        mobile: bannerMobile?.url || '',
+      };
+      return result;
+    })
     : [
-        {
-          link: null,
-          desktop: BannerDesktop,
-          mobile: BannerMobile,
-        },
-      ];
+      {
+        link: null,
+        desktop: BannerDesktop,
+        mobile: BannerMobile,
+      },
+    ];
 };
 
 export const Banner: React.FC = () => {
   const history = useHistory();
 
-  const { data: mainBanner, loading: mainBannerLoading } = useMainBanner();
+  const { data: mainBanner, loading: mainBannerLoading } = useMainBanner({
+    fetchPolicy: 'cache-and-network',
+  });
 
   const redirectTo = (url?: string) => {
     if (!url) {
@@ -74,7 +76,9 @@ export const Banner: React.FC = () => {
 
   return (
     <S.BannerWrapper className="fa-relative fa-text-center">
-      <BannerCarousel>
+      <BannerCarousel
+        autoplay={banners.length > 1}
+      >
         {banners.map((banner, index) => {
           return (
             <div

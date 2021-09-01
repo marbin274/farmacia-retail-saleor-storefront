@@ -10,7 +10,6 @@ import es from 'date-fns/locale/es';
 import React from 'react';
 import { registerLocale } from 'react-datepicker';
 import { OverlayManager } from '@components/organisms/OverlayManager';
-import '../globalStyles/scss/index.scss';
 import { Header } from './Header';
 
 import { Routes } from './routes';

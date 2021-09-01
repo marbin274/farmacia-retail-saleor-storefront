@@ -1,5 +1,5 @@
 import farmatheme from '@farmatheme';
-import { mediaUp, styled } from '@styles';
+import { ContainerStyle, mediaUp, styled } from '@styles';
 
 export const Wrapper = styled.nav<{ isProductDetail: boolean }>`
   background-color: ${({ isProductDetail }) =>
@@ -15,10 +15,6 @@ export const Wrapper = styled.nav<{ isProductDetail: boolean }>`
     padding: 1rem 0rem;
     z-index: 2;
   `};
-
-  > .container {
-    padding: 0rem;
-  }
 `;
 
 export const ContainerSearch = styled.div`
@@ -45,10 +41,12 @@ export const ContainerSearch = styled.div`
 `;
 
 export const Container = styled.div`
+  ${ContainerStyle}
+  padding: 0rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin: 0 auto;
+
   ${mediaUp.largeScreen`
     flex-direction: row;
   `};

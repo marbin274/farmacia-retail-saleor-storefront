@@ -1,4 +1,4 @@
-import { mediaUp, styled } from '@styles';
+import { ContainerStyle, mediaUp, styled } from '@styles';
 
 export const Paragraph = styled.p`
   font-size: 1.563rem;
@@ -16,4 +16,8 @@ export const WrapperMobile = styled.p`
   font-size: 1.563rem;
   font-weight: 600;
   margin-left: 0.313rem;
+`;
+
+export const Container = styled.div`
+  ${ContainerStyle};
 `;

@@ -1,0 +1,70 @@
+/* purgecss start ignore */
+@tailwind base;
+@tailwind components;
+/* purgecss end ignore */
+@tailwind utilities;
+
+/* Price styles */
+.price {
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px;
+  letter-spacing: 0em;
+}
+.price.outStock_price {
+  color: #9f9fa1;
+  display: inline-block;
+  vertical-align: middle;
+}
+.price.discounted_price {
+  color: #858699;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 1rem;
+}
+.price.discounted_price span,
+.price.discounted_price p {
+  color: #452fba;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+.price.undiscounted_price {
+  text-decoration: line-through;
+  color: #9194a7;
+  font-size: 0.875rem;
+  font-weight: normal;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* React datepicker styles */
+.react-datepicker__header {
+  border-bottom: none;
+  background-color: #e6f6f9;
+  color: #131336;
+  font-size: 0.875rem;
+  line-height: 1rem;
+}
+.react-datepicker__current-month {
+  padding: 0.3rem 0rem 0.8rem;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+.react-datepicker__day:hover {
+  border-radius: 0.8rem;
+}
+.react-datepicker__day-names {
+  background: #fff;
+}
+.react-datepicker__day--selected {
+  border-radius: 0.8rem;
+  background-color: #00b0ca;
+}
+.react-datepicker__day--selected:hover {
+  border-radius: 0.8rem;
+  background-color: #00b0ca;
+}
+.react-datepicker__navigation {
+  top: 15px;
+}

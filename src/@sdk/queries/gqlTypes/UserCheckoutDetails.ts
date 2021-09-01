@@ -203,6 +203,11 @@ export interface UserCheckoutDetails_me_checkout_shippingAddress {
   alias: string | null;
 }
 
+export interface UserCheckoutDetails_me_checkout_availableShippingMethods_methodType {
+  __typename: "ShippingMethodType";
+  code: string;
+}
+
 export interface UserCheckoutDetails_me_checkout_availableShippingMethods_price {
   __typename: "Money";
   /**
@@ -247,17 +252,19 @@ export interface UserCheckoutDetails_me_checkout_availableShippingMethods {
    * The ID of the object.
    */
   id: string;
+  methodType: UserCheckoutDetails_me_checkout_availableShippingMethods_methodType | null;
   name: string;
-  /**
-   * Flag to recognize if this shipping method has schedules to select.
-   */
-  isScheduled: boolean | null;
   price: UserCheckoutDetails_me_checkout_availableShippingMethods_price | null;
   /**
    * List of filtered schedules a customer can pick.
    */
   scheduleDates: (UserCheckoutDetails_me_checkout_availableShippingMethods_scheduleDates | null)[] | null;
   subtitle: string | null;
+}
+
+export interface UserCheckoutDetails_me_checkout_shippingMethod_methodType {
+  __typename: "ShippingMethodType";
+  code: string;
 }
 
 export interface UserCheckoutDetails_me_checkout_shippingMethod_price {
@@ -304,11 +311,8 @@ export interface UserCheckoutDetails_me_checkout_shippingMethod {
    * The ID of the object.
    */
   id: string;
+  methodType: UserCheckoutDetails_me_checkout_shippingMethod_methodType | null;
   name: string;
-  /**
-   * Flag to recognize if this shipping method has schedules to select.
-   */
-  isScheduled: boolean | null;
   price: UserCheckoutDetails_me_checkout_shippingMethod_price | null;
   /**
    * List of filtered schedules a customer can pick.

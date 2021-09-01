@@ -217,6 +217,11 @@ export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_che
   alias: string | null;
 }
 
+export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_availableShippingMethods_methodType {
+  __typename: "ShippingMethodType";
+  code: string;
+}
+
 export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_availableShippingMethods_price {
   __typename: "Money";
   /**
@@ -261,17 +266,19 @@ export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_che
    * The ID of the object.
    */
   id: string;
+  methodType: UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_availableShippingMethods_methodType | null;
   name: string;
-  /**
-   * Flag to recognize if this shipping method has schedules to select.
-   */
-  isScheduled: boolean | null;
   price: UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_availableShippingMethods_price | null;
   /**
    * List of filtered schedules a customer can pick.
    */
   scheduleDates: (UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_availableShippingMethods_scheduleDates | null)[] | null;
   subtitle: string | null;
+}
+
+export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_shippingMethod_methodType {
+  __typename: "ShippingMethodType";
+  code: string;
 }
 
 export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_shippingMethod_price {
@@ -318,11 +325,8 @@ export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_che
    * The ID of the object.
    */
   id: string;
+  methodType: UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_shippingMethod_methodType | null;
   name: string;
-  /**
-   * Flag to recognize if this shipping method has schedules to select.
-   */
-  isScheduled: boolean | null;
   price: UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_shippingMethod_price | null;
   /**
    * List of filtered schedules a customer can pick.
@@ -1084,6 +1088,11 @@ export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_ship
   alias: string | null;
 }
 
+export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_availableShippingMethods_methodType {
+  __typename: "ShippingMethodType";
+  code: string;
+}
+
 export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_availableShippingMethods_price {
   __typename: "Money";
   /**
@@ -1128,17 +1137,19 @@ export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_avai
    * The ID of the object.
    */
   id: string;
+  methodType: UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_availableShippingMethods_methodType | null;
   name: string;
-  /**
-   * Flag to recognize if this shipping method has schedules to select.
-   */
-  isScheduled: boolean | null;
   price: UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_availableShippingMethods_price | null;
   /**
    * List of filtered schedules a customer can pick.
    */
   scheduleDates: (UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_availableShippingMethods_scheduleDates | null)[] | null;
   subtitle: string | null;
+}
+
+export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_shippingMethod_methodType {
+  __typename: "ShippingMethodType";
+  code: string;
 }
 
 export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_shippingMethod_price {
@@ -1185,11 +1196,8 @@ export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_ship
    * The ID of the object.
    */
   id: string;
+  methodType: UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_shippingMethod_methodType | null;
   name: string;
-  /**
-   * Flag to recognize if this shipping method has schedules to select.
-   */
-  isScheduled: boolean | null;
   price: UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_shippingMethod_price | null;
   /**
    * List of filtered schedules a customer can pick.
