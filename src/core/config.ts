@@ -319,3 +319,4 @@ export const FEATURE_PLUGINS = {
   lastMile: 'pharma.lastmile.auna',
 };
 export const DEFAULT_SORT = '-stock';
+export const PHONE_NUMBER = '01 6429911';

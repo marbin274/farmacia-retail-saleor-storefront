@@ -1,4 +1,4 @@
-import { DOCUMENTS_URLS_S3 } from '@temp/core/config';
+import { DOCUMENTS_URLS_S3, PHONE_NUMBER } from '@temp/core/config';
 import classNames from 'classnames';
 import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
@@ -62,7 +62,7 @@ class Nav extends React.PureComponent<IProps, IState> {
               <div className="fa-mt-8 fa-flex fa-items-center">
                 <S.PhoneImg src={iconPhone} alt="logo phone" />
                 <span className="fa-text-h3 xs:fa-text-h2 fa-font-semibold fa-text-white">
-                  01 3913655
+                  {PHONE_NUMBER}
                 </span>
               </div>
             </S.SectionContent>
