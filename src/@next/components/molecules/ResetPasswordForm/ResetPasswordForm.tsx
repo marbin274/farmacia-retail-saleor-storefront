@@ -1,6 +1,6 @@
 import FormIcon from 'images/auna/reset-password-enter-new-password.svg';
 import React from 'react';
-import { ReactSVG } from 'react-svg';
+import ReactSVG from 'react-svg';
 import * as S from './styles';
 import { IProps } from './types';
 import { Button, InputField } from '@farmacia-retail/farmauna-components';
@@ -24,7 +24,7 @@ export const ResetPasswordForm: React.FC<IProps> = ({
               Restaurar contraseña
             </div>
             <ReactSVG
-              src={FormIcon}
+              path={FormIcon}
               className="fa-pb-8 fa-text-center"
               svgClassName="fa-mx-auto fa-my-auto"
             />

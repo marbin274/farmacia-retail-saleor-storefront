@@ -24,7 +24,7 @@ import classNames from 'classnames';
 import logoImg from 'images/logo.svg';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ReactSVG } from 'react-svg';
+import ReactSVG from 'react-svg';
 import * as S from './styles';
 import { IProps } from './types';
 
@@ -133,7 +133,7 @@ const Header: React.FC<IProps> = ({
   const renderHeaderLogo = () => {
     return (
       <Link onClick={removePaymentItems} to={appPaths.baseUrl}>
-        <ReactSVG src={logoImg} onClick={closeSearch} />
+        <ReactSVG path={logoImg} onClick={closeSearch} />
       </Link>
     );
   };

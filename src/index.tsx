@@ -20,6 +20,7 @@ import * as React from 'react';
 import { positions, Provider as AlertProvider, useAlert } from 'react-alert';
 import { render } from 'react-dom';
 import TagManager from 'react-gtm-module';
+import { hot } from 'react-hot-loader';
 import { Route, Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { QueryParamProvider } from 'use-query-params';
@@ -88,7 +89,7 @@ const startApp = async () => {
     return children(apolloClient);
   };
 
-  const Root = () => {
+  const Root = hot(module)(() => {
     const Notifications = () => {
       const alert = useAlert();
 
@@ -144,7 +145,7 @@ const startApp = async () => {
         </QueryParamProvider>
       </Router>
     );
-  };
+  });
 
   switch (environmentName) {
     case 'qa':
@@ -193,6 +194,11 @@ const startApp = async () => {
     </OptimizelyProvider>,
     document.getElementById('root')
   );
+
+  // Hot Module Replacement API
+  if (module.hot) {
+    module.hot.accept();
+  }
 };
 
 startApp();

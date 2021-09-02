@@ -1,6 +1,6 @@
 import { mediaUp, styled } from '@styles';
 import { aunaComplementary1 } from '@temp/@next/globalStyles/constants';
-import { ReactSVG } from 'react-svg';
+import ReactSVG from 'react-svg';
 
 export const Wrapper = styled.div`
   width: calc(100vw - 2rem);

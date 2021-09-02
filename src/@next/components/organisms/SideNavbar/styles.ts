@@ -1,11 +1,11 @@
-import { styled } from '@styles';
-import { Link as _Link } from 'react-router-dom';
-import { ReactSVG } from 'react-svg';
-import { css } from 'styled-components';
+import { styled } from "@styles";
+import { Link as _Link } from "react-router-dom";
+import ReactSVG from "react-svg";
+import { css } from "styled-components";
 
-import { NavLink as _NavLink } from '@components/atoms';
+import { NavLink as _NavLink } from "@components/atoms";
 
-import { NAVBAR_HEIGHT } from '../TopNavbar/styles';
+import { NAVBAR_HEIGHT } from "../TopNavbar/styles";
 
 const MenuItemStyles = css`
   cursor: pointer;
@@ -53,11 +53,11 @@ export const Bar = styled.div`
   justify-content: space-between;
   height: ${NAVBAR_HEIGHT};
   padding: 0 15px;
-  border-bottom: 1px solid ${(props) => props.theme.colors.divider};
+  border-bottom: 1px solid ${props => props.theme.colors.divider};
 `;
 
 export const Menu = styled.ul`
-  background-color: ${(props) => props.theme.colors.white};
+  background-color: ${props => props.theme.colors.white};
   position: absolute;
   width: 100%;
   height: 100%;

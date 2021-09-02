@@ -5,7 +5,7 @@ import { useSetPassword, useUserDetails } from '@sdk/react';
 import { BASE_URL } from '@temp/core/config';
 import { Formik } from 'formik';
 import resetPasswordChangedIcon from 'images/auna/reset-password-changed.svg';
-import { ReactSVG } from 'react-svg';
+import ReactSVG from 'react-svg';
 import { StringParam, useQueryParams } from 'use-query-params';
 import { passwordResetSchema } from './PasswordReset.schema';
 import * as S from './styles';
@@ -73,10 +73,10 @@ export const PasswordReset: React.FC<IProps> = ({ history }: IProps) => {
   return (
     <S.Wrapper>
       {showPasswordMessageChanged ? (
-        <div className="password-changed-confirm fa-bg-white fa-w-88 fa-py-7 fa-px-8 fa-text-center fa-my-10 fa-mx-0 fa-rounded-3xl md:fa-w-96 md:fa-py-10 md:fa-px-12">
+        <div className="password-changed-confirm  fa-bg-white fa-w-88 fa-py-7 fa-px-8 fa-text-center fa-my-10 fa-mx-0 fa-rounded-3xl md:fa-w-96 md:fa-py-10 md:fa-px-12">
           <ReactSVG
-            className="fa-mx-auto fa-my-0"
-            src={resetPasswordChangedIcon}
+            svgClassName="fa-mx-auto fa-my-0"
+            path={resetPasswordChangedIcon}
           />
 
           <div className="fa-text-2xl fa-font-semibold fa-text-black fa-text-center fa-py-8 ">

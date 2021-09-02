@@ -1,8 +1,8 @@
-import React from 'react';
-import { ReactSVG } from 'react-svg';
+import React from "react";
+import ReactSVG from "react-svg";
 
 import * as S from './styles';
-import mailIcon from 'images/mail-icon.svg';
+import mailIcon from "images/mail-icon.svg";
 
 export interface IProps {
   link: string;
@@ -19,7 +19,7 @@ export const EmailLink: React.FC<IProps> = ({
     <a href={link}>
       {showIcon && (
         <S.EmailIcon>
-          <ReactSVG src={mailIcon} />
+          <ReactSVG path={mailIcon}/>
         </S.EmailIcon>
       )}
       <span>{title ? title : link}</span>

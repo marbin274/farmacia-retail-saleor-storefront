@@ -1,11 +1,11 @@
-import { media, styled } from '@styles';
-import { ReactSVG } from 'react-svg';
+import { media, styled } from "@styles";
+import ReactSVG from "react-svg";
 
-export const NAVBAR_HEIGHT = '3.55rem';
+export const NAVBAR_HEIGHT = "3.55rem";
 
 export const Wrapper = styled.div`
-  background-color: ${(props) => props.theme.colors.white};
-  border-bottom: 1px solid ${(props) => props.theme.colors.light};
+  background-color: ${props => props.theme.colors.white};
+  border-bottom: 1px solid ${props => props.theme.colors.light};
   display: flex;
   justify-content: space-between;
   height: ${NAVBAR_HEIGHT};
@@ -53,7 +53,7 @@ export const LogoWrapper = styled(ReactSVG)`
 `;
 
 export const IconWrapper = styled.button`
-  margin: 0 ${(props) => props.theme.spacing.spacer};
+  margin: 0 ${props => props.theme.spacing.spacer};
 
   path {
     transition: 0.3s;
@@ -61,17 +61,17 @@ export const IconWrapper = styled.button`
 
   &:hover {
     path {
-      fill: ${(props) => props.theme.colors.primary};
+      fill: ${props => props.theme.colors.primary};
     }
   }
 `;
 
 export const SearchButton = styled.button`
-  border-left: 1px solid ${(props) => props.theme.colors.light};
+  border-left: 1px solid ${props => props.theme.colors.light};
   display: flex;
   height: 100%;
   align-items: center;
-  padding: 0 ${(props) => props.theme.spacing.spacer};
+  padding: 0 ${props => props.theme.spacing.spacer};
   transition: all 0.3s;
 
   path {
@@ -79,16 +79,16 @@ export const SearchButton = styled.button`
   }
 
   &:hover {
-    color: ${(props) => props.theme.colors.primary};
+    color: ${props => props.theme.colors.primary};
     path {
-      fill: ${(props) => props.theme.colors.primary};
+      fill: ${props => props.theme.colors.primary};
     }
   }
 `;
 
 export const Text = styled.span`
-  font-size: ${(props) => props.theme.typography.baseFontSize};
-  font-weight: ${(props) => props.theme.typography.boldFontWeight};
+  font-size: ${props => props.theme.typography.baseFontSize};
+  font-weight: ${props => props.theme.typography.boldFontWeight};
   margin-right: 2rem;
 `;
 

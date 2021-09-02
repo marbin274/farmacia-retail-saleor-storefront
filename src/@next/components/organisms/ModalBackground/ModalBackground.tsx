@@ -1,10 +1,10 @@
-import { useMediaScreen } from '@temp/@next/globalStyles';
-import closeDesktop from '@temp/images/close-mobile-desktop.svg';
-import closeMobile from '@temp/images/close-modal-mobile.svg';
-import React from 'react';
-import { ReactSVG } from 'react-svg';
-import * as S from './styles';
-import { IProps } from './types';
+import { useMediaScreen } from "@temp/@next/globalStyles";
+import closeDesktop from "@temp/images/close-mobile-desktop.svg";
+import closeMobile from "@temp/images/close-modal-mobile.svg";
+import React from "react";
+import ReactSVG from "react-svg";
+import * as S from "./styles";
+import { IProps } from "./types";
 
 export const ModalBackground: React.FC<IProps> = ({
   hide,
@@ -20,7 +20,7 @@ export const ModalBackground: React.FC<IProps> = ({
       <S.ModalContainer>
         <S.Modal imageDesktop={imageDesktop} imageMobile={imageMobile}>
           <S.CloseDiv onClick={hide}>
-            <ReactSVG src={isMobileScreen ? closeMobile : closeDesktop} />
+            <ReactSVG path={isMobileScreen ? closeMobile : closeDesktop} />
           </S.CloseDiv>
         </S.Modal>
       </S.ModalContainer>

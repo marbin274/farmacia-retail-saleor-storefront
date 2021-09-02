@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ReactSVG } from 'react-svg';
+import ReactSVG from 'react-svg';
 import letterImg from 'images/auna/reset-password-mail-sent.svg';
 import { useHistory } from 'react-router';
 import { Button } from '@farmacia-retail/farmauna-components';
@@ -23,7 +23,7 @@ const UserRegistered: React.FC<any> = ({}: any) => {
   return (
     <div className="fa-h-screen fa-p-0 fa-text-base fa-flex fa-flex-col fa-items-center fa-max-w-full fa-my-16 fa-mx-auto">
       <div className="fa-text-center fa-mb-4">
-        <ReactSVG className="fa-mx-auto fa-my-0" src={letterImg} />
+        <ReactSVG svgClassName="fa-mx-auto fa-my-0" path={letterImg} />
       </div>
       <div className="fa-text-center fa-mb-6 fa-w-full fa-text-xl md:fa-text-2xl">
         <p className="fa-font-semibold">Revisa tu correo electrónico</p>
