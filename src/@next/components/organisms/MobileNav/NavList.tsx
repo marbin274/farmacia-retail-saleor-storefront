@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import ReactSVG from 'react-svg';
+import { ReactSVG } from 'react-svg';
 import { baseUrl } from '@temp/app/routes';
 import logoImg from '../../../../images/logo.svg';
 import NavItem, { INavItem } from './components/NavItem';
@@ -57,7 +57,7 @@ export const NavList: React.FC<NavListProps> = ({
             icon={<IconHamburger open />}
           />
           <Link className="fa-mx-auto" to={baseUrl} onClick={hideOverlay}>
-            <ReactSVG path={logoImg} />
+            <ReactSVG src={logoImg} />
           </Link>
         </S.NavMenuHeader>
         {!openParent ? (

@@ -1,5 +1,5 @@
 import { DefaultTheme, styled } from '@styles';
-import ReactSVG from 'react-svg';
+import { ReactSVG } from 'react-svg';
 
 type WrapperProps = {
   active: boolean;

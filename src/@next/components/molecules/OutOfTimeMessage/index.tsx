@@ -1,6 +1,6 @@
 import OutOfTimeIcon from '@temp/images/auna/out-of-time.svg';
 import * as React from 'react';
-import ReactSVG from 'react-svg';
+import { ReactSVG } from 'react-svg';
 
 export interface IProps {
   isShippingAvailable: boolean;
@@ -11,7 +11,7 @@ export const OutOfTimeMessage = ({ isShippingAvailable }: IProps) => {
     <div className="fa-flex fa-flex-wrap fa-items-center fa-mt-4 fa-rounded-2xl fa-p-4 fa-max-w-xs fa-bg-informative-lightest fa-text-black">
       <div className="fa-flex fa-items-center">
         <ReactSVG
-          path={OutOfTimeIcon}
+          src={OutOfTimeIcon}
           className="fa-my-0 fa-mr-2 fa-pt-2 fa-w-20"
         />
         <div className="fa-text-sm fa-font-semibold">

@@ -1,7 +1,7 @@
 import { Overlay } from '@components/organisms';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
-import ReactSVG from 'react-svg';
+import { ReactSVG } from 'react-svg';
 import { Button } from '@farmacia-retail/farmauna-components';
 import { alertService } from './AlertService';
 import * as S from './styles';
@@ -60,7 +60,7 @@ export const Alert: React.FC<any> = () => {
       <S.Modal>
         {alert.type !== 'Text' && (
           <S.Icon className="icon">
-            <ReactSVG path={alert.icon || alertTypes[alert.type].icon} />
+            <ReactSVG src={alert.icon || alertTypes[alert.type].icon} />
           </S.Icon>
         )}
         <S.Title>{alert.title || alertTypes[alert.type].title}</S.Title>

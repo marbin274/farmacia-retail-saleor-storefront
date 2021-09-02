@@ -9,7 +9,7 @@ import { Icon, InputLabel, Select } from '@components/atoms';
 import farmatheme from '@farmatheme';
 import * as S from './styles';
 import { IInputSelectProps } from './types';
-import ReactSVG from 'react-svg';
+import { ReactSVG } from 'react-svg';
 
 export const InputSelect: React.FC<IInputSelectProps> = ({
   label,
@@ -89,7 +89,7 @@ export const InputSelect: React.FC<IInputSelectProps> = ({
           <S.DropdownIndicator withArrow={!indicatorIcon}>
             {indicatorIcon ? (
               typeof indicatorIcon === 'string' ? (
-                <ReactSVG path={indicatorIcon} />
+                <ReactSVG src={indicatorIcon} />
               ) : (
                 indicatorIcon
               )
