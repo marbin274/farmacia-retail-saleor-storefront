@@ -44,4 +44,14 @@ describe('<Address />', () => {
     const city = screen.getByText(DEFAULT_PROPS.address.city);
     expect(city).toBeDefined();
   });
+
+  it('render information without alias', () => {
+    const props = { ...DEFAULT_PROPS };
+    props.address.alias = null;
+    render(<Address {...DEFAULT_PROPS} />);
+    const alias = screen.getByTestId('address-title');
+    expect(alias.textContent).toBe(
+      `${DEFAULT_PROPS.address.firstName} ${DEFAULT_PROPS.address.lastName}`
+    );
+  });
 });

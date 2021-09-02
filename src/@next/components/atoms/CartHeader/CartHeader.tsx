@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 
-import * as S from "./styles";
+import * as S from './styles';
 
 /**
  * Cart header to use with conjunction of cart rows.
  */
 const CartHeader: React.FC = () => {
   return (
-    <S.Wrapper>
+    <S.Wrapper data-testid="cart-header">
       <S.Column>Products</S.Column>
       <S.Column>Price</S.Column>
       <S.Column>Quantity</S.Column>

@@ -24,6 +24,7 @@ import {
 } from '@temp/core/utils';
 import React from 'react';
 import * as S from './styles';
+import { launchDetailProductEvent } from '@temp/@sdk/gaConfig';
 
 // TODO: Add as soon as we need to add related products
 // import OtherProducts from "./Other";
@@ -50,6 +51,20 @@ export const Page: React.FC<IProps> = (props) => {
   );
   const { canAddToCart } = checkProductCanAddToCart(simpleProduct, items);
   const { isOnSale, isOutStock } = productStickerRules(simpleProduct);
+  const [detailGaEventSended, setDetailGaEventSended] =
+    React.useState<boolean>(false);
+
+  React.useEffect(() => {
+    if (!detailGaEventSended) {
+      setDetailGaEventSended(true);
+      launchDetailProductEvent(
+        product?.name,
+        product?.variants[0]?.sku as string,
+        product?.variants[0]?.pricing?.price?.gross?.amount as number,
+        product?.category?.name
+      );
+    }
+  }, []);
 
   const renderProductRightInfo = () => (
     <>

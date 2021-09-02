@@ -18,12 +18,13 @@ export const Checkbox: React.FC<IProps> = ({
   const ref = React.useRef<HTMLDivElement>(null);
 
   return (
-    <S.Checkbox ref={ref} style={{ ...parentStyles }}>
+    <S.Checkbox data-testid="checkbox" ref={ref} style={{ ...parentStyles }}>
       <S.Label
+        data-testid="checkbox-input"
         htmlFor={props?.id}
         onClick={(evt) => {
           evt.preventDefault();
-          if (!props.disabled) {
+          if (!props.disabled && !props.readOnly) {
             onChange(evt);
             if (ref.current) {
               ref.current.blur();
@@ -56,7 +57,7 @@ export const Checkbox: React.FC<IProps> = ({
           </S.Span>
         </div>
       </S.Label>
-      <S.Children>{children}</S.Children>
+      <S.Children data-testid="checkbox-label">{children}</S.Children>
     </S.Checkbox>
   );
 };
