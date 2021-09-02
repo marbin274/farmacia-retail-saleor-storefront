@@ -17,7 +17,7 @@ jobs:
       id: "tag"
       uses: "anothrNick/github-tag-action@1.30.0"
       env:
-        DEFAULT_BUMP: minor
+        DEFAULT_BUMP: none
         GITHUB_TOKEN: ${{ secrets.GHA_GITHUB_TOKEN }}
         REPO_OWNER: farmacia-retail
         WITH_V: true

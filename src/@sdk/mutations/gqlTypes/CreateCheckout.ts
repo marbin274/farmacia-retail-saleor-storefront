@@ -1,5 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 import { CheckoutCreateInput, CheckoutErrorCode } from "./../../gqlTypes/globalTypes";
@@ -11,8 +12,7 @@ import { CheckoutCreateInput, CheckoutErrorCode } from "./../../gqlTypes/globalT
 export interface CreateCheckout_checkoutCreate_errors {
   __typename: "Error";
   /**
-   * Name of a field that caused the error. A value of `null` indicates that the
-   * error isn't associated with a particular field.
+   * Name of a field that caused the error. A value of `null` indicates that the error isn't associated with a particular field.
    */
   field: string | null;
   /**
@@ -36,8 +36,7 @@ export interface CreateCheckout_checkoutCreate_checkoutErrors_products {
 export interface CreateCheckout_checkoutCreate_checkoutErrors {
   __typename: "CheckoutError";
   /**
-   * Name of a field that caused the error. A value of `null` indicates that the
-   * error isn't associated with a particular field.
+   * Name of a field that caused the error. A value of `null` indicates that the error isn't associated with a particular field.
    */
   field: string | null;
   /**
@@ -847,10 +846,22 @@ export interface CreateCheckout_checkoutCreate_checkout {
   discount: CreateCheckout_checkoutCreate_checkout_discount | null;
   discountName: string | null;
   translatedDiscountName: string | null;
+  /**
+   * Voucher code
+   */
   voucherCode: string | null;
+  /**
+   * Voucher type
+   */
   voucherType: string | null;
+  /**
+   * Voucher discount type
+   */
   voucherDiscountType: string | null;
-  voucherDiscountValue: number;
+  /**
+   * Voucher discount value
+   */
+  voucherDiscountValue: number | null;
   documentNumber: string | null;
   termsAndConditions: boolean;
   dataTreatmentPolicy: boolean;

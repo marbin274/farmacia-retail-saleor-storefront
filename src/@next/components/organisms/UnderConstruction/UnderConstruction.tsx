@@ -3,7 +3,7 @@ import {
   Overlay,
   OverlayContextInterface,
 } from '@temp/@next/components/organisms/OverlayComponent';
-import { CONSULTATION_EMAIL } from '@temp/core/config';
+import { CONSULTATION_EMAIL, PHONE_NUMBER } from '@temp/core/config';
 import React from 'react';
 import ReactSVG from 'react-svg';
 import * as S from './styles';
@@ -25,7 +25,7 @@ export const UnderConstruction: React.FC<{ overlay: OverlayContextInterface }> =
               </p>
               <p>Si tienes algún obstáculo durante tu visita, cuéntanos a:</p>
               <br />
-              <EmailLink link={CONSULTATION_EMAIL} /> o <span>01 3913655</span>
+              <EmailLink link={CONSULTATION_EMAIL} /> o <span>{PHONE_NUMBER}</span>
             </S.CardText>
 
             <S.CardImageContainer>

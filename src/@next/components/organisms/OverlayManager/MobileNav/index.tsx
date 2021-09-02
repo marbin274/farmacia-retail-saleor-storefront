@@ -1,6 +1,7 @@
 import { Button } from '@farmacia-retail/farmauna-components';
 import { generateCategoryUrl } from '@temp/core/utils';
 import * as React from 'react';
+import { PHONE_NUMBER } from '@temp/core/config';
 import { Link } from 'react-router-dom';
 import {
   Overlay,
@@ -64,7 +65,7 @@ const MobileNav: React.FC<{ overlay: OverlayContextInterface }> = ({
           <ContactPhoneWrapper className="fa-border-t fa-border-solid fa-border-gray-light fa-flex fa-items-center">
             <img src={phoneSvg} alt="phone-icon" />
             <span className="fa-text-h2 fa-leading-6 fa-text-primary-medium fa-font-semibold">
-              01 3913655
+              {PHONE_NUMBER}
             </span>
           </ContactPhoneWrapper>
         </div>

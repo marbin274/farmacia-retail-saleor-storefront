@@ -53,10 +53,10 @@ export interface ICheckoutModelLineVariantLocalStorage {
     id: string | undefined;
     name: string | undefined;
     pricing?:
-      | ProductDetails_product_variants_pricing
-      | IProductVariantPricing
-      | undefined
-      | null;
+    | ProductDetails_product_variants_pricing
+    | IProductVariantPricing
+    | undefined
+    | null;
     quantityAvailable?: number;
     category?: ICategory | null;
   };
@@ -112,7 +112,7 @@ export interface ICheckoutModelPromoCodeDiscount {
   discountName?: string | null;
   voucherType?: string | null;
   voucherDiscountType?: string | null;
-  voucherDiscountValue?: number | undefined;
+  voucherDiscountValue?: number | undefined | null;
   message?: string | null;
 }
 
