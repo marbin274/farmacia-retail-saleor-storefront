@@ -4,14 +4,15 @@ export const shippingMethodsQuery = gql`
   query GetShippingMethods($lines: [CheckoutLineInput]!) {
     potentialShippingMethods(lines: $lines) {
       id
-      isScheduled
       maximumOrderPrice {
         amount
         currency
         culture
       }
       methodType {
+        id
         code
+        name
       }
       minimumOrderPrice {
         amount
