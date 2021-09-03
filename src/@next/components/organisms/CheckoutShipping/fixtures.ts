@@ -6,7 +6,9 @@ const shippingMethods: IAvailableShippingMethods = [
     id: '1',
     methodType: {
       __typename: 'ShippingMethodType',
+      id: '',
       code: 'EXPRESS',
+      name: '',
     },
     name: '75 minutos aproximadamente',
     price: {
@@ -23,7 +25,9 @@ const shippingMethods: IAvailableShippingMethods = [
     id: '2',
     methodType: {
       __typename: 'ShippingMethodType',
+      id: '',
       code: 'EXPRESS',
+      name: '',
     },
     name: '75 minutos aproximadamente',
     price: {
