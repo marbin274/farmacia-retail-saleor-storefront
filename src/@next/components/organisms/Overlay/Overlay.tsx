@@ -1,31 +1,30 @@
-import React from "react";
-import * as ReactDOM from "react-dom";
-import { Transition } from "react-transition-group";
+import React from 'react';
+import * as ReactDOM from 'react-dom';
+import { Transition } from 'react-transition-group';
 
-import * as S from "./styles";
-import { IProps } from "./types";
-
-const modalRoot = document.getElementById("modal-root");
+import * as S from './styles';
+import { IProps } from './types';
 
 export const Overlay: React.FC<IProps> = ({
   children,
   className,
   duration = 600,
   hide,
-  position = "center",
+  position = 'center',
   show,
   transparent = false,
-  target = modalRoot,
+  target,
 }: IProps) => {
   const animationProps = {
     open: show,
     position,
   };
+  const targetDom = target || document.getElementById('modal-root');
   return (
-    target &&
+    targetDom &&
     ReactDOM.createPortal(
       <Transition in={show} timeout={duration} unmountOnExit>
-        {state => (
+        {(state) => (
           <S.Overlay
             className={className}
             {...animationProps}
@@ -46,7 +45,7 @@ export const Overlay: React.FC<IProps> = ({
           </S.Overlay>
         )}
       </Transition>,
-      target
+      targetDom
     )
   );
 };

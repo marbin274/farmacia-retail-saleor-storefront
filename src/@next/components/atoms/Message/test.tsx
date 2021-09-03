@@ -39,4 +39,30 @@ describe('<Message />', () => {
     fireEvent.click(closeButton);
     expect(onClick).toHaveBeenCalledTimes(1);
   });
+
+  it('click on action text without title', () => {
+    const onClick = jest.fn();
+    render(
+      <Message title="" onClick={onClick} actionText="test">
+        Contenido
+      </Message>
+    );
+    const closeButton = screen.getByRole('action-button');
+    expect(closeButton).toBeInTheDocument();
+    fireEvent.click(closeButton);
+    expect(onClick).toHaveBeenCalledTimes(1);
+  });
+
+  it('click on close button without title', () => {
+    const onClick = jest.fn();
+    render(
+      <Message title="" onClick={onClick}>
+        Contenido
+      </Message>
+    );
+    const closeButton = screen.getByRole('close-button');
+    expect(closeButton).toBeInTheDocument();
+    fireEvent.click(closeButton);
+    expect(onClick).toHaveBeenCalledTimes(1);
+  });
 });

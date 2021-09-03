@@ -41,7 +41,10 @@ export const Address: FC<IAddressProps> = ({ address, hasError }) => {
         <p data-testid="address-title">{getTitle()}</p>
       </div>
       <p className="fa-text-sm fa-font-semibold fa-mb-1">{address.city}</p>
-      <p className={`fa-mb-1 ${hasError ? 'fa-text-error-medium' : ''}`}>
+      <p
+        data-testid="address-description"
+        className={`fa-mb-1 ${hasError ? 'fa-text-error-medium' : ''}`}
+      >
         {address.streetAddress1}
       </p>
       <p className="fa-text-sm fa-text-neutral-dark fa-mb-1">
