@@ -9,7 +9,7 @@ import {
   IShippingMethodUpdate,
   IShippingMethodUpdateScheduleDate,
 } from '@temp/@sdk/repository';
-import { SHIPPING_FORMAT_DATE } from '@temp/core/config';
+import { SHIPPING_FORMAT_DATE, SHIPPING_TYPES } from '@temp/core/config';
 import { format } from 'date-fns';
 import { useFormik } from 'formik';
 import React from 'react';
@@ -143,22 +143,58 @@ export const CheckoutShippingSlot: React.FC<ICheckoutShippingSlotProps> = ({
     return (
       <form id={formId} ref={formRef} onSubmit={handleSubmit}>
         <div className="fa-grid fa-grid-cols-1 lg:fa-grid-cols-2 fa-gap-x-8 fa-relative">
-          <ExpressShippingMethod
-            slots={slots}
-            shippingMethods={shippingMethods}
-            formikErrors={formikErrors}
-            values={values}
-            onClick={handleOnclick}
-          />
-          <ScheduledShippingMethod
-            slots={slots}
-            shippingMethods={shippingMethods}
-            formikErrors={formikErrors}
-            values={values}
-            setFieldValue={setFieldValue}
-            setShippingMethod={setShippingMethod}
-            onClick={handleOnclick}
-          />
+          {shippingMethods.map((shippingMethod) => {
+            const { id, methodType } = shippingMethod;
+
+            if (!methodType?.code) {
+              return;
+            }
+
+            switch (methodType?.code) {
+              case SHIPPING_TYPES.express:
+              case SHIPPING_TYPES.expressPrime:
+                return (
+                  <ExpressShippingMethod
+                    key={id}
+                    shippingSlots={slots?.express}
+                    shippingMethod={shippingMethod}
+                    formikErrors={formikErrors}
+                    values={values}
+                    onClick={handleOnclick}
+                  />
+                );
+
+              case SHIPPING_TYPES.expressNextDay:
+                return (
+                  <ExpressShippingMethod
+                    key={id}
+                    shippingSlots={(slots as any)?.nextday}
+                    shippingMethod={shippingMethod}
+                    formikErrors={formikErrors}
+                    values={values}
+                    onClick={handleOnclick}
+                  />
+                );
+
+              case SHIPPING_TYPES.scheduled:
+              case SHIPPING_TYPES.scheduledPrime:
+                return (
+                  <ScheduledShippingMethod
+                    key={id}
+                    shippingSlots={slots?.scheduled}
+                    shippingMethod={shippingMethod}
+                    formikErrors={formikErrors}
+                    values={values}
+                    setFieldValue={setFieldValue}
+                    setShippingMethod={setShippingMethod}
+                    onClick={handleOnclick}
+                  />
+                );
+
+              default:
+                return null;
+            }
+          })}
         </div>
         {!!shippingMethods?.length &&
           formikErrors?.shippingMethod &&

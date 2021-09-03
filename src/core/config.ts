@@ -322,10 +322,16 @@ export const DEFAULT_SORT = '-stock';
 
 export const SHIPPING_TYPES = {
   express: 'EXPRESS',
+  expressPrime: 'EXPRESS_PRIME',
+  expressNextDay: 'EXPRESS_NEXTDAY',
   scheduled: 'SCHEDULED',
+  scheduledPrime: 'SCHEDULED_PRIME',
 };
 
-export const SHIPPING_SUBTYPES = {
+export const SHIPPING_TYPE_KEYWORDS = {
+  express: 'EXPRESS',
+  scheduled: 'SCHEDULED',
   prime: 'PRIME',
 };
+
 export const PHONE_NUMBER = '01 6429911';

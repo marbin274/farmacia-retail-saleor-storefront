@@ -1,5 +1,5 @@
 import { Checkout_availableShippingMethods } from '@temp/@sdk/fragments/gqlTypes/Checkout';
-import { SHIPPING_TYPES, SHIPPING_SUBTYPES } from '../config';
+import { SHIPPING_TYPE_KEYWORDS } from '../config';
 
 export const isPrimeShippingMethod = (
   shippingMethod: Partial<Checkout_availableShippingMethods>
@@ -8,7 +8,7 @@ export const isPrimeShippingMethod = (
     return false;
   }
 
-  return shippingMethod.methodType.code.includes(SHIPPING_SUBTYPES.prime);
+  return shippingMethod.methodType.code.includes(SHIPPING_TYPE_KEYWORDS.prime);
 };
 
 export const isScheduledShippingMethod = (
@@ -18,7 +18,9 @@ export const isScheduledShippingMethod = (
     return false;
   }
 
-  return shippingMethod.methodType.code.includes(SHIPPING_TYPES.scheduled);
+  return shippingMethod.methodType.code.includes(
+    SHIPPING_TYPE_KEYWORDS.scheduled
+  );
 };
 
 export const isExpressShippingMethod = (
@@ -28,5 +30,7 @@ export const isExpressShippingMethod = (
     return false;
   }
 
-  return shippingMethod.methodType.code.includes(SHIPPING_TYPES.express);
+  return shippingMethod.methodType.code.includes(
+    SHIPPING_TYPE_KEYWORDS.express
+  );
 };
