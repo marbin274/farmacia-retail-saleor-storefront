@@ -147,7 +147,7 @@ const ItemsHandler: FC<IProps> = ({
           </div>
           {!canAddToCart && isLimitMax && (
             <div className="fa-text-center">
-              <span className="fa-bg-informative-lightest fa-text-warning-medium fa-text-xs">
+              <span className="fa-text-warning-medium fa-text-xs">
                 Max. {stockLimitMax} por promoción
               </span>
             </div>

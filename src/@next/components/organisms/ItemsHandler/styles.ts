@@ -1,6 +1,6 @@
-import { styled } from '@styles';
 import { Button } from '@farmacia-retail/farmauna-components';
 import farmatheme from '@farmatheme';
+import { styled } from '@styles';
 
 export const AddRemoveButton = styled(Button)`
   align-items: center;
@@ -33,9 +33,9 @@ export const AddRemoveButton = styled(Button)`
   }
 
   &:disabled {
-    background-color: $auna-complementary1;
+    background-color: #e6f6f9;
     cursor: not-allowed !important;
-    color: ${farmatheme.theme.colors.gray['02']}!important;
+    color: #9194a7 !important;
   }
 
   &:active {

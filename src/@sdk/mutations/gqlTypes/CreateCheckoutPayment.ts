@@ -219,7 +219,12 @@ export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout_shippingAd
 
 export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout_availableShippingMethods_methodType {
   __typename: "ShippingMethodType";
+  /**
+   * The ID of the object.
+   */
+  id: string;
   code: string;
+  name: string;
 }
 
 export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout_availableShippingMethods_price {
@@ -278,7 +283,12 @@ export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout_availableS
 
 export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout_shippingMethod_methodType {
   __typename: "ShippingMethodType";
+  /**
+   * The ID of the object.
+   */
+  id: string;
   code: string;
+  name: string;
 }
 
 export interface CreateCheckoutPayment_checkoutPaymentCreate_checkout_shippingMethod_price {

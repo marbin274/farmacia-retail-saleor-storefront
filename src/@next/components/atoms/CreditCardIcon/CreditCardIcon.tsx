@@ -17,7 +17,7 @@ const providers = new Map();
 providers.set('visa', visaImg);
 providers.set('maestro', maestroImg);
 providers.set('mastercard', mastercardImg);
-providers.set('american-express', americanExpress);
+providers.set('amex', americanExpress);
 providers.set('diners-club', dinersClub);
 providers.set('jcb', jcbImg);
 providers.set('discover', discoverImg);
@@ -28,7 +28,10 @@ export const CreditCardIcon: React.FC<IProps> = ({
   return (
     <S.CreditCardIcon>
       {providers.has(creditCardProvider) && (
-        <ReactSVG src={providers.get(creditCardProvider)} />
+        <ReactSVG
+          role={`payment-${creditCardProvider}`}
+          src={providers.get(creditCardProvider)}
+        />
       )}
     </S.CreditCardIcon>
   );

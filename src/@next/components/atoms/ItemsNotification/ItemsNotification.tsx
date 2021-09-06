@@ -72,14 +72,14 @@ export const ItemsNotification: React.FC<any> = () => {
   };
 
   return notifications.length > 0 ? (
-    <S.NotificationContainer>
+    <S.NotificationContainer data-testid="notification-container">
       <S.ItemNotification>
         <S.Header>
           <S.HeaderTitleEvent>
             <S.HeaderCheckContainer>
               <CheckIcon />
             </S.HeaderCheckContainer>
-            <p>
+            <p data-testid="notification-title">
               {notifications.length > 1
                 ? 'Productos Agregados'
                 : 'Producto Agregado'}
@@ -90,11 +90,13 @@ export const ItemsNotification: React.FC<any> = () => {
         <S.Body>
           {notifications.map((message, index) => {
             return (
-              <S.Item key={index}>
+              <S.Item key={index} role="notification-items">
                 <S.ItemImage>
                   <Thumbnail source={getSourceFromProduct(message.product)} />
                 </S.ItemImage>
-                <label>{message.product.name}</label>
+                <label role="notification-message">
+                  {message.product.name}
+                </label>
               </S.Item>
             );
           })}

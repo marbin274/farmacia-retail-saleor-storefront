@@ -6,11 +6,7 @@ import {
 import { NOT_CHARGE_TOKEN } from '@components/organisms/DummyPaymentGateway';
 import { TileRadio, Collapse } from '@components/molecules';
 import { alertService } from '@components/atoms/Alert';
-import {
-  HIDE_CARDTOKENS_IN_CHECKOUT,
-  POS_DISTRICTS,
-  PROVIDERS,
-} from '@temp/core/config';
+import { HIDE_CARDTOKENS_IN_CHECKOUT, PROVIDERS } from '@temp/core/config';
 import PosIcon from 'images/auna/pos.svg';
 import { IProps } from './types';
 import * as S from './styles';
@@ -251,10 +247,6 @@ const PaymentGatewaysList: React.FC<IProps> = ({
               </TileRadio>
             );
           case PROVIDERS.POS.id:
-            if (!POS_DISTRICTS.includes(selectedDistrict.toLocaleLowerCase())) {
-              return null;
-            }
-
             return (
               <TileRadio
                 key={index}
