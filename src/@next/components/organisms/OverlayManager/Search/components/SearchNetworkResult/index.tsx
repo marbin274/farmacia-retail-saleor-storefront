@@ -45,6 +45,10 @@ export const SearchNetworkResult = () => {
   }
 
   const renderSearchResults = (isOnline: boolean) => {
+    if (loading) {
+      return <Loader />;
+    }
+
     if (hasResults(data)) {
       return (
         <>
