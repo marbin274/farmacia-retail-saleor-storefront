@@ -59,14 +59,17 @@ export const Alert: React.FC<any> = () => {
     >
       <S.Modal>
         {alert.type !== 'Text' && (
-          <S.Icon className="icon">
+          <S.Icon className="icon" data-testid="alert-icon">
             <ReactSVG path={alert.icon || alertTypes[alert.type].icon} />
           </S.Icon>
         )}
-        <S.Title>{alert.title || alertTypes[alert.type].title}</S.Title>
-        <S.Message>{alert.message}</S.Message>
+        <S.Title data-testid="alert-title">
+          {alert.title || alertTypes[alert.type].title}
+        </S.Title>
+        <S.Message data-testid="alert-message">{alert.message}</S.Message>
         <S.Footer>
           <Button
+            data-testid="alert-button"
             size="large"
             onClick={alert.redirectionLink ? redirectTo : hide}
           >

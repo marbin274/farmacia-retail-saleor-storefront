@@ -9,7 +9,12 @@
 
 export interface ShippingMethod_methodType {
   __typename: "ShippingMethodType";
+  /**
+   * The ID of the object.
+   */
+  id: string;
   code: string;
+  name: string;
 }
 
 export interface ShippingMethod_price {

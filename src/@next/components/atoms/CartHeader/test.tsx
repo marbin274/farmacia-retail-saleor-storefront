@@ -1,13 +1,13 @@
-import { shallow } from "enzyme";
-import "jest-styled-components";
-import React from "react";
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
+import React from 'react';
 
-import { CartHeader } from ".";
+import { CartHeader } from '.';
 
-describe("<CartHeader />", () => {
-  it("exists", () => {
-    const wrapper = shallow(<CartHeader />);
-
-    expect(wrapper.exists()).toEqual(true);
+describe('<CartHeader />', () => {
+  it('exists', () => {
+    render(<CartHeader />);
+    const cartHeader = screen.getByTestId('cart-header');
+    expect(cartHeader).toBeInTheDocument();
   });
 });

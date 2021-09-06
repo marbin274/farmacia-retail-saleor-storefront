@@ -1,18 +1,15 @@
-import { TaxedMoney } from "@components/containers";
-import { Thumbnail } from "@components/molecules";
+import { TaxedMoney } from '@components/containers';
+import { Thumbnail } from '@components/molecules';
 import {
   checkProductCanAddToCart,
   productStickerRules,
-} from "@sdk/utils/products";
-import {
-  getProductPricingClass,  
-} from "@temp/@next/utils/products"
-import { launchDetailProductEvent } from "@temp/@sdk/gaConfig";
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import ItemsHandler from "../../organisms/ItemsHandler/ItemsHandler";
-import * as S from "./styles";
-import { IProps } from "./types";
+} from '@sdk/utils/products';
+import { getProductPricingClass } from '@temp/@next/utils/products';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import ItemsHandler from '../../organisms/ItemsHandler/ItemsHandler';
+import * as S from './styles';
+import { IProps } from './types';
 
 export const ProductTileHorizontalAUNA: React.FC<IProps> = ({
   addToCart,
@@ -26,8 +23,8 @@ export const ProductTileHorizontalAUNA: React.FC<IProps> = ({
     thumbnail: { url: string | undefined };
     thumbnail2x: { url: string | undefined };
   }>({
-    thumbnail: { url: "" },
-    thumbnail2x: { url: "" },
+    thumbnail: { url: '' },
+    thumbnail2x: { url: '' },
   });
 
   const { canAddToCart } = checkProductCanAddToCart(product, productsOnCart);
@@ -35,8 +32,8 @@ export const ProductTileHorizontalAUNA: React.FC<IProps> = ({
 
   useEffect(() => {
     setThumbnails({
-      thumbnail: { url: product?.thumbnail?.url || "" },
-      thumbnail2x: { url: product?.thumbnail2x?.url || "" },
+      thumbnail: { url: product?.thumbnail?.url || '' },
+      thumbnail2x: { url: product?.thumbnail2x?.url || '' },
     });
   }, [product.thumbnail, product.thumbnail2x]);
 
@@ -44,17 +41,7 @@ export const ProductTileHorizontalAUNA: React.FC<IProps> = ({
     <S.ProductCard canAddToCart={canAddToCart}>
       <Link to={productLink} key={product.id}>
         <S.WrapperImage>
-          <div
-            className="img"
-            onClick={() =>
-              launchDetailProductEvent(
-                product?.name,
-                product?.variant?.sku as string,
-                product?.variant?.pricing?.price?.gross?.amount as number,
-                product?.category?.name
-              )
-            }
-          >
+          <div className="img">
             <Thumbnail height={510} width={510} source={thumbnails} />
           </div>
         </S.WrapperImage>
