@@ -102,7 +102,7 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
   useImperativeHandle(ref, () => ({
     submitShipping: () => {
       checkoutShippingFormRef.current?.dispatchEvent(
-        new Event('submit', { cancelable: true })
+        new Event('submit', { cancelable: true, bubbles: true })
       );
     },
   }));

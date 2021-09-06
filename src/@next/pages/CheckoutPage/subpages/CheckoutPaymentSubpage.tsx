@@ -143,7 +143,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
         handleSetBillingAddress();
       } else if (user && selectedBillingAddressId) {
         checkoutBillingFormRef.current?.dispatchEvent(
-          new Event('submit', { cancelable: true })
+          new Event('submit', { cancelable: true, bubbles: true })
         );
       } else {
         submitCheckoutGatewayForm();
@@ -272,7 +272,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
 
   const submitCheckoutGatewayForm = () => {
     checkoutGatewayFormRef?.current?.dispatchEvent(
-      new Event('submit', { cancelable: true })
+      new Event('submit', { cancelable: true, bubbles: true })
     );
   };
 
@@ -328,7 +328,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
       setBillingErrors([]);
       if (promoCodeDiscountFormRef.current) {
         promoCodeDiscountFormRef.current?.dispatchEvent(
-          new Event('submit', { cancelable: true })
+          new Event('submit', { cancelable: true, bubbles: true })
         );
       } else if (checkoutGatewayFormRef.current) {
         submitCheckoutGatewayForm();
