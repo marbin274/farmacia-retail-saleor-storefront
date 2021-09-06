@@ -89,4 +89,5 @@ export interface GetShippingMethods {
 
 export interface GetShippingMethodsVariables {
   lines: (CheckoutLineInput | null)[];
+  district?: string | null;
 }
