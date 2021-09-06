@@ -238,7 +238,9 @@ const Page: React.FC<PageProps> = ({
             subtractItemToCart={subtractItemToCart}
             total={products?.totalCount}
           />
-          {!hasProducts && <EmptyProduct title="No hay productos" />}
+          {!hasProducts && !collectionListLoading && (
+            <EmptyProduct title="No hay productos" />
+          )}
         </section>
       </div>
     </CollectionWrapper>
