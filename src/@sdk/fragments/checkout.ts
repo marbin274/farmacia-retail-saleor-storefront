@@ -103,7 +103,9 @@ export const checkoutShippingMethodFragment = gql`
   fragment ShippingMethod on ShippingMethod {
     id
     methodType {
+      id
       code
+      name
     }
     name
     price {

@@ -23,6 +23,7 @@ export const collectionProducts = gql`
     paginatedProducts(
       page: $page
       pageSize: $pageSize
+      district: $districtId
       sortBy: $sortBy
       filter: {
         attributes: $attributes

@@ -38,10 +38,13 @@ export const Address: FC<IAddressProps> = ({ address, hasError }) => {
         <div className="fa-rounded-full fa-bg-highlight-lightest fa-w-6 fa-h-6 fa-flex fa-items-center fa-justify-center fa-mr-2">
           {getIcon()}
         </div>
-        <p>{getTitle()}</p>
+        <p data-testid="address-title">{getTitle()}</p>
       </div>
       <p className="fa-text-sm fa-font-semibold fa-mb-1">{address.city}</p>
-      <p className={`fa-mb-1 ${hasError ? 'fa-text-error-medium' : ''}`}>
+      <p
+        data-testid="address-description"
+        className={`fa-mb-1 ${hasError ? 'fa-text-error-medium' : ''}`}
+      >
         {address.streetAddress1}
       </p>
       <p className="fa-text-sm fa-text-neutral-dark fa-mb-1">

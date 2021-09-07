@@ -219,7 +219,12 @@ export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_che
 
 export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_availableShippingMethods_methodType {
   __typename: "ShippingMethodType";
+  /**
+   * The ID of the object.
+   */
+  id: string;
   code: string;
+  name: string;
 }
 
 export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_availableShippingMethods_price {
@@ -278,7 +283,12 @@ export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_che
 
 export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_shippingMethod_methodType {
   __typename: "ShippingMethodType";
+  /**
+   * The ID of the object.
+   */
+  id: string;
   code: string;
+  name: string;
 }
 
 export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_shippingMethod_price {
@@ -1090,7 +1100,12 @@ export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_ship
 
 export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_availableShippingMethods_methodType {
   __typename: "ShippingMethodType";
+  /**
+   * The ID of the object.
+   */
+  id: string;
   code: string;
+  name: string;
 }
 
 export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_availableShippingMethods_price {
@@ -1149,7 +1164,12 @@ export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_avai
 
 export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_shippingMethod_methodType {
   __typename: "ShippingMethodType";
+  /**
+   * The ID of the object.
+   */
+  id: string;
   code: string;
+  name: string;
 }
 
 export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_shippingMethod_price {

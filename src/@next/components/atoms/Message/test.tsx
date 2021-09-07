@@ -1,46 +1,68 @@
-import { defaultTheme } from "@styles";
-import { mount, shallow } from "enzyme";
-import "jest-styled-components";
-import React from "react";
+import { render, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
+import React from 'react';
+import { Message } from '.';
 
-import { Message } from ".";
-import { Title } from "./styles";
-
-describe("<Message />", () => {
-  it("renders passed title", () => {
-    const text = "test";
-    const wrapper = shallow(<Message title={text} onClick={jest.fn()} />);
-
-    expect(wrapper.find(Title).text()).toEqual(text);
+describe('<Message />', () => {
+  it('renders passed title', () => {
+    const text = 'test';
+    render(<Message title={text} onClick={jest.fn()} />);
+    const title = screen.getByTestId('message-title');
+    expect(title.textContent).toEqual(text);
   });
 
-  it("renders children when passed in", () => {
-    const wrapper = shallow(
+  it('renders children when passed in', () => {
+    render(
       <Message title="" onClick={jest.fn()}>
-        <div className="unique" />
+        <div className="unique" data-testid="message-children" />
       </Message>
     );
-
-    expect(wrapper.contains(<div className="unique" />)).toEqual(true);
+    const children = screen.getByTestId('message-children');
+    expect(children).toBeInTheDocument();
   });
 
-  it("displays correct border color based on status prop", () => {
-    const neutral = mount(<Message title="" onClick={jest.fn()} />);
-    const success = mount(
-      <Message title="" onClick={jest.fn()} status="success" />
-    );
-    const error = mount(
-      <Message title="" onClick={jest.fn()} status="error" />
-    );
+  it('click on action text', () => {
+    const onClick = jest.fn();
+    render(<Message title="Alerta" onClick={onClick} actionText="test" />);
+    const actionButton = screen.getByRole('action-button');
+    expect(actionButton).toBeInTheDocument();
+    expect(actionButton.textContent).toEqual('test');
+    fireEvent.click(actionButton);
+    expect(onClick).toHaveBeenCalledTimes(1);
+  });
 
-    expect(neutral).toHaveStyleRule(
-      "border-color",
-      defaultTheme.colors.primaryDark
+  it('click on action text', () => {
+    const onClick = jest.fn();
+    render(<Message title="Alerta" onClick={onClick} />);
+    const closeButton = screen.getByRole('close-button');
+    expect(closeButton).toBeInTheDocument();
+    fireEvent.click(closeButton);
+    expect(onClick).toHaveBeenCalledTimes(1);
+  });
+
+  it('click on action text without title', () => {
+    const onClick = jest.fn();
+    render(
+      <Message title="" onClick={onClick} actionText="test">
+        Contenido
+      </Message>
     );
-    expect(success).toHaveStyleRule(
-      "border-color",
-      defaultTheme.colors.success
+    const closeButton = screen.getByRole('action-button');
+    expect(closeButton).toBeInTheDocument();
+    fireEvent.click(closeButton);
+    expect(onClick).toHaveBeenCalledTimes(1);
+  });
+
+  it('click on close button without title', () => {
+    const onClick = jest.fn();
+    render(
+      <Message title="" onClick={onClick}>
+        Contenido
+      </Message>
     );
-    expect(error).toHaveStyleRule("border-color", defaultTheme.colors.aunaError);
+    const closeButton = screen.getByRole('close-button');
+    expect(closeButton).toBeInTheDocument();
+    fireEvent.click(closeButton);
+    expect(onClick).toHaveBeenCalledTimes(1);
   });
 });

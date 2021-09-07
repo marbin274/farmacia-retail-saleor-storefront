@@ -1,20 +1,17 @@
-import { ProductSticker } from "@components/atoms";
-import { TaxedMoney } from "@components/containers";
-import { Thumbnail } from "@components/molecules";
+import { ProductSticker } from '@components/atoms';
+import { TaxedMoney } from '@components/containers';
+import { Thumbnail } from '@components/molecules';
 import {
   checkProductCanAddToCart,
   productStickerRules,
-} from "@sdk/utils/products";
-import {
-  getProductPricingClass,  
-} from "@temp/@next/utils/products"
-import { launchDetailProductEvent } from "@temp/@sdk/gaConfig";
-import { ICheckoutModelLineVariantLocalStorage } from "@temp/@sdk/repository";
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import ItemsHandler from "../../organisms/ItemsHandler/ItemsHandler";
-import * as S from "./styles";
-import { IProps } from "./types";
+} from '@sdk/utils/products';
+import { getProductPricingClass } from '@temp/@next/utils/products';
+import { ICheckoutModelLineVariantLocalStorage } from '@temp/@sdk/repository';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import ItemsHandler from '../../organisms/ItemsHandler/ItemsHandler';
+import * as S from './styles';
+import { IProps } from './types';
 
 export const ProductTileAUNA: React.FC<IProps> = ({
   addToCart,
@@ -28,8 +25,8 @@ export const ProductTileAUNA: React.FC<IProps> = ({
     thumbnail: { url: string | undefined };
     thumbnail2x: { url: string | undefined };
   }>({
-    thumbnail: { url: "" },
-    thumbnail2x: { url: "" },
+    thumbnail: { url: '' },
+    thumbnail2x: { url: '' },
   });
   const refActions = React.useRef({} as any);
 
@@ -39,14 +36,14 @@ export const ProductTileAUNA: React.FC<IProps> = ({
   const handleAddToCart = (
     productId: ICheckoutModelLineVariantLocalStorage,
     quantity: number
-  ) => {       
+  ) => {
     addToCart(productId, quantity);
   };
 
   useEffect(() => {
     setThumbnails({
-      thumbnail: { url: product?.thumbnail?.url || "" },
-      thumbnail2x: { url: product?.thumbnail2x?.url || "" },
+      thumbnail: { url: product?.thumbnail?.url || '' },
+      thumbnail2x: { url: product?.thumbnail2x?.url || '' },
     });
   }, [product.thumbnail, product.thumbnail2x]);
 
@@ -60,25 +57,14 @@ export const ProductTileAUNA: React.FC<IProps> = ({
         <S.LinkContainer
           to={productLink}
           key={product.id}
-          onClick={e => {
-            
+          onClick={(e) => {
             if (refActions?.current?.contains(e.target)) {
               e.preventDefault();
             }
           }}
         >
           <div className="home-page__product-image fa-flex fa-flex-col fa-items-center">
-            <div
-              className="img fa-rounded-lg fa-bg-white fa-overflow-hidden"
-              onClick={() =>
-                launchDetailProductEvent(
-                  product?.name,
-                  product?.variant?.sku as string,
-                  product?.variant?.pricing?.price?.gross?.amount as number,
-                  product?.category?.name
-                )
-              }
-            >
+            <div className="img fa-rounded-lg fa-bg-white fa-overflow-hidden">
               <S.Image>
                 <Thumbnail height={510} width={510} source={thumbnails} />
               </S.Image>
@@ -135,27 +121,14 @@ export const ProductTileAUNA: React.FC<IProps> = ({
         </S.LinkContainer>
       </div>
       <div className="fa-hidden lg:fa-block">
-        <Link
-          key={product.id}
-          to={productLink}
-        >
+        <Link key={product.id} to={productLink}>
           <S.WrapperStockout>
             <div className="fa-absolute">
               <div className="fa-flex fa-justify-start">
                 <ProductSticker isOnSale={isOnSale} isOutStock={isOutStock} />
               </div>
             </div>
-            <div
-              className="img"
-              onClick={() =>
-                launchDetailProductEvent(
-                  product?.name,
-                  product?.variant?.sku as string,
-                  product?.variant?.pricing?.price?.gross?.amount as number,
-                  product?.category?.name
-                )
-              }
-            >
+            <div className="img">
               <S.Image>
                 <Thumbnail height={510} width={510} source={thumbnails} />
               </S.Image>

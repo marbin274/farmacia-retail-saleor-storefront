@@ -205,7 +205,12 @@ export interface CheckoutDetails_checkout_shippingAddress {
 
 export interface CheckoutDetails_checkout_availableShippingMethods_methodType {
   __typename: "ShippingMethodType";
+  /**
+   * The ID of the object.
+   */
+  id: string;
   code: string;
+  name: string;
 }
 
 export interface CheckoutDetails_checkout_availableShippingMethods_price {
@@ -264,7 +269,12 @@ export interface CheckoutDetails_checkout_availableShippingMethods {
 
 export interface CheckoutDetails_checkout_shippingMethod_methodType {
   __typename: "ShippingMethodType";
+  /**
+   * The ID of the object.
+   */
+  id: string;
   code: string;
+  name: string;
 }
 
 export interface CheckoutDetails_checkout_shippingMethod_price {

@@ -207,7 +207,12 @@ export interface AddCheckoutPromoCode_checkoutAddPromoCode_checkout_shippingAddr
 
 export interface AddCheckoutPromoCode_checkoutAddPromoCode_checkout_availableShippingMethods_methodType {
   __typename: "ShippingMethodType";
+  /**
+   * The ID of the object.
+   */
+  id: string;
   code: string;
+  name: string;
 }
 
 export interface AddCheckoutPromoCode_checkoutAddPromoCode_checkout_availableShippingMethods_price {
@@ -266,7 +271,12 @@ export interface AddCheckoutPromoCode_checkoutAddPromoCode_checkout_availableShi
 
 export interface AddCheckoutPromoCode_checkoutAddPromoCode_checkout_shippingMethod_methodType {
   __typename: "ShippingMethodType";
+  /**
+   * The ID of the object.
+   */
+  id: string;
   code: string;
+  name: string;
 }
 
 export interface AddCheckoutPromoCode_checkoutAddPromoCode_checkout_shippingMethod_price {

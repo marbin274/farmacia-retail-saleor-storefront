@@ -207,7 +207,12 @@ export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_check
 
 export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_checkout_availableShippingMethods_methodType {
   __typename: "ShippingMethodType";
+  /**
+   * The ID of the object.
+   */
+  id: string;
   code: string;
+  name: string;
 }
 
 export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_checkout_availableShippingMethods_price {
@@ -266,7 +271,12 @@ export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_check
 
 export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_checkout_shippingMethod_methodType {
   __typename: "ShippingMethodType";
+  /**
+   * The ID of the object.
+   */
+  id: string;
   code: string;
+  name: string;
 }
 
 export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_checkout_shippingMethod_price {

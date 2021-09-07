@@ -1,12 +1,11 @@
-import React from "react";
-
-import { Icon } from "../Icon";
-import * as S from "./styles";
-import { IProps } from "./types";
+import React from 'react';
+import { Icon } from '../Icon';
+import * as S from './styles';
+import { IProps } from './types';
 
 export const Message: React.FC<IProps> = ({
   title,
-  status = "neutral",
+  status = 'neutral',
   children,
   onClick,
   actionText,
@@ -17,13 +16,15 @@ export const Message: React.FC<IProps> = ({
     <S.Wrapper status={status} data-cy="alert">
       {title && (
         <S.TopWrapper>
-          <S.Title>{title}</S.Title>
+          <S.Title data-testid="message-title">{title}</S.Title>
           {isAction ? (
             !children && (
-              <S.ActionButton onClick={onClick}>{actionText}</S.ActionButton>
+              <S.ActionButton role="action-button" onClick={onClick}>
+                {actionText}
+              </S.ActionButton>
             )
           ) : (
-            <S.CloseButton onClick={onClick}>
+            <S.CloseButton role="close-button" onClick={onClick}>
               <Icon name="x" size={15} />
             </S.CloseButton>
           )}
@@ -33,14 +34,22 @@ export const Message: React.FC<IProps> = ({
         <S.Content hasTitle={!!title}>
           {children}
           {!title && !isAction && (
-            <S.CloseButton className="fa-ml-4" onClick={onClick}>
+            <S.CloseButton
+              role="close-button"
+              className="fa-ml-4"
+              onClick={onClick}
+            >
               <Icon name="x" size={15} />
             </S.CloseButton>
           )}
         </S.Content>
       )}
       {children && isAction && (
-        <S.ActionButton onClick={onClick} style={{ marginTop: "1rem" }}>
+        <S.ActionButton
+          role="action-button"
+          onClick={onClick}
+          style={{ marginTop: '1rem' }}
+        >
           {actionText}
         </S.ActionButton>
       )}
