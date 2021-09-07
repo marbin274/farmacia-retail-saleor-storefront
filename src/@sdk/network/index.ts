@@ -142,7 +142,7 @@ export class NetworkManager implements INetworkManager {
       }
     } catch (error) {
       return {
-        error,
+        error: error as any,
       };
     }
     return {};
@@ -190,7 +190,7 @@ export class NetworkManager implements INetworkManager {
         });
       } catch (error) {
         return {
-          error,
+          error: error as any,
         };
       }
     }
@@ -309,7 +309,7 @@ export class NetworkManager implements INetworkManager {
         });
       } catch (error) {
         return {
-          error,
+          error: error as any,
         };
       }
     }
@@ -442,7 +442,7 @@ export class NetworkManager implements INetworkManager {
       }
     } catch (error) {
       return {
-        error,
+        error: error as any,
       };
     }
     return {};
@@ -488,7 +488,7 @@ export class NetworkManager implements INetworkManager {
         }
       } catch (error) {
         return {
-          error,
+          error: error as any,
         };
       }
     }
@@ -581,7 +581,7 @@ export class NetworkManager implements INetworkManager {
       }
     } catch (error) {
       return {
-        error,
+        error: error as any,
       };
     }
   };
@@ -640,7 +640,7 @@ export class NetworkManager implements INetworkManager {
       }
     } catch (error) {
       return {
-        error,
+        error: error as any,
       };
     }
   };
@@ -706,7 +706,7 @@ export class NetworkManager implements INetworkManager {
       }
     } catch (error) {
       return {
-        error,
+        error: error as any,
       };
     }
   };
@@ -754,7 +754,7 @@ export class NetworkManager implements INetworkManager {
       }
     } catch (error) {
       return {
-        error,
+        error: error as any,
       };
     }
   };
@@ -796,7 +796,7 @@ export class NetworkManager implements INetworkManager {
       }
     } catch (error) {
       return {
-        error,
+        error: error as any,
       };
     }
   };
@@ -834,7 +834,7 @@ export class NetworkManager implements INetworkManager {
       }
     } catch (error) {
       return {
-        error,
+        error: error as any,
       };
     }
   };
@@ -901,7 +901,7 @@ export class NetworkManager implements INetworkManager {
       }
     } catch (error) {
       return {
-        error,
+        error: error as any,
       };
     }
   };
@@ -947,7 +947,7 @@ export class NetworkManager implements INetworkManager {
       }
     } catch (error) {
       return {
-        error,
+        error: error as any,
       };
     }
   };
