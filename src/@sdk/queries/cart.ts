@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
 export const shippingMethodsQuery = gql`
-  query GetShippingMethods($lines: [CheckoutLineInput]!) {
-    potentialShippingMethods(lines: $lines) {
+  query GetShippingMethods($lines: [CheckoutLineInput]!, $district: ID) {
+    potentialShippingMethods(lines: $lines, district: $district) {
       id
       maximumOrderPrice {
         amount
