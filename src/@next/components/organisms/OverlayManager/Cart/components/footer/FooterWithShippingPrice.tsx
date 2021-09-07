@@ -2,7 +2,7 @@ import { Money, TaxedMoney } from '@components/containers';
 import { Button, CartIcon } from '@farmacia-retail/farmauna-components';
 import { Icon } from '@temp/@next/components/atoms';
 import { aunaBrand3 } from '@temp/@next/globalStyles/constants';
-import { useClickedOutside } from '@temp/@next/hooks';
+import { useClickedOutside, useDistrictSelected } from '@temp/@next/hooks';
 import {
   useCart,
   useCheckout,
@@ -31,8 +31,10 @@ export const FooterWithShippingPrice: React.FC<IProps> = ({
   const { data: user } = useUserDetails();
   const { checkout } = useCheckout();
   const { discount, items, subtotalPrice, totalPrice } = useCart();
+  const [districtSelected] = useDistrictSelected();
 
   const { data, loading } = useShippingMethods({
+    district: districtSelected?.id,
     lines: items?.map((line) => ({
       quantity: line.quantity,
       variantId: line.variant?.id,
