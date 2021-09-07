@@ -56,6 +56,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
   handleBlur,
   formId,
   errors = [],
+  user,
   handleSubmit,
   values,
   districtsOptions,
@@ -248,57 +249,74 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
           <div>
             <S.FieldsGroup>
               {renderGroupLabel('Cliente')}
-              <S.RowWithTwoCells>
-                <FirstNameTextField
-                  {...fieldsProps}
-                  required={true}
-                  onBlur={handleOnBlurCheckContactUser}
-                />
-                <InputField
-                  data-cy="addressFormDNI"
-                  name="documentNumber"
-                  placeholder="Ejemplo: 04123456"
-                  label="Número de documento"
-                  maxLength={DOCUMENT_NUMBER_MAX_LENGTH}
-                  value={!values?.documentNumber ? '' : values?.documentNumber}
-                  pattern="[0-9]*"
-                  inputMode="numeric"
-                  type="text"
-                  autoComplete="documento"
-                  error={
-                    !!fieldErrors?.documentNumber
-                      ? fieldErrors?.documentNumber[0].message
-                      : ''
-                  }
-                  onBlur={handleOnBlurCheckContactUser}
-                  inputSize="large"
-                  onChange={(e) => {
-                    const value = e.currentTarget?.value?.toUpperCase();
-                    setFieldValue('documentNumber', value);
-                  }}
-                />
-              </S.RowWithTwoCells>
-              <S.RowWithTwoCells>
-                <InputField
-                  data-cy="addressFormEmail"
-                  name="email"
-                  placeholder="Ejemplo: juan@gmail.com"
-                  label="Correo electrónico"
-                  value={!values?.email ? '' : values?.email}
-                  autoComplete="email"
-                  type="email"
-                  error={
-                    !!fieldErrors?.email ? fieldErrors?.email[0].message : ''
-                  }
-                  inputSize="large"
-                  onBlur={handleOnBlurCheckContactUser}
-                  onChange={handleChange}
-                />
-                <PhoneTextField
-                  {...fieldsProps}
-                  onBlur={handleOnBlurCheckContactUser}
-                />
-              </S.RowWithTwoCells>
+              {user ? (
+                <S.RowWithOneCell>
+                  <PhoneTextField
+                    {...fieldsProps}
+                    onBlur={handleOnBlurCheckContactUser}
+                  />
+                </S.RowWithOneCell>
+              ) : (
+                <>
+                  <S.RowWithTwoCells>
+                    <FirstNameTextField
+                      {...fieldsProps}
+                      required={true}
+                      onBlur={handleOnBlurCheckContactUser}
+                    />
+                    <InputField
+                      role="input-field"
+                      data-cy="addressFormDNI"
+                      name="documentNumber"
+                      placeholder="Ejemplo: 04123456"
+                      label="Número de documento"
+                      maxLength={DOCUMENT_NUMBER_MAX_LENGTH}
+                      value={
+                        !values?.documentNumber ? '' : values?.documentNumber
+                      }
+                      pattern="[0-9]*"
+                      inputMode="numeric"
+                      type="text"
+                      autoComplete="documento"
+                      error={
+                        !!fieldErrors?.documentNumber
+                          ? fieldErrors?.documentNumber[0].message
+                          : ''
+                      }
+                      onBlur={handleOnBlurCheckContactUser}
+                      inputSize="large"
+                      onChange={(e) => {
+                        const value = e.currentTarget?.value?.toUpperCase();
+                        setFieldValue('documentNumber', value);
+                      }}
+                    />
+                  </S.RowWithTwoCells>
+                  <S.RowWithTwoCells>
+                    <InputField
+                      role="input-field"
+                      data-cy="addressFormEmail"
+                      name="email"
+                      placeholder="Ejemplo: juan@gmail.com"
+                      label="Correo electrónico"
+                      value={!values?.email ? '' : values?.email}
+                      autoComplete="email"
+                      type="email"
+                      error={
+                        !!fieldErrors?.email
+                          ? fieldErrors?.email[0].message
+                          : ''
+                      }
+                      inputSize="large"
+                      onBlur={handleOnBlurCheckContactUser}
+                      onChange={handleChange}
+                    />
+                    <PhoneTextField
+                      {...fieldsProps}
+                      onBlur={handleOnBlurCheckContactUser}
+                    />
+                  </S.RowWithTwoCells>
+                </>
+              )}
               <S.RowWithOneCell>
                 <S.PrivacyAndPolicies>
                   <Checkbox
