@@ -1,9 +1,11 @@
 import { IItems } from '@temp/@sdk/api/Cart/types';
 import { IAvailableShippingMethods } from '@temp/@sdk/api/Checkout/types';
+import { Checkout_availableShippingMethods } from '@temp/@sdk/fragments/gqlTypes/Checkout';
 import {
   IShippingMethodUpdate,
   IScheduleDate,
   ISlots,
+  IShippingSlot,
 } from '@temp/@sdk/repository';
 import { IFormError } from '@types';
 import { FormikErrors } from 'formik';
@@ -34,8 +36,8 @@ export interface ICheckoutShippingSlotForm {
 }
 
 export type ISlotShippingMethodItem = {
-  slots?: ISlots;
-  shippingMethods: IAvailableShippingMethods | undefined;
+  shippingSlots?: IShippingSlot[];
+  shippingMethod: Checkout_availableShippingMethods;
   values: ICheckoutShippingSlotForm;
   formikErrors: FormikErrors<ICheckoutShippingSlotForm>;
   setFieldValue?: (
