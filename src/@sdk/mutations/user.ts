@@ -107,7 +107,8 @@ export const accountRegisterMutation = gql`
         documentNumber: $documentNumber
       }
     ) {
-      errors {
+      accountErrors {
+        code
         field
         message
       }
