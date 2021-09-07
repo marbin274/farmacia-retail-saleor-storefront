@@ -22,7 +22,9 @@ const RegisterForm: React.FC<IRegisterForm> = ({ hide, onSwitchSection }) => {
 
   React.useEffect(() => {
     if (data && !loading) {
-      const successful = maybe(() => !data.accountRegister.errors.length);
+      const successful = maybe(
+        () => !data.accountRegister.accountErrors.length
+      );
 
       if (successful) {
         history.push('/user-registered');
@@ -47,7 +49,7 @@ const RegisterForm: React.FC<IRegisterForm> = ({ hide, onSwitchSection }) => {
   return (
     <>
       <RegisterFormContent
-        errors={data?.accountRegister?.errors}
+        errors={data?.accountRegister?.accountErrors}
         loading={loading}
         registerCustomer={({ variables }) => registerCustomer(variables)}
         setEmail={setEmail}
