@@ -189,7 +189,12 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
     <div>
       <S.Wrapper>
         {comeFromModal ? (
-          <S.AddressForm id={formId} ref={formRef} onSubmit={handleSubmit}>
+          <S.AddressForm
+            id={formId}
+            ref={formRef}
+            onSubmit={handleSubmit}
+            data-testid="address-form"
+          >
             <span className="fa-text-2xl fa-mb-8 fa-block fa-font-semibold">
               Editar dirección
             </span>

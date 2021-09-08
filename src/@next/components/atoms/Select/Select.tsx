@@ -1,10 +1,10 @@
-import React from "react";
-import ReactSelect from "react-select";
-import { ThemeContext } from "styled-components";
-import farmatheme  from "@farmatheme";
-import { ErrorMessage } from "../ErrorMessage";
-import * as S from "./styles";
-import { IProps } from "./types";
+import React from 'react';
+import ReactSelect from 'react-select';
+import { ThemeContext } from 'styled-components';
+import farmatheme from '@farmatheme';
+import { ErrorMessage } from '../ErrorMessage';
+import * as S from './styles';
+import { IProps } from './types';
 
 const optionStyle = (customTheme: any) => ({
   option: (
@@ -18,27 +18,27 @@ const optionStyle = (customTheme: any) => ({
   ) => {
     return {
       ...provided,
-      alignItems: "center",
+      alignItems: 'center',
       backgroundColor: state.isSelected
         ? farmatheme.theme.colors.primary.lightest
         : state.isFocused
         ? farmatheme.theme.colors.primary.lightest
-        : "white",
+        : 'white',
       color: state.isSelected
         ? farmatheme.theme.colors.primary.medium
         : state.isDisabled
         ? customTheme.colors.lightFont
         : customTheme.colors.dark,
-      display: "flex",
+      display: 'flex',
       fontWeight: state.isSelected && customTheme.typography.boldFontWeight,
-      margin: "0.2rem auto",
-      minHeight: "34px",
-      verticalAlign: "middle",
-      width: "95%",
-      cursor: "pointer",
-      borderRadius: "1.5rem",
-      padding: "0.5rem 1rem",
-      transition: "all 0.2s ease-in-out",
+      margin: '0.2rem auto',
+      minHeight: '34px',
+      verticalAlign: 'middle',
+      width: '95%',
+      cursor: 'pointer',
+      borderRadius: '1.5rem',
+      padding: '0.5rem 1rem',
+      transition: 'all 0.2s ease-in-out',
     };
   },
 });
@@ -56,8 +56,8 @@ export const Select: React.FC<IProps> = ({
   defaultValue,
   menuIsOpen,
   customStyles,
-  optionLabelKey = "label",
-  optionValueKey = "value",
+  optionLabelKey = 'label',
+  optionValueKey = 'value',
   errors,
   ...props
 }: IProps) => {
@@ -68,8 +68,9 @@ export const Select: React.FC<IProps> = ({
     }
   };
   return (
-    <S.Wrapper errors={!!errors}>
+    <S.Wrapper errors={!!errors} role="select">
       <ReactSelect
+        role="react-select"
         className="select-control"
         defaultValue={defaultValue}
         onChange={handleChange}
@@ -78,13 +79,13 @@ export const Select: React.FC<IProps> = ({
         menuIsOpen={menuIsOpen}
         menuShouldScrollIntoView={true}
         tabSelectsValue={false}
-        getOptionLabel={option => option[optionLabelKey]}
-        getOptionValue={option => option[optionValueKey]}
+        getOptionLabel={(option) => option[optionLabelKey]}
+        getOptionValue={(option) => option[optionValueKey]}
         openMenuOnFocus={true}
         styles={{ ...optionStyle(customTheme), ...customStyles }}
         options={options}
         isOptionDisabled={isOptionDisabled}
-        placeholder={""}
+        placeholder={''}
         components={customComponents}
         isClearable={clearable}
         {...props}
