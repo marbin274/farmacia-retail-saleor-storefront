@@ -227,6 +227,7 @@ const Page: React.FC<PageProps> = ({
           <ProductListAUNA
             addToCart={addToCart}
             loading={collectionListLoading}
+            columns={3}
             page={variablesWithCategories.page}
             pageSize={variablesWithCategories.pageSize}
             products={products?.edges.map((edge) =>
