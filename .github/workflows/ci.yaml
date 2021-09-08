@@ -51,4 +51,4 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'release' }}
         run: npm run build
         env:
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          API_URI: ${{ secrets.GRAPHQL_URL_PROD }}
