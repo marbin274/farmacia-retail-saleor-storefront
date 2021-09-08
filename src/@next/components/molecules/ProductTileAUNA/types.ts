@@ -1,8 +1,11 @@
-import { ISimpleProduct } from "@sdk/types/IProduct";
-import { IItems } from "@temp/@sdk/api/Cart/types";
+import { ISimpleProduct } from '@sdk/types/IProduct';
+import { IItems } from '@temp/@sdk/api/Cart/types';
 import { ICheckoutModelLineVariantLocalStorage } from '@sdk/repository';
 
-export type IAddToCartCallback = (productId: ICheckoutModelLineVariantLocalStorage, quantity: number) => void;
+export type IAddToCartCallback = (
+  productId: ICheckoutModelLineVariantLocalStorage,
+  quantity: number
+) => void;
 export type IRemoveItemToCartCallback = (productId: string) => void;
 export type ISubtractItemToCartCallback = (productId: string) => void;
 
@@ -13,4 +16,5 @@ export interface IProps {
   productsOnCart: IItems;
   removeItemToCart?: IRemoveItemToCartCallback;
   subtractItemToCart?: ISubtractItemToCartCallback;
+  isPersonalizeProduct?: boolean;
 }

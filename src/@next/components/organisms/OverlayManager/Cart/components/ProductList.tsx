@@ -138,6 +138,7 @@ const ProductList: React.FC<IProductList> = ({
                     addToCart={onAdd}
                     removeItemToCart={onRemove}
                     subtractItemToCart={onSubtract}
+                    isPersonalizeProduct={false}
                   />
                   <Tooltip className="fa-mb-1" text="Quitar">
                     <ButtonTrash
