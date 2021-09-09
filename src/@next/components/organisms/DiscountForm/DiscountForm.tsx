@@ -1,10 +1,10 @@
-import { Formik } from "formik";
-import React from "react";
-import { Button, InputField } from "@farmacia-retail/farmauna-components";
-import * as S from "./styles";
-import { IProps } from "./types";
-import ReactSVG from "react-svg";
-import voucherSVG from "@temp/images/auna/checkout-cupon-small.svg";
+import { Formik } from 'formik';
+import React from 'react';
+import { Button, InputField } from '@farmacia-retail/farmauna-components';
+import * as S from './styles';
+import { IProps } from './types';
+import { ReactSVG } from 'react-svg';
+import voucherSVG from '@temp/images/auna/checkout-cupon-small.svg';
 
 export const DiscountForm: React.FC<IProps> = ({
   handleSubmit,
@@ -18,7 +18,7 @@ export const DiscountForm: React.FC<IProps> = ({
 }: IProps) => {
   const promoCode = discount && discount.promoCode;
 
-  const [inputCode, setInputCode] = React.useState("");
+  const [inputCode, setInputCode] = React.useState('');
   const [tempPromoCode, setTempPromoCode] = React.useState(promoCode);
 
   const handleApplyBtnClick = (newInputCode: string) => {
@@ -29,12 +29,12 @@ export const DiscountForm: React.FC<IProps> = ({
       });
     }
 
-    setInputCode("");
+    setInputCode('');
   };
 
   const handleRemoveBtnClick = async (newInputCode: string) => {
     setTempPromoCode(undefined);
-    setInputCode("");
+    setInputCode('');
     if (removeVoucher) {
       setReRenderNiubiz(false);
       await removeVoucher(newInputCode);
@@ -60,17 +60,17 @@ export const DiscountForm: React.FC<IProps> = ({
       }}
     >
       {({ handleSubmit, values, setFieldValue }) => {
-        let discountDescription = "";
+        let discountDescription = '';
         let discountValue = <span></span>;
-        if (discount?.voucherType === "shipping") {
-          discountDescription = "Delivery gratis en esta compra";
+        if (discount?.voucherType === 'shipping') {
+          discountDescription = 'Delivery gratis en esta compra';
         } else {
-          if (discount?.voucherDiscountType === "fixed") {
+          if (discount?.voucherDiscountType === 'fixed') {
             discountValue = <span>S/ {discount?.voucherDiscountValue}</span>;
-            discountDescription = " de descuento en toda tu compra";
+            discountDescription = ' de descuento en toda tu compra';
           } else {
             discountValue = <span>{discount?.voucherDiscountValue}%</span>;
-            discountDescription = " de descuento en toda tu compra";
+            discountDescription = ' de descuento en toda tu compra';
           }
         }
 
@@ -86,12 +86,12 @@ export const DiscountForm: React.FC<IProps> = ({
                     inputSize="large"
                     placeholder="Ejem: YEPS-03JD-N08T"
                     value={values?.inputCode}
-                    onChange={e => {
+                    onChange={(e) => {
                       const value = e.currentTarget?.value?.toUpperCase();
-                      setFieldValue("inputCode", value);
+                      setFieldValue('inputCode', value);
                     }}
-                    onKeyPress={e => {
-                      if (e.key === "enter") {
+                    onKeyPress={(e) => {
+                      if (e.key === 'enter') {
                         e.preventDefault();
                         handleApplyBtnClick(values.inputCode);
                       }
@@ -116,7 +116,7 @@ export const DiscountForm: React.FC<IProps> = ({
             {discount?.promoCode && (
               <S.ChipsWrapper className="promoCode">
                 <div className="voucherTitle">
-                  <ReactSVG path={voucherSVG} />
+                  <ReactSVG src={voucherSVG} />
 
                   <span data-cy="checkoutPaymentPromoCodeChip">
                     {discount?.promoCode}

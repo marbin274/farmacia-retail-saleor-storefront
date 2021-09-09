@@ -13,7 +13,7 @@ import visaIcon from '@temp/images/auna/visa-payment.svg';
 import CardTickIcon from 'images/auna/card-tick.svg';
 import { ICardData } from '@types';
 import ErrorFormPopulateIcon from 'images/auna/form-populate-error.svg';
-import ReactSVG from 'react-svg';
+import { ReactSVG } from 'react-svg';
 import _ from 'lodash';
 import {
   cardTokenization,
@@ -445,18 +445,18 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                       Pagos seguros con:
                     </div>
                     <div className="fa-flex fa-items-center">
-                      <ReactSVG path={niubizTextIcon} className="fa-mr-2" />
+                      <ReactSVG src={niubizTextIcon} className="fa-mr-2" />
                       <S.PaymentIcon>
-                        <ReactSVG path={visaIcon} />
+                        <ReactSVG src={visaIcon} />
                       </S.PaymentIcon>
                       <S.PaymentIcon>
-                        <ReactSVG path={masterCardIcon} />
+                        <ReactSVG src={masterCardIcon} />
                       </S.PaymentIcon>
                       <S.PaymentIcon>
-                        <ReactSVG path={americanExpress} />
+                        <ReactSVG src={americanExpress} />
                       </S.PaymentIcon>
                       <S.PaymentIcon>
-                        <ReactSVG path={dinersClub} />
+                        <ReactSVG src={dinersClub} />
                       </S.PaymentIcon>
                     </div>
                   </div>

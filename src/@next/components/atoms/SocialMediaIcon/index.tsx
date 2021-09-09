@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ReactSVG from 'react-svg';
+import { ReactSVG } from 'react-svg';
 import * as S from './styles';
 
 interface Medium {
@@ -22,6 +22,6 @@ export const SocialMediaIcon: React.FC<IconProps> = ({ medium, target }) => (
     aria-label={medium.ariaLabel}
     rel={medium.rel}
   >
-    <ReactSVG path={medium.path} className="social-icon" />
+    <ReactSVG src={medium.path} className="social-icon" />
   </S.SocialIconWrapper>
 );

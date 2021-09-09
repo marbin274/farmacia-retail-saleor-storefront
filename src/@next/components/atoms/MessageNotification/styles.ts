@@ -1,6 +1,6 @@
 import { styled } from '@styles';
 import { turquoiseDark } from '@styles/constants';
-import ReactSVG from 'react-svg';
+import { ReactSVG } from 'react-svg';
 
 export const Wrapper = styled.div`
   box-shadow: 0 0.375rem 0.9375rem 0.1875rem rgba(0, 0, 0, 0.25);
