@@ -34,7 +34,6 @@ export const Checkbox: React.FC<IProps> = ({
       >
         <input
           {...props}
-          role="input-checkfield"
           tabIndex={-1}
           type="checkbox"
           name={name}

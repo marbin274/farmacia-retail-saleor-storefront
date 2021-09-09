@@ -282,7 +282,7 @@ export const AddressForm: React.FC<IProps> = ({
         }, [formikErrors, requestErrors, submitCount]);
 
         return (
-          <Form ref={formRef} className="whatever" data-testid="address-form">
+          <Form ref={formRef} className="whatever">
             <AddressFormContent
               {...{
                 districtsOptions,
