@@ -1,21 +1,21 @@
-import { Button, CartIcon } from "@farmacia-retail/farmauna-components";
-import { launchAddToCartEvent, launchRemoveToCartEvent } from "@sdk/gaConfig";
-import { ISimpleProduct } from "@sdk/types/IProduct";
-import { removePaymentItems } from "@temp/@next/utils/checkoutValidations";
+import { Button, CartIcon } from '@farmacia-retail/farmauna-components';
+import { launchAddToCartEvent, launchRemoveToCartEvent } from '@sdk/gaConfig';
+import { ISimpleProduct } from '@sdk/types/IProduct';
+import { removePaymentItems } from '@temp/@next/utils/checkoutValidations';
 import {
   checkStockLimitOrStockAvailable,
   ICheckStockLimitOrStockAvailable,
-} from "@sdk/utils/products";
-import { MAX_ORDER_PER_PRODUCT } from "@sdk/config";
-import classNames from "classnames";
-import React, { FC, useEffect, useState } from "react";
-import { itemNotificationsService } from "../../atoms/ItemsNotification";
+} from '@sdk/utils/products';
+import { MAX_ORDER_PER_PRODUCT } from '@sdk/config';
+import classNames from 'classnames';
+import React, { FC, useEffect, useState } from 'react';
+import { itemNotificationsService } from '../../atoms/ItemsNotification';
 import {
   IAddToCartCallback,
   IRemoveItemToCartCallback,
   ISubtractItemToCartCallback,
-} from "../../molecules/ProductTileAUNA/types";
-import "./scss/index.scss";
+} from '../../molecules/ProductTileAUNA/types';
+import * as S from './styles';
 
 type IProps = {
   canAddToCart?: boolean;
@@ -90,7 +90,7 @@ const ItemsHandler: FC<IProps> = ({
           product?.name,
           firstProductVariant?.pricing?.price?.gross?.amount,
           total + 1,
-          "PEN"
+          'PEN'
         );
       }
     }
@@ -124,28 +124,30 @@ const ItemsHandler: FC<IProps> = ({
   return (
     <>
       {addToCart && product.quantity ? (
-        <div className="itemHandler">
-          <div className="itemHandler--actions">
-            <Button
-              className={classNames("item-action", "add_remove_button")}
+        <div className="itemHandler fa-flex fa-flex-col fa-items-center">
+          <div className="itemHandler--actions fa-items-center fa-content-center fa-bg-primary-lightest fa-rounded-4xl fa-flex fa-flex-nowrap fa-flex-row fa-justify-between fa-w-32 fa-h-12">
+            <S.AddRemoveButton
+              className={classNames('item-action')}
               onClick={handleRemoveClick}
               type="button"
             >
               -
-            </Button>
-            <p>{quantity}</p>
-            <Button
+            </S.AddRemoveButton>
+            <p className="fa-flex fa-items-center fa-p-0 fa-text-base fa-font-medium fa-text-gray-02">
+              {quantity}
+            </p>
+            <S.AddRemoveButton
               disabled={!canAddToCart}
-              className={classNames("item-action", "add_remove_button")}
+              className={classNames('item-action')}
               onClick={handleAddClick}
               type="button"
             >
               +
-            </Button>
+            </S.AddRemoveButton>
           </div>
           {!canAddToCart && isLimitMax && (
             <div className="fa-text-center">
-              <span className="itemHandler__limit-max">
+              <span className="fa-text-warning-medium fa-text-xs">
                 Max. {stockLimitMax} por promoción
               </span>
             </div>

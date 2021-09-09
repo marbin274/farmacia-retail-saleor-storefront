@@ -1,5 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 import { AddressInput, PrivacyPolicyInput, CheckoutErrorCode } from "./../../gqlTypes/globalTypes";
@@ -11,8 +12,7 @@ import { AddressInput, PrivacyPolicyInput, CheckoutErrorCode } from "./../../gql
 export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_errors {
   __typename: "Error";
   /**
-   * Name of a field that caused the error. A value of `null` indicates that the
-   * error isn't associated with a particular field.
+   * Name of a field that caused the error. A value of `null` indicates that the error isn't associated with a particular field.
    */
   field: string | null;
   /**
@@ -217,6 +217,16 @@ export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_che
   alias: string | null;
 }
 
+export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_availableShippingMethods_methodType {
+  __typename: "ShippingMethodType";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  code: string;
+  name: string;
+}
+
 export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_availableShippingMethods_price {
   __typename: "Money";
   /**
@@ -261,17 +271,24 @@ export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_che
    * The ID of the object.
    */
   id: string;
+  methodType: UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_availableShippingMethods_methodType | null;
   name: string;
-  /**
-   * Flag to recognize if this shipping method has schedules to select.
-   */
-  isScheduled: boolean | null;
   price: UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_availableShippingMethods_price | null;
   /**
    * List of filtered schedules a customer can pick.
    */
   scheduleDates: (UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_availableShippingMethods_scheduleDates | null)[] | null;
   subtitle: string | null;
+}
+
+export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_shippingMethod_methodType {
+  __typename: "ShippingMethodType";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  code: string;
+  name: string;
 }
 
 export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_shippingMethod_price {
@@ -318,11 +335,8 @@ export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_che
    * The ID of the object.
    */
   id: string;
+  methodType: UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_shippingMethod_methodType | null;
   name: string;
-  /**
-   * Flag to recognize if this shipping method has schedules to select.
-   */
-  isScheduled: boolean | null;
   price: UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_shippingMethod_price | null;
   /**
    * List of filtered schedules a customer can pick.
@@ -810,10 +824,22 @@ export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_che
   discount: UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_discount | null;
   discountName: string | null;
   translatedDiscountName: string | null;
+  /**
+   * Voucher code
+   */
   voucherCode: string | null;
+  /**
+   * Voucher type
+   */
   voucherType: string | null;
+  /**
+   * Voucher discount type
+   */
   voucherDiscountType: string | null;
-  voucherDiscountValue: number;
+  /**
+   * Voucher discount value
+   */
+  voucherDiscountValue: number | null;
   documentNumber: string | null;
   termsAndConditions: boolean;
   dataTreatmentPolicy: boolean;
@@ -846,8 +872,7 @@ export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_che
 export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkoutErrors {
   __typename: "CheckoutError";
   /**
-   * Name of a field that caused the error. A value of `null` indicates that the
-   * error isn't associated with a particular field.
+   * Name of a field that caused the error. A value of `null` indicates that the error isn't associated with a particular field.
    */
   field: string | null;
   /**
@@ -1073,6 +1098,16 @@ export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_ship
   alias: string | null;
 }
 
+export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_availableShippingMethods_methodType {
+  __typename: "ShippingMethodType";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  code: string;
+  name: string;
+}
+
 export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_availableShippingMethods_price {
   __typename: "Money";
   /**
@@ -1117,17 +1152,24 @@ export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_avai
    * The ID of the object.
    */
   id: string;
+  methodType: UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_availableShippingMethods_methodType | null;
   name: string;
-  /**
-   * Flag to recognize if this shipping method has schedules to select.
-   */
-  isScheduled: boolean | null;
   price: UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_availableShippingMethods_price | null;
   /**
    * List of filtered schedules a customer can pick.
    */
   scheduleDates: (UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_availableShippingMethods_scheduleDates | null)[] | null;
   subtitle: string | null;
+}
+
+export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_shippingMethod_methodType {
+  __typename: "ShippingMethodType";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  code: string;
+  name: string;
 }
 
 export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_shippingMethod_price {
@@ -1174,11 +1216,8 @@ export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_ship
    * The ID of the object.
    */
   id: string;
+  methodType: UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_shippingMethod_methodType | null;
   name: string;
-  /**
-   * Flag to recognize if this shipping method has schedules to select.
-   */
-  isScheduled: boolean | null;
   price: UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_shippingMethod_price | null;
   /**
    * List of filtered schedules a customer can pick.
@@ -1666,10 +1705,22 @@ export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout {
   discount: UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_discount | null;
   discountName: string | null;
   translatedDiscountName: string | null;
+  /**
+   * Voucher code
+   */
   voucherCode: string | null;
+  /**
+   * Voucher type
+   */
   voucherType: string | null;
+  /**
+   * Voucher discount type
+   */
   voucherDiscountType: string | null;
-  voucherDiscountValue: number;
+  /**
+   * Voucher discount value
+   */
+  voucherDiscountValue: number | null;
   documentNumber: string | null;
   termsAndConditions: boolean;
   dataTreatmentPolicy: boolean;
@@ -1690,8 +1741,7 @@ export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout {
 export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_errors {
   __typename: "Error";
   /**
-   * Name of a field that caused the error. A value of `null` indicates that the
-   * error isn't associated with a particular field.
+   * Name of a field that caused the error. A value of `null` indicates that the error isn't associated with a particular field.
    */
   field: string | null;
   /**

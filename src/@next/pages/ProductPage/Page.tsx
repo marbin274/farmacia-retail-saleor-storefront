@@ -1,4 +1,6 @@
 import { ProductImage } from '@components/molecules';
+import { ProductsSelled } from '@components/organisms/ProductsSelled';
+import { ProductDescription } from '@components/organisms/ProductDescription';
 import { Breadcrumbs } from '@farmacia-retail/farmauna-components';
 import { ProductDetails_product } from '@sdk/queries/gqlTypes/ProductDetails';
 import {
@@ -14,8 +16,6 @@ import {
 import { useMediaScreen } from '@temp/@next/globalStyles';
 import { largeScreen } from '@temp/@next/globalStyles/constants';
 import { baseUrl } from '@temp/app/routes';
-import { ProductDescription } from '@temp/components';
-import { ProductsSelled } from '@temp/components/productsSelled';
 import { structuredData as structuredCategoryData } from '@temp/core/SEO/Category/structuredData';
 import { structuredData } from '@temp/core/SEO/Product/structuredData';
 import {
@@ -24,6 +24,8 @@ import {
 } from '@temp/core/utils';
 import React from 'react';
 import * as S from './styles';
+import { launchDetailProductEvent } from '@temp/@sdk/gaConfig';
+
 // TODO: Add as soon as we need to add related products
 // import OtherProducts from "./Other";
 // TODO: Add as soon as we need to add more product information below the
@@ -49,6 +51,20 @@ export const Page: React.FC<IProps> = (props) => {
   );
   const { canAddToCart } = checkProductCanAddToCart(simpleProduct, items);
   const { isOnSale, isOutStock } = productStickerRules(simpleProduct);
+  const [detailGaEventSended, setDetailGaEventSended] =
+    React.useState<boolean>(false);
+
+  React.useEffect(() => {
+    if (!detailGaEventSended) {
+      setDetailGaEventSended(true);
+      launchDetailProductEvent(
+        product?.name,
+        product?.variants[0]?.sku as string,
+        product?.variants[0]?.pricing?.price?.gross?.amount as number,
+        product?.category?.name
+      );
+    }
+  }, []);
 
   const renderProductRightInfo = () => (
     <>

@@ -1,18 +1,24 @@
-import { styled } from "@styles";
-import { spacer } from "@styles/constants";
+import { styled } from '@styles';
 
-export const Wrapper = styled.div`
-  padding: ${props => `${props.theme.spacing.spacer} ${spacer / 2}rem`};
-`;
-
-export const Link = styled.a`
-  path {
+export const SocialIconWrapper = styled.a`
+  svg * {
     transition: 0.3s;
   }
 
   &:hover {
+    svg * {
+      fill: $turquoise;
+    }
     path {
-      fill: ${props => props.theme.colors.primary};
+      fill: $white;
+    }
+  }
+  &:active {
+    svg * {
+      fill: $darkGreen2;
+    }
+    path {
+      fill: $white;
     }
   }
 `;

@@ -1,28 +1,23 @@
-import React, { useContext, useState } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import React, { useContext, useState } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 
-import { ThankYou } from "@components/organisms";
-import { BASE_URL, CHECKOUT_STEPS } from "@temp/core/config";
-import { generateGuestOrderDetailsUrl } from "@utils/core";
+import { ThankYou } from '@components/organisms';
+import { BASE_URL, CHECKOUT_STEPS } from '@temp/core/config';
+import { generateGuestOrderDetailsUrl } from '@utils/core';
 
-import { IProps } from "./types";
-import { OverlayContext } from "@temp/components/Overlay"
-import {  useCheckout, useShopDetails } from '@sdk/react';
-import { LocalRepository } from "@temp/@sdk/repository";
-import { isEmpty } from "lodash";
-
-
+import { IProps } from './types';
+import { OverlayContext } from '@temp/@next/components/organisms/OverlayComponent';
+import { useCheckout, useShopDetails } from '@sdk/react';
+import { LocalRepository } from '@temp/@sdk/repository';
+import { isEmpty } from 'lodash';
 
 const ThankYouPage: React.FC<IProps> = ({}: IProps) => {
-
   const location = useLocation();
   const history = useHistory();
   const { token, orderNumber, sequentialCode } = location.state;
   const overlay = useContext(OverlayContext);
-  
-  const {
-    payment,
-  } = useCheckout();
+
+  const { payment } = useCheckout();
 
   const localRepository = new LocalRepository();
   const checkout = localRepository.getFinallCheckout();
@@ -33,38 +28,35 @@ const ThankYouPage: React.FC<IProps> = ({}: IProps) => {
   const totalPrice = finalUseCart?.totalPrice;
   const items = finalUseCart?.items;
 
-  React.useEffect(()=>{    
+  React.useEffect(() => {
     const repository = new LocalRepository();
-    if(isEmpty(repository.getFinallCheckout())){
-      history.push(BASE_URL)
+    if (isEmpty(repository.getFinallCheckout())) {
+      history.push(BASE_URL);
     }
-   
-    return ()=> {
+
+    return () => {
       repository.setFinallCheckout({});
       repository.setFinallUseCart(null);
-    }
+    };
+  }, []);
 
-  },[])
+  const [selectedPaymentGatewayToken] = useState<string | undefined>(
+    payment?.token
+  );
 
-  
-
-  const [
-    selectedPaymentGatewayToken,
-  ] = useState<string | undefined>(payment?.token);
-
-  const totalProducts: number = React.useMemo(()=>
-  items?.reduce(
-    (prevVal, currVal) => prevVal + currVal.quantity,
-    0
-  ) || 0, [items]);
+  const totalProducts: number = React.useMemo(
+    () =>
+      items?.reduce((prevVal, currVal) => prevVal + currVal.quantity, 0) || 0,
+    [items]
+  );
 
   const shippingTaxedPrice =
-  checkout?.shippingMethod?.id && shippingPrice
-    ? {
-        gross: shippingPrice,
-        net: shippingPrice,
-      }
-    : null;
+    checkout?.shippingMethod?.id && shippingPrice
+      ? {
+          gross: shippingPrice,
+          net: shippingPrice,
+        }
+      : null;
 
   const promoTaxedPrice = discount && {
     gross: discount,
@@ -74,8 +66,8 @@ const ThankYouPage: React.FC<IProps> = ({}: IProps) => {
   const { data } = useShopDetails();
   const steps = CHECKOUT_STEPS;
 
-  const checkoutData = {...checkout, token: checkout?.token}
-  
+  const checkoutData = { ...checkout, token: checkout?.token };
+
   return (
     <ThankYou
       data={data}

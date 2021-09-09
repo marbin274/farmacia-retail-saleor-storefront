@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import * as S from './styles';
-import { Breadcrumbs, ProductsCollection } from '@temp/components';
+import { Breadcrumbs } from '@components/organisms/Breadcrumbs';
+import { ProductsCollection } from '@components/organisms';
 import { BannerCarousel } from '@app/components/containers/BannerCarousel';
 import { Landing_landing } from '@sdk/queries/gqlTypes/Landing';
 import { maybe } from '@temp/core/utils';
@@ -34,7 +35,7 @@ const LandingPage: FC<IProps> = ({ landing }) => {
           })}
         </BannerCarousel>
       </S.BannerContainer>
-      <div className="container">
+      <S.ContainerWrapper>
         <Breadcrumbs
           breadcrumbs={[{ link: location.pathname, label: landing.title }]}
           breadcrumbsAlwaysVisible
@@ -60,7 +61,7 @@ const LandingPage: FC<IProps> = ({ landing }) => {
             })}
           </S.Collections>
         </S.CollectionsContainer>
-      </div>
+      </S.ContainerWrapper>
     </S.Container>
   );
 };

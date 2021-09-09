@@ -1,24 +1,25 @@
-import { ErrorMessage } from "@components/atoms";
-import { ShippingMethodItem } from "@components/molecules";
-import { convertShippingMethodDateToDate } from "@temp/@next/utils/dateUtils";
-import { Checkout_availableShippingMethods_scheduleDates } from "@temp/@sdk/fragments/gqlTypes/Checkout";
+import { ErrorMessage } from '@components/atoms';
+import { ShippingMethodItem } from '@components/molecules';
+import { convertShippingMethodDateToDate } from '@temp/@next/utils/dateUtils';
+import { Checkout_availableShippingMethods_scheduleDates } from '@temp/@sdk/fragments/gqlTypes/Checkout';
 import {
   launchCheckoutEvent,
   steps,
   ecommerceProductsMapper,
-} from "@temp/@sdk/gaConfig";
+} from '@temp/@sdk/gaConfig';
 import {
   IShippingMethodUpdate,
   IShippingMethodUpdateScheduleDate,
-} from "@temp/@sdk/repository";
-import { SHIPPING_FORMAT_DATE } from "@temp/core/config";
-import { format } from "date-fns";
-import { useFormik } from "formik";
-import React from "react";
-import { CheckoutShippingProgrammed } from "../CheckoutShippingProgrammed";
-import { shippingMethodFormSchema } from "./schema";
-import * as S from "./styles";
-import { ICheckoutShipping, IProps } from "./types";
+} from '@temp/@sdk/repository';
+import { SHIPPING_FORMAT_DATE } from '@temp/core/config';
+import { isScheduledShippingMethod } from '@temp/core/utils';
+import { format } from 'date-fns';
+import { useFormik } from 'formik';
+import React from 'react';
+import { CheckoutShippingProgrammed } from '../CheckoutShippingProgrammed';
+import { shippingMethodFormSchema } from './schema';
+import * as S from './styles';
+import { ICheckoutShipping, IProps } from './types';
 
 /**
  * Shipping method selector used in checkout.
@@ -44,13 +45,13 @@ const CheckoutShipping: React.FC<IProps> = ({
       dateSelected: !scheduleDate?.date
         ? undefined
         : convertShippingMethodDateToDate(scheduleDate.date),
-      isScheduled:
-        shippingMethods?.find(it => it.id === selectedShippingMethodId)
-          ?.isScheduled || false,
+      isScheduled: isScheduledShippingMethod(
+        shippingMethods?.find((it) => it.id === selectedShippingMethodId)
+      ),
       scheduleSelected: scheduleDate?.scheduleTime?.id,
       shippingMethod: selectedShippingMethodId,
     },
-    onSubmit: values => {
+    onSubmit: (values) => {
       if (selectShippingMethod && values.shippingMethod) {
         if (!values.isScheduled) {
           selectShippingMethod(
@@ -66,8 +67,8 @@ const CheckoutShipping: React.FC<IProps> = ({
           values.scheduleSelected
         ) {
           const scheduleDate: IShippingMethodUpdateScheduleDate = {
-            date: format(values.dateSelected, SHIPPING_FORMAT_DATE) || "",
-            scheduleTimeId: values.scheduleSelected || "",
+            date: format(values.dateSelected, SHIPPING_FORMAT_DATE) || '',
+            scheduleTimeId: values.scheduleSelected || '',
           };
           selectShippingMethod(
             {
@@ -103,18 +104,18 @@ const CheckoutShipping: React.FC<IProps> = ({
         steps.shippingMethodSelected,
         ecommerceProductsMapper(items)
       );
-      setFieldValue("shippingMethod", id);
-      setFieldValue("isScheduled", isScheduled);
+      setFieldValue('shippingMethod', id);
+      setFieldValue('isScheduled', isScheduled);
       const shippingMethod: IShippingMethodUpdate = { shippingMethodId: id };
       if (isScheduled) {
         const scheduleDate = scheduleDates?.[0];
         const date = convertShippingMethodDateToDate(scheduleDate?.date);
         shippingMethod.scheduleDate = {
           date: scheduleDate?.date,
-          scheduleTimeId: scheduleDate?.scheduleTimes?.[0]?.id || "",
+          scheduleTimeId: scheduleDate?.scheduleTimes?.[0]?.id || '',
         };
-        setFieldValue("dateSelected", date);
-        setFieldValue("scheduleSelected", scheduleDate?.scheduleTimes?.[0]?.id);
+        setFieldValue('dateSelected', date);
+        setFieldValue('scheduleSelected', scheduleDate?.scheduleTimes?.[0]?.id);
       }
       setShippingMethod(shippingMethod);
     }
@@ -124,62 +125,55 @@ const CheckoutShipping: React.FC<IProps> = ({
   return (
     <section>
       <S.FieldsGroup>
-        {renderGroupLabel("Escoge el tiempo de entrega")}
+        {renderGroupLabel('Escoge el tiempo de entrega')}
         <form id={formId} ref={formRef} onSubmit={handleSubmit}>
           <div className="fa-grid fa-grid-cols-1 lg:fa-grid-cols-2 fa-gap-x-8 fa-relative">
-            {shippingMethods?.map(
-              (
-                { id, isScheduled, name, price, scheduleDates, subtitle },
-                index
-              ) => {
-                const selected: boolean =
-                  !!values.shippingMethod && values.shippingMethod === id;
-                  
-                return (
-                  <React.Fragment key={index}>
-                    <S.ShippingMethodContainer
-                      data-cy={`checkoutShippingMethodOption${index}Input`}
-                      hasError={
-                        !!formikErrors?.shippingMethod && !values.shippingMethod
-                      }
-                      isScheduledSelected={!!selected && !!isScheduled}
-                      selected={selected}
-                      onClick={() => {
-                        handleOnclick(
-                          id,
-                          !!isScheduled,
-                          scheduleDates,
-                          selected
-                        );
-                      }}
-                    >
-                      <S.ShippingMethodItem>
-                        <ShippingMethodItem
-                          id={id}
-                          price={price}
-                          index={index}
-                          isScheduled={isScheduled}
-                          name={name}
-                          selected={selected}
-                          subtitle={subtitle}
-                        />
-                      </S.ShippingMethodItem>
-                    </S.ShippingMethodContainer>
-                    <CheckoutShippingProgrammed
-                      dateSelected={values.dateSelected}
-                      errors={formikErrors}
-                      id={id}
-                      isScheduled={isScheduled}
-                      selected={selected}
-                      scheduleSelected={values.scheduleSelected}
-                      scheduleDates={scheduleDates}
-                      setFieldValue={setFieldValue}
-                      setShippingMethod={setShippingMethod}
-                    />
-                  </React.Fragment>
-                );
-              }
-            )}
+            {shippingMethods?.map((shippingMethod, index) => {
+              const { id, name, price, scheduleDates, subtitle } =
+                shippingMethod;
+              const isScheduled = isScheduledShippingMethod(shippingMethod);
+              const selected: boolean =
+                !!values.shippingMethod && values.shippingMethod === id;
+
+              return (
+                <React.Fragment key={index}>
+                  <S.ShippingMethodContainer
+                    data-cy={`checkoutShippingMethodOption${index}Input`}
+                    hasError={
+                      !!formikErrors?.shippingMethod && !values.shippingMethod
+                    }
+                    isScheduledSelected={!!selected && !!isScheduled}
+                    selected={selected}
+                    onClick={() => {
+                      handleOnclick(id, !!isScheduled, scheduleDates, selected);
+                    }}
+                  >
+                    <S.ShippingMethodItem>
+                      <ShippingMethodItem
+                        id={id}
+                        price={price}
+                        index={index}
+                        isScheduled={isScheduled}
+                        name={name}
+                        selected={selected}
+                        subtitle={subtitle}
+                      />
+                    </S.ShippingMethodItem>
+                  </S.ShippingMethodContainer>
+                  <CheckoutShippingProgrammed
+                    dateSelected={values.dateSelected}
+                    errors={formikErrors}
+                    id={id}
+                    isScheduled={isScheduled}
+                    selected={selected}
+                    scheduleSelected={values.scheduleSelected}
+                    scheduleDates={scheduleDates}
+                    setFieldValue={setFieldValue}
+                    setShippingMethod={setShippingMethod}
+                  />
+                </React.Fragment>
+              );
+            })}
           </div>
           {!!shippingMethods?.length &&
             formikErrors?.shippingMethod &&

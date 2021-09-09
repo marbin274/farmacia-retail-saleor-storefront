@@ -1,1 +1,1 @@
-export * from "./ExpressShippingMethod";
+export * from './ExpressShippingMethod';

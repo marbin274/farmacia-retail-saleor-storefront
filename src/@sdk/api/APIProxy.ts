@@ -3,7 +3,8 @@ import {
   ApolloError,
   ObservableQuery,
   WatchQueryOptions,
-} from 'apollo-client';
+} from '@apollo/client';
+
 import { GraphQLError } from 'graphql';
 
 import { fireSignOut, getAuthToken, setAuthToken } from '../auth';
@@ -74,6 +75,20 @@ export class APIProxy {
     (data) => data
   );
 
+  getFeaturedProducts = this.watchQuery(
+    QUERIES.FeaturedProducts,
+    (data) => data
+  );
+  getFeaturePlugins = this.watchQuery(
+    QUERIES.GetShopFeaturePlugins,
+    (data) => data.shop?.availableFeaturePlugins
+  );
+
+  getFooterSecondaryMenu = this.watchQuery(
+    QUERIES.FooterSecondaryMenu,
+    (data) => data
+  );
+
   getHomePage = this.watchQuery(QUERIES.HomePage, (data) => data.shop);
 
   getLanding = this.watchQuery(QUERIES.Landing, (data) => data);
@@ -83,11 +98,7 @@ export class APIProxy {
     (data) => data.mainBanner
   );
 
-  getFeaturePlugins = this.watchQuery(
-    QUERIES.GetShopFeaturePlugins,
-    (data) => data.shop?.availableFeaturePlugins
-  );
-
+  getMainMenu = this.watchQuery(QUERIES.MainMenu, (data) => data);
   getOrdersByUser = this.watchQuery(QUERIES.OrdersByUser, (data) =>
     data.me ? data.me.orders : null
   );
@@ -107,38 +118,26 @@ export class APIProxy {
     (data) => data.productVariants
   );
 
+  getShippingMethods = this.watchQuery(
+    QUERIES.GetShippingMethods,
+    (data) => data
+  );
+
   getShopDetails = this.watchQuery(QUERIES.GetShopDetails, (data) => data);
 
   searchProducts = this.watchQuery(QUERIES.SearchProducts, (data) => data);
 
-  setUserDefaultAddress = this.fireQuery(
-    MUTATIONS.AddressTypeUpdate,
-    (data) => data!.accountSetDefaultAddress
-  );
+  searchResults = this.watchQuery(QUERIES.SearchResults, (data) => data);
 
-  setDeleteUserAddress = this.fireQuery(
-    MUTATIONS.DeleteUserAddress,
-    (data) => data!.accountAddressDelete
-  );
-
-  setCreateUserAddress = this.fireQuery(
-    MUTATIONS.CreateUserAddress,
-    (data) => data!.accountAddressCreate
-  );
-
-  setUpdateuserAddress = this.fireQuery(
-    MUTATIONS.UpdateUserAddress,
-    (data) => data!.accountAddressUpdate
-  );
+  selledProducts = this.watchQuery(QUERIES.SelledProducts, (data) => data);
 
   setAccountUpdate = this.fireQuery(
     MUTATIONS.AccountUpdate,
     (data) => data!.accountUpdate
   );
-
-  setDefaultUserCardToken = this.fireQuery(
-    MUTATIONS.SetDefaultUserCardToken,
-    (data) => data!.accountSetDefaultCardToken
+  setCreateUserAddress = this.fireQuery(
+    MUTATIONS.CreateUserAddress,
+    (data) => data!.accountAddressCreate
   );
 
   setCreateUserCardToken = this.fireQuery(
@@ -146,9 +145,34 @@ export class APIProxy {
     (data) => data!.accountCardTokenCreate
   );
 
+  setDefaultUserCardToken = this.fireQuery(
+    MUTATIONS.SetDefaultUserCardToken,
+    (data) => data!.accountSetDefaultCardToken
+  );
+  setDeleteUserAddress = this.fireQuery(
+    MUTATIONS.DeleteUserAddress,
+    (data) => data!.accountAddressDelete
+  );
+
   setDeleteUserCardToken = this.fireQuery(
     MUTATIONS.DeleteUserCardToken,
     (data) => data!.accountCardTokenDelete
+  );
+
+  setPasswordReset = this.fireQuery(MUTATIONS.PasswordReset, (data) => data);
+
+  setRegisterAccount = this.fireQuery(
+    MUTATIONS.RegisterAccount,
+    (data) => data
+  );
+
+  setUpdateuserAddress = this.fireQuery(
+    MUTATIONS.UpdateUserAddress,
+    (data) => data!.accountAddressUpdate
+  );
+  setUserDefaultAddress = this.fireQuery(
+    MUTATIONS.AddressTypeUpdate,
+    (data) => data!.accountSetDefaultAddress
   );
 
   client: ApolloClient<any>;
@@ -202,7 +226,7 @@ export class APIProxy {
 
     if (data?.token && data.errors.length === 0) {
       setAuthToken(data.token);
-      if (window.PasswordCredential && variables) {
+      if (window?.PasswordCredential && variables) {
         navigator.credentials.store(
           new window.PasswordCredential({
             id: variables.email,
@@ -329,12 +353,12 @@ export class APIProxy {
     };
 
     if (WINDOW_EXISTS) {
-      window.addEventListener('auth', eventHandler);
+      window?.addEventListener('auth', eventHandler);
     }
 
     return () => {
       if (WINDOW_EXISTS) {
-        window.removeEventListener('auth', eventHandler);
+        window?.removeEventListener('auth', eventHandler);
       }
     };
   };
@@ -458,8 +482,11 @@ export class APIProxy {
         refetch: (newVariables?: TVariables) => {
           if (newVariables) {
             observable.setVariables(newVariables);
-            const cachedResult = observable.currentResult();
-            const errorHandledData = handleDataErrors(mapFn, cachedResult.data);
+            const cachedResult = observable.getCurrentResult();
+            const errorHandledData = handleDataErrors(
+              mapFn,
+              cachedResult.data as {}
+            );
             if (errorHandledData.data) {
               onUpdate(errorHandledData.data as TResult);
             }

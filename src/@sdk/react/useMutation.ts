@@ -1,16 +1,15 @@
-import { DataProxy } from "apollo-cache";
-import { FetchResult } from "apollo-link";
-import React from "react";
+import { DataProxy, FetchResult } from '@apollo/client';
+import React from 'react';
 
-import { APIProxy } from "../api/APIProxy";
-import { MutationOptions } from "../mutations";
-import { useSaleorClient } from "./helpers";
+import { APIProxy } from '../api/APIProxy';
+import { MutationOptions } from '../mutations';
+import { useSaleorClient } from './helpers';
 import {
   ApolloErrorWithUserInput,
   Options,
   ReturnData,
   Variables,
-} from "./types";
+} from './types';
 
 type MutationUpdaterFn<TData = Record<string, any>> = (
   proxy: DataProxy,
@@ -18,7 +17,7 @@ type MutationUpdaterFn<TData = Record<string, any>> = (
 ) => void;
 
 export interface BaseMutationHookOptions<TData, TVariables>
-  extends Omit<MutationOptions<TData, TVariables>, "update"> {
+  extends Omit<MutationOptions<TData, TVariables>, 'update'> {
   update?: MutationUpdaterFn<TData>;
 }
 
@@ -29,7 +28,7 @@ export type MutationFn<TData, TVariables> = (
 
 export interface MutationResult<TData extends { data: any }> {
   called: boolean;
-  data: TData["data"] | null;
+  data: TData['data'] | null;
   error: ApolloErrorWithUserInput | null;
   loading: boolean;
 }
@@ -72,9 +71,8 @@ const useMutation = <
 ): [MutationFn<TData, TVariables>, MutationResult<TData>] => {
   const saleor = useSaleorClient();
   const { generateNewMutationId, isMostRecentMutation } = useMutationTracking();
-  const [result, setResult] = React.useState<MutationResult<TData>>(
-    initialState
-  );
+  const [result, setResult] =
+    React.useState<MutationResult<TData>>(initialState);
 
   const handleMutationStart = () => {
     if (!result.loading) {
@@ -92,7 +90,7 @@ const useMutation = <
     mutationId: number
   ) => {
     if (isMostRecentMutation(mutationId)) {
-      setResult(prevState => ({
+      setResult((prevState) => ({
         ...prevState,
         error,
         loading: false,
@@ -102,7 +100,7 @@ const useMutation = <
 
   const handleMutationComplete = (data: TData, mutationId: number) => {
     if (isMostRecentMutation(mutationId)) {
-      setResult(prevState => ({
+      setResult((prevState) => ({
         ...prevState,
         data,
         loading: false,
@@ -112,7 +110,7 @@ const useMutation = <
 
   const runMutation = React.useCallback(
     (variables: TVariables, options: TOptions) => {
-      return new Promise(resolve => {
+      return new Promise((resolve) => {
         handleMutationStart();
 
         const mutationId = generateNewMutationId();
@@ -126,15 +124,17 @@ const useMutation = <
           ...(options as object),
         };
 
-        (saleor.legacyAPIProxy[mutation] as (
-          variables: any,
-          options: any
-        ) => Promise<any>)(apolloVariables, apolloOptions)
-          .then(data => {
+        (
+          saleor.legacyAPIProxy[mutation] as (
+            variables: any,
+            options: any
+          ) => Promise<any>
+        )(apolloVariables, apolloOptions)
+          .then((data) => {
             handleMutationComplete(data.data, mutationId);
             resolve(data);
           })
-          .catch(err => {
+          .catch((err) => {
             handleMutationError(err, mutationId);
             resolve(null);
           });
@@ -146,11 +146,13 @@ const useMutation = <
   return [runMutation, result];
 };
 
-export const mutationFactory = <
-  T extends keyof APIProxy,
-  TVariables extends Variables<T>,
-  TOptions extends Options<T>
->(
-  mutation: T
-) => (variables?: TVariables, options?: TOptions) =>
-  useMutation(mutation, variables, options);
+export const mutationFactory =
+  <
+    T extends keyof APIProxy,
+    TVariables extends Variables<T>,
+    TOptions extends Options<T>
+  >(
+    mutation: T
+  ) =>
+  (variables?: TVariables, options?: TOptions) =>
+    useMutation(mutation, variables, options);

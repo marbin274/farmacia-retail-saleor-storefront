@@ -1,28 +1,22 @@
-import { ShippingMethodItem } from "@temp/@next/components/molecules";
-import React, { FC } from "react";
-import * as S from "../../styles";
-import { ISlotShippingMethodItem } from "../../types";
+import { ShippingMethodItem } from '@temp/@next/components/molecules';
+import React, { FC } from 'react';
+import * as S from '../../styles';
+import { ISlotShippingMethodItem } from '../../types';
 
 export const ExpressShippingMethod: FC<ISlotShippingMethodItem> = ({
   formikErrors,
   onClick,
-  shippingMethods,
-  slots,
+  shippingMethod,
+  shippingSlots,
   values,
 }) => {
-  const express = slots?.express?.[0];
+  const slot = shippingSlots?.[0];
 
-  if (!express) {
+  if (!slot || !shippingMethod) {
     return null;
   }
 
-  const shippingMethod = shippingMethods?.find(x => !x.isScheduled);
-
-  if (!shippingMethod) {
-    return null;
-  }
-
-  const { id, isScheduled, name, price, subtitle } = shippingMethod;
+  const { id, name, price, subtitle } = shippingMethod;
   const selected = values?.shippingMethod === id;
   const index = 0;
 
@@ -31,16 +25,16 @@ export const ExpressShippingMethod: FC<ISlotShippingMethodItem> = ({
       data-cy={`checkoutShippingMethodOption${index}Input`}
       hasError={!!formikErrors?.shippingMethod && !values.shippingMethod}
       selected={selected}
-      isScheduledSelected={!!selected && !!isScheduled}
+      isScheduledSelected={false}
       onClick={() => {
-        onClick(id, false, null, selected, express.id);
+        onClick(id, false, null, selected, slot.id);
       }}
     >
       <S.ShippingMethodItem>
         <ShippingMethodItem
           id={id}
           index={index}
-          isScheduled={isScheduled}
+          isScheduled={false}
           name={name}
           selected={selected}
           subtitle={subtitle}

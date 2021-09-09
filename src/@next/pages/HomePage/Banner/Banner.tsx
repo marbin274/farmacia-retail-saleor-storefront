@@ -7,7 +7,7 @@ import { SkeletonBanner } from '../skeleton';
 import { MainBanner_mainBanner } from '@sdk/queries/gqlTypes/MainBanner';
 import * as S from './styles';
 import { useMainBanner } from '@temp/@sdk/react';
-import { NotFound } from '@temp/components';
+import { NotFound } from '../../NotFoundPage';
 
 const baseUrlPattern = /(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})*\/?/;
 
@@ -73,10 +73,15 @@ export const Banner: React.FC = () => {
   }
 
   const banners = getBannersFromData(mainBanner);
+  const multiBanner: boolean = banners?.length > 1;
 
   return (
     <S.BannerWrapper className="fa-relative fa-text-center">
-      <BannerCarousel>
+      <BannerCarousel
+        autoplay={multiBanner}
+        transitionMode={multiBanner ? 'scroll' : 'fade'}
+        wrapAround={multiBanner}
+      >
         {banners.map((banner, index) => {
           return (
             <div
@@ -89,7 +94,7 @@ export const Banner: React.FC = () => {
                 <img
                   className="fa-mx-auto fa-my-0"
                   alt="banner mobile"
-                  height={460}
+                  height={250}
                   src={banner.mobile}
                   width={360}
                 />

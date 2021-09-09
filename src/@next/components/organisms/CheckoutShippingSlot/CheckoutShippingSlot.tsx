@@ -1,23 +1,24 @@
-import { ErrorMessage } from "@components/atoms";
-import { convertShippingMethodDateToDate } from "@temp/@next/utils/dateUtils";
+import { ErrorMessage } from '@components/atoms';
+import { convertShippingMethodDateToDate } from '@temp/@next/utils/dateUtils';
 import {
   launchCheckoutEvent,
   steps,
   ecommerceProductsMapper,
-} from "@temp/@sdk/gaConfig";
+} from '@temp/@sdk/gaConfig';
 import {
   IShippingMethodUpdate,
   IShippingMethodUpdateScheduleDate,
-} from "@temp/@sdk/repository";
-import { SHIPPING_FORMAT_DATE } from "@temp/core/config";
-import { format } from "date-fns";
-import { useFormik } from "formik";
-import React from "react";
-import { shippingMethodSlotFormSchema } from "./schema";
-import * as S from "./styles";
-import { ICheckoutShippingSlotForm, ICheckoutShippingSlotProps } from "./types";
-import { ExpressShippingMethod, ScheduledShippingMethod } from "./components";
-import { ISlotScheduleDate } from "@components/organisms/CheckoutShippingProgrammed/types";
+} from '@temp/@sdk/repository';
+import { SHIPPING_FORMAT_DATE, SHIPPING_TYPES } from '@temp/core/config';
+import { format } from 'date-fns';
+import { useFormik } from 'formik';
+import React from 'react';
+import { shippingMethodSlotFormSchema } from './schema';
+import * as S from './styles';
+import { ICheckoutShippingSlotForm, ICheckoutShippingSlotProps } from './types';
+import { ExpressShippingMethod, ScheduledShippingMethod } from './components';
+import { ISlotScheduleDate } from '@components/organisms/CheckoutShippingProgrammed/types';
+import { isScheduledShippingMethod } from '@temp/core/utils';
 
 /**
  * Shipping method selector used in checkout with instaleap integration.
@@ -45,14 +46,14 @@ export const CheckoutShippingSlot: React.FC<ICheckoutShippingSlotProps> = ({
       dateSelected: !scheduleDate?.date
         ? undefined
         : convertShippingMethodDateToDate(scheduleDate.date),
-      isScheduled:
-        shippingMethods?.find(it => it.id === selectedShippingMethodId)
-          ?.isScheduled || false,
-      selectedScheduleTimeId: scheduleDate?.scheduleTime?.id || "",
-      selectedSlotId: selectedSlotId || "",
+      isScheduled: isScheduledShippingMethod(
+        shippingMethods?.find((it) => it.id === selectedShippingMethodId)
+      ),
+      selectedScheduleTimeId: scheduleDate?.scheduleTime?.id || '',
+      selectedSlotId: selectedSlotId || '',
       shippingMethod: selectedShippingMethodId,
     },
-    onSubmit: values => {
+    onSubmit: (values) => {
       if (selectShippingMethod && values.shippingMethod) {
         if (!values.isScheduled) {
           selectShippingMethod(
@@ -69,8 +70,8 @@ export const CheckoutShippingSlot: React.FC<ICheckoutShippingSlotProps> = ({
           values.selectedSlotId
         ) {
           const scheduleDate: IShippingMethodUpdateScheduleDate = {
-            date: format(values.dateSelected, SHIPPING_FORMAT_DATE) || "",
-            scheduleTimeId: values.selectedScheduleTimeId || "",
+            date: format(values.dateSelected, SHIPPING_FORMAT_DATE) || '',
+            scheduleTimeId: values.selectedScheduleTimeId || '',
           };
           selectShippingMethod(
             {
@@ -104,9 +105,9 @@ export const CheckoutShippingSlot: React.FC<ICheckoutShippingSlotProps> = ({
         steps.shippingMethodSelected,
         ecommerceProductsMapper(items)
       );
-      setFieldValue("shippingMethod", id);
-      setFieldValue("isScheduled", isScheduled);
-      setFieldValue("selectedSlotId", slotId);
+      setFieldValue('shippingMethod', id);
+      setFieldValue('isScheduled', isScheduled);
+      setFieldValue('selectedSlotId', slotId);
       const shippingMethod: IShippingMethodUpdate = {
         shippingMethodId: id,
         slotId,
@@ -121,13 +122,13 @@ export const CheckoutShippingSlot: React.FC<ICheckoutShippingSlotProps> = ({
 
         shippingMethod.scheduleDate = {
           date: scheduleTime?.date!,
-          scheduleTimeId: scheduleTimeId || "",
+          scheduleTimeId: scheduleTimeId || '',
         };
         shippingMethod.slotId = slotId;
 
-        setFieldValue("dateSelected", date);
-        setFieldValue("selectedSlotId", slotId);
-        setFieldValue("selectedScheduleTimeId", scheduleTimeId);
+        setFieldValue('dateSelected', date);
+        setFieldValue('selectedSlotId', slotId);
+        setFieldValue('selectedScheduleTimeId', scheduleTimeId);
       }
       setShippingMethod(shippingMethod);
     }
@@ -142,22 +143,58 @@ export const CheckoutShippingSlot: React.FC<ICheckoutShippingSlotProps> = ({
     return (
       <form id={formId} ref={formRef} onSubmit={handleSubmit}>
         <div className="fa-grid fa-grid-cols-1 lg:fa-grid-cols-2 fa-gap-x-8 fa-relative">
-          <ExpressShippingMethod
-            slots={slots}
-            shippingMethods={shippingMethods}
-            formikErrors={formikErrors}
-            values={values}
-            onClick={handleOnclick}
-          />
-          <ScheduledShippingMethod
-            slots={slots}
-            shippingMethods={shippingMethods}
-            formikErrors={formikErrors}
-            values={values}
-            setFieldValue={setFieldValue}
-            setShippingMethod={setShippingMethod}
-            onClick={handleOnclick}
-          />
+          {shippingMethods.map((shippingMethod) => {
+            const { id, methodType } = shippingMethod;
+
+            if (!methodType?.code) {
+              return;
+            }
+
+            switch (methodType?.code) {
+              case SHIPPING_TYPES.express:
+              case SHIPPING_TYPES.expressPrime:
+                return (
+                  <ExpressShippingMethod
+                    key={id}
+                    shippingSlots={slots?.express}
+                    shippingMethod={shippingMethod}
+                    formikErrors={formikErrors}
+                    values={values}
+                    onClick={handleOnclick}
+                  />
+                );
+
+              case SHIPPING_TYPES.expressNextDay:
+                return (
+                  <ExpressShippingMethod
+                    key={id}
+                    shippingSlots={(slots as any)?.nextday} // TODO: quitar any cuando el backend lo tenga implementado y se genere tipado
+                    shippingMethod={shippingMethod}
+                    formikErrors={formikErrors}
+                    values={values}
+                    onClick={handleOnclick}
+                  />
+                );
+
+              case SHIPPING_TYPES.scheduled:
+              case SHIPPING_TYPES.scheduledPrime:
+                return (
+                  <ScheduledShippingMethod
+                    key={id}
+                    shippingSlots={slots?.scheduled}
+                    shippingMethod={shippingMethod}
+                    formikErrors={formikErrors}
+                    values={values}
+                    setFieldValue={setFieldValue}
+                    setShippingMethod={setShippingMethod}
+                    onClick={handleOnclick}
+                  />
+                );
+
+              default:
+                return null;
+            }
+          })}
         </div>
         {!!shippingMethods?.length &&
           formikErrors?.shippingMethod &&

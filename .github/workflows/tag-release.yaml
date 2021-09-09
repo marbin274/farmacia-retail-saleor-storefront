@@ -14,10 +14,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Bump version and push tag
-      uses: anothrNick/github-tag-action@1.26.0
+      id: "tag"
+      uses: "anothrNick/github-tag-action@1.30.0"
       env:
-        DEFAULT_BUMP: minor
+        DEFAULT_BUMP: none
         GITHUB_TOKEN: ${{ secrets.GHA_GITHUB_TOKEN }}
         REPO_OWNER: farmacia-retail
         WITH_V: true
         RELEASE_BRANCHES: release.*
+        DRY_RUN: true

@@ -1,39 +1,39 @@
-import React, { useEffect, useState } from "react";
-import { Formik } from "formik";
-import classNames from "classnames";
-import { Checkbox, Loader } from "@components/atoms";
-import { PopAlert } from "@components/molecules";
-import { InputField } from "@farmacia-retail/farmauna-components";
-import farmatheme from "@farmatheme";
-import americanExpress from "@temp/images/auna/american-express-payment.svg";
-import dinersClub from "@temp/images/auna/diners-club-payment.svg";
-import masterCardIcon from "@temp/images/auna/mastercard-payment.svg";
-import niubizTextIcon from "@temp/images/auna/niubiz-text.svg";
-import visaIcon from "@temp/images/auna/visa-payment.svg";
-import CardTickIcon from "images/auna/card-tick.svg";
-import { ICardData } from "@types";
-import ErrorFormPopulateIcon from "images/auna/form-populate-error.svg";
-import ReactSVG from "react-svg";
-import _ from "lodash";
+import React, { useEffect, useState } from 'react';
+import { Formik } from 'formik';
+import classNames from 'classnames';
+import { Checkbox, Loader } from '@components/atoms';
+import { PopAlert } from '@components/molecules';
+import { InputField } from '@farmacia-retail/farmauna-components';
+import farmatheme from '@farmatheme';
+import americanExpress from '@temp/images/auna/american-express-payment.svg';
+import dinersClub from '@temp/images/auna/diners-club-payment.svg';
+import masterCardIcon from '@temp/images/auna/mastercard-payment.svg';
+import niubizTextIcon from '@temp/images/auna/niubiz-text.svg';
+import visaIcon from '@temp/images/auna/visa-payment.svg';
+import CardTickIcon from 'images/auna/card-tick.svg';
+import { ICardData } from '@types';
+import ErrorFormPopulateIcon from 'images/auna/form-populate-error.svg';
+import ReactSVG from 'react-svg';
+import _ from 'lodash';
 import {
   cardTokenization,
   createSession,
   createToken,
   ICardTokenizationResult,
   INiubizCreateTokenData,
-} from "../../../../core/payments/niubiz";
-import { alertService } from "../../atoms/Alert";
-import { IAlertServiceProps } from "../../atoms/Alert/types";
-import { validatePaymentGateway } from "./NiubizPaymentGatewayValidation";
-import * as S from "./styles";
-import { IFormPayment, initialValuesFormPayment, IProps } from "./types";
+} from '../../../../core/payments/niubiz';
+import { alertService } from '../../atoms/Alert';
+import { IAlertServiceProps } from '../../atoms/Alert/types';
+import { validatePaymentGateway } from './NiubizPaymentGatewayValidation';
+import * as S from './styles';
+import { IFormPayment, initialValuesFormPayment, IProps } from './types';
 import {
   getConfigElement,
   getTokenRequirements,
   getSessionRequirements,
   getTokenizerRequirements,
   getCardTokenizationRequirements,
-} from "./utils";
+} from './utils';
 
 enum ERROR_DICTIONARY {
   CARD_NUMBER = 0,
@@ -41,14 +41,14 @@ enum ERROR_DICTIONARY {
   CVV = 2,
 }
 
-const errorsDictionary = ["invalid_number", "invalid_expiry", "invalid_cvc"];
+const errorsDictionary = ['invalid_number', 'invalid_expiry', 'invalid_cvc'];
 
 const styles = {
   hidde: {
-    display: "none",
+    display: 'none',
   },
   show: {
-    display: "block",
+    display: 'block',
   },
 };
 
@@ -79,11 +79,11 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
     ).toString();
 
     const payformUrl =
-      getConfigElement(config, "nb_payform_url") ||
-      "https://pocpaymentserve.s3.amazonaws.com/payform.min.js";
+      getConfigElement(config, 'nb_payform_url') ||
+      'https://pocpaymentserve.s3.amazonaws.com/payform.min.js';
 
-    const script: HTMLScriptElement = document.createElement("script");
-    const idIframes: string = "tmx_tags_iframe"; // IFrame Ids loaded by Niubiz - share same Id
+    const script: HTMLScriptElement = document.createElement('script');
+    const idIframes: string = 'tmx_tags_iframe'; // IFrame Ids loaded by Niubiz - share same Id
     script.src = payformUrl;
     script.async = true;
     document.body.appendChild(script);
@@ -97,7 +97,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
   const createTokenScript = (purchaseNumber: string) => {
     const tokenRequirements = getTokenRequirements(config);
     const amount = saveCardSelected ? 1 : totalPrice?.gross.amount.toString();
-    const channel = saveCardSelected ? "paycard" : "web";
+    const channel = saveCardSelected ? 'paycard' : 'web';
     // @ts-ignore
     createToken(tokenRequirements)
       .then((token: any) => {
@@ -114,7 +114,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
         );
         return createSession(sessionRequirements);
       })
-      .then(key => {
+      .then((key) => {
         const tokenizerRequirements = getTokenizerRequirements(
           config,
           key,
@@ -123,17 +123,16 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
 
         const configuration = {
           amount,
-          callbackurl: "",
+          callbackurl: '',
           channel,
-          font:
-            "https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap",
-          language: "es",
+          font: 'https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap',
+          language: 'es',
           merchantConfiguration: {
             tokenizationEnabled: true,
           },
           merchantid: tokenizerRequirements.merchantId,
           purchasenumber: purchaseNumber,
-          recurrentmaxamount: "1000.00",
+          recurrentmaxamount: '1000.00',
           sessionkey: key,
         };
 
@@ -144,21 +143,21 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
         const elementStyles = {
           base: {
             autofill: {
-              color: "#e39f48",
+              color: '#e39f48',
             },
-            color: "black",
+            color: 'black',
             fontFamily: "'Poppins', sans-serif",
-            fontSize: "1rem",
-            fontSmoothing: "antialiased",
+            fontSize: '1rem',
+            fontSmoothing: 'antialiased',
             placeholder: {
               color: farmatheme.theme.colors.neutral.medium,
             },
           },
           invalid: {
-            "::placeholder": {
-              color: "#FFCCA5",
+            '::placeholder': {
+              color: '#FFCCA5',
             },
-            color: "#E25950",
+            color: '#E25950',
           },
         };
 
@@ -167,28 +166,28 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
         const _payform = _window?.payform;
 
         _window.cardNumber = _window?.payform.createElement(
-          "card-number",
+          'card-number',
           {
-            placeholder: "Ejem: 9729 2800 2334 3423",
+            placeholder: 'Ejem: 9729 2800 2334 3423',
             style: elementStyles,
           },
-          "txtNumeroTarjeta"
+          'txtNumeroTarjeta'
         );
 
         _window?.cardNumber.then((element: any) => {
-          element.on("bin", (data: any) => {
+          element.on('bin', (data: any) => {
             // TODO ...
           });
 
-          element.on("change", (data: any[]) => {
-            setFormErrors(data.filter(x => x.type === "validation_error"));
+          element.on('change', (data: any[]) => {
+            setFormErrors(data.filter((x) => x.type === 'validation_error'));
             if (data.length !== 0) {
-              let error = "";
+              let error = '';
               for (const d of data) {
-                error += "* " + d.message + "\n";
+                error += '* ' + d.message + '\n';
               }
 
-              if (error !== "") {
+              if (error !== '') {
                 // TODO: Replace this line with a proper error management tool
               }
             }
@@ -196,34 +195,34 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
         });
 
         _window.cardCvv = _payform.createElement(
-          "card-cvc",
+          'card-cvc',
           {
-            placeholder: "Ejem: 972 0",
+            placeholder: 'Ejem: 972 0',
             style: elementStyles,
           },
-          "txtCvv"
+          'txtCvv'
         );
 
         _window.cardCvv.then((element: any) => {
-          element.on("change", (data: any) => {
+          element.on('change', (data: any) => {
             // TODO
           });
         });
 
         _window.cardExpiry = _payform.createElement(
-          "card-expiry",
+          'card-expiry',
           {
-            placeholder: "Ejem: 02/20",
+            placeholder: 'Ejem: 02/20',
             style: elementStyles,
           },
-          "txtFechaVencimiento"
+          'txtFechaVencimiento'
         );
 
         // @ts-ignore
-        _window.cardExpiry.then(element => {
+        _window.cardExpiry.then((element) => {
           setShowForm(true);
 
-          element.on("change", (data: any[]) => {
+          element.on('change', (data: any[]) => {
             // TODO
           });
         });
@@ -247,16 +246,23 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
     onError(errors);
   };
 
+  const randomNumberForCardSelected = () => {
+    const num = new Uint32Array(1);
+    window.crypto.getRandomValues(num);
+    const useNum = num[0] * Math.pow(2, -32);
+    return Math.floor(useNum * 10000) + 1;
+  };
+
   const handleSubmit = async (formData: IFormPayment) => {
     const data: INiubizCreateTokenData = {
-      alias: "KS",
+      alias: 'KS',
       email: formData.email,
       lastName: formData.lastname,
       name: formData.name,
     };
 
     if (saveCardSelected) {
-      data.userBlockId = Math.floor(Math.random() * 10000) + 1;
+      data.userBlockId = randomNumberForCardSelected();
       handleTokenization(data);
     } else {
       data.recurrence = false;
@@ -265,8 +271,8 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
   };
 
   const niubizTransaction = (data: INiubizCreateTokenData) => {
-    createPayFormToken(data, result => {
-      const bin = "bin";
+    createPayFormToken(data, (result) => {
+      const bin = 'bin';
       const cardData: ICardData = {
         firstDigits: result[bin],
       };
@@ -277,10 +283,10 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
   const createPayFormToken = (data: any, callback: (result: any) => void) => {
     try {
       // @ts-ignore
-      window.payform
+      window?.payform
         .createToken(
           // @ts-ignore
-          [window.cardNumber, window.cardExpiry, window.cardCvv],
+          [window?.cardNumber, window?.cardExpiry, window?.cardCvv],
           data
         )
         .then((result: any) => {
@@ -288,42 +294,42 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
             callback(result);
           } else {
             configureErrorMessages({
-              buttonText: "Entendido",
+              buttonText: 'Entendido',
               message:
-                "Ha ocurrido un error al procesar tu pago por favor inténtalo de nuevo.",
-              type: "Text",
+                'Ha ocurrido un error al procesar tu pago por favor inténtalo de nuevo.',
+              type: 'Text',
             });
           }
         })
         .catch((error: any) => {
-          if (error === "Ningun campo puede estar vacio") {
+          if (error === 'Ningun campo puede estar vacio') {
             configureErrorMessages({
-              buttonText: "Entendido",
+              buttonText: 'Entendido',
               icon: ErrorFormPopulateIcon,
               message:
-                "Es necesario completar todos los campos de la tarjeta de crédito/débito.",
-              title: "Faltan datos",
-              type: "Text",
+                'Es necesario completar todos los campos de la tarjeta de crédito/débito.',
+              title: 'Faltan datos',
+              type: 'Text',
             });
           } else {
             configureErrorMessages({
-              buttonText: "Entendido",
+              buttonText: 'Entendido',
               message: error,
-              type: "Text",
+              type: 'Text',
             });
           }
         });
     } catch (error) {
       configureErrorMessages({
-        buttonText: "Entendido",
+        buttonText: 'Entendido',
         message: error,
-        type: "Text",
+        type: 'Text',
       });
     }
   };
 
   const handleTokenization = (data: INiubizCreateTokenData) => {
-    createPayFormToken(data, result => {
+    createPayFormToken(data, (result) => {
       const ctRequirements = getCardTokenizationRequirements(
         config,
         result.transactionToken,
@@ -349,11 +355,11 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
 
   const showTokenizationCommonError = () => {
     configureErrorMessages({
-      buttonText: "Volver a intentar",
+      buttonText: 'Volver a intentar',
       message: (
         <>
           <p>
-            1. Por favor verifica que los datos de tu tarjeta sean correctos.{" "}
+            1. Por favor verifica que los datos de tu tarjeta sean correctos.{' '}
           </p>
           <br />
           <p>
@@ -361,7 +367,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
           </p>
         </>
       ),
-      type: "Text",
+      type: 'Text',
       acceptDialog: () => {
         onForceReRender?.();
       },
@@ -370,17 +376,17 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
 
   const getErrorFromDictionary = (errorDictionary: ERROR_DICTIONARY) => {
     return formErrors.length &&
-      formErrors.filter(x => x.code === errorsDictionary[errorDictionary])
+      formErrors.filter((x) => x.code === errorsDictionary[errorDictionary])
         .length ? (
       <div className="error number-creditcard-error">
         {
           formErrors.filter(
-            x => x.code === errorsDictionary[errorDictionary]
+            (x) => x.code === errorsDictionary[errorDictionary]
           )[0].message
         }
       </div>
     ) : (
-      ""
+      ''
     );
   };
 
@@ -424,15 +430,16 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                   className="card-body"
                 >
                   <div
-                    className={classNames("fa-flex fa-mb-6", {
-                      "fa-justify-center fa-items-start lg:fa-justify-start lg:fa-items-center fa-flex-col lg:fa-flex-row": !fullWidthInputs,
-                      "fa-justify-center fa-flex-col": fullWidthInputs,
+                    className={classNames('fa-flex fa-mb-6', {
+                      'fa-justify-center fa-items-start lg:fa-justify-start lg:fa-items-center fa-flex-col lg:fa-flex-row':
+                        !fullWidthInputs,
+                      'fa-justify-center fa-flex-col': fullWidthInputs,
                     })}
                   >
                     <div
-                      className={classNames("fa-font-semibold", {
-                        "fa-mb-2 lg:fa-mb-0 lg:fa-mr-6": !fullWidthInputs,
-                        "fa-mb-2": fullWidthInputs,
+                      className={classNames('fa-font-semibold', {
+                        'fa-mb-2 lg:fa-mb-0 lg:fa-mr-6': !fullWidthInputs,
+                        'fa-mb-2': fullWidthInputs,
                       })}
                     >
                       Pagos seguros con:
@@ -471,8 +478,8 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                         <span>
                           <span className="fa-font-semibold fa-text-sm">
                             Guardar
-                          </span>{" "}
-                          en mis{" "}
+                          </span>{' '}
+                          en mis{' '}
                           <span className="fa-font-semibold fa-text-sm">
                             medios de pago
                           </span>
@@ -484,13 +491,13 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                   <div
                     className={classNames({
                       row: !fullWidthInputs,
-                      "row-w-full": fullWidthInputs,
+                      'row-w-full': fullWidthInputs,
                     })}
                   >
                     <div
                       className={classNames({
-                        "row-input": !fullWidthInputs,
-                        "row-input-w-full": fullWidthInputs,
+                        'row-input': !fullWidthInputs,
+                        'row-input-w-full': fullWidthInputs,
                       })}
                     >
                       <InputField
@@ -518,8 +525,8 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                     </div>
                     <div
                       className={classNames({
-                        "row-input": !fullWidthInputs,
-                        "row-input-w-full": fullWidthInputs,
+                        'row-input': !fullWidthInputs,
+                        'row-input-w-full': fullWidthInputs,
                       })}
                     >
                       <InputField
@@ -544,8 +551,8 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                     </div>
                     <div
                       className={classNames({
-                        "row-input": !fullWidthInputs,
-                        "row-input-w-full": fullWidthInputs,
+                        'row-input': !fullWidthInputs,
+                        'row-input-w-full': fullWidthInputs,
                       })}
                     >
                       <div className="card-input">

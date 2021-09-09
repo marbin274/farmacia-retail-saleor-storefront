@@ -1,41 +1,26 @@
-import { ShippingMethodItem } from "@temp/@next/components/molecules";
-import { ISlotScheduleDate } from "@components/organisms/CheckoutShippingProgrammed/types";
-import React, { FC } from "react";
-import { format } from "date-fns";
-import { HOURS_FORMAT, SHIPPING_FORMAT_DATE } from "@temp/core/config";
-import * as S from "../../styles";
-import { ISlotShippingMethodItem } from "../../types";
-import { CheckoutShippingProgrammedSlot} from "../../../CheckoutShippingProgrammed";
+import { ShippingMethodItem } from '@temp/@next/components/molecules';
+import { ISlotScheduleDate } from '@components/organisms/CheckoutShippingProgrammed/types';
+import React, { FC } from 'react';
+import { format } from 'date-fns';
+import { HOURS_FORMAT, SHIPPING_FORMAT_DATE } from '@temp/core/config';
+import * as S from '../../styles';
+import { ISlotShippingMethodItem } from '../../types';
+import { CheckoutShippingProgrammedSlot } from '../../../CheckoutShippingProgrammed';
 
 export const ScheduledShippingMethod: FC<ISlotShippingMethodItem> = ({
   formikErrors,
   onClick,
-  shippingMethods,
+  shippingMethod,
   setFieldValue,
-  slots,
+  shippingSlots,
   setShippingMethod,
   values,
 }) => {
-  const scheduled = slots?.scheduled;
-
-  if (!scheduled?.length) {
+  if (!shippingSlots?.length || !shippingMethod?.scheduleDates?.length) {
     return null;
   }
 
-  const shippingMethod = shippingMethods?.find(x => !!x.isScheduled);
-
-  if (!shippingMethod?.scheduleDates?.length) {
-    return null;
-  }
-
-  const {
-    id,
-    isScheduled,
-    name,
-    price,
-    scheduleDates,
-    subtitle,
-  } = shippingMethod;
+  const { id, name, price, scheduleDates, subtitle } = shippingMethod;
   const selected = values?.shippingMethod === id;
   const index = 1;
 
@@ -44,7 +29,7 @@ export const ScheduledShippingMethod: FC<ISlotShippingMethodItem> = ({
 
   const slotScheduleDates: ISlotScheduleDate[] = [
     {
-      scheduleTimes: scheduled!.map(x => ({
+      scheduleTimes: shippingSlots!.map((x) => ({
         date: format(new Date(x.slotFrom!), SHIPPING_FORMAT_DATE),
         id: x.id!,
         startTime: format(new Date(x.slotFrom!), HOURS_FORMAT),
@@ -60,7 +45,7 @@ export const ScheduledShippingMethod: FC<ISlotShippingMethodItem> = ({
         data-cy={`checkoutShippingMethodOption${index}Input`}
         hasError={!!formikErrors?.shippingMethod && !values.shippingMethod}
         selected={selected}
-        isScheduledSelected={!!selected && !!isScheduled}
+        isScheduledSelected={!!selected}
         onClick={() => {
           onClick(id, true, slotScheduleDates, selected);
         }}
@@ -69,7 +54,7 @@ export const ScheduledShippingMethod: FC<ISlotShippingMethodItem> = ({
           <ShippingMethodItem
             id={id}
             index={index}
-            isScheduled={isScheduled}
+            isScheduled={true}
             name={name}
             selected={selected}
             subtitle={subtitle}
@@ -81,7 +66,7 @@ export const ScheduledShippingMethod: FC<ISlotShippingMethodItem> = ({
         dateSelected={values.dateSelected}
         errors={formikErrors}
         id={id}
-        isScheduled={isScheduled}
+        isScheduled={true}
         selected={selected}
         selectedSlotId={values.selectedSlotId}
         scheduleDates={slotScheduleDates}

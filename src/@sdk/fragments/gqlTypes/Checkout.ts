@@ -1,5 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 // ====================================================
@@ -202,6 +203,16 @@ export interface Checkout_shippingAddress {
   alias: string | null;
 }
 
+export interface Checkout_availableShippingMethods_methodType {
+  __typename: "ShippingMethodType";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  code: string;
+  name: string;
+}
+
 export interface Checkout_availableShippingMethods_price {
   __typename: "Money";
   /**
@@ -246,17 +257,24 @@ export interface Checkout_availableShippingMethods {
    * The ID of the object.
    */
   id: string;
+  methodType: Checkout_availableShippingMethods_methodType | null;
   name: string;
-  /**
-   * Flag to recognize if this shipping method has schedules to select.
-   */
-  isScheduled: boolean | null;
   price: Checkout_availableShippingMethods_price | null;
   /**
    * List of filtered schedules a customer can pick.
    */
   scheduleDates: (Checkout_availableShippingMethods_scheduleDates | null)[] | null;
   subtitle: string | null;
+}
+
+export interface Checkout_shippingMethod_methodType {
+  __typename: "ShippingMethodType";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  code: string;
+  name: string;
 }
 
 export interface Checkout_shippingMethod_price {
@@ -303,11 +321,8 @@ export interface Checkout_shippingMethod {
    * The ID of the object.
    */
   id: string;
+  methodType: Checkout_shippingMethod_methodType | null;
   name: string;
-  /**
-   * Flag to recognize if this shipping method has schedules to select.
-   */
-  isScheduled: boolean | null;
   price: Checkout_shippingMethod_price | null;
   /**
    * List of filtered schedules a customer can pick.
@@ -795,10 +810,22 @@ export interface Checkout {
   discount: Checkout_discount | null;
   discountName: string | null;
   translatedDiscountName: string | null;
+  /**
+   * Voucher code
+   */
   voucherCode: string | null;
+  /**
+   * Voucher type
+   */
   voucherType: string | null;
+  /**
+   * Voucher discount type
+   */
   voucherDiscountType: string | null;
-  voucherDiscountValue: number;
+  /**
+   * Voucher discount value
+   */
+  voucherDiscountValue: number | null;
   documentNumber: string | null;
   termsAndConditions: boolean;
   dataTreatmentPolicy: boolean;

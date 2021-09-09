@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { itemNotificationsService } from "./ItemsNotificationService";
-import { IItemsNotificationServiceProps } from "./types";
-import * as S from "./styles";
-import { Button, XIcon, CheckIcon } from "@farmacia-retail/farmauna-components";
-import { Thumbnail } from "@temp/@next/components/molecules";
-import { ISimpleProduct } from "@sdk/types/IProduct";
+import React, { useEffect, useState } from 'react';
+import { itemNotificationsService } from './ItemsNotificationService';
+import { IItemsNotificationServiceProps } from './types';
+import * as S from './styles';
+import { Button, XIcon, CheckIcon } from '@farmacia-retail/farmauna-components';
+import { Thumbnail } from '@components/molecules';
+import { ISimpleProduct } from '@sdk/types/IProduct';
 
 export const ItemsNotification: React.FC<any> = () => {
   const [notifications, setNotifications] = useState<
@@ -23,10 +23,10 @@ export const ItemsNotification: React.FC<any> = () => {
         }
 
         if (data) {
-          setNotifications(not => {
-            if (not.filter(x => x.product.id === data.product.id).length) {
+          setNotifications((not) => {
+            if (not.filter((x) => x.product.id === data.product.id).length) {
               const index = not.findIndex(
-                x => x.product.id === data.product.id
+                (x) => x.product.id === data.product.id
               );
               not[index].quantity += data.quantity;
             } else {
@@ -60,46 +60,48 @@ export const ItemsNotification: React.FC<any> = () => {
         url:
           product?.thumbnail?.url ||
           product?.variant?.product?.thumbnail?.url ||
-          "",
+          '',
       },
       thumbnail2x: {
         url:
           product?.thumbnail2x?.url ||
           product?.variant?.product?.thumbnail2x?.url ||
-          "",
+          '',
       },
     };
   };
 
   return notifications.length > 0 ? (
-    <S.NotificationContainer>
-        <S.ItemNotification>
-          <S.Header>
-            <S.HeaderTitleEvent>
-              <S.HeaderCheckContainer>
-                <CheckIcon />
-              </S.HeaderCheckContainer>
-              <p>
-                {notifications.length > 1
-                  ? "Productos Agregados"
-                  : "Producto Agregado"}
-              </p>
-            </S.HeaderTitleEvent>
-            <Button icon={<XIcon size={8} />} onClick={hide} iconOnly />
-          </S.Header>
-          <S.Body>
-            {notifications.map((message, index) => {
-              return (
-                <S.Item key={index}>
-                  <S.ItemImage>
-                    <Thumbnail source={getSourceFromProduct(message.product)} />
-                  </S.ItemImage>
-                  <label>{message.product.name}</label>
-                </S.Item>
-              );
-            })}
-          </S.Body>
-        </S.ItemNotification>
+    <S.NotificationContainer data-testid="notification-container">
+      <S.ItemNotification>
+        <S.Header>
+          <S.HeaderTitleEvent>
+            <S.HeaderCheckContainer>
+              <CheckIcon />
+            </S.HeaderCheckContainer>
+            <p data-testid="notification-title">
+              {notifications.length > 1
+                ? 'Productos Agregados'
+                : 'Producto Agregado'}
+            </p>
+          </S.HeaderTitleEvent>
+          <Button icon={<XIcon size={8} />} onClick={hide} iconOnly />
+        </S.Header>
+        <S.Body>
+          {notifications.map((message, index) => {
+            return (
+              <S.Item key={index} role="notification-items">
+                <S.ItemImage>
+                  <Thumbnail source={getSourceFromProduct(message.product)} />
+                </S.ItemImage>
+                <label role="notification-message">
+                  {message.product.name}
+                </label>
+              </S.Item>
+            );
+          })}
+        </S.Body>
+      </S.ItemNotification>
     </S.NotificationContainer>
   ) : null;
 };

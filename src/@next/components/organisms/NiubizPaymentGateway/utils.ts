@@ -1,34 +1,38 @@
-import { IPaymentGatewayConfig } from "@temp/@next/types";
-import { GatewayOptions } from "@temp/core/payments/niubiz";
-import { IUserDataForNiubiz } from "@temp/@next/components/organisms/CheckoutPayment/types";
-import { v4 as uuidv4 } from "uuid";
-import _ from "lodash";
-import { loadScript } from "@sdk/utils";
-import { niubizAntifraudScriptUrl } from "@temp/core/constants";
-const ip = require("ip");
+import { IPaymentGatewayConfig } from '@temp/@next/types';
+import { GatewayOptions } from '@temp/core/payments/niubiz';
+import { IUserDataForNiubiz } from '@temp/@next/components/organisms/CheckoutPayment/types';
+import { v4 as uuidv4 } from 'uuid';
+import _ from 'lodash';
+import { loadScript } from '@sdk/utils';
+import { niubizAntifraudScriptUrl } from '@temp/core/constants';
+const ip = require('ip');
 
-export const generateNiubizPurchaseNumber = () =>
-  Math.floor(Math.random() * (999999999999 - 1)) + 1;
+export const generateNiubizPurchaseNumber = () => {
+  const num = new Uint32Array(1);
+  window.crypto.getRandomValues(num);
+  const useNum = num[0] * Math.pow(2, -32);
+  return Math.floor(useNum * (999999999999 - 1)) + 1;
+};
 
 export const getConfigElement = (
   config: IPaymentGatewayConfig[],
   element: string
 ) => {
-  const result = config.find(x => x.field === element)?.value;
+  const result = config.find((x) => x.field === element)?.value;
   return result;
 };
 
 export const getTokenRequirements = (config: IPaymentGatewayConfig[]) => {
   const securityAPI =
-    getConfigElement(config, "nb_security_url") ||
-    "https://apitestenv.vnforapps.com/api.security/v1/security";
+    getConfigElement(config, 'nb_security_url') ||
+    'https://apitestenv.vnforapps.com/api.security/v1/security';
 
   const gatewayUser =
-    getConfigElement(config, "merchant_username") ||
-    "integraciones.visanet@necomplus.com";
+    getConfigElement(config, 'merchant_username') ||
+    'integraciones.visanet@necomplus.com';
 
   const gatewayPassword =
-    getConfigElement(config, "merchant_password") || "d5e7nk$M";
+    getConfigElement(config, 'merchant_password') || 'd5e7nk$M';
 
   const tokenRequirements: GatewayOptions = {
     endpoint: securityAPI,
@@ -44,13 +48,13 @@ export const getSessionRequirements = (
   token: string,
   amount: any,
   user?: IUserDataForNiubiz | undefined,
-  channel?: "web" | "paycard"
+  channel?: 'web' | 'paycard'
 ) => {
-  const merchantId = getConfigElement(config, "merchant_id") || "342062522";
+  const merchantId = getConfigElement(config, 'merchant_id') || '342062522';
 
   const sessionAPI =
-    getConfigElement(config, "nb_session_url") ||
-    "https://apitestenv.vnforapps.com/api.ecommerce/v2/ecommerce/token/session";
+    getConfigElement(config, 'nb_session_url') ||
+    'https://apitestenv.vnforapps.com/api.ecommerce/v2/ecommerce/token/session';
 
   const url = sessionAPI + merchantId;
   const total = amount;
@@ -63,7 +67,7 @@ export const getSessionRequirements = (
         4: user?.email,
         21: 0,
         32: user?.documentNumber,
-        75: "Invitado",
+        75: 'Invitado',
         77: 0,
       },
     },
@@ -82,7 +86,7 @@ export const getTokenizerRequirements = (
 ) => {
   // @ts-ignore
   const payform = window?.payform;
-  const merchantId = getConfigElement(config, "merchant_id") || "342062522";
+  const merchantId = getConfigElement(config, 'merchant_id') || '342062522';
 
   const tokenizerRequirements: GatewayOptions = {
     amount,
@@ -99,8 +103,8 @@ export const getCardTokenizationRequirements = (
   transactionToken: string,
   token: string
 ) => {
-  const endpoint = getConfigElement(config, "nb_tokenization_url");
-  const merchantId = getConfigElement(config, "merchant_id");
+  const endpoint = getConfigElement(config, 'nb_tokenization_url');
+  const merchantId = getConfigElement(config, 'merchant_id');
 
   const url = `${endpoint}${merchantId}/${transactionToken}`;
 
@@ -113,7 +117,7 @@ export const getCardTokenizationRequirements = (
 };
 
 export const loadNiubizAntiFraudScript = (callback?: () => void) => {
-  const scriptId = "niubiz-antifraud";
+  const scriptId = 'niubiz-antifraud';
 
   if (document.getElementById(scriptId)) {
     callback?.();
@@ -127,11 +131,11 @@ export const initNiubizAntiFraud = (
   config: IPaymentGatewayConfig[],
   purchaseNumber: string
 ) => {
-  const merchantId = getConfigElement(config, "merchant_id");
+  const merchantId = getConfigElement(config, 'merchant_id');
   const uuid = uuidv4();
 
   // @ts-ignore
-  window.initDFP?.(uuid, purchaseNumber, ip.address(), merchantId);
+  window?.initDFP?.(uuid, purchaseNumber, ip.address(), merchantId);
 
   return uuid;
 };

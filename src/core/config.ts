@@ -54,10 +54,10 @@ export const META_DEFAULTS = {
   custom: [],
   description:
     'Somos la experiencia digital más ágil de compra en farmacia, encuentra una gran variedad de productos ¡Pide y recibe en máximo 75 minutos!',
-  image: `${window.location.origin}${require('../images/logo.svg')}`,
+  image: `${window?.location?.origin}${require('../images/logo.svg')}`,
   title: 'Farmauna, la manera saludable de comprar',
   type: 'website',
-  url: window.location.origin,
+  url: window?.location?.origin,
 };
 export enum CheckoutStep {
   Address = 1,
@@ -318,4 +318,19 @@ export const FEATURE_PLUGINS = {
   lastMile: 'pharma.lastmile.auna',
 };
 export const DEFAULT_SORT = '-stock';
+
+export const SHIPPING_TYPES = {
+  express: 'EXPRESS',
+  expressPrime: 'EXPRESS_PRIME',
+  expressNextDay: 'EXPRESS_NEXTDAY',
+  scheduled: 'SCHEDULED',
+  scheduledPrime: 'SCHEDULED_PRIME',
+};
+
+export const SHIPPING_TYPE_KEYWORDS = {
+  express: 'EXPRESS',
+  scheduled: 'SCHEDULED',
+  prime: 'PRIME',
+};
+
 export const PHONE_NUMBER = '01 6429911';

@@ -1,65 +1,66 @@
 import {
   ApolloClient,
   MutationOptions as ApolloMutationOptions,
-} from 'apollo-client';
+} from '@apollo/client';
 
 import * as Address from './address';
 import * as Auth from './auth';
-import * as User from './user';
 import * as CardToken from './cardToken';
-
 import {
-  DeleteUserAddress,
-  DeleteUserAddressVariables,
-} from './gqlTypes/DeleteUserAddress';
+  AccountConfirm,
+  AccountConfirmVariables,
+} from './gqlTypes/AccountConfirm';
+import {
+  AccountUpdate,
+  AccountUpdateVariables,
+} from './gqlTypes/AccountUpdate';
 import {
   CreateUserAddress,
   CreateUserAddressVariables,
 } from './gqlTypes/CreateUserAddress';
 import {
-  SetCustomerDefaultAddress,
-  SetCustomerDefaultAddressVariables,
-} from './gqlTypes/SetCustomerDefaultAddress';
-import {
-  UpdateUserAddress,
-  UpdateUserAddressVariables,
-} from './gqlTypes/UpdateUserAddress';
-
-import {
   CreateUserCardToken,
   CreateUserCardTokenVariables,
 } from './gqlTypes/CreateUserCardToken';
+import {
+  DeleteUserAddress,
+  DeleteUserAddressVariables,
+} from './gqlTypes/DeleteUserAddress';
 import {
   DeleteUserCardToken,
   DeleteUserCardTokenVariables,
 } from './gqlTypes/DeleteUserCardToken';
 import {
-  SetDefaultUserCardToken,
-  SetDefaultUserCardTokenVariables,
-} from './gqlTypes/SetDefaultUserCardToken';
-
-import { SetPassword, SetPasswordVariables } from './gqlTypes/SetPassword';
-
-import { TokenAuth, TokenAuthVariables } from './gqlTypes/TokenAuth';
-
-import {
   PasswordChange,
   PasswordChangeVariables,
 } from './gqlTypes/PasswordChange';
-
 import {
-  AccountUpdate,
-  AccountUpdateVariables,
-} from './gqlTypes/AccountUpdate';
-
+  RegisterAccount,
+  RegisterAccountVariables,
+} from './gqlTypes/RegisterAccount';
+import {
+  ResetPassword,
+  ResetPasswordVariables,
+} from './gqlTypes/ResetPassword';
 import {
   SaveFavoriteCategories,
   SaveFavoriteCategoriesVariables,
 } from './gqlTypes/SaveFavoriteCategories';
 import {
-  AccountConfirm,
-  AccountConfirmVariables,
-} from './gqlTypes/AccountConfirm';
+  SetCustomerDefaultAddress,
+  SetCustomerDefaultAddressVariables,
+} from './gqlTypes/SetCustomerDefaultAddress';
+import {
+  SetDefaultUserCardToken,
+  SetDefaultUserCardTokenVariables,
+} from './gqlTypes/SetDefaultUserCardToken';
+import { SetPassword, SetPasswordVariables } from './gqlTypes/SetPassword';
+import { TokenAuth, TokenAuthVariables } from './gqlTypes/TokenAuth';
+import {
+  UpdateUserAddress,
+  UpdateUserAddressVariables,
+} from './gqlTypes/UpdateUserAddress';
+import * as User from './user';
 
 export type MutationOptions<TData, TVariables> = Omit<
   ApolloMutationOptions<TData, TVariables>,
@@ -95,6 +96,14 @@ export const MUTATIONS = {
       mutation: Address.createUserAddress,
       ...options,
     }),
+  CreateUserCardToken: <TCacheShape>(
+    client: ApolloClient<TCacheShape>,
+    options: MutationOptions<CreateUserCardToken, CreateUserCardTokenVariables>
+  ) =>
+    client.mutate({
+      mutation: CardToken.createUserCardToken,
+      ...options,
+    }),
   DeleteUserAddress: <TCacheShape>(
     client: ApolloClient<TCacheShape>,
     options: MutationOptions<DeleteUserAddress, DeleteUserAddressVariables>
@@ -103,12 +112,38 @@ export const MUTATIONS = {
       mutation: Address.deleteUserAddress,
       ...options,
     }),
+  DeleteUserCardToken: <TCacheShape>(
+    client: ApolloClient<TCacheShape>,
+    options: MutationOptions<DeleteUserCardToken, DeleteUserCardTokenVariables>
+  ) =>
+    client.mutate({
+      mutation: CardToken.deleteUserCardToken,
+      ...options,
+    }),
+
+  PasswordReset: <TCacheShape>(
+    client: ApolloClient<TCacheShape>,
+    options: MutationOptions<ResetPassword, ResetPasswordVariables>
+  ) =>
+    client.mutate({
+      mutation: User.passwordResetMutation,
+      ...options,
+    }),
+
   PasswordChange: <TCacheShape>(
     client: ApolloClient<TCacheShape>,
     options: MutationOptions<PasswordChange, PasswordChangeVariables>
   ) =>
     client.mutate({
       mutation: User.changeUserPassword,
+      ...options,
+    }),
+  RegisterAccount: <TCacheShape>(
+    client: ApolloClient<TCacheShape>,
+    options: MutationOptions<RegisterAccount, RegisterAccountVariables>
+  ) =>
+    client.mutate({
+      mutation: User.accountRegisterMutation,
       ...options,
     }),
   SetPassword: <TCacheShape>(
@@ -138,6 +173,17 @@ export const MUTATIONS = {
       mutation: User.setAccountConfirm,
       ...options,
     }),
+  SetDefaultUserCardToken: <TCacheShape>(
+    client: ApolloClient<TCacheShape>,
+    options: MutationOptions<
+      SetDefaultUserCardToken,
+      SetDefaultUserCardTokenVariables
+    >
+  ) =>
+    client.mutate({
+      mutation: CardToken.setDefaultUserCardToken,
+      ...options,
+    }),
   TokenAuth: <TCacheShape>(
     client: ApolloClient<TCacheShape>,
     options: MutationOptions<TokenAuth, TokenAuthVariables>
@@ -152,33 +198,6 @@ export const MUTATIONS = {
   ) =>
     client.mutate({
       mutation: Address.updateUserAddress,
-      ...options,
-    }),
-  CreateUserCardToken: <TCacheShape>(
-    client: ApolloClient<TCacheShape>,
-    options: MutationOptions<CreateUserCardToken, CreateUserCardTokenVariables>
-  ) =>
-    client.mutate({
-      mutation: CardToken.createUserCardToken,
-      ...options,
-    }),
-  SetDefaultUserCardToken: <TCacheShape>(
-    client: ApolloClient<TCacheShape>,
-    options: MutationOptions<
-      SetDefaultUserCardToken,
-      SetDefaultUserCardTokenVariables
-    >
-  ) =>
-    client.mutate({
-      mutation: CardToken.setDefaultUserCardToken,
-      ...options,
-    }),
-  DeleteUserCardToken: <TCacheShape>(
-    client: ApolloClient<TCacheShape>,
-    options: MutationOptions<DeleteUserCardToken, DeleteUserCardTokenVariables>
-  ) =>
-    client.mutate({
-      mutation: CardToken.deleteUserCardToken,
       ...options,
     }),
 };

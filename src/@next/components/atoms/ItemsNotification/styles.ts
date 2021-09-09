@@ -1,5 +1,5 @@
-import { media, mediaUp, styled } from "@styles";
-import { baseFontSize, black, smallFontSize } from "@styles/constants";
+import { media, mediaUp, styled } from '@styles';
+import { baseFontSize, black, smallFontSize } from '@styles/constants';
 
 export const NotificationContainer = styled.div`
   margin: auto;
@@ -11,15 +11,6 @@ export const NotificationContainer = styled.div`
   ${mediaUp.smallScreen`
     right: 2rem;
   `}
-  .container {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 0;
-    margin-right: 0;
-    ${mediaUp.smallScreen`
-      margin: 0 auto;
-  `}
-  }
 `;
 
 export const ItemNotification = styled.div`

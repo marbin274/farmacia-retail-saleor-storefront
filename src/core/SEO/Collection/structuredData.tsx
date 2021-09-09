@@ -12,8 +12,8 @@ export const structuredCollection = (
         '@type': 'ListItem',
         position: 1,
         name: collection.name,
-        item: `${window.location.protocol}//${
-          window.location.hostname
+        item: `${window?.location?.protocol}//${
+          window?.location?.hostname
         }${generateCollectionUrl(collection.id, collection.name)}`,
       },
     ],

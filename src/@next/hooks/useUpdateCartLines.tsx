@@ -1,26 +1,26 @@
-import { useCart } from "@temp/@sdk/react";
+import { useCart } from '@temp/@sdk/react';
 import {
   ICheckoutModelLine,
   ICheckoutModelLineVariant,
   LocalRepository,
-} from "@temp/@sdk/repository";
-import React from "react";
+} from '@temp/@sdk/repository';
+import React from 'react';
 
 export const useUpdateCartLines = () => {
   const [loading, setLoading] = React.useState<boolean>(false);
   const { getCartLines, updateCartLines } = useCart();
-  
+
   const handleUpdate = async () => {
     const localRepository = new LocalRepository();
     const items = localRepository.getCheckout()?.lines;
-    
+
     if (items) {
       setLoading(true);
       const { data, error } = await getCartLines();
       if (!error) {
-        const itemsUpdate: ICheckoutModelLine[] = items.map(line => {
+        const itemsUpdate: ICheckoutModelLine[] = items.map((line) => {
           const variantUpdate = data?.edges.find(
-            it => it.node.id === line.variant.id
+            (it) => it.node.id === line.variant.id
           );
 
           if (!variantUpdate) {

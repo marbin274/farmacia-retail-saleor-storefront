@@ -1,7 +1,7 @@
-import { ApolloClient } from 'apollo-client';
-import { ApolloLink } from 'apollo-link';
-import { setContext } from 'apollo-link-context';
-import { ErrorResponse, onError } from 'apollo-link-error';
+import { ApolloClient, ApolloLink } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+import { ErrorResponse } from '@apollo/client/link/persisted-queries';
+import { onError } from '@apollo/client/link/error';
 import { LocalRepository } from '@temp/@sdk/repository';
 
 export const authEvent = new Event('auth');

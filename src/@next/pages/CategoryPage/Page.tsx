@@ -18,7 +18,8 @@ import { getFiltersInitial } from '@temp/@next/utils/filter';
 import { IItems } from '@temp/@sdk/api/Cart/types';
 import { useCategoryProducts } from '@temp/@sdk/react';
 import { baseUrl } from '@temp/app/routes';
-import { EmptyProduct, extractBreadcrumbs } from '@temp/components';
+import { EmptyProduct } from '@components/molecules';
+import { extractBreadcrumbs } from '@components/organisms/Breadcrumbs';
 import { structuredData } from '@temp/core/SEO/Category/structuredData';
 import {
   convertSortByFromString,
@@ -200,7 +201,9 @@ const Page: React.FC<PageProps> = ({
             subtractItemToCart={subtractItemToCart}
             total={products?.totalCount}
           />
-          {!hasProducts && <EmptyProduct title="No hay productos" />}
+          {!hasProducts && !categoryProductsLoading && (
+            <EmptyProduct title="No hay productos" />
+          )}
         </section>
       </div>
     </CategoryWrapper>

@@ -1,25 +1,26 @@
-import { TaxedMoney } from "@components/containers";
-import { ArrowLeftIcon } from "@farmacia-retail/farmauna-components";
+import { TaxedMoney } from '@components/containers';
+import { ArrowLeftIcon } from '@farmacia-retail/farmauna-components';
 import {
   OrderDetail,
   OrderDetail_lines,
-} from "@sdk/fragments/gqlTypes/OrderDetail";
+} from '@sdk/fragments/gqlTypes/OrderDetail';
 import {
   OrderStatus,
   ShippingStatusEnum,
-} from "@temp/@sdk/gqlTypes/globalTypes";
-import { CartTable, NotFound } from "@temp/components";
-import { ILine } from "@temp/components/CartTable/ProductRow";
-import AunaError from "@temp/images/auna/auna-error.svg";
-import * as React from "react";
-import { Link } from "react-router-dom";
-import ReactSVG from "react-svg";
-import { orderHistoryUrl } from "@app/pages/AccountPage/paths";
-import * as S from "./styles";
+} from '@temp/@sdk/gqlTypes/globalTypes';
+import { CartTable } from '@components/organisms';
+import { NotFound } from '@pages';
+import { ILine } from '@components/organisms/CartTable/ProductRow';
+import AunaError from '@temp/images/auna/auna-error.svg';
+import * as React from 'react';
+import { Link } from 'react-router-dom';
+import ReactSVG from 'react-svg';
+import { orderHistoryUrl } from '@app/pages/AccountPage/paths';
+import * as S from './styles';
 
 const Title: React.FC<{ className?: string }> = ({
   children,
-  className = "",
+  className = '',
 }) => (
   <span
     className={`fa-text-sm fa-text-neutral-dark fa-font-medium ${className}`}
@@ -40,7 +41,7 @@ const Description: React.FC<{ className?: string }> = ({
 
 const extractOrderLines = (lines: OrderDetail_lines[]): ILine[] => {
   return lines
-    .map(line => ({
+    .map((line) => ({
       quantity: line.quantity,
       totalPrice: {
         ...line.unitPrice,
@@ -105,26 +106,30 @@ const Page: React.FC<{
           <Title className="fa-mr-2">País</Title>
           <Description className="fa-flex fa-flex-col">
             <div>
-              {`${address.postalCode ? `, ${address.postalCode}` : ""}`}
+              {`${address.postalCode ? `, ${address.postalCode}` : ''}`}
             </div>
-  
+
             {address.countryArea && <div>{address.countryArea}</div>}
             <div>{address.country.country}</div>
           </Description>
         </div>
       );
     }
-  }
+  };
 
   if (!order) {
     return <NotFound />;
   }
 
   return (
-    <div className="order-details__container">
+    <div className="fa-mx-auto fa-my-0">
       {!guest && (
-        <Link className="order-details__link" to={orderHistoryUrl}>
-          <ArrowLeftIcon /> <span>Regresar a historial de pedidos</span>
+        <Link
+          className="fa-text-sm fa-flex fa-items-center fa-mt-10 md:fa-mt-8 fa-mb-8 fa-text-interactive"
+          to={orderHistoryUrl}
+        >
+          <ArrowLeftIcon className="fa-mr-4 fa-inline-block" />{' '}
+          <span>Regresar a historial de pedidos</span>
         </Link>
       )}
       <div className="fa-bg-white fa-rounded-3xl fa-p-10 fa-flex fa-flex-col">
@@ -148,7 +153,7 @@ const Page: React.FC<{
                 <span>
                   <ReactSVG
                     path={AunaError}
-                    className="order-details__tile-alert-fulfill-icon"
+                    className="fa-inline-block fa-align-middle fa-h-5 fa-mr-2.5"
                   />
                   <span>Este pedido fue entregado parcialmente</span>
                 </span>
