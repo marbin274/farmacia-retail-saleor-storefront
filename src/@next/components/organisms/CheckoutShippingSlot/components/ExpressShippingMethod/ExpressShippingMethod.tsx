@@ -1,5 +1,4 @@
 import { ShippingMethodItem } from '@temp/@next/components/molecules';
-import { isExpressShippingMethod } from '@temp/core/utils';
 import React, { FC } from 'react';
 import * as S from '../../styles';
 import { ISlotShippingMethodItem } from '../../types';
@@ -7,21 +6,13 @@ import { ISlotShippingMethodItem } from '../../types';
 export const ExpressShippingMethod: FC<ISlotShippingMethodItem> = ({
   formikErrors,
   onClick,
-  shippingMethods,
-  slots,
+  shippingMethod,
+  shippingSlots,
   values,
 }) => {
-  const express = slots?.express?.[0];
+  const slot = shippingSlots?.[0];
 
-  if (!express) {
-    return null;
-  }
-
-  const shippingMethod = shippingMethods?.find((x) =>
-    isExpressShippingMethod(x)
-  );
-
-  if (!shippingMethod) {
+  if (!slot || !shippingMethod) {
     return null;
   }
 
@@ -36,7 +27,7 @@ export const ExpressShippingMethod: FC<ISlotShippingMethodItem> = ({
       selected={selected}
       isScheduledSelected={false}
       onClick={() => {
-        onClick(id, false, null, selected, express.id);
+        onClick(id, false, null, selected, slot.id);
       }}
     >
       <S.ShippingMethodItem>

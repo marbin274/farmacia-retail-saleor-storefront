@@ -6,28 +6,17 @@ import { HOURS_FORMAT, SHIPPING_FORMAT_DATE } from '@temp/core/config';
 import * as S from '../../styles';
 import { ISlotShippingMethodItem } from '../../types';
 import { CheckoutShippingProgrammedSlot } from '../../../CheckoutShippingProgrammed';
-import { isScheduledShippingMethod } from '@temp/core/utils';
 
 export const ScheduledShippingMethod: FC<ISlotShippingMethodItem> = ({
   formikErrors,
   onClick,
-  shippingMethods,
+  shippingMethod,
   setFieldValue,
-  slots,
+  shippingSlots,
   setShippingMethod,
   values,
 }) => {
-  const scheduled = slots?.scheduled;
-
-  if (!scheduled?.length) {
-    return null;
-  }
-
-  const shippingMethod = shippingMethods?.find((x) =>
-    isScheduledShippingMethod(x)
-  );
-
-  if (!shippingMethod?.scheduleDates?.length) {
+  if (!shippingSlots?.length || !shippingMethod?.scheduleDates?.length) {
     return null;
   }
 
@@ -40,7 +29,7 @@ export const ScheduledShippingMethod: FC<ISlotShippingMethodItem> = ({
 
   const slotScheduleDates: ISlotScheduleDate[] = [
     {
-      scheduleTimes: scheduled!.map((x) => ({
+      scheduleTimes: shippingSlots!.map((x) => ({
         date: format(new Date(x.slotFrom!), SHIPPING_FORMAT_DATE),
         id: x.id!,
         startTime: format(new Date(x.slotFrom!), HOURS_FORMAT),
