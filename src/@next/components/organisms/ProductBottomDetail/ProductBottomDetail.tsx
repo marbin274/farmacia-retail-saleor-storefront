@@ -58,6 +58,7 @@ export const ProductBottomDetail: FC<IProps> = ({
                       addToCart={addToCart}
                       removeItemToCart={removeItemToCart}
                       subtractItemToCart={subtractItemToCart}
+                      isPersonalizeProduct={false}
                     />
                   )}
                 </div>
@@ -69,6 +70,7 @@ export const ProductBottomDetail: FC<IProps> = ({
                   addToCart={addToCart}
                   removeItemToCart={removeItemToCart}
                   subtractItemToCart={subtractItemToCart}
+                  isPersonalizeProduct={false}
                 />
               )}
             </S.ProductContent>

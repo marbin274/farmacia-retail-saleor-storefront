@@ -46,23 +46,23 @@ export const ProductsFeatured: React.FC<IProps> = ({
   const homepageCollections: IHomePageCollecction[] = data?.shop
     ?.homepageCollections?.edges.length
     ? data.shop.homepageCollections.edges.map((it) => ({
-      id: it.node.id,
-      name: it.node.name,
-      products: it.node.products.edges.map((edge) => ({
-        ...edge.node,
-      })),
-    }))
+        id: it.node.id,
+        name: it.node.name,
+        products: it.node.products.edges.map((edge) => ({
+          ...edge.node,
+        })),
+      }))
     : [];
 
   const personalizedCollection: IHomePageCollecction[] = data?.personalized
     ?.length
     ? [
-      {
-        id: '',
-        name: 'Los recomendados para ti',
-        products: data.personalized,
-      },
-    ]
+        {
+          id: '',
+          name: 'Los recomendados para ti',
+          products: data.personalized,
+        },
+      ]
     : [];
 
   const collections: IHomePageCollecction[] =
@@ -96,6 +96,11 @@ export const ProductsFeatured: React.FC<IProps> = ({
                     product={product}
                     productsOnCart={productsOnCart}
                     productUrl={generateProductUrl(product.id, product.name)}
+                    isPersonalizeProduct={
+                      collection.name === 'Los recomendados para ti'
+                        ? true
+                        : false
+                    }
                   />
                 )
               )}
