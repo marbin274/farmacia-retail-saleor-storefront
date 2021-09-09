@@ -1,12 +1,8 @@
-import {
-  AddressAutocomplete,
-  IAddressAutocompleteRef,
-  InputSelect,
-} from '@components/molecules';
-import React, { useEffect, useRef } from 'react';
-import { IFieldsProps, ISelectProps } from './types';
-import { InputField } from '@farmacia-retail/farmauna-components';
-import { TOTAL_DISTRICT } from '@temp/core/config';
+import { AddressAutocomplete, IAddressAutocompleteRef, InputSelect } from "@components/molecules";
+import React, { useEffect, useRef } from "react";
+import { IFieldsProps, ISelectProps } from "./types";
+import { InputField } from "@farmacia-retail/farmauna-components";
+import { TOTAL_DISTRICT } from "@temp/core/config";
 export const FirstNameTextField = ({
   fieldErrors,
   required,
@@ -16,14 +12,13 @@ export const FirstNameTextField = ({
 }: IFieldsProps) => {
   return (
     <InputField
-      role="input-field"
       data-cy="addressFormFirstName"
       name="firstName"
       label={`Nombre completo`}
       placeholder="Ejemplo: Juan Perez"
-      value={!values?.firstName ? '' : values?.firstName}
+      value={!values?.firstName ? "" : values?.firstName}
       autoComplete="given-name"
-      error={!!fieldErrors?.firstName ? fieldErrors?.firstName[0].message : ''}
+      error={!!fieldErrors?.firstName ? fieldErrors?.firstName[0].message : ""}
       onChange={onChange}
       inputSize="large"
       onBlur={onBlur}
@@ -39,16 +34,15 @@ export const PhoneTextField = ({
 }: IFieldsProps) => {
   return (
     <InputField
-      role="input-field"
       data-cy="addressFormPhone"
       name="phone"
       placeholder="Ejem: 912345678"
       maxLength={9}
       label="Número de celular"
-      value={!values?.phone ? '' : values?.phone}
+      value={!values?.phone ? "" : values?.phone}
       autoComplete="tel"
       type="tel"
-      error={!!fieldErrors?.phone ? fieldErrors?.phone[0].message : ''}
+      error={!!fieldErrors?.phone ? fieldErrors?.phone[0].message : ""}
       pattern="\d*"
       onChange={onChange}
       inputSize="large"
@@ -72,8 +66,8 @@ export const StreetAddress1 = ({
     if (temporaryError) {
       ref.current?.focus({ preventScroll: true });
       containerRef.current?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
+        behavior: "smooth",
+        block: "center",
       });
     }
   }, [ref, containerRef, temporaryError]);
@@ -81,7 +75,6 @@ export const StreetAddress1 = ({
   return (
     <div ref={containerRef}>
       <AddressAutocomplete
-        role="input-field"
         data-cy="addressAutocomplete"
         name="streetAddress1"
         label="Dirección"
@@ -89,7 +82,7 @@ export const StreetAddress1 = ({
         value={{
           lat: values?.latitude ? Number(values?.latitude) : undefined,
           lng: values?.longitude ? Number(values?.longitude) : undefined,
-          text: values?.streetAddress1 || '',
+          text: values?.streetAddress1 || "",
         }}
         onChangeValue={onChange}
         error={error}
@@ -114,17 +107,16 @@ export const StreetAddress2 = ({
 }: IFieldsProps) => {
   return (
     <InputField
-      role="input-field"
       data-cy="addressFormStreetAddress2"
       name="streetAddress2"
       placeholder="Ejem: Colegio, edificio, avenida"
       label="Referencia"
-      value={!values?.streetAddress2 ? '' : values?.streetAddress2}
+      value={!values?.streetAddress2 ? "" : values?.streetAddress2}
       autoComplete="address-line2"
       error={
         fieldErrors!.streetAddress2
           ? fieldErrors?.streetAddress2[0].message
-          : ''
+          : ""
       }
       onChange={onChange}
       inputSize="large"
@@ -139,17 +131,17 @@ export const CitySelect = ({ fieldsProps }: ISelectProps) => {
     values!.city &&
     cities &&
     cities!.find(
-      (option) => option.code.toLowerCase() === values!.city?.toLowerCase()
+      option => option.code.toLowerCase() === values!.city?.toLowerCase()
     );
   const showPlaceHolder = !value || (value && value.length === 0);
 
   return (
-    <div className="fa-flex fa-flex-col" role="input-field">
+    <div className="fa-flex fa-flex-col">
       <InputSelect
         inputProps={{
-          'data-cy': 'addressFormCity',
-          name: 'city',
-          placeholder: showPlaceHolder ? 'Selecciona tu distrito' : '',
+          "data-cy": "addressFormCity",
+          name: "city",
+          placeholder: showPlaceHolder ? "Selecciona tu distrito" : "",
         }}
         name="city"
         label="Distrito"
