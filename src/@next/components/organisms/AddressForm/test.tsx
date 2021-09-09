@@ -124,37 +124,4 @@ describe('form contain data', () => {
       userAddress?.defaultShippingAddress?.streetAddress2
     );
   });
-
-  it('should not contain data', async () => {
-    const PROPSERRORS: IProps = {
-      ...PROPS,
-      address: undefined,
-    };
-
-    render(<AddressForm {...PROPSERRORS} />);
-    const inputs = screen.getAllByRole('input-field');
-    const inputsCheck = screen.getAllByRole('input-checkfield');
-
-    fireEvent.click(screen.getByRole('select'));
-
-    await Promise.all(
-      [...inputsCheck, ...inputs].map(async (inputText) => {
-        inputText.focus();
-        fireEvent.click(inputText);
-        fireEvent.click(inputText);
-        fireEvent.keyDown(inputText, DOWN_ARROW);
-        await new Promise((resolve) => setTimeout(resolve, 500));
-        inputText.blur();
-      })
-    );
-
-    const addressForm = screen.getByTestId('address-form');
-    expect(addressForm.textContent).toContain(FULLNAME_REQUIRED);
-    expect(addressForm.textContent).toContain(DOCUMENT_NUMBER_REQUIRED);
-    expect(addressForm.textContent).toContain(EMAIL_REQUIRED);
-    expect(addressForm.textContent).toContain(PHONE_REQUIRED);
-    expect(addressForm.textContent).toContain(TERMS_AND_CONTIDIONS_REQUIRED);
-    expect(addressForm.textContent).toContain(STREET_ADDRESS_1_REQUIRED);
-    expect(addressForm.textContent).toContain(DISTRITO_REQUIRED);
-  });
 });
