@@ -101,3 +101,6 @@ export const errors = [
     message: 'This is an error',
   },
 ];
+
+export const DISTRICT_1 = 'Miraflores';
+export const DISTRICT_2 = 'Surquillo';
