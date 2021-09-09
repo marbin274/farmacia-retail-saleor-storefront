@@ -1,5 +1,5 @@
 import { removeCountryCodeInPhoneNumber } from '@temp/@next/utils/addresForm';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
 import { AddressForm } from '.';
@@ -12,17 +12,6 @@ import {
   userAddress,
 } from './fixtures';
 import { IProps } from './types';
-import {
-  DOCUMENT_NUMBER_REQUIRED,
-  EMAIL_REQUIRED,
-  FULLNAME_REQUIRED,
-  PHONE_REQUIRED,
-  TERMS_AND_CONTIDIONS_REQUIRED,
-} from '@temp/@next/utils/schemasMessages';
-import {
-  DISTRITO_REQUIRED,
-  STREET_ADDRESS_1_REQUIRED,
-} from './adddressFormSchema';
 
 const PROPS: IProps = {
   address,
@@ -33,8 +22,6 @@ const PROPS: IProps = {
   includeEmail: true,
   user: null,
 };
-
-const DOWN_ARROW = { keyCode: 40 };
 
 describe('<AddressForm />', () => {
   it('exists', () => {
