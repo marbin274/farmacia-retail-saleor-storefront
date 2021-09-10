@@ -4,7 +4,7 @@ import {
   CardTokenPaymentGateway,
 } from '@components/organisms';
 import { NOT_CHARGE_TOKEN } from '@components/organisms/DummyPaymentGateway';
-import { TileRadio, Collapse } from '@components/molecules';
+import { Alert, TileRadio, Collapse } from '@components/molecules';
 import { alertService } from '@components/atoms/Alert';
 import { HIDE_CARDTOKENS_IN_CHECKOUT, PROVIDERS } from '@temp/core/config';
 import PosIcon from 'images/auna/pos.svg';
@@ -219,6 +219,14 @@ const PaymentGatewaysList: React.FC<IProps> = ({
 
   if (!scriptLoaded) {
     return null;
+  }
+
+  if (paymentGateways?.length === 0) {
+    return (
+      <div>
+        <Alert type="error" message="No se han encontrado medios pago" />
+      </div>
+    );
   }
 
   return (

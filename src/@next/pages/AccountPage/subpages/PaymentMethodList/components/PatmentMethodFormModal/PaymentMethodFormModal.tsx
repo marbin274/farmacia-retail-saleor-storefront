@@ -16,7 +16,7 @@ export const PatmentMethodFormModal: FC<IPaymentMethodFormModalProps> = ({
   const [loading, setLoading] = useState(false);
   const isLoading = loading || createLoading;
 
-  const { availablePaymentGateways } = useCheckout();
+  const { shopPaymentGateways } = useCheckout();
 
   const performSubmit = () => {
     if (isLoading) {
@@ -52,7 +52,7 @@ export const PatmentMethodFormModal: FC<IPaymentMethodFormModalProps> = ({
         <div className="fa-mt-4">
           <NiubizPaymentGateway
             config={
-              availablePaymentGateways?.find((x) => x.id === PROVIDERS.AUNA.id)
+              shopPaymentGateways?.find((x) => x.id === PROVIDERS.AUNA.id)
                 ?.config
             }
             generatePurchaseNumber={generateNiubizPurchaseNumber}
