@@ -13,3 +13,4 @@ src/@sdk/mutations/gqlTypes/*.*
 src/@sdk/queries/gqlTypes/*.*
 src/sitemap/gqlTypes/*.*
 src/views/**/gqlTypes/*.*
+src/index.html
