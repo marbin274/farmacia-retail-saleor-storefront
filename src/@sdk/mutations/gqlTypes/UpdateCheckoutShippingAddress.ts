@@ -766,6 +766,22 @@ export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_che
   slotTo: string | null;
 }
 
+export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_slots_nextDay {
+  __typename: "ShippingSlot";
+  /**
+   * Slot id.
+   */
+  id: string | null;
+  /**
+   * Slot available from.
+   */
+  slotFrom: string | null;
+  /**
+   * Slot available to.
+   */
+  slotTo: string | null;
+}
+
 export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_slots {
   __typename: "Slot";
   /**
@@ -776,6 +792,10 @@ export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_che
    * List of express slots.
    */
   express: (UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_slots_express | null)[] | null;
+  /**
+   * List of next_day slots.
+   */
+  nextDay: (UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_slots_nextDay | null)[] | null;
   /**
    * Datetime.
    */
@@ -1647,6 +1667,22 @@ export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_slot
   slotTo: string | null;
 }
 
+export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_slots_nextDay {
+  __typename: "ShippingSlot";
+  /**
+   * Slot id.
+   */
+  id: string | null;
+  /**
+   * Slot available from.
+   */
+  slotFrom: string | null;
+  /**
+   * Slot available to.
+   */
+  slotTo: string | null;
+}
+
 export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_slots {
   __typename: "Slot";
   /**
@@ -1657,6 +1693,10 @@ export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_slot
    * List of express slots.
    */
   express: (UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_slots_express | null)[] | null;
+  /**
+   * List of next_day slots.
+   */
+  nextDay: (UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_slots_nextDay | null)[] | null;
   /**
    * Datetime.
    */
