@@ -13,7 +13,7 @@ import {
   launchCheckoutFilledInputForAddressEvent,
   launchCheckoutPrivacyPolicyAceptedEvent,
 } from '@temp/@sdk/gaConfig';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   CitySelect,
   FirstNameTextField,
@@ -25,6 +25,8 @@ import { IFieldsProps, ISelectFieldsProps } from './AddressFormContent/types';
 import * as S from './styles';
 import { PropsWithFormik } from './types';
 import { InputField } from '@farmacia-retail/farmauna-components';
+import { useCheckout } from '@temp/@sdk/react';
+import { useFeaturePlugins } from '@app/hooks';
 
 const isValuesInvalid = (values?: IAddressWithEmail): boolean => {
   return (
@@ -73,6 +75,19 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
   const [privacyAndPolicies, setPrivacyAndPolicies] = useState<boolean>(
     initialTermAndconditions
   );
+  const { clearShippingMethods } = useCheckout();
+  const { lastMileActive } = useFeaturePlugins();
+
+  useEffect(() => {
+    performClearShippingMethods();
+  }, []);
+
+  const performClearShippingMethods = async () => {
+    if (lastMileActive) {
+      setFieldValue('city', '');
+      await clearShippingMethods();
+    }
+  };
 
   const [additionals, setAdditionals] = useState(
     values && values?.dataTreatmentPolicy ? values?.dataTreatmentPolicy : false

@@ -255,6 +255,38 @@ export class CheckoutJobs {
     }
   };
 
+  clearShippingMethods = async ({ checkoutId }: { checkoutId: string }) => {
+    const checkout = this.repository.getCheckout();
+    const districtId = this.repository.getDistrict()?.id;
+
+    const { data, error } = await this.networkManager.setShippingMethod(
+      { shippingMethodId: '', slotId: undefined },
+      checkoutId,
+      districtId
+    );
+
+    if (error) {
+      return {
+        dataError: {
+          error,
+          type: DataErrorCheckoutTypes.SET_SHIPPING_METHOD,
+        },
+      };
+    } else {
+      const newCheckout = {
+        ...checkout,
+        availableShippingMethods: [],
+        scheduleDate: null,
+        shippingMethod: null,
+        slotId: undefined,
+        slots: undefined,
+      };
+
+      this.repository.setCheckout(newCheckout);
+      return { data };
+    }
+  };
+
   addPromoCode = async ({
     checkoutId,
     promoCode,

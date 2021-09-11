@@ -102,6 +102,7 @@ export class SaleorCheckoutAPI
           termsAndConditions,
           token,
         };
+
         this.selectedShippingAddressId = selectedShippingAddressId;
         this.selectedBillingAddressId = selectedBillingAddressId;
         this.availableShippingMethods = availableShippingMethods;
@@ -418,6 +419,31 @@ export class SaleorCheckoutAPI
         pending: false,
       };
     }
+  };
+
+  clearShippingMethods = async (): PromiseRunResponse<
+    DataErrorCheckoutTypes,
+    FunctionErrorCheckoutTypes
+  > => {
+    await this.saleorState.provideCheckout(this.fireError);
+    const checkoutId = this.saleorState.checkout?.id;
+
+    if (checkoutId) {
+      const { data, dataError } = await this.jobsManager.run(
+        'checkout',
+        'clearShippingMethods',
+        {
+          checkoutId,
+        }
+      );
+      return {
+        data,
+        dataError,
+        pending: false,
+      };
+    }
+
+    return { pending: false };
   };
 
   addPromoCode = async (
