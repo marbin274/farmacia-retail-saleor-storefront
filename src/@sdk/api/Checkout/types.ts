@@ -125,7 +125,7 @@ export interface ISaleorCheckoutAPI {
   setShippingMethod: (
     shippingMethodUpdate: IShippingMethodUpdate
   ) => PromiseRunResponse<DataErrorCheckoutTypes, FunctionErrorCheckoutTypes>;
-  clearShippingMethods: () => PromiseRunResponse<
+  clearCheckout: () => PromiseRunResponse<
     DataErrorCheckoutTypes,
     FunctionErrorCheckoutTypes
   >;

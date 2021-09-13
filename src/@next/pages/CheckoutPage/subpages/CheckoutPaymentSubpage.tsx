@@ -28,6 +28,7 @@ import React, {
   useState,
 } from 'react';
 import { RouteComponentProps, useHistory } from 'react-router';
+import { useCheckoutContext } from '../hooks';
 
 export interface ICheckoutPaymentSubpageHandles {
   submitPayment: () => void;
@@ -74,6 +75,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
     createPayment,
     completeCheckout,
   } = useCheckout();
+  const { setShouldUnselectDistrict } = useCheckoutContext();
 
   const { items, totalPrice } = useCart();
   const { availableDistricts, countries } = useShopContext();
@@ -224,6 +226,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
             });
             break;
           case CheckoutErrorCode.INVALID_SLOT:
+            setShouldUnselectDistrict(true);
             alertService.sendAlert({
               buttonText: 'Entendido',
               icon: ClockIcon,

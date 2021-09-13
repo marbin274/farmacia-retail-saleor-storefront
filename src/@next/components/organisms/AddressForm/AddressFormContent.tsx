@@ -27,6 +27,7 @@ import { PropsWithFormik } from './types';
 import { InputField } from '@farmacia-retail/farmauna-components';
 import { useCheckout } from '@temp/@sdk/react';
 import { useFeaturePlugins } from '@app/hooks';
+import { useCheckoutContext } from '@temp/@next/pages/CheckoutPage/hooks';
 
 const isValuesInvalid = (values?: IAddressWithEmail): boolean => {
   return (
@@ -75,17 +76,20 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
   const [privacyAndPolicies, setPrivacyAndPolicies] = useState<boolean>(
     initialTermAndconditions
   );
-  const { clearShippingMethods } = useCheckout();
+  const { clearCheckout } = useCheckout();
   const { lastMileActive } = useFeaturePlugins();
+  const { shouldUnselectDistrict, setShouldUnselectDistrict } =
+    useCheckoutContext();
 
   useEffect(() => {
-    performClearShippingMethods();
-  }, []);
+    performClearCheckout();
+  }, [shouldUnselectDistrict]);
 
-  const performClearShippingMethods = async () => {
-    if (lastMileActive) {
+  const performClearCheckout = async () => {
+    if (shouldUnselectDistrict && lastMileActive) {
       setFieldValue('city', '');
-      await clearShippingMethods();
+      await clearCheckout();
+      setShouldUnselectDistrict(false);
     }
   };
 

@@ -421,7 +421,7 @@ export class SaleorCheckoutAPI
     }
   };
 
-  clearShippingMethods = async (): PromiseRunResponse<
+  clearCheckout = async (): PromiseRunResponse<
     DataErrorCheckoutTypes,
     FunctionErrorCheckoutTypes
   > => {
@@ -429,18 +429,7 @@ export class SaleorCheckoutAPI
     const checkoutId = this.saleorState.checkout?.id;
 
     if (checkoutId) {
-      const { data, dataError } = await this.jobsManager.run(
-        'checkout',
-        'clearShippingMethods',
-        {
-          checkoutId,
-        }
-      );
-      return {
-        data,
-        dataError,
-        pending: false,
-      };
+      await this.jobsManager.run('checkout', 'clearCheckout');
     }
 
     return { pending: false };

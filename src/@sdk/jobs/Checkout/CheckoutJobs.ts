@@ -255,36 +255,21 @@ export class CheckoutJobs {
     }
   };
 
-  clearShippingMethods = async ({ checkoutId }: { checkoutId: string }) => {
+  clearCheckout = () => {
     const checkout = this.repository.getCheckout();
-    const districtId = this.repository.getDistrict()?.id;
 
-    const { data, error } = await this.networkManager.setShippingMethod(
-      { shippingMethodId: '', slotId: undefined },
-      checkoutId,
-      districtId
-    );
+    const newCheckout = {
+      ...checkout,
+      availableShippingMethods: [],
+      id: undefined,
+      scheduleDate: null,
+      shippingMethod: null,
+      slotId: undefined,
+      slots: undefined,
+      token: undefined,
+    };
 
-    if (error) {
-      return {
-        dataError: {
-          error,
-          type: DataErrorCheckoutTypes.SET_SHIPPING_METHOD,
-        },
-      };
-    } else {
-      const newCheckout = {
-        ...checkout,
-        availableShippingMethods: [],
-        scheduleDate: null,
-        shippingMethod: null,
-        slotId: undefined,
-        slots: undefined,
-      };
-
-      this.repository.setCheckout(newCheckout);
-      return { data };
-    }
+    this.repository.setCheckout(newCheckout);
   };
 
   addPromoCode = async ({
