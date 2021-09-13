@@ -782,6 +782,22 @@ export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_check
   slotTo: string | null;
 }
 
+export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_checkout_slots_nextDay {
+  __typename: "ShippingSlot";
+  /**
+   * Slot id.
+   */
+  id: string | null;
+  /**
+   * Slot available from.
+   */
+  slotFrom: string | null;
+  /**
+   * Slot available to.
+   */
+  slotTo: string | null;
+}
+
 export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_checkout_slots {
   __typename: "Slot";
   /**
@@ -792,6 +808,10 @@ export interface UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_check
    * List of express slots.
    */
   express: (UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_checkout_slots_express | null)[] | null;
+  /**
+   * List of next_day slots.
+   */
+  nextDay: (UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_checkout_slots_nextDay | null)[] | null;
   /**
    * Datetime.
    */
