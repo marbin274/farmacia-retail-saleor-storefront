@@ -10,7 +10,6 @@ import { removePaymentItems } from '@temp/@next/utils/checkoutValidations';
 import { CheckoutErrorCode } from '@temp/@sdk/gqlTypes/globalTypes';
 import { baseUrl } from '@temp/app/routes/paths';
 import {
-  AVAILABLE_PAYMENTS,
   billingAddressAlwaysSameAsShipping,
   CHECKOUT_STEPS,
 } from '@temp/core/config';
@@ -21,7 +20,7 @@ import ClockIcon from 'images/auna/clock.svg';
 import PromoCodeCorrect from 'images/auna/promo-code-correct.svg';
 import React, {
   forwardRef,
-  RefForwardingComponent,
+  ForwardRefRenderFunction,
   useEffect,
   useImperativeHandle,
   useRef,
@@ -42,7 +41,7 @@ interface IProps extends RouteComponentProps<any> {
   requestPayload?: string | null | undefined;
 }
 
-const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
+const CheckoutPaymentSubpageWithRef: ForwardRefRenderFunction<
   ICheckoutPaymentSubpageHandles,
   IProps
 > = (
@@ -117,11 +116,6 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
         phone: checkout?.billingAddress?.phone || undefined,
       }
     : undefined;
-  const paymentGateways = availablePaymentGateways?.length
-    ? availablePaymentGateways
-    : AVAILABLE_PAYMENTS;
-  // TODO
-  // reload data from backend and  put in cache
 
   const checkoutBillingFormId = 'billing-form';
   const checkoutBillingFormRef = useRef<HTMLFormElement>(null);
@@ -448,7 +442,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
         selectedUserAddressId={selectedBillingAddressId}
         checkoutBillingAddress={checkoutBillingAddress}
         countries={countries}
-        paymentGateways={paymentGateways}
+        paymentGateways={availablePaymentGateways}
         selectedPaymentGateway={selectedPaymentGateway}
         selectedPaymentGatewayToken={selectedPaymentGatewayToken}
         selectPaymentGateway={selectPaymentGateway}
