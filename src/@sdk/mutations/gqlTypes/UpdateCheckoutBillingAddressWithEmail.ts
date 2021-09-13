@@ -281,6 +281,34 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
   subtitle: string | null;
 }
 
+export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_availablePaymentGateways_config {
+  __typename: "GatewayConfigLine";
+  /**
+   * Gateway config key.
+   */
+  field: string;
+  /**
+   * Gateway config value for key.
+   */
+  value: string | null;
+}
+
+export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_availablePaymentGateways {
+  __typename: "PaymentGateway";
+  /**
+   * Payment gateway ID.
+   */
+  id: string;
+  /**
+   * Payment gateway name.
+   */
+  name: string;
+  /**
+   * Payment gateway client configuration.
+   */
+  config: UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_availablePaymentGateways_config[];
+}
+
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_shippingMethod_methodType {
   __typename: "ShippingMethodType";
   /**
@@ -828,6 +856,10 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    * Shipping methods that can be used with this order.
    */
   availableShippingMethods: (UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_availableShippingMethods | null)[];
+  /**
+   * List of available payment gateways.
+   */
+  availablePaymentGateways: UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_availablePaymentGateways[];
   shippingMethod: UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpdate_checkout_shippingMethod | null;
   /**
    * The price of the shipping, with all the taxes included.
@@ -1147,6 +1179,34 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    */
   scheduleDates: (UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_availableShippingMethods_scheduleDates | null)[] | null;
   subtitle: string | null;
+}
+
+export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_availablePaymentGateways_config {
+  __typename: "GatewayConfigLine";
+  /**
+   * Gateway config key.
+   */
+  field: string;
+  /**
+   * Gateway config value for key.
+   */
+  value: string | null;
+}
+
+export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_availablePaymentGateways {
+  __typename: "PaymentGateway";
+  /**
+   * Payment gateway ID.
+   */
+  id: string;
+  /**
+   * Payment gateway name.
+   */
+  name: string;
+  /**
+   * Payment gateway client configuration.
+   */
+  config: UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_availablePaymentGateways_config[];
 }
 
 export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_shippingMethod_methodType {
@@ -1696,6 +1756,10 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    * Shipping methods that can be used with this order.
    */
   availableShippingMethods: (UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_availableShippingMethods | null)[];
+  /**
+   * List of available payment gateways.
+   */
+  availablePaymentGateways: UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_availablePaymentGateways[];
   shippingMethod: UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_checkout_shippingMethod | null;
   /**
    * The price of the shipping, with all the taxes included.

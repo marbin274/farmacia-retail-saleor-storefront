@@ -313,6 +313,34 @@ export interface CreateCheckout_checkoutCreate_checkout_availableShippingMethods
   subtitle: string | null;
 }
 
+export interface CreateCheckout_checkoutCreate_checkout_availablePaymentGateways_config {
+  __typename: "GatewayConfigLine";
+  /**
+   * Gateway config key.
+   */
+  field: string;
+  /**
+   * Gateway config value for key.
+   */
+  value: string | null;
+}
+
+export interface CreateCheckout_checkoutCreate_checkout_availablePaymentGateways {
+  __typename: "PaymentGateway";
+  /**
+   * Payment gateway ID.
+   */
+  id: string;
+  /**
+   * Payment gateway name.
+   */
+  name: string;
+  /**
+   * Payment gateway client configuration.
+   */
+  config: CreateCheckout_checkoutCreate_checkout_availablePaymentGateways_config[];
+}
+
 export interface CreateCheckout_checkoutCreate_checkout_shippingMethod_methodType {
   __typename: "ShippingMethodType";
   /**
@@ -860,6 +888,10 @@ export interface CreateCheckout_checkoutCreate_checkout {
    * Shipping methods that can be used with this order.
    */
   availableShippingMethods: (CreateCheckout_checkoutCreate_checkout_availableShippingMethods | null)[];
+  /**
+   * List of available payment gateways.
+   */
+  availablePaymentGateways: CreateCheckout_checkoutCreate_checkout_availablePaymentGateways[];
   shippingMethod: CreateCheckout_checkoutCreate_checkout_shippingMethod | null;
   /**
    * The price of the shipping, with all the taxes included.

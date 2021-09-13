@@ -13,6 +13,7 @@ import {
   ISubtotalPrice,
   IItems,
 } from '../api/Cart/types';
+import { IAvailablePaymentGateways } from '../api/Checkout/types';
 import { ITotalPrice } from '@temp/@sdk/api/Cart/types';
 
 export enum LocalStorageItems {
@@ -174,6 +175,7 @@ export interface ICheckoutModel {
   billingAsShipping?: boolean;
   promoCodeDiscount?: ICheckoutModelPromoCodeDiscount;
   lines?: ICheckoutModelLine[] | null;
+  availablePaymentGateways?: IAvailablePaymentGateways;
   availableShippingMethods?: Checkout_availableShippingMethods[];
   shippingMethod?: ICheckoutModelShippingMethod | null;
   requestPayload?: string;

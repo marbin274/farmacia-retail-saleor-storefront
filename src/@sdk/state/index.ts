@@ -1,28 +1,29 @@
-import { round } from "lodash";
+import { round } from 'lodash';
 
-import { DataErrorCheckoutTypes } from "../api/Checkout/types";
-import { NamedObservable } from "../helpers";
-import { NetworkManager } from "../network";
-import { GetShopPaymentGateways_shop_availablePaymentGateways } from "../queries/gqlTypes/GetShopPaymentGateways";
-import { ApolloErrorWithUserInput } from "../react/types";
+import { DataErrorCheckoutTypes } from '../api/Checkout/types';
+import { NamedObservable } from '../helpers';
+import { NetworkManager } from '../network';
+import { GetShopPaymentGateways_shop_availablePaymentGateways } from '../queries/gqlTypes/GetShopPaymentGateways';
+import { ApolloErrorWithUserInput } from '../react/types';
 import {
   ICheckoutModel,
   IPaymentModel,
   LocalRepository,
   LocalStorageItems,
-} from "../repository";
-import { ISaleorState, ISaleorStateSummeryPrices, StateItems } from "./types";
+} from '../repository';
+import { ISaleorState, ISaleorStateSummeryPrices, StateItems } from './types';
 
-export class SaleorState extends NamedObservable<StateItems>
-  implements ISaleorState {
+export class SaleorState
+  extends NamedObservable<StateItems>
+  implements ISaleorState
+{
   checkout?: ICheckoutModel;
   promoCode?: string;
   selectedShippingAddressId?: string;
   selectedBillingAddressId?: string;
   payment?: IPaymentModel;
   summaryPrices?: ISaleorStateSummeryPrices;
-  // Should be changed it in future to shop object containing payment gateways besides all the shop data
-  availablePaymentGateways?: GetShopPaymentGateways_shop_availablePaymentGateways[];
+  shopPaymentGateways?: GetShopPaymentGateways_shop_availablePaymentGateways[];
 
   private repository: LocalRepository;
   private networkManager: NetworkManager;
@@ -90,11 +91,8 @@ export class SaleorState extends NamedObservable<StateItems>
   private onPaymentGatewaysUpdate = (
     paymentGateways?: GetShopPaymentGateways_shop_availablePaymentGateways[]
   ) => {
-    this.availablePaymentGateways = paymentGateways;
-    this.notifyChange(
-      StateItems.PAYMENT_GATEWAYS,
-      this.availablePaymentGateways
-    );
+    this.shopPaymentGateways = paymentGateways;
+    this.notifyChange(StateItems.PAYMENT_GATEWAYS, this.shopPaymentGateways);
   };
 
   private isCheckoutCreatedOnline = () => this.checkout?.id;
@@ -130,19 +128,17 @@ export class SaleorState extends NamedObservable<StateItems>
     if (checkoutModel) {
       if (forceReload) {
         const activeLines =
-          checkoutModel?.lines?.filter(x => x.quantity > 0) || [];
+          checkoutModel?.lines?.filter((x) => x.quantity > 0) || [];
 
         if (activeLines.length > 0) {
           for (const line of activeLines) {
             line.totalPrice = null;
           }
 
-          const {
-            data,
-            error,
-          } = await this.networkManager.getRefreshedCheckoutLines(
-            activeLines,
-            this.repository.getDistrict()?.id || ''
+          const { data, error } =
+            await this.networkManager.getRefreshedCheckoutLines(
+              activeLines,
+              this.repository.getDistrict()?.id || ''
             );
 
           if (!error) {
