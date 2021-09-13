@@ -160,6 +160,7 @@ export interface IShippingSlot {
 export interface ISlots {
   express?: IShippingSlot[];
   scheduled?: IShippingSlot[];
+  nextDay?: IShippingSlot[];
   datetime?: string;
 }
 

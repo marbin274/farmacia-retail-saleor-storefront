@@ -168,7 +168,7 @@ export const CheckoutShippingSlot: React.FC<ICheckoutShippingSlotProps> = ({
                 return (
                   <ExpressShippingMethod
                     key={id}
-                    shippingSlots={(slots as any)?.nextday} // TODO: quitar any cuando el backend lo tenga implementado y se genere tipado
+                    shippingSlots={slots?.nextDay}
                     shippingMethod={shippingMethod}
                     formikErrors={formikErrors}
                     values={values}
