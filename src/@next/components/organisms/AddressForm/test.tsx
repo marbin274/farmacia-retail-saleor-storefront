@@ -1,36 +1,51 @@
-import { InputField } from "@farmacia-retail/farmauna-components";
-import { removeCountryCodeInPhoneNumber } from "@temp/@next/utils/addresForm";
-import { mount, shallow } from "enzyme";
-import "jest-styled-components";
-import React from "react";
-import { AddressForm } from ".";
-import { address, checkoutData, countries, userAddress } from "./fixtures";
-import { IProps } from "./types";
+import { InputField } from '@farmacia-retail/farmauna-components';
+import { removeCountryCodeInPhoneNumber } from '@temp/@next/utils/addresForm';
+import { mount, shallow } from 'enzyme';
+import 'jest-styled-components';
+import React from 'react';
+import { AddressForm } from '.';
+import { address, checkoutData, countries, userAddress } from './fixtures';
+import { IProps } from './types';
 
+jest.mock('@temp/@next/pages/CheckoutPage/hooks', () => ({
+  useCheckoutContext: () => ({
+    shouldUnselectDistrict: false,
+    setShouldUnselectDistrict: jest.fn(),
+  }),
+}));
+
+jest.mock('@app/hooks', () => ({
+  useFeaturePlugins: () => ({
+    lastMileActive: false,
+  }),
+}));
+
+jest.mock('@temp/@sdk/react', () => ({
+  useCheckout: () => ({
+    clearCheckout: jest.fn(),
+  }),
+}));
 
 const PROPS: IProps = {
   address,
-  districtsOptions: ["Miraflores", "Surquillo"],
+  districtsOptions: ['Miraflores', 'Surquillo'],
   countriesOptions: countries,
   errors: [],
   handleSubmit: jest.fn(),
   includeEmail: true,
 };
 
-describe("<AddressForm />", () => {
-  it("exists", () => {
+describe('<AddressForm />', () => {
+  it('exists', () => {
     const wrapper = shallow(<AddressForm {...PROPS} />);
     expect(wrapper.exists()).toEqual(true);
   });
 
-  it("should contain partial data if provided", () => {
+  it('should contain partial data if provided', () => {
     const wrapper = mount(<AddressForm {...PROPS} />);
 
     const getField = (n: number) =>
-      wrapper
-        .find(InputField)
-        .at(n)
-        .prop("value");
+      wrapper.find(InputField).at(n).prop('value');
 
     expect(getField(0)).toEqual(PROPS.address?.firstName);
     expect(getField(2)).toEqual(PROPS.address?.email);
@@ -40,8 +55,8 @@ describe("<AddressForm />", () => {
   });
 });
 
-describe("form contain data", () => {
-  it("should contain user data only", () => {
+describe('form contain data', () => {
+  it('should contain user data only', () => {
     const PROPSCUSTOM: IProps = {
       ...PROPS,
       address: undefined,
@@ -50,20 +65,27 @@ describe("form contain data", () => {
     const wrapper = mount(<AddressForm {...PROPSCUSTOM} />);
 
     const getField = (n: number) =>
-      wrapper
-        .find(InputField)
-        .at(n)
-        .prop("value");
+      wrapper.find(InputField).at(n).prop('value');
 
-    expect(getField(0)).toEqual(`${userAddress?.firstName} ${userAddress?.lastName}`);
+    expect(getField(0)).toEqual(
+      `${userAddress?.firstName} ${userAddress?.lastName}`
+    );
     expect(getField(1)).toEqual(userAddress?.documentNumber);
     expect(getField(2)).toEqual(userAddress?.email);
-    expect(getField(3)).toEqual(removeCountryCodeInPhoneNumber(userAddress?.defaultShippingAddress?.phone || ''));
-    expect(getField(4)).toEqual(userAddress?.defaultShippingAddress?.streetAddress1);
-    expect(getField(5)).toEqual(userAddress?.defaultShippingAddress?.streetAddress2);
+    expect(getField(3)).toEqual(
+      removeCountryCodeInPhoneNumber(
+        userAddress?.defaultShippingAddress?.phone || ''
+      )
+    );
+    expect(getField(4)).toEqual(
+      userAddress?.defaultShippingAddress?.streetAddress1
+    );
+    expect(getField(5)).toEqual(
+      userAddress?.defaultShippingAddress?.streetAddress2
+    );
   });
 
-  it("should contain user data and checkoutdata", () => {
+  it('should contain user data and checkoutdata', () => {
     const PROPSCUSTOM: IProps = {
       ...PROPS,
       address: undefined,
@@ -73,20 +95,19 @@ describe("form contain data", () => {
     const wrapper = mount(<AddressForm {...PROPSCUSTOM} />);
 
     const getField = (n: number) =>
-      wrapper
-        .find(InputField)
-        .at(n)
-        .prop("value");
+      wrapper.find(InputField).at(n).prop('value');
 
     expect(getField(0)).toEqual(checkoutData?.shippingAddress.firstName);
     expect(getField(1)).toEqual(checkoutData?.documentNumber);
     expect(getField(2)).toEqual(checkoutData?.email);
-    expect(getField(3)).toEqual(removeCountryCodeInPhoneNumber(checkoutData?.shippingAddress?.phone));
+    expect(getField(3)).toEqual(
+      removeCountryCodeInPhoneNumber(checkoutData?.shippingAddress?.phone)
+    );
     expect(getField(4)).toEqual(checkoutData?.shippingAddress?.streetAddress1);
     expect(getField(5)).toEqual(checkoutData?.shippingAddress?.streetAddress2);
   });
 
-  it("should contain user data and the checkoutdata contain undefined data", () => {
+  it('should contain user data and the checkoutdata contain undefined data', () => {
     const PROPSCUSTOM: IProps = {
       ...PROPS,
       address: undefined,
@@ -98,19 +119,25 @@ describe("form contain data", () => {
     const wrapper = mount(<AddressForm {...PROPSCUSTOM} />);
 
     const getField = (n: number) =>
-      wrapper
-        .find(InputField)
-        .at(n)
-        .prop("value");
+      wrapper.find(InputField).at(n).prop('value');
 
-    expect(getField(0)).toEqual(`${userAddress?.firstName} ${userAddress?.lastName}`);
+    expect(getField(0)).toEqual(
+      `${userAddress?.firstName} ${userAddress?.lastName}`
+    );
     expect(getField(1)).toEqual(userAddress?.documentNumber);
     expect(getField(2)).toEqual(userAddress?.email);
-    expect(getField(3)).toEqual(removeCountryCodeInPhoneNumber(userAddress?.defaultShippingAddress?.phone || ''));
-    expect(getField(4)).toEqual(userAddress?.defaultShippingAddress?.streetAddress1);
-    expect(getField(5)).toEqual(userAddress?.defaultShippingAddress?.streetAddress2);
+    expect(getField(3)).toEqual(
+      removeCountryCodeInPhoneNumber(
+        userAddress?.defaultShippingAddress?.phone || ''
+      )
+    );
+    expect(getField(4)).toEqual(
+      userAddress?.defaultShippingAddress?.streetAddress1
+    );
+    expect(getField(5)).toEqual(
+      userAddress?.defaultShippingAddress?.streetAddress2
+    );
   });
-
 });
 
 // FIXME: enzyme no soposrta useEffect - Validar usando testing Library

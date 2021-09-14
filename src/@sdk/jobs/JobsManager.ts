@@ -39,7 +39,7 @@ export class JobsManager {
   run<G extends keyof IJobs, J extends keyof IJobs[G], P extends IJobs[G][J]>(
     jobGroup: G,
     jobName: J,
-    params: JobFunctionParameters<G, J, P>[0]
+    params?: JobFunctionParameters<G, J, P>[0]
   ) {
     const func = this.jobs[jobGroup][jobName];
 

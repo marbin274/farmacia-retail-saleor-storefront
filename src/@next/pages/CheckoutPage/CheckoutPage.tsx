@@ -39,6 +39,7 @@ import {
   ICheckoutShippingSubpageHandles,
 } from './subpages';
 import { IProps } from './types';
+import { CheckoutContextProvider } from './contexts';
 
 const prepareCartSummary = (
   activeStepIndex: number,
@@ -389,53 +390,56 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
   const onClickHandle = () => {
     setDisplayModalShowDetail(true);
   };
+
   return (
-    <div style={{ backgroundColor: '#F7F6F8' }}>
-      {displayModalShowDetail && (
-        <CartDeliveryDataModal
-          checkout={checkout}
-          hideModal={() => {
-            setDisplayModalShowDetail(false);
-          }}
-          title="Datos de entrega"
+    <CheckoutContextProvider>
+      <div style={{ backgroundColor: '#F7F6F8' }}>
+        {displayModalShowDetail && (
+          <CartDeliveryDataModal
+            checkout={checkout}
+            hideModal={() => {
+              setDisplayModalShowDetail(false);
+            }}
+            title="Datos de entrega"
+          />
+        )}
+        <Checkout
+          checkoutId={checkout?.id}
+          selectedPaymentGateway={selectedPaymentGateway}
+          loading={submitInProgress}
+          navigation={getCheckoutProgress(
+            cartLoaded && checkoutLoaded,
+            activeStepIndex,
+            !!isShippingRequiredForProducts,
+            pathname
+          )}
+          cartResume={prepareCartResume(
+            activeStepIndex,
+            onClickHandle,
+            totalProducts,
+            subtotalPrice,
+            totalPrice,
+            shippingTaxedPrice,
+            promoTaxedPrice
+          )}
+          cartSummary={prepareCartSummary(
+            activeStepIndex,
+            onClickHandle,
+            subtotalPrice,
+            totalPrice,
+            shippingTaxedPrice,
+            promoTaxedPrice,
+            items
+          )}
+          checkout={checkoutView}
+          button={getButton(
+            activeStep.nextActionName,
+            checkout?.id,
+            handleNextStepClick
+          )}
         />
-      )}
-      <Checkout
-        checkoutId={checkout?.id}
-        selectedPaymentGateway={selectedPaymentGateway}
-        loading={submitInProgress}
-        navigation={getCheckoutProgress(
-          cartLoaded && checkoutLoaded,
-          activeStepIndex,
-          !!isShippingRequiredForProducts,
-          pathname
-        )}
-        cartResume={prepareCartResume(
-          activeStepIndex,
-          onClickHandle,
-          totalProducts,
-          subtotalPrice,
-          totalPrice,
-          shippingTaxedPrice,
-          promoTaxedPrice
-        )}
-        cartSummary={prepareCartSummary(
-          activeStepIndex,
-          onClickHandle,
-          subtotalPrice,
-          totalPrice,
-          shippingTaxedPrice,
-          promoTaxedPrice,
-          items
-        )}
-        checkout={checkoutView}
-        button={getButton(
-          activeStep.nextActionName,
-          checkout?.id,
-          handleNextStepClick
-        )}
-      />
-    </div>
+      </div>
+    </CheckoutContextProvider>
   );
 };
 

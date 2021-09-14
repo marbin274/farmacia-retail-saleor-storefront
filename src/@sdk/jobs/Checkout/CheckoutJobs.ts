@@ -257,6 +257,23 @@ export class CheckoutJobs {
     }
   };
 
+  clearCheckout = () => {
+    const checkout = this.repository.getCheckout();
+
+    const newCheckout = {
+      ...checkout,
+      availableShippingMethods: [],
+      id: undefined,
+      scheduleDate: null,
+      shippingMethod: null,
+      slotId: undefined,
+      slots: undefined,
+      token: undefined,
+    };
+
+    this.repository.setCheckout(newCheckout);
+  };
+
   addPromoCode = async ({
     checkoutId,
     promoCode,

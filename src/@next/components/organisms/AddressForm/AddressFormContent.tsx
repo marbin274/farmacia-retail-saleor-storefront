@@ -13,7 +13,7 @@ import {
   launchCheckoutFilledInputForAddressEvent,
   launchCheckoutPrivacyPolicyAceptedEvent,
 } from '@temp/@sdk/gaConfig';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   CitySelect,
   FirstNameTextField,
@@ -25,6 +25,9 @@ import { IFieldsProps, ISelectFieldsProps } from './AddressFormContent/types';
 import * as S from './styles';
 import { PropsWithFormik } from './types';
 import { InputField } from '@farmacia-retail/farmauna-components';
+import { useCheckout } from '@temp/@sdk/react';
+import { useFeaturePlugins } from '@app/hooks';
+import { useCheckoutContext } from '@temp/@next/pages/CheckoutPage/hooks';
 
 const isValuesInvalid = (values?: IAddressWithEmail): boolean => {
   return (
@@ -73,6 +76,22 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
   const [privacyAndPolicies, setPrivacyAndPolicies] = useState<boolean>(
     initialTermAndconditions
   );
+  const { clearCheckout } = useCheckout();
+  const { lastMileActive } = useFeaturePlugins();
+  const { shouldUnselectDistrict, setShouldUnselectDistrict } =
+    useCheckoutContext();
+
+  useEffect(() => {
+    performClearCheckout();
+  }, [shouldUnselectDistrict]);
+
+  const performClearCheckout = async () => {
+    if (shouldUnselectDistrict && lastMileActive) {
+      setFieldValue('city', '');
+      await clearCheckout();
+      setShouldUnselectDistrict(false);
+    }
+  };
 
   const [additionals, setAdditionals] = useState(
     values && values?.dataTreatmentPolicy ? values?.dataTreatmentPolicy : false
