@@ -95,7 +95,16 @@ const startApp = async () => {
       const { updateAvailable } = React.useContext(ServiceWorkerContext);
 
       React.useEffect(() => {
+
         if (updateAvailable) {
+          if('caches' in window){
+            caches.keys().then((names) => {
+              // Delete all the cache files
+              names.forEach(name => {
+                caches.delete(name);
+              })  
+            })
+          }
           location.reload();
         }
       }, [updateAvailable]);
