@@ -81,12 +81,22 @@ const Nav: React.FC<IProps> = ({ secondaryMenu, loading }) => {
               >
                 consultas@farmauna.com
               </a>
-              <S.MailToImg src={iconPreviousEmail} alt="logo email" />
+              <S.MailToImg
+                src={iconPreviousEmail}
+                alt="logo email"
+                width="14"
+                height="9"
+              />
             </span>
             <div className="fa-mt-8 fa-flex fa-items-center">
-              <S.PhoneImg src={iconPhone} alt="logo phone" />
+              <S.PhoneImg
+                src={iconPhone}
+                alt="logo phone"
+                width="25"
+                height="25"
+              />
               <span className="fa-text-h3 xs:fa-text-h2 fa-font-semibold fa-text-white">
-                {PHONE_NUMBER} 
+                {PHONE_NUMBER}
               </span>
             </div>
           </S.SectionContent>
