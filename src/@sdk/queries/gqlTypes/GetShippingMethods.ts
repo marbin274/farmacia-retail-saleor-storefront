@@ -84,7 +84,7 @@ export interface GetShippingMethods {
   /**
    * Potential Shipping methods that can be used with these conditions.
    */
-  potentialShippingMethods: (GetShippingMethods_potentialShippingMethods | null)[];
+  potentialShippingMethods: (GetShippingMethods_potentialShippingMethods | null)[] | null;
 }
 
 export interface GetShippingMethodsVariables {

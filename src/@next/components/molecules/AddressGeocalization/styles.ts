@@ -1,9 +1,9 @@
-import { mediaUp, media } from "@temp/@next/globalStyles";
-import { largeScreen, white } from "@temp/@next/globalStyles/constants";
-import { css, keyframes } from "styled-components";
-import { styled } from "@styles";
-import { addressLocationType } from "./types";
-import farmatheme from "@farmatheme";
+import { mediaUp, media } from '@temp/@next/globalStyles';
+import { largeScreen } from '@temp/@next/globalStyles/constants';
+import { css, keyframes } from 'styled-components';
+import { styled } from '@styles';
+import { addressLocationType } from './types';
+import farmatheme from '@farmatheme';
 
 export const Wrapper = styled.div`
   align-items: center;
@@ -18,7 +18,7 @@ export const Wrapper = styled.div`
 
 export const Localization = styled.div<{ mode: addressLocationType }>`
   color: ${({ mode, theme }) =>
-    mode === "ligth" ? theme.colors.white : theme.colors.aunaBlack};
+    mode === 'ligth' ? theme.colors.white : theme.colors.aunaBlack};
   display: flex;
   flex: 3;
 `;
@@ -32,15 +32,15 @@ export const GeocalizationIcon = styled.div`
 `;
 
 export const District = styled.div`
-    display: flex;
-    flex-direction: column;
-    padding: 0rem .5rem;
-    max-width: 10rem;
-    color: ${farmatheme.theme.colors.white};
-    ${mediaUp.xSmallScreen`
+  display: flex;
+  flex-direction: column;
+  padding: 0rem 0.5rem;
+  max-width: 10rem;
+  color: ${farmatheme.theme.colors.white};
+  ${mediaUp.xSmallScreen`
         max-width: 12rem;
     `}
-    ${mediaUp.smallScreen`
+  ${mediaUp.smallScreen`
         max-width: 100%;
     `}
     ${mediaUp.largeScreen`
@@ -130,13 +130,8 @@ export const AlertWrapper = styled.div`
 `;
 
 export const Alert = styled.div`
-  background: ${white};
-  border-radius: 1.5rem;
   box-shadow: 0px 0px 0.875rem rgb(0 0 0 / 50%);
-  padding: 1.5rem;
-  position: absolute;
   top: 1rem;
-  width: 100%;
   ${css`
         animation: ${moved};
         animation-delay: 4s;
@@ -144,11 +139,11 @@ export const Alert = styled.div`
         animation-iteration-count: infinite
         animation-timing-function: ease-in-out;
     `}
-    ::after {
+  ::after {
     border-color: transparent transparent white transparent;
     border-style: solid;
     border-width: 0.7rem;
-    content: " ";
+    content: ' ';
     position: absolute;
     right: 3rem;
     top: -1.375rem;
@@ -160,11 +155,6 @@ export const Alert = styled.div`
             right: 2rem;
         }
     `}
-`;
-
-export const AlertBody = styled.div`
-  color: #151515;
-  display: flex;
 `;
 
 export const AlertIcon = styled.div`
@@ -179,48 +169,5 @@ export const AlertIcon = styled.div`
 `;
 
 export const AlertText = styled.span`
-  font-size: 0.875rem;
   flex: 3;
-  margin-left: 1rem;
-  > span {
-    font-weight: ${({ theme }) => theme.typography.boldFontWeight};
-  }
-`;
-
-export const AlertAction = styled.div`
-  ${({ theme }) => `
-  display: flex;
-  justify-content: flex-end;
-  padding-top: 1rem;
-  >div: first-child {
-    width: 7.25rem;
-  }
-  >div: nth-child(2) {
-    margin-left: 1rem;
-    width: 10.188rem;
-  }
-  span {
-    font-size: ${theme.typography.smallFontSize};
-  }
-  button {
-    padding: 0.5rem;
-    width: 100%;
-    border-color:currentcolor !important;
-    ${media.largeScreen`
-    .button-border-change {
-      border: 1px solid ${farmatheme.theme.colors.interactive} !important;
-      border-radius: 1.5rem;
-    }
-`}
-    ${media.xSmallScreen`
-        > span {
-          margin-left: 0;
-          font-size: ${theme.typography.labelFontSize}
-        }
-    `}
-    span {
-      color:currentcolor !important;
-    }
-  }
-  `}
 `;

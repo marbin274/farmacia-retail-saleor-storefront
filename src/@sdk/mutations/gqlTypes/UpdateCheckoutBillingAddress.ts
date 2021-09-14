@@ -281,6 +281,34 @@ export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_check
   subtitle: string | null;
 }
 
+export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_checkout_availablePaymentGateways_config {
+  __typename: "GatewayConfigLine";
+  /**
+   * Gateway config key.
+   */
+  field: string;
+  /**
+   * Gateway config value for key.
+   */
+  value: string | null;
+}
+
+export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_checkout_availablePaymentGateways {
+  __typename: "PaymentGateway";
+  /**
+   * Payment gateway ID.
+   */
+  id: string;
+  /**
+   * Payment gateway name.
+   */
+  name: string;
+  /**
+   * Payment gateway client configuration.
+   */
+  config: UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_checkout_availablePaymentGateways_config[];
+}
+
 export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_checkout_shippingMethod_methodType {
   __typename: "ShippingMethodType";
   /**
@@ -766,6 +794,22 @@ export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_check
   slotTo: string | null;
 }
 
+export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_checkout_slots_nextDay {
+  __typename: "ShippingSlot";
+  /**
+   * Slot id.
+   */
+  id: string | null;
+  /**
+   * Slot available from.
+   */
+  slotFrom: string | null;
+  /**
+   * Slot available to.
+   */
+  slotTo: string | null;
+}
+
 export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_checkout_slots {
   __typename: "Slot";
   /**
@@ -776,6 +820,10 @@ export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_check
    * List of express slots.
    */
   express: (UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_checkout_slots_express | null)[] | null;
+  /**
+   * List of next_day slots.
+   */
+  nextDay: (UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_checkout_slots_nextDay | null)[] | null;
   /**
    * Datetime.
    */
@@ -808,6 +856,10 @@ export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_check
    * Shipping methods that can be used with this order.
    */
   availableShippingMethods: (UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_checkout_availableShippingMethods | null)[];
+  /**
+   * List of available payment gateways.
+   */
+  availablePaymentGateways: UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_checkout_availablePaymentGateways[];
   shippingMethod: UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_checkout_shippingMethod | null;
   /**
    * The price of the shipping, with all the taxes included.

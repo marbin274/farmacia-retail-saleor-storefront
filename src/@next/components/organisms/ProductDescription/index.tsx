@@ -172,6 +172,7 @@ export const ProductDescription: React.FC<ProductDescriptionProps> = (
             addToCart={props.addToCart}
             removeItemToCart={props.subtractToCart}
             subtractItemToCart={props.subtractToCart}
+            isPersonalizeProduct={false}
           />
         </S.ProductQuantityWrapper>
       </div>

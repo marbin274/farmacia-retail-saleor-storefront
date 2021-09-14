@@ -1,9 +1,9 @@
-import React, { FC, useState } from "react";
-import { Modal, NiubizPaymentGateway } from "@components/organisms";
-import { PROVIDERS } from "@temp/core/config";
-import { useCheckout } from "@sdk/react";
-import { IPaymentMethodFormModalProps } from "./types";
-import { generateNiubizPurchaseNumber } from "@temp/@next/components/organisms/NiubizPaymentGateway/utils";
+import React, { FC, useState } from 'react';
+import { Modal, NiubizPaymentGateway } from '@components/organisms';
+import { PROVIDERS } from '@temp/core/config';
+import { useCheckout } from '@sdk/react';
+import { IPaymentMethodFormModalProps } from './types';
+import { generateNiubizPurchaseNumber } from '@temp/@next/components/organisms/NiubizPaymentGateway/utils';
 
 export const PatmentMethodFormModal: FC<IPaymentMethodFormModalProps> = ({
   formRef,
@@ -16,7 +16,7 @@ export const PatmentMethodFormModal: FC<IPaymentMethodFormModalProps> = ({
   const [loading, setLoading] = useState(false);
   const isLoading = loading || createLoading;
 
-  const { availablePaymentGateways } = useCheckout();
+  const { shopPaymentGateways } = useCheckout();
 
   const performSubmit = () => {
     if (isLoading) {
@@ -25,7 +25,9 @@ export const PatmentMethodFormModal: FC<IPaymentMethodFormModalProps> = ({
 
     if (formRef.current) {
       setLoading(true);
-      formRef.current?.dispatchEvent(new Event("submit", { cancelable: true }));
+      formRef.current?.dispatchEvent(
+        new Event('submit', { cancelable: true, bubbles: true })
+      );
     }
   };
 
@@ -50,7 +52,7 @@ export const PatmentMethodFormModal: FC<IPaymentMethodFormModalProps> = ({
         <div className="fa-mt-4">
           <NiubizPaymentGateway
             config={
-              availablePaymentGateways?.find(x => x.id === PROVIDERS.AUNA.id)
+              shopPaymentGateways?.find((x) => x.id === PROVIDERS.AUNA.id)
                 ?.config
             }
             generatePurchaseNumber={generateNiubizPurchaseNumber}

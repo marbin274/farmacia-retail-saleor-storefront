@@ -977,6 +977,7 @@ export class NetworkManager implements INetworkManager {
       voucherCode,
       lines,
       availableShippingMethods,
+      availablePaymentGateways,
       shippingMethod,
       documentNumber,
       termsAndConditions,
@@ -986,6 +987,7 @@ export class NetworkManager implements INetworkManager {
     } = checkout;
 
     const checkoutModel: ICheckoutModel = {
+      availablePaymentGateways: availablePaymentGateways || [],
       availableShippingMethods: availableShippingMethods
         ? availableShippingMethods.filter(filterNotEmptyArrayItems)
         : [],

@@ -1,10 +1,10 @@
-import { GetShopPaymentGateways_shop_availablePaymentGateways } from "../queries/gqlTypes/GetShopPaymentGateways";
+import { GetShopPaymentGateways_shop_availablePaymentGateways } from '../queries/gqlTypes/GetShopPaymentGateways';
 import {
   ICheckoutModel,
   ICheckoutModelPrice,
   ICheckoutModelPriceValue,
   IPaymentModel,
-} from "../repository";
+} from '../repository';
 
 export enum StateItems {
   CHECKOUT,
@@ -27,6 +27,5 @@ export interface ISaleorState {
   selectedBillingAddressId?: string;
   summaryPrices?: ISaleorStateSummeryPrices;
   payment?: IPaymentModel;
-  // Should be changed it in future to shop object containing payment gateways besides all the shop data
-  availablePaymentGateways?: GetShopPaymentGateways_shop_availablePaymentGateways[];
+  shopPaymentGateways?: GetShopPaymentGateways_shop_availablePaymentGateways[];
 }

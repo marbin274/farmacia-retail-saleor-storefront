@@ -281,6 +281,34 @@ export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_che
   subtitle: string | null;
 }
 
+export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_availablePaymentGateways_config {
+  __typename: "GatewayConfigLine";
+  /**
+   * Gateway config key.
+   */
+  field: string;
+  /**
+   * Gateway config value for key.
+   */
+  value: string | null;
+}
+
+export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_availablePaymentGateways {
+  __typename: "PaymentGateway";
+  /**
+   * Payment gateway ID.
+   */
+  id: string;
+  /**
+   * Payment gateway name.
+   */
+  name: string;
+  /**
+   * Payment gateway client configuration.
+   */
+  config: UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_availablePaymentGateways_config[];
+}
+
 export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_shippingMethod_methodType {
   __typename: "ShippingMethodType";
   /**
@@ -766,6 +794,22 @@ export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_che
   slotTo: string | null;
 }
 
+export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_slots_nextDay {
+  __typename: "ShippingSlot";
+  /**
+   * Slot id.
+   */
+  id: string | null;
+  /**
+   * Slot available from.
+   */
+  slotFrom: string | null;
+  /**
+   * Slot available to.
+   */
+  slotTo: string | null;
+}
+
 export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_slots {
   __typename: "Slot";
   /**
@@ -776,6 +820,10 @@ export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_che
    * List of express slots.
    */
   express: (UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_slots_express | null)[] | null;
+  /**
+   * List of next_day slots.
+   */
+  nextDay: (UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_slots_nextDay | null)[] | null;
   /**
    * Datetime.
    */
@@ -808,6 +856,10 @@ export interface UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_che
    * Shipping methods that can be used with this order.
    */
   availableShippingMethods: (UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_availableShippingMethods | null)[];
+  /**
+   * List of available payment gateways.
+   */
+  availablePaymentGateways: UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_availablePaymentGateways[];
   shippingMethod: UpdateCheckoutShippingAddress_checkoutShippingAddressUpdate_checkout_shippingMethod | null;
   /**
    * The price of the shipping, with all the taxes included.
@@ -1160,6 +1212,34 @@ export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_avai
    */
   scheduleDates: (UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_availableShippingMethods_scheduleDates | null)[] | null;
   subtitle: string | null;
+}
+
+export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_availablePaymentGateways_config {
+  __typename: "GatewayConfigLine";
+  /**
+   * Gateway config key.
+   */
+  field: string;
+  /**
+   * Gateway config value for key.
+   */
+  value: string | null;
+}
+
+export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_availablePaymentGateways {
+  __typename: "PaymentGateway";
+  /**
+   * Payment gateway ID.
+   */
+  id: string;
+  /**
+   * Payment gateway name.
+   */
+  name: string;
+  /**
+   * Payment gateway client configuration.
+   */
+  config: UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_availablePaymentGateways_config[];
 }
 
 export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_shippingMethod_methodType {
@@ -1647,6 +1727,22 @@ export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_slot
   slotTo: string | null;
 }
 
+export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_slots_nextDay {
+  __typename: "ShippingSlot";
+  /**
+   * Slot id.
+   */
+  id: string | null;
+  /**
+   * Slot available from.
+   */
+  slotFrom: string | null;
+  /**
+   * Slot available to.
+   */
+  slotTo: string | null;
+}
+
 export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_slots {
   __typename: "Slot";
   /**
@@ -1657,6 +1753,10 @@ export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_slot
    * List of express slots.
    */
   express: (UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_slots_express | null)[] | null;
+  /**
+   * List of next_day slots.
+   */
+  nextDay: (UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_slots_nextDay | null)[] | null;
   /**
    * Datetime.
    */
@@ -1689,6 +1789,10 @@ export interface UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout {
    * Shipping methods that can be used with this order.
    */
   availableShippingMethods: (UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_availableShippingMethods | null)[];
+  /**
+   * List of available payment gateways.
+   */
+  availablePaymentGateways: UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_availablePaymentGateways[];
   shippingMethod: UpdateCheckoutShippingAddress_checkoutEmailUpdate_checkout_shippingMethod | null;
   /**
    * The price of the shipping, with all the taxes included.

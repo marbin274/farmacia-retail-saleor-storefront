@@ -159,12 +159,12 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     submitAddress: () => {
       if (user && selectedShippingAddressId) {
         checkoutAddressFormRef.current?.dispatchEvent(
-          new Event('submit', { cancelable: true })
+          new Event('submit', { cancelable: true, bubbles: true })
         );
       } else {
         // TODO validate form
         checkoutAddressFormRef.current?.dispatchEvent(
-          new Event('submit', { cancelable: true })
+          new Event('submit', { cancelable: true, bubbles: true })
         );
       }
     },
@@ -299,7 +299,7 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
 
     await updateCartLines();
     checkoutAddressFormRef.current?.dispatchEvent(
-      new Event('submit', { cancelable: true })
+      new Event('submit', { cancelable: true, bubbles: true })
     );
   };
 

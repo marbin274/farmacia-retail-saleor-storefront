@@ -119,6 +119,7 @@ export class CheckoutJobs {
     } else {
       this.repository.setCheckout({
         ...checkout,
+        availablePaymentGateways: data?.availablePaymentGateways,
         availableShippingMethods: data?.availableShippingMethods,
         billingAsShipping: false,
         dataTreatmentPolicy: data?.dataTreatmentPolicy,
@@ -242,6 +243,7 @@ export class CheckoutJobs {
     } else {
       const newCheckout = {
         ...checkout,
+        availablePaymentGateways: data?.availablePaymentGateways,
         availableShippingMethods: data?.availableShippingMethods,
         deliveryDate: data?.deliveryDate,
         promoCodeDiscount: data?.promoCodeDiscount,

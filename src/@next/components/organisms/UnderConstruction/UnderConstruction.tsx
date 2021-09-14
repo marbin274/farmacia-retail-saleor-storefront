@@ -5,7 +5,7 @@ import {
 } from '@temp/@next/components/organisms/OverlayComponent';
 import { CONSULTATION_EMAIL, PHONE_NUMBER } from '@temp/core/config';
 import React from 'react';
-import ReactSVG from 'react-svg';
+import { ReactSVG } from 'react-svg';
 import * as S from './styles';
 
 export const UnderConstruction: React.FC<{ overlay: OverlayContextInterface }> =
@@ -25,17 +25,18 @@ export const UnderConstruction: React.FC<{ overlay: OverlayContextInterface }> =
               </p>
               <p>Si tienes algún obstáculo durante tu visita, cuéntanos a:</p>
               <br />
-              <EmailLink link={CONSULTATION_EMAIL} /> o <span>{PHONE_NUMBER}</span>
+              <EmailLink link={CONSULTATION_EMAIL} /> o{' '}
+              <span>{PHONE_NUMBER}</span>
             </S.CardText>
 
             <S.CardImageContainer>
               <S.CardImage>
-                <ReactSVG path={S.underConstructionIcon} />
+                <ReactSVG src={S.underConstructionIcon} />
               </S.CardImage>
             </S.CardImageContainer>
 
             <S.CloseButton onClick={hide}>
-              <ReactSVG path={S.closeIcon} />
+              <ReactSVG src={S.closeIcon} />
             </S.CloseButton>
           </S.Card>
         </S.Wrapper>

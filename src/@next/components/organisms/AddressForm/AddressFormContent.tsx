@@ -152,7 +152,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
 
     setTimeout(() => {
       formRef?.current?.dispatchEvent(
-        new Event('submit', { cancelable: true })
+        new Event('submit', { cancelable: true, bubbles: true })
       );
     }, 300);
   };

@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactSVG from 'react-svg';
+import { ReactSVG } from 'react-svg';
 
 import americanExpress from 'images/auna/american-express-payment.svg';
 import discoverImg from 'images/discover.svg';
@@ -30,7 +30,7 @@ export const CreditCardIcon: React.FC<IProps> = ({
       {providers.has(creditCardProvider) && (
         <ReactSVG
           role={`payment-${creditCardProvider}`}
-          path={providers.get(creditCardProvider)}
+          src={providers.get(creditCardProvider)}
         />
       )}
     </S.CreditCardIcon>
