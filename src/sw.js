@@ -11,7 +11,7 @@ workbox.precaching.precacheAndRoute(self.__precacheManifest || []);
 
 workbox.routing.registerRoute(
   new RegExp("^http.*(?:png|gif|jpg|jpeg|webp|svg)"),
-  new workbox.strategies.NetworkFirst()
+  new workbox.strategies.NetworkOnly()
 );
 
 workbox.routing.registerNavigationRoute(
