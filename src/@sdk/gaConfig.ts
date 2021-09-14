@@ -177,6 +177,11 @@ export const launchSetLocation = () => {
     originalLocation: `${document.location.protocol}//${document.location.hostname}${document.location.pathname}${document.location.search}`,
   });
 };
+export const launchClickOnBanner = () => {
+  return pushToDatalayer({
+    event: 'clickOnBanner',
+  });
+};
 
 const pushToDatalayer = (data: any) => {
   return window?.dataLayer?.push({ ...data, userId: getGaUserId() || '' });
