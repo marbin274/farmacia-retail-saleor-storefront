@@ -89,18 +89,14 @@ export const ProductsFeatured: React.FC<IProps> = ({
               {getProductsWithQuantity(products, productsOnCart).map(
                 (product) => (
                   <ProductTileAUNA
-                    key={product.id}
+                    key={product?.id}
                     addToCart={addToCart}
                     removeItemToCart={removeItemToCart}
                     subtractItemToCart={subtractItemToCart}
                     product={product}
                     productsOnCart={productsOnCart}
-                    productUrl={generateProductUrl(product.id, product.name)}
-                    isPersonalizeProduct={
-                      collection.name === 'Los recomendados para ti'
-                        ? true
-                        : false
-                    }
+                    productUrl={generateProductUrl(product?.id, product?.name)}
+                    collectionName={collection?.name}
                   />
                 )
               )}

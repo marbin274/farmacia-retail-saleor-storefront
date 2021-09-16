@@ -26,7 +26,7 @@ type IProps = {
   addToCart: IAddToCartCallback | undefined;
   removeItemToCart?: IRemoveItemToCartCallback;
   subtractItemToCart?: ISubtractItemToCartCallback;
-  isPersonalizeProduct: boolean;
+  collectionName?: string;
 };
 
 const ItemsHandler: FC<IProps> = ({
@@ -37,7 +37,7 @@ const ItemsHandler: FC<IProps> = ({
   addToCart,
   removeItemToCart,
   subtractItemToCart,
-  isPersonalizeProduct,
+  collectionName,
 }) => {
   const [
     isValueLessThanMaxOrderPerProduct,
@@ -93,7 +93,7 @@ const ItemsHandler: FC<IProps> = ({
           firstProductVariant?.pricing?.price?.gross?.amount,
           total + 1,
           'PEN',
-          isPersonalizeProduct
+          collectionName
         );
       }
     }

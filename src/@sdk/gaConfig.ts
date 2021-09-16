@@ -63,7 +63,7 @@ export const launchAddToCartEvent = (
   price: number,
   quantity: number,
   currencyCode: string,
-  metric1?: boolean
+  collectionName?: string
 ) => {
   return pushToDatalayer({
     ecommerce: {
@@ -77,7 +77,7 @@ export const launchAddToCartEvent = (
             price,
             quantity,
             variant: '',
-            metric1, // isPersonalizeProduct
+            collectionName,
           },
         ],
       },

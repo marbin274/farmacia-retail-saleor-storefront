@@ -26,7 +26,7 @@ describe('<ItemHandler />', () => {
         addToCart={addToCart}
         removeItemToCart={removeItemToCart}
         product={product}
-        isPersonalizeProduct={false}
+        collectionName=""
       />
     );
     expect(wrapper.exists()).toEqual(true);
@@ -39,7 +39,7 @@ describe('<ItemHandler />', () => {
         addToCart={addToCart}
         removeItemToCart={removeItemToCart}
         product={product}
-        isPersonalizeProduct={false}
+        collectionName=""
       />
     );
 
@@ -56,7 +56,7 @@ describe('<ItemHandler />', () => {
         removeItemToCart={removeItemToCart}
         product={product}
         canAddToCart={true}
-        isPersonalizeProduct={false}
+        collectionName=""
       />
     );
 
@@ -75,7 +75,7 @@ describe('Add and remove Buttons', () => {
         removeItemToCart={removeItemToCart}
         product={product}
         canAddToCart={true}
-        isPersonalizeProduct={false}
+        collectionName=""
       />
     );
 
@@ -92,7 +92,7 @@ describe('Add and remove Buttons', () => {
         removeItemToCart={removeItemToCart}
         product={product}
         canAddToCart={true}
-        isPersonalizeProduct={false}
+        collectionName=""
       />
     );
 
@@ -108,7 +108,7 @@ describe('Add and remove Buttons', () => {
         addToCart={addToCart}
         removeItemToCart={removeItemToCart}
         product={product}
-        isPersonalizeProduct={false}
+        collectionName=""
       />
     );
 

@@ -20,7 +20,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
   productsOnCart,
   removeItemToCart,
   subtractItemToCart,
-  isPersonalizeProduct,
+  collectionName,
 }: IProps) => {
   const [thumbnails, setThumbnails] = useState<{
     thumbnail: { url: string | undefined };
@@ -115,7 +115,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
                   addToCart={handleAddToCart}
                   removeItemToCart={removeItemToCart}
                   subtractItemToCart={subtractItemToCart}
-                  isPersonalizeProduct={isPersonalizeProduct}
+                  collectionName={collectionName}
                 />
               </div>
             </div>
@@ -159,7 +159,7 @@ export const ProductTileAUNA: React.FC<IProps> = ({
           addToCart={handleAddToCart}
           removeItemToCart={removeItemToCart}
           subtractItemToCart={subtractItemToCart}
-          isPersonalizeProduct={isPersonalizeProduct}
+          collectionName={collectionName}
         />
       </div>
     </S.ProductCard>

@@ -16,5 +16,5 @@ export interface IProps {
   productsOnCart: IItems;
   removeItemToCart?: IRemoveItemToCartCallback;
   subtractItemToCart?: ISubtractItemToCartCallback;
-  isPersonalizeProduct?: boolean;
+  collectionName?: string;
 }
