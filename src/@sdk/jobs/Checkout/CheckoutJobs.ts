@@ -119,6 +119,7 @@ export class CheckoutJobs {
     } else {
       this.repository.setCheckout({
         ...checkout,
+        availablePaymentGateways: data?.availablePaymentGateways,
         availableShippingMethods: data?.availableShippingMethods,
         billingAsShipping: false,
         dataTreatmentPolicy: data?.dataTreatmentPolicy,
@@ -242,6 +243,7 @@ export class CheckoutJobs {
     } else {
       const newCheckout = {
         ...checkout,
+        availablePaymentGateways: data?.availablePaymentGateways,
         availableShippingMethods: data?.availableShippingMethods,
         deliveryDate: data?.deliveryDate,
         promoCodeDiscount: data?.promoCodeDiscount,
@@ -253,6 +255,23 @@ export class CheckoutJobs {
       this.repository.setCheckout(newCheckout);
       return { data };
     }
+  };
+
+  clearCheckout = () => {
+    const checkout = this.repository.getCheckout();
+
+    const newCheckout = {
+      ...checkout,
+      availableShippingMethods: [],
+      id: undefined,
+      scheduleDate: null,
+      shippingMethod: null,
+      slotId: undefined,
+      slots: undefined,
+      token: undefined,
+    };
+
+    this.repository.setCheckout(newCheckout);
   };
 
   addPromoCode = async ({

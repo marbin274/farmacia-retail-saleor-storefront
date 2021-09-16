@@ -14,7 +14,7 @@ import { ILine } from '@components/organisms/CartTable/ProductRow';
 import AunaError from '@temp/images/auna/auna-error.svg';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import ReactSVG from 'react-svg';
+import { ReactSVG } from 'react-svg';
 import { orderHistoryUrl } from '@app/pages/AccountPage/paths';
 import * as S from './styles';
 
@@ -152,7 +152,7 @@ const Page: React.FC<{
               order.status === OrderStatus.PARTIALLY_FULFILLED && (
                 <span>
                   <ReactSVG
-                    path={AunaError}
+                    src={AunaError}
                     className="fa-inline-block fa-align-middle fa-h-5 fa-mr-2.5"
                   />
                   <span>Este pedido fue entregado parcialmente</span>

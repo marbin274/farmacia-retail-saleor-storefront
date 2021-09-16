@@ -7,6 +7,7 @@ export const searchResultsQuery = gql`
     products(
       filter: { search: $query }
       first: 100
+      district: $districtId
       sortBy: { field: STOCK_AVAILABLE, direction: DESC }
     ) {
       edges {

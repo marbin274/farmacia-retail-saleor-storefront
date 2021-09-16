@@ -60,9 +60,10 @@ export const launchRemoveToCartEvent = (
 export const launchAddToCartEvent = (
   id: string,
   name: string,
-  price: any,
+  price: number,
   quantity: number,
-  currencyCode: string
+  currencyCode: string,
+  metric1?: boolean
 ) => {
   return pushToDatalayer({
     ecommerce: {
@@ -76,6 +77,7 @@ export const launchAddToCartEvent = (
             price,
             quantity,
             variant: '',
+            metric1, // isPersonalizeProduct
           },
         ],
       },
@@ -173,6 +175,11 @@ export const launchPurchaseEvent = (
 export const launchSetLocation = () => {
   return pushToDatalayer({
     originalLocation: `${document.location.protocol}//${document.location.hostname}${document.location.pathname}${document.location.search}`,
+  });
+};
+export const launchClickOnBanner = () => {
+  return pushToDatalayer({
+    event: 'clickOnBanner',
   });
 };
 

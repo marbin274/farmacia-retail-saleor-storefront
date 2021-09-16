@@ -148,12 +148,24 @@ export const slotFragment = gql`
   }
 `;
 
+export const paymentGatewayFragment = gql`
+  fragment PaymentGateway on PaymentGateway {
+    id
+    name
+    config {
+      field
+      value
+    }
+  }
+`;
+
 export const checkoutFragment = gql`
   ${checkoutLineFragment}
   ${checkoutAddressFragment}
   ${checkoutPriceFragment}
   ${checkoutShippingMethodFragment}
   ${slotFragment}
+  ${paymentGatewayFragment}
   fragment Checkout on Checkout {
     token
     id
@@ -181,6 +193,9 @@ export const checkoutFragment = gql`
     email
     availableShippingMethods {
       ...ShippingMethod
+    }
+    availablePaymentGateways {
+      ...PaymentGateway
     }
     shippingMethod {
       ...ShippingMethod
@@ -211,6 +226,9 @@ export const checkoutFragment = gql`
         ...ShippingSlot
       }
       express {
+        ...ShippingSlot
+      }
+      nextDay {
         ...ShippingSlot
       }
       datetime

@@ -14,7 +14,6 @@ import { IFormError } from '@types';
 import React, {
   forwardRef,
   RefForwardingComponent,
-  useEffect,
   useImperativeHandle,
   useRef,
 } from 'react';
@@ -64,19 +63,6 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
 
   const { lastMileActive } = useFeaturePlugins();
 
-  useEffect(() => {
-    checkIfSlotExists();
-  }, []);
-
-  const checkIfSlotExists = async () => {
-    if (selectedSlotId && lastMileActive) {
-      changeSubmitProgress(true);
-      await setShippingMethod({ shippingMethodId: '', slotId: undefined });
-    }
-
-    changeSubmitProgress(false);
-  };
-
   const shippingMethods: IAvailableShippingMethods = [];
   const primeShippingMethodExists = !!availableShippingMethods?.find((x) =>
     isPrimeShippingMethod(x)
@@ -102,7 +88,7 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
   useImperativeHandle(ref, () => ({
     submitShipping: () => {
       checkoutShippingFormRef.current?.dispatchEvent(
-        new Event('submit', { cancelable: true })
+        new Event('submit', { cancelable: true, bubbles: true })
       );
     },
   }));
@@ -123,6 +109,7 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
           it.code === CheckoutErrorCode.SCHEDULE_NOT_AVAILABLE
       );
       setShippingMethod({ shippingMethodId: '', slotId: undefined });
+
       alertService.sendAlert({
         buttonText: 'Entendido',
         icon: scheduleTimeNotFound && shippingMethodCalendarInfoIco,

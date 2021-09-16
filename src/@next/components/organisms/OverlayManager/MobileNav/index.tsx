@@ -63,7 +63,7 @@ const MobileNav: React.FC<{ overlay: OverlayContextInterface }> = ({
             </div>
           </ContactNavWrapper>
           <ContactPhoneWrapper className="fa-border-t fa-border-solid fa-border-gray-light fa-flex fa-items-center">
-            <img src={phoneSvg} alt="phone-icon" />
+            <img src={phoneSvg} alt="phone-icon" width="25" height="25" />
             <span className="fa-text-h2 fa-leading-6 fa-text-primary-medium fa-font-semibold">
               {PHONE_NUMBER}
             </span>

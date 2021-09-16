@@ -8,24 +8,16 @@
     <!-- connect to domain of font files -->
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <!-- optionally increase loading priority -->
-    <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
-    />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
     <!-- async CSS -->
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
-      media="print"
-      onload="this.onload=null;this.removeAttribute('media');"
+      media="print" onload="this.onload=null;this.removeAttribute('media');"
       rel="stylesheet"
     />
     <!-- no-JS fallback -->
     <noscript>
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
-      />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
     </noscript>
 
     <style>
@@ -35,9 +27,7 @@
     </style>
 
     <style>
-      body {
-        margin: 0;
-      }
+      body { margin: 0}
       .async-hide {
         opacity: 0 !important;
       }
@@ -110,20 +100,20 @@
       }
     </style>
     <script>
-      (function (a, s, y, n, c, h, i, d, e) {
-        s.className += ' ' + y;
+      (function(a, s, y, n, c, h, i, d, e) {
+        s.className += " " + y;
         h.start = 1 * new Date();
-        h.end = i = function () {
-          s.className = s.className.replace(RegExp(' ?' + y), '');
+        h.end = i = function() {
+          s.className = s.className.replace(RegExp(" ?" + y), "");
         };
         (a[n] = a[n] || []).hide = h;
-        setTimeout(function () {
+        setTimeout(function() {
           i();
           h.end = null;
         }, c);
         h.timeout = c;
-      })(window, document.documentElement, 'async-hide', 'dataLayer', 4000, {
-        '<%= htmlWebpackPlugin.options.GTM_ID %>': true,
+      })(window, document.documentElement, "async-hide", "dataLayer", 4000, {
+        "<%= htmlWebpackPlugin.options.GTM_ID %>": true,
       });
     </script>
     <script>

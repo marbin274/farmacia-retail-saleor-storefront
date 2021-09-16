@@ -8,6 +8,7 @@ import { MainBanner_mainBanner } from '@sdk/queries/gqlTypes/MainBanner';
 import * as S from './styles';
 import { useMainBanner } from '@temp/@sdk/react';
 import { NotFound } from '../../NotFoundPage';
+import { launchClickOnBanner } from '@temp/@sdk/gaConfig';
 
 const baseUrlPattern = /(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})*\/?/;
 
@@ -88,6 +89,7 @@ export const Banner: React.FC = () => {
               key={index}
               onClick={() => {
                 redirectTo(banner.link);
+                launchClickOnBanner();
               }}
             >
               <span className="fa-w-full fa-my-0 fa-mx-auto sm:fa-hidden">

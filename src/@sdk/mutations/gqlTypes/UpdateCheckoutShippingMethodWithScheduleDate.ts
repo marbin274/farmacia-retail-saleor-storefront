@@ -269,6 +269,34 @@ export interface UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMe
   subtitle: string | null;
 }
 
+export interface UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMethodUpdate_checkout_availablePaymentGateways_config {
+  __typename: "GatewayConfigLine";
+  /**
+   * Gateway config key.
+   */
+  field: string;
+  /**
+   * Gateway config value for key.
+   */
+  value: string | null;
+}
+
+export interface UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMethodUpdate_checkout_availablePaymentGateways {
+  __typename: "PaymentGateway";
+  /**
+   * Payment gateway ID.
+   */
+  id: string;
+  /**
+   * Payment gateway name.
+   */
+  name: string;
+  /**
+   * Payment gateway client configuration.
+   */
+  config: UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMethodUpdate_checkout_availablePaymentGateways_config[];
+}
+
 export interface UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMethodUpdate_checkout_shippingMethod_methodType {
   __typename: "ShippingMethodType";
   /**
@@ -754,6 +782,22 @@ export interface UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMe
   slotTo: string | null;
 }
 
+export interface UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMethodUpdate_checkout_slots_nextDay {
+  __typename: "ShippingSlot";
+  /**
+   * Slot id.
+   */
+  id: string | null;
+  /**
+   * Slot available from.
+   */
+  slotFrom: string | null;
+  /**
+   * Slot available to.
+   */
+  slotTo: string | null;
+}
+
 export interface UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMethodUpdate_checkout_slots {
   __typename: "Slot";
   /**
@@ -764,6 +808,10 @@ export interface UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMe
    * List of express slots.
    */
   express: (UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMethodUpdate_checkout_slots_express | null)[] | null;
+  /**
+   * List of next_day slots.
+   */
+  nextDay: (UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMethodUpdate_checkout_slots_nextDay | null)[] | null;
   /**
    * Datetime.
    */
@@ -796,6 +844,10 @@ export interface UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMe
    * Shipping methods that can be used with this order.
    */
   availableShippingMethods: (UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMethodUpdate_checkout_availableShippingMethods | null)[];
+  /**
+   * List of available payment gateways.
+   */
+  availablePaymentGateways: UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMethodUpdate_checkout_availablePaymentGateways[];
   shippingMethod: UpdateCheckoutShippingMethodWithScheduleDate_checkoutShippingMethodUpdate_checkout_shippingMethod | null;
   /**
    * The price of the shipping, with all the taxes included.

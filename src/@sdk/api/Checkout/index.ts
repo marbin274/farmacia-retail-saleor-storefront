@@ -38,6 +38,7 @@ export class SaleorCheckoutAPI
   selectedBillingAddressId?: string;
   availableShippingMethods?: IAvailableShippingMethods;
   availablePaymentGateways?: IAvailablePaymentGateways;
+  shopPaymentGateways?: IAvailablePaymentGateways;
   payment?: IPayment;
   isPrime?: boolean;
   slots?: ISlots;
@@ -78,6 +79,7 @@ export class SaleorCheckoutAPI
         selectedShippingAddressId,
         selectedBillingAddressId,
         billingAsShipping,
+        availablePaymentGateways,
         availableShippingMethods,
         shippingMethod,
         promoCodeDiscount,
@@ -102,8 +104,10 @@ export class SaleorCheckoutAPI
           termsAndConditions,
           token,
         };
+
         this.selectedShippingAddressId = selectedShippingAddressId;
         this.selectedBillingAddressId = selectedBillingAddressId;
+        this.availablePaymentGateways = availablePaymentGateways;
         this.availableShippingMethods = availableShippingMethods;
         this.billingAsShipping = billingAsShipping;
         this.promoCodeDiscount = {
@@ -144,7 +148,7 @@ export class SaleorCheckoutAPI
     this.saleorState.subscribeToChange(
       StateItems.PAYMENT_GATEWAYS,
       (paymentGateways: IAvailablePaymentGateways) => {
-        this.availablePaymentGateways = paymentGateways;
+        this.shopPaymentGateways = paymentGateways;
         this.paymentGatewaysLoaded = true;
         this.loaded =
           this.paymentGatewaysLoaded &&
@@ -418,6 +422,20 @@ export class SaleorCheckoutAPI
         pending: false,
       };
     }
+  };
+
+  clearCheckout = async (): PromiseRunResponse<
+    DataErrorCheckoutTypes,
+    FunctionErrorCheckoutTypes
+  > => {
+    await this.saleorState.provideCheckout(this.fireError);
+    const checkoutId = this.saleorState.checkout?.id;
+
+    if (checkoutId) {
+      await this.jobsManager.run('checkout', 'clearCheckout');
+    }
+
+    return { pending: false };
   };
 
   addPromoCode = async (

@@ -13,6 +13,7 @@ import {
   ISubtotalPrice,
   IItems,
 } from '../api/Cart/types';
+import { IAvailablePaymentGateways } from '../api/Checkout/types';
 import { ITotalPrice } from '@temp/@sdk/api/Cart/types';
 
 export enum LocalStorageItems {
@@ -53,10 +54,10 @@ export interface ICheckoutModelLineVariantLocalStorage {
     id: string | undefined;
     name: string | undefined;
     pricing?:
-    | ProductDetails_product_variants_pricing
-    | IProductVariantPricing
-    | undefined
-    | null;
+      | ProductDetails_product_variants_pricing
+      | IProductVariantPricing
+      | undefined
+      | null;
     quantityAvailable?: number;
     category?: ICategory | null;
   };
@@ -159,6 +160,7 @@ export interface IShippingSlot {
 export interface ISlots {
   express?: IShippingSlot[];
   scheduled?: IShippingSlot[];
+  nextDay?: IShippingSlot[];
   datetime?: string;
 }
 
@@ -173,6 +175,7 @@ export interface ICheckoutModel {
   billingAsShipping?: boolean;
   promoCodeDiscount?: ICheckoutModelPromoCodeDiscount;
   lines?: ICheckoutModelLine[] | null;
+  availablePaymentGateways?: IAvailablePaymentGateways;
   availableShippingMethods?: Checkout_availableShippingMethods[];
   shippingMethod?: ICheckoutModelShippingMethod | null;
   requestPayload?: string;
