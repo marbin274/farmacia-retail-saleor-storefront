@@ -174,6 +174,7 @@ const CheckoutPaymentSubpageWithRef: ForwardRefRenderFunction<
       cardData,
       withToken
     );
+
     const errors = dataError?.error;
 
     if (errors) {

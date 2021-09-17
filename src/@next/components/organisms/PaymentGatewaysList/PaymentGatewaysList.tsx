@@ -20,6 +20,12 @@ import {
   loadNiubizAntiFraudScript,
 } from '../NiubizPaymentGateway/utils';
 import { LocalRepository } from '@temp/@sdk/repository';
+import YapeIcon from 'images/auna/yape.svg';
+import NiubizIcon from 'images/auna/niubiz-text.svg';
+import VisaIcon from '@temp/images/auna/visa-payment.svg';
+import MastercardIcon from '@temp/images/auna/mastercard-payment.svg';
+import AmericanIcon from 'images/auna/american-express-payment.svg';
+import DinnersIcon from 'images/auna/diners-club-payment.svg';
 
 const CARD_TOKEN_OPTION = 1;
 const CARD_FORM_OPTION = 2;
@@ -264,16 +270,74 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                 hasError={hasListError}
                 className="fa-bg-white"
               >
-                <div className="fa-flex fa-items-center">
+                <div className="fa-my-3">
+                  <div className="fa-text-xs fa-leading-5 fa-font-semibold fa-mb-4">
+                    El motorizado llevará el POS de Niubiz para que pagues como
+                    prefieras:
+                  </div>
+                  <div className="fa-flex fa-items-center">
+                    <img
+                      src={PosIcon}
+                      width={32}
+                      height={32}
+                      className="fa-mr-2"
+                    />
+                    <div>
+                      <p className="fa-text-xs fa-leading-5 fa-font-normal fa-mb-2">
+                        Con tu tarjeta de crédito o débito
+                      </p>
+                      <div className="fa-flex fa-items-center">
+                        <img
+                          src={NiubizIcon}
+                          width={58}
+                          height={14}
+                          className="fa-mr-2.5"
+                        />
+                        <S.IconCard src={VisaIcon} />
+                        <S.IconCard
+                          src={MastercardIcon}
+                          className="fa-mr-0.5"
+                        />
+                        <img
+                          src={AmericanIcon}
+                          width={32}
+                          height={20}
+                          className="fa-mr-1"
+                        />
+                        <img src={DinnersIcon} width={32} height={20} />
+                      </div>
+                    </div>
+                  </div>
+                  <form
+                    id={formId}
+                    ref={formRef}
+                    onSubmit={() => {
+                      processPayment({ gateway: id, token: NOT_CHARGE_TOKEN });
+                    }}
+                  />
+                </div>
+              </TileRadio>
+            );
+          case PROVIDERS.YAPE.id:
+            return (
+              <TileRadio
+                key={index}
+                label={PROVIDERS.YAPE.label}
+                radioProps={{ name: 'payment-method', value: 'yape', checked }}
+                onClick={() => onSelectPaymentMethod(id, true)}
+                hasError={hasListError}
+                className="fa-bg-white"
+              >
+                <div className="fa-flex fa-items-start fa-mt-2 fa-mx-2 fa-mb-3">
                   <img
-                    src={PosIcon}
+                    src={YapeIcon}
                     width={32}
                     height={32}
                     className="fa-mr-2"
                   />
-                  <div className="fa-text-xs">
-                    El motorizado se acercará a tu dirección con un POS para
-                    efectuar el pago con tarjeta.
+                  <div className="fa-text-xs fa-leading-4">
+                    El motorizado llevará el <b>código QR</b> para que puedas
+                    realizar el pago una vez te hayan entregado tu pedido.
                   </div>
                   <form
                     id={formId}
