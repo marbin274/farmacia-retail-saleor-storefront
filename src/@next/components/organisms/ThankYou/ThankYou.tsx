@@ -1,4 +1,8 @@
-import { CheckoutProgressBar } from '@components/molecules';
+import {
+  CheckoutProgressBar,
+  PaymentPOS,
+  PaymentYape,
+} from '@components/molecules';
 import { CheckoutReview } from '@components/organisms';
 import { statuses as dummyStatuses } from '@components/organisms/DummyPaymentGateway';
 import { Container } from '@components/templates';
@@ -7,13 +11,6 @@ import { PROVIDERS } from '@temp/core/config';
 import React from 'react';
 import * as S from './styles';
 import { IProps } from './types';
-import YapeIcon from 'images/auna/yape.svg';
-import NiubizIcon from 'images/auna/niubiz-text.svg';
-import VisaIcon from '@temp/images/auna/visa-payment.svg';
-import MastercardIcon from '@temp/images/auna/mastercard-payment.svg';
-import AmericanIcon from 'images/auna/american-express-payment.svg';
-import DinnersIcon from 'images/auna/diners-club-payment.svg';
-import PosIcon from 'images/auna/pos.svg';
 
 /**
  * Thank you page after completing the checkout.
@@ -68,35 +65,7 @@ const ThankYou: React.FC<IProps> = ({
               {PROVIDERS.POS.label}
             </p>
             <S.WrapperPOS className="fa-mb-3 fa-border fa-border-solid fa-border-neutral-medium fa-rounded-2xl fa-flex fa-flex-col fa-items-center fa-px-6 fa-pt-6 fa-pb-7 fa--ml-3 sm:fa-ml-auto">
-              <div className="fa-text-xs fa-leading-5 fa-font-semibold fa-mb-4">
-                El motorizado llevará el POS de Niubiz para que pagues como
-                prefieras:
-              </div>
-              <div className="fa-flex fa-items-center">
-                <img src={PosIcon} width={32} height={32} className="fa-mr-2" />
-                <div>
-                  <p className="fa-text-xs fa-leading-5 fa-font-normal fa-mb-2">
-                    Con tu tarjeta de crédito o débito
-                  </p>
-                  <div className="fa-flex fa-items-center">
-                    <img
-                      src={NiubizIcon}
-                      width={58}
-                      height={14}
-                      className="fa-mr-2.5"
-                    />
-                    <S.IconCard src={VisaIcon} />
-                    <S.IconCard src={MastercardIcon} className="fa-mr-0.5" />
-                    <img
-                      src={AmericanIcon}
-                      width={32}
-                      height={20}
-                      className="fa-mr-1"
-                    />
-                    <img src={DinnersIcon} width={32} height={20} />
-                  </div>
-                </div>
-              </div>
+              <PaymentPOS />
             </S.WrapperPOS>
           </div>
         );
@@ -107,11 +76,7 @@ const ThankYou: React.FC<IProps> = ({
               {PROVIDERS.YAPE.label}
             </p>
             <S.WrapperPOS className="fa-mb-3 fa-border fa-border-solid fa-border-neutral-medium fa-rounded-2xl fa-flex fa-px-6 fa-pt-6 fa-pb-7 fa--ml-3 sm:fa-ml-auto">
-              <img src={YapeIcon} width={32} height={32} className="fa-mr-2" />
-              <div className="fa-text-xs fa-leading-4">
-                El motorizado llevará el <b>código QR</b> para que puedas
-                realizar el pago una vez te hayan entregado tu pedido.
-              </div>
+              <PaymentYape />
             </S.WrapperPOS>
           </div>
         );

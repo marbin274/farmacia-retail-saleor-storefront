@@ -43,3 +43,4 @@ export * from './TileRadio';
 export * from './TileRadioGroup';
 export * from './TileRadioGroupField';
 export * from './EmptyProduct';
+export * from './PaymentContent';

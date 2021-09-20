@@ -1,7 +1,6 @@
-import { styled, media, DefaultTheme } from '@styles';
-import { aunaInteractive } from '@styles/constants';
 import farmatheme from '@farmatheme';
-import { ReactSVG } from 'react-svg';
+import { DefaultTheme, media, styled } from '@styles';
+import { aunaInteractive } from '@styles/constants';
 
 export const WrapperThankyou = styled.div`
   background-color: #f6f7f9;
@@ -135,17 +134,6 @@ export const Link = styled.a`
   color: ${aunaInteractive};
   cursor: pointer;
   font-size: 14px;
-`;
-
-export const IconCard = styled(ReactSVG)`
-  svg {
-    height: 1.5rem;
-    width: 2.5rem;
-    image {
-      height: 1.5rem;
-      width: 2.5rem;
-    }
-  }
 `;
 
 export const WrapperPOS = styled.div`

@@ -24,7 +24,7 @@ export const PROVIDERS = {
   },
   POS: {
     id: 'farmacia-retail.payments.pos',
-    label: 'Pago contra entrega con POS',
+    label: 'Pago contra entrega con tarjeta de Crédito / Débito POS',
   },
   YAPE: {
     id: 'farmacia-retail.payments.yape',

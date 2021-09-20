@@ -1,5 +1,4 @@
 import { DefaultTheme, styled } from '@styles';
-import { ReactSVG } from 'react-svg';
 
 export const Wrapper = styled.div`
   display: grid;
@@ -67,15 +66,4 @@ export const PaymentSubtitle = styled.span`
   display: block;
   font-weight: 600;
   margin-bottom: 0.625rem;
-`;
-
-export const IconCard = styled(ReactSVG)`
-  svg {
-    height: 1.5rem;
-    width: 2.5rem;
-    image {
-      height: 1.5rem;
-      width: 2.5rem;
-    }
-  }
 `;
