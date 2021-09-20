@@ -177,9 +177,16 @@ export const launchSetLocation = () => {
     originalLocation: `${document.location.protocol}//${document.location.hostname}${document.location.pathname}${document.location.search}`,
   });
 };
-export const launchClickOnBanner = () => {
+export const launchClickOnBanner = (
+  position: number,
+  url: string,
+  screen: boolean
+) => {
   return pushToDatalayer({
     event: 'clickOnBanner',
+    position,
+    url,
+    screen: !!screen ? 'desktop' : 'mobile',
   });
 };
 
