@@ -1,25 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import { alertService } from '@components/atoms/Alert';
 import {
-  NiubizPaymentGateway,
+  Alert,
+  Collapse,
+  PaymentPOS,
+  PaymentYape,
+  TileRadio,
+} from '@components/molecules';
+import {
   CardTokenPaymentGateway,
+  NiubizPaymentGateway,
 } from '@components/organisms';
 import { NOT_CHARGE_TOKEN } from '@components/organisms/DummyPaymentGateway';
-import { Alert, TileRadio, Collapse } from '@components/molecules';
-import { alertService } from '@components/atoms/Alert';
-import { HIDE_CARDTOKENS_IN_CHECKOUT, PROVIDERS } from '@temp/core/config';
-import PosIcon from 'images/auna/pos.svg';
-import { IProps } from './types';
-import * as S from './styles';
-import { DummyPaymentGateway } from '..';
 import { IPaymentGatewayConfig } from '@temp/@next/types';
 import { useCreateUserCardToken, useUserDetails } from '@temp/@sdk/react';
+import { LocalRepository } from '@temp/@sdk/repository';
+import { HIDE_CARDTOKENS_IN_CHECKOUT, PROVIDERS } from '@temp/core/config';
 import { ICardTokenizationResult } from '@temp/core/payments/niubiz';
+import React, { useEffect, useState } from 'react';
+import { DummyPaymentGateway } from '..';
 import {
   generateNiubizPurchaseNumber,
   initNiubizAntiFraud,
   loadNiubizAntiFraudScript,
 } from '../NiubizPaymentGateway/utils';
-import { LocalRepository } from '@temp/@sdk/repository';
+import * as S from './styles';
+import { IProps } from './types';
 
 const CARD_TOKEN_OPTION = 1;
 const CARD_FORM_OPTION = 2;
@@ -264,17 +269,30 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                 hasError={hasListError}
                 className="fa-bg-white"
               >
-                <div className="fa-flex fa-items-center">
-                  <img
-                    src={PosIcon}
-                    width={32}
-                    height={32}
-                    className="fa-mr-2"
+                <div className="fa-my-3">
+                  <PaymentPOS />
+                  <form
+                    id={formId}
+                    ref={formRef}
+                    onSubmit={() => {
+                      processPayment({ gateway: id, token: NOT_CHARGE_TOKEN });
+                    }}
                   />
-                  <div className="fa-text-xs">
-                    El motorizado se acercará a tu dirección con un POS para
-                    efectuar el pago con tarjeta.
-                  </div>
+                </div>
+              </TileRadio>
+            );
+          case PROVIDERS.YAPE.id:
+            return (
+              <TileRadio
+                key={index}
+                label={PROVIDERS.YAPE.label}
+                radioProps={{ name: 'payment-method', value: 'yape', checked }}
+                onClick={() => onSelectPaymentMethod(id, true)}
+                hasError={hasListError}
+                className="fa-bg-white"
+              >
+                <div className="fa-flex fa-items-start fa-mt-2 fa-mx-2 fa-mb-3">
+                  <PaymentYape />
                   <form
                     id={formId}
                     ref={formRef}

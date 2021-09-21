@@ -1,6 +1,6 @@
-import { styled, media, DefaultTheme } from "@styles";
-import { aunaInteractive } from "@styles/constants";
-import farmatheme from "@farmatheme";
+import farmatheme from '@farmatheme';
+import { DefaultTheme, media, styled } from '@styles';
+import { aunaInteractive } from '@styles/constants';
 
 export const WrapperThankyou = styled.div`
   background-color: #f6f7f9;
@@ -72,9 +72,9 @@ export const OrderInfo = styled.div`
 `;
 
 export const MailInfo = styled.div`
-  color: ${props => props.theme.colors.aunaBlack};
+  color: ${(props) => props.theme.colors.aunaBlack};
   display: flex;
-  font-size: ${props => props.theme.typography.h4FontSize};
+  font-size: ${(props) => props.theme.typography.h4FontSize};
   justify-content: space-between;
   max-width: 24.125rem;
   width: 100%;
@@ -134,4 +134,12 @@ export const Link = styled.a`
   color: ${aunaInteractive};
   cursor: pointer;
   font-size: 14px;
+`;
+
+export const WrapperPOS = styled.div`
+  min-width: 18.75rem;
+  > img {
+    width: 2rem;
+    height: 2rem;
+  }
 `;

@@ -2,6 +2,8 @@ import * as React from 'react';
 import { NumberParam, StringParam, useQueryParams } from 'use-query-params';
 import { FilterQuerySet } from '@temp/core/utils/filters';
 
+const FIRST_PAGE = 1;
+
 export const useBrandFilters = () => {
   const [
     { category, filters: attributeFilters, page, sortBy: sort },
@@ -63,7 +65,7 @@ export const useBrandFilters = () => {
   };
 
   const clearFilters = () => {
-    setQuery({ filters: {} });
+    setQuery({ filters: {}, page: null });
   };
 
   const resetFilters = () => {
@@ -71,7 +73,7 @@ export const useBrandFilters = () => {
   };
 
   const updateRemote = (filters) => {
-    setQuery({ filters });
+    setQuery({ filters, page: FIRST_PAGE });
   };
 
   const updateLocal = (filters) => {
@@ -88,7 +90,7 @@ export const useBrandFilters = () => {
 
   const goToFirstPage = (value) => {
     setQuery({
-      page: 1,
+      page: FIRST_PAGE,
       sortBy: value.value,
     });
   };
@@ -96,7 +98,7 @@ export const useBrandFilters = () => {
   const goToFirstPageCategory = (value) => {
     setQuery({
       category: value.label,
-      page: 1,
+      page: FIRST_PAGE,
     });
   };
 

@@ -9,6 +9,7 @@ import * as S from './styles';
 import { useMainBanner } from '@temp/@sdk/react';
 import { NotFound } from '../../NotFoundPage';
 import { launchClickOnBanner } from '@temp/@sdk/gaConfig';
+import { useMediaScreen } from '@temp/@next/globalStyles';
 
 const baseUrlPattern = /(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})*\/?/;
 
@@ -45,6 +46,7 @@ const getBannersFromData = (data: MainBanner_mainBanner): BannerType[] => {
 
 export const Banner: React.FC = () => {
   const history = useHistory();
+  const { isDesktopScreen } = useMediaScreen();
 
   const { data: mainBanner, loading: mainBannerLoading } = useMainBanner({
     fetchPolicy: 'cache-and-network',
@@ -89,7 +91,7 @@ export const Banner: React.FC = () => {
               key={index}
               onClick={() => {
                 redirectTo(banner.link);
-                launchClickOnBanner();
+                launchClickOnBanner(index + 1, banner?.link, isDesktopScreen);
               }}
             >
               <span className="fa-w-full fa-my-0 fa-mx-auto sm:fa-hidden">

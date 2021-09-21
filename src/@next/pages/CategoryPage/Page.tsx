@@ -30,6 +30,7 @@ import {
 import { IFilterAttributes, IFilters } from '@types';
 import * as React from 'react';
 import { CategoryProductListHeader, CategoryWrapper } from './styles';
+import { getLocationForCategories } from '@temp/@sdk/gaConfig';
 
 interface SortItem {
   label: string;
@@ -108,6 +109,8 @@ const Page: React.FC<PageProps> = ({
   );
   const hasProducts = canDisplayProducts && !!products.totalCount;
   const [showFilters, setShowFilters] = React.useState(false);
+  const [categoriesGaEventSended, setCategoriesGaEventSended] =
+    React.useState<boolean>(false);
   const { goTop } = useScrollTo();
 
   const getAttribute = (attributeSlug: string, valueSlug: string) => {
@@ -144,6 +147,13 @@ const Page: React.FC<PageProps> = ({
     setShowFilters(false);
     resetFilters();
   };
+
+  React.useEffect(() => {
+    if (!categoriesGaEventSended) {
+      setCategoriesGaEventSended(true);
+      getLocationForCategories();
+    }
+  }, []);
 
   return (
     <CategoryWrapper>

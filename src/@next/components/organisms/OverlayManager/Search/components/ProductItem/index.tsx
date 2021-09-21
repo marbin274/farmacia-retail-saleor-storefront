@@ -88,7 +88,6 @@ const ProductItem: React.FC<SearchResults_products_edges> = ({ node }) => {
                     addToCart={addItem}
                     removeItemToCart={subtractItem}
                     subtractItemToCart={subtractItem}
-                    isPersonalizeProduct={false}
                   />
                 </S.ProductItemActions>
               </span>

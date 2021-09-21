@@ -70,7 +70,6 @@ export const ProductTileHorizontalAUNA: React.FC<IProps> = ({
               addToCart={addToCart}
               removeItemToCart={removeItemToCart}
               subtractItemToCart={subtractItemToCart}
-              isPersonalizeProduct={false}
             />
           </S.WrapperItemHandler>
         </S.ProductPrice>

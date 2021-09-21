@@ -1,12 +1,16 @@
-import { CheckoutProgressBar } from "@components/molecules";
-import { CheckoutReview } from "@components/organisms";
-import { statuses as dummyStatuses } from "@components/organisms/DummyPaymentGateway";
-import { Container } from "@components/templates";
-import { Button, MailIcon } from "@farmacia-retail/farmauna-components";
-import { PROVIDERS } from "@temp/core/config";
-import React from "react";
-import * as S from "./styles";
-import { IProps } from "./types";
+import {
+  CheckoutProgressBar,
+  PaymentPOS,
+  PaymentYape,
+} from '@components/molecules';
+import { CheckoutReview } from '@components/organisms';
+import { statuses as dummyStatuses } from '@components/organisms/DummyPaymentGateway';
+import { Container } from '@components/templates';
+import { Button, MailIcon } from '@farmacia-retail/farmauna-components';
+import { PROVIDERS } from '@temp/core/config';
+import React from 'react';
+import * as S from './styles';
+import { IProps } from './types';
 
 /**
  * Thank you page after completing the checkout.
@@ -36,30 +40,50 @@ const ThankYou: React.FC<IProps> = ({
         phone: checkout?.billingAddress?.phone || undefined,
       }
     : undefined;
-  const creditCardType = require("credit-card-type");
+  const creditCardType = require('credit-card-type');
 
   const getCreditCardProvider = () => {
     if (payment?.creditCard) {
       const visaCards = creditCardType(payment?.creditCard.firstDigits);
       return visaCards[0].type;
     }
-    return "";
+    return '';
   };
 
   const getPaymentMethodDescription = () => {
-    if (payment?.gateway === PROVIDERS.DUMMY.id) {
-      return `Dummy: ${
-        dummyStatuses.find(
-          status => status.token === selectedPaymentGatewayToken
-        )?.label
-      }`;
-    }
+    switch (payment?.gateway) {
+      case PROVIDERS.DUMMY.id:
+        return `Dummy: ${
+          dummyStatuses.find(
+            (status) => status.token === selectedPaymentGatewayToken
+          )?.label
+        }`;
+      case PROVIDERS.POS.id:
+        return (
+          <div className="fa-flex fa-flex-col fa-justify-center">
+            <p className="fa-text-sm fa-leading-5 fa-text-aunaBlack fa-font-semibold fa-tracking-wide fa-mb-6">
+              {PROVIDERS.POS.label}
+            </p>
+            <S.WrapperPOS className="fa-mb-3 fa-border fa-border-solid fa-border-neutral-medium fa-rounded-2xl fa-flex fa-flex-col fa-items-center fa-px-6 fa-pt-6 fa-pb-7 fa--ml-3 sm:fa-ml-auto">
+              <PaymentPOS />
+            </S.WrapperPOS>
+          </div>
+        );
+      case PROVIDERS.YAPE.id:
+        return (
+          <div className="fa-flex fa-flex-col fa-justify-center">
+            <p className="fa-text-sm fa-leading-5 fa-text-aunaBlack fa-font-semibold fa-tracking-wide fa-mb-6">
+              {PROVIDERS.YAPE.label}
+            </p>
+            <S.WrapperPOS className="fa-mb-3 fa-border fa-border-solid fa-border-neutral-medium fa-rounded-2xl fa-flex fa-px-6 fa-pt-6 fa-pb-7 fa--ml-3 sm:fa-ml-auto">
+              <PaymentYape />
+            </S.WrapperPOS>
+          </div>
+        );
 
-    if (payment?.gateway === PROVIDERS.POS.id) {
-      return PROVIDERS.POS.label;
+      default:
+        return '';
     }
-
-    return "";
   };
 
   return (
@@ -68,7 +92,7 @@ const ThankYou: React.FC<IProps> = ({
         <CheckoutProgressBar
           steps={steps}
           activeStepIndex={2}
-          pathName={"/checkout/review"}
+          pathName={'/checkout/review'}
         />
       </S.WrapperProgressBar>
       <Container>

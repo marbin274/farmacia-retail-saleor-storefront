@@ -15,6 +15,8 @@ export enum steps {
   reviewCheckoutRoute,
 }
 
+const location: string = `${document.location.protocol}//${document.location.hostname}${document.location.pathname}${document.location.search}`;
+
 export const ecommerceProductsMapper = (products?: any[] | null) => {
   return (
     products?.map((product) => ({
@@ -63,7 +65,7 @@ export const launchAddToCartEvent = (
   price: number,
   quantity: number,
   currencyCode: string,
-  metric1?: boolean
+  collectionName?: string
 ) => {
   return pushToDatalayer({
     ecommerce: {
@@ -77,7 +79,7 @@ export const launchAddToCartEvent = (
             price,
             quantity,
             variant: '',
-            metric1, // isPersonalizeProduct
+            collectionName,
           },
         ],
       },
@@ -174,12 +176,32 @@ export const launchPurchaseEvent = (
 
 export const launchSetLocation = () => {
   return pushToDatalayer({
-    originalLocation: `${document.location.protocol}//${document.location.hostname}${document.location.pathname}${document.location.search}`,
+    originalLocation: location,
   });
 };
-export const launchClickOnBanner = () => {
+
+export const getLocationForCategories = () => {
+  return pushToDatalayer({
+    event: 'locationUrlForCategories',
+    location,
+  });
+};
+export const getLocationForCollections = () => {
+  return pushToDatalayer({
+    event: 'locationUrlForCollections',
+    location,
+  });
+};
+export const launchClickOnBanner = (
+  position: number,
+  url: string,
+  screen: boolean
+) => {
   return pushToDatalayer({
     event: 'clickOnBanner',
+    position,
+    url,
+    screen: !!screen ? 'desktop' : 'mobile',
   });
 };
 
