@@ -30,6 +30,7 @@ import {
 import { IFilterAttributes, IFilters } from '@types';
 import * as React from 'react';
 import { CollectionWrapper, HeaderProducts } from './styles';
+import { getLocationForCollections } from '@temp/@sdk/gaConfig';
 
 interface SortItem {
   label: string;
@@ -125,6 +126,9 @@ const Page: React.FC<PageProps> = ({
   );
   const hasProducts = canDisplayProducts && !!products?.totalCount;
   const [showFilters, setShowFilters] = React.useState(false);
+  const [collectionGaEventSended, setCollectionGaEventSended] =
+    React.useState<boolean>(false);
+
   const { goTop } = useScrollTo();
 
   const breadcrumbs = [
@@ -162,6 +166,13 @@ const Page: React.FC<PageProps> = ({
     );
 
   React.useEffect(() => goTop(), [products]);
+
+  React.useEffect(() => {
+    if (!collectionGaEventSended) {
+      setCollectionGaEventSended(true);
+      getLocationForCollections();
+    }
+  }, []);
 
   const applyFilterChanges = () => {
     setShowFilters(false);

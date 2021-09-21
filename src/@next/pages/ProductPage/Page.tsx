@@ -52,7 +52,7 @@ export const Page: React.FC<IProps> = (props) => {
   const { canAddToCart } = checkProductCanAddToCart(simpleProduct, items);
   const { isOnSale, isOutStock } = productStickerRules(simpleProduct);
   const [detailGaEventSended, setDetailGaEventSended] =
-    React.useState<boolean>(false);
+    React.useState<boolean>(false); 
 
   React.useEffect(() => {
     if (!detailGaEventSended) {

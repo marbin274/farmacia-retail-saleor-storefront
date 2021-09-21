@@ -15,6 +15,8 @@ export enum steps {
   reviewCheckoutRoute,
 }
 
+const location: string = `${document.location.protocol}//${document.location.hostname}${document.location.pathname}${document.location.search}`;
+
 export const ecommerceProductsMapper = (products?: any[] | null) => {
   return (
     products?.map((product) => ({
@@ -174,7 +176,20 @@ export const launchPurchaseEvent = (
 
 export const launchSetLocation = () => {
   return pushToDatalayer({
-    originalLocation: `${document.location.protocol}//${document.location.hostname}${document.location.pathname}${document.location.search}`,
+    originalLocation: location,
+  });
+};
+
+export const getLocationForCategories = () => {
+  return pushToDatalayer({
+    event: 'locationUrlForCategories',
+    location,
+  });
+};
+export const getLocationForCollections = () => {
+  return pushToDatalayer({
+    event: 'locationUrlForCollections',
+    location,
   });
 };
 export const launchClickOnBanner = (
