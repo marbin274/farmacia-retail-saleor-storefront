@@ -43,3 +43,13 @@ export const FilterQuerySet: QueryParamConfig<IObject> = {
     return obj;
   },
 };
+
+export const removeUndefined = (
+  o: { [s: string]: unknown } | ArrayLike<unknown>
+) =>
+  Object.entries(o)
+    .filter(([, val]) => val !== undefined)
+    .reduce((result, [key, val]) => {
+      result[key] = val;
+      return result;
+    }, {});

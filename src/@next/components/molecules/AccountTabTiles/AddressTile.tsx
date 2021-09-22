@@ -1,18 +1,16 @@
 import React from 'react';
 import { Attribute, Tile } from '@components/atoms';
 import * as S from './styles';
-import gpsicon from '@temp/images/gpsicon.svg';
-import gpsiconselected from '@temp/images/gps-icon-selected.svg';
 import { Button } from '@farmacia-retail/farmauna-components';
-import { useHistory } from 'react-router-dom';
 import { addressBookUrl } from '@temp/@next/pages/AccountPage/paths';
 import { useUserDetails } from '@temp/@sdk/react';
 import { useDistrictSelected } from '@temp/@next/hooks';
+import { useRouter } from 'next/router';
 
 export const MainAddressTile = () => {
   const { data: user } = useUserDetails();
   const [districtSelected] = useDistrictSelected();
-  const history = useHistory();
+  const router = useRouter();
   return (
     <S.TileWrapper>
       <Tile className="rounded-md">
@@ -25,7 +23,11 @@ export const MainAddressTile = () => {
             {user?.defaultShippingAddress ? (
               <>
                 <S.AttributeWrapper>
-                  <img className="fa-mx-auto" src={gpsiconselected} alt="gps" />
+                  <img
+                    className="fa-mx-auto"
+                    src={'/assets/gps-icon-selected.svg'}
+                    alt="gps"
+                  />
                 </S.AttributeWrapper>
 
                 <div className="fa-text-highlight-medium fa-text-base fa-font-normal fa-text-center fa-mt-2 fa-mb-4">
@@ -60,7 +62,7 @@ export const MainAddressTile = () => {
                   <Button
                     size="small"
                     variant="outline"
-                    onClick={() => history.push(addressBookUrl)}
+                    onClick={() => router.push(addressBookUrl)}
                   >
                     Ver todas mis direcciones
                   </Button>
@@ -69,7 +71,11 @@ export const MainAddressTile = () => {
             ) : (
               <>
                 <S.AttributeWrapper>
-                  <img className="fa-mx-auto" src={gpsicon} alt="gps" />
+                  <img
+                    className="fa-mx-auto"
+                    src={'/assets/gpsicon.svg'}
+                    alt="gps"
+                  />
                 </S.AttributeWrapper>
 
                 <S.AttributeWrapper>
@@ -82,7 +88,7 @@ export const MainAddressTile = () => {
                   <Button
                     size="small"
                     variant="outline"
-                    onClick={() => history.push(addressBookUrl)}
+                    onClick={() => router.push(addressBookUrl)}
                   >
                     Agregar dirección
                   </Button>

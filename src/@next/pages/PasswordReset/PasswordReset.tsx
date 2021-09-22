@@ -1,27 +1,22 @@
-import React, { useState, useEffect } from 'react';
 import { ResetPasswordForm } from '@components/molecules';
+import { Button } from '@farmacia-retail/farmauna-components';
 import { setAuthToken } from '@sdk/auth';
 import { useSetPassword, useUserDetails } from '@sdk/react';
 import { BASE_URL } from '@temp/core/config';
 import { Formik } from 'formik';
-import resetPasswordChangedIcon from 'images/auna/reset-password-changed.svg';
-import { ReactSVG } from 'react-svg';
-import { StringParam, useQueryParams } from 'use-query-params';
+import { useRouter } from 'next/router';
+import React, { useEffect, useMemo, useState } from 'react';
 import { passwordResetSchema } from './PasswordReset.schema';
 import * as S from './styles';
-import { FormikProps, IProps } from './types';
-import { Button } from '@farmacia-retail/farmauna-components';
+import { FormikProps } from './types';
 
 const initialData: FormikProps = {
   password: '',
   retypedPassword: '',
 };
 
-export const PasswordReset: React.FC<IProps> = ({ history }: IProps) => {
-  const [query] = useQueryParams({
-    email: StringParam,
-    token: StringParam,
-  });
+export const PasswordReset: React.FC = () => {
+  const router = useRouter();
   const { data: user } = useUserDetails();
   const [tokenError, setTokenError] = useState<boolean>(false);
   const [passwordError, setPasswordError] = useState<string>('');
@@ -31,11 +26,19 @@ export const PasswordReset: React.FC<IProps> = ({ history }: IProps) => {
   const [setPassword, { data, error: graphqlErrors, loading }] =
     useSetPassword();
 
-  const { email, token } = query;
+  const { email, token } = useMemo(
+    () => ({
+      email: router.query.email as string,
+      token: router.query.token as string,
+    }),
+    [router.query]
+  );
 
-  if (!email || !token) {
-    history.push(BASE_URL);
-  }
+  useEffect(() => {
+    if (router.isReady && (!email || !token)) {
+      router.push(BASE_URL);
+    }
+  }, []);
 
   const onSubmit = (values: FormikProps) => {
     if (email && token && values.password) {
@@ -48,7 +51,7 @@ export const PasswordReset: React.FC<IProps> = ({ history }: IProps) => {
   };
 
   const handleClickGoHome = () => {
-    history.push(BASE_URL);
+    router.push(BASE_URL);
   };
 
   useEffect(() => {
@@ -74,10 +77,7 @@ export const PasswordReset: React.FC<IProps> = ({ history }: IProps) => {
     <S.Wrapper>
       {showPasswordMessageChanged ? (
         <div className="password-changed-confirm fa-bg-white fa-w-88 fa-py-7 fa-px-8 fa-text-center fa-my-10 fa-mx-0 fa-rounded-3xl md:fa-w-96 md:fa-py-10 md:fa-px-12">
-          <ReactSVG
-            className="fa-mx-auto fa-my-0"
-            src={resetPasswordChangedIcon}
-          />
+          <S.ResetPasswordChangedIcon src="/assets/auna/reset-password-changed.svg" />
 
           <div className="fa-text-2xl fa-font-semibold fa-text-black fa-text-center fa-py-8 ">
             Restaurar contraseña

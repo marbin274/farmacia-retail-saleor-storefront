@@ -1,25 +1,28 @@
+import { OverlayManager } from '@components/organisms/OverlayManager';
 import { Alert } from '@temp/@next/components/atoms/Alert';
-import { MetaConsumer } from '@temp/@next/components/atoms/Meta';
 import { ItemsNotification } from '@temp/@next/components/atoms/ItemsNotification';
+import { MetaConsumer } from '@temp/@next/components/atoms/Meta';
 import { AddressGeoModal } from '@temp/@next/components/molecules/AddressGeoModal/AddressGeoModal';
 import { Footer } from '@temp/@next/components/organisms/Footer';
+import { SearchNetworkResult } from '@temp/@next/components/organisms/OverlayManager/Search';
 import { useDistrictSelected } from '@temp/@next/hooks/useDistrictSelected';
 import { useUpdateCartLines } from '@temp/@next/hooks/useUpdateCartLines';
-import { SearchNetworkResult } from '@temp/@next/components/organisms/OverlayManager/Search';
-import es from 'date-fns/locale/es';
+import { useUserDetails } from '@temp/@sdk/react';
+import { AppProps } from 'next/app';
+import { useRouter } from 'next/router';
 import React from 'react';
-import { registerLocale } from 'react-datepicker';
-import { OverlayManager } from '@components/organisms/OverlayManager';
 import { Header } from './Header';
+import dynamic from 'next/dynamic';
 
-import { Routes } from './routes';
+const HomePage = dynamic(() => import('@temp/pages'), {
+  ssr: false,
+});
 
-registerLocale('es', es);
-
-const App: React.FC = () => {
+const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   const { update: updateCartLines } = useUpdateCartLines();
   const [district, setDistrict] = useDistrictSelected();
-
+  const { data: user } = useUserDetails();
+  const router = useRouter();
   React.useEffect(() => {
     (window as any).updateCartLines = () => {
       updateCartLines();
@@ -30,10 +33,17 @@ const App: React.FC = () => {
   });
 
   React.useEffect(() => {
-    if (district && !window?.location?.pathname.includes('/checkout/')) {
+    if (district && !router.pathname.includes('checkout')) {
       updateCartLines();
     }
   }, [district]);
+
+  const renderPage = (props) => {
+    if (pageProps.protected && !user) {
+      return <HomePage />;
+    }
+    return <Component {...props} />;
+  };
 
   return (
     <>
@@ -43,7 +53,7 @@ const App: React.FC = () => {
       <SearchNetworkResult />
       <MetaConsumer />
       <Header />
-      <Routes />
+      {renderPage(pageProps)}
       <Footer />
       <OverlayManager />
     </>

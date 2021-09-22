@@ -1,14 +1,13 @@
 import React from 'react';
 import { Attribute, Tile } from '@components/atoms';
 import * as S from './styles';
-import shoppingbag from '@temp/images/shopping-bag.svg';
 import { useOrdersByUser } from '@temp/@sdk/react';
 import { Button } from '@farmacia-retail/farmauna-components';
-import { useHistory } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import { orderHistoryUrl } from '@temp/@next/pages/AccountPage/paths';
 
 export const ShoppingHistoryTile: React.FC = () => {
-  const history = useHistory();
+  const router = useRouter();
 
   const { data } = useOrdersByUser(
     {
@@ -53,7 +52,7 @@ export const ShoppingHistoryTile: React.FC = () => {
                       size="small"
                       variant="outline"
                       onClick={() =>
-                        history.push(
+                        router.push(
                           `${orderHistoryUrl + data?.edges[0]?.node?.token}`
                         )
                       }
@@ -65,7 +64,7 @@ export const ShoppingHistoryTile: React.FC = () => {
                     <Button
                       size="small"
                       variant="outline"
-                      onClick={() => history.push(orderHistoryUrl)}
+                      onClick={() => router.push(orderHistoryUrl)}
                     >
                       Ver todas mis compras
                     </Button>
@@ -75,7 +74,7 @@ export const ShoppingHistoryTile: React.FC = () => {
             ) : (
               <>
                 <S.AttributeWrapper>
-                  <S.Image src={shoppingbag} alt="shopping" />
+                  <S.Image src="/assets/shopping-bag.svg" alt="shopping" />
                 </S.AttributeWrapper>
                 <S.AttributeWrapper>
                   <Attribute

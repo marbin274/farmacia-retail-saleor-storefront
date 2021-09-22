@@ -1,11 +1,9 @@
-import { media, styled } from "@styles";
+import { media, styled } from '@styles';
 import {
   aunaBlack,
   aunaComplementary1,
   aunaInteractive,
-} from "@styles/constants";
-import closeImg from "images/modal-close.svg";
-import underConstructionImg from "images/auna/under-construction.svg";
+} from '@styles/constants';
 
 export const Wrapper = styled.div`
   position: absolute;
@@ -85,6 +83,3 @@ export const CloseButton = styled.div`
     color: ${aunaInteractive};
   }
 `;
-
-export const closeIcon = closeImg;
-export const underConstructionIcon = underConstructionImg;

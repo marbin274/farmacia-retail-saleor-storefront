@@ -3,7 +3,7 @@ import { ThumbnailTable } from './styles';
 import { ProductVariant } from '@sdk/fragments/gqlTypes/ProductVariant';
 import { OrderByToken_orderByToken_lines_unitPrice } from '@sdk/queries/gqlTypes/OrderByToken';
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { generateProductUrl } from '@temp/core/utils';
 
 export type ILine = Omit<
@@ -28,13 +28,15 @@ const ProductRow: React.FC<ReadProductRowProps> = ({ smallScreen, line }) => {
       <td>
         <div className="fa-flex fa-items-center">
           {smallScreen && (
-            <Link to={productUrl}>
-              <ThumbnailTable source={line.product} />
-            </Link>
+            <span className="fa-cursor-pointer">
+              <Link href={productUrl}>
+                <ThumbnailTable source={line.product} />
+              </Link>
+            </span>
           )}
-          <Link className="fa-text-xs" to={productUrl}>
-            {line.product.name}
-          </Link>
+          <span className="fa-cursor-pointer fa-text-xs">
+            <Link href={productUrl}>{line.product.name}</Link>
+          </span>
         </div>
       </td>
 

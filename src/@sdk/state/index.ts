@@ -1,6 +1,7 @@
 import { round } from 'lodash';
 
 import { DataErrorCheckoutTypes } from '../api/Checkout/types';
+import { NAVIGATOR_EXISTS } from '../consts';
 import { NamedObservable } from '../helpers';
 import { NetworkManager } from '../network';
 import { GetShopPaymentGateways_shop_availablePaymentGateways } from '../queries/gqlTypes/GetShopPaymentGateways';
@@ -54,7 +55,7 @@ export class SaleorState
       return;
     }
 
-    if (navigator.onLine) {
+    if (NAVIGATOR_EXISTS && navigator.onLine) {
       await this.provideCheckoutOnline(onError, forceReload);
     } else {
       this.provideCheckoutOffline(forceReload);

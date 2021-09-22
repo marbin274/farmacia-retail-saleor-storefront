@@ -1,17 +1,19 @@
 import React, { FC } from 'react';
 import * as S from './styles';
-import { Breadcrumbs } from '@components/organisms/Breadcrumbs';
+import { Breadcrumbs } from '@temp/@next/components/organisms/BreadcrumbsLegacy';
 import { ProductsCollection } from '@components/organisms';
 import { BannerCarousel } from '@app/components/containers/BannerCarousel';
 import { Landing_landing } from '@sdk/queries/gqlTypes/Landing';
 import { maybe } from '@temp/core/utils';
 import { ISimpleProduct } from '@sdk/types/IProduct';
+import { useRouter } from 'next/router';
 
 type IProps = {
   landing: Landing_landing;
 };
 
 const LandingPage: FC<IProps> = ({ landing }) => {
+  const router = useRouter();
   return (
     <S.Container>
       <S.BannerContainer>
@@ -37,7 +39,7 @@ const LandingPage: FC<IProps> = ({ landing }) => {
       </S.BannerContainer>
       <S.ContainerWrapper>
         <Breadcrumbs
-          breadcrumbs={[{ link: location.pathname, label: landing.title }]}
+          breadcrumbs={[{ link: router.pathname, label: landing.title }]}
           breadcrumbsAlwaysVisible
         />
         <S.CollectionsContainer>

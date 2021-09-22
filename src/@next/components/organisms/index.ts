@@ -27,7 +27,6 @@ export * from './ProductListAUNA';
 export * from './ProductsCollection';
 export * from './ProductVariantPicker';
 export * from './SelectSidebar';
-export * from './SideNavbar';
 export * from './StockValidationModal';
 export * from './ThankYou';
 export * from './TopNavbar';

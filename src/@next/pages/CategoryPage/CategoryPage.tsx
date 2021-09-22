@@ -10,16 +10,10 @@ import { NotFound } from '@pages';
 import { getGraphqlIdFromDBId } from '@temp/core/utils';
 import { convertToFilterSideBar } from '@temp/core/utils/filters';
 import React, { FC } from 'react';
-import { RouteComponentProps } from 'react-router';
 import Page from './Page';
 
-type ViewProps = RouteComponentProps<{
-  id: string;
-  slug: string;
-}>;
-
-export const CategoryPage: FC<ViewProps> = ({ match }) => {
-  const categoryId = getGraphqlIdFromDBId(match.params.id, 'Category');
+export const CategoryPage: FC<{ id: string }> = ({ id }) => {
+  const categoryId = getGraphqlIdFromDBId(id, 'Category');
   const { data: categoryDetails, loading: categoryLoading } =
     useCategoryDetails({ id: categoryId });
   const { addItem, items, subtractItem } = useCart();

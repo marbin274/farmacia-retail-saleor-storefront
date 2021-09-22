@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 import { BASE_URL } from '@temp/core/config';
 import { Button } from '@farmacia-retail/farmauna-components';
 import * as S from './styles';
+import Link from 'next/link';
 interface NotFoundProps {
   message?: string;
 }
@@ -23,7 +23,7 @@ export const NotFound: React.FC<NotFoundProps> = () => (
       </p>
     </div>
     <div className="fa-my-8 fa-mx-0">
-      <Link to={BASE_URL}>
+      <Link href={BASE_URL}>
         <Button>Back to home</Button>
       </Link>
     </div>

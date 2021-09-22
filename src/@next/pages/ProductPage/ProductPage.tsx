@@ -1,11 +1,10 @@
 import { MetaWrapper } from '@components/atoms';
+import { NotFound } from '@pages';
 import { ProductDetails_product } from '@sdk/queries/gqlTypes/ProductDetails';
 import { useCart, useProductDetails } from '@sdk/react';
 import { useDistrictSelected } from '@temp/@next/hooks/useDistrictSelected';
-import { NotFound } from '@pages';
 import { getGraphqlIdFromDBId, maybe } from '@temp/core/utils';
 import * as React from 'react';
-import { RouteComponentProps } from 'react-router';
 import Page from './Page';
 import { Skeleton } from './skeleton';
 
@@ -40,12 +39,10 @@ const extractMeta = (product: ProductDetails_product) => {
   };
 };
 
-export const ProductPage: React.FC<RouteComponentProps<{ id: string }>> = ({
-  match,
-}) => {
+export const ProductPage: React.FC<{ id: string }> = ({ id }) => {
   const { addItem, removeItem, subtractItem, items } = useCart();
   const [districtSelected] = useDistrictSelected();
-  const productId = getGraphqlIdFromDBId(match.params.id, 'Product');
+  const productId = getGraphqlIdFromDBId(id, 'Product');
   const { data: product, loading: productLoading } = useProductDetails({
     id: productId,
     districtId: districtSelected.id,

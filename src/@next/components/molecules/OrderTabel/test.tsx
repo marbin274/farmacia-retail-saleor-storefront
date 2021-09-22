@@ -1,15 +1,8 @@
 import { mount, shallow } from 'enzyme';
-import { createBrowserHistory } from 'history';
 import 'jest-styled-components';
 import React from 'react';
-
-import { Thumbnail } from '../';
-
 import { OrderTabel } from '.';
-import * as S from './styles';
-import { orderHistoryUrl } from '@temp/@next/pages/AccountPage/paths';
 
-const history = createBrowserHistory();
 const ORDERS = [
   {
     node: {
@@ -86,13 +79,13 @@ const ORDERS = [
 
 describe('<OrderTabel />', () => {
   it('exists', () => {
-    const wrapper = shallow(<OrderTabel history={history} orders={[]} />);
+    const wrapper = shallow(<OrderTabel orders={[]} />);
 
     expect(wrapper.exists()).toEqual(true);
   });
 
   it('should render passed orders array', () => {
-    const wrapper = mount(<OrderTabel history={history} orders={ORDERS} />);
+    const wrapper = mount(<OrderTabel orders={ORDERS} />);
 
     expect(wrapper.text()).toContain('DEED6A0E');
     expect(wrapper.text()).toContain('9/4/2019');
@@ -101,26 +94,5 @@ describe('<OrderTabel />', () => {
     expect(wrapper.text()).toContain('AEED6A0F');
     expect(wrapper.text()).toContain('6/10/2019');
     expect(wrapper.text()).toContain('Solicitud recibida');
-  });
-
-  it('should navigate to particular order when clicking on order row', () => {
-    const wrapper = mount(<OrderTabel history={history} orders={ORDERS} />);
-    const historySpy = jest.spyOn(history, 'push');
-
-    wrapper.find(S.Row).at(0).simulate('click');
-
-    expect(historySpy).toHaveBeenCalledWith(
-      `${orderHistoryUrl + ORDERS[0].node.token}`
-    );
-  });
-
-  it('should navigate to product page when clicking on product thumbnail', () => {
-    const wrapper = mount(<OrderTabel history={history} orders={ORDERS} />);
-    const historySpy = jest.spyOn(history, 'push');
-    historySpy.mockClear();
-
-    wrapper.find(Thumbnail).first().simulate('click');
-
-    expect(historySpy).toHaveBeenCalledWith('/product/apple-juice/72/');
   });
 });

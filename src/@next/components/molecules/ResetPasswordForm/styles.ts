@@ -1,4 +1,11 @@
 import { ContainerStyle, mediaUp, styled } from '@styles';
+import { ReactSVG } from 'react-svg';
+
+export const EnterNewPasswordIcon = styled(ReactSVG)`
+  svg {
+    margin: auto;
+  }
+`;
 
 export const Wrapper = styled.div`
   align-items: center;

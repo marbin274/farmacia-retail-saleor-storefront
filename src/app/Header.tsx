@@ -1,40 +1,45 @@
+import { INavItem } from '@components/organisms/MobileNav';
 import { useMediaScreen } from '@temp/@next/globalStyles';
 import { useMainMenu } from '@temp/@sdk/react';
 import { convertCategoryToMenuItem, maybe } from '@temp/core/utils';
+import dynamic from 'next/dynamic';
+import { useRouter } from 'next/router';
 import React from 'react';
-import { useLocation } from 'react-router-dom';
-import { Header as HeaderComponent } from '@components/organisms/Header';
-import { MainMenu } from '@components/organisms/MainMenu';
-import { INavItem } from '@components/organisms/MobileNav';
+
+const HeaderComponent = dynamic(() => import('@components/organisms/Header'), {
+  ssr: false,
+});
+const MainMenu = dynamic(() => import('@components/organisms/MainMenu'), {
+  ssr: false,
+});
 
 export const Header: React.FC = () => {
-  const location = useLocation();
+  const { pathname } = useRouter();
   const { isMobileScreen } = useMediaScreen();
 
   const { data } = useMainMenu();
 
   const hideMenuCondition =
-    location.pathname.includes('checkout') ||
-    location.pathname.includes('order-finalized');
+    pathname.includes('checkout') || pathname.includes('order-finalized');
 
   const hideMenuConditionMobile =
     isMobileScreen &&
-    (location.pathname.includes('select-categories') ||
-      location.pathname.includes('payment-methods') ||
-      location.pathname.includes('account') ||
-      location.pathname.includes('address-book') ||
-      location.pathname.includes('order-history'));
+    (pathname.includes('select-categories') ||
+      pathname.includes('payment-methods') ||
+      pathname.includes('account') ||
+      pathname.includes('address-book') ||
+      pathname.includes('order-history'));
 
   const isLightHeader =
-    location.pathname.includes('select-categories') ||
-    location.pathname.includes('payment-methods') ||
-    location.pathname.includes('account') ||
-    location.pathname.includes('address-book') ||
-    location.pathname.includes('order-history') ||
-    location.pathname.includes('product') ||
-    location.pathname.includes('search') ||
-    location.pathname.includes('category') ||
-    location.pathname.includes('collection');
+    pathname.includes('select-categories') ||
+    pathname.includes('payment-methods') ||
+    pathname.includes('account') ||
+    pathname.includes('address-book') ||
+    pathname.includes('order-history') ||
+    pathname.includes('product') ||
+    pathname.includes('search') ||
+    pathname.includes('category') ||
+    pathname.includes('collection');
 
   const categories: INavItem[] = maybe(
     () =>

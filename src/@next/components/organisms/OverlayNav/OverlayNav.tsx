@@ -44,11 +44,13 @@ export const OverlayNav: React.FC<IProps> = ({ categories, close }) => {
               }}
             >
               <NavLink fullWidth item={it} onClick={close}>
-                <span>{it.name?.toLowerCase()}</span>
-                <NextIcon
-                  color={farmatheme.theme.colors.highlight.medium}
-                  size={18}
-                />
+                <span className="fa-flex fa-justify-between fa-w-full fa-items-center">
+                  <span>{it.name?.toLowerCase()}</span>
+                  <NextIcon
+                    color={farmatheme.theme.colors.highlight.medium}
+                    size={18}
+                  />
+                </span>
               </NavLink>
             </li>
           ))}

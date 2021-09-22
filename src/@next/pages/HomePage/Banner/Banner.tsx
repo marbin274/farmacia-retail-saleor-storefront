@@ -1,22 +1,20 @@
-import { BannerCarousel } from '@temp/@next/components/containers/BannerCarousel';
-import * as React from 'react';
-import { useHistory } from 'react-router-dom';
-import BannerMobile from 'images/auna/home-banner-mob.png';
-import BannerDesktop from 'images/auna/home-banner-top.png';
-import { SkeletonBanner } from '../skeleton';
 import { MainBanner_mainBanner } from '@sdk/queries/gqlTypes/MainBanner';
-import * as S from './styles';
+import { BannerCarousel } from '@temp/@next/components/containers/BannerCarousel';
 import { useMainBanner } from '@temp/@sdk/react';
+import { useRouter } from 'next/router';
+import * as React from 'react';
 import { NotFound } from '../../NotFoundPage';
+import * as S from './styles';
 import { launchClickOnBanner } from '@temp/@sdk/gaConfig';
+import { AsyncImage } from '@temp/@next/components/atoms/AsyncImage';
 import { useMediaScreen } from '@temp/@next/globalStyles';
 
 const baseUrlPattern = /(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})*\/?/;
 
 type BannerType = {
   link: string | null;
-  desktop: string;
-  mobile: string;
+  desktop: any;
+  mobile: any;
 };
 
 const getBannersFromData = (data: MainBanner_mainBanner): BannerType[] => {
@@ -38,15 +36,15 @@ const getBannersFromData = (data: MainBanner_mainBanner): BannerType[] => {
     : [
         {
           link: null,
-          desktop: BannerDesktop,
-          mobile: BannerMobile,
+          desktop: '/assets/auna/home-banner-top.png',
+          mobile: '/assets/auna/home-banner-mob.png',
         },
       ];
 };
 
 export const Banner: React.FC = () => {
-  const history = useHistory();
-  const { isDesktopScreen } = useMediaScreen();
+  const router = useRouter();
+  const { isMobileScreen, isDesktopScreen } = useMediaScreen();
 
   const { data: mainBanner, loading: mainBannerLoading } = useMainBanner({
     fetchPolicy: 'cache-and-network',
@@ -64,12 +62,8 @@ export const Banner: React.FC = () => {
     if (result.length > 0) {
       url = url.replace(result, '');
     }
-    history.push(url);
+    router.push(url);
   };
-
-  if (mainBannerLoading) {
-    return <SkeletonBanner />;
-  }
 
   if (mainBanner && mainBanner === null) {
     return <NotFound />;
@@ -94,24 +88,30 @@ export const Banner: React.FC = () => {
                 launchClickOnBanner(index + 1, banner?.link, isDesktopScreen);
               }}
             >
-              <span className="fa-w-full fa-my-0 fa-mx-auto sm:fa-hidden">
-                <img
-                  className="fa-mx-auto fa-my-0"
-                  alt="banner mobile"
-                  height={250}
-                  src={banner.mobile}
-                  width={360}
-                />
-              </span>
-              <span className="fa-w-full fa-my-0 fa-mx-auto fa-hidden sm:fa-block">
-                <img
-                  className="fa-mx-auto fa-my-0"
-                  alt="banner desktop"
-                  height={500}
-                  src={banner.desktop}
-                  width={1920}
-                />
-              </span>
+              {isMobileScreen && (
+                <span className="fa-w-full fa-my-0 fa-mx-auto sm:fa-hidden">
+                  <AsyncImage
+                    loading="lazy"
+                    className="fa-mx-auto fa-my-0 fa-text-gray-03"
+                    alt="Farmauna Banner Mobile"
+                    height={250}
+                    src={mainBannerLoading ? '' : banner.mobile}
+                    width={360}
+                  />
+                </span>
+              )}
+              {!isMobileScreen && (
+                <span className="fa-w-full fa-my-0 fa-mx-auto fa-hidden sm:fa-block">
+                  <AsyncImage
+                    loading="lazy"
+                    className="fa-mx-auto fa-my-0 fa-text-gray-03"
+                    alt="Farmauna Banner Desktop"
+                    height={500}
+                    src={mainBannerLoading ? '' : banner.desktop}
+                    width={1920}
+                  />
+                </span>
+              )}
             </div>
           );
         })}

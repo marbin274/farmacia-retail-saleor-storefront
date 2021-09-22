@@ -12,17 +12,17 @@ import { COLLECTION_CATEGORY_FILTER_LABEL } from '@temp/core/config';
 import { getGraphqlIdFromDBId, maybe } from '@temp/core/utils';
 import { convertToFilterSideBar } from '@temp/core/utils/filters';
 import * as React from 'react';
-import { RouteComponentProps } from 'react-router';
 import Page from './Page';
+import { useRouter } from 'next/router';
 
-type ViewProps = RouteComponentProps<{
-  id: string;
-}>;
-
-export const CollectionPage: React.FC<ViewProps> = ({ match }) => {
+export const CollectionPage: React.FC = () => {
   const { addItem, items, subtractItem } = useCart();
+  const { query } = useRouter();
 
-  const collectionId = getGraphqlIdFromDBId(match.params.id, 'Collection');
+  const collectionId = getGraphqlIdFromDBId(
+    (query?.id as string) || '',
+    'Collection'
+  );
   const { data: collectionCategories, loading: collectionCategoriesLoading } =
     useCollectionCategories({ id: collectionId });
 

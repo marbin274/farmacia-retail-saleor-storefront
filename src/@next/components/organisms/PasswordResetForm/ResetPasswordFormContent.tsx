@@ -2,6 +2,7 @@ import { ResetPasswordMailSentPage } from '@app/pages';
 import { IFormError } from '@app/types';
 import { joinFormikErrorsToIFormErrorsAndConvertToObjectErrors } from '@app/utils/errorsManagement';
 import { Button, InputField } from '@farmacia-retail/farmauna-components';
+import { WINDOW_EXISTS } from '@temp/@sdk/consts';
 import { ResetPasswordVariables } from '@temp/@sdk/mutations/gqlTypes/ResetPassword';
 import { LocalRepository } from '@temp/@sdk/repository';
 import { passwordResetUrl } from '@temp/app/routes';
@@ -20,7 +21,9 @@ interface ResetPasswordFormContentProps {
 
 const initialValues: ResetPasswordVariables = {
   email: '',
-  redirectUrl: `${window?.location.origin}${passwordResetUrl}`,
+  redirectUrl: WINDOW_EXISTS
+    ? `${window?.location.origin}${passwordResetUrl}`
+    : passwordResetUrl,
 };
 const ResetPasswordFormContent: React.FC<ResetPasswordFormContentProps> = ({
   buttonBack,

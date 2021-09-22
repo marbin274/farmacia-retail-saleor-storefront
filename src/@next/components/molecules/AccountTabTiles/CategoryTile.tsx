@@ -1,17 +1,16 @@
 import React from 'react';
 import { Attribute, Tile } from '@components/atoms';
 import * as S from './styles';
-import category from '@temp/images/category.svg';
 import { Button } from '@farmacia-retail/farmauna-components';
-import { useHistory } from 'react-router-dom';
 import { accountCategoriesUrl } from '@temp/@next/pages/AccountPage/paths';
 import { useCategories, useUserDetails } from '@temp/@sdk/react';
+import { useRouter } from 'next/router';
 
 export const CategoryTile: React.FC = () => {
   const { data: user } = useUserDetails();
   const { data: categories } = useCategories();
+  const router = useRouter();
 
-  const history = useHistory();
   return (
     <S.TileWrapper>
       <Tile className="rounded-md">
@@ -51,7 +50,7 @@ export const CategoryTile: React.FC = () => {
                   <Button
                     size="small"
                     variant="outline"
-                    onClick={() => history.push(accountCategoriesUrl)}
+                    onClick={() => router.push(accountCategoriesUrl)}
                   >
                     Editar categorias
                   </Button>
@@ -60,7 +59,7 @@ export const CategoryTile: React.FC = () => {
             ) : (
               <>
                 <S.AttributeWrapper>
-                  <S.Image src={category} alt="category" />
+                  <S.Image src="/assets/category.svg" alt="category" />
                 </S.AttributeWrapper>
 
                 <S.AttributeWrapper>
@@ -74,7 +73,7 @@ export const CategoryTile: React.FC = () => {
                   <Button
                     size="small"
                     variant="outline"
-                    onClick={() => history.push(accountCategoriesUrl)}
+                    onClick={() => router.push(accountCategoriesUrl)}
                   >
                     Ir a categorias
                   </Button>

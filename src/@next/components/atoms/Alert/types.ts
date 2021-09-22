@@ -1,5 +1,4 @@
-import ErrorIcon from "images/auna/wrong.svg";
-export type AlertType = "Error" | "Info" | "Text";
+export type AlertType = 'Error' | 'Info' | 'Text';
 export interface IAlertServiceProps {
   buttonText: string;
   icon?: string;
@@ -26,15 +25,15 @@ export const alertTypes: {
   Text: IAlertTypes;
 } = {
   Error: {
-    icon: ErrorIcon,
-    title: "Uy, algo salió mal",
+    icon: '/assets/wrong.svg',
+    title: 'Uy, algo salió mal',
   },
   Info: {
-    icon: ErrorIcon,
-    title: "Uy, algo salió mal",
+    icon: '/assets/wrong.svg',
+    title: 'Uy, algo salió mal',
   },
   Text: {
-    icon: "",
-    title: "Uy, algo salió mal",
+    icon: '',
+    title: 'Uy, algo salió mal',
   },
 };

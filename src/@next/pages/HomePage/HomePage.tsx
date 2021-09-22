@@ -1,13 +1,27 @@
-import { Loader, MetaWrapper } from '@temp/@next/components/atoms';
+import MetaWrapper from '@temp/@next/components/atoms/Meta/MetaWrapper';
 import {
   IAddToCartCallback,
   IRemoveItemToCartCallback,
   ISubtractItemToCartCallback,
 } from '@temp/@next/components/molecules/ProductTileAUNA/types';
 import { useCart, useHomePage } from '@temp/@sdk/react';
-import { NotFound } from '@pages';
 import * as React from 'react';
 import Page from './Page';
+import dynamic from 'next/dynamic';
+
+const Loader = dynamic(
+  () => import('@temp/@next/components/atoms/Loader').then((mod) => mod.Loader),
+  {
+    ssr: false,
+  }
+);
+
+const NotFound = dynamic(
+  () => import('src/@next/pages/NotFoundPage').then((mod) => mod.NotFound),
+  {
+    ssr: false,
+  }
+);
 
 export const HomePage: React.FC = () => {
   const {

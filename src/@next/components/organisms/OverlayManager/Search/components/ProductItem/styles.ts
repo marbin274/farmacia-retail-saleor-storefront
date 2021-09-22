@@ -1,10 +1,10 @@
 import { media, mediaUp, styled } from '@styles';
 import { aunaDiscount } from '@temp/@next/globalStyles/constants';
-import { customBreakpoint, size } from '../../styles';
+import { customBreakpoint } from '../../styles';
 
 export const ProductItemLi = styled.li`
-  ${size};
   margin: 0;
+  width: 100%;
   ${mediaUp.largeScreen`
     margin-bottom: 1.5rem;
   `}
@@ -22,7 +22,7 @@ export const ProductItemLi = styled.li`
 
 export const ProductItemSide = styled.div`
   grid-template-columns: 5.625rem 1fr;
-
+  grid-column-gap: 1rem;
   img {
     max-height: 4.625rem;
     width: auto;

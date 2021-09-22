@@ -1,19 +1,32 @@
+import { FilterQuerySet, removeUndefined } from '@temp/core/utils/filters';
+import router, { useRouter } from 'next/router';
 import * as React from 'react';
-import { NumberParam, StringParam, useQueryParams } from 'use-query-params';
-import { FilterQuerySet } from '@temp/core/utils/filters';
 
 const FIRST_PAGE = 1;
 
 export const useBrandFilters = () => {
-  const [
-    { category, filters: attributeFilters, page, sortBy: sort },
-    setQuery,
-  ] = useQueryParams({
-    category: StringParam,
-    filters: FilterQuerySet,
-    page: NumberParam,
-    sortBy: StringParam,
-  });
+  const { query } = useRouter();
+
+  const { category, attributeFilters, page, sort } = React.useMemo(
+    () => ({
+      category: query.category as string,
+      attributeFilters: FilterQuerySet.decode(query.filters),
+      page: Number(query.page),
+      sort: query.sortBy as string,
+    }),
+    [query]
+  );
+  const setQuery = (filters) => {
+    router.push(
+      {
+        pathname: router.asPath.split('?')[0],
+        query: removeUndefined({ ...query, ...filters }),
+      },
+      undefined,
+      { shallow: true }
+    );
+  };
+
   const [currentFilters, setCurrentFilters] = React.useState({
     ...attributeFilters,
   });
@@ -65,7 +78,7 @@ export const useBrandFilters = () => {
   };
 
   const clearFilters = () => {
-    setQuery({ filters: {}, page: null });
+    setQuery({ filters: FilterQuerySet.encode({}), page: null });
   };
 
   const resetFilters = () => {
@@ -73,7 +86,7 @@ export const useBrandFilters = () => {
   };
 
   const updateRemote = (filters) => {
-    setQuery({ filters, page: FIRST_PAGE });
+    setQuery({ filters: FilterQuerySet.encode(filters), page: FIRST_PAGE });
   };
 
   const updateLocal = (filters) => {

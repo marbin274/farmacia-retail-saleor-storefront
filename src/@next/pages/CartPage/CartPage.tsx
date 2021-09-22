@@ -1,7 +1,3 @@
-import { History } from 'history';
-import React from 'react';
-import { useHistory } from 'react-router-dom';
-
 import { Button, CartFooter, CartHeader } from '@components/atoms';
 import { TaxedMoney } from '@components/containers';
 import { CartRow } from '@components/organisms';
@@ -11,24 +7,25 @@ import { UserDetails_me } from '@sdk/queries/gqlTypes/UserDetails';
 import { useCart, useCheckout, useUserDetails } from '@sdk/react';
 import { BASE_URL } from '@temp/core/config';
 import { ITaxedMoney } from '@types';
-
+import { NextRouter, useRouter } from 'next/router';
+import React from 'react';
 import { IProps } from './types';
 
 const title = <h1 data-cy="cartPageTitle">My Cart</h1>;
 
-const getShoppingButton = (history: History) => (
+const getShoppingButton = (router: NextRouter) => (
   <Button
     data-cy="cartPageBtnContinueShopping"
-    onClick={() => history.push(BASE_URL)}
+    onClick={() => router.push(BASE_URL)}
   >
     CONTINUE SHOPPING
   </Button>
 );
 
-const getCheckoutButton = (history: History, user: UserDetails_me | null) => (
+const getCheckoutButton = (router: NextRouter, user: UserDetails_me | null) => (
   <Button
     data-cy="cartPageBtnProceedToCheckout"
-    onClick={() => history.push(user ? `/checkout/` : `/login/`)}
+    onClick={() => router.push(user ? `/checkout/` : `/login/`)}
   >
     PROCEED TO CHECKOUT
   </Button>
@@ -121,7 +118,7 @@ const generateCart = (
 };
 
 export const CartPage: React.FC<IProps> = ({}: IProps) => {
-  const history = useHistory();
+  const router = useRouter();
   const { data: user } = useUserDetails();
   const { checkout } = useCheckout();
   const {
@@ -150,7 +147,7 @@ export const CartPage: React.FC<IProps> = ({}: IProps) => {
   return loaded && items?.length ? (
     <Cart
       title={title}
-      button={getCheckoutButton(history, user)}
+      button={getCheckoutButton(router, user)}
       cartHeader={cartHeader}
       cartFooter={prepareCartFooter(
         totalPrice,
@@ -161,6 +158,6 @@ export const CartPage: React.FC<IProps> = ({}: IProps) => {
       cart={items && generateCart(items, removeItem, updateItem)}
     />
   ) : (
-    <CartEmpty button={getShoppingButton(history)} />
+    <CartEmpty button={getShoppingButton(router)} />
   );
 };

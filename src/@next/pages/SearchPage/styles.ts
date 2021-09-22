@@ -8,8 +8,7 @@ export const SearchPage = styled.div`
   margin-top: 0;
   padding: 0;
   ${mediaUp.largeScreen`
-    margin-top: 1rem;
-    padding: 0 1rem;
+    padding: 1rem 1rem 2rem;
   `}
 
   .home-page__product {

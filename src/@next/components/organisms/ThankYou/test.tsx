@@ -1,18 +1,17 @@
-import { mount, shallow } from "enzyme";
-import "jest-styled-components";
-import React from "react";
+import { mount, shallow } from 'enzyme';
+import 'jest-styled-components';
+import React from 'react';
 
-import { ThankYou } from ".";
+import { ThankYou } from '.';
 import { steps } from './fixtures';
-import { BrowserRouter as Router } from 'react-router-dom';
 
-describe("<ThankYou />", () => {
-  const orderNumber = "123";
-  const sequentialCode = "F53E053E"
+describe('<ThankYou />', () => {
+  const orderNumber = '123';
+  const sequentialCode = 'F53E053E';
   const orderDetailsMock = jest.fn();
   const continueShoppingMock = jest.fn();
 
-  it("exists", () => {
+  it('exists', () => {
     const wrapper = shallow(
       <ThankYou
         steps={steps}
@@ -27,7 +26,7 @@ describe("<ThankYou />", () => {
     expect(wrapper.exists()).toEqual(true);
   });
 
-  it("should contain sequential code", () => {
+  it('should contain sequential code', () => {
     const wrapper = shallow(
       <ThankYou
         steps={steps}
@@ -42,25 +41,19 @@ describe("<ThankYou />", () => {
     expect(wrapper.text()).toContain(sequentialCode);
   });
 
-  it("should call continueShopping function when clicked", () => {
+  it('should call continueShopping function when clicked', () => {
     const wrapper = mount(
-      <Router>
-         <ThankYou
-          steps={steps}
-          totalProducts={3}
-          orderNumber={orderNumber}
-          orderDetails={orderDetailsMock}
-          continueShopping={continueShoppingMock}
-          sequentialCode={sequentialCode}
-        />
-      </Router>
-     
+      <ThankYou
+        steps={steps}
+        totalProducts={3}
+        orderNumber={orderNumber}
+        orderDetails={orderDetailsMock}
+        continueShopping={continueShoppingMock}
+        sequentialCode={sequentialCode}
+      />
     );
 
-    wrapper
-      .find("button")
-      .at(0)
-      .simulate("click");
+    wrapper.find('button').at(0).simulate('click');
 
     expect(continueShoppingMock).toHaveBeenCalled();
   });

@@ -1,12 +1,12 @@
 import { SearchIcon, XIcon } from '@farmacia-retail/farmauna-components';
+import { DebouncedTextField } from '@temp/@next/components/molecules/Debounce';
 import { searchProductsService } from '@temp/@next/services/searchProductsService';
 import { launchSearchEvent } from '@temp/@sdk/gaConfig';
 import { searchUrl } from '@temp/app/routes';
 import { SEARCH_PRODUCTS_QUERY_MIN_LENGTH } from '@temp/core/config';
+import { useRouter } from 'next/router';
 import { stringify } from 'query-string';
 import * as React from 'react';
-import { useHistory } from 'react-router';
-import { DebouncedTextField } from '@temp/@next/components/molecules/Debounce';
 import { InputWrapper } from './styles';
 
 interface SearchFormProps {
@@ -20,7 +20,7 @@ export const SearchForm: React.FC<SearchFormProps> = React.memo(
     const [search, setSearch] = React.useState<string>('');
     const textFieldRef = React.useRef<HTMLInputElement>(null);
 
-    const history = useHistory();
+    const router = useRouter();
 
     const hasSearchPhrase = search.length >= SEARCH_PRODUCTS_QUERY_MIN_LENGTH;
 
@@ -29,7 +29,7 @@ export const SearchForm: React.FC<SearchFormProps> = React.memo(
       if (hasSearchPhrase) {
         const searchQs = stringify({ q: search });
         searchProductsService.hide();
-        history.push(`${searchUrl}?${searchQs}`);
+        router.push(`${searchUrl}?${searchQs}`);
         submit?.(searchQs);
       }
     };

@@ -9,7 +9,6 @@ A GraphQL-powered, single-page application storefront for [Saleor](https://githu
 - Headless ecommerce storefront built with [GraphQL](https://graphql.org/), [Apollo Client](https://www.apollographql.com/client), [React](https://reactjs.org/) and [Typescript](https://www.typescriptlang.org/)
 - Offline mode (beta)
 - Saleor GraphQL API integration
-- Single-page application experience
 
 ## Getting Started
 

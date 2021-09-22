@@ -1,5 +1,5 @@
 import { IFilterAttributes } from '@app/types';
-import { Breadcrumb } from '@components/organisms/Breadcrumbs';
+import { Breadcrumb } from '@temp/@next/components/organisms/BreadcrumbsLegacy';
 import { MainMenuSubItem } from '@sdk/queries/gqlTypes/MainMenuSubItem';
 import { ISimpleProduct } from '@sdk/types/IProduct';
 import { History, LocationState } from 'history';
@@ -7,10 +7,7 @@ import { Base64 } from 'js-base64';
 import { each } from 'lodash';
 import { parse as parseQs, stringify as stringifyQs } from 'query-string';
 import { FetchResult } from '@apollo/client';
-import {
-  OrderDirection,
-  ProductOrderField,
-} from '@sdk/gqlTypes/globalTypes';
+import { OrderDirection, ProductOrderField } from '@sdk/gqlTypes/globalTypes';
 import { FormError } from '../types';
 import { IGeoJson } from '../types/address';
 
@@ -49,9 +46,9 @@ export const priceToString = (
   const { amount } = price;
   return locale
     ? amount.toLocaleString(locale, {
-      currency: price.currency,
-      style: 'currency',
-    })
+        currency: price.currency,
+        style: 'currency',
+      })
     : `${price.currency} ${amount.toFixed(2)}`;
 };
 

@@ -9,12 +9,13 @@ import * as appPaths from '@temp/app/routes';
 import { SEARCH_PRODUCTS_QUERY_MIN_LENGTH } from '@temp/core/config';
 import { maybe } from '@temp/core/utils';
 import classNames from 'classnames';
+import { useRouter } from 'next/router';
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { NothingFound, ProductItem } from '../..';
 import * as S from './styles';
 
 export const SearchNetworkResult = () => {
+  const router = useRouter();
   const [search, setSearch] = React.useState<string>('');
   const linkToSearch = appPaths.searchUrl + '?q=' + search + '';
   const [districtSelected] = useDistrictSelected();
@@ -31,14 +32,16 @@ export const SearchNetworkResult = () => {
   const hasResults = (data: SearchResults) =>
     maybe(() => !!data.products.edges.length);
 
-  document.body.style.overflow = hasSearchPhrase ? 'hidden' : '';
-
   React.useEffect(() => {
     const suscription = searchProductsService
       .on()
       .subscribe((payload: string) => setSearch(payload || ''));
     return suscription.unsubscribe;
   }, []);
+
+  React.useEffect(() => {
+    document.body.style.overflow = hasSearchPhrase ? 'hidden' : '';
+  }, [hasSearchPhrase]);
 
   if (!hasSearchPhrase) {
     return <></>;
@@ -84,14 +87,15 @@ export const SearchNetworkResult = () => {
               </ul>
             </S.SearchProductList>
             <S.ShowMoreProducts className="fa-flex fa-items-center fa-bg-white fa-h-18 fa-justify-center fa-text-center fa-w-full fa-sticky fa-bottom-0">
-              <Link to={linkToSearch}>
-                <Button
-                  onClick={() => searchProductsService.hide()}
-                  variant="outline"
-                >
-                  Ver todos los resultados
-                </Button>
-              </Link>
+              <Button
+                onClick={() => {
+                  searchProductsService.hide();
+                  router.push(linkToSearch);
+                }}
+                variant="outline"
+              >
+                Ver todos los resultados
+              </Button>
             </S.ShowMoreProducts>
           </S.SearchProductsBody>
         </>

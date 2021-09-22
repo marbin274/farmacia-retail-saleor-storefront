@@ -1,13 +1,13 @@
-import * as React from 'react';
-import Nav from './Nav';
-import { useLocation } from 'react-router-dom';
 import { useFooterSecondayMenu } from '@sdk/react';
+import dynamic from 'next/dynamic';
+import { useRouter } from 'next/router';
+import * as React from 'react';
+const Nav = dynamic(() => import('./Nav'), { ssr: false });
 
 const Footer: React.FC = () => {
-  const location = useLocation();
+  const { pathname } = useRouter();
   const showFooter = !(
-    location.pathname.includes('checkout') ||
-    location.pathname.includes('order-finalized')
+    pathname.includes('checkout') || pathname.includes('order-finalized')
   );
 
   if (!showFooter) return <></>;

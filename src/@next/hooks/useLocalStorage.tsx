@@ -1,12 +1,14 @@
+import { WINDOW_EXISTS } from '@temp/@sdk/consts';
 import { useState } from 'react';
 
 export function useLocalStorage<T>(key: string, initialValue?: T) {
   const [storedValue, setStoredValue] = useState<T>(() => {
     try {
-      const item = window?.localStorage?.getItem(key);
+      const item = WINDOW_EXISTS
+        ? window.localStorage?.getItem(key)
+        : undefined;
       return item ? JSON.parse(item) : initialValue;
     } catch (error) {
-      console.error(error);
       return initialValue;
     }
   });

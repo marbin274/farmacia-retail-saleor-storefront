@@ -1,8 +1,6 @@
 import { mount, shallow } from 'enzyme';
 import 'jest-styled-components';
 import React from 'react';
-import { MemoryRouter } from 'react-router';
-
 import { AccountMenuMobile } from '.';
 import { DropdownSelect } from '../../atoms';
 import { SortLine } from '../../atoms/DropdownSelect/styles';
@@ -21,11 +19,7 @@ describe('<AccountMenuMobile />', () => {
   });
 
   it('should show only active tab if menu has not been clicked', () => {
-    const wrapper = mount(
-      <MemoryRouter initialEntries={['/']}>
-        <AccountMenuMobile {...PROPS} />
-      </MemoryRouter>
-    );
+    const wrapper = mount(<AccountMenuMobile {...PROPS} />);
 
     expect(wrapper.text()).toContain('Mi cuenta');
     expect(wrapper.text()).not.toContain('Mis categorías');
@@ -35,11 +29,7 @@ describe('<AccountMenuMobile />', () => {
   });
 
   it('should expand on click - all tabs name should be visible', () => {
-    const wrapper = mount(
-      <MemoryRouter initialEntries={['/']}>
-        <AccountMenuMobile {...PROPS} />
-      </MemoryRouter>
-    );
+    const wrapper = mount(<AccountMenuMobile {...PROPS} />);
 
     wrapper
       .find(AccountMenuMobile)

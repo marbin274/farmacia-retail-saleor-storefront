@@ -1,3 +1,4 @@
+import { WINDOW_EXISTS } from '../consts';
 import { NetworkManager } from '../network';
 import { LocalRepository } from '../repository';
 import { IJobs, Jobs } from './Jobs';
@@ -26,7 +27,7 @@ export class JobsManager {
 
     this.enqueueAllSavedInRepository();
 
-    window?.addEventListener('online', this.onOnline);
+    if (WINDOW_EXISTS) window.addEventListener('online', this.onOnline);
   }
 
   /**

@@ -1,6 +1,6 @@
-import { media, styled } from "@styles";
-import { white } from "@styles/constants";
-import farmatheme from "@farmatheme";
+import { media, styled } from '@styles';
+import { white } from '@styles/constants';
+import farmatheme from '@farmatheme';
 
 export const ProductCard = styled.div<{
   canAddToCart?: boolean | 0 | undefined;
@@ -64,10 +64,6 @@ export const WrapperDetail = styled.div`
   margin-left: 0.5rem;
   vertical-align: top;
   padding-top: 0;
-
-  a {
-    outline: none;
-  }
 
   ${media.largeScreen`
     width: calc(100% - 5rem);

@@ -1,13 +1,14 @@
-import { mediaUp, styled, media } from '@styles';
-import { aunaBlack, aunaGrey100 } from '@styles/constants';
 import farmatheme from '@farmatheme';
-import { Link } from 'react-router-dom';
+import { media, mediaUp, styled } from '@styles';
+import { aunaBlack, aunaGrey100 } from '@styles/constants';
 
 const productIntHeight = '18rem';
 
-export const LinkContainer = styled(Link)`
+export const LinkContainer = styled.div`
   align-items: flex-start;
+  cursor: pointer;
   display: grid;
+  grid-column-gap: 1rem;
   grid-template-columns: 5.625rem 1fr;
 `;
 

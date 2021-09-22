@@ -2,17 +2,17 @@ import React from 'react';
 import * as S from './styles';
 import { addressGeoModalService } from '../AddressGeoModal/AddressGeoModalService';
 import { useAddressGeocalizationInfo } from '@temp/@next/hooks';
-import { useLocation } from 'react-router';
 import { MODAL_ADDRESS_GEOLOCALIZATION_TIMEOUT } from '@temp/core/config';
+import { useRouter } from 'next/router';
 
 export const AddressGeocalizationInfo: React.FC = () => {
   const [, setShow] = useAddressGeocalizationInfo();
-  const location = useLocation();
+  const router = useRouter();
 
   const dontShowInfo =
-    location.pathname.includes('account') ||
-    location.pathname.includes('checkout') ||
-    location.pathname.includes('order-finalized');
+    router.pathname.includes('account') ||
+    router.pathname.includes('checkout') ||
+    router.pathname.includes('order-finalized');
 
   const handleChangeAddress = () => {
     addressGeoModalService.show(true);

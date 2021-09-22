@@ -1,3 +1,4 @@
+import { useFeaturePlugins } from '@app/hooks';
 import { CheckoutShipping, CheckoutShippingSlot } from '@components/organisms';
 import { useCart, useCheckout } from '@sdk/react';
 import { alertService } from '@temp/@next/components/atoms/Alert';
@@ -10,26 +11,24 @@ import { CheckoutErrorCode } from '@temp/@sdk/gqlTypes/globalTypes';
 import { UpdateCheckoutShippingMethod_checkoutShippingMethodUpdate_errors as ICheckoutShippingMethodError } from '@temp/@sdk/mutations/gqlTypes/UpdateCheckoutShippingMethod';
 import { IShippingMethodUpdate } from '@temp/@sdk/repository';
 import { CHECKOUT_STEPS } from '@temp/core/config';
+import {
+  isPrimeShippingMethod,
+  isScheduledShippingMethod,
+} from '@temp/core/utils';
 import { IFormError } from '@types';
+import { useRouter } from 'next/router';
 import React, {
   forwardRef,
   RefForwardingComponent,
   useImperativeHandle,
   useRef,
 } from 'react';
-import { RouteComponentProps, useHistory } from 'react-router';
-import shippingMethodCalendarInfoIco from 'images/auna/shipping-method-calendar-info.svg';
-import { useFeaturePlugins } from '@app/hooks';
-import {
-  isPrimeShippingMethod,
-  isScheduledShippingMethod,
-} from '@temp/core/utils';
 
 export interface ICheckoutShippingSubpageHandles {
   submitShipping: () => void;
 }
 
-interface IProps extends RouteComponentProps<any> {
+interface IProps {
   addressSubPageErrors: IFormError[];
   changeSubmitProgress: (submitInProgress: boolean) => void;
   setAddressSubPageErrors: (errors: IFormError[]) => void;
@@ -50,7 +49,7 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
   const checkoutShippingFormId = 'shipping-form';
   const checkoutShippingFormRef = useRef<HTMLFormElement>(null);
 
-  const history = useHistory();
+  const router = useRouter();
   const {
     checkout,
     availableShippingMethods,
@@ -112,7 +111,9 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
 
       alertService.sendAlert({
         buttonText: 'Entendido',
-        icon: scheduleTimeNotFound && shippingMethodCalendarInfoIco,
+        icon:
+          scheduleTimeNotFound &&
+          '/assets/auna/shipping-method-calendar-info.svg',
         message: !scheduleTimeNotFound
           ? errors[0].message
           : SHIPPING_METHOD_NOT_FOUND,
@@ -123,7 +124,7 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
     } else {
       setAddressSubPageErrors([]);
       if (!clicked) {
-        history.push(CHECKOUT_STEPS[1].nextStepLink);
+        router.push(CHECKOUT_STEPS[1].nextStepLink);
       }
     }
   };

@@ -1,13 +1,14 @@
-import { ArrowRightIcon, Button } from "@farmacia-retail/farmauna-components";
-import { TaxedMoney } from "@components/containers";
-import { generateProductUrl } from "@temp/core/utils";
-import React from "react";
-import Media from "react-media";
-import { ThemeContext } from "styled-components";
-import { Thumbnail } from "..";
-import * as S from "./styles";
-import { IProps } from "./types";
-import { orderHistoryUrl } from "@app/pages/AccountPage/paths";
+import { ArrowRightIcon, Button } from '@farmacia-retail/farmauna-components';
+import { TaxedMoney } from '@components/containers';
+import { generateProductUrl } from '@temp/core/utils';
+import React from 'react';
+import Media from 'react-media';
+import { ThemeContext } from 'styled-components';
+import { Thumbnail } from '..';
+import * as S from './styles';
+import { IProps } from './types';
+import { orderHistoryUrl } from '@app/pages/AccountPage/paths';
+import { useRouter } from 'next/router';
 
 const header = (matches: boolean) => (
   <S.HeaderRow>
@@ -24,8 +25,10 @@ const header = (matches: boolean) => (
   </S.HeaderRow>
 );
 
-export const OrderTabel: React.FC<IProps> = ({ orders, history }: IProps) => {
-  const theme = React.useContext(ThemeContext);  
+export const OrderTabel: React.FC<IProps> = ({ orders }: IProps) => {
+  const theme = React.useContext(ThemeContext);
+  const router = useRouter();
+
   return (
     <S.Wrapper>
       <Media
@@ -38,7 +41,7 @@ export const OrderTabel: React.FC<IProps> = ({ orders, history }: IProps) => {
             <>
               {header(matches)}
               {orders &&
-                orders.map(order => {
+                orders.map((order) => {
                   const date = new Date(order.node.created);
                   return (
                     <S.Row
@@ -46,7 +49,7 @@ export const OrderTabel: React.FC<IProps> = ({ orders, history }: IProps) => {
                       key={order.node.number}
                       onClick={(evt: { stopPropagation: () => void }) => {
                         evt.stopPropagation();
-                        history.push(`${orderHistoryUrl + order.node.token}`);
+                        router.push(`${orderHistoryUrl + order.node.token}`);
                       }}
                     >
                       <S.IndexNumber>{order.node.sequentialCode}</S.IndexNumber>
@@ -56,12 +59,12 @@ export const OrderTabel: React.FC<IProps> = ({ orders, history }: IProps) => {
                             {order.node.lines
                               .slice(0, 2)
                               .map((product: any) => (
-                                <span 
+                                <span
                                   className="fa-flex fa-items-center fa-justify-center fa-w-10 fa-h-10 fa-bg-white fa-text-neutral-darkest fa-text-sm fa-font-normal fa-rounded-lg"
                                   key={product.variant.productId}
-                                  onClick={evt => {
+                                  onClick={(evt) => {
                                     evt.stopPropagation();
-                                    history.push(
+                                    router.push(
                                       generateProductUrl(
                                         product.variant.productId,
                                         product.productName
@@ -72,24 +75,23 @@ export const OrderTabel: React.FC<IProps> = ({ orders, history }: IProps) => {
                                   <Thumbnail source={product} />
                                 </span>
                               ))}
-                              {
-                                (order.node.lines.length > 2) && (
-                                  <span className="fa-flex fa-items-center fa-justify-center fa-w-10 fa-h-10 fa-bg-white fa-text-neutral-darkest fa-text-sm fa-font-normal fa-rounded-lg">
-                                    + {order.node.lines.length - 2}
-                                  </span>
-                                )
-                              }
+                            {order.node.lines.length > 2 && (
+                              <span className="fa-flex fa-items-center fa-justify-center fa-w-10 fa-h-10 fa-bg-white fa-text-neutral-darkest fa-text-sm fa-font-normal fa-rounded-lg">
+                                + {order.node.lines.length - 2}
+                              </span>
+                            )}
                           </S.ProductsOrdered>
                           <S.DateOfOrder>
-                            {`${date.getMonth() +
-                              1}/${date.getDate()}/${date.getFullYear()}`}
+                            {`${
+                              date.getMonth() + 1
+                            }/${date.getDate()}/${date.getFullYear()}`}
                           </S.DateOfOrder>
                           <S.Value>
                             <TaxedMoney taxedMoney={order.node.total} />
                           </S.Value>
                         </>
                       ) : (
-                        ""
+                        ''
                       )}
                       <S.Status>{order.node.customerStatusDisplay}</S.Status>
                       <S.Action>

@@ -236,7 +236,7 @@ const PaymentGatewaysList: React.FC<IProps> = ({
 
   return (
     <S.Wrapper>
-      {paymentGateways.map(({ id, config }, index) => {
+      {paymentGateways?.map(({ id, config }, index) => {
         const checked = selectedPaymentGateway === id;
 
         switch (id) {

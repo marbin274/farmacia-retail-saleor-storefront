@@ -4,7 +4,6 @@ import {
   OverlayContextInterface,
 } from '@temp/@next/components/organisms/OverlayComponent';
 import { CONSULTATION_EMAIL } from '@temp/core/config';
-import OutOfTimeIcon from '../../../../images/auna/out-of-time.svg';
 import * as React from 'react';
 import * as S from './styles';
 export interface IProps {
@@ -39,7 +38,7 @@ const OutOfTime = ({ overlay }: IProps) => {
               </S.BodyButtonWrapper>
             </S.BodyTextWrapper>
             <S.OutOfTimeIcon
-              path={OutOfTimeIcon}
+              src="/assets/auna/out-of-time.svg"
               className="fa-rounded-2xl fa-text-center fa-px-4 fa-pt-8 fa-pb-4 fa-w-full"
             />
             <div className="fa-w-full fa-block sm:fa-hidden">

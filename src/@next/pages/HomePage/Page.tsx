@@ -10,8 +10,8 @@ import { ModalBackground } from '@temp/@next/components/organisms/ModalBackgroun
 import { somosAunaPage } from '@temp/app/routes';
 import { cndUrl } from '@temp/core/constants';
 import { structuredData } from '@temp/core/SEO/Homepage/structuredData';
+import { useRouter } from 'next/router';
 import * as React from 'react';
-import { useHistory } from 'react-router-dom';
 import { Banner } from './Banner';
 import * as S from './styles';
 
@@ -38,7 +38,7 @@ const Page: React.FC<IPageProps> = ({
   removeItemToCart,
   subtractItemToCart,
 }) => {
-  const history = useHistory();
+  const router = useRouter();
   const [showModal, setShowModal] = React.useState<boolean>(false);
   const [showFeatures, setShowFeatures] = React.useState<boolean>(false);
 
@@ -57,7 +57,7 @@ const Page: React.FC<IPageProps> = ({
               imageDesktop={imageAboutAunaDesktop}
               imageMobile={imageAboutAunaMobile}
               onClick={() => {
-                history.push(somosAunaPage);
+                router.push(somosAunaPage);
               }}
             />
           </S.TopImageAunaContainer>

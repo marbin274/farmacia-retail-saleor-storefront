@@ -13,9 +13,15 @@ class NetworkStatus extends React.Component<
   NetworkStatusProps,
   NetworkStatusState
 > {
-  state: NetworkStatusState = {
-    online: 'onLine' in navigator ? navigator.onLine : true,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      online:
+        typeof navigator !== 'undefined' && 'onLine' in navigator
+          ? navigator.onLine
+          : false,
+    };
+  }
 
   updateOnlineStatus = () => {
     if (this.props.cb) {

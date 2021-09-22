@@ -1,5 +1,6 @@
+import { useRouter } from 'next/router';
 import * as React from 'react';
-import { RouteComponentProps, withRouter } from 'react-router';
+import * as paths from '../../../../app/routes/paths';
 import {
   InnerOverlayContextInterface,
   OverlayContext,
@@ -8,73 +9,51 @@ import {
   OverlayType,
 } from './context';
 
-import * as paths from '../../../../app/routes/paths';
+const notificationCloseDelay = 2500;
 
-interface IProps
-  extends Readonly<RouteComponentProps>,
-    Readonly<{ children?: React.ReactNode }> {}
-
-class Provider extends React.Component<
-  RouteComponentProps<{}>,
-  OverlayContextInterface
-> {
-  notificationCloseDelay = 2500;
-  constructor(props: IProps) {
-    super(props);
-    this.state = {
-      context: undefined,
-      hide: this.hide,
-      show: this.show,
-      showCatalog: this.showCatalog,
-      theme: undefined,
-      type: undefined,
-    };
-  }
-
-  componentDidUpdate(prevProps: IProps) {
-    if (
-      this.props.location.pathname !== prevProps.location.pathname &&
-      this.state.type !== OverlayType.message
-    ) {
-      this.hide();
-    }
-  }
-
-  show = (
+const Provider: React.FC = (props) => {
+  const show = (
     type: OverlayType,
     theme?: OverlayTheme | undefined,
     context?: InnerOverlayContextInterface | undefined
   ) => {
-    this.setState({ type, theme, context });
+    setState((prevState) => ({ ...prevState, type, theme, context }));
     document.body.style.overflow =
       type !== OverlayType.message && type !== OverlayType.underConstruction
         ? 'hidden'
         : '';
     if (type === OverlayType.message) {
-      setTimeout(this.hide, this.notificationCloseDelay);
+      setTimeout(hide, notificationCloseDelay);
     }
   };
 
-  hide = () => {
-    this.setState({ type: undefined });
+  const hide = () => {
+    setState((prevState) => ({ ...prevState, type: undefined }));
     document.body.style.overflow = '';
   };
 
-  showCatalog = () => {
+  const showCatalog = () => {
     if (document.location.pathname !== paths.baseUrl) {
-      this.props.history.push(paths.baseUrl);
+      router.push(paths.baseUrl);
     } else {
-      this.hide();
+      hide();
     }
   };
+  const [state, setState] = React.useState<OverlayContextInterface>({
+    context: undefined,
+    hide,
+    show,
+    showCatalog,
+    theme: undefined,
+    type: undefined,
+  });
+  const router = useRouter();
 
-  render() {
-    return (
-      <OverlayContext.Provider value={this.state}>
-        {this.props.children}
-      </OverlayContext.Provider>
-    );
-  }
-}
+  return (
+    <OverlayContext.Provider value={state}>
+      {props.children}
+    </OverlayContext.Provider>
+  );
+};
 
-export default withRouter(Provider);
+export default Provider;

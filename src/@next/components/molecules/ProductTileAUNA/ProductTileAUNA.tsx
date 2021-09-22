@@ -8,7 +8,7 @@ import {
 import { getProductPricingClass } from '@temp/@next/utils/products';
 import { ICheckoutModelLineVariantLocalStorage } from '@temp/@sdk/repository';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import ItemsHandler from '../../organisms/ItemsHandler/ItemsHandler';
 import * as S from './styles';
 import { IProps } from './types';
@@ -55,75 +55,83 @@ export const ProductTileAUNA: React.FC<IProps> = ({
       canAddToCart={canAddToCart}
     >
       <div className="fa-w-full fa-block lg:fa-hidden">
-        <S.LinkContainer
-          to={productLink}
-          key={product.id}
-          onClick={(e) => {
-            if (refActions?.current?.contains(e.target)) {
-              e.preventDefault();
-            }
-          }}
-        >
-          <div className="home-page__product-image fa-flex fa-flex-col fa-items-center">
-            <div className="img fa-rounded-lg fa-bg-white fa-overflow-hidden">
-              <S.Image>
-                <Thumbnail height={510} width={510} source={thumbnails} />
-              </S.Image>
-            </div>
-            <div className="home-page__product-sticker fa-mt-2">
-              <div className="fa-flex fa-justify-start">
-                <ProductSticker isOnSale={isOnSale} isOutStock={isOutStock} />
+        <Link href={productLink}>
+          <S.LinkContainer
+            className="home-page__product__link"
+            key={product.id}
+          >
+            <div
+              className="home-page__product-image fa-flex fa-flex-col fa-items-center"
+              onClick={(e) => {
+                if (refActions?.current?.contains(e.target)) {
+                  e.preventDefault();
+                }
+              }}
+            >
+              <div className="img fa-rounded-lg fa-bg-white fa-overflow-hidden">
+                <S.Image>
+                  <Thumbnail height={510} width={510} source={thumbnails} />
+                </S.Image>
               </div>
-            </div>
-          </div>
-          <div>
-            <div className="home-page__product-price fa-hidden">
-              <div className={getProductPricingClass(canAddToCart, isOnSale)}>
-                <S.Price>
-                  <TaxedMoney
-                    taxedMoney={product?.pricing?.priceRange?.start}
-                  />
-                </S.Price>
-              </div>
-              {isOnSale && (
-                <div className="price undiscounted_price">
-                  <TaxedMoney
-                    taxedMoney={product?.pricing?.priceRangeUndiscounted?.start}
-                  />
+              <div className="home-page__product-sticker fa-mt-2">
+                <div className="fa-flex fa-justify-start">
+                  <ProductSticker isOnSale={isOnSale} isOutStock={isOutStock} />
                 </div>
-              )}
+              </div>
             </div>
-            <div className="description">
-              <S.Title className="home-page__product-title fa-line-clamp-2 fa-text-left fa-text-sm lg:fa-text-lg">
-                {product.name}
-              </S.Title>
-            </div>
-            <div className="home-page__product-button fa-flex fa-justify-between">
-              <div className="search-page__product-price">
+            <div>
+              <div className="home-page__product-price fa-hidden">
                 <div className={getProductPricingClass(canAddToCart, isOnSale)}>
-                  <S.Price className="fa-font-base">
+                  <S.Price>
                     <TaxedMoney
                       taxedMoney={product?.pricing?.priceRange?.start}
                     />
                   </S.Price>
                 </div>
+                {isOnSale && (
+                  <div className="price undiscounted_price">
+                    <TaxedMoney
+                      taxedMoney={
+                        product?.pricing?.priceRangeUndiscounted?.start
+                      }
+                    />
+                  </div>
+                )}
               </div>
-              <div ref={refActions}>
-                <ItemsHandler
-                  canAddToCart={canAddToCart}
-                  product={product}
-                  addToCart={handleAddToCart}
-                  removeItemToCart={removeItemToCart}
-                  subtractItemToCart={subtractItemToCart}
-                  collectionName={collectionName}
-                />
+              <div className="description">
+                <S.Title className="home-page__product-title fa-line-clamp-2 fa-text-left fa-text-sm lg:fa-text-lg">
+                  {product.name}
+                </S.Title>
+              </div>
+              <div className="home-page__product-button fa-flex fa-justify-between">
+                <div className="search-page__product-price">
+                  <div
+                    className={getProductPricingClass(canAddToCart, isOnSale)}
+                  >
+                    <S.Price className="fa-font-base">
+                      <TaxedMoney
+                        taxedMoney={product?.pricing?.priceRange?.start}
+                      />
+                    </S.Price>
+                  </div>
+                </div>
+                <div ref={refActions}>
+                  <ItemsHandler
+                    canAddToCart={canAddToCart}
+                    product={product}
+                    addToCart={handleAddToCart}
+                    removeItemToCart={removeItemToCart}
+                    subtractItemToCart={subtractItemToCart}
+                    collectionName={collectionName}
+                  />
+                </div>
               </div>
             </div>
-          </div>
-        </S.LinkContainer>
+          </S.LinkContainer>
+        </Link>
       </div>
       <div className="fa-hidden lg:fa-block">
-        <Link key={product.id} to={productLink}>
+        <Link href={productLink}>
           <S.WrapperStockout>
             <div className="fa-absolute">
               <div className="fa-flex fa-justify-start">

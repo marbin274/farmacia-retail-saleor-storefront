@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { RichTextContent } from '@components/atoms';
-import { Breadcrumb, Breadcrumbs } from '@components/organisms/Breadcrumbs';
+import {
+  Breadcrumb,
+  Breadcrumbs,
+} from '@temp/@next/components/organisms/BreadcrumbsLegacy';
 import { ArticleDetail_page } from '@sdk/queries/gqlTypes/ArticleDetail';
 import * as S from './styles';
 
@@ -22,6 +25,7 @@ export const Page: React.FC<PageProps> = ({
       {page?.contentImage ? (
         <div className="fa-mt-8 lg:fa-px-4 fa-p-0 fa-mx-auto">
           <img
+            loading="lazy"
             className="fa-w-full lg:fa-rounded-3xl fa-overflow-hidden"
             alt="page-image"
             src={page.contentImage}

@@ -1,12 +1,24 @@
-import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import { Helmet } from 'react-helmet';
+import { render, waitFor } from '@testing-library/react';
 import React from 'react';
 import { MetaWrapper } from '.';
 
+const useRouter = jest.spyOn(require('next/router'), 'useRouter');
+useRouter.mockImplementation(() => ({
+  pathname: '/',
+}));
+jest.mock('next/head', () => {
+  return {
+    __esModule: true,
+    default: ({ children }: { children: Array<React.ReactElement> }) => {
+      return <>{children}</>;
+    },
+  };
+});
+
 describe('<MetaWrapper />', () => {
-  it('should render', () => {
-    render(
+  it('should render', async () => {
+    const { debug } = render(
       <MetaWrapper
         meta={{
           description: 'SEO descripcion',
@@ -15,9 +27,14 @@ describe('<MetaWrapper />', () => {
         }}
       >
         Page
-      </MetaWrapper>
+      </MetaWrapper>,
+      {
+        container: document.head,
+      }
     );
-    const helmet = Helmet.peek();
-    expect(helmet.title).toBe('SEO titulo');
+    debug();
+    await waitFor(() => {
+      expect(document.title).toEqual('SEO titulo');
+    });
   });
 });

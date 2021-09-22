@@ -55,8 +55,6 @@ export const MailToImg = styled.img`
 `;
 
 export const PhoneImg = styled.img`
-  width: 1.5625rem;
-  height: 1.5625rem;
   margin-right: 0.625rem;
 `;
 

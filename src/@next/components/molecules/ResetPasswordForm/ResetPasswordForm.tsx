@@ -1,9 +1,7 @@
-import FormIcon from 'images/auna/reset-password-enter-new-password.svg';
+import { Button, InputField } from '@farmacia-retail/farmauna-components';
 import React from 'react';
-import { ReactSVG } from 'react-svg';
 import * as S from './styles';
 import { IProps } from './types';
-import { Button, InputField } from '@farmacia-retail/farmauna-components';
 
 export const ResetPasswordForm: React.FC<IProps> = ({
   handleBlur,
@@ -23,10 +21,9 @@ export const ResetPasswordForm: React.FC<IProps> = ({
             <div className="fa-text-2xl fa-font-semibold fa-text-black fa-text-center fa-py-12 fa-px-0">
               Restaurar contraseña
             </div>
-            <ReactSVG
-              src={FormIcon}
+            <S.EnterNewPasswordIcon
+              src="/assets/auna/reset-password-enter-new-password.svg"
               className="fa-pb-8 fa-text-center"
-              svgClassName="fa-mx-auto fa-my-auto"
             />
             <div className="fa-text-black fa-text-sm fa-font-medium fa-mt-0 fa-mx-auto fa-mb-9 fa-max-w-xs fa-text-center">
               <p>Crea una nueva contraseña que contenga mínimo 8 caracteres</p>

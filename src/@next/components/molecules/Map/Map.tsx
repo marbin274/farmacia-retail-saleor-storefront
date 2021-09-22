@@ -1,7 +1,6 @@
 import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
 import { Loader } from '@googlemaps/js-api-loader';
 import { mapsApiKey } from '@temp/core/constants';
-import MapIcon from '@temp/images/auna/map-icon.svg';
 import * as S from './styles';
 import { LIMA_BOUNDS } from '@temp/core/config';
 import classNames from 'classnames';
@@ -67,7 +66,7 @@ export const Map: FC<IMapProps> = ({
 
   const setMarkerOnMap = (lat: number, lng: number) => {
     const newMarker = new google.maps.Marker({
-      icon: MapIcon,
+      icon: '/assets/auna/map-icon.svg',
       map,
       position: { lat, lng },
     });

@@ -1,35 +1,34 @@
-import { number } from "@storybook/addon-knobs";
-import { storiesOf } from "@storybook/react";
-import React from "react";
-import { MemoryRouter } from "react-router";
+import { number } from '@storybook/addon-knobs';
+import { storiesOf } from '@storybook/react';
+import React from 'react';
 
-import { CheckoutProgressBar } from ".";
+import { CheckoutProgressBar } from '.';
 
 const steps = [
   {
     index: 0,
-    link: "#",
-    name: "Shipping",
+    link: '#',
+    name: 'Shipping',
   },
 
   {
     index: 1,
-    link: "#",
-    name: "Billing",
+    link: '#',
+    name: 'Billing',
   },
   {
     index: 2,
-    link: "#",
-    name: "Payment",
+    link: '#',
+    name: 'Payment',
   },
   {
     index: 3,
-    link: "#",
-    name: "Review",
+    link: '#',
+    name: 'Review',
   },
 ];
 
-const label = "Active step";
+const label = 'Active step';
 const defaultValue = 1;
 const options = {
   max: 3,
@@ -38,17 +37,11 @@ const options = {
   step: 1,
 };
 
-storiesOf("@components/molecules/CheckoutProgressBar", module)
+storiesOf('@components/molecules/CheckoutProgressBar', module)
   .addParameters({ component: CheckoutProgressBar })
-  .add("default", () => {
+  .add('default', () => {
     const value = number(label, defaultValue, options);
     return (
-      <MemoryRouter>
-        <CheckoutProgressBar
-          steps={steps}
-          activeStepIndex={value}
-          pathName=""
-        />
-      </MemoryRouter>
+      <CheckoutProgressBar steps={steps} activeStepIndex={value} pathName="" />
     );
   });

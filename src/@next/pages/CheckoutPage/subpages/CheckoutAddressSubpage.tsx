@@ -2,7 +2,6 @@ import { useFeaturePlugins } from '@app/hooks';
 import { alertService } from '@components/atoms/Alert/AlertService';
 import { CheckoutAddress, StockValidationModal } from '@components/organisms';
 import { addressFormSchema } from '@components/organisms/AddressForm/adddressFormSchema';
-import { useShopContext } from '../../../components/organisms/ShopProvider/context';
 import { useCheckout, useUserDetails } from '@sdk/react';
 import { useDistrictSelected } from '@temp/@next/hooks/useDistrictSelected';
 import { useUpdateCartLines } from '@temp/@next/hooks/useUpdateCartLines';
@@ -16,6 +15,7 @@ import {
 } from '@temp/core/config';
 import { IAddress, IAddressWithEmail, IFormError } from '@types';
 import { filterNotEmptyArrayItems } from '@utils/misc';
+import { useRouter } from 'next/router';
 import React, {
   forwardRef,
   RefForwardingComponent,
@@ -25,13 +25,13 @@ import React, {
   useState,
 } from 'react';
 import { AlertComponentProps, useAlert } from 'react-alert';
-import { RouteComponentProps } from 'react-router';
+import { useShopContext } from '../../../components/organisms/ShopProvider/context';
 
 export interface ICheckoutAddressSubpageHandles {
   submitAddress: () => void;
 }
 
-interface IProps extends RouteComponentProps<any> {
+interface IProps {
   addressSubPageErrors: IFormError[];
   changeSubmitProgress: (submitInProgress: boolean) => void;
   setAddressSubPageErrors: (errors: IFormError[]) => void;
@@ -72,6 +72,7 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
   const [currentErrorAlert, setCurrentErrorAlert] =
     useState<AlertComponentProps>();
   const alert = useAlert();
+  const router = useRouter();
 
   const { lastMileActive } = useFeaturePlugins();
 
@@ -334,7 +335,7 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
         }}
         products={stockValidationProducts}
         onClickKeepSearching={() => {
-          props.history.push(baseUrl);
+          router.push(baseUrl);
         }}
         onClickContinue={onStockValidationContinue}
         district={selectedDistrict.name}

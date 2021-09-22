@@ -26,12 +26,13 @@ export const NavLink = styled(NavLinkComponent)<{ isCollection: boolean }>`
         font-weight: ${isCollection ? theme.typography.boldFontWeight : '500'};
         line-height: 1.05rem;
         text-transform: capitalize;
-        span {
-            color: ${
-              isCollection
-                ? `${aunaInteractive}`
-                : farmatheme.theme.colors.highlight.darkest
-            };
+        font-weight: ${isCollection ? 600 : 500} 
+        color: ${
+          isCollection
+            ? `${aunaInteractive}`
+            : farmatheme.theme.colors.highlight.darkest
+        };
         }
+        
     `}
 `;

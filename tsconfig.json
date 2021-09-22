@@ -3,7 +3,7 @@
     "baseUrl": ".",
     "esModuleInterop": true,
     "module": "commonjs",
-    "jsx": "react",
+    "jsx": "preserve",
     "lib": ["es2017", "dom", "esnext"],
     "sourceMap": true,
     "target": "es6",
@@ -24,7 +24,6 @@
       "@pages": ["./src/@next/pages/index.ts"],
       "@styles": ["./src/@next/globalStyles/index.ts"],
       "@styles/*": ["./src/@next/globalStyles/*"],
-      "images/*": ["./src/images/*"],
       "@utils/*": ["./src/@next/utils/*"],
       "@hooks": ["./src/@next/hooks/index.ts"],
       "@hooks/*": ["./src/@next/hooks/*"],
@@ -32,7 +31,15 @@
       "@contexts": ["./src/@next/contexts/index.ts"],
       "@contexts/*": ["./src/@next/contexts/*"]
     },
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "allowJs": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true
   },
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }

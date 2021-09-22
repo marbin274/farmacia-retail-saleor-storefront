@@ -50,12 +50,12 @@ export const ListItem = styled.li`
     }
   }
 
-  a,
+  div,
   button > span {
     text-transform: capitalize;
   }
   button {
-    &: hover {
+    &:hover {
       ${buttonActive}
     }
     > span {

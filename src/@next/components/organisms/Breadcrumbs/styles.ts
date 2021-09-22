@@ -1,35 +1,5 @@
-import { mediaUp, styled } from '@styles';
-import {
-  aunaInteractive,
-  baseFontColor,
-} from '@temp/@next/globalStyles/constants';
-import { Link } from 'react-router-dom';
+import { styled } from '@styles';
 
-export const ListItem = styled.li<{ active?: boolean }>`
-  line-height: 1.5rem;
-
-  ${mediaUp.smallScreen`
-    line-height: normal;
-  `};
-
-  a {
-    color: #2f2c3a;
-    font-size: 0.875rem;
-    font-weight: 600;
-    line-height: 1.5rem;
-    text-decoration: none;
-    text-transform: capitalize;
-  }
-
-  ${({ active }) =>
-    active &&
-    `
-    a {
-      color: ${baseFontColor};
-    }
-  `}
-`;
-
-export const LinkMobile = styled(Link)`
-  color: ${aunaInteractive};
+export const BreadcrumbTitle = styled.span<{ oneItem: boolean }>`
+  ${({ oneItem }) => (oneItem ? `width: calc(100% - 4.5rem);` : '')}
 `;

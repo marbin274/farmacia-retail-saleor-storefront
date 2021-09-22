@@ -19,9 +19,10 @@ import {
 } from '@temp/@next/utils/products';
 import { generateProductUrl } from '@temp/core/utils';
 import classNames from 'classnames';
+import Link from 'next/link';
 import * as React from 'react';
 import 'react-popper-tooltip/dist/styles.css';
-import { Link } from 'react-router-dom';
+import { OverlayContextInterface } from '../../../OverlayComponent';
 import {
   ButtonTrash,
   List,
@@ -44,6 +45,7 @@ interface IProductList {
   onConfirm: () => void;
   onCancel: () => void;
   onClose: () => void;
+  overlay: OverlayContextInterface;
 }
 
 const ProductList: React.FC<IProductList> = ({
@@ -56,6 +58,7 @@ const ProductList: React.FC<IProductList> = ({
   onSubtract,
   onConfirm,
   onCancel,
+  overlay,
 }) => (
   <List morePadding={morePadding}>
     {products.map((ProductOnCart) => {
@@ -86,12 +89,14 @@ const ProductList: React.FC<IProductList> = ({
             }
           )}
         >
-          <ListItemLinkImage
-            className="fa-w-16 fa-h-16 fa-mr-2 fa-bg-white fa-rounded-lg sm:fa-rounded-none fa-flex fa-self-start sm:fa-mr-4 sm:fa-w-18 sm:fa-h-18"
-            to={productUrl}
-          >
-            {variant.product && <Thumbnail source={variant.product} />}
-          </ListItemLinkImage>
+          <Link href={productUrl}>
+            <ListItemLinkImage
+              onClick={() => overlay.hide()}
+              className="fa-w-16 fa-h-16 fa-mr-2 fa-bg-white fa-rounded-lg sm:fa-rounded-none fa-flex fa-self-start sm:fa-mr-4 sm:fa-w-18 sm:fa-h-18"
+            >
+              {variant.product && <Thumbnail source={variant.product} />}
+            </ListItemLinkImage>
+          </Link>
           <ListItemDetails>
             {isToDelete ? (
               <div>
@@ -113,8 +118,11 @@ const ProductList: React.FC<IProductList> = ({
             ) : (
               <>
                 <div>
-                  <Link to={productUrl}>
-                    <ListItemName className="fa-w-full fa-text-neutral-darkest fa-text-sm fa-font-medium fa-leading-6">
+                  <Link href={productUrl}>
+                    <ListItemName
+                      onClick={() => overlay.hide()}
+                      className="fa-w-full fa-text-neutral-darkest fa-text-sm fa-font-medium fa-leading-6 fa-cursor-pointer"
+                    >
                       {name}
                     </ListItemName>
                   </Link>

@@ -1,7 +1,6 @@
 import { alertService } from '@components/atoms/Alert';
 import { CheckoutPayment, StockValidationModal } from '@components/organisms';
 import { IUserDataForNiubiz } from '@components/organisms/CheckoutPayment/types';
-import { useShopContext } from '../../../components/organisms/ShopProvider/context';
 import { useCart, useCheckout, useUserDetails } from '@sdk/react';
 import { IProcesPaymentArgs } from '@temp/@next/components/organisms/PaymentGatewaysList/types';
 import { useDistrictSelected } from '@temp/@next/hooks/useDistrictSelected';
@@ -13,11 +12,9 @@ import {
   billingAddressAlwaysSameAsShipping,
   CHECKOUT_STEPS,
 } from '@temp/core/config';
-import VoucherSVG from '@temp/images/auna/checkout-cupon-small.svg';
 import { IAddress, IFormError } from '@types';
 import { filterNotEmptyArrayItems } from '@utils/misc';
-import ClockIcon from 'images/auna/clock.svg';
-import PromoCodeCorrect from 'images/auna/promo-code-correct.svg';
+import { useRouter } from 'next/router';
 import React, {
   forwardRef,
   ForwardRefRenderFunction,
@@ -26,14 +23,14 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import { RouteComponentProps, useHistory } from 'react-router';
+import { useShopContext } from '../../../components/organisms/ShopProvider/context';
 import { useCheckoutContext } from '../hooks';
 
 export interface ICheckoutPaymentSubpageHandles {
   submitPayment: () => void;
 }
 
-interface IProps extends RouteComponentProps<any> {
+interface IProps {
   selectedPaymentGateway?: string;
   selectedPaymentGatewayToken?: string;
   selectPaymentGateway: (paymentGateway: string) => void;
@@ -53,11 +50,10 @@ const CheckoutPaymentSubpageWithRef: ForwardRefRenderFunction<
     selectPaymentGateway,
     changeRequestPayload,
     requestPayload,
-    ...props
   }: IProps,
   ref
 ) => {
-  const history = useHistory();
+  const router = useRouter();
   const { data: user } = useUserDetails();
   const {
     checkout,
@@ -224,7 +220,7 @@ const CheckoutPaymentSubpageWithRef: ForwardRefRenderFunction<
             setShouldUnselectDistrict(true);
             alertService.sendAlert({
               buttonText: 'Entendido',
-              icon: ClockIcon,
+              icon: '/assets/auna/clock.svg',
               message:
                 'Por favor, selecciona nuevamente cuándo deseas recibir tu pedido',
               redirectionLink: CHECKOUT_STEPS[0].link,
@@ -251,9 +247,10 @@ const CheckoutPaymentSubpageWithRef: ForwardRefRenderFunction<
         }
       } else {
         setGatewayErrors([]);
-        history.push({
+
+        router.push({
           pathname: CHECKOUT_STEPS[2].nextStepLink,
-          state: {
+          query: {
             id: data?.id,
             orderNumber: data?.number,
             sequentialCode: data?.sequentialCode,
@@ -341,7 +338,7 @@ const CheckoutPaymentSubpageWithRef: ForwardRefRenderFunction<
     if (dataError?.error) {
       alertService.sendAlert({
         buttonText: 'Entendido',
-        icon: VoucherSVG,
+        icon: '/assets/auna/checkout-cupon-small.svg',
         message: dataError?.error[0].message,
         title: 'Código promocional incorrecto',
         type: 'Text',
@@ -359,7 +356,7 @@ const CheckoutPaymentSubpageWithRef: ForwardRefRenderFunction<
   const showMessageDiscount = (messageDiscount: string) => {
     alertService.sendAlert({
       buttonText: 'Entendido',
-      icon: PromoCodeCorrect,
+      icon: '/assets/auna/promo-code-correct.svg',
       message: messageDiscount,
       title: 'Código promocional correcto',
       type: 'Info',
@@ -421,7 +418,6 @@ const CheckoutPaymentSubpageWithRef: ForwardRefRenderFunction<
   return (
     <>
       <CheckoutPayment
-        {...props}
         billingErrors={billingErrors}
         gatewayErrors={gatewayErrors}
         billingFormId={checkoutBillingFormId}
@@ -478,7 +474,7 @@ const CheckoutPaymentSubpageWithRef: ForwardRefRenderFunction<
         totalPrice={totalPrice}
         userDataForNiubiz={userDataForNiubiz}
         cartLinesUpdated={cartLinesUpdated}
-        selectedDistrict={checkout.shippingAddress.city}
+        selectedDistrict={checkout.shippingAddress?.city}
         gatewayListError={gatewayListError}
         setGatewayListError={setGatewayListError}
       />
@@ -490,7 +486,7 @@ const CheckoutPaymentSubpageWithRef: ForwardRefRenderFunction<
         }}
         products={stockValidationProducts}
         onClickKeepSearching={() => {
-          history.push(baseUrl);
+          router.push(baseUrl);
         }}
         onClickContinue={onStockValidationContinue}
         district={checkout?.shippingAddress?.city!}

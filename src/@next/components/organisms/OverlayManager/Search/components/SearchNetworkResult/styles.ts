@@ -18,11 +18,12 @@ export const SearchProductList = styled.div`
 `;
 
 export const SearchProductsWrapper = styled.div<{ hasSearchPhrase: boolean }>`
-  top: 7.7rem;
   height: calc(100% - 7.7rem);
+  left: 0;
+  top: 7.7rem;
   ${mediaUp.largeScreen`
-    top: 4.7rem;
     height: calc(100% - 4.7rem);
+    top: 4.7rem;
   `}
 
   ${({ hasSearchPhrase }) =>

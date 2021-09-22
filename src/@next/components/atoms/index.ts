@@ -1,5 +1,6 @@
 export * from './AddNewTile';
 export * from './Address';
+export * from './AlertNotification';
 export * from './Attribute';
 export * from './Button';
 export * from './ButtonLink';

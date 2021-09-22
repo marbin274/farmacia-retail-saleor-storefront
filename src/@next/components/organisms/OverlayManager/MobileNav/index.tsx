@@ -1,19 +1,18 @@
-import { Button } from '@farmacia-retail/farmauna-components';
-import { generateCategoryUrl } from '@temp/core/utils';
-import * as React from 'react';
-import { PHONE_NUMBER } from '@temp/core/config';
-import { Link } from 'react-router-dom';
+import { INavItem, MobileNavList } from '@components/organisms/MobileNav';
 import {
   Overlay,
   OverlayContextInterface,
 } from '@components/organisms/OverlayComponent';
+import { Button } from '@farmacia-retail/farmauna-components';
+import { PHONE_NUMBER } from '@temp/core/config';
+import { generateCategoryUrl } from '@temp/core/utils';
+import Link from 'next/link';
+import * as React from 'react';
 import {
   ContactNavWrapper,
   ContactPhoneWrapper,
   MobileNavWrapper,
 } from './styles';
-import { INavItem, MobileNavList } from '@components/organisms/MobileNav';
-import phoneSvg from '../../../../../images/contact-phone.svg';
 
 const MobileNav: React.FC<{ overlay: OverlayContextInterface }> = ({
   overlay,
@@ -40,7 +39,7 @@ const MobileNav: React.FC<{ overlay: OverlayContextInterface }> = ({
       </MobileNavWrapper>
       {openParent && (
         <div className="fa-mt-auto fa-bg-highlight-lightest fa-h-20 fa-p-4 fa-text-center fa-w-full">
-          <Link to={generateCategoryUrl(openParent.id, openParent.name)}>
+          <Link href={generateCategoryUrl(openParent.id, openParent.name)}>
             <Button>
               <span className="fa-mr-2">Ver todos</span>
             </Button>
@@ -63,7 +62,12 @@ const MobileNav: React.FC<{ overlay: OverlayContextInterface }> = ({
             </div>
           </ContactNavWrapper>
           <ContactPhoneWrapper className="fa-border-t fa-border-solid fa-border-gray-light fa-flex fa-items-center">
-            <img src={phoneSvg} alt="phone-icon" width="25" height="25" />
+            <img
+              src="/assets/contact-phone.svg"
+              alt="phone-icon"
+              width="25"
+              height="25"
+            />
             <span className="fa-text-h2 fa-leading-6 fa-text-primary-medium fa-font-semibold">
               {PHONE_NUMBER}
             </span>
