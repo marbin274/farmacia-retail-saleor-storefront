@@ -167,6 +167,7 @@ export const SHIPPING_TYPES = {
   express: 'EXPRESS',
   expressPrime: 'EXPRESS_PRIME',
   expressNextDay: 'EXPRESS_NEXTDAY',
+  express30: 'EXPRESS_30',
   scheduled: 'SCHEDULED',
   scheduledPrime: 'SCHEDULED_PRIME',
 };

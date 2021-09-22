@@ -462,6 +462,10 @@ export interface CheckoutCreateInput {
   billingAddress?: AddressInput | null;
   documentNumber?: string | null;
   privacyPolicy?: PrivacyPolicyInput | null;
+  sessionId?: any | null;
+  shippingMethodId?: string | null;
+  scheduleDate?: ScheduleDateInput | null;
+  slotId?: string | null;
 }
 
 export interface CheckoutLineInput {
@@ -496,6 +500,11 @@ export interface ProductOrder {
   direction: OrderDirection;
   attributeId?: string | null;
   field?: ProductOrderField | null;
+}
+
+export interface ScheduleDateInput {
+  scheduleTimeId: string;
+  date: any;
 }
 
 //==============================================================
