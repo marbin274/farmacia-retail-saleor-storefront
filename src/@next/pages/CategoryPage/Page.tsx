@@ -153,7 +153,7 @@ const Page: React.FC<PageProps> = ({
   React.useEffect(() => {
     if (!categoriesGaEventSended) {
       setCategoriesGaEventSended(true);
-      getLocationForCategories();
+      getLocationForCategories(window?.location?.href || '');
     }
   }, []);
 

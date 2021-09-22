@@ -169,8 +169,8 @@ const Page: React.FC<PageProps> = ({
 
   React.useEffect(() => {
     if (!collectionGaEventSended) {
+      getLocationForCollections(window?.location?.href || '');
       setCollectionGaEventSended(true);
-      getLocationForCollections();
     }
   }, []);
 

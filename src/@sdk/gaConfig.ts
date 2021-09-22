@@ -184,16 +184,16 @@ export const launchSetLocation = () => {
   });
 };
 
-export const getLocationForCategories = () => {
+export const getLocationForCategories = (url: string) => {
   return pushToDatalayer({
     event: 'locationUrlForCategories',
-    location,
+    location: url,
   });
 };
-export const getLocationForCollections = () => {
+export const getLocationForCollections = (url: string) => {
   return pushToDatalayer({
     event: 'locationUrlForCollections',
-    location,
+    location: url,
   });
 };
 export const launchClickOnBanner = (
