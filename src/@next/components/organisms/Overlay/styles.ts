@@ -1,6 +1,6 @@
-import { styled } from "@styles";
-import { css, keyframes } from "styled-components";
-import { Position, TransitionState } from "./types";
+import { styled } from '@styles';
+import { css, keyframes } from 'styled-components';
+import { Position, TransitionState } from './types';
 
 interface IStyleProps {
   open: boolean;
@@ -9,10 +9,10 @@ interface IStyleProps {
   transparent?: boolean;
 }
 
-const getTranslate = (side: "left" | "right") =>
-  side === "left" ? "-100%" : "100%";
+const getTranslate = (side: 'left' | 'right') =>
+  side === 'left' ? '-100%' : '100%';
 
-const slideAnimation = (open: boolean, side: "left" | "right") => {
+const slideAnimation = (open: boolean, side: 'left' | 'right') => {
   const initialValue = open ? getTranslate(side) : 0;
   const endValue = open ? 0 : getTranslate(side);
   return keyframes`
@@ -33,42 +33,42 @@ const opacity = {
 };
 
 const justify = {
-  center: "center",
-  left: "flex-start",
-  right: "flex-end",
+  center: 'center',
+  left: 'flex-start',
+  right: 'flex-end',
 };
 
 const lightboxWidth = {
-  center: "auto",
-  left: "100%",
-  right: "100%",
+  center: 'auto',
+  left: '100%',
+  right: '100%',
 };
 
 const lightboxHeight = (width: number) => ({
   center: `${width}px`,
-  left: "auto",
-  right: "auto",
+  left: 'auto',
+  right: 'auto',
 });
 
 export const Lightbox = styled.div<IStyleProps>`
   display: flex;
-  position: relative;
+  height: ${({ position }) => lightboxWidth[position]};
+  position: fixed;
+  top: 0;
   width: ${({ position, theme: { modal } }) =>
     lightboxHeight(modal.modalWidth)[position]};
-  height: ${({ position }) => lightboxWidth[position]};
-  
   ${({ open, position }) => {
-    if (position === "left" || position === "right") {
+    if (position === 'left' || position === 'right') {
       return css`
         ${position}: 0;
         transform: translateX(${getTranslate(position)});
         animation: ${slideAnimation(open, position)} 0.4s both;
-        animation-delay: ${open ? ".1s" : 0};
+        animation-delay: ${open ? '.1s' : 0};
       `;
     }
   }}
 `;
-Lightbox.displayName = "S.Lightbox";
+Lightbox.displayName = 'S.Lightbox';
 
 export const Overlay = styled.div<IStyleProps>`
   display: flex;
@@ -80,11 +80,11 @@ export const Overlay = styled.div<IStyleProps>`
   top: 0;
   z-index: 5;
   transition: opacity 0.2s ease;
-  transition-delay: ${({ open }) => (open ? 0 : ".4s")};
+  transition-delay: ${({ open }) => (open ? 0 : '.4s')};
   background-color: ${({ transparent, theme }) =>
-    transparent ? "" : theme.colors.overlay};
+    transparent ? '' : theme.colors.overlay};
   align-items: center;
   justify-content: ${({ position }) => justify[position]};
   opacity: ${({ state }) => opacity[state]};
 `;
-Overlay.displayName = "S.Overlay";
+Overlay.displayName = 'S.Overlay';
