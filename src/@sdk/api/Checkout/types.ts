@@ -41,10 +41,16 @@ export type IAvailableShippingMethods = Checkout_availableShippingMethods[];
 export type IAvailablePaymentGateways =
   GetShopPaymentGateways_shop_availablePaymentGateways[];
 
+export interface IShippingMethodMethodType {
+  id: string;
+  code: string;
+  name: string;
+}
 export interface IShippingMethod {
   id: string;
   name: string;
   price?: IPriceValue | null;
+  methodType: IShippingMethodMethodType | null;
 }
 
 export interface IPromoCodeDiscount {
