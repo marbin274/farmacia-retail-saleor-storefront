@@ -2,16 +2,11 @@
 // are not yet implemented (ie wishlist)
 // Replace it with MainMenu component once all the blocks are finished
 
-import React from 'react';
-import Media from 'react-responsive';
-
 import { Icon, NavLink } from '@components/atoms';
 import { largeScreen, smallScreen } from '@styles/constants';
 import { maybe } from '@utils/misc';
-
-import LogoSmall from 'images/logo-small.svg';
-import Logo from 'images/logo.svg';
-
+import React from 'react';
+import Media from 'react-responsive';
 import { Dropdown } from './Dropdown';
 import * as S from './styles';
 import { IProps } from './types';
@@ -112,10 +107,10 @@ export const TopNavbar: React.FC<IProps> = ({ items }: IProps) => {
         </S.Navigation>
         <S.Center>
           <Media maxWidth={smallScreen}>
-            <S.LogoWrapper path={LogoSmall} />
+            <S.LogoWrapper src="/assets/logo-small.svg" />
           </Media>
           <Media minWidth={smallScreen}>
-            <S.LogoWrapper path={Logo} />
+            <S.LogoWrapper src="/assets/logo.svg" />
           </Media>
         </S.Center>
         <S.Actions>

@@ -1,6 +1,6 @@
 import { CHECKOUT_STEPS } from '@temp/core/config';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { BackIcon, CheckIcon } from '@farmacia-retail/farmauna-components';
 import * as S from './styles';
 import { IProps, IStep } from './types';
@@ -72,7 +72,7 @@ const generateSteps = (
         {localRepository.getPurchase() && currentPath === '/checkout/review' ? (
           <span>{generateDot(step, currentActive, true)}</span>
         ) : (
-          <Link to={step.link}>{generateDot(step, currentActive)}</Link>
+          <Link href={step.link}>{generateDot(step, currentActive)}</Link>
         )}
         {generateProgressBar(
           step.index,
@@ -98,14 +98,18 @@ const CheckoutProgressBar: React.FC<IProps> = ({
     (st) => st.index === activeStepIndex
   );
 
+  if (!steps || activeIndexStep < 0) return null;
+
   return (
     <div>
       {activeIndexStep < steps?.length - 1 && (
         <S.GoBack>
           <Link
-            to={activeIndexStep === 0 ? '/' : steps[activeIndexStep - 1].link}
+            href={activeIndexStep === 0 ? '/' : steps[activeIndexStep - 1].link}
           >
-            <BackIcon size={12} /> <span>Volver</span>
+            <span className="fa-flex fa-items-center">
+              <BackIcon size={12} /> <span>Volver</span>
+            </span>
           </Link>
         </S.GoBack>
       )}

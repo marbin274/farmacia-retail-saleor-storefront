@@ -1,7 +1,5 @@
-import { styled } from "@styles";
-import { keyframes } from "styled-components";
-
-import { getContentWindowHeight } from "@utils/styles";
+import { styled } from '@styles';
+import { keyframes } from 'styled-components';
 
 const firstItem = keyframes`
   0% {
@@ -72,13 +70,12 @@ const thirdItem = keyframes`
   }
 `;
 
-export const Wrapper = styled.div<{ fullScreen: boolean }>`
+export const Wrapper = styled.div<{ height: string }>`
   display: flex;
   align-items: center;
   width: 100%;
-  height: ${props =>
-    props.fullScreen ? `${getContentWindowHeight()}px` : "100%"};
-  padding: ${props => props.theme.spacing.spacer} 0;
+  height: ${(props) => props.height};
+  padding: ${(props) => props.theme.spacing.spacer} 0;
 `;
 
 export const Items = styled.div`
@@ -88,7 +85,7 @@ export const Items = styled.div`
   margin: 0 auto;
 
   span {
-    background-color: ${props => props.theme.colors.secondary};
+    background-color: ${(props) => props.theme.colors.secondary};
     width: 1rem;
     height: 1rem;
     border-radius: 1rem;

@@ -4,6 +4,7 @@ import { RetryLink } from '@apollo/client/link/retry';
 
 import { SaleorAPI } from './api';
 import { APIProxy } from './api/APIProxy';
+import { WINDOW_EXISTS } from './consts';
 import { Config } from './types';
 
 const getLink = (
@@ -25,6 +26,7 @@ export const createSaleorClient = (
   cache: InMemoryCache
 ) =>
   new ApolloClient({
+    ssrMode: !WINDOW_EXISTS,
     cache,
     link: getLink(apiUrl, invalidTokenLink, authLink),
   });

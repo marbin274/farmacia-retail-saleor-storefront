@@ -4,7 +4,6 @@ import { ErrorResponse } from '@apollo/client/link/persisted-queries';
 import { onError } from '@apollo/client/link/error';
 import { LocalRepository } from '@temp/@sdk/repository';
 
-export const authEvent = new Event('auth');
 const localRepository = new LocalRepository();
 
 export function getAuthToken(): string | null {
@@ -17,16 +16,19 @@ export function getAuthToken(): string | null {
 
 export function setAuthToken(token: string) {
   localRepository.setToken(token);
+  const authEvent = new Event('auth');
   dispatchEvent(authEvent);
 }
 
 export function removeAuthToken() {
   localRepository.setToken(null);
+  const authEvent = new Event('auth');
   dispatchEvent(authEvent);
 }
 
 export function clearStorage(): void {
   localRepository.clearStorage();
+  const authEvent = new Event('auth');
   dispatchEvent(authEvent);
 }
 

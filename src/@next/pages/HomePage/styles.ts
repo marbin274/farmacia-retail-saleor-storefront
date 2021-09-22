@@ -1,4 +1,4 @@
-import { ContainerStyle, mediaUp, styled } from '@styles';
+import { ContainerStyle, media, mediaUp, styled } from '@styles';
 
 export const WraperOpenBanner = styled.div`
   align-items: center;
@@ -17,11 +17,13 @@ export const TopImageItem = styled.div<{
   imageMobile: string;
   imageDesktop: string;
 }>`
-  background-image: url('${(props: any) => props.imageMobile}');
   background-repeat: no-repeat;
   background-size: 100% 100%;
   cursor: pointer;
   height: 3.5rem;
+  ${media.smallScreen`
+    background-image: url('${(props: any) => props.imageMobile}');
+  `}
   ${mediaUp.smallScreen`
     background-image: url("${(props: any) => props.imageDesktop}");
   `}
@@ -89,4 +91,17 @@ export const ProductsFeaturedWrapper = styled.div`
   ${mediaUp.smallScreen`
     padding: 0 1rem;
   `};
+
+  .slider-slide {
+    height: 24.1875rem !important;
+  }
+
+  .home-page__product__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    ${mediaUp.largeScreen`
+        display: grid;
+      `}
+  }
 `;

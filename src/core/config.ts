@@ -1,4 +1,5 @@
 import { aunaBrand5, aunaOrangeOnSale } from '@styles/constants';
+import { WINDOW_EXISTS } from '@temp/@sdk/consts';
 import { IDistrictSelected } from '@temp/@sdk/repository';
 
 export const BASE_URL = '/';
@@ -37,13 +38,13 @@ export const SOCIAL_MEDIA = [
   {
     ariaLabel: 'facebook',
     href: 'https://www.facebook.com/farmauna.pe',
-    path: require('../images/auna/social/facebook.svg'),
+    path: '/assets/social/facebook.svg',
     rel: 'noopener nofollow',
   },
   {
     ariaLabel: 'instagram',
     href: 'https://www.instagram.com/farmauna_pe/',
-    path: require('../images/auna/social/instagram.svg'),
+    path: 'assets/social/instagram.svg',
     rel: 'noopener nofollow',
   },
 ];
@@ -51,10 +52,10 @@ export const META_DEFAULTS = {
   custom: [],
   description:
     'Somos la experiencia digital más ágil de compra en farmacia, encuentra una gran variedad de productos ¡Pide y recibe en máximo 75 minutos!',
-  image: `${window?.location?.origin}${require('../images/logo.svg')}`,
+  image: '/assets/logo.svg',
   title: 'Farmauna, la manera saludable de comprar',
   type: 'website',
-  url: window?.location?.origin,
+  url: WINDOW_EXISTS ? window?.location?.origin : '',
 };
 export enum CheckoutStep {
   Address = 1,

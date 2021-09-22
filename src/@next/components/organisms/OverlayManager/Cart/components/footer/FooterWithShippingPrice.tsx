@@ -13,7 +13,7 @@ import { checkoutLoginUrl, checkoutUrl } from '@temp/app/routes';
 import { isScheduledShippingMethod } from '@temp/core/utils';
 import { trackAddToCartWithShowShippingPrice } from '@temp/libraries/optimizely/tracks';
 import * as React from 'react';
-import { useHistory, useLocation } from 'react-router';
+import { useRouter } from 'next/router';
 import * as S from './FooterWithShippingPriceStyles';
 import { SkeletonCartFooter } from './skeletonCartFooter';
 
@@ -26,8 +26,7 @@ export const FooterWithShippingPrice: React.FC<IProps> = ({
   buttonText,
   hideOverlay,
 }) => {
-  const history = useHistory();
-  const location = useLocation();
+  const router = useRouter();
   const { data: user } = useUserDetails();
   const { checkout } = useCheckout();
   const { discount, items, subtotalPrice, totalPrice } = useCart();
@@ -47,13 +46,14 @@ export const FooterWithShippingPrice: React.FC<IProps> = ({
   const itemsCount = items?.length || 0;
 
   const onClickBuyIcon = () => {
-    const isInLoginPage = location.pathname.includes('login');
+    const isInLoginPage = router.pathname.includes('login');
     trackAddToCartWithShowShippingPrice();
     if (isInLoginPage) hideOverlay();
     else {
       const urlToGo =
         user || (checkout && checkout.id) ? checkoutUrl : checkoutLoginUrl;
-      history.push(urlToGo);
+      router.push(urlToGo);
+      hideOverlay();
     }
   };
 

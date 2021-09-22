@@ -2,15 +2,15 @@ import { styled } from '@styles';
 import farmatheme from '@farmatheme';
 
 export const Wrapper = styled.div`
+  background: rgba(35, 33, 43, 0.8);
   display: flex;
+  height: 100vh;
+  left: 0;
   margin-top: 1rem;
   position: absolute;
   width: 100vw;
-  height: 100vh;
-  z-index: 1;
-  background: rgba(35, 33, 43, 0.8);
-  left: 0;
-  a {
+  z-index: 2;
+  div {
     text-transform: capitalize;
     span {
       text-transform: capitalize;
@@ -21,9 +21,9 @@ export const Wrapper = styled.div`
 export const Overlay = styled.div`
   display: flex;
   height: max-content;
-  width: 71.25rem;
-  max-width: 100%;
   margin: 0 auto;
+  max-width: 100%;
+  width: 71.25rem;
 `;
 
 export const lvl1List = styled.ul`
@@ -39,25 +39,25 @@ export const lvl1List = styled.ul`
   li {
     :hover {
       background-color: ${farmatheme.theme.colors.neutral.lightest};
-      > a {
+      > div {
         color: ${farmatheme.theme.colors.highlight.medium};
       }
     }
-    > a:focus,
-    a:hover {
+    > div:focus,
+    div:hover {
       color: ${farmatheme.theme.colors.highlight.medium};
     }
     :last-child {
       border-bottom-left-radius: 1rem;
     }
-    > a {
+    > div {
+      align-items: center;
       color: ${farmatheme.theme.colors.highlight.darkest};
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      padding: 1rem 1.5rem;
       font-size: ${({ theme }) => theme.typography.labelFontSize};
       font-weight: 500;
+      padding: 1rem 1.5rem;
       width: 100%;
     }
     > svg {
@@ -97,7 +97,7 @@ export const OverlayNavItemTitle = styled.div`
 `;
 
 export const lvl2List = styled.ul`
-  a {
+  div {
     :hover {
       color: ${farmatheme.theme.colors.brand['01']};
     }
@@ -109,7 +109,7 @@ export const lvl2List = styled.ul`
     width: 25%;
     > div {
       padding-left: 1rem;
-      > a {
+      > div {
         font-size: ${({ theme }) => theme.typography.smallFontSize};
       }
     }
@@ -119,7 +119,7 @@ export const lvl2List = styled.ul`
 export const lvl3List = styled.ul`
   margin-top: 1rem;
   li {
-    a {
+    div {
       font-size: ${({ theme }) => theme.typography.labelFontSize};
       font-weight: normal;
       padding: 0.5rem 0rem 0.5rem 1rem;

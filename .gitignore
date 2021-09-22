@@ -16,6 +16,7 @@
 !.vscode/settings.json
 !.eslintrc.js
 dist
+out
 node_modules
 src/locales/_build
 

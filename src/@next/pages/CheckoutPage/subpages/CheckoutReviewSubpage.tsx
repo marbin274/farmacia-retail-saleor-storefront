@@ -3,24 +3,23 @@ import { statuses as dummyStatuses } from '@components/organisms/DummyPaymentGat
 import { useCheckout, useShopDetails } from '@sdk/react';
 import { alertService } from '@temp/@next/components/atoms/Alert';
 import { removePaymentItems } from '@temp/@next/utils/checkoutValidations';
+import { LocalRepository } from '@temp/@sdk/repository';
 import { CHECKOUT_STEPS } from '@temp/core/config';
 import { IFormError } from '@types';
-import ErrorPaymentIcon from 'images/auna/credit-card-cancel.svg';
+import { useRouter } from 'next/router';
 import React, {
   forwardRef,
   RefForwardingComponent,
   useImperativeHandle,
   useState,
 } from 'react';
-import { RouteComponentProps, useHistory } from 'react-router';
-import { LocalRepository } from '@temp/@sdk/repository';
 
 const creditCardType = require('credit-card-type');
 
 export interface ICheckoutReviewSubpageHandles {
   complete: () => void;
 }
-interface IProps extends RouteComponentProps<any> {
+interface IProps {
   selectedPaymentGatewayToken?: string;
   changeSubmitProgress: (submitInProgress: boolean) => void;
   requestPayload?: string | undefined | null;
@@ -30,22 +29,17 @@ const CheckoutReviewSubpageWithRef: RefForwardingComponent<
   ICheckoutReviewSubpageHandles,
   IProps
 > = (
-  {
-    selectedPaymentGatewayToken,
-    changeSubmitProgress,
-    requestPayload,
-    ...props
-  }: IProps,
+  { selectedPaymentGatewayToken, changeSubmitProgress, requestPayload }: IProps,
   ref
 ) => {
   const localRepository = new LocalRepository();
-  const history = useHistory();
+  const router = useRouter();
   const { checkout, payment, completeCheckout } = useCheckout();
   const { data } = useShopDetails();
   const [errors, setErrors] = useState<IFormError[]>([]);
 
   if (!localRepository.getPayment()) {
-    history.push(CHECKOUT_STEPS[1].link);
+    router.push(CHECKOUT_STEPS[1].link);
   }
 
   const checkoutShippingAddress = checkout?.shippingAddress
@@ -96,7 +90,7 @@ const CheckoutReviewSubpageWithRef: RefForwardingComponent<
         removePaymentItems();
         alertService.sendAlert({
           buttonText: 'Entendido',
-          icon: ErrorPaymentIcon,
+          icon: '/assets/auna/credit-card-cancel.svg',
           message:
             'Por favor valida que todos tus datos de pago sean correctos e inténtalo de nuevo',
           redirectionLink: CHECKOUT_STEPS[1].link,
@@ -107,9 +101,9 @@ const CheckoutReviewSubpageWithRef: RefForwardingComponent<
         setErrors(errors);
       } else {
         setErrors([]);
-        history.push({
+        router.push({
           pathname: CHECKOUT_STEPS[2].nextStepLink,
-          state: {
+          query: {
             id: data?.id,
             orderNumber: data?.number,
             sequentialCode: data?.sequentialCode,
@@ -122,7 +116,6 @@ const CheckoutReviewSubpageWithRef: RefForwardingComponent<
 
   return (
     <CheckoutReview
-      {...props}
       isShippingAvailable={data?.shop?.isShippingAvailable}
       shippingAddress={checkoutShippingAddress}
       billingAddress={checkoutBillingAddress}

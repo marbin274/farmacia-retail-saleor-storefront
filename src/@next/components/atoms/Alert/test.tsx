@@ -1,14 +1,13 @@
-import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
+import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
-import { alertService } from './AlertService';
 import { Alert } from '.';
-import ErrorFormPopulateIcon from 'images/auna/form-populate-error.svg';
+import { alertService } from './AlertService';
 import { IAlertServiceProps } from './types';
 
 let ALERT: IAlertServiceProps = {
   buttonText: 'Entendido',
-  icon: ErrorFormPopulateIcon,
+  icon: '/assets/auna/form-populate-error.svg',
   title: 'Título',
   message: 'Esto es una demo',
   type: 'Info',

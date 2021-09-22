@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
 
 import { ThankYou } from '@components/organisms';
 import { BASE_URL, CHECKOUT_STEPS } from '@temp/core/config';
@@ -10,11 +9,11 @@ import { OverlayContext } from '@temp/@next/components/organisms/OverlayComponen
 import { useCheckout, useShopDetails } from '@sdk/react';
 import { LocalRepository } from '@temp/@sdk/repository';
 import { isEmpty } from 'lodash';
+import { useRouter } from 'next/router';
 
 const ThankYouPage: React.FC<IProps> = ({}: IProps) => {
-  const location = useLocation();
-  const history = useHistory();
-  const { token, orderNumber, sequentialCode } = location.state;
+  const router = useRouter();
+  const { token, orderNumber, sequentialCode } = router.query;
   const overlay = useContext(OverlayContext);
 
   const { payment } = useCheckout();
@@ -30,8 +29,9 @@ const ThankYouPage: React.FC<IProps> = ({}: IProps) => {
 
   React.useEffect(() => {
     const repository = new LocalRepository();
+
     if (isEmpty(repository.getFinallCheckout())) {
-      history.push(BASE_URL);
+      router.push(BASE_URL);
     }
 
     return () => {
@@ -80,11 +80,13 @@ const ThankYouPage: React.FC<IProps> = ({}: IProps) => {
       totalPrice={totalPrice}
       totalProducts={totalProducts}
       selectedPaymentGatewayToken={selectedPaymentGatewayToken}
-      continueShopping={() => history.push(BASE_URL)}
-      orderNumber={orderNumber}
-      orderDetails={() => history.push(generateGuestOrderDetailsUrl(token))}
+      continueShopping={() => router.push(BASE_URL)}
+      orderNumber={orderNumber as string}
+      orderDetails={() =>
+        router.push(generateGuestOrderDetailsUrl(token as string))
+      }
       overlay={overlay}
-      sequentialCode={sequentialCode}
+      sequentialCode={sequentialCode as string}
     />
   );
 };

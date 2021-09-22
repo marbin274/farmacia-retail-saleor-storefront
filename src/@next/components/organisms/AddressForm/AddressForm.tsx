@@ -11,7 +11,6 @@ import {
 } from '@temp/core/config';
 import { IAddressWithEmail, IFormErrorSort } from '@types';
 import { Form, Formik, FormikHelpers } from 'formik';
-import ErrorFormPopulateIcon from 'images/auna/form-populate-error.svg';
 import { pick, sortBy } from 'lodash';
 import React, { useEffect, useState } from 'react';
 import { alertService } from '../../atoms/Alert';
@@ -24,13 +23,10 @@ import { IProps } from './types';
 
 const ADDRESS_FIELDS = [
   'city',
-  // "companyName", // currently unused
-  // "countryArea", // currently unused
   'firstName',
   'lastName',
   'country',
   'phone',
-  // "postalCode", // currently unused
   'streetAddress1',
   'streetAddress2',
   'email',
@@ -261,7 +257,7 @@ export const AddressForm: React.FC<IProps> = ({
                 scrollToErrors(errorsSort);
               },
               buttonText: 'Entendido',
-              icon: ErrorFormPopulateIcon,
+              icon: '/assets/auna/form-populate-error.svg',
               message:
                 errorsSort.length > ADDRESS_FORM_SHOW_GENERAL_ERRORS ? (
                   'Por favor completa los campos  obligatorios que se encuentran de color rojo.'

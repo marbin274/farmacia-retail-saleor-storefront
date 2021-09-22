@@ -1,28 +1,21 @@
-import React from "react";
-import { Redirect } from "react-router";
-import {
-  Route,
-  RouteComponentProps,
-  Switch,
-  useLocation,
-} from "react-router-dom";
+import { useCheckoutStepState } from '@hooks';
+import { IItems } from '@sdk/api/Cart/types';
+import { ICheckout, IPayment } from '@sdk/api/Checkout/types';
+import { CHECKOUT_STEPS } from '@temp/core/config';
+import router, { useRouter } from 'next/router';
+import React, { FC } from 'react';
 
-import { useCheckoutStepFromPath, useCheckoutStepState } from "@hooks";
-import { IItems } from "@sdk/api/Cart/types";
-import { ICheckout, IPayment } from "@sdk/api/Checkout/types";
-import { CHECKOUT_STEPS } from "@temp/core/config";
-
-interface IRouterProps {
+type IRouterProps = {
   items?: IItems;
   checkout?: ICheckout;
   payment?: IPayment;
-  renderAddress: (props: RouteComponentProps<any>) => React.ReactNode;
+  renderAddress: () => React.ReactElement<any, any>;
   // renderShipping: (props: RouteComponentProps<any>) => React.ReactNode;
-  renderPayment: (props: RouteComponentProps<any>) => React.ReactNode;
-  renderReview: (props: RouteComponentProps<any>) => React.ReactNode;
-}
+  renderPayment: () => React.ReactElement<any, any>;
+  renderReview: () => React.ReactElement<any, any>;
+};
 
-const CheckoutRouter: React.FC<IRouterProps> = ({
+const CheckoutRouter: FC<IRouterProps> = ({
   items,
   checkout,
   payment,
@@ -30,28 +23,27 @@ const CheckoutRouter: React.FC<IRouterProps> = ({
   // renderShipping,
   renderPayment,
   renderReview,
-}: IRouterProps) => {
-  const { pathname } = useLocation();
+}) => {
+  const { asPath } = useRouter();
   const step = useCheckoutStepState(items, checkout, payment);
-  const stepFromPath = useCheckoutStepFromPath(pathname);
 
   const getStepLink = () =>
-    CHECKOUT_STEPS.find(stepObj => stepObj.step === step)?.link ||
+    CHECKOUT_STEPS.find((stepObj) => stepObj.step === step)?.link ||
     CHECKOUT_STEPS[0].link;
 
-  if (!stepFromPath || (stepFromPath && step < stepFromPath)) {
-    return <Redirect to={getStepLink()} />;
-  }
+  if (asPath.includes('order')) return null;
 
-  return (
-    <Switch>
-      <Route path={CHECKOUT_STEPS[0].link} render={renderAddress} />
-      {/* <Route path={CHECKOUT_STEPS[1].link} render={renderShipping} /> */}
-      <Route path={CHECKOUT_STEPS[1].link} render={renderPayment} />
-      <Route path={CHECKOUT_STEPS[2].link} render={renderReview} />
-      <Route render={props => <Redirect {...props} to={getStepLink()} />} />
-    </Switch>
-  );
+  switch (asPath) {
+    case CHECKOUT_STEPS[0].link:
+      return renderAddress();
+    case CHECKOUT_STEPS[1].link:
+      return renderPayment();
+    case CHECKOUT_STEPS[2].link:
+      return renderReview();
+    default:
+      router.push(getStepLink());
+      return <></>;
+  }
 };
 
 export { CheckoutRouter };

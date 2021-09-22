@@ -38,11 +38,11 @@ export const Container = styled.div`
 
 export const ProductWrapper = styled.div`
   display: block;
-  margin-bottom: 2rem;
+  padding-bottom: 2rem;
 
   ${mediaUp.largeScreen`
     display: flex;
-    margin-bottom: 3rem;
+    padding-bottom: 3rem;
   `}
 
   hr {

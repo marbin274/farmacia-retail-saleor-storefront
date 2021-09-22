@@ -5,56 +5,64 @@ import { Breadcrumbs } from '@farmacia-retail/farmauna-components';
 import { useUserDetails } from '@sdk/react';
 import { useMediaScreen } from '@temp/@next/globalStyles';
 import { baseUrl } from '@temp/app/routes';
-import profile from '@temp/images/profileicon.svg';
 import * as React from 'react';
 import * as S from './styles';
-import { RouteComponentProps, useLocation, withRouter } from 'react-router';
+import { useRouter } from 'next/router';
 
-interface AccountLayoutProps extends RouteComponentProps {
+interface AccountLayoutProps {
   showTitleMobile?: boolean;
 }
 
 const AccountLayout: React.FC<AccountLayoutProps> = ({
   children,
-  history,
   showTitleMobile,
 }) => {
   const { data: user, loading } = useUserDetails();
   const { isDesktopScreen } = useMediaScreen();
-  const location = useLocation();
+  const router = useRouter();
 
   if (loading) {
     return <Loader />;
   }
 
   if (!user) {
-    history.push(baseUrl);
+    return null;
   }
 
   return (
-    <div className="fa-bg-neutral-light fa-pt-4 fa-w-auto md:fa-w-auto">
+    <div className="fa-bg-neutral-light fa-py-4 fa-w-auto md:fa-w-auto">
       <S.Container>
         <Breadcrumbs
-          breadcrumbs={[{ link: location.pathname, label: 'Mi Cuenta' }]}
+          breadcrumbs={[{ link: router.pathname, label: 'Mi Cuenta' }]}
           baseUrl={baseUrl}
         />
 
         {!isDesktopScreen && (
           <div className="md:fa-w-full fa-my-4">
-            <AccountMenuMobile links={links} active={location.pathname} />
+            <AccountMenuMobile links={links} active={router.pathname} />
           </div>
         )}
 
         {(isDesktopScreen ||
-          (AccountBaseUrl === location.pathname && showTitleMobile)) && (
+          (AccountBaseUrl === router.pathname && showTitleMobile)) && (
           <div className="fa-flex fa-flex-row fa-mt-5 fa-mb-3">
             {isDesktopScreen ? (
               <div className="fa-mt-4">
-                <img src={profile} alt="profile icon" height="62" width="62" />
+                <img
+                  src="/assets/profileicon.svg"
+                  alt="profile icon"
+                  height="62"
+                  width="62"
+                />
               </div>
             ) : (
               <div className="fa-mt-0">
-                <img src={profile} alt="profile icon" height="62" width="62" />
+                <img
+                  src="/assets/profileicon.svg"
+                  alt="profile icon"
+                  height="62"
+                  width="62"
+                />
               </div>
             )}
             {isDesktopScreen ? (
@@ -74,7 +82,7 @@ const AccountLayout: React.FC<AccountLayoutProps> = ({
         <div className="fa-flex fa-flex-nowrap fa-items-stretch fa-mb-16 fa-mt-4 fa-flex-col md:fa-flex-row">
           {isDesktopScreen && (
             <div className="fa-w-auto">
-              <AccountMenu links={links} active={location.pathname} />
+              <AccountMenu links={links} active={router.pathname} />
             </div>
           )}
           <div className="fa-w-full">{user && <>{children}</>}</div>
@@ -84,4 +92,4 @@ const AccountLayout: React.FC<AccountLayoutProps> = ({
   );
 };
 
-export default withRouter(AccountLayout);
+export default AccountLayout;

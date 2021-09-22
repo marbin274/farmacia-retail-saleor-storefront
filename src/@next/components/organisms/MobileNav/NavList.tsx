@@ -1,12 +1,11 @@
-import * as React from 'react';
-import { Link } from 'react-router-dom';
-import { ReactSVG } from 'react-svg';
+import { Button } from '@farmacia-retail/farmauna-components';
+import { IconHamburger } from '@temp/@next/components/atoms';
 import { baseUrl } from '@temp/app/routes';
-import logoImg from '../../../../images/logo.svg';
+import * as React from 'react';
+import Link from 'next/link';
+import { ReactSVG } from 'react-svg';
 import NavItem, { INavItem } from './components/NavItem';
 import { NavSubItem } from './components/NavSubItem';
-import { IconHamburger } from '@temp/@next/components/atoms';
-import { Button } from '@farmacia-retail/farmauna-components';
 import * as S from './styles';
 
 interface NavListProps {
@@ -56,8 +55,12 @@ export const NavList: React.FC<NavListProps> = ({
             iconOnly
             icon={<IconHamburger open />}
           />
-          <Link className="fa-mx-auto" to={baseUrl} onClick={hideOverlay}>
-            <ReactSVG src={logoImg} />
+          <Link href={baseUrl}>
+            <ReactSVG
+              className="fa-mx-auto"
+              src="/assets/logo.svg"
+              onClick={hideOverlay}
+            />
           </Link>
         </S.NavMenuHeader>
         {!openParent ? (

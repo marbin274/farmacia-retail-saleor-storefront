@@ -1,1 +1,2 @@
-export * from "./CheckoutPage";
+export * from './CheckoutPage';
+export { CheckoutPage as default } from './CheckoutPage';

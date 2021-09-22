@@ -2,8 +2,8 @@ import { Button } from '@farmacia-retail/farmauna-components';
 import { useRegisterAccount } from '@temp/@sdk/react';
 import { maybe } from '@temp/core/utils';
 import { History } from 'history';
+import { useRouter } from 'next/router';
 import React from 'react';
-import { useHistory, useLocation } from 'react-router';
 import { RegisterFormContent } from './RegisterFormContent';
 
 interface IRegisterForm {
@@ -14,10 +14,9 @@ interface IRegisterForm {
 }
 
 const RegisterForm: React.FC<IRegisterForm> = ({ hide, onSwitchSection }) => {
-  const history = useHistory();
-  const location = useLocation();
+  const router = useRouter();
 
-  const hideOnClickLogin = location.pathname.includes('login');
+  const hideOnClickLogin = router.pathname.includes('login');
   const [registerCustomer, { data, loading }] = useRegisterAccount();
 
   React.useEffect(() => {
@@ -27,7 +26,7 @@ const RegisterForm: React.FC<IRegisterForm> = ({ hide, onSwitchSection }) => {
       );
 
       if (successful) {
-        history.push('/user-registered');
+        router.push('/user-registered');
         hide();
       } else {
         sessionStorage.removeItem('user-registered-email');

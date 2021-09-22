@@ -4,13 +4,13 @@ import {
 } from '@sdk/queries/gqlTypes/FooterSecondaryMenu';
 import { MainMenu_shop_navigation_main_items } from '@sdk/queries/gqlTypes/MainMenu';
 import { MainMenuSubItem } from '@sdk/queries/gqlTypes/MainMenuSubItem';
-import * as React from 'react';
-import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
 import {
   generateCategoryUrl,
   generateCollectionUrl,
   generatePageUrl,
 } from '@temp/core/utils';
+import * as React from 'react';
+import Link from 'next/link';
 import * as S from './styles';
 
 export interface NavLinkProps
@@ -21,17 +21,15 @@ export interface NavLinkProps
     | FooterSecondaryMenu_shop_navigation_secondary_items
     | FooterSecondaryMenu_shop_navigation_secondary_items_children;
 }
-const NavLinkComponent: React.FC<NavLinkProps & RouteComponentProps> = ({
-  item,
-  match,
-  ...props
-}) => {
+const NavLinkComponent: React.FC<NavLinkProps> = ({ item, ...props }) => {
   const { name, url, category, collection, page } = item;
   const link = (url: string) => {
     const isActive = window?.location.pathname === url;
     return (
-      <Link to={url} {...props}>
-        <S.NavActive isActive={isActive}>{name} </S.NavActive>
+      <Link href={url}>
+        <S.NavActive isActive={isActive} {...props}>
+          {name}
+        </S.NavActive>
       </Link>
     );
   };
@@ -61,4 +59,4 @@ const NavLinkComponent: React.FC<NavLinkProps & RouteComponentProps> = ({
   return <span {...props}>{name}</span>;
 };
 
-export const NavLink = withRouter(NavLinkComponent);
+export const NavLink = NavLinkComponent;

@@ -1,5 +1,6 @@
 import { SORT_OPTIONS } from '@app/utils/sorts';
 import { Loader, MetaWrapper } from '@components/atoms';
+import { NotFound } from '@pages';
 import { useCart, useSearchProducts } from '@sdk/react';
 import {
   IAddToCartCallback,
@@ -10,32 +11,26 @@ import { useMediaScreen } from '@temp/@next/globalStyles';
 import { useBrandFilters } from '@temp/@next/hooks/useBrandFilters';
 import { useDistrictSelected } from '@temp/@next/hooks/useDistrictSelected';
 import { getFiltersInitial } from '@temp/@next/utils/filter';
-import { NotFound } from '@pages';
 import { META_DEFAULTS } from '@temp/core/config';
 import {
   convertSortByFromString,
   convertToAttributeScalar,
-  getGraphqlIdFromDBId,
   maybe,
 } from '@temp/core/utils';
 import { convertToFilterSideBar } from '@temp/core/utils/filters';
 import { IFilters } from '@types';
+import { useRouter } from 'next/router';
 import * as React from 'react';
-import { RouteComponentProps } from 'react-router';
-import { StringParam, useQueryParam } from 'use-query-params';
 import Page from './Page';
-
-type ViewProps = RouteComponentProps<{
-  id: string;
-}>;
 
 const getPageSize = (isMobile: boolean): number => {
   return isMobile ? 8 : 12;
 };
 
-export const SearchPage: React.FC<ViewProps> = ({ match }) => {
+export const SearchPage: React.FC = () => {
   const [districtSelected] = useDistrictSelected();
-  const [search, setSearch] = useQueryParam('q', StringParam);
+  const { query } = useRouter();
+  const [search, setSearch] = React.useState<string>(query.q as string);
   const {
     currentFilters,
     checkedFilters,
@@ -50,6 +45,12 @@ export const SearchPage: React.FC<ViewProps> = ({ match }) => {
     onFiltersChangeRemote,
     resetFilters,
   } = useBrandFilters();
+
+  React.useEffect(() => {
+    if (search !== (query.q as string)) {
+      setSearch(query.q as string);
+    }
+  }, [query]);
 
   const currentFiltersPaged: IFilters = React.useMemo(
     () => getFiltersInitial(currentFilters, sort),
@@ -66,7 +67,7 @@ export const SearchPage: React.FC<ViewProps> = ({ match }) => {
     attributes: currentFiltersPaged.attributes
       ? convertToAttributeScalar(currentFiltersPaged.attributes)
       : {},
-    id: getGraphqlIdFromDBId(match.params.id, 'Category'),
+    id: undefined,
     query: search || '',
     page: page || 1,
     sortBy: convertSortByFromString(currentFiltersPaged.sortBy),
@@ -139,7 +140,7 @@ export const SearchPage: React.FC<ViewProps> = ({ match }) => {
           removeItemToCart={removeItemToCart}
           resetFilters={resetFilters}
           setSearch={setSearch}
-          search={search}
+          search={query.q as string}
           sortOptions={SORT_OPTIONS}
           subtractItemToCart={subtractItemToCart}
           page={page || 1}

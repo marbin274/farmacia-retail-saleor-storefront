@@ -2,20 +2,21 @@ import {
   Overlay,
   OverlayContextInterface,
 } from '@components/organisms/OverlayComponent';
+import { useRouter } from 'next/router';
 import * as React from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { searchUrl } from '../../../../../app/routes';
 import { SearchForm } from './components/SearchForm';
 import { SearchOverlayTitle } from './components/SearchOverlayTitle';
 import { SearchMessage } from './styles';
-interface SearchProps extends RouteComponentProps {
+interface SearchProps {
   overlay: OverlayContextInterface;
 }
 
-const Search = (props: SearchProps) => {
+const Search: React.FC<SearchProps> = (props: SearchProps) => {
+  const router = useRouter();
   const handleSubmit = (searchQs: string) => {
     props.overlay.hide();
-    props.history.push(`${searchUrl}?${searchQs}`);
+    router.push(`${searchUrl}?${searchQs}`);
   };
 
   const handleInputBlur = () => {
@@ -46,8 +47,4 @@ const Search = (props: SearchProps) => {
 
 // Workaround ATM for:
 // withRouter(Search): Function components do not support contextType
-export default withRouter(
-  (props: RouteComponentProps & { overlay: OverlayContextInterface }) => (
-    <Search {...props} />
-  )
-);
+export default Search;

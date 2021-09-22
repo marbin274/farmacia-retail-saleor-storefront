@@ -13,6 +13,7 @@ import { registerFormSchema } from './RegisterForm.schema';
 import { ILoginForm, IProps } from '../../types';
 import { Button, InputField } from '@farmacia-retail/farmauna-components';
 import { RegisterAccountVariables } from '@temp/@sdk/mutations/gqlTypes/RegisterAccount';
+import { WINDOW_EXISTS } from '@temp/@sdk/consts';
 
 const initialValues: ILoginForm = {
   confirmPassword: '',
@@ -22,7 +23,9 @@ const initialValues: ILoginForm = {
   firstName: '',
   lastName: '',
   password: '',
-  redirectUrl: `${window?.location.origin}${accountConfirmUrl}`,
+  redirectUrl: WINDOW_EXISTS
+    ? `${window.location.origin}${accountConfirmUrl}`
+    : accountConfirmUrl,
   termsAndConditions: false,
 };
 export const RegisterFormContent: React.FC<IProps> = ({

@@ -1,7 +1,7 @@
 name: Storefront CD
 on:
   push:
-    branches: [master, qa2, release]
+    branches: [master, qa2, release, feat-next]
     paths-ignore:
     - '.github/**'
 
@@ -28,64 +28,93 @@ jobs:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
       - name: 3- Build application master ${{ github.event.pull_request.base.ref }}
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
-        run: npm run build
+        run: |
+          npm run build:next
+          npm run export:next
         env:
-          API_URI: ${{ secrets.GRAPHQL_URL_QA }}
-          SENTRY_DSN: ${{ secrets.SENTRY_DSN_QA }}
-          GTM_ID: ${{ secrets.GTM_ID_QA }}
-          GTM_AUTH: ${{ secrets.GTM_AUTH }}
-          CDN_URL: ${{ secrets.CDN_URL_QA }}
-          GTM_PREVIEW: ${{ secrets.GTM_PREVIEW }}
-          MAPS_API_KEY: ${{ secrets.MAPS_API_KEY_QA }}
-          OPTIMIZELY_SDK_KEY: ${{ secrets.OPTIMIZELY_SDK_KEY_QA }}
-          ELASTIC_APM_HOST: ${{ secrets.ELASTIC_APM_HOST }}
-          ELASTIC_APM_ENV: ${{ secrets.ELASTIC_APM_ENV }}
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-          PRIME_API_URL: ${{ secrets.PRIME_API_URL_QA }}
-          PRIME_API_KEY: ${{ secrets.PRIME_API_KEY_QA }}
-          PRIME_SKU: ${{ secrets.PRIME_SKU_QA }}
-          NIUBIZ_ANTIFRAUD_SCRIPT_URL: ${{ secrets.NIUBIZ_ANTIFRAUD_SCRIPT_URL_QA }}
+          NEXT_PUBLIC_API_URI: ${{ secrets.GRAPHQL_URL_QA }}
+          NEXT_PUBLIC_SENTRY_DSN: ${{ secrets.SENTRY_DSN_QA }}
+          NEXT_PUBLIC_GTM_ID: ${{ secrets.GTM_ID_QA }}
+          NEXT_PUBLIC_GTM_AUTH: ${{ secrets.GTM_AUTH }}
+          NEXT_PUBLIC_CDN_URL: ${{ secrets.CDN_URL_QA }}
+          NEXT_PUBLIC_GTM_PREVIEW: ${{ secrets.GTM_PREVIEW }}
+          NEXT_PUBLIC_MAPS_API_KEY: ${{ secrets.MAPS_API_KEY_QA }}
+          NEXT_PUBLIC_OPTIMIZELY_SDK_KEY: ${{ secrets.OPTIMIZELY_SDK_KEY_QA }}
+          NEXT_PUBLIC_ELASTIC_APM_HOST: ${{ secrets.ELASTIC_APM_HOST }}
+          NEXT_PUBLIC_ELASTIC_APM_ENV: ${{ secrets.ELASTIC_APM_ENV }}
+          NEXT_PUBLIC_NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          NEXT_PUBLIC_PRIME_API_URL: ${{ secrets.PRIME_API_URL_QA }}
+          NEXT_PUBLIC_PRIME_API_KEY: ${{ secrets.PRIME_API_KEY_QA }}
+          NEXT_PUBLIC_PRIME_SKU: ${{ secrets.PRIME_SKU_QA }}
+          NEXT_PUBLIC_NIUBIZ_ANTIFRAUD_SCRIPT_URL: ${{ secrets.NIUBIZ_ANTIFRAUD_SCRIPT_URL_QA }}
           
-          ENVIRONMENT_NAME: "qa"
+          NEXT_PUBLIC_ENVIRONMENT_NAME: "qa"
       - name: 3.2- Build application qa2 ${{ github.event.pull_request.base.ref }}
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/qa2' }}
-        run: npm run build
+        run: |
+          npm run build:next
+          npm run export:next
         env:
-          API_URI: ${{ secrets.GRAPHQL_URL_QA2 }}
-          SENTRY_DSN: ${{ secrets.SENTRY_DSN_QA }}
-          GTM_ID: ${{ secrets.GTM_ID_QA }}
-          GTM_AUTH: ${{ secrets.GTM_AUTH }}
-          CDN_URL: ${{ secrets.CDN_URL_QA }}
-          GTM_PREVIEW: ${{ secrets.GTM_PREVIEW }}
-          MAPS_API_KEY: ${{ secrets.MAPS_API_KEY_QA }}
-          OPTIMIZELY_SDK_KEY: ${{ secrets.OPTIMIZELY_SDK_KEY_QA }}
+          NEXT_PUBLIC_API_URI: ${{ secrets.GRAPHQL_URL_QA2 }}
+          NEXT_PUBLIC_SENTRY_DSN: ${{ secrets.SENTRY_DSN_QA }}
+          NEXT_PUBLIC_GTM_ID: ${{ secrets.GTM_ID_QA }}
+          NEXT_PUBLIC_GTM_AUTH: ${{ secrets.GTM_AUTH }}
+          NEXT_PUBLIC_CDN_URL: ${{ secrets.CDN_URL_QA }}
+          NEXT_PUBLIC_GTM_PREVIEW: ${{ secrets.GTM_PREVIEW }}
+          NEXT_PUBLIC_MAPS_API_KEY: ${{ secrets.MAPS_API_KEY_QA }}
+          NEXT_PUBLIC_OPTIMIZELY_SDK_KEY: ${{ secrets.OPTIMIZELY_SDK_KEY_QA }}
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-          PRIME_API_URL: ${{ secrets.PRIME_API_URL_QA }}
-          PRIME_API_KEY: ${{ secrets.PRIME_API_KEY_QA }}
-          PRIME_SKU: ${{ secrets.PRIME_SKU_QA }}
-          NIUBIZ_ANTIFRAUD_SCRIPT_URL: ${{ secrets.NIUBIZ_ANTIFRAUD_SCRIPT_URL_QA }}
+          NEXT_PUBLIC_PRIME_API_URL: ${{ secrets.PRIME_API_URL_QA }}
+          NEXT_PUBLIC_PRIME_API_KEY: ${{ secrets.PRIME_API_KEY_QA }}
+          NEXT_PUBLIC_PRIME_SKU: ${{ secrets.PRIME_SKU_QA }}
+          NEXT_PUBLIC_NIUBIZ_ANTIFRAUD_SCRIPT_URL: ${{ secrets.NIUBIZ_ANTIFRAUD_SCRIPT_URL_QA }}
           
-          ENVIRONMENT_NAME: "qa2"
+          NEXT_PUBLIC_ENVIRONMENT_NAME: "qa2"
       - name: 4- Build application release ${{ github.event.pull_request.base.ref }}
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/release' }}
-        run: npm run build
+        run: |
+          npm run build:next
+          npm run export:next
         env:
-          API_URI: ${{ secrets.GRAPHQL_URL_PROD }}
-          SENTRY_DSN: ${{ secrets.SENTRY_DSN_PROD }}
-          GTM_ID: ${{ secrets.GTM_ID_PROD }}
-          CDN_URL: ${{ secrets.CDN_URL_PROD }}
-          MAPS_API_KEY: ${{ secrets.MAPS_API_KEY_PROD }}
-          MERCHANT_PASSWORD: ${{ secrets.MERCHANT_PASSWORD }}
-          MERCHANT_USERNAME: ${{ secrets.MERCHANT_USERNAME }}
-          MERCHANT_ID: ${{ secrets.MERCHANT_ID }}
-          OPTIMIZELY_SDK_KEY: ${{ secrets.OPTIMIZELY_SDK_KEY_PROD }}
+          NEXT_PUBLIC_API_URI: ${{ secrets.GRAPHQL_URL_PROD }}
+          NEXT_PUBLIC_SENTRY_DSN: ${{ secrets.SENTRY_DSN_PROD }}
+          NEXT_PUBLIC_GTM_ID: ${{ secrets.GTM_ID_PROD }}
+          NEXT_PUBLIC_CDN_URL: ${{ secrets.CDN_URL_PROD }}
+          NEXT_PUBLIC_MAPS_API_KEY: ${{ secrets.MAPS_API_KEY_PROD }}
+          NEXT_PUBLIC_MERCHANT_PASSWORD: ${{ secrets.MERCHANT_PASSWORD }}
+          NEXT_PUBLIC_MERCHANT_USERNAME: ${{ secrets.MERCHANT_USERNAME }}
+          NEXT_PUBLIC_MERCHANT_ID: ${{ secrets.MERCHANT_ID }}
+          NEXT_PUBLIC_OPTIMIZELY_SDK_KEY: ${{ secrets.OPTIMIZELY_SDK_KEY_PROD }}
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-          PRIME_API_URL: ${{ secrets.PRIME_API_URL_PROD }}
-          PRIME_API_KEY: ${{ secrets.PRIME_API_KEY_PROD }}
-          PRIME_SKU: ${{ secrets.PRIME_SKU_PROD }}
-          NIUBIZ_ANTIFRAUD_SCRIPT_URL: ${{ secrets.NIUBIZ_ANTIFRAUD_SCRIPT_URL_PROD }}
-          ENVIRONMENT_NAME: "prod"
+          NEXT_PUBLIC_PRIME_API_URL: ${{ secrets.PRIME_API_URL_PROD }}
+          NEXT_PUBLIC_PRIME_API_KEY: ${{ secrets.PRIME_API_KEY_PROD }}
+          NEXT_PUBLIC_PRIME_SKU: ${{ secrets.PRIME_SKU_PROD }}
+          NEXT_PUBLIC_NIUBIZ_ANTIFRAUD_SCRIPT_URL: ${{ secrets.NIUBIZ_ANTIFRAUD_SCRIPT_URL_PROD }}
+          
+          NEXT_PUBLIC_ENVIRONMENT_NAME: "prod"
 
+      - name: 3- Build application feat-next ${{ github.event.pull_request.base.ref }}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feat-next' }}
+        run: |
+          npm run build:next
+          npm run export:next
+        env:
+          NEXT_PUBLIC_API_URI: ${{ secrets.GRAPHQL_URL_QA }}
+          NEXT_PUBLIC_SENTRY_DSN: ${{ secrets.SENTRY_DSN_QA }}
+          NEXT_PUBLIC_GTM_ID: ${{ secrets.GTM_ID_QA }}
+          NEXT_PUBLIC_GTM_AUTH: ${{ secrets.GTM_AUTH }}
+          NEXT_PUBLIC_CDN_URL: ${{ secrets.CDN_URL_QA }}
+          NEXT_PUBLIC_GTM_PREVIEW: ${{ secrets.GTM_PREVIEW }}
+          NEXT_PUBLIC_MAPS_API_KEY: ${{ secrets.MAPS_API_KEY_QA }}
+          NEXT_PUBLIC_OPTIMIZELY_SDK_KEY: ${{ secrets.OPTIMIZELY_SDK_KEY_QA }}
+          NEXT_PUBLIC_ELASTIC_APM_HOST: ${{ secrets.ELASTIC_APM_HOST }}
+          NEXT_PUBLIC_ELASTIC_APM_ENV: ${{ secrets.ELASTIC_APM_ENV }}
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          NEXT_PUBLIC_PRIME_API_URL: ${{ secrets.PRIME_API_URL_QA }}
+          NEXT_PUBLIC_PRIME_API_KEY: ${{ secrets.PRIME_API_KEY_QA }}
+          NEXT_PUBLIC_PRIME_SKU: ${{ secrets.PRIME_SKU_QA }}
+          NEXT_PUBLIC_NIUBIZ_ANTIFRAUD_SCRIPT_URL: ${{ secrets.NIUBIZ_ANTIFRAUD_SCRIPT_URL_QA }}
+      
       - name: 5- aws s3 copy qa - by ${{ github.actor }}
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
         uses: jakejarvis/s3-sync-action@master
@@ -120,6 +149,18 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_PROD }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_PROD }}
           AWS_REGION: ${{ secrets.AWS_REGION_PROD }}
+          SOURCE_DIR: "dist"
+
+      - name: 5- aws s3 copy qa - by ${{ github.actor }}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feat-next' }}
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --follow-symlinks --delete
+        env:
+          AWS_S3_BUCKET: 't4.farmauna-matata.com'
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_QA }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_QA }}
+          AWS_REGION: ${{ secrets.AWS_REGION_QA }}
           SOURCE_DIR: "dist"
 
       - name: 6- Purge cache Cloudflare QA

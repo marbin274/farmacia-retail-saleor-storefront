@@ -1,4 +1,3 @@
-import { AddressGeocalization } from '@temp/@next/components/molecules';
 import { useMediaScreen } from '@temp/@next/globalStyles';
 import React, { useContext } from 'react';
 import { DesktopNav } from '@components/organisms/DesktopNav';
@@ -10,6 +9,7 @@ import {
 import { SearchForm } from '../OverlayManager/Search';
 import * as S from './styles';
 import { IProps } from './types';
+import { AddressGeocalization } from '@components/molecules';
 
 export const MainMenu: React.FC<IProps> = ({
   categories,
@@ -52,3 +52,5 @@ export const MainMenu: React.FC<IProps> = ({
     </>
   );
 };
+
+export default MainMenu;

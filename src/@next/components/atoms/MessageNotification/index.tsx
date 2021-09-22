@@ -1,8 +1,7 @@
-import * as React from 'react';
-
-import closeImg from '../../../../images/x.svg';
 import classNames from 'classnames';
+import * as React from 'react';
 import * as S from './styles';
+
 interface MessageProps {
   title: string;
   status?: 'success' | 'error';
@@ -26,7 +25,7 @@ const Message: React.FC<MessageProps> = ({
   >
     <p className="fa-uppercase fa-font-semibold fa-mr-6">{title}</p>
     {children ? <div className="fa-mt-4">{children}</div> : null}
-    <S.CloseIcon path={closeImg} onClick={onClose} />
+    <S.CloseIcon src="/assets/x.svg" onClick={onClose} />
   </S.Wrapper>
 );
 

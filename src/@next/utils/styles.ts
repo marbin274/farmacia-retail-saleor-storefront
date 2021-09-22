@@ -1,12 +1,14 @@
+import { WINDOW_EXISTS } from '@temp/@sdk/consts';
 import ReactDOM from 'react-dom';
 
 export const getContentWindowHeight = () => {
+  if (!WINDOW_EXISTS) return 300;
   const headerRef = document.getElementById('header');
   const footerRef = document.getElementById('footer');
   const headerHeight = headerRef ? headerRef.offsetHeight : 0;
   const footerHeight = footerRef ? footerRef.offsetHeight : 0;
 
-  return window?.innerHeight || 0 - headerHeight - footerHeight;
+  return window.innerHeight - headerHeight - footerHeight;
 };
 
 const DEFAULT_BACKGROUND_COLOR = '#fff';

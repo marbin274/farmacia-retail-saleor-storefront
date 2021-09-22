@@ -1,60 +1,70 @@
+import { NextSeo } from 'next-seo';
+import { useRouter } from 'next/router';
 import * as React from 'react';
-import { Helmet } from 'react-helmet';
+import Head from 'next/head';
 import { Consumer as MetaConsumer } from './context';
+import { WINDOW_EXISTS } from '@temp/@sdk/consts';
 
-const Consumer: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
-  <MetaConsumer>
-    {({ title, description, image, type, url, custom }) => {
-      const pathname: string = document.location.pathname?.includes('search')
-        ? '/'
-        : document.location.pathname;
+const Consumer: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
+  const router = useRouter();
+  return (
+    <MetaConsumer>
+      {({ title, description, image, type, url, custom }) => {
+        const pathname: string = router.pathname?.includes('search')
+          ? '/'
+          : router.pathname;
 
-      let canonicalURL: string = `${document.location.protocol}//${document.location.hostname}${pathname}`;
-      const homeCanonicalURL: string = canonicalURL.lastIndexOf('/')
-        ? canonicalURL.slice(0, -1)
-        : canonicalURL;
-      const homeCanonicalUrlSemiPath = `${document.location.protocol}//${document.location.hostname}`;
+        const hostUrl = WINDOW_EXISTS
+          ? `${window.location.protocol}//${window.location.hostname}`
+          : '';
+        let canonicalURL = `${hostUrl}${pathname}`;
 
-      if (homeCanonicalUrlSemiPath === homeCanonicalURL) {
-        canonicalURL = homeCanonicalURL;
-      }
+        const homeCanonicalURL: string = canonicalURL.lastIndexOf('/')
+          ? canonicalURL.slice(0, -1)
+          : canonicalURL;
 
-      function getParameterByName(name: string) {
-        const match = RegExp('[?&]' + name + '=([^&]*)').exec(
-          window?.location?.search
+        if (hostUrl === homeCanonicalURL) {
+          canonicalURL = homeCanonicalURL;
+        }
+
+        function getParameterByName(name: string) {
+          const match = RegExp('[?&]' + name + '=([^&]*)').exec(
+            String(router.query)
+          );
+          return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+        }
+        return (
+          <>
+            <NextSeo
+              title={title}
+              description={description}
+              openGraph={{
+                type,
+                description,
+                url,
+                title,
+                images: [{ url: image }],
+              }}
+              canonical={canonicalURL}
+            />
+            <Head>
+              {!!getParameterByName('filters') && (
+                <meta name="robots" content="nofollow" />
+              )}
+              {!!custom && (
+                <>
+                  {custom.map((item, index) => (
+                    <meta key={index} {...item} />
+                  ))}
+                </>
+              )}
+            </Head>
+            {children}
+          </>
         );
-        return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
-      }
-
-      return (
-        <>
-          <Helmet
-            title={title}
-            link={[
-              {
-                href: canonicalURL,
-                rel: 'canonical',
-              },
-            ]}
-            meta={[
-              { name: 'description', content: description },
-              { property: 'og:url', content: url },
-              { property: 'og:title', content: title },
-              { property: 'og:description', content: description },
-              { property: 'og:type', content: type },
-              { property: 'og:image', content: image },
-              !!getParameterByName('filters') && {
-                name: 'robots',
-                content: 'nofollow',
-              },
-              ...custom,
-            ]}
-          />
-          {children}
-        </>
-      );
-    }}
-  </MetaConsumer>
-);
+      }}
+    </MetaConsumer>
+  );
+};
 
 export default Consumer;

@@ -1,6 +1,6 @@
 import { DropdownSelect } from '@components/atoms';
+import { useRouter } from 'next/router';
 import React from 'react';
-import { useHistory } from 'react-router';
 import * as S from './styles';
 import { IProps } from './types';
 
@@ -12,10 +12,10 @@ export const AccountMenuMobile: React.FC<IProps> = ({
     () => links.map((it) => ({ label: it.label, value: it.url })),
     [links]
   );
-  const history = useHistory();
+  const router = useRouter();
 
   const onChangeOption = ({ value }) => {
-    history.push(value);
+    router.push(value);
   };
 
   return (

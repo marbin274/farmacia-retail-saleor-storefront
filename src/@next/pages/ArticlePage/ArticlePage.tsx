@@ -1,10 +1,9 @@
 import { Loader, MetaWrapper } from '@components/atoms';
+import { NotFound } from '@pages';
 import { ArticleDetail_shop } from '@sdk/queries/gqlTypes/ArticleDetail';
 import { useArticle } from '@sdk/react';
-import { NotFound } from '@pages';
 import { generatePageUrl, maybe } from '@temp/core/utils';
 import * as React from 'react';
-import { RouteComponentProps } from 'react-router-dom';
 import Page from './Page';
 
 const canDisplay = (page) =>
@@ -12,13 +11,9 @@ const canDisplay = (page) =>
 const getHeaderImage = (shop: ArticleDetail_shop) =>
   maybe(() => shop.homepageCollection.backgroundImage.url);
 
-type ViewProps = RouteComponentProps<{ slug: string }>;
+type ViewProps = { slug: string };
 
-export const ArticlePage: React.FC<ViewProps> = ({
-  match: {
-    params: { slug },
-  },
-}) => {
+export const ArticlePage: React.FC<ViewProps> = ({ slug }) => {
   const { data, loading } = useArticle({ slug });
 
   if (loading) {

@@ -1,20 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { Formik } from 'formik';
-import classNames from 'classnames';
 import { Checkbox, Loader } from '@components/atoms';
 import { PopAlert } from '@components/molecules';
 import { InputField } from '@farmacia-retail/farmauna-components';
 import farmatheme from '@farmatheme';
-import americanExpress from '@temp/images/auna/american-express-payment.svg';
-import dinersClub from '@temp/images/auna/diners-club-payment.svg';
-import masterCardIcon from '@temp/images/auna/mastercard-payment.svg';
-import niubizTextIcon from '@temp/images/auna/niubiz-text.svg';
-import visaIcon from '@temp/images/auna/visa-payment.svg';
-import CardTickIcon from 'images/auna/card-tick.svg';
 import { ICardData } from '@types';
-import ErrorFormPopulateIcon from 'images/auna/form-populate-error.svg';
-import { ReactSVG } from 'react-svg';
+import classNames from 'classnames';
+import { Formik } from 'formik';
 import _ from 'lodash';
+import React, { useEffect, useState } from 'react';
+import { ReactSVG } from 'react-svg';
 import {
   cardTokenization,
   createSession,
@@ -28,11 +21,11 @@ import { validatePaymentGateway } from './NiubizPaymentGatewayValidation';
 import * as S from './styles';
 import { IFormPayment, initialValuesFormPayment, IProps } from './types';
 import {
+  getCardTokenizationRequirements,
   getConfigElement,
-  getTokenRequirements,
   getSessionRequirements,
   getTokenizerRequirements,
-  getCardTokenizationRequirements,
+  getTokenRequirements,
 } from './utils';
 
 enum ERROR_DICTIONARY {
@@ -305,7 +298,7 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
           if (error === 'Ningun campo puede estar vacio') {
             configureErrorMessages({
               buttonText: 'Entendido',
-              icon: ErrorFormPopulateIcon,
+              icon: '/assets/ErrorFormPopulateIcon',
               message:
                 'Es necesario completar todos los campos de la tarjeta de crédito/débito.',
               title: 'Faltan datos',
@@ -445,18 +438,21 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                       Pagos seguros con:
                     </div>
                     <div className="fa-flex fa-items-center">
-                      <ReactSVG src={niubizTextIcon} className="fa-mr-2" />
+                      <ReactSVG
+                        src="/assets/auna/niubiz-text.svg"
+                        className="fa-mr-2"
+                      />
                       <S.PaymentIcon>
-                        <ReactSVG src={visaIcon} />
+                        <ReactSVG src="/assets/auna/visa-payment.svg" />
                       </S.PaymentIcon>
                       <S.PaymentIcon>
-                        <ReactSVG src={masterCardIcon} />
+                        <ReactSVG src="/assets/auna/mastercard-payment.svg" />
                       </S.PaymentIcon>
                       <S.PaymentIcon>
-                        <ReactSVG src={americanExpress} />
+                        <ReactSVG src="/assets/auna/american-express-payment.svg" />
                       </S.PaymentIcon>
                       <S.PaymentIcon>
-                        <ReactSVG src={dinersClub} />
+                        <ReactSVG src="/assets/auna/diners-club-payment.svg" />
                       </S.PaymentIcon>
                     </div>
                   </div>
@@ -466,7 +462,9 @@ const NiubizPaymentGateway: React.FC<IProps> = ({
                       <PopAlert
                         title="Ahora puedes guardar tu tarjeta"
                         message="Activa el check completa los datos de la tarjeta y tu próxima compra será más rápida."
-                        icon={<img width={20} src={CardTickIcon} />}
+                        icon={
+                          <img width={20} src="/assets/auna/card-tick.svg" />
+                        }
                         className="fa-w-full md:fa-w-96"
                       />
                       <div className="fa-flex fa-mb-2">

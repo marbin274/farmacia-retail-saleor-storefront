@@ -14,7 +14,7 @@ export const Wrapper = styled.nav`
   `}
 `;
 
-export const Title = styled.p`
+export const Title = styled.span`
   align-items: flex-start;
   color: ${farmatheme.theme.colors.neutral.darkest};
   display: flex;

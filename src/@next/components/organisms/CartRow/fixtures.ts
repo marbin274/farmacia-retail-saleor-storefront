@@ -1,60 +1,58 @@
-import productImage from "./productImage.png";
-
 export const DEFAULT_PROPS = {
   attributes: [
     {
       attribute: {
-        id: "1",
-        name: "Color",
+        id: '1',
+        name: 'Color',
       },
       values: [
         {
-          name: "Yellow",
+          name: 'Yellow',
         },
       ],
     },
     {
       attribute: {
-        id: "2",
-        name: "Size",
+        id: '2',
+        name: 'Size',
       },
       values: [
         {
-          name: "Large",
+          name: 'Large',
         },
       ],
     },
     {
       attribute: {
-        id: "3",
-        name: "Legs",
+        id: '3',
+        name: 'Legs',
       },
       values: [
         {
-          name: "Square",
+          name: 'Square',
         },
       ],
     },
     {
       attribute: {
-        id: "4",
-        name: "Armrest",
+        id: '4',
+        name: 'Armrest',
       },
       values: [
         {
-          name: "None",
+          name: 'None',
         },
       ],
     },
   ],
   maxQuantity: 5,
-  name: "The Great Square Table",
+  name: 'The Great Square Table',
   quantity: 3,
-  sku: "R4ND-0M-5KU",
+  sku: 'R4ND-0M-5KU',
   thumbnail: {
-    alt: "product image",
-    url: productImage,
+    alt: 'product image',
+    url: '',
   },
-  totalPrice: "150$",
-  unitPrice: "50$",
+  totalPrice: '150$',
+  unitPrice: '50$',
 };

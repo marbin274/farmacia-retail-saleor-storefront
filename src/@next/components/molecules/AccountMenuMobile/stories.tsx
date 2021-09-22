@@ -1,10 +1,8 @@
-import { storiesOf } from "@storybook/react";
-import { styled } from "@styles";
-import React from "react";
-import { MemoryRouter } from "react-router";
-
-import { AccountMenuMobile } from ".";
-import { links } from "@app/pages/AccountPage/paths";
+import { storiesOf } from '@storybook/react';
+import { styled } from '@styles';
+import React from 'react';
+import { AccountMenuMobile } from '.';
+import { links } from '@app/pages/AccountPage/paths';
 
 const Wrapper = styled.div`
   margin-top: 100px;
@@ -12,16 +10,14 @@ const Wrapper = styled.div`
 `;
 
 const PROPS = {
-  active: "/account/",
+  active: '/account/',
   links,
 };
 
-storiesOf("@components/molecules/AccountMenuMobile", module)
+storiesOf('@components/molecules/AccountMenuMobile', module)
   .addParameters({ component: AccountMenuMobile })
-  .addDecorator(story => (
-    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
-  ))
-  .add("default", () => (
+  .addDecorator((story) => story())
+  .add('default', () => (
     <Wrapper>
       <AccountMenuMobile {...PROPS} />
     </Wrapper>

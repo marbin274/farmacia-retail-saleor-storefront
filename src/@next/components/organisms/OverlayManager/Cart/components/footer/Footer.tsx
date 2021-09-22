@@ -3,15 +3,14 @@ import { Button, CartIcon } from '@farmacia-retail/farmauna-components';
 import { useCart, useCheckout, useUserDetails } from '@temp/@sdk/react';
 import { checkoutLoginUrl, checkoutUrl } from '@temp/app/routes';
 import * as React from 'react';
-import { useHistory, useLocation } from 'react-router';
+import { useRouter } from 'next/router';
 import * as S from './FooterStyles';
 interface IProps {
   hideOverlay(): void;
 }
 
 export const Footer: React.FC<IProps> = ({ hideOverlay }) => {
-  const history = useHistory();
-  const location = useLocation();
+  const router = useRouter();
   const { data: user } = useUserDetails();
   const { checkout } = useCheckout();
   const { discount, shippingPrice, subtotalPrice, totalPrice } = useCart();
@@ -29,13 +28,13 @@ export const Footer: React.FC<IProps> = ({ hideOverlay }) => {
   };
 
   const onClickBuyIcon = () => {
-    const isInLoginPage = location.pathname.includes('login');
-
-    if (isInLoginPage) hideOverlay();
+    const isInLoginPage = router.pathname.includes('login');
+    hideOverlay();
+    if (isInLoginPage) return;
     else {
       const urlToGo =
         user || (checkout && checkout.id) ? checkoutUrl : checkoutLoginUrl;
-      history.push(urlToGo);
+      router.push(urlToGo);
     }
   };
 

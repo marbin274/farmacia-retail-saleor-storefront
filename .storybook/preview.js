@@ -6,7 +6,6 @@ import { withThemes } from "storybook-styled-components";
 import { DocsPage, DocsContainer } from "@storybook/addon-docs/blocks";
 
 import { OutLineDecorator } from "./OutlineDecorator";
-// themes
 import { defaultTheme } from "../src/@next/globalStyles";
 
 const themes = {

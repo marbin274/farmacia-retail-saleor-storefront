@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-
+import AccountLayout from '@app/pages/AccountPage/AccountLayout';
 import { AddressFormModal, AddressGrid, Modal } from '@components/organisms';
+import { CheckIcon, TrashIcon } from '@farmacia-retail/farmauna-components';
 import { AddressTypeEnum, CountryCode } from '@sdk/gqlTypes/globalTypes';
 import {
   useCreateUserAddress,
@@ -9,13 +9,11 @@ import {
   useUpdateUserAddress,
   useUserDetails,
 } from '@sdk/react';
-import AccountLayout from '@app/pages/AccountPage/AccountLayout';
+import { alertService } from '@temp/@next/components/atoms/Alert';
+import { Alert } from '@temp/@next/components/molecules';
 import { IAddressForm } from '@temp/@next/components/organisms/AddressFormModal/types';
 import { UserDetails_me_addresses } from '@temp/@sdk/queries/gqlTypes/UserDetails';
-import DeletePinImg from 'images/auna/delete-pin.svg';
-import { alertService } from '@temp/@next/components/atoms/Alert';
-import { CheckIcon, TrashIcon } from '@farmacia-retail/farmauna-components';
-import { Alert } from '@temp/@next/components/molecules';
+import React, { useEffect, useState } from 'react';
 
 export const AddressBook: React.FC = () => {
   const { data: user } = useUserDetails();
@@ -246,7 +244,7 @@ export const AddressBook: React.FC = () => {
           >
             <div className="fa-flex fa-flex-col fa-items-center">
               <img
-                src={DeletePinImg}
+                src="/assets/auna/delete-pin.svg"
                 width={80}
                 height={80}
                 className="fa-mt-4 fa-mb-4"

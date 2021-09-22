@@ -23,10 +23,9 @@ import {
 import { LocalRepository } from '@temp/@sdk/repository';
 import { BASE_URL, CHECKOUT_STEPS } from '@temp/core/config';
 import { IFormError, ITaxedMoney } from '@types';
-import shippingMethodCalendarInfoIco from 'images/auna/shipping-method-calendar-info.svg';
+import { useRouter } from 'next/router';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import Media from 'react-media';
-import { Redirect, useLocation } from 'react-router-dom';
 import { CheckoutRouter } from './CheckoutRouter';
 import {
   CheckoutAddressSubpage,
@@ -38,7 +37,6 @@ import {
   ICheckoutReviewSubpageHandles,
   ICheckoutShippingSubpageHandles,
 } from './subpages';
-import { IProps } from './types';
 import { CheckoutContextProvider } from './contexts';
 
 const prepareCartSummary = (
@@ -127,8 +125,8 @@ const getButton = (
   ) : null;
 };
 
-const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
-  const { pathname } = useLocation();
+const CheckoutPage: React.FC = () => {
+  const router = useRouter();
 
   const {
     loaded: cartLoaded,
@@ -166,30 +164,6 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     availableShippingMethods
   );
 
-  if (!items || !items?.length) {
-    removePaymentItems();
-    return <Redirect to={BASE_URL} />;
-  }
-
-  useEffect(() => {
-    if (isAttentionSchedule === false && !lastMileActive) {
-      alertService.sendAlert({
-        acceptDialog: () => {
-          setShippingMethod({ shippingMethodId: '', slotId: undefined });
-        },
-        buttonText: 'Entendido',
-        icon: shippingMethodCalendarInfoIco,
-        message: SHIPPING_METHOD_NOT_FOUND,
-        title: SHIPPING_METHOD_NOT_FOUND_TITLE,
-        type: 'Info',
-      });
-    }
-  }, [isAttentionSchedule]);
-
-  if (cartLoaded && (!items || !items?.length)) {
-    return <Redirect to="/cart/" />;
-  }
-
   const totalProducts: number = useMemo(() => {
     return items
       ? items.reduce((prevVal, currVal) => prevVal + currVal.quantity, 0)
@@ -209,6 +183,30 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
   const [selectedPaymentGatewayToken, setSelectedPaymentGatewayToken] =
     useState<string | undefined>(payment?.token);
 
+  const [requestPayload, setRequestPayload] = useState(null);
+
+  useEffect(() => {
+    if (!items || !items?.length) {
+      removePaymentItems();
+      router.push(BASE_URL);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (isAttentionSchedule === false && !lastMileActive) {
+      alertService.sendAlert({
+        acceptDialog: () => {
+          setShippingMethod({ shippingMethodId: '', slotId: undefined });
+        },
+        buttonText: 'Entendido',
+        icon: '/assets/auna/shipping-method-calendar-info.svg',
+        message: SHIPPING_METHOD_NOT_FOUND,
+        title: SHIPPING_METHOD_NOT_FOUND_TITLE,
+        type: 'Info',
+      });
+    }
+  }, [isAttentionSchedule]);
+
   useEffect(() => {
     setSelectedPaymentGateway(payment?.gateway);
   }, [payment?.gateway]);
@@ -217,10 +215,8 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     setSelectedPaymentGatewayToken(payment?.token);
   }, [payment?.token]);
 
-  const [requestPayload, setRequestPayload] = useState(null);
-
   const matchingStepIndex = CHECKOUT_STEPS.findIndex(
-    ({ link }) => link === pathname
+    ({ link }) => link === router.asPath
   );
   const activeStepIndex = matchingStepIndex !== -1 ? matchingStepIndex : 2;
   const activeStep = CHECKOUT_STEPS[activeStepIndex];
@@ -319,17 +315,17 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
   };
 
   React.useEffect(() => {
-    if (pathname === '/checkout/address') {
+    if (router.asPath === '/checkout/address') {
       sendEventForCheckoutAddress();
     }
-    if (pathname === '/checkout/payment' && !addressGaEventSended) {
+    if (router.asPath === '/checkout/payment' && !addressGaEventSended) {
       sendEventsWhenSkippingFirstStep();
     }
 
-    if (pathname === '/checkout/payment' && addressGaEventSended) {
+    if (router.asPath === '/checkout/payment' && addressGaEventSended) {
       sendEventForCheckoutPayment();
     }
-  }, [pathname]);
+  }, [router.asPath]);
 
   const checkoutView =
     cartLoaded && checkoutLoaded ? (
@@ -337,25 +333,23 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
         items={items}
         checkout={checkout}
         payment={payment}
-        renderAddress={(props) => (
+        renderAddress={() => (
           <>
             <CheckoutAddressSubpage
               ref={checkoutAddressSubpageRef}
               changeSubmitProgress={setSubmitInProgress}
               setAddressSubPageErrors={setAddressSubPageErrors}
               addressSubPageErrors={addressSubPageErrors}
-              {...props}
             />
             <CheckoutShippingSubpage
               ref={checkoutShippingSubpageRef}
               changeSubmitProgress={setSubmitInProgress}
               setAddressSubPageErrors={setAddressSubPageErrors}
               addressSubPageErrors={addressSubPageErrors}
-              {...props}
             />
           </>
         )}
-        renderPayment={(props) => (
+        renderPayment={() => (
           <CheckoutPaymentSubpage
             ref={checkoutPaymentSubpageRef}
             selectedPaymentGateway={selectedPaymentGateway}
@@ -364,16 +358,14 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
             selectPaymentGateway={setSelectedPaymentGateway}
             changeRequestPayload={setRequestPayload}
             requestPayload={requestPayload}
-            {...props}
           />
         )}
-        renderReview={(props) => (
+        renderReview={() => (
           <CheckoutReviewSubpage
             ref={checkoutReviewSubpageRef}
             selectedPaymentGatewayToken={selectedPaymentGatewayToken}
             changeSubmitProgress={setSubmitInProgress}
             requestPayload={requestPayload}
-            {...props}
           />
         )}
       />
@@ -411,7 +403,7 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
             cartLoaded && checkoutLoaded,
             activeStepIndex,
             !!isShippingRequiredForProducts,
-            pathname
+            router.asPath
           )}
           cartResume={prepareCartResume(
             activeStepIndex,

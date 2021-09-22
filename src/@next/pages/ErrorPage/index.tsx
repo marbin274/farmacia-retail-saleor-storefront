@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { EmailLink } from '@components/atoms/EmailLink';
 import { ReactSVG } from 'react-svg';
-import errorLogo from '@temp/images/auna/error-logo.svg';
 
 export const ErrorPage: React.FC = () => (
   <div className="fa-flex fa-items-center fa-justify-center fa-flex-col fa-text-center fa-pt-40 fa-pb-16 fa-px-4 sm:fa-px-8">
     <div className="fa-pl-12">
-      <ReactSVG src={errorLogo} />
+      <ReactSVG src="/assets/auna/error-logo.svg" />
     </div>
     <br />
     <br />

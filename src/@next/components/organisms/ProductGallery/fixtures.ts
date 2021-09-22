@@ -1,10 +1,10 @@
-import productPhoto from "./static.png";
+// import productPhoto from "./static.png";
 
 export const oneImage = [
   {
-    alt: "product",
-    url: productPhoto,
-    url2x: productPhoto,
+    alt: 'product',
+    url: '',
+    url2x: '',
   },
 ];
 

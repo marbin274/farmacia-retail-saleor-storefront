@@ -1,5 +1,5 @@
 import { links } from '@app/pages/AccountPage/paths';
-import { Offline, Online } from '@components/atoms';
+import { Online } from '@components/atoms';
 import { MenuDropdown } from '@components/molecules';
 import {
   OverlayContext,
@@ -21,9 +21,9 @@ import { removePaymentItems } from '@temp/@next/utils/checkoutValidations';
 import { useCart, useSignOut, useUserDetails } from '@temp/@sdk/react';
 import * as appPaths from '@temp/app/routes';
 import classNames from 'classnames';
-import logoImg from 'images/logo.svg';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
 import * as S from './styles';
 import { IProps } from './types';
@@ -38,6 +38,7 @@ const Header: React.FC<IProps> = ({
 }) => {
   const [isVisibleSearchIcon, setVisibleSearchIcon] =
     React.useState<boolean>(false);
+  const router = useRouter();
   const { data: user } = useUserDetails();
   const [signOut] = useSignOut();
   const { items } = useCart();
@@ -92,14 +93,13 @@ const Header: React.FC<IProps> = ({
           content={
             <ul>
               {links.map((it, index) => (
-                <li key={index} data-testid={`${it.testId}__link`}>
-                  <Link
-                    className="fa-w-full fa-flex"
-                    to={it.url}
-                    onClick={closeSearch}
-                  >
-                    {it.label}
-                  </Link>
+                <li
+                  key={index}
+                  className="fa-w-full fa-flex"
+                  data-testid={`${it.testId}__link`}
+                  onClick={closeSearch}
+                >
+                  <Link href={it.url || ''}>{it.label}</Link>
                 </li>
               ))}
               <li
@@ -132,9 +132,15 @@ const Header: React.FC<IProps> = ({
 
   const renderHeaderLogo = () => {
     return (
-      <Link onClick={removePaymentItems} to={appPaths.baseUrl}>
-        <ReactSVG src={logoImg} onClick={closeSearch} />
-      </Link>
+      <ReactSVG
+        className="fa-cursor-pointer"
+        src="/assets/logo.svg"
+        onClick={() => {
+          closeSearch();
+          removePaymentItems();
+          router.push(appPaths.baseUrl);
+        }}
+      />
     );
   };
 
@@ -201,37 +207,30 @@ const Header: React.FC<IProps> = ({
       <div>
         <ul className="fa-flex fa-items-center">
           {isMinLargeScreenPlusOne && renderHeaderUser(overlayContext, false)}
-          <Online>
-            {canShowSearchIcon && (
-              <li
-                className="fa-cursor-pointer fa-w-8 fa-h-8 fa-bg-neutral-light fa-rounded-full fa-flex"
-                onClick={() => onClickSearchIcon(overlayContext)}
-              >
-                <SearchIcon className="fa-m-auto" size={16} />
-              </li>
-            )}
+          {canShowSearchIcon && (
             <li
-              className="fa-cursor-pointer fa-rounded-full fa-border-solid fa-border fa-border-neutral-light fa-p-0.5 fa-ml-2 lg:fa-ml-4"
-              onClick={() => {
-                overlayContext.show(OverlayType.cart, OverlayTheme.right);
-                closeSearch();
-              }}
+              className="fa-cursor-pointer fa-w-8 fa-h-8 fa-bg-neutral-light fa-rounded-full fa-flex"
+              onClick={() => onClickSearchIcon(overlayContext)}
             >
-              <div className="fa-relative fa-bg-neutral-light fa-w-8 fa-h-8 fa-flex fa-rounded-full lg:fa-w-11 lg:fa-h-11">
-                <CartIcon className="fa-m-auto" />
-                {cartItemsQuantity > 0 ? (
-                  <span className="fa-absolute fa--top-2 fa--right-2 fa-bg-primary-medium fa-rounded-full fa-w-5 fa-h-5 fa-flex lg:fa-top-0">
-                    <S.CartItemsQuantity>
-                      {cartItemsQuantity}
-                    </S.CartItemsQuantity>
-                  </span>
-                ) : null}
-              </div>
+              <SearchIcon className="fa-m-auto" size={16} />
             </li>
-          </Online>
-          <Offline>
-            <li>{isMinLargeScreenPlusOne && <span>Offline</span>}</li>
-          </Offline>
+          )}
+          <li
+            className="fa-cursor-pointer fa-rounded-full fa-border-solid fa-border fa-border-neutral-light fa-p-0.5 fa-ml-2 lg:fa-ml-4"
+            onClick={() => {
+              overlayContext.show(OverlayType.cart, OverlayTheme.right);
+              closeSearch();
+            }}
+          >
+            <div className="fa-relative fa-bg-neutral-light fa-w-8 fa-h-8 fa-flex fa-rounded-full lg:fa-w-11 lg:fa-h-11">
+              <CartIcon className="fa-m-auto" />
+              {cartItemsQuantity > 0 ? (
+                <span className="fa-absolute fa--top-2 fa--right-2 fa-bg-primary-medium fa-rounded-full fa-w-5 fa-h-5 fa-flex lg:fa-top-0">
+                  <S.CartItemsQuantity>{cartItemsQuantity}</S.CartItemsQuantity>
+                </span>
+              ) : null}
+            </div>
+          </li>
         </ul>
       </div>
     );

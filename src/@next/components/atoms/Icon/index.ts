@@ -1,2 +1,2 @@
-export * from "./Icon";
-export { IProps as IIconProps } from "./types";
+export * from './Icon';
+export type { IProps as IIconProps } from './types';

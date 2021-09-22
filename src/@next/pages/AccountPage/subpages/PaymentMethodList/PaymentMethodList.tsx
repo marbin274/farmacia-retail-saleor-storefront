@@ -1,22 +1,20 @@
-import React, { FC, useEffect, useRef, useState } from "react";
+import AccountLayout from '@app/pages/AccountPage/AccountLayout';
+import { Alert } from '@components/molecules';
+import { Modal } from '@components/organisms';
+import { CheckIcon, TrashIcon } from '@farmacia-retail/farmauna-components';
+import { alertService } from '@temp/@next/components/atoms/Alert';
 import {
-  useSetDefaultUserCardToken,
-  useDeleteUserCardToken,
   useCreateUserCardToken,
+  useDeleteUserCardToken,
+  useSetDefaultUserCardToken,
   useUserDetails,
-} from "@temp/@sdk/react";
-import { alertService } from "@temp/@next/components/atoms/Alert";
-import CreditCardIcon from "images/auna/credit-card.svg";
-import { Alert } from "@components/molecules";
-import { Modal } from "@components/organisms";
-import { CheckIcon, TrashIcon } from "@farmacia-retail/farmauna-components";
-import { PaymentMethods } from "./components/PaymentMethods";
-import { PatmentMethodFormModal } from "./components/PatmentMethodFormModal";
-import { IProps } from "./types";
-import { ICardTokenizationResult } from "@temp/core/payments/niubiz";
-import AccountLayout from "@app/pages/AccountPage/AccountLayout";
+} from '@temp/@sdk/react';
+import { ICardTokenizationResult } from '@temp/core/payments/niubiz';
+import React, { FC, useEffect, useRef, useState } from 'react';
+import { PatmentMethodFormModal } from './components/PatmentMethodFormModal';
+import { PaymentMethods } from './components/PaymentMethods';
 
-export const PaymentMethodList: FC<IProps> = () => {
+export const PaymentMethodList: FC = () => {
   const { data: user } = useUserDetails();
   const [showAddModal, setShowAddModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -76,9 +74,9 @@ export const PaymentMethodList: FC<IProps> = () => {
 
   const showGenericError = () => {
     alertService.sendAlert({
-      buttonText: "Entendido",
-      message: "Ha ocurrido un error al procesar la solicitud",
-      type: "Text",
+      buttonText: 'Entendido',
+      message: 'Ha ocurrido un error al procesar la solicitud',
+      type: 'Text',
     });
   };
 
@@ -175,7 +173,11 @@ export const PaymentMethodList: FC<IProps> = () => {
           disabled={false}
         >
           <div className="fa-flex fa-items-center fa-flex-col">
-            <img src={CreditCardIcon} alt="credit-card" className="fa-mb-6" />
+            <img
+              src="/assets/auna/credit-card.svg"
+              alt="credit-card"
+              className="fa-mb-6"
+            />
             <p className="fa-text-center fa-mb-4">
               ¿Seguro que deseas borrar esta tarjeta de Farmauna?
             </p>

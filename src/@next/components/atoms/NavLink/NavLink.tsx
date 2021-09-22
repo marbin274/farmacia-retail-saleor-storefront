@@ -1,11 +1,5 @@
-// TODO: Once used in @next - move utils to @utils
-// Use slugs everywhere (they are used partially right now)
-
-// NOTE: This component should only be used for navigation inside application
-// For external urls, use different component
-
 import React from 'react';
-
+import Link from 'next/link';
 import {
   generateCategoryUrl,
   generateCollectionUrl,
@@ -45,13 +39,10 @@ export const NavLink: React.FC<IProps> = ({
   const linkUrl = getLinkUrl({ category, collection, page });
 
   return linkUrl ? (
-    <S.Link
-      to={linkUrl}
-      activeClassName="navlink-active"
-      fullWidth={fullWidth}
-      {...props}
-    >
-      {children ? <>{children}</> : name}
-    </S.Link>
+    <Link href={linkUrl}>
+      <S.Link className="navlink-active" fullWidth={fullWidth} {...props}>
+        {children ? <>{children}</> : name}
+      </S.Link>
+    </Link>
   ) : null;
 };

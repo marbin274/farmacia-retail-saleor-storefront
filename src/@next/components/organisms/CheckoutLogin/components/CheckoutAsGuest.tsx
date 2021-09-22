@@ -1,12 +1,11 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { Button } from '@farmacia-retail/farmauna-components';
 import {
   OverlayContextInterface,
   OverlayTheme,
   OverlayType,
 } from '@temp/@next/components/organisms/OverlayComponent';
-import { Button } from '@farmacia-retail/farmauna-components';
-import MedicalHealth from 'images/medical-health.svg';
+import Link from 'next/link';
+import React from 'react';
 
 const CheckoutAsGuest: React.FC<{
   overlay: OverlayContextInterface;
@@ -18,17 +17,19 @@ const CheckoutAsGuest: React.FC<{
     </span>
     <img
       className="fa-mb-6"
-      src={MedicalHealth}
+      src="/assets/medical-health.svg"
       alt="No soy cliente de Farmauna"
       style={{ maxWidth: '4.5rem' }}
     />
     <span className="fa-mb-6 fa-font-medium fa-text-sm">
       Quiero comprar como:
     </span>
-    <Link to={checkoutUrl} className="fa-w-full fa-mb-4">
-      <Button size="large" className="fa-w-full">
-        Invitado
-      </Button>
+    <Link href={checkoutUrl}>
+      <div className="fa-w-full fa-mb-4">
+        <Button size="large" className="fa-w-full">
+          Invitado
+        </Button>
+      </div>
     </Link>
     <span className="fa-mb-4 fa-font-medium fa-text-sm">
       ¿No tienes cuenta?

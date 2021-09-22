@@ -1,7 +1,6 @@
 import { ProductListHeader } from '@app/components/molecules';
 import { ProductListAUNA } from '@app/components/organisms';
 import { FilterSidebar } from '@app/components/organisms/FilterSidebar';
-import { Breadcrumbs } from '@farmacia-retail/farmauna-components';
 import { CategoryDetails_category } from '@sdk/queries/gqlTypes/CategoryDetails';
 import { CategoryProductsVariables } from '@sdk/queries/gqlTypes/CategoryProducts';
 import {
@@ -19,7 +18,9 @@ import { IItems } from '@temp/@sdk/api/Cart/types';
 import { useCategoryProducts } from '@temp/@sdk/react';
 import { baseUrl } from '@temp/app/routes';
 import { EmptyProduct } from '@components/molecules';
-import { extractBreadcrumbs } from '@components/organisms/Breadcrumbs';
+
+import { extractBreadcrumbs } from '@temp/@next/components/organisms/BreadcrumbsLegacy';
+
 import { structuredData } from '@temp/core/SEO/Category/structuredData';
 import {
   convertSortByFromString,
@@ -30,6 +31,7 @@ import {
 import { IFilterAttributes, IFilters } from '@types';
 import * as React from 'react';
 import { CategoryProductListHeader, CategoryWrapper } from './styles';
+import Breadcrumbs from '@temp/@next/components/organisms/Breadcrumbs/Breadcrumbs';
 import { getLocationForCategories } from '@temp/@sdk/gaConfig';
 
 interface SortItem {

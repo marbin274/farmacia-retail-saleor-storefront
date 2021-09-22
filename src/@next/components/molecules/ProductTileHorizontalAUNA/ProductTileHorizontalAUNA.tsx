@@ -6,7 +6,7 @@ import {
 } from '@sdk/utils/products';
 import { getProductPricingClass } from '@temp/@next/utils/products';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import ItemsHandler from '../../organisms/ItemsHandler/ItemsHandler';
 import * as S from './styles';
 import { IProps } from './types';
@@ -39,16 +39,18 @@ export const ProductTileHorizontalAUNA: React.FC<IProps> = ({
 
   return (
     <S.ProductCard canAddToCart={canAddToCart}>
-      <Link to={productLink} key={product.id}>
-        <S.WrapperImage>
+      <Link href={productLink} key={product.id}>
+        <S.WrapperImage className="fa-cursor-pointer">
           <div className="img">
             <Thumbnail height={510} width={510} source={thumbnails} />
           </div>
         </S.WrapperImage>
       </Link>
       <S.WrapperDetail>
-        <Link to={productLink} key={product.id}>
-          <S.ProductTitle>{product.name}</S.ProductTitle>
+        <Link href={productLink} key={product.id}>
+          <S.ProductTitle className="fa-cursor-pointer">
+            {product.name}
+          </S.ProductTitle>
         </Link>
         <S.ProductPrice>
           <div className={getProductPricingClass(canAddToCart, isOnSale)}>

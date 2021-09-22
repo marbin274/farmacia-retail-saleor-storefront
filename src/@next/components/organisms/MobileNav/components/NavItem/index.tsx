@@ -49,6 +49,7 @@ export const NavItem: React.FC<NavItemProps> = ({
         <S.NavLink
           isCollection={isCollection}
           item={{ ...item, name: item.name?.toLowerCase() } as any}
+          onClick={hideOverlay}
           className={classNames({
             'fa-text-neutral-darkest fa-capitalize': isOpenMenu,
           })}
@@ -83,7 +84,9 @@ export const NavItem: React.FC<NavItemProps> = ({
           </div>
         )}
       </div>
-      {isOpenMenu && hasSubNavigation && <NavChildren subItems={childrens} />}
+      {isOpenMenu && hasSubNavigation && (
+        <NavChildren hideOverlay={hideOverlay} subItems={childrens} />
+      )}
     </S.NavMenuItem>
   );
 };

@@ -127,6 +127,7 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
                   onConfirm={() => removeItemAndHideModal()}
                   onCancel={() => setIsModelOpen(false)}
                   onClose={() => setIsModelOpen(false)}
+                  overlay={overlay}
                 />
                 {showShippingPrice ? (
                   <FooterWithShippingPrice

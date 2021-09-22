@@ -1,9 +1,8 @@
+import { Overlay } from '@components/organisms/OverlayComponent';
 import { Button } from '@farmacia-retail/farmauna-components';
 import farmatheme from '@farmatheme';
 import { media, mediaUp, styled } from '@styles';
 import { aunaDiscount } from '@temp/@next/globalStyles/constants';
-import { Overlay } from '@components/organisms/OverlayComponent';
-import { Link } from 'react-router-dom';
 
 export const OverlayWrapper = styled(Overlay)`
   .overlay__right {
@@ -60,7 +59,8 @@ export const ListItem = styled.li`
   }
 `;
 
-export const ListItemLinkImage = styled(Link)`
+export const ListItemLinkImage = styled.div`
+  cursor: pointer;
   img {
     height: 4rem;
     margin: auto;

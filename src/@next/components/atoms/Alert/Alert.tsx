@@ -1,8 +1,8 @@
 import { Overlay } from '@components/organisms';
-import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router';
-import { ReactSVG } from 'react-svg';
 import { Button } from '@farmacia-retail/farmauna-components';
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
+import { ReactSVG } from 'react-svg';
 import { alertService } from './AlertService';
 import * as S from './styles';
 import { alertTypes, IAlertServiceProps } from './types';
@@ -14,7 +14,7 @@ const dataInitial: IAlertServiceProps = {
 };
 
 export const Alert: React.FC<any> = () => {
-  const history = useHistory();
+  const router = useRouter();
   const [alert, setAlert] = useState<IAlertServiceProps>(dataInitial);
   const [show, setShow] = useState(false);
   useEffect(() => {
@@ -44,7 +44,7 @@ export const Alert: React.FC<any> = () => {
     setShow(false);
     alertService.clearAlert();
     if (alert.redirectionLink) {
-      history.push(alert.redirectionLink);
+      router.push(alert.redirectionLink);
     }
   };
 

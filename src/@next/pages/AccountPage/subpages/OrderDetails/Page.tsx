@@ -11,12 +11,11 @@ import {
 import { CartTable } from '@components/organisms';
 import { NotFound } from '@pages';
 import { ILine } from '@components/organisms/CartTable/ProductRow';
-import AunaError from '@temp/images/auna/auna-error.svg';
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
 import { orderHistoryUrl } from '@app/pages/AccountPage/paths';
 import * as S from './styles';
+import Link from 'next/link';
 
 const Title: React.FC<{ className?: string }> = ({
   children,
@@ -124,13 +123,14 @@ const Page: React.FC<{
   return (
     <div className="fa-mx-auto fa-my-0">
       {!guest && (
-        <Link
-          className="fa-text-sm fa-flex fa-items-center fa-mt-10 md:fa-mt-8 fa-mb-8 fa-text-interactive"
-          to={orderHistoryUrl}
-        >
-          <ArrowLeftIcon className="fa-mr-4 fa-inline-block" />{' '}
-          <span>Regresar a historial de pedidos</span>
-        </Link>
+        <span className="fa-text-sm fa-flex fa-items-center fa-pt-8 fa-pb-8 fa-text-interactive fa-cursor-pointer">
+          <Link href={orderHistoryUrl}>
+            <span>
+              <ArrowLeftIcon className="fa-mr-4 fa-inline-block" />{' '}
+              <span>Regresar a historial de pedidos</span>
+            </span>
+          </Link>
+        </span>
       )}
       <div className="fa-bg-white fa-rounded-3xl fa-p-10 fa-flex fa-flex-col">
         <span className="fa-mb-6 fa-font-semibold fa-text-xl">{`${address.firstName} ${address.lastName}`}</span>
@@ -148,16 +148,17 @@ const Page: React.FC<{
                 {order.customerStatusDisplay}
               </Description>
             </div>
-            {order.shippingStatus === ShippingStatusEnum.DELIVERED &&
-              order.status === OrderStatus.PARTIALLY_FULFILLED && (
+            {order.shippingStatus === ShippingStatusEnum.DELIVERED ||
+              (true && order.status === OrderStatus.PARTIALLY_FULFILLED) ||
+              (true && (
                 <span>
                   <ReactSVG
-                    src={AunaError}
+                    src="/assets/auna/auna-error.svg"
                     className="fa-inline-block fa-align-middle fa-h-5 fa-mr-2.5"
                   />
                   <span>Este pedido fue entregado parcialmente</span>
                 </span>
-              )}
+              ))}
           </div>
           <div>{getAdressGeneral()}</div>
           <div>{getAdressDetails()}</div>

@@ -1,4 +1,5 @@
 import { LocalRepository } from '@temp/@sdk/repository';
+import { WINDOW_EXISTS } from './consts';
 declare global {
   interface Window {
     dataLayer: any;
@@ -15,7 +16,9 @@ export enum steps {
   reviewCheckoutRoute,
 }
 
-const location: string = `${document.location.protocol}//${document.location.hostname}${document.location.pathname}${document.location.search}`;
+const location: string = WINDOW_EXISTS
+  ? `${document.location.protocol}//${document.location.hostname}${document.location.pathname}${document.location.search}`
+  : '';
 
 export const ecommerceProductsMapper = (products?: any[] | null) => {
   return (
@@ -175,6 +178,7 @@ export const launchPurchaseEvent = (
 };
 
 export const launchSetLocation = () => {
+  if (!WINDOW_EXISTS) return;
   return pushToDatalayer({
     originalLocation: location,
   });
@@ -206,6 +210,7 @@ export const launchClickOnBanner = (
 };
 
 const pushToDatalayer = (data: any) => {
+  if (!WINDOW_EXISTS) return;
   return window?.dataLayer?.push({ ...data, userId: getGaUserId() || '' });
 };
 

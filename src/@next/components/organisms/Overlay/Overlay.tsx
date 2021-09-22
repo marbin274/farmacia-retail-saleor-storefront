@@ -1,7 +1,7 @@
+import { WINDOW_EXISTS } from '@temp/@sdk/consts';
 import React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Transition } from 'react-transition-group';
-
 import * as S from './styles';
 import { IProps } from './types';
 
@@ -19,9 +19,18 @@ export const Overlay: React.FC<IProps> = ({
     open: show,
     position,
   };
-  const targetDom = target || document.getElementById('modal-root');
+
+  const getTargetDOM = () => {
+    if (!target) {
+      return WINDOW_EXISTS ? document.getElementById('modal-root') : null;
+    }
+
+    return target;
+  };
+  const targetDOM = getTargetDOM();
+
   return (
-    targetDom &&
+    targetDOM &&
     ReactDOM.createPortal(
       <Transition in={show} timeout={duration} unmountOnExit>
         {(state) => (
@@ -45,7 +54,7 @@ export const Overlay: React.FC<IProps> = ({
           </S.Overlay>
         )}
       </Transition>,
-      targetDom
+      targetDOM
     )
   );
 };

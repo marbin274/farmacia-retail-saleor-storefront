@@ -87,6 +87,7 @@ export const Container = styled.div`
   .home-page__product {
     border-width: 0;
     padding: 2rem;
+
     .description {
       height: 4rem;
       margin-bottom: 0.5rem;

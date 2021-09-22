@@ -1,10 +1,9 @@
+import { Button, InputField } from '@farmacia-retail/farmauna-components';
 import { Formik } from 'formik';
 import React from 'react';
-import { Button, InputField } from '@farmacia-retail/farmauna-components';
+import { ReactSVG } from 'react-svg';
 import * as S from './styles';
 import { IProps } from './types';
-import { ReactSVG } from 'react-svg';
-import voucherSVG from '@temp/images/auna/checkout-cupon-small.svg';
 
 export const DiscountForm: React.FC<IProps> = ({
   handleSubmit,
@@ -116,7 +115,7 @@ export const DiscountForm: React.FC<IProps> = ({
             {discount?.promoCode && (
               <S.ChipsWrapper className="promoCode">
                 <div className="voucherTitle">
-                  <ReactSVG src={voucherSVG} />
+                  <ReactSVG src="/assets/auna/checkout-cupon-small.svg" />
 
                   <span data-cy="checkoutPaymentPromoCodeChip">
                     {discount?.promoCode}

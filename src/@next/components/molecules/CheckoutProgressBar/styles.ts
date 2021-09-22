@@ -1,10 +1,7 @@
-import { defaultTheme, media, mediaUp, styled } from "@styles";
-import { aunaDisabled, aunaPrimary, white } from "@styles/constants";
-import addressIcon from "images/auna/checkout-address.svg";
-import doneIcon from "images/auna/checkout-done.svg";
-import paymentIcon from "images/auna/checkout-payment.svg";
-import { DOT_STATUS } from "./";
-import farmatheme from "@farmatheme";
+import farmatheme from '@farmatheme';
+import { defaultTheme, media, mediaUp, styled } from '@styles';
+import { aunaDisabled, aunaPrimary, white } from '@styles/constants';
+import { DOT_STATUS } from './';
 
 export const ICON_COLORS = [
   aunaDisabled, // INACTIVE
@@ -18,28 +15,23 @@ export const ICON_BG_COLORS = [
   aunaPrimary, // DONE
 ];
 
-export const ICONS = [
-  addressIcon,
-  // deliveryIcon,
-  paymentIcon,
-  doneIcon,
-];
-
 export const flexCentered = {
-  alignItems: "center",
-  display: "flex",
-  height: "100%",
-  justifyContent: "center",
-  width: "100%",
+  alignItems: 'center',
+  display: 'flex',
+  height: '100%',
+  justifyContent: 'center',
+  width: '100%',
 };
 
 export const Dot = styled.div<{ status: DOT_STATUS }>`
   position: relative;
-  width: 1.5rem;
+  width: 1.7rem;
   height: 1.5rem;
   border: none;
-  background-color: ${props =>
-    props.status === DOT_STATUS.INACTIVE ? "#008A66" : farmatheme.theme.colors.interactive};
+  background-color: ${(props) =>
+    props.status === DOT_STATUS.INACTIVE
+      ? '#008A66'
+      : farmatheme.theme.colors.interactive};
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -94,7 +86,8 @@ export const ProgressBar = styled.div<{ done?: boolean }>`
   z-index: 0;
   width: 100%;
   height: 4px;
-  background-color: ${props => (props.done ? farmatheme.theme.colors.interactive : "#008A66")};
+  background-color: ${(props) =>
+    props.done ? farmatheme.theme.colors.interactive : '#008A66'};
 `;
 
 export const Step = styled.div`
@@ -132,10 +125,7 @@ export const GoBack = styled.div`
   height: 1.5rem;
   color: #ffffff;
   cursor: pointer;
-  a {
-    display: flex;
-    align-items: center;
-  }
+
   span {
     margin-left: 1rem;
   }

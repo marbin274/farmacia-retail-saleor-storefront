@@ -1,22 +1,17 @@
-import React, { FC } from 'react';
-import { RouteComponentProps } from 'react-router-dom';
+import { Loader } from '@components/atoms';
+import { NotFound } from '@pages';
+import { useLanding } from '@temp/@sdk/react';
 import {
   LANDING_COLLECTIONS_PER_PAGE,
   PRODUCTS_PER_PAGE,
 } from '@temp/core/config';
-import { NotFound } from '@pages';
-import { Loader } from '@components/atoms';
+import React, { FC } from 'react';
 import Page from './Page';
 import { Container } from './styles';
-import { useLanding } from '@temp/@sdk/react';
 
-type IProps = RouteComponentProps<{ slug: string }>;
+type IProps = { slug: string };
 
-export const LandingPage: FC<IProps> = ({
-  match: {
-    params: { slug },
-  },
-}) => {
+export const LandingPage: FC<IProps> = ({ slug }) => {
   const { data, loading } = useLanding({
     collectionsFirst: LANDING_COLLECTIONS_PER_PAGE,
     productsFirst: PRODUCTS_PER_PAGE,

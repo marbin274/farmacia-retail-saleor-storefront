@@ -6,15 +6,14 @@ import {
   CreditCardIcon,
 } from '@components/atoms';
 import * as S from './styles';
-import card from '@temp/images/card.svg';
 import { Button } from '@farmacia-retail/farmauna-components';
-import { useHistory } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import { paymentMethodsUrl } from '@temp/@next/pages/AccountPage/paths';
 import { useUserDetails } from '@temp/@sdk/react';
 
 export const MainCardTile: React.FC = () => {
   const { data: user } = useUserDetails();
-  const history = useHistory();
+  const router = useRouter();
   return (
     <S.TileWrapper>
       <Tile className="rounded-md">
@@ -23,7 +22,6 @@ export const MainCardTile: React.FC = () => {
             <S.HeaderSmall className="personal_data fa-justify-center">
               Mi tarjeta principal
             </S.HeaderSmall>
-
             {user?.cardTokens[0] ? (
               <>
                 <S.AttributeWrapper>
@@ -62,7 +60,7 @@ export const MainCardTile: React.FC = () => {
                   <Button
                     size="small"
                     variant="outline"
-                    onClick={() => history.push(paymentMethodsUrl)}
+                    onClick={() => router.push(paymentMethodsUrl)}
                   >
                     Ver mis medios de pago
                   </Button>
@@ -71,7 +69,7 @@ export const MainCardTile: React.FC = () => {
             ) : (
               <>
                 <S.AttributeWrapper>
-                  <S.Image src={card} alt="card" />
+                  <S.Image src={'/assets/card.svg'} alt="card" />
                 </S.AttributeWrapper>
                 <S.AttributeWrapper>
                   <Attribute
@@ -83,7 +81,7 @@ export const MainCardTile: React.FC = () => {
                   <Button
                     size="small"
                     variant="outline"
-                    onClick={() => history.push(paymentMethodsUrl)}
+                    onClick={() => router.push(paymentMethodsUrl)}
                   >
                     Agregar tarjeta
                   </Button>

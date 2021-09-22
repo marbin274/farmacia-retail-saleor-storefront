@@ -31,12 +31,12 @@ export const UnderConstruction: React.FC<{ overlay: OverlayContextInterface }> =
 
             <S.CardImageContainer>
               <S.CardImage>
-                <ReactSVG src={S.underConstructionIcon} />
+                <ReactSVG src="/assets/auna/under-construction.svg" />
               </S.CardImage>
             </S.CardImageContainer>
 
             <S.CloseButton onClick={hide}>
-              <ReactSVG src={S.closeIcon} />
+              <ReactSVG src="/assets/modal-close.svg" />
             </S.CloseButton>
           </S.Card>
         </S.Wrapper>

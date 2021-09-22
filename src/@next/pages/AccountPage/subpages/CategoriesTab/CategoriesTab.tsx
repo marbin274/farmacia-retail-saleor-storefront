@@ -6,8 +6,6 @@ import {
   useSaveFavoriteCategories,
   useUserDetails,
 } from '@temp/@sdk/react';
-import { default as imageDesktop } from '@temp/images/auna/select-categories-desktop.png';
-import { default as imageMobile } from '@temp/images/auna/select-categories-mobile.png';
 import lodash from 'lodash';
 import React from 'react';
 import AccountLayout from '@app/pages/AccountPage/AccountLayout';
@@ -95,8 +93,8 @@ export const CategoriesTab: React.FC = () => {
     <AccountLayout>
       <div className="account-categories fa-relative md:fa-bg-white md:fa-p-8 md:fa-rounded-3xl">
         <ImagesTop
-          imageMobile={imageMobile}
-          imageDesktop={imageDesktop}
+          imageMobile={'/assets/auna/select-categories-mobile.png'}
+          imageDesktop={'/assets/auna/select-categories-desktop.png'}
           className="fa-mb-4"
         />
         <p className="fa-text-center fa-font-medium fa-text-sm fa-mb-4">

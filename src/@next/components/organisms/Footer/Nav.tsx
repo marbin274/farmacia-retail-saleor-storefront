@@ -1,17 +1,14 @@
+import { cndUrl } from '@temp/core/constants';
 import { NavLink } from '@components/atoms/NavLinkComponent';
 import SocialMedia from '@components/molecules/SocialMedia';
 import { FooterSecondaryMenu } from '@sdk/queries/gqlTypes/FooterSecondaryMenu';
 import { DOCUMENTS_URLS_S3, PHONE_NUMBER } from '@temp/core/config';
 import classNames from 'classnames';
 import * as React from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
-import iconPreviousEmail from '../../../../images/icon-previous-email.svg';
-import logoFarmaunaFooter from '../../../../images/logo-farmauna-footer.svg';
-import iconPhone from '../../../../images/phone-icon.svg';
 import { Skeleton } from './skeleton';
 import * as S from './styles';
 
-type IProps = RouteComponentProps & {
+type IProps = {
   secondaryMenu: FooterSecondaryMenu;
   loading: boolean;
 };
@@ -65,7 +62,7 @@ const Nav: React.FC<IProps> = ({ secondaryMenu, loading }) => {
             <div>
               <img
                 height={22}
-                src={logoFarmaunaFooter}
+                src={cndUrl + '/assets/logo-farmauna-footer.svg'}
                 alt="Logo Farmauna"
                 width={133}
               />
@@ -82,7 +79,7 @@ const Nav: React.FC<IProps> = ({ secondaryMenu, loading }) => {
                 consultas@farmauna.com
               </a>
               <S.MailToImg
-                src={iconPreviousEmail}
+                src={cndUrl + '/assets/icon-previous-email.svg'}
                 alt="logo email"
                 width="14"
                 height="9"
@@ -90,7 +87,7 @@ const Nav: React.FC<IProps> = ({ secondaryMenu, loading }) => {
             </span>
             <div className="fa-mt-8 fa-flex fa-items-center">
               <S.PhoneImg
-                src={iconPhone}
+                src={cndUrl + '/assets/phone-icon.svg'}
                 alt="logo phone"
                 width="25"
                 height="25"
@@ -133,4 +130,4 @@ const Nav: React.FC<IProps> = ({ secondaryMenu, loading }) => {
   );
 };
 
-export default withRouter(Nav);
+export default Nav;
