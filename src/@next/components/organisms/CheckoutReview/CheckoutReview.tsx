@@ -4,6 +4,7 @@ import {
   formatShippingMethodDateToString,
   getScheduleTimesFormat,
 } from '@temp/@next/utils/dateUtils';
+import { SHIPPING_TYPES } from '@temp/core/config';
 import React from 'react';
 import * as S from './styles';
 import { IProps } from './types';
@@ -64,7 +65,16 @@ const CheckoutReview: React.FC<IProps> = ({
           Tiempo de entrega
         </S.Title>
         {!scheduleDate ? (
-          <S.TextBold>{shippingMethodName}</S.TextBold>
+          <>
+            <S.TextBold>{shippingMethodName}</S.TextBold>
+            {checkout?.shippingMethod?.methodType?.code ===
+              SHIPPING_TYPES.express30 && (
+              <>
+                <br />
+                <S.TextBold>{'(30 minutos aproximadamente)'}</S.TextBold>
+              </>
+            )}
+          </>
         ) : (
           <>
             <S.TextBold> {shippingMethodName}</S.TextBold>

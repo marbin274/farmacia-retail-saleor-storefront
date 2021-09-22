@@ -101,10 +101,17 @@ export interface ICheckoutAddress {
   longitude?: number | null;
 }
 
+export interface ICheckoutModelShippingMethodMethodType {
+  id: string;
+  code: string;
+  name: string;
+}
+
 export interface ICheckoutModelShippingMethod {
   id: string;
   name: string;
   price: ICheckoutModelPriceValue | null;
+  methodType: ICheckoutModelShippingMethodMethodType | null;
 }
 
 export interface ICheckoutModelPromoCodeDiscount {
