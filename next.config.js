@@ -7,10 +7,10 @@ module.exports = {
           {
             key: 'Cache-Control',
             value: 'public, max-age=31536000, must-revalidate',
-          }
+          },
         ],
       },
-    ]
+    ];
   },
   webpack: (config, _) => {
     config.resolve.alias = {

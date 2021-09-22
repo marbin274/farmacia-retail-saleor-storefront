@@ -163,7 +163,6 @@ export const CheckoutShippingSlot: React.FC<ICheckoutShippingSlotProps> = ({
                     onClick={handleOnclick}
                   />
                 );
-
               case SHIPPING_TYPES.expressNextDay:
                 return (
                   <ExpressShippingMethod
@@ -175,7 +174,17 @@ export const CheckoutShippingSlot: React.FC<ICheckoutShippingSlotProps> = ({
                     onClick={handleOnclick}
                   />
                 );
-
+              case SHIPPING_TYPES.express30:
+                return (
+                  <ExpressShippingMethod
+                    key={id}
+                    shippingSlots={slots?.express30}
+                    shippingMethod={shippingMethod}
+                    formikErrors={formikErrors}
+                    values={values}
+                    onClick={handleOnclick}
+                  />
+                );
               case SHIPPING_TYPES.scheduled:
               case SHIPPING_TYPES.scheduledPrime:
                 return (

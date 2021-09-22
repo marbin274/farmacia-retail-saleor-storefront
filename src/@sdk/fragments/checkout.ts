@@ -231,6 +231,9 @@ export const checkoutFragment = gql`
       nextDay {
         ...ShippingSlot
       }
+      express30 {
+        ...ShippingSlot
+      }
       datetime
     }
     slotId
