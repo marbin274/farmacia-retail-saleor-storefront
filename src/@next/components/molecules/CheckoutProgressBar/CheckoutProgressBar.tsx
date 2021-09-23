@@ -1,10 +1,9 @@
-import { CHECKOUT_STEPS } from '@temp/core/config';
-import React from 'react';
-import Link from 'next/link';
 import { BackIcon, CheckIcon } from '@farmacia-retail/farmauna-components';
+import { LocalRepository } from '@temp/@sdk/repository';
+import Link from 'next/link';
+import React from 'react';
 import * as S from './styles';
 import { IProps, IStep } from './types';
-import { LocalRepository } from '@temp/@sdk/repository';
 
 export enum DOT_STATUS {
   INACTIVE,
@@ -23,17 +22,7 @@ const drawDot = (step: IStep, status: DOT_STATUS) => (
   </S.Dot>
 );
 
-const generateDot = (
-  step: IStep,
-  currentActiveStep: number,
-  isLastStep = false
-) => {
-  if (
-    isLastStep &&
-    step.index < CHECKOUT_STEPS[CHECKOUT_STEPS.length - 1].index
-  ) {
-    return drawDot(step, DOT_STATUS.INACTIVE);
-  }
+const generateDot = (step: IStep, currentActiveStep: number) => {
   if (step.index < currentActiveStep) {
     return drawDot(step, DOT_STATUS.DONE);
   } else if (step.index === currentActiveStep) {
@@ -52,7 +41,7 @@ const generateProgressBar = (
   const localRepository = new LocalRepository();
   if (index !== numberOfSteps - 1) {
     return localRepository.getPurchase() &&
-      currentPath === '/checkout/review' ? (
+      currentPath === '/order-finalized' ? (
       <S.ProgressBar done={false} />
     ) : (
       <S.ProgressBar done={currentActive > index} />
@@ -69,8 +58,8 @@ const generateSteps = (
   return steps?.map((step) => {
     return (
       <S.Step key={step.index}>
-        {localRepository.getPurchase() && currentPath === '/checkout/review' ? (
-          <span>{generateDot(step, currentActive, true)}</span>
+        {localRepository.getPurchase() && currentPath === '/order-finalized' ? (
+          <span>{generateDot(step, currentActive)}</span>
         ) : (
           <Link href={step.link}>{generateDot(step, currentActive)}</Link>
         )}

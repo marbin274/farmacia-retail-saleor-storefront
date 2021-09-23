@@ -251,11 +251,12 @@ const CheckoutPage: React.FC = () => {
           ecommerceProductsMapper(items)
         );
         break;
-      case 2:
-        if (checkoutReviewSubpageRef.current?.complete) {
-          checkoutReviewSubpageRef.current?.complete();
-        }
-        break;
+      // TODO: Descomentar cuando se reactive la pagina de review antes de pagar
+      // case 2:
+      //   if (checkoutReviewSubpageRef.current?.complete) {
+      //     checkoutReviewSubpageRef.current?.complete();
+      //   }
+      //   break;
     }
   };
   const shippingTaxedPrice =

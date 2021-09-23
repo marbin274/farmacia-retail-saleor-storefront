@@ -12,6 +12,7 @@ import {
   optimizelyClient,
 } from '@temp/libraries/optimizely/optimizelyConfig';
 import { AppProps } from 'next/app';
+import Head from 'next/head';
 import React from 'react';
 import { positions, Provider as AlertProvider } from 'react-alert';
 import { ThemeProvider } from 'styled-components';
@@ -26,30 +27,38 @@ export default function _App(props: AppProps) {
   GtmConfig.setTagManager();
 
   return (
-    <OptimizelyProvider
-      optimizely={optimizelyClient}
-      user={{
-        id: getOptimizelyUserId(),
-      }}
-    >
-      <ThemeProvider theme={defaultTheme}>
-        <AlertProvider
-          template={NotificationTemplate as any}
-          {...notificationOptions}
-        >
-          <GlobalStyle />
-          <ApolloAdapter>
-            <ShopProvider>
-              <OverlayProvider>
-                <FeaturedPluginsProvider>
-                  <App {...props} />
-                </FeaturedPluginsProvider>
-                <AlertNotification />
-              </OverlayProvider>
-            </ShopProvider>
-          </ApolloAdapter>
-        </AlertProvider>
-      </ThemeProvider>
-    </OptimizelyProvider>
+    <>
+      <Head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
+      </Head>
+      <OptimizelyProvider
+        optimizely={optimizelyClient}
+        user={{
+          id: getOptimizelyUserId(),
+        }}
+      >
+        <ThemeProvider theme={defaultTheme}>
+          <AlertProvider
+            template={NotificationTemplate as any}
+            {...notificationOptions}
+          >
+            <GlobalStyle />
+            <ApolloAdapter>
+              <ShopProvider>
+                <OverlayProvider>
+                  <FeaturedPluginsProvider>
+                    <App {...props} />
+                  </FeaturedPluginsProvider>
+                  <AlertNotification />
+                </OverlayProvider>
+              </ShopProvider>
+            </ApolloAdapter>
+          </AlertProvider>
+        </ThemeProvider>
+      </OptimizelyProvider>
+    </>
   );
 }

@@ -59,9 +59,9 @@ export const META_DEFAULTS = {
 };
 export enum CheckoutStep {
   Address = 1,
-  Shipping,
+  // Shipping,
   Payment,
-  Review,
+  // Review,
 }
 export const CHECKOUT_STEPS = [
   {
@@ -78,18 +78,18 @@ export const CHECKOUT_STEPS = [
     link: '/checkout/payment',
     name: 'Datos de Pago',
     nextActionName: 'Confirmar pago',
-    nextStepLink: '/checkout/review',
+    nextStepLink: '/order-finalized',
     onlyIfShippingRequired: false,
     step: CheckoutStep.Payment,
   },
   {
     index: 2,
-    link: '/checkout/review',
+    link: '/order-finalized',
     name: '¡Listo!',
     nextActionName: 'Pagar y hacer pedido',
     nextStepLink: '/order-finalized',
     onlyIfShippingRequired: false,
-    step: CheckoutStep.Review,
+    // step: CheckoutStep.Review,
   },
 ];
 

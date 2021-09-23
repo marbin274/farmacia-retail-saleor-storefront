@@ -94,12 +94,15 @@ export const CartBox = styled.div`
 export const CartItemQuantity = styled.div`
   left: 6.2rem;
   position: absolute;
-  top: 0.5rem;
+  top: 0.3rem;
+  margin-left: 0.8rem;
   @media (max-width: $medium-screen) {
     top: -0.5rem;
   }
   > span {
     color: white;
+    position: relative;
+    margin: auto;
   }
 `;
 export const CartIcon = styled.img`

@@ -124,7 +124,7 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
     } else {
       setAddressSubPageErrors([]);
       if (!clicked) {
-        router.push(CHECKOUT_STEPS[1].nextStepLink);
+        router.push(CHECKOUT_STEPS[0].nextStepLink);
       }
     }
   };

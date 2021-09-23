@@ -38,11 +38,12 @@ const CheckoutRouter: FC<IRouterProps> = ({
       return renderAddress();
     case CHECKOUT_STEPS[1].link:
       return renderPayment();
-    case CHECKOUT_STEPS[2].link:
-      return renderReview();
     default:
       router.push(getStepLink());
       return <></>;
+    // TODO: Descomentar cuando se reactive la pagina de review antes de pagar
+    // case CHECKOUT_STEPS[2].link:
+    //   return renderReview();
   }
 };
 

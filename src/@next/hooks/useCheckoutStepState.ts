@@ -32,18 +32,16 @@ export const useCheckoutStepState = (
     const isPaymentStep =
       (isShippingStep && !!checkout?.shippingMethod) ||
       !isShippingRequiredForProducts;
-    const isReviewStep =
-      isPaymentStep && !!checkout?.billingAddress && !!payment?.id;
+    // TODO: Descomentar cuando se reactive la pagina de review antes de pagar
+    // const isReviewStep =
+    //   isPaymentStep && !!checkout?.billingAddress && !!payment?.id;
 
-    if (isReviewStep) {
-      return CheckoutStep.Review;
-    } else if (isPaymentStep) {
-      return CheckoutStep.Payment;
-    } else if (isShippingStep) {
-      return CheckoutStep.Shipping;
-    } else {
-      return CheckoutStep.Address;
-    }
+    // if (isReviewStep) {
+    //   return CheckoutStep.Review;
+    // } else
+    // } else if (isShippingStep) {
+    //   return CheckoutStep.Shipping;
+    return isPaymentStep ? CheckoutStep.Payment : CheckoutStep.Address;
   };
 
   const [step, setStep] = useState(getStep());

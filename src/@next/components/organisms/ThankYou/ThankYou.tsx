@@ -92,7 +92,7 @@ const ThankYou: React.FC<IProps> = ({
         <CheckoutProgressBar
           steps={steps}
           activeStepIndex={2}
-          pathName={'/checkout/review'}
+          pathName={'/order-finalized'}
         />
       </S.WrapperProgressBar>
       <Container>
