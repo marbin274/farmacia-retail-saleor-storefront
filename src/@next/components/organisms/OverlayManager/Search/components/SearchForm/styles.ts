@@ -68,7 +68,7 @@ export const InputWrapper = styled.div`
       border-radius: 0.5rem;
 
       @media (max-width: ${customBreakpoint}) {
-        font-size: 0.875rem;
+        font-size: 1rem;
       }
 
       &:focus {

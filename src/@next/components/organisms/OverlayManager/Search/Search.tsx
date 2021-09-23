@@ -36,7 +36,7 @@ const Search: React.FC<SearchProps> = (props: SearchProps) => {
         <p className="fa-text-center fa-text-neutral-dark fa-my-4 fa-mx-0">
           “No se encontraron resultados”
         </p>
-        <p className="fa-text-center fa-text-neutral-medium">
+        <p className="fa-text-center fa-text-neutral-medium fa-h-screen">
           Escribe el nombre del producto
           <br /> que estas buscando
         </p>

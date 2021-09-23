@@ -1,4 +1,4 @@
-import { styled } from '@styles';
+import { mediaUp, styled } from '@styles';
 import { css, keyframes } from 'styled-components';
 import { Position, TransitionState } from './types';
 
@@ -55,8 +55,6 @@ export const Lightbox = styled.div<IStyleProps>`
   height: ${({ position }) => lightboxWidth[position]};
   position: fixed;
   top: 0;
-  width: ${({ position, theme: { modal } }) =>
-    lightboxHeight(modal.modalWidth)[position]};
   ${({ open, position }) => {
     if (position === 'left' || position === 'right') {
       return css`
@@ -67,6 +65,11 @@ export const Lightbox = styled.div<IStyleProps>`
       `;
     }
   }}
+  width: 100%;
+  ${mediaUp.largeScreen`
+      width: ${({ position, theme: { modal } }) =>
+        lightboxHeight(modal.modalWidth)[position]};
+  `}
 `;
 Lightbox.displayName = 'S.Lightbox';
 

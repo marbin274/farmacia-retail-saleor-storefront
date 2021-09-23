@@ -103,7 +103,9 @@ export const Container = styled.div`
       flex-direction: column-reverse;
     }
     &-price {
-      display: block;
+      align-items: center;
+      justify-content: center;
+      display: flex;
       span:before {
         content: '';
       }

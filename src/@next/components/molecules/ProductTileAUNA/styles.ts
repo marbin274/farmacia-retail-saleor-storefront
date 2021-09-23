@@ -84,13 +84,16 @@ export const ProductCard = styled.div<{
 
   .button {
     button {
+      align-items: center;
       border-radius: 1.4375rem;
       cursor: pointer;
+      display: flex;
       height: 2.5rem;
 
       ${mediaUp.largeScreen`
         height: 3rem;
         padding: 0.5rem;
+        margin: 0 auto;
       `}
 
       &:active {

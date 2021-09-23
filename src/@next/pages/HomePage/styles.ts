@@ -92,10 +92,6 @@ export const ProductsFeaturedWrapper = styled.div`
     padding: 0 1rem;
   `};
 
-  .slider-slide {
-    height: 24.1875rem !important;
-  }
-
   .home-page__product__link {
     display: flex;
     flex-direction: column;
