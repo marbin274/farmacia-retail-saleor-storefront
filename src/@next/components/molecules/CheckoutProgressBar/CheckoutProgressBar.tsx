@@ -42,7 +42,7 @@ const generateProgressBar = (
   if (index !== numberOfSteps - 1) {
     return localRepository.getPurchase() &&
       currentPath === '/order-finalized' ? (
-      <S.ProgressBar done={false} />
+      <S.ProgressBar done={true} />
     ) : (
       <S.ProgressBar done={currentActive > index} />
     );

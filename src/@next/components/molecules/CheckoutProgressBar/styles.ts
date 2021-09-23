@@ -25,7 +25,7 @@ export const flexCentered = {
 
 export const Dot = styled.div<{ status: DOT_STATUS }>`
   position: relative;
-  width: 1.7rem;
+  width: 1.5rem;
   height: 1.5rem;
   border: none;
   background-color: ${(props) =>
@@ -84,7 +84,7 @@ export const Label = styled.div`
 
 export const ProgressBar = styled.div<{ done?: boolean }>`
   z-index: 0;
-  width: 100%;
+  width: calc(100% - 1.5rem);
   height: 4px;
   background-color: ${(props) =>
     props.done ? farmatheme.theme.colors.interactive : '#008A66'};
