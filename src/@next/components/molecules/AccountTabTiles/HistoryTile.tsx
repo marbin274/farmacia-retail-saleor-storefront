@@ -53,7 +53,7 @@ export const ShoppingHistoryTile: React.FC = () => {
                       variant="outline"
                       onClick={() =>
                         router.push(
-                          `${orderHistoryUrl + data?.edges[0]?.node?.token}`
+                          `${orderHistoryUrl}/${data?.edges[0]?.node?.token}`
                         )
                       }
                     >

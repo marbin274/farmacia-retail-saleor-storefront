@@ -49,7 +49,7 @@ export const OrderTabel: React.FC<IProps> = ({ orders }: IProps) => {
                       key={order.node.number}
                       onClick={(evt: { stopPropagation: () => void }) => {
                         evt.stopPropagation();
-                        router.push(`${orderHistoryUrl + order.node.token}`);
+                        router.push(`${orderHistoryUrl}/${order.node.token}`);
                       }}
                     >
                       <S.IndexNumber>{order.node.sequentialCode}</S.IndexNumber>
