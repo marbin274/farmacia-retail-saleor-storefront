@@ -19,11 +19,11 @@ export const OrderDetails: React.FC<{ token: string }> = ({ token }) => {
   }
 
   return (
-    <S.Wraper className="fa-w-full">
-      <div className="container">
+    <div className="fa-w-full fa-bg-neutral-light">
+      <S.Wraper>
         <Page guest={guest} order={order} />
-      </div>
-    </S.Wraper>
+      </S.Wraper>
+    </div>
   );
 };
 
