@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+Disallow: /order-finalized
+Disallow: /checkout*
+Disallow: */ayuda@auna.pe
+Disallow: */consultas@farmauna.com
+Disallow: */search/?q=*
+Host: https://www.farmauna.com

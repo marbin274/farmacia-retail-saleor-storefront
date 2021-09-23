@@ -3,28 +3,13 @@ const WebappWebpackPlugin = require("webapp-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
-const RobotstxtPlugin = require("robotstxt-webpack-plugin");
 
 const webpack = require("webpack");
 
 if (!process.env.API_URI) {
   throw new Error("Environment variable API_URI not set");
 }
-const robotOptions = {
-  policy: [
-    {
-      userAgent: "*",
-      allow: "/",
-    },
-    {
-      userAgent: "Googlebot",
-      allow: "/",
-      disallow: ["/order-finalized", "/checkout*","*/ayuda@auna.pe",
-        "*/consultas@farmauna.com","*/search/?q=*"]
-    },
-  ],
-  host: "https://www.farmauna.com/",
-};
+
 module.exports = ({ sourceDir, distDir }) => ({
   resolve: {
     alias: {
@@ -129,7 +114,6 @@ module.exports = ({ sourceDir, distDir }) => ({
         theme_color: "#333",
       },
     }),
-    new RobotstxtPlugin(robotOptions),
     new webpack.EnvironmentPlugin({
       API_URI: "http://localhost:8000/graphql/",
       ENVIRONMENT_NAME: "dev",
