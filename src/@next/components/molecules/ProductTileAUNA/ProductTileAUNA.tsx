@@ -55,11 +55,8 @@ export const ProductTileAUNA: React.FC<IProps> = ({
       canAddToCart={canAddToCart}
     >
       <div className="fa-w-full fa-block lg:fa-hidden">
-        <Link href={productLink}>
-          <S.LinkContainer
-            className="home-page__product__link"
-            key={product.id}
-          >
+        <S.LinkContainer className="home-page__product__link" key={product.id}>
+          <Link href={productLink}>
             <div
               className="home-page__product-image fa-flex fa-flex-col fa-items-center"
               onClick={(e) => {
@@ -79,56 +76,54 @@ export const ProductTileAUNA: React.FC<IProps> = ({
                 </div>
               </div>
             </div>
-            <div>
-              <div className="home-page__product-price fa-hidden">
-                <div className={getProductPricingClass(canAddToCart, isOnSale)}>
-                  <S.Price>
-                    <TaxedMoney
-                      taxedMoney={product?.pricing?.priceRange?.start}
-                    />
-                  </S.Price>
-                </div>
-                {isOnSale && (
-                  <div className="price undiscounted_price">
-                    <TaxedMoney
-                      taxedMoney={
-                        product?.pricing?.priceRangeUndiscounted?.start
-                      }
-                    />
-                  </div>
-                )}
+          </Link>
+          <div>
+            <div className="home-page__product-price fa-hidden">
+              <div className={getProductPricingClass(canAddToCart, isOnSale)}>
+                <S.Price>
+                  <TaxedMoney
+                    taxedMoney={product?.pricing?.priceRange?.start}
+                  />
+                </S.Price>
               </div>
+              {isOnSale && (
+                <div className="price undiscounted_price">
+                  <TaxedMoney
+                    taxedMoney={product?.pricing?.priceRangeUndiscounted?.start}
+                  />
+                </div>
+              )}
+            </div>
+            <Link href={productLink}>
               <div className="description">
                 <S.Title className="home-page__product-title fa-line-clamp-2 fa-text-left fa-text-sm lg:fa-text-lg">
                   {product.name}
                 </S.Title>
               </div>
-              <div className="home-page__product-button fa-flex fa-justify-between">
-                <div className="search-page__product-price">
-                  <div
-                    className={getProductPricingClass(canAddToCart, isOnSale)}
-                  >
-                    <S.Price className="fa-font-base">
-                      <TaxedMoney
-                        taxedMoney={product?.pricing?.priceRange?.start}
-                      />
-                    </S.Price>
-                  </div>
-                </div>
-                <div ref={refActions}>
-                  <ItemsHandler
-                    canAddToCart={canAddToCart}
-                    product={product}
-                    addToCart={handleAddToCart}
-                    removeItemToCart={removeItemToCart}
-                    subtractItemToCart={subtractItemToCart}
-                    collectionName={collectionName}
-                  />
+            </Link>
+            <div className="home-page__product-button fa-flex fa-justify-between">
+              <div className="search-page__product-price">
+                <div className={getProductPricingClass(canAddToCart, isOnSale)}>
+                  <S.Price className="fa-font-base">
+                    <TaxedMoney
+                      taxedMoney={product?.pricing?.priceRange?.start}
+                    />
+                  </S.Price>
                 </div>
               </div>
+              <div ref={refActions} className="fa-z-2">
+                <ItemsHandler
+                  canAddToCart={canAddToCart}
+                  product={product}
+                  addToCart={handleAddToCart}
+                  removeItemToCart={removeItemToCart}
+                  subtractItemToCart={subtractItemToCart}
+                  collectionName={collectionName}
+                />
+              </div>
             </div>
-          </S.LinkContainer>
-        </Link>
+          </div>
+        </S.LinkContainer>
       </div>
       <div className="fa-hidden lg:fa-block">
         <Link href={productLink}>

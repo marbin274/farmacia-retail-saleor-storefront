@@ -1,13 +1,13 @@
 import { links, baseUrl as AccountBaseUrl } from '@app/pages/AccountPage/paths';
 import { Loader } from '@components/atoms';
 import { AccountMenu, AccountMenuMobile } from '@components/molecules';
-import { Breadcrumbs } from '@farmacia-retail/farmauna-components';
 import { useUserDetails } from '@sdk/react';
 import { useMediaScreen } from '@temp/@next/globalStyles';
 import { baseUrl } from '@temp/app/routes';
 import * as React from 'react';
 import * as S from './styles';
 import { useRouter } from 'next/router';
+import { Breadcrumbs } from '@temp/@next/components/organisms/Breadcrumbs';
 
 interface AccountLayoutProps {
   showTitleMobile?: boolean;
@@ -33,18 +33,18 @@ const AccountLayout: React.FC<AccountLayoutProps> = ({
     <div className="fa-bg-neutral-light fa-py-4 fa-w-auto md:fa-w-auto">
       <S.Container>
         <Breadcrumbs
-          breadcrumbs={[{ link: router.pathname, label: 'Mi Cuenta' }]}
+          breadcrumbs={[{ link: router.asPath, label: 'Mi Cuenta' }]}
           baseUrl={baseUrl}
         />
 
         {!isDesktopScreen && (
           <div className="md:fa-w-full fa-my-4">
-            <AccountMenuMobile links={links} active={router.pathname} />
+            <AccountMenuMobile links={links} active={router.asPath} />
           </div>
         )}
 
         {(isDesktopScreen ||
-          (AccountBaseUrl === router.pathname && showTitleMobile)) && (
+          (AccountBaseUrl === router.asPath && showTitleMobile)) && (
           <div className="fa-flex fa-flex-row fa-mt-5 fa-mb-3">
             {isDesktopScreen ? (
               <div className="fa-mt-4">

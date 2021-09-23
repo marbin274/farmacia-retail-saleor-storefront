@@ -6,12 +6,12 @@ export const MenuHeader = styled.div`
 `;
 
 export const RoutesWrapper = styled(CustomSelectContainer as any)`
-  margin-bottom: 1rem;  
+  margin-bottom: 1rem;
   position: relative;
   z-index: 1;
   .select-input {
     .select-container {
-      padding: .75rem 1rem
+      padding: 0.75rem 1rem;
       width: 100%;
     }
   }

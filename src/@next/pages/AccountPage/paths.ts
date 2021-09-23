@@ -1,10 +1,10 @@
 export const appUrl = '/';
-export const baseUrl = `${appUrl}account/`;
-export const accountCategoriesUrl = `${baseUrl}select-categories/`;
-export const addressBookUrl = `${baseUrl}address-book/`;
-export const orderHistoryUrl = `${baseUrl}order-history/`;
-export const orderDetailsUrl = `${orderHistoryUrl}:token/`;
-export const paymentMethodsUrl = `${baseUrl}payment-methods/`;
+export const baseUrl = `${appUrl}account`;
+export const accountCategoriesUrl = `${baseUrl}/select-categories`;
+export const addressBookUrl = `${baseUrl}/address-book`;
+export const orderHistoryUrl = `${baseUrl}/order-history`;
+export const orderDetailsUrl = `${orderHistoryUrl}/:token`;
+export const paymentMethodsUrl = `${baseUrl}/payment-methods`;
 
 export const links = [
   { url: baseUrl, label: 'Mi cuenta', testId: 'my_account' },
