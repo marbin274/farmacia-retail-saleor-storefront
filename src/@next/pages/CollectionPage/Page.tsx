@@ -31,7 +31,6 @@ import { IFilterAttributes, IFilters } from '@types';
 import * as React from 'react';
 import { CollectionWrapper, HeaderProducts } from './styles';
 import { getLocationForCollections } from '@temp/@sdk/gaConfig';
-
 interface SortItem {
   label: string;
   value?: string;
@@ -67,6 +66,7 @@ const Page: React.FC<PageProps> = ({
 }) => {
   const { isMobileScreen } = useMediaScreen();
   const [districtSelected] = useDistrictSelected();
+
   const {
     currentFilters,
     checkedFilters,
@@ -126,8 +126,6 @@ const Page: React.FC<PageProps> = ({
   );
   const hasProducts = canDisplayProducts && !!products?.totalCount;
   const [showFilters, setShowFilters] = React.useState(false);
-  const [collectionGaEventSended, setCollectionGaEventSended] =
-    React.useState<boolean>(false);
 
   const { goTop } = useScrollTo();
 
@@ -168,10 +166,7 @@ const Page: React.FC<PageProps> = ({
   React.useEffect(() => goTop(), [products]);
 
   React.useEffect(() => {
-    if (!collectionGaEventSended) {
-      getLocationForCollections(window?.location?.href || '');
-      setCollectionGaEventSended(true);
-    }
+    getLocationForCollections(window?.location?.href || '');
   }, []);
 
   const applyFilterChanges = () => {

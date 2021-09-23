@@ -111,8 +111,6 @@ const Page: React.FC<PageProps> = ({
   );
   const hasProducts = canDisplayProducts && !!products.totalCount;
   const [showFilters, setShowFilters] = React.useState(false);
-  const [categoriesGaEventSended, setCategoriesGaEventSended] =
-    React.useState<boolean>(false);
   const { goTop } = useScrollTo();
 
   const getAttribute = (attributeSlug: string, valueSlug: string) => {
@@ -151,10 +149,7 @@ const Page: React.FC<PageProps> = ({
   };
 
   React.useEffect(() => {
-    if (!categoriesGaEventSended) {
-      setCategoriesGaEventSended(true);
-      getLocationForCategories(window?.location?.href || '');
-    }
+    getLocationForCategories(window?.location?.href || '');
   }, []);
 
   return (
