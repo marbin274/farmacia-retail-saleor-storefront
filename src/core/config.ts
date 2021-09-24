@@ -44,7 +44,7 @@ export const SOCIAL_MEDIA = [
   {
     ariaLabel: 'instagram',
     href: 'https://www.instagram.com/farmauna_pe/',
-    path: 'assets/social/instagram.svg',
+    path: '/assets/social/instagram.svg',
     rel: 'noopener nofollow',
   },
 ];
