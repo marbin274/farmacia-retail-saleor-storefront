@@ -6,14 +6,15 @@ import { FeaturedPluginsProvider } from '@temp/@next/contexts';
 import { defaultTheme, GlobalStyle } from '@temp/@next/globalStyles';
 import { App } from '@temp/app';
 import { ApolloAdapter } from '@temp/libraries/apollo';
-import { GtmConfig } from '@temp/libraries/gtm';
+import React, { useEffect } from 'react'
+import { useRouter } from 'next/router'
+import * as gtag from "./../libraries/gtm/gtag"
 import {
   getOptimizelyUserId,
   optimizelyClient,
 } from '@temp/libraries/optimizely/optimizelyConfig';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import React from 'react';
 import { positions, Provider as AlertProvider } from 'react-alert';
 import { ThemeProvider } from 'styled-components';
 import '../index.css';
@@ -23,8 +24,16 @@ export default function _App(props: AppProps) {
     position: positions.BOTTOM_RIGHT,
     timeout: 2500,
   };
-
-  GtmConfig.setTagManager();
+  const router = useRouter()
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+      gtag.pageview(url)
+    }
+    router.events.on('routeChangeComplete', handleRouteChange)
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router.events])
 
   React.useEffect(() => {
     if ('serviceWorker' in navigator) {

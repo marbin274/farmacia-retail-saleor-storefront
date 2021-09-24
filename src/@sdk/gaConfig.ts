@@ -1,5 +1,6 @@
 import { LocalRepository } from '@temp/@sdk/repository';
 import { WINDOW_EXISTS } from './consts';
+
 declare global {
   interface Window {
     dataLayer: any;
