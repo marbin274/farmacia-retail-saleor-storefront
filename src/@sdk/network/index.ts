@@ -747,6 +747,7 @@ export class NetworkManager implements INetworkManager {
         return {
           data: this.constructCheckoutModel({
             checkout: data.checkoutShippingMethodUpdate.checkout,
+            userSelectedSlotId: shippingMethodUpdate.slotId,
           }),
         };
       } else {
@@ -960,6 +961,7 @@ export class NetworkManager implements INetworkManager {
     checkout,
     isPrime = false,
     message,
+    userSelectedSlotId,
   }: IConstructCheckoutParams): ICheckoutModel => {
     const {
       id,
@@ -1036,6 +1038,7 @@ export class NetworkManager implements INetworkManager {
       token,
       slotId: slotId!,
       slots: slots as any,
+      userSelectedSlotId,
     };
 
     return checkoutModel;

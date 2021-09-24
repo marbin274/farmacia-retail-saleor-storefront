@@ -19,7 +19,7 @@ import { IFormError } from '@types';
 import { useRouter } from 'next/router';
 import React, {
   forwardRef,
-  RefForwardingComponent,
+  ForwardRefRenderFunction,
   useImperativeHandle,
   useRef,
 } from 'react';
@@ -34,7 +34,7 @@ interface IProps {
   setAddressSubPageErrors: (errors: IFormError[]) => void;
 }
 
-const CheckoutShippingSubpageWithRef: RefForwardingComponent<
+const CheckoutShippingSubpageWithRef: ForwardRefRenderFunction<
   ICheckoutShippingSubpageHandles,
   IProps
 > = (
@@ -55,8 +55,9 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
     availableShippingMethods,
     setShippingMethod,
     isPrime,
-    selectedSlotId,
     slots,
+    selectedSlotId,
+    userSelectedSlotId,
   } = useCheckout();
   const { items } = useCart();
 
@@ -97,6 +98,11 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
     clicked = false
   ) => {
     changeSubmitProgress(true);
+
+    if (shippingMethodUpdate.slotId === userSelectedSlotId) {
+      shippingMethodUpdate.slotId = selectedSlotId;
+    }
+
     const { dataError } = await setShippingMethod(shippingMethodUpdate);
     const errors: ICheckoutShippingMethodError[] | undefined = dataError?.error;
     changeSubmitProgress(false);
@@ -142,7 +148,7 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
         formId={checkoutShippingFormId}
         formRef={checkoutShippingFormRef}
         slots={slots}
-        selectedSlotId={selectedSlotId}
+        selectedSlotId={userSelectedSlotId}
       />
     );
   }

@@ -114,4 +114,5 @@ export interface IConstructCheckoutParams {
   checkout: Checkout;
   isPrime?: boolean;
   message?: string | null;
+  userSelectedSlotId?: string;
 }

@@ -42,7 +42,10 @@ export class SaleorCheckoutAPI
   payment?: IPayment;
   isPrime?: boolean;
   slots?: ISlots;
+  /** Extended slot returned by backend  */
   selectedSlotId?: string;
+  /** Slot selected by user */
+  userSelectedSlotId?: string;
 
   private saleorState: SaleorState;
   private jobsManager: JobsManager;
@@ -90,6 +93,7 @@ export class SaleorCheckoutAPI
         slotId,
         slots,
         deliveryDate,
+        userSelectedSlotId,
       }: ICheckoutModel) => {
         this.checkout = {
           billingAddress,
@@ -127,6 +131,7 @@ export class SaleorCheckoutAPI
           isPrime || !!lines?.find((x) => x.variant.sku === primeSku);
         this.slots = slots;
         this.selectedSlotId = slotId;
+        this.userSelectedSlotId = userSelectedSlotId;
       }
     );
     this.saleorState.subscribeToChange(

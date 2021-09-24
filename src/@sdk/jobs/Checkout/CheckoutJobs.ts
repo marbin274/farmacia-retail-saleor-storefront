@@ -251,6 +251,7 @@ export class CheckoutJobs {
         shippingMethod: data?.shippingMethod,
         slotId: data?.slotId,
         slots: data?.slots,
+        userSelectedSlotId: data?.userSelectedSlotId,
       };
       this.repository.setCheckout(newCheckout);
       return { data };
