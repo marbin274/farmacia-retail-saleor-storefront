@@ -61,7 +61,8 @@ export const Page: React.FC<IProps> = (props) => {
         product?.name,
         product?.variants[0]?.sku as string,
         product?.variants[0]?.pricing?.price?.gross?.amount as number,
-        product?.category?.name
+        product?.category?.name,
+        product?.isAvailable
       );
     }
   }, []);
