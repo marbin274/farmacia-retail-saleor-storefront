@@ -26,6 +26,22 @@ export default function _App(props: AppProps) {
 
   GtmConfig.setTagManager();
 
+  React.useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker
+        .getRegistrations()
+        .then(function (registrations) {
+          for (const registration of registrations) {
+            registration.unregister();
+          }
+        })
+        .catch((err) => {
+          /* eslint no-console: ["error", { allow: ["warn"] }] */
+          console.warn('Service Worker registration failed: ', err);
+        });
+    }
+  }, []);
+
   return (
     <>
       <Head>
