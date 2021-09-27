@@ -1,5 +1,6 @@
 import { LocalRepository } from '@temp/@sdk/repository';
 import { WINDOW_EXISTS } from './consts';
+
 declare global {
   interface Window {
     dataLayer: any;
@@ -134,7 +135,8 @@ export const launchDetailProductEvent = (
   name: string,
   id: string,
   price: number,
-  category: string
+  category: string,
+  isAvailable: boolean
 ) => {
   return pushToDatalayer({
     ecommerce: {
@@ -146,6 +148,7 @@ export const launchDetailProductEvent = (
             name,
             price,
             category,
+            isAvailable,
           },
         ],
       },

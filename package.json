@@ -164,12 +164,10 @@
   },
   "scripts": {
     "test": "jest --runInBand --config .jest/config.json",
-    "test-coverage": "npm run test -- --coverage --watchAll=false",
-    "start": "cross-env NODE_ENV=develop webpack-dev-server --history-api-fallback --watch --port 3000 --mode development --hotOnly",
-    "start:localnetwork": "cross-env NODE_ENV=develop webpack-dev-server --host 0.0.0.0 --history-api-fallback --watch --port 3000 --mode development --hotOnly",
-    "start:worker": "npm run start -- --service-worker",
-    "build": "webpack -p",
-    "watch": "webpack -d --watch",
+    "test:coverage": "npm run test -- --coverage --watchAll=false",
+    "start": "next dev",
+    "build": "next build",
+    "export:next": "rm -rf dist && next export -o dist/",
     "storybook": "start-storybook -p 9002",
     "codegen-sdk": "apollo codegen:generate --target=typescript gqlTypes --config src/@sdk/apollo.config.js --globalTypesFile src/@sdk/gqlTypes/globalTypes.ts",
     "codegen-sdk-watch": "npm run codegen-sdk -- --watch",
@@ -181,12 +179,10 @@
     "postinstall": "husky install",
     "prettier": "prettier --config ./.prettierrc --write './**/*.{js,ts,jsx,tsx}' --loglevel=warn",
     "pretty-quick": "pretty-quick --staged",
-    "lhci": "npm run build && npx lhci autorun --config=./lighthouserc.js",
-    "lhci:next": "npm run build:next && npm run export:next && npx lhci autorun --config=./lighthouserc.js",
     "serve-dist": "serve dist",
+    "lhci": "npm run build:next && npm run export:next && npx lhci autorun --config=./lighthouserc.js",
     "start:next": "next dev",
     "build:next": "next build",
-    "start-prod:next": "next start",
-    "export:next": "rm -rf dist && next export -o dist/"
+    "start-prod": "next start"
   }
 }
