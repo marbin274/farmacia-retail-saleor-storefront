@@ -91,7 +91,7 @@ export const AddressSection: React.FC<IAddressSectionProps> = ({
         <span className="fa-text-xl fa-mb-6 fa-block fa-font-semibold">
           Cliente
         </span>
-        <div className="fa-grid fa-grid-cols-2 fa-gap-6 fa-mt-10">
+        <div className="fa-grid fa-grid-cols-1 fa-gap-6 fa-mt-10 md:fa-grid-cols-2">
           <InputField
             autoComplete="off"
             data-testid="addressFormFirstName"

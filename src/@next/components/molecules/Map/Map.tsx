@@ -121,7 +121,7 @@ export const Map: React.FC<IMapProps> = ({
         }
       )}
     >
-      <S.Map ref={mapDivRef} />
+      <S.Map isSetLocation={!!location?.lat} ref={mapDivRef} />
     </div>
   );
 };
