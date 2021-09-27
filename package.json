@@ -166,6 +166,7 @@
     "test": "jest --runInBand --config .jest/config.json",
     "test:coverage": "npm run test -- --coverage --watchAll=false",
     "start": "next dev",
+    "start-prod": "next start",
     "build": "next build",
     "export:next": "rm -rf dist && next export -o dist/",
     "storybook": "start-storybook -p 9002",
@@ -182,7 +183,6 @@
     "serve-dist": "serve dist",
     "lhci": "npm run build:next && npm run export:next && npx lhci autorun --config=./lighthouserc.js",
     "start:next": "next dev",
-    "build:next": "next build",
-    "start-prod": "next start"
+    "build:next": "next build"
   }
 }
