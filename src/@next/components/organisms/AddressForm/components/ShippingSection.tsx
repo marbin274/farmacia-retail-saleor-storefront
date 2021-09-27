@@ -87,44 +87,45 @@ export const ShippingSection: React.FC<IShippingSectionProps> = ({
 
   return (
     <>
-      <span className="fa-text-2xl fa-mb-6 fa-block">
-        Escoge el tiempo de entrega
-      </span>
-      <div className="fa-grid fa-grid-cols-1 lg:fa-grid-cols-2 fa-gap-x-8 fa-relative">
-        {values.isLastMileActive ? (
-          <CheckoutShippingSlots
-            items={items}
-            shippingMethods={shippingMethods}
-            values={values}
-          >
-            {(shippingMethodSlots) => (
-              <CheckoutShipping
-                {...checkShippingComponentProps}
-                shippingMethods={shippingMethodSlots}
-                scheduleSelected={values.slotId}
-                setScheduleTime={(scheduleTimeId, slotId) => {
-                  setValues({
-                    ...values,
-                    scheduleDate: scheduleTimeId,
-                    slotId,
-                  });
-                }}
-              />
-            )}
-          </CheckoutShippingSlots>
-        ) : (
-          <CheckoutShipping
-            {...checkShippingComponentProps}
-            scheduleSelected={values.scheduleDate}
-            setScheduleTime={(scheduleTimeId) => {
-              setValues({
-                ...values,
-                scheduleDate: scheduleTimeId,
-              });
-            }}
-          />
-        )}
-      </div>
+      {values.isLastMileActive ? (
+        <CheckoutShippingSlots
+          items={items}
+          shippingMethods={shippingMethods}
+          values={values}
+        >
+          {(shippingMethodSlots, loading) => (
+            <>
+              {!!loading ? (
+                <Loader />
+              ) : (
+                <CheckoutShipping
+                  {...checkShippingComponentProps}
+                  shippingMethods={shippingMethodSlots}
+                  scheduleSelected={values.slotId}
+                  setScheduleTime={(scheduleTimeId, slotId) => {
+                    setValues({
+                      ...values,
+                      scheduleDate: scheduleTimeId,
+                      slotId,
+                    });
+                  }}
+                />
+              )}
+            </>
+          )}
+        </CheckoutShippingSlots>
+      ) : (
+        <CheckoutShipping
+          {...checkShippingComponentProps}
+          scheduleSelected={values.scheduleDate}
+          setScheduleTime={(scheduleTimeId) => {
+            setValues({
+              ...values,
+              scheduleDate: scheduleTimeId,
+            });
+          }}
+        />
+      )}
       {!!shippingMethods?.length &&
         fieldErrors?.shippingMethod &&
         !values.shippingMethod && (

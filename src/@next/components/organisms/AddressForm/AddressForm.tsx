@@ -25,9 +25,9 @@ const getCheckoutShippingAddress = (
   if (checkout?.id) {
     return {
       dataTreatmentPolicy: checkout.dataTreatmentPolicy,
-      deliveryDate: convertShippingMethodDateToDate(
-        checkout.scheduleDate?.date
-      ),
+      deliveryDate: checkout.scheduleDate?.date
+        ? convertShippingMethodDateToDate(checkout.scheduleDate?.date)
+        : null,
       district: checkout.shippingAddress.district.id,
       documentNumber: checkout.documentNumber,
       email: checkout.email,
