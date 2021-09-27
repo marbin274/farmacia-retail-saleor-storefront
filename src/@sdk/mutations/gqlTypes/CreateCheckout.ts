@@ -9,18 +9,6 @@ import { CheckoutCreateInput, CheckoutErrorCode } from "./../../gqlTypes/globalT
 // GraphQL mutation operation: CreateCheckout
 // ====================================================
 
-export interface CreateCheckout_checkoutCreate_errors {
-  __typename: "Error";
-  /**
-   * Name of a field that caused the error. A value of `null` indicates that the error isn't associated with a particular field.
-   */
-  field: string | null;
-  /**
-   * The error message.
-   */
-  message: string | null;
-}
-
 export interface CreateCheckout_checkoutCreate_checkoutErrors_products {
   __typename: "FailedProduct";
   /**
@@ -161,6 +149,15 @@ export interface CreateCheckout_checkoutCreate_checkout_subtotalPrice {
   net: CreateCheckout_checkoutCreate_checkout_subtotalPrice_net;
 }
 
+export interface CreateCheckout_checkoutCreate_checkout_billingAddress_district {
+  __typename: "District";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+}
+
 export interface CreateCheckout_checkoutCreate_checkout_billingAddress_country {
   __typename: "CountryDisplay";
   /**
@@ -185,6 +182,7 @@ export interface CreateCheckout_checkoutCreate_checkout_billingAddress {
   streetAddress1: string;
   streetAddress2: string;
   city: string;
+  district: CreateCheckout_checkoutCreate_checkout_billingAddress_district | null;
   postalCode: string;
   /**
    * Shop's default country.
@@ -203,6 +201,15 @@ export interface CreateCheckout_checkoutCreate_checkout_billingAddress {
   latitude: number | null;
   longitude: number | null;
   alias: string | null;
+}
+
+export interface CreateCheckout_checkoutCreate_checkout_shippingAddress_district {
+  __typename: "District";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
 }
 
 export interface CreateCheckout_checkoutCreate_checkout_shippingAddress_country {
@@ -229,6 +236,7 @@ export interface CreateCheckout_checkoutCreate_checkout_shippingAddress {
   streetAddress1: string;
   streetAddress2: string;
   city: string;
+  district: CreateCheckout_checkoutCreate_checkout_shippingAddress_district | null;
   postalCode: string;
   /**
    * Shop's default country.
@@ -963,10 +971,6 @@ export interface CreateCheckout_checkoutCreate_checkout {
 
 export interface CreateCheckout_checkoutCreate {
   __typename: "CheckoutCreate";
-  /**
-   * List of errors that occurred executing the mutation.
-   */
-  errors: CreateCheckout_checkoutCreate_errors[];
   checkoutErrors: CreateCheckout_checkoutCreate_checkoutErrors[];
   checkout: CreateCheckout_checkoutCreate_checkout | null;
 }

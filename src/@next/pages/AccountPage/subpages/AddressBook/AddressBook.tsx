@@ -9,7 +9,7 @@ import {
   useUpdateUserAddress,
   useUserDetails,
 } from '@sdk/react';
-import { alertService } from '@temp/@next/components/atoms/Alert';
+import { alertService } from '@temp/@next/services';
 import { Alert } from '@temp/@next/components/molecules';
 import { IAddressForm } from '@temp/@next/components/organisms/AddressFormModal/types';
 import { UserDetails_me_addresses } from '@temp/@sdk/queries/gqlTypes/UserDetails';

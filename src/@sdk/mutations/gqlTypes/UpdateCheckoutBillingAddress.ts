@@ -129,6 +129,15 @@ export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_check
   net: UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_checkout_subtotalPrice_net;
 }
 
+export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_checkout_billingAddress_district {
+  __typename: "District";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+}
+
 export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_checkout_billingAddress_country {
   __typename: "CountryDisplay";
   /**
@@ -153,6 +162,7 @@ export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_check
   streetAddress1: string;
   streetAddress2: string;
   city: string;
+  district: UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_checkout_billingAddress_district | null;
   postalCode: string;
   /**
    * Shop's default country.
@@ -171,6 +181,15 @@ export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_check
   latitude: number | null;
   longitude: number | null;
   alias: string | null;
+}
+
+export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_checkout_shippingAddress_district {
+  __typename: "District";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
 }
 
 export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_checkout_shippingAddress_country {
@@ -197,6 +216,7 @@ export interface UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_check
   streetAddress1: string;
   streetAddress2: string;
   city: string;
+  district: UpdateCheckoutBillingAddress_checkoutBillingAddressUpdate_checkout_shippingAddress_district | null;
   postalCode: string;
   /**
    * Shop's default country.

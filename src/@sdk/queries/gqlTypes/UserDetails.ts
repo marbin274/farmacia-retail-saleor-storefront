@@ -7,6 +7,15 @@
 // GraphQL query operation: UserDetails
 // ====================================================
 
+export interface UserDetails_me_defaultShippingAddress_district {
+  __typename: "District";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+}
+
 export interface UserDetails_me_defaultShippingAddress_country {
   __typename: "CountryDisplay";
   /**
@@ -31,6 +40,7 @@ export interface UserDetails_me_defaultShippingAddress {
   streetAddress1: string;
   streetAddress2: string;
   city: string;
+  district: UserDetails_me_defaultShippingAddress_district | null;
   postalCode: string;
   /**
    * Shop's default country.
@@ -49,6 +59,15 @@ export interface UserDetails_me_defaultShippingAddress {
   latitude: number | null;
   longitude: number | null;
   alias: string | null;
+}
+
+export interface UserDetails_me_defaultBillingAddress_district {
+  __typename: "District";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
 }
 
 export interface UserDetails_me_defaultBillingAddress_country {
@@ -75,6 +94,7 @@ export interface UserDetails_me_defaultBillingAddress {
   streetAddress1: string;
   streetAddress2: string;
   city: string;
+  district: UserDetails_me_defaultBillingAddress_district | null;
   postalCode: string;
   /**
    * Shop's default country.
@@ -93,6 +113,15 @@ export interface UserDetails_me_defaultBillingAddress {
   latitude: number | null;
   longitude: number | null;
   alias: string | null;
+}
+
+export interface UserDetails_me_addresses_district {
+  __typename: "District";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
 }
 
 export interface UserDetails_me_addresses_country {
@@ -119,6 +148,7 @@ export interface UserDetails_me_addresses {
   streetAddress1: string;
   streetAddress2: string;
   city: string;
+  district: UserDetails_me_addresses_district | null;
   postalCode: string;
   /**
    * Shop's default country.

@@ -16,7 +16,7 @@ export const useCollectionProducts = queryWithVariablesFactory(
 export const useCollectionCategories = queryWithVariablesFactory(
   'getCollectionCategories'
 );
-
+export const useFeaturePlugins = queryFactory('getFeaturePlugins');
 export const useFeaturedProducts = queryWithVariablesFactory(
   'getFeaturedProducts'
 );
@@ -32,6 +32,8 @@ export const useMainMenu = queryFactory('getMainMenu');
 export const useOrderDetails = queryWithVariablesFactory('getOrderDetails');
 export const useOrdersByUser = queryWithVariablesFactory('getOrdersByUser');
 
+export const usePotentialSlots = queryWithVariablesFactory('getPotentialSlots');
+
 export const useProductDetails = queryWithVariablesFactory('getProductDetails');
 export const useProductList = queryWithVariablesFactory('getProductList');
 
@@ -41,8 +43,9 @@ export const useSearchResults = queryWithVariablesFactory('searchResults');
 
 export const useSelledProducts = queryWithVariablesFactory('selledProducts');
 
-export const useShippingMethods =
-  queryWithVariablesFactory('getShippingMethods');
+export const usePotentialShippingMethods = queryWithVariablesFactory(
+  'getPotentialShippingMethods'
+);
 
 export const useShopDetails = queryFactory('getShopDetails');
 
@@ -50,5 +53,3 @@ export const useUserDetails = queryFactory('getUserDetails');
 export const useVariantsProducts = queryWithVariablesFactory(
   'getVariantsProducts'
 );
-
-export const useFeaturePlugins = queryFactory('getFeaturePlugins');

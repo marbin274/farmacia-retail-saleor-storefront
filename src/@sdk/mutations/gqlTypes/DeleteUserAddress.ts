@@ -19,6 +19,15 @@ export interface DeleteUserAddress_accountAddressDelete_errors {
   message: string | null;
 }
 
+export interface DeleteUserAddress_accountAddressDelete_user_defaultShippingAddress_district {
+  __typename: "District";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+}
+
 export interface DeleteUserAddress_accountAddressDelete_user_defaultShippingAddress_country {
   __typename: "CountryDisplay";
   /**
@@ -43,6 +52,7 @@ export interface DeleteUserAddress_accountAddressDelete_user_defaultShippingAddr
   streetAddress1: string;
   streetAddress2: string;
   city: string;
+  district: DeleteUserAddress_accountAddressDelete_user_defaultShippingAddress_district | null;
   postalCode: string;
   /**
    * Shop's default country.
@@ -61,6 +71,15 @@ export interface DeleteUserAddress_accountAddressDelete_user_defaultShippingAddr
   latitude: number | null;
   longitude: number | null;
   alias: string | null;
+}
+
+export interface DeleteUserAddress_accountAddressDelete_user_defaultBillingAddress_district {
+  __typename: "District";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
 }
 
 export interface DeleteUserAddress_accountAddressDelete_user_defaultBillingAddress_country {
@@ -87,6 +106,7 @@ export interface DeleteUserAddress_accountAddressDelete_user_defaultBillingAddre
   streetAddress1: string;
   streetAddress2: string;
   city: string;
+  district: DeleteUserAddress_accountAddressDelete_user_defaultBillingAddress_district | null;
   postalCode: string;
   /**
    * Shop's default country.
@@ -105,6 +125,15 @@ export interface DeleteUserAddress_accountAddressDelete_user_defaultBillingAddre
   latitude: number | null;
   longitude: number | null;
   alias: string | null;
+}
+
+export interface DeleteUserAddress_accountAddressDelete_user_addresses_district {
+  __typename: "District";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
 }
 
 export interface DeleteUserAddress_accountAddressDelete_user_addresses_country {
@@ -131,6 +160,7 @@ export interface DeleteUserAddress_accountAddressDelete_user_addresses {
   streetAddress1: string;
   streetAddress2: string;
   city: string;
+  district: DeleteUserAddress_accountAddressDelete_user_addresses_district | null;
   postalCode: string;
   /**
    * Shop's default country.

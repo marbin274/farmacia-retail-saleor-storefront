@@ -9,10 +9,9 @@ const Footer: React.FC = () => {
   const showFooter = !(
     pathname.includes('checkout') || pathname.includes('order-finalized')
   );
+  const { data, loading } = useFooterSecondayMenu();
 
   if (!showFooter) return <></>;
-
-  const { data, loading } = useFooterSecondayMenu();
 
   return (
     <div id="footer">

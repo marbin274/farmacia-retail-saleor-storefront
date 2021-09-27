@@ -8,9 +8,9 @@ import { RequireOnlyOne } from '../tsHelpers';
 import * as Article from './article';
 import * as AttributesList from './attributes';
 import * as Banner from './banner';
-import * as Cart from './cart';
 import * as Category from './category';
 import * as Collection from './collections';
+import * as ShippingMethods from './shippingMethods';
 import {
   ArticleDetail,
   ArticleDetailVariables,
@@ -39,9 +39,13 @@ import {
 } from './gqlTypes/FeaturedProducts';
 import { FooterSecondaryMenu } from './gqlTypes/FooterSecondaryMenu';
 import {
-  GetShippingMethods,
-  GetShippingMethodsVariables,
-} from './gqlTypes/GetShippingMethods';
+  GetPotentialSlots,
+  GetPotentialSlotsVariables,
+} from './gqlTypes/GetPotentialSlots';
+import {
+  GetPotentialShippingMethods,
+  GetPotentialShippingMethodsVariables,
+} from './gqlTypes/GetPotentialShippingMethods';
 import { GetShop } from './gqlTypes/GetShop';
 import { GetShopFeaturePlugins } from './gqlTypes/GetShopFeaturePlugins';
 import { HomePage } from './gqlTypes/HomePage';
@@ -157,12 +161,20 @@ export const QUERIES = {
       query: Shop.footerSecondaryMenu,
       ...options,
     }),
-  GetShippingMethods: <TCacheShape>(
+  GetPotencialSlots: <TCacheShape>(
     client: ApolloClient<TCacheShape>,
-    options: QueryOptions<GetShippingMethodsVariables>
-  ): ObservableQuery<GetShippingMethods, any> =>
+    options: QueryOptions<GetPotentialSlotsVariables>
+  ): ObservableQuery<GetPotentialSlots, any> =>
     client.watchQuery({
-      query: Cart.shippingMethodsQuery,
+      query: ShippingMethods.potentialSlots,
+      ...options,
+    }),
+  GetPotencialShippingMethods: <TCacheShape>(
+    client: ApolloClient<TCacheShape>,
+    options: QueryOptions<GetPotentialShippingMethodsVariables>
+  ): ObservableQuery<GetPotentialShippingMethods, any> =>
+    client.watchQuery({
+      query: ShippingMethods.potentialShippingMethods,
       ...options,
     }),
   GetShopDetails: <TCacheShape>(

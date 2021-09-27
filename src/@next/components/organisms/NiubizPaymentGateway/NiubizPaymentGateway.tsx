@@ -15,7 +15,7 @@ import {
   ICardTokenizationResult,
   INiubizCreateTokenData,
 } from '../../../../core/payments/niubiz';
-import { alertService } from '../../atoms/Alert';
+import { alertService } from '@temp/@next/services';
 import { IAlertServiceProps } from '../../atoms/Alert/types';
 import { validatePaymentGateway } from './NiubizPaymentGatewayValidation';
 import * as S from './styles';

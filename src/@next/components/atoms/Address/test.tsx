@@ -7,16 +7,13 @@ import { IAddressProps } from './types';
 const DEFAULT_PROPS: IAddressProps = {
   address: {
     city: 'Wroclaw',
-    companyName: 'Mirumee',
     country: {
       code: 'PL',
       country: 'Poland',
     },
-    countryArea: 'dolnyslask',
     firstName: 'John',
     lastName: 'Doe',
     phone: '555-5555',
-    postalCode: '55-555',
     streetAddress1: 'St Street',
     streetAddress2: 'Second',
     latitude: 1,

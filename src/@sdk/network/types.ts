@@ -4,9 +4,11 @@ import {
   ICheckoutAddress,
   ICheckoutModel,
   ICheckoutModelLine,
+  ICreateCheckout,
   IOrderModel,
   IPaymentModel,
   IShippingMethodUpdate,
+  IUpdateCheckout,
 } from '@sdk/repository';
 import { IPrivacyPolicy } from '../api/Checkout/types';
 import { VariantsProductsAvailable_productVariants } from '../queries/gqlTypes/VariantsProductsAvailable';
@@ -48,13 +50,10 @@ export interface INetworkManager {
     >
   >;
   createCheckout: (
-    email: string,
-    lines: Array<{ variantId: string; quantity: number }>,
-    shippingAddress: ICheckoutAddress,
-    billingAddress?: ICheckoutAddress,
-    privacyPolicy?: IPrivacyPolicy,
-    documentNumber?: string,
-    districtId?: string
+    checkout: ICreateCheckout
+  ) => Promise<INetworkManagerResponse<ICheckoutModel>>;
+  updateCheckout: (
+    checkout: IUpdateCheckout
   ) => Promise<INetworkManagerResponse<ICheckoutModel>>;
   setCartItem: (
     checkout: ICheckoutModel,

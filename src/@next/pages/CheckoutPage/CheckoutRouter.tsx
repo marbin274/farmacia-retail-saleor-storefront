@@ -20,7 +20,6 @@ const CheckoutRouter: FC<IRouterProps> = ({
   checkout,
   payment,
   renderAddress,
-  // renderShipping,
   renderPayment,
   renderReview,
 }) => {

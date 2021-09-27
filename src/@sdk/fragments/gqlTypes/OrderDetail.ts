@@ -9,6 +9,15 @@ import { PaymentChargeStatusEnum, ShippingStatusEnum, OrderStatus } from "./../.
 // GraphQL fragment: OrderDetail
 // ====================================================
 
+export interface OrderDetail_shippingAddress_district {
+  __typename: "District";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+}
+
 export interface OrderDetail_shippingAddress_country {
   __typename: "CountryDisplay";
   /**
@@ -33,6 +42,7 @@ export interface OrderDetail_shippingAddress {
   streetAddress1: string;
   streetAddress2: string;
   city: string;
+  district: OrderDetail_shippingAddress_district | null;
   postalCode: string;
   /**
    * Shop's default country.
