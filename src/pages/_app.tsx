@@ -8,7 +8,7 @@ import { App } from '@temp/app';
 import { ApolloAdapter } from '@temp/libraries/apollo';
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import * as gtag from "./../libraries/gtm/gtag"
+
 import {
   getOptimizelyUserId,
   optimizelyClient,
@@ -18,22 +18,24 @@ import Head from 'next/head';
 import { positions, Provider as AlertProvider } from 'react-alert';
 import { ThemeProvider } from 'styled-components';
 import '../index.css';
+import { GTMPageView } from '@temp/libraries/gtm/gtmUtils';
 
 export default function _App(props: AppProps) {
   const notificationOptions = {
     position: positions.BOTTOM_RIGHT,
     timeout: 2500,
   };
+
   const router = useRouter()
+
+  // Initiate GTM
   useEffect(() => {
-    const handleRouteChange = (url) => {
-      gtag.pageview(url)
-    }
-    router.events.on('routeChangeComplete', handleRouteChange)
+    const handleRouteChange = (url: string) => GTMPageView(url);
+    router.events.on('routeChangeComplete', handleRouteChange);
     return () => {
-      router.events.off('routeChangeComplete', handleRouteChange)
-    }
-  }, [router.events])
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, []);
 
   React.useEffect(() => {
     if ('serviceWorker' in navigator) {
