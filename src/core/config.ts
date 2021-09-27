@@ -185,3 +185,4 @@ export const SHIPPING_TYPE_KEYWORDS = {
 };
 
 export const PHONE_NUMBER = '01 6429911';
+export const LOCATION_DEFAULT = { lat: -12.046373, lng: -77.042755 };

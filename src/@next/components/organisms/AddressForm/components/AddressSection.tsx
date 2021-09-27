@@ -29,7 +29,10 @@ export interface IAddressSectionProps {
   fieldErrors: FormikErrors<IAddressForm>;
   handleChange(e: React.ChangeEvent<any>): void;
   setFieldValue(field: string, value: any): void;
-  setValues(values: IAddressForm): void;
+  setValues(
+    values: React.SetStateAction<IAddressForm>,
+    shouldValidate?: boolean
+  ): Promise<void> | Promise<FormikErrors<IAddressForm>>;
   touched: FormikTouched<IAddressForm>;
   values: IAddressForm;
 }
@@ -68,8 +71,8 @@ export const AddressSection: React.FC<IAddressSectionProps> = ({
   };
 
   const handleChangeAddress = (address: string, lat: number, lng: number) => {
-    setValues({
-      ...values,
+    setValues((prev: IAddressForm) => ({
+      ...prev,
       streetAddress1: address || '',
       latitude: lat,
       longitude: lng,
@@ -78,9 +81,10 @@ export const AddressSection: React.FC<IAddressSectionProps> = ({
       deliveryDate: undefined,
       isScheduled: false,
       scheduleDate: undefined,
-    });
+    }));
     registerFilledInputForAddress(!!(address && lat));
   };
+
   return (
     <>
       <div className="fa-pb-4 fa-w-full">
