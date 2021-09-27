@@ -1,0 +1,163 @@
+name: Storefront CD
+on:
+  push:
+    branches: [master, qa2, release]
+    paths-ignore:
+    - '.github/**'
+
+jobs:
+  deploy:
+    name: "STOREFRONT CD "
+    runs-on: ubuntu-latest
+    env:
+      NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
+      - run: echo ${{ github.ref }}
+      - name: 1- Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: 2- Install dependencies
+        run: npm cache clean --force && npm install
+      - name: 3- Build application master ${{ github.event.pull_request.base.ref }}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+        run: |
+          npm run build
+          npm run export:next
+        env:
+          NEXT_PUBLIC_API_URI: ${{ secrets.GRAPHQL_URL_QA }}
+          NEXT_PUBLIC_SENTRY_DSN: ${{ secrets.SENTRY_DSN_QA }}
+          NEXT_PUBLIC_GTM_ID: ${{ secrets.GTM_ID_QA }}
+          NEXT_PUBLIC_GTM_AUTH: ${{ secrets.GTM_AUTH }}
+          NEXT_PUBLIC_CDN_URL: ${{ secrets.CDN_URL_QA }}
+          NEXT_PUBLIC_GTM_PREVIEW: ${{ secrets.GTM_PREVIEW }}
+          NEXT_PUBLIC_MAPS_API_KEY: ${{ secrets.MAPS_API_KEY_QA }}
+          NEXT_PUBLIC_OPTIMIZELY_SDK_KEY: ${{ secrets.OPTIMIZELY_SDK_KEY_QA }}
+          NEXT_PUBLIC_ELASTIC_APM_HOST: ${{ secrets.ELASTIC_APM_HOST }}
+          NEXT_PUBLIC_ELASTIC_APM_ENV: ${{ secrets.ELASTIC_APM_ENV }}
+          NEXT_PUBLIC_PRIME_API_URL: ${{ secrets.PRIME_API_URL_QA }}
+          NEXT_PUBLIC_PRIME_API_KEY: ${{ secrets.PRIME_API_KEY_QA }}
+          NEXT_PUBLIC_PRIME_SKU: ${{ secrets.PRIME_SKU_QA }}
+          NEXT_PUBLIC_NIUBIZ_ANTIFRAUD_SCRIPT_URL: ${{ secrets.NIUBIZ_ANTIFRAUD_SCRIPT_URL_QA }}
+          
+          NEXT_PUBLIC_ENVIRONMENT_NAME: "qa"
+      - name: 3.2- Build application qa2 ${{ github.event.pull_request.base.ref }}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/qa2' }}
+        run: |
+          npm run build
+          npm run export:next
+        env:
+          NEXT_PUBLIC_API_URI: ${{ secrets.GRAPHQL_URL_QA2 }}
+          NEXT_PUBLIC_SENTRY_DSN: ${{ secrets.SENTRY_DSN_QA }}
+          NEXT_PUBLIC_GTM_ID: ${{ secrets.GTM_ID_QA }}
+          NEXT_PUBLIC_GTM_AUTH: ${{ secrets.GTM_AUTH }}
+          NEXT_PUBLIC_CDN_URL: ${{ secrets.CDN_URL_QA }}
+          NEXT_PUBLIC_GTM_PREVIEW: ${{ secrets.GTM_PREVIEW }}
+          NEXT_PUBLIC_MAPS_API_KEY: ${{ secrets.MAPS_API_KEY_QA }}
+          NEXT_PUBLIC_OPTIMIZELY_SDK_KEY: ${{ secrets.OPTIMIZELY_SDK_KEY_QA }}
+          NEXT_PUBLIC_PRIME_API_URL: ${{ secrets.PRIME_API_URL_QA }}
+          NEXT_PUBLIC_PRIME_API_KEY: ${{ secrets.PRIME_API_KEY_QA }}
+          NEXT_PUBLIC_PRIME_SKU: ${{ secrets.PRIME_SKU_QA }}
+          NEXT_PUBLIC_NIUBIZ_ANTIFRAUD_SCRIPT_URL: ${{ secrets.NIUBIZ_ANTIFRAUD_SCRIPT_URL_QA }}
+          
+          NEXT_PUBLIC_ENVIRONMENT_NAME: "qa2"
+      - name: 4- Build application release ${{ github.event.pull_request.base.ref }}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/release' }}
+        run: |
+          npm run build
+          npm run export:next
+        env:
+          NEXT_PUBLIC_API_URI: ${{ secrets.GRAPHQL_URL_PROD }}
+          NEXT_PUBLIC_SENTRY_DSN: ${{ secrets.SENTRY_DSN_PROD }}
+          NEXT_PUBLIC_GTM_ID: ${{ secrets.GTM_ID_PROD }}
+          NEXT_PUBLIC_CDN_URL: ${{ secrets.CDN_URL_PROD }}
+          NEXT_PUBLIC_MAPS_API_KEY: ${{ secrets.MAPS_API_KEY_PROD }}
+          NEXT_PUBLIC_MERCHANT_PASSWORD: ${{ secrets.MERCHANT_PASSWORD }}
+          NEXT_PUBLIC_MERCHANT_USERNAME: ${{ secrets.MERCHANT_USERNAME }}
+          NEXT_PUBLIC_MERCHANT_ID: ${{ secrets.MERCHANT_ID }}
+          NEXT_PUBLIC_OPTIMIZELY_SDK_KEY: ${{ secrets.OPTIMIZELY_SDK_KEY_PROD }}
+          NEXT_PUBLIC_PRIME_API_URL: ${{ secrets.PRIME_API_URL_PROD }}
+          NEXT_PUBLIC_PRIME_API_KEY: ${{ secrets.PRIME_API_KEY_PROD }}
+          NEXT_PUBLIC_PRIME_SKU: ${{ secrets.PRIME_SKU_PROD }}
+          NEXT_PUBLIC_NIUBIZ_ANTIFRAUD_SCRIPT_URL: ${{ secrets.NIUBIZ_ANTIFRAUD_SCRIPT_URL_PROD }}
+          
+          NEXT_PUBLIC_ENVIRONMENT_NAME: "prod"
+
+      - name: 5- aws s3 copy qa - by ${{ github.actor }}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --follow-symlinks --delete
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET_QA }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_QA }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_QA }}
+          AWS_REGION: ${{ secrets.AWS_REGION_QA }}
+          SOURCE_DIR: "dist"
+
+      - name: 5.2- aws s3 copy qa - by ${{ github.actor }}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/qa2' }}
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --follow-symlinks --delete
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET_QA2 }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_QA }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_QA }}
+          AWS_REGION: ${{ secrets.AWS_REGION_QA }}
+          SOURCE_DIR: "dist"
+
+      - name: 5- aws s3 copy prod - by ${{ github.actor }}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/release' }}
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --follow-symlinks --delete
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET_PROD }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_PROD }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_PROD }}
+          AWS_REGION: ${{ secrets.AWS_REGION_PROD }}
+          SOURCE_DIR: "dist"
+
+      - name: 6- Purge cache Cloudflare QA
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+        uses: jakejarvis/cloudflare-purge-action@master
+        env:
+          CLOUDFLARE_ZONE: ${{ secrets.CF_ZONE_ID_QA }}
+          CLOUDFLARE_TOKEN: ${{ secrets.CF_PURGE_CACHE }}
+          #          PURGE_URLS: ${{ secrets.PURGE_URLS_QA }}
+
+      - name: 6- Clean Cloudfront Cache PROD
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/release' }}
+        uses: chetan/invalidate-cloudfront-action@master
+        env:
+          DISTRIBUTION: ${{ secrets.CF_STORE_DISTRIBUTION_ID_PROD }}
+          PATHS: "/*"
+          AWS_REGION: ${{ secrets.AWS_REGION_PROD }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_PROD }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_PROD }}
+
+      - name: 7- Notify slack success
+        if: success()
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        uses: voxmedia/github-action-slack-notify-build@v1
+        with:
+          channel: builds
+          status: SUCCESS
+          color: good
+      - name: 7- Notify slack fail
+        if: failure()
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        uses: voxmedia/github-action-slack-notify-build@v1
+        with:
+          channel: builds
+          status: FAILED
+          color: danger
