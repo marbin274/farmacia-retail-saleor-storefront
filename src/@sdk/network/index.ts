@@ -25,6 +25,10 @@ import {
   RemoveCheckoutPromoCodeVariables,
 } from '@sdk/mutations/gqlTypes/RemoveCheckoutPromoCode';
 import {
+  UpdateCheckout,
+  UpdateCheckoutVariables,
+} from '@sdk/mutations/gqlTypes/UpdateCheckout';
+import {
   UpdateCheckoutBillingAddress,
   UpdateCheckoutBillingAddressVariables,
 } from '@sdk/mutations/gqlTypes/UpdateCheckoutBillingAddress';
@@ -59,9 +63,11 @@ import {
   ICheckoutAddress,
   ICheckoutModel,
   ICheckoutModelLine,
+  ICreateCheckout,
   IOrderModel,
   IPaymentModel,
   IShippingMethodUpdate,
+  IUpdateCheckout,
 } from '@sdk/repository';
 import { filterNotEmptyArrayItems } from '@sdk/utils';
 import { ApolloClient } from '@apollo/client';
@@ -357,60 +363,51 @@ export class NetworkManager implements INetworkManager {
     return {};
   };
 
-  createCheckout = async (
-    email: string,
-    lines: Array<{ variantId: string; quantity: number }>,
-    shippingAddress?: ICheckoutAddress,
-    billingAddress?: ICheckoutAddress,
-    privacyPolicy?: IPrivacyPolicy,
-    documentNumber?: string,
-    districtId?: string
-  ) => {
+  createCheckout = async ({
+    districtId,
+    documentNumber,
+    email,
+    lines,
+    privacyPolicy,
+    shippingAddress,
+    shippingMethodId,
+    scheduleDate,
+    slotId,
+  }: ICreateCheckout) => {
     try {
-      billingAddress = shippingAddress;
-      const variables = {
+      const shippingAddressModel = shippingAddress && {
+        city: shippingAddress.city,
+        companyName: shippingAddress.companyName,
+        country:
+          CountryCode[
+            shippingAddress?.country?.code as keyof typeof CountryCode
+          ],
+        countryArea: shippingAddress.countryArea,
+        firstName: shippingAddress.firstName,
+        lastName: shippingAddress.lastName,
+        latitude: shippingAddress.latitude,
+        longitude: shippingAddress.longitude,
+        phone: shippingAddress.phone,
+        postalCode: shippingAddress.postalCode,
+        streetAddress1: shippingAddress.streetAddress1,
+        streetAddress2: shippingAddress.streetAddress2,
+      };
+
+      const variables: CreateCheckoutVariables = {
         checkoutInput: {
-          billingAddress: billingAddress && {
-            city: billingAddress.city,
-            companyName: billingAddress.companyName,
-            country:
-              CountryCode[
-                billingAddress?.country?.code as keyof typeof CountryCode
-              ],
-            countryArea: billingAddress.countryArea,
-            firstName: billingAddress.firstName,
-            lastName: billingAddress.lastName,
-            latitude: billingAddress.latitude,
-            longitude: billingAddress.longitude,
-            phone: billingAddress.phone,
-            postalCode: billingAddress.postalCode,
-            streetAddress1: billingAddress.streetAddress1,
-            streetAddress2: billingAddress.streetAddress2,
-          },
+          billingAddress: shippingAddressModel,
           documentNumber,
           email,
           lines,
           privacyPolicy,
-          shippingAddress: shippingAddress && {
-            city: shippingAddress.city,
-            companyName: shippingAddress.companyName,
-            country:
-              CountryCode[
-                shippingAddress?.country?.code as keyof typeof CountryCode
-              ],
-            countryArea: shippingAddress.countryArea,
-            firstName: shippingAddress.firstName,
-            lastName: shippingAddress.lastName,
-            latitude: shippingAddress.latitude,
-            longitude: shippingAddress.longitude,
-            phone: shippingAddress.phone,
-            postalCode: shippingAddress.postalCode,
-            streetAddress1: shippingAddress.streetAddress1,
-            streetAddress2: shippingAddress.streetAddress2,
-          },
+          shippingAddress: shippingAddressModel,
+          shippingMethodId,
+          scheduleDate: scheduleDate?.scheduleTimeId ? scheduleDate : null,
+          slotId,
         },
         districtId,
       };
+
       const { data, errors } = await this.client.mutate<
         CreateCheckout,
         CreateCheckoutVariables
@@ -427,15 +424,99 @@ export class NetworkManager implements INetworkManager {
         return {
           checkoutErrors: data?.checkoutCreate?.checkoutErrors,
         };
-      } else if (data?.checkoutCreate?.errors.length) {
+      } else if (data?.checkoutCreate?.checkoutErrors.length) {
         return {
-          error: data?.checkoutCreate?.errors,
+          error: data?.checkoutCreate?.checkoutErrors,
         };
       } else if (data?.checkoutCreate?.checkout) {
         const isPrime = await checkPrimeUser(email);
         return {
           data: this.constructCheckoutModel({
             checkout: data.checkoutCreate.checkout,
+            isPrime,
+          }),
+        };
+      }
+    } catch (error) {
+      return {
+        error: error as any,
+      };
+    }
+    return {};
+  };
+
+  updateCheckout = async ({
+    districtId,
+    documentNumber,
+    email,
+    id,
+    lines,
+    privacyPolicy,
+    shippingAddress,
+    shippingMethodId,
+    scheduleDate,
+    slotId,
+  }: IUpdateCheckout) => {
+    try {
+      const shippingAddressModel = shippingAddress && {
+        city: shippingAddress.city,
+        companyName: shippingAddress.companyName,
+        country:
+          CountryCode[
+            shippingAddress?.country?.code as keyof typeof CountryCode
+          ],
+        countryArea: shippingAddress.countryArea,
+        firstName: shippingAddress.firstName,
+        lastName: shippingAddress.lastName,
+        latitude: shippingAddress.latitude,
+        longitude: shippingAddress.longitude,
+        phone: shippingAddress.phone,
+        postalCode: shippingAddress.postalCode,
+        streetAddress1: shippingAddress.streetAddress1,
+        streetAddress2: shippingAddress.streetAddress2,
+      };
+
+      const variables: UpdateCheckoutVariables = {
+        checkoutInput: {
+          billingAddress: shippingAddressModel,
+          documentNumber,
+          email,
+          lines,
+          privacyPolicy,
+          shippingAddress: shippingAddressModel,
+          shippingMethodId,
+          scheduleDate: scheduleDate?.scheduleTimeId ? scheduleDate : null,
+          slotId,
+        },
+        id,
+        districtId,
+      };
+
+      const { data, errors } = await this.client.mutate<
+        UpdateCheckout,
+        UpdateCheckoutVariables
+      >({
+        mutation: CheckoutMutations.updateCheckoutMutation,
+        variables,
+      });
+
+      if (errors?.length) {
+        return {
+          error: errors,
+        };
+      } else if (data?.checkoutUpdate?.checkoutErrors.length) {
+        return {
+          checkoutErrors: data?.checkoutUpdate?.checkoutErrors,
+        };
+      } else if (data?.checkoutUpdate?.checkoutErrors.length) {
+        return {
+          error: data?.checkoutUpdate?.checkoutErrors,
+        };
+      } else if (data?.checkoutUpdate?.checkout) {
+        const isPrime = await checkPrimeUser(email);
+        return {
+          data: this.constructCheckoutModel({
+            checkout: data.checkoutUpdate.checkout,
             isPrime,
           }),
         };

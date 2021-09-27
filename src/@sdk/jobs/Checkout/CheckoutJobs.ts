@@ -6,7 +6,9 @@ import {
 import { NetworkManager } from '@sdk/network';
 import {
   ICheckoutAddress,
+  ICreateCheckout,
   IShippingMethodUpdate,
+  IUpdateCheckout,
   LocalRepository,
 } from '@sdk/repository';
 
@@ -21,37 +23,11 @@ export class CheckoutJobs {
     this.repository = repository;
   }
 
-  createCheckout = async ({
-    email,
-    lines,
-    shippingAddress,
-    selectedShippingAddressId,
-    billingAddress,
-    selectedBillingAddressId,
-    privacyPolicy,
-    documentNumber,
-  }: {
-    email: string;
-    lines: Array<{ variantId: string; quantity: number }>;
-    shippingAddress?: ICheckoutAddress;
-    selectedShippingAddressId?: string;
-    billingAddress?: ICheckoutAddress;
-    selectedBillingAddressId?: string;
-    privacyPolicy?: IPrivacyPolicy;
-    documentNumber: string;
-  }): PromiseCheckoutJobRunResponse => {
-    const districtId = this.repository.getDistrict()?.id;
-
+  createCheckout = async (
+    createCheckout: ICreateCheckout
+  ): PromiseCheckoutJobRunResponse => {
     const { checkoutErrors, data, error } =
-      await this.networkManager.createCheckout(
-        email,
-        lines,
-        shippingAddress,
-        billingAddress,
-        privacyPolicy,
-        documentNumber,
-        districtId
-      );
+      await this.networkManager.createCheckout(createCheckout);
 
     if (checkoutErrors?.length! > 0) {
       return {
@@ -65,11 +41,39 @@ export class CheckoutJobs {
         },
       };
     } else {
-      // TODO: check later
       this.repository.setCheckout({
         ...data,
-        selectedBillingAddressId,
-        selectedShippingAddressId,
+        selectedBillingAddressId: createCheckout?.shippingAddress?.id,
+        selectedShippingAddressId: createCheckout?.shippingAddress?.id,
+      });
+      return {
+        data,
+      };
+    }
+  };
+
+  updateCheckout = async (
+    createCheckout: IUpdateCheckout
+  ): PromiseCheckoutJobRunResponse => {
+    const { checkoutErrors, data, error } =
+      await this.networkManager.updateCheckout(createCheckout);
+
+    if (checkoutErrors?.length! > 0) {
+      return {
+        checkoutErrors,
+      };
+    } else if (error) {
+      return {
+        dataError: {
+          error,
+          type: DataErrorCheckoutTypes.SET_SHIPPING_ADDRESS,
+        },
+      };
+    } else {
+      this.repository.setCheckout({
+        ...data,
+        selectedBillingAddressId: createCheckout?.shippingAddress?.id,
+        selectedShippingAddressId: createCheckout?.shippingAddress?.id,
       });
       return {
         data,

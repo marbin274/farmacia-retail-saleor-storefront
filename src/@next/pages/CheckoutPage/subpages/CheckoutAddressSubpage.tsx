@@ -1,237 +1,83 @@
-import { useFeaturePlugins } from '@app/hooks';
-import { alertService } from '@components/atoms/Alert/AlertService';
-import { CheckoutAddress, StockValidationModal } from '@components/organisms';
-import { addressFormSchema } from '@components/organisms/AddressForm/adddressFormSchema';
-import { useCheckout, useUserDetails } from '@sdk/react';
-import { useDistrictSelected } from '@temp/@next/hooks/useDistrictSelected';
-import { useUpdateCartLines } from '@temp/@next/hooks/useUpdateCartLines';
-import { IPrivacyPolicy } from '@temp/@sdk/api/Checkout/types';
+import { Loader } from '@temp/@next/components/atoms';
+import {
+  AddressForm,
+  StockValidationModal,
+} from '@temp/@next/components/organisms';
+import { useShopContext } from '@temp/@next/components/organisms/ShopProvider/context';
+import { useCheckPluginsStatus, useUpdateCartLines } from '@temp/@next/hooks';
+import { alertService } from '@temp/@next/services';
+import { IAddressForm } from '@temp/@next/types/IAddressForm';
 import { CheckoutErrorCode } from '@temp/@sdk/gqlTypes/globalTypes';
 import { CreateCheckout_checkoutCreate_checkoutErrors_products } from '@temp/@sdk/mutations/gqlTypes/CreateCheckout';
-import { baseUrl } from '@temp/app/routes/paths';
+import { useCheckout, useUserDetails } from '@temp/@sdk/react';
+import { baseUrl } from '@temp/app/routes';
 import {
-  CHECKOUT_MANDATORY_COORDINATES,
+  CHECKOUT_STEPS,
   COUNTRY_DEFAULT,
+  SHIPPING_FORMAT_DATE,
 } from '@temp/core/config';
-import { IAddress, IAddressWithEmail, IFormError } from '@types';
-import { filterNotEmptyArrayItems } from '@utils/misc';
+import { format } from 'date-fns';
+import React from 'react';
 import { useRouter } from 'next/router';
-import React, {
-  forwardRef,
-  RefForwardingComponent,
-  useEffect,
-  useImperativeHandle,
-  useRef,
-  useState,
-} from 'react';
-import { AlertComponentProps, useAlert } from 'react-alert';
-import { useShopContext } from '../../../components/organisms/ShopProvider/context';
+import { ICreateCheckout } from '@temp/@sdk/repository';
 
 export interface ICheckoutAddressSubpageHandles {
   submitAddress: () => void;
 }
 
-interface IProps {
-  addressSubPageErrors: IFormError[];
-  changeSubmitProgress: (submitInProgress: boolean) => void;
-  setAddressSubPageErrors: (errors: IFormError[]) => void;
+export interface ICheckoutAddressSubpageProps {
+  checkoutAddressSubpageRef: React.MutableRefObject<ICheckoutAddressSubpageHandles>;
+  changeSubmitProgress(submitInProgress: boolean): void;
 }
 
-const CheckoutAddressSubpageWithRef: RefForwardingComponent<
-  ICheckoutAddressSubpageHandles,
-  IProps
-> = (
-  {
-    addressSubPageErrors,
-    changeSubmitProgress,
-    setAddressSubPageErrors,
-    ...props
-  }: IProps,
-  ref
-) => {
-  const [showStockValidation, setShowStockValidation] = useState(false);
-  const [stockValidationProducts, setStockValidationProducts] =
-    useState<CreateCheckout_checkoutCreate_checkoutErrors_products[]>();
-  const checkoutAddressFormId = 'address-form';
-  const checkoutAddressFormRef = useRef<HTMLFormElement>(null);
-  const checkoutNewAddressFormId = 'new-address-form';
+export const CheckoutAddressSubpage: React.FC<ICheckoutAddressSubpageProps> = ({
+  changeSubmitProgress,
+  checkoutAddressSubpageRef,
+}) => {
+  const checkoutAddressFormRef = React.useRef<HTMLFormElement>(null);
+  const router = useRouter();
+  const { isLastMileActive } = useCheckPluginsStatus();
   const { data: user, loading: userLoading } = useUserDetails();
-  const {
-    checkout,
-    setShippingAddress,
-    setShippingMethod,
-    selectedShippingAddressId,
-    selectedSlotId,
-  } = useCheckout();
-  const { availableDistricts, countries } = useShopContext();
-  const [selectedDistrict, setDistrict] = useDistrictSelected();
+  const { checkout, setCheckout } = useCheckout();
+  const [showStockValidation, setShowStockValidation] = React.useState(false);
   const { update: updateCartLines, loading: updatingCartLines } =
     useUpdateCartLines();
-  const [temporaryStreeAddress1Error, setTemporaryStreeAddress1Error] =
-    useState<string>();
-  const [currentErrorAlert, setCurrentErrorAlert] =
-    useState<AlertComponentProps>();
-  const alert = useAlert();
-  const router = useRouter();
+  const [stockValidationProducts, setStockValidationProducts] =
+    React.useState<CreateCheckout_checkoutCreate_checkoutErrors_products[]>();
 
-  const { lastMileActive } = useFeaturePlugins();
+  const { availableDistricts } = useShopContext();
 
-  const _addressFormSchema = addressFormSchema;
-
-  useEffect(() => {
-    return () => {
-      clearAlertAddressError();
-    };
-  }, [currentErrorAlert]);
-
-  const clearAlertAddressError = () => {
-    if (currentErrorAlert) {
-      currentErrorAlert.close();
-    }
-  };
-
-  const clearTemporaryAddressError = () => {
-    clearAlertAddressError();
-    setTemporaryStreeAddress1Error('');
-  };
-
-  const showOptionalAddressError = () => {
-    clearAlertAddressError();
-
-    const newAlert = alert.show(
-      {
-        content: (
-          <span className="fa-text-sm">
-            Debes ingresar tu dirección y seleccionar una de las opciones
-            desplegadas
-          </span>
-        ),
-      },
-      {
-        timeout: 60000 * 2,
-        type: 'error',
-      }
-    );
-
-    setCurrentErrorAlert(newAlert);
-
-    setTemporaryStreeAddress1Error(
-      'Selecciona una de las direcciones sugeridas'
-    );
-  };
-
-  const handleFormValues = (data: IAddressWithEmail | undefined) => {
-    _addressFormSchema
-      .isValid({
-        city: data?.city,
-        dataTreatmentPolicy: data?.dataTreatmentPolicy,
-        documentNumber: data?.documentNumber,
-        email: data?.email,
-        firstName: data?.firstName,
-        phone: data?.phone,
-        streetAddress1: data?.streetAddress1,
-        streetAddress2: data?.streetAddress2,
-        termsAndConditions: data?.termsAndConditions,
-      })
-      .then((valid: boolean) => {
-        if (valid) {
-          setShippingAddress(
-            {
-              city: data?.city,
-              country: COUNTRY_DEFAULT,
-              firstName: data?.firstName,
-              id: data?.id,
-              phone: data?.phone,
-              streetAddress1: data?.streetAddress1,
-              streetAddress2: data?.streetAddress2,
-            },
-            data?.email ? data?.email : '',
-            {
-              dataTreatmentPolicy: data?.dataTreatmentPolicy,
-              termsAndConditions: data?.termsAndConditions,
-            },
-            data?.documentNumber ? data.documentNumber : ''
-          );
-        }
-      });
-  };
-
-  useImperativeHandle(ref, () => ({
-    submitAddress: () => {
-      if (user && selectedShippingAddressId) {
-        checkoutAddressFormRef.current?.dispatchEvent(
-          new Event('submit', { cancelable: true, bubbles: true })
-        );
-      } else {
-        // TODO validate form
-        checkoutAddressFormRef.current?.dispatchEvent(
-          new Event('submit', { cancelable: true, bubbles: true })
-        );
-      }
-    },
-  }));
-
-  const checkoutShippingAddress = checkout?.shippingAddress
-    ? {
-        ...checkout?.shippingAddress,
-        phone: checkout?.shippingAddress?.phone || undefined,
-      }
-    : undefined;
-
-  const handleSetShippingAddress = async (
-    address?: IAddress,
-    email?: string,
-    userAddressId?: string,
-    privacyPolicy?: IPrivacyPolicy,
-    documentNumber?: string
-  ) => {
-    if (!address) {
-      setAddressSubPageErrors([
-        { message: 'Please provide shipping address.' },
-      ]);
-      return;
-    }
-    const shippingEmail = user?.email || email || '';
-
-    if (!shippingEmail) {
-      setAddressSubPageErrors([
-        { field: 'email', message: 'Please provide email address.' },
-      ]);
-      return;
-    }
-
+  const handleSubmit = async (data: IAddressForm) => {
     changeSubmitProgress(true);
-    setTemporaryStreeAddress1Error('');
-
-    const { checkoutErrors, dataError } = await setShippingAddress(
-      {
-        ...address,
-        id: userAddressId,
-        latitude: address.latitude as number,
-        longitude: address.longitude as number,
+    const newCheckout: ICreateCheckout = {
+      districtId: data.district,
+      email: data.email,
+      lines: [],
+      documentNumber: data.documentNumber,
+      privacyPolicy: {
+        dataTreatmentPolicy: data.dataTreatmentPolicy,
+        termsAndConditions: data.termsAndConditions,
       },
-      shippingEmail,
-      privacyPolicy
-        ? {
-            dataTreatmentPolicy: privacyPolicy?.dataTreatmentPolicy,
-            termsAndConditions: privacyPolicy.termsAndConditions,
-          }
-        : { dataTreatmentPolicy: false, termsAndConditions: false },
-      documentNumber ? documentNumber : ''
-    );
-
-    const district = availableDistricts?.find(
-      (x) => x?.name.toLowerCase() === address.city?.toLocaleLowerCase()
-    );
-
-    if (selectedDistrict?.id !== district?.id) {
-      setDistrict(district);
+      shippingAddress: {
+        city: availableDistricts.find((it) => it.id === data.district)?.name,
+        country: COUNTRY_DEFAULT,
+        firstName: data.firstName,
+        latitude: data.latitude,
+        longitude: data.longitude,
+        phone: data.phone,
+        streetAddress1: data.streetAddress1,
+        streetAddress2: data.streetAddress2,
+      },
+      shippingMethodId: data.shippingMethod,
+      slotId: data.slotId,
+    };
+    if (data.isScheduled) {
+      newCheckout.scheduleDate = {
+        date: format(data.deliveryDate, SHIPPING_FORMAT_DATE),
+        scheduleTimeId: data.scheduleDate,
+      };
     }
-
-    if (selectedSlotId && lastMileActive) {
-      await setShippingMethod({ shippingMethodId: '', slotId: undefined });
-    }
-
+    const { checkoutErrors } = await setCheckout(newCheckout);
     if (checkoutErrors?.length! > 0) {
       const checkoutError = checkoutErrors![0];
       if (checkoutError.code === CheckoutErrorCode.INSUFFICIENT_STOCK) {
@@ -243,52 +89,19 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
         return;
       }
     }
-
-    const errors = dataError?.error;
     changeSubmitProgress(false);
-    if (errors) {
-      setAddressSubPageErrors(errors);
-      switch (errors[0].field) {
-        default:
-          alertService.sendAlert({
-            buttonText: 'Entendido',
-            message: errors[0].message,
-            title: 'Ha ocurrido un error',
-            type: 'Error',
-          });
-          break;
-      }
+
+    if (!checkoutErrors) {
+      router.push(CHECKOUT_STEPS[0].nextStepLink);
     } else {
-      setAddressSubPageErrors([]);
-
-      if (
-        !CHECKOUT_MANDATORY_COORDINATES &&
-        address.streetAddress1 &&
-        !address.latitude
-      ) {
-        showOptionalAddressError();
-      }
-
-      if (checkout?.shippingMethod?.id) {
-        // history.push(CHECKOUT_STEPS[0].nextStepLink);
-      }
+      alertService.sendAlert({
+        buttonText: 'Entendido',
+        message: checkoutErrors?.[0]?.message,
+        title: 'Ha ocurrido un error',
+        type: 'Error',
+      });
     }
   };
-
-  const userAdresses = user?.addresses
-    ?.filter(filterNotEmptyArrayItems)
-    .map((address) => ({
-      address: {
-        ...address,
-        isDefaultBillingAddress: address.isDefaultBillingAddress || false,
-        isDefaultShippingAddress: address.isDefaultShippingAddress || false,
-        latitude: address.latitude || undefined,
-        longitude: address.longitude || undefined,
-        phone: address.phone || undefined,
-      },
-      id: address?.id || '',
-      onSelect: () => null,
-    }));
 
   const onStockValidationContinue = async () => {
     if (updatingCartLines) {
@@ -304,28 +117,26 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     );
   };
 
+  React.useImperativeHandle(checkoutAddressSubpageRef, () => ({
+    submitAddress: () => {
+      checkoutAddressFormRef.current?.dispatchEvent(
+        new Event('submit', { cancelable: true, bubbles: true })
+      );
+    },
+  }));
+
+  if (!!userLoading) {
+    return <Loader />;
+  }
+
   return (
     <>
-      <CheckoutAddress
-        {...props}
-        availableDistricts={availableDistricts!}
-        errors={addressSubPageErrors}
-        formId={checkoutAddressFormId}
+      <AddressForm
+        checkout={checkout}
         formRef={checkoutAddressFormRef}
-        checkoutAddress={checkoutShippingAddress}
-        email={checkout?.email}
-        checkoutData={checkout}
-        userAddresses={userAdresses}
-        selectedUserAddressId={selectedShippingAddressId}
-        countries={countries}
+        isLastMileActive={isLastMileActive}
         user={user}
-        userLoading={userLoading}
-        newAddressFormId={checkoutNewAddressFormId}
-        setShippingAddress={handleSetShippingAddress}
-        setFormValue={handleFormValues}
-        temporaryStreeAddress1Error={temporaryStreeAddress1Error}
-        clearTemporaryAddressError={clearTemporaryAddressError}
-        showOptionalAddressError={showOptionalAddressError}
+        handleSubmit={handleSubmit}
       />
       <StockValidationModal
         show={showStockValidation}
@@ -338,12 +149,10 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
           router.push(baseUrl);
         }}
         onClickContinue={onStockValidationContinue}
-        district={selectedDistrict.name}
+        district={'nombbre del distrito'}
       />
     </>
   );
 };
 
-const CheckoutAddressSubpage = forwardRef(CheckoutAddressSubpageWithRef);
-
-export { CheckoutAddressSubpage };
+export default CheckoutAddressSubpage;

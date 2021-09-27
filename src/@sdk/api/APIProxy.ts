@@ -108,6 +108,11 @@ export class APIProxy {
     (data) => data.orderByToken
   );
 
+  getPotentialSlots = this.watchQuery(
+    QUERIES.GetPotencialSlots,
+    (data) => data.potentialSlots
+  );
+
   getProductList = this.watchQuery(
     QUERIES.ProductList,
     (data) => data.products
@@ -118,8 +123,8 @@ export class APIProxy {
     (data) => data.productVariants
   );
 
-  getShippingMethods = this.watchQuery(
-    QUERIES.GetShippingMethods,
+  getPotentialShippingMethods = this.watchQuery(
+    QUERIES.GetPotencialShippingMethods,
     (data) => data
   );
 

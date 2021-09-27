@@ -1,4 +1,4 @@
-import { alertService } from '@components/atoms/Alert';
+import { alertService } from '@temp/@next/services';
 import { CheckoutPayment, StockValidationModal } from '@components/organisms';
 import { IUserDataForNiubiz } from '@components/organisms/CheckoutPayment/types';
 import { useCart, useCheckout, useUserDetails } from '@sdk/react';

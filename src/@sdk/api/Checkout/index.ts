@@ -2,6 +2,7 @@ import { ErrorListener } from '@sdk/helpers';
 import { JobsManager } from '@sdk/jobs';
 import {
   ICheckoutModel,
+  ICreateCheckout,
   IPaymentModel,
   IShippingMethodUpdate,
   ISlots,
@@ -101,6 +102,7 @@ export class SaleorCheckoutAPI
           scheduleDate,
           shippingAddress,
           shippingMethod,
+          slotId,
           termsAndConditions,
           token,
         };
@@ -171,6 +173,65 @@ export class SaleorCheckoutAPI
     };
   };
 
+  setCheckout = async (
+    createCheckout: ICreateCheckout
+  ): PromiseRunResponse<DataErrorCheckoutTypes, FunctionErrorCheckoutTypes> => {
+    await this.saleorState.provideCheckout(this.fireError);
+    const checkoutId = this.saleorState.checkout?.id;
+    const alteredLinesFromLocalStorage = this.saleorState.checkout?.lines?.map(
+      (item) => ({
+        quantity: item!.quantity,
+        variantId: item?.variant!.id,
+      })
+    );
+    let alteredLines: IAlteredLines[] | undefined = [];
+    alteredLines = alteredLinesFromLocalStorage?.filter((x) => x.quantity > 0);
+    if (alteredLines && checkoutId) {
+      const { checkoutErrors, data, dataError } = await this.jobsManager.run(
+        'checkout',
+        'updateCheckout',
+        {
+          ...createCheckout,
+          id: checkoutId,
+          lines: alteredLines,
+        }
+      );
+
+      return {
+        checkoutErrors,
+        data,
+        dataError,
+        pending: false,
+      };
+    } else if (alteredLines) {
+      const { checkoutErrors, data, dataError } = await this.jobsManager.run(
+        'checkout',
+        'createCheckout',
+        {
+          ...createCheckout,
+          lines: alteredLines,
+        }
+      );
+
+      return {
+        checkoutErrors,
+        data,
+        dataError,
+        pending: false,
+      };
+    } else {
+      return {
+        functionError: {
+          error: new Error(
+            'You need to add items to cart before setting shipping address.'
+          ),
+          type: FunctionErrorCheckoutTypes.ITEMS_NOT_ADDED_TO_CART,
+        },
+        pending: false,
+      };
+    }
+  };
+
   setShippingAddress = async (
     shippingAddress: IAddress,
     email: string,
@@ -213,13 +274,12 @@ export class SaleorCheckoutAPI
         'checkout',
         'createCheckout',
         {
+          districtId: shippingAddress.district?.id,
           billingAddress: shippingAddress,
           documentNumber,
           email,
           lines: alteredLines,
           privacyPolicy,
-          selectedBillingAddressId: shippingAddress.id,
-          selectedShippingAddressId: shippingAddress.id,
           shippingAddress,
         }
       );
@@ -317,12 +377,12 @@ export class SaleorCheckoutAPI
         'checkout',
         'createCheckout',
         {
+          districtId: billingAddress.district?.id,
           billingAddress,
           documentNumber: documentNumber ? documentNumber : '',
           email,
           lines: alteredLines,
           privacyPolicy,
-          selectedBillingAddressId: billingAddress.id,
         }
       );
 

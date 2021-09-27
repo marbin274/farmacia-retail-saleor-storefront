@@ -24,6 +24,10 @@ export const checkoutAddressFragment = gql`
     streetAddress1
     streetAddress2
     city
+    district {
+      id
+      name
+    }
     postalCode
     country {
       code

@@ -1,11 +1,5 @@
 import { styled } from '@styles';
 
-export const FieldsGroup = styled.div`
-  padding-top: 1rem;
-  padding-bottom: 2rem;
-  width: 100%;
-`;
-
 export const ShippingMethodContainer = styled.div<{
   isScheduledSelected?: boolean;
   selected: boolean;
@@ -30,10 +24,4 @@ export const ShippingMethodContainer = styled.div<{
   &:hover {
     box-shadow: 0px 0px 6px 2px #ccc;
   }
-`;
-
-export const ShippingMethodItem = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
 `;

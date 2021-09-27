@@ -128,15 +128,20 @@ export const LIMA_BOUNDS: google.maps.LatLngBoundsLiteral = {
 };
 
 export const ADDRESS_FORM_SORT = {
-  city: 7,
-  dataTreatmentPolicy: 5,
+  firstName: 0,
   documentNumber: 1,
   email: 2,
-  firstName: 0,
   phone: 3,
-  streetAddress1: 6,
-  streetAddress2: 8,
   termsAndConditions: 4,
+  dataTreatmentPolicy: 5,
+  streetAddress1: 6,
+  latitude: 7,
+  district: 8,
+  streetAddress2: 9,
+  shippingMethod: 10,
+  deliveryDate: 11,
+  scheduleDate: 12,
+  slotId: 13,
 };
 
 export const ADDRESS_FORM_SHOW_GENERAL_ERRORS = 3;

@@ -1,3 +1,5 @@
+import { IAddressForm } from '@temp/@next/types/IAddressForm';
+import { ICheckout } from '@temp/@sdk/api/Checkout/types';
 import {
   UserDetails_me,
   UserDetails_me_addresses,
@@ -17,28 +19,32 @@ export const countries = [
   { code: 'GB', country: 'Great Britain' },
 ];
 
-export const address = {
-  city: 'Lima',
-  companyName: 'Mirumee',
-  country: {
-    code: 'US',
-    country: 'United States of America',
-  },
-  countryArea: 'NY',
+export const address: IAddressForm = {
+  dataTreatmentPolicy: false,
+  district: 'RGlzdHJpY3Q6OQ==',
+  documentNumber: '46734897',
+  isLastMileActive: false,
+  isScheduled: false,
   email: 'abc@xyz.com',
   firstName: 'John',
-  lastName: 'Doe',
+  latitude: 0,
+  longitude: 0,
   phone: '+51952452125',
-  postalCode: '90210',
   streetAddress1: 'Street line 1',
   streetAddress2: 'Street line 2',
+  termsAndConditions: true,
 };
 
-export const checkoutData = {
+export const checkoutData: ICheckout = {
+  id: 'Q2hlY2tvdXQ6MmRkZTZhMjMtMzJiZS00NjAxLTg0MWQtMDU5N2RmMTdkNWVk',
   documentNumber: '4527856',
   email: address.email,
   shippingAddress: {
     ...address,
+    district: {
+      id: 'RGlzdHJpY3Q6OQ==',
+      name: 'Miraflores',
+    },
   },
   token: '',
 };
@@ -46,6 +52,11 @@ export const checkoutData = {
 export const userAddressItem: UserDetails_me_addresses = {
   __typename: 'Address',
   city: '',
+  district: {
+    __typename: 'District',
+    id: 'RGlzdHJpY3Q6OQ==',
+    name: 'Miraflores',
+  },
   companyName: '',
   country: { __typename: 'CountryDisplay', code: '', country: '' },
   countryArea: '',

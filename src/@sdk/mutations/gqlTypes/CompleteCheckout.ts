@@ -41,6 +41,15 @@ export interface CompleteCheckout_checkoutComplete_checkoutErrors {
   products: (CompleteCheckout_checkoutComplete_checkoutErrors_products | null)[] | null;
 }
 
+export interface CompleteCheckout_checkoutComplete_order_shippingAddress_district {
+  __typename: "District";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+}
+
 export interface CompleteCheckout_checkoutComplete_order_shippingAddress_country {
   __typename: "CountryDisplay";
   /**
@@ -65,6 +74,7 @@ export interface CompleteCheckout_checkoutComplete_order_shippingAddress {
   streetAddress1: string;
   streetAddress2: string;
   city: string;
+  district: CompleteCheckout_checkoutComplete_order_shippingAddress_district | null;
   postalCode: string;
   /**
    * Shop's default country.

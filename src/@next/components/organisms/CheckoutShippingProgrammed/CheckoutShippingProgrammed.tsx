@@ -9,34 +9,45 @@ import { format } from 'date-fns';
 import { ClockIcon } from '@farmacia-retail/farmauna-components';
 import React from 'react';
 import * as S from './styles';
-import { IKeyValue, ICheckoutShippingProgrammedProps } from './types';
+import { ICheckoutShippingProgrammedProps } from './types';
+
+interface IScheduledTimeOption {
+  description?: string;
+  id?: string;
+  scheduleDate?: string;
+  slotId?: string;
+}
 
 export const CheckoutShippingProgrammed: React.FC<ICheckoutShippingProgrammedProps> =
   ({
-    dateSelected,
-    id,
+    deliveryDate,
     errors,
     isScheduled,
     selected,
-    scheduleSelected: scheduleSelectedId,
+    scheduleSelected: scheduleDateId,
     scheduleDates,
     setFieldValue,
-    setShippingMethod,
+    setScheduleTime,
+    touched,
   }) => {
-    const scheduleTimes: IKeyValue[] = React.useMemo(() => {
-      if (!dateSelected || !scheduleDates || !scheduleDates.length) {
+    const scheduleTimes: IScheduledTimeOption[] = React.useMemo(() => {
+      if (!deliveryDate || !scheduleDates || !scheduleDates.length) {
         return [];
       }
-      const dateString = format(dateSelected, SHIPPING_FORMAT_DATE);
+      const dateString = format(deliveryDate, SHIPPING_FORMAT_DATE);
       const scheduleDate = scheduleDates?.find((it) => it?.date === dateString);
       if (!scheduleDate || !scheduleDate.scheduleTimes) {
         return [];
       }
-      return scheduleDate.scheduleTimes.map((it) => ({
-        id: it?.id,
-        description: getScheduleTimesFormat(it?.startTime, it?.endTime),
-      }));
-    }, [dateSelected, scheduleDates]);
+      return scheduleDate.scheduleTimes.map(
+        (it): IScheduledTimeOption => ({
+          description: getScheduleTimesFormat(it?.startTime, it?.endTime),
+          id: it?.id,
+          slotId: it.slotId,
+          scheduleDate: it.scheduleTimeId,
+        })
+      );
+    }, [deliveryDate, scheduleDates]);
 
     const minDate: Date | undefined = React.useMemo(() => {
       if (!scheduleDates) {
@@ -55,23 +66,13 @@ export const CheckoutShippingProgrammed: React.FC<ICheckoutShippingProgrammedPro
       return date;
     }, [scheduleDates]);
 
-    const scheduleSelected = React.useMemo(
-      () => scheduleTimes?.find((it) => it.id === scheduleSelectedId),
-      [scheduleSelectedId]
+    const scheduleDate = React.useMemo(
+      () => scheduleTimes?.find((it) => it.id === scheduleDateId),
+      [scheduleDateId]
     );
 
-    const handleOnChangeScheduleSelected = (value: IKeyValue) => {
-      setFieldValue('scheduleSelected', value.id);
-      if (id && dateSelected && value.id) {
-        setShippingMethod({
-          scheduleDate: {
-            date: format(dateSelected, SHIPPING_FORMAT_DATE),
-            scheduleTimeId: value.id,
-          },
-          shippingMethodId: id,
-        });
-      }
-    };
+    const handleOnChangescheduleDate = (value: IScheduledTimeOption) =>
+      setScheduleTime(value.id, value.slotId);
 
     return selected && isScheduled ? (
       <S.ShippingMethodItemControl>
@@ -81,18 +82,25 @@ export const CheckoutShippingProgrammed: React.FC<ICheckoutShippingProgrammedPro
           </span>
           <S.ShippingMethodControl>
             <DatePicker
-              name="dateSelected"
+              disabled={!minDate || !maxDate}
+              name="deliveryDate"
               errors={
-                errors?.dateSelected
-                  ? [{ field: 'dateSelected', message: errors.dateSelected }]
-                  : undefined
+                touched.deliveryDate &&
+                (errors?.deliveryDate
+                  ? [
+                      {
+                        field: 'deliveryDate',
+                        message: String(errors.deliveryDate),
+                      },
+                    ]
+                  : undefined)
               }
               minDate={minDate}
               maxDate={maxDate}
-              value={dateSelected}
+              value={deliveryDate}
               onChange={(date: Date | [Date, Date] | null) => {
-                setFieldValue('dateSelected', date);
-                setFieldValue('scheduleSelected', '');
+                setFieldValue('deliveryDate', date);
+                setFieldValue('scheduleDate', undefined);
               }}
             />
           </S.ShippingMethodControl>
@@ -109,21 +117,22 @@ export const CheckoutShippingProgrammed: React.FC<ICheckoutShippingProgrammedPro
                 placeholder: '',
               }}
               label=""
-              name="scheduleSelected"
+              name="scheduleDate"
               options={scheduleTimes}
-              value={scheduleSelected || ''}
-              onChange={handleOnChangeScheduleSelected}
+              value={scheduleDate || ''}
+              onChange={handleOnChangescheduleDate}
               optionLabelKey="description"
               optionValueKey="id"
               errors={
-                errors?.scheduleSelected
+                touched.scheduleDate &&
+                (errors?.scheduleDate
                   ? [
                       {
-                        field: 'scheduleSelected',
-                        message: errors.scheduleSelected,
+                        field: 'scheduleDate',
+                        message: errors.scheduleDate,
                       },
                     ]
-                  : undefined
+                  : undefined)
               }
             />
           </S.ShippingMethodControl>

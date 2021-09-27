@@ -1,310 +1,178 @@
-import {
-  getName,
-  removeCountryCodeInPhoneNumber,
-} from '@temp/@next/utils/addresForm';
-import { IPrivacyPolicy } from '@temp/@sdk/api/Checkout/types';
+import { IFormErrorSort } from '@app/types';
+import { IAddressForm } from '@app/types/IAddressForm';
+import { ErrorForm } from '@components/atoms';
+import { alertService } from '@app/services';
+import { removeCountryCodeInPhoneNumber } from '@app/utils/addresForm';
+import { ICheckout } from '@sdk/api/Checkout/types';
+import { UserDetails_me } from '@sdk/queries/gqlTypes/UserDetails';
 import {
   ADDRESS_FORM_SHOW_GENERAL_ERRORS,
   ADDRESS_FORM_SORT,
-  CHECKOUT_MANDATORY_COORDINATES,
-  COUNTRY_DEFAULT,
 } from '@temp/core/config';
-import { IAddressWithEmail, IFormErrorSort } from '@types';
-import { Form, Formik, FormikHelpers } from 'formik';
-import { pick, sortBy } from 'lodash';
-import React, { useEffect, useState } from 'react';
-import { alertService } from '../../atoms/Alert';
-import {
-  addressFormModalSchema,
-  addressFormSchema,
-} from './adddressFormSchema';
-import { AddressFormContent } from './AddressFormContent';
-import { IProps } from './types';
+import { useFormik } from 'formik';
+import ErrorFormPopulateIcon from './form-populate-error.svg';
+import { sortBy } from 'lodash';
+import React from 'react';
+import { AddressSection, ShippingSection } from './components';
+import { addressFormSchema } from './schema';
+import { convertShippingMethodDateToDate } from '@temp/@next/utils/dateUtils';
 
-const ADDRESS_FIELDS = [
-  'city',
-  'firstName',
-  'lastName',
-  'country',
-  'phone',
-  'streetAddress1',
-  'streetAddress2',
-  'email',
-  'dataTreatmentPolicy',
-  'termsAndConditions',
-  'documentNumber',
-  'latitude',
-  'longitude',
-];
+const getCheckoutShippingAddress = (
+  checkout: ICheckout,
+  user: UserDetails_me,
+  isLastMileActive: boolean
+): IAddressForm | undefined => {
+  if (checkout?.id) {
+    return {
+      dataTreatmentPolicy: checkout.dataTreatmentPolicy,
+      deliveryDate: convertShippingMethodDateToDate(
+        checkout.scheduleDate?.date
+      ),
+      district: checkout.shippingAddress.district.id,
+      documentNumber: checkout.documentNumber,
+      email: checkout.email,
+      phone: removeCountryCodeInPhoneNumber(checkout.shippingAddress.phone),
+      firstName: checkout.shippingAddress.firstName,
+      isScheduled: !!checkout.scheduleDate,
+      isLastMileActive,
+      latitude: checkout.shippingAddress.latitude,
+      longitude: checkout.shippingAddress.longitude,
+      slotId: checkout.slotId,
+      streetAddress1: checkout.shippingAddress.streetAddress1,
+      streetAddress2: checkout.shippingAddress.streetAddress2,
+      scheduleDate: checkout.scheduleDate?.scheduleTime?.id,
+      shippingMethod: checkout.shippingMethod?.id,
+      termsAndConditions: checkout.termsAndConditions,
+    };
+  } else if (user) {
+    return {
+      dataTreatmentPolicy: user.dataTreatmentPolicy,
+      district: user.defaultShippingAddress.district.id,
+      documentNumber: user.documentNumber,
+      email: user.email,
+      phone: removeCountryCodeInPhoneNumber(user.defaultShippingAddress.phone),
+      firstName: `${user.firstName} ${user.lastName}`,
+      isLastMileActive,
+      isScheduled: false,
+      latitude: user.defaultShippingAddress.latitude,
+      longitude: user.defaultShippingAddress.longitude,
+      streetAddress1: user.defaultShippingAddress.streetAddress1,
+      streetAddress2: user.defaultShippingAddress.streetAddress2,
+      termsAndConditions: user.termsAndConditions,
+    };
+  } else if (!checkout?.shippingAddress || !user) {
+    return {
+      dataTreatmentPolicy: false,
+      district: '',
+      documentNumber: '',
+      email: '',
+      phone: '',
+      firstName: '',
+      isLastMileActive,
+      isScheduled: false,
+      latitude: null,
+      longitude: null,
+      streetAddress1: '',
+      streetAddress2: '',
+      termsAndConditions: false,
+    };
+  } else {
+    return undefined;
+  }
+};
+export interface IAddressFormProps {
+  checkout: ICheckout;
+  formRef: React.MutableRefObject<HTMLFormElement>;
+  isLastMileActive: boolean;
+  user: UserDetails_me;
+  handleSubmit(data: IAddressForm): void;
+}
 
-export const AddressForm: React.FC<IProps> = ({
-  address,
+export const AddressForm: React.FC<IAddressFormProps> = ({
+  checkout,
   formRef,
-  handleSubmit: submitAddressForm,
-  formId,
-  defaultValue,
-  countriesOptions,
-  districtsOptions,
+  isLastMileActive,
   user,
-  userLoading,
-  comeFromModal,
-  checkoutData,
-  setFormValue,
-  errors: requestErrors,
-  showOptionalAddressError,
-  ...props
-}: IProps) => {
-  if (userLoading) return null;
+  handleSubmit: checkoutAddressSubmit,
+}) => {
+  const {
+    errors: fieldErrors,
+    isSubmitting,
+    submitCount,
+    touched,
+    values,
+    handleSubmit,
+    handleChange,
+    setFieldValue,
+    setValues,
+  } = useFormik<IAddressForm>({
+    initialValues: getCheckoutShippingAddress(checkout, user, isLastMileActive),
+    validationSchema: addressFormSchema,
+    onSubmit: checkoutAddressSubmit,
+  });
 
-  const [initialValues, setInitialValues] =
-    useState<Partial<IAddressWithEmail>>();
+  React.useEffect(() => {
+    if (!isSubmitting || Object.keys(fieldErrors).length === 0) return;
+    const scrollToErrors = (errors: IFormErrorSort[]) => {
+      if (errors[0]?.field) {
+        document.getElementsByName(errors[0].field)[0]?.focus();
+      }
+    };
 
-  useEffect(() => {
-    let addressWithPickedFields: Partial<IAddressWithEmail> = {};
-    if (address) {
-      addressWithPickedFields = pick(address, ADDRESS_FIELDS);
-    }
-
-    if (user) {
-      const address = user.defaultShippingAddress;
-      const streetAddress1 = address?.streetAddress1;
-      const latitude = address?.latitude;
-
-      addressWithPickedFields.firstName = getName(
-        user.firstName,
-        user.lastName
-      );
-      addressWithPickedFields.streetAddress1 =
-        streetAddress1 && latitude ? streetAddress1 : undefined;
-      addressWithPickedFields.streetAddress2 =
-        address?.streetAddress2 || undefined;
-      addressWithPickedFields.email = user.email;
-      addressWithPickedFields.id = address?.id;
-      addressWithPickedFields.documentNumber = user.documentNumber || '';
-      addressWithPickedFields.phone = address?.phone
-        ? removeCountryCodeInPhoneNumber(address?.phone)
-        : '';
-      addressWithPickedFields.termsAndConditions =
-        user.termsAndConditions || false;
-      addressWithPickedFields.dataTreatmentPolicy = user.dataTreatmentPolicy;
-      addressWithPickedFields.latitude = latitude || '';
-      addressWithPickedFields.longitude = address?.longitude || '';
-    }
-
-    if (checkoutData) {
-      addressWithPickedFields.firstName =
-        checkoutData.shippingAddress?.firstName ||
-        addressWithPickedFields.firstName;
-      addressWithPickedFields.email =
-        checkoutData.email || addressWithPickedFields.email;
-      addressWithPickedFields.documentNumber =
-        checkoutData.documentNumber || addressWithPickedFields.documentNumber;
-      addressWithPickedFields.phone = checkoutData.shippingAddress?.phone
-        ? removeCountryCodeInPhoneNumber(checkoutData.shippingAddress.phone)
-        : addressWithPickedFields.phone;
-      addressWithPickedFields.termsAndConditions =
-        checkoutData.termsAndConditions;
-      addressWithPickedFields.dataTreatmentPolicy =
-        checkoutData.dataTreatmentPolicy;
-      addressWithPickedFields.streetAddress1 =
-        checkoutData.shippingAddress?.streetAddress1 ||
-        addressWithPickedFields.streetAddress1;
-      addressWithPickedFields.streetAddress2 =
-        checkoutData.shippingAddress?.streetAddress2 ||
-        addressWithPickedFields.streetAddress2;
-      addressWithPickedFields.latitude =
-        checkoutData.shippingAddress?.latitude ||
-        addressWithPickedFields.latitude;
-      addressWithPickedFields.longitude =
-        checkoutData.shippingAddress?.longitude ||
-        addressWithPickedFields.longitude;
-    }
-
-    if (defaultValue) {
-      addressWithPickedFields.country = defaultValue;
-    }
-
-    setInitialValues(addressWithPickedFields);
-  }, []);
-
-  const handleOnSubmitAddressForm = (
-    values: IAddressWithEmail,
-    { setSubmitting, setFieldValue }: FormikHelpers<IAddressWithEmail>
-  ) => {
-    if (
-      CHECKOUT_MANDATORY_COORDINATES &&
-      values.streetAddress1 &&
-      !values.latitude &&
-      !comeFromModal
-    ) {
-      showOptionalAddressError?.();
-      setFieldValue('city', '');
-      setSubmitting(false);
-      return;
-    }
-
-    if (submitAddressForm) {
-      const _values: IAddressWithEmail = {
-        ...values,
-        country: COUNTRY_DEFAULT,
-        latitude: Number(values.latitude),
-        longitude: Number(values.longitude),
+    const customErrors: IFormErrorSort[] = [];
+    for (const property of Object.keys(fieldErrors)) {
+      const _err: IFormErrorSort = {
+        field: property,
+        message: (fieldErrors as any)[property],
+        sort: (ADDRESS_FORM_SORT as any)[property],
       };
-      const policyPrivacy: IPrivacyPolicy = {
-        dataTreatmentPolicy: values.dataTreatmentPolicy || false,
-        termsAndConditions: values.termsAndConditions,
-      };
-      submitAddressForm(
-        _values,
-        _values.email,
-        initialValues.id,
-        policyPrivacy,
-        _values.documentNumber
-      );
+      customErrors.push(_err);
     }
-    setSubmitting(false);
+    const errorsSort = sortBy(customErrors, ['sort']);
+
+    alertService.sendAlert({
+      acceptDialog: () => {
+        scrollToErrors(errorsSort);
+      },
+      buttonText: 'Entendido',
+      icon: ErrorFormPopulateIcon,
+      message:
+        errorsSort.length > ADDRESS_FORM_SHOW_GENERAL_ERRORS ? (
+          'Por favor completa los campos  obligatorios que se encuentran de color rojo.'
+        ) : (
+          <>
+            Por favor completa los siguientes campos:{' '}
+            <ul>
+              {errorsSort.map((it, key) => (
+                <li key={key}>- {it.message}</li>
+              ))}
+            </ul>
+          </>
+        ),
+      title: 'Faltan datos',
+      type: 'Text',
+    });
+  }, [submitCount]);
+
+  const sectionsProps = {
+    fieldErrors,
+    handleChange,
+    setValues,
+    setFieldValue,
+    touched,
+    values,
   };
 
-  const formSchemaValidation = comeFromModal
-    ? addressFormModalSchema
-    : addressFormSchema;
-
-  useEffect(() => {
-    if (
-      initialValues &&
-      initialValues.streetAddress1 &&
-      !initialValues.latitude
-    ) {
-      showOptionalAddressError?.();
-    }
-  }, [initialValues]);
-
-  if (!initialValues) {
-    return null;
-  }
-
   return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={handleOnSubmitAddressForm}
-      validationSchema={formSchemaValidation}
-    >
-      {({
-        handleChange,
-        handleSubmit,
-        handleBlur,
-        values,
-        setFieldValue,
-        setFieldTouched,
-        errors: formikErrors,
-        touched,
-        isValid,
-        submitCount,
-      }) => {
-        const submitCountRef = React.useRef<number>(submitCount);
-        const [errors, setErrors] = React.useState<IFormErrorSort[]>([]);
-
-        React.useEffect(() => {
-          const scrollToErrors = (errors: IFormErrorSort[]) => {
-            if (errors[0]?.field) {
-              document.getElementsByName(errors[0].field)[0]?.focus();
-            }
-          };
-
-          const customErrors: IFormErrorSort[] =
-            requestErrors?.length! > 0 ? [...requestErrors!] : [];
-          for (const property of Object.keys(formikErrors)) {
-            const _err: IFormErrorSort = {
-              field: property,
-              message: (formikErrors as any)[property],
-              sort: (ADDRESS_FORM_SORT as any)[property],
-            };
-            if (touched.hasOwnProperty(property)) {
-              customErrors.push(_err);
-            }
-          }
-          let errorsSort = sortBy(customErrors, ['sort']);
-          setErrors(errorsSort);
-
-          if (errorsSort.length > 0 && submitCount > submitCountRef.current) {
-            submitCountRef.current = submitCount;
-
-            if (
-              errorsSort.length < ADDRESS_FORM_SHOW_GENERAL_ERRORS &&
-              values.streetAddress1 &&
-              !values.latitude
-            ) {
-              if (
-                CHECKOUT_MANDATORY_COORDINATES &&
-                errorsSort.length === 1 &&
-                errorsSort.find((err) => err.field === 'city')
-              ) {
-                errorsSort = [];
-              } else {
-                errorsSort.push({
-                  message:
-                    'Selecciona una dirección dentro de las opciones desplegadas.',
-                });
-              }
-            }
-
-            if (errorsSort.length === 0) {
-              return;
-            }
-
-            alertService.sendAlert({
-              acceptDialog: () => {
-                scrollToErrors(errorsSort);
-              },
-              buttonText: 'Entendido',
-              icon: '/assets/auna/form-populate-error.svg',
-              message:
-                errorsSort.length > ADDRESS_FORM_SHOW_GENERAL_ERRORS ? (
-                  'Por favor completa los campos  obligatorios que se encuentran de color rojo.'
-                ) : (
-                  <>
-                    Por favor completa los siguientes campos:{' '}
-                    <ul>
-                      {errorsSort.map((it, key) => (
-                        <li key={key}>- {it.message}</li>
-                      ))}
-                    </ul>
-                  </>
-                ),
-              title: 'Faltan datos',
-              type: 'Text',
-            });
-          }
-        }, [formikErrors, requestErrors, submitCount]);
-
-        return (
-          <Form ref={formRef} className="whatever">
-            <AddressFormContent
-              {...{
-                districtsOptions,
-                comeFromModal,
-                countriesOptions,
-                defaultValue,
-                errors,
-                formId,
-                formRef,
-                formikErrors,
-                handleBlur,
-                handleChange,
-                handleSubmit,
-                isValid,
-                setFieldTouched,
-                setFieldValue,
-                touched,
-                user,
-                values,
-                showOptionalAddressError,
-              }}
-              {...props}
-            />
-          </Form>
-        );
-      }}
-    </Formik>
+    <form onSubmit={handleSubmit} ref={formRef} role="form">
+      <AddressSection {...sectionsProps} />
+      {!!values.district && !!values.latitude ? (
+        <ShippingSection {...sectionsProps} />
+      ) : touched.district ? (
+        <ErrorForm>{fieldErrors.shippingMethod}</ErrorForm>
+      ) : (
+        <></>
+      )}
+    </form>
   );
 };

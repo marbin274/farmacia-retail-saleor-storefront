@@ -1,4 +1,3 @@
-import { alertService } from '@components/atoms/Alert';
 import {
   Alert,
   Collapse,
@@ -11,6 +10,7 @@ import {
   NiubizPaymentGateway,
 } from '@components/organisms';
 import { NOT_CHARGE_TOKEN } from '@components/organisms/DummyPaymentGateway';
+import { alertService } from '@temp/@next/services/AlertService';
 import { IPaymentGatewayConfig } from '@temp/@next/types';
 import { useCreateUserCardToken, useUserDetails } from '@temp/@sdk/react';
 import { LocalRepository } from '@temp/@sdk/repository';
