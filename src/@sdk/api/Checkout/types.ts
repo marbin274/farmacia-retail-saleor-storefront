@@ -3,6 +3,7 @@ import { GetShopPaymentGateways_shop_availablePaymentGateways } from '@sdk/queri
 import {
   ICheckoutModelPrice,
   ICheckoutModelPriceValue,
+  ICreateCheckout,
   IPaymentCreditCard,
   IScheduleDate,
   IShippingMethodUpdate,
@@ -21,6 +22,10 @@ export interface IAddress {
   streetAddress1?: string;
   streetAddress2?: string;
   city?: string;
+  district?: {
+    id: string;
+    name: string;
+  };
   postalCode?: string;
   countryArea?: string;
   phone?: string | null;
@@ -83,6 +88,7 @@ export interface ICheckout {
   termsAndConditions?: boolean;
   documentNumber?: string | null;
   deliveryDate?: string;
+  slotId?: string;
 }
 
 export enum FunctionErrorCheckoutTypes {
@@ -117,6 +123,9 @@ export interface ISaleorCheckoutAPI {
   availableShippingMethods?: IAvailableShippingMethods;
   availablePaymentGateways?: IAvailablePaymentGateways;
   payment?: IPayment;
+  setCheckout: (
+    createCheckout: ICreateCheckout
+  ) => PromiseRunResponse<DataErrorCheckoutTypes, FunctionErrorCheckoutTypes>;
   load: () => PromiseQueuedResponse;
   setBillingAddress: (
     billingAddress: IAddress,

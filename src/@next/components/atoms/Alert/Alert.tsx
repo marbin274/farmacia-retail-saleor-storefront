@@ -3,7 +3,7 @@ import { Button } from '@farmacia-retail/farmauna-components';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { ReactSVG } from 'react-svg';
-import { alertService } from './AlertService';
+import { alertService } from '@app/services';
 import * as S from './styles';
 import { alertTypes, IAlertServiceProps } from './types';
 

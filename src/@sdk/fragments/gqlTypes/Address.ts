@@ -7,6 +7,15 @@
 // GraphQL fragment: Address
 // ====================================================
 
+export interface Address_district {
+  __typename: "District";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+}
+
 export interface Address_country {
   __typename: "CountryDisplay";
   /**
@@ -31,6 +40,7 @@ export interface Address {
   streetAddress1: string;
   streetAddress2: string;
   city: string;
+  district: Address_district | null;
   postalCode: string;
   /**
    * Shop's default country.

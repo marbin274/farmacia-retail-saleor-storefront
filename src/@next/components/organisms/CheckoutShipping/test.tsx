@@ -1,19 +1,13 @@
-import { mount } from "enzyme";
-import "jest-styled-components";
-import React from "react";
+import { mount } from 'enzyme';
+import 'jest-styled-components';
+import React from 'react';
 
-import { CheckoutShipping } from ".";
-import { DEFAULT_PROPS } from "./fixtures";
+import { CheckoutShipping } from '.';
+import { DEFAULT_PROPS } from './fixtures';
 
-describe("<CheckoutShipping />", () => {
-  it("renders shipping methods", () => {
-    const selectShippingMethod = jest.fn();
-    const wrapper = mount(
-      <CheckoutShipping
-        {...DEFAULT_PROPS}
-        selectShippingMethod={selectShippingMethod}
-      />
-    );
+describe('<CheckoutShipping />', () => {
+  it('renders shipping methods', () => {
+    const wrapper = mount(<CheckoutShipping {...DEFAULT_PROPS} />);
 
     expect(wrapper.exists()).toEqual(true);
     const renderedText = wrapper.text();
@@ -24,5 +18,4 @@ describe("<CheckoutShipping />", () => {
       true
     );
   });
-
 });

@@ -473,6 +473,19 @@ export interface CheckoutLineInput {
   variantId: string;
 }
 
+export interface CheckoutUpdateInput {
+  lines?: (CheckoutLineInput | null)[] | null;
+  email?: string | null;
+  shippingAddress?: AddressInput | null;
+  billingAddress?: AddressInput | null;
+  documentNumber?: string | null;
+  privacyPolicy?: PrivacyPolicyInput | null;
+  sessionId?: any | null;
+  shippingMethodId?: string | null;
+  scheduleDate?: ScheduleDateInput | null;
+  slotId?: string | null;
+}
+
 export interface CollectionSortingInput {
   direction: OrderDirection;
   field: CollectionSortField;

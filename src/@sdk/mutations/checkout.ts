@@ -52,10 +52,25 @@ export const createCheckoutMutation = gql`
     $districtId: ID
   ) {
     checkoutCreate(input: $checkoutInput) {
-      errors {
-        field
-        message
+      checkoutErrors {
+        ...CheckoutErrorsFragment
       }
+      checkout {
+        ...Checkout
+      }
+    }
+  }
+`;
+
+export const updateCheckoutMutation = gql`
+  ${checkoutFragment}
+  ${checkoutErrorsFragment}
+  mutation UpdateCheckout(
+    $id: ID!
+    $checkoutInput: CheckoutUpdateInput!
+    $districtId: ID
+  ) {
+    checkoutUpdate(id: $id, input: $checkoutInput) {
       checkoutErrors {
         ...CheckoutErrorsFragment
       }

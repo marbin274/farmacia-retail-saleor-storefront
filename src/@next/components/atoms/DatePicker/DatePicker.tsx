@@ -10,6 +10,7 @@ import { SHIPPING_DISPLAY_FORMAT_DATE } from '@temp/core/config';
 import { CalendarIcon } from '@farmacia-retail/farmauna-components';
 
 export const DatePicker: React.FC<IProps> = ({
+  disabled = false,
   errors,
   minDate,
   maxDate,
@@ -34,6 +35,7 @@ export const DatePicker: React.FC<IProps> = ({
   return (
     <S.Wrapper>
       <ReactDatePicker
+        disabled={disabled}
         dateFormat={SHIPPING_DISPLAY_FORMAT_DATE}
         locale="es"
         selected={value}

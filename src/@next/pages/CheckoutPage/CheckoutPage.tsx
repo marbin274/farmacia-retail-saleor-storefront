@@ -1,6 +1,5 @@
-import { useFeaturePlugins } from '@app/hooks';
+import { useCheckPluginsStatus } from '@app/hooks';
 import { Loader } from '@components/atoms';
-import { alertService } from '@components/atoms/Alert';
 import { CartResume, CheckoutProgressBar } from '@components/molecules';
 import { CartSummary } from '@components/organisms';
 import { CartDeliveryDataModal } from '@components/organisms/CartDeliveryDataModal/CartDeliveryDataModal';
@@ -15,15 +14,16 @@ import {
 import { useCart, useCheckout } from '@sdk/react';
 import { checkAttentionSchedule } from '@sdk/utils/checkoutValidations';
 import { smallScreen } from '@temp/@next/globalStyles/constants';
+import { alertService } from '@temp/@next/services';
 import { removePaymentItems } from '@temp/@next/utils/checkoutValidations';
 import {
   SHIPPING_METHOD_NOT_FOUND,
   SHIPPING_METHOD_NOT_FOUND_TITLE,
 } from '@temp/@next/utils/schemasMessages';
 import { LocalRepository } from '@temp/@sdk/repository';
-import { BASE_URL, CHECKOUT_STEPS } from '@temp/core/config';
-import { IFormError, ITaxedMoney } from '@types';
+import { ITaxedMoney } from '@types';
 import { useRouter } from 'next/router';
+import { BASE_URL, CheckoutStep, CHECKOUT_STEPS } from '@temp/core/config';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import Media from 'react-media';
 import { CheckoutRouter } from './CheckoutRouter';
@@ -31,11 +31,9 @@ import {
   CheckoutAddressSubpage,
   CheckoutPaymentSubpage,
   CheckoutReviewSubpage,
-  CheckoutShippingSubpage,
   ICheckoutAddressSubpageHandles,
   ICheckoutPaymentSubpageHandles,
   ICheckoutReviewSubpageHandles,
-  ICheckoutShippingSubpageHandles,
 } from './subpages';
 import { CheckoutContextProvider } from './contexts';
 
@@ -109,6 +107,7 @@ const getCheckoutProgress = (
 };
 
 const getButton = (
+  step: CheckoutStep,
   text: string,
   checkoutId: string | undefined,
   onClick: () => void
@@ -117,7 +116,7 @@ const getButton = (
     <Button
       data-cy="checkoutPageBtnNextStep"
       onClick={onClick}
-      disabled={!checkoutId}
+      disabled={step === CheckoutStep.Address ? false : !checkoutId}
       type="submit"
     >
       {text}
@@ -156,7 +155,7 @@ const CheckoutPage: React.FC = () => {
     setShippingMethod,
   } = useCheckout();
 
-  const { lastMileActive } = useFeaturePlugins();
+  const { isLastMileActive } = useCheckPluginsStatus();
 
   const { isAttentionSchedule } = checkAttentionSchedule(
     checkoutLoaded,
@@ -171,9 +170,6 @@ const CheckoutPage: React.FC = () => {
   }, [items]);
 
   const [submitInProgress, setSubmitInProgress] = useState(false);
-  const [addressSubPageErrors, setAddressSubPageErrors] = useState<
-    IFormError[]
-  >([]);
 
   const [displayModalShowDetail, setDisplayModalShowDetail] = useState(false);
 
@@ -193,7 +189,7 @@ const CheckoutPage: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (isAttentionSchedule === false && !lastMileActive) {
+    if (isAttentionSchedule === false && !isLastMileActive) {
       alertService.sendAlert({
         acceptDialog: () => {
           setShippingMethod({ shippingMethodId: '', slotId: undefined });
@@ -223,8 +219,6 @@ const CheckoutPage: React.FC = () => {
 
   const checkoutAddressSubpageRef =
     useRef<ICheckoutAddressSubpageHandles>(null);
-  const checkoutShippingSubpageRef =
-    useRef<ICheckoutShippingSubpageHandles>(null);
   const checkoutPaymentSubpageRef =
     useRef<ICheckoutPaymentSubpageHandles>(null);
   const checkoutReviewSubpageRef = useRef<ICheckoutReviewSubpageHandles>(null);
@@ -232,14 +226,8 @@ const CheckoutPage: React.FC = () => {
   const handleNextStepClick = () => {
     switch (activeStepIndex) {
       case 0:
-        if (!checkout?.id && checkoutAddressSubpageRef.current?.submitAddress) {
+        if (checkoutAddressSubpageRef.current?.submitAddress) {
           checkoutAddressSubpageRef.current?.submitAddress();
-        }
-        if (
-          checkout?.id &&
-          checkoutShippingSubpageRef.current?.submitShipping
-        ) {
-          checkoutShippingSubpageRef.current?.submitShipping();
         }
         break;
       case 1:
@@ -337,16 +325,8 @@ const CheckoutPage: React.FC = () => {
         renderAddress={() => (
           <>
             <CheckoutAddressSubpage
-              ref={checkoutAddressSubpageRef}
+              checkoutAddressSubpageRef={checkoutAddressSubpageRef}
               changeSubmitProgress={setSubmitInProgress}
-              setAddressSubPageErrors={setAddressSubPageErrors}
-              addressSubPageErrors={addressSubPageErrors}
-            />
-            <CheckoutShippingSubpage
-              ref={checkoutShippingSubpageRef}
-              changeSubmitProgress={setSubmitInProgress}
-              setAddressSubPageErrors={setAddressSubPageErrors}
-              addressSubPageErrors={addressSubPageErrors}
             />
           </>
         )}
@@ -426,6 +406,7 @@ const CheckoutPage: React.FC = () => {
           )}
           checkout={checkoutView}
           button={getButton(
+            activeStep.step,
             activeStep.nextActionName,
             checkout?.id,
             handleNextStepClick

@@ -1,7 +1,6 @@
 import { CheckoutReview } from '@components/organisms';
 import { statuses as dummyStatuses } from '@components/organisms/DummyPaymentGateway';
 import { useCheckout, useShopDetails } from '@sdk/react';
-import { alertService } from '@temp/@next/components/atoms/Alert';
 import { removePaymentItems } from '@temp/@next/utils/checkoutValidations';
 import { LocalRepository } from '@temp/@sdk/repository';
 import { CHECKOUT_STEPS } from '@temp/core/config';
@@ -13,7 +12,7 @@ import React, {
   useImperativeHandle,
   useState,
 } from 'react';
-
+import { alertService } from '@temp/@next/services';
 const creditCardType = require('credit-card-type');
 
 export interface ICheckoutReviewSubpageHandles {

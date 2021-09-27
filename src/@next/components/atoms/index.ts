@@ -14,6 +14,7 @@ export * from './DatePicker';
 export * from './DropdownMenu';
 export * from './DropdownSelect';
 export * from './EmailLink';
+export * from './ErrorForm';
 export * from './ErrorMessage';
 export * from './Icon';
 export * from './IconButton';

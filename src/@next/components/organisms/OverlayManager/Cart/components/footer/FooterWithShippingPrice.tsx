@@ -6,7 +6,7 @@ import { useClickedOutside, useDistrictSelected } from '@temp/@next/hooks';
 import {
   useCart,
   useCheckout,
-  useShippingMethods,
+  usePotentialShippingMethods,
   useUserDetails,
 } from '@temp/@sdk/react';
 import { checkoutLoginUrl, checkoutUrl } from '@temp/app/routes';
@@ -32,7 +32,7 @@ export const FooterWithShippingPrice: React.FC<IProps> = ({
   const { discount, items, subtotalPrice, totalPrice } = useCart();
   const [districtSelected] = useDistrictSelected();
 
-  const { data, loading } = useShippingMethods({
+  const { data, loading } = usePotentialShippingMethods({
     district: districtSelected?.id,
     lines: items?.map((line) => ({
       quantity: line.quantity,

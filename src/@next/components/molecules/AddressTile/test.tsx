@@ -17,6 +17,11 @@ const DEFAULT_PROPS: IProps = {
       country: 'Poland',
     },
     countryArea: 'dolnyslask',
+    district: {
+      __typename: 'District',
+      id: '',
+      name: '',
+    },
     firstName: 'John',
     isDefaultBillingAddress: false,
     isDefaultShippingAddress: true,

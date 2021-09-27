@@ -2,7 +2,7 @@ export * from './useAddressGeocalizationInfo';
 export * from './useCheckoutStepFromPath';
 export * from './useCheckoutStepState';
 export * from './useDistrictSelected';
-export * from './useFeaturePlugins';
+export * from './useCheckPluginsStatus';
 export * from './useLocalStorage';
 export * from './useNetworkStatus';
 export * from './useProductVariantsAttributes';

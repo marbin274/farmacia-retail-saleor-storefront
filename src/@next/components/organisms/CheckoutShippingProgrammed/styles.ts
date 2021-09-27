@@ -1,5 +1,5 @@
-import { media, styled } from "@styles";
-import { white } from "@temp/@next/globalStyles/constants";
+import { media, styled } from '@styles';
+import { white } from '@temp/@next/globalStyles/constants';
 
 export const ShippingMethodItemControl = styled.div`
   display: flex;
@@ -27,15 +27,15 @@ export const ShippingMethodItemControl = styled.div`
 
 export const ShippingMethodControl = styled.div`
   color: ${({ theme }) => theme.colors.aunaBlack};
-  font-size: ${({ theme }) => theme.typography.smallFontSize};  
+  font-size: ${({ theme }) => theme.typography.smallFontSize};
   > div {
     padding-top: 0px;
     margin: 0px;
   }
-  .select-control{
+  .select-control {
     background-color: ${white};
   }
-`
+`;
 export const ShippingMethodScheduleControl = styled.div`
   padding: 0 1rem 0rem;
   flex: 1;
@@ -44,4 +44,4 @@ export const ShippingMethodScheduleControl = styled.div`
         padding: 1rem 1rem 0rem;
     }
   `}
-`
+`;

@@ -5,7 +5,7 @@ import { FeaturePluginsContext } from '@contexts';
 /**
  * Return feature plugins status
  */
-export const useFeaturePlugins = () => {
+export const useCheckPluginsStatus = () => {
   const { plugins } = useContext(FeaturePluginsContext);
 
   const isPluginActive = (id: string) => {
@@ -19,6 +19,6 @@ export const useFeaturePlugins = () => {
   };
 
   return {
-    lastMileActive: isPluginActive(FEATURE_PLUGINS.lastMile),
+    isLastMileActive: isPluginActive(FEATURE_PLUGINS.lastMile),
   };
 };

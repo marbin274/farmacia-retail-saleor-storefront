@@ -1,12 +1,12 @@
-import { Radio } from "@components/atoms";
-import { Money } from "@components/containers";
-import { Chip } from "@farmacia-retail/farmauna-components";
-import React from "react";
-import * as S from "./styles";
-import { IProps } from "./types";
+import { Radio } from '@components/atoms';
+import { Money } from '@components/containers';
+import { Chip } from '@farmacia-retail/farmauna-components';
+import React from 'react';
+import * as S from './styles';
+import { IProps } from './types';
 
 export const ShippingMethodItem: React.FC<IProps> = ({
-  id,
+  shippingMethodId,
   index,
   isScheduled,
   name,
@@ -14,14 +14,13 @@ export const ShippingMethodItem: React.FC<IProps> = ({
   subtitle,
   price,
 }) => {
-  
   return (
     <S.ShippingMethodItem>
       <Radio
         readOnly
         data-cy={`checkoutShippingMethodOption${index}Input`}
         name="shippingMethod"
-        value={id}
+        value={shippingMethodId}
         checked={selected}
       ></Radio>
       <div className="fa-flex fa-flex-col fa-w-full">
@@ -33,17 +32,15 @@ export const ShippingMethodItem: React.FC<IProps> = ({
             {name}
           </S.ShippingMethodTitle>
           <S.ShippingMethodSubTitle selected={selected}>
-            {isScheduled
-              ? "Escoge la fecha y la hora de entrega"
-              : subtitle}
+            {isScheduled ? 'Escoge la fecha y la hora de entrega' : subtitle}
           </S.ShippingMethodSubTitle>
         </S.ShippingMethodText>
         <Chip
           disabled={!selected}
           style={{
-            display: "block",
-            width: "4.25rem",
-            textAlign: "center",
+            display: 'block',
+            width: '4.25rem',
+            textAlign: 'center',
           }}
           label={
             <Money

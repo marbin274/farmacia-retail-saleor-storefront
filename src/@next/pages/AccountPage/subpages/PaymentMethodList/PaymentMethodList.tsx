@@ -2,7 +2,7 @@ import AccountLayout from '@app/pages/AccountPage/AccountLayout';
 import { Alert } from '@components/molecules';
 import { Modal } from '@components/organisms';
 import { CheckIcon, TrashIcon } from '@farmacia-retail/farmauna-components';
-import { alertService } from '@temp/@next/components/atoms/Alert';
+import { alertService } from '@temp/@next/services';
 import {
   useCreateUserCardToken,
   useDeleteUserCardToken,

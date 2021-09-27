@@ -13,8 +13,12 @@ import {
   ISubtotalPrice,
   IItems,
 } from '../api/Cart/types';
-import { IAvailablePaymentGateways } from '../api/Checkout/types';
+import {
+  IAvailablePaymentGateways,
+  IPrivacyPolicy,
+} from '../api/Checkout/types';
 import { ITotalPrice } from '@temp/@sdk/api/Cart/types';
+import { ScheduleDateInput } from '../gqlTypes/globalTypes';
 
 export enum LocalStorageItems {
   CHECKOUT = 'data_checkout',
@@ -80,6 +84,23 @@ export interface ICheckoutModelPriceValue {
 export interface ICheckoutModelPrice {
   gross: ICheckoutModelPriceValue;
   net: ICheckoutModelPriceValue;
+}
+
+export interface ICreateCheckout {
+  email: string;
+  districtId?: string;
+  lines: Array<{ variantId: string; quantity: number }>;
+  shippingAddress?: ICheckoutAddress;
+  billingAddress?: ICheckoutAddress;
+  privacyPolicy?: IPrivacyPolicy;
+  documentNumber?: string;
+  shippingMethodId?: string | null;
+  scheduleDate?: ScheduleDateInput | null;
+  slotId?: string | null;
+}
+
+export interface IUpdateCheckout extends ICreateCheckout {
+  id: string;
 }
 
 export interface ICheckoutAddress {
@@ -221,24 +242,6 @@ export interface IShippingMethodUpdate {
   scheduleDate?: IShippingMethodUpdateScheduleDate;
   slotId?: string;
 }
-
-// export interface IJobsModel {
-//   cart: {
-//     setCartItem?: boolean;
-//   };
-//   checkout: {
-//     setPromoCode?: boolean;
-//   };
-// }
-
-// export const JobsModelInitialState: IJobsModel = {
-//   cart: {
-//     setCartItem: false,
-//   },
-//   checkout: {
-//     setPromoCode: false,
-//   },
-// };
 
 export interface ISelecValue {
   code: string;

@@ -1,71 +1,68 @@
-import { GetShop_shop_countries } from "@temp/@sdk/queries/gqlTypes/GetShop";
-import { IAddressWithAddressType, IPaymentGateway } from "@types";
+import { GetShop_shop_countries } from '@temp/@sdk/queries/gqlTypes/GetShop';
+import { IAddressWithAddressType, IPaymentGateway } from '@types';
 
 interface IAddressFixture extends IAddressWithAddressType {
   email?: string;
-};
+}
 
 const address: IAddressFixture = {
-  city: "Wroclaw",
-  companyName: "Mirumee",
+  city: 'Wroclaw',
   country: {
-    code: "PL",
-    country: "Poland",
+    code: 'PL',
+    country: 'Poland',
   },
-  countryArea: "dolnyslask",
-  email: "abc@xyz.com",
-  firstName: "John",
-  id: "12345",
+  email: 'abc@xyz.com',
+  firstName: 'John',
+  id: '12345',
   isDefaultBillingAddress: false,
   isDefaultShippingAddress: true,
-  lastName: "Doe",
-  phone: "555-5555",
-  postalCode: "55-555",
-  streetAddress1: "St Street",
-  streetAddress2: "Second",
+  lastName: 'Doe',
+  phone: '555-5555',
+  streetAddress1: 'St Street',
+  streetAddress2: 'Second',
 };
 
 const countries: GetShop_shop_countries[] = [
-  { __typename: "CountryDisplay", code: "PL", country: "Poland" },
-  { __typename: "CountryDisplay", code: "PT", country: "Portugal" },
+  { __typename: 'CountryDisplay', code: 'PL', country: 'Poland' },
+  { __typename: 'CountryDisplay', code: 'PT', country: 'Portugal' },
   {
-    __typename: "CountryDisplay",
-    code: "US",
-    country: "United States of America",
+    __typename: 'CountryDisplay',
+    code: 'US',
+    country: 'United States of America',
   },
-  { __typename: "CountryDisplay", code: "DE", country: "Germany" },
-  { __typename: "CountryDisplay", code: "BE", country: "Belarus" },
-  { __typename: "CountryDisplay", code: "SE", country: "Sweden" },
-  { __typename: "CountryDisplay", code: "FR", country: "France" },
-  { __typename: "CountryDisplay", code: "CZ", country: "Czech Republic" },
-  { __typename: "CountryDisplay", code: "FI", country: "Finland" },
-  { __typename: "CountryDisplay", code: "GB", country: "Great Britain" },
+  { __typename: 'CountryDisplay', code: 'DE', country: 'Germany' },
+  { __typename: 'CountryDisplay', code: 'BE', country: 'Belarus' },
+  { __typename: 'CountryDisplay', code: 'SE', country: 'Sweden' },
+  { __typename: 'CountryDisplay', code: 'FR', country: 'France' },
+  { __typename: 'CountryDisplay', code: 'CZ', country: 'Czech Republic' },
+  { __typename: 'CountryDisplay', code: 'FI', country: 'Finland' },
+  { __typename: 'CountryDisplay', code: 'GB', country: 'Great Britain' },
 ];
 
 export const paymentGateways: IPaymentGateway[] = [
   {
     config: [
       {
-        field: "store_customer_card",
-        value: "false",
+        field: 'store_customer_card',
+        value: 'false',
       },
     ],
-    id: "mirumee.payments.dummy",
-    name: "AUNA Payment Gateway",
+    id: 'mirumee.payments.dummy',
+    name: 'AUNA Payment Gateway',
   },
   {
     config: [
       {
-        field: "api_key",
-        value: "pk_test_6pRNASCoBOKtIshFeQd4XMUh",
+        field: 'api_key',
+        value: 'pk_test_6pRNASCoBOKtIshFeQd4XMUh',
       },
       {
-        field: "store_customer_card",
-        value: "false",
+        field: 'store_customer_card',
+        value: 'false',
       },
     ],
-    id: "mirumee.payments.stripe",
-    name: "Stripe",
+    id: 'mirumee.payments.stripe',
+    name: 'Stripe',
   },
 ];
 
