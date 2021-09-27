@@ -18,7 +18,10 @@ import { IScheduleDates } from '../CheckoutShippingProgrammed/types';
 import { IPotentialShippingMethod } from './types';
 
 export interface ICheckoutShippingSlotsProps {
-  children?: (shippingMethods: IPotentialShippingMethod[]) => React.ReactNode;
+  children?: (
+    shippingMethods: IPotentialShippingMethod[],
+    loading: boolean
+  ) => React.ReactNode;
   items: {
     quantity: number;
     variantId: string;
@@ -64,7 +67,7 @@ export const CheckoutShippingSlots: React.FC<ICheckoutShippingSlotsProps> = ({
   values,
 }) => {
   const [sessionId] = React.useState<string>(uuid());
-  const { data: potentialSlots } = usePotentialSlots(
+  const { data: potentialSlots, loading } = usePotentialSlots(
     {
       lines: items,
       sessionId,
@@ -113,5 +116,5 @@ export const CheckoutShippingSlots: React.FC<ICheckoutShippingSlotsProps> = ({
     [shippingMethods, potentialSlots]
   );
 
-  return <>{children(shippingMethodsSlots)}</>;
+  return <>{children(shippingMethodsSlots, loading)}</>;
 };
