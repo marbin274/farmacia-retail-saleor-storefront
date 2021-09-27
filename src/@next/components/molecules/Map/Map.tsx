@@ -1,47 +1,42 @@
-import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
-import { Loader } from '@googlemaps/js-api-loader';
-import { mapsApiKey } from '@temp/core/constants';
-import * as S from './styles';
-import { LIMA_BOUNDS } from '@temp/core/config';
-import classNames from 'classnames';
 import farmatheme from '@farmatheme';
+import { Loader } from '@googlemaps/js-api-loader';
+import { LIMA_BOUNDS, LOCATION_DEFAULT } from '@temp/core/config';
+import { mapsApiKey } from '@temp/core/constants';
+import classNames from 'classnames';
+import React from 'react';
+import * as S from './styles';
 import { IMapProps } from './types';
-
-export const Map: FC<IMapProps> = ({
+export const Map: React.FC<IMapProps> = ({
   geoJson,
   hasError,
   location,
   onChangeLocation,
 }) => {
-  const mapRef = useRef<HTMLDivElement>(null);
-  const [map, setMap] = useState<google.maps.Map>();
-  const [marker, setMarker] = useState<google.maps.Marker>();
-  const [features, setFeatures] = useState<google.maps.Data.Feature[]>([]);
+  const mapDivRef = React.useRef<HTMLDivElement>(null);
+  const mapRef = React.useRef<google.maps.Map>(null);
 
-  useEffect(() => {
-    if (!mapRef.current) {
+  const changePositionMapAndMarker = () => {
+    if (!mapRef.current || !location?.lat || !location?.lng) {
       return;
     }
 
-    if (window?.google?.maps) {
-      init();
+    mapRef.current.setCenter({ lat: location.lat, lng: location.lng });
+  };
+
+  const setGeoJson = () => {
+    if (!mapRef.current || !geoJson) {
       return;
     }
+    mapRef.current.data.forEach(function (feature) {
+      mapRef.current.data.remove(feature);
+    });
+    mapRef.current.data.addGeoJson(geoJson);
+  };
 
-    new Loader({
-      apiKey: mapsApiKey!,
-      libraries: ['places'],
-      version: 'weekly',
-    })
-      .load()
-      .then(() => {
-        init();
-      });
-  }, [mapRef]);
-
-  const init = useCallback(() => {
-    const newMap = new google.maps.Map(mapRef.current!, {
-      center: { lat: -12.046373, lng: -77.042755 },
+  const init = React.useCallback(() => {
+    const myLatlng = LOCATION_DEFAULT;
+    const newMap = new google.maps.Map(mapDivRef.current!, {
+      center: myLatlng,
       clickableIcons: false,
       fullscreenControl: true,
       mapTypeControl: false,
@@ -61,78 +56,61 @@ export const Map: FC<IMapProps> = ({
       fillOpacity: 0.1,
     });
 
-    setMap(newMap);
+    newMap.addListener('click', (e: any) => {
+      const lat = e.latLng.lat();
+      const lng = e.latLng.lng();
+
+      new google.maps.Geocoder().geocode({ location: { lat, lng } }, (res) => {
+        onChangeLocation?.({ lat, lng }, res?.[0]?.formatted_address || '');
+      });
+    });
+
+    newMap.data.addListener('click', (e: any) => {
+      const lat = e.latLng.lat();
+      const lng = e.latLng.lng();
+
+      new google.maps.Geocoder().geocode({ location: { lat, lng } }, (res) => {
+        onChangeLocation?.({ lat, lng }, res?.[0]?.formatted_address || '');
+      });
+    });
+
+    newMap.addListener('dragend', () => {
+      const lat = newMap.getCenter().lat();
+      const lng = newMap.getCenter().lng();
+
+      new google.maps.Geocoder().geocode({ location: { lat, lng } }, (res) => {
+        onChangeLocation?.({ lat, lng }, res?.[0]?.formatted_address || '');
+      });
+    });
+    const markerDiv = document.createElement('div');
+    markerDiv.classList.add('centerMarker');
+    newMap.getDiv().append(markerDiv);
+    mapRef.current = newMap;
+
+    setGeoJson();
+    changePositionMapAndMarker();
   }, []);
 
-  const setMarkerOnMap = (lat: number, lng: number) => {
-    const newMarker = new google.maps.Marker({
-      icon: '/assets/auna/map-icon.svg',
-      map,
-      position: { lat, lng },
-    });
-
-    setMarker((prev) => {
-      prev?.setMap(null);
-      return newMarker;
-    });
-  };
-
-  useEffect(() => {
-    if (!map) {
+  React.useEffect(() => {
+    if (window?.google?.maps) {
+      init();
       return;
     }
 
-    map.addListener('click', (e: any) => {
-      const lat = e.latLng.lat();
-      const lng = e.latLng.lng();
-
-      new google.maps.Geocoder().geocode({ location: { lat, lng } }, (res) => {
-        onChangeLocation?.({ lat, lng }, res?.[0]?.formatted_address || '');
+    new Loader({
+      apiKey: mapsApiKey!,
+      libraries: ['places'],
+      version: 'weekly',
+    })
+      .load()
+      .then(() => {
+        init();
       });
-    });
+  }, []);
 
-    map.data.addListener('click', (e: any) => {
-      const lat = e.latLng.lat();
-      const lng = e.latLng.lng();
+  React.useEffect(changePositionMapAndMarker, [location?.lng]);
 
-      new google.maps.Geocoder().geocode({ location: { lat, lng } }, (res) => {
-        onChangeLocation?.({ lat, lng }, res?.[0]?.formatted_address || '');
-      });
-    });
-  }, [map]);
-
-  useEffect(() => {
-    if (!map) {
-      return;
-    }
-
-    if (!location?.lat || !location?.lng) {
-      if (marker) {
-        marker.setMap(null);
-        setMarker(undefined);
-      }
-      return;
-    }
-
-    setMarkerOnMap(location.lat, location.lng);
-    map.setCenter({ lat: location.lat, lng: location.lng });
-  }, [location?.lng, map]);
-
-  useEffect(() => {
-    if (!map || !geoJson) {
-      return;
-    }
-
-    clearFeatures();
-    const features = map.data.addGeoJson(geoJson);
-    setFeatures(features);
-  }, [map, geoJson]);
-
-  const clearFeatures = () => {
-    for (const feature of features) {
-      map?.data.remove(feature);
-    }
-  };
+  React.useEffect(setGeoJson, [mapRef, geoJson]);
 
   return (
     <div
@@ -143,7 +121,7 @@ export const Map: FC<IMapProps> = ({
         }
       )}
     >
-      <S.Map ref={mapRef} />
+      <S.Map ref={mapDivRef} />
     </div>
   );
 };
