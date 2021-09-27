@@ -105,6 +105,12 @@ const CheckoutPaymentSubpageWithRef: ForwardRefRenderFunction<
   );
 
   useEffect(() => {
+    return () => {
+      setShouldUnselectDistrict(true);
+    };
+  }, []);
+
+  useEffect(() => {
     setBillingAsShippingState(billingAsShippingOverride);
   }, [billingAsShippingOverride]);
 
@@ -217,7 +223,7 @@ const CheckoutPaymentSubpageWithRef: ForwardRefRenderFunction<
             });
             break;
           case CheckoutErrorCode.INVALID_SLOT:
-            setShouldUnselectDistrict(true);
+            // setShouldUnselectDistrict(true);
             alertService.sendAlert({
               buttonText: 'Entendido',
               icon: '/assets/auna/clock.svg',
