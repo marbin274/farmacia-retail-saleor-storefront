@@ -3,7 +3,7 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { CheckoutCreateInput, CheckoutErrorCode } from "./../../gqlTypes/globalTypes";
+import { CheckoutCreateInput, CheckoutErrorCode, ShippingMethodTypeCode } from "./../../gqlTypes/globalTypes";
 
 // ====================================================
 // GraphQL mutation operation: CreateCheckout
@@ -263,7 +263,7 @@ export interface CreateCheckout_checkoutCreate_checkout_availableShippingMethods
    * The ID of the object.
    */
   id: string;
-  code: string;
+  code: ShippingMethodTypeCode;
   name: string;
 }
 
@@ -355,7 +355,7 @@ export interface CreateCheckout_checkoutCreate_checkout_shippingMethod_methodTyp
    * The ID of the object.
    */
   id: string;
-  code: string;
+  code: ShippingMethodTypeCode;
   name: string;
 }
 

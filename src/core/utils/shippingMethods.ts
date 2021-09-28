@@ -1,5 +1,5 @@
 import { Checkout_availableShippingMethods } from '@temp/@sdk/fragments/gqlTypes/Checkout';
-import { SHIPPING_TYPE_KEYWORDS } from '../config';
+import { ShippingMethodTypeCode } from '@temp/@sdk/gqlTypes/globalTypes';
 
 export const isPrimeShippingMethod = (
   shippingMethod: Partial<Checkout_availableShippingMethods>
@@ -8,7 +8,12 @@ export const isPrimeShippingMethod = (
     return false;
   }
 
-  return shippingMethod.methodType.code.includes(SHIPPING_TYPE_KEYWORDS.prime);
+  const { code } = shippingMethod.methodType;
+
+  return (
+    code === ShippingMethodTypeCode.EXPRESS_PRIME ||
+    code === ShippingMethodTypeCode.SCHEDULED_PRIME
+  );
 };
 
 export const isScheduledShippingMethod = (
@@ -18,8 +23,11 @@ export const isScheduledShippingMethod = (
     return false;
   }
 
-  return shippingMethod.methodType.code.includes(
-    SHIPPING_TYPE_KEYWORDS.scheduled
+  const { code } = shippingMethod.methodType;
+
+  return (
+    code === ShippingMethodTypeCode.SCHEDULED ||
+    code === ShippingMethodTypeCode.SCHEDULED_PRIME
   );
 };
 
@@ -30,7 +38,12 @@ export const isExpressShippingMethod = (
     return false;
   }
 
-  return shippingMethod.methodType.code.includes(
-    SHIPPING_TYPE_KEYWORDS.express
+  const { code } = shippingMethod.methodType;
+
+  return (
+    code === ShippingMethodTypeCode.EXPRESS ||
+    code === ShippingMethodTypeCode.EXPRESS_30 ||
+    code === ShippingMethodTypeCode.EXPRESS_NEXT_DAY ||
+    code === ShippingMethodTypeCode.EXPRESS_PRIME
   );
 };

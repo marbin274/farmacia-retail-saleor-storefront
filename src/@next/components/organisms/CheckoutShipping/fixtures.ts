@@ -1,3 +1,4 @@
+import { ShippingMethodTypeCode } from '@temp/@sdk/gqlTypes/globalTypes';
 import { GetPotentialSlots_potentialSlots } from '@temp/@sdk/queries/gqlTypes/GetPotentialSlots';
 import { IPotentialShippingMethod, IProps } from './types';
 
@@ -10,7 +11,7 @@ const shippingMethods: IPotentialShippingMethod[] = [
     methodType: {
       __typename: 'ShippingMethodType',
       id: '',
-      code: 'EXPRESS',
+      code: 'EXPRESS' as ShippingMethodTypeCode,
       name: '',
     },
     name: '75 minutos aproximadamente',
@@ -31,7 +32,7 @@ const shippingMethods: IPotentialShippingMethod[] = [
     methodType: {
       __typename: 'ShippingMethodType',
       id: '',
-      code: 'EXPRESS',
+      code: 'EXPRESS' as ShippingMethodTypeCode,
       name: '',
     },
     name: '75 minutos aproximadamente',

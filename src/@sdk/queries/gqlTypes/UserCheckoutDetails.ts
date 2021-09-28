@@ -3,6 +3,8 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
+import { ShippingMethodTypeCode } from "./../../gqlTypes/globalTypes";
+
 // ====================================================
 // GraphQL query operation: UserCheckoutDetails
 // ====================================================
@@ -229,7 +231,7 @@ export interface UserCheckoutDetails_me_checkout_availableShippingMethods_method
    * The ID of the object.
    */
   id: string;
-  code: string;
+  code: ShippingMethodTypeCode;
   name: string;
 }
 
@@ -321,7 +323,7 @@ export interface UserCheckoutDetails_me_checkout_shippingMethod_methodType {
    * The ID of the object.
    */
   id: string;
-  code: string;
+  code: ShippingMethodTypeCode;
   name: string;
 }
 

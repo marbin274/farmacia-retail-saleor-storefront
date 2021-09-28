@@ -3,7 +3,7 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { CheckoutErrorCode } from "./../../gqlTypes/globalTypes";
+import { ShippingMethodTypeCode, CheckoutErrorCode } from "./../../gqlTypes/globalTypes";
 
 // ====================================================
 // GraphQL mutation operation: RemoveCheckoutPromoCode
@@ -231,7 +231,7 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_availa
    * The ID of the object.
    */
   id: string;
-  code: string;
+  code: ShippingMethodTypeCode;
   name: string;
 }
 
@@ -323,7 +323,7 @@ export interface RemoveCheckoutPromoCode_checkoutRemovePromoCode_checkout_shippi
    * The ID of the object.
    */
   id: string;
-  code: string;
+  code: ShippingMethodTypeCode;
   name: string;
 }
 

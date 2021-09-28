@@ -1,16 +1,15 @@
 import { IAddressForm } from '@temp/@next/types/IAddressForm';
-import { CountryCode } from '@temp/@sdk/gqlTypes/globalTypes';
+import {
+  CountryCode,
+  ShippingMethodTypeCode,
+} from '@temp/@sdk/gqlTypes/globalTypes';
 import {
   GetPotentialShippingMethods_potentialShippingMethods,
   GetPotentialShippingMethods_potentialShippingMethods_scheduleDates,
 } from '@temp/@sdk/queries/gqlTypes/GetPotentialShippingMethods';
 import { GetPotentialSlots_potentialSlots } from '@temp/@sdk/queries/gqlTypes/GetPotentialSlots';
 import { usePotentialSlots } from '@temp/@sdk/react';
-import {
-  HOURS_FORMAT,
-  SHIPPING_FORMAT_DATE,
-  SHIPPING_TYPES,
-} from '@temp/core/config';
+import { HOURS_FORMAT, SHIPPING_FORMAT_DATE } from '@temp/core/config';
 import { format } from 'date-fns';
 import React from 'react';
 import { v4 as uuid } from 'uuid';
@@ -88,18 +87,18 @@ export const CheckoutShippingSlots: React.FC<ICheckoutShippingSlotsProps> = ({
         let scheduleDates = [];
 
         switch (shippingMethod.methodType.code) {
-          case SHIPPING_TYPES.express:
-          case SHIPPING_TYPES.expressPrime:
+          case ShippingMethodTypeCode.EXPRESS:
+          case ShippingMethodTypeCode.EXPRESS_PRIME:
             slotId = potentialSlots?.express?.[0]?.id;
             break;
-          case SHIPPING_TYPES.expressNextDay:
+          case ShippingMethodTypeCode.EXPRESS_NEXT_DAY:
             slotId = potentialSlots?.nextDay?.[0]?.id;
             break;
-          case SHIPPING_TYPES.express30:
+          case ShippingMethodTypeCode.EXPRESS_30:
             slotId = potentialSlots?.express30?.[0]?.id;
             break;
-          case SHIPPING_TYPES.scheduled:
-          case SHIPPING_TYPES.scheduledPrime:
+          case ShippingMethodTypeCode.SCHEDULED:
+          case ShippingMethodTypeCode.SCHEDULED_PRIME:
             scheduleDates = getSlotsScheduleDates(
               potentialSlots,
               shippingMethod.scheduleDates

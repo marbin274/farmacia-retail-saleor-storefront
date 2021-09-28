@@ -404,6 +404,18 @@ export enum ReportingPeriod {
 /**
  * An enumeration.
  */
+export enum ShippingMethodTypeCode {
+  EXPRESS = "EXPRESS",
+  EXPRESS_30 = "EXPRESS_30",
+  EXPRESS_NEXT_DAY = "EXPRESS_NEXT_DAY",
+  EXPRESS_PRIME = "EXPRESS_PRIME",
+  SCHEDULED = "SCHEDULED",
+  SCHEDULED_PRIME = "SCHEDULED_PRIME",
+}
+
+/**
+ * An enumeration.
+ */
 export enum ShippingStatusEnum {
   DELIVERED = "DELIVERED",
   IN_TRANSIT = "IN_TRANSIT",
