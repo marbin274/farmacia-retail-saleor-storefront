@@ -216,7 +216,6 @@ export interface ICheckoutModel {
   slotId?: string;
   slots?: ISlots;
   deliveryDate?: string;
-  userSelectedSlotId?: string;
 }
 
 export interface IPaymentModel {

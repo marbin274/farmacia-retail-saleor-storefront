@@ -62,7 +62,6 @@ const CheckoutPaymentSubpageWithRef: ForwardRefRenderFunction<
     setBillingAsShippingAddress,
     setShippingMethod,
     selectedBillingAddressId,
-    selectedSlotId,
     availablePaymentGateways,
     promoCodeDiscount,
     addPromoCode,
@@ -105,12 +104,6 @@ const CheckoutPaymentSubpageWithRef: ForwardRefRenderFunction<
   );
 
   useEffect(() => {
-    return () => {
-      setShouldUnselectDistrict(true);
-    };
-  }, []);
-
-  useEffect(() => {
     setBillingAsShippingState(billingAsShippingOverride);
   }, [billingAsShippingOverride]);
 
@@ -136,7 +129,7 @@ const CheckoutPaymentSubpageWithRef: ForwardRefRenderFunction<
       }
 
       const shippingMethodId = checkout?.shippingMethod?.id || '';
-      setShippingMethod({ shippingMethodId, slotId: selectedSlotId });
+      setShippingMethod({ shippingMethodId, slotId: checkout?.slotId });
       if (billingAsShippingState) {
         handleSetBillingAddress();
       } else if (user && selectedBillingAddressId) {
@@ -223,7 +216,7 @@ const CheckoutPaymentSubpageWithRef: ForwardRefRenderFunction<
             });
             break;
           case CheckoutErrorCode.INVALID_SLOT:
-            // setShouldUnselectDistrict(true);
+            setShouldUnselectDistrict(true);
             alertService.sendAlert({
               buttonText: 'Entendido',
               icon: '/assets/auna/clock.svg',
