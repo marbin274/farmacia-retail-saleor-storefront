@@ -6,8 +6,7 @@ import { FeaturedPluginsProvider } from '@temp/@next/contexts';
 import { defaultTheme, GlobalStyle } from '@temp/@next/globalStyles';
 import { App } from '@temp/app';
 import { ApolloAdapter } from '@temp/libraries/apollo';
-import React, { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import React from 'react';
 
 import {
   getOptimizelyUserId,
@@ -18,24 +17,12 @@ import Head from 'next/head';
 import { positions, Provider as AlertProvider } from 'react-alert';
 import { ThemeProvider } from 'styled-components';
 import '../index.css';
-import { GTMPageView } from '@temp/libraries/gtm/gtmUtils';
 
 export default function _App(props: AppProps) {
   const notificationOptions = {
     position: positions.BOTTOM_RIGHT,
     timeout: 2500,
   };
-
-  const router = useRouter();
-
-  // Initiate GTM
-  useEffect(() => {
-    const handleRouteChange = (url: string) => GTMPageView(url);
-    router.events.on('routeChangeComplete', handleRouteChange);
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
-    };
-  }, []);
 
   React.useEffect(() => {
     if ('serviceWorker' in navigator) {
