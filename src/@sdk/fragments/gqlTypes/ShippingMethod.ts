@@ -3,6 +3,8 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
+import { ShippingMethodTypeCode } from "./../../gqlTypes/globalTypes";
+
 // ====================================================
 // GraphQL fragment: ShippingMethod
 // ====================================================
@@ -13,7 +15,7 @@ export interface ShippingMethod_methodType {
    * The ID of the object.
    */
   id: string;
-  code: string;
+  code: ShippingMethodTypeCode;
   name: string;
 }
 

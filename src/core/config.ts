@@ -169,20 +169,5 @@ export const FEATURE_PLUGINS = {
 };
 export const DEFAULT_SORT = '-stock';
 
-export const SHIPPING_TYPES = {
-  express: 'EXPRESS',
-  expressPrime: 'EXPRESS_PRIME',
-  expressNextDay: 'EXPRESS_NEXTDAY',
-  express30: 'EXPRESS_30',
-  scheduled: 'SCHEDULED',
-  scheduledPrime: 'SCHEDULED_PRIME',
-};
-
-export const SHIPPING_TYPE_KEYWORDS = {
-  express: 'EXPRESS',
-  scheduled: 'SCHEDULED',
-  prime: 'PRIME',
-};
-
 export const PHONE_NUMBER = '01 6429911';
 export const LOCATION_DEFAULT = { lat: -12.046373, lng: -77.042755 };

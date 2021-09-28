@@ -3,7 +3,7 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { CheckoutLineInput } from "./../../gqlTypes/globalTypes";
+import { CheckoutLineInput, ShippingMethodTypeCode } from "./../../gqlTypes/globalTypes";
 
 // ====================================================
 // GraphQL query operation: GetPotentialShippingMethods
@@ -31,7 +31,7 @@ export interface GetPotentialShippingMethods_potentialShippingMethods_methodType
    * The ID of the object.
    */
   id: string;
-  code: string;
+  code: ShippingMethodTypeCode;
   name: string;
 }
 

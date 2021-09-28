@@ -1,9 +1,12 @@
 import { styled } from '@styles';
 
-export const Map = styled.div`
+export const Map = styled.div<{ isSetLocation: boolean }>`
   height: 21.25rem;
   width: 100%;
-  .centerMarker {
+  ${({ isSetLocation }) =>
+    !isSetLocation
+      ? ''
+      : `.centerMarker {
     background: url(/assets/auna/map-icon.svg) no-repeat;
     cursor: pointer;
     height: 2.8125rem;
@@ -14,5 +17,5 @@ export const Map = styled.div`
     top: 50%;
     width: 2.0625rem;
     z-index: 1;
-  }
+  }`}
 `;

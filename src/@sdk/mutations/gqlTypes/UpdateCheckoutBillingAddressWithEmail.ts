@@ -3,7 +3,7 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { AddressInput } from "./../../gqlTypes/globalTypes";
+import { AddressInput, ShippingMethodTypeCode } from "./../../gqlTypes/globalTypes";
 
 // ====================================================
 // GraphQL mutation operation: UpdateCheckoutBillingAddressWithEmail
@@ -243,7 +243,7 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    * The ID of the object.
    */
   id: string;
-  code: string;
+  code: ShippingMethodTypeCode;
   name: string;
 }
 
@@ -335,7 +335,7 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutBillingAddressUpd
    * The ID of the object.
    */
   id: string;
-  code: string;
+  code: ShippingMethodTypeCode;
   name: string;
 }
 
@@ -1183,7 +1183,7 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    * The ID of the object.
    */
   id: string;
-  code: string;
+  code: ShippingMethodTypeCode;
   name: string;
 }
 
@@ -1275,7 +1275,7 @@ export interface UpdateCheckoutBillingAddressWithEmail_checkoutEmailUpdate_check
    * The ID of the object.
    */
   id: string;
-  code: string;
+  code: ShippingMethodTypeCode;
   name: string;
 }
 

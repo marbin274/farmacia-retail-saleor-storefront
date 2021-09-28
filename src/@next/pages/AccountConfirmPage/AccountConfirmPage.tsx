@@ -1,3 +1,4 @@
+import { Loader } from '@temp/@next/components/atoms';
 import { useAccountConfirm } from '@temp/@sdk/react';
 import { BASE_URL } from '@temp/core/config';
 import { useRouter } from 'next/router';
@@ -47,7 +48,11 @@ export const AccountConfirmPage: React.FC = () => {
     if (router.isReady) handleAccountConfirm();
   }, [router.query]);
 
-  return <div></div>;
+  return (
+    <div>
+      <Loader fullScreen />
+    </div>
+  );
 };
 
 export default AccountConfirmPage;
