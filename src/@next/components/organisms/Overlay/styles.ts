@@ -54,7 +54,8 @@ export const Lightbox = styled.div<IStyleProps>`
   display: flex;
   height: ${({ position }) => lightboxWidth[position]};
   position: fixed;
-  top: 0;
+  top: 50%;
+  transform: translateY(-50%);
   ${({ open, position }) => {
     if (position === 'left' || position === 'right') {
       return css`

@@ -166,6 +166,7 @@ export const AddressForm: FC<IAddressFormProps> = ({
     setFieldValue,
     touched,
     values,
+    isLogged: !!user,
   };
 
   return (
