@@ -163,6 +163,7 @@ export const AddressForm: React.FC<IAddressFormProps> = ({
     setFieldValue,
     touched,
     values,
+    isLogged: !!user,
   };
 
   return (
