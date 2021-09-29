@@ -29,16 +29,6 @@ const CheckoutRouter: FC<IRouterProps> = ({
   const step = useCheckoutStepState(items, checkout, payment);
 
   useEffect(() => {
-    checkRedirection();
-  }, [loaded, isReady]);
-
-  useEffect(() => {
-    if (redirecting) {
-      setRedirecting(false);
-    }
-  }, [asPath]);
-
-  const checkRedirection = () => {
     if (loaded || !isReady) {
       return;
     }
@@ -56,10 +46,16 @@ const CheckoutRouter: FC<IRouterProps> = ({
       setRedirecting(true);
       return;
     }
-  };
+  }, [loaded, isReady]);
+
+  useEffect(() => {
+    if (redirecting) {
+      setRedirecting(false);
+    }
+  }, [asPath]);
 
   if (asPath.includes('order') || !loaded || redirecting) {
-    return null;
+    return <></>;
   }
 
   switch (asPath) {
