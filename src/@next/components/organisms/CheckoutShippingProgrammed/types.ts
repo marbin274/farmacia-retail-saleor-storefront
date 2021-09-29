@@ -27,11 +27,18 @@ interface IBaseProps {
   setFieldValue: (field: string, value: any) => void;
 }
 
+export interface IScheduledTimeOption {
+  description?: string;
+  id?: string;
+  scheduleDate?: string;
+  slotId?: string;
+}
+
 export interface ICheckoutShippingProgrammedProps
   extends Omit<IBaseProps, 'shippingMethodId'> {
   scheduleSelected?: string;
   scheduleDates: Array<IScheduleDates | null> | null;
-  setScheduleTime(scheduleTimeId: string, slotId: string): void;
+  setScheduleTime(scheduleTime: IScheduledTimeOption): void;
   touched: FormikTouched<IAddressForm>;
 }
 

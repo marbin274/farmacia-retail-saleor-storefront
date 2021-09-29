@@ -82,36 +82,41 @@ export const CheckoutShippingSlots: React.FC<ICheckoutShippingSlotsProps> = ({
 
   const shippingMethodsSlots: IPotentialShippingMethod[] = React.useMemo(
     () =>
-      shippingMethods.map((shippingMethod) => {
-        let slotId: string;
-        let scheduleDates = [];
+      shippingMethods
+        .map((shippingMethod) => {
+          let slotId: string;
+          let scheduleDates = [];
 
-        switch (shippingMethod.methodType.code) {
-          case ShippingMethodTypeCode.EXPRESS:
-          case ShippingMethodTypeCode.EXPRESS_PRIME:
-            slotId = potentialSlots?.express?.[0]?.id;
-            break;
-          case ShippingMethodTypeCode.EXPRESS_NEXT_DAY:
-            slotId = potentialSlots?.nextDay?.[0]?.id;
-            break;
-          case ShippingMethodTypeCode.EXPRESS_30:
-            slotId = potentialSlots?.express30?.[0]?.id;
-            break;
-          case ShippingMethodTypeCode.SCHEDULED:
-          case ShippingMethodTypeCode.SCHEDULED_PRIME:
-            scheduleDates = getSlotsScheduleDates(
-              potentialSlots,
-              shippingMethod.scheduleDates
-            );
-            break;
-        }
+          switch (shippingMethod.methodType.code) {
+            case ShippingMethodTypeCode.EXPRESS:
+            case ShippingMethodTypeCode.EXPRESS_PRIME:
+              slotId = potentialSlots?.express?.[0]?.id;
+              break;
+            case ShippingMethodTypeCode.EXPRESS_NEXT_DAY:
+              slotId = potentialSlots?.nextDay?.[0]?.id;
+              break;
+            case ShippingMethodTypeCode.EXPRESS_30:
+              slotId = potentialSlots?.express30?.[0]?.id;
+              break;
+            case ShippingMethodTypeCode.SCHEDULED:
+            case ShippingMethodTypeCode.SCHEDULED_PRIME:
+              scheduleDates = getSlotsScheduleDates(
+                potentialSlots,
+                shippingMethod.scheduleDates
+              );
+              break;
+          }
 
-        return {
-          ...shippingMethod,
-          slotId,
-          scheduleDates,
-        };
-      }),
+          return {
+            ...shippingMethod,
+            slotId,
+            scheduleDates,
+          };
+        })
+        .filter(
+          ({ slotId, scheduleDates }) =>
+            slotId?.length || (!slotId?.length && scheduleDates.length)
+        ),
     [shippingMethods, potentialSlots]
   );
 

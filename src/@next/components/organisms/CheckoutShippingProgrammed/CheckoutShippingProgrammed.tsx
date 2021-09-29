@@ -9,14 +9,10 @@ import { format } from 'date-fns';
 import { ClockIcon } from '@farmacia-retail/farmauna-components';
 import React from 'react';
 import * as S from './styles';
-import { ICheckoutShippingProgrammedProps } from './types';
-
-interface IScheduledTimeOption {
-  description?: string;
-  id?: string;
-  scheduleDate?: string;
-  slotId?: string;
-}
+import {
+  ICheckoutShippingProgrammedProps,
+  IScheduledTimeOption,
+} from './types';
 
 export const CheckoutShippingProgrammed: React.FC<ICheckoutShippingProgrammedProps> =
   ({
@@ -72,7 +68,7 @@ export const CheckoutShippingProgrammed: React.FC<ICheckoutShippingProgrammedPro
     );
 
     const handleOnChangescheduleDate = (value: IScheduledTimeOption) =>
-      setScheduleTime(value.id, value.slotId);
+      setScheduleTime(value);
 
     return selected && isScheduled ? (
       <S.ShippingMethodItemControl>

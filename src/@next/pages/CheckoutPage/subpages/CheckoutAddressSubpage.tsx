@@ -39,7 +39,8 @@ export const CheckoutAddressSubpage: React.FC<ICheckoutAddressSubpageProps> = ({
   const { isLastMileActive } = useCheckPluginsStatus();
   const { data: user, loading: userLoading } = useUserDetails();
   const { checkout, setCheckout, setShippingMethod } = useCheckout();
-  const [showStockValidation, setShowStockValidation] = React.useState(false);
+  const [showStockValidation, setShowStockValidation] =
+    React.useState<string>(null);
   const { update: updateCartLines, loading: updatingCartLines } =
     useUpdateCartLines();
   const [stockValidationProducts, setStockValidationProducts] =
@@ -49,6 +50,7 @@ export const CheckoutAddressSubpage: React.FC<ICheckoutAddressSubpageProps> = ({
 
   const handleSubmit = async (data: IAddressForm) => {
     changeSubmitProgress(true);
+    const city = availableDistricts.find((it) => it.id === data.district);
     const newCheckout: ICreateCheckout = {
       districtId: data.district,
       email: data.email,
@@ -59,7 +61,7 @@ export const CheckoutAddressSubpage: React.FC<ICheckoutAddressSubpageProps> = ({
         termsAndConditions: data.termsAndConditions,
       },
       shippingAddress: {
-        city: availableDistricts.find((it) => it.id === data.district)?.name,
+        city: city?.name,
         country: COUNTRY_DEFAULT,
         firstName: data.firstName,
         latitude: data.latitude,
@@ -84,7 +86,7 @@ export const CheckoutAddressSubpage: React.FC<ICheckoutAddressSubpageProps> = ({
         setStockValidationProducts(
           checkoutError.products! as CreateCheckout_checkoutCreate_checkoutErrors_products[]
         );
-        setShowStockValidation(true);
+        setShowStockValidation(city?.name);
         changeSubmitProgress(false);
         return;
       }
@@ -108,7 +110,7 @@ export const CheckoutAddressSubpage: React.FC<ICheckoutAddressSubpageProps> = ({
       return;
     }
 
-    setShowStockValidation(false);
+    setShowStockValidation(null);
     setStockValidationProducts(undefined);
 
     await updateCartLines();
@@ -145,9 +147,9 @@ export const CheckoutAddressSubpage: React.FC<ICheckoutAddressSubpageProps> = ({
         handleSubmit={handleSubmit}
       />
       <StockValidationModal
-        show={showStockValidation}
+        show={!!showStockValidation?.length}
         onClose={() => {
-          setShowStockValidation(false);
+          setShowStockValidation(null);
           setStockValidationProducts(undefined);
         }}
         products={stockValidationProducts}
@@ -155,7 +157,7 @@ export const CheckoutAddressSubpage: React.FC<ICheckoutAddressSubpageProps> = ({
           router.push(baseUrl);
         }}
         onClickContinue={onStockValidationContinue}
-        district={'nombbre del distrito'}
+        district={showStockValidation}
       />
     </>
   );

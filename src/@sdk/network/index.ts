@@ -80,7 +80,6 @@ import {
   VariantsProductsAvailableVariables,
   VariantsProductsAvailable_productVariants,
 } from '../queries/gqlTypes/VariantsProductsAvailable';
-import { checkPrimeUser } from '../api/Prime';
 
 export class NetworkManager implements INetworkManager {
   private client: ApolloClient<any>;
@@ -429,11 +428,9 @@ export class NetworkManager implements INetworkManager {
           error: data?.checkoutCreate?.checkoutErrors,
         };
       } else if (data?.checkoutCreate?.checkout) {
-        const isPrime = await checkPrimeUser(email);
         return {
           data: this.constructCheckoutModel({
             checkout: data.checkoutCreate.checkout,
-            isPrime,
           }),
         };
       }
@@ -513,11 +510,9 @@ export class NetworkManager implements INetworkManager {
           error: data?.checkoutUpdate?.checkoutErrors,
         };
       } else if (data?.checkoutUpdate?.checkout) {
-        const isPrime = await checkPrimeUser(email);
         return {
           data: this.constructCheckoutModel({
             checkout: data.checkoutUpdate.checkout,
-            isPrime,
           }),
         };
       }
@@ -650,11 +645,9 @@ export class NetworkManager implements INetworkManager {
             ? data.checkoutEmailUpdate?.checkout?.dataTreatmentPolicy
             : data.checkoutShippingAddressUpdate.checkout.dataTreatmentPolicy;
         }
-        const isPrime = await checkPrimeUser(email);
         return {
           data: this.constructCheckoutModel({
             checkout: data.checkoutShippingAddressUpdate.checkout,
-            isPrime,
           }),
         };
       } else {
@@ -1039,7 +1032,6 @@ export class NetworkManager implements INetworkManager {
 
   private constructCheckoutModel = ({
     checkout,
-    isPrime = false,
     message,
   }: IConstructCheckoutParams): ICheckoutModel => {
     const {
@@ -1079,7 +1071,6 @@ export class NetworkManager implements INetworkManager {
       email,
       scheduleDate,
       id,
-      isPrime,
       lines: lines
         ?.filter((item) => item?.quantity && item.variant.id)
         .map((item) => {

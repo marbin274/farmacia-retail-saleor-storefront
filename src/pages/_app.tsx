@@ -6,6 +6,7 @@ import { FeaturedPluginsProvider } from '@temp/@next/contexts';
 import { defaultTheme, GlobalStyle } from '@temp/@next/globalStyles';
 import { App } from '@temp/app';
 import { ApolloAdapter } from '@temp/libraries/apollo';
+import Script from 'next/script';
 import React from 'react';
 
 import {
@@ -17,6 +18,7 @@ import Head from 'next/head';
 import { positions, Provider as AlertProvider } from 'react-alert';
 import { ThemeProvider } from 'styled-components';
 import '../index.css';
+import { GA_TRACKING_ID } from '@temp/libraries/gtm/gtag';
 
 export default function _App(props: AppProps) {
   const notificationOptions = {
@@ -48,6 +50,18 @@ export default function _App(props: AppProps) {
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
         />
       </Head>
+      <Script
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer', '${GA_TRACKING_ID}');
+          `,
+        }}
+      />
       <OptimizelyProvider
         optimizely={optimizelyClient}
         user={{

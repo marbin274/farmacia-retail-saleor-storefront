@@ -67,7 +67,7 @@ export const CHECKOUT_STEPS = [
   {
     index: 0,
     link: '/checkout/address',
-    name: 'Datos Personales',
+    name: 'Datos de envío',
     nextActionName: 'Continuar con el pago',
     nextStepLink: '/checkout/payment',
     onlyIfShippingRequired: true,

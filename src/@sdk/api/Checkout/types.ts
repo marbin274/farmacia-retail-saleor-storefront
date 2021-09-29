@@ -163,4 +163,7 @@ export interface ISaleorCheckoutAPI {
     DataErrorCheckoutTypes,
     FunctionErrorCheckoutTypes
   >;
+  setPrime: (
+    isPrime: boolean
+  ) => PromiseRunResponse<DataErrorCheckoutTypes, FunctionErrorCheckoutTypes>;
 }

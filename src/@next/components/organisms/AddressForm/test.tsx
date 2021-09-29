@@ -32,6 +32,7 @@ jest.mock('@app/hooks', () => ({
 jest.mock('@sdk/react', () => ({
   useCheckout: () => ({
     clearCheckout: jest.fn(),
+    setPrime: jest.fn(),
   }),
   useCart: () => ({
     addItem: jest.fn(),
