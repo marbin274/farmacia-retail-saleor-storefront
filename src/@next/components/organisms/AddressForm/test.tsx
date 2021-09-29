@@ -7,8 +7,8 @@ import {
   PHONE_REQUIRED,
   TERMS_AND_CONTIDIONS_REQUIRED,
 } from '@temp/@next/utils/schemasMessages';
+import '@testing-library/jest-dom/extend-expect';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { shallow } from 'enzyme';
 import 'jest-styled-components';
 import React from 'react';
 import { AddressForm } from '.';
@@ -55,23 +55,14 @@ const PROPS = {
 };
 
 describe('<AddressForm />', () => {
-  it('exists', () => {
-    const wrapper = shallow(
-      <AddressForm {...PROPS} checkout={checkoutData} user={userAddress} />
-    );
-    expect(wrapper.exists()).toEqual(true);
-  });
-
   it('should contain partial data if provided', () => {
     render(
       <AddressForm {...PROPS} checkout={checkoutData} user={userAddress} />
     );
     expect(
-      (screen.getByTestId('addressFormFirstName') as HTMLInputElement).value
-    ).toBe(checkoutData?.shippingAddress.firstName);
-    expect(
-      (screen.getByTestId('addressFormEmail') as HTMLInputElement).value
-    ).toBe(checkoutData?.email);
+      screen.queryByTestId('addressFormFirstName')
+    ).not.toBeInTheDocument();
+    expect(screen.queryByTestId('addressFormEmail')).not.toBeInTheDocument();
     expect(
       (screen.getByTestId('addressFormPhone') as HTMLInputElement).value
     ).toBe(
@@ -116,14 +107,10 @@ describe('form contain data', () => {
   it('should contain user data only', () => {
     render(<AddressForm {...PROPS} checkout={undefined} user={userAddress} />);
     expect(
-      (screen.getByTestId('addressFormFirstName') as HTMLInputElement).value
-    ).toBe(`${userAddress?.firstName} ${userAddress?.lastName}`);
-    expect(
-      (screen.getByTestId('addressFormDNI') as HTMLInputElement).value
-    ).toBe(userAddress?.documentNumber);
-    expect(
-      (screen.getByTestId('addressFormEmail') as HTMLInputElement).value
-    ).toBe(userAddress?.email);
+      screen.queryByTestId('addressFormFirstName')
+    ).not.toBeInTheDocument();
+    expect(screen.queryByTestId('addressFormDNI')).not.toBeInTheDocument();
+    expect(screen.queryByTestId('addressFormEmail')).not.toBeInTheDocument();
     expect(
       (screen.getByTestId('addressFormPhone') as HTMLInputElement).value
     ).toBe(
@@ -145,14 +132,10 @@ describe('form contain data', () => {
       <AddressForm {...PROPS} checkout={checkoutData} user={userAddress} />
     );
     expect(
-      (screen.getByTestId('addressFormFirstName') as HTMLInputElement).value
-    ).toBe(checkoutData?.shippingAddress.firstName);
-    expect(
-      (screen.getByTestId('addressFormDNI') as HTMLInputElement).value
-    ).toBe(checkoutData?.documentNumber);
-    expect(
-      (screen.getByTestId('addressFormEmail') as HTMLInputElement).value
-    ).toBe(checkoutData?.email);
+      screen.queryByTestId('addressFormFirstName')
+    ).not.toBeInTheDocument();
+    expect(screen.queryByTestId('addressFormDNI')).not.toBeInTheDocument();
+    expect(screen.queryByTestId('addressFormEmail')).not.toBeInTheDocument();
     expect(
       (screen.getByTestId('addressFormPhone') as HTMLInputElement).value
     ).toBe(

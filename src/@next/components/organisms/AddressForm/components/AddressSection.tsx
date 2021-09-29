@@ -35,6 +35,7 @@ export interface IAddressSectionProps {
   ): Promise<void> | Promise<FormikErrors<IAddressForm>>;
   touched: FormikTouched<IAddressForm>;
   values: IAddressForm;
+  isLogged: boolean;
 }
 
 export const AddressSection: React.FC<IAddressSectionProps> = ({
@@ -44,6 +45,7 @@ export const AddressSection: React.FC<IAddressSectionProps> = ({
   setValues,
   touched,
   values,
+  isLogged,
 }) => {
   const [, setDistrict] = useDistrictSelected();
   const { availableDistricts } = useShopContext();
@@ -91,51 +93,8 @@ export const AddressSection: React.FC<IAddressSectionProps> = ({
         <span className="fa-text-xl fa-mb-6 fa-block fa-font-semibold">
           Cliente
         </span>
-        <div className="fa-grid fa-grid-cols-1 fa-gap-6 fa-mt-10 md:fa-grid-cols-2">
-          <InputField
-            autoComplete="off"
-            data-testid="addressFormFirstName"
-            name="firstName"
-            label={`Nombre completo`}
-            placeholder="Ejemplo: Juan Perez"
-            role="textbox"
-            value={values.firstName}
-            error={touched.firstName && fieldErrors?.firstName}
-            onChange={handleChange}
-            inputSize="large"
-          />
-          <InputField
-            data-testid="addressFormDNI"
-            inputMode="numeric"
-            name="documentNumber"
-            placeholder="Ejemplo: 04123456"
-            label="Número de documento"
-            maxLength={DOCUMENT_NUMBER_MAX_LENGTH}
-            value={values.documentNumber}
-            pattern="[0-9]*"
-            role="textbox"
-            type="text"
-            error={touched.documentNumber && fieldErrors?.documentNumber}
-            inputSize="large"
-            onChange={(e) =>
-              setFieldValue(
-                'documentNumber',
-                e.currentTarget?.value?.toUpperCase()
-              )
-            }
-          />
-          <InputField
-            data-testid="addressFormEmail"
-            name="email"
-            placeholder="Ejemplo: juan@gmail.com"
-            label="Correo electrónico"
-            value={values.email}
-            role="textbox"
-            type="email"
-            error={touched.email && fieldErrors?.email}
-            inputSize="large"
-            onChange={handleChange}
-          />
+
+        {isLogged ? (
           <InputField
             data-testid="addressFormPhone"
             name="phone"
@@ -150,7 +109,68 @@ export const AddressSection: React.FC<IAddressSectionProps> = ({
             onChange={handleChange}
             inputSize="large"
           />
-        </div>
+        ) : (
+          <div className="fa-grid fa-grid-cols-1 fa-gap-6 fa-mt-10 md:fa-grid-cols-2">
+            <InputField
+              autoComplete="off"
+              data-testid="addressFormFirstName"
+              name="firstName"
+              label={`Nombre completo`}
+              placeholder="Ejemplo: Juan Perez"
+              role="textbox"
+              value={values.firstName}
+              error={touched.firstName && fieldErrors?.firstName}
+              onChange={handleChange}
+              inputSize="large"
+            />
+            <InputField
+              data-testid="addressFormDNI"
+              inputMode="numeric"
+              name="documentNumber"
+              placeholder="Ejemplo: 04123456"
+              label="Número de documento"
+              maxLength={DOCUMENT_NUMBER_MAX_LENGTH}
+              value={values.documentNumber}
+              pattern="[0-9]*"
+              role="textbox"
+              type="text"
+              error={touched.documentNumber && fieldErrors?.documentNumber}
+              inputSize="large"
+              onChange={(e) =>
+                setFieldValue(
+                  'documentNumber',
+                  e.currentTarget?.value?.toUpperCase()
+                )
+              }
+            />
+            <InputField
+              data-testid="addressFormEmail"
+              name="email"
+              placeholder="Ejemplo: juan@gmail.com"
+              label="Correo electrónico"
+              value={values.email}
+              role="textbox"
+              type="email"
+              error={touched.email && fieldErrors?.email}
+              inputSize="large"
+              onChange={handleChange}
+            />
+            <InputField
+              data-testid="addressFormPhone"
+              name="phone"
+              placeholder="Ejem: 912345678"
+              maxLength={9}
+              role="textbox"
+              label="Número de celular"
+              value={values.phone}
+              type="tel"
+              error={touched.phone && fieldErrors?.phone}
+              pattern="\d*"
+              onChange={handleChange}
+              inputSize="large"
+            />
+          </div>
+        )}
       </div>
       <div className="fa-mb-6 fa-w-full">
         <Checkbox
