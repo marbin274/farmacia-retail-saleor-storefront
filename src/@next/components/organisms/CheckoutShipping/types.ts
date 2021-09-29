@@ -1,7 +1,10 @@
 import { IAddressForm } from '@temp/@next/types/IAddressForm';
 import { GetPotentialShippingMethods_potentialShippingMethods } from '@temp/@sdk/queries/gqlTypes/GetPotentialShippingMethods';
 import { FormikErrors, FormikTouched } from 'formik';
-import { IScheduleDates } from '../CheckoutShippingProgrammed/types';
+import {
+  IScheduleDates,
+  IScheduledTimeOption,
+} from '../CheckoutShippingProgrammed/types';
 
 export interface IPotentialShippingMethod
   extends GetPotentialShippingMethods_potentialShippingMethods {
@@ -15,7 +18,7 @@ export interface IProps {
   values: IAddressForm;
   registerEvent(): void;
   setFieldValue(field: string, value: any): void;
-  setScheduleTime(scheduleTimeId: string, slotId: string): void;
+  setScheduleTime(scheduleTime: IScheduledTimeOption): void;
   setValues(values: IAddressForm): void;
   touched: FormikTouched<IAddressForm>;
 }

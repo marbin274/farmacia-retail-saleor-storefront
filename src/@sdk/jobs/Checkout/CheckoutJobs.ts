@@ -420,4 +420,12 @@ export class CheckoutJobs {
       return { data };
     }
   };
+
+  setPrime = ({ isPrime }: { isPrime: boolean }) => {
+    const checkout = this.repository.getCheckout();
+    this.repository.setCheckout({
+      ...checkout,
+      isPrime,
+    });
+  };
 }

@@ -9,7 +9,6 @@ import {
 } from '@sdk/repository';
 import { SaleorState } from '@sdk/state';
 import { StateItems } from '@sdk/state/types';
-import { primeSku } from '@temp/core/constants';
 
 import { PromiseRunResponse } from '../types';
 import {
@@ -124,9 +123,8 @@ export class SaleorCheckoutAPI
           this.checkoutLoaded &&
           this.paymentLoaded &&
           this.paymentGatewaysLoaded;
+        this.isPrime = isPrime;
 
-        this.isPrime =
-          isPrime || !!lines?.find((x) => x.variant.sku === primeSku);
         this.slots = slots;
         this.selectedSlotId = slotId;
       }
@@ -642,5 +640,16 @@ export class SaleorCheckoutAPI
         pending: false,
       };
     }
+  };
+
+  setPrime = async (
+    isPrime: boolean
+  ): PromiseRunResponse<DataErrorCheckoutTypes, FunctionErrorCheckoutTypes> => {
+    await this.saleorState.provideCheckout(this.fireError);
+    await this.jobsManager.run('checkout', 'setPrime', {
+      isPrime,
+    });
+
+    return { pending: false };
   };
 }

@@ -6,13 +6,16 @@ import {
   launchCheckoutEvent,
   steps,
 } from '@sdk/gaConfig';
-import { useCart, usePotentialShippingMethods } from '@sdk/react';
+import { useCart, useCheckout, usePotentialShippingMethods } from '@sdk/react';
 import { FormikErrors, FormikTouched } from 'formik';
 import React from 'react';
 import {
   CheckoutShipping,
   CheckoutShippingSlots,
 } from '../../CheckoutShipping';
+import { checkPrimeUser } from '@temp/@sdk/api/Prime';
+import { isPrimeShippingMethod } from '@temp/core/utils';
+import { primeSku } from '@temp/core/constants';
 
 export interface IShippingSectionProps {
   fieldErrors: FormikErrors<IAddressForm>;
@@ -31,6 +34,8 @@ export const ShippingSection: React.FC<IShippingSectionProps> = ({
   touched,
 }) => {
   const { items: itemsCart } = useCart();
+  const { setPrime, isPrime } = useCheckout();
+  const [primeLoading, setPrimeLoading] = React.useState<boolean>(true);
   const items = React.useMemo(
     () =>
       itemsCart?.map((line) => ({
@@ -57,11 +62,38 @@ export const ShippingSection: React.FC<IShippingSectionProps> = ({
   };
 
   const shippingMethods = React.useMemo(
-    () => maybe(() => potencialShippingMethods?.potentialShippingMethods, []),
-    [potencialShippingMethods?.potentialShippingMethods]
+    () =>
+      maybe(
+        () =>
+          isPrime
+            ? potencialShippingMethods.potentialShippingMethods.filter((it) =>
+                isPrimeShippingMethod(it)
+              )
+            : potencialShippingMethods?.potentialShippingMethods.filter(
+                (it) => !isPrimeShippingMethod(it)
+              ),
+        []
+      ),
+    [potencialShippingMethods?.potentialShippingMethods, isPrime]
   );
 
-  if (shippingMethodsLoading) {
+  React.useEffect(() => {
+    const checkPrime = async () => {
+      if (!!values.district && !!values.latitude) {
+        setPrimeLoading(true);
+        const isPrimeUser = await checkPrimeUser(values.email);
+        const existProductPrime = !!itemsCart?.find(
+          (x) => x.variant.sku === primeSku
+        );
+        setPrime(isPrimeUser || existProductPrime);
+        setPrimeLoading(false);
+      }
+    };
+
+    checkPrime();
+  }, [values.district, values.latitude]);
+
+  if (shippingMethodsLoading || primeLoading) {
     return <Loader />;
   }
 
@@ -102,11 +134,11 @@ export const ShippingSection: React.FC<IShippingSectionProps> = ({
                   {...checkShippingComponentProps}
                   shippingMethods={shippingMethodSlots}
                   scheduleSelected={values.slotId}
-                  setScheduleTime={(scheduleTimeId, slotId) => {
+                  setScheduleTime={(scheduleTime) => {
                     setValues({
                       ...values,
-                      scheduleDate: scheduleTimeId,
-                      slotId,
+                      scheduleDate: scheduleTime.scheduleDate,
+                      slotId: scheduleTime.slotId,
                     });
                   }}
                 />
@@ -118,10 +150,10 @@ export const ShippingSection: React.FC<IShippingSectionProps> = ({
         <CheckoutShipping
           {...checkShippingComponentProps}
           scheduleSelected={values.scheduleDate}
-          setScheduleTime={(scheduleTimeId) => {
+          setScheduleTime={(scheduleTime) => {
             setValues({
               ...values,
-              scheduleDate: scheduleTimeId,
+              scheduleDate: scheduleTime.scheduleDate,
             });
           }}
         />

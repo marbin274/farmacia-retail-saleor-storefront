@@ -47,17 +47,19 @@ const getCheckoutShippingAddress = (
   } else if (user) {
     return {
       dataTreatmentPolicy: user.dataTreatmentPolicy,
-      district: user.defaultShippingAddress.district.id,
+      district: user.defaultShippingAddress?.district.id,
       documentNumber: user.documentNumber,
       email: user.email,
-      phone: removeCountryCodeInPhoneNumber(user.defaultShippingAddress.phone),
+      phone: user.defaultShippingAddress?.phone
+        ? removeCountryCodeInPhoneNumber(user.defaultShippingAddress.phone)
+        : '',
       firstName: `${user.firstName} ${user.lastName}`,
       isLastMileActive,
       isScheduled: false,
-      latitude: user.defaultShippingAddress.latitude,
-      longitude: user.defaultShippingAddress.longitude,
-      streetAddress1: user.defaultShippingAddress.streetAddress1,
-      streetAddress2: user.defaultShippingAddress.streetAddress2,
+      latitude: user.defaultShippingAddress?.latitude,
+      longitude: user.defaultShippingAddress?.longitude,
+      streetAddress1: user.defaultShippingAddress?.streetAddress1,
+      streetAddress2: user.defaultShippingAddress?.streetAddress2,
       termsAndConditions: user.termsAndConditions,
     };
   } else if (!checkout?.shippingAddress || !user) {
