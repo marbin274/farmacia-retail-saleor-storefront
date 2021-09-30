@@ -1,4 +1,5 @@
 import { GA_TRACKING_ID } from '@temp/libraries/gtm/gtag';
+import { dynatraceUrl } from '@temp/core/constants';
 import Document, { Head, Html, Main, NextScript } from 'next/document';
 import React from 'react';
 import { ServerStyleSheet } from 'styled-components';
@@ -46,7 +47,6 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
             rel="stylesheet"
           />
-          <link rel="preconnect" href="https://js-cdn.dynatrace.com" />
           <script async type="text/javascript" src="/libraries/gtm.js" />
           <script
             dangerouslySetInnerHTML={{
@@ -58,9 +58,6 @@ export default class MyDocument extends Document {
             `,
             }}
           />
-
-
-
         </Head>
         <body>
           <Main />
@@ -69,7 +66,7 @@ export default class MyDocument extends Document {
           <script
             async
             type="text/javascript"
-            src="https://js-cdn.dynatrace.com/jstag/157944990f8/bf68041miu/775b3282e266cbc1_complete.js"
+            src={dynatraceUrl}
             crossOrigin="anonymous"
           />
           <script
