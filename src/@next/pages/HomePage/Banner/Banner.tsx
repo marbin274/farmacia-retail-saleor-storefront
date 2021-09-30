@@ -10,6 +10,10 @@ import { AsyncImage } from '@temp/@next/components/atoms/AsyncImage';
 import { useMediaScreen } from '@temp/@next/globalStyles';
 
 const baseUrlPattern = /(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})*\/?/;
+const heightBannerDesktop = 500;
+const widthBannerDesktop = 1920;
+const heightBannerMobile = 500;
+const widthBannerMobile = 1920;
 
 type BannerType = {
   link: string | null;
@@ -44,8 +48,7 @@ const getBannersFromData = (data: MainBanner_mainBanner): BannerType[] => {
 
 export const Banner: React.FC = () => {
   const router = useRouter();
-  const { isMobileScreen, isDesktopScreen, isCustomMaxScreen } =
-    useMediaScreen('1024');
+  const { isMobileScreen, isDesktopScreen } = useMediaScreen('1024');
 
   const { data: mainBanner, loading: mainBannerLoading } = useMainBanner({
     fetchPolicy: 'cache-and-network',
@@ -73,10 +76,17 @@ export const Banner: React.FC = () => {
   const banners = getBannersFromData(mainBanner);
   const multiBanner: boolean = banners?.length > 1;
 
+  const getResizedHeight = () => {
+    const width = typeof window !== 'undefined' ? window.innerWidth : 0;
+    return width > widthBannerDesktop || width === 0
+      ? heightBannerDesktop
+      : (heightBannerDesktop / widthBannerDesktop) * width;
+  };
+
   return (
     <S.BannerWrapper className="fa-relative fa-text-center">
       <BannerCarousel
-        autoplay={!multiBanner}
+        autoplay={multiBanner}
         transitionMode={multiBanner ? 'scroll' : 'fade'}
         wrapAround={multiBanner}
       >
@@ -95,9 +105,9 @@ export const Banner: React.FC = () => {
                     loading="lazy"
                     className="fa-mx-auto fa-my-0 fa-text-gray-03"
                     alt="Farmauna Banner Mobile"
-                    height={250}
+                    height={heightBannerMobile}
                     src={mainBannerLoading ? '' : banner.mobile}
-                    width={360}
+                    width={widthBannerMobile}
                   />
                 </span>
               )}
@@ -107,9 +117,9 @@ export const Banner: React.FC = () => {
                     loading="lazy"
                     className="fa-mx-auto fa-my-0 fa-text-gray-03"
                     alt="Farmauna Banner Desktop"
-                    height={isCustomMaxScreen ? 266 : 500}
+                    height={getResizedHeight()}
                     src={mainBannerLoading ? '' : banner.desktop}
-                    width={1920}
+                    width={widthBannerDesktop}
                   />
                 </span>
               )}
