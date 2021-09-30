@@ -17,7 +17,7 @@ import {
   SHIPPING_FORMAT_DATE,
 } from '@temp/core/config';
 import { format } from 'date-fns';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { ICreateCheckout } from '@temp/@sdk/repository';
 
@@ -38,8 +38,9 @@ export const CheckoutAddressSubpage: React.FC<ICheckoutAddressSubpageProps> = ({
   const router = useRouter();
   const { isLastMileActive } = useCheckPluginsStatus();
   const { data: user, loading: userLoading } = useUserDetails();
-  const { checkout, setCheckout } = useCheckout();
-  const [showStockValidation, setShowStockValidation] = React.useState<string>(null);
+  const { checkout, setCheckout, setShippingMethod } = useCheckout();
+  const [showStockValidation, setShowStockValidation] =
+    React.useState<string>(null);
   const { update: updateCartLines, loading: updatingCartLines } =
     useUpdateCartLines();
   const [stockValidationProducts, setStockValidationProducts] =
@@ -125,6 +126,12 @@ export const CheckoutAddressSubpage: React.FC<ICheckoutAddressSubpageProps> = ({
       );
     },
   }));
+
+  useEffect(() => {
+    if (isLastMileActive && checkout?.slotId) {
+      setShippingMethod({ shippingMethodId: '', slotId: undefined });
+    }
+  }, []);
 
   if (!!userLoading) {
     return <Loader />;

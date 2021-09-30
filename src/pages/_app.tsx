@@ -6,8 +6,8 @@ import { FeaturedPluginsProvider } from '@temp/@next/contexts';
 import { defaultTheme, GlobalStyle } from '@temp/@next/globalStyles';
 import { App } from '@temp/app';
 import { ApolloAdapter } from '@temp/libraries/apollo';
-import Script from 'next/script'
-import React from 'react'
+import Script from 'next/script';
+import React from 'react';
 
 import {
   getOptimizelyUserId,
@@ -49,7 +49,6 @@ export default function _App(props: AppProps) {
           name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
         />
-
       </Head>
       <Script
         strategy="afterInteractive"

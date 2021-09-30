@@ -12,7 +12,7 @@ import {
 import { useFormik } from 'formik';
 import ErrorFormPopulateIcon from './form-populate-error.svg';
 import { sortBy } from 'lodash';
-import React from 'react';
+import React, { FC, useEffect } from 'react';
 import { AddressSection, ShippingSection } from './components';
 import { addressFormSchema } from './schema';
 import { convertShippingMethodDateToDate } from '@temp/@next/utils/dateUtils';
@@ -25,23 +25,26 @@ const getCheckoutShippingAddress = (
   if (checkout?.id) {
     return {
       dataTreatmentPolicy: checkout.dataTreatmentPolicy,
-      deliveryDate: checkout.scheduleDate?.date
-        ? convertShippingMethodDateToDate(checkout.scheduleDate?.date)
-        : null,
+      deliveryDate:
+        checkout.scheduleDate?.date && !isLastMileActive
+          ? convertShippingMethodDateToDate(checkout.scheduleDate?.date)
+          : null,
       district: checkout.shippingAddress.district.id,
       documentNumber: checkout.documentNumber,
       email: checkout.email,
       phone: removeCountryCodeInPhoneNumber(checkout.shippingAddress.phone),
       firstName: checkout.shippingAddress.firstName,
-      isScheduled: !!checkout.scheduleDate,
+      isScheduled: isLastMileActive ? false : !!checkout.scheduleDate,
       isLastMileActive,
       latitude: checkout.shippingAddress.latitude,
       longitude: checkout.shippingAddress.longitude,
-      slotId: checkout.slotId,
+      slotId: isLastMileActive ? '' : checkout.slotId,
       streetAddress1: checkout.shippingAddress.streetAddress1,
       streetAddress2: checkout.shippingAddress.streetAddress2,
-      scheduleDate: checkout.scheduleDate?.scheduleTime?.id,
-      shippingMethod: checkout.shippingMethod?.id,
+      scheduleDate: isLastMileActive
+        ? ''
+        : checkout.scheduleDate?.scheduleTime?.id,
+      shippingMethod: isLastMileActive ? '' : checkout.shippingMethod?.id,
       termsAndConditions: checkout.termsAndConditions,
     };
   } else if (user) {
@@ -90,7 +93,7 @@ export interface IAddressFormProps {
   handleSubmit(data: IAddressForm): void;
 }
 
-export const AddressForm: React.FC<IAddressFormProps> = ({
+export const AddressForm: FC<IAddressFormProps> = ({
   checkout,
   formRef,
   isLastMileActive,
@@ -113,7 +116,7 @@ export const AddressForm: React.FC<IAddressFormProps> = ({
     onSubmit: checkoutAddressSubmit,
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!isSubmitting || Object.keys(fieldErrors).length === 0) return;
     const scrollToErrors = (errors: IFormErrorSort[]) => {
       if (errors[0]?.field) {

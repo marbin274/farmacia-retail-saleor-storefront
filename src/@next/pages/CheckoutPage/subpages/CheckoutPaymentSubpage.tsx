@@ -62,7 +62,6 @@ const CheckoutPaymentSubpageWithRef: ForwardRefRenderFunction<
     setBillingAsShippingAddress,
     setShippingMethod,
     selectedBillingAddressId,
-    selectedSlotId,
     availablePaymentGateways,
     promoCodeDiscount,
     addPromoCode,
@@ -130,7 +129,7 @@ const CheckoutPaymentSubpageWithRef: ForwardRefRenderFunction<
       }
 
       const shippingMethodId = checkout?.shippingMethod?.id || '';
-      setShippingMethod({ shippingMethodId, slotId: selectedSlotId });
+      setShippingMethod({ shippingMethodId, slotId: checkout?.slotId });
       if (billingAsShippingState) {
         handleSetBillingAddress();
       } else if (user && selectedBillingAddressId) {

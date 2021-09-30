@@ -42,7 +42,6 @@ export class SaleorCheckoutAPI
   payment?: IPayment;
   isPrime?: boolean;
   slots?: ISlots;
-  selectedSlotId?: string;
 
   private saleorState: SaleorState;
   private jobsManager: JobsManager;
@@ -126,7 +125,6 @@ export class SaleorCheckoutAPI
         this.isPrime = isPrime;
 
         this.slots = slots;
-        this.selectedSlotId = slotId;
       }
     );
     this.saleorState.subscribeToChange(
