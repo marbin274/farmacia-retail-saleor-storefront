@@ -95,20 +95,27 @@ export const AddressSection: React.FC<IAddressSectionProps> = ({
         </span>
 
         {isLogged ? (
-          <InputField
-            data-testid="addressFormPhone"
-            name="phone"
-            placeholder="Ejem: 912345678"
-            maxLength={9}
-            role="textbox"
-            label="Número de celular"
-            value={values.phone}
-            type="tel"
-            error={touched.phone && fieldErrors?.phone}
-            pattern="\d*"
-            onChange={handleChange}
-            inputSize="large"
-          />
+          <div>
+            <InputField
+              data-testid="addressFormPhone"
+              name="phone"
+              placeholder="Ejem: 912345678"
+              maxLength={9}
+              role="textbox"
+              label="Número de celular"
+              value={values.phone}
+              type="tel"
+              error={touched.phone && fieldErrors?.phone}
+              pattern="\d*"
+              onChange={handleChange}
+              inputSize="large"
+            />
+            {!(touched.phone && fieldErrors?.phone) && (
+              <span className="fa-text-xs fa-mt-2 fa-text-neutral-dark">
+                En caso tengamos que contactarte
+              </span>
+            )}
+          </div>
         ) : (
           <div className="fa-grid fa-grid-cols-1 fa-gap-6 fa-mt-10 md:fa-grid-cols-2">
             <InputField
@@ -155,20 +162,25 @@ export const AddressSection: React.FC<IAddressSectionProps> = ({
               inputSize="large"
               onChange={handleChange}
             />
-            <InputField
-              data-testid="addressFormPhone"
-              name="phone"
-              placeholder="Ejem: 912345678"
-              maxLength={9}
-              role="textbox"
-              label="Número de celular"
-              value={values.phone}
-              type="tel"
-              error={touched.phone && fieldErrors?.phone}
-              pattern="\d*"
-              onChange={handleChange}
-              inputSize="large"
-            />
+            <div>
+              <InputField
+                data-testid="addressFormPhone"
+                name="phone"
+                placeholder="Ejem: 912345678"
+                maxLength={9}
+                role="textbox"
+                label="Número de celular"
+                value={values.phone}
+                type="tel"
+                error={touched.phone && fieldErrors?.phone}
+                pattern="\d*"
+                onChange={handleChange}
+                inputSize="large"
+              />
+              <span className="fa-text-xs fa-mt-2 fa-text-neutral-dark">
+                En caso tengamos que contactarte
+              </span>
+            </div>
           </div>
         )}
       </div>
