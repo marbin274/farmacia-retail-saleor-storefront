@@ -32,7 +32,9 @@ const CheckoutShipping: React.FC<IProps> = ({
 
       if (isScheduled && scheduleDates?.[0]) {
         const scheduleDate = scheduleDates?.[0];
-        const date = convertShippingMethodDateToDate(scheduleDate?.date);
+        const date = scheduleDate?.date
+          ? convertShippingMethodDateToDate(scheduleDate.date)
+          : undefined;
         deliveryDate = date;
         formScheduleDate = scheduleDate?.scheduleTimes?.[0]?.scheduleTimeId;
         slotId = scheduleDate?.scheduleTimes?.[0]?.slotId;

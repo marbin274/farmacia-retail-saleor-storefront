@@ -49,16 +49,20 @@ export const CheckoutShippingProgrammed: React.FC<ICheckoutShippingProgrammedPro
       if (!scheduleDates) {
         return undefined;
       }
-      const date = convertShippingMethodDateToDate(scheduleDates?.[0]?.date);
+      const date = scheduleDates?.[0]?.date
+        ? convertShippingMethodDateToDate(scheduleDates[0].date)
+        : undefined;
       return date;
     }, [scheduleDates]);
     const maxDate: Date | undefined = React.useMemo(() => {
       if (!scheduleDates) {
         return undefined;
       }
-      const date = convertShippingMethodDateToDate(
-        scheduleDates?.[scheduleDates.length - 1]?.date
-      );
+      const date = scheduleDates?.[scheduleDates.length - 1]?.date
+        ? convertShippingMethodDateToDate(
+            scheduleDates[scheduleDates.length - 1].date
+          )
+        : undefined;
       return date;
     }, [scheduleDates]);
 

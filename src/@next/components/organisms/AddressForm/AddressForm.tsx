@@ -28,7 +28,7 @@ const getCheckoutShippingAddress = (
       deliveryDate:
         checkout.scheduleDate?.date && !isLastMileActive
           ? convertShippingMethodDateToDate(checkout.scheduleDate?.date)
-          : null,
+          : undefined,
       district: checkout.shippingAddress.district.id,
       documentNumber: checkout.documentNumber,
       email: checkout.email,
