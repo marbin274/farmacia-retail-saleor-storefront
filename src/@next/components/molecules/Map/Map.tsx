@@ -4,6 +4,7 @@ import { LIMA_BOUNDS, LOCATION_DEFAULT } from '@temp/core/config';
 import { mapsApiKey } from '@temp/core/constants';
 import classNames from 'classnames';
 import React from 'react';
+import { initFullscreenControl } from './customFullScreen';
 import * as S from './styles';
 import { IMapProps } from './types';
 export const Map: React.FC<IMapProps> = ({
@@ -14,13 +15,14 @@ export const Map: React.FC<IMapProps> = ({
 }) => {
   const mapDivRef = React.useRef<HTMLDivElement>(null);
   const mapRef = React.useRef<google.maps.Map>(null);
-
+  const fullScreenControlRef = React.useRef<HTMLDivElement>(null);
   const changePositionMapAndMarker = () => {
     if (!mapRef.current || !location?.lat || !location?.lng) {
       return;
     }
+    const position = { lat: location.lat, lng: location.lng };
 
-    mapRef.current.setCenter({ lat: location.lat, lng: location.lng });
+    mapRef.current.setCenter(position);
   };
 
   const setGeoJson = () => {
@@ -38,7 +40,7 @@ export const Map: React.FC<IMapProps> = ({
     const newMap = new google.maps.Map(mapDivRef.current!, {
       center: myLatlng,
       clickableIcons: false,
-      fullscreenControl: true,
+      fullscreenControl: false,
       mapTypeControl: false,
       panControl: false,
       restriction: {
@@ -48,6 +50,11 @@ export const Map: React.FC<IMapProps> = ({
       streetViewControl: false,
       zoom: 16,
     });
+    initFullscreenControl(
+      newMap,
+      fullScreenControlRef.current,
+      mapDivRef.current
+    );
 
     newMap.data.setStyle({
       fillColor: farmatheme.theme.colors.highlight.medium,
@@ -57,36 +64,32 @@ export const Map: React.FC<IMapProps> = ({
     });
 
     newMap.addListener('click', (e: any) => {
-      const lat = e.latLng.lat();
-      const lng = e.latLng.lng();
-
-      new google.maps.Geocoder().geocode({ location: { lat, lng } }, (res) => {
-        onChangeLocation?.({ lat, lng }, res?.[0]?.formatted_address || '');
+      const position = { lat: e.latLng.lat(), lng: e.latLng.lng() };
+      new google.maps.Geocoder().geocode({ location: position }, (res) => {
+        onChangeLocation?.(position, res?.[0]?.formatted_address || '');
       });
     });
 
     newMap.data.addListener('click', (e: any) => {
-      const lat = e.latLng.lat();
-      const lng = e.latLng.lng();
-
-      new google.maps.Geocoder().geocode({ location: { lat, lng } }, (res) => {
-        onChangeLocation?.({ lat, lng }, res?.[0]?.formatted_address || '');
+      const position = { lat: e.latLng.lat(), lng: e.latLng.lng() };
+      new google.maps.Geocoder().geocode({ location: position }, (res) => {
+        onChangeLocation?.(position, res?.[0]?.formatted_address || '');
       });
     });
 
     newMap.addListener('dragend', () => {
-      const lat = newMap.getCenter().lat();
-      const lng = newMap.getCenter().lng();
-
-      new google.maps.Geocoder().geocode({ location: { lat, lng } }, (res) => {
-        onChangeLocation?.({ lat, lng }, res?.[0]?.formatted_address || '');
+      const position = {
+        lat: newMap.getCenter().lat(),
+        lng: newMap.getCenter().lng(),
+      };
+      new google.maps.Geocoder().geocode({ location: position }, (res) => {
+        onChangeLocation?.(position, res?.[0]?.formatted_address || '');
       });
     });
     const markerDiv = document.createElement('div');
     markerDiv.classList.add('centerMarker');
     newMap.getDiv().append(markerDiv);
     mapRef.current = newMap;
-
     setGeoJson();
     changePositionMapAndMarker();
   }, []);
@@ -122,6 +125,16 @@ export const Map: React.FC<IMapProps> = ({
       )}
     >
       <S.Map isSetLocation={!!location?.lat} ref={mapDivRef} />
+      <div style={{ display: 'none' }}>
+        <S.FullScreenControl ref={fullScreenControlRef}>
+          <button title="Toggle Fullscreen" type="button">
+            <div className="fullscreen-control-icon fullscreen-control-top-left"></div>
+            <div className="fullscreen-control-icon fullscreen-control-top-right"></div>
+            <div className="fullscreen-control-icon fullscreen-control-bottom-left"></div>
+            <div className="fullscreen-control-icon fullscreen-control-bottom-right"></div>
+          </button>
+        </S.FullScreenControl>
+      </div>
     </div>
   );
 };
