@@ -44,7 +44,8 @@ const getBannersFromData = (data: MainBanner_mainBanner): BannerType[] => {
 
 export const Banner: React.FC = () => {
   const router = useRouter();
-  const { isMobileScreen, isDesktopScreen } = useMediaScreen();
+  const { isMobileScreen, isDesktopScreen, isCustomMaxScreen } =
+    useMediaScreen('1024');
 
   const { data: mainBanner, loading: mainBannerLoading } = useMainBanner({
     fetchPolicy: 'cache-and-network',
@@ -75,7 +76,7 @@ export const Banner: React.FC = () => {
   return (
     <S.BannerWrapper className="fa-relative fa-text-center">
       <BannerCarousel
-        autoplay={multiBanner}
+        autoplay={!multiBanner}
         transitionMode={multiBanner ? 'scroll' : 'fade'}
         wrapAround={multiBanner}
       >
@@ -106,7 +107,7 @@ export const Banner: React.FC = () => {
                     loading="lazy"
                     className="fa-mx-auto fa-my-0 fa-text-gray-03"
                     alt="Farmauna Banner Desktop"
-                    height={500}
+                    height={isCustomMaxScreen ? 266 : 500}
                     src={mainBannerLoading ? '' : banner.desktop}
                     width={1920}
                   />
