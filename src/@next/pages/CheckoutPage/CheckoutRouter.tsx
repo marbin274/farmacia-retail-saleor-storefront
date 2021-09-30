@@ -1,9 +1,9 @@
 import { useCheckoutStepState } from '@hooks';
 import { IItems } from '@sdk/api/Cart/types';
 import { ICheckout, IPayment } from '@sdk/api/Checkout/types';
-import { CHECKOUT_STEPS } from '@temp/core/config';
-import router, { useRouter } from 'next/router';
-import React, { FC } from 'react';
+import { CheckoutStep, CHECKOUT_STEPS } from '@temp/core/config';
+import { useRouter } from 'next/router';
+import React, { FC, useState, useEffect } from 'react';
 
 type IRouterProps = {
   items?: IItems;
@@ -23,14 +23,40 @@ const CheckoutRouter: FC<IRouterProps> = ({
   renderPayment,
   renderReview,
 }) => {
-  const { asPath } = useRouter();
+  const [loaded, setLoaded] = useState(false);
+  const [redirecting, setRedirecting] = useState(false);
+  const { asPath, push, isReady } = useRouter();
   const step = useCheckoutStepState(items, checkout, payment);
 
-  const getStepLink = () =>
-    CHECKOUT_STEPS.find((stepObj) => stepObj.step === step)?.link ||
-    CHECKOUT_STEPS[0].link;
+  useEffect(() => {
+    if (loaded || !isReady) {
+      return;
+    }
 
-  if (asPath.includes('order')) return null;
+    setLoaded(true);
+
+    if (step === CheckoutStep.Address && asPath !== CHECKOUT_STEPS[0].link) {
+      push(CHECKOUT_STEPS[0].link);
+      setRedirecting(true);
+      return;
+    }
+
+    if (step === CheckoutStep.Payment && asPath !== CHECKOUT_STEPS[1].link) {
+      push(CHECKOUT_STEPS[1].link);
+      setRedirecting(true);
+      return;
+    }
+  }, [loaded, isReady]);
+
+  useEffect(() => {
+    if (redirecting) {
+      setRedirecting(false);
+    }
+  }, [asPath]);
+
+  if (asPath.includes('order') || !loaded || redirecting) {
+    return <></>;
+  }
 
   switch (asPath) {
     case CHECKOUT_STEPS[0].link:
@@ -38,7 +64,6 @@ const CheckoutRouter: FC<IRouterProps> = ({
     case CHECKOUT_STEPS[1].link:
       return renderPayment();
     default:
-      router.push(getStepLink());
       return <></>;
     // TODO: Descomentar cuando se reactive la pagina de review antes de pagar
     // case CHECKOUT_STEPS[2].link:
