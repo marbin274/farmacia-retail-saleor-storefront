@@ -16,7 +16,7 @@ export const setTagManager = () => {
           gtmId,
           preview: gtmPreview,
         };
-        launchSetLocation();
+        launchSetLocation(window?.location?.href);
         TagManager.initialize(tagManagerArgs);
       }
       break;
@@ -25,7 +25,7 @@ export const setTagManager = () => {
         const tagManagerArgs = {
           gtmId,
         };
-        launchSetLocation();
+        launchSetLocation(window?.location?.href);
         TagManager.initialize(tagManagerArgs);
       }
       break;

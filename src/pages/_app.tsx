@@ -7,7 +7,7 @@ import { defaultTheme, GlobalStyle } from '@temp/@next/globalStyles';
 import { App } from '@temp/app';
 import { ApolloAdapter } from '@temp/libraries/apollo';
 import Script from 'next/script';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import {
   getOptimizelyUserId,
@@ -18,6 +18,7 @@ import Head from 'next/head';
 import { positions, Provider as AlertProvider } from 'react-alert';
 import { ThemeProvider } from 'styled-components';
 import '../index.css';
+import { launchSetLocation } from '@temp/@sdk/gaConfig';
 import { GA_TRACKING_ID } from '@temp/libraries/gtm/gtag';
 
 export default function _App(props: AppProps) {
@@ -25,6 +26,11 @@ export default function _App(props: AppProps) {
     position: positions.BOTTOM_RIGHT,
     timeout: 2500,
   };
+
+  // TODO: revisar si esto debe tener un array de dependencias
+  useEffect(() => {
+    launchSetLocation(window?.location?.href);
+  });
 
   React.useEffect(() => {
     if ('serviceWorker' in navigator) {

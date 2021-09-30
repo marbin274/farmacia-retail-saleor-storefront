@@ -17,10 +17,6 @@ export enum steps {
   reviewCheckoutRoute,
 }
 
-const location: string = WINDOW_EXISTS
-  ? `${document.location.protocol}//${document.location.hostname}${document.location.pathname}${document.location.search}`
-  : '';
-
 export const ecommerceProductsMapper = (products?: any[] | null) => {
   return (
     products?.map((product) => ({
@@ -180,10 +176,10 @@ export const launchPurchaseEvent = (
   });
 };
 
-export const launchSetLocation = () => {
+export const launchSetLocation = (url: string) => {
   if (!WINDOW_EXISTS) return;
   return pushToDatalayer({
-    originalLocation: location,
+    originalLocation: url,
   });
 };
 
