@@ -16,3 +16,4 @@ export const primeApiKey = process.env.NEXT_PUBLIC_PRIME_API_KEY;
 export const primeSku = process.env.NEXT_PUBLIC_PRIME_SKU || '';
 export const niubizAntifraudScriptUrl =
   process.env.NEXT_PUBLIC_NIUBIZ_ANTIFRAUD_SCRIPT_URL || '';
+export const dynatraceUrl = process.env.NEXT_PUBLIC_DYNATRACE_URL;
