@@ -62,10 +62,10 @@ export const Page: React.FC<IProps> = (props) => {
         product?.variants[0]?.sku as string,
         product?.variants[0]?.pricing?.price?.gross?.amount as number,
         product?.category?.name,
-        product?.isAvailable
+        !isOutStock
       );
     }
-  }, []);
+  });
 
   const renderProductRightInfo = () => (
     <>

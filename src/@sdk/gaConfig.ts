@@ -144,7 +144,7 @@ export const launchDetailProductEvent = (
             name,
             price,
             category,
-            isAvailable,
+            isAvailable: isAvailable ? 'yes' : 'no',
           },
         ],
       },
