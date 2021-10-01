@@ -27,6 +27,7 @@ export const FullScreenControl = styled.div`
   box-sizing: border-box;
   border-radius: 2px;
   cursor: pointer;
+  display: none;
   font-size: 28px;
   font-weight: 300;
   height: 1em;
@@ -35,6 +36,9 @@ export const FullScreenControl = styled.div`
   text-align: center;
   user-select: none;
   width: 1em;
+  @supports not (-webkit-touch-callout: none) {
+    display: initial;
+  }
 
   button {
     display: block;
